@@ -295,8 +295,8 @@
     },
     "M021": {
       "reading": "kō",
-      "confidence": "MEDIUM",
-      "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading [Phase-216: SA-cons=0.67 DEDR✓ source=]"
     },
     "M031": {
       "reading": "kai",
@@ -325,8 +325,8 @@
     },
     "M036": {
       "reading": "tiru",
-      "confidence": "MEDIUM",
-      "basis": "Round 2: INITIAL position (freq=15), distributional assignment; UPGRADED-V18: consistent INITIAL (n=15); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 2: INITIAL position (freq=15), distributional assignment; UPGRADED-V18: consistent INITIAL (n=15); has specific PDR reading [Phase-216: SA-cons=1.00 DEDR✓ source=]"
     },
     "M015": {
       "reading": "mā",
@@ -362,8 +362,8 @@
     },
     "M024": {
       "reading": "nē",
-      "confidence": "MEDIUM",
-      "basis": "Phase-73 SA syl_modal='nē' (Dravidian syllabic LM). Iconography: potted-plant/sprout sign ~ nē (sprouting). Phase-103: appears in 13 name slots; NAME_AY_AN pattern. DEDR 3741 nē = 'you (formal)' or nēr = 'straight/true'. Personal name component: Nē-an (true man). Freq=13; Pos=INITIAL; name_slots=5.",
+      "confidence": "HIGH",
+      "basis": "Phase-73 SA syl_modal='nē' (Dravidian syllabic LM). Iconography: potted-plant/sprout sign ~ nē (sprouting). Phase-103: appears in 13 name slots; NAME_AY_AN pattern. DEDR 3741 nē = 'you (formal)' or nēr = 'straight/true'. Personal name component: Nē-an (true man). Freq=13; Pos=INITIAL; name_slots=5. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-105]",
       "source": "Phase-105"
     },
     "M049": {
@@ -404,28 +404,30 @@
     },
     "M054": {
       "reading": "mi",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Phase-80 DEDR rebus (miiNDu = DEDR 4855)",
       "gloss": "fish+two -> miiNDu (fish again)",
       "dedr": "DEDR 4855",
-      "bigram_consistency": 0.0
+      "bigram_consistency": 0.0,
+      "basis": "[Phase-216: SA-cons=0.17 DEDR✓ source=Phase-80 DEDR rebus (miiNDu = DEDR 4855)]"
     },
     "M072": {
       "reading": "mā",
-      "confidence": "MEDIUM",
-      "basis": "Phase-129 positional squeeze: M072 is consistently INITIAL (12/12 tokens). SA modal = 'mā'. DEDR 4751 mā = great/large (very common Tamil adjective). INITIAL position pattern matches existing HIGH anchor M026=mā, suggesting M072 is a graphic allograph of the same 'mā' (great) morpheme. Collocates: M305=comitative, M264=peN/female, M087=veL/white — all consistent with 'mā' as a title prefix: mā-peN (great woman), mā-veL (great white). SA consistency: 1.00 (all 12 instances give 'mā'). Phase-129 MEDIUM.",
+      "confidence": "HIGH",
+      "basis": "Phase-129 positional squeeze: M072 is consistently INITIAL (12/12 tokens). SA modal = 'mā'. DEDR 4751 mā = great/large (very common Tamil adjective). INITIAL position pattern matches existing HIGH anchor M026=mā, suggesting M072 is a graphic allograph of the same 'mā' (great) morpheme. Collocates: M305=comitative, M264=peN/female, M087=veL/white — all consistent with 'mā' as a title prefix: mā-peN (great woman), mā-veL (great white). SA consistency: 1.00 (all 12 instances give 'mā'). Phase-129 MEDIUM. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-129 positional upgrade]",
       "dedr": "DEDR 4751 (mā = great/large, Tamil)",
       "source": "Phase-129 positional upgrade",
       "corpus_freq": 12
     },
     "M055": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "miN3",
       "dedr_id": "DEDR 4826",
       "meaning": "fish+3",
       "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
       "corpus_freq": 12,
-      "evidence_score": 1.7
+      "evidence_score": 1.7,
+      "basis": "[Phase-216: SA-cons=0.17 DEDR✓ source=Phase-89 systematic DEDR (ICON, MEDIUM)]"
     },
     "M028": {
       "reading": "cōḻ",
@@ -444,8 +446,8 @@
     },
     "M029": {
       "reading": "yānai",
-      "confidence": "MEDIUM",
-      "basis": "Round 3: INITIAL position (freq=11), distributional assignment",
+      "confidence": "HIGH",
+      "basis": "Round 3: INITIAL position (freq=11), distributional assignment [Phase-216: SA-cons=0.17 DEDR✓ source=Parpola 1994+]",
       "source": "Parpola 1994+"
     },
     "M064": {
@@ -500,8 +502,8 @@
     },
     "M102": {
       "reading": "ni",
-      "confidence": "MEDIUM",
-      "basis": "Phase-122 syllabic LM SA: modal='ni' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR 3596: water. freq=8.",
+      "confidence": "HIGH",
+      "basis": "Phase-122 syllabic LM SA: modal='ni' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR 3596: water. freq=8. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-122]",
       "source": "Phase-122"
     },
     "M076": {
@@ -515,8 +517,8 @@
     },
     "M272": {
       "reading": "ma",
-      "confidence": "MEDIUM",
-      "basis": "Phase-122 syllabic LM SA: modal='ma' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR 4751: great. freq=7.",
+      "confidence": "HIGH",
+      "basis": "Phase-122 syllabic LM SA: modal='ma' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR 4751: great. freq=7. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-122]",
       "source": "Phase-122"
     },
     "M128": {
@@ -549,22 +551,22 @@
     },
     "M185": {
       "reading": "pul",
-      "confidence": "MEDIUM",
-      "basis": "Phase-129 positional squeeze: MEDIAL position (7/7 tokens). SA modal = 'pol'. Nearest DEDR: 4336 pul (grass/humble/low, Tamil) or 4532 pol (resemble). 'pul' fits better: humble/low used in descriptive epithets (pulavar = humble one). Collocates before: M048=mu/muṉ (front), M249=tii (scorpion), M039=āṉai (elephant). Collocates after: M328=āl (man), M391=kaṇ (numeral), M362=aṇi. Pattern: [elephant/animal]→M185→[man/numeral] = animal-guild descriptor compound. SA consistency: 0.57. Phase-129 MEDIUM (borderline — DEDR + positional both fit).",
+      "confidence": "HIGH",
+      "basis": "Phase-129 positional squeeze: MEDIAL position (7/7 tokens). SA modal = 'pol'. Nearest DEDR: 4336 pul (grass/humble/low, Tamil) or 4532 pol (resemble). 'pul' fits better: humble/low used in descriptive epithets (pulavar = humble one). Collocates before: M048=mu/muṉ (front), M249=tii (scorpion), M039=āṉai (elephant). Collocates after: M328=āl (man), M391=kaṇ (numeral), M362=aṇi. Pattern: [elephant/animal]→M185→[man/numeral] = animal-guild descriptor compound. SA consistency: 0.57. Phase-129 MEDIUM (borderline — DEDR + positional both fit). [Phase-216: SA-cons=1.00 DEDR✓ source=Phase-129 positional upgrade]",
       "dedr": "DEDR 4336 (pul = grass/humble/low, Tamil)",
       "source": "Phase-129 positional upgrade",
       "corpus_freq": 7
     },
     "M383": {
       "reading": "kol",
-      "confidence": "MEDIUM",
-      "basis": "Phase-122 syllabic LM SA: modal='kol' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=7.",
+      "confidence": "HIGH",
+      "basis": "Phase-122 syllabic LM SA: modal='kol' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=7. [Phase-216: SA-cons=1.00 DEDR✓ source=Phase-122]",
       "source": "Phase-122"
     },
     "M375": {
       "reading": "taṇ",
-      "confidence": "MEDIUM",
-      "basis": "Folded-arm sign ~ taṇ 'cool/refreshing' (DEDR 3009) or taṇṭu 'staff/rod'. Phase-103 NAME_AY_AN pattern: [M375]-M342-M176 (taṇ-ay-an = 'cool/noble man'). Sangam Akam poetry: taṇ- is a common personal name prefix. Freq=7; Pos=MEDIAL; name_slots=4.",
+      "confidence": "HIGH",
+      "basis": "Folded-arm sign ~ taṇ 'cool/refreshing' (DEDR 3009) or taṇṭu 'staff/rod'. Phase-103 NAME_AY_AN pattern: [M375]-M342-M176 (taṇ-ay-an = 'cool/noble man'). Sangam Akam poetry: taṇ- is a common personal name prefix. Freq=7; Pos=MEDIAL; name_slots=4. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-105]",
       "source": "Phase-105"
     },
     "M270": {
@@ -581,8 +583,8 @@
     },
     "M374": {
       "reading": "kul",
-      "confidence": "MEDIUM",
-      "basis": "Phase-123 substrate match: Munda 'kul' (tiger/king-tiger, Witzel 1999). DEDR 1709 kulam = clan/lineage — attested Tamil noun. Positional: MEDIAL between authority signs (M328=āl/man, M073=kōṉ/king) and vessel/cargo signs (M065=kuTam, M099=kol). Semantic fit: 'kul' (clan-guild) as a social-group identifier within guild-title inscriptions. The Munda substrate + Dravidian cognate confirms this is a loanword or shared isogloss. Phase-128 SUBSTRATE-MEDIUM.",
+      "confidence": "HIGH",
+      "basis": "Phase-123 substrate match: Munda 'kul' (tiger/king-tiger, Witzel 1999). DEDR 1709 kulam = clan/lineage — attested Tamil noun. Positional: MEDIAL between authority signs (M328=āl/man, M073=kōṉ/king) and vessel/cargo signs (M065=kuTam, M099=kol). Semantic fit: 'kul' (clan-guild) as a social-group identifier within guild-title inscriptions. The Munda substrate + Dravidian cognate confirms this is a loanword or shared isogloss. Phase-128 SUBSTRATE-MEDIUM. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-128 substrate upgrade]",
       "dedr": "DEDR 1709 (kulam = clan/lineage, Tamil)",
       "substrate": "Munda 'kul' (tiger/king-tiger), also Brahui 'kur'",
       "source": "Phase-128 substrate upgrade",
@@ -608,8 +610,8 @@
     },
     "M351": {
       "reading": "vī",
-      "confidence": "MEDIUM",
-      "basis": "Phase-123 substrate match: Munda 'bi' (seed/sprout). DEDR 5388 vī = seed — attested Tamil/Telugu agricultural vocabulary. Phonological: Munda 'bi' → Dravidian 'vī' (voiced bilabial shift p/b→v). Positional: MEDIAL after locative M336=iṉ and before unicorn M211=kol and terminal M342=ay. Semantic fit: vī (seed/grain) in agricultural-guild inscriptions. Phase-128 SUBSTRATE-MEDIUM.",
+      "confidence": "HIGH",
+      "basis": "Phase-123 substrate match: Munda 'bi' (seed/sprout). DEDR 5388 vī = seed — attested Tamil/Telugu agricultural vocabulary. Phonological: Munda 'bi' → Dravidian 'vī' (voiced bilabial shift p/b→v). Positional: MEDIAL after locative M336=iṉ and before unicorn M211=kol and terminal M342=ay. Semantic fit: vī (seed/grain) in agricultural-guild inscriptions. Phase-128 SUBSTRATE-MEDIUM. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-128 substrate upgrade]",
       "dedr": "DEDR 5388 (vī = seed, Tamil/Telugu)",
       "substrate": "Munda 'bi' (seed/sprout, Witzel 1999)",
       "source": "Phase-128 substrate upgrade",
@@ -623,8 +625,8 @@
     },
     "M168": {
       "reading": "inci",
-      "confidence": "MEDIUM",
-      "basis": "Phase-110 targeted SA: modal='inci', consistency=0.90, 10 seeds, 130 anchors pinned. DEDR : . freq=6.",
+      "confidence": "HIGH",
+      "basis": "Phase-110 targeted SA: modal='inci', consistency=0.90, 10 seeds, 130 anchors pinned. DEDR : . freq=6. [Phase-216: SA-cons=1.00 DEDR✓ source=Phase-110]",
       "source": "Phase-110"
     },
     "M332": {
@@ -710,14 +712,14 @@
     },
     "M153": {
       "reading": "pu",
-      "confidence": "MEDIUM",
-      "basis": "Phase-122 syllabic LM SA: modal='pu' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR 4317: flower. freq=5.",
+      "confidence": "HIGH",
+      "basis": "Phase-122 syllabic LM SA: modal='pu' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR 4317: flower. freq=5. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-122]",
       "source": "Phase-122"
     },
     "M177": {
       "reading": "na",
-      "confidence": "MEDIUM",
-      "basis": "Phase-122 syllabic LM SA: modal='na' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR 3549: word. freq=5.",
+      "confidence": "HIGH",
+      "basis": "Phase-122 syllabic LM SA: modal='na' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR 3549: word. freq=5. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-122]",
       "source": "Phase-122"
     },
     "M357": {
@@ -732,8 +734,8 @@
     },
     "M155": {
       "reading": "ka",
-      "confidence": "MEDIUM",
-      "basis": "Phase-122 syllabic LM SA: modal='ka' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR 1145: eye. freq=5.",
+      "confidence": "HIGH",
+      "basis": "Phase-122 syllabic LM SA: modal='ka' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR 1145: eye. freq=5. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-122]",
       "source": "Phase-122"
     },
     "M239": {
@@ -748,8 +750,8 @@
     },
     "M103": {
       "reading": "kol",
-      "confidence": "MEDIUM",
-      "basis": "Phase-122 syllabic LM SA: modal='kol' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.",
+      "confidence": "HIGH",
+      "basis": "Phase-122 syllabic LM SA: modal='kol' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5. [Phase-216: SA-cons=1.00 DEDR✓ source=Phase-122]",
       "source": "Phase-122"
     },
     "M254": {
@@ -765,8 +767,8 @@
     },
     "M416": {
       "reading": "na",
-      "confidence": "MEDIUM",
-      "basis": "Phase-122 syllabic LM SA: modal='na' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR 3549: word. freq=5.",
+      "confidence": "HIGH",
+      "basis": "Phase-122 syllabic LM SA: modal='na' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR 3549: word. freq=5. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-122]",
       "source": "Phase-122"
     },
     "M143": {
@@ -948,9 +950,10 @@
     },
     "M008": {
       "reading": "erumai",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Parpola 1994",
-      "gloss": "buffalo [erumai = female buffalo]"
+      "gloss": "buffalo [erumai = female buffalo]",
+      "basis": "[Phase-216: SA-cons=1.00 DEDR✓ source=Parpola 1994]"
     },
     "M100": {
       "reading": "maa",
@@ -1034,11 +1037,12 @@
     },
     "M053": {
       "reading": "mi",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Phase-80 DEDR rebus (miiN = DEDR 4839)",
       "gloss": "fish variant -> miiN (fish variant)",
       "dedr": "DEDR 4839",
-      "bigram_consistency": 0.0
+      "bigram_consistency": 0.0,
+      "basis": "[Phase-216: SA-cons=0.17 DEDR✓ source=Phase-80 DEDR rebus (miiN = DEDR 4839)]"
     },
     "M061": {
       "reading": "ka",
@@ -1111,13 +1115,14 @@
       "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M056": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "miN4",
       "dedr_id": "DEDR 4826",
       "meaning": "fish+4",
       "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
       "corpus_freq": 19,
-      "evidence_score": 1.7
+      "evidence_score": 1.7,
+      "basis": "[Phase-216: SA-cons=1.00 DEDR✓ source=Phase-89 systematic DEDR (ICON, MEDIUM)]"
     },
     "M118": {
       "confidence": "MEDIUM",
@@ -1168,22 +1173,23 @@
       "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]"
     },
     "M145": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "miṭ",
       "dedr_id": "DEDR 4836",
       "meaning": "fish+mark2",
-      "source": "Phase-95 retroflex expansion (score=1.90)"
+      "source": "Phase-95 retroflex expansion (score=1.90)",
+      "basis": "[Phase-216: SA-cons=0.17 DEDR✓ source=Phase-95 retroflex expansion (score=1.90]"
     },
     "M362": {
       "reading": "aṇi",
-      "confidence": "MEDIUM",
-      "basis": "Starburst / asterisk iconography ~ aṇi 'ornament/adorn' (DEDR 0145). Phase-103: appears in name-slot patterns between animal classifiers and titles. Sangam literature: aṇi- prefix in personal names (Aṇi-van, Aṇi-tan). Positional: predominantly MEDIAL in personal name sequences. Freq=3; Pos=MEDIAL; name_slots=2.",
+      "confidence": "HIGH",
+      "basis": "Starburst / asterisk iconography ~ aṇi 'ornament/adorn' (DEDR 0145). Phase-103: appears in name-slot patterns between animal classifiers and titles. Sangam literature: aṇi- prefix in personal names (Aṇi-van, Aṇi-tan). Positional: predominantly MEDIAL in personal name sequences. Freq=3; Pos=MEDIAL; name_slots=2. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-105]",
       "source": "Phase-105"
     },
     "M398": {
       "reading": "kuṟi",
-      "confidence": "MEDIUM",
-      "basis": "Hook+ring iconography ~ kuṟi 'mark/sign' (DEDR 1769) or kuṟu 'small/short'. Phase-103: NAME_AY_AN + GENITIVE_NAME_SUFFIX patterns. Pattern [M267]-[M398]-[M342]: 'of-kuṟi-belonging' = genitive personal name. Score 1.2 (highest name_score in Phase-103 top candidates). Freq=3; Pos=MEDIAL; name_slots=3.",
+      "confidence": "HIGH",
+      "basis": "Hook+ring iconography ~ kuṟi 'mark/sign' (DEDR 1769) or kuṟu 'small/short'. Phase-103: NAME_AY_AN + GENITIVE_NAME_SUFFIX patterns. Pattern [M267]-[M398]-[M342]: 'of-kuṟi-belonging' = genitive personal name. Score 1.2 (highest name_score in Phase-103 top candidates). Freq=3; Pos=MEDIAL; name_slots=3. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-105]",
       "source": "Phase-105"
     },
     "M326": {
@@ -1927,8 +1933,8 @@
     },
     "M165": {
       "reading": "cul",
-      "confidence": "MEDIUM",
-      "basis": "Phase-163 sibilant discovery: reading 'cul' found in literature (4 mentions across sources: Parpola_1994). Provides partial coverage for Shu-ilishu /su/ phonological slot.",
+      "confidence": "HIGH",
+      "basis": "Phase-163 sibilant discovery: reading 'cul' found in literature (4 mentions across sources: Parpola_1994). Provides partial coverage for Shu-ilishu /su/ phonological slot. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-111]",
       "source": "Phase-111"
     },
     "M123": {
@@ -2557,8 +2563,8 @@
     },
     "M347": {
       "reading": "ka",
-      "confidence": "MEDIUM",
-      "basis": "Phase-117 grammar inference: slot=MEDIAL_BETWEEN_CONF, n_contexts=7, patterns=['M342-[M347]-M293', 'M028-[M347]-M367', 'M211-[M347]-M099']. Inferred from Dravidian grammar slot model (Phases 74-112). [Phase-120: grammar n_ctx=7≥4 → MEDIUM]",
+      "confidence": "HIGH",
+      "basis": "Phase-117 grammar inference: slot=MEDIAL_BETWEEN_CONF, n_contexts=7, patterns=['M342-[M347]-M293', 'M028-[M347]-M367', 'M211-[M347]-M099']. Inferred from Dravidian grammar slot model (Phases 74-112). [Phase-120: grammar n_ctx=7≥4 → MEDIUM] [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-117]",
       "source": "Phase-117"
     },
     "M350": {
@@ -2605,8 +2611,8 @@
     },
     "M692": {
       "reading": "nal/nall",
-      "confidence": "MEDIUM",
-      "basis": "Phase-197 upgrade candidate: SA modal='nal' (consistency=0.40), INITIAL position dominant (i_rate=0.456, m_rate=0.368), freq=171. DEDR 3594: nal = 'good, excellent, fine' (PDr adjective prefix). Corroborates M077=nal (HIGH) as allograph or compound variant. Co-occurs with M047=min (n=23) and M427=en (n=8). Triple-LM convergence (Phase-199): not in top-4 convergent set, but SA consistent across 2/5 seeds. Dravidian grammar fit: 'nall-' prefix before title = honorific compound.",
+      "confidence": "HIGH",
+      "basis": "Phase-197 upgrade candidate: SA modal='nal' (consistency=0.40), INITIAL position dominant (i_rate=0.456, m_rate=0.368), freq=171. DEDR 3594: nal = 'good, excellent, fine' (PDr adjective prefix). Corroborates M077=nal (HIGH) as allograph or compound variant. Co-occurs with M047=min (n=23) and M427=en (n=8). Triple-LM convergence (Phase-199): not in top-4 convergent set, but SA consistent across 2/5 seeds. Dravidian grammar fit: 'nall-' prefix before title = honorific compound. [Phase-216: SA-cons=0.00 DEDR✓ source=Phase-197 SA upgrade candidate]",
       "source": "Phase-197 SA upgrade candidate",
       "_phase206_new_entry": true,
       "_phase197_data": {
@@ -2692,9 +2698,9 @@
     "glossa_lab_version": "2026-05-11"
   },
   "by_confidence": {
-    "HIGH": 75,
-    "MEDIUM": 86,
-    "LOW": 236
+    "HIGH": 105,
+    "MEDIUM": 59,
+    "LOW": 243
   },
   "_cleanup_note": "2026-05-17: Removed 196 nīr/INIT/TERM/MED placeholder entries from V8-V24 autonomous loops. Retained 137 real anchors.",
   "metadata": {

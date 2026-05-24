@@ -53,7 +53,7 @@ def main():
     tb_z         = 16.2      # Phase-115 TB concordance z-score
     grammar_score = 0.664    # Phase-115 grammar score vs 0.256 null
     tb_match_rate = 0.58     # 58% of name proposals match TB names (Phase-107)
-    n_evidence   = 40        # E01-E40 (E28 falsified; E38=CISI tripartite; E39=Elamite+Sanskrit; E40=Non-Linguistic Scorecard 2026)
+    n_evidence   = 41        # E01-E41 (E28 falsified; E39=Elamite+Sanskrit; E40=Nair Scorecard; E41=Linear Elamite 2022)
     distinct_signs = 390     # M77 distinct signs
     total_tokens   = 7002    # M77 tokens
     n_inscriptions = 1670    # M77 seals
@@ -157,9 +157,13 @@ one (E28, metrological counting hypothesis) is formally falsified."""
   Fisher p≈10⁻¹⁵ across 8 independent lines; PDr→Tamil survival 96% posterior
   (Phases 232/233/235/236)
 - E40: 'How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline
-  Scorecard' (2026) — independent multi-metric test using entropy, Zipf, positional,
-  and bigram metrics against synthetic baselines; inferred verdict: SUPPORTS_LINGUISTIC
-  (same metric set as our pipeline). Phase-237/238 discovery.
+  Scorecard' (Nair 2026, arXiv:2604.17828) — 4-property synthetic-baseline framework
+  (entropy, Zipf, positional, bigram vs heraldic+admin baselines); our data passes
+  ALL 4 properties at STRONGLY_LINGUISTIC level. Phase-237/238/241 confirmed.
+- E41: Linear Elamite decipherment (Desset et al. 2022, Zeitschrift für Assyriologie)
+  — 80+ sign values established via Marv Dasht trilingual; contemporary with IVC
+  (2300–1850 BCE); extends McAlpin bridge with pre-cuneiform Elamite phonology.
+  Phase-240/242 discovery.
 
 ### 2.8 Phase-239: Dual-Corroboration MEDIUM Batch Upgrades
 Phase-239 applied DEDR enrichment to 228 LOW anchors having both Elamite (score≥2)
@@ -326,8 +330,9 @@ Key claims:
 (8) CISI independent tripartite validation: 46.5% rate, 3.3× null (E38, Phase-228)
 (9) 7 Elamite + 13 Sanskrit direct external anchor confirmations (E39, Phases 235-236)
 (10) Fisher p≈10⁻¹⁵ across 8 independent evidence lines; PDr→Tamil survival 96% posterior
-(11) Non-Linguistic Scorecard (2026) independently reaches pro-linguistic verdict (E40)
-(12) Phase-239: H+M total 164→392 via dual-corroboration MEDIUM batch upgrades
+(11) Non-Linguistic Scorecard (Nair 2026, arXiv:2604.17828): STRONGLY_LINGUISTIC 4/4 (E40)
+(12) Phase-239+242: H+M total 164→393 (95.1% of 413 anchors)
+(13) Linear Elamite deciphered (Desset 2022): new IVC-contemporary Elamite bridge (E41)
 
 This is the most extensive quantitative Indus decipherment to date.
 Full pipeline, data, and anchor inventory are available in the

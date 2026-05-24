@@ -2628,6 +2628,17 @@ try:
 except Exception as _p196201_exc:  # noqa: BLE001
     logger.warning("Phase-196-201 nodes not registered: %s", _p196201_exc)
 
+# ── Phase-203-205 nodes (E28 falsification, McAlpin extended cognates, Bayesian phylogenetics)
+try:
+    from glossa_lab.experiment_graph_phase203_205 import (
+        _phase203_205_node_defs as _p203205_defs,  # noqa: PLC0415
+    )
+    for _d in _p203205_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-203-205 nodes (E28 falsify, McAlpin cognates, Bayesian phylo)", len(_p203205_defs()))
+except Exception as _p203205_exc:  # noqa: BLE001
+    logger.warning("Phase-203-205 nodes not registered: %s", _p203205_exc)
+
 # ── Graph execution
 
 def _topo_sort(nodes: list[dict], edges: list[dict]) -> list[dict]:

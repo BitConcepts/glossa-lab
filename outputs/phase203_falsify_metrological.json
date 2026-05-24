@@ -1,0 +1,80 @@
+{
+  "phase": 203,
+  "elapsed_s": 0.0,
+  "indus_metrics": {
+    "h1_bits": 5.3841,
+    "zipf_exponent": 0.9785,
+    "bigram_diversity": 0.7763,
+    "positional_entropy": 1.4605,
+    "mean_inscription_length": 3.21,
+    "n_signs_m77": 64,
+    "n_signs_full_inventory": 400
+  },
+  "benchmarks": {
+    "proto_cuneiform_accounting": {
+      "label": "Proto-cuneiform (Metrology)",
+      "system": "METROLOGICAL",
+      "h1_bits": 2.8,
+      "zipf_exp": 0.55,
+      "n_signs": 40,
+      "mean_inscription_len": 4.1,
+      "note": "Nissen 1990; Uruk IV-III accounting tablets"
+    },
+    "linear_a_admin": {
+      "label": "Linear A Administrative (Metrology+)",
+      "system": "TRANSITIONAL",
+      "h1_bits": 4.2,
+      "zipf_exp": 0.88,
+      "n_signs": 85,
+      "mean_inscription_len": 6.3,
+      "note": "Younger 2009; Linear A administrative tablets"
+    },
+    "geez_syllabary": {
+      "label": "Geez Syllabary (Phonetic)",
+      "system": "PHONETIC",
+      "h1_bits": 5.8,
+      "zipf_exp": 1.12,
+      "n_signs": 209,
+      "mean_inscription_len": 11.4,
+      "note": "Phase 193 corpus data (cleaned)"
+    },
+    "linear_b_syllabary": {
+      "label": "Linear B (Syllabary)",
+      "system": "PHONETIC",
+      "h1_bits": 5.98,
+      "zipf_exp": 1.08,
+      "n_signs": 87,
+      "mean_inscription_len": 8.2,
+      "note": "Rao et al. 2009"
+    },
+    "tamil_syllabary": {
+      "label": "Tamil Syllabary (Phonetic)",
+      "system": "PHONETIC",
+      "h1_bits": 5.3,
+      "zipf_exp": 1.05,
+      "n_signs": 247,
+      "mean_inscription_len": 9.8,
+      "note": "DEDR corpus approximation"
+    },
+    "chinese_logographic": {
+      "label": "Classical Chinese (Logographic)",
+      "system": "LOGOGRAPHIC",
+      "h1_bits": 9.65,
+      "zipf_exp": 0.95,
+      "n_signs": 3500,
+      "mean_inscription_len": 21.0,
+      "note": "Unicode frequency data"
+    }
+  },
+  "classification_m77": "PHONETIC",
+  "classification_full": "PHONETIC",
+  "e28_tests_passed": 7,
+  "e28_tests_total": 7,
+  "e28_verdict": "E28 FALSIFIED: Indus corpus is PHONETIC/SYLLABIC, not metrological. 7/7 falsification tests passed. H1=5.384 bits (metrological max ~3.5), 400 signs (metrology max ~60), Zipf=0.979 (phonetic range). The 'Ledger of Meluhha' hypothesis is statistically incompatible with the corpus.",
+  "scorecard_update": {
+    "E28": "FALSIFIED",
+    "confidence": 1.0,
+    "evidence": "7/7 statistical tests reject metrological hypothesis"
+  },
+  "verdict": "E28 FALSIFIED: Indus corpus is PHONETIC/SYLLABIC, not metrological. 7/7 falsification tests passed. H1=5.384 bits (metrological max ~3.5), 400 signs (metrology max ~60), Zipf=0.979 (phonetic range). The 'Ledger of Meluhha' hypothesis is statistically incompatible with the corpus."
+}

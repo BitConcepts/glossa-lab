@@ -49,14 +49,45 @@ _CORPUS_CACHE: list[dict] | None = None
 
 
 def _load_corpus() -> list[dict]:
-    """Load the CISI JSON corpus from disk. Cached after first call."""
+    """Load the CISI JSON corpus from disk. Cached after first call.
+
+    Handles two formats:
+      - Legacy (original mayig): top-level list of {id, graphemes: [{id}]}
+      - Phase-44 rebuild: top-level dict with {inscriptions: [{id, signs: [...]}]}
+    """
     global _CORPUS_CACHE  # noqa: PLW0603
     if _CORPUS_CACHE is not None:
         return _CORPUS_CACHE
-    for p in _CORPUS_FILE_CANDIDATES:
+
+    # Also check the path inside glossa_lab/data/ (where Phase 44 wrote it)
+    extra_candidates = [
+        Path(__file__).resolve().parent / "indus_cisi_corpus.json",
+    ]
+    for p in _CORPUS_FILE_CANDIDATES + extra_candidates:
         if p.exists():
-            _CORPUS_CACHE = json.loads(p.read_text("utf-8"))
+            raw = json.loads(p.read_text("utf-8"))
+            # Phase-44 format: dict with 'inscriptions' key
+            if isinstance(raw, dict) and "inscriptions" in raw:
+                inscs = raw["inscriptions"]
+                # Normalise to legacy format: add 'graphemes' from 'signs'
+                normalised: list[dict] = []
+                for rec in inscs:
+                    if not isinstance(rec, dict):
+                        continue
+                    signs_raw = rec.get("signs") or rec.get("graphemes") or []
+                    if signs_raw and isinstance(signs_raw[0], str):
+                        # signs is a flat list of strings like ["P121", "P202"]
+                        graphemes = [{"id": s} for s in signs_raw if s]
+                    else:
+                        # already in legacy {"id": ...} form
+                        graphemes = signs_raw
+                    normalised.append({**rec, "graphemes": graphemes})
+                _CORPUS_CACHE = normalised
+            else:
+                # Legacy format: already a list of dicts with 'graphemes'
+                _CORPUS_CACHE = raw if isinstance(raw, list) else []
             return _CORPUS_CACHE
+
     raise FileNotFoundError(
         "indus_cisi_corpus.json not found. "
         "Run backend/scripts/download_indus_cisi.py to download it."

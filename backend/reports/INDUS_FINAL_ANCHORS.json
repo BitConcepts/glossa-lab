@@ -756,8 +756,12 @@
     },
     "M239": {
       "reading": "il",
-      "confidence": "LOW",
-      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+      "confidence": "MEDIUM",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment",
+      "dedr": "0511",
+      "dedr_source": "phase242_DEDR_injection",
+      "phase_upgraded": 242,
+      "upgrade_basis": "DEDR 0511 injected via Phase-242 Tamil reading lookup. SA confirmation still needed."
     },
     "M223": {
       "reading": "muḷ",

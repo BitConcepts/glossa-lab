@@ -1,0 +1,682 @@
+{
+  "phase": 218,
+  "n_hm_anchors": 164,
+  "n_sites": 9,
+  "total_seals": 1670,
+  "total_fully_decoded": 1165,
+  "pct_fully_decoded_overall": 0.6976,
+  "site_profiles": [
+    {
+      "site": "Mohenjo-daro",
+      "n_seals": 606,
+      "n_fully_decoded": 417,
+      "n_partially_decoded": 189,
+      "pct_fully": 0.688,
+      "pct_partially": 0.312,
+      "total_decoded_tokens": 2299,
+      "field_profile": {
+        "ANIMAL_CLAN": 0.0492,
+        "TITLE": 0.1862,
+        "CASE_SUFFIX": 0.3632,
+        "PLACE": 0.0274,
+        "NUMERAL": 0.06,
+        "PERSONAL_NAME": 0.0674,
+        "PHONETIC_SYLLABLE": 0.067
+      },
+      "top_10_readings": [
+        {
+          "reading": "ay/ā",
+          "count": 208
+        },
+        {
+          "reading": "iN/in (genitive of)",
+          "count": 135
+        },
+        {
+          "reading": "an/aṇ",
+          "count": 133
+        },
+        {
+          "reading": "kol/koḷ",
+          "count": 132
+        },
+        {
+          "reading": "ā/āl",
+          "count": 98
+        },
+        {
+          "reading": "kol",
+          "count": 89
+        },
+        {
+          "reading": "ta",
+          "count": 89
+        },
+        {
+          "reading": "ēḷ/eḷ",
+          "count": 83
+        },
+        {
+          "reading": "ka/kaṇ",
+          "count": 75
+        },
+        {
+          "reading": "am/neuter",
+          "count": 70
+        }
+      ]
+    },
+    {
+      "site": "Harappa",
+      "n_seals": 492,
+      "n_fully_decoded": 346,
+      "n_partially_decoded": 146,
+      "pct_fully": 0.703,
+      "pct_partially": 0.297,
+      "total_decoded_tokens": 1898,
+      "field_profile": {
+        "ANIMAL_CLAN": 0.0448,
+        "TITLE": 0.1823,
+        "CASE_SUFFIX": 0.363,
+        "PLACE": 0.0285,
+        "NUMERAL": 0.0585,
+        "PERSONAL_NAME": 0.0695,
+        "PHONETIC_SYLLABLE": 0.0669
+      },
+      "top_10_readings": [
+        {
+          "reading": "ay/ā",
+          "count": 186
+        },
+        {
+          "reading": "kol/koḷ",
+          "count": 116
+        },
+        {
+          "reading": "iN/in (genitive of)",
+          "count": 116
+        },
+        {
+          "reading": "an/aṇ",
+          "count": 103
+        },
+        {
+          "reading": "kol",
+          "count": 79
+        },
+        {
+          "reading": "ta",
+          "count": 76
+        },
+        {
+          "reading": "il/iḷ",
+          "count": 66
+        },
+        {
+          "reading": "ā/āl",
+          "count": 66
+        },
+        {
+          "reading": "ēḷ/eḷ",
+          "count": 65
+        },
+        {
+          "reading": "kuTam",
+          "count": 56
+        }
+      ]
+    },
+    {
+      "site": "Lothal",
+      "n_seals": 124,
+      "n_fully_decoded": 93,
+      "n_partially_decoded": 31,
+      "pct_fully": 0.75,
+      "pct_partially": 0.25,
+      "total_decoded_tokens": 469,
+      "field_profile": {
+        "ANIMAL_CLAN": 0.0512,
+        "TITLE": 0.209,
+        "CASE_SUFFIX": 0.3795,
+        "PLACE": 0.0235,
+        "NUMERAL": 0.0512,
+        "PERSONAL_NAME": 0.0597,
+        "PHONETIC_SYLLABLE": 0.0746
+      },
+      "top_10_readings": [
+        {
+          "reading": "ay/ā",
+          "count": 48
+        },
+        {
+          "reading": "kol/koḷ",
+          "count": 35
+        },
+        {
+          "reading": "an/aṇ",
+          "count": 29
+        },
+        {
+          "reading": "iN/in (genitive of)",
+          "count": 29
+        },
+        {
+          "reading": "ta",
+          "count": 22
+        },
+        {
+          "reading": "kol",
+          "count": 21
+        },
+        {
+          "reading": "ā/āl",
+          "count": 17
+        },
+        {
+          "reading": "ēḷ/eḷ",
+          "count": 17
+        },
+        {
+          "reading": "il/iḷ",
+          "count": 16
+        },
+        {
+          "reading": "am/neuter",
+          "count": 15
+        }
+      ]
+    },
+    {
+      "site": "Kalibangan",
+      "n_seals": 110,
+      "n_fully_decoded": 62,
+      "n_partially_decoded": 48,
+      "pct_fully": 0.564,
+      "pct_partially": 0.436,
+      "total_decoded_tokens": 428,
+      "field_profile": {
+        "ANIMAL_CLAN": 0.0234,
+        "TITLE": 0.1939,
+        "CASE_SUFFIX": 0.3388,
+        "PLACE": 0.021,
+        "NUMERAL": 0.0631,
+        "PERSONAL_NAME": 0.0771,
+        "PHONETIC_SYLLABLE": 0.0888
+      },
+      "top_10_readings": [
+        {
+          "reading": "ay/ā",
+          "count": 41
+        },
+        {
+          "reading": "kol/koḷ",
+          "count": 31
+        },
+        {
+          "reading": "iN/in (genitive of)",
+          "count": 29
+        },
+        {
+          "reading": "an/aṇ",
+          "count": 25
+        },
+        {
+          "reading": "ta",
+          "count": 18
+        },
+        {
+          "reading": "kol",
+          "count": 17
+        },
+        {
+          "reading": "ēḷ/eḷ",
+          "count": 14
+        },
+        {
+          "reading": "oṉṟu/1",
+          "count": 13
+        },
+        {
+          "reading": "mu/muṉ",
+          "count": 13
+        },
+        {
+          "reading": "il/iḷ",
+          "count": 13
+        }
+      ]
+    },
+    {
+      "site": "Dholavira",
+      "n_seals": 106,
+      "n_fully_decoded": 77,
+      "n_partially_decoded": 29,
+      "pct_fully": 0.726,
+      "pct_partially": 0.274,
+      "total_decoded_tokens": 401,
+      "field_profile": {
+        "ANIMAL_CLAN": 0.0599,
+        "TITLE": 0.1845,
+        "CASE_SUFFIX": 0.3766,
+        "PLACE": 0.0324,
+        "NUMERAL": 0.0549,
+        "PERSONAL_NAME": 0.0673,
+        "PHONETIC_SYLLABLE": 0.0698
+      },
+      "top_10_readings": [
+        {
+          "reading": "ay/ā",
+          "count": 31
+        },
+        {
+          "reading": "kol/koḷ",
+          "count": 25
+        },
+        {
+          "reading": "iN/in (genitive of)",
+          "count": 23
+        },
+        {
+          "reading": "kol",
+          "count": 22
+        },
+        {
+          "reading": "an/aṇ",
+          "count": 21
+        },
+        {
+          "reading": "il/iḷ",
+          "count": 19
+        },
+        {
+          "reading": "ēḷ/eḷ",
+          "count": 18
+        },
+        {
+          "reading": "ka/kaṇ",
+          "count": 16
+        },
+        {
+          "reading": "tu/tū",
+          "count": 15
+        },
+        {
+          "reading": "ta",
+          "count": 15
+        }
+      ]
+    },
+    {
+      "site": "Chanhu-daro",
+      "n_seals": 78,
+      "n_fully_decoded": 58,
+      "n_partially_decoded": 20,
+      "pct_fully": 0.744,
+      "pct_partially": 0.256,
+      "total_decoded_tokens": 284,
+      "field_profile": {
+        "ANIMAL_CLAN": 0.0423,
+        "TITLE": 0.1585,
+        "CASE_SUFFIX": 0.412,
+        "PLACE": 0.0317,
+        "NUMERAL": 0.0352,
+        "PERSONAL_NAME": 0.0599,
+        "PHONETIC_SYLLABLE": 0.0669
+      },
+      "top_10_readings": [
+        {
+          "reading": "iN/in (genitive of)",
+          "count": 26
+        },
+        {
+          "reading": "ay/ā",
+          "count": 20
+        },
+        {
+          "reading": "an/aṇ",
+          "count": 19
+        },
+        {
+          "reading": "kol",
+          "count": 13
+        },
+        {
+          "reading": "am/neuter",
+          "count": 13
+        },
+        {
+          "reading": "kol/koḷ",
+          "count": 13
+        },
+        {
+          "reading": "ta",
+          "count": 11
+        },
+        {
+          "reading": "ka/kaṇ",
+          "count": 10
+        },
+        {
+          "reading": "tu/tū",
+          "count": 9
+        },
+        {
+          "reading": "ūr",
+          "count": 9
+        }
+      ]
+    },
+    {
+      "site": "Surkotada",
+      "n_seals": 61,
+      "n_fully_decoded": 48,
+      "n_partially_decoded": 13,
+      "pct_fully": 0.787,
+      "pct_partially": 0.213,
+      "total_decoded_tokens": 235,
+      "field_profile": {
+        "ANIMAL_CLAN": 0.0426,
+        "TITLE": 0.1404,
+        "CASE_SUFFIX": 0.4468,
+        "PLACE": 0.017,
+        "NUMERAL": 0.0511,
+        "PERSONAL_NAME": 0.0426,
+        "PHONETIC_SYLLABLE": 0.0809
+      },
+      "top_10_readings": [
+        {
+          "reading": "ay/ā",
+          "count": 20
+        },
+        {
+          "reading": "iN/in (genitive of)",
+          "count": 17
+        },
+        {
+          "reading": "an/aṇ",
+          "count": 15
+        },
+        {
+          "reading": "kol/koḷ",
+          "count": 14
+        },
+        {
+          "reading": "ta",
+          "count": 12
+        },
+        {
+          "reading": "ka/kaṇ",
+          "count": 11
+        },
+        {
+          "reading": "am/neuter",
+          "count": 11
+        },
+        {
+          "reading": "iṉ/locative",
+          "count": 10
+        },
+        {
+          "reading": "il/iḷ",
+          "count": 10
+        },
+        {
+          "reading": "tu/tū",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "site": "Banawali",
+      "n_seals": 60,
+      "n_fully_decoded": 43,
+      "n_partially_decoded": 17,
+      "pct_fully": 0.717,
+      "pct_partially": 0.283,
+      "total_decoded_tokens": 235,
+      "field_profile": {
+        "ANIMAL_CLAN": 0.034,
+        "TITLE": 0.2,
+        "CASE_SUFFIX": 0.3362,
+        "PLACE": 0.034,
+        "NUMERAL": 0.0553,
+        "PERSONAL_NAME": 0.0766,
+        "PHONETIC_SYLLABLE": 0.0511
+      },
+      "top_10_readings": [
+        {
+          "reading": "kol/koḷ",
+          "count": 18
+        },
+        {
+          "reading": "ay/ā",
+          "count": 18
+        },
+        {
+          "reading": "iN/in (genitive of)",
+          "count": 17
+        },
+        {
+          "reading": "ā/āl",
+          "count": 12
+        },
+        {
+          "reading": "kol",
+          "count": 10
+        },
+        {
+          "reading": "ēḷ/eḷ",
+          "count": 9
+        },
+        {
+          "reading": "an/aṇ",
+          "count": 9
+        },
+        {
+          "reading": "pū/puḷ",
+          "count": 9
+        },
+        {
+          "reading": "ūr",
+          "count": 8
+        },
+        {
+          "reading": "am/neuter",
+          "count": 8
+        }
+      ]
+    },
+    {
+      "site": "Rakhigarhi",
+      "n_seals": 33,
+      "n_fully_decoded": 21,
+      "n_partially_decoded": 12,
+      "pct_fully": 0.636,
+      "pct_partially": 0.364,
+      "total_decoded_tokens": 120,
+      "field_profile": {
+        "ANIMAL_CLAN": 0.0667,
+        "TITLE": 0.1583,
+        "CASE_SUFFIX": 0.3667,
+        "PLACE": 0.0,
+        "NUMERAL": 0.0667,
+        "PERSONAL_NAME": 0.0583,
+        "PHONETIC_SYLLABLE": 0.0833
+      },
+      "top_10_readings": [
+        {
+          "reading": "ay/ā",
+          "count": 12
+        },
+        {
+          "reading": "iN/in (genitive of)",
+          "count": 8
+        },
+        {
+          "reading": "ā/āl",
+          "count": 7
+        },
+        {
+          "reading": "tu/tū",
+          "count": 7
+        },
+        {
+          "reading": "ēḷ/eḷ",
+          "count": 6
+        },
+        {
+          "reading": "am/neuter",
+          "count": 6
+        },
+        {
+          "reading": "kuTam",
+          "count": 5
+        },
+        {
+          "reading": "kol/koḷ",
+          "count": 5
+        },
+        {
+          "reading": "ta",
+          "count": 5
+        },
+        {
+          "reading": "pū/puḷ",
+          "count": 3
+        }
+      ]
+    }
+  ],
+  "harappa_vs_mohenjo_comparison": {
+    "ANIMAL_CLAN": {
+      "harappa": 0.0448,
+      "mohenjo_daro": 0.0492,
+      "diff": -0.0044,
+      "dominant": "Mohenjo-daro"
+    },
+    "TITLE": {
+      "harappa": 0.1823,
+      "mohenjo_daro": 0.1862,
+      "diff": -0.0039,
+      "dominant": "Mohenjo-daro"
+    },
+    "CASE_SUFFIX": {
+      "harappa": 0.363,
+      "mohenjo_daro": 0.3632,
+      "diff": -0.0002,
+      "dominant": "Mohenjo-daro"
+    },
+    "PLACE": {
+      "harappa": 0.0285,
+      "mohenjo_daro": 0.0274,
+      "diff": 0.0011,
+      "dominant": "Harappa"
+    },
+    "NUMERAL": {
+      "harappa": 0.0585,
+      "mohenjo_daro": 0.06,
+      "diff": -0.0015,
+      "dominant": "Mohenjo-daro"
+    },
+    "PERSONAL_NAME": {
+      "harappa": 0.0695,
+      "mohenjo_daro": 0.0674,
+      "diff": 0.0021,
+      "dominant": "Harappa"
+    },
+    "PHONETIC_SYLLABLE": {
+      "harappa": 0.0669,
+      "mohenjo_daro": 0.067,
+      "diff": -0.0001,
+      "dominant": "Mohenjo-daro"
+    }
+  },
+  "semantic_field_definitions": {
+    "ANIMAL_CLAN": [
+      "kōṭṭāṉ",
+      "yānai",
+      "kaḷiṟu",
+      "nakaram",
+      "erutu",
+      "āṉai",
+      "erumai",
+      "māṭu",
+      "vēṅkai",
+      "maṟi",
+      "puli",
+      "kāṇṭāmirukam",
+      "mutalai"
+    ],
+    "TITLE": [
+      "kai",
+      "ā/āl",
+      "kol/koḷ",
+      "kol",
+      "kō",
+      "kōṉ",
+      "māṟ",
+      "tiru",
+      "nal",
+      "nall",
+      "nēr",
+      "pēr",
+      "kēḷ"
+    ],
+    "CASE_SUFFIX": [
+      "ka/kaṇ",
+      "tu/tū",
+      "il/iḷ",
+      "iN/in (genitive of)",
+      "ōṭu/comitative",
+      "ay/ā",
+      "am/neuter",
+      "iṉ/locative",
+      "an/aṇ"
+    ],
+    "PLACE": [
+      "ūr"
+    ],
+    "NUMERAL": [
+      "oṉṟu/1",
+      "ēḷ/eḷ"
+    ],
+    "PERSONAL_NAME": [
+      "aṇi",
+      "nal/nall",
+      "pū/puḷ",
+      "nē",
+      "kuṟi",
+      "tōḷ",
+      "inci",
+      "mu/muṉ",
+      "taṇ",
+      "mā"
+    ],
+    "PHONETIC_SYLLABLE": [
+      "mi",
+      "ka",
+      "kol",
+      "pa",
+      "ve",
+      "kul",
+      "na",
+      "miN4",
+      "miṭ",
+      "ma",
+      "ni",
+      "pul",
+      "taṇ",
+      "cul",
+      "vī",
+      "la",
+      "va",
+      "ya",
+      "miN3",
+      "nē",
+      "vi",
+      "mu",
+      "ta",
+      "ra"
+    ]
+  }
+}

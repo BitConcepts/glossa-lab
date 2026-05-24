@@ -6,7 +6,7 @@ platforms:
 - linux
 - macos
 language: python
-spec_version: 0.11.6
+spec_version: 0.11.7
 description: Imported project (119 files detected)
 services: false
 shell_wrappers: false

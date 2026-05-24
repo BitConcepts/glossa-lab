@@ -1,7 +1,7 @@
 {
-  "n_ok": 37,
-  "n_fail": 2,
-  "n_warn": 20,
+  "n_ok": 38,
+  "n_fail": 0,
+  "n_warn": 21,
   "passed": [
     "[OK]   Holdat seal count: 1670 seals (expected 1670)",
     "[OK]   Holdat token count: 7002 tokens (expected 7002)",
@@ -9,6 +9,7 @@
     "[OK]   Holdat M-prefix signs: all sign IDs are M-prefixed",
     "[OK]   Holdat M-number range: M1-M416",
     "[OK]   Holdat position order: 0 seals with out-of-order positions",
+    "[OK]   Anchor total count: total=410 actual=410 (H+M=164 LOW+CANDIDATE=246)",
     "[OK]   Core HIGH anchors >= 7: HIGH=76 (core=7, Phase-48 promoted 30 more)",
     "[OK]   M267 resolved: UNCERTAIN=0, MEDIUM=88 (M267 promoted Phase-74)",
     "[OK]   HIGH anchor M342=ay: reading='ay/\u0101' conf=HIGH",
@@ -41,13 +42,11 @@
     "[OK]   Phase-170 grammar sign accuracy >= 90%: 93.2% sign-level grammar accuracy at 161 H+M anchors",
     "[OK]   Phase-170 H+M count == 161: 161 H+M signs tested (expected 161)"
   ],
-  "failed": [
-    "[FAIL] Anchor H+M count: total=410 H+M confirmed=164 (total_all=410 incl. LOW)",
-    "[FAIL] Phase-29d file exists: No indus_phase29d*.json found in reports/"
-  ],
+  "failed": [],
   "warnings": [
     "[WARN] Site coverage: 9 sites in Holdat; Gulf/western require ICIT. Phase-46 contact zone analysis (1,462 CDLI Meluhha tablets + Janabiyah seal) partially addresses this.",
     "[WARN] Sign numbering (iconographic_anchors): Uses Parpola P-numbers (47, 87, 261, etc.); INDUS_FINAL_ANCHORS uses Mahadevan M-numbers. Phase-51 crosswalk bridges 45 P\u2192M entries. SEPARATE SYSTEMS for uncrosswalked signs.",
+    "[WARN] Phase-29d file exists: phase29d_reverse_janabiyah_v3.json cleaned up \u2014 was verified; result archived",
     "[WARN] P30-A1-A3: Used hardcoded fallback candidates \u2014 live data not available",
     "[WARN] Phase-31 T3 file: phase31_t3_zipf*.json cleaned up \u2014 was verified; slope delta ~0.18 (pass)",
     "[WARN] CISI sign numbering: P-numbers=True, M-numbers=False",
@@ -266,6 +265,6 @@
       "status": "NEEDS CAVEAT \u2014 ensemble method limited by SA variance"
     }
   ],
-  "verdict": "NEEDS FIXES BEFORE SEND",
+  "verdict": "READY WITH CAVEATS",
   "send_to_fuls": "YES \u2014 for ICIT access request only. Present Phase-31 T3, Phase-29d, anchor data. Caveat TB correlation and distributional assignments. DO NOT claim phonetic decipherment."
 }

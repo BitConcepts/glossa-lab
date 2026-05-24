@@ -1167,3 +1167,9 @@ Next step:
 - **Type**: migration
 - **Status**: complete
 - **Chain hash**: `a7840bbb66786410...`
+
+## 2026-05-24T11:08 — specsmith migration: 0.11.6 → 0.11.7
+- **Author**: specsmith
+- **Type**: migration
+- **Status**: complete
+- **Chain hash**: `6a474dabc5246400...`

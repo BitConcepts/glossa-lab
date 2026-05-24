@@ -53,7 +53,7 @@ def main():
     tb_z         = 16.2      # Phase-115 TB concordance z-score
     grammar_score = 0.664    # Phase-115 grammar score vs 0.256 null
     tb_match_rate = 0.58     # 58% of name proposals match TB names (Phase-107)
-    n_evidence   = 37        # E01-E37 (E28 falsified; E36=CISI; E37=Courtallam)
+    n_evidence   = 38        # E01-E38 (E28 falsified; E36=CISI; E37=Courtallam; E38=CISI tripartite)
     distinct_signs = 390     # M77 distinct signs
     total_tokens   = 7002    # M77 tokens
     n_inscriptions = 1670    # M77 seals
@@ -79,12 +79,14 @@ Grammar slot assignments are statistically significant (permutation test \
 p={perm_p:.4f}; grammar score {grammar_score:.3f} vs null 0.256). Proposed \
 personal name readings match Tamil-Brahmi Sangam-era name roots at {tb_match_rate:.0%} \
 (z={tb_z:.1f}, p<0.0001). Of {total_seals:,} seals, {n_fully:,} ({pct_fully:.0%}) \
-are fully decoded at H+M confidence. Site-stratified analysis across {n_sites} \
-sites reveals distinct semantic field profiles. Thirty-seven evidence items \
-(E01–E35) support the Proto-Dravidian hypothesis; one item (E28, metrological \
-hypothesis) is formally falsified by information-theoretic tests. This work \
+are fully decoded at H+M confidence. Critically, the tripartite grammar model \
+(I→M→T structure) is independently validated on the CISI corpus (Parpola 1982, \
+178 inscriptions): 46.5% tripartite rate vs 14.2% null (3.3× lift, Phase-228) — \
+a cross-corpus confirmation using no Holdat data. Site-stratified analysis across \
+{n_sites} sites reveals distinct semantic field profiles. Thirty-eight evidence \
+items (E01–E38; E28 falsified) support the Proto-Dravidian hypothesis. This work \
 constitutes the most comprehensive quantitative decipherment attempt to date, \
-with a fully reproducible open pipeline. E37 demonstrates that orthographic-computational methods succeed where traditional epigraphy fails (Courtallam Hills cave inscription, Tamil Nadu, decoded 2026 after 100 years). ICIT cross-validation remains pending."""
+with a fully reproducible open pipeline. ICIT cross-validation remains pending."""
 
     INTRO = """\
 ## 1. Introduction
@@ -162,15 +164,29 @@ one (E28, metrological counting hypothesis) is formally falsified."""
 - Independent replication: V3 corpus (Firestore, 3,137 inscriptions) shows
   Dravidian advantage +0.484 log-units/token vs Sanskrit
 
-### 3.3 Grammar Structure
+### 3.3 Grammar Structure (Holdat Corpus)
 Dravidian suffix model:
   [ANIMAL-CLAN]-[PERSONAL-NAME]-[TITLE/FUNCTION]-[CASE-SUFFIX]
 
 Permutation test on grammar slot assignments: p={perm_p:.4f} (n=5,000)
 Grammar score: {grammar_score:.3f} vs null 0.256 ± 0.148
-Tripartite (I→M→T) formula rate: 35.5% of 3+ sign inscriptions vs 0.6% null (59× lift)
+Tripartite (I→M→T) formula rate: 35.5% of 3+ sign Holdat inscriptions vs 0.6% null (59× lift)
 
-### 3.4 Key Sign Resolutions
+### 3.4 CISI Cross-Corpus Grammar Validation (Phase-228 — LANDMARK)
+The tripartite grammar test was independently applied to the 178 CISI inscriptions
+(Parpola 1982 numbering, entirely independent of Holdat/M77). Of 170 eligible
+inscriptions (3+ signs):
+
+  Tripartite rate (CISI): 46.5% (79/170) vs null 14.2% → 3.3× lift
+  Holdat comparison: 35.5% rate (59× null lift, longer sequences)
+
+CISI null is higher than Holdat (14.2% vs 0.6%) because CISI inscriptions are
+monographically selected and longer on average — yet the model still achieves 3.3×
+confirmation. This constitutes **independent cross-corpus validation** of the
+Dravidian suffix grammar using zero Holdat data, making it evidence item E38.
+Sample CISI tripartite: [P324][P117][P210][P122][P385] → INITIAL·MEDIAL·MEDIAL·MEDIAL·TERMINAL.
+
+### 3.5 Key Sign Resolutions
 HIGH-confidence examples:
   M342 = ay/ā    (DEDR 0206, oblique/genitive marker)
   M176 = an/aṇ   (DEDR 0149, masculine personal suffix)
@@ -185,17 +201,17 @@ MEDIUM-confidence examples:
   M267 = iN/in   (genitive particle; title formula [M267][M099])
   M047 = min/mīn (fish = mīn; MEDIAL phonetic, NOT Parpola's star classifier)
 
-### 3.5 M293 Resolution
+### 3.6 M293 Resolution
 M293 (freq=247) appears across ALL motif types (unicorn 127×, zebu 72×,
 elephant 37×, rhinoceros 25×). INITIAL rate = 6.9% — incompatible with
 classifier function. Reading: 'ta' (DEDR 3003, personal name component),
 contradicting Parpola (1994) 'mīn/min' assignment.
 
-### 3.6 Seal Decode Statistics
+### 3.7 Seal Decode Statistics
 - {n_fully:,}/{total_seals:,} seals ({pct_fully:.0%}) fully decoded at H+M confidence
 - All {total_seals:,} seals have ≥1 decoded sign (0 zero-decoded)
 
-### 3.7 Site-Stratified Semantics
+### 3.8 Site-Stratified Semantics
 Across {n_sites} sites, dominant field profiles: CASE_SUFFIX (30–35%),
 PHONETIC_SYLLABLE (25–30%), TITLE (12–15%), ANIMAL_CLAN (4–5%).
 Harappa and Mohenjo-daro show broadly comparable profiles (Jaccard=0.602
@@ -258,6 +274,7 @@ Key claims:
 (5) Dravidian advantage confirmed on two independent corpora
 (6) 97 CISI-exclusive P-signs identified as expansion frontier (E36)
 (7) Computational methods validated by Courtallam decipherment precedent (E37)
+(8) CISI independent tripartite validation: 46.5% rate, 3.3× null (E38, Phase-228)
 
 This is the most extensive quantitative Indus decipherment to date.
 Full pipeline, data, and anchor inventory are available in the
@@ -302,6 +319,10 @@ ICIT corpus cross-validation remains the primary open task."""
         "tb_z_score": tb_z,
         "tb_match_rate": tb_match_rate,
         "n_evidence_items": n_evidence,
+        "phase228_cisi_tripartite_rate": 0.4647,
+        "phase228_cisi_null_rate": 0.1418,
+        "phase228_cisi_lift": 3.28,
+        "phase229_m122_verdict": "UNCERTAIN (SA modal=kayam, cons=0.20)",
         "paper_text": PAPER,
     }
     OUT_JSON.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")

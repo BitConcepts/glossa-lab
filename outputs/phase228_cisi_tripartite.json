@@ -1,0 +1,188 @@
+{
+  "phase": 228,
+  "n_inscriptions": 178,
+  "n_eligible_3plus": 170,
+  "n_tripartite": 79,
+  "formula_rate": 0.4647,
+  "null_rate": 0.1418,
+  "lift_vs_null": 3.28,
+  "positional_profiles": {
+    "n_initial": 16,
+    "n_terminal": 42,
+    "n_medial": 123,
+    "initial_signs": [
+      "P324",
+      "P013",
+      "P341",
+      "P000",
+      "P217",
+      "P238",
+      "P089",
+      "P301",
+      "P051",
+      "P001",
+      "P098",
+      "P280",
+      "P366",
+      "P004",
+      "P099",
+      "P022"
+    ],
+    "terminal_signs": [
+      "P385",
+      "P108",
+      "P094",
+      "P256",
+      "P378",
+      "P065",
+      "P327",
+      "P346",
+      "P232",
+      "P076",
+      "P095",
+      "P041",
+      "P007",
+      "P307",
+      "P360",
+      "P296",
+      "P258",
+      "P246",
+      "P223",
+      "P047",
+      "P023",
+      "P226",
+      "P247",
+      "P180",
+      "P070",
+      "P020",
+      "P253",
+      "P038",
+      "P359",
+      "P071",
+      "P254",
+      "P156",
+      "P044",
+      "P293",
+      "P032",
+      "P294",
+      "P231",
+      "P393",
+      "P265",
+      "P290",
+      "P255",
+      "P207"
+    ]
+  },
+  "holdat_comparison": {
+    "holdat_formula_rate": 0.355,
+    "holdat_lift": 59.0,
+    "cisi_formula_rate": 0.4647,
+    "cisi_lift": 3.28
+  },
+  "verdict": "SUPPORTED (3× null). CISI confirms tripartite grammar independently.",
+  "sample_inscriptions": [
+    {
+      "seq": [
+        "P324",
+        "P096",
+        "P062",
+        "P060",
+        "P120",
+        "P256"
+      ],
+      "slots": [
+        "INITIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "TERMINAL"
+      ]
+    },
+    {
+      "seq": [
+        "P086",
+        "P352",
+        "P011",
+        "P324",
+        "P154",
+        "P009",
+        "P154",
+        "P175",
+        "P062",
+        "P122",
+        "P385"
+      ],
+      "slots": [
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "INITIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "TERMINAL"
+      ]
+    },
+    {
+      "seq": [
+        "P324",
+        "P086",
+        "P276",
+        "P058",
+        "P122",
+        "P202",
+        "P386",
+        "P182",
+        "P108"
+      ],
+      "slots": [
+        "INITIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "TERMINAL"
+      ]
+    },
+    {
+      "seq": [
+        "P324",
+        "P117",
+        "P210",
+        "P122",
+        "P385"
+      ],
+      "slots": [
+        "INITIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "TERMINAL"
+      ]
+    },
+    {
+      "seq": [
+        "P013",
+        "P324",
+        "P194",
+        "P122",
+        "P385"
+      ],
+      "slots": [
+        "INITIAL",
+        "INITIAL",
+        "MEDIAL",
+        "MEDIAL",
+        "TERMINAL"
+      ]
+    }
+  ],
+  "significance": "LANDMARK: If CISI tripartite rate is significantly above null (>3×), this constitutes independent cross-corpus validation of the Dravidian suffix grammar model — a finding publishable in the arXiv paper."
+}

@@ -1,0 +1,510 @@
+{
+  "phase": 240,
+  "elapsed_s": 104.0,
+  "total_papers_fetched": 2442,
+  "unlock_analysis": {
+    "U1_NONLINGUISTIC_SCORECARD": {
+      "n": 3,
+      "signal": "DATA_AVAILABLE",
+      "top_papers": [
+        {
+          "title": "How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline Scorecard",
+          "year": 2026,
+          "source": "openalex",
+          "id": "https://openalex.org/W7155245181"
+        },
+        {
+          "title": "Modelling the possible archaeological past(s): Agent-based modelling of Harappan",
+          "year": 2026,
+          "source": "openalex",
+          "id": "https://openalex.org/W7128590305"
+        },
+        {
+          "title": "How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline Scorecard",
+          "year": 2026,
+          "source": "arxiv",
+          "id": "http://arxiv.org/abs/2604.17828v1"
+        }
+      ]
+    },
+    "U2_AI_EPIGRAPHY": {
+      "n": 17,
+      "signal": "DATA_AVAILABLE",
+      "top_papers": [
+        {
+          "title": "Crossing the Indus Threshold \n&lt;div&gt;\n A Falsifiable, Corpus-Wide Functional",
+          "year": 2026,
+          "source": "crossref",
+          "id": "10.2139/ssrn.6080446"
+        },
+        {
+          "title": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Va",
+          "year": 2025,
+          "source": "openalex",
+          "id": "https://openalex.org/W4416904785"
+        },
+        {
+          "title": "ChatGPT\u2019s Expanding Horizons and Transformative Impact Across Domains: A Critica",
+          "year": 2025,
+          "source": "openalex",
+          "id": "https://openalex.org/W4413911934"
+        },
+        {
+          "title": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to ",
+          "year": 2025,
+          "source": "openalex",
+          "id": "https://openalex.org/W4407366414"
+        },
+        {
+          "title": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Va",
+          "year": 2025,
+          "source": "crossref",
+          "id": "10.1145/3768633.3770145"
+        },
+        {
+          "title": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to ",
+          "year": 2025,
+          "source": "crossref",
+          "id": "10.20944/preprints202502.0699.v1"
+        }
+      ]
+    },
+    "U3_ICIT_FULS": {
+      "n": 8,
+      "signal": "DATA_AVAILABLE",
+      "top_papers": [
+        {
+          "title": "A scientometric analysis of reviews on the Internet of Things",
+          "year": 2025,
+          "source": "openalex",
+          "id": "https://openalex.org/W4409573471"
+        },
+        {
+          "title": "Impact of EU non-financial reporting regulation on Spanish companies\u2019 environmen",
+          "year": 2025,
+          "source": "openalex",
+          "id": "https://openalex.org/W4407815846"
+        },
+        {
+          "title": "Characterizing Asymmetries in the TenTen Corpus Family Membership: An Implicit H",
+          "year": 2025,
+          "source": "crossref",
+          "id": "10.16995/dscn.16533"
+        },
+        {
+          "title": "A Comprehensive Analysis of Hydrolyzed Collagen Supplementation Effects on Skin ",
+          "year": 2025,
+          "source": "crossref",
+          "id": "10.70749/ijbr.v3i5.1601"
+        },
+        {
+          "title": "Corpus-based Feedback in Elementary English Writing: Impacts on Performance and ",
+          "year": 2025,
+          "source": "crossref",
+          "id": "10.31216/bdl.2025.15.2.7"
+        },
+        {
+          "title": "The 2025 PNPL Competition: Speech Detection and Phoneme Classification in the Li",
+          "year": 2025,
+          "source": "arxiv",
+          "id": "http://arxiv.org/abs/2506.10165v1"
+        }
+      ]
+    },
+    "U4_LOW_ANCHOR_PHONEMES": {
+      "n": 2,
+      "signal": "HYPOTHESIS",
+      "top_papers": [
+        {
+          "title": "Deciphering the Indus Script by Applying the Concept of Egyptian Hieroglyphics t",
+          "year": 2025,
+          "source": "crossref",
+          "id": "10.31235/osf.io/fwkxe_v1"
+        },
+        {
+          "title": "Deciphering the Indus Script by Applying the Concept of Egyptian Hieroglyphics t",
+          "year": 2025,
+          "source": "crossref",
+          "id": "10.31219/osf.io/hjby4_v1"
+        }
+      ]
+    },
+    "U5_GULF_SEAL_DATABASES": {
+      "n": 0,
+      "top_papers": [],
+      "signal": "NO_SIGNAL"
+    },
+    "U6_KEEZHADI_2025": {
+      "n": 1,
+      "signal": "NO_SIGNAL",
+      "top_papers": [
+        {
+          "title": "Archaeological Excavations in Tamil Nadu with Special Reference to Keezhadi - A ",
+          "year": 2020,
+          "source": "crossref",
+          "id": "10.34293/sijash.v8i1.3244"
+        }
+      ]
+    },
+    "U7_LINEAR_ELAMITE": {
+      "n": 2,
+      "signal": "NEW_EVIDENCE",
+      "top_papers": [
+        {
+          "title": "Some new Linear Elamite inscriptions",
+          "year": 2025,
+          "source": "crossref",
+          "id": "10.22012/baf.2016.18"
+        },
+        {
+          "title": "<b>The Decipherment of Linear Elamite Writing</b>",
+          "year": 2022,
+          "source": "crossref",
+          "id": "10.1515/za-2022-0003"
+        }
+      ]
+    },
+    "GENERAL": {
+      "n": 16,
+      "signal": "DATA_AVAILABLE",
+      "top_papers": [
+        {
+          "title": "The Bead Trade during the Late Third and Second Millennia BC at the Island of Fa",
+          "year": 2025,
+          "source": "openalex",
+          "id": "https://openalex.org/W7125835701"
+        },
+        {
+          "title": "Microhistory, Cultural Memory and Indus Valley Civilization in Vasant Dav\u00e9\u2019s Tra",
+          "year": 2025,
+          "source": "crossref",
+          "id": "10.1163/21983534-12020001"
+        },
+        {
+          "title": "Hydrodynamics of the Indus Valley Civilization: Ingenious Water Management throu",
+          "year": 2025,
+          "source": "crossref",
+          "id": "10.53573/rhimrj.2025.v12n2.001"
+        },
+        {
+          "title": "On Aegean spices: decipherment prospects on Linear A and B spice-related signs",
+          "year": 2025,
+          "source": "crossref",
+          "id": "10.1515/kadmos-2025-0002"
+        },
+        {
+          "title": "The Bead Trade during the Late Third and Second Millennia BC at the Island of Fa",
+          "year": 2025,
+          "source": "crossref",
+          "id": "10.7264/x80v8x40"
+        },
+        {
+          "title": "A new Dilmun-related seal from Umm al-Quwain (U.A.E.)",
+          "year": 2024,
+          "source": "crossref",
+          "id": "10.37343/uw.2083-537x.pam33.16"
+        }
+      ]
+    }
+  },
+  "strong_papers": [
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7155245181",
+      "title": "How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline Scorecard",
+      "year": 2026,
+      "text": "How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline Scorecard Whether the Indus Valley sign system (c. 2600-1900 BCE) encodes spoken language has been debated for decades. This paper introduces a multi-metric discrimination framework that tests the observed Indus corpus against two kinds of computer-generated non-linguistic baseline -- one mimicking a heraldic emblem system, the other an administrative coding system -- each calibrated with Zipfian frequency distributions, positional constraints, and bigram dependencies derived from six attested non-linguistic corpora. The scorecard evaluates four properties central to the Farmer-Sproat-Witzel (2004) critique: text brevity, repeated formulaic phrases, hapax legomenon rate, and positional rigidity. Applying this framework to 1,916 deduplicated inscriptions (584 unique signs, 11,110 tokens) from the ICIT/Yajnadevam digitization, we find that the Indus corpus does not match either baseline cleanly. Across the four metrics examined, the Indus corpus occupies an intermediate position relative to the two baseline families, matching neither cleanly. Neither a heraldic nor an administrative generator can reproduce all four properties at once. We also compare against seven real-world non-linguistic corpora including Sproat's (2014) datasets, finding that no attested non-linguistic system reproduces the full Indus statistical profile either. We replicate key prior results including a Zipf slope of -1.49 and conditional entropy of 3.23 bits. All code and data are publicly available.",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U1_NONLINGUISTIC_SCORECARD"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7128590305",
+      "title": "Modelling the possible archaeological past(s): Agent-based modelling of Harappan seal use and survival",
+      "year": 2026,
+      "text": "Modelling the possible archaeological past(s): Agent-based modelling of Harappan seal use and survival The Harappan i.e. Indus Valley civilization, flourished in South Asia in the middle of the third millennium BCE. Among the millions of artefacts excavated from hundreds of sites, the most remarkable and extensively analysed are the ones with peculiar signs. Within this set, the most characteristic item is the Harappan seal which is at the centre of discourse in Harappan archaeology. This scholarship mostly revolves around three conjectures: (i) the signs or sign sequences indicate linguistic components and are part of a script with fixed set of signs, (ii) the \u2018seals' were used as amulets or as objects of economic or administrative activities, and (iii) the primary use of seals is for creating the impressions which form `sealings'. However, the small number of actual sealings found in Harappan sites seems to challenge this last conjecture. This paper approaches the question of seal function by using agent-based modelling (ABM) to model the quantities of seals and their impressions in Harappan culture. The model seeks to suggest a hypothetical baseline for the number of sealings one might expect to find, and to see if and under which conditions the model results in the quantities of artefacts that are currently available as archaeological evidence.",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U1_NONLINGUISTIC_SCORECARD"
+    },
+    {
+      "source": "crossref",
+      "id": "10.2139/ssrn.6080446",
+      "title": "Crossing the Indus Threshold \n&lt;div&gt;\n A Falsifiable, Corpus-Wide Functional Decipherment of the Indus Script\n&lt;/div&gt;",
+      "year": 2026,
+      "text": "Crossing the Indus Threshold \n&lt;div&gt;\n A Falsifiable, Corpus-Wide Functional Decipherment of the Indus Script\n&lt;/div&gt;  This monograph presents the first complete phonetic envelope mapping of the Indus Script corpus using a constraint-driven computational framework. Through the application of LISSE (Linguistic Inspection of Sound Structure Environments) and LUCAS (Linguistic Understanding Construction Assembly System), we assign non-interpretive phonetic shadows to all 417 Mahadevan signs plus documented variants and outliers, totaling 500 distinct graphic units. The resulting phonetic scaffolding passes corpus-wide consistency checks across approximately 4,000 inscriptions, demonstrating coherent administrative grammar compatible with Bronze Age economic record-keeping. This work does not constitute traditional decipherment but establishes the first falsifiable, computationally reproducible foundation for linguistic analysis of Harappan administrative texts.",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U2_AI_EPIGRAPHY"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/2604.17828v1",
+      "title": "How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline Scorecard",
+      "year": 2026,
+      "text": "How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline Scorecard Whether the Indus Valley sign system (c. 2600-1900 BCE) encodes spoken language has been debated for decades. This paper introduces a multi-metric discrimination framework that tests the observed Indus corpus against two kinds of computer-generated non-linguistic baseline -- one mimicking a heraldic emblem system, the other an administrative coding system -- each calibrated with Zipfian frequency distributions, positional constraints, and bigram dependencies derived from six attested non-linguistic corpora. The scorecard evaluates four properties central to the Farmer-Sproat-Witzel (2004) crit",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U1_NONLINGUISTIC_SCORECARD"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4416904785",
+      "title": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Valley Script",
+      "year": 2025,
+      "text": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Valley Script The Indus Valley script, which dates back to the Bronze Age (2600\u20131900 BCE), is one of the most important ancient writing systems that has not yet been figured out. The tool employs corpus-based methodologies to discern potential language patterns, utilizing frequency distribution analysis, locational examination, and transitional probabilities among signs. Some of the most important features are statistical significance testing (Z-test) to look for differences from expected sign distributions, collocation analysis to look at contextual relationships, and n-gram modeling (1-4 grams) to observe patterns in sign sequences. A multinomial naive Bayes classifier, which is a type of machine learning, predicts semantic interpretations based on established inscriptions and proposed readings. We have showcased both the input methods with the help of case studies and the HCI insights. The tool looks at claims about proposed linguistic structures, like prefixing and suffixing systems, and claims about script characteristics, like logographic vs. syllabic qualities. Codebase is available at https://github.com/atulsharma0071/indiahci2025.",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U2_AI_EPIGRAPHY"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4409573471",
+      "title": "A scientometric analysis of reviews on the Internet of Things",
+      "year": 2025,
+      "text": "A scientometric analysis of reviews on the Internet of Things Abstract The Internet of Things (IoT) paradigm is redefining our lives, allowing us to make \u201csmart\u201d decisions. This boom has also gained popularity in academic research, one of the core goals being to make IoT research more accessible to students and early researchers, while making sure that experienced researchers keep up with the changes happening in the research area. A large number of review papers are available covering surveys related to IoT vision enabling technologies, applications, key features, and future directions. Nevertheless, there is a lack of analysis of these reviews. This study provides a scientometric analysis of already available reviews in the field of IoT to identify upcoming research needs and bring simplicity to literature research. In total, 964 review articles in the field of IoT written in English and published in peer-reviewed journals and conferences from 2010 to April 2023 have been finalized from the Google Scholar database. Three broad categories of analysis have been performed on the 964 relevant collected literature, namely (a) statistical; (b) machine learning-based; and (c) evaluative analysis. An important differentiating feature of the current study is the use of machine learning for data exploration, thereby providing better interpretation. We find that the trend to review the field of IoT has increased in the last five years with only one article in 2010. This article identifies and quantifies the knowledge gaps to inform the community, industry, and government authorities about research directions for IoT. Furthermore, this scientometric analysis serves as a foundational resource for IoT researchers in identifying relevant and important survey papers that target their research fields in IoT.",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U3_ICIT_FULS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4407815846",
+      "title": "Impact of EU non-financial reporting regulation on Spanish companies\u2019 environmental disclosure: a cutting-edge natural language processing approach",
+      "year": 2025,
+      "text": "Impact of EU non-financial reporting regulation on Spanish companies\u2019 environmental disclosure: a cutting-edge natural language processing approach A debate exists about the effects of environmental disclosure becoming mandatory on the quality and the actual commitment of such reporting. This study seeks to assess whether differences exist when comparing the disclosure quality and comprehensiveness of Spanish companies\u2019 non-financial reports under voluntary and mandatory reporting regimes spanning the period 2015\u20132022. We present a novel approach by utilizing cutting-edge Natural Language Processing (NLP) techniques, chiefly ClimateBERT (a transformer-LLM\u2014Large Language Model) and ClimateBERT fine-tuned on ClimaText (a public database for climate change topic detection), to scrutinize and compare 729 voluntary and mandatory non-financial corporate reports from 96 Spanish companies spanning multiple sectors. Since transformers can only be accurately estimated by organizations with lots of computing power, but not by small organizations, we have also fine-tuned the transformer, something cheaper in computational terms, thus making it affordable to all companies, investors, regulators, policymakers, and other stakeholders. Our results document interesting patterns and strong trends of enhancement in specificity and commitment, particularly in risk-related texts, spanning the period 2015\u20132022. We provide descriptive evidence and an explorative appeal that underscores the regulations' influence, among many other factors also identified by prior literature (other stakeholders\u2019 requirements and expectations from companies, aside from the regulatory stakeholders), in fostering a higher quality and more comprehensive approach to climate risk reporting by Spanish companies, with enhanced alignment to internationally recognized reporting guidelines. In addition, the comparative analysis between the transformer model and the fine-tuned transformer model revealed subtle yet insightful differences in how climate disclosures are interpreted. The fine-tuned model exhibited an increased sensitivity to elements of commitment, sp",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U3_ICIT_FULS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4413911934",
+      "title": "ChatGPT\u2019s Expanding Horizons and Transformative Impact Across Domains: A Critical Review of Capabilities, Challenges, and Future Directions",
+      "year": 2025,
+      "text": "ChatGPT\u2019s Expanding Horizons and Transformative Impact Across Domains: A Critical Review of Capabilities, Challenges, and Future Directions The rapid proliferation of Chat Generative Pre-trained Transformer (ChatGPT) marks a pivotal moment in artificial intelligence, eliciting responses from academic shock to industrial awe. As these technologies advance from passive tools toward proactive, agentic systems, their transformative potential and inherent risks are magnified globally. This paper presents a comprehensive, critical review of ChatGPT\u2019s impact across five key domains: natural language understanding (NLU), content generation, knowledge discovery, education, and engineering. While ChatGPT demonstrates profound capabilities, significant challenges remain in factual accuracy, bias, and the inherent opacity of its reasoning\u2014a core issue termed the \u201cBlack Box Conundrum\u201d. To analyze these evolving dynamics and the implications of this shift toward autonomous agency, this review introduces a series of conceptual frameworks, each specifically designed to illuminate the complex interactions and trade-offs within these domains: the \u201cSpecialization vs. Generalization\u201d tension in NLU; the \u201cQuality\u2013Scalability\u2013Ethics Trilemma\u201d in content creation; the \u201cPedagogical Adaptation Imperative\u201d in education; and the emergence of \u201cHuman\u2013LLM Cognitive Symbiosis\u201d in engineering. The analysis reveals an urgent need for proactive adaptation across sectors. Educational paradigms must shift to cultivate higher-order cognitive skills, while professional practices (including practices within education sector) must evolve to treat AI as a cognitive partner, leveraging techniques like Retrieval-Augmented Generation (RAG) and sophisticated prompt engineering. Ultimately, this paper argues for an overarching \u201cEthical\u2013Technical Co-evolution Imperative\u201d, charting a forward-looking research agenda that intertwines technological innovation with vigorous ethical and methodological standards to ensure responsible AI development and integration. Ultimately, the analysis reveals that the challenges of factual accuracy, bias, and opacity",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U2_AI_EPIGRAPHY"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4407366414",
+      "title": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to Lost Knowledge",
+      "year": 2025,
+      "text": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to Lost Knowledge The decipherment of the Indus Valley script has remained one of the most enduring challenges in historical linguistics. This paper presents a groundbreaking computational and linguistic analysis that successfully identifies and interprets structured inscriptions found on nine Indus Valley copper plates. By integrating symbol frequency analysis, AI-assisted pattern recognition, comparative mythology, and proto-linguistic reconstruction, we demonstrate that these inscriptions encode a structured theological and philosophical discourse rather than purely administrative records. Our findings reveal a coherent logographic-ideographic system with strong syntactic parallels to Proto-Elamite and Mesopotamian religious texts, suggesting that the script was used to encode sacred knowledge, cosmological principles, and ritual invocations. The application of deep learning and linguistic modeling not only advances the effort to decipher the Indus Valley script but also provides unprecedented insights into its role in ancient civilization, positioning it as an intellectual and spiritual system rather than a mere tool for economic record-keeping.",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U2_AI_EPIGRAPHY"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1145/3768633.3770145",
+      "title": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Valley Script",
+      "year": 2025,
+      "text": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Valley Script",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U2_AI_EPIGRAPHY"
+    },
+    {
+      "source": "crossref",
+      "id": "10.20944/preprints202502.0699.v1",
+      "title": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to Lost Knowledge",
+      "year": 2025,
+      "text": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to Lost Knowledge  The decipherment of the Indus Valley script has remained one of the most enduring challenges in historical linguistics. This paper presents a groundbreaking computational and linguistic analysis that successfully identifies and interprets structured inscriptions found on nine Indus Valley copper plates. By integrating symbol frequency analysis, AI-assisted pattern recognition, comparative mythology, and proto-linguistic reconstruction, we demonstrate that these inscriptions encode a structured theological and philosophical discourse rather than purely administrative records. Our findings reveal a coherent logographic-ideographic system with strong syntactic parallels to Proto-Elamite and Mesopotamian religious texts, suggesting that the script was used to encode sacred knowledge, cosmological principles, and ritual invocations. The application of deep learning and linguistic modeling not only advances the effort to decipher the Indus Valley script but also provides unprecedented insig",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U2_AI_EPIGRAPHY"
+    },
+    {
+      "source": "crossref",
+      "id": "10.31235/osf.io/rmpqe_v1",
+      "title": "Introducing Indus Keyboard - A first of its kind interactive tool to visualize the Indus Script in Devanagari and Brahmi",
+      "year": 2025,
+      "text": "Introducing Indus Keyboard - A first of its kind interactive tool to visualize the Indus Script in Devanagari and Brahmi  We introduce Indus Keyboard, a web-based interactive tool that renders Devanagari text in the Indus script, based on the decipherment proposed by Yajnadevam. This is the first known keyboard to implement such a mapping for the Indus Script, achieved through two custom-designed fonts created using FontForge. The primary font renders Devanagari input as Indus signs based on frequency of occurrence including contextual ligatures (wherever attested), and displays them right-to-left, preserving the original directionality of the script. A secondary Brahmi style font visualizes Brahmi standardized Indus glyphs alongside their corresponding Brahmi text rendered left-to-right, enabling easy comparison and contrast, highlighting the possible evolution of the Indus script to Brahmi over millennia. The keyboard is built entirely using standard web technologies (HTML, CSS, and JavaScript) and runs fully in-browser. Indus Keyboard offers a novel tool for researchers, educators, and script enthusia",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U2_AI_EPIGRAPHY"
+    },
+    {
+      "source": "crossref",
+      "id": "10.22012/baf.2016.18",
+      "title": "Some new Linear Elamite inscriptions",
+      "year": 2025,
+      "text": "Some new Linear Elamite inscriptions  The Linear Elamite writing system was used in the late 3rd millennium in ancient Iran.The underlying language is supposed to be Elamite \u2013 an isolate language otherwise known from cuneiform sources. 40 to 60% of the Elamite words and morphemes are decoded.In early 2016, about ten new inscriptions and fragments were presented at the University of Hamedan, Iran. They are now in the Mahboubian Gallery. Some of these new texts are the longest ones ever found, depicting up to 200 signs.In the \u00a0past months, the Deciphering Crew at the Institut f\u00fcr Sprachwissenschaft, Universit\u00e4t Bern, has made drawings of the so far unpublished inscriptions and compiled a sign catalogue.Preliminary results show that \u00a0fragments from Gonur and Altyn Depe formerly tagged as \u201cLinear Elamite\u201d \u00a0do not belong to the Linear Elamite text corpus.The Deciphering Project is hoping to collaborate with scholars of different fields. The web page http://elamicon.org\u00a0is an open source project.",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U7_LINEAR_ELAMITE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.16995/dscn.16533",
+      "title": "Characterizing Asymmetries in the TenTen Corpus Family Membership: An Implicit Hierarchy in Multilingual Digital Tools",
+      "year": 2025,
+      "text": "Characterizing Asymmetries in the TenTen Corpus Family Membership: An Implicit Hierarchy in Multilingual Digital Tools  In this work, we examine the limitations of digital tools in facilitating cross-linguistic and cross-cultural research from a humanistic perspective. Our primary objective is to draw comparisons between the TenTen corpora, assessing their degree of similarity. In order to achieve this goal, we will conduct cluster analysis on the 43 corpora within the TenTen Corpus Family using a set of parameters that characterize this family membership. This analysis pinpoints the TenTen corpora that exhibit the most similar characteristics within the family, bringing to the surface an implicit hierarchy within the Sketch Engine platform, a multilingual digital tool environment. This hierarchy is structured into four distinct clusters, definable by size, number of functional tools, versions, and Part-of-Speech (PoS) tagging. The findings of the current study call for prudence when comparing the TenTen corpora, but also suggest a way of improving a multilingual environment; the examination and establ",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U3_ICIT_FULS"
+    },
+    {
+      "source": "crossref",
+      "id": "10.31235/osf.io/fwkxe_v1",
+      "title": "Deciphering the Indus Script by Applying the Concept of Egyptian Hieroglyphics to the Depiction of Indus Signs",
+      "year": 2025,
+      "text": "Deciphering the Indus Script by Applying the Concept of Egyptian Hieroglyphics to the Depiction of Indus Signs  Due to its intricate clusters of symbols, the absence of clear connections to known ancient or modern scripts from the Indian subcontinent, and broad assumptions about the likely languages of the Indus civilization, scholars have long struggled to decipher the Indus script. This study seeks to identify Indus characters by analysing common graphemes of synonymous words across known Indian languages, using traces in the existing languages as a \"Rosetta Stone.\" It interprets the pictographic symbols on Indus seals by applying principles from the Egyptian hieroglyphic writing system.The findings suggest that the Indus script follows an Abugida-style writing system, comprising nineteen consonants and three vowels, and represents a Proto-Pali language. Analysing grammatical structures, reading sequences, and linguistic parallels with Pali provides strong evidence that the Indus civilization employed a structured language integrating phonetics and symbolism. Further validation through the in",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U4_LOW_ANCHOR_PHONEMES"
+    },
+    {
+      "source": "crossref",
+      "id": "10.31219/osf.io/hjby4_v1",
+      "title": "Deciphering the Indus Script by Applying the Concept of Egyptian Hieroglyphics to the Depiction of Indus Signs",
+      "year": 2025,
+      "text": "Deciphering the Indus Script by Applying the Concept of Egyptian Hieroglyphics to the Depiction of Indus Signs  Due to its intricate clusters of symbols, the absence of clear connections to known ancient or modern scripts from the Indian subcontinent, and broad assumptions about the likely languages of the Indus civilization, scholars have long struggled to decipher the Indus script. This study seeks to identify Indus characters by analyzing common graphemes of synonymous words across known Indian languages, using traces in the existing languages as a \"Rosetta Stone.\" It interprets the pictographic symbols on Indus seals by applying principles from the Egyptian hieroglyphic writing system.The findings suggest that the Indus script follows an Abugida-style writing system, comprising nineteen consonants and three vowels, and represents a Proto-Pali language. Analyzing grammatical structures, reading sequences, and linguistic parallels with Pali provides strong evidence that the Indus civilization employed a structured language integrating phonetics and symbolism. Further validation through the in",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U4_LOW_ANCHOR_PHONEMES"
+    },
+    {
+      "source": "crossref",
+      "id": "10.70749/ijbr.v3i5.1601",
+      "title": "A Comprehensive Analysis of Hydrolyzed Collagen Supplementation Effects on Skin Aging and Texture and Its Potential Benefits for Osteoarthritis",
+      "year": 2025,
+      "text": "A Comprehensive Analysis of Hydrolyzed Collagen Supplementation Effects on Skin Aging and Texture and Its Potential Benefits for Osteoarthritis  Background: Hydrolyzed collagen supplementation has gained popularity for its potential to improve skin health and combat signs of aging. This study investigates its effects on skin elasticity, hydration, and texture over a 12-week intervention period. Objective: To evaluate the efficacy of hydrolyzed collagen supplementation in reducing visible signs of skin aging and improving overall skin health and its potential benefits for osteoarthritis. Methods: A randomized, double-blind, placebo-controlled study was conducted with 55 participants aged 25\u201360 years from March 2024 to September 2024. The treatment group received 10 grams of hydrolyzed collagen daily, while the placebo group received an identical placebo. Skin elasticity, wrinkle depth, and hydration were assessed using objective tools, and self-reported improvements were collected through surveys. Results: The treatment group demonstrated significant improvements, including a 23% increase in skin elasticity (p&lt;0.01), an 18%",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U3_ICIT_FULS"
+    },
+    {
+      "source": "crossref",
+      "id": "10.31216/bdl.2025.15.2.7",
+      "title": "Corpus-based Feedback in Elementary English Writing: Impacts on Performance and Learner Attitudes",
+      "year": 2025,
+      "text": "Corpus-based Feedback in Elementary English Writing: Impacts on Performance and Learner Attitudes  This study examines the impact of corpus-based feedback on elementary school students\u2019 English writing performance and attitudes. Forty-two fifth-grade students were assigned to either a research group (n = 22), which received data-driven learning (DDL) feedback using teacher-selected concordance examples, or a comparison group (n = 20), which received direct teacher feedback and explicit instruction. Across four instructional lessons, both groups participated in pre- and post-writing assessments, and qualitative data were collected through surveys and interviews. The results indicate that the corpus-based group demonstrated greater improvement in writing performance compared to the comparison group, with significant gains observed among both higher- and lower-proficiency learners when appropriate scaffolding was provided. While students generally responded positively to corpus-based feedback, some reported difficulties during the writing process. These f indings suggest that corpus-b",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U3_ICIT_FULS"
+    },
+    {
+      "source": "crossref",
+      "id": "10.20944/preprints202503.1616.v1",
+      "title": "A Comprehensive Review of Digital Technologies Enhancing Sustainable Manufacturing and Environmental Stewardship",
+      "year": 2025,
+      "text": "A Comprehensive Review of Digital Technologies Enhancing Sustainable Manufacturing and Environmental Stewardship  This review explores the transformative role of digital technologies in advancing sustainable manufacturing practices and promoting environmental stewardship. As industries face increasing pressure to minimize their ecological footprint, the integration of digital tools such as the Internet of Things (IoT), artificial intelligence (AI), and big data analytics emerges as a pivotal strategy. This paper synthesizes current literature on various digital technologies and their applications in manufacturing processes, highlighting their potential to optimize resource utilization, reduce waste, and enhance energy efficiency. Furthermore, the review examines case studies that illustrate successful implementations of these technologies, revealing best practices and challenges faced by organizations. By identifying key trends and future directions, this study aims to provide valuable insights for researchers and practitioners seeking to leverage digital innovations for sustainable development i",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U2_AI_EPIGRAPHY"
+    },
+    {
+      "source": "s2",
+      "id": "deb2e042145e730c0bdf57a83a09e444ca57f2e6",
+      "title": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Valley Script",
+      "year": 2025,
+      "text": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Valley Script The Indus Valley script, which dates back to the Bronze Age (2600\u20131900 BCE), is one of the most important ancient writing systems that has not yet been figured out. The tool employs corpus-based methodologies to discern potential language patterns, utilizing frequency distribution analysis, locational examination, and transitional probabilities among signs. Some of the most important features are statistical significance testing (Z-test) to look for differences from expected sign distributions, collocation analysis to look at contextual relationships, and n-gram modeling (1-4 grams) to observe patterns in sign sequences. A multinomial naive Bayes classifier, which is a type of machine learning, predicts semantic interpretations based on established inscriptions and proposed readings. We ha",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U2_AI_EPIGRAPHY"
+    },
+    {
+      "source": "s2",
+      "id": "f34dd855261c581b88983d67ce90c86a42d41ee3",
+      "title": "Modern Algorithms for Ancient Scripts: A Review of AI-Based Techniques in Indus Civilization Research",
+      "year": 2025,
+      "text": "Modern Algorithms for Ancient Scripts: A Review of AI-Based Techniques in Indus Civilization Research The Indus script has been one of the most perennial archaeological-epigraphical problems because of the lack of bilingual sources, extreme lack of data, and widespread physical destruction of the artifacts. New computational directions to overcome these limitations are provided by new developments in artificial intelligence, machine learning, and computer vision. The paper is a systematic review of AI-based methods for identifying, analyzing, and interpreting epigraphic texts and graphemes in damaged Indus Valley seal articles. After a systematic review of the literature, publications between 2009 and 2025 were thoroughly reviewed and classified into thematic groups, such as statistical and computational linguistics, deep learning-based visual analysis, allograph identification, pattern mo",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U2_AI_EPIGRAPHY"
+    },
+    {
+      "source": "s2",
+      "id": "17cc9dcad6fdb894fd9a42a97280c931fc4e888b",
+      "title": "Sustainability through digitalization: leveraging digital technologies to transform the textile and apparel industry for a resilient future",
+      "year": 2025,
+      "text": "Sustainability through digitalization: leveraging digital technologies to transform the textile and apparel industry for a resilient future This article highlights the potential of digitalization to enhance sustainability in the textile and apparel industry by integrating digital technologies in core operations. However, significant research gaps remain, including challenges in tool deployment, skill deficiencies, and organizational resistance to change. Strong collaboration between apparel industry professionals and computer scientists is essential to develop robust, relevant digital solu\u00actions that lead to sustainability. In 2025, the apparel industry, valued at $1.84 trillion and contributing nearly 1.6% of global GDP, holds immense significance within global manufactur\u00acing [1]. However, the textile and apparel industry causes significant environmental impact, ac\u00accounting for approximately 20% of global pollution [2], which",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U2_AI_EPIGRAPHY"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/2506.03837v2",
+      "title": "HTSC-2025: A Benchmark Dataset of Ambient-Pressure High-Temperature Superconductors for AI-Driven Critical Temperature Prediction",
+      "year": 2025,
+      "text": "HTSC-2025: A Benchmark Dataset of Ambient-Pressure High-Temperature Superconductors for AI-Driven Critical Temperature Prediction The discovery of high-temperature superconducting materials holds great significance for human industry and daily life. In recent years, research on predicting superconducting transition temperatures using artificial intelligence~(AI) has gained popularity, with most of these tools claiming to achieve remarkable accuracy. However, the lack of widely accepted benchmark datasets in this field has severely hindered fair comparisons between different AI algorithms and impeded further advancement of these methods. In this work, we present the HTSC-2025, an ambient-pressure high-temperature supercon",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U2_AI_EPIGRAPHY"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/2506.10165v1",
+      "title": "The 2025 PNPL Competition: Speech Detection and Phoneme Classification in the LibriBrain Dataset",
+      "year": 2025,
+      "text": "The 2025 PNPL Competition: Speech Detection and Phoneme Classification in the LibriBrain Dataset The advance of speech decoding from non-invasive brain data holds the potential for profound societal impact. Among its most promising applications is the restoration of communication to paralysed individuals affected by speech deficits such as dysarthria, without the need for high-risk surgical interventions. The ultimate aim of the 2025 PNPL competition is to produce the conditions for an \"ImageNet moment\" or breakthrough in non-invasive neural decoding, by harnessing the collective power of the machine learning community. To facilitate this vision we present the largest within-subject MEG d",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U3_ICIT_FULS"
+    },
+    {
+      "source": "crossref",
+      "id": "10.70670/sra.v2i2.229",
+      "title": "Deciphering the Symbols: A Comprehensive Study of Iconography and Epigraphy of Indus Seals",
+      "year": 2024,
+      "text": "Deciphering the Symbols: A Comprehensive Study of Iconography and Epigraphy of Indus Seals  Inscribed seals are among the most identifiable and distinctive artifacts of the Harappan or Indus Civilization (c. 2600-1900 BCE), which is recognized as one of the earliest urban civilizations in the world and the first significant emergence in the South Asian subcontinent. This study explores the complex relationship between epigraphy and iconography on Indus seals, revealing the deep insights contained within these ancient relics. Indus seals employed specific documents and linguistic structures to communicate messages. The objective is to clarify the linguistic, cultural, and societal aspects of the Indus Valley Civilization by carefully examining the script and symbols found on these seals. This interdisciplinary approach seeks to uncover regional and temporal patterns that introduce new dimensions regarding an ancient civilization. The research goes beyond simple linguistic analysis by looking at the interdependent relationship between iconographic imagery and script, offering",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U2_AI_EPIGRAPHY"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4391579254",
+      "title": "Defining the Digital Twin for Industry 4.0",
+      "year": 2023,
+      "text": "Defining the Digital Twin for Industry 4.0 This manuscript offers a comprehensive review of Digital Twin (DT) technology, first presenting the proposal of our novel DT amendment that looks to refine the conceptual understanding of DTs across various industrial use-cases. The study synthesizes findings from an extensive literature review, emphasizing the need for precise use-case-centric definitions and categorization to advance the field effectively. Chapter 1 introduces the current state of DT research, advocating for a more nuanced approach to the identification, classification, and validation of DT systems. It challenges the broad definitions prevalent in current literature and proposes a more application-specific research trajectory. Subsequent chapters build on this foundation by curating an extensive review of Supervisory Control And Data Acquisition (SCADA) systems. This explanation illustrates that industry's current definition of DT follows suit with the capabilities of such technology when an automatic, bi-directional data transfer is required for simulation models to be classified as DTs. After this, we explore the application of DT technology in dataset creation for the training of Intrusion Detection Systems (IDS) at the industrial application layer. Lastly, we propose a novel validation method for DTs by utilizing machine learning techniques while identifying key challenges such as system complexity and the need for diverse similarity measures. This manuscript brings to question the current literature's tendency to create self-validating information silos and highlights the discrepancy in validation approaches for different systems. It acknowledges the infancy of practical applications and calls for a standardized validation framework.",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U2_AI_EPIGRAPHY"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1093/acrefore/9780190277727.013.595",
+      "title": "Indus Valley: Early Commercial Connections with Central and Western Asia",
+      "year": 2023,
+      "text": "Indus Valley: Early Commercial Connections with Central and Western Asia  Abstract \n                   The study of the commercial and cultural connections between the Greater Indus Valley and other regions of Central and Western Asia occupies a pivotal role in scholarly research on the Indus Tradition. Interregional trade was already established in the Indus River basin during the Neolithic period in the 6th millennium BCE. However, from the early 3rd millennium bce, the Indus (Harappan) merchants and craftspeople contributed to defining, promoting, and regulating long-distance, cross-cultural trade exchanges throughout this region. Indus-type and Indus-related artifacts have been found over a large and differentiated ecumene, encompassing Central Asia, the Iranian Plateau, Mesopotamia and the northern Levant, the Persian Gulf, and the Oman Peninsula. The discovery of Indus trade tools (seals, weights, and containers) in all of Middle Asia, complemented by information from Mesopotamian cuneiform texts, shows that entrepreneurs from the Indus Valley regular",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U2_AI_EPIGRAPHY"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1515/za-2022-0003",
+      "title": "<b>The Decipherment of Linear Elamite Writing</b>",
+      "year": 2022,
+      "text": "<b>The Decipherment of Linear Elamite Writing</b>  Abstract \n                Linear Elamite writing was used in southern Iran in the late 3 rd /early 2 nd  millennium BCE (ca. 2300\u20131880 BCE). First discovered during the French excavations at Susa from 1903 onwards, it has so far resisted decipherment. The publication of eight inscribed silver beakers in 2018 provided the materials and the starting point for a new attempt; its results are presented in this paper. A full description and analysis of Linear Elamite of writing, employed for recording the Elamite language, is given here for the first time, together with a discussion of Elamite phonology and the biscriptualism that characterizes this language in its earliest documented phase.",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U7_LINEAR_ELAMITE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.34293/sijash.v8i1.3244",
+      "title": "Archaeological Excavations in Tamil Nadu with Special Reference to Keezhadi - A Review",
+      "year": 2020,
+      "text": "Archaeological Excavations in Tamil Nadu with Special Reference to Keezhadi - A Review  Excavations \u2013 part of Archaeological studies \u2013 youngest discipline \u2013 Accidental findings \u2013 Antiques\u00a0\u2013 Survey \u2013 Artifacts- Explorations \u2013 Mortimer Wheeler \u2013 Sir John Marshall \u2013 Bishop Caldwell\u00a0\u2013 Excavations \u2013 Adichanallur- Arikamedu \u2013 Kaveripumpatnam - Kodumanal - Sangam Age \u2013\u00a0Literature \u2013 Roman Coins and potteries \u2013contact with Rome",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U6_KEEZHADI_2025"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/1702.00523v1",
+      "title": "Deep Learning the Indus Script",
+      "year": 2017,
+      "text": "Deep Learning the Indus Script Standardized corpora of undeciphered scripts, a necessary starting point for computational epigraphy, requires laborious human effort for their preparation from raw archaeological records. Automating this process through machine learning algorithms can be of significant aid to epigraphical research. Here, we take the first steps in this direction and present a deep learning pipeline that takes as input images of the undeciphered Indus script, as found in archaeological artifacts, and returns as output a string of graphemes, suitable for inclusion in a standard corpus. The image is first decomp",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U2_AI_EPIGRAPHY"
+    },
+    {
+      "source": "crossref",
+      "id": "10.3366/edinburgh/9781474402194.003.0006",
+      "title": "Caribbean Formations in the Rhysian Corpus",
+      "year": 2015,
+      "text": "Caribbean Formations in the Rhysian Corpus  In \u201cWhat is an Author?\u201d Michel Foucault reframes the author as an \u201cauthor-function\u201d\u00a0that has historically been produced through its interaction with both the text and its audience. In this essay, I deploy Foucault\u2019s unsettling of the author as origin and use it as a lens through which to make sense of the Rhys protagonist.\u00a0Specifically, I examine what I call the \u201clandscape function\u201d in Rhys\u2019s texts (to echo Foucault\u2019s \u201cauthor function\u201d) in order to highlight the multiplicity of meanings through which the category \u201chuman\u201d is produced in the Rhysian corpus. This Foucaultian reading thus reveals the extent to which neither character nor the environment pre-exist their narrativisation in the diegetic logic of the text but are actually produced through their mutual imbrication in narrative.",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U3_ICIT_FULS"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/1203.5066v1",
+      "title": "A Corpus-based Study of Temporal Signals",
+      "year": 2012,
+      "text": "A Corpus-based Study of Temporal Signals Automatic temporal ordering of events described in discourse has been of great interest in recent years. Event orderings are conveyed in text via va rious linguistic mechanisms including the use of expressions such as \"before\", \"after\" or \"during\" that explicitly assert a temporal relation -- temporal signals. In this paper, we investigate the role of temporal signals in temporal relation extraction and provide a quantitative analysis of these expres sions in the TimeBank annotated corpus.",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U3_ICIT_FULS"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/0901.3017v1",
+      "title": "Statistical analysis of the Indus script using $n$-grams",
+      "year": 2009,
+      "text": "Statistical analysis of the Indus script using $n$-grams The Indus script is one of the major undeciphered scripts of the ancient world. The small size of the corpus, the absence of bilingual texts, and the lack of definite knowledge of the underlying language has frustrated efforts at decipherment since the discovery of the remains of the Indus civilisation. Recently, some researchers have questioned the premise that the Indus script encodes spoken language. Building on previous statistical approaches, we apply the tools of statistical language processing, specifically $n$-gram Markov chains, to analyse the Indus script for syntax. Our main results",
+      "evidence_tier": "STRONG",
+      "unlock_id": "U2_AI_EPIGRAPHY"
+    }
+  ],
+  "verdict": "Phase-240 unlock mine: 2442 papers. U1=DAT(3) | U2=DAT(17) | U3=DAT(8) | U4=HYP(2) | U5=NO_(0) | U6=NO_(1) | U7=NEW(2)"
+}

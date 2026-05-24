@@ -1,5 +1,5 @@
 {
-  "total": 404,
+  "total": 410,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -2628,6 +2628,49 @@
         "dedr": "3594",
         "meaning": "good people, nobles (honorific plural)"
       }
+    },
+    "M712": {
+      "reading": "nallavar",
+      "confidence": "LOW",
+      "basis": "Phase-207 unanchored convergence: SA modal='nallavar' (cons=0.40 across 5 seeds). MEDIAL position dominant. freq=43. DEDR 3594: nallavar='good people/nobles'. Corroborates M861=nallavar [LOW] as allograph or inscriptional variant. Honorific plural consistent with title-formula grammar.",
+      "source": "Phase-207 SA unanchored convergence",
+      "_phase209_new_entry": true
+    },
+    "M817": {
+      "reading": "nallavar",
+      "confidence": "LOW",
+      "basis": "Phase-207 unanchored convergence: SA modal='nallavar' (cons=0.40 across 5 seeds). MEDIAL position dominant. freq=107. DEDR 3594: nallavar='good people/nobles'. High frequency (107) suggests core title-formula sign. Third nallavar cluster entry (alongside M861 [LOW] and M712 [LOW]), pointing to nallavar as productive title formula element in IVC epigraphy.",
+      "source": "Phase-207 SA unanchored convergence",
+      "_phase209_new_entry": true
+    },
+    "M700": {
+      "reading": "aru/aRu",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-207 unanchored: SA modal='aru' (cons=0.40). MEDIAL dominant (m_rate=0.834). Very high frequency (freq=355, 3rd most common M77 sign). PDr candidates: (1) aaRu=six (DEDR 338, Tamil numeral) -- would pair with M059=7 numeral anchor; (2) av/ar=he/it distal pronoun (DEDR 255). CANDIDATE status pending DEDR disambiguation. Numeral interpretation preferred given M059=7 precedent and MEDIAL position (numerals appear in counting context).",
+      "source": "Phase-207 SA unanchored convergence",
+      "_phase209_new_entry": true
+    },
+    "M527": {
+      "reading": "valli",
+      "confidence": "CANDIDATE",
+      "basis": "UPDATED Phase-214: Phase 213 SA modal='valli' (cons=0.40) -- NOT 'katai' as originally assigned. PDr valli = creeper vine, woman's name (DEDR 5313). Phase 209 had assigned katai=story/end/shop (DEDR 1161); SA consistently assigns valli not katai. Update: katai -> valli. CANDIDATE status maintained pending ICIT validation.",
+      "source": "Phase-213 SA correction + Phase-209 entry",
+      "_phase209_new_entry": true,
+      "_phase214_update": true
+    },
+    "M790": {
+      "reading": "erumai",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-213 unanchored convergence: SA modal='erumai' (cons=0.60, highest among unanchored). freq=48. DEDR 825: erumai = water buffalo, cow (PDr). IVC water buffalo (Bubalus bubalis) motif documented on seals. Iconographic match: buffalo sign -> erumai PDr reading consistent with M062=erutu (bull/ox). CANDIDATE status: iconographic validation against Parpola/Wells buffalo seals pending.",
+      "source": "Phase-213 SA unanchored convergence",
+      "_phase214_new_entry": true
+    },
+    "M858": {
+      "reading": "nallavar",
+      "confidence": "LOW",
+      "basis": "Phase-213 unanchored convergence: SA modal='nallavar' (cons=0.60, highest among unanchored). freq=105. DEDR 3594: nallavar = good people/nobles. 5th member of the nallavar honorific cluster: M077=nal [HIGH], M692=nal/nall [MEDIUM], M712=nallavar [LOW], M817=nallavar [LOW], M861=nallavar [LOW]. HIGH consistency (0.6) justified for LOW entry in well-established cluster. Note: M858 previously had SA modal=min (Phase 197, cons=0.2) -- cons=0.6 in Phase 213 reflects improved convergence from expanded nallavar anchor cluster.",
+      "source": "Phase-213 SA unanchored convergence",
+      "_phase214_new_entry": true
     }
   },
   "_citation": {
@@ -2743,6 +2786,30 @@
       "M391",
       "M047",
       "M162"
+    ]
+  },
+  "_phase214_blocked_state": {
+    "current_state": "408 + 2 new = 410 anchors. 37/64 M77 signs anchored (57.8%)",
+    "all_sa_candidates_exhausted": true,
+    "remaining_unanchored_cons04_plus": [
+      "M480=venni (0.4)",
+      "M920=pamp (0.4)",
+      "M506=toti (0.4)"
+    ],
+    "remaining_unanchored_cons02": [
+      "M718, M526, M503, M872, M173, M748 (all 0.2)"
+    ],
+    "blockers": [
+      "ICIT corpus needed for /sum/, /gu/, /ab/, /ba/, /shu/ absent phonemes",
+      "Epigraphist validation needed for CANDIDATE-level entries before upgrading",
+      "Full IVC sign inventory (~400 signs) vs M77 (64 signs): 336 signs not yet analyzable",
+      "SA convergence plateauing: D_ALL mean_c=0.5250 (Phase 213) with current anchor set"
+    ],
+    "unblocking_pathways": [
+      "Acquire ICIT corpus -> resolve 5 remaining absent phonemes",
+      "Obtain Parpola/Wells sign list cross-reference -> analyze all ~400 IVC signs",
+      "Epigraphist collaboration -> validate/reject CANDIDATE entries",
+      "New archaeological finds -> additional IVC texts or bilingual materials"
     ]
   }
 }

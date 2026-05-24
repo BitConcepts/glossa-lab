@@ -2679,13 +2679,24 @@
       "_phase214_new_entry": true
     },
     "P324": {
-      "reading": "[TITLE_PREFIX]",
+      "reading": "kuti",
       "confidence": "CANDIDATE",
       "basis": "Phase-221: INITIAL-dominant (I=0.78, freq=99 in CISI). Pre-context: nakaram (place), kāṇṭāmirukam (rhinoceros), kaḷiṟu (elephant). Post-context: P332 (ko-vowel candidate), P086=oru. Hypothesis: administrative title prefix or high-status determinative. Function parallel to M267 (genitive prefix) but appears at inscription start. CISI-exclusive sign — not in Holdat M77 corpus. Epistemic status: CANDIDATE (slot clear; phonetic value uncertain).",
       "source": "Phase-222 CISI injection",
       "p_sign": "P324",
       "cisi_freq": 99,
-      "dominant_slot": "INITIAL"
+      "dominant_slot": "INITIAL",
+      "reading_alternatives": [
+        "kuti",
+        "[TITLE_PREFIX]"
+      ],
+      "dedr": "1638",
+      "function": "CLAN_CLASSIFIER",
+      "pos_class": "INITIAL",
+      "phase_reading_updated": 237,
+      "elamite_cognate": "kut/kud (Elamite: family/clan/house, MC-06, Phase-235)",
+      "sanskrit_loanword": "kuti/kuTira (Sanskrit: hut/clan-shelter, SL-07, Phase-236)",
+      "note_phase237": "Phase-234 context analysis: INITIAL 86%, precedes P122 frequently, best reading kuTi (DEDR 1638, family/clan). Corroborated by Elamite kut/kud (Phase-235) and Sanskrit kuti (Phase-236). Holdat analog: M267 (iN/in, MEDIUM genitive). Low candidate: pending SA confirmation."
     },
     "P385": {
       "reading": "[TERMINAL_SUFFIX]",

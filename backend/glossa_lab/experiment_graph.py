@@ -2683,6 +2683,17 @@ try:
 except Exception as _p226228_exc:  # noqa: BLE001
     logger.warning("Phase-226-228 nodes not registered: %s", _p226228_exc)
 
+# ── Phase-229 node (CISI anchor SA test, M122 upgrade)
+try:
+    from glossa_lab.experiment_graph_phase229 import (
+        _phase229_node_defs as _p229_defs,  # noqa: PLC0415
+    )
+    for _d in _p229_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-229 nodes", len(_p229_defs()))
+except Exception as _p229_exc:  # noqa: BLE001
+    logger.warning("Phase-229 nodes not registered: %s", _p229_exc)
+
 # ── Graph execution
 
 def _topo_sort(nodes: list[dict], edges: list[dict]) -> list[dict]:

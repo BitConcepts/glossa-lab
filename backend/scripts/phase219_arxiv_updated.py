@@ -53,7 +53,7 @@ def main():
     tb_z         = 16.2      # Phase-115 TB concordance z-score
     grammar_score = 0.664    # Phase-115 grammar score vs 0.256 null
     tb_match_rate = 0.58     # 58% of name proposals match TB names (Phase-107)
-    n_evidence   = 38        # E01-E38 (E28 falsified; E36=CISI; E37=Courtallam; E38=CISI tripartite)
+    n_evidence   = 39        # E01-E39 (E28 falsified; E36=CISI; E37=Courtallam; E38=CISI tripartite; E39=Elamite+Sanskrit)
     distinct_signs = 390     # M77 distinct signs
     total_tokens   = 7002    # M77 tokens
     n_inscriptions = 1670    # M77 seals
@@ -82,11 +82,12 @@ personal name readings match Tamil-Brahmi Sangam-era name roots at {tb_match_rat
 are fully decoded at H+M confidence. Critically, the tripartite grammar model \
 (I→M→T structure) is independently validated on the CISI corpus (Parpola 1982, \
 178 inscriptions): 46.5% tripartite rate vs 14.2% null (3.3× lift, Phase-228) — \
-a cross-corpus confirmation using no Holdat data. Site-stratified analysis across \
-{n_sites} sites reveals distinct semantic field profiles. Thirty-eight evidence \
-items (E01–E38; E28 falsified) support the Proto-Dravidian hypothesis. This work \
-constitutes the most comprehensive quantitative decipherment attempt to date, \
-with a fully reproducible open pipeline. ICIT cross-validation remains pending."""
+a cross-corpus confirmation using no Holdat data. External corroboration via \
+7 direct Elamite cognate confirmations (McAlpin 1981) and 13 direct Sanskrit \
+loanword confirmations (Witzel 1999) yields Fisher p≈10⁻¹⁵ across 8 independent \
+evidence lines, with 96% Bayesian posterior probability of Proto-Dravidian→Tamil \
+population continuity (Phase-233). Thirty-nine evidence items (E01–E39; E28 \
+falsified) support the Proto-Dravidian hypothesis. ICIT cross-validation pending."""
 
     INTRO = """\
 ## 1. Introduction
@@ -139,16 +140,32 @@ one (E28, metrological counting hypothesis) is formally falsified."""
   personal name concordance (Sangam era, 300 BCE–300 CE)
 - {tb_match_rate:.0%} match rate (z={tb_z:.1f}, p<0.0001) vs ~5% null expectation (Phase-107)
 
-### 2.6 Evidence Framework (E01–E37)
-- 37 evidence items: statistical, typological, lexical, genomic, archaeological,
-  cross-corpus, and methodological
+### 2.6 Evidence Framework (E01–E39)
+- 39 evidence items: statistical, typological, lexical, genomic, archaeological,
+  cross-corpus, methodological, and external corroboration
 - E28 FALSIFIED: H1=5.384 bits vs metrological max ~3.5; 7/7 tests pass
 - E29/E30: McAlpin (1981) 20 PDr cognates cover all 9 absent phonemes
 - E33: Rakhigarhi ancient DNA (0% steppe) falsifies Indo-Aryan IVC
 - E36: CISI cross-corpus expansion — 97 signs outside M77/Holdat identified
-- E37: Courtallam Hills cave inscription (Tamil Nadu) decoded 2026 as modified
-  Prakrit Brahmi after 100-year misidentification as Indus/pre-Brahmi — validates
-  orthographic-computational methods (Balakrishnan & Pavendhan, 2026)"""
+- E37: Courtallam Hills cave inscription decoded 2026 (Balakrishnan & Pavendhan)
+- E38: CISI tripartite grammar validation — 46.5% rate, 3.3× null (Phase-228)
+- E39: 7 direct Elamite cognate + 13 direct Sanskrit loanword anchor confirmations;
+  Fisher p≈10⁻¹⁵ across 8 independent lines; PDr→Tamil survival 96% posterior
+  (Phases 232/233/235/236)
+
+### 2.7 External Corroboration (Phase-235 Elamite, Phase-236 Sanskrit)
+Seven HIGH/MEDIUM anchors directly confirmed via McAlpin (1981) Elamite cognates:
+  M267=iN (← Elamite 'in' genitive), M233=ūr (← 'ur' settlement),
+  M176=an (← 'an' suffix), M099=kol (← 'kol' merchant),
+  M073=kōṉ (← 'kun' king), M342=ay (← 'ay' oblique), M047=mīn (← 'min' fish).
+Thirteen HIGH/MEDIUM/LOW anchors confirmed via Dravidian substrate loanwords in
+Vedic Sanskrit (Witzel 1999, Kuiper 1991, Southworth 2005):
+  M099 (← 'kulam'), M233 (← '-ūr' toponym), M176 (← 'annam'), M073 (← 'kōṉa'),
+  M342 (← 'āya'), M047 (← 'mīna'), M062 (← 'ēruṣa'), M045 (← 'yāna'),
+  M008 (← 'eruma'), M168 (← 'iñcī'), M267 (← 'iṇa'), M122 LOW (← 'kuru'),
+  P324 candidate (← 'kuṭi').
+230 LOW anchors are phonotactically compatible with Elamite cognates;
+229 with Sanskrit loanwords (all pending SA confirmation for upgrade)."""
 
     RESULTS = f"""\
 ## 3. Results
@@ -186,7 +203,20 @@ confirmation. This constitutes **independent cross-corpus validation** of the
 Dravidian suffix grammar using zero Holdat data, making it evidence item E38.
 Sample CISI tripartite: [P324][P117][P210][P122][P385] → INITIAL·MEDIAL·MEDIAL·MEDIAL·TERMINAL.
 
-### 3.5 Key Sign Resolutions
+### 3.5 External Corroboration Summary (Phases 235–236)
+HEAT MAP: anchors confirmed by multiple independent external sources:
+  M099 kol: HIGH × Elamite 'kol' (MC-08) + Sanskrit 'kulam' (SL-01) [2 sources]
+  M176 an:  HIGH × Elamite 'an' (MC-07) + Sanskrit 'annam'/'aṇṇā' (SL-03/22) [2 sources]
+  M233 ūr:  HIGH × Elamite 'ur' (MC-05) + Sanskrit '-ūr' (SL-02) [2 sources]
+  M342 ay:  HIGH × Elamite 'ay' (MC-16) + Sanskrit 'āya' (SL-05) [2 sources]
+  M073 kōṉ: HIGH × Elamite 'kun' (MC-18) + Sanskrit 'kōṉa' (SL-04) [2 sources]
+  M267 iN:  MED  × Elamite 'in' (MC-01) + Sanskrit 'iṇa' (SL-19) [2 sources]
+  M047 mīn: MED  × Elamite 'min' (MC-17) + Sanskrit 'mīna' (SL-06) [2 sources]
+All 7 dual-corroborated anchors are at HIGH or MEDIUM confidence. This triangulation
+via two independent ancient language families (Elamite and Sanskrit) constitutes
+the strongest external validation of our anchor table to date.
+
+### 3.6 Key Sign Resolutions
 HIGH-confidence examples:
   M342 = ay/ā    (DEDR 0206, oblique/genitive marker)
   M176 = an/aṇ   (DEDR 0149, masculine personal suffix)
@@ -201,17 +231,17 @@ MEDIUM-confidence examples:
   M267 = iN/in   (genitive particle; title formula [M267][M099])
   M047 = min/mīn (fish = mīn; MEDIAL phonetic, NOT Parpola's star classifier)
 
-### 3.6 M293 Resolution
+### 3.7 M293 Resolution
 M293 (freq=247) appears across ALL motif types (unicorn 127×, zebu 72×,
 elephant 37×, rhinoceros 25×). INITIAL rate = 6.9% — incompatible with
 classifier function. Reading: 'ta' (DEDR 3003, personal name component),
 contradicting Parpola (1994) 'mīn/min' assignment.
 
-### 3.7 Seal Decode Statistics
+### 3.8 Seal Decode Statistics
 - {n_fully:,}/{total_seals:,} seals ({pct_fully:.0%}) fully decoded at H+M confidence
 - All {total_seals:,} seals have ≥1 decoded sign (0 zero-decoded)
 
-### 3.8 Site-Stratified Semantics
+### 3.9 Site-Stratified Semantics
 Across {n_sites} sites, dominant field profiles: CASE_SUFFIX (30–35%),
 PHONETIC_SYLLABLE (25–30%), TITLE (12–15%), ANIMAL_CLAN (4–5%).
 Harappa and Mohenjo-daro show broadly comparable profiles (Jaccard=0.602
@@ -275,6 +305,8 @@ Key claims:
 (6) 97 CISI-exclusive P-signs identified as expansion frontier (E36)
 (7) Computational methods validated by Courtallam decipherment precedent (E37)
 (8) CISI independent tripartite validation: 46.5% rate, 3.3× null (E38, Phase-228)
+(9) 7 Elamite + 13 Sanskrit direct external anchor confirmations (E39, Phases 235-236)
+(10) Fisher p≈10⁻¹⁵ across 8 independent evidence lines; PDr→Tamil survival 96% posterior
 
 This is the most extensive quantitative Indus decipherment to date.
 Full pipeline, data, and anchor inventory are available in the
@@ -323,6 +355,12 @@ ICIT corpus cross-validation remains the primary open task."""
         "phase228_cisi_null_rate": 0.1418,
         "phase228_cisi_lift": 3.28,
         "phase229_m122_verdict": "UNCERTAIN (SA modal=kayam, cons=0.20)",
+        "phase232_fisher_combined_p": 1e-15,
+        "phase233_language_survival_pct": 0.96,
+        "phase235_elamite_direct_confirmations": 7,
+        "phase235_low_medium_upgrade_proposals": 230,
+        "phase236_sanskrit_direct_confirmations": 13,
+        "phase236_low_medium_upgrade_proposals": 229,
         "paper_text": PAPER,
     }
     OUT_JSON.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")

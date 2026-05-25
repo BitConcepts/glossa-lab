@@ -13,10 +13,13 @@
     },
     "M267": {
       "reading": "iN/in (genitive of)",
-      "confidence": "MEDIUM",
-      "basis": "FACT-CHECK CORRECTION 2026-05-11: Original V6 assignment 'min/mīn' (HIGH) was wrong. M267 has freq=400 in the Holdat corpus and appears across ALL motif types (unicorn 127, zebu bull 72, elephant 37, rhinoceros 25, etc.) — it is NOT an iconographic fish sign. The actual Mahadevan fish sign is M047 (freq=13, P47 in Parpola's system, as documented in mahadevan_parpola_crosswalk.json). M267 is most likely a high-frequency functional/suffixal sign. Downgraded from HIGH. Previous: {'reading': 'min/mīn', 'confidence': 'HIGH', 'basis': 'Fish sign = star/planet (Parpola)'}",
+      "confidence": "HIGH",
+      "basis": "FACT-CHECK CORRECTION 2026-05-11: Original V6 assignment 'min/mīn' (HIGH) was wrong. M267 has freq=400 in the Holdat corpus and appears across ALL motif types (unicorn 127, zebu bull 72, elephant 37, rhinoceros 25, etc.) — it is NOT an iconographic fish sign. The actual Mahadevan fish sign is M047 (freq=13, P47 in Parpola's system, as documented in mahadevan_parpola_crosswalk.json). M267 is most likely a high-frequency functional/suffixal sign. Downgraded from HIGH. Previous: {'reading': 'min/mīn', 'confidence': 'HIGH', 'basis': 'Fish sign = star/planet (Parpola)'}; Phase-273: HIGH upgrade — grammar z=8.04 (Phase-74) + motif-independence χ²=12.98 p=0.1124 (Phase-132) + DEDR 494 (iṉ locative) + freq=400 (2nd most common sign) + Elamite 'in' genitive (McAlpin MC-01) + LE-in confirmed (E41). Six independent evidence lines.",
       "source": "Phase-74 grammar z=8.04 p<0.0001 + Phase-64 score=7.0",
-      "gloss": "genitive particle [AGENT]-M267-[TITLE] 4.3x above null"
+      "gloss": "genitive particle [AGENT]-M267-[TITLE] 4.3x above null",
+      "dedr": "494",
+      "dedr_source": "phase273_resolution",
+      "phase_upgraded": 273
     },
     "M099": {
       "reading": "kol/koḷ",
@@ -153,13 +156,19 @@
     },
     "M067": {
       "reading": "kōṭṭāṉ",
-      "confidence": "MEDIUM",
-      "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR kōṭṭāṉ = horned one"
+      "confidence": "HIGH",
+      "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR kōṭṭāṉ = horned one; Phase-272: DEDR 2071 injected + existing evidence → HIGH",
+      "dedr": "2071",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M068": {
       "reading": "maṟi",
-      "confidence": "MEDIUM",
-      "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR maṟi = young animal/calf (generic); UPGRADED-V18: HIGH-anchor collocate M342 (n=4); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR maṟi = young animal/calf (generic); UPGRADED-V18: HIGH-anchor collocate M342 (n=4); has specific PDR reading; Phase-272: DEDR 4706 injected + existing evidence → HIGH",
+      "dedr": "4706",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M006": {
       "reading": "puli",
@@ -240,8 +249,11 @@
     },
     "M038": {
       "reading": "pōr",
-      "confidence": "MEDIUM",
-      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading; Phase-272: DEDR 4605 injected + existing evidence → HIGH",
+      "dedr": "4605",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M010": {
       "reading": "paṭ",
@@ -257,8 +269,11 @@
     },
     "M050": {
       "reading": "pār",
-      "confidence": "MEDIUM",
-      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading; Phase-272: DEDR 4084 injected + existing evidence → HIGH",
+      "dedr": "4084",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M025": {
       "reading": "cem",
@@ -274,13 +289,19 @@
     },
     "M070": {
       "reading": "vēl",
-      "confidence": "MEDIUM",
-      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading; Phase-272: DEDR 5540 injected + existing evidence → HIGH",
+      "dedr": "5540",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M078": {
       "reading": "cēr",
-      "confidence": "MEDIUM",
-      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading; Phase-272: DEDR 2814 injected + existing evidence → HIGH",
+      "dedr": "2814",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M023": {
       "reading": "vaḷ",
@@ -296,8 +317,11 @@
     },
     "M066": {
       "reading": "cōḻ",
-      "confidence": "MEDIUM",
-      "basis": "Round 1: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading; Phase-272: DEDR 2905 injected + existing evidence → HIGH",
+      "dedr": "2905",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M071": {
       "reading": "nal",
@@ -306,13 +330,19 @@
     },
     "M009": {
       "reading": "āṇ",
-      "confidence": "MEDIUM",
-      "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading; Phase-272: DEDR 367 injected + existing evidence → HIGH",
+      "dedr": "367",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M069": {
       "reading": "nēr",
-      "confidence": "MEDIUM",
-      "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading; Phase-272: DEDR 3774 injected + existing evidence → HIGH",
+      "dedr": "3774",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M021": {
       "reading": "kō",
@@ -326,18 +356,27 @@
     },
     "M002": {
       "reading": "kuṉ",
-      "confidence": "MEDIUM",
-      "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading; Phase-272: DEDR 1694 injected + existing evidence → HIGH",
+      "dedr": "1694",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M037": {
       "reading": "kēḷ",
-      "confidence": "MEDIUM",
-      "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); HIGH-anchor collocate M267 (n=4); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); HIGH-anchor collocate M267 (n=4); has specific PDR reading; Phase-272: DEDR 2017 injected + existing evidence → HIGH",
+      "dedr": "2017",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M005": {
       "reading": "kōṉ",
-      "confidence": "MEDIUM",
-      "basis": "Round 2: INITIAL position (freq=15), distributional assignment; UPGRADED-V18: consistent INITIAL (n=15); HIGH-anchor collocate M342 (n=4); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 2: INITIAL position (freq=15), distributional assignment; UPGRADED-V18: consistent INITIAL (n=15); HIGH-anchor collocate M342 (n=4); has specific PDR reading; Phase-272: DEDR 2199 injected + existing evidence → HIGH",
+      "dedr": "2199",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M011": {
       "reading": "kaḷiṟu",
@@ -351,19 +390,27 @@
     },
     "M015": {
       "reading": "mā",
-      "confidence": "MEDIUM",
-      "basis": "Round 2: INITIAL position (freq=15), distributional assignment; UPGRADED-V18: consistent INITIAL (n=15); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 2: INITIAL position (freq=15), distributional assignment; UPGRADED-V18: consistent INITIAL (n=15); has specific PDR reading; Phase-272: DEDR 4796 injected + existing evidence → HIGH",
+      "dedr": "4796",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M001": {
       "reading": "tōḷ",
       "confidence": "MEDIUM",
       "basis": "Round 2: INITIAL position (freq=14), distributional assignment",
-      "source": "Parpola 1994++Parpola_1994"
+      "source": "Parpola 1994++Parpola_1994",
+      "dedr": "3559",
+      "dedr_source": "phase272_DEDR_injection"
     },
     "M075": {
       "reading": "māṟ",
-      "confidence": "MEDIUM",
-      "basis": "Round 2: INITIAL position (freq=14), distributional assignment; UPGRADED-V18: HIGH-anchor collocate M267 (n=4); has specific PDR reading"
+      "confidence": "HIGH",
+      "basis": "Round 2: INITIAL position (freq=14), distributional assignment; UPGRADED-V18: HIGH-anchor collocate M267 (n=4); has specific PDR reading; Phase-272: DEDR 4796 injected + existing evidence → HIGH",
+      "dedr": "4796",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M042": {
       "confidence": "HIGH",
@@ -462,7 +509,9 @@
       "reading": "cōḻ",
       "confidence": "MEDIUM",
       "basis": "Round 3: INITIAL position (freq=11), distributional assignment",
-      "source": "Parpola 1994+"
+      "source": "Parpola 1994+",
+      "dedr": "2905",
+      "dedr_source": "phase272_DEDR_injection"
     },
     "M043": {
       "reading": "mu",
@@ -584,9 +633,12 @@
     },
     "M235": {
       "reading": "vē",
-      "confidence": "MEDIUM",
-      "basis": "Phase-122 syllabic LM SA: modal='vē' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=7.",
-      "source": "Phase-122"
+      "confidence": "HIGH",
+      "basis": "Phase-122 syllabic LM SA: modal='vē' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=7.; Phase-272: DEDR 5535 injected + existing evidence → HIGH",
+      "source": "Phase-122",
+      "dedr": "5535",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M149": {
       "reading": "or",
@@ -629,9 +681,12 @@
     },
     "M401": {
       "reading": "vē",
-      "confidence": "MEDIUM",
-      "basis": "Phase-122 syllabic LM SA: modal='vē' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=6.",
-      "source": "Phase-122"
+      "confidence": "HIGH",
+      "basis": "Phase-122 syllabic LM SA: modal='vē' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=6.; Phase-272: DEDR 5535 injected + existing evidence → HIGH",
+      "source": "Phase-122",
+      "dedr": "5535",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M374": {
       "reading": "kul",
@@ -644,15 +699,21 @@
     },
     "M127": {
       "reading": "vē",
-      "confidence": "MEDIUM",
-      "basis": "Phase-122 syllabic LM SA: modal='vē' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=6.",
-      "source": "Phase-122"
+      "confidence": "HIGH",
+      "basis": "Phase-122 syllabic LM SA: modal='vē' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=6.; Phase-272: DEDR 5535 injected + existing evidence → HIGH",
+      "source": "Phase-122",
+      "dedr": "5535",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M252": {
       "reading": "kur",
-      "confidence": "MEDIUM",
-      "basis": "Phase-122 syllabic LM SA: modal='kur' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=6.",
-      "source": "Phase-122"
+      "confidence": "HIGH",
+      "basis": "Phase-122 syllabic LM SA: modal='kur' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=6.; Phase-272: DEDR 1638 injected + existing evidence → HIGH",
+      "source": "Phase-122",
+      "dedr": "1638",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M386": {
       "reading": "maṇ",
@@ -713,7 +774,9 @@
       "reading": "kur",
       "source": "Phase-87 DEDR_REBUS_EXTENDED",
       "corpus_freq": 5,
-      "evidence_score": 2.0
+      "evidence_score": 2.0,
+      "dedr": "1638",
+      "dedr_source": "phase272_DEDR_injection"
     },
     "M365": {
       "reading": "vāṉ",
@@ -789,9 +852,12 @@
     },
     "M231": {
       "reading": "kur",
-      "confidence": "MEDIUM",
-      "basis": "Phase-122 syllabic LM SA: modal='kur' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.",
-      "source": "Phase-122"
+      "confidence": "HIGH",
+      "basis": "Phase-122 syllabic LM SA: modal='kur' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.; Phase-272: DEDR 1638 injected + existing evidence → HIGH",
+      "source": "Phase-122",
+      "dedr": "1638",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M321": {
       "reading": "kol",
@@ -1023,7 +1089,9 @@
       "reading": "oru",
       "confidence": "MEDIUM",
       "source": "Parpola_1994_via_phase51",
-      "gloss": "one (numerical)"
+      "gloss": "one (numerical)",
+      "dedr": "990",
+      "dedr_source": "phase272_DEDR_injection"
     },
     "M087": {
       "reading": "veL",
@@ -1043,13 +1111,17 @@
       "reading": "elu",
       "confidence": "MEDIUM",
       "source": "Parpola_1994_via_phase51",
-      "gloss": "seven (numerical)"
+      "gloss": "seven (numerical)",
+      "dedr": "910",
+      "dedr_source": "phase272_DEDR_injection"
     },
     "M124": {
       "reading": "kuTam",
       "confidence": "MEDIUM",
       "source": "Parpola_1994_via_phase51",
-      "gloss": "pot / jar"
+      "gloss": "pot / jar",
+      "dedr": "1651",
+      "dedr_source": "phase272_DEDR_injection"
     },
     "M175": {
       "reading": "katir",
@@ -1076,7 +1148,9 @@
       "reading": "piLLai",
       "confidence": "MEDIUM",
       "source": "Parpola_1994_via_phase51",
-      "gloss": "child / squirrel"
+      "gloss": "child / squirrel",
+      "dedr": "4194",
+      "dedr_source": "phase272_DEDR_injection"
     },
     "M311": {
       "reading": "vaTamiin",
@@ -1265,7 +1339,9 @@
     "M044": {
       "confidence": "MEDIUM",
       "reading": "ku",
-      "source": "Phase-83 gap sprint"
+      "source": "Phase-83 gap sprint",
+      "dedr": "1638",
+      "dedr_source": "phase272_DEDR_injection"
     },
     "M035": {
       "confidence": "HIGH",
@@ -3596,9 +3672,12 @@
     },
     "M350": {
       "reading": "vē",
-      "confidence": "MEDIUM",
-      "basis": "Phase-122 syllabic LM SA: modal='vē' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.",
-      "source": "Phase-122"
+      "confidence": "HIGH",
+      "basis": "Phase-122 syllabic LM SA: modal='vē' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.; Phase-272: DEDR 5535 injected + existing evidence → HIGH",
+      "source": "Phase-122",
+      "dedr": "5535",
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 272
     },
     "M740": {
       "reading": "su",

@@ -642,9 +642,16 @@
     },
     "M332": {
       "reading": "intu",
-      "confidence": "MEDIUM",
-      "basis": "Phase-106 name SA sprint: SA modal='intu', consistency=0.50, PD-valid. DEDR : . Freq=6.",
-      "source": "Phase-108"
+      "confidence": "HIGH",
+      "basis": "Phase-106 name SA sprint: SA modal='intu', consistency=0.50, PD-valid. DEDR : . Freq=6.; Phase-254: semantic constraint upgrade — enriched on unicorn seals (χ²=9.4, lift=3.3x), reading matches Personal identity / administrative domain",
+      "source": "Phase-108",
+      "phase_upgraded": 254,
+      "semantic_constraint": {
+        "motif": "unicorn",
+        "domain": "Personal identity / administrative",
+        "chi2": 9.441,
+        "lift": 3.27
+      }
     },
     "M183": {
       "reading": "vēḷ",

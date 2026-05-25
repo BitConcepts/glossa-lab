@@ -2716,16 +2716,16 @@ try:
 except Exception as _p235236_exc:  # noqa: BLE001
     logger.warning("Phase-235-236 nodes not registered: %s", _p235236_exc)
 
-# ── Phase-248-253 nodes (ceiling-breaker mine, allograph experiments, CISI allograph)
+# ── Phase-248-254 nodes (ceiling-breaker mine, allograph experiments, CISI allograph, semantic constraint)
 try:
     from glossa_lab.experiment_graph_phase248_253 import (
-        _phase248_253_node_defs as _p248253_defs,  # noqa: PLC0415
+        _phase248_254_node_defs as _p248254_defs,  # noqa: PLC0415
     )
-    for _d in _p248253_defs():
+    for _d in _p248254_defs():
         ATOMIC_NODES[_d.id] = _d
-    logger.info("Registered %d Phase-248-253 nodes", len(_p248253_defs()))
-except Exception as _p248253_exc:  # noqa: BLE001
-    logger.warning("Phase-248-253 nodes not registered: %s", _p248253_exc)
+    logger.info("Registered %d Phase-248-254 nodes", len(_p248254_defs()))
+except Exception as _p248254_exc:  # noqa: BLE001
+    logger.warning("Phase-248-254 nodes not registered: %s", _p248254_exc)
 
 # ── Graph execution
 

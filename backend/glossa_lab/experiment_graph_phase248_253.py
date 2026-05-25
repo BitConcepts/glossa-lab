@@ -1,10 +1,11 @@
-"""Experiment graph node definitions for Phases 248–253.
+"""Experiment graph node definitions for Phases 248–254.
 
 Phase-248: Ceiling-breaker literature mine (identify actionable experiments)
 Phase-249: Ceiling experiments design (allograph, semantic scope, commodity, LE vocab)
 Phase-250/251: Full corpus allograph + commodity analysis
 Phase-252: Allograph detection → 56 MEDIUM→HIGH upgrades (HIGH 105→125)
 Phase-253: CISI allograph clustering (P-sign ↔ HIGH M-sign cross-corpus)
+Phase-254: Seal-type semantic constraint analysis (motif-enriched MEDIUM→HIGH)
 """
 from __future__ import annotations
 
@@ -31,7 +32,7 @@ def _phase_runner(script: str, output_json: str):
     return _run
 
 
-def _phase248_253_node_defs() -> list[AtomicNodeDef]:
+def _phase248_254_node_defs() -> list[AtomicNodeDef]:
     return [
         AtomicNodeDef(
             "IndusPhase248CeilingMine",
@@ -112,5 +113,22 @@ def _phase248_253_node_defs() -> list[AtomicNodeDef]:
             ],
             params_schema={"type": "object", "properties": {}},
             fn=_phase_runner("phase253_cisi_allograph.py", "phase253_cisi_allograph.json"),
+        ),
+        AtomicNodeDef(
+            "IndusPhase254SemanticConstraint",
+            "Phase-254: Seal-Type Semantic Constraint",
+            "Indus Decipherment",
+            "Motif-enrichment analysis: MEDIUM signs strongly associated with a seal motif "
+            "(unicorn/zebu/elephant/rhino/tiger) have readings checked against the semantic "
+            "domain of that motif. Domain-matched signs with chi2>6.64 and lift>2.0 → HIGH.",
+            inputs=[],
+            outputs=[
+                {"name": "n_upgraded", "type": "number"},
+                {"name": "upgrade_log", "type": "array"},
+                {"name": "top_enrichments", "type": "array"},
+                {"name": "stdout", "type": "text"},
+            ],
+            params_schema={"type": "object", "properties": {}},
+            fn=_phase_runner("phase254_semantic_constraint.py", "phase254_semantic_constraint.json"),
         ),
     ]

@@ -1,0 +1,786 @@
+{
+  "phase": 255,
+  "generated_at": "2026-05-25T00:47:16.336021+00:00",
+  "n_trade_seals": 419,
+  "n_medium_analysed": 281,
+  "n_commodity_matches": 35,
+  "n_upgrade_candidates": 8,
+  "n_upgraded": 8,
+  "upgrade_log": [
+    {
+      "sign": "M010",
+      "reading": "paṭ",
+      "commodity": "agate",
+      "pdr": "akatti",
+      "dedr": "7",
+      "trade_seal_count": 6,
+      "upgrade": "MEDIUM→HIGH"
+    },
+    {
+      "sign": "M082",
+      "reading": "pa",
+      "commodity": "agate",
+      "pdr": "akatti",
+      "dedr": "7",
+      "trade_seal_count": 3,
+      "upgrade": "MEDIUM→HIGH"
+    },
+    {
+      "sign": "M220",
+      "reading": "al",
+      "commodity": "agate",
+      "pdr": "akatti",
+      "dedr": "7",
+      "trade_seal_count": 9,
+      "upgrade": "MEDIUM→HIGH"
+    },
+    {
+      "sign": "M025",
+      "reading": "cem",
+      "commodity": "copper",
+      "pdr": "cempu",
+      "dedr": "2781",
+      "trade_seal_count": 5,
+      "upgrade": "MEDIUM→HIGH"
+    },
+    {
+      "sign": "M065",
+      "reading": "kuTam",
+      "commodity": "agate",
+      "pdr": "akatti",
+      "dedr": "7",
+      "trade_seal_count": 49,
+      "upgrade": "MEDIUM→HIGH"
+    },
+    {
+      "sign": "M023",
+      "reading": "vaḷ",
+      "commodity": "agate",
+      "pdr": "akatti",
+      "dedr": "7",
+      "trade_seal_count": 6,
+      "upgrade": "MEDIUM→HIGH"
+    },
+    {
+      "sign": "M074",
+      "reading": "ker",
+      "commodity": "sesame",
+      "pdr": "eḷḷu",
+      "dedr": "839",
+      "trade_seal_count": 4,
+      "upgrade": "MEDIUM→HIGH"
+    },
+    {
+      "sign": "M007",
+      "reading": "aaL",
+      "commodity": "agate",
+      "pdr": "akatti",
+      "dedr": "7",
+      "trade_seal_count": 4,
+      "upgrade": "MEDIUM→HIGH"
+    }
+  ],
+  "commodity_matches": [
+    {
+      "sign": "M262",
+      "reading": "i",
+      "trade_seal_count": 1,
+      "total_freq": 5,
+      "commodity_matches": [
+        {
+          "commodity": "carnelian",
+          "pdr": "cēṭi",
+          "dedr": "2806",
+          "matched_phoneme": "ṭi"
+        },
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "tti"
+        },
+        {
+          "commodity": "cotton",
+          "pdr": "parutti",
+          "dedr": "3986",
+          "matched_phoneme": "tti"
+        },
+        {
+          "commodity": "tin",
+          "pdr": "kaḷimpu",
+          "dedr": "1313",
+          "matched_phoneme": "ḷi"
+        },
+        {
+          "commodity": "shell",
+          "pdr": "ciṉṉi",
+          "dedr": "2519",
+          "matched_phoneme": "ci"
+        }
+      ],
+      "n_commodities": 5
+    },
+    {
+      "sign": "M178",
+      "reading": "i",
+      "trade_seal_count": 0,
+      "total_freq": 5,
+      "commodity_matches": [
+        {
+          "commodity": "carnelian",
+          "pdr": "cēṭi",
+          "dedr": "2806",
+          "matched_phoneme": "ṭi"
+        },
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "tti"
+        },
+        {
+          "commodity": "cotton",
+          "pdr": "parutti",
+          "dedr": "3986",
+          "matched_phoneme": "tti"
+        },
+        {
+          "commodity": "tin",
+          "pdr": "kaḷimpu",
+          "dedr": "1313",
+          "matched_phoneme": "ḷi"
+        },
+        {
+          "commodity": "shell",
+          "pdr": "ciṉṉi",
+          "dedr": "2519",
+          "matched_phoneme": "ci"
+        }
+      ],
+      "n_commodities": 5
+    },
+    {
+      "sign": "M010",
+      "reading": "paṭ",
+      "trade_seal_count": 6,
+      "total_freq": 17,
+      "commodity_matches": [
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "a"
+        },
+        {
+          "commodity": "cotton",
+          "pdr": "parutti",
+          "dedr": "3986",
+          "matched_phoneme": "pa"
+        },
+        {
+          "commodity": "weight/measure",
+          "pdr": "pala",
+          "dedr": "3987",
+          "matched_phoneme": "pa"
+        }
+      ],
+      "n_commodities": 3
+    },
+    {
+      "sign": "M082",
+      "reading": "pa",
+      "trade_seal_count": 3,
+      "total_freq": 7,
+      "commodity_matches": [
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "a"
+        },
+        {
+          "commodity": "cotton",
+          "pdr": "parutti",
+          "dedr": "3986",
+          "matched_phoneme": "pa"
+        },
+        {
+          "commodity": "weight/measure",
+          "pdr": "pala",
+          "dedr": "3987",
+          "matched_phoneme": "pa"
+        }
+      ],
+      "n_commodities": 3
+    },
+    {
+      "sign": "M190",
+      "reading": "paṉ",
+      "trade_seal_count": 2,
+      "total_freq": 5,
+      "commodity_matches": [
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "a"
+        },
+        {
+          "commodity": "cotton",
+          "pdr": "parutti",
+          "dedr": "3986",
+          "matched_phoneme": "pa"
+        },
+        {
+          "commodity": "weight/measure",
+          "pdr": "pala",
+          "dedr": "3987",
+          "matched_phoneme": "pa"
+        }
+      ],
+      "n_commodities": 3
+    },
+    {
+      "sign": "M295",
+      "reading": "paṟ",
+      "trade_seal_count": 1,
+      "total_freq": 5,
+      "commodity_matches": [
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "a"
+        },
+        {
+          "commodity": "cotton",
+          "pdr": "parutti",
+          "dedr": "3986",
+          "matched_phoneme": "pa"
+        },
+        {
+          "commodity": "weight/measure",
+          "pdr": "pala",
+          "dedr": "3987",
+          "matched_phoneme": "pa"
+        }
+      ],
+      "n_commodities": 3
+    },
+    {
+      "sign": "M094",
+      "reading": "onpatu",
+      "trade_seal_count": 0,
+      "total_freq": 0,
+      "commodity_matches": [
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "a"
+        },
+        {
+          "commodity": "cotton",
+          "pdr": "parutti",
+          "dedr": "3986",
+          "matched_phoneme": "pa"
+        },
+        {
+          "commodity": "weight/measure",
+          "pdr": "pala",
+          "dedr": "3987",
+          "matched_phoneme": "pa"
+        }
+      ],
+      "n_commodities": 3
+    },
+    {
+      "sign": "M220",
+      "reading": "al",
+      "trade_seal_count": 9,
+      "total_freq": 62,
+      "commodity_matches": [
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "a"
+        },
+        {
+          "commodity": "stone standard",
+          "pdr": "kal",
+          "dedr": "1298",
+          "matched_phoneme": "kal"
+        }
+      ],
+      "n_commodities": 2
+    },
+    {
+      "sign": "M025",
+      "reading": "cem",
+      "trade_seal_count": 5,
+      "total_freq": 17,
+      "commodity_matches": [
+        {
+          "commodity": "copper",
+          "pdr": "cempu",
+          "dedr": "2781",
+          "matched_phoneme": "ce"
+        },
+        {
+          "commodity": "sesame",
+          "pdr": "eḷḷu",
+          "dedr": "839",
+          "matched_phoneme": "e"
+        }
+      ],
+      "n_commodities": 2
+    },
+    {
+      "sign": "M143",
+      "reading": "maṇ",
+      "trade_seal_count": 2,
+      "total_freq": 5,
+      "commodity_matches": [
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "a"
+        },
+        {
+          "commodity": "timber",
+          "pdr": "maram",
+          "dedr": "4711",
+          "matched_phoneme": "ma"
+        }
+      ],
+      "n_commodities": 2
+    },
+    {
+      "sign": "M237",
+      "reading": "ce",
+      "trade_seal_count": 1,
+      "total_freq": 8,
+      "commodity_matches": [
+        {
+          "commodity": "copper",
+          "pdr": "cempu",
+          "dedr": "2781",
+          "matched_phoneme": "ce"
+        },
+        {
+          "commodity": "sesame",
+          "pdr": "eḷḷu",
+          "dedr": "839",
+          "matched_phoneme": "e"
+        }
+      ],
+      "n_commodities": 2
+    },
+    {
+      "sign": "M386",
+      "reading": "maṇ",
+      "trade_seal_count": 1,
+      "total_freq": 6,
+      "commodity_matches": [
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "a"
+        },
+        {
+          "commodity": "timber",
+          "pdr": "maram",
+          "dedr": "4711",
+          "matched_phoneme": "ma"
+        }
+      ],
+      "n_commodities": 2
+    },
+    {
+      "sign": "M281",
+      "reading": "piLLai",
+      "trade_seal_count": 1,
+      "total_freq": 4,
+      "commodity_matches": [
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "a"
+        },
+        {
+          "commodity": "weight/measure",
+          "pdr": "pala",
+          "dedr": "3987",
+          "matched_phoneme": "la"
+        }
+      ],
+      "n_commodities": 2
+    },
+    {
+      "sign": "M068",
+      "reading": "maṟi",
+      "trade_seal_count": 0,
+      "total_freq": 13,
+      "commodity_matches": [
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "a"
+        },
+        {
+          "commodity": "timber",
+          "pdr": "maram",
+          "dedr": "4711",
+          "matched_phoneme": "ma"
+        }
+      ],
+      "n_commodities": 2
+    },
+    {
+      "sign": "M221",
+      "reading": "al",
+      "trade_seal_count": 0,
+      "total_freq": 1,
+      "commodity_matches": [
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "a"
+        },
+        {
+          "commodity": "stone standard",
+          "pdr": "kal",
+          "dedr": "1298",
+          "matched_phoneme": "kal"
+        }
+      ],
+      "n_commodities": 2
+    },
+    {
+      "sign": "M712",
+      "reading": "nallavar",
+      "trade_seal_count": 0,
+      "total_freq": 0,
+      "commodity_matches": [
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "a"
+        },
+        {
+          "commodity": "weight/measure",
+          "pdr": "pala",
+          "dedr": "3987",
+          "matched_phoneme": "la"
+        }
+      ],
+      "n_commodities": 2
+    },
+    {
+      "sign": "M065",
+      "reading": "kuTam",
+      "trade_seal_count": 49,
+      "total_freq": 154,
+      "commodity_matches": [
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "a"
+        }
+      ],
+      "n_commodities": 1
+    },
+    {
+      "sign": "M023",
+      "reading": "vaḷ",
+      "trade_seal_count": 6,
+      "total_freq": 16,
+      "commodity_matches": [
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "a"
+        }
+      ],
+      "n_commodities": 1
+    },
+    {
+      "sign": "M074",
+      "reading": "ker",
+      "trade_seal_count": 4,
+      "total_freq": 12,
+      "commodity_matches": [
+        {
+          "commodity": "sesame",
+          "pdr": "eḷḷu",
+          "dedr": "839",
+          "matched_phoneme": "e"
+        }
+      ],
+      "n_commodities": 1
+    },
+    {
+      "sign": "M007",
+      "reading": "aaL",
+      "trade_seal_count": 4,
+      "total_freq": 11,
+      "commodity_matches": [
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "a"
+        }
+      ],
+      "n_commodities": 1
+    },
+    {
+      "sign": "M058",
+      "reading": "ke",
+      "trade_seal_count": 2,
+      "total_freq": 21,
+      "commodity_matches": [
+        {
+          "commodity": "sesame",
+          "pdr": "eḷḷu",
+          "dedr": "839",
+          "matched_phoneme": "e"
+        }
+      ],
+      "n_commodities": 1
+    },
+    {
+      "sign": "M078",
+      "reading": "cēr",
+      "trade_seal_count": 1,
+      "total_freq": 17,
+      "commodity_matches": [
+        {
+          "commodity": "carnelian",
+          "pdr": "cēṭi",
+          "dedr": "2806",
+          "matched_phoneme": "cē"
+        }
+      ],
+      "n_commodities": 1
+    },
+    {
+      "sign": "M124",
+      "reading": "kuTam",
+      "trade_seal_count": 1,
+      "total_freq": 3,
+      "commodity_matches": [
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "a"
+        }
+      ],
+      "n_commodities": 1
+    },
+    {
+      "sign": "M118",
+      "reading": "car",
+      "trade_seal_count": 1,
+      "total_freq": 3,
+      "commodity_matches": [
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "a"
+        }
+      ],
+      "n_commodities": 1
+    },
+    {
+      "sign": "M067",
+      "reading": "kōṭṭāṉ",
+      "trade_seal_count": 0,
+      "total_freq": 15,
+      "commodity_matches": [
+        {
+          "commodity": "ivory",
+          "pdr": "kōṭu",
+          "dedr": "2071",
+          "matched_phoneme": "kō"
+        }
+      ],
+      "n_commodities": 1
+    },
+    {
+      "sign": "M005",
+      "reading": "kōṉ",
+      "trade_seal_count": 0,
+      "total_freq": 15,
+      "commodity_matches": [
+        {
+          "commodity": "ivory",
+          "pdr": "kōṭu",
+          "dedr": "2071",
+          "matched_phoneme": "kō"
+        }
+      ],
+      "n_commodities": 1
+    },
+    {
+      "sign": "M365",
+      "reading": "vāṉ",
+      "trade_seal_count": 0,
+      "total_freq": 5,
+      "commodity_matches": [
+        {
+          "commodity": "dried fish",
+          "pdr": "kaṟuvāṭu",
+          "dedr": "1278",
+          "matched_phoneme": "vā"
+        }
+      ],
+      "n_commodities": 1
+    },
+    {
+      "sign": "M254",
+      "reading": "tēṉ",
+      "trade_seal_count": 0,
+      "total_freq": 5,
+      "commodity_matches": [
+        {
+          "commodity": "honey",
+          "pdr": "tēṉ",
+          "dedr": "3455",
+          "matched_phoneme": "tēṉ"
+        }
+      ],
+      "n_commodities": 1
+    },
+    {
+      "sign": "M345",
+      "reading": "taṭ",
+      "trade_seal_count": 0,
+      "total_freq": 5,
+      "commodity_matches": [
+        {
+          "commodity": "agate",
+          "pdr": "akatti",
+          "dedr": "7",
+          "matched_phoneme": "a"
+        }
+      ],
+      "n_commodities": 1
+    },
+    {
+      "sign": "M329",
+      "reading": "poṉ",
+      "trade_seal_count": 0,
+      "total_freq": 5,
+      "commodity_matches": [
+        {
+          "commodity": "gold",
+          "pdr": "poṉ",
+          "dedr": "4570",
+          "matched_phoneme": "poṉ"
+        }
+      ],
+      "n_commodities": 1
+    }
+  ],
+  "commodity_map_used": [
+    {
+      "commodity": "carnelian",
+      "pdr": "cēṭi",
+      "dedr": "2806"
+    },
+    {
+      "commodity": "agate",
+      "pdr": "akatti",
+      "dedr": "7"
+    },
+    {
+      "commodity": "lapis lazuli",
+      "pdr": "nīlam",
+      "dedr": "3675"
+    },
+    {
+      "commodity": "cotton",
+      "pdr": "parutti",
+      "dedr": "3986"
+    },
+    {
+      "commodity": "ivory",
+      "pdr": "kōṭu",
+      "dedr": "2071"
+    },
+    {
+      "commodity": "copper",
+      "pdr": "cempu",
+      "dedr": "2781"
+    },
+    {
+      "commodity": "tin",
+      "pdr": "kaḷimpu",
+      "dedr": "1313"
+    },
+    {
+      "commodity": "shell",
+      "pdr": "ciṉṉi",
+      "dedr": "2519"
+    },
+    {
+      "commodity": "sesame",
+      "pdr": "eḷḷu",
+      "dedr": "839"
+    },
+    {
+      "commodity": "barley",
+      "pdr": "yavam",
+      "dedr": "5151"
+    },
+    {
+      "commodity": "dried fish",
+      "pdr": "kaṟuvāṭu",
+      "dedr": "1278"
+    },
+    {
+      "commodity": "gold",
+      "pdr": "poṉ",
+      "dedr": "4570"
+    },
+    {
+      "commodity": "timber",
+      "pdr": "maram",
+      "dedr": "4711"
+    },
+    {
+      "commodity": "honey",
+      "pdr": "tēṉ",
+      "dedr": "3455"
+    },
+    {
+      "commodity": "weight/measure",
+      "pdr": "pala",
+      "dedr": "3987"
+    },
+    {
+      "commodity": "stone standard",
+      "pdr": "kal",
+      "dedr": "1298"
+    }
+  ],
+  "final_state": {
+    "HIGH": 135,
+    "MEDIUM": 273,
+    "CANDIDATE": 5,
+    "H_plus_M": 408,
+    "total": 413
+  }
+}

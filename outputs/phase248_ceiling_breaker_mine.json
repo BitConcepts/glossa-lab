@@ -1,0 +1,605 @@
+{
+  "phase": 248,
+  "elapsed_s": 86.5,
+  "total_papers_fetched": 2807,
+  "ceiling_analysis": {
+    "C1a_ALLOGRAPH": {
+      "n": 2,
+      "signal": "HYPOTHESIS",
+      "ceiling": "C1",
+      "actionable": false,
+      "top_papers": [
+        {
+          "title": "THE INDUS SCRIPT\u00a0Recognition as an alphabet",
+          "year": 2025,
+          "source": "crossref",
+          "id": "10.21203/rs.3.rs-6801050/v1"
+        },
+        {
+          "title": "A method of identifying allographs in undeciphered scripts and its application t",
+          "year": 2021,
+          "source": "crossref",
+          "id": "10.1057/s41599-021-00713-0"
+        }
+      ]
+    },
+    "C1b_BIGRAM_CONTEXT": {
+      "n": 0,
+      "top_papers": [],
+      "signal": "NO_SIGNAL",
+      "ceiling": "C",
+      "actionable": false
+    },
+    "C1c_ICONOGRAPHIC": {
+      "n": 9,
+      "signal": "HYPOTHESIS",
+      "ceiling": "C1",
+      "actionable": false,
+      "top_papers": [
+        {
+          "title": "Deciphering the Indus Script by Applying the Concept of Egyptian Hieroglyphics t",
+          "year": 2025,
+          "source": "crossref",
+          "id": "10.31235/osf.io/fwkxe_v1"
+        },
+        {
+          "title": "Deciphering the Indus Script by Applying the Concept of Egyptian Hieroglyphics t",
+          "year": 2025,
+          "source": "crossref",
+          "id": "10.31219/osf.io/hjby4_v1"
+        },
+        {
+          "title": "IDENTICAL GRAPHEME WITH SHARED VALUE IN THE INDUS AND PHOENICIAN SCRIPTS Concord",
+          "year": 2024,
+          "source": "crossref",
+          "id": "10.22541/au.172416979.94159950/v1"
+        },
+        {
+          "title": "Deciphering the Indus Script",
+          "year": 2022,
+          "source": "crossref",
+          "id": "10.31219/osf.io/4rga5_v1"
+        },
+        {
+          "title": "Deciphering the Indus Script by Applying the Concept of Egyptian Hieroglyphics t",
+          "year": 2022,
+          "source": "crossref",
+          "id": "10.31219/osf.io/4rga5"
+        },
+        {
+          "title": "Ancestral Dravidian languages in Indus Civilization: ultraconserved Dravidian to",
+          "year": 2021,
+          "source": "openalex",
+          "id": "https://openalex.org/W3187209828"
+        }
+      ]
+    },
+    "C1d_NAME_ZIPF": {
+      "n": 4,
+      "signal": "NO_SIGNAL",
+      "ceiling": "C1",
+      "actionable": false,
+      "top_papers": [
+        {
+          "title": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licens",
+          "year": 2023,
+          "source": "openalex",
+          "id": "https://openalex.org/W4313642947"
+        },
+        {
+          "title": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licens",
+          "year": 2023,
+          "source": "crossref",
+          "id": "10.31235/osf.io/7dtqz"
+        },
+        {
+          "title": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licens",
+          "year": 2023,
+          "source": "crossref",
+          "id": "10.1057/s41599-023-02320-7"
+        },
+        {
+          "title": "African roots of the Dravidian-speaking tribes: A case study in onomastics",
+          "year": 2005,
+          "source": "s2",
+          "id": "853ec2071f92aeb475b6425df7af49626ae3b378"
+        }
+      ]
+    },
+    "C1e_MUNDA_SUBSTRATE": {
+      "n": 0,
+      "top_papers": [],
+      "signal": "NO_SIGNAL",
+      "ceiling": "C",
+      "actionable": false
+    },
+    "C2a_LINEAR_ELAMITE_VOCAB": {
+      "n": 2,
+      "signal": "NEW_EVIDENCE",
+      "ceiling": "C2",
+      "actionable": true,
+      "top_papers": [
+        {
+          "title": "Some new Linear Elamite inscriptions",
+          "year": 2025,
+          "source": "crossref",
+          "id": "10.22012/baf.2016.18"
+        },
+        {
+          "title": "Nine Linear Elamite Texts Inscribed on Silver \u201c\n                    <i>Gunagi</i",
+          "year": 2018,
+          "source": "crossref",
+          "id": "10.1080/05786967.2018.1471861"
+        }
+      ]
+    },
+    "C2b_TRADE_COMMODITY": {
+      "n": 5,
+      "signal": "NEW_EVIDENCE",
+      "ceiling": "C2",
+      "actionable": true,
+      "top_papers": [
+        {
+          "title": "The Indus Protocol: Deciphering the Harappan Script as a Geodetic Trade Code and",
+          "year": 2026,
+          "source": "crossref",
+          "id": "10.2139/ssrn.6077411"
+        },
+        {
+          "title": "Indus Valley: Early Commercial Connections with Central and Western Asia",
+          "year": 2023,
+          "source": "crossref",
+          "id": "10.1093/acrefore/9780190277727.013.595"
+        },
+        {
+          "title": "Metal-smithy, Bead-making, Gemstones, Jeweller\u2019s Weight, Trade-permits, Tax-stam",
+          "year": 2021,
+          "source": "openalex",
+          "id": "https://openalex.org/W4206162048"
+        },
+        {
+          "title": "Simulating Littoral Trade: Modeling the Trade of Wine in the Bronze to Iron Age ",
+          "year": 2016,
+          "source": "crossref",
+          "id": "10.3390/land5010005"
+        },
+        {
+          "title": "Tasks, Methods and Results in the Study of the Indus Script",
+          "year": 1975,
+          "source": "crossref",
+          "id": "10.1017/s0035869x00132873"
+        }
+      ]
+    },
+    "C2c_PROTO_ELAMITE": {
+      "n": 8,
+      "signal": "HYPOTHESIS",
+      "ceiling": "C2",
+      "actionable": false,
+      "top_papers": [
+        {
+          "title": "CTF Framework -- Manuscript Analysis Series: Volume VII Cypro-Minoan as Mediterr",
+          "year": 2026,
+          "source": "openalex",
+          "id": "https://openalex.org/W7140014045"
+        },
+        {
+          "title": "CTF Framework -- Manuscript Analysis Series: Volume VII Cypro-Minoan as Mediterr",
+          "year": 2026,
+          "source": "openalex",
+          "id": "https://openalex.org/W7138344113"
+        },
+        {
+          "title": "CTF Framework -- Manuscript Analysis Series: Volume VII Cypro-Minoan as Mediterr",
+          "year": 2026,
+          "source": "openalex",
+          "id": "https://openalex.org/W7138342453"
+        },
+        {
+          "title": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to ",
+          "year": 2025,
+          "source": "openalex",
+          "id": "https://openalex.org/W4407366414"
+        },
+        {
+          "title": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to ",
+          "year": 2025,
+          "source": "crossref",
+          "id": "10.20944/preprints202502.0699.v1"
+        },
+        {
+          "title": "Rerouting Connection: Hybrid Computer Vision Analysis Reveals Visual Similarity ",
+          "year": 2025,
+          "source": "s2",
+          "id": "591092073d0cfe7344ba2a661338d90669dc1a11"
+        }
+      ]
+    },
+    "C2d_SANGAM_HAPAX": {
+      "n": 0,
+      "top_papers": [],
+      "signal": "NO_SIGNAL",
+      "ceiling": "C",
+      "actionable": false
+    },
+    "C2e_MELUHHA_COMMODITY_VOCAB": {
+      "n": 3,
+      "signal": "NO_SIGNAL",
+      "ceiling": "C2",
+      "actionable": false,
+      "top_papers": [
+        {
+          "title": "Decipherment of the Indus script",
+          "year": 2020,
+          "source": "crossref",
+          "id": "10.31235/osf.io/9wm3z"
+        },
+        {
+          "title": "Decipherment of the Indus script",
+          "year": 2020,
+          "source": "crossref",
+          "id": "10.31219/osf.io/4m97w"
+        },
+        {
+          "title": "Interrogating Indus inscriptions to unravel their mechanisms of meaning conveyan",
+          "year": 2019,
+          "source": "openalex",
+          "id": "https://openalex.org/W2957779570"
+        }
+      ]
+    },
+    "GENERAL": {
+      "n": 10,
+      "signal": "DATA_AVAILABLE",
+      "ceiling": "GEN",
+      "actionable": true,
+      "top_papers": [
+        {
+          "title": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Va",
+          "year": 2025,
+          "source": "openalex",
+          "id": "https://openalex.org/W4416904785"
+        },
+        {
+          "title": "Microhistory, Cultural Memory and Indus Valley Civilization in Vasant Dav\u00e9\u2019s Tra",
+          "year": 2025,
+          "source": "crossref",
+          "id": "10.1163/21983534-12020001"
+        },
+        {
+          "title": "THE INDUS SCRIPT Recognition as an alphabet",
+          "year": 2024,
+          "source": "openalex",
+          "id": "https://openalex.org/W4403819717"
+        },
+        {
+          "title": "The Decoded Indus Seal M-282",
+          "year": 2024,
+          "source": "crossref",
+          "id": "10.20944/preprints202407.2105.v1"
+        },
+        {
+          "title": "Iravatham Mahadevan\u2019s Reading of Indus Script: A Critical Review",
+          "year": 2023,
+          "source": "openalex",
+          "id": "https://openalex.org/W4367692629"
+        },
+        {
+          "title": "Iravatham Mahadevan\u2019s Reading of Indus Script: A Critical Review",
+          "year": 2023,
+          "source": "crossref",
+          "id": "10.23993/store.85246"
+        }
+      ]
+    }
+  },
+  "round2_clusters_needed": [
+    "Mundari Santali Kurux phonology ancient vocabulary substrate",
+    "Austroasiatic Mon-Khmer Bronze Age South Asia language contact",
+    "Munda language IVC contact zone Bihar Jharkhand ancient",
+    "Sangam Tamil akam puram rare word lexicography",
+    "Old Tamil epigraphy inscription rare word vocabulary Iron Age"
+  ],
+  "strong_papers": [
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7140014045",
+      "title": "CTF Framework -- Manuscript Analysis Series: Volume VII Cypro-Minoan as Mediterranean Cluster NodeThree-",
+      "year": 2026,
+      "text": "CTF Framework -- Manuscript Analysis Series: Volume VII Cypro-Minoan as Mediterranean Cluster NodeThree- Cypro-Minoan (~1550-1050 BCE), the Bronze Age script of Cyprus, is demonstrated to be the sixth independent technical manual encoding the CTF 144 Hz planetary grid system. Analysis of the complete ~250-inscription corpus reveals systematic 144-harmonic patterns across unique three-variant structure, sign inventory unification, Mediterranean cluster positioning, and knowledge preservation mechanisms that cannot be explained as linguistic variation, chronological development, or administrative necessity. Combined with five previously documented manuscripts (Voynich, Linear A, Rongorongo, Indus Valley, Proto-Elamite): P < 10\u207b\u00b9\u2078\u2070. THREE-VARIANT STRUCTURE = THREE GRID LAYERS (UNPRECEDENTED): Cypro-Minoan exhibits characteristic unique among ancient writing systems\u2014three clearly distinct variants (CM1 with 85-90 signs found throughout Cyprus, CM2 with ~60 signs almost exclusively at Ugarit, CM3 with ~30 signs showing hybrid characteristics) traditionally interpreted as chronological stages, regional dialects, or separate languages. After 100+ years, no conventional explanation has achieved consensus. CTF analysis reveals these variants encode three distinct but complementary grid calculation domains: CM1 = spatial/geographic layer (site positions, coordinates, directional markers, distance calculations), CM2 = temporal/calendrical layer (astronomical cycles, seasonal markers, lunisolar synchronization, 60-sign sexagesimal time base), CM3 = astronomical/harmonic core (stellar positions, planetary cycles, fundamental 30-unit subdivisions, core grid resonance frequencies). This three-layer architecture represents most sophisticated encoding framework yet documented in manuscript series\u2014same 120-base calculator system expressed through three specialized frameworks optimized for different calculation domains simultaneously, analogous to modern relational database with spatial/temporal/reference tables sharing underlying structure. SIGN INVENTORY UNIFICATION: 100\u2192120 BASE SIGNS",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C2c_PROTO_ELAMITE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7138344113",
+      "title": "CTF Framework -- Manuscript Analysis Series: Volume VII Cypro-Minoan as Mediterranean Cluster NodeThree-Variant 120-Sign Unification, Spatial/Temporal/Astronomical Layer Encoding, and Cyprus as Node 3",
+      "year": 2026,
+      "text": "CTF Framework -- Manuscript Analysis Series: Volume VII Cypro-Minoan as Mediterranean Cluster NodeThree-Variant 120-Sign Unification, Spatial/Temporal/Astronomical Layer Encoding, and Cyprus as Node 3 Cypro-Minoan (~1550-1050 BCE), the Bronze Age script of Cyprus, is demonstrated to be the sixth independent technical manual encoding the CTF 144 Hz planetary grid system. Analysis of the complete ~250-inscription corpus reveals systematic 144-harmonic patterns across unique three-variant structure, sign inventory unification, Mediterranean cluster positioning, and knowledge preservation mechanisms that cannot be explained as linguistic variation, chronological development, or administrative necessity. Combined with five previously documented manuscripts (Voynich, Linear A, Rongorongo, Indus Valley, Proto-Elamite): P < 10\u207b\u00b9\u2078\u2070. THREE-VARIANT STRUCTURE = THREE GRID LAYERS (UNPRECEDENTED): Cypro-Minoan exhibits characteristic unique among ancient writing systems\u2014three clearly distinct variants (CM1 with 85-90 signs found throughout Cyprus, CM2 with ~60 signs almost exclusively at Ugarit, CM3 with ~30 signs showing hybrid characteristics) traditionally interpreted as chronological stages, regional dialects, or separate languages. After 100+ years, no conventional explanation has achieved consensus. CTF analysis reveals these variants encode three distinct but complementary grid calculation domains: CM1 = spatial/geographic layer (site positions, coordinates, directional markers, distance calculations), CM2 = temporal/calendrical layer (astronomical cycles, seasonal markers, lunisolar synchronization, 60-sign sexagesimal time base), CM3 = astronomical/harmonic core (stellar positions, planetary cycles, fundamental 30-unit subdivisions, core grid resonance frequencies). This three-layer architecture represents most sophisticated encoding framework yet documented in manuscript series\u2014same 120-base calculator system expressed through three specialized frameworks optimized for different calculation domains simultaneously, analogous to modern relational database with spatial/temporal/reference tables sharing underlying structure. SIGN INVENTORY UNIFICATION: 100\u2192120 BASE SIGNS",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C2c_PROTO_ELAMITE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7138342453",
+      "title": "CTF Framework -- Manuscript Analysis Series: Volume VII Cypro-Minoan as Mediterranean Cluster NodeThree-Variant 120-Sign Unification, Spatial/Temporal/Astronomical Layer Encoding, and Cyprus as Node 3",
+      "year": 2026,
+      "text": "CTF Framework -- Manuscript Analysis Series: Volume VII Cypro-Minoan as Mediterranean Cluster NodeThree-Variant 120-Sign Unification, Spatial/Temporal/Astronomical Layer Encoding, and Cyprus as Node 3 Cypro-Minoan (~1550-1050 BCE), the Bronze Age script of Cyprus, is demonstrated to be the sixth independent technical manual encoding the CTF 144 Hz planetary grid system. Analysis of the complete ~250-inscription corpus reveals systematic 144-harmonic patterns across unique three-variant structure, sign inventory unification, Mediterranean cluster positioning, and knowledge preservation mechanisms that cannot be explained as linguistic variation, chronological development, or administrative necessity. Combined with five previously documented manuscripts (Voynich, Linear A, Rongorongo, Indus Valley, Proto-Elamite): P < 10\u207b\u00b9\u2078\u2070. THREE-VARIANT STRUCTURE = THREE GRID LAYERS (UNPRECEDENTED): Cypro-Minoan exhibits characteristic unique among ancient writing systems\u2014three clearly distinct variants (CM1 with 85-90 signs found throughout Cyprus, CM2 with ~60 signs almost exclusively at Ugarit, CM3 with ~30 signs showing hybrid characteristics) traditionally interpreted as chronological stages, regional dialects, or separate languages. After 100+ years, no conventional explanation has achieved consensus. CTF analysis reveals these variants encode three distinct but complementary grid calculation domains: CM1 = spatial/geographic layer (site positions, coordinates, directional markers, distance calculations), CM2 = temporal/calendrical layer (astronomical cycles, seasonal markers, lunisolar synchronization, 60-sign sexagesimal time base), CM3 = astronomical/harmonic core (stellar positions, planetary cycles, fundamental 30-unit subdivisions, core grid resonance frequencies). This three-layer architecture represents most sophisticated encoding framework yet documented in manuscript series\u2014same 120-base calculator system expressed through three specialized frameworks optimized for different calculation domains simultaneously, analogous to modern relational database with spatial/temporal/reference tables sharing underlying structure. SIGN INVENTORY UNIFICATION: 100\u2192120 BASE SIGNS",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C2c_PROTO_ELAMITE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.2139/ssrn.6077411",
+      "title": "The Indus Protocol: Deciphering the Harappan Script as a Geodetic Trade Code and Celestial Synchronization System",
+      "year": 2026,
+      "text": "The Indus Protocol: Deciphering the Harappan Script as a Geodetic Trade Code and Celestial Synchronization System  For over a century, the Indus Valley Civilization (IVC) script has remained undeciphered, resisting all linguistic analysis. This paper proposes a radical paradigm shift: the Indus script is not a spoken language, but a Celestial Synchronization Protocol used to coordinate a vast maritime trade network. Applying the Unified Principle (UP), we identify the script's core symbols not as phonemes, but as axiomatic time-keeping and navigational constants. We demonstrate that the \"Jar\" symbol represents the 364-day Sacred Year, the \"Fish\" symbol represents the 28-day Lunar Cycle, and the geometric \"Diamond/Arrow\" signs represent the 23.5\u00b0 Axial Tilt (Directional Lock). This decipherment reveals Lothal not merely as a port, but as the Geodetic Nucleus of a trade empire that synchronized logistics across Mesopotamia, Dilmun, and Africa using a zero-drift, integer-based temporal grid.",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C2b_TRADE_COMMODITY"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4407366414",
+      "title": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to Lost Knowledge",
+      "year": 2025,
+      "text": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to Lost Knowledge The decipherment of the Indus Valley script has remained one of the most enduring challenges in historical linguistics. This paper presents a groundbreaking computational and linguistic analysis that successfully identifies and interprets structured inscriptions found on nine Indus Valley copper plates. By integrating symbol frequency analysis, AI-assisted pattern recognition, comparative mythology, and proto-linguistic reconstruction, we demonstrate that these inscriptions encode a structured theological and philosophical discourse rather than purely administrative records. Our findings reveal a coherent logographic-ideographic system with strong syntactic parallels to Proto-Elamite and Mesopotamian religious texts, suggesting that the script was used to encode sacred knowledge, cosmological principles, and ritual invocations. The application of deep learning and linguistic modeling not only advances the effort to decipher the Indus Valley script but also provides unprecedented insights into its role in ancient civilization, positioning it as an intellectual and spiritual system rather than a mere tool for economic record-keeping.",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C2c_PROTO_ELAMITE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.31235/osf.io/fwkxe_v1",
+      "title": "Deciphering the Indus Script by Applying the Concept of Egyptian Hieroglyphics to the Depiction of Indus Signs",
+      "year": 2025,
+      "text": "Deciphering the Indus Script by Applying the Concept of Egyptian Hieroglyphics to the Depiction of Indus Signs  Due to its intricate clusters of symbols, the absence of clear connections to known ancient or modern scripts from the Indian subcontinent, and broad assumptions about the likely languages of the Indus civilization, scholars have long struggled to decipher the Indus script. This study seeks to identify Indus characters by analysing common graphemes of synonymous words across known Indian languages, using traces in the existing languages as a \"Rosetta Stone.\" It interprets the pictographic symbols on Indus seals by applying principles from the Egyptian hieroglyphic writing system.The findings suggest that the Indus script follows an Abugida-style writing system, comprising nineteen consonants and three vowels, and represents a Proto-Pali language. Analysing grammatical structures, reading sequences, and linguistic parallels with Pali provides strong evidence that the Indus civilization employed a structured language integrating phonetics and symbolism. Further validation through the in",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C1c_ICONOGRAPHIC"
+    },
+    {
+      "source": "crossref",
+      "id": "10.31219/osf.io/hjby4_v1",
+      "title": "Deciphering the Indus Script by Applying the Concept of Egyptian Hieroglyphics to the Depiction of Indus Signs",
+      "year": 2025,
+      "text": "Deciphering the Indus Script by Applying the Concept of Egyptian Hieroglyphics to the Depiction of Indus Signs  Due to its intricate clusters of symbols, the absence of clear connections to known ancient or modern scripts from the Indian subcontinent, and broad assumptions about the likely languages of the Indus civilization, scholars have long struggled to decipher the Indus script. This study seeks to identify Indus characters by analyzing common graphemes of synonymous words across known Indian languages, using traces in the existing languages as a \"Rosetta Stone.\" It interprets the pictographic symbols on Indus seals by applying principles from the Egyptian hieroglyphic writing system.The findings suggest that the Indus script follows an Abugida-style writing system, comprising nineteen consonants and three vowels, and represents a Proto-Pali language. Analyzing grammatical structures, reading sequences, and linguistic parallels with Pali provides strong evidence that the Indus civilization employed a structured language integrating phonetics and symbolism. Further validation through the in",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C1c_ICONOGRAPHIC"
+    },
+    {
+      "source": "crossref",
+      "id": "10.21203/rs.3.rs-6801050/v1",
+      "title": "THE INDUS SCRIPT\u00a0Recognition as an alphabet",
+      "year": 2025,
+      "text": "THE INDUS SCRIPT\u00a0Recognition as an alphabet  Abstract \n         This study introduces a novel structural analysis of the Indus script (c. 3300\u2009\u2212\u20091900 BCE) to determine if it represents an alphabetic system. Unlike previous methods, this research focuses on the inherent structural properties of over 400 Indus signs to precisely quantify the primary constituent signs. Through a new grid-based decomposition, compound signs were visually dissected, consistent diacritics identified, and sign formation principles clarified. This rigorous examination revealed a core set of 40 fundamental signs, suggesting a concise underlying system despite stylistic variations in sign formation, composition, and combination. This finding supports the hypothesis of an alphabetic structure. Furthermore, the study proposes preliminary phonetic assignments based on allographic analogies with other ancient scripts, offering a tentative reading of Indus texts to support the proposed decipherment. This research establishes a new framework for understanding t",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C1a_ALLOGRAPH"
+    },
+    {
+      "source": "crossref",
+      "id": "10.20944/preprints202502.0699.v1",
+      "title": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to Lost Knowledge",
+      "year": 2025,
+      "text": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to Lost Knowledge  The decipherment of the Indus Valley script has remained one of the most enduring challenges in historical linguistics. This paper presents a groundbreaking computational and linguistic analysis that successfully identifies and interprets structured inscriptions found on nine Indus Valley copper plates. By integrating symbol frequency analysis, AI-assisted pattern recognition, comparative mythology, and proto-linguistic reconstruction, we demonstrate that these inscriptions encode a structured theological and philosophical discourse rather than purely administrative records. Our findings reveal a coherent logographic-ideographic system with strong syntactic parallels to Proto-Elamite and Mesopotamian religious texts, suggesting that the script was used to encode sacred knowledge, cosmological principles, and ritual invocations. The application of deep learning and linguistic modeling not only advances the effort to decipher the Indus Valley script but also provides unprecedented insig",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C2c_PROTO_ELAMITE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.22012/baf.2016.18",
+      "title": "Some new Linear Elamite inscriptions",
+      "year": 2025,
+      "text": "Some new Linear Elamite inscriptions  The Linear Elamite writing system was used in the late 3rd millennium in ancient Iran.The underlying language is supposed to be Elamite \u2013 an isolate language otherwise known from cuneiform sources. 40 to 60% of the Elamite words and morphemes are decoded.In early 2016, about ten new inscriptions and fragments were presented at the University of Hamedan, Iran. They are now in the Mahboubian Gallery. Some of these new texts are the longest ones ever found, depicting up to 200 signs.In the \u00a0past months, the Deciphering Crew at the Institut f\u00fcr Sprachwissenschaft, Universit\u00e4t Bern, has made drawings of the so far unpublished inscriptions and compiled a sign catalogue.Preliminary results show that \u00a0fragments from Gonur and Altyn Depe formerly tagged as \u201cLinear Elamite\u201d \u00a0do not belong to the Linear Elamite text corpus.The Deciphering Project is hoping to collaborate with scholars of different fields. The web page http://elamicon.org\u00a0is an open source project.",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C2a_LINEAR_ELAMITE_VOCAB"
+    },
+    {
+      "source": "s2",
+      "id": "591092073d0cfe7344ba2a661338d90669dc1a11",
+      "title": "Rerouting Connection: Hybrid Computer Vision Analysis Reveals Visual Similarity Between Indus and Tibetan-Yi Corridor Writing Systems",
+      "year": 2025,
+      "text": "Rerouting Connection: Hybrid Computer Vision Analysis Reveals Visual Similarity Between Indus and Tibetan-Yi Corridor Writing Systems This thesis employs a hybrid CNN-Transformer architecture, alongside a detailed anthropological framework, to investigate potential historical connections between the visual morphology of the Indus Valley script and pictographic systems of the Tibetan-Yi Corridor. Through an ensemble methodology of three target scripts across 15 independently trained models, we demonstrate that Tibetan-Yi Corridor scripts exhibit approximately six-fold higher visual similarity to the Indus script (0.635) than to the Bronze Age Proto-Cuneiform (0.102) or Proto-Elamite (0.078). Contrary to expectations, when measured through direct script-to-script embedding comparisons, the Indus script maps closer to Tibetan-Yi Corridor scripts with a mean cosine similarity of 0.930 (CI: [0.917, 0.942]) than to contemporan",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C2c_PROTO_ELAMITE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.22541/au.172416979.94159950/v1",
+      "title": "IDENTICAL GRAPHEME WITH SHARED VALUE IN THE INDUS AND PHOENICIAN SCRIPTS Concordance of Text and Iconography on Indus Seals",
+      "year": 2024,
+      "text": "IDENTICAL GRAPHEME WITH SHARED VALUE IN THE INDUS AND PHOENICIAN SCRIPTS Concordance of Text and Iconography on Indus Seals  This research investigates the relationship between the Indus script and the Phoenician alphabet by focusing on the Indus sign P-245 and its Phoenician counterpart. Building upon the phonetic values derived from Phoenician and adhering to the phonological principles of Sindhu Prakrit, this study explores the concordance between the textual content and iconography of three meticulously selected Indus seals. The analysis aims to demonstrate how the imagery on these seals reinforces and elucidates the interpretation of the inscribed text. The interplay between text and iconography not only corroborates the textual content but also strengthens the correlation between the two elements.",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C1c_ICONOGRAPHIC"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4313642947",
+      "title": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licensing, commodity control and access control: archaeological and script-internal evidence",
+      "year": 2023,
+      "text": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licensing, commodity control and access control: archaeological and script-internal evidence This article studies the semantic scope of the yet undeciphered Indus inscriptions, which are mostly found on tiny seals, sealings, and tablets. Building on previous structural analyses, which reveal that Indus script was semasiographic or logographic in nature, this study analyses the combinatorial patterns of Indus script signs, and the geographical distribution of the inscriptions, to establish that the inscriptions did not encode any proper noun, such as anthroponyms, toponyms, or names of specific organizations. Analysing various archaeological contexts of the inscribed objects \u2014e.g., seals are found concentrated near city gates (e.g., Harappa), craft-workshops (e.g., Chanhu-daro), and public buildings (e.g., Mohenjo-daro), often along with standardized Indus weights which were used for taxation; sealings were attached to various storage containers and locking systems of \u201cwarehouse\u201d chambers as indicated by their reverse side impressions (e.g., the Lothal \u201cwarehouse\u201d sealings); inscribed sealing-pendants of Kanmer are conjectured to be passports/gate-passes by archaeologists; seals with identical inscriptions are often found from distant settlements \u2014 this study claims that the inscribed stamp-seals were used for enforcing certain rules involving taxation, trade/craft control, commodity-control and access control. Considering typological and functional differences between the seals and tablets, and analysing certain numerical and metrological notations ( , , ) typically found at the reverse-sides of many multi-sided tablets whose obverse-sides contain seal-like inscriptions, this study argues that such tablets were possibly trade/craft/commodity specific licenses issued to tax-collectors, traders, and artisans. These reverse-side tablet-inscriptions possibly encoded certain standardized license-fees for three popular license-slabs, whereas their obverse sides specified the commercial activities licensed to the tablet-bearers. These seals/tablets were possibly i",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C1d_NAME_ZIPF"
+    },
+    {
+      "source": "crossref",
+      "id": "10.31235/osf.io/7dtqz",
+      "title": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licensing, commodity control and access control: archaeological and script-internal evidence",
+      "year": 2023,
+      "text": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licensing, commodity control and access control: archaeological and script-internal evidence  This article studies the semantic scope of the yet undeciphered Indus inscriptions, which are mostly found on tiny seals, sealings, and tablets. Building on previous structural analyses, which reveal that Indus script was semasiographic or logographic in nature, this study analyses the combinatorial patterns of Indus script signs, and the geographical distribution of the inscriptions, to establish that the inscriptions did not encode any proper noun, such as anthroponyms, toponyms, or names of specific organizations. Analysing various archaeological contexts of the inscribed objects \u2014e.g., seals are found concentrated near city gates (e.g., Harappa), craft-workshops (e.g., Chanhu-daro), and public buildings (e.g., Mohenjo-daro), often along with standardized Indus weights which were used for taxation; sealings were attached to various storage containers and locking systems of \u201cwarehouse\u201d chambers as indicated by their  reverse side impressions (e.g., the Lothal \u201cwarehouse\u201d sealings);",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C1d_NAME_ZIPF"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1057/s41599-023-02320-7",
+      "title": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licensing, commodity control and access control: archaeological and script-internal evidence",
+      "year": 2023,
+      "text": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licensing, commodity control and access control: archaeological and script-internal evidence  Abstract  This article studies the semantic scope of the yet undeciphered Indus script inscriptions, which are mostly found on tiny seals, sealings, and tablets. Building on previous structural analyses, which reveal that Indus script was semasiographic and/or logographic in nature, this study analyses the combinatorial patterns of Indus script signs, and the geographical distribution of the inscriptions, to establish that the inscriptions did not encode any proper noun, such as anthroponyms, toponyms, or names of specific organizations. Analyzing various archaeological contexts of the inscribed objects\u2014e.g., seals found concentrated near city gates (e.g., Harappa), craft workshops (e.g., Chanhu-daro), and public buildings (e.g., Mohenjo-daro), often along with standardized Indus weights that were used for taxation; sealings attached to various storage containers and locking systems of \u201cwarehouse\u201d chambers as indicated by their reverse-side impressions (e.g., the sealings of Lothal \u201cw",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C1d_NAME_ZIPF"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1093/acrefore/9780190277727.013.595",
+      "title": "Indus Valley: Early Commercial Connections with Central and Western Asia",
+      "year": 2023,
+      "text": "Indus Valley: Early Commercial Connections with Central and Western Asia  Abstract \n                   The study of the commercial and cultural connections between the Greater Indus Valley and other regions of Central and Western Asia occupies a pivotal role in scholarly research on the Indus Tradition. Interregional trade was already established in the Indus River basin during the Neolithic period in the 6th millennium BCE. However, from the early 3rd millennium bce, the Indus (Harappan) merchants and craftspeople contributed to defining, promoting, and regulating long-distance, cross-cultural trade exchanges throughout this region. Indus-type and Indus-related artifacts have been found over a large and differentiated ecumene, encompassing Central Asia, the Iranian Plateau, Mesopotamia and the northern Levant, the Persian Gulf, and the Oman Peninsula. The discovery of Indus trade tools (seals, weights, and containers) in all of Middle Asia, complemented by information from Mesopotamian cuneiform texts, shows that entrepreneurs from the Indus Valley regular",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C2b_TRADE_COMMODITY"
+    },
+    {
+      "source": "crossref",
+      "id": "10.31219/osf.io/4rga5_v1",
+      "title": "Deciphering the Indus Script",
+      "year": 2022,
+      "text": "Deciphering the Indus Script  AbstractDeciphering Indus script was long a challenge for experts because of the complex structure of its clusters of signs, its inconspicuous traces in both past known scripts and scripts currently used in the Indian subcontinent, and the paradigms about potential Indus languages. Purpose of this study, is to extract the Indus letters from the common graphemes of synonymous words from different known Indian languages, depicting the pictographic signs present on Indus seals using the concept of the contemporary Egyptian hieroglyphic writing system. Furthermore, this study determined the reading sequence of the signs present in the clusters of the Indus seals. According to the findings, the language used by the Indus people is Proto-Pali, which uses an Abugida-type writing system with five vowels and eighteen consonants. Clusters of the signs are conjunct consonants or compound words that use diacritic syllables similar to the existing Indian subcontinent scripts. These findings will h",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C1c_ICONOGRAPHIC"
+    },
+    {
+      "source": "crossref",
+      "id": "10.31219/osf.io/4rga5",
+      "title": "Deciphering the Indus Script by Applying the Concept of Egyptian Hieroglyphics to the Depiction of Indus Signs",
+      "year": 2022,
+      "text": "Deciphering the Indus Script by Applying the Concept of Egyptian Hieroglyphics to the Depiction of Indus Signs  AbstractDeciphering Indus script was long a challenge for experts because of the complex structure of its clusters of signs, its inconspicuous traces in both past known scripts and scripts currently used in the Indian subcontinent, and the paradigms about potential Indus languages. Purpose of this study, is to extract the Indus letters from the common graphemes of synonymous words from different known Indian languages, depicting the pictographic signs present on Indus seals using the concept of the contemporary Egyptian hieroglyphic writing system. Furthermore, this study determined the reading sequence of the signs present in the clusters of the Indus seals. According to the findings, the language used by the Indus people is Proto-Pali, which uses an Abugida-type writing system with five vowels and eighteen consonants. Clusters of the signs are conjunct consonants or compound words that use diacritic syllables similar to the existing Indian subcontinent scripts. These findings will h",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C1c_ICONOGRAPHIC"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4206162048",
+      "title": "Metal-smithy, Bead-making, Gemstones, Jeweller\u2019s Weight, Trade-permits, Tax-stamps: Indus Script\u2019s Semasiography Partly Decoded",
+      "year": 2021,
+      "text": "Metal-smithy, Bead-making, Gemstones, Jeweller\u2019s Weight, Trade-permits, Tax-stamps: Indus Script\u2019s Semasiography Partly Decoded This paper claims to have partly decoded the Indus script. It not only explains how the brief formulaic inscriptions found on seals and tablets helped in taxation and trade control, by recording taxed commodity-types, licensed commercial activities, tax-rates, mode of tax-payment, license-issuing entities etc., but also decisively identifies several semasiograms signifying metal-smithy, lapidary-works, related metrology and taxation. It shows how the sign resembling a \u201cblowpipe inside a crucible\u201d, repeatedly occurs in inscribed seals/tablets discovered from workshops of metal-workers, goldsmiths and bead-makers, and directly occurs on certain inscribed gold and copper implements. Crucibles and blowpipes being ancient smelting tools, their ideograms ( , , ) denoted gold-smithy in Egyptian hieroglyphs too. Moreover, certain Indo-Aryan and Dravidian words for metal-smith directly translates to \u201cblowpipe-blower\u201d. Thus archaeological, script-internal and linguistic evidence confirm that sign signified precious metals and metal-smithy in different contexts. Similarly, fish-like signs ( , , etc.), which repeatedly occur in inscriptions discovered from bead-makers\u2019 and jewelers\u2019 workshops across Indus settlements, arguably signified meanings associated with gemstones, bead-making and related metrological standards. Interestingly, in Proto-Dravidian, \u201cm\u012bn\u201d means fish, shining, bright, and gemstone. Moreover, Indus valley\u2019s eye-patterned gemstone beads were famous as \u201cfish-eye beads\u201d in Mesopotamia. The gemstone related fish-signs sometimes co-occur with , possibly because, the bead-makers and goldsmiths, who physically shared same workshops, were part of related trade license and taxation mechanisms. This paper also claims that the frequent terminal signs symbolized different volumetric ( ) and weight-based ( ) metrological units used in revenue collection and thus metonymically signified certain tax categories. Specifically, the terminal arrow-like sign , which mostly co-oc",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C2b_TRADE_COMMODITY"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W3187209828",
+      "title": "Ancestral Dravidian languages in Indus Civilization: ultraconserved Dravidian tooth-word reveals deep linguistic ancestry and supports genetics",
+      "year": 2021,
+      "text": "Ancestral Dravidian languages in Indus Civilization: ultraconserved Dravidian tooth-word reveals deep linguistic ancestry and supports genetics Abstract Ever since the discovery of Indus valley civilization, scholars have debated the linguistic identities of its people. This study analyzes numerous archaeological, linguistic, archaeogenetic and historical evidences to claim that the words used for elephant (like, \u2018p\u012bri\u2019, \u2018p\u012bru\u2019) in Bronze Age Mesopotamia, the elephant-word used in the Hurrian part of an Amarna letter of ca. 1400 BC, and the ivory-word (\u2018p\u00eeru\u0161\u2019) recorded in certain sixth century BC Old Persian documents, were all originally borrowed from \u2018p\u012blu\u2019, a Proto-Dravidian elephant-word, which was prevalent in the Indus valley civilization, and was etymologically related to the Proto-Dravidian tooth-word \u2018*pal\u2019 and its alternate forms (\u2018*p\u012bl\u2019/\u2018*pi\u1e37\u2019/\u2018*pel\u2019). This paper argues that there is sufficient morphophonemic evidence of an ancient Dravidian \u2018*pi\u1e37\u2019/\u2018*p\u012bl\u2019-based root, which meant \u2018splitting/crushing\u2019, and was semantically related to the meanings \u2018tooth/tusk\u2019. This paper further observes that \u2018p\u012blu\u2019 is among the most ancient and common phytonyms of the toothbrush tree Salvadora persica , which is a characteristic flora of Indus valley, and whose roots and twigs have been widely used as toothbrush in IVC regions since antiquity. This study claims that this phytonym \u2018p\u012blu\u2019 had also originated from the same Proto-Dravidian tooth-word, and argues that since IVC people had named their toothbrush trees and tuskers (elephants) using a Proto-Dravidian tooth-word, and since these names were widely used across IVC regions, a significant population of Indus valley civilization must have used that Proto-Dravidian tooth-word in their daily communication. Since \u2018tooth\u2019 belongs to the core non-borrowable ultraconserved vocabulary of a speech community, its corollary is that a significant population of IVC spoke certain ancestral Dravidian languages. Important insights from recent archaeogenetic studies regarding possible migration of Proto-Dravidian speakers from Indus valley to South India also corroborate the",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C1c_ICONOGRAPHIC"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4237031568",
+      "title": "Ancestral Dravidian Languages in Indus Civilization: Ultraconserved Dravidian Tooth-word Reveals Deep Linguistic Ancestry and Supports Genetics",
+      "year": 2021,
+      "text": "Ancestral Dravidian Languages in Indus Civilization: Ultraconserved Dravidian Tooth-word Reveals Deep Linguistic Ancestry and Supports Genetics Ever since the discovery of Indus valley civilization, scholars have debated the linguistic identities of its people. This study analyzes numerous archaeological, linguistic, archaeogenetic and historical evidences to claim that the words used for elephant (like, \u2018p\u012bri\u2019, \u2018p\u012bru\u2019) in Bronze Age Mesopotamia, the elephant-word used in the Hurrian part of an Amarna letter of ca. 1400 BC, and the ivory-word (\u2018p\u00eeru\u0161\u2019) recorded in certain sixth century BC Old Persian documents, were all originally borrowed from \u2018p\u012blu\u2019, a Proto-Dravidian elephant-word, which was prevalent in the Indus valley civilization, and was etymologically related to the Proto-Dravidian tooth-word \u2018*pal\u2019 and its alternate forms (\u2018*p\u012bl\u2019/\u2018*pi\u1e37\u2019/\u2018*pel\u2019). This paper argues that there is sufficient morphophonemic evidence of an ancient Dravidian \u2018*pi\u1e37\u2019/\u2018*p\u012bl\u2019-based root, which meant \u2018splitting/crushing\u2019, and was semantically related to the meanings \u2018tooth/tusk\u2019. This paper further observes that \u2018p\u012blu\u2019 is among the most ancient and common phytonyms of the toothbrush tree Salvadora persica, which is a characteristic flora of Indus valley, and whose roots and twigs have been widely used as toothbrush in IVC regions since antiquity. This study claims that this phytonym \u2018p\u012blu\u2019 had also originated from the same Proto-Dravidian tooth-word, and argues that since IVC people had named their toothbrush trees and tuskers (elephants) using a Proto-Dravidian tooth-word, and since these names were widely used across IVC regions, a significant population of Indus valley civilization must have used that Proto-Dravidian tooth-word in their daily communication. Since \u2018tooth\u2019 belongs to the core non-borrowable ultraconserved vocabulary of a speech community, its corollary is that a significant population of IVC spoke certain ancestral Dravidian languages. Important insights from recent archaeogenetic studies regarding possible migration of Proto-Dravidian speakers from Indus valley to South India also corroborate the findings o",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C1c_ICONOGRAPHIC"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1057/s41599-021-00713-0",
+      "title": "A method of identifying allographs in undeciphered scripts and its application to the Indus Valley Script",
+      "year": 2021,
+      "text": "A method of identifying allographs in undeciphered scripts and its application to the Indus Valley Script  Abstract  This work describes a general method of testing for redundancies in the sign lists of ancient scripts by data mining the positions of the signs within the inscriptions. The redundant signs are allographs of the same grapheme. The method is applied to the undeciphered Indus Valley Script, which stands out from other ancient scripts by having a large proposed sign list that contains dozens of asymmetric signs that have mirrored pairs. By a statistical analysis of mirrored asymmetric signs, this paper shows that the Indus Valley Script was multi-directional and the mirroring of signs often denotes only the direction of writing without any difference in meaning. For this and five other specific reasons listed in the paper, 50 pairs of signs, 23 mirrored, and 27 non-mirrored, can be grouped together because each pair consists of only insignificant variations of the same original sign. The reduced sign list may make decipherment easier in the future.",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C1a_ALLOGRAPH"
+    },
+    {
+      "source": "crossref",
+      "id": "10.31235/osf.io/9wm3z",
+      "title": "Decipherment of the Indus script",
+      "year": 2020,
+      "text": "Decipherment of the Indus script  This paper describes a decipherment of the Indus script. The decipherment is based on observed similarities between Protocuneiform script and the Indus script. Meanings were transferred from Protocuneiform characters to characters in Indus script, and Dravidian words were used to obtain sounds for Indus script characters. Correlation between Brahmi letters and corresponding Indus characters were further used to correct the readings obtained. These readings show that Indus civilisation was largely Dravidian. It also shows that caste divisions specific to modern South India existed in Indus civilisation. Representative caste names can still be identified in North and South India. These readings also establish with a high probability that Protocuneiform script influenced the Indus script and that Brahmi script, at least partially, originated from the Indus script",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C2e_MELUHHA_COMMODITY_VOCAB"
+    },
+    {
+      "source": "crossref",
+      "id": "10.31219/osf.io/4m97w",
+      "title": "Decipherment of the Indus script",
+      "year": 2020,
+      "text": "Decipherment of the Indus script  This paper describes a decipherment of the Indus script. The decipherment is based on observed similarities between Protocuneiform script and the Indus script. Meanings were transferred from Protocuneiform characters to characters in Indus script, and Dravidian words were used to obtain sounds for Indus script characters. Correlation between Brahmi letters and corresponding Indus characters were further used to correct the readings obtained. These readings show that Indus civilisation was largely Dravidian. It also shows that caste divisions specific to modern South India existed in Indus civilisation. Representative caste names can still be identified in North and South India. These readings also establish with a high probability that Protocuneiform script influenced the Indus script and that Brahmi script, at least partially, originated from the Indus script",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C2e_MELUHHA_COMMODITY_VOCAB"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W2957779570",
+      "title": "Interrogating Indus inscriptions to unravel their mechanisms of meaning conveyance",
+      "year": 2019,
+      "text": "Interrogating Indus inscriptions to unravel their mechanisms of meaning conveyance Abstract This study conducts an epigraphic analysis of the yet undeciphered inscriptions of the ancient Indus Valley civilization and seeks to prove that just like proto-cuneiform administrative tablets of ancient Mesopotamia, or modern fiscal stamps and ration tokens, Indus seals and tablets too were formalized data-carriers that used both document-specific and linguistic syntaxes to convey messages. Analyzing various combinatorial patterns of Indus signs (e.g., typical co-occurrence restrictions present between some signs; tendency of some signs to form collocations; syntactic order(s) maintained between certain signs; strong positional preferences demonstrated by some signs; and the capability of certain signs to occur alone in inscriptions), this paper argues that Indus signs represented different content-morphemes and functional-morphemes\u2014not phonograms used for spelling words\u2014the majority of the inscriptions were logographic. Categorizing several Indus logograms into nine functional classes, it explores the way each sign-class has played unique functional roles for conveying complete messages through the brief inscriptions. By glossing the signs of the inscriptions using the names of their respective functional classes the study unravels the formulaic phrase-structures maintained by the majority of the inscriptions, where signs identified as phrase-final signs typically occur at the terminal positions of the semantic phrases, while signs used as connective-morphemes join semantically autonomous constituents in certain subordinating and coordinating ways, to form longer composite inscriptions. The study identifies certain Indus signs as numerical and metrological signs, which frequently collocate with specific lexemes, and clearly quantifying them in certain ways. This article also analyses the underlying relationships between certain metrological and phrase-final signs; examines the compositional nature of Indus collocations; and argues that some of the repeat",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C2e_MELUHHA_COMMODITY_VOCAB"
+    },
+    {
+      "source": "crossref",
+      "id": "10.4000/terrain.17225",
+      "title": "From icon to sign",
+      "year": 2018,
+      "text": "From icon to sign  This article offers a reconstruction of early language recording on Crete in the second millennium BCE, charting the development of the earliest attestations of script on the island and examining their relationship to elements of iconology, orderly codification, figurative representations and symbolic expression. From an interdisciplinary perspective, it is possible to reconstruct an autonomous path into script formation starting from an analysis of the designs on Prepalatial, but especially, Protopalatial Cretan seals (from the third millennium BCE to the beginning of the second). Cretan hieroglyphic is still an undeciphered script. Yet, despite this hurdle, it is possible to recognise the stage in which phonetic recording takes place, through an in-depth analysis of the archaeological record and the inscribed objects, and through an in-depth examination of the structural/semantic categories represented on the inscriptions. On this basis, it is possible to conclude that the earliest",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C1c_ICONOGRAPHIC"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1080/05786967.2018.1471861",
+      "title": "Nine Linear Elamite Texts Inscribed on Silver \u201c\n                    <i>Gunagi</i>\n                    \u201d Vessels (X, Y, Z, F\u2019, H\u2019, I\u2019, J\u2019, K\u2019 and L\u2019): New Data on Linear Elamite Writing and the History of the Sukkalma\u1e2b Dynasty",
+      "year": 2018,
+      "text": "Nine Linear Elamite Texts Inscribed on Silver \u201c\n                    <i>Gunagi</i>\n                    \u201d Vessels (X, Y, Z, F\u2019, H\u2019, I\u2019, J\u2019, K\u2019 and L\u2019): New Data on Linear Elamite Writing and the History of the Sukkalma\u1e2b Dynasty",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C2a_LINEAR_ELAMITE_VOCAB"
+    },
+    {
+      "source": "s2",
+      "id": "88ed87c2c4582bc7524267ea455d5c83bbdcb16e",
+      "title": "Nine Linear Elamite Texts Inscribed on Silver \u201cGunagi\u201d Vessels (X, Y, Z, F\u2019, H\u2019, I\u2019, J\u2019, K\u2019 and L\u2019): New Data on Linear Elamite Writing and the History of the Sukkalma\u1e2b Dynasty*",
+      "year": 2018,
+      "text": "Nine Linear Elamite Texts Inscribed on Silver \u201cGunagi\u201d Vessels (X, Y, Z, F\u2019, H\u2019, I\u2019, J\u2019, K\u2019 and L\u2019): New Data on Linear Elamite Writing and the History of the Sukkalma\u1e2b Dynasty* ABSTRACT Nine Linear Elamite inscriptions are presented and analysed here, all written on gunagi type metallic beakers. In particular, seven of these vessels are part of H. Mahboubian\u2019s collection in London. It is proposed that the gunagi beaker type should be attributed to the late 3rd/early 2nd millennium BC while the names of the Early Sukkalmah rulers Ebarat II and \u0160ilhaha (twentieth century BC) can be read among the sign sequences inscribed on some of them. The paper addresses the present understanding of Linear Elamite writing, along with typological, chronological and iconographic considerations on the gunagi vessels. It then presents an analysis of the sign sequences of the nine Linear Elamite inscriptions. This analysis leads ultimately to phonetic value identifications of some of",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C1c_ICONOGRAPHIC"
+    },
+    {
+      "source": "s2",
+      "id": "68351c52b3e1fa77111673447ed79bf264bcefb5",
+      "title": "The Indus Script and Economics. A Role for Indus Seals and Tablets in Rationing and Administration of Labor",
+      "year": 2018,
+      "text": "The Indus Script and Economics. A Role for Indus Seals and Tablets in Rationing and Administration of Labor The Indus script remains one of the last major undeciphered scripts of the ancient world. We focus here on Indus inscriptions on a group of miniature tablets discovered by Meadow and Kenoyer in Harappa in 1997. By drawing parallels with proto-Elamite and proto-Cuneiform inscriptions, we explore how these miniature tablets may have been used to record rations allocated to porters or laborers. We then show that similar inscriptions are found on stamp seals, leading to the potentially provocative conclusion that rather than simply indicating ownership of property, Indus seals may have been used for generating tokens, tablets and sealings for repetitive economic transactions such as rations and exchange of canonical amounts of goods, grains, animals, and labor in a barter-based economy.",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C2c_PROTO_ELAMITE"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/1812.00049v1",
+      "title": "The Indus Script and Economics. A Role for Indus Seals and Tablets in Rationing and Administration of Labor",
+      "year": 2018,
+      "text": "The Indus Script and Economics. A Role for Indus Seals and Tablets in Rationing and Administration of Labor The Indus script remains one of the last major undeciphered scripts of the ancient world. We focus here on Indus inscriptions on a group of miniature tablets discovered by Meadow and Kenoyer in Harappa in 1997. By drawing parallels with proto-Elamite and proto-Cuneiform inscriptions, we explore how these miniature tablets may have been used to record rations allocated to porters or laborers. We then show that similar inscriptions are found on stamp seals, leading to the potentially provocative conclusion that rather than simply indicating ownership of property, Indus seals may have been used f",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C2c_PROTO_ELAMITE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.3390/land5010005",
+      "title": "Simulating Littoral Trade: Modeling the Trade of Wine in the Bronze to Iron Age Transition in Southern France",
+      "year": 2016,
+      "text": "Simulating Littoral Trade: Modeling the Trade of Wine in the Bronze to Iron Age Transition in Southern France  The Languedoc-Roussillon region of southern France is well known today for producing full-bodied red wines. Yet wine grapes are not native to France. Additionally, wine was not developed indigenously first. In the 7th century B.C. Etruscan merchants bringing wine landed on the shores of the Languedoc and established trade relationships with the native Gauls, later creating local viticulture, and laying the foundation for a strong cultural identity of French wine production and setting in motion a multi-billion dollar industry. This paper examines the first five centuries of wine consumption (from ~600 B.C. to ~100 B.C.), analyzing how preference of one type of luxury good over another created distinctive artifact patterns in the archaeological record. I create a simple agent-based model to examine how the trade of comestibles for wine led to a growing economy and a distinctive patterning of artifacts in the archaeological record of southern France. This model helps shed light on the p",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C2b_TRADE_COMMODITY"
+    },
+    {
+      "source": "s2",
+      "id": "853ec2071f92aeb475b6425df7af49626ae3b378",
+      "title": "African roots of the Dravidian-speaking tribes: A case study in onomastics",
+      "year": 2005,
+      "text": "African roots of the Dravidian-speaking tribes: A case study in onomastics",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C1d_NAME_ZIPF"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1017/s0035869x00132873",
+      "title": "Tasks, Methods and Results in the Study of the Indus Script",
+      "year": 1975,
+      "text": "Tasks, Methods and Results in the Study of the Indus Script  The Indus script is at present known from about 3,000 inscriptions with an average length of only five signs. The longest continuous text (1400) comprises only 17 characters divided over three lines. There are no bilingual inscriptions. Also, direct historical data relating to the Indus civilization are extremely scanty, being limited to the scarce references in cuneiform texts of the 3rd and early 2nd millennia B.C. to trade and other contacts with Melu\u1e2b\u1e2bha, the most distant country known to the Mesopotamians of those times, whose identity with the Indus civilization at the period in question is now widely accepted. More texts in the Indus script are, and will be, forthcoming from recent and imminent excavations, and perhaps the excavations that are under way in ancient Laga\u0161 will bring to light the long-expected bilingual, possibly in the form of a cuneiform document mentioning Melu\u1e2b\u1e2ban proper names and bearing the impression of an Indus seal. In the absence of such a clue, the pros",
+      "evidence_tier": "STRONG",
+      "ceiling_path": "C2b_TRADE_COMMODITY"
+    }
+  ],
+  "c1_total_hits": 15,
+  "c2_total_hits": 18,
+  "verdict": "Phase-248 ceiling-breaker mine: 2807 papers. C1(rare sign)=15 hits, C2(bilingual)=18 hits. ALLOGRAPH=HYP(2) | BIGRAM=NO_(0) | ICONOGRAPHIC=HYP(9) | NAME=NO_(4) | MUNDA=NO_(0) | LINEAR=NEW(2) | TRADE=NEW(5) | PROTO=HYP(8) | SANGAM=NO_(0) | MELUHHA=NO_(3)"
+}

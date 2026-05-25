@@ -158,6 +158,35 @@ jobs:
           path: frontend/test-results/
           retention-days: 7
 
+  # ── Indus reproducibility: public validation suite (stdlib only) ─────────
+  indus-public-checks:
+    name: Indus public validation checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    needs: []
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run public validation suite (stdlib only, no corpus access needed)
+        run: |
+          python research/indus/indus-anchor-model/scripts/validation/run_all_public_checks.py \
+            --data-dir research/indus/indus-anchor-model/data/public \
+            --output-dir /tmp/indus-validation-outputs
+
+      - name: Upload validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: indus-validation-report
+          path: /tmp/indus-validation-outputs/
+          retention-days: 30
+
   # ── Shell wrappers: syntax + functional checks on all 3 OS ─────────────────
   shell-scripts:
     name: Shell wrappers (${{ matrix.os }})

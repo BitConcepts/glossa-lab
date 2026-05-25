@@ -1,0 +1,6 @@
+check_name,status,reproducibility_tag,detail
+anchor_table_integrity,PASS,REPRODUCED_FROM_PUBLIC_DATA,"397 signs total, 161 HIGH+MEDIUM — counts match expectations"
+fish_sign_compound_only,PASS,REPRODUCED_FROM_PUBLIC_DATA,All 27 fish-sign occurrences are compound (0 isolated)
+formula_bigram_backbone,PASS,REPRODUCED_FROM_PUBLIC_DATA,Top bigram is M342·M176 (count=122) — matches expectation
+positional_profile_sanity,PASS,REPRODUCED_FROM_PUBLIC_DATA,M267 confirmed non-initial (genitive/suffixal); M342 confirmed terminal (case suffix marker)
+coverage_arithmetic,PASS,REPRODUCED_FROM_PUBLIC_DATA,Top-30 H+M bigram tokens: 943/943 (100.0%); H+M anchor count: 161/161; NOTE: Exact corpus-wide coverage (88-93%) requires Holdat corpus. Released top-30 bigrams are consistent with the claimed range.

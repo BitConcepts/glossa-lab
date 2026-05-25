@@ -304,8 +304,12 @@ def call_llm(
 
     # ── 1. Bucket-based resolution (new system) ──────────────────────
     if bucket:
-        resolved = _resolve_bucket_sync(bucket, exclude_provider_ids=exclude_provider_ids)
-        if resolved:
+        _excluded = set(exclude_provider_ids) if exclude_provider_ids else set()
+        # Try up to 4 slots: bucket-primary, bucket-fallback, global-primary, global-fallback
+        for _attempt in range(4):
+            resolved = _resolve_bucket_sync(bucket, exclude_provider_ids=_excluded)
+            if not resolved:
+                break
             prov = resolved["_provider"]
             model = resolved["model"]
             params = resolved.get("params") or {}
@@ -317,11 +321,21 @@ def call_llm(
                 bucket, prov["name"], model,
                 " (fallback)" if is_fb else "",
             )
-            return _dispatch_provider(
-                prov, model, messages,
-                json_mode=json_mode, json_schema=json_schema,
-                max_tokens=eff_max, temperature=eff_temp,
-            )
+            try:
+                return _dispatch_provider(
+                    prov, model, messages,
+                    json_mode=json_mode, json_schema=json_schema,
+                    max_tokens=eff_max, temperature=eff_temp,
+                )
+            except RuntimeError as _rt_err:
+                # Connection refused or provider down → exclude and try next
+                _excluded.add(prov["id"])
+                _log.warning(
+                    "call_llm: provider %s failed (%s), trying fallback",
+                    prov["name"], type(_rt_err).__name__,
+                )
+                continue
+        # If all bucket slots exhausted, fall through to legacy waterfall
 
     # ── 2. Legacy waterfall (backward compat for callers without bucket) ────
     return _legacy_waterfall(

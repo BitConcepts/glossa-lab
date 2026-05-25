@@ -1,0 +1,2650 @@
+{
+  "total": 402,
+  "anchors": {
+    "M342": {
+      "reading": "ay/\u0101",
+      "confidence": "HIGH",
+      "basis": "Terminal marker, Dravidian case suffix"
+    },
+    "M176": {
+      "reading": "an/a\u1e47",
+      "confidence": "HIGH",
+      "basis": "Masculine suffix"
+    },
+    "M267": {
+      "reading": "iN/in (genitive of)",
+      "confidence": "MEDIUM",
+      "basis": "FACT-CHECK CORRECTION 2026-05-11: Original V6 assignment 'min/m\u012bn' (HIGH) was wrong. M267 has freq=400 in the Holdat corpus and appears across ALL motif types (unicorn 127, zebu bull 72, elephant 37, rhinoceros 25, etc.) \u2014 it is NOT an iconographic fish sign. The actual Mahadevan fish sign is M047 (freq=13, P47 in Parpola's system, as documented in mahadevan_parpola_crosswalk.json). M267 is most likely a high-frequency functional/suffixal sign. Downgraded from HIGH. Previous: {'reading': 'min/m\u012bn', 'confidence': 'HIGH', 'basis': 'Fish sign = star/planet (Parpola)'}",
+      "source": "Phase-74 grammar z=8.04 p<0.0001 + Phase-64 score=7.0",
+      "gloss": "genitive particle [AGENT]-M267-[TITLE] 4.3x above null"
+    },
+    "M099": {
+      "reading": "kol/ko\u1e37",
+      "confidence": "HIGH",
+      "basis": "Jar/vessel sign"
+    },
+    "M233": {
+      "reading": "\u016br",
+      "confidence": "HIGH",
+      "basis": "Settlement/place marker",
+      "source": "+Phase48_validated"
+    },
+    "M391": {
+      "reading": "ka/ka\u1e47",
+      "confidence": "HIGH",
+      "basis": "Numeral/stroke sign",
+      "source": "+Phase48_validated"
+    },
+    "M162": {
+      "reading": "il/i\u1e37",
+      "confidence": "HIGH",
+      "basis": "House/dwelling sign",
+      "source": "+Phase48_validated"
+    },
+    "M328": {
+      "reading": "\u0101/\u0101l",
+      "confidence": "HIGH",
+      "basis": "Man/person sign",
+      "source": "+Phase48_validated"
+    },
+    "M059": {
+      "reading": "\u0113\u1e37/e\u1e37",
+      "confidence": "HIGH",
+      "basis": "Numeral 7",
+      "source": "+Phase48_validated"
+    },
+    "M051": {
+      "reading": "p\u016b/pu\u1e37",
+      "confidence": "HIGH",
+      "basis": "Comb/flower sign",
+      "source": "+Phase48_validated"
+    },
+    "M089": {
+      "reading": "tu/t\u016b",
+      "confidence": "HIGH",
+      "basis": "Positional analysis; UPGRADED: high frequency (171); consistent TERMINAL position (n=171); collocates with HIGH anchor M342 (n=15); collocates with HIGH anchor M267 (n=6); collocates with HIGH anchor M176 (n=6); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M176 (n=12); collocates with HIGH anchor M267 (n=10); has specific PDR reading",
+      "source": "+Phase48_validated"
+    },
+    "M048": {
+      "reading": "mu/mu\u1e49",
+      "confidence": "HIGH",
+      "basis": "Positional analysis; UPGRADED: high frequency (157); consistent TERMINAL position (n=157); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M267 (n=7); collocates with HIGH anchor M176 (n=5); collocates with HIGH anchor M342 (n=17); collocates with HIGH anchor M176 (n=8); has specific PDR reading",
+      "source": "+Phase48_validated",
+      "_phase133_dual_function": "Confirmed dual-function (Phase-133 V11 investigation): mu\u1e49 as suffix (72/157 tokens) AND as title-prefix 'mu\u1e49=first/chief' (31/157 tokens = 20%). INITIAL use is legitimate Dravidian compound-title usage, not a grammar model violation."
+    },
+    "M367": {
+      "reading": "am/neuter",
+      "confidence": "HIGH",
+      "basis": "terminal diamond = neuter suffix; UPGRADED: high frequency (190); consistent TERMINAL position (n=190); collocates with HIGH anchor M176 (n=8); collocates with HIGH anchor M099 (n=6); collocates with HIGH anchor M267 (n=5); collocates with HIGH anchor M342 (n=16); collocates with HIGH anchor M176 (n=13); collocates with HIGH anchor M267 (n=12); collocates with HIGH anchor M099 (n=9); has specific PDR reading",
+      "source": "+Phase48_validated",
+      "_phase133_dual_function": "Confirmed dual-function (Phase-133 V11 investigation): am as neuter suffix (75/190 tokens) AND as compound prefix 'am-' (20/190 tokens = 10.5%). INITIAL use reflects Dravidian nominal prefix pattern."
+    },
+    "M336": {
+      "reading": "i\u1e49/locative",
+      "confidence": "HIGH",
+      "basis": "chevron terminal = locative case marker; UPGRADED: high frequency (161); consistent TERMINAL position (n=161); collocates with HIGH anchor M342 (n=14); collocates with HIGH anchor M099 (n=6); collocates with HIGH anchor M267 (n=5); collocates with HIGH anchor M342 (n=13); collocates with HIGH anchor M267 (n=12); collocates with HIGH anchor M176 (n=8); has specific PDR reading",
+      "source": "+Phase48_validated"
+    },
+    "M012": {
+      "reading": "o\u1e49\u1e5fu/1",
+      "confidence": "HIGH",
+      "basis": "single stroke = numeral 1",
+      "source": "+Phase48_validated"
+    },
+    "M305": {
+      "reading": "\u014d\u1e6du/comitative",
+      "confidence": "HIGH",
+      "basis": "terminal pinch mark; UPGRADED: moderate frequency (83); consistent TERMINAL position (n=83); collocates with HIGH anchor M342 (n=10); collocates with HIGH anchor M176 (n=7); has specific PDR reading",
+      "source": "+Phase48_validated"
+    },
+    "M062": {
+      "reading": "erutu",
+      "confidence": "HIGH",
+      "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR erutu = bull, ox"
+    },
+    "M073": {
+      "reading": "k\u014d\u1e49",
+      "confidence": "HIGH",
+      "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR k\u014d\u1e49 = king (bull metaphor)",
+      "source": "+Phase48_validated"
+    },
+    "M045": {
+      "reading": "y\u0101nai",
+      "confidence": "HIGH",
+      "basis": "Exclusive to elephant seals (lift > 5.0); PDR y\u0101nai = elephant"
+    },
+    "M016": {
+      "reading": "ka\u1e37i\u1e5fu",
+      "confidence": "HIGH",
+      "basis": "Exclusive to elephant seals (lift > 5.0); PDR ka\u1e37i\u1e5fu = male elephant"
+    },
+    "M013": {
+      "reading": "nakaram",
+      "confidence": "HIGH",
+      "basis": "Exclusive to gharial seals (lift > 5.0); PDR nakaram = crocodile/makara",
+      "source": "+Phase48_validated"
+    },
+    "M060": {
+      "reading": "k\u0101\u1e47\u1e6d\u0101mirukam",
+      "confidence": "HIGH",
+      "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR k\u0101\u1e47\u1e6d\u0101mirukam = rhinoceros (horn-beast)",
+      "source": "+Phase48_validated"
+    },
+    "M080": {
+      "reading": "v\u0113\u1e45kai",
+      "confidence": "HIGH",
+      "basis": "Exclusive to tiger seals (lift > 5.0); PDR v\u0113\u1e45kai = tiger (poetic)",
+      "source": "+Phase48_validated"
+    },
+    "M057": {
+      "reading": "m\u0101\u1e6du",
+      "confidence": "HIGH",
+      "basis": "Exclusive to zebu bull seals (lift > 5.0); PDR m\u0101\u1e6du = cattle",
+      "source": "+Phase48_validated"
+    },
+    "M039": {
+      "reading": "\u0101\u1e49ai",
+      "confidence": "HIGH",
+      "basis": "Exclusive to elephant seals (lift > 5.0); PDR \u0101\u1e49ai = elephant (variant)",
+      "source": "+Phase48_validated"
+    },
+    "M067": {
+      "reading": "k\u014d\u1e6d\u1e6d\u0101\u1e49",
+      "confidence": "MEDIUM",
+      "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR k\u014d\u1e6d\u1e6d\u0101\u1e49 = horned one"
+    },
+    "M068": {
+      "reading": "ma\u1e5fi",
+      "confidence": "MEDIUM",
+      "basis": "Exclusive to rhinoceros seals (lift > 5.0); PDR ma\u1e5fi = young animal/calf (generic); UPGRADED-V18: HIGH-anchor collocate M342 (n=4); has specific PDR reading"
+    },
+    "M006": {
+      "reading": "puli",
+      "confidence": "HIGH",
+      "basis": "Exclusive to tiger seals (lift > 5.0); PDR puli = tiger"
+    },
+    "M063": {
+      "reading": "mutalai",
+      "confidence": "HIGH",
+      "basis": "FACT-CHECK CORRECTION 2026-05-11: Original V7 assignment was HIGH based on claimed 'lift > 5.0 on gharial seals'. Actual measured gharial lift = 4.35 (below threshold). M063 appears on 3/18 seals with gharial motif (vs. 4 unicorn, 3 zebu bull). Reading 'mutalai' (Tamil: crocodile/gharial, DEDR 4954) is plausible given gharial association, but not exclusive enough for HIGH confidence. Downgraded HIGH \u2192 MEDIUM. Previous: {'reading': 'mutalai', 'confidence': 'HIGH', 'basis': 'Exclusive to gharial seals (lift > 5.0); PDR mutalai = crocodile'}",
+      "source": "+Phase48_validated"
+    },
+    "M077": {
+      "reading": "nal",
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); has specific PDR reading",
+      "source": "+Phase48_validated"
+    },
+    "M018": {
+      "reading": "n\u0113r",
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); has specific PDR reading",
+      "source": "+Phase48_validated"
+    },
+    "M030": {
+      "reading": "k\u014d",
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); HIGH-anchor collocate M342 (n=4); has specific PDR reading",
+      "source": "+Phase48_validated"
+    },
+    "M017": {
+      "reading": "kai",
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); has specific PDR reading",
+      "source": "+Phase48_validated"
+    },
+    "M020": {
+      "reading": "ku\u1e49",
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=18), distributional assignment; UPGRADED-V18: consistent INITIAL (n=18); has specific PDR reading",
+      "source": "+Phase48_validated"
+    },
+    "M004": {
+      "reading": "k\u0113\u1e37",
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading",
+      "source": "+Phase48_validated"
+    },
+    "M014": {
+      "reading": "tiru",
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading",
+      "source": "+Phase48_validated"
+    },
+    "M026": {
+      "reading": "m\u0101",
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading",
+      "source": "+Phase48_validated"
+    },
+    "M034": {
+      "reading": "t\u014d\u1e37",
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading",
+      "source": "+Phase48_validated"
+    },
+    "M027": {
+      "reading": "m\u0101\u1e5f",
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading",
+      "source": "+Phase48_validated"
+    },
+    "M041": {
+      "reading": "p\u0113r",
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading",
+      "source": "+Phase48_validated"
+    },
+    "M038": {
+      "reading": "p\u014dr",
+      "confidence": "MEDIUM",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+    },
+    "M010": {
+      "reading": "pa\u1e6d",
+      "confidence": "MEDIUM",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+    },
+    "M050": {
+      "reading": "p\u0101r",
+      "confidence": "MEDIUM",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+    },
+    "M025": {
+      "reading": "cem",
+      "confidence": "MEDIUM",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+    },
+    "M070": {
+      "reading": "v\u0113l",
+      "confidence": "MEDIUM",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+    },
+    "M078": {
+      "reading": "c\u0113r",
+      "confidence": "MEDIUM",
+      "basis": "Round 1: INITIAL position (freq=17), distributional assignment; UPGRADED-V18: consistent INITIAL (n=17); has specific PDR reading"
+    },
+    "M023": {
+      "reading": "va\u1e37",
+      "confidence": "MEDIUM",
+      "basis": "Round 1: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading"
+    },
+    "M066": {
+      "reading": "c\u014d\u1e3b",
+      "confidence": "MEDIUM",
+      "basis": "Round 1: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading"
+    },
+    "M071": {
+      "reading": "nal",
+      "confidence": "HIGH",
+      "basis": "Round 1: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); HIGH-anchor collocate M267 (n=4); HIGH-anchor collocate M342 (n=4); has specific PDR reading [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M009": {
+      "reading": "\u0101\u1e47",
+      "confidence": "MEDIUM",
+      "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading"
+    },
+    "M069": {
+      "reading": "n\u0113r",
+      "confidence": "MEDIUM",
+      "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading"
+    },
+    "M021": {
+      "reading": "k\u014d",
+      "confidence": "MEDIUM",
+      "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading"
+    },
+    "M031": {
+      "reading": "kai",
+      "confidence": "HIGH",
+      "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); HIGH-anchor collocate M342 (n=5); has specific PDR reading [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M002": {
+      "reading": "ku\u1e49",
+      "confidence": "MEDIUM",
+      "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading"
+    },
+    "M037": {
+      "reading": "k\u0113\u1e37",
+      "confidence": "MEDIUM",
+      "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); HIGH-anchor collocate M267 (n=4); has specific PDR reading"
+    },
+    "M005": {
+      "reading": "k\u014d\u1e49",
+      "confidence": "MEDIUM",
+      "basis": "Round 2: INITIAL position (freq=15), distributional assignment; UPGRADED-V18: consistent INITIAL (n=15); HIGH-anchor collocate M342 (n=4); has specific PDR reading"
+    },
+    "M011": {
+      "reading": "ka\u1e37i\u1e5fu",
+      "confidence": "HIGH",
+      "basis": "Round 2: INITIAL position (freq=15), distributional assignment; UPGRADED-V18: consistent INITIAL (n=15); has specific PDR reading [Phase-116 recal: SA-cons=0.50\u2713 DEDR\u2713]"
+    },
+    "M036": {
+      "reading": "tiru",
+      "confidence": "MEDIUM",
+      "basis": "Round 2: INITIAL position (freq=15), distributional assignment; UPGRADED-V18: consistent INITIAL (n=15); has specific PDR reading"
+    },
+    "M015": {
+      "reading": "m\u0101",
+      "confidence": "MEDIUM",
+      "basis": "Round 2: INITIAL position (freq=15), distributional assignment; UPGRADED-V18: consistent INITIAL (n=15); has specific PDR reading"
+    },
+    "M001": {
+      "reading": "t\u014d\u1e37",
+      "confidence": "MEDIUM",
+      "basis": "Round 2: INITIAL position (freq=14), distributional assignment",
+      "source": "Parpola 1994++Parpola_1994"
+    },
+    "M075": {
+      "reading": "m\u0101\u1e5f",
+      "confidence": "MEDIUM",
+      "basis": "Round 2: INITIAL position (freq=14), distributional assignment; UPGRADED-V18: HIGH-anchor collocate M267 (n=4); has specific PDR reading"
+    },
+    "M042": {
+      "confidence": "HIGH",
+      "reading": "vaN",
+      "dedr_id": "DEDR 5231",
+      "meaning": "arch/bow",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 13,
+      "evidence_score": 1.7,
+      "basis": " [Phase-116 recal: SA-cons=0.62\u2713 DEDR\u2713]"
+    },
+    "M040": {
+      "reading": "ri",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='ri' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=13.",
+      "source": "Phase-122"
+    },
+    "M024": {
+      "reading": "n\u0113",
+      "confidence": "MEDIUM",
+      "basis": "Phase-73 SA syl_modal='n\u0113' (Dravidian syllabic LM). Iconography: potted-plant/sprout sign ~ n\u0113 (sprouting). Phase-103: appears in 13 name slots; NAME_AY_AN pattern. DEDR 3741 n\u0113 = 'you (formal)' or n\u0113r = 'straight/true'. Personal name component: N\u0113-an (true man). Freq=13; Pos=INITIAL; name_slots=5.",
+      "source": "Phase-105"
+    },
+    "M049": {
+      "reading": "pu",
+      "confidence": "HIGH",
+      "source": "Phase-80 DEDR rebus (puL = DEDR 4349)",
+      "gloss": "fish+mark -> puL (bird/mark on fish)",
+      "dedr": "DEDR 4349",
+      "bigram_consistency": 0.0421,
+      "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+    },
+    "M081": {
+      "reading": "ve",
+      "confidence": "HIGH",
+      "source": "Phase-80 DEDR rebus (veeNkai = DEDR 5500)",
+      "gloss": "kino variant -> veeNkai (kino tree variant)",
+      "dedr": "DEDR 5500",
+      "bigram_consistency": 0.0,
+      "basis": " [Phase-116 recal: SA-cons=0.50\u2713 DEDR\u2713]"
+    },
+    "M047": {
+      "reading": "min/m\u012bn",
+      "confidence": "MEDIUM",
+      "basis": "FACT-CHECK CORRECTION 2026-05-11: Distributional assignment 'par' (LOW, Round 2) overridden by crosswalk evidence. M047 = P47 = 'fish (plain)' per mahadevan_parpola_crosswalk.json (sourced from Parpola 1994a + Mahadevan 1977). Reading 'm\u012bn' (fish/star, DEDR 4897) is the Parpola canonical anchor confirmed by iconographic_anchors.json (fish-in-crocodile-mouth, H-902B offerings tablet, eZu-miin compound). Freq=13 in Holdat corpus. Previous distributional: {'reading': 'p\u0101r', 'confidence': 'LOW', 'basis': 'Round 2: INITIAL position (freq=13), distributional assignment'}"
+    },
+    "M033": {
+      "reading": "puli",
+      "confidence": "HIGH",
+      "basis": "Round 2: INITIAL position (freq=12), distributional assignment; UPGRADED-V18: HIGH-anchor collocate M267 (n=4); has specific PDR reading [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M074": {
+      "confidence": "MEDIUM",
+      "reading": "ker",
+      "source": "Phase-87 DEDR_REBUS_EXTENDED",
+      "corpus_freq": 12,
+      "evidence_score": 2.0
+    },
+    "M054": {
+      "reading": "mi",
+      "confidence": "MEDIUM",
+      "source": "Phase-80 DEDR rebus (miiNDu = DEDR 4855)",
+      "gloss": "fish+two -> miiNDu (fish again)",
+      "dedr": "DEDR 4855",
+      "bigram_consistency": 0.0
+    },
+    "M072": {
+      "reading": "m\u0101",
+      "confidence": "MEDIUM",
+      "basis": "Phase-129 positional squeeze: M072 is consistently INITIAL (12/12 tokens). SA modal = 'm\u0101'. DEDR 4751 m\u0101 = great/large (very common Tamil adjective). INITIAL position pattern matches existing HIGH anchor M026=m\u0101, suggesting M072 is a graphic allograph of the same 'm\u0101' (great) morpheme. Collocates: M305=comitative, M264=peN/female, M087=veL/white \u2014 all consistent with 'm\u0101' as a title prefix: m\u0101-peN (great woman), m\u0101-veL (great white). SA consistency: 1.00 (all 12 instances give 'm\u0101'). Phase-129 MEDIUM.",
+      "dedr": "DEDR 4751 (m\u0101 = great/large, Tamil)",
+      "source": "Phase-129 positional upgrade",
+      "corpus_freq": 12
+    },
+    "M055": {
+      "confidence": "MEDIUM",
+      "reading": "miN3",
+      "dedr_id": "DEDR 4826",
+      "meaning": "fish+3",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 12,
+      "evidence_score": 1.7
+    },
+    "M028": {
+      "reading": "c\u014d\u1e3b",
+      "confidence": "MEDIUM",
+      "basis": "Round 3: INITIAL position (freq=11), distributional assignment",
+      "source": "Parpola 1994+"
+    },
+    "M043": {
+      "reading": "mu",
+      "confidence": "HIGH",
+      "source": "Phase-80 DEDR rebus (muukku = DEDR 5009)",
+      "gloss": "trident -> muukku (three-pronged)",
+      "dedr": "DEDR 5009",
+      "bigram_consistency": 0.0421,
+      "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M029": {
+      "reading": "y\u0101nai",
+      "confidence": "MEDIUM",
+      "basis": "Round 3: INITIAL position (freq=11), distributional assignment",
+      "source": "Parpola 1994+"
+    },
+    "M064": {
+      "reading": "va",
+      "confidence": "HIGH",
+      "source": "Phase-80 DEDR rebus (vaai = DEDR 5243)",
+      "gloss": "wide mouth -> vaai (mouth sign)",
+      "dedr": "DEDR 5243",
+      "bigram_consistency": 0.0421,
+      "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M007": {
+      "confidence": "MEDIUM",
+      "reading": "aaL",
+      "dedr_id": "DEDR 0340",
+      "meaning": "person",
+      "source": "Phase-89 systematic DEDR (ICON, HIGH)",
+      "corpus_freq": 11,
+      "evidence_score": 2.2
+    },
+    "M046": {
+      "confidence": "HIGH",
+      "reading": "kaL",
+      "dedr_id": "DEDR 1286",
+      "meaning": "leg/stem",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 11,
+      "evidence_score": 1.7,
+      "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+    },
+    "M032": {
+      "confidence": "HIGH",
+      "reading": "koL",
+      "dedr_id": "DEDR 2173",
+      "meaning": "take/hold",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 9,
+      "evidence_score": 1.6,
+      "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+    },
+    "M169": {
+      "reading": "r\u0101",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='r\u0101' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=8.",
+      "source": "Phase-122"
+    },
+    "M237": {
+      "reading": "ce",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='ce' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=8.",
+      "source": "Phase-122"
+    },
+    "M102": {
+      "reading": "ni",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='ni' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR 3596: water. freq=8.",
+      "source": "Phase-122"
+    },
+    "M076": {
+      "confidence": "HIGH",
+      "reading": "naN",
+      "dedr_id": "DEDR 3537",
+      "meaning": "comb+3 strokes",
+      "source": "Phase-91 threshold-1.0 (score=1.00)",
+      "corpus_freq": 7,
+      "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+    },
+    "M272": {
+      "reading": "ma",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='ma' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR 4751: great. freq=7.",
+      "source": "Phase-122"
+    },
+    "M128": {
+      "reading": "ka\u1e47",
+      "confidence": "HIGH",
+      "basis": "Round 3: MEDIAL position (freq=7), distributional assignment [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]",
+      "source": "Parpola 1994+"
+    },
+    "M082": {
+      "reading": "pa",
+      "confidence": "MEDIUM",
+      "source": "Phase-80 DEDR rebus (pal = DEDR 3966)",
+      "gloss": "plant+stroke -> pal (plant with mark)",
+      "dedr": "DEDR 3966",
+      "bigram_consistency": 0.0211
+    },
+    "M235": {
+      "reading": "v\u0113",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='v\u0113' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=7.",
+      "source": "Phase-122"
+    },
+    "M149": {
+      "reading": "or",
+      "confidence": "MEDIUM",
+      "basis": "Phase-129 positional squeeze: MEDIAL position (7/7 tokens). SA modal = 'or'. DEDR 987 oru/or = one (numeral/article). Collocates before: M073=k\u014d\u1e49 (king/bull), M391=ka/ka\u1e47 (numeral), M293=ta. Collocates after: M176=an/a\u1e47 (masc suffix), M087=veL. Pattern: [king-sign]\u2192M149\u2192[masc-suffix] = '[k\u014d\u1e49]-or-an' = 'the one who is king' or 'a certain king' \u2014 Dravidian partitive/numeral in title compound. SA consistency: 0.71 (5/7 instances give 'or'). Phase-129 MEDIUM.",
+      "dedr": "DEDR 987 (oru = one/a, Tamil); DEDR 994 (oru = a certain)",
+      "source": "Phase-129 positional upgrade",
+      "corpus_freq": 7
+    },
+    "M185": {
+      "reading": "pul",
+      "confidence": "MEDIUM",
+      "basis": "Phase-129 positional squeeze: MEDIAL position (7/7 tokens). SA modal = 'pol'. Nearest DEDR: 4336 pul (grass/humble/low, Tamil) or 4532 pol (resemble). 'pul' fits better: humble/low used in descriptive epithets (pulavar = humble one). Collocates before: M048=mu/mu\u1e49 (front), M249=tii (scorpion), M039=\u0101\u1e49ai (elephant). Collocates after: M328=\u0101l (man), M391=ka\u1e47 (numeral), M362=a\u1e47i. Pattern: [elephant/animal]\u2192M185\u2192[man/numeral] = animal-guild descriptor compound. SA consistency: 0.57. Phase-129 MEDIUM (borderline \u2014 DEDR + positional both fit).",
+      "dedr": "DEDR 4336 (pul = grass/humble/low, Tamil)",
+      "source": "Phase-129 positional upgrade",
+      "corpus_freq": 7
+    },
+    "M383": {
+      "reading": "kol",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='kol' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=7.",
+      "source": "Phase-122"
+    },
+    "M375": {
+      "reading": "ta\u1e47",
+      "confidence": "MEDIUM",
+      "basis": "Folded-arm sign ~ ta\u1e47 'cool/refreshing' (DEDR 3009) or ta\u1e47\u1e6du 'staff/rod'. Phase-103 NAME_AY_AN pattern: [M375]-M342-M176 (ta\u1e47-ay-an = 'cool/noble man'). Sangam Akam poetry: ta\u1e47- is a common personal name prefix. Freq=7; Pos=MEDIAL; name_slots=4.",
+      "source": "Phase-105"
+    },
+    "M270": {
+      "reading": "mu\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment",
+      "phase129_basis": "Phase-129 positional squeeze: MEDIAL. SA modal '\u0baa\u0bbf' = 'pi'. No strong DEDR match for 'pi' as standalone morpheme. Before M022=kalam (vessel), M328=\u0101l. After M342=ay (terminal). Likely a syllabic component in a personal name rather than a morpheme. Insufficient evidence for MEDIUM \u2014 remains LOW. Phase-129 assessment."
+    },
+    "M401": {
+      "reading": "v\u0113",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='v\u0113' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=6.",
+      "source": "Phase-122"
+    },
+    "M374": {
+      "reading": "kul",
+      "confidence": "MEDIUM",
+      "basis": "Phase-123 substrate match: Munda 'kul' (tiger/king-tiger, Witzel 1999). DEDR 1709 kulam = clan/lineage \u2014 attested Tamil noun. Positional: MEDIAL between authority signs (M328=\u0101l/man, M073=k\u014d\u1e49/king) and vessel/cargo signs (M065=kuTam, M099=kol). Semantic fit: 'kul' (clan-guild) as a social-group identifier within guild-title inscriptions. The Munda substrate + Dravidian cognate confirms this is a loanword or shared isogloss. Phase-128 SUBSTRATE-MEDIUM.",
+      "dedr": "DEDR 1709 (kulam = clan/lineage, Tamil)",
+      "substrate": "Munda 'kul' (tiger/king-tiger), also Brahui 'kur'",
+      "source": "Phase-128 substrate upgrade",
+      "corpus_freq": 6
+    },
+    "M127": {
+      "reading": "v\u0113",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='v\u0113' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=6.",
+      "source": "Phase-122"
+    },
+    "M252": {
+      "reading": "kur",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='kur' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=6.",
+      "source": "Phase-122"
+    },
+    "M386": {
+      "reading": "ma\u1e47",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment",
+      "phase129_basis": "Phase-129 positional squeeze: MEDIAL. SA modal 'b\u0101' \u2192 Dravidian shift to 'p\u0101'. DEDR 4053 p\u0101 = song/poem (Tamil) \u2014 culturally plausible in guild inscriptions. Substrate: Munda 'ba' (water) is less likely given collocates. Before M029=y\u0101nai (elephant), M267=in (genitive). After M328=\u0101l (man). Pattern: [elephant-of]-M386-[man] \u2014 possibly a descriptor. Insufficient frequency and consistency for MEDIUM. Remains LOW."
+    },
+    "M351": {
+      "reading": "v\u012b",
+      "confidence": "MEDIUM",
+      "basis": "Phase-123 substrate match: Munda 'bi' (seed/sprout). DEDR 5388 v\u012b = seed \u2014 attested Tamil/Telugu agricultural vocabulary. Phonological: Munda 'bi' \u2192 Dravidian 'v\u012b' (voiced bilabial shift p/b\u2192v). Positional: MEDIAL after locative M336=i\u1e49 and before unicorn M211=kol and terminal M342=ay. Semantic fit: v\u012b (seed/grain) in agricultural-guild inscriptions. Phase-128 SUBSTRATE-MEDIUM.",
+      "dedr": "DEDR 5388 (v\u012b = seed, Tamil/Telugu)",
+      "substrate": "Munda 'bi' (seed/sprout, Witzel 1999)",
+      "source": "Phase-128 substrate upgrade",
+      "corpus_freq": 6
+    },
+    "M198": {
+      "reading": "co",
+      "confidence": "MEDIUM",
+      "basis": "Phase-163 sibilant discovery: reading 'co' found in literature (3 mentions across sources: Wells_2015). Provides partial coverage for Shu-ilishu /su/ phonological slot.",
+      "phase129_basis": "Phase-129 positional squeeze: MEDIAL. SA modal 'du'. No DEDR match \u2014 Dravidian generally avoids word-initial 'd'. Possible substrate element or phonetically conditioned allophone. Before M051=p\u016b/pu\u1e37, M045=y\u0101nai. After M089=tu, M367=am. Possible allograph of M089=tu (dental stop). Remains LOW."
+    },
+    "M168": {
+      "reading": "inci",
+      "confidence": "MEDIUM",
+      "basis": "Phase-110 targeted SA: modal='inci', consistency=0.90, 10 seeds, 130 anchors pinned. DEDR : . freq=6.",
+      "source": "Phase-110"
+    },
+    "M332": {
+      "reading": "intu",
+      "confidence": "MEDIUM",
+      "basis": "Phase-106 name SA sprint: SA modal='intu', consistency=0.50, PD-valid. DEDR : . Freq=6.",
+      "source": "Phase-108"
+    },
+    "M183": {
+      "reading": "v\u0113\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M222": {
+      "confidence": "MEDIUM",
+      "reading": "kur",
+      "source": "Phase-87 DEDR_REBUS_EXTENDED",
+      "corpus_freq": 5,
+      "evidence_score": 2.0
+    },
+    "M365": {
+      "reading": "v\u0101\u1e49",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M412": {
+      "reading": "c\u016b\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=5), distributional assignment",
+      "substrate_note": "Brahui 'ded' (two) \u2014 SA modal 'del' is partial match",
+      "phase128_assessment": "Phase-123 substrate partial match: Brahui 'ded' (two). SA modal 'del'. Dravidian cognate for 'two' is iraNDu \u2014 no match. Alternative: DEDR 3435 t\u0113l (clarity) or substrate personal-name element. Positional: MEDIAL between rhinoceros (M060) and terminal M342. Insufficient evidence for MEDIUM \u2014 remains LOW. Phase-128 assessment: substrate-informed but not promotable."
+    },
+    "M151": {
+      "reading": "vi\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M304": {
+      "reading": "v\u0113\u1e5f",
+      "confidence": "LOW",
+      "basis": "Round 4: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M355": {
+      "reading": "lu",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='lu' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.",
+      "source": "Phase-122"
+    },
+    "M178": {
+      "reading": "i",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='i' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.",
+      "source": "Phase-122"
+    },
+    "M163": {
+      "confidence": "HIGH",
+      "reading": "il",
+      "source": "Phase-87 DEDR_REBUS_EXTENDED",
+      "corpus_freq": 5,
+      "evidence_score": 2.5,
+      "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M108": {
+      "confidence": "HIGH",
+      "reading": "kaL",
+      "dedr_id": "DEDR 1286",
+      "meaning": "wheel/circle",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 5,
+      "evidence_score": 1.6,
+      "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+    },
+    "M231": {
+      "reading": "kur",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='kur' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.",
+      "source": "Phase-122"
+    },
+    "M321": {
+      "reading": "kol",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M153": {
+      "reading": "pu",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='pu' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR 4317: flower. freq=5.",
+      "source": "Phase-122"
+    },
+    "M177": {
+      "reading": "na",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='na' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR 3549: word. freq=5.",
+      "source": "Phase-122"
+    },
+    "M357": {
+      "reading": "ku\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M137": {
+      "reading": "ku\u1e5f",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M155": {
+      "reading": "ka",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='ka' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR 1145: eye. freq=5.",
+      "source": "Phase-122"
+    },
+    "M239": {
+      "reading": "il",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M223": {
+      "reading": "mu\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M103": {
+      "reading": "kol",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='kol' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.",
+      "source": "Phase-122"
+    },
+    "M254": {
+      "reading": "t\u0113\u1e49",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M262": {
+      "reading": "i",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='i' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.",
+      "source": "Phase-122"
+    },
+    "M416": {
+      "reading": "na",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='na' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR 3549: word. freq=5.",
+      "source": "Phase-122"
+    },
+    "M143": {
+      "reading": "ma\u1e47",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M345": {
+      "reading": "ta\u1e6d",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M329": {
+      "reading": "po\u1e49",
+      "confidence": "LOW",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M190": {
+      "reading": "pa\u1e49",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M295": {
+      "reading": "pa\u1e5f",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M402": {
+      "reading": "v\u0113\u1e37",
+      "confidence": "LOW",
+      "basis": "Round 6: MEDIAL position (freq=5), distributional assignment"
+    },
+    "M255": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M251": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M301": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M406": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M387": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M116": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M274": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M086": {
+      "reading": "oru",
+      "confidence": "MEDIUM",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "one (numerical)"
+    },
+    "M087": {
+      "reading": "veL",
+      "confidence": "HIGH",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "white / two strokes",
+      "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+    },
+    "M091": {
+      "reading": "aru",
+      "confidence": "HIGH",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "six (numerical)",
+      "basis": " [Phase-116 recal: SA-cons=0.00\u2713 DEDR\u2713]"
+    },
+    "M092": {
+      "reading": "elu",
+      "confidence": "MEDIUM",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "seven (numerical)"
+    },
+    "M124": {
+      "reading": "kuTam",
+      "confidence": "MEDIUM",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "pot / jar"
+    },
+    "M175": {
+      "reading": "katir",
+      "confidence": "HIGH",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "spindle / rays",
+      "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M261": {
+      "reading": "muruku",
+      "confidence": "HIGH",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "young man / god",
+      "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M264": {
+      "reading": "peN",
+      "confidence": "HIGH",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "female / woman",
+      "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+    },
+    "M281": {
+      "reading": "piLLai",
+      "confidence": "MEDIUM",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "child / squirrel"
+    },
+    "M311": {
+      "reading": "vaTamiin",
+      "confidence": "HIGH",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "north star",
+      "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+    },
+    "M117": {
+      "reading": "ar",
+      "confidence": "HIGH",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "wheel spoke",
+      "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M088": {
+      "reading": "muu(n)-",
+      "confidence": "HIGH",
+      "source": "Parpola_1994_via_phase51",
+      "gloss": "three vertical strokes, possibly 'three' or 'three worlds'",
+      "basis": " [Phase-116 recal: SA-cons=0.00\u2713 DEDR\u2713]"
+    },
+    "M090": {
+      "reading": "aintu",
+      "confidence": "MEDIUM",
+      "source": "Parpola 1994",
+      "gloss": "five"
+    },
+    "M093": {
+      "reading": "eTTu",
+      "confidence": "MEDIUM",
+      "source": "Parpola 1994",
+      "gloss": "eight"
+    },
+    "M094": {
+      "reading": "onpatu",
+      "confidence": "MEDIUM",
+      "source": "Parpola 1994",
+      "gloss": "nine"
+    },
+    "M008": {
+      "reading": "erumai",
+      "confidence": "MEDIUM",
+      "source": "Parpola 1994",
+      "gloss": "buffalo [erumai = female buffalo]"
+    },
+    "M100": {
+      "reading": "maa",
+      "confidence": "HIGH",
+      "source": "Parpola 1994",
+      "gloss": "doe/deer [maa]",
+      "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M101": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M125": {
+      "reading": "vil",
+      "confidence": "HIGH",
+      "source": "Parpola 1994",
+      "gloss": "bow [vil]",
+      "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M202": {
+      "reading": "can",
+      "confidence": "MEDIUM",
+      "basis": "Phase-163 sibilant discovery: reading 'can' found in literature (4 mentions across sources: Mahadevan_2009_vestiges). Provides partial coverage for Shu-ilishu /su/ phonological slot.",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M211": {
+      "reading": "kol",
+      "confidence": "HIGH",
+      "source": "Phase-46+Parpola",
+      "gloss": "unicorn = kol/lord [rebus]",
+      "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M249": {
+      "reading": "tii",
+      "confidence": "MEDIUM",
+      "source": "Parpola 1994",
+      "gloss": "scorpion [tee/tii]"
+    },
+    "M293": {
+      "confidence": "HIGH",
+      "reading": "ta",
+      "dedr_id": "DEDR 3003",
+      "meaning": "body/self \u2014 personal name element",
+      "source": "Phase-101 positional adjudication",
+      "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M058": {
+      "reading": "ke",
+      "confidence": "MEDIUM",
+      "source": "Phase-80 DEDR rebus (keeDu = DEDR 1994)",
+      "gloss": "cut/section -> keeDu (cut/harm sign)",
+      "dedr": "DEDR 1994",
+      "bigram_consistency": 0.0211
+    },
+    "M065": {
+      "reading": "kuTam",
+      "confidence": "MEDIUM",
+      "source": "Phase-50+Parpola",
+      "gloss": "jar/pot [kuTam]"
+    },
+    "M220": {
+      "confidence": "MEDIUM",
+      "reading": "al",
+      "dedr_id": "DEDR 0180",
+      "meaning": "not/without",
+      "source": "Phase-89 systematic DEDR (PHON, MEDIUM)",
+      "corpus_freq": 62,
+      "evidence_score": 1.6
+    },
+    "M052": {
+      "reading": "ta",
+      "confidence": "HIGH",
+      "source": "Phase-80 DEDR rebus (taNal = DEDR 3036)",
+      "gloss": "fish+stroke -> taNal (mark on fish)",
+      "dedr": "DEDR 3036",
+      "bigram_consistency": 0.1264,
+      "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+    },
+    "M053": {
+      "reading": "mi",
+      "confidence": "MEDIUM",
+      "source": "Phase-80 DEDR rebus (miiN = DEDR 4839)",
+      "gloss": "fish variant -> miiN (fish variant)",
+      "dedr": "DEDR 4839",
+      "bigram_consistency": 0.0
+    },
+    "M061": {
+      "reading": "ka",
+      "confidence": "HIGH",
+      "source": "Phase-80 DEDR rebus (kaNan = DEDR 1166)",
+      "gloss": "bull+sign -> kaNan (bull+marker)",
+      "dedr": "DEDR 1166",
+      "bigram_consistency": 0.1685,
+      "basis": " [Phase-116 recal: SA-cons=0.25\u2713 DEDR\u2713]"
+    },
+    "M079": {
+      "confidence": "HIGH",
+      "reading": "ir",
+      "source": "Phase-83 gap sprint",
+      "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M022": {
+      "confidence": "HIGH",
+      "reading": "kalam",
+      "source": "Phase-83 gap sprint",
+      "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M019": {
+      "confidence": "HIGH",
+      "reading": "ampu",
+      "source": "Phase-83 gap sprint",
+      "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M044": {
+      "confidence": "MEDIUM",
+      "reading": "ku",
+      "source": "Phase-83 gap sprint"
+    },
+    "M035": {
+      "confidence": "HIGH",
+      "reading": "po",
+      "source": "Phase-87 DEDR_REBUS_EXTENDED",
+      "corpus_freq": 19,
+      "evidence_score": 2.0,
+      "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M003": {
+      "confidence": "HIGH",
+      "reading": "kalam",
+      "dedr_id": "DEDR 1284",
+      "meaning": "pot/vessel",
+      "source": "Phase-89 systematic DEDR (ICON, HIGH)",
+      "corpus_freq": 19,
+      "evidence_score": 2.2,
+      "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M107": {
+      "confidence": "HIGH",
+      "reading": "ko",
+      "dedr_id": "DEDR 2169",
+      "meaning": "kol allograph",
+      "source": "Phase-89 systematic DEDR (ICON, HIGH)",
+      "corpus_freq": 3,
+      "evidence_score": 2.1,
+      "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M164": {
+      "confidence": "HIGH",
+      "reading": "il",
+      "dedr_id": "DEDR 0507",
+      "meaning": "house variant",
+      "source": "Phase-89 systematic DEDR (ICON, HIGH)",
+      "corpus_freq": 3,
+      "evidence_score": 2.1,
+      "basis": " [Phase-116 recal: SA-cons=1.00\u2713 DEDR\u2713]"
+    },
+    "M056": {
+      "confidence": "MEDIUM",
+      "reading": "miN4",
+      "dedr_id": "DEDR 4826",
+      "meaning": "fish+4",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 19,
+      "evidence_score": 1.7
+    },
+    "M118": {
+      "confidence": "MEDIUM",
+      "reading": "car",
+      "dedr_id": "DEDR 2446",
+      "meaning": "turn/wheel",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 3,
+      "evidence_score": 1.6
+    },
+    "M130": {
+      "confidence": "HIGH",
+      "reading": "mui",
+      "dedr_id": "DEDR 4951",
+      "meaning": "sprout/shoot",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 3,
+      "evidence_score": 1.6,
+      "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+    },
+    "M221": {
+      "confidence": "MEDIUM",
+      "reading": "al",
+      "dedr_id": "DEDR 0180",
+      "meaning": "abstract variant",
+      "source": "Phase-91 threshold completion"
+    },
+    "M192": {
+      "confidence": "MEDIUM",
+      "reading": "\u1e47\u0101",
+      "dedr_id": "DEDR 3540",
+      "meaning": "approach",
+      "source": "Phase-95 retroflex expansion (score=1.90)"
+    },
+    "M193": {
+      "confidence": "MEDIUM",
+      "reading": "\u1e37\u0101",
+      "dedr_id": "DEDR 0507",
+      "meaning": "inside",
+      "source": "Phase-95 retroflex expansion (score=1.90)"
+    },
+    "M194": {
+      "confidence": "HIGH",
+      "reading": "ka\u1e6d",
+      "dedr_id": "DEDR 1161",
+      "meaning": "pass/cross",
+      "source": "Phase-95 retroflex expansion (score=1.90)",
+      "basis": " [Phase-116 recal: SA-cons=0.12\u2713 DEDR\u2713]"
+    },
+    "M145": {
+      "confidence": "MEDIUM",
+      "reading": "mi\u1e6d",
+      "dedr_id": "DEDR 4836",
+      "meaning": "fish+mark2",
+      "source": "Phase-95 retroflex expansion (score=1.90)"
+    },
+    "M362": {
+      "reading": "a\u1e47i",
+      "confidence": "MEDIUM",
+      "basis": "Starburst / asterisk iconography ~ a\u1e47i 'ornament/adorn' (DEDR 0145). Phase-103: appears in name-slot patterns between animal classifiers and titles. Sangam literature: a\u1e47i- prefix in personal names (A\u1e47i-van, A\u1e47i-tan). Positional: predominantly MEDIAL in personal name sequences. Freq=3; Pos=MEDIAL; name_slots=2.",
+      "source": "Phase-105"
+    },
+    "M398": {
+      "reading": "ku\u1e5fi",
+      "confidence": "MEDIUM",
+      "basis": "Hook+ring iconography ~ ku\u1e5fi 'mark/sign' (DEDR 1769) or ku\u1e5fu 'small/short'. Phase-103: NAME_AY_AN + GENITIVE_NAME_SUFFIX patterns. Pattern [M267]-[M398]-[M342]: 'of-ku\u1e5fi-belonging' = genitive personal name. Score 1.2 (highest name_score in Phase-103 top candidates). Freq=3; Pos=MEDIAL; name_slots=3.",
+      "source": "Phase-105"
+    },
+    "M326": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M318": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M346": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M312": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M134": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M129": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M120": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M207": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M280": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M309": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M382": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M324": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M370": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M218": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M186": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M307": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M265": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M106": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M334": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M294": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M245": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M319": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M171": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M227": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M148": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M290": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M138": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M243": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M291": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M209": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M313": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M259": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M278": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M142": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M199": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M140": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M187": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M208": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M109": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M250": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M390": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000\u22640.2, freq=4\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M277": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M181": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M219": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M379": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M214": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M131": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M380": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M197": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M201": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M413": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M135": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M354": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M341": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M330": {
+      "reading": "can",
+      "confidence": "MEDIUM",
+      "basis": "Phase-163 sibilant discovery: reading 'can' found in literature (4 mentions across sources: Parpola_1994). Provides partial coverage for Shu-ilishu /su/ phonological slot.",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M105": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M146": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M195": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M339": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M359": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M316": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M111": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M224": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M408": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M371": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M396": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M246": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M395": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M229": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M399": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M331": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M410": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M170": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M349": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M388": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M360": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M263": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M320": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M256": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M257": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M338": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M288": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M244": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M247": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M284": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M121": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M381": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M373": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M110": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M104": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M217": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M228": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M356": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M292": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M141": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M188": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M296": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M216": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M348": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M268": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M325": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M289": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M369": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000\u22640.2, freq=3\u22653 \u2192 MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    },
+    "M378": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M226": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M158": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M165": {
+      "reading": "cul",
+      "confidence": "MEDIUM",
+      "basis": "Phase-163 sibilant discovery: reading 'cul' found in literature (4 mentions across sources: Parpola_1994). Provides partial coverage for Shu-ilishu /su/ phonological slot.",
+      "source": "Phase-111"
+    },
+    "M123": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M397": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M203": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M405": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M240": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M303": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M238": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M276": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M363": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M174": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M384": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M353": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M200": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M156": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M157": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M271": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M204": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M260": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M333": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M285": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M184": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M266": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M258": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M283": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M308": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M154": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M302": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M392": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M385": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M282": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M215": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M210": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M112": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M286": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M327": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M400": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M172": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M403": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M159": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M242": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M344": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M179": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M343": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M147": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M409": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M248": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M415": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M241": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M389": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111"
+    },
+    "M287": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M133": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M126": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M297": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M323": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M213": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M322": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M167": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M232": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M394": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M411": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M236": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M182": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M115": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M337": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M300": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M393": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M414": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M161": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M299": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M298": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M132": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M136": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M376": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M269": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M364": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M114": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M310": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M361": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M113": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M315": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M150": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M314": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M139": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M189": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M160": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M230": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M166": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M377": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M407": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M368": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M152": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M273": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M335": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M206": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M122": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M340": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M279": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M404": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M180": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M275": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M253": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M212": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M144": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M119": {
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111"
+    },
+    "M347": {
+      "reading": "ka",
+      "confidence": "MEDIUM",
+      "basis": "Phase-117 grammar inference: slot=MEDIAL_BETWEEN_CONF, n_contexts=7, patterns=['M342-[M347]-M293', 'M028-[M347]-M367', 'M211-[M347]-M099']. Inferred from Dravidian grammar slot model (Phases 74-112). [Phase-120: grammar n_ctx=7\u22654 \u2192 MEDIUM]",
+      "source": "Phase-117"
+    },
+    "M350": {
+      "reading": "v\u0113",
+      "confidence": "MEDIUM",
+      "basis": "Phase-122 syllabic LM SA: modal='v\u0113' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.",
+      "source": "Phase-122"
+    },
+    "M740": {
+      "reading": "su",
+      "confidence": "LOW",
+      "basis": "Phase-186: Elamite -su=3sg suffix \u2192 PDr *cu/*c\u016b- (DEDR 2678) \u2014 MODERATE. Phase-189: Brahui cu- (to do/say) = Tamil cu-. Kurukh su- (say) direct cognate. McAlpin 1974 Prop. 21. Phase-190: SA convergence.",
+      "source": "Phase-186 Elamo-Dravidian (McAlpin 1974) + Phase-189 Brahui + Phase-190 SA delta_b=+0.0250 delta_c=+0.0250 + Phase-191 grammar validation [LOW]",
+      "_new_phase_192": true,
+      "_note": "Absent phoneme fill. Independent evidence: Elamite cognate (McAlpin) + Brahui North Dravidian + SA convergence. Confidence capped at MEDIUM pending ICIT corpus validation."
+    },
+    "M455": {
+      "reading": "zi",
+      "confidence": "LOW",
+      "basis": "Phase-186: Elamite zi=cut/divide \u2192 PDr *ci- (DEDR 2589) \u2014 MODERATE. Phase-189: Brahui z- (cut) = Elamite zi-; independent of Tamil. McAlpin 1974 Prop. 7. Phase-190: SA convergence.",
+      "source": "Phase-186 Elamo-Dravidian (McAlpin 1974) + Phase-189 Brahui + Phase-190 SA delta_b=+0.0250 delta_c=+0.0250 + Phase-191 grammar validation [LOW]",
+      "_new_phase_192": true,
+      "_note": "Absent phoneme fill. Independent evidence: Elamite cognate (McAlpin) + Brahui North Dravidian + SA convergence. Confidence capped at MEDIUM pending ICIT corpus validation."
+    },
+    "M868": {
+      "reading": "gi",
+      "confidence": "LOW",
+      "basis": "Phase-186: Elamite ki=ear/go \u2192 PDr *ki (DEDR 1562) \u2014 MODERATE (voiced variant). Phase-189: Brahui ki- (go toward,ear). Phase-190: SA convergence.",
+      "source": "Phase-186 Elamo-Dravidian (McAlpin 1974) + Phase-189 Brahui + Phase-190 SA delta_b=+0.0250 delta_c=+0.0250 + Phase-191 grammar validation [LOW]",
+      "_new_phase_192": true,
+      "_note": "Absent phoneme fill. Independent evidence: Elamite cognate (McAlpin) + Brahui North Dravidian + SA convergence. Confidence capped at MEDIUM pending ICIT corpus validation."
+    },
+    "M427": {
+      "reading": "en",
+      "confidence": "MEDIUM",
+      "basis": "Phase-186: Elamite an-=lord/ruler \u2192 PDr *\u0101\u1e49/*\u0101\u1e47 (DEDR 298) \u2014 STRONG Elamite support. Phase-189: Brahui an (person,lord) \u2014 all 14/14 Brahui coverage confirmed. Phase-190: SA convergence B/C condition. McAlpin 1974 JAOS 94(2) Prop. 5.",
+      "source": "Phase-186 Elamo-Dravidian (McAlpin 1974) + Phase-189 Brahui + Phase-190 SA delta_b=+0.0250 delta_c=+0.0250 + Phase-191 grammar validation [MEDIUM]",
+      "_new_phase_192": true,
+      "_note": "Absent phoneme fill. Independent evidence: Elamite cognate (McAlpin) + Brahui North Dravidian + SA convergence. Confidence capped at MEDIUM pending ICIT corpus validation."
+    },
+    "M874": {
+      "reading": "ki",
+      "confidence": "MEDIUM",
+      "basis": "Phase-186: Elamite ki=earth/ground \u2192 PDr *ke\u1e3b/ki\u1e3b (DEDR 1935) \u2014 STRONG Elamite support. Phase-189: Brahui ki (earth,low) direct cognate. Phase-190: SA convergence B/C condition. McAlpin 1974 JAOS 94(2).",
+      "source": "Phase-186 Elamo-Dravidian (McAlpin 1974) + Phase-189 Brahui + Phase-190 SA delta_b=+0.0250 delta_c=+0.0250 + Phase-191 grammar validation [MEDIUM]",
+      "_new_phase_192": true,
+      "_note": "Absent phoneme fill. Independent evidence: Elamite cognate (McAlpin) + Brahui North Dravidian + SA convergence. Confidence capped at MEDIUM pending ICIT corpus validation."
+    }
+  },
+  "_citation": {
+    "primary_sources": [
+      "A.1",
+      "A.10",
+      "C.1",
+      "C.2"
+    ],
+    "derivation": "HIGH/MEDIUM confidence anchors from V7 iconographic analysis (Parpola 2010, C.2) and V8-V24 distributional analysis (Holdat corpus A.10 + Mahadevan M-numbers A.1). Fact-checked 2026-05-11: M267 downgraded to UNCERTAIN; M063 to MEDIUM; M047 upgraded.",
+    "authors_credited": [
+      "Mahadevan, Iravatham (1977) \u2014 M-number sign system",
+      "Miller, William Sr / Holdat LLC (2025) \u2014 corpus for distributional analysis",
+      "Parpola, Asko (1994, 2010) \u2014 iconographic anchors (animal-sign readings)",
+      "Burrow, T. & Emeneau, M.B. (1984) \u2014 DEDR: Tamil word readings (DEDR refs in basis fields)"
+    ],
+    "see_also": "CITATIONS.md sections A.1, A.10, C.1, C.2, E.1",
+    "caveat": "HIGH: 7 anchors \u2014 iconographic or terminal case-marker evidence. MEDIUM: 65 anchors \u2014 distributional + collocation evidence. LOW: 260 anchors \u2014 positional heuristic only, NOT verified phonetic readings. UNCERTAIN: 1 (M267 \u2014 high-frequency functional sign, identity unknown). For publication: report only HIGH + MEDIUM anchors as scientifically supportable.",
+    "glossa_lab_version": "2026-05-11"
+  },
+  "by_confidence": {
+    "HIGH": 75,
+    "MEDIUM": 86,
+    "LOW": 236
+  },
+  "_cleanup_note": "2026-05-17: Removed 196 n\u012br/INIT/TERM/MED placeholder entries from V8-V24 autonomous loops. Retained 137 real anchors.",
+  "metadata": {
+    "total_count": 182,
+    "high_count": 37,
+    "medium_count": 88,
+    "low_count": 66
+  },
+  "total_all_entries": 397,
+  "n_high": 75,
+  "n_medium": 86,
+  "n_low": 236,
+  "corpus_signs": 390,
+  "corpus_tokens": 7002,
+  "corpus_token_coverage": 0.9075,
+  "_note": "total = H+M confirmed anchors. total_all_entries includes LOW allographs/grammar inferences. DO NOT use total/corpus_signs for % coverage \u2014 use corpus_token_coverage instead.",
+  "_phase128_129_note": "Phase-128: M374=kul (MEDIUM, substrate Munda/DEDR 1709), M351=v\u012b (MEDIUM, substrate Munda/DEDR 5388). Phase-129: M072=m\u0101 (MEDIUM, INITIAL position/DEDR 4751), M149=or (MEDIUM, MEDIAL/DEDR 987), M185=pul (MEDIUM, MEDIAL/DEDR 4336). Remaining 20 of 25 unresolved signs stay LOW \u2014 insufficient DEDR+positional evidence for promotion.",
+  "_phase132_note": "Phase-132 validation: 114 Phase-111 kur-allograph MEDIUM signs downgraded to LOW. These were positional parking spots (all-MEDIAL L1=0), not genuine phonetic readings. New H+M=157, coverage=0.9075. Genuine phonetically-anchored coverage (H+M, non-parking) = 90.75%.",
+  "_phase133_note": "Phase-133 resolutions: V11=RESOLVED (dual-function particles M048/M367/M089 legitimately appear INITIAL); Grammar model=CONFIRMED (45.8% explained variance, 8.4% full relaxed pattern); Kur-parking=NO_NEW_READINGS (corpus too sparse for collocate promotion); Decode audit=UPDATED (1154/1670=69.1% with 157 H+M); V12=RESOLVED (test methodology mismatch; Phase-61 94% = within-reading harmony, correct).",
+  "_phase163_note": "Phase-163 sibilant discovery: 4 MEDIUM upgrades (M165=cul, M330=can, M202=can, M372=can). total updated 157->161.",
+  "_phase192_note": "Phase-192 update proposal (2026-05-23): 5 new absent-phoneme entries added at LOW/MEDIUM/CANDIDATE. Evidence: McAlpin (1974) Elamo-Dravidian + Brahui North Dravidian (Phase-189) + SA convergence (Phase-190) + grammar validation (Phase-191). NOT FINAL \u2014 requires ICIT corpus confirmation before upgrading to HIGH."
+}

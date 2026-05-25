@@ -1,0 +1,842 @@
+{
+  "phase": 208,
+  "elapsed_s": 145.6,
+  "total_papers_fetched": 4466,
+  "n_strong_evidence": 62,
+  "n_moderate_evidence": 207,
+  "n_weak_evidence": 4197,
+  "strong_papers": [
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7160769499",
+      "title": "Machine Learning In The Study Of Ancient Civilizations: Transforming Archaeology, Linguistics And Historical Analysis",
+      "year": 2026,
+      "text": "Machine Learning In The Study Of Ancient Civilizations: Transforming Archaeology, Linguistics And Historical Analysis The study of ancient civilizations involves analyzing complex, fragmented and heterogeneous datasets, including inscriptions, archaeological remains and genetic evidence. Traditional methods of analysis are time-consuming and limited in scalability. In recent years, Machine Learning (ML) has emerged as a transformative tool that enables automated pattern detection, classification and reconstruction, significantly accelerating discoveries in archaeology and historical studies. This research article examines the application of ML techniques in the analysis of ancient civilizations across domains such as archaeology, linguistics and genomics. Using a narrative review approach based on PRISMA-ScR guidelines, the study synthesizes findings from 28 empirical studies conducted between 2018 and 2026. Evidence indicates that ML techniques such as deep learning, convolutional neural networks (CNNs) and self-organizing maps (SOMs) have achieved accuracy levels ranging from 80% to 95% in tasks such as site detection, script recognition and artifact restoration. Key applications include satellite-based site detection, decipherment of undeciphered scripts such as the Indus Valley script and reconstruction of damaged artifacts using generative models. While these advancements offer significant potential, challenges such as limited datasets, ethical concerns and interpretability issues remain. The study concludes that ML represents a paradigm shift in the study of ancient civilizations, enabling faster, more accurate and interdisciplinary research outcomes.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7135428882",
+      "title": "Thermodynamic Descriptors from Molecular Dynamics as Machine Learning Features for Extrapolable Property Prediction",
+      "year": 2026,
+      "text": "Thermodynamic Descriptors from Molecular Dynamics as Machine Learning Features for Extrapolable Property Prediction The limited extrapolative power of structure-based machine learning (ML) models is a critical bottleneck in chemical discovery, particularly for industrial R&D, where navigating uncharted chemical space to find next-generation materials or drugs is paramount. These models, reliant on structural descriptors or graph neural networks (GNNs), often fail when predicting properties for molecules with novel chemotypes. Here, we introduce a physics-augmented ML framework that overcomes this limitation. Our approach replaces conventional structural inputs with thermodynamic properties such as cohesive energy, heat of vaporization, and density, derived directly from molecular dynamics (MD) simulations. While performing comparably to structure-based models on known organic compounds, our method uniquely maintains low error when extrapolating to dissimilar chemical spaces. Crucially, it accurately predicts boiling points for entire chemical classes absent from the training set, including inorganic compounds, salts, and molecules with elements such as Si, B, and Te. By learning from the intermolecular forces that govern phase transitions, our framework provides a more fundamental and generalizable strategy for molecular property prediction, enabling chemical exploration beyond established structural domains.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7160773321",
+      "title": "Machine Learning In The Study Of Ancient Civilizations: Transforming Archaeology, Linguistics And Historical Analysis",
+      "year": 2026,
+      "text": "Machine Learning In The Study Of Ancient Civilizations: Transforming Archaeology, Linguistics And Historical Analysis The study of ancient civilizations involves analyzing complex, fragmented and heterogeneous datasets, including inscriptions, archaeological remains and genetic evidence. Traditional methods of analysis are time-consuming and limited in scalability. In recent years, Machine Learning (ML) has emerged as a transformative tool that enables automated pattern detection, classification and reconstruction, significantly accelerating discoveries in archaeology and historical studies. This research article examines the application of ML techniques in the analysis of ancient civilizations across domains such as archaeology, linguistics and genomics. Using a narrative review approach based on PRISMA-ScR guidelines, the study synthesizes findings from 28 empirical studies conducted between 2018 and 2026. Evidence indicates that ML techniques such as deep learning, convolutional neural networks (CNNs) and self-organizing maps (SOMs) have achieved accuracy levels ranging from 80% to 95% in tasks such as site detection, script recognition and artifact restoration. Key applications include satellite-based site detection, decipherment of undeciphered scripts such as the Indus Valley script and reconstruction of damaged artifacts using generative models. While these advancements offer significant potential, challenges such as limited datasets, ethical concerns and interpretability issues remain. The study concludes that ML represents a paradigm shift in the study of ancient civilizations, enabling faster, more accurate and interdisciplinary research outcomes.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7159935905",
+      "title": "The Ledger of Meluhha: Indus Valley Script as Metrological Accounting Code",
+      "year": 2026,
+      "text": "The Ledger of Meluhha: Indus Valley Script as Metrological Accounting Code The Ledger of Meluhha: Indus Valley Script as Metrological Accounting Code Rajeshkumar Venugopal (Third Buyer Advisory LLC, Michigan; ORCID 0009-0002-1838-5976). Version 3.0, 3 May 2026. BSD-2-Clause for human use; AI ingestion / training / fine-tuning / RAG / inference prohibited under contract law (see ai.txt and the \u00a7For Journalists appendix in the book). This work argues that the Indus Valley script is a cargo-tag accounting system rather than a phonetic writing system. The five-field record schema (merchant mark, commodity, weight tier, quantity, route terminal) is recoverable from existing archaeological evidence: the Harappan binary-and-decimal weight series standardised to 0.5 percent precision across roughly one million square kilometres, the Akkadian cuneiform Meluhha import receipts from Ur, the morphological-parallel correspondences between Indus seals and Tamil Nadu Iron Age potsherds, and the bigram structure of mapped versus unmapped signs in the digitised CISI corpus. The hypothesis is strictly weaker than any phonetic decipherment: it does not claim the Indus people did not have language, and does not assert which language was spoken. It claims that the function of the seals was inventory rather than speech encoding, and that the apparent untranslatability of the script reflects this functional fact rather than the absence of structure. The bridge to phonetic content, where it exists, runs through the proto-Dravidian numeral system reproduced from Wells 2015 Table 6.1 (after McAlpin 1981) \u2014 sign polyvalence is constrained by the morphology of numerals already in use, not by free phonetic association. The book is 76 pages, organised into 26 sections plus an appendix for journalists. The \u00a7For Journalists appendix provides a 10-minute verification protocol that requires only the SQLite command-line tool: any quantitative claim in the book is reproducible from the indus_corpus.db file in this archive by running a single SELECT statement against the name",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7154615234",
+      "title": "The Ledger of Meluhha: Indus Valley Script as Metrological Accounting Code",
+      "year": 2026,
+      "text": "The Ledger of Meluhha: Indus Valley Script as Metrological Accounting Code The Ledger of Meluhha: Indus Valley Script as Metrological Accounting Code Rajeshkumar Venugopal (Third Buyer Advisory LLC, Michigan; ORCID 0009-0002-1838-5976). Version 3.0, 3 May 2026. BSD-2-Clause for human use; AI ingestion / training / fine-tuning / RAG / inference prohibited under contract law (see ai.txt and the \u00a7For Journalists appendix in the book). This work argues that the Indus Valley script is a cargo-tag accounting system rather than a phonetic writing system. The five-field record schema (merchant mark, commodity, weight tier, quantity, route terminal) is recoverable from existing archaeological evidence: the Harappan binary-and-decimal weight series standardised to 0.5 percent precision across roughly one million square kilometres, the Akkadian cuneiform Meluhha import receipts from Ur, the morphological-parallel correspondences between Indus seals and Tamil Nadu Iron Age potsherds, and the bigram structure of mapped versus unmapped signs in the digitised CISI corpus. The hypothesis is strictly weaker than any phonetic decipherment: it does not claim the Indus people did not have language, and does not assert which language was spoken. It claims that the function of the seals was inventory rather than speech encoding, and that the apparent untranslatability of the script reflects this functional fact rather than the absence of structure. The bridge to phonetic content, where it exists, runs through the proto-Dravidian numeral system reproduced from Wells 2015 Table 6.1 (after McAlpin 1981) \u2014 sign polyvalence is constrained by the morphology of numerals already in use, not by free phonetic association. The book is 76 pages, organised into 26 sections plus an appendix for journalists. The \u00a7For Journalists appendix provides a 10-minute verification protocol that requires only the SQLite command-line tool: any quantitative claim in the book is reproducible from the indus_corpus.db file in this archive by running a single SELECT statement against the name",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7155245008",
+      "title": "AutoOR: Scalably Post-training LLMs to Autoformalize Operations Research Problems",
+      "year": 2026,
+      "text": "AutoOR: Scalably Post-training LLMs to Autoformalize Operations Research Problems Optimization problems are central to decision-making in manufacturing, logistics, scheduling, and other industrial settings. Translating complicated descriptions of these problems into solver-ready formulations requires specialized operations research (OR) expertise, making it hard to scale. We present AutoOR, a scalable synthetic data generation and reinforcement learning pipeline that trains LLMs to autoformalize optimization problems specified in natural language across linear, mixed-integer, and non-linear categories. AutoOR generates verified training data from standard optimization forms and uses solver execution feedback as the reward signal for RL post-training. AutoOR applied to an 8B model achieves state-of-the-art or competitive results across six established OR benchmarks, matching significantly larger frontier models. For a non-linear problem class involving physical dynamics, where frontier models score near 0%, we introduce a curriculum RL strategy that bootstraps from limited initial training data to make this class tractable for post-training. We believe that methods such as AutoOR can significantly accelerate industrial decision-making with AI.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1016/j.jasrep.2026.105586",
+      "title": "Why change what works? Technological resilience in Harappan pottery from Bagasra (c. 2450\u20131900 BCE), Gujarat",
+      "year": 2026,
+      "text": "Why change what works? Technological resilience in Harappan pottery from Bagasra (c. 2450\u20131900 BCE), Gujarat",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/2604.23582v1",
+      "title": "Evidence for a Scale-Free Commercial Network in the Indus Valley Civilization: A Power Law Analysis of Harappan Seal Data",
+      "year": 2026,
+      "text": "Evidence for a Scale-Free Commercial Network in the Indus Valley Civilization: A Power Law Analysis of Harappan Seal Data We present a quantitative analysis of the frequency distribution of unicorn seal attributes from the Harappan Civilization (c.\\ 2600--1900 BCE), reinterpreting published typological data through the lens of network science. We propose an information architecture for Harappan seals in which the unicorn motif serves as a commercial network marker, the offering stand variant encodes guild identity, and the script conveys transactional and administrative metadata. Under this interpretation, the frequency distribution of offering stand styles -- a proxy for guild size -- is consistent with a power",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4413063529",
+      "title": "A Study of Gender Markers in Brahui Language",
+      "year": 2025,
+      "text": "A Study of Gender Markers in Brahui Language This study analyses and investigates the gender markers of the Brahui language. This research is more significant because it will give a clear understanding of the Brahui language in the region, and it will promote this language globally. This study aims to raise awareness among other language speakers, making it easier for them to attract others to this language. This study is going to explore the gender markers of nouns in the Brahui language. We will explore the understanding of gender markers in our language. I am using this theory for my research, specifically the linguistic relativity theory, established by Sapir-Whorf in 1920. The objective of this qualitative study was to explore, classify, and contribute to a broader understanding of gender markers in the Brahui language. The sampling technique used in this research was corpus analysis, such as grammar books, dictionaries, and journals. The data analysis method used was an exploratory and descriptive analysis. This study reveals that the gender markers are used in the Brahui language in different ways. Most of the gender markers in the Brahui language are formed by using prefixes and suffixes to the root word, making the noun masculine, feminine, or neutral. The suffix (Reh) marks both feminine (e.g., Irr, Masir) and masculine (e.g., mar) genders, while neutral gender lacks such markers, using separate terms (Naringa, Madainga) instead. This will enhance the awareness of gender markers among other speakers.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4410145167",
+      "title": "English Code-Mixing in Brahui Radio Broadcasts: A Quantitative Analysis of Lexical Borrowing and Media-Driven Language Shift",
+      "year": 2025,
+      "text": "English Code-Mixing in Brahui Radio Broadcasts: A Quantitative Analysis of Lexical Borrowing and Media-Driven Language Shift In multilingual Pakistan, English code-mixing in media reflects broader sociolinguistic hierarchies (Rahman, 2019). This study examines the phenomenon of English code-mixing in Brahui-language radio broadcasts, focusing on its frequency, patterns, and sociolinguistic implications. Utilising a quantitative approach, the research analyses 36 transcribed recordings from the Khuzdar radio station, categorising instances of code-mixing across different grammatical elements. The findings reveal that nouns account for the highest proportion of English insertions (62.9%), followed by adjectives (15.4%) and verbs (11.2%), while pronouns, conjunctions, and exclamations occur at much lower frequencies. This distribution suggests that English is primarily integrated into Brahui discourse for technical, professional, and administrative terms, particularly in news, governance, healthcare, and education-related discussions. The study aligns with linguistic theories of code-mixing, particularly Myers-Scotton\u2019s Matrix Language Frame Model (2009), which posits that bilingual speech communities borrow content words while preserving native grammatical structures. The research also highlights the role of media in shaping language perceptions, as radio discourse normalises English lexical borrowing, potentially influencing younger generations and urban speakers. While the findings indicate that Brahui remains structurally intact, the increasing presence of English in formal domains raises concerns about language shift and the long-term impact of globalisation on minority languages. This study contributes to South Asian sociolinguistics by providing empirical insights into English influence on Brahui media discourse. Given the limitations of data scope and media representation, future research should explore listener perceptions of code-mixing, generational differences in bilingualism, and potential shifts in Brahui syntactic structures. Understanding these dynamics is crucial for preserv",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7117457010",
+      "title": "Modern Algorithms for Ancient Scripts: A Review of AI-Based Techniques in Indus Civilization Research",
+      "year": 2025,
+      "text": "Modern Algorithms for Ancient Scripts: A Review of AI-Based Techniques in Indus Civilization Research The Indus script has been one of the most perennial archaeological-epigraphical problems because of the lack of bilingual sources, extreme lack of data, and widespread physical destruction of the artifacts. New computational directions to overcome these limitations are provided by new developments in artificial intelligence, machine learning, and computer vision. The paper is a systematic review of AI-based methods for identifying, analyzing, and interpreting epigraphic texts and graphemes in damaged Indus Valley seal articles. After a systematic review of the literature, publications between 2009 and 2025 were thoroughly reviewed and classified into thematic groups, such as statistical and computational linguistics, deep learning-based visual analysis, allograph identification, pattern modeling, crowdsourced dataset construction and multidisciplinary methodologies. The review assesses methodological designs, data features, preprocessing procedures, model structures and reported performance measures, whereas common pitfalls include artifact distortion, small annotated data, segmentation ambiguity and computational capacity. The study indicates significant advancements in grapheme and motif detection, with ongoing shortcomings in the domain of semantic decipherment and linguistic interpretation. With comparison insights, a multi-phase analytic model is put forward that incorporates preprocessing, sign reduction, visual recognition, pattern recognition, and interpretation modeling. The paper concludes that significant developments should involve more intensive incorporation of computational practices into archaeological and linguistics to foster further research in digital epigraphy and computational archaeology.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4410504351",
+      "title": "Deep Learning in Archiving Indus Script and Motif Information",
+      "year": 2025,
+      "text": "Deep Learning in Archiving Indus Script and Motif Information This work presents a novel computational system for the automated digitization of image-based data from seals of the ancient Indus Valley Civilization (IVC). The objective of this system&rsquo;s design is to automatically extract and archive key information from seals or images, including the script and motifs. The system operates as a pipeline comprising three deep learning models integrated with a custom-designed database. Two models form the Ancient Script Recognition network (ASR-net), which digitizes sequences of graphemes from Indus seals, similar to Optical Character Recognition for modern languages. The third model, the Motif Identification network (MI-net), identifies recurring motifs&mdash;distinctive symbols or iconographic elements with specific functional significance in the IVC. The database stores the extracted information, linking it to the respective seal images in a structured format. This end-to-end pipeline has been fully implemented, from image input to database archival. The overarching aim of this work is to support the application of automated statistical methods in the ongoing efforts to decipher the Indus script.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4416904785",
+      "title": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Valley Script",
+      "year": 2025,
+      "text": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Valley Script The Indus Valley script, which dates back to the Bronze Age (2600\u20131900 BCE), is one of the most important ancient writing systems that has not yet been figured out. The tool employs corpus-based methodologies to discern potential language patterns, utilizing frequency distribution analysis, locational examination, and transitional probabilities among signs. Some of the most important features are statistical significance testing (Z-test) to look for differences from expected sign distributions, collocation analysis to look at contextual relationships, and n-gram modeling (1-4 grams) to observe patterns in sign sequences. A multinomial naive Bayes classifier, which is a type of machine learning, predicts semantic interpretations based on established inscriptions and proposed readings. We have showcased both the input methods with the help of case studies and the HCI insights. The tool looks at claims about proposed linguistic structures, like prefixing and suffixing systems, and claims about script characteristics, like logographic vs. syllabic qualities. Codebase is available at https://github.com/atulsharma0071/indiahci2025.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4407366414",
+      "title": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to Lost Knowledge",
+      "year": 2025,
+      "text": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to Lost Knowledge The decipherment of the Indus Valley script has remained one of the most enduring challenges in historical linguistics. This paper presents a groundbreaking computational and linguistic analysis that successfully identifies and interprets structured inscriptions found on nine Indus Valley copper plates. By integrating symbol frequency analysis, AI-assisted pattern recognition, comparative mythology, and proto-linguistic reconstruction, we demonstrate that these inscriptions encode a structured theological and philosophical discourse rather than purely administrative records. Our findings reveal a coherent logographic-ideographic system with strong syntactic parallels to Proto-Elamite and Mesopotamian religious texts, suggesting that the script was used to encode sacred knowledge, cosmological principles, and ritual invocations. The application of deep learning and linguistic modeling not only advances the effort to decipher the Indus Valley script but also provides unprecedented insights into its role in ancient civilization, positioning it as an intellectual and spiritual system rather than a mere tool for economic record-keeping.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4416464909",
+      "title": "Genomic, Hydrogeomorphic, and Linguistic Syntaxis in the Indus Valley Civilization: Insights from Rakhigarhi DNA to Keezhadi and Quaternary Proxies",
+      "year": 2025,
+      "text": "Genomic, Hydrogeomorphic, and Linguistic Syntaxis in the Indus Valley Civilization: Insights from Rakhigarhi DNA to Keezhadi and Quaternary Proxies UGC-CARE, UGC CARE, UGC CARE list, ugc approved journal, UGC CARE, UGC CARE list, UGC CARE list of Journal, UGCCARE, care journal list, UGC-CARE list, New UGC-CARE Reference List, New ugc care journal list, Research Journal, Research Journal Publication, Research Paper, Low cost research journal, Free of cost paper publication in Research Journal, High impact factor journal, Journal, Research paper journal, UGC CARE journal, UGC CARE Journals, ugc care list of journal, ugc approved list, ugc approved list of journal, ugc approved journal,ugc care journal, ugc care approved journal,Journal publication, ISSN approved, Research journal, research paper, research paper publication, research journal publication, high impact factor, free publication, index journal, publish paper, publish Research paper, low cost publication, ugc approved journal, UGC CARE, follow norms ugc approved journal, ugc approved list of journal, ugc care journal, care journal, UGC-CARE list, New UGC-CARE Reference List, UGC CARE Journals, ugc care list of journal, ugc care list 2020, ugc care approved journal, ugc care list 2020, new ugc approved journal in 2020, IJCRT - international Research Journal, INTERNATIONAL JOURNAL OF CREATIVE RESEARCH THOUGHTS , Low cost research journal, Online international research journal, Peer-reviewed, and Refereed Journals, ISSN approved, low cost journal, Research journal, research paper, research paper publication, research journal publication, high impact factor, free publication, index journal, Regarding Approval and Equivalence of - ugc approved journal, UGC CARE, ugc approved list of journal, ugc care journal, UGC CARE list, UGCCARE, care journal, UGC-CARE list, New UGC-CARE Reference List, UGC CARE Journals, ugc care list of journal, ugc care list 2020, ugc care approved journal, ugc care list 2020, new ugc approved journal in 2020, ugc care list 2021, ugc approved journal in 2021 : ugc approved journal in 18 before care approved journal and Valid as per new",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4417439588",
+      "title": "LLM-Assisted Robotic Trajectory Generation in PLC Environments",
+      "year": 2025,
+      "text": "LLM-Assisted Robotic Trajectory Generation in PLC Environments The integration of advanced robotics into manufacturing production lines promises unprecedented flexibility and efficiency. However, a significant barrier to widespread adoption is the inherent incompatibility between the complex requirements of optimal robotic trajectory planning and the traditional programming paradigms prevalent in industrial automation, such as Ladder Logic and Structured Text (ST) for Programmable Logic Controllers (PLCs). Existing workforces, mainly composed of electricians and technicians, often lack the advanced mathematical and object-oriented programming skills necessary for optimized robot control. This paper introduces a middleware framework that leverages Large Language Models (LLMs) to enable intuitive human-robot interactions in robotic trajectory planning. By bridging the communication gap between industrial workforces and robotic systems, this framework democratizes access to sophisticated robotic capabilities, making advanced robotics more accessible to a broader range of users. Our approach introduces an innovative, formatted configuration file for comprehensive system description, an iterative LLM Retrieval-Augmented Generation (RAG) coordination system that orchestrates an external optimization-based trajectory planner and incorporates human feedback, and a comprehensive Continuous Integration/Continuous Deployment (CI/CD) testing architecture for validation. This methodology aims to empower industrial operators to effectively utilize advanced robotics by abstracting technical complexities and fostering intuitive human-AI interactions, thereby accelerating innovation and enhancing productivity in the manufacturing sector.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4411528198",
+      "title": "End-To-End ML with LLMs and Semantic Data Management: Experiences from Chemistry 4.0",
+      "year": 2025,
+      "text": "End-To-End ML with LLMs and Semantic Data Management: Experiences from Chemistry 4.0 Machine Learning (ML) in industrial chemistry is often hindered by the complexity of preprocessing heterogeneous datasets. In this proof-of-concept study, we explore the use of semantic data management to support LLM-driven automation of end-to-end ML pipelines in a real-world Chemistry 4.0 setting. A semantic model is used to capture domain knowledge and metadata in a machine-readable form, guiding LLMs through natural language prompts to generate complete data wrangling and ML modeling code. We evaluate several state-of-the-art LLMs on their ability to autonomously produce functionally correct Python code for preprocessing and Gaussian Process modeling. Our results show that, when guided by structured semantic context, larger LLMs can reliably generate accurate pipelines, significantly reducing the need for manual intervention. These findings provide an encouraging starting point for further exploration toward leveraging the semantic model to improve the robustness of code generation by systematically integrating relevant information into the generation process, rather than relying solely on the raw intelligence of the LLM.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.47248/hpgg2505010003",
+      "title": "Brahui and Oraon: Tracing the Northern Dravidian genetic link back to Balochistan",
+      "year": 2025,
+      "text": "Brahui and Oraon: Tracing the Northern Dravidian genetic link back to Balochistan",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.62345/jads.2025.14.2.106",
+      "title": "A Study of Gender Markers in Brahui Language",
+      "year": 2025,
+      "text": "A Study of Gender Markers in Brahui Language  This study analyses and investigates the gender markers of the Brahui language. This research is more significant because it will give a clear understanding of the Brahui language in the region, and it will promote this language globally. This study aims to raise awareness among other language speakers, making it easier for them to attract others to this language. This study is going to explore the gender markers of nouns in the Brahui language. We will explore the understanding of gender markers in our language. I am using this theory for my research, specifically the linguistic relativity theory, established by Sapir-Whorf in 1920. The objective of this qualitative study was to explore, classify, and contribute to a broader understanding of gender markers in the Brahui language. The sampling technique used in this research was corpus analysis, such as grammar books, dictionaries, and journals. The data analysis method used was an exploratory and descriptive analysis. This study reve",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.5120/ijca2025926075",
+      "title": "A Computational Analysis of the Indus Script: Identifying Sign Functions in Logo-Syllabic Writing Systems",
+      "year": 2025,
+      "text": "A Computational Analysis of the Indus Script: Identifying Sign Functions in Logo-Syllabic Writing Systems",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1145/3768633.3770145",
+      "title": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Valley Script",
+      "year": 2025,
+      "text": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Valley Script",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.21474/ijar01/20305",
+      "title": "CUSTOMER CHURN PREDICTION AND CATEGORIZATION A MACHINE LEARNING APPROACH TO ANALYSE CUSTOMER BEHAVIOR AND DECISION MAKING IN THE TELECOMMUNICATIONS INDUSTRY",
+      "year": 2025,
+      "text": "CUSTOMER CHURN PREDICTION AND CATEGORIZATION A MACHINE LEARNING APPROACH TO ANALYSE CUSTOMER BEHAVIOR AND DECISION MAKING IN THE TELECOMMUNICATIONS INDUSTRY  Customer churn remains a critical challenge for subscription- based businesses, particularly in the telecommunications indus- try, where retaining customers is significantly more cost-effective than acquiring new ones. This study leverages machine learn- ing to develop a robust churn prediction framework and identify key behavioral drivers of churn. Using the Telco customer churn dataset, we employ an ensemble Voting Classifier composed of Logistic Regression, Random Forest, XGBoost, and CatBoost models. The ensemble achieves a high predictive accuracy, with an AUC of 0.98, effectively distinguishing between churned and retained customers. Beyond prediction, the study introduces a structured catego- rization of churn reasons into four primary classes-Attitude and Expertise, Service and Product Issues, Competitor and Price, and Other Reasons. A multi-class classification model using XGBoost achieves an accuracy of 0.63, outperforming random guess baselines. The categorization reveals t",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.56153/g19088-024-0210-73",
+      "title": "Mathematical Modeling of Archaeological Artefacts from Keezhadi Excavation, Tamil Nadu, South India",
+      "year": 2025,
+      "text": "Mathematical Modeling of Archaeological Artefacts from Keezhadi Excavation, Tamil Nadu, South India  Keezhadi Excavation site is located in the south of Krishna and Tungabhadra rivers in Tamil Nadu, India. The Archaeological Survey of India (ASI) retrieved a lot of artifacts like dice, pottery items, gold coins etc which belongs to the Sangam Period (3rd century B.C. to the 3rd century A.D.) in Southern India. The major geo-archaeological techniques examined in the present study are: 1) discovering archaeological sites and documenting their internal structures, 2) surveying site formation and disturbance processes, 3) analyzing soils and sediments, 4) paleo-environmental reconstruction and the impact of humans (anthropogenic) on the landscape, 5) physical analysis of archaeological materials and 6) integrating geo-archaeology with social archaeology.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.20944/preprints202502.0699.v1",
+      "title": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to Lost Knowledge",
+      "year": 2025,
+      "text": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to Lost Knowledge  The decipherment of the Indus Valley script has remained one of the most enduring challenges in historical linguistics. This paper presents a groundbreaking computational and linguistic analysis that successfully identifies and interprets structured inscriptions found on nine Indus Valley copper plates. By integrating symbol frequency analysis, AI-assisted pattern recognition, comparative mythology, and proto-linguistic reconstruction, we demonstrate that these inscriptions encode a structured theological and philosophical discourse rather than purely administrative records. Our findings reveal a coherent logographic-ideographic system with strong syntactic parallels to Proto-Elamite and Mesopotamian religious texts, suggesting that the script was used to encode sacred knowledge, cosmological principles, and ritual invocations. The application of deep learning and linguistic modeling not only advances the effort to decipher the Indus Valley script but also provides unprecedented insig",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4405732110",
+      "title": "Deciphering the Symbols: A Comprehensive Study of Iconography and Epigraphy of Indus Seals",
+      "year": 2024,
+      "text": "Deciphering the Symbols: A Comprehensive Study of Iconography and Epigraphy of Indus Seals Inscribed seals are among the most identifiable and distinctive artifacts of the Harappan or Indus Civilization (c. 2600-1900 BCE), which is recognized as one of the earliest urban civilizations in the world and the first significant emergence in the South Asian subcontinent. This study explores the complex relationship between epigraphy and iconography on Indus seals, revealing the deep insights contained within these ancient relics. Indus seals employed specific documents and linguistic structures to communicate messages. The objective is to clarify the linguistic, cultural, and societal aspects of the Indus Valley Civilization by carefully examining the script and symbols found on these seals. This interdisciplinary approach seeks to uncover regional and temporal patterns that introduce new dimensions regarding an ancient civilization. The research goes beyond simple linguistic analysis by looking at the interdependent relationship between iconographic imagery and script, offering a holistic understanding of the communicative and symbolic roles of Indus seals. Additionally, it investigates the possible social, economic, and ritualistic functions of the seals by interpreting the inscriptions for insights into ownership, trade, and religious customs. This study addresses these topics through a range of formal and statistical analysis methods applied to a collection of published engraved Indus seals. The findings illustrate evidence of variations in patterns of Indus seals across different times and locations. Collectively, this research offers fresh perspectives on the organizational dynamics of the Indus Civilization.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1093/oxfordhb/9780197610411.013.33",
+      "title": "Asyndetic Conditional Clauses in Brahui",
+      "year": 2024,
+      "text": "Asyndetic Conditional Clauses in Brahui  Abstract \n                   While most Dravidian languages form conditional clauses using conditional participles or conjunctions, Brahui frequently employs asyndetic conditionals, which lack conditional participles, conjunctions, and a special pitch pattern. Our study of a Brahui corpus, which consists of novels and folktales, reveals that past, subjunctive, imperfect, and past conditional verbs appear in the protasis, each signalling different types of supposition. Since asyndeton is a normal way of expressing \u2018and\u2019 and \u2018then\u2019 in Brahui, the tense or mood of the verb in the protasis is the sole marker of the asyndetic conditional clauses, with conditional interpretation arising from pragmatic inference. This chapter also compares Brahui conditionals with those in two related Dravidian languages, Ku\u1e5bux and Malto, as well as Balochi. It highlights that asyndetic conditionals are found in languages that permit asyndeton and suggests the possibility that Brahui asyndetic conditionals h",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.54781/abz.v15i01.415",
+      "title": "Analysis of Lexical and Phonological variation in Brahui Dialects in Balochistan",
+      "year": 2023,
+      "text": "Analysis of Lexical and Phonological variation in Brahui Dialects in Balochistan  \n\n\n\n\u00a0\n\n\nIn order to determine the extent to which lexical variation denotes the presence of regional boundaries, the current study examines the lexical variation across Brahui dialects in general and, in particular, the three main dialects of the Brahui language: Sarawani, Rakhshani, and Jhalawani. 20 Brahui variations were observed in this investigation. At the\u00a0 10-word level, the words completely altered (melyparo/melypak/mellof, zeal/horhad/hor, hora/gade, razan/hozar, henak/hen/khary, bestry/lep/bherum, hasol/chat/besat, Tanya/chew, johan Lagery/dost barer/wharery, nary/rumbky/halmyky) and ten graphophonic alterations that affected sound and production (darasm/hrasam, dorogh/dhorogh, darakht/dharakch, yaka/yako, chaik/thaik, dangia/dangy/dary, chofot/thefarot, mahon/mahman, dhun/dhaun, hetiv/thive). The data was collected from 150 middle-aged participants (30 to 50 years old). The Social Identity Theory by Tajfel and Turner (1979) has been applied in this work. To measure the asso",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.54781/abz.v15i01.396",
+      "title": "Word Formation in Brahui Language of Rudbar-Jonub/Rudbari",
+      "year": 2023,
+      "text": "Word Formation in Brahui Language of Rudbar-Jonub/Rudbari  The present article aims to discuss one of the important grammar topics named \u201cword formation\u201d in the Brahui language of Rudbar-Jonub. Brahui, as a non-Iranian language, has gone through a long distance and settled in Iran, chiefly in Sistan and Balochistan, and Kerman. Based on the oral literature and the words of local informants, a group of Brahui people entered Sistan and Balochistan province in Iran from the borders of Pakistan in the last 400 years and mostly settled in Zahedan, Zabol, Iranshahr, and Khash. About 200 years ago, a group of them entered the south of Kerman province from the common borders of Sistan and Balochistan with Kerman and settled in Rudbar-Jonub county; many of them speak four languages: Balochi, Brahui, Rudbari, and standard Persian (Sheybanifard, 2018). The Brahui language of Rudbar-Jonub, which has less than 1000 speakers, is more vulnerable and in danger of death than other Brahui languages in other parts of the world. Also, the contact of Brahui with",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4313258009",
+      "title": "Modern Colloquial Eastern Elamite",
+      "year": 2022,
+      "text": "Modern Colloquial Eastern Elamite This paper is a formal demonstration of cognation between Elamite, a major language of the ancient Near East, and Brahui, a language of Balochistan, spoken primarily in Pakistan but also in Iran and Afghanistan. It is identifying Brahui as Modern Colloquial Eastern Elamite. Almost exactly two millennia have elapsed between the last recording of Elamite and the first recorded example of Brahui. While closely related, Brahui is not a descendant of classical Elamite. Rather, it is descended from an unattested eastern branch of Elamite. Part, one deals with a full statement of the Comparative Method focusing on the root syllable. Part Two adds comparative morphology and retailed comparisons of the verb structure.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.54781/abz.v14i1.370",
+      "title": "Modern Colloquial Eastern Elamite",
+      "year": 2022,
+      "text": "Modern Colloquial Eastern Elamite  This paper is a formal demonstration of cognation between Elamite, a major language of the ancient Near East, and Brahui, a language of Balochistan, spoken primarily in Pakistan but also in Iran and Afghanistan. It is identifying Brahui as Modern Colloquial Eastern Elamite.\u00a0 Almost exactly two millennia have elapsed between the last recording of Elamite and the first recorded example of Brahui.\u00a0 While closely related, Brahui is not a descendant of classical Elamite.\u00a0 Rather, it is descended from an unattested eastern branch of Elamite. Part, one deals with a full statement of the Comparative Method focusing on the root syllable.\u00a0 Part Two adds comparative morphology and retailed comparisons of the verb structure.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1093/oxfordhb/9780197610411.001.0001",
+      "title": "The Oxford Handbook of Dravidian Languages",
+      "year": 2022,
+      "text": "The Oxford Handbook of Dravidian Languages  Abstract \n                   This accessible introduction to Dravidian languages and linguistics, presented from an interdisciplinary perspective, highlights current, trend-setting scholarship that showcases their rich histories, vast literatures, and robust presence in communication, as well as their specifically linguistic and lexical aspects. Two introductory chapters on this language family (identified in the early 19th century, its geographical spread continuing to promote speculation about its origins) and the Tamil-Brahmi (Tami\u1e3bi) script (confirmed to predate Asokan Brahmi by three centuries) are followed by 27 chapters covering the four literary languages, Tamil, Kannada, Telugu, and Malayalam, and 23 non-literary languages, with extended theoretical and descriptive focus on three of them (Betta Kurumba, Brahui, and Malto). Collectively, these chapters, grouped into formal linguistic analyses in a generative linguistics paradigm, traditional linguistic studies, psycholinguisti",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/2207.08179v1",
+      "title": "End-to-End Spoken Language Understanding: Performance analyses of a voice command task in a low resource setting",
+      "year": 2022,
+      "text": "End-to-End Spoken Language Understanding: Performance analyses of a voice command task in a low resource setting Spoken Language Understanding (SLU) is a core task in most human-machine interaction systems. With the emergence of smart homes, smart phones and smart speakers, SLU has become a key technology for the industry. In a classical SLU approach, an Automatic Speech Recognition (ASR) module transcribes the speech signal into a textual representation from which a Natural Language Understanding (NLU) module extracts semantic information. Recently End-to-End SLU (E2E SLU) based on Deep Neural Networks has gained momentum since it benefits from the joint optimization of the ASR and the NLU parts, hence",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.5604/01.3001.0014.9140",
+      "title": "Language Endangerment and the Need for Technology for Language Empowerment: Case Study of the Brahui language in Balochistan",
+      "year": 2021,
+      "text": "Language Endangerment and the Need for Technology for Language Empowerment: Case Study of the Brahui language in Balochistan  Diaspora and indigenous speech communities are under the threat of extinction in Balochistan. Local inhabitants with a lower economic and commercial value symbolize cultural and ethnic genocide in western Pakistan. In my study, I investigate the scope of technology for the documentation and maintenance of the Brahui language in the province of Balochistan. Also, I discuss how language policy and the digital divide are creating unfamiliar pedagogical, socio-cultural and linguistic practices, along with putting minority speech communities in danger of losing their identity and bringing about linguistic extinction. Drawing on the work of critical theorists, perceptions of indigenous Brahui community are recorded to understand the influence of digital technology for language survival. The study identifies that digital divide and flawed educational policies in Balochistan are potent instruments of Brahui endangerment. I call for inclusive and unbiased language policies and uniform access t",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W3093649152",
+      "title": "Royal \"Chariot\" Burials of Sanauli near Delhi and Archaeological Correlates of Prehistoric Indo-Iranian Languages",
+      "year": 2020,
+      "text": "Royal \"Chariot\" Burials of Sanauli near Delhi and Archaeological Correlates of Prehistoric Indo-Iranian Languages The article describes the royal cart burials excavated at the Late Harappan site of Sanauli near Delhi in the spring of 2018 on the basis of the available reports and photographs. The author then comments on these finds, dated to about 1900 bce, with the Sanauli cart burials being the first of their kind in Bronze Age India. In his opinion, several indications suggest that the Sanauli \u201cchariots\u201d are actually carts yoked to bulls, as in the copper sculpture of a bull-cart from the Late Harappan site of Daimabad in Maharashtra. The antennae-hilted swords associated with the burials suggest that these bull-carts are likely to have come from the BMAC or the Bactria and Margiana Archaeological Complex (c.2300\u20131500 bce) of southern Central Asia, from where thereis iconographic evidence of bull-carts. The ultimate source of the Sanauli/BMAC bull-carts may be the early phase of the Sintashta culture in the Trans-Urals, where the chariot (defined as a horse-drawn light vehicle with two spoked wheels) was most probably invented around the late twenty-first century bce. The invention presupposes an earlier experimental phase, which started with solid-wheeled carts that could only be pulled by bulls. An intermediate phase in the development is the \u201cproto-chariot\u201d with cross-bar wheels, attested in a BMAC-related cylinder seal from Tepe Hissar III B in northern Iran (c.2000\u20131900 bce). The wooden coffins of the Sanauli royal burials provide another pointer to a possible Sintashta origin. The Sanauli finds are considered in the context of the author\u2019s archaeological model for the prehistory of the Indo-Iranian languages, which is adjusted to meet recent justified criticism.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.54781/abz.v12i1.11",
+      "title": "New Media: Challenges and Opportunities for Brahui Journalism in Balochistan.",
+      "year": 2020,
+      "text": "New Media: Challenges and Opportunities for Brahui Journalism in Balochistan.  This paper attempts to shed light on Brahui Journalism its geneses and challenges it faces in the era of contemporary technological advancements. Globally new media is replacing traditional way of communication. The reach and impact of new media is far stronger and long lasting than traditional media. Brahui language newspapers and magazines are facinghardships to use and adopt alternate media platforms. Lack of resources and less technological and IT skills are hurdles in this transition. The newspapers published in Brahui language completely depends on government advertisements in the absence of wellestablished private sector. The owners of the newspapers are bound to follow government policies in every aspect, therefore journalists want to switch to new media with prime objective to highlight contemporary social, political, cultural and religious issue of Balochistan and to find better revenue generating opportunities to decrease dependency on government advertisements.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.54781/abz.v12i1.47",
+      "title": "PERCEPTION OF FUTURE TEACHERS ABOUT MOTHER TONGUE EDUCATION IN BRAHUI LANGUAGE AT PRIMARY LEVEL",
+      "year": 2020,
+      "text": "PERCEPTION OF FUTURE TEACHERS ABOUT MOTHER TONGUE EDUCATION IN BRAHUI LANGUAGE AT PRIMARY LEVEL  Brahui language has its own uniqueness and value as it is one of the oldest languages of Pakistan and considered as a Dravidian language. The purpose of this study was to explore the perception of future Brahui speaking teachers about mother tongue education in Brahui language at primary level in Balochistan. In this study, a qualitative approach was used. The research design was case study and site of the study was Sardar Bahadur Khan Women\u2019s University Quetta. Semi-structure interviews were conducted from the Brahui speaking future teachers of B.Ed. (Hons.) 7th semester (5), M.A Education 3rd semester (5) and M.Phil. (5). The participants were selected through purposive sampling. Thematic analysis was used as method for data analysis. The data analysis revealed two main themes as need of Brahui mother tongue education in Brahui majority schools and teacher training for Brahui mother tongue education.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.34293/sijash.v8i1.3244",
+      "title": "Archaeological Excavations in Tamil Nadu with Special Reference to Keezhadi - A Review",
+      "year": 2020,
+      "text": "Archaeological Excavations in Tamil Nadu with Special Reference to Keezhadi - A Review  Excavations \u2013 part of Archaeological studies \u2013 youngest discipline \u2013 Accidental findings \u2013 Antiques\u00a0\u2013 Survey \u2013 Artifacts- Explorations \u2013 Mortimer Wheeler \u2013 Sir John Marshall \u2013 Bishop Caldwell\u00a0\u2013 Excavations \u2013 Adichanallur- Arikamedu \u2013 Kaveripumpatnam - Kodumanal - Sangam Age \u2013\u00a0Literature \u2013 Roman Coins and potteries \u2013contact with Rome",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "s2",
+      "id": "0fe17b0fff19430f49200d38d699fceb9ba52c34",
+      "title": "Brahui language kinship system in terms of the typology of semantic transitions",
+      "year": 2020,
+      "text": "Brahui language kinship system in terms of the typology of semantic transitions A B S T R A C T . The subject of this paper is kinship terms system in the Northern Dravidian language Brahui. Brahui has long been surrounded by Iranian and Indo-Aryan languages: Per sian and particularly the neighboring Balochi language, both of the Iranian group, and Punja bi and Sindhi of the Indo-Aryan one. The contacts with these ethnic groups have influenced Brahui kinship system. Many kinship terms in Brahui, such as those for father , grandfather or aunt , are borrowings; but, remarkably, the majority of other terms appear to be of Dravidian origin, including those for mother , brother , grandmother , uncle ( mother\u2019s brother ), etc. Meth -odologically, the study is based on the theory of semantic shifts developed by the research group headed by Anna A. Zalizniak at the Institute",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W2963310436",
+      "title": "Data mining ancient scripts to investigate their relationships and origins",
+      "year": 2019,
+      "text": "Data mining ancient scripts to investigate their relationships and origins This paper describes a data mining study of a set of ancient scripts in order to discover their relationships, including their possible common origin from a single root script. The data mining uses convolutional neural networks and support vector machines to find the degree of visual similarity between pairs of symbols in eight different ancient scripts. Among the surprising results of the data mining are the following: (1) the Indus Valley Script is visually closest to Sumerian pictographs, and (2) the Linear B script is visually closest to the Cretan Hieroglyphic script.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W2953978206",
+      "title": "Structure of Indus Script",
+      "year": 2019,
+      "text": "Structure of Indus Script The script of the Indus valley civilization has defied decipherment. Several attempts have been made in the past to decipher the script but there is no consensus about its content. The lack of definite knowledge about its structure makes it difficult to objectively evaluate any claim of decipherment. We have tried to fill this lacuna by analyzing the structure of the script using various computational techniques including machine learning and data mining. The focus of our study is to identify patterns in the Indus writing and explore its underlying logic without making any assumptions about its content. The methods identified in the study can also be used to analyse the structure of other undeciphered scripts. In the present paper we summarize our studies of the Indus script.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.54781/abz.v11i1.40",
+      "title": "\u0628\u0631\u0627\u06c1\u0648\u0626\u06cc \u06af\u0631\u0627\u0645\u0631\u0679\u06cc \u0627\u0633\u0645 \u0645\u0635\u062f\u0631 \u0646\u0627 \u0644\u0633\u0627\u0646\u06cc\u0627\u062a\u06cc \u0627\u0648  \u062a\u062d\u0642\u06cc\u0642\u06cc \u0645\u0637\u0627\u0644\u0639\u06c1 \u0626\u0633",
+      "year": 2019,
+      "text": "\u0628\u0631\u0627\u06c1\u0648\u0626\u06cc \u06af\u0631\u0627\u0645\u0631\u0679\u06cc \u0627\u0633\u0645 \u0645\u0635\u062f\u0631 \u0646\u0627 \u0644\u0633\u0627\u0646\u06cc\u0627\u062a\u06cc \u0627\u0648  \u062a\u062d\u0642\u06cc\u0642\u06cc \u0645\u0637\u0627\u0644\u0639\u06c1 \u0626\u0633  Verb also has as much importance in Brahui language as in other languages of the world. Verb is a word class, traditionally defined as a 'doing' or 'action' word, which ends with \"ing\" in Brahui language. It is used as singular like \"Makhing\" (To laugh), if the second syllable \"ing\" is omitted, then \"makh\" (laugh.) remains, which clearly is used as imperative. By adding suffix or infix with imperative, interrogative and negative forms can be made. Verb is the reason of enhancement of Brahui dictionary. Due to the importance and status of verb in Brahui language, its linguistic and research study has been conducted with reference to Brahui grammar.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/1702.00523v1",
+      "title": "Deep Learning the Indus Script",
+      "year": 2017,
+      "text": "Deep Learning the Indus Script Standardized corpora of undeciphered scripts, a necessary starting point for computational epigraphy, requires laborious human effort for their preparation from raw archaeological records. Automating this process through machine learning algorithms can be of significant aid to epigraphical research. Here, we take the first steps in this direction and present a deep learning pipeline that takes as input images of the undeciphered Indus script, as found in archaeological artifacts, and returns as output a string of graphemes, suitable for inclusion in a standard corpus. The image is first decomp",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4248504723",
+      "title": "Proto-Indo-European Roots of the Vedic Aryans",
+      "year": 2016,
+      "text": "Proto-Indo-European Roots of the Vedic Aryans Recent archaeological evidence and the comparative method of Indo-European historical linguistics now make it possible to reconstruct the Aryan migrations into India, two separate diffusions of which merge with elements of Harappan religion in Asko Parpola\u2019s The Roots of Hinduism: The Early Aryans and the Indus Civilization (NY: Oxford University Press, 2015).This review of Parpola\u2019s work emphasizes the acculturation of Rigvedic and Atharvavedic traditions as represented in the depiction of Vedic rites and worship of Indra and the A\u015bvins (N\u0101satya). After identifying archaeological cultures prior to the breakup of Proto-Indo-European linguistic unity and demarcating the two branches of the Proto-Aryan community, the role of the Vr\u0101tyas leads back to mutual encounters with the Iranian D\u0101sas.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.54781/abz.v8i1.140",
+      "title": "Impact of Globalization on Brahui language",
+      "year": 2016,
+      "text": "Impact of Globalization on Brahui language  Brahui is one of the oldest languages of the Sub-continent and Brahui speaking people are found in Balochistan, Sindh, Afghanistan, Turkmenistan and Iran. Some researchers claim that Brahui is an Aryan language others assert that it is a Turko-Iranian language. Another group of intellectuals also emphasize that the traces of Brahui language have been found in the remainants of Mohenjo Daro and it has Dravidian origin and same language is being spoken in some parts of India and Sri Lanka. According to some historians Brahui\u2019s and Baloch\u2019s belong to same race. Balochi speaking people entered Mekran while Brahui speaking people entered from Chagai as they defeated the Dravidian rulers of Kalat and entered into matrimonial relationship with the Dravidian and Balochi languages were mixed up and a new language of \u201cBrahui\u201d was born due to same relationship. According to reports about four million peoples of the above countries and regions speaks Brahui language. Languages are vehicles of our",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1038/srep26555",
+      "title": "Oxygen isotope in archaeological bioapatites from India: Implications to climate change and decline of Bronze Age Harappan civilization",
+      "year": 2016,
+      "text": "Oxygen isotope in archaeological bioapatites from India: Implications to climate change and decline of Bronze Age Harappan civilization  Abstract  The antiquity and decline of the Bronze Age Harappan civilization in the Indus-Ghaggar-Hakra river valleys is an enigma in archaeology. Weakening of the monsoon after ~5\u2009ka BP (and droughts throughout the Asia) is a strong contender for the Harappan collapse, although controversy exists about the synchroneity of climate change and collapse of civilization. One reason for this controversy is lack of a continuous record of cultural levels and palaeomonsoon change in close proximity. We report a high resolution oxygen isotope (\u03b4 18 O) record of animal teeth-bone phosphates from an archaeological trench itself at Bhirrana, NW India, preserving all cultural levels of this civilization. Bhirrana was part of a high concentration of settlements along the dried up mythical Vedic river valley \u2018Saraswati\u2019, an extension of Ghaggar river in the Thar desert. Isotope and archaeological data suggest that the pre-Harappans started inhabiting this area along the mighty Ghaggar-Hakra rivers fe",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.3765/bls.v6i0.2113",
+      "title": "Is Brahui Really Dravidian?",
+      "year": 2014,
+      "text": "Is Brahui Really Dravidian?  Proceedings of the Sixth Annual Meeting of the Berkeley Linguistics Society (1980), pp. 66-72",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W2031903552",
+      "title": "The Balochi Language and Languages in Iranian Balochistan",
+      "year": 2013,
+      "text": "The Balochi Language and Languages in Iranian Balochistan Abstract This article offers a broad introduction to the Balochi language and its dialects, as well as current trends in the official language policy both in Iran and in Pakistan. Other languages spoken in Iranian Balochistan are also presented, and the problems of and prospects for the continuing use of the Balochi language in Iran are discussed. From a historical point of view, Balochi is classified as a Northwestern Iranian language closely related to Kurdish, although it is spoken in the southeastern corner of the Iranian linguistic area. It is difficult to estimate the total number of Balochi speakers, but 10 million may serve as an approximation. The main dialect split is between Western, Southern, and Eastern Balochi. The fact that the Balochi speakers are separated into several countries with various official languages is another cause of dialect differentiation. Along with modernization came a secular education system and a nationalist discourse, first in British India and later in Iran. There is, however, no official use of Balochi as a language of administration or education. This poses a serious threat to the survival of the language beyond one or two more generations. Such a threat is, of course, even more imminent for the languages spoken by smaller communities in southeastern Iran, such as Jadgali, Brahui, Bashkardi, and Koroshi. KEYWORDS: Balochieducationlanguage policyminority languages Notes 1This section is, with some updates, based on Carina Jahani and Agnes Korn, \"Balochi,\" in The Iranian Languages, ed. Gernot Windfuhr (New York: Routledge, 2009), 634\u201338. 2The official English spelling of the name of this province is \"Sistan and Baluchestan.\" For the sake of consistency, however, the spelling \"Balochistan,\" which reflects the Balochi pronunciation of this name, is used throughout the article (except in direct quotes, of course). 3Some \"rejuvenation\" of the Balochi language has, however, taken place in East Africa as a result of recent immigratio",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "crossref",
+      "id": "10.54781/abz.v5i1.164",
+      "title": "\u0628\u0631\u0627\u06c1\u0648\u0626\u06cc \u0632\u0628\u0627\u0646 \u0679\u06cc \u0627\u0635\u0637\u0644\u0627\u062d \u0633\u0627\u0632\u06cc",
+      "year": 2013,
+      "text": "\u0628\u0631\u0627\u06c1\u0648\u0626\u06cc \u0632\u0628\u0627\u0646 \u0679\u06cc \u0627\u0635\u0637\u0644\u0627\u062d \u0633\u0627\u0632\u06cc  This scholarly article reflects the terminological deficiency of Brahui language. Due to such linguistics institution and learned scholar Brahui language has been shifting and taking barrowed from English, Urdu, Sindhi, Pashto and Balochi. Department of Brahui can initiate a step or institution in the supervision of Dr.Liaqat Sani to resolve terminological issues in Brahui. With the passage of time literature and Language needs promotion in its self. This article may cause to commence an idea to make consensus about to resolve Brahui lingual issues.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W2021656414",
+      "title": "Rice in Dravidian",
+      "year": 2011,
+      "text": "Rice in Dravidian Abstract The Dravidian languages, now spoken mainly in peninsular India, form one of two main branches of the Zagrosian language family, whose other main branch consists of Elamitic and Brahui. Proto-Dravidian, the oldest reconstructible form of Dravidian, shows a society whose economy is based mainly on herding. While the speakers of Proto-Dravidian had some agricultural knowledge, they do not appear to have brought cereals with them when they moved from western Iran to the borderlands of South Asia in the fourth millennium BCE. Linguistic evidence shows that they had contact with Indo-Iranian speakers, and some groups of Dravidian speakers entered the Indus Valley before or during the period of the Harappan civilization. Dravidian-speaking groups played a significant role in herding and agriculture during that period and later, and may have been the first to cultivate rice on a large scale in the Indus Valley.",
+      "evidence_tier": "STRONG"
+    },
+    {
+      "source": "s2",
+      "id": "e2beaf67575e6071fd0635721b01368db0c40727",
+      "title": "Rice in Dravidian",
+      "year": 2011,
+      "text": "Rice in Dravidian The Dravidian languages, now spoken mainly in peninsular India, form one of two main branches of the Zagrosian language family, whose other main branch consists of Elamitic and Brahui. Proto-Dravidian, the oldest reconstructible form of Dravidian, shows a society whose economy is based mainly on herding. While the speakers of Proto-Dravidian had some agricultural knowledge, they do not appear to have brought cereals with them when they moved from western Iran to the borderlands of South Asia in the fourth millennium BCE. Linguistic evidence shows that they had contact with Indo-Iranian speakers, and some groups of Dravidian speakers entered the Indus Valley before or during the period of the Harappan civilization. Dravidian-speaking groups played a significant role in herding and agricultu",
+      "evidence_tier": "STRONG"
+    }
+  ],
+  "moderate_papers": [
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7155451641",
+      "title": "Neuromorphic Continual Learning for Sequential Deployment of Nuclear Plant Monitoring Systems",
+      "year": 2026,
+      "text": "Neuromorphic Continual Learning for Sequential Deployment of Nuclear Plant Monitoring Systems Anomaly detection in nuclear industrial control systems (ICS) requires continuous, energy-efficient monitoring across multiple subsystems that are often deployed at different stages of plant commissioning. When a conventional neural network is sequentially trained to monitor new subsystems, it catastrophically forgets previously learned anomaly patterns, a safety-critical failure mode. We present the first spiking neural network (SNN)-based anomaly detection system with continual learning for nuclear ICS, addressing both challenges simultaneously. Our approach introduces spike-encoded asynchronous sensor fusion, a delta-based encoding that converts heterogeneous sensor streams into sparse spike trains at rates dictated by each sensor's natural dynamics, achieving 92.7% input sparsity. We evaluate five continual learning strategies, including sequential fine-tuning, Elastic Weight Consolidation (EWC), Synaptic Intelligence (SI), experience replay, and a hybrid EWC+Replay approach, on the HAI 21.03 nuclear ICS security dataset across three sequentially deployed subsystems (boiler, turbine, water treatment). The hybrid EWC+Replay method achieves an average F1 score of 0.979 with near-zero average forgetting (AF = 0.000 single seed; 0.035 +/- 0.039 across three seeds), while requiring 12.6x fewer operations (an estimated 2.5x in energy based on published hardware specifications) than an equivalent artificial neural network. The system detects all tested attacks with a mean latency of 0.6 seconds. These results demonstrate that neuromorphic computing offers a viable path toward always-on, energy-efficient, and adaptable safety monitoring for next-generation nuclear facilities.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7154474856",
+      "title": "Federated predictive maintenance with NASA BP930 satellite battery in industry 5.0",
+      "year": 2026,
+      "text": "Federated predictive maintenance with NASA BP930 satellite battery in industry 5.0 Abstract This study presents a federated learning (FL) framework for predictive maintenance (PdM) of satellite battery systems, integrating the NASA BP930 dataset with MACCOR-generated simulations to create a hybrid training environment that reflects both real and synthetic operating conditions. Unlike previous FL studies in PdM, the proposed approach models resource constraints such as power variability and communication limits, replicating conditions in large-scale industrial and aerospace networks. Feedforward neural networks (FFNNs) are deployed at edge nodes, and global aggregation is performed through a reliability-weighted FedAvg algorithm. Experimental results show that our proposed framework achieves 95.0% predictive accuracy under ideal conditions and achieves 90.1% training convergence accuracy in constrained networks, reflecting exceptional robustness of the learning process while maintaining reliable predictive test performance. Comparable studies on federated battery prediction generally report accuracies within the 93\u201397% range under controlled laboratory settings, without assessing power or communication limitations. The proposed framework therefore attains equal or higher predictive precision under ideal conditions, while maintaining stable convergence under degraded environments. It records an F1-score of 0.92, outperforming standard local RNN and LSTM baselines by 6\u20138% and ensuring complete data privacy. The novelty of this work lies in its realistic simulation of industrial deployment scenarios, hybrid data integration, and systematic testing under constrained environments, all of which are not sufficiently addressed in existing FL-based PdM research.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7118176711",
+      "title": "Real-Time DDoS Detection in Industrial IoT Using Proximal Policy Optimisation and Deep Reinforcement Learning",
+      "year": 2026,
+      "text": "Real-Time DDoS Detection in Industrial IoT Using Proximal Policy Optimisation and Deep Reinforcement Learning Industrial Internet of Things (IIoT) and SCADA-connected networks face disruptive DDoS events where detection must be both accurate and low-latency at the edge. This study benchmarks deep reinforcement learning (DRL) for real-time binary attack detection and proposes a Proximal Policy Optimisation (PPO) detector tailored for deployment. Five DRL agents\u2014DQN, Double DQN, Duelling DQN, DDPG, and PPO\u2014are trained under a unified preprocessing pipeline (automatic label mapping, numeric-feature selection, robust scaling, and class balancing) and evaluated on three representative datasets: KDDCup99, CIC-DDoS2019, and Edge-IIoTset. We report accuracy, precision/recall, F1-score, false-positive/false-negative rates, and AUC-ROC, alongside CPU latency to reflect operational constraints. Across all datasets, PPO achieves the best accuracy\u2013latency trade-off, reaching 99.3% accuracy on KDDCup, 99, 93.7% on CIC-DDoS2019, and 95.5% on Edge-IIoTset, while maintaining inference latency below 0.23 ms per sample. PPO also converges faster and is more sample-efficient than value-based alternatives. For practical adoption, the trained PPO policies are exported to ONNX (one model per dataset), enabling lightweight, PyTorch-independent inference on resource-constrained industrial gateways.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7139972268",
+      "title": "Impacts of vehicle electrification on Al-Si castings: an overview of current manufacturing processes, mechanical properties, and applications",
+      "year": 2026,
+      "text": "Impacts of vehicle electrification on Al-Si castings: an overview of current manufacturing processes, mechanical properties, and applications Abstract The transition from internal combustion engines (ICEs) to battery or fuel-cell electric vehicles (EVs) directly impacts the metal casting industry, presenting both opportunities and challenges. Traditional manufacturing processes in foundries have primarily focused on ICE vehicles for decades, while the shift to EV impacts existing infrastructure necessitating new requirements and investments. The demand for lightweight materials in EVs continues to increase, outpacing the requirements of current ICE vehicles. Cast Al alloys play an indispensable role in automotive light weighing, offering an attractive combination of properties including strength and ductility, corrosion resistance and castability. Despite predictions regarding market share, and growth of Al in EVs, relatively few studies have analysed the impacts of casting alloys, manufacturing processes and alloy distribution in EV applications. Therefore, this overview aims to explore the effects of EVs on cast components by focusing on the changes to drive systems and the parts lost or gained due to this transition. The methodologies and manufacturing process are reviewed for design and simulation, microstructure refinement, and mechanical properties. More emphasis is provided on advanced/hybrid methods (mega castings, rheo- and compound casting) and functional designs utilizing metal and sand 3D printing processes. Most research findings indicate the lightweighting, along with structural and functional integration will drive the casting applications for EVs. Secondly, castings for EVs create a surging demand for primary alloys and significantly reduce the market share of secondary alloys in the future. Potential avenues for future research on alloy development, process variables and upgradation, and recyclability issues are highlighted.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7125123096",
+      "title": "Garbage in, garbage out? How the monster of AI art reflects human fault, bias, and capitalism in contemporary culture",
+      "year": 2026,
+      "text": "Garbage in, garbage out? How the monster of AI art reflects human fault, bias, and capitalism in contemporary culture Abstract This paper examines the relationship between artificial intelligence, contemporary artistic production and content creation through an intersectional feminist framework, arguing that AI operates as a reflective system that reproduces and amplifies existing social, economic, and cultural biases. Beginning with examples of AI artistic collaborations such as 'What I Saw Before the Darkness', and 'Th\u00e9\u00e2tre D'op\u00e9ra Spatial' the research investigates how generative AI exposes underlying tensions surrounding creativity, authorship, labour, and representation. The study critically engages with the principle of \u201cGarbage In, Garbage Out\u201d as a governing logic of AI training. Through case studies of art competition controversies, interviews with industry professionals, and experimental comparisons between AI-generated and human-curated gallery representations, the thesis demonstrates that current AI models are limited in their ability to produce novel aesthetics, instead privileging the replication of established and commercially legible styles. Central to the analysis is AI\u2019s entanglement with techno-patriarchal and capitalist structures. The research shows how AI art accelerates pre-existing inequities, including the appropriation of intellectual property from marginalised artists, the reinforcement of Eurocentric beauty standards, and the commodification of gendered and sexualised imagery. These dynamics are situated within broader discussions of platform economies, copyright ambiguity, environmental cost, and labour displacement. The thesis concludes by arguing that AI is not an autonomous creative agent but an extension of human decision-making, calling for ethically grounded development practices that prioritise accountability, artist participation, and social responsibility.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7138581239",
+      "title": "MAU-GPT: Enhancing Multi-type Industrial Anomaly Understanding via Anomaly-aware and Generalist Experts Adaptation",
+      "year": 2026,
+      "text": "MAU-GPT: Enhancing Multi-type Industrial Anomaly Understanding via Anomaly-aware and Generalist Experts Adaptation As industrial manufacturing scales, automating fine-grained product image analysis has become critical for quality control. However, existing approaches are hindered by limited dataset coverage and poor model generalization across diverse and complex anomaly patterns. To address these challenges, we introduce MAU-Set, a comprehensive dataset for Multi-type industrial Anomaly Understanding. It spans multiple industrial domains and features a hierarchical task structure, ranging from binary classification to complex reasoning. Alongside this dataset, we establish a rigorous evaluation protocol to facilitate fair and comprehensive model assessment. Building upon this foundation, we further present MAU-GPT, a domain-adapted multimodal large model specifically designed for industrial anomaly understanding. It incorporates a novel AMoE-LoRA mechanism that unifies anomaly-aware and generalist experts adaptation, enhancing both understanding and reasoning across diverse defect classes. Extensive experiments show that MAU-GPT consistently outperforms prior state-of-the-art methods across all domains, demonstrating strong potential for scalable and automated industrial inspection.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7128676362",
+      "title": "A generative artificial intelligence framework for automated data quality rule generation in power grid systems",
+      "year": 2026,
+      "text": "A generative artificial intelligence framework for automated data quality rule generation in power grid systems In the era of industrial digitalization, high-quality data is critical for optimizing operations and decision-making, yet inconsistent, fragmented datasets from heterogeneous sources often undermine its utility. Traditional data governance approaches, reliant on manual rule creation and rigid workflows, struggle to address scalability and adaptability challenges in dynamic environments like power grid systems. This study proposes a new framework leveraging generative AI to automate SQL rule generation for anomaly detection, integrating domain-specific constraints and reinforcement learning to iteratively refine rules. By training Qwen2 on preprocessed grid data, the methodology transforms raw sensor logs and metadata into standardized, actionable rules, while embedding compliance checks to align with industry standards. Experimental validation demonstrates that the proposed model outperforms mainstream techniques (e.g., LSTM, GRU, CNN) by 2.3\u20133.6% in accuracy and F1-score, achieving 88.5% precision in detecting voltage anomalies. Ablation studies are conducted to highlight the importance of incorporating physical features in the model performance.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.2139/ssrn.6080446",
+      "title": "Crossing the Indus Threshold \n&lt;div&gt;\n A Falsifiable, Corpus-Wide Functional Decipherment of the Indus Script\n&lt;/div&gt;",
+      "year": 2026,
+      "text": "Crossing the Indus Threshold \n&lt;div&gt;\n A Falsifiable, Corpus-Wide Functional Decipherment of the Indus Script\n&lt;/div&gt;  This monograph presents the first complete phonetic envelope mapping of the Indus Script corpus using a constraint-driven computational framework. Through the application of LISSE (Linguistic Inspection of Sound Structure Environments) and LUCAS (Linguistic Understanding Construction Assembly System), we assign non-interpretive phonetic shadows to all 417 Mahadevan signs plus documented variants and outliers, totaling 500 distinct graphic units. The resulting phonetic scaffolding passes corpus-wide consistency checks across approximately 4,000 inscriptions, demonstrating coherent administrative grammar compatible with Bronze Age economic record-keeping. This work does not constitute traditional decipherment but establishes the first falsifiable, computationally reproducible foundation for linguistic analysis of Harappan administrative texts.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.33899/aarj.v11i1.60350",
+      "title": "Cuneiform Text from Neo-Sargonic Period",
+      "year": 2026,
+      "text": "Cuneiform Text from Neo-Sargonic Period  This study presents a newly identified cuneiform tablet from the Sargonic period, currently preserved in the Iraq Museum under the registration number (IM.203815). The text is an economic document inscribed on both the obverse and reverse sides, consisting of ten lines. It records the delivery of quantities of barley measured according to the unit (gur.sag.gal2.dul3) as well as another type of processed barley, in addition to references to plots of land. The text is dated to the first month.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.34293/tamil.v10i3.10034",
+      "title": "Historical Records from the Copper Plate  Inscription of the Vadakal Palayakkarar: Based  on the Evidence from the Tamil University Museum",
+      "year": 2026,
+      "text": "Historical Records from the Copper Plate  Inscription of the Vadakal Palayakkarar: Based  on the Evidence from the Tamil University Museum  Pottery shards with sripts, copper plates, stone inscriptions, palm-leaf manuscripts, and paper documents serve as evidentiary sources that narrate the ancient history of Tamil Nadu. Furthermore, these inscriptions serve as primary sources that describe the culture, administrative systems, social structures, and the donations and charities given to temples and society. In this context, this article discusses the historical information contained in the copper plate inscription from the period of the second Maratha king Sahaji, which was found in the Palayakkarar mansion at Vadakal in the Sirkazhi taluk of Mayiladuthurai district.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "4d2b3bb03d994b025329de8b3cb4982ea3fea5e8",
+      "title": "Optimizing deep ensemble learning for ancient Tamil inscription character recognition via metaheuristic weighting",
+      "year": 2026,
+      "text": "Optimizing deep ensemble learning for ancient Tamil inscription character recognition via metaheuristic weighting",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "4806a029725720999caf6419782fb1dbd857cabb",
+      "title": "Historical Records from the Copper Plate Inscription of the Vadakal Palayakkarar: Based on the Evidence from the Tamil University Museum",
+      "year": 2026,
+      "text": "Historical Records from the Copper Plate Inscription of the Vadakal Palayakkarar: Based on the Evidence from the Tamil University Museum Pottery shards with sripts, copper plates, stone inscriptions, palm-leaf manuscripts, and paper documents serve as evidentiary sources that narrate the ancient history of Tamil Nadu. Furthermore, these inscriptions serve as primary sources that describe the culture, administrative systems, social structures, and the donations and charities given to temples and society. In this context, this article discusses the historical information contained in the copper plate inscription from the period of the second Maratha king Sahaji, which was found in the Palayakkarar mansion at Vadakal in the Sirkazhi taluk of Mayiladuthurai district.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "904ef36d63b596743b41fbf96b390797ebd875d7",
+      "title": "Global and Local Feature Extraction Using Deep Learning Technique for Keyword Spotting in Ancient Tamil Inscriptions",
+      "year": 2026,
+      "text": "Global and Local Feature Extraction Using Deep Learning Technique for Keyword Spotting in Ancient Tamil Inscriptions Ancient Tamil scripts preserved in stone inscriptions represent valuable cultural, historical, and social heritage. However, extracting meaningful information from these inscriptions remains a challenging task due to severe degradation, erosion, noise, and complex character structures. Word spotting (WS) has emerged as an effective alternative to traditional optical character recognition (OCR) systems for information retrieval from such degraded documents. This paper proposes a hybrid deep learning framework for word spotting in ancient Tamil inscription images. The proposed system consists of pre-processing, feature extraction, script identification, and word spotting stages. To capture comprehensive information from inscription images, both local and global features are extracted. Local",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "e65370629d6a7648999bc5d58556154dfe0712bd",
+      "title": "EpigraphAI: A Deep Learning Framework for Ancient Tamil Stone Character Recognition",
+      "year": 2026,
+      "text": "EpigraphAI: A Deep Learning Framework for Ancient Tamil Stone Character Recognition Ancient Tamil stone inscriptions help us understand the history and culture of South India in a better way. But at the same time, using such information requires effort. At the same time, most inscriptions are degraded and written on inappropriate surfaces. Moreover, the script itself can vary by region. It complicates the translation of such scripts and their transcription into a digital format. Most existing OCR tools have been developed based on an analysis of modern Tamil. This work presents EpigraphAI, a deep learning-based approach for recognising characters from ancient Tamil stone images. The system first processes the input images through preprocessing and segmentation, then uses a hybrid CNN\u2013Transformer model to recognise the characters. A simple web interface is included, allowi",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "938084ee8a527669c746988cdcdb08784b527bc8",
+      "title": "AI Powered OCR Solution for Tamil Historical Document",
+      "year": 2026,
+      "text": "AI Powered OCR Solution for Tamil Historical Document Palm leaves, plates of copper and stone inscriptions which were used in ancient Tamil are an invaluable cultural source yet manual reading of these sources is largely hampered by the physical decay, the blurring of the scripts and complicated ligatures. Existing optical character recognition (OCR) technologies cannot recognize such historical documents well due to noise, variation in spacing and changes in style. This project presents an artificial intelligence-based OCR system that is specifically trained to work with ancient Tamil manuscripts. Through a semi-supervised form of deep learning, the system combines a convolutional neural network (CNN) (ResNet50) (spatial feature extractor) and a bidirectional long short-term memory (BiLSTM) layer to efficiently acquire sequential dependencie",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "7fcc900991eb08a9cc0f9dd42556b0c48e8b77a1",
+      "title": "Advanced Deep Learning OCR Algorithm for Deciphering and Digitizing Chola Period Tamil Inscriptions",
+      "year": 2026,
+      "text": "Advanced Deep Learning OCR Algorithm for Deciphering and Digitizing Chola Period Tamil Inscriptions The Tamil inscriptions of the Chola are important in terms of conserving historical, cultural and linguistic history of the area. It could be tedious and time-consuming to read these inscriptions with the hand though. This paper discusses a customized Optical Character Recognition (OCR) system that facilitates easier digitization and transcription of old Tamil inscriptions. The solution is considered to be a combination of the YOLOv8, Tensorflow, and PyTorch systems that will promote the effectiveness of character recognition, segmentation, and detection. Our experiment with the method on a number of the inscriptions of the Chola-period was 94.7 percent, 93.5 percent, and 95.2 percent correct, precise, and recalled. The average time of processing each picture was 2.8 seconds. This model is",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "5f934a1dad49e02994f91fd437e26d3b23bc9a9e",
+      "title": "\u0ba4\u0bca\u0bb2\u0bcd\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bbf\u0baf\u0b95\u0bcd \u0b95\u0bb3\u0bb5\u0bbf\u0baf\u0bb2\u0bcd \u0b95\u0bcb\u0b9f\u0bcd\u0baa\u0bbe\u0b9f\u0bc1\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0baa\u0bbf\u0ba9\u0bcd\u0ba9\u0ba3\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0ba8\u0bb1\u0bcd\u0bb1\u0bbf\u0ba3\u0bc8\u0baa\u0bcd \u0baa\u0bbe\u0b9f\u0bb2\u0bcd\u0b95\u0bb3\u0bcd: \u0b93\u0bb0\u0bcd \u0b92\u0baa\u0bcd\u0baa\u0bc0\u0b9f\u0bcd\u0b9f\u0bc1 \u0b86\u0baf\u0bcd\u0bb5\u0bc1",
+      "year": 2026,
+      "text": "\u0ba4\u0bca\u0bb2\u0bcd\u0b95\u0bbe\u0baa\u0bcd\u0baa\u0bbf\u0baf\u0b95\u0bcd \u0b95\u0bb3\u0bb5\u0bbf\u0baf\u0bb2\u0bcd \u0b95\u0bcb\u0b9f\u0bcd\u0baa\u0bbe\u0b9f\u0bc1\u0b95\u0bb3\u0bbf\u0ba9\u0bcd \u0baa\u0bbf\u0ba9\u0bcd\u0ba9\u0ba3\u0bbf\u0baf\u0bbf\u0bb2\u0bcd \u0ba8\u0bb1\u0bcd\u0bb1\u0bbf\u0ba3\u0bc8\u0baa\u0bcd \u0baa\u0bbe\u0b9f\u0bb2\u0bcd\u0b95\u0bb3\u0bcd: \u0b93\u0bb0\u0bcd \u0b92\u0baa\u0bcd\u0baa\u0bc0\u0b9f\u0bcd\u0b9f\u0bc1 \u0b86\u0baf\u0bcd\u0bb5\u0bc1 Literature and grammar serve as the primary evidences for understanding the life values, social structures, and cultural significance of ancient Tamils. In particular, literary traditions play a role equal to inscriptions, coins, and copper plates in reconstructing a nation's history. Regarding the internal life (Aham) of Tamils, 'Kalavu' (pre-marital love) was considered a noble, virtue-based conduct. The objective of this paper is to analyze in detail how the grammatical principles of Kalaviyal (the study of clandestine love) formulated in the Porulathikaram of Tolkappiyam are artistically reflected in Narrinai, a Sangam literary anthology. \nThis study comparatively examines the four major stages of Kalavu conduct as depicted in Tolkappiyam\u2014Iyarkai Punarchi (natural union), Idanthalaippa",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "89253c4d042a28306392490ec90912e4b469db6c",
+      "title": "Exploring Tamil\u2013Korean linguistic parallels: A computational and historical analysis of possible Pre-Hangul contact",
+      "year": 2026,
+      "text": "Exploring Tamil\u2013Korean linguistic parallels: A computational and historical analysis of possible Pre-Hangul contact This study investigates potential linguistic parallels between the Dravidian language Tamil and the Koreanic language Korean, evaluating whether observed similarities may reflect typological convergence, lexical coincidence, or indirect historical contact through maritime trade networks before the creation of Hangul in 1443 CE. The analysis compares phonological systems, consonant\u2013vowel organization, morphological features, orthographic (letter stroke) patterns, and lexical correspondences, while applying computational string-similarity metrics to a dataset of 100 Korean\u2013Tamil vocabulary pairs. Phonological inventories and historical script forms were compiled from established linguistic sources. Lexical similarity was measured using six computational models: Damerau\u2013Levenshtein distance,",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4414249025",
+      "title": "Architecting an Integrated AI Platform for the Apparel Industry",
+      "year": 2025,
+      "text": "Architecting an Integrated AI Platform for the Apparel Industry This research article proposes an integrated AI platform designed to revolutionise the apparel industry. The platform, envisioned as a comprehensive ecosystem, aims to enhance every stage of the apparel value chain, from design ideation to marketing and supply chain management. The architecture is built around three core components: an AI-Powered Design Studio, an Intelligent Production &amp; Supply Chain Backbone, and a Hyper-Personalised Marketing &amp; Engagement Engine. The AI-Powered Design Studio leverages generative AI, deep learning, and computer vision to transform the design process. A Trend Forecasting Engine utilises diverse data sources (social media, e-commerce, runway shows) to predict trends with high accuracy, providing data-driven insights that directly inform the AI Co-Creation Suite. This suite employs GANs, diffusion models, and sketch-to-image translation to generate design variations, refine concepts, and simulate fabric drape and fit, resulting in faster design cycles and commercially viable products. A Hyper-Personalisation Module further enhances this by generating personalised designs tailored to individual customer styles and body measurements, bridging the &amp;quot;aspiration gap&amp;quot; between desired and attainable styles. The Intelligent Production &amp; Supply Chain Backbone focuses on efficiency and sustainability. A Material Optimisation and Waste Reduction System uses computer vision to detect fabric defects and optimise cutting layouts, minimising waste. Predictive inventory management and AI-powered logistics orchestration, combined with blockchain technology for enhanced traceability, create a responsive and transparent supply chain. Automated quality control, utilising computer vision, reduces defects and enables predictive maintenance of machinery, optimising production efficiency. A Sustainability and Circularity Management Dashboard provides a holistic view of environmental and social impact, facilitating data-driven de",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4416999130",
+      "title": "Ontology-driven energy management in smart buildings: A comprehensive review of methodologies, tools, and challenges",
+      "year": 2025,
+      "text": "Ontology-driven energy management in smart buildings: A comprehensive review of methodologies, tools, and challenges \u2022 Comprehensive survey of ontology-driven methods in building energy management. \u2022 81 studies evaluated across various building energy analysis applications. \u2022 Compares Brick, SAREF, SSN, and Open Energy Ontology in building data standardisation. \u2022 Identifies open challenges in digital twins, multi-agent AI, and data harmonisation. \u2022 Guides future research on occupant-aware analytics, fault detection, and DR strategies. While building energy systems (BES) increasingly rely on advanced automation, occupant-centric control, and digital twin technologies, a lack of robust semantic interoperability continues to hinder integrated, adaptive, and efficient energy management. Ontology-based approaches have emerged as a powerful solution, offering structured knowledge representation, consistent data exchange, and improved interpretability for AI-driven analytics. However, existing reviews tend to focus on subfields - such as occupant behaviour, IoT sensor data, or demand response - without providing a holistic synthesis of ontology-driven frameworks across diverse BES. In response, this study systematically reviewed 997 articles using a series of academic databases from 2011 to 2024, identifying 81 primary studies relevant to building energy analysis for comprehensive review. The results reveal that although ontologies facilitate standardised data flows and multi-agent coordination, significant gaps remain in domain coverage, alignment with emerging industry standards, and the integration of time-series data for predictive modelling. Furthermore, the interdependence of occupant comfort, multi-energy systems, and real-time decision-making has not been sufficiently addressed. This review compares commonly utilised ontological models (Brick, SAREF, SSN, and Open Energy Ontology) and proposes future directions emphasising interoperability with domain-specific data sources, bridging occupant modelling with data-driven optimisation, and leveraging digital twins for real-time opera",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4409902499",
+      "title": "A Retrospective Study of the Indus Script Linguistics: A Scientific Approach to Deciphering the Ancient Text",
+      "year": 2025,
+      "text": "A Retrospective Study of the Indus Script Linguistics: A Scientific Approach to Deciphering the Ancient Text The Indus Script, the writing system of the ancient Indus Valley Civilisation, has been a subject of intense scholarly interest and debate for over a century. This study explores the history, research methods, and theories surrounding the script, which continues to resist full translation despite significant efforts. Through an examination of its historical context and the scientific approaches employed in its study, this work aims to provide a comprehensive overview of the challenges and advancements in understanding the Indus Script. The previous attempts to decipher meaning were inconclusive, although recurrent symbols do suggest a ritualistic language.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4413911934",
+      "title": "ChatGPT\u2019s Expanding Horizons and Transformative Impact Across Domains: A Critical Review of Capabilities, Challenges, and Future Directions",
+      "year": 2025,
+      "text": "ChatGPT\u2019s Expanding Horizons and Transformative Impact Across Domains: A Critical Review of Capabilities, Challenges, and Future Directions The rapid proliferation of Chat Generative Pre-trained Transformer (ChatGPT) marks a pivotal moment in artificial intelligence, eliciting responses from academic shock to industrial awe. As these technologies advance from passive tools toward proactive, agentic systems, their transformative potential and inherent risks are magnified globally. This paper presents a comprehensive, critical review of ChatGPT\u2019s impact across five key domains: natural language understanding (NLU), content generation, knowledge discovery, education, and engineering. While ChatGPT demonstrates profound capabilities, significant challenges remain in factual accuracy, bias, and the inherent opacity of its reasoning\u2014a core issue termed the \u201cBlack Box Conundrum\u201d. To analyze these evolving dynamics and the implications of this shift toward autonomous agency, this review introduces a series of conceptual frameworks, each specifically designed to illuminate the complex interactions and trade-offs within these domains: the \u201cSpecialization vs. Generalization\u201d tension in NLU; the \u201cQuality\u2013Scalability\u2013Ethics Trilemma\u201d in content creation; the \u201cPedagogical Adaptation Imperative\u201d in education; and the emergence of \u201cHuman\u2013LLM Cognitive Symbiosis\u201d in engineering. The analysis reveals an urgent need for proactive adaptation across sectors. Educational paradigms must shift to cultivate higher-order cognitive skills, while professional practices (including practices within education sector) must evolve to treat AI as a cognitive partner, leveraging techniques like Retrieval-Augmented Generation (RAG) and sophisticated prompt engineering. Ultimately, this paper argues for an overarching \u201cEthical\u2013Technical Co-evolution Imperative\u201d, charting a forward-looking research agenda that intertwines technological innovation with vigorous ethical and methodological standards to ensure responsible AI development and integration. Ultimately, the analysis reveals that the challenges of factual accuracy, bias, and opacity",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4410527650",
+      "title": "Trade and trade routes of Indus valley civilization",
+      "year": 2025,
+      "text": "Trade and trade routes of Indus valley civilization In this paper, the author has tried to get into a comprehensive examination of the commercial infrastructure and exchange networks that may have existed in the Indus Valley Civilization (IVC) between ca. 2800 BCE and 1900 BCE, tracing their evolution into the early historic period. By integrating archaeological data ranging from sealed weights and caravan encampments to port installations with literary and epigraphic sources spanning Vedic hymns, P\u0101\u1e47inian grammar, Buddhist travelogues, and Greco-Roman accounts, the study reconstructs the roles of caravan leaders (s\u0101rthav\u0101has), caravan routes (Uttarapatha, Va\u1e47nupatha), and maritime corridors (from Tamralipti to Alexandria). It highlights the technical and institutional innovations such as standardized weights, caravan guilds, ritual sanctions, and ship-building lexicon that facilitated long-distance exchange of grains, textiles, metals, spices, and luxury items. The analysis further situates IVC trade within a broader Afro-Eurasian context, revealing its enduring legacy in South Asian economic traditions.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4415722903",
+      "title": "Conserving Digital Archaeological Data in Tamil Nadu: Cyber Security Hazards",
+      "year": 2025,
+      "text": "Conserving Digital Archaeological Data in Tamil Nadu: Cyber Security Hazards The risk of cyberattacks on the priceless artifacts escalates as Tamil Nadu rapidly digitizes its archeological records, inscriptions, and heritage assets. This article highlights the risks that cultural institutions confront in the digital age by examining the relationship between cybersecurity and digital archaeology. In addition to evaluating the possible effects on Tamil Nadu's archaeological data, it looks at worldwide patterns in cyberattacks on cultural institutions and the dangers of data loss, intellectual property theft, and public access disruption. The essay emphasizes that in order to protect Tamil Nadu's digital legacy, strong cybersecurity infrastructure, employee training, and policy integration are urgently needed. It promotes a future in which technology complements, rather than jeopardizes, the preservation of cultural memory by outlining tactical steps for digital resilience.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4416231257",
+      "title": "Indus Signs as Merchant Marks: Corpus Structure, Context, and Viability",
+      "year": 2025,
+      "text": "Indus Signs as Merchant Marks: Corpus Structure, Context, and Viability The inscriptions of the Indus Valley Civilisation are extremely short (modal 4\u20135 signs) and occur on portable administrative media that co-occur with weights and seals. We evaluate the corpus as a merchant-mark system supporting trade administration rather than extended phonetic writing. Using aggregated catalogues and provenienced contexts, we assemble corpus statistics, layout regularities, and duplication rates, and we test a large-format case from Dholavira. In that case we propose a working identification of a complete animal-drawn cart assembled sign-by-sign; this exemplar, together with emblem-plus-label layout, low internal repetition, exact string duplication on sealings, and spatial concentration at gates, workshops, and storerooms, functions as positive evidence for compact commercial identifiers and, by basic elimination, as negative evidence for continuous running text. We derive predictions linking recurrent signs to metrology and spatial context and provide a cautious lexicon of iconographic readings for high-frequency signs. The model does not exclude phonetic values; it argues that the dominant preserved use is administrative labelling within a high-throughput Bronze Age economy",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.33736/ils.7305.2025",
+      "title": "THE INTERNATIONALITY IMAGE OF THE MALAY LANGUAGE THROUGH THE EXISTENCE OF ARABO, SINO-TIBETAN AND DRAVIDIAN PERIPHERAL LEXIS IN THE MALAY LANGUAGE",
+      "year": 2025,
+      "text": "THE INTERNATIONALITY IMAGE OF THE MALAY LANGUAGE THROUGH THE EXISTENCE OF ARABO, SINO-TIBETAN AND DRAVIDIAN PERIPHERAL LEXIS IN THE MALAY LANGUAGE  Arabo, Sino-Tibetan, and Dravidian peripheral lexis can demonstrate the internationality of the Malay language, establishing it as one of the world\u2019s most critical languages. One can research it through the history of the inclusion of non-Austronesian languages, such as the assimilation of Arabic from the Semitic language family, the assimilation of Chinese lexis, which is in the branch of the Sino-Tibetan family and Tamil language in the Dravidian language family, which is used as Malay lexis. The approach used in this study involves conducting a literature review and performing content analysis that is described in the basic descriptive. In this analysis, the researchers verified a lot of assimilated lexis, especially from non-Austronesian languages such as Arabic, Sino-Tibetan and Dravidian, used in spoken and written Malay adapted according to the Malay language. Accordingly, it verified that the non-Austronesian lexicons have been assimilated and adapted as Malay lexicons. Hence,",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.21203/rs.3.rs-6801050/v1",
+      "title": "THE INDUS SCRIPT\u00a0Recognition as an alphabet",
+      "year": 2025,
+      "text": "THE INDUS SCRIPT\u00a0Recognition as an alphabet  Abstract \n         This study introduces a novel structural analysis of the Indus script (c. 3300\u2009\u2212\u20091900 BCE) to determine if it represents an alphabetic system. Unlike previous methods, this research focuses on the inherent structural properties of over 400 Indus signs to precisely quantify the primary constituent signs. Through a new grid-based decomposition, compound signs were visually dissected, consistent diacritics identified, and sign formation principles clarified. This rigorous examination revealed a core set of 40 fundamental signs, suggesting a concise underlying system despite stylistic variations in sign formation, composition, and combination. This finding supports the hypothesis of an alphabetic structure. Furthermore, the study proposes preliminary phonetic assignments based on allographic analogies with other ancient scripts, offering a tentative reading of Indus texts to support the proposed decipherment. This research establishes a new framework for understanding t",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.31235/osf.io/rmpqe_v1",
+      "title": "Introducing Indus Keyboard - A first of its kind interactive tool to visualize the Indus Script in Devanagari and Brahmi",
+      "year": 2025,
+      "text": "Introducing Indus Keyboard - A first of its kind interactive tool to visualize the Indus Script in Devanagari and Brahmi  We introduce Indus Keyboard, a web-based interactive tool that renders Devanagari text in the Indus script, based on the decipherment proposed by Yajnadevam. This is the first known keyboard to implement such a mapping for the Indus Script, achieved through two custom-designed fonts created using FontForge. The primary font renders Devanagari input as Indus signs based on frequency of occurrence including contextual ligatures (wherever attested), and displays them right-to-left, preserving the original directionality of the script. A secondary Brahmi style font visualizes Brahmi standardized Indus glyphs alongside their corresponding Brahmi text rendered left-to-right, enabling easy comparison and contrast, highlighting the possible evolution of the Indus script to Brahmi over millennia. The keyboard is built entirely using standard web technologies (HTML, CSS, and JavaScript) and runs fully in-browser. Indus Keyboard offers a novel tool for researchers, educators, and script enthusia",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.47205/jdss.2025(6-i)89",
+      "title": "Trade Connecttivity Among Indus and Abroad: Script, Standerised Measurements and Weights",
+      "year": 2025,
+      "text": "Trade Connecttivity Among Indus and Abroad: Script, Standerised Measurements and Weights",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.47191/ijsshr/v8-i4-47",
+      "title": "A Retrospective Study of the Indus Script Linguistics: A Scientific Approach to Deciphering the Ancient Text",
+      "year": 2025,
+      "text": "A Retrospective Study of the Indus Script Linguistics: A Scientific Approach to Deciphering the Ancient Text  The Indus Script, the writing system of the ancient Indus Valley Civilisation, has been a subject of intense scholarly interest and debate for over a century. This study explores the history, research methods, and theories surrounding the script, which continues to resist full translation despite significant efforts. Through an examination of its historical context and the scientific approaches employed in its study, this work aims to provide a comprehensive overview of the challenges and advancements in understanding the Indus Script. The previous attempts to decipher meaning were inconclusive, although recurrent symbols do suggest a ritualistic language.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.34293/tamil.v10i2.9808",
+      "title": "Rules and Exceptions in Ancient Tamil Literature",
+      "year": 2025,
+      "text": "Rules and Exceptions in Ancient Tamil Literature  During the Sangam period, when tribal life was in decline, the Vedic religion introduced upper-lower distinctions based on the four castes. The Vedic religion, which emphasizes on the basis of law or dharma that there should be no mixing of castes, also emphasizes purity, impurity, and exclusion. When land became the property of men, women also became the property of men. The socio-economic and political conditions of that\u00a0\u00a0 \u00a0day, combined with sexual politics, created new rules for women. Tolkappiyar has recorded the fact that women's status in a property-owning society has become a matter of law.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.34293/tamil.v9i3.8601",
+      "title": "Traces of Tamil Studies \u2013 History and Values",
+      "year": 2025,
+      "text": "Traces of Tamil Studies \u2013 History and Values  Every language\u2019s literary and grammatical texts serve as historical models, recording human thought processes and shaping time and its contradictions. In this context, Sangam literature can be identified as valuable documentation that provides insights into the socio-cultural and intellectual traditions of ancient Tamil society. A deep analysis of the structure and thematic aspects of the poems in the Sangam corpus reveals oral traditions that were prevalent among the early Tamil communities. These compositions, which existed as oral poems before being transcribed onto manuscripts, highlight the transformation from oral to written traditions.The materials, cultural values, and historical sources that evolved from oral traditions to written records have been analyzed over time based on geographical and political contexts. With the arrival of Europeans and the spread of the printing press, Tamil studies underwent a shift influenced by scientific and Marxist perspectives. Researchers fro",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.29321/maj.10.dec003",
+      "title": "Implications of Cashless Transactions in Tamil Nadu Agriculture",
+      "year": 2025,
+      "text": "Implications of Cashless Transactions in Tamil Nadu Agriculture  This study examines the adoption of cashless transactions among agricultural stakeholders in Tamil Nadu. It evaluates its welfare implications in terms of time saving, labour efficiency, risk reduction, and cost benefits. The research focuses on three districts\u2014Coimbatore (highly developed), Madurai (medium developed), and Ariyalur (low developed)\u2014selected based on a Development Index constructed from secondary data on agriculture, health, infrastructure, and telecommunication. Primary data were collected from 570 respondents, including farmers, landless agricultural labourers, input dealers, and traders, using structured interview schedules. A two-stage stratified random sampling method was employed for sample selection. The Logit Model was applied to identify socio-economic factors influencing the adoption of cashless transactions, with variables such as access to technology, digital literacy, social participation, and infrastructure proving significant. An Adoption Index was also c",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.63300/tm0401102521",
+      "title": "\u0ba4\u0bae\u0bbf\u0bb4\u0bcd \u0ba4\u0bc6\u0bb2\u0bc1\u0b99\u0bcd\u0b95\u0bc1 \u2013 \u0b92\u0baa\u0bcd\u0baa\u0bc0\u0b9f\u0bc1",
+      "year": 2025,
+      "text": "\u0ba4\u0bae\u0bbf\u0bb4\u0bcd \u0ba4\u0bc6\u0bb2\u0bc1\u0b99\u0bcd\u0b95\u0bc1 \u2013 \u0b92\u0baa\u0bcd\u0baa\u0bc0\u0b9f\u0bc1  Languages are the root of the cultural diversity of South India. In this rich landscape, Tamil and Telugu, two Dravidian languages, stand out with their monumental literary traditions and social contributions. Although belonging to the same Dravidian family, they differ in their unique pronunciation, grammar, script, and vocabulary. Exploring the similarities and differences between these two languages will be a fascinating journey for language enthusiasts. This article elaborates on the origins, linguistic characteristics, and cultural relevance of both Tamil and Telugu languages, comparing them in detail.\n\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 \u0ba4\u0bc6\u0ba9\u0bcd\u0ba9\u0bbf\u0ba8\u0bcd\u0ba4\u0bbf\u0baf\u0bbe\u0bb5\u0bbf\u0ba9\u0bcd \u0b95\u0bb2\u0bbe\u0b9a\u0bcd\u0b9a\u0bbe\u0bb0\u0baa\u0bcd \u0baa\u0ba9\u0bcd\u0bae\u0bc1\u0b95\u0ba4\u0bcd\u0ba4\u0ba9\u0bcd\u0bae\u0bc8\u0b95\u0bcd\u0b95\u0bc1 \u0bae\u0bca\u0bb4\u0bbf\u0b95\u0bb3\u0bcd \u0b86\u0ba3\u0bbf\u0bb5\u0bc7\u0bb0\u0bbe\u0b95 \u0b85\u0bae\u0bc8\u0ba8\u0bcd\u0ba4\u0bc1\u0bb3\u0bcd\u0bb3\u0ba9. \u0b87\u0ba8\u0bcd\u0ba4 \u0bb5\u0bb3\u0bae\u0bbe\u0ba9 \u0ba8\u0bbf\u0bb2\u0baa\u0bcd\u0baa\u0bb0\u0baa\u0bcd\u0baa\u0bbf\u0bb2\u0bcd, \u0ba4\u0bae\u0bbf\u0bb4\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0ba4\u0bc6\u0bb2\u0bc1\u0b99\u0bcd\u0b95\u0bc1 \u0b86\u0b95\u0bbf\u0baf \u0b87\u0bb0\u0bc1 \u0ba4\u0bbf\u0bb0\u0bbe\u0bb5\u0bbf\u0b9f \u0bae\u0bca\u0bb4\u0bbf\u0b95\u0bb3\u0bcd, \u0ba4\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0baa\u0bbf\u0bb0\u0bae\u0bcd\u0bae\u0bbe\u0ba3\u0bcd\u0b9f\u0bae\u0bbe\u0ba9 \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bbf\u0baf \u0bae\u0bb0\u0baa\u0bc1\u0b95\u0bb3\u0bbe\u0bb2\u0bc1\u0bae\u0bcd, \u0b9a\u0bae\u0bc2\u0b95\u0baa\u0bcd \u0baa\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0baa\u0bcd\u0baa\u0bbe\u0bb2\u0bc1\u0bae\u0bcd \u0ba4\u0ba9\u0bbf\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0bae\u0bcd \u0baa\u0bc6\u0bb1\u0bcd\u0bb1\u0bc1 \u0bb5\u0bbf\u0bb3\u0b99\u0bcd\u0b95\u0bc1\u0b95\u0bbf\u0ba9\u0bcd\u0bb1\u0ba9. \u0b92\u0bb0\u0bc7 \u0ba4\u0bbf\u0bb0\u0bbe\u0bb5\u0bbf\u0b9f\u0b95\u0bcd \u0b95\u0bc1\u0b9f\u0bc1\u0bae\u0bcd\u0baa\u0ba4\u0bcd\u0ba4\u0bc8\u0b9a\u0bcd \u0b9a\u0bc7\u0bb0\u0bcd\u0ba8\u0bcd\u0ba4 \u0bae\u0bca\u0bb4\u0bbf\u0b95\u0bb3\u0bbe\u0b95 \u0b87\u0bb0\u0bc1\u0ba8\u0bcd\u0ba4\u0bbe\u0bb2\u0bc1\u0bae\u0bcd, \u0b85\u0bb5\u0bc8 \u0ba4\u0b99\u0bcd\u0b95\u0bb3\u0bcd \u0ba4\u0ba9\u0bbf\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0bae\u0bbe\u0ba9 \u0b89\u0b9a\u0bcd\u0b9a\u0bb0\u0bbf\u0baa\u0bcd\u0baa\u0bc1, \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0ba3\u0bae\u0bcd, \u0b8e\u0bb4\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1 \u0bb5\u0b9f\u0bbf\u0bb5\u0bae\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.34293/tamil.v10i2.9822",
+      "title": "Literacy Development in Tamil Nadu from the  Perspective of Social and Educational Research",
+      "year": 2025,
+      "text": "Literacy Development in Tamil Nadu from the  Perspective of Social and Educational Research  Literacy is an important tool for the progress of human society. Literacy is a fundamental part of society. Since writing is a tool for sharing information, the development of literacy in society is very important. Writing and literacy in Tamil Nadu have been witnessing great development since the Sangam period till date. All sectors like education, industry, social progress are intertwined with literacy. This article examines the development of writing, literacy in Tamil Nadu, its importance and the government\u2019s measures for the development of literacy.",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.63300/kirjts0404202505",
+      "title": "\u0b9a\u0bc6\u0bb5\u0bbf\u0bb2\u0bbf\u0ba4\u0bcd\u0ba4\u0bbe\u0baf\u0bbf\u0ba9\u0bcd \u0bae\u0bc6\u0baf\u0bcd\u0baa\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1\u0ba3\u0bb0\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bcd",
+      "year": 2025,
+      "text": "\u0b9a\u0bc6\u0bb5\u0bbf\u0bb2\u0bbf\u0ba4\u0bcd\u0ba4\u0bbe\u0baf\u0bbf\u0ba9\u0bcd \u0bae\u0bc6\u0baf\u0bcd\u0baa\u0bcd\u0baa\u0bbe\u0b9f\u0bcd\u0b9f\u0bc1\u0ba3\u0bb0\u0bcd\u0bb5\u0bc1\u0b95\u0bb3\u0bcd  The foster mother (Ceviliththai) occupies a unique and significant position within classical Tamil Sangam Akam literature. Transcending the status of a mere servant, she is depicted as an integrated and essential member of the family, responsible for nurturing the heroine (Thalaivi) from birth with profound love and unwavering duty. As established by Tolkappiyam, her role is often doubly significant as the mother of the heroine\u2019s companion (Thozhi), thereby establishing deep, interconnected kinship bonds between the Thalaivi, the Thozhi, and the biological mother (Nattray). This article centers on the emotional landscape of the Ceviliththai during a moment of profound crisis: her discovery of the heroine\u2019s elopement (Udanpokku). Drawing extensively upon rules outlined in Tolkappiyam and poetic evidence from various Sangam anthologies, this study investigates the intense psychological distress and emotional turbulence experienced by the Ceviliththai. The primary objective is to meticul",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.21203/rs.3.rs-8277800/v1",
+      "title": "An Intelligent Bidirectional Transliteration System for Ancient Tamil-Brahmi and Modern Tamil using a Rule-Based Unicode Model",
+      "year": 2025,
+      "text": "An Intelligent Bidirectional Transliteration System for Ancient Tamil-Brahmi and Modern Tamil using a Rule-Based Unicode Model  Abstract \n                 Ancient Tamil-Brahmi inscriptions constitute a vital part of South Asia\u2019s epigraphical heritage, yet the script remains largely inaccessible to non-specialists. The primary challenge arises from the lack of effective digital tools for bidirectional transliteration between Ancient Tamil-Brahmi and Modern Tamil, which have diverged over centuries of morphological evolution. This study proposes a rule-based computational framework that performs high-precision, bidirectional transliteration between Ancient Tamil-Brahmi and Modern Tamil using Unicode character mapping, consonant\u2013vowel composition rules, and virama handling. The system operates directly on Unicode text and supports the full Brahmi block, including Old Tamil extensions, thereby ensuring lossless character-level conversion. Experimental evaluation using a parallel Brahmi\u2013Tamil dataset demonstrates perfect performance, achieving a BLEU score of 1.0000, 100%-character accuracy, and a character error r",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1038/s40494-025-02097-9",
+      "title": "GAN Augmented Hybrid Transformer Network (GHTNet) For Ancient Tamil Stone Inscription Recognition",
+      "year": 2025,
+      "text": "GAN Augmented Hybrid Transformer Network (GHTNet) For Ancient Tamil Stone Inscription Recognition",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1109/icuis67429.2025.11380767",
+      "title": "A Survey of Modular OCR Approaches for Tamil-Brahmi Inscriptions: Segmentation and Reconstruction Focus",
+      "year": 2025,
+      "text": "A Survey of Modular OCR Approaches for Tamil-Brahmi Inscriptions: Segmentation and Reconstruction Focus",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "0f9ff1ad9d51a0aa3609cc7dbe7740ebee09d09d",
+      "title": "GAN Augmented Hybrid Transformer Network (GHTNet) For Ancient Tamil Stone Inscription Recognition",
+      "year": 2025,
+      "text": "GAN Augmented Hybrid Transformer Network (GHTNet) For Ancient Tamil Stone Inscription Recognition",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "778fb369f273303474304430313057c7872b8a6f",
+      "title": "Word segmentation of ancient Tamil text extracted from inscriptions",
+      "year": 2025,
+      "text": "Word segmentation of ancient Tamil text extracted from inscriptions",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "5a5b9ee10eb66e67f026050a772feebc04127786",
+      "title": "Deciphering Ancient Tamil Epigraphy: A Deep Learning Approach for Vatteluttu Script Recognition",
+      "year": 2025,
+      "text": "Deciphering Ancient Tamil Epigraphy: A Deep Learning Approach for Vatteluttu Script Recognition Vatteluttu (Vattezhuthu) script, prevalent between the 3rd and 8th century CE, played a crucial role in documenting early Chola and Pandya history. However, despite its historical significance, thousands of inscriptions remain untranslated, hindering a comprehensive understanding of early South Indian heritage. This research addresses these challenges by developing a deep learning-based approach for digitizing and recognizing Vatteluttu characters. Using a dataset of 1,800 segmented images representing 28 characters, the study integrates advanced preprocessing techniques and a Siamese CNN-RNN architecture to classify ancient scripts with an overall accuracy of 98%. The findings demonstrate the feasibility of automated transcription for ancient scripts, offering a robust framework for prese",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "63da6175f03e83e8b470d7ce2fa82ce4605f4397",
+      "title": "Phonetic-aware word reconstruction in ancient Tamil inscriptions using adaptive Graph networks",
+      "year": 2025,
+      "text": "Phonetic-aware word reconstruction in ancient Tamil inscriptions using adaptive Graph networks",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "f0761e1d91da96ed2d545ebf673de7b71c601d86",
+      "title": "Heritage AI System for Ancient Script Transcription and Structural Damage Prediction",
+      "year": 2025,
+      "text": "Heritage AI System for Ancient Script Transcription and Structural Damage Prediction The deciphering of early civilizations' sociological, linguistic, and architectural history depends heavily on the preservation of ancient inscriptions. Because inscriptions carved in scripts like Brahmi, Tamil to Brahmi, or Vattezhuthu are frequently discovered on weathered stone surfaces that have been subjected to centuries of erosion, traditional restoration techniques are labor intensive, subjective, and sluggish. In this research, we provide HeritageAI, an integrated AI based system that concurrently tackles two important issues in the conservation of cultural heritage: automatic transliteration and transcription of scripts, and predicting structural degradation to heritage sites. Specifically, Artificial Intelligence (AI) in HeritageAI orchestrates a multimodal pipeline combining co",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "cec54fe6dd5c25f4fe140ad7ba064332c9e576d8",
+      "title": "Ancient Character Recognition: A Comprehensive Review",
+      "year": 2025,
+      "text": "Ancient Character Recognition: A Comprehensive Review Deep learning-based character recognition of Tamil inscriptions plays a significant role in preserving the ancient Tamil language. The complexity of the task lies in the precise classification of the age-old Tamil letters (Vattezhuthu) into modern-day Tamil letter structures. Various methodologies and pre-processing techniques have been used for denoising the ancient Tamil manuscript to retrieve the Tamil text. Researchers have used various synthesized and scanned images of stone wall inscriptions, palm leaves manuscripts, and offline handwritten characters for their analysis. Over the years, Ancient Tamil scripts have deteriorated with time due to various natural calamities. Strong denoising and feature extraction methods are required to separate the letters accurately to tackle this issu",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "9745f1ab9d86ff4cd11524ae5c0279cf68e4884c",
+      "title": "Archaeology and Inscriptions of Tamil Nadu: Historical Explorations and New Directions",
+      "year": 2025,
+      "text": "Archaeology and Inscriptions of Tamil Nadu: Historical Explorations and New Directions The archaeology and inscriptions of Tamil Nadu provide a fascinating window into the region's ancient history, cultural richness, and socio-political dynamics. This paper explores the interplay between material culture and epigraphic evidence, shedding light on the development of early Tamil society, its trade connections, religious practices, and administrative systems. Key archaeological sites such as Keeladi, Adichanallur, and Kodumanal, along with inscriptions from the Pallava, Chola, and Pandya periods, serve as critical sources for reconstructing the past. These findings reveal the sophistication of Tamil Nadu's early urbanization, maritime trade networks, and literary traditions, as evidenced by Sangam literature and Brahmi inscriptions. The presentation also emphasizes the role of",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "6d48ed754af8b4553999c581ea302f9ffceb5fb1",
+      "title": "Digitization and Recognition of Kannada Inscription Dynasty",
+      "year": 2025,
+      "text": "Digitization and Recognition of Kannada Inscription Dynasty Indian inscriptions are incredibly diverse in content. They range from royal edicts announcing new laws or victories, to grants of land or money to temples and scholars, to records of trade guilds, merchant routes, tax regulations, and treaties. Many inscriptions are poetic in nature, composed in Sanskrit, Prakrit, Pali, Tamil, Kannada, and Telugu, and they often blend political history with literary beauty. They not only inform us about the rulers but also about the lives of ordinary people \u2014 farmers, artisans, merchants, priests, and poets \u2014 who together created the cultural fabric of India. Equally important is the role inscriptions played in tracing the evolution of languages and scripts. From Brahmi and Kharoshthi in early centuries to Nagari, Grantha, and Kannada in later times, insc",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "cce9c541f5931d985eaeea23a6d6f34841627e4e",
+      "title": "A Survey of Modular OCR Approaches for Tamil-Brahmi Inscriptions: Segmentation and Reconstruction Focus",
+      "year": 2025,
+      "text": "A Survey of Modular OCR Approaches for Tamil-Brahmi Inscriptions: Segmentation and Reconstruction Focus The digitization of Tamil\u2013Brahmi inscriptions is essential for preserving South India\u2019s early written heritage, yet presents significant technical challenges stemming from surface erosion, broken or missing strokes, variable carving depths, and irregular character spacing\u2014factors that severely undermine conventional OCR engines designed for printed or modern handwritten text. This survey provides a comprehensive review of both classical and contemporary techniques adapted for epigraphic data, focusing specifically on segmentation and reconstruction modules within modular OCR pipelines. We examine traditional image processing approaches including projection profile analysis, connected component labeling, morphological filtering, and contour tracing, discussing their limitations on degraded",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "763944ac842eb82b91ff634eb9f644bddc35854d",
+      "title": "A Review in Tamil Palm Leaf Manuscript for Character Recognition",
+      "year": 2025,
+      "text": "A Review in Tamil Palm Leaf Manuscript for Character Recognition More than two thousand years ago, the people of South Asia utilized palm leaf manuscripts for record-keeping and data transmission. These historical records contain value information for several age group peoples on a variety of themes, including culture, astronomy, mathematic, astrology and medicine. The valuable information is written in local languages these priceless records are damaged due to lack of maintained. Many researchers are dedicated to safeguarding the antique palm leaf scripts in order to preserve our priceless knowledge writings. However, as science and technology have advanced, images have become a vital means of transmitting information, and image processing has seen a surge in recent years. Numerous image processing techniques have been proposed for the efficient data r",
+      "evidence_tier": "MODERATE"
+    },
+    {
+      "source": "s2",
+      "id": "4c1f93ac10fa6caa5a9fa5ac4403b69639617d69",
+      "title": "\u0baa\u0bb4\u0ba8\u0bcd\u0ba4\u0bae\u0bbf\u0bb4\u0bcd \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0bae\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0b95\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0bb5\u0bbe\u0bb4\u0bcd\u0bb5\u0bbf\u0baf\u0bb2\u0bcd \u0b85\u0bb1\u0b99\u0bcd\u0b95\u0bb3\u0bcd: \u0b92\u0bb0\u0bc1 \u0bb5\u0bb0\u0bb2\u0bbe\u0bb1\u0bcd\u0bb1\u0bc1 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baf\u0bb2\u0bcd \u0b86\u0baf\u0bcd\u0bb5\u0bc1",
+      "year": 2025,
+      "text": "\u0baa\u0bb4\u0ba8\u0bcd\u0ba4\u0bae\u0bbf\u0bb4\u0bcd \u0b87\u0bb2\u0b95\u0bcd\u0b95\u0bbf\u0baf\u0b99\u0bcd\u0b95\u0bb3\u0bbf\u0bb2\u0bcd \u0bae\u0bb0\u0bc1\u0ba4\u0bcd\u0ba4\u0bc1\u0bb5\u0b95\u0bcd \u0b95\u0b9f\u0bcd\u0b9f\u0bae\u0bc8\u0baa\u0bcd\u0baa\u0bc1\u0b95\u0bb3\u0bcd \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0bb5\u0bbe\u0bb4\u0bcd\u0bb5\u0bbf\u0baf\u0bb2\u0bcd \u0b85\u0bb1\u0b99\u0bcd\u0b95\u0bb3\u0bcd: \u0b92\u0bb0\u0bc1 \u0bb5\u0bb0\u0bb2\u0bbe\u0bb1\u0bcd\u0bb1\u0bc1 \u0bae\u0bb1\u0bcd\u0bb1\u0bc1\u0bae\u0bcd \u0b85\u0bb1\u0bbf\u0bb5\u0bbf\u0baf\u0bb2\u0bcd \u0b86\u0baf\u0bcd\u0bb5\u0bc1 In the life of ancient Tamils, medicine was not merely a tool for curing diseases but existed as a way of life in harmony with nature. Siddha medicine, considered one of the oldest medical systems in the world, finds its foundational roots within Tamil literature. This research paper provides a comprehensive analysis of medical data embedded across a timeline ranging from the Tolkappiyam and Sangam literature to the Pathinen Keezhkanakku (Eighteen Lesser Texts) and Chola-era inscriptions. \nSpecifically, the anatomical knowledge of ancient Tamils, battlefield surgical procedures, diagnostic techniques, and pharmacological classifications are analyzed from a scientific perspective. The paper presents detailed discussions on how the principle of 'Food as Medicine' and psychiatric treatment me",
+      "evidence_tier": "MODERATE"
+    }
+  ],
+  "target_clusters": [
+    "Brahui language Dravidian Balochistan contact linguistic",
+    "Brahui Dravidian isolation Balochistan IVC north",
+    "North Dravidian Kurukh Malto Brahui phylogenetic divergence",
+    "Brahui Balochistan Bronze Age Harappan Indus contact",
+    "McAlpin Elamite Dravidian hypothesis response counter",
+    "Elamo-Dravidian language family 2000 2010 2020 new evidence",
+    "Elamite Dravidian cognate extended additional words",
+    "Indus script computational neural network 2025 2026",
+    "Indus Valley script machine learning deep learning decipher",
+    "Harappan script natural language processing sign frequency",
+    "Indus script LLM transformer language model 2024 2025",
+    "South Asian ancient DNA 2025 2026 new population Harappan",
+    "Indus Valley genome archaeogenetics new sample 2025",
+    "AASI Ancestral South Asian ancestry Dravidian 2025 2026",
+    "Harappan ancient genome AASI steppe mixture 2024 2025",
+    "Parpola Indus script Dravidian 2020 2021 2022 2023 2024",
+    "Parpola Harappan seal text translation new",
+    "Keezhadi Tamil excavation inscription 2024 2025 recent",
+    "Keezhadi Tamil Iron Age urbanization writing new find",
+    "Indus sign list allograph variant catalog 2020 2021",
+    "Harappan script sign variant grapheme allograph study",
+    "Mahadevan Wells Parpola sign list cross-reference update",
+    "Harappan late phase collapse 2100 1900 BCE territory",
+    "IVC urban decline migration climate 1900 BCE",
+    "Meluhha Sargonic Akkadian cuneiform CDLI 2024 2025",
+    "Meluhha Indus merchant cuneiform record new",
+    "Dravidian agglutinative morphology SOV case marker comparison Elamite"
+  ],
+  "verdict": "Phase 208 mine: 4466 total papers. 62 STRONG, 207 MODERATE. Targeting Brahui/IVC NW corridor, computational 2025/2026, aDNA 2025/2026, McAlpin extensions."
+}

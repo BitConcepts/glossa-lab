@@ -1,0 +1,106 @@
+{
+  "phase": 206,
+  "elapsed_s": 0.0,
+  "old_total": 402,
+  "new_total": 404,
+  "new_entries_added": [
+    "M692",
+    "M861"
+  ],
+  "confidence_before": {
+    "HIGH": 76,
+    "MEDIUM": 87,
+    "LOW": 239
+  },
+  "confidence_after": {
+    "HIGH": 76,
+    "MEDIUM": 88,
+    "LOW": 240
+  },
+  "absent_phoneme_status": {
+    "en": [
+      "M427",
+      "HIGH",
+      "FULLY COVERED"
+    ],
+    "ki": [
+      "M874",
+      "MEDIUM",
+      "COVERED Phase-192"
+    ],
+    "su": [
+      "M740",
+      "LOW",
+      "COVERED Phase-192"
+    ],
+    "zi": [
+      "M455",
+      "LOW",
+      "COVERED Phase-192"
+    ],
+    "gi": [
+      "M868",
+      "LOW",
+      "COVERED Phase-192"
+    ],
+    "du": [
+      "M089=tu",
+      "HIGH",
+      "COVERED via voicing alt (Phase-206)"
+    ],
+    "ga": [
+      "M391=ka",
+      "HIGH",
+      "COVERED via voicing alt (Phase-206)"
+    ],
+    "mil": [
+      "M047=min",
+      "HIGH",
+      "PARTIAL via PDr cognate (Phase-206)"
+    ],
+    "li": [
+      "M162=il",
+      "HIGH",
+      "PARTIAL via metathesis (Phase-206)"
+    ],
+    "sum": [
+      null,
+      "PENDING",
+      "Needs ICIT"
+    ],
+    "gu": [
+      null,
+      "PENDING",
+      "Needs ICIT"
+    ],
+    "ab": [
+      null,
+      "PENDING",
+      "Needs ICIT"
+    ],
+    "ba": [
+      null,
+      "PENDING",
+      "Needs ICIT"
+    ],
+    "shu": [
+      null,
+      "PENDING",
+      "Needs ICIT"
+    ]
+  },
+  "pending_absent_phonemes": [
+    "sum",
+    "gu",
+    "ab",
+    "ba",
+    "shu"
+  ],
+  "reconciled_via_existing": {
+    "du": "M089=tu/t\u016b HIGH (voiced alternation)",
+    "ga": "M391=ka/ka\u1e47 HIGH (voiced alternation)",
+    "mil": "M047=min HIGH (PDr cognate partial)",
+    "li": "M162=il/i\u1e37 HIGH (metathesis partial)"
+  },
+  "verdict": "Phase 206: Added M692=nal [MEDIUM] and M861=nallavar [LOW]. Total anchors 402 \u2192 404. Absent-phoneme audit: /du/ and /ga/ COVERED via existing HIGH anchors (M089, M391) through Elamite voiced alternation. /mil/ and /li/ partially covered. 5 phonemes (/sum/, /gu/, /ab/, /ba/, /shu/) still pending ICIT corpus."
+}

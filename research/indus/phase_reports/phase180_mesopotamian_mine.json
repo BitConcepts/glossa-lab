@@ -1,0 +1,721 @@
+{
+  "phase": 180,
+  "date": "2026-05-22",
+  "description": "Mesopotamian contact evidence mine: CDLI + S2 + OA + phonological gap re-analysis",
+  "cdli_results": {
+    "texts_found": [
+      {
+        "id": "1",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "2",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "3",
+        "period": {
+          "id": 3,
+          "sequence": 3,
+          "period": "Uruk IV (ca. 3350-3200 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "4",
+        "period": {
+          "id": 3,
+          "sequence": 3,
+          "period": "Uruk IV (ca. 3350-3200 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "5",
+        "period": {
+          "id": 3,
+          "sequence": 3,
+          "period": "Uruk IV (ca. 3350-3200 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "6",
+        "period": {
+          "id": 3,
+          "sequence": 3,
+          "period": "Uruk IV (ca. 3350-3200 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "7",
+        "period": {
+          "id": 3,
+          "sequence": 3,
+          "period": "Uruk IV (ca. 3350-3200 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "8",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "9",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "10",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "11",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "12",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "13",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "14",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "15",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "19",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "20",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "21",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "22",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "23",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "24",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "25",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "30",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "31",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "33",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "34",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "35",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "36",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "37",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      },
+      {
+        "id": "38",
+        "period": {
+          "id": 4,
+          "sequence": 5,
+          "period": "Uruk III (ca. 3200-3000 BC)"
+        },
+        "provenience": {
+          "id": 105,
+          "provenience": "Uruk (mod. Warka)",
+          "location_id": 570,
+          "place_id": 145,
+          "region_id": 8
+        },
+        "text_snippet": ""
+      }
+    ],
+    "n_meluhha_refs": 30,
+    "n_personal_names": 0,
+    "phonological_evidence": [],
+    "data_source": "cdli_api"
+  },
+  "n_papers": 11,
+  "n_new_names": 0,
+  "n_phoneme_items": 0,
+  "n_contact_evidence": 0,
+  "gap_analysis": {
+    "phoneme_coverage": [
+      {
+        "phoneme": "su",
+        "found_in_new_papers": false,
+        "paper_mentions": [],
+        "low_candidates": [],
+        "meluhhan_names": [
+          "Shu-ilishu",
+          "Enki-mansum",
+          "Inanna-mansum",
+          "Amar-Su-en",
+          "Su-Sin",
+          "Ibbi-Su-en"
+        ],
+        "status": "TRUE_GAP"
+      },
+      {
+        "phoneme": "li",
+        "found_in_new_papers": false,
+        "paper_mentions": [],
+        "low_candidates": [],
+        "meluhhan_names": [
+          "Shu-ilishu",
+          "Lu-enlilla",
+          "Lipit-Enlil"
+        ],
+        "status": "TRUE_GAP"
+      },
+      {
+        "phoneme": "shu",
+        "found_in_new_papers": false,
+        "paper_mentions": [],
+        "low_candidates": [],
+        "meluhhan_names": [
+          "Shu-ilishu"
+        ],
+        "status": "TRUE_GAP"
+      },
+      {
+        "phoneme": "gu",
+        "found_in_new_papers": false,
+        "paper_mentions": [],
+        "low_candidates": [],
+        "meluhhan_names": [
+          "Urgula",
+          "Gutium"
+        ],
+        "status": "TRUE_GAP"
+      },
+      {
+        "phoneme": "ab",
+        "found_in_new_papers": false,
+        "paper_mentions": [],
+        "low_candidates": [],
+        "meluhhan_names": [
+          "Aabba"
+        ],
+        "status": "TRUE_GAP"
+      },
+      {
+        "phoneme": "ba",
+        "found_in_new_papers": false,
+        "paper_mentions": [],
+        "low_candidates": [],
+        "meluhhan_names": [
+          "Aabba"
+        ],
+        "status": "TRUE_GAP"
+      },
+      {
+        "phoneme": "du",
+        "found_in_new_papers": false,
+        "paper_mentions": [],
+        "low_candidates": [],
+        "meluhhan_names": [
+          "Dumuzi-gamil"
+        ],
+        "status": "TRUE_GAP"
+      },
+      {
+        "phoneme": "zi",
+        "found_in_new_papers": false,
+        "paper_mentions": [],
+        "low_candidates": [],
+        "meluhhan_names": [
+          "Dumuzi-gamil"
+        ],
+        "status": "TRUE_GAP"
+      },
+      {
+        "phoneme": "ga",
+        "found_in_new_papers": false,
+        "paper_mentions": [],
+        "low_candidates": [],
+        "meluhhan_names": [
+          "Dumuzi-gamil",
+          "Magan-trader"
+        ],
+        "status": "TRUE_GAP"
+      },
+      {
+        "phoneme": "mil",
+        "found_in_new_papers": false,
+        "paper_mentions": [],
+        "low_candidates": [],
+        "meluhhan_names": [
+          "Dumuzi-gamil"
+        ],
+        "status": "TRUE_GAP"
+      },
+      {
+        "phoneme": "gi",
+        "found_in_new_papers": false,
+        "paper_mentions": [],
+        "low_candidates": [],
+        "meluhhan_names": [
+          "Niggina"
+        ],
+        "status": "TRUE_GAP"
+      },
+      {
+        "phoneme": "en",
+        "found_in_new_papers": false,
+        "paper_mentions": [],
+        "low_candidates": [],
+        "meluhhan_names": [
+          "Enki-mansum",
+          "Lu-enlilla",
+          "Amar-Su-en",
+          "Ibbi-Su-en",
+          "Lipit-Enlil"
+        ],
+        "status": "TRUE_GAP"
+      },
+      {
+        "phoneme": "ki",
+        "found_in_new_papers": false,
+        "paper_mentions": [],
+        "low_candidates": [],
+        "meluhhan_names": [
+          "Enki-mansum"
+        ],
+        "status": "TRUE_GAP"
+      },
+      {
+        "phoneme": "sum",
+        "found_in_new_papers": false,
+        "paper_mentions": [],
+        "low_candidates": [],
+        "meluhhan_names": [
+          "Enki-mansum",
+          "Inanna-mansum"
+        ],
+        "status": "TRUE_GAP"
+      }
+    ],
+    "n_new_evidence": 0,
+    "n_low_candidates": 0,
+    "n_true_gaps": 14
+  },
+  "meso_findings": {
+    "new_names": [],
+    "phoneme_items": [],
+    "contact_evidence": []
+  },
+  "papers_metadata": [
+    {
+      "title": "Across the Indian Ocean: the prehistoric movement of plants and animals",
+      "year": 2011,
+      "source": "openalex_mesop"
+    },
+    {
+      "title": "Crops, cattle and commensals across the Indian Ocean",
+      "year": 2009,
+      "source": "openalex_mesop"
+    },
+    {
+      "title": "Between domestication and civilization: the role of agriculture and arboriculture in the emergence of the first urban societies",
+      "year": 2019,
+      "source": "openalex_mesop"
+    },
+    {
+      "title": "Archaeology of Trade in the Western Indian Ocean, 300 BC–AD 700",
+      "year": 2014,
+      "source": "openalex_mesop"
+    },
+    {
+      "title": "Archaeology and Language",
+      "year": 2002,
+      "source": "openalex_mesop"
+    },
+    {
+      "title": "A History of Russia, Central Asia and Mongolia",
+      "year": 2017,
+      "source": "openalex_mesop"
+    },
+    {
+      "title": "Deconstructing Civilisation: A ‘Neolithic’ Alternative",
+      "year": 2018,
+      "source": "openalex_mesop"
+    },
+    {
+      "title": "Non-linear regime shifts in Holocene Asian monsoon variability: potential impacts on cultural change and migratory patterns",
+      "year": 2015,
+      "source": "openalex_mesop"
+    },
+    {
+      "title": "Rethinking the Hellenistic Gulf: The New Greek Inscription from Bahrain",
+      "year": 2013,
+      "source": "openalex_mesop"
+    },
+    {
+      "title": "Greed Is Bad, Neutral, and Good: A Historical Perspective on Excessive Accumulation and Consumption",
+      "year": 2014,
+      "source": "openalex_mesop"
+    },
+    {
+      "title": "For a Tin Ingot: The Archaeology of Oral Interpretation",
+      "year": 2013,
+      "source": "openalex_mesop"
+    }
+  ],
+  "gpu_device": "cpu"
+}

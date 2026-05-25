@@ -1,0 +1,220 @@
+{
+  "phase": 182,
+  "date": "2026-05-22",
+  "description": "Deep evidence mine: Shodhganga + forward citations + Zenodo/HAL + JSTOR OA + strong paper fulltext",
+  "n_papers": 183,
+  "source_breakdown": {
+    "openalex_forward_cit": 147,
+    "zenodo": 36
+  },
+  "n_strong_evidence": 2,
+  "n_moderate_evidence": 4,
+  "n_weak_evidence": 16,
+  "evidence": {
+    "strong": [
+      {
+        "title": "Can the semasiographic/logographic Indus script answer the Dravidian question? I",
+        "year": 2023,
+        "source": "openalex_forward_cit",
+        "url": "",
+        "key_evidence": " linked the people of ancient Indus valley civilization (IVC) with the ancestors of Dravidian speakers. This article argues that the semasiographically/logographically written Indus script (ISC) used certain fish-like logograms, whose iconicity emerged from certain Indus symbolisms, which are linkable with certain linguistic symbolisms found across today’s Dravidian languages. As discussed in the author’s previous articles, ISC was a mercantile script, and different segments of the formulaic ISC inscriptions were usually populated by signs belonging to specific semantic classes. The core-informational segment, which occur preceding the phrase-final and pre-phrase-final signs ( ), arguably encoded names of licensed crafts, and taxed commodities (e.g., the crucible-blowpipe based sign which signified precious-metals/gold-smithy). This article claims that the fish-like ISC signs ( , , , , , , ), which mainly occur in the ‘core-informational’ segments, often accompanying the gold/precious-metal sign (e.g., , ), possibly encoded meanings related to gemstones, lapidary activities, related precious commodities, barter equivalencies, and taxes/licenses. Interestingly, in various Indus settlements, seals/tablets containing fish-sign- inscriptions are found in unusually high concentration in the archaeological contexts of lapidary workshops and jeweler’s shops. Revealingly, the polysemic Proto-Dravidian fish-word “mīn”, a popular fish-word used across present India, also signifies ‘shining’, ‘bright’, and ‘gemstone’ in several Dravidian languages, and is etymologically connected to the Proto-Dravidian root-verb “*mīn”, which signifies “to shine,” “to glitter,” etc. In the Indian subcontinent, this fish-based homonymy for gemstones and related linguistic symbolism for other glittering things (“*min”-based words coined for stars, fireflies, lightning, etc.) are found only in the Dravidian language-group, indicating that the gemstone related fish-sign symbolism of ISC might have emerged from an ancestral Dravidian culture prevalent in IVC. Relevantly, in Mesopotamia, the eye-patterned apotropaic gemstone-beads imported from IVC were called “fish-eye” stones (“NA4-IGI- ḪA”, “NA4-IGI-KU6”), and \"eye-stones\" of Meluhha (\"NA4-IGI-ME-LUḪ-ḪA\"), whereas in Dravidian languages, carnelian (“akki-kal”), tiger-eye-like sardonyx (“puli-k-kaṇ-kal”), and cat’s-eye-like chrysoberyl (“pūṉai-k-kaṇ-kal”) have eye-stone related epithets. Moreover, “maṇi”, the Indus word for gemstones, which remained fossilized in ancient documents of Near East, arguably has a Dravidian root. Intriguingly, “maṇi” has been signifying meanings like “amulet” (see Atharvaveda), “bead”, “apple of eye”, and “gemstone” in Indian languages, each which were linked to the amuletic, eye-patterned gemstone beads of Meluhah."
+      },
+      {
+        "title": "Ancestral Dravidian languages in Indus Civilization: ultraconserved Dravidian to",
+        "year": 2021,
+        "source": "openalex_forward_cit",
+        "url": "",
+        "key_evidence": "t Ever since the discovery of Indus valley civilization, scholars have debated the linguistic identities of its people. This study analyzes numerous archaeological, linguistic, archaeogenetic and historical evidences to claim that the words used for elephant (like, ‘pīri’, ‘pīru’) in Bronze Age Mesopotamia, the elephant-word used in the Hurrian part of an Amarna letter of ca. 1400 BC, and the ivory-word (‘pîruš’) recorded in certain sixth century BC Old Persian documents, were all originally borrowed from ‘pīlu’, a Proto-Dravidian elephant-word, which was prevalent in the Indus valley civilization, and was etymologically related to the Proto-Dravidian tooth-word ‘*pal’ and its alternate forms (‘*pīl’/‘*piḷ’/‘*pel’). This paper argues that there is sufficient morphophonemic evidence of an ancient Dravidian ‘*piḷ’/‘*pīl’-based root, which meant ‘splitting/crushing’, and was semantically related to the meanings ‘tooth/tusk’. This paper further observes that ‘pīlu’ is among the most ancient and common phytonyms of the toothbrush tree Salvadora persica , which is a characteristic flora of Indus valley, and whose roots and twigs have been widely used as toothbrush in IVC regions since antiquity. This study claims that this phytonym ‘pīlu’ had also originated from the same Proto-Dravidian tooth-word, and argues that since IVC people had named their toothbrush trees and tuskers (elephants) using a Proto-Dravidian tooth-word, and since these names were widely used across IVC regions, a significant population of Indus valley civilization must have used that Proto-Dravidian tooth-word in their daily communication. Since ‘tooth’ belongs to the core non-borrowable ultraconserved vocabulary of a speech community, its corollary is that a significant population of IVC spoke certain ancestral Dravidian languages. Important insights from recent archaeogenetic studies regarding possible migration of Proto-Dravidian speakers from Indus valley to South India also corroborate the findings of this paper."
+      }
+    ],
+    "moderate": [
+      {
+        "title": "Human Y chromosome haplogroup L1-M22 traces Neolithic expansion in West Asia and",
+        "year": 2024,
+        "source": "openalex_forward_cit",
+        "url": "",
+        "key_evidence": "Dravidian connection West and South Asian populations profoundly influenced Eurasian genetic and cultural diversity. We investigate the genetic history of the Y chromosome haplogroup L1-M22, which, while prevalent in these regions, lacks in-depth study. Robust Bayesian analyses of 165 high-coverage Y chromosomes favor a West Asian origin for L1-M22 ∼20.6 thousand years ago (kya). Moreover, this haplogroup parallels the genome-wide genetic ancestry of hunter-gatherers from the Iranian Plateau and the Caucasus. We characterized two L1-M22 harboring population groups during the Early Holocene. One expanded with the West Asian Neolithic transition. The other moved to South Asia ∼8-6 kya but showed no expansion. Thi"
+      },
+      {
+        "title": "Identifying Anomalous Indus Texts from West Asia Using Markov Chain Language Mod",
+        "year": 2023,
+        "source": "openalex_forward_cit",
+        "url": "",
+        "key_evidence": "Identifying Anomalous Indus Texts from West Asia Using Markov Chain Language Models The Indus Valley civilization thrived during its mature period between 2500 BCE and 1800 BCE. and traded with the bronze age civilizations of West Asia in Mesopotamia and the Persian Gulf region. During this period, the Indus civilization developed a logosyllabic writing system that remains undeciphered. In our research, we built various Markov chain language models from the Indus texts corpus. Using a best-fit language model, we calculated the model perplexity for each Indus text found in the West Asian region. Our results show that the model perplexity was high for a majority of West Asian Indus texts and that these texts did not fit in well with the language model built with the Indus texts from just the Indian subcontinent. From this, we surmise that West Asian Indus Texts were written in a different language or syntax than those from the Indian subcontinent."
+      },
+      {
+        "title": "The Alphabet of Sindhu Prakrit (The decipherment of the Indus Script)",
+        "year": 2022,
+        "source": "openalex_forward_cit",
+        "url": "",
+        "key_evidence": "krit (The decipherment of the Indus Script) The principal aspect of the paper is the structural analysis of the signs of the Indus script and comparison with archaic scripts. The outcomes are not based on surmise but have been established on logic. The paper encompasses approximately all more than 400 signs of Indus script rather than any section of selected signs or texts. It justifies each sign and classifies vowels, diphthongs, consonants, dual consonants, aspirates, combined consonants and ligatures. It convincingly identifies the uniform procedure of diacritical marks, diphthongs, dual consonants, and aspirates in the alphabet. It also recognizes the writing styles of combining consonants. Some vowel and consonant signs are elaborated meticulously in the context of the Indus Texts. The context verifies the Indus Texts as earlier documentation of Rig-Veda and links up the sequence of opaque and lost history. Hence the language of Indus seals, Sindhu Prakrit possessed a completely phonetic alphabet/ script"
+      },
+      {
+        "title": "Gold and ‘ratti’ signs inscribed on Mohenjo-Daro’s gold-assaying needles, fish-s",
+        "year": 2022,
+        "source": "openalex_forward_cit",
+        "url": "",
+        "key_evidence": "concentrated near lapidaries: Indus script’s taxed commodities This article claims a breakthrough in decoding Indus script. It builds on the author’s earlier papers which established Indus script’s use in taxation, and trade/craft licensing, and discussed how different segments of the semasiographic Indus inscriptions encoded different information (tax-types, license-categories, commodity-names, tax-paying modes, tax-rates, tax-receiving entities, etc.). This paper claims that certain inscribed needle-shaped gold artefacts found in a jewelry hoard of Mohenjo-daro, and a similar gold-tipped copper stylus found from Kotada-Bhadli, were gold-assaying needles used with touchstones. Such touchstones, sometimes gold-streaked, are found from Mohenjo-daro, Banawali, etc. Revealingly, the way modern gold-testing needles bear the words “gold” and “karat”, Mohenjo-Daro’s gold-testing needles bore signs and . This study claims that the frequent Indus sign symbolized a blowpipe inside a crucible , and metonymically signified gold, precious metals ( ) and gold-smithy (sign clearly depicted the fire below crucible). Crucible-blowpipe-based words and symbols have signified metal-smithy in ancient Egypt, Mesopotamia, and India. It also identifies sign , which symbolized Abrus precatorious seeds, and signified the related ‘ratti’ (raktikā) based weight-system. ‘Ratti’, India’s traditional gold-measuring and numismatic unit, was the basis of Indus civilization’s weight systems. In certain inscriptions ( ), , a modified “ratti”-symbol, occurs as a metrological term related to gold . In Indus inscriptions, fish-like signs (e.g., , , ) occur frequently with precious-metal symbols ( ). Interestingly seals/tablets containing fish-like signs, are mostly found near Indus lapidaries, bead-factories, and jewellers’ shops. This paper argues that fish-like signs signified gemstones, lapidary activities, related precious commodities, and corresponding weight standards. Since ancestral Dravidian languages were spoken across Indus settlements, Indus scribes possibly applied the ancient Dravidian homonymy, where the polysemic Proto-Dravidian fish-word “mīn”, a popular fish-word of India, also signified ‘shining’, ‘brigh"
+      }
+    ],
+    "weak": [
+      {
+        "title": "Novel 4400-year-old ancestral component in a tribe speaking a Dravidian language",
+        "year": 2025,
+        "source": "openalex_forward_cit",
+        "url": ""
+      },
+      {
+        "title": "Pleonastic Compounding, Cults and Dynastic Titles: A Few Clues to the Indus Sign",
+        "year": 2025,
+        "source": "openalex_forward_cit",
+        "url": ""
+      },
+      {
+        "title": "Ancient DNA reveals pervasive directional selection across West Eurasia",
+        "year": 2026,
+        "source": "openalex_forward_cit",
+        "url": ""
+      },
+      {
+        "title": "Layers in the sand: The genetic imprint of migration, culture, and Indus craft i",
+        "year": 2025,
+        "source": "openalex_forward_cit",
+        "url": ""
+      },
+      {
+        "title": "Ideology and recent attacks on historical-comparative methodology",
+        "year": 2024,
+        "source": "openalex_forward_cit",
+        "url": ""
+      },
+      {
+        "title": "The Decoded Indus Seal M-282",
+        "year": 2024,
+        "source": "openalex_forward_cit",
+        "url": ""
+      },
+      {
+        "title": "Markers and agencies of anisotropy in the Indus sign system",
+        "year": 2024,
+        "source": "openalex_forward_cit",
+        "url": ""
+      },
+      {
+        "title": "Indus wheel-like symbols: signifying solar-disc, sun-god, ruler, fire, and metal",
+        "year": 2023,
+        "source": "openalex_forward_cit",
+        "url": ""
+      },
+      {
+        "title": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licens",
+        "year": 2023,
+        "source": "openalex_forward_cit",
+        "url": ""
+      },
+      {
+        "title": "Journey of a civilization: Indus to Vaigai By R. Balakrishnan. 524 pp. Chennai, ",
+        "year": 2022,
+        "source": "openalex_forward_cit",
+        "url": ""
+      },
+      {
+        "title": "Metrological Units, Tax and License Categories, Modes of Tax Payment: Semantic S",
+        "year": 2022,
+        "source": "openalex_forward_cit",
+        "url": ""
+      },
+      {
+        "title": "The Alphabet of Sindhu Prakrit (The Decipherment of Indus Script)",
+        "year": 2022,
+        "source": "openalex_forward_cit",
+        "url": ""
+      },
+      {
+        "title": "The Indus Valley Civilization",
+        "year": 2001,
+        "source": "openalex_forward_cit",
+        "url": ""
+      },
+      {
+        "title": "Linguistic Substrata in Sanskrit Texts",
+        "year": 2001,
+        "source": "openalex_forward_cit",
+        "url": ""
+      },
+      {
+        "title": "The Date of the Veda",
+        "year": 2001,
+        "source": "openalex_forward_cit",
+        "url": ""
+      },
+      {
+        "title": "THE CATALYST OF SUSTAINABILITY: ANALYZING THE ROLE OF INVESTMENTS IN DRIVING GRE",
+        "year": 2026,
+        "source": "zenodo",
+        "url": "https://zenodo.org/record/20348328"
+      }
+    ],
+    "n_strong": 2,
+    "n_moderate": 4,
+    "n_weak": 16
+  },
+  "strong_paper_extraction": {
+    "found": true,
+    "sign_proposals": [],
+    "new_evidence": [],
+    "key_passages": [],
+    "references_to_unpublished": []
+  },
+  "new_scorecard_items": [
+    {
+      "test_id": "E10",
+      "category": "EXTERNAL",
+      "description": "Can the semasiographic/logographic Indus script answer the Dravidian question? I",
+      "verdict": "SUPPORTED",
+      "confidence": "STRONGLY_SUPPORTED",
+      "source": "openalex_forward_cit",
+      "year": 2023,
+      "key_passage": " linked the people of ancient Indus valley civilization (IVC) with the ancestors of Dravidian speakers. This article argues that the semasiographically/logographically written Indus script (ISC) used "
+    },
+    {
+      "test_id": "E11",
+      "category": "EXTERNAL",
+      "description": "Ancestral Dravidian languages in Indus Civilization: ultraconserved Dravidian to",
+      "verdict": "SUPPORTED",
+      "confidence": "STRONGLY_SUPPORTED",
+      "source": "openalex_forward_cit",
+      "year": 2021,
+      "key_passage": "t Ever since the discovery of Indus valley civilization, scholars have debated the linguistic identities of its people. This study analyzes numerous archaeological, linguistic, archaeogenetic and hist"
+    }
+  ],
+  "cumulative_mining_summary": {
+    "phase88": {
+      "n_papers": 211,
+      "n_proposals": 0
+    },
+    "phase94": {
+      "n_papers": 5,
+      "n_proposals": 0
+    },
+    "phase179": {
+      "n_papers": 80,
+      "n_proposals": 1
+    },
+    "phase180": {
+      "n_papers": 41,
+      "n_proposals": 0
+    },
+    "phase181": {
+      "n_papers": 166,
+      "n_strong": 1,
+      "n_moderate": 2
+    },
+    "phase182": {
+      "n_papers": 183,
+      "n_strong": 2,
+      "n_moderate": 4
+    }
+  },
+  "gpu_device": "cpu"
+}

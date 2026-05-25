@@ -1,0 +1,168 @@
+{
+  "phase": 259,
+  "elapsed_s": 117.4,
+  "total_papers_fetched": 2218,
+  "by_target": {
+    "T1_ICIT_CORPUS": {
+      "n": 75,
+      "top_papers": [
+        {
+          "title": "Comprehensive evaluation of artificial intelligence-empowered approaches for protein–aptamer complex prediction",
+          "year": 2026,
+          "source": "openalex",
+          "id": "https://openalex.org/W7160148887",
+          "ceiling_categories": [
+            "T1_ICIT_CORPUS"
+          ]
+        },
+        {
+          "title": "Monetary Policy in the Media Spotlight: Sentiments, Signals, and Economic Impact",
+          "year": 2026,
+          "source": "openalex",
+          "id": "https://openalex.org/W7161452765",
+          "ceiling_categories": [
+            "T1_ICIT_CORPUS"
+          ]
+        },
+        {
+          "title": "SRTJ: Self-Evolving Rule-Driven Training-Free LLM Jailbreaking",
+          "year": 2026,
+          "source": "openalex",
+          "id": "https://openalex.org/W7160458120",
+          "ceiling_categories": [
+            "T1_ICIT_CORPUS"
+          ]
+        },
+        {
+          "title": "2026 IEEE International Conference on Industrial Technology (ICIT)",
+          "year": 2026,
+          "source": "crossref",
+          "id": "10.1109/icit64854.2026",
+          "ceiling_categories": [
+            "T1_ICIT_CORPUS"
+          ]
+        },
+        {
+          "title": "The role of the non-coding genome in pediatric B-cell precursor acute lymphoblastic leukemia",
+          "year": 2025,
+          "source": "openalex",
+          "id": "https://openalex.org/W7111830972",
+          "ceiling_categories": [
+            "T1_ICIT_CORPUS"
+          ]
+        },
+        {
+          "title": "Iterative deep learning design of human enhancers exploits condensed sequence grammar to achieve cell-type specificity",
+          "year": 2025,
+          "source": "openalex",
+          "id": "https://openalex.org/W4411025191",
+          "ceiling_categories": [
+            "T1_ICIT_CORPUS"
+          ]
+        },
+        {
+          "title": "Beyond Order: Perspectives on Leveraging Machine Learning for Disordered Materials",
+          "year": 2025,
+          "source": "openalex",
+          "id": "https://openalex.org/W4406552468",
+          "ceiling_categories": [
+            "T1_ICIT_CORPUS"
+          ]
+        },
+        {
+          "title": "A Systematic Review of Multimodal Deep Learning and Machine Learning Fusion Techniques for Prostate Cancer Classification",
+          "year": 2025,
+          "source": "openalex",
+          "id": "https://openalex.org/W4413165895",
+          "ceiling_categories": [
+            "T1_ICIT_CORPUS"
+          ]
+        },
+        {
+          "title": "Money Laundering Detection with Multi-Aggregation Custom Edge GIN",
+          "year": 2025,
+          "source": "openalex",
+          "id": "https://openalex.org/W4411251013",
+          "ceiling_categories": [
+            "T1_ICIT_CORPUS"
+          ]
+        },
+        {
+          "title": "Multimodal and Agentic AI for Cognitive Accessibility and Linguistic Preservation",
+          "year": 2025,
+          "source": "openalex",
+          "id": "https://openalex.org/W7131732636",
+          "ceiling_categories": [
+            "T1_ICIT_CORPUS"
+          ]
+        }
+      ]
+    },
+    "T2_RARE_SIGN": {
+      "n": 2,
+      "top_papers": [
+        {
+          "title": "A method of identifying allographs in undeciphered scripts and its application to the Indus Valley Script",
+          "year": 2021,
+          "source": "openalex",
+          "id": "https://openalex.org/W3130018907",
+          "ceiling_categories": [
+            "T2_RARE_SIGN"
+          ]
+        },
+        {
+          "title": "Allographs, graphic variants and iconic formulae in the kohau rongorongo script of Rapa Nui (Easter Island)",
+          "year": 2017,
+          "source": "openalex",
+          "id": "https://openalex.org/W2607475855",
+          "ceiling_categories": [
+            "T2_RARE_SIGN"
+          ]
+        }
+      ]
+    },
+    "T3_ABSENT_PHONEME": {
+      "n": 0,
+      "top_papers": []
+    },
+    "T4_SA_METHOD": {
+      "n": 1,
+      "top_papers": [
+        {
+          "title": "Deciphering Undersegmented Ancient Scripts Using Phonetic Prior",
+          "year": 2021,
+          "source": "openalex",
+          "id": "https://openalex.org/W3129293584",
+          "ceiling_categories": [
+            "T4_SA_METHOD"
+          ]
+        }
+      ]
+    }
+  },
+  "actionable": [
+    {
+      "target": "T1_ICIT_CORPUS",
+      "n_papers": 75,
+      "signal": "NEW_EVIDENCE",
+      "top_paper": "Comprehensive evaluation of artificial intelligence-empowered approaches for protein–aptamer complex prediction"
+    },
+    {
+      "target": "T2_RARE_SIGN",
+      "n_papers": 2,
+      "signal": "HYPOTHESIS",
+      "top_paper": "A method of identifying allographs in undeciphered scripts and its application to the Indus Valley Script"
+    },
+    {
+      "target": "T4_SA_METHOD",
+      "n_papers": 1,
+      "signal": "HYPOTHESIS",
+      "top_paper": "Deciphering Undersegmented Ancient Scripts Using Phonetic Prior"
+    }
+  ],
+  "sources": {
+    "openalex": 666,
+    "crossref": 1533,
+    "s2": 19
+  }
+}

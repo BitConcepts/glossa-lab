@@ -15,7 +15,7 @@
   "_doc": "Comprehensive Mahadevan-Parpola sign crosswalk v2. Sources: mahadevan_parpola_crosswalk.json (Phase-28, 25 hand-curated entries), iconographic_anchors.json, yajnadevam_to_parpola_crosswalk_extended.csv, literature synthesis (Mahadevan 1977 + Parpola 1994/2010). NOTE: Many LOW-confidence entries infer M-ID = M+P-number, which is valid for signs where both numbering systems converged (numerals, common iconic signs). Verify against Mahadevan 1977 Appendix III for publication-grade use.",
   "version": "v2 (2026-05-11)",
   "stats": {
-    "total_entries": 38,
+    "total_entries": 179,
     "by_confidence": {
       "HIGH": 25,
       "MEDIUM": 13,

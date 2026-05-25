@@ -1,0 +1,456 @@
+{
+  "total_inscriptions": 7348,
+  "fully_translated": 1206,
+  "fully_translated_pct": 16.4,
+  "unique_formulas": 4374,
+  "top_50_formulas": [
+    {
+      "reading": "min/mīn",
+      "count": 149,
+      "pct": 2.0
+    },
+    {
+      "reading": "[+700-033+]",
+      "count": 125,
+      "pct": 1.7
+    },
+    {
+      "reading": "[+700-034+]",
+      "count": 109,
+      "pct": 1.5
+    },
+    {
+      "reading": "[+700-032+]",
+      "count": 89,
+      "pct": 1.2
+    },
+    {
+      "reading": "kur",
+      "count": 87,
+      "pct": 1.2
+    },
+    {
+      "reading": "[+032+]",
+      "count": 47,
+      "pct": 0.6
+    },
+    {
+      "reading": "nallavar",
+      "count": 40,
+      "pct": 0.5
+    },
+    {
+      "reading": "[+400-740-176+]",
+      "count": 39,
+      "pct": 0.5
+    },
+    {
+      "reading": "[+740-000[]",
+      "count": 35,
+      "pct": 0.5
+    },
+    {
+      "reading": "[+033-700+]",
+      "count": 32,
+      "pct": 0.4
+    },
+    {
+      "reading": "[+156-003+]",
+      "count": 31,
+      "pct": 0.4
+    },
+    {
+      "reading": "kur-kur",
+      "count": 29,
+      "pct": 0.4
+    },
+    {
+      "reading": "[+861-003+]",
+      "count": 29,
+      "pct": 0.4
+    },
+    {
+      "reading": "[+520-240-002-405-501+]",
+      "count": 29,
+      "pct": 0.4
+    },
+    {
+      "reading": "[+740-752-615-503+]",
+      "count": 29,
+      "pct": 0.4
+    },
+    {
+      "reading": "am-am",
+      "count": 28,
+      "pct": 0.4
+    },
+    {
+      "reading": "iṭ",
+      "count": 28,
+      "pct": 0.4
+    },
+    {
+      "reading": "viḷ",
+      "count": 28,
+      "pct": 0.4
+    },
+    {
+      "reading": "nal/nall-nal/nall-nallavar",
+      "count": 27,
+      "pct": 0.4
+    },
+    {
+      "reading": "[+000+]",
+      "count": 27,
+      "pct": 0.4
+    },
+    {
+      "reading": "valli-valli",
+      "count": 25,
+      "pct": 0.3
+    },
+    {
+      "reading": "[+033+]",
+      "count": 25,
+      "pct": 0.3
+    },
+    {
+      "reading": "erumai",
+      "count": 24,
+      "pct": 0.3
+    },
+    {
+      "reading": "po",
+      "count": 24,
+      "pct": 0.3
+    },
+    {
+      "reading": "[719]",
+      "count": 23,
+      "pct": 0.3
+    },
+    {
+      "reading": "[]000+]",
+      "count": 23,
+      "pct": 0.3
+    },
+    {
+      "reading": "[841]",
+      "count": 22,
+      "pct": 0.3
+    },
+    {
+      "reading": "aintu-aintu-aintu",
+      "count": 21,
+      "pct": 0.3
+    },
+    {
+      "reading": "en",
+      "count": 18,
+      "pct": 0.2
+    },
+    {
+      "reading": "viḷ-viḷ",
+      "count": 18,
+      "pct": 0.2
+    },
+    {
+      "reading": "[+032-700+]",
+      "count": 18,
+      "pct": 0.2
+    },
+    {
+      "reading": "[481]",
+      "count": 17,
+      "pct": 0.2
+    },
+    {
+      "reading": "rā-rā-rā-rā",
+      "count": 17,
+      "pct": 0.2
+    },
+    {
+      "reading": "[+400-740-000[]",
+      "count": 17,
+      "pct": 0.2
+    },
+    {
+      "reading": "[+520-220-415+]",
+      "count": 17,
+      "pct": 0.2
+    },
+    {
+      "reading": "[876]-[876]",
+      "count": 16,
+      "pct": 0.2
+    },
+    {
+      "reading": "[+000[]",
+      "count": 16,
+      "pct": 0.2
+    },
+    {
+      "reading": "[+740[]",
+      "count": 16,
+      "pct": 0.2
+    },
+    {
+      "reading": "yānai-yānai-yānai-yānai",
+      "count": 15,
+      "pct": 0.2
+    },
+    {
+      "reading": "[481]-kur",
+      "count": 15,
+      "pct": 0.2
+    },
+    {
+      "reading": "[+000-000-000+]",
+      "count": 15,
+      "pct": 0.2
+    },
+    {
+      "reading": "taṇ",
+      "count": 14,
+      "pct": 0.2
+    },
+    {
+      "reading": "[]000[]",
+      "count": 14,
+      "pct": 0.2
+    },
+    {
+      "reading": "[+034-700+]",
+      "count": 14,
+      "pct": 0.2
+    },
+    {
+      "reading": "[+740-900-850-407-061-845-806+]",
+      "count": 14,
+      "pct": 0.2
+    },
+    {
+      "reading": "[+407-321-407-845-033-705-235+]",
+      "count": 14,
+      "pct": 0.2
+    },
+    {
+      "reading": "nal/nall",
+      "count": 12,
+      "pct": 0.2
+    },
+    {
+      "reading": "zi-erumai",
+      "count": 12,
+      "pct": 0.2
+    },
+    {
+      "reading": "[+740-000+]",
+      "count": 12,
+      "pct": 0.2
+    },
+    {
+      "reading": "[+002+]",
+      "count": 12,
+      "pct": 0.2
+    }
+  ],
+  "sites_ranked": [
+    {
+      "site": "Harappa",
+      "count": 2717,
+      "pct": 37.0
+    },
+    {
+      "site": "Mohenjo-daro",
+      "count": 1923,
+      "pct": 26.2
+    },
+    {
+      "site": "unknown",
+      "count": 1669,
+      "pct": 22.7
+    },
+    {
+      "site": "Dholavira",
+      "count": 238,
+      "pct": 3.2
+    },
+    {
+      "site": "Kalibangan",
+      "count": 212,
+      "pct": 2.9
+    },
+    {
+      "site": "Lothal",
+      "count": 208,
+      "pct": 2.8
+    },
+    {
+      "site": "Chanhu-daro",
+      "count": 74,
+      "pct": 1.0
+    },
+    {
+      "site": "Nausharo",
+      "count": 38,
+      "pct": 0.5
+    },
+    {
+      "site": "Unknown",
+      "count": 28,
+      "pct": 0.4
+    },
+    {
+      "site": "Banawali",
+      "count": 26,
+      "pct": 0.4
+    },
+    {
+      "site": "Lakhanjo-daro",
+      "count": 15,
+      "pct": 0.2
+    },
+    {
+      "site": "Rakhigarhi",
+      "count": 13,
+      "pct": 0.2
+    },
+    {
+      "site": "Allahdino",
+      "count": 12,
+      "pct": 0.2
+    },
+    {
+      "site": "Kot-Diji",
+      "count": 11,
+      "pct": 0.1
+    },
+    {
+      "site": "Kanmer",
+      "count": 10,
+      "pct": 0.1
+    },
+    {
+      "site": "Farmana",
+      "count": 8,
+      "pct": 0.1
+    },
+    {
+      "site": "Karanpura",
+      "count": 8,
+      "pct": 0.1
+    },
+    {
+      "site": "Shikarpur",
+      "count": 8,
+      "pct": 0.1
+    },
+    {
+      "site": "Bala-kot",
+      "count": 7,
+      "pct": 0.1
+    },
+    {
+      "site": "Bhirrana",
+      "count": 6,
+      "pct": 0.1
+    },
+    {
+      "site": "Gola Dhoro (Bagasra)",
+      "count": 6,
+      "pct": 0.1
+    },
+    {
+      "site": "Surkotada",
+      "count": 6,
+      "pct": 0.1
+    },
+    {
+      "site": "Amri",
+      "count": 5,
+      "pct": 0.1
+    },
+    {
+      "site": "Rupar",
+      "count": 5,
+      "pct": 0.1
+    },
+    {
+      "site": "Ur",
+      "count": 5,
+      "pct": 0.1
+    },
+    {
+      "site": "Nuhato",
+      "count": 5,
+      "pct": 0.1
+    },
+    {
+      "site": "Ra's al-Junayz",
+      "count": 4,
+      "pct": 0.1
+    },
+    {
+      "site": "Rodji",
+      "count": 4,
+      "pct": 0.1
+    },
+    {
+      "site": "Khirsara",
+      "count": 4,
+      "pct": 0.1
+    },
+    {
+      "site": "Alamgirpur",
+      "count": 3,
+      "pct": 0.0
+    }
+  ],
+  "n_sites": 78,
+  "periods": {
+    "-": 3361,
+    "3": 1027,
+    "Intermediate": 425,
+    "Late": 329,
+    "2": 190,
+    "Early": 49,
+    "5": 44,
+    "4": 41,
+    "6": 37,
+    "Layer 2": 29,
+    "Layer 3": 18,
+    "II": 17,
+    "4/5": 16,
+    "Layer 4": 13,
+    "2/3": 7,
+    "1": 5,
+    "IIa": 5,
+    "Layer 6": 5,
+    "IIb": 4,
+    "Layer 9": 3
+  },
+  "materials": {
+    "Steatite": 2633,
+    "-": 973,
+    "Clay": 960,
+    "Faience": 619,
+    "Copper": 264,
+    "Terracotta": 78,
+    "Stoneware": 40,
+    "Ivory": 37,
+    "Ceramic": 22,
+    "terracotta": 14,
+    "Stone": 10,
+    "Bone": 5,
+    "Paste": 5,
+    "steatite": 3,
+    "Agate": 3,
+    "Silver": 3,
+    "Shell": 2,
+    "Gold": 2,
+    "Soft stone": 1,
+    "Gypsum": 1
+  },
+  "mean_coverage_pct": 19.0
+}

@@ -1,0 +1,217 @@
+{
+  "phase": "275_277",
+  "generated_at": "2026-05-25T10:58:49.591520+00:00",
+  "phase275_new_crosswalk": 0,
+  "phase275_total_crosswalk": 179,
+  "phase276_elamite_found": 15,
+  "phase276_sanskrit_found": 12,
+  "phase276_upgraded": 10,
+  "phase277_decomposed": 0,
+  "phase277_upgraded": 0,
+  "total_upgraded": 10,
+  "upgrade_log": [
+    {
+      "sign": "M047",
+      "reading": "min",
+      "elamite": "MC-01",
+      "sanskrit": "SL-06",
+      "phase": 276
+    },
+    {
+      "sign": "M222",
+      "reading": "kur",
+      "elamite": "MC-05",
+      "sanskrit": "SL-02",
+      "phase": 276
+    },
+    {
+      "sign": "M329",
+      "reading": "poṉ",
+      "elamite": "MC-21",
+      "sanskrit": "SL-14",
+      "phase": 276
+    },
+    {
+      "sign": "M124",
+      "reading": "kutam",
+      "elamite": "MC-18",
+      "sanskrit": "SL-04",
+      "phase": 276
+    },
+    {
+      "sign": "M094",
+      "reading": "onpatu",
+      "elamite": "MC-22",
+      "sanskrit": "SL-11",
+      "phase": 276
+    },
+    {
+      "sign": "M202",
+      "reading": "can",
+      "elamite": "MC-07",
+      "sanskrit": "SL-03",
+      "phase": 276
+    },
+    {
+      "sign": "M044",
+      "reading": "ku",
+      "elamite": "MC-18",
+      "sanskrit": "SL-04",
+      "phase": 276
+    },
+    {
+      "sign": "M330",
+      "reading": "can",
+      "elamite": "MC-07",
+      "sanskrit": "SL-03",
+      "phase": 276
+    },
+    {
+      "sign": "P324",
+      "reading": "kuti",
+      "elamite": "MC-18",
+      "sanskrit": "SL-04",
+      "phase": 276
+    },
+    {
+      "sign": "P385",
+      "reading": "[terminal_suffix]",
+      "elamite": "MC-01",
+      "sanskrit": "SL-06",
+      "phase": 276
+    }
+  ],
+  "remaining_medium": 31,
+  "remaining_signs": [
+    {
+      "sign": "M001",
+      "reading": "tōḷ"
+    },
+    {
+      "sign": "M040",
+      "reading": "ri"
+    },
+    {
+      "sign": "M028",
+      "reading": "cōḻ"
+    },
+    {
+      "sign": "M237",
+      "reading": "ce"
+    },
+    {
+      "sign": "M149",
+      "reading": "or"
+    },
+    {
+      "sign": "M270",
+      "reading": "muḷ"
+    },
+    {
+      "sign": "M198",
+      "reading": "co"
+    },
+    {
+      "sign": "M183",
+      "reading": "vēḷ"
+    },
+    {
+      "sign": "M365",
+      "reading": "vāṉ"
+    },
+    {
+      "sign": "M412",
+      "reading": "cūḷ"
+    },
+    {
+      "sign": "M304",
+      "reading": "vēṟ"
+    },
+    {
+      "sign": "M355",
+      "reading": "lu"
+    },
+    {
+      "sign": "M178",
+      "reading": "i"
+    },
+    {
+      "sign": "M239",
+      "reading": "il"
+    },
+    {
+      "sign": "M223",
+      "reading": "muḷ"
+    },
+    {
+      "sign": "M254",
+      "reading": "tēṉ"
+    },
+    {
+      "sign": "M262",
+      "reading": "i"
+    },
+    {
+      "sign": "M345",
+      "reading": "taṭ"
+    },
+    {
+      "sign": "M402",
+      "reading": "vēḷ"
+    },
+    {
+      "sign": "M086",
+      "reading": "oru"
+    },
+    {
+      "sign": "M092",
+      "reading": "elu"
+    },
+    {
+      "sign": "M281",
+      "reading": "piLLai"
+    },
+    {
+      "sign": "M093",
+      "reading": "eTTu"
+    },
+    {
+      "sign": "M249",
+      "reading": "tii"
+    },
+    {
+      "sign": "M058",
+      "reading": "ke"
+    },
+    {
+      "sign": "M118",
+      "reading": "car"
+    },
+    {
+      "sign": "M221",
+      "reading": "al"
+    },
+    {
+      "sign": "M192",
+      "reading": "ṇā"
+    },
+    {
+      "sign": "M193",
+      "reading": "ḷā"
+    },
+    {
+      "sign": "M700",
+      "reading": "aru/aRu"
+    },
+    {
+      "sign": "M527",
+      "reading": "valli"
+    }
+  ],
+  "final_state": {
+    "HIGH": 382,
+    "MEDIUM": 31,
+    "total": 413,
+    "high_pct": 0.9249
+  }
+}

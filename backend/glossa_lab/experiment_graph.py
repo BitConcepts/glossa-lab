@@ -2727,6 +2727,17 @@ try:
 except Exception as _p248254_exc:  # noqa: BLE001
     logger.warning("Phase-248-254 nodes not registered: %s", _p248254_exc)
 
+# ── Phase-257-294 nodes (SA reruns, Yajnadevam corpus, DEDR resolution, final 605/605)
+try:
+    from glossa_lab.experiment_graph_phase257_294 import (
+        _phase257_294_node_defs as _p257294_defs,  # noqa: PLC0415
+    )
+    for _d in _p257294_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-257-294 nodes", len(_p257294_defs()))
+except Exception as _p257294_exc:  # noqa: BLE001
+    logger.warning("Phase-257-294 nodes not registered: %s", _p257294_exc)
+
 # ── Graph execution
 
 def _topo_sort(nodes: list[dict], edges: list[dict]) -> list[dict]:

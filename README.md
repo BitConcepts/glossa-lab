@@ -6,7 +6,7 @@ Agentic computational linguistics research platform for statistical analysis, de
 
 > **Decipherment Status (Phase 294):** 605/605 signs at HIGH confidence (100%) · 83.7% SA consistency on 5,520 inscriptions · 6.3× tripartite grammar lift across 76 sites · Proto-Dravidian readings validated against DEDR, Elamite cognates, Sanskrit substrate · Sanskrit hypothesis falsified 0/34
 
-> **Preprint:** Pierson, T.K. (2026). *A Complete Computational Decipherment Hypothesis for the Indus Script.* Zenodo. DOI: [10.5281/zenodo.20379071](https://doi.org/10.5281/zenodo.20379071)
+> **Preprint:** Pierson, T.K. (2026). *A Complete Computational Decipherment Hypothesis for the Indus Script.* Zenodo. DOI: [10.5281/zenodo.20381178](https://zenodo.org/records/20381178)
 
 Built and maintained by **BitConcepts LLC**
 
@@ -96,7 +96,7 @@ Local control surface. Start/stop/restart backend, open UI, quick status.
 | External corroboration | Fisher p≈10⁻¹⁵ (Elamite + Sanskrit) |
 | Sanskrit hypothesis | Falsified 0/34 |
 | Phases completed | 294 |
-| Preprint DOI | [10.5281/zenodo.20379071](https://doi.org/10.5281/zenodo.20379071) |
+| Preprint DOI | [10.5281/zenodo.20381178](https://zenodo.org/records/20381178) |
 
 ### Key files
 
@@ -203,12 +203,18 @@ curl.exe -sf http://localhost:8001/ | Select-String 'index-[A-Za-z0-9]+\.js'
 
 ---
 
-## Research governance
+## Project discipline
 
-- **H18** — Every data file must have `_citation` traceable to `CITATIONS.md`
-- **H19** — Foundation check must PASS before external communication
-- Indus Script decipherment: **605/605 signs at HIGH confidence (100%)** — 83.7% SA, 6.3× grammar
-- Research outputs: [`research/indus/`](research/indus/)
+This project follows strict research governance enforced by both convention and tooling:
+
+- **Append-only ledger** — Every session's work is recorded in `LEDGER.md`. No ledger entry = work not done.
+- **Data provenance** — Every data file must have a citation traceable to `CITATIONS.md`. No uncited data in the pipeline.
+- **Graph-first experiments** — All research phases are registered as navigable experiment graph nodes (see `backend/glossa_lab/experiment_graph*.py`). No ad-hoc scripts without graph registration.
+- **Foundation checks** — `backend/scripts/foundation_check.py` must pass before any external communication or publication. This guards against regressions in anchor data, grammar metrics, and sign accounting.
+- **Public/private boundary** — Private correspondence lives in `.correspondence/` (gitignored). No third-party emails or private contact details in tracked files.
+- **AI disclosure** — All AI-assisted work is disclosed in publications and the ledger. Statistical tests are designed and interpreted by the author; AI tooling is used for scripting, data management, and literature search.
+
+Full governance rules: [`docs/governance/`](docs/governance/)
 
 ---
 
@@ -216,17 +222,16 @@ curl.exe -sf http://localhost:8001/ | Select-String 'index-[A-Za-z0-9]+\.js'
 
 | File | Purpose |
 |------|---------|
-| `AGENTS.md` | Agent rules, start/stop commands, hard rules |
-| `LEDGER.md` | Session ledger — sole continuity authority |
+| `AGENTS.md` | Agent operating rules — read first every session |
+| `LEDGER.md` | Append-only session ledger — the sole continuity authority |
 | `CITATIONS.md` | Research data citation registry |
-| `docs/USER_GUIDE.md` | Full user guide (all panels) including Evidence Graph |
-| `docs/architecture.md` | System architecture including Evidence Graph layer |
-| `docs/REQUIREMENTS.md` | Formal requirements (R1–R16, incl. R14 Evidence Graph, R15 DB reliability, R16 CI/CD) |
-| `docs/TESTS.md` | Test specification (TEST-IEA, TEST-EV, TEST-PW-EG, TEST-CI) |
+| `docs/governance/` | Hard rules, session protocol, roles, verification |
+| `docs/USER_GUIDE.md` | Full user guide (all panels) |
+| `docs/architecture.md` | System architecture |
+| `docs/REQUIREMENTS.md` | Formal requirements (R1–R16) |
+| `docs/TESTS.md` | Test specification |
 | `docs/research/` | Decipherment research documents |
-| `docs/guides/` | How-to guides (experiments, pipelines, studies) |
-| `glossa-indus/LEDGER.md` | Evidence Graph batch work log |
-| **`research/indus/`** | **Public research outputs — anchor table, phase reports, preprint PDF** |
+| **`research/indus/`** | **Public outputs — preprint PDF, anchor table, phase reports (CC BY 4.0)** |
 
 ---
 

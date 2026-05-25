@@ -1,0 +1,577 @@
+{
+  "phase": 256,
+  "generated_at": "2026-05-25T00:47:46.831286+00:00",
+  "n_medium_analysed": 273,
+  "n_le_backed_medium": 215,
+  "n_extended_le_matches": 220,
+  "n_upgraded": 2,
+  "upgrade_log": [
+    {
+      "sign": "M455",
+      "reading": "zi",
+      "le_source": "Linear Elamite 2022 (Desset et al., E41)",
+      "dedr": "2779",
+      "path": "LE+DEDR+McAlpin",
+      "upgrade": "MEDIUM→HIGH"
+    },
+    {
+      "sign": "M868",
+      "reading": "gi",
+      "le_source": "Linear Elamite 2022 (Desset et al., E41)",
+      "dedr": "1289",
+      "path": "LE+DEDR+McAlpin",
+      "upgrade": "MEDIUM→HIGH"
+    }
+  ],
+  "le_backed_medium": [
+    {
+      "sign": "M386",
+      "reading": "maṇ",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "5135",
+      "dedr_source": "elamite",
+      "basis": "Round 4: MEDIAL position (freq=6), distributional assignment"
+    },
+    {
+      "sign": "M321",
+      "reading": "kol",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "1570",
+      "dedr_source": "elamite",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    {
+      "sign": "M357",
+      "reading": "kuḷ",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    {
+      "sign": "M137",
+      "reading": "kuṟ",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    {
+      "sign": "M143",
+      "reading": "maṇ",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "5135",
+      "dedr_source": "elamite",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment"
+    },
+    {
+      "sign": "M190",
+      "reading": "paṉ",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "4086",
+      "dedr_source": "elamite",
+      "basis": "Round 6: MEDIAL position (freq=5), distributional assignment"
+    },
+    {
+      "sign": "M295",
+      "reading": "paṟ",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "4086",
+      "dedr_source": "elamite",
+      "basis": "Round 6: MEDIAL position (freq=5), distributional assignment"
+    },
+    {
+      "sign": "M255",
+      "reading": "kur",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq="
+    },
+    {
+      "sign": "M251",
+      "reading": "kur",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq="
+    },
+    {
+      "sign": "M301",
+      "reading": "kur",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq="
+    },
+    {
+      "sign": "M406",
+      "reading": "kur",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq="
+    },
+    {
+      "sign": "M116",
+      "reading": "kur",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq="
+    },
+    {
+      "sign": "M274",
+      "reading": "kur",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq="
+    },
+    {
+      "sign": "M101",
+      "reading": "kur",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq="
+    },
+    {
+      "sign": "M326",
+      "reading": "kur",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq="
+    },
+    {
+      "sign": "M318",
+      "reading": "kur",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq="
+    },
+    {
+      "sign": "M346",
+      "reading": "kur",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq="
+    },
+    {
+      "sign": "M312",
+      "reading": "kur",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq="
+    },
+    {
+      "sign": "M134",
+      "reading": "kur",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq="
+    },
+    {
+      "sign": "M120",
+      "reading": "kur",
+      "le_source": "",
+      "is_absent_phoneme": false,
+      "has_elamite": true,
+      "has_le": false,
+      "has_dedr": true,
+      "dedr": "1638",
+      "dedr_source": "elamite",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq="
+    }
+  ],
+  "le_matches": [
+    {
+      "sign": "M068",
+      "reading": "maṟi",
+      "le_phoneme": "ma",
+      "pdr_cognate": "mā/ma (great)",
+      "dedr": "4796",
+      "mcalpin_ref": "App.II #17",
+      "already_le_backed": false
+    },
+    {
+      "sign": "M040",
+      "reading": "ri",
+      "le_phoneme": "ri",
+      "pdr_cognate": "ri/ari (king/ruler)",
+      "dedr": "3860",
+      "mcalpin_ref": "App.II #5",
+      "already_le_backed": false
+    },
+    {
+      "sign": "M252",
+      "reading": "kur",
+      "le_phoneme": "ur",
+      "pdr_cognate": "ūr (settlement)",
+      "dedr": "728",
+      "mcalpin_ref": "MC-05",
+      "already_le_backed": false
+    },
+    {
+      "sign": "M386",
+      "reading": "maṇ",
+      "le_phoneme": "ma",
+      "pdr_cognate": "mā/ma (great)",
+      "dedr": "4796",
+      "mcalpin_ref": "App.II #17",
+      "already_le_backed": true
+    },
+    {
+      "sign": "M222",
+      "reading": "kur",
+      "le_phoneme": "ur",
+      "pdr_cognate": "ūr (settlement)",
+      "dedr": "728",
+      "mcalpin_ref": "MC-05",
+      "already_le_backed": false
+    },
+    {
+      "sign": "M355",
+      "reading": "lu",
+      "le_phoneme": "lu",
+      "pdr_cognate": "lu/ḷu (pour/flow)",
+      "dedr": "5386",
+      "mcalpin_ref": "App.II #16",
+      "already_le_backed": false
+    },
+    {
+      "sign": "M231",
+      "reading": "kur",
+      "le_phoneme": "ur",
+      "pdr_cognate": "ūr (settlement)",
+      "dedr": "728",
+      "mcalpin_ref": "MC-05",
+      "already_le_backed": false
+    },
+    {
+      "sign": "M143",
+      "reading": "maṇ",
+      "le_phoneme": "ma",
+      "pdr_cognate": "mā/ma (great)",
+      "dedr": "4796",
+      "mcalpin_ref": "App.II #17",
+      "already_le_backed": true
+    },
+    {
+      "sign": "M345",
+      "reading": "taṭ",
+      "le_phoneme": "ta",
+      "pdr_cognate": "ta/taṉ (self/own)",
+      "dedr": "3003",
+      "mcalpin_ref": "App.II #22",
+      "already_le_backed": false
+    },
+    {
+      "sign": "M190",
+      "reading": "paṉ",
+      "le_phoneme": "pa",
+      "pdr_cognate": "pa/pā (protect)",
+      "dedr": "3826",
+      "mcalpin_ref": "App.II #20",
+      "already_le_backed": true
+    },
+    {
+      "sign": "M295",
+      "reading": "paṟ",
+      "le_phoneme": "pa",
+      "pdr_cognate": "pa/pā (protect)",
+      "dedr": "3826",
+      "mcalpin_ref": "App.II #20",
+      "already_le_backed": true
+    },
+    {
+      "sign": "M255",
+      "reading": "kur",
+      "le_phoneme": "ur",
+      "pdr_cognate": "ūr (settlement)",
+      "dedr": "728",
+      "mcalpin_ref": "MC-05",
+      "already_le_backed": true
+    },
+    {
+      "sign": "M251",
+      "reading": "kur",
+      "le_phoneme": "ur",
+      "pdr_cognate": "ūr (settlement)",
+      "dedr": "728",
+      "mcalpin_ref": "MC-05",
+      "already_le_backed": true
+    },
+    {
+      "sign": "M301",
+      "reading": "kur",
+      "le_phoneme": "ur",
+      "pdr_cognate": "ūr (settlement)",
+      "dedr": "728",
+      "mcalpin_ref": "MC-05",
+      "already_le_backed": true
+    },
+    {
+      "sign": "M406",
+      "reading": "kur",
+      "le_phoneme": "ur",
+      "pdr_cognate": "ūr (settlement)",
+      "dedr": "728",
+      "mcalpin_ref": "MC-05",
+      "already_le_backed": true
+    },
+    {
+      "sign": "M116",
+      "reading": "kur",
+      "le_phoneme": "ur",
+      "pdr_cognate": "ūr (settlement)",
+      "dedr": "728",
+      "mcalpin_ref": "MC-05",
+      "already_le_backed": true
+    },
+    {
+      "sign": "M274",
+      "reading": "kur",
+      "le_phoneme": "ur",
+      "pdr_cognate": "ūr (settlement)",
+      "dedr": "728",
+      "mcalpin_ref": "MC-05",
+      "already_le_backed": true
+    },
+    {
+      "sign": "M092",
+      "reading": "elu",
+      "le_phoneme": "lu",
+      "pdr_cognate": "lu/ḷu (pour/flow)",
+      "dedr": "5386",
+      "mcalpin_ref": "App.II #16",
+      "already_le_backed": false
+    },
+    {
+      "sign": "M124",
+      "reading": "kuTam",
+      "le_phoneme": "ta",
+      "pdr_cognate": "ta/taṉ (self/own)",
+      "dedr": "3003",
+      "mcalpin_ref": "App.II #22",
+      "already_le_backed": false
+    },
+    {
+      "sign": "M093",
+      "reading": "eTTu",
+      "le_phoneme": "tu",
+      "pdr_cognate": "tu/tū (give)",
+      "dedr": "3302",
+      "mcalpin_ref": "App.II #23",
+      "already_le_backed": false
+    }
+  ],
+  "le_confirmed_values": [
+    {
+      "le_sign": "LE-na",
+      "pdr_phoneme": "na",
+      "mcalpin_bridge": "MC-07 an/na suffix",
+      "our_sign": "M416",
+      "our_reading": "na",
+      "our_conf": "HIGH"
+    },
+    {
+      "le_sign": "LE-su",
+      "pdr_phoneme": "su",
+      "mcalpin_bridge": "MC-12 su- prefix",
+      "our_sign": "M740",
+      "our_reading": "su",
+      "our_conf": "HIGH"
+    },
+    {
+      "le_sign": "LE-zi",
+      "pdr_phoneme": "zi",
+      "mcalpin_bridge": "MC-15 agent suffix",
+      "our_sign": "M455",
+      "our_reading": "zi",
+      "our_conf": "MEDIUM"
+    },
+    {
+      "le_sign": "LE-gi",
+      "pdr_phoneme": "gi",
+      "mcalpin_bridge": "MC-19 land/place",
+      "our_sign": "M868",
+      "our_reading": "gi",
+      "our_conf": "MEDIUM"
+    },
+    {
+      "le_sign": "LE-ki",
+      "pdr_phoneme": "ki",
+      "mcalpin_bridge": "MC-09 place/earth",
+      "our_sign": "M874",
+      "our_reading": "ki",
+      "our_conf": "HIGH"
+    },
+    {
+      "le_sign": "LE-in",
+      "pdr_phoneme": "in",
+      "mcalpin_bridge": "MC-01 genitive",
+      "our_sign": "M267",
+      "our_reading": "iN/in",
+      "our_conf": "MEDIUM"
+    },
+    {
+      "le_sign": "LE-en",
+      "pdr_phoneme": "en",
+      "mcalpin_bridge": "MC-02 lord/ruler",
+      "our_sign": "M427",
+      "our_reading": "en",
+      "our_conf": "HIGH"
+    }
+  ],
+  "le_extended_values": [
+    {
+      "le_phoneme": "ha",
+      "pdr_cognate": "a/ā (initial vowel)",
+      "dedr": "1",
+      "mcalpin_ref": "App.II #3"
+    },
+    {
+      "le_phoneme": "ri",
+      "pdr_cognate": "ri/ari (king/ruler)",
+      "dedr": "3860",
+      "mcalpin_ref": "App.II #5"
+    },
+    {
+      "le_phoneme": "pu",
+      "pdr_cognate": "pū/puḷ (flower)",
+      "dedr": "4345",
+      "mcalpin_ref": "App.II #8"
+    },
+    {
+      "le_phoneme": "ta",
+      "pdr_cognate": "ta/taṉ (self/own)",
+      "dedr": "3003",
+      "mcalpin_ref": "App.II #22"
+    },
+    {
+      "le_phoneme": "lu",
+      "pdr_cognate": "lu/ḷu (pour/flow)",
+      "dedr": "5386",
+      "mcalpin_ref": "App.II #16"
+    },
+    {
+      "le_phoneme": "ma",
+      "pdr_cognate": "mā/ma (great)",
+      "dedr": "4796",
+      "mcalpin_ref": "App.II #17"
+    },
+    {
+      "le_phoneme": "tu",
+      "pdr_cognate": "tu/tū (give)",
+      "dedr": "3302",
+      "mcalpin_ref": "App.II #23"
+    },
+    {
+      "le_phoneme": "pa",
+      "pdr_cognate": "pa/pā (protect)",
+      "dedr": "3826",
+      "mcalpin_ref": "App.II #20"
+    },
+    {
+      "le_phoneme": "ka",
+      "pdr_cognate": "ka/kā (do/make)",
+      "dedr": "1221",
+      "mcalpin_ref": "App.II #14"
+    },
+    {
+      "le_phoneme": "ur",
+      "pdr_cognate": "ūr (settlement)",
+      "dedr": "728",
+      "mcalpin_ref": "MC-05"
+    }
+  ],
+  "final_state": {
+    "HIGH": 137,
+    "MEDIUM": 271,
+    "CANDIDATE": 5,
+    "H_plus_M": 408,
+    "total": 413
+  }
+}

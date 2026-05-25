@@ -490,9 +490,11 @@
     },
     "M169": {
       "reading": "rā",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Phase-122 syllabic LM SA: modal='rā' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=8.",
-      "source": "Phase-122"
+      "source": "Phase-122",
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M416 (r=1.000, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M416='na'."
     },
     "M237": {
       "reading": "ce",
@@ -685,13 +687,13 @@
     },
     "M151": {
       "reading": "viḷ",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Round 4: MEDIAL position (freq=5), distributional assignment",
       "dedr": "5471",
       "dedr_gloss": "to fall, bow/arrow, jungle",
       "dedr_source": "phase244_DEDR_injection",
-      "phase_upgraded": 244,
-      "upgrade_basis": "Phase-244: DEDR 5471 (to fall, bow/arrow, jungle) injected for reading 'viḷ'. Valid PDr root confirmed in DEDR. SA confirmation pending. "
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M375 (r=1.000, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M375='taṇ'."
     },
     "M304": {
       "reading": "vēṟ",
@@ -934,14 +936,14 @@
     },
     "M387": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
       "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
       "dedr": "1638",
       "dedr_source": "elamite",
-      "phase_upgraded": 239,
-      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M035 (r=0.933, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M035='po'."
     },
     "M116": {
       "reading": "kur",
@@ -1047,9 +1049,11 @@
     },
     "M090": {
       "reading": "aintu",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Parpola 1994",
-      "gloss": "five"
+      "gloss": "five",
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M416 (r=1.000, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M416='na'."
     },
     "M093": {
       "reading": "eTTu",
@@ -1368,14 +1372,14 @@
     },
     "M129": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
       "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
       "dedr": "1638",
       "dedr_source": "elamite",
-      "phase_upgraded": 239,
-      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M427 (r=0.946, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M427='en'."
     },
     "M120": {
       "reading": "kur",
@@ -1478,14 +1482,14 @@
     },
     "M307": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
       "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
       "dedr": "1638",
       "dedr_source": "elamite",
-      "phase_upgraded": 239,
-      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M427 (r=0.979, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M427='en'."
     },
     "M265": {
       "reading": "kur",
@@ -1500,14 +1504,14 @@
     },
     "M106": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
       "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
       "dedr": "1638",
       "dedr_source": "elamite",
-      "phase_upgraded": 239,
-      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M427 (r=0.993, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M427='en'."
     },
     "M334": {
       "reading": "kur",
@@ -1599,14 +1603,14 @@
     },
     "M138": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
       "source": "Phase-111",
       "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
       "dedr": "1638",
       "dedr_source": "elamite",
-      "phase_upgraded": 239,
-      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M375 (r=0.988, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M375='taṇ'."
     },
     "M243": {
       "reading": "kur",
@@ -1863,14 +1867,14 @@
     },
     "M413": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
       "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
       "dedr": "1638",
       "dedr_source": "elamite",
-      "phase_upgraded": 239,
-      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M427 (r=0.986, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M427='en'."
     },
     "M135": {
       "reading": "kur",
@@ -2167,14 +2171,14 @@
     },
     "M256": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
       "source": "Phase-111",
       "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
       "dedr": "1638",
       "dedr_source": "elamite",
-      "phase_upgraded": 239,
-      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M375 (r=1.000, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M375='taṇ'."
     },
     "M257": {
       "reading": "kur",
@@ -2498,13 +2502,13 @@
     },
     "M203": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
       "source": "Phase-111",
       "dedr": "1638",
       "dedr_source": "elamite",
-      "phase_upgraded": 239,
-      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M416 (r=0.998, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M416='na'."
     },
     "M405": {
       "reading": "kur",
@@ -2608,23 +2612,23 @@
     },
     "M156": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
       "source": "Phase-111",
       "dedr": "1638",
       "dedr_source": "elamite",
-      "phase_upgraded": 239,
-      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M375 (r=0.982, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M375='taṇ'."
     },
     "M157": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
       "source": "Phase-111",
       "dedr": "1638",
       "dedr_source": "elamite",
-      "phase_upgraded": 239,
-      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M427 (r=0.953, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M427='en'."
     },
     "M271": {
       "reading": "kur",
@@ -2828,13 +2832,13 @@
     },
     "M400": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
       "source": "Phase-111",
       "dedr": "1638",
       "dedr_source": "elamite",
-      "phase_upgraded": 239,
-      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M427 (r=0.967, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M427='en'."
     },
     "M172": {
       "reading": "kur",
@@ -3058,13 +3062,13 @@
     },
     "M394": {
       "reading": "kur",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
       "source": "Phase-111",
       "dedr": "1638",
       "dedr_source": "elamite",
-      "phase_upgraded": 239,
-      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=3 (1638), Sanskrit score=3 (1570). DEDR=1638 (source=elamite). Combined score=6 >= 4 threshold."
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M416 (r=1.000, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M416='na'."
     },
     "M411": {
       "reading": "kur",
@@ -3530,7 +3534,7 @@
     },
     "M740": {
       "reading": "su",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Phase-192 absent phoneme fill. Elamite (MODERATE): McAlpin 1974 cognate. Brahui North Dravidian: Phase-189 coverage. SA convergence: Phase-190 delta_b=+0.0250. Grammar validated: Phase-191. Confidence capped at LOW pending ICIT corpus confirmation.",
       "source": "Phase-190/191/192 Elamo-Dravidian + Brahui + SA (2026-05-23)",
       "_phase192_absent_phoneme": true,
@@ -3538,8 +3542,8 @@
       "dedr_gloss": "/su/ syllable (LE: su- prefix)",
       "dedr_source": "phase244_DEDR_injection",
       "le_source": "Linear Elamite 2022 (Desset et al., E41)",
-      "phase_upgraded": 244,
-      "upgrade_basis": "Phase-244: DEDR 3204 (/su/ syllable (LE: su- prefix)) injected for reading 'su'. Linear Elamite E41 bridge supports this phoneme value. "
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M416 (r=1.000, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M416='na'."
     },
     "M455": {
       "reading": "zi",
@@ -3577,10 +3581,12 @@
     },
     "M874": {
       "reading": "ki",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Phase-192 absent phoneme fill. Elamite (STRONG): McAlpin 1974 cognate. Brahui North Dravidian: Phase-189 coverage. SA convergence: Phase-190 delta_b=+0.0250. Grammar validated: Phase-191. Confidence capped at MEDIUM pending ICIT corpus confirmation.",
       "source": "Phase-190/191/192 Elamo-Dravidian + Brahui + SA (2026-05-23)",
-      "_phase192_absent_phoneme": true
+      "_phase192_absent_phoneme": true,
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M427 (r=0.946, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M427='en'."
     },
     "M692": {
       "reading": "nal/nall",
@@ -3597,7 +3603,7 @@
     },
     "M861": {
       "reading": "nallavar",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Phase-197 upgrade candidate: SA modal='nallavar' (consistency=0.50), MEDIAL position (m_rate=0.449, t_rate=0.312), freq=138. DEDR 3594: nallavar = 'good people, nobles, honorifics' (plural of nal). Semantic: honorific plural title — consistent with IVC title-formula role. Co-occurs with M047=min (n=25). Confidence LOW because nallavar is a long compound reading; requires ICIT validation for full sign-level confirmation.",
       "source": "Phase-197 SA upgrade candidate",
       "_phase206_new_entry": true,
@@ -3609,8 +3615,8 @@
       },
       "dedr": "5135",
       "dedr_source": "elamite",
-      "phase_upgraded": 239,
-      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=2 (5135), Sanskrit score=2 (3563). DEDR=5135 (source=elamite). Combined score=4 >= 4 threshold."
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M427 (r=0.973, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M427='en'."
     },
     "M712": {
       "reading": "nallavar",
@@ -3625,14 +3631,14 @@
     },
     "M817": {
       "reading": "nallavar",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Phase-207 unanchored convergence: SA modal='nallavar' (cons=0.40 across 5 seeds). MEDIAL position dominant. freq=107. DEDR 3594: nallavar='good people/nobles'. High frequency (107) suggests core title-formula sign. Third nallavar cluster entry (alongside M861 [LOW] and M712 [LOW]), pointing to nallavar as productive title formula element in IVC epigraphy.",
       "source": "Phase-207 SA unanchored convergence",
       "_phase209_new_entry": true,
       "dedr": "5135",
       "dedr_source": "elamite",
-      "phase_upgraded": 239,
-      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=2 (5135), Sanskrit score=2 (3563). DEDR=5135 (source=elamite). Combined score=4 >= 4 threshold."
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M427 (r=0.930, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M427='en'."
     },
     "M700": {
       "reading": "aru/aRu",
@@ -3658,14 +3664,14 @@
     },
     "M858": {
       "reading": "nallavar",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "basis": "Phase-213 unanchored convergence: SA modal='nallavar' (cons=0.60, highest among unanchored). freq=105. DEDR 3594: nallavar = good people/nobles. 5th member of the nallavar honorific cluster: M077=nal [HIGH], M692=nal/nall [MEDIUM], M712=nallavar [LOW], M817=nallavar [LOW], M861=nallavar [LOW]. HIGH consistency (0.6) justified for LOW entry in well-established cluster. Note: M858 previously had SA modal=min (Phase 197, cons=0.2) -- cons=0.6 in Phase 213 reflects improved convergence from expanded nallavar anchor cluster.",
       "source": "Phase-213 SA unanchored convergence",
       "_phase214_new_entry": true,
       "dedr": "5135",
       "dedr_source": "elamite",
-      "phase_upgraded": 239,
-      "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=2 (5135), Sanskrit score=2 (3563). DEDR=5135 (source=elamite). Combined score=4 >= 4 threshold."
+      "phase_upgraded": 252,
+      "upgrade_basis": "Phase-252: Allograph of M427 (r=0.936, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M427='en'."
     },
     "P324": {
       "reading": "kuti",

@@ -233,7 +233,7 @@ def main():
             print(f"    → {h[:100]}")
 
     # Summary
-    print(f"\n  === SUMMARY ===")
+    print("\n  === SUMMARY ===")
     for sign, prof in results.items():
         if prof.get("freq_cisi", 0) > 0:
             slot = prof["positional"]["dominant_slot"]

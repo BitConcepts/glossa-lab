@@ -17,7 +17,8 @@ Methods:
   5. Score = SA_stability × DEDR_match × positional_fit
 """
 from __future__ import annotations
-import json, sys
+import json
+import sys
 from pathlib import Path
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor

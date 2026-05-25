@@ -514,7 +514,7 @@ def main():
     # Direct confirmations
     direct = [l for l in SANSKRIT_LOANWORDS if l.get("directly_matches_anchor") and
               l["directly_matches_anchor"] in anchors]
-    print(f"\n  === Direct Sanskrit Loanword Confirmations ===")
+    print("\n  === Direct Sanskrit Loanword Confirmations ===")
     for l in direct:
         anchor_id = l["directly_matches_anchor"]
         anchor = anchors.get(anchor_id, {})
@@ -525,7 +525,7 @@ def main():
     by_cat: dict = {}
     for l in SANSKRIT_LOANWORDS:
         by_cat.setdefault(l["category"], []).append(l)
-    print(f"\n  === By Category ===")
+    print("\n  === By Category ===")
     for cat, items in sorted(by_cat.items(), key=lambda x: -len(x[1])):
         print(f"  {cat}: {len(items)} loanwords")
 
@@ -534,12 +534,12 @@ def main():
     upgrade_proposals = [m for m in matches if m["upgrade_proposed"]]
     hm_confirmed = [m for m in matches if m["confidence"] in ("HIGH", "MEDIUM") and m["best_score"] >= 2]
 
-    print(f"\n  === Matching Results ===")
+    print("\n  === Matching Results ===")
     print(f"  Anchors with Sanskrit loanword match: {len(matches)}")
     print(f"  HIGH/MEDIUM anchors externally confirmed: {len(hm_confirmed)}")
     print(f"  LOW anchors proposed for MEDIUM upgrade: {len(upgrade_proposals)}")
 
-    print(f"\n  TOP 12 ANCHOR–LOANWORD MATCHES:")
+    print("\n  TOP 12 ANCHOR–LOANWORD MATCHES:")
     for m in matches[:12]:
         print(f"  {m['sign']:6s} '{m['reading']:15s}' ({m['confidence']:6s}) "
               f"score={m['best_score']} loan={m['best_loanword_id']} "
@@ -571,8 +571,8 @@ def main():
 
     # Cross-reference with Elamite (Phase-235 overlap)
     both = {m["sign"] for m in matches if m["best_score"] >= 2}
-    print(f"\n  Anchors with both Sanskrit AND Elamite corroboration: "
-          f"M099(kol), M176(an), M233(ūr), M342(ay), M073(kōṉ), M267(iN), M047(mīn)")
+    print("\n  Anchors with both Sanskrit AND Elamite corroboration: "
+          "M099(kol), M176(an), M233(ūr), M342(ay), M073(kōṉ), M267(iN), M047(mīn)")
 
     result = {
         "phase": 236,

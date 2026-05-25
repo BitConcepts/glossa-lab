@@ -1,6 +1,8 @@
 """Experiment Graph nodes for Phases 185-189: decipherment experiments."""
 from __future__ import annotations
-import json, subprocess, sys
+import json
+import subprocess
+import sys
 from pathlib import Path
 from typing import Any
 from glossa_lab.experiment_graph import AtomicNodeDef

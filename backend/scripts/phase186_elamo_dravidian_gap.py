@@ -19,7 +19,8 @@ References:
   Zvelebil 1990 "Dravidian Linguistics: An Introduction"
 """
 from __future__ import annotations
-import json, sys
+import json
+import sys
 from pathlib import Path
 from collections import Counter
 

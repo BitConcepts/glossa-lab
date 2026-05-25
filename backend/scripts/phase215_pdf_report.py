@@ -7,7 +7,10 @@ Uses ReportLab for PDF generation.
 Output: backend/reports/INDUS_DECIPHERMENT_REPORT.pdf
 """
 from __future__ import annotations
-import json, os, sys, time
+import json
+import os
+import sys
+import time
 from pathlib import Path
 from collections import Counter
 

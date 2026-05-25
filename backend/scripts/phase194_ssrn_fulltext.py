@@ -21,7 +21,11 @@ Extraction targets:
   - Comparison with INDUS_FINAL_ANCHORS (agree/conflict)
 """
 from __future__ import annotations
-import json, re, sys, urllib.parse, urllib.request
+import json
+import re
+import sys
+import urllib.parse
+import urllib.request
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]

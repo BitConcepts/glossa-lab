@@ -476,13 +476,13 @@ def main() -> None:
     n_moderate = evidence["n_moderate"]
     n_weak     = evidence["n_weak"]
 
-    print(f"\n=== Phase 181 Results ===")
+    print("\n=== Phase 181 Results ===")
     print(f"  Papers retrieved:     {len(unique)}")
     print(f"    PubMed:             {len(a_papers)}")
     print(f"    bioRxiv:            {len(b_papers)}")
     print(f"    Citation network:   {len(c_papers)}")
     print(f"    Specialized jrnls:  {len(d_papers)}")
-    print(f"  Evidence classification:")
+    print("  Evidence classification:")
     print(f"    STRONG  (Dravidian ancestry confirmed):  {n_strong}")
     print(f"    MODERATE (IVC genetics compatible):       {n_moderate}")
     print(f"    WEAK    (IVC mention in genetic context): {n_weak}")

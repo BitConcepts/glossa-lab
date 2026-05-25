@@ -23,7 +23,9 @@ M77's 64 distinct signs suggests NOT a pure alphabet (too many).
 This test confirms the syllabic hypothesis.
 """
 from __future__ import annotations
-import json, sys, math
+import json
+import sys
+import math
 from pathlib import Path
 from collections import Counter
 

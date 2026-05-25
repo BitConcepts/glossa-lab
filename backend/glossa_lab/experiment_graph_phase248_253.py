@@ -18,7 +18,8 @@ def _phase_runner(script: str, output_json: str):
     """Factory for subprocess-based phase runners."""
     def _run(inputs: dict, params: dict) -> dict:
         try:
-            import subprocess, sys  # noqa: PLC0415
+            import subprocess
+            import sys  # noqa: PLC0415
             r = subprocess.run(
                 [sys.executable, f"scripts/{script}"],
                 capture_output=True, text=True, timeout=120,

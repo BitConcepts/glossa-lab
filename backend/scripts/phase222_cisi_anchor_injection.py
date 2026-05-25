@@ -180,7 +180,7 @@ def main():
         anchors[m_id] = {
             "reading": proposed,
             "confidence": "CANDIDATE",
-            "basis": c.get("basis", f"Phase-222 CISI injection from Phase-220"),
+            "basis": c.get("basis", "Phase-222 CISI injection from Phase-220"),
             "source": "Phase-222 CISI P220",
             "p_sign": c.get("p_sign", ""),
             "cisi_freq": c.get("freq_cisi", 0),

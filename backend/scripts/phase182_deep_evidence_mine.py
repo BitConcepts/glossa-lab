@@ -609,14 +609,14 @@ def main() -> None:
     n_moderate = evidence["n_moderate"]
     n_weak     = evidence["n_weak"]
 
-    print(f"\n=== Phase 182 Results ===")
+    print("\n=== Phase 182 Results ===")
     print(f"  Papers retrieved:     {len(unique)}")
     print(f"    Shodhganga/thesis:  {len(a_papers)}")
     print(f"    Forward citations:  {len(b_papers)}")
     print(f"    Zenodo/HAL:         {len(c_papers)}")
     print(f"    JSTOR OA filtered:  {len(d_papers)}")
     print(f"  Strong paper fulltext: found={e_result['found']}, proposals={len(e_result['sign_proposals'])}")
-    print(f"  Evidence classification:")
+    print("  Evidence classification:")
     print(f"    STRONG:   {n_strong}")
     print(f"    MODERATE: {n_moderate}")
     print(f"    WEAK:     {n_weak}")

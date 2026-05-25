@@ -126,11 +126,11 @@ def main():
     # Phase-44 found [M267][M099] = 84x in 389 occurrences (21.6%)
     holdat_formula_rate = 84 / 389  # Phase-44
     cisi_formula_rate = p324_p332_count / max(1, p324_total)
-    print(f"  COMPARISON:")
+    print("  COMPARISON:")
     print(f"    Holdat [M267][M099] = iN/in + kol: {holdat_formula_rate:.1%} of M267 contexts")
     print(f"    CISI [P324][P332]  = ??+ko:        {cisi_formula_rate:.1%} of P324 contexts")
-    print(f"    These are DIFFERENT rates — suggesting different administrative structures")
-    print(f"    OR that P324/P332 serve a different grammar role than M267/M099")
+    print("    These are DIFFERENT rates — suggesting different administrative structures")
+    print("    OR that P324/P332 serve a different grammar role than M267/M099")
 
     result = {
         "phase": 227,

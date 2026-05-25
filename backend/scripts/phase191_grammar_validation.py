@@ -26,7 +26,8 @@ Takes Phase 190 SA-confirmed proposals and validates each against:
 Output: refined confidence tier (HIGH/MEDIUM/LOW/CANDIDATE) for each proposal.
 """
 from __future__ import annotations
-import json, math
+import json
+import math
 from pathlib import Path
 from collections import Counter
 import sys
@@ -288,7 +289,7 @@ def main():
     print("Confidence Summary:")
     for conf, items in by_confidence.items():
         print(f"  {conf}: {len(items)} proposals")
-    print(f"\nBest proposal per absent phoneme:")
+    print("\nBest proposal per absent phoneme:")
     for ph in sorted(by_phoneme):
         best = by_phoneme[ph]
         print(f"  /{ph}/: {best['m77_sign_id']} [{best['final_confidence']}] "

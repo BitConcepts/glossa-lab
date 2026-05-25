@@ -26,7 +26,11 @@ Pleonastic compounding background:
   This is testable as a corpus pattern.
 """
 from __future__ import annotations
-import json, re, time, urllib.parse, urllib.request
+import json
+import re
+import time
+import urllib.parse
+import urllib.request
 from pathlib import Path
 from collections import Counter
 

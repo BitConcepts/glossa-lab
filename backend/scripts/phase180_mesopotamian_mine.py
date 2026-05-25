@@ -466,12 +466,12 @@ def main() -> None:
     n_low_cands    = gap_analysis["n_low_candidates"]
     n_true_gaps    = gap_analysis["n_true_gaps"]
 
-    print(f"\n=== Phase 180 Results ===")
+    print("\n=== Phase 180 Results ===")
     print(f"  CDLI Meluhha refs:       {cdli_results['n_meluhha_refs']}")
     print(f"  New Meluhhan names:      {n_new_names}")
     print(f"  Phoneme assignments:     {n_phon}")
     print(f"  Contact-evidence papers: {n_contact}")
-    print(f"  Phoneme gap re-analysis:")
+    print("  Phoneme gap re-analysis:")
     print(f"    New evidence found:    {n_new_evidence}/{len(ABSENT_PHONEMES)}")
     print(f"    LOW candidates exist:  {n_low_cands}/{len(ABSENT_PHONEMES)}")
     print(f"    True gaps remain:      {n_true_gaps}/{len(ABSENT_PHONEMES)}")

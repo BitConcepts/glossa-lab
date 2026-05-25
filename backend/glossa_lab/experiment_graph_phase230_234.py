@@ -13,7 +13,8 @@ from glossa_lab.experiment_graph import AtomicNodeDef
 
 def _phase230_runner(inputs: dict, params: dict) -> dict:
     try:
-        import subprocess, sys  # noqa: PLC0415
+        import subprocess
+        import sys  # noqa: PLC0415
         r = subprocess.run(
             [sys.executable, "scripts/phase230_cross_reference_matrix.py"],
             capture_output=True, text=True, timeout=120,
@@ -31,7 +32,8 @@ def _phase230_runner(inputs: dict, params: dict) -> dict:
 
 def _phase231_runner(inputs: dict, params: dict) -> dict:
     try:
-        import subprocess, sys  # noqa: PLC0415
+        import subprocess
+        import sys  # noqa: PLC0415
         r = subprocess.run(
             [sys.executable, "scripts/phase231_indirect_bilingual_mine.py"],
             capture_output=True, text=True, timeout=900,
@@ -49,7 +51,8 @@ def _phase231_runner(inputs: dict, params: dict) -> dict:
 
 def _phase232_runner(inputs: dict, params: dict) -> dict:
     try:
-        import subprocess, sys  # noqa: PLC0415
+        import subprocess
+        import sys  # noqa: PLC0415
         r = subprocess.run(
             [sys.executable, "scripts/phase232_indirect_bilingual_scoring.py"],
             capture_output=True, text=True, timeout=120,
@@ -69,7 +72,8 @@ def _phase232_runner(inputs: dict, params: dict) -> dict:
 
 def _phase233_runner(inputs: dict, params: dict) -> dict:
     try:
-        import subprocess, sys  # noqa: PLC0415
+        import subprocess
+        import sys  # noqa: PLC0415
         r = subprocess.run(
             [sys.executable, "scripts/phase233_cultural_demographic_analysis.py"],
             capture_output=True, text=True, timeout=120,
@@ -91,7 +95,8 @@ def _phase233_runner(inputs: dict, params: dict) -> dict:
 
 def _phase234_runner(inputs: dict, params: dict) -> dict:
     try:
-        import subprocess, sys  # noqa: PLC0415
+        import subprocess
+        import sys  # noqa: PLC0415
         r = subprocess.run(
             [sys.executable, "scripts/phase234_p324_cisi_expansion.py"],
             capture_output=True, text=True, timeout=120,

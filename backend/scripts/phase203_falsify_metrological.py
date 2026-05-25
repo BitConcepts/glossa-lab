@@ -49,7 +49,9 @@ Benchmark data embedded from published literature:
 Output: verdict + scorecard update for E28
 """
 from __future__ import annotations
-import json, math, sys
+import json
+import math
+import sys
 from pathlib import Path
 from collections import Counter
 
@@ -246,7 +248,7 @@ def main():
     pos_entropy = compute_positional_entropy(inscs, freq)
     mean_len    = compute_mean_inscription_length(inscs)
 
-    print(f"\n=== Indus Corpus Metrics ===")
+    print("\n=== Indus Corpus Metrics ===")
     print(f"  H1 entropy:           {h1:.4f} bits")
     print(f"  Zipf exponent:        {zipf_exp:.4f}")
     print(f"  Bigram diversity:     {bigram_div:.4f} (norm.)")
@@ -254,7 +256,7 @@ def main():
     print(f"  Mean inscription len: {mean_len:.2f} signs")
 
     # Compare against benchmarks
-    print(f"\n=== Benchmark Comparison ===")
+    print("\n=== Benchmark Comparison ===")
     print(f"  {'System':<40} {'H1':>6} {'Zipf':>6} {'N_signs':>8} {'Class':>15}")
     print(f"  {'-'*75}")
     for key, bm in BENCHMARKS.items():
@@ -270,12 +272,12 @@ def main():
     classification_m77, conf_m77       = classify_system(h1, n_signs_m77, zipf_exp, mean_len)
     classification_full, conf_full     = classify_system(h1, n_signs_full, zipf_exp, mean_len)
 
-    print(f"\n=== Classification Results ===")
+    print("\n=== Classification Results ===")
     print(f"  Using M77 sign count ({n_signs_m77}): {classification_m77} (confidence={conf_m77:.2f})")
     print(f"  Using full IVC sign count ({n_signs_full}): {classification_full} (confidence={conf_full:.2f})")
 
     # Specific E28 falsification tests
-    print(f"\n=== E28 Falsification Tests ===")
+    print("\n=== E28 Falsification Tests ===")
     tests = [
         ("H1 entropy > 4.5 bits (phonetic range)", h1 > 4.5,
          f"Indus H1={h1:.3f} vs metrological ≤3.5, phonetic ≥4.5"),

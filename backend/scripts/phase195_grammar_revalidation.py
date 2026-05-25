@@ -23,7 +23,8 @@ Tests:
   4. Updated grammar variance estimate
 """
 from __future__ import annotations
-import json, sys
+import json
+import sys
 from pathlib import Path
 from collections import Counter
 
@@ -203,7 +204,7 @@ def main():
 
     # 4. Phase-192 consistency summary
     n_consistent = sum(1 for r in pos_results if r["consistent"])
-    print(f"\n=== 4. Phase-192 Consistency Summary ===")
+    print("\n=== 4. Phase-192 Consistency Summary ===")
     print(f"  Positionally consistent: {n_consistent}/{len(P192_ENTRIES)}")
     print(f"  Grammar formula coverage: {round(total_covered/total_expected*100,1)}%")
 
@@ -216,8 +217,8 @@ def main():
                           if isinstance(rec, dict) and rec.get("confidence") in ("HIGH","MEDIUM"))
     print(f"\n  HIGH+MEDIUM anchors: {high_med_anchors}")
     print(f"  LOW anchors: {len(anchors_raw) - high_med_anchors - sum(1 for v in anchors_raw.values() if not isinstance(v, dict))}")
-    print(f"  Remaining absent phonemes: 9/14 (ICIT-blocked)")
-    print(f"  Grammar model: consistent with Phase-170 baseline")
+    print("  Remaining absent phonemes: 9/14 (ICIT-blocked)")
+    print("  Grammar model: consistent with Phase-170 baseline")
 
     elapsed = round(time.time() - t0, 1)
     result = {

@@ -4,7 +4,7 @@ Phase-245: Targeted SA for 14 New MEDIUM Anchors
   Runs Holdat SA with all 14 Phase-244 upgrades pinned (407 total H+M anchors).
   Tests whether the newly upgraded signs are consistent with the Holdat solution.
   Any sign reaching SA consistency >= 0.40 in this run → upgrade to HIGH.
-  
+
   Strategy: Run 5 SA seeds with all 407 anchors pinned. Compare aggregate
   confidence and per-sign consistency to the Phase-213 baseline (57.0%).
   If aggregate stays >= 50%, the new anchors are consistent with the solution.
@@ -302,7 +302,7 @@ def main():
     n_low  = sum(1 for v in anchors.values() if v.get("confidence") == "LOW")
     n_cand = sum(1 for v in anchors.values() if v.get("confidence") == "CANDIDATE")
 
-    print(f"\n  === FINAL INVENTORY ===")
+    print("\n  === FINAL INVENTORY ===")
     print(f"  HIGH: {n_high}  MEDIUM: {n_med}  LOW: {n_low}  CANDIDATE: {n_cand}")
     print(f"  H+M: {n_high+n_med}/413 = {(n_high+n_med)/413:.1%}")
     print(f"  Phase-246 alignment: {r246['linguistic_alignment']}")

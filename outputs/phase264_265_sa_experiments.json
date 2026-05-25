@@ -1,0 +1,24 @@
+{
+  "phase": "264_265",
+  "generated_at": "2026-05-24T21:27:11",
+  "elapsed_s": 45.6,
+  "phase264": {
+    "base_lm_vocab": 2807,
+    "expanded_lm_vocab": 55148,
+    "dedr_additions": 53464,
+    "base_mean_c": 0.5594,
+    "expanded_mean_c": 0.7406,
+    "delta": 0.1812,
+    "base_hci": 25,
+    "expanded_hci": 43
+  },
+  "phase265": {
+    "cisi_distinct": 182,
+    "cisi_tokens": 1002,
+    "cisi_inscriptions": 178,
+    "n_cisi_anchors": 1,
+    "mean_c": 0,
+    "hci": 0,
+    "n_signs": 0
+  }
+}

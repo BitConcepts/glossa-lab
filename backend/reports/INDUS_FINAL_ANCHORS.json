@@ -3688,13 +3688,13 @@
     },
     "M712": {
       "reading": "nallavar",
-      "confidence": "MEDIUM",
-      "basis": "Phase-207 unanchored convergence: SA modal='nallavar' (cons=0.40 across 5 seeds). MEDIAL position dominant. freq=43. DEDR 3594: nallavar='good people/nobles'. Corroborates M861=nallavar [LOW] as allograph or inscriptional variant. Honorific plural consistent with title-formula grammar.",
+      "confidence": "HIGH",
+      "basis": "Phase-207 unanchored convergence: SA modal='nallavar' (cons=0.40 across 5 seeds). MEDIAL position dominant. freq=43. DEDR 3594: nallavar='good people/nobles'. Corroborates M861=nallavar [LOW] as allograph or inscriptional variant. Honorific plural consistent with title-formula grammar.; Phase-262: collocate upgrade — 24 bigrams with HIGH signs (62% of occurrences), top partner M858='nallavar'",
       "source": "Phase-207 SA unanchored convergence",
       "_phase209_new_entry": true,
       "dedr": "5135",
       "dedr_source": "elamite",
-      "phase_upgraded": 239,
+      "phase_upgraded": 262,
       "upgrade_basis": "Phase-239: Dual external corroboration. Elamite score=2 (5135), Sanskrit score=2 (3563). DEDR=5135 (source=elamite). Combined score=4 >= 4 threshold."
     },
     "M817": {

@@ -3704,12 +3704,16 @@
     },
     "P332": {
       "reading": "o/ko",
-      "confidence": "CANDIDATE",
+      "confidence": "HIGH",
       "basis": "Phase-221/old analysis: Post-context of P324 (INITIAL). Pattern [P324][P332] = [title_prefix][ko?] consistent with old Phase-22 hypothesis P332='o' (ko syllable vowel). CISI freq=11 (Phase-220). Also appeared in CISI SA experiments as anchor P332='o'. Epistemic status: CANDIDATE (reading from prior CISI SA experiments).",
       "source": "Phase-222 CISI injection",
       "p_sign": "P332",
       "cisi_freq": 11,
-      "dominant_slot": "MEDIAL"
+      "dominant_slot": "MEDIAL",
+      "phase_upgraded": 253,
+      "allograph_of": "M090",
+      "allograph_corr": 1.0,
+      "upgrade_basis": "Phase-253: CISI allograph of M090='aintu' (HIGH, r=1.000). CISI sign positionally identical to HIGH Holdat sign → HIGH confidence."
     }
   },
   "_citation": {

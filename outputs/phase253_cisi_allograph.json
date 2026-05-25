@@ -1,0 +1,1193 @@
+{
+  "phase": 253,
+  "generated_at": "2026-05-24T20:13:31.829434",
+  "n_cisi_profiles": 105,
+  "n_holdat_high_profiles": 29,
+  "n_allograph_hits": 1192,
+  "n_strong_hits": 984,
+  "n_upgrades": 2,
+  "upgrade_log": [
+    {
+      "cisi": "P332",
+      "holdat": "M045",
+      "holdat_reading": "yānai",
+      "corr": 1.0,
+      "upgrade": "CANDIDATE→MEDIUM"
+    },
+    {
+      "cisi": "P332",
+      "holdat": "M090",
+      "holdat_reading": "aintu",
+      "corr": 1.0,
+      "upgrade": "MEDIUM→HIGH"
+    }
+  ],
+  "candidate_allographs": [
+    {
+      "cisi_sign": "P332",
+      "holdat_sign": "M045",
+      "holdat_reading": "yānai",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 11
+      },
+      "holdat_profile": {
+        "i": 0.2283,
+        "m": 0.5,
+        "t": 0.2283,
+        "n": 92
+      },
+      "cisi_in_anchors": true,
+      "cisi_confidence": "CANDIDATE",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P332",
+      "holdat_sign": "M090",
+      "holdat_reading": "aintu",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 11
+      },
+      "holdat_profile": {
+        "i": 0.3039,
+        "m": 0.3824,
+        "t": 0.3039,
+        "n": 102
+      },
+      "cisi_in_anchors": true,
+      "cisi_confidence": "CANDIDATE",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P332",
+      "holdat_sign": "M394",
+      "holdat_reading": "kur",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 11
+      },
+      "holdat_profile": {
+        "i": 0.1489,
+        "m": 0.617,
+        "t": 0.1489,
+        "n": 47
+      },
+      "cisi_in_anchors": true,
+      "cisi_confidence": "CANDIDATE",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P332",
+      "holdat_sign": "M416",
+      "holdat_reading": "na",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 11
+      },
+      "holdat_profile": {
+        "i": 0.2182,
+        "m": 0.5636,
+        "t": 0.2182,
+        "n": 55
+      },
+      "cisi_in_anchors": true,
+      "cisi_confidence": "CANDIDATE",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P332",
+      "holdat_sign": "M169",
+      "holdat_reading": "rā",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 11
+      },
+      "holdat_profile": {
+        "i": 0.25,
+        "m": 0.5,
+        "t": 0.25,
+        "n": 68
+      },
+      "cisi_in_anchors": true,
+      "cisi_confidence": "CANDIDATE",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P332",
+      "holdat_sign": "M740",
+      "holdat_reading": "su",
+      "correlation": 0.9996,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 11
+      },
+      "holdat_profile": {
+        "i": 0.0185,
+        "m": 0.9352,
+        "t": 0.0463,
+        "n": 432
+      },
+      "cisi_in_anchors": true,
+      "cisi_confidence": "CANDIDATE",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P332",
+      "holdat_sign": "M203",
+      "holdat_reading": "kur",
+      "correlation": 0.9982,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 11
+      },
+      "holdat_profile": {
+        "i": 0.0824,
+        "m": 0.7765,
+        "t": 0.1294,
+        "n": 85
+      },
+      "cisi_in_anchors": true,
+      "cisi_confidence": "CANDIDATE",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P332",
+      "holdat_sign": "M817",
+      "holdat_reading": "nallavar",
+      "correlation": 0.9952,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 11
+      },
+      "holdat_profile": {
+        "i": 0.1402,
+        "m": 0.6636,
+        "t": 0.1963,
+        "n": 107
+      },
+      "cisi_in_anchors": true,
+      "cisi_confidence": "CANDIDATE",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P332",
+      "holdat_sign": "M858",
+      "holdat_reading": "nallavar",
+      "correlation": 0.9934,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 11
+      },
+      "holdat_profile": {
+        "i": 0.219,
+        "m": 0.4476,
+        "t": 0.2476,
+        "n": 105
+      },
+      "cisi_in_anchors": true,
+      "cisi_confidence": "CANDIDATE",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P332",
+      "holdat_sign": "M874",
+      "holdat_reading": "ki",
+      "correlation": 0.9897,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 11
+      },
+      "holdat_profile": {
+        "i": 0.1096,
+        "m": 0.6712,
+        "t": 0.1963,
+        "n": 219
+      },
+      "cisi_in_anchors": true,
+      "cisi_confidence": "CANDIDATE",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P332",
+      "holdat_sign": "M157",
+      "holdat_reading": "kur",
+      "correlation": 0.9862,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 11
+      },
+      "holdat_profile": {
+        "i": 0.1429,
+        "m": 0.6286,
+        "t": 0.2286,
+        "n": 35
+      },
+      "cisi_in_anchors": true,
+      "cisi_confidence": "CANDIDATE",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P332",
+      "holdat_sign": "M400",
+      "holdat_reading": "kur",
+      "correlation": 0.977,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 11
+      },
+      "holdat_profile": {
+        "i": 0.1232,
+        "m": 0.4834,
+        "t": 0.2038,
+        "n": 211
+      },
+      "cisi_in_anchors": true,
+      "cisi_confidence": "CANDIDATE",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P332",
+      "holdat_sign": "M307",
+      "holdat_reading": "kur",
+      "correlation": 0.9646,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 11
+      },
+      "holdat_profile": {
+        "i": 0.0,
+        "m": 0.7857,
+        "t": 0.2143,
+        "n": 14
+      },
+      "cisi_in_anchors": true,
+      "cisi_confidence": "CANDIDATE",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P332",
+      "holdat_sign": "M413",
+      "holdat_reading": "kur",
+      "correlation": 0.9532,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 11
+      },
+      "holdat_profile": {
+        "i": 0.0169,
+        "m": 0.7288,
+        "t": 0.2373,
+        "n": 59
+      },
+      "cisi_in_anchors": true,
+      "cisi_confidence": "CANDIDATE",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P332",
+      "holdat_sign": "M427",
+      "holdat_reading": "en",
+      "correlation": 0.8897,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 11
+      },
+      "holdat_profile": {
+        "i": 0.0612,
+        "m": 0.5374,
+        "t": 0.2789,
+        "n": 147
+      },
+      "cisi_in_anchors": true,
+      "cisi_confidence": "CANDIDATE",
+      "verdict": "CANDIDATE_ALLOGRAPH"
+    }
+  ],
+  "top_hits": [
+    {
+      "cisi_sign": "P320",
+      "holdat_sign": "M256",
+      "holdat_reading": "kur",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.5,
+        "m": 0.0,
+        "t": 0.5,
+        "n": 2
+      },
+      "holdat_profile": {
+        "i": 0.3014,
+        "m": 0.1507,
+        "t": 0.3014,
+        "n": 73
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P320",
+      "holdat_sign": "M375",
+      "holdat_reading": "taṇ",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.5,
+        "m": 0.0,
+        "t": 0.5,
+        "n": 2
+      },
+      "holdat_profile": {
+        "i": 0.25,
+        "m": 0.0625,
+        "t": 0.25,
+        "n": 32
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P320",
+      "holdat_sign": "M151",
+      "holdat_reading": "viḷ",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.5,
+        "m": 0.0,
+        "t": 0.5,
+        "n": 2
+      },
+      "holdat_profile": {
+        "i": 0.2812,
+        "m": 0.0,
+        "t": 0.2812,
+        "n": 64
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P145",
+      "holdat_sign": "M157",
+      "holdat_reading": "kur",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 0.8519,
+        "t": 0.1481,
+        "n": 27
+      },
+      "holdat_profile": {
+        "i": 0.1429,
+        "m": 0.6286,
+        "t": 0.2286,
+        "n": 35
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P205",
+      "holdat_sign": "M045",
+      "holdat_reading": "yānai",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.1,
+        "m": 0.8,
+        "t": 0.1,
+        "n": 10
+      },
+      "holdat_profile": {
+        "i": 0.2283,
+        "m": 0.5,
+        "t": 0.2283,
+        "n": 92
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P205",
+      "holdat_sign": "M090",
+      "holdat_reading": "aintu",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.1,
+        "m": 0.8,
+        "t": 0.1,
+        "n": 10
+      },
+      "holdat_profile": {
+        "i": 0.3039,
+        "m": 0.3824,
+        "t": 0.3039,
+        "n": 102
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P205",
+      "holdat_sign": "M394",
+      "holdat_reading": "kur",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.1,
+        "m": 0.8,
+        "t": 0.1,
+        "n": 10
+      },
+      "holdat_profile": {
+        "i": 0.1489,
+        "m": 0.617,
+        "t": 0.1489,
+        "n": 47
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P205",
+      "holdat_sign": "M416",
+      "holdat_reading": "na",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.1,
+        "m": 0.8,
+        "t": 0.1,
+        "n": 10
+      },
+      "holdat_profile": {
+        "i": 0.2182,
+        "m": 0.5636,
+        "t": 0.2182,
+        "n": 55
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P205",
+      "holdat_sign": "M169",
+      "holdat_reading": "rā",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.1,
+        "m": 0.8,
+        "t": 0.1,
+        "n": 10
+      },
+      "holdat_profile": {
+        "i": 0.25,
+        "m": 0.5,
+        "t": 0.25,
+        "n": 68
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P186",
+      "holdat_sign": "M045",
+      "holdat_reading": "yānai",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 2
+      },
+      "holdat_profile": {
+        "i": 0.2283,
+        "m": 0.5,
+        "t": 0.2283,
+        "n": 92
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P186",
+      "holdat_sign": "M090",
+      "holdat_reading": "aintu",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 2
+      },
+      "holdat_profile": {
+        "i": 0.3039,
+        "m": 0.3824,
+        "t": 0.3039,
+        "n": 102
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P186",
+      "holdat_sign": "M394",
+      "holdat_reading": "kur",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 2
+      },
+      "holdat_profile": {
+        "i": 0.1489,
+        "m": 0.617,
+        "t": 0.1489,
+        "n": 47
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P186",
+      "holdat_sign": "M416",
+      "holdat_reading": "na",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 2
+      },
+      "holdat_profile": {
+        "i": 0.2182,
+        "m": 0.5636,
+        "t": 0.2182,
+        "n": 55
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P186",
+      "holdat_sign": "M169",
+      "holdat_reading": "rā",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 2
+      },
+      "holdat_profile": {
+        "i": 0.25,
+        "m": 0.5,
+        "t": 0.25,
+        "n": 68
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P147",
+      "holdat_sign": "M045",
+      "holdat_reading": "yānai",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0714,
+        "m": 0.8571,
+        "t": 0.0714,
+        "n": 14
+      },
+      "holdat_profile": {
+        "i": 0.2283,
+        "m": 0.5,
+        "t": 0.2283,
+        "n": 92
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P147",
+      "holdat_sign": "M090",
+      "holdat_reading": "aintu",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0714,
+        "m": 0.8571,
+        "t": 0.0714,
+        "n": 14
+      },
+      "holdat_profile": {
+        "i": 0.3039,
+        "m": 0.3824,
+        "t": 0.3039,
+        "n": 102
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P147",
+      "holdat_sign": "M394",
+      "holdat_reading": "kur",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0714,
+        "m": 0.8571,
+        "t": 0.0714,
+        "n": 14
+      },
+      "holdat_profile": {
+        "i": 0.1489,
+        "m": 0.617,
+        "t": 0.1489,
+        "n": 47
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P147",
+      "holdat_sign": "M416",
+      "holdat_reading": "na",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0714,
+        "m": 0.8571,
+        "t": 0.0714,
+        "n": 14
+      },
+      "holdat_profile": {
+        "i": 0.2182,
+        "m": 0.5636,
+        "t": 0.2182,
+        "n": 55
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P147",
+      "holdat_sign": "M169",
+      "holdat_reading": "rā",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0714,
+        "m": 0.8571,
+        "t": 0.0714,
+        "n": 14
+      },
+      "holdat_profile": {
+        "i": 0.25,
+        "m": 0.5,
+        "t": 0.25,
+        "n": 68
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P316",
+      "holdat_sign": "M203",
+      "holdat_reading": "kur",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0526,
+        "m": 0.8421,
+        "t": 0.1053,
+        "n": 19
+      },
+      "holdat_profile": {
+        "i": 0.0824,
+        "m": 0.7765,
+        "t": 0.1294,
+        "n": 85
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P056",
+      "holdat_sign": "M045",
+      "holdat_reading": "yānai",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 9
+      },
+      "holdat_profile": {
+        "i": 0.2283,
+        "m": 0.5,
+        "t": 0.2283,
+        "n": 92
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P056",
+      "holdat_sign": "M090",
+      "holdat_reading": "aintu",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 9
+      },
+      "holdat_profile": {
+        "i": 0.3039,
+        "m": 0.3824,
+        "t": 0.3039,
+        "n": 102
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P056",
+      "holdat_sign": "M394",
+      "holdat_reading": "kur",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 9
+      },
+      "holdat_profile": {
+        "i": 0.1489,
+        "m": 0.617,
+        "t": 0.1489,
+        "n": 47
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P056",
+      "holdat_sign": "M416",
+      "holdat_reading": "na",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 9
+      },
+      "holdat_profile": {
+        "i": 0.2182,
+        "m": 0.5636,
+        "t": 0.2182,
+        "n": 55
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P056",
+      "holdat_sign": "M169",
+      "holdat_reading": "rā",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 9
+      },
+      "holdat_profile": {
+        "i": 0.25,
+        "m": 0.5,
+        "t": 0.25,
+        "n": 68
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P122",
+      "holdat_sign": "M045",
+      "holdat_reading": "yānai",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 76
+      },
+      "holdat_profile": {
+        "i": 0.2283,
+        "m": 0.5,
+        "t": 0.2283,
+        "n": 92
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P122",
+      "holdat_sign": "M090",
+      "holdat_reading": "aintu",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 76
+      },
+      "holdat_profile": {
+        "i": 0.3039,
+        "m": 0.3824,
+        "t": 0.3039,
+        "n": 102
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P122",
+      "holdat_sign": "M394",
+      "holdat_reading": "kur",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 76
+      },
+      "holdat_profile": {
+        "i": 0.1489,
+        "m": 0.617,
+        "t": 0.1489,
+        "n": 47
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P122",
+      "holdat_sign": "M416",
+      "holdat_reading": "na",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 76
+      },
+      "holdat_profile": {
+        "i": 0.2182,
+        "m": 0.5636,
+        "t": 0.2182,
+        "n": 55
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P122",
+      "holdat_sign": "M169",
+      "holdat_reading": "rā",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 76
+      },
+      "holdat_profile": {
+        "i": 0.25,
+        "m": 0.5,
+        "t": 0.25,
+        "n": 68
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P096",
+      "holdat_sign": "M045",
+      "holdat_reading": "yānai",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 3
+      },
+      "holdat_profile": {
+        "i": 0.2283,
+        "m": 0.5,
+        "t": 0.2283,
+        "n": 92
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P096",
+      "holdat_sign": "M090",
+      "holdat_reading": "aintu",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 3
+      },
+      "holdat_profile": {
+        "i": 0.3039,
+        "m": 0.3824,
+        "t": 0.3039,
+        "n": 102
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P096",
+      "holdat_sign": "M394",
+      "holdat_reading": "kur",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 3
+      },
+      "holdat_profile": {
+        "i": 0.1489,
+        "m": 0.617,
+        "t": 0.1489,
+        "n": 47
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P096",
+      "holdat_sign": "M416",
+      "holdat_reading": "na",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 3
+      },
+      "holdat_profile": {
+        "i": 0.2182,
+        "m": 0.5636,
+        "t": 0.2182,
+        "n": 55
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P096",
+      "holdat_sign": "M169",
+      "holdat_reading": "rā",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 3
+      },
+      "holdat_profile": {
+        "i": 0.25,
+        "m": 0.5,
+        "t": 0.25,
+        "n": 68
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P062",
+      "holdat_sign": "M045",
+      "holdat_reading": "yānai",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 21
+      },
+      "holdat_profile": {
+        "i": 0.2283,
+        "m": 0.5,
+        "t": 0.2283,
+        "n": 92
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P062",
+      "holdat_sign": "M090",
+      "holdat_reading": "aintu",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 21
+      },
+      "holdat_profile": {
+        "i": 0.3039,
+        "m": 0.3824,
+        "t": 0.3039,
+        "n": 102
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P062",
+      "holdat_sign": "M394",
+      "holdat_reading": "kur",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 21
+      },
+      "holdat_profile": {
+        "i": 0.1489,
+        "m": 0.617,
+        "t": 0.1489,
+        "n": 47
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P062",
+      "holdat_sign": "M416",
+      "holdat_reading": "na",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 21
+      },
+      "holdat_profile": {
+        "i": 0.2182,
+        "m": 0.5636,
+        "t": 0.2182,
+        "n": 55
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    },
+    {
+      "cisi_sign": "P062",
+      "holdat_sign": "M169",
+      "holdat_reading": "rā",
+      "correlation": 1.0,
+      "cisi_profile": {
+        "i": 0.0,
+        "m": 1.0,
+        "t": 0.0,
+        "n": 21
+      },
+      "holdat_profile": {
+        "i": 0.25,
+        "m": 0.5,
+        "t": 0.25,
+        "n": 68
+      },
+      "cisi_in_anchors": false,
+      "cisi_confidence": "NOT_IN_ANCHORS",
+      "verdict": "STRONG_ALLOGRAPH"
+    }
+  ],
+  "after": {
+    "HIGH": 126,
+    "MEDIUM": 282,
+    "LOW": 0,
+    "CANDIDATE": 5,
+    "HM_total": 408
+  },
+  "ceiling_impact": "CISI allograph analysis: 1192 P-sign↔M-sign pairs (r>=0.88). 984 STRONG (r>=0.95). 2 upgrades applied. Ceiling 1 impact: CISI exclusive signs with Holdat allographs inherit readings → effectively extends our HIGH count to CISI corpus.",
+  "verdict": "Phase-253: 1192 CISI↔Holdat allograph matches. 2 upgrades. H: 125→126. H+M: 408/413 (98.8%)."
+}

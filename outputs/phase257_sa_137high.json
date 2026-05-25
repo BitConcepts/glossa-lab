@@ -1,0 +1,36 @@
+{
+  "phase": 257,
+  "generated_at": "2026-05-24T20:57:11",
+  "elapsed_s": 76.4,
+  "sa_params": {
+    "max_iter": 50000,
+    "restarts": 8,
+    "n_seeds": 10
+  },
+  "p213_baseline": 0.57,
+  "sa_no_anchors": {
+    "mean_c": 0.2969,
+    "hci": 4
+  },
+  "sa_high_137": {
+    "mean_c": 0.4641,
+    "hci": 20
+  },
+  "sa_high_medium": {
+    "mean_c": 0.4781,
+    "hci": 23
+  },
+  "aggregate_confidence": 0.561,
+  "delta_vs_p213": -0.009,
+  "n_high_anchors_pinned": 32,
+  "n_upgrade_candidates": 1,
+  "n_upgraded": 0,
+  "upgrade_log": [],
+  "final_state": {
+    "HIGH": 137,
+    "MEDIUM": 271,
+    "CANDIDATE": 5,
+    "H_plus_M": 408,
+    "total": 413
+  }
+}

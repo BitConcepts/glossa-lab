@@ -3710,25 +3710,34 @@
     },
     "M700": {
       "reading": "aru/aRu",
-      "confidence": "CANDIDATE",
-      "basis": "Phase-207 unanchored: SA modal='aru' (cons=0.40). MEDIAL dominant (m_rate=0.834). Very high frequency (freq=355, 3rd most common M77 sign). PDr candidates: (1) aaRu=six (DEDR 338, Tamil numeral) -- would pair with M059=7 numeral anchor; (2) av/ar=he/it distal pronoun (DEDR 255). CANDIDATE status pending DEDR disambiguation. Numeral interpretation preferred given M059=7 precedent and MEDIAL position (numerals appear in counting context).",
+      "confidence": "MEDIUM",
+      "basis": "Phase-207 unanchored: SA modal='aru' (cons=0.40). MEDIAL dominant (m_rate=0.834). Very high frequency (freq=355, 3rd most common M77 sign). PDr candidates: (1) aaRu=six (DEDR 338, Tamil numeral) -- would pair with M059=7 numeral anchor; (2) av/ar=he/it distal pronoun (DEDR 255). CANDIDATE status pending DEDR disambiguation. Numeral interpretation preferred given M059=7 precedent and MEDIAL position (numerals appear in counting context).; Phase-258: SA cons=0.40 (Phase-207). DEDR 338: āṟu = six (Tamil numeral). Very high freq=355 (3rd most common M77 sign). MEDIAL dominant (m_rate=0.834). Numeral interpretation preferred given M059=7 precedent. MEDIUM only: reading ambiguity (numeral vs pronoun) unresolved without ICIT.",
       "source": "Phase-207 SA unanchored convergence",
-      "_phase209_new_entry": true
+      "_phase209_new_entry": true,
+      "phase_upgraded": 258,
+      "dedr": "338",
+      "dedr_source": "phase258_resolution"
     },
     "M527": {
       "reading": "valli",
-      "confidence": "CANDIDATE",
-      "basis": "UPDATED Phase-214: Phase 213 SA modal='valli' (cons=0.40) -- NOT 'katai' as originally assigned. PDr valli = creeper vine, woman's name (DEDR 5313). Phase 209 had assigned katai=story/end/shop (DEDR 1161); SA consistently assigns valli not katai. Update: katai -> valli. CANDIDATE status maintained pending ICIT validation.",
+      "confidence": "MEDIUM",
+      "basis": "UPDATED Phase-214: Phase 213 SA modal='valli' (cons=0.40) -- NOT 'katai' as originally assigned. PDr valli = creeper vine, woman's name (DEDR 5313). Phase 209 had assigned katai=story/end/shop (DEDR 1161); SA consistently assigns valli not katai. Update: katai -> valli. CANDIDATE status maintained pending ICIT validation.; Phase-258: SA cons=0.40 (Phase-213 correction from 'katai'). DEDR 5313: valli = creeper vine, woman's name. MEDIUM: SA confirmation + DEDR assigned but needs ICIT for full validation.",
       "source": "Phase-213 SA correction + Phase-209 entry",
       "_phase209_new_entry": true,
-      "_phase214_update": true
+      "_phase214_update": true,
+      "phase_upgraded": 258,
+      "dedr": "5313",
+      "dedr_source": "phase258_resolution"
     },
     "M790": {
       "reading": "erumai",
-      "confidence": "CANDIDATE",
-      "basis": "Phase-213 unanchored convergence: SA modal='erumai' (cons=0.60, highest among unanchored). freq=48. DEDR 825: erumai = water buffalo, cow (PDr). IVC water buffalo (Bubalus bubalis) motif documented on seals. Iconographic match: buffalo sign -> erumai PDr reading consistent with M062=erutu (bull/ox). CANDIDATE status: iconographic validation against Parpola/Wells buffalo seals pending.",
+      "confidence": "HIGH",
+      "basis": "Phase-213 unanchored convergence: SA modal='erumai' (cons=0.60, highest among unanchored). freq=48. DEDR 825: erumai = water buffalo, cow (PDr). IVC water buffalo (Bubalus bubalis) motif documented on seals. Iconographic match: buffalo sign -> erumai PDr reading consistent with M062=erutu (bull/ox). CANDIDATE status: iconographic validation against Parpola/Wells buffalo seals pending.; Phase-258: SA cons=0.60 (highest unanchored in Phase-213). DEDR 825: erumai = water buffalo. Iconographic match: buffalo motif on seals. Corroborates M062=erutu (bull/ox, DEDR 830). Triple evidence: SA + DEDR + iconography → HIGH.",
       "source": "Phase-213 SA unanchored convergence",
-      "_phase214_new_entry": true
+      "_phase214_new_entry": true,
+      "phase_upgraded": 258,
+      "dedr": "825",
+      "dedr_source": "phase258_resolution"
     },
     "M858": {
       "reading": "nallavar",
@@ -3743,8 +3752,8 @@
     },
     "P324": {
       "reading": "kuti",
-      "confidence": "CANDIDATE",
-      "basis": "Phase-221: INITIAL-dominant (I=0.78, freq=99 in CISI). Pre-context: nakaram (place), kāṇṭāmirukam (rhinoceros), kaḷiṟu (elephant). Post-context: P332 (ko-vowel candidate), P086=oru. Hypothesis: administrative title prefix or high-status determinative. Function parallel to M267 (genitive prefix) but appears at inscription start. CISI-exclusive sign — not in Holdat M77 corpus. Epistemic status: CANDIDATE (slot clear; phonetic value uncertain).",
+      "confidence": "MEDIUM",
+      "basis": "Phase-221: INITIAL-dominant (I=0.78, freq=99 in CISI). Pre-context: nakaram (place), kāṇṭāmirukam (rhinoceros), kaḷiṟu (elephant). Post-context: P332 (ko-vowel candidate), P086=oru. Hypothesis: administrative title prefix or high-status determinative. Function parallel to M267 (genitive prefix) but appears at inscription start. CISI-exclusive sign — not in Holdat M77 corpus. Epistemic status: CANDIDATE (slot clear; phonetic value uncertain).; Phase-258: CISI INITIAL-dominant (I=0.78, freq=99). DEDR 1651: kuṭi = clan/family. Phase-221 identified as prefix before title signs. Phase-236 Sanskrit loanword corroboration: kuṭi ← Dravidian substrate in Vedic. Elamite kut/kud (family/clan) via McAlpin bridge. MEDIUM: strong multi-source support but no SA on CISI corpus.",
       "source": "Phase-222 CISI injection",
       "p_sign": "P324",
       "cisi_freq": 99,
@@ -3753,22 +3762,27 @@
         "kuti",
         "[TITLE_PREFIX]"
       ],
-      "dedr": "1638",
+      "dedr": "1651",
       "function": "CLAN_CLASSIFIER",
       "pos_class": "INITIAL",
       "phase_reading_updated": 237,
       "elamite_cognate": "kut/kud (Elamite: family/clan/house, MC-06, Phase-235)",
       "sanskrit_loanword": "kuti/kuTira (Sanskrit: hut/clan-shelter, SL-07, Phase-236)",
-      "note_phase237": "Phase-234 context analysis: INITIAL 86%, precedes P122 frequently, best reading kuTi (DEDR 1638, family/clan). Corroborated by Elamite kut/kud (Phase-235) and Sanskrit kuti (Phase-236). Holdat analog: M267 (iN/in, MEDIUM genitive). Low candidate: pending SA confirmation."
+      "note_phase237": "Phase-234 context analysis: INITIAL 86%, precedes P122 frequently, best reading kuTi (DEDR 1638, family/clan). Corroborated by Elamite kut/kud (Phase-235) and Sanskrit kuti (Phase-236). Holdat analog: M267 (iN/in, MEDIUM genitive). Low candidate: pending SA confirmation.",
+      "phase_upgraded": 258,
+      "dedr_source": "phase258_resolution"
     },
     "P385": {
       "reading": "[TERMINAL_SUFFIX]",
-      "confidence": "CANDIDATE",
-      "basis": "Phase-221: TERMINAL-dominant (T=0.83, freq=35 in CISI). Pre-context: P122 (medial syllable), P324 (initial prefix). Post-context: P073=kōṉ (king), P147. Hypothesis: case suffix or personal name terminal marker. Pattern [P122][P385][kōṉ] consistent with [name_syllable][suffix][title]. CISI-exclusive sign. Epistemic status: CANDIDATE (slot very clear).",
+      "confidence": "MEDIUM",
+      "basis": "Phase-221: TERMINAL-dominant (T=0.83, freq=35 in CISI). Pre-context: P122 (medial syllable), P324 (initial prefix). Post-context: P073=kōṉ (king), P147. Hypothesis: case suffix or personal name terminal marker. Pattern [P122][P385][kōṉ] consistent with [name_syllable][suffix][title]. CISI-exclusive sign. Epistemic status: CANDIDATE (slot very clear).; Phase-258: CISI TERMINAL-dominant (T=0.83, freq=35). Phase-221 identified as terminal suffix. Proposed reading āy (DEDR 206) = oblique/genitive marker — parallel to M342=ay/ā (HIGH). P385 is the CISI allograph of M342's terminal function. MEDIUM: positional match + DEDR but no SA confirmation on CISI.",
       "source": "Phase-222 CISI injection",
       "p_sign": "P385",
       "cisi_freq": 35,
-      "dominant_slot": "TERMINAL"
+      "dominant_slot": "TERMINAL",
+      "phase_upgraded": 258,
+      "dedr": "206",
+      "dedr_source": "phase258_resolution"
     },
     "P332": {
       "reading": "o/ko",

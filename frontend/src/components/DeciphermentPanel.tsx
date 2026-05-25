@@ -92,12 +92,10 @@ export function DeciphermentPanel() {
     const nFullyDec    = (data as any).n_fully_decoded ?? 0;
     const totalSeals   = (data as any).total_seals ?? 1670;
 
-    // Determine status badge based on coverage
-    const statusBg = nHM >= totalAnchors ? "#dcfce7" : nHM / totalAnchors > 0.95 ? "#dbeafe" : "#fef3c7";
-    const statusFg = nHM >= totalAnchors ? "#15803d" : nHM / totalAnchors > 0.95 ? "#1d4ed8" : "#b45309";
-    const statusText = nHM >= totalAnchors
-      ? `✅ 100% Anchor Coverage — Phase ${currentPhase}`
-      : `🔬 Active Research — Phase ${currentPhase}`;
+    // Determine status badge — show research phase, not coverage (coverage is in bars)
+    const statusBg = "#dbeafe";
+    const statusFg = "#1d4ed8";
+    const statusText = `🔬 Active Research — Phase ${currentPhase}`;
 
     return (
       <div style={{ border: "1px solid #d1d5db", borderRadius: 8, padding: 16, background: "#fff", marginBottom: 16 }}>

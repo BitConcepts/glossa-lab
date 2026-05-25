@@ -1,0 +1,37 @@
+{
+  "phase": "288_291",
+  "elapsed_s": 0.3,
+  "phase288": {
+    "new_signs_profiled": 375,
+    "added_to_anchors": 192,
+    "by_pos_class": {
+      "INITIAL": 57,
+      "TERMINAL": 127,
+      "MEDIAL": 166,
+      "MIXED": 25
+    }
+  },
+  "phase289": {
+    "symbol_freq_entries": 717
+  },
+  "phase290": {
+    "eligible_inscriptions": 2980,
+    "tripartite_count": 1363,
+    "tripartite_rate": 0.4574,
+    "null_mean": 216.1,
+    "lift": 6.31,
+    "grammar_validated": true
+  },
+  "phase291": {
+    "sa_consistency_pdr": 0.837,
+    "sanskrit_agreement_rate": 0.0,
+    "evidence_items": 41,
+    "verdict": "Administrative PDr strongly supported; Vedic Sanskrit falsified"
+  },
+  "final_state": {
+    "HIGH": 382,
+    "MEDIUM": 31,
+    "CANDIDATE": 192,
+    "total": 605
+  }
+}

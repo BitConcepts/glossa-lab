@@ -6,6 +6,8 @@ Agentic computational linguistics research platform for statistical analysis, de
 
 > **Decipherment Status (Phase 294):** 605/605 signs at HIGH confidence (100%) · 83.7% SA consistency on 5,520 inscriptions · 6.3× tripartite grammar lift across 76 sites · Proto-Dravidian readings validated against DEDR, Elamite cognates, Sanskrit substrate · Sanskrit hypothesis falsified 0/34
 
+> **Preprint:** Pierson, T.K. (2026). *A Complete Computational Decipherment Hypothesis for the Indus Script.* Zenodo. DOI: [10.5281/zenodo.20379071](https://doi.org/10.5281/zenodo.20379071)
+
 Built and maintained by **BitConcepts LLC**
 
 ---
@@ -94,6 +96,7 @@ Local control surface. Start/stop/restart backend, open UI, quick status.
 | External corroboration | Fisher p≈10⁻¹⁵ (Elamite + Sanskrit) |
 | Sanskrit hypothesis | Falsified 0/34 |
 | Phases completed | 294 |
+| Preprint DOI | [10.5281/zenodo.20379071](https://doi.org/10.5281/zenodo.20379071) |
 
 ### Key files
 

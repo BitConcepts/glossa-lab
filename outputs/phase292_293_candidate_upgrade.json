@@ -1,0 +1,22 @@
+{
+  "phase": "292_293",
+  "generated_at": "2026-05-25T12:14:00.436220+00:00",
+  "elapsed_s": 0.0,
+  "phase292": {
+    "dedr_assigned": 192,
+    "readings_assigned": 192,
+    "candidate_to_medium": 192
+  },
+  "phase293": {
+    "yajnadevam_medium_to_high": 192,
+    "original_medium_to_high": 19,
+    "total_upgraded": 211
+  },
+  "final_state": {
+    "HIGH": 593,
+    "MEDIUM": 12,
+    "CANDIDATE": 0,
+    "total": 605,
+    "high_pct": 0.9802
+  }
+}

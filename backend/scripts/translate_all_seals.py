@@ -309,7 +309,7 @@ def main():
     total = len(translations)
     full_cov = sum(1 for t in translations if t["coverage"] == 1.0)
     mean_cov = sum(t["coverage"] for t in translations) / max(1, total)
-    print(f"\nResults:")
+    print("\nResults:")
     print(f"  Total translated: {total}")
     print(f"  Fully covered (100%): {full_cov} ({full_cov/total*100:.1f}%)")
     print(f"  Mean coverage: {mean_cov*100:.1f}%")

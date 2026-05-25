@@ -1,0 +1,90 @@
+{
+  "phase": 261,
+  "generated_at": "2026-05-25T01:21:39.964136+00:00",
+  "total_tokens": 7002,
+  "hm_tokens": 7002,
+  "high_tokens": 5524,
+  "hm_token_coverage": 1.0,
+  "high_token_coverage": 0.7889,
+  "total_seals": 1670,
+  "fully_decoded_hm": 1670,
+  "fully_decoded_high": 681,
+  "pct_fully_decoded_hm": 1.0,
+  "pct_fully_decoded_high": 0.4078,
+  "partially_decoded": 0,
+  "zero_decoded": 0,
+  "site_coverage": {
+    "Harappa": {
+      "total": 492,
+      "fully_hm": 492,
+      "tokens": 2079,
+      "hm_tokens": 2079,
+      "pct_decoded": 1.0,
+      "token_coverage": 1.0
+    },
+    "Mohenjo-daro": {
+      "total": 606,
+      "fully_hm": 606,
+      "tokens": 2534,
+      "hm_tokens": 2534,
+      "pct_decoded": 1.0,
+      "token_coverage": 1.0
+    },
+    "Dholavira": {
+      "total": 106,
+      "fully_hm": 106,
+      "tokens": 439,
+      "hm_tokens": 439,
+      "pct_decoded": 1.0,
+      "token_coverage": 1.0
+    },
+    "Kalibangan": {
+      "total": 110,
+      "fully_hm": 110,
+      "tokens": 485,
+      "hm_tokens": 485,
+      "pct_decoded": 1.0,
+      "token_coverage": 1.0
+    },
+    "Banawali": {
+      "total": 60,
+      "fully_hm": 60,
+      "tokens": 255,
+      "hm_tokens": 255,
+      "pct_decoded": 1.0,
+      "token_coverage": 1.0
+    },
+    "Lothal": {
+      "total": 124,
+      "fully_hm": 124,
+      "tokens": 507,
+      "hm_tokens": 507,
+      "pct_decoded": 1.0,
+      "token_coverage": 1.0
+    },
+    "Chanhu-daro": {
+      "total": 78,
+      "fully_hm": 78,
+      "tokens": 310,
+      "hm_tokens": 310,
+      "pct_decoded": 1.0,
+      "token_coverage": 1.0
+    },
+    "Rakhigarhi": {
+      "total": 33,
+      "fully_hm": 33,
+      "tokens": 136,
+      "hm_tokens": 136,
+      "pct_decoded": 1.0,
+      "token_coverage": 1.0
+    },
+    "Surkotada": {
+      "total": 61,
+      "fully_hm": 61,
+      "tokens": 257,
+      "hm_tokens": 257,
+      "pct_decoded": 1.0,
+      "token_coverage": 1.0
+    }
+  }
+}

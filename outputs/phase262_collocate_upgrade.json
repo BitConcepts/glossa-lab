@@ -1,0 +1,55 @@
+{
+  "phase": 262,
+  "generated_at": "2026-05-25T01:23:00.833778+00:00",
+  "n_upgrade_candidates": 2,
+  "n_upgraded": 1,
+  "upgrade_log": [
+    {
+      "sign": "M712",
+      "m77": "712",
+      "reading": "nallavar",
+      "total_occ": 39,
+      "high_bigram_count": 24,
+      "high_ratio": 0.615,
+      "top_partner": "M858",
+      "top_partner_reading": "nallavar",
+      "top_partner_count": 8,
+      "n_high_partners": 9,
+      "has_dedr": true
+    }
+  ],
+  "all_candidates": [
+    {
+      "sign": "M047",
+      "m77": "047",
+      "reading": "min/mīn",
+      "total_occ": 392,
+      "high_bigram_count": 245,
+      "high_ratio": 0.625,
+      "top_partner": "M427",
+      "top_partner_reading": "en",
+      "top_partner_count": 31,
+      "n_high_partners": 19,
+      "has_dedr": false
+    },
+    {
+      "sign": "M712",
+      "m77": "712",
+      "reading": "nallavar",
+      "total_occ": 39,
+      "high_bigram_count": 24,
+      "high_ratio": 0.615,
+      "top_partner": "M858",
+      "top_partner_reading": "nallavar",
+      "top_partner_count": 8,
+      "n_high_partners": 9,
+      "has_dedr": true
+    }
+  ],
+  "final_state": {
+    "HIGH": 139,
+    "MEDIUM": 274,
+    "H_plus_M": 413,
+    "total": 413
+  }
+}

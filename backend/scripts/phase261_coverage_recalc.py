@@ -138,7 +138,7 @@ def main():
         if hm_count == len(signs):
             sites[site]["fully_hm"] += 1
 
-    print(f"\n  Site-stratified coverage:")
+    print("\n  Site-stratified coverage:")
     print(f"  {'Site':<20} {'Seals':>6} {'Decoded':>8} {'Pct':>6} {'TokCov':>7}")
     for site, d in sorted(sites.items(), key=lambda x: -x[1]["total"]):
         pct = d["fully_hm"] / d["total"] if d["total"] else 0

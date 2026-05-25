@@ -260,7 +260,7 @@ def main():
         print(f"  {e['sign_id']} → /{e['phoneme']}/ [{e['confidence']}] "
               f"Elamite:{e['elamite_tier']}")
 
-    print(f"\n=== Coverage Summary ===")
+    print("\n=== Coverage Summary ===")
     print(f"  MEDIUM confidence:    {diff['medium_phonemes']}")
     print(f"  LOW confidence:       {diff['low_phonemes']}")
     print(f"  CANDIDATE only:       {diff['candidate_phonemes']}")

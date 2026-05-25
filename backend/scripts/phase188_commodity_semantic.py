@@ -17,7 +17,8 @@ Steps:
 This is the semantic-layer complement to our positional/statistical anchors.
 """
 from __future__ import annotations
-import json, math
+import json
+import math
 from pathlib import Path
 from collections import Counter
 
@@ -163,7 +164,8 @@ def expected_count(sign_seq: list[str], freq: Counter, total_tokens: int) -> flo
 
 
 def main():
-    import sys, time
+    import sys
+    import time
     t0 = time.time()
     print("=" * 60)
     print("Phase 188 — Commodity Semantic Layer")
@@ -247,7 +249,7 @@ def main():
     print(f"MODERATE matches (lift>1.5, n≥2): {len(moderate_matches)}")
     print(f"Absent from corpus:               {len(absent)}")
     print(f"Unmapped syllables:               {len(unmapped)}")
-    print(f"\nTop semantic categories present:")
+    print("\nTop semantic categories present:")
     cat_counts = Counter(r["category"] for r in commodity_results
                          if r["status"] in ("STRONG_MATCH", "MODERATE_MATCH", "PRESENT"))
     for cat, n in cat_counts.most_common():

@@ -1,7 +1,7 @@
 """Phase 270-271: Ceiling-Targeted Mine 5000 + DEDR Triple-Corroboration Upgrade
 
 Phase-270: Mine 5000 papers targeting ICIT corpus access and MEDIUM→HIGH methods.
-Phase-271: Batch upgrade MEDIUM→HIGH for signs with DEDR + Elamite/Sanskrit + 
+Phase-271: Batch upgrade MEDIUM→HIGH for signs with DEDR + Elamite/Sanskrit +
            Phase-239 dual-corroboration (the tightest criteria).
 
 The upgrade logic: MEDIUM signs that got there via Phase-239 dual-corroboration
@@ -16,7 +16,13 @@ Output: outputs/phase270_271_mine_and_upgrade.json
 """
 from __future__ import annotations
 
-import json, os, re, sys, time, urllib.parse, urllib.request
+import json
+import os
+import re
+import sys
+import time
+import urllib.parse
+import urllib.request
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path

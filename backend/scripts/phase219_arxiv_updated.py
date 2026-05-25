@@ -401,7 +401,7 @@ ICIT corpus cross-validation remains the primary open task."""
     }
     OUT_JSON.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"  Draft JSON → {OUT_JSON}")
-    print(f"\n  Abstract stats:")
+    print("\n  Abstract stats:")
     print(f"    HIGH: {n_high}  MEDIUM: {n_medium}  H+M total: {n_high + n_medium}")
     print(f"    H+M token coverage: {cov_hm:.1%}")
     print(f"    SA aggregate: {sa_aggregate:.1%}")

@@ -23,7 +23,9 @@ from __future__ import annotations
 import json
 from datetime import datetime
 from pathlib import Path
-import urllib.request, re, time
+import urllib.request
+import re
+import time
 
 REPO    = Path(__file__).resolve().parents[2]
 OUT     = REPO / "outputs" / "phase244_e41_dedr_upgrade.json"
@@ -206,7 +208,7 @@ def run_part_a() -> dict:
             f"E41 is now CONFIRMED with {len(LINEAR_ELAMITE_SIGN_VALUES)} specific sign values."
         ),
     }
-    print(f"  E41 status: CONFIRMED")
+    print("  E41 status: CONFIRMED")
     return e41_summary
 
 
@@ -263,9 +265,9 @@ def run_part_b(anchors: dict) -> dict:
                 f"Phase-244: DEDR {dedr} ({gloss}) injected for reading '{reading}'. "
             )
             if le_source:
-                upgrade_basis += f"Linear Elamite E41 bridge supports this phoneme value. "
+                upgrade_basis += "Linear Elamite E41 bridge supports this phoneme value. "
             else:
-                upgrade_basis += f"Valid PDr root confirmed in DEDR. SA confirmation pending. "
+                upgrade_basis += "Valid PDr root confirmed in DEDR. SA confirmation pending. "
             meta["upgrade_basis"] = upgrade_basis
             n_upgraded += 1
             upgrade_log.append({
@@ -314,7 +316,7 @@ def main():
     # Save anchors
     anchors_raw["anchors"] = anchors
     ANCHORS.write_text(json.dumps(anchors_raw, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"\n  INDUS_FINAL_ANCHORS.json saved.")
+    print("\n  INDUS_FINAL_ANCHORS.json saved.")
 
     n_after_hm = upgrades["new_inventory"]["HM_total"]
     net_gain = n_after_hm - n_before_hm

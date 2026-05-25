@@ -453,7 +453,7 @@ def main():
 
     # Phoneme recovery analysis
     phoneme_analysis = analyse_phoneme_recovery(scored)
-    print(f"\n  Absent phoneme recovery via indirect bilingual:")
+    print("\n  Absent phoneme recovery via indirect bilingual:")
     print(f"    Addressed: {phoneme_analysis['n_addressed']}/{phoneme_analysis['total']}")
     print(f"    Still open: {phoneme_analysis['n_still_open']}/{phoneme_analysis['total']}")
     for ph, st in phoneme_analysis["phoneme_status"].items():

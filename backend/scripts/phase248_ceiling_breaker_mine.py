@@ -39,7 +39,11 @@ Output: outputs/phase248_ceiling_breaker_mine.json
 """
 from __future__ import annotations
 
-import json, re, time, urllib.parse, urllib.request
+import json
+import re
+import time
+import urllib.parse
+import urllib.request
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]

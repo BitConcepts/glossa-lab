@@ -6,7 +6,7 @@ Phase 208 STRONG paper:
 
   Proposed interpretation schema:
     - Unicorn motif = commercial network marker (most common motif)
-    - Offering stand variant = guild identity marker  
+    - Offering stand variant = guild identity marker
     - SCRIPT = transactional and administrative metadata
 
 This is a critical corroboration of our title-formula grammar:
@@ -27,7 +27,12 @@ This phase:
   4. Validates scale-free hypothesis against our anchor readings
 """
 from __future__ import annotations
-import json, math, re, sys, urllib.parse, urllib.request
+import json
+import math
+import re
+import sys
+import urllib.parse
+import urllib.request
 from pathlib import Path
 from collections import Counter
 

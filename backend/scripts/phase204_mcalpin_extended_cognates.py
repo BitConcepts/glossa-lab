@@ -24,7 +24,11 @@ McAlpin 1981 APPENDIX II additional cognates (from Krishnamurti 2003 citations):
   - Key new entries relevant to our 9 absent: /ga/, /du/, /sum/, /mil/, /ba/, /ab/
 """
 from __future__ import annotations
-import json, re, sys, urllib.parse, urllib.request
+import json
+import re
+import sys
+import urllib.parse
+import urllib.request
 from pathlib import Path
 from collections import Counter
 

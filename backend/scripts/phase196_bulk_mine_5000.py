@@ -19,7 +19,11 @@ arXiv (25 fixed XML), Wikipedia (13 new articles), CORE API.
 Output: outputs/phase196_bulk_mine_5000.json
 """
 from __future__ import annotations
-import json, re, time, urllib.parse, urllib.request
+import json
+import re
+import time
+import urllib.parse
+import urllib.request
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]

@@ -9,7 +9,8 @@ Checks:
   6. SA pipeline live test
 """
 from __future__ import annotations
-import json, sys
+import json
+import sys
 from pathlib import Path
 from collections import Counter
 

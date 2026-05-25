@@ -229,7 +229,7 @@ def main():
             })
 
     # --- Category C: P-signs with NO M-number — truly new territory ---
-    print(f"\n  Category C: P-signs outside M77 crosswalk (top 20 by freq):")
+    print("\n  Category C: P-signs outside M77 crosswalk (top 20 by freq):")
     cat_c_new = []
     for rec in sorted(cat_c, key=lambda r: -r["freq_cisi"])[:20]:
         par = rec["parpola_phoneme"]

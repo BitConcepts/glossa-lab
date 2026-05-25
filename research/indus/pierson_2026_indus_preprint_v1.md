@@ -25,7 +25,7 @@ Glossa-Lab / BitConcepts LLC\
 Correspondence: tpierson@bitconcepts.tech\
 Date: May 2026\
 Version: Preprint v1 — Not peer-reviewed\
-DOI: [10.5281/zenodo.20379071](https://doi.org/10.5281/zenodo.20379071)
+DOI: [10.5281/zenodo.20381178](https://zenodo.org/records/20381178)
 
 ---
 
@@ -35,7 +35,7 @@ We present and test a falsifiable computational decipherment hypothesis for the 
 
 All 605 signs achieve HIGH confidence under a five-layer evidence hierarchy requiring two or more independent evidence sources per sign. SA achieves 83.7% mean consistency on the 5,520-inscription Yajnadevam corpus. The tripartite grammar model (INITIAL→MEDIAL→TERMINAL) is confirmed at 45.7% across 2,980 eligible inscriptions (6.3× above null, *p*<0.001). External corroboration via 7 Elamite cognates (McAlpin 1981) and 13 Sanskrit substrate loanwords (Witzel 1999) yields Fisher combined *p*≈10^−15^. The competing Sanskrit-language hypothesis (Yajnadevam 2024) is falsified at 0/34 agreement against our readings. A fish-sign polysemy test finds 0/140 isolated fish signs across all tested formal-seal contexts. Tamil-Brahmi personal name concordance reaches 58% (*z*=16.2, *p*<0.0001). The non-linguistic hypothesis (Farmer, Sproat & Witzel 2004) is falsified by conditional entropy H~1~=5.384 bits, exceeding the 3.5-bit metrological maximum. Forty-one evidence items across eight independent evidence lines support the Proto-Dravidian affiliation.
 
-This study does not claim epigraphic finality; it proposes a reproducible, falsifiable computational model whose structural predictions and candidate phonetic readings can be tested against future archaeological discoveries and independent corpora. All code, anchor tables, and phase reports are open source. DOI: 10.5281/zenodo.20379071.
+This study does not claim epigraphic finality; it proposes a reproducible, falsifiable computational model whose structural predictions and candidate phonetic readings can be tested against future archaeological discoveries and independent corpora. All code, anchor tables, and phase reports are open source. DOI: 10.5281/zenodo.20381178.
 
 ---
 

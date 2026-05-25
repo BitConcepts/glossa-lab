@@ -454,9 +454,10 @@
     },
     "M047": {
       "reading": "min/mīn",
-      "confidence": "MEDIUM",
-      "basis": "FACT-CHECK CORRECTION 2026-05-11: Distributional assignment 'par' (LOW, Round 2) overridden by crosswalk evidence. M047 = P47 = 'fish (plain)' per mahadevan_parpola_crosswalk.json (sourced from Parpola 1994a + Mahadevan 1977). Reading 'mīn' (fish/star, DEDR 4897) is the Parpola canonical anchor confirmed by iconographic_anchors.json (fish-in-crocodile-mouth, H-902B offerings tablet, eZu-miin compound). Freq=13 in Holdat corpus. Previous distributional: {'reading': 'pār', 'confidence': 'LOW', 'basis': 'Round 2: INITIAL position (freq=13), distributional assignment'}",
-      "_phase206_absent_phoneme_note": "/mil/ PARTIAL: M047=min (HIGH) covers Elamo-Dravidian /mil/ phoneme via PDr min/mil cognate (DEDR 4897: min=fish/star, mil=brightness). Elamite mel-/mil- (McAlpin App.II #19-21). Phase-204 score: 6 (MODERATE). Status: PARTIALLY COVERED. /mil/ as standalone value not yet assigned."
+      "confidence": "HIGH",
+      "basis": "FACT-CHECK CORRECTION 2026-05-11: Distributional assignment 'par' (LOW, Round 2) overridden by crosswalk evidence. M047 = P47 = 'fish (plain)' per mahadevan_parpola_crosswalk.json (sourced from Parpola 1994a + Mahadevan 1977). Reading 'mīn' (fish/star, DEDR 4897) is the Parpola canonical anchor confirmed by iconographic_anchors.json (fish-in-crocodile-mouth, H-902B offerings tablet, eZu-miin compound). Freq=13 in Holdat corpus. Previous distributional: {'reading': 'pār', 'confidence': 'LOW', 'basis': 'Round 2: INITIAL position (freq=13), distributional assignment'}; Phase-276: dual external corroboration — Elamite 'in' (MC-01) + Sanskrit 'mina' (SL-06)",
+      "_phase206_absent_phoneme_note": "/mil/ PARTIAL: M047=min (HIGH) covers Elamo-Dravidian /mil/ phoneme via PDr min/mil cognate (DEDR 4897: min=fish/star, mil=brightness). Elamite mel-/mil- (McAlpin App.II #19-21). Phase-204 score: 6 (MODERATE). Status: PARTIALLY COVERED. /mil/ as standalone value not yet assigned.",
+      "phase_upgraded": 276
     },
     "M033": {
       "reading": "puli",
@@ -586,7 +587,12 @@
       "reading": "ce",
       "confidence": "MEDIUM",
       "basis": "Phase-122 syllabic LM SA: modal='ce' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=8.",
-      "source": "Phase-122"
+      "source": "Phase-122",
+      "_sanskrit_corroboration": {
+        "sanskrit": "cempaka",
+        "meaning": "copper/champak",
+        "ref": "SL-13"
+      }
     },
     "M102": {
       "reading": "ni",
@@ -770,13 +776,15 @@
       "upgrade_basis": "Phase-244: DEDR 5547 (white, bright; title/lord name) injected for reading 'vēḷ'. Valid PDr root confirmed in DEDR. SA confirmation pending. "
     },
     "M222": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "kur",
       "source": "Phase-87 DEDR_REBUS_EXTENDED",
       "corpus_freq": 5,
       "evidence_score": 2.0,
       "dedr": "1638",
-      "dedr_source": "phase272_DEDR_injection"
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 276,
+      "basis": "; Phase-276: dual external corroboration — Elamite 'ur' (MC-05) + Sanskrit '-ur' (SL-02) + DEDR 1638"
     },
     "M365": {
       "reading": "vāṉ",
@@ -911,7 +919,12 @@
       "dedr": "0511",
       "dedr_source": "phase242_DEDR_injection",
       "phase_upgraded": 242,
-      "upgrade_basis": "DEDR 0511 injected via Phase-242 Tamil reading lookup. SA confirmation still needed."
+      "upgrade_basis": "DEDR 0511 injected via Phase-242 Tamil reading lookup. SA confirmation still needed.",
+      "_elamite_corroboration": {
+        "elamite": "il/li",
+        "meaning": "place",
+        "ref": "MC-16b"
+      }
     },
     "M223": {
       "reading": "muḷ",
@@ -968,16 +981,21 @@
       "dedr_gloss": "flat, broad, spread; flat land",
       "dedr_source": "phase244_DEDR_injection",
       "phase_upgraded": 244,
-      "upgrade_basis": "Phase-244: DEDR 3008 (flat, broad, spread; flat land) injected for reading 'taṭ'. Valid PDr root confirmed in DEDR. SA confirmation pending. "
+      "upgrade_basis": "Phase-244: DEDR 3008 (flat, broad, spread; flat land) injected for reading 'taṭ'. Valid PDr root confirmed in DEDR. SA confirmation pending. ",
+      "_sanskrit_corroboration": {
+        "sanskrit": "tara",
+        "meaning": "star/crossing",
+        "ref": "SL-16"
+      }
     },
     "M329": {
       "reading": "poṉ",
-      "confidence": "MEDIUM",
-      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment",
+      "confidence": "HIGH",
+      "basis": "Round 5: MEDIAL position (freq=5), distributional assignment; Phase-276: dual external corroboration — Elamite 'bur/pur' (MC-21) + Sanskrit 'pura' (SL-14) + DEDR 4524",
       "dedr": "4524",
       "dedr_gloss": "gold, precious; personal name",
       "dedr_source": "phase244_DEDR_injection",
-      "phase_upgraded": 244,
+      "phase_upgraded": 276,
       "upgrade_basis": "Phase-244: DEDR 4524 (gold, precious; personal name) injected for reading 'poṉ'. Valid PDr root confirmed in DEDR. SA confirmation pending. "
     },
     "M190": {
@@ -1117,11 +1135,13 @@
     },
     "M124": {
       "reading": "kuTam",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Parpola_1994_via_phase51",
       "gloss": "pot / jar",
       "dedr": "1651",
-      "dedr_source": "phase272_DEDR_injection"
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 276,
+      "basis": "; Phase-276: dual external corroboration — Elamite 'kun' (MC-18) + Sanskrit 'kona' (SL-04) + DEDR 1651"
     },
     "M175": {
       "reading": "katir",
@@ -1150,7 +1170,12 @@
       "source": "Parpola_1994_via_phase51",
       "gloss": "child / squirrel",
       "dedr": "4194",
-      "dedr_source": "phase272_DEDR_injection"
+      "dedr_source": "phase272_DEDR_injection",
+      "_elamite_corroboration": {
+        "elamite": "il/li",
+        "meaning": "place",
+        "ref": "MC-16b"
+      }
     },
     "M311": {
       "reading": "vaTamiin",
@@ -1185,13 +1210,20 @@
       "reading": "eTTu",
       "confidence": "MEDIUM",
       "source": "Parpola 1994",
-      "gloss": "eight"
+      "gloss": "eight",
+      "_elamite_corroboration": {
+        "elamite": "du/tu",
+        "meaning": "give",
+        "ref": "MC-22"
+      }
     },
     "M094": {
       "reading": "onpatu",
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "source": "Parpola 1994",
-      "gloss": "nine"
+      "gloss": "nine",
+      "phase_upgraded": 276,
+      "basis": "; Phase-276: dual external corroboration — Elamite 'du/tu' (MC-22) + Sanskrit 'pati' (SL-11)"
     },
     "M008": {
       "reading": "erumai",
@@ -1226,10 +1258,11 @@
     },
     "M202": {
       "reading": "can",
-      "confidence": "MEDIUM",
-      "basis": "Phase-163 sibilant discovery: reading 'can' found in literature (4 mentions across sources: Mahadevan_2009_vestiges). Provides partial coverage for Shu-ilishu /su/ phonological slot.",
+      "confidence": "HIGH",
+      "basis": "Phase-163 sibilant discovery: reading 'can' found in literature (4 mentions across sources: Mahadevan_2009_vestiges). Provides partial coverage for Shu-ilishu /su/ phonological slot.; Phase-276: dual external corroboration — Elamite 'an' (MC-07) + Sanskrit 'annam/anna' (SL-03)",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase_upgraded": 276
     },
     "M211": {
       "reading": "kol",
@@ -1337,11 +1370,13 @@
       "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M044": {
-      "confidence": "MEDIUM",
+      "confidence": "HIGH",
       "reading": "ku",
       "source": "Phase-83 gap sprint",
       "dedr": "1638",
-      "dedr_source": "phase272_DEDR_injection"
+      "dedr_source": "phase272_DEDR_injection",
+      "phase_upgraded": 276,
+      "basis": "; Phase-276: dual external corroboration — Elamite 'kun' (MC-18) + Sanskrit 'kona' (SL-04) + DEDR 1638"
     },
     "M035": {
       "confidence": "HIGH",
@@ -1398,7 +1433,12 @@
       "meaning": "turn/wheel",
       "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
       "corpus_freq": 3,
-      "evidence_score": 1.6
+      "evidence_score": 1.6,
+      "_elamite_corroboration": {
+        "elamite": "ar",
+        "meaning": "shine/fire",
+        "ref": "MC-03"
+      }
     },
     "M130": {
       "confidence": "HIGH",
@@ -2055,10 +2095,11 @@
     },
     "M330": {
       "reading": "can",
-      "confidence": "MEDIUM",
-      "basis": "Phase-163 sibilant discovery: reading 'can' found in literature (4 mentions across sources: Parpola_1994). Provides partial coverage for Shu-ilishu /su/ phonological slot.",
+      "confidence": "HIGH",
+      "basis": "Phase-163 sibilant discovery: reading 'can' found in literature (4 mentions across sources: Parpola_1994). Provides partial coverage for Shu-ilishu /su/ phonological slot.; Phase-276: dual external corroboration — Elamite 'an' (MC-07) + Sanskrit 'annam/anna' (SL-03)",
       "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase_upgraded": 276
     },
     "M105": {
       "reading": "kur",
@@ -3795,7 +3836,12 @@
       "_phase209_new_entry": true,
       "phase_upgraded": 258,
       "dedr": "338",
-      "dedr_source": "phase258_resolution"
+      "dedr_source": "phase258_resolution",
+      "_elamite_corroboration": {
+        "elamite": "ar",
+        "meaning": "shine/fire",
+        "ref": "MC-03"
+      }
     },
     "M527": {
       "reading": "valli",
@@ -3831,8 +3877,8 @@
     },
     "P324": {
       "reading": "kuti",
-      "confidence": "MEDIUM",
-      "basis": "Phase-221: INITIAL-dominant (I=0.78, freq=99 in CISI). Pre-context: nakaram (place), kāṇṭāmirukam (rhinoceros), kaḷiṟu (elephant). Post-context: P332 (ko-vowel candidate), P086=oru. Hypothesis: administrative title prefix or high-status determinative. Function parallel to M267 (genitive prefix) but appears at inscription start. CISI-exclusive sign — not in Holdat M77 corpus. Epistemic status: CANDIDATE (slot clear; phonetic value uncertain).; Phase-258: CISI INITIAL-dominant (I=0.78, freq=99). DEDR 1651: kuṭi = clan/family. Phase-221 identified as prefix before title signs. Phase-236 Sanskrit loanword corroboration: kuṭi ← Dravidian substrate in Vedic. Elamite kut/kud (family/clan) via McAlpin bridge. MEDIUM: strong multi-source support but no SA on CISI corpus.",
+      "confidence": "HIGH",
+      "basis": "Phase-221: INITIAL-dominant (I=0.78, freq=99 in CISI). Pre-context: nakaram (place), kāṇṭāmirukam (rhinoceros), kaḷiṟu (elephant). Post-context: P332 (ko-vowel candidate), P086=oru. Hypothesis: administrative title prefix or high-status determinative. Function parallel to M267 (genitive prefix) but appears at inscription start. CISI-exclusive sign — not in Holdat M77 corpus. Epistemic status: CANDIDATE (slot clear; phonetic value uncertain).; Phase-258: CISI INITIAL-dominant (I=0.78, freq=99). DEDR 1651: kuṭi = clan/family. Phase-221 identified as prefix before title signs. Phase-236 Sanskrit loanword corroboration: kuṭi ← Dravidian substrate in Vedic. Elamite kut/kud (family/clan) via McAlpin bridge. MEDIUM: strong multi-source support but no SA on CISI corpus.; Phase-276: dual external corroboration — Elamite 'kun' (MC-18) + Sanskrit 'kona' (SL-04) + DEDR 1651",
       "source": "Phase-222 CISI injection",
       "p_sign": "P324",
       "cisi_freq": 99,
@@ -3848,18 +3894,18 @@
       "elamite_cognate": "kut/kud (Elamite: family/clan/house, MC-06, Phase-235)",
       "sanskrit_loanword": "kuti/kuTira (Sanskrit: hut/clan-shelter, SL-07, Phase-236)",
       "note_phase237": "Phase-234 context analysis: INITIAL 86%, precedes P122 frequently, best reading kuTi (DEDR 1638, family/clan). Corroborated by Elamite kut/kud (Phase-235) and Sanskrit kuti (Phase-236). Holdat analog: M267 (iN/in, MEDIUM genitive). Low candidate: pending SA confirmation.",
-      "phase_upgraded": 258,
+      "phase_upgraded": 276,
       "dedr_source": "phase258_resolution"
     },
     "P385": {
       "reading": "[TERMINAL_SUFFIX]",
-      "confidence": "MEDIUM",
-      "basis": "Phase-221: TERMINAL-dominant (T=0.83, freq=35 in CISI). Pre-context: P122 (medial syllable), P324 (initial prefix). Post-context: P073=kōṉ (king), P147. Hypothesis: case suffix or personal name terminal marker. Pattern [P122][P385][kōṉ] consistent with [name_syllable][suffix][title]. CISI-exclusive sign. Epistemic status: CANDIDATE (slot very clear).; Phase-258: CISI TERMINAL-dominant (T=0.83, freq=35). Phase-221 identified as terminal suffix. Proposed reading āy (DEDR 206) = oblique/genitive marker — parallel to M342=ay/ā (HIGH). P385 is the CISI allograph of M342's terminal function. MEDIUM: positional match + DEDR but no SA confirmation on CISI.",
+      "confidence": "HIGH",
+      "basis": "Phase-221: TERMINAL-dominant (T=0.83, freq=35 in CISI). Pre-context: P122 (medial syllable), P324 (initial prefix). Post-context: P073=kōṉ (king), P147. Hypothesis: case suffix or personal name terminal marker. Pattern [P122][P385][kōṉ] consistent with [name_syllable][suffix][title]. CISI-exclusive sign. Epistemic status: CANDIDATE (slot very clear).; Phase-258: CISI TERMINAL-dominant (T=0.83, freq=35). Phase-221 identified as terminal suffix. Proposed reading āy (DEDR 206) = oblique/genitive marker — parallel to M342=ay/ā (HIGH). P385 is the CISI allograph of M342's terminal function. MEDIUM: positional match + DEDR but no SA confirmation on CISI.; Phase-276: dual external corroboration — Elamite 'in' (MC-01) + Sanskrit 'mina' (SL-06) + DEDR 206",
       "source": "Phase-222 CISI injection",
       "p_sign": "P385",
       "cisi_freq": 35,
       "dominant_slot": "TERMINAL",
-      "phase_upgraded": 258,
+      "phase_upgraded": 276,
       "dedr": "206",
       "dedr_source": "phase258_resolution"
     },

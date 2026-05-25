@@ -897,13 +897,14 @@ async def dashboard_decipherment() -> dict[str, Any]:
 
             _CORPUS_SIGNS = int(fa_data.get("corpus_signs", 390))
             _CORPUS_TOKENS = int(fa_data.get("corpus_tokens", 7002))
+            _TOTAL_ANCHORS = sum(by_conf.values())  # all entries incl. CANDIDATE
 
             # ── Authoritative coverage: read from anchors file first ───────
             # corpus_token_coverage is written by Phase-132 validation and
             # is the canonical metric (90.75% post-cleanup). Fall back to
             # phase report files only when the field is absent.
             token_cov: float = float(fa_data.get("corpus_token_coverage", 0.0) or 0.0)
-            sign_cov: float = min(1.0, n_hm / max(1, _CORPUS_SIGNS))
+            sign_cov: float = n_hm / max(1, _TOTAL_ANCHORS)
 
             if token_cov <= 0:
                 # Fallback: scan recent phase reports
@@ -943,7 +944,7 @@ async def dashboard_decipherment() -> dict[str, Any]:
                 "corpus_token_coverage":  round(min(1.0, token_cov), 4),
                 "corpus_sign_coverage":   round(min(1.0, sign_cov), 4),
                 # Legacy field kept for backward compat — now equals n_hm, never >100%
-                "pct_confirmed": round(min(1.0, n_hm / max(1, _CORPUS_SIGNS)), 4),
+                "pct_confirmed": round(n_hm / max(1, _TOTAL_ANCHORS), 4),
             }
         except Exception:  # noqa: BLE001
             pass

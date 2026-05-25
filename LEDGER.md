@@ -1173,3 +1173,49 @@ Next step:
 - **Type**: migration
 - **Status**: complete
 - **Chain hash**: `6a474dabc5246400...`
+
+## [2026-05-25] Entry — Preprint v1 Published + Outreach Campaign
+
+Objective:
+Write and publish the v1 preprint paper covering all 294 phases of Indus Script
+decipherment research. Distribute to academic platforms and send outreach emails
+to key researchers.
+
+What was done:
+
+Paper (pierson_2026_indus_preprint_v1):
+  - 15-page preprint covering 605/605 HIGH signs, 83.7% SA, 6.3x grammar lift
+  - Written as markdown, compiled via pandoc -> XeLaTeX -> PDF
+  - All 21 data points verified against indus_decipherment_report_final.json
+  - Roif BC section removed (publication independence); kept one-line acknowledgment
+  - DOI added to header + abstract after Zenodo publication
+  - Author name: Tristen Kyle Pierson (corrected from earlier "Tristan" typo)
+  - Files: research/indus/pierson_2026_indus_preprint_v1.{md,tex,pdf}
+
+Publication platforms:
+  - Zenodo: PUBLISHED — https://zenodo.org/records/20381178 (v2 with name fix)
+    - Original DOI: 10.5281/zenodo.20379071 (concept DOI, resolves to latest)
+    - Files: PDF + INDUS_FINAL_ANCHORS.json
+    - License: CC BY 4.0
+  - Academia.edu: PUBLISHED — https://www.academia.edu/167688811/
+  - SSRN: SUBMITTED, PRELIMINARY_UPLOAD — abstract_id=6827038
+    - Pending review (24-48h). Author name needs fix once live.
+  - ResearchGate: SUBMITTED, pending account approval
+
+Outreach emails sent (2026-05-25):
+  1. Ashish Nair (ashishn@alumni.cmu.edu) — SENT
+  2. Dr. Andreas Fuls (FU Berlin) — SENT
+  3. Dr. Rajesh Rao (UCSD) — SENT
+  4. Prof. Asko Parpola (Helsinki) — SENT via Academia.edu contact form
+     (https://askoparpola.academia.edu/contact)
+  5. Richard Sproat — SENT
+
+README updated with preprint citation + DOI in metrics table.
+Commit 2c7ed4e pushed to develop.
+
+Open TODOs:
+  - [ ] Fix SSRN author name + PDF once approved (Tristan -> Tristen)
+  - [ ] Merge develop -> main after SSRN live
+  - [ ] Follow up with Parpola if no response within 2 weeks
+
+Token estimate: high

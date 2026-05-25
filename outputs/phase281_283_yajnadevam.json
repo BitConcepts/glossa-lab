@@ -1,0 +1,155 @@
+{
+  "phase": "281_283",
+  "elapsed_s": 13.7,
+  "phase281": {
+    "inscriptions": 5532,
+    "tokens": 17971,
+    "distinct_signs": 809,
+    "sites": 76,
+    "crosswalk_matches": 63,
+    "crosswalk_token_coverage": 0.3294,
+    "mapped_inscriptions": 1529,
+    "mapped_tokens": 3376
+  },
+  "phase282": {
+    "sa_mean_consistency": 0.6951,
+    "sa_hci_75": 25,
+    "sa_signs_040": 28,
+    "n_anchors_mapped": 24
+  },
+  "phase283": {
+    "sanskrit_readings_found": 52,
+    "compared": 34,
+    "agreements": 0,
+    "conflicts": 34,
+    "agreement_rate": 0.0,
+    "sample_comparisons": [
+      {
+        "sign": "M003",
+        "our_pdr": "kalam",
+        "yajnadevam_skt": "idDa-acala-vaja-namana",
+        "agrees": false
+      },
+      {
+        "sign": "M034",
+        "our_pdr": "tōḷ",
+        "yajnadevam_skt": "cara",
+        "agrees": false
+      },
+      {
+        "sign": "M035",
+        "our_pdr": "po",
+        "yajnadevam_skt": "para",
+        "agrees": false
+      },
+      {
+        "sign": "M045",
+        "our_pdr": "yānai",
+        "yajnadevam_skt": "sa-aYjiH",
+        "agrees": false
+      },
+      {
+        "sign": "M047",
+        "our_pdr": "min/mīn",
+        "yajnadevam_skt": "ajA",
+        "agrees": false
+      },
+      {
+        "sign": "M090",
+        "our_pdr": "aintu",
+        "yajnadevam_skt": "rarAsa nava-mAna",
+        "agrees": false
+      },
+      {
+        "sign": "M106",
+        "our_pdr": "kur",
+        "yajnadevam_skt": "anna-ISa",
+        "agrees": false
+      },
+      {
+        "sign": "M129",
+        "our_pdr": "kur",
+        "yajnadevam_skt": "vajat-taqa acala-radDa-da",
+        "agrees": false
+      },
+      {
+        "sign": "M138",
+        "our_pdr": "kur",
+        "yajnadevam_skt": "SarvA",
+        "agrees": false
+      },
+      {
+        "sign": "M151",
+        "our_pdr": "viḷ",
+        "yajnadevam_skt": "mAnya",
+        "agrees": false
+      },
+      {
+        "sign": "M156",
+        "our_pdr": "kur",
+        "yajnadevam_skt": "udaya",
+        "agrees": false
+      },
+      {
+        "sign": "M157",
+        "our_pdr": "kur",
+        "yajnadevam_skt": "anarvAya",
+        "agrees": false
+      },
+      {
+        "sign": "M176",
+        "our_pdr": "an/aṇ",
+        "yajnadevam_skt": "rava sahana",
+        "agrees": false
+      },
+      {
+        "sign": "M203",
+        "our_pdr": "kur",
+        "yajnadevam_skt": "Asada-sA",
+        "agrees": false
+      },
+      {
+        "sign": "M256",
+        "our_pdr": "kur",
+        "yajnadevam_skt": "tamA",
+        "agrees": false
+      },
+      {
+        "sign": "M307",
+        "our_pdr": "kur",
+        "yajnadevam_skt": "tad rava-la",
+        "agrees": false
+      },
+      {
+        "sign": "M375",
+        "our_pdr": "taṇ",
+        "yajnadevam_skt": "trEtAH",
+        "agrees": false
+      },
+      {
+        "sign": "M387",
+        "our_pdr": "kur",
+        "yajnadevam_skt": "Bam",
+        "agrees": false
+      },
+      {
+        "sign": "M394",
+        "our_pdr": "kur",
+        "yajnadevam_skt": "ana-DvasrI",
+        "agrees": false
+      },
+      {
+        "sign": "M400",
+        "our_pdr": "kur",
+        "yajnadevam_skt": "adIna",
+        "agrees": false
+      }
+    ],
+    "glossing_entries": 3495
+  },
+  "final_state": {
+    "HIGH": 382,
+    "MEDIUM": 31,
+    "total": 413
+  }
+}

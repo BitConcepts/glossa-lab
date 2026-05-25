@@ -13,7 +13,12 @@ Output: outputs/phase266_267_dedr_sa_upgrade.json
 """
 from __future__ import annotations
 
-import csv, json, os, re, sys, time
+import csv
+import json
+import os
+import re
+import sys
+import time
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path

@@ -626,14 +626,14 @@ def main() -> None:
     n_weak     = evidence["n_weak"]
     n_sign     = evidence["n_sign_proposals"]
 
-    print(f"\n=== Phase 183 Results ===")
+    print("\n=== Phase 183 Results ===")
     print(f"  Papers retrieved:    {len(unique)}")
     print(f"    OpenAlex paginated: {len(a_papers)}")
     print(f"    CrossRef:           {len(b_papers)}")
     print(f"    S2 deep:            {len(c_papers)}")
     print(f"    arXiv expanded:     {len(d_papers)}")
     print(f"    Wikipedia refs:     {len(e_papers)}")
-    print(f"  Evidence classification:")
+    print("  Evidence classification:")
     print(f"    STRONG:   {n_strong}")
     print(f"    MODERATE: {n_moderate}")
     print(f"    WEAK:     {n_weak}")

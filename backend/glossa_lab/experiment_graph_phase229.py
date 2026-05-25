@@ -1,6 +1,8 @@
 """Experiment Graph node for Phase-229 (H23 compliance)."""
 from __future__ import annotations
-import json, subprocess, sys
+import json
+import subprocess
+import sys
 from pathlib import Path
 from glossa_lab.experiment_graph import AtomicNodeDef
 

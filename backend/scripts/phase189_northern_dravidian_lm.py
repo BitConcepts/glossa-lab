@@ -34,7 +34,9 @@ References:
   Zvelebil 1990 "Dravidian Linguistics: An Introduction"
 """
 from __future__ import annotations
-import json, math, sys
+import json
+import math
+import sys
 from pathlib import Path
 from collections import Counter
 
@@ -320,7 +322,7 @@ def main():
     print("\n[Step 4] Comparing absent phoneme assignments...")
     comparisons = compare_absent_phoneme_assignments(north_result, tamil_result, anchors)
     novel_north = [c for c in comparisons if c["novel_north_absent"]]
-    print(f"\n  Signs where North Dravidian proposes an absent phoneme (Tamil does not):")
+    print("\n  Signs where North Dravidian proposes an absent phoneme (Tamil does not):")
     for c in novel_north[:10]:
         print(f"    {c['sign']}: North={c['north_dr_proposal']} Tamil={c['tamil_proposal']} "
               f"(anchored={c['already_anchored']})")

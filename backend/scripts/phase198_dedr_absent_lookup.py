@@ -14,7 +14,8 @@ and "Proto-Dravidian reconstruction and borrowability" (2023) — both
 independently confirm the 9 absent phonemes are real PDr phoneme slots.
 """
 from __future__ import annotations
-import json, sys
+import json
+import sys
 from pathlib import Path
 from collections import Counter
 
@@ -199,7 +200,7 @@ def main():
 
     # Summary
     best_candidates = sorted(results, key=lambda x: -x["total_score"])
-    print(f"\n=== Priority Ranking for Remaining Absent Phonemes ===")
+    print("\n=== Priority Ranking for Remaining Absent Phonemes ===")
     for r in best_candidates:
         sign_str = f"M{r['best_sign_candidate']}" if r["best_sign_candidate"] else "NO SIGN FOUND"
         print(f"  /{r['phoneme']}/: score={r['total_score']:.1f} "

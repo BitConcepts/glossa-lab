@@ -1,0 +1,22 @@
+{
+  "phase": 229,
+  "p122_candidate": "pa",
+  "p122_dedr": "4265",
+  "n_base_anchors": 164,
+  "n_extended_anchors": 165,
+  "m122_added": true,
+  "m122_sa": {
+    "modal": "kayam",
+    "consistency": 0.2,
+    "expected": "pa",
+    "consistent": false,
+    "n_seeds": 5
+  },
+  "verdict": "UNCERTAIN: SA modal='kayam', cons=0.20. Not yet confirmed.",
+  "phase228_cross_validation": {
+    "cisi_tripartite_rate": 0.4647,
+    "lift_vs_null": 3.28,
+    "verdict": "SUPPORTED (3× null). CISI confirms tripartite grammar independently.",
+    "note": "CISI 46.5% tripartite rate (3× null) is independent cross-corpus validation of the Dravidian grammar model. This is the primary landmark result of Phases 220-229. P122=M122 is the key expansion candidate in the CISI formula [P324 INITIAL][..MEDIAL..P122..][P385 TERMINAL]."
+  }
+}

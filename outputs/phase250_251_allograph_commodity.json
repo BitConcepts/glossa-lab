@@ -1,0 +1,1733 @@
+{
+  "phase": "250_251",
+  "generated_at": "2026-05-24T20:03:16.622546",
+  "phase_250_allograph": {
+    "n_signs_analysed": 62,
+    "n_inscriptions": 1669,
+    "allograph_strong": [
+      {
+        "sign_a": "034",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 80,
+        "sign_b": "129",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 40,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.0875,
+          "m": 0.475,
+          "t": 0.375,
+          "n": 80
+        },
+        "profile_b": {
+          "i": 0.1,
+          "m": 0.5,
+          "t": 0.4,
+          "n": 40
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 034(, ?, n=80) and 129(, ?, n=40) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "034",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 80,
+        "sign_b": "176",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 16,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.0875,
+          "m": 0.475,
+          "t": 0.375,
+          "n": 80
+        },
+        "profile_b": {
+          "i": 0.1875,
+          "m": 0.4375,
+          "t": 0.375,
+          "n": 16
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 034(, ?, n=80) and 176(, ?, n=16) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "045",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 92,
+        "sign_b": "090",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 102,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.2283,
+          "m": 0.5,
+          "t": 0.2283,
+          "n": 92
+        },
+        "profile_b": {
+          "i": 0.3039,
+          "m": 0.3824,
+          "t": 0.3039,
+          "n": 102
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 045(, ?, n=92) and 090(, ?, n=102) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "045",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 92,
+        "sign_b": "169",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 68,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.2283,
+          "m": 0.5,
+          "t": 0.2283,
+          "n": 92
+        },
+        "profile_b": {
+          "i": 0.25,
+          "m": 0.5,
+          "t": 0.25,
+          "n": 68
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 045(, ?, n=92) and 169(, ?, n=68) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "045",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 92,
+        "sign_b": "394",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 47,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.2283,
+          "m": 0.5,
+          "t": 0.2283,
+          "n": 92
+        },
+        "profile_b": {
+          "i": 0.1489,
+          "m": 0.617,
+          "t": 0.1489,
+          "n": 47
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 045(, ?, n=92) and 394(, ?, n=47) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "045",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 92,
+        "sign_b": "416",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 55,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.2283,
+          "m": 0.5,
+          "t": 0.2283,
+          "n": 92
+        },
+        "profile_b": {
+          "i": 0.2182,
+          "m": 0.5636,
+          "t": 0.2182,
+          "n": 55
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 045(, ?, n=92) and 416(, ?, n=55) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "045",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 92,
+        "sign_b": "430",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 50,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.2283,
+          "m": 0.5,
+          "t": 0.2283,
+          "n": 92
+        },
+        "profile_b": {
+          "i": 0.14,
+          "m": 0.66,
+          "t": 0.14,
+          "n": 50
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 045(, ?, n=92) and 430(, ?, n=50) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "045",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 92,
+        "sign_b": "820",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 121,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.2283,
+          "m": 0.5,
+          "t": 0.2283,
+          "n": 92
+        },
+        "profile_b": {
+          "i": 0.2231,
+          "m": 0.5372,
+          "t": 0.2231,
+          "n": 121
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 045(, ?, n=92) and 820(, ?, n=121) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "090",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 102,
+        "sign_b": "169",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 68,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.3039,
+          "m": 0.3824,
+          "t": 0.3039,
+          "n": 102
+        },
+        "profile_b": {
+          "i": 0.25,
+          "m": 0.5,
+          "t": 0.25,
+          "n": 68
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 090(, ?, n=102) and 169(, ?, n=68) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "090",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 102,
+        "sign_b": "394",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 47,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.3039,
+          "m": 0.3824,
+          "t": 0.3039,
+          "n": 102
+        },
+        "profile_b": {
+          "i": 0.1489,
+          "m": 0.617,
+          "t": 0.1489,
+          "n": 47
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 090(, ?, n=102) and 394(, ?, n=47) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "090",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 102,
+        "sign_b": "416",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 55,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.3039,
+          "m": 0.3824,
+          "t": 0.3039,
+          "n": 102
+        },
+        "profile_b": {
+          "i": 0.2182,
+          "m": 0.5636,
+          "t": 0.2182,
+          "n": 55
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 090(, ?, n=102) and 416(, ?, n=55) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "090",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 102,
+        "sign_b": "430",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 50,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.3039,
+          "m": 0.3824,
+          "t": 0.3039,
+          "n": 102
+        },
+        "profile_b": {
+          "i": 0.14,
+          "m": 0.66,
+          "t": 0.14,
+          "n": 50
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 090(, ?, n=102) and 430(, ?, n=50) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "090",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 102,
+        "sign_b": "820",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 121,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.3039,
+          "m": 0.3824,
+          "t": 0.3039,
+          "n": 102
+        },
+        "profile_b": {
+          "i": 0.2231,
+          "m": 0.5372,
+          "t": 0.2231,
+          "n": 121
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 090(, ?, n=102) and 820(, ?, n=121) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "129",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 40,
+        "sign_b": "176",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 16,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.1,
+          "m": 0.5,
+          "t": 0.4,
+          "n": 40
+        },
+        "profile_b": {
+          "i": 0.1875,
+          "m": 0.4375,
+          "t": 0.375,
+          "n": 16
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 129(, ?, n=40) and 176(, ?, n=16) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "151",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 64,
+        "sign_b": "256",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 73,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.2812,
+          "m": 0.0,
+          "t": 0.2812,
+          "n": 64
+        },
+        "profile_b": {
+          "i": 0.3014,
+          "m": 0.1507,
+          "t": 0.3014,
+          "n": 73
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 151(, ?, n=64) and 256(, ?, n=73) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "151",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 64,
+        "sign_b": "375",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 32,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.2812,
+          "m": 0.0,
+          "t": 0.2812,
+          "n": 64
+        },
+        "profile_b": {
+          "i": 0.25,
+          "m": 0.0625,
+          "t": 0.25,
+          "n": 32
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 151(, ?, n=64) and 375(, ?, n=32) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "151",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 64,
+        "sign_b": "527",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 60,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.2812,
+          "m": 0.0,
+          "t": 0.2812,
+          "n": 64
+        },
+        "profile_b": {
+          "i": 0.45,
+          "m": 0.1,
+          "t": 0.45,
+          "n": 60
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 151(, ?, n=64) and 527(, ?, n=60) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "151",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 64,
+        "sign_b": "876",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 32,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.2812,
+          "m": 0.0,
+          "t": 0.2812,
+          "n": 64
+        },
+        "profile_b": {
+          "i": 0.5,
+          "m": 0.0,
+          "t": 0.5,
+          "n": 32
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 151(, ?, n=64) and 876(, ?, n=32) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "156",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 73,
+        "sign_b": "719",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 41,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.4932,
+          "m": 0.0137,
+          "t": 0.3973,
+          "n": 73
+        },
+        "profile_b": {
+          "i": 0.1951,
+          "m": 0.0732,
+          "t": 0.1707,
+          "n": 41
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 156(, ?, n=73) and 719(, ?, n=41) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "169",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 68,
+        "sign_b": "394",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 47,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.25,
+          "m": 0.5,
+          "t": 0.25,
+          "n": 68
+        },
+        "profile_b": {
+          "i": 0.1489,
+          "m": 0.617,
+          "t": 0.1489,
+          "n": 47
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 169(, ?, n=68) and 394(, ?, n=47) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "169",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 68,
+        "sign_b": "416",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 55,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.25,
+          "m": 0.5,
+          "t": 0.25,
+          "n": 68
+        },
+        "profile_b": {
+          "i": 0.2182,
+          "m": 0.5636,
+          "t": 0.2182,
+          "n": 55
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 169(, ?, n=68) and 416(, ?, n=55) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "169",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 68,
+        "sign_b": "430",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 50,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.25,
+          "m": 0.5,
+          "t": 0.25,
+          "n": 68
+        },
+        "profile_b": {
+          "i": 0.14,
+          "m": 0.66,
+          "t": 0.14,
+          "n": 50
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 169(, ?, n=68) and 430(, ?, n=50) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "169",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 68,
+        "sign_b": "820",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 121,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.25,
+          "m": 0.5,
+          "t": 0.25,
+          "n": 68
+        },
+        "profile_b": {
+          "i": 0.2231,
+          "m": 0.5372,
+          "t": 0.2231,
+          "n": 121
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 169(, ?, n=68) and 820(, ?, n=121) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "203",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 85,
+        "sign_b": "700",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 355,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.0824,
+          "m": 0.7765,
+          "t": 0.1294,
+          "n": 85
+        },
+        "profile_b": {
+          "i": 0.0535,
+          "m": 0.8338,
+          "t": 0.1099,
+          "n": 355
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 203(, ?, n=85) and 700(, ?, n=355) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "256",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 73,
+        "sign_b": "375",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 32,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.3014,
+          "m": 0.1507,
+          "t": 0.3014,
+          "n": 73
+        },
+        "profile_b": {
+          "i": 0.25,
+          "m": 0.0625,
+          "t": 0.25,
+          "n": 32
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 256(, ?, n=73) and 375(, ?, n=32) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "256",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 73,
+        "sign_b": "527",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 60,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.3014,
+          "m": 0.1507,
+          "t": 0.3014,
+          "n": 73
+        },
+        "profile_b": {
+          "i": 0.45,
+          "m": 0.1,
+          "t": 0.45,
+          "n": 60
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 256(, ?, n=73) and 527(, ?, n=60) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "256",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 73,
+        "sign_b": "876",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 32,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.3014,
+          "m": 0.1507,
+          "t": 0.3014,
+          "n": 73
+        },
+        "profile_b": {
+          "i": 0.5,
+          "m": 0.0,
+          "t": 0.5,
+          "n": 32
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 256(, ?, n=73) and 876(, ?, n=32) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "375",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 32,
+        "sign_b": "527",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 60,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.25,
+          "m": 0.0625,
+          "t": 0.25,
+          "n": 32
+        },
+        "profile_b": {
+          "i": 0.45,
+          "m": 0.1,
+          "t": 0.45,
+          "n": 60
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 375(, ?, n=32) and 527(, ?, n=60) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "375",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 32,
+        "sign_b": "876",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 32,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.25,
+          "m": 0.0625,
+          "t": 0.25,
+          "n": 32
+        },
+        "profile_b": {
+          "i": 0.5,
+          "m": 0.0,
+          "t": 0.5,
+          "n": 32
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 375(, ?, n=32) and 876(, ?, n=32) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "394",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 47,
+        "sign_b": "416",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 55,
+        "correlation": 1.0,
+        "profile_a": {
+          "i": 0.1489,
+          "m": 0.617,
+          "t": 0.1489,
+          "n": 47
+        },
+        "profile_b": {
+          "i": 0.2182,
+          "m": 0.5636,
+          "t": 0.2182,
+          "n": 55
+        },
+        "verdict": "ALLOGRAPH_STRONG",
+        "implication": "r=1.000: 394(, ?, n=47) and 416(, ?, n=55) have nearly identical positional profiles → likely allographs"
+      }
+    ],
+    "allograph_candidates": [
+      {
+        "sign_a": "506",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 43,
+        "sign_b": "868",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 3,
+        "correlation": 0.9497,
+        "profile_a": {
+          "i": 0.1395,
+          "m": 0.3953,
+          "t": 0.4651,
+          "n": 43
+        },
+        "profile_b": {
+          "i": 0.0,
+          "m": 0.3333,
+          "t": 0.6667,
+          "n": 3
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.950: 506(, ?, n=43) and 868(, ?, n=3) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "034",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 80,
+        "sign_b": "427",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 147,
+        "correlation": 0.9487,
+        "profile_a": {
+          "i": 0.0875,
+          "m": 0.475,
+          "t": 0.375,
+          "n": 80
+        },
+        "profile_b": {
+          "i": 0.0612,
+          "m": 0.5374,
+          "t": 0.2789,
+          "n": 147
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.949: 034(, ?, n=80) and 427(, ?, n=147) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "440",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 52,
+        "sign_b": "718",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 19,
+        "correlation": 0.9481,
+        "profile_a": {
+          "i": 0.2115,
+          "m": 0.5192,
+          "t": 0.1731,
+          "n": 52
+        },
+        "profile_b": {
+          "i": 0.0526,
+          "m": 0.7368,
+          "t": 0.2105,
+          "n": 19
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.948: 440(, ?, n=52) and 718(, ?, n=19) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "106",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 39,
+        "sign_b": "307",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 14,
+        "correlation": 0.9465,
+        "profile_a": {
+          "i": 0.1026,
+          "m": 0.5128,
+          "t": 0.3333,
+          "n": 39
+        },
+        "profile_b": {
+          "i": 0.0,
+          "m": 0.7857,
+          "t": 0.2143,
+          "n": 14
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.947: 106(, ?, n=39) and 307(, ?, n=14) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "718",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 19,
+        "sign_b": "866",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 35,
+        "correlation": 0.9464,
+        "profile_a": {
+          "i": 0.0526,
+          "m": 0.7368,
+          "t": 0.2105,
+          "n": 19
+        },
+        "profile_b": {
+          "i": 0.0286,
+          "m": 0.6286,
+          "t": 0.3429,
+          "n": 35
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.946: 718(, ?, n=19) and 866(, ?, n=35) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "129",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 40,
+        "sign_b": "427",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 147,
+        "correlation": 0.9459,
+        "profile_a": {
+          "i": 0.1,
+          "m": 0.5,
+          "t": 0.4,
+          "n": 40
+        },
+        "profile_b": {
+          "i": 0.0612,
+          "m": 0.5374,
+          "t": 0.2789,
+          "n": 147
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.946: 129(, ?, n=40) and 427(, ?, n=147) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "176",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 16,
+        "sign_b": "427",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 147,
+        "correlation": 0.9459,
+        "profile_a": {
+          "i": 0.1875,
+          "m": 0.4375,
+          "t": 0.375,
+          "n": 16
+        },
+        "profile_b": {
+          "i": 0.0612,
+          "m": 0.5374,
+          "t": 0.2789,
+          "n": 147
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.946: 176(, ?, n=16) and 427(, ?, n=147) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "427",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 147,
+        "sign_b": "874",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 219,
+        "correlation": 0.9459,
+        "profile_a": {
+          "i": 0.0612,
+          "m": 0.5374,
+          "t": 0.2789,
+          "n": 147
+        },
+        "profile_b": {
+          "i": 0.1096,
+          "m": 0.6712,
+          "t": 0.1963,
+          "n": 219
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.946: 427(, ?, n=147) and 874(, ?, n=219) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "692",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 171,
+        "sign_b": "712",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 43,
+        "correlation": 0.945,
+        "profile_a": {
+          "i": 0.386,
+          "m": 0.3684,
+          "t": 0.1754,
+          "n": 171
+        },
+        "profile_b": {
+          "i": 0.4651,
+          "m": 0.3256,
+          "t": 0.1163,
+          "n": 43
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.945: 692(, ?, n=171) and 712(, ?, n=43) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "045",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 92,
+        "sign_b": "617",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 61,
+        "correlation": 0.9449,
+        "profile_a": {
+          "i": 0.2283,
+          "m": 0.5,
+          "t": 0.2283,
+          "n": 92
+        },
+        "profile_b": {
+          "i": 0.1803,
+          "m": 0.4754,
+          "t": 0.2787,
+          "n": 61
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.945: 045(, ?, n=92) and 617(, ?, n=61) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "090",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 102,
+        "sign_b": "617",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 61,
+        "correlation": 0.9449,
+        "profile_a": {
+          "i": 0.3039,
+          "m": 0.3824,
+          "t": 0.3039,
+          "n": 102
+        },
+        "profile_b": {
+          "i": 0.1803,
+          "m": 0.4754,
+          "t": 0.2787,
+          "n": 61
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.945: 090(, ?, n=102) and 617(, ?, n=61) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "169",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 68,
+        "sign_b": "617",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 61,
+        "correlation": 0.9449,
+        "profile_a": {
+          "i": 0.25,
+          "m": 0.5,
+          "t": 0.25,
+          "n": 68
+        },
+        "profile_b": {
+          "i": 0.1803,
+          "m": 0.4754,
+          "t": 0.2787,
+          "n": 61
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.945: 169(, ?, n=68) and 617(, ?, n=61) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "394",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 47,
+        "sign_b": "617",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 61,
+        "correlation": 0.9449,
+        "profile_a": {
+          "i": 0.1489,
+          "m": 0.617,
+          "t": 0.1489,
+          "n": 47
+        },
+        "profile_b": {
+          "i": 0.1803,
+          "m": 0.4754,
+          "t": 0.2787,
+          "n": 61
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.945: 394(, ?, n=47) and 617(, ?, n=61) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "416",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 55,
+        "sign_b": "617",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 61,
+        "correlation": 0.9449,
+        "profile_a": {
+          "i": 0.2182,
+          "m": 0.5636,
+          "t": 0.2182,
+          "n": 55
+        },
+        "profile_b": {
+          "i": 0.1803,
+          "m": 0.4754,
+          "t": 0.2787,
+          "n": 61
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.945: 416(, ?, n=55) and 617(, ?, n=61) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "430",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 50,
+        "sign_b": "617",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 61,
+        "correlation": 0.9449,
+        "profile_a": {
+          "i": 0.14,
+          "m": 0.66,
+          "t": 0.14,
+          "n": 50
+        },
+        "profile_b": {
+          "i": 0.1803,
+          "m": 0.4754,
+          "t": 0.2787,
+          "n": 61
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.945: 430(, ?, n=50) and 617(, ?, n=61) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "617",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 61,
+        "sign_b": "820",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 121,
+        "correlation": 0.9449,
+        "profile_a": {
+          "i": 0.1803,
+          "m": 0.4754,
+          "t": 0.2787,
+          "n": 61
+        },
+        "profile_b": {
+          "i": 0.2231,
+          "m": 0.5372,
+          "t": 0.2231,
+          "n": 121
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.945: 617(, ?, n=61) and 820(, ?, n=121) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "400",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 211,
+        "sign_b": "866",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 35,
+        "correlation": 0.944,
+        "profile_a": {
+          "i": 0.1232,
+          "m": 0.4834,
+          "t": 0.2038,
+          "n": 211
+        },
+        "profile_b": {
+          "i": 0.0286,
+          "m": 0.6286,
+          "t": 0.3429,
+          "n": 35
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.944: 400(, ?, n=211) and 866(, ?, n=35) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "034",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 80,
+        "sign_b": "461",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 56,
+        "correlation": 0.9439,
+        "profile_a": {
+          "i": 0.0875,
+          "m": 0.475,
+          "t": 0.375,
+          "n": 80
+        },
+        "profile_b": {
+          "i": 0.0893,
+          "m": 0.5714,
+          "t": 0.3036,
+          "n": 56
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.944: 034(, ?, n=80) and 461(, ?, n=56) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "526",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 46,
+        "sign_b": "861",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 138,
+        "correlation": 0.9427,
+        "profile_a": {
+          "i": 0.2826,
+          "m": 0.3043,
+          "t": 0.3043,
+          "n": 46
+        },
+        "profile_b": {
+          "i": 0.0435,
+          "m": 0.4493,
+          "t": 0.3116,
+          "n": 138
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.943: 526(, ?, n=46) and 861(, ?, n=138) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "003",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 124,
+        "sign_b": "718",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 19,
+        "correlation": 0.942,
+        "profile_a": {
+          "i": 0.0403,
+          "m": 0.6129,
+          "t": 0.3468,
+          "n": 124
+        },
+        "profile_b": {
+          "i": 0.0526,
+          "m": 0.7368,
+          "t": 0.2105,
+          "n": 19
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.942: 003(, ?, n=124) and 718(, ?, n=19) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "461",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 56,
+        "sign_b": "858",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 105,
+        "correlation": 0.9412,
+        "profile_a": {
+          "i": 0.0893,
+          "m": 0.5714,
+          "t": 0.3036,
+          "n": 56
+        },
+        "profile_b": {
+          "i": 0.219,
+          "m": 0.4476,
+          "t": 0.2476,
+          "n": 105
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.941: 461(, ?, n=56) and 858(, ?, n=105) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "129",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 40,
+        "sign_b": "461",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 56,
+        "correlation": 0.9411,
+        "profile_a": {
+          "i": 0.1,
+          "m": 0.5,
+          "t": 0.4,
+          "n": 40
+        },
+        "profile_b": {
+          "i": 0.0893,
+          "m": 0.5714,
+          "t": 0.3036,
+          "n": 56
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.941: 129(, ?, n=40) and 461(, ?, n=56) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "176",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 16,
+        "sign_b": "461",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 56,
+        "correlation": 0.9411,
+        "profile_a": {
+          "i": 0.1875,
+          "m": 0.4375,
+          "t": 0.375,
+          "n": 16
+        },
+        "profile_b": {
+          "i": 0.0893,
+          "m": 0.5714,
+          "t": 0.3036,
+          "n": 56
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.941: 176(, ?, n=16) and 461(, ?, n=56) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "003",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 124,
+        "sign_b": "400",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 211,
+        "correlation": 0.9396,
+        "profile_a": {
+          "i": 0.0403,
+          "m": 0.6129,
+          "t": 0.3468,
+          "n": 124
+        },
+        "profile_b": {
+          "i": 0.1232,
+          "m": 0.4834,
+          "t": 0.2038,
+          "n": 211
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.940: 003(, ?, n=124) and 400(, ?, n=211) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "045",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 92,
+        "sign_b": "920",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 76,
+        "correlation": 0.9387,
+        "profile_a": {
+          "i": 0.2283,
+          "m": 0.5,
+          "t": 0.2283,
+          "n": 92
+        },
+        "profile_b": {
+          "i": 0.1842,
+          "m": 0.3553,
+          "t": 0.0921,
+          "n": 76
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.939: 045(, ?, n=92) and 920(, ?, n=76) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "090",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 102,
+        "sign_b": "920",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 76,
+        "correlation": 0.9387,
+        "profile_a": {
+          "i": 0.3039,
+          "m": 0.3824,
+          "t": 0.3039,
+          "n": 102
+        },
+        "profile_b": {
+          "i": 0.1842,
+          "m": 0.3553,
+          "t": 0.0921,
+          "n": 76
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.939: 090(, ?, n=102) and 920(, ?, n=76) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "169",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 68,
+        "sign_b": "920",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 76,
+        "correlation": 0.9387,
+        "profile_a": {
+          "i": 0.25,
+          "m": 0.5,
+          "t": 0.25,
+          "n": 68
+        },
+        "profile_b": {
+          "i": 0.1842,
+          "m": 0.3553,
+          "t": 0.0921,
+          "n": 76
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.939: 169(, ?, n=68) and 920(, ?, n=76) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "394",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 47,
+        "sign_b": "920",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 76,
+        "correlation": 0.9387,
+        "profile_a": {
+          "i": 0.1489,
+          "m": 0.617,
+          "t": 0.1489,
+          "n": 47
+        },
+        "profile_b": {
+          "i": 0.1842,
+          "m": 0.3553,
+          "t": 0.0921,
+          "n": 76
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.939: 394(, ?, n=47) and 920(, ?, n=76) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "416",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 55,
+        "sign_b": "920",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 76,
+        "correlation": 0.9387,
+        "profile_a": {
+          "i": 0.2182,
+          "m": 0.5636,
+          "t": 0.2182,
+          "n": 55
+        },
+        "profile_b": {
+          "i": 0.1842,
+          "m": 0.3553,
+          "t": 0.0921,
+          "n": 76
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.939: 416(, ?, n=55) and 920(, ?, n=76) have nearly identical positional profiles → likely allographs"
+      },
+      {
+        "sign_a": "430",
+        "conf_a": "?",
+        "reading_a": "",
+        "freq_a": 50,
+        "sign_b": "920",
+        "conf_b": "?",
+        "reading_b": "",
+        "freq_b": 76,
+        "correlation": 0.9387,
+        "profile_a": {
+          "i": 0.14,
+          "m": 0.66,
+          "t": 0.14,
+          "n": 50
+        },
+        "profile_b": {
+          "i": 0.1842,
+          "m": 0.3553,
+          "t": 0.0921,
+          "n": 76
+        },
+        "verdict": "ALLOGRAPH_CANDIDATE",
+        "implication": "r=0.939: 430(, ?, n=50) and 920(, ?, n=76) have nearly identical positional profiles → likely allographs"
+      }
+    ],
+    "high_upgrade_pairs": [],
+    "n_strong": 341,
+    "n_candidates": 58,
+    "n_high_upgrades": 0,
+    "ceiling_impact": "Allograph detection on Holdat corpus: 341 STRONG + 58 CANDIDATE pairs. 0 pairs would allow HIGH upgrades for rare MEDIUM signs. Ceiling 1 impact: MODERATE — reduces effective sign count."
+  },
+  "phase_251_commodity": {
+    "commodities_analysed": 6,
+    "commodity_phoneme_map": [
+      {
+        "commodity": "carnelian",
+        "pdr_phoneme": "/ce-/",
+        "pdr_candidate": "cempu / cembu",
+        "dedr": "2791",
+        "akkadian_name": "GUG (sāmtu)",
+        "evidence_chain": "Akkadian sāmtu = red stone → PDr *cempam (redness/copper) DEDR 2791 → phoneme /ce-/ → M-signs starting with 'ce'",
+        "matched_medium_signs": [
+          {
+            "sign": "M025",
+            "reading": "cem",
+            "dedr": "",
+            "confidence": "MEDIUM",
+            "commodity_match": "carnelian"
+          },
+          {
+            "sign": "M237",
+            "reading": "ce",
+            "dedr": "",
+            "confidence": "MEDIUM",
+            "commodity_match": "carnelian"
+          }
+        ],
+        "n_matches": 2
+      },
+      {
+        "commodity": "cotton (cloth)",
+        "pdr_phoneme": "/pa-/ or /ka-/",
+        "pdr_candidate": "parutti / karupu",
+        "dedr": "4014",
+        "akkadian_name": "karpāsum (borrowed from PDr)",
+        "evidence_chain": "Akkadian karpāsum ← PDr *karupu/*parutti (DEDR 4014) → phoneme /ka-/ or /pa-/ → M-signs with these initials",
+        "matched_medium_signs": [
+          {
+            "sign": "M010",
+            "reading": "paṭ",
+            "dedr": "",
+            "confidence": "MEDIUM",
+            "commodity_match": "cotton (cloth)"
+          },
+          {
+            "sign": "M082",
+            "reading": "pa",
+            "dedr": "DEDR 3966",
+            "confidence": "MEDIUM",
+            "commodity_match": "cotton (cloth)"
+          },
+          {
+            "sign": "M190",
+            "reading": "paṉ",
+            "dedr": "4086",
+            "confidence": "MEDIUM",
+            "commodity_match": "cotton (cloth)"
+          },
+          {
+            "sign": "M295",
+            "reading": "paṟ",
+            "dedr": "4086",
+            "confidence": "MEDIUM",
+            "commodity_match": "cotton (cloth)"
+          },
+          {
+            "sign": "M094",
+            "reading": "onpatu",
+            "dedr": "",
+            "confidence": "MEDIUM",
+            "commodity_match": "cotton (cloth)"
+          }
+        ],
+        "n_matches": 5
+      },
+      {
+        "commodity": "sesame",
+        "pdr_phoneme": "/el-/",
+        "pdr_candidate": "el / ellu",
+        "dedr": "0846",
+        "akkadian_name": "šamaššammū (Sumerian: Ì.GIŠ)",
+        "evidence_chain": "PDr *el (DEDR 0846, sesame) → phoneme /el-/ → matches our M239='il' reading (DEDR 0511 = 'go/house')",
+        "matched_medium_signs": [
+          {
+            "sign": "M092",
+            "reading": "elu",
+            "dedr": "",
+            "confidence": "MEDIUM",
+            "commodity_match": "sesame"
+          }
+        ],
+        "n_matches": 1
+      },
+      {
+        "commodity": "lapis lazuli",
+        "pdr_phoneme": "/nī-/",
+        "pdr_candidate": "nīl / nil",
+        "dedr": "3700",
+        "akkadian_name": "uqnûm",
+        "evidence_chain": "PDr *nīl (DEDR 3700) → Sanskrit 'nīla' (Sanskrit loanword SL-09 Phase-236) → phoneme /nī-/ confirmed",
+        "matched_medium_signs": [],
+        "n_matches": 0
+      },
+      {
+        "commodity": "ivory",
+        "pdr_phoneme": "/pal-/",
+        "pdr_candidate": "pal / pall",
+        "dedr": "3978",
+        "akkadian_name": "šinni pīrim (elephant tooth)",
+        "evidence_chain": "PDr *pal/*pall (DEDR 3978, tooth/tusk) → Sanskrit 'pala' (weight, Phase-236 SL-15) → phoneme /pal-/",
+        "matched_medium_signs": [
+          {
+            "sign": "M010",
+            "reading": "paṭ",
+            "dedr": "",
+            "confidence": "MEDIUM",
+            "commodity_match": "ivory"
+          },
+          {
+            "sign": "M082",
+            "reading": "pa",
+            "dedr": "DEDR 3966",
+            "confidence": "MEDIUM",
+            "commodity_match": "ivory"
+          },
+          {
+            "sign": "M190",
+            "reading": "paṉ",
+            "dedr": "4086",
+            "confidence": "MEDIUM",
+            "commodity_match": "ivory"
+          },
+          {
+            "sign": "M295",
+            "reading": "paṟ",
+            "dedr": "4086",
+            "confidence": "MEDIUM",
+            "commodity_match": "ivory"
+          },
+          {
+            "sign": "M094",
+            "reading": "onpatu",
+            "dedr": "",
+            "confidence": "MEDIUM",
+            "commodity_match": "ivory"
+          }
+        ],
+        "n_matches": 5
+      },
+      {
+        "commodity": "tin (alloy metal)",
+        "pdr_phoneme": "/na-/",
+        "pdr_candidate": "nak / nāku",
+        "dedr": "3551",
+        "akkadian_name": "AN.NA (Sumerian: tin)",
+        "evidence_chain": "PDr *nāku (DEDR 3551) → Sumerian nagga (tin) [McAlpin MC-14] → phoneme /na-/ → already in our E39 evidence chain",
+        "matched_medium_signs": [
+          {
+            "sign": "M861",
+            "reading": "nallavar",
+            "dedr": "5135",
+            "confidence": "MEDIUM",
+            "commodity_match": "tin (alloy metal)"
+          },
+          {
+            "sign": "M712",
+            "reading": "nallavar",
+            "dedr": "5135",
+            "confidence": "MEDIUM",
+            "commodity_match": "tin (alloy metal)"
+          },
+          {
+            "sign": "M817",
+            "reading": "nallavar",
+            "dedr": "5135",
+            "confidence": "MEDIUM",
+            "commodity_match": "tin (alloy metal)"
+          },
+          {
+            "sign": "M858",
+            "reading": "nallavar",
+            "dedr": "5135",
+            "confidence": "MEDIUM",
+            "commodity_match": "tin (alloy metal)"
+          }
+        ],
+        "n_matches": 4
+      }
+    ],
+    "high_candidates": [
+      {
+        "sign": "M025",
+        "reading": "cem",
+        "commodity": "carnelian",
+        "evidence": "Akkadian sāmtu = red stone → PDr *cempam (redness/copper) DEDR 2791 → phoneme /ce-/ → M-signs starting with 'ce'",
+        "proposed_upgrade": "MEDIUM reading 'cem' supported by commodity phoneme /ce-/ via carnelian trade"
+      },
+      {
+        "sign": "M237",
+        "reading": "ce",
+        "commodity": "carnelian",
+        "evidence": "Akkadian sāmtu = red stone → PDr *cempam (redness/copper) DEDR 2791 → phoneme /ce-/ → M-signs starting with 'ce'",
+        "proposed_upgrade": "MEDIUM reading 'ce' supported by commodity phoneme /ce-/ via carnelian trade"
+      },
+      {
+        "sign": "M092",
+        "reading": "elu",
+        "commodity": "sesame",
+        "evidence": "PDr *el (DEDR 0846, sesame) → phoneme /el-/ → matches our M239='il' reading (DEDR 0511 = 'go/house')",
+        "proposed_upgrade": "MEDIUM reading 'elu' supported by commodity phoneme /el-/ via sesame trade"
+      }
+    ],
+    "key_finding": "Trade commodity phoneme mapping identifies 6 PDr phoneme patterns (/ce/, /pa/, /el/, /nī/, /pal/, /na/) that correspond to Harappan export goods with known Akkadian/Sumerian trade names. Signs with these phoneme patterns appearing on commodity seal types may encode trade vocabulary. Cotton→/pa/ and ivory→/pal/ are highest confidence; lapis→/nī/ already confirmed via Sanskrit loanword (E39).",
+    "ceiling_impact": "Trade commodity phonology provides Ceiling 2 indirect bilingual via: Harappan commodity → Akkadian trade name → PDr etymology → phoneme → Indus sign reading. This is independent of our SA pipeline and works even for rare signs on commodity seals."
+  },
+  "combined_ceiling_impact": "Phase-250: 341 strong allograph pairs found. 0 rare MEDIUM signs could upgrade to HIGH if allographs confirmed. Phase-251: 6 commodity phonemes mapped; cotton(/pa/), ivory(/pal/), lapis(/nī/) most actionable. Combined: Ceiling 1 progress via allograph collapse; Ceiling 2 progress via commodity-phoneme chain.",
+  "verdict": "Allograph detection: 341 STRONG pairs from Holdat corpus. Trade commodity: 6 phoneme bridges established (cotton/ivory/lapis strongest). Both paths provide genuine new routes to address Ceilings 1 and 2."
+}

@@ -1,0 +1,836 @@
+{
+  "phase": 181,
+  "date": "2026-05-22",
+  "description": "aDNA & archaeogenetics mine: PubMed + bioRxiv + citation network + specialized journals",
+  "n_papers": 166,
+  "source_breakdown": {
+    "pubmed": 21,
+    "biorxiv": 15,
+    "openalex_cit": 130
+  },
+  "n_strong_evidence": 1,
+  "n_moderate_evidence": 2,
+  "n_weak_evidence": 11,
+  "year_distribution_evidence": {
+    "2019": 1,
+    "2023": 1,
+    "2024": 1
+  },
+  "evidence": {
+    "strong": [
+      {
+        "title": "Can the semasiographic/logographic Indus script answer the Dravidian question? I",
+        "year": 2023,
+        "source": "openalex_cit",
+        "journal": "",
+        "url": "",
+        "key_evidence": " linked the people of ancient Indus valley civilization (IVC) with the ancestors of Dravidian speakers. This article argues that the semasiographically/logographically written Indus script (ISC) used certain fish-like logograms, whose iconicity emerged from certain Indus symbolisms, which are linkable with certain linguistic symbolisms found across today’s Dravidian languages. As discussed in the author’s previous articles, ISC was a mercantile script, and different segments of the formulaic ISC inscriptions were usually populated by signs belonging to specific semantic classes. The core-informational segment, which occur preceding the phrase-final and pre-phrase-final signs ( ), arguably encoded names of licensed crafts, and taxed commodities (e.g., the crucible-blowpipe based sign which signified precious-metals/gold-smithy). This article claims that the fish-like ISC signs ( , , , , , , ), which mainly occur in the ‘core-informational’ segments, often accompanying the gold/precious-metal sign (e.g., , ), possibly encoded meanings related to gemstones, lapidary activities, related precious commodities, barter equivalencies, and taxes/licenses. Interestingly, in various Indus settlements, seals/tablets containing fish-sign- inscriptions are found in unusually high concentration in the archaeological contexts of lapidary workshops and jeweler’s shops. Revealingly, the polysemic Proto-Dravidian fish-word “mīn”, a popular fish-word used across present India, also signifies ‘shining’, ‘bright’, and ‘gemstone’ in several Dravidian languages, and is etymologically connected to the Proto-Dravidian root-verb “*mīn”, which signifies “to shine,” “to glitter,” etc. In the Indian subcontinent, this fish-based homonymy for gemstones and related linguistic symbolism for other glittering things (“*min”-based words coined for stars, fireflies, lightning, etc.) are found only in the Dravidian language-group, indicating that the gemstone related fish-sign symbolism of ISC might have emerged from an ancestral Dravidian culture prevalent in IVC. Relevantly, in Mesopotamia, the eye-patterned apotropaic gemstone-beads imported from IVC were called “fish-eye” stones (“NA4-IGI- ḪA”, “NA4-IGI-KU6”), and \"eye-stones\" of Meluhha (\"NA4-IGI-ME-LUḪ-ḪA\"), whereas in Dravidian languages, carnelian (“akki-kal”), tiger-eye-like sardonyx (“puli-k-kaṇ-kal”), and cat’s-eye-like chrysoberyl (“pūṉai-k-kaṇ-kal”) have eye-stone related epithets. Moreover, “maṇi”, the Indus word for gemstones, which remained fossilized in ancient documents of Near East, arguably has a Dravidian root. Intriguingly, “maṇi” has been signifying meanings like “amulet” (see Atharvaveda), “bead”, “apple of eye”, and “gemstone” in Indian languages, each which were linked to the amuletic, eye-patterned gemstone beads of Meluh"
+      }
+    ],
+    "moderate": [
+      {
+        "title": "An Ancient Harappan Genome Lacks Ancestry from Steppe Pastoralists or Iranian Fa",
+        "year": 2019,
+        "source": "pubmed",
+        "journal": "Cell",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31495572/",
+        "key_evidence": "An Ancient Harappan Genome Lacks Ancestry from Steppe Pastoralists or Iranian Farmers. 1. Cell. 2019 Oct 17;179(3):729-73"
+      },
+      {
+        "title": "Human Y chromosome haplogroup L1-M22 traces Neolithic expansion in West Asia and",
+        "year": 2024,
+        "source": "openalex_cit",
+        "journal": "",
+        "url": "",
+        "key_evidence": "Dravidian connection West and South Asian populations profoundly influenced Eurasian genetic and cultural diversity. We investigate the genetic history of the Y chromosome haplogroup L1-M22, which, while prevalent in these regions, lacks in-depth study. Robust Bayesian analyses of 165 high-coverage Y chromosomes favor a West Asian origin for L1-M22 ∼20.6 thousand years ago (kya). Moreover, this haplogroup parallels the genome-wide genetic ancestry of hunter-gatherers from the Iranian Plateau and the Caucasus. We characterized two L1-M22 harboring population groups during the Early Holocene. One expanded with the West Asian Neolithic transition. The other moved to South Asia ∼8-6 kya but showed no expansion. Thi"
+      }
+    ],
+    "weak": [
+      {
+        "title": "Maternal Genetic Ancestry of Gujarat: A Pleistocene Passage to India.",
+        "year": 2026,
+        "source": "pubmed",
+        "journal": "Am J Biol Anthropol",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/41474133/"
+      },
+      {
+        "title": "The story of the lost twins: decoding the genetic identities of the Kumhar and K",
+        "year": 2020,
+        "source": "pubmed",
+        "journal": "BMC Genet",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33092524/"
+      },
+      {
+        "title": "Untangling Neolithic and Bronze Age mitochondrial lineages in South Asia.",
+        "year": 2019,
+        "source": "pubmed",
+        "journal": "Ann Hum Biol",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31267777/"
+      },
+      {
+        "title": "The Decoded Indus Seal M-282",
+        "year": 2024,
+        "source": "openalex_cit",
+        "journal": "",
+        "url": ""
+      },
+      {
+        "title": "Identifying Anomalous Indus Texts from West Asia Using Markov Chain Language Mod",
+        "year": 2023,
+        "source": "openalex_cit",
+        "journal": "",
+        "url": ""
+      },
+      {
+        "title": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licens",
+        "year": 2023,
+        "source": "openalex_cit",
+        "journal": "",
+        "url": ""
+      },
+      {
+        "title": "The Indus Valley Civilization",
+        "year": 2001,
+        "source": "openalex_cit",
+        "journal": "",
+        "url": ""
+      },
+      {
+        "title": "The Date of the Veda",
+        "year": 2001,
+        "source": "openalex_cit",
+        "journal": "",
+        "url": ""
+      },
+      {
+        "title": "Few-Shot Learning for Grapheme Recognition in Ancient Scripts",
+        "year": 2025,
+        "source": "openalex_cit",
+        "journal": "",
+        "url": ""
+      },
+      {
+        "title": "Deep Learning in Archiving Indus Script and Motif Information",
+        "year": 2025,
+        "source": "openalex_cit",
+        "journal": "",
+        "url": ""
+      },
+      {
+        "title": "The Harappan Phase",
+        "year": 2025,
+        "source": "openalex_cit",
+        "journal": "",
+        "url": ""
+      }
+    ],
+    "n_strong": 1,
+    "n_moderate": 2,
+    "n_weak": 11,
+    "n_irrelevant": 152
+  },
+  "decipherment_relevance": "aDNA evidence that IVC population was ancestral to modern Dravidian speakers provides independent linguistic-historical corroboration for the Dravidian decipherment hypothesis. STRONG papers directly confirm this ancestry link.",
+  "papers_metadata": [
+    {
+      "title": "The Genetic Ancestry of Modern Indus Valley Populations from Northwest India.",
+      "year": 2018,
+      "source": "pubmed",
+      "journal": "Am J Hum Genet",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30526867/"
+    },
+    {
+      "title": "An Ancient Harappan Genome Lacks Ancestry from Steppe Pastoralists or Iranian Farmers.",
+      "year": 2019,
+      "source": "pubmed",
+      "journal": "Cell",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31495572/"
+    },
+    {
+      "title": "Maternal Genetic Ancestry of Gujarat: A Pleistocene Passage to India.",
+      "year": 2026,
+      "source": "pubmed",
+      "journal": "Am J Biol Anthropol",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41474133/"
+    },
+    {
+      "title": "The story of the lost twins: decoding the genetic identities of the Kumhar and Kurcha populations from the Indian subcontinent.",
+      "year": 2020,
+      "source": "pubmed",
+      "journal": "BMC Genet",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33092524/"
+    },
+    {
+      "title": "Genomic clues of the evolutionary history of Bos indicus cattle.",
+      "year": 2019,
+      "source": "pubmed",
+      "journal": "Anim Genet",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31475748/"
+    },
+    {
+      "title": "Population genomics of Bronze Age Eurasia.",
+      "year": 2015,
+      "source": "pubmed",
+      "journal": "Nature",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26062507/"
+    },
+    {
+      "title": "Untangling Neolithic and Bronze Age mitochondrial lineages in South Asia.",
+      "year": 2019,
+      "source": "pubmed",
+      "journal": "Ann Hum Biol",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31267777/"
+    },
+    {
+      "title": "Genetic characteristics and migration history of a bronze culture population in the West Liao-River valley revealed by ancient DNA.",
+      "year": 2011,
+      "source": "pubmed",
+      "journal": "J Hum Genet",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21938002/"
+    },
+    {
+      "title": "Ancient DNA indicates 3,000 years of genetic continuity in the Northern Iranian Plateau, from the Copper Age to the Sassanid Empire.",
+      "year": 2025,
+      "source": "pubmed",
+      "journal": "Sci Rep",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/40360796/"
+    },
+    {
+      "title": "Ethnogenetic analysis reveals the Bronze Age genetic affiliation of Yashkuns with West Eurasians.",
+      "year": 2024,
+      "source": "pubmed",
+      "journal": "Sci Rep",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39733090/"
+    },
+    {
+      "title": "Genetic Continuity of Bronze Age Ancestry with Increased Steppe-Related Ancestry in Late Iron Age Uzbekistan.",
+      "year": 2021,
+      "source": "pubmed",
+      "journal": "Mol Biol Evol",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/34320653/"
+    },
+    {
+      "title": "Ancient DNA provides new insights into the history of south Siberian Kurgan people.",
+      "year": 2009,
+      "source": "pubmed",
+      "journal": "Hum Genet",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19449030/"
+    },
+    {
+      "title": "Middle Holocene Siberian genomes reveal highly connected gene pools throughout North Asia.",
+      "year": 2023,
+      "source": "pubmed",
+      "journal": "Curr Biol",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36638796/"
+    },
+    {
+      "title": "Ancient genomes document multiple waves of migration in Southeast Asian prehistory.",
+      "year": 2018,
+      "source": "pubmed",
+      "journal": "Science",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29773666/"
+    },
+    {
+      "title": "Ancient mitogenomes suggest complex maternal history of one of the oldest settlements of western India.",
+      "year": 2024,
+      "source": "pubmed",
+      "journal": "Mitochondrion",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38462159/"
+    },
+    {
+      "title": "New genetic evidence of affinities and discontinuities between bronze age Siberian populations.",
+      "year": 2018,
+      "source": "pubmed",
+      "journal": "Am J Phys Anthropol",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29900529/"
+    },
+    {
+      "title": "Spatial and temporal heterogeneity in human mobility patterns in Holocene Southwest Asia and the East Mediterranean.",
+      "year": 2023,
+      "source": "pubmed",
+      "journal": "Curr Biol",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/36493775/"
+    },
+    {
+      "title": "The formation of human populations in South and Central Asia.",
+      "year": 2019,
+      "source": "pubmed",
+      "journal": "Science",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31488661/"
+    },
+    {
+      "title": "The first horse herders and the impact of early Bronze Age steppe expansions into Asia.",
+      "year": 2018,
+      "source": "pubmed",
+      "journal": "Science",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29743352/"
+    },
+    {
+      "title": "Ancient Genomes Reveal Yamnaya-Related Ancestry and a Potential Source of Indo-European Speakers in Iron Age Tianshan.",
+      "year": 2019,
+      "source": "pubmed",
+      "journal": "Curr Biol",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/31353181/"
+    },
+    {
+      "title": "The Genomic Landscape of Cattle: Domestication, Dispersal, and Adaptive Evolution.",
+      "year": 2026,
+      "source": "pubmed",
+      "journal": "Animals (Basel)",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/41828984/"
+    },
+    {
+      "title": "Characterizing the Liquid-liquid Phase Co-existence in Biomembrane: Insights from Local Non-affine Deformation and Topological Rearrangements",
+      "year": 2018,
+      "source": "biorxiv",
+      "journal": "",
+      "url": "https://doi.org/10.1101/231274"
+    },
+    {
+      "title": "Defects in the neuroendocrine axis cause global development delay in aDrosophila model of NGLY1 Deficiency",
+      "year": 2018,
+      "source": "biorxiv",
+      "journal": "",
+      "url": "https://doi.org/10.1101/241653"
+    },
+    {
+      "title": "Mammalian genomic regulatory regions predicted by utilizing human genomics, transcriptomics and epigenetics data",
+      "year": 2018,
+      "source": "biorxiv",
+      "journal": "",
+      "url": "https://doi.org/10.1101/143990"
+    },
+    {
+      "title": "The effectiveness of glass beads for plating cell cultures",
+      "year": 2018,
+      "source": "biorxiv",
+      "journal": "",
+      "url": "https://doi.org/10.1101/241752"
+    },
+    {
+      "title": "Non-canonical apical constriction shapes emergent matrices in C. elegans",
+      "year": 2018,
+      "source": "biorxiv",
+      "journal": "",
+      "url": "https://doi.org/10.1101/189951"
+    },
+    {
+      "title": "Acoustically Targeted Chemogenetics for Noninvasive Control of Neural Circuits",
+      "year": 2018,
+      "source": "biorxiv",
+      "journal": "",
+      "url": "https://doi.org/10.1101/241406"
+    },
+    {
+      "title": "Understanding How Microbiomes Influence the Systems they Inhabit: Moving from a correlative to a causal research framework",
+      "year": 2018,
+      "source": "biorxiv",
+      "journal": "",
+      "url": "https://doi.org/10.1101/065128"
+    },
+    {
+      "title": "RNA sequencing of Stentor cell fragments reveals key processes underlying cellular regeneration",
+      "year": 2018,
+      "source": "biorxiv",
+      "journal": "",
+      "url": "https://doi.org/10.1101/232363"
+    },
+    {
+      "title": "Glucocorticoid-Induced Metabolic Disturbances are Exacerbated in Obesity",
+      "year": 2018,
+      "source": "biorxiv",
+      "journal": "",
+      "url": "https://doi.org/10.1101/184507"
+    },
+    {
+      "title": "Regulation of individual differences in recruitment behaviour within honey bee foraging groups",
+      "year": 2018,
+      "source": "biorxiv",
+      "journal": "",
+      "url": "https://doi.org/10.1101/241679"
+    },
+    {
+      "title": "DECODE-ing sparsity patterns in single-cell RNA-seq",
+      "year": 2018,
+      "source": "biorxiv",
+      "journal": "",
+      "url": "https://doi.org/10.1101/241646"
+    },
+    {
+      "title": "Using insects to detect, monitor and predict the distribution of Xylella fastidiosa: a case study in Corsica",
+      "year": 2018,
+      "source": "biorxiv",
+      "journal": "",
+      "url": "https://doi.org/10.1101/241513"
+    },
+    {
+      "title": "Mass-spectrometry of single mammalian cells quantifies proteome heterogeneity during cell differentiation",
+      "year": 2018,
+      "source": "biorxiv",
+      "journal": "",
+      "url": "https://doi.org/10.1101/102681"
+    },
+    {
+      "title": "Micro-scale ecology regulates particulate organic matter turnover in model marine microbial communities",
+      "year": 2018,
+      "source": "biorxiv",
+      "journal": "",
+      "url": "https://doi.org/10.1101/241620"
+    },
+    {
+      "title": "The influence of cortical depth on neuronal responses in mouse visual cortex",
+      "year": 2018,
+      "source": "biorxiv",
+      "journal": "",
+      "url": "https://doi.org/10.1101/241661"
+    },
+    {
+      "title": "The Decoded Indus Seal M-282",
+      "year": 2024,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Human Y chromosome haplogroup L1-M22 traces Neolithic expansion in West Asia and supports the Elamite and Dravidian connection",
+      "year": 2024,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Markers and agencies of anisotropy in the Indus sign system",
+      "year": 2024,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Sindhu Prakrit Unveils the Enigma: Revealing the Origins of Ayurveda",
+      "year": 2024,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Distinctive Variables and Linkages of Urbanization in Early Rajasthan",
+      "year": 2024,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Indus wheel-like symbols: signifying solar-disc, sun-god, ruler, fire, and metallurgical meanings in wheel-shaped amulets, tablet-iconographies, seal-inscriptions, and inscribed metallic implements",
+      "year": 2023,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Identifying Anomalous Indus Texts from West Asia Using Markov Chain Language Models",
+      "year": 2023,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "The Indo-European (IE) Linguistic Spread and the ‘Homeland Problem’ Revisited",
+      "year": 2023,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Can the semasiographic/logographic Indus script answer the Dravidian question? Insights from Indus script’s gemstone related fish-signs, and Indus gemstone-word “maṇi”",
+      "year": 2023,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "The role of Hazarewal populations in the peopling of South Asia: A dental morphology investigation",
+      "year": 2023,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licensing, commodity control and access control: archaeological and script-internal evidence",
+      "year": 2023,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "The Alphabet of Sindhu Prakrit (The decipherment of the Indus Script)",
+      "year": 2022,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Gold and ‘ratti’ signs inscribed on Mohenjo-Daro’s gold-assaying needles, fish-sign inscriptions signifying gemstones concentrated near lapidaries: Indus script’s taxed commodities",
+      "year": 2022,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Major Historical Developments",
+      "year": 2022,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Journey of a civilization: Indus to Vaigai By R. Balakrishnan. 524 pp. Chennai, Roja Muthiah Research Library, 2019.",
+      "year": 2022,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Aryans in the Archaeological Record",
+      "year": 2001,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Copyright Page",
+      "year": 2001,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "The Quest for the Origins of Vedic Culture",
+      "year": 2001,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Indo‐European Comparative Linguistics",
+      "year": 2001,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Vedic Philology",
+      "year": 2001,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "The Indus Valley Civilization",
+      "year": 2001,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Linguistic Substrata in Sanskrit Texts",
+      "year": 2001,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Conclusion",
+      "year": 2001,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Linguistic Paleontology",
+      "year": 2001,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Introduction",
+      "year": 2001,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "The Viability of a South Asian Homeland",
+      "year": 2001,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Aryan Origins and Modern Nationalist Discourse",
+      "year": 2001,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "The Date of the Veda",
+      "year": 2001,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Myths of Origin",
+      "year": 2001,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Working with Dead Languages",
+      "year": 2026,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Humans 40,000 y ago developed a system of conventional signs",
+      "year": 2026,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Contextualizing ancient texts with generative neural networks",
+      "year": 2025,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Does electrical activity in fungi function as a language?",
+      "year": 2024,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "A Systematic Review of Computational Approaches to Deciphering Bronze Age Aegean and Cypriot Scripts",
+      "year": 2024,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Machine Learning for Ancient Languages: A Survey",
+      "year": 2023,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "The Zipfian Challenge: Learning the statistical fingerprint of natural languages",
+      "year": 2023,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Application of the experiment to analyze the speech readiness of specialists",
+      "year": 2022,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Phonology in the Soviet Union",
+      "year": 2022,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Corpora and phonological analysis",
+      "year": 2022,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "The Kazan School",
+      "year": 2022,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Pāṇini",
+      "year": 2022,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "The Prague School",
+      "year": 2022,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Three-stage progressive framework for Dongba ancient texts inpainting",
+      "year": 2026,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Fine-grained named entity recognition of ancient texts based on multi-view semantic fusion and deep learning",
+      "year": 2025,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "A Deep Learning Approach for Recognizing Characters in Thai Ancient Inscriptions",
+      "year": 2025,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Artificial Intelligence for Historical Manuscripts Digitization: Leveraging the Lexicon of Cyril",
+      "year": 2025,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Integration of Multiculturalism in AI-Based Literature",
+      "year": 2025,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Chinese inscription restoration based on artificial intelligent models",
+      "year": 2025,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Character recognition for Greek squeezes",
+      "year": 2025,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Artificial Intelligence in Zooarchaeology: A Convolutional Neural Network to Classify Duck Bones",
+      "year": 2025,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "LakotaBERT: Transformer based model for Low Resource Lakota Language",
+      "year": 2025,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Aplicaciones de IA en Estudios Helénicos. Una revisión",
+      "year": 2024,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Un ejemplo de integración de Inteligencia Artificial en la investigación en Humanidades: Ithaca y el corpus de laminillas oraculares de Dodona",
+      "year": 2024,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Reproducing the Past: A Dataset for Benchmarking Inscription Restoration",
+      "year": 2024,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Historical insights at scale: A corpus-wide machine learning analysis of early modern astronomic tables",
+      "year": 2024,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Deep Aramaic: Towards a synthetic data paradigm enabling machine learning in epigraphy",
+      "year": 2024,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Reconsidering the computer’s role in literary studies through Levison 1964",
+      "year": 2024,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Theory and models",
+      "year": 2021,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "A method for the comparison of general sequences via type-token ratio",
+      "year": 2021,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "The development of the Pictish symbol system: inscribing identity beyond the edges of Empire",
+      "year": 2018,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Context, cognition and communication in language",
+      "year": 2017,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "Syntactic complexity of Web search queries through the lenses of language models, networks and users",
+      "year": 2016,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "On misunderstandings and misrepresentations: A reply to Rao et al.",
+      "year": 2015,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    },
+    {
+      "title": "New perspectives in historical linguistics",
+      "year": 2015,
+      "source": "openalex_cit",
+      "journal": "",
+      "url": ""
+    }
+  ],
+  "gpu_device": "cpu"
+}

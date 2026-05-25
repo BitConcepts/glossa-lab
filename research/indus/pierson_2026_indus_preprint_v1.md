@@ -19,7 +19,7 @@ header-includes:
 
 # A Complete Computational Decipherment Hypothesis for the Indus Script: 605 Proto-Dravidian Sign Readings Validated Across Two Independent Corpora
 
-**Tristan Kyle Pierson**\
+**Tristen Kyle Pierson**\
 ORCID: 0009-0003-7269-956X\
 Glossa-Lab / BitConcepts LLC\
 Correspondence: tpierson@bitconcepts.tech\
@@ -437,4 +437,4 @@ Mahadevan (1977) for the sign catalogue. Parpola (1994, 2010) for the Dravidian 
 
 *End of Preprint v1*\
 *Glossa-Lab, May 2026*\
-*Tristan Kyle Pierson*
+*Tristen Kyle Pierson*

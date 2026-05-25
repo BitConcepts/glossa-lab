@@ -1,0 +1,21 @@
+{
+  "phase": "266_267",
+  "elapsed_s": 15.0,
+  "sa_params": {
+    "max_iter": 10000,
+    "restarts": 5,
+    "n_seeds": 8
+  },
+  "lm_vocab": 7514,
+  "n_high_pinned": 34,
+  "mean_consistency": 0.7148,
+  "hci_75": 39,
+  "hci_40": 47,
+  "n_upgraded": 0,
+  "upgrade_log": [],
+  "final_state": {
+    "HIGH": 139,
+    "MEDIUM": 274,
+    "total": 413
+  }
+}

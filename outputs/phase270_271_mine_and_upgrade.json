@@ -1,0 +1,373 @@
+{
+  "phase": "270_271",
+  "generated_at": "2026-05-25T02:55:34.692398+00:00",
+  "elapsed_s": 65.3,
+  "mine": {
+    "total_papers": 2566,
+    "icit_hits": 24,
+    "method_hits": 0,
+    "indus_hits": 150,
+    "top_indus": [
+      {
+        "title": "The Ledger of Meluhha: Indus Valley Script as Metrological Accounting Code",
+        "year": 2026,
+        "id": "https://openalex.org/W7154696080"
+      },
+      {
+        "title": "The Ledger of Meluhha: Indus Valley Script as Metrological Accounting Code",
+        "year": 2026,
+        "id": "https://openalex.org/W7154697162"
+      },
+      {
+        "title": "The Ledger of Meluhha: Indus Valley Script as Metrological Accounting Code",
+        "year": 2026,
+        "id": "https://openalex.org/W7154836512"
+      },
+      {
+        "title": "The Ledger of Meluhha: Indus Valley Script as Metrological Accounting Code",
+        "year": 2026,
+        "id": "https://openalex.org/W7154852346"
+      },
+      {
+        "title": "The Ledger of Meluhha: Indus Valley Script as Metrological Accounting Code",
+        "year": 2026,
+        "id": "https://openalex.org/W7154842389"
+      },
+      {
+        "title": "Gold and ‘ratti’ signs inscribed on Mohenjo-Daro’s gold-assaying needles, fish-sign inscriptions signifying gemstones concentrated near lapidaries: Indus script’s taxed commodities",
+        "year": 2022,
+        "id": "https://openalex.org/W4283588654"
+      },
+      {
+        "title": "Metal-smithy, Bead-making, Gemstones, Jeweller’s Weight, Trade-permits, Tax-stamps: Indus Script’s Semasiography Partly Decoded",
+        "year": 2021,
+        "id": "https://openalex.org/W4206162048"
+      },
+      {
+        "title": "Modelling the possible archaeological past(s): Agent-based modelling of Harappan seal use and survival",
+        "year": 2026,
+        "id": "https://openalex.org/W7128590305"
+      },
+      {
+        "title": "Indus Valley Tamil Scripts",
+        "year": 2024,
+        "id": "https://openalex.org/W4409672632"
+      },
+      {
+        "title": "Indus Valley Tamil Scripts",
+        "year": 2024,
+        "id": "https://openalex.org/W4405850166"
+      }
+    ]
+  },
+  "upgrade": {
+    "n_upgraded": 212,
+    "upgrade_log": [
+      {
+        "sign": "M386",
+        "reading": "maṇ",
+        "dedr": "5135",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M321",
+        "reading": "kol",
+        "dedr": "1570",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M357",
+        "reading": "kuḷ",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M137",
+        "reading": "kuṟ",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M143",
+        "reading": "maṇ",
+        "dedr": "5135",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M190",
+        "reading": "paṉ",
+        "dedr": "4086",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M295",
+        "reading": "paṟ",
+        "dedr": "4086",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M255",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M251",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M301",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M406",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M116",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M274",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M101",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M326",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M318",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M346",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M312",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M134",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M120",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M207",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M280",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M309",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M382",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M324",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M370",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M218",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M186",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M265",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M334",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M294",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M245",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M319",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M171",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M227",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M148",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M290",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M243",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M291",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M209",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M313",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M259",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M278",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M142",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M199",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M140",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M187",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M208",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M109",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      },
+      {
+        "sign": "M250",
+        "reading": "kur",
+        "dedr": "1638",
+        "dedr_source": "elamite"
+      }
+    ]
+  },
+  "final_state": {
+    "HIGH": 351,
+    "MEDIUM": 62,
+    "total": 413
+  }
+}

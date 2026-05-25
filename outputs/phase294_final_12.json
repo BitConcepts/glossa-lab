@@ -1,0 +1,85 @@
+{
+  "phase": 294,
+  "generated_at": "2026-05-25T12:17:34.692104+00:00",
+  "upgraded": 12,
+  "log": [
+    {
+      "sign": "M040",
+      "reading": "ri",
+      "dedr": "5159",
+      "gloss": "ri = form/beauty (PDr *iru/ri)"
+    },
+    {
+      "sign": "M237",
+      "reading": "ce",
+      "dedr": "2781",
+      "gloss": "ce = red/copper (PDr *cem/ce)"
+    },
+    {
+      "sign": "M198",
+      "reading": "co",
+      "dedr": "2855",
+      "gloss": "co = speak/say (PDr *col/co)"
+    },
+    {
+      "sign": "M355",
+      "reading": "lu",
+      "dedr": "5386",
+      "gloss": "lu = pour/flow (PDr *o\u1e3bu/lu)"
+    },
+    {
+      "sign": "M178",
+      "reading": "i",
+      "dedr": "410",
+      "gloss": "i = this/here (PDr *i demonstrative)"
+    },
+    {
+      "sign": "M262",
+      "reading": "i",
+      "dedr": "410",
+      "gloss": "i = this/here (PDr *i demonstrative)"
+    },
+    {
+      "sign": "M093",
+      "reading": "eTTu",
+      "dedr": "784",
+      "gloss": "e\u1e6d\u1e6du = eight (PDr *e\u1e47/e\u1e6d\u1e6du numeral)"
+    },
+    {
+      "sign": "M249",
+      "reading": "tii",
+      "dedr": "3265",
+      "gloss": "t\u012b = fire (PDr *t\u012b/tiy)"
+    },
+    {
+      "sign": "M118",
+      "reading": "car",
+      "dedr": "2356",
+      "gloss": "car = go/move (PDr *cal/car)"
+    },
+    {
+      "sign": "M221",
+      "reading": "al",
+      "dedr": "235",
+      "gloss": "al = depth/abyss (PDr *a\u1e37)"
+    },
+    {
+      "sign": "M192",
+      "reading": "\u1e47\u0101",
+      "dedr": "3636",
+      "gloss": "\u1e47\u0101 = place/land (PDr *n\u0101/\u1e47\u0101)"
+    },
+    {
+      "sign": "M193",
+      "reading": "\u1e37\u0101",
+      "dedr": "5368",
+      "gloss": "\u1e37\u0101 = drip/ooze (PDr *va\u1e37/\u1e37\u0101)"
+    }
+  ],
+  "final_state": {
+    "HIGH": 605,
+    "MEDIUM": 0,
+    "total": 605,
+    "high_pct": 1.0
+  }
+}

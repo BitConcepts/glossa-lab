@@ -1,0 +1,943 @@
+{
+  "phase": 186,
+  "elapsed_s": 0.2,
+  "absent_phonemes_total": 14,
+  "absent_phonemes_covered_by_elamite": 14,
+  "covered": [
+    "ab",
+    "ba",
+    "du",
+    "en",
+    "ga",
+    "gi",
+    "gu",
+    "ki",
+    "li",
+    "mil",
+    "shu",
+    "su",
+    "sum",
+    "zi"
+  ],
+  "still_uncovered": [],
+  "coverage_pct": 100.0,
+  "cognate_analysis": [
+    {
+      "elamite": "an-",
+      "proto_dr": "*\u0101\u0303\u1e49/*\u0101\u1e49",
+      "dedr": "298",
+      "meaning": "lord, ruler, person",
+      "phoneme_target": "en",
+      "coverage": "STRONG",
+      "note": "Elamite an=lord \u2192 PDr \u0101\u1e49/\u0101\u1e47 (man,lord). /en/ as title suffix highly plausible",
+      "absent_phoneme_match": true,
+      "sign_candidates": [
+        {
+          "sign": "790",
+          "freq": 48,
+          "t_rate": 0.333,
+          "i_rate": 0.667,
+          "m_rate": 0.0,
+          "position_score": 0.997
+        },
+        {
+          "sign": "106",
+          "freq": 39,
+          "t_rate": 0.333,
+          "i_rate": 0.154,
+          "m_rate": 0.513,
+          "position_score": 0.997
+        },
+        {
+          "sign": "387",
+          "freq": 40,
+          "t_rate": 0.325,
+          "i_rate": 0.475,
+          "m_rate": 0.2,
+          "position_score": 0.995
+        },
+        {
+          "sign": "872",
+          "freq": 34,
+          "t_rate": 0.324,
+          "i_rate": 0.471,
+          "m_rate": 0.206,
+          "position_score": 0.994
+        },
+        {
+          "sign": "866",
+          "freq": 35,
+          "t_rate": 0.343,
+          "i_rate": 0.029,
+          "m_rate": 0.629,
+          "position_score": 0.987
+        }
+      ]
+    },
+    {
+      "elamite": "ki-",
+      "proto_dr": "*ke\u1e3b",
+      "dedr": "1935",
+      "meaning": "below, earth, low",
+      "phoneme_target": "ki",
+      "coverage": "STRONG",
+      "note": "Elamite ki=earth/ground \u2192 PDr ke\u1e3b/ki\u1e3b (below,earth). Independent of Tamil evidence",
+      "absent_phoneme_match": true,
+      "sign_candidates": [
+        {
+          "sign": "790",
+          "freq": 48,
+          "t_rate": 0.333,
+          "i_rate": 0.667,
+          "m_rate": 0.0,
+          "position_score": 0.997
+        },
+        {
+          "sign": "106",
+          "freq": 39,
+          "t_rate": 0.333,
+          "i_rate": 0.154,
+          "m_rate": 0.513,
+          "position_score": 0.997
+        },
+        {
+          "sign": "387",
+          "freq": 40,
+          "t_rate": 0.325,
+          "i_rate": 0.475,
+          "m_rate": 0.2,
+          "position_score": 0.995
+        },
+        {
+          "sign": "872",
+          "freq": 34,
+          "t_rate": 0.324,
+          "i_rate": 0.471,
+          "m_rate": 0.206,
+          "position_score": 0.994
+        },
+        {
+          "sign": "866",
+          "freq": 35,
+          "t_rate": 0.343,
+          "i_rate": 0.029,
+          "m_rate": 0.629,
+          "position_score": 0.987
+        }
+      ]
+    },
+    {
+      "elamite": "ap-",
+      "proto_dr": "*appa",
+      "dedr": "172",
+      "meaning": "father, water(Elam)",
+      "phoneme_target": "ab",
+      "coverage": "MODERATE",
+      "note": "Elamite ap=father/water \u2192 PDr appa. Elamite p/b alternation \u2192 /ab/ plausible",
+      "absent_phoneme_match": true,
+      "sign_candidates": [
+        {
+          "sign": "790",
+          "freq": 48,
+          "t_rate": 0.333,
+          "i_rate": 0.667,
+          "m_rate": 0.0,
+          "position_score": 0.997
+        },
+        {
+          "sign": "106",
+          "freq": 39,
+          "t_rate": 0.333,
+          "i_rate": 0.154,
+          "m_rate": 0.513,
+          "position_score": 0.997
+        },
+        {
+          "sign": "387",
+          "freq": 40,
+          "t_rate": 0.325,
+          "i_rate": 0.475,
+          "m_rate": 0.2,
+          "position_score": 0.995
+        },
+        {
+          "sign": "872",
+          "freq": 34,
+          "t_rate": 0.324,
+          "i_rate": 0.471,
+          "m_rate": 0.206,
+          "position_score": 0.994
+        },
+        {
+          "sign": "866",
+          "freq": 35,
+          "t_rate": 0.343,
+          "i_rate": 0.029,
+          "m_rate": 0.629,
+          "position_score": 0.987
+        }
+      ]
+    },
+    {
+      "elamite": "pal-",
+      "proto_dr": "*pal",
+      "dedr": "4003",
+      "meaning": "tooth, ivory",
+      "phoneme_target": "ba",
+      "coverage": "MODERATE",
+      "note": "Elamite pal- \u2192 PDr pal (tooth). If Elamite voiced: ba/pal alternation \u2192 /ba/ candidate",
+      "absent_phoneme_match": true,
+      "sign_candidates": [
+        {
+          "sign": "790",
+          "freq": 48,
+          "t_rate": 0.333,
+          "i_rate": 0.667,
+          "m_rate": 0.0,
+          "position_score": 0.997
+        },
+        {
+          "sign": "106",
+          "freq": 39,
+          "t_rate": 0.333,
+          "i_rate": 0.154,
+          "m_rate": 0.513,
+          "position_score": 0.997
+        },
+        {
+          "sign": "387",
+          "freq": 40,
+          "t_rate": 0.325,
+          "i_rate": 0.475,
+          "m_rate": 0.2,
+          "position_score": 0.995
+        },
+        {
+          "sign": "872",
+          "freq": 34,
+          "t_rate": 0.324,
+          "i_rate": 0.471,
+          "m_rate": 0.206,
+          "position_score": 0.994
+        },
+        {
+          "sign": "866",
+          "freq": 35,
+          "t_rate": 0.343,
+          "i_rate": 0.029,
+          "m_rate": 0.629,
+          "position_score": 0.987
+        }
+      ]
+    },
+    {
+      "elamite": "tu-",
+      "proto_dr": "*tu-",
+      "dedr": "3302",
+      "meaning": "to give, bring, carry",
+      "phoneme_target": "du",
+      "coverage": "STRONG",
+      "note": "Elamite tu=to give \u2192 PDr tu-. Elamite t/d alternation well-documented \u2192 /du/",
+      "absent_phoneme_match": true,
+      "sign_candidates": [
+        {
+          "sign": "790",
+          "freq": 48,
+          "t_rate": 0.333,
+          "i_rate": 0.667,
+          "m_rate": 0.0,
+          "position_score": 0.997
+        },
+        {
+          "sign": "106",
+          "freq": 39,
+          "t_rate": 0.333,
+          "i_rate": 0.154,
+          "m_rate": 0.513,
+          "position_score": 0.997
+        },
+        {
+          "sign": "387",
+          "freq": 40,
+          "t_rate": 0.325,
+          "i_rate": 0.475,
+          "m_rate": 0.2,
+          "position_score": 0.995
+        },
+        {
+          "sign": "872",
+          "freq": 34,
+          "t_rate": 0.324,
+          "i_rate": 0.471,
+          "m_rate": 0.206,
+          "position_score": 0.994
+        },
+        {
+          "sign": "866",
+          "freq": 35,
+          "t_rate": 0.343,
+          "i_rate": 0.029,
+          "m_rate": 0.629,
+          "position_score": 0.987
+        }
+      ]
+    },
+    {
+      "elamite": "zi-",
+      "proto_dr": "*ci-",
+      "dedr": "2589",
+      "meaning": "to cut, divide",
+      "phoneme_target": "zi",
+      "coverage": "MODERATE",
+      "note": "Elamite zi=cut/divide \u2192 PDr ci-. Elamite z\u2192PDr c correspondence (McAlpin prop. 7)",
+      "absent_phoneme_match": true,
+      "sign_candidates": [
+        {
+          "sign": "790",
+          "freq": 48,
+          "t_rate": 0.333,
+          "i_rate": 0.667,
+          "m_rate": 0.0,
+          "position_score": 0.997
+        },
+        {
+          "sign": "106",
+          "freq": 39,
+          "t_rate": 0.333,
+          "i_rate": 0.154,
+          "m_rate": 0.513,
+          "position_score": 0.997
+        },
+        {
+          "sign": "387",
+          "freq": 40,
+          "t_rate": 0.325,
+          "i_rate": 0.475,
+          "m_rate": 0.2,
+          "position_score": 0.995
+        },
+        {
+          "sign": "872",
+          "freq": 34,
+          "t_rate": 0.324,
+          "i_rate": 0.471,
+          "m_rate": 0.206,
+          "position_score": 0.994
+        },
+        {
+          "sign": "866",
+          "freq": 35,
+          "t_rate": 0.343,
+          "i_rate": 0.029,
+          "m_rate": 0.629,
+          "position_score": 0.987
+        }
+      ]
+    },
+    {
+      "elamite": "ka-",
+      "proto_dr": "*ka/*ka\u1e6d",
+      "dedr": "1221",
+      "meaning": "water, go, eye",
+      "phoneme_target": "ga",
+      "coverage": "STRONG",
+      "note": "Elamite ka=water/eye \u2192 PDr ka-. k/g voiced variant \u2192 /ga/ in voiced context",
+      "absent_phoneme_match": true,
+      "sign_candidates": [
+        {
+          "sign": "790",
+          "freq": 48,
+          "t_rate": 0.333,
+          "i_rate": 0.667,
+          "m_rate": 0.0,
+          "position_score": 0.997
+        },
+        {
+          "sign": "106",
+          "freq": 39,
+          "t_rate": 0.333,
+          "i_rate": 0.154,
+          "m_rate": 0.513,
+          "position_score": 0.997
+        },
+        {
+          "sign": "387",
+          "freq": 40,
+          "t_rate": 0.325,
+          "i_rate": 0.475,
+          "m_rate": 0.2,
+          "position_score": 0.995
+        },
+        {
+          "sign": "872",
+          "freq": 34,
+          "t_rate": 0.324,
+          "i_rate": 0.471,
+          "m_rate": 0.206,
+          "position_score": 0.994
+        },
+        {
+          "sign": "866",
+          "freq": 35,
+          "t_rate": 0.343,
+          "i_rate": 0.029,
+          "m_rate": 0.629,
+          "position_score": 0.987
+        }
+      ]
+    },
+    {
+      "elamite": "mel-/mil-",
+      "proto_dr": "*mel/*mil",
+      "dedr": "5085",
+      "meaning": "brightness, light, to rise",
+      "phoneme_target": "mil",
+      "coverage": "MODERATE",
+      "note": "Elamite mel/mil \u2192 PDr mil/mel (shine,rise). Parpola links to stellar vocabulary",
+      "absent_phoneme_match": true,
+      "sign_candidates": [
+        {
+          "sign": "790",
+          "freq": 48,
+          "t_rate": 0.333,
+          "i_rate": 0.667,
+          "m_rate": 0.0,
+          "position_score": 0.997
+        },
+        {
+          "sign": "106",
+          "freq": 39,
+          "t_rate": 0.333,
+          "i_rate": 0.154,
+          "m_rate": 0.513,
+          "position_score": 0.997
+        },
+        {
+          "sign": "387",
+          "freq": 40,
+          "t_rate": 0.325,
+          "i_rate": 0.475,
+          "m_rate": 0.2,
+          "position_score": 0.995
+        },
+        {
+          "sign": "872",
+          "freq": 34,
+          "t_rate": 0.324,
+          "i_rate": 0.471,
+          "m_rate": 0.206,
+          "position_score": 0.994
+        },
+        {
+          "sign": "866",
+          "freq": 35,
+          "t_rate": 0.343,
+          "i_rate": 0.029,
+          "m_rate": 0.629,
+          "position_score": 0.987
+        }
+      ]
+    },
+    {
+      "elamite": "ki-",
+      "proto_dr": "*ki",
+      "dedr": "1562",
+      "meaning": "ear, hearing, go toward",
+      "phoneme_target": "gi",
+      "coverage": "MODERATE",
+      "note": "Elamite ki=ear/go \u2192 PDr ki-. Voiced variant \u2192 /gi/ plausible in compound context",
+      "absent_phoneme_match": true,
+      "sign_candidates": [
+        {
+          "sign": "790",
+          "freq": 48,
+          "t_rate": 0.333,
+          "i_rate": 0.667,
+          "m_rate": 0.0,
+          "position_score": 0.997
+        },
+        {
+          "sign": "106",
+          "freq": 39,
+          "t_rate": 0.333,
+          "i_rate": 0.154,
+          "m_rate": 0.513,
+          "position_score": 0.997
+        },
+        {
+          "sign": "387",
+          "freq": 40,
+          "t_rate": 0.325,
+          "i_rate": 0.475,
+          "m_rate": 0.2,
+          "position_score": 0.995
+        },
+        {
+          "sign": "872",
+          "freq": 34,
+          "t_rate": 0.324,
+          "i_rate": 0.471,
+          "m_rate": 0.206,
+          "position_score": 0.994
+        },
+        {
+          "sign": "866",
+          "freq": 35,
+          "t_rate": 0.343,
+          "i_rate": 0.029,
+          "m_rate": 0.629,
+          "position_score": 0.987
+        }
+      ]
+    },
+    {
+      "elamite": "su-",
+      "proto_dr": "*cu/*c\u016b",
+      "dedr": "2678",
+      "meaning": "to say, speak; 3sg suffix",
+      "phoneme_target": "su",
+      "coverage": "MODERATE",
+      "note": "Elamite -su=3sg suffix \u2192 PDr cu-/c\u016b- (say). McAlpin prop 21: Elam -su = PDr -cu",
+      "absent_phoneme_match": true,
+      "sign_candidates": [
+        {
+          "sign": "790",
+          "freq": 48,
+          "t_rate": 0.333,
+          "i_rate": 0.667,
+          "m_rate": 0.0,
+          "position_score": 0.997
+        },
+        {
+          "sign": "106",
+          "freq": 39,
+          "t_rate": 0.333,
+          "i_rate": 0.154,
+          "m_rate": 0.513,
+          "position_score": 0.997
+        },
+        {
+          "sign": "387",
+          "freq": 40,
+          "t_rate": 0.325,
+          "i_rate": 0.475,
+          "m_rate": 0.2,
+          "position_score": 0.995
+        },
+        {
+          "sign": "872",
+          "freq": 34,
+          "t_rate": 0.324,
+          "i_rate": 0.471,
+          "m_rate": 0.206,
+          "position_score": 0.994
+        },
+        {
+          "sign": "866",
+          "freq": 35,
+          "t_rate": 0.343,
+          "i_rate": 0.029,
+          "m_rate": 0.629,
+          "position_score": 0.987
+        }
+      ]
+    },
+    {
+      "elamite": "li-",
+      "proto_dr": "*il/*li",
+      "dedr": "491",
+      "meaning": "to give, bring, place",
+      "phoneme_target": "li",
+      "coverage": "MODERATE",
+      "note": "Elamite li=give/bring \u2192 PDr il/li-. l/r/\u1e37 correspondence McAlpin prop 14",
+      "absent_phoneme_match": true,
+      "sign_candidates": [
+        {
+          "sign": "790",
+          "freq": 48,
+          "t_rate": 0.333,
+          "i_rate": 0.667,
+          "m_rate": 0.0,
+          "position_score": 0.997
+        },
+        {
+          "sign": "106",
+          "freq": 39,
+          "t_rate": 0.333,
+          "i_rate": 0.154,
+          "m_rate": 0.513,
+          "position_score": 0.997
+        },
+        {
+          "sign": "387",
+          "freq": 40,
+          "t_rate": 0.325,
+          "i_rate": 0.475,
+          "m_rate": 0.2,
+          "position_score": 0.995
+        },
+        {
+          "sign": "872",
+          "freq": 34,
+          "t_rate": 0.324,
+          "i_rate": 0.471,
+          "m_rate": 0.206,
+          "position_score": 0.994
+        },
+        {
+          "sign": "866",
+          "freq": 35,
+          "t_rate": 0.343,
+          "i_rate": 0.029,
+          "m_rate": 0.629,
+          "position_score": 0.987
+        }
+      ]
+    },
+    {
+      "elamite": "\u0161u-/\u0161i-",
+      "proto_dr": "*cu/*co",
+      "dedr": "2665",
+      "meaning": "to fall, down, wash",
+      "phoneme_target": "shu",
+      "coverage": "CANDIDATE",
+      "note": "Elamite \u0161=PDr c/s palatalization. McAlpin prop 8: Elam \u0161 \u2192 PDr c before front vowels",
+      "absent_phoneme_match": true,
+      "sign_candidates": [
+        {
+          "sign": "790",
+          "freq": 48,
+          "t_rate": 0.333,
+          "i_rate": 0.667,
+          "m_rate": 0.0,
+          "position_score": 0.997
+        },
+        {
+          "sign": "106",
+          "freq": 39,
+          "t_rate": 0.333,
+          "i_rate": 0.154,
+          "m_rate": 0.513,
+          "position_score": 0.997
+        },
+        {
+          "sign": "387",
+          "freq": 40,
+          "t_rate": 0.325,
+          "i_rate": 0.475,
+          "m_rate": 0.2,
+          "position_score": 0.995
+        },
+        {
+          "sign": "872",
+          "freq": 34,
+          "t_rate": 0.324,
+          "i_rate": 0.471,
+          "m_rate": 0.206,
+          "position_score": 0.994
+        },
+        {
+          "sign": "866",
+          "freq": 35,
+          "t_rate": 0.343,
+          "i_rate": 0.029,
+          "m_rate": 0.629,
+          "position_score": 0.987
+        }
+      ]
+    },
+    {
+      "elamite": "ku-",
+      "proto_dr": "*ku/*ku\u1e6d",
+      "dedr": "1687",
+      "meaning": "to say, do, make",
+      "phoneme_target": "gu",
+      "coverage": "MODERATE",
+      "note": "Elamite ku=say/do \u2192 PDr ku-. k/g voiced alternation in compound \u2192 /gu/",
+      "absent_phoneme_match": true,
+      "sign_candidates": [
+        {
+          "sign": "790",
+          "freq": 48,
+          "t_rate": 0.333,
+          "i_rate": 0.667,
+          "m_rate": 0.0,
+          "position_score": 0.997
+        },
+        {
+          "sign": "106",
+          "freq": 39,
+          "t_rate": 0.333,
+          "i_rate": 0.154,
+          "m_rate": 0.513,
+          "position_score": 0.997
+        },
+        {
+          "sign": "387",
+          "freq": 40,
+          "t_rate": 0.325,
+          "i_rate": 0.475,
+          "m_rate": 0.2,
+          "position_score": 0.995
+        },
+        {
+          "sign": "872",
+          "freq": 34,
+          "t_rate": 0.324,
+          "i_rate": 0.471,
+          "m_rate": 0.206,
+          "position_score": 0.994
+        },
+        {
+          "sign": "866",
+          "freq": 35,
+          "t_rate": 0.343,
+          "i_rate": 0.029,
+          "m_rate": 0.629,
+          "position_score": 0.987
+        }
+      ]
+    },
+    {
+      "elamite": "\u0161um-/sum-",
+      "proto_dr": "*cum",
+      "dedr": "2689",
+      "meaning": "to name, call; name itself",
+      "phoneme_target": "sum",
+      "coverage": "STRONG",
+      "note": "Elamite \u0161um/sum = name/title \u2192 PDr cum- (sound,name). Possibly /sum/ as title marker",
+      "absent_phoneme_match": true,
+      "sign_candidates": [
+        {
+          "sign": "790",
+          "freq": 48,
+          "t_rate": 0.333,
+          "i_rate": 0.667,
+          "m_rate": 0.0,
+          "position_score": 0.997
+        },
+        {
+          "sign": "106",
+          "freq": 39,
+          "t_rate": 0.333,
+          "i_rate": 0.154,
+          "m_rate": 0.513,
+          "position_score": 0.997
+        },
+        {
+          "sign": "387",
+          "freq": 40,
+          "t_rate": 0.325,
+          "i_rate": 0.475,
+          "m_rate": 0.2,
+          "position_score": 0.995
+        },
+        {
+          "sign": "872",
+          "freq": 34,
+          "t_rate": 0.324,
+          "i_rate": 0.471,
+          "m_rate": 0.206,
+          "position_score": 0.994
+        },
+        {
+          "sign": "866",
+          "freq": 35,
+          "t_rate": 0.343,
+          "i_rate": 0.029,
+          "m_rate": 0.629,
+          "position_score": 0.987
+        }
+      ]
+    },
+    {
+      "elamite": "kall-",
+      "proto_dr": "*ka\u1e37",
+      "dedr": "1286",
+      "meaning": "stone, hard",
+      "phoneme_target": null,
+      "coverage": "CONFIRMED",
+      "note": "Elam kall \u2192 PDr ka\u1e37. M046=kaL (HIGH) already confirmed. McAlpin Tier-1 anchor",
+      "absent_phoneme_match": false,
+      "already_confirmed": true,
+      "sign_candidates": []
+    },
+    {
+      "elamite": "ur-",
+      "proto_dr": "*\u016br",
+      "dedr": "720",
+      "meaning": "town, settlement",
+      "phoneme_target": null,
+      "coverage": "CONFIRMED",
+      "note": "Elam ur=town \u2192 PDr \u016br. M233=\u016br (HIGH) already confirmed. McAlpin foundational",
+      "absent_phoneme_match": false,
+      "already_confirmed": true,
+      "sign_candidates": []
+    },
+    {
+      "elamite": "man-",
+      "proto_dr": "*ma\u1e49",
+      "dedr": "4692",
+      "meaning": "king, earth, large",
+      "phoneme_target": null,
+      "coverage": "CONFIRMED",
+      "note": "Elam man=king/earth \u2192 PDr ma\u1e49. Multiple HIGH anchors with ma- cover this",
+      "absent_phoneme_match": false,
+      "already_confirmed": true,
+      "sign_candidates": []
+    },
+    {
+      "elamite": "iru-",
+      "proto_dr": "*iru",
+      "dedr": "498",
+      "meaning": "two; black",
+      "phoneme_target": null,
+      "coverage": "CONFIRMED",
+      "note": "Elam ir-=two \u2192 PDr iru. M079=ir (HIGH) confirmed",
+      "absent_phoneme_match": false,
+      "already_confirmed": true,
+      "sign_candidates": []
+    },
+    {
+      "elamite": "nal-",
+      "proto_dr": "*nal",
+      "dedr": "3594",
+      "meaning": "good, excellent",
+      "phoneme_target": null,
+      "coverage": "CONFIRMED",
+      "note": "Elam nal=good \u2192 PDr nal. M077=nal, M071=nal (HIGH) confirmed",
+      "absent_phoneme_match": false,
+      "already_confirmed": true,
+      "sign_candidates": []
+    }
+  ],
+  "priority_proposals": [
+    {
+      "phoneme": "en",
+      "elamite_source": "an-",
+      "proto_dr": "*\u0101\u0303\u1e49/*\u0101\u1e49",
+      "coverage_tier": "STRONG",
+      "top_sign_candidate": "790",
+      "sign_freq": 48,
+      "sign_t_rate": 0.333
+    },
+    {
+      "phoneme": "ki",
+      "elamite_source": "ki-",
+      "proto_dr": "*ke\u1e3b",
+      "coverage_tier": "STRONG",
+      "top_sign_candidate": "790",
+      "sign_freq": 48,
+      "sign_t_rate": 0.333
+    },
+    {
+      "phoneme": "ab",
+      "elamite_source": "ap-",
+      "proto_dr": "*appa",
+      "coverage_tier": "MODERATE",
+      "top_sign_candidate": "790",
+      "sign_freq": 48,
+      "sign_t_rate": 0.333
+    },
+    {
+      "phoneme": "ba",
+      "elamite_source": "pal-",
+      "proto_dr": "*pal",
+      "coverage_tier": "MODERATE",
+      "top_sign_candidate": "790",
+      "sign_freq": 48,
+      "sign_t_rate": 0.333
+    },
+    {
+      "phoneme": "du",
+      "elamite_source": "tu-",
+      "proto_dr": "*tu-",
+      "coverage_tier": "STRONG",
+      "top_sign_candidate": "790",
+      "sign_freq": 48,
+      "sign_t_rate": 0.333
+    },
+    {
+      "phoneme": "zi",
+      "elamite_source": "zi-",
+      "proto_dr": "*ci-",
+      "coverage_tier": "MODERATE",
+      "top_sign_candidate": "790",
+      "sign_freq": 48,
+      "sign_t_rate": 0.333
+    },
+    {
+      "phoneme": "ga",
+      "elamite_source": "ka-",
+      "proto_dr": "*ka/*ka\u1e6d",
+      "coverage_tier": "STRONG",
+      "top_sign_candidate": "790",
+      "sign_freq": 48,
+      "sign_t_rate": 0.333
+    },
+    {
+      "phoneme": "mil",
+      "elamite_source": "mel-/mil-",
+      "proto_dr": "*mel/*mil",
+      "coverage_tier": "MODERATE",
+      "top_sign_candidate": "790",
+      "sign_freq": 48,
+      "sign_t_rate": 0.333
+    },
+    {
+      "phoneme": "gi",
+      "elamite_source": "ki-",
+      "proto_dr": "*ki",
+      "coverage_tier": "MODERATE",
+      "top_sign_candidate": "790",
+      "sign_freq": 48,
+      "sign_t_rate": 0.333
+    },
+    {
+      "phoneme": "su",
+      "elamite_source": "su-",
+      "proto_dr": "*cu/*c\u016b",
+      "coverage_tier": "MODERATE",
+      "top_sign_candidate": "790",
+      "sign_freq": 48,
+      "sign_t_rate": 0.333
+    },
+    {
+      "phoneme": "li",
+      "elamite_source": "li-",
+      "proto_dr": "*il/*li",
+      "coverage_tier": "MODERATE",
+      "top_sign_candidate": "790",
+      "sign_freq": 48,
+      "sign_t_rate": 0.333
+    },
+    {
+      "phoneme": "shu",
+      "elamite_source": "\u0161u-/\u0161i-",
+      "proto_dr": "*cu/*co",
+      "coverage_tier": "CANDIDATE",
+      "top_sign_candidate": "790",
+      "sign_freq": 48,
+      "sign_t_rate": 0.333
+    },
+    {
+      "phoneme": "gu",
+      "elamite_source": "ku-",
+      "proto_dr": "*ku/*ku\u1e6d",
+      "coverage_tier": "MODERATE",
+      "top_sign_candidate": "790",
+      "sign_freq": 48,
+      "sign_t_rate": 0.333
+    },
+    {
+      "phoneme": "sum",
+      "elamite_source": "\u0161um-/sum-",
+      "proto_dr": "*cum",
+      "coverage_tier": "STRONG",
+      "top_sign_candidate": "790",
+      "sign_freq": 48,
+      "sign_t_rate": 0.333
+    }
+  ],
+  "verdict": "ELAMO-DRAVIDIAN FULLY COVERS ALL 14 ABSENT PHONEMES"
+}

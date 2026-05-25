@@ -1,0 +1,172 @@
+{
+  "phase": 254,
+  "generated_at": "2026-05-25T00:38:58.897460+00:00",
+  "n_seals": 1670,
+  "motif_distribution": {
+    "unicorn": 514,
+    "zebu": 419,
+    "other": 231,
+    "elephant": 200,
+    "rhinoceros": 170,
+    "tiger": 72,
+    "gharial": 64
+  },
+  "n_medium_analysed": 282,
+  "n_significant_enrichments": 8,
+  "n_domain_matched": 2,
+  "n_upgrade_candidates": 1,
+  "n_upgraded": 1,
+  "upgrade_log": [
+    {
+      "sign": "M332",
+      "reading": "intu",
+      "motif": "unicorn",
+      "chi2": 9.441,
+      "lift": 3.27,
+      "upgrade": "MEDIUM→HIGH"
+    }
+  ],
+  "top_enrichments": [
+    {
+      "sign": "M067",
+      "reading": "kōṭṭāṉ",
+      "motif": "rhinoceros",
+      "domain": "Craft / manufacturing / specialist",
+      "observed": 15,
+      "expected": 1.56,
+      "chi2": 116.225,
+      "lift": 9.64,
+      "total_occurrences": 15,
+      "domain_match": false
+    },
+    {
+      "sign": "M068",
+      "reading": "maṟi",
+      "motif": "rhinoceros",
+      "domain": "Craft / manufacturing / specialist",
+      "observed": 13,
+      "expected": 1.35,
+      "chi2": 100.728,
+      "lift": 9.64,
+      "total_occurrences": 13,
+      "domain_match": false
+    },
+    {
+      "sign": "M332",
+      "reading": "intu",
+      "motif": "unicorn",
+      "domain": "Personal identity / administrative",
+      "observed": 6,
+      "expected": 1.84,
+      "chi2": 9.441,
+      "lift": 3.27,
+      "total_occurrences": 6,
+      "domain_match": true
+    },
+    {
+      "sign": "M005",
+      "reading": "kōṉ",
+      "motif": "rhinoceros",
+      "domain": "Craft / manufacturing / specialist",
+      "observed": 5,
+      "expected": 1.56,
+      "chi2": 7.63,
+      "lift": 3.21,
+      "total_occurrences": 15,
+      "domain_match": false
+    },
+    {
+      "sign": "M267",
+      "reading": "iN/in (genitive of)",
+      "motif": "unicorn",
+      "domain": "Personal identity / administrative",
+      "observed": 147,
+      "expected": 122.42,
+      "chi2": 4.934,
+      "lift": 1.2,
+      "total_occurrences": 400,
+      "domain_match": true
+    },
+    {
+      "sign": "M069",
+      "reading": "nēr",
+      "motif": "elephant",
+      "domain": "High status / royal / ceremonial",
+      "observed": 5,
+      "expected": 1.96,
+      "chi2": 4.699,
+      "lift": 2.55,
+      "total_occurrences": 16,
+      "domain_match": false
+    },
+    {
+      "sign": "M078",
+      "reading": "cēr",
+      "motif": "unicorn",
+      "domain": "Personal identity / administrative",
+      "observed": 10,
+      "expected": 5.2,
+      "chi2": 4.423,
+      "lift": 1.92,
+      "total_occurrences": 17,
+      "domain_match": false
+    },
+    {
+      "sign": "M345",
+      "reading": "taṭ",
+      "motif": "unicorn",
+      "domain": "Personal identity / administrative",
+      "observed": 4,
+      "expected": 1.53,
+      "chi2": 3.986,
+      "lift": 2.61,
+      "total_occurrences": 5,
+      "domain_match": false
+    }
+  ],
+  "non_domain_matched_investigate": [
+    {
+      "sign": "M067",
+      "reading": "kōṭṭāṉ",
+      "motif": "rhinoceros",
+      "domain": "Craft / manufacturing / specialist",
+      "observed": 15,
+      "expected": 1.56,
+      "chi2": 116.225,
+      "lift": 9.64,
+      "total_occurrences": 15,
+      "domain_match": false
+    },
+    {
+      "sign": "M068",
+      "reading": "maṟi",
+      "motif": "rhinoceros",
+      "domain": "Craft / manufacturing / specialist",
+      "observed": 13,
+      "expected": 1.35,
+      "chi2": 100.728,
+      "lift": 9.64,
+      "total_occurrences": 13,
+      "domain_match": false
+    },
+    {
+      "sign": "M005",
+      "reading": "kōṉ",
+      "motif": "rhinoceros",
+      "domain": "Craft / manufacturing / specialist",
+      "observed": 5,
+      "expected": 1.56,
+      "chi2": 7.63,
+      "lift": 3.21,
+      "total_occurrences": 15,
+      "domain_match": false
+    }
+  ],
+  "final_state": {
+    "HIGH": 127,
+    "MEDIUM": 281,
+    "CANDIDATE": 5,
+    "H_plus_M": 408,
+    "total": 413
+  }
+}

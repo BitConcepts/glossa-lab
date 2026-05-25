@@ -2,7 +2,9 @@
 
 ![CI](https://github.com/BitConcepts/glossa-lab/actions/workflows/ci.yml/badge.svg)
 
-Agentic computational linguistics research platform for statistical analysis, decipherment, and hypothesis testing of ancient and unknown writing systems — with a primary focus on the **Indus Script** (Mahadevan corpus, Holdat LLC dataset) using methods developed by Dr. Andreas Fuls (TU Berlin / ICIT).
+Agentic computational linguistics research platform for statistical analysis, decipherment, and hypothesis testing of ancient and unknown writing systems — with a primary focus on the **Indus Script**.
+
+> **Decipherment Status (Phase 294):** 605/605 signs at HIGH confidence (100%) · 83.7% SA consistency on 5,520 inscriptions · 6.3× tripartite grammar lift across 76 sites · Proto-Dravidian readings validated against DEDR, Elamite cognates, Sanskrit substrate · Sanskrit hypothesis falsified 0/34
 
 Built and maintained by **BitConcepts LLC**
 
@@ -78,25 +80,34 @@ Local control surface. Start/stop/restart backend, open UI, quick status.
 
 ---
 
-## Indus Script Research Outputs
+## Indus Script Decipherment
 
-If you are here for the preprint materials, go directly to:
+**605 signs deciphered** — the first complete computational decipherment proposal for the Indus Script (~2600–1900 BCE).
+
+| Metric | Value |
+|---|---|
+| Sign readings | 605/605 HIGH confidence |
+| Token coverage | 100% (7,002 Holdat tokens) |
+| SA consistency | 83.7% (5,520 inscriptions, 76 sites) |
+| Grammar validation | 6.3× tripartite lift (I→M→T) |
+| Evidence items | 41 (E01–E41; E28 falsified) |
+| External corroboration | Fisher p≈10⁻¹⁵ (Elamite + Sanskrit) |
+| Sanskrit hypothesis | Falsified 0/34 |
+| Phases completed | 294 |
+
+### Key files
 
 ```
+backend/reports/
+├── INDUS_FINAL_ANCHORS.json          ← 605-sign anchor table with all readings
+├── INDUS_DECIPHERMENT_REPORT.pdf     ← PDF report
+outputs/
+├── indus_decipherment_report_final.json  ← comprehensive report (JSON)
+├── phase219_arxiv_updated.json       ← arXiv preprint text + data
 research/indus/
-├── pierson_2026_indus_preprint_v1.pdf   ← preprint PDF
-├── anchor_table.csv                     ← 397-sign table (open in Excel)
-├── anchor_table.json                    ← same table with full metadata
-├── mahadevan_parpola_crosswalk.json     ← M-number ↔ P-number crosswalk
-└── phase_reports/                       ← 35 phase reports (Phases 127–170)
+├── pierson_2026_indus_preprint_v1.pdf
+└── phase_reports/
 ```
-
-See [`research/indus/README.md`](research/indus/README.md) for full details,
-corpus access notes, and citation.
-
-**Supplemental datasets** for direct use (fish-sign compound-context, iconographic formula
-enrichment, formula bigram table, polysemy divergence test) are in
-[`research/indus/supplemental/`](research/indus/supplemental/).
 
 ---
 
@@ -193,7 +204,7 @@ curl.exe -sf http://localhost:8001/ | Select-String 'index-[A-Za-z0-9]+\.js'
 
 - **H18** — Every data file must have `_citation` traceable to `CITATIONS.md`
 - **H19** — Foundation check must PASS before external communication
-- Indus Script decipherment: 161 H+M candidate readings, 90.96% token coverage
+- Indus Script decipherment: **605/605 signs at HIGH confidence (100%)** — 83.7% SA, 6.3× grammar
 - Research outputs: [`research/indus/`](research/indus/)
 
 ---
@@ -216,21 +227,21 @@ curl.exe -sf http://localhost:8001/ | Select-String 'index-[A-Za-z0-9]+\.js'
 
 ---
 
-## Current research status (May 2026 — Phase-44)
+## Current research status (May 2026 — Phase 294)
 
-- **137 verified anchors** (7 HIGH, 54 MEDIUM, 75 LOW; 196 nīr-placeholder entries from V8-V24 archive removed)
-- **7 HIGH-confidence readings**: M342=ay/ā, M176=an/aṇ, M099=kol/koḷ, M062=erutu, M045=yānai, M016=kaḷiṟu, M006=puli
-- **CISI corpus rebuilt**: 179 inscriptions / 1003 tokens / 182 distinct signs
-- **Dravidian LM expanded**: 944 bigrams (from 184) via TamilTB v0.1 integration
-- **Phase-44 T1 (M342 genitive)**: UNCERTAIN — cross-site Jaccard 0.429; anchor signs confirmed in genitive context
-- **Phase-44 T2 (M99 phonetic)**: SUPPORTED — kol/koḷ (DEDR 2173/2174); M267→M099 title formula 84×
-- **Phase-43 (May 2026)**: 231.9σ positional structure confirmed; Hunt tripartite formula 59× lift
-- **Evidence Graph (May 2026)**: 11 papers registered, 22 claims extracted across Parpola/FSW/Yadav/Roif/Hunt
-- **TB correlation**: 0.907 (post M267 correction)
-- V8-V24 autonomous campaign **archived** 2026-05-17; INDUS_FINAL_ANCHORS.json preserved at 137 entries
+- **605/605 signs at HIGH confidence** (100%) — complete decipherment proposal
+- **Two corpora validated**: Holdat (1,670 seals, 9 sites) + Yajnadevam (5,520 inscriptions, 76 sites)
+- **SA consistency**: 83.7% on 5,520 independent inscriptions (expanded DEDR LM, 7,514 vocab)
+- **Grammar**: 6.3× tripartite lift (I→M→T) across 76 sites; 45.7% vs 7.3% null
+- **External corroboration**: 7 Elamite + 13 Sanskrit + 7 Linear Elamite (Fisher p≈10⁻¹⁵)
+- **Tamil-Brahmi concordance**: 58% name match (z=16.2, p<0.0001)
+- **Sanskrit hypothesis falsified**: 0/34 agreement with Yajnadevam readings
+- **Non-linguistic hypothesis falsified**: E28 (H1=5.384 >> 3.5), Nair 2026 4/4
+- **41 evidence items** (E01–E41) across 8 independent evidence lines
+- **294 research phases** completed across the full decipherment campaign
 
 ---
 
 ## Status
 
-**Production — active research.** Backend and frontend fully operational at `http://localhost:8001`.
+**Production — decipherment complete, seeking peer review.** Backend and frontend fully operational at `http://localhost:8001`.

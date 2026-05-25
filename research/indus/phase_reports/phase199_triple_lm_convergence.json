@@ -1,0 +1,64 @@
+{
+  "phase": 199,
+  "elapsed_s": 13.0,
+  "lm_results": [
+    {
+      "label": "Tamil_LM",
+      "mean_c": 0.4844
+    },
+    {
+      "label": "NorthDr_LM",
+      "mean_c": 0.6594
+    },
+    {
+      "label": "ProtoDr_LM",
+      "mean_c": 0.5719
+    }
+  ],
+  "convergent_signs": [
+    {
+      "sign": "176",
+      "reading": "an",
+      "tamil_reading": "an",
+      "north_dr_reading": "an",
+      "proto_dr_reading": "an",
+      "mean_consistency": 1.0,
+      "absent_hits": [],
+      "triple_confirmed": true
+    },
+    {
+      "sign": "427",
+      "reading": "en",
+      "tamil_reading": "en",
+      "north_dr_reading": "en",
+      "proto_dr_reading": "en",
+      "mean_consistency": 1.0,
+      "absent_hits": [],
+      "triple_confirmed": true
+    },
+    {
+      "sign": "047",
+      "reading": "min",
+      "tamil_reading": "min",
+      "north_dr_reading": "min",
+      "proto_dr_reading": "min",
+      "mean_consistency": 1.0,
+      "absent_hits": [],
+      "triple_confirmed": true
+    },
+    {
+      "sign": "920",
+      "reading": "min",
+      "tamil_reading": "min",
+      "north_dr_reading": "min",
+      "proto_dr_reading": "min",
+      "mean_consistency": 0.667,
+      "absent_hits": [],
+      "triple_confirmed": true
+    }
+  ],
+  "absent_convergent": [],
+  "n_convergent": 4,
+  "n_absent_convergent": 0,
+  "verdict": "TRIPLE-LM CONVERGENCE: 4 signs agree across Tamil+NorthDr+ProtoDr. 0 match absent phonemes: []."
+}

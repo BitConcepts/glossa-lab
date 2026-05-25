@@ -1,0 +1,42 @@
+{
+  "phase": 214,
+  "elapsed_s": 0.0,
+  "old_total": 408,
+  "new_total": 410,
+  "new_entries_added": [
+    "M790",
+    "M858"
+  ],
+  "m527_updated": true,
+  "confidence_after": {
+    "HIGH": 76,
+    "MEDIUM": 88,
+    "LOW": 243,
+    "CANDIDATE": 3
+  },
+  "blocked_state": {
+    "current_state": "408 + 2 new = 410 anchors. 37/64 M77 signs anchored (57.8%)",
+    "all_sa_candidates_exhausted": true,
+    "remaining_unanchored_cons04_plus": [
+      "M480=venni (0.4)",
+      "M920=pamp (0.4)",
+      "M506=toti (0.4)"
+    ],
+    "remaining_unanchored_cons02": [
+      "M718, M526, M503, M872, M173, M748 (all 0.2)"
+    ],
+    "blockers": [
+      "ICIT corpus needed for /sum/, /gu/, /ab/, /ba/, /shu/ absent phonemes",
+      "Epigraphist validation needed for CANDIDATE-level entries before upgrading",
+      "Full IVC sign inventory (~400 signs) vs M77 (64 signs): 336 signs not yet analyzable",
+      "SA convergence plateauing: D_ALL mean_c=0.5250 (Phase 213) with current anchor set"
+    ],
+    "unblocking_pathways": [
+      "Acquire ICIT corpus -> resolve 5 remaining absent phonemes",
+      "Obtain Parpola/Wells sign list cross-reference -> analyze all ~400 IVC signs",
+      "Epigraphist collaboration -> validate/reject CANDIDATE entries",
+      "New archaeological finds -> additional IVC texts or bilingual materials"
+    ]
+  },
+  "verdict": "Phase 214: Added M790=erumai [CANDIDATE], M858=nallavar [LOW]. Updated M527=valli. Total 408 -> 410 anchors. BLOCKED STATE REACHED: All SA candidates with cons>=0.4 exhausted. Further progress requires ICIT corpus or epigraphist validation."
+}

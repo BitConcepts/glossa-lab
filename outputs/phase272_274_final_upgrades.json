@@ -1,0 +1,144 @@
+{
+  "phase": "272_274",
+  "generated_at": "2026-05-25T03:18:18.163460+00:00",
+  "phase272_dedr_injected": 29,
+  "phase272_dedr_upgraded": 20,
+  "phase273_m267_upgraded": true,
+  "phase274_iconic_upgraded": 0,
+  "total_upgraded": 21,
+  "all_upgrades": [
+    {
+      "sign": "M067",
+      "reading": "kōṭṭāṉ",
+      "dedr": "2071",
+      "phase": 272
+    },
+    {
+      "sign": "M068",
+      "reading": "maṟi",
+      "dedr": "4706",
+      "phase": 272
+    },
+    {
+      "sign": "M038",
+      "reading": "pōr",
+      "dedr": "4605",
+      "phase": 272
+    },
+    {
+      "sign": "M050",
+      "reading": "pār",
+      "dedr": "4084",
+      "phase": 272
+    },
+    {
+      "sign": "M070",
+      "reading": "vēl",
+      "dedr": "5540",
+      "phase": 272
+    },
+    {
+      "sign": "M078",
+      "reading": "cēr",
+      "dedr": "2814",
+      "phase": 272
+    },
+    {
+      "sign": "M066",
+      "reading": "cōḻ",
+      "dedr": "2905",
+      "phase": 272
+    },
+    {
+      "sign": "M009",
+      "reading": "āṇ",
+      "dedr": "367",
+      "phase": 272
+    },
+    {
+      "sign": "M069",
+      "reading": "nēr",
+      "dedr": "3774",
+      "phase": 272
+    },
+    {
+      "sign": "M002",
+      "reading": "kuṉ",
+      "dedr": "1694",
+      "phase": 272
+    },
+    {
+      "sign": "M037",
+      "reading": "kēḷ",
+      "dedr": "2017",
+      "phase": 272
+    },
+    {
+      "sign": "M005",
+      "reading": "kōṉ",
+      "dedr": "2199",
+      "phase": 272
+    },
+    {
+      "sign": "M015",
+      "reading": "mā",
+      "dedr": "4796",
+      "phase": 272
+    },
+    {
+      "sign": "M075",
+      "reading": "māṟ",
+      "dedr": "4796",
+      "phase": 272
+    },
+    {
+      "sign": "M235",
+      "reading": "vē",
+      "dedr": "5535",
+      "phase": 272
+    },
+    {
+      "sign": "M401",
+      "reading": "vē",
+      "dedr": "5535",
+      "phase": 272
+    },
+    {
+      "sign": "M127",
+      "reading": "vē",
+      "dedr": "5535",
+      "phase": 272
+    },
+    {
+      "sign": "M252",
+      "reading": "kur",
+      "dedr": "1638",
+      "phase": 272
+    },
+    {
+      "sign": "M231",
+      "reading": "kur",
+      "dedr": "1638",
+      "phase": 272
+    },
+    {
+      "sign": "M350",
+      "reading": "vē",
+      "dedr": "5535",
+      "phase": 272
+    },
+    {
+      "sign": "M267",
+      "reading": "iN/in",
+      "dedr": "494",
+      "phase": 273
+    }
+  ],
+  "remaining_medium": 41,
+  "final_state": {
+    "HIGH": 372,
+    "MEDIUM": 41,
+    "total": 413,
+    "high_pct": 0.9007
+  }
+}

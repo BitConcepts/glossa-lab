@@ -1,5 +1,5 @@
 {
-  "total": 413,
+  "total": 605,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -3921,6 +3921,1158 @@
       "allograph_of": "M090",
       "allograph_corr": 1.0,
       "upgrade_basis": "Phase-253: CISI allograph of M090='aintu' (HIGH, r=1.000). CISI sign positionally identical to HIGH Holdat sign → HIGH confidence."
+    },
+    "M520": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=317, pos=INITIAL (I=0.83 M=0.15 T=0.02). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M820": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=242, pos=TERMINAL (I=0.09 M=0.15 T=0.76). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M590": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=228, pos=MEDIAL (I=0.11 M=0.63 T=0.27). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M741": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=224, pos=MEDIAL (I=0.05 M=0.82 T=0.13). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M705": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=218, pos=MEDIAL (I=0.06 M=0.63 T=0.31). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M920": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=152, pos=MIXED (I=0.05 M=0.37 T=0.58). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M798": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=149, pos=MEDIAL (I=0.07 M=0.64 T=0.29). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M806": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=135, pos=MIXED (I=0.05 M=0.47 T=0.47). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M803": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=134, pos=MEDIAL (I=0.05 M=0.57 T=0.38). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M760": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=134, pos=MEDIAL (I=0.04 M=0.83 T=0.13). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M840": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=130, pos=MEDIAL (I=0.08 M=0.66 T=0.26). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M550": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=122, pos=MIXED (I=0.10 M=0.48 T=0.42). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M690": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=118, pos=MEDIAL (I=0.21 M=0.63 T=0.15). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M900": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=112, pos=MEDIAL (I=0.04 M=0.72 T=0.24). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M706": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=101, pos=MEDIAL (I=0.11 M=0.56 T=0.33). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M892": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=88, pos=MEDIAL (I=0.28 M=0.51 T=0.21). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M503": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=82, pos=TERMINAL (I=0.01 M=0.27 T=0.72). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M575": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=80, pos=MEDIAL (I=0.03 M=0.58 T=0.39). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M617": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=75, pos=INITIAL (I=0.62 M=0.15 T=0.23). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M435": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=75, pos=MEDIAL (I=0.10 M=0.81 T=0.10). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M615": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=73, pos=MEDIAL (I=0.07 M=0.82 T=0.10). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M904": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=64, pos=MEDIAL (I=0.12 M=0.72 T=0.16). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M585": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=60, pos=MEDIAL (I=0.09 M=0.86 T=0.05). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M440": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=58, pos=MEDIAL (I=0.07 M=0.65 T=0.28). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M850": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=56, pos=MEDIAL (I=0.15 M=0.61 T=0.23). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M742": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=56, pos=MEDIAL (I=0.15 M=0.65 T=0.21). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M845": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=55, pos=MEDIAL (I=0.04 M=0.94 T=0.02). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M717": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=54, pos=MEDIAL (I=0.08 M=0.58 T=0.35). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M752": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=53, pos=MEDIAL (I=0.00 M=0.96 T=0.04). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M595": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=48, pos=MEDIAL (I=0.32 M=0.60 T=0.09). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M923": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=45, pos=MEDIAL (I=0.00 M=0.88 T=0.12). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M832": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=44, pos=MIXED (I=0.35 M=0.35 T=0.30). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M480": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=42, pos=MEDIAL (I=0.09 M=0.56 T=0.35). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M482": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=41, pos=MEDIAL (I=0.12 M=0.73 T=0.15). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M630": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=40, pos=TERMINAL (I=0.00 M=0.38 T=0.62). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M460": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=39, pos=MEDIAL (I=0.05 M=0.82 T=0.13). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M745": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=36, pos=MEDIAL (I=0.00 M=0.54 T=0.46). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M632": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=32, pos=MEDIAL (I=0.00 M=0.50 T=0.50). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M824": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=32, pos=INITIAL (I=0.62 M=0.00 T=0.38). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M501": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=31, pos=TERMINAL (I=0.00 M=0.07 T=0.94). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M495": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=30, pos=MIXED (I=0.04 M=0.46 T=0.50). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M095": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=30, pos=MEDIAL (I=0.07 M=0.59 T=0.34). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M645": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=28, pos=MEDIAL (I=0.19 M=0.65 T=0.15). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M463": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=28, pos=MEDIAL (I=0.08 M=0.76 T=0.16). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M500": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=24, pos=MEDIAL (I=0.04 M=0.83 T=0.13). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M555": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=24, pos=MEDIAL (I=0.04 M=0.83 T=0.13). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M540": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=22, pos=MIXED (I=0.15 M=0.46 T=0.39). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M877": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=22, pos=MIXED (I=0.14 M=0.48 T=0.38). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M636": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=21, pos=MEDIAL (I=0.05 M=0.81 T=0.14). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M711": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=21, pos=MEDIAL (I=0.24 M=0.67 T=0.10). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M679": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=19, pos=INITIAL (I=0.77 M=0.00 T=0.23). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M838": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=19, pos=MEDIAL (I=0.06 M=0.59 T=0.35). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M097": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=19, pos=MEDIAL (I=0.00 M=0.53 T=0.47). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M530": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=18, pos=MEDIAL (I=0.14 M=0.64 T=0.21). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M515": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=18, pos=MEDIAL (I=0.30 M=0.50 T=0.20). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M831": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=18, pos=MIXED (I=0.06 M=0.39 T=0.56). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M491": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=18, pos=TERMINAL (I=0.00 M=0.19 T=0.81). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M621": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=18, pos=INITIAL (I=0.72 M=0.11 T=0.17). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M519": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=17, pos=MIXED (I=0.19 M=0.38 T=0.44). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M436": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=17, pos=MEDIAL (I=0.12 M=0.88 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M999": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=17, pos=MEDIAL (I=0.06 M=0.81 T=0.12). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M906": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=16, pos=MEDIAL (I=0.12 M=0.50 T=0.38). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M921": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=16, pos=MEDIAL (I=0.07 M=0.64 T=0.29). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M554": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=15, pos=MEDIAL (I=0.00 M=0.73 T=0.27). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M605": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=15, pos=TERMINAL (I=0.00 M=0.27 T=0.73). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M565": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=15, pos=INITIAL (I=0.79 M=0.14 T=0.07). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M844": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=14, pos=MEDIAL (I=0.08 M=0.69 T=0.23). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M484": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=14, pos=MEDIAL (I=0.08 M=0.54 T=0.39). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M510": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=13, pos=TERMINAL (I=0.00 M=0.39 T=0.61). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M821": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=13, pos=MIXED (I=0.23 M=0.31 T=0.46). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M526": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=13, pos=INITIAL (I=1.00 M=0.00 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M317": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=13, pos=INITIAL (I=0.50 M=0.17 T=0.33). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M792": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=13, pos=MIXED (I=0.00 M=0.42 T=0.58). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M794": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=13, pos=MEDIAL (I=0.00 M=0.75 T=0.25). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M905": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=12, pos=TERMINAL (I=0.00 M=0.08 T=0.92). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M511": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=12, pos=MIXED (I=0.30 M=0.30 T=0.40). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M703": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=12, pos=MEDIAL (I=0.00 M=0.50 T=0.50). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M890": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=12, pos=MEDIAL (I=0.00 M=1.00 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M592": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=11, pos=MIXED (I=0.44 M=0.33 T=0.22). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M776": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=11, pos=MIXED (I=0.36 M=0.46 T=0.18). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M525": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=11, pos=MEDIAL (I=0.18 M=0.82 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M556": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=11, pos=TERMINAL (I=0.11 M=0.00 T=0.89). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M880": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=11, pos=TERMINAL (I=0.10 M=0.20 T=0.70). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M625": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=11, pos=MIXED (I=0.22 M=0.22 T=0.56). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M927": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=11, pos=MEDIAL (I=0.00 M=0.73 T=0.27). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M853": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=11, pos=TERMINAL (I=0.00 M=0.09 T=0.91). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M702": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=10, pos=MEDIAL (I=0.00 M=0.67 T=0.33). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M697": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=10, pos=INITIAL (I=0.62 M=0.25 T=0.12). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M098": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=10, pos=TERMINAL (I=0.12 M=0.25 T=0.62). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M924": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=10, pos=MEDIAL (I=0.10 M=0.60 T=0.30). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M698": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=10, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M942": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=10, pos=MEDIAL (I=0.00 M=1.00 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M772": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=10, pos=MEDIAL (I=0.11 M=0.89 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M468": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=10, pos=TERMINAL (I=0.00 M=0.40 T=0.60). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M545": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=10, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M234": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=9, pos=MIXED (I=0.43 M=0.14 T=0.43). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M552": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=9, pos=MEDIAL (I=0.25 M=0.50 T=0.25). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M504": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=9, pos=MIXED (I=0.44 M=0.44 T=0.11). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M467": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=9, pos=TERMINAL (I=0.00 M=0.33 T=0.67). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M746": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=9, pos=MEDIAL (I=0.22 M=0.56 T=0.22). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M812": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=9, pos=MEDIAL (I=0.11 M=0.89 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M773": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=9, pos=MEDIAL (I=0.00 M=0.89 T=0.11). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M417": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=9, pos=MEDIAL (I=0.00 M=0.89 T=0.11). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M597": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=9, pos=MEDIAL (I=0.00 M=1.00 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M808": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=8, pos=TERMINAL (I=0.25 M=0.00 T=0.75). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M642": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=8, pos=MEDIAL (I=0.12 M=0.75 T=0.12). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M849": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=8, pos=TERMINAL (I=0.25 M=0.00 T=0.75). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M626": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=8, pos=MEDIAL (I=0.00 M=0.75 T=0.25). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M422": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=8, pos=INITIAL (I=0.75 M=0.25 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M426": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=7, pos=INITIAL (I=0.80 M=0.00 T=0.20). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M603": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=7, pos=MIXED (I=0.14 M=0.43 T=0.43). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M804": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=7, pos=INITIAL (I=0.57 M=0.29 T=0.14). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M851": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=7, pos=MIXED (I=0.43 M=0.00 T=0.57). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M777": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=7, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M747": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=7, pos=TERMINAL (I=0.29 M=0.00 T=0.71). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M423": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=7, pos=INITIAL (I=0.86 M=0.14 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M456": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=6, pos=TERMINAL (I=0.00 M=0.40 T=0.60). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M791": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=6, pos=MIXED (I=0.17 M=0.33 T=0.50). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M825": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=6, pos=MEDIAL (I=0.00 M=0.80 T=0.20). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M611": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=6, pos=MEDIAL (I=0.20 M=0.80 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M869": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=6, pos=INITIAL (I=0.80 M=0.20 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M420": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=6, pos=MEDIAL (I=0.20 M=0.80 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M604": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=6, pos=MEDIAL (I=0.00 M=0.50 T=0.50). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M518": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=6, pos=TERMINAL (I=0.00 M=0.33 T=0.67). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M472": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=6, pos=MEDIAL (I=0.00 M=0.60 T=0.40). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M465": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=6, pos=TERMINAL (I=0.00 M=0.17 T=0.83). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M564": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=6, pos=MEDIAL (I=0.00 M=0.50 T=0.50). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M572": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=6, pos=MEDIAL (I=0.17 M=0.67 T=0.17). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M749": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=6, pos=INITIAL (I=1.00 M=0.00 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M634": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=5, pos=TERMINAL (I=0.00 M=0.20 T=0.80). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M842": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=5, pos=INITIAL (I=1.00 M=0.00 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M531": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=5, pos=MEDIAL (I=0.00 M=0.60 T=0.40). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M521": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=5, pos=MEDIAL (I=0.20 M=0.60 T=0.20). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M710": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=5, pos=MIXED (I=0.20 M=0.40 T=0.40). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M578": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=5, pos=MEDIAL (I=0.00 M=1.00 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M687": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=5, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M352": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=5, pos=TERMINAL (I=0.00 M=0.40 T=0.60). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M637": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=5, pos=TERMINAL (I=0.00 M=0.40 T=0.60). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M681": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=5, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M443": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=5, pos=MEDIAL (I=0.00 M=1.00 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M871": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=5, pos=INITIAL (I=0.60 M=0.20 T=0.20). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M744": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=5, pos=MEDIAL (I=0.00 M=0.50 T=0.50). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M704": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=5, pos=MEDIAL (I=0.00 M=0.60 T=0.40). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M421": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=5, pos=MEDIAL (I=0.00 M=0.80 T=0.20). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M797": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=TERMINAL (I=0.00 M=0.33 T=0.67). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M879": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=MEDIAL (I=0.25 M=0.75 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M893": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=MEDIAL (I=0.00 M=0.75 T=0.25). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M799": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M775": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=MEDIAL (I=0.00 M=0.50 T=0.50). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M470": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=TERMINAL (I=0.00 M=0.25 T=0.75). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M910": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M922": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M898": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=MIXED (I=0.33 M=0.33 T=0.33). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M736": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M930": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=INITIAL (I=1.00 M=0.00 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M600": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=INITIAL (I=0.67 M=0.33 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M442": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=MEDIAL (I=0.25 M=0.50 T=0.25). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M543": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=MEDIAL (I=0.00 M=0.75 T=0.25). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M912": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=MEDIAL (I=0.00 M=0.50 T=0.50). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M899": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=MIXED (I=0.25 M=0.25 T=0.50). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M096": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M502": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=MEDIAL (I=0.00 M=0.50 T=0.50). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M903": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=4, pos=MEDIAL (I=0.00 M=0.50 T=0.50). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M748": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=INITIAL (I=1.00 M=0.00 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M909": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=INITIAL (I=0.50 M=0.50 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M716": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=TERMINAL (I=0.33 M=0.00 T=0.67). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M551": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M720": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=TERMINAL (I=0.00 M=0.33 T=0.67). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M678": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M829": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M516": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=TERMINAL (I=0.33 M=0.00 T=0.67). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M843": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M534": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=MIXED (I=0.33 M=0.33 T=0.33). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M805": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=MEDIAL (I=0.00 M=0.67 T=0.33). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M490": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=MEDIAL (I=0.00 M=0.50 T=0.50). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M852": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M856": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=INITIAL (I=0.50 M=0.00 T=0.50). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M643": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=MEDIAL (I=0.33 M=0.67 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M870": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M807": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=MEDIAL (I=0.00 M=1.00 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M452": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=MEDIAL (I=0.00 M=0.50 T=0.50). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M561": {
+      "reading": "[multi_function]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=MIXED (I=0.33 M=0.33 T=0.33). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M685": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=INITIAL (I=1.00 M=0.00 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M865": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=INITIAL (I=0.67 M=0.33 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M956": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M908": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=MEDIAL (I=0.00 M=1.00 T=0.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M683": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M560": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=MEDIAL (I=0.00 M=0.67 T=0.33). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M786": {
+      "reading": "[personal_name]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=MEDIAL (I=0.00 M=0.67 T=0.33). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M424": {
+      "reading": "[title_classifier]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=INITIAL (I=0.50 M=0.00 T=0.50). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M631": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
+    },
+    "M839": {
+      "reading": "[case_suffix]",
+      "confidence": "CANDIDATE",
+      "basis": "Phase-288: Yajnadevam corpus discovery — freq=3, pos=TERMINAL (I=0.00 M=0.00 T=1.00). Awaiting DEDR + SA confirmation.",
+      "source": "Phase-288 Yajnadevam"
     }
   },
   "_citation": {

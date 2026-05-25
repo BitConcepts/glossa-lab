@@ -77,13 +77,14 @@ export function DeciphermentPanel() {
 
   if (isArchived) {
     const totalSigns  = data.anchors.corpus_signs  ?? 390;
+    const totalAnchors = data.anchors.total_all ?? totalSigns;
     const high        = byConf.HIGH   ?? 0;
     const medium      = byConf.MEDIUM ?? 0;
     const low         = byConf.LOW    ?? 0;
     const nHM         = high + medium;
     const tokenCovPct = Math.round((data.anchors.corpus_token_coverage ?? 0) * 100);
-    const hmSignPct   = Math.round((nHM / totalSigns) * 100);
-    const highSignPct = Math.round((high / totalSigns) * 100);
+    const hmSignPct   = Math.round((nHM / totalAnchors) * 100);
+    const highSignPct = Math.round((high / totalAnchors) * 100);
     const nRounds     = data.n_rounds_completed ?? 17;
 
     return (
@@ -107,7 +108,7 @@ export function DeciphermentPanel() {
           <div>
             <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>H+M Signs with Readings</div>
             <div style={{ fontSize: 20, fontWeight: 700, color: "#111827" }}>
-              {nHM} <span style={{ fontSize: 13, color: "#9ca3af" }}>/ {totalSigns}</span>
+              {nHM} <span style={{ fontSize: 13, color: "#9ca3af" }}>/ {totalAnchors}</span>
             </div>
             <div style={{ fontSize: 11, marginTop: 2 }}>
               <span style={{ color: "#15803d", fontWeight: 600 }}>H:{high}</span>{" "}
@@ -126,7 +127,7 @@ export function DeciphermentPanel() {
 
         {/* Progress bars — token coverage is the primary metric per anchors note */}
         <ProgressBar value={tokenCovPct}  color="#059669" label={`Token coverage (${tokenCovPct}% of 7,002 corpus tokens)`} />
-        <ProgressBar value={hmSignPct}    color="#3b82f6" label={`H+M sign coverage (${nHM}/${totalSigns} sign types)`} />
+        <ProgressBar value={hmSignPct}    color="#3b82f6" label={`H+M sign coverage (${nHM}/${totalAnchors} anchors)`} />
         <ProgressBar value={highSignPct}  color="#15803d" label={`HIGH confidence only (${high} signs)`} />
 
         <div style={{ marginTop: 10, fontSize: 11, color: "#9ca3af" }}>

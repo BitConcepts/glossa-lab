@@ -10,7 +10,8 @@ from glossa_lab.experiment_graph import AtomicNodeDef
 
 def _phase235_runner(inputs: dict, params: dict) -> dict:
     try:
-        import subprocess, sys  # noqa: PLC0415
+        import subprocess
+        import sys  # noqa: PLC0415
         r = subprocess.run(
             [sys.executable, "scripts/phase235_elamite_pdr_bridge.py"],
             capture_output=True, text=True, timeout=60,
@@ -33,7 +34,8 @@ def _phase235_runner(inputs: dict, params: dict) -> dict:
 
 def _phase236_runner(inputs: dict, params: dict) -> dict:
     try:
-        import subprocess, sys  # noqa: PLC0415
+        import subprocess
+        import sys  # noqa: PLC0415
         r = subprocess.run(
             [sys.executable, "scripts/phase236_sanskrit_loanword_mapping.py"],
             capture_output=True, text=True, timeout=60,

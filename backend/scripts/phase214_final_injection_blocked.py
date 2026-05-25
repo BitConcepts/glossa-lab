@@ -22,7 +22,8 @@ After this phase, we are blocked:
   - BLOCKED STATE: additional anchors need epigraphist or ICIT validation
 """
 from __future__ import annotations
-import json, sys
+import json
+import sys
 from pathlib import Path
 from collections import Counter
 

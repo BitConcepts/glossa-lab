@@ -422,7 +422,7 @@ def main() -> None:
     n_new  = len(findings["new_data_items"])
     n_icit = len(findings["icit_items"])
 
-    print(f"\n=== Phase 179 Results ===")
+    print("\n=== Phase 179 Results ===")
     print(f"  Papers retrieved:     {len(unique_papers)}")
     print(f"  Sign proposals found: {n_sign}")
     print(f"  aDNA/genetics items:  {n_adna}")

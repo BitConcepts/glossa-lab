@@ -145,7 +145,7 @@ def main():
     print(f"\n  VERDICT: {verdict}")
 
     if examples:
-        print(f"\n  Sample tripartite inscriptions:")
+        print("\n  Sample tripartite inscriptions:")
         for ex in examples[:3]:
             print(f"    {ex['seq']} -> {ex['slots']}")
 

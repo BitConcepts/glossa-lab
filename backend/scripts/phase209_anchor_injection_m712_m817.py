@@ -16,7 +16,8 @@ Also adding M700=aru [CANDIDATE] (freq=355, cons=0.400):
   Candidate status pending DEDR disambiguation.
 """
 from __future__ import annotations
-import json, sys
+import json
+import sys
 from pathlib import Path
 from collections import Counter
 

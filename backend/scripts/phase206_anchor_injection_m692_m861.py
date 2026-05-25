@@ -28,7 +28,8 @@ This script:
   6. Saves updated INDUS_FINAL_ANCHORS.json
 """
 from __future__ import annotations
-import json, sys
+import json
+import sys
 from pathlib import Path
 from collections import Counter
 

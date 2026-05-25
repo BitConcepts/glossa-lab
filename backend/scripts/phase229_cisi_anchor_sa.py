@@ -125,7 +125,7 @@ def main():
             }
             if cons >= 0.40 and modal == p122_reading:
                 print(f"  ✓ M122='{p122_reading}' SA-consistent at {cons:.2f} >= 0.40!")
-                print(f"  → CANDIDATE can be upgraded to LOW confidence")
+                print("  → CANDIDATE can be upgraded to LOW confidence")
                 result["verdict"] = f"SUPPORTED: M122='{p122_reading}' SA-consistent at {cons:.2f}. Upgrade to LOW."
             else:
                 print(f"  ✗ M122 SA inconsistent or different modal: '{modal}' vs expected '{p122_reading}'")
@@ -163,8 +163,8 @@ def main():
 
     print()
     print(f"  VERDICT: {result.get('verdict', 'See output')}")
-    print(f"\n  KEY FINDING: Phase-228 CISI tripartite test (46.5%, 3× null)")
-    print(f"  independently confirms Dravidian grammar model — landmark for arXiv.")
+    print("\n  KEY FINDING: Phase-228 CISI tripartite test (46.5%, 3× null)")
+    print("  independently confirms Dravidian grammar model — landmark for arXiv.")
 
     OUT.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"\n  Saved → {OUT}")

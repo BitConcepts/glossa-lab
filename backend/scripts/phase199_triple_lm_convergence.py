@@ -15,7 +15,8 @@ supplemented by McAlpin 1974/1981 Elamo-Dravidian cognate chain and
 the absent phoneme vocabulary from Phase 198.
 """
 from __future__ import annotations
-import json, sys
+import json
+import sys
 from pathlib import Path
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
@@ -224,7 +225,7 @@ def main():
     absent_phonemes = ["li","shu","gu","ab","ba","du","ga","mil","sum"]
     convergent = find_convergent_signs(results, absent_phonemes)
 
-    print(f"\n=== Triple-LM Convergent Signs ===")
+    print("\n=== Triple-LM Convergent Signs ===")
     print(f"  Signs where all 3 LMs agree: {len(convergent)}")
     absent_convergent = [c for c in convergent if c["absent_hits"]]
     print(f"  Convergent signs matching absent phonemes: {len(absent_convergent)}")

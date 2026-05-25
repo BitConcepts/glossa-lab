@@ -14,7 +14,9 @@ Output: outputs/phase262_collocate_upgrade.json
 """
 from __future__ import annotations
 
-import json, os, sys
+import json
+import os
+import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path

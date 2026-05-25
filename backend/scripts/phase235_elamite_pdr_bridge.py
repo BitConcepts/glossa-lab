@@ -374,7 +374,7 @@ def main():
     # Direct confirmations (exact matches of known anchors)
     direct = [c for c in MCALPIN_COGNATES if c.get("directly_matches_anchor") and
               c["directly_matches_anchor"] in anchors]
-    print(f"\n  === Direct Elamite Confirmations of Existing Anchors ===")
+    print("\n  === Direct Elamite Confirmations of Existing Anchors ===")
     for c in direct:
         anchor_id = c["directly_matches_anchor"]
         anchor = anchors.get(anchor_id, {})
@@ -383,14 +383,14 @@ def main():
 
     # Phoneme recovery summary
     phoneme_recovery = [c for c in MCALPIN_COGNATES if c["match_type"] == "PHONEME_RECOVERY"]
-    print(f"\n  === Absent Phoneme Recovery via Elamite ===")
+    print("\n  === Absent Phoneme Recovery via Elamite ===")
     for c in phoneme_recovery:
         print(f"  {c['id']}: Elamite '{c['elamite']}' → phonemes {c['phonemes']} — {c['significance'][:60]}")
 
     # P324 candidate corroboration
     p324_cog = next((c for c in MCALPIN_COGNATES if c["id"] == "MC-06"), None)
     if p324_cog:
-        print(f"\n  === P324 Candidate Corroboration ===")
+        print("\n  === P324 Candidate Corroboration ===")
         print(f"  {p324_cog['id']}: Elamite '{p324_cog['elamite']}' ({p324_cog['elamite_gloss']}) "
               f"↔ PDr '{p324_cog['pdr']}' ({p324_cog['pdr_gloss']}) DEDR {p324_cog['dedr']}")
         print(f"  Significance: {p324_cog['significance']}")
@@ -400,12 +400,12 @@ def main():
     upgrade_proposals = [m for m in matches if m["upgrade_proposed"]]
     high_med_confirmed = [m for m in matches if m["confidence"] in ("HIGH", "MEDIUM") and m["best_score"] >= 2]
 
-    print(f"\n  === Anchor Matching Results ===")
+    print("\n  === Anchor Matching Results ===")
     print(f"  Anchors with Elamite match (score ≥ 1): {len(matches)}")
     print(f"  HIGH/MEDIUM anchors externally confirmed: {len(high_med_confirmed)}")
     print(f"  LOW anchors proposed for MEDIUM upgrade: {len(upgrade_proposals)}")
 
-    print(f"\n  TOP 10 ANCHOR–ELAMITE MATCHES:")
+    print("\n  TOP 10 ANCHOR–ELAMITE MATCHES:")
     for m in matches[:10]:
         print(f"  {m['sign']:6s} '{m['reading']:15s}' ({m['confidence']:6s}) "
               f"score={m['best_score']} cog={m['best_cognate_id']} "

@@ -150,7 +150,7 @@ def main():
     print(f"  H+M total: {n_high + n_med} (was {n_before_high + n_before_med})")
 
     if upgrade_log:
-        print(f"\n  Top 15 upgraded signs:")
+        print("\n  Top 15 upgraded signs:")
         for u in sorted(upgrade_log, key=lambda x: -x["upgrade_confidence"])[:15]:
             print(f"    {u['sign']:6s} '{u['reading']:12s}' DEDR={u['dedr']:6s} "
                   f"El={u['elamite_score']} Sk={u['sanskrit_score']} conf={u['upgrade_confidence']}")
@@ -158,7 +158,7 @@ def main():
     # Save
     anchors_raw["anchors"] = anchors
     ANCHORS.write_text(json.dumps(anchors_raw, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"\n  INDUS_FINAL_ANCHORS.json saved.")
+    print("\n  INDUS_FINAL_ANCHORS.json saved.")
 
     # Token coverage estimate: each MEDIUM anchor covers roughly the same token
     # weight as before — but more signs are now confirmable. Approximate gain.

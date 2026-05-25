@@ -18,7 +18,8 @@ Also tests the /sum/ (title/name marker) hypothesis:
   M868 (freq=3, our /gi/ LOW anchor) may be the /sum/ sign in miniature inscs.
 """
 from __future__ import annotations
-import json, sys
+import json
+import sys
 from pathlib import Path
 from collections import Counter
 
@@ -141,14 +142,14 @@ def main():
         if t["coverage"] >= 0.7:  # 70%+ readable
             fully_readable.append(t)
 
-    print(f"\n=== Inscription Analysis ===")
+    print("\n=== Inscription Analysis ===")
     print(f"  Inscriptions with /en/: {len(inscs_with_en)}")
     print(f"  70%+ readable: {len(fully_readable)}")
-    print(f"\nPattern distribution:")
+    print("\nPattern distribution:")
     for pat, count in pattern_counts.most_common():
         print(f"  {pat}: {count}")
 
-    print(f"\n=== Sample Transcriptions (highest coverage) ===")
+    print("\n=== Sample Transcriptions (highest coverage) ===")
     sorted_t = sorted(transcriptions, key=lambda x: (-x["coverage"], -len(x["inscription"])))
     for t in sorted_t[:15]:
         print(f"  [{t['coverage']*100:.0f}%] [{t['pattern']}] {t['text']}")
@@ -164,7 +165,7 @@ def main():
 
     mean_coverage = round(coverage_sum / max(1, len(inscs)), 3)
     fully_readable_all = sum(1 for t in all_transcriptions if t["coverage"] >= 0.7)
-    print(f"\n=== Overall Reading Statistics ===")
+    print("\n=== Overall Reading Statistics ===")
     print(f"  Total inscriptions: {len(inscs)}")
     print(f"  Mean reading coverage: {mean_coverage*100:.1f}%")
     print(f"  Fully readable (70%+): {fully_readable_all} ({fully_readable_all/len(inscs)*100:.1f}%)")

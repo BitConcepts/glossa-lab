@@ -120,13 +120,13 @@ def main():
     agg = round((anch_tokens * anch_mean + (total_tokens - anch_tokens) * r0["mean_c"]) / total_tokens, 4)
     d_p213 = round(agg - P213_AGGREGATE, 4)
 
-    print(f"\n=== Aggregate Confidence ===")
+    print("\n=== Aggregate Confidence ===")
     print(f"  Phase-213 baseline:  {P213_AGGREGATE:.4f} ({P213_AGGREGATE*100:.1f}%)")
     print(f"  Phase-257 result:    {agg:.4f} ({agg*100:.1f}%)")
     print(f"  Delta vs P213:       {d_p213:+.4f} ({d_p213*100:+.2f}pp)")
 
     # Identify MEDIUM signs with high consistency → upgrade candidates
-    print(f"\n=== MEDIUM→HIGH Upgrade Candidates (consistency >= 0.40) ===")
+    print("\n=== MEDIUM→HIGH Upgrade Candidates (consistency >= 0.40) ===")
     medium_signs = {k: v for k, v in anchors_raw.items()
                     if v.get("confidence") == "MEDIUM"}
     upgrade_candidates = []

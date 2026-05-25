@@ -19,7 +19,11 @@ Synthesis:
 This provides the strongest genomic framing for the Dravidian IVC hypothesis to date.
 """
 from __future__ import annotations
-import json, re, sys, urllib.parse, urllib.request
+import json
+import re
+import sys
+import urllib.parse
+import urllib.request
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]

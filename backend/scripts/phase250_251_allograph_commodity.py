@@ -9,7 +9,7 @@ Phase-250: Allograph Detection from Holdat Corpus
 
 Phase-251: Trade Commodity Phoneme Mapping
   Harappan exports with known Akkadian/Sumerian names → PDr phonology:
-    carnelian → PDr *cembu/cempu (DEDR 2791)  
+    carnelian → PDr *cembu/cempu (DEDR 2791)
     cotton    → PDr *parutti (DEDR 4014)
     lapis     → PDr *nil (DEDR 3700)
     sesame    → PDr *el (DEDR 0846)
@@ -43,7 +43,8 @@ def phase_250_allograph() -> dict:
     print("\n[Phase-250] Allograph Detection — Holdat Corpus...")
 
     try:
-        import sys, os
+        import sys
+        import os
         sys.path.insert(0, str(REPO / "backend"))
         os.environ.setdefault("GLOSSA_DATA_DIR", str(REPO / "backend/data"))
         from glossa_lab.data.indus_m77 import get_corpus_inscriptions  # noqa
@@ -323,7 +324,7 @@ def main():
     r250 = phase_250_allograph()
     r251 = phase_251_commodity()
 
-    print(f"\n  === SYNTHESIS ===")
+    print("\n  === SYNTHESIS ===")
     print(f"  Phase-250 allograph: {r250.get('n_strong', 0)} strong + {r250.get('n_candidates', 0)} candidates")
     print(f"  Phase-250 HIGH upgrades possible: {r250.get('n_high_upgrades', 0)}")
     print(f"  Phase-251 commodity phonemes: {r251['commodities_analysed']} mapped")

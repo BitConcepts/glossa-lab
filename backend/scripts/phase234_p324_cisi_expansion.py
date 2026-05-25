@@ -278,8 +278,8 @@ def attempt_low_medium_upgrades(anchors: dict, cisi_data: dict) -> list:
                 "sa_consistency": sa_consistency,
                 "rationale": (
                     f"CISI positional corroboration ({cisi_agreement})" if cisi_corroborated else ""
-                    f"DEDR entry + reading present" if has_dedr and has_reading else
-                    f"Partial evidence"
+                    "DEDR entry + reading present" if has_dedr and has_reading else
+                    "Partial evidence"
                 ),
             })
 
@@ -316,12 +316,12 @@ def main():
     upgrades = attempt_low_medium_upgrades(anchors, p228)
     n_medium_upgrades = sum(1 for u in upgrades if u["proposed_confidence"] == "MEDIUM")
     n_low_strong = sum(1 for u in upgrades if u["proposed_confidence"] == "LOW_STRONG")
-    print(f"\n  === LOW→MEDIUM Upgrade Candidates ===")
+    print("\n  === LOW→MEDIUM Upgrade Candidates ===")
     print(f"  Total candidates: {len(upgrades)}")
     print(f"  → MEDIUM proposals: {n_medium_upgrades}")
     print(f"  → LOW_STRONG proposals: {n_low_strong}")
     if upgrades:
-        print(f"  Top 8:")
+        print("  Top 8:")
         for u in upgrades[:8]:
             print(f"    {u['sign']:6s} '{u['reading']:15s}' score={u['upgrade_score']} "
                   f"{u['proposed_confidence']:12s} CISI={u['cisi_agreement']}")

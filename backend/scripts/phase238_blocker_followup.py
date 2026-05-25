@@ -88,7 +88,7 @@ def track_a_ai_epigraphy() -> dict:
 
     # Also try Semantic Scholar for more details
     time.sleep(RATE_SLEEP)
-    s2_url = f"https://api.semanticscholar.org/graph/v1/paper/DOI:10.1145/3768633.3770145?fields=title,abstract,references,year,authors"
+    s2_url = "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1145/3768633.3770145?fields=title,abstract,references,year,authors"
     s2_data = _get_json(s2_url) or {}
     s2_abstract = s2_data.get("abstract") or ""
     references = s2_data.get("references") or []
@@ -164,7 +164,7 @@ def track_b_nonlinguistic_scorecard() -> dict:
     abstract = " ".join(pos[i] for i in sorted(pos))
 
     time.sleep(RATE_SLEEP)
-    s2_url = f"https://api.semanticscholar.org/graph/v1/paper/OA:W7155245181?fields=title,abstract,year,authors"
+    s2_url = "https://api.semanticscholar.org/graph/v1/paper/OA:W7155245181?fields=title,abstract,year,authors"
     s2_data = _get_json(s2_url) or {}
 
     full_text = (abstract + " " + (s2_data.get("abstract") or "")).lower()
@@ -313,7 +313,7 @@ def track_c_failaka_bilingual() -> dict:
                            "— material basis for dual-register seals is now independently documented.",
     }
     print(f"  IB-C01 score: {ib_c01_original_score} → {updated_score}")
-    print(f"  Key: Failaka bead trade + Dilmun seal study = confirmed material exchange network")
+    print("  Key: Failaka bead trade + Dilmun seal study = confirmed material exchange network")
     return result
 
 
@@ -477,7 +477,7 @@ def main():
     OUT.parent.mkdir(exist_ok=True)
     OUT.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"\n  Saved → {OUT}")
-    print(f"\n  KEY FINDINGS:")
+    print("\n  KEY FINDINGS:")
     for f in result["key_findings"]:
         print(f"  • {f}")
     print(f"\n  VERDICT: {result['verdict']}")

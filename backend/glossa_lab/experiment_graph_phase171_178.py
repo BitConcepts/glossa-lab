@@ -158,7 +158,7 @@ def _network_deep_175_178(inputs: dict, params: dict) -> dict[str, Any]:
         p175 = _load_output("phase175_site_stratified.json")
 
     p176 = _load_output("phase176_m059_bridge.json")
-    p177 = _load_output("phase177_bc_slot_mapping.json")
+    _load_output("phase177_bc_slot_mapping.json")
     p178 = _load_output("phase178_icit_priority.json")
 
     p175_verdict  = p175.get("verdict", "UNKNOWN") if p175.get("available") is not False else "PENDING"

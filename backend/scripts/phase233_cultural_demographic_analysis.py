@@ -264,7 +264,7 @@ def main():
     coll = COLLAPSE_MODEL
     print(f"  Period: {coll['period']}")
     print(f"  P(South Dravidian survival): {coll['probability_south_dravidian_survival']:.0%}")
-    print(f"  Dispersal directions:")
+    print("  Dispersal directions:")
     for d in coll["dispersal_directions"]:
         print(f"    {d['direction']:40s} P={d['probability']:.0%} → {d['linguistic_outcome'][:50]}")
 
@@ -276,7 +276,7 @@ def main():
 
     # Language survival probability
     lsp = compute_language_survival_probability(MIGRATION_CORRIDORS, CULTURAL_CHAINS, ADNA_DATA)
-    print(f"\n  === Language Survival Probability ===")
+    print("\n  === Language Survival Probability ===")
     print(f"  Posterior estimate: {lsp['posterior_estimate']:.0%} ({lsp['confidence']})")
     print(f"  {lsp['interpretation'][:120]}")
 
@@ -296,11 +296,11 @@ def main():
         "language_survival_probability": lsp,
         "combined_probability_pdr_to_tamil": round(total_prob_south_dravidian, 3),
         "key_findings": [
-            f"Rakhigarhi aDNA: 0% steppe confirms IVC was NOT Indo-Aryan",
-            f"BRW cultural chain: unbroken from IVC Late Phase → Sangam Tamil (0 documented gaps)",
-            f"Keezhadi: Tamil literacy emerged from Iron Age urbanization, independent of Sanskrit",
-            f"Brahui: in situ IVC relic population preserves archaic PDr phonology (k- initial retention)",
-            f"Meluhhan trade diaspora: confirmed in cuneiform (Shu-ilishu seal, Ur III tablets)",
+            "Rakhigarhi aDNA: 0% steppe confirms IVC was NOT Indo-Aryan",
+            "BRW cultural chain: unbroken from IVC Late Phase → Sangam Tamil (0 documented gaps)",
+            "Keezhadi: Tamil literacy emerged from Iron Age urbanization, independent of Sanskrit",
+            "Brahui: in situ IVC relic population preserves archaic PDr phonology (k- initial retention)",
+            "Meluhhan trade diaspora: confirmed in cuneiform (Shu-ilishu seal, Ur III tablets)",
             f"Language survival probability: {lsp['posterior_estimate']:.0%} ({lsp['confidence']})",
             f"Combined P(PDr → Tamil): {total_prob_south_dravidian:.0%}",
         ],

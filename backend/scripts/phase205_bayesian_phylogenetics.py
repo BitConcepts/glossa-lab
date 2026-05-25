@@ -21,7 +21,11 @@ This script:
   5. Assesses IVC-Dravidian fit and Munda substrate interaction window
 """
 from __future__ import annotations
-import json, re, sys, urllib.parse, urllib.request
+import json
+import re
+import sys
+import urllib.parse
+import urllib.request
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -318,21 +322,21 @@ def main():
         "munda_substrate":    MUNDA_SUBSTRATE_EVIDENCE,
         "language_timeline":  timeline,
         "key_findings": [
-            f"PDr divergence ~4500 BCE: PREDATES IVC by ~1900 years — Dravidian was already a "
-            f"mature family when IVC scribes began writing.",
-            f"North Dravidian (Brahui ancestor) diverged ~3800 BCE and was geographically located "
-            f"in Balochistan/NW zone — the IVC heartland. Strongest IVC-Dravidian link.",
-            f"South Dravidian diverged ~3200 BCE; sub-group diversification ongoing during IVC peak (2600–1900 BCE).",
-            f"Munda contact window 4000–2000 BCE fully overlaps IVC; supports bilingual model: "
-            f"Munda farmers + Dravidian administrative scribes.",
-            f"Elamo-Dravidian split ~8000 BCE; by IVC time these were already distinct but Elamite "
-            f"script system may have influenced Indus sign design (separate question).",
+            "PDr divergence ~4500 BCE: PREDATES IVC by ~1900 years — Dravidian was already a "
+            "mature family when IVC scribes began writing.",
+            "North Dravidian (Brahui ancestor) diverged ~3800 BCE and was geographically located "
+            "in Balochistan/NW zone — the IVC heartland. Strongest IVC-Dravidian link.",
+            "South Dravidian diverged ~3200 BCE; sub-group diversification ongoing during IVC peak (2600–1900 BCE).",
+            "Munda contact window 4000–2000 BCE fully overlaps IVC; supports bilingual model: "
+            "Munda farmers + Dravidian administrative scribes.",
+            "Elamo-Dravidian split ~8000 BCE; by IVC time these were already distinct but Elamite "
+            "script system may have influenced Indus sign design (separate question).",
         ],
         "verdict": (
-            f"Bayesian phylogenetics confirms EXCELLENT temporal fit for Dravidian IVC hypothesis. "
-            f"PDr predates IVC by ~1900 years; North Dravidian (Brahui) localized in IVC NW corridor. "
-            f"Munda contact overlaps IVC, supporting bilingual model with Dravidian administrative layer. "
-            f"E31+E32 together provide strong temporal framing for all Phase 185-204 linguistic evidence."
+            "Bayesian phylogenetics confirms EXCELLENT temporal fit for Dravidian IVC hypothesis. "
+            "PDr predates IVC by ~1900 years; North Dravidian (Brahui) localized in IVC NW corridor. "
+            "Munda contact overlaps IVC, supporting bilingual model with Dravidian administrative layer. "
+            "E31+E32 together provide strong temporal framing for all Phase 185-204 linguistic evidence."
         ),
     }
 

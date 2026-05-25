@@ -7,7 +7,8 @@ Total anchors: 404 -> 408
 Same 4-condition x 5-seed protocol. Compare vs Phase 207 (55.2%) and Phase 193 (50.3%).
 """
 from __future__ import annotations
-import json, sys
+import json
+import sys
 from pathlib import Path
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
@@ -128,7 +129,7 @@ def main():
     d_p207 = round(agg - P207_AGGREGATE, 4)
     d_p193 = round(agg - P193_AGGREGATE, 4)
 
-    print(f"\n=== Aggregate Confidence ===")
+    print("\n=== Aggregate Confidence ===")
     print(f"  Phase 193 baseline: {P193_AGGREGATE:.4f} ({P193_AGGREGATE*100:.1f}%)")
     print(f"  Phase 207 baseline: {P207_AGGREGATE:.4f} ({P207_AGGREGATE*100:.1f}%)")
     print(f"  Phase 213 result:   {agg:.4f} ({agg*100:.1f}%)")

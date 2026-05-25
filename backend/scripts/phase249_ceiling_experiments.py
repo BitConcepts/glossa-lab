@@ -75,10 +75,10 @@ def _invert(inv: dict) -> str:
 
 def experiment_a_allograph(anchors: dict) -> dict:
     """Implement Daggumati & Revesz (2021) positional allograph detection.
-    
+
     Method: Compute pairwise Pearson correlation of [I-rate, M-rate, T-rate]
     vectors for all sign pairs. High correlation (r >= 0.85) = allograph candidates.
-    
+
     For signs where one is HIGH/MEDIUM and one is LOW/CANDIDATE:
     - If positional profiles are highly correlated → propose allograph relationship
     - LOW/CANDIDATE sign inherits HIGH/MEDIUM sign's reading
@@ -226,7 +226,7 @@ def experiment_a_allograph(anchors: dict) -> dict:
 
 def experiment_b_semantic_scope() -> dict:
     """Apply semantic scope constraints from Parpola/2023 paper.
-    
+
     Seal types → semantic domains → PDr vocabulary domains → constrain rare sign readings.
     """
     print("\n[Experiment B] Semantic Scope Constraint Analysis...")
@@ -313,7 +313,7 @@ def experiment_b_semantic_scope() -> dict:
 
     print(f"  Seal types analysed: {len(SEAL_SEMANTIC_MAP)}")
     print(f"  Semantic constraints derived: {len(constrained_readings)}")
-    print(f"  Key insight: unicorn seals constrain INITIAL signs to title/genitive prefix vocabulary")
+    print("  Key insight: unicorn seals constrain INITIAL signs to title/genitive prefix vocabulary")
 
     # Semantic scope paper citation
     paper_ref = {
@@ -647,9 +647,9 @@ def main():
     r2    = run_round2_mine()
     synthesis = synthesize_ceiling_progress(exp_a, exp_b, exp_c, r2)
 
-    print(f"\n  === OVERALL ASSESSMENT ===")
+    print("\n  === OVERALL ASSESSMENT ===")
     print(f"  {synthesis['overall_assessment']}")
-    print(f"\n  TOP 3 NEXT EXPERIMENTS:")
+    print("\n  TOP 3 NEXT EXPERIMENTS:")
     for e in synthesis["prioritized_next_experiments"][:3]:
         print(f"  [{e['priority']}] {e['experiment']}")
         print(f"       Impact: {e['expected_impact']}")

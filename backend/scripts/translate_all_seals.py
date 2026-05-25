@@ -29,6 +29,7 @@ sys.path.insert(0, str(BACKEND))
 
 ANCHORS_PATH = BACKEND / "reports" / "INDUS_FINAL_ANCHORS.json"
 YAJNADEVAM_PATH = BACKEND / "glossa_lab" / "data" / "yajnadevam_inscriptions.csv"
+YAJ_CROSSWALK_PATH = ROOT / "data" / "crosswalks" / "yajnadevam_to_parpola_crosswalk.csv"
 OUTPUTS = ROOT / "outputs"
 OUTPUTS.mkdir(exist_ok=True)
 
@@ -60,19 +61,75 @@ def load_holdat_inscriptions() -> list[dict]:
     return results
 
 
-def load_yajnadevam_inscriptions() -> list[dict]:
-    """Load Yajnadevam corpus inscriptions with metadata."""
+def load_yajnadevam_crosswalk(anchors: dict) -> dict[str, str]:
+    """Build Yajnadevam glyph ID -> Mahadevan M-number mapping.
+
+    Two methods combined:
+    1. Crosswalk: Yaj glyph -> Parpola P-number -> M-number (P=M for standard signs)
+    2. Direct: Yaj glyph NNN -> M + NNN (works for ~500 signs where numbering matches)
+    """
+    import re as _re  # noqa: PLC0415
+    yaj_to_m: dict[str, str] = {}
+
+    # Method 1: via existing crosswalk CSV
+    if YAJ_CROSSWALK_PATH.exists():
+        with open(YAJ_CROSSWALK_PATH, "r", encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                gid = row.get("yajnadevam_glyph_id", "")
+                p_id = row.get("best_parpola_match", "")
+                if gid and p_id and p_id.startswith("P"):
+                    m_key = "M" + p_id[1:]
+                    if m_key in anchors:
+                        yaj_to_m[gid] = m_key
+
+    # Method 2: direct numeric match (Yaj NNN -> MNNN)
+    # This works because Yajnadevam largely adopted Mahadevan numbering
+    for g in range(1000):
+        gid = f"{g:03d}"
+        if gid not in yaj_to_m:
+            m_key = f"M{gid}"
+            if m_key in anchors:
+                yaj_to_m[gid] = m_key
+            # Also try without leading zeros: M12 vs M012
+            m_key_short = f"M{g}"
+            if m_key_short in anchors and gid not in yaj_to_m:
+                yaj_to_m[gid] = m_key_short
+
+    return yaj_to_m
+
+
+def _parse_yaj_text(text: str) -> list[str]:
+    """Parse Yajnadevam text format into individual 3-digit glyph IDs.
+
+    Format: +NNN-NNN-NNN+ where each NNN is a glyph ID.
+    [ = damaged/incomplete end, / = alternative reading.
+    """
+    import re as _re  # noqa: PLC0415
+    cleaned = text.strip("+").strip("[")
+    parts = _re.split(r"[-/]", cleaned)
+    glyphs = []
+    for p in parts:
+        p = p.strip().strip("+").strip("[")
+        if _re.match(r"^\d{3}$", p):
+            glyphs.append(p)
+    return glyphs
+
+
+def load_yajnadevam_inscriptions(yaj_to_m: dict[str, str]) -> list[dict]:
+    """Load Yajnadevam corpus inscriptions with metadata and M-number mapping."""
     results = []
     with open(YAJNADEVAM_PATH, "r", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            text = row.get("text", "").strip()
+            text = (row.get("text") or "").strip()
             if not text:
                 continue
-            signs = [s.strip() for s in text.split(",") if s.strip()]
-            if not signs:
-                # Try space-separated
-                signs = [s.strip() for s in text.split() if s.strip()]
+            # Parse into 3-digit glyph IDs
+            yaj_glyphs = _parse_yaj_text(text)
+            if not yaj_glyphs:
+                continue
+            # Map to M-numbers where possible
+            signs = [yaj_to_m.get(g, g) for g in yaj_glyphs]
             results.append({
                 "id": row.get("id", ""),
                 "cisi": row.get("cisi", ""),
@@ -213,8 +270,12 @@ def main():
     holdat = load_holdat_inscriptions()
     print(f"  {len(holdat)} inscriptions")
 
+    print("Building Yajnadevam crosswalk...")
+    yaj_to_m = load_yajnadevam_crosswalk(anchors)
+    print(f"  {len(yaj_to_m)} glyph->M-number mappings")
+
     print("Loading Yajnadevam corpus...")
-    yajnadevam = load_yajnadevam_inscriptions()
+    yajnadevam = load_yajnadevam_inscriptions(yaj_to_m)
     print(f"  {len(yajnadevam)} inscriptions")
 
     all_inscriptions = holdat + yajnadevam

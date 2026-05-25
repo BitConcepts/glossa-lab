@@ -45,7 +45,8 @@ def main():
     print("Phase-252: Allograph Crosswalk Fix + HIGH Upgrades\n")
 
     # Load corpus with M-prefix fix
-    import sys, os
+    import sys
+    import os
     sys.path.insert(0, str(REPO / "backend"))
     os.environ.setdefault("GLOSSA_DATA_DIR", str(REPO / "backend/data"))
     try:

@@ -169,7 +169,7 @@ def main():
         )
         n_total_upgraded += 1
         all_upgrades.append({"sign": "M267", "reading": "iN/in", "dedr": "494", "phase": 273})
-        print(f"  ✓ M267='iN/in': MEDIUM → HIGH (6 independent evidence lines)")
+        print("  ✓ M267='iN/in': MEDIUM → HIGH (6 independent evidence lines)")
     else:
         print(f"  M267 already {m267.get('confidence')}")
 

@@ -13,7 +13,8 @@ with the updated anchor set and reports:
   - Updated aggregate confidence estimate
 """
 from __future__ import annotations
-import json, sys
+import json
+import sys
 from pathlib import Path
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
@@ -148,7 +149,7 @@ def main():
     agg = round((anch_tokens * anch_mean + unanch_tokens * r0["mean_c"]) / total_tokens, 4)
     delta_p193 = round(agg - P193_AGGREGATE, 4)
 
-    print(f"\n=== Aggregate Confidence ===")
+    print("\n=== Aggregate Confidence ===")
     print(f"  Phase 193 baseline: {P193_AGGREGATE:.4f} ({P193_AGGREGATE*100:.1f}%)")
     print(f"  Phase 207 result:   {agg:.4f} ({agg*100:.1f}%)")
     print(f"  Delta vs P193:      {delta_p193:+.4f} ({delta_p193*100:+.2f}pp)")

@@ -13,7 +13,13 @@ Output: outputs/phase278_icit_competitor_mine.json
 """
 from __future__ import annotations
 
-import json, os, re, sys, time, urllib.parse, urllib.request
+import json
+import os
+import re
+import sys
+import time
+import urllib.parse
+import urllib.request
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
@@ -289,7 +295,7 @@ def main():
     }
 
     print(f"\n  Our state: H:{analysis['our_state']['HIGH']} ({analysis['our_state']['high_pct']:.1%})")
-    print(f"\n  Competitor comparison:")
+    print("\n  Competitor comparison:")
     for name, info in analysis["competitor_assessment"].items():
         print(f"    {name}: {info['status']}")
         if info.get("n_readings"):
@@ -310,7 +316,7 @@ def main():
     print(f"\n  Output: {OUT}")
     print(f"  Elapsed: {elapsed}s")
     print(f"\n{'='*70}")
-    print(f"PHASE-278 COMPLETE")
+    print("PHASE-278 COMPLETE")
     print(f"{'='*70}")
 
 

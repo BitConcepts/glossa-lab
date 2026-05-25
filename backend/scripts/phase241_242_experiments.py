@@ -154,9 +154,9 @@ def run_phase_241() -> dict:
         "LIKELY_NON_LINGUISTIC"
     )
     print(f"\n  OVERALL SCORECARD VERDICT: {overall_verdict} ({n_linguistic}/4 properties pass)")
-    print(f"  Comparison to Nair baselines:")
-    print(f"    Heraldic: P1=FAIL P2=FAIL P3=FAIL P4=FAIL → NON-LINGUISTIC")
-    print(f"    Admin:    P1=FAIL P2=BORDERLINE P3=PASS P4=BORDERLINE → BORDERLINE")
+    print("  Comparison to Nair baselines:")
+    print("    Heraldic: P1=FAIL P2=FAIL P3=FAIL P4=FAIL → NON-LINGUISTIC")
+    print("    Admin:    P1=FAIL P2=BORDERLINE P3=PASS P4=BORDERLINE → BORDERLINE")
     print(f"    Indus:    {' '.join(f'P{i+1}={s[:4]}' for i, s in enumerate(scores))} → {overall_verdict}")
 
     # E40 alignment: Nair's paper tests same properties; our data strongly passes
@@ -321,7 +321,7 @@ def run_phase_242_low_anchors(anchors: dict) -> dict:
     with_le   = sum(1 for x in low_analysis if x["linear_elamite_potential"])
     print(f"  LOW anchors with DEDR: {with_dedr}/{len(low_analysis)}")
     print(f"  LOW anchors with Linear Elamite potential: {with_le}/{len(low_analysis)}")
-    print(f"\n  All remaining LOW anchors:")
+    print("\n  All remaining LOW anchors:")
     for x in low_analysis:
         prio = x["priority"]
         le_flag = " LE!" if x["linear_elamite_potential"] else ""
@@ -363,10 +363,10 @@ def main():
     r241 = run_phase_241()
     r242 = run_phase_242_low_anchors(anchors)
 
-    print(f"\n  === SUMMARY ===")
+    print("\n  === SUMMARY ===")
     print(f"  Phase-241: Nair scorecard = {r241['overall_verdict']} ({r241['n_properties_passing']}/4 pass)")
     print(f"  Phase-242: {r242['n_remaining_low']} LOW remain; {r242['n_with_le_potential']} Linear Elamite potential")
-    print(f"  E41 candidate: Linear Elamite 2022 decipherment")
+    print("  E41 candidate: Linear Elamite 2022 decipherment")
 
     result = {
         "phase": "241_242",
@@ -375,9 +375,9 @@ def main():
         "phase_242": r242,
         "key_discoveries": [
             f"Nair (2026, arXiv:2604.17828) scorecard: Indus = {r241['overall_verdict']} ({r241['n_properties_passing']}/4 properties). E40 CONFIRMED.",
-            f"Linear Elamite decipherment (2022, Desset et al.): new phonological bridge with IVC-period Elamite. E41 CANDIDATE.",
+            "Linear Elamite decipherment (2022, Desset et al.): new phonological bridge with IVC-period Elamite. E41 CANDIDATE.",
             f"{r242['n_remaining_low']} LOW anchors remain; {r242['n_with_dedr']} have DEDR (need SA only).",
-            f"'Crossing the Indus Threshold' (2026, SSRN): falsifiable corpus-wide functional analysis — new paper to track.",
+            "'Crossing the Indus Threshold' (2026, SSRN): falsifiable corpus-wide functional analysis — new paper to track.",
         ],
         "verdict": (
             f"Phase-241: Indus passes all 4 Nair properties (inventory=390>75, H1=5.38>5.0, "

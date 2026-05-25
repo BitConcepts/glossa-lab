@@ -10,7 +10,8 @@ using the correct M77 ID mapping ('047' vs 'M047'). Reports:
   - Aggregate confidence estimate
 """
 from __future__ import annotations
-import json, sys
+import json
+import sys
 from pathlib import Path
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
@@ -150,7 +151,7 @@ def main():
     anch_mean  = sum(anch_conss.values()) / len(anch_conss) if anch_conss else 0
     # Combined aggregate
     agg = round((anch_tokens * anch_mean + unanch_tokens * r0["mean_c"]) / total_tokens, 4)
-    print(f"\n=== Aggregate Confidence Estimate ===")
+    print("\n=== Aggregate Confidence Estimate ===")
     print(f"  Anchored tokens ({anch_tokens}/{total_tokens} = {anch_tokens/total_tokens*100:.1f}%): mean_c={anch_mean:.4f}")
     print(f"  Unanchored tokens: mean_c={r0['mean_c']:.4f}")
     print(f"  Weighted aggregate: {agg:.4f} ({agg*100:.1f}%)")

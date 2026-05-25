@@ -1,7 +1,7 @@
 {
   "n_ok": 38,
   "n_fail": 0,
-  "n_warn": 21,
+  "n_warn": 9,
   "passed": [
     "[OK]   Holdat seal count: 1670 seals (expected 1670)",
     "[OK]   Holdat token count: 7002 tokens (expected 7002)",
@@ -52,19 +52,7 @@
     "[WARN] CISI sign numbering: P-numbers=True, M-numbers=False",
     "[WARN] Sign numbering: Holdat V3 uses M-numbers; CISI/iconographic use Parpola P-numbers. Phase-51 crosswalk: 45/390 M\u2194P entries mapped. Remaining 345 M-signs without P-crosswalk. Claims using both systems require explicit crosswalk citation.",
     "[WARN] TB corpus: 121-inscription epub corpus contaminated with English/OCR. SUPERSEDED by 944-bigram dravidian_tamil_lm.json (Phase-44, clean, z=12.1 Dravidian). TB issues do not affect Phase-44+ results.",
-    "[WARN] Phase-44 T3 result: phase44_t3_v3_sa_300k.json not found",
-    "[WARN] Phase-45 T1 result: phase45_t1_fuls_crosscheck.json not found",
-    "[WARN] Phase-46 T1 result: phase46_t1_contact_zone.json not found",
-    "[WARN] Phase-47 T1 result: phase47_t1_phoneme_assignment.json not found",
-    "[WARN] Phase-52 result: phase52_syllabic_sa.json not found \u2014 run IndusConstrainedSA node",
-    "[WARN] Phase-56 result: phase56_parpola_expansion.json not found \u2014 run phase56_parpola_expansion.py",
-    "[WARN] Phase-57 result: phase57_expanded_sa.json not found \u2014 run phase57_expanded_sa.py",
-    "[WARN] Phase-58 result: phase58_phonological_gap.json not found \u2014 run phase58_phonological_gap.py",
-    "[WARN] Phase-59 result: phase59_pilot_readings.json not found \u2014 run phase59_pilot_readings.py",
-    "[WARN] Phase-61 result: phase61_phonotactic.json not found \u2014 run phase61_phonotactic.py",
-    "[WARN] Phase-67 result: phase67_sanskrit_norm.json not found",
-    "[WARN] Phase-69 result: phase69_site_stratification.json not found",
-    "[WARN] Phase-71 result: phase71_crosswalk_complete.json not found"
+    "[WARN] Phase-52 result: phase52_syllabic_sa.json not found \u2014 run IndusConstrainedSA node"
   ],
   "solid_claims": [
     {

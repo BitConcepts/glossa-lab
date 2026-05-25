@@ -1,0 +1,115 @@
+{
+  "phase": "284_287",
+  "elapsed_s": 28.5,
+  "phase284": {
+    "total_3digit_signs": 707,
+    "crosswalk_matches": 316,
+    "token_coverage_pct": 0.6929,
+    "new_signs_not_in_anchors": 391,
+    "new_signs_tokens": 5480,
+    "top_new_signs": [
+      [
+        "520",
+        317
+      ],
+      [
+        "820",
+        242
+      ],
+      [
+        "590",
+        228
+      ],
+      [
+        "741",
+        224
+      ],
+      [
+        "705",
+        218
+      ],
+      [
+        "920",
+        152
+      ],
+      [
+        "798",
+        149
+      ],
+      [
+        "806",
+        135
+      ],
+      [
+        "803",
+        134
+      ],
+      [
+        "760",
+        134
+      ],
+      [
+        "840",
+        130
+      ],
+      [
+        "550",
+        122
+      ],
+      [
+        "690",
+        118
+      ],
+      [
+        "900",
+        112
+      ],
+      [
+        "706",
+        101
+      ],
+      [
+        "892",
+        88
+      ],
+      [
+        "503",
+        82
+      ],
+      [
+        "575",
+        80
+      ],
+      [
+        "617",
+        75
+      ],
+      [
+        "435",
+        75
+      ]
+    ]
+  },
+  "phase285": {
+    "corpus_imported": true,
+    "dest_path": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\backend\\glossa_lab\\data\\yajnadevam_inscriptions.csv"
+  },
+  "phase286": {
+    "mapped_inscriptions": 3636,
+    "mapped_tokens": 10902,
+    "sa_mean_consistency": 0.8368,
+    "sa_hci_75": 241,
+    "n_anchors": 278,
+    "medium_upgraded": 0
+  },
+  "phase287": {
+    "glossing_entries": 3495,
+    "unique_translations": 1842,
+    "unique_forms": 1359
+  },
+  "final_state": {
+    "HIGH": 382,
+    "MEDIUM": 31,
+    "total": 413
+  }
+}

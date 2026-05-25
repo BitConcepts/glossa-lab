@@ -1,0 +1,140 @@
+{
+  "phase": 207,
+  "elapsed_s": 26.7,
+  "phase193_baseline": 0.503,
+  "sa_no_anchors": {
+    "mean_c": 0.2938,
+    "hci": 4
+  },
+  "sa_high_only": {
+    "mean_c": 0.3344,
+    "hci": 8,
+    "delta": 0.0406
+  },
+  "sa_high_medium": {
+    "mean_c": 0.375,
+    "hci": 12,
+    "delta": 0.0812
+  },
+  "sa_all_anchors": {
+    "mean_c": 0.4844,
+    "hci": 20,
+    "delta": 0.1906
+  },
+  "new_anchor_checks": [
+    {
+      "sign": "M692",
+      "expected": "nal/nall",
+      "sa_reading": "nal",
+      "sa_cons": 1.0,
+      "agrees": true
+    },
+    {
+      "sign": "M861",
+      "expected": "nallavar",
+      "sa_reading": "nallavar",
+      "sa_cons": 1.0,
+      "agrees": true
+    }
+  ],
+  "top_unanchored_by_consistency": [
+    {
+      "sign": "712",
+      "modal": "nallavar",
+      "consistency": 0.4,
+      "freq": 43
+    },
+    {
+      "sign": "700",
+      "modal": "aru",
+      "consistency": 0.4,
+      "freq": 355
+    },
+    {
+      "sign": "527",
+      "modal": "katai",
+      "consistency": 0.4,
+      "freq": 60
+    },
+    {
+      "sign": "817",
+      "modal": "nallavar",
+      "consistency": 0.4,
+      "freq": 107
+    },
+    {
+      "sign": "708",
+      "modal": "kalanaal",
+      "consistency": 0.4,
+      "freq": 40
+    },
+    {
+      "sign": "503",
+      "modal": "kotti",
+      "consistency": 0.2,
+      "freq": 63
+    },
+    {
+      "sign": "748",
+      "modal": "itai",
+      "consistency": 0.2,
+      "freq": 2
+    },
+    {
+      "sign": "920",
+      "modal": "kantu",
+      "consistency": 0.2,
+      "freq": 76
+    },
+    {
+      "sign": "719",
+      "modal": "kuti",
+      "consistency": 0.2,
+      "freq": 41
+    },
+    {
+      "sign": "173",
+      "modal": "nal",
+      "consistency": 0.2,
+      "freq": 61
+    },
+    {
+      "sign": "520",
+      "modal": "erumai",
+      "consistency": 0.2,
+      "freq": 196
+    },
+    {
+      "sign": "506",
+      "modal": "ko",
+      "consistency": 0.2,
+      "freq": 43
+    },
+    {
+      "sign": "790",
+      "modal": "tembu",
+      "consistency": 0.2,
+      "freq": 48
+    },
+    {
+      "sign": "866",
+      "modal": "nattam",
+      "consistency": 0.2,
+      "freq": 35
+    },
+    {
+      "sign": "718",
+      "modal": "nallavar",
+      "consistency": 0.2,
+      "freq": 19
+    }
+  ],
+  "aggregate_confidence": 0.5516,
+  "delta_vs_p193": 0.0486,
+  "anchor_counts": {
+    "high": 6,
+    "high_medium": 15,
+    "all": 33
+  },
+  "verdict": "Phase 207 (404 anchors): aggregate=0.5516 (55.2%). Delta vs Phase 193 (50.3%): +0.0486 (+4.86pp). M692 SA-confirmed: True. M861 SA-confirmed: True."
+}

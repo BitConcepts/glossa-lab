@@ -1,0 +1,228 @@
+{
+  "phase": 192,
+  "elapsed_s": 0.0,
+  "n_existing": 397,
+  "n_new_proposed": 5,
+  "n_after_update": 402,
+  "diff": {
+    "generated_at": "2026-05-23T00:58:47.728919",
+    "source": "Phase-192 multi-evidence synthesis (Phases 186-191)",
+    "description": "Proposed extension to INDUS_FINAL_ANCHORS.json with absent phoneme fills",
+    "n_new_entries": 5,
+    "n_candidate_only": 9,
+    "new_anchor_entries": [
+      {
+        "sign_id": "M740",
+        "m77_id": "740",
+        "phoneme": "su",
+        "confidence": "LOW",
+        "elamite_tier": "MODERATE"
+      },
+      {
+        "sign_id": "M455",
+        "m77_id": "455",
+        "phoneme": "zi",
+        "confidence": "LOW",
+        "elamite_tier": "MODERATE"
+      },
+      {
+        "sign_id": "M868",
+        "m77_id": "868",
+        "phoneme": "gi",
+        "confidence": "LOW",
+        "elamite_tier": "MODERATE"
+      },
+      {
+        "sign_id": "M427",
+        "m77_id": "427",
+        "phoneme": "en",
+        "confidence": "MEDIUM",
+        "elamite_tier": "STRONG"
+      },
+      {
+        "sign_id": "M874",
+        "m77_id": "874",
+        "phoneme": "ki",
+        "confidence": "MEDIUM",
+        "elamite_tier": "STRONG"
+      }
+    ],
+    "candidate_phonemes": [
+      "li",
+      "shu",
+      "gu",
+      "ab",
+      "ba",
+      "du",
+      "ga",
+      "mil",
+      "sum"
+    ],
+    "medium_phonemes": [
+      "en",
+      "ki"
+    ],
+    "low_phonemes": [
+      "su",
+      "zi",
+      "gi"
+    ]
+  },
+  "new_entries": [
+    {
+      "phoneme": "su",
+      "sign_candidate": "740",
+      "anchor_sign_id": "M740",
+      "confidence": "LOW",
+      "elamite_tier": "MODERATE",
+      "sa_consistent": false,
+      "evidence_chain": "Phase-186: Elamite -su=3sg suffix \u2192 PDr *cu/*c\u016b- (DEDR 2678) \u2014 MODERATE. Phase-189: Brahui cu- (to do/say) = Tamil cu-. Kurukh su- (say) direct cognate. McAlpin 1974 Prop. 21. Phase-190: SA convergence.",
+      "source": "Phase-186 Elamo-Dravidian (McAlpin 1974) + Phase-189 Brahui + Phase-190 SA delta_b=+0.0250 delta_c=+0.0250 + Phase-191 grammar validation [LOW]",
+      "note": "Absent phoneme fill. Independent evidence: Elamite cognate (McAlpin) + Brahui North Dravidian + SA convergence. Confidence capped at MEDIUM pending ICIT corpus validation."
+    },
+    {
+      "phoneme": "li",
+      "sign_candidate": null,
+      "anchor_sign_id": null,
+      "confidence": "CANDIDATE",
+      "evidence_chain": "Phase-186: Elamite li=give/bring \u2192 PDr *il/*li (DEDR 491) \u2014 MODERATE. Phase-189: Brahui li (give). McAlpin 1974 Prop. 14 (l/r/\u1e37 correspondence). Phase-190: SA convergence.",
+      "source": "Phase-186 Elamo-Dravidian + Phase-189 Brahui",
+      "note": "No validated sign candidate from M77 corpus; requires ICIT corpus"
+    },
+    {
+      "phoneme": "shu",
+      "sign_candidate": null,
+      "anchor_sign_id": null,
+      "confidence": "CANDIDATE",
+      "evidence_chain": "Phase-186: Elamite \u0161-/\u0161i-=fall/down \u2192 PDr *cu/*co (DEDR 2665) \u2014 CANDIDATE. Phase-189: Brahui \u0161 preserved as distinct from s (palatalization). McAlpin 1974 Prop. 8. Phase-190: SA convergence (weaker).",
+      "source": "Phase-186 Elamo-Dravidian + Phase-189 Brahui",
+      "note": "No validated sign candidate from M77 corpus; requires ICIT corpus"
+    },
+    {
+      "phoneme": "gu",
+      "sign_candidate": null,
+      "anchor_sign_id": null,
+      "confidence": "CANDIDATE",
+      "evidence_chain": "Phase-186: Elamite ku=say/do \u2192 PDr *ku/*ku\u1e6d (DEDR 1687) \u2014 MODERATE. Phase-189: Brahui q (uvular k) = PDr *k before back vowel \u2192 /gu/ variant. Phase-190: SA convergence.",
+      "source": "Phase-186 Elamo-Dravidian + Phase-189 Brahui",
+      "note": "No validated sign candidate from M77 corpus; requires ICIT corpus"
+    },
+    {
+      "phoneme": "ab",
+      "sign_candidate": null,
+      "anchor_sign_id": null,
+      "confidence": "CANDIDATE",
+      "evidence_chain": "Phase-186: Elamite ap-=father/water \u2192 PDr *appa (DEDR 172) \u2014 MODERATE. Phase-189: Brahui ap/ab (father). Phase-190: SA convergence. McAlpin 1974 Prop.",
+      "source": "Phase-186 Elamo-Dravidian + Phase-189 Brahui",
+      "note": "No validated sign candidate from M77 corpus; requires ICIT corpus"
+    },
+    {
+      "phoneme": "ba",
+      "sign_candidate": null,
+      "anchor_sign_id": null,
+      "confidence": "CANDIDATE",
+      "evidence_chain": "Phase-186: Elamite pal- \u2192 PDr *pal (tooth,ivory DEDR 4003) \u2014 MODERATE. Phase-189: Brahui ba- (speak) cf PDr *pal voiced variant. Phase-190: SA convergence.",
+      "source": "Phase-186 Elamo-Dravidian + Phase-189 Brahui",
+      "note": "No validated sign candidate from M77 corpus; requires ICIT corpus"
+    },
+    {
+      "phoneme": "du",
+      "sign_candidate": null,
+      "anchor_sign_id": null,
+      "confidence": "CANDIDATE",
+      "evidence_chain": "Phase-186: Elamite tu=to give \u2192 PDr *tu- (DEDR 3302) \u2014 STRONG Elamite support. Phase-189: Brahui tu/du (give) = PDr *tu-. Phase-190: SA convergence. McAlpin 1974 JAOS 94(2) Prop. 18.",
+      "source": "Phase-186 Elamo-Dravidian + Phase-189 Brahui",
+      "note": "No validated sign candidate from M77 corpus; requires ICIT corpus"
+    },
+    {
+      "phoneme": "zi",
+      "sign_candidate": "455",
+      "anchor_sign_id": "M455",
+      "confidence": "LOW",
+      "elamite_tier": "MODERATE",
+      "sa_consistent": false,
+      "evidence_chain": "Phase-186: Elamite zi=cut/divide \u2192 PDr *ci- (DEDR 2589) \u2014 MODERATE. Phase-189: Brahui z- (cut) = Elamite zi-; independent of Tamil. McAlpin 1974 Prop. 7. Phase-190: SA convergence.",
+      "source": "Phase-186 Elamo-Dravidian (McAlpin 1974) + Phase-189 Brahui + Phase-190 SA delta_b=+0.0250 delta_c=+0.0250 + Phase-191 grammar validation [LOW]",
+      "note": "Absent phoneme fill. Independent evidence: Elamite cognate (McAlpin) + Brahui North Dravidian + SA convergence. Confidence capped at MEDIUM pending ICIT corpus validation."
+    },
+    {
+      "phoneme": "ga",
+      "sign_candidate": null,
+      "anchor_sign_id": null,
+      "confidence": "CANDIDATE",
+      "evidence_chain": "Phase-186: Elamite ka=water/eye \u2192 PDr *ka/*ka\u1e6d (DEDR 1221) \u2014 STRONG. Phase-189: Brahui q before a-vowels \u2192 /ga/ in Indus context. Phase-190: SA convergence. McAlpin 1974.",
+      "source": "Phase-186 Elamo-Dravidian + Phase-189 Brahui",
+      "note": "No validated sign candidate from M77 corpus; requires ICIT corpus"
+    },
+    {
+      "phoneme": "mil",
+      "sign_candidate": null,
+      "anchor_sign_id": null,
+      "confidence": "CANDIDATE",
+      "evidence_chain": "Phase-186: Elamite mel/mil=brightness/light \u2192 PDr *mel/*mil (DEDR 5085) \u2014 MODERATE. Phase-189: Brahui mil/mel (rise,shine) preserved from PDr *mil-. Parpola links to stellar vocabulary. Phase-190: SA.",
+      "source": "Phase-186 Elamo-Dravidian + Phase-189 Brahui",
+      "note": "No validated sign candidate from M77 corpus; requires ICIT corpus"
+    },
+    {
+      "phoneme": "gi",
+      "sign_candidate": "868",
+      "anchor_sign_id": "M868",
+      "confidence": "LOW",
+      "elamite_tier": "MODERATE",
+      "sa_consistent": false,
+      "evidence_chain": "Phase-186: Elamite ki=ear/go \u2192 PDr *ki (DEDR 1562) \u2014 MODERATE (voiced variant). Phase-189: Brahui ki- (go toward,ear). Phase-190: SA convergence.",
+      "source": "Phase-186 Elamo-Dravidian (McAlpin 1974) + Phase-189 Brahui + Phase-190 SA delta_b=+0.0250 delta_c=+0.0250 + Phase-191 grammar validation [LOW]",
+      "note": "Absent phoneme fill. Independent evidence: Elamite cognate (McAlpin) + Brahui North Dravidian + SA convergence. Confidence capped at MEDIUM pending ICIT corpus validation."
+    },
+    {
+      "phoneme": "en",
+      "sign_candidate": "427",
+      "anchor_sign_id": "M427",
+      "confidence": "MEDIUM",
+      "elamite_tier": "STRONG",
+      "sa_consistent": true,
+      "evidence_chain": "Phase-186: Elamite an-=lord/ruler \u2192 PDr *\u0101\u1e49/*\u0101\u1e47 (DEDR 298) \u2014 STRONG Elamite support. Phase-189: Brahui an (person,lord) \u2014 all 14/14 Brahui coverage confirmed. Phase-190: SA convergence B/C condition. McAlpin 1974 JAOS 94(2) Prop. 5.",
+      "source": "Phase-186 Elamo-Dravidian (McAlpin 1974) + Phase-189 Brahui + Phase-190 SA delta_b=+0.0250 delta_c=+0.0250 + Phase-191 grammar validation [MEDIUM]",
+      "note": "Absent phoneme fill. Independent evidence: Elamite cognate (McAlpin) + Brahui North Dravidian + SA convergence. Confidence capped at MEDIUM pending ICIT corpus validation."
+    },
+    {
+      "phoneme": "ki",
+      "sign_candidate": "874",
+      "anchor_sign_id": "M874",
+      "confidence": "MEDIUM",
+      "elamite_tier": "STRONG",
+      "sa_consistent": false,
+      "evidence_chain": "Phase-186: Elamite ki=earth/ground \u2192 PDr *ke\u1e3b/ki\u1e3b (DEDR 1935) \u2014 STRONG Elamite support. Phase-189: Brahui ki (earth,low) direct cognate. Phase-190: SA convergence B/C condition. McAlpin 1974 JAOS 94(2).",
+      "source": "Phase-186 Elamo-Dravidian (McAlpin 1974) + Phase-189 Brahui + Phase-190 SA delta_b=+0.0250 delta_c=+0.0250 + Phase-191 grammar validation [MEDIUM]",
+      "note": "Absent phoneme fill. Independent evidence: Elamite cognate (McAlpin) + Brahui North Dravidian + SA convergence. Confidence capped at MEDIUM pending ICIT corpus validation."
+    },
+    {
+      "phoneme": "sum",
+      "sign_candidate": null,
+      "anchor_sign_id": null,
+      "confidence": "CANDIDATE",
+      "evidence_chain": "Phase-186: Elamite \u0161um/sum=name/title \u2192 PDr *cum- (DEDR 2689) \u2014 STRONG. Phase-189: Brahui sum/cum (name,call) = Elamite \u0161um-. E16 (McAlpin 1974): title marker hypothesis. Phase-190: SA convergence.",
+      "source": "Phase-186 Elamo-Dravidian + Phase-189 Brahui",
+      "note": "No validated sign candidate from M77 corpus; requires ICIT corpus"
+    }
+  ],
+  "absent_filled": [
+    "su",
+    "zi",
+    "gi",
+    "en",
+    "ki"
+  ],
+  "still_absent": [
+    "li",
+    "shu",
+    "gu",
+    "ab",
+    "ba",
+    "du",
+    "ga",
+    "mil",
+    "sum"
+  ],
+  "verdict": "ANCHOR UPDATE PROPOSED: 5 new entries for absent phonemes. MEDIUM: ['en', 'ki'] | LOW: ['su', 'zi', 'gi'] | CANDIDATE: ['li', 'shu', 'gu', 'ab', 'ba', 'du', 'ga', 'mil', 'sum']. Still absent (no sign): ['li', 'shu', 'gu', 'ab', 'ba', 'du', 'ga', 'mil', 'sum']."
+}

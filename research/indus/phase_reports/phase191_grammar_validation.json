@@ -1,0 +1,1809 @@
+{
+  "phase": 191,
+  "elapsed_s": 0.0,
+  "validated": [
+    {
+      "m77_sign_id": "874",
+      "anchor_sign_id": "M874",
+      "proposed_phoneme": "ki",
+      "north_dr_reading": "ki",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 219,
+      "t_rate": 0.196,
+      "i_rate": 0.132,
+      "m_rate": 0.671,
+      "elamite_score": 3,
+      "position_score": 0.866,
+      "total_score": 1.96,
+      "sa_reading": "porul",
+      "sa_consistency": 0.6,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.196,
+        "i_rate": 0.132,
+        "m_rate": 0.671,
+        "dominant_pos": "MEDIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.329,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M233": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M162": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 219,
+        "sign_rank": 4,
+        "total_signs": 64,
+        "rank_pct": 6.2,
+        "rank_consistent": true
+      },
+      "final_confidence": "MEDIUM"
+    },
+    {
+      "m77_sign_id": "700",
+      "anchor_sign_id": "M700",
+      "proposed_phoneme": "ki",
+      "north_dr_reading": "ki",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 355,
+      "t_rate": 0.11,
+      "i_rate": 0.056,
+      "m_rate": 0.834,
+      "elamite_score": 3,
+      "position_score": 0.78,
+      "total_score": 1.934,
+      "sa_reading": "viral",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.11,
+        "i_rate": 0.056,
+        "m_rate": 0.834,
+        "dominant_pos": "MEDIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.166,
+        "position_consistent": false
+      },
+      "collocation": {
+        "M233": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M162": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 355,
+        "sign_rank": 3,
+        "total_signs": 64,
+        "rank_pct": 4.7,
+        "rank_consistent": true
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "861",
+      "anchor_sign_id": "M861",
+      "proposed_phoneme": "ki",
+      "north_dr_reading": "ki",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 138,
+      "t_rate": 0.312,
+      "i_rate": 0.239,
+      "m_rate": 0.449,
+      "elamite_score": 3,
+      "position_score": 0.982,
+      "total_score": 1.933,
+      "sa_reading": "nel",
+      "sa_consistency": 0.4,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.312,
+        "i_rate": 0.239,
+        "m_rate": 0.449,
+        "dominant_pos": "MEDIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.551,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M233": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M162": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 138,
+        "sign_rank": 10,
+        "total_signs": 64,
+        "rank_pct": 15.6,
+        "rank_consistent": true
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "427",
+      "anchor_sign_id": "M427",
+      "proposed_phoneme": "en",
+      "north_dr_reading": "en",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 147,
+      "t_rate": 0.279,
+      "i_rate": 0.184,
+      "m_rate": 0.537,
+      "elamite_score": 3,
+      "position_score": 0.949,
+      "total_score": 1.932,
+      "sa_reading": "en",
+      "sa_consistency": 1.0,
+      "sa_agrees": true,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.279,
+        "i_rate": 0.184,
+        "m_rate": 0.537,
+        "dominant_pos": "MEDIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.463,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M073": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M030": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M014": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 147,
+        "sign_rank": 9,
+        "total_signs": 64,
+        "rank_pct": 14.1,
+        "rank_consistent": true
+      },
+      "final_confidence": "MEDIUM"
+    },
+    {
+      "m77_sign_id": "520",
+      "anchor_sign_id": "M520",
+      "proposed_phoneme": "en",
+      "north_dr_reading": "en",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 196,
+      "t_rate": 0.107,
+      "i_rate": 0.082,
+      "m_rate": 0.811,
+      "elamite_score": 3,
+      "position_score": 0.777,
+      "total_score": 1.929,
+      "sa_reading": "nila",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.107,
+        "i_rate": 0.082,
+        "m_rate": 0.811,
+        "dominant_pos": "MEDIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.189,
+        "position_consistent": false
+      },
+      "collocation": {
+        "M073": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M030": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M014": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 196,
+        "sign_rank": 6,
+        "total_signs": 64,
+        "rank_pct": 9.4,
+        "rank_consistent": true
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "692",
+      "anchor_sign_id": "M692",
+      "proposed_phoneme": "ki",
+      "north_dr_reading": "ki\u1e3b",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 171,
+      "t_rate": 0.175,
+      "i_rate": 0.456,
+      "m_rate": 0.368,
+      "elamite_score": 3,
+      "position_score": 0.845,
+      "total_score": 1.925,
+      "sa_reading": "tanam",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.175,
+        "i_rate": 0.456,
+        "m_rate": 0.368,
+        "dominant_pos": "INITIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.544,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M233": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M162": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 171,
+        "sign_rank": 8,
+        "total_signs": 64,
+        "rank_pct": 12.5,
+        "rank_consistent": true
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "817",
+      "anchor_sign_id": "M817",
+      "proposed_phoneme": "en",
+      "north_dr_reading": "eN",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 107,
+      "t_rate": 0.196,
+      "i_rate": 0.14,
+      "m_rate": 0.664,
+      "elamite_score": 3,
+      "position_score": 0.866,
+      "total_score": 1.867,
+      "sa_reading": "urimai",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.196,
+        "i_rate": 0.14,
+        "m_rate": 0.664,
+        "dominant_pos": "MEDIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.336,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M073": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M030": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M014": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 107,
+        "sign_rank": 13,
+        "total_signs": 64,
+        "rank_pct": 20.3,
+        "rank_consistent": true
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "173",
+      "anchor_sign_id": "M173",
+      "proposed_phoneme": "en",
+      "north_dr_reading": "en",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 61,
+      "t_rate": 0.311,
+      "i_rate": 0.197,
+      "m_rate": 0.492,
+      "elamite_score": 3,
+      "position_score": 0.981,
+      "total_score": 1.855,
+      "sa_reading": "valli",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.311,
+        "i_rate": 0.197,
+        "m_rate": 0.492,
+        "dominant_pos": "MEDIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.508,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M073": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M030": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M014": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 61,
+        "sign_rank": 26,
+        "total_signs": 64,
+        "rank_pct": 40.6,
+        "rank_consistent": false
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "461",
+      "anchor_sign_id": "M461",
+      "proposed_phoneme": "ki",
+      "north_dr_reading": "ki",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 56,
+      "t_rate": 0.304,
+      "i_rate": 0.125,
+      "m_rate": 0.571,
+      "elamite_score": 3,
+      "position_score": 0.974,
+      "total_score": 1.848,
+      "sa_reading": "nettiyam",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.304,
+        "i_rate": 0.125,
+        "m_rate": 0.571,
+        "dominant_pos": "MEDIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.429,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M233": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M162": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 56,
+        "sign_rank": 29,
+        "total_signs": 64,
+        "rank_pct": 45.3,
+        "rank_consistent": false
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "617",
+      "anchor_sign_id": "M617",
+      "proposed_phoneme": "ki",
+      "north_dr_reading": "ki",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 61,
+      "t_rate": 0.279,
+      "i_rate": 0.246,
+      "m_rate": 0.475,
+      "elamite_score": 3,
+      "position_score": 0.949,
+      "total_score": 1.846,
+      "sa_reading": "nala",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.279,
+        "i_rate": 0.246,
+        "m_rate": 0.475,
+        "dominant_pos": "MEDIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.525,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M233": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M162": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 61,
+        "sign_rank": 25,
+        "total_signs": 64,
+        "rank_pct": 39.1,
+        "rank_consistent": false
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "866",
+      "anchor_sign_id": "M866",
+      "proposed_phoneme": "ki",
+      "north_dr_reading": "ki",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 35,
+      "t_rate": 0.343,
+      "i_rate": 0.029,
+      "m_rate": 0.629,
+      "elamite_score": 3,
+      "position_score": 0.987,
+      "total_score": 1.831,
+      "sa_reading": "en",
+      "sa_consistency": 0.4,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.343,
+        "i_rate": 0.029,
+        "m_rate": 0.629,
+        "dominant_pos": "MEDIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.371,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M233": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M162": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 35,
+        "sign_rank": 54,
+        "total_signs": 64,
+        "rank_pct": 84.4,
+        "rank_consistent": false
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "841",
+      "anchor_sign_id": "M841",
+      "proposed_phoneme": "en",
+      "north_dr_reading": "en",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 38,
+      "t_rate": 0.237,
+      "i_rate": 0.737,
+      "m_rate": 0.026,
+      "elamite_score": 3,
+      "position_score": 0.907,
+      "total_score": 1.81,
+      "sa_reading": "murai",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.237,
+        "i_rate": 0.737,
+        "m_rate": 0.026,
+        "dominant_pos": "INITIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.263,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M073": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M030": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M014": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 38,
+        "sign_rank": 51,
+        "total_signs": 64,
+        "rank_pct": 79.7,
+        "rank_consistent": false
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "440",
+      "anchor_sign_id": "M440",
+      "proposed_phoneme": "en",
+      "north_dr_reading": "en",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 52,
+      "t_rate": 0.173,
+      "i_rate": 0.308,
+      "m_rate": 0.519,
+      "elamite_score": 3,
+      "position_score": 0.843,
+      "total_score": 1.805,
+      "sa_reading": "inbam",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.173,
+        "i_rate": 0.308,
+        "m_rate": 0.519,
+        "dominant_pos": "MEDIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.481,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M073": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M030": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M014": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 52,
+        "sign_rank": 31,
+        "total_signs": 64,
+        "rank_pct": 48.4,
+        "rank_consistent": false
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "506",
+      "anchor_sign_id": "M506",
+      "proposed_phoneme": "ki",
+      "north_dr_reading": "ki",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 43,
+      "t_rate": 0.465,
+      "i_rate": 0.14,
+      "m_rate": 0.395,
+      "elamite_score": 3,
+      "position_score": 0.865,
+      "total_score": 1.802,
+      "sa_reading": "tampi",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.465,
+        "i_rate": 0.14,
+        "m_rate": 0.395,
+        "dominant_pos": "TERMINAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.535,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M233": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M162": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 43,
+        "sign_rank": 42,
+        "total_signs": 64,
+        "rank_pct": 65.6,
+        "rank_consistent": false
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "723",
+      "anchor_sign_id": "M723",
+      "proposed_phoneme": "ki",
+      "north_dr_reading": "ki\u1e3b",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 41,
+      "t_rate": 0.195,
+      "i_rate": 0.512,
+      "m_rate": 0.293,
+      "elamite_score": 3,
+      "position_score": 0.865,
+      "total_score": 1.8,
+      "sa_reading": "ammai",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.195,
+        "i_rate": 0.512,
+        "m_rate": 0.293,
+        "dominant_pos": "INITIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.488,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M233": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M162": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 41,
+        "sign_rank": 45,
+        "total_signs": 64,
+        "rank_pct": 70.3,
+        "rank_consistent": false
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "855",
+      "anchor_sign_id": "M855",
+      "proposed_phoneme": "ki",
+      "north_dr_reading": "ki",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 36,
+      "t_rate": 0.194,
+      "i_rate": 0.417,
+      "m_rate": 0.389,
+      "elamite_score": 3,
+      "position_score": 0.864,
+      "total_score": 1.795,
+      "sa_reading": "nalam",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.194,
+        "i_rate": 0.417,
+        "m_rate": 0.389,
+        "dominant_pos": "INITIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.583,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M233": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M162": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 36,
+        "sign_rank": 52,
+        "total_signs": 64,
+        "rank_pct": 81.2,
+        "rank_consistent": false
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "430",
+      "anchor_sign_id": "M430",
+      "proposed_phoneme": "ki",
+      "north_dr_reading": "ki",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 50,
+      "t_rate": 0.14,
+      "i_rate": 0.2,
+      "m_rate": 0.66,
+      "elamite_score": 3,
+      "position_score": 0.81,
+      "total_score": 1.793,
+      "sa_reading": "talaivi",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.14,
+        "i_rate": 0.2,
+        "m_rate": 0.66,
+        "dominant_pos": "MEDIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.34,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M233": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M162": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 50,
+        "sign_rank": 32,
+        "total_signs": 64,
+        "rank_pct": 50.0,
+        "rank_consistent": false
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "712",
+      "anchor_sign_id": "M712",
+      "proposed_phoneme": "ki",
+      "north_dr_reading": "ki",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 43,
+      "t_rate": 0.116,
+      "i_rate": 0.558,
+      "m_rate": 0.326,
+      "elamite_score": 3,
+      "position_score": 0.786,
+      "total_score": 1.779,
+      "sa_reading": "muti",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.116,
+        "i_rate": 0.558,
+        "m_rate": 0.326,
+        "dominant_pos": "INITIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.442,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M233": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M162": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 43,
+        "sign_rank": 41,
+        "total_signs": 64,
+        "rank_pct": 64.1,
+        "rank_consistent": false
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "782",
+      "anchor_sign_id": "M782",
+      "proposed_phoneme": "ki",
+      "north_dr_reading": "ki",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 39,
+      "t_rate": 0.538,
+      "i_rate": 0.359,
+      "m_rate": 0.103,
+      "elamite_score": 3,
+      "position_score": 0.792,
+      "total_score": 1.777,
+      "sa_reading": "itai",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.538,
+        "i_rate": 0.359,
+        "m_rate": 0.103,
+        "dominant_pos": "TERMINAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.462,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M233": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M162": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 39,
+        "sign_rank": 50,
+        "total_signs": 64,
+        "rank_pct": 78.1,
+        "rank_consistent": false
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "708",
+      "anchor_sign_id": "M708",
+      "proposed_phoneme": "ki",
+      "north_dr_reading": "ki",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 40,
+      "t_rate": 0.05,
+      "i_rate": 0.65,
+      "m_rate": 0.3,
+      "elamite_score": 3,
+      "position_score": 0.72,
+      "total_score": 1.756,
+      "sa_reading": "nalnalam",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.05,
+        "i_rate": 0.65,
+        "m_rate": 0.3,
+        "dominant_pos": "INITIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.35,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M233": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M162": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 40,
+        "sign_rank": 47,
+        "total_signs": 64,
+        "rank_pct": 73.4,
+        "rank_consistent": false
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "748",
+      "anchor_sign_id": "M748",
+      "proposed_phoneme": "en",
+      "north_dr_reading": "eN",
+      "elamite_tier": "STRONG",
+      "corpus_freq": 2,
+      "t_rate": 0.0,
+      "i_rate": 0.5,
+      "m_rate": 0.5,
+      "elamite_score": 3,
+      "position_score": 0.67,
+      "total_score": 1.703,
+      "sa_reading": "uravor",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.0,
+        "i_rate": 0.5,
+        "m_rate": 0.5,
+        "dominant_pos": "MEDIAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.5,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M073": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M030": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M014": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 2,
+        "sign_rank": 63,
+        "total_signs": 64,
+        "rank_pct": 98.4,
+        "rank_consistent": false
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "740",
+      "anchor_sign_id": "M740",
+      "proposed_phoneme": "su",
+      "north_dr_reading": "su",
+      "elamite_tier": "MODERATE",
+      "corpus_freq": 432,
+      "t_rate": 0.046,
+      "i_rate": 0.019,
+      "m_rate": 0.935,
+      "elamite_score": 2,
+      "position_score": 0.716,
+      "total_score": 1.415,
+      "sa_reading": "aru",
+      "sa_consistency": 0.4,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.046,
+        "i_rate": 0.019,
+        "m_rate": 0.935,
+        "dominant_pos": "MEDIAL",
+        "expected_pos": "TERMINAL",
+        "position_match_score": 0.046,
+        "position_consistent": false
+      },
+      "collocation": {
+        "M176": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M342": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 432,
+        "sign_rank": 2,
+        "total_signs": 64,
+        "rank_pct": 3.1,
+        "rank_consistent": true
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "820",
+      "anchor_sign_id": "M820",
+      "proposed_phoneme": "su",
+      "north_dr_reading": "su",
+      "elamite_tier": "MODERATE",
+      "corpus_freq": 121,
+      "t_rate": 0.223,
+      "i_rate": 0.24,
+      "m_rate": 0.537,
+      "elamite_score": 2,
+      "position_score": 0.893,
+      "total_score": 1.389,
+      "sa_reading": "nallavar",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.223,
+        "i_rate": 0.24,
+        "m_rate": 0.537,
+        "dominant_pos": "MEDIAL",
+        "expected_pos": "TERMINAL",
+        "position_match_score": 0.223,
+        "position_consistent": false
+      },
+      "collocation": {
+        "M176": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M342": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 121,
+        "sign_rank": 12,
+        "total_signs": 64,
+        "rank_pct": 18.8,
+        "rank_consistent": true
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "481",
+      "anchor_sign_id": "M481",
+      "proposed_phoneme": "su",
+      "north_dr_reading": "su",
+      "elamite_tier": "MODERATE",
+      "corpus_freq": 179,
+      "t_rate": 0.028,
+      "i_rate": 0.492,
+      "m_rate": 0.48,
+      "elamite_score": 2,
+      "position_score": 0.698,
+      "total_score": 1.388,
+      "sa_reading": "nallavar",
+      "sa_consistency": 0.6,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.028,
+        "i_rate": 0.492,
+        "m_rate": 0.48,
+        "dominant_pos": "INITIAL",
+        "expected_pos": "TERMINAL",
+        "position_match_score": 0.028,
+        "position_consistent": false
+      },
+      "collocation": {
+        "M176": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M342": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 179,
+        "sign_rank": 7,
+        "total_signs": 64,
+        "rank_pct": 10.9,
+        "rank_consistent": true
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "790",
+      "anchor_sign_id": "M790",
+      "proposed_phoneme": "su",
+      "north_dr_reading": "sum",
+      "elamite_tier": "MODERATE",
+      "corpus_freq": 48,
+      "t_rate": 0.333,
+      "i_rate": 0.667,
+      "m_rate": 0.0,
+      "elamite_score": 2,
+      "position_score": 0.997,
+      "total_score": 1.347,
+      "sa_reading": "tunivu",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.333,
+        "i_rate": 0.667,
+        "m_rate": 0.0,
+        "dominant_pos": "INITIAL",
+        "expected_pos": "TERMINAL",
+        "position_match_score": 0.333,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M176": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M342": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 48,
+        "sign_rank": 33,
+        "total_signs": 64,
+        "rank_pct": 51.6,
+        "rank_consistent": false
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "527",
+      "anchor_sign_id": "M527",
+      "proposed_phoneme": "su",
+      "north_dr_reading": "su",
+      "elamite_tier": "MODERATE",
+      "corpus_freq": 60,
+      "t_rate": 0.45,
+      "i_rate": 0.45,
+      "m_rate": 0.1,
+      "elamite_score": 2,
+      "position_score": 0.88,
+      "total_score": 1.324,
+      "sa_reading": "perumakan",
+      "sa_consistency": 1.0,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.45,
+        "i_rate": 0.45,
+        "m_rate": 0.1,
+        "dominant_pos": "INITIAL",
+        "expected_pos": "TERMINAL",
+        "position_match_score": 0.45,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M176": {
+          "count": 0,
+          "lift": 0.0
+        },
+        "M342": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 60,
+        "sign_rank": 27,
+        "total_signs": 64,
+        "rank_pct": 42.2,
+        "rank_consistent": false
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "455",
+      "anchor_sign_id": "M455",
+      "proposed_phoneme": "zi",
+      "north_dr_reading": "zi",
+      "elamite_tier": "MODERATE",
+      "corpus_freq": 48,
+      "t_rate": 0.188,
+      "i_rate": 0.562,
+      "m_rate": 0.25,
+      "elamite_score": 2,
+      "position_score": 0.858,
+      "total_score": 1.305,
+      "sa_reading": "tunmai",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.188,
+        "i_rate": 0.562,
+        "m_rate": 0.25,
+        "dominant_pos": "INITIAL",
+        "expected_pos": "MEDIAL",
+        "position_match_score": 0.25,
+        "position_consistent": true
+      },
+      "collocation": {
+        "M099": {
+          "count": 0,
+          "lift": 0.0
+        }
+      },
+      "frequency_rank": {
+        "sign_freq": 48,
+        "sign_rank": 34,
+        "total_signs": 64,
+        "rank_pct": 53.1,
+        "rank_consistent": true
+      },
+      "final_confidence": "LOW"
+    },
+    {
+      "m77_sign_id": "868",
+      "anchor_sign_id": "M868",
+      "proposed_phoneme": "gi",
+      "north_dr_reading": "gi",
+      "elamite_tier": "MODERATE",
+      "corpus_freq": 3,
+      "t_rate": 0.667,
+      "i_rate": 0.0,
+      "m_rate": 0.333,
+      "elamite_score": 2,
+      "position_score": 0.663,
+      "total_score": 1.202,
+      "sa_reading": "tunai",
+      "sa_consistency": 0.2,
+      "sa_agrees": false,
+      "phonotactic_check": [
+        {
+          "rule": "no_initial_consonant_cluster",
+          "passed": true,
+          "description": "Dravidian syllables begin with at most one consonant"
+        },
+        {
+          "rule": "cv_structure_preferred",
+          "passed": true,
+          "description": "Preferred PDr syllable: CV or V (max 3-4 chars)"
+        },
+        {
+          "rule": "no_final_cluster",
+          "passed": true,
+          "description": "No final consonant clusters in PDr"
+        }
+      ],
+      "position_validation": {
+        "t_rate": 0.667,
+        "i_rate": 0.0,
+        "m_rate": 0.333,
+        "dominant_pos": "TERMINAL",
+        "expected_pos": "MIXED",
+        "position_match_score": 0.333,
+        "position_consistent": true
+      },
+      "collocation": {},
+      "frequency_rank": {
+        "sign_freq": 3,
+        "sign_rank": 62,
+        "total_signs": 64,
+        "rank_pct": 96.9,
+        "rank_consistent": true
+      },
+      "final_confidence": "LOW"
+    }
+  ],
+  "by_confidence": {
+    "MEDIUM": [
+      "874",
+      "427"
+    ],
+    "LOW": [
+      "700",
+      "861",
+      "520",
+      "692",
+      "817",
+      "173",
+      "461",
+      "617",
+      "866",
+      "841",
+      "440",
+      "506",
+      "723",
+      "855",
+      "430",
+      "712",
+      "782",
+      "708",
+      "748",
+      "740",
+      "820",
+      "481",
+      "790",
+      "527",
+      "455",
+      "868"
+    ],
+    "CANDIDATE": []
+  },
+  "best_per_phoneme": {
+    "ki": {
+      "sign": "874",
+      "phoneme": "ki",
+      "confidence": "MEDIUM",
+      "elamite": "STRONG",
+      "sa_agrees": false,
+      "total_score": 1.96
+    },
+    "en": {
+      "sign": "427",
+      "phoneme": "en",
+      "confidence": "MEDIUM",
+      "elamite": "STRONG",
+      "sa_agrees": true,
+      "total_score": 1.932
+    },
+    "su": {
+      "sign": "740",
+      "phoneme": "su",
+      "confidence": "LOW",
+      "elamite": "MODERATE",
+      "sa_agrees": false,
+      "total_score": 1.415
+    },
+    "zi": {
+      "sign": "455",
+      "phoneme": "zi",
+      "confidence": "LOW",
+      "elamite": "MODERATE",
+      "sa_agrees": false,
+      "total_score": 1.305
+    },
+    "gi": {
+      "sign": "868",
+      "phoneme": "gi",
+      "confidence": "LOW",
+      "elamite": "MODERATE",
+      "sa_agrees": false,
+      "total_score": 1.202
+    }
+  },
+  "medium_count": 2,
+  "low_count": 26,
+  "candidate_count": 0
+}

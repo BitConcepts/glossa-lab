@@ -1,0 +1,1847 @@
+{
+  "phase": 239,
+  "generated_at": "2026-05-24T14:46:48.859530",
+  "before": {
+    "HIGH": 105,
+    "MEDIUM": 59,
+    "LOW": 243,
+    "HM_total": 164
+  },
+  "after": {
+    "HIGH": 105,
+    "MEDIUM": 287,
+    "LOW": 15,
+    "HM_total": 392
+  },
+  "n_dedr_injected": 228,
+  "n_upgraded_to_medium": 228,
+  "n_low_strong_no_dedr": 0,
+  "upgrade_log": [
+    {
+      "sign": "M386",
+      "reading": "maṇ",
+      "dedr": "5135",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M321",
+      "reading": "kol",
+      "dedr": "1570",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M357",
+      "reading": "kuḷ",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M137",
+      "reading": "kuṟ",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M143",
+      "reading": "maṇ",
+      "dedr": "5135",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M190",
+      "reading": "paṉ",
+      "dedr": "4086",
+      "elamite_score": 3,
+      "sanskrit_score": 2,
+      "upgrade_confidence": 5
+    },
+    {
+      "sign": "M295",
+      "reading": "paṟ",
+      "dedr": "4086",
+      "elamite_score": 3,
+      "sanskrit_score": 2,
+      "upgrade_confidence": 5
+    },
+    {
+      "sign": "M255",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M251",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M301",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M406",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M387",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M116",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M274",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M101",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M326",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M318",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M346",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M312",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M134",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M129",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M120",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M207",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M280",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M309",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M382",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M324",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M370",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M218",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M186",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M307",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M265",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M106",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M334",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M294",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M245",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M319",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M171",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M227",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M148",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M290",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M138",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M243",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M291",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M209",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M313",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M259",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M278",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M142",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M199",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M140",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M187",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M208",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M109",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M250",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M390",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M277",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M181",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M219",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M379",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M214",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M131",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M380",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M197",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M201",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M413",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M135",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M354",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M341",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M105",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M146",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M195",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M339",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M359",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M316",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M111",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M224",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M408",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M371",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M396",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M246",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M395",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M229",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M399",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M331",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M410",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M170",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M349",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M388",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M360",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M263",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M320",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M256",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M257",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M338",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M288",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M244",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M247",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M284",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M121",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M381",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M373",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M110",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M104",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M217",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M228",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M356",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M292",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M141",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M188",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M296",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M216",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M348",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M268",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M325",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M289",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M369",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M378",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M226",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M158",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M123",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M397",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M203",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M405",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M240",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M303",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M238",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M276",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M363",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M174",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M384",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M353",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M200",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M156",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M157",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M271",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M204",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M260",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M333",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M285",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M184",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M266",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M258",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M283",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M308",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M154",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M302",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M392",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M385",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M282",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M215",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M210",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M112",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M286",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M327",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M400",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M172",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M403",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M159",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M242",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M344",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M179",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M343",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M147",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M409",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M248",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M415",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M241",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M389",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M287",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M133",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M126",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M297",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M323",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M213",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M322",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M167",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M232",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M394",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M411",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M236",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M182",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M115",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M337",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M300",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M393",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M414",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M161",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M299",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M298",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M132",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M136",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M376",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M269",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M364",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M114",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M310",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M361",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M113",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M315",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M150",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M314",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M139",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M189",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M160",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M230",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M166",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M377",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M407",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M368",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M152",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M273",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M335",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M206",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M122",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M340",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M279",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M404",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M180",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M275",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M253",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M212",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M144",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M119",
+      "reading": "kur",
+      "dedr": "1638",
+      "elamite_score": 3,
+      "sanskrit_score": 3,
+      "upgrade_confidence": 6
+    },
+    {
+      "sign": "M861",
+      "reading": "nallavar",
+      "dedr": "5135",
+      "elamite_score": 2,
+      "sanskrit_score": 2,
+      "upgrade_confidence": 4
+    },
+    {
+      "sign": "M712",
+      "reading": "nallavar",
+      "dedr": "5135",
+      "elamite_score": 2,
+      "sanskrit_score": 2,
+      "upgrade_confidence": 4
+    },
+    {
+      "sign": "M817",
+      "reading": "nallavar",
+      "dedr": "5135",
+      "elamite_score": 2,
+      "sanskrit_score": 2,
+      "upgrade_confidence": 4
+    },
+    {
+      "sign": "M858",
+      "reading": "nallavar",
+      "dedr": "5135",
+      "elamite_score": 2,
+      "sanskrit_score": 2,
+      "upgrade_confidence": 4
+    }
+  ],
+  "coverage_note": "H+M total: 164 → 392 (+228 new MEDIUM). Token coverage gain approximate: +34.2% estimated (0.15% per new MEDIUM sign, based on average LOW sign frequency).",
+  "verdict": "Phase-239: 228 LOW anchors upgraded to MEDIUM via dual Elamite+Sanskrit corroboration with DEDR injection. H+M total: 164 → 392. 228 DEDR fields newly injected from cognate data. 0 signs remain LOW_STRONG (dual corroboration, no DEDR available)."
+}

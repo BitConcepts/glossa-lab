@@ -1,0 +1,656 @@
+{
+  "phase": 188,
+  "elapsed_s": 0.0,
+  "n_vocabulary_items": 25,
+  "strong_matches": 0,
+  "moderate_matches": 0,
+  "absent": 9,
+  "unmapped_syllables": 16,
+  "commodity_results": [
+    {
+      "word": "pon",
+      "dedr": "4494",
+      "meaning": "gold",
+      "category": "metal",
+      "syllables": [
+        "po",
+        "n"
+      ],
+      "sign_sequence": [
+        "M035",
+        null
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "UNMAPPED_SYLLABLE",
+      "all_sign_options": [
+        [
+          "M035"
+        ],
+        []
+      ]
+    },
+    {
+      "word": "v\u0113nkalam",
+      "dedr": "5529",
+      "meaning": "copper, bronze",
+      "category": "metal",
+      "syllables": [
+        "v\u0113n",
+        "ka",
+        "la"
+      ],
+      "sign_sequence": [
+        "M080",
+        "M391",
+        null
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "UNMAPPED_SYLLABLE",
+      "all_sign_options": [
+        [
+          "M080",
+          "M070",
+          "M235"
+        ],
+        [
+          "M391",
+          "M016",
+          "M017"
+        ],
+        []
+      ]
+    },
+    {
+      "word": "irum-pu",
+      "dedr": "503",
+      "meaning": "iron",
+      "category": "metal",
+      "syllables": [
+        "iru",
+        "m",
+        "pu"
+      ],
+      "sign_sequence": [
+        "M079",
+        null,
+        "M051"
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "UNMAPPED_SYLLABLE",
+      "all_sign_options": [
+        [
+          "M079"
+        ],
+        [],
+        [
+          "M051",
+          "M006",
+          "M049"
+        ]
+      ]
+    },
+    {
+      "word": "velli",
+      "dedr": "5530",
+      "meaning": "silver",
+      "category": "metal",
+      "syllables": [
+        "vel",
+        "li"
+      ],
+      "sign_sequence": [
+        "M087",
+        null
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "UNMAPPED_SYLLABLE",
+      "all_sign_options": [
+        [
+          "M087",
+          "M081"
+        ],
+        []
+      ]
+    },
+    {
+      "word": "ma\u1e47i",
+      "dedr": "4647",
+      "meaning": "gem, bead, jewel",
+      "category": "gem",
+      "syllables": [
+        "ma",
+        "\u1e47i"
+      ],
+      "sign_sequence": [
+        "M068",
+        null
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "UNMAPPED_SYLLABLE",
+      "all_sign_options": [
+        [
+          "M068",
+          "M272",
+          "M100"
+        ],
+        []
+      ]
+    },
+    {
+      "word": "ka\u1e49",
+      "dedr": "1335",
+      "meaning": "gem, eye, gold",
+      "category": "gem",
+      "syllables": [
+        "ka",
+        "\u1e49"
+      ],
+      "sign_sequence": [
+        "M391",
+        null
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "UNMAPPED_SYLLABLE",
+      "all_sign_options": [
+        [
+          "M391",
+          "M016",
+          "M017"
+        ],
+        []
+      ]
+    },
+    {
+      "word": "pa\u1e37i\u1e45ku",
+      "dedr": "3963",
+      "meaning": "crystal, quartz",
+      "category": "gem",
+      "syllables": [
+        "pa",
+        "\u1e37i\u1e45",
+        "ku"
+      ],
+      "sign_sequence": [
+        "M010",
+        null,
+        "M020"
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "UNMAPPED_SYLLABLE",
+      "all_sign_options": [
+        [
+          "M010",
+          "M082"
+        ],
+        [],
+        [
+          "M020",
+          "M002",
+          "M374"
+        ]
+      ]
+    },
+    {
+      "word": "e\u1e37",
+      "dedr": "783",
+      "meaning": "sesame",
+      "category": "crop",
+      "syllables": [
+        "e\u1e37"
+      ],
+      "sign_sequence": [
+        "M059"
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "ABSENT",
+      "all_sign_options": [
+        [
+          "M059"
+        ]
+      ]
+    },
+    {
+      "word": "parutti",
+      "dedr": "3982",
+      "meaning": "cotton",
+      "category": "crop",
+      "syllables": [
+        "pa",
+        "ru",
+        "ti"
+      ],
+      "sign_sequence": [
+        "M010",
+        null,
+        "M014"
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "UNMAPPED_SYLLABLE",
+      "all_sign_options": [
+        [
+          "M010",
+          "M082"
+        ],
+        [],
+        [
+          "M014",
+          "M036",
+          "M249"
+        ]
+      ]
+    },
+    {
+      "word": "nel",
+      "dedr": "3713",
+      "meaning": "paddy, rice in husk",
+      "category": "crop",
+      "syllables": [
+        "nel"
+      ],
+      "sign_sequence": [
+        "M367"
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "ABSENT",
+      "all_sign_options": [
+        [
+          "M367"
+        ]
+      ]
+    },
+    {
+      "word": "varaku",
+      "dedr": "5267",
+      "meaning": "millet (Paspalum)",
+      "category": "crop",
+      "syllables": [
+        "va",
+        "ra",
+        "ku"
+      ],
+      "sign_sequence": [
+        "M023",
+        null,
+        "M020"
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "UNMAPPED_SYLLABLE",
+      "all_sign_options": [
+        [
+          "M023",
+          "M042",
+          "M064"
+        ],
+        [],
+        [
+          "M020",
+          "M002",
+          "M374"
+        ]
+      ]
+    },
+    {
+      "word": "m\u0101\u1e6du",
+      "dedr": "4798",
+      "meaning": "cattle, cow",
+      "category": "livestock",
+      "syllables": [
+        "m\u0101",
+        "\u1e6du"
+      ],
+      "sign_sequence": [
+        "M057",
+        null
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "UNMAPPED_SYLLABLE",
+      "all_sign_options": [
+        [
+          "M057",
+          "M026",
+          "M027"
+        ],
+        []
+      ]
+    },
+    {
+      "word": "\u0101\u1e6du",
+      "dedr": "329",
+      "meaning": "goat",
+      "category": "livestock",
+      "syllables": [
+        "\u0101",
+        "\u1e6du"
+      ],
+      "sign_sequence": [
+        "M342",
+        null
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "UNMAPPED_SYLLABLE",
+      "all_sign_options": [
+        [
+          "M342",
+          "M328"
+        ],
+        []
+      ]
+    },
+    {
+      "word": "erumai",
+      "dedr": "796",
+      "meaning": "buffalo (water buffalo)",
+      "category": "livestock",
+      "syllables": [
+        "e",
+        "ru",
+        "mai"
+      ],
+      "sign_sequence": [
+        null,
+        null,
+        "M068"
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "UNMAPPED_SYLLABLE",
+      "all_sign_options": [
+        [],
+        [],
+        [
+          "M068",
+          "M272",
+          "M100"
+        ]
+      ]
+    },
+    {
+      "word": "min",
+      "dedr": "4897",
+      "meaning": "fish (rebus: star, shine)",
+      "category": "commodity_marker",
+      "syllables": [
+        "min"
+      ],
+      "sign_sequence": [
+        "M047"
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "ABSENT",
+      "all_sign_options": [
+        [
+          "M047",
+          "M054",
+          "M055"
+        ]
+      ]
+    },
+    {
+      "word": "kol",
+      "dedr": "2172",
+      "meaning": "iron-working, forge",
+      "category": "craft",
+      "syllables": [
+        "kol"
+      ],
+      "sign_sequence": [
+        "M099"
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "ABSENT",
+      "all_sign_options": [
+        [
+          "M099",
+          "M032",
+          "M383"
+        ]
+      ]
+    },
+    {
+      "word": "ka\u1e37a\u1e45",
+      "dedr": "1452",
+      "meaning": "grain measure (dry measure)",
+      "category": "measure",
+      "syllables": [
+        "ka",
+        "\u1e37a\u1e45"
+      ],
+      "sign_sequence": [
+        "M391",
+        null
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "UNMAPPED_SYLLABLE",
+      "all_sign_options": [
+        [
+          "M391",
+          "M016",
+          "M017"
+        ],
+        []
+      ]
+    },
+    {
+      "word": "t\u016bkku",
+      "dedr": "3361",
+      "meaning": "weight, balance",
+      "category": "measure",
+      "syllables": [
+        "t\u016b",
+        "kku"
+      ],
+      "sign_sequence": [
+        "M089",
+        null
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "UNMAPPED_SYLLABLE",
+      "all_sign_options": [
+        [
+          "M089"
+        ],
+        []
+      ]
+    },
+    {
+      "word": "to\u1e37",
+      "dedr": "3562",
+      "meaning": "hide, leather, skin",
+      "category": "luxury",
+      "syllables": [
+        "to\u1e37"
+      ],
+      "sign_sequence": [
+        null
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "UNMAPPED_SYLLABLE",
+      "all_sign_options": [
+        []
+      ]
+    },
+    {
+      "word": "pal",
+      "dedr": "4003",
+      "meaning": "tooth, ivory",
+      "category": "luxury",
+      "syllables": [
+        "pal"
+      ],
+      "sign_sequence": [
+        "M010"
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "ABSENT",
+      "all_sign_options": [
+        [
+          "M010",
+          "M082"
+        ]
+      ]
+    },
+    {
+      "word": "kari",
+      "dedr": "1298",
+      "meaning": "elephant (used for ivory ref)",
+      "category": "luxury",
+      "syllables": [
+        "ka",
+        "ri"
+      ],
+      "sign_sequence": [
+        "M391",
+        "M040"
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "ABSENT",
+      "all_sign_options": [
+        [
+          "M391",
+          "M016",
+          "M017"
+        ],
+        [
+          "M040"
+        ]
+      ]
+    },
+    {
+      "word": "k\u014d\u1e49",
+      "dedr": "2220",
+      "meaning": "king, ruler",
+      "category": "title",
+      "syllables": [
+        "k\u014d\u1e49"
+      ],
+      "sign_sequence": [
+        "M073"
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "ABSENT",
+      "all_sign_options": [
+        [
+          "M073",
+          "M005",
+          "M067"
+        ]
+      ]
+    },
+    {
+      "word": "tiru",
+      "dedr": "3264",
+      "meaning": "auspicious, holy, wealth",
+      "category": "title",
+      "syllables": [
+        "ti",
+        "ru"
+      ],
+      "sign_sequence": [
+        "M014",
+        null
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "UNMAPPED_SYLLABLE",
+      "all_sign_options": [
+        [
+          "M014",
+          "M036",
+          "M249"
+        ],
+        []
+      ]
+    },
+    {
+      "word": "\u016br",
+      "dedr": "720",
+      "meaning": "town, settlement",
+      "category": "admin",
+      "syllables": [
+        "\u016br"
+      ],
+      "sign_sequence": [
+        "M233"
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "ABSENT",
+      "all_sign_options": [
+        [
+          "M233"
+        ]
+      ]
+    },
+    {
+      "word": "il",
+      "dedr": "491",
+      "meaning": "house, home",
+      "category": "admin",
+      "syllables": [
+        "il"
+      ],
+      "sign_sequence": [
+        "M162"
+      ],
+      "corpus_count": 0,
+      "expected": 0.0,
+      "lift": 0.0,
+      "status": "ABSENT",
+      "all_sign_options": [
+        [
+          "M162",
+          "M163",
+          "M164"
+        ]
+      ]
+    }
+  ],
+  "strong_detail": [],
+  "moderate_detail": [],
+  "verdict": "LIMITED COMMODITY ATTESTATION \u2014 M77 corpus too small; ICIT needed"
+}

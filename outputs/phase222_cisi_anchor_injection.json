@@ -1,0 +1,20 @@
+{
+  "phase": 222,
+  "injected_manual": [
+    "P324",
+    "P385",
+    "P332"
+  ],
+  "injected_p220": [],
+  "total_injected": 3,
+  "skipped_existing": [
+    "M122 (existing LOW)"
+  ],
+  "new_total_anchors": 413,
+  "by_confidence": {
+    "HIGH": 105,
+    "MEDIUM": 59,
+    "LOW": 243,
+    "CANDIDATE": 6
+  }
+}

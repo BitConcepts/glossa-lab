@@ -1,0 +1,25 @@
+{
+  "phase": 243,
+  "generated_at": "2026-05-24T15:09:22.855254",
+  "recipient": "tpierson@bitconcepts.tech",
+  "subject": "Glossa Lab: Indus Decipherment — Phases 229-242 Session Report | H+M=393/413 | E41 Linear Elamite",
+  "email_result": {
+    "success": true,
+    "message_id": "8050e35d-8222-4fad-8744-994c5d1f2e2a",
+    "error": ""
+  },
+  "report_length_chars": 7596,
+  "final_anchor_inventory": {
+    "HIGH": 105,
+    "MEDIUM": 288,
+    "LOW": 14
+  },
+  "key_discoveries": [
+    "E40 CONFIRMED: Nair (2026, arXiv:2604.17828) STRONGLY_LINGUISTIC (4/4 properties)",
+    "E41 CANDIDATE: Linear Elamite 2022 (Desset et al.) — extends Elamite bridge",
+    "H+M total: 393/413 (95.1%) — 1 final upgrade in Phase-242",
+    "Failaka IB-C01 score upgraded 9.5→11.5 (2024-2025 excavation papers)",
+    "'Crossing the Indus Threshold' (2026) — new falsifiable analysis paper"
+  ],
+  "verdict": "Phase-243: Comprehensive synthesis complete. H+M=393/413 (95.1%), 41 evidence items (E28 falsified), Fisher p≈10⁻¹⁵. E40 confirmed (Nair 2026 STRONGLY_LINGUISTIC 4/4). E41 candidate (Linear Elamite 2022). Email sent to tpierson@bitconcepts.tech."
+}

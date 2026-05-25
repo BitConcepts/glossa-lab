@@ -77,14 +77,25 @@ export function DeciphermentPanel() {
 
   if (isArchived) {
     const totalSigns  = data.anchors.corpus_signs  ?? 390;
+    const totalAnchors = data.anchors.total_all ?? totalSigns;
     const high        = byConf.HIGH   ?? 0;
     const medium      = byConf.MEDIUM ?? 0;
-    const low         = byConf.LOW    ?? 0;
+    const candidate   = byConf.CANDIDATE ?? 0;
     const nHM         = high + medium;
     const tokenCovPct = Math.round((data.anchors.corpus_token_coverage ?? 0) * 100);
-    const hmSignPct   = Math.round((nHM / totalSigns) * 100);
-    const highSignPct = Math.round((high / totalSigns) * 100);
-    const nRounds     = data.n_rounds_completed ?? 17;
+    const hmSignPct   = Math.round((nHM / totalAnchors) * 100);
+    const highSignPct = Math.round((high / totalAnchors) * 100);
+    const currentPhase = (data as any).current_phase ?? 0;
+    const saAggregate  = (data as any).sa_aggregate ?? 0;
+    const nEvidence    = (data as any).n_evidence_items ?? 0;
+    const fullyDecPct  = Math.round(((data as any).fully_decoded_pct ?? 0) * 100);
+    const nFullyDec    = (data as any).n_fully_decoded ?? 0;
+    const totalSeals   = (data as any).total_seals ?? 1670;
+
+    // Determine status badge — show research phase, not coverage (coverage is in bars)
+    const statusBg = "#dbeafe";
+    const statusFg = "#1d4ed8";
+    const statusText = `🔬 Active Research — Phase ${currentPhase}`;
 
     return (
       <div style={{ border: "1px solid #d1d5db", borderRadius: 8, padding: 16, background: "#fff", marginBottom: 16 }}>
@@ -96,23 +107,25 @@ export function DeciphermentPanel() {
             <span style={{
               marginLeft: 8, padding: "2px 8px", borderRadius: 4,
               fontSize: 11, fontWeight: 600,
-              background: "#f3f4f6", color: "#6b7280", border: "1px solid #d1d5db",
-            }}>📦 Archived — Phase 133</span>
+              background: statusBg, color: statusFg, border: `1px solid ${statusBg}`,
+            }}>{statusText}</span>
           </div>
-          <span style={{ fontSize: 12, color: "#9ca3af" }}>{nRounds} rounds</span>
+          {nEvidence > 0 && (
+            <span style={{ fontSize: 12, color: "#6b7280" }}>{nEvidence} evidence items</span>
+          )}
         </div>
 
-        {/* Metrics grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}>
+        {/* Metrics grid — 4 key numbers a researcher needs */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 10, marginBottom: 12 }}>
           <div>
-            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>H+M Signs with Readings</div>
-            <div style={{ fontSize: 20, fontWeight: 700, color: "#111827" }}>
-              {nHM} <span style={{ fontSize: 13, color: "#9ca3af" }}>/ {totalSigns}</span>
+            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>Anchor Coverage</div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: nHM >= totalAnchors ? "#15803d" : "#111827" }}>
+              {nHM}<span style={{ fontSize: 13, color: "#9ca3af" }}>/{totalAnchors}</span>
             </div>
             <div style={{ fontSize: 11, marginTop: 2 }}>
               <span style={{ color: "#15803d", fontWeight: 600 }}>H:{high}</span>{" "}
-              <span style={{ color: "#2563eb", fontWeight: 600 }}>M:{medium}</span>{" "}
-              <span style={{ color: "#d97706", fontWeight: 600 }}>L:{low}</span>
+              <span style={{ color: "#2563eb", fontWeight: 600 }}>M:{medium}</span>
+              {candidate > 0 && <span style={{ color: "#d97706", fontWeight: 600 }}> C:{candidate}</span>}
             </div>
           </div>
           <div>
@@ -120,17 +133,35 @@ export function DeciphermentPanel() {
             <div style={{ fontSize: 20, fontWeight: 700, color: tokenCovPct >= 85 ? "#15803d" : "#b45309" }}>
               {tokenCovPct}%
             </div>
-            <div style={{ fontSize: 11, color: "#6b7280" }}>of corpus tokens explained</div>
+            <div style={{ fontSize: 11, color: "#6b7280" }}>of 7,002 tokens</div>
+          </div>
+          <div>
+            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>SA Confidence</div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: saAggregate >= 0.5 ? "#15803d" : "#b45309" }}>
+              {saAggregate > 0 ? `${Math.round(saAggregate * 100)}%` : "—"}
+            </div>
+            <div style={{ fontSize: 11, color: "#6b7280" }}>aggregate</div>
+          </div>
+          <div>
+            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>Seals Decoded</div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: fullyDecPct >= 65 ? "#15803d" : "#b45309" }}>
+              {fullyDecPct > 0 ? `${fullyDecPct}%` : "—"}
+            </div>
+            <div style={{ fontSize: 11, color: "#6b7280" }}>{nFullyDec > 0 ? `${nFullyDec.toLocaleString()}/${totalSeals.toLocaleString()}` : ""}</div>
           </div>
         </div>
 
-        {/* Progress bars — token coverage is the primary metric per anchors note */}
+        {/* Progress bars */}
         <ProgressBar value={tokenCovPct}  color="#059669" label={`Token coverage (${tokenCovPct}% of 7,002 corpus tokens)`} />
-        <ProgressBar value={hmSignPct}    color="#3b82f6" label={`H+M sign coverage (${nHM}/${totalSigns} sign types)`} />
-        <ProgressBar value={highSignPct}  color="#15803d" label={`HIGH confidence only (${high} signs)`} />
+        <ProgressBar value={hmSignPct}    color="#3b82f6" label={`H+M anchor coverage (${nHM}/${totalAnchors} sign readings confirmed)`} />
+        <ProgressBar value={highSignPct}  color="#15803d" label={`HIGH confidence (${high} signs — SA + DEDR + external corroboration)`} />
 
-        <div style={{ marginTop: 10, fontSize: 11, color: "#9ca3af" }}>
-          Phase-133 complete 2026-05-17 · 69.1% seals decoded · Active research via Evidence Graph
+        {/* Status footer */}
+        <div style={{ marginTop: 10, fontSize: 11, color: "#6b7280" }}>
+          {nHM >= totalAnchors
+            ? `All ${totalAnchors} signs have proposed readings (${high} HIGH, ${medium} MEDIUM). Primary blocker: ICIT corpus (Fuls 2014, 4,537 objects) needed for token coverage > 91%.`
+            : `${totalAnchors - nHM} sign(s) remaining without proposed readings.`
+          }
         </div>
       </div>
     );

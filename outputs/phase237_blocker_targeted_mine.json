@@ -1,0 +1,866 @@
+{
+  "phase": 237,
+  "elapsed_s": 110.0,
+  "total_papers_fetched": 3640,
+  "n_strong": 81,
+  "n_moderate": 7,
+  "blocker_analysis": {
+    "B1_ICIT_CORPUS": {
+      "n": 31,
+      "actionable_signal": "NEW_EVIDENCE",
+      "top_papers": [
+        {
+          "title": "Tracing Forty Years of Research on the Bhopal Gas Tragedy: Trends, Themes, and F",
+          "year": 2026,
+          "source": "openalex"
+        },
+        {
+          "title": "IndusAgent: Reinforcing Open-Vocabulary Industrial Anomaly Detection with Agenti",
+          "year": 2026,
+          "source": "openalex"
+        },
+        {
+          "title": "Intelligent Question-Answering System for New Energy Vehicles Integrating Deep S",
+          "year": 2026,
+          "source": "openalex"
+        },
+        {
+          "title": "Enhancing REST API Fuzzing with Access Policy Violation Checks and Injection Att",
+          "year": 2026,
+          "source": "openalex"
+        },
+        {
+          "title": "How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline Scorecard",
+          "year": 2026,
+          "source": "openalex"
+        },
+        {
+          "title": "Algorithmic Authorship: How Artificial Intelligence Is Transforming Creativity i",
+          "year": 2026,
+          "source": "openalex"
+        },
+        {
+          "title": "Edge-to-Cloud Data Analytics in Remote Industrial Environments",
+          "year": 2026,
+          "source": "openalex"
+        },
+        {
+          "title": "Toward sustainable and low-carbon industrial transformation: Insights from indus",
+          "year": 2026,
+          "source": "openalex"
+        }
+      ]
+    },
+    "B2_DILMUN_GULF_SEAL": {
+      "n": 18,
+      "actionable_signal": "HYPOTHESIS_CANDIDATE",
+      "top_papers": [
+        {
+          "title": "Identifying pastoral and plant products in local and imported pottery in Early B",
+          "year": 2025,
+          "source": "openalex"
+        },
+        {
+          "title": "The Bead Trade during the Late Third and Second Millennia BC at the Island of Fa",
+          "year": 2025,
+          "source": "openalex"
+        },
+        {
+          "title": "Tell Abraq: cross-cultural connections in the Persian Gulf from the Late Bronze ",
+          "year": 2025,
+          "source": "crossref"
+        },
+        {
+          "title": "The 2018 Archaeological Survey at Tawi Said, Sultanate of Oman",
+          "year": 2024,
+          "source": "openalex"
+        },
+        {
+          "title": "An Aesthetic Study of a Selection of Dilmun Seals on Failaka Island",
+          "year": 2024,
+          "source": "crossref"
+        },
+        {
+          "title": "Exchange networks of the Early Bronze Age Gulf: The imported ceramics from Kalba",
+          "year": 2022,
+          "source": "openalex"
+        },
+        {
+          "title": "From Dilmun to W\u0101d\u012b al\u2010F\u0101w: A forgotten desert corridor, c. 2000 BC",
+          "year": 2022,
+          "source": "openalex"
+        },
+        {
+          "title": "About two seal\u2010impressed jars from Tell Abraq (Emirate of Umm al\u2010Quwain). New ev",
+          "year": 2022,
+          "source": "crossref"
+        }
+      ]
+    },
+    "B3_CISI_PSIGNS": {
+      "n": 5,
+      "actionable_signal": "NO_SIGNAL",
+      "top_papers": [
+        {
+          "title": "Over the Hills and Far Away: Modeling Mobility and Connectivity Across the Irani",
+          "year": 2026,
+          "source": "openalex"
+        },
+        {
+          "title": "XAI-driven Data Mining for Self-defending IoT Systems: Enhancing Cybersecurity T",
+          "year": 2026,
+          "source": "openalex"
+        },
+        {
+          "title": "Technological Evolution of Traffic Sign Recognition",
+          "year": 2025,
+          "source": "crossref"
+        },
+        {
+          "title": "Recognizing technique variation in rock engravings: ArchCUT3-D for micromorpholo",
+          "year": 2023,
+          "source": "openalex"
+        },
+        {
+          "title": "Emotion in Reinforcement Learning Agents and Robots: A Survey",
+          "year": 2017,
+          "source": "arxiv"
+        }
+      ]
+    },
+    "B4_ELAMITE_EXTENSION": {
+      "n": 2,
+      "actionable_signal": "NO_SIGNAL",
+      "top_papers": [
+        {
+          "title": "Elamite and Dravidian: Further Evidence of Relationship [and Comments and Reply]",
+          "year": 1975,
+          "source": "crossref"
+        },
+        {
+          "title": "Toward Proto-Elamo-Dravidian",
+          "year": 1974,
+          "source": "crossref"
+        }
+      ]
+    },
+    "B5_LOW_ANCHOR_PHONOLOGY": {
+      "n": 7,
+      "actionable_signal": "HYPOTHESIS_CANDIDATE",
+      "top_papers": [
+        {
+          "title": "THE INDUS SCRIPT\u00a0Recognition as an alphabet",
+          "year": 2025,
+          "source": "crossref"
+        },
+        {
+          "title": "Can the semasiographic/logographic Indus script answer the Dravidian question? I",
+          "year": 2023,
+          "source": "openalex"
+        },
+        {
+          "title": "Can the semasiographic/logographic Indus script answer the Dravidian question? I",
+          "year": 2023,
+          "source": "crossref"
+        },
+        {
+          "title": "Initial Decipherment  of Indus  script",
+          "year": 2020,
+          "source": "crossref"
+        },
+        {
+          "title": "Decipherment of the Indus script",
+          "year": 2020,
+          "source": "crossref"
+        },
+        {
+          "title": "Decipherment of the Indus script",
+          "year": 2020,
+          "source": "crossref"
+        },
+        {
+          "title": "The Origin and Evolution of Primary Derivative Suffixes in Dravidian",
+          "year": 2001,
+          "source": "crossref"
+        }
+      ]
+    },
+    "B6_COMPUTATIONAL_2024_2026": {
+      "n": 18,
+      "actionable_signal": "HYPOTHESIS_CANDIDATE",
+      "top_papers": [
+        {
+          "title": "Precision in Practice: Knowledge Guided Code Summarizing Grounded in Industrial ",
+          "year": 2026,
+          "source": "openalex"
+        },
+        {
+          "title": "AutoOR: Scalably Post-training LLMs to Autoformalize Operations Research Problem",
+          "year": 2026,
+          "source": "openalex"
+        },
+        {
+          "title": "M3DocDep: Multi-modal, Multi-page, Multi-document Dependency Chunking with Large",
+          "year": 2026,
+          "source": "openalex"
+        },
+        {
+          "title": "Fuzzing REST APIs in Industry: Necessary Features and Open Problems",
+          "year": 2026,
+          "source": "openalex"
+        },
+        {
+          "title": "On the potential of large language models to solve semantics-aware process minin",
+          "year": 2025,
+          "source": "openalex"
+        },
+        {
+          "title": "Leveraging Large Language Models in Extracting Drug Safety Information from Pres",
+          "year": 2025,
+          "source": "openalex"
+        },
+        {
+          "title": "ChatGPT\u2019s Expanding Horizons and Transformative Impact Across Domains: A Critica",
+          "year": 2025,
+          "source": "openalex"
+        },
+        {
+          "title": "Sustainability reporting: Unfolding environmental, social, and governance practi",
+          "year": 2025,
+          "source": "openalex"
+        }
+      ]
+    },
+    "GENERAL": {
+      "n": 7,
+      "actionable_signal": "NEW_EVIDENCE",
+      "top_papers": [
+        {
+          "title": "Reservoir Effects from Shells of Tell Abraq, Sharjah Emirate, UAE",
+          "year": 2025,
+          "source": "crossref"
+        },
+        {
+          "title": "The Decoded Indus Seal M-282",
+          "year": 2024,
+          "source": "crossref"
+        },
+        {
+          "title": "End-to-End Spoken Language Understanding: Performance analyses of a voice comman",
+          "year": 2022,
+          "source": "arxiv"
+        },
+        {
+          "title": "Ancestral Dravidian languages in Indus Civilization: ultraconserved Dravidian to",
+          "year": 2021,
+          "source": "openalex"
+        },
+        {
+          "title": "Statistical analysis of the Indus script using $n$-grams",
+          "year": 2009,
+          "source": "arxiv"
+        },
+        {
+          "title": "Dravidian and the Decipherment of the Indus Script",
+          "year": 1969,
+          "source": "crossref"
+        },
+        {
+          "title": "The Indus Script Deciphered?",
+          "year": 1969,
+          "source": "crossref"
+        }
+      ]
+    }
+  },
+  "recommended_next_experiments": [
+    {
+      "blocker": "B1_ICIT_CORPUS",
+      "priority": "MEDIUM",
+      "recommended_phase": "Phase-238 (B1_ICIT_CORPUS)",
+      "rationale": "31 papers with new evidence signals",
+      "top_paper": "Tracing Forty Years of Research on the Bhopal Gas Tragedy: Trends, Themes, and F"
+    },
+    {
+      "blocker": "GENERAL",
+      "priority": "MEDIUM",
+      "recommended_phase": "Phase-238 (GENERAL)",
+      "rationale": "7 papers with new evidence signals",
+      "top_paper": "Reservoir Effects from Shells of Tell Abraq, Sharjah Emirate, UAE"
+    }
+  ],
+  "strong_papers": [
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7128595936",
+      "title": "Tracing Forty Years of Research on the Bhopal Gas Tragedy: Trends, Themes, and Future Directions",
+      "year": 2026,
+      "text": "Tracing Forty Years of Research on the Bhopal Gas Tragedy: Trends, Themes, and Future Directions The Bhopal Gas Tragedy stands as a defining moment in the history of industrial disasters, prompting ongoing global discourse on public health, environmental safety, and corporate accountability. This study aims to systematically map and evaluate the scholarly landscape related to the Bhopal Gas Tragedy over a forty-year period (1984\u20132024), offering a longitudinal perspective on the evolution, diffusion, and thematic transformation of research in this critical area. A total of 301 records were retrieved from Scopus and Web of Science databases and analysed using the Bibliometrix R-package. The analysis focused on publication trends, citation metrics, authorship patterns, international collaborations, and thematic structures through keyword co-occurrence and conceptual mapping. The analysis covers documents published across 218 diverse sources, reflecting a steady annual growth rate of 7.64% and underscoring sustained academic interest. Research output is primarily concentrated in core journals dedicated to industrial safety, environmental protection, and public health, with author productivity patterns revealing a balance between single-authored works and collaborative efforts, though international co-authorship remains relatively low at 6.31%. Thematic evolution showcases a shift from early technical assessments to broader concerns involving environmental justice, public health resilience, and disaster governance. Network and factorial analyses uncover well-defined, interconnected clusters addressing institutional frameworks, chemical exposure, biomedical outcomes, and public health dimensions, emphasizing the field\u2019s interdisciplinary nature. This bibliometric study not only consolidates decades of research on the Bhopal disaster but also identifies underexplored themes and collaboration gaps, offering a foundation for future scholarship on industrial risk, systemic resilience, and sustainable policy frameworks.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7162150296",
+      "title": "IndusAgent: Reinforcing Open-Vocabulary Industrial Anomaly Detection with Agentic Tools",
+      "year": 2026,
+      "text": "IndusAgent: Reinforcing Open-Vocabulary Industrial Anomaly Detection with Agentic Tools Multimodal large language models (MLLMs) have shown remarkable capability in bridging visual perception and textual reasoning, enabling zero-shot understanding across diverse industrial scenarios. However, their performance in open-vocabulary industrial anomaly detection (IAD) is often limited by domain-misaligned reasoning and hallucinated structural inferences. To address these challenges, we propose \\textbf{IndusAgent}, a tool-augmented agentic framework for open-vocabulary IAD. Specifically, we first construct \\textbf{Indus-CoT}, a structured dataset that integrates global visual observations, high-resolution local patches, and expert normalcy priors, providing supervision for fine-tuning the model on rigorous industrial inspection trajectories. Building on this, IndusAgent dynamically orchestrates a set of external tools, including dynamic region cropping, high-frequency feature enhancement, and prior retrieval, thus enabling the agent to actively resolve visual ambiguities and disentangle subtle anomalies. Furthermore, we introduce a gated reinforcement learning objective that jointly optimizes anomaly classification, localization accuracy, anomaly type reasoning, and efficient tool usage, ensuring that tool invocation occurs only when beneficial. Extensive evaluations on five industrial anomaly benchmarks, including MVTec-AD, VisA, MPDD, DTD, and SDD, demonstrate that IndusAgent achieves state-of-the-art zero-shot performance among all existing methods, validating our robustness and generalization capacity.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7155518075",
+      "title": "Intelligent Question-Answering System for New Energy Vehicles Integrating Deep Semantic Parsing and Knowledge Graphs",
+      "year": 2026,
+      "text": "Intelligent Question-Answering System for New Energy Vehicles Integrating Deep Semantic Parsing and Knowledge Graphs The new energy vehicle (NEV) industry generates massive multi-source heterogeneous data. To overcome traditional database limitations in terminology disambiguation and multi-hop reasoning, this paper proposes a knowledge graph (KG)-based question-answering (QA) architecture. Three primary domain challenges are addressed: First, to tackle the poor semantic extraction of informal diagnostic texts, a deep semantic parsing network (BERT-BiLSTM-CRF) is integrated to extract high-precision knowledge from 150,000 real-world maintenance records. Second, to solve topological redundancy, the Labeled Property Graph (LPG) specification is employed to encapsulate parameters of 2157 vehicle models as internal attributes, significantly streamlining complex multi-hop reasoning. Finally, to enhance limited reasoning capabilities, an intent classification module (TextCNN) automatically translates natural language into graph queries, enabling deep fault tracing across up to five semantic levels. Experimental results demonstrate 98% and 93% accuracy in entity-relation recognition and intent classification, respectively. The resulting KG (8274 nodes, 14,488 edges) establishes a scalable paradigm for intelligent diagnostic reasoning in complex vertical domains.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7149210516",
+      "title": "Enhancing REST API Fuzzing with Access Policy Violation Checks and Injection Attacks",
+      "year": 2026,
+      "text": "Enhancing REST API Fuzzing with Access Policy Violation Checks and Injection Attacks Due to their widespread use in industry, several techniques have been proposed in the literature to fuzz REST APIs. Existing fuzzers for REST APIs have been focusing on detecting crashes (e.g., 500 HTTP server error status code). However, security vulnerabilities can have major drastic consequences on existing cloud infrastructures. In this paper, we propose a series of novel automated oracles aimed at detecting violations of access policies in REST APIs, as well as executing traditional attacks such as SQL Injection and XSS. These novel automated oracles can be integrated into existing fuzzers, in which, once the fuzzing session is completed, a ``security testing'' phase is executed to verify these oracles. When a security fault is detected, as output our technique is able to general executable test cases in different formats, like Java, Kotlin, Python and JavaScript test suites. Our novel techniques are integrated as an extension of EvoMaster, a state-of-the-art open-source fuzzer for REST APIs. Experiments are carried out on 9 artificial examples, 8 vulnerable-by-design REST APIs with black-box testing, and 36 REST APIs from the WFD corpus with white-box testing, for a total of 52 distinct APIs. Results show that our novel oracles and their automated integration in a fuzzing process can lead to detect security issues in several of these APIs.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7127739918",
+      "title": "Precision in Practice: Knowledge Guided Code Summarizing Grounded in Industrial Expectations",
+      "year": 2026,
+      "text": "Precision in Practice: Knowledge Guided Code Summarizing Grounded in Industrial Expectations Code summaries are essential for helping developers understand code functionality and reducing maintenance and collaboration costs. Although recent advances in large language models (LLMs) have significantly improved automatic code summarization, the practical usefulness of generated summaries in industrial settings remains insufficiently explored. In collaboration with documentation experts from the industrial HarmonyOS project, we conducted a questionnaire study showing that over 57.4% of code summaries produced by state-of-the-art approaches were rejected due to violations of developers' expectations for industrial documentation. Beyond semantic similarity to reference summaries, developers emphasize additional requirements, including the use of appropriate domain terminology, explicit function categorization, and the avoidance of redundant implementation details. To address these expectations, we propose ExpSum, an expectation-aware code summarization approach that integrates function metadata abstraction, informative metadata filtering, context-aware domain knowledge retrieval, and constraint-driven prompting to guide LLMs in generating structured, expectation-aligned summaries. We evaluate ExpSum on the HarmonyOS project and widely used code summarization benchmarks. Experimental results show that ExpSum consistently outperforms all baselines, achieving improvements of up to 26.71% in BLEU-4 and 20.10% in ROUGE-L on HarmonyOS. Furthermore, LLM-based evaluations indicate that ExpSum-generated summaries better align with developer expectations across other projects, demonstrating its effectiveness for industrial code documentation.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B6_COMPUTATIONAL_2024_2026"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7155063106",
+      "title": "Over the Hills and Far Away: Modeling Mobility and Connectivity Across the Iranian Plateau in Late Prehistory (c. 10,000\u20132000 BC) Using Multi-factor Probabilistic Corridors",
+      "year": 2026,
+      "text": "Over the Hills and Far Away: Modeling Mobility and Connectivity Across the Iranian Plateau in Late Prehistory (c. 10,000\u20132000 BC) Using Multi-factor Probabilistic Corridors Abstract Archaeologists have long been interested in mobility in the past, but tend to think about and visualize movement in simplified ways that do not account for the range of topographic, environmental, and climatic factors that influenced it. The Iranian Plateau is akin to a number of regions around the globe characterized by dramatic diversity in topography, natural resources, and climate that present local and regionally varied affordances and restrictions, which influenced the ways humans inhabited, exploited, and moved. Environmentally sensitive cognitive maps, developed by human communities over centuries, are likely to have guided localized decision making across these regions. These are only detectable in the large-scale cumulative effects on archaeological assemblages. This paper reviews previous approaches to modeling movement used by archaeologists\u2014particularly least-cost paths\u2014and presents an implementation of a novel computational method to model corridors of long-distance mobility in the past that is sensitive to environmental diversity. Three case studies relevant to movement across the topographically and environmentally complex landscapes of the Iranian Plateau have been chosen to demonstrate the applicability of modeling movement corridors between locations of archaeological relevance: (1) the initial dispersal of farming practices to the east of the Fertile Crescent during the Neolithic; (2) the redistribution of exotic raw materials and dispersal of administrative technology in the Late Chalcolithic; and (3) the long-range exchange networks of the Bronze Age. By investigating chronologically distinct case studies across one geographical area, this paper presents a mechanism for reconstructing networks of movement that are responsive to human decision making in the longue dur\u00e9e .",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B3_CISI_PSIGNS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7155245181",
+      "title": "How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline Scorecard",
+      "year": 2026,
+      "text": "How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline Scorecard Whether the Indus Valley sign system (c. 2600-1900 BCE) encodes spoken language has been debated for decades. This paper introduces a multi-metric discrimination framework that tests the observed Indus corpus against two kinds of computer-generated non-linguistic baseline -- one mimicking a heraldic emblem system, the other an administrative coding system -- each calibrated with Zipfian frequency distributions, positional constraints, and bigram dependencies derived from six attested non-linguistic corpora. The scorecard evaluates four properties central to the Farmer-Sproat-Witzel (2004) critique: text brevity, repeated formulaic phrases, hapax legomenon rate, and positional rigidity. Applying this framework to 1,916 deduplicated inscriptions (584 unique signs, 11,110 tokens) from the ICIT/Yajnadevam digitization, we find that the Indus corpus does not match either baseline cleanly. Across the four metrics examined, the Indus corpus occupies an intermediate position relative to the two baseline families, matching neither cleanly. Neither a heraldic nor an administrative generator can reproduce all four properties at once. We also compare against seven real-world non-linguistic corpora including Sproat's (2014) datasets, finding that no attested non-linguistic system reproduces the full Indus statistical profile either. We replicate key prior results including a Zipf slope of -1.49 and conditional entropy of 3.23 bits. All code and data are publicly available.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7130656023",
+      "title": "XAI-driven Data Mining for Self-defending IoT Systems: Enhancing Cybersecurity Transparency in the Age of Smart Cities",
+      "year": 2026,
+      "text": "XAI-driven Data Mining for Self-defending IoT Systems: Enhancing Cybersecurity Transparency in the Age of Smart Cities The rapid expansion of Internet of Things (IoT) technologies in smart cities, healthcare, and industrial automation has intensified the need for cybersecurity frameworks capable of operating at scale and in real time under increasingly sophisticated threat conditions. Traditional security mechanisms and opaque AI-based models are no longer adequate for protecting interconnected urban infrastructures, especially as regulatory and societal expectations move toward transparency and accountability. Although prior surveys have examined IoT security and general AI techniques, they rarely address the emerging role of Explainable Artificial Intelligence (XAI) in data mining for IoT cybersecurity or integrate recent advances in cognitively inspired and human-aligned explainability methods. This survey provides an up-to-date review of XAI-driven data mining approaches applied to IoT ecosystems, highlighting their ability to detect anomalies, interpret complex sensor-driven behaviours, and support automated security decisions through transparent and interpretable reasoning. The review identifies critical challenges, including data privacy, scalability, computational constraints, and the interpretability limitations of modern AI models. It examines how biologically inspired learning paradigms and cognitively grounded explanation techniques can enhance trust and situational awareness in IoT environments. Emerging technologies such as edge intelligence, federated learning (FL), blockchain integration, and quantum-assisted analytics are discussed as promising enablers of scalable and transparent IoT security. The survey underscores the importance of trustworthy, ethically aligned AI, advocating for XAI frameworks that enable fair, auditable, and reliable decision-making in safety-critical infrastructure. By addressing gaps in the literature and synthesizing recent developments, this study presents a timely perspective on XAI, data mining, and IoT cybersecurity, outlining future di",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B3_CISI_PSIGNS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7155245008",
+      "title": "AutoOR: Scalably Post-training LLMs to Autoformalize Operations Research Problems",
+      "year": 2026,
+      "text": "AutoOR: Scalably Post-training LLMs to Autoformalize Operations Research Problems Optimization problems are central to decision-making in manufacturing, logistics, scheduling, and other industrial settings. Translating complicated descriptions of these problems into solver-ready formulations requires specialized operations research (OR) expertise, making it hard to scale. We present AutoOR, a scalable synthetic data generation and reinforcement learning pipeline that trains LLMs to autoformalize optimization problems specified in natural language across linear, mixed-integer, and non-linear categories. AutoOR generates verified training data from standard optimization forms and uses solver execution feedback as the reward signal for RL post-training. AutoOR applied to an 8B model achieves state-of-the-art or competitive results across six established OR benchmarks, matching significantly larger frontier models. For a non-linear problem class involving physical dynamics, where frontier models score near 0%, we introduce a curriculum RL strategy that bootstraps from limited initial training data to make this class tractable for post-training. We believe that methods such as AutoOR can significantly accelerate industrial decision-making with AI.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B6_COMPUTATIONAL_2024_2026"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7135089443",
+      "title": "Algorithmic Authorship: How Artificial Intelligence Is Transforming Creativity in Film and Media",
+      "year": 2026,
+      "text": "Algorithmic Authorship: How Artificial Intelligence Is Transforming Creativity in Film and Media Artificial intelligence (AI) is becoming a transformative force not only in everyday life but also within the media and creative industries. In film and television, AI-powered tools are reshaping screenwriting, directing, and visual storytelling by automating processes that were once considered exclusively linked to human imagination. Deep learning technologies are now capable of writing screenplays, editing films, and creating digital actors, imitating artistic styles and predicting audience preferences\u2014often with striking accuracy. This study examines the implications of conceptualizing AI as a creative collaborator rather than merely a technical tool, by analyzing its impact on artistic authenticity and the creative labor market. Can AI truly replace the author, or does it simply expand the author\u2019s vision, guiding creativity in new directions? Through the analysis of case studies involving AI-generated films, screenplays, and digital art, this research explores whether these technologies are democratizing media production or instead homogenizing artistic expression. In a field fundamentally built upon human intuition and emotion, AI challenges our perceptions of the nature of creativity, the role of the artist, and the limits of human imagination in the digital age.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7140065554",
+      "title": "Edge-to-Cloud Data Analytics in Remote Industrial Environments",
+      "year": 2026,
+      "text": "Edge-to-Cloud Data Analytics in Remote Industrial Environments The Industrial Internet of Things (IIoT) connects vast networks of sensors, machines, and control systems to enable real-time data collection, analysis, and decision-making in industrial settings. This connectivity drives improved operational efficiency, reduced downtime, and enhanced productivity in sectors such as manufacturing, mining, and energy. Traditional architectures, however, rely heavily on cloud computing, which struggles with latency requirements and bandwidth constraints. Distributed edge-to-cloud computing offers a promising alternative by bringing computational resources closer to data sources, thereby enabling faster responses while reducing network demands. Remote industrial environments present unique difficulties. Network connectivity in underground mines, offshore platforms, and isolated facilities is often intermittent or unavailable. Cloud-centric systems fail under such conditions, leaving critical monitoring gaps that threaten safety and operational continuity. Edge computing addresses these challenges by processing data locally, but questions remain about how existing IoT platforms support key IIoT requirements that edge-to-cloud architectures must satisfy and how systems can maintain reliable operation during connectivity disruptions. This thesis investigates distributed edge-to-cloud computing for IIoT applications, with particular attention to remote and connectivity-constrained environments. It presents three contributions. First, a comprehensive survey identifies key IIoT requirements from the distributed edge-to-cloud computing perspective and provides a comparative analysis of three prominent IoT platforms. It reveals how each platform addresses the identified key IIoT requirements. Based on this analysis, open challenges and research opportunities are identified for advancing edge-to-cloud systems in industrial contexts. Second, an experimental study implements and evaluates a fully edge-based data analytics solution for remote indu",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7162044693",
+      "title": "M3DocDep: Multi-modal, Multi-page, Multi-document Dependency Chunking with Large Vision-Language Models",
+      "year": 2026,
+      "text": "M3DocDep: Multi-modal, Multi-page, Multi-document Dependency Chunking with Large Vision-Language Models In long, multi-page industrial documents, retrieval-augmented generation (RAG) depends heavily on whether chunk boundaries follow the document's true structure. Existing text-centric chunkers and generative hierarchy parsers often miss cross-page parent-child relations, figure/table-caption bindings, and boundary cues, which leads to fragmented or redundant chunks and degrades both retrieval and answer quality. We propose M3DocDep, an LVLM-based pipeline that first recovers block-level dependencies and then constructs chunks along the recovered document tree. The pipeline uses SharedDet as a common DP+OCR preprocessing layer, extracts multimodal block embeddings with boundary-aware SoftROI pooling, scores candidate parent-child edges with a biaffine head, decodes a globally valid dependency tree with MST constraints, and builds tree-guided chunks annotated with section paths and page ranges. Under a shared-block evaluation protocol, M3DocDep improves STEDS by +28.5 to +39.6 percent on DHP benchmarks, retrieval nDCG by +1.1 to +15.3 percent, and QA ANLS by +4.5 to +15.3 percent on corpus-level RAG benchmarks. These results show that recovering document dependencies before chunking yields more coherent retrieval units for long, multi-page multimodal documents.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B6_COMPUTATIONAL_2024_2026"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7161308496",
+      "title": "Toward sustainable and low-carbon industrial transformation: Insights from industrial green microgrids",
+      "year": 2026,
+      "text": "Toward sustainable and low-carbon industrial transformation: Insights from industrial green microgrids Driven by global carbon neutrality goals, Industrial Green Microgrids (IGMs) have emerged as a key pathway to accelerate the low-carbon transformation of the industrial sector. This paper makes four original contributions. First, it traces the conceptual evolution of microgrids over the past two decades and identifies four essential characteristics of IGMs, establishing a representative system architecture based on Source-Network-Load-Storage (SNLS) coordination. Second, drawing on an analysis of 19 recent demonstration projects from the world\u2019s largest industrial market (China), it proposes a novel classification of IGM application scenarios into three types: comprehensive energy utilization, continuous processing, and discrete manufacturing. Third, to bridge the gap between conceptual design and practical deployment, it establishes a generalized design framework for IGM systems covering the planning, operation, and control phases, complemented by a systematic review of key enabling technologies and associated technical challenges across the SNLS segments. Finally, it discusses development pathways, mechanism designs, and future research priorities for IGMs, using China\u2019s extensive deployment as a reference. The insights presented aim to provide both theoretical foundations and practical guidance for researchers and policymakers worldwide seeking to promote systemic innovation and the large-scale deployment of IGMs. \u2022 The core concept and four essential characteristics of IGMs are identified. \u2022 An SNLS-based IGM architecture endogenizing industrial process kinetics is proposed. \u2022 Three representative IGM scenarios and their sector-specific bottlenecks are summarized. \u2022 A design framework and key enabling technologies for IGMs are systematically elucidated. \u2022 Development pathways and policy mechanisms for achieving industrial decarbonization are proposed.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7149873978",
+      "title": "Fuzzing REST APIs in Industry: Necessary Features and Open Problems",
+      "year": 2026,
+      "text": "Fuzzing REST APIs in Industry: Necessary Features and Open Problems REST APIs are widely used in industry, in all different kinds of domains. An example is Volkswagen AG, a German automobile manufacturer. Established testing approaches for REST APIs are time consuming, and require expertise from professional test engineers. Due to its cost and importance, in the scientific literature several approaches have been proposed to automatically test REST APIs. The open-source, search-based fuzzer EvoMaster is one of such tools proposed in the academic literature. However, how academic prototypes can be integrated in industry and have real impact to software engineering practice requires more investigation. In this paper, we report on our experience in using EvoMaster at Volkswagen AG, as an EvoMaster user from 2023 to 2026. We share our learnt lessons, and discuss several features needed to be implemented in EvoMaster to make its use in an industrial context successful. Feedback about value in industrial setups of EvoMaster was given from Volkswagen AG about 4 APIs. Additionally, a user study was conducted involving 11 testing specialists from 4 different companies. We further identify several real-world research challenges that still need to be solved.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B6_COMPUTATIONAL_2024_2026"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4410968179",
+      "title": "On the potential of large language models to solve semantics-aware process mining tasks",
+      "year": 2025,
+      "text": "On the potential of large language models to solve semantics-aware process mining tasks Large language models (LLMs) have shown to be valuable tools for tackling process mining tasks. Existing studies report on their capability to support various data-driven process analyses and even, to some extent, that they are able to reason about how processes work. This reasoning ability suggests that there is potential for LLMs to tackle semantics-aware process mining tasks, which are tasks that rely on an understanding of the meaning of activities and their relationships. Examples of these include process discovery, where the meaning of activities can indicate their dependency, whereas in anomaly detection the meaning can be used to recognize process behavior that is abnormal. In this paper, we systematically explore the capabilities of LLMs for such tasks. Unlike prior work, which largely evaluates LLMs in their default state, we investigate their utility through both in-context learning and supervised fine-tuning. Concretely, we define five process mining tasks requiring semantic understanding and provide extensive benchmarking datasets for evaluation. Our experiments reveal that while LLMs struggle with challenging process mining tasks when used out of the box or with minimal in-context examples, they achieve strong performance when fine-tuned for these tasks across a broad range of process types and industries.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B6_COMPUTATIONAL_2024_2026"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4409573471",
+      "title": "A scientometric analysis of reviews on the Internet of Things",
+      "year": 2025,
+      "text": "A scientometric analysis of reviews on the Internet of Things Abstract The Internet of Things (IoT) paradigm is redefining our lives, allowing us to make \u201csmart\u201d decisions. This boom has also gained popularity in academic research, one of the core goals being to make IoT research more accessible to students and early researchers, while making sure that experienced researchers keep up with the changes happening in the research area. A large number of review papers are available covering surveys related to IoT vision enabling technologies, applications, key features, and future directions. Nevertheless, there is a lack of analysis of these reviews. This study provides a scientometric analysis of already available reviews in the field of IoT to identify upcoming research needs and bring simplicity to literature research. In total, 964 review articles in the field of IoT written in English and published in peer-reviewed journals and conferences from 2010 to April 2023 have been finalized from the Google Scholar database. Three broad categories of analysis have been performed on the 964 relevant collected literature, namely (a) statistical; (b) machine learning-based; and (c) evaluative analysis. An important differentiating feature of the current study is the use of machine learning for data exploration, thereby providing better interpretation. We find that the trend to review the field of IoT has increased in the last five years with only one article in 2010. This article identifies and quantifies the knowledge gaps to inform the community, industry, and government authorities about research directions for IoT. Furthermore, this scientometric analysis serves as a foundational resource for IoT researchers in identifying relevant and important survey papers that target their research fields in IoT.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4407197083",
+      "title": "Exploring the state-of-the-art of halal food research using latent Dirichlet allocation",
+      "year": 2025,
+      "text": "Exploring the state-of-the-art of halal food research using latent Dirichlet allocation The rapid growth of the halal food (HF) industry has created a pressing need for a comprehensive synthesis of the existing body of knowledge. However, there remains a significant gap in the literature regarding the key themes, patterns, and emerging areas in HF research. This study addresses this gap by systematically analyzing the HF literature to identify key themes, patterns, and emerging areas of interest in the HF field. The study employs latent Dirichlet allocation (LDA)-based topic modeling to uncover and map the underlying themes in the HF literature, analyzing 738 publications from Scopus to determine the main topics and trends in HF research. The analysis reveals six main topics in HF research: (1) HF quality, safety assessment, and production methods; (2) HF supply chain management; (3) HF detection and authentication methods; (4) HF and Islamic culture; (5) HF and consumer behavior; and (6) HF and tourism and hospitality. The study identifies an overall increasing trend in HF research over the years, with particular emphasis on HF supply chain management and consumer behavior, while HF and Islamic culture received comparatively lower levels of attention. This study offers a novel and comprehensive analysis of the HF literature using LDA-based topic modeling, highlighting the key themes and patterns in the field. The insights derived from this study hold significant theoretical and practical implications for researchers, policymakers, manufacturers, retailers, and consumers in the rapidly growing HF industry. By identifying the main areas of focus and research gaps, the study serves as a valuable foundation for further research and analysis in the field, ultimately contributing to the ongoing development and evolution of HF research.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4413933736",
+      "title": "Leveraging Large Language Models in Extracting Drug Safety Information from Prescription Drug Labels",
+      "year": 2025,
+      "text": "Leveraging Large Language Models in Extracting Drug Safety Information from Prescription Drug Labels INTRODUCTION: Adverse drug reactions (ADRs), including those resulting from drug interactions, remain a leading cause of morbidity and mortality. Structured product labels (SPLs) serve as a primary source for drug safety information. Having machine-readable product labels, including adverse reactions (ARs) and drug interactions, readily available would allow researchers to streamline medication safety studies. However, extracting this information is complex and requires the use of natural language processing (NLP) methods. OBJECTIVE: In this study, we explored the application of generative language models in the extraction of drug safety information from SPLs. METHODS: We compared multiple generative LLMs (GPT, Llama, and Mixtral) to two baseline methods in the task of extracting adverse reactions (ARs) from SPLs. We explored various factors, such as prompting strategies and term complexity, that impact the performance of these models in the extraction of ARs. Finally, we explored the generative models' capacity to extract drug interactions from a separate section of SPLs without additional fine-tuning or training, demonstrating their flexibility and adaptability for information retrieval. RESULTS: We found that generative language models, specifically GPT-4, are able to match or exceed the performance of previous state-of-the-art models without additional training or fine-tuning. Additionally, we found that the specific SPL section, surrounding context, and complexity of the AR term impacted the extraction performance. Finally, we demonstrated the generalizability of these models by applying them to a separate task of extracting drug names from the drug interaction section where curated training data are not available. CONCLUSION: Generative language models demonstrate significant potential for automating drug safety information extraction from SPLs, offering a promising avenue for improving post-market surveillance and reducing ADRs. Future work should focus on re",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B6_COMPUTATIONAL_2024_2026"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4413911934",
+      "title": "ChatGPT\u2019s Expanding Horizons and Transformative Impact Across Domains: A Critical Review of Capabilities, Challenges, and Future Directions",
+      "year": 2025,
+      "text": "ChatGPT\u2019s Expanding Horizons and Transformative Impact Across Domains: A Critical Review of Capabilities, Challenges, and Future Directions The rapid proliferation of Chat Generative Pre-trained Transformer (ChatGPT) marks a pivotal moment in artificial intelligence, eliciting responses from academic shock to industrial awe. As these technologies advance from passive tools toward proactive, agentic systems, their transformative potential and inherent risks are magnified globally. This paper presents a comprehensive, critical review of ChatGPT\u2019s impact across five key domains: natural language understanding (NLU), content generation, knowledge discovery, education, and engineering. While ChatGPT demonstrates profound capabilities, significant challenges remain in factual accuracy, bias, and the inherent opacity of its reasoning\u2014a core issue termed the \u201cBlack Box Conundrum\u201d. To analyze these evolving dynamics and the implications of this shift toward autonomous agency, this review introduces a series of conceptual frameworks, each specifically designed to illuminate the complex interactions and trade-offs within these domains: the \u201cSpecialization vs. Generalization\u201d tension in NLU; the \u201cQuality\u2013Scalability\u2013Ethics Trilemma\u201d in content creation; the \u201cPedagogical Adaptation Imperative\u201d in education; and the emergence of \u201cHuman\u2013LLM Cognitive Symbiosis\u201d in engineering. The analysis reveals an urgent need for proactive adaptation across sectors. Educational paradigms must shift to cultivate higher-order cognitive skills, while professional practices (including practices within education sector) must evolve to treat AI as a cognitive partner, leveraging techniques like Retrieval-Augmented Generation (RAG) and sophisticated prompt engineering. Ultimately, this paper argues for an overarching \u201cEthical\u2013Technical Co-evolution Imperative\u201d, charting a forward-looking research agenda that intertwines technological innovation with vigorous ethical and methodological standards to ensure responsible AI development and integration. Ultimately, the analysis reveals that the challenges of factual accuracy, bias, and opacity",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B6_COMPUTATIONAL_2024_2026"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7106679299",
+      "title": "Sustainability reporting: Unfolding environmental, social, and governance practices in the banking sector",
+      "year": 2025,
+      "text": "Sustainability reporting: Unfolding environmental, social, and governance practices in the banking sector A sustainability report showcases a complete perspective of a banking business, its strategy, and environmental, social, and governance (ESG) disclosure. For the banks, the reporting is based on climate risk, responsible investment, and transparency. This report is unique for each industry, depending on its ESG risks, shareholders\u2019 expectations, and sustainability framework. In India, the reporting framework is the business responsibility and sustainability report (BRSR) format, on the nine principles of National Guidelines on Responsible Business Conduct (NGRBC), as per the Securities and Exchange Board of India (SEBI) guidelines. This paper investigates the sustainability reporting practices adopted by Indian banks and explores how these institutions integrate the ESG framework into their reporting. A qualitative content analysis was performed on BRSRs published (fiscal years [FY] 2021\u20132022 and 2024\u20132025). Although disclosure volume has risen since the Reserve Bank of India (RBI) consultation, reporting quality remains uneven, only 28 percent of banks align fully with the Task Force on Climate-related Financial Disclosures (TCFD) pillars, and Scope 3 emissions. The pace of alignment with international standards needs acceleration. Integration of ESG reporting and carbon footprint reduction targets is more common in larger banks. The SEBI can make it compulsory for all listed banks to disclose their sustainability report, to disseminate exact awareness among the stakeholders. These findings will contribute to the banking sector and provide insights for policymakers, regulators, and industry stakeholders, with implications for enhancing corporate disclosure standards, fostering sustainable finance initiatives, and advancing the sustainability agenda in India\u2019s banking sector.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B6_COMPUTATIONAL_2024_2026"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4416679488",
+      "title": "Detecting AI adoption at scale: a web mining and LLM methodology",
+      "year": 2025,
+      "text": "Detecting AI adoption at scale: a web mining and LLM methodology Abstract The recent emergence of Artificial Intelligence (AI) technologies has created multiple opportunities for companies. The growing interest in AI adoption has led to an increase in technological innovations and business applications. At the same time, web mining techniques have been used to monitor technological trends, often through basic natural language processing methods. However, advances in Large Language Models (LLMs) enable a more detailed and in-depth analysis of web content, necessitating the development of new methodologies. This paper proposes a methodology for integrating LLMs into the technology mining of corporate websites, with a focus on Spanish companies. The study uses data collected in 2023 and 2025, applying web scraping techniques to gather textual information. The analysis process involves automated AI detection, manual validation, and evaluation through standard classification metrics. The findings contribute to a better understanding of AI adoption trends and inform future research on tech mining applications for industry.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B6_COMPUTATIONAL_2024_2026"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4416904785",
+      "title": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Valley Script",
+      "year": 2025,
+      "text": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Valley Script The Indus Valley script, which dates back to the Bronze Age (2600\u20131900 BCE), is one of the most important ancient writing systems that has not yet been figured out. The tool employs corpus-based methodologies to discern potential language patterns, utilizing frequency distribution analysis, locational examination, and transitional probabilities among signs. Some of the most important features are statistical significance testing (Z-test) to look for differences from expected sign distributions, collocation analysis to look at contextual relationships, and n-gram modeling (1-4 grams) to observe patterns in sign sequences. A multinomial naive Bayes classifier, which is a type of machine learning, predicts semantic interpretations based on established inscriptions and proposed readings. We have showcased both the input methods with the help of case studies and the HCI insights. The tool looks at claims about proposed linguistic structures, like prefixing and suffixing systems, and claims about script characteristics, like logographic vs. syllabic qualities. Codebase is available at https://github.com/atulsharma0071/indiahci2025.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4415067443",
+      "title": "IberBench: LLM Evaluation on Iberian Languages",
+      "year": 2025,
+      "text": "IberBench: LLM Evaluation on Iberian Languages Large Language Models (LLMs) remain difficult to evaluate comprehensively, particularly for languages other than English, where high-quality data is often limited. Existing benchmarks and leaderboards are predominantly English-centric, with only a few addressing other languages. These benchmarks fall short in several key areas: they overlook the diversity of language varieties, prioritize fundamental Natural Language Processing (NLP) capabilities over tasks of industrial relevance, and are static. With these aspects in mind, we present IberBench, a comprehensive and extensible benchmark designed to assess LLM performance on both fundamental and industry-relevant NLP tasks, in languages spoken across the Iberian Peninsula and Ibero-America. IberBench integrates 101 datasets from evaluation campaigns and recent benchmarks, covering 22 task categories such as sentiment and emotion analysis, toxicity detection, and summarization. The benchmark addresses key limitations in current evaluation practices, such as the lack of linguistic diversity and static evaluation setups by enabling continual updates and community-driven model and dataset submissions moderated by a committee of experts. We evaluate 23 LLMs ranging from 100 million to 14 billion parameters and provide empirical insights into their strengths and limitations. Our findings indicate that (i) LLMs perform worse on industry-relevant tasks than in fundamental ones, (ii) performance is on average lower for Galician and Basque, (iii) some tasks show results close to random, and (iv) in other tasks LLMs perform above random but below shared task systems. IberBench offers open-source implementations for the entire evaluation pipeline, including dataset normalization and hosting, incremental evaluation of LLMs, and a publicly accessible leaderboard.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4411203807",
+      "title": "Identifying pastoral and plant products in local and imported pottery in Early Bronze Age southeastern Arabia",
+      "year": 2025,
+      "text": "Identifying pastoral and plant products in local and imported pottery in Early Bronze Age southeastern Arabia The origins of ceramic technology in the Oman Peninsula have a unique history in the context of ancient West Asia. Local pottery production in northern Oman and the United Arab Emirates is not documented until the early to mid-third millennium BC during the Early Bronze Age. This period was characterised by increasing sedentism and the expansion of long-distance exchange networks that operated across the Persian Gulf between Arabia, Mesopotamia, Iran and South Asia, including the exchange of ceramic vessels. In order to explore the links between ceramic technology and type, subsistence practices and sedentism as ceramic production was adopted in the region, we analysed the lipid content of Early Bronze Age pottery (n = 179) in southeastern Arabia from inland and coastal sites. The ceramic assemblage examined includes pottery produced locally at the site level as well as vessels that are distributed regionally. The contents of imported pottery from Mesopotamia and the Indus Civilisation from inland and coastal sites were also studied to determine the organic products that may have been transported as part of long-distance exchange. The results reveal the presence of pastoral products, such as meat and dairy products, in some of the earliest vessels produced in southeastern Arabia, as well as imported Mesopotamian vessels. Plant products are detected in a small minority of vessels in locally-produced and imported vessels, such as Fine Red Omani vessels and Black-Slipped Jars from the Indus Civilisation. Such an investigation demonstrates the importance of using biomolecular methods to study dietary practices and vessel use in southeastern Arabia on a larger scale.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B2_DILMUN_GULF_SEAL"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W7125835701",
+      "title": "The Bead Trade during the Late Third and Second Millennia BC at the Island of Failaka, Kuwait, Upper Persian Gulf",
+      "year": 2025,
+      "text": "The Bead Trade during the Late Third and Second Millennia BC at the Island of Failaka, Kuwait, Upper Persian Gulf The island of Failaka (Kuwait) is favorably situated in the Persian Gulf at the inlet of the Mesopotamian harbor cities of the 3rd to 2nd millennia BC. The island was investigated between 1958 and 2017 by several different archaeological projects focusing on the remains from the Bronze Age. Two settlements (Al-Khidr and Tell F3) and two large monumental buildings (Tell F6) were uncovered. A substantial number of beads made from semiprecious stones (carnelian, agate, jasper, turquoise, and lapis lazuli) were found. Lesser numbers were made of glass, faience, and paste, as well as bone, shell, ostrich eggshell, and clay. The majority of the beads must have been brought to the island as finished goods since raw materials for their production were not locally available and little evidence of bead production has been identified on the island. The beads found at Failaka suggest that the island was tied into extensive trading networks reaching from the Indus region to the Mediterranean.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B2_DILMUN_GULF_SEAL"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4407815846",
+      "title": "Impact of EU non-financial reporting regulation on Spanish companies\u2019 environmental disclosure: a cutting-edge natural language processing approach",
+      "year": 2025,
+      "text": "Impact of EU non-financial reporting regulation on Spanish companies\u2019 environmental disclosure: a cutting-edge natural language processing approach A debate exists about the effects of environmental disclosure becoming mandatory on the quality and the actual commitment of such reporting. This study seeks to assess whether differences exist when comparing the disclosure quality and comprehensiveness of Spanish companies\u2019 non-financial reports under voluntary and mandatory reporting regimes spanning the period 2015\u20132022. We present a novel approach by utilizing cutting-edge Natural Language Processing (NLP) techniques, chiefly ClimateBERT (a transformer-LLM\u2014Large Language Model) and ClimateBERT fine-tuned on ClimaText (a public database for climate change topic detection), to scrutinize and compare 729 voluntary and mandatory non-financial corporate reports from 96 Spanish companies spanning multiple sectors. Since transformers can only be accurately estimated by organizations with lots of computing power, but not by small organizations, we have also fine-tuned the transformer, something cheaper in computational terms, thus making it affordable to all companies, investors, regulators, policymakers, and other stakeholders. Our results document interesting patterns and strong trends of enhancement in specificity and commitment, particularly in risk-related texts, spanning the period 2015\u20132022. We provide descriptive evidence and an explorative appeal that underscores the regulations' influence, among many other factors also identified by prior literature (other stakeholders\u2019 requirements and expectations from companies, aside from the regulatory stakeholders), in fostering a higher quality and more comprehensive approach to climate risk reporting by Spanish companies, with enhanced alignment to internationally recognized reporting guidelines. In addition, the comparative analysis between the transformer model and the fine-tuned transformer model revealed subtle yet insightful differences in how climate disclosures are interpreted. The fine-tuned model exhibited an increased sensitivity to elements of commitment, sp",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B6_COMPUTATIONAL_2024_2026"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4416999130",
+      "title": "Ontology-driven energy management in smart buildings: A comprehensive review of methodologies, tools, and challenges",
+      "year": 2025,
+      "text": "Ontology-driven energy management in smart buildings: A comprehensive review of methodologies, tools, and challenges \u2022 Comprehensive survey of ontology-driven methods in building energy management. \u2022 81 studies evaluated across various building energy analysis applications. \u2022 Compares Brick, SAREF, SSN, and Open Energy Ontology in building data standardisation. \u2022 Identifies open challenges in digital twins, multi-agent AI, and data harmonisation. \u2022 Guides future research on occupant-aware analytics, fault detection, and DR strategies. While building energy systems (BES) increasingly rely on advanced automation, occupant-centric control, and digital twin technologies, a lack of robust semantic interoperability continues to hinder integrated, adaptive, and efficient energy management. Ontology-based approaches have emerged as a powerful solution, offering structured knowledge representation, consistent data exchange, and improved interpretability for AI-driven analytics. However, existing reviews tend to focus on subfields - such as occupant behaviour, IoT sensor data, or demand response - without providing a holistic synthesis of ontology-driven frameworks across diverse BES. In response, this study systematically reviewed 997 articles using a series of academic databases from 2011 to 2024, identifying 81 primary studies relevant to building energy analysis for comprehensive review. The results reveal that although ontologies facilitate standardised data flows and multi-agent coordination, significant gaps remain in domain coverage, alignment with emerging industry standards, and the integration of time-series data for predictive modelling. Furthermore, the interdependence of occupant comfort, multi-energy systems, and real-time decision-making has not been sufficiently addressed. This review compares commonly utilised ontological models (Brick, SAREF, SSN, and Open Energy Ontology) and proposes future directions emphasising interoperability with domain-specific data sources, bridging occupant modelling with data-driven optimisation, and leveraging digital twins for real-time opera",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4412601186",
+      "title": "AI-Based Ancient Script Recognition and Translation",
+      "year": 2025,
+      "text": "AI-Based Ancient Script Recognition and Translation Deciphering ancient scripts is a complex and historically significant task that requires linguistic expertise and computational tools. This paper presents an AI-powered approach for recognizing and interpreting ancient texts through a web-based application. By leveraging Google's Gemini and OpenAI's GPT models, the system processes script images, identifies the script type, transcribes the text, and provides historical context. Additionally, the extracted text is translated into Kannada to enhance regional accessibility. The implementation employs a combination of deep learning techniques, image processing, and natural language processing (NLP) to achieve accurate script recognition and translation. The results demonstrate that AI models can effectively analyze and interpret historical texts, bridging the gap between traditional linguistics and modern AI advancements.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B6_COMPUTATIONAL_2024_2026"
+    },
+    {
+      "source": "crossref",
+      "id": "10.54254/2755-2721/2025.ast26571",
+      "title": "Technological Evolution of Traffic Sign Recognition",
+      "year": 2025,
+      "text": "Technological Evolution of Traffic Sign Recognition  This paper aims to introduce deep learning approaches developed to overcome challenges in traffic sign recognition, which include YOLOv8-TS, STD-YOLOv5s, Semantic Scene Understanding &amp; Structured Localization, and Cascade R-CNN with Multi-Scale Attention. The paper also delves into critical system architecture considerations, analyzing the roles of various sensors and computing platforms in enabling real-time and efficient TSR. Performance evaluation is discussed using essential metrics such as Precision, Recall, F1-score, and mean Average Precision (mAP), highlighting their importance in quantifying detection and classification accuracy. Optimization strategies are emphasized as crucial for practical deployment, relying heavily on continuous algorithmic advances (like novel network architectures and attention modules) and sophisticated hardware-software co-design to balance computational efficiency with recognition performance. Looking ahead, TSR research is poised to advance sig",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B3_CISI_PSIGNS"
+    },
+    {
+      "source": "crossref",
+      "id": "10.15184/aqy.2025.10246",
+      "title": "Tell Abraq: cross-cultural connections in the Persian Gulf from the Late Bronze Age to the early centuries AD",
+      "year": 2025,
+      "text": "Tell Abraq: cross-cultural connections in the Persian Gulf from the Late Bronze Age to the early centuries AD  Tell Abraq (United Arab Emirates) is a key site in south-east Arabian archaeology, evidencing over three millennia of continuous human occupation. Recent discoveries highlight its inclusion in trade networks across the Persian Gulf and beyond and illustrate how the nature of the site changed through time.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B2_DILMUN_GULF_SEAL"
+    },
+    {
+      "source": "crossref",
+      "id": "10.21203/rs.3.rs-6801050/v1",
+      "title": "THE INDUS SCRIPT\u00a0Recognition as an alphabet",
+      "year": 2025,
+      "text": "THE INDUS SCRIPT\u00a0Recognition as an alphabet  Abstract \n         This study introduces a novel structural analysis of the Indus script (c. 3300\u2009\u2212\u20091900 BCE) to determine if it represents an alphabetic system. Unlike previous methods, this research focuses on the inherent structural properties of over 400 Indus signs to precisely quantify the primary constituent signs. Through a new grid-based decomposition, compound signs were visually dissected, consistent diacritics identified, and sign formation principles clarified. This rigorous examination revealed a core set of 40 fundamental signs, suggesting a concise underlying system despite stylistic variations in sign formation, composition, and combination. This finding supports the hypothesis of an alphabetic structure. Furthermore, the study proposes preliminary phonetic assignments based on allographic analogies with other ancient scripts, offering a tentative reading of Indus texts to support the proposed decipherment. This research establishes a new framework for understanding t",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B5_LOW_ANCHOR_PHONOLOGY"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/2501.17785v1",
+      "title": "Reasoning Over the Glyphs: Evaluation of LLM's Decipherment of Rare Scripts",
+      "year": 2025,
+      "text": "Reasoning Over the Glyphs: Evaluation of LLM's Decipherment of Rare Scripts We explore the capabilities of LVLMs and LLMs in deciphering rare scripts not encoded in Unicode. We introduce a novel approach to construct a multimodal dataset of linguistic puzzles involving such scripts, utilizing a tokenization method for language glyphs. Our methods include the Picture Method for LVLMs and the Description Method for LLMs, enabling these models to tackle these challenges. We conduct experiments using prominent models, GPT-4o, Gemini, and Claude 3.5 Sonnet, on linguistic puzzles. Our findings reveal the strengths and limitations of current AI methods in linguistic decipher",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B6_COMPUTATIONAL_2024_2026"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/2506.17077v1",
+      "title": "Simultaneous Translation with Offline Speech and LLM Models in CUNI Submission to IWSLT 2025",
+      "year": 2025,
+      "text": "Simultaneous Translation with Offline Speech and LLM Models in CUNI Submission to IWSLT 2025 This paper describes Charles University submission to the Simultaneous Speech Translation Task of the IWSLT 2025. We cover all four language pairs with a direct or cascade approach. The backbone of our systems is the offline Whisper speech model, which we use for both translation and transcription in simultaneous mode with the state-of-the-art simultaneous policy AlignAtt. We further improve the performance by prompting to inject in-domain terminology, and we accommodate context. Our cascaded systems further use EuroLLM for unbounded simultaneous translation. Compared to the Organizers' baseli",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B6_COMPUTATIONAL_2024_2026"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/2510.06743v1",
+      "title": "Evaluating LLMs for Historical Document OCR: A Methodological Framework for Digital Humanities",
+      "year": 2025,
+      "text": "Evaluating LLMs for Historical Document OCR: A Methodological Framework for Digital Humanities Digital humanities scholars increasingly use Large Language Models for historical document digitization, yet lack appropriate evaluation frameworks for LLM-based OCR. Traditional metrics fail to capture temporal biases and period-specific errors crucial for historical corpus creation. We present an evaluation methodology for LLM-based historical OCR, addressing contamination risks and systematic biases in diplomatic transcription. Using 18th-century Russian Civil font texts, we introduce novel metrics including Historical Character Preservation Rate (HCPR) and Archaic Insertion Rate (AIR), alo",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B6_COMPUTATIONAL_2024_2026"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4396567717",
+      "title": "The 2018 Archaeological Survey at Tawi Said, Sultanate of Oman",
+      "year": 2024,
+      "text": "The 2018 Archaeological Survey at Tawi Said, Sultanate of Oman &lt;p&gt;This book outlines the results of the 2018 archaeological survey at Tawi Said, located on the edge of the Sharqiyah desert in the Sultanate of Oman. The surveyed area of 150 x 125 m yielded close to 8,600 artifacts, with pottery sherds comprising the majority of the finds. Additional discoveries include shells, lithic tools, copper production waste, jewellery and fragments of soft-stone vessels. Of particular interest are two stamp seals, one of which bears a resemblance to the seals of Dilmun style. Two significant phases are attested by the finds from Tawi Said: the Wadi Suq period (2000-1600 BCE) and the Late Islamic period (1650-1970 CE). Together with other discoveries, the Dilmun-inspired stamp seal illustrates the interconnectedness of Tawi Said in interregional exchange during the Wadi Suq period. The connectivity of the Late Islamic period is similarly evidenced by imported pottery, glass bangles and other artefacts. The absence of architectural remains suggests that Tawi Said was a temporary place used by mobile groups throughout its existence.&lt;/p&gt;",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B2_DILMUN_GULF_SEAL"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4401783976",
+      "title": "&lt;strong&gt;THE INDUS SCRIPT AS AN ALPHABET &lt;/strong&gt;&lt;strong&gt;&lt;em&gt;Examining Conformity in the Usage of the Indus Script&lt;/em&gt;&lt;/strong&gt;&lt;strong&gt; &lt;/strong&gt;",
+      "year": 2024,
+      "text": "&lt;strong&gt;THE INDUS SCRIPT AS AN ALPHABET &lt;/strong&gt;&lt;strong&gt;&lt;em&gt;Examining Conformity in the Usage of the Indus Script&lt;/em&gt;&lt;/strong&gt;&lt;strong&gt; &lt;/strong&gt; This paper presents a novel approach to decoding the Indus script, which was used by the Indus Valley Civilization (IVC) from approximately 3300 to 1900 BCE. The main focus of this research is the structural analysis of the signs within the Indus script. The central objective of the paper is to determine whether the Indus script can be classified as an alphabet, and it aims to provide compelling evidence regarding the number of primary signs. This includes establishing the actual count of Indus signs through the decomposition of compound signs, identifying diacritics and analyzing their consistent usage, as well as exploring the underlying concepts and implications associated with sign extraction. To comprehensively examine the Indus script, the paper analyzes over 400 signs, encompassing the entire script rather than a select subset of signs or texts. The visual decomposition of the signs employs a simple grid methodology. By summarizing the logical findings, the paper successfully identifies the primary signs and develops an understanding of their phonetic representation within the alphabet. The study recognizes the diverse writing styles used to combine the basic signs, The writing style of the Indus script incorporates variations in formation, composition, and combination, resulting in a significant number of signs. The research findings indicate that the Indus Script primarily consists of only 40 core signs.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1017/9781009424424",
+      "title": "The Origins of Agriculture in the Bronze Age Indus Civilization",
+      "year": 2024,
+      "text": "The Origins of Agriculture in the Bronze Age Indus Civilization  The Indus civilization in South Asia (c. 320  \u2013 1500BC) was one of the most important Old World Bronze Age cultures. Located at the cross-roads of Asia, in modern Pakistan and India, it encompassed ca. one million square kilometers, making it one the largest \u00a0and most ecologically, culturally, socially, and economically complex among contemporary civilisations. \u00a0In this study, Jennifer Bates offers new insights into the Indus civilisation through an archaeobotanical reconstruction of its environment. Exploring the relationship between people and plants, agricultural systems, and the foods that people consumed, she demonstrates how the choices made by the ancient inhabitants were intertwined with several aspects of society, as were their responses to social and climate changes. Bates' book synthesizes the available data on genetics, archaeobotany, and archaeology. It shows how the ancient Indus serves as a case study of a civilization\u00a0navigating\u00a0sustainability, resilience and collapse",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "crossref",
+      "id": "10.53542/2522-2279.1414",
+      "title": "An Aesthetic Study of a Selection of Dilmun Seals on Failaka Island",
+      "year": 2024,
+      "text": "An Aesthetic Study of a Selection of Dilmun Seals on Failaka Island",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B2_DILMUN_GULF_SEAL"
+    },
+    {
+      "source": "crossref",
+      "id": "10.22541/au.172366258.87422803/v1",
+      "title": "THE INDUS SCRIPT AS AN ALPHABET",
+      "year": 2024,
+      "text": "THE INDUS SCRIPT AS AN ALPHABET  This paper presents a novel approach to decoding the Indus script, which was used by the Indus Valley Civilization (IVC) from approximately 3300 to 1900 BCE. The main focus of this research is the structural analysis of the signs within the Indus script. The central objective of the paper is to determine whether the Indus script can be classified as an alphabet, and it aims to provide compelling evidence regarding the number of primary signs. This includes establishing the actual count of Indus signs through the decomposition of compound signs, identifying diacritics and analyzing their consistent usage, as well as exploring the underlying concepts and implications associated with sign extraction. To comprehensively examine the Indus script, the paper analyzes over 400 signs, encompassing the entire script rather than a select subset of signs or texts. The visual decomposition of the signs employs a simple grid methodology. By summarizing the logical findings, the paper successfully i",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "crossref",
+      "id": "10.20944/preprints202408.1473.v1",
+      "title": "&lt;strong&gt;THE INDUS SCRIPT AS AN ALPHABET &lt;/strong&gt;&lt;strong&gt;&lt;em&gt;Examining Conformity in the Usage of the Indus Script&lt;/em&gt;&lt;/strong&gt;&lt;strong&gt; &lt;/strong&gt;",
+      "year": 2024,
+      "text": "&lt;strong&gt;THE INDUS SCRIPT AS AN ALPHABET &lt;/strong&gt;&lt;strong&gt;&lt;em&gt;Examining Conformity in the Usage of the Indus Script&lt;/em&gt;&lt;/strong&gt;&lt;strong&gt; &lt;/strong&gt;  This paper presents a novel approach to decoding the Indus script, which was used by the Indus Valley Civilization (IVC) from approximately 3300 to 1900 BCE. The main focus of this research is the structural analysis of the signs within the Indus script. The central objective of the paper is to determine whether the Indus script can be classified as an alphabet, and it aims to provide compelling evidence regarding the number of primary signs. This includes establishing the actual count of Indus signs through the decomposition of compound signs, identifying diacritics and analyzing their consistent usage, as well as exploring the underlying concepts and implications associated with sign extraction. To comprehensively examine the Indus script, the paper analyzes over 400 signs, encompassing the entire script rather than a select subset of signs or texts. The visual decomposition of the signs employs a simple grid methodology. By summarizing the logical findings, the paper successfully i",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/2406.07231v1",
+      "title": "Decipherment-Aware Multilingual Learning in Jointly Trained Language Models",
+      "year": 2024,
+      "text": "Decipherment-Aware Multilingual Learning in Jointly Trained Language Models The principle that governs unsupervised multilingual learning (UCL) in jointly trained language models (mBERT as a popular example) is still being debated. Many find it surprising that one can achieve UCL with multiple monolingual corpora. In this work, we anchor UCL in the context of language decipherment and show that the joint training methodology is a decipherment process pivotal for UCL. In a controlled setting, we investigate the effect of different decipherment settings on the multilingual learning performance and consolidate the existing opinions on the contributing factors to multilin",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B6_COMPUTATIONAL_2024_2026"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/2412.15772v1",
+      "title": "Linguistic Features Extracted by GPT-4 Improve Alzheimer's Disease Detection based on Spontaneous Speech",
+      "year": 2024,
+      "text": "Linguistic Features Extracted by GPT-4 Improve Alzheimer's Disease Detection based on Spontaneous Speech Alzheimer's Disease (AD) is a significant and growing public health concern. Investigating alterations in speech and language patterns offers a promising path towards cost-effective and non-invasive early detection of AD on a large scale. Large language models (LLMs), such as GPT, have enabled powerful new possibilities for semantic text analysis. In this study, we leverage GPT-4 to extract five semantic features from transcripts of spontaneous patient speech. The features capture known symptoms of AD, but they are difficult to quantify effectively using traditional methods of computational li",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B6_COMPUTATIONAL_2024_2026"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4380203896",
+      "title": "Recognizing technique variation in rock engravings: ArchCUT3-D for micromorphological analysis",
+      "year": 2023,
+      "text": "Recognizing technique variation in rock engravings: ArchCUT3-D for micromorphological analysis Abstract Ancient rock engravings evoke the interest of archeologists and art historians as an important remnant of human cultures. Traditionally, engraved images are studied based on iconography, iconology, and stylistic characteristics, with little emphasis on execution technology. In contrast, the research method presented in this study strives to characterize the techniques adopted for making rock engravings in ancient times, with technological variations considered as indicators of the engraver\u2019s production process. 3-D scans of two ancient engravings and contemporary graffiti were obtained from Site 25 in Timna Park, Southern Israel. The models were analyzed with ArchCUT3-D, a software specifically developed to precisely evaluate the 3-D micromorphological characteristics of the incisions making up the engraving. The software analyzes the surface micromorphology by extracting 3-D slices of the incisions using an accurate and repeatable method. Our results indicate that different incisions were executed by remarkably distinct techniques of stroking the rock surface with a sharp tool. The identification of discriminant characteristics enabled us to demonstrate the particularities of the engraving operations, such as ergonomic conditions and the level of consistency of the engraving gesture. ArchCUT3-D thus provides a computational method for incision technique recognition through micromorphology specifications, and the reconstruction of engraving gestures and individual production procedures.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B3_CISI_PSIGNS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4313642947",
+      "title": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licensing, commodity control and access control: archaeological and script-internal evidence",
+      "year": 2023,
+      "text": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licensing, commodity control and access control: archaeological and script-internal evidence This article studies the semantic scope of the yet undeciphered Indus inscriptions, which are mostly found on tiny seals, sealings, and tablets. Building on previous structural analyses, which reveal that Indus script was semasiographic or logographic in nature, this study analyses the combinatorial patterns of Indus script signs, and the geographical distribution of the inscriptions, to establish that the inscriptions did not encode any proper noun, such as anthroponyms, toponyms, or names of specific organizations. Analysing various archaeological contexts of the inscribed objects \u2014e.g., seals are found concentrated near city gates (e.g., Harappa), craft-workshops (e.g., Chanhu-daro), and public buildings (e.g., Mohenjo-daro), often along with standardized Indus weights which were used for taxation; sealings were attached to various storage containers and locking systems of \u201cwarehouse\u201d chambers as indicated by their reverse side impressions (e.g., the Lothal \u201cwarehouse\u201d sealings); inscribed sealing-pendants of Kanmer are conjectured to be passports/gate-passes by archaeologists; seals with identical inscriptions are often found from distant settlements \u2014 this study claims that the inscribed stamp-seals were used for enforcing certain rules involving taxation, trade/craft control, commodity-control and access control. Considering typological and functional differences between the seals and tablets, and analysing certain numerical and metrological notations ( , , ) typically found at the reverse-sides of many multi-sided tablets whose obverse-sides contain seal-like inscriptions, this study argues that such tablets were possibly trade/craft/commodity specific licenses issued to tax-collectors, traders, and artisans. These reverse-side tablet-inscriptions possibly encoded certain standardized license-fees for three popular license-slabs, whereas their obverse sides specified the commercial activities licensed to the tablet-bearers. These seals/tablets were possibly i",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4362720419",
+      "title": "Can the semasiographic/logographic Indus script answer the Dravidian question? Insights from Indus script\u2019s gemstone related fish-signs, and Indus gemstone-word \u201cma\u1e47i\u201d",
+      "year": 2023,
+      "text": "Can the semasiographic/logographic Indus script answer the Dravidian question? Insights from Indus script\u2019s gemstone related fish-signs, and Indus gemstone-word \u201cma\u1e47i\u201d From archaeogenetic, linguistic, archaeological, and ethnographic evidences, several scholars have linked the people of ancient Indus valley civilization (IVC) with the ancestors of Dravidian speakers. This article argues that the semasiographically/logographically written Indus script (ISC) used certain fish-like logograms, whose iconicity emerged from certain Indus symbolisms, which are linkable with certain linguistic symbolisms found across today\u2019s Dravidian languages. As discussed in the author\u2019s previous articles, ISC was a mercantile script, and different segments of the formulaic ISC inscriptions were usually populated by signs belonging to specific semantic classes. The core-informational segment, which occur preceding the phrase-final and pre-phrase-final signs ( ), arguably encoded names of licensed crafts, and taxed commodities (e.g., the crucible-blowpipe based sign which signified precious-metals/gold-smithy). This article claims that the fish-like ISC signs ( , , , , , , ), which mainly occur in the \u2018core-informational\u2019 segments, often accompanying the gold/precious-metal sign (e.g., , ), possibly encoded meanings related to gemstones, lapidary activities, related precious commodities, barter equivalencies, and taxes/licenses. Interestingly, in various Indus settlements, seals/tablets containing fish-sign- inscriptions are found in unusually high concentration in the archaeological contexts of lapidary workshops and jeweler\u2019s shops. Revealingly, the polysemic Proto-Dravidian fish-word \u201cm\u012bn\u201d, a popular fish-word used across present India, also signifies \u2018shining\u2019, \u2018bright\u2019, and \u2018gemstone\u2019 in several Dravidian languages, and is etymologically connected to the Proto-Dravidian root-verb \u201c*m\u012bn\u201d, which signifies \u201cto shine,\u201d \u201cto glitter,\u201d etc. In the Indian subcontinent, this fish-based homonymy for gemstones and related linguistic symbolism for other glittering things (\u201c*min\u201d-based words coined for stars, fireflies, lightning, etc.) are found only in the Dr",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B5_LOW_ANCHOR_PHONOLOGY"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4367692629",
+      "title": "Iravatham Mahadevan\u2019s Reading of Indus Script: A Critical Review",
+      "year": 2023,
+      "text": "Iravatham Mahadevan\u2019s Reading of Indus Script: A Critical Review This paper comprehensively summarizes, analyses, and reviews Iravatham Mahadevan\u2019s attempts to decipher the Indus script. Spanning a period of over thirty five years, Iravatham Mahadevan made continuous attempts to interpret and decipher the Indus script. Mahadevan claimed to have adapted the method of parallels between the symbolic representation and the text, between the written object and its designation, between the written symbol itself and its meaning, and the similarity throughout the ancient East of certain portions of the inscriptions, with the assumption that the underlying language of the script is Dravidian. Mahadevan was very flexible in changing his views and finding new interpretations, and gradually he shifted his interpretation of Indus signs from being phonetic/logographic/word to ideographic, leaving unshaken his core personal hypothesis and belief in the Ve\u1e37ier clan and Tamil cultural settings. While Mahadevan did not succeed in making a self-consistent system of readings applicable to a large number of discovered pieces of writings, he did make a determined, persistent effort to develop a Dravidian framework for deciphering of the Indus script. This study seeks to find weaknesses in the methodology and assumptions of Mahadevan and searches for possible alternatives within that framework.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "crossref",
+      "id": "10.31235/osf.io/ftdzc",
+      "title": "Can the semasiographic/logographic Indus script answer the Dravidian question? Insights from Indus script\u2019s gemstone related fish-signs, and Indus gemstone-word \u201cma\u1e47i\u201d",
+      "year": 2023,
+      "text": "Can the semasiographic/logographic Indus script answer the Dravidian question? Insights from Indus script\u2019s gemstone related fish-signs, and Indus gemstone-word \u201cma\u1e47i\u201d  From archaeogenetic, linguistic, archaeological, and ethnographic evidences, several scholars have linked the people of ancient Indus valley civilization (IVC) with the ancestors of Dravidian speakers. This article argues that the semasiographically/logographically written Indus script (ISC) used certain fish-like logograms, whose iconicity emerged from certain Indus symbolisms, which are linkable with certain linguistic symbolisms found across today\u2019s Dravidian languages. As discussed in the author\u2019s previous articles, ISC was a mercantile script, and different segments of the formulaic ISC inscriptions were usually populated by signs belonging to specific semantic classes.  The core-informational segment, which occur preceding the phrase-final and pre-phrase-final signs ( ), arguably encoded names of licensed crafts, and taxed commodities (e.g., the crucible-blowpipe based sign   which signified precious-metals/gold-smithy). This article claims that the fish-like ISC signs ( , , , ,",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B5_LOW_ANCHOR_PHONOLOGY"
+    },
+    {
+      "source": "crossref",
+      "id": "10.23993/store.85246",
+      "title": "Iravatham Mahadevan\u2019s Reading of Indus Script: A Critical Review",
+      "year": 2023,
+      "text": "Iravatham Mahadevan\u2019s Reading of Indus Script: A Critical Review  This paper comprehensively summarizes, analyses, and reviews Iravatham Mahadevan\u2019s attempts to decipher the Indus script. Spanning a period of over thirty five years, Iravatham Mahadevan made continuous attempts to interpret and decipher the Indus script. Mahadevan claimed to have adapted the method of parallels between the symbolic representation and the text, between the written object and its designation, between the written symbol itself and its meaning, and the similarity throughout the ancient East of certain portions of the inscriptions, with the assumption that the underlying language of the script is Dravidian. Mahadevan was very flexible in changing his views and finding new interpretations, and gradually he shifted his interpretation of Indus signs from being phonetic/logographic/word to ideographic, leaving unshaken his core personal hypothesis and belief in the Ve\u1e37ier clan and Tamil cultural settings. While Mahadevan did not succeed in making a self-consistent system of r",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "crossref",
+      "id": "10.59720/22-256",
+      "title": "Statistical models for identifying missing and unclear signs of the Indus script",
+      "year": 2023,
+      "text": "Statistical models for identifying missing and unclear signs of the Indus script  A writing system was developed between 2500 and 1800 BCE in the Indus Valley civilization in the Indian subcontinent and remains undeciphered. Indus script texts found so far in the archeological digs from this civilization are limited in number and include a lot of damaged artifacts with missing and unclear signs. Identifying the missing and unclear signs and extending the Indus text corpus will aid the researchers in deciphering this script. This work aimed to predict the missing and unclear signs using n-gram Markov chain models using the Interactive Corpus of Indus Texts (ICIT) text corpus. First, we analyzed patterns and concordances of the signs, pairs, triplets, and other n-grams and discovered the positional behavior of signs in the Indus texts. With that understanding, we built Markov chain language models based on n-grams, augmented with sign positional probabilities. Since signs could be missing in any location of the texts, we devised and implemented effective sign fill-in",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "crossref",
+      "id": "10.31235/osf.io/7dtqz",
+      "title": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licensing, commodity control and access control: archaeological and script-internal evidence",
+      "year": 2023,
+      "text": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licensing, commodity control and access control: archaeological and script-internal evidence  This article studies the semantic scope of the yet undeciphered Indus inscriptions, which are mostly found on tiny seals, sealings, and tablets. Building on previous structural analyses, which reveal that Indus script was semasiographic or logographic in nature, this study analyses the combinatorial patterns of Indus script signs, and the geographical distribution of the inscriptions, to establish that the inscriptions did not encode any proper noun, such as anthroponyms, toponyms, or names of specific organizations. Analysing various archaeological contexts of the inscribed objects \u2014e.g., seals are found concentrated near city gates (e.g., Harappa), craft-workshops (e.g., Chanhu-daro), and public buildings (e.g., Mohenjo-daro), often along with standardized Indus weights which were used for taxation; sealings were attached to various storage containers and locking systems of \u201cwarehouse\u201d chambers as indicated by their  reverse side impressions (e.g., the Lothal \u201cwarehouse\u201d sealings);",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/2311.02499v1",
+      "title": "Can Chat GPT solve a Linguistics Exam?",
+      "year": 2023,
+      "text": "Can Chat GPT solve a Linguistics Exam? The present study asks if ChatGPT4, the version of ChatGPT which uses the language model GPT4, can successfully solve introductory linguistic exams. Previous exam questions of an Introduction to Linguistics course at a German university are used to test this. The exam questions were fed into ChatGPT4 with only minimal preprocessing. The results show that the language model is very successful in the interpretation even of complex and nested tasks. It proved surprisingly successful in the task of broad phonetic transcription, but performed less well in the analysis of morphemes and phrases. In s",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B6_COMPUTATIONAL_2024_2026"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4281971206",
+      "title": "Exchange networks of the Early Bronze Age Gulf: The imported ceramics from Kalba 4 (United Arab Emirates)",
+      "year": 2022,
+      "text": "Exchange networks of the Early Bronze Age Gulf: The imported ceramics from Kalba 4 (United Arab Emirates) Abstract Imported ceramics from Early Bronze Age contexts in southeast Arabia illustrate a complex multidirectional network of material and social interactions at this time. Significant socioeconomic changes that occurred in the Hafit (3200\u20132800 B.C.) and Umm an\u2010Nar (2800\u20132000 B.C.) periods have been linked to external demand for copper, which is argued to have stimulated a change in subsistence patterns. Similarly, disruption to long\u2010distance exchange networks by external factors has been cited as driving change at the end of the Umm an\u2010Nar period. Archaeological evidence from the region suggests a shift in the direction of exchange from Mesopotamia to the Indus occurred around the middle of the third millennium B.C. However, a recent analysis of Mesopotamian historical sources has highlighted the scale of state\u2010organised textile production for export to the lower Gulf in the later third millennium B.C. The site of Kalba 4 has a stratified sequence of occupation deposits dating from the Umm an\u2010Nar and Iron Age (1300\u2013300 B.C.). In this study, a typological analysis of imported ceramics is used to locate the Kalba in the chronological framework of the region and discuss the changing networks of long\u2010distance exchange that were operating. The imported pottery at Kalba 4 indicates that the inhabitants of the site were exchanging goods with a range of polities, including southern Mesopotamia, the Indus Valley (Meluhha), southeast Iran (Marhashi) and Bahrain (Dilmun). A significant quantity of Late Akkadian ceramics at the site suggests it became an important location for Mesopotamian trade at this time.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B2_DILMUN_GULF_SEAL"
+    },
+    {
+      "source": "openalex",
+      "id": "https://openalex.org/W4308339351",
+      "title": "From Dilmun to W\u0101d\u012b al\u2010F\u0101w: A forgotten desert corridor, c. 2000 BC",
+      "year": 2022,
+      "text": "From Dilmun to W\u0101d\u012b al\u2010F\u0101w: A forgotten desert corridor, c. 2000 BC Abstract There is a lacuna of knowledge on the inland trade routes across Bronze Age central Arabia, which this article seeks to fill based on new evidence from W\u0101d\u012b al\u2010F\u0101w, Saudi Arabia. Contrary to a common belief that interior Southeast Arabia after the Holocene Humid Phase and until the domestication of the dromedary had turned desolate Badlands, this study offers documentation that during the early Bronze Age, a commercial corridor connected the Kingdom of Dilmun on the Arabian Gulf coast with the southern parts of Saudi Arabia, probably Yemen. Seals of Dilmun Type, Dilmun pottery and related burial praxis make up the gist of the evidence from W\u0101d\u012b al\u2010F\u0101w. A dry mummification mound burial custom is possibly identified at al\u2010F\u0101w and probably Taym\u0101\u02be, which contrasts the classic Dilmun mound burial custom. An attempt is made to reconstruct the most likely route that connected Dilmun and W\u0101d\u012b al\u2010F\u0101w. The emergence around 2000 BC of this trade network, likely based on donkey trains, closely coincides with the rise of the Kingdom of Dilmun, but surprisingly also with a time when Arabia witnessed unusually arid conditions. Identification of this unexpected ancient corridor should profoundly affect how upcoming models consider linguistic, ideological, genetic, cultural and technological transmission across Bronze Age Arabia.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B2_DILMUN_GULF_SEAL"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1093/llc/fqac013",
+      "title": "The Corpus of Contemporary Czech Poetry: A database for research on contemporary poetic language across media",
+      "year": 2022,
+      "text": "The Corpus of Contemporary Czech Poetry: A database for research on contemporary poetic language across media  Abstract \n                Our article reports on the emerging Corpus of Contemporary Czech Poetry and the possibilities for its use. We describe the genesis of the idea of creating a specific corpus that combines the principles of synchronicity and genre instead of relying on the presence of poetry in the general corpus of contemporary Czech. We also characterize the structure of our corpus, which is designed to cover both of the basic media areas in which contemporary poetry is published and distributed: either in books or through open publishing platforms on the Internet (literary forums). We additionally describe the functionalities of the tools for mining the corpus data, which are designed to easily serve comparative analyses across media (print/web). We suggest how useful quantitative data analysis can be in the first phase of language-oriented literary research; or rather we point out the necessity of combining quantitative and qualitative approaches. Only the researcher\u2019s inte",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "crossref",
+      "id": "10.31219/osf.io/rmwdh",
+      "title": "THE JALALABAD INDUS SEAL ITS ICONOGRAPHY AND TEXT INTERPRETS LEPROSY AND ITS TREATMENT",
+      "year": 2022,
+      "text": "THE JALALABAD INDUS SEAL ITS ICONOGRAPHY AND TEXT INTERPRETS LEPROSY AND ITS TREATMENT  A paper on the Jalalabad seal written by Massimo Vidale, Francoise Dessert, and Dennys Frenez presents the scholarly view of the seal. They describe the elements of the iconography well, which can be accessed on academia.edu for details. Hence, researchers suggested six possible alternative readings to the inscribed text because the seal is partly damaged and the signs in the text are difficult to distinguish. In my opinion, one of them seems appropriate since it interprets iconography.  My decipherment indicates that the text refers to leprosy and its treatment. Therefore, all those elements of iconography have been described accordingly",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "crossref",
+      "id": "10.1111/aae.12212",
+      "title": "About two seal\u2010impressed jars from Tell Abraq (Emirate of Umm al\u2010Quwain). New evidence for intercultural networks in the lower Arabian Gulf in the late 2nd \u2013 beginning of the 1st millennium BC",
+      "year": 2022,
+      "text": "About two seal\u2010impressed jars from Tell Abraq (Emirate of Umm al\u2010Quwain). New evidence for intercultural networks in the lower Arabian Gulf in the late 2nd \u2013 beginning of the 1st millennium BC  Abstract  Ongoing excavations at Tell Abraq (Emirate of Umm al\u2010Quwain, U.A.E.) are revealing new aspects of this multiperiod site, which was occupied from c. 2500 BC to 300 AD. Together with substantial architecture dated to the 2nd and 1st millennia BC, relevant assemblages of archaeological materials are being collected and dated to different phases of the site\u2019s life. Among this material, exceptional is the discovery of two jars bearing the impression of two different cylinder seals, which will be presented here. Seal impressions on any media are extremely rare in the whole of south\u2010eastern Arabia and strongly indicate a foreign provenance for the jars. Their iconographic study, the fabric and morphological parallels for the jars, and probable chronology will be discussed, as this can highlight transmarine connections during the late 2nd\u2010first half of the 1st millennium BC, as well as provide new data to address chronological issues in south\u2010eastern Iran itself.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B2_DILMUN_GULF_SEAL"
+    },
+    {
+      "source": "arxiv",
+      "id": "http://arxiv.org/abs/2203.14757v2",
+      "title": "STUDIES: Corpus of Japanese Empathetic Dialogue Speech Towards Friendly Voice Agent",
+      "year": 2022,
+      "text": "STUDIES: Corpus of Japanese Empathetic Dialogue Speech Towards Friendly Voice Agent We present STUDIES, a new speech corpus for developing a voice agent that can speak in a friendly manner. Humans naturally control their speech prosody to empathize with each other. By incorporating this \"empathetic dialogue\" behavior into a spoken dialogue system, we can develop a voice agent that can respond to a user more naturally. We designed the STUDIES corpus to include a speaker who speaks with empathy for the interlocutor's emotion explicitly. We describe our methodology to construct an empathetic dialogue speech corpus and report the analysis results of the STUDIES corpus. We conduct",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "crossref",
+      "id": "10.7817/jameroriesoci.134.1.0107",
+      "title": "Beginnings of Indian and Chinese Calendrical Astronomy",
+      "year": 2021,
+      "text": "Beginnings of Indian and Chinese Calendrical Astronomy  &#x0D;\n&#x0D;\n&#x0D;\nCalendrical astronomy had a parallel but separate development in China and in India. Both were eventually lunisolar and utilized circumpolar stars, which made Ursa Major and the pole star ideologically important. Initially the Early Harappans could orient their towns according to cardinal directions and the sun probably symbolized the king. Their calendar was heliacal with Aldebaran as the new year star. Indus Civilization created the lunisolar calendar, the naks\u0323atras, started the new year with the Pleiades, used the gnomon, and knew planets (Dravidian names of stars and planets, preserved in Old Tamil, occur in Indus inscriptions). \u201cBull of Heaven\u201d and \u201cSky Garment\u201d were borrowings from Mesopotamia. The paper also deals with the heavenly crocodile and its connection with crocodile cult, the S\u0301unah\u0323s\u0301epa legend, and God Varun\u0323a\u2019s heavenly banyan tree, which is connected with the pole star\u2019s Dravidian name and its function in Pura\u0304n\u0323ic cosmology.&#x0D;\n&#x0D;\n&#x0",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "crossref",
+      "id": "10.3390/app11041585",
+      "title": "Sequential Recommendations on GitHub Repository",
+      "year": 2021,
+      "text": "Sequential Recommendations on GitHub Repository  The software development platform is an increasingly expanding industry. It is growing steadily due to the active research and sharing of artificial intelligence and deep learning. Further, predicting users\u2019 propensity in this huge community and recommending a new repository is beneficial for researchers and users. Despite this, only a few researches have been done on the recommendation system of such platforms. In this study, we propose a method to model extensive user data of an online community with a deep learning-based recommendation system. This study shows that a new repository can be effectively recommended based on the accumulated big data from the user. Moreover, this study is the first study of the sequential recommendation system that provides a new dataset of a software development platform, which is as large as the prevailing datasets. The experiments show that the proposed dataset can be practiced in various recommendation tasks.",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B1_ICIT_CORPUS"
+    },
+    {
+      "source": "crossref",
+      "id": "10.35543/osf.io/kacfr",
+      "title": "Initial Decipherment  of Indus  script",
+      "year": 2020,
+      "text": "Initial Decipherment  of Indus  script  A partial decipherment of Indus script is described. Sound values for Indus characters , readings obtained and conclusions derived are explained here. The Indus script seems derived from Protocuneiform script and in turn Brahmi script seems derived from the Indus script. The decipherment seems to indicate that the seals were a form of identification. There is evidence of an early form of caste system prevalent among Dalits in Southern India in these seals. The readings show that the language used was of Dravidian origin",
+      "evidence_tier": "STRONG",
+      "blocker_id": "B5_LOW_ANCHOR_PHONOLOGY"
+    }
+  ],
+  "clusters": [
+    "ICIT Indus corpus Fuls digital database sign 4537",
+    "Indus Valley inscription corpus digitization open access 2020 2025",
+    "Harappan sign list new digitized database GitHub repository",
+    "Indus script corpus new collection 2022 2023 2024 2025",
+    "Indus sign concordance digital humanities computational 2020 2026",
+    "Indus inscription dataset Zenodo OSF open source machine learning",
+    "Dilmun seal Indus Bahrain cuneiform bilingual Bronze Age",
+    "Persian Gulf seal Indus script inscription Harappan Bronze Age",
+    "Tell Abraq UAE Indus seal Mesopotamia Bronze Age 2020",
+    "British Museum Bahrain Dilmun seal Indus catalog digital",
+    "Failaka Kuwait seal Indus Mesopotamia Akkadian inscription",
+    "Gulf Bronze Age script seal excavation 2020 2021 2022 2023 2024",
+    "Indus Persian Gulf trade bilingual inscription new find",
+    "Parpola CISI sign list P-number concordance computational analysis",
+    "Indus script Parpola numbering sign frequency positional profile",
+    "CISI corpus inscription computational Indus sign frequency analysis 2020",
+    "clan classifier title prefix Indus seal determinative initial sign",
+    "Elamite Dravidian new cognate extended phonological 2000 2020",
+    "Elamo-Dravidian language family new evidence 2010 2020 2025",
+    "Proto-Dravidian Elamite comparison lexicon new pairs bridge",
+    "Elamite phonology vocabulary update new analysis 2020 2026",
+    "Indus sign phonetic value DEDR Dravidian reading computational",
+    "Indus Harappan phonogram logogram determinative sign function Tamil",
+    "Dravidian loanword Sanskrit Indus sign reading phonetic assignment",
+    "Indus syllabic sign reading Proto-Dravidian phonotactic 2020 2026",
+    "Indus script machine learning deep learning 2024 2025 2026",
+    "computational Indus decipherment artificial intelligence 2024 2025",
+    "Indus script LLM neural network transformer 2024 2025 2026",
+    "Indus sign corpus GitHub open source computational 2024 2025"
+  ],
+  "verdict": "Phase-237 blocker mine: 3640 papers, 81 STRONG. Blocker signals: B1=NEW(31) | B2=HYP(18) | B3=NO_(5) | B4=NO_(2) | B5=HYP(7) | B6=HYP(18)"
+}

@@ -1,0 +1,176 @@
+{
+  "phase": 280,
+  "elapsed_s": 95.4,
+  "total_papers": 2952,
+  "by_category": {
+    "has_sign_list": 113,
+    "has_icit_ref": 56,
+    "has_digital_data": 47,
+    "has_fuls": 0,
+    "has_wells": 0,
+    "has_mahadevan_digital": 0,
+    "has_new_corpus": 6
+  },
+  "top_papers": {
+    "has_sign_list": [
+      {
+        "title": "Modelling the possible archaeological past(s): Agent-based modelling of Harappan seal use and survival",
+        "year": 2026,
+        "doi": "https://doi.org/10.64888/caaproceedings.v51i1.1025",
+        "abstract_snippet": "The Harappan i.e. Indus Valley civilization, flourished in South Asia in the middle of the third millennium BCE. Among the millions of artefacts excavated from hundreds of sites, the most remarkable a"
+      },
+      {
+        "title": "AI-assisted script concordance tests: Enhancing feasibility with customized ChatGPT",
+        "year": 2026,
+        "doi": "10.1080/0142159x.2025.2533405",
+        "abstract_snippet": ""
+      },
+      {
+        "title": "G-401 Clinical Reasoning in Water Disorders: Comparing Novices and Experts Using Script Concordance Test",
+        "year": 2026,
+        "doi": "10.1053/j.ajkd.2026.02.402",
+        "abstract_snippet": ""
+      },
+      {
+        "title": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Valley Script",
+        "year": 2025,
+        "doi": "https://doi.org/10.1145/3768633.3770145",
+        "abstract_snippet": "The Indus Valley script, which dates back to the Bronze Age (2600–1900 BCE), is one of the most important ancient writing systems that has not yet been figured out. The tool employs corpus-based metho"
+      },
+      {
+        "title": "A Computational Analysis of the Indus Script: Identifying Sign Functions in Logo-Syllabic Writing Systems",
+        "year": 2025,
+        "doi": "https://doi.org/10.5120/ijca2025926075",
+        "abstract_snippet": "A key challenge in deciphering any logo-syllabic writing system is to distinguish signs that represent complete lexical units (logograms) from signs that represent syllables.The Indus script is widely"
+      }
+    ],
+    "has_icit_ref": [
+      {
+        "title": "Mental Models in Human-AI Interaction: Systematic Review of Empirical Methodologies and Guidelines",
+        "year": 2026,
+        "doi": "https://doi.org/10.1145/3742413.3789223",
+        "abstract_snippet": "The notion of mental model has long been used in HCI to capture people’s understanding and reasoning about computing systems. Eliciting users’ mental models can explain their behaviors and attitudes t"
+      },
+      {
+        "title": "INFLOW-AI v2.1: A Machine Learning Framework for Predicting Out-of-Sample Extreme Seasonal Flood Extents",
+        "year": 2026,
+        "doi": "https://doi.org/10.5194/egusphere-2026-66",
+        "abstract_snippet": "Abstract. Forecasting flood extent during extreme events remains a critical challenge for hydrological modelling, particularly in data-scarce and highly dynamic floodplain systems. Accurate and timely"
+      },
+      {
+        "title": "A General Bézier Tree Encoding Counterfactual Framework for Retinal-Vessel-Mediated Disease Analysis",
+        "year": 2026,
+        "doi": null,
+        "abstract_snippet": "The geometry of the retinal vessel is a key biomarker of vascular diseases, yet clinical evidence remains primarily observational. Existing generative counterfactuals intervene only at the image-level"
+      },
+      {
+        "title": "Explicitness and Meaning Construction: The Spanish Discourse Marker bueno in Historical Theater Texts",
+        "year": 2026,
+        "doi": "10.1007/s41701-026-00233-9",
+        "abstract_snippet": ""
+      },
+      {
+        "title": "The Policy Spatial Footprint: Causal Identification of Land Value Capitalization Using Network-Time Exposure",
+        "year": 2025,
+        "doi": "https://doi.org/10.3390/land14112240",
+        "abstract_snippet": "Policies rarely act on simple circles around project sites. We develop a policy-semantics-to-geometry workflow that converts clause-level rules in ordinances into auditable Policy Spatial Footprints ("
+      }
+    ],
+    "has_digital_data": [
+      {
+        "title": "Personalized Alignment in the Era of LLMs: A Review of Methodologies, Datasets, Evaluation, and Applications",
+        "year": 2026,
+        "doi": "https://doi.org/10.36227/techrxiv.177083699.99572896/v1",
+        "abstract_snippet": "With the rapid development of Large Language Models (LLMs), there is an increasing demand to adapt their behavior to individual user preferences, values, and contexts. However, the prevailing One-Size"
+      },
+      {
+        "title": "Residual-Corrected Equivalent-Circuit Model with Universal Differential Equations for Robust Battery Voltage Prediction under Operating-Condition Shift",
+        "year": 2026,
+        "doi": null,
+        "abstract_snippet": "Accurate terminal-voltage prediction underpins model-based battery management, yet low-order equivalent-circuit models (\\ecm{}) lack expressiveness under transient conditions, whereas purely data-driv"
+      },
+      {
+        "title": "BhashaSutra: A Task-Centric Unified Survey of Indian NLP Datasets, Corpora, and Resources",
+        "year": 2026,
+        "doi": null,
+        "abstract_snippet": "India's linguistic landscape, spanning 22 scheduled languages and hundreds of marginalized dialects, has driven rapid growth in NLP datasets, benchmarks, and pretrained models. However, no dedicated s"
+      },
+      {
+        "title": "Machine Learning In The Study Of Ancient Civilizations: Transforming Archaeology, Linguistics And Historical Analysis",
+        "year": 2026,
+        "doi": "https://doi.org/10.5281/zenodo.20112845",
+        "abstract_snippet": "The study of ancient civilizations involves analyzing complex, fragmented and heterogeneous datasets, including inscriptions, archaeological remains and genetic evidence. Traditional methods of analys"
+      },
+      {
+        "title": "Missing Evidence in the Study of Ancient Cultures",
+        "year": 2025,
+        "doi": "https://doi.org/10.1515/9783112215692",
+        "abstract_snippet": "Ancient cultures are studied through literary sources and artefacts, both of which are limited and often contradictory. Scholarly traditions often privilege one type of evidence over the other, depend"
+      }
+    ],
+    "has_fuls": [],
+    "has_wells": [],
+    "has_mahadevan_digital": [],
+    "has_new_corpus": [
+      {
+        "title": "CTF Framework -- Manuscript Analysis Series: Volume VII Cypro-Minoan as Mediterranean Cluster NodeThree-Variant 120-Sign Unification, Spatial/Temporal/Astronomical Layer Encoding, and Cyprus as Node 3",
+        "year": 2026,
+        "doi": "https://doi.org/10.5281/zenodo.19074529",
+        "abstract_snippet": "Cypro-Minoan (~1550-1050 BCE), the Bronze Age script of Cyprus, is demonstrated to be the sixth independent technical manual encoding the CTF 144 Hz planetary grid system. Analysis of the complete ~25"
+      },
+      {
+        "title": "Implementing a Database for the Analysis of Ancient Inscriptions: New Developments in the Hesperia Electronic Corpus of Palaeohispanic Inscriptions",
+        "year": 2014,
+        "doi": "10.1484/m.lectio-eb.5.102575",
+        "abstract_snippet": ""
+      },
+      {
+        "title": "\"New Approaches to Old Texts : Cambodian Inscriptions in the Digital Age\". Une conférence internationale organisée par le Corpus des inscriptions khmères, l'APSARA et l'université de Sydney",
+        "year": 2010,
+        "doi": "10.3406/befeo.2010.6143",
+        "abstract_snippet": ""
+      },
+      {
+        "title": "Why the Indus Script Was True Writing and Why a Larger Corpus of Texts Existed in the Indus Valley Civilization: Simple Proof Addressed to Mainstream Researchers &amp;amp; Archaeologists",
+        "year": null,
+        "doi": "10.2139/ssrn.3680428",
+        "abstract_snippet": ""
+      },
+      {
+        "title": "Aigina. The new corpus of Aiginetan inscriptions.",
+        "year": null,
+        "doi": "10.1163/1874-6772_seg_a56_390",
+        "abstract_snippet": ""
+      }
+    ]
+  },
+  "actionable": [
+    {
+      "action": "Check supplementary materials",
+      "detail": "47 papers mention downloadable/digital data. Check DOIs for supplementary files.",
+      "papers": [
+        "Personalized Alignment in the Era of LLMs: A Review of Methodologies, Datasets, ",
+        "Residual-Corrected Equivalent-Circuit Model with Universal Differential Equation",
+        "BhashaSutra: A Task-Centric Unified Survey of Indian NLP Datasets, Corpora, and "
+      ]
+    },
+    {
+      "action": "New corpus leads",
+      "detail": "6 papers mention new/expanded corpora.",
+      "papers": [
+        "CTF Framework -- Manuscript Analysis Series: Volume VII Cypro-Minoan as Mediterr",
+        "Implementing a Database for the Analysis of Ancient Inscriptions: New Developmen",
+        "\"New Approaches to Old Texts : Cambodian Inscriptions in the Digital Age\". Une c"
+      ]
+    },
+    {
+      "action": "Sign list/frequency data",
+      "detail": "113 papers have sign lists or frequency tables.",
+      "papers": [
+        "Modelling the possible archaeological past(s): Agent-based modelling of Harappan",
+        "AI-assisted script concordance tests: Enhancing feasibility with customized Chat",
+        "G-401 Clinical Reasoning in Water Disorders: Comparing Novices and Experts Using"
+      ]
+    }
+  ]
+}

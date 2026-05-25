@@ -1,0 +1,158 @@
+{
+  "phase": 193,
+  "elapsed_s": 28.6,
+  "sa_no_anchors": {
+    "mean_c": 0.2938,
+    "hci": 4
+  },
+  "sa_high_only": {
+    "mean_c": 0.3125,
+    "hci": 6,
+    "delta": 0.0187
+  },
+  "sa_high_medium": {
+    "mean_c": 0.3281,
+    "hci": 5,
+    "delta": 0.0343
+  },
+  "sa_all_anchors": {
+    "mean_c": 0.4625,
+    "hci": 18,
+    "delta": 0.1687
+  },
+  "p192_checks": [
+    {
+      "sign": "M740",
+      "expected": "su",
+      "sa_reading": "min",
+      "sa_cons": 0.4,
+      "agrees": false
+    },
+    {
+      "sign": "M455",
+      "expected": "zi",
+      "sa_reading": "viral",
+      "sa_cons": 0.2,
+      "agrees": false
+    },
+    {
+      "sign": "M868",
+      "expected": "gi",
+      "sa_reading": "atan",
+      "sa_cons": 0.2,
+      "agrees": false
+    },
+    {
+      "sign": "M427",
+      "expected": "en",
+      "sa_reading": "en",
+      "sa_cons": 1.0,
+      "agrees": true
+    },
+    {
+      "sign": "M874",
+      "expected": "ki",
+      "sa_reading": "tarpu",
+      "sa_cons": 0.2,
+      "agrees": false
+    }
+  ],
+  "top_unanchored_by_consistency": [
+    {
+      "sign": "692",
+      "modal": "nal",
+      "consistency": 0.4,
+      "freq": 171
+    },
+    {
+      "sign": "712",
+      "modal": "kal",
+      "consistency": 0.4,
+      "freq": 43
+    },
+    {
+      "sign": "520",
+      "modal": "kol",
+      "consistency": 0.4,
+      "freq": 196
+    },
+    {
+      "sign": "527",
+      "modal": "kuti",
+      "consistency": 0.4,
+      "freq": 60
+    },
+    {
+      "sign": "480",
+      "modal": "toti",
+      "consistency": 0.4,
+      "freq": 48
+    },
+    {
+      "sign": "430",
+      "modal": "venni",
+      "consistency": 0.4,
+      "freq": 50
+    },
+    {
+      "sign": "503",
+      "modal": "kalan",
+      "consistency": 0.4,
+      "freq": 63
+    },
+    {
+      "sign": "920",
+      "modal": "min",
+      "consistency": 0.4,
+      "freq": 76
+    },
+    {
+      "sign": "861",
+      "modal": "nallavar",
+      "consistency": 0.4,
+      "freq": 138
+    },
+    {
+      "sign": "858",
+      "modal": "min",
+      "consistency": 0.4,
+      "freq": 105
+    },
+    {
+      "sign": "748",
+      "modal": "patumai",
+      "consistency": 0.2,
+      "freq": 2
+    },
+    {
+      "sign": "782",
+      "modal": "oli",
+      "consistency": 0.2,
+      "freq": 39
+    },
+    {
+      "sign": "820",
+      "modal": "porul",
+      "consistency": 0.2,
+      "freq": 121
+    },
+    {
+      "sign": "461",
+      "modal": "min",
+      "consistency": 0.2,
+      "freq": 56
+    },
+    {
+      "sign": "526",
+      "modal": "naval",
+      "consistency": 0.2,
+      "freq": 46
+    }
+  ],
+  "aggregate_confidence": 0.503,
+  "anchor_counts": {
+    "high": 5,
+    "high_medium": 14,
+    "all": 31
+  }
+}

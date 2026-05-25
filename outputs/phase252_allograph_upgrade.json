@@ -1,0 +1,833 @@
+{
+  "phase": 252,
+  "generated_at": "2026-05-24T20:08:49.455130",
+  "n_profiles_in_anchors": 39,
+  "n_allograph_pairs_090": 180,
+  "n_allograph_strong_095": 157,
+  "n_clusters": 4,
+  "n_high_upgrades": 56,
+  "upgrade_log": [
+    {
+      "upgraded": "M106",
+      "reading_m": "kur",
+      "allograph_of": "M003",
+      "reading_h": "kalam",
+      "correlation": 0.9995
+    },
+    {
+      "upgraded": "M129",
+      "reading_m": "kur",
+      "allograph_of": "M003",
+      "reading_h": "kalam",
+      "correlation": 0.9713
+    },
+    {
+      "upgraded": "M157",
+      "reading_m": "kur",
+      "allograph_of": "M003",
+      "reading_h": "kalam",
+      "correlation": 0.9217
+    },
+    {
+      "upgraded": "M307",
+      "reading_m": "kur",
+      "allograph_of": "M003",
+      "reading_h": "kalam",
+      "correlation": 0.9561
+    },
+    {
+      "upgraded": "M400",
+      "reading_m": "kur",
+      "allograph_of": "M003",
+      "reading_h": "kalam",
+      "correlation": 0.9396
+    },
+    {
+      "upgraded": "M413",
+      "reading_m": "kur",
+      "allograph_of": "M003",
+      "reading_h": "kalam",
+      "correlation": 0.9671
+    },
+    {
+      "upgraded": "M861",
+      "reading_m": "nallavar",
+      "allograph_of": "M003",
+      "reading_h": "kalam",
+      "correlation": 0.9898
+    },
+    {
+      "upgraded": "M106",
+      "reading_m": "kur",
+      "allograph_of": "M034",
+      "reading_h": "tōḷ",
+      "correlation": 0.98
+    },
+    {
+      "upgraded": "M129",
+      "reading_m": "kur",
+      "allograph_of": "M034",
+      "reading_h": "tōḷ",
+      "correlation": 1.0
+    },
+    {
+      "upgraded": "M861",
+      "reading_m": "nallavar",
+      "allograph_of": "M034",
+      "reading_h": "tōḷ",
+      "correlation": 0.996
+    },
+    {
+      "upgraded": "M090",
+      "reading_m": "aintu",
+      "allograph_of": "M045",
+      "reading_h": "yānai",
+      "correlation": 1.0
+    },
+    {
+      "upgraded": "M157",
+      "reading_m": "kur",
+      "allograph_of": "M045",
+      "reading_h": "yānai",
+      "correlation": 0.9862
+    },
+    {
+      "upgraded": "M169",
+      "reading_m": "rā",
+      "allograph_of": "M045",
+      "reading_h": "yānai",
+      "correlation": 1.0
+    },
+    {
+      "upgraded": "M203",
+      "reading_m": "kur",
+      "allograph_of": "M045",
+      "reading_h": "yānai",
+      "correlation": 0.9982
+    },
+    {
+      "upgraded": "M307",
+      "reading_m": "kur",
+      "allograph_of": "M045",
+      "reading_h": "yānai",
+      "correlation": 0.9646
+    },
+    {
+      "upgraded": "M394",
+      "reading_m": "kur",
+      "allograph_of": "M045",
+      "reading_h": "yānai",
+      "correlation": 1.0
+    },
+    {
+      "upgraded": "M400",
+      "reading_m": "kur",
+      "allograph_of": "M045",
+      "reading_h": "yānai",
+      "correlation": 0.977
+    },
+    {
+      "upgraded": "M413",
+      "reading_m": "kur",
+      "allograph_of": "M045",
+      "reading_h": "yānai",
+      "correlation": 0.9532
+    },
+    {
+      "upgraded": "M740",
+      "reading_m": "su",
+      "allograph_of": "M045",
+      "reading_h": "yānai",
+      "correlation": 0.9996
+    },
+    {
+      "upgraded": "M817",
+      "reading_m": "nallavar",
+      "allograph_of": "M045",
+      "reading_h": "yānai",
+      "correlation": 0.9952
+    },
+    {
+      "upgraded": "M858",
+      "reading_m": "nallavar",
+      "allograph_of": "M045",
+      "reading_h": "yānai",
+      "correlation": 0.9934
+    },
+    {
+      "upgraded": "M874",
+      "reading_m": "ki",
+      "allograph_of": "M045",
+      "reading_h": "yānai",
+      "correlation": 0.9897
+    },
+    {
+      "upgraded": "M106",
+      "reading_m": "kur",
+      "allograph_of": "M176",
+      "reading_h": "an/aṇ",
+      "correlation": 0.9782
+    },
+    {
+      "upgraded": "M129",
+      "reading_m": "kur",
+      "allograph_of": "M176",
+      "reading_h": "an/aṇ",
+      "correlation": 1.0
+    },
+    {
+      "upgraded": "M861",
+      "reading_m": "nallavar",
+      "allograph_of": "M176",
+      "reading_h": "an/aṇ",
+      "correlation": 0.9952
+    },
+    {
+      "upgraded": "M090",
+      "reading_m": "aintu",
+      "allograph_of": "M416",
+      "reading_h": "na",
+      "correlation": 1.0
+    },
+    {
+      "upgraded": "M157",
+      "reading_m": "kur",
+      "allograph_of": "M416",
+      "reading_h": "na",
+      "correlation": 0.9862
+    },
+    {
+      "upgraded": "M169",
+      "reading_m": "rā",
+      "allograph_of": "M416",
+      "reading_h": "na",
+      "correlation": 1.0
+    },
+    {
+      "upgraded": "M203",
+      "reading_m": "kur",
+      "allograph_of": "M416",
+      "reading_h": "na",
+      "correlation": 0.9982
+    },
+    {
+      "upgraded": "M307",
+      "reading_m": "kur",
+      "allograph_of": "M416",
+      "reading_h": "na",
+      "correlation": 0.9646
+    },
+    {
+      "upgraded": "M394",
+      "reading_m": "kur",
+      "allograph_of": "M416",
+      "reading_h": "na",
+      "correlation": 1.0
+    },
+    {
+      "upgraded": "M400",
+      "reading_m": "kur",
+      "allograph_of": "M416",
+      "reading_h": "na",
+      "correlation": 0.977
+    },
+    {
+      "upgraded": "M413",
+      "reading_m": "kur",
+      "allograph_of": "M416",
+      "reading_h": "na",
+      "correlation": 0.9532
+    },
+    {
+      "upgraded": "M740",
+      "reading_m": "su",
+      "allograph_of": "M416",
+      "reading_h": "na",
+      "correlation": 0.9996
+    },
+    {
+      "upgraded": "M817",
+      "reading_m": "nallavar",
+      "allograph_of": "M416",
+      "reading_h": "na",
+      "correlation": 0.9952
+    },
+    {
+      "upgraded": "M858",
+      "reading_m": "nallavar",
+      "allograph_of": "M416",
+      "reading_h": "na",
+      "correlation": 0.9934
+    },
+    {
+      "upgraded": "M874",
+      "reading_m": "ki",
+      "allograph_of": "M416",
+      "reading_h": "na",
+      "correlation": 0.9897
+    },
+    {
+      "upgraded": "M106",
+      "reading_m": "kur",
+      "allograph_of": "M427",
+      "reading_h": "en",
+      "correlation": 0.9926
+    },
+    {
+      "upgraded": "M129",
+      "reading_m": "kur",
+      "allograph_of": "M427",
+      "reading_h": "en",
+      "correlation": 0.9459
+    },
+    {
+      "upgraded": "M157",
+      "reading_m": "kur",
+      "allograph_of": "M427",
+      "reading_h": "en",
+      "correlation": 0.9529
+    },
+    {
+      "upgraded": "M307",
+      "reading_m": "kur",
+      "allograph_of": "M427",
+      "reading_h": "en",
+      "correlation": 0.9786
+    },
+    {
+      "upgraded": "M400",
+      "reading_m": "kur",
+      "allograph_of": "M427",
+      "reading_h": "en",
+      "correlation": 0.9666
+    },
+    {
+      "upgraded": "M413",
+      "reading_m": "kur",
+      "allograph_of": "M427",
+      "reading_h": "en",
+      "correlation": 0.9861
+    },
+    {
+      "upgraded": "M817",
+      "reading_m": "nallavar",
+      "allograph_of": "M427",
+      "reading_h": "en",
+      "correlation": 0.93
+    },
+    {
+      "upgraded": "M858",
+      "reading_m": "nallavar",
+      "allograph_of": "M427",
+      "reading_h": "en",
+      "correlation": 0.9362
+    },
+    {
+      "upgraded": "M861",
+      "reading_m": "nallavar",
+      "allograph_of": "M427",
+      "reading_h": "en",
+      "correlation": 0.973
+    },
+    {
+      "upgraded": "M874",
+      "reading_m": "ki",
+      "allograph_of": "M427",
+      "reading_h": "en",
+      "correlation": 0.9459
+    },
+    {
+      "upgraded": "M138",
+      "reading_m": "kur",
+      "allograph_of": "M035",
+      "reading_h": "po",
+      "correlation": 0.9979
+    },
+    {
+      "upgraded": "M151",
+      "reading_m": "viḷ",
+      "allograph_of": "M035",
+      "reading_h": "po",
+      "correlation": 0.9959
+    },
+    {
+      "upgraded": "M156",
+      "reading_m": "kur",
+      "allograph_of": "M035",
+      "reading_h": "po",
+      "correlation": 0.9951
+    },
+    {
+      "upgraded": "M256",
+      "reading_m": "kur",
+      "allograph_of": "M035",
+      "reading_h": "po",
+      "correlation": 0.9959
+    },
+    {
+      "upgraded": "M387",
+      "reading_m": "kur",
+      "allograph_of": "M035",
+      "reading_h": "po",
+      "correlation": 0.9328
+    },
+    {
+      "upgraded": "M138",
+      "reading_m": "kur",
+      "allograph_of": "M375",
+      "reading_h": "taṇ",
+      "correlation": 0.9878
+    },
+    {
+      "upgraded": "M151",
+      "reading_m": "viḷ",
+      "allograph_of": "M375",
+      "reading_h": "taṇ",
+      "correlation": 1.0
+    },
+    {
+      "upgraded": "M156",
+      "reading_m": "kur",
+      "allograph_of": "M375",
+      "reading_h": "taṇ",
+      "correlation": 0.982
+    },
+    {
+      "upgraded": "M256",
+      "reading_m": "kur",
+      "allograph_of": "M375",
+      "reading_h": "taṇ",
+      "correlation": 1.0
+    }
+  ],
+  "before": {
+    "HIGH": 105,
+    "MEDIUM": 302
+  },
+  "after": {
+    "HIGH": 125,
+    "MEDIUM": 282,
+    "LOW": 0,
+    "HM_total": 407
+  },
+  "top_pairs": [
+    {
+      "s1": "M034",
+      "c1": "HIGH",
+      "r1": "tōḷ",
+      "n1": 80,
+      "s2": "M129",
+      "c2": "MEDIUM",
+      "r2": "kur",
+      "n2": 40,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M034",
+      "c1": "HIGH",
+      "r1": "tōḷ",
+      "n1": 80,
+      "s2": "M176",
+      "c2": "HIGH",
+      "r2": "an/aṇ",
+      "n2": 16,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M045",
+      "c1": "HIGH",
+      "r1": "yānai",
+      "n1": 92,
+      "s2": "M090",
+      "c2": "MEDIUM",
+      "r2": "aintu",
+      "n2": 102,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M045",
+      "c1": "HIGH",
+      "r1": "yānai",
+      "n1": 92,
+      "s2": "M169",
+      "c2": "MEDIUM",
+      "r2": "rā",
+      "n2": 68,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M045",
+      "c1": "HIGH",
+      "r1": "yānai",
+      "n1": 92,
+      "s2": "M394",
+      "c2": "MEDIUM",
+      "r2": "kur",
+      "n2": 47,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M045",
+      "c1": "HIGH",
+      "r1": "yānai",
+      "n1": 92,
+      "s2": "M416",
+      "c2": "HIGH",
+      "r2": "na",
+      "n2": 55,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M090",
+      "c1": "MEDIUM",
+      "r1": "aintu",
+      "n1": 102,
+      "s2": "M169",
+      "c2": "MEDIUM",
+      "r2": "rā",
+      "n2": 68,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M090",
+      "c1": "MEDIUM",
+      "r1": "aintu",
+      "n1": 102,
+      "s2": "M394",
+      "c2": "MEDIUM",
+      "r2": "kur",
+      "n2": 47,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M090",
+      "c1": "MEDIUM",
+      "r1": "aintu",
+      "n1": 102,
+      "s2": "M416",
+      "c2": "HIGH",
+      "r2": "na",
+      "n2": 55,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M129",
+      "c1": "MEDIUM",
+      "r1": "kur",
+      "n1": 40,
+      "s2": "M176",
+      "c2": "HIGH",
+      "r2": "an/aṇ",
+      "n2": 16,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M151",
+      "c1": "MEDIUM",
+      "r1": "viḷ",
+      "n1": 64,
+      "s2": "M256",
+      "c2": "MEDIUM",
+      "r2": "kur",
+      "n2": 73,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M151",
+      "c1": "MEDIUM",
+      "r1": "viḷ",
+      "n1": 64,
+      "s2": "M375",
+      "c2": "HIGH",
+      "r2": "taṇ",
+      "n2": 32,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M151",
+      "c1": "MEDIUM",
+      "r1": "viḷ",
+      "n1": 64,
+      "s2": "M527",
+      "c2": "CANDIDATE",
+      "r2": "valli",
+      "n2": 60,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M169",
+      "c1": "MEDIUM",
+      "r1": "rā",
+      "n1": 68,
+      "s2": "M394",
+      "c2": "MEDIUM",
+      "r2": "kur",
+      "n2": 47,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M169",
+      "c1": "MEDIUM",
+      "r1": "rā",
+      "n1": 68,
+      "s2": "M416",
+      "c2": "HIGH",
+      "r2": "na",
+      "n2": 55,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M203",
+      "c1": "MEDIUM",
+      "r1": "kur",
+      "n1": 85,
+      "s2": "M700",
+      "c2": "CANDIDATE",
+      "r2": "aru/aRu",
+      "n2": 355,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M256",
+      "c1": "MEDIUM",
+      "r1": "kur",
+      "n1": 73,
+      "s2": "M375",
+      "c2": "HIGH",
+      "r2": "taṇ",
+      "n2": 32,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M256",
+      "c1": "MEDIUM",
+      "r1": "kur",
+      "n1": 73,
+      "s2": "M527",
+      "c2": "CANDIDATE",
+      "r2": "valli",
+      "n2": 60,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M375",
+      "c1": "HIGH",
+      "r1": "taṇ",
+      "n1": 32,
+      "s2": "M527",
+      "c2": "CANDIDATE",
+      "r2": "valli",
+      "n2": 60,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M394",
+      "c1": "MEDIUM",
+      "r1": "kur",
+      "n1": 47,
+      "s2": "M416",
+      "c2": "HIGH",
+      "r2": "na",
+      "n2": 55,
+      "corr": 1.0,
+      "strong": true
+    },
+    {
+      "s1": "M817",
+      "c1": "MEDIUM",
+      "r1": "nallavar",
+      "n1": 107,
+      "s2": "M858",
+      "c2": "MEDIUM",
+      "r2": "nallavar",
+      "n2": 105,
+      "corr": 0.9999,
+      "strong": true
+    },
+    {
+      "s1": "M157",
+      "c1": "MEDIUM",
+      "r1": "kur",
+      "n1": 35,
+      "s2": "M874",
+      "c2": "MEDIUM",
+      "r2": "ki",
+      "n2": 219,
+      "corr": 0.9998,
+      "strong": true
+    },
+    {
+      "s1": "M045",
+      "c1": "HIGH",
+      "r1": "yānai",
+      "n1": 92,
+      "s2": "M740",
+      "c2": "MEDIUM",
+      "r2": "su",
+      "n2": 432,
+      "corr": 0.9996,
+      "strong": true
+    },
+    {
+      "s1": "M090",
+      "c1": "MEDIUM",
+      "r1": "aintu",
+      "n1": 102,
+      "s2": "M740",
+      "c2": "MEDIUM",
+      "r2": "su",
+      "n2": 432,
+      "corr": 0.9996,
+      "strong": true
+    },
+    {
+      "s1": "M169",
+      "c1": "MEDIUM",
+      "r1": "rā",
+      "n1": 68,
+      "s2": "M740",
+      "c2": "MEDIUM",
+      "r2": "su",
+      "n2": 432,
+      "corr": 0.9996,
+      "strong": true
+    },
+    {
+      "s1": "M394",
+      "c1": "MEDIUM",
+      "r1": "kur",
+      "n1": 47,
+      "s2": "M740",
+      "c2": "MEDIUM",
+      "r2": "su",
+      "n2": 432,
+      "corr": 0.9996,
+      "strong": true
+    },
+    {
+      "s1": "M416",
+      "c1": "HIGH",
+      "r1": "na",
+      "n1": 55,
+      "s2": "M740",
+      "c2": "MEDIUM",
+      "r2": "su",
+      "n2": 432,
+      "corr": 0.9996,
+      "strong": true
+    },
+    {
+      "s1": "M858",
+      "c1": "MEDIUM",
+      "r1": "nallavar",
+      "n1": 105,
+      "s2": "M874",
+      "c2": "MEDIUM",
+      "r2": "ki",
+      "n2": 219,
+      "corr": 0.9996,
+      "strong": true
+    },
+    {
+      "s1": "M003",
+      "c1": "HIGH",
+      "r1": "kalam",
+      "n1": 124,
+      "s2": "M106",
+      "c2": "MEDIUM",
+      "r2": "kur",
+      "n2": 39,
+      "corr": 0.9995,
+      "strong": true
+    },
+    {
+      "s1": "M700",
+      "c1": "CANDIDATE",
+      "r1": "aru/aRu",
+      "n1": 355,
+      "s2": "M817",
+      "c2": "MEDIUM",
+      "r2": "nallavar",
+      "n2": 107,
+      "corr": 0.9995,
+      "strong": true
+    }
+  ],
+  "clusters": [
+    {
+      "root": "M861",
+      "members": [
+        "M003",
+        "M034",
+        "M045",
+        "M090",
+        "M106",
+        "M129",
+        "M157",
+        "M169",
+        "M176",
+        "M203",
+        "M307",
+        "M394",
+        "M400",
+        "M413",
+        "M416",
+        "M427",
+        "M700",
+        "M740",
+        "M817",
+        "M858",
+        "M861",
+        "M874"
+      ]
+    },
+    {
+      "root": "M387",
+      "members": [
+        "M035",
+        "M138",
+        "M151",
+        "M156",
+        "M256",
+        "M375",
+        "M387",
+        "M527"
+      ]
+    },
+    {
+      "root": "M455",
+      "members": [
+        "M047",
+        "M455",
+        "M712"
+      ]
+    },
+    {
+      "root": "M868",
+      "members": [
+        "M237",
+        "M868"
+      ]
+    }
+  ],
+  "verdict": "Phase-252: 180 allograph pairs (r>=0.90) in anchor corpus. 157 strong (r>=0.95). 4 clusters. 56 HIGH upgrades applied. H: 105 → 125. H+M: 407 → 407/413."
+}

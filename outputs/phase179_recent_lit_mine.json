@@ -1,0 +1,331 @@
+{
+  "phase": 179,
+  "date": "2026-05-22",
+  "description": "Recent literature mine 2021-2026 (arXiv + S2 + CORE + author-targeted)",
+  "n_papers": 50,
+  "n_sign_proposals": 1,
+  "n_adna_evidence": 0,
+  "n_new_data": 0,
+  "n_icit_mentions": 0,
+  "year_distribution": {
+    "2026": 50
+  },
+  "source_breakdown": {
+    "arxiv": 50
+  },
+  "sign_proposals": [
+    {
+      "sign": "M929",
+      "phoneme": "matching",
+      "source": "Reading Task Failure Off the Activations: A Sparse-Feature A",
+      "year": 2026,
+      "context": "idual stream reaches 5-fold ROC AUC = 0.929, matching the top-100 SAE features (0.927); the S"
+    }
+  ],
+  "adna_evidence": [],
+  "new_data_items": [],
+  "icit_items": [],
+  "papers_metadata": [
+    {
+      "title": "Optimal Testing of Reed-Muller Codes with an Online Adversary",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22813v1"
+    },
+    {
+      "title": "On the Parameterized Complexity of Min-Sum-Radii",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22804v1"
+    },
+    {
+      "title": "Another Look at the Weak-Field Limit of Generalized Hybrid Metric-Palatini Gravity",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22801v1"
+    },
+    {
+      "title": "From Arbitrage Removal to Density Extraction: A Model-Free Framework for Short-Dated Options",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22792v1"
+    },
+    {
+      "title": "AI-Driven Multi-Region Provisioning for Cloud Services Using Spot Fleets",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22778v1"
+    },
+    {
+      "title": "DecQ: Detail-Condensing Queries for Enhanced Reconstruction and Generation in Representation Autoencoders",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22777v1"
+    },
+    {
+      "title": "MambaGaze: Bidirectional Mamba with Explicit Missing Data Modeling for Cognitive Load Assessment from Eye-Gaze Tracking Data",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22775v1"
+    },
+    {
+      "title": "CogAdapt: Transferring Clinical ECG Foundation Models to Wearable Cognitive Load Assessment via Lead Adaptation",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22774v1"
+    },
+    {
+      "title": "Adiabatic Quantum Phase Estimation",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22770v1"
+    },
+    {
+      "title": "Synthetic Data Alone is Enough? Rethinking Data Scarcity in Pediatric Rare Disease Recognition",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22767v1"
+    },
+    {
+      "title": "A sharp interaction-degree threshold for simulating QAOA",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22758v1"
+    },
+    {
+      "title": "Quoridor is PSPACE-Hard",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22747v1"
+    },
+    {
+      "title": "Plug-in Losses for Evidential Deep Learning: A Simplified Framework for Uncertainty Estimation that Includes the Softmax Classifier",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22746v1"
+    },
+    {
+      "title": "Quantum circuit design via dynamic Pauli constraints",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22744v1"
+    },
+    {
+      "title": "Ternary Decision Trees with Locally-Adaptive Uncertainty Zones",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22740v1"
+    },
+    {
+      "title": "Proxy-Based Approximation of Shapley and Banzhaf Interactions",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22738v1"
+    },
+    {
+      "title": "Optimization over the intersection of manifolds",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22736v1"
+    },
+    {
+      "title": "N3P: Accelerated Automated Parking via a Learning-Based Naturalistic Three-Stage Scheme",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22722v1"
+    },
+    {
+      "title": "Reading Task Failure Off the Activations: A Sparse-Feature Audit of GPT-2 Small on Indirect Object Identification",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22719v1"
+    },
+    {
+      "title": "Live Music Diffusion Models: Efficient Fine-Tuning and Post-Training of Interactive Diffusion Music Generators",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22717v1"
+    },
+    {
+      "title": "Tokenisation via Convex Relaxations",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22821v1"
+    },
+    {
+      "title": "Integrable Elasticity via Neural Demand Potentials",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22820v1"
+    },
+    {
+      "title": "Vector Policy Optimization: Training for Diversity Improves Test-Time Search",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22817v1"
+    },
+    {
+      "title": "Remember to be Curious: Episodic Context and Persistent Worlds for 3D Exploration",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22814v1"
+    },
+    {
+      "title": "The Matching Principle: A Geometric Theory of Loss Functions for Nuisance-Robust Representation Learning",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22800v1"
+    },
+    {
+      "title": "Finite-Particle Convergence Rates for Conservative and Non-Conservative Drifting Models",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22795v1"
+    },
+    {
+      "title": "MOSS: Self-Evolution through Source-Level Rewriting in Autonomous Agent Systems",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22794v1"
+    },
+    {
+      "title": "LCGuard: Latent Communication Guard for Safe KV Sharing in Multi-Agent Systems",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22786v1"
+    },
+    {
+      "title": "DeltaBox: Scaling Stateful AI Agents with Millisecond-Level Sandbox Checkpoint/Rollback",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22781v1"
+    },
+    {
+      "title": "FAME: Failure-Aware Mixture-of-Experts for Message-Level Log Anomaly Detection",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22779v1"
+    },
+    {
+      "title": "SDPM: Survival Diffusion Probabilistic Model for Continuous-Time Survival Analysis",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22776v1"
+    },
+    {
+      "title": "Deep Reinforcement Learning for Flexible Job Shop Scheduling with Random Job Arrivals",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22773v1"
+    },
+    {
+      "title": "Understanding Data Temporality Impact on Large Language Models Pre-training",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22769v1"
+    },
+    {
+      "title": "Uniform Diffusion Models Revisited: Leave-One-Out Denoiser and Absorbing State Reformulation",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22765v1"
+    },
+    {
+      "title": "Towards a General Intelligence and Interface for Wearable Health Data",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22759v1"
+    },
+    {
+      "title": "Lumberjack: Better Differentially Private Random Forests through Heavy Hitter Detection in Trees",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22756v1"
+    },
+    {
+      "title": "Assessing global drivers of forest transpiration using clustered machine learning models",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22755v1"
+    },
+    {
+      "title": "Which Way Did It Move? Diagnosing and Overcoming Directional Motion Blindness in Video-LLMs",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22823v1"
+    },
+    {
+      "title": "New constraints on physics within and beyond the standard model from the latest CONUS datasets",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22815v1"
+    },
+    {
+      "title": "A very rapidly rotating white dwarf in nova YZ Reticuli",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22802v1"
+    },
+    {
+      "title": "Invariant measures for half-space geometric LPP: classification and the one force--one solution principle",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22787v1"
+    },
+    {
+      "title": "Extreme Optical Field Confinement and Enhancement in a Plasmonic Picopatch within a Nanoparticle-on-Mirror Resonator",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22780v1"
+    },
+    {
+      "title": "Spin Glass Mapping of the Parallel Minority Game",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22764v1"
+    },
+    {
+      "title": "Nuclear Rainbow of Core-Symmetric Systems",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22757v1"
+    },
+    {
+      "title": "Signatures of quantum chaos in phonon-polariton billiards",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22753v1"
+    },
+    {
+      "title": "Complete lattice QCD calculation of $K^{-}\\to \\ell^{-}\\barν_{\\ell}\\ell^{'+}\\ell^{'-}$ form factors",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22742v1"
+    },
+    {
+      "title": "Global existence and stability of solutions for the 2D non-resistive compressible MHD system",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22741v1"
+    },
+    {
+      "title": "Beyond Acoustic Emotion Recognition: Multimodal Pathos Analysis in Political Speech Using LLM-Based and Acoustic Emotion Models",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22732v1"
+    },
+    {
+      "title": "Path-Minimality of $p$-Energy for Connected Graphs",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22730v1"
+    },
+    {
+      "title": "A $\\operatorname{prox}$-Based Semi-Smooth Newton Method for TV-Minimization",
+      "year": 2026,
+      "source": "arxiv",
+      "url": "https://arxiv.org/abs/2605.22728v1"
+    }
+  ],
+  "gpu_device": "cpu"
+}

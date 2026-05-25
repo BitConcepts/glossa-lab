@@ -87,6 +87,39 @@ Foundation Check NEW-G (`GPU CUDA available`) MUST pass. Silent CPU fallback is 
 
 No commit touching anchor or phase data may be pushed with a failing foundation check. This check is the primary regression guard for the decipherment state.
 
+### H25 — Tray launch/stop must use VBS wrappers — no visible shell
+All start and stop operations for the Glossa Lab tray MUST use `wscript.exe //nologo` with the dedicated VBS wrappers in `scripts/`:
+
+- **Launch:** `wscript.exe //nologo scripts\launch-tray.vbs` (fire-and-forget, no wait)
+- **Stop:** `wscript.exe //nologo scripts\stop-tray.vbs` (waits for kill to complete)
+
+Agents MUST NOT start the tray via `shell.cmd tray`, `start_tray.ps1`, `Start-Process`, or any method that spawns a visible cmd, PowerShell, or console window. The `GlossaLab` scheduled task action MUST target `wscript.exe`, never `cmd.exe` or `powershell.exe`.
+
+Violation is an immediate stop condition.
+
+---
+
+### H24 — No personal information or private correspondence in the repository
+This is a public open-source repository. Agents and contributors MUST NOT commit, push, or otherwise add to any tracked file:
+
+- Email addresses of any third party (collaborators, reviewers, institutional contacts)
+- Private email drafts, correspondence threads, or outreach content
+- Personal contact details (phone numbers, physical addresses, institutional office addresses)
+- Conversation logs, chat exports, or academic-platform message exports
+- Any document whose primary content is a communication between named individuals
+
+**Permitted exceptions (own professional contact only):**
+- The author's own professional email (`tpierson@bitconcepts.tech`, `noreply@bitconcepts.tech`) in `CITATION.cff`, User-Agent strings, and the preprint author block is acceptable as it is already public academic attribution.
+
+**Where private correspondence belongs:**
+- Store it in `.correspondence/` at the repo root, which is gitignored and never pushed.
+- The `.correspondence/` directory holds the canonical private context store. AI agents reading this rule must write all correspondence summaries there and never to tracked files.
+
+**Pre-commit enforcement:**
+The pre-commit hook at `.git/hooks/pre-commit` must block staging of files matching `*.eml`, `*_email.md`, `*_email.py`, `send_*_email.py`, and any file in `.correspondence/`. This rule supersedes convenience — no exception for "just a draft" or "it's my own email only."
+
+Violation is an immediate stop condition and requires a history-rewrite (`git filter-repo`) if the content reached a remote.
+
 ### H23 — Mandatory 5-step experiment gate
 Before running ANY new phase script, the following 5 steps are MANDATORY in order:
 1. **Write the script** (`backend/scripts/phaseNN_name.py`)

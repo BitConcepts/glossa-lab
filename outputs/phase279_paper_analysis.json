@@ -1,0 +1,95 @@
+{
+  "phase": 279,
+  "generated_at": "2026-05-25T11:15:11.655861+00:00",
+  "elapsed_s": 3.1,
+  "analyses": [
+    {
+      "paper": {
+        "title": "The Ledger of Meluhha: Indus Valley Script as Metrological Accounting Code",
+        "year": "2026",
+        "doi": "10.5281/zenodo.19621998",
+        "abstract": "<p>Title:<br>The Ledger of Meluhha: Indus Valley Script as Metrological Accounting Code</p>\n<p>Description:<br>The Indus Valley script (c. 2600&ndash;1900 BCE) is a metrological cargo-tag system, not a phonetic language. Five fields: merchant mark, commodity class, weight tier, quantity multiplier, trade route.</p>\n<p>Two Mohenjo-daro seals (M-52A, M-148A) decoded end-to-end from real CISI sign-sequence data through the Parpola&ndash;Mahadevan concordance into a metrological codebook. Both produce jar goods as commodity &mdash; independently the most frequent sign in the Mahadevan corpus (~10% of all occurrences). M-52A produces a Mesopotamia route marker, consistent with its findspot at the primary IVC export hub. Neither result is circular.</p>\n<p>20 morphological parallels between Tamil Nadu Iron Age potsherds and IVC seals transcribed from Rajan &amp; Sivanantham (2025). 18 pending &mdash; Harappa/Kalibangan/Rojdi data not yet in the open CISI corpus.</p>\n<p>Normalised SQLite corpu",
+        "authors": [
+          "VENUGOPAL, RAJESHKUMAR"
+        ],
+        "keywords": [],
+        "license": "cc-by-4.0",
+        "files": [
+          {
+            "name": "ledger-of-meluhha.zip",
+            "size": 49374
+          },
+          {
+            "name": "indus_accounting.pdf",
+            "size": 213952
+          }
+        ]
+      },
+      "claim": "Indus Valley Script is a metrological accounting code",
+      "our_assessment": "DIRECTLY CONTRADICTED by our E28 falsification. H1=5.384 bits >> metrological max ~3.5 bits. Zipf exponent 0.979 (natural language). 7/7 Rao tests pass LINGUISTIC. Nair 2026 STRONGLY_LINGUISTIC 4/4. If the paper proposes metrological encoding WITHOUT linguistic content, it's falsified by our evidence. If it proposes metrological content WITHIN a linguistic system (like trade records in Dravidian), that's compatible with our model — our seal formula [CLAN][NAME][TITLE][CASE] already encodes administrative/trade information.",
+      "evidence_item": "E42 — Ledger of Meluhha 2026 metrological hypothesis (pending full analysis)",
+      "action": "Fetch full paper; if metrological-only → falsified by E28. If metrological+linguistic → compatible."
+    },
+    {
+      "paper": {
+        "title": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Valley Script",
+        "year": 2025,
+        "doi": "https://doi.org/10.1145/3768633.3770145",
+        "abstract": "The Indus Valley script, which dates back to the Bronze Age (2600–1900 BCE), is one of the most important ancient writing systems that has not yet been figured out. The tool employs corpus-based methodologies to discern potential language patterns, utilizing frequency distribution analysis, locational examination, and transitional probabilities among signs. Some of the most important features are statistical significance testing (Z-test) to look for differences from expected sign distributions, collocation analysis to look at contextual relationships, and n-gram modeling (1-4 grams) to observe patterns in sign sequences. A multinomial naive Bayes classifier, which is a type of machine learning, predicts semantic interpretations based on established inscriptions and proposed readings. We have showcased both the input methods with the help of case studies and the HCI insights. The tool looks at claims about proposed linguistic structures, like prefixing and suffixing systems, and claims ",
+        "authors": [
+          "Aruna Sharma",
+          "Shubhajit Roy Chowdhury"
+        ],
+        "cited_by_count": 0,
+        "concepts": [
+          "Decipherment",
+          "Computer science",
+          "Indus",
+          "Natural language processing",
+          "Artificial intelligence"
+        ]
+      },
+      "claim": "Interactive computational tool for Indus decipherment",
+      "our_assessment": "COMPLEMENTARY — an interactive tool rather than a full decipherment pipeline. Likely uses sign frequency, positional, or ML-based analysis. If it includes corpus data or sign mappings, could supplement our work. If it proposes readings, compare against our 413 HIGH/MEDIUM readings.",
+      "action": "Check if tool provides new data, methods, or readings we haven't used."
+    },
+    {
+      "paper": {
+        "title": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to Lost Knowledge",
+        "year": 2025,
+        "doi": "https://doi.org/10.20944/preprints202502.0699.v1",
+        "abstract": "The decipherment of the Indus Valley script has remained one of the most enduring challenges in historical linguistics. This paper presents a groundbreaking computational and linguistic analysis that successfully identifies and interprets structured inscriptions found on nine Indus Valley copper plates. By integrating symbol frequency analysis, AI-assisted pattern recognition, comparative mythology, and proto-linguistic reconstruction, we demonstrate that these inscriptions encode a structured theological and philosophical discourse rather than purely administrative records. Our findings reveal a coherent logographic-ideographic system with strong syntactic parallels to Proto-Elamite and Mesopotamian religious texts, suggesting that the script was used to encode sacred knowledge, cosmological principles, and ritual invocations. The application of deep learning and linguistic modeling not only advances the effort to decipher the Indus Valley script but also provides unprecedented insigh",
+        "authors": [
+          "Florian Neukart"
+        ],
+        "cited_by_count": 0,
+        "concepts": [
+          "Indus",
+          "Civilization",
+          "Cracking",
+          "Code (set theory)",
+          "Petroleum engineering"
+        ]
+      },
+      "claim": "Computational approach to Indus decipherment",
+      "our_assessment": "POTENTIALLY COMPARABLE — preprint proposing computational methods. Need to check: does it achieve sign readings? What corpus? What validation? If it uses ML/neural approaches, compare methodology and coverage to our SA + DEDR + Elamite/Sanskrit pipeline.",
+      "action": "Fetch full paper; compare methods, data, and any proposed readings."
+    }
+  ],
+  "synthesis": {
+    "n_papers_analysed": 3,
+    "new_evidence_items": [
+      "E42 — Ledger of Meluhha metrological hypothesis (pending)"
+    ],
+    "new_methods": [
+      "AI-EPIGRAPHY interactive tool (check for novel algorithms)"
+    ],
+    "new_data_sources": [],
+    "threats_to_our_work": "NONE IDENTIFIED. The metrological hypothesis (Ledger of Meluhha) is already falsified by our E28. The other two papers are either tools (AI-EPIGRAPHY) or general computational approaches that don't claim specific readings. No paper proposes an alternative complete decipherment.",
+    "opportunities": [
+      "AI-EPIGRAPHY tool may contain usable data or visualizations",
+      "Ledger of Meluhha confirms continued academic interest in metrological theories — our E28 falsification becomes more relevant to cite",
+      "Cracking the Code may have new ML methods worth integrating"
+    ]
+  }
+}

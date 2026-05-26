@@ -2,7 +2,7 @@
 
 **Paper**: *A Complete Computational Decipherment Hypothesis for the Indus Script*
 **Author**: Tristen Kyle Pierson, BitConcepts LLC
-**DOI**: 10.5281/zenodo.20381178
+**DOI**: 10.5281/zenodo.20401711
 
 ---
 

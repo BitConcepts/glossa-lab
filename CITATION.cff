@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software or the research outputs in this repository, please cite both the preprint and the software as below."
 type: software
 title: "Glossa-Lab: AI-Assisted Computational Linguistics Research Platform"
-version: "1.0.0"
+version: "2.0.0"
 date-released: "2026-05-21"
 license: MIT
 repository-code: "https://github.com/BitConcepts/glossa-lab"
@@ -32,11 +32,11 @@ references:
   - type: article
     title: >
       A Falsifiable Computational Decipherment Hypothesis for the Indus Valley Script:
-      161 Candidate Proto-Dravidian Anchors and a Three-Slot Positional Grammar
+      605 Proto-Dravidian Sign Readings Validated Across Two Independent Corpora
     authors:
       - family-names: Pierson
         given-names: Tristen Kyle
         affiliation: "BitConcepts LLC"
     year: 2026
-    notes: "Preprint v1 — Not peer-reviewed"
+    notes: "Preprint v2 — Not peer-reviewed"
     url: "https://github.com/BitConcepts/glossa-lab/tree/main/research/indus"

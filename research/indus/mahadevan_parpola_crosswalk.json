@@ -13,7 +13,7 @@
     "compiled_by": "Glossa-Lab Phase-28; hand-curated subset."
   },
   "_doc": "Mahadevan 1977 (M77) sign-list <-> Parpola 1994b (P) sign-list crosswalk for the most-cited and most-relevant signs. Source: Mahadevan 1977 Appendix III (sign list comparisons); Parpola 1994a fig. 5.1 + Parpola 1994b. Wells 2015 also cross-references in his sign list. NOTE: this is a curated subset; complete crosswalks for all ~400 signs require Mahadevan 1977 in print form.",
-  "method_note": "Each entry maps M77 ID -> Parpola ID and includes any additional cross-references (Wells, Yajnadevam where known). Entries marked 'allograph_of' indicate this M77 sign is an allograph of another sign in Parpola's standard family.",
+  "method_note": "Each entry maps M77 ID -> Parpola ID and includes any additional cross-references (Wells, ICIT (Fuls; accessed via Yajnadevam lipi) where known). Entries marked 'allograph_of' indicate this M77 sign is an allograph of another sign in Parpola's standard family.",
   "version": "Phase-28 v1, hand-curated from Parpola 2010 + Mahadevan 1977 secondary references",
   "crosswalk": {
     "M001": {"parpola_id": "1", "wells_id": "W001", "iconic": "man with raised arm", "phoneme": "aaL/vir"},

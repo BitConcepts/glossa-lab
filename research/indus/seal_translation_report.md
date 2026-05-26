@@ -34,7 +34,7 @@ This report presents the first mass translation of Indus Valley seal inscription
 | Metric | Value |
 |---|---|
 | Total inscriptions translated | 7,138 |
-| Corpora | Holdat (1,669 seals) + Yajnadevam (5,469 inscriptions) |
+| Corpora | Holdat (1,669 seals) + ICIT/Yajnadevam (5,469 inscriptions) |
 | Mean sign coverage | 87.9% |
 | Fully translated (100% coverage) | 5,372 (75.3%) |
 | Archaeological sites represented | 77 |
@@ -124,7 +124,7 @@ The same formulaic patterns persist across all periods, suggesting remarkable sc
 
 ## Proto-Dravidian vs Sanskrit: Side-by-Side
 
-The translation corpus includes 3,731 inscriptions where both our Proto-Dravidian reading and Yajnadevam's Sanskrit reading are available. As reported in the preprint, agreement is 0/34 for directly comparable signs — the two hypotheses produce completely different readings for the same inscriptions.
+The translation corpus includes 3,731 inscriptions where both our Proto-Dravidian reading and ICIT/Yajnadevam's Sanskrit reading are available. As reported in the preprint, agreement is 0/34 for directly comparable signs — the two hypotheses produce completely different readings for the same inscriptions.
 
 This is not merely a disagreement about phonetic values — the entire semantic framework differs. Our readings produce guild titles and professional identifiers; the Sanskrit hypothesis produces religious invocations and deity names. The archaeological context (commercial seals, administrative tablets, port-city trade goods) strongly favors the guild-identity interpretation.
 
@@ -132,7 +132,7 @@ This is not merely a disagreement about phonetic values — the entire semantic 
 
 ## Limitations
 
-1. **Coverage gap.** 12.1% of sign tokens remain untranslated (66 Yajnadevam glyph IDs with no Mahadevan equivalent).
+1. **Coverage gap.** 12.1% of sign tokens remain untranslated (66 ICIT/Yajnadevam glyph IDs with no Mahadevan equivalent).
 2. **No confirmed translations.** All readings are computational proposals. The 605-sign anchor table has not been independently validated by epigraphists.
 3. **Single-hypothesis.** All readings assume Proto-Dravidian. A formal comparison against Proto-Munda readings would strengthen or weaken this interpretation.
 4. **No bilingual text.** Until a bilingual inscription is found, all translations remain probabilistic.

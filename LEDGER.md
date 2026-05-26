@@ -1325,3 +1325,23 @@ Publication status:
 - Academia.edu: live — needs v2 PDF update
 - ResearchGate: account approved — can now upload preprint
 - SSRN: submission pending review (ID 6827038)
+
+## [2026-05-26] Entry - Publication status update + Parpola note
+
+Publication status (all v2):
+- Zenodo: LIVE - DOI 10.5281/zenodo.20401711
+- Academia.edu: LIVE - PDF + abstract updated
+- ResearchGate: LIVE - https://www.researchgate.net/publication/405297740
+- SSRN: PENDING (submission ID 6827038, not yet live)
+
+Note on Professor Parpola:
+- Professor Asko Parpola is ill with cancer. Do NOT contact him again.
+- If this work succeeds: plan a meaningful recognition in his name
+  (donation of a substantial portion of any reward, named acknowledgment,
+  or other tribute). His foundational Dravidian decipherment framework
+  made this work possible.
+
+Next steps:
+- Seek Dravidianist / Old Tamil expert reviewers (review packet ready in docs/expert_review/)
+- Continue implementing changes from Sproat and Fuls feedback
+- SSRN update when it goes live

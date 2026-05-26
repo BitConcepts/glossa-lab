@@ -2716,6 +2716,17 @@ try:
 except Exception as _p235236_exc:  # noqa: BLE001
     logger.warning("Phase-235-236 nodes not registered: %s", _p235236_exc)
 
+# ── Phase-237-246 nodes (blocker mine, batch upgrades, synthesis, E41 DEDR, SA crossing)
+try:
+    from glossa_lab.experiment_graph_phase237_246 import (
+        _phase237_246_node_defs as _p237246_defs,
+    )
+    for _d in _p237246_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-237-246 nodes", len(_p237246_defs()))
+except Exception as _p237246_exc:
+    logger.warning("Phase-237-246 nodes not registered: %s", _p237246_exc)
+
 # ── Phase-248-254 nodes (ceiling-breaker mine, allograph experiments, CISI allograph, semantic constraint)
 try:
     from glossa_lab.experiment_graph_phase248_253 import (
@@ -2737,6 +2748,17 @@ try:
     logger.info("Registered %d Phase-257-294 nodes", len(_p257294_defs()))
 except Exception as _p257294_exc:  # noqa: BLE001
     logger.warning("Phase-257-294 nodes not registered: %s", _p257294_exc)
+
+# ── Phase-295-297 nodes (bulk mine May 2026, mine cross-reference, gap analysis)
+try:
+    from glossa_lab.experiment_graph_phase295_297 import (
+        _phase295_297_node_defs as _p295297_defs,
+    )
+    for _d in _p295297_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-295-297 nodes", len(_p295297_defs()))
+except Exception as _p295297_exc:
+    logger.warning("Phase-295-297 nodes not registered: %s", _p295297_exc)
 
 # ── Graph execution
 

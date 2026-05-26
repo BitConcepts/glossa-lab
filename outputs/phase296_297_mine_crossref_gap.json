@@ -1,0 +1,560 @@
+{
+  "phase296": {
+    "total_strong": 92,
+    "confirmations": 6,
+    "contradictions": 9,
+    "methodological": 16,
+    "novel_evidence": 32,
+    "irrelevant_false_positives": 29,
+    "confirmation_papers": [
+      {
+        "title": "Proto-Dravidian as the Spoken Language of the Mature Harappan Civilization: A Five-Domain Convergence Analysis",
+        "authors": "Juan Gabriel Molina",
+        "year": 2026,
+        "type": "Dravidian confirmation"
+      },
+      {
+        "title": "Rice in Dravidian",
+        "authors": "F. Southworth",
+        "year": 2011,
+        "type": "Dravidian confirmation"
+      },
+      {
+        "title": "Asko Parpola and others: Decipherment of the Proto-Dravidian inscriptions of the Indus civilization: a first announcement.—Progress in the decipherment of the Proto-Dravidian Indus script.—Further progress in the Indus script decipherment. [All three by] <i>Asko Parpola, Seppo Koskenniemi, Simo Parpola and Pentti Aalto</i>. (Scandinavian Institute of Asian Studies. Special Publications, Nos. 1–3.) 72 pp.; 47 pp.; [i], 46 pp. Copenhagen: Scandinavian Institute of Asian Studies, 1969, 1969,1970.",
+        "authors": "J. R. Marr",
+        "year": 1971,
+        "type": "Dravidian confirmation"
+      },
+      {
+        "title": "Asko Pabpola, Seppo Koskenniemi, Simo Parpola, Pentti Aalto, Decipherment of the Proto-Dravidian, Inscriptions of the lndus Civilization. A First Announcement.",
+        "authors": "Werner Thomas",
+        "year": 1971,
+        "type": "Dravidian confirmation"
+      },
+      {
+        "title": "Decipherment of the proto-Dravidian inscriptions of the Indus civilization. A First Announcement. Progress in the decipherment of the proto-Dravidian Indus script. By Asko Parpola and others. (The Scandinavian Institute of Asian Studies Special Publications Nos. 1 and 2.) pp. 72 and 47. Copenhagen, 1969.",
+        "authors": "William C. Brice",
+        "year": 1970,
+        "type": "Dravidian confirmation"
+      },
+      {
+        "title": "<b>Predvariteťnoe soobščenie ob issledovanii proto-indijskix tekstov.</b>\n                    [Preliminary report on the investigation of the Proto-Indian script.] By Yu. V. Knorozov et al. Moskva: Institut Etnografii AN SSSR, 1965. Pp. 74. -\n                    <b>Proto-Indica: 1968.</b>\n                    Brief report on the investigation of the Proto-Indian texts. By Yu. V. Knorozov et al. Moscow: Academy of Sciences of the USSR, Institute of Ethnography, 1968. Pp. 55. -\n                    <b>Decipherment of the Proto-Dravidian inscriptions of the Indus Civilization.</b>\n                    By Asko Parpola, Seppo Koskenniemi, Simo Parpola, and Pentti Aalto. (Scandinavian Institute of Asian Studies, special publications, 1.) Copenhagen, 1969. Pp. 72. -\n                    <b>Progress in the decipherment of the Proto-Dravidian Indus script.</b>\n                    By Asko Parpola, Seppo Koskenniemi, Simo Parpola, and Pentti Aalto. (Scandinavian Institute of Asian Studies, special publications, 2.) Copenhagen, 1969. Pp. 47. -\n                    <b>Further progress in the Indus script decipherment.</b>\n                    By Asko Parpola, Seppo Koskenniemi, Simo Parpola, and Pentti Aalto. (Scandinavian Institute of Asian Studies, special publications, 3.) Copenhagen, 1970. Pp. 46.",
+        "authors": "Arlene R. K. Zide, Kamil V. Zvelebil",
+        "year": 1970,
+        "type": "Dravidian confirmation"
+      }
+    ],
+    "contradiction_papers": [
+      {
+        "title": "The Ledger of Meluhha: Indus Valley Script as Metrological Accounting Code",
+        "authors": "RAJESHKUMAR VENUGOPAL",
+        "year": 2026,
+        "type": "competing hypothesis"
+      },
+      {
+        "title": "Sanskrit Influence on the Indus Script",
+        "authors": "Jeyakumar Ramasami",
+        "year": 2025,
+        "type": "competing hypothesis"
+      },
+      {
+        "title": "The Influence of Egyptian Hieroglyphics on the Indus Script",
+        "authors": "Jeyakumar Ramasami",
+        "year": 2025,
+        "type": "competing hypothesis"
+      },
+      {
+        "title": "Deciphering the Indus Script by Applying the Concept of Egyptian Hieroglyphics to the Depiction of Indus Signs",
+        "authors": "Milind Raskar",
+        "year": 2025,
+        "type": "competing hypothesis"
+      },
+      {
+        "title": "THE INDUS SCRIPT Recognition as an alphabet",
+        "authors": "Mahaveer H Muhammad Abro",
+        "year": 2025,
+        "type": "competing hypothesis"
+      },
+      {
+        "title": "THE INDUS SCRIPT AS AN ALPHABET",
+        "authors": "Mahaveer H Muhammad",
+        "year": 2024,
+        "type": "competing hypothesis"
+      },
+      {
+        "title": "THE INDUS SCRIPT: Recognition as an Alphabet",
+        "authors": "Mahaveer H Muhammad",
+        "year": 2024,
+        "type": "competing hypothesis"
+      },
+      {
+        "title": "THE INDUS ELEPHANT SEALS The Royal Terminology of The Indus Valley Civilization",
+        "authors": "Mahaveer H Muhammad",
+        "year": 2024,
+        "type": "competing hypothesis"
+      },
+      {
+        "title": "The Alphabet of Sindhu Prakrit (The decipherment of the Indus Script)",
+        "authors": "Mahaveer H Muhammad",
+        "year": 2022,
+        "type": "competing hypothesis"
+      }
+    ],
+    "methodological_papers": [
+      {
+        "title": "Olmec/Isthmian Script as Mesoamerican Grid Node Long Count Calendar 144-Harmonic Encoding (7,200 = 144×50), Trans-Atlantic Relay Node 49, and 2012-2027 Cycle Projection",
+        "authors": "Griff gurwell",
+        "year": 2026,
+        "type": "methodological"
+      },
+      {
+        "title": "Crossing the Indus Threshold \n&lt;div&gt;\n A Falsifiable, Corpus-Wide Functional Decipherment of the Indus Script\n&lt;/div&gt;",
+        "authors": "Kevin Shaw",
+        "year": 2026,
+        "type": "methodological"
+      },
+      {
+        "title": "A Structural-Semiotic Analysis of the Comb Sign M176 in the Indus Script as a Referent Category Classifier - A Hypothesis",
+        "authors": "Inderjeet Singh",
+        "year": 2026,
+        "type": "methodological"
+      },
+      {
+        "title": "Indus Script Falsifiability Ledger (V2–V3 Integrated): A Collaboration-Ready Two-Rater Framework",
+        "authors": "Michael Grasa",
+        "year": 2025,
+        "type": "methodological"
+      },
+      {
+        "title": "The Falsifiability Sheet (V4): A Collaboration-Ready Claim Ledger for Indus Script Research",
+        "authors": "Michael Grasa",
+        "year": 2025,
+        "type": "methodological"
+      },
+      {
+        "title": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Valley Script",
+        "authors": "Aruna Sharma, Shubhajit Roy Chowdhury",
+        "year": 2025,
+        "type": "methodological"
+      },
+      {
+        "title": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to Lost Knowledge",
+        "authors": "Florian Neukart",
+        "year": 2025,
+        "type": "methodological"
+      },
+      {
+        "title": "About the Signs and Symbols… Tracing Europe’s Earliest Script: A 150-Year Quest and Gheorghe Lazarovici’s Intellectual Journey",
+        "authors": "Marco Merlini",
+        "year": 2025,
+        "type": "methodological"
+      },
+      {
+        "title": "A Computational Analysis of the Indus Script: Identifying Sign Functions in Logo-Syllabic Writing Systems",
+        "authors": "Ruhan Khanna, Louie Lee Merriam",
+        "year": 2025,
+        "type": "methodological"
+      },
+      {
+        "title": "An Intelligent Bidirectional Transliteration System for Ancient Tamil-Brahmi and Modern Tamil using a Rule-Based Unicode Model",
+        "authors": "VIJAY V, JAYAKUMAR C",
+        "year": 2025,
+        "type": "methodological"
+      },
+      {
+        "title": "A Survey of Modular OCR Approaches for Tamil-Brahmi Inscriptions: Segmentation and Reconstruction Focus",
+        "authors": "K Saranya, S R Nitthin Kumar, R Praveen Kumar, S Arun Nivesh",
+        "year": 2025,
+        "type": "methodological"
+      },
+      {
+        "title": "Deciphering the Indus Script: Decoding Missing and Unclear Indus signs and Identifying Anomalous Indus texts from West Asia using Markov Chain Language Models",
+        "authors": "Varun Venkatesh, Ali Farghaly",
+        "year": 2023,
+        "type": "methodological"
+      },
+      {
+        "title": "Identifying Anomalous Indus Texts from West Asia Using Markov Chain Language Model",
+        "authors": "Varun Venkatesh, Ali Farghaly",
+        "year": 2023,
+        "type": "methodological"
+      },
+      {
+        "title": "Identifying Anomalous Indus Texts from West Asia Using Markov Chain Language Models",
+        "authors": "Varun Venkatesh, Ali Farghaly",
+        "year": 2023,
+        "type": "methodological"
+      },
+      {
+        "title": "Deep Learning the Indus Script",
+        "authors": "Satish Palaniappan, Ronojoy Adhikari",
+        "year": 2017,
+        "type": "methodological"
+      },
+      {
+        "title": "Study of Indus Valley Scripts through Linguistic and Markov Chain Methods",
+        "authors": "Niladri Sarkar",
+        "year": 2016,
+        "type": "methodological"
+      }
+    ],
+    "novel_papers": [
+      {
+        "title": "Maternal Genetic Ancestry of Gujarat: A Pleistocene Passage to India",
+        "authors": "Shailesh Desai, Mohammed H. M. Alqaisi, Prajjval Pratap Singh, P S Pandey, Rudra Kumar Pandey",
+        "year": 2025,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Genetic Deep Dive: Testing Harappan Flight and Return Hypothesis",
+        "authors": "Saarinen, Joonas",
+        "year": 2025,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Introducing Indus Keyboard - A first of its kind interactive tool to visualize the Indus Script in Devanagari and Brahmi",
+        "authors": "Ram G Athreya, Yajna Devam",
+        "year": 2025,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Deciphering the Indus Script",
+        "authors": "Milind Raskar",
+        "year": 2025,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "A Retrospective Study of the Indus Script Linguistics: A Scientific Approach to Deciphering the Ancient Text",
+        "authors": " , Rishabh Bhargava",
+        "year": 2025,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Indus Script’s Gemstone and Precious Shiny Commodity Related Fish-Signs, and Indus Gemstone-Word “Maṇi”: Ancestral Dravidian Symbolism in Indus Logograms and Language(s)?",
+        "authors": "Bahata A. Mukhopadhyay",
+        "year": 2025,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Asymmetric Vessel Signs in the Indus Script symbolizing copper smelting crucibles, signifying copper and bronze related meanings — epigraphic, archaeological, and linguistic evidence",
+        "authors": "Bahata Ansumali Mukhopadhyay",
+        "year": 2025,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Mathematical Modeling of Archaeological Artefacts from Keezhadi Excavation, Tamil Nadu, South India",
+        "authors": " , K. Kaliraj, K. Jeganathan,  , M. Manjula",
+        "year": 2025,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Can the semasiographic/logographic Indus script answer the Dravidian question? Insights from Indus script’s gemstone related fish-signs, and Indus gemstone-word “maṇi”",
+        "authors": "Bahata Ansumali Mukhopadhyay",
+        "year": 2023,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Can the Semasiographic/logographic Indus Script Answer the Dravidian Question? Insights from Indus Script's Gemstone Related Fish-Signs, and Indus Gemstone-Word 'maṇi'",
+        "authors": "Bahata A. Mukhopadhyay",
+        "year": 2023,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Gold   and ‘ratti’   signs inscribed on Mohenjo-Daro’s gold-assaying needles, fish-sign inscriptions signifying gemstones concentrated near lapidaries: Indus script’s taxed commodities",
+        "authors": "Bahata Ansumali Mukhopadhyay",
+        "year": 2022,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Ancestral Dravidian Languages in Indus Civilization: Ultraconserved Dravidian Tooth-word Reveals Deep Linguistic Ancestry and Supports Genetics",
+        "authors": "Bahata Ansumali Mukhopadhyay",
+        "year": 2021,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Metal-smithy, Bead-making, Gemstones, Jeweller’s Weight, Trade-permits, Tax-stamps: Indus Script’s Semasiography Partly Decoded",
+        "authors": "Bahata Ansumali Mukhopadhyay",
+        "year": 2021,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Metal-smithy, Bead-making, Jeweler’s weight, Trade-permit, Tax-stamp: Indus Script’s Semasiography Partly Decoded",
+        "authors": "Bahata A. Mukhopadhyay",
+        "year": 2021,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Initial Decipherment  of Indus  script",
+        "authors": "Ramkumar Unnipillai Santhakumari",
+        "year": 2020,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Decipherment of the Indus script",
+        "authors": "Ramkumar Unnipillai Santhakumari",
+        "year": 2020,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Archaeological Excavations in Tamil Nadu with Special Reference to Keezhadi - A Review",
+        "authors": "T Ramaswamy",
+        "year": 2020,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Indus script Decipherment",
+        "authors": "Ramkumar Unnipillai Santhakumari",
+        "year": 2019,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "The Indus Script and Economics. A Role for Indus Seals and Tablets in Rationing and Administration of Labor",
+        "authors": "Rajesh P. N. Rao",
+        "year": 2018,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "30 South Asia: Dravidian linguistic history",
+        "authors": "Franklin C. Southworth, David W. McAlpin",
+        "year": 2013,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Indus script corpora, archaeo-metallurgy and Meluhha (Mleccha)",
+        "authors": "Srinivasan Kalyanaraman",
+        "year": 2012,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Sealed for eternity? Review of ‘Unsealing the Indus Script. Anatomy of its Decipherment’ Malati J. Shendge.",
+        "authors": "Florian Coulmas",
+        "year": 2010,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Statistical analysis of the Indus script using n-grams.",
+        "authors": "Yadav N, Joglekar H, Rao RP, Vahia MN, Adhikari R, Mahadevan I.",
+        "year": 2010,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "A Markov model of the Indus script",
+        "authors": "Rajesh P. N. Rao, Nisha Yadav, Mayank N. Vahia, Hrishikesh Joglekar, R. Adhikari",
+        "year": 2009,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Statistical analysis of the Indus script using $n$-grams",
+        "authors": "Nisha Yadav, Hrishikesh Joglekar, Rajesh P. N. Rao, M. N. Vahia, Iravatham Mahadevan",
+        "year": 2009,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "The Indus Valley Civilization: Dravidians to Aryans",
+        "authors": "",
+        "year": 2008,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "How Not To Decipher the Indus Valley Inscriptions",
+        "authors": "William Bright",
+        "year": 1990,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Proto-Elamo-Dravidian: The Evidence and Its Implications",
+        "authors": "David W. McAlpin",
+        "year": 1981,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Astronomy in the Indus Valley Civilization: A Survey of the Problems and Possibilities of the Ancient Indian Astronomy and Cosmology in the Light of Indus Script Decipherment by the Finnish Scholars",
+        "authors": "Syed Mohammad Ashfaque",
+        "year": 1977,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Toward Proto-Elamo-Dravidian",
+        "authors": "David W. McAlpin",
+        "year": 1974,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Indus Script Decipherment–a Footnote",
+        "authors": "",
+        "year": 1970,
+        "type": "supporting evidence"
+      },
+      {
+        "title": "Dravidian and the Decipherment of the Indus Script",
+        "authors": "T. Burrow",
+        "year": 1969,
+        "type": "supporting evidence"
+      }
+    ]
+  },
+  "phase297": {
+    "total_signs": 605,
+    "confidence_distribution": {
+      "HIGH": 605
+    },
+    "independently_confirmed": 584,
+    "allograph_inferred": 21,
+    "allograph_pct": 3.5,
+    "evidence_sources": {
+      "dedr_entries": 496,
+      "iconographic": 18,
+      "sa_validated": 501,
+      "elamite_cognate": 233,
+      "allograph": 21
+    },
+    "upgrade_phase_distribution": {
+      "Phase 250-299": 500
+    },
+    "duplicate_readings": {
+      "kōṉ": 3,
+      "yānai": 2,
+      "kaḷiṟu": 2,
+      "puli": 2,
+      "nal": 4,
+      "nēr": 2,
+      "kō": 7,
+      "kai": 2,
+      "kuṉ": 2,
+      "kēḷ": 2,
+      "tiru": 2,
+      "mā": 3,
+      "tōḷ": 2,
+      "māṟ": 2,
+      "pōr": 6,
+      "cōḻ": 2,
+      "pu": 2,
+      "mi": 2,
+      "mu": 9,
+      "kaL": 2,
+      "ma": 4,
+      "kaṇ": 7,
+      "pa": 9,
+      "vē": 10,
+      "kol": 8,
+      "muḷ": 2,
+      "kur": 225,
+      "maṇ": 2,
+      "vēḷ": 4,
+      "vāṉ": 4,
+      "i": 2,
+      "il": 11,
+      "na": 8,
+      "ka": 8,
+      "kuTam": 2,
+      "ar": 8,
+      "erumai": 2,
+      "can": 2,
+      "ta": 9,
+      "al": 9,
+      "kalam": 2,
+      "ku": 9,
+      "nallavar": 4,
+      "iṭ": 8,
+      "ru": 8,
+      "am": 2,
+      "ci": 11,
+      "aṉ": 6,
+      "vi": 4,
+      "māṉ": 3,
+      "tu": 6,
+      "iṭam": 5,
+      "um": 6,
+      "uḷ": 4,
+      "ay": 5,
+      "āl": 3,
+      "ōṭu": 6,
+      "iṉ": 4,
+      "ē": 5
+    },
+    "phonological_inventory": {
+      "attested_initials": 19,
+      "pd_inventory_size": 25,
+      "coverage_pct": 76.0,
+      "missing": [
+        "b",
+        "d",
+        "ñ",
+        "ḻ",
+        "ṉ",
+        "ṟ"
+      ]
+    },
+    "blockers": [
+      {
+        "blocker": "No Dravidianist specialist review",
+        "detail": "Review packets sent to 3 experts + 1 LinkedIn contact; no responses yet",
+        "severity": "HIGH",
+        "resolution": "Wait for responses from Renganathan, Murugaiyan, Kobayashi, Kolichala"
+      },
+      {
+        "blocker": "No bilingual inscription",
+        "detail": "No IVS text alongside a known script has been discovered",
+        "severity": "FUNDAMENTAL",
+        "resolution": "Archaeological discovery (Gulf trade sites most likely)"
+      },
+      {
+        "blocker": "ICIT sign gap (108 signs)",
+        "detail": "605/713 ICIT signs covered (84.9%). ~108 signs in 2026 ICIT revision not in public version",
+        "severity": "MEDIUM",
+        "resolution": "Fuls has declined access; seek alternative corpus sources"
+      },
+      {
+        "blocker": "Competing hypotheses not exhaustively falsified",
+        "detail": "Sanskrit 0/34 falsified; Proto-Munda, language-neutral not formally tested. Unconstrained SA non-discriminative (Phase 295 §4.5 finding)",
+        "severity": "MEDIUM",
+        "resolution": "Formal Proto-Munda SA comparison; language-neutral control (partially done)"
+      }
+    ],
+    "roadmap": [
+      {
+        "step": 1,
+        "task": "Dravidianist specialist review",
+        "status": "WAITING",
+        "eta": "2-4 weeks",
+        "detail": "3 emails sent + 1 LinkedIn connection"
+      },
+      {
+        "step": 2,
+        "task": "Rebuild preprint PDF with §4.5 + mine findings",
+        "status": "READY",
+        "eta": "1 session"
+      },
+      {
+        "step": 3,
+        "task": "Upload v3 to Zenodo/Academia/ResearchGate/SSRN",
+        "status": "PENDING",
+        "eta": "1 day"
+      },
+      {
+        "step": 4,
+        "task": "Submit to peer-reviewed journal",
+        "status": "BLOCKED on step 1",
+        "eta": "after specialist feedback",
+        "detail": "Target: Journal of Near Eastern Studies, or Computational Linguistics"
+      },
+      {
+        "step": 5,
+        "task": "Reproduce on public corpus (non-Holdat)",
+        "status": "PARTIALLY DONE",
+        "eta": "ongoing",
+        "detail": "Firestore corpus validated (+0.484 Dravidian advantage). Full ICIT reproduction blocked by access."
+      }
+    ],
+    "summary": {
+      "decipherment_completeness": "605/605 signs assigned (100% coverage)",
+      "independent_confirmation": "584/605 (96.5%)",
+      "sa_consistency": "83.7% (ICIT), 71.5% (Holdat)",
+      "grammar_lift": "6.3× (ICIT), 3.3× (Holdat)",
+      "external_validation": "7 Elamite + 13 Sanskrit substrate + 7 LE, Fisher p≈10⁻¹⁵",
+      "sanskrit_falsification": "0/34",
+      "tb_concordance": "58%, z=16.2",
+      "status": "COMPUTATIONALLY COMPLETE — awaiting specialist review + peer review"
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "test": "Competing LM SA Convergence",
+  "corpus_tokens": 11705,
+  "corpus_signs": 389,
+  "results": [
+    {
+      "lm_name": "Dravidian (TamilTB)",
+      "n_seeds": 5,
+      "n_iters": 5000,
+      "n_signs": 389,
+      "n_distinct_modals": 373,
+      "mean_consistency": 0.2401,
+      "top3_modals": [
+        {
+          "phoneme": "\u0ba8",
+          "count": 2,
+          "pct": 0.5
+        },
+        {
+          "phoneme": "e",
+          "count": 2,
+          "pct": 0.5
+        },
+        {
+          "phoneme": "\u0b8e",
+          "count": 2,
+          "pct": 0.5
+        }
+      ],
+      "degenerate": false,
+      "modal_distribution_size": 373
+    },
+    {
+      "lm_name": "Hebrew (OT consonantal)",
+      "n_seeds": 5,
+      "n_iters": 5000,
+      "n_signs": 389,
+      "n_distinct_modals": 384,
+      "mean_consistency": 0.2386,
+      "top3_modals": [
+        {
+          "phoneme": "p",
+          "count": 2,
+          "pct": 0.5
+        },
+        {
+          "phoneme": "?356",
+          "count": 2,
+          "pct": 0.5
+        },
+        {
+          "phoneme": "?303",
+          "count": 2,
+          "pct": 0.5
+        }
+      ],
+      "degenerate": false,
+      "modal_distribution_size": 384
+    },
+    {
+      "lm_name": "Uniform (language-neutral)",
+      "n_seeds": 5,
+      "n_iters": 5000,
+      "n_signs": 389,
+      "n_distinct_modals": 375,
+      "mean_consistency": 0.2339,
+      "top3_modals": [
+        {
+          "phoneme": "S12",
+          "count": 2,
+          "pct": 0.5
+        },
+        {
+          "phoneme": "S34",
+          "count": 2,
+          "pct": 0.5
+        },
+        {
+          "phoneme": "?383",
+          "count": 2,
+          "pct": 0.5
+        }
+      ],
+      "degenerate": false,
+      "modal_distribution_size": 375
+    }
+  ]
+}

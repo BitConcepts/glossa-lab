@@ -339,6 +339,7 @@ Key papers used:
 ### C.7 Yajnadevam 2024 — Cryptanalytic Sanskrit decipherment
 
 **Used in:** Phase-30 falsification round target.
+**Note:** The *lipi* repository corpus data is derived from Fuls' ICIT corpus. Yajnadevam's Sanskrit readings are a separate publication.
 
 > Yajnadevam (pseudonym). 2024. "A cryptanalytic decipherment of the Indus
 > script." ResearchGate preprint, November 2024.
@@ -1012,7 +1013,7 @@ pipeline (alphabetical):
 - **Dennys Frenez** — Indus-BMAC contact-zone studies.
 - **Andreas Fuls (TU Berlin)** — ICIT database, Mathematica Epigraphica vols.
   3-4, positional analysis methodology, anchor-amplification methodology.
-  Email: andreas.fuls@tu-berlin.de.
+
 - **Philip Jones** — ePSD2 admin/oakk + admin/ed3b + Penn Sumerian Dictionary.
 - **J. Mark Kenoyer** — Harappa archaeological project (HARP).
 - **Petteri Koskikallio** — CISI Vol. 3.1, 3.2, 3.3 co-editor.

@@ -108,7 +108,7 @@ outputs/
 ├── indus_decipherment_report_final.json  ← comprehensive report (JSON)
 ├── phase219_arxiv_updated.json       ← arXiv preprint text + data
 research/indus/
-├── pierson_2026_indus_preprint_v1.pdf
+├── pierson_2026_indus_preprint.pdf
 └── phase_reports/
 ```
 

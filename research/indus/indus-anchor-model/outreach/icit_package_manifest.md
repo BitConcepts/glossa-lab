@@ -13,7 +13,7 @@ Send these items as attachments to the initial email. Do NOT send the full proje
 | 2 | `data/public/anchor_table_397.csv` | All 397 Mahadevan signs with candidate readings and confidence tiers |
 | 3 | `data/public/formula_bigrams.csv` | Top-30 directed H+M bigrams with counts and PMI |
 | 4 | `docs/icit_validation_plan.md` (as PDF) | Full 8-test plan with falsification criteria and output specs |
-| 5 | `manuscript/pierson_2026_indus_preprint_v1.pdf` | Preprint PDF |
+| 5 | `manuscript/pierson_2026_indus_preprint.pdf` | Preprint PDF |
 | 6 | GitHub repository link | https://github.com/BitConcepts/glossa-lab |
 | 7 | Zenodo DOI | (to be generated — see Phase 6 instructions) |
 

@@ -45,7 +45,7 @@ for all 397 Mahadevan catalogue signs. Columns:
 ## Corpus Note
 
 The primary corpus used in this study is the **Holdat LLC Indus Corpus v3** (Miller 2025),
-covering 1,670 formal stamp seals, 7,002 sign tokens, 390 distinct signs across 9 major IVC sites.
+covering 1,670 formal inscribed seal objects, 7,002 sign tokens, 390 distinct signs across 9 major IVC sites.
 
 > **This corpus is not publicly available at time of writing.** Full reproduction of
 > corpus-level statistics requires either access to the Holdat corpus under agreement with

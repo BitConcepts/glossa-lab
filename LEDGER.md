@@ -1309,3 +1309,19 @@ Files modified:
 - research/indus/mahadevan_parpola_crosswalk.json
 - README.md
 - LEDGER.md
+
+## [2026-05-26] Entry - Preprint v2 release finalized
+
+What was done:
+- Rebuilt preprint v2 PDF from updated manuscript
+- Merged develop to main (fast-forward)
+- Tagged v2.0.0-preprint on main, pushed to origin
+- CI re-run passed (earlier failures were transient GitHub infrastructure issue)
+- ResearchGate account approved and created
+- SSRN still pending (not live yet)
+
+Publication status:
+- Zenodo: v2 record live (DOI 10.5281/zenodo.20381178) — needs v3 PDF upload
+- Academia.edu: live — needs v2 PDF update
+- ResearchGate: account approved — can now upload preprint
+- SSRN: submission pending review (ID 6827038)

@@ -1417,3 +1417,58 @@ Risks:
   - PDF Unicode warnings: →, ≈, −, ≥ missing from NotoSerif-Regular.ttf
   - Fuls may not acknowledge the v3 revision
   - 108-sign gap (713-605) remains until ICIT access is obtained
+
+## [2026-05-26] Entry — Competing LM Convergence Test + Dravidianist Outreach Sent
+
+Objective:
+Run SA with competing language models (Dravidian vs Hebrew vs Uniform) on the
+Indus corpus to test whether the SA discriminates language families. Send
+Dravidianist review packets to identified experts.
+
+Competing LM Test (CRITICAL FINDING):
+  - Dravidian LM: 373 distinct modals, 0.240 mean consistency, NON-DEGENERATE
+  - Hebrew LM: 384 distinct modals, 0.239 mean consistency, NON-DEGENERATE
+  - Uniform LM: 375 distinct modals, 0.234 mean consistency, NON-DEGENERATE
+  - CONCLUSION: Unconstrained SA cannot discriminate language families on IVS.
+    All three LMs produce near-identical convergence. The 83.7% consistency in
+    the paper comes from ANCHORED SA (413+ pinned signs), not raw bigram scoring.
+    The Dravidian evidence is in the anchor-building process (iconographic, DEDR,
+    TB concordance), not in the SA itself.
+  - Script: backend/scripts/v3_competing_lm_convergence.py
+  - Results: reports/v3_competing_lm_convergence.json
+
+Dravidianist Outreach (2026-05-26, ~22:30 UTC):
+  Emails sent with 3 attachments (preprint PDF, review packet PDF, anchor CSV):
+  1. Dr. Vasu Renganathan — vasur@sas.upenn.edu — SENT
+     UPenn, Dept. of South Asia Studies. Computational Tamil + Sangam literature.
+  2. Dr. Appasamy Murugaiyan — A.Murugaiyan@wanadoo.fr — SENT
+     EPHE Paris (retired 2018, still active). Tamil-Brahmi epigraphy + PDr.
+  3. Prof. Masato Kobayashi — gengokyo@l.u-tokyo.ac.jp — SENT
+     University of Tokyo. PDr reconstruction (Kurux, Malto, Brahui).
+  4. Prof. Franklin Southworth — fsouth@sas.upenn.edu — BOUNCED
+     UPenn Emeritus. Account no longer active (550 5.1.1 User Unknown).
+
+  All email domains verified via MX record lookup before sending.
+  Review packet PDF built from combined markdown (dravidianist_review_packet.md
+  + old_tamil_review_questions.md) via pandoc+XeLaTeX with NotoSerif font.
+
+Main Branch Update:
+  - Cherry-picked review packet PDF + updated markdown to main (fc2db72)
+  - Pushed to origin/main so reviewers can access files via repo link
+  - develop remains the working branch; v3 not yet published
+
+Files changed:
+  reports/v3_competing_lm_convergence.json (NEW)
+  backend/scripts/v3_competing_lm_convergence.py (NEW)
+  docs/expert_review/dravidianist_review_packet.pdf (NEW on main)
+  LEDGER.md (this entry)
+
+Open TODOs:
+  - [ ] Wait for Dravidianist responses (target: 2 weeks)
+  - [ ] If response received: incorporate feedback into v3 manuscript
+  - [ ] Add competing LM finding to §4.5 (Why This Might Be Wrong)
+  - [ ] Check SSRN status
+  - [ ] Replace Southworth with alternative reviewer if needed
+
+Next step:
+  Wait for expert responses. Continue develop-branch work as needed.

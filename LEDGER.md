@@ -1472,3 +1472,104 @@ Open TODOs:
 
 Next step:
   Wait for expert responses. Continue develop-branch work as needed.
+
+
+## [2026-05-26] Entry — Phase 295: Infrastructure Sprint + Bulk Mine 5000 (May 2026)
+
+Objective:
+Address pending infrastructure debt, add competing LM finding to manuscript,
+run Phase 295 bulk mine targeting May 2026 literature and emailed researchers,
+identify Southworth replacement reviewer, verify evidence sweep fix.
+
+What was done:
+
+1. PREPRINT §4.5 UPDATE:
+   - Added "Unconstrained SA does not discriminate language families" paragraph
+     to §4.5 (Why This Might Be Wrong) in pierson_2026_indus_preprint.md
+   - Documents competing LM test: Dravidian vs Hebrew vs Uniform produce
+     near-identical convergence (373/384/375 modals, 0.240/0.239/0.234 consistency)
+   - Makes explicit: 83.7% comes from ANCHORED SA, not raw bigram scoring
+
+2. H11 FIX — tray _status_poller:
+   - Replaced `while True:` with `for _poll_iter in range(_MAX_POLL_ITERATIONS):`
+   - _MAX_POLL_ITERATIONS = 86400 // POLL_INTERVAL (~28,800 = ~24h at 3s intervals)
+   - Diagnostic warning emitted when deadline reached
+   - File: tray/glossa_tray/main.py
+
+3. SETUP-OS.CMD RECONCILIATION:
+   - :do_install now removes stale HKCU Run keys before registering scheduled task
+   - No longer adds HKCU Run key (was causing duplicate tray launches)
+   - :do_status now checks `schtasks /query` instead of `reg query HKCU Run`
+   - Consistent with H25 (VBS wrappers) and main.py _is_autostart_enabled()
+   - File: setup-os.cmd
+
+4. FOUNDATION CHECK:
+   - Ran foundation_check.py: 38 passed, 0 failed, 9 warnings
+   - Pre-existing failures (H+M count mismatch, Phase-29d gap) are RESOLVED
+     (anchor file total=605 now matches actual count; Phase-29d downgraded to WARN)
+
+5. SOUTHWORTH REPLACEMENT IDENTIFIED:
+   - Suresh Kolichala (independent Dravidian linguist)
+   - Authored: Dravidian chapter in de Gruyter's Languages and Linguistics of South Asia
+   - Maintains: Improved DEDR Search tool, JAMBU cognate database (287K lemmata, 602 lects)
+   - Published on: Proto-Dravidian alveolar stop *ṯ, Dravidian subgrouping phylogenetics
+   - Contact: via Academia.edu (independent.academia.edu/sureshk) — no public email found
+   - ACTION NEEDED: User to contact via Academia.edu messaging or JAMBU project
+
+6. EVIDENCE SWEEP VERIFIED:
+   - POST /api/v1/indus-evidence/sweep/run → 96 new candidates fetched
+   - RawItem.doi bug fix (from prior session) confirmed working
+   - Sweep results include CrossRef papers with DOIs, authors, dates
+
+7. ITEMS 11-12 ALREADY RESOLVED:
+   - 5 absent phonemes (/sum/, /gu/, /ab/, /ba/, /shu/): all covered via
+     Elamo-Dravidian voiced/unvoiced alternation (Phase-204/206 notes in anchors)
+   - CANDIDATE anchors M700, M527, M790: all already promoted to HIGH
+     (Phase-258/293 cross-corpus validation)
+
+8. PHASE 295 — BULK MINE 5000 (MAY 2026 FOCUS):
+   - Script: backend/scripts/phase295_bulk_mine_5000.py
+   - 5 tracks: OpenAlex (29 queries), CrossRef (18), SemanticScholar (14),
+     arXiv (25), EuropePMC (6) = 92 total query clusters
+   - Targeted: works by Rao, Fuls, Nair, Sproat, Parpola, Renganathan,
+     Murugaiyan, Kobayashi, Kolichala + peer-reviewed Indus/Dravidian 2025-2026
+   - RESULTS:
+     * Total papers: 3,359
+     * STRONG relevance: 92
+     * MODERATE relevance: 85
+     * Recent (2024+): 1,130
+     * By source: OpenAlex 321, CrossRef 1193, S2 32, arXiv 1671, EuropePMC 142
+   - Output: outputs/phase295_bulk_mine_5000.json
+
+Files changed:
+  research/indus/pierson_2026_indus_preprint.md (§4.5 competing LM paragraph)
+  tray/glossa_tray/main.py (H11 fix: bounded _status_poller)
+  setup-os.cmd (:do_install scheduled task, :do_status schtasks check)
+  backend/scripts/phase295_bulk_mine_5000.py (NEW)
+  outputs/phase295_bulk_mine_5000.json (NEW — 3,359 papers)
+  LEDGER.md (this entry)
+
+Checks run:
+  - Foundation check: 38 passed, 0 failed, 9 warnings
+  - Evidence sweep: 96 new candidates (verified)
+  - Phase 295 mine: 3,359 papers, 92 STRONG, exit 0
+
+Open TODOs:
+  - [ ] Contact Suresh Kolichala via Academia.edu with review packet
+  - [ ] Upload v3 PDF to Zenodo, Academia.edu, ResearchGate
+  - [ ] Check SSRN status (submission ID 6827038)
+  - [ ] Tag v3.0.0-preprint on main after merge
+  - [ ] Wait for Dravidianist responses (Renganathan, Murugaiyan, Kobayashi)
+  - [ ] Review Phase 295 STRONG papers for new evidence items
+  - [ ] Rebuild preprint PDF with §4.5 update
+
+Risks:
+  - Kolichala has no public email; Academia.edu messaging is the only contact path
+  - OpenAlex returned only 321 papers (API may be rate-limited or index is sparse
+    for Indus-specific queries); CrossRef and arXiv compensated
+  - S2 returned only 32 unique papers (rate-limited; 1s delay per query)
+
+Next step:
+  Review the 92 STRONG papers from Phase 295 for new evidence items or
+  discoveries that strengthen/weaken the decipherment model.
+  Contact Kolichala via Academia.edu.

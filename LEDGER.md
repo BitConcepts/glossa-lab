@@ -1219,3 +1219,66 @@ Open TODOs:
   - [ ] Follow up with Parpola if no response within 2 weeks
 
 Token estimate: high
+
+
+## [2026-05-26] Entry — Preprint v2 Revision: Expert Feedback Integration
+
+Objective:
+Address feedback from Richard Sproat and Asko Parpola per GitHub issues #23-#27.
+Five workstreams executed on the develop branch.
+
+What was done:
+
+WS-2 Terminology (Issue #23):
+  - Replaced 'stamp seals' with 'seal objects' throughout manuscript and README
+  - Added function-independence note (analysis does not depend on object function)
+  - Added Gokhale & Ameri 2026 citation
+  - Fish-sign discussion reframed as sign-context within inscribed seal-object corpus
+
+WS-3 Script Typology (Issue #25):
+  - Clarified mixed logo-syllabic model across abstract, methods, results, discussion
+  - SA framed as testing syllabic-phonetic component, not proving whole-system type
+  - Added typological classification limitation to §4.4
+  - Reconciled example decipherments with mixed typology
+
+WS-1 Sproat Benchmark (Issue #24):
+  - Created scripts/benchmarks/non_linguistic_sproat2014/ (4 scripts + reference stats)
+  - Computed IVS metrics: H0=6.95, H1=3.53, Zipf=-1.70, r/R=0.83
+  - r/R falls in non-linguistic range (confounded by short text length per Sproat 2014)
+  - §3.16 rewritten as 'Non-Linguistic Hypothesis Assessment' with Sproat comparison
+  - Added Sproat 2014 and 2023 references
+  - Added statistical discriminability limitation to §4.4
+  - Output: outputs/benchmarks/sproat_comparison_report.{csv,md,json}
+
+WS-4 Recurring Formula Table (Issue #26):
+  - Created scripts/recurring_formulae/build_formulae.py
+  - Scanned 7,138 inscriptions for repeated bigrams/trigrams/4-grams
+  - Output: 100 formulae (57 HIGH, 43 MEDIUM), 90 failure cases (uncrosswalked signs)
+  - Output: data/public/recurring_formulae.csv, outputs/reports/recurring_formulae_failure_cases.md
+
+WS-5 Dravidianist Review Packet (Issue #27):
+  - Created docs/expert_review/dravidianist_review_packet.md (2-page overview)
+  - Created docs/expert_review/old_tamil_review_questions.md (18 specific questions)
+  - Created data/public/dravidianist_anchor_subset.csv (top 50 sign readings)
+  - Outreach email draft in .correspondence/ (H24 compliant)
+  - Added Dravidianist review limitation to §4.4
+  - Identified 4 candidate reviewers
+
+Files modified:
+  - research/indus/pierson_2026_indus_preprint_v1.md (terminology, typology, §3.16, §4.4, refs)
+  - research/indus/pierson_2026_indus_preprint_v1.tex (terminology)
+  - research/indus/README.md (terminology)
+  - README.md (no changes needed)
+
+Files created:
+  - scripts/benchmarks/non_linguistic_sproat2014/ (4 scripts + README + reference JSON)
+  - scripts/recurring_formulae/build_formulae.py
+  - docs/expert_review/dravidianist_review_packet.md
+  - docs/expert_review/old_tamil_review_questions.md
+  - data/public/dravidianist_anchor_subset.csv
+  - data/public/recurring_formulae.csv
+  - outputs/benchmarks/sproat_comparison_report.{csv,md,json}
+  - outputs/benchmarks/ivs_entropy_metrics.json
+  - outputs/benchmarks/ivs_repetition_metrics.json
+  - outputs/reports/recurring_formulae_failure_cases.md
+  - .correspondence/dravidianist_review_email.md (gitignored, H24)

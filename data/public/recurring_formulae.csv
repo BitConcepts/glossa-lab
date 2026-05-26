@@ -1,0 +1,101 @@
+formula_id,sign_sequence,n_gram_size,proposed_reading,inscription_count,site_count,site_distribution,dominant_grammar_pattern,evidence_tier,caveats,is_failure_case
+F001,740 740,2,?740 + ?740,412,1,unknown(412),MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,MEDIUM,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 37%),True
+F002,740 740 740,3,?740 + ?740 + ?740,396,1,unknown(396),MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,MEDIUM,3/3 signs lack anchor readings; inconsistent grammar patterns (top pattern only 38%),True
+F003,740 740 740 740,4,?740 + ?740 + ?740 + ?740,383,1,unknown(383),MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,MEDIUM,4/4 signs lack anchor readings; inconsistent grammar patterns (top pattern only 38%),True
+F004,000 000,2,?000 + ?000,330,19,"Harappa(129), Mohenjo-daro(96), Lothal(34), Dholavira(27), Kalibangan(17)",???,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 14%),True
+F005,M002 M385,2,?M002 + ?M385,322,14,"Mohenjo-daro(176), Harappa(74), Lothal(25), Dholavira(15), Chanhu-daro(11)",MMMIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 10%),True
+F006,700 700,2,?700 + ?700,310,1,unknown(310),MMMMMMMMMMMMMMMMMMMMMMMM,MEDIUM,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 15%),True
+F007,700 700 700,3,?700 + ?700 + ?700,277,1,unknown(277),MMMMMMMMMMMMMMMMMMMMMMMM,MEDIUM,3/3 signs lack anchor readings; inconsistent grammar patterns (top pattern only 16%),True
+F008,700 700 700 700,4,?700 + ?700 + ?700 + ?700,250,1,unknown(250),MMMMMMMMMMMMMMMMMMMMMMMM,MEDIUM,4/4 signs lack anchor readings; inconsistent grammar patterns (top pattern only 17%),True
+F009,M098 M324,2,?M098 + ?M324,245,7,"Harappa(213), Mohenjo-daro(21), Kalibangan(7), Ganweriwala(1), Dholavira(1)",TMM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 25%),True
+F010,M324 M332,2,?M324 + ?M332,164,10,"Mohenjo-daro(100), Harappa(45), Dholavira(7), Lothal(5), Kalibangan(2)",MMMM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 20%),True
+F011,M310 M033,2,?M310 + ?M033,150,3,"Harappa(148), Mohenjo-daro(1), Rajanpur(1)",MI,HIGH,2/2 signs lack anchor readings,True
+F012,M033 M316,2,?M033 + ?M316,148,7,"Mohenjo-daro(101), Harappa(36), Dholavira(4), Chanhu-daro(3), Lothal(2)",MMMMIMI,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 9%),True
+F013,520 520,2,?520 + ?520,145,1,unknown(145),I?IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII,MEDIUM,2/2 signs lack anchor readings,True
+F014,M324 M194,2,?M324 + ?M194,137,8,"Harappa(81), Mohenjo-daro(45), Lothal(3), Dholavira(3), Kalibangan(2)",TMM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 28%),True
+F015,M324 000,2,?M324 + ?000,134,11,"Harappa(65), Mohenjo-daro(26), Dholavira(17), Kalibangan(14), Lothal(6)",M?,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 36%),True
+F016,M090 M324,2,?M090 + ?M324,124,10,"Mohenjo-daro(54), Harappa(41), Lothal(15), Dholavira(4), Kalibangan(4)",MMMMM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 9%),True
+F017,520 520 520,3,?520 + ?520 + ?520,122,1,unknown(122),I?IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII,MEDIUM,3/3 signs lack anchor readings,True
+F018,M086 M276,2,?M086 + ?M276,119,11,"Harappa(57), Mohenjo-daro(45), Dholavira(5), Lothal(4), Chanhu-daro(2)",MMMMMIMMIMM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 9%),True
+F019,M310 M034,2,?M310 + ?M034,115,2,"Harappa(114), Mohenjo-daro(1)",MI,MEDIUM,2/2 signs lack anchor readings,True
+F020,874 874,2,?874 + ?874,111,1,unknown(111),MMM,MEDIUM,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 14%),True
+F021,M324 M009,2,?M324 + ?M009,109,9,"Mohenjo-daro(62), Harappa(35), Lothal(3), Chanhu-daro(2), Dholavira(2)",MIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 8%),True
+F022,520 520 520 520,4,?520 + ?520 + ?520 + ?520,107,1,unknown(107),I?IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII,MEDIUM,4/4 signs lack anchor readings,True
+F023,M324 M086,2,?M324 + ?M086,107,10,"Harappa(56), Mohenjo-daro(38), Lothal(3), Dholavira(3), Chanhu-daro(2)",MMMMMIMMIMM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 10%),True
+F024,M002 M378,2,?M002 + ?M378,102,10,"Mohenjo-daro(54), Harappa(25), Kalibangan(6), Lothal(5), Dholavira(4)",MMIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 14%),True
+F025,M324 M086 M276,3,?M324 + ?M086 + ?M276,98,10,"Harappa(52), Mohenjo-daro(34), Lothal(3), Dholavira(3), Allahdino(1)",MMMMMIMMIMM,HIGH,3/3 signs lack anchor readings; inconsistent grammar patterns (top pattern only 11%),True
+F026,000 000 000,3,?000 + ?000 + ?000,98,9,"Harappa(43), Mohenjo-daro(22), Lothal(12), Dholavira(8), Kalibangan(6)",???,HIGH,3/3 signs lack anchor readings; inconsistent grammar patterns (top pattern only 23%),True
+F027,M310 M032,2,?M310 + ?M032,97,4,"Harappa(94), Kalibangan(1), Unknown(1), Lothal(1)",MM,HIGH,2/2 signs lack anchor readings,True
+F028,400 400,2,kur + kur,96,1,unknown(96),MMMMMMMM,MEDIUM,inconsistent grammar patterns (top pattern only 15%),True
+F029,820 820,2,?820 + ?820,86,1,unknown(86),TTTTTT,MEDIUM,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 47%),True
+F030,M050 M092,2,?M050 + ?M092,86,6,"Mohenjo-daro(42), Harappa(40), Chanhu-daro(1), Lothal(1), Pabumath(1)",MIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 21%),True
+F031,481 481,2,?481 + ?481,81,1,unknown(81),????????????????????????????????????????????????????????????????????????,MEDIUM,2/2 signs lack anchor readings,True
+F032,M062 M002,2,?M062 + ?M002,81,4,"Harappa(49), Mohenjo-daro(28), Lothal(3), Chanhu-daro(1)",MIIMT,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 36%),True
+F033,481 481 481,3,?481 + ?481 + ?481,71,1,unknown(71),????????????????????????????????????????????????????????????????????????,MEDIUM,3/3 signs lack anchor readings,True
+F034,090 090,2,aintu + aintu,70,1,unknown(70),MMM,MEDIUM,,False
+F035,481 481 481 481,4,?481 + ?481 + ?481 + ?481,69,1,unknown(69),????????????????????????????????????????????????????????????????????????,MEDIUM,4/4 signs lack anchor readings,True
+F036,203 203,2,kur + kur,68,1,unknown(68),MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,MEDIUM,,False
+F037,045 045,2,yānai + yānai,67,1,unknown(67),IIII,MEDIUM,,False
+F038,M217 M050,2,?M217 + ?M050,67,7,"Mohenjo-daro(32), Harappa(30), Banawali(1), Lothal(1), Dholavira(1)",MIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 28%),True
+F039,M060 M154,2,?M060 + ?M154,66,9,"Mohenjo-daro(41), Harappa(9), Chanhu-daro(5), Lothal(4), Rakhigarhi(2)",MMMIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 15%),True
+F040,M050 M032,2,?M050 + ?M032,65,8,"Mohenjo-daro(42), Harappa(12), Chanhu-daro(3), Lothal(3), Dholavira(2)",MMIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 8%),True
+F041,M324 M032,2,?M324 + ?M032,64,6,"Harappa(43), Mohenjo-daro(15), Lothal(2), Dholavira(2), Chanhu-daro(1)",TMMI,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 17%),True
+F042,203 203 203,3,kur + kur + kur,62,1,unknown(62),MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,MEDIUM,,False
+F043,M062 M060,2,?M062 + ?M060,60,8,"Mohenjo-daro(32), Harappa(20), Chanhu-daro(2), Lothal(2), Kalibangan(1)",MMIIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 17%),True
+F044,820 820 820,3,?820 + ?820 + ?820,59,1,unknown(59),TTTTTT,MEDIUM,3/3 signs lack anchor readings,True
+F045,M324 M256,2,?M324 + ?M256,59,5,"Mohenjo-daro(36), Harappa(19), Kalibangan(2), Rakhigarhi(1), Rajanpur(1)",MMMI,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 20%),True
+F046,M188 M073,2,?M188 + ?M073,59,5,"Mohenjo-daro(31), Harappa(25), Kalibangan(1), Lothal(1), Rakhigarhi(1)",TIMI,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 17%),True
+F047,M324 M154,2,?M324 + ?M154,58,6,"Mohenjo-daro(38), Harappa(16), Desalpur(1), Ganweriwala(1), Dholavira(1)",MMMMMMM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 24%),True
+F048,203 203 203 203,4,kur + kur + kur + kur,57,1,unknown(57),MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM,MEDIUM,,False
+F049,692 692,2,?692 + ?692,56,1,unknown(56),IIM,MEDIUM,2/2 signs lack anchor readings,True
+F050,M217 M033,2,?M217 + ?M033,56,7,"Mohenjo-daro(32), Harappa(14), Dholavira(5), Lothal(2), Chanhu-daro(1)",MIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 11%),True
+F051,M002 000,2,?M002 + ?000,55,9,"Mohenjo-daro(17), Harappa(15), Lothal(10), Dholavira(5), Kalibangan(4)",MMMI?,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 11%),True
+F052,M324 M230,2,?M324 + ?M230,53,7,"Mohenjo-daro(24), Harappa(17), Dholavira(5), Lothal(3), Kalibangan(2)",MM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 9%),True
+F053,M324 M050,2,?M324 + ?M050,53,8,"Mohenjo-daro(23), Harappa(12), Lothal(12), Dholavira(2), Banawali(1)",MMIMIMMM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 21%),True
+F054,M301 M230,2,?M301 + ?M230,53,3,"Mohenjo-daro(32), Harappa(14), Lothal(7)",MM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 11%),True
+F055,003 003,2,kalam + kalam,52,1,unknown(52),?MM,MEDIUM,inconsistent grammar patterns (top pattern only 12%),True
+F056,169 169,2,rā + rā,51,1,unknown(51),MMMM,MEDIUM,,False
+F057,M032 M002,2,?M032 + ?M002,51,7,"Mohenjo-daro(31), Harappa(10), Lothal(4), Chanhu-daro(3), Desalpur(1)",MMMIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 10%),True
+F058,M364 M002,2,?M364 + ?M002,51,6,"Mohenjo-daro(32), Harappa(14), Chanhu-daro(2), Dholavira(1), Lothal(1)",MMMIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 8%),True
+F059,M217 M033 M316,3,?M217 + ?M033 + ?M316,49,5,"Mohenjo-daro(32), Harappa(11), Dholavira(3), Lothal(2), Chanhu-daro(1)",MIM,HIGH,3/3 signs lack anchor readings; inconsistent grammar patterns (top pattern only 12%),True
+F060,400 400 400,3,kur + kur + kur,48,1,unknown(48),MMMMMMMM,MEDIUM,inconsistent grammar patterns (top pattern only 25%),True
+F061,M002 M086,2,?M002 + ?M086,48,5,"Harappa(33), Mohenjo-daro(12), Unknown(1), Surkotada(1), Dholavira(1)",MIIMT,HIGH,2/2 signs lack anchor readings,True
+F062,045 045 045,3,yānai + yānai + yānai,46,1,unknown(46),IIII,MEDIUM,,False
+F063,874 874 874,3,?874 + ?874 + ?874,46,1,unknown(46),MMM,MEDIUM,3/3 signs lack anchor readings; inconsistent grammar patterns (top pattern only 15%),True
+F064,M060 M256,2,?M060 + ?M256,46,6,"Mohenjo-daro(22), Harappa(20), Banawali(1), Chanhu-daro(1), Dholavira(1)",MMIIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 15%),True
+F065,M098 M324 M194,3,?M098 + ?M324 + ?M194,46,2,"Harappa(44), Mohenjo-daro(2)",TMM,MEDIUM,3/3 signs lack anchor readings,True
+F066,M217 M062,2,?M217 + ?M062,46,3,"Harappa(35), Mohenjo-daro(10), Nausharo(1)",MIIMT,HIGH,2/2 signs lack anchor readings,True
+F067,692 861,2,?692 + ?861,45,1,unknown(45),IIM,MEDIUM,2/2 signs lack anchor readings,True
+F068,047 047,2,min/mīn + min/mīn,44,1,unknown(44),IIM,MEDIUM,inconsistent grammar patterns (top pattern only 20%),True
+F069,416 416,2,na + na,43,1,unknown(43),MMMMMMM,MEDIUM,inconsistent grammar patterns (top pattern only 28%),True
+F070,M009 M092,2,?M009 + ?M092,43,5,"Mohenjo-daro(29), Harappa(11), Unknown(1), Gola Dhoro (Bagasra)(1), Rakhigarhi(1)",MIMIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 9%),True
+F071,M032 M349,2,?M032 + ?M349,42,6,"Harappa(19), Mohenjo-daro(15), Dholavira(4), Lothal(2), Bakkar Buthi(1)",MMM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 24%),True
+F072,M086 M004,2,?M086 + ?M004,42,9,"Mohenjo-daro(20), Harappa(15), Banawali(1), Dholavira(1), Kalibangan(1)",MIIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 31%),True
+F073,M004 M003,2,?M004 + ?M003,40,3,"Harappa(27), Mohenjo-daro(12), Lothal(1)",IM,HIGH,2/2 signs lack anchor readings,True
+F074,090 090 090,3,aintu + aintu + aintu,39,1,unknown(39),MMM,MEDIUM,,False
+F075,M060 M002,2,?M060 + ?M002,39,8,"Mohenjo-daro(23), Harappa(8), Chanhu-daro(2), Dholavira(2), Lohumjo-daro(1)",MMIIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 15%),True
+F076,000 M002,2,?000 + ?M002,39,8,"Mohenjo-daro(14), Dholavira(7), Harappa(5), Kalibangan(4), Lothal(4)",??IM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 10%),True
+F077,M324 M175,2,?M324 + ?M175,39,3,"Mohenjo-daro(35), Harappa(3), Gharo Bhiro(1)",MMIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 23%),True
+F078,861 861,2,?861 + ?861,37,1,unknown(37),IMMMII,MEDIUM,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 11%),True
+F079,M325 M060,2,?M325 + ?M060,37,7,"Mohenjo-daro(23), Harappa(6), Lothal(2), Rakhigarhi(2), Dholavira(2)",MMMIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 24%),True
+F080,M325 M060 M154,3,?M325 + ?M060 + ?M154,37,7,"Mohenjo-daro(23), Harappa(6), Lothal(2), Rakhigarhi(2), Dholavira(2)",MMMIM,HIGH,3/3 signs lack anchor readings; inconsistent grammar patterns (top pattern only 24%),True
+F081,M256 M188,2,?M256 + ?M188,37,4,"Mohenjo-daro(27), Harappa(8), Kalibangan(1), Rakhigarhi(1)",MMMI,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 14%),True
+F082,M615 M210,2,?M615 + ?M210,37,2,"Mohenjo-daro(35), Harappa(2)",MMMM,MEDIUM,2/2 signs lack anchor readings,True
+F083,820 820 820 820,4,?820 + ?820 + ?820 + ?820,36,1,unknown(36),TTTTTT,MEDIUM,4/4 signs lack anchor readings,True
+F084,394 394,2,kur + kur,36,1,unknown(36),MMMMM,MEDIUM,inconsistent grammar patterns (top pattern only 33%),True
+F085,000 M324,2,?000 + ?M324,35,6,"Mohenjo-daro(14), Harappa(13), Dholavira(5), Chandigarh(1), Chanhu-daro(1)",?M,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 20%),True
+F086,M001 M324,2,?M001 + ?M324,35,5,"Mohenjo-daro(18), Harappa(10), Dholavira(3), Chanhu-daro(2), Lothal(2)",IMMIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 14%),True
+F087,M324 M032 M349,3,?M324 + ?M032 + ?M349,35,5,"Harappa(18), Mohenjo-daro(12), Lothal(2), Dholavira(2), Chanhu-daro(1)",MMM,HIGH,3/3 signs lack anchor readings; inconsistent grammar patterns (top pattern only 29%),True
+F088,M324 M256 M188,3,?M324 + ?M256 + ?M188,35,4,"Mohenjo-daro(27), Harappa(6), Kalibangan(1), Rakhigarhi(1)",MMMI,HIGH,3/3 signs lack anchor readings; inconsistent grammar patterns (top pattern only 14%),True
+F089,169 169 169,3,rā + rā + rā,34,1,unknown(34),MMMM,MEDIUM,,False
+F090,527 527,2,?527 + ?527,33,1,unknown(33),MM,MEDIUM,2/2 signs lack anchor readings,True
+F091,M316 M060,2,?M316 + ?M060,33,4,"Mohenjo-daro(23), Harappa(8), Allahdino(1), Dholavira(1)",MMMMIMI,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 42%),True
+F092,M086 M003,2,?M086 + ?M003,33,8,"Mohenjo-daro(15), Harappa(10), Kalibangan(3), Bhirrana(1), Chanhu-daro(1)",MMIM,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 42%),True
+F093,M033 M310,2,?M033 + ?M310,33,2,"Harappa(32), Mohenjo-daro(1)",IM,MEDIUM,2/2 signs lack anchor readings,True
+F094,M324 M009 M092,3,?M324 + ?M009 + ?M092,33,4,"Mohenjo-daro(25), Harappa(6), Unknown(1), Gola Dhoro (Bagasra)(1)",MIMIM,HIGH,3/3 signs lack anchor readings; inconsistent grammar patterns (top pattern only 12%),True
+F095,M256 M188 M073,3,?M256 + ?M188 + ?M073,33,4,"Mohenjo-daro(24), Harappa(7), Kalibangan(1), Rakhigarhi(1)",MMMI,HIGH,3/3 signs lack anchor readings; inconsistent grammar patterns (top pattern only 15%),True
+F096,M033 M316 M060,3,?M033 + ?M316 + ?M060,32,4,"Mohenjo-daro(23), Harappa(7), Allahdino(1), Dholavira(1)",MMMMIMI,HIGH,3/3 signs lack anchor readings; inconsistent grammar patterns (top pattern only 44%),True
+F097,M086 M061,2,?M086 + ?M061,32,2,"Mohenjo-daro(27), Harappa(5)",MMMMMMM,MEDIUM,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 44%),True
+F098,256 256,2,kur + kur,31,1,unknown(31),MM,MEDIUM,,False
+F099,416 416 416,3,na + na + na,31,1,unknown(31),MMMMMMM,MEDIUM,inconsistent grammar patterns (top pattern only 32%),True
+F100,M268 M031,2,?M268 + ?M031,31,4,"Mohenjo-daro(27), Harappa(2), Dholavira(1), Janabiyah(1)",MI,HIGH,2/2 signs lack anchor readings; inconsistent grammar patterns (top pattern only 26%),True

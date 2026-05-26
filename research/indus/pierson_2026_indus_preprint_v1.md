@@ -33,7 +33,7 @@ DOI: [10.5281/zenodo.20381178](https://zenodo.org/records/20381178)
 
 We present and test a falsifiable computational decipherment hypothesis for the Indus Valley Script (IVS, ca. 2600–1900 BCE), assigning Proto-Dravidian readings to all 605 known signs. Working from two independent corpora — the Holdat LLC Indus Corpus V3 (1,670 seals, 7,002 tokens, 9 sites; Mahadevan M-numbers) and the Yajnadevam corpus (5,520 inscriptions, 17,847 tokens, 76 archaeological sites) — we apply positional analysis, bigram/trigram collocational methods, DEDR rebus matching, and simulated annealing (SA) with a 7,514-word Dravidian language model to construct a complete anchor model for IVS sign readings.
 
-All 605 signs achieve HIGH confidence under a five-layer evidence hierarchy requiring two or more independent evidence sources per sign. SA achieves 83.7% mean consistency on the 5,520-inscription Yajnadevam corpus. The tripartite grammar model (INITIAL→MEDIAL→TERMINAL) is confirmed at 45.7% across 2,980 eligible inscriptions (6.3× above null, *p*<0.001). External corroboration via 7 Elamite cognates (McAlpin 1981) and 13 Sanskrit substrate loanwords (Witzel 1999) yields Fisher combined *p*≈10^−15^. The competing Sanskrit-language hypothesis (Yajnadevam 2024) is falsified at 0/34 agreement against our readings. A fish-sign polysemy test finds 0/140 isolated fish signs across all tested formal-seal contexts. Tamil-Brahmi personal name concordance reaches 58% (*z*=16.2, *p*<0.0001). The non-linguistic hypothesis (Farmer, Sproat & Witzel 2004) is falsified by conditional entropy H~1~=5.384 bits, exceeding the 3.5-bit metrological maximum. Forty-one evidence items across eight independent evidence lines support the Proto-Dravidian affiliation.
+All 605 signs achieve HIGH confidence under a five-layer evidence hierarchy requiring two or more independent evidence sources per sign. SA achieves 83.7% mean consistency on the 5,520-inscription Yajnadevam corpus. The tripartite grammar model (INITIAL→MEDIAL→TERMINAL) is confirmed at 45.7% across 2,980 eligible inscriptions (6.3× above null, *p*<0.001). External corroboration via 7 Elamite cognates (McAlpin 1981) and 13 Sanskrit substrate loanwords (Witzel 1999) yields Fisher combined *p*≈10^−15^. The competing Sanskrit-language hypothesis (Yajnadevam 2024) is falsified at 0/34 agreement against our readings. A fish-sign polysemy test finds 0/140 isolated fish signs across all tested formal seal-object contexts. Tamil-Brahmi personal name concordance reaches 58% (*z*=16.2, *p*<0.0001). The non-linguistic hypothesis (Farmer, Sproat & Witzel 2004) is falsified by conditional entropy H~1~=5.384 bits, exceeding the 3.5-bit metrological maximum. Forty-one evidence items across eight independent evidence lines support the Proto-Dravidian affiliation.
 
 This study does not claim epigraphic finality; it proposes a reproducible, falsifiable computational model whose structural predictions and candidate phonetic readings can be tested against future archaeological discoveries and independent corpora. All code, anchor tables, and phase reports are open source. DOI: 10.5281/zenodo.20381178.
 
@@ -43,7 +43,7 @@ This study does not claim epigraphic finality; it proposes a reproducible, falsi
 
 ### 1.1 The Indus Valley Script Problem
 
-The Indus Valley Civilization (IVC, ca. 2600–1900 BCE) produced approximately 5,000 inscribed objects — stamp seals, copper tablets, potsherd graffiti, and the Dholavira signboard — bearing a script of approximately 400–700 distinct signs (depending on the catalogue). Despite a century of scholarship, the script remains officially undeciphered. The primary obstacles are: (1) the absence of a bilingual text; (2) uncertainty about the underlying language; (3) short average inscription length (~4–5 signs); and (4) limited corpus size relative to modern decipherment corpora.
+The Indus Valley Civilization (IVC, ca. 2600–1900 BCE) produced approximately 5,000 inscribed objects — seal objects (traditionally called "stamp seals," though their actual function remains debated; see Gokhale & Ameri 2026), copper tablets, potsherd graffiti, and the Dholavira signboard — bearing a script of approximately 400–700 distinct signs (depending on the catalogue). The analysis presented here does not depend on whether these objects functioned as seals, tags, amulets, or administrative tokens. Despite a century of scholarship, the script remains officially undeciphered. The primary obstacles are: (1) the absence of a bilingual text; (2) uncertainty about the underlying language; (3) short average inscription length (~4–5 signs); and (4) limited corpus size relative to modern decipherment corpora.
 
 Competing hypotheses have proposed proto-Dravidian (Parpola 1994; Mahadevan 1977), proto-Munda (Witzel 1999), an Indo-Aryan language ancestral to Sanskrit (Jha & Rajaram 2000 — widely rejected), and a non-linguistic semasiographic system (Farmer, Sproat & Witzel 2004). The Dravidian hypothesis is among the most extensively developed linguistic interpretations: the geographic distribution of Dravidian languages, archaeological continuity between IVC and later South Asian cultures, and the demonstrable application of the "rebus principle" (phonetic punning via sound-alike words) to IVS signs.
 
@@ -61,7 +61,7 @@ We present a computational grammar and complete anchor model (Glossa-Lab, Phases
 4. SA decipherment achieving 83.7% consistency on an independent 5,520-inscription corpus
 5. Sanskrit hypothesis falsification: 0/34 agreement with competing readings
 6. Non-linguistic hypothesis falsification: H~1~=5.384 bits, exceeding metrological maximum
-7. Fish-sign polysemy test: 0/140 isolated across all formal-seal contexts
+7. Fish-sign polysemy test: 0/140 isolated across all formal seal-object contexts
 8. External corroboration: 7 Elamite cognates, 13 Sanskrit substrate loanwords, Fisher *p*≈10^−15^
 9. Tamil-Brahmi personal name concordance: 58% match rate (*z*=16.2)
 10. Independent external replication (Nair 2026, arXiv:2604.17828) on the ICIT corpus
@@ -115,7 +115,7 @@ INITIAL-dominant signs are classified as title prefixes or classifier-derived wo
 
 ### 2.4 Simulated Annealing Decipherment
 
-The SA pipeline maps signs to Proto-Dravidian syllables by optimising a bigram log-likelihood score against a Dravidian language model (7,514 words from Tamil-Brahmi inscriptions and DEDR cognates). Protocol: 10K–50K iterations × 5–8 restarts × 8–10 seeds per run, with GPU-accelerated BigramScorer (CuPy). Signs with SA consistency ≥0.15 (fraction of seeds agreeing on the modal reading) and a DEDR entry matching the modal reading are promoted. The SA was run independently on both the Holdat corpus and the Yajnadevam corpus, providing two independent consistency measurements per sign.
+The SA pipeline tests whether signs can be mapped to Proto-Dravidian syllables by optimising a bigram log-likelihood score against a Dravidian language model (7,514 words from Tamil-Brahmi inscriptions and DEDR cognates). Protocol: 10K–50K iterations × 5–8 restarts × 8–10 seeds per run, with GPU-accelerated BigramScorer (CuPy). Signs with SA consistency ≥0.15 (fraction of seeds agreeing on the modal reading) and a DEDR entry matching the modal reading are promoted. The SA was run independently on both the Holdat corpus and the Yajnadevam corpus, providing two independent consistency measurements per sign.
 
 ### 2.5 Substrate and External Validation
 
@@ -198,7 +198,7 @@ We tested whether isolated fish signs encode commodity units while compound fish
 | All others | — | 28 | 0 (0%) | 28 (100%) |
 | **Total** | | **113** | **0 (0%)** | **113 (100%)** |
 
-The fish sign is **never** isolated in the formal stamp seal corpus. Convergent evidence from the Gulf seal tradition: Dilmun-style seals at Failaka Island (Hojlund & Abu-Laban 2012) show fish in compound pictorial contexts exclusively. Laursen (2010) Gulf deposit catalogue: 0/27 Gulf contexts contain isolated fish signs. Combined: **0/140** across all tested formal-seal contexts.
+The fish sign is **never** isolated in the formal inscribed seal-object corpus. Convergent evidence from the Gulf seal tradition: Dilmun-style seal objects at Failaka Island (Hojlund & Abu-Laban 2012) show fish in compound pictorial contexts exclusively. Laursen (2010) Gulf deposit catalogue: 0/27 Gulf contexts contain isolated fish signs. Combined: **0/140** across all tested formal seal-object contexts.
 
 ### 3.6 Simulated Annealing Results
 
@@ -289,9 +289,13 @@ Bootstrap confidence intervals (n=1,000 resamples) for all 36 site-pair KL diver
 
 Independent replication (Nair 2026, arXiv:2604.17828): Applying a multi-metric discrimination framework to 1,916 deduplicated ICIT inscriptions (584 unique signs, 11,110 tokens), Nair reports Zipf slope −1.49, conditional entropy 3.23 bits, and permutation null percentile 0.000 against 1,000 permutation trials. This independently replicates our structural finding (*z*=10.3; 0/2000 permutations exceeded the observed statistic) on an entirely separate dataset with an independent methodology. Nair's STRONGLY_LINGUISTIC verdict (4/4 scorecard) provides strong converging evidence for non-random sequential structure across three independent corpora.
 
-### 3.16 Non-Linguistic Hypothesis Falsification
+### 3.16 Non-Linguistic Hypothesis Assessment
 
-The hypothesis that IVS encodes a non-linguistic system (Farmer, Sproat & Witzel 2004) is tested via conditional entropy analysis. **Result**: H~1~=5.384 bits (evidence item E28), exceeding the 3.5-bit maximum predicted by the metrological/non-linguistic hypothesis. The Zipf exponent α=0.979 is consistent with syllabic writing systems. Combined with Nair's independent replication and the 6.3× grammar lift, the non-linguistic hypothesis is falsified under the tested parameters.
+The hypothesis that IVS encodes a non-linguistic system (Farmer, Sproat & Witzel 2004) is tested via multiple metrics. **Conditional entropy**: H~1~=5.384 bits on the Holdat corpus (evidence item E28), exceeding the 3.5-bit maximum predicted by the metrological/non-linguistic hypothesis. On the merged 7,138-inscription corpus, H~1~=3.53 bits — near the boundary. The Zipf exponent α=−1.70 is compatible with writing systems containing syllabic or phonetic components.
+
+**Comparison with structured non-linguistic systems (Sproat 2014)**: Sproat (2014) demonstrated that conditional entropy alone does not reliably distinguish writing from structured non-linguistic systems. We computed Sproat's r/R repetition rate — the ratio of adjacent-repeat symbols to all repeated symbols — on the IVS corpus: r/R=0.83. This value falls in the non-linguistic range (linguistic systems typically show r/R<0.10; non-linguistic systems r/R>0.50). However, r/R is partially confounded with text length (Sproat 2014), and IVS inscriptions average only ~3.4 signs — far shorter than running prose in any language. The high r/R reflects the formulaic, short-text character of seal inscriptions, not necessarily non-linguistic status.
+
+The non-linguistic hypothesis is therefore not straightforwardly falsified by entropy metrics alone. The stronger evidence against the non-linguistic hypothesis comes from the convergence of multiple independent lines: the 6.3× tripartite grammar lift across 76 sites, the 83.7% SA consistency on an independent corpus, the 0/34 Sanskrit falsification, the 7 Elamite cognate matches, and Nair's independent STRONGLY_LINGUISTIC verdict on the ICIT corpus. These structural and decipherment results go beyond what statistical metrics can adjudicate and provide the substantive case for linguistic status.
 
 ### 3.17 Master Evidence Synthesis
 
@@ -305,7 +309,7 @@ Forty-one evidence items (E01–E41) across eight independent evidence lines:
 | Decipherment | 4 | 605 HIGH signs; M267 correction; fish 0/140 |
 | Cross-corpus | 3 | Yajnadevam 83.7% SA; CISI 46.5% tripartite; Nair STRONGLY_LINGUISTIC |
 | Falsification | 3 | Sanskrit 0/34; non-linguistic H~1~=5.384; Rakhigarhi aDNA 0% steppe |
-| Typological | 2 | Zipf α=0.979; conditional entropy consistent with syllabic |
+| Typological | 2 | Zipf α=0.979; conditional entropy compatible with syllabic/logo-syllabic encoding |
 | Onomastic | 1 | TB name concordance 58%, z=16.2 |
 
 Fisher combined *p*≈10^−15^ for Proto-Dravidian affiliation across the external corroboration evidence items. This is not a single-test result but a meta-analytic combination of independent evidence lines.
@@ -322,6 +326,8 @@ Under the grammar model, a typical seal reads as:
 - **M062 M342 M176** = *erutu-ay-an* = "the bull's man" (zebu bull seal)
 - **M045 M176 M267 M328** = *yānai-an-iN-āl* = "the elephant guild man's man"
 
+The proposed model is mixed logo-syllabic: Slot 1 signs are logographic (animal classifier = whole-word icon reading), Slot 2 signs are syllabic/phonetic (personal name components), and Slot 3 signs are grammatical suffixes. This mixed typology is consistent with the statistical profile, which indicates syllabic/phonetic *components* within a broader logo-syllabic system.
+
 This is not a commodity ledger — it is a directory of guild members, analogous to a professional seal or signet ring in later South Asian tradition. The Arthaśāstra (4th century BCE) documents nearly identical guild-superintendent titles. This interpretation is consistent with later South Asian administrative vocabulary, but the proposed continuity remains speculative.
 
 ### 4.2 Substrate Evidence
@@ -335,11 +341,14 @@ Prior to the Yajnadevam expansion, 18 signs with Holdat corpus frequency 5–7 r
 ### 4.4 Limitations
 
 1. **No bilingual text**: All readings remain probabilistic until a bilingual inscription (IVS + Sumerian, Akkadian, or Sanskrit) is discovered.
-2. **Corpus composition**: The Holdat corpus covers formal stamp seals only. Copper tablets, potsherd graffiti, and the Dholavira signboard require separate analysis.
+2. **Corpus composition**: The Holdat corpus covers formal inscribed seal objects only. Copper tablets, potsherd graffiti, and the Dholavira signboard require separate analysis.
 3. **SA training data**: The syllabic language model is trained on modern Tamil and Tamil-Brahmi data; phonological drift over 4,000 years may introduce systematic errors.
 4. **Crosswalk coverage**: The Yajnadevam crosswalk covers 316/707 signs (69.3% token coverage). Full crosswalk requires resolution of the remaining Yajnadevam sign encodings.
 5. **Language-family baseline**: The present model tests Proto-Dravidian compatibility more extensively than competing baselines. A formal quantitative comparison against Proto-Munda, early Indo-Aryan, and language-neutral syllabic models remains necessary before the linguistic interpretation can be treated as fully discriminative rather than compatible with Proto-Dravidian. The 0/34 Sanskrit falsification and 35:0 phonological exclusivity ratio provide strong but not exhaustive discrimination.
-6. **Evidence independence**: Some evidence items share underlying data (e.g., grammar lift and SA consistency both use the same corpus). The Fisher combined *p* should be interpreted as indicative rather than exact.
+6. **Statistical discriminability**: Conditional entropy and Zipf slope do not by themselves distinguish writing from structured non-linguistic systems (Sproat 2014). The IVS r/R repetition rate (0.83) falls in the non-linguistic range, though this is confounded by short mean text length (~3.4 signs). The case for linguistic status rests on the convergence of structural, decipherment, and external validation evidence rather than on any single statistical metric.
+7. **Typological classification**: The statistical profile (Zipf slope, conditional entropy) is compatible with a script containing syllabic or phonetic components but does not by itself determine whole-system typology. The proposed model is mixed logo-syllabic (classifier/logographic + phonetic/syllabic + grammatical suffix); this classification remains provisional pending stronger external validation.
+8. **Dravidianist review**: The candidate Proto-Dravidian readings have not yet been evaluated by a specialist in Dravidian historical linguistics or Old Tamil. Until such review is complete, all readings should be treated as computational hypotheses requiring expert validation. A Dravidianist review packet is available in the repository.
+9. **Evidence independence**: Some evidence items share underlying data (e.g., grammar lift and SA consistency both use the same corpus). The Fisher combined *p* should be interpreted as indicative rather than exact.
 
 ### 4.5 Validation Path
 
@@ -358,7 +367,7 @@ We propose a reproducible computational grammar and complete Proto-Dravidian anc
 
 **Tier 1 (Structural — High Confidence)**: Robust non-random positional structure (*z*=10.3; 0/2000 permutations exceeded the observed statistic). Tripartite grammar confirmed at 6.3× above null across 76 sites. Fish-sign compound-only pattern (0/140). M267 correction confirmed by six independent evidence lines.
 
-**Tier 2 (Decipherment — Supported by Multiple Tests)**: 605 sign readings at HIGH confidence with 100% token coverage on the Holdat corpus. SA consistency of 83.7% on the independent Yajnadevam corpus. Sanskrit hypothesis falsified 0/34. Non-linguistic hypothesis falsified (H~1~=5.384). External corroboration via Elamite cognates and Sanskrit substrate (Fisher *p*≈10^−15^). Tamil-Brahmi name concordance 58% (*z*=16.2).
+**Tier 2 (Decipherment — Supported by Multiple Tests)**: 605 sign readings at HIGH confidence with 100% token coverage on the Holdat corpus. SA consistency of 83.7% on the independent Yajnadevam corpus. Sanskrit hypothesis falsified 0/34. Non-linguistic hypothesis: conditional entropy H~1~=5.384 exceeds metrological maximum (see §3.16 for caveats). External corroboration via Elamite cognates and Sanskrit substrate (Fisher *p*≈10^−15^). Tamil-Brahmi name concordance 58% (*z*=16.2).
 
 **Tier 3 (Interpretive — Caveated)**: Guild-identity seal semantics. Arthaśāstra administrative continuity. Munda substrate readings. Individual seal translations.
 
@@ -385,6 +394,7 @@ Mahadevan (1977) for the sign catalogue. Parpola (1994, 2010) for the Dravidian 
 - Burrow, T. & Emeneau, M.B. (1984). *A Dravidian Etymological Dictionary* (2nd ed.). Oxford: Clarendon Press. [DEDR]
 - Crawford, H. (2001). *Early Dilmun Seals from Saar*. Archaeology International.
 - Farmer, S., Sproat, R. & Witzel, M. (2004). The Collapse of the Indus-Script Thesis. *Electronic Journal of Vedic Studies*, 11(2), 19–57.
+- Gokhale, P. & Ameri, M. (2026). Modelling the possible archaeological past(s): Agent-based modelling of Harappan seal use and survival. *Computer Applications and Quantitative Methods in Archaeology Proceedings*, 51(1), Article 3. https://doi.org/10.64888/caaproceedings.v51i1.1025
 - Fuls, A. (2013). Positional analysis of the Indus script. *Berliner Indologische Studien*, 21, 39–64.
 - Hojlund, F. & Abu-Laban, A. (2012). *Tell F6 on Failaka Island: Kuwaiti-Danish Excavations 2008–2012*. Jutland Archaeological Society.
 - Kjaerum, P. (1983). *Failaka/Dilmun: The Second Millennium Settlements, Vol. 1: The Stamp and Cylinder Seals*. Aarhus: Jutland Archaeological Society.
@@ -404,6 +414,8 @@ Mahadevan (1977) for the sign catalogue. Parpola (1994, 2010) for the Dravidian 
 - Rao, R.P.N. et al. (2009). A Markov model of the Indus Script. *PNAS*, 106(33), 13685–13690.
 - Reade, J.E. (2001). Assyrian king-lists, the royal tombs of Ur, and Indus origins. *Journal of Near Eastern Studies*, 60(1), 1–29.
 - Shinde, V. et al. (2019). An Ancient Harappan Genome Lacks Ancestry from Steppe Pastoralists or Iranian Farmers. *Cell*, 179(3), 729–735.
+- Sproat, R. (2014). A statistical comparison of written language and nonlinguistic symbol systems. *Language*, 90(2), 457–481.
+- Sproat, R. (2023). *Symbols: An Evolutionary History from the Stone Age to the Future*. Heidelberg: Springer.
 - Southworth, F. (2005). *Linguistic Archaeology of South Asia*. London: Routledge.
 - Steinkeller, P. (1982). On the identity of the toponym LÚ.SU(.A). *Journal of the American Oriental Society*, 102(2), 299–309.
 - Wells, B. (2011). *The Archaeology and Epigraphy of Indus Writing*. Oxford: Archaeopress.

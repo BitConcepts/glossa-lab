@@ -1,0 +1,26 @@
+{
+  "test": "Discriminative LM: Hebrew vs Dravidian on Indus corpus",
+  "method": "Frequency-rank mapping (most frequent Indus sign -> most frequent LM symbol)",
+  "corpus": {
+    "tokens": 11705,
+    "inscriptions": 2784,
+    "distinct_signs": 389
+  },
+  "hebrew_lm": {
+    "alphabet_size": 22,
+    "n_bigrams": 440,
+    "score_per_token": -7.4956,
+    "total_score": -87736.2926
+  },
+  "dravidian_lm": {
+    "alphabet_size": 68,
+    "n_bigrams": 1399,
+    "score_per_token": -14.0614,
+    "total_score": -164588.2714
+  },
+  "comparison": {
+    "winner": "Hebrew",
+    "delta_score_per_token": -6.5657,
+    "ratio": 1.8759
+  }
+}

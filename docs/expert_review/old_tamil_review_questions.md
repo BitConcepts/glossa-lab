@@ -1,8 +1,8 @@
-# Review Questions for Dravidianist / Old Tamil Specialists
+\newpage
 
-These questions are designed to solicit expert critique of the proposed
-Proto-Dravidian readings for the Indus Script. We ask for honest assessment,
-not endorsement.
+# Section 7: Review Questions for Dravidianist / Old Tamil Specialists
+
+These questions are designed to solicit expert critique of the proposed Proto-Dravidian readings for the Indus Script. We ask for honest assessment, not endorsement.
 
 ---
 
@@ -62,8 +62,8 @@ not endorsement.
 13. Which specific readings in `dravidianist_anchor_subset.csv` should
     be downgraded from HIGH confidence or removed entirely?
 
-14. Are there readings where the iconographic basis (sign shape →
-    Dravidian word → phonetic reading) is unconvincing?
+14. Are there readings where the iconographic basis (sign shape to
+    Dravidian word to phonetic reading) is unconvincing?
 
 15. Are there alternative Dravidian etymologies for any signs that
     would fit better than our proposed readings?

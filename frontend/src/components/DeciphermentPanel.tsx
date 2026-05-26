@@ -156,11 +156,22 @@ export function DeciphermentPanel() {
         <ProgressBar value={hmSignPct}    color="#3b82f6" label={`H+M anchor coverage (${nHM}/${totalAnchors} sign readings confirmed)`} />
         <ProgressBar value={highSignPct}  color="#15803d" label={`HIGH confidence (${high} signs — SA + DEDR + external corroboration)`} />
 
+        {/* ICIT 2026 inventory coverage */}
+        {(data.anchors as any).icit_total_signs && (
+          <ProgressBar
+            value={Math.round(((data.anchors as any).icit_coverage_pct ?? 0) * 100)}
+            color="#8b5cf6"
+            label={`ICIT 2026 inventory coverage (${totalAnchors}/${(data.anchors as any).icit_total_signs} signs — ${Math.round(((data.anchors as any).icit_coverage_pct ?? 0) * 100)}%)`}
+          />
+        )}
+
         {/* Status footer */}
         <div style={{ marginTop: 10, fontSize: 11, color: "#6b7280" }}>
-          {nHM >= totalAnchors
-            ? `All ${totalAnchors} signs have proposed readings (${high} HIGH, ${medium} MEDIUM). Primary blocker: ICIT corpus (Fuls 2014, 4,537 objects) needed for token coverage > 91%.`
-            : `${totalAnchors - nHM} sign(s) remaining without proposed readings.`
+          {(data.anchors as any).icit_total_signs
+            ? `${totalAnchors} of ${(data.anchors as any).icit_total_signs} ICIT signs have proposed readings (${high} HIGH, ${medium} MEDIUM). The ICIT corpus was updated to 713 signs with corrected inscriptions in 2026 (Fuls, personal communication); ${(data.anchors as any).icit_total_signs - totalAnchors} signs in the 2026 revision were not in the publicly accessible version.`
+            : nHM >= totalAnchors
+              ? `All ${totalAnchors} signs have proposed readings (${high} HIGH, ${medium} MEDIUM).`
+              : `${totalAnchors - nHM} sign(s) remaining without proposed readings.`
           }
         </div>
       </div>

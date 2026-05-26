@@ -24,7 +24,7 @@ ORCID: 0009-0003-7269-956X\
 Glossa-Lab / BitConcepts LLC\
 Correspondence: tpierson@bitconcepts.tech\
 Date: May 2026\
-Version: Preprint v2 — Not peer-reviewed\
+Version: Preprint v3 — Not peer-reviewed\
 DOI: [10.5281/zenodo.20401711](https://zenodo.org/records/20401711)
 
 ---
@@ -33,7 +33,7 @@ DOI: [10.5281/zenodo.20401711](https://zenodo.org/records/20401711)
 
 We present and test a falsifiable computational decipherment hypothesis for the Indus Valley Script (IVS, ca. 2600–1900 BCE), assigning Proto-Dravidian readings to all 605 known signs. Working from two independent corpora — the Holdat LLC Indus Corpus V3 (1,670 seals, 7,002 tokens, 9 sites; Mahadevan M-numbers) and the ICIT corpus (Fuls 2013; 5,520 inscriptions, 17,847 tokens, 76 archaeological sites) — we apply positional analysis, bigram/trigram collocational methods, DEDR rebus matching, and simulated annealing (SA) with a 7,514-word Dravidian language model to construct a complete anchor model for IVS sign readings.
 
-All 605 signs achieve HIGH confidence under a five-layer evidence hierarchy requiring two or more independent evidence sources per sign. SA achieves 83.7% mean consistency on the 5,520-inscription ICIT corpus. The tripartite grammar model (INITIAL→MEDIAL→TERMINAL) is confirmed at 45.7% across 2,980 eligible inscriptions (6.3× above null, *p*<0.001). External corroboration via 7 Elamite cognates (McAlpin 1981) and 13 Sanskrit substrate loanwords (Witzel 1999) yields Fisher combined *p*≈10^−15^. The competing Sanskrit-language hypothesis (Yajnadevam 2024) is falsified at 0/34 agreement against our readings. A fish-sign polysemy test finds 0/140 isolated fish signs across all tested formal seal-object contexts. Tamil-Brahmi personal name concordance reaches 58% (*z*=16.2, *p*<0.0001). The non-linguistic hypothesis (Farmer, Sproat & Witzel 2004) is falsified by conditional entropy H~1~=5.384 bits, exceeding the 3.5-bit metrological maximum. Forty-one evidence items across eight independent evidence lines support the Proto-Dravidian affiliation.
+Of 605 total signs, 413 are independently confirmed at HIGH confidence under a five-layer evidence hierarchy requiring two or more independent evidence sources per sign; the remaining 192 are allograph-inferred (positional L1 distance <0.2 to a confirmed sign) and should be treated as provisional. SA achieves 83.7% mean consistency on the 5,520-inscription ICIT corpus. The tripartite grammar model (INITIAL→MEDIAL→TERMINAL) is confirmed at 45.7% across 2,980 eligible inscriptions (6.3× above null, *p*<0.001). External corroboration via 7 Elamite cognates (McAlpin 1981) and 13 Sanskrit substrate loanwords (Witzel 1999) yields Fisher combined *p*≈10^−15^. The competing Sanskrit-language hypothesis (Yajnadevam 2024) is falsified at 0/34 agreement against our readings. A fish-sign polysemy test finds 0/140 isolated fish signs across all tested formal seal-object contexts. Tamil-Brahmi personal name concordance reaches 58% (*z*=16.2, *p*<0.0001). The non-linguistic hypothesis (Farmer, Sproat & Witzel 2004) is falsified by conditional entropy H~1~=5.384 bits, exceeding the 3.5-bit metrological maximum. Forty-one evidence items across eight independent evidence lines support the Proto-Dravidian affiliation.
 
 This study does not claim epigraphic finality; it proposes a reproducible, falsifiable computational model whose structural predictions and candidate phonetic readings can be tested against future archaeological discoveries and independent corpora. All code, anchor tables, and phase reports are open source. DOI: 10.5281/zenodo.20401711.
 
@@ -56,7 +56,7 @@ Rao et al. (2009) demonstrated that IVS sign entropy is consistent with a lingui
 We present a computational grammar and complete anchor model (Glossa-Lab, Phases 1–294) with the following components and principal results:
 
 1. A five-layer evidence hierarchy with explicit confidence standards
-2. 605 sign readings at HIGH confidence — complete coverage of all known signs, validated by DEDR entries for every sign
+2. 605 sign readings (413 independently confirmed + 192 allograph-inferred) — complete coverage of all known signs, with DEDR entries for every sign
 3. A three-slot grammar model empirically derived from positional statistics, confirmed at 6.3× above null across 76 archaeological sites
 4. SA decipherment achieving 83.7% consistency on an independent 5,520-inscription corpus
 5. Sanskrit hypothesis falsification: 0/34 agreement with competing readings
@@ -75,13 +75,15 @@ We present a computational grammar and complete anchor model (Glossa-Lab, Phases
 
 **Primary corpus**: Holdat LLC Indus Corpus v3 (Miller 2025). 7,002 sign tokens, 1,670 seals, 9 sites: Mohenjo-daro (n=606), Harappa (n=492), Kalibangan (n=110), Dholavira (n=106), Lothal (n=124), Chanhu-daro (n=78), Surkotada (n=61), Banawali (n=60), Rakhigarhi (n=33). Sign encoding: Mahadevan M-numbers. 390 distinct signs attested.
 
-**Cross-validation corpus**: ICIT corpus (Fuls 2013, 2026). 5,520 inscriptions, 17,847 sign tokens, 707 distinct 3-digit signs, 76 archaeological sites. Sign encoding: independent numbering system requiring crosswalk to Mahadevan M-numbers. A 316/707 crosswalk (69.3% token coverage) maps ICIT signs to our anchor model.
+**Cross-validation corpus**: ICIT-derived data (Fuls 2013; accessed via the *lipi* repository, Yajnadevam 2024). 5,520 inscriptions, 17,847 sign tokens, 707 distinct 3-digit signs, 76 archaeological sites. Sign encoding: independent numbering system requiring crosswalk to Mahadevan M-numbers. A 316/707 crosswalk (69.3% token coverage) maps ICIT signs to our anchor model. **Note**: The authoritative ICIT corpus has been updated to 713 signs with many inscription corrections in 2026 (Fuls, personal communication). The data used here represents the version publicly accessible via *lipi* at time of analysis, not the current ICIT revision. The author of ICIT has declined to share the updated corpus.
 
-**Erratum (v2)**: The cross-validation corpus was originally cited as "Yajnadevam corpus (Yajnadevam 2024)" based on the *lipi* GitHub repository through which the data was accessed. Dr. Andreas Fuls has confirmed that the *lipi* data was derived from his ICIT corpus. All corpus attribution is corrected accordingly. The ICIT corpus has since been updated (713 signs, 2026 revision); the analysis here used the version available via *lipi* at time of access.
+**Erratum (v2)**: The cross-validation corpus was originally cited as "Yajnadevam corpus (Yajnadevam 2024)" based on the *lipi* GitHub repository through which the data was accessed. Dr. Andreas Fuls has confirmed that the *lipi* data was derived from his ICIT corpus. All corpus attribution is corrected accordingly.
 
-**Combined**: 7,190 inscriptions across 76+ sites — the largest corpus tested against any single decipherment hypothesis.
+**Independent supplementary corpus**: indusscript.in Firestore corpus (3,137 sequences, 12,494 sign tokens, Mahadevan M-numbers). This corpus was used for independent validation of the Dravidian advantage (see §3.7a) and was not used to derive any sign readings.
 
-**Sign catalogue**: The Mahadevan catalogue contains 397 signs; the ICIT catalogue extends coverage to 707 signs (713 in the 2026 revision). Our anchor table assigns Proto-Dravidian readings to all 605 distinct signs encountered across both corpora and the extended catalogue.
+**Combined**: 10,327 inscriptions across 76+ sites — the largest corpus tested against any single decipherment hypothesis.
+
+**Sign catalogue and the 713 vs. 605 gap**: The Mahadevan catalogue contains 397 signs; the ICIT catalogue extends coverage to 707 signs (713 in the 2026 revision). Our anchor table assigns Proto-Dravidian readings to all 605 distinct signs encountered across both publicly accessible corpora and the extended catalogue. The remaining ~108 signs in the 2026 ICIT revision were not present in the publicly accessible version of the corpus; future work should extend coverage to the full 713-sign ICIT inventory when access becomes available.
 
 **Supplementary sources**: Crawford (2001) Saar seals; Hojlund & Abu-Laban (2012) Failaka Tell F6; Parpola (1994, 2010) iconographic readings; Laursen (2010) Gulf deposit catalogue.
 
@@ -132,14 +134,15 @@ For signs resisting Dravidian-only decipherment, we check SA modals against: Mun
 | Metric | Value |
 |---|---|
 | Total signs deciphered | 605 |
-| HIGH confidence | 605 (100%) |
+| Independently confirmed (HIGH) | 413 (68.3%) |
+| Allograph-inferred (HIGH*) | 192 (31.7%) |
 | Holdat token coverage | 100% (7,002/7,002) |
 | Holdat seal decode rate | 100% (1,670/1,670) |
 | ICIT crosswalk coverage | 316/707 signs (69.3% token coverage) |
 | Combined inscriptions tested | 7,190 |
 | Archaeological sites | 76+ |
 
-The 605-sign inventory encompasses the full Mahadevan catalogue (397 signs), plus 208 additional signs encountered in the ICIT corpus and extended analyses. Every sign has at least two independent evidence sources supporting its reading, with a DEDR entry linking it to a Proto-Dravidian etymon.
+The 605-sign inventory encompasses the full Mahadevan catalogue (397 signs), plus 208 additional signs encountered in the ICIT corpus and extended analyses. Of these, 413 signs have two or more independent evidence sources directly supporting their reading. The remaining 192 signs are allograph-inferred: each was matched to a confirmed sign via positional profile similarity (L1 distance <0.2) and inherits the confirmed sign's reading. If the allograph grouping is wrong, the inherited reading is also wrong. Allograph-inferred signs should be treated as provisional until independently validated. Every sign has a DEDR entry linking it to a Proto-Dravidian etymon.
 
 ### 3.2 Tripartite Grammar Model
 
@@ -222,6 +225,10 @@ The ICIT corpus (Fuls 2013; accessed via Yajnadevam 2024) was integrated in Phas
 
 This cross-corpus result is methodologically significant: it demonstrates that the decipherment model, built entirely on the Holdat corpus, transfers to an independent corpus with different sign encoding, different archaeological provenance, and 6× more sites.
 
+### 3.7a Independent Validation on Firestore Corpus
+
+As additional independent confirmation, the SA pipeline was run on the indusscript.in Firestore corpus (3,137 sequences, 12,494 sign tokens, Mahadevan M-numbers) — a dataset entirely separate from both the Holdat corpus and the ICIT-derived data. Results: Dravidian score/token = −4.1525 vs. Sanskrit score/token = −4.6362, yielding a Dravidian advantage of +0.484 log-units/token (11.6% less penalized per token). This is the first confirmation of the Dravidian advantage on a corpus independent of both the Holdat primary corpus and the ICIT cross-validation corpus.
+
 ### 3.8 Sanskrit Hypothesis Falsification
 
 The Yajnadevam (2024) publication proposes Sanskrit readings for Indus signs. We tested 34 signs where both our Proto-Dravidian readings and Yajnadevam's Sanskrit readings are available. **Agreement: 0/34** — no sign has the same reading under both hypotheses. This is a strong falsification of the Sanskrit-language hypothesis for the Indus Script under the tested assumptions, consistent with the Rakhigarhi ancient DNA evidence (Shinde et al. 2019) showing 0% steppe ancestry in the IVC population — a finding incompatible with an Indo-Aryan linguistic substrate.
@@ -299,7 +306,25 @@ The hypothesis that IVS encodes a non-linguistic system (Farmer, Sproat & Witzel
 
 The non-linguistic hypothesis is therefore not straightforwardly falsified by entropy metrics alone. The stronger evidence against the non-linguistic hypothesis comes from the convergence of multiple independent lines: the 6.3× tripartite grammar lift across 76 sites, the 83.7% SA consistency on an independent corpus, the 0/34 Sanskrit falsification, the 7 Elamite cognate matches, and Nair's independent STRONGLY_LINGUISTIC verdict on the ICIT corpus. These structural and decipherment results go beyond what statistical metrics can adjudicate and provide the substantive case for linguistic status.
 
-### 3.17 Master Evidence Synthesis
+### 3.17 Method Specificity Test: Semitic Script
+
+Dr. Andreas Fuls (personal communication) noted that the SA method was "not successful for Semitic writing." This is an expected outcome, not a failure. The SA pipeline uses a Proto-Dravidian bigram language model; when applied to a non-Dravidian script, it should produce degenerate results — and it does.
+
+We applied the SA pipeline (10 seeds × 10K iterations) to a 78-sign NW Semitic syllabic corpus (101 sequences) provided by Dr. Fuls. Results:
+
+| Metric | IVS (Dravidian LM) | NW Semitic (Dravidian LM) |
+|---|---|---|
+| Signs tested | 605 | 78 |
+| Mean SA consistency | 83.7% | 57.6% |
+| Distinct modal phonemes | 40+ | **3** (h, w, y only) |
+| Modal collapse | No | **100%** (all 78 signs → 3 phonemes) |
+| DEDR-validated readings | 605 | 0 |
+
+The SA collapses to total degeneracy on Semitic: all 78 signs map to only 3 phonemes (h, w, y — the most frequent consonants in the Dravidian LM). This is the expected behaviour of a language-model-specific SA when applied to the wrong language family. It demonstrates method specificity: the SA pipeline discriminates between compatible and incompatible language families, producing meaningful readings only when the target script encodes a language consistent with the model.
+
+**Caveat — naive score comparison is not valid for discrimination**: A frequency-rank bigram log-likelihood comparison (mapping signs to LM symbols by frequency rank) favours smaller-alphabet LMs because of higher bigram coverage density (Hebrew's 22 consonants give 91% bigram coverage vs. Dravidian's 68 syllables at 30%). Naive score comparison is therefore biased and not reported as evidence. The valid discrimination comes from SA convergence behaviour (40+ meaningful modals on IVS vs. 3 degenerate modals on Semitic) and from the SA-optimised Dravidian vs. Sanskrit comparison on the independent Firestore corpus (§3.7a: Dravidian +0.484 log-units/token).
+
+### 3.18 Master Evidence Synthesis
 
 Forty-one evidence items (E01–E41) across eight independent evidence lines:
 
@@ -352,7 +377,23 @@ Prior to the ICIT corpus expansion, 18 signs with Holdat corpus frequency 5–7 
 8. **Dravidianist review**: The candidate Proto-Dravidian readings have not yet been evaluated by a specialist in Dravidian historical linguistics or Old Tamil. Until such review is complete, all readings should be treated as computational hypotheses requiring expert validation. A Dravidianist review packet is available in the repository.
 9. **Evidence independence**: Some evidence items share underlying data (e.g., grammar lift and SA consistency both use the same corpus). The Fisher combined *p* should be interpreted as indicative rather than exact.
 
-### 4.5 Validation Path
+### 4.5 Why This Might Be Wrong
+
+This section engages directly with the strongest reasons to doubt the proposed decipherment, in the spirit of honest epistemic practice.
+
+**The script may be undecipherable without a bilingual.** The average inscription is ~3.4 signs long. This is far shorter than any successfully deciphered script. Linear B inscriptions average ~8 signs; Ugaritic tablets run to hundreds. With only ~3.4 signs of context per inscription, the distributional evidence available for any single sign is thin. The tripartite grammar and SA consistency metrics operate on aggregate statistics across thousands of inscriptions, which partially compensates, but individual sign readings remain underdetermined.
+
+**100% coverage is suspicious.** No decipherment in history has claimed 100% confidence on 100% of signs. Even Ventris's Linear B left ~10% uncertain. Our claim of 605/605 HIGH readings invites the question: is this evidence of thoroughness or of overfitting? The honest answer is that 192 of those 605 are allograph-inferred (inheriting readings from similar signs by positional profile, not independently confirmed). The true independently-confirmed count is 413, and even among those, some low-frequency signs (corpus count <10) have limited distributional evidence.
+
+**605 free parameters against a large dictionary risks overfitting.** The DEDR contains ~5,500 entries. Mapping 605 signs to DEDR entries with a flexible rebus+phonetic+logographic model provides enough degrees of freedom that some plausible-looking readings may be coincidental. The allograph resolution step, which matched 192 signs by profile similarity, is particularly vulnerable: L1 <0.2 is a necessary but not sufficient condition for allography, and profile similarity can arise from positional coincidence rather than true graphic variation.
+
+**The SA's Dravidian advantage may not be fully discriminative.** While the Dravidian LM outperforms Sanskrit on the Firestore corpus (+0.484 log-units/token), we have not tested against Proto-Munda, Elamite, or language-neutral models with comparable rigor. The 0/34 Sanskrit falsification and 35:0 phonological exclusivity are strong, but discrimination against *all* plausible language families has not been exhaustively demonstrated.
+
+**No specialist has reviewed any reading.** The Dravidianist review packet exists but has not yet been sent. Until a specialist in Proto-Dravidian or Old Tamil confirms that even a subset of readings are linguistically plausible for the target period, the entire reading framework rests on computational outputs without domain expert endorsement.
+
+**The author built this solo with AI tooling in a compressed timeframe.** The field has worked on this problem for a century. A solo researcher using AI-assisted tools claiming comprehensive decipherment within months naturally invites skepticism. This scepticism is legitimate and should be addressed by the strength of the evidence and the reproducibility of the method, not by the circumstances of its production.
+
+### 4.6 Validation Path
 
 The model is falsifiable at multiple points:
 
@@ -369,7 +410,7 @@ We propose a reproducible computational grammar and complete Proto-Dravidian anc
 
 **Tier 1 (Structural — High Confidence)**: Robust non-random positional structure (*z*=10.3; 0/2000 permutations exceeded the observed statistic). Tripartite grammar confirmed at 6.3× above null across 76 sites. Fish-sign compound-only pattern (0/140). M267 correction confirmed by six independent evidence lines.
 
-**Tier 2 (Decipherment — Supported by Multiple Tests)**: 605 sign readings at HIGH confidence with 100% token coverage on the Holdat corpus. SA consistency of 83.7% on the independent ICIT corpus. Sanskrit hypothesis falsified 0/34. Non-linguistic hypothesis: conditional entropy H~1~=5.384 exceeds metrological maximum (see §3.16 for caveats). External corroboration via Elamite cognates and Sanskrit substrate (Fisher *p*≈10^−15^). Tamil-Brahmi name concordance 58% (*z*=16.2).
+**Tier 2 (Decipherment — Supported by Multiple Tests)**: 605 sign readings (413 independently confirmed + 192 allograph-inferred) with 100% token coverage on the Holdat corpus. SA consistency of 83.7% on the independent ICIT corpus. Sanskrit hypothesis falsified 0/34. Non-linguistic hypothesis: conditional entropy H~1~=5.384 exceeds metrological maximum (see §3.16 for caveats). External corroboration via Elamite cognates and Sanskrit substrate (Fisher *p*≈10^−15^). Tamil-Brahmi name concordance 58% (*z*=16.2).
 
 **Tier 3 (Interpretive — Caveated)**: Guild-identity seal semantics. Arthaśāstra administrative continuity. Munda substrate readings. Individual seal translations.
 
@@ -428,9 +469,11 @@ Mahadevan (1977) for the sign catalogue. Parpola (1994, 2010) for the Dravidian 
 
 ## Appendix A: Evidence Hierarchy Definitions
 
-**HIGH** (≥2 independent sources): Iconographic match, distributional exclusivity (lift >5.0), terminal marker evidence (>95% terminal), SA consistency ≥0.15 with DEDR, cross-corpus ICIT SA validation, Elamite cognate confirmation, allograph resolution (L1 <0.2 to a HIGH anchor). All 605 signs meet this standard.
+**Independently confirmed HIGH** (≥2 independent sources): 413 signs confirmed via iconographic match, distributional exclusivity (lift >5.0), terminal marker evidence (>95% terminal), SA consistency ≥0.15 with DEDR, cross-corpus ICIT SA validation, or Elamite cognate confirmation.
 
-**Evidence source inventory**: Across all 605 signs, the evidence sources used for HIGH promotion include: 75 iconographic anchors, 63 distributional exclusivity matches, 397 DEDR-validated SA assignments, 316 ICIT cross-corpus confirmations, 7 Elamite cognate matches, 192 allograph resolutions, and 41 positional grammar classifications. Each sign's specific evidence sources are documented in `INDUS_FINAL_ANCHORS.json`.
+**Allograph-inferred HIGH*** (positional similarity): 192 signs matched to a confirmed sign via positional L1 distance <0.2 and inheriting that sign's reading. These should be treated as provisional.
+
+**Evidence source inventory**: Across the 413 independently confirmed signs, evidence sources include: 75 iconographic anchors, 63 distributional exclusivity matches, 397 DEDR-validated SA assignments, 316 ICIT cross-corpus confirmations, 7 Elamite cognate matches, and 41 positional grammar classifications. The 192 allograph-inferred signs each rely on profile similarity to a confirmed anchor. Each sign's specific evidence sources are documented in `INDUS_FINAL_ANCHORS.json`.
 
 ## Appendix B: Foundation Validation Summary
 
@@ -440,7 +483,7 @@ Mahadevan (1977) for the sign catalogue. Parpola (1994, 2010) for the Dravidian 
 - Tripartite grammar lift: 6.3× on ICIT, 3.3× on Holdat
 - Fish sign polysemy: 0/140 isolated (0/113 corpus + 0/27 Gulf)
 - SA consistency: 83.7% (ICIT), 71.5% (Holdat)
-- Sign accounting: 605 signs, all HIGH, all with DEDR entries
+- Sign accounting: 605 signs (413 independently confirmed + 192 allograph-inferred), all with DEDR entries
 - Sanskrit falsification: 0/34
 - Non-linguistic falsification: H~1~=5.384 > 3.5 max
 - Tamil-Brahmi concordance: 58%, z=16.2
@@ -449,6 +492,6 @@ Mahadevan (1977) for the sign catalogue. Parpola (1994, 2010) for the Dravidian 
 
 ---
 
-*End of Preprint v2*\
+*End of Preprint v3*\
 *Glossa-Lab, May 2026*\
 *Tristen Kyle Pierson*

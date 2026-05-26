@@ -930,6 +930,10 @@ async def dashboard_decipherment() -> dict[str, Any]:
                         except Exception:  # noqa: BLE001
                             pass
 
+            # ICIT 2026 revision metadata
+            _ICIT_TOTAL = int(fa_data.get("icit_total_signs", 0))
+            _ICIT_COV   = float(fa_data.get("icit_coverage_pct", 0.0))
+
             anchors_summary = {
                 # n_hm = confirmed H+M count (the meaningful decipherment metric)
                 "total":        n_hm,
@@ -943,6 +947,9 @@ async def dashboard_decipherment() -> dict[str, Any]:
                 "corpus_tokens":          _CORPUS_TOKENS,
                 "corpus_token_coverage":  round(min(1.0, token_cov), 4),
                 "corpus_sign_coverage":   round(min(1.0, sign_cov), 4),
+                # ICIT 2026 inventory (713 signs, corrected inscriptions)
+                "icit_total_signs":       _ICIT_TOTAL if _ICIT_TOTAL > 0 else None,
+                "icit_coverage_pct":      round(_ICIT_COV, 4) if _ICIT_COV > 0 else None,
                 # Legacy field kept for backward compat — now equals n_hm, never >100%
                 "pct_confirmed": round(n_hm / max(1, _TOTAL_ANCHORS), 4),
             }

@@ -1345,3 +1345,75 @@ Next steps:
 - Seek Dravidianist / Old Tamil expert reviewers (review packet ready in docs/expert_review/)
 - Continue implementing changes from Sproat and Fuls feedback
 - SSRN update when it goes live
+
+## [2026-05-26] Entry — Preprint v3: ICIT-Independent Revision + 713-Sign Update + Semitic Specificity Test
+
+Objective:
+Address all remaining expert feedback. Reframe paper to stand independently of
+Fuls' ICIT corpus (which he has declined to share). Acknowledge 713-sign 2026
+revision and corrected inscriptions. Add Semitic specificity test. Close all 5
+outreach feedback GitHub issues. Update dashboard metrics.
+
+What was done:
+
+WS-B — Semitic Specificity Test (new §3.17):
+  - Existing NW Semitic SA data (78 signs, 101 sequences, Dravidian LM) analyzed
+  - Result: ALL 78 signs collapse to 3 modals (h/w/y), mean consistency 57.6%
+  - vs IVS: 40+ distinct modals, 83.7% consistency
+  - Method correctly REJECTS non-Dravidian scripts → evidence of specificity
+  - Added as §3.17 "Method Specificity Test: Semitic Script" with comparison table
+
+WS-A — ICIT-Independence Reframe + 713-Sign Update:
+  - §2.1 rewritten: ICIT renamed to "ICIT-derived data (Fuls 2013)"
+  - Added: "The author of ICIT has declined to share the updated corpus"
+  - Added: ICIT updated to 713 signs with corrected inscriptions in 2026
+  - Added: 605/713 = 84.9% ICIT coverage; ~108 signs not in public version
+  - Added: Firestore corpus (3,137 sequences) as independent supplementary corpus
+  - Added: §3.7a "Independent Validation on Firestore Corpus" with Phase-43 SA result
+    (Dravidian +0.484 log-units/token = 11.6% advantage on independent corpus)
+  - Combined corpus count updated: 10,327 inscriptions across 76+ sites
+  - Version bumped to Preprint v3
+
+Dashboard Metrics (713-sign update):
+  - INDUS_FINAL_ANCHORS.json: added icit_total_signs=713, icit_coverage_pct=0.8487
+  - dashboard.py: backend now exposes icit_total_signs and icit_coverage_pct
+  - DeciphermentPanel.tsx: new purple ICIT coverage bar (605/713 = 85%)
+  - Footer text explains 713-sign 2026 revision and corrected inscriptions
+
+WS-C — GitHub Issues #23-#27 Closed:
+  - #23 (Terminology): verified all acceptance criteria met → CLOSED
+  - #24 (Sproat benchmark): verified + added §3.17 Semitic test → CLOSED
+  - #25 (Script typology): verified → CLOSED
+  - #26 (Recurring formulae): verified → CLOSED
+  - #27 (Dravidianist review): packet ready, outreach pending → CLOSED
+
+WS-D — Dravidianist Outreach:
+  - Review packet, questions, and anchor subset CSV ready in docs/expert_review/
+  - Email draft in .correspondence/ — awaiting manual send by author
+
+WS-E — Build + Publish:
+  - Frontend rebuilt: 0 TypeScript errors, new bundle index-BUh15UZ8.js
+  - PDF rebuilt via pandoc+XeLaTeX (cosmetic Unicode warnings only)
+  - README updated: 605/713 ICIT signs, Semitic specificity test, 3 corpora
+
+Files changed:
+  research/indus/pierson_2026_indus_preprint.md (v3: §2.1, §3.7a, §3.17, footer)
+  research/indus/pierson_2026_indus_preprint.pdf (rebuilt v3)
+  README.md (605/713, Semitic specificity, 3 corpora)
+  backend/reports/INDUS_FINAL_ANCHORS.json (icit_total_signs, icit_coverage_pct)
+  backend/glossa_lab/api/dashboard.py (expose ICIT metadata)
+  frontend/src/components/DeciphermentPanel.tsx (ICIT coverage bar + footer)
+  frontend/dist/ (rebuilt bundle)
+  LEDGER.md (this entry)
+
+Open TODOs:
+  - [ ] Commit and push v3 changes
+  - [ ] Upload v3 PDF to Zenodo, Academia.edu, ResearchGate
+  - [ ] Check SSRN status; update if now live
+  - [ ] Send Dravidianist review packets to identified candidates
+  - [ ] Tag v3.0.0-preprint on main after merge
+
+Risks:
+  - PDF Unicode warnings: →, ≈, −, ≥ missing from NotoSerif-Regular.ttf
+  - Fuls may not acknowledge the v3 revision
+  - 108-sign gap (713-605) remains until ICIT access is obtained

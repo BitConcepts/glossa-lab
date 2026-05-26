@@ -81,7 +81,7 @@ ORCID: 0009-0003-7269-956X\\
 Glossa-Lab / BitConcepts LLC\\
 Correspondence: tpierson@bitconcepts.tech\\
 Date: May 2026\\
-Version: Preprint v1 --- Not peer-reviewed\\
+Version: Preprint v2 --- Not peer-reviewed\\
 DOI: \href{https://zenodo.org/records/20381178}{10.5281/zenodo.20381178}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -92,7 +92,7 @@ We present and test a falsifiable computational decipherment hypothesis
 for the Indus Valley Script (IVS, ca. 2600--1900 BCE), assigning
 Proto-Dravidian readings to all 605 known signs. Working from two
 independent corpora --- the Holdat LLC Indus Corpus V3 (1,670 seals,
-7,002 tokens, 9 sites; Mahadevan M-numbers) and the Yajnadevam corpus
+7,002 tokens, 9 sites; Mahadevan M-numbers) and the ICIT corpus
 (5,520 inscriptions, 17,847 tokens, 76 archaeological sites) --- we
 apply positional analysis, bigram/trigram collocational methods, DEDR
 rebus matching, and simulated annealing (SA) with a 7,514-word Dravidian
@@ -221,7 +221,7 @@ sign tokens, 1,670 seals, 9 sites: Mohenjo-daro (n=606), Harappa
 Chanhu-daro (n=78), Surkotada (n=61), Banawali (n=60), Rakhigarhi
 (n=33). Sign encoding: Mahadevan M-numbers. 390 distinct signs attested.
 
-\textbf{Cross-validation corpus}: Yajnadevam corpus (Yajnadevam 2024),
+\textbf{Cross-validation corpus}: ICIT corpus (Yajnadevam 2024),
 derived from the \emph{lipi} repository. 5,520 inscriptions, 17,847 sign
 tokens, 707 distinct 3-digit signs, 76 archaeological sites. Sign
 encoding: independent numbering system requiring crosswalk to Mahadevan
@@ -253,7 +253,7 @@ only one motif type with lift ratio \textgreater5.0); terminal marker
 evidence (\textgreater95\% terminal position matching a known Dravidian
 case suffix); SA consistency $\geq$0.15 with DEDR entry; positional profile
 matching a known morpheme class; cross-corpus validation on the
-Yajnadevam corpus; Elamite cognate confirmation (McAlpin 1981); DEDR
+ICIT corpus; Elamite cognate confirmation (McAlpin 1981); DEDR
 entry with phonotactic validation.
 
 The progression from initial assignment to HIGH confidence followed a
@@ -261,7 +261,7 @@ multi-phase protocol: (a) Phases 1--170 established 161 signs at HIGH or
 MEDIUM via positional analysis, iconographic anchoring, and SA
 simulation on the Holdat corpus; (b) Phases 171--252 extended coverage
 through allograph detection, semantic constraint analysis, and commodity
-phoneme resolution; (c) Phases 253--280 integrated the Yajnadevam corpus
+phoneme resolution; (c) Phases 253--280 integrated the ICIT corpus
 (5,520 inscriptions, 76 sites), providing independent cross-corpus SA
 validation; (d) Phases 281--294 resolved all remaining MEDIUM and
 CANDIDATE signs to HIGH through systematic DEDR lookup, Elamite cognate
@@ -285,7 +285,7 @@ $\geq$2):
 \item
   Elamite cognate (McAlpin 1981)
 \item
-  Cross-corpus Yajnadevam SA validation
+  Cross-corpus ICIT SA validation
 \item
   Tamil-Brahmi personal name concordance
 \item
@@ -323,7 +323,7 @@ words from Tamil-Brahmi inscriptions and DEDR cognates). Protocol:
 GPU-accelerated BigramScorer (CuPy). Signs with SA consistency $\geq$0.15
 (fraction of seeds agreeing on the modal reading) and a DEDR entry
 matching the modal reading are promoted. The SA was run independently on
-both the Holdat corpus and the Yajnadevam corpus, providing two
+both the Holdat corpus and the ICIT corpus, providing two
 independent consistency measurements per sign.
 
 \subsubsection{2.5 Substrate and External
@@ -357,14 +357,14 @@ Total signs deciphered & 605 \\
 HIGH confidence & 605 (100\%) \\
 Holdat token coverage & 100\% (7,002/7,002) \\
 Holdat seal decode rate & 100\% (1,670/1,670) \\
-Yajnadevam crosswalk coverage & 316/707 signs (69.3\% token coverage) \\
+ICIT crosswalk coverage & 316/707 signs (69.3\% token coverage) \\
 Combined inscriptions tested & 7,190 \\
 Archaeological sites & 76+ \\
 \end{longtable}
 }
 
 The 605-sign inventory encompasses the full Mahadevan catalogue (397
-signs), plus 208 additional signs encountered in the Yajnadevam corpus
+signs), plus 208 additional signs encountered in the ICIT corpus
 and extended analyses. Every sign has at least two independent evidence
 sources supporting its reading, with a DEDR entry linking it to a
 Proto-Dravidian etymon.
@@ -394,14 +394,14 @@ Examples: M342=ay/ā (genitive terminal, 584 tokens), M176=an/aṇ
 (masculine suffix), M367=am (neuter suffix), M336=iṉ (locative case
 marker).
 
-\textbf{Grammar validation on the Yajnadevam corpus}: The tripartite
+\textbf{Grammar validation on the ICIT corpus}: The tripartite
 pattern (I$\to$M$\to$T) appears in 45.7\% of 2,980 eligible multi-sign
 inscriptions across 76 sites --- 6.3× above the null expectation of
 7.3\% (\emph{p}\textless0.001 by permutation test). On the Holdat corpus
 alone, the grammar lift is 3.3×. The cross-corpus consistency of the
 grammar model is the strongest structural validation: the same formula
 structure discovered on 9 Holdat sites replicates on 67 additional
-Yajnadevam sites.
+ICIT sites.
 
 \subsubsection{3.3 Selected High-Confidence
 Readings}\label{selected-high-confidence-readings}
@@ -517,26 +517,26 @@ Results}\label{simulated-annealing-results}
 (Phases 108--122) with progressively more pinned HIGH anchors
 constraining the search space.
 
-\textbf{Yajnadevam corpus SA}: 83.7\% mean consistency across 316
+\textbf{ICIT corpus SA}: 83.7\% mean consistency across 316
 crosswalked signs on 5,520 inscriptions from 76 sites. This is the
 strongest SA result, reflecting the larger corpus size and the benefit
 of the complete 605-sign anchor set constraining the annealing.
 
-The Yajnadevam SA provides independent validation: the Yajnadevam corpus
+The ICIT SA provides independent validation: the ICIT corpus
 was not used to derive any sign readings --- all readings were
 established on the Holdat corpus first, then tested blind on the
-Yajnadevam data.
+ICIT data.
 
-\subsubsection{3.7 Yajnadevam Cross-Corpus
+\subsubsection{3.7 ICIT Cross-Corpus
 Validation}\label{yajnadevam-cross-corpus-validation}
 
-The Yajnadevam corpus (Yajnadevam 2024) was integrated in Phases
+The ICIT corpus (Yajnadevam 2024) was integrated in Phases
 281--294. Key results:
 
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Crosswalk}: 316/707 Yajnadevam signs mapped to Mahadevan
+  \textbf{Crosswalk}: 316/707 ICIT signs mapped to Mahadevan
   anchors (69.3\% token coverage)
 \item
   \textbf{SA consistency}: 83.7\% on the expanded corpus (vs.~71.5\% on
@@ -549,7 +549,7 @@ The Yajnadevam corpus (Yajnadevam 2024) was integrated in Phases
   CANDIDATE$\to$MEDIUM$\to$HIGH progression
 \item
   \textbf{Site generalization}: The grammar model, derived from 9 Holdat
-  sites, generalizes to 67 additional Yajnadevam sites without
+  sites, generalizes to 67 additional ICIT sites without
   modification
 \end{itemize}
 
@@ -695,7 +695,7 @@ KL divergences across the 9-site Holdat corpus: Rakhigarhi (n=33) is
 robustly divergent from every other major site --- Mohenjo-daro
 vs.~Rakhigarhi KL=0.509 with 95\% CI {[}0.483, 0.750{]} (ROBUST). The
 large-site pair Mohenjo-daro vs.~Harappa shows KL=0.070, consistent with
-a shared scribal tradition. On the 76-site Yajnadevam corpus, site
+a shared scribal tradition. On the 76-site ICIT corpus, site
 divergence patterns are consistent with regional scribal variation
 within a unified writing system.
 
@@ -814,7 +814,7 @@ Names}\label{structural-ceiling-and-personal-names}
 Prior to the Yajnadevam expansion, 18 signs with Holdat corpus frequency
 5--7 resisted MEDIUM promotion under Holdat-only methodology. These
 appeared exclusively in MEDIAL position (personal name slots) with SA
-modals lacking clear DEDR matches. The Yajnadevam corpus, providing
+modals lacking clear DEDR matches. The ICIT corpus, providing
 5,520 additional inscriptions and 192 new signs, resolved the structural
 ceiling by providing sufficient distributional evidence for DEDR
 cross-referencing. All formerly irresolvable signs were resolved to HIGH
@@ -840,7 +840,7 @@ the primary limiting factor, not methodological insufficiency.
   modern Tamil and Tamil-Brahmi data; phonological drift over 4,000
   years may introduce systematic errors.
 \item
-  \textbf{Crosswalk coverage}: The Yajnadevam crosswalk covers 316/707
+  \textbf{Crosswalk coverage}: The ICIT crosswalk covers 316/707
   signs (69.3\% token coverage). Full crosswalk requires resolution of
   the remaining Yajnadevam sign encodings.
 \item
@@ -901,7 +901,7 @@ correction confirmed by six independent evidence lines.
 
 \textbf{Tier 2 (Decipherment --- Supported by Multiple Tests)}: 605 sign
 readings at HIGH confidence with 100\% token coverage on the Holdat
-corpus. SA consistency of 83.7\% on the independent Yajnadevam corpus.
+corpus. SA consistency of 83.7\% on the independent ICIT corpus.
 Sanskrit hypothesis falsified 0/34. Non-linguistic hypothesis falsified
 (H\textsubscript{1}=5.384). External corroboration via Elamite cognates
 and Sanskrit substrate (Fisher \emph{p}$\approx$10\textsuperscript{-15}).
@@ -927,7 +927,7 @@ analysis scripts, and phase reports are available in the
 \href{https://github.com/BitConcepts/glossa-lab}{Glossa-Lab repository}.
 The Holdat LLC Indus Corpus v3 is not publicly available at time of
 writing; full reproduction of Holdat-specific corpus-level counts
-requires access to that corpus under agreement. The Yajnadevam corpus
+requires access to that corpus under agreement. The ICIT corpus
 data is available via the \emph{lipi} repository (Yajnadevam 2024). The
 public repository provides the anchor table (605 entries with DEDR
 citations), scripts, and phase reports needed to audit the method and
@@ -1062,14 +1062,14 @@ Definitions}\label{appendix-a-evidence-hierarchy-definitions}
 \textbf{HIGH} ($\geq$2 independent sources): Iconographic match,
 distributional exclusivity (lift \textgreater5.0), terminal marker
 evidence (\textgreater95\% terminal), SA consistency $\geq$0.15 with DEDR,
-cross-corpus Yajnadevam SA validation, Elamite cognate confirmation,
+cross-corpus ICIT SA validation, Elamite cognate confirmation,
 allograph resolution (L1 \textless0.2 to a HIGH anchor). All 605 signs
 meet this standard.
 
 \textbf{Evidence source inventory}: Across all 605 signs, the evidence
 sources used for HIGH promotion include: 75 iconographic anchors, 63
 distributional exclusivity matches, 397 DEDR-validated SA assignments,
-316 Yajnadevam cross-corpus confirmations, 7 Elamite cognate matches,
+316 ICIT cross-corpus confirmations, 7 Elamite cognate matches,
 192 allograph resolutions, and 41 positional grammar classifications.
 Each sign's specific evidence sources are documented in
 \texttt{INDUS\_FINAL\_ANCHORS.json}.

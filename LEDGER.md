@@ -1282,3 +1282,30 @@ Files created:
   - outputs/benchmarks/ivs_repetition_metrics.json
   - outputs/reports/recurring_formulae_failure_cases.md
   - .correspondence/dravidianist_review_email.md (gitignored, H24)
+
+## [2026-05-26] Entry - Preprint v2: ICIT corpus re-attribution (Fuls correction)
+
+Objective:
+Correct corpus attribution per Dr. Andreas Fuls' feedback. The cross-validation
+corpus cited as 'Yajnadevam corpus' was derived from Fuls' ICIT corpus.
+
+What was done:
+- Re-attributed all 'Yajnadevam corpus' references to 'ICIT corpus (Fuls 2013)'
+- Added v2 erratum in section 2.1 explaining the correction
+- Updated Fuls reference to include ICIT corpus citation
+- Updated Yajnadevam reference to note lipi is derived from ICIT
+- Added Fuls acknowledgment for the correction
+- Bumped version to Preprint v2
+- Applied across: manuscript .md, .tex, README.md, seal_translation_report,
+  mahadevan_parpola_crosswalk.json
+- Sanskrit-reading citations (Yajnadevam 2024 as author) preserved unchanged
+- Response email sent to Dr. Fuls with apology and ICIT access request
+
+Files modified:
+- research/indus/pierson_2026_indus_preprint_v1.md (47 ICIT refs, 9 Yajnadevam refs remaining = Sanskrit citations only)
+- research/indus/pierson_2026_indus_preprint_v1.tex
+- research/indus/seal_translation_report.md
+- research/indus/seal_translation_report.tex
+- research/indus/mahadevan_parpola_crosswalk.json
+- README.md
+- LEDGER.md

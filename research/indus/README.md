@@ -2,7 +2,7 @@
 
 **Preprint:** *A Falsifiable Computational Decipherment Hypothesis for the Indus Valley Script: 161 Candidate Proto-Dravidian Anchors and a Three-Slot Positional Grammar*
 **Author:** Tristen Kyle Pierson — BitConcepts LLC
-**Date:** May 2026 · Preprint v1 — Not peer-reviewed
+**Date:** May 2026 · Preprint v2 — Not peer-reviewed
 
 ---
 
@@ -17,7 +17,7 @@
 | `phase_reports/` | 35 computational phase reports (Phases 127–170) |
 | `supplemental/` | 4 derived datasets for direct use by collaborators (fish-sign context, iconographic pairs, formula bigrams, polysemy test) |
 
-The LaTeX source for the preprint is in `glossa-corpus/indus/preprint_v1.tex`.
+The LaTeX source for the preprint is in `glossa-corpus/indus/preprint.tex`.
 
 ---
 
@@ -120,7 +120,7 @@ licensed under the MIT License — see the root [`LICENSE`](../../LICENSE) file.
 ```
 Pierson, T.K. (2026). A Falsifiable Computational Decipherment Hypothesis for the
 Indus Valley Script: 161 Candidate Proto-Dravidian Anchors and a Three-Slot Positional
-Grammar. Preprint v1. BitConcepts LLC / Glossa-Lab.
+Grammar. Preprint v2. BitConcepts LLC / Glossa-Lab.
 https://github.com/BitConcepts/glossa-lab
 ```
 

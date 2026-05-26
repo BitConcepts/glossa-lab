@@ -1,8 +1,8 @@
-# FINAL RELEASE CHECK — Indus Script Preprint v1
+# FINAL RELEASE CHECK — Indus Script Preprint v2
 **Generated**: 2026-05-21  
 **Branch**: preprint-last-mechanical-polish  
-**File checked**: `glossa-corpus/indus/preprint_v1.tex`  
-**PDF artifact**: `preprint_v1.pdf` (105,829 bytes)
+**File checked**: `glossa-corpus/indus/preprint.tex`  
+**PDF artifact**: `preprint.pdf` (105,829 bytes)
 
 ---
 
@@ -86,7 +86,7 @@
 ### D1. Compile Result
 - [x] XeLaTeX pass 1 — **exit 0**, no fatal errors
 - [x] XeLaTeX pass 2 — **exit 0**, no LaTeX errors or undefined references
-- [x] PDF produced: `preprint_v1.pdf` (105,829 bytes)
+- [x] PDF produced: `preprint.pdf` (105,829 bytes)
 - [x] Font: Noto Serif (text) + Latin Modern Math (math) — active in preamble
 - [x] Overfull hboxes — **3 minor overflows** (≤60pt in §1.3 list, ≤8pt in tables; non-critical for review draft)
 - [ ] Longtable width warnings — **6 longtable warnings** (column widths converged on 2nd pass; standard behaviour, non-blocking)
@@ -106,7 +106,7 @@
 
 **Pre-arXiv checklist — do before making repo public:**
 - [ ] Populate repository with: anchor table, confidence labels, DEDR citations, basis statements, scripts, phase reports, and a README explaining the Holdat corpus access limitation
-- [ ] Once repo is live and populated, change `"will be released"` → `"are available"` in **§6 Data Availability** and **AI Disclosure** (both instances in `preprint_v1.tex`)
+- [ ] Once repo is live and populated, change `"will be released"` → `"are available"` in **§6 Data Availability** and **AI Disclosure** (both instances in `preprint.tex`)
 
 ### E2. Holdat Corpus
 - [x] Holdat corpus availability caveat in Data Availability and AI Disclosure
@@ -168,8 +168,8 @@
 {
   "check_date": "2026-05-21",
   "branch": "preprint-last-mechanical-polish",
-  "tex_file": "glossa-corpus/indus/preprint_v1.tex",
-  "pdf_artifact": "glossa-corpus/indus/preprint_v1.pdf",
+  "tex_file": "glossa-corpus/indus/preprint.tex",
+  "pdf_artifact": "glossa-corpus/indus/preprint.pdf",
   "pdf_bytes": 105829,
   "compile_passes": 2,
   "compile_errors": 0,

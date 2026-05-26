@@ -1,0 +1,84 @@
+{
+  "_source": "Sproat 2014, Language 90(2):457-481 + supplementary materials (Project MUSE)",
+  "_note": "Published corpus statistics for non-linguistic and linguistic symbol systems. Values from Sproat 2014 Table 1 / supplementary. r_over_R from Sproat's Language Log analysis.",
+  "non_linguistic": [
+    {
+      "system": "Totem Poles",
+      "type": "non_linguistic",
+      "n_texts": 325,
+      "n_tokens": 1798,
+      "n_types": 477,
+      "mean_text_length": 5.5,
+      "r_over_R": 0.63,
+      "source": "Barbeau 1950; Malin 1986; Stewart 1990"
+    },
+    {
+      "system": "Pictish Stones",
+      "type": "non_linguistic",
+      "n_texts": 283,
+      "n_tokens": 984,
+      "n_types": 104,
+      "mean_text_length": 3.5,
+      "r_over_R": null,
+      "source": "Jackson 1984; Mack 1997; Strathclyde database"
+    },
+    {
+      "system": "Vinča Symbols",
+      "type": "non_linguistic",
+      "n_texts": 591,
+      "n_tokens": 804,
+      "n_types": 185,
+      "mean_text_length": 1.4,
+      "r_over_R": null,
+      "source": "Winn 1981"
+    },
+    {
+      "system": "Mesopotamian Deity Symbols (Kudurrus)",
+      "type": "non_linguistic",
+      "n_texts": 69,
+      "n_tokens": 939,
+      "n_types": 64,
+      "mean_text_length": 13.6,
+      "r_over_R": null,
+      "source": "Seidl 1989"
+    },
+    {
+      "system": "Weather Icons",
+      "type": "non_linguistic",
+      "n_texts": 11588,
+      "n_tokens": 57940,
+      "n_types": 16,
+      "mean_text_length": 5.0,
+      "r_over_R": 0.79,
+      "source": "wunderground.com 5-day forecasts"
+    },
+    {
+      "system": "Barn Stars (Hex Signs)",
+      "type": "non_linguistic",
+      "n_texts": 222,
+      "n_tokens": 746,
+      "n_types": 28,
+      "mean_text_length": 3.4,
+      "r_over_R": 0.85,
+      "source": "Graves 1984; Farrell slides"
+    }
+  ],
+  "linguistic_reference": [
+    {
+      "system": "Ancient Chinese (Oracle Bone)",
+      "type": "linguistic",
+      "r_over_R": 0.048
+    },
+    {
+      "system": "Amharic",
+      "type": "linguistic",
+      "r_over_R": 0.018
+    },
+    {
+      "system": "Oriya",
+      "type": "linguistic",
+      "r_over_R": 0.0075
+    }
+  ],
+  "sproat_finding": "Neither Rao et al.'s conditional entropy nor Lee et al.'s Cr measure (at published settings) reliably separates linguistic from non-linguistic systems. A retrained Cr threshold plus Sproat's r/R repetition rate achieves better discrimination but is partially confounded by text length."
+}

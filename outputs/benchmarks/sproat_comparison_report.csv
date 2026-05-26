@@ -1,0 +1,11 @@
+System,Type,N_Texts,N_Tokens,N_Types,Mean_Text_Length,H0_Unigram,H1_Conditional,Zipf_Slope,r_over_R
+Indus Valley Script (IVS),unknown (tested),7138,24502,649,3.43,6.9549,3.5306,-1.7046,0.83
+Totem Poles,non_linguistic,325,1798,477,5.5,,,,0.63
+Pictish Stones,non_linguistic,283,984,104,3.5,,,,
+Vinča Symbols,non_linguistic,591,804,185,1.4,,,,
+Mesopotamian Deity Symbols (Kudurrus),non_linguistic,69,939,64,13.6,,,,
+Weather Icons,non_linguistic,11588,57940,16,5.0,,,,0.79
+Barn Stars (Hex Signs),non_linguistic,222,746,28,3.4,,,,0.85
+Ancient Chinese (Oracle Bone),linguistic,,,,,,,,0.048
+Amharic,linguistic,,,,,,,,0.018
+Oriya,linguistic,,,,,,,,0.0075

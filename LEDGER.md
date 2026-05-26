@@ -1183,14 +1183,14 @@ to key researchers.
 
 What was done:
 
-Paper (pierson_2026_indus_preprint_v1):
+Paper (pierson_2026_indus_preprint):
   - 15-page preprint covering 605/605 HIGH signs, 83.7% SA, 6.3x grammar lift
   - Written as markdown, compiled via pandoc -> XeLaTeX -> PDF
   - All 21 data points verified against indus_decipherment_report_final.json
   - Roif BC section removed (publication independence); kept one-line acknowledgment
   - DOI added to header + abstract after Zenodo publication
   - Author name: Tristen Kyle Pierson (corrected from earlier "Tristan" typo)
-  - Files: research/indus/pierson_2026_indus_preprint_v1.{md,tex,pdf}
+  - Files: research/indus/pierson_2026_indus_preprint.{md,tex,pdf}
 
 Publication platforms:
   - Zenodo: PUBLISHED — https://zenodo.org/records/20381178 (v2 with name fix)
@@ -1265,8 +1265,8 @@ WS-5 Dravidianist Review Packet (Issue #27):
   - Identified 4 candidate reviewers
 
 Files modified:
-  - research/indus/pierson_2026_indus_preprint_v1.md (terminology, typology, §3.16, §4.4, refs)
-  - research/indus/pierson_2026_indus_preprint_v1.tex (terminology)
+  - research/indus/pierson_2026_indus_preprint.md (terminology, typology, §3.16, §4.4, refs)
+  - research/indus/pierson_2026_indus_preprint.tex (terminology)
   - research/indus/README.md (terminology)
   - README.md (no changes needed)
 
@@ -1302,8 +1302,8 @@ What was done:
 - Response email sent to Dr. Fuls with apology and ICIT access request
 
 Files modified:
-- research/indus/pierson_2026_indus_preprint_v1.md (47 ICIT refs, 9 Yajnadevam refs remaining = Sanskrit citations only)
-- research/indus/pierson_2026_indus_preprint_v1.tex
+- research/indus/pierson_2026_indus_preprint.md (47 ICIT refs, 9 Yajnadevam refs remaining = Sanskrit citations only)
+- research/indus/pierson_2026_indus_preprint.tex
 - research/indus/seal_translation_report.md
 - research/indus/seal_translation_report.tex
 - research/indus/mahadevan_parpola_crosswalk.json

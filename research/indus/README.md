@@ -10,7 +10,7 @@
 
 | File | Description |
 |------|-------------|
-| `pierson_2026_indus_preprint_v1.pdf` | Full preprint PDF |
+| `pierson_2026_indus_preprint.pdf` | Full preprint PDF |
 | `anchor_table.csv` | 397-sign anchor table (CSV — open in Excel/Sheets) |
 | `anchor_table.json` | Same table in JSON with full metadata |
 | `mahadevan_parpola_crosswalk.json` | 45-entry M-number ↔ P-number sign crosswalk |

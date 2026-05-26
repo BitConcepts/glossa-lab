@@ -8,6 +8,12 @@ annotations/
 works/
 editions/
 
+# External corpus sources (CDLI ATF dumps, papyri.info, etc.) — multi-GB
+sources/
+
+# Source PDFs in subdirectories (large binaries, not for git)
+**/sources/*.pdf
+
 # Thumbs
 Thumbs.db
 

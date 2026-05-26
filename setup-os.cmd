@@ -49,15 +49,20 @@ if not exist "%VENV_PYTHONW%" (
 )
 if not exist "%LOG_DIR%" mkdir "%LOG_DIR%"
 
-REM Register in HKCU Run: pythonw.exe + .pyw entry point, no cmd.exe wrapper.
-REM pythonw.exe is GUI subsystem — zero console window.
-reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "%TASK_NAME%" /t REG_SZ /d "\"%VENV_PYTHONW%\" \"%ENTRY_POINT%\"" /f >nul
+REM H25: Register via wscript.exe + launch-tray.vbs — no visible window.
+REM Supersedes previous HKCU Run approach (used pythonw.exe directly).
+REM Remove stale HKCU Run key if present (was causing duplicate launches).
+reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "%TASK_NAME%" /f >nul 2>&1
+reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "GlossaLabTray" /f >nul 2>&1
+
+REM Register the scheduled task (requires elevation for ONLOGON trigger).
+powershell -NoProfile -Command "Start-Process -FilePath 'powershell.exe' -ArgumentList '-NoProfile -ExecutionPolicy Bypass -File \"%REPO_ROOT%\scripts\register_task.ps1\"' -Verb RunAs -Wait" >nul 2>&1
 if errorlevel 1 (
-    echo [ERROR] Failed to register autostart entry.
+    echo [ERROR] Failed to register scheduled task (elevation required).
     exit /b 1
 )
 
-echo [OK] '%TASK_NAME%' registered in HKCU Run — starts at next login.
+echo [OK] '%TASK_NAME%' scheduled task registered — starts at next login.
 echo.
 echo To start immediately: setup-os.cmd start
 echo.
@@ -123,9 +128,9 @@ REM ─────────────────────────�
 REM ─────────────────────────────────────────────────────────────
 echo.
 echo ── GlossaLab Status ──────────────────────────────────────
-reg query "HKCU\Software\Microsoft\Windows\CurrentVersion\Run" /v "%TASK_NAME%" >nul 2>&1
+schtasks /query /tn "%TASK_NAME%" >nul 2>&1
 if not errorlevel 1 (
-    echo   Autostart: registered in HKCU Run
+    echo   Autostart: scheduled task registered
 ) else (
     echo   Autostart: NOT registered  (run: setup-os.cmd install)
 )

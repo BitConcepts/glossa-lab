@@ -406,14 +406,18 @@ def _quit(icon, _item=None):
 
 # ── Status polling thread ────────────────────────────────────────────
 
+_MAX_POLL_ITERATIONS = 86400 // POLL_INTERVAL  # ~24 hours of polling before self-stop
+
+
 def _status_poller(icon: pystray.Icon):
     """Background thread: polls health every POLL_INTERVAL seconds.
 
     Started via icon.run(setup=…) so icon.visible is already True.
     Runs as a daemon thread and is killed automatically on exit.
+    H11 compliant: bounded by _MAX_POLL_ITERATIONS (~24 h at POLL_INTERVAL).
     """
     global _status_text, _status_error, _backend_starting  # noqa: PLW0603
-    while True:
+    for _poll_iter in range(_MAX_POLL_ITERATIONS):
         health = _check_health()
         if health is None:
             icon.icon = _create_icon_image("red")
@@ -444,6 +448,10 @@ def _status_poller(icon: pystray.Icon):
         except Exception:  # noqa: BLE001
             pass
         time.sleep(POLL_INTERVAL)
+    # H11: deadline reached — log and exit polling
+    print(f"[WARN] _status_poller: reached {_MAX_POLL_ITERATIONS} iterations "
+          f"({_MAX_POLL_ITERATIONS * POLL_INTERVAL}s). Stopping poller. "
+          "Restart tray to resume.")
 
 
 # ── Entry point ──────────────────────────────────────────────────────

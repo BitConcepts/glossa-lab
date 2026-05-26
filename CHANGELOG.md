@@ -27,7 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Phase 178**: ICIT-priority phoneme targeting — 14 true gaps, 2 LOW upgrade candidates
   (M386, M143 for /man/)
 - **Preprint §3.32**: New section *Betweenness Centrality Stratification (Phases 172–177)*
-  added to `glossa-corpus/indus/preprint_v1.tex`; PDF recompiled and published
+  added to `glossa-corpus/indus/preprint.tex`; PDF recompiled and published
 - §1.3 item 19 and updated Acknowledgments (Roif directed-graph methodology credit)
 
 ### Fixed

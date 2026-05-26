@@ -4,7 +4,7 @@
 
 Agentic computational linguistics research platform for statistical analysis, decipherment, and hypothesis testing of ancient and unknown writing systems — with a primary focus on the **Indus Script**.
 
-> **Decipherment Status (Phase 294):** 605/605 signs at HIGH confidence (100%) · 83.7% SA consistency on 5,520 inscriptions · 6.3× tripartite grammar lift across 76 sites · Proto-Dravidian readings validated against DEDR, Elamite cognates, Sanskrit substrate · Sanskrit hypothesis falsified 0/34
+> **Decipherment Status (Phase 294):** 605/713 ICIT signs deciphered (84.9%) · 83.7% SA consistency on 5,520 inscriptions · 6.3× tripartite grammar lift across 76 sites · Proto-Dravidian readings validated against DEDR, Elamite cognates, Sanskrit substrate · Sanskrit hypothesis falsified 0/34 · Semitic specificity test: SA collapses on NW Semitic (3 modals vs 40+ on IVS)
 
 > **Preprint:** Pierson, T.K. (2026). *A Complete Computational Decipherment Hypothesis for the Indus Script.* Zenodo. DOI: [10.5281/zenodo.20401711](https://zenodo.org/records/20401711)
 
@@ -84,17 +84,18 @@ Local control surface. Start/stop/restart backend, open UI, quick status.
 
 ## Indus Script Decipherment
 
-**605 signs deciphered** — the first complete computational decipherment proposal for the Indus Script (~2600–1900 BCE).
+**605 of 713 ICIT signs deciphered** — a computational decipherment hypothesis for the Indus Script (~2600–1900 BCE). Of 605 total readings, 413 are independently confirmed and 192 are allograph-inferred (provisional). The ICIT corpus was updated to 713 signs with corrected inscriptions in 2026 (Fuls, personal communication).
 
 | Metric | Value |
 |---|---|
-| Sign readings | 605/605 HIGH confidence |
+| Sign readings | 605/713 ICIT signs — 413 independently confirmed + 192 allograph-inferred |
 | Token coverage | 100% (7,002 Holdat tokens) |
 | SA consistency | 83.7% (5,520 inscriptions, 76 sites) |
 | Grammar validation | 6.3× tripartite lift (I→M→T) |
 | Evidence items | 41 (E01–E41; E28 falsified) |
 | External corroboration | Fisher p≈10⁻¹⁵ (Elamite + Sanskrit) |
 | Sanskrit hypothesis | Falsified 0/34 |
+| Semitic specificity | SA degenerates on NW Semitic (3 vs 40+ modals) |
 | Phases completed | 294 |
 | Preprint DOI | [10.5281/zenodo.20401711](https://zenodo.org/records/20401711) |
 
@@ -237,8 +238,8 @@ Full governance rules: [`docs/governance/`](docs/governance/)
 
 ## Current research status (May 2026 — Phase 294)
 
-- **605/605 signs at HIGH confidence** (100%) — complete decipherment proposal
-- **Two corpora validated**: Holdat (1,670 seals, 9 sites) + ICIT/Fuls (5,520 inscriptions, 76 sites)
+- **605/713 ICIT signs deciphered** — 413 independently confirmed + 192 allograph-inferred (provisional); ~108 signs in the 2026 ICIT revision not yet covered
+- **Three corpora validated**: Holdat (1,670 seals, 9 sites) + ICIT/Fuls (5,520 inscriptions, 76 sites) + Firestore (3,137 sequences, independent Dravidian confirmation)
 - **SA consistency**: 83.7% on 5,520 independent inscriptions (expanded DEDR LM, 7,514 vocab)
 - **Grammar**: 6.3× tripartite lift (I→M→T) across 76 sites; 45.7% vs 7.3% null
 - **External corroboration**: 7 Elamite + 13 Sanskrit + 7 Linear Elamite (Fisher p≈10⁻¹⁵)

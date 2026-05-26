@@ -1,7 +1,7 @@
 # A Falsifiable Computational Anchor Model for the Indus Script
 ## Preprint Release v1 — Reproducibility Package
 
-**Pierson, T. K. (2026).** *A Falsifiable Computational Decipherment Hypothesis for the Indus Valley Script: 161 Candidate Proto-Dravidian Anchors and a Three-Slot Positional Grammar.* Preprint v1.
+**Pierson, T. K. (2026).** *A Falsifiable Computational Decipherment Hypothesis for the Indus Valley Script: 161 Candidate Proto-Dravidian Anchors and a Three-Slot Positional Grammar.* Preprint v2.
 
 > This repository accompanies a preprint. It does not claim final decipherment. It provides data tables, scripts, and validation outputs for testing a candidate positional-grammar and anchor-reading model. Full reproduction of corpus-level counts may require access to the Holdat LLC Indus Corpus v3 or rerunning the pipeline on a compatible public corpus such as ICIT after sign-code crosswalking.
 
@@ -122,7 +122,7 @@ Each output file notes whether it was produced from public data alone or require
                Indus Valley Script: 161 Candidate Proto-Dravidian Anchors
                and a Three-Slot Positional Grammar},
   year      = {2026},
-  note      = {Preprint v1 -- Not peer-reviewed},
+  note      = {Preprint v2 -- Not peer-reviewed},
   url       = {https://github.com/BitConcepts/glossa-lab}
 }
 ```

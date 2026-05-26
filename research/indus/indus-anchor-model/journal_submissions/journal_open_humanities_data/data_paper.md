@@ -127,5 +127,5 @@ The Holdat LLC Indus Corpus v3 is not redistributed. See `data/restricted/README
 - Mahadevan, I. (1977). *The Indus Script: Texts, Concordance and Tables*. New Delhi: ASI.
 - Miller, W. (2025). Holdat LLC Indus Corpus v3. Dataset.
 - Parpola, A. (1994). *Deciphering the Indus Script*. Cambridge.
-- Pierson, T.K. (2026). A Falsifiable Computational Decipherment Hypothesis for the Indus Valley Script. Preprint v1.
+- Pierson, T.K. (2026). A Falsifiable Computational Decipherment Hypothesis for the Indus Valley Script. Preprint v2.
 - Rao, R.P.N. et al. (2009). A Markov model of the Indus Script. *PNAS* 106(33).

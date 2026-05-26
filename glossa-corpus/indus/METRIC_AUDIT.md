@@ -1,4 +1,4 @@
-# METRIC_AUDIT.md — Preprint v1 Internal Consistency Audit
+# METRIC_AUDIT.md — Preprint v2 Internal Consistency Audit
 
 **Canonical values (Phase-133 corrected, Phase-170 verified):**
 

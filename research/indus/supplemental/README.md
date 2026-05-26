@@ -2,7 +2,7 @@
 
 Supplemental data tables for:
 > Pierson, T.K. (2026). *A Falsifiable Computational Decipherment Hypothesis for the Indus Valley Script:
-> 161 Candidate Proto-Dravidian Anchors and a Three-Slot Positional Grammar.* Preprint v1.
+> 161 Candidate Proto-Dravidian Anchors and a Three-Slot Positional Grammar.* Preprint v2.
 
 These datasets are derived from the Holdat LLC Indus Corpus v3 (Miller 2025) via the Glossa-Lab
 computational pipeline. Released under **CC BY 4.0** — see `../LICENSE-CC-BY-4.0`.
@@ -97,6 +97,6 @@ requires either access to the Holdat corpus under agreement or a compatible publ
 ```
 Pierson, T.K. (2026). A Falsifiable Computational Decipherment Hypothesis for the
 Indus Valley Script: 161 Candidate Proto-Dravidian Anchors and a Three-Slot Positional
-Grammar. Preprint v1. BitConcepts LLC / Glossa-Lab.
+Grammar. Preprint v2. BitConcepts LLC / Glossa-Lab.
 https://github.com/BitConcepts/glossa-lab
 ```

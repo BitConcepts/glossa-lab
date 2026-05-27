@@ -847,7 +847,7 @@ export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChan
   const { isOpen: chatOpen, isDocked } = useAIChat();
 
   const TABS: Array<{ id: PanelTab; label: string; icon: string }> = [
-    { id: "logs", label: "Logs (BE+FE)", icon: "📋" },
+    { id: "logs", label: "Logs", icon: "📋" },
     { id: "jobs", label: "Jobs", icon: "📦" },
     { id: "terminal", label: "Terminal", icon: ">_" },
     ...(isDocked && chatOpen ? [{ id: "chat" as PanelTab, label: "AI Chat", icon: "✨" }] : []),

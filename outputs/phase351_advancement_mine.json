@@ -1,12 +1,12 @@
 {
   "phase": 351,
-  "total_papers": 48,
+  "total_papers": 44,
   "category_counts": {
-    "sign_readings": 20,
+    "sign_readings": 24,
     "seal_formulas": 2,
-    "tamil_brahmi": 4,
+    "tamil_brahmi": 5,
     "meluhha_names": 2,
-    "computational": 23,
+    "computational": 14,
     "trade_vocabulary": 7
   },
   "top_30_papers": [
@@ -67,6 +67,18 @@
       "authors": [
         "Aruna Sharma",
         "Shubhajit Roy Chowdhury"
+      ],
+      "score": 6,
+      "category": "sign_readings"
+    },
+    {
+      "title": "Unraveling the Mysteries: A Literature Review on the Analysis and Interpretations of the Indus Valley Script",
+      "doi": "10.1109/DELCON64804.2024.10866881",
+      "year": 2024,
+      "authors": [
+        "Kritika Nagal",
+        "Rakhee Sharma",
+        "Arpita Nagpal"
       ],
       "score": 6,
       "category": "sign_readings"
@@ -225,6 +237,39 @@
       "category": "sign_readings"
     },
     {
+      "title": "A Retrospective Study of the Indus Script Linguistics: A Scientific Approach to Deciphering the Ancient Text",
+      "doi": "10.47191/ijsshr/v8-i4-47",
+      "year": 2025,
+      "authors": [
+        "R. Bhargava"
+      ],
+      "score": 3,
+      "category": "sign_readings"
+    },
+    {
+      "title": "Construction of Handwritten Indus Signs Dataset Employing Social Approach",
+      "doi": "10.20965/jaciii.2024.p0122",
+      "year": 2024,
+      "authors": [
+        "S. Saini",
+        "H. Shibata",
+        "Y. Takama"
+      ],
+      "score": 3,
+      "category": "sign_readings"
+    },
+    {
+      "title": "Mixed Methodologies: Collaborative Approaches to Indus Tiger Seals",
+      "doi": "10.1080/02666030.2022.2051825",
+      "year": 2022,
+      "authors": [
+        "M. Ameri",
+        "G. Jamison"
+      ],
+      "score": 3,
+      "category": "sign_readings"
+    },
+    {
       "title": "Representing idols, idolizing representations : interpreting Hindu images from the nineteenth century to the early twentieth century",
       "doi": null,
       "year": 2008,
@@ -240,6 +285,16 @@
       "year": null,
       "authors": [
         "Jimmy Mahardhika"
+      ],
+      "score": 3,
+      "category": "tamil_brahmi"
+    },
+    {
+      "title": "Alphabetism and the science of reading: from the perspective of the akshara languages",
+      "doi": "10.3389/fpsyg.2014.00866",
+      "year": 2014,
+      "authors": [
+        "Sonali Nag"
       ],
       "score": 3,
       "category": "tamil_brahmi"
@@ -261,64 +316,6 @@
       "authors": [
         "Shruti Daggumati",
         "Péter Révész"
-      ],
-      "score": 3,
-      "category": "computational"
-    },
-    {
-      "title": "The Evolution of Artificial Intelligence in Medical Imaging: From Computer Science to Machine and Deep Learning",
-      "doi": "https://doi.org/10.3390/cancers16213702",
-      "year": 2024,
-      "authors": [
-        "Michele Avanzo",
-        "Joseph Stancanello",
-        "G. Pirrone"
-      ],
-      "score": 3,
-      "category": "computational"
-    },
-    {
-      "title": "Machine Learning Algorithms for Handwritten Devanagari Character Recognition: A Systematic Review",
-      "doi": "https://doi.org/10.46243/jst.2022.v7.i01.pp1-16",
-      "year": 2023,
-      "authors": [
-        "Mimansha Agrawal Mimansha Agrawal"
-      ],
-      "score": 3,
-      "category": "computational"
-    },
-    {
-      "title": "Unsupervised deep learning supports reclassification of Bronze age cypriot writing system",
-      "doi": "https://doi.org/10.1371/journal.pone.0269544",
-      "year": 2022,
-      "authors": [
-        "Michele Corazza",
-        "Fabio Tamburini",
-        "Miguel Valério"
-      ],
-      "score": 3,
-      "category": "computational"
-    },
-    {
-      "title": "Detection and recognition of cursive text from video frames",
-      "doi": "https://doi.org/10.1186/s13640-020-00523-5",
-      "year": 2020,
-      "authors": [
-        "Ali Mirza",
-        "Ossama Zeshan",
-        "Muhammad Atif"
-      ],
-      "score": 3,
-      "category": "computational"
-    },
-    {
-      "title": "A Generative Model for the Mycenaean Linear B Script and Its Application in Infilling Text from Ancient Tablets",
-      "doi": "https://doi.org/10.1145/3593431",
-      "year": 2023,
-      "authors": [
-        "Katerina Papavassileiou",
-        "Dimitrios Kosmopoulos",
-        "Gareth Owens"
       ],
       "score": 3,
       "category": "computational"
@@ -364,5 +361,5 @@
     "Investigate 0 Meluhha bilingual sources for phonetic constraints",
     "Evaluate 0 computational methods for LOW→HIGH upgrade pipeline"
   ],
-  "verdict": "Advancement mine: 48 papers across 6 categories. Insights: 0 actionable items. Current: 400 HIGH / 0 MEDIUM / 205 LOW readings."
+  "verdict": "Advancement mine: 44 papers across 6 categories. Insights: 0 actionable items. Current: 400 HIGH / 0 MEDIUM / 205 LOW readings."
 }

@@ -28,7 +28,7 @@ function ProgressBar({ value, max = 100, color = "#3b82f6", label }: { value: nu
       {label && <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 2 }}>{label}</div>}
       <div style={{ background: "#e5e7eb", borderRadius: 4, height: 14, overflow: "hidden", position: "relative" }}>
         <div style={{ width: `${pct}%`, background: color, height: "100%", borderRadius: 4, transition: "width 0.3s" }} />
-        <span style={{ position: "absolute", right: 6, top: 0, fontSize: 10, lineHeight: "14px", color: pct > 60 ? "#fff" : "#374151", fontWeight: 600 }}>
+        <span style={{ position: "absolute", right: 6, top: 0, fontSize: 10, lineHeight: "14px", color: "#111827", fontWeight: 700, textShadow: "0 0 3px #fff, 0 0 3px #fff" }}>
           {value.toFixed(1)}%
         </span>
       </div>

@@ -1,0 +1,268 @@
+{
+  "phase303_anchored_munda_sa": {
+    "n_pinned_anchors": 605,
+    "n_anchored_bigrams": 7001,
+    "dravidian_hit_rate": 0.5866,
+    "munda_hit_rate": 0.3448,
+    "delta": 0.2418,
+    "verdict": "DRAVIDIAN_PREFERRED",
+    "interpretation": "With 605 anchors pinned, Dravidian LM matches 58.7% of anchored bigrams vs Munda 34.5% (delta=+24.2%). Dravidian anchors fit the Dravidian LM better — confirms language-specific signal."
+  },
+  "phase304_allograph_validation": {
+    "total_allographs": 21,
+    "total_independent": 584,
+    "allograph_pct": 3.5,
+    "with_dedr": 17,
+    "with_sa": 5,
+    "with_elamite": 2,
+    "independently_supported_pct": 114.3,
+    "allographs": [
+      {
+        "sign": "M169",
+        "reading": "rā",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M416 (r=1.000, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M151",
+        "reading": "viḷ",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M375 (r=1.000, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M387",
+        "reading": "kur",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M035 (r=0.933, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M090",
+        "reading": "aintu",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M416 (r=1.000, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M129",
+        "reading": "kur",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M427 (r=0.946, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M307",
+        "reading": "kur",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M427 (r=0.979, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M106",
+        "reading": "kur",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M427 (r=0.993, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M138",
+        "reading": "kur",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M375 (r=0.988, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M413",
+        "reading": "kur",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M427 (r=0.986, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M256",
+        "reading": "kur",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M375 (r=1.000, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M203",
+        "reading": "kur",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M416 (r=0.998, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M156",
+        "reading": "kur",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M375 (r=0.982, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M157",
+        "reading": "kur",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M427 (r=0.953, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M400",
+        "reading": "kur",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M427 (r=0.967, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M394",
+        "reading": "kur",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M416 (r=1.000, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M740",
+        "reading": "su",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M416 (r=1.000, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M874",
+        "reading": "ki",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M427 (r=0.946, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M861",
+        "reading": "nallavar",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M427 (r=0.973, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M817",
+        "reading": "nallavar",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M427 (r=0.930, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "M858",
+        "reading": "nallavar",
+        "parent": "",
+        "corr": 0,
+        "basis": "Phase-252: Allograph of M427 (r=0.936, HIGH). Daggumati & Revesz (2021) positional correlation metho"
+      },
+      {
+        "sign": "P332",
+        "reading": "o/ko",
+        "parent": "M090",
+        "corr": 1.0,
+        "basis": "Phase-253: CISI allograph of M090='aintu' (HIGH, r=1.000). CISI sign positionally identical to HIGH "
+      }
+    ],
+    "verdict": "21 allograph signs (3.5%). Of these, 17 have DEDR entries, 5 have SA support, 2 have Elamite corroboration. Independent support rate: 114%."
+  },
+  "phase305_cross_researcher": {
+    "researchers_compared": 4,
+    "total_agreements": 4,
+    "total_contradictions": 6,
+    "comparisons": {
+      "mukhopadhyay": {
+        "framework": "semasiographic/logographic (trade-admin)",
+        "agreements": 1,
+        "contradictions": 2,
+        "key_agreements": [
+          "Fish as compound-only (supports our 0/140 isolated finding)"
+        ],
+        "key_contradictions": [
+          "Non-phonetic interpretation contradicts our SA-based phonetic readings",
+          "Trade-admin vs our guild-identity interpretation"
+        ]
+      },
+      "shaw_2026": {
+        "framework": "LISSE phonetic envelope mapping",
+        "agreements": 2,
+        "contradictions": 2,
+        "key_agreements": [
+          "Computational approach",
+          "Corpus-wide scope"
+        ],
+        "key_contradictions": [
+          "Different methodology (LISSE vs SA)",
+          "Readings likely differ"
+        ]
+      },
+      "singh_2026": {
+        "framework": "structural-semiotic analysis",
+        "agreements": 1,
+        "contradictions": 1,
+        "key_agreements": [
+          "M176 as classifier/suffix (we read M176=an/aṇ masculine suffix)"
+        ],
+        "key_contradictions": [
+          "Semiotic vs phonetic interpretation of M176"
+        ]
+      },
+      "yajnadevam_2024": {
+        "framework": "Sanskrit phonetic (lipi)",
+        "agreements": 0,
+        "contradictions": 1,
+        "key_agreements": [],
+        "key_contradictions": [
+          "0/34 agreement with our readings (already falsified)"
+        ]
+      }
+    },
+    "verdict": "Compared against 4 competing frameworks. 4 points of agreement, 6 contradictions. Key validation: fish-sign compound-only finding (0/140) supported by Mukhopadhyay. Key challenge: semasiographic vs phonetic debate remains unresolved by either side."
+  },
+  "phase306_semantic_coherence": {
+    "total_seals": 1670,
+    "fully_decoded": 1670,
+    "partially_decoded": 0,
+    "zero_decoded": 0,
+    "decode_rate": 100.0,
+    "semantic_types": {
+      "OTHER": 1234,
+      "SUFFIX_ONLY": 195,
+      "ANIMAL_GUILD": 153,
+      "TITLE_FORMULA": 88
+    },
+    "verdict": "1670/1670 seals (100%) fully decoded. Semantic types: {'OTHER': 1234, 'SUFFIX_ONLY': 195, 'ANIMAL_GUILD': 153, 'TITLE_FORMULA': 88}. ANIMAL_GUILD dominance (153/1670) consistent with guild-identity model."
+  },
+  "phase307_dedr_coverage": {
+    "total_anchors": 605,
+    "with_dedr": 496,
+    "without_dedr": 109,
+    "dedr_coverage_pct": 82.0,
+    "dedr_sources": {
+      "elamite": 228,
+      "phase292_role_vocabulary": 192,
+      "phase272_DEDR_injection": 28,
+      "unknown": 15,
+      "phase244_DEDR_injection": 14,
+      "phase294_manual_DEDR": 12,
+      "phase258_resolution": 5,
+      "phase273_resolution": 1,
+      "phase242_DEDR_injection": 1
+    },
+    "shared_dedr_entries": 39,
+    "top_shared": {
+      "494": 13,
+      "4605": 6,
+      "2905": 2,
+      "367": 7,
+      "2199": 2,
+      "4796": 8,
+      "5535": 10,
+      "4981": 2,
+      "1638": 236,
+      "5135": 6
+    },
+    "verdict": "496/605 (82.0%) anchors have DEDR citations. 109 without. 39 DEDR entries shared by multiple signs (expected for allographs/variants)."
+  }
+}

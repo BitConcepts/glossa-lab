@@ -9,7 +9,7 @@
   "history": [
     {
       "cycle": 1,
-      "timestamp": "2026-05-27T23:31:33.163768+00:00",
+      "timestamp": "2026-05-27T23:40:26.786161+00:00",
       "gap_targeted": "rare_sign_context",
       "n_papers": 71,
       "n_insights": 4,
@@ -19,7 +19,7 @@
     },
     {
       "cycle": 2,
-      "timestamp": "2026-05-27T23:31:35.847886+00:00",
+      "timestamp": "2026-05-27T23:40:29.930606+00:00",
       "gap_targeted": "compound_morphology",
       "n_papers": 61,
       "n_insights": 3,
@@ -29,7 +29,7 @@
     },
     {
       "cycle": 3,
-      "timestamp": "2026-05-27T23:31:39.967935+00:00",
+      "timestamp": "2026-05-27T23:40:33.331332+00:00",
       "gap_targeted": "seal_owner_identity",
       "n_papers": 103,
       "n_insights": 4,
@@ -39,7 +39,7 @@
     },
     {
       "cycle": 4,
-      "timestamp": "2026-05-27T23:31:43.161505+00:00",
+      "timestamp": "2026-05-27T23:40:36.661726+00:00",
       "gap_targeted": "cross_script_transfer",
       "n_papers": 61,
       "n_insights": 2,
@@ -49,7 +49,7 @@
     },
     {
       "cycle": 5,
-      "timestamp": "2026-05-27T23:31:46.061239+00:00",
+      "timestamp": "2026-05-27T23:40:39.453527+00:00",
       "gap_targeted": "trade_network_vocabulary",
       "n_papers": 81,
       "n_insights": 7,
@@ -59,7 +59,7 @@
     },
     {
       "cycle": 6,
-      "timestamp": "2026-05-27T23:31:49.503291+00:00",
+      "timestamp": "2026-05-27T23:40:42.151136+00:00",
       "gap_targeted": "inscription_formula_syntax",
       "n_papers": 67,
       "n_insights": 2,
@@ -69,7 +69,7 @@
     },
     {
       "cycle": 7,
-      "timestamp": "2026-05-27T23:31:52.340362+00:00",
+      "timestamp": "2026-05-27T23:40:44.969105+00:00",
       "gap_targeted": "iconographic_semantic",
       "n_papers": 59,
       "n_insights": 0,
@@ -79,7 +79,7 @@
     },
     {
       "cycle": 8,
-      "timestamp": "2026-05-27T23:31:55.650804+00:00",
+      "timestamp": "2026-05-27T23:40:47.521372+00:00",
       "gap_targeted": "phonological_reconstruction",
       "n_papers": 42,
       "n_insights": 3,
@@ -89,7 +89,7 @@
     },
     {
       "cycle": 9,
-      "timestamp": "2026-05-27T23:31:58.529357+00:00",
+      "timestamp": "2026-05-27T23:40:50.184356+00:00",
       "gap_targeted": "computational_upgrade",
       "n_papers": 98,
       "n_insights": 1,
@@ -99,7 +99,7 @@
     },
     {
       "cycle": 10,
-      "timestamp": "2026-05-27T23:32:01.802924+00:00",
+      "timestamp": "2026-05-27T23:40:53.137181+00:00",
       "gap_targeted": "archaeological_context",
       "n_papers": 49,
       "n_insights": 1,
@@ -109,7 +109,7 @@
     },
     {
       "cycle": 11,
-      "timestamp": "2026-05-27T23:32:04.986415+00:00",
+      "timestamp": "2026-05-27T23:40:55.742972+00:00",
       "gap_targeted": "personal_name_structure",
       "n_papers": 40,
       "n_insights": 0,
@@ -119,7 +119,7 @@
     },
     {
       "cycle": 12,
-      "timestamp": "2026-05-27T23:32:08.530015+00:00",
+      "timestamp": "2026-05-27T23:40:58.454270+00:00",
       "gap_targeted": "numeral_metrological",
       "n_papers": 59,
       "n_insights": 3,
@@ -129,7 +129,7 @@
     },
     {
       "cycle": 13,
-      "timestamp": "2026-05-27T23:32:11.598460+00:00",
+      "timestamp": "2026-05-27T23:41:01.034095+00:00",
       "gap_targeted": "substrate_loanword",
       "n_papers": 70,
       "n_insights": 2,
@@ -139,7 +139,7 @@
     },
     {
       "cycle": 14,
-      "timestamp": "2026-05-27T23:32:14.298106+00:00",
+      "timestamp": "2026-05-27T23:41:03.608617+00:00",
       "gap_targeted": "gulf_foreign_attestation",
       "n_papers": 38,
       "n_insights": 2,
@@ -149,7 +149,7 @@
     },
     {
       "cycle": 15,
-      "timestamp": "2026-05-27T23:32:16.950197+00:00",
+      "timestamp": "2026-05-27T23:41:05.970125+00:00",
       "gap_targeted": "allograph_classification",
       "n_papers": 71,
       "n_insights": 1,

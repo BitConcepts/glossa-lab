@@ -1,0 +1,221 @@
+{
+  "n_reverted_input": 205,
+  "n_medium_proposals": 102,
+  "n_low_proposals": 103,
+  "n_unresolved": 0,
+  "positional_distribution": {
+    "MEDIAL": 205
+  },
+  "final_model": {
+    "HIGH": 400,
+    "MEDIUM": 102,
+    "LOW": 103,
+    "total": 605,
+    "with_reading": 605,
+    "distinct_readings": 167,
+    "token_coverage": 1.0
+  },
+  "proposals_sample": [
+    {
+      "sign": "M101",
+      "freq": 2,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "LOW",
+      "score": 7
+    },
+    {
+      "sign": "M104",
+      "freq": 3,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "MEDIUM",
+      "score": 6
+    },
+    {
+      "sign": "M105",
+      "freq": 3,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "MEDIUM",
+      "score": 6
+    },
+    {
+      "sign": "M109",
+      "freq": 4,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "MEDIUM",
+      "score": 6
+    },
+    {
+      "sign": "M110",
+      "freq": 3,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "MEDIUM",
+      "score": 6
+    },
+    {
+      "sign": "M111",
+      "freq": 3,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "MEDIUM",
+      "score": 7
+    },
+    {
+      "sign": "M112",
+      "freq": 2,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "LOW",
+      "score": 7
+    },
+    {
+      "sign": "M113",
+      "freq": 1,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "LOW",
+      "score": 6
+    },
+    {
+      "sign": "M114",
+      "freq": 1,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "LOW",
+      "score": 7
+    },
+    {
+      "sign": "M115",
+      "freq": 1,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "LOW",
+      "score": 7
+    },
+    {
+      "sign": "M116",
+      "freq": 4,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "MEDIUM",
+      "score": 6
+    },
+    {
+      "sign": "M119",
+      "freq": 1,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "LOW",
+      "score": 7
+    },
+    {
+      "sign": "M120",
+      "freq": 4,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "MEDIUM",
+      "score": 7
+    },
+    {
+      "sign": "M121",
+      "freq": 3,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "MEDIUM",
+      "score": 7
+    },
+    {
+      "sign": "M122",
+      "freq": 1,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "LOW",
+      "score": 7
+    },
+    {
+      "sign": "M123",
+      "freq": 2,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "LOW",
+      "score": 7
+    },
+    {
+      "sign": "M126",
+      "freq": 1,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "LOW",
+      "score": 7
+    },
+    {
+      "sign": "M131",
+      "freq": 3,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "MEDIUM",
+      "score": 7
+    },
+    {
+      "sign": "M132",
+      "freq": 1,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "LOW",
+      "score": 6
+    },
+    {
+      "sign": "M133",
+      "freq": 1,
+      "pos_class": "MEDIAL",
+      "reading": "kol",
+      "dedr": "2133",
+      "meaning": "smith/forge",
+      "confidence": "LOW",
+      "score": 5
+    }
+  ],
+  "verdict": "Re-derived 102 MEDIUM + 103 LOW readings for reverted signs. Final model: 400 HIGH + 102 MEDIUM + 103 LOW. 605 signs with readings (167 distinct). Token coverage: 100.0%."
+}

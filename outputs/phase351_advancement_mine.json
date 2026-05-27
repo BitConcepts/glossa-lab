@@ -1,0 +1,368 @@
+{
+  "phase": 351,
+  "total_papers": 42,
+  "category_counts": {
+    "sign_readings": 20,
+    "seal_formulas": 2,
+    "tamil_brahmi": 4,
+    "meluhha_names": 2,
+    "computational": 17,
+    "trade_vocabulary": 7
+  },
+  "top_30_papers": [
+    {
+      "title": "The Ledger of Meluhha: Indus Valley Script as Metrological Accounting Code",
+      "doi": "https://doi.org/10.5281/zenodo.20006537",
+      "year": 2026,
+      "authors": [
+        "RAJESHKUMAR VENUGOPAL"
+      ],
+      "score": 15,
+      "category": "sign_readings"
+    },
+    {
+      "title": "Can the semasiographic/logographic Indus script answer the Dravidian question? Insights from Indus script’s gemstone related fish-signs, and Indus gemstone-word “maṇi”",
+      "doi": "https://doi.org/10.31235/osf.io/ftdzc",
+      "year": 2023,
+      "authors": [
+        "Bahata Ansumali Mukhopadhyay"
+      ],
+      "score": 9,
+      "category": "sign_readings"
+    },
+    {
+      "title": "Interrogating Indus inscriptions to unravel their mechanisms of meaning conveyance",
+      "doi": "https://doi.org/10.1057/s41599-019-0274-1",
+      "year": 2019,
+      "authors": [
+        "Bahata Ansumali Mukhopadhyay"
+      ],
+      "score": 6,
+      "category": "sign_readings"
+    },
+    {
+      "title": "Iravatham Mahadevan’s Reading of Indus Script: A Critical Review",
+      "doi": "https://doi.org/10.23993/store.85246",
+      "year": 2023,
+      "authors": [
+        "C Jyothibabu"
+      ],
+      "score": 6,
+      "category": "sign_readings"
+    },
+    {
+      "title": "Fish Symbolism in Indus Valley Epigraphy and Protohistoric Accounts",
+      "doi": "https://doi.org/10.23993/store.110917",
+      "year": 2023,
+      "authors": [
+        "Shamashis Sengupta"
+      ],
+      "score": 6,
+      "category": "sign_readings"
+    },
+    {
+      "title": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Valley Script",
+      "doi": "https://doi.org/10.1145/3768633.3770145",
+      "year": 2025,
+      "authors": [
+        "Aruna Sharma",
+        "Shubhajit Roy Chowdhury"
+      ],
+      "score": 6,
+      "category": "sign_readings"
+    },
+    {
+      "title": "A Survey of Modular OCR Approaches for Tamil-Brahmi Inscriptions: Segmentation and Reconstruction Focus",
+      "doi": "10.1109/ICUIS67429.2025.11380767",
+      "year": 2025,
+      "authors": [
+        "K. Saranya",
+        "S. R. N. Kumar",
+        "R. P. Kumar"
+      ],
+      "score": 6,
+      "category": "computational"
+    },
+    {
+      "title": "Metal-smithy, Bead-making, Gemstones, Jeweller’s Weight, Trade-permits, Tax-stamps: Indus Script’s Semasiography Partly Decoded",
+      "doi": "https://doi.org/10.31235/osf.io/942ra",
+      "year": 2021,
+      "authors": [
+        "Bahata Ansumali Mukhopadhyay"
+      ],
+      "score": 6,
+      "category": "trade_vocabulary"
+    },
+    {
+      "title": "Machine Learning for Ancient Languages: A Survey",
+      "doi": "https://doi.org/10.1162/coli_a_00481",
+      "year": 2023,
+      "authors": [
+        "Thea Sommerschield",
+        "Yannis Assael",
+        "John Pavlopoulos"
+      ],
+      "score": 3,
+      "category": "sign_readings"
+    },
+    {
+      "title": "&lt;strong&gt;THE INDUS SCRIPT AS AN ALPHABET &lt;/strong&gt;&lt;strong&gt;&lt;em&gt;Examining Conformity in the Usage of the Indus Script&lt;/em&gt;&lt;/strong&gt;&lt;strong&gt; &lt;/strong&gt;",
+      "doi": "https://doi.org/10.20944/preprints202408.1473.v1",
+      "year": 2024,
+      "authors": [
+        "Mahaveer H Muhammad"
+      ],
+      "score": 3,
+      "category": "sign_readings"
+    },
+    {
+      "title": "The Alphabet of Sindhu Prakrit (The decipherment of the Indus Script)",
+      "doi": "https://doi.org/10.31219/osf.io/aey8m",
+      "year": 2022,
+      "authors": [
+        "Mahaveer H Muhammad"
+      ],
+      "score": 3,
+      "category": "sign_readings"
+    },
+    {
+      "title": "Indus wheel-like symbols: signifying solar-disc, sun-god, ruler, fire, and metallurgical meanings in wheel-shaped amulets, tablet-iconographies, seal-inscriptions, and inscribed metallic implements",
+      "doi": "https://doi.org/10.31235/osf.io/9z4ka",
+      "year": 2023,
+      "authors": [
+        "Bahata Ansumali Mukhopadhyay"
+      ],
+      "score": 3,
+      "category": "sign_readings"
+    },
+    {
+      "title": "Ancient tax tokens, trade licenses and metrological records?: Making sense of Indus inscribed objects through script-internal, contextual, linguistic, and ethnohistorical lenses.",
+      "doi": "https://doi.org/10.31235/osf.io/h8ct7",
+      "year": 2021,
+      "authors": [
+        "Bahata Ansumali Mukhopadhyay"
+      ],
+      "score": 3,
+      "category": "sign_readings"
+    },
+    {
+      "title": "THE INDUS SCRIPT Recognition as an alphabet",
+      "doi": "https://doi.org/10.22541/au.173016191.13273490/v1",
+      "year": 2024,
+      "authors": [
+        "Mahaveer H Muhammad"
+      ],
+      "score": 3,
+      "category": "sign_readings"
+    },
+    {
+      "title": "THE SECRET OF INDUS VALLEY SEALS UNSEALED",
+      "doi": "https://doi.org/10.21618/fil2328515h",
+      "year": 2023,
+      "authors": [
+        "Boris Hlebec"
+      ],
+      "score": 3,
+      "category": "sign_readings"
+    },
+    {
+      "title": "A method of identifying allographs in undeciphered scripts and its application to the Indus Valley Script",
+      "doi": "https://doi.org/10.1057/s41599-021-00713-0",
+      "year": 2021,
+      "authors": [
+        "Shruti Daggumati",
+        "Péter Révész"
+      ],
+      "score": 3,
+      "category": "sign_readings"
+    },
+    {
+      "title": "The Languages of Harappa: Early Linguistic Data and the Indus civilization",
+      "doi": "https://doi.org/10.11588/xarep.00000120",
+      "year": 2008,
+      "authors": [
+        "Michael Witzel"
+      ],
+      "score": 3,
+      "category": "sign_readings"
+    },
+    {
+      "title": "The Indus sings on the tablets from Harappa",
+      "doi": "https://doi.org/10.36948/ijfmr.2026.v08i01.68878",
+      "year": 2026,
+      "authors": [
+        "Tapan Das Gupta"
+      ],
+      "score": 3,
+      "category": "sign_readings"
+    },
+    {
+      "title": "Indus Valley Tamil Scripts",
+      "doi": "https://doi.org/10.31235/osf.io/xke8f",
+      "year": 2024,
+      "authors": [
+        "C. Mathiazhagan"
+      ],
+      "score": 3,
+      "category": "sign_readings"
+    },
+    {
+      "title": "THE INDUS SCRIPT AS AN ALPHABET",
+      "doi": "https://doi.org/10.22541/au.172366258.87422803/v1",
+      "year": 2024,
+      "authors": [
+        "Mahaveer H Muhammad"
+      ],
+      "score": 3,
+      "category": "sign_readings"
+    },
+    {
+      "title": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licensing, commodity control and access control: archaeological and script-internal evidence",
+      "doi": "https://doi.org/10.31235/osf.io/7dtqz",
+      "year": 2023,
+      "authors": [
+        "Bahata Ansumali Mukhopadhyay"
+      ],
+      "score": 3,
+      "category": "sign_readings"
+    },
+    {
+      "title": "Gold and ‘ratti’ signs inscribed on Mohenjo-Daro’s gold-assaying needles, fish-sign inscriptions signifying gemstones concentrated near lapidaries: Indus script’s taxed commodities",
+      "doi": "https://doi.org/10.31235/osf.io/rtdy4",
+      "year": 2022,
+      "authors": [
+        "Bahata Ansumali Mukhopadhyay"
+      ],
+      "score": 3,
+      "category": "sign_readings"
+    },
+    {
+      "title": "Representing idols, idolizing representations : interpreting Hindu images from the nineteenth century to the early twentieth century",
+      "doi": null,
+      "year": 2008,
+      "authors": [
+        "T. N. Ramachandran"
+      ],
+      "score": 3,
+      "category": "seal_formulas"
+    },
+    {
+      "title": "Yupa and Tarumanagara Inscriptions as Documents of the Kalinga-Gupta Diaspora: An Epistemological Reconstruction of Early Nusantara Historiography Based on Convergent Evidence",
+      "doi": null,
+      "year": null,
+      "authors": [
+        "Jimmy Mahardhika"
+      ],
+      "score": 3,
+      "category": "tamil_brahmi"
+    },
+    {
+      "title": "Police Matters",
+      "doi": "https://doi.org/10.1515/9781501760860",
+      "year": 2021,
+      "authors": [
+        "Radha Kumar"
+      ],
+      "score": 3,
+      "category": "meluhha_names"
+    },
+    {
+      "title": "Data mining ancient scripts to investigate their relationships and origins",
+      "doi": "https://doi.org/10.1145/3331076.3331116",
+      "year": 2019,
+      "authors": [
+        "Shruti Daggumati",
+        "Péter Révész"
+      ],
+      "score": 3,
+      "category": "computational"
+    },
+    {
+      "title": "The Evolution of Artificial Intelligence in Medical Imaging: From Computer Science to Machine and Deep Learning",
+      "doi": "https://doi.org/10.3390/cancers16213702",
+      "year": 2024,
+      "authors": [
+        "Michele Avanzo",
+        "Joseph Stancanello",
+        "G. Pirrone"
+      ],
+      "score": 3,
+      "category": "computational"
+    },
+    {
+      "title": "Machine Learning Algorithms for Handwritten Devanagari Character Recognition: A Systematic Review",
+      "doi": "https://doi.org/10.46243/jst.2022.v7.i01.pp1-16",
+      "year": 2023,
+      "authors": [
+        "Mimansha Agrawal Mimansha Agrawal"
+      ],
+      "score": 3,
+      "category": "computational"
+    },
+    {
+      "title": "Unsupervised deep learning supports reclassification of Bronze age cypriot writing system",
+      "doi": "https://doi.org/10.1371/journal.pone.0269544",
+      "year": 2022,
+      "authors": [
+        "Michele Corazza",
+        "Fabio Tamburini",
+        "Miguel Valério"
+      ],
+      "score": 3,
+      "category": "computational"
+    },
+    {
+      "title": "Detection and recognition of cursive text from video frames",
+      "doi": "https://doi.org/10.1186/s13640-020-00523-5",
+      "year": 2020,
+      "authors": [
+        "Ali Mirza",
+        "Ossama Zeshan",
+        "Muhammad Atif"
+      ],
+      "score": 3,
+      "category": "computational"
+    }
+  ],
+  "advancement_insights": {
+    "new_sign_readings": {
+      "count": 0,
+      "top_5": []
+    },
+    "formula_patterns": {
+      "count": 0,
+      "top_5": []
+    },
+    "tamil_brahmi_links": {
+      "count": 0,
+      "top_5": []
+    },
+    "meluhha_evidence": {
+      "count": 0,
+      "top_5": []
+    },
+    "computational_methods": {
+      "count": 0,
+      "top_5": []
+    },
+    "trade_terms": {
+      "count": 0,
+      "top_5": []
+    }
+  },
+  "current_anchor_stats": {
+    "HIGH": 400,
+    "MEDIUM": 0,
+    "LOW": 205,
+    "no_reading": 205,
+    "total": 605
+  },
+  "next_priorities": [
+    "Upgrade 0 MEDIUM readings using new evidence from 0 sign-reading papers",
+    "Cross-check 0 Tamil-Brahmi continuity papers for direct sign-value transfers",
+    "Extract personal name formulas from 0 formula papers",
+    "Investigate 0 Meluhha bilingual sources for phonetic constraints",
+    "Evaluate 0 computational methods for LOW→HIGH upgrade pipeline"
+  ],
+  "verdict": "Advancement mine: 42 papers across 6 categories. Insights: 0 actionable items. Current: 400 HIGH / 0 MEDIUM / 205 LOW readings."
+}

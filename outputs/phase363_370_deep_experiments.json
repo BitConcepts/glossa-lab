@@ -1,0 +1,551 @@
+{
+  "phase363": {
+    "sites": {
+      "Mohenjo-daro": {
+        "n_seals": 606,
+        "n_readable": 280,
+        "readable_rate": 0.462
+      },
+      "Harappa": {
+        "n_seals": 492,
+        "n_readable": 235,
+        "readable_rate": 0.478
+      },
+      "Lothal": {
+        "n_seals": 124,
+        "n_readable": 59,
+        "readable_rate": 0.476
+      },
+      "Kalibangan": {
+        "n_seals": 110,
+        "n_readable": 51,
+        "readable_rate": 0.464
+      },
+      "Dholavira": {
+        "n_seals": 106,
+        "n_readable": 52,
+        "readable_rate": 0.491
+      },
+      "Chanhu-daro": {
+        "n_seals": 78,
+        "n_readable": 34,
+        "readable_rate": 0.436
+      },
+      "Surkotada": {
+        "n_seals": 61,
+        "n_readable": 26,
+        "readable_rate": 0.426
+      },
+      "Banawali": {
+        "n_seals": 60,
+        "n_readable": 30,
+        "readable_rate": 0.5
+      },
+      "Rakhigarhi": {
+        "n_seals": 33,
+        "n_readable": 20,
+        "readable_rate": 0.606
+      }
+    },
+    "n_sites": 9,
+    "avg_readable_rate": 0.482,
+    "verdict": "Site-stratified: 9 sites, avg 48% readable. CONSISTENT"
+  },
+  "phase364": {
+    "n_compounds": 619,
+    "top_20": [
+      {
+        "signs": "M357+M254",
+        "readings": "kuḷ+tēṉ",
+        "pmi": 8.52,
+        "count": 1
+      },
+      {
+        "signs": "M239+M190",
+        "readings": "il+paṉ",
+        "pmi": 8.52,
+        "count": 1
+      },
+      {
+        "signs": "M416+M304",
+        "readings": "na+vēṟ",
+        "pmi": 8.52,
+        "count": 1
+      },
+      {
+        "signs": "M321+M416",
+        "readings": "kol+na",
+        "pmi": 8.52,
+        "count": 1
+      },
+      {
+        "signs": "M402+M231",
+        "readings": "vēḷ+kur",
+        "pmi": 8.52,
+        "count": 1
+      },
+      {
+        "signs": "M332+M254",
+        "readings": "intu+tēṉ",
+        "pmi": 8.26,
+        "count": 1
+      },
+      {
+        "signs": "M270+M345",
+        "readings": "muḷ+taṭ",
+        "pmi": 8.26,
+        "count": 1
+      },
+      {
+        "signs": "M357+M270",
+        "readings": "kuḷ+muḷ",
+        "pmi": 8.26,
+        "count": 1
+      },
+      {
+        "signs": "M223+M270",
+        "readings": "muḷ+muḷ",
+        "pmi": 8.26,
+        "count": 1
+      },
+      {
+        "signs": "M235+M177",
+        "readings": "vē+na",
+        "pmi": 8.04,
+        "count": 1
+      },
+      {
+        "signs": "M262+M375",
+        "readings": "i+taṇ",
+        "pmi": 8.04,
+        "count": 1
+      },
+      {
+        "signs": "M076+M357",
+        "readings": "nan+kuḷ",
+        "pmi": 8.04,
+        "count": 1
+      },
+      {
+        "signs": "M235+M183",
+        "readings": "vē+vēḷ",
+        "pmi": 8.04,
+        "count": 1
+      },
+      {
+        "signs": "M168+M332",
+        "readings": "inci+intu",
+        "pmi": 8.0,
+        "count": 1
+      },
+      {
+        "signs": "M168+M149",
+        "readings": "inci+or",
+        "pmi": 7.77,
+        "count": 1
+      },
+      {
+        "signs": "M050+M365",
+        "readings": "pār+vāṉ",
+        "pmi": 7.76,
+        "count": 2
+      },
+      {
+        "signs": "M374+M102",
+        "readings": "kul+ni",
+        "pmi": 7.58,
+        "count": 1
+      },
+      {
+        "signs": "M043+M355",
+        "readings": "mu+lu",
+        "pmi": 7.39,
+        "count": 1
+      },
+      {
+        "signs": "M028+M153",
+        "readings": "cōḻ+pu",
+        "pmi": 7.39,
+        "count": 1
+      },
+      {
+        "signs": "M029+M402",
+        "readings": "yānai+vēḷ",
+        "pmi": 7.39,
+        "count": 1
+      }
+    ],
+    "verdict": "Compounds: 619 high-PMI pairs (PMI>2.0). Top: kuḷ+tēṉ."
+  },
+  "phase365": {
+    "n_formulas": 13,
+    "total_occurrences": 15,
+    "top_20": [
+      {
+        "formula": "nēr-kol-an",
+        "count": 2
+      },
+      {
+        "formula": "nēr-kol-ay",
+        "count": 2
+      },
+      {
+        "formula": "tiru-il-ay",
+        "count": 1
+      },
+      {
+        "formula": "tiru-il-in",
+        "count": 1
+      },
+      {
+        "formula": "mā-ūr-ay",
+        "count": 1
+      },
+      {
+        "formula": "mā-kol-ay",
+        "count": 1
+      },
+      {
+        "formula": "nal-vel-oṉṟu",
+        "count": 1
+      },
+      {
+        "formula": "nal-ūr-in",
+        "count": 1
+      },
+      {
+        "formula": "mā-vel-iṉ",
+        "count": 1
+      },
+      {
+        "formula": "mā-vel-an",
+        "count": 1
+      },
+      {
+        "formula": "cem-kol-tu",
+        "count": 1
+      },
+      {
+        "formula": "tiru-kol-in",
+        "count": 1
+      },
+      {
+        "formula": "nēr-kol-am",
+        "count": 1
+      }
+    ],
+    "verdict": "Title formulas: 13 unique, 15 total occurrences."
+  },
+  "phase366": {
+    "n_motif_types": 9,
+    "profiles": {
+      "elephant": {
+        "n_tokens": 793,
+        "root_pct": 0.35,
+        "suffix_pct": 0.4,
+        "top_3": [
+          "kol(80)",
+          "ay(66)",
+          "in(43)"
+        ]
+      },
+      "geometric": {
+        "n_tokens": 362,
+        "root_pct": 0.29,
+        "suffix_pct": 0.41,
+        "top_3": [
+          "kol(40)",
+          "ay(27)",
+          "an(19)"
+        ]
+      },
+      "script only": {
+        "n_tokens": 533,
+        "root_pct": 0.28,
+        "suffix_pct": 0.39,
+        "top_3": [
+          "kol(52)",
+          "ay(46)",
+          "in(34)"
+        ]
+      },
+      "zebu bull": {
+        "n_tokens": 1309,
+        "root_pct": 0.32,
+        "suffix_pct": 0.41,
+        "top_3": [
+          "kol(139)",
+          "ay(102)",
+          "in(78)"
+        ]
+      },
+      "unicorn": {
+        "n_tokens": 1999,
+        "root_pct": 0.26,
+        "suffix_pct": 0.44,
+        "top_3": [
+          "kol(198)",
+          "ay(184)",
+          "in(147)"
+        ]
+      },
+      "rhinoceros": {
+        "n_tokens": 675,
+        "root_pct": 0.35,
+        "suffix_pct": 0.41,
+        "top_3": [
+          "ay(76)",
+          "kol(69)",
+          "an(38)"
+        ]
+      },
+      "tiger": {
+        "n_tokens": 293,
+        "root_pct": 0.29,
+        "suffix_pct": 0.43,
+        "top_3": [
+          "ay(30)",
+          "kol(30)",
+          "in(17)"
+        ]
+      },
+      "buffalo": {
+        "n_tokens": 278,
+        "root_pct": 0.27,
+        "suffix_pct": 0.4,
+        "top_3": [
+          "kol(34)",
+          "ay(31)",
+          "in(20)"
+        ]
+      },
+      "gharial": {
+        "n_tokens": 259,
+        "root_pct": 0.25,
+        "suffix_pct": 0.44,
+        "top_3": [
+          "kol(22)",
+          "ay(22)",
+          "in(16)"
+        ]
+      }
+    },
+    "verdict": "Seal types: 9 motif types profiled with reading distributions."
+  },
+  "phase367": {
+    "n_profiled": 99,
+    "low_entropy": [
+      {
+        "reading": "maṟi",
+        "left_entropy": 0,
+        "right_entropy": 2.36,
+        "avg_entropy": 1.18,
+        "total_contexts": 12
+      },
+      {
+        "reading": "ker",
+        "left_entropy": 0,
+        "right_entropy": 2.65,
+        "avg_entropy": 1.32,
+        "total_contexts": 10
+      },
+      {
+        "reading": "ve",
+        "left_entropy": 0,
+        "right_entropy": 2.86,
+        "avg_entropy": 1.43,
+        "total_contexts": 12
+      },
+      {
+        "reading": "ri",
+        "left_entropy": 0,
+        "right_entropy": 2.92,
+        "avg_entropy": 1.46,
+        "total_contexts": 10
+      }
+    ],
+    "high_entropy": [
+      {
+        "reading": "muḷ",
+        "left_entropy": 3.17,
+        "right_entropy": 2.91,
+        "avg_entropy": 3.04,
+        "total_contexts": 20
+      },
+      {
+        "reading": "i",
+        "left_entropy": 3.17,
+        "right_entropy": 2.95,
+        "avg_entropy": 3.06,
+        "total_contexts": 18
+      },
+      {
+        "reading": "tii",
+        "left_entropy": 4.58,
+        "right_entropy": 1.58,
+        "avg_entropy": 3.08,
+        "total_contexts": 67
+      },
+      {
+        "reading": "vē",
+        "left_entropy": 3.69,
+        "right_entropy": 3.93,
+        "avg_entropy": 3.81,
+        "total_contexts": 40
+      },
+      {
+        "reading": "kur",
+        "left_entropy": 4.2,
+        "right_entropy": 3.98,
+        "avg_entropy": 4.09,
+        "total_contexts": 88
+      },
+      {
+        "reading": "an",
+        "left_entropy": 4.37,
+        "right_entropy": 3.87,
+        "avg_entropy": 4.12,
+        "total_contexts": 590
+      },
+      {
+        "reading": "vil",
+        "left_entropy": 4.56,
+        "right_entropy": 4.2,
+        "avg_entropy": 4.38,
+        "total_contexts": 165
+      },
+      {
+        "reading": "kutam",
+        "left_entropy": 4.74,
+        "right_entropy": 4.13,
+        "avg_entropy": 4.44,
+        "total_contexts": 168
+      },
+      {
+        "reading": "ūr",
+        "left_entropy": 4.96,
+        "right_entropy": 3.94,
+        "avg_entropy": 4.45,
+        "total_contexts": 208
+      },
+      {
+        "reading": "vel",
+        "left_entropy": 4.71,
+        "right_entropy": 4.26,
+        "avg_entropy": 4.48,
+        "total_contexts": 162
+      }
+    ],
+    "verdict": "Entropy: 4 predictable readings, 24 unpredictable. Most predictable: maṟi."
+  },
+  "phase368": {
+    "n_unread_scored": 0,
+    "n_suffix_candidates": 0,
+    "n_root_candidates": 0,
+    "top_20": [],
+    "verdict": "Collocate upgrade: 0 suffix candidates, 0 root candidates from 0 unread signs."
+  },
+  "phase369": {
+    "coastal_seals": 291,
+    "inland_seals": 1379,
+    "coastal_coherence": 0.674,
+    "inland_coherence": 0.637,
+    "difference": 0.038,
+    "verdict": "Gulf: coastal 67% vs inland 64% coherence. CONSISTENT across regions."
+  },
+  "phase370": {
+    "total_inscriptions": 1670,
+    "total_tokens": 7002,
+    "total_sign_types": 390,
+    "high_token_coverage": 0.9284,
+    "any_token_coverage": 0.9284,
+    "fully_decoded_inscriptions": 1252,
+    "partially_decoded": 418,
+    "no_reading": 0,
+    "avg_inscription_length": 4.2,
+    "n_distinct_readings": 127,
+    "top_20_readings": [
+      {
+        "reading": "kol",
+        "count": 664
+      },
+      {
+        "reading": "ay",
+        "count": 584
+      },
+      {
+        "reading": "in",
+        "count": 400
+      },
+      {
+        "reading": "an",
+        "count": 356
+      },
+      {
+        "reading": "ta",
+        "count": 254
+      },
+      {
+        "reading": "ā",
+        "count": 234
+      },
+      {
+        "reading": "ka",
+        "count": 228
+      },
+      {
+        "reading": "ēḷ",
+        "count": 222
+      },
+      {
+        "reading": "il",
+        "count": 218
+      },
+      {
+        "reading": "am",
+        "count": 190
+      },
+      {
+        "reading": "tu",
+        "count": 171
+      },
+      {
+        "reading": "ūr",
+        "count": 171
+      },
+      {
+        "reading": "mu",
+        "count": 168
+      },
+      {
+        "reading": "pū",
+        "count": 163
+      },
+      {
+        "reading": "iṉ",
+        "count": 161
+      },
+      {
+        "reading": "kutam",
+        "count": 157
+      },
+      {
+        "reading": "oṉṟu",
+        "count": 143
+      },
+      {
+        "reading": "vil",
+        "count": 132
+      },
+      {
+        "reading": "vel",
+        "count": 130
+      },
+      {
+        "reading": "ōṭu",
+        "count": 83
+      }
+    ],
+    "verdict": "Corpus: 1670 inscriptions, 7002 tokens. HIGH coverage: 93%. Fully decoded: 1252 (75%). 127 distinct readings used."
+  }
+}

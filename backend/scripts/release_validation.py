@@ -170,18 +170,23 @@ def _strip(s):
     return "".join(c for c in nfkd if not unicodedata.combining(c))
 
 def test3_parpola():
+    """Strict comparison: check ALL slash-separated alternatives, no substring matching."""
     _, high, _, _ = _load()
     anchors = json.loads(ANCHORS_PATH.read_text("utf-8")).get("anchors", {})
     exact = partial = disagree = no_ours = 0
 
+    def _alts(reading):
+        return [_strip(x) for x in reading.split("/") if x.strip()]
+
     for sign_id, p_reading in PARPOLA.items():
         our_r = anchors.get(sign_id, {}).get("reading", "")
         if not our_r: no_ours += 1; continue
-        our_s = _strip(our_r.split("/")[0].strip())
-        p_s = _strip(p_reading.split("/")[0].strip())
-        if our_s == p_s or p_s in _strip(our_r):
+        our_a = _alts(our_r)
+        par_a = _alts(p_reading)
+        if set(our_a) & set(par_a):
             exact += 1
-        elif our_s[:3] == p_s[:3]:
+        elif any(oa[:3] == pa[:3] for oa in our_a for pa in par_a
+                 if len(oa) >= 3 and len(pa) >= 3):
             partial += 1
         else:
             disagree += 1

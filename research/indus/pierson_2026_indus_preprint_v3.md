@@ -1,5 +1,3 @@
-**AI Disclosure:** This research used AI tooling for scripting, data pipeline management, literature search, and drafting assistance. All statistical tests were designed and interpreted by the author. Three pipeline bugs were discovered during a comprehensive audit and are disclosed in §2.3. The audit trail is published as supplementary data.
-
 ## Abstract
 
 We present a computational decipherment hypothesis for the Indus Script (~2600–1900 BCE) proposing 185 corpus-attested Proto-Dravidian phonetic readings that cover 92.8% of the Holdat Indus Valley Seal corpus tokens (6,501/7,002). Readings were derived through DEDR-based simulated annealing with anchor amplification across multiple evidence layers including distributional profiling, Elamite cognate matching, and allograph correlation. We validate the hypothesis through six independent tests: (1) an anchored bigram discrimination test showing Dravidian language models fit the readings significantly better than Uniform baselines (57.8% vs 0.0%); (2) corpus-independent replication on the Mahadevan 1977 concordance (70.5% Dravidian hit rate); (3) 80% agreement with Parpola's (1994) independent iconographic-rebus proposals across 20 tested signs; (4) reading-level conditional entropy of 4.11 bits, falling within the range of natural languages; (5) 97.7% inscription uniqueness consistent with a registration-code or guild-identity administrative model; and (6) 76% Proto-Dravidian phonological inventory coverage with the 6 missing initials all being expected-rare in PD word-initial position. The Sanskrit hypothesis is falsified (0/34 agreement with Yajnadevam 2024). We disclose three pipeline bugs discovered and corrected during a comprehensive audit, and three prior claims that were retracted as a result. The hypothesis requires specialist Dravidianist review before any claim of decipherment can be made.
@@ -200,3 +198,13 @@ Sproat, R. (2014). A statistical comparison of written language and nonlinguisti
 Venkatesan, S.K. (2025). Decipherment of Indus Valley Script. GitHub: Sukii/decipher-ivc.
 
 Yajnadevam (2024). A cryptanalytic decipherment of the Indus script. *ResearchGate preprint*.
+
+---
+
+## Declarations
+
+**AI Disclosure:** This research used AI tooling for scripting, data pipeline management, literature search, and drafting assistance. All statistical tests were designed and interpreted by the author. Three pipeline bugs were discovered during a comprehensive audit and are disclosed in §2.3. The audit trail is published as supplementary data.
+
+**Competing interests:** The author declares no competing interests.
+
+**Funding:** This research received no external funding.

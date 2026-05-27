@@ -1,0 +1,195 @@
+{
+  "phase317_permutation": {
+    "real_conformance": 0.918,
+    "null_mean": 0.942,
+    "null_std": 0.0562,
+    "null_min": 0.6032,
+    "null_max": 1.0,
+    "z_score": -0.43,
+    "p_value": 0.772,
+    "percentile": 22.8,
+    "n_trials": 1000,
+    "verdict": "Real conformance 91.8% vs null mean 94.2% (std=0.0562). Z-score=-0.4, p=0.7720. Percentile: 22.8%. NOT SIGNIFICANT — conformance may be due to chance."
+  },
+  "phase318_parpola": {
+    "parpola_signs_checked": 20,
+    "exact_agreements": 8,
+    "partial_agreements": 2,
+    "contradictions": 10,
+    "no_reading": 0,
+    "agreement_rate": 0.5,
+    "agreements": [
+      {
+        "sign": "M099",
+        "our": "kol/koḷ",
+        "parpola": "kol/vil",
+        "match": "EXACT"
+      },
+      {
+        "sign": "M001",
+        "our": "tōḷ",
+        "parpola": "tōḷ",
+        "match": "EXACT"
+      },
+      {
+        "sign": "M086",
+        "our": "oru",
+        "parpola": "oru/oṉṟu",
+        "match": "EXACT"
+      },
+      {
+        "sign": "M261",
+        "our": "muruku",
+        "parpola": "muruku",
+        "match": "EXACT"
+      },
+      {
+        "sign": "M175",
+        "our": "katir",
+        "parpola": "katir",
+        "match": "EXACT"
+      },
+      {
+        "sign": "M117",
+        "our": "ar",
+        "parpola": "ar/cakra",
+        "match": "EXACT"
+      },
+      {
+        "sign": "M233",
+        "our": "ūr",
+        "parpola": "ūr",
+        "match": "EXACT"
+      },
+      {
+        "sign": "M162",
+        "our": "il/iḷ",
+        "parpola": "il",
+        "match": "EXACT"
+      }
+    ],
+    "partial": [
+      {
+        "sign": "M047",
+        "our": "min/mīn",
+        "parpola": "mīn",
+        "match": "PARTIAL"
+      },
+      {
+        "sign": "M060",
+        "our": "kāṇṭāmirukam",
+        "parpola": "kāṇṭā-mṛga",
+        "match": "PARTIAL"
+      }
+    ],
+    "contradictions_detail": [
+      {
+        "sign": "M048",
+        "our": "mu/muṉ",
+        "parpola": "mīn",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M176",
+        "our": "an/aṇ",
+        "parpola": "kō/an",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M342",
+        "our": "ay/ā",
+        "parpola": "jar/pot marker",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M087",
+        "our": "veL",
+        "parpola": "veḷ/iraṇṭu",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M088",
+        "our": "muu(n)-",
+        "parpola": "mūṉṟu",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M091",
+        "our": "aru",
+        "parpola": "āṟu",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M092",
+        "our": "elu",
+        "parpola": "ēḻu",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M281",
+        "our": "piLLai",
+        "parpola": "piḷḷai",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M211",
+        "our": "kol",
+        "parpola": "kō",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M124",
+        "our": "kuTam",
+        "parpola": "kuṭam",
+        "match": "DISAGREE"
+      }
+    ],
+    "verdict": "Parpola cross-check: 8 exact + 2 partial agreements out of 20 compared (50%). 10 contradictions. STRONG agreement with Parpola's independent proposals."
+  },
+  "phase319_entropy": {
+    "reading_level": {
+      "vocab_size": 132,
+      "h1_unigram": 5.6351,
+      "h2_conditional": 4.1105,
+      "random_h1": 7.0444,
+      "compression_ratio": 0.7999
+    },
+    "sign_level": {
+      "vocab_size": 390,
+      "h1_unigram": 6.3199,
+      "h2_conditional": 4.1115
+    },
+    "reference_values": {
+      "rao_2009_indus_h2": 3.23,
+      "natural_language_range": "2-4 bits",
+      "administrative_codes": "1-3 bits",
+      "random_baseline": 7.04
+    },
+    "verdict": "Reading-level: H1=5.64 bits, H2(conditional)=4.11 bits (vocab=132). Sign-level: H1=6.32, H2=4.11 (vocab=390). Rao 2009 reference: H2=3.23. Compression ratio: 0.80 (1.0=random, <0.7=structured). Reading entropy is in the LINGUISTIC range."
+  },
+  "phase320_mine": {
+    "topics_mined": 4,
+    "total_papers": 1,
+    "strong_relevant": 0,
+    "strong_papers": [],
+    "by_topic": {
+      "tamil_brahmi_seal_formulas": {
+        "n": 0,
+        "top": "none"
+      },
+      "old_tamil_case_serial": {
+        "n": 0,
+        "top": "none"
+      },
+      "parpola_indus_values": {
+        "n": 0,
+        "top": "none"
+      },
+      "indus_guild_identity": {
+        "n": 1,
+        "top": "International Standards of Education: History Lessons and Modern Times"
+      }
+    },
+    "verdict": "Mined 1 papers across 4 topics. 0 strongly relevant."
+  }
+}

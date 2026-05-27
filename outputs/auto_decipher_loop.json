@@ -1,7 +1,7 @@
 {
   "protocol": "auto_decipher_loop",
   "iterations_run": 4,
-  "max_iterations": 5,
+  "max_iterations": 10,
   "final_convergence": {
     "n_strong": 6,
     "n_moderate_plus": 6,
@@ -53,10 +53,10 @@
   "history": [
     {
       "iteration": 1,
-      "timestamp": "2026-05-27T20:20:13.893200+00:00",
+      "timestamp": "2026-05-27T20:31:23.435504+00:00",
       "target_channel": "entropy_linguistic",
-      "n_mined": 0,
-      "n_insights": 0,
+      "n_mined": 22,
+      "n_insights": 2,
       "experiment": "cross_site_bigram_consistency",
       "z_score": -3.01,
       "upgraded": false,
@@ -72,10 +72,10 @@
     },
     {
       "iteration": 2,
-      "timestamp": "2026-05-27T20:20:13.946374+00:00",
+      "timestamp": "2026-05-27T20:31:25.692223+00:00",
       "target_channel": "entropy_linguistic",
-      "n_mined": 0,
-      "n_insights": 0,
+      "n_mined": 22,
+      "n_insights": 2,
       "experiment": "phonotactic_constraints",
       "z_score": 4.69,
       "upgraded": true,
@@ -91,9 +91,9 @@
     },
     {
       "iteration": 3,
-      "timestamp": "2026-05-27T20:20:14.137418+00:00",
+      "timestamp": "2026-05-27T20:31:29.817109+00:00",
       "target_channel": "null_controls",
-      "n_mined": 0,
+      "n_mined": 112,
       "n_insights": 0,
       "experiment": "positional_reading_consistency",
       "z_score": 2.07,
@@ -110,9 +110,9 @@
     },
     {
       "iteration": 4,
-      "timestamp": "2026-05-27T20:20:14.692259+00:00",
+      "timestamp": "2026-05-27T20:31:33.219975+00:00",
       "target_channel": "null_controls",
-      "n_mined": 0,
+      "n_mined": 112,
       "n_insights": 0,
       "experiment": "reading_diversity_null",
       "z_score": 3.42,

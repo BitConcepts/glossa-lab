@@ -1,0 +1,12 @@
+{
+  "phase": 377,
+  "generated_at": "2026-05-27T23:50:31.114604+00:00",
+  "recipient": "tpierson@bitconcepts.tech",
+  "subject": "Glossa Lab: Indus Decipherment — Full Session Report | Level 3 (18/18) | 75% Decoded | 65 Guild Titles",
+  "email_result": {
+    "success": false,
+    "error": "resend_api_key not configured"
+  },
+  "report_length_chars": 7746,
+  "verdict": "Phase 377: Session report generated (7746 chars). Email FAILED to tpierson@bitconcepts.tech."
+}

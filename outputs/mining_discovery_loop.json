@@ -1,0 +1,359 @@
+{
+  "protocol": "mining_discovery_loop",
+  "rounds": 5,
+  "total_new_papers": 1331,
+  "total_insights": 217,
+  "results": [
+    {
+      "round": 1,
+      "name": "One-sign blockers & hapax signs",
+      "n_papers": 204,
+      "n_insights": 13,
+      "insights": [
+        {
+          "type": "syntax",
+          "title": "The standard language : theory, dogma, and sociocultural reality"
+        },
+        {
+          "type": "compound_word",
+          "title": "The infochemical core"
+        },
+        {
+          "type": "syntax",
+          "title": "Wh-words in Hittite: A Study in Syntax-Semantics and Syntax-Phonology Interfaces"
+        },
+        {
+          "type": "syntax",
+          "title": "The Influence of Multilingual Experience on Executive Function and Structure Lea"
+        },
+        {
+          "type": "seal_function",
+          "title": "Creta Capta: Late Minoan II Knossos in Mycenaean History"
+        },
+        {
+          "type": "syntax",
+          "title": "Word Count : 5223 Tables : 1 Figures : 1 Psychiatric Genetics and the Structure "
+        },
+        {
+          "type": "syntax",
+          "title": "6S RNA is a widespread regulator of eubacterial RNA polymerase that resembles an"
+        },
+        {
+          "type": "compound_word",
+          "title": "Bacterial mercury resistance from atoms to ecosystems"
+        },
+        {
+          "type": "syntax",
+          "title": "Analysis of the Genome and Transcriptome of Cryptococcus neoformans var. grubii "
+        },
+        {
+          "type": "syntax",
+          "title": "The Romantic Sublime: Studies in the Structure and Psychology of Transcendence"
+        }
+      ],
+      "top_5_papers": [
+        {
+          "title": "A Statistical Comparison of Written Language and Nonlinguistic Symbol Systems",
+          "year": 2014
+        },
+        {
+          "title": "Analyzing Ancient Maya Glyph Collections with Contextual Shape Descriptors",
+          "year": 2010
+        },
+        {
+          "title": "Investigating the Signs and Sounds of Cypro-Minoan",
+          "year": 2016
+        },
+        {
+          "title": "Unsupervised deep learning supports reclassification of Bronze age cypriot writing system",
+          "year": 2022
+        },
+        {
+          "title": "Crossing Experiences in Digital Epigraphy",
+          "year": 2018
+        }
+      ]
+    },
+    {
+      "round": 2,
+      "name": "Dravidian compound word formation",
+      "n_papers": 235,
+      "n_insights": 94,
+      "insights": [
+        {
+          "type": "syntax",
+          "title": "Machine Translation in Indian Languages: Challenges and Resolution"
+        },
+        {
+          "type": "morphology",
+          "title": "A Rule based Kannada Morphological Analyzer and Generator using Finite State Tra"
+        },
+        {
+          "type": "syntax",
+          "title": "Structural Parsing Of Natural Language Text In Tamil Using Phrase Structure Hybr"
+        },
+        {
+          "type": "morphology",
+          "title": "Speech Recognition for Agglutinative Languages"
+        },
+        {
+          "type": "morphology",
+          "title": "Syllable‐Level Morphological Segmentation of Kannada and Tulu Words"
+        },
+        {
+          "type": "syntax",
+          "title": "The Representation of Semiotic Structures in Language"
+        },
+        {
+          "type": "syntax",
+          "title": "Improving neural machine translation of languages with little data and rich morp"
+        },
+        {
+          "type": "syntax",
+          "title": "Grammaticalization in Seychelles Creole: the coding of reciprocity by kanmarad"
+        },
+        {
+          "type": "morphology",
+          "title": "Ontology verbalization in agglutinating Bantu languages: a study of Runyankore a"
+        },
+        {
+          "type": "morphology",
+          "title": "Morphosyntactic development of typically- and atypically-developing Bangla-speak"
+        }
+      ],
+      "top_5_papers": [
+        {
+          "title": "Biological activities associated to the chemodiversity of the brown algae belonging to genus Lobopho",
+          "year": 2015
+        },
+        {
+          "title": "Machine Translation in Indian Languages: Challenges and Resolution",
+          "year": 2018
+        },
+        {
+          "title": "A Rule based Kannada Morphological Analyzer and Generator using Finite State Transducer",
+          "year": 2011
+        },
+        {
+          "title": "ThamizhiMorph: A morphological parser for the Tamil language",
+          "year": 2021
+        },
+        {
+          "title": "Structural Parsing Of Natural Language Text In Tamil Using Phrase Structure Hybrid Language Model",
+          "year": 2008
+        }
+      ]
+    },
+    {
+      "round": 3,
+      "name": "Guild title parallels in Sangam/Tamil-Brahmi",
+      "n_papers": 204,
+      "n_insights": 19,
+      "insights": [
+        {
+          "type": "guild_title",
+          "title": "A Subcontinent in Enduring Ties with an Enclosed Ocean (c. 1000–1500 C.E.)"
+        },
+        {
+          "type": "guild_title",
+          "title": "14 Political, Corporate, and Ritual Economic Processes of Early Historic South A"
+        },
+        {
+          "type": "syntax",
+          "title": "Pivot 2020: Designing a World of Many Centers"
+        },
+        {
+          "type": "guild_title",
+          "title": "Content and Context of Kaṇakkatikāram Manuscripts"
+        },
+        {
+          "type": "seal_function",
+          "title": "Kinship and ritual in a South Indian micro-region"
+        },
+        {
+          "type": "syntax",
+          "title": "Tanks in Eastern India"
+        },
+        {
+          "type": "seal_function",
+          "title": "Surgery, Imperial Rule and Colonial Societies (1800–1930): Technical, Institutio"
+        },
+        {
+          "type": "guild_title",
+          "title": "Constructing the Indian Immigrant to Colonial Burma, 1885-1948"
+        },
+        {
+          "type": "syntax",
+          "title": "Performing Indian Dance in Malaysia"
+        },
+        {
+          "type": "syntax",
+          "title": "Subramania Bharati and the Rhetoric of Enthusiasm"
+        }
+      ],
+      "top_5_papers": [
+        {
+          "title": "Journal of the Epigraphical Society of India 10 (1983)",
+          "year": 1983
+        },
+        {
+          "title": "An annotated translation of Narayan's novel The Guide",
+          "year": 2011
+        },
+        {
+          "title": "A Subcontinent in Enduring Ties with an Enclosed Ocean (c. 1000–1500 C.E.)",
+          "year": 2019
+        },
+        {
+          "title": "5 Territorial and Transterritorial Economic Actors in Early Historic South Asia",
+          "year": 2021
+        },
+        {
+          "title": "7 Liminalities and Centralities of Early Historic Ports: The Gulf of Khambhat in Perspective",
+          "year": 2023
+        }
+      ]
+    },
+    {
+      "round": 4,
+      "name": "Seal function and motif-specific vocabulary",
+      "n_papers": 316,
+      "n_insights": 28,
+      "insights": [
+        {
+          "type": "syntax",
+          "title": "Deciphering the Symbols: A Comprehensive Study of Iconography and Epigraphy of I"
+        },
+        {
+          "type": "syntax",
+          "title": "The Presentation of the Pictogrammic “Self” and Persona"
+        },
+        {
+          "type": "syntax",
+          "title": "Network analysis reveals structure indicative of syntax in the corpus of undecip"
+        },
+        {
+          "type": "syntax",
+          "title": "Agressive Architecture: Fortifications of the Indus Valley in the Mature Harappa"
+        },
+        {
+          "type": "syntax",
+          "title": "A House Complex in Bronze Age Arabia: A Study of 'Umm an-Nar' and 'Wadi Suq' Dom"
+        },
+        {
+          "type": "syntax",
+          "title": "Ancient Defence Structures or Forts in Sirohi District"
+        },
+        {
+          "type": "syntax",
+          "title": "Insights on Socio-Economic Structure, Culture, Religious Beliefs, Philosophy, My"
+        },
+        {
+          "type": "syntax",
+          "title": "An annotated bibliography of the Mohenjodaro studies in the Pakistani research j"
+        },
+        {
+          "type": "seal_function",
+          "title": "Rethinking the Hellenistic Gulf: The New Greek Inscription from Bahrain"
+        },
+        {
+          "type": "guild_title",
+          "title": "Spatial analysis and social spaces"
+        }
+      ],
+      "top_5_papers": [
+        {
+          "title": "The origin and historical development of branding and advertising in the old civilizations of Africa",
+          "year": 2015
+        },
+        {
+          "title": "Cross-Cultural Trade and Socio-Technical Developments in the Oman Peninsula during the Bronze Age, c",
+          "year": 2020
+        },
+        {
+          "title": "Le Bouddha trônant en majesté : étude iconologique",
+          "year": 2016
+        },
+        {
+          "title": "Sino-Western Cultural Exchange as Seen through the Archaeology of the First Emperor's Necropolis",
+          "year": 2022
+        },
+        {
+          "title": "Deciphering the Symbols: A Comprehensive Study of Iconography and Epigraphy of Indus Seals",
+          "year": 2024
+        }
+      ]
+    },
+    {
+      "round": 5,
+      "name": "Inscription structure and syntax",
+      "n_papers": 372,
+      "n_insights": 63,
+      "insights": [
+        {
+          "type": "syntax",
+          "title": "Statistical Analysis of the Indus Script Using n-Grams"
+        },
+        {
+          "type": "seal_function",
+          "title": "Interrogating Indus inscriptions to unravel their mechanisms of meaning conveyan"
+        },
+        {
+          "type": "syntax",
+          "title": "Indian Islamic Architecture: Forms and Typologies, Sites and Monuments"
+        },
+        {
+          "type": "syntax",
+          "title": "The Syntax of Colophons"
+        },
+        {
+          "type": "syntax",
+          "title": "The Skandapurāṇa Volume IV"
+        },
+        {
+          "type": "seal_function",
+          "title": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to "
+        },
+        {
+          "type": "rare_sign",
+          "title": "3 | 1 | 2024"
+        },
+        {
+          "type": "syntax",
+          "title": "Graphicology: The Art of Making Sense"
+        },
+        {
+          "type": "compound_word",
+          "title": "Effectiveness of molecular fingerprints for exploring the chemical space of natu"
+        },
+        {
+          "type": "guild_title",
+          "title": "Principles of Algorithmic Management"
+        }
+      ],
+      "top_5_papers": [
+        {
+          "title": "Statistical Analysis of the Indus Script Using n-Grams",
+          "year": 2010
+        },
+        {
+          "title": "Machine Learning for Ancient Languages: A Survey",
+          "year": 2023
+        },
+        {
+          "title": "Studies in the historical development of the Ossetic vocalism",
+          "year": 2002
+        },
+        {
+          "title": "Formal and philological inquiries into the nature of interrogatives, indefinites, disjunction, and f",
+          "year": 2011
+        },
+        {
+          "title": "Ancient Symbols, Computational Linguistics, and the Reviewing Practices of the General Science Journ",
+          "year": 2010
+        }
+      ]
+    }
+  ],
+  "verdict": "Mining discovery: 1331 new papers across 5 rounds, 217 actionable insights extracted."
+}

@@ -1,8 +1,8 @@
 {
   "protocol": "mining_discovery_loop",
   "rounds": 5,
-  "total_new_papers": 1268,
-  "total_insights": 215,
+  "total_new_papers": 1282,
+  "total_insights": 232,
   "results": [
     {
       "round": 1,
@@ -77,8 +77,8 @@
     {
       "round": 2,
       "name": "Dravidian compound word formation",
-      "n_papers": 194,
-      "n_insights": 51,
+      "n_papers": 232,
+      "n_insights": 93,
       "insights": [
         {
           "type": "syntax",
@@ -147,8 +147,8 @@
     {
       "round": 3,
       "name": "Guild title parallels in Sangam/Tamil-Brahmi",
-      "n_papers": 212,
-      "n_insights": 21,
+      "n_papers": 253,
+      "n_insights": 53,
       "insights": [
         {
           "type": "guild_title",
@@ -217,9 +217,13 @@
     {
       "round": 4,
       "name": "Seal function and motif-specific vocabulary",
-      "n_papers": 297,
-      "n_insights": 27,
+      "n_papers": 331,
+      "n_insights": 31,
       "insights": [
+        {
+          "type": "syntax",
+          "title": "Deciphering the Symbols: A Comprehensive Study of Iconography and Epigraphy of I"
+        },
         {
           "type": "syntax",
           "title": "The Presentation of the Pictogrammic “Self” and Persona"
@@ -255,10 +259,6 @@
         {
           "type": "guild_title",
           "title": "Spatial analysis and social spaces"
-        },
-        {
-          "type": "syntax",
-          "title": "Genetic Population Structure of Cacao Plantings within a Young Production Area i"
         }
       ],
       "top_5_papers": [
@@ -279,16 +279,16 @@
           "year": 2022
         },
         {
-          "title": "Indus Components in the Iconography of a White Marble Cylinder Seal from Konar Sandal South (Kerman,",
-          "year": 2015
+          "title": "Deciphering the Symbols: A Comprehensive Study of Iconography and Epigraphy of Indus Seals",
+          "year": 2024
         }
       ]
     },
     {
       "round": 5,
       "name": "Inscription structure and syntax",
-      "n_papers": 421,
-      "n_insights": 104,
+      "n_papers": 322,
+      "n_insights": 43,
       "insights": [
         {
           "type": "syntax",
@@ -323,12 +323,12 @@
           "title": "Graphicology: The Art of Making Sense"
         },
         {
-          "type": "syntax",
-          "title": "An Analysis of the Syntactic and Pragmatic Effects on Word Order Flexibility in "
+          "type": "compound_word",
+          "title": "Effectiveness of molecular fingerprints for exploring the chemical space of natu"
         },
         {
-          "type": "syntax",
-          "title": "A Natural Language Sentence Analysis Algorithm Based on Word Order Modifier Synt"
+          "type": "guild_title",
+          "title": "Principles of Algorithmic Management"
         }
       ],
       "top_5_papers": [
@@ -355,5 +355,5 @@
       ]
     }
   ],
-  "verdict": "Mining discovery: 1268 new papers across 5 rounds, 215 actionable insights extracted."
+  "verdict": "Mining discovery: 1282 new papers across 5 rounds, 232 actionable insights extracted."
 }

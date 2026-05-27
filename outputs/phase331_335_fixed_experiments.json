@@ -1,0 +1,1634 @@
+{
+  "phase331": {
+    "decoded_readings": 6501,
+    "unique_readings": 127,
+    "decoded_bigrams": 6500,
+    "dravidian_cross_entropy": 30.587,
+    "uniform_cross_entropy": 27.9547,
+    "dravidian_coverage": 0.0,
+    "null_ce_mean": 30.5866,
+    "null_ce_std": 0.0031,
+    "ce_z_score": -0.12,
+    "null_cov_mean": 0.0,
+    "cov_z_score": -0.12,
+    "dravidian_beats_uniform": false,
+    "dravidian_beats_null": false,
+    "verdict": "Full-reading CE: Dravidian 30.59 vs Uniform 27.95 vs Null 30.59. Coverage: real 0.0% vs null 0.0% (z=-0.1). WEAK — no clear Dravidian advantage."
+  },
+  "phase332": {
+    "train_inscriptions": 1336,
+    "test_inscriptions": 334,
+    "train_unique_bigrams": 1389,
+    "test_bigram_hit_rate": 0.8191,
+    "null_mean": 0.8649,
+    "null_std": 0.0126,
+    "z_score": -3.62,
+    "p_value": 1.0,
+    "advantage": -0.0458,
+    "verdict": "Full-reading prediction: 81.9% vs null 86.5% (z=-3.6, p=1.0000). NOT SIGNIFICANT — no predictive power."
+  },
+  "phase333": {
+    "n_active_signs": 151,
+    "k": 8,
+    "n_clusters_with_readings": 7,
+    "pure_clusters": 6,
+    "purity_rate": 0.86,
+    "clusters": [
+      {
+        "cluster": 3,
+        "size": 50,
+        "with_readings": 50,
+        "dominant_cat": "OTHER",
+        "purity": 0.68,
+        "category_dist": {
+          "OBJECT": 3,
+          "OTHER": 34,
+          "ANIMAL": 7,
+          "TITLE": 2,
+          "QUALITY": 1,
+          "PLACE": 2,
+          "SUFFIX": 1
+        },
+        "sample": [
+          "M003=kalam",
+          "M004=kēḷ",
+          "M006=puli",
+          "M014=tiru",
+          "M016=kaḷiṟu",
+          "M020=kuṉ",
+          "M021=kō",
+          "M022=kalam"
+        ]
+      },
+      {
+        "cluster": 4,
+        "size": 32,
+        "with_readings": 32,
+        "dominant_cat": "OTHER",
+        "purity": 0.59,
+        "category_dist": {
+          "OTHER": 19,
+          "TITLE": 3,
+          "QUALITY": 5,
+          "ANIMAL": 4,
+          "PLACE": 1
+        },
+        "sample": [
+          "M002=kuṉ",
+          "M005=kōṉ",
+          "M009=āṇ",
+          "M010=paṭ",
+          "M015=mā",
+          "M017=kai",
+          "M019=ampu",
+          "M026=mā"
+        ]
+      },
+      {
+        "cluster": 2,
+        "size": 23,
+        "with_readings": 23,
+        "dominant_cat": "OTHER",
+        "purity": 0.39,
+        "category_dist": {
+          "SUFFIX": 6,
+          "VERBAL": 3,
+          "OTHER": 9,
+          "QUALITY": 1,
+          "OBJECT": 3,
+          "PLACE": 1
+        },
+        "sample": [
+          "M012=oṉṟu/1",
+          "M048=mu/muṉ",
+          "M051=pū/puḷ",
+          "M059=ēḷ/eḷ",
+          "M087=veL",
+          "M089=tu/tū",
+          "M125=vil",
+          "M162=il/iḷ"
+        ]
+      },
+      {
+        "cluster": 1,
+        "size": 15,
+        "with_readings": 15,
+        "dominant_cat": "OTHER",
+        "purity": 0.8,
+        "category_dist": {
+          "OTHER": 12,
+          "ANIMAL": 1,
+          "OBJECT": 1,
+          "PLACE": 1
+        },
+        "sample": [
+          "M007=aaL",
+          "M008=erumai",
+          "M013=nakaram",
+          "M023=vaḷ",
+          "M024=nē",
+          "M054=mi",
+          "M056=miN4",
+          "M127=vē"
+        ]
+      },
+      {
+        "cluster": 5,
+        "size": 11,
+        "with_readings": 11,
+        "dominant_cat": "OTHER",
+        "purity": 0.64,
+        "category_dist": {
+          "OTHER": 7,
+          "QUALITY": 1,
+          "TITLE": 1,
+          "OBJECT": 1,
+          "SUFFIX": 1
+        },
+        "sample": [
+          "M001=tōḷ",
+          "M018=nēr",
+          "M028=cōḻ",
+          "M036=tiru",
+          "M055=miN3",
+          "M078=cēr",
+          "M103=kol",
+          "M108=kaL"
+        ]
+      },
+      {
+        "cluster": 6,
+        "size": 11,
+        "with_readings": 11,
+        "dominant_cat": "OTHER",
+        "purity": 0.64,
+        "category_dist": {
+          "OTHER": 7,
+          "TITLE": 2,
+          "QUALITY": 1,
+          "OBJECT": 1
+        },
+        "sample": [
+          "M027=māṟ",
+          "M082=pa",
+          "M137=kuṟ",
+          "M183=vēḷ",
+          "M198=co",
+          "M252=kur",
+          "M329=poṉ",
+          "M345=taṭ"
+        ]
+      },
+      {
+        "cluster": 0,
+        "size": 8,
+        "with_readings": 8,
+        "dominant_cat": "OTHER",
+        "purity": 0.75,
+        "category_dist": {
+          "ANIMAL": 2,
+          "OTHER": 6
+        },
+        "sample": [
+          "M011=kaḷiṟu",
+          "M029=yānai",
+          "M032=koL",
+          "M102=ni",
+          "M128=kaṇ",
+          "M151=viḷ",
+          "M155=ka",
+          "M237=ce"
+        ]
+      },
+      {
+        "cluster": 7,
+        "size": 1,
+        "with_readings": 1,
+        "dominant_cat": "OTHER",
+        "purity": 1.0,
+        "category_dist": {
+          "OTHER": 1
+        },
+        "sample": [
+          "M357=kuḷ"
+        ]
+      }
+    ],
+    "verdict": "Community detection (k=8): 6/7 (86%) clusters show PD category purity ≥40%. STRONG — sign clusters align with PD word classes."
+  },
+  "phase334": {
+    "translations_produced": 20,
+    "average_coherence": 0.62,
+    "translations": [
+      {
+        "id": "SK-0002",
+        "signs": [
+          "M053",
+          "M342",
+          "M176",
+          "M267",
+          "M211",
+          "M342",
+          "M211",
+          "M089"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M053",
+            "reading": "mi",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M211",
+            "reading": "kol",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M211",
+            "reading": "kol",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M089",
+            "reading": "tu/tū",
+            "confidence": "H",
+            "category": "DERIV"
+          }
+        ],
+        "gloss": "mi ay an iN kol ay kol tu",
+        "category_sequence": "OTHER → SUFFIX → SUFFIX → CASE → STEM → SUFFIX → STEM → DERIV",
+        "coherence": 0.83
+      },
+      {
+        "id": "H-0061",
+        "signs": [
+          "M069",
+          "M125",
+          "M065",
+          "M193",
+          "M099",
+          "M293",
+          "M342",
+          "M342"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M069",
+            "reading": "nēr",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M125",
+            "reading": "vil",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M065",
+            "reading": "kuTam",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M193",
+            "reading": "ḷā",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M293",
+            "reading": "ta",
+            "confidence": "H",
+            "category": "DERIV"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          }
+        ],
+        "gloss": "nēr vil kuTam ḷā kol ta ay ay",
+        "category_sequence": "STEM → STEM → OTHER → STEM → OTHER → DERIV → SUFFIX → SUFFIX",
+        "coherence": 0.8
+      },
+      {
+        "id": "H-0120",
+        "signs": [
+          "M015",
+          "M391",
+          "M342",
+          "M065",
+          "M099",
+          "M342",
+          "M176",
+          "M065"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M015",
+            "reading": "mā",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M391",
+            "reading": "ka/kaṇ",
+            "confidence": "H",
+            "category": "DERIV"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M065",
+            "reading": "kuTam",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M065",
+            "reading": "kuTam",
+            "confidence": "H",
+            "category": "OTHER"
+          }
+        ],
+        "gloss": "mā ka ay kuTam kol ay an kuTam",
+        "category_sequence": "STEM → DERIV → SUFFIX → OTHER → OTHER → SUFFIX → SUFFIX → OTHER",
+        "coherence": 0.5
+      },
+      {
+        "id": "M-0146",
+        "signs": [
+          "M125",
+          "M162",
+          "M237",
+          "M267",
+          "M267",
+          "M267",
+          "M336",
+          "M089"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M125",
+            "reading": "vil",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M162",
+            "reading": "il/iḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M237",
+            "reading": "ce",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M336",
+            "reading": "iṉ/locative",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M089",
+            "reading": "tu/tū",
+            "confidence": "H",
+            "category": "DERIV"
+          }
+        ],
+        "gloss": "vil il ce iN iN iN iṉ tu",
+        "category_sequence": "STEM → OTHER → STEM → CASE → CASE → CASE → CASE → DERIV",
+        "coherence": 0.33
+      },
+      {
+        "id": "H-0157",
+        "signs": [
+          "M078",
+          "M342",
+          "M176",
+          "M099",
+          "M342",
+          "M233",
+          "M375",
+          "M065"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M078",
+            "reading": "cēr",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M375",
+            "reading": "taṇ",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M065",
+            "reading": "kuTam",
+            "confidence": "H",
+            "category": "OTHER"
+          }
+        ],
+        "gloss": "cēr ay an kol ay ūr taṇ kuTam",
+        "category_sequence": "STEM → SUFFIX → SUFFIX → OTHER → SUFFIX → STEM → STEM → OTHER",
+        "coherence": 0.6
+      },
+      {
+        "id": "M-0195",
+        "signs": [
+          "M233",
+          "M267",
+          "M342",
+          "M176",
+          "M099",
+          "M059",
+          "M267",
+          "M233"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M059",
+            "reading": "ēḷ/eḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "category": "STEM"
+          }
+        ],
+        "gloss": "ūr iN ay an kol ēḷ iN ūr",
+        "category_sequence": "STEM → CASE → SUFFIX → SUFFIX → OTHER → OTHER → CASE → STEM",
+        "coherence": 0.6
+      },
+      {
+        "id": "C-0031",
+        "signs": [
+          "M087",
+          "M342",
+          "M176",
+          "M099",
+          "M342",
+          "M176",
+          "M267",
+          "M391"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M087",
+            "reading": "veL",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M391",
+            "reading": "ka/kaṇ",
+            "confidence": "H",
+            "category": "DERIV"
+          }
+        ],
+        "gloss": "veL ay an kol ay an iN ka",
+        "category_sequence": "STEM → SUFFIX → SUFFIX → OTHER → SUFFIX → SUFFIX → CASE → DERIV",
+        "coherence": 0.33
+      },
+      {
+        "id": "BN-0024",
+        "signs": [
+          "M176",
+          "M099",
+          "M342",
+          "M267",
+          "M162",
+          "M367",
+          "M367",
+          "M233"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M162",
+            "reading": "il/iḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M367",
+            "reading": "am/neuter",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M367",
+            "reading": "am/neuter",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "category": "STEM"
+          }
+        ],
+        "gloss": "an kol ay iN il am am ūr",
+        "category_sequence": "SUFFIX → OTHER → SUFFIX → CASE → OTHER → SUFFIX → SUFFIX → STEM",
+        "coherence": 0.4
+      },
+      {
+        "id": "H-0273",
+        "signs": [
+          "M025",
+          "M099",
+          "M252",
+          "M125",
+          "M211",
+          "M106",
+          "M233",
+          "M328"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M025",
+            "reading": "cem",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M252",
+            "reading": "kur",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M125",
+            "reading": "vil",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M211",
+            "reading": "kol",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M106",
+            "reading": "kur",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M328",
+            "reading": "ā/āl",
+            "confidence": "H",
+            "category": "CASE"
+          }
+        ],
+        "gloss": "cem kol kur vil kol kur ūr ā",
+        "category_sequence": "STEM → OTHER → OTHER → STEM → STEM → OTHER → STEM → CASE",
+        "coherence": 1.0
+      },
+      {
+        "id": "M-0351",
+        "signs": [
+          "M025",
+          "M386",
+          "M391",
+          "M059",
+          "M267",
+          "M048",
+          "M328",
+          "M305"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M025",
+            "reading": "cem",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M386",
+            "reading": "maṇ",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M391",
+            "reading": "ka/kaṇ",
+            "confidence": "H",
+            "category": "DERIV"
+          },
+          {
+            "sign": "M059",
+            "reading": "ēḷ/eḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M048",
+            "reading": "mu/muṉ",
+            "confidence": "H",
+            "category": "DERIV"
+          },
+          {
+            "sign": "M328",
+            "reading": "ā/āl",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M305",
+            "reading": "ōṭu/comitative",
+            "confidence": "H",
+            "category": "CASE"
+          }
+        ],
+        "gloss": "cem maṇ ka ēḷ iN mu ā ōṭu",
+        "category_sequence": "STEM → STEM → DERIV → OTHER → CASE → DERIV → CASE → CASE",
+        "coherence": 0.67
+      },
+      {
+        "id": "H-0322",
+        "signs": [
+          "M060",
+          "M342",
+          "M336",
+          "M211",
+          "M162",
+          "M099",
+          "M342",
+          "M012"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M060",
+            "reading": "kāṇṭāmirukam",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M336",
+            "reading": "iṉ/locative",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M211",
+            "reading": "kol",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M162",
+            "reading": "il/iḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M012",
+            "reading": "oṉṟu/1",
+            "confidence": "H",
+            "category": "SUFFIX"
+          }
+        ],
+        "gloss": "kāṇṭāmirukam ay iṉ kol il kol ay oṉṟu",
+        "category_sequence": "STEM → SUFFIX → CASE → STEM → OTHER → OTHER → SUFFIX → SUFFIX",
+        "coherence": 0.8
+      },
+      {
+        "id": "DK-0078",
+        "signs": [
+          "M027",
+          "M211",
+          "M342",
+          "M176",
+          "M162",
+          "M391",
+          "M089",
+          "M176"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M027",
+            "reading": "māṟ",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M211",
+            "reading": "kol",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M162",
+            "reading": "il/iḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M391",
+            "reading": "ka/kaṇ",
+            "confidence": "H",
+            "category": "DERIV"
+          },
+          {
+            "sign": "M089",
+            "reading": "tu/tū",
+            "confidence": "H",
+            "category": "DERIV"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "category": "SUFFIX"
+          }
+        ],
+        "gloss": "māṟ kol ay an il ka tu an",
+        "category_sequence": "STEM → STEM → SUFFIX → SUFFIX → OTHER → DERIV → DERIV → SUFFIX",
+        "coherence": 0.5
+      },
+      {
+        "id": "C-0066",
+        "signs": [
+          "M267",
+          "M233",
+          "M328",
+          "M185",
+          "M328",
+          "M267",
+          "M125",
+          "M233"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M328",
+            "reading": "ā/āl",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M185",
+            "reading": "pul",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M328",
+            "reading": "ā/āl",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M125",
+            "reading": "vil",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "category": "STEM"
+          }
+        ],
+        "gloss": "iN ūr ā pul ā iN vil ūr",
+        "category_sequence": "CASE → STEM → CASE → STEM → CASE → CASE → STEM → STEM",
+        "coherence": 0.86
+      },
+      {
+        "id": "H-0383",
+        "signs": [
+          "M024",
+          "M048",
+          "M099",
+          "M169",
+          "M237",
+          "M176",
+          "M099",
+          "M087"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M024",
+            "reading": "nē",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M048",
+            "reading": "mu/muṉ",
+            "confidence": "H",
+            "category": "DERIV"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M169",
+            "reading": "rā",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M237",
+            "reading": "ce",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M087",
+            "reading": "veL",
+            "confidence": "H",
+            "category": "STEM"
+          }
+        ],
+        "gloss": "nē mu kol rā ce an kol veL",
+        "category_sequence": "STEM → DERIV → OTHER → OTHER → STEM → SUFFIX → OTHER → STEM",
+        "coherence": 0.75
+      },
+      {
+        "id": "M-0488",
+        "signs": [
+          "M027",
+          "M267",
+          "M099",
+          "M176",
+          "M128",
+          "M267",
+          "M233",
+          "M233"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M027",
+            "reading": "māṟ",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M128",
+            "reading": "kaṇ",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "category": "STEM"
+          }
+        ],
+        "gloss": "māṟ iN kol an kaṇ iN ūr ūr",
+        "category_sequence": "STEM → CASE → OTHER → SUFFIX → STEM → CASE → STEM → STEM",
+        "coherence": 0.83
+      },
+      {
+        "id": "H-0431",
+        "signs": [
+          "M080",
+          "M233",
+          "M342",
+          "M233",
+          "M342",
+          "M342",
+          "M176",
+          "M249"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M080",
+            "reading": "vēṅkai",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M249",
+            "reading": "tii",
+            "confidence": "H",
+            "category": "OTHER"
+          }
+        ],
+        "gloss": "vēṅkai ūr ay ūr ay ay an tii",
+        "category_sequence": "STEM → STEM → SUFFIX → STEM → SUFFIX → SUFFIX → SUFFIX → OTHER",
+        "coherence": 0.67
+      },
+      {
+        "id": "H-0446",
+        "signs": [
+          "M065",
+          "M342",
+          "M176",
+          "M059",
+          "M267",
+          "M342",
+          "M176",
+          "M099"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M065",
+            "reading": "kuTam",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M059",
+            "reading": "ēḷ/eḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          }
+        ],
+        "gloss": "kuTam ay an ēḷ iN ay an kol",
+        "category_sequence": "OTHER → SUFFIX → SUFFIX → OTHER → CASE → SUFFIX → SUFFIX → OTHER",
+        "coherence": 0.25
+      },
+      {
+        "id": "H-0447",
+        "signs": [
+          "M026",
+          "M177",
+          "M267",
+          "M267",
+          "M328",
+          "M336",
+          "M059",
+          "M162"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M026",
+            "reading": "mā",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M177",
+            "reading": "na",
+            "confidence": "H",
+            "category": "DERIV"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M328",
+            "reading": "ā/āl",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M336",
+            "reading": "iṉ/locative",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M059",
+            "reading": "ēḷ/eḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M162",
+            "reading": "il/iḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          }
+        ],
+        "gloss": "mā na iN iN ā iṉ ēḷ il",
+        "category_sequence": "STEM → DERIV → CASE → CASE → CASE → CASE → OTHER → OTHER",
+        "coherence": 0.4
+      },
+      {
+        "id": "RGR-0029",
+        "signs": [
+          "M080",
+          "M183",
+          "M261",
+          "M328",
+          "M267",
+          "M211",
+          "M342",
+          "M220"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M080",
+            "reading": "vēṅkai",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M183",
+            "reading": "vēḷ",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M261",
+            "reading": "muruku",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M328",
+            "reading": "ā/āl",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M211",
+            "reading": "kol",
+            "confidence": "H",
+            "category": "STEM"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M220",
+            "reading": "al",
+            "confidence": "H",
+            "category": "DERIV"
+          }
+        ],
+        "gloss": "vēṅkai vēḷ muruku ā iN kol ay al",
+        "category_sequence": "STEM → STEM → OTHER → CASE → CASE → STEM → SUFFIX → DERIV",
+        "coherence": 0.67
+      },
+      {
+        "id": "K-0108",
+        "signs": [
+          "M041",
+          "M099",
+          "M162",
+          "M293",
+          "M267",
+          "M342",
+          "M252",
+          "M087"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M041",
+            "reading": "pēr",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M162",
+            "reading": "il/iḷ",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M293",
+            "reading": "ta",
+            "confidence": "H",
+            "category": "DERIV"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "category": "CASE"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "category": "SUFFIX"
+          },
+          {
+            "sign": "M252",
+            "reading": "kur",
+            "confidence": "H",
+            "category": "OTHER"
+          },
+          {
+            "sign": "M087",
+            "reading": "veL",
+            "confidence": "H",
+            "category": "STEM"
+          }
+        ],
+        "gloss": "pēr kol il ta iN ay kur veL",
+        "category_sequence": "OTHER → OTHER → OTHER → DERIV → CASE → SUFFIX → OTHER → STEM",
+        "coherence": 0.67
+      }
+    ],
+    "verdict": "Translation (broad): 20 inscriptions, avg coherence 62%. READABLE — morphological structure is clear."
+  },
+  "phase335": {
+    "channel_scores": {
+      "entropy_linguistic": "weak",
+      "terminal_marker_system": "strong",
+      "word_structure_family": "weak",
+      "affinity_grid": "strong",
+      "predictive_validation": "weak",
+      "null_controls": "weak"
+    },
+    "overall_convergence": "weak",
+    "n_strong": 2,
+    "n_moderate_plus": 2,
+    "total_strength": 10,
+    "claim_level": 1,
+    "claim": "Level 1 — Preliminary evidence for structured linguistic readings",
+    "winner_family": "Undetermined",
+    "escalation_triggers": {
+      "A_strong_convergence": false,
+      "B_predictive_success": false,
+      "C_replication": true,
+      "D_null_failure": false,
+      "E_emergent_segmentation": true,
+      "F_structural_interpretability": true
+    },
+    "triggers_met": 3,
+    "escalate_to_phase2": true,
+    "verdict": "Convergence: 2 strong, 2 moderate+. Claim level 1. Winner: Undetermined. Triggers: 3/6."
+  }
+}

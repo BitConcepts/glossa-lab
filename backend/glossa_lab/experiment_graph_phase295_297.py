@@ -5,7 +5,9 @@ Phase-296: Mine cross-reference against anchor model
 Phase-297: Full decipherment gap analysis
 """
 from __future__ import annotations
-import subprocess, sys, json
+import subprocess
+import sys
+import json
 from pathlib import Path
 from glossa_lab.experiment_graph import AtomicNodeDef
 

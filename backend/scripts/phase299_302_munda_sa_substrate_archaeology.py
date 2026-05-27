@@ -8,7 +8,10 @@ Phase 302: Archaeological context scoring for guild-identity model
 Output: outputs/phase299_302_munda_sa_substrate_archaeology.json
 """
 from __future__ import annotations
-import json, math, re, random
+import json
+import math
+import re
+import random
 from collections import Counter
 from pathlib import Path
 

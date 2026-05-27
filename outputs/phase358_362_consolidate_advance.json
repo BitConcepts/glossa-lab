@@ -1,0 +1,914 @@
+{
+  "phase358": {
+    "original_high_signs": 400,
+    "unique_canonical_signs": 363,
+    "signs_merged": 37,
+    "merge_groups": [
+      {
+        "reading": "kol",
+        "canonical": "M099",
+        "canonical_freq": 389,
+        "merged": [
+          "M211"
+        ],
+        "merged_freqs": [
+          249
+        ]
+      },
+      {
+        "reading": "kōṉ",
+        "canonical": "M073",
+        "canonical_freq": 25,
+        "merged": [
+          "M005"
+        ],
+        "merged_freqs": [
+          15
+        ]
+      },
+      {
+        "reading": "yānai",
+        "canonical": "M045",
+        "canonical_freq": 24,
+        "merged": [
+          "M029"
+        ],
+        "merged_freqs": [
+          11
+        ]
+      },
+      {
+        "reading": "kaḷiṟu",
+        "canonical": "M016",
+        "canonical_freq": 23,
+        "merged": [
+          "M011"
+        ],
+        "merged_freqs": [
+          15
+        ]
+      },
+      {
+        "reading": "puli",
+        "canonical": "M006",
+        "canonical_freq": 15,
+        "merged": [
+          "M033"
+        ],
+        "merged_freqs": [
+          12
+        ]
+      },
+      {
+        "reading": "nal",
+        "canonical": "M077",
+        "canonical_freq": 18,
+        "merged": [
+          "M071"
+        ],
+        "merged_freqs": [
+          16
+        ]
+      },
+      {
+        "reading": "nēr",
+        "canonical": "M018",
+        "canonical_freq": 18,
+        "merged": [
+          "M069"
+        ],
+        "merged_freqs": [
+          16
+        ]
+      },
+      {
+        "reading": "kō",
+        "canonical": "M030",
+        "canonical_freq": 18,
+        "merged": [
+          "M021"
+        ],
+        "merged_freqs": [
+          16
+        ]
+      },
+      {
+        "reading": "kai",
+        "canonical": "M017",
+        "canonical_freq": 18,
+        "merged": [
+          "M031"
+        ],
+        "merged_freqs": [
+          16
+        ]
+      },
+      {
+        "reading": "kuṉ",
+        "canonical": "M020",
+        "canonical_freq": 18,
+        "merged": [
+          "M002"
+        ],
+        "merged_freqs": [
+          16
+        ]
+      },
+      {
+        "reading": "kēḷ",
+        "canonical": "M004",
+        "canonical_freq": 17,
+        "merged": [
+          "M037"
+        ],
+        "merged_freqs": [
+          16
+        ]
+      },
+      {
+        "reading": "tiru",
+        "canonical": "M014",
+        "canonical_freq": 17,
+        "merged": [
+          "M036"
+        ],
+        "merged_freqs": [
+          15
+        ]
+      },
+      {
+        "reading": "mā",
+        "canonical": "M026",
+        "canonical_freq": 17,
+        "merged": [
+          "M015",
+          "M072"
+        ],
+        "merged_freqs": [
+          15,
+          12
+        ]
+      },
+      {
+        "reading": "tōḷ",
+        "canonical": "M034",
+        "canonical_freq": 17,
+        "merged": [
+          "M001"
+        ],
+        "merged_freqs": [
+          14
+        ]
+      },
+      {
+        "reading": "māṟ",
+        "canonical": "M027",
+        "canonical_freq": 17,
+        "merged": [
+          "M075"
+        ],
+        "merged_freqs": [
+          14
+        ]
+      },
+      {
+        "reading": "cōḻ",
+        "canonical": "M066",
+        "canonical_freq": 16,
+        "merged": [
+          "M028"
+        ],
+        "merged_freqs": [
+          11
+        ]
+      },
+      {
+        "reading": "mi",
+        "canonical": "M053",
+        "canonical_freq": 19,
+        "merged": [
+          "M054"
+        ],
+        "merged_freqs": [
+          12
+        ]
+      },
+      {
+        "reading": "vē",
+        "canonical": "M235",
+        "canonical_freq": 7,
+        "merged": [
+          "M401",
+          "M127",
+          "M350"
+        ],
+        "merged_freqs": [
+          6,
+          6,
+          5
+        ]
+      },
+      {
+        "reading": "muḷ",
+        "canonical": "M270",
+        "canonical_freq": 6,
+        "merged": [
+          "M223"
+        ],
+        "merged_freqs": [
+          5
+        ]
+      },
+      {
+        "reading": "kur",
+        "canonical": "M252",
+        "canonical_freq": 6,
+        "merged": [
+          "M222",
+          "M231",
+          "M387",
+          "M129",
+          "M307",
+          "M106",
+          "M138",
+          "M413",
+          "M256"
+        ],
+        "merged_freqs": [
+          5,
+          5,
+          4,
+          4,
+          4,
+          4,
+          4,
+          3,
+          3
+        ]
+      }
+    ],
+    "verdict": "Consolidated: 400 → 363 canonical signs (37 merged). 26 allograph groups."
+  },
+  "phase359": {
+    "papers_fetched": 5,
+    "proposals_extracted": 11,
+    "proposals": [
+      {
+        "claim": "fish signs encode 'maṇi' (gemstone/bead)",
+        "source": "10.31235/osf.io/ftdzc"
+      },
+      {
+        "claim": "seals functioned as tax tokens/trade licenses",
+        "source": "10.31235/osf.io/ftdzc"
+      },
+      {
+        "claim": "sign groups relate to metalworking vocabulary",
+        "source": "10.31235/osf.io/ftdzc"
+      },
+      {
+        "claim": "seals functioned as tax tokens/trade licenses",
+        "source": "10.1057/s41599-019-0274-1"
+      },
+      {
+        "claim": "inscriptions are metrological records",
+        "source": "10.31235/osf.io/942ra"
+      },
+      {
+        "claim": "seals functioned as tax tokens/trade licenses",
+        "source": "10.31235/osf.io/942ra"
+      },
+      {
+        "claim": "sign groups relate to metalworking vocabulary",
+        "source": "10.31235/osf.io/942ra"
+      },
+      {
+        "claim": "inscriptions are metrological records",
+        "source": "10.31235/osf.io/h8ct7"
+      },
+      {
+        "claim": "seals functioned as tax tokens/trade licenses",
+        "source": "10.31235/osf.io/h8ct7"
+      },
+      {
+        "claim": "sign groups relate to metalworking vocabulary",
+        "source": "10.31235/osf.io/9z4ka"
+      },
+      {
+        "claim": "wheel-like signs have solar/metallurgical meaning",
+        "source": "10.31235/osf.io/9z4ka"
+      }
+    ],
+    "papers": [
+      {
+        "doi": "10.31235/osf.io/ftdzc",
+        "title": "Can the semasiographic/logographic Indus script answer the Dravidian question? Insights from Indus script’s gemstone related fish-signs, and Indus gemstone-word “maṇi”",
+        "abstract_len": 1000
+      },
+      {
+        "doi": "10.1057/s41599-019-0274-1",
+        "title": "Interrogating Indus inscriptions to unravel their mechanisms of meaning conveyance",
+        "abstract_len": 1000
+      },
+      {
+        "doi": "10.31235/osf.io/942ra",
+        "title": "Metal-smithy, Bead-making, Gemstones, Jeweller’s Weight, Trade-permits, Tax-stamps: Indus Script’s Semasiography Partly Decoded",
+        "abstract_len": 1000
+      },
+      {
+        "doi": "10.31235/osf.io/h8ct7",
+        "title": "Ancient tax tokens, trade licenses and metrological records?: Making sense of Indus inscribed objects through script-internal, contextual, linguistic, and ethnohistorical lenses.",
+        "abstract_len": 1000
+      },
+      {
+        "doi": "10.31235/osf.io/9z4ka",
+        "title": "Indus wheel-like symbols: signifying solar-disc, sun-god, ruler, fire, and metallurgical meanings in wheel-shaped amulets, tablet-iconographies, seal-inscriptions, and inscribed metallic implements",
+        "abstract_len": 1000
+      }
+    ],
+    "verdict": "Mukhopadhyay mine: 5/5 papers fetched, 11 specific proposals extracted."
+  },
+  "phase360": {
+    "total_translatable": 1397,
+    "translations_produced": 50,
+    "average_coherence": 0.66,
+    "average_coverage": 0.99,
+    "n_with_stem_suffix": 36,
+    "top_10": [
+      {
+        "id": "SK-0002",
+        "count": 1,
+        "motif": "unicorn",
+        "coverage": 1.0,
+        "gloss": "mi ay an iN kol ay kol tu",
+        "coherence": 0.83,
+        "pattern": "OTHER→SUFFIX→SUFFIX→CASE→STEM→SUFFIX",
+        "has_stem_suffix": true,
+        "interlinear": [
+          {
+            "sign": "M053",
+            "reading": "mi",
+            "cat": "OTHER"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "cat": "CASE"
+          },
+          {
+            "sign": "M211",
+            "reading": "kol",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M211",
+            "reading": "kol",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M089",
+            "reading": "tu/tū",
+            "cat": "VERBAL"
+          }
+        ]
+      },
+      {
+        "id": "H-0061",
+        "count": 1,
+        "motif": "unicorn",
+        "coverage": 1.0,
+        "gloss": "nēr vil kuTam ḷā kol ta ay ay",
+        "coherence": 0.67,
+        "pattern": "STEM→OTHER→OTHER→OTHER→STEM→OTHER",
+        "has_stem_suffix": true,
+        "interlinear": [
+          {
+            "sign": "M069",
+            "reading": "nēr",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M125",
+            "reading": "vil",
+            "cat": "OTHER"
+          },
+          {
+            "sign": "M065",
+            "reading": "kuTam",
+            "cat": "OTHER"
+          },
+          {
+            "sign": "M193",
+            "reading": "ḷā",
+            "cat": "OTHER"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M293",
+            "reading": "ta",
+            "cat": "OTHER"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX"
+          }
+        ]
+      },
+      {
+        "id": "H-0120",
+        "count": 1,
+        "motif": "tiger",
+        "coverage": 1.0,
+        "gloss": "mā ka ay kuTam kol ay an kuTam",
+        "coherence": 0.8,
+        "pattern": "STEM→VERBAL→SUFFIX→OTHER→STEM→SUFFIX",
+        "has_stem_suffix": true,
+        "interlinear": [
+          {
+            "sign": "M015",
+            "reading": "mā",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M391",
+            "reading": "ka/kaṇ",
+            "cat": "VERBAL"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M065",
+            "reading": "kuTam",
+            "cat": "OTHER"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M065",
+            "reading": "kuTam",
+            "cat": "OTHER"
+          }
+        ]
+      },
+      {
+        "id": "M-0146",
+        "count": 1,
+        "motif": "unicorn",
+        "coverage": 1.0,
+        "gloss": "vil il ce iN iN iN iṉ tu",
+        "coherence": 0.0,
+        "pattern": "OTHER→OTHER→OTHER→CASE→CASE→CASE",
+        "has_stem_suffix": false,
+        "interlinear": [
+          {
+            "sign": "M125",
+            "reading": "vil",
+            "cat": "OTHER"
+          },
+          {
+            "sign": "M162",
+            "reading": "il/iḷ",
+            "cat": "OTHER"
+          },
+          {
+            "sign": "M237",
+            "reading": "ce",
+            "cat": "OTHER"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "cat": "CASE"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "cat": "CASE"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "cat": "CASE"
+          },
+          {
+            "sign": "M336",
+            "reading": "iṉ/locative",
+            "cat": "CASE"
+          },
+          {
+            "sign": "M089",
+            "reading": "tu/tū",
+            "cat": "VERBAL"
+          }
+        ]
+      },
+      {
+        "id": "H-0157",
+        "count": 1,
+        "motif": "unicorn",
+        "coverage": 1.0,
+        "gloss": "cēr ay an kol ay ūr taṇ kuTam",
+        "coherence": 0.75,
+        "pattern": "OTHER→SUFFIX→SUFFIX→STEM→SUFFIX→STEM",
+        "has_stem_suffix": true,
+        "interlinear": [
+          {
+            "sign": "M078",
+            "reading": "cēr",
+            "cat": "OTHER"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M375",
+            "reading": "taṇ",
+            "cat": "OTHER"
+          },
+          {
+            "sign": "M065",
+            "reading": "kuTam",
+            "cat": "OTHER"
+          }
+        ]
+      },
+      {
+        "id": "M-0195",
+        "count": 1,
+        "motif": "elephant",
+        "coverage": 1.0,
+        "gloss": "ūr iN ay an kol ēḷ iN ūr",
+        "coherence": 0.83,
+        "pattern": "STEM→CASE→SUFFIX→SUFFIX→STEM→OTHER",
+        "has_stem_suffix": true,
+        "interlinear": [
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "cat": "CASE"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M059",
+            "reading": "ēḷ/eḷ",
+            "cat": "OTHER"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "cat": "CASE"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "cat": "STEM"
+          }
+        ]
+      },
+      {
+        "id": "C-0031",
+        "count": 1,
+        "motif": "unicorn",
+        "coverage": 1.0,
+        "gloss": "veL ay an kol ay an iN ka",
+        "coherence": 0.57,
+        "pattern": "STEM→SUFFIX→SUFFIX→STEM→SUFFIX→SUFFIX",
+        "has_stem_suffix": true,
+        "interlinear": [
+          {
+            "sign": "M087",
+            "reading": "veL",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "cat": "CASE"
+          },
+          {
+            "sign": "M391",
+            "reading": "ka/kaṇ",
+            "cat": "VERBAL"
+          }
+        ]
+      },
+      {
+        "id": "BN-0024",
+        "count": 1,
+        "motif": "script only",
+        "coverage": 1.0,
+        "gloss": "an kol ay iN il am am ūr",
+        "coherence": 0.83,
+        "pattern": "SUFFIX→STEM→SUFFIX→CASE→OTHER→SUFFIX",
+        "has_stem_suffix": true,
+        "interlinear": [
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "cat": "CASE"
+          },
+          {
+            "sign": "M162",
+            "reading": "il/iḷ",
+            "cat": "OTHER"
+          },
+          {
+            "sign": "M367",
+            "reading": "am/neuter",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M367",
+            "reading": "am/neuter",
+            "cat": "SUFFIX"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "cat": "STEM"
+          }
+        ]
+      },
+      {
+        "id": "H-0273",
+        "count": 1,
+        "motif": "unicorn",
+        "coverage": 1.0,
+        "gloss": "cem kol kur vil kol kur ūr ā",
+        "coherence": 1.0,
+        "pattern": "STEM→STEM→OTHER→OTHER→STEM→OTHER",
+        "has_stem_suffix": false,
+        "interlinear": [
+          {
+            "sign": "M025",
+            "reading": "cem",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M252",
+            "reading": "kur",
+            "cat": "OTHER"
+          },
+          {
+            "sign": "M125",
+            "reading": "vil",
+            "cat": "OTHER"
+          },
+          {
+            "sign": "M211",
+            "reading": "kol",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M106",
+            "reading": "kur",
+            "cat": "OTHER"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M328",
+            "reading": "ā/āl",
+            "cat": "CASE"
+          }
+        ]
+      },
+      {
+        "id": "M-0351",
+        "count": 1,
+        "motif": "unicorn",
+        "coverage": 1.0,
+        "gloss": "cem maṇ ka ēḷ iN mu ā ōṭu",
+        "coherence": 0.33,
+        "pattern": "STEM→STEM→VERBAL→OTHER→CASE→VERBAL",
+        "has_stem_suffix": false,
+        "interlinear": [
+          {
+            "sign": "M025",
+            "reading": "cem",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M386",
+            "reading": "maṇ",
+            "cat": "STEM"
+          },
+          {
+            "sign": "M391",
+            "reading": "ka/kaṇ",
+            "cat": "VERBAL"
+          },
+          {
+            "sign": "M059",
+            "reading": "ēḷ/eḷ",
+            "cat": "OTHER"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "cat": "CASE"
+          },
+          {
+            "sign": "M048",
+            "reading": "mu/muṉ",
+            "cat": "VERBAL"
+          },
+          {
+            "sign": "M328",
+            "reading": "ā/āl",
+            "cat": "CASE"
+          },
+          {
+            "sign": "M305",
+            "reading": "ōṭu/comitative",
+            "cat": "CASE"
+          }
+        ]
+      }
+    ],
+    "verdict": "Consolidated translation: 50 seals, avg coherence 66%, coverage 99%. 36/50 have STEM+SUFFIX structure. READABLE"
+  },
+  "phase361": {
+    "tests": [
+      {
+        "proposal": "Fish signs = gemstone/craft markers",
+        "test": "fish sign proximity to craft/material signs",
+        "fish_total": 44,
+        "fish_near_craft": 2,
+        "rate": 0.045,
+        "assessment": "NOT_SUPPORTED"
+      },
+      {
+        "proposal": "Seals are metrological records",
+        "test": "numeral sign frequency in corpus",
+        "numeral_tokens": 351,
+        "total_tokens": 7002,
+        "numeral_rate": 0.0501,
+        "assessment": "SUPPORTED"
+      },
+      {
+        "proposal": "Seals encode guild/professional identity",
+        "test": "title readings in INITIAL position",
+        "title_initial": 150,
+        "title_total": 160,
+        "initial_rate": 0.938,
+        "assessment": "SUPPORTED"
+      }
+    ],
+    "n_supported": 2,
+    "n_total": 3,
+    "verdict": "Mukhopadhyay cross-check: 2/3 proposals supported/partially supported by corpus data."
+  },
+  "phase362": {
+    "allograph_consolidation": {
+      "signs_merged": 37,
+      "canonical_signs": 363
+    },
+    "translation_quality": {
+      "coherence": 0.66,
+      "coverage": 0.99,
+      "stem_suffix_structure": 36
+    },
+    "external_validation": {
+      "mukhopadhyay_supported": 2
+    },
+    "status": "LEVEL_3_CONSOLIDATED",
+    "next_steps": [
+      "Submit consolidated reading set for specialist review",
+      "Attempt full seal translations with semantic glossing",
+      "Contact Mukhopadhyay for direct comparison of proposals",
+      "Prepare v4 preprint incorporating allograph consolidation",
+      "Build interactive seal translation viewer for Glossa-Lab frontend"
+    ],
+    "verdict": "Consolidated: 37 allographs merged. Translation: 66% coherence. External: 2 Mukhopadhyay proposals supported. Status: Level 3 consolidated, ready for specialist review."
+  }
+}

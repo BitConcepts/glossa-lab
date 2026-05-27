@@ -1047,6 +1047,21 @@ async def dashboard_decipherment() -> dict[str, Any]:
         fully_decoded_pct = 0.691  # Phase-218 known value
         n_fully_decoded = 1165
 
+    # ── 4. Phase 299-302 metrics (Munda SA + archaeology) ─────────────
+    munda_sa: dict[str, Any] = {}
+    archaeology: dict[str, Any] = {}
+    p299_path = outputs_dir / "phase299_302_munda_sa_substrate_archaeology.json" if outputs_dir.is_dir() else None
+    if p299_path and p299_path.exists():
+        try:
+            p299 = json.loads(p299_path.read_text(encoding="utf-8"))
+            munda_sa = p299.get("phase300_discrimination", {})
+            archaeology = {
+                "score_pct": p299.get("phase302_archaeology", {}).get("score_pct", 0),
+                "verdict": p299.get("phase302_archaeology", {}).get("verdict", ""),
+            }
+        except Exception:  # noqa: BLE001
+            pass
+
     return {
         "available": True,
         "archived": is_archived,
@@ -1063,6 +1078,10 @@ async def dashboard_decipherment() -> dict[str, Any]:
         "fully_decoded_pct": round(fully_decoded_pct, 4),
         "n_fully_decoded": n_fully_decoded,
         "total_seals": 1670,
+        # Phase 300 Munda SA discrimination
+        "munda_sa": munda_sa if munda_sa else None,
+        # Phase 302 archaeological context
+        "archaeology": archaeology if archaeology.get("verdict") else None,
     }
 
 

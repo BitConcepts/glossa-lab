@@ -1,7 +1,7 @@
 {
   "protocol": "auto_decipher_loop",
   "iterations_run": 4,
-  "max_iterations": 10,
+  "max_iterations": 5,
   "final_convergence": {
     "n_strong": 6,
     "n_moderate_plus": 6,
@@ -53,7 +53,7 @@
   "history": [
     {
       "iteration": 1,
-      "timestamp": "2026-05-27T18:13:41.622674+00:00",
+      "timestamp": "2026-05-27T20:08:13.119489+00:00",
       "target_channel": "entropy_linguistic",
       "n_mined": 22,
       "n_insights": 2,
@@ -72,7 +72,7 @@
     },
     {
       "iteration": 2,
-      "timestamp": "2026-05-27T18:13:44.143867+00:00",
+      "timestamp": "2026-05-27T20:08:15.304896+00:00",
       "target_channel": "entropy_linguistic",
       "n_mined": 22,
       "n_insights": 2,
@@ -91,7 +91,7 @@
     },
     {
       "iteration": 3,
-      "timestamp": "2026-05-27T18:13:49.657766+00:00",
+      "timestamp": "2026-05-27T20:08:18.922336+00:00",
       "target_channel": "null_controls",
       "n_mined": 112,
       "n_insights": 0,
@@ -110,7 +110,7 @@
     },
     {
       "iteration": 4,
-      "timestamp": "2026-05-27T18:13:53.166959+00:00",
+      "timestamp": "2026-05-27T20:08:22.063967+00:00",
       "target_channel": "null_controls",
       "n_mined": 112,
       "n_insights": 0,

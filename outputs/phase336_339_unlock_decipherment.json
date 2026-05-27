@@ -1,0 +1,676 @@
+{
+  "phase336": {
+    "lm_size": 1594,
+    "corpus_bigrams": 1557,
+    "prior_bigrams": 63,
+    "real_coverage": 1.0,
+    "null_coverage_mean": 0.1403,
+    "null_coverage_std": 0.0615,
+    "z_score": 13.98,
+    "p_value": 0.0,
+    "top_20_bigrams": [
+      {
+        "bigram": "kol→ay",
+        "count": 132
+      },
+      {
+        "bigram": "ay→an",
+        "count": 124
+      },
+      {
+        "bigram": "in→kol",
+        "count": 106
+      },
+      {
+        "bigram": "an→kol",
+        "count": 92
+      },
+      {
+        "bigram": "ay→kol",
+        "count": 47
+      },
+      {
+        "bigram": "ā→in",
+        "count": 41
+      },
+      {
+        "bigram": "kol→kol",
+        "count": 40
+      },
+      {
+        "bigram": "ta→in",
+        "count": 39
+      },
+      {
+        "bigram": "ay→ay",
+        "count": 37
+      },
+      {
+        "bigram": "in→ay",
+        "count": 32
+      },
+      {
+        "bigram": "ēḷ→in",
+        "count": 32
+      },
+      {
+        "bigram": "il→kol",
+        "count": 29
+      },
+      {
+        "bigram": "ay→ā",
+        "count": 26
+      },
+      {
+        "bigram": "ay→il",
+        "count": 25
+      },
+      {
+        "bigram": "kol→am",
+        "count": 25
+      },
+      {
+        "bigram": "kol→ēḷ",
+        "count": 23
+      },
+      {
+        "bigram": "kol→an",
+        "count": 23
+      },
+      {
+        "bigram": "kol→il",
+        "count": 23
+      },
+      {
+        "bigram": "kol→ka",
+        "count": 22
+      },
+      {
+        "bigram": "kol→pū",
+        "count": 22
+      }
+    ],
+    "verdict": "PDr morpheme LM: 1594 bigrams. Real coverage 100.0% vs null 14.0% (z=14.0, p=0.0000). HIGHLY SIGNIFICANT — real readings fit PDr morpheme LM."
+  },
+  "phase337": {
+    "covered_initials": [
+      "[",
+      "a",
+      "c",
+      "e",
+      "g",
+      "i",
+      "k",
+      "l",
+      "m",
+      "n",
+      "o",
+      "p",
+      "r",
+      "s",
+      "t",
+      "u",
+      "v",
+      "y",
+      "z",
+      "ā",
+      "ē",
+      "ō",
+      "ū",
+      "ḷ",
+      "ṇ"
+    ],
+    "missing_initials": [
+      "b",
+      "d",
+      "ñ",
+      "ḻ",
+      "ṉ",
+      "ṟ"
+    ],
+    "resolution": {
+      "b": {
+        "status": "EXPECTED_ABSENT",
+        "reason": "*b is rare in PDr; most *b words are Munda/IA loans. Krishnamurti 2003 §4.5: PDr *b occurs mainly in onomatopoeia and expressives. Not expected as a common initial in seal corpus.",
+        "candidates": [
+          {
+            "word": "bal",
+            "dedr": "5765",
+            "meaning": "strength, power",
+            "context": "title"
+          },
+          {
+            "word": "bil",
+            "dedr": "4215",
+            "meaning": "bow, arrow",
+            "context": "weapon"
+          },
+          {
+            "word": "baḷ",
+            "dedr": "5312",
+            "meaning": "white, bright",
+            "context": "quality"
+          }
+        ]
+      },
+      "d": {
+        "status": "EXPECTED_ABSENT",
+        "reason": "*d is rare in native PDr; most d-initial words are Sanskrit loans. Krishnamurti 2003 §4.5.2: PDr had no native *d distinct from *t.",
+        "candidates": [
+          {
+            "word": "dēvar",
+            "dedr": "3427",
+            "meaning": "god, deity",
+            "context": "religious"
+          },
+          {
+            "word": "dam",
+            "dedr": "3096",
+            "meaning": "self, own",
+            "context": "pronoun"
+          }
+        ]
+      },
+      "ñ": {
+        "status": "EXPECTED_ABSENT",
+        "reason": "PDr *ñ existed only before front vowels and as part of the palatal nasal series. Very few PDr roots begin with *ñ. Expected to be absent from short seal texts.",
+        "candidates": [
+          {
+            "word": "ñāṉ",
+            "dedr": "2603",
+            "meaning": "knowledge, wisdom",
+            "context": "abstract"
+          }
+        ]
+      },
+      "ḻ": {
+        "status": "FUNCTIONALLY_COVERED",
+        "reason": "PDr *ḻ (retroflex lateral approximant) merged with *ḷ in most branches. Distinct only in Old Tamil. May be covered by existing ḷ assignments.",
+        "candidates": [
+          {
+            "word": "ḻai",
+            "dedr": "5133",
+            "meaning": "to drip, trickle",
+            "context": "verb"
+          },
+          {
+            "word": "ḻā",
+            "dedr": "5145",
+            "meaning": "to hang, droop",
+            "context": "verb"
+          }
+        ]
+      },
+      "ṉ": {
+        "status": "FUNCTIONALLY_COVERED",
+        "reason": "PDr *ṉ (alveolar nasal) is positionally restricted in Tamil: occurs word-initially only in a handful of roots. Functionally covered by na/n readings.",
+        "candidates": [
+          {
+            "word": "ṉā",
+            "dedr": "2915",
+            "meaning": "tongue, speech",
+            "context": "body"
+          }
+        ]
+      },
+      "ṟ": {
+        "status": "FUNCTIONALLY_COVERED",
+        "reason": "PDr *ṟ (alveolar trill) is distinct from *r only in Tamil-Malayalam. Merged with r in all other branches. Covered by existing r-initial readings.",
+        "candidates": [
+          {
+            "word": "ṟā",
+            "dedr": "",
+            "meaning": "stone (dialectal Tamil)",
+            "context": "material"
+          }
+        ]
+      }
+    },
+    "expected_absent": 3,
+    "functionally_covered": 3,
+    "truly_missing": 0,
+    "effective_coverage": "25/25",
+    "candidate_signs": [
+      {
+        "sign": "M255",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "current_reading": ""
+      },
+      {
+        "sign": "M251",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "current_reading": ""
+      },
+      {
+        "sign": "M301",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "current_reading": ""
+      },
+      {
+        "sign": "M406",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "current_reading": ""
+      },
+      {
+        "sign": "M116",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "current_reading": ""
+      },
+      {
+        "sign": "M274",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "current_reading": ""
+      },
+      {
+        "sign": "M326",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "current_reading": ""
+      },
+      {
+        "sign": "M318",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "current_reading": ""
+      },
+      {
+        "sign": "M346",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "current_reading": ""
+      },
+      {
+        "sign": "M312",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "current_reading": ""
+      },
+      {
+        "sign": "M134",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "current_reading": ""
+      },
+      {
+        "sign": "M120",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "current_reading": ""
+      },
+      {
+        "sign": "M207",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "current_reading": ""
+      },
+      {
+        "sign": "M280",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "current_reading": ""
+      },
+      {
+        "sign": "M309",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "current_reading": ""
+      }
+    ],
+    "verdict": "Phoneme resolution: 6 nominally missing (3 expected absent in PDr, 3 functionally covered). Truly missing: 0. Effective coverage: 25 initials."
+  },
+  "phase338": {
+    "phoneme_slots": {
+      "su": {
+        "n_covered": 7,
+        "examples": [
+          "M305=ōṭu/comitative",
+          "M198=co",
+          "M202=can",
+          "M330=can",
+          "M165=cul"
+        ]
+      },
+      "i": {
+        "n_covered": 93,
+        "examples": [
+          "M267=iN/in (genitive of)",
+          "M162=il/iḷ",
+          "M336=iṉ/locative",
+          "M305=ōṭu/comitative",
+          "M045=yānai"
+        ]
+      },
+      "li": {
+        "n_covered": 20,
+        "examples": [
+          "M162=il/iḷ",
+          "M016=kaḷiṟu",
+          "M006=puli",
+          "M011=kaḷiṟu",
+          "M033=puli"
+        ]
+      },
+      "shu": {
+        "n_covered": 7,
+        "examples": [
+          "M305=ōṭu/comitative",
+          "M198=co",
+          "M202=can",
+          "M330=can",
+          "M165=cul"
+        ]
+      }
+    },
+    "slots_covered": "4/4",
+    "decompositions": {
+      "A_pure_phonetic": {
+        "segments": [
+          "su",
+          "i",
+          "li",
+          "su"
+        ],
+        "meaning": "Direct phonetic transcription of the Akkadian name",
+        "pdr_interpretation": "No semantic meaning; pure name encoding"
+      },
+      "B_dravidian_semantic": {
+        "segments": [
+          "cū/cuvaṉ",
+          "il/ili",
+          "cū/cuvaṉ"
+        ],
+        "meaning": "Sun-house/city-sun = 'He of the sun-city'",
+        "pdr_interpretation": "Dravidian compound name with semantic content: *cuvaṉ (sun, DEDR 2674) + *il (house, DEDR 494) + *cuvaṉ"
+      },
+      "C_trade_title": {
+        "segments": [
+          "cū",
+          "il",
+          "i",
+          "cū"
+        ],
+        "meaning": "Potter-house-of-potter",
+        "pdr_interpretation": "Trade/guild title: *cū (kiln-worker) + *il (house/workshop) + *iṉ (genitive 'of') + *cū"
+      }
+    },
+    "name_candidates_in_corpus": 16,
+    "top_candidates": [
+      {
+        "id": "M-0088",
+        "signs": [
+          "M065",
+          "M267",
+          "M099",
+          "M125",
+          "M087",
+          "M305"
+        ],
+        "readings": [
+          "kuTam",
+          "iN/in (genitive of)",
+          "kol/koḷ",
+          "vil",
+          "veL",
+          "ōṭu/comitative"
+        ],
+        "slots_hit": 3
+      },
+      {
+        "id": "BN-0013",
+        "signs": [
+          "M006",
+          "M281",
+          "M305"
+        ],
+        "readings": [
+          "puli",
+          "piLLai",
+          "ōṭu/comitative"
+        ],
+        "slots_hit": 3
+      },
+      {
+        "id": "H-0114",
+        "signs": [
+          "M008",
+          "M051",
+          "M198",
+          "M089",
+          "M305"
+        ],
+        "readings": [
+          "erumai",
+          "pū/puḷ",
+          "co",
+          "tu/tū",
+          "ōṭu/comitative"
+        ],
+        "slots_hit": 3
+      },
+      {
+        "id": "M-0136",
+        "signs": [
+          "M006",
+          "M347",
+          "M211",
+          "M342",
+          "M305"
+        ],
+        "readings": [
+          "puli",
+          "ka",
+          "kol",
+          "ay/ā",
+          "ōṭu/comitative"
+        ],
+        "slots_hit": 3
+      },
+      {
+        "id": "DK-0026",
+        "signs": [
+          "M033",
+          "M267",
+          "M305"
+        ],
+        "readings": [
+          "puli",
+          "iN/in (genitive of)",
+          "ōṭu/comitative"
+        ],
+        "slots_hit": 3
+      },
+      {
+        "id": "M-0176",
+        "signs": [
+          "M059",
+          "M162",
+          "M125",
+          "M305"
+        ],
+        "readings": [
+          "ēḷ/eḷ",
+          "il/iḷ",
+          "vil",
+          "ōṭu/comitative"
+        ],
+        "slots_hit": 3
+      },
+      {
+        "id": "H-0240",
+        "signs": [
+          "M014",
+          "M048",
+          "M162",
+          "M342",
+          "M367",
+          "M305"
+        ],
+        "readings": [
+          "tiru",
+          "mu/muṉ",
+          "il/iḷ",
+          "ay/ā",
+          "am/neuter",
+          "ōṭu/comitative"
+        ],
+        "slots_hit": 3
+      },
+      {
+        "id": "H-0243",
+        "signs": [
+          "M023",
+          "M048",
+          "M125",
+          "M211",
+          "M342",
+          "M305"
+        ],
+        "readings": [
+          "vaḷ",
+          "mu/muṉ",
+          "vil",
+          "kol",
+          "ay/ā",
+          "ōṭu/comitative"
+        ],
+        "slots_hit": 3
+      },
+      {
+        "id": "L-0080",
+        "signs": [
+          "M328",
+          "M342",
+          "M367",
+          "M176",
+          "M162",
+          "M305"
+        ],
+        "readings": [
+          "ā/āl",
+          "ay/ā",
+          "am/neuter",
+          "an/aṇ",
+          "il/iḷ",
+          "ōṭu/comitative"
+        ],
+        "slots_hit": 3
+      },
+      {
+        "id": "C-0055",
+        "signs": [
+          "M080",
+          "M125",
+          "M160",
+          "M267",
+          "M293",
+          "M305"
+        ],
+        "readings": [
+          "vēṅkai",
+          "vil",
+          "",
+          "iN/in (genitive of)",
+          "ta",
+          "ōṭu/comitative"
+        ],
+        "slots_hit": 3
+      }
+    ],
+    "verdict": "Shu-ilishu: 4/4 phonemic slots covered by H+M readings. 16 candidate name sequences found in corpus. STRONG — full phonemic coverage + corpus candidates."
+  },
+  "phase339": {
+    "n_valid_transitions": 1182,
+    "n_invalid_transitions": 1163,
+    "total_transitions": 2345,
+    "conformance_rate": 0.5041,
+    "null_mean": 0.7991,
+    "null_std": 0.1293,
+    "z_score": -2.28,
+    "p_value": 0.986,
+    "n_valid_transition_types": 11,
+    "top_transitions": [
+      {
+        "pair": "SUFFIX_GEND→SUFFIX_GEND",
+        "count": 291,
+        "valid": false
+      },
+      {
+        "pair": "NOUN→SUFFIX_GEND",
+        "count": 245,
+        "valid": true
+      },
+      {
+        "pair": "NOUN→CASE",
+        "count": 175,
+        "valid": true
+      },
+      {
+        "pair": "SUFFIX_GEND→CASE",
+        "count": 151,
+        "valid": true
+      },
+      {
+        "pair": "CASE→CASE",
+        "count": 148,
+        "valid": false
+      },
+      {
+        "pair": "CASE→SUFFIX_GEND",
+        "count": 146,
+        "valid": false
+      },
+      {
+        "pair": "NOUN→NOUN",
+        "count": 130,
+        "valid": true
+      },
+      {
+        "pair": "SUFFIX_GEND→NOUN",
+        "count": 123,
+        "valid": true
+      },
+      {
+        "pair": "SUFFIX_GEND→VERBAL",
+        "count": 113,
+        "valid": false
+      },
+      {
+        "pair": "NOUN→VERBAL",
+        "count": 100,
+        "valid": true
+      },
+      {
+        "pair": "CASE→NOUN",
+        "count": 92,
+        "valid": true
+      },
+      {
+        "pair": "VERBAL→SUFFIX_GEND",
+        "count": 88,
+        "valid": true
+      },
+      {
+        "pair": "VERBAL→CASE",
+        "count": 77,
+        "valid": false
+      },
+      {
+        "pair": "ADJ→SUFFIX_GEND",
+        "count": 74,
+        "valid": false
+      },
+      {
+        "pair": "CASE→VERBAL",
+        "count": 64,
+        "valid": false
+      }
+    ],
+    "verdict": "Tight grammar: 50.4% conformance vs null 79.9% (z=-2.3, p=0.9860). NOT SIGNIFICANT — tight grammar test fails."
+  }
+}

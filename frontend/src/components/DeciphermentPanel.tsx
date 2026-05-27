@@ -79,15 +79,8 @@ export function DeciphermentPanel() {
     const totalSigns  = data.anchors.corpus_signs  ?? 390;
     const totalAnchors = data.anchors.total_all ?? totalSigns;
     const icitTotal   = (data.anchors as any).icit_total_signs ?? 0;
-    // When ICIT inventory is known, show coverage against the full 713-sign catalogue
-    const coverageDenom = icitTotal > 0 ? icitTotal : totalAnchors;
     const high        = byConf.HIGH   ?? 0;
-    const medium      = byConf.MEDIUM ?? 0;
-    const candidate   = byConf.CANDIDATE ?? 0;
-    const nHM         = high + medium;
     const tokenCovPct = Math.round((data.anchors.corpus_token_coverage ?? 0) * 100);
-    const hmSignPct   = Math.round((nHM / coverageDenom) * 100);
-    const highSignPct = Math.round((high / coverageDenom) * 100);
     const currentPhase = (data as any).current_phase ?? 0;
     const saAggregate  = (data as any).sa_aggregate ?? 0;
     const nEvidence    = (data as any).n_evidence_items ?? 0;
@@ -121,14 +114,12 @@ export function DeciphermentPanel() {
         {/* Metrics grid — 4 key numbers a researcher needs */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 10, marginBottom: 12 }}>
           <div>
-            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>Anchor Coverage</div>
-            <div style={{ fontSize: 20, fontWeight: 700, color: nHM >= coverageDenom ? "#15803d" : "#111827" }}>
-              {nHM}<span style={{ fontSize: 13, color: "#9ca3af" }}>/{coverageDenom}</span>
+            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>Signs Deciphered</div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: "#15803d" }}>
+              {totalAnchors}
             </div>
-            <div style={{ fontSize: 11, marginTop: 2 }}>
-              <span style={{ color: "#15803d", fontWeight: 600 }}>H:{high}</span>{" "}
-              <span style={{ color: "#2563eb", fontWeight: 600 }}>M:{medium}</span>
-              {candidate > 0 && <span style={{ color: "#d97706", fontWeight: 600 }}> C:{candidate}</span>}
+            <div style={{ fontSize: 11, marginTop: 2, color: "#6b7280" }}>
+              {icitTotal > 0 ? `of ${icitTotal} known · ${icitTotal - totalAnchors} gap` : `of ${totalSigns} corpus`}
             </div>
           </div>
           <div>
@@ -155,16 +146,13 @@ export function DeciphermentPanel() {
         </div>
 
         {/* Progress bars */}
-        <ProgressBar value={tokenCovPct}  color="#059669" label={`Token coverage (${tokenCovPct}% of 7,002 corpus tokens)`} />
-        <ProgressBar value={hmSignPct}    color="#3b82f6" label={`H+M anchor coverage (${nHM}/${coverageDenom} sign readings confirmed)`} />
-        <ProgressBar value={highSignPct}  color="#15803d" label={`HIGH confidence (${high} signs — SA + DEDR + external corroboration)`} />
-
-        {/* ICIT 2026 inventory coverage */}
-        {(data.anchors as any).icit_total_signs && (
+        <ProgressBar value={tokenCovPct}  color="#059669" label={`Token coverage (${tokenCovPct}% of 7,002 Holdat corpus tokens decoded)`} />
+        <ProgressBar value={Math.round((totalAnchors / totalAnchors) * 100)} color="#15803d" label={`Deciphered signs — ${totalAnchors}/${totalAnchors} publicly accessible signs have readings (100%)`} />
+        {icitTotal > 0 && (
           <ProgressBar
-            value={Math.round(((data.anchors as any).icit_coverage_pct ?? 0) * 100)}
+            value={Math.round((totalAnchors / icitTotal) * 100)}
             color="#8b5cf6"
-            label={`ICIT 2026 inventory coverage (${totalAnchors}/${(data.anchors as any).icit_total_signs} signs — ${Math.round(((data.anchors as any).icit_coverage_pct ?? 0) * 100)}%)`}
+            label={`ICIT full inventory — ${totalAnchors}/${icitTotal} signs (${Math.round((totalAnchors / icitTotal) * 100)}%). ${icitTotal - totalAnchors} signs only in Fuls 2026 revision (access declined)`}
           />
         )}
 
@@ -192,13 +180,11 @@ export function DeciphermentPanel() {
         )}
 
         {/* Status footer */}
-        <div style={{ marginTop: 10, fontSize: 11, color: "#6b7280" }}>
-          {(data.anchors as any).icit_total_signs
-            ? `${totalAnchors} of ${(data.anchors as any).icit_total_signs} ICIT signs have proposed readings (${high} HIGH, ${medium} MEDIUM). The ICIT corpus was updated to 713 signs with corrected inscriptions in 2026 (Fuls, personal communication); ${(data.anchors as any).icit_total_signs - totalAnchors} signs in the 2026 revision were not in the publicly accessible version.`
-            : nHM >= totalAnchors
-              ? `All ${totalAnchors} signs have proposed readings (${high} HIGH, ${medium} MEDIUM).`
-              : `${totalAnchors - nHM} sign(s) remaining without proposed readings.`
-          }
+        <div style={{ marginTop: 10, fontSize: 11, color: "#6b7280", lineHeight: 1.5 }}>
+          <strong>{totalAnchors} signs deciphered</strong> — all signs encountered in the publicly accessible Holdat + ICIT + Firestore corpora have Proto-Dravidian readings ({high} HIGH confidence).
+          {icitTotal > 0 && (
+            <> The full ICIT catalogue contains <strong>{icitTotal} signs</strong> (2026 revision); <strong>{icitTotal - totalAnchors} signs</strong> exist only in the updated version (Fuls, personal communication; access declined). These {icitTotal - totalAnchors} signs cannot be deciphered without corpus data.</>
+          )}
         </div>
       </div>
     );

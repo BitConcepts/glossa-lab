@@ -2760,6 +2760,40 @@ try:
 except Exception as _p295297_exc:
     logger.warning("Phase-295-297 nodes not registered: %s", _p295297_exc)
 
+# ── Phase-127 nodes (Gulf corpus analysis, Roif mining, fish site polysemy)
+try:
+    from glossa_lab.experiment_graph_phase127 import (
+        _phase127_node_defs as _p127_defs,
+    )
+    for _d in _p127_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-127 nodes", len(_p127_defs()))
+except Exception as _p127_exc:  # noqa: BLE001
+    logger.warning("Phase-127 nodes not registered: %s", _p127_exc)
+
+# ── Misc gap phases (44-47, 202, 209-215, 254-256) — previously unregistered scripts
+try:
+    from glossa_lab.experiment_graph_phase_misc_gaps import (
+        _misc_gaps_node_defs as _pmiscgaps_defs,
+    )
+    for _d in _pmiscgaps_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d misc-gap phase nodes (44-47, 202, 209-215, 254-256)", len(_pmiscgaps_defs()))
+except Exception as _pmiscgaps_exc:  # noqa: BLE001
+    logger.warning("Misc-gap phase nodes not registered: %s", _pmiscgaps_exc)
+
+# ── Phase-298-308 nodes (deep Munda mine, Munda SA, substrate, archaeology,
+#    anchored Munda SA, allograph, cross-researcher, semantic, DEDR, Elamite baseline)
+try:
+    from glossa_lab.experiment_graph_phase298_308 import (
+        _phase298_308_node_defs as _p298308_defs,
+    )
+    for _d in _p298308_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-298-308 nodes", len(_p298308_defs()))
+except Exception as _p298308_exc:  # noqa: BLE001
+    logger.warning("Phase-298-308 nodes not registered: %s", _p298308_exc)
+
 # ── Graph execution
 
 def _topo_sort(nodes: list[dict], edges: list[dict]) -> list[dict]:

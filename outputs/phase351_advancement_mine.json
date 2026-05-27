@@ -1,12 +1,12 @@
 {
   "phase": 351,
-  "total_papers": 39,
+  "total_papers": 48,
   "category_counts": {
     "sign_readings": 20,
     "seal_formulas": 2,
     "tamil_brahmi": 4,
     "meluhha_names": 2,
-    "computational": 14,
+    "computational": 23,
     "trade_vocabulary": 7
   },
   "top_30_papers": [
@@ -364,5 +364,5 @@
     "Investigate 0 Meluhha bilingual sources for phonetic constraints",
     "Evaluate 0 computational methods for LOW→HIGH upgrade pipeline"
   ],
-  "verdict": "Advancement mine: 39 papers across 6 categories. Insights: 0 actionable items. Current: 400 HIGH / 0 MEDIUM / 205 LOW readings."
+  "verdict": "Advancement mine: 48 papers across 6 categories. Insights: 0 actionable items. Current: 400 HIGH / 0 MEDIUM / 205 LOW readings."
 }

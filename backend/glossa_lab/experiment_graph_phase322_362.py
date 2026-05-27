@@ -182,6 +182,49 @@ def _auto_decipher_loop(inputs: dict, params: dict) -> dict[str, Any]:
         "text": f"Claim Level {fc.get('claim_level',0)}, {fc.get('n_strong',0)} strong, {fc.get('total_strength',0)}/18",
     }
 
+def _phase363_370_deep(inputs: dict, params: dict) -> dict[str, Any]:
+    """Phases 363-370: Deep experiments — site-stratified, compounds, formulas, corpus stats."""
+    data = _load_output("phase363_370_deep_experiments.json")
+    p370 = data.get("phase370", {})
+    p363 = data.get("phase363", {})
+    p364 = data.get("phase364", {})
+    return {
+        "fully_decoded_pct": p370.get("fully_decoded_inscriptions", 0) / max(1, p370.get("total_inscriptions", 1)),
+        "high_coverage": p370.get("high_token_coverage", 0),
+        "n_compounds": p364.get("n_compounds", 0),
+        "n_sites": p363.get("n_sites", 0),
+        "json": data,
+        "number": float(p370.get("high_token_coverage", 0)),
+        "text": p370.get("verdict", "Phase 370 not run"),
+    }
+
+def _phase371_376_exploit(inputs: dict, params: dict) -> dict[str, Any]:
+    """Phases 371-376: Exploit findings — compounds, blockers, titles, chi2, prediction, length."""
+    data = _load_output("phase371_376_exploit_findings.json")
+    p372 = data.get("phase372", {})
+    p373 = data.get("phase373", {})
+    p374 = data.get("phase374", {})
+    p376 = data.get("phase376", {})
+    return {
+        "guild_titles": p373.get("unique_names", 0),
+        "blocked_by_one": p372.get("blocked_by_one_sign", 0),
+        "motif_chi2_sig": p374.get("n_significant", 0),
+        "json": data,
+        "number": float(p373.get("unique_names", 0)),
+        "text": f"Guild titles: {p373.get('unique_names',0)}, Blockers: {p372.get('blocked_by_one_sign',0)} one-sign, Chi2: {p374.get('n_significant',0)}/36 sig",
+    }
+
+def _mining_discovery_loop(inputs: dict, params: dict) -> dict[str, Any]:
+    """Mining discovery loop: 5 rounds of targeted literature mining."""
+    data = _load_output("mining_discovery_loop.json")
+    return {
+        "total_insights": data.get("total_insights", 0),
+        "total_papers": data.get("total_new_papers", 0),
+        "json": data,
+        "number": float(data.get("total_insights", 0)),
+        "text": data.get("verdict", "Mining discovery loop not run"),
+    }
+
 
 # ── Node definitions ──────────────────────────────────────────────────────────
 
@@ -259,10 +302,34 @@ def phase322_362_node_defs() -> list[AtomicNodeDef]:
         AtomicNodeDef(
             id="indus_auto_decipher_loop",
             name="Auto-Decipher Loop",
-            category="Indus Decipherment (Phase 322–362)",
+            category="Indus Decipherment (Phase 322–376)",
             description="Autonomous research protocol: ASSESS→MINE→ANALYZE→DESIGN→EXECUTE→UPDATE (18/18 strong)",
             inputs=[], outputs=[{"name": "claim_level", "type": "number"}, *_STD],
             params_schema={"iterations": {"type": "integer", "default": 5}},
             fn=_auto_decipher_loop,
+        ),
+        AtomicNodeDef(
+            id="indus_phase363_370_deep",
+            name="Phases 363–370: Deep Experiments",
+            category="Indus Decipherment (Phase 322–376)",
+            description="Site-stratified (48%), compounds (619), title formulas (13), motif profiles (9), entropy, Gulf (67%/64%), corpus stats (75% decoded, 93% coverage)",
+            inputs=[], outputs=[{"name": "fully_decoded_pct", "type": "number"}, *_STD],
+            params_schema={}, fn=_phase363_370_deep,
+        ),
+        AtomicNodeDef(
+            id="indus_phase371_376_exploit",
+            name="Phases 371–376: Exploit Findings",
+            category="Indus Decipherment (Phase 322–376)",
+            description="Compound semantics (619), decode blockers (348 one-sign), guild titles (65), motif chi² (36/36 sig), entropy prediction (214), length-coherence",
+            inputs=[], outputs=[{"name": "guild_titles", "type": "number"}, *_STD],
+            params_schema={}, fn=_phase371_376_exploit,
+        ),
+        AtomicNodeDef(
+            id="indus_mining_discovery_loop",
+            name="Mining Discovery Loop",
+            category="Indus Decipherment (Phase 322–376)",
+            description="5-round targeted mining: hapax signs, Dravidian compounds, guild parallels, seal function, syntax (1331 papers, 217 insights)",
+            inputs=[], outputs=[{"name": "total_insights", "type": "number"}, *_STD],
+            params_schema={}, fn=_mining_discovery_loop,
         ),
     ]

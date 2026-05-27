@@ -1,7 +1,7 @@
 {
   "protocol": "auto_decipher_loop",
-  "iterations_run": 5,
-  "max_iterations": 5,
+  "iterations_run": 10,
+  "max_iterations": 10,
   "final_convergence": {
     "n_strong": 4,
     "n_moderate_plus": 6,
@@ -53,7 +53,7 @@
   "history": [
     {
       "iteration": 1,
-      "timestamp": "2026-05-27T17:37:08.915520+00:00",
+      "timestamp": "2026-05-27T17:41:10.316142+00:00",
       "target_channel": "entropy_linguistic",
       "n_mined": 22,
       "n_insights": 2,
@@ -72,7 +72,7 @@
     },
     {
       "iteration": 2,
-      "timestamp": "2026-05-27T17:37:12.633418+00:00",
+      "timestamp": "2026-05-27T17:41:13.232244+00:00",
       "target_channel": "entropy_linguistic",
       "n_mined": 22,
       "n_insights": 2,
@@ -91,7 +91,7 @@
     },
     {
       "iteration": 3,
-      "timestamp": "2026-05-27T17:37:15.756412+00:00",
+      "timestamp": "2026-05-27T17:41:16.519147+00:00",
       "target_channel": "entropy_linguistic",
       "n_mined": 22,
       "n_insights": 2,
@@ -110,7 +110,7 @@
     },
     {
       "iteration": 4,
-      "timestamp": "2026-05-27T17:37:19.402379+00:00",
+      "timestamp": "2026-05-27T17:41:20.137372+00:00",
       "target_channel": "entropy_linguistic",
       "n_mined": 22,
       "n_insights": 2,
@@ -129,12 +129,107 @@
     },
     {
       "iteration": 5,
-      "timestamp": "2026-05-27T17:37:22.495979+00:00",
+      "timestamp": "2026-05-27T17:41:23.651731+00:00",
       "target_channel": "entropy_linguistic",
       "n_mined": 22,
       "n_insights": 2,
       "experiment": "cross_site_bigram_consistency",
       "z_score": -2.93,
+      "upgraded": false,
+      "claim_level": 3,
+      "channels": {
+        "terminal_marker_system": "strong",
+        "word_structure_family": "strong",
+        "affinity_grid": "strong",
+        "predictive_validation": "strong",
+        "entropy_linguistic": "moderate",
+        "null_controls": "moderate"
+      }
+    },
+    {
+      "iteration": 6,
+      "timestamp": "2026-05-27T17:41:27.221597+00:00",
+      "target_channel": "entropy_linguistic",
+      "n_mined": 22,
+      "n_insights": 2,
+      "experiment": "cross_site_bigram_consistency",
+      "z_score": -3.02,
+      "upgraded": false,
+      "claim_level": 3,
+      "channels": {
+        "terminal_marker_system": "strong",
+        "word_structure_family": "strong",
+        "affinity_grid": "strong",
+        "predictive_validation": "strong",
+        "entropy_linguistic": "moderate",
+        "null_controls": "moderate"
+      }
+    },
+    {
+      "iteration": 7,
+      "timestamp": "2026-05-27T17:41:30.256715+00:00",
+      "target_channel": "entropy_linguistic",
+      "n_mined": 22,
+      "n_insights": 2,
+      "experiment": "cross_site_bigram_consistency",
+      "z_score": -3.06,
+      "upgraded": false,
+      "claim_level": 3,
+      "channels": {
+        "terminal_marker_system": "strong",
+        "word_structure_family": "strong",
+        "affinity_grid": "strong",
+        "predictive_validation": "strong",
+        "entropy_linguistic": "moderate",
+        "null_controls": "moderate"
+      }
+    },
+    {
+      "iteration": 8,
+      "timestamp": "2026-05-27T17:41:33.327718+00:00",
+      "target_channel": "entropy_linguistic",
+      "n_mined": 22,
+      "n_insights": 2,
+      "experiment": "cross_site_bigram_consistency",
+      "z_score": -3.26,
+      "upgraded": false,
+      "claim_level": 3,
+      "channels": {
+        "terminal_marker_system": "strong",
+        "word_structure_family": "strong",
+        "affinity_grid": "strong",
+        "predictive_validation": "strong",
+        "entropy_linguistic": "moderate",
+        "null_controls": "moderate"
+      }
+    },
+    {
+      "iteration": 9,
+      "timestamp": "2026-05-27T17:41:36.548403+00:00",
+      "target_channel": "entropy_linguistic",
+      "n_mined": 22,
+      "n_insights": 2,
+      "experiment": "cross_site_bigram_consistency",
+      "z_score": -2.86,
+      "upgraded": false,
+      "claim_level": 3,
+      "channels": {
+        "terminal_marker_system": "strong",
+        "word_structure_family": "strong",
+        "affinity_grid": "strong",
+        "predictive_validation": "strong",
+        "entropy_linguistic": "moderate",
+        "null_controls": "moderate"
+      }
+    },
+    {
+      "iteration": 10,
+      "timestamp": "2026-05-27T17:41:39.708603+00:00",
+      "target_channel": "entropy_linguistic",
+      "n_mined": 22,
+      "n_insights": 2,
+      "experiment": "cross_site_bigram_consistency",
+      "z_score": -2.99,
       "upgraded": false,
       "claim_level": 3,
       "channels": {

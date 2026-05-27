@@ -1,0 +1,162 @@
+{
+  "protocol": "integrated_research_loop",
+  "cycles_run": 15,
+  "max_cycles": 15,
+  "total_papers_mined": 970,
+  "total_insights": 35,
+  "n_new_experiments": 15,
+  "n_repeat_experiments": 0,
+  "history": [
+    {
+      "cycle": 1,
+      "timestamp": "2026-05-27T23:31:33.163768+00:00",
+      "gap_targeted": "rare_sign_context",
+      "n_papers": 71,
+      "n_insights": 4,
+      "experiment": "site_specific_formula",
+      "verdict": "Site formulas: 9 sites with unique formula sets.",
+      "is_new_info": true
+    },
+    {
+      "cycle": 2,
+      "timestamp": "2026-05-27T23:31:35.847886+00:00",
+      "gap_targeted": "compound_morphology",
+      "n_papers": 61,
+      "n_insights": 3,
+      "experiment": "motif_title_correlation",
+      "verdict": "Motif-title: 8 motifs have title reading profiles.",
+      "is_new_info": true
+    },
+    {
+      "cycle": 3,
+      "timestamp": "2026-05-27T23:31:39.967935+00:00",
+      "gap_targeted": "seal_owner_identity",
+      "n_papers": 103,
+      "n_insights": 4,
+      "experiment": "suffix_chain_depth",
+      "verdict": "Suffix chains: avg depth 1.4. Distribution: {1: 725, 2: 448, 0: 300, 3: 141, 4: 45}.",
+      "is_new_info": true
+    },
+    {
+      "cycle": 4,
+      "timestamp": "2026-05-27T23:31:43.161505+00:00",
+      "gap_targeted": "cross_script_transfer",
+      "n_papers": 61,
+      "n_insights": 2,
+      "experiment": "reading_frequency_zipf",
+      "verdict": "Zipf: α=1.412 (127 readings). Linguistic.",
+      "is_new_info": true
+    },
+    {
+      "cycle": 5,
+      "timestamp": "2026-05-27T23:31:46.061239+00:00",
+      "gap_targeted": "trade_network_vocabulary",
+      "n_papers": 81,
+      "n_insights": 7,
+      "experiment": "compound_semantic_coherence",
+      "verdict": "Compound coherence: 20% (126/619) semantically valid.",
+      "is_new_info": true
+    },
+    {
+      "cycle": 6,
+      "timestamp": "2026-05-27T23:31:49.503291+00:00",
+      "gap_targeted": "inscription_formula_syntax",
+      "n_papers": 67,
+      "n_insights": 2,
+      "experiment": "blocker_sign_context",
+      "verdict": "Blocker context: 204 blockers have HIGH-sign neighbors.",
+      "is_new_info": true
+    },
+    {
+      "cycle": 7,
+      "timestamp": "2026-05-27T23:31:52.340362+00:00",
+      "gap_targeted": "iconographic_semantic",
+      "n_papers": 59,
+      "n_insights": 0,
+      "experiment": "inscription_uniqueness",
+      "verdict": "Uniqueness: 1650 unique inscription types, 1631 singletons (99%).",
+      "is_new_info": true
+    },
+    {
+      "cycle": 8,
+      "timestamp": "2026-05-27T23:31:55.650804+00:00",
+      "gap_targeted": "phonological_reconstruction",
+      "n_papers": 42,
+      "n_insights": 3,
+      "experiment": "position_entropy_by_site",
+      "verdict": "Template 'position_entropy_by_site' executed (generic).",
+      "is_new_info": true
+    },
+    {
+      "cycle": 9,
+      "timestamp": "2026-05-27T23:31:58.529357+00:00",
+      "gap_targeted": "computational_upgrade",
+      "n_papers": 98,
+      "n_insights": 1,
+      "experiment": "title_root_suffix_trigram",
+      "verdict": "Template 'title_root_suffix_trigram' executed (generic).",
+      "is_new_info": true
+    },
+    {
+      "cycle": 10,
+      "timestamp": "2026-05-27T23:32:01.802924+00:00",
+      "gap_targeted": "archaeological_context",
+      "n_papers": 49,
+      "n_insights": 1,
+      "experiment": "motif_reading_mutual_info",
+      "verdict": "Template 'motif_reading_mutual_info' executed (generic).",
+      "is_new_info": true
+    },
+    {
+      "cycle": 11,
+      "timestamp": "2026-05-27T23:32:04.986415+00:00",
+      "gap_targeted": "personal_name_structure",
+      "n_papers": 40,
+      "n_insights": 0,
+      "experiment": "decoded_text_repetition",
+      "verdict": "Text repetition: TTR=0.322 (1557 types / 4831 tokens).",
+      "is_new_info": true
+    },
+    {
+      "cycle": 12,
+      "timestamp": "2026-05-27T23:32:08.530015+00:00",
+      "gap_targeted": "numeral_metrological",
+      "n_papers": 59,
+      "n_insights": 3,
+      "experiment": "rare_sign_neighbor_profile",
+      "verdict": "Template 'rare_sign_neighbor_profile' executed (generic).",
+      "is_new_info": true
+    },
+    {
+      "cycle": 13,
+      "timestamp": "2026-05-27T23:32:11.598460+00:00",
+      "gap_targeted": "substrate_loanword",
+      "n_papers": 70,
+      "n_insights": 2,
+      "experiment": "compound_vs_formula",
+      "verdict": "Template 'compound_vs_formula' executed (generic).",
+      "is_new_info": true
+    },
+    {
+      "cycle": 14,
+      "timestamp": "2026-05-27T23:32:14.298106+00:00",
+      "gap_targeted": "gulf_foreign_attestation",
+      "n_papers": 38,
+      "n_insights": 2,
+      "experiment": "suffix_after_animal",
+      "verdict": "After animal: {'ay': 26, 'ā': 19, 'in': 16, 'an': 15, 'ka': 10}. Most common: ay.",
+      "is_new_info": true
+    },
+    {
+      "cycle": 15,
+      "timestamp": "2026-05-27T23:32:16.950197+00:00",
+      "gap_targeted": "allograph_classification",
+      "n_papers": 71,
+      "n_insights": 1,
+      "experiment": "cross_site_formula_overlap",
+      "verdict": "Cross-site formulas: 36 pairs, avg Jaccard 0.00.",
+      "is_new_info": true
+    }
+  ],
+  "verdict": "Integrated loop: 15 cycles, 970 papers, 35 insights, 15 new experiments, 0 repeats."
+}

@@ -1,0 +1,2016 @@
+{
+  "phase323": {
+    "total_formulas": 50,
+    "scored_formulas": 50,
+    "coherent_formulas": 32,
+    "coherence_rate": 0.64,
+    "top_10_formulas": [
+      {
+        "formula": [
+          "M342",
+          "M176"
+        ],
+        "count": 122,
+        "readings": [
+          "ay/ā",
+          "an/aṇ"
+        ],
+        "semantic_cats": [
+          "GENDER",
+          "GENDER"
+        ],
+        "coherence": 0.5,
+        "reading_coverage": 1.0,
+        "gloss": "ay/ā(GENDER) — an/aṇ(GENDER)"
+      },
+      {
+        "formula": [
+          "M267",
+          "M099"
+        ],
+        "count": 84,
+        "readings": [
+          "iN/in (genitive of)",
+          "kol/koḷ"
+        ],
+        "semantic_cats": [
+          "CASE",
+          "VERB"
+        ],
+        "coherence": 0.5,
+        "reading_coverage": 1.0,
+        "gloss": "iN/in (genitive of)(CASE) — kol/koḷ(VERB)"
+      },
+      {
+        "formula": [
+          "M099",
+          "M342"
+        ],
+        "count": 81,
+        "readings": [
+          "kol/koḷ",
+          "ay/ā"
+        ],
+        "semantic_cats": [
+          "VERB",
+          "GENDER"
+        ],
+        "coherence": 0.5,
+        "reading_coverage": 1.0,
+        "gloss": "kol/koḷ(VERB) — ay/ā(GENDER)"
+      },
+      {
+        "formula": [
+          "M176",
+          "M099"
+        ],
+        "count": 74,
+        "readings": [
+          "an/aṇ",
+          "kol/koḷ"
+        ],
+        "semantic_cats": [
+          "GENDER",
+          "VERB"
+        ],
+        "coherence": 0.5,
+        "reading_coverage": 1.0,
+        "gloss": "an/aṇ(GENDER) — kol/koḷ(VERB)"
+      },
+      {
+        "formula": [
+          "M211",
+          "M342"
+        ],
+        "count": 45,
+        "readings": [
+          "kol",
+          "ay/ā"
+        ],
+        "semantic_cats": [
+          "OBJECT",
+          "GENDER"
+        ],
+        "coherence": 1.0,
+        "reading_coverage": 1.0,
+        "gloss": "kol(OBJECT) — ay/ā(GENDER)"
+      },
+      {
+        "formula": [
+          "M328",
+          "M267"
+        ],
+        "count": 40,
+        "readings": [
+          "ā/āl",
+          "iN/in (genitive of)"
+        ],
+        "semantic_cats": [
+          "CASE",
+          "CASE"
+        ],
+        "coherence": 0.5,
+        "reading_coverage": 1.0,
+        "gloss": "ā/āl(CASE) — iN/in (genitive of)(CASE)"
+      },
+      {
+        "formula": [
+          "M293",
+          "M267"
+        ],
+        "count": 37,
+        "readings": [
+          "ta",
+          "iN/in (genitive of)"
+        ],
+        "semantic_cats": [
+          "OTHER",
+          "CASE"
+        ],
+        "coherence": 0.0,
+        "reading_coverage": 1.0,
+        "gloss": "ta(OTHER) — iN/in (genitive of)(CASE)"
+      },
+      {
+        "formula": [
+          "M342",
+          "M342"
+        ],
+        "count": 35,
+        "readings": [
+          "ay/ā",
+          "ay/ā"
+        ],
+        "semantic_cats": [
+          "GENDER",
+          "GENDER"
+        ],
+        "coherence": 0.5,
+        "reading_coverage": 1.0,
+        "gloss": "ay/ā(GENDER) — ay/ā(GENDER)"
+      },
+      {
+        "formula": [
+          "M267",
+          "M342"
+        ],
+        "count": 31,
+        "readings": [
+          "iN/in (genitive of)",
+          "ay/ā"
+        ],
+        "semantic_cats": [
+          "CASE",
+          "GENDER"
+        ],
+        "coherence": 0.5,
+        "reading_coverage": 1.0,
+        "gloss": "iN/in (genitive of)(CASE) — ay/ā(GENDER)"
+      },
+      {
+        "formula": [
+          "M059",
+          "M267"
+        ],
+        "count": 30,
+        "readings": [
+          "ēḷ/eḷ",
+          "iN/in (genitive of)"
+        ],
+        "semantic_cats": [
+          "OTHER",
+          "CASE"
+        ],
+        "coherence": 0.0,
+        "reading_coverage": 1.0,
+        "gloss": "ēḷ/eḷ(OTHER) — iN/in (genitive of)(CASE)"
+      }
+    ],
+    "verdict": "Seal coherence: 32/50 (64%) of scored formulas show valid PD semantic structure. STRONG — readings produce coherent Dravidian."
+  },
+  "phase324": {
+    "train_inscriptions": 1336,
+    "test_inscriptions": 334,
+    "test_bigram_hit_rate": 0.9934,
+    "null_mean": 0.9875,
+    "null_std": 0.0047,
+    "z_score": 1.26,
+    "p_value": 0.134,
+    "n_null_trials": 500,
+    "advantage": 0.0059,
+    "verdict": "Predictive validation: Real hit rate 99.3% vs null 98.8% (z=1.3, p=0.1340). MARGINAL — weak predictive signal."
+  },
+  "phase325": {
+    "decoded_tokens": 6501,
+    "decoded_bigrams": 6500,
+    "cross_entropy": {
+      "Uniform": 8.6439,
+      "Dravidian": 14.2381,
+      "Sanskrit": 17.9251,
+      "Munda": 18.1412
+    },
+    "ranking": [
+      "Uniform",
+      "Dravidian",
+      "Sanskrit",
+      "Munda"
+    ],
+    "winner": "Uniform",
+    "margin_over_second": 5.5942,
+    "verdict": "Cross-entropy ranking: Uniform(8.64) < Dravidian(14.24) < Sanskrit(17.93) < Munda(18.14). Winner: Uniform (margin=5.59 bits). CONTRADICTS — Uniform fits better than Dravidian."
+  },
+  "phase326": {
+    "n_forward": 1270,
+    "n_backward": 837,
+    "n_same_category": 838,
+    "total_transitions": 2945,
+    "forward_rate": 0.7158,
+    "strict_forward_rate": 0.4312,
+    "null_mean": 0.682,
+    "null_std": 0.036,
+    "z_score": 0.94,
+    "verdict": "Strict grammar: 71.6% forward vs null 68.2% (z=0.9). NOT SIGNIFICANT — strict grammar test fails."
+  },
+  "phase327": {
+    "n_active_signs": 151,
+    "n_communities": 1,
+    "largest_community": 151,
+    "top_10_communities": [
+      {
+        "community_id": 83,
+        "size": 151,
+        "members_with_readings": 151,
+        "dominant_category": "OTHER",
+        "category_purity": 0.61,
+        "readings_sample": [
+          "M239=il",
+          "M128=kaṇ",
+          "M355=lu",
+          "M149=or",
+          "M011=kaḷiṟu",
+          "M328=ā/āl",
+          "M155=ka",
+          "M049=pu",
+          "M295=paṟ",
+          "M004=kēḷ"
+        ],
+        "category_distribution": {
+          "PLACE": 5,
+          "OTHER": 92,
+          "ANIMAL": 14,
+          "CASE": 5,
+          "QUALITY": 9,
+          "VERB": 4,
+          "OBJECT": 9,
+          "TITLE": 8,
+          "GENDER": 4,
+          "NUMBER": 1
+        }
+      }
+    ],
+    "purity_rate": 1.0,
+    "verdict": "Community detection: 1 communities, 1/1 (100%) have PD category purity ≥40%. STRONG — sign clusters map to PD word classes."
+  },
+  "phase328": {
+    "total_unassigned": 205,
+    "total_low_conf": 205,
+    "candidate_signs": 102,
+    "covered_initials": [
+      "[",
+      "a",
+      "c",
+      "e",
+      "g",
+      "i",
+      "k",
+      "l",
+      "m",
+      "n",
+      "o",
+      "p",
+      "r",
+      "s",
+      "t",
+      "u",
+      "v",
+      "y",
+      "z",
+      "ā",
+      "ē",
+      "ō",
+      "ū",
+      "ḷ",
+      "ṇ"
+    ],
+    "missing_initials": [
+      "b",
+      "d",
+      "ñ",
+      "ḻ",
+      "ṉ",
+      "ṟ"
+    ],
+    "n_missing": 6,
+    "missing_phoneme_words": {
+      "b": [
+        {
+          "word": "bal",
+          "dedr": "5765",
+          "meaning": "strength, power",
+          "context": "title/quality"
+        },
+        {
+          "word": "bil",
+          "dedr": "5765",
+          "meaning": "bow",
+          "context": "weapon"
+        }
+      ],
+      "d": [
+        {
+          "word": "dēvar",
+          "dedr": "3427",
+          "meaning": "god, deity",
+          "context": "title"
+        },
+        {
+          "word": "dēci",
+          "dedr": "3427",
+          "meaning": "country, region",
+          "context": "place"
+        }
+      ],
+      "ñ": [
+        {
+          "word": "ñāṉ",
+          "dedr": "2603",
+          "meaning": "I (first person)",
+          "context": "pronoun"
+        }
+      ],
+      "ḻ": [
+        {
+          "word": "ḻai",
+          "dedr": "5133",
+          "meaning": "to drip, trickle",
+          "context": "verb"
+        }
+      ],
+      "ṉ": [
+        {
+          "word": "ṉā",
+          "dedr": "2915",
+          "meaning": "tongue, language",
+          "context": "body"
+        }
+      ],
+      "ṟ": [
+        {
+          "word": "ṟā",
+          "dedr": "",
+          "meaning": "stone (Tamil)",
+          "context": "material"
+        }
+      ]
+    },
+    "top_20_candidates": [
+      {
+        "sign": "M109",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M116",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M120",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M134",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M140",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M142",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M148",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M171",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M186",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M187",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M199",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M207",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M208",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M209",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M218",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M227",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M243",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M245",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M250",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      },
+      {
+        "sign": "M251",
+        "freq": 4,
+        "initial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "position_profile": {
+          "MEDIAL": 4
+        },
+        "current_reading": "",
+        "current_confidence": "LOW"
+      }
+    ],
+    "verdict": "Missing phonemes: 6 still missing (b, d, ñ, ḻ, ṉ, ṟ). 102 candidate signs available for assignment. Coverage: 25/31 initials."
+  },
+  "phase329": {
+    "inscriptions_scored": 1397,
+    "translations_produced": 20,
+    "average_coherence": 0.19,
+    "translations": [
+      {
+        "inscription_id": "SK-0002",
+        "signs": [
+          "M053",
+          "M342",
+          "M176",
+          "M267",
+          "M211",
+          "M342",
+          "M211",
+          "M089"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M053",
+            "reading": "mi",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M211",
+            "reading": "kol",
+            "confidence": "H",
+            "semantic": "OBJECT"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M211",
+            "reading": "kol",
+            "confidence": "H",
+            "semantic": "OBJECT"
+          },
+          {
+            "sign": "M089",
+            "reading": "tu/tū",
+            "confidence": "H",
+            "semantic": "VERB"
+          }
+        ],
+        "proto_dravidian_gloss": "mi ay an iN kol ay kol tu",
+        "semantic_pattern": "OTHER → GENDER → GENDER → CASE → OBJECT → GENDER → OBJECT → VERB",
+        "coherence": 0.57
+      },
+      {
+        "inscription_id": "H-0061",
+        "signs": [
+          "M069",
+          "M125",
+          "M065",
+          "M193",
+          "M099",
+          "M293",
+          "M342",
+          "M342"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M069",
+            "reading": "nēr",
+            "confidence": "H",
+            "semantic": "QUALITY"
+          },
+          {
+            "sign": "M125",
+            "reading": "vil",
+            "confidence": "H",
+            "semantic": "OBJECT"
+          },
+          {
+            "sign": "M065",
+            "reading": "kuTam",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M193",
+            "reading": "ḷā",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "semantic": "VERB"
+          },
+          {
+            "sign": "M293",
+            "reading": "ta",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          }
+        ],
+        "proto_dravidian_gloss": "nēr vil kuTam ḷā kol ta ay ay",
+        "semantic_pattern": "QUALITY → OBJECT → OTHER → OTHER → VERB → OTHER → GENDER → GENDER",
+        "coherence": 0.0
+      },
+      {
+        "inscription_id": "H-0120",
+        "signs": [
+          "M015",
+          "M391",
+          "M342",
+          "M065",
+          "M099",
+          "M342",
+          "M176",
+          "M065"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M015",
+            "reading": "mā",
+            "confidence": "H",
+            "semantic": "QUALITY"
+          },
+          {
+            "sign": "M391",
+            "reading": "ka/kaṇ",
+            "confidence": "H",
+            "semantic": "VERB"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M065",
+            "reading": "kuTam",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "semantic": "VERB"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M065",
+            "reading": "kuTam",
+            "confidence": "H",
+            "semantic": "OTHER"
+          }
+        ],
+        "proto_dravidian_gloss": "mā ka ay kuTam kol ay an kuTam",
+        "semantic_pattern": "QUALITY → VERB → GENDER → OTHER → VERB → GENDER → GENDER → OTHER",
+        "coherence": 0.14
+      },
+      {
+        "inscription_id": "M-0146",
+        "signs": [
+          "M125",
+          "M162",
+          "M237",
+          "M267",
+          "M267",
+          "M267",
+          "M336",
+          "M089"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M125",
+            "reading": "vil",
+            "confidence": "H",
+            "semantic": "OBJECT"
+          },
+          {
+            "sign": "M162",
+            "reading": "il/iḷ",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M237",
+            "reading": "ce",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M336",
+            "reading": "iṉ/locative",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M089",
+            "reading": "tu/tū",
+            "confidence": "H",
+            "semantic": "VERB"
+          }
+        ],
+        "proto_dravidian_gloss": "vil il ce iN iN iN iṉ tu",
+        "semantic_pattern": "OBJECT → OTHER → OTHER → CASE → CASE → CASE → CASE → VERB",
+        "coherence": 0.0
+      },
+      {
+        "inscription_id": "H-0157",
+        "signs": [
+          "M078",
+          "M342",
+          "M176",
+          "M099",
+          "M342",
+          "M233",
+          "M375",
+          "M065"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M078",
+            "reading": "cēr",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "semantic": "VERB"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "semantic": "PLACE"
+          },
+          {
+            "sign": "M375",
+            "reading": "taṇ",
+            "confidence": "H",
+            "semantic": "QUALITY"
+          },
+          {
+            "sign": "M065",
+            "reading": "kuTam",
+            "confidence": "H",
+            "semantic": "OTHER"
+          }
+        ],
+        "proto_dravidian_gloss": "cēr ay an kol ay ūr taṇ kuTam",
+        "semantic_pattern": "OTHER → GENDER → GENDER → VERB → GENDER → PLACE → QUALITY → OTHER",
+        "coherence": 0.29
+      },
+      {
+        "inscription_id": "M-0195",
+        "signs": [
+          "M233",
+          "M267",
+          "M342",
+          "M176",
+          "M099",
+          "M059",
+          "M267",
+          "M233"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "semantic": "PLACE"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "semantic": "VERB"
+          },
+          {
+            "sign": "M059",
+            "reading": "ēḷ/eḷ",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "semantic": "PLACE"
+          }
+        ],
+        "proto_dravidian_gloss": "ūr iN ay an kol ēḷ iN ūr",
+        "semantic_pattern": "PLACE → CASE → GENDER → GENDER → VERB → OTHER → CASE → PLACE",
+        "coherence": 0.29
+      },
+      {
+        "inscription_id": "C-0031",
+        "signs": [
+          "M087",
+          "M342",
+          "M176",
+          "M099",
+          "M342",
+          "M176",
+          "M267",
+          "M391"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M087",
+            "reading": "veL",
+            "confidence": "H",
+            "semantic": "QUALITY"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "semantic": "VERB"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M391",
+            "reading": "ka/kaṇ",
+            "confidence": "H",
+            "semantic": "VERB"
+          }
+        ],
+        "proto_dravidian_gloss": "veL ay an kol ay an iN ka",
+        "semantic_pattern": "QUALITY → GENDER → GENDER → VERB → GENDER → GENDER → CASE → VERB",
+        "coherence": 0.14
+      },
+      {
+        "inscription_id": "BN-0024",
+        "signs": [
+          "M176",
+          "M099",
+          "M342",
+          "M267",
+          "M162",
+          "M367",
+          "M367",
+          "M233"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "semantic": "VERB"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M162",
+            "reading": "il/iḷ",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M367",
+            "reading": "am/neuter",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M367",
+            "reading": "am/neuter",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "semantic": "PLACE"
+          }
+        ],
+        "proto_dravidian_gloss": "an kol ay iN il am am ūr",
+        "semantic_pattern": "GENDER → VERB → GENDER → CASE → OTHER → GENDER → GENDER → PLACE",
+        "coherence": 0.14
+      },
+      {
+        "inscription_id": "H-0273",
+        "signs": [
+          "M025",
+          "M099",
+          "M252",
+          "M125",
+          "M211",
+          "M106",
+          "M233",
+          "M328"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M025",
+            "reading": "cem",
+            "confidence": "H",
+            "semantic": "OBJECT"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "semantic": "VERB"
+          },
+          {
+            "sign": "M252",
+            "reading": "kur",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M125",
+            "reading": "vil",
+            "confidence": "H",
+            "semantic": "OBJECT"
+          },
+          {
+            "sign": "M211",
+            "reading": "kol",
+            "confidence": "H",
+            "semantic": "OBJECT"
+          },
+          {
+            "sign": "M106",
+            "reading": "kur",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "semantic": "PLACE"
+          },
+          {
+            "sign": "M328",
+            "reading": "ā/āl",
+            "confidence": "H",
+            "semantic": "CASE"
+          }
+        ],
+        "proto_dravidian_gloss": "cem kol kur vil kol kur ūr ā",
+        "semantic_pattern": "OBJECT → VERB → OTHER → OBJECT → OBJECT → OTHER → PLACE → CASE",
+        "coherence": 0.29
+      },
+      {
+        "inscription_id": "M-0351",
+        "signs": [
+          "M025",
+          "M386",
+          "M391",
+          "M059",
+          "M267",
+          "M048",
+          "M328",
+          "M305"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M025",
+            "reading": "cem",
+            "confidence": "H",
+            "semantic": "OBJECT"
+          },
+          {
+            "sign": "M386",
+            "reading": "maṇ",
+            "confidence": "H",
+            "semantic": "PLACE"
+          },
+          {
+            "sign": "M391",
+            "reading": "ka/kaṇ",
+            "confidence": "H",
+            "semantic": "VERB"
+          },
+          {
+            "sign": "M059",
+            "reading": "ēḷ/eḷ",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M048",
+            "reading": "mu/muṉ",
+            "confidence": "H",
+            "semantic": "VERB"
+          },
+          {
+            "sign": "M328",
+            "reading": "ā/āl",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M305",
+            "reading": "ōṭu/comitative",
+            "confidence": "H",
+            "semantic": "CASE"
+          }
+        ],
+        "proto_dravidian_gloss": "cem maṇ ka ēḷ iN mu ā ōṭu",
+        "semantic_pattern": "OBJECT → PLACE → VERB → OTHER → CASE → VERB → CASE → CASE",
+        "coherence": 0.14
+      },
+      {
+        "inscription_id": "H-0322",
+        "signs": [
+          "M060",
+          "M342",
+          "M336",
+          "M211",
+          "M162",
+          "M099",
+          "M342",
+          "M012"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M060",
+            "reading": "kāṇṭāmirukam",
+            "confidence": "H",
+            "semantic": "ANIMAL"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M336",
+            "reading": "iṉ/locative",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M211",
+            "reading": "kol",
+            "confidence": "H",
+            "semantic": "OBJECT"
+          },
+          {
+            "sign": "M162",
+            "reading": "il/iḷ",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "semantic": "VERB"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M012",
+            "reading": "oṉṟu/1",
+            "confidence": "H",
+            "semantic": "NUMBER"
+          }
+        ],
+        "proto_dravidian_gloss": "kāṇṭāmirukam ay iṉ kol il kol ay oṉṟu",
+        "semantic_pattern": "ANIMAL → GENDER → CASE → OBJECT → OTHER → VERB → GENDER → NUMBER",
+        "coherence": 0.29
+      },
+      {
+        "inscription_id": "DK-0078",
+        "signs": [
+          "M027",
+          "M211",
+          "M342",
+          "M176",
+          "M162",
+          "M391",
+          "M089",
+          "M176"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M027",
+            "reading": "māṟ",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M211",
+            "reading": "kol",
+            "confidence": "H",
+            "semantic": "OBJECT"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M162",
+            "reading": "il/iḷ",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M391",
+            "reading": "ka/kaṇ",
+            "confidence": "H",
+            "semantic": "VERB"
+          },
+          {
+            "sign": "M089",
+            "reading": "tu/tū",
+            "confidence": "H",
+            "semantic": "VERB"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "semantic": "GENDER"
+          }
+        ],
+        "proto_dravidian_gloss": "māṟ kol ay an il ka tu an",
+        "semantic_pattern": "OTHER → OBJECT → GENDER → GENDER → OTHER → VERB → VERB → GENDER",
+        "coherence": 0.14
+      },
+      {
+        "inscription_id": "C-0066",
+        "signs": [
+          "M267",
+          "M233",
+          "M328",
+          "M185",
+          "M328",
+          "M267",
+          "M125",
+          "M233"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "semantic": "PLACE"
+          },
+          {
+            "sign": "M328",
+            "reading": "ā/āl",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M185",
+            "reading": "pul",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M328",
+            "reading": "ā/āl",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M125",
+            "reading": "vil",
+            "confidence": "H",
+            "semantic": "OBJECT"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "semantic": "PLACE"
+          }
+        ],
+        "proto_dravidian_gloss": "iN ūr ā pul ā iN vil ūr",
+        "semantic_pattern": "CASE → PLACE → CASE → OTHER → CASE → CASE → OBJECT → PLACE",
+        "coherence": 0.43
+      },
+      {
+        "inscription_id": "H-0383",
+        "signs": [
+          "M024",
+          "M048",
+          "M099",
+          "M169",
+          "M237",
+          "M176",
+          "M099",
+          "M087"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M024",
+            "reading": "nē",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M048",
+            "reading": "mu/muṉ",
+            "confidence": "H",
+            "semantic": "VERB"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "semantic": "VERB"
+          },
+          {
+            "sign": "M169",
+            "reading": "rā",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M237",
+            "reading": "ce",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "semantic": "VERB"
+          },
+          {
+            "sign": "M087",
+            "reading": "veL",
+            "confidence": "H",
+            "semantic": "QUALITY"
+          }
+        ],
+        "proto_dravidian_gloss": "nē mu kol rā ce an kol veL",
+        "semantic_pattern": "OTHER → VERB → VERB → OTHER → OTHER → GENDER → VERB → QUALITY",
+        "coherence": 0.0
+      },
+      {
+        "inscription_id": "M-0488",
+        "signs": [
+          "M027",
+          "M267",
+          "M099",
+          "M176",
+          "M128",
+          "M267",
+          "M233",
+          "M233"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M027",
+            "reading": "māṟ",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "semantic": "VERB"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M128",
+            "reading": "kaṇ",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "semantic": "PLACE"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "semantic": "PLACE"
+          }
+        ],
+        "proto_dravidian_gloss": "māṟ iN kol an kaṇ iN ūr ūr",
+        "semantic_pattern": "OTHER → CASE → VERB → GENDER → OTHER → CASE → PLACE → PLACE",
+        "coherence": 0.14
+      },
+      {
+        "inscription_id": "H-0431",
+        "signs": [
+          "M080",
+          "M233",
+          "M342",
+          "M233",
+          "M342",
+          "M342",
+          "M176",
+          "M249"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M080",
+            "reading": "vēṅkai",
+            "confidence": "H",
+            "semantic": "ANIMAL"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "semantic": "PLACE"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "confidence": "H",
+            "semantic": "PLACE"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M249",
+            "reading": "tii",
+            "confidence": "H",
+            "semantic": "OTHER"
+          }
+        ],
+        "proto_dravidian_gloss": "vēṅkai ūr ay ūr ay ay an tii",
+        "semantic_pattern": "ANIMAL → PLACE → GENDER → PLACE → GENDER → GENDER → GENDER → OTHER",
+        "coherence": 0.43
+      },
+      {
+        "inscription_id": "H-0446",
+        "signs": [
+          "M065",
+          "M342",
+          "M176",
+          "M059",
+          "M267",
+          "M342",
+          "M176",
+          "M099"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M065",
+            "reading": "kuTam",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M059",
+            "reading": "ēḷ/eḷ",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "semantic": "VERB"
+          }
+        ],
+        "proto_dravidian_gloss": "kuTam ay an ēḷ iN ay an kol",
+        "semantic_pattern": "OTHER → GENDER → GENDER → OTHER → CASE → GENDER → GENDER → VERB",
+        "coherence": 0.0
+      },
+      {
+        "inscription_id": "H-0447",
+        "signs": [
+          "M026",
+          "M177",
+          "M267",
+          "M267",
+          "M328",
+          "M336",
+          "M059",
+          "M162"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M026",
+            "reading": "mā",
+            "confidence": "H",
+            "semantic": "QUALITY"
+          },
+          {
+            "sign": "M177",
+            "reading": "na",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M328",
+            "reading": "ā/āl",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M336",
+            "reading": "iṉ/locative",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M059",
+            "reading": "ēḷ/eḷ",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M162",
+            "reading": "il/iḷ",
+            "confidence": "H",
+            "semantic": "OTHER"
+          }
+        ],
+        "proto_dravidian_gloss": "mā na iN iN ā iṉ ēḷ il",
+        "semantic_pattern": "QUALITY → OTHER → CASE → CASE → CASE → CASE → OTHER → OTHER",
+        "coherence": 0.0
+      },
+      {
+        "inscription_id": "RGR-0029",
+        "signs": [
+          "M080",
+          "M183",
+          "M261",
+          "M328",
+          "M267",
+          "M211",
+          "M342",
+          "M220"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M080",
+            "reading": "vēṅkai",
+            "confidence": "H",
+            "semantic": "ANIMAL"
+          },
+          {
+            "sign": "M183",
+            "reading": "vēḷ",
+            "confidence": "H",
+            "semantic": "TITLE"
+          },
+          {
+            "sign": "M261",
+            "reading": "muruku",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M328",
+            "reading": "ā/āl",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M211",
+            "reading": "kol",
+            "confidence": "H",
+            "semantic": "OBJECT"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M220",
+            "reading": "al",
+            "confidence": "H",
+            "semantic": "OTHER"
+          }
+        ],
+        "proto_dravidian_gloss": "vēṅkai vēḷ muruku ā iN kol ay al",
+        "semantic_pattern": "ANIMAL → TITLE → OTHER → CASE → CASE → OBJECT → GENDER → OTHER",
+        "coherence": 0.29
+      },
+      {
+        "inscription_id": "K-0108",
+        "signs": [
+          "M041",
+          "M099",
+          "M162",
+          "M293",
+          "M267",
+          "M342",
+          "M252",
+          "M087"
+        ],
+        "count": 1,
+        "site": "",
+        "motif": "",
+        "interlinear": [
+          {
+            "sign": "M041",
+            "reading": "pēr",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "confidence": "H",
+            "semantic": "VERB"
+          },
+          {
+            "sign": "M162",
+            "reading": "il/iḷ",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M293",
+            "reading": "ta",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "confidence": "H",
+            "semantic": "CASE"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "confidence": "H",
+            "semantic": "GENDER"
+          },
+          {
+            "sign": "M252",
+            "reading": "kur",
+            "confidence": "H",
+            "semantic": "OTHER"
+          },
+          {
+            "sign": "M087",
+            "reading": "veL",
+            "confidence": "H",
+            "semantic": "QUALITY"
+          }
+        ],
+        "proto_dravidian_gloss": "pēr kol il ta iN ay kur veL",
+        "semantic_pattern": "OTHER → VERB → OTHER → OTHER → CASE → GENDER → OTHER → QUALITY",
+        "coherence": 0.0
+      }
+    ],
+    "verdict": "Translation: 20 inscriptions rendered as PD. Average semantic coherence: 19%. FRAGMENTARY — mostly uninterpretable sequences."
+  },
+  "phase330": {
+    "channel_scores": {
+      "entropy_linguistic": "weak",
+      "terminal_marker_system": "strong",
+      "word_structure_family": "weak",
+      "affinity_grid": "strong",
+      "predictive_validation": "weak",
+      "null_controls": "weak"
+    },
+    "overall_convergence": "weak",
+    "n_strong": 2,
+    "n_moderate_plus": 2,
+    "total_strength": 10,
+    "claim_level": 1,
+    "claim": "Level 1 -- Preliminary evidence for structured linguistic readings",
+    "winner_family": "Uniform",
+    "escalation_triggers": {
+      "A_strong_convergence": false,
+      "B_predictive_success": false,
+      "C_replication": true,
+      "D_null_failure": false,
+      "E_emergent_segmentation": true,
+      "F_structural_interpretability": true
+    },
+    "triggers_met": 3,
+    "escalate_to_phase2": true,
+    "verdict": "Convergence: weak (2 strong, 2 moderate+). Claim level 1. Winner: Uniform. Triggers met: 3/6."
+  }
+}

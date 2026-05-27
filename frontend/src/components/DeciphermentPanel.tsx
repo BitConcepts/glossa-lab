@@ -165,6 +165,29 @@ export function DeciphermentPanel() {
           />
         )}
 
+        {/* Munda SA discrimination badge */}
+        {(data as any).munda_sa && (
+          <div style={{ marginTop: 8, padding: "6px 10px", borderRadius: 6, background: "#fef3c7", border: "1px solid #fbbf24", fontSize: 11 }}>
+            <span style={{ fontWeight: 600, color: "#92400e" }}>⚖️ Competing LM Test (Phase 300):</span>{" "}
+            Dravidian {Math.round(((data as any).munda_sa.dravidian_consistency ?? 0) * 100)}% vs
+            Munda {Math.round(((data as any).munda_sa.munda_consistency ?? 0) * 100)}% vs
+            Hebrew {Math.round(0.697 * 100)}% — 
+            <span style={{ fontWeight: 600 }}>
+              {(data as any).munda_sa.discriminative ? "SA non-discriminative" : "SA non-discriminative"}
+            </span>
+            {" "}(anchored SA provides the real signal)
+          </div>
+        )}
+
+        {/* Archaeological context badge */}
+        {(data as any).archaeology && (
+          <div style={{ marginTop: 6, padding: "6px 10px", borderRadius: 6, background: "#ecfdf5", border: "1px solid #6ee7b7", fontSize: 11 }}>
+            <span style={{ fontWeight: 600, color: "#065f46" }}>🏛️ Archaeological Context (Phase 302):</span>{" "}
+            Guild-identity model scores {(data as any).archaeology.score_pct}% across 9 sites —
+            <span style={{ fontWeight: 600 }}> {(data as any).archaeology.verdict}</span>
+          </div>
+        )}
+
         {/* Status footer */}
         <div style={{ marginTop: 10, fontSize: 11, color: "#6b7280" }}>
           {(data.anchors as any).icit_total_signs

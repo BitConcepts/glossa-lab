@@ -1,12 +1,12 @@
 {
   "phase": 351,
-  "total_papers": 75,
+  "total_papers": 39,
   "category_counts": {
     "sign_readings": 20,
     "seal_formulas": 2,
     "tamil_brahmi": 4,
     "meluhha_names": 2,
-    "computational": 50,
+    "computational": 14,
     "trade_vocabulary": 7
   },
   "top_30_papers": [
@@ -70,41 +70,6 @@
       ],
       "score": 6,
       "category": "sign_readings"
-    },
-    {
-      "title": "An Optimize Revolutionary Novel AI-Driven Historical Inscription of Low Script and Ancient Manuscript Using OCR and NLP",
-      "doi": "10.1109/ICCDS64403.2025.11209508",
-      "year": 2025,
-      "authors": [
-        "V. Raghuraman",
-        "S. A",
-        "G. S"
-      ],
-      "score": 6,
-      "category": "computational"
-    },
-    {
-      "title": "Precision Unleashed: Enhancing Vital Sign Predictions Using Long-Short-Term Memory Networks",
-      "doi": "10.1109/3ICT60104.2023.10391537",
-      "year": 2023,
-      "authors": [
-        "Zohra Dakhia",
-        "Houcine Belouaar",
-        "Leyla Belaiche"
-      ],
-      "score": 6,
-      "category": "computational"
-    },
-    {
-      "title": "Corrosion Prediction in the Oil Industry Using Deep Learning Techniques",
-      "doi": "10.31763/ijrcs.v4i3.1371",
-      "year": 2024,
-      "authors": [
-        "M. Al-Khalidi",
-        "A. Abdulsadda"
-      ],
-      "score": 6,
-      "category": "computational"
     },
     {
       "title": "Metal-smithy, Bead-making, Gemstones, Jeweller’s Weight, Trade-permits, Tax-stamps: Indus Script’s Semasiography Partly Decoded",
@@ -321,6 +286,42 @@
       ],
       "score": 3,
       "category": "computational"
+    },
+    {
+      "title": "Unsupervised deep learning supports reclassification of Bronze age cypriot writing system",
+      "doi": "https://doi.org/10.1371/journal.pone.0269544",
+      "year": 2022,
+      "authors": [
+        "Michele Corazza",
+        "Fabio Tamburini",
+        "Miguel Valério"
+      ],
+      "score": 3,
+      "category": "computational"
+    },
+    {
+      "title": "Detection and recognition of cursive text from video frames",
+      "doi": "https://doi.org/10.1186/s13640-020-00523-5",
+      "year": 2020,
+      "authors": [
+        "Ali Mirza",
+        "Ossama Zeshan",
+        "Muhammad Atif"
+      ],
+      "score": 3,
+      "category": "computational"
+    },
+    {
+      "title": "A Generative Model for the Mycenaean Linear B Script and Its Application in Infilling Text from Ancient Tablets",
+      "doi": "https://doi.org/10.1145/3593431",
+      "year": 2023,
+      "authors": [
+        "Katerina Papavassileiou",
+        "Dimitrios Kosmopoulos",
+        "Gareth Owens"
+      ],
+      "score": 3,
+      "category": "computational"
     }
   ],
   "advancement_insights": {
@@ -363,5 +364,5 @@
     "Investigate 0 Meluhha bilingual sources for phonetic constraints",
     "Evaluate 0 computational methods for LOW→HIGH upgrade pipeline"
   ],
-  "verdict": "Advancement mine: 75 papers across 6 categories. Insights: 0 actionable items. Current: 400 HIGH / 0 MEDIUM / 205 LOW readings."
+  "verdict": "Advancement mine: 39 papers across 6 categories. Insights: 0 actionable items. Current: 400 HIGH / 0 MEDIUM / 205 LOW readings."
 }

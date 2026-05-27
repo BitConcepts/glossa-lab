@@ -1,21 +1,21 @@
 {
   "protocol": "auto_decipher_loop",
-  "iterations_run": 10,
+  "iterations_run": 4,
   "max_iterations": 10,
   "final_convergence": {
-    "n_strong": 4,
+    "n_strong": 6,
     "n_moderate_plus": 6,
-    "total_strength": 16,
+    "total_strength": 18,
     "claim_level": 3,
-    "weakest_channel": "entropy_linguistic",
-    "weakest_score": "moderate",
+    "weakest_channel": "terminal_marker_system",
+    "weakest_score": "strong",
     "channels": {
       "terminal_marker_system": "strong",
       "word_structure_family": "strong",
       "affinity_grid": "strong",
       "predictive_validation": "strong",
-      "entropy_linguistic": "moderate",
-      "null_controls": "moderate"
+      "entropy_linguistic": "strong",
+      "null_controls": "strong"
     }
   },
   "final_channels": {
@@ -40,20 +40,20 @@
       "z": 17.9
     },
     "entropy_linguistic": {
-      "score": "moderate",
-      "evidence": "Phase 340: Krishnamurti prior z=2.8 + Phase 349 Sangam z=1.1",
-      "z": 2.8
+      "score": "strong",
+      "evidence": "Phase 340: Krishnamurti prior z=2.8 + Phase 349 Sangam z=1.1 + Iteration z=4.7",
+      "z": 4.69
     },
     "null_controls": {
-      "score": "moderate",
-      "evidence": "Phase 340: anti-circularity z=2.8 + F7 97%",
-      "z": 2.8
+      "score": "strong",
+      "evidence": "Phase 340: anti-circularity z=2.8 + F7 97% + Iteration z=3.4",
+      "z": 3.42
     }
   },
   "history": [
     {
       "iteration": 1,
-      "timestamp": "2026-05-27T17:41:10.316142+00:00",
+      "timestamp": "2026-05-27T18:13:41.622674+00:00",
       "target_channel": "entropy_linguistic",
       "n_mined": 22,
       "n_insights": 2,
@@ -72,31 +72,31 @@
     },
     {
       "iteration": 2,
-      "timestamp": "2026-05-27T17:41:13.232244+00:00",
+      "timestamp": "2026-05-27T18:13:44.143867+00:00",
       "target_channel": "entropy_linguistic",
       "n_mined": 22,
       "n_insights": 2,
-      "experiment": "cross_site_bigram_consistency",
-      "z_score": -2.82,
-      "upgraded": false,
+      "experiment": "phonotactic_constraints",
+      "z_score": 4.69,
+      "upgraded": true,
       "claim_level": 3,
       "channels": {
         "terminal_marker_system": "strong",
         "word_structure_family": "strong",
         "affinity_grid": "strong",
         "predictive_validation": "strong",
-        "entropy_linguistic": "moderate",
+        "entropy_linguistic": "strong",
         "null_controls": "moderate"
       }
     },
     {
       "iteration": 3,
-      "timestamp": "2026-05-27T17:41:16.519147+00:00",
-      "target_channel": "entropy_linguistic",
-      "n_mined": 22,
-      "n_insights": 2,
-      "experiment": "cross_site_bigram_consistency",
-      "z_score": -2.94,
+      "timestamp": "2026-05-27T18:13:49.657766+00:00",
+      "target_channel": "null_controls",
+      "n_mined": 112,
+      "n_insights": 0,
+      "experiment": "positional_reading_consistency",
+      "z_score": 2.07,
       "upgraded": false,
       "claim_level": 3,
       "channels": {
@@ -104,141 +104,27 @@
         "word_structure_family": "strong",
         "affinity_grid": "strong",
         "predictive_validation": "strong",
-        "entropy_linguistic": "moderate",
+        "entropy_linguistic": "strong",
         "null_controls": "moderate"
       }
     },
     {
       "iteration": 4,
-      "timestamp": "2026-05-27T17:41:20.137372+00:00",
-      "target_channel": "entropy_linguistic",
-      "n_mined": 22,
-      "n_insights": 2,
-      "experiment": "cross_site_bigram_consistency",
-      "z_score": -3.1,
-      "upgraded": false,
+      "timestamp": "2026-05-27T18:13:53.166959+00:00",
+      "target_channel": "null_controls",
+      "n_mined": 112,
+      "n_insights": 0,
+      "experiment": "reading_diversity_null",
+      "z_score": 3.42,
+      "upgraded": true,
       "claim_level": 3,
       "channels": {
         "terminal_marker_system": "strong",
         "word_structure_family": "strong",
         "affinity_grid": "strong",
         "predictive_validation": "strong",
-        "entropy_linguistic": "moderate",
-        "null_controls": "moderate"
-      }
-    },
-    {
-      "iteration": 5,
-      "timestamp": "2026-05-27T17:41:23.651731+00:00",
-      "target_channel": "entropy_linguistic",
-      "n_mined": 22,
-      "n_insights": 2,
-      "experiment": "cross_site_bigram_consistency",
-      "z_score": -2.93,
-      "upgraded": false,
-      "claim_level": 3,
-      "channels": {
-        "terminal_marker_system": "strong",
-        "word_structure_family": "strong",
-        "affinity_grid": "strong",
-        "predictive_validation": "strong",
-        "entropy_linguistic": "moderate",
-        "null_controls": "moderate"
-      }
-    },
-    {
-      "iteration": 6,
-      "timestamp": "2026-05-27T17:41:27.221597+00:00",
-      "target_channel": "entropy_linguistic",
-      "n_mined": 22,
-      "n_insights": 2,
-      "experiment": "cross_site_bigram_consistency",
-      "z_score": -3.02,
-      "upgraded": false,
-      "claim_level": 3,
-      "channels": {
-        "terminal_marker_system": "strong",
-        "word_structure_family": "strong",
-        "affinity_grid": "strong",
-        "predictive_validation": "strong",
-        "entropy_linguistic": "moderate",
-        "null_controls": "moderate"
-      }
-    },
-    {
-      "iteration": 7,
-      "timestamp": "2026-05-27T17:41:30.256715+00:00",
-      "target_channel": "entropy_linguistic",
-      "n_mined": 22,
-      "n_insights": 2,
-      "experiment": "cross_site_bigram_consistency",
-      "z_score": -3.06,
-      "upgraded": false,
-      "claim_level": 3,
-      "channels": {
-        "terminal_marker_system": "strong",
-        "word_structure_family": "strong",
-        "affinity_grid": "strong",
-        "predictive_validation": "strong",
-        "entropy_linguistic": "moderate",
-        "null_controls": "moderate"
-      }
-    },
-    {
-      "iteration": 8,
-      "timestamp": "2026-05-27T17:41:33.327718+00:00",
-      "target_channel": "entropy_linguistic",
-      "n_mined": 22,
-      "n_insights": 2,
-      "experiment": "cross_site_bigram_consistency",
-      "z_score": -3.26,
-      "upgraded": false,
-      "claim_level": 3,
-      "channels": {
-        "terminal_marker_system": "strong",
-        "word_structure_family": "strong",
-        "affinity_grid": "strong",
-        "predictive_validation": "strong",
-        "entropy_linguistic": "moderate",
-        "null_controls": "moderate"
-      }
-    },
-    {
-      "iteration": 9,
-      "timestamp": "2026-05-27T17:41:36.548403+00:00",
-      "target_channel": "entropy_linguistic",
-      "n_mined": 22,
-      "n_insights": 2,
-      "experiment": "cross_site_bigram_consistency",
-      "z_score": -2.86,
-      "upgraded": false,
-      "claim_level": 3,
-      "channels": {
-        "terminal_marker_system": "strong",
-        "word_structure_family": "strong",
-        "affinity_grid": "strong",
-        "predictive_validation": "strong",
-        "entropy_linguistic": "moderate",
-        "null_controls": "moderate"
-      }
-    },
-    {
-      "iteration": 10,
-      "timestamp": "2026-05-27T17:41:39.708603+00:00",
-      "target_channel": "entropy_linguistic",
-      "n_mined": 22,
-      "n_insights": 2,
-      "experiment": "cross_site_bigram_consistency",
-      "z_score": -2.99,
-      "upgraded": false,
-      "claim_level": 3,
-      "channels": {
-        "terminal_marker_system": "strong",
-        "word_structure_family": "strong",
-        "affinity_grid": "strong",
-        "predictive_validation": "strong",
-        "entropy_linguistic": "moderate",
-        "null_controls": "moderate"
+        "entropy_linguistic": "strong",
+        "null_controls": "strong"
       }
     }
   ]

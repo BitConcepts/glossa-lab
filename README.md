@@ -1,7 +1,7 @@
 # glossa-lab
 
 [![CI](https://github.com/BitConcepts/glossa-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/BitConcepts/glossa-lab/actions/workflows/ci.yml)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20401711.svg)](https://doi.org/10.5281/zenodo.20401711)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20414696.svg)](https://doi.org/10.5281/zenodo.20414696)
 [![paper](https://img.shields.io/badge/paper-Academia.edu-blue)](https://www.academia.edu)
 [![code](https://img.shields.io/badge/code-MIT-green)](LICENSE)
 [![version](https://img.shields.io/badge/version-1.0.0-orange)](CHANGELOG.md)
@@ -13,7 +13,7 @@ Agentic computational linguistics research platform for statistical analysis, de
 
 > **Decipherment Status (Audited):** 185 corpus-attested Proto-Dravidian readings covering 92.8% of Holdat IVS tokens · 80% agreement with Parpola (1994) on 20 tested signs · Dravidian signal confirmed on two independent corpora (Holdat 57.8%, M77 70.5%) · Reading entropy H₂ = 4.11 bits (linguistic range) · 97.7% inscription uniqueness · Sanskrit hypothesis falsified 0/34
 
-> **Preprint:** Pierson, T.K. (2026). *A Complete Computational Decipherment Hypothesis for the Indus Script.* Zenodo. DOI: [10.5281/zenodo.20401711](https://zenodo.org/records/20401711)
+> **Preprint (v3):** Pierson, T.K. (2026). *A Computational Decipherment Hypothesis for the Indus Script: 185 Proto-Dravidian Readings Validated Across Two Independent Corpora.* Zenodo. DOI: [10.5281/zenodo.20414696](https://doi.org/10.5281/zenodo.20414696)
 
 Built and maintained by **[BitConcepts LLC](https://bitconcepts.tech)**
 
@@ -105,7 +105,7 @@ Local control surface. Start/stop/restart backend, open UI, quick status.
 | Phonological coverage | 76% (19/25 Proto-Dravidian initials attested) |
 | Sanskrit hypothesis | Falsified 0/34 |
 | Total anchor signs | 605 (400 HIGH + 205 LOW unread) |
-| Preprint DOI | [10.5281/zenodo.20401711](https://zenodo.org/records/20401711) |
+| Preprint DOI | [10.5281/zenodo.20414696](https://doi.org/10.5281/zenodo.20414696) |
 
 > **Note:** All numbers are from `RELEASE_VALIDATION.json`, a cold re-run on audited data. See `outputs/AUDIT_CORRECTIONS.json` for full audit trail including bugs found and claims retracted.
 

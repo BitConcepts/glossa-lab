@@ -1,14 +1,14 @@
 {
   "protocol": "mining_discovery_loop",
   "rounds": 5,
-  "total_new_papers": 1331,
-  "total_insights": 217,
+  "total_new_papers": 1268,
+  "total_insights": 215,
   "results": [
     {
       "round": 1,
       "name": "One-sign blockers & hapax signs",
-      "n_papers": 204,
-      "n_insights": 13,
+      "n_papers": 144,
+      "n_insights": 12,
       "insights": [
         {
           "type": "syntax",
@@ -32,10 +32,6 @@
         },
         {
           "type": "syntax",
-          "title": "Word Count : 5223 Tables : 1 Figures : 1 Psychiatric Genetics and the Structure "
-        },
-        {
-          "type": "syntax",
           "title": "6S RNA is a widespread regulator of eubacterial RNA polymerase that resembles an"
         },
         {
@@ -49,12 +45,20 @@
         {
           "type": "syntax",
           "title": "The Romantic Sublime: Studies in the Structure and Psychology of Transcendence"
+        },
+        {
+          "type": "syntax",
+          "title": "Paralogous Radiations of PIN Proteins with Multiple Origins of Noncanonical PIN "
         }
       ],
       "top_5_papers": [
         {
           "title": "A Statistical Comparison of Written Language and Nonlinguistic Symbol Systems",
           "year": 2014
+        },
+        {
+          "title": "Statistical Analysis of the Tables in Mahadevan’s Concordance of the Indus Valley Script",
+          "year": 2019
         },
         {
           "title": "Analyzing Ancient Maya Glyph Collections with Contextual Shape Descriptors",
@@ -67,18 +71,14 @@
         {
           "title": "Unsupervised deep learning supports reclassification of Bronze age cypriot writing system",
           "year": 2022
-        },
-        {
-          "title": "Crossing Experiences in Digital Epigraphy",
-          "year": 2018
         }
       ]
     },
     {
       "round": 2,
       "name": "Dravidian compound word formation",
-      "n_papers": 235,
-      "n_insights": 94,
+      "n_papers": 194,
+      "n_insights": 51,
       "insights": [
         {
           "type": "syntax",
@@ -147,8 +147,8 @@
     {
       "round": 3,
       "name": "Guild title parallels in Sangam/Tamil-Brahmi",
-      "n_papers": 204,
-      "n_insights": 19,
+      "n_papers": 212,
+      "n_insights": 21,
       "insights": [
         {
           "type": "guild_title",
@@ -217,13 +217,9 @@
     {
       "round": 4,
       "name": "Seal function and motif-specific vocabulary",
-      "n_papers": 316,
-      "n_insights": 28,
+      "n_papers": 297,
+      "n_insights": 27,
       "insights": [
-        {
-          "type": "syntax",
-          "title": "Deciphering the Symbols: A Comprehensive Study of Iconography and Epigraphy of I"
-        },
         {
           "type": "syntax",
           "title": "The Presentation of the Pictogrammic “Self” and Persona"
@@ -259,6 +255,10 @@
         {
           "type": "guild_title",
           "title": "Spatial analysis and social spaces"
+        },
+        {
+          "type": "syntax",
+          "title": "Genetic Population Structure of Cacao Plantings within a Young Production Area i"
         }
       ],
       "top_5_papers": [
@@ -279,16 +279,16 @@
           "year": 2022
         },
         {
-          "title": "Deciphering the Symbols: A Comprehensive Study of Iconography and Epigraphy of Indus Seals",
-          "year": 2024
+          "title": "Indus Components in the Iconography of a White Marble Cylinder Seal from Konar Sandal South (Kerman,",
+          "year": 2015
         }
       ]
     },
     {
       "round": 5,
       "name": "Inscription structure and syntax",
-      "n_papers": 372,
-      "n_insights": 63,
+      "n_papers": 421,
+      "n_insights": 104,
       "insights": [
         {
           "type": "syntax",
@@ -323,12 +323,12 @@
           "title": "Graphicology: The Art of Making Sense"
         },
         {
-          "type": "compound_word",
-          "title": "Effectiveness of molecular fingerprints for exploring the chemical space of natu"
+          "type": "syntax",
+          "title": "An Analysis of the Syntactic and Pragmatic Effects on Word Order Flexibility in "
         },
         {
-          "type": "guild_title",
-          "title": "Principles of Algorithmic Management"
+          "type": "syntax",
+          "title": "A Natural Language Sentence Analysis Algorithm Based on Word Order Modifier Synt"
         }
       ],
       "top_5_papers": [
@@ -355,5 +355,5 @@
       ]
     }
   ],
-  "verdict": "Mining discovery: 1331 new papers across 5 rounds, 217 actionable insights extracted."
+  "verdict": "Mining discovery: 1268 new papers across 5 rounds, 215 actionable insights extracted."
 }

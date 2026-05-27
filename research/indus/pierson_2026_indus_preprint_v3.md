@@ -2,11 +2,13 @@
 
 **Tristen K. Pierson**
 BitConcepts Research, United States
-ORCID: 0009-0003-7269-956X
+ORCID: [0009-0003-7269-956X](https://orcid.org/0009-0003-7269-956X)
 
 **May 2026 — Preprint v3 (Audited)**
 
-DOI: 10.5281/zenodo.20401711
+DOI: [10.5281/zenodo.20414696](https://doi.org/10.5281/zenodo.20414696)
+
+**AI Disclosure:** This research used AI tooling (Anthropic Claude) for scripting, data pipeline management, literature search, and drafting assistance. All statistical tests were designed and interpreted by the author. Three pipeline bugs were discovered during a comprehensive audit and are disclosed in §2.3. The audit trail is published as supplementary data.
 
 ---
 

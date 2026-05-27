@@ -78,13 +78,16 @@ export function DeciphermentPanel() {
   if (isArchived) {
     const totalSigns  = data.anchors.corpus_signs  ?? 390;
     const totalAnchors = data.anchors.total_all ?? totalSigns;
+    const icitTotal   = (data.anchors as any).icit_total_signs ?? 0;
+    // When ICIT inventory is known, show coverage against the full 713-sign catalogue
+    const coverageDenom = icitTotal > 0 ? icitTotal : totalAnchors;
     const high        = byConf.HIGH   ?? 0;
     const medium      = byConf.MEDIUM ?? 0;
     const candidate   = byConf.CANDIDATE ?? 0;
     const nHM         = high + medium;
     const tokenCovPct = Math.round((data.anchors.corpus_token_coverage ?? 0) * 100);
-    const hmSignPct   = Math.round((nHM / totalAnchors) * 100);
-    const highSignPct = Math.round((high / totalAnchors) * 100);
+    const hmSignPct   = Math.round((nHM / coverageDenom) * 100);
+    const highSignPct = Math.round((high / coverageDenom) * 100);
     const currentPhase = (data as any).current_phase ?? 0;
     const saAggregate  = (data as any).sa_aggregate ?? 0;
     const nEvidence    = (data as any).n_evidence_items ?? 0;
@@ -119,8 +122,8 @@ export function DeciphermentPanel() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 10, marginBottom: 12 }}>
           <div>
             <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>Anchor Coverage</div>
-            <div style={{ fontSize: 20, fontWeight: 700, color: nHM >= totalAnchors ? "#15803d" : "#111827" }}>
-              {nHM}<span style={{ fontSize: 13, color: "#9ca3af" }}>/{totalAnchors}</span>
+            <div style={{ fontSize: 20, fontWeight: 700, color: nHM >= coverageDenom ? "#15803d" : "#111827" }}>
+              {nHM}<span style={{ fontSize: 13, color: "#9ca3af" }}>/{coverageDenom}</span>
             </div>
             <div style={{ fontSize: 11, marginTop: 2 }}>
               <span style={{ color: "#15803d", fontWeight: 600 }}>H:{high}</span>{" "}
@@ -153,7 +156,7 @@ export function DeciphermentPanel() {
 
         {/* Progress bars */}
         <ProgressBar value={tokenCovPct}  color="#059669" label={`Token coverage (${tokenCovPct}% of 7,002 corpus tokens)`} />
-        <ProgressBar value={hmSignPct}    color="#3b82f6" label={`H+M anchor coverage (${nHM}/${totalAnchors} sign readings confirmed)`} />
+        <ProgressBar value={hmSignPct}    color="#3b82f6" label={`H+M anchor coverage (${nHM}/${coverageDenom} sign readings confirmed)`} />
         <ProgressBar value={highSignPct}  color="#15803d" label={`HIGH confidence (${high} signs — SA + DEDR + external corroboration)`} />
 
         {/* ICIT 2026 inventory coverage */}

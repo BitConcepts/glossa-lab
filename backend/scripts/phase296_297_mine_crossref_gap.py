@@ -292,7 +292,7 @@ def main():
     print(f"  Elamite: {p297['evidence_sources']['elamite_cognate']} | SA: {p297['evidence_sources']['sa_validated']}")
     print(f"  Phonological coverage: {p297['phonological_inventory']['coverage_pct']}%")
     print(f"  Duplicate readings: {len(p297['duplicate_readings'])}")
-    print(f"\n  BLOCKERS:")
+    print("\n  BLOCKERS:")
     for b in p297["blockers"]:
         print(f"    [{b['severity']}] {b['blocker']}: {b['detail'][:80]}")
     print(f"\n  STATUS: {p297['summary']['status']}")

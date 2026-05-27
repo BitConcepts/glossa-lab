@@ -3,7 +3,9 @@
 H23 compliance: retroactive registration of unregistered phase scripts.
 """
 from __future__ import annotations
-import subprocess, sys, json
+import subprocess
+import sys
+import json
 from pathlib import Path
 from glossa_lab.experiment_graph import AtomicNodeDef
 

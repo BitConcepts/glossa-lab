@@ -1,0 +1,698 @@
+{
+  "phase": 322,
+  "total_raw": 482,
+  "total_unique": 231,
+  "score_distribution": {
+    "22": 1,
+    "13": 1,
+    "12": 1,
+    "11": 2,
+    "9": 1,
+    "8": 1,
+    "7": 5,
+    "5": 9,
+    "4": 15,
+    "3": 57,
+    "2": 18,
+    "1": 120
+  },
+  "source_distribution": {
+    "openalex": 126,
+    "crossref": 64,
+    "arxiv": 39,
+    "semantic_scholar": 2
+  },
+  "query_clusters": {
+    "1_scholar_readings": 12,
+    "2_meluhha_bilingual": 6,
+    "3_missing_phonemes": 6,
+    "4_tamil_brahmi": 5,
+    "5_dravidian_substrate": 5,
+    "6_commodity_seals": 5,
+    "7_co_occurrence": 4,
+    "8_information_theory": 4,
+    "9_numerals_metrology": 3,
+    "10_foreign_seals": 4,
+    "11_name_morphology": 4,
+    "12_computational": 5
+  },
+  "top_50_papers": [
+    {
+      "title": "The Ledger of Meluhha: Indus Valley Script as Metrological Accounting Code",
+      "doi": "https://doi.org/10.5281/zenodo.20006537",
+      "year": 2026,
+      "authors": [
+        "RAJESHKUMAR VENUGOPAL"
+      ],
+      "score": 22,
+      "source": "openalex"
+    },
+    {
+      "title": "Indus Signs as Merchant Marks: Corpus Structure, Context, and Viability",
+      "doi": "10.33774/coe-2025-n0cxj",
+      "year": null,
+      "authors": [
+        "Max Freedom Pollard"
+      ],
+      "score": 13,
+      "source": "crossref"
+    },
+    {
+      "title": "INDUS SCRIPT DECIPHERMENT PROJECT 6.2",
+      "doi": "https://doi.org/10.5281/zenodo.17777562",
+      "year": 2025,
+      "authors": [
+        "Saarinen, Joonas"
+      ],
+      "score": 12,
+      "source": "openalex"
+    },
+    {
+      "title": "Trade and trade routes of Indus valley civilization",
+      "doi": "https://doi.org/10.22271/27069109.2025.v7.i5b.414",
+      "year": 2025,
+      "authors": [
+        "D. N. Tripathi"
+      ],
+      "score": 11,
+      "source": "openalex"
+    },
+    {
+      "title": "FROM ROSETTA LAW TO THE INTENT LAYER OF THE SKY",
+      "doi": "https://doi.org/10.5281/zenodo.17650133",
+      "year": 2025,
+      "authors": [
+        "Brewer, Mark Anthony"
+      ],
+      "score": 11,
+      "source": "openalex"
+    },
+    {
+      "title": "Evidence for a Scale-Free Commercial Network in the Indus Valley Civilization: A Power Law Analysis of Harappan Seal Data",
+      "doi": "https://doi.org/10.5281/zenodo.19394894",
+      "year": 2026,
+      "authors": [
+        "Mahesh T C"
+      ],
+      "score": 9,
+      "source": "openalex"
+    },
+    {
+      "title": "Metal-smithy, Bead-making, Gemstones, Jeweller’s Weight, Trade-permits, Tax-stamps: Indus Script’s Semasiography Partly Decoded",
+      "doi": "https://doi.org/10.31235/osf.io/942ra",
+      "year": 2021,
+      "authors": [
+        "Bahata Ansumali Mukhopadhyay"
+      ],
+      "score": 8,
+      "source": "openalex"
+    },
+    {
+      "title": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Valley Script",
+      "doi": "https://doi.org/10.1145/3768633.3770145",
+      "year": 2025,
+      "authors": [
+        "Aruna Sharma",
+        "Shubhajit Roy Chowdhury"
+      ],
+      "score": 7,
+      "source": "openalex"
+    },
+    {
+      "title": "Interrogating Indus inscriptions to unravel their mechanisms of meaning conveyance",
+      "doi": "https://doi.org/10.1057/s41599-019-0274-1",
+      "year": 2019,
+      "authors": [
+        "Bahata Ansumali Mukhopadhyay"
+      ],
+      "score": 7,
+      "source": "openalex"
+    },
+    {
+      "title": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licensing, commodity control and access control: archaeological and script-internal evidence",
+      "doi": "https://doi.org/10.31235/osf.io/7dtqz",
+      "year": 2023,
+      "authors": [
+        "Bahata Ansumali Mukhopadhyay"
+      ],
+      "score": 7,
+      "source": "openalex"
+    },
+    {
+      "title": "Gold and ‘ratti’ signs inscribed on Mohenjo-Daro’s gold-assaying needles, fish-sign inscriptions signifying gemstones concentrated near lapidaries: Indus script’s taxed commodities",
+      "doi": "https://doi.org/10.31235/osf.io/rtdy4",
+      "year": 2022,
+      "authors": [
+        "Bahata Ansumali Mukhopadhyay"
+      ],
+      "score": 7,
+      "source": "openalex"
+    },
+    {
+      "title": "Ancient tax tokens, trade licenses and metrological records?: Making sense of Indus inscribed objects through script-internal, contextual, linguistic, and ethnohistorical lenses.",
+      "doi": "https://doi.org/10.31235/osf.io/h8ct7",
+      "year": 2021,
+      "authors": [
+        "Bahata Ansumali Mukhopadhyay"
+      ],
+      "score": 7,
+      "source": "openalex"
+    },
+    {
+      "title": "THE INDUS SCRIPT Recognition as an alphabet",
+      "doi": "https://doi.org/10.22541/au.173016191.13273490/v1",
+      "year": 2024,
+      "authors": [
+        "Mahaveer H Muhammad"
+      ],
+      "score": 5,
+      "source": "openalex"
+    },
+    {
+      "title": "Cracking the Code of the Indus Valley Civilization: A Computational Approach to Lost Knowledge",
+      "doi": "https://doi.org/10.20944/preprints202502.0699.v1",
+      "year": 2025,
+      "authors": [
+        "Florian Neukart"
+      ],
+      "score": 5,
+      "source": "openalex"
+    },
+    {
+      "title": "Iravatham Mahadevan’s Reading of Indus Script: A Critical Review",
+      "doi": "https://doi.org/10.23993/store.85246",
+      "year": 2023,
+      "authors": [
+        "C Jyothibabu"
+      ],
+      "score": 5,
+      "source": "openalex"
+    },
+    {
+      "title": "Statistical models for identifying missing and unclear signs of the Indus script",
+      "doi": "https://doi.org/10.59720/22-256",
+      "year": 2023,
+      "authors": [
+        "Varun Venkatesh",
+        "Ali Farghaly"
+      ],
+      "score": 5,
+      "source": "openalex"
+    },
+    {
+      "title": "Deciphering the Symbols: A Comprehensive Study of Iconography and Epigraphy of Indus Seals",
+      "doi": "https://doi.org/10.70670/sra.v2i2.229",
+      "year": 2024,
+      "authors": [
+        "Muzna Matloob",
+        "Shagufta Riaz",
+        "Farah Zafar",
+        "Urhamish Ansari",
+        "Aqib Ansari"
+      ],
+      "score": 5,
+      "source": "openalex"
+    },
+    {
+      "title": "Effect of Assembled Bearing Inner Ring Geometry on Subcritical Rotor Vibration",
+      "doi": null,
+      "year": 2018,
+      "authors": [
+        "Raine Viitala"
+      ],
+      "score": 5,
+      "source": "openalex"
+    },
+    {
+      "title": "THE INDUS SCRIPT: Recognition as an Alphabet",
+      "doi": "10.20944/preprints202407.1144.v1",
+      "year": null,
+      "authors": [
+        "Mahaveer H Muhammad"
+      ],
+      "score": 5,
+      "source": "crossref"
+    },
+    {
+      "title": "Binary fractions and a whole unit 'measure of value' in the seal-texts of the Indus civilization",
+      "doi": "10.31235/osf.io/qxed2",
+      "year": null,
+      "authors": [
+        "Chandra"
+      ],
+      "score": 5,
+      "source": "crossref"
+    },
+    {
+      "title": "Rerouting Connection: Hybrid Computer Vision Analysis Reveals Visual Similarity Between Indus and Tibetan-Yi Corridor Writing Systems",
+      "doi": "",
+      "year": null,
+      "authors": [
+        "Ooha Lakkadi Reddy"
+      ],
+      "score": 5,
+      "source": "arxiv"
+    },
+    {
+      "title": "<b>Predvariteťnoe soobščenie ob issledovanii proto-indijskix tekstov.</b> [Preliminary report on the investigation of the Proto-Indian script.] By Yu. V. Knorozov et al. Moskva: Institut Etnografii AN SSSR, 1965. Pp. 74. - <b>Proto-Indica: 1968.</b> Brief report on the investigation of the Proto-Indian texts. By Yu. V. Knorozov et al. Moscow: Academy of Sciences of the USSR, Institute of Ethnography, 1968. Pp. 55. - <b>Decipherment of the Proto-Dravidian inscriptions of the Indus Civilization.</b> By Asko Parpola, Seppo Koskenniemi, Simo Parpola, and Pentti Aalto. (Scandinavian Institute of Asian Studies, special publications, 1.) Copenhagen, 1969. Pp. 72. - <b>Progress in the decipherment of the Proto-Dravidian Indus script.</b> By Asko Parpola, Seppo Koskenniemi, Simo Parpola, and Pentti Aalto. (Scandinavian Institute of Asian Studies, special publications, 2.) Copenhagen, 1969. Pp. 47. - <b>Further progress in the Indus script decipherment.</b> By Asko Parpola, Seppo Koskenniemi, Simo Parpola, and Pentti Aalto. (Scandinavian Institute of Asian Studies, special publications, 3.) Copenhagen, 1970. Pp. 46.",
+      "doi": "https://doi.org/10.2307/412267",
+      "year": 1970,
+      "authors": [
+        "Arlene Zide",
+        "Kamil V. Zvelebil"
+      ],
+      "score": 4,
+      "source": "openalex"
+    },
+    {
+      "title": "How Non-Linguistic Is the Indus Sign System? A Synthetic-Baseline Scorecard",
+      "doi": null,
+      "year": 2026,
+      "authors": [
+        "Ashish Nair"
+      ],
+      "score": 4,
+      "source": "openalex"
+    },
+    {
+      "title": "Exchange networks of the Early Bronze Age Gulf: The imported ceramics from Kalba 4 (United Arab Emirates)",
+      "doi": "https://doi.org/10.1111/aae.12208",
+      "year": 2022,
+      "authors": [
+        "Daniel Eddisford"
+      ],
+      "score": 4,
+      "source": "openalex"
+    },
+    {
+      "title": "Etimologi kata pinjaman Sanskrit terpilih dalam bahasa Tamil [Etymology of selected Sanskrit loan words in Tamil]",
+      "doi": "https://doi.org/10.33306/mjssh/400",
+      "year": 2026,
+      "authors": [
+        "Kanaga Manickam"
+      ],
+      "score": 4,
+      "source": "openalex"
+    },
+    {
+      "title": "A Computational Analysis of the Indus Script: Identifying Sign Functions in Logo-Syllabic Writing Systems",
+      "doi": "https://doi.org/10.5120/ijca2025926075",
+      "year": 2025,
+      "authors": [
+        "Ruhan Khanna",
+        "Louie Lee Merriam"
+      ],
+      "score": 4,
+      "source": "openalex"
+    },
+    {
+      "title": "Statistical Analysis of the Indus Script Using n-Grams",
+      "doi": "https://doi.org/10.1371/journal.pone.0009506",
+      "year": 2010,
+      "authors": [
+        "Nisha Yadav",
+        "Hrishikesh Joglekar",
+        "Rajesh P. N. Rao",
+        "Mayank Vahia",
+        "R. Adhikari"
+      ],
+      "score": 4,
+      "source": "openalex"
+    },
+    {
+      "title": "The Indus Valley Civilization- Measurement Systems",
+      "doi": "https://doi.org/10.5281/zenodo.20097586",
+      "year": 2026,
+      "authors": [
+        "Radhakrishnan Jayaraman"
+      ],
+      "score": 4,
+      "source": "openalex"
+    },
+    {
+      "title": "Machine Learning In The Study Of Ancient Civilizations: Transforming Archaeology, Linguistics And Historical Analysis",
+      "doi": "https://doi.org/10.5281/zenodo.20112845",
+      "year": 2026,
+      "authors": [
+        "DR. Harsha T.E"
+      ],
+      "score": 4,
+      "source": "openalex"
+    },
+    {
+      "title": "Deciphering the Indus Script by Applying the Concept of Egyptian Hieroglyphics to the Depiction of Indus Signs",
+      "doi": "10.31235/osf.io/fwkxe_v1",
+      "year": null,
+      "authors": [
+        "Milind Raskar"
+      ],
+      "score": 4,
+      "source": "crossref"
+    },
+    {
+      "title": "Crossing the Indus Threshold \n&lt;div&gt;\n A Falsifiable, Corpus-Wide Functional Decipherment of the Indus Script\n&lt;/div&gt;",
+      "doi": "10.2139/ssrn.6080446",
+      "year": null,
+      "authors": [
+        "Kevin Shaw"
+      ],
+      "score": 4,
+      "source": "crossref"
+    },
+    {
+      "title": "Introducing Indus Keyboard - A first of its kind interactive tool to visualize the Indus Script in Devanagari and Brahmi",
+      "doi": "10.31235/osf.io/rmpqe_v1",
+      "year": null,
+      "authors": [
+        "Ram G Athreya",
+        "Yajna Devam"
+      ],
+      "score": 4,
+      "source": "crossref"
+    },
+    {
+      "title": "The assimilation of Dravidian loans to Konkani phonological and morphological patterns",
+      "doi": "10.1163/000000077790079789",
+      "year": 1977,
+      "authors": [
+        "Rocky V. Miranda"
+      ],
+      "score": 4,
+      "source": "crossref"
+    },
+    {
+      "title": "Bronze Age Weights from Mesopotamia, Iran &amp; Greater Indus Valley",
+      "doi": "10.23797/9783529035425",
+      "year": 2022,
+      "authors": [
+        "Enrico Ascalone"
+      ],
+      "score": 4,
+      "source": "crossref"
+    },
+    {
+      "title": "Modern Algorithms for Ancient Scripts: A Review of AI-Based Techniques in Indus Civilization Research",
+      "doi": "10.55630/kinj.2025.110201",
+      "year": 2025,
+      "authors": [
+        "M. Khan",
+        "Syed Khaldoon Khurshid",
+        "Muhammad Aslam"
+      ],
+      "score": 4,
+      "source": "semantic_scholar"
+    },
+    {
+      "title": "A Novel Approach to OCR using Image Recognition based Classification for Ancient Tamil Inscriptions in Temples",
+      "doi": "",
+      "year": null,
+      "authors": [
+        "Lalitha Giridhar",
+        "Aishwarya Dharani and",
+        "Velmathi Guruviah"
+      ],
+      "score": 4,
+      "source": "arxiv"
+    },
+    {
+      "title": "Indus wheel-like symbols: signifying solar-disc, sun-god, ruler, fire, and metallurgical meanings in wheel-shaped amulets, tablet-iconographies, seal-inscriptions, and inscribed metallic implements",
+      "doi": "https://doi.org/10.31235/osf.io/9z4ka",
+      "year": 2023,
+      "authors": [
+        "Bahata Ansumali Mukhopadhyay"
+      ],
+      "score": 3,
+      "source": "openalex"
+    },
+    {
+      "title": "A Comprehensive Bibliography of the Indus Civilization and Related Subjects and Areas",
+      "doi": null,
+      "year": 1974,
+      "authors": [
+        "Robert H. Brunswig"
+      ],
+      "score": 3,
+      "source": "openalex"
+    },
+    {
+      "title": "For a Tin Ingot: The Archaeology of Oral Interpretation",
+      "doi": "https://doi.org/10.4467/16891864epc.13.039.1456",
+      "year": 2013,
+      "authors": [
+        "Marzena Chrobak"
+      ],
+      "score": 3,
+      "source": "openalex"
+    },
+    {
+      "title": "An MRI-based articulatory characterization of Kannada coronal consonant contrasts",
+      "doi": null,
+      "year": 2020,
+      "authors": [
+        "Alexei Kochetov",
+        "Christophe Savariaux",
+        "Laurent Lamalle",
+        "Camille Noûs",
+        "Pierre Badin"
+      ],
+      "score": 3,
+      "source": "openalex"
+    },
+    {
+      "title": "Can the semasiographic/logographic Indus script answer the Dravidian question? Insights from Indus script’s gemstone related fish-signs, and Indus gemstone-word “maṇi”",
+      "doi": "https://doi.org/10.31235/osf.io/ftdzc",
+      "year": 2023,
+      "authors": [
+        "Bahata Ansumali Mukhopadhyay"
+      ],
+      "score": 3,
+      "source": "openalex"
+    },
+    {
+      "title": "Digital ergonomic assessment to enhance the physical resilience of human-centric manufacturing systems in Industry 5.0",
+      "doi": "https://doi.org/10.1016/j.jmsy.2024.09.003",
+      "year": 2024,
+      "authors": [
+        "Federica Tomelleri",
+        "Andrea Sbaragli",
+        "Francesco Picariello",
+        "Francesco Pilati"
+      ],
+      "score": 3,
+      "source": "openalex"
+    },
+    {
+      "title": "An Improved Neural Network Model Based on Inception-v3 for Oracle Bone Inscription Character Recognition",
+      "doi": "https://doi.org/10.1155/2022/7490363",
+      "year": 2022,
+      "authors": [
+        "Ziyi Guo",
+        "Zihan Zhou",
+        "Bingshuai Liu",
+        "Longquan Li",
+        "Qingju Jiao"
+      ],
+      "score": 3,
+      "source": "openalex"
+    },
+    {
+      "title": "A Generative Model for the Mycenaean Linear B Script and Its Application in Infilling Text from Ancient Tablets",
+      "doi": "https://doi.org/10.1145/3593431",
+      "year": 2023,
+      "authors": [
+        "Katerina Papavassileiou",
+        "Dimitrios Kosmopoulos",
+        "Gareth Owens"
+      ],
+      "score": 3,
+      "source": "openalex"
+    },
+    {
+      "title": "Ancient Character Recognition: A Novel Image Dataset of Shui Manuscript Characters and Classification Model",
+      "doi": "https://doi.org/10.23919/cje.2022.00.077",
+      "year": 2023,
+      "authors": [
+        "Minli Tang",
+        "Shaomin Xie",
+        "Xiangrong Liu"
+      ],
+      "score": 3,
+      "source": "openalex"
+    },
+    {
+      "title": "AI-assisted literature exploration of innovative Chinese medicine formulas",
+      "doi": "https://doi.org/10.3389/fphar.2024.1347882",
+      "year": 2024,
+      "authors": [
+        "Meng‐Chi Chung",
+        "Li-Jen Su",
+        "Chien-Lin Chen",
+        "Li-Ching Wu"
+      ],
+      "score": 3,
+      "source": "openalex"
+    },
+    {
+      "title": "Interpretable machine learning comprehensive human gait deterioration analysis",
+      "doi": "https://doi.org/10.3389/fninf.2024.1451529",
+      "year": 2024,
+      "authors": [
+        "Abdullah Alharthi"
+      ],
+      "score": 3,
+      "source": "openalex"
+    },
+    {
+      "title": "Deep Learning Meets Egyptology: a Hieroglyphic Transformer for Translating Ancient Egyptian",
+      "doi": "https://doi.org/10.18653/v1/2024.ml4al-1.9",
+      "year": 2024,
+      "authors": [
+        "Mattia De Cao",
+        "Nicola De Cao",
+        "Angelo Colonna",
+        "Alessandro Lenci"
+      ],
+      "score": 3,
+      "source": "openalex"
+    },
+    {
+      "title": "Quantifying Character Similarity with Vision Transformers",
+      "doi": "https://doi.org/10.18653/v1/2023.emnlp-main.863",
+      "year": 2023,
+      "authors": [
+        "Xinmei Yang",
+        "Abhishek Arora",
+        "Shao-Yu Jheng",
+        "Melissa Dell"
+      ],
+      "score": 3,
+      "source": "openalex"
+    },
+    {
+      "title": "Deep Learning Methods for Ancient Arabic Handwritten Script Recognition: A Review of Challenges and Approaches",
+      "doi": "https://doi.org/10.31449/inf.v49i28.8920",
+      "year": 2025,
+      "authors": [
+        "Aya Bouchantouf",
+        "Nidal Lamghari"
+      ],
+      "score": 3,
+      "source": "openalex"
+    }
+  ],
+  "actionable_findings": {
+    "sign_reading_proposals": {
+      "count": 1,
+      "papers": [
+        {
+          "title": "IDENTICAL GRAPHEME WITH SHARED VALUE IN THE INDUS AND PHOENICIAN SCRIPTS Concordance of Text and Iconography on Indus Seals",
+          "doi": "10.22541/au.172416979.94159950/v1",
+          "authors": [
+            "Mahaveer H Muhammad"
+          ],
+          "year": null
+        }
+      ]
+    },
+    "meluhha_bilingual_evidence": {
+      "count": 1,
+      "papers": [
+        {
+          "title": "Meluhha",
+          "doi": "10.1002/9781444338386.wbeah24144",
+          "authors": [
+            "Harriet Crawford"
+          ],
+          "year": 2012
+        }
+      ]
+    },
+    "missing_phoneme_evidence": {
+      "count": 2,
+      "papers": [
+        {
+          "title": "Tamil liquids: An investigation into the basis of the contrast among five liquids in a dialect of Tamil",
+          "doi": "10.1017/s0025100300005387",
+          "authors": [
+            "Joyce McDonough",
+            "Keith Johnson"
+          ],
+          "year": 1997
+        },
+        {
+          "title": "Koothu and Koothar in Tamil History:  A Study Centered on Sangam Literature",
+          "doi": "10.34293/tamil.v10i2.9824",
+          "authors": [
+            "Alagiah Vimalaraj"
+          ],
+          "year": 2025
+        }
+      ]
+    },
+    "tamil_brahmi_continuity": {
+      "count": 0,
+      "papers": []
+    },
+    "dravidian_substrate": {
+      "count": 3,
+      "papers": [
+        {
+          "title": "Etimologi kata pinjaman Sanskrit terpilih dalam bahasa Tamil [Etymology of selected Sanskrit loan words in Tamil]",
+          "doi": "https://doi.org/10.33306/mjssh/400",
+          "authors": [
+            "Kanaga Manickam"
+          ],
+          "year": 2026
+        },
+        {
+          "title": "The assimilation of Dravidian loans to Konkani phonological and morphological patterns",
+          "doi": "10.1163/000000077790079789",
+          "authors": [
+            "Rocky V. Miranda"
+          ],
+          "year": 1977
+        },
+        {
+          "title": "Some areal features of the 110-item wordlist for the Indo-Aryan languages of South Odisha",
+          "doi": "https://doi.org/10.31826/jlr-2019-173-410",
+          "authors": [
+            "Anastasia Krylova"
+          ],
+          "year": 2019
+        }
+      ]
+    },
+    "commodity_trade_terms": {
+      "count": 0,
+      "papers": []
+    },
+    "computational_methods": {
+      "count": 1,
+      "papers": [
+        {
+          "title": "Neural Decipherment via Minimum-Cost Flow: from Ugaritic to Linear B",
+          "doi": "",
+          "authors": [
+            "Jiaming Luo",
+            "Yuan Cao",
+            "Regina Barzilay"
+          ],
+          "year": null
+        }
+      ]
+    },
+    "metrological_evidence": {
+      "count": 0,
+      "papers": []
+    },
+    "foreign_seal_contexts": {
+      "count": 0,
+      "papers": []
+    },
+    "name_morphology": {
+      "count": 0,
+      "papers": []
+    }
+  },
+  "verdict": "Phase 322: 231 unique papers mined from 6 sources. Actionable: 1 sign-reading proposals, 1 Meluhha bilingual evidence, 2 missing phoneme evidence, 1 computational methods. Top score: 22."
+}

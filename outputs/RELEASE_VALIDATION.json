@@ -13,7 +13,11 @@
     ],
     "holdat_token_coverage": 0.9284,
     "holdat_tokens": 7002,
-    "holdat_signs": 390
+    "holdat_signs": 390,
+    "holdat_attested_high": 185,
+    "yajnadevam_only_high": 192,
+    "non_holdat_non_yaj_high": 23,
+    "note": "400 HIGH = 185 Holdat-attested + 192 Yajnadevam-only + 23 other (0 Holdat occurrences)"
   },
   "1_discrimination": {
     "n_pinned_anchors": 400,

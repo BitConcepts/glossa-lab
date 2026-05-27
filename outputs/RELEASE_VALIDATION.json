@@ -1,0 +1,67 @@
+{
+  "anchor_state": {
+    "total_anchors": 605,
+    "confidence": {
+      "HIGH": 400,
+      "LOW": 205
+    },
+    "high_with_reading": 400,
+    "distinct_readings": 167,
+    "max_shared_reading": [
+      "kur",
+      20
+    ],
+    "holdat_token_coverage": 0.9284,
+    "holdat_tokens": 7002,
+    "holdat_signs": 390
+  },
+  "1_discrimination": {
+    "n_pinned_anchors": 400,
+    "dravidian_hit_rate": 0.5777,
+    "uniform_hit_rate": 0.0,
+    "dravidian_advantage": 0.5777,
+    "verdict": "Dravidian 57.8% vs Uniform 0.0%"
+  },
+  "2_m77_replication": {
+    "m77_tokens": 5361,
+    "m77_dravidian_rate": 0.7052,
+    "verdict": "M77 Dravidian hit rate: 70.5%"
+  },
+  "3_parpola_crosscheck": {
+    "exact": 15,
+    "partial": 1,
+    "disagree": 4,
+    "total_compared": 20,
+    "agreement_rate": 0.8,
+    "verdict": "Parpola: 15 exact + 1 partial = 80%"
+  },
+  "4_reading_entropy": {
+    "vocab": 132,
+    "h1": 5.6351,
+    "h2_conditional": 4.1105,
+    "random_h1": 7.0444,
+    "compression": 0.7999,
+    "verdict": "H2=4.11 bits (linguistic range: 2-4.5)"
+  },
+  "5_uniqueness": {
+    "total": 1670,
+    "unique": 1631,
+    "uniqueness_rate": 0.9766,
+    "verdict": "Uniqueness: 1631/1670 = 97.7%"
+  },
+  "6_phonology": {
+    "pd_inventory": 25,
+    "attested": 25,
+    "missing": [
+      "b",
+      "d",
+      "ñ",
+      "ḻ",
+      "ṉ",
+      "ṟ"
+    ],
+    "n_missing": 6,
+    "coverage_pct": 76.0,
+    "verdict": "Phonological: 19/25 = 76%"
+  }
+}

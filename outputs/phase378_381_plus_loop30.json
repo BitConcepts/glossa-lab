@@ -1,0 +1,502 @@
+{
+  "phase378": {
+    "tb_aksara_count": 42,
+    "our_readings_count": 155,
+    "overlap": 22,
+    "overlap_readings": [
+      "ci",
+      "co",
+      "i",
+      "ka",
+      "ki",
+      "ko",
+      "ku",
+      "ma",
+      "mi",
+      "mu",
+      "mā",
+      "na",
+      "ni",
+      "o",
+      "pa",
+      "po",
+      "pu",
+      "ta",
+      "tu",
+      "va",
+      "ā",
+      "ē"
+    ],
+    "matched_signs": 98,
+    "sample_matches": [
+      {
+        "sign": "M391",
+        "reading": "ka/kaṇ",
+        "tb_aksara": "ka"
+      },
+      {
+        "sign": "M328",
+        "reading": "ā/āl",
+        "tb_aksara": "ā"
+      },
+      {
+        "sign": "M089",
+        "reading": "tu/tū",
+        "tb_aksara": "tu"
+      },
+      {
+        "sign": "M048",
+        "reading": "mu/muṉ",
+        "tb_aksara": "mu"
+      },
+      {
+        "sign": "M026",
+        "reading": "mā",
+        "tb_aksara": "mā"
+      },
+      {
+        "sign": "M015",
+        "reading": "mā",
+        "tb_aksara": "mā"
+      },
+      {
+        "sign": "M049",
+        "reading": "pu",
+        "tb_aksara": "pu"
+      },
+      {
+        "sign": "M054",
+        "reading": "mi",
+        "tb_aksara": "mi"
+      },
+      {
+        "sign": "M072",
+        "reading": "mā",
+        "tb_aksara": "mā"
+      },
+      {
+        "sign": "M043",
+        "reading": "mu",
+        "tb_aksara": "mu"
+      },
+      {
+        "sign": "M064",
+        "reading": "va",
+        "tb_aksara": "va"
+      },
+      {
+        "sign": "M102",
+        "reading": "ni",
+        "tb_aksara": "ni"
+      },
+      {
+        "sign": "M272",
+        "reading": "ma",
+        "tb_aksara": "ma"
+      },
+      {
+        "sign": "M082",
+        "reading": "pa",
+        "tb_aksara": "pa"
+      },
+      {
+        "sign": "M198",
+        "reading": "co",
+        "tb_aksara": "co"
+      }
+    ],
+    "verdict": "TB transfer: 22 readings overlap with Tamil-Brahmi aksara values out of 155 distinct readings. 98 signs have TB-compatible values."
+  },
+  "phase379": {
+    "m77_distinct_signs": 64,
+    "holdat_distinct_signs": 390,
+    "crosswalk_matches": 25,
+    "top_20_rank_comparison": [
+      {
+        "rank": 1,
+        "m77": "047",
+        "m77_freq": 541,
+        "holdat": "M342",
+        "holdat_freq": 584,
+        "numeric_match": false
+      },
+      {
+        "rank": 2,
+        "m77": "740",
+        "m77_freq": 432,
+        "holdat": "M267",
+        "holdat_freq": 400,
+        "numeric_match": false
+      },
+      {
+        "rank": 3,
+        "m77": "700",
+        "m77_freq": 355,
+        "holdat": "M099",
+        "holdat_freq": 389,
+        "numeric_match": false
+      },
+      {
+        "rank": 4,
+        "m77": "874",
+        "m77_freq": 219,
+        "holdat": "M176",
+        "holdat_freq": 356,
+        "numeric_match": false
+      },
+      {
+        "rank": 5,
+        "m77": "400",
+        "m77_freq": 211,
+        "holdat": "M211",
+        "holdat_freq": 249,
+        "numeric_match": false
+      },
+      {
+        "rank": 6,
+        "m77": "520",
+        "m77_freq": 196,
+        "holdat": "M328",
+        "holdat_freq": 234,
+        "numeric_match": false
+      },
+      {
+        "rank": 7,
+        "m77": "481",
+        "m77_freq": 179,
+        "holdat": "M293",
+        "holdat_freq": 232,
+        "numeric_match": false
+      },
+      {
+        "rank": 8,
+        "m77": "692",
+        "m77_freq": 171,
+        "holdat": "M059",
+        "holdat_freq": 222,
+        "numeric_match": false
+      },
+      {
+        "rank": 9,
+        "m77": "427",
+        "m77_freq": 147,
+        "holdat": "M162",
+        "holdat_freq": 205,
+        "numeric_match": false
+      },
+      {
+        "rank": 10,
+        "m77": "861",
+        "m77_freq": 138,
+        "holdat": "M391",
+        "holdat_freq": 193,
+        "numeric_match": false
+      },
+      {
+        "rank": 11,
+        "m77": "003",
+        "m77_freq": 124,
+        "holdat": "M367",
+        "holdat_freq": 190,
+        "numeric_match": false
+      },
+      {
+        "rank": 12,
+        "m77": "820",
+        "m77_freq": 121,
+        "holdat": "M089",
+        "holdat_freq": 171,
+        "numeric_match": false
+      },
+      {
+        "rank": 13,
+        "m77": "817",
+        "m77_freq": 107,
+        "holdat": "M233",
+        "holdat_freq": 171,
+        "numeric_match": false
+      },
+      {
+        "rank": 14,
+        "m77": "858",
+        "m77_freq": 105,
+        "holdat": "M051",
+        "holdat_freq": 163,
+        "numeric_match": false
+      },
+      {
+        "rank": 15,
+        "m77": "090",
+        "m77_freq": 102,
+        "holdat": "M336",
+        "holdat_freq": 161,
+        "numeric_match": false
+      },
+      {
+        "rank": 16,
+        "m77": "045",
+        "m77_freq": 92,
+        "holdat": "M048",
+        "holdat_freq": 157,
+        "numeric_match": false
+      },
+      {
+        "rank": 17,
+        "m77": "203",
+        "m77_freq": 85,
+        "holdat": "M065",
+        "holdat_freq": 154,
+        "numeric_match": false
+      },
+      {
+        "rank": 18,
+        "m77": "034",
+        "m77_freq": 80,
+        "holdat": "M012",
+        "holdat_freq": 143,
+        "numeric_match": false
+      },
+      {
+        "rank": 19,
+        "m77": "920",
+        "m77_freq": 76,
+        "holdat": "M125",
+        "holdat_freq": 132,
+        "numeric_match": false
+      },
+      {
+        "rank": 20,
+        "m77": "256",
+        "m77_freq": 73,
+        "holdat": "M087",
+        "holdat_freq": 130,
+        "numeric_match": false
+      }
+    ],
+    "n_rank_numeric_match": 0,
+    "verdict": "M77 crosswalk: 25 direct numeric matches. Top-20 rank: 0/20 match numerically. M77 has 64 distinct signs vs Holdat 390."
+  },
+  "phase380": {
+    "su_signs": 7,
+    "i_signs": 92,
+    "li_signs": 18,
+    "n_candidates": 15,
+    "top_10": [
+      {
+        "id": "M-0088",
+        "signs": [
+          "M065",
+          "M267",
+          "M099",
+          "M125",
+          "M087",
+          "M305"
+        ],
+        "readings": [
+          "kuTam",
+          "iN/in (genitive of)",
+          "kol/koḷ",
+          "vil",
+          "veL",
+          "ōṭu/comitative"
+        ],
+        "score": 4,
+        "motif": "script only",
+        "site": "Mohenjo-daro"
+      },
+      {
+        "id": "BN-0013",
+        "signs": [
+          "M006",
+          "M281",
+          "M305"
+        ],
+        "readings": [
+          "puli",
+          "piLLai",
+          "ōṭu/comitative"
+        ],
+        "score": 4,
+        "motif": "rhinoceros",
+        "site": "Banawali"
+      },
+      {
+        "id": "H-0114",
+        "signs": [
+          "M008",
+          "M051",
+          "M198",
+          "M089",
+          "M305"
+        ],
+        "readings": [
+          "erumai",
+          "pū/puḷ",
+          "co",
+          "tu/tū",
+          "ōṭu/comitative"
+        ],
+        "score": 4,
+        "motif": "elephant",
+        "site": "Harappa"
+      },
+      {
+        "id": "M-0136",
+        "signs": [
+          "M006",
+          "M347",
+          "M211",
+          "M342",
+          "M305"
+        ],
+        "readings": [
+          "puli",
+          "ka",
+          "kol",
+          "ay/ā",
+          "ōṭu/comitative"
+        ],
+        "score": 4,
+        "motif": "elephant",
+        "site": "Mohenjo-daro"
+      },
+      {
+        "id": "DK-0026",
+        "signs": [
+          "M033",
+          "M267",
+          "M305"
+        ],
+        "readings": [
+          "puli",
+          "iN/in (genitive of)",
+          "ōṭu/comitative"
+        ],
+        "score": 4,
+        "motif": "unicorn",
+        "site": "Dholavira"
+      },
+      {
+        "id": "M-0176",
+        "signs": [
+          "M059",
+          "M162",
+          "M125",
+          "M305"
+        ],
+        "readings": [
+          "ēḷ/eḷ",
+          "il/iḷ",
+          "vil",
+          "ōṭu/comitative"
+        ],
+        "score": 4,
+        "motif": "unicorn",
+        "site": "Mohenjo-daro"
+      },
+      {
+        "id": "H-0240",
+        "signs": [
+          "M014",
+          "M048",
+          "M162",
+          "M342",
+          "M367",
+          "M305"
+        ],
+        "readings": [
+          "tiru",
+          "mu/muṉ",
+          "il/iḷ",
+          "ay/ā",
+          "am/neuter",
+          "ōṭu/comitative"
+        ],
+        "score": 4,
+        "motif": "script only",
+        "site": "Harappa"
+      },
+      {
+        "id": "H-0243",
+        "signs": [
+          "M023",
+          "M048",
+          "M125",
+          "M211",
+          "M342",
+          "M305"
+        ],
+        "readings": [
+          "vaḷ",
+          "mu/muṉ",
+          "vil",
+          "kol",
+          "ay/ā",
+          "ōṭu/comitative"
+        ],
+        "score": 4,
+        "motif": "elephant",
+        "site": "Harappa"
+      },
+      {
+        "id": "L-0080",
+        "signs": [
+          "M328",
+          "M342",
+          "M367",
+          "M176",
+          "M162",
+          "M305"
+        ],
+        "readings": [
+          "ā/āl",
+          "ay/ā",
+          "am/neuter",
+          "an/aṇ",
+          "il/iḷ",
+          "ōṭu/comitative"
+        ],
+        "score": 4,
+        "motif": "zebu bull",
+        "site": "Lothal"
+      },
+      {
+        "id": "C-0055",
+        "signs": [
+          "M080",
+          "M125",
+          "M160",
+          "M267",
+          "M293",
+          "M305"
+        ],
+        "readings": [
+          "vēṅkai",
+          "vil",
+          "?",
+          "iN/in (genitive of)",
+          "ta",
+          "ōṭu/comitative"
+        ],
+        "score": 4,
+        "motif": "unicorn",
+        "site": "Chanhu-daro"
+      }
+    ],
+    "verdict": "Shu-ilishu: 15 candidate inscriptions match /su-i-li-su/ pattern. Top score: 4. su-signs: 7, i-signs: 92, li-signs: 18."
+  },
+  "phase381": {
+    "dedr_roots": 1740,
+    "dedr_bigrams": 28026,
+    "corpus_bigrams": 1557,
+    "dedr_coverage": 0.1569,
+    "verdict": "DEDR corpus: 1740 roots, 28026 morpheme bigrams. Corpus coverage: 15.7% of decoded bigrams match DEDR patterns."
+  },
+  "integrated_loop": {
+    "cycles": 30,
+    "papers": 973,
+    "insights": 35,
+    "new_experiments": 30,
+    "verdict": "Integrated loop: 30 cycles, 973 papers, 35 insights, 30 new experiments, 0 repeats."
+  }
+}

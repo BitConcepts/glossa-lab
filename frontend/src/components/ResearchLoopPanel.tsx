@@ -118,6 +118,8 @@ export function ResearchLoopPanel() {
   const [synthesis, setSynthesis] = useState<Synthesis | null>(null);
   const [staging, setStaging] = useState<StagingData | null>(null);
   const [showReview, setShowReview] = useState(false);
+  // Track which proposal button was last clicked so it can show Done/Retry
+  const [proposalKey, setProposalKey] = useState<string | null>(null);
 
   const fetchStatus = useCallback(async () => {
     try {
@@ -150,7 +152,12 @@ export function ResearchLoopPanel() {
     void fetchStaging();
   }, [fetchStatus, fetchLastRun, fetchStaging]);
 
-  const startLoop = async () => {
+  const startLoop = async (fromProposal?: string) => {
+    if (fromProposal) {
+      setProposalKey(fromProposal);
+    } else {
+      setProposalKey(null); // main button clears proposal tracking
+    }
     setRunning(true);
     setError(null);
     setLog([]);
@@ -312,7 +319,10 @@ export function ResearchLoopPanel() {
         <RunSummary synthesis={activeSynthesis} completedAt={lastRun?.completed_at}
           totalPapers={lastRun?.total_papers_mined ?? 0}
           totalInsights={lastRun?.total_insights ?? 0}
-          onStartLoop={() => void startLoop()} />
+          loopRunning={running}
+          loopError={error}
+          proposalKey={proposalKey}
+          onStartLoop={(key) => void startLoop(key)} />
       )}
 
       {/* ── Staging review queue ── */}
@@ -380,13 +390,17 @@ export function ResearchLoopPanel() {
 // ── Run Summary ──────────────────────────────────────────────────────────────
 
 function RunSummary({
-  synthesis, completedAt, totalPapers, totalInsights, onStartLoop,
+  synthesis, completedAt, totalPapers, totalInsights,
+  loopRunning, loopError, proposalKey, onStartLoop,
 }: {
   synthesis: Synthesis;
   completedAt?: string;
   totalPapers: number;
   totalInsights: number;
-  onStartLoop?: () => void;
+  loopRunning?: boolean;
+  loopError?: string | null;
+  proposalKey?: string | null;
+  onStartLoop?: (key: string) => void;
 }) {
   const fc = synthesis.foundation_check;
   const insightTotals = synthesis.insight_type_totals;
@@ -512,20 +526,42 @@ function RunSummary({
                   <div style={{ flex: 1, fontSize: 11, color: "#374151" }}>
                     {p.rationale}
                   </div>
-                  {/* Action button for expand_mining — start a new loop */}
-                  {isExpandMining && onStartLoop && (
-                    <button
-                      onClick={onStartLoop}
-                      style={{
-                        padding: "2px 8px", fontSize: 10, fontWeight: 700,
-                        border: "1px solid #7c3aed", borderRadius: 4,
-                        background: "#7c3aed", color: "#fff",
-                        cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0,
-                      }}
-                    >
-                      ▶ Start Loop
-                    </button>
-                  )}
+                  {/* Action button for expand_mining — tracks running/done/error */}
+                  {isExpandMining && onStartLoop && (() => {
+                    const isTracked = proposalKey === "expand_mining";
+                    const btnState = isTracked
+                      ? (loopRunning ? "running" : loopError ? "error" : "done")
+                      : "idle";
+                    if (btnState === "done") {
+                      return (
+                        <span style={{
+                          fontSize: 10, padding: "2px 7px", borderRadius: 4,
+                          background: "#dcfce7", color: "#15803d",
+                          fontWeight: 700, flexShrink: 0,
+                        }}>✓ Done</span>
+                      );
+                    }
+                    return (
+                      <button
+                        disabled={btnState === "running"}
+                        onClick={() => onStartLoop("expand_mining")}
+                        style={{
+                          padding: "2px 8px", fontSize: 10, fontWeight: 700,
+                          borderRadius: 4, whiteSpace: "nowrap", flexShrink: 0,
+                          cursor: btnState === "running" ? "default" : "pointer",
+                          border: btnState === "error" ? "1px solid #dc2626" : "1px solid #7c3aed",
+                          background: btnState === "running" ? "#f3f4f6"
+                            : btnState === "error" ? "#fef2f2" : "#7c3aed",
+                          color: btnState === "running" ? "#9ca3af"
+                            : btnState === "error" ? "#dc2626" : "#fff",
+                        }}
+                      >
+                        {btnState === "running" ? "⏳…"
+                          : btnState === "error" ? "✕ Retry"
+                          : "▶ Start Loop"}
+                      </button>
+                    );
+                  })()}
                   {/* Action button for review_candidates — scroll to review queue */}
                   {isReviewCandidates && (
                     <span style={{

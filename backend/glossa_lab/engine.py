@@ -12,6 +12,7 @@ import importlib
 import logging
 import os as _os_eng
 import pkgutil
+import time as _time_mod
 import traceback
 from datetime import datetime, timezone
 from pathlib import Path
@@ -30,6 +31,83 @@ logger = logging.getLogger(__name__)
 _JOB_STALL_TIMEOUT_SECONDS = int(
     _os_eng.environ.get("GLOSSA_JOB_STALL_TIMEOUT_SECONDS", "1800")  # 30 min default
 )
+
+# ── Resource-aware scheduling thresholds ──────────────────────────────────────
+# All overridable via environment variables.
+_CPU_MAX_PCT     = float(_os_eng.environ.get("GLOSSA_CPU_MAX_PCT",      "85"))   # %
+_RAM_MIN_FREE_GB = float(_os_eng.environ.get("GLOSSA_RAM_MIN_FREE_GB",  "1.0"))  # GB
+_VRAM_MIN_FREE_GB = float(_os_eng.environ.get("GLOSSA_VRAM_MIN_FREE_GB", "2.5")) # GB
+
+# Pipelines that may use GPU (checked for VRAM in addition to CPU/RAM)
+_GPU_PIPELINES = frozenset({"decipher", "distributional_decipherment"})
+
+# Anti-spam: log resource-wait messages at most once per N seconds
+_RESOURCE_LOG_INTERVAL_SEC = 60.0
+_last_resource_log: dict[str, float] = {}  # job_id -> last log timestamp
+
+
+def _get_system_resources() -> tuple[float, float, float | None]:
+    """Return (cpu_pct, ram_free_gb, vram_free_gb).
+
+    vram_free_gb is None when CUDA is unavailable.
+    cpu_pct uses a 0.2 s sampling window to get a meaningful read.
+    All failures are swallowed — returns safe defaults so a missing
+    dependency never blocks job dispatch.
+    """
+    cpu_pct: float = 0.0
+    ram_free_gb: float = 999.0
+    vram_free_gb: float | None = None
+
+    try:
+        import psutil  # noqa: PLC0415
+        cpu_pct = psutil.cpu_percent(interval=0.2)
+        ram_free_gb = psutil.virtual_memory().available / 1024 ** 3
+    except Exception:  # noqa: BLE001
+        pass
+
+    try:
+        import torch  # noqa: PLC0415
+        if torch.cuda.is_available():
+            total  = torch.cuda.get_device_properties(0).total_memory
+            reserved = torch.cuda.memory_reserved(0)
+            vram_free_gb = (total - reserved) / 1024 ** 3
+    except Exception:  # noqa: BLE001
+        pass
+
+    return cpu_pct, ram_free_gb, vram_free_gb
+
+
+def _check_resources_for_job(
+    job: dict[str, Any],
+    cpu_pct: float,
+    ram_free_gb: float,
+    vram_free_gb: float | None,
+) -> tuple[bool, str]:
+    """Return (ok, reason).  ok=True means resources are sufficient."""
+    if cpu_pct > _CPU_MAX_PCT:
+        return False, (
+            f"CPU at {cpu_pct:.0f}% (threshold {_CPU_MAX_PCT:.0f}%). "
+            "Waiting for CPU to free up."
+        )
+    if ram_free_gb < _RAM_MIN_FREE_GB:
+        return False, (
+            f"RAM only {ram_free_gb:.1f} GB free (need {_RAM_MIN_FREE_GB:.1f} GB). "
+            "Waiting for RAM."
+        )
+    # GPU check: pipeline-level GPU flag OR explicit compute_device param
+    needs_gpu = (
+        job.get("pipeline") in _GPU_PIPELINES
+        or (job.get("params") or {}).get("compute_device") == "gpu"
+    )
+    if needs_gpu:
+        if vram_free_gb is None:
+            return False, "Job requires GPU but CUDA is not available on this machine."
+        if vram_free_gb < _VRAM_MIN_FREE_GB:
+            return False, (
+                f"VRAM only {vram_free_gb:.1f} GB free (need {_VRAM_MIN_FREE_GB:.1f} GB). "
+                "Waiting for GPU to free up."
+            )
+    return True, ""
 
 # Pipeline registry — maps pipeline name to callable
 _PIPELINES: dict[str, Any] = {}
@@ -75,14 +153,67 @@ async def _run_job(job: dict[str, Any]) -> dict[str, Any]:
 
 
 async def _process_one() -> bool:
-    """Try to claim and process one pending job. Returns True if work was done."""
+    """Try to claim and process one pending job. Returns True if work was done.
+
+    Resource-aware: peeks at the next pending job first, checks CPU/RAM/VRAM
+    against configured thresholds, and defers (returns False without claiming)
+    when resources are insufficient.  The engine loop will sleep poll_interval
+    and retry, keeping the job in 'pending' until the machine is ready.
+    """
     db = get_db()
     if db is None:
         return False
 
+    # Peek first (no claim) so we can run a resource check before committing.
+    next_job = await db.peek_next_pending_job()
+    if next_job is None:
+        return False
+
+    # Resource gate
+    cpu_pct, ram_free_gb, vram_free_gb = _get_system_resources()
+    ok, reason = _check_resources_for_job(next_job, cpu_pct, ram_free_gb, vram_free_gb)
+    if not ok:
+        jid = next_job["id"]
+        now = _time_mod.monotonic()
+        last = _last_resource_log.get(jid, 0.0)
+        if now - last >= _RESOURCE_LOG_INTERVAL_SEC:
+            logger.warning(
+                "Job %s ('%s') deferred — %s [CPU=%.0f%% RAM=%.1fGB VRAM=%s]",
+                jid,
+                next_job.get("name", ""),
+                reason,
+                cpu_pct,
+                ram_free_gb,
+                f"{vram_free_gb:.1f}GB" if vram_free_gb is not None else "N/A",
+            )
+            _last_resource_log[jid] = now
+            # Stamp the job params with the current wait reason so the Jobs
+            # panel can display it without re-querying system metrics.
+            try:
+                await db._conn.execute(  # noqa: SLF001
+                    "UPDATE jobs SET params = json_set(params, '$.resource_wait', ?) "
+                    "WHERE id = ?",
+                    (reason[:200], jid),
+                )
+                await db._conn.commit()  # noqa: SLF001
+            except Exception:  # noqa: BLE001
+                pass
+        return False  # leave the job pending; caller sleeps and retries
+
+    # Resources look good — clear any previous wait reason and claim the job.
+    try:
+        await db._conn.execute(  # noqa: SLF001
+            "UPDATE jobs SET params = json_remove(params, '$.resource_wait') WHERE id = ?",
+            (next_job["id"],),
+        )
+        await db._conn.commit()  # noqa: SLF001
+    except Exception:  # noqa: BLE001
+        pass
+    _last_resource_log.pop(next_job["id"], None)
+
     job = await db.claim_pending_job()
     if job is None:
-        return False
+        return False  # claimed between peek and claim (race) — harmless
 
     job_id = job["id"]
     logger.info("Running job %s (pipeline=%s)", job_id, job["pipeline"])

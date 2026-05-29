@@ -108,15 +108,17 @@ TEMPLATE_TO_GRAPH: dict[str, str] = {
     "motif_title_correlation":    "positional_profile_analysis",
     "suffix_chain_depth":         "bigram_analysis",
     "reading_frequency_zipf":     "indus_structural_atlas",
-    "compound_semantic_coherence": "kl_comparison",
+    # kl_comparison requires two pre-built freq_maps wired as graph inputs;
+    # remapped to working equivalents that operate on the corpus directly.
+    "compound_semantic_coherence": "positional_profile_analysis",
     "blocker_sign_context":       "bigram_analysis",
     "inscription_uniqueness":     "indus_structural_atlas",
     "position_entropy_by_site":   "positional_profile_analysis",
     "title_root_suffix_trigram":  "bigram_analysis",
-    "motif_reading_mutual_info":  "kl_comparison",
+    "motif_reading_mutual_info":  "positional_profile_analysis",
     "decoded_text_repetition":    "bigram_analysis",
     "rare_sign_neighbor_profile": "positional_profile_analysis",
-    "compound_vs_formula":        "kl_comparison",
+    "compound_vs_formula":        "bigram_analysis",
     "suffix_after_animal":        "positional_profile_analysis",
     "cross_site_formula_overlap": "bigram_analysis",
 }
@@ -208,9 +210,11 @@ INSIGHT_TO_EXPERIMENTS: dict[str, list[str]] = {
 class ResearchLoop:
     """Stateful research loop that yields cycle results.
 
-    Phase 7: When *db* is provided, ``all_seen`` and ``history`` are
-    loaded from the database on construction and persisted after every
-    cycle so state survives across server restarts.
+    Phase 7: When *db* is provided, ``history`` is loaded from the
+    database on construction and persisted after every cycle so
+    experiment selection state survives across server restarts.
+    ``all_seen`` is intentionally per-job only (not restored from DB)
+    so each new job run can re-mine for fresh papers.
     """
 
     def __init__(self, max_cycles: int = 15, *, db: Any | None = None):
@@ -246,14 +250,16 @@ class ResearchLoop:
             state = None
 
         if state:
-            self.all_seen = set(state.get("all_seen") or [])
+            # Intentionally do NOT restore all_seen: each job run starts
+            # with a fresh deduplication set so OpenAlex can be remined.
+            # History persists across runs to preserve experiment selection.
             self.history = list(state.get("history") or [])
             self._used_experiments = {
                 h["experiment"] for h in self.history if h.get("experiment")
             }
             logger.info(
-                "Restored research loop state: %d seen papers, %d history entries",
-                len(self.all_seen), len(self.history),
+                "Restored research loop history: %d entries (all_seen reset for fresh mining)",
+                len(self.history),
             )
 
     def _load_sync(self) -> dict | None:
@@ -264,7 +270,11 @@ class ResearchLoop:
             loop.close()
 
     def _persist_state(self) -> None:
-        """Save all_seen + history to DB (sync wrapper, best-effort)."""
+        """Save history to DB (sync wrapper, best-effort).
+
+        all_seen is intentionally NOT persisted: it is per-job only so
+        each new run can re-mine OpenAlex for fresh papers.
+        """
         if self._db is None:
             return
         try:
@@ -275,7 +285,7 @@ class ResearchLoop:
                     pool.submit(self._save_sync).result(timeout=5)
             else:
                 loop.run_until_complete(self._db.save_research_loop_state(
-                    all_seen=list(self.all_seen),
+                    all_seen=[],
                     history=self.history,
                 ))
         except Exception as exc:
@@ -285,7 +295,7 @@ class ResearchLoop:
         loop = asyncio.new_event_loop()
         try:
             loop.run_until_complete(self._db.save_research_loop_state(
-                all_seen=list(self.all_seen),
+                all_seen=[],
                 history=self.history,
             ))
         finally:
@@ -343,6 +353,8 @@ class ResearchLoop:
         """
         self.running = True
         self.should_stop = False
+        _dry_streak = 0
+        _MAX_DRY_STREAK = 3  # stop early if query pool is exhausted
 
         for cycle in range(1, self.max_cycles + 1):
             if self.should_stop:
@@ -352,6 +364,19 @@ class ResearchLoop:
 
             # 1. MINE
             papers, insights = self._mine(gap)
+
+            # Early exit: if we keep hitting an empty query pool, stop.
+            if not papers:
+                _dry_streak += 1
+                if _dry_streak >= _MAX_DRY_STREAK:
+                    logger.warning(
+                        "Research loop: %d consecutive dry cycles — query pool exhausted. "
+                        "Stopping after %d/%d cycles.",
+                        _dry_streak, cycle, self.max_cycles,
+                    )
+                    break
+            else:
+                _dry_streak = 0
 
             # 2. Phase 6: select experiment based on insights
             template = self._select_experiment(insights, cycle)

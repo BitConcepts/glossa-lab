@@ -332,6 +332,18 @@ export const cancelJob = (id: string): Promise<JobResponse> =>
 export const clearJobs = (finishedOnly = false): Promise<{ cleared: number }> =>
   request("DELETE", finishedOnly ? "/jobs?finished_only=true" : "/jobs");
 
+export const pauseJob = (id: string): Promise<JobResponse> =>
+  request("POST", `/jobs/${id}/pause`);
+
+export const resumeJob = (id: string): Promise<JobResponse> =>
+  request("POST", `/jobs/${id}/resume`);
+
+export const pauseAllJobs = (): Promise<{ paused: number }> =>
+  request("POST", "/jobs/pause-all");
+
+export const resumeAllJobs = (): Promise<{ resumed: number }> =>
+  request("POST", "/jobs/resume-all");
+
 // ── Results ───────────────────────────────────────────────────────────
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

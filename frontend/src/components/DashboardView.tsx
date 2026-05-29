@@ -26,6 +26,7 @@ import {
   executeAiAction,
   getDashboardHighlights,
   getHealth,
+  getLatestInsight,
   listExperiments,
   listGraphExperiments,
   regenerateDashboardInsight,
@@ -73,15 +74,6 @@ function _loadPersistedInsight(): PersistedInsight | null {
 }
 function _savePersistedInsight(p: PersistedInsight): void {
   try { localStorage.setItem(INSIGHT_LS_KEY, JSON.stringify(p)); } catch { /* ignore */ }
-}
-
-// Mine batch-size preference (how many un-mined items to classify per click).
-const MINE_LIMIT_LS_KEY = "glossa_dashboard_mine_limit";
-const MINE_LIMIT_OPTIONS = [10, 25, 50, 100, 200, 500];
-const MINE_LIMIT_DEFAULT = 50;
-function _loadMineLimit(): number {
-  const raw = parseInt(localStorage.getItem(MINE_LIMIT_LS_KEY) ?? "", 10);
-  return MINE_LIMIT_OPTIONS.includes(raw) ? raw : MINE_LIMIT_DEFAULT;
 }
 
 const KIND_COLOURS: Record<string, { bg: string; fg: string }> = {
@@ -154,15 +146,7 @@ export function DashboardView() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [days, setDays] = useState(14);
-  const [running, setRunning] = useState<"" | "fetch" | "mine">("");
-  const [mineDropOpen, setMineDropOpen] = useState(false);
-  // Mine batch size — persisted; controls how many un-mined items the LLM
-  // classifies per "✨ Mine N" click. Default 50.
-  const [mineLimit, setMineLimitState] = useState<number>(_loadMineLimit);
-  const setMineLimit = (n: number) => {
-    setMineLimitState(n);
-    try { localStorage.setItem(MINE_LIMIT_LS_KEY, String(n)); } catch { /* ignore */ }
-  };
+  const [fetching, setFetching] = useState(false);
   // Per-button completion state for Apply / Run buttons. Persisted in
   // localStorage alongside the insight so completed actions survive reloads.
   type ApplyResult = "success" | "error" | "warn";
@@ -222,6 +206,12 @@ export function DashboardView() {
     }
   }, [days, projectId, toast, setApplyResult]);
 
+  // Auto-refresh dashboard data every 30 s
+  useEffect(() => {
+    const id = setInterval(() => void refresh(), 30_000);
+    return () => clearInterval(id);
+  }, [refresh]);
+
   useEffect(() => { void refresh(); }, [refresh]);
 
   // Auto-generate insight policy.
@@ -257,42 +247,55 @@ export function DashboardView() {
     if (data.n_items > 0) {
       void generateInsight();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
+  // When a research loop completes (dispatched by ResearchLoopPanel),
+  // pull the latest cached insight from the backend WITHOUT re-running the LLM.
+  useEffect(() => {
+    const handler = async () => {
+      try {
+        const result = await getLatestInsight();
+        if (result.available && result.insight &&
+            result.generated_at * 1000 > insightGeneratedAt) {
+          setInsight(result.insight);
+          const genMs = Math.round(result.generated_at * 1000);
+          setInsightGeneratedAt(genMs);
+          try {
+            const h = await getHealth();
+            const bootAt = Math.round((Date.now() - h.uptime_seconds * 1000) / 1000) * 1000;
+            _savePersistedInsight({
+              insight: result.insight, generated_at: genMs,
+              backend_boot_at: bootAt, days,
+            });
+          } catch {
+            _savePersistedInsight({
+              insight: result.insight, generated_at: genMs,
+              backend_boot_at: 0, days,
+            });
+          }
+          setApplyResult({});
+        }
+      } catch { /* ignore — backend may not have insight yet */ }
+      void refresh();
+    };
+    window.addEventListener("glossa:loop-complete", handler);
+    return () => window.removeEventListener("glossa:loop-complete", handler);
+  }, [insightGeneratedAt, refresh, days, setApplyResult]);
+
   const onRunFetch = async () => {
-    setRunning("fetch");
+    setFetching(true);
     try {
       await startDiscoveryFetch({});
-      toast(`Fetch started · will regenerate insight when complete`, "info");
+      toast("Fetch started — insight will refresh when complete", "info");
     } catch (e) {
       toast(e instanceof Error ? e.message : "Fetch failed", "error");
-      setRunning("");
-      return;
-    }
-    // Per the spec: Fetch Now → always followed by an Insight regen so the
-    // Dashboard reflects the new items. We give the backend a moment to
-    // ingest+mine the items before asking the LLM to summarise.
-    setTimeout(() => {
-      void refresh();
-      void generateInsight();
-      setRunning("");
-    }, 1500);
-  };
-
-  const onRunMine = async () => {
-    setRunning("mine");
-    try {
-      await startDiscoveryMine({ limit: mineLimit });
-      toast(
-        `Mine started · classifying up to ${mineLimit} items`,
-        "info",
-      );
-    } catch (e) {
-      toast(e instanceof Error ? e.message : "Mine failed", "error");
     } finally {
-      setRunning("");
-      void refresh();
+      setTimeout(() => {
+        void refresh();
+        void generateInsight();
+        setFetching(false);
+      }, 1500);
     }
   };
 
@@ -709,82 +712,33 @@ export function DashboardView() {
         <div style={{ flex: 1, minWidth: 240 }}>
           <h2 style={{ margin: 0, fontSize: 22, color: "#111827" }}>📊 Dashboard</h2>
           <p style={{ margin: "4px 0 0", fontSize: 13, color: "#6b7280" }}>
-            What&rsquo;s new, what it means, and what to do about it. Highlights
-            are pulled from the last {days} days of your discovery feed; AI
-            insight tells you how new findings might shift your studies and
-            experiments.
+            What&rsquo;s new, what it means, and what to do about it.
+            Refreshes every 30 s. Fetch and insight regeneration happen
+            automatically after research loop runs.
           </p>
         </div>
-        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+        <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
           <select value={days} onChange={(e) => setDays(parseInt(e.target.value, 10))}
             style={selectStyle}>
             {[7, 14, 30, 60, 90].map((d) => (
               <option key={d} value={d}>last {d} days</option>
             ))}
           </select>
-          <button onClick={() => void refresh()} disabled={loading} style={btnGhost}>
-            {loading ? "…" : "⟳ Reload"}
+          {/* Small fetch icon — fetch is automated; this is a manual override */}
+          <button
+            onClick={() => void onRunFetch()}
+            disabled={fetching || loading}
+            title="Manually fetch new items from all configured discovery sources. Runs automatically on startup and before each research loop."
+            style={{
+              padding: "5px 8px", border: "1px solid #d1d5db", borderRadius: 5,
+              background: fetching ? "#eff6ff" : "#fff",
+              color: fetching ? "#2563eb" : "#6b7280",
+              fontSize: 13, cursor: fetching ? "default" : "pointer",
+              lineHeight: 1,
+            }}
+          >
+            {fetching ? "⏳" : "📡"}
           </button>
-          <button onClick={() => void onRunFetch()} disabled={!!running} style={btnPrimary}
-            title="Pull new items from every configured source for every topic. Insight regenerates automatically when fetch completes.">
-            {running === "fetch" ? "⏳ Fetching…" : "▶ Fetch now"}
-          </button>
-          {/* Split Mine button: main click runs at current limit; ▾ opens
-              a dropdown to pick a different limit before running. */}
-          <div style={{ position: "relative", display: "inline-flex" }}
-            title={
-              "Mine = ask the LLM to read the next N un-mined items and assign "
-              + "each one a kind (study / hypothesis / finding / tablet / review / "
-              + "tooling / other), confidence score, short summary, and any extracted "
-              + "entity/provider links."
-            }>
-            <button onClick={() => void onRunMine()} disabled={!!running} style={{
-              ...btnAccent, borderTopRightRadius: 0, borderBottomRightRadius: 0,
-              paddingRight: 10,
-            }}>
-              {running === "mine" ? "⏳ Mining…" : `✨ Mine ${mineLimit}`}
-            </button>
-            <button
-              onClick={() => setMineDropOpen((o) => !o)}
-              disabled={!!running}
-              style={{
-                ...btnAccent,
-                borderTopLeftRadius: 0, borderBottomLeftRadius: 0,
-                borderLeft: "1px solid rgba(255,255,255,0.25)",
-                padding: "6px 7px", fontSize: 9, lineHeight: 1,
-              }}>
-              ▾
-            </button>
-            {mineDropOpen && (
-              <div style={{
-                position: "absolute", top: "calc(100% + 4px)", right: 0,
-                background: "#fff", border: "1px solid #d1d5db", borderRadius: 6,
-                boxShadow: "0 4px 12px rgba(0,0,0,0.15)", zIndex: 100,
-                minWidth: 130, overflow: "hidden",
-              }}>
-                {MINE_LIMIT_OPTIONS.map((n) => (
-                  <button key={n} onClick={() => {
-                    setMineLimit(n); setMineDropOpen(false);
-                    // Run with the selected value directly — don't rely on
-                    // stale mineLimit state which hasn't re-rendered yet.
-                    setRunning("mine");
-                    startDiscoveryMine({ limit: n })
-                      .then(() => toast(`Mine started · classifying up to ${n} items`, "info"))
-                      .catch((e: unknown) => toast(e instanceof Error ? e.message : "Mine failed", "error"))
-                      .finally(() => { setRunning(""); void refresh(); });
-                  }} style={{
-                    display: "block", width: "100%", padding: "7px 14px",
-                    border: "none", background: n === mineLimit ? "#f5f3ff" : "#fff",
-                    color: "#374151", fontSize: 12, textAlign: "left",
-                    cursor: "pointer", fontWeight: n === mineLimit ? 700 : 400,
-                  }}>
-                    ✨ Mine {n}
-                    {n === mineLimit && <span style={{ color: "#7c3aed", marginLeft: 6, fontSize: 10 }}>✓</span>}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
         </div>
       </div>
 
@@ -1188,11 +1142,6 @@ const btnGhost: React.CSSProperties = {
 const btnPrimary: React.CSSProperties = {
   padding: "6px 12px", border: "1px solid #2563eb", borderRadius: 6,
   background: "#2563eb", color: "#fff", fontSize: 12, fontWeight: 600,
-  cursor: "pointer",
-};
-const btnAccent: React.CSSProperties = {
-  padding: "6px 12px", border: "1px solid #7c3aed", borderRadius: 6,
-  background: "#7c3aed", color: "#fff", fontSize: 12, fontWeight: 600,
   cursor: "pointer",
 };
 const miniBtn: React.CSSProperties = {

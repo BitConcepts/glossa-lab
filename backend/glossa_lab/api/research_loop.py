@@ -145,6 +145,33 @@ async def start_loop(
         except Exception as exc:  # noqa: BLE001
             _log.warning("Could not create job for research loop: %s", exc)
 
+    # Trigger a discovery fetch before the loop if data is stale (> 6 h).
+    # This ensures the dashboard feed has fresh items when insight regenerates.
+    if db is not None:
+        try:
+            import time as _t  # noqa: PLC0415
+            rows = await db.list_discovery_items(
+                topic=None, kind=None, status=None, since=None, limit=1, offset=0)
+            last_fetch = 0.0
+            if rows:
+                ts = rows[0].get("fetched_at", "")
+                if ts:
+                    from datetime import datetime as _dt, timezone as _tz  # noqa: PLC0415
+                    try:
+                        last_fetch = _dt.fromisoformat(
+                            ts.replace("Z", "+00:00")
+                        ).timestamp()
+                    except Exception:  # noqa: BLE001
+                        pass
+            age_hours = (_t.time() - last_fetch) / 3600 if last_fetch else 999
+            if age_hours >= 6:
+                _log.info("Research loop: fetch is %.1f h stale — triggering discovery fetch",
+                          age_hours)
+                from glossa_lab.api.discovery import fetch_endpoint, FetchRequest  # noqa: PLC0415
+                asyncio.create_task(fetch_endpoint(FetchRequest()))
+        except Exception as _exc:  # noqa: BLE001
+            _log.info("Research loop pre-fetch check failed (non-critical): %s", _exc)
+
     async def event_stream():
         """Run the loop in a thread via a queue, persist + stream per cycle."""
         queue: asyncio.Queue[dict[str, Any] | None] = asyncio.Queue()

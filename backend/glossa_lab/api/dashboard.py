@@ -30,9 +30,18 @@ from fastapi import APIRouter, Query
 
 from glossa_lab.database import get_db
 
+import time as _time
+
 router = APIRouter(prefix="/api/v1/dashboard", tags=["dashboard"])
 
 _log = logging.getLogger("glossa_lab.api.dashboard")
+
+# ── Server-side insight cache ───────────────────────────────────────────────
+# Stores the last generated insight so the frontend can poll for updates
+# without burning LLM tokens.  Written by _generate_insight(); read by
+# GET /latest-insight.  Module-level so it survives across requests.
+_LATEST_INSIGHT: dict[str, Any] | None = None
+_LATEST_INSIGHT_AT: float = 0.0  # epoch seconds
 
 
 # ── Helpers ────────────────────────────────────────────────────────────────
@@ -749,6 +758,10 @@ async def _generate_insight(
             "bucket": "reasoning",
             "is_fallback": False,
         }
+        # Cache the result so /latest-insight can return it without re-running LLM
+        global _LATEST_INSIGHT, _LATEST_INSIGHT_AT  # noqa: PLW0603
+        _LATEST_INSIGHT = parsed
+        _LATEST_INSIGHT_AT = _time.time()
         return parsed
     except Exception as exc:  # noqa: BLE001
         _log.warning("dashboard insight LLM call failed: %s", exc)
@@ -855,6 +868,24 @@ async def dashboard_insight(
             studies = []
     exp_ids = _graph_experiment_ids()
     return await _generate_insight(items, studies, exp_ids, project=project)
+
+
+@router.get("/latest-insight")
+async def latest_insight() -> dict[str, Any]:
+    """Return the most recently generated AI insight without running the LLM.
+
+    Used by the frontend to detect when a background insight generation
+    (e.g. triggered by the research loop) has completed.  The response
+    includes ``generated_at`` (epoch seconds) so the client can compare
+    against its own cached timestamp and update only when newer.
+    """
+    if _LATEST_INSIGHT is None:
+        return {"available": False, "generated_at": 0.0, "insight": None}
+    return {
+        "available": True,
+        "generated_at": _LATEST_INSIGHT_AT,
+        "insight": _LATEST_INSIGHT,
+    }
 
 
 @router.get("/feed")

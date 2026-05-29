@@ -105,6 +105,16 @@ def _graph_experiment_ids() -> list[str]:
         return []
 
 
+def _atomic_node_count() -> int:
+    """Return count of registered atomic experiment nodes."""
+    try:
+        from glossa_lab.experiment_graph import ATOMIC_NODES  # noqa: PLC0415
+
+        return len(ATOMIC_NODES)
+    except Exception:  # noqa: BLE001
+        return 0
+
+
 def _graph_experiment_id_name_map() -> dict[str, str]:
     """Return {id: name} for graph experiments — used to give the LLM human-readable labels."""
     try:
@@ -812,6 +822,7 @@ async def dashboard_highlights(
         "by_source": _tally(items, "source"),
         "n_studies":     len(studies),
         "n_experiments": len(exp_ids),
+        "n_atomic_nodes": _atomic_node_count(),
         "n_hypotheses":  n_hypotheses,
         "since_days":    days,
         "project_id":    project["id"] if project else None,

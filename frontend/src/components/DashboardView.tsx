@@ -43,6 +43,7 @@ import { useAIChat } from "../hooks/useAIChat";
 import { useProject } from "../hooks/useProject";
 import { useToast } from "../hooks/useToast";
 import { DeciphermentPanel } from "./DeciphermentPanel";
+import { ResearchLoopPanel } from "./ResearchLoopPanel";
 
 // ── Insight persistence ──────────────────────────────────────────────────
 // Insights are expensive to regenerate (LLM call). We cache the last result
@@ -814,6 +815,9 @@ export function DashboardView() {
 
       {/* Decipherment Progress Panel */}
       <DeciphermentPanel />
+
+      {/* Integrated Research Loop */}
+      <ResearchLoopPanel />
 
       {/* Two-column main: AI insight (left) + RSS feed (right) */}
       <div style={{ display: "grid", gap: 14, marginBottom: 16,

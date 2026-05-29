@@ -77,9 +77,9 @@ async def start_loop(
                 pipeline="research_loop",
                 params={"max_cycles": max_cycles},
                 created_at=now,
+                initial_status="running",  # skip 'pending' so engine never claims it
             )
             job_id = job["id"]
-            await db.update_job_status(job_id, "running")
         except Exception as exc:  # noqa: BLE001
             _log.warning("Could not create job for research loop: %s", exc)
 

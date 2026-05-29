@@ -63,7 +63,7 @@ interface AnchorCandidate {
   dedr_support?: string;
   source_experiment: string;
   conflict?: string;
-  review_status: "staged" | "blocked";
+  review_status: "staged" | "blocked" | "approved" | "rejected";
   neighbor_reading?: string;
   neighbor_count?: number;
   corpus_freq?: number;
@@ -102,6 +102,12 @@ interface LoopStatus {
   history: CycleEntry[];
 }
 
+interface StagingData {
+  candidates: AnchorCandidate[];
+  counts: { total: number; staged: number; approved: number; rejected: number };
+  error?: string;
+}
+
 export function ResearchLoopPanel() {
   const [, setStatus] = useState<LoopStatus | null>(null);
   const [running, setRunning] = useState(false);
@@ -110,6 +116,8 @@ export function ResearchLoopPanel() {
   const [error, setError] = useState<string | null>(null);
   const [lastRun, setLastRun] = useState<LastRun | null>(null);
   const [synthesis, setSynthesis] = useState<Synthesis | null>(null);
+  const [staging, setStaging] = useState<StagingData | null>(null);
+  const [showReview, setShowReview] = useState(false);
 
   const fetchStatus = useCallback(async () => {
     try {
@@ -129,10 +137,18 @@ export function ResearchLoopPanel() {
     } catch { /* ignore */ }
   }, []);
 
+  const fetchStaging = useCallback(async () => {
+    try {
+      const res = await fetch(`${BASE}/staging`);
+      if (res.ok) setStaging(await res.json() as StagingData);
+    } catch { /* ignore */ }
+  }, []);
+
   useEffect(() => {
     void fetchStatus();
     void fetchLastRun();
-  }, [fetchStatus, fetchLastRun]);
+    void fetchStaging();
+  }, [fetchStatus, fetchLastRun, fetchStaging]);
 
   const startLoop = async () => {
     setRunning(true);
@@ -165,6 +181,7 @@ export function ResearchLoopPanel() {
                 if (event.synthesis) setSynthesis(event.synthesis);
                 void fetchStatus();
                 void fetchLastRun();
+                void fetchStaging();
               } else if (event.cycle) {
                 setLog((prev) => [...prev, event as CycleEntry]);
               }
@@ -293,6 +310,49 @@ export function ResearchLoopPanel() {
         <RunSummary synthesis={activeSynthesis} completedAt={lastRun?.completed_at}
           totalPapers={lastRun?.total_papers_mined ?? 0}
           totalInsights={lastRun?.total_insights ?? 0} />
+      )}
+
+      {/* ── Staging review queue ── */}
+      {(staging?.counts.staged ?? 0) > 0 && staging && (
+        <div style={{ marginTop: 8 }}>
+          <button
+            onClick={() => setShowReview((v) => !v)}
+            style={{
+              width: "100%", padding: "7px 12px",
+              border: "1px solid #f59e0b", borderRadius: 6,
+              background: showReview ? "#fef3c7" : "#fffbeb",
+              color: "#92400e", fontSize: 12, fontWeight: 700,
+              cursor: "pointer", textAlign: "left",
+              display: "flex", justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <span>
+              📎 {staging.counts.staged} candidate{staging.counts.staged !== 1 ? "s" : ""} awaiting review
+              {staging.counts.approved > 0 && (
+                <span style={{ marginLeft: 8, color: "#15803d" }}>
+                  ✓ {staging.counts.approved} approved
+                </span>
+              )}
+            </span>
+            <span style={{ fontSize: 11, fontWeight: 400 }}>
+              {showReview ? "Hide ▲" : "Review ▼"}
+            </span>
+          </button>
+          {showReview && staging && (
+            <StagingReview
+              staging={staging}
+              onAction={async (sign, reading, action, reason) => {
+                const res = await fetch(`${BASE}/staging/action`, {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ sign, proposed_reading: reading, action, reason }),
+                });
+                if (res.ok) void fetchStaging();
+              }}
+            />
+          )}
+        </div>
       )}
 
       {/* ── Fallback: no run yet ── */}
@@ -611,6 +671,249 @@ function MetricTile({ label, value }: { label: string; value: number }) {
         {value.toLocaleString()}
       </div>
       <div style={{ fontSize: 10, color: "#6b7280" }}>{label}</div>
+    </div>
+  );
+}
+
+// ── Staging Review Queue ───────────────────────────────────────────────────
+
+function StagingReview({
+  staging,
+  onAction,
+}: {
+  staging: StagingData;
+  onAction: (sign: string, reading: string,
+             action: "approve" | "reject" | "delete",
+             reason?: string) => Promise<void>;
+}) {
+  const [confirming, setConfirming] = useState<{
+    sign: string; reading: string; action: "approve" | "reject" | "delete";
+  } | null>(null);
+  const [rejectReason, setRejectReason] = useState("");
+  const [busy, setBusy] = useState(false);
+
+  const stagedCandidates = staging.candidates.filter(
+    (c) => c.review_status === "staged");
+  const approvedCandidates = staging.candidates.filter(
+    (c) => c.review_status === "approved");
+
+  const doAction = async (
+    sign: string, reading: string,
+    action: "approve" | "reject" | "delete",
+    reason?: string,
+  ) => {
+    setBusy(true);
+    try {
+      await onAction(sign, reading, action, reason);
+    } finally {
+      setBusy(false);
+      setConfirming(null);
+      setRejectReason("");
+    }
+  };
+
+  return (
+    <div style={{ border: "1px solid #fed7aa", borderRadius: 6,
+                  background: "#fff", marginTop: 6, overflow: "hidden" }}>
+
+      {/* Column header */}
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "60px 72px 1fr 100px 90px 100px",
+        gap: 6, padding: "5px 10px",
+        background: "#fef3c7", fontSize: 10,
+        fontWeight: 700, color: "#78350f",
+        borderBottom: "1px solid #fed7aa",
+      }}>
+        <span>Sign</span>
+        <span>Reading</span>
+        <span>Evidence</span>
+        <span>Type</span>
+        <span>Score</span>
+        <span>Actions</span>
+      </div>
+
+      {/* Staged candidates */}
+      {stagedCandidates.length === 0 ? (
+        <div style={{ padding: "10px", fontSize: 11, color: "#9ca3af",
+                      textAlign: "center" }}>
+          All candidates have been reviewed.
+        </div>
+      ) : (
+        stagedCandidates.map((c, i) => (
+          <div key={i}>
+            <div style={{
+              display: "grid",
+              gridTemplateColumns: "60px 72px 1fr 100px 90px 100px",
+              gap: 6, padding: "7px 10px",
+              borderBottom: "1px solid #f3f4f6",
+              fontSize: 11, alignItems: "center",
+              background: confirming?.sign === c.sign &&
+                          confirming?.reading === c.proposed_reading
+                ? "#fef9c3" : "#fff",
+            }}>
+              <span style={{ fontWeight: 700, fontFamily: "monospace",
+                              color: "#374151" }}>
+                {c.sign}
+              </span>
+              <span style={{ fontWeight: 600, color: "#5b21b6" }}>
+                {c.proposed_reading}
+              </span>
+              <span style={{ color: "#6b7280", overflow: "hidden",
+                              textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                {c.dedr_support
+                  ? <>◆ DEDR: <em>{c.dedr_support.slice(0, 35)}</em></>
+                  : c.evidence_type.replace(/_/g, " ")}
+              </span>
+              <span style={{ fontSize: 10, color: "#6b7280",
+                              overflow: "hidden", textOverflow: "ellipsis",
+                              whiteSpace: "nowrap" }}>
+                {c.evidence_type.replace(/_/g, " ").slice(0, 20)}
+              </span>
+              <span style={{ fontSize: 11, fontWeight: 600,
+                              color: c.evidence_score >= 0.5 ? "#15803d" : "#6b7280" }}>
+                {(c.evidence_score * 100).toFixed(0)}%
+              </span>
+              <div style={{ display: "flex", gap: 4 }}>
+                <button
+                  disabled={busy}
+                  onClick={() => setConfirming(
+                    { sign: c.sign, reading: c.proposed_reading, action: "approve" })}
+                  style={{
+                    padding: "2px 7px", fontSize: 10, fontWeight: 700,
+                    border: "1px solid #16a34a", borderRadius: 4,
+                    background: "#dcfce7", color: "#15803d",
+                    cursor: busy ? "default" : "pointer",
+                  }}
+                >
+                  ✔ Approve
+                </button>
+                <button
+                  disabled={busy}
+                  onClick={() => setConfirming(
+                    { sign: c.sign, reading: c.proposed_reading, action: "reject" })}
+                  style={{
+                    padding: "2px 7px", fontSize: 10, fontWeight: 700,
+                    border: "1px solid #dc2626", borderRadius: 4,
+                    background: "#fef2f2", color: "#dc2626",
+                    cursor: busy ? "default" : "pointer",
+                  }}
+                >
+                  ✕ Reject
+                </button>
+                <button
+                  disabled={busy}
+                  onClick={() => void doAction(c.sign, c.proposed_reading, "delete")}
+                  title="Remove from queue (no audit trail)"
+                  style={{
+                    padding: "2px 6px", fontSize: 10,
+                    border: "1px solid #d1d5db", borderRadius: 4,
+                    background: "#f9fafb", color: "#6b7280",
+                    cursor: busy ? "default" : "pointer",
+                  }}
+                >
+                  Ὕ1
+                </button>
+              </div>
+            </div>
+
+            {/* Confirmation row */}
+            {confirming?.sign === c.sign &&
+             confirming?.reading === c.proposed_reading && (
+              <div style={{
+                padding: "8px 12px", background: "#fef9c3",
+                borderBottom: "1px solid #fcd34d",
+                display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap",
+              }}>
+                {confirming.action === "approve" ? (
+                  <>
+                    <span style={{ fontSize: 11, color: "#78350f", fontWeight: 600 }}>
+                      Approve {c.sign} = &ldquo;{c.proposed_reading}&rdquo;?
+                      This adds it to the review queue for future anchor promotion.
+                    </span>
+                    <button
+                      disabled={busy}
+                      onClick={() => void doAction(c.sign, c.proposed_reading, "approve")}
+                      style={{
+                        padding: "3px 10px", fontSize: 11, fontWeight: 700,
+                        border: "1px solid #16a34a", borderRadius: 4,
+                        background: "#16a34a", color: "#fff",
+                        cursor: busy ? "default" : "pointer",
+                      }}
+                    >
+                      Confirm approve
+                    </button>
+                    <button
+                      disabled={busy}
+                      onClick={() => setConfirming(null)}
+                      style={{
+                        padding: "3px 8px", fontSize: 11,
+                        border: "1px solid #d1d5db", borderRadius: 4,
+                        background: "#fff", cursor: "pointer",
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <span style={{ fontSize: 11, color: "#78350f", fontWeight: 600 }}>
+                      Reject reason (optional):
+                    </span>
+                    <input
+                      value={rejectReason}
+                      onChange={(e) => setRejectReason(e.target.value)}
+                      placeholder="e.g. insufficient DEDR evidence"
+                      style={{
+                        flex: 1, minWidth: 160, padding: "3px 7px",
+                        border: "1px solid #d1d5db", borderRadius: 4,
+                        fontSize: 11,
+                      }}
+                    />
+                    <button
+                      disabled={busy}
+                      onClick={() => void doAction(
+                        c.sign, c.proposed_reading, "reject", rejectReason)}
+                      style={{
+                        padding: "3px 10px", fontSize: 11, fontWeight: 700,
+                        border: "1px solid #dc2626", borderRadius: 4,
+                        background: "#dc2626", color: "#fff",
+                        cursor: busy ? "default" : "pointer",
+                      }}
+                    >
+                      Confirm reject
+                    </button>
+                    <button
+                      disabled={busy}
+                      onClick={() => { setConfirming(null); setRejectReason(""); }}
+                      style={{
+                        padding: "3px 8px", fontSize: 11,
+                        border: "1px solid #d1d5db", borderRadius: 4,
+                        background: "#fff", cursor: "pointer",
+                      }}
+                    >
+                      Cancel
+                    </button>
+                  </>
+                )}
+              </div>
+            )}
+          </div>
+        ))
+      )}
+
+      {/* Approved log (collapsed summary) */}
+      {approvedCandidates.length > 0 && (
+        <div style={{
+          padding: "6px 10px", background: "#f0fdf4",
+          borderTop: stagedCandidates.length > 0 ? "1px solid #bbf7d0" : undefined,
+          fontSize: 11, color: "#15803d",
+        }}>
+          <strong>✔ {approvedCandidates.length} approved:</strong>{" "}
+          {approvedCandidates.map((c) =>
+            `${c.sign}=${c.proposed_reading}`).join(" · ")}
+        </div>
+      )}
     </div>
   );
 }

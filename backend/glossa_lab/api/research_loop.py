@@ -396,6 +396,87 @@ async def loop_results() -> dict[str, Any]:
     return loop.get_full_results()
 
 
+_STAGING_JSON = _REPO / "outputs" / "anchor_staging.json"
+
+
+@router.get("/staging")
+async def get_staging() -> dict[str, Any]:
+    """Return all anchor candidates from the staging file."""
+    if not _STAGING_JSON.exists():
+        return {"candidates": [], "counts": {"total": 0, "staged": 0,
+                                              "approved": 0, "rejected": 0}}
+    try:
+        candidates: list[dict] = json.loads(
+            _STAGING_JSON.read_text(encoding="utf-8"))
+    except Exception as exc:
+        return {"error": str(exc), "candidates": []}
+    counts = {
+        "total":    len(candidates),
+        "staged":   sum(1 for c in candidates if c.get("review_status") == "staged"),
+        "approved": sum(1 for c in candidates if c.get("review_status") == "approved"),
+        "rejected": sum(1 for c in candidates if c.get("review_status") == "rejected"),
+    }
+    return {"candidates": candidates, "counts": counts}
+
+
+@router.post("/staging/action")
+async def staging_action(body: dict[str, Any]) -> dict[str, Any]:
+    """Approve, reject, or delete a staged anchor candidate.
+
+    Body: {sign, proposed_reading, action: 'approve'|'reject'|'delete', reason?}
+
+    - approve  → review_status='approved', approved_at timestamp
+    - reject   → review_status='rejected', rejected_reason kept for audit
+    - delete   → removes entry from file entirely
+    """
+    sign     = body.get("sign", "")
+    reading  = body.get("proposed_reading", "")
+    action   = body.get("action", "")
+    reason   = body.get("reason", "")
+
+    if not sign or not reading or action not in ("approve", "reject", "delete"):
+        return {"ok": False, "error": "sign, proposed_reading, and action are required; "
+                                       "action must be approve|reject|delete"}
+
+    if not _STAGING_JSON.exists():
+        return {"ok": False, "error": "staging file not found"}
+
+    try:
+        candidates: list[dict] = json.loads(
+            _STAGING_JSON.read_text(encoding="utf-8"))
+    except Exception as exc:
+        return {"ok": False, "error": f"could not read staging file: {exc}"}
+
+    now = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
+    matched = False
+    updated: list[dict] = []
+
+    for c in candidates:
+        if c.get("sign") == sign and c.get("proposed_reading") == reading:
+            matched = True
+            if action == "delete":
+                continue  # drop from list
+            elif action == "approve":
+                c["review_status"] = "approved"
+                c["approved_at"] = now
+            elif action == "reject":
+                c["review_status"] = "rejected"
+                c["rejected_at"] = now
+                c["rejected_reason"] = reason or "user rejected"
+        updated.append(c)
+
+    if not matched:
+        return {"ok": False, "error": f"candidate {sign}={reading} not found"}
+
+    _STAGING_JSON.write_text(json.dumps(updated, indent=2, ensure_ascii=False),
+                             encoding="utf-8")
+    remaining = sum(1 for c in updated if c.get("review_status") == "staged")
+    _log.info("Staging action %s on %s=%s; %d staged remaining",
+              action, sign, reading, remaining)
+    return {"ok": True, "action": action, "sign": sign,
+            "proposed_reading": reading, "staged_remaining": remaining}
+
+
 @router.get("/last-run")
 async def last_run() -> dict[str, Any]:
     """Return the synthesis + full results from the most recently completed loop job.

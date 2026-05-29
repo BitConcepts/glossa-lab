@@ -837,9 +837,11 @@ interface BottomPanelProps {
   activeTab: PanelTab;
   onTabChange: (t: PanelTab) => void;
   leftOffset?: number;
+  /** Number of active (pending/running) jobs — drives the Jobs tab dot. */
+  activeJobCount?: number;
 }
 
-export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChange, activeTab, onTabChange, leftOffset = 0 }: BottomPanelProps) {
+export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChange, activeTab, onTabChange, leftOffset = 0, activeJobCount = 0 }: BottomPanelProps) {
   const [maximized, setMaximized] = useState(false);
   const dragging = useRef(false);
   const dragStartY = useRef(0);
@@ -910,6 +912,19 @@ export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChan
           >
             <span style={{ fontSize: 10 }}>{tab.icon}</span>
             {tab.label}
+            {/* Activity dot: pulsing blue for active jobs */}
+            {tab.id === "jobs" && activeJobCount > 0 && (
+              <span
+                style={{
+                  width: 6, height: 6, borderRadius: "50%",
+                  background: "#3b82f6",
+                  boxShadow: "0 0 6px #3b82f6",
+                  animation: "healthPulse 0.7s ease-in-out infinite",
+                  flexShrink: 0, marginLeft: 2,
+                }}
+                title={`${activeJobCount} active job(s)`}
+              />
+            )}
           </button>
         ))}
         <div style={{ flex: 1 }} />

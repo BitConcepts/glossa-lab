@@ -13,6 +13,29 @@
 import { useEffect, useState } from "react";
 import { getDashboardDecipherment, type DeciphermentProgress } from "../api";
 
+type ActionFn = (
+  label: string,
+  actionType: string,
+  params: Record<string, unknown>,
+  rationale?: string,
+) => void;
+
+function ActionBtn({ label, onClick }: { label: string; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      style={{
+        padding: "2px 7px", fontSize: 10, fontWeight: 600,
+        border: "1px solid #c4b5fd", borderRadius: 4,
+        background: "#f5f3ff", color: "#5b21b6",
+        cursor: "pointer", whiteSpace: "nowrap",
+      }}
+    >
+      {label}
+    </button>
+  );
+}
+
 const LEVEL_COLORS: Record<string, { bg: string; fg: string; border: string }> = {
   "NEAR-COMPLETE": { bg: "#dcfce7", fg: "#15803d", border: "#86efac" },
   "SUBSTANTIAL":   { bg: "#dbeafe", fg: "#1d4ed8", border: "#93c5fd" },
@@ -53,7 +76,7 @@ function Sparkline({ data, width = 200, height = 40 }: { data: number[]; width?:
   );
 }
 
-export function DeciphermentPanel() {
+export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
   const [data, setData] = useState<DeciphermentProgress | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -158,24 +181,100 @@ export function DeciphermentPanel() {
 
         {/* Munda SA discrimination badge */}
         {(data as any).munda_sa && (
-          <div style={{ marginTop: 8, padding: "6px 10px", borderRadius: 6, background: "#fef3c7", border: "1px solid #fbbf24", fontSize: 11 }}>
-            <span style={{ fontWeight: 600, color: "#92400e" }}>⚖️ Competing LM Test (Phase 300):</span>{" "}
-            Dravidian {Math.round(((data as any).munda_sa.dravidian_consistency ?? 0) * 100)}% vs
-            Munda {Math.round(((data as any).munda_sa.munda_consistency ?? 0) * 100)}% vs
-            Hebrew {Math.round(0.697 * 100)}% — 
-            <span style={{ fontWeight: 600 }}>
-              {(data as any).munda_sa.discriminative ? "SA non-discriminative" : "SA non-discriminative"}
-            </span>
-            {" "}(anchored SA provides the real signal)
+          <div style={{ marginTop: 8, padding: "8px 10px", borderRadius: 6, background: "#fef3c7", border: "1px solid #fbbf24", fontSize: 11 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
+              <span>
+                <span style={{ fontWeight: 600, color: "#92400e" }}>⚖️ Competing LM Test (Phase 300):</span>{" "}
+                Dravidian {Math.round(((data as any).munda_sa.dravidian_consistency ?? 0) * 100)}% vs
+                Munda {Math.round(((data as any).munda_sa.munda_consistency ?? 0) * 100)}% vs
+                Hebrew {Math.round(0.697 * 100)}% —{" "}
+                <span style={{ fontWeight: 600 }}>SA non-discriminative</span>
+                {" "}(anchored SA provides the real signal)
+              </span>
+              {onAction && (
+                <div style={{ display: "flex", gap: 4, flexShrink: 0, marginTop: 1 }}>
+                  <ActionBtn label="💡 Hypothesize" onClick={() => onAction(
+                    "Create hypothesis: anchored SA discriminates",
+                    "create_hypothesis",
+                    {
+                      title: "Anchored SA with Dravidian LM discriminates language families",
+                      statement:
+                        "Phase 300 Competing LM Test: unconstrained SA is non-discriminative " +
+                        "(Dravidian 35%, Munda 40%, Hebrew 70% consistency — all near-equal). " +
+                        "The real signal is in anchored SA (413+ pinned signs). " +
+                        "Next step: run anchored SA with Dravidian vs Munda LMs and compare z-scores.",
+                    },
+                    "SA non-discriminative finding requires anchored SA follow-up",
+                  )} />
+                  <ActionBtn label="▶ Plan SA run" onClick={() => onAction(
+                    "Plan anchored SA comparison",
+                    "propose_experiment_chain",
+                    {
+                      hypothesis:
+                        "Anchored SA with Dravidian LM should produce higher z-score than Munda LM " +
+                        "when 413+ signs are pinned. Phase 300 shows unconstrained SA cannot discriminate.",
+                    },
+                    "Validate that anchored SA discriminates where unconstrained SA cannot",
+                  )} />
+                  <ActionBtn label="✨ Ask AI" onClick={() => onAction(
+                    "Ask AI: SA discrimination follow-up",
+                    "ai_chat",
+                    {
+                      prompt:
+                        "Phase 300 Competing LM Test shows SA is non-discriminative across Dravidian, Munda and Hebrew LMs " +
+                        "(~35–70% consistency, near-equal). The anchored SA approach with 413 pinned signs provides the real " +
+                        "signal. What are the specific next research steps to: (1) validate anchored SA discriminates language " +
+                        "families, (2) rule out Munda definitively, and (3) strengthen the Dravidian case?",
+                    },
+                    "Get AI analysis of competing LM test result",
+                  )} />
+                </div>
+              )}
+            </div>
           </div>
         )}
 
         {/* Archaeological context badge */}
         {(data as any).archaeology && (
-          <div style={{ marginTop: 6, padding: "6px 10px", borderRadius: 6, background: "#ecfdf5", border: "1px solid #6ee7b7", fontSize: 11 }}>
-            <span style={{ fontWeight: 600, color: "#065f46" }}>🏛️ Archaeological Context (Phase 302):</span>{" "}
-            Guild-identity model scores {(data as any).archaeology.score_pct}% across 9 sites —
-            <span style={{ fontWeight: 600 }}> {(data as any).archaeology.verdict}</span>
+          <div style={{ marginTop: 6, padding: "8px 10px", borderRadius: 6, background: "#ecfdf5", border: "1px solid #6ee7b7", fontSize: 11 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
+              <span>
+                <span style={{ fontWeight: 600, color: "#065f46" }}>🏛️ Archaeological Context (Phase 302):</span>{" "}
+                Guild-identity model scores {(data as any).archaeology.score_pct}% across 9 sites —
+                <span style={{ fontWeight: 600 }}> {(data as any).archaeology.verdict}</span>
+              </span>
+              {onAction && (
+                <div style={{ display: "flex", gap: 4, flexShrink: 0, marginTop: 1 }}>
+                  <ActionBtn label="💡 Hypothesize" onClick={() => onAction(
+                    "Create hypothesis: guild-identity site invariance",
+                    "create_hypothesis",
+                    {
+                      title: "Guild-identity model is site-invariant across all 9 Holdat sites",
+                      statement:
+                        `Phase 302 Archaeological Context: guild-identity model scores ${
+                          (data as any).archaeology.score_pct
+                        }% across 9 sites — ${(data as any).archaeology.verdict}. ` +
+                        "This supports the pan-Indus writing system hypothesis and strengthens the seal-owner-as-guild-member interpretation.",
+                    },
+                    "Guild-identity site invariance finding",
+                  )} />
+                  <ActionBtn label="✨ Ask AI" onClick={() => onAction(
+                    "Ask AI: archaeological context follow-up",
+                    "ai_chat",
+                    {
+                      prompt:
+                        `Phase 302 shows the guild-identity model scores ${
+                          (data as any).archaeology.score_pct
+                        }% across 9 Holdat sites (${(data as any).archaeology.verdict}). ` +
+                        "What are the strongest next archaeological or corpus tests to validate or challenge " +
+                        "the guild-identity seal-owner model? What external data (Gulf sites, Failaka, Janabiyah) " +
+                        "would be most diagnostic?",
+                    },
+                    "Get AI analysis of archaeological context finding",
+                  )} />
+                </div>
+              )}
+            </div>
           </div>
         )}
 
@@ -250,8 +349,21 @@ export function DeciphermentPanel() {
       {cur?.remaining && cur.remaining.length > 0 && (
         <div style={{ marginTop: 12 }}>
           <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>What Remains</div>
-          <ul style={{ margin: 0, paddingLeft: 16, fontSize: 11, color: "#374151" }}>
-            {cur.remaining.slice(0, 5).map((r, i) => <li key={i} style={{ marginBottom: 2 }}>{r}</li>)}
+          <ul style={{ margin: 0, paddingLeft: 16, fontSize: 11, color: "#374151", listStyle: "none" }}>
+            {cur.remaining.slice(0, 5).map((r, i) => (
+              <li key={i} style={{ marginBottom: 4, display: "flex",
+                                   alignItems: "flex-start", gap: 6 }}>
+                <span style={{ flex: 1, lineHeight: 1.5 }}>{r}</span>
+                {onAction && (
+                  <ActionBtn label="▶ Plan" onClick={() => onAction(
+                    `Plan: ${r.slice(0, 60)}`,
+                    "propose_experiment_chain",
+                    { hypothesis: r },
+                    `Address open research gap: ${r}`,
+                  )} />
+                )}
+              </li>
+            ))}
           </ul>
         </div>
       )}

@@ -1619,6 +1619,7 @@ export interface DashboardHighlights {
   n_studies: number;
   n_experiments: number;
   n_hypotheses: number;
+  n_atomic_nodes: number;
   since_days: number;
   insight: DashboardInsight | null;
 }

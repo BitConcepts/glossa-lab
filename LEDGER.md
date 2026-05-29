@@ -663,3 +663,90 @@ Risks:
 
 Next step:
   Open browser UI → Experiment Builder → run indus_phase33_t1_sa_syllable (T1), then indus_phase32_t4_sa_m77_tb_lm (T4), then indus_phase33_t7_sanskrit_syllable (T7). Monitor via Jobs panel.
+
+## [2026-05-29] Entry — UI Feature Sprint: Pause/Resume, Auto-Queue, Arrange Fix, ETA Fix
+
+Objective:
+  Add pause/resume for all jobs; fix Experiment Builder node overlap; fix jobs
+  elapsed time (HH:MM:SS); fix ETA growing unboundedly; add auto-queue for GPU-
+  blocked experiments; add sequential run queue with UI (no console required).
+
+What was done:
+  Backend:
+  - jobs.py: Added POST /jobs/{id}/pause, /resume, /pause-all, /resume-all endpoints
+  - experiment_graphs.py: Added GPU concurrency guard (GLOSSA_MAX_CONCURRENT_GPU_JOBS,
+    default 1); rejects second GPU exp_run with gpu_blocked SSE event + blocking_job_id
+  - experiment_graphs.py: Added DB status poll in SSE heartbeat loop — if job set to
+    'paused' or 'cancelled', stream terminates cleanly within 30s
+
+  Frontend:
+  - autoArrange.ts: COL_GAP 255→360, ROW_GAP 48px, dynamic per-node height via
+    nodeHeightFn option; no more node overlap on auto-arrange or load
+  - ExperimentBuilderView.tsx: Pass nodeHeightFn to arrange; gpu_blocked SSE auto-
+    queues experiment; ⏭ Queue button per experiment (blue=queued); seq queue helpers
+    (loadSeqQueueExt/saveSeqQueueExt) shared with BottomPanel
+  - BottomPanel.tsx: Pause/Resume per job + bulk; paused status badge; stuck-node ETA
+    label; sequential queue banner with glossa:seq_queue_updated event listener + 3s
+    poll (fixes banner not appearing after ExperimentBuilder writes queue)
+  - JobsView.tsx: Same pause/resume + HH:MM:SS elapsed + historical-average ETA
+  - dateFormat.ts: Added fmtElapsed() always-HH:MM:SS function
+  - docs/REQUIREMENTS.md: Added R20 (REQ-JOBS-001..005) and R21 (REQ-EB-ARRANGE-001..005)
+  - docs/TESTS.md: Added TEST-JOBS-001..003 and TEST-EB-ARRANGE-001..003
+
+  Infrastructure:
+  - Backend restarted (PID 41736 killed, relaunched) to pick up all backend changes
+  - T4 and T7 aborted (were competing with T1 for GPU); T1 restarted solo
+  - Queue set up: T1 running → T4 queued → T7 queued (auto-fires sequentially)
+
+Files changed:
+  - backend/glossa_lab/api/jobs.py
+  - backend/glossa_lab/api/experiment_graphs.py
+  - frontend/src/utils/autoArrange.ts
+  - frontend/src/components/ExperimentBuilderView.tsx
+  - frontend/src/components/BottomPanel.tsx
+  - frontend/src/components/JobsView.tsx
+  - frontend/src/dateFormat.ts
+  - frontend/src/api.ts
+  - docs/REQUIREMENTS.md (R20, R21 added)
+  - docs/TESTS.md (TEST-JOBS-*, TEST-EB-ARRANGE-* added)
+
+Checks run:
+  - specsmith audit: 29 pass, 2 known false positives (scaffold type + TODO inflation)
+  - npm run build: clean, 0 TS errors
+  - Backend health: uptime=6.1s (fresh restart)
+  - GPU guard: verified via logs (T4/T7 correctly rejected, queue populated)
+
+Results:
+  - specsmith: 2 issues (both accepted: #188 + carry-forward TODO pattern)
+  - Phase: 🚀 Release (unchanged)
+  - T1 running (job 998ffac2, 3/7 nodes, GPU); T4+T7 queued sequentially
+
+Token estimate: high
+
+Open TODOs:
+  - [ ] H11 violation in tray/glossa_tray/main.py _status_poller: while True: loop
+  - [ ] setup-os.cmd still adds HKCU Run key (GlossaLab) in addition to scheduled task
+  - [ ] Evidence sweep re-run pending
+  - [ ] CI Playwright job status unknown
+  - [ ] T1 (indus_phase33_t1_sa_syllable) running — review results when complete
+  - [ ] T4 queued (indus_phase32_t4_sa_m77_tb_lm) — auto-fires after T1
+  - [ ] T7 queued (indus_phase33_t7_sanskrit_syllable) — auto-fires after T4
+  - [ ] Contact Suresh Kolichala via Academia.edu with review packet
+  - [ ] Upload v3 preprint to Zenodo, Academia.edu, ResearchGate
+  - [ ] Check SSRN status (submission ID 6827038)
+  - [ ] Tag v3.0.0-preprint on main after merge
+  - [ ] Wait for Dravidianist responses (Renganathan, Murugaiyan, Kobayashi)
+  - [ ] Review Phase 295 STRONG papers for new evidence items
+  - [ ] Rebuild preprint PDF with §4.5 update
+  - [ ] ARCHITECTURE.md: add REQ ID cross-references (specsmith validate drift)
+  - [ ] Monitor layer1labs/specsmith#188 and #189 for resolution
+  - [ ] MCP server reload: Warp MCP process stale — run_experiment uses old SSE impl
+
+Risks:
+  - T1 SA run takes ~60-90 min solo on RTX 4070 Super; may hit stall timeout (30 min)
+    if no node completes in that window — stall watchdog will mark failed
+  - pause only takes effect at next 30s heartbeat; SA thread keeps running until batch end
+
+Next step:
+  Monitor T1 progress in bottom panel Jobs tab; when T1 completes, queue auto-fires T4.
+  Review SA results (T1/T4/T7) for consistency vs Dravidian hypothesis.

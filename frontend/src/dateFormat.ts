@@ -56,6 +56,20 @@ export function fmtDateTimeCompact(value: string | Date): string {
   });
 }
 
+/** Duration from seconds → HH:MM:SS (or MM:SS if < 1 hour).
+ *  fmtDuration(90)   → "01:30"
+ *  fmtDuration(3661) → "1:01:01"
+ */
+export function fmtDuration(totalSeconds: number): string {
+  const sec = Math.max(0, Math.round(totalSeconds));
+  const h = Math.floor(sec / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  const s = sec % 60;
+  const mm = String(m).padStart(2, "0");
+  const ss = String(s).padStart(2, "0");
+  return h > 0 ? `${h}:${mm}:${ss}` : `${mm}:${ss}`;
+}
+
 /** Relative time: "3 minutes ago", "2 days ago" */
 export function fmtRelative(value: string | Date): string {
   const d = typeof value === "string" ? new Date(value) : value;

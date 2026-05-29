@@ -491,3 +491,27 @@
 - REQ-SEM-001: The default semantic taxonomy MUST include at least: Culture, Nations, Nature, Religion, People, Spiritual.
 - REQ-SEM-002: Manual tags applied to a text segment MUST be persisted and returned correctly when the segment is retrieved.
 
+
+---
+
+## R20 — Jobs Panel UX (REQ-JOBS)
+
+> Last updated: 2026-05-29
+
+- REQ-JOBS-001: Elapsed time for ALL running jobs MUST be displayed in HH:MM:SS format, zero-padded on all three components (e.g.  0:01:30,  1:05:12). Raw seconds (e.g. 90s) and unpadded formats (e.g. 1:30) are FORBIDDEN.
+- REQ-JOBS-002: Estimated time remaining (ETA) MUST also be displayed in HH:MM:SS format (same rule as REQ-JOBS-001).
+- REQ-JOBS-003: When job progress is < 15%, the ETA MUST be derived from the historical average duration of completed jobs of the same pipeline, NOT from linear extrapolation of a near-zero progress percentage. When no historical data is available and progress is < 15%, no ETA is shown.
+- REQ-JOBS-004: When job progress is >= 15%, linear extrapolation MAY be used: taSec = (elapsedSec / pct) * (100 - pct). The ETA MUST NOT start very small and grow; it MUST be biased toward realistic longer estimates.
+- REQ-JOBS-005: The above rules apply to ALL surfaces that show elapsed time or ETA: the Jobs full-page view (JobsView), the bottom panel Jobs tab (BottomPanel > JobsPanel), and the Experiment Builder toolbar run progress display.
+
+---
+
+## R21 — Experiment Builder Layout (REQ-EB-ARRANGE)
+
+> Last updated: 2026-05-29
+
+- REQ-EB-ARRANGE-001: The Experiment Builder MUST apply auto-arrange automatically every time an experiment is opened or loaded from the list. The graph MUST never open in a visually overlapping state.
+- REQ-EB-ARRANGE-002: After auto-arrange, no two nodes MAY overlap. The minimum horizontal gap between the right edge of any node and the left edge of the next column MUST be >= 80px.
+- REQ-EB-ARRANGE-003: After auto-arrange, the minimum vertical gap between the bottom edge of any node and the top edge of the node below it in the same column MUST be >= 40px.
+- REQ-EB-ARRANGE-004: The auto-arrange algorithm MUST compute per-node height dynamically from the node's actual input/output port count (header_height + port_count * port_row_height), NOT use a fixed row height constant.
+- REQ-EB-ARRANGE-005: The ⬦ Arrange toolbar button MUST apply the same layout algorithm as on-open arrange and MUST be enabled whenever a non-empty experiment is open.

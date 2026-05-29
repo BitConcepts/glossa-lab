@@ -70,6 +70,19 @@ export function fmtDuration(totalSeconds: number): string {
   return h > 0 ? `${h}:${mm}:${ss}` : `${mm}:${ss}`;
 }
 
+/** Elapsed time → always HH:MM:SS zero-padded.
+ *  fmtElapsed(90)    → "00:01:30"
+ *  fmtElapsed(3661)  → "01:01:01"
+ *  Used for job elapsed/ETA display (REQ-JOBS-001).
+ */
+export function fmtElapsed(totalSeconds: number): string {
+  const sec = Math.max(0, Math.round(totalSeconds));
+  const h = Math.floor(sec / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  const s = sec % 60;
+  return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+}
+
 /** Relative time: "3 minutes ago", "2 days ago" */
 export function fmtRelative(value: string | Date): string {
   const d = typeof value === "string" ? new Date(value) : value;

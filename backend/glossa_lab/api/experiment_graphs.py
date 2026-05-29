@@ -351,6 +351,8 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                     try:
                         # Run node in thread; send SSE heartbeats every 30s
                         # to prevent browser/proxy timeouts on long nodes.
+                        # Also polls DB for pause/cancel so the user can stop
+                        # long-running SA nodes from the Jobs panel.
                         future = loop.run_in_executor(
                             None, atomic.fn, node_inputs, params
                         )
@@ -361,7 +363,30 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                                 ) or {}
                                 break
                             except asyncio.TimeoutError:
-                                # Node still running — send keepalive
+                                # ── Pause / cancel check ──────────────────
+                                if job_id and db:
+                                    try:
+                                        _sc = await db._conn.execute(  # noqa: SLF001
+                                            "SELECT status FROM jobs WHERE id = ?",
+                                            (job_id,),
+                                        )
+                                        _row = await _sc.fetchone()
+                                        if _row and _row[0] in ("paused", "cancelled"):
+                                            _stop_status = _row[0]
+                                            logger.info(
+                                                "exp_run '%s' job %s set to %s — stopping stream",
+                                                exp_id, job_id, _stop_status,
+                                            )
+                                            yield _sse({
+                                                "event": "run_error",
+                                                "message": f"Job {_stop_status} by user.",
+                                                "paused": _stop_status == "paused",
+                                                "cancelled": _stop_status == "cancelled",
+                                            })
+                                            return
+                                    except Exception:  # noqa: BLE001
+                                        pass
+                                # ── Keepalive heartbeat ───────────────────
                                 yield _sse({"event": "heartbeat", "nid": nid,
                                             "idx": node_idx, "total": len(ordered)})
                     except Exception as exc:  # noqa: BLE001

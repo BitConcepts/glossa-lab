@@ -208,6 +208,43 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
             except Exception as _re:  # noqa: BLE001
                 logger.debug("VRAM pre-check skipped: %s", _re)
 
+        # ── GPU concurrency guard ────────────────────────────────────────────────
+        # Prevent multiple GPU exp_run jobs from competing for VRAM.
+        # Max concurrent GPU jobs is configurable via env; default 1.
+        if db is not None and (_has_sa_node or _compute_device == "gpu"):
+            try:
+                _max_gpu = int(__import__("os").environ.get("GLOSSA_MAX_CONCURRENT_GPU_JOBS", "1"))
+                _gpu_cursor = await db._conn.execute(  # noqa: SLF001
+                    "SELECT id, json_extract(params, '$.exp_id') as exp_id FROM jobs "
+                    "WHERE pipeline = 'exp_run' AND status = 'running' "
+                    "AND json_extract(params, '$.compute_device') = 'gpu'",
+                )
+                _gpu_running = await _gpu_cursor.fetchall()
+                if len(_gpu_running) >= _max_gpu:
+                    _blocking_id   = _gpu_running[0]["id"]
+                    _blocking_exp  = _gpu_running[0]["exp_id"] or _blocking_id
+                    logger.warning(
+                        "GPU concurrency guard: '%s' rejected (%d/%d GPU slots occupied by %s)",
+                        exp_id, len(_gpu_running), _max_gpu, _blocking_exp,
+                    )
+                    yield _sse({
+                        "event": "run_error",
+                        "message": (
+                            f"{len(_gpu_running)}/{_max_gpu} GPU slot(s) occupied "
+                            f"({_blocking_exp} is running). "
+                            "Wait for it to finish, abort it, or use the sequential queue. "
+                            f"Override limit: set GLOSSA_MAX_CONCURRENT_GPU_JOBS > {_max_gpu}."
+                        ),
+                        "gpu_blocked": True,
+                        "gpu_running": len(_gpu_running),
+                        "gpu_limit": _max_gpu,
+                        "blocking_job_id": _blocking_id,
+                        "blocking_exp_id": _blocking_exp,
+                    })
+                    return
+            except Exception as _ge:  # noqa: BLE001
+                logger.warning("GPU concurrency check failed (non-critical): %s", _ge)
+
         # ── Duplicate-run guard ────────────────────────────────────────────────
         # Reject immediately if the same experiment is already running.
         # Checks by exp_id in params so two different job IDs don't both run.

@@ -1573,3 +1573,75 @@ Next step:
   Review the 92 STRONG papers from Phase 295 for new evidence items or
   discoveries that strengthen/weaken the decipherment model.
   Contact Kolichala via Academia.edu.
+
+
+## [2026-05-29] Entry — Research Loop Phases 5-7: Experiment Builder + Insight Selection + DB Persistence
+
+Objective:
+Complete the final 3 phases of the Integrated Research Loop native UI feature.
+Phase 5: Register ResearchLoopRunner as an Experiment Builder atomic node.
+Phase 6: Replace fixed round-robin experiment selection with insight-driven selection.
+Phase 7: Persist research loop state (all_seen, history) across server restarts via database.
+
+What was done:
+
+Phase 5 — Experiment Builder meta-node:
+  - Registered `ResearchLoopRunner` AtomicNodeDef in experiment_graph.py
+  - Category: Research. Params: max_cycles (integer, default 5)
+  - Outputs: total_papers, total_insights, json, text
+  - Wraps `ResearchLoop.run()` generator; collects all cycles then returns `get_full_results()`
+  - Also registered Phase 322-390 nodes (15 nodes from experiment_graph_phase322_362.py)
+  - Total ATOMIC_NODES: 410
+
+Phase 6 — Insight-driven experiment selection:
+  - Added `INSIGHT_TO_EXPERIMENTS` mapping: 6 insight types → 4 prioritized experiments each
+    * reading → reading_frequency_zipf, rare_sign_neighbor_profile, blocker_sign_context, decoded_text_repetition
+    * guild → motif_title_correlation, title_root_suffix_trigram, site_specific_formula, suffix_after_animal
+    * compound → compound_semantic_coherence, compound_vs_formula, suffix_chain_depth, title_root_suffix_trigram
+    * formula → site_specific_formula, inscription_uniqueness, cross_site_formula_overlap, compound_vs_formula
+    * function → motif_title_correlation, motif_reading_mutual_info, position_entropy_by_site, suffix_after_animal
+    * morphology → suffix_chain_depth, title_root_suffix_trigram, compound_semantic_coherence, decoded_text_repetition
+  - New `_select_experiment()` method: tallies insight types, picks best unused experiment
+    for dominant type, falls back to round-robin when no insights or candidates exhausted
+  - Each cycle entry now includes insight_types histogram and selection_method (insight/rotation)
+
+Phase 7 — Database persistence:
+  - Schema V21: `research_loop_state` table (id TEXT PK, all_seen TEXT, history TEXT, created_at, updated_at)
+  - `_SCHEMA_VERSION` bumped 20 → 21; migration added in `_apply_schema()`
+  - New DB methods: `save_research_loop_state()` (upsert singleton row id='main'),
+    `load_research_loop_state()` (load + JSON-parse)
+  - `ResearchLoop.__init__` accepts optional `db` parameter
+  - Auto-loads persisted state on construction (sync wrappers with ThreadPoolExecutor for async contexts)
+  - Auto-saves after every cycle via `_persist_state()` (best-effort, logs warning on failure)
+  - API router (api/research_loop.py) now passes `get_db()` to all ResearchLoop instantiations
+  - Graceful degradation: db=None works identically to previous in-memory-only behavior
+
+Files changed:
+  backend/glossa_lab/pipelines/research_loop.py (Phase 6+7: insight selection, DB persistence)
+  backend/glossa_lab/database.py (V21 schema + save/load methods)
+  backend/glossa_lab/experiment_graph.py (Phase 5: ResearchLoopRunner + Phase 322-390 registration)
+  backend/glossa_lab/api/research_loop.py (wire db=get_db())
+  docs/IMPLEMENTATION_PLAN_RESEARCH_LOOP_UI.md (mark all 7 phases complete)
+  LEDGER.md (this entry)
+
+Checks run:
+  - py_compile: all 4 modified .py files compile OK
+  - ruff check (E,W,F): 0 new warnings (3 unused imports fixed; remaining E501 are pre-existing SQL)
+  - Import test: ResearchLoop, INSIGHT_TO_EXPERIMENTS, EXPERIMENT_NAMES import OK
+  - Phase 6 unit test: insight-driven selection returns reading_frequency_zipf for reading insights,
+    rotation fallback returns site_specific_formula for empty insights
+  - Phase 7 DB round-trip: temp DB → save 3 seen/1 history → load → assert match → upsert 4/2 → assert match → PASS
+  - Phase 5 registration: ResearchLoopRunner in ATOMIC_NODES, category=Research, 410 total nodes
+  - Schema: _SCHEMA_VERSION=21, V21 SQL creates research_loop_state table
+
+Results:
+  PASS: All import tests, unit tests, DB round-trip, compilation, lint
+
+Open TODOs:
+  - [ ] Frontend test: start research loop from UI panel, verify SSE streaming + DB persistence
+  - [ ] Contact Suresh Kolichala via Academia.edu (carry-forward)
+  - [ ] Upload v3 preprint to platforms (carry-forward)
+
+Next step:
+  Frontend integration test of the research loop panel, or continue
+  decipherment work pending ICIT corpus / expert responses.

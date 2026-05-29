@@ -1,6 +1,6 @@
 # Implementation Plan: Native Research Loop UI + Dashboard Fixes
 
-## Status: PHASES 1-4 IMPLEMENTED, PHASES 5-7 PLANNED
+## Status: ALL PHASES (1-7) IMPLEMENTED
 
 ---
 
@@ -116,11 +116,13 @@ The two loops serve different purposes:
 
 ### Implementation Path
 
-1. **Phase 1** (backend): Move `integrated_research_loop.py` to pipeline class + add API endpoints
-2. **Phase 2** (frontend): Build `ResearchLoopPanel.tsx` with SSE progress
-3. **Phase 3** (integration): Wire into Experiment Builder as meta-node
-4. **Phase 4** (intelligence): Insight-driven experiment selection instead of rotation
-5. **Phase 5** (persistence): Database-backed state across sessions
+1. **Phase 1** ✅ (backend): Pipeline class at `pipelines/research_loop.py` + API endpoints at `api/research_loop.py`
+2. **Phase 2** ✅ (API): SSE streaming, status, stop, results endpoints registered in `main.py`
+3. **Phase 3** ✅ (dashboard): Atomic node counter + `ResearchLoopPanel.tsx` in `DashboardView.tsx`
+4. **Phase 4** ✅ (frontend): `ResearchLoopPanel.tsx` with Start/Stop, SSE streaming, metrics row
+5. **Phase 5** ✅ (Experiment Builder): `ResearchLoopRunner` registered as atomic node in `experiment_graph.py`
+6. **Phase 6** ✅ (intelligence): `INSIGHT_TO_EXPERIMENTS` mapping; `_select_experiment()` picks experiments based on mined insight types with round-robin fallback
+7. **Phase 7** ✅ (persistence): Schema V21 `research_loop_state` table; `save_research_loop_state()`/`load_research_loop_state()` in `database.py`; `ResearchLoop` auto-loads/saves via `db` parameter
 
 ---
 

@@ -859,9 +859,16 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
           setRunResult(`complete: ${keys || "done"}`);
         } else if (ev.event === "run_error") {
           hadError = true;
-          setRunResult(`Error: ${ev.message ?? "run failed"}`);
-          if (activeExp?.id === exp.id) {
-            setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: "error" } as ExpNodeData })));
+          // Surface GPU-blocked errors with a clear message (don't mark nodes as error)
+          const isGpuBlocked = (ev as unknown as Record<string, unknown>).gpu_blocked === true;
+          const isVramBlocked = (ev as unknown as Record<string, unknown>).resource_blocked === true;
+          if (isGpuBlocked || isVramBlocked) {
+            setRunResult(`⚠ ${ev.message ?? "GPU blocked"}`);
+          } else {
+            setRunResult(`Error: ${ev.message ?? "run failed"}`);
+            if (activeExp?.id === exp.id) {
+              setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: "error" } as ExpNodeData })));
+            }
           }
         }
       }

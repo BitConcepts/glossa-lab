@@ -1,0 +1,58 @@
+{
+  "per_bin": {
+    "L1-1": {
+      "n_seqs": 0,
+      "observed_gap": null,
+      "p_value": null,
+      "verdict": "no data"
+    },
+    "L2-2": {
+      "n_seqs": 0,
+      "observed_gap": null,
+      "p_value": null,
+      "verdict": "no data"
+    },
+    "L3-3": {
+      "n_seqs": 0,
+      "observed_gap": null,
+      "p_value": null,
+      "verdict": "no data"
+    },
+    "L4-4": {
+      "n_seqs": 0,
+      "observed_gap": null,
+      "p_value": null,
+      "verdict": "no data"
+    },
+    "L5-5": {
+      "n_seqs": 0,
+      "observed_gap": null,
+      "p_value": null,
+      "verdict": "no data"
+    },
+    "L6-6": {
+      "n_seqs": 0,
+      "observed_gap": null,
+      "p_value": null,
+      "verdict": "no data"
+    },
+    "L7-8": {
+      "n_seqs": 0,
+      "observed_gap": null,
+      "p_value": null,
+      "verdict": "no data"
+    },
+    "L9+": {
+      "n_seqs": 0,
+      "observed_gap": null,
+      "p_value": null,
+      "verdict": "no data"
+    }
+  },
+  "n_bins": 8,
+  "n_significant": 0,
+  "n_with_data": 0,
+  "n_permutations": 50,
+  "seed": 42,
+  "verdict": "Phase-30c: no bin had enough tokens for a permutation null."
+}

@@ -247,7 +247,12 @@ class ResearchLoop:
         self.should_stop = True
 
     def run(self) -> Generator[dict[str, Any], None, None]:
-        """Yield one dict per completed cycle."""
+        """Yield one dict per completed cycle.
+
+        Persistence is NOT done here — this generator runs in a worker
+        thread (via asyncio.to_thread) and cannot safely access the
+        async DB connection. The API layer persists after each cycle.
+        """
         self.running = True
         self.should_stop = False
 
@@ -282,10 +287,6 @@ class ResearchLoop:
                 "is_new_info": is_new,
             }
             self.history.append(entry)
-
-            # Phase 7: persist after each cycle
-            self._persist_state()
-
             yield entry
 
         self.running = False

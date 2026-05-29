@@ -311,7 +311,8 @@ export function ResearchLoopPanel() {
       {!running && activeSynthesis && (
         <RunSummary synthesis={activeSynthesis} completedAt={lastRun?.completed_at}
           totalPapers={lastRun?.total_papers_mined ?? 0}
-          totalInsights={lastRun?.total_insights ?? 0} />
+          totalInsights={lastRun?.total_insights ?? 0}
+          onStartLoop={() => void startLoop()} />
       )}
 
       {/* ── Staging review queue ── */}
@@ -379,12 +380,13 @@ export function ResearchLoopPanel() {
 // ── Run Summary ──────────────────────────────────────────────────────────────
 
 function RunSummary({
-  synthesis, completedAt, totalPapers, totalInsights,
+  synthesis, completedAt, totalPapers, totalInsights, onStartLoop,
 }: {
   synthesis: Synthesis;
   completedAt?: string;
   totalPapers: number;
   totalInsights: number;
+  onStartLoop?: () => void;
 }) {
   const fc = synthesis.foundation_check;
   const insightTotals = synthesis.insight_type_totals;
@@ -490,22 +492,53 @@ function RunSummary({
           <div style={{ fontSize: 11, fontWeight: 600, color: "#374151",
                         marginBottom: 6 }}>Next steps</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-            {synthesis.proposals.slice(0, 4).map((p, i) => (
-              <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start",
-                                    padding: "5px 8px", borderRadius: 5,
-                                    background: p.action === "fix_foundation"
-                                      ? "#fef2f2" : "#f5f3ff",
-                                    border: `1px solid ${
-                                      p.action === "fix_foundation"
-                                        ? "#fca5a5" : "#e9d5ff"}` }}>
-                <span style={{ fontSize: 13, flexShrink: 0 }}>
-                  {p.action === "fix_foundation" ? "🔴"
-                    : p.action === "run_experiment" ? "🔬"
-                    : p.action === "refresh_insights" ? "✨" : "▸"}
-                </span>
-                <div style={{ fontSize: 11, color: "#374151" }}>{p.rationale}</div>
-              </div>
-            ))}
+            {synthesis.proposals.slice(0, 4).map((p, i) => {
+              const isFixFoundation = p.action === "fix_foundation";
+              const isExpandMining = p.action === "expand_mining";
+              const isReviewCandidates = p.action === "review_candidates";
+              return (
+                <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start",
+                                      padding: "5px 8px", borderRadius: 5,
+                                      background: isFixFoundation ? "#fef2f2" : "#f5f3ff",
+                                      border: `1px solid ${
+                                        isFixFoundation ? "#fca5a5" : "#e9d5ff"}` }}>
+                  <span style={{ fontSize: 13, flexShrink: 0 }}>
+                    {isFixFoundation ? "🔴"
+                      : p.action === "run_experiment" ? "🔬"
+                      : isExpandMining ? "🔁"
+                      : isReviewCandidates ? "📎"
+                      : "▸"}
+                  </span>
+                  <div style={{ flex: 1, fontSize: 11, color: "#374151" }}>
+                    {p.rationale}
+                  </div>
+                  {/* Action button for expand_mining — start a new loop */}
+                  {isExpandMining && onStartLoop && (
+                    <button
+                      onClick={onStartLoop}
+                      style={{
+                        padding: "2px 8px", fontSize: 10, fontWeight: 700,
+                        border: "1px solid #7c3aed", borderRadius: 4,
+                        background: "#7c3aed", color: "#fff",
+                        cursor: "pointer", whiteSpace: "nowrap", flexShrink: 0,
+                      }}
+                    >
+                      ▶ Start Loop
+                    </button>
+                  )}
+                  {/* Action button for review_candidates — scroll to review queue */}
+                  {isReviewCandidates && (
+                    <span style={{
+                      fontSize: 10, padding: "2px 6px", borderRadius: 3,
+                      background: "#fef3c7", color: "#92400e",
+                      fontWeight: 600, flexShrink: 0,
+                    }}>
+                      ↓ see below
+                    </span>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       )}

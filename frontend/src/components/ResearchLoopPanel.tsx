@@ -55,12 +55,32 @@ interface Proposal {
   rationale: string;
 }
 
+interface AnchorCandidate {
+  sign: string;
+  proposed_reading: string;
+  evidence_type: string;
+  evidence_score: number;
+  dedr_support?: string;
+  source_experiment: string;
+  conflict?: string;
+  review_status: "staged" | "blocked";
+  neighbor_reading?: string;
+  neighbor_count?: number;
+  corpus_freq?: number;
+  animal_freq?: number;
+  partner_reading?: string;
+}
+
 interface Synthesis {
   summary: string;
+  needle_moved?: boolean;
   insight_type_totals: Record<string, number>;
   unexplored_types: string[];
+  path_signals?: Record<string, number>;
   proposals: Proposal[];
   foundation_check: FoundationCheck;
+  anchor_candidates?: AnchorCandidate[];
+  candidate_counts?: { total: number; staged: number; blocked: number };
 }
 
 interface LastRun {
@@ -326,6 +346,14 @@ function RunSummary({
         {timeLabel && (
           <span style={{ fontSize: 11, color: "#9ca3af" }}>{timeLabel}</span>
         )}
+        {synthesis.needle_moved !== undefined && (
+          <span style={{ fontSize: 11, padding: "2px 7px", borderRadius: 4,
+                         fontWeight: 700,
+                         background: synthesis.needle_moved ? "#dcfce7" : "#fef9c3",
+                         color: synthesis.needle_moved ? "#15803d" : "#854d0e" }}>
+            {synthesis.needle_moved ? "⬆ needle moved" : "→ no movement"}
+          </span>
+        )}
         <div style={{ marginLeft: "auto" }}>
           <FoundationBadge fc={fc} />
         </div>
@@ -420,6 +448,10 @@ function RunSummary({
         </div>
       )}
 
+      {/* Anchor candidates table */}
+      <CandidatesTable candidates={synthesis.anchor_candidates}
+        counts={synthesis.candidate_counts} />
+
       {/* Unexplored types */}
       {synthesis.unexplored_types.length > 0 && (
         <div style={{ marginTop: 8, fontSize: 11, color: "#9ca3af" }}>
@@ -433,6 +465,95 @@ function RunSummary({
               color: "#6b7280",
             }}>{t}</span>
           ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Anchor candidates table ───────────────────────────────────────────────────
+
+function CandidatesTable({
+  candidates, counts,
+}: {
+  candidates?: AnchorCandidate[];
+  counts?: { total: number; staged: number; blocked: number };
+}) {
+  const staged = (candidates || []).filter((c) => c.review_status === "staged");
+  const blocked = (candidates || []).filter((c) => c.review_status === "blocked");
+
+  return (
+    <div style={{ marginTop: 12, marginBottom: 8 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 6,
+                    marginBottom: 6 }}>
+        <span style={{ fontSize: 11, fontWeight: 600, color: "#374151" }}>
+          Anchor candidates
+        </span>
+        {counts && (
+          <span style={{ fontSize: 11, color: "#6b7280" }}>
+            {counts.staged} staged · {counts.blocked} blocked
+          </span>
+        )}
+      </div>
+
+      {staged.length === 0 && blocked.length === 0 ? (
+        <div style={{ fontSize: 11, color: "#9ca3af",
+                      background: "#f9fafb", borderRadius: 5,
+                      padding: "6px 10px", border: "1px solid #e5e7eb" }}>
+          No candidates staged this run. Loop ran experiments but produced no
+          promotable anchor signals. Try running with
+          <code style={{ fontSize: 10, background: "#f3f4f6",
+                          padding: "0 3px", borderRadius: 2 }}>
+            blocker_sign_context
+          </code>
+          {" "}or increasing cycle count.
+        </div>
+      ) : (
+        <div style={{ border: "1px solid #e5e7eb", borderRadius: 6,
+                      overflow: "hidden" }}>
+          {/* Staged */}
+          {staged.map((c, i) => (
+            <div key={i} style={{
+              display: "grid",
+              gridTemplateColumns: "60px 80px 1fr 80px 60px",
+              gap: 6, alignItems: "center",
+              padding: "5px 10px",
+              borderBottom: "1px solid #f3f4f6",
+              background: "#f0fdf4",
+              fontSize: 11,
+            }}>
+              <span style={{ fontWeight: 700, color: "#374151",
+                              fontFamily: "monospace" }}>
+                {c.sign}
+              </span>
+              <span style={{ fontWeight: 600, color: "#5b21b6" }}>
+                {c.proposed_reading}
+              </span>
+              <span style={{ color: "#6b7280", overflow: "hidden",
+                              textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                {c.dedr_support
+                  ? `DEDR: ${c.dedr_support.slice(0, 40)}`
+                  : c.evidence_type.replace(/_/g, " ")}
+              </span>
+              <span style={{ fontSize: 10, color: "#6b7280",
+                              overflow: "hidden", textOverflow: "ellipsis",
+                              whiteSpace: "nowrap" }}>
+                {c.evidence_type.replace(/_/g, "\u200b").slice(0, 18)}
+              </span>
+              <span style={{ fontSize: 10, padding: "1px 5px", borderRadius: 3,
+                              background: "#dcfce7", color: "#15803d",
+                              fontWeight: 600, textAlign: "center" }}>
+                staged
+              </span>
+            </div>
+          ))}
+          {/* Blocked (collapsed) */}
+          {blocked.length > 0 && (
+            <div style={{ padding: "4px 10px", background: "#fafafa",
+                          fontSize: 10, color: "#9ca3af" }}>
+              +{blocked.length} blocked (conflict with existing HIGH readings)
+            </div>
+          )}
         </div>
       )}
     </div>

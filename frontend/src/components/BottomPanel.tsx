@@ -295,6 +295,15 @@ function JobsPanel() {
   const [seqQueue, setSeqQueue] = useState<SeqQueue>(() => loadSeqQueue());
   // Track nodes_done per job to detect slow SA nodes
   const nodesDoneTracker = useRef<Map<string, { done: number; since: number }>>(new Map());
+
+  // Refresh queue state when Experiment Builder (or anything) writes to it
+  useEffect(() => {
+    const refresh = () => setSeqQueue(loadSeqQueue());
+    window.addEventListener("glossa:seq_queue_updated", refresh);
+    // Also poll every 3s so the banner appears even if event was missed
+    const t = setInterval(refresh, 3000);
+    return () => { window.removeEventListener("glossa:seq_queue_updated", refresh); clearInterval(t); };
+  }, []);
   const [errorModal, setErrorModal] = useState<{
     title: string; message: string; detail?: string;
     params?: Record<string, unknown> | null;

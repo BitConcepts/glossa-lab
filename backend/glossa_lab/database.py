@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 20
+_SCHEMA_VERSION = 21
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -416,6 +416,16 @@ CREATE TABLE IF NOT EXISTS model_scores (
 CREATE INDEX IF NOT EXISTS idx_model_scores_name ON model_scores(model_name);
 """
 
+_SCHEMA_V21 = """
+CREATE TABLE IF NOT EXISTS research_loop_state (
+    id          TEXT PRIMARY KEY,
+    all_seen    TEXT NOT NULL DEFAULT '[]',
+    history     TEXT NOT NULL DEFAULT '[]',
+    created_at  TEXT NOT NULL,
+    updated_at  TEXT NOT NULL
+);
+"""
+
 _SCHEMA_V12 = """
 CREATE TABLE IF NOT EXISTS canonical_signs (
     internal_id        TEXT PRIMARY KEY,
@@ -727,6 +737,11 @@ class Database:
                 pass
             await self._conn.execute("UPDATE _schema_version SET version = ?", (20,))
             current_version = 20
+
+        if current_version < 21:
+            await self._conn.executescript(_SCHEMA_V21)
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (21,))
+            current_version = 21
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(
@@ -2678,6 +2693,53 @@ class Database:
         )
         row = await cursor.fetchone()
         return self._row_to_dict(row) if row else None
+
+    # ── Research Loop State (V21) ─────────────────────────────────
+
+    async def save_research_loop_state(
+        self, *, all_seen: list[str], history: list[dict[str, Any]],
+    ) -> None:
+        """Upsert the research loop state (singleton row, id='main')."""
+        assert self._conn
+        now = __import__("datetime").datetime.now(
+            __import__("datetime").timezone.utc
+        ).isoformat()
+        cursor = await self._conn.execute(
+            "SELECT id FROM research_loop_state WHERE id='main'"
+        )
+        row = await cursor.fetchone()
+        if row:
+            await self._conn.execute(
+                """UPDATE research_loop_state
+                   SET all_seen=?, history=?, updated_at=?
+                   WHERE id='main'""",
+                (json.dumps(all_seen), json.dumps(history, default=str), now),
+            )
+        else:
+            await self._conn.execute(
+                """INSERT INTO research_loop_state
+                   (id, all_seen, history, created_at, updated_at)
+                   VALUES ('main', ?, ?, ?, ?)""",
+                (json.dumps(all_seen), json.dumps(history, default=str), now, now),
+            )
+        await self._conn.commit()
+
+    async def load_research_loop_state(self) -> dict[str, Any] | None:
+        """Load the persisted research loop state, or None if empty."""
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM research_loop_state WHERE id='main'"
+        )
+        row = await cursor.fetchone()
+        if not row:
+            return None
+        d = self._row_to_dict(row)
+        # Ensure all_seen and history are proper types
+        if isinstance(d.get("all_seen"), str):
+            d["all_seen"] = json.loads(d["all_seen"])
+        if isinstance(d.get("history"), str):
+            d["history"] = json.loads(d["history"])
+        return d
 
     # ── Legacy goal compat (delegates to projects) ───────────────
 

@@ -4,21 +4,24 @@ Exposes the Mine→Analyze→Register→Execute→Analyze cycle as a proper
 pipeline class with API-friendly methods. Used by the research-loop
 API router and can also be imported by the Experiment Builder.
 
-State is kept in-memory for now; Phase 5 will add database persistence.
+Phase 6: Insight-driven experiment selection (May 2026).
+Phase 7: Database persistence via glossa_lab.database (May 2026).
 """
 from __future__ import annotations
 
+import asyncio
 import json
-import math
-import random
+import logging
 import re
 import time
 import urllib.parse
 import urllib.request
-from collections import Counter, defaultdict
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Generator
+
+logger = logging.getLogger(__name__)
 
 _REPO = Path(__file__).resolve().parents[3]
 
@@ -95,16 +98,150 @@ EXPERIMENT_NAMES = [
     "compound_vs_formula", "suffix_after_animal", "cross_site_formula_overlap",
 ]
 
+# ── Phase 6: Insight type → best experiment mapping ─────────────────
+# Each insight type (extracted from paper titles during mining) maps to
+# the experiments most likely to exploit that kind of evidence.
+INSIGHT_TO_EXPERIMENTS: dict[str, list[str]] = {
+    "reading":    ["reading_frequency_zipf", "rare_sign_neighbor_profile",
+                   "blocker_sign_context", "decoded_text_repetition"],
+    "guild":      ["motif_title_correlation", "title_root_suffix_trigram",
+                   "site_specific_formula", "suffix_after_animal"],
+    "compound":   ["compound_semantic_coherence", "compound_vs_formula",
+                   "suffix_chain_depth", "title_root_suffix_trigram"],
+    "formula":    ["site_specific_formula", "inscription_uniqueness",
+                   "cross_site_formula_overlap", "compound_vs_formula"],
+    "function":   ["motif_title_correlation", "motif_reading_mutual_info",
+                   "position_entropy_by_site", "suffix_after_animal"],
+    "morphology": ["suffix_chain_depth", "title_root_suffix_trigram",
+                   "compound_semantic_coherence", "decoded_text_repetition"],
+}
+
 
 class ResearchLoop:
-    """Stateful research loop that yields cycle results."""
+    """Stateful research loop that yields cycle results.
 
-    def __init__(self, max_cycles: int = 15):
+    Phase 7: When *db* is provided, ``all_seen`` and ``history`` are
+    loaded from the database on construction and persisted after every
+    cycle so state survives across server restarts.
+    """
+
+    def __init__(self, max_cycles: int = 15, *, db: Any | None = None):
         self.max_cycles = max_cycles
         self.all_seen: set[str] = set()
         self.history: list[dict[str, Any]] = []
         self.running = False
         self.should_stop = False
+        self._db = db
+        self._used_experiments: set[str] = set()  # Phase 6: track used this session
+
+        # Phase 7: try to restore persisted state
+        if db is not None:
+            self._load_persisted_state()
+
+    # ── Phase 7 helpers ─────────────────────────────────────────────
+
+    def _load_persisted_state(self) -> None:
+        """Load all_seen + history from DB (sync wrapper)."""
+        if self._db is None:
+            return
+        try:
+            loop = asyncio.get_event_loop()
+            if loop.is_running():
+                # We're inside an async context — schedule as a task
+                # (called from __init__ before run(), so this is fine)
+                import concurrent.futures
+                with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
+                    state = pool.submit(self._load_sync).result(timeout=5)
+            else:
+                state = loop.run_until_complete(self._db.load_research_loop_state())
+        except Exception:
+            state = None
+
+        if state:
+            self.all_seen = set(state.get("all_seen") or [])
+            self.history = list(state.get("history") or [])
+            self._used_experiments = {
+                h["experiment"] for h in self.history if h.get("experiment")
+            }
+            logger.info(
+                "Restored research loop state: %d seen papers, %d history entries",
+                len(self.all_seen), len(self.history),
+            )
+
+    def _load_sync(self) -> dict | None:
+        loop = asyncio.new_event_loop()
+        try:
+            return loop.run_until_complete(self._db.load_research_loop_state())
+        finally:
+            loop.close()
+
+    def _persist_state(self) -> None:
+        """Save all_seen + history to DB (sync wrapper, best-effort)."""
+        if self._db is None:
+            return
+        try:
+            loop = asyncio.get_event_loop()
+            if loop.is_running():
+                import concurrent.futures
+                with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
+                    pool.submit(self._save_sync).result(timeout=5)
+            else:
+                loop.run_until_complete(self._db.save_research_loop_state(
+                    all_seen=list(self.all_seen),
+                    history=self.history,
+                ))
+        except Exception as exc:
+            logger.warning("Failed to persist research loop state: %s", exc)
+
+    def _save_sync(self) -> None:
+        loop = asyncio.new_event_loop()
+        try:
+            loop.run_until_complete(self._db.save_research_loop_state(
+                all_seen=list(self.all_seen),
+                history=self.history,
+            ))
+        finally:
+            loop.close()
+
+    # ── Phase 6: insight-driven experiment selection ─────────────────
+
+    def _select_experiment(self, insights: list[dict], cycle: int) -> str:
+        """Pick the best experiment based on mined insights.
+
+        Strategy:
+        1. Tally insight types from this cycle's mining results.
+        2. For the most common insight type, pick the highest-priority
+           experiment from INSIGHT_TO_EXPERIMENTS that hasn't been used
+           recently (within the last ``len(EXPERIMENT_NAMES)`` cycles).
+        3. Fall back to round-robin rotation if no insights or all
+           candidates are exhausted.
+        """
+        # Build insight type histogram
+        type_counts: Counter[str] = Counter(i.get("type", "") for i in insights)
+
+        # Recently-used set (last N cycles)
+        recent_window = max(5, len(EXPERIMENT_NAMES))
+        recent_exps = {
+            h["experiment"] for h in self.history[-recent_window:]
+            if h.get("experiment")
+        }
+
+        # Try each insight type in descending frequency
+        for itype, _count in type_counts.most_common():
+            candidates = INSIGHT_TO_EXPERIMENTS.get(itype, [])
+            for exp in candidates:
+                if exp not in recent_exps:
+                    return exp
+
+        # Fallback: round-robin, skipping recent
+        idx = (len(self.history) + cycle - 1) % len(EXPERIMENT_NAMES)
+        for offset in range(len(EXPERIMENT_NAMES)):
+            candidate = EXPERIMENT_NAMES[(idx + offset) % len(EXPERIMENT_NAMES)]
+            if candidate not in recent_exps:
+                return candidate
+
+        # All exhausted — just rotate
+        return EXPERIMENT_NAMES[cycle % len(EXPERIMENT_NAMES)]
 
     def stop(self) -> None:
         self.should_stop = True
@@ -119,15 +256,17 @@ class ResearchLoop:
                 break
 
             gap = GAP_TOPICS[(cycle - 1) % len(GAP_TOPICS)]
-            template = EXPERIMENT_NAMES[(cycle - 1) % len(EXPERIMENT_NAMES)]
 
             # 1. MINE
             papers, insights = self._mine(gap)
 
-            # 2. REGISTER + EXECUTE
+            # 2. Phase 6: select experiment based on insights
+            template = self._select_experiment(insights, cycle)
+
+            # 3. REGISTER + EXECUTE
             verdict = self._execute(template)
 
-            # 3. ANALYZE
+            # 4. ANALYZE
             is_new = verdict != (self.history[-1]["verdict"] if self.history else "")
 
             entry = {
@@ -136,11 +275,17 @@ class ResearchLoop:
                 "gap_targeted": gap["name"],
                 "n_papers": len(papers),
                 "n_insights": len(insights),
+                "insight_types": dict(Counter(i.get("type", "") for i in insights)),
                 "experiment": template,
+                "selection_method": "insight" if insights else "rotation",
                 "verdict": verdict,
                 "is_new_info": is_new,
             }
             self.history.append(entry)
+
+            # Phase 7: persist after each cycle
+            self._persist_state()
+
             yield entry
 
         self.running = False

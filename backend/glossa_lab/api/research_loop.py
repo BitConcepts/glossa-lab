@@ -25,8 +25,9 @@ _loop_instance = None
 def _get_loop():
     global _loop_instance
     if _loop_instance is None:
+        from glossa_lab.database import get_db
         from glossa_lab.pipelines.research_loop import ResearchLoop
-        _loop_instance = ResearchLoop()
+        _loop_instance = ResearchLoop(db=get_db())
     return _loop_instance
 
 
@@ -35,10 +36,11 @@ async def start_loop(
     max_cycles: int = Query(15, ge=1, le=100),
 ) -> StreamingResponse:
     """Start the research loop and stream cycle results as SSE events."""
+    from glossa_lab.database import get_db
     from glossa_lab.pipelines.research_loop import ResearchLoop
 
     global _loop_instance
-    _loop_instance = ResearchLoop(max_cycles=max_cycles)
+    _loop_instance = ResearchLoop(max_cycles=max_cycles, db=get_db())
     loop = _loop_instance
 
     async def event_stream():

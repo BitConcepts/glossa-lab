@@ -180,6 +180,12 @@ def test_db_persistence_survives_restart(tmp_db):
             entries1 = list(loop1.run())
         assert len(entries1) == 3
 
+        # Persist state (in production the API layer does this; in tests we do it manually)
+        await tmp_db.save_research_loop_state(
+            all_seen=list(loop1.all_seen),
+            history=loop1.history,
+        )
+
         # Verify state was persisted
         state = await tmp_db.load_research_loop_state()
         assert state is not None
@@ -215,6 +221,12 @@ def test_db_persistence_survives_restart(tmp_db):
         # Guild experiments should be selected (not reading experiments from phase 1)
         for e in entries2:
             assert e["experiment"] in INSIGHT_TO_EXPERIMENTS["guild"]
+
+        # Persist phase 2 state (API layer does this in production)
+        await tmp_db.save_research_loop_state(
+            all_seen=list(loop2.all_seen),
+            history=loop2.history,
+        )
 
         # Verify persisted state has all 5 entries
         final_state = await tmp_db.load_research_loop_state()

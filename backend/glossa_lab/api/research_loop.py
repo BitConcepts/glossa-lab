@@ -233,7 +233,9 @@ def _build_synthesis(loop, foundation_result: dict[str, Any] | None = None) -> d
 
     history = loop.history or []
     if not history:
-        return {"summary": "No cycles completed.", "proposals": []}
+        return {"summary": "No cycles completed.", "proposals": [],
+                "needle_moved": False, "anchor_candidates": [],
+                "candidate_counts": {"total": 0, "staged": 0, "blocked": 0}}
 
     # Aggregate insight types across all cycles
     all_types: dict[str, int] = {}
@@ -295,17 +297,54 @@ def _build_synthesis(loop, foundation_result: dict[str, Any] | None = None) -> d
             ),
         })
 
+    # Candidate summary from loop
+    candidates = getattr(loop, "anchor_candidates", [])
+    staged = [c for c in candidates if c.get("review_status") == "staged"]
+    blocked = [c for c in candidates if c.get("review_status") == "blocked"]
+    needle_moved = len(staged) > 0
+
+    # Add candidate-based proposals
+    if staged:
+        proposals.insert(0, {
+            "action": "review_candidates",
+            "experiment": "",
+            "rationale": (
+                f"{len(staged)} staged anchor candidate(s) ready for review "
+                f"in outputs/anchor_staging.json. "
+                f"Top: {staged[0]['sign']}={staged[0]['proposed_reading']} "
+                f"({staged[0]['evidence_type']})"
+            ),
+        })
+    elif not needle_moved:
+        proposals.append({
+            "action": "expand_mining",
+            "experiment": "",
+            "rationale": (
+                "No anchor candidates staged. Consider expanding gap queries "
+                "or running blocker_sign_context to find staging opportunities."
+            ),
+        })
+
+    path_signals = getattr(loop, "path_signals", {})
+
     return {
         "summary": (
             f"{len(history)} cycles completed. "
             f"{sum(h['n_papers'] for h in history)} papers mined, "
             f"{sum(h['n_insights'] for h in history)} insights extracted. "
-            f"{len(new_verdicts)} experiments produced new results, "
-            f"{len(repeat_verdicts)} repeated."
+            f"{len(staged)} candidates staged, {len(blocked)} blocked."
         ),
+        "needle_moved": needle_moved,
         "insight_type_totals": all_types,
         "unexplored_types": sorted(unexplored_types),
+        "path_signals": path_signals,
         "proposals": proposals,
+        "anchor_candidates": candidates[:20],  # top 20 for SSE payload
+        "candidate_counts": {
+            "total": len(candidates),
+            "staged": len(staged),
+            "blocked": len(blocked),
+        },
         "foundation_check": foundation_result or {"skipped": True, "reason": "not run"},
     }
 

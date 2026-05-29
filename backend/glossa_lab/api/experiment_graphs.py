@@ -153,6 +153,41 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
 
     async def _stream() -> AsyncGenerator[str, None]:
         _t0 = datetime.now(UTC)
+        db = _db_mod.get_db()
+
+        # ── Duplicate-run guard ────────────────────────────────────────────────
+        # Reject immediately if the same experiment is already running.
+        # Checks by exp_id in params so two different job IDs don't both run.
+        if db is not None:
+            try:
+                _cursor = await db._conn.execute(  # noqa: SLF001
+                    "SELECT id FROM jobs "
+                    "WHERE pipeline = 'exp_run' "
+                    "AND status = 'running' "
+                    "AND json_extract(params, '$.exp_id') = ?",
+                    (exp_id,),
+                )
+                _existing = await _cursor.fetchone()
+                if _existing:
+                    existing_job_id = _existing[0]
+                    logger.warning(
+                        "Duplicate exp_run rejected: '%s' already running as job %s",
+                        exp_id, existing_job_id,
+                    )
+                    yield _sse({
+                        "event": "run_error",
+                        "message": (
+                            f"Experiment '{exp_id}' is already running "
+                            f"(job {existing_job_id}). "
+                            "Wait for it to complete or cancel it before starting again."
+                        ),
+                        "duplicate": True,
+                        "existing_job_id": existing_job_id,
+                    })
+                    return
+            except Exception as _de:  # noqa: BLE001
+                logger.warning("Duplicate-run check failed (non-critical): %s", _de)
+
         # ── Detect GPU / compute device at job creation time ───────────────────
         try:
             from glossa_lab.accelerate import gpu_info as _gpu_info  # noqa: PLC0415
@@ -164,7 +199,6 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
 
         # ── Create a Job record so the run appears in the Jobs panel ────────────
         job_id: str | None = None
-        db = _db_mod.get_db()
         if db is not None:
             try:
                 job = await db.create_job(

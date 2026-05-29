@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { fmtTime, fmtDateTimeCompact } from "../dateFormat";
+import { fmtTime, fmtDateTimeCompact, fmtDuration } from "../dateFormat";
 import {
   cancelJob,
   clearJobs,
@@ -523,8 +523,8 @@ export function JobsView() {
                       </div>
                       <span style={{ fontSize: 10, color: "#6b7280", whiteSpace: "nowrap" }}>
                         {nodesDone}/{nodeCount} nodes{pct !== null ? ` (${pct}%)` : ""}
-                        {elapsedSec !== null && ` · ${elapsedSec}s`}
-                        {etaSec !== null && ` · ~${etaSec}s left`}
+                        {elapsedSec !== null && ` · ${fmtDuration(elapsedSec)}`}
+                        {etaSec !== null && ` · ~${fmtDuration(etaSec)} left`}
                       </span>
                     </div>
                   )}
@@ -568,7 +568,7 @@ export function JobsView() {
                     {j.status}
                   </span>
                   {j.status === "running" && elapsedSec !== null && !isExpRun && (
-                    <div style={{ fontSize: 10, color: "#9ca3af" }}>{elapsedSec}s elapsed</div>
+                    <div style={{ fontSize: 10, color: "#9ca3af" }}>{fmtDuration(elapsedSec ?? 0)} elapsed</div>
                   )}
                 </Td>
                 <Td>{fmtDateTimeCompact(j.created_at)}</Td>

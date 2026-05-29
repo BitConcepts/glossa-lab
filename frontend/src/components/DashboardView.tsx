@@ -814,7 +814,14 @@ export function DashboardView() {
       )}
 
       {/* Decipherment Progress Panel */}
-      <DeciphermentPanel />
+      <DeciphermentPanel onAction={(label, actionType, params, rationale) =>
+        void applyAction({
+          label,
+          action_type: actionType as import("../api").DashboardActionType,
+          params,
+          rationale: rationale ?? "",
+        }, `decipher-${label.slice(0, 30)}`)
+      } />
 
       {/* Integrated Research Loop */}
       <ResearchLoopPanel />

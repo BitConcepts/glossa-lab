@@ -13,11 +13,16 @@ from __future__ import annotations
 import asyncio
 import json
 import logging
+import subprocess
+import sys
 from datetime import UTC, datetime
+from pathlib import Path
 from typing import Any
 
 from fastapi import APIRouter, Query
 from fastapi.responses import StreamingResponse
+
+_REPO = Path(__file__).resolve().parents[3]
 
 router = APIRouter(prefix="/api/v1/research-loop", tags=["research-loop"])
 _log = logging.getLogger("glossa_lab.api.research_loop")
@@ -36,18 +41,75 @@ def _get_loop():
 
 
 async def _persist(loop) -> None:
-    """Save loop state to DB (called from async context — no thread issues)."""
+    """Save loop state to DB (called from async context — no thread issues).
+
+    all_seen is intentionally NOT persisted (per-job only); only history
+    is saved so experiment selection state survives across server restarts.
+    """
     from glossa_lab.database import get_db
     db = get_db()
     if db is None:
         return
     try:
         await db.save_research_loop_state(
-            all_seen=list(loop.all_seen),
+            all_seen=[],
             history=loop.history,
         )
     except Exception as exc:  # noqa: BLE001
         _log.warning("Failed to persist research loop state: %s", exc)
+
+
+async def _run_foundation_check() -> dict[str, Any]:
+    """Run foundation_check.py as a subprocess and return a compact summary.
+
+    Runs in a thread executor so the async event loop is not blocked.
+    Timeout: 90 s (covers CSV parsing + JSON reads across all checks).
+    Returns a dict with n_ok/n_fail/n_warn/verdict and any failed check labels.
+    """
+    script = _REPO / "backend" / "scripts" / "foundation_check.py"
+    report_path = _REPO / "reports" / "foundation_check_report.json"
+
+    if not script.exists():
+        _log.warning("Foundation check skipped — script not found: %s", script)
+        return {"skipped": True, "reason": "foundation_check.py not found"}
+
+    def _run() -> subprocess.CompletedProcess:  # type: ignore[type-arg]
+        return subprocess.run(
+            [sys.executable, str(script)],
+            capture_output=True, text=True, timeout=90,
+            cwd=str(_REPO),
+        )
+
+    loop = asyncio.get_event_loop()
+    try:
+        proc = await loop.run_in_executor(None, _run)
+        if report_path.exists():
+            report = json.loads(report_path.read_text(encoding="utf-8"))
+            n_fail = report.get("n_fail", 0)
+            result = {
+                "n_ok":    report.get("n_ok", 0),
+                "n_fail":  n_fail,
+                "n_warn":  report.get("n_warn", 0),
+                "verdict": report.get("verdict", "UNKNOWN"),
+                "failed":  report.get("failed", []),
+            }
+            _log.info(
+                "Foundation check complete: %d ok, %d fail, %d warn",
+                result["n_ok"], n_fail, result["n_warn"],
+            )
+            return result
+        # Script ran but didn't write the report
+        return {
+            "skipped": False,
+            "returncode": proc.returncode,
+            "stderr": proc.stderr[:400] if proc.stderr else "",
+        }
+    except subprocess.TimeoutExpired:
+        _log.warning("Foundation check timed out after 90 s")
+        return {"skipped": True, "reason": "timeout after 90 s"}
+    except Exception as exc:  # noqa: BLE001
+        _log.warning("Foundation check failed: %s", exc)
+        return {"skipped": True, "reason": str(exc)}
 
 
 @router.post("/start")
@@ -141,8 +203,11 @@ async def start_loop(
         # Final persist
         await _persist(loop)
 
+        # ── Foundation check (post-loop integrity gate, pre-synthesis) ──
+        foundation_result = await _run_foundation_check()
+
         # ── Post-loop: synthesize results + propose next actions ────────
-        synthesis = _build_synthesis(loop)
+        synthesis = _build_synthesis(loop, foundation_result=foundation_result)
 
         # Trigger dashboard insight refresh (best-effort, non-blocking)
         try:
@@ -161,7 +226,7 @@ async def start_loop(
     )
 
 
-def _build_synthesis(loop) -> dict[str, Any]:
+def _build_synthesis(loop, foundation_result: dict[str, Any] | None = None) -> dict[str, Any]:
     """Generate a post-loop synthesis: what was found, what to do next."""
     from glossa_lab.pipelines.research_loop import INSIGHT_TO_EXPERIMENTS
 
@@ -215,6 +280,20 @@ def _build_synthesis(loop) -> dict[str, Any]:
         "rationale": "Refresh dashboard AI insights to incorporate new mining results.",
     })
 
+    # 4. Surface foundation check failures as top-priority proposals
+    if foundation_result and foundation_result.get("n_fail", 0) > 0:
+        failed_labels = ", ".join(
+            f.split(":")[0].replace("[FAIL] ", "") for f in foundation_result["failed"][:3]
+        )
+        proposals.insert(0, {
+            "action": "fix_foundation",
+            "experiment": "",
+            "rationale": (
+                f"Foundation check: {foundation_result['n_fail']} failure(s) — "
+                f"{failed_labels}. Resolve before next research loop run."
+            ),
+        })
+
     return {
         "summary": (
             f"{len(history)} cycles completed. "
@@ -226,6 +305,7 @@ def _build_synthesis(loop) -> dict[str, Any]:
         "insight_type_totals": all_types,
         "unexplored_types": sorted(unexplored_types),
         "proposals": proposals,
+        "foundation_check": foundation_result or {"skipped": True, "reason": "not run"},
     }
 
 

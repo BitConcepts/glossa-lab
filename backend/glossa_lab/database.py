@@ -1008,6 +1008,20 @@ class Database:
         await self.update_job_status(job["id"], "running")
         return job
 
+    async def peek_next_pending_job(self) -> dict[str, Any] | None:
+        """Return the oldest pending job WITHOUT claiming it (no status change).
+
+        Used by the resource-aware scheduler to inspect what would be run next
+        so it can check whether sufficient CPU/RAM/VRAM are available before
+        committing to the claim.
+        """
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM jobs WHERE status = 'pending' ORDER BY created_at ASC LIMIT 1"
+        )
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
     # ── Studies ────────────────────────────────────────────────
 
     async def create_study(

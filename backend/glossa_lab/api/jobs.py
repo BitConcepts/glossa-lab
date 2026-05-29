@@ -109,6 +109,66 @@ async def update_job(job_id: str, body: JobUpdate) -> JobResponse:
     return JobResponse(**(await db.get_job(job_id)))  # type: ignore[arg-type]
 
 
+@router.post("/jobs/{job_id}/pause")
+async def pause_job(job_id: str) -> JobResponse:
+    """Pause a job (pending → paused; running → paused in DB, caller must abort SSE stream)."""
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+    job = await db.get_job(job_id)
+    if job is None:
+        raise HTTPException(status_code=404, detail="Job not found")
+    if job["status"] not in ("pending", "running"):
+        raise HTTPException(status_code=409, detail=f"Cannot pause job with status '{job['status']}'")
+    await db.update_job_status(job_id, "paused")
+    return JobResponse(**(await db.get_job(job_id)))  # type: ignore[arg-type]
+
+
+@router.post("/jobs/{job_id}/resume")
+async def resume_job(job_id: str) -> JobResponse:
+    """Resume a paused job by re-queuing it as pending."""
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+    job = await db.get_job(job_id)
+    if job is None:
+        raise HTTPException(status_code=404, detail="Job not found")
+    if job["status"] != "paused":
+        raise HTTPException(status_code=409, detail=f"Cannot resume job with status '{job['status']}'")
+    await db.update_job_status(job_id, "pending")
+    return JobResponse(**(await db.get_job(job_id)))  # type: ignore[arg-type]
+
+
+@router.post("/jobs/pause-all")
+async def pause_all_jobs() -> dict[str, int]:
+    """Pause all pending and running jobs."""
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+    rows = await db.list_jobs()
+    paused = 0
+    for job in rows:
+        if job["status"] in ("pending", "running"):
+            await db.update_job_status(job["id"], "paused")
+            paused += 1
+    return {"paused": paused}
+
+
+@router.post("/jobs/resume-all")
+async def resume_all_jobs() -> dict[str, int]:
+    """Resume all paused jobs by re-queuing them as pending."""
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+    rows = await db.list_jobs()
+    resumed = 0
+    for job in rows:
+        if job["status"] == "paused":
+            await db.update_job_status(job["id"], "pending")
+            resumed += 1
+    return {"resumed": resumed}
+
+
 @router.delete("/jobs", status_code=200)
 async def clear_jobs(finished_only: bool = False) -> ClearJobsResponse:
     """Delete jobs.  Pass ?finished_only=true to keep running/pending jobs."""

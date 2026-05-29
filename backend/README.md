@@ -34,19 +34,40 @@ The backend is the **primary runtime authority** for the application. It owns co
 - tray and frontend communicate through explicit API or IPC boundaries
 - platform-specific startup logic does **not** belong here unless it is truly backend-runtime-specific
 
-## Planned structure
+## Structure
 
-Planned future additions include:
+```
+backend/
+├── glossa_lab/          ← main application package
+│   ├── api/             ← FastAPI routers (jobs, experiments, discovery, ...)
+│   ├── pipelines/       ← background pipeline implementations
+│   ├── discovery/       ← literature discovery engine
+│   ├── engine.py        ← resource-aware job scheduler
+│   ├── database.py      ← SQLite async layer
+│   └── main.py          ← app factory + lifespan
+├── glossa_mcp/          ← MCP server for Warp/Oz agent integration
+│   └── server.py        ← 27 FastMCP tools (jobs, experiments, research loop, ...)
+├── scripts/             ← research and utility scripts
+├── reports/             ← backend-side result files
+└── tests/
+```
 
-- Python project configuration
-- application package
-- API layer
-- service entrypoint
-- job runner / worker layer
-- pipeline modules
-- config module
-- logging and diagnostics
-- tests
+### MCP server
+
+The `glossa_mcp/server.py` module exposes all major backend operations as MCP
+tools. Add it in Warp via **Settings → Agents → MCP Servers**:
+
+```json
+{
+  "glossa-lab": {
+    "command": "/path/to/venv/Scripts/python.exe",
+    "args": ["/path/to/backend/glossa_mcp/server.py"]
+  }
+}
+```
+
+Requires the backend to be running. Defaults to `http://127.0.0.1:8001`;
+override with `GLOSSA_BASE_URL` env var.
 
 ## Development expectations
 

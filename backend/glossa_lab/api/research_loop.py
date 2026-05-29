@@ -303,14 +303,7 @@ def _build_synthesis(loop, foundation_result: dict[str, Any] | None = None) -> d
                 "rationale": f"{top_type} was the dominant insight ({all_types[top_type]} total) — run {unused[0]} for deeper analysis.",
             })
 
-    # 3. Always propose a dashboard insight refresh
-    proposals.append({
-        "action": "refresh_insights",
-        "experiment": "",
-        "rationale": "Refresh dashboard AI insights to incorporate new mining results.",
-    })
-
-    # 4. Surface foundation check failures as top-priority proposals
+    # 3. Surface foundation check failures
     if foundation_result and foundation_result.get("n_fail", 0) > 0:
         failed_labels = ", ".join(
             f.split(":")[0].replace("[FAIL] ", "") for f in foundation_result["failed"][:3]

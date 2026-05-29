@@ -797,6 +797,8 @@ export function DashboardView() {
             sub="open builder" onClick={() => navigate("builder")} />
           <CounterTile label="Experiments"      value={data.n_experiments}  emoji="🔀"
             sub="graph registry" onClick={() => navigate("experiments")} />
+          <CounterTile label="Atomic nodes"     value={data.n_atomic_nodes ?? 0}  emoji="⚛️"
+            sub="registered" onClick={() => navigate("experiments")} />
           <CounterTile label="Saved findings"   value={data.by_status.saved ?? 0}
             emoji="★" sub="for follow-up" onClick={() => navigate("discovery")} />
           <CounterTile label="Hypotheses"       value={data.n_hypotheses ?? data.by_kind.hypothesis ?? 0}

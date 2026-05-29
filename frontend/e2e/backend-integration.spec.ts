@@ -775,6 +775,146 @@ test.describe("Evidence Graph UI (with backend)", () => {
   });
 });
 
+// ── Research Loop API ──────────────────────────────────────────────────────────
+
+test.describe("Research Loop API", () => {
+  test("GET /status returns valid structure", async ({ request }) => {
+    const resp = await request.get("/api/v1/research-loop/status");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body).toHaveProperty("running");
+    expect(body).toHaveProperty("cycles_completed");
+    expect(body).toHaveProperty("max_cycles");
+    expect(body).toHaveProperty("total_papers");
+    expect(body).toHaveProperty("total_insights");
+    expect(body).toHaveProperty("history");
+    expect(typeof body.running).toBe("boolean");
+    expect(typeof body.cycles_completed).toBe("number");
+    expect(Array.isArray(body.history)).toBeTruthy();
+  });
+
+  test("GET /results returns valid structure with protocol field", async ({ request }) => {
+    const resp = await request.get("/api/v1/research-loop/results");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body).toHaveProperty("protocol");
+    expect(body.protocol).toBe("integrated_research_loop");
+    expect(body).toHaveProperty("cycles_run");
+    expect(body).toHaveProperty("max_cycles");
+    expect(body).toHaveProperty("total_papers_mined");
+    expect(body).toHaveProperty("total_insights");
+    expect(body).toHaveProperty("n_new_experiments");
+    expect(body).toHaveProperty("history");
+    expect(Array.isArray(body.history)).toBeTruthy();
+  });
+
+  test("POST /stop returns stopping status", async ({ request }) => {
+    const resp = await request.post("/api/v1/research-loop/stop");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body).toHaveProperty("status");
+    expect(body.status).toBe("stopping");
+    expect(body).toHaveProperty("message");
+  });
+
+  test("POST /start returns SSE stream (1-cycle, no network)", async ({ request }) => {
+    // Start with 1 cycle — the loop will attempt to mine from OpenAlex
+    // which may or may not succeed in CI, but the SSE structure should be valid
+    const resp = await request.post("/api/v1/research-loop/start?max_cycles=1");
+    expect(resp.status()).toBe(200);
+    const ct = resp.headers()["content-type"];
+    expect(ct).toContain("text/event-stream");
+
+    // Read the full response body
+    const text = await resp.text();
+    // Should contain at least one "data: " line
+    expect(text).toContain("data: ");
+
+    // Parse the SSE events
+    const lines = text.split("\n").filter((l: string) => l.startsWith("data: "));
+    expect(lines.length).toBeGreaterThanOrEqual(1);
+
+    // Last event should be the completion event
+    const lastEvent = JSON.parse(lines[lines.length - 1].slice(6));
+    expect(lastEvent).toHaveProperty("type");
+    expect(lastEvent.type).toBe("complete");
+    expect(lastEvent).toHaveProperty("protocol");
+    expect(lastEvent.protocol).toBe("integrated_research_loop");
+  });
+
+  test("after start, status shows cycles_completed >= 1", async ({ request }) => {
+    // The previous test ran 1 cycle, so status should reflect it
+    const resp = await request.get("/api/v1/research-loop/status");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body.cycles_completed).toBeGreaterThanOrEqual(1);
+  });
+
+  test("after start, results show history with insight_types and selection_method", async ({ request }) => {
+    const resp = await request.get("/api/v1/research-loop/results");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body.cycles_run).toBeGreaterThanOrEqual(1);
+    // Check the first cycle entry has Phase 6 fields
+    const entry = body.history[0];
+    expect(entry).toHaveProperty("cycle");
+    expect(entry).toHaveProperty("gap_targeted");
+    expect(entry).toHaveProperty("experiment");
+    expect(entry).toHaveProperty("n_papers");
+    expect(entry).toHaveProperty("n_insights");
+    expect(entry).toHaveProperty("insight_types");
+    expect(entry).toHaveProperty("selection_method");
+    expect(["insight", "rotation"]).toContain(entry.selection_method);
+    expect(entry).toHaveProperty("verdict");
+    expect(entry).toHaveProperty("is_new_info");
+  });
+});
+
+// ── Research Loop — Dashboard & Atomic Nodes ──────────────────────────────────
+
+test.describe("Research Loop Dashboard (with backend)", () => {
+  test("dashboard highlights include n_atomic_nodes", async ({ request }) => {
+    const resp = await request.get("/api/v1/dashboard/highlights");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body).toHaveProperty("n_atomic_nodes");
+    expect(body.n_atomic_nodes).toBeGreaterThanOrEqual(400);
+  });
+
+  test("atomic nodes palette includes ResearchLoopRunner", async ({ request }) => {
+    const resp = await request.get("/api/v1/experiment-graph/palette");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    const ids = body.map((n: { id: string }) => n.id);
+    expect(ids).toContain("ResearchLoopRunner");
+  });
+
+  test("ResearchLoopRunner palette entry has correct metadata", async ({ request }) => {
+    const resp = await request.get("/api/v1/experiment-graph/palette");
+    const body = await resp.json();
+    const runner = body.find((n: { id: string }) => n.id === "ResearchLoopRunner");
+    expect(runner).toBeTruthy();
+    expect(runner.category).toBe("Research");
+    expect(runner.name).toBe("Research Loop Runner");
+  });
+
+  test("Research Loop panel is visible on dashboard page", async ({ page }) => {
+    await page.goto("/");
+    await page.waitForTimeout(2000);
+    await expect(
+      page.getByText("Integrated Research Loop").first()
+    ).toBeVisible({ timeout: 8000 });
+  });
+
+  test("Atomic nodes counter shows 400+", async ({ page }) => {
+    await page.goto("/");
+    await page.waitForTimeout(2000);
+    await expect(
+      page.getByText(/Atomic nodes/i).first()
+    ).toBeVisible({ timeout: 5000 });
+  });
+});
+
 test.describe("Status view - system metrics", () => {
   test("status page shows system metrics sections", async ({ page }) => {
     await page.goto("/");

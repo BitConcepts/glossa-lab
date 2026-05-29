@@ -1645,3 +1645,88 @@ Open TODOs:
 Next step:
   Frontend integration test of the research loop panel, or continue
   decipherment work pending ICIT corpus / expert responses.
+
+
+## [2026-05-29] Entry — Research Loop: Issue Diagnosis, Cleanup, and Foundation Check Integration
+
+Objective:
+Verify last research loop operation, identify and fix all issues, perform
+cleanups, and integrate the foundation check into the post-loop flow.
+
+What was done:
+
+1. SESSION STARTUP + VERIFICATION:
+   - Read AGENTS.md, governance docs, LEDGER.md tail (lazy-load protocol)
+   - Verified all 4 research loop files compile OK (py_compile)
+   - Confirmed DB schema V21, research_loop_state populated, 410 ATOMIC_NODES
+   - ResearchLoopRunner registered, INSIGHT_TO_EXPERIMENTS correct
+
+2. RESEARCH LOOP DIAGNOSIS:
+   - Queried research_loop_state: 75 history entries, all_seen=972 titles
+   - Only cycles 1-15 (first job, 12:51 UTC) produced papers/insights
+   - Cycles 16-75 = 0 papers: all_seen accumulated permanently across jobs,
+     exhausting the entire OpenAlex query pool for these 15 gap topics
+   - 3 experiments fail with 'Need two freq_maps' error:
+     compound_semantic_coherence, motif_reading_mutual_info, compound_vs_formula
+     all mapped to kl_comparison which requires two pre-wired freq_map inputs
+   - scripts/check_latest_run.py left untracked (debug artefact)
+
+3. FIXES AND CLEANUP (commit 8072ebe):
+   - TEMPLATE_TO_GRAPH: remapped 3 broken kl_comparison experiments to
+     positional_profile_analysis / bigram_analysis (self-contained, always run)
+   - _load_persisted_state: no longer restores all_seen from DB; each job
+     starts fresh for mining, only history persists
+   - _persist_state / _save_sync: save all_seen=[] (not accumulated)
+   - run(): _dry_streak counter — exits after 3 consecutive zero-paper cycles
+   - DB: cleared stale 972-entry all_seen directly (SQL UPDATE)
+   - Deleted scripts/check_latest_run.py
+
+4. FOUNDATION CHECK INTEGRATION (commit 5320660):
+   - Added _run_foundation_check() to api/research_loop.py:
+     subprocess in thread executor, 90s timeout (H9), reads
+     reports/foundation_check_report.json, returns compact summary
+   - Wired into event_stream() after final persist, before _build_synthesis
+   - _build_synthesis() updated: foundation_check field always in synthesis;
+     n_fail > 0 inserts fix_foundation as top-priority proposal
+   - _persist() updated to save all_seen=[] (consistent with pipeline)
+
+Files changed:
+  backend/glossa_lab/pipelines/research_loop.py (commit 8072ebe)
+  backend/glossa_lab/api/research_loop.py (commit 5320660)
+  backend/data/glossa.db (all_seen cleared directly, not git-tracked)
+  scripts/check_latest_run.py (deleted, untracked artefact)
+  LEDGER.md (this entry)
+
+Checks run:
+  - py_compile: research_loop.py, api/research_loop.py — OK
+  - Import: ResearchLoop, TEMPLATE_TO_GRAPH, INSIGHT_TO_EXPERIMENTS — OK
+  - kl_comparison absent from TEMPLATE_TO_GRAPH confirmed
+  - All 15 EXPERIMENT_NAMES have valid TEMPLATE_TO_GRAPH entries confirmed
+  - _REPO resolves to correct repo root, foundation_check.py exists — OK
+  - DB all_seen cleared (length=2, i.e. '[]') confirmed
+
+Results:
+  PASS: all checks
+  2 commits pushed to phase-next (8072ebe, 5320660)
+
+Token estimate: medium
+
+Open TODOs:
+  - [ ] Frontend integration test: run research loop from UI, verify
+        (a) mining works again with all_seen reset,
+        (b) no kl_comparison errors in cycle verdicts,
+        (c) foundation_check field appears in synthesis SSE complete event
+  - [ ] Contact Suresh Kolichala via Academia.edu with review packet
+  - [ ] Upload v3 preprint to Zenodo, Academia.edu, ResearchGate
+  - [ ] Check SSRN status (submission ID 6827038)
+  - [ ] Tag v3.0.0-preprint on main after merge
+
+Risks:
+  - foundation_check.py has hardcoded REPO path (Windows absolute path);
+    will break if repo is moved or run on another machine
+  - Foundation check adds ~10-30 s to post-loop time (within 90 s timeout)
+
+Next step:
+  Run a research loop from the UI (15 cycles) to end-to-end verify all fixes.
+  Observe SSE stream: expect non-zero papers in cycles 1-15, no kl_comparison
+  errors in verdicts, and foundation_check block in the 'complete' event.

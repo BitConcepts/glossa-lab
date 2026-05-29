@@ -756,7 +756,13 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
       });
 
       // Auto-arrange on load so the graph is always presented in a clean layout
-      setNodes(autoArrangeNodes(mappedNodes as Node[], mappedEdges) as Node<ExpNodeData>[]);
+      const heightFn = (data: Record<string, unknown>): number => {
+        const d = data as ExpNodeData;
+        const portRows = Math.max(d.inputs?.length ?? 0, d.outputs?.length ?? 0);
+        const paramRows = Math.min(Object.keys(d.params_schema?.properties ?? {}).length, 4);
+        return HEADER_H + portRows * PORT_ROW_H + paramRows * 22 + 20;
+      };
+      setNodes(autoArrangeNodes(mappedNodes as Node[], mappedEdges, { nodeHeightFn: heightFn }) as Node<ExpNodeData>[]);
       setEdges(mappedEdges);
       setFitTrigger(t => t + 1);
     } catch { /* ignore */ }
@@ -1051,11 +1057,20 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     document.addEventListener("mousemove", onMove); document.addEventListener("mouseup", onUp);
   }, [expsH]);
 
+  // Height estimator for ExpNode — used by auto-arrange to avoid vertical overlap
+  // HEADER_H + max(inputs, outputs) * PORT_ROW_H + 28 for param preview rows
+  const expNodeHeight = useCallback((data: Record<string, unknown>): number => {
+    const d = data as ExpNodeData;
+    const portRows = Math.max(d.inputs?.length ?? 0, d.outputs?.length ?? 0);
+    const paramRows = Math.min(Object.keys(d.params_schema?.properties ?? {}).length, 4);
+    return HEADER_H + portRows * PORT_ROW_H + paramRows * 22 + 20;
+  }, []);
+
   // Auto-arrange
   const doArrange = useCallback(() => {
-    setNodes(prev => autoArrangeNodes(prev, edges) as Node<ExpNodeData>[]);
+    setNodes(prev => autoArrangeNodes(prev, edges, { nodeHeightFn: expNodeHeight }) as Node<ExpNodeData>[]);
     setFitTrigger(t => t + 1);
-  }, [edges]);
+  }, [edges, expNodeHeight]);
 
   // Import/export helpers
   const importRef = useRef<HTMLInputElement>(null);

@@ -881,16 +881,16 @@ test.describe("Research Loop Dashboard (with backend)", () => {
     expect(body.n_atomic_nodes).toBeGreaterThanOrEqual(400);
   });
 
-  test("atomic nodes palette includes ResearchLoopRunner", async ({ request }) => {
-    const resp = await request.get("/api/v1/experiment-graph/palette");
+  test("atomic nodes catalog includes ResearchLoopRunner", async ({ request }) => {
+    const resp = await request.get("/api/v1/experiment-graphs/catalog");
     expect(resp.status()).toBe(200);
     const body = await resp.json();
     const ids = body.map((n: { id: string }) => n.id);
     expect(ids).toContain("ResearchLoopRunner");
   });
 
-  test("ResearchLoopRunner palette entry has correct metadata", async ({ request }) => {
-    const resp = await request.get("/api/v1/experiment-graph/palette");
+  test("ResearchLoopRunner catalog entry has correct metadata", async ({ request }) => {
+    const resp = await request.get("/api/v1/experiment-graphs/catalog");
     const body = await resp.json();
     const runner = body.find((n: { id: string }) => n.id === "ResearchLoopRunner");
     expect(runner).toBeTruthy();

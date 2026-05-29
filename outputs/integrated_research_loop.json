@@ -1,15 +1,15 @@
 {
   "protocol": "integrated_research_loop",
-  "cycles_run": 30,
-  "max_cycles": 30,
-  "total_papers_mined": 973,
+  "cycles_run": 15,
+  "max_cycles": 15,
+  "total_papers_mined": 972,
   "total_insights": 35,
-  "n_new_experiments": 30,
+  "n_new_experiments": 15,
   "n_repeat_experiments": 0,
   "history": [
     {
       "cycle": 1,
-      "timestamp": "2026-05-28T10:47:37.136463+00:00",
+      "timestamp": "2026-05-29T10:18:43.703378+00:00",
       "gap_targeted": "rare_sign_context",
       "n_papers": 72,
       "n_insights": 4,
@@ -19,7 +19,7 @@
     },
     {
       "cycle": 2,
-      "timestamp": "2026-05-28T10:47:41.666073+00:00",
+      "timestamp": "2026-05-29T10:18:57.931228+00:00",
       "gap_targeted": "compound_morphology",
       "n_papers": 61,
       "n_insights": 3,
@@ -29,17 +29,17 @@
     },
     {
       "cycle": 3,
-      "timestamp": "2026-05-28T10:47:47.989681+00:00",
+      "timestamp": "2026-05-29T10:19:13.694518+00:00",
       "gap_targeted": "seal_owner_identity",
       "n_papers": 103,
-      "n_insights": 3,
+      "n_insights": 4,
       "experiment": "suffix_chain_depth",
       "verdict": "Suffix chains: avg depth 1.4. Distribution: {1: 725, 2: 448, 0: 300, 3: 141, 4: 45}.",
       "is_new_info": true
     },
     {
       "cycle": 4,
-      "timestamp": "2026-05-28T10:47:57.573768+00:00",
+      "timestamp": "2026-05-29T10:19:27.199140+00:00",
       "gap_targeted": "cross_script_transfer",
       "n_papers": 61,
       "n_insights": 2,
@@ -49,7 +49,7 @@
     },
     {
       "cycle": 5,
-      "timestamp": "2026-05-28T10:48:02.870182+00:00",
+      "timestamp": "2026-05-29T10:19:40.228846+00:00",
       "gap_targeted": "trade_network_vocabulary",
       "n_papers": 81,
       "n_insights": 7,
@@ -59,19 +59,19 @@
     },
     {
       "cycle": 6,
-      "timestamp": "2026-05-28T10:48:07.794528+00:00",
+      "timestamp": "2026-05-29T10:19:50.304132+00:00",
       "gap_targeted": "inscription_formula_syntax",
-      "n_papers": 68,
-      "n_insights": 3,
+      "n_papers": 67,
+      "n_insights": 2,
       "experiment": "blocker_sign_context",
       "verdict": "Blocker context: 204 blockers have HIGH-sign neighbors.",
       "is_new_info": true
     },
     {
       "cycle": 7,
-      "timestamp": "2026-05-28T10:48:15.788421+00:00",
+      "timestamp": "2026-05-29T10:20:12.994030+00:00",
       "gap_targeted": "iconographic_semantic",
-      "n_papers": 60,
+      "n_papers": 59,
       "n_insights": 0,
       "experiment": "inscription_uniqueness",
       "verdict": "Uniqueness: 1650 unique inscription types, 1631 singletons (99%).",
@@ -79,7 +79,7 @@
     },
     {
       "cycle": 8,
-      "timestamp": "2026-05-28T10:48:20.426866+00:00",
+      "timestamp": "2026-05-29T10:20:36.226480+00:00",
       "gap_targeted": "phonological_reconstruction",
       "n_papers": 42,
       "n_insights": 3,
@@ -89,7 +89,7 @@
     },
     {
       "cycle": 9,
-      "timestamp": "2026-05-28T10:48:24.557231+00:00",
+      "timestamp": "2026-05-29T10:20:42.825628+00:00",
       "gap_targeted": "computational_upgrade",
       "n_papers": 98,
       "n_insights": 1,
@@ -99,7 +99,7 @@
     },
     {
       "cycle": 10,
-      "timestamp": "2026-05-28T10:48:28.422649+00:00",
+      "timestamp": "2026-05-29T10:20:54.185596+00:00",
       "gap_targeted": "archaeological_context",
       "n_papers": 49,
       "n_insights": 1,
@@ -109,7 +109,7 @@
     },
     {
       "cycle": 11,
-      "timestamp": "2026-05-28T10:48:32.523835+00:00",
+      "timestamp": "2026-05-29T10:21:12.540050+00:00",
       "gap_targeted": "personal_name_structure",
       "n_papers": 40,
       "n_insights": 0,
@@ -119,9 +119,9 @@
     },
     {
       "cycle": 12,
-      "timestamp": "2026-05-28T10:48:36.442549+00:00",
+      "timestamp": "2026-05-29T10:21:25.741665+00:00",
       "gap_targeted": "numeral_metrological",
-      "n_papers": 59,
+      "n_papers": 60,
       "n_insights": 3,
       "experiment": "rare_sign_neighbor_profile",
       "verdict": "Template 'rare_sign_neighbor_profile' executed (generic).",
@@ -129,7 +129,7 @@
     },
     {
       "cycle": 13,
-      "timestamp": "2026-05-28T10:48:40.349843+00:00",
+      "timestamp": "2026-05-29T10:21:50.095503+00:00",
       "gap_targeted": "substrate_loanword",
       "n_papers": 70,
       "n_insights": 2,
@@ -139,7 +139,7 @@
     },
     {
       "cycle": 14,
-      "timestamp": "2026-05-28T10:48:44.393823+00:00",
+      "timestamp": "2026-05-29T10:21:58.717442+00:00",
       "gap_targeted": "gulf_foreign_attestation",
       "n_papers": 38,
       "n_insights": 2,
@@ -149,164 +149,14 @@
     },
     {
       "cycle": 15,
-      "timestamp": "2026-05-28T10:48:47.776335+00:00",
+      "timestamp": "2026-05-29T10:22:14.080726+00:00",
       "gap_targeted": "allograph_classification",
       "n_papers": 71,
       "n_insights": 1,
       "experiment": "cross_site_formula_overlap",
       "verdict": "Cross-site formulas: 36 pairs, avg Jaccard 0.00.",
       "is_new_info": true
-    },
-    {
-      "cycle": 16,
-      "timestamp": "2026-05-28T10:48:51.283000+00:00",
-      "gap_targeted": "rare_sign_context",
-      "n_papers": 0,
-      "n_insights": 0,
-      "experiment": "site_specific_formula",
-      "verdict": "Site formulas: 9 sites with unique formula sets.",
-      "is_new_info": true
-    },
-    {
-      "cycle": 17,
-      "timestamp": "2026-05-28T10:48:55.236514+00:00",
-      "gap_targeted": "compound_morphology",
-      "n_papers": 0,
-      "n_insights": 0,
-      "experiment": "motif_title_correlation",
-      "verdict": "Motif-title: 8 motifs have title reading profiles.",
-      "is_new_info": true
-    },
-    {
-      "cycle": 18,
-      "timestamp": "2026-05-28T10:48:59.229197+00:00",
-      "gap_targeted": "seal_owner_identity",
-      "n_papers": 0,
-      "n_insights": 0,
-      "experiment": "suffix_chain_depth",
-      "verdict": "Suffix chains: avg depth 1.4. Distribution: {1: 725, 2: 448, 0: 300, 3: 141, 4: 45}.",
-      "is_new_info": true
-    },
-    {
-      "cycle": 19,
-      "timestamp": "2026-05-28T10:49:03.074133+00:00",
-      "gap_targeted": "cross_script_transfer",
-      "n_papers": 0,
-      "n_insights": 0,
-      "experiment": "reading_frequency_zipf",
-      "verdict": "Zipf: α=1.412 (127 readings). Linguistic.",
-      "is_new_info": true
-    },
-    {
-      "cycle": 20,
-      "timestamp": "2026-05-28T10:49:06.588704+00:00",
-      "gap_targeted": "trade_network_vocabulary",
-      "n_papers": 0,
-      "n_insights": 0,
-      "experiment": "compound_semantic_coherence",
-      "verdict": "Compound coherence: 20% (126/619) semantically valid.",
-      "is_new_info": true
-    },
-    {
-      "cycle": 21,
-      "timestamp": "2026-05-28T10:49:10.137538+00:00",
-      "gap_targeted": "inscription_formula_syntax",
-      "n_papers": 0,
-      "n_insights": 0,
-      "experiment": "blocker_sign_context",
-      "verdict": "Blocker context: 204 blockers have HIGH-sign neighbors.",
-      "is_new_info": true
-    },
-    {
-      "cycle": 22,
-      "timestamp": "2026-05-28T10:49:14.107652+00:00",
-      "gap_targeted": "iconographic_semantic",
-      "n_papers": 0,
-      "n_insights": 0,
-      "experiment": "inscription_uniqueness",
-      "verdict": "Uniqueness: 1650 unique inscription types, 1631 singletons (99%).",
-      "is_new_info": true
-    },
-    {
-      "cycle": 23,
-      "timestamp": "2026-05-28T10:49:16.802750+00:00",
-      "gap_targeted": "phonological_reconstruction",
-      "n_papers": 0,
-      "n_insights": 0,
-      "experiment": "position_entropy_by_site",
-      "verdict": "Template 'position_entropy_by_site' executed (generic).",
-      "is_new_info": true
-    },
-    {
-      "cycle": 24,
-      "timestamp": "2026-05-28T10:49:20.300066+00:00",
-      "gap_targeted": "computational_upgrade",
-      "n_papers": 0,
-      "n_insights": 0,
-      "experiment": "title_root_suffix_trigram",
-      "verdict": "Template 'title_root_suffix_trigram' executed (generic).",
-      "is_new_info": true
-    },
-    {
-      "cycle": 25,
-      "timestamp": "2026-05-28T10:49:26.999383+00:00",
-      "gap_targeted": "archaeological_context",
-      "n_papers": 0,
-      "n_insights": 0,
-      "experiment": "motif_reading_mutual_info",
-      "verdict": "Template 'motif_reading_mutual_info' executed (generic).",
-      "is_new_info": true
-    },
-    {
-      "cycle": 26,
-      "timestamp": "2026-05-28T10:49:32.927131+00:00",
-      "gap_targeted": "personal_name_structure",
-      "n_papers": 0,
-      "n_insights": 0,
-      "experiment": "decoded_text_repetition",
-      "verdict": "Text repetition: TTR=0.322 (1557 types / 4831 tokens).",
-      "is_new_info": true
-    },
-    {
-      "cycle": 27,
-      "timestamp": "2026-05-28T10:49:36.783825+00:00",
-      "gap_targeted": "numeral_metrological",
-      "n_papers": 0,
-      "n_insights": 0,
-      "experiment": "rare_sign_neighbor_profile",
-      "verdict": "Template 'rare_sign_neighbor_profile' executed (generic).",
-      "is_new_info": true
-    },
-    {
-      "cycle": 28,
-      "timestamp": "2026-05-28T10:49:40.167618+00:00",
-      "gap_targeted": "substrate_loanword",
-      "n_papers": 0,
-      "n_insights": 0,
-      "experiment": "compound_vs_formula",
-      "verdict": "Template 'compound_vs_formula' executed (generic).",
-      "is_new_info": true
-    },
-    {
-      "cycle": 29,
-      "timestamp": "2026-05-28T10:49:43.472794+00:00",
-      "gap_targeted": "gulf_foreign_attestation",
-      "n_papers": 0,
-      "n_insights": 0,
-      "experiment": "suffix_after_animal",
-      "verdict": "After animal: {'ay': 26, 'ā': 19, 'in': 16, 'an': 15, 'ka': 10}. Most common: ay.",
-      "is_new_info": true
-    },
-    {
-      "cycle": 30,
-      "timestamp": "2026-05-28T10:49:51.057200+00:00",
-      "gap_targeted": "allograph_classification",
-      "n_papers": 0,
-      "n_insights": 0,
-      "experiment": "cross_site_formula_overlap",
-      "verdict": "Cross-site formulas: 36 pairs, avg Jaccard 0.00.",
-      "is_new_info": true
     }
   ],
-  "verdict": "Integrated loop: 30 cycles, 973 papers, 35 insights, 30 new experiments, 0 repeats."
+  "verdict": "Integrated loop: 15 cycles, 972 papers, 35 insights, 15 new experiments, 0 repeats."
 }

@@ -66,9 +66,9 @@ The loop terminates when `max_cycles` is reached or when all experiments produce
 
 ## Key Results (May 2026 Session)
 
-Across multiple runs (30+ total cycles):
+Across multiple runs (75+ total cycles across sessions):
 
-- **970 papers mined** per 15-cycle run (deduplicated across cycles)
+- **~970 papers mined** per 15-cycle run (deduplicated across cycles)
 - **35 actionable insights** extracted per run
 - **15/15 unique experiments** — zero repeats within a run
 - **Zipf α = 1.412** — confirmed linguistic frequency distribution
@@ -76,6 +76,11 @@ Across multiple runs (30+ total cycles):
 - **Suffix 'ay' dominant after animals** — grammatical gender agreement confirmed
 - **204 blocker signs** have HIGH-sign neighbors (upgrade-ready)
 - **Cross-site Jaccard ≈ 0** — seals encode individual identities
+- **91% Parpola agreement** — 42/47 sign values match the field authority
+- **1,252 inscriptions fully translated** with interlinear PDr + English gloss
+- **619 compound words** glossed in a dictionary with DEDR references
+- **102 blocker sign reading proposals** with context-based role inference
+- **9 motif-specific vocabularies** built (each animal type has distinct word set)
 
 ## Future: Native Glossa-Lab Integration
 

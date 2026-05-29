@@ -8,7 +8,7 @@
  */
 import { useCallback, useEffect, useRef, useState } from "react";
 import { cancelJob, clearJobs, createJob, getJobResults, getEnvStatus, getLogStreamUrl, listJobs, purgeLog, runTerminalCommand, type EnvStatus, type JobResponse } from "../api";
-import { fmtDateTimeCompact } from "../dateFormat";
+import { fmtDateTimeCompact, fmtElapsed } from "../dateFormat";
 import { ChatInline } from "./AIChatWindow";
 import { JobErrorModal } from "./JobsView";
 import { useAIChat } from "../hooks/useAIChat";
@@ -399,8 +399,28 @@ function JobsPanel() {
         const nodeCount  = (job.params?.node_count  as number) ?? 0;
         const nodesDone  = (job.params?.nodes_done  as number) ?? 0;
         const pct        = isRunning && nodeCount > 0 ? Math.min(99, Math.round((nodesDone / nodeCount) * 100)) : null;
-        const etaSec     = (pct !== null && pct > 5 && elapsed !== null)
-          ? Math.round((elapsed / pct) * (100 - pct)) : null;
+        // Historical avg for this pipeline (completed jobs)
+        const historicalAvgSec = (() => {
+          const done = jobs.filter(
+            d => d.status === "completed" && d.pipeline === job.pipeline
+              && d.id !== job.id && d.updated_at
+          );
+          if (done.length === 0) return null;
+          const durations = done.map(d =>
+            (new Date(d.updated_at!).getTime() - new Date(d.created_at).getTime()) / 1000
+          ).filter(x => x > 0);
+          return durations.length > 0
+            ? durations.reduce((a, b) => a + b, 0) / durations.length
+            : null;
+        })();
+        // ETA: historical avg when < 15%, linear extrapolation after (REQ-JOBS-002)
+        const etaSec = elapsed !== null && pct !== null
+          ? (() => {
+              if (pct >= 15) return Math.round((elapsed / pct) * (100 - pct));
+              if (historicalAvgSec !== null) return Math.max(0, Math.round(historicalAvgSec - elapsed));
+              return null;
+            })()
+          : null;
         const isExpRun   = job.pipeline === "exp_run";
         const device     = job.params?.compute_device as string | undefined;
         const deviceLabel = job.params?.compute_device_label as string | undefined;
@@ -433,7 +453,7 @@ function JobsPanel() {
                 <span style={{ flex: 1, fontWeight: 600, fontSize: 12, color: "#e2e8f0", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{job.name}</span>
                 {elapsed !== null && (
                   <span style={{ fontSize: 10, color: "#64748b", flexShrink: 0 }}>
-                    {elapsed}s{etaSec !== null ? ` / ~${etaSec}s left` : ""}
+                    {fmtElapsed(elapsed)}{etaSec !== null ? ` / ~${fmtElapsed(etaSec)} left` : ""}
                   </span>
                 )}
                 {(isRunning || job.status === "pending") && (

@@ -614,3 +614,52 @@ Risks:
 
 Next step:
   Restart tray via wscript.exe //nologo scripts\stop-tray.vbs then wscript.exe //nologo scripts\launch-tray.vbs to reload MCP server with updated run_experiment; then run Phase-32 T4 and Phase-33 T1 via MCP.
+
+## [2026-05-29] Entry — Session Close
+
+Objective:
+  Wrap up session: reload MCP server, run SA experiments, session hygiene.
+
+What was done:
+  - Confirmed release phase 100% ready (4/4 checks, specsmith audit 29 pass/2 known false positives)
+  - Tray restart attempted via H25 VBS wrappers (stop-tray.vbs, launch-tray.vbs); backend stayed up
+  - MCP server did NOT reload new server.py (Warp manages MCP process separately from tray)
+  - Phase-32 T4 MCP attempt → still "Unknown pipeline: exp_run"; cancelled immediately
+  - specsmith export --help: no --offline flag; export hangs (external API); deferred
+  - SA experiments (Phase-32 T4, Phase-33 T1/T7) must be run from browser UI
+
+Files changed:
+  - LEDGER.md (this entry)
+
+Checks run:
+  - specsmith audit: 29 pass, 2 known false positives (scaffold type + TODO inflation)
+  - specsmith phase show: 🚀 Release 100% ready
+
+Results:
+  - Session complete. All automatable work done. SA experiments blocked on MCP reload.
+
+Token estimate: low
+
+Open TODOs:
+  - [ ] Run Phase-32 T4, Phase-33 T1, Phase-33 T7 from browser UI (SA GPU experiments)
+  - [ ] MCP server reload: Warp MCP process must be restarted (not via tray VBS) to pick up updated run_experiment in server.py
+  - [ ] specsmith export: deferred (hangs; likely external API; no --offline flag)
+  - [ ] H11 violation in tray/glossa_tray/main.py _status_poller: while True: loop
+  - [ ] setup-os.cmd still adds HKCU Run key (GlossaLab) in addition to scheduled task
+  - [ ] Evidence sweep re-run pending
+  - [ ] CI Playwright job status unknown
+  - [ ] Contact Suresh Kolichala via Academia.edu with review packet
+  - [ ] Upload v3 preprint to Zenodo, Academia.edu, ResearchGate
+  - [ ] Check SSRN status (submission ID 6827038)
+  - [ ] Tag v3.0.0-preprint on main after merge
+  - [ ] Wait for Dravidianist responses (Renganathan, Murugaiyan, Kobayashi)
+  - [ ] Review Phase 295 STRONG papers for new evidence items
+  - [ ] Rebuild preprint PDF with §4.5 update
+  - [ ] ARCHITECTURE.md: add REQ ID cross-references
+  - [ ] Monitor layer1labs/specsmith#188 and #189
+
+Risks:
+  - MCP server.py has correct run_experiment but running process is stale; no way to reload without Warp restart
+
+Next step:
+  Open browser UI → Experiment Builder → run indus_phase33_t1_sa_syllable (T1), then indus_phase32_t4_sa_m77_tb_lm (T4), then indus_phase33_t7_sanskrit_syllable (T7). Monitor via Jobs panel.

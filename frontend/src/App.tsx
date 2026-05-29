@@ -650,6 +650,7 @@ function AppContent() {
           activeTab={panelTab}
           onTabChange={setPanelTab}
           leftOffset={SIDEBAR_W}
+          activeJobCount={activeJobCount}
         />
       )}
 

@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { fmtTime, fmtDateTimeCompact, fmtDuration } from "../dateFormat";
+import { fmtTime, fmtDateTimeCompact, fmtElapsed } from "../dateFormat";
 import {
   cancelJob,
   clearJobs,
@@ -506,8 +506,27 @@ export function JobsView() {
               const elapsedSec = j.status === "running"
                 ? Math.round((Date.now() - new Date(j.created_at).getTime()) / 1000)
                 : null;
-              const etaSec = (pct !== null && pct > 5 && elapsedSec !== null)
-                ? Math.round((elapsedSec / pct) * (100 - pct))
+              // Historical average duration for this pipeline (from completed jobs)
+              const historicalAvgSec = (() => {
+                const done = jobs.filter(
+                  d => d.status === "completed" && d.pipeline === j.pipeline
+                    && d.id !== j.id && d.updated_at
+                );
+                if (done.length === 0) return null;
+                const durations = done.map(d =>
+                  (new Date(d.updated_at!).getTime() - new Date(d.created_at).getTime()) / 1000
+                ).filter(x => x > 0);
+                return durations.length > 0
+                  ? durations.reduce((a, b) => a + b, 0) / durations.length
+                  : null;
+              })();
+              // ETA: use historical avg when < 15% complete; blend to linear extrapolation after
+              const etaSec = elapsedSec !== null && pct !== null
+                ? (() => {
+                    if (pct >= 15) return Math.round((elapsedSec / pct) * (100 - pct));
+                    if (historicalAvgSec !== null) return Math.max(0, Math.round(historicalAvgSec - elapsedSec));
+                    return null;
+                  })()
                 : null;
               return (
               <tr key={j.id}>
@@ -534,8 +553,8 @@ export function JobsView() {
                       </div>
                       <span style={{ fontSize: 10, color: "#6b7280", whiteSpace: "nowrap" }}>
                         {nodesDone}/{nodeCount} nodes{pct !== null ? ` (${pct}%)` : ""}
-                        {elapsedSec !== null && ` · ${fmtDuration(elapsedSec)}`}
-                        {etaSec !== null && ` · ~${fmtDuration(etaSec)} left`}
+                        {elapsedSec !== null && ` · ${fmtElapsed(elapsedSec)}`}
+                        {etaSec !== null && ` · ~${fmtElapsed(etaSec)} left`}
                       </span>
                     </div>
                   )}
@@ -579,7 +598,7 @@ export function JobsView() {
                     {j.status}
                   </span>
                   {j.status === "running" && elapsedSec !== null && !isExpRun && (
-                    <div style={{ fontSize: 10, color: "#9ca3af" }}>{fmtDuration(elapsedSec ?? 0)} elapsed</div>
+                    <div style={{ fontSize: 10, color: "#9ca3af" }}>{fmtElapsed(elapsedSec ?? 0)} elapsed</div>
                   )}
                 </Td>
                 <Td>{fmtDateTimeCompact(j.created_at)}</Td>

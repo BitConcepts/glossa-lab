@@ -1730,3 +1730,110 @@ Next step:
   Run a research loop from the UI (15 cycles) to end-to-end verify all fixes.
   Observe SSE stream: expect non-zero papers in cycles 1-15, no kl_comparison
   errors in verdicts, and foundation_check block in the 'complete' event.
+
+
+## [2026-05-29] Entry — UI Automation, SA Bug Fixes, Proposal Action States
+
+Objective:
+Automate dashboard interactions, fix SA experiment failures, clean up
+redundant UI elements, and make proposal buttons stateful.
+
+What was done:
+
+1. REDUNDANT UI REMOVAL + AUTOMATION:
+   - DashboardView: removed Mine button + all mine state (MINE_LIMIT_LS_KEY,
+     mineLimit, mineDropOpen, onRunMine) — research loop replaces this
+   - DashboardView: removed '⟳ Reload' button — replaced by 30s auto-poll
+   - DashboardView: demoted 'Fetch now' button to small 📡 icon (manual
+     override only); fetch now runs automatically on startup (>12h stale)
+     and before each research loop run (>6h stale)
+   - DashboardView: 30s setInterval auto-poll keeps all counters fresh
+   - ResearchLoopPanel: dispatch glossa:loop-complete on SSE complete
+   - DashboardView: listens for glossa:loop-complete → fetches
+     /api/v1/dashboard/latest-insight (no LLM call) → updates insight panel
+
+2. DASHBOARD INSIGHT CACHE:
+   - dashboard.py: add _LATEST_INSIGHT / _LATEST_INSIGHT_AT module cache
+   - _generate_insight() stores result there after every call
+   - New GET /api/v1/dashboard/latest-insight: returns cached insight with
+     generated_at epoch seconds; client checks if newer than its cached copy
+   - api.ts: added LatestInsightResponse + getLatestInsight()
+
+3. AUTO-FETCH:
+   - main.py: auto-fetch background task on startup (30s delay, >12h stale)
+   - research_loop API: check discovery_items freshness before loop; if >6h
+     old, asyncio.create_task(fetch_endpoint(FetchRequest()))
+
+4. ACTIONABLE DASHBOARD BADGES:
+   - DeciphermentPanel: added onAction prop; wired to DashboardView.applyAction
+   - Competing LM Test badge: 💡 Hypothesize, ▶ Plan SA run, ✨ Ask AI
+   - Archaeological Context badge: 💡 Hypothesize, ✨ Ask AI
+   - What Remains items: each gets ▶ Plan → propose_experiment_chain
+
+5. RESEARCH LOOP SYNTHESIS:
+   - Removed always-present 'refresh_insights' proposal (now automated)
+   - Synthesis.needle_moved badge in RunSummary header
+   - expand_mining proposal: ▶ Start Loop button with running/done/error states
+   - review_candidates proposal: ↓ see below amber tag
+
+6. EXP_RUN ENGINE RACE FIX:
+   - experiment_graphs.py: create exp_run jobs with initial_status='running'
+     (was pending+separate update — engine could claim in the race window)
+   - Eliminates 'Unknown pipeline: exp_run' log error
+
+7. SA EXPERIMENT FAILURES FIXED (not GPU):
+   - Root cause: reports/mahadevan_texts_decoded.json deleted in May cleanup
+   - experiment_graph_phase20.py _m77_inscription_loader: now falls back to
+     Holdat CSV when mahadevan_texts_decoded.json is absent
+   - Tested: loads 1,670 inscriptions / 7,002 tokens from Holdat fallback
+   - Both Phase-32 T4 and Phase-33 T1 SA experiments should now succeed
+
+8. PROPOSAL BUTTON STATES:
+   - ResearchLoopPanel: proposalKey state tracks which proposal was clicked
+   - startLoop() accepts fromProposal key; main button clears tracking
+   - expand_mining button: idle→▶ Start Loop, running→⏳…, done→✓ Done,
+     error→✕ Retry; state derived from proposalKey + loopRunning + loopError
+
+Files changed:
+  backend/glossa_lab/api/dashboard.py
+  backend/glossa_lab/api/research_loop.py
+  backend/glossa_lab/api/experiment_graphs.py
+  backend/glossa_lab/experiment_graph_phase20.py
+  backend/glossa_lab/main.py
+  frontend/src/api.ts
+  frontend/src/components/DashboardView.tsx
+  frontend/src/components/DeciphermentPanel.tsx
+  frontend/src/components/ResearchLoopPanel.tsx
+  frontend/dist/ (rebuilt)
+  LEDGER.md (this entry)
+
+Checks run:
+  - py_compile: all modified .py files OK
+  - TypeScript: 0 errors; all builds clean
+  - M77InscriptionLoader fallback: 1670 inscriptions loaded from Holdat CSV
+
+Results:
+  PASS: all checks
+  Commits: 99046b6, b4cf1b5, 839169f, df63a05, 02450ee on phase-next
+
+Token estimate: high
+
+Open TODOs:
+  - [ ] Run Phase-32 T4 and Phase-33 T1 from UI to verify SA now succeeds
+  - [ ] Run integrated research loop from UI to confirm blitz mine + act works
+  - [ ] Frontend integration test: verify loop-complete event triggers insight
+        refresh in DashboardView
+  - [ ] Contact Suresh Kolichala via Academia.edu with review packet
+  - [ ] Upload v3 preprint to Zenodo, Academia.edu, ResearchGate
+  - [ ] Check SSRN status (submission ID 6827038)
+  - [ ] Tag v3.0.0-preprint on main after merge
+
+Risks:
+  - foundation_check.py has hardcoded Windows REPO path — will break on
+    other machines or if repo is moved
+  - Holdat CSV fallback uses M-prefixed sign IDs; if SA LM uses different
+    sign scheme, comparison may differ from mahadevan_texts_decoded results
+
+Next step:
+  Run Phase-32 T4 and Phase-33 T1 from the Experiment Builder to verify
+  the M77InscriptionLoader fallback produces correct SA results.

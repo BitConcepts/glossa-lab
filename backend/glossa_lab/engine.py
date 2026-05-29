@@ -22,13 +22,13 @@ from glossa_lab.database import get_db
 logger = logging.getLogger(__name__)
 
 # How long a running job can go without a heartbeat (updated_at) before being
-# marked as timed_out.  exp_run jobs update updated_at on every node completion.
-# GPU SA experiments (e.g. indus_cisi_dravidian_vs_sanskrit with 8000 iterations,
-# 5 seeds, 3 restarts) can run a SINGLE NODE for 60+ minutes without producing
-# a heartbeat.  Default raised to 2 hours to accommodate these.
+# marked as failed by the stall watchdog.  exp_run jobs update updated_at only
+# on node completion, so an SA node can run for hours without a DB heartbeat.
+# 30 minutes is enough for any non-SA node; SA jobs orphaned by a backend
+# restart are cleaned up by the startup orphan sweep (see run_engine_loop).
 # Override via env GLOSSA_JOB_STALL_TIMEOUT_SECONDS.
 _JOB_STALL_TIMEOUT_SECONDS = int(
-    _os_eng.environ.get("GLOSSA_JOB_STALL_TIMEOUT_SECONDS", "7200")
+    _os_eng.environ.get("GLOSSA_JOB_STALL_TIMEOUT_SECONDS", "1800")  # 30 min default
 )
 
 # Pipeline registry — maps pipeline name to callable
@@ -160,11 +160,54 @@ async def _stall_watchdog() -> None:
             logger.debug("Stall watchdog error: %s", exc)
 
 
+async def _orphan_sweep() -> None:
+    """At startup, mark any jobs still 'running' from the previous session as failed.
+
+    Jobs left in 'running' state after a backend restart are orphans — their
+    worker threads died with the old process.  Cleaning them up immediately
+    prevents the stall watchdog from needing to wait 30 minutes, and ensures
+    the Jobs panel shows accurate status straight away.
+
+    exp_run jobs whose exp_id is still running (duplicate guard) would be
+    blocked by the duplicate check even without this sweep, but marking them
+    failed makes the UI consistent.
+    """
+    db = get_db()
+    if db is None or db._conn is None:  # noqa: SLF001
+        return
+    try:
+        cursor = await db._conn.execute(  # noqa: SLF001
+            "SELECT id, name FROM jobs WHERE status = 'running'"
+        )
+        orphans = await cursor.fetchall()
+        if not orphans:
+            return
+        for row in orphans:
+            jid, jname = row["id"], row["name"]
+            logger.warning(
+                "Startup orphan sweep: marking job %s ('%s') as failed",
+                jid, jname,
+            )
+            await db._conn.execute(  # noqa: SLF001
+                "UPDATE jobs SET status = 'failed', updated_at = datetime('now'), "
+                "params = json_set(params, '$.stall_reason', 'orphaned at startup') "
+                "WHERE id = ?",
+                (jid,),
+            )
+        await db._conn.commit()  # noqa: SLF001
+        logger.info("Startup orphan sweep: marked %d job(s) as failed", len(orphans))
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Startup orphan sweep failed: %s", exc)
+
+
 async def run_engine_loop(*, poll_interval: float = 2.0) -> None:
     """Main engine loop — runs until cancelled."""
     logger.info("Pipeline engine started (poll_interval=%.1fs)", poll_interval)
     # Import pipelines so they register themselves
     _ensure_pipelines_loaded()
+
+    # Clean up orphaned running jobs from previous backend session
+    await _orphan_sweep()
 
     # Start stall watchdog as a sibling task (cancelled when engine is cancelled)
     watchdog = asyncio.create_task(_stall_watchdog())

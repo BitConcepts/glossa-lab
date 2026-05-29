@@ -178,9 +178,9 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                         "compute_device_label": _compute_label,
                     },
                     created_at=datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z"),
+                    initial_status="running",  # skip pending — engine must not claim exp_run jobs
                 )
                 job_id = job["id"]
-                await db.update_job_status(job_id, "running")
             except Exception as _je:  # noqa: BLE001
                 logger.warning("Could not create job record for exp run: %s", _je)
 

@@ -98,6 +98,29 @@ EXPERIMENT_NAMES = [
     "compound_vs_formula", "suffix_after_animal", "cross_site_formula_overlap",
 ]
 
+# ── Template → graph experiment mapping ────────────────────────────
+# Maps each abstract template name to a real graph experiment ID or
+# atomic node ID that can be executed via execute_graph() or .fn().
+# If the target doesn't exist at runtime, _execute falls back to a
+# lightweight built-in analysis.
+TEMPLATE_TO_GRAPH: dict[str, str] = {
+    "site_specific_formula":      "indus_structural_atlas",
+    "motif_title_correlation":    "positional_profile_analysis",
+    "suffix_chain_depth":         "bigram_analysis",
+    "reading_frequency_zipf":     "indus_structural_atlas",
+    "compound_semantic_coherence": "kl_comparison",
+    "blocker_sign_context":       "bigram_analysis",
+    "inscription_uniqueness":     "indus_structural_atlas",
+    "position_entropy_by_site":   "positional_profile_analysis",
+    "title_root_suffix_trigram":  "bigram_analysis",
+    "motif_reading_mutual_info":  "kl_comparison",
+    "decoded_text_repetition":    "bigram_analysis",
+    "rare_sign_neighbor_profile": "positional_profile_analysis",
+    "compound_vs_formula":        "kl_comparison",
+    "suffix_after_animal":        "positional_profile_analysis",
+    "cross_site_formula_overlap": "bigram_analysis",
+}
+
 # ── Phase 6: Insight type → best experiment mapping ─────────────────
 # Each insight type (extracted from paper titles during mining) maps to
 # the experiments most likely to exploit that kind of evidence.
@@ -351,15 +374,67 @@ class ResearchLoop:
         return unique, insights
 
     def _execute(self, template: str) -> str:
-        """Run experiment template and return verdict string."""
-        # Load results from the last run if available
-        out_path = _REPO / "outputs" / "integrated_research_loop.json"
-        if out_path.exists():
-            try:
-                data = json.loads(out_path.read_text("utf-8"))
-                for h in data.get("history", []):
-                    if h.get("experiment") == template:
-                        return h["verdict"]
-            except Exception:
-                pass
-        return f"Template '{template}' executed."
+        """Run a real graph experiment mapped from the template name.
+
+        Strategy:
+        1. Look up the template in TEMPLATE_TO_GRAPH.
+        2. Try to run it via execute_graph() (the full graph engine).
+        3. If the graph doesn't exist, try running the atomic node directly.
+        4. Summarize key metrics from the result.
+        """
+        graph_id = TEMPLATE_TO_GRAPH.get(template)
+        if not graph_id:
+            return f"Template '{template}': no graph mapping."
+
+        try:
+            from glossa_lab.experiment_graph import (
+                execute_graph,
+                get_graph_experiment,
+            )
+
+            graph_def = get_graph_experiment(graph_id)
+            if graph_def:
+                result = execute_graph(graph_def)
+                return self._summarize_result(template, graph_id, result)
+        except Exception as exc:
+            logger.warning("Graph execution failed for %s (%s): %s", template, graph_id, exc)
+
+        # Fallback: try running as an atomic node directly
+        try:
+            from glossa_lab.experiment_graph import ATOMIC_NODES
+
+            node = ATOMIC_NODES.get(graph_id)
+            if node:
+                result = node.fn({}, {})
+                return self._summarize_result(template, graph_id, result)
+        except Exception as exc:
+            logger.warning("Atomic node execution failed for %s: %s", graph_id, exc)
+
+        return f"Template '{template}' ({graph_id}): execution failed."
+
+    @staticmethod
+    def _summarize_result(template: str, graph_id: str, result: dict) -> str:
+        """Extract a concise verdict string from experiment results."""
+        if not result or "error" in result:
+            return f"{template} ({graph_id}): {result.get('error', 'no output')}"
+
+        # Extract key metrics from common output shapes
+        parts = [f"{template} ({graph_id})"]
+
+        for key in ["h1", "h1_normalized", "zipf_exponent", "mean_consistency",
+                    "accuracy", "n_signs", "total_tokens", "distinct_symbols",
+                    "tier_classification", "n_templates", "n_clusters",
+                    "kl_divergence", "js_divergence"]:
+            if key in result:
+                val = result[key]
+                if isinstance(val, float):
+                    parts.append(f"{key}={val:.4f}")
+                else:
+                    parts.append(f"{key}={val}")
+
+        if len(parts) == 1:
+            # No recognized metrics — show top-level keys
+            keys = [k for k in result if not k.startswith("_")][:5]
+            parts.append(f"keys={keys}")
+
+        return "; ".join(parts)

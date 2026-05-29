@@ -1,12 +1,15 @@
 {
   "id": "indus_phase32_t4_sa_m77_tb_lm",
-  "name": "Indus Phase-32 T4 — SA Decipherment M77 → Dravidian Tamil LM (P30-H1)",
-  "description": "Phase-32 T4 v2: SA decipherment M77 → Dravidian Syllable LM. Uses dravidian_syllable_lm.json (2293 syllable bigrams from DEDR roots + clean TB aksharas, 5× richer than word-level LM). Syllable-level matching is more appropriate for short Indus inscriptions (mean 3.2 signs). Original word-level run was NEUTRAL (LM too sparse). This syllable-level variant provides stronger discriminative power. Citations: E.1 (DEDR), A.12 (Mahadevan 2003 TB)., with HIGH/MEDIUM INDUS_FINAL_ANCHORS as fixed starting points (333 entries). This test is non-circular: the LM is built from independent Tamil lexical/literary sources (DEDR, Sangam corpus), NOT from the Indus corpus itself. If SA finds a mapping significantly above a random null baseline, it is the strongest positive evidence for the Dravidian hypothesis produced so far. Null result = strong structural evidence against. Cites: A.1 (Mahadevan 1977), E.1 (DEDR/Burrow+Emeneau), E.3 (Sangam), C.2 (Parpola 2010).",
-  "auto_migrated": false,
+  "name": "Indus Phase-32 T4 \u2014 SA Decipherment M77 \u2192 Dravidian Tamil LM (P30-H1)",
+  "description": "Phase-32 T4 v2: SA decipherment M77 \u2192 Dravidian Syllable LM. Uses dravidian_syllable_lm.json (2293 syllable bigrams from DEDR roots + clean TB aksharas, 5\u00d7 richer than word-level LM). Syllable-level matching is more appropriate for short Indus inscriptions (mean 3.2 signs). Original word-level run was NEUTRAL (LM too sparse). This syllable-level variant provides stronger discriminative power. Citations: E.1 (DEDR), A.12 (Mahadevan 2003 TB)., with HIGH/MEDIUM INDUS_FINAL_ANCHORS as fixed starting points (333 entries). This test is non-circular: the LM is built from independent Tamil lexical/literary sources (DEDR, Sangam corpus), NOT from the Indus corpus itself. If SA finds a mapping significantly above a random null baseline, it is the strongest positive evidence for the Dravidian hypothesis produced so far. Null result = strong structural evidence against. Cites: A.1 (Mahadevan 1977), E.1 (DEDR/Burrow+Emeneau), E.3 (Sangam), C.2 (Parpola 2010).",
   "nodes": [
     {
       "id": "m77",
       "type": "expNode",
+      "position": {
+        "x": 60,
+        "y": 60
+      },
       "data": {
         "atomicId": "M77InscriptionLoader",
         "label": "Load M77 Holdat corpus",
@@ -14,85 +17,81 @@
           "use_raw": false,
           "label": "indus_m77"
         }
-      },
-      "position": {
-        "x": 60,
-        "y": 120
       }
     },
     {
       "id": "lm",
       "type": "expNode",
+      "position": {
+        "x": 60,
+        "y": 390
+      },
       "data": {
         "atomicId": "DravidianSyllableLM",
         "label": "Dravidian Syllable LM (2293 bigrams, DEDR+TB, Phase-32)",
         "params": {}
-      },
-      "position": {
-        "x": 60,
-        "y": 320
       }
     },
     {
       "id": "anchors",
       "type": "expNode",
+      "position": {
+        "x": 60,
+        "y": 585
+      },
       "data": {
         "atomicId": "DerivedAnchorSet",
         "label": "INDUS_FINAL_ANCHORS (HIGH+MEDIUM, 333 entries)",
         "params": {
           "min_confidence": "MEDIUM"
         }
-      },
-      "position": {
-        "x": 60,
-        "y": 520
       }
     },
     {
       "id": "sa",
       "type": "expNode",
+      "position": {
+        "x": 420,
+        "y": 300
+      },
       "data": {
         "atomicId": "SADecipher",
-        "label": "SA M77 → Tamil LM (5 seeds × 10000 iters)",
+        "label": "SA M77 \u2192 Tamil LM (5 seeds \u00d7 10000 iters)",
         "params": {
           "n_seeds": 5,
           "max_iterations": 10000,
           "restarts": 8,
           "surjective": true,
-          "ocp_weight": 0.0
+          "ocp_weight": 0
         }
-      },
-      "position": {
-        "x": 480,
-        "y": 320
       }
     },
     {
       "id": "merge",
       "type": "expNode",
+      "position": {
+        "x": 780,
+        "y": 330
+      },
       "data": {
         "atomicId": "Merger",
         "label": "Collect SA results",
         "params": {}
-      },
-      "position": {
-        "x": 840,
-        "y": 320
       }
     },
     {
       "id": "out",
       "type": "expNode",
+      "position": {
+        "x": 1140,
+        "y": 345
+      },
       "data": {
         "atomicId": "JSONExport",
         "label": "Save Phase-32 T4 results",
         "params": {
           "filename": "phase32_t4_sa_m77_tb_lm.json"
         }
-      },
-      "position": {
-        "x": 1120,
-        "y": 320
       }
     }
   ],
@@ -160,6 +159,5 @@
       "sourcePort": "json",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

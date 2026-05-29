@@ -1,12 +1,15 @@
 {
   "id": "indus_phase33_t1_sa_syllable",
-  "name": "Indus Phase-33 T1 — SA Decipherment M77 → Dravidian Syllable LM (Fixed)",
+  "name": "Indus Phase-33 T1 \u2014 SA Decipherment M77 \u2192 Dravidian Syllable LM (Fixed)",
   "description": "Phase-33 T1: The CORRECTED Phase-32 T4 run. Two bugs fixed: (1) DravidianSyllableLM now properly populates bigram_freq and ranked so BigramScorer works; (2) IndusAnchorSetSyllable maps INDUS_FINAL_ANCHORS to syllable tokens (not whole Tamil words) compatible with the syllable LM. Expected: SA should now converge meaningfully and produce syllable-level assignments (ka, ta, na, mi, etc.) rather than random word-level Tamil assignments. If mean_consistency > 0.5 and hci_count > 30, the syllable-level model is discriminative and supports the Dravidian hypothesis. Compare to Sanskrit T7 redo for falsification. Citations: E.1 (DEDR), A.12 (Mahadevan 2003 TB), A.1 (M77), C.2 (Parpola 2010).",
-  "auto_migrated": false,
   "nodes": [
     {
       "id": "m77",
       "type": "expNode",
+      "position": {
+        "x": 60,
+        "y": 60
+      },
       "data": {
         "atomicId": "M77InscriptionLoader",
         "label": "Load M77 Holdat corpus (1669 inscriptions)",
@@ -14,98 +17,94 @@
           "use_raw": false,
           "label": "indus_m77"
         }
-      },
-      "position": {
-        "x": 60,
-        "y": 120
       }
     },
     {
       "id": "lm",
       "type": "expNode",
+      "position": {
+        "x": 60,
+        "y": 210
+      },
       "data": {
         "atomicId": "DravidianSyllableLM",
         "label": "Dravidian Syllable LM (FIXED: bigram_freq + ranked)",
         "params": {}
-      },
-      "position": {
-        "x": 60,
-        "y": 320
       }
     },
     {
       "id": "anchors",
       "type": "expNode",
+      "position": {
+        "x": 60,
+        "y": 360
+      },
       "data": {
         "atomicId": "IndusAnchorSetSyllable",
         "label": "Indus Syllable Anchors (MEDIUM+ confidence, from INDUS_FINAL_ANCHORS)",
         "params": {
           "min_confidence": "MEDIUM"
         }
-      },
-      "position": {
-        "x": 60,
-        "y": 520
       }
     },
     {
       "id": "sa",
       "type": "expNode",
+      "position": {
+        "x": 315,
+        "y": 210
+      },
       "data": {
         "atomicId": "SADecipher",
-        "label": "SA M77 → Dravidian Syllable LM (5 seeds × 10000 iters)",
+        "label": "SA M77 \u2192 Dravidian Syllable LM (5 seeds \u00d7 10000 iters)",
         "params": {
           "n_seeds": 5,
           "max_iterations": 10000,
           "restarts": 8,
           "surjective": true,
-          "ocp_weight": 0.0
+          "ocp_weight": 0
         }
-      },
-      "position": {
-        "x": 480,
-        "y": 320
       }
     },
     {
       "id": "cons",
       "type": "expNode",
+      "position": {
+        "x": 570,
+        "y": 210
+      },
       "data": {
         "atomicId": "ConsistencyScorer",
         "label": "Per-sign consistency (Dravidian syllable)",
         "params": {}
-      },
-      "position": {
-        "x": 840,
-        "y": 320
       }
     },
     {
       "id": "merge",
       "type": "expNode",
+      "position": {
+        "x": 825,
+        "y": 210
+      },
       "data": {
         "atomicId": "Merger",
         "label": "Collect Phase-33 T1 results",
         "params": {}
-      },
-      "position": {
-        "x": 1100,
-        "y": 320
       }
     },
     {
       "id": "out",
       "type": "expNode",
+      "position": {
+        "x": 1080,
+        "y": 210
+      },
       "data": {
         "atomicId": "JSONExport",
         "label": "Save Phase-33 T1 results",
         "params": {
           "filename": "phase33_t1_sa_syllable.json"
         }
-      },
-      "position": {
-        "x": 1400,
-        "y": 320
       }
     }
   ],
@@ -194,6 +193,5 @@
       "sourcePort": "json",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

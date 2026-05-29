@@ -187,10 +187,20 @@ async def start_loop(
         # Wait for producer thread to finish
         await task
 
-        # Mark job completed
+        # Final persist (before foundation check so history is durable)
+        await _persist(loop)
+
+        # ── Foundation check (post-loop integrity gate, pre-synthesis) ──
+        foundation_result = await _run_foundation_check()
+
+        # ── Post-loop: synthesize results + propose next actions ────────
+        synthesis = _build_synthesis(loop, foundation_result=foundation_result)
+
+        # Mark job completed — synthesis included in stored result so it
+        # can be retrieved later via GET /last-run.
         if job_id and db:
             try:
-                results = loop.get_full_results()
+                results = {**loop.get_full_results(), "synthesis": synthesis}
                 await db.store_result(
                     job_id=job_id,
                     data=results,
@@ -199,15 +209,6 @@ async def start_loop(
                 await db.update_job_status(job_id, "completed")
             except Exception as exc:  # noqa: BLE001
                 _log.warning("Could not finalize job: %s", exc)
-
-        # Final persist
-        await _persist(loop)
-
-        # ── Foundation check (post-loop integrity gate, pre-synthesis) ──
-        foundation_result = await _run_foundation_check()
-
-        # ── Post-loop: synthesize results + propose next actions ────────
-        synthesis = _build_synthesis(loop, foundation_result=foundation_result)
 
         # Trigger dashboard insight refresh (best-effort, non-blocking)
         try:
@@ -354,3 +355,33 @@ async def loop_results() -> dict[str, Any]:
     """Return full results from the last run."""
     loop = _get_loop()
     return loop.get_full_results()
+
+
+@router.get("/last-run")
+async def last_run() -> dict[str, Any]:
+    """Return the synthesis + full results from the most recently completed loop job.
+
+    Used by the frontend to display the run-summary dashboard on load,
+    even between sessions. Returns {no_runs: true} if no completed job exists.
+    """
+    from glossa_lab.database import get_db
+    db = get_db()
+    if db is None:
+        return {"error": "database not available"}
+    jobs = await db.list_jobs()
+    loop_jobs = [
+        j for j in jobs
+        if j.get("pipeline") == "research_loop" and j.get("status") == "completed"
+    ]
+    if not loop_jobs:
+        return {"no_runs": True}
+    latest = loop_jobs[0]  # list_jobs returns DESC by created_at
+    result = await db.get_result_for_job(latest["id"])
+    if not result:
+        return {"job_id": latest["id"], "no_result": True}
+    data = result.get("data") or {}
+    return {
+        "job_id": latest["id"],
+        "completed_at": latest.get("updated_at"),
+        **data,
+    }

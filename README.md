@@ -140,6 +140,7 @@ glossa-lab/
 │  └─ workflows/ci.yml  ← GitHub Actions CI
 ├─ backend/             ← Python FastAPI application
 │  ├─ glossa_lab/       ← app modules (api/, experiments/, discovery/, ...)
+│  ├─ glossa_mcp/       ← MCP server (Warp/Oz agent integration, 27 tools)
 │  ├─ scripts/          ← all research and utility scripts
 │  └─ tests/
 ├─ frontend/            ← React / TypeScript / Vite
@@ -214,6 +215,50 @@ curl.exe -sf http://localhost:8001/ | Select-String 'index-[A-Za-z0-9]+\.js'
 
 ---
 
+## MCP server (Warp / Oz)
+
+Glossa Lab ships a [FastMCP](https://github.com/jlowin/fastmcp) server that exposes 27 backend operations as MCP tools, allowing Warp's Oz agent to query and control the system directly — no manual API calls required.
+
+### What it covers
+
+| Category | Tools |
+|---|---|
+| Status | `get_status`, `get_system_metrics` |
+| Jobs | `list_jobs`, `get_job`, `create_job`, `cancel_job`, `get_job_results` |
+| Experiments | `list_experiments`, `get_experiment`, `run_experiment` |
+| Research loop | `start_research_loop`, `get_research_loop_status`, `stop_research_loop`, `get_research_loop_results`, `get_anchor_staging` |
+| Foundation check | `run_foundation_check` |
+| Discovery | `list_discovery_items`, `get_discovery_stats`, `trigger_discovery_fetch`, `update_discovery_item_status` |
+| Dashboard | `get_latest_insight`, `get_dashboard_highlights` |
+| Anchor sets | `list_anchor_sets`, `get_anchor_set`, `create_anchor_set` |
+| Reports | `list_reports`, `get_report` |
+
+### Setup
+
+1. **Start the backend** (`setup-os.cmd start` or `uvicorn glossa_lab.main:create_app --factory --port 8001`).
+2. In Warp, open **Settings → Agents → MCP Servers** and add a new server with:
+
+```json
+{
+  "glossa-lab": {
+    "command": "C:/Users/trist/Development/BitConcepts/glossa-lab/backend/venv/Scripts/python.exe",
+    "args": ["C:/Users/trist/Development/BitConcepts/glossa-lab/backend/glossa_mcp/server.py"]
+  }
+}
+```
+
+Adjust the path to match your install location. The server defaults to `http://127.0.0.1:8001`; override with the `GLOSSA_BASE_URL` environment variable if needed.
+
+### Source
+
+```
+backend/glossa_mcp/
+├── __init__.py
+└── server.py   ← FastMCP server (edit here to add tools)
+```
+
+---
+
 ## Project discipline
 
 This project follows strict research governance enforced by both convention and tooling:
@@ -243,6 +288,7 @@ Full governance rules: [`docs/governance/`](docs/governance/)
 | `docs/TESTS.md` | Test specification |
 | `docs/research/` | Decipherment research documents |
 | **`research/indus/`** | **Public outputs — preprint PDF, anchor table, phase reports (CC BY 4.0)** |
+| `backend/glossa_mcp/server.py` | MCP server — 27 tools for Warp/Oz agent integration |
 
 ---
 

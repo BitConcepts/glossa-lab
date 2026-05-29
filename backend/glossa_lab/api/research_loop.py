@@ -138,15 +138,120 @@ async def start_loop(
             except Exception as exc:  # noqa: BLE001
                 _log.warning("Could not finalize job: %s", exc)
 
-        # Final persist + completion event
+        # Final persist
         await _persist(loop)
-        yield f"data: {json.dumps({'type': 'complete', 'job_id': job_id, **loop.get_full_results()})}\n\n"
+
+        # ── Post-loop: synthesize results + propose next actions ────────
+        synthesis = _build_synthesis(loop)
+
+        # Trigger dashboard insight refresh (best-effort, non-blocking)
+        try:
+            from glossa_lab.api.dashboard import dashboard_insight  # noqa: PLC0415
+            _log.info("Research loop complete — refreshing dashboard insights")
+            asyncio.create_task(_refresh_insight_background())
+        except Exception:  # noqa: BLE001
+            pass
+
+        yield f"data: {json.dumps({'type': 'complete', 'job_id': job_id, **loop.get_full_results(), 'synthesis': synthesis})}\n\n"
 
     return StreamingResponse(
         event_stream(),
         media_type="text/event-stream",
         headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
     )
+
+
+def _build_synthesis(loop) -> dict[str, Any]:
+    """Generate a post-loop synthesis: what was found, what to do next."""
+    from glossa_lab.pipelines.research_loop import INSIGHT_TO_EXPERIMENTS
+
+    history = loop.history or []
+    if not history:
+        return {"summary": "No cycles completed.", "proposals": []}
+
+    # Aggregate insight types across all cycles
+    all_types: dict[str, int] = {}
+    for h in history:
+        for t, c in (h.get("insight_types") or {}).items():
+            all_types[t] = all_types.get(t, 0) + c
+
+    # Identify experiments that produced new results vs. repeats
+    new_verdicts = [h for h in history if h.get("is_new_info")]
+    repeat_verdicts = [h for h in history if not h.get("is_new_info")]
+
+    # Find which insight types haven't been explored yet
+    explored_types = set(all_types.keys())
+    unexplored_types = set(INSIGHT_TO_EXPERIMENTS.keys()) - explored_types
+
+    # Build proposals for next actions
+    proposals: list[dict[str, str]] = []
+
+    # 1. Propose experiments for unexplored insight types
+    for utype in sorted(unexplored_types):
+        top_exp = INSIGHT_TO_EXPERIMENTS[utype][0]
+        proposals.append({
+            "action": "run_experiment",
+            "experiment": top_exp,
+            "rationale": f"No {utype} insights found — run {top_exp} to explore this gap.",
+        })
+
+    # 2. Propose deeper analysis for the most common insight type
+    if all_types:
+        top_type = max(all_types, key=all_types.get)  # type: ignore[arg-type]
+        candidates = INSIGHT_TO_EXPERIMENTS.get(top_type, [])
+        used_exps = {h["experiment"] for h in history}
+        unused = [c for c in candidates if c not in used_exps]
+        if unused:
+            proposals.append({
+                "action": "run_experiment",
+                "experiment": unused[0],
+                "rationale": f"{top_type} was the dominant insight ({all_types[top_type]} total) — run {unused[0]} for deeper analysis.",
+            })
+
+    # 3. Always propose a dashboard insight refresh
+    proposals.append({
+        "action": "refresh_insights",
+        "experiment": "",
+        "rationale": "Refresh dashboard AI insights to incorporate new mining results.",
+    })
+
+    return {
+        "summary": (
+            f"{len(history)} cycles completed. "
+            f"{sum(h['n_papers'] for h in history)} papers mined, "
+            f"{sum(h['n_insights'] for h in history)} insights extracted. "
+            f"{len(new_verdicts)} experiments produced new results, "
+            f"{len(repeat_verdicts)} repeated."
+        ),
+        "insight_type_totals": all_types,
+        "unexplored_types": sorted(unexplored_types),
+        "proposals": proposals,
+    }
+
+
+async def _refresh_insight_background() -> None:
+    """Refresh dashboard AI insight after loop completion (fire-and-forget)."""
+    try:
+        from glossa_lab.api.dashboard import (
+            _generate_insight,
+            _graph_experiment_ids,
+            _recent_discovery,
+        )
+        from glossa_lab.database import get_db
+
+        db = get_db()
+        items = await _recent_discovery(limit=30, days=14)
+        studies = []
+        if db:
+            try:
+                studies = await db.list_studies()
+            except Exception:  # noqa: BLE001
+                pass
+        exp_ids = _graph_experiment_ids()
+        await _generate_insight(items, studies, exp_ids)
+        _log.info("Post-loop dashboard insight refresh completed")
+    except Exception as exc:  # noqa: BLE001
+        _log.warning("Post-loop insight refresh failed: %s", exc)
 
 
 @router.get("/status")

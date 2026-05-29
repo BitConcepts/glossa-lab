@@ -179,6 +179,8 @@ export function ResearchLoopPanel() {
               };
               if (event.type === "complete") {
                 if (event.synthesis) setSynthesis(event.synthesis);
+                // Notify DashboardView so it can pull the new insight
+                window.dispatchEvent(new CustomEvent("glossa:loop-complete"));
                 void fetchStatus();
                 void fetchLastRun();
                 void fetchStaging();

@@ -6,6 +6,7 @@ import shutil
 import subprocess
 import sys
 import time
+import time as _time
 import urllib.request
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -255,6 +256,42 @@ async def lifespan(app: FastAPI):
 
     _start_time = time.time()
     _log.info("=== Glossa Lab startup complete (%.1fs) ===", time.time() - _start_time)
+
+    # Auto-fetch discovery on startup if data is stale (> 12 h since last fetch).
+    # Runs in the background after a 30 s settle delay so the server is fully
+    # ready before hitting external APIs.  Non-blocking and non-critical.
+    async def _auto_startup_fetch() -> None:
+        await asyncio.sleep(30)
+        try:
+            _fdb = get_db()
+            if _fdb is None:
+                return
+            # Check most-recent fetched_at across discovery_items
+            import datetime as _dt  # noqa: PLC0415
+            rows = await _fdb.list_discovery_items(
+                topic=None, kind=None, status=None, since=None, limit=1, offset=0)
+            last_fetch: float = 0.0
+            if rows:
+                ts_str = rows[0].get("fetched_at", "")
+                if ts_str:
+                    try:
+                        last_fetch = _dt.datetime.fromisoformat(
+                            ts_str.replace("Z", "+00:00")
+                        ).timestamp()
+                    except Exception:  # noqa: BLE001
+                        pass
+            age_hours = (_time.time() - last_fetch) / 3600 if last_fetch else 999
+            if age_hours < 12:
+                _log.info("Auto-fetch skipped: last fetch %.1f h ago", age_hours)
+                return
+            _log.info("Auto-fetch: triggering discovery fetch (last fetch %.1f h ago)",
+                      age_hours)
+            from glossa_lab.api.discovery import fetch_endpoint, FetchRequest  # noqa: PLC0415
+            await fetch_endpoint(FetchRequest())
+        except Exception as _exc:  # noqa: BLE001
+            _log.info("Auto-fetch: skipped or failed (%s)", _exc)
+
+    asyncio.create_task(_auto_startup_fetch())
     yield
     # Shutdown: stop engine + scheduler, close database, flush logs
     _log.info("=== Glossa Lab shutting down ===")

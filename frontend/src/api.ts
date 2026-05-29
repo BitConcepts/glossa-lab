@@ -1688,6 +1688,15 @@ export interface DeciphermentProgress {
 export const getDashboardDecipherment = (): Promise<DeciphermentProgress> =>
   request("GET", "/dashboard/decipherment");
 
+export interface LatestInsightResponse {
+  available: boolean;
+  generated_at: number;  // epoch seconds
+  insight: DashboardInsight | null;
+}
+
+export const getLatestInsight = (): Promise<LatestInsightResponse> =>
+  request("GET", "/dashboard/latest-insight");
+
 // ── AI profile suggestions ───────────────────────────────────────────
 
 export interface AIProfileSuggestion {

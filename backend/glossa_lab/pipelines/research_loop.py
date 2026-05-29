@@ -120,6 +120,71 @@ TEMPLATE_TO_GRAPH: dict[str, str] = {
     "suffix_after_animal":        "positional_profile_analysis",
     "cross_site_formula_overlap": "bigram_analysis",
 }
+# ── Insight keyword extraction ──────────────────────────────────────
+# (keyword_in_title, insight_type) — checked in order, first match wins.
+# Broad coverage across all Indus/Dravidian research domains.
+_INSIGHT_KEYWORDS: list[tuple[str, str]] = [
+    # reading / sign value
+    ("sign value", "reading"), ("sign reading", "reading"),
+    ("decipherment", "reading"), ("decipher", "reading"),
+    ("phonetic", "reading"), ("phonemic", "reading"),
+    ("syllabary", "reading"), ("syllabic", "reading"),
+    ("logographic", "reading"), ("logosyllabic", "reading"),
+    ("aksara", "reading"), ("akshara", "reading"),
+    ("script reading", "reading"), ("sign identification", "reading"),
+    ("undeciphered", "reading"),
+    # guild / trade / economy
+    ("guild", "guild"), ("merchant", "guild"), ("trader", "guild"),
+    ("craft specialist", "guild"), ("artisan", "guild"),
+    ("trade network", "guild"), ("exchange network", "guild"),
+    ("commodity", "guild"), ("commercial", "guild"),
+    ("economic", "guild"), ("metrolog", "guild"),
+    ("weight system", "guild"), ("weight standard", "guild"),
+    # compound / morphology
+    ("compound", "compound"), ("agglutina", "compound"),
+    ("morpheme", "morphology"), ("morpholog", "morphology"),
+    ("suffix", "morphology"), ("prefix", "morphology"),
+    ("inflection", "morphology"), ("declension", "morphology"),
+    ("genitive", "morphology"), ("dative", "morphology"),
+    ("case marker", "morphology"), ("case ending", "morphology"),
+    # formula / syntax / structure
+    ("formula", "formula"), ("syntax", "formula"),
+    ("inscription pattern", "formula"), ("sign sequence", "formula"),
+    ("bigram", "formula"), ("trigram", "formula"), ("n-gram", "formula"),
+    ("word order", "formula"), ("tripartite", "formula"),
+    ("positional", "formula"), ("structural pattern", "formula"),
+    # function / iconography / context
+    ("seal function", "function"), ("seal type", "function"),
+    ("iconograph", "function"), ("motif", "function"),
+    ("unicorn", "function"), ("animal symbol", "function"),
+    ("seal impression", "function"), ("sealing", "function"),
+    ("administrative", "function"), ("bureaucra", "function"),
+    # Dravidian / linguistic
+    ("dravidian", "reading"), ("proto-dravidian", "reading"),
+    ("tamil", "reading"), ("tamil-brahmi", "reading"),
+    ("sangam", "reading"), ("tolkappiyam", "reading"),
+    ("dedr", "reading"), ("kannada", "reading"),
+    ("telugu", "reading"), ("malayalam", "reading"),
+    ("brahui", "reading"), ("kurux", "reading"),
+    # archaeology / sites
+    ("harappa", "function"), ("mohenjo", "function"),
+    ("indus valley", "function"), ("indus civiliz", "function"),
+    ("mature harappan", "function"), ("dholavira", "function"),
+    ("rakhigarhi", "function"), ("lothal", "function"),
+    ("kalibangan", "function"),
+    # computational / statistical
+    ("entropy", "formula"), ("zipf", "formula"),
+    ("frequency", "formula"), ("statistic", "formula"),
+    ("computational", "formula"), ("machine learning", "formula"),
+    ("neural network", "formula"), ("bayesian", "formula"),
+    ("cluster", "formula"), ("classif", "formula"),
+    # epigraphy / writing systems
+    ("epigraph", "reading"), ("inscription", "formula"),
+    ("writing system", "reading"), ("script", "reading"),
+    ("glyph", "reading"), ("sign list", "reading"),
+    ("cuneiform", "reading"), ("hieroglyph", "reading"),
+    ("linear a", "reading"), ("linear b", "reading"),
+]
 
 # ── Phase 6: Insight type → best experiment mapping ─────────────────
 # Each insight type (extracted from paper titles during mining) maps to
@@ -364,9 +429,7 @@ class ResearchLoop:
         insights = []
         for p in unique:
             text = p["title"].lower()
-            for kw, itype in [("sign value", "reading"), ("guild", "guild"),
-                              ("compound", "compound"), ("formula", "formula"),
-                              ("seal function", "function"), ("morpheme", "morphology")]:
+            for kw, itype in _INSIGHT_KEYWORDS:
                 if kw in text:
                     insights.append({"type": itype, "title": p["title"][:80]})
                     break

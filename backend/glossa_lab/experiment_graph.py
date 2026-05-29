@@ -2794,6 +2794,52 @@ try:
 except Exception as _p298308_exc:  # noqa: BLE001
     logger.warning("Phase-298-308 nodes not registered: %s", _p298308_exc)
 
+# ── Phase-322-390 nodes (May 2026 decipherment advancement session)
+try:
+    from glossa_lab.experiment_graph_phase322_362 import (
+        phase322_362_node_defs as _p322390_defs,
+    )
+    for _d in _p322390_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-322-390 nodes", len(_p322390_defs()))
+except Exception as _p322390_exc:  # noqa: BLE001
+    logger.warning("Phase-322-390 nodes not registered: %s", _p322390_exc)
+
+# ── Research Loop Runner (meta-node for Experiment Builder)
+try:
+    from glossa_lab.pipelines.research_loop import ResearchLoop as _RL
+
+    def _research_loop_runner(inputs: dict, params: dict) -> dict:
+        """Run the integrated research loop as an atomic node."""
+        max_cycles = int(params.get("max_cycles", 5))
+        loop = _RL(max_cycles=max_cycles)
+        for _ in loop.run():
+            pass
+        return loop.get_full_results()
+
+    ATOMIC_NODES["ResearchLoopRunner"] = AtomicNodeDef(
+        id="ResearchLoopRunner",
+        name="Research Loop Runner",
+        category="Research",
+        description="Run the Mine\u2192Analyze\u2192Register\u2192Execute\u2192Analyze cycle for N iterations.",
+        inputs=[],
+        outputs=[
+            {"name": "total_papers", "type": "number"},
+            {"name": "total_insights", "type": "number"},
+            {"name": "json", "type": "json"},
+            {"name": "text", "type": "text"},
+        ],
+        params_schema={
+            "max_cycles": {"type": "integer", "title": "Max Cycles", "default": 5,
+                          "description": "Number of Mine\u2192Execute cycles to run."},
+        },
+        fn=_research_loop_runner,
+    )
+    logger.info("Registered ResearchLoopRunner atomic node")
+except Exception as _rl_exc:  # noqa: BLE001
+    logger.warning("ResearchLoopRunner not registered: %s", _rl_exc)
+
+
 # ── Graph execution
 
 def _topo_sort(nodes: list[dict], edges: list[dict]) -> list[dict]:

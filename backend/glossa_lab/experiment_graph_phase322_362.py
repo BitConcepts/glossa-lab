@@ -225,6 +225,41 @@ def _mining_discovery_loop(inputs: dict, params: dict) -> dict[str, Any]:
         "text": data.get("verdict", "Mining discovery loop not run"),
     }
 
+def _phase378_381(inputs: dict, params: dict) -> dict[str, Any]:
+    """Phases 378-381: TB transfer, M77 crosswalk, Shu-ilishu, DEDR corpus."""
+    data = _load_output("phase378_381_plus_loop30.json")
+    p378 = data.get("phase378", {})
+    return {
+        "tb_overlap": p378.get("overlap", 0),
+        "json": data,
+        "number": float(p378.get("overlap", 0)),
+        "text": p378.get("verdict", "Phase 378 not run"),
+    }
+
+def _phase382_390(inputs: dict, params: dict) -> dict[str, Any]:
+    """Phases 382-390: Nine actionable experiments."""
+    data = _load_output("phase382_390_actionable.json")
+    p390 = data.get("phase390", {})
+    p387 = data.get("phase387", {})
+    return {
+        "parpola_agreement": p390.get("agreement_rate", 0),
+        "n_translated": p387.get("n_translated", 0),
+        "json": data,
+        "number": float(p390.get("agreement_rate", 0)),
+        "text": f"Parpola {p390.get('agreement_rate',0):.0%} agreement, {p387.get('n_translated',0)} translated",
+    }
+
+def _integrated_loop(inputs: dict, params: dict) -> dict[str, Any]:
+    """Integrated research loop results."""
+    data = _load_output("integrated_research_loop.json")
+    return {
+        "total_experiments": data.get("n_new_experiments", 0),
+        "total_papers": data.get("total_papers_mined", 0),
+        "json": data,
+        "number": float(data.get("n_new_experiments", 0)),
+        "text": data.get("verdict", "Integrated loop not run"),
+    }
+
 
 # ── Node definitions ──────────────────────────────────────────────────────────
 
@@ -327,9 +362,34 @@ def phase322_362_node_defs() -> list[AtomicNodeDef]:
         AtomicNodeDef(
             id="indus_mining_discovery_loop",
             name="Mining Discovery Loop",
-            category="Indus Decipherment (Phase 322–376)",
+            category="Indus Decipherment (Phase 322–390)",
             description="5-round targeted mining: hapax signs, Dravidian compounds, guild parallels, seal function, syntax (1331 papers, 217 insights)",
             inputs=[], outputs=[{"name": "total_insights", "type": "number"}, *_STD],
             params_schema={}, fn=_mining_discovery_loop,
+        ),
+        AtomicNodeDef(
+            id="indus_phase378_381_advances",
+            name="Phases 378–381: TB Transfer + M77 + Shu-ilishu + DEDR",
+            category="Indus Decipherment (Phase 322–390)",
+            description="Tamil-Brahmi transfer (22 overlap), M77 crosswalk (25 matches), Shu-ilishu (15 candidates), DEDR corpus (15.7%)",
+            inputs=[], outputs=[{"name": "tb_overlap", "type": "number"}, *_STD],
+            params_schema={}, fn=_phase378_381,
+        ),
+        AtomicNodeDef(
+            id="indus_phase382_390_actionable",
+            name="Phases 382–390: Actionable Experiments",
+            category="Indus Decipherment (Phase 322–390)",
+            description="M77 freq crosswalk, blocker proposals (102), Shu-ilishu decode, compound dict (619), full translation (1252), taxonomy (544), motif dicts (9), Parpola 91%",
+            inputs=[], outputs=[{"name": "parpola_agreement", "type": "number"}, *_STD],
+            params_schema={}, fn=_phase382_390,
+        ),
+        AtomicNodeDef(
+            id="indus_integrated_research_loop",
+            name="Integrated Research Loop",
+            category="Indus Decipherment (Phase 322–390)",
+            description="Mine→Analyze→Register→Execute→Analyze: 30 cycles, 973 papers, 15 gap topics × 15 experiment templates",
+            inputs=[], outputs=[{"name": "total_experiments", "type": "number"}, *_STD],
+            params_schema={"max_cycles": {"type": "integer", "default": 15}},
+            fn=_integrated_loop,
         ),
     ]

@@ -502,6 +502,7 @@ export function JobsView() {
               const nodesDone = (j.params?.nodes_done as number) ?? 0;
               const pct = nodeCount > 0 ? Math.round((nodesDone / nodeCount) * 100) : null;
               const isExpRun = j.pipeline === "exp_run";
+              const resourceWait = (j.params?.resource_wait as string) ?? null;
               const elapsedSec = j.status === "running"
                 ? Math.round((Date.now() - new Date(j.created_at).getTime()) / 1000)
                 : null;
@@ -515,6 +516,16 @@ export function JobsView() {
                   <div style={{ fontSize: 11, color: "#6b7280", fontFamily: "monospace" }}>
                     {j.id.slice(0, 8)}…
                   </div>
+                  {/* Resource-wait banner — job is pending but blocked on CPU/RAM/VRAM */}
+                  {j.status === "pending" && resourceWait && (
+                    <div style={{ marginTop: 4, fontSize: 10, color: "#92400e",
+                                  background: "#fef3c7", border: "1px solid #fcd34d",
+                                  borderRadius: 4, padding: "2px 7px",
+                                  display: "flex", alignItems: "center", gap: 4 }}>
+                      <span>⏳</span>
+                      <span>{resourceWait}</span>
+                    </div>
+                  )}
                   {/* Progress bar for running exp_run jobs */}
                   {j.status === "running" && isExpRun && nodeCount > 0 && (
                     <div style={{ marginTop: 4, display: "flex", alignItems: "center", gap: 6 }}>

@@ -155,6 +155,59 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
         _t0 = datetime.now(UTC)
         db = _db_mod.get_db()
 
+        # ── Detect GPU / compute device first (needed for resource check) ─────────
+        try:
+            from glossa_lab.accelerate import gpu_info as _gpu_info  # noqa: PLC0415
+            _ginfo = _gpu_info()
+            _compute_device = "gpu" if _ginfo.get("cuda") else "cpu"
+            _compute_label  = _ginfo.get("tier_name", "CPU")
+        except Exception:  # noqa: BLE001
+            _compute_device = "cpu"; _compute_label = "CPU"
+
+        # ── Resource pre-check for GPU experiments ───────────────────────────────
+        # Check VRAM before starting any experiment with SA nodes or GPU device.
+        # Fail fast with a clear message rather than OOM-crashing mid-run.
+        _has_sa_node = any(
+            (n.get("data") or {}).get("atomicId") in ("SADecipher", "IndusConstrainedSA",
+                                                         "IndusSyllabicSA", "BeamDecipher")
+            for n in nodes
+        )
+        if _has_sa_node or _compute_device == "gpu":
+            try:
+                import torch as _torch  # noqa: PLC0415
+                _vram_min = float(
+                    __import__("os").environ.get("GLOSSA_VRAM_MIN_FREE_GB", "2.5")
+                )
+                if _torch.cuda.is_available():
+                    _props    = _torch.cuda.get_device_properties(0)
+                    _reserved = _torch.cuda.memory_reserved(0)
+                    _vram_free = (_props.total_memory - _reserved) / 1024 ** 3
+                    if _vram_free < _vram_min:
+                        logger.warning(
+                            "exp_run '%s' rejected: VRAM %.1f GB free < %.1f GB threshold",
+                            exp_id, _vram_free, _vram_min,
+                        )
+                        yield _sse({
+                            "event": "run_error",
+                            "message": (
+                                f"Insufficient VRAM: {_vram_free:.1f} GB free, "
+                                f"need {_vram_min:.1f} GB. "
+                                "Another GPU job may still be running. "
+                                "Check the Jobs panel and retry when VRAM is available."
+                            ),
+                            "resource_blocked": True,
+                            "vram_free_gb": round(_vram_free, 2),
+                            "vram_required_gb": _vram_min,
+                        })
+                        return
+                else:
+                    logger.warning(
+                        "exp_run '%s': SA node detected but CUDA unavailable — will run on CPU",
+                        exp_id,
+                    )
+            except Exception as _re:  # noqa: BLE001
+                logger.debug("VRAM pre-check skipped: %s", _re)
+
         # ── Duplicate-run guard ────────────────────────────────────────────────
         # Reject immediately if the same experiment is already running.
         # Checks by exp_id in params so two different job IDs don't both run.
@@ -187,15 +240,6 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                     return
             except Exception as _de:  # noqa: BLE001
                 logger.warning("Duplicate-run check failed (non-critical): %s", _de)
-
-        # ── Detect GPU / compute device at job creation time ───────────────────
-        try:
-            from glossa_lab.accelerate import gpu_info as _gpu_info  # noqa: PLC0415
-            _ginfo = _gpu_info()
-            _compute_device = "gpu" if _ginfo.get("cuda") else "cpu"
-            _compute_label  = _ginfo.get("tier_name", "CPU")
-        except Exception:  # noqa: BLE001
-            _compute_device = "cpu"; _compute_label = "CPU"
 
         # ── Create a Job record so the run appears in the Jobs panel ────────────
         job_id: str | None = None

@@ -1070,7 +1070,7 @@ export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChan
     : minimized ? 30 : height;
 
   return (
-    <div style={{
+    <div className="glossa-bottom-panel" style={{
       position: "fixed", bottom: 0, left: leftOffset, right: 0,
       height: panelH, background: "#0f172a", borderTop: "1px solid #1e293b",
       display: "flex", flexDirection: "column", zIndex: 5000, userSelect: "none",

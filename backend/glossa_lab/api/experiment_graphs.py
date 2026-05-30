@@ -371,17 +371,22 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                                             (job_id,),
                                         )
                                         _row = await _sc.fetchone()
-                                        if _row and _row[0] in ("paused", "cancelled"):
-                                            _stop_status = _row[0]
+                                        _stop_status = (
+                                            None if _row is None else _row[0]
+                                        )
+                                        if _stop_status is None or _stop_status in (
+                                            "paused", "cancelled", "failed"
+                                        ):
+                                            _label = _stop_status or "deleted"
                                             logger.info(
-                                                "exp_run '%s' job %s set to %s — stopping stream",
-                                                exp_id, job_id, _stop_status,
+                                                "exp_run '%s' job %s %s — stopping stream",
+                                                exp_id, job_id, _label,
                                             )
                                             yield _sse({
                                                 "event": "run_error",
-                                                "message": f"Job {_stop_status} by user.",
+                                                "message": f"Job {_label} by user.",
                                                 "paused": _stop_status == "paused",
-                                                "cancelled": _stop_status == "cancelled",
+                                                "cancelled": _stop_status in ("cancelled", None),
                                             })
                                             return
                                     except Exception:  # noqa: BLE001

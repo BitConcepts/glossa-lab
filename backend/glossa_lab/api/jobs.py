@@ -183,12 +183,31 @@ async def clear_jobs(finished_only: bool = False) -> ClearJobsResponse:
 
 @router.delete("/jobs/{job_id}", status_code=200)
 async def cancel_job(job_id: str) -> JobResponse:
-    """Cancel (delete) a job."""
+    """Hard-delete a job record (abort).  The record is removed entirely so
+    the jobs list stays clean and re-running the same experiment starts fresh.
+    Paused jobs should use the /pause endpoint instead.
+    """
     db = get_db()
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
 
-    job = await db.cancel_job(job_id)
+    job = await db.delete_job(job_id)
     if job is None:
         raise HTTPException(status_code=404, detail="Job not found")
     return JobResponse(**job)
+
+
+@router.post("/jobs/clear-cache", status_code=200)
+async def clear_cache() -> dict:
+    """Hard-delete all non-running jobs AND reset job-related localStorage keys.
+
+    Returns a summary so the frontend can confirm the wipe.
+    """
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+    cleared = await db.clear_finished_jobs()
+    return {
+        "cleared_jobs": cleared,
+        "message": f"Cleared {cleared} finished job(s). Reload the UI to reset frontend caches.",
+    }

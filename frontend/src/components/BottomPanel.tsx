@@ -10,6 +10,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import {
   cancelJob, clearJobs, createJob, getJobResults, getEnvStatus,
   getLogStreamUrl, listJobs, pauseJob, resumeJob, pauseAllJobs, resumeAllJobs,
+  clearCache, clearLocalCache,
   purgeLog, runTerminalCommand, type EnvStatus, type JobResponse,
 } from "../api";
 import { fmtDateTimeCompact, fmtElapsed } from "../dateFormat";
@@ -439,6 +440,16 @@ function JobsPanel() {
     catch { toast("Resume all failed", "error"); }
   };
 
+  const handleClearCache = async () => {
+    try {
+      await clearCache();
+      clearLocalCache();
+      setSeqQueue({ queue: [], watchJobId: null }); // reset local queue state too
+      await load();
+      toast("Cache cleared — finished jobs deleted, badges reset", "info");
+    } catch { toast("Clear cache failed", "error"); }
+  };
+
   const clearQueue = () => {
     const empty = { queue: [], watchJobId: null };
     saveSeqQueue(empty);
@@ -493,6 +504,7 @@ function JobsPanel() {
           {finishedCount > 0 && (
             <button onClick={handleClearDone} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#94a3b8", cursor: "pointer", fontSize: 10 }}>Clear Done</button>
           )}
+          <button onClick={handleClearCache} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#f59e0b", cursor: "pointer", fontSize: 10 }} title="Delete finished jobs + reset badges">🗑 Cache</button>
           {jobs.length > 0 && (
             <button onClick={handleClearAll} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#ef4444", cursor: "pointer", fontSize: 10 }}>Delete All</button>
           )}

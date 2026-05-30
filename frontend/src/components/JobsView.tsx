@@ -3,7 +3,6 @@ import { fmtTime, fmtDateTimeCompact, fmtElapsed } from "../dateFormat";
 import {
   cancelJob, clearJobs, createJob, getJobResults, getPipelineCatalog,
   listJobs, pauseJob, resumeJob, pauseAllJobs, resumeAllJobs,
-  clearCache, clearLocalCache,
   CatalogPipeline, JobResponse,
 } from "../api";
 
@@ -378,15 +377,6 @@ export function JobsView() {
     catch (e) { alert(e instanceof Error ? e.message : "Resume all failed"); }
   };
 
-  const handleClearCache = async () => {
-    if (!confirm("Clear all finished jobs and reset experiment run badges?\n\nRunning jobs will not be affected.")) return;
-    try {
-      await clearCache();
-      clearLocalCache();
-      await load();
-    } catch (e) { alert(e instanceof Error ? e.message : "Clear cache failed"); }
-  };
-
   const statusColor = (s: string) => {
     if (s === "completed") return "#16a34a";
     if (s === "failed")    return "#dc2626";
@@ -436,12 +426,6 @@ export function JobsView() {
             style={{ ...btnStyle, background: "#059669", fontSize: 12, padding: "4px 12px" }}
             title="Resume all paused jobs">
             ▶ Resume All
-          </button>
-          <button
-            onClick={handleClearCache}
-            style={{ ...btnStyle, background: "#b45309", fontSize: 12, padding: "4px 12px" }}
-            title="Delete all finished jobs + reset experiment run badges">
-            🗑 Clear Cache
           </button>
           <button onClick={handleClearJobs} disabled={clearing || jobs.length === 0}
             style={{ ...btnStyle, background: "#6b7280", fontSize: 12, padding: "4px 12px" }}>

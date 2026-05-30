@@ -849,6 +849,28 @@ class Database:
         await self._conn.commit()
         return len(rows)
 
+    async def clear_non_running_jobs(self) -> int:
+        """Hard-delete every job that is NOT actively running.
+
+        Removes completed, failed, cancelled, paused, and pending jobs while
+        leaving jobs with status='running' completely untouched.
+        """
+        assert self._conn
+        statuses = ("completed", "cancelled", "failed", "paused", "pending")
+        placeholders = ",".join("?" * len(statuses))
+        await self._conn.execute(
+            f"DELETE FROM job_results WHERE job_id IN "
+            f"(SELECT id FROM jobs WHERE status IN ({placeholders}))",
+            statuses,
+        )
+        cursor = await self._conn.execute(
+            f"DELETE FROM jobs WHERE status IN ({placeholders}) RETURNING id",
+            statuses,
+        )
+        rows = await cursor.fetchall()
+        await self._conn.commit()
+        return len(rows)
+
     async def get_job_counts(self) -> dict[str, int]:
         assert self._conn
         cursor = await self._conn.execute(

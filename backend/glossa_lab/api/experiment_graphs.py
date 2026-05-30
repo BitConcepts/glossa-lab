@@ -62,29 +62,13 @@ async def _maybe_notify_experiment(
     *, exp_id: str, exp_name: str, status: str,
     summary: dict[str, Any], duration_s: float | None,
 ) -> None:
-    """Fire an experiment_complete email; never raises."""
-    try:
-        from glossa_lab.notifications import (  # noqa: PLC0415
-            format_experiment_complete,
-            get_notifier,
-        )
-        notifier = get_notifier()
-        if not notifier.is_configured():
-            return
-        recipients = await notifier.list_active_recipients()
-        if not recipients:
-            return
-        subject, body_text, body_html = format_experiment_complete(
-            name=exp_name, exp_id=exp_id, status=status,
-            summary=summary, duration_s=duration_s,
-        )
-        await notifier.send(
-            subject=subject, body_text=body_text, body_html=body_html,
-            kind="experiment_complete", item_count=0,
-            recipients=recipients,
-        )
-    except Exception as exc:  # noqa: BLE001
-        logger.warning("experiment notify failed: %s", exc)
+    """Experiment completion notification — DISABLED.
+
+    STRICT RULE: no automatic emails are sent on experiment completion.
+    Emails may only be triggered by an explicit manual user action in the UI.
+    """
+    # AUTO-SEND BLOCKED — see docstring above.
+    return
 
 
 # ── Catalog ──────────────────────────────────────────────────────────────────

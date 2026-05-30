@@ -576,7 +576,8 @@ function JobsPanel() {
             {/* Clickable header row */}
             <div
               onClick={() => setExpandedId(isExpanded ? null : job.id)}
-              style={{ padding: "8px 10px", cursor: "pointer", userSelect: "none" }}
+              style={{ padding: "8px 10px", cursor: "pointer", userSelect: "none",
+                touchAction: "manipulation", WebkitTapHighlightColor: "transparent" }}
             >
               <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 3 }}>
                 <span style={{ fontSize: 9, color: "#64748b", flexShrink: 0 }}>{isExpanded ? "▼" : "►"}</span>
@@ -1065,9 +1066,11 @@ export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChan
     return () => { window.removeEventListener("mousemove", onMove); window.removeEventListener("mouseup", onUp); };
   }, [height, minimized, onHeightChange, onMinimizedChange]);
 
+  const isMobilePanel = typeof window !== "undefined" && window.innerWidth <= 768;
   const panelH = maximized
     ? Math.floor(window.innerHeight * MAX_HEIGHT_RATIO)
     : minimized ? 30 : height;
+  const TAB_BAR_H = isMobilePanel ? 36 : 30;
 
   return (
     <div className="glossa-bottom-panel" style={{
@@ -1086,16 +1089,16 @@ export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChan
       )}
 
       {/* Tab bar */}
-      <div style={{ display: "flex", alignItems: "center", height: 26, flexShrink: 0, borderBottom: minimized ? "none" : "1px solid #1e293b", paddingLeft: 6 }}>
+      <div style={{ display: "flex", alignItems: "center", height: TAB_BAR_H, flexShrink: 0, borderBottom: minimized ? "none" : "1px solid #1e293b", paddingLeft: 6 }}>
         {TABS.map((tab) => (
           <button
             key={tab.id}
             onClick={() => { onTabChange(tab.id); if (minimized) onMinimizedChange(false); }}
             style={{
-              padding: "3px 10px", border: "none", borderBottom: activeTab === tab.id && !minimized ? "2px solid #3b82f6" : "2px solid transparent",
+              padding: "4px 12px", border: "none", borderBottom: activeTab === tab.id && !minimized ? "2px solid #3b82f6" : "2px solid transparent",
               background: "none", cursor: "pointer", fontSize: 11, fontWeight: activeTab === tab.id ? 600 : 400,
               color: activeTab === tab.id ? "#e2e8f0" : "#64748b",
-              display: "flex", alignItems: "center", gap: 4,
+              display: "flex", alignItems: "center", gap: 4, height: "100%",
             }}
           >
             <span style={{ fontSize: 10 }}>{tab.icon}</span>
@@ -1119,12 +1122,14 @@ export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChan
         {/* Panel controls */}
         <button onClick={() => { setMaximized(false); onMinimizedChange(!minimized); }}
           title={minimized ? "Restore" : "Minimize"}
-          style={{ padding: "3px 8px", border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 13 }}>
+          style={{ padding: "5px 18px", border: "none", background: "none", color: "#94a3b8",
+            cursor: "pointer", fontSize: 14, height: "100%", display: "flex", alignItems: "center" }}>
           {minimized ? "▲" : "▼"}
         </button>
         <button onClick={() => { setMaximized(!maximized); if (minimized) onMinimizedChange(false); }}
           title={maximized ? "Restore" : "Maximize"}
-          style={{ padding: "3px 8px", border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 11 }}>
+          style={{ padding: "5px 12px", border: "none", background: "none", color: "#64748b",
+            cursor: "pointer", fontSize: 11, height: "100%", display: "flex", alignItems: "center" }}>
           {maximized ? "⊟" : "⊞"}
         </button>
       </div>

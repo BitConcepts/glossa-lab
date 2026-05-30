@@ -394,6 +394,20 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                                 # ── Keepalive heartbeat ───────────────────
                                 yield _sse({"event": "heartbeat", "nid": nid,
                                             "idx": node_idx, "total": len(ordered)})
+                                # Bump updated_at so the stall watchdog doesn't
+                                # kill long-running SA nodes (watchdog triggers
+                                # if updated_at is untouched for 1800s, but
+                                # updated_at only advances on node completion
+                                # without this touch).
+                                if job_id and db:
+                                    try:
+                                        await db._conn.execute(  # noqa: SLF001
+                                            "UPDATE jobs SET updated_at = datetime('now') WHERE id = ?",
+                                            (job_id,),
+                                        )
+                                        await db._conn.commit()  # noqa: SLF001
+                                    except Exception:  # noqa: BLE001
+                                        pass
                     except Exception as exc:  # noqa: BLE001
                         node_result = {"error": str(exc)}
 

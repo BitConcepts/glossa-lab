@@ -315,7 +315,8 @@ function AppContent() {
     if (isDocked) { setPanelVisible(true); setPanelMinimized(false); setPanelTab("chat"); }
   }, [isDocked]);
 
-  const effectivePanelH = panelVisible ? (panelMinimized ? 30 : panelHeight) : 0;
+  // On mobile we force the panel minimized (30px tab bar only), so use 30 not panelHeight
+  const effectivePanelH = panelVisible ? (isMobile || panelMinimized ? 30 : panelHeight) : 0;
 
   useEffect(() => {
     document.body.style.background = darkMode ? "#0f172a" : "#fff";
@@ -606,9 +607,9 @@ function AppContent() {
               {sidebarOpen ? "✕" : "☰"}
             </button>
           )}
-          {/* Breadcrumb */}
-          <span style={{ fontSize: 13, color: muted }}>Glossa Lab</span>
-          {projCtx.activeProject && (
+          {/* Breadcrumb — full on desktop, just the view name on mobile */}
+          {!isMobile && <span style={{ fontSize: 13, color: muted }}>Glossa Lab</span>}
+          {!isMobile && projCtx.activeProject && (
             <>
               <span style={{ color: border, fontSize: 13 }}>/</span>
               <span
@@ -623,25 +624,30 @@ function AppContent() {
               </span>
             </>
           )}
-          <span style={{ color: border, fontSize: 13 }}>/</span>
-          <span style={{ fontSize: 13, fontWeight: 600, color: fg }}>{currentLabel}</span>
+          {!isMobile && <span style={{ color: border, fontSize: 13 }}>/</span>}
+          <span style={{ fontSize: isMobile ? 15 : 13, fontWeight: 600, color: fg }}>{currentLabel}</span>
 
           <div style={{ flex: 1 }} />
 
-          <button
-            onClick={() => setPaletteOpen(true)}
-            title="Command palette (Cmd+K)"
-            style={{ padding: "4px 10px", border: `1px solid ${border}`, borderRadius: 6, background: "none", cursor: "pointer", fontSize: 12, color: muted }}
-          >
-            ⌘K
-          </button>
-          <button
-            onClick={() => setPanelVisible((v) => !v)}
-            title="Toggle panel (Ctrl+J)"
-            style={{ padding: "4px 10px", border: `1px solid ${border}`, borderRadius: 6, background: "none", cursor: "pointer", fontSize: 12, color: panelVisible ? "#2563eb" : muted }}
-          >
-            ⊟
-          </button>
+          {/* ⌘K and panel toggle — desktop only; not useful on touch */}
+          {!isMobile && (
+            <button
+              onClick={() => setPaletteOpen(true)}
+              title="Command palette (Cmd+K)"
+              style={{ padding: "4px 10px", border: `1px solid ${border}`, borderRadius: 6, background: "none", cursor: "pointer", fontSize: 12, color: muted }}
+            >
+              ⌘K
+            </button>
+          )}
+          {!isMobile && (
+            <button
+              onClick={() => setPanelVisible((v) => !v)}
+              title="Toggle panel (Ctrl+J)"
+              style={{ padding: "4px 10px", border: `1px solid ${border}`, borderRadius: 6, background: "none", cursor: "pointer", fontSize: 12, color: panelVisible ? "#2563eb" : muted }}
+            >
+              ⊟
+            </button>
+          )}
           {/* Bell portal-based dropdown — z-9500 escapes sticky header stacking context */}
           <NotificationCenter />
           <button
@@ -664,8 +670,8 @@ function AppContent() {
               flex: 1,
               minHeight: 0,
               display: "flex", flexDirection: "column",
-              padding:      isCanvas ? 0 : "24px",
-              paddingBottom: isCanvas ? 0 : 32,
+              padding:      isCanvas ? 0 : (isMobile ? "14px" : "24px"),
+              paddingBottom: isCanvas ? 0 : (isMobile ? 14 : 32),
               marginBottom:  effectivePanelH,
               color: fg,
               maxWidth: "none",
@@ -736,6 +742,15 @@ function AppContent() {
         aside::-webkit-scrollbar-track { background: transparent; }
         aside::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
         aside button:hover { background: rgba(255,255,255,0.08) !important; }
+        /* iOS safe-area: push the fixed bottom panel above the home indicator */
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+          .glossa-bottom-panel { padding-bottom: env(safe-area-inset-bottom); }
+        }
+        /* Improve tap targets on mobile */
+        @media (max-width: 768px) {
+          button { min-height: 36px; }
+          input, select, textarea { font-size: 16px !important; } /* prevent iOS zoom */
+        }
       `}</style>
     </div>
   );

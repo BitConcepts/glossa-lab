@@ -230,6 +230,14 @@ function AppContent() {
   const [aiPanelOpen, setAiPanelOpen] = useState(false);
   const [aiPanelWidth, setAiPanelWidth] = useState(320);
   const [aiPanelSide, setAiPanelSide] = useState<"left" | "right">("left");
+  // ── Mobile responsiveness ─────────────────────────────────────────────────
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 768);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
   // Dirty badges — shown when builders have unsaved local changes
   // Both start false on page load; the Study Builder dispatches glossa:dirty
   // whenever the graph diverges from its last-saved state.
@@ -400,7 +408,7 @@ function AppContent() {
     const jobsActive = item.id === "jobs" && activeJobCount > 0;
     return (
       <button
-        onClick={() => setTab(item.id)}
+        onClick={() => { setTab(item.id); if (isMobile) setSidebarOpen(false); }}
         title={item.label + (dirty ? " (unsaved changes)" : "")}
         style={{
           display: "flex", alignItems: "center", gap: 9,
@@ -446,6 +454,18 @@ function AppContent() {
     <div style={{ display: "flex", height: "100vh", overflow: "hidden", fontFamily: "system-ui, sans-serif", background: bg }}>
 
       {/* ── Left sidebar ──────────────────────────────────────────────────────── */}
+      {/* Mobile overlay — tapping it closes the sidebar */}
+      {isMobile && sidebarOpen && (
+        <div
+          onClick={() => setSidebarOpen(false)}
+          style={{
+            position: "fixed", inset: 0,
+            background: "rgba(0,0,0,0.5)",
+            zIndex: 199,
+          }}
+        />
+      )}
+
       <aside style={{
         position: "fixed", top: 0, left: 0, bottom: 0,
         width: SIDEBAR_W,
@@ -454,6 +474,9 @@ function AppContent() {
         overflow: "hidden",
         zIndex: 200,
         boxShadow: "2px 0 8px rgba(0,0,0,0.15)",
+        // On mobile: slide off-screen when closed
+        transform: isMobile && !sidebarOpen ? `translateX(-${SIDEBAR_W}px)` : "translateX(0)",
+        transition: "transform 0.2s ease",
       }}>
 
         {/* Logo + title */}
@@ -520,14 +543,42 @@ function AppContent() {
 
         {/* System items at bottom — flexShrink:0 ensures they never get hidden */}
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 4, paddingBottom: 4, flexShrink: 0 }}>
-          {SYSTEM_ITEMS.map((item) => <NavBtn key={item.id} item={item} />)}
+        {SYSTEM_ITEMS.map((item) => (
+          <button
+            key={item.id}
+            onClick={() => { setTab(item.id); if (isMobile) setSidebarOpen(false); }}
+            title={item.label}
+            style={{
+              display: "flex", alignItems: "center", gap: 9,
+              width: "100%", padding: "7px 14px",
+              border: "none", borderRadius: 0,
+              background: tab === item.id ? activeBg : "none",
+              borderLeft: tab === item.id ? "3px solid #60a5fa" : "3px solid transparent",
+              cursor: "pointer",
+              color: tab === item.id ? "#fff" : sideText,
+              fontSize: 13,
+              fontWeight: tab === item.id ? 600 : 400,
+              textAlign: "left",
+              transition: "background 0.12s",
+            }}
+          >
+            <span style={{ fontSize: 14, lineHeight: 1, flexShrink: 0 }}>{item.icon}</span>
+            <span style={{ flex: 1 }}>{item.label}</span>
+            {item.id === "jobs" && activeJobCount > 0 && (
+              <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#3b82f6",
+                flexShrink: 0, boxShadow: "0 0 6px #3b82f6", animation: "healthPulse 0.7s ease-in-out infinite" }}
+                title={`${activeJobCount} active job(s)`} />
+            )}
+          </button>
+        ))}
         </div>
       </aside>
 
       {/* ── Main content area ─────────────────────────────────────────────────── */}
       <div style={{
-        marginLeft: SIDEBAR_W + (aiPanelOpen && aiPanelSide === "left" ? aiPanelWidth : 0),
-        marginRight: aiPanelOpen && aiPanelSide === "right" ? aiPanelWidth : 0,
+        // On mobile the sidebar overlays content, so no left margin
+        marginLeft: isMobile ? 0 : SIDEBAR_W + (aiPanelOpen && aiPanelSide === "left" ? aiPanelWidth : 0),
+        marginRight: !isMobile && aiPanelOpen && aiPanelSide === "right" ? aiPanelWidth : 0,
         flex: 1, minWidth: 0,
         display: "flex", flexDirection: "column",
         height: "100vh",
@@ -538,12 +589,23 @@ function AppContent() {
         {/* Top bar */}
         <div style={{
           display: "flex", alignItems: "center", gap: 8,
-          padding: "10px 24px",
+          padding: isMobile ? "8px 12px" : "10px 24px",
           borderBottom: `1px solid ${border}`,
           background: cardBg,
           flexShrink: 0,
           position: "sticky", top: 0, zIndex: 100,
         }}>
+          {/* Hamburger — mobile only */}
+          {isMobile && (
+            <button
+              onClick={() => setSidebarOpen(v => !v)}
+              aria-label="Toggle navigation"
+              style={{ padding: "4px 6px", border: "none", background: "none",
+                cursor: "pointer", fontSize: 20, color: fg, lineHeight: 1, flexShrink: 0 }}
+            >
+              {sidebarOpen ? "✕" : "☰"}
+            </button>
+          )}
           {/* Breadcrumb */}
           <span style={{ fontSize: 13, color: muted }}>Glossa Lab</span>
           {projCtx.activeProject && (
@@ -645,11 +707,11 @@ function AppContent() {
         <BottomPanel
           height={panelHeight}
           onHeightChange={setPanelHeight}
-          minimized={panelMinimized}
+          minimized={isMobile ? true : panelMinimized}
           onMinimizedChange={setPanelMinimized}
           activeTab={panelTab}
           onTabChange={setPanelTab}
-          leftOffset={SIDEBAR_W}
+          leftOffset={isMobile ? 0 : SIDEBAR_W}
           activeJobCount={activeJobCount}
         />
       )}

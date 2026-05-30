@@ -351,8 +351,9 @@ export const clearCache = (): Promise<{ cleared_jobs: number; message: string }>
 
 /** Clear only localStorage-based run caches (no server call). */
 export function clearLocalCache(): void {
-  localStorage.removeItem("geb_run_cache");      // experiment ✓/✗ badges
-  localStorage.removeItem("glossa_seq_run_queue"); // sequential queue
+  localStorage.removeItem("geb_run_cache");             // experiment ✓/✗ badges
+  localStorage.removeItem("glossa_seq_run_queue");       // sequential queue
+  localStorage.removeItem("glossa_dashboard_insight_v2"); // AI insight + exp_results + completed action states
 }
 
 // ── Results ───────────────────────────────────────────────────────────

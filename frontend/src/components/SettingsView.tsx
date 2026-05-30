@@ -353,15 +353,19 @@ function JobCacheSection() {
 
   return (
     <section style={sectionStyle}>
-      <h3 style={sectionTitleStyle}>🗑 Job Cache</h3>
+      <h3 style={sectionTitleStyle}>🗑 Clear Cache</h3>
       <p style={hintTextStyle}>
-        Removes all non-running jobs from the database — this includes completed,
-        failed, paused, and queued jobs. Also resets the experiment run badges and
-        sequential queue stored in your browser. <strong>Running jobs are never
-        affected.</strong>
+        Removes all non-running jobs from the database (completed, failed, paused, queued)
+        and clears all run-related browser state:
       </p>
-      <p style={{ ...hintTextStyle, marginTop: 6, color: "#9ca3af" }}>
-        Use this before re-running experiments to start with a completely clean slate.
+      <ul style={{ ...hintTextStyle, margin: "6px 0 0 16px", padding: 0 }}>
+        <li>Experiment run badges (✓/✗) in the Builder</li>
+        <li>Sequential run queue</li>
+        <li>Dashboard AI insight + applied action state</li>
+      </ul>
+      <p style={{ ...hintTextStyle, marginTop: 8, color: "#9ca3af" }}>
+        <strong>Running jobs are never affected.</strong> Use this before re-running
+        experiments to start completely clean.
       </p>
       <button
         onClick={handleClear}
@@ -373,7 +377,7 @@ function JobCacheSection() {
           cursor: clearing ? "not-allowed" : "pointer",
           fontSize: 13, fontWeight: 600,
         }}>
-        {clearing ? "Clearing…" : "🗑 Clear Job Cache"}
+        {clearing ? "Clearing…" : "🗑 Clear Cache"}
       </button>
     </section>
   );

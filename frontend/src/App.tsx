@@ -304,8 +304,9 @@ function AppContent() {
   // notifOpen removed — NotificationCenter is now self-contained
 
   // Bottom panel state
+  // On mobile start minimized (tab bar only); user taps a tab to expand
   const [panelHeight, setPanelHeight] = useState(DEFAULT_PANEL_HEIGHT);
-  const [panelMinimized, setPanelMinimized] = useState(false);
+  const [panelMinimized, setPanelMinimized] = useState(() => window.innerWidth <= 768);
   const [panelTab, setPanelTab] = useState<PanelTab>("logs");
   const [panelVisible, setPanelVisible] = useState(true);
 
@@ -315,8 +316,10 @@ function AppContent() {
     if (isDocked) { setPanelVisible(true); setPanelMinimized(false); setPanelTab("chat"); }
   }, [isDocked]);
 
-  // On mobile we force the panel minimized (30px tab bar only), so use 30 not panelHeight
-  const effectivePanelH = panelVisible ? (isMobile || panelMinimized ? 30 : panelHeight) : 0;
+  // On mobile cap the expanded height at 45% of screen so it doesn't swamp content
+  const mobilePanelH = Math.floor(window.innerHeight * 0.45);
+  const activePanelH = isMobile ? mobilePanelH : panelHeight;
+  const effectivePanelH = panelVisible ? (panelMinimized ? 30 : activePanelH) : 0;
 
   useEffect(() => {
     document.body.style.background = darkMode ? "#0f172a" : "#fff";
@@ -713,9 +716,9 @@ function AppContent() {
       {/* Bottom IDE panel */}
       {panelVisible && (
         <BottomPanel
-          height={panelHeight}
-          onHeightChange={setPanelHeight}
-          minimized={isMobile ? true : panelMinimized}
+          height={activePanelH}
+          onHeightChange={isMobile ? () => {} : setPanelHeight}
+          minimized={panelMinimized}
           onMinimizedChange={setPanelMinimized}
           activeTab={panelTab}
           onTabChange={setPanelTab}

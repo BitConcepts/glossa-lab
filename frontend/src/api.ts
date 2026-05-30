@@ -344,6 +344,17 @@ export const pauseAllJobs = (): Promise<{ paused: number }> =>
 export const resumeAllJobs = (): Promise<{ resumed: number }> =>
   request("POST", "/jobs/resume-all");
 
+/** Clear all finished jobs from DB AND reset frontend caches.
+ *  Call this when you want a completely clean slate before re-running. */
+export const clearCache = (): Promise<{ cleared_jobs: number; message: string }> =>
+  request("POST", "/jobs/clear-cache");
+
+/** Clear only localStorage-based run caches (no server call). */
+export function clearLocalCache(): void {
+  localStorage.removeItem("geb_run_cache");      // experiment ✓/✗ badges
+  localStorage.removeItem("glossa_seq_run_queue"); // sequential queue
+}
+
 // ── Results ───────────────────────────────────────────────────────────
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

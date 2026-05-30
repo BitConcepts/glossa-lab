@@ -789,6 +789,7 @@ class Database:
         return self._row_to_dict(row) if row else None
 
     async def cancel_job(self, job_id: str) -> dict[str, Any] | None:
+        """Soft-cancel: marks status='cancelled'. Used internally for stale/orphaned jobs."""
         assert self._conn
         job = await self.get_job(job_id)
         if job is None:
@@ -799,6 +800,24 @@ class Database:
         )
         await self._conn.commit()
         return await self.get_job(job_id)
+
+    async def delete_job(self, job_id: str) -> dict[str, Any] | None:
+        """Hard-delete: removes the job record and its results entirely.
+
+        This is the correct action for user-initiated Abort so the jobs list
+        stays clean and there are no stale records to confuse subsequent runs.
+        """
+        assert self._conn
+        job = await self.get_job(job_id)
+        if job is None:
+            return None
+        # Snapshot before deletion so we can return it
+        snapshot = dict(job)
+        snapshot["status"] = "cancelled"  # logical status for the caller
+        await self._conn.execute("DELETE FROM job_results WHERE job_id = ?", (job_id,))
+        await self._conn.execute("DELETE FROM jobs WHERE id = ?", (job_id,))
+        await self._conn.commit()
+        return snapshot
 
     async def clear_jobs(self) -> int:
         """Delete all jobs and job results, returning the number of jobs removed."""

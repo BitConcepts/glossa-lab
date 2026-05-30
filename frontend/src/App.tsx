@@ -452,7 +452,7 @@ function AppContent() {
   };
 
   return (
-    <div style={{ display: "flex", height: "100vh", overflow: "hidden", fontFamily: "system-ui, sans-serif", background: bg }}>
+    <div style={{ display: "flex", height: "100vh", overflow: "hidden", fontFamily: "system-ui, sans-serif", background: bg, userSelect: "none" }}>
 
       {/* ── Left sidebar ──────────────────────────────────────────────────────── */}
       {/* Mobile overlay — tapping it closes the sidebar */}
@@ -676,6 +676,8 @@ function AppContent() {
               color: fg,
               maxWidth: "none",
               overflow: isCanvas ? "hidden" : "auto",
+              // Re-enable text selection for actual content views
+              userSelect: "text",
             }}>
               {tab === "dashboard"   && <DashboardView />}
               {tab === "status"      && <StatusView />}
@@ -746,6 +748,8 @@ function AppContent() {
         @supports (padding-bottom: env(safe-area-inset-bottom)) {
           .glossa-bottom-panel { padding-bottom: env(safe-area-inset-bottom); }
         }
+        /* Touch interactions: fast taps, no long-press selection on buttons */
+        button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
         /* Improve tap targets on mobile */
         @media (max-width: 768px) {
           button { min-height: 36px; }

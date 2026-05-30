@@ -199,15 +199,17 @@ async def cancel_job(job_id: str) -> JobResponse:
 
 @router.post("/jobs/clear-cache", status_code=200)
 async def clear_cache() -> dict:
-    """Hard-delete all non-running jobs AND reset job-related localStorage keys.
+    """Hard-delete all non-running jobs (completed, failed, paused, pending).
 
-    Returns a summary so the frontend can confirm the wipe.
+    Running jobs are left completely untouched. The frontend is responsible
+    for also clearing its localStorage caches (geb_run_cache,
+    glossa_seq_run_queue) after calling this endpoint.
     """
     db = get_db()
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
-    cleared = await db.clear_finished_jobs()
+    cleared = await db.clear_non_running_jobs()
     return {
         "cleared_jobs": cleared,
-        "message": f"Cleared {cleared} finished job(s). Reload the UI to reset frontend caches.",
+        "message": f"Cleared {cleared} non-running job(s). Running jobs were left untouched.",
     }

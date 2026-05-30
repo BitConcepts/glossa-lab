@@ -138,24 +138,44 @@ async def delete_experiment(exp_id: str) -> dict[str, Any]:
 
 
 # ── Run / Preview (SSE streaming) ────────────────────────────────────────────
+#
+# Architecture: the experiment runs as an asyncio background Task, completely
+# decoupled from the HTTP/SSE connection.  If the browser closes the connection
+# (sleep, navigation, mobile backgrounding) the Task continues unaffected.
+# The SA computation always runs to completion; the job is always marked
+# completed or failed.  The SSE generator merely forwards events from a queue.
 
-@router.post("/{exp_id}/run")
-async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
-    """Stream graph experiment execution as SSE. One event per atomic node."""
-    d = get_graph_experiment(exp_id)
-    if d is None:
-        raise HTTPException(status_code=404, detail=f"Graph experiment '{exp_id}' not found")
+async def _run_exp_background(
+    exp_id: str,
+    d: dict[str, Any],
+    nodes: list[dict[str, Any]],
+    edges: list[dict[str, Any]],
+    kwargs: dict[str, Any],
+    notify_on_done: bool,
+    queue: "asyncio.Queue[str | None]",
+) -> None:
+    """Execute the experiment graph and put SSE event strings in *queue*.
 
-    nodes = d.get("nodes", [])
-    edges = d.get("edges", [])
-    kwargs = body.kwargs or {}
-    notify_on_done = bool(body.notify)
+    None in the queue signals end-of-stream to _stream().
 
-    async def _stream() -> AsyncGenerator[str, None]:
-        _t0 = datetime.now(UTC)
-        db = _db_mod.get_db()
+    Key property: runs as asyncio.create_task() so it is NOT cancelled when the
+    HTTP client disconnects.  The stall watchdog heartbeat (DB updated_at bump)
+    fires inside this task every 30 s, not inside the SSE generator, so the
+    watchdog can never kill a job just because the browser went to sleep.
+    """
 
-        # ── Detect GPU / compute device first (needed for resource check) ─────────
+    def _q(data: dict[str, Any]) -> None:
+        """Enqueue one SSE event string.  Drop silently if client has disconnected."""
+        try:
+            queue.put_nowait(_sse(data))
+        except asyncio.QueueFull:
+            pass
+
+    _t0 = datetime.now(UTC)
+    db = _db_mod.get_db()
+
+    try:
+        # ── Detect compute device ─────────────────────────────────────────────
         try:
             from glossa_lab.accelerate import gpu_info as _gpu_info  # noqa: PLC0415
             _ginfo = _gpu_info()
@@ -164,12 +184,11 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
         except Exception:  # noqa: BLE001
             _compute_device = "cpu"; _compute_label = "CPU"
 
-        # ── Resource pre-check for GPU experiments ───────────────────────────────
-        # Check VRAM before starting any experiment with SA nodes or GPU device.
-        # Fail fast with a clear message rather than OOM-crashing mid-run.
+        # ── VRAM pre-check ────────────────────────────────────────────────────
         _has_sa_node = any(
-            (n.get("data") or {}).get("atomicId") in ("SADecipher", "IndusConstrainedSA",
-                                                         "IndusSyllabicSA", "BeamDecipher")
+            (n.get("data") or {}).get("atomicId") in (
+                "SADecipher", "IndusConstrainedSA", "IndusSyllabicSA", "BeamDecipher"
+            )
             for n in nodes
         )
         if _has_sa_node or _compute_device == "gpu":
@@ -187,7 +206,7 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                             "exp_run '%s' rejected: VRAM %.1f GB free < %.1f GB threshold",
                             exp_id, _vram_free, _vram_min,
                         )
-                        yield _sse({
+                        _q({
                             "event": "run_error",
                             "message": (
                                 f"Insufficient VRAM: {_vram_free:.1f} GB free, "
@@ -208,9 +227,7 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
             except Exception as _re:  # noqa: BLE001
                 logger.debug("VRAM pre-check skipped: %s", _re)
 
-        # ── GPU concurrency guard ────────────────────────────────────────────────
-        # Prevent multiple GPU exp_run jobs from competing for VRAM.
-        # Max concurrent GPU jobs is configurable via env; default 1.
+        # ── GPU concurrency guard ─────────────────────────────────────────────
         if db is not None and (_has_sa_node or _compute_device == "gpu"):
             try:
                 _max_gpu = int(__import__("os").environ.get("GLOSSA_MAX_CONCURRENT_GPU_JOBS", "1"))
@@ -221,13 +238,13 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                 )
                 _gpu_running = await _gpu_cursor.fetchall()
                 if len(_gpu_running) >= _max_gpu:
-                    _blocking_id   = _gpu_running[0]["id"]
-                    _blocking_exp  = _gpu_running[0]["exp_id"] or _blocking_id
+                    _blocking_id  = _gpu_running[0]["id"]
+                    _blocking_exp = _gpu_running[0]["exp_id"] or _blocking_id
                     logger.warning(
                         "GPU concurrency guard: '%s' rejected (%d/%d GPU slots occupied by %s)",
                         exp_id, len(_gpu_running), _max_gpu, _blocking_exp,
                     )
-                    yield _sse({
+                    _q({
                         "event": "run_error",
                         "message": (
                             f"{len(_gpu_running)}/{_max_gpu} GPU slot(s) occupied "
@@ -245,9 +262,7 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
             except Exception as _ge:  # noqa: BLE001
                 logger.warning("GPU concurrency check failed (non-critical): %s", _ge)
 
-        # ── Duplicate-run guard ────────────────────────────────────────────────
-        # Reject immediately if the same experiment is already running.
-        # Checks by exp_id in params so two different job IDs don't both run.
+        # ── Duplicate-run guard ───────────────────────────────────────────────
         if db is not None:
             try:
                 _cursor = await db._conn.execute(  # noqa: SLF001
@@ -264,7 +279,7 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                         "Duplicate exp_run rejected: '%s' already running as job %s",
                         exp_id, existing_job_id,
                     )
-                    yield _sse({
+                    _q({
                         "event": "run_error",
                         "message": (
                             f"Experiment '{exp_id}' is already running "
@@ -278,7 +293,7 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
             except Exception as _de:  # noqa: BLE001
                 logger.warning("Duplicate-run check failed (non-critical): %s", _de)
 
-        # ── Create a Job record so the run appears in the Jobs panel ────────────
+        # ── Create job record ─────────────────────────────────────────────────
         job_id: str | None = None
         if db is not None:
             try:
@@ -310,17 +325,20 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                     summary={"node_count": 0, "job_id": job_id or ""},
                     duration_s=(datetime.now(UTC) - _t0).total_seconds(),
                 )
-            yield _sse({"event": "run_complete", "exp_id": exp_id,
-                        "node_count": 0, "status": "complete", "result": {}, "job_id": job_id})
+            _q({"event": "run_complete", "exp_id": exp_id,
+                "node_count": 0, "status": "complete", "result": {}, "job_id": job_id})
             return
 
         ordered = _topo_sort(nodes, edges)
         loop = asyncio.get_event_loop()
         res: dict[str, dict[str, Any]] = {}
 
-        yield _sse({"event": "started", "exp_id": exp_id, "job_id": job_id,
-                    "exp_name": d.get("name", exp_id), "node_count": len(ordered)})
-        logger.info("Experiment run '%s' starting (%d nodes) — job %s", d.get("name"), len(ordered), job_id)
+        _q({"event": "started", "exp_id": exp_id, "job_id": job_id,
+            "exp_name": d.get("name", exp_id), "node_count": len(ordered)})
+        logger.info(
+            "Experiment run '%s' starting (%d nodes) — job %s",
+            d.get("name"), len(ordered), job_id,
+        )
 
         try:
             for node_idx, node in enumerate(ordered):
@@ -328,13 +346,15 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                 ntype, node_params = _node_type_and_params(node)
                 node_label = (node.get("data") or {}).get("label") or ntype
 
-                yield _sse({"event": "node_start", "nid": nid, "label": node_label,
-                            "type": ntype, "idx": node_idx, "total": len(ordered)})
+                _q({"event": "node_start", "nid": nid, "label": node_label,
+                    "type": ntype, "idx": node_idx, "total": len(ordered)})
 
                 # Collect inputs from upstream nodes
                 node_inputs: dict[str, Any] = {}
                 for e in edges:
-                    src, sp, tp = e.get("source", ""), e.get("sourcePort", ""), e.get("targetPort", "")
+                    src = e.get("source", "")
+                    sp  = e.get("sourcePort", "")
+                    tp  = e.get("targetPort", "")
                     if e.get("target") != nid or src not in res:
                         continue
                     tp = tp or sp or "data"
@@ -346,13 +366,12 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                 params = {**node_params, **kwargs}
                 atomic = ATOMIC_NODES.get(ntype)
                 if not atomic:
-                    node_result = {"error": f"Unknown node type: '{ntype}'"}
+                    node_result: dict[str, Any] = {"error": f"Unknown node type: '{ntype}'"}
                 else:
                     try:
-                        # Run node in thread; send SSE heartbeats every 30s
-                        # to prevent browser/proxy timeouts on long nodes.
-                        # Also polls DB for pause/cancel so the user can stop
-                        # long-running SA nodes from the Jobs panel.
+                        # Run node in thread-pool; poll every 30 s for pause/cancel.
+                        # asyncio.shield keeps the thread alive if this coroutine is
+                        # ever cancelled (it won't be, but belt-and-suspenders).
                         future = loop.run_in_executor(
                             None, atomic.fn, node_inputs, params
                         )
@@ -363,7 +382,7 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                                 ) or {}
                                 break
                             except asyncio.TimeoutError:
-                                # ── Pause / cancel check ──────────────────
+                                # ── Pause / cancel / delete check ─────────
                                 if job_id and db:
                                     try:
                                         _sc = await db._conn.execute(  # noqa: SLF001
@@ -379,10 +398,10 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                                         ):
                                             _label = _stop_status or "deleted"
                                             logger.info(
-                                                "exp_run '%s' job %s %s — stopping stream",
+                                                "exp_run '%s' job %s %s — stopping",
                                                 exp_id, job_id, _label,
                                             )
-                                            yield _sse({
+                                            _q({
                                                 "event": "run_error",
                                                 "message": f"Job {_label} by user.",
                                                 "paused": _stop_status == "paused",
@@ -391,18 +410,19 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                                             return
                                     except Exception:  # noqa: BLE001
                                         pass
-                                # ── Keepalive heartbeat ───────────────────
-                                yield _sse({"event": "heartbeat", "nid": nid,
-                                            "idx": node_idx, "total": len(ordered)})
-                                # Bump updated_at so the stall watchdog doesn't
-                                # kill long-running SA nodes (watchdog triggers
-                                # if updated_at is untouched for 1800s, but
-                                # updated_at only advances on node completion
-                                # without this touch).
+
+                                # ── Heartbeat + DB touch ──────────────────
+                                # This runs inside the background task so it fires
+                                # even when the SSE client is disconnected.  The stall
+                                # watchdog sees a fresh updated_at and never kills the
+                                # job regardless of client state.
+                                _q({"event": "heartbeat", "nid": nid,
+                                    "idx": node_idx, "total": len(ordered)})
                                 if job_id and db:
                                     try:
                                         await db._conn.execute(  # noqa: SLF001
-                                            "UPDATE jobs SET updated_at = datetime('now') WHERE id = ?",
+                                            "UPDATE jobs SET updated_at = datetime('now') "
+                                            "WHERE id = ?",
                                             (job_id,),
                                         )
                                         await db._conn.commit()  # noqa: SLF001
@@ -413,11 +433,11 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
 
                 res[nid] = node_result
                 had_error = "error" in node_result
-                yield _sse({"event": "node_end", "nid": nid,
-                            "status": "error" if had_error else "complete",
-                            "error": node_result.get("error", "")})
+                _q({"event": "node_end", "nid": nid,
+                    "status": "error" if had_error else "complete",
+                    "error": node_result.get("error", "")})
 
-                # Update nodes_done + heartbeat timestamp in DB for progress tracking
+                # Advance nodes_done counter + fresh updated_at
                 if job_id and db:
                     try:
                         await db._conn.execute(  # noqa: SLF001
@@ -431,7 +451,7 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
 
         except Exception as exc:  # noqa: BLE001
             logger.error("Experiment run '%s' crashed: %s", d.get("name"), exc)
-            yield _sse({"event": "run_error", "message": str(exc)})
+            _q({"event": "run_error", "message": str(exc)})
             if job_id and db:
                 try: await db.update_job_status(job_id, "failed")
                 except Exception: pass  # noqa: BLE001
@@ -444,7 +464,7 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                 )
             return
 
-        # Collect outputs (Output-category nodes)
+        # ── Collect outputs and finalise ──────────────────────────────────────
         output_ids = [
             n["id"] for n in nodes
             if ATOMIC_NODES.get(_node_type_and_params(n)[0]) is not None
@@ -455,12 +475,12 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
             if oid in res:
                 merged.update(res[oid])
         if not merged and res:
-            # If no Output nodes, return last node result
             merged = res[list(res.keys())[-1]]
 
         had_errors = any("error" in v for v in res.values())
         final_status = "failed" if had_errors else "completed"
         logger.info("Experiment run '%s' complete (%s)", d.get("name"), final_status)
+
         if job_id and db:
             try:
                 await db.update_job_status(job_id, final_status)
@@ -476,7 +496,6 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                     }), job_id),
                 )
                 await db._conn.commit()  # noqa: SLF001
-                # Store final result summary in job_results table for Results button
                 result_summary = {
                     k: v for k, v in merged.items()
                     if not isinstance(v, type(None))
@@ -497,6 +516,7 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                 )
             except Exception as _je:  # noqa: BLE001
                 logger.warning("Could not update job record: %s", _je)
+
         if notify_on_done:
             await _maybe_notify_experiment(
                 exp_id=exp_id, exp_name=d.get("name", exp_id),
@@ -509,8 +529,52 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
                 },
                 duration_s=(datetime.now(UTC) - _t0).total_seconds(),
             )
-        yield _sse({"event": "run_complete", "exp_id": exp_id, "job_id": job_id,
-                    "node_count": len(ordered), "status": "complete",
-                    "result": merged, "node_results": res})
+
+        _q({"event": "run_complete", "exp_id": exp_id, "job_id": job_id,
+            "node_count": len(ordered), "status": "complete",
+            "result": merged, "node_results": res})
+
+    finally:
+        # Always signal stream end — success, error, or unexpected cancellation.
+        try:
+            queue.put_nowait(None)
+        except asyncio.QueueFull:
+            pass
+
+
+@router.post("/{exp_id}/run")
+async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
+    """Stream graph experiment execution as SSE.
+
+    The experiment runs as a background asyncio.Task completely decoupled from
+    the HTTP connection.  Browser disconnect / sleep / navigation never stops
+    the computation.  The SA node always runs to completion.
+    """
+    d = get_graph_experiment(exp_id)
+    if d is None:
+        raise HTTPException(status_code=404, detail=f"Graph experiment '{exp_id}' not found")
+
+    nodes = d.get("nodes", [])
+    edges = d.get("edges", [])
+    kwargs = body.kwargs or {}
+    notify_on_done = bool(body.notify)
+
+    # Bounded queue: events are forwarded to the SSE client when connected.
+    # If the client disconnects, _run_exp_background() silently drops events
+    # once the queue fills — but the computation keeps running.
+    queue: asyncio.Queue[str | None] = asyncio.Queue(maxsize=512)
+
+    asyncio.create_task(
+        _run_exp_background(exp_id, d, nodes, edges, kwargs, notify_on_done, queue),
+        name=f"exp-run-{exp_id}",
+    )
+
+    async def _stream() -> AsyncGenerator[str, None]:
+        """Forward queue events to the SSE client until None (end sentinel)."""
+        while True:
+            item = await queue.get()
+            if item is None:
+                break
+            yield item
 
     return StreamingResponse(_stream(), media_type="text/event-stream", headers=_SSE_HEADERS)

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import {
+  clearCache, clearLocalCache,
   getEnvPackages,
   getEnvStatus,
   getHealth,
@@ -307,6 +308,7 @@ export function SettingsView() {
       {tab === "system" && (
         <>
           <PythonEnvSection />
+          <JobCacheSection />
 
           <section style={sectionStyle}>
             <h3 style={sectionTitleStyle}>System</h3>
@@ -325,6 +327,55 @@ export function SettingsView() {
         </>
       )}
     </div>
+  );
+}
+
+// ── Job Cache section ────────────────────────────────────────────────────────────
+
+function JobCacheSection() {
+  const { toast } = useToast();
+  const [clearing, setClearing] = useState(false);
+
+  const handleClear = async () => {
+    setClearing(true);
+    try {
+      const result = await clearCache();
+      clearLocalCache();
+      // Tell BottomPanel to re-read the now-empty seq queue from localStorage
+      window.dispatchEvent(new CustomEvent("glossa:seq_queue_updated"));
+      toast(`${result.cleared_jobs} job(s) cleared — cache reset`, "success");
+    } catch (e) {
+      toast(e instanceof Error ? e.message : "Clear failed", "error");
+    } finally {
+      setClearing(false);
+    }
+  };
+
+  return (
+    <section style={sectionStyle}>
+      <h3 style={sectionTitleStyle}>🗑 Job Cache</h3>
+      <p style={hintTextStyle}>
+        Removes all non-running jobs from the database — this includes completed,
+        failed, paused, and queued jobs. Also resets the experiment run badges and
+        sequential queue stored in your browser. <strong>Running jobs are never
+        affected.</strong>
+      </p>
+      <p style={{ ...hintTextStyle, marginTop: 6, color: "#9ca3af" }}>
+        Use this before re-running experiments to start with a completely clean slate.
+      </p>
+      <button
+        onClick={handleClear}
+        disabled={clearing}
+        style={{
+          marginTop: 12, padding: "6px 16px", border: "none", borderRadius: 5,
+          background: clearing ? "#e5e7eb" : "#b45309",
+          color: clearing ? "#9ca3af" : "#fff",
+          cursor: clearing ? "not-allowed" : "pointer",
+          fontSize: 13, fontWeight: 600,
+        }}>
+        {clearing ? "Clearing…" : "🗑 Clear Job Cache"}
+      </button>
+    </section>
   );
 }
 

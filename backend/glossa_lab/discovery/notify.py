@@ -32,21 +32,75 @@ async def send_pending_digest(
     topic: str | None = None,
     limit: int = 200,
 ) -> dict[str, Any]:
-    """Send a digest of unnotified discovery items.
+    """Send a digest of unnotified discovery items to registered recipients only.
 
-    HARD BLOCK: automatic email sends are disabled.
-    Emails may ONLY be sent via an explicit manual action in the Settings UI
-    (the 'Send test' button).  The scheduler calls this function but it will
-    always no-op so it never fires emails without the user's direct intent.
+    STRICT RULE: emails are ONLY delivered to addresses explicitly registered
+    in Settings > Notifications > Recipients.  No external address can ever
+    receive email from this system — list_active_recipients() is the sole
+    gate and it returns only DB-registered addresses.
     """
-    # ── STRICT RULE: no automatic email sends ────────────────────────────────
-    # This function is called automatically by the discovery scheduler on every
-    # 24h tick.  Sending emails without the user explicitly clicking a button
-    # is not allowed.  Any code path that reaches here automatically will
-    # silently no-op.  To re-enable auto-digest in the future, remove this
-    # early return AND add a user-facing opt-in toggle in the Notifications UI.
-    _log.debug("send_pending_digest: auto-send is disabled; returning no-op")
-    return _summary(reason="auto-send disabled — use Settings > Notifications > Send test")
+    db = get_db()
+    if db is None:
+        return _summary(reason="database unavailable")
+
+    items = await db.list_unnotified_discovery_items(
+        min_confidence=min_confidence, topic=topic, limit=limit,
+    )
+    if not items:
+        return _summary(reason="no unnotified items above min_confidence")
+
+    notifier = get_notifier()
+    if not notifier.is_configured():
+        return _summary(reason="smtp not configured", item_count=len(items))
+
+    # STRICT RULE: only send to addresses explicitly registered in the DB.
+    # This is enforced here — no external address can slip through.
+    recipients = await notifier.list_active_recipients()
+    if not recipients:
+        return _summary(reason="no active recipients", item_count=len(items))
+
+    subject, body_text, body_html = format_discovery_digest(items)
+    batch = await notifier.send(
+        subject=subject, body_text=body_text, body_html=body_html,
+        kind="discovery_digest", item_count=len(items),
+        recipients=recipients,
+    )
+
+    any_sent = any(r.ok() for r in batch.results)
+    if any_sent:
+        notified_at = datetime.now(timezone.utc).isoformat()
+        await db.mark_discovery_notified(
+            [it["id"] for it in items], notified_at=notified_at,
+        )
+        for r in batch.results:
+            if r.ok():
+                try:
+                    await db.create_correspondence(
+                        direction="outbound",
+                        channel="email",
+                        to_addr=r.recipient,
+                        subject=subject,
+                        body=f"Discovery digest with {len(items)} item(s).",
+                        date=notified_at[:10],
+                        claims_made="Automated discovery digest — no specific claims.",
+                        reply_status="closed",
+                        created_at=notified_at,
+                    )
+                except Exception:  # noqa: BLE001
+                    _log.debug("Failed to log correspondence for %s", r.recipient)
+
+    sent_n = sum(1 for r in batch.results if r.status == "sent")
+    skip_n = sum(1 for r in batch.results if r.status == "skipped")
+    fail_n = sum(1 for r in batch.results if r.status == "failed")
+    return {
+        "sent": sent_n,
+        "skipped": skip_n,
+        "failed": fail_n,
+        "item_count": len(items),
+        "subject": subject,
+        "reason": None if any_sent else "all recipient sends failed",
+        "recipients": [r.recipient for r in batch.results],
+    }
 
 
 def _summary(*, reason: str, item_count: int = 0) -> dict[str, Any]:

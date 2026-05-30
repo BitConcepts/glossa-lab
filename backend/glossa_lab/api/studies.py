@@ -678,13 +678,35 @@ async def _maybe_notify_study(
     *, study_id: str, study_name: str, status: str,
     summary: dict[str, Any], duration_s: float | None,
 ) -> None:
-    """Study completion notification — DISABLED.
+    """Fire a study_complete email to registered recipients only.
 
-    STRICT RULE: no automatic emails are sent on study completion.
-    Emails may only be triggered by an explicit manual user action in the UI.
+    STRICT RULE: emails are ONLY sent to addresses explicitly registered in
+    Settings > Notifications > Recipients.  No external address can ever
+    receive email — list_active_recipients() is the sole gate.
     """
-    # AUTO-SEND BLOCKED — see docstring above.
-    return
+    try:
+        from glossa_lab.notifications import (  # noqa: PLC0415
+            format_study_complete,
+            get_notifier,
+        )
+        notifier = get_notifier()
+        if not notifier.is_configured():
+            return
+        # STRICT RULE: only registered recipients.
+        recipients = await notifier.list_active_recipients()
+        if not recipients:
+            return
+        subject, body_text, body_html = format_study_complete(
+            name=study_name, study_id=study_id, status=status,
+            summary=summary, duration_s=duration_s,
+        )
+        await notifier.send(
+            subject=subject, body_text=body_text, body_html=body_html,
+            kind="study_complete", item_count=0,
+            recipients=recipients,
+        )
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("study notify failed: %s", exc)
 
 
 @router.post("/studies/{study_id}/run")

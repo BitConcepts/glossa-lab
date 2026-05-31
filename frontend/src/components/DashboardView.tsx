@@ -662,10 +662,9 @@ export function DashboardView() {
               toast(`${s.id}: ${err instanceof Error ? err.message : "failed"}`, "error");
             }
           }
-          // Always mark as done — the hypothesis was created and the chain
-          // was executed. Even if no experiments matched (warn) it does not
-          // make sense to retry; the user should open Experiments to act next.
-          outcome = "success";
+          // Propagate the failure so the caller (e.g. DeciphermentPanel) can
+          // show ✗ Error + retry. 'warn' is reserved for the no-match case above.
+          outcome = chainOk ? "success" : "error";
           break;
         }
         case "ai_chat": {
@@ -701,6 +700,9 @@ export function DashboardView() {
       setApplyResult((prev) => ({ ...prev, [key]: outcome }));
       void refresh();
     }
+    // Re-throw so callers like DeciphermentPanel.handleAction can catch the
+    // error and show ✗ Error + ↻ retry without needing a separate state pipe.
+    if (outcome === "error") throw new Error("Action completed with errors");
   };
 
   // ── render ───────────────────────────────────────────────────────────

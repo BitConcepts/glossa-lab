@@ -620,16 +620,17 @@ test.describe("DeciphermentPanel › Run SA — error scenarios", () => {
   // localStorage (simulating e.g. a different action type that throws).
   // Tests 21 & 22 verify the rendered error state; test 23 verifies re-run.
 
-  test("21. SSE run_error still transitions to '✓ Done' (chain always succeeds)", async ({ page }) => {
-    // propose_experiment_chain sets outcome='success' regardless of SSE errors
-    // because the chain ran even if individual experiments failed.
+  test("21. SSE run_error transitions button to '✗ Error' and stores 'error' in localStorage", async ({ page }) => {
+    // Now that propose_experiment_chain propagates chainOk=false as outcome='error'
+    // and applyAction re-throws, DeciphermentPanel.handleAction catches it and
+    // shows '\u2717 Error' with a \u21bb retry button.
     await setupMocks(page, { runOutcome: "error" });
     await clearLS(page);
     const btn = await loadDashboard(page);
     await btn.click();
-    await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
+    await expect(page.locator("text=✗ Error").first()).toBeVisible({ timeout: 15_000 });
     const state = await getLS(page);
-    expect(state).toBe("success");
+    expect(state).toBe("error");
   });
 
   test("22. error state injected via localStorage shows '✗ Error' + persists on reload", async ({ page }) => {

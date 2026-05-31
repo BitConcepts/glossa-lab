@@ -13,6 +13,15 @@
 import { useEffect, useState } from "react";
 import { getDashboardDecipherment, type DeciphermentProgress } from "../api";
 
+const DECIPHER_DONE_KEY = "glossa_decipher_actions_done";
+type DoneResult = "success" | "error" | "warn";
+function _loadDone(): Record<string, DoneResult> {
+  try { const r = localStorage.getItem(DECIPHER_DONE_KEY); return r ? JSON.parse(r) : {}; } catch { return {}; }
+}
+function _saveDone(d: Record<string, DoneResult>) {
+  try { localStorage.setItem(DECIPHER_DONE_KEY, JSON.stringify(d)); } catch { /* ignore */ }
+}
+
 type ActionFn = (
   label: string,
   actionType: string,
@@ -85,18 +94,54 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
   const [error, setError] = useState<string | null>(null);
   // Track which action labels are currently in-flight so buttons disable.
   const [busyLabels, setBusyLabels] = useState<Set<string>>(new Set());
+  // Persist done/error state across page reloads.
+  const [doneLabels, setDoneLabels] = useState<Record<string, DoneResult>>(_loadDone);
 
   const handleAction = async (
     label: string, actionType: string,
     params: Record<string, unknown>, rationale?: string,
   ) => {
     if (busyLabels.has(label) || !onAction) return;
+    // Clear stale done state before re-running.
+    setDoneLabels(prev => { const n = { ...prev }; delete n[label]; _saveDone(n); return n; });
     setBusyLabels(prev => new Set(prev).add(label));
+    let outcome: DoneResult = "success";
     try {
       await onAction(label, actionType, params, rationale);
+    } catch {
+      outcome = "error";
     } finally {
       setBusyLabels(prev => { const n = new Set(prev); n.delete(label); return n; });
+      setDoneLabels(prev => { const n = { ...prev, [label]: outcome }; _saveDone(n); return n; });
     }
+  };
+
+  /** Render a Done chip + re-run OR a normal ActionBtn depending on state. */
+  const renderBtn = (
+    displayLabel: string, actionKey: string,
+    actionType: string, params: Record<string, unknown>, rationale?: string,
+  ) => {
+    const busy = busyLabels.has(actionKey);
+    const done = !busy && doneLabels[actionKey] === "success";
+    if (done) {
+      return (
+        <div style={{ display: "flex", gap: 3, alignItems: "center", flexShrink: 0 }}>
+          <span style={{ padding: "2px 7px", fontSize: 10, fontWeight: 600,
+            border: "1px solid #86efac", borderRadius: 4,
+            background: "#f0fdf4", color: "#166534", whiteSpace: "nowrap" }}
+            title={`Done · ${actionKey}`}>✓ Done</span>
+          <button
+            onClick={() => void handleAction(actionKey, actionType, params, rationale)}
+            style={{ padding: "2px 5px", fontSize: 10, border: "1px solid #c4b5fd",
+              borderRadius: 4, background: "#f5f3ff", color: "#5b21b6", cursor: "pointer" }}
+            title="Re-run">↻</button>
+        </div>
+      );
+    }
+    return (
+      <ActionBtn label={displayLabel} busy={busy}
+        onClick={() => void handleAction(actionKey, actionType, params, rationale)} />
+    );
   };
 
   useEffect(() => {
@@ -211,10 +256,7 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
               </span>
               {onAction && (
                 <div style={{ display: "flex", gap: 4, flexShrink: 0, marginTop: 1 }}>
-                  <ActionBtn label="💡 Hypothesize"
-                    busy={busyLabels.has("Create hypothesis: anchored SA discriminates")}
-                    onClick={() => void handleAction(
-                    "Create hypothesis: anchored SA discriminates",
+                  {renderBtn("💡 Hypothesize", "Create hypothesis: anchored SA discriminates",
                     "create_hypothesis",
                     {
                       title: "Anchored SA with Dravidian LM discriminates language families",
@@ -224,24 +266,16 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
                         "The real signal is in anchored SA (413+ pinned signs). " +
                         "Next step: run anchored SA with Dravidian vs Munda LMs and compare z-scores.",
                     },
-                    "SA non-discriminative finding requires anchored SA follow-up",
-                  )} />
-                  <ActionBtn label="▶ Run SA"
-                    busy={busyLabels.has("Plan anchored SA comparison")}
-                    onClick={() => void handleAction(
-                    "Plan anchored SA comparison",
+                    "SA non-discriminative finding requires anchored SA follow-up")}
+                  {renderBtn("▶ Run SA", "Plan anchored SA comparison",
                     "propose_experiment_chain",
                     {
                       hypothesis:
                         "Anchored SA with Dravidian LM should produce higher z-score than Munda LM " +
                         "when 413+ signs are pinned. Phase 300 shows unconstrained SA cannot discriminate.",
                     },
-                    "Validate that anchored SA discriminates where unconstrained SA cannot",
-                  )} />
-                  <ActionBtn label="✨ Ask AI"
-                    busy={busyLabels.has("Ask AI: SA discrimination follow-up")}
-                    onClick={() => void handleAction(
-                    "Ask AI: SA discrimination follow-up",
+                    "Validate that anchored SA discriminates where unconstrained SA cannot")}
+                  {renderBtn("✨ Ask AI", "Ask AI: SA discrimination follow-up",
                     "ai_chat",
                     {
                       prompt:
@@ -250,8 +284,7 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
                         "signal. What are the specific next research steps to: (1) validate anchored SA discriminates language " +
                         "families, (2) rule out Munda definitively, and (3) strengthen the Dravidian case?",
                     },
-                    "Get AI analysis of competing LM test result",
-                  )} />
+                    "Get AI analysis of competing LM test result")}
                 </div>
               )}
             </div>
@@ -269,10 +302,7 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
               </span>
               {onAction && (
                 <div style={{ display: "flex", gap: 4, flexShrink: 0, marginTop: 1 }}>
-                  <ActionBtn label="💡 Hypothesize"
-                    busy={busyLabels.has("Create hypothesis: guild-identity site invariance")}
-                    onClick={() => void handleAction(
-                    "Create hypothesis: guild-identity site invariance",
+                  {renderBtn("💡 Hypothesize", "Create hypothesis: guild-identity site invariance",
                     "create_hypothesis",
                     {
                       title: "Guild-identity model is site-invariant across all 9 Holdat sites",
@@ -282,12 +312,8 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
                         }% across 9 sites — ${(data as any).archaeology.verdict}. ` +
                         "This supports the pan-Indus writing system hypothesis and strengthens the seal-owner-as-guild-member interpretation.",
                     },
-                    "Guild-identity site invariance finding",
-                  )} />
-                  <ActionBtn label="✨ Ask AI"
-                    busy={busyLabels.has("Ask AI: archaeological context follow-up")}
-                    onClick={() => void handleAction(
-                    "Ask AI: archaeological context follow-up",
+                    "Guild-identity site invariance finding")}
+                  {renderBtn("✨ Ask AI", "Ask AI: archaeological context follow-up",
                     "ai_chat",
                     {
                       prompt:
@@ -298,8 +324,7 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
                         "the guild-identity seal-owner model? What external data (Gulf sites, Failaka, Janabiyah) " +
                         "would be most diagnostic?",
                     },
-                    "Get AI analysis of archaeological context finding",
-                  )} />
+                    "Get AI analysis of archaeological context finding")}
                 </div>
               )}
             </div>
@@ -382,16 +407,9 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
               <li key={i} style={{ marginBottom: 4, display: "flex",
                                    alignItems: "flex-start", gap: 6 }}>
                 <span style={{ flex: 1, lineHeight: 1.5 }}>{r}</span>
-                {onAction && (
-                  <ActionBtn label="▶ Run"
-                    busy={busyLabels.has(`Plan: ${r.slice(0, 60)}`)}
-                    onClick={() => void handleAction(
-                    `Plan: ${r.slice(0, 60)}`,
-                    "propose_experiment_chain",
-                    { hypothesis: r },
-                    `Address open research gap: ${r}`,
-                  )} />
-                )}
+                {onAction && renderBtn("▶ Run", `Plan: ${r.slice(0, 60)}`,
+                  "propose_experiment_chain", { hypothesis: r },
+                  `Address open research gap: ${r}`)}
               </li>
             ))}
           </ul>

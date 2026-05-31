@@ -30,7 +30,15 @@ function _loadDone(): Record<string, DoneResult> {
   const result: Record<string, DoneResult> = {};
   try {
     const r = localStorage.getItem(DECIPHER_DONE_KEY);
-    if (r) Object.assign(result, JSON.parse(r) as Record<string, DoneResult>);
+    if (r) {
+      const raw = JSON.parse(r) as Record<string, DoneResult>;
+      // Ignore any 'pending' entries in localStorage — they are stale remnants
+      // from old app versions that used to write pending there. Current code
+      // only writes success/error to localStorage; pending lives in sessionStorage.
+      for (const [k, v] of Object.entries(raw)) {
+        if (v !== "pending") result[k] = v;
+      }
+    }
   } catch { /* ignore */ }
   try {
     const raw = sessionStorage.getItem(DECIPHER_PENDING_KEY);

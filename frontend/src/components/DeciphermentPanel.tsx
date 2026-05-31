@@ -142,12 +142,20 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
       );
     }
     if (!busy && state === "pending") {
+      const dismissBtn = (
+        <button
+          onClick={() => setDoneLabels(prev => { const n = { ...prev }; delete n[actionKey]; _saveDone(n); return n; })}
+          style={{ padding: "2px 5px", fontSize: 10, border: "1px solid #d1d5db",
+            borderRadius: 4, background: "#fff", color: "#6b7280", cursor: "pointer" }}
+          title="Dismiss — job may still be running in background">✕</button>
+      );
       return (
         <div style={{ display: "flex", gap: 3, alignItems: "center", flexShrink: 0 }}>
           <span style={{ padding: "2px 7px", fontSize: 10, fontWeight: 600,
             border: "1px solid #93c5fd", borderRadius: 4,
             background: "#eff6ff", color: "#1d4ed8", whiteSpace: "nowrap" }}
-            title="Running in background — click ↻ to re-run">⏳ Running…</span>
+            title="Running in background — click ↻ to re-run or ✕ to dismiss">⏳ Running…</span>
+          {dismissBtn}
           {rerunBtn}
         </div>
       );

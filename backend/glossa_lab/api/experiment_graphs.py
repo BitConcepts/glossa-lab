@@ -42,7 +42,9 @@ _SSE_HEADERS = {"Cache-Control": "no-cache", "X-Accel-Buffering": "no"}
 
 
 def _sse(data: dict[str, Any]) -> str:
-    return f"data: {json.dumps(data)}\n\n"
+    # default=str handles non-JSON-serializable objects (e.g. LanguageModel)
+    # that leak into merged node results from upstream LM builder nodes.
+    return f"data: {json.dumps(data, default=str)}\n\n"
 
 
 class GraphExperimentBody(BaseModel):

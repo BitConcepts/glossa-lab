@@ -206,7 +206,7 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
                     },
                     "SA non-discriminative finding requires anchored SA follow-up",
                   )} />
-                  <ActionBtn label="▶ Plan SA run" onClick={() => onAction(
+                  <ActionBtn label="▶ Run SA" onClick={() => onAction(
                     "Plan anchored SA comparison",
                     "propose_experiment_chain",
                     {
@@ -355,7 +355,7 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
                                    alignItems: "flex-start", gap: 6 }}>
                 <span style={{ flex: 1, lineHeight: 1.5 }}>{r}</span>
                 {onAction && (
-                  <ActionBtn label="▶ Plan" onClick={() => onAction(
+                  <ActionBtn label="▶ Run" onClick={() => onAction(
                     `Plan: ${r.slice(0, 60)}`,
                     "propose_experiment_chain",
                     { hypothesis: r },

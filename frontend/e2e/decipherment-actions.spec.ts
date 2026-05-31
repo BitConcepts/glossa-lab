@@ -276,15 +276,15 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
     await expect(page.locator("text=⏳ Running…").first()).not.toBeVisible();
   });
 
-  // ── 2. Busy state immediately on click ───────────────────────────────────
-  test("2. click makes button show '…' and disables it immediately", async ({ page }) => {
+  // ── 2. Busy state immediately on click ────────────────────────────────────
+  test("2. click makes button show '⏳ Running…' and disables it immediately", async ({ page }) => {
     await setupMocks(page, { runOutcome: "hang" });
     await clearLS(page);
     const btn = await loadDashboard(page);
     // Start the click but don't await — the SSE hangs so it stays busy
     void btn.click();
-    // Button should show … and be disabled within 1s
-    await expect(page.getByRole("button", { name: "…" }).first()).toBeVisible({ timeout: 2000 });
+    // Button should show ⏳ Running… and be disabled within 1s
+    await expect(page.getByRole("button", { name: "⏳ Running…" }).first()).toBeVisible({ timeout: 2000 });
     // Original "▶ Run SA" label should be gone
     await expect(page.getByRole("button", { name: "▶ Run SA" })).not.toBeVisible();
   });
@@ -303,7 +303,7 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
     void btn.click();
     await page.waitForTimeout(300);
     // Button is now disabled — second click should be blocked
-    const busyBtn = page.getByRole("button", { name: "…" }).first();
+    const busyBtn = page.getByRole("button", { name: "⏳ Running…" }).first();
     await expect(busyBtn).toBeDisabled();
     await busyBtn.dispatchEvent("click"); // force a click on disabled button
     await page.waitForTimeout(300);
@@ -428,7 +428,7 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
   });
 
   // ── 12. Re-run from done state ────────────────────────────────────────────
-  test("12. clicking ↻ from '✓ Done' clears done and re-runs (shows '…')", async ({ page }) => {
+  test("12. clicking ↻ from '✓ Done' clears done and re-runs (shows '⏳ Running…')", async ({ page }) => {
     await setupMocks(page, { runOutcome: "hang" });
     await page.goto("/");
     await setLS(page, "success");
@@ -436,7 +436,7 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 10_000 });
     const rerun = page.getByRole("button", { name: "↻" }).first();
     await rerun.click();
-    await expect(page.getByRole("button", { name: "…" }).first()).toBeVisible({ timeout: 2000 });
+    await expect(page.getByRole("button", { name: "⏳ Running…" }).first()).toBeVisible({ timeout: 2000 });
     await expect(page.locator("text=✓ Done").first()).not.toBeVisible();
     // localStorage should now be 'pending'
     const state = await getLS(page);

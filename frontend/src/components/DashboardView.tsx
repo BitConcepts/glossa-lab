@@ -976,7 +976,7 @@ export function DashboardView() {
                           lineHeight: 1.5 }}>
                           <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
                             <div style={{ flex: 1 }}>
-                              <strong>{a.action_type === "run_experiment"
+                              <strong>{(a.action_type && a.action_type !== "no_op" && !String(a.action_type).startsWith("open_"))
                                 ? a.label.replace(/^plan\s+/i, "Run ")
                                 : a.label}</strong>
                               {a.rationale && (

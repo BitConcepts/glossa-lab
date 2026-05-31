@@ -113,15 +113,26 @@ class BigramScorer:
         self,
         mapping: dict[str, str],
     ) -> float:
-        """Score a COMPLETE cipher→target mapping."""
-        xp = self._xp
-        # Build cipher→target index array
-        m = xp.zeros(self.C, dtype=xp.int32)
+        """Score a COMPLETE cipher→target mapping.
+
+        PERFORMANCE NOTE: always build the index array on CPU (NumPy) first,
+        then transfer to GPU in ONE bulk operation.  Per-element CuPy writes
+        (m[i] = v in a Python loop) each trigger a GPU roundtrip (~1 ms each).
+        With ~400 cipher signs that means 400 ms per score call, which makes
+        a 400 K-iteration SA run take 9+ hours.  Building on CPU then calling
+        xp.asarray() reduces this to microseconds.
+        """
+        # Step 1: fill on CPU (always fast, no GPU roundtrip per element)
+        import numpy as _np  # noqa: PLC0415
+        m_cpu = _np.zeros(self.C, dtype=_np.int32)
         for cs, ts in mapping.items():
             ci = self.cipher_idx.get(cs, -1)
             ti = self.target_idx.get(ts, -1)
             if ci >= 0 and ti >= 0:
-                m[ci] = ti
+                m_cpu[ci] = ti
+        # Step 2: single bulk H2D transfer (or no-op when xp is numpy)
+        xp = self._xp
+        m = xp.asarray(m_cpu) if xp is not _np else m_cpu
         ta = m[self.pair_a]
         tb = m[self.pair_b]
         return float(self.bigram_mat[ta, tb].sum())

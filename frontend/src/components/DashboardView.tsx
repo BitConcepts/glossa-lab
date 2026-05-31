@@ -614,7 +614,7 @@ export function DashboardView() {
           // names/descriptions to select the top 3 most relevant.
           const chainRegistry = await ensureExpRegistry();
           const hypWords = new Set(
-            hypothesis.toLowerCase().replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter(w => w.length > 3),
+            hypothesis.toLowerCase().replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter(w => w.length >= 2),
           );
           const scored = chainRegistry
             .map((e) => {

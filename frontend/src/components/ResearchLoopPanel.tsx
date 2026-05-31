@@ -326,7 +326,7 @@ export function ResearchLoopPanel() {
       )}
 
       {/* ── Staging review queue ── */}
-      {(staging?.counts.staged ?? 0) > 0 && staging && (
+      {(staging?.counts?.staged ?? 0) > 0 && staging?.counts && (
         <div style={{ marginTop: 8 }}>
           <button
             onClick={() => setShowReview((v) => !v)}

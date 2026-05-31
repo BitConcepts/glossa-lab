@@ -43,7 +43,7 @@ function ActionBtn({ label, onClick, busy }: { label: string; onClick: () => voi
         whiteSpace: "nowrap", opacity: busy ? 0.75 : 1,
       }}
     >
-      {busy ? "…" : label}
+      {busy ? "⏳ Running…" : label}
     </button>
   );
 }

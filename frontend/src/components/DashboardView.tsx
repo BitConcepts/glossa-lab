@@ -900,19 +900,33 @@ export function DashboardView() {
                             )}
                           </div>
                           {at !== "no_op" && (
-                            <button
-                              onClick={() => void applyAction({
-                                label: actionLabel(at),
-                                action_type: at,
-                                params: sp,
-                                rationale: im.impact,
-                              }, k)}
-                              disabled={isApplying(k) || applyResult[k] === "success"}
-                              style={applyButtonStyle(applyResult[k])}
-                              title={applyResultTitle(applyResult[k], at)}
-                            >
-                              {renderApplyLabel(isApplying(k), applyResult[k], actionLabel(at))}
-                            </button>
+                            applyResult[k] === "success" && !isApplying(k) ? (
+                              <div style={{ display: "flex", gap: 4, alignItems: "center", flexShrink: 0 }}>
+                                <span style={btnApplySuccess} title={`Done · ${at}`}>✓ Done</span>
+                                <button
+                                  onClick={() => {
+                                    setApplyResult(prev => { const n = { ...prev }; delete n[k]; return n; });
+                                    void applyAction({ label: actionLabel(at), action_type: at, params: sp, rationale: im.impact }, k);
+                                  }}
+                                  style={{ ...miniBtn, fontSize: 11, color: "#5b21b6", border: "1px solid #c4b5fd" }}
+                                  title="Re-run this action"
+                                >↻</button>
+                              </div>
+                            ) : (
+                              <button
+                                onClick={() => void applyAction({
+                                  label: actionLabel(at),
+                                  action_type: at,
+                                  params: sp,
+                                  rationale: im.impact,
+                                }, k)}
+                                disabled={isApplying(k)}
+                                style={applyButtonStyle(applyResult[k])}
+                                title={applyResultTitle(applyResult[k], at)}
+                              >
+                                {renderApplyLabel(isApplying(k), applyResult[k], actionLabel(at))}
+                              </button>
+                            )
                           )}
                           {/* Inline result highlight after experiment completes */}
                           {(() => {
@@ -962,7 +976,9 @@ export function DashboardView() {
                           lineHeight: 1.5 }}>
                           <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
                             <div style={{ flex: 1 }}>
-                              <strong>{a.label}</strong>
+                              <strong>{a.action_type === "run_experiment"
+                                ? a.label.replace(/^plan\s+/i, "Run ")
+                                : a.label}</strong>
                               {a.rationale && (
                                 <div style={{ color: "#6b7280", fontSize: 11, marginTop: 2 }}>
                                   {a.rationale}
@@ -970,14 +986,28 @@ export function DashboardView() {
                               )}
                             </div>
                             {isApplyable && (
-                              <button
-                                onClick={() => void applyAction(a, k)}
-                              disabled={isApplying(k) || applyResult[k] === "success"}
-                              style={applyButtonStyle(applyResult[k])}
-                              title={applyResultTitle(applyResult[k], a.action_type)}
-                            >
-                              {renderApplyLabel(isApplying(k), applyResult[k], actionLabel(a.action_type))}
-                              </button>
+                              applyResult[k] === "success" && !isApplying(k) ? (
+                                <div style={{ display: "flex", gap: 4, alignItems: "center", flexShrink: 0 }}>
+                                  <span style={btnApplySuccess} title={`Done · ${a.action_type}`}>✓ Done</span>
+                                  <button
+                                    onClick={() => {
+                                      setApplyResult(prev => { const n = { ...prev }; delete n[k]; return n; });
+                                      void applyAction(a, k);
+                                    }}
+                                    style={{ ...miniBtn, fontSize: 11, color: "#5b21b6", border: "1px solid #c4b5fd" }}
+                                    title="Re-run this action"
+                                  >↻</button>
+                                </div>
+                              ) : (
+                                <button
+                                  onClick={() => void applyAction(a, k)}
+                                  disabled={isApplying(k)}
+                                  style={applyButtonStyle(applyResult[k])}
+                                  title={applyResultTitle(applyResult[k], a.action_type)}
+                                >
+                                  {renderApplyLabel(isApplying(k), applyResult[k], actionLabel(a.action_type))}
+                                </button>
+                              )
                             )}
                           </div>
                         </li>

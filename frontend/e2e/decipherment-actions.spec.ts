@@ -312,65 +312,68 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
     expect(callCount).toBeLessThanOrEqual(1);
   });
 
-  // ── 4. Pending state after page refresh ──────────────────────────────────
-  test("4. injecting 'pending' in localStorage shows '⏳ Running…' on load", async ({ page }) => {
+  // ── 4. Stale pending in localStorage is cleared on load ───────────────────
+  test("4. stale 'pending' in localStorage is auto-cleared on load (shows '▶ Run SA')", async ({ page }) => {
+    // 'pending' is no longer persisted to localStorage — it's in-memory only.
+    // If a stale 'pending' entry exists (from an old version or manual injection),
+    // _loadDone() filters it out so the button shows the initial state, not
+    // '⏳ Running…', preventing 'stuck Running' after work completed.
     await setupMocks(page);
-    // Inject pending state before the page loads
     await page.goto("/");
+    // Manually inject a stale pending entry (simulates old app version)
     await page.evaluate(
       ([k, key]) => localStorage.setItem(k, JSON.stringify({ [key]: "pending" })),
       [LS_KEY, RUN_SA_KEY],
     );
-    // Now reload the page
     await page.reload();
     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
-    await expect(page.locator("text=⏳ Running…").first()).toBeVisible({ timeout: 3000 });
-    // Run SA button in initial form should NOT be present
-    await expect(page.getByRole("button", { name: "▶ Run SA" })).not.toBeVisible();
+    // Pending is filtered on load — button shows clean initial state
+    await expect(page.getByRole("button", { name: "▶ Run SA" })).toBeVisible({ timeout: 3000 });
+    await expect(page.locator("text=⏳ Running…").first()).not.toBeVisible();
   });
 
-  // ── 5. Click while running writes 'pending' to localStorage ──────────────
-  test("5. clicking Run SA immediately writes 'pending' to localStorage", async ({ page }) => {
+  // ── 5. Click while running shows in-memory Running state (no localStorage write) ──
+  test("5. clicking Run SA shows '⏳ Running…' but does NOT write 'pending' to localStorage", async ({ page }) => {
     await setupMocks(page, { runOutcome: "hang" });
     await clearLS(page);
     const btn = await loadDashboard(page);
     void btn.click();
-    // Wait a tick for the state write
     await page.waitForTimeout(500);
-    const state = await getLS(page);
-    expect(state).toBe("pending");
-  });
-
-  // ── 6. Dismiss clears pending state ──────────────────────────────────────
-  test("6. ✕ dismiss button clears 'pending' back to initial state", async ({ page }) => {
-    await setupMocks(page);
-    await page.goto("/");
-    await setLS(page, "pending");
-    await page.reload();
-    await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
-    await expect(page.locator("text=⏳ Running…").first()).toBeVisible({ timeout: 3000 });
-    // Click the ✕ dismiss button
-    const dismiss = page.getByRole("button", { name: "✕" }).first();
-    await expect(dismiss).toBeVisible();
-    await dismiss.click();
-    // Should revert to initial state
-    await expect(page.getByRole("button", { name: "▶ Run SA" })).toBeVisible({ timeout: 2000 });
-    await expect(page.locator("text=⏳ Running…").first()).not.toBeVisible();
-    // localStorage should be cleared
+    // Button shows Running in-memory
+    await expect(page.getByRole("button", { name: "⏳ Running…" }).first()).toBeVisible();
+    // But localStorage is NOT written with 'pending' — only terminal states persist
     const state = await getLS(page);
     expect(state).toBeNull();
   });
 
-  // ── 7. Dismiss tooltip text ───────────────────────────────────────────────
-  test("7. ✕ dismiss button has informative tooltip", async ({ page }) => {
-    await setupMocks(page);
-    await page.goto("/");
-    await setLS(page, "pending");
+  // ── 6. Reload during active run shows fresh button (no stuck Running) ───────
+  test("6. reloading mid-run shows '▶ Run SA' again (pending not persisted)", async ({ page }) => {
+    await setupMocks(page, { runOutcome: "hang" });
+    await clearLS(page);
+    await loadDashboard(page);
+    void page.getByRole("button", { name: "▶ Run SA" }).click();
+    await expect(page.getByRole("button", { name: "⏳ Running…" }).first()).toBeVisible({ timeout: 2000 });
+    // Reload mid-run — should NOT show '⏳ Running…' (pending not in localStorage)
     await page.reload();
-    await expect(page.locator("text=⏳ Running…").first()).toBeVisible({ timeout: 10_000 });
-    const dismiss = page.getByRole("button", { name: "✕" }).first();
-    const title = await dismiss.getAttribute("title");
-    expect(title).toContain("running in background");
+    await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
+    await expect(page.getByRole("button", { name: "▶ Run SA" })).toBeVisible({ timeout: 3000 });
+    await expect(page.locator("text=⏳ Running…").first()).not.toBeVisible();
+  });
+
+  // ── 7. Only success and error persist across reloads ───────────────────────
+  test("7. only 'success' and 'error' states survive a page reload", async ({ page }) => {
+    // Confirm that after a successful run the done state persists
+    await setupMocks(page, { runOutcome: "success" });
+    await clearLS(page);
+    await loadDashboard(page);
+    await page.getByRole("button", { name: "▶ Run SA" }).click();
+    await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
+    await page.reload();
+    await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
+    // Success state persists
+    await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 3000 });
+    // There should be NO 'Running…' indicator anywhere
+    await expect(page.locator("text=⏳ Running…").first()).not.toBeVisible();
   });
 
   // ── 8. Success state from localStorage ───────────────────────────────────
@@ -438,9 +441,10 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
     await rerun.click();
     await expect(page.getByRole("button", { name: "⏳ Running…" }).first()).toBeVisible({ timeout: 2000 });
     await expect(page.locator("text=✓ Done").first()).not.toBeVisible();
-    // localStorage should now be 'pending'
+    // localStorage still holds 'success' from the previous run — 'pending' is
+    // never written to localStorage now (it's in-memory only).
     const state = await getLS(page);
-    expect(state).toBe("pending");
+    expect(state).toBe("success");
   });
 
   // ── 13. Re-run from error state ───────────────────────────────────────────
@@ -458,16 +462,26 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
     expect(state).toBe("success");
   });
 
-  // ── 14. Re-run from pending state ────────────────────────────────────────
-  test("14. clicking ↻ from '⏳ Running…' clears pending and re-runs", async ({ page }) => {
+  // ── 14. Re-run from error state ends with success ─────────────────────────
+  test("14. clicking ↻ from '✗ Error' re-runs and transitions to '✓ Done'", async ({ page }) => {
+    // 'pending' is no longer shown after reload (auto-filtered). This test now
+    // covers the error → re-run → success path as the ↻ retry scenario.
     await setupMocks(page, { runOutcome: "success" });
-    await page.goto("/");
-    await setLS(page, "pending");
-    await page.reload();
-    await expect(page.locator("text=⏳ Running…").first()).toBeVisible({ timeout: 10_000 });
-    // Click ↻ (second button after ✕)
-    const rerunBtns = page.getByRole("button", { name: "↻" });
-    await rerunBtns.first().click();
+    await clearLS(page);
+    // First, get into error state via a real click
+    await setupMocks(page, { runOutcome: "error" });
+    const btn = await loadDashboard(page);
+    await btn.click();
+    await expect(page.locator("text=✗ Error").first()).toBeVisible({ timeout: 15_000 });
+    // Re-set mocks to succeed for the retry
+    await page.route("**/api/v1/experiment-graphs/**/run", (r) => {
+      if (r.request().method() !== "POST") return r.continue();
+      const id = r.request().url().split("/experiment-graphs/")[1]?.split("/")[0] ?? "x";
+      return r.fulfill({ status: 200, contentType: "text/event-stream",
+        headers: { "Cache-Control": "no-cache" }, body: sseSuccess(id) });
+    });
+    const rerun = page.getByRole("button", { name: "↻" }).first();
+    await rerun.click();
     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
     const state = await getLS(page);
     expect(state).toBe("success");

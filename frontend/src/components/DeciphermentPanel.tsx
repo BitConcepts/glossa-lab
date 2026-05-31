@@ -16,7 +16,15 @@ import { getDashboardDecipherment, type DeciphermentProgress } from "../api";
 const DECIPHER_DONE_KEY = "glossa_decipher_actions_done";
 type DoneResult = "success" | "error" | "warn" | "pending";
 function _loadDone(): Record<string, DoneResult> {
-  try { const r = localStorage.getItem(DECIPHER_DONE_KEY); return r ? JSON.parse(r) : {}; } catch { return {}; }
+  try {
+    const r = localStorage.getItem(DECIPHER_DONE_KEY);
+    if (!r) return {};
+    const raw = JSON.parse(r) as Record<string, DoneResult>;
+    // Drop stale 'pending' entries — they can't be resumed after a reload and
+    // cause 'Running…' to appear even when work completed in a previous session.
+    // Only 'success' and 'error' are meaningful across browser sessions.
+    return Object.fromEntries(Object.entries(raw).filter(([, v]) => v !== "pending"));
+  } catch { return {}; }
 }
 function _saveDone(d: Record<string, DoneResult>) {
   try { localStorage.setItem(DECIPHER_DONE_KEY, JSON.stringify(d)); } catch { /* ignore */ }
@@ -102,8 +110,9 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
     params: Record<string, unknown>, rationale?: string,
   ) => {
     if (busyLabels.has(label) || !onAction) return;
-    // Mark as pending immediately so a page refresh shows the running indicator.
-    setDoneLabels(prev => { const n = { ...prev, [label]: "pending" as DoneResult }; _saveDone(n); return n; });
+    // Set in-memory busy state only — do NOT persist 'pending' to localStorage.
+    // Persisting pending caused the button to show '⏳ Running…' after a page reload
+    // even when the job had already completed in the previous session.
     setBusyLabels(prev => new Set(prev).add(label));
     let outcome: DoneResult = "success";
     try {

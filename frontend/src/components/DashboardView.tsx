@@ -769,7 +769,7 @@ export function DashboardView() {
 
       {/* Decipherment Progress Panel */}
       <DeciphermentPanel onAction={(label, actionType, params, rationale) =>
-        void applyAction({
+        applyAction({
           label,
           action_type: actionType as import("../api").DashboardActionType,
           params,

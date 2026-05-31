@@ -18,20 +18,23 @@ type ActionFn = (
   actionType: string,
   params: Record<string, unknown>,
   rationale?: string,
-) => void;
+) => Promise<void> | void;
 
-function ActionBtn({ label, onClick }: { label: string; onClick: () => void }) {
+function ActionBtn({ label, onClick, busy }: { label: string; onClick: () => void; busy?: boolean }) {
   return (
     <button
-      onClick={onClick}
+      onClick={busy ? undefined : onClick}
+      disabled={busy}
       style={{
         padding: "2px 7px", fontSize: 10, fontWeight: 600,
         border: "1px solid #c4b5fd", borderRadius: 4,
-        background: "#f5f3ff", color: "#5b21b6",
-        cursor: "pointer", whiteSpace: "nowrap",
+        background: busy ? "#ede9fe" : "#f5f3ff",
+        color: busy ? "#7c3aed" : "#5b21b6",
+        cursor: busy ? "default" : "pointer",
+        whiteSpace: "nowrap", opacity: busy ? 0.75 : 1,
       }}
     >
-      {label}
+      {busy ? "…" : label}
     </button>
   );
 }
@@ -80,6 +83,21 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
   const [data, setData] = useState<DeciphermentProgress | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  // Track which action labels are currently in-flight so buttons disable.
+  const [busyLabels, setBusyLabels] = useState<Set<string>>(new Set());
+
+  const handleAction = async (
+    label: string, actionType: string,
+    params: Record<string, unknown>, rationale?: string,
+  ) => {
+    if (busyLabels.has(label) || !onAction) return;
+    setBusyLabels(prev => new Set(prev).add(label));
+    try {
+      await onAction(label, actionType, params, rationale);
+    } finally {
+      setBusyLabels(prev => { const n = new Set(prev); n.delete(label); return n; });
+    }
+  };
 
   useEffect(() => {
     getDashboardDecipherment()
@@ -193,7 +211,9 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
               </span>
               {onAction && (
                 <div style={{ display: "flex", gap: 4, flexShrink: 0, marginTop: 1 }}>
-                  <ActionBtn label="💡 Hypothesize" onClick={() => onAction(
+                  <ActionBtn label="💡 Hypothesize"
+                    busy={busyLabels.has("Create hypothesis: anchored SA discriminates")}
+                    onClick={() => void handleAction(
                     "Create hypothesis: anchored SA discriminates",
                     "create_hypothesis",
                     {
@@ -206,7 +226,9 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
                     },
                     "SA non-discriminative finding requires anchored SA follow-up",
                   )} />
-                  <ActionBtn label="▶ Run SA" onClick={() => onAction(
+                  <ActionBtn label="▶ Run SA"
+                    busy={busyLabels.has("Plan anchored SA comparison")}
+                    onClick={() => void handleAction(
                     "Plan anchored SA comparison",
                     "propose_experiment_chain",
                     {
@@ -216,7 +238,9 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
                     },
                     "Validate that anchored SA discriminates where unconstrained SA cannot",
                   )} />
-                  <ActionBtn label="✨ Ask AI" onClick={() => onAction(
+                  <ActionBtn label="✨ Ask AI"
+                    busy={busyLabels.has("Ask AI: SA discrimination follow-up")}
+                    onClick={() => void handleAction(
                     "Ask AI: SA discrimination follow-up",
                     "ai_chat",
                     {
@@ -245,7 +269,9 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
               </span>
               {onAction && (
                 <div style={{ display: "flex", gap: 4, flexShrink: 0, marginTop: 1 }}>
-                  <ActionBtn label="💡 Hypothesize" onClick={() => onAction(
+                  <ActionBtn label="💡 Hypothesize"
+                    busy={busyLabels.has("Create hypothesis: guild-identity site invariance")}
+                    onClick={() => void handleAction(
                     "Create hypothesis: guild-identity site invariance",
                     "create_hypothesis",
                     {
@@ -258,7 +284,9 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
                     },
                     "Guild-identity site invariance finding",
                   )} />
-                  <ActionBtn label="✨ Ask AI" onClick={() => onAction(
+                  <ActionBtn label="✨ Ask AI"
+                    busy={busyLabels.has("Ask AI: archaeological context follow-up")}
+                    onClick={() => void handleAction(
                     "Ask AI: archaeological context follow-up",
                     "ai_chat",
                     {
@@ -355,7 +383,9 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
                                    alignItems: "flex-start", gap: 6 }}>
                 <span style={{ flex: 1, lineHeight: 1.5 }}>{r}</span>
                 {onAction && (
-                  <ActionBtn label="▶ Run" onClick={() => onAction(
+                  <ActionBtn label="▶ Run"
+                    busy={busyLabels.has(`Plan: ${r.slice(0, 60)}`)}
+                    onClick={() => void handleAction(
                     `Plan: ${r.slice(0, 60)}`,
                     "propose_experiment_chain",
                     { hypothesis: r },

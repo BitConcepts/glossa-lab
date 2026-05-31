@@ -13,21 +13,50 @@
 import { useEffect, useState } from "react";
 import { getDashboardDecipherment, type DeciphermentProgress } from "../api";
 
-const DECIPHER_DONE_KEY = "glossa_decipher_actions_done";
+const DECIPHER_DONE_KEY    = "glossa_decipher_actions_done";    // localStorage  – success/error
+const DECIPHER_PENDING_KEY = "glossa_decipher_actions_pending"; // sessionStorage – in-flight
 type DoneResult = "success" | "error" | "warn" | "pending";
+
+/**
+ * Load terminal states (success/error) from localStorage and merge in
+ * any in-flight keys that are still tracked in sessionStorage.
+ *
+ * Splitting storage types gives us exactly the right semantics:
+ *  - sessionStorage persists across Ctrl+R (same tab) → shows Running on reload
+ *  - sessionStorage is cleared on tab close → no stuck Running next session
+ *  - localStorage holds done/error so they survive tab close
+ */
 function _loadDone(): Record<string, DoneResult> {
+  const result: Record<string, DoneResult> = {};
   try {
     const r = localStorage.getItem(DECIPHER_DONE_KEY);
-    if (!r) return {};
-    const raw = JSON.parse(r) as Record<string, DoneResult>;
-    // Drop stale 'pending' entries — they can't be resumed after a reload and
-    // cause 'Running…' to appear even when work completed in a previous session.
-    // Only 'success' and 'error' are meaningful across browser sessions.
-    return Object.fromEntries(Object.entries(raw).filter(([, v]) => v !== "pending"));
-  } catch { return {}; }
+    if (r) Object.assign(result, JSON.parse(r) as Record<string, DoneResult>);
+  } catch { /* ignore */ }
+  try {
+    const raw = sessionStorage.getItem(DECIPHER_PENDING_KEY);
+    if (raw) {
+      const pending = JSON.parse(raw) as string[];
+      for (const key of pending) { if (!result[key]) result[key] = "pending"; }
+    }
+  } catch { /* ignore */ }
+  return result;
 }
+
 function _saveDone(d: Record<string, DoneResult>) {
-  try { localStorage.setItem(DECIPHER_DONE_KEY, JSON.stringify(d)); } catch { /* ignore */ }
+  // Terminal states go to localStorage (survive tab close)
+  try {
+    const terminal = Object.fromEntries(Object.entries(d).filter(([, v]) => v !== "pending"));
+    localStorage.setItem(DECIPHER_DONE_KEY, JSON.stringify(terminal));
+  } catch { /* ignore */ }
+  // Pending keys go to sessionStorage (survive Ctrl+R, clear on tab close)
+  try {
+    const pending = Object.entries(d).filter(([, v]) => v === "pending").map(([k]) => k);
+    if (pending.length > 0) {
+      sessionStorage.setItem(DECIPHER_PENDING_KEY, JSON.stringify(pending));
+    } else {
+      sessionStorage.removeItem(DECIPHER_PENDING_KEY);
+    }
+  } catch { /* ignore */ }
 }
 
 type ActionFn = (
@@ -110,9 +139,10 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
     params: Record<string, unknown>, rationale?: string,
   ) => {
     if (busyLabels.has(label) || !onAction) return;
-    // Set in-memory busy state only — do NOT persist 'pending' to localStorage.
-    // Persisting pending caused the button to show '⏳ Running…' after a page reload
-    // even when the job had already completed in the previous session.
+    // Write 'pending' to sessionStorage immediately so a Ctrl+R mid-run still shows
+    // Running. sessionStorage is cleared on tab close, so a new browser session
+    // always starts clean (no stuck Running from a previous session).
+    setDoneLabels(prev => { const n = { ...prev, [label]: "pending" as DoneResult }; _saveDone(n); return n; });
     setBusyLabels(prev => new Set(prev).add(label));
     let outcome: DoneResult = "success";
     try {

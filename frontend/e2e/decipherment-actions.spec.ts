@@ -23,7 +23,8 @@ import { expect, test, type Page } from "@playwright/test";
 
 const BACKEND = "http://localhost:8001";
 const APP_URL = "http://localhost:4173";
-const LS_KEY = "glossa_decipher_actions_done";
+const LS_KEY = "glossa_decipher_actions_done";     // localStorage  — success/error
+const SS_PENDING_KEY = "glossa_decipher_actions_pending"; // sessionStorage — in-flight
 // Action key used internally for the "▶ Run SA" button
 const RUN_SA_KEY = "Plan anchored SA comparison";
 
@@ -312,57 +313,70 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
     expect(callCount).toBeLessThanOrEqual(1);
   });
 
-  // ── 4. Stale pending in localStorage is cleared on load ───────────────────
-  test("4. stale 'pending' in localStorage is auto-cleared on load (shows '▶ Run SA')", async ({ page }) => {
-    // 'pending' is no longer persisted to localStorage — it's in-memory only.
-    // If a stale 'pending' entry exists (from an old version or manual injection),
-    // _loadDone() filters it out so the button shows the initial state, not
-    // '⏳ Running…', preventing 'stuck Running' after work completed.
-    await setupMocks(page);
-    await page.goto("/");
-    // Manually inject a stale pending entry (simulates old app version)
-    await page.evaluate(
-      ([k, key]) => localStorage.setItem(k, JSON.stringify({ [key]: "pending" })),
-      [LS_KEY, RUN_SA_KEY],
-    );
-    await page.reload();
-    await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
-    // Pending is filtered on load — button shows clean initial state
-    await expect(page.getByRole("button", { name: "▶ Run SA" })).toBeVisible({ timeout: 3000 });
-    await expect(page.locator("text=⏳ Running…").first()).not.toBeVisible();
-  });
-
-  // ── 5. Click while running shows in-memory Running state (no localStorage write) ──
-  test("5. clicking Run SA shows '⏳ Running…' but does NOT write 'pending' to localStorage", async ({ page }) => {
-    await setupMocks(page, { runOutcome: "hang" });
-    await clearLS(page);
-    const btn = await loadDashboard(page);
-    void btn.click();
-    await page.waitForTimeout(500);
-    // Button shows Running in-memory
-    await expect(page.getByRole("button", { name: "⏳ Running…" }).first()).toBeVisible();
-    // But localStorage is NOT written with 'pending' — only terminal states persist
-    const state = await getLS(page);
-    expect(state).toBeNull();
-  });
-
-  // ── 6. Reload during active run shows fresh button (no stuck Running) ───────
-  test("6. reloading mid-run shows '▶ Run SA' again (pending not persisted)", async ({ page }) => {
+  // ── 4. Ctrl+R mid-run preserves '⏳ Running…' (sessionStorage) ──────────────
+  test("4. Ctrl+R mid-run still shows '⏳ Running…' (pending survives reload via sessionStorage)", async ({ page }) => {
+    // sessionStorage persists across page.reload() (same tab = same session),
+    // so reloading mid-run should keep the Running indicator.
     await setupMocks(page, { runOutcome: "hang" });
     await clearLS(page);
     await loadDashboard(page);
     void page.getByRole("button", { name: "▶ Run SA" }).click();
     await expect(page.getByRole("button", { name: "⏳ Running…" }).first()).toBeVisible({ timeout: 2000 });
-    // Reload mid-run — should NOT show '⏳ Running…' (pending not in localStorage)
+    // Simulate Ctrl+R
     await page.reload();
     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
-    await expect(page.getByRole("button", { name: "▶ Run SA" })).toBeVisible({ timeout: 3000 });
+    // Must still show Running (from sessionStorage) with a ✕ dismiss button
+    await expect(page.locator("text=⏳ Running…").first()).toBeVisible({ timeout: 3000 });
+    await expect(page.getByRole("button", { name: "✕" }).first()).toBeVisible();
+  });
+
+  // ── 5. Pending written to sessionStorage (NOT localStorage) on click ────────
+  test("5. clicking Run SA writes pending to sessionStorage, NOT localStorage", async ({ page }) => {
+    await setupMocks(page, { runOutcome: "hang" });
+    await clearLS(page);
+    const btn = await loadDashboard(page);
+    void btn.click();
+    await page.waitForTimeout(500);
+    await expect(page.getByRole("button", { name: "⏳ Running…" }).first()).toBeVisible();
+    // localStorage must NOT have 'pending' (only terminal states go there)
+    const lsState = await getLS(page);
+    expect(lsState).toBeNull();
+    // sessionStorage MUST have the pending key
+    const ssState = await page.evaluate(
+      ([ssKey, key]) => {
+        try {
+          const raw = sessionStorage.getItem(ssKey);
+          if (!raw) return null;
+          const arr = JSON.parse(raw) as string[];
+          return arr.includes(key) ? "pending" : null;
+        } catch { return null; }
+      },
+      [SS_PENDING_KEY, RUN_SA_KEY],
+    );
+    expect(ssState).toBe("pending");
+  });
+
+  // ── 6. Dismiss clears both sessionStorage pending and resets button ───────
+  test("6. ✕ dismiss button clears pending and shows '▶ Run SA' again", async ({ page }) => {
+    await setupMocks(page, { runOutcome: "hang" });
+    await clearLS(page);
+    await loadDashboard(page);
+    void page.getByRole("button", { name: "▶ Run SA" }).click();
+    // Wait for the busy state so sessionStorage is written before we reload
+    await expect(page.getByRole("button", { name: "⏳ Running…" }).first()).toBeVisible({ timeout: 2000 });
+    // Reload mid-run
+    await page.reload();
+    await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
+    await expect(page.locator("text=⏳ Running…").first()).toBeVisible({ timeout: 3000 });
+    // Click ✕ to dismiss
+    await page.getByRole("button", { name: "✕" }).first().click();
+    await expect(page.getByRole("button", { name: "▶ Run SA" })).toBeVisible({ timeout: 2000 });
     await expect(page.locator("text=⏳ Running…").first()).not.toBeVisible();
   });
 
-  // ── 7. Only success and error persist across reloads ───────────────────────
-  test("7. only 'success' and 'error' states survive a page reload", async ({ page }) => {
-    // Confirm that after a successful run the done state persists
+  // ── 7. Only success/error survive; pending clears on new session ──────────
+  test("7. 'success' persists on reload; stale 'pending' in localStorage is ignored", async ({ page }) => {
+    // Confirm that after a successful run the done state persists across Ctrl+R
     await setupMocks(page, { runOutcome: "success" });
     await clearLS(page);
     await loadDashboard(page);
@@ -370,9 +384,17 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
     await page.reload();
     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
-    // Success state persists
     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 3000 });
-    // There should be NO 'Running…' indicator anywhere
+    await expect(page.locator("text=⏳ Running…").first()).not.toBeVisible();
+    // Stale 'pending' injected into localStorage (old app version) must be ignored
+    await page.evaluate(
+      ([k, key]) => { const r = localStorage.getItem(k); const d = r ? JSON.parse(r) : {};
+        d[key] = "pending"; localStorage.setItem(k, JSON.stringify(d)); },
+      [LS_KEY, "other-action-key"],
+    );
+    await page.reload();
+    await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
+    // The stale pending in localStorage should be silently dropped
     await expect(page.locator("text=⏳ Running…").first()).not.toBeVisible();
   });
 
@@ -441,10 +463,11 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
     await rerun.click();
     await expect(page.getByRole("button", { name: "⏳ Running…" }).first()).toBeVisible({ timeout: 2000 });
     await expect(page.locator("text=✓ Done").first()).not.toBeVisible();
-    // localStorage still holds 'success' from the previous run — 'pending' is
-    // never written to localStorage now (it's in-memory only).
+    // localStorage is cleared when re-running (entering pending removes the old
+    // terminal state so a tab-close during re-run doesn't leave stale 'success').
+    // The running state is held in sessionStorage and visible via test 4.
     const state = await getLS(page);
-    expect(state).toBe("success");
+    expect(state).toBeNull();
   });
 
   // ── 13. Re-run from error state ───────────────────────────────────────────

@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import { getDashboardDecipherment, type DeciphermentProgress } from "../api";
 
 const DECIPHER_DONE_KEY = "glossa_decipher_actions_done";
-type DoneResult = "success" | "error" | "warn";
+type DoneResult = "success" | "error" | "warn" | "pending";
 function _loadDone(): Record<string, DoneResult> {
   try { const r = localStorage.getItem(DECIPHER_DONE_KEY); return r ? JSON.parse(r) : {}; } catch { return {}; }
 }
@@ -102,8 +102,8 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
     params: Record<string, unknown>, rationale?: string,
   ) => {
     if (busyLabels.has(label) || !onAction) return;
-    // Clear stale done state before re-running.
-    setDoneLabels(prev => { const n = { ...prev }; delete n[label]; _saveDone(n); return n; });
+    // Mark as pending immediately so a page refresh shows the running indicator.
+    setDoneLabels(prev => { const n = { ...prev, [label]: "pending" as DoneResult }; _saveDone(n); return n; });
     setBusyLabels(prev => new Set(prev).add(label));
     let outcome: DoneResult = "success";
     try {
@@ -116,25 +116,50 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
     }
   };
 
-  /** Render a Done chip + re-run OR a normal ActionBtn depending on state. */
+  /** Render a Done/Pending chip + re-run OR a normal ActionBtn depending on state. */
   const renderBtn = (
     displayLabel: string, actionKey: string,
     actionType: string, params: Record<string, unknown>, rationale?: string,
   ) => {
     const busy = busyLabels.has(actionKey);
-    const done = !busy && doneLabels[actionKey] === "success";
-    if (done) {
+    const state = doneLabels[actionKey];
+    const rerunBtn = (
+      <button
+        onClick={() => void handleAction(actionKey, actionType, params, rationale)}
+        style={{ padding: "2px 5px", fontSize: 10, border: "1px solid #c4b5fd",
+          borderRadius: 4, background: "#f5f3ff", color: "#5b21b6", cursor: "pointer" }}
+        title="Re-run">↻</button>
+    );
+    if (!busy && state === "success") {
       return (
         <div style={{ display: "flex", gap: 3, alignItems: "center", flexShrink: 0 }}>
           <span style={{ padding: "2px 7px", fontSize: 10, fontWeight: 600,
             border: "1px solid #86efac", borderRadius: 4,
             background: "#f0fdf4", color: "#166534", whiteSpace: "nowrap" }}
             title={`Done · ${actionKey}`}>✓ Done</span>
-          <button
-            onClick={() => void handleAction(actionKey, actionType, params, rationale)}
-            style={{ padding: "2px 5px", fontSize: 10, border: "1px solid #c4b5fd",
-              borderRadius: 4, background: "#f5f3ff", color: "#5b21b6", cursor: "pointer" }}
-            title="Re-run">↻</button>
+          {rerunBtn}
+        </div>
+      );
+    }
+    if (!busy && state === "pending") {
+      return (
+        <div style={{ display: "flex", gap: 3, alignItems: "center", flexShrink: 0 }}>
+          <span style={{ padding: "2px 7px", fontSize: 10, fontWeight: 600,
+            border: "1px solid #93c5fd", borderRadius: 4,
+            background: "#eff6ff", color: "#1d4ed8", whiteSpace: "nowrap" }}
+            title="Running in background — click ↻ to re-run">⏳ Running…</span>
+          {rerunBtn}
+        </div>
+      );
+    }
+    if (!busy && state === "error") {
+      return (
+        <div style={{ display: "flex", gap: 3, alignItems: "center", flexShrink: 0 }}>
+          <span style={{ padding: "2px 7px", fontSize: 10, fontWeight: 600,
+            border: "1px solid #fca5a5", borderRadius: 4,
+            background: "#fef2f2", color: "#991b1b", whiteSpace: "nowrap" }}
+            title="Failed — click ↻ to retry">✗ Error</span>
+          {rerunBtn}
         </div>
       );
     }

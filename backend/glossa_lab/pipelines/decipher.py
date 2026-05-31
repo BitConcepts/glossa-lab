@@ -70,9 +70,19 @@ class BigramScorer:
     """
 
     def __init__(self, model: "LanguageModel", cipher_signs: list[str]) -> None:
-        xp = _xp()
-        if xp is None:
-            raise RuntimeError("numpy/cupy required for BigramScorer")
+        # ALWAYS use NumPy, never CuPy, for the BigramScorer.
+        #
+        # For Indus-scale matrices (V~655, C~400, pairs~5360) every CuPy call
+        # forces a GPU kernel launch + synchronization.  The minimum overhead
+        # per CUDA kernel is ~0.5-5 ms regardless of work size.  With 400K+
+        # scoring calls per SA run that compounds to hours of GPU-sync overhead.
+        #
+        # NumPy on CPU:  each score_full call takes ~100 μs → total ~40 s.
+        # CuPy on GPU:   each score_full call takes ~2-5 ms → total ~10-40 min.
+        # GPU wins only for V ≥ ~10 000 where computation dominates latency.
+        if not _HAS_NUMPY:
+            raise RuntimeError("numpy required for BigramScorer")
+        xp = np   # always CPU — see rationale above
         self._xp = xp
         smoothing_log = math.log(1e-8)
 
@@ -81,8 +91,8 @@ class BigramScorer:
         self.target_idx: dict[str, int] = {s: i for i, s in enumerate(self.target_vocab)}
         V = len(self.target_vocab)
 
-        # Build [V × V] bigram log-prob matrix (numpy float32 to save RAM)
-        mat = xp.full((V, V), smoothing_log, dtype=xp.float32)
+        # Build [V × V] bigram log-prob matrix (float32 to save RAM)
+        mat = np.full((V, V), smoothing_log, dtype=np.float32)
         for (a, b), p in model.bigram_freq.items():
             ai = self.target_idx.get(a, -1)
             bi = self.target_idx.get(b, -1)
@@ -100,8 +110,8 @@ class BigramScorer:
                  for i in range(len(cipher_signs) - 1)]
         raw_b = [self.cipher_idx.get(cipher_signs[i + 1], -1)
                  for i in range(len(cipher_signs) - 1)]
-        raw_a_arr = xp.array(raw_a, dtype=xp.int32)
-        raw_b_arr = xp.array(raw_b, dtype=xp.int32)
+        raw_a_arr = np.array(raw_a, dtype=np.int32)
+        raw_b_arr = np.array(raw_b, dtype=np.int32)
         valid = (raw_a_arr >= 0) & (raw_b_arr >= 0)
         self.pair_a = raw_a_arr[valid]   # indices into cipher_vocab
         self.pair_b = raw_b_arr[valid]
@@ -122,17 +132,14 @@ class BigramScorer:
         a 400 K-iteration SA run take 9+ hours.  Building on CPU then calling
         xp.asarray() reduces this to microseconds.
         """
-        # Step 1: fill on CPU (always fast, no GPU roundtrip per element)
-        import numpy as _np  # noqa: PLC0415
-        m_cpu = _np.zeros(self.C, dtype=_np.int32)
+        # self._xp is always numpy (see __init__).  All operations are pure
+        # CPU — no GPU kernel launches, no synchronization overhead.
+        m = np.zeros(self.C, dtype=np.int32)
         for cs, ts in mapping.items():
             ci = self.cipher_idx.get(cs, -1)
             ti = self.target_idx.get(ts, -1)
             if ci >= 0 and ti >= 0:
-                m_cpu[ci] = ti
-        # Step 2: single bulk H2D transfer (or no-op when xp is numpy)
-        xp = self._xp
-        m = xp.asarray(m_cpu) if xp is not _np else m_cpu
+                m[ci] = ti
         ta = m[self.pair_a]
         tb = m[self.pair_b]
         return float(self.bigram_mat[ta, tb].sum())

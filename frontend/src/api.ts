@@ -701,6 +701,20 @@ export interface ExperimentMeta {
 export const getNodeSchema = (nodeType: string, refId: string): Promise<Record<string, any>> =>
   request("GET", `/node-registry/${nodeType}/${refId}`);
 
+export interface ExperimentLedgerEntry {
+  id: string;
+  display_name: string;
+  category: string;
+  phase: string;
+  description: string;
+  status: "active" | "superseded" | "legacy" | "scaffold";
+  superseded_by: string | null;
+  source_file: string;
+}
+
+export const getExperimentMetadata = (): Promise<ExperimentLedgerEntry[]> =>
+  request("GET", "/experiments/metadata");
+
 export const listExperiments = (): Promise<ExperimentMeta[]> =>
   request("GET", "/experiments");
 

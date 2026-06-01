@@ -25,6 +25,7 @@ import {
   updateHypothesis,
   executeAiAction,
   getDashboardHighlights,
+  getEventsStreamUrl,
   getHealth,
   getLatestInsight,
   listExperiments,
@@ -53,6 +54,23 @@ import { ResearchLoopPanel } from "./ResearchLoopPanel";
 // Bump version to invalidate stale caches that contain hallucinated hex-hash
 // experiment IDs from before the backend validation was deployed.
 const INSIGHT_LS_KEY = "glossa_dashboard_insight_v2";
+const INSIGHT_INTERVAL_LS_KEY = "glossa_insight_interval_min";
+const INSIGHT_LAST_AUTO_KEY = "insight_last_auto_regen";
+
+/** Read auto-refresh interval from localStorage (default 20 min). */
+function _getInsightInterval(): number {
+  try {
+    const v = parseInt(localStorage.getItem(INSIGHT_INTERVAL_LS_KEY) ?? "20", 10);
+    if ([10, 15, 20, 30, 60].includes(v)) return v;
+  } catch { /* ignore */ }
+  return 20;
+}
+function _getLastAutoRegen(): number {
+  try { return parseInt(localStorage.getItem(INSIGHT_LAST_AUTO_KEY) ?? "0", 10) || 0; } catch { return 0; }
+}
+function _setLastAutoRegen(ms: number): void {
+  try { localStorage.setItem(INSIGHT_LAST_AUTO_KEY, String(ms)); } catch { /* ignore */ }
+}
 interface PersistedInsight {
   insight: DashboardInsight;
   generated_at: number;       // epoch ms when LLM generated this
@@ -205,6 +223,76 @@ export function DashboardView() {
       setInsightLoading(false);
     }
   }, [days, projectId, toast, setApplyResult]);
+
+  // ── Insight auto-refresh interval setting ────────────────────────────
+  const [insightIntervalMin, setInsightIntervalMin] = useState(_getInsightInterval);
+  const [autoCountdown, setAutoCountdown] = useState("");
+  const [jobsRunning, setJobsRunning] = useState(false);
+
+  // Listen for loop-running custom event (dispatched by ResearchLoopPanel)
+  useEffect(() => {
+    const onRunning = (e: Event) => {
+      setJobsRunning((e as CustomEvent).detail?.running ?? true);
+    };
+    window.addEventListener("glossa:loop-running", onRunning);
+    return () => window.removeEventListener("glossa:loop-running", onRunning);
+  }, []);
+
+  // shouldAutoRegen — checks throttle and whether batch jobs are active
+  const shouldAutoRegen = useCallback((): boolean => {
+    if (jobsRunning) return false;
+    if (insightLoading) return false;
+    const last = _getLastAutoRegen();
+    const intervalMs = insightIntervalMin * 60 * 1000;
+    return Date.now() - last > intervalMs;
+  }, [jobsRunning, insightLoading, insightIntervalMin]);
+
+  // Auto-refresh timer: check every 60s
+  useEffect(() => {
+    const tick = () => {
+      const last = _getLastAutoRegen();
+      const intervalMs = insightIntervalMin * 60 * 1000;
+      const remaining = Math.max(0, intervalMs - (Date.now() - last));
+      const mins = Math.ceil(remaining / 60_000);
+      if (jobsRunning) {
+        setAutoCountdown("⏳ Waiting for jobs to complete...");
+      } else if (remaining <= 0 || last === 0) {
+        setAutoCountdown("✅ Up to date");
+      } else {
+        setAutoCountdown(`🔄 Auto-update in ${mins}m`);
+      }
+      // Trigger auto-regen if due
+      if (shouldAutoRegen()) {
+        _setLastAutoRegen(Date.now());
+        void generateInsight();
+      }
+    };
+    tick(); // run immediately
+    const id = setInterval(tick, 60_000);
+    return () => clearInterval(id);
+  }, [insightIntervalMin, jobsRunning, shouldAutoRegen, generateInsight]);
+
+  // ── SSE subscription for real-time insight triggers ──────────────────
+  useEffect(() => {
+    const url = getEventsStreamUrl();
+    let es: EventSource | null = null;
+    try {
+      es = new EventSource(url);
+      es.onmessage = (ev) => {
+        try {
+          const data = JSON.parse(ev.data) as { type?: string };
+          if (data.type === "insight_trigger" && shouldAutoRegen()) {
+            _setLastAutoRegen(Date.now());
+            void generateInsight();
+          }
+        } catch { /* ignore parse errors */ }
+      };
+      es.onerror = () => {
+        // Silently reconnect — browser EventSource handles this
+      };
+    } catch { /* SSE not available */ }
+    return () => { es?.close(); };
+  }, [shouldAutoRegen, generateInsight]);
 
   // Auto-refresh dashboard data every 30 s
   useEffect(() => {
@@ -810,6 +898,26 @@ export function DashboardView() {
                 <span style={{ color: "#9ca3af", marginLeft: 4 }}>({fmtRelative(new Date(insightGeneratedAt).toISOString())})</span>
               </span>
             )}
+            {/* Auto-refresh freshness indicator */}
+            <span style={{ fontSize: 10, color: "#6b7280", whiteSpace: "nowrap" }}>
+              {autoCountdown}
+            </span>
+            {/* Auto-refresh interval setting */}
+            <select
+              value={insightIntervalMin}
+              onChange={(e) => {
+                const v = parseInt(e.target.value, 10);
+                setInsightIntervalMin(v);
+                localStorage.setItem(INSIGHT_INTERVAL_LS_KEY, String(v));
+              }}
+              style={{ padding: "2px 4px", border: "1px solid #e5e7eb", borderRadius: 4,
+                       fontSize: 10, background: "#fff", color: "#6b7280" }}
+              title="Auto-refresh interval for AI insight"
+            >
+              {[10, 15, 20, 30, 60].map((m) => (
+                <option key={m} value={m}>{m}m</option>
+              ))}
+            </select>
             <button onClick={() => void generateInsight()} disabled={insightLoading}
               style={btnGhost}
               title="Re-run the AI to summarise the latest items. Auto-runs after Fetch, after a backend restart, or after a hard reload — but NOT on every page refresh.">

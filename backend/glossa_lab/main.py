@@ -30,6 +30,8 @@ from glossa_lab.api.correspondences import router as correspondences_router
 from glossa_lab.api.dashboard import router as dashboard_router
 from glossa_lab.api.discovery import router as discovery_router
 from glossa_lab.api.env import router as env_router
+from glossa_lab.api.events import router as events_router
+from glossa_lab.api.foundation import router as foundation_automation_router
 from glossa_lab.api.experiment_graphs import router as experiment_graphs_router
 from glossa_lab.api.experiments import router as experiments_router
 from glossa_lab.api.foundation_check import router as foundation_check_router
@@ -292,6 +294,11 @@ async def lifespan(app: FastAPI):
             _log.info("Auto-fetch: skipped or failed (%s)", _exc)
 
     asyncio.create_task(_auto_startup_fetch())
+
+    # Start foundation auto-check background task
+    from glossa_lab.api.foundation import start_auto_check  # noqa: PLC0415
+    start_auto_check()
+
     yield
     # Shutdown: stop engine + scheduler, close database, flush logs
     _log.info("=== Glossa Lab shutting down ===")
@@ -378,6 +385,8 @@ def create_app() -> FastAPI:
     application.include_router(model_intelligence_router)  # /api/v1/model-intelligence
     application.include_router(indus_evidence_router)  # already prefixed at /api/v1/indus-evidence
     application.include_router(research_loop_router)  # already prefixed at /api/v1/research-loop
+    application.include_router(events_router)  # already prefixed at /api/v1/events
+    application.include_router(foundation_automation_router)  # already prefixed at /api/v1/foundation
 
     # Serve built frontend
     # Skipped silently in dev if the dist directory does not yet exist.

@@ -1721,6 +1721,45 @@ export interface LatestInsightResponse {
 export const getLatestInsight = (): Promise<LatestInsightResponse> =>
   request("GET", "/dashboard/latest-insight");
 
+// ── Foundation automation ────────────────────────────────────────────
+
+export interface FoundationStatus {
+  last_checked_at: string | null;
+  verdict: string | null;
+  n_ok: number;
+  n_fail: number;
+  n_warn: number;
+  auto_check_enabled: boolean;
+  dirty: boolean;
+  running: boolean;
+}
+
+export interface FoundationCheckResult {
+  n_ok?: number;
+  n_fail?: number;
+  n_warn?: number;
+  verdict?: string;
+  failed?: string[];
+  skipped?: boolean;
+  reason?: string;
+  error?: string;
+}
+
+export const getFoundationStatus = (): Promise<FoundationStatus> =>
+  request("GET", "/foundation/status");
+
+export const runFoundationCheck = (): Promise<FoundationCheckResult> =>
+  request("POST", "/foundation/check");
+
+export const updateFoundationConfig = (
+  body: { auto_check_enabled?: boolean },
+): Promise<{ ok: boolean; auto_check_enabled: boolean }> =>
+  request("PATCH", "/foundation/config", body);
+
+// ── SSE events stream URL ───────────────────────────────────────────
+
+export const getEventsStreamUrl = (): string => `/api/v1/events/stream`;
+
 // ── AI profile suggestions ───────────────────────────────────────────
 
 export interface AIProfileSuggestion {

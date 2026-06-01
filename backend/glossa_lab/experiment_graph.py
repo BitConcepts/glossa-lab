@@ -86,8 +86,7 @@ def _corpus_reader(inputs: dict, params: dict) -> dict:
         db = get_db()
         if db:
             try:
-                loop = asyncio.get_event_loop()
-                text = loop.run_until_complete(db.get_text(corpus_id))
+                text = asyncio.run(db.get_text(corpus_id))
                 if text and text.get("content"):
                     raw = text["content"]
                     sequences = raw if raw and isinstance(raw[0], list) else [raw]
@@ -926,8 +925,7 @@ def _corpus_lm(inputs: dict, params: dict) -> dict:
     if db is None:
         return {"error": "Database not available — is the backend running?"}
     try:
-        loop = asyncio.get_event_loop()
-        text = loop.run_until_complete(db.get_text(corpus_id))
+        text = asyncio.run(db.get_text(corpus_id))
     except Exception as exc:  # noqa: BLE001
         return {"error": f"Failed to load corpus '{corpus_id}': {exc}"}
 
@@ -976,8 +974,7 @@ def _anchor_set_loader(inputs: dict, params: dict) -> dict:
     if db is None:
         return {"error": "Database not available.", "anchors": {}}
     try:
-        loop = asyncio.get_event_loop()
-        anchor_set = loop.run_until_complete(db.get_anchor_set(anchor_set_id))
+        anchor_set = asyncio.run(db.get_anchor_set(anchor_set_id))
     except Exception as exc:  # noqa: BLE001
         return {"error": f"Failed to load anchor set: {exc}", "anchors": {}}
 
@@ -1016,8 +1013,7 @@ def _report_generator(inputs: dict, params: dict) -> dict:
     if db is None:
         return {"error": "Database not available."}
     try:
-        loop = asyncio.get_event_loop()
-        template = loop.run_until_complete(db.get_report_template(template_id))
+        template = asyncio.run(db.get_report_template(template_id))
     except Exception as exc:  # noqa: BLE001
         return {"error": f"Failed to load template: {exc}"}
     if template is None:
@@ -1126,11 +1122,8 @@ def _canonical_sign_loader(inputs: dict, params: dict) -> dict:
     if db is None:
         return {"error": "Database not available"}
     try:
-        loop = asyncio.get_event_loop()
-        signs = loop.run_until_complete(
-            db.list_canonical_signs(in_corpus_only=filter_in_corpus,
-                                    numbering_system=numbering_system)
-        )
+        signs = asyncio.run(db.list_canonical_signs(in_corpus_only=filter_in_corpus,
+                                                     numbering_system=numbering_system))
     except Exception as exc:  # noqa: BLE001
         return {"error": f"Failed to load registry: {exc}"}
 
@@ -1172,9 +1165,8 @@ def _cluster_mapper(inputs: dict, params: dict) -> dict:
     db = get_db()
     if db is not None:
         try:
-            loop = asyncio.get_event_loop()
-            assignments = loop.run_until_complete(db.list_cluster_assignments())
-            summary     = loop.run_until_complete(db.get_clusters_summary())
+            assignments = asyncio.run(db.list_cluster_assignments())
+            summary     = asyncio.run(db.get_clusters_summary())
         except Exception:  # noqa: BLE001
             assignments = []
 
@@ -3929,3 +3921,4 @@ def register_graph_experiments() -> None:
             registry[cls.id] = cls
         except Exception as exc:  # noqa: BLE001
             logger.warning("GraphExperiment load failed (%s): %s", p.name, exc)
+

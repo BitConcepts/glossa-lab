@@ -326,30 +326,44 @@ export function ResearchLoopPanel() {
       )}
 
       {/* ── Staging review queue ── */}
-      {(staging?.counts?.staged ?? 0) > 0 && staging?.counts && (
+      {staging?.counts != null &&
+        ((staging.counts.staged ?? 0) > 0 ||
+         (staging.counts.approved ?? 0) > 0 ||
+         (staging.counts.rejected ?? 0) > 0) && (
         <div style={{ marginTop: 8 }}>
           <button
             onClick={() => setShowReview((v) => !v)}
             style={{
-              width: "100%", padding: "7px 12px",
-              border: "1px solid #f59e0b", borderRadius: 6,
-              background: showReview ? "#fef3c7" : "#fffbeb",
-              color: "#92400e", fontSize: 12, fontWeight: 700,
+              width: "100%", padding: "8px 14px",
+              border: `1px solid ${(staging.counts.staged ?? 0) > 0 ? "#f59e0b" : "#86efac"}`,
+              borderRadius: 6,
+              background: showReview
+                ? ((staging.counts.staged ?? 0) > 0 ? "#fef3c7" : "#f0fdf4")
+                : ((staging.counts.staged ?? 0) > 0 ? "#fffbeb" : "#f9fafb"),
+              color: (staging.counts.staged ?? 0) > 0 ? "#92400e" : "#15803d",
+              fontSize: 12, fontWeight: 700,
               cursor: "pointer", textAlign: "left",
-              display: "flex", justifyContent: "space-between",
-              alignItems: "center",
+              display: "flex", justifyContent: "space-between", alignItems: "center",
             }}
           >
             <span>
-              📎 {staging.counts.staged} candidate{staging.counts.staged !== 1 ? "s" : ""} awaiting review
-              {staging.counts.approved > 0 && (
+              🔬{" "}
+              {(staging.counts.staged ?? 0) > 0
+                ? `${staging.counts.staged} anchor candidate${staging.counts.staged !== 1 ? "s" : ""} awaiting review`
+                : "Anchor staging"}
+              {(staging.counts.approved ?? 0) > 0 && (
                 <span style={{ marginLeft: 8, color: "#15803d" }}>
-                  ✓ {staging.counts.approved} approved
+                  · ✓ {staging.counts.approved} approved
+                </span>
+              )}
+              {(staging.counts.rejected ?? 0) > 0 && (
+                <span style={{ marginLeft: 6, color: "#9ca3af" }}>
+                  · ✕ {staging.counts.rejected} rejected
                 </span>
               )}
             </span>
             <span style={{ fontSize: 11, fontWeight: 400 }}>
-              {showReview ? "Hide ▲" : "Review ▼"}
+              {showReview ? "Hide ▲" : ((staging.counts.staged ?? 0) > 0 ? "Review ▼" : "View ▼")}
             </span>
           </button>
           {showReview && staging && (
@@ -748,241 +762,402 @@ function MetricTile({ label, value }: { label: string; value: number }) {
 
 // ── Staging Review Queue ───────────────────────────────────────────────────
 
+type StagingAction = "approve" | "reject" | "delete" | "staged";
+
 function StagingReview({
   staging,
   onAction,
 }: {
   staging: StagingData;
-  onAction: (sign: string, reading: string,
-             action: "approve" | "reject" | "delete",
+  onAction: (sign: string, reading: string, action: StagingAction,
              reason?: string) => Promise<void>;
 }) {
-  const [confirming, setConfirming] = useState<{
-    sign: string; reading: string; action: "approve" | "reject" | "delete";
-  } | null>(null);
+  const [bulkBusy, setBulkBusy] = useState<"approve" | "reject" | null>(null);
+  const [busyKey,  setBusyKey]  = useState<string | null>(null);
+  const [rejectingKey, setRejectingKey] = useState<string | null>(null);
   const [rejectReason, setRejectReason] = useState("");
-  const [busy, setBusy] = useState(false);
+  const [showApproved, setShowApproved] = useState(true);
+  const [showRejected, setShowRejected] = useState(false);
 
-  const stagedCandidates = staging.candidates.filter(
-    (c) => c.review_status === "staged");
-  const approvedCandidates = staging.candidates.filter(
-    (c) => c.review_status === "approved");
+  const staged   = staging.candidates.filter((c) => c.review_status === "staged");
+  const approved = staging.candidates.filter((c) => c.review_status === "approved");
+  const rejected = staging.candidates.filter((c) => c.review_status === "rejected");
 
-  const doAction = async (
-    sign: string, reading: string,
-    action: "approve" | "reject" | "delete",
-    reason?: string,
-  ) => {
-    setBusy(true);
-    try {
-      await onAction(sign, reading, action, reason);
-    } finally {
-      setBusy(false);
-      setConfirming(null);
-      setRejectReason("");
-    }
+  const isBusy = bulkBusy !== null || busyKey !== null;
+
+  const doOne = async (sign: string, reading: string, action: StagingAction, reason?: string) => {
+    const key = `${sign}:${reading}`;
+    setBusyKey(key);
+    try { await onAction(sign, reading, action, reason); }
+    finally { setBusyKey(null); setRejectingKey(null); setRejectReason(""); }
   };
 
-  return (
-    <div style={{ border: "1px solid #fed7aa", borderRadius: 6,
-                  background: "#fff", marginTop: 6, overflow: "hidden" }}>
+  const approveAll = async () => {
+    setBulkBusy("approve");
+    try { for (const c of staged) await onAction(c.sign, c.proposed_reading, "approve"); }
+    finally { setBulkBusy(null); }
+  };
+  const rejectAll = async () => {
+    setBulkBusy("reject");
+    try { for (const c of staged) await onAction(c.sign, c.proposed_reading, "reject", "batch reject"); }
+    finally { setBulkBusy(null); }
+  };
 
-      {/* Column header */}
+  const allReviewed = staged.length === 0 && (approved.length + rejected.length) > 0;
+
+  return (
+    <div style={{ border: "1px solid #fed7aa", borderRadius: 8, background: "#fff",
+                  marginTop: 6, overflow: "hidden" }}>
+
+      {/* ── Header + bulk actions ── */}
       <div style={{
-        display: "grid",
-        gridTemplateColumns: "60px 72px 1fr 100px 90px 100px",
-        gap: 6, padding: "5px 10px",
-        background: "#fef3c7", fontSize: 10,
-        fontWeight: 700, color: "#78350f",
+        padding: "10px 14px", background: "#fffbeb",
         borderBottom: "1px solid #fed7aa",
+        display: "flex", justifyContent: "space-between",
+        alignItems: "center", flexWrap: "wrap", gap: 8,
       }}>
-        <span>Sign</span>
-        <span>Reading</span>
-        <span>Evidence</span>
-        <span>Type</span>
-        <span>Score</span>
-        <span>Actions</span>
+        <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+          <span style={{ fontSize: 13, fontWeight: 700, color: "#92400e" }}>🔬 Anchor Review Queue</span>
+          {staged.length > 0 && (
+            <span style={{ fontSize: 11, padding: "2px 8px", borderRadius: 10,
+              background: "#fef3c7", color: "#92400e", fontWeight: 600 }}>
+              {staged.length} pending
+            </span>
+          )}
+          {approved.length > 0 && (
+            <span style={{ fontSize: 11, padding: "2px 8px", borderRadius: 10,
+              background: "#dcfce7", color: "#15803d", fontWeight: 600 }}>
+              ✓ {approved.length} approved
+            </span>
+          )}
+          {rejected.length > 0 && (
+            <span style={{ fontSize: 11, padding: "2px 8px", borderRadius: 10,
+              background: "#fef2f2", color: "#dc2626", fontWeight: 600 }}>
+              ✕ {rejected.length} rejected
+            </span>
+          )}
+        </div>
+        {staged.length > 0 && (
+          <div style={{ display: "flex", gap: 6 }}>
+            <button disabled={isBusy} onClick={() => void approveAll()}
+              style={{
+                padding: "4px 12px", fontSize: 11, fontWeight: 700,
+                border: "1px solid #16a34a", borderRadius: 5,
+                background: bulkBusy === "approve" ? "#dcfce7" : "#16a34a",
+                color: bulkBusy === "approve" ? "#15803d" : "#fff",
+                cursor: isBusy ? "default" : "pointer",
+              }}>
+              {bulkBusy === "approve" ? "Approving…" : `✔ Approve All (${staged.length})`}
+            </button>
+            <button disabled={isBusy} onClick={() => void rejectAll()}
+              style={{
+                padding: "4px 12px", fontSize: 11, fontWeight: 700,
+                border: "1px solid #dc2626", borderRadius: 5,
+                background: bulkBusy === "reject" ? "#fef2f2" : "#dc2626",
+                color: bulkBusy === "reject" ? "#dc2626" : "#fff",
+                cursor: isBusy ? "default" : "pointer",
+              }}>
+              {bulkBusy === "reject" ? "Rejecting…" : `✕ Reject All`}
+            </button>
+          </div>
+        )}
       </div>
 
-      {/* Staged candidates */}
-      {stagedCandidates.length === 0 ? (
-        <div style={{ padding: "10px", fontSize: 11, color: "#9ca3af",
-                      textAlign: "center" }}>
-          All candidates have been reviewed.
-        </div>
-      ) : (
-        stagedCandidates.map((c, i) => (
-          <div key={i}>
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "60px 72px 1fr 100px 90px 100px",
-              gap: 6, padding: "7px 10px",
-              borderBottom: "1px solid #f3f4f6",
-              fontSize: 11, alignItems: "center",
-              background: confirming?.sign === c.sign &&
-                          confirming?.reading === c.proposed_reading
-                ? "#fef9c3" : "#fff",
-            }}>
-              <span style={{ fontWeight: 700, fontFamily: "monospace",
-                              color: "#374151" }}>
-                {c.sign}
-              </span>
-              <span style={{ fontWeight: 600, color: "#5b21b6" }}>
-                {c.proposed_reading}
-              </span>
-              <span style={{ color: "#6b7280", overflow: "hidden",
-                              textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                {c.dedr_support
-                  ? <>◆ DEDR: <em>{c.dedr_support.slice(0, 35)}</em></>
-                  : c.evidence_type.replace(/_/g, " ")}
-              </span>
-              <span style={{ fontSize: 10, color: "#6b7280",
-                              overflow: "hidden", textOverflow: "ellipsis",
-                              whiteSpace: "nowrap" }}>
-                {c.evidence_type.replace(/_/g, " ").slice(0, 20)}
-              </span>
-              <span style={{ fontSize: 11, fontWeight: 600,
-                              color: c.evidence_score >= 0.5 ? "#15803d" : "#6b7280" }}>
-                {(c.evidence_score * 100).toFixed(0)}%
-              </span>
-              <div style={{ display: "flex", gap: 4 }}>
-                <button
-                  disabled={busy}
-                  onClick={() => setConfirming(
-                    { sign: c.sign, reading: c.proposed_reading, action: "approve" })}
-                  style={{
-                    padding: "2px 7px", fontSize: 10, fontWeight: 700,
-                    border: "1px solid #16a34a", borderRadius: 4,
-                    background: "#dcfce7", color: "#15803d",
-                    cursor: busy ? "default" : "pointer",
-                  }}
-                >
-                  ✔ Approve
-                </button>
-                <button
-                  disabled={busy}
-                  onClick={() => setConfirming(
-                    { sign: c.sign, reading: c.proposed_reading, action: "reject" })}
-                  style={{
-                    padding: "2px 7px", fontSize: 10, fontWeight: 700,
-                    border: "1px solid #dc2626", borderRadius: 4,
-                    background: "#fef2f2", color: "#dc2626",
-                    cursor: busy ? "default" : "pointer",
-                  }}
-                >
-                  ✕ Reject
-                </button>
-                <button
-                  disabled={busy}
-                  onClick={() => void doAction(c.sign, c.proposed_reading, "delete")}
-                  title="Remove from queue (no audit trail)"
-                  style={{
-                    padding: "2px 6px", fontSize: 10,
-                    border: "1px solid #d1d5db", borderRadius: 4,
-                    background: "#f9fafb", color: "#6b7280",
-                    cursor: busy ? "default" : "pointer",
-                  }}
-                >
-                  Ὕ1
-                </button>
-              </div>
-            </div>
+      {/* ── Context banner ── */}
+      <div style={{
+        padding: "8px 14px", background: "#eff6ff",
+        borderBottom: "1px solid #bfdbfe", fontSize: 11, color: "#1d4ed8",
+        lineHeight: 1.5,
+      }}>
+        <strong>Approving</strong> locks a sign reading into the anchor table used by SA experiments.
+        Evidence is sourced from DEDR + experiment coherence scores.
+        Reject anything that conflicts with a known HIGH-confidence anchor.
+        {" "}<strong>After review → click ▶ Start Loop above</strong> to run with the new anchors.
+      </div>
 
-            {/* Confirmation row */}
-            {confirming?.sign === c.sign &&
-             confirming?.reading === c.proposed_reading && (
+      {/* ── All-reviewed CTA ── */}
+      {allReviewed && (
+        <div style={{
+          margin: 10, padding: "12px 16px",
+          background: "#f0fdf4", border: "1px solid #86efac", borderRadius: 8,
+          display: "flex", alignItems: "center", gap: 12,
+        }}>
+          <span style={{ fontSize: 22 }}>✅</span>
+          <div>
+            <div style={{ fontWeight: 700, color: "#15803d", fontSize: 13 }}>
+              All {approved.length + rejected.length} candidates reviewed!
+            </div>
+            <div style={{ fontSize: 12, color: "#166534", marginTop: 2 }}>
+              {approved.length > 0
+                ? <>{approved.length} approved readings are ready to anchor.{" "}</>
+                : null}
+              Click <strong>▶ Start Loop</strong> above to run SA experiments with the updated anchor set.
+              Approved readings persist across loop runs.
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Staged candidates ── */}
+      {staged.length > 0 && staged.map((c) => {
+        const key = `${c.sign}:${c.proposed_reading}`;
+        const thisRowBusy = busyKey === key || bulkBusy !== null;
+        const isRejecting  = rejectingKey === key;
+        return (
+          <div key={key} style={{
+            borderBottom: "1px solid #fef3c7",
+            background: isRejecting ? "#fef9c3" : "#fff",
+          }}>
+            <div style={{
+              padding: "10px 14px",
+              display: "grid",
+              gridTemplateColumns: "58px 72px 1fr 46px 88px 80px",
+              gap: 10, alignItems: "start",
+            }}>
+              {/* Sign + corpus freq */}
+              <div>
+                <div style={{ fontFamily: "monospace", fontWeight: 700, fontSize: 13,
+                               color: "#111827" }}>{c.sign}</div>
+                {(c.corpus_freq ?? 0) > 0 && (
+                  <div style={{ fontSize: 9, color: "#9ca3af", marginTop: 2 }}>
+                    freq {c.corpus_freq}
+                  </div>
+                )}
+              </div>
+              {/* Proposed reading + neighbor */}
+              <div>
+                <div style={{ fontWeight: 700, color: "#5b21b6", fontSize: 13 }}>
+                  {c.proposed_reading}
+                </div>
+                {c.neighbor_reading && (
+                  <div style={{ fontSize: 9, color: "#6b7280", marginTop: 2 }}>
+                    nbr: {c.neighbor_reading}
+                    {c.neighbor_count ? ` (×${c.neighbor_count})` : ""}
+                  </div>
+                )}
+              </div>
+              {/* Evidence + type + conflict */}
+              <div>
+                {c.dedr_support && (
+                  <div style={{ fontSize: 11, color: "#374151" }}>
+                    ◆ DEDR: <em>{c.dedr_support}</em>
+                  </div>
+                )}
+                <div style={{
+                  fontSize: 10, color: "#6b7280", marginTop: 2,
+                  display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center",
+                }}>
+                  <span style={{ padding: "1px 5px", borderRadius: 3,
+                                  background: "#f3f4f6", fontWeight: 500 }}>
+                    {c.evidence_type.replace(/_/g, " ")}
+                  </span>
+                  {c.source_experiment && (
+                    <span style={{ color: "#9ca3af" }}>
+                      via {c.source_experiment.slice(0, 22)}
+                    </span>
+                  )}
+                </div>
+                {c.conflict && (
+                  <div style={{ fontSize: 10, color: "#dc2626", marginTop: 3,
+                                 fontWeight: 600 }}>
+                    ⚠ Conflict: {c.conflict}
+                  </div>
+                )}
+              </div>
+              {/* Score */}
+              <div style={{ textAlign: "right", paddingTop: 1 }}>
+                <span style={{
+                  fontSize: 12, fontWeight: 700,
+                  color: c.evidence_score >= 0.8 ? "#15803d" :
+                         c.evidence_score >= 0.5 ? "#b45309" : "#dc2626",
+                }}>
+                  {(c.evidence_score * 100).toFixed(0)}%
+                </span>
+              </div>
+              {/* Approve — single click, no confirmation */}
+              <button
+                disabled={thisRowBusy}
+                onClick={() => void doOne(c.sign, c.proposed_reading, "approve")}
+                title="Approve: add to anchor table"
+                style={{
+                  padding: "4px 8px", fontSize: 11, fontWeight: 700,
+                  border: "1px solid #16a34a", borderRadius: 5,
+                  background: "#dcfce7", color: "#15803d",
+                  cursor: thisRowBusy ? "default" : "pointer", whiteSpace: "nowrap",
+                }}>
+                ✔ Approve
+              </button>
+              {/* Reject — shows inline reason */}
+              <button
+                disabled={thisRowBusy}
+                onClick={() => { setRejectingKey(key); setRejectReason(""); }}
+                style={{
+                  padding: "4px 8px", fontSize: 11, fontWeight: 700,
+                  border: "1px solid #dc2626", borderRadius: 5,
+                  background: isRejecting ? "#dc2626" : "#fef2f2",
+                  color: isRejecting ? "#fff" : "#dc2626",
+                  cursor: thisRowBusy ? "default" : "pointer",
+                }}>
+                ✕ Reject
+              </button>
+            </div>
+            {/* Inline reject form */}
+            {isRejecting && (
               <div style={{
-                padding: "8px 12px", background: "#fef9c3",
-                borderBottom: "1px solid #fcd34d",
+                padding: "8px 14px", background: "#fef9c3",
+                borderTop: "1px solid #fcd34d",
                 display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap",
               }}>
-                {confirming.action === "approve" ? (
-                  <>
-                    <span style={{ fontSize: 11, color: "#78350f", fontWeight: 600 }}>
-                      Approve {c.sign} = &ldquo;{c.proposed_reading}&rdquo;?
-                      This adds it to the review queue for future anchor promotion.
-                    </span>
-                    <button
-                      disabled={busy}
-                      onClick={() => void doAction(c.sign, c.proposed_reading, "approve")}
-                      style={{
-                        padding: "3px 10px", fontSize: 11, fontWeight: 700,
-                        border: "1px solid #16a34a", borderRadius: 4,
-                        background: "#16a34a", color: "#fff",
-                        cursor: busy ? "default" : "pointer",
-                      }}
-                    >
-                      Confirm approve
-                    </button>
-                    <button
-                      disabled={busy}
-                      onClick={() => setConfirming(null)}
-                      style={{
-                        padding: "3px 8px", fontSize: 11,
-                        border: "1px solid #d1d5db", borderRadius: 4,
-                        background: "#fff", cursor: "pointer",
-                      }}
-                    >
-                      Cancel
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <span style={{ fontSize: 11, color: "#78350f", fontWeight: 600 }}>
-                      Reject reason (optional):
-                    </span>
-                    <input
-                      value={rejectReason}
-                      onChange={(e) => setRejectReason(e.target.value)}
-                      placeholder="e.g. insufficient DEDR evidence"
-                      style={{
-                        flex: 1, minWidth: 160, padding: "3px 7px",
-                        border: "1px solid #d1d5db", borderRadius: 4,
-                        fontSize: 11,
-                      }}
-                    />
-                    <button
-                      disabled={busy}
-                      onClick={() => void doAction(
-                        c.sign, c.proposed_reading, "reject", rejectReason)}
-                      style={{
-                        padding: "3px 10px", fontSize: 11, fontWeight: 700,
-                        border: "1px solid #dc2626", borderRadius: 4,
-                        background: "#dc2626", color: "#fff",
-                        cursor: busy ? "default" : "pointer",
-                      }}
-                    >
-                      Confirm reject
-                    </button>
-                    <button
-                      disabled={busy}
-                      onClick={() => { setConfirming(null); setRejectReason(""); }}
-                      style={{
-                        padding: "3px 8px", fontSize: 11,
-                        border: "1px solid #d1d5db", borderRadius: 4,
-                        background: "#fff", cursor: "pointer",
-                      }}
-                    >
-                      Cancel
-                    </button>
-                  </>
-                )}
+                <span style={{ fontSize: 11, color: "#78350f", fontWeight: 600, flexShrink: 0 }}>
+                  Reject reason (optional):
+                </span>
+                <input
+                  // eslint-disable-next-line jsx-a11y/no-autofocus
+                  autoFocus
+                  value={rejectReason}
+                  onChange={(e) => setRejectReason(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter")  void doOne(c.sign, c.proposed_reading, "reject", rejectReason);
+                    if (e.key === "Escape") { setRejectingKey(null); setRejectReason(""); }
+                  }}
+                  placeholder="e.g. conflicts with M42=kal, insufficient DEDR support"
+                  style={{
+                    flex: 1, minWidth: 180, padding: "4px 8px",
+                    border: "1px solid #d1d5db", borderRadius: 4, fontSize: 11,
+                  }}
+                />
+                <button
+                  disabled={busyKey === key}
+                  onClick={() => void doOne(c.sign, c.proposed_reading, "reject", rejectReason)}
+                  style={{
+                    padding: "4px 12px", fontSize: 11, fontWeight: 700,
+                    border: "1px solid #dc2626", borderRadius: 4,
+                    background: "#dc2626", color: "#fff", cursor: "pointer",
+                  }}>
+                  Confirm reject
+                </button>
+                <button
+                  onClick={() => { setRejectingKey(null); setRejectReason(""); }}
+                  style={{
+                    padding: "4px 8px", fontSize: 11,
+                    border: "1px solid #d1d5db", borderRadius: 4,
+                    background: "#fff", cursor: "pointer",
+                  }}>
+                  Cancel
+                </button>
               </div>
             )}
           </div>
-        ))
+        );
+      })}
+
+      {/* ── Approved section (expandable, with Unstage) ── */}
+      {approved.length > 0 && (
+        <div style={{ borderTop: staged.length > 0 ? "2px solid #86efac" : undefined }}>
+          <button
+            onClick={() => setShowApproved((v) => !v)}
+            style={{
+              width: "100%", padding: "7px 14px", border: "none",
+              background: "#f0fdf4", cursor: "pointer", textAlign: "left",
+              display: "flex", justifyContent: "space-between", alignItems: "center",
+              fontSize: 11, fontWeight: 700, color: "#15803d",
+            }}>
+            <span>✔ {approved.length} approved reading{approved.length !== 1 ? "s" : ""}</span>
+            <span style={{ fontWeight: 400 }}>{showApproved ? "Hide ▲" : "Show / Unstage ▼"}</span>
+          </button>
+          {showApproved && approved.map((c) => (
+            <div key={`${c.sign}:${c.proposed_reading}`} style={{
+              padding: "8px 14px", borderTop: "1px solid #bbf7d0",
+              display: "flex", alignItems: "center", gap: 10, background: "#f0fdf4",
+            }}>
+              <span style={{ fontFamily: "monospace", fontWeight: 700, fontSize: 12,
+                              width: 58, color: "#374151" }}>{c.sign}</span>
+              <span style={{ fontWeight: 700, color: "#5b21b6", width: 68, fontSize: 12 }}>
+                {c.proposed_reading}
+              </span>
+              <span style={{ flex: 1, fontSize: 11, color: "#374151" }}>
+                {c.dedr_support
+                  ? <>◆ DEDR: <em>{c.dedr_support}</em></>
+                  : c.evidence_type.replace(/_/g, " ")}
+                {c.conflict && (
+                  <span style={{ marginLeft: 6, color: "#dc2626", fontWeight: 600 }}>
+                    ⚠ {c.conflict}
+                  </span>
+                )}
+              </span>
+              <span style={{ fontSize: 11, fontWeight: 700, width: 36,
+                              textAlign: "right",
+                              color: c.evidence_score >= 0.8 ? "#15803d" : "#b45309" }}>
+                {(c.evidence_score * 100).toFixed(0)}%
+              </span>
+              <button
+                disabled={isBusy}
+                onClick={() => void doOne(c.sign, c.proposed_reading, "staged")}
+                title="Move back to staging queue for re-review"
+                style={{
+                  padding: "3px 9px", fontSize: 10, fontWeight: 600,
+                  border: "1px solid #d1d5db", borderRadius: 4,
+                  background: "#fff", color: "#6b7280",
+                  cursor: isBusy ? "default" : "pointer",
+                }}>
+                ↩ Unstage
+              </button>
+            </div>
+          ))}
+        </div>
       )}
 
-      {/* Approved log (collapsed summary) */}
-      {approvedCandidates.length > 0 && (
-        <div style={{
-          padding: "6px 10px", background: "#f0fdf4",
-          borderTop: stagedCandidates.length > 0 ? "1px solid #bbf7d0" : undefined,
-          fontSize: 11, color: "#15803d",
-        }}>
-          <strong>✔ {approvedCandidates.length} approved:</strong>{" "}
-          {approvedCandidates.map((c) =>
-            `${c.sign}=${c.proposed_reading}`).join(" · ")}
+      {/* ── Rejected section (collapsed by default) ── */}
+      {rejected.length > 0 && (
+        <div style={{ borderTop: "1px solid #fecaca" }}>
+          <button
+            onClick={() => setShowRejected((v) => !v)}
+            style={{
+              width: "100%", padding: "6px 14px", border: "none",
+              background: "#fff5f5", cursor: "pointer", textAlign: "left",
+              display: "flex", justifyContent: "space-between", alignItems: "center",
+              fontSize: 11, fontWeight: 700, color: "#dc2626",
+            }}>
+            <span>✕ {rejected.length} rejected</span>
+            <span style={{ fontWeight: 400 }}>{showRejected ? "Hide ▲" : "Show ▼"}</span>
+          </button>
+          {showRejected && rejected.map((c) => (
+            <div key={`${c.sign}:${c.proposed_reading}`} style={{
+              padding: "7px 14px", borderTop: "1px solid #fecaca",
+              display: "flex", alignItems: "center", gap: 10, background: "#fff5f5",
+            }}>
+              <span style={{ fontFamily: "monospace", fontSize: 11, width: 58,
+                              color: "#9ca3af", textDecoration: "line-through" }}>
+                {c.sign}
+              </span>
+              <span style={{ color: "#9ca3af", width: 68, fontSize: 11,
+                              textDecoration: "line-through" }}>
+                {c.proposed_reading}
+              </span>
+              <span style={{ flex: 1, fontSize: 10, color: "#9ca3af" }}>
+                {c.dedr_support || c.evidence_type.replace(/_/g, " ")}
+              </span>
+              <button
+                disabled={isBusy}
+                onClick={() => void doOne(c.sign, c.proposed_reading, "staged")}
+                title="Move back to staging queue"
+                style={{
+                  padding: "2px 8px", fontSize: 10, fontWeight: 600,
+                  border: "1px solid #d1d5db", borderRadius: 4,
+                  background: "#fff", color: "#6b7280",
+                  cursor: isBusy ? "default" : "pointer",
+                }}>
+                ↩ Re-stage
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Empty state */}
+      {staged.length === 0 && approved.length === 0 && rejected.length === 0 && (
+        <div style={{ padding: "14px", fontSize: 11, color: "#9ca3af", textAlign: "center" }}>
+          No candidates in queue.
         </div>
       )}
     </div>

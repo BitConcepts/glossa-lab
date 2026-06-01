@@ -794,12 +794,22 @@ function StagingReview({
 
   const approveAll = async () => {
     setBulkBusy("approve");
-    try { for (const c of staged) await onAction(c.sign, c.proposed_reading, "approve"); }
+    try { for (const c of staged)   await onAction(c.sign, c.proposed_reading, "approve"); }
     finally { setBulkBusy(null); }
   };
   const rejectAll = async () => {
     setBulkBusy("reject");
-    try { for (const c of staged) await onAction(c.sign, c.proposed_reading, "reject", "batch reject"); }
+    try { for (const c of staged)   await onAction(c.sign, c.proposed_reading, "reject", "batch reject"); }
+    finally { setBulkBusy(null); }
+  };
+  const unstageAll = async () => {
+    setBulkBusy("approve"); // reuse as "bulk in progress"
+    try { for (const c of approved) await onAction(c.sign, c.proposed_reading, "staged"); }
+    finally { setBulkBusy(null); }
+  };
+  const restageAll = async () => {
+    setBulkBusy("reject");
+    try { for (const c of rejected) await onAction(c.sign, c.proposed_reading, "staged"); }
     finally { setBulkBusy(null); }
   };
 
@@ -1054,17 +1064,34 @@ function StagingReview({
       {/* ── Approved section (expandable, with Unstage) ── */}
       {approved.length > 0 && (
         <div style={{ borderTop: staged.length > 0 ? "2px solid #86efac" : undefined }}>
-          <button
-            onClick={() => setShowApproved((v) => !v)}
-            style={{
-              width: "100%", padding: "7px 14px", border: "none",
-              background: "#f0fdf4", cursor: "pointer", textAlign: "left",
-              display: "flex", justifyContent: "space-between", alignItems: "center",
-              fontSize: 11, fontWeight: 700, color: "#15803d",
-            }}>
-            <span>✔ {approved.length} approved reading{approved.length !== 1 ? "s" : ""}</span>
-            <span style={{ fontWeight: 400 }}>{showApproved ? "Hide ▲" : "Show / Unstage ▼"}</span>
-          </button>
+          <div style={{
+            display: "flex", justifyContent: "space-between", alignItems: "center",
+            background: "#f0fdf4", padding: "6px 14px",
+          }}>
+            <button
+              onClick={() => setShowApproved((v) => !v)}
+              style={{
+                flex: 1, border: "none", background: "none",
+                cursor: "pointer", textAlign: "left",
+                fontSize: 11, fontWeight: 700, color: "#15803d", padding: 0,
+              }}>
+              ✔ {approved.length} approved reading{approved.length !== 1 ? "s" : ""}
+              <span style={{ fontWeight: 400, marginLeft: 6 }}>{showApproved ? "▲" : "▼"}</span>
+            </button>
+            <button
+              disabled={isBusy || approved.length === 0}
+              onClick={() => void unstageAll()}
+              title="Move all approved back to staging queue for re-review"
+              style={{
+                padding: "3px 10px", fontSize: 10, fontWeight: 600,
+                border: "1px solid #d1d5db", borderRadius: 4,
+                background: "#fff", color: "#6b7280",
+                cursor: (isBusy || approved.length === 0) ? "default" : "pointer",
+                whiteSpace: "nowrap",
+              }}>
+              ↩ Unstage All
+            </button>
+          </div>
           {showApproved && approved.map((c) => (
             <div key={`${c.sign}:${c.proposed_reading}`} style={{
               padding: "8px 14px", borderTop: "1px solid #bbf7d0",
@@ -1110,17 +1137,34 @@ function StagingReview({
       {/* ── Rejected section (collapsed by default) ── */}
       {rejected.length > 0 && (
         <div style={{ borderTop: "1px solid #fecaca" }}>
-          <button
-            onClick={() => setShowRejected((v) => !v)}
-            style={{
-              width: "100%", padding: "6px 14px", border: "none",
-              background: "#fff5f5", cursor: "pointer", textAlign: "left",
-              display: "flex", justifyContent: "space-between", alignItems: "center",
-              fontSize: 11, fontWeight: 700, color: "#dc2626",
-            }}>
-            <span>✕ {rejected.length} rejected</span>
-            <span style={{ fontWeight: 400 }}>{showRejected ? "Hide ▲" : "Show ▼"}</span>
-          </button>
+          <div style={{
+            display: "flex", justifyContent: "space-between", alignItems: "center",
+            background: "#fff5f5", padding: "5px 14px",
+          }}>
+            <button
+              onClick={() => setShowRejected((v) => !v)}
+              style={{
+                flex: 1, border: "none", background: "none",
+                cursor: "pointer", textAlign: "left",
+                fontSize: 11, fontWeight: 700, color: "#dc2626", padding: 0,
+              }}>
+              ✕ {rejected.length} rejected
+              <span style={{ fontWeight: 400, marginLeft: 6 }}>{showRejected ? "▲" : "▼"}</span>
+            </button>
+            <button
+              disabled={isBusy || rejected.length === 0}
+              onClick={() => void restageAll()}
+              title="Move all rejected back to staging queue"
+              style={{
+                padding: "3px 10px", fontSize: 10, fontWeight: 600,
+                border: "1px solid #d1d5db", borderRadius: 4,
+                background: "#fff", color: "#6b7280",
+                cursor: (isBusy || rejected.length === 0) ? "default" : "pointer",
+                whiteSpace: "nowrap",
+              }}>
+              ↩ Re-stage All
+            </button>
+          </div>
           {showRejected && rejected.map((c) => (
             <div key={`${c.sign}:${c.proposed_reading}`} style={{
               padding: "7px 14px", borderTop: "1px solid #fecaca",

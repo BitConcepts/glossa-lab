@@ -199,7 +199,37 @@ interface MsgUI extends ChatMessage {
 }
 
 interface ModelPref { provider: string; model: string; }
-const MODEL_PREF_KEY = "glossa_model_pref";
+const MODEL_PREF_KEY   = "glossa_model_pref";
+const CHAT_HISTORY_KEY = "glossa_chat_history";
+// Keep at most 200 messages and 400 KB of JSON in storage.
+const HISTORY_MAX_MSGS = 200;
+const HISTORY_MAX_BYTES = 400_000;
+
+function _loadHistory(): MsgUI[] {
+  try {
+    const raw = localStorage.getItem(CHAT_HISTORY_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw) as MsgUI[];
+    // Bump the module-level counter past any stored ids so new messages
+    // don't collide with persisted ones.
+    if (parsed.length > 0) _msgId = Math.max(_msgId, ...parsed.map(m => m.id));
+    return parsed;
+  } catch { return []; }
+}
+
+function _saveHistory(msgs: MsgUI[]): void {
+  try {
+    // Never store transient loading messages.
+    const clean = msgs.filter(m => !m.loading).slice(-HISTORY_MAX_MSGS);
+    // If still over size budget, trim from the front.
+    let json = JSON.stringify(clean);
+    while (json.length > HISTORY_MAX_BYTES && clean.length > 0) {
+      clean.shift();
+      json = JSON.stringify(clean);
+    }
+    localStorage.setItem(CHAT_HISTORY_KEY, json);
+  } catch { /* storage full — silently skip */ }
+}
 
 // Action types that execute immediately without an approval card
 const AUTO_EXEC = new Set(["open_view", "create_hypothesis", "create_notebook"]);
@@ -398,7 +428,8 @@ export function AIChatWindow() {
   const { activeProject } = useProject();
   const { toast } = useToast();
 
-  const [messages, setMessages] = useState<MsgUI[]>([]);
+  // Load history from localStorage so conversations survive page reloads.
+  const [messages, setMessages] = useState<MsgUI[]>(_loadHistory);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [compressing, setCompressing] = useState(false);
@@ -491,6 +522,11 @@ export function AIChatWindow() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [request]);
+
+  // Persist history whenever messages change (skip loading-only updates).
+  useEffect(() => {
+    if (messages.some(m => !m.loading)) _saveHistory(messages);
+  }, [messages]);
 
   useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: "smooth" }); }, [messages]);
 
@@ -592,7 +628,7 @@ export function AIChatWindow() {
     if (text.startsWith("/")) {
       const parts = text.toLowerCase().split(/\s+/);
       if (parts[0] === "/compress" || parts[0] === "/summarize" || parts[0] === "/summarise") { await compress(); return; }
-      if (parts[0] === "/clear") { setMessages([]); toast("Chat cleared", "info"); return; }
+      if (parts[0] === "/clear") { setMessages([]); localStorage.removeItem(CHAT_HISTORY_KEY); toast("Chat cleared", "info"); return; }
       if (parts[0] === "/export") { parts[1] === "pdf" ? exportPdf() : exportMd(); return; }
       if (parts[0] === "/help") {
         setMessages(p => [...p, { id: ++_msgId, role: "assistant", timestamp: Date.now(), content: "**Slash commands**\n- `/compress` — summarise & compress context\n- `/clear` — clear all messages\n- `/export md` — download as Markdown\n- `/export pdf` — open print/PDF dialog\n- `/help` — this message" }]);
@@ -722,7 +758,7 @@ export function AIChatWindow() {
         </div>
 
         <button onClick={() => setDocked(true)} title="Dock to panel" style={hdrBtn}>⊟</button>
-        <button onClick={() => setMessages([])} title="Clear chat" style={hdrBtn}>🗑</button>
+        <button onClick={() => { setMessages([]); localStorage.removeItem(CHAT_HISTORY_KEY); }} title="Clear chat history" style={hdrBtn}>🗑</button>
         <button onClick={closeChat} style={{ ...hdrBtn, fontSize: 16 }}>×</button>
       </div>
 
@@ -949,7 +985,8 @@ function _actionViewHint(action: AIAction): string | null {
 export function ChatInline() {
   const { setDocked, request } = useAIChat();
   const { activeProject } = useProject();
-  const [messages, setMessages] = useState<MsgUI[]>([]);
+  // Share history with AIChatWindow via the same localStorage key.
+  const [messages, setMessages] = useState<MsgUI[]>(_loadHistory);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [contextType, setContextType] = useState<"" | "corpus" | "experiment" | "study">("");
@@ -1005,6 +1042,10 @@ export function ChatInline() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [request]);
+  useEffect(() => {
+    if (messages.some(m => !m.loading)) _saveHistory(messages);
+  }, [messages]);
+
   useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: "smooth" }); }, [messages]);
 
   const handleInlineAction = useCallback(async (msg: MsgUI, idx: number, action: AIAction, approve: boolean) => {
@@ -1135,7 +1176,7 @@ export function ChatInline() {
           {messages.length > 0 && (
             <button onClick={copyAll} title="Copy all" style={{ border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 9, padding: "0 2px" }}>&#x23E9;</button>
           )}
-          <button onClick={() => setMessages([])} title="Clear chat" style={{ border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 9 }}>&#x1F5D1;</button>
+          <button onClick={() => { setMessages([]); localStorage.removeItem(CHAT_HISTORY_KEY); }} title="Clear chat history" style={{ border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 9 }}>&#x1F5D1;</button>
           <button onClick={() => setDocked(false)} title="Undock" style={{ border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 9 }}>&#x229E;</button>
         </div>
       </div>

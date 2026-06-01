@@ -175,30 +175,39 @@ async def start_loop(
     async def event_stream():
         """Run the loop in a thread via a queue, persist + stream per cycle."""
         queue: asyncio.Queue[dict[str, Any] | None] = asyncio.Queue()
+        producer_error: list[Exception] = []  # capture worker thread errors
 
         def _producer():
             """Runs in worker thread — puts entries on the queue."""
             try:
                 for entry in loop.run():
                     queue.put_nowait(entry)
+            except Exception as exc:  # noqa: BLE001
+                producer_error.append(exc)
             finally:
                 queue.put_nowait(None)  # sentinel
 
         # Start the producer in a background thread
         task = asyncio.get_event_loop().run_in_executor(None, _producer)
 
+        import time as _time
+        t0 = _time.monotonic()
         cycles_done = 0
+        last_experiment = ""
+        timed_out = False
         while True:
             # Wait for next entry (with timeout so we don't hang forever)
             try:
                 entry = await asyncio.wait_for(queue.get(), timeout=120)
             except asyncio.TimeoutError:
+                timed_out = True
                 break
 
             if entry is None:  # producer finished
                 break
 
             cycles_done += 1
+            last_experiment = entry.get("experiment", last_experiment)
             yield f"data: {json.dumps(entry)}\n\n"
 
             # Persist state from async context (no thread issues)
@@ -213,6 +222,26 @@ async def start_loop(
 
         # Wait for producer thread to finish
         await task
+
+        elapsed = _time.monotonic() - t0
+
+        # If the loop failed or timed out, emit an error SSE event
+        if timed_out or producer_error:
+            reason = "timeout" if timed_out else str(producer_error[0])
+            err_event = {
+                "type": "error",
+                "reason": reason,
+                "cycles_completed": cycles_done,
+                "last_experiment": last_experiment,
+                "elapsed_seconds": round(elapsed, 1),
+            }
+            yield f"data: {json.dumps(err_event)}\n\n"
+            if job_id and db:
+                try:
+                    await db.update_job_status(job_id, "failed")
+                except Exception:  # noqa: BLE001
+                    pass
+            return  # skip synthesis on failure
 
         # Final persist (before foundation check so history is durable)
         await _persist(loop)

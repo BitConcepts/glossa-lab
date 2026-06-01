@@ -71,6 +71,20 @@ interface AnchorCandidate {
   partner_reading?: string;
 }
 
+interface TopFinding {
+  experiment: string;
+  metric: string;
+  value: number | string;
+  interpretation: string;
+}
+
+interface ProposedNext {
+  experiment_id: string;
+  display_name: string;
+  rationale: string;
+  priority: number;
+}
+
 interface Synthesis {
   summary: string;
   needle_moved?: boolean;
@@ -81,6 +95,8 @@ interface Synthesis {
   foundation_check: FoundationCheck;
   anchor_candidates?: AnchorCandidate[];
   candidate_counts?: { total: number; staged: number; blocked: number };
+  top_findings?: TopFinding[];
+  proposed_next?: ProposedNext[];
 }
 
 interface LastRun {
@@ -183,14 +199,54 @@ export function ResearchLoopPanel() {
             try {
               const event = JSON.parse(line.slice(6)) as CycleEntry & {
                 type?: string; synthesis?: Synthesis;
+                experiment?: string; rationale?: string;
+                summary?: string; flags?: string[];
+                ok?: boolean; reason?: string;
+                timeout_seconds?: number; gap_targeted?: string;
               };
               if (event.type === "complete") {
                 if (event.synthesis) setSynthesis(event.synthesis);
-                // Notify DashboardView so it can pull the new insight
                 window.dispatchEvent(new CustomEvent("glossa:loop-complete"));
                 void fetchStatus();
                 void fetchLastRun();
                 void fetchStaging();
+              } else if (event.type === "proposal_selected") {
+                setLog((prev) => [...prev, {
+                  cycle: event.cycle ?? 0, gap_targeted: "",
+                  experiment: event.experiment ?? "", n_papers: 0, n_insights: 0,
+                  insight_types: {}, verdict: `\u{1F4A1} Proposed: ${event.rationale ?? ""}`,
+                  is_new_info: false, selection_method: "proposal",
+                } as CycleEntry]);
+              } else if (event.type === "verify_result") {
+                setLog((prev) => [...prev, {
+                  cycle: event.cycle ?? 0, gap_targeted: "",
+                  experiment: event.experiment ?? "", n_papers: 0, n_insights: 0,
+                  insight_types: {}, verdict: `\u2713 Verified: ${event.ok ? "pass" : "fail"}`,
+                  is_new_info: false, selection_method: "verify",
+                } as CycleEntry]);
+              } else if (event.type === "analysis_complete") {
+                setLog((prev) => [...prev, {
+                  cycle: event.cycle ?? 0, gap_targeted: "",
+                  experiment: event.experiment ?? "", n_papers: 0, n_insights: 0,
+                  insight_types: {}, verdict: `\u{1F4CA} ${(event.summary ?? "").slice(0, 80)}`,
+                  is_new_info: false, selection_method: "analysis",
+                } as CycleEntry]);
+              } else if (event.type === "cycle_timeout") {
+                setLog((prev) => [...prev, {
+                  cycle: event.cycle ?? 0, gap_targeted: "",
+                  experiment: event.experiment ?? "", n_papers: 0, n_insights: 0,
+                  insight_types: {}, verdict: `\u23F1 Timeout (${event.timeout_seconds ?? 300}s)`,
+                  is_new_info: false, selection_method: "timeout",
+                } as CycleEntry]);
+              } else if (event.type === "gap_skipped") {
+                setLog((prev) => [...prev, {
+                  cycle: event.cycle ?? 0, gap_targeted: event.gap_targeted ?? "",
+                  experiment: "", n_papers: 0, n_insights: 0,
+                  insight_types: {}, verdict: `\u23ED Gap skipped: ${event.reason ?? ""}`,
+                  is_new_info: false, selection_method: "skipped",
+                } as CycleEntry]);
+              } else if (event.type === "node_complete" && event.cycle) {
+                setLog((prev) => [...prev, event as CycleEntry]);
               } else if (event.cycle) {
                 setLog((prev) => [...prev, event as CycleEntry]);
               }
@@ -262,7 +318,7 @@ export function ResearchLoopPanel() {
 
       {/* ── Protocol description ── */}
       <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 10 }}>
-        Mine → Analyze → Register → Execute → Analyze · {cycles} cycles ·
+        Propose → Build → Verify → Run → Analyze · {cycles} cycles ·
         15 gap topics × 15 experiment templates
       </div>
 
@@ -515,6 +571,77 @@ function RunSummary({
               {f.replace("[FAIL] ", "")}
             </div>
           ))}
+        </div>
+      )}
+
+      {/* Top Findings (Phase E) */}
+      {(synthesis.top_findings?.length ?? 0) > 0 && (
+        <div style={{ marginBottom: 12 }}>
+          <div style={{ fontSize: 11, fontWeight: 600, color: "#374151",
+                        marginBottom: 6 }}>Top findings</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+            {synthesis.top_findings!.slice(0, 3).map((f, i) => (
+              <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start",
+                                    padding: "5px 8px", borderRadius: 5,
+                                    background: "#f0fdf4",
+                                    border: "1px solid #bbf7d0" }}>
+                <span style={{ fontSize: 13, flexShrink: 0 }}>📈</span>
+                <div style={{ flex: 1 }}>
+                  <span style={{ fontSize: 11, fontWeight: 600, color: "#15803d" }}>
+                    {f.experiment.replace(/_/g, " ")}
+                  </span>
+                  <span style={{ fontSize: 11, color: "#6b7280", marginLeft: 6 }}>
+                    {f.metric}={typeof f.value === "number" ? (f.value as number).toFixed(3) : f.value}
+                  </span>
+                  <div style={{ fontSize: 10, color: "#374151", marginTop: 2 }}>
+                    {f.interpretation}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Proposed Next Experiments (Phase E) */}
+      {(synthesis.proposed_next?.length ?? 0) > 0 && (
+        <div style={{ marginBottom: 12 }}>
+          <div style={{ fontSize: 11, fontWeight: 600, color: "#374151",
+                        marginBottom: 6 }}>Proposed next experiments</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+            {synthesis.proposed_next!.map((p, i) => (
+              <div key={i} style={{ display: "flex", gap: 8, alignItems: "center",
+                                    padding: "5px 8px", borderRadius: 5,
+                                    background: "#ede9fe",
+                                    border: "1px solid #c4b5fd" }}>
+                <span style={{ fontSize: 13, flexShrink: 0 }}>🔬</span>
+                <div style={{ flex: 1, fontSize: 11, color: "#374151" }}>
+                  <span style={{ fontWeight: 600, color: "#5b21b6" }}>
+                    {p.display_name}
+                  </span>
+                  <span style={{ marginLeft: 6, color: "#6b7280" }}>
+                    — {p.rationale}
+                  </span>
+                </div>
+                {onStartLoop && (
+                  <button
+                    disabled={loopRunning}
+                    onClick={() => onStartLoop(p.experiment_id)}
+                    style={{
+                      padding: "2px 8px", fontSize: 10, fontWeight: 700,
+                      borderRadius: 4, whiteSpace: "nowrap", flexShrink: 0,
+                      cursor: loopRunning ? "default" : "pointer",
+                      border: "1px solid #7c3aed",
+                      background: loopRunning ? "#f3f4f6" : "#7c3aed",
+                      color: loopRunning ? "#9ca3af" : "#fff",
+                    }}
+                  >
+                    ▶ Run
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       )}
 

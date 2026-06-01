@@ -191,25 +191,32 @@ async def start_loop(
         while True:
             # Wait for next entry (with timeout so we don't hang forever)
             try:
-                entry = await asyncio.wait_for(queue.get(), timeout=120)
+                entry = await asyncio.wait_for(queue.get(), timeout=360)
             except asyncio.TimeoutError:
                 break
 
             if entry is None:  # producer finished
                 break
 
-            cycles_done += 1
+            # Phase E: intermediate SSE events (proposal, build, verify,
+            # analysis, timeout, gap_skipped) are streamed directly.
+            # Only persist + increment on node_complete / cycle entries.
+            entry_type = entry.get("type", "")
+            is_cycle = entry_type in ("node_complete", "") and entry.get("cycle")
+
             yield f"data: {json.dumps(entry)}\n\n"
 
-            # Persist state from async context (no thread issues)
-            await _persist(loop)
+            if is_cycle:
+                cycles_done += 1
+                # Persist state from async context (no thread issues)
+                await _persist(loop)
 
-            # Update job progress
-            if job_id and db:
-                try:
-                    await db.update_job_status(job_id, "running")
-                except Exception:  # noqa: BLE001
-                    pass
+                # Update job progress
+                if job_id and db:
+                    try:
+                        await db.update_job_status(job_id, "running")
+                    except Exception:  # noqa: BLE001
+                        pass
 
         # Wait for producer thread to finish
         await task
@@ -347,6 +354,11 @@ def _build_synthesis(loop, foundation_result: dict[str, Any] | None = None) -> d
 
     path_signals = getattr(loop, "path_signals", {})
 
+    # Phase E: include top findings and proposed next from full results
+    full_results = loop.get_full_results()
+    top_findings = full_results.get("top_findings", [])[:3]
+    proposed_next = full_results.get("proposed_next", [])
+
     return {
         "summary": (
             f"{len(history)} cycles completed. "
@@ -366,6 +378,8 @@ def _build_synthesis(loop, foundation_result: dict[str, Any] | None = None) -> d
             "blocked": len(blocked),
         },
         "foundation_check": foundation_result or {"skipped": True, "reason": "not run"},
+        "top_findings": top_findings,
+        "proposed_next": proposed_next,
     }
 
 

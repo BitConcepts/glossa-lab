@@ -779,6 +779,20 @@ export function DashboardView() {
         }, `decipher-${label.slice(0, 30)}`)
       } />
 
+      {/* Quick link to full Signs view */}
+      <div style={{ marginBottom: 12, textAlign: "right" }}>
+        <button
+          onClick={() => window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: "signs" } }))}
+          style={{
+            padding: "4px 12px", border: "1px solid #c4b5fd", borderRadius: 6,
+            background: "#f5f3ff", color: "#5b21b6", fontSize: 12, fontWeight: 600,
+            cursor: "pointer",
+          }}
+        >
+          🔣 View all signs →
+        </button>
+      </div>
+
       {/* Integrated Research Loop */}
       <ResearchLoopPanel />
 

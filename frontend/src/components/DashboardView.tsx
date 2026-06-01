@@ -902,7 +902,7 @@ export function DashboardView() {
                             )}
                           </div>
                           {at !== "no_op" && (
-                            applyResult[k] === "success" && !isApplying(k) ? (
+                    applyResult[k] === "success" && !isApplying(k) ? (
                               <div style={{ display: "flex", gap: 4, alignItems: "center", flexShrink: 0 }}>
                                 <span style={btnApplySuccess} title={`Done · ${at}`}>✓ Done</span>
                                 <button
@@ -913,6 +913,11 @@ export function DashboardView() {
                                   style={{ ...miniBtn, fontSize: 11, color: "#5b21b6", border: "1px solid #c4b5fd" }}
                                   title="Re-run this action"
                                 >↻</button>
+                                <button
+                                  onClick={() => setApplyResult(prev => { const n = { ...prev }; delete n[k]; return n; })}
+                                  style={{ ...miniBtn, fontSize: 11, color: "#9ca3af" }}
+                                  title="Dismiss"
+                                >✕</button>
                               </div>
                             ) : (
                               <button
@@ -999,6 +1004,11 @@ export function DashboardView() {
                                     style={{ ...miniBtn, fontSize: 11, color: "#5b21b6", border: "1px solid #c4b5fd" }}
                                     title="Re-run this action"
                                   >↻</button>
+                                  <button
+                                    onClick={() => setApplyResult(prev => { const n = { ...prev }; delete n[k]; return n; })}
+                                    style={{ ...miniBtn, fontSize: 11, color: "#9ca3af" }}
+                                    title="Dismiss"
+                                  >✕</button>
                                 </div>
                               ) : (
                                 <button

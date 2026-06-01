@@ -377,6 +377,10 @@ export function ResearchLoopPanel() {
                 });
                 if (res.ok) void fetchStaging();
               }}
+              onArchive={async () => {
+                await fetch(`${BASE}/staging/archive`, { method: "POST" });
+                void fetchStaging();
+              }}
             />
           )}
         </div>
@@ -767,10 +771,12 @@ type StagingAction = "approve" | "reject" | "delete" | "staged";
 function StagingReview({
   staging,
   onAction,
+  onArchive,
 }: {
   staging: StagingData;
   onAction: (sign: string, reading: string, action: StagingAction,
              reason?: string) => Promise<void>;
+  onArchive: () => Promise<void>;
 }) {
   const [bulkBusy, setBulkBusy] = useState<"approve" | "reject" | null>(null);
   const [busyKey,  setBusyKey]  = useState<string | null>(null);
@@ -810,6 +816,11 @@ function StagingReview({
   const restageAll = async () => {
     setBulkBusy("reject");
     try { for (const c of rejected) await onAction(c.sign, c.proposed_reading, "staged"); }
+    finally { setBulkBusy(null); }
+  };
+  const archiveReviewed = async () => {
+    setBulkBusy("approve");
+    try { await onArchive(); }
     finally { setBulkBusy(null); }
   };
 
@@ -890,21 +901,42 @@ function StagingReview({
         <div style={{
           margin: 10, padding: "12px 16px",
           background: "#f0fdf4", border: "1px solid #86efac", borderRadius: 8,
-          display: "flex", alignItems: "center", gap: 12,
+          display: "flex", alignItems: "flex-start", gap: 12,
         }}>
           <span style={{ fontSize: 22 }}>✅</span>
-          <div>
-            <div style={{ fontWeight: 700, color: "#15803d", fontSize: 13 }}>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontWeight: 700, color: "#15803d", fontSize: 13, marginBottom: 4 }}>
               All {approved.length + rejected.length} candidates reviewed!
             </div>
-            <div style={{ fontSize: 12, color: "#166534", marginTop: 2 }}>
+            <div style={{ fontSize: 12, color: "#166534" }}>
               {approved.length > 0
-                ? <>{approved.length} approved readings are ready to anchor.{" "}</>
+                ? <>{approved.length} approved reading{approved.length !== 1 ? "s" : ""} are ready to anchor.{" "}</>
                 : null}
-              Click <strong>▶ Start Loop</strong> above to run SA experiments with the updated anchor set.
-              Approved readings persist across loop runs.
+              ▶ Start Loop above to run SA experiments with the updated anchor set, then archive to close out.
+            </div>
+            <div style={{ marginTop: 10, display: "flex", gap: 8, alignItems: "center" }}>
+              <div style={{ fontSize: 11, fontWeight: 600, color: "#15803d" }}>Next steps:</div>
+              <div style={{ fontSize: 11, color: "#374151" }}>
+                1. ▶ Start Loop → 
+                2. Verify SA improved → 
+                3. Archive to close out
+              </div>
             </div>
           </div>
+          <button
+            disabled={isBusy}
+            onClick={() => void archiveReviewed()}
+            title="Remove approved and rejected candidates from the queue (audit trail kept in anchor_staging_archive.json)"
+            style={{
+              padding: "7px 14px", fontSize: 11, fontWeight: 700,
+              border: "1px solid #15803d", borderRadius: 6,
+              background: isBusy ? "#f0fdf4" : "#15803d",
+              color: isBusy ? "#15803d" : "#fff",
+              cursor: isBusy ? "default" : "pointer",
+              whiteSpace: "nowrap", flexShrink: 0, alignSelf: "flex-start",
+            }}>
+            {isBusy ? "Archiving…" : "🗃️ Archive Reviewed"}
+          </button>
         </div>
       )}
 

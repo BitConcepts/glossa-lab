@@ -185,6 +185,11 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
             background: "#f0fdf4", color: "#166534", whiteSpace: "nowrap" }}
             title={`Done · ${actionKey}`}>✓ Done</span>
           {rerunBtn}
+          <button
+            onClick={() => setDoneLabels(prev => { const n = { ...prev }; delete n[actionKey]; _saveDone(n); return n; })}
+            style={{ padding: "2px 5px", fontSize: 10, border: "1px solid #d1d5db",
+              borderRadius: 4, background: "#fff", color: "#9ca3af", cursor: "pointer" }}
+            title="Dismiss done state">✕</button>
         </div>
       );
     }

@@ -76,22 +76,77 @@ class AtomicNodeDef:
 
 # ── Atomic node implementations ─────────────────────────────────────────────
 
+def _sync_db_one(table: str, row_id: str) -> dict | None:
+    """Fetch one row from the Glossa Lab SQLite DB synchronously.
+
+    Node functions run inside asyncio.run_in_executor threads. The aiosqlite
+    connection is bound to the *main* event loop and cannot be used from those
+    threads even with asyncio.run() (which creates a *new* loop).  This helper
+    uses stdlib sqlite3 directly — no event loop required.
+    """
+    import sqlite3 as _sql  # noqa: PLC0415
+    import json as _js   # noqa: PLC0415
+    db_path = Path(__file__).parents[1] / "data" / "glossa.db"
+    if not db_path.exists():
+        return None
+    conn = _sql.connect(str(db_path), check_same_thread=False)
+    conn.row_factory = _sql.Row
+    try:
+        row = conn.execute(f"SELECT * FROM {table} WHERE id = ?", (row_id,)).fetchone()  # noqa: S608
+        if row is None:
+            return None
+        d = dict(row)
+        for k, v in d.items():
+            if isinstance(v, str) and v and v[0] in ("{", "["):
+                try:
+                    d[k] = _js.loads(v)
+                except Exception:  # noqa: BLE001
+                    pass
+        return d
+    finally:
+        conn.close()
+
+
+def _sync_db_all(table: str, where: str = "", params: tuple = ()) -> list[dict]:
+    """Fetch all rows from a table synchronously (same rationale as _sync_db_one)."""
+    import sqlite3 as _sql  # noqa: PLC0415
+    import json as _js   # noqa: PLC0415
+    db_path = Path(__file__).parents[1] / "data" / "glossa.db"
+    if not db_path.exists():
+        return []
+    conn = _sql.connect(str(db_path), check_same_thread=False)
+    conn.row_factory = _sql.Row
+    try:
+        sql = f"SELECT * FROM {table}"  # noqa: S608
+        if where:
+            sql += f" WHERE {where}"
+        rows = conn.execute(sql, params).fetchall()
+        result = []
+        for row in rows:
+            d = dict(row)
+            for k, v in d.items():
+                if isinstance(v, str) and v and v[0] in ("{", "["):
+                    try:
+                        d[k] = _js.loads(v)
+                    except Exception:  # noqa: BLE001
+                        pass
+            result.append(d)
+        return result
+    finally:
+        conn.close()
+
+
 def _corpus_reader(inputs: dict, params: dict) -> dict:
     corpus_id = params.get("corpus_id") or ""
     sequences: list[list[str]] = []
     if corpus_id:
-        import asyncio  # noqa: PLC0415
-
-        from glossa_lab.database import get_db  # noqa: PLC0415
-        db = get_db()
-        if db:
-            try:
-                text = asyncio.run(db.get_text(corpus_id))
-                if text and text.get("content"):
-                    raw = text["content"]
-                    sequences = raw if raw and isinstance(raw[0], list) else [raw]
-            except Exception:  # noqa: BLE001
-                pass
+        try:
+            text = _sync_db_one("texts", corpus_id)
+            if text and text.get("content"):
+                raw = text["content"]
+                sequences = raw if raw and isinstance(raw[0], list) else [raw]
+        except Exception:  # noqa: BLE001
+            pass
     if not sequences:
         icit = Path(__file__).parents[2] / "reports" / "icit_extracted_corpus.json"
         if icit.exists():
@@ -917,15 +972,8 @@ def _corpus_lm(inputs: dict, params: dict) -> dict:
     if not corpus_id:
         return {"error": "No corpus_id param — select a corpus from the dropdown or connect CorpusReader."}
 
-    # Load sequences from DB (same pattern as _corpus_reader)
-    import asyncio  # noqa: PLC0415
-
-    from glossa_lab.database import get_db  # noqa: PLC0415
-    db = get_db()
-    if db is None:
-        return {"error": "Database not available — is the backend running?"}
     try:
-        text = asyncio.run(db.get_text(corpus_id))
+        text = _sync_db_one("texts", corpus_id)
     except Exception as exc:  # noqa: BLE001
         return {"error": f"Failed to load corpus '{corpus_id}': {exc}"}
 
@@ -967,22 +1015,17 @@ def _anchor_set_loader(inputs: dict, params: dict) -> dict:
     if not anchor_set_id:
         return {"error": "No anchor_set_id param — select an anchor set.", "anchors": {}}
 
-    import asyncio  # noqa: PLC0415
-
-    from glossa_lab.database import get_db  # noqa: PLC0415
-    db = get_db()
-    if db is None:
-        return {"error": "Database not available.", "anchors": {}}
     try:
-        anchor_set = asyncio.run(db.get_anchor_set(anchor_set_id))
+        anchor_set = _sync_db_one("anchor_sets", anchor_set_id)
     except Exception as exc:  # noqa: BLE001
         return {"error": f"Failed to load anchor set: {exc}", "anchors": {}}
 
     if anchor_set is None:
         return {"error": f"Anchor set '{anchor_set_id}' not found.", "anchors": {}}
 
-    pairs = anchor_set.get("pairs", []) or []
-    # Convert list of {cipher, target, confidence, note} to {cipher: target}
+    pairs = anchor_set.get("pairs") or []
+    if isinstance(pairs, str):
+        import json as _j; pairs = _j.loads(pairs)  # noqa: PLC0415,E702
     anchors = {p["cipher"]: p["target"] for p in pairs if p.get("cipher") and p.get("target")}
     return {
         "anchors": anchors,
@@ -1006,14 +1049,8 @@ def _report_generator(inputs: dict, params: dict) -> dict:
     if not template_id:
         return {"error": "No template_id param — select a report template."}
 
-    import asyncio  # noqa: PLC0415
-
-    from glossa_lab.database import get_db  # noqa: PLC0415
-    db = get_db()
-    if db is None:
-        return {"error": "Database not available."}
     try:
-        template = asyncio.run(db.get_report_template(template_id))
+        template = _sync_db_one("report_templates", template_id)
     except Exception as exc:  # noqa: BLE001
         return {"error": f"Failed to load template: {exc}"}
     if template is None:
@@ -1115,15 +1152,15 @@ def _canonical_sign_loader(inputs: dict, params: dict) -> dict:
     filter_in_corpus = bool(params.get("in_corpus_only", True))
     numbering_system = params.get("numbering_system") or None
 
-    import asyncio  # noqa: PLC0415
-
-    from glossa_lab.database import get_db  # noqa: PLC0415
-    db = get_db()
-    if db is None:
-        return {"error": "Database not available"}
     try:
-        signs = asyncio.run(db.list_canonical_signs(in_corpus_only=filter_in_corpus,
-                                                     numbering_system=numbering_system))
+        where = "1=1"
+        args: list = []
+        if filter_in_corpus:
+            where += " AND in_corpus = 1"
+        if numbering_system:
+            where += " AND numbering_system = ?"
+            args.append(numbering_system)
+        signs = _sync_db_all("canonical_signs", where, tuple(args))
     except Exception as exc:  # noqa: BLE001
         return {"error": f"Failed to load registry: {exc}"}
 
@@ -1161,14 +1198,14 @@ def _cluster_mapper(inputs: dict, params: dict) -> dict:
     summary: dict = {}
 
     # ── Try DB first (live backend context) ──────────────────────────────────
-    from glossa_lab.database import get_db  # noqa: PLC0415
-    db = get_db()
-    if db is not None:
-        try:
-            assignments = asyncio.run(db.list_cluster_assignments())
-            summary     = asyncio.run(db.get_clusters_summary())
-        except Exception:  # noqa: BLE001
-            assignments = []
+    try:
+        assignments = _sync_db_all("sign_cluster_assignments")
+        if assignments:
+            n_clusters = len({a.get("cluster_label") for a in assignments})
+            best_k = assignments[0].get("cluster_k", n_clusters) if assignments else 0
+            summary = {"n_clusters": n_clusters, "cluster_k": best_k, "n_signs": len(assignments)}
+    except Exception:  # noqa: BLE001
+        assignments = []
 
     # ── Fallback: load from analysis/sign_clusters.json ──────────────────────
     if not assignments:

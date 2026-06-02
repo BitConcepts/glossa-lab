@@ -13,7 +13,7 @@
  *   GET  /api/v1/research-loop/last-run             → last synthesis + results
  */
 
-import { useCallback, useEffect, useState } from "react";
+import { Fragment, useCallback, useEffect, useState } from "react";
 
 const BASE = "/api/v1/research-loop";
 
@@ -147,6 +147,9 @@ export function ResearchLoopPanel() {
   const [showReview, setShowReview] = useState(false);
   // Track which proposal button was last clicked so it can show Done/Retry
   const [proposalKey, setProposalKey] = useState<string | null>(null);
+  const [currentPhase, setCurrentPhase] = useState<"idle" | "propose" | "build" | "verify" | "analyze">("idle");
+  const [currentWork, setCurrentWork] = useState<{ cycle: number; gap: string; experiment: string } | null>(null);
+  const [showFullLog, setShowFullLog] = useState(false);
 
   const fetchStatus = useCallback(async () => {
     try {
@@ -191,6 +194,9 @@ export function ResearchLoopPanel() {
     setFailureDetail(null);
     setLog([]);
     setSynthesis(null);
+    setCurrentPhase("idle");
+    setCurrentWork(null);
+    setShowFullLog(false);
 
     try {
       const res = await fetch(`${BASE}/start?max_cycles=${cycles}`, { method: "POST" });
@@ -219,12 +225,19 @@ export function ResearchLoopPanel() {
                   ok?: boolean; timeout_seconds?: number; gap_targeted?: string;
               };
               if (event.type === "complete") {
+                setCurrentPhase("idle");
+                setCurrentWork(null);
                 if (event.synthesis) setSynthesis(event.synthesis);
+                if (event.synthesis?.anchor_candidates && event.synthesis.anchor_candidates.length > 0) {
+                  setTimeout(() => setShowReview(true), 400);
+                }
                 window.dispatchEvent(new CustomEvent("glossa:loop-complete"));
                 void fetchStatus();
                 void fetchLastRun();
                 void fetchStaging();
               } else if (event.type === "proposal_selected") {
+                setCurrentPhase("propose");
+                if (event.cycle) setCurrentWork({ cycle: event.cycle ?? 0, gap: event.gap_targeted ?? "", experiment: event.experiment ?? "" });
                 setLog((prev) => [...prev, {
                   cycle: event.cycle ?? 0, gap_targeted: "",
                   experiment: event.experiment ?? "", n_papers: 0, n_insights: 0,
@@ -232,6 +245,7 @@ export function ResearchLoopPanel() {
                   is_new_info: false, selection_method: "proposal",
                 } as CycleEntry]);
               } else if (event.type === "verify_result") {
+                setCurrentPhase("verify");
                 setLog((prev) => [...prev, {
                   cycle: event.cycle ?? 0, gap_targeted: "",
                   experiment: event.experiment ?? "", n_papers: 0, n_insights: 0,
@@ -239,6 +253,7 @@ export function ResearchLoopPanel() {
                   is_new_info: false, selection_method: "verify",
                 } as CycleEntry]);
               } else if (event.type === "analysis_complete") {
+                setCurrentPhase("analyze");
                 setLog((prev) => [...prev, {
                   cycle: event.cycle ?? 0, gap_targeted: "",
                   experiment: event.experiment ?? "", n_papers: 0, n_insights: 0,
@@ -268,9 +283,13 @@ export function ResearchLoopPanel() {
                   last_experiment: event.last_experiment ?? "",
                   elapsed_seconds: event.elapsed_seconds ?? 0,
                 });
-                } else if (event.type === "node_complete" && event.cycle) {
+              } else if (event.type === "node_complete" && event.cycle) {
+                setCurrentPhase("build");
+                setCurrentWork({ cycle: event.cycle, gap: event.gap_targeted ?? "", experiment: event.experiment ?? "" });
                 setLog((prev) => [...prev, event as CycleEntry]);
               } else if (event.cycle) {
+                setCurrentPhase("build");
+                setCurrentWork({ cycle: event.cycle, gap: event.gap_targeted ?? "", experiment: event.experiment ?? "" });
                 setLog((prev) => [...prev, event as CycleEntry]);
               }
             } catch { /* ignore parse errors */ }
@@ -339,58 +358,110 @@ export function ResearchLoopPanel() {
         </div>
       </div>
 
-      {/* ── Protocol description ── */}
-      <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 10 }}>
-        Propose → Build → Verify → Run → Analyze · {cycles} cycles ·
-        15 gap topics × 15 experiment templates
-      </div>
-
-      {/* ── Live progress: metrics + cycle log (only while/after running) ── */}
-      {log.length > 0 && (
-        <>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr",
-                        gap: 8, marginBottom: 12 }}>
-            <MetricTile label="Cycles" value={log.length} />
-            <MetricTile label="Papers" value={totalPapers} />
-            <MetricTile label="Insights" value={totalInsights} />
-            <MetricTile label="New results"
-              value={log.filter((c) => c.is_new_info).length} />
-          </div>
-          <div style={{ maxHeight: 200, overflowY: "auto",
-                        border: "1px solid #e5e7eb", borderRadius: 6,
-                        background: "#fff", marginBottom: 12 }}>
-            {log.map((entry) => (
-              <div key={`${entry.cycle}-${entry.gap_targeted}`}
-                style={{ display: "flex", alignItems: "center", gap: 8,
-                         padding: "5px 10px", borderBottom: "1px solid #f3f4f6",
-                         fontSize: 11 }}>
-                <span style={{ width: 24, fontWeight: 700, color: "#7c3aed" }}>
-                  C{entry.cycle}
-                </span>
-                <span style={{ width: 130, color: "#374151", overflow: "hidden",
-                               textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                  {entry.gap_targeted}
-                </span>
-                <span style={{ color: "#6b7280" }}>→</span>
-                <span style={{ width: 150, color: "#1d4ed8", overflow: "hidden",
-                               textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                  {entry.experiment}
-                </span>
-                <span style={{ flex: 1, color: "#374151", overflow: "hidden",
-                               textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                  {entry.verdict.slice(0, 55)}
-                </span>
-                <InsightTypePills types={entry.insight_types} max={2} />
-                <span style={{ fontSize: 10, padding: "1px 5px", borderRadius: 3,
-                               background: entry.is_new_info ? "#dcfce7" : "#f3f4f6",
-                               color: entry.is_new_info ? "#15803d" : "#9ca3af",
-                               fontWeight: 600, flexShrink: 0 }}>
-                  {entry.is_new_info ? "NEW" : "rpt"}
-                </span>
+      {/* ── Live progress: phase strip + metrics + collapsed log ── */}
+      {(running || log.length > 0) && (
+        <div style={{ marginBottom: 12 }}>
+          {/* Phase progress strip */}
+          <div style={{ display: "flex", alignItems: "center", gap: 0, marginBottom: 8 }}>
+            {(["propose", "build", "verify", "analyze"] as const).map((phase, i) => {
+              const labels: Record<string, string> = {
+                propose: "Propose", build: "Build", verify: "Verify", analyze: "Analyze"
+              };
+              const active = currentPhase === phase;
+              const done = running &&
+                (["propose", "build", "verify", "analyze"].indexOf(currentPhase) >
+                 ["propose", "build", "verify", "analyze"].indexOf(phase));
+              return (
+                <Fragment key={phase}>
+                  {i > 0 && (
+                    <div style={{ width: 20, height: 1,
+                      background: done || active ? "#7c3aed" : "#d1d5db" }} />
+                  )}
+                  <div style={{
+                    padding: "4px 12px", borderRadius: 14, fontSize: 11, fontWeight: active ? 800 : 600,
+                    background: active ? "#7c3aed" : done ? "#ede9fe" : "#f3f4f6",
+                    color: active ? "#fff" : done ? "#5b21b6" : "#9ca3af",
+                    border: active ? "none" : "1px solid transparent",
+                    transition: "all 0.2s",
+                  }}>
+                    {labels[phase]}
+                  </div>
+                </Fragment>
+              );
+            })}
+            {running && (
+              <div style={{ marginLeft: "auto", fontSize: 11, color: "#6b7280" }}>
+                {log.length}/{cycles} cycles
               </div>
-            ))}
+            )}
           </div>
-        </>
+
+          {/* Current work line */}
+          {currentWork && (
+            <div style={{ fontSize: 11, color: "#374151", padding: "4px 8px",
+                          background: "#f9fafb", borderRadius: 5,
+                          border: "1px solid #e5e7eb", marginBottom: 6,
+                          overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+              <span style={{ color: "#7c3aed", fontWeight: 700 }}>C{currentWork.cycle}</span>
+              {" · "}
+              <span style={{ color: "#374151" }}>{currentWork.gap}</span>
+              {currentWork.experiment && <>
+                {" → "}
+                <span style={{ color: "#1d4ed8" }}>{currentWork.experiment.slice(0, 40)}</span>
+              </>}
+            </div>
+          )}
+
+          {/* Metrics row (only after some cycles) */}
+          {log.length > 0 && (
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr",
+                          gap: 6, marginBottom: 8 }}>
+              <MetricTile label="Cycles" value={log.length} />
+              <MetricTile label="Papers" value={totalPapers} />
+              <MetricTile label="Insights" value={totalInsights} />
+              <MetricTile label="New" value={log.filter((c) => c.is_new_info).length} />
+            </div>
+          )}
+
+          {/* Collapsed full log */}
+          {log.length > 0 && (
+            <details open={showFullLog} onToggle={(e) => setShowFullLog((e.currentTarget as HTMLDetailsElement).open)}
+              style={{ fontSize: 11, border: "1px solid #e5e7eb", borderRadius: 5 }}>
+              <summary style={{ padding: "4px 10px", cursor: "pointer",
+                                color: "#6b7280", background: "#f9fafb",
+                                listStyle: "none", display: "flex",
+                                justifyContent: "space-between", alignItems: "center" }}>
+                <span>Full log</span>
+                <span style={{ fontSize: 10 }}>{log.length} events {showFullLog ? "▲" : "▼"}</span>
+              </summary>
+              <div style={{ maxHeight: 200, overflowY: "auto", background: "#fff" }}>
+                {log.map((entry, idx) => (
+                  <div key={`${entry.cycle}-${entry.gap_targeted}-${idx}`}
+                    style={{ display: "flex", alignItems: "center", gap: 6,
+                             padding: "4px 10px", borderBottom: "1px solid #f3f4f6",
+                             fontSize: 10 }}>
+                    <span style={{ width: 22, fontWeight: 700, color: "#7c3aed", flexShrink: 0 }}>C{entry.cycle}</span>
+                    <span style={{ width: 100, color: "#374151", overflow: "hidden",
+                                   textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                      {entry.gap_targeted}
+                    </span>
+                    <span style={{ flex: 1, color: "#6b7280", overflow: "hidden",
+                                   textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                      {entry.verdict.slice(0, 60)}
+                    </span>
+                    <InsightTypePills types={entry.insight_types} max={2} />
+                    <span style={{ fontSize: 9, padding: "1px 4px", borderRadius: 3,
+                                   background: entry.is_new_info ? "#dcfce7" : "#f3f4f6",
+                                   color: entry.is_new_info ? "#15803d" : "#9ca3af",
+                                   fontWeight: 600, flexShrink: 0 }}>
+                      {entry.is_new_info ? "NEW" : "rpt"}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </details>
+          )}
+        </div>
       )}
 
       {/* ── Run Summary Dashboard ── */}

@@ -32,6 +32,7 @@ _INDEX_BUILT = False
 _BACKEND_DIR = Path(__file__).resolve().parent.parent.parent  # backend/
 _REPORTS_DIR = _BACKEND_DIR / "reports"
 _OUTPUTS_DIR = _BACKEND_DIR / "outputs"
+_STATIC_SIGNS_DIR = _BACKEND_DIR / "static" / "signs"
 
 
 def _parse_phase(source_exp: str) -> int | None:
@@ -61,10 +62,12 @@ def _build_sign_entry(
     extra: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     phase = phase_upgraded or _parse_phase(source_experiment)
+    _img_path = _STATIC_SIGNS_DIR / f"{sign_id}.png"
     return {
         "sign_id": sign_id,
         "reading": reading,
         "confidence": confidence.upper(),
+        "image_url": f"/static/signs/{sign_id}.png" if _img_path.exists() else None,
         "in_corpus": in_corpus,
         "corpus_freq": corpus_freq,
         "evidence_type": evidence_type,

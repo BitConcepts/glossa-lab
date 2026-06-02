@@ -207,14 +207,12 @@ async def start_loop(
             if entry is None:  # producer finished
                 break
 
-              # Phase E: intermediate SSE events (proposal, build, verify,
-              # analysis, timeout, gap_skipped) are streamed directly.
-              # Only persist + increment on node_complete / cycle entries.
-              entry_type = entry.get("type", "")
-              is_cycle = entry_type in ("node_complete", "") and entry.get("cycle")
-              if is_cycle:
-                  cycles_done += 1
-              last_experiment = entry.get("experiment", last_experiment)
+            # Phase E: intermediate SSE events (proposal, build, verify,
+            # analysis, timeout, gap_skipped) are streamed directly.
+            # Only persist + increment on node_complete / cycle entries.
+            entry_type = entry.get("type", "")
+            is_cycle = entry_type in ("node_complete", "") and entry.get("cycle")
+            last_experiment = entry.get("experiment", last_experiment)
             yield f"data: {json.dumps(entry)}\n\n"
 
             if is_cycle:
@@ -519,9 +517,9 @@ async def staging_action(body: dict[str, Any]) -> dict[str, Any]:
     action   = body.get("action", "")
     reason   = body.get("reason", "")
 
-    if not sign or not reading or action not in ("approve", "reject", "delete"):
+    if not sign or not reading or action not in ("approve", "reject", "delete", "staged"):
         return {"ok": False, "error": "sign, proposed_reading, and action are required; "
-                                       "action must be approve|reject|delete"}
+                                       "action must be approve|reject|delete|staged"}
 
     if not _STAGING_JSON.exists():
         return {"ok": False, "error": "staging file not found"}
@@ -548,6 +546,12 @@ async def staging_action(body: dict[str, Any]) -> dict[str, Any]:
                 c["review_status"] = "rejected"
                 c["rejected_at"] = now
                 c["rejected_reason"] = reason or "user rejected"
+            elif action == "staged":
+                # Re-stage: move approved/rejected back to staging queue
+                c["review_status"] = "staged"
+                c.pop("approved_at", None)
+                c.pop("rejected_at", None)
+                c.pop("rejected_reason", None)
         updated.append(c)
 
     if not matched:

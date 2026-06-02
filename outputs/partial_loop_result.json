@@ -1,14 +1,12 @@
 {
-  "cycles_completed": 3,
-  "max_cycles": 3,
+  "cycles_completed": 5,
+  "max_cycles": 2,
   "cycle_analyses": [
     {
       "cycle": 1,
-      "experiment": "reading_frequency_zipf",
-      "summary": "Reading Frequency Zipf: Zipf: α=0.796 (156 readings). Linguistic. · zipf_alpha=0.796",
-      "metrics": {
-        "zipf_alpha": 0.796
-      },
+      "experiment": "motif_title_correlation",
+      "summary": "Motif Title Correlation: motif_title_correlation: mock result",
+      "metrics": {},
       "flags": [],
       "suggested_next_steps": [
         "Try a different experiment type to explore new angles"
@@ -16,23 +14,9 @@
     },
     {
       "cycle": 2,
-      "experiment": "motif_title_correlation",
-      "summary": "Motif Title Correlation: Motif-title: 0 motifs have title reading profiles. · n_motifs=0",
-      "metrics": {
-        "n_motifs": 0
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 3,
-      "experiment": "site_specific_formula",
-      "summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9",
-      "metrics": {
-        "n_sites": 9
-      },
+      "experiment": "title_root_suffix_trigram",
+      "summary": "Title Root Suffix Trigram: title_root_suffix_trigram: mock result",
+      "metrics": {},
       "flags": [],
       "suggested_next_steps": [
         "Try a different experiment type to explore new angles"
@@ -42,29 +26,65 @@
   "history": [
     {
       "cycle": 1,
-      "timestamp": "2026-06-02T10:06:24.409425+00:00",
+      "timestamp": "2026-06-02T11:23:00.751074+00:00",
       "gap_targeted": "rare_sign_context",
-      "n_papers": 2,
-      "n_insights": 2,
+      "n_papers": 1,
+      "n_insights": 1,
       "insight_types": {
-        "reading": 2
+        "reading": 1
       },
       "experiment": "reading_frequency_zipf",
       "selection_method": "proposal",
-      "verdict": "Zipf: α=0.796 (156 readings). Linguistic.",
+      "verdict": "reading_frequency_zipf: mock result",
       "is_new_info": true,
       "n_candidates": 0,
       "top_candidate": null,
-      "analysis_metrics": {
-        "zipf_alpha": 0.796
-      },
+      "analysis_metrics": {},
       "analysis_flags": [],
-      "analysis_summary": "Reading Frequency Zipf: Zipf: α=0.796 (156 readings). Linguistic. · zipf_alpha=0.796"
+      "analysis_summary": "Reading Frequency Zipf: reading_frequency_zipf: mock result"
     },
     {
       "cycle": 2,
-      "timestamp": "2026-06-02T10:06:24.409425+00:00",
+      "timestamp": "2026-06-02T11:23:00.751074+00:00",
       "gap_targeted": "compound_morphology",
+      "n_papers": 1,
+      "n_insights": 1,
+      "insight_types": {
+        "reading": 1
+      },
+      "experiment": "rare_sign_neighbor_profile",
+      "selection_method": "proposal",
+      "verdict": "rare_sign_neighbor_profile: mock result",
+      "is_new_info": true,
+      "n_candidates": 0,
+      "top_candidate": null,
+      "analysis_metrics": {},
+      "analysis_flags": [],
+      "analysis_summary": "Rare Sign Neighbor Profile: rare_sign_neighbor_profile: mock result"
+    },
+    {
+      "cycle": 3,
+      "timestamp": "2026-06-02T11:23:00.751074+00:00",
+      "gap_targeted": "seal_owner_identity",
+      "n_papers": 1,
+      "n_insights": 1,
+      "insight_types": {
+        "reading": 1
+      },
+      "experiment": "blocker_sign_context",
+      "selection_method": "proposal",
+      "verdict": "blocker_sign_context: mock result",
+      "is_new_info": true,
+      "n_candidates": 0,
+      "top_candidate": null,
+      "analysis_metrics": {},
+      "analysis_flags": [],
+      "analysis_summary": "Blocker Sign Context: blocker_sign_context: mock result"
+    },
+    {
+      "cycle": 1,
+      "timestamp": "2026-06-02T11:23:00.755589+00:00",
+      "gap_targeted": "rare_sign_context",
       "n_papers": 1,
       "n_insights": 1,
       "insight_types": {
@@ -72,34 +92,32 @@
       },
       "experiment": "motif_title_correlation",
       "selection_method": "proposal",
-      "verdict": "Motif-title: 0 motifs have title reading profiles.",
+      "verdict": "motif_title_correlation: mock result",
       "is_new_info": true,
       "n_candidates": 0,
       "top_candidate": null,
-      "analysis_metrics": {
-        "n_motifs": 0
-      },
+      "analysis_metrics": {},
       "analysis_flags": [],
-      "analysis_summary": "Motif Title Correlation: Motif-title: 0 motifs have title reading profiles. · n_motifs=0"
+      "analysis_summary": "Motif Title Correlation: motif_title_correlation: mock result"
     },
     {
-      "cycle": 3,
-      "timestamp": "2026-06-02T10:06:24.409425+00:00",
-      "gap_targeted": "seal_owner_identity",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "site_specific_formula",
+      "cycle": 2,
+      "timestamp": "2026-06-02T11:23:00.755589+00:00",
+      "gap_targeted": "compound_morphology",
+      "n_papers": 1,
+      "n_insights": 1,
+      "insight_types": {
+        "guild": 1
+      },
+      "experiment": "title_root_suffix_trigram",
       "selection_method": "proposal",
-      "verdict": "Site formulas: 9 sites with unique formula sets.",
+      "verdict": "title_root_suffix_trigram: mock result",
       "is_new_info": true,
       "n_candidates": 0,
       "top_candidate": null,
-      "analysis_metrics": {
-        "n_sites": 9
-      },
+      "analysis_metrics": {},
       "analysis_flags": [],
-      "analysis_summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9"
+      "analysis_summary": "Title Root Suffix Trigram: title_root_suffix_trigram: mock result"
     }
   ]
 }

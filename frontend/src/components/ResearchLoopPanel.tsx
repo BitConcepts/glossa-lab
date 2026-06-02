@@ -73,6 +73,8 @@ interface AnchorCandidate {
   archived_at?: string;
   archived_reason?: string;
   sa_delta?: number;
+  recommended?: boolean;
+  statistically_sufficient?: boolean;
 }
 
 interface TopFinding {
@@ -966,13 +968,14 @@ type StagingAction = "approve" | "reject" | "delete" | "staged";
 function StagingReview({
   staging,
   onAction,
-  onArchive,
+  onArchive: _onArchive,
 }: {
   staging: StagingData;
   onAction: (sign: string, reading: string, action: StagingAction,
              reason?: string) => Promise<void>;
   onArchive: () => Promise<void>;
 }) {
+  void _onArchive; // retained for caller compatibility; auto-archive replaces manual
   const [bulkBusy, setBulkBusy] = useState<"approve" | "reject" | null>(null);
   const [busyKey,  setBusyKey]  = useState<string | null>(null);
   const [rejectingKey, setRejectingKey] = useState<string | null>(null);
@@ -991,6 +994,14 @@ function StagingReview({
     setBusyKey(key);
     try { await onAction(sign, reading, action, reason); }
     finally { setBusyKey(null); setRejectingKey(null); setRejectReason(""); }
+  };
+
+  const acceptRecommended = async () => {
+    setBulkBusy("approve");
+    try {
+      for (const c of staged.filter((c) => c.recommended))
+        await onAction(c.sign, c.proposed_reading, "approve");
+    } finally { setBulkBusy(null); }
   };
 
   const approveAll = async () => {
@@ -1013,12 +1024,6 @@ function StagingReview({
     try { for (const c of rejected) await onAction(c.sign, c.proposed_reading, "staged"); }
     finally { setBulkBusy(null); }
   };
-  const archiveReviewed = async () => {
-    setBulkBusy("approve");
-    try { await onArchive(); }
-    finally { setBulkBusy(null); }
-  };
-
   const allReviewed = staged.length === 0 && (approved.length + rejected.length) > 0;
 
   return (
@@ -1055,6 +1060,18 @@ function StagingReview({
         </div>
         {staged.length > 0 && (
           <div style={{ display: "flex", gap: 6 }}>
+            {staged.filter(c => c.recommended).length > 0 && (
+              <button disabled={isBusy} onClick={() => void acceptRecommended()}
+                style={{
+                  padding: "4px 12px", fontSize: 11, fontWeight: 700,
+                  border: "1px solid #7c3aed", borderRadius: 5,
+                  background: bulkBusy === "approve" ? "#ede9fe" : "#7c3aed",
+                  color: bulkBusy === "approve" ? "#5b21b6" : "#fff",
+                  cursor: isBusy ? "default" : "pointer",
+                }}>
+                ★ Accept Recommended ({staged.filter(c => c.recommended).length})
+              </button>
+            )}
             <button disabled={isBusy} onClick={() => void approveAll()}
               style={{
                 padding: "4px 12px", fontSize: 11, fontWeight: 700,
@@ -1083,69 +1100,29 @@ function StagingReview({
       <div style={{
         padding: "8px 14px", background: "#eff6ff",
         borderBottom: "1px solid #bfdbfe", fontSize: 11, color: "#1d4ed8",
-        lineHeight: 1.5,
+        lineHeight: 1.6,
       }}>
-        <strong>Approving</strong> locks a sign reading into the anchor table used by SA experiments.
-        Evidence is sourced from DEDR + experiment coherence scores.
-        Reject anything that conflicts with a known HIGH-confidence anchor.
-        {" "}<strong>After review → click ▶ Start Loop above</strong> to run with the new anchors.
+        <strong>Approving</strong> pins a sign reading into the SA anchor table — it directly affects Structural Analysis experiment scores.
+        {" "}★ <strong>Recommended</strong> candidates meet the statistical threshold (score ≥ 85% or SA Δ &gt; 5%) and are safe to accept in bulk.
+        {" "}Candidates below threshold may still be accepted manually; they just haven&apos;t cleared the confidence bar yet.
       </div>
 
       {/* ── All-reviewed CTA ── */}
       {allReviewed && (
-        <div style={{
-          margin: 10, padding: "12px 16px",
+        <div style={{ margin: 10, padding: "12px 16px",
           background: "#f0fdf4", border: "1px solid #86efac", borderRadius: 8,
-          display: "flex", alignItems: "flex-start", gap: 12,
-        }}>
+          display: "flex", alignItems: "flex-start", gap: 12 }}>
           <span style={{ fontSize: 22 }}>✅</span>
           <div style={{ flex: 1 }}>
             <div style={{ fontWeight: 700, color: "#15803d", fontSize: 13, marginBottom: 4 }}>
               All {approved.length + rejected.length} candidates reviewed!
             </div>
-            {/* Show auto-verified count if any candidates were auto-archived */}
-            {(() => {
-              const autoVerified = staging.candidates.filter(
-                (c) => c.review_status === "verified" || c.archived_reason === "auto_verified"
-              );
-              if (autoVerified.length > 0) {
-                return (
-                  <div style={{ fontSize: 12, color: "#15803d", marginBottom: 4 }}>
-                    ✨ Auto-verified and archived: {autoVerified.length} candidate{autoVerified.length !== 1 ? "s" : ""}
-                  </div>
-                );
-              }
-              return null;
-            })()}
             <div style={{ fontSize: 12, color: "#166534" }}>
-              {approved.length > 0
-                ? <>{approved.length} approved reading{approved.length !== 1 ? "s" : ""} are ready to anchor.{" "}</>
-                : null}
-              ▶ Start Loop above to run SA experiments with the updated anchor set, then archive to close out.
-            </div>
-            <div style={{ marginTop: 10, display: "flex", gap: 8, alignItems: "center" }}>
-              <div style={{ fontSize: 11, fontWeight: 600, color: "#15803d" }}>Next steps:</div>
-              <div style={{ fontSize: 11, color: "#374151" }}>
-                1. ▶ Start Loop → 
-                2. Verify SA improved → 
-                3. Archive to close out
-              </div>
+              {approved.length > 0 && <>{approved.length} approved reading{approved.length !== 1 ? "s" : ""} queued for anchoring. </>}
+              Readings will be automatically archived after the next loop run verifies SA improvement.
+              ▶ Start Loop above to run SA with the updated anchor set.
             </div>
           </div>
-          <button
-            disabled={isBusy}
-            onClick={() => void archiveReviewed()}
-            title="Remove approved and rejected candidates from the queue (audit trail kept in anchor_staging_archive.json)"
-            style={{
-              padding: "7px 14px", fontSize: 11, fontWeight: 700,
-              border: "1px solid #15803d", borderRadius: 6,
-              background: isBusy ? "#f0fdf4" : "#15803d",
-              color: isBusy ? "#15803d" : "#fff",
-              cursor: isBusy ? "default" : "pointer",
-              whiteSpace: "nowrap", flexShrink: 0, alignSelf: "flex-start",
-            }}>
-            {isBusy ? "Archiving…" : "🗃️ Archive Reviewed"}
-          </button>
         </div>
       )}
 
@@ -1207,6 +1184,13 @@ function StagingReview({
                       via {c.source_experiment.slice(0, 22)}
                     </span>
                   )}
+                  {c.recommended && (
+                    <span style={{ padding: "1px 5px", borderRadius: 3, fontSize: 9,
+                                    background: "#ede9fe", color: "#5b21b6",
+                                    fontWeight: 700, letterSpacing: 0.3 }}>
+                      ★ REC
+                    </span>
+                  )}
                 </div>
                 {c.conflict && (
                   <div style={{ fontSize: 10, color: "#dc2626", marginTop: 3,
@@ -1224,6 +1208,13 @@ function StagingReview({
                 }}>
                   {(c.evidence_score * 100).toFixed(0)}%
                 </span>
+                {/* SA Δ badge */}
+                {c.sa_delta !== undefined && (
+                  <div style={{ fontSize: 9, marginTop: 2, fontWeight: 600,
+                                color: (c.sa_delta ?? 0) > 0 ? "#15803d" : "#9ca3af" }}>
+                    SA Δ {(c.sa_delta ?? 0) > 0 ? "+" : ""}{((c.sa_delta ?? 0) * 100).toFixed(1)}%
+                  </div>
+                )}
               </div>
               {/* Approve — single click, no confirmation */}
               <button

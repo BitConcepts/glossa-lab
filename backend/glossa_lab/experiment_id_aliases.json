@@ -1,0 +1,180 @@
+{
+  "indus_anchored_sa_sanskrit": [
+    "indus_cisi_dravidian_vs_sanskrit",
+    "indus_dravidian_vs_sanskrit",
+    "indus_phase32_t7_sanskrit_falsification",
+    "indus_phase33_t7_sanskrit_syllable",
+    "indus_south_dravidian_vs_sanskrit"
+  ],
+  "indus_entropy_epistasis": [
+    "indus_phase20_synthesis",
+    "indus_phase20a_length_strata",
+    "indus_phase20b_cluster_archaeology",
+    "indus_phase20c_ferrara_cm_extract",
+    "indus_phase20d_fuls_positional",
+    "indus_phase21_synthesis",
+    "indus_phase21a_repetition_segmentation",
+    "indus_phase21b_site_stratified",
+    "indus_phase21d_numerical_weights"
+  ],
+  "indus_contact_zone_bilingual": [
+    "indus_contact_zone_v2",
+    "indus_phase22_synthesis",
+    "indus_phase22a_meluhha_corpus_audit",
+    "indus_phase22b_meluhhan_persons",
+    "indus_phase22c_meluhha_name_matcher",
+    "indus_phase23a_seal_sign_audit",
+    "indus_phase23b_refined_persons",
+    "indus_phase23c_readout_test",
+    "indus_phase24a_laursen_table1_audit",
+    "indus_phase24b_seal_signs_upgraded_audit",
+    "indus_phase24c_refined_persons_v2",
+    "indus_phase24d_readout_test_v2"
+  ],
+  "indus_anchored_sa_dravidian": [
+    "indus_anchor_estimation",
+    "indus_anchor_sweep",
+    "indus_cisi_anchored_10",
+    "indus_cisi_anchored_2",
+    "indus_cisi_anchored_5",
+    "indus_cisi_anchored_5_o",
+    "indus_cisi_anchored_6_ko",
+    "indus_cisi_sa_anchorset",
+    "indus_phase25a_janabiyah_phonetic",
+    "indus_phase25b_blind_held_out",
+    "indus_phase25c_period_stratified",
+    "indus_phase25d_persons_v3",
+    "indus_phase25e_shu_ilishu_anchor",
+    "indus_phase25f_tamil_brahmi_crosscheck",
+    "indus_phase26a_provenience_stratified",
+    "indus_phase26b_bayesian_decoder",
+    "indus_phase26c_janabiyah_expanded",
+    "indus_phase26d_cisi_findspot",
+    "indus_phase26e_shu_ilishu_filter",
+    "indus_phase26f_verdict",
+    "indus_phase27a_reverse_janabiyah",
+    "indus_phase27b_bayesian_v2",
+    "indus_phase27c_iconographic_anchors",
+    "indus_phase27d_period_6bucket",
+    "indus_phase27e_shu_ilishu_filter",
+    "indus_phase27f_verdict",
+    "indus_phase28a_cisi_vol3_ocr",
+    "indus_phase28b_mahadevan_crosswalk",
+    "indus_phase28c_allograph_iconographic",
+    "indus_phase28d_reverse_janabiyah_v2",
+    "indus_phase28e_expanded_phoneme_map",
+    "indus_phase28f_verdict",
+    "indus_phase29a_mahadevan_loader",
+    "indus_phase29b_epsd2_loader",
+    "indus_phase29c_fuls_icit_loaders",
+    "indus_phase29d_reverse_janabiyah_v3",
+    "indus_phase29e_corpus_stats",
+    "indus_phase29f_verdict",
+    "indus_phase30a_period_stratified_m77",
+    "indus_phase30b_length_cohort_janabiyah",
+    "indus_phase30c_permutation_null_m77",
+    "indus_phase32_neg_controls",
+    "indus_phase32_t4_sa_m77_tb_lm",
+    "indus_phase33_t1_sa_syllable",
+    "indus_phase33_t2_a1_a3_validation",
+    "indus_v3_allograph_r2",
+    "indus_v3_bayesian_mcmc",
+    "indus_v3_holdout_cv",
+    "indus_v3_morphological_template",
+    "indus_v3_numeral_id",
+    "indus_v3_parpola_validation",
+    "indus_v3_pmi_bigrams",
+    "indus_v3_scrambled_control",
+    "indus_v3_site_stratified",
+    "indus_v3_substitution_grid",
+    "indus_v5_anchor_validation",
+    "indus_v5_data_corrections",
+    "indus_v5_spectral_grid"
+  ],
+  "indus_ctt_constrained": [
+    "indus_phase10_ctt_anchored_sa",
+    "indus_phase11_ctt_full",
+    "indus_phase12_full",
+    "indus_phase13_full"
+  ],
+  "indus_contact_zone_kl": [
+    "kl_comparison"
+  ],
+  "indus_lm_competing": [
+    "indus_cisi_dravidian_vs_pali",
+    "indus_dravidian_vs_pali"
+  ],
+  "indus_ab_dravidian_sanskrit": [
+    "indus_sign_function_dravidian"
+  ],
+  "fuls_nw_semitic": [
+    "fuls_nw_semitic_benchmark",
+    "fuls_nw_semitic_decipher_run",
+    "fuls_nw_semitic_ngram",
+    "fuls_rtl_decipher"
+  ],
+  "fuls_validation": [
+    "fuls_anchor_simulation",
+    "fuls_constraint_space",
+    "fuls_independence_suite",
+    "fuls_sequence_information_test",
+    "fuls_split_sensitivity",
+    "fuls_validation_suite",
+    "fuls_writing_system_comparison"
+  ],
+  "indus_archaeological": [
+    "indus_cgsa_cluster_analysis",
+    "indus_cisi_structural",
+    "indus_fish_sign",
+    "ocr_tables",
+    "ocr_texts"
+  ],
+  "indus_legacy_infrastructure": [
+    "indus_phase16_measure_signature_dofs",
+    "indus_phase16_rerun_indus_grounded",
+    "indus_phase16_sign_clusters",
+    "indus_phase17_measure_damos_dofs",
+    "indus_phase18_measure_and_rerun",
+    "indus_phase19_omnibus",
+    "indus_phase19_sign_clusters_genre_cm"
+  ],
+  "benchmark_non_indus": [
+    "beam_decipher_benchmark",
+    "linear_a_circularity",
+    "meroitic_benchmark",
+    "old_hebrew_self_benchmark",
+    "phoenician_benchmark",
+    "prior_ablation_benchmark",
+    "proto_sinaitic_benchmark",
+    "semitic_constraints_benchmark",
+    "sequence_eval_benchmark",
+    "tier3_sumerian_validation",
+    "tier5_indus_decipherment",
+    "tier5_indus_readings",
+    "tier_diagnostics",
+    "transparency_benchmark",
+    "ugaritic_proper_benchmark",
+    "ugaritic_sa_decipher",
+    "ugaritic_vs_hebrew",
+    "ventris_validation",
+    "writing_system_progression"
+  ],
+  "benchmark_geez": [
+    "geez_anchor_convergence",
+    "geez_anchor_convergence_v2",
+    "geez_decipher"
+  ],
+  "tool_structural_analysis": [
+    "bigram_analysis",
+    "indus_structural_atlas",
+    "kandles_bias",
+    "luwian_kl_scoring",
+    "positional_profile_analysis",
+    "symbol_clustering"
+  ],
+  "indus_cluster_anchored": [
+    "indus_phase9_cluster_anchored_sa",
+    "indus_phase9_dravidian_slot_test",
+    "indus_phase9_p385_phoneme_test"
+  ]
+}

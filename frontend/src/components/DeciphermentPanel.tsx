@@ -10,8 +10,14 @@
  *   - "What Remains" list
  */
 
-import { useEffect, useState } from "react";
-import { getDashboardDecipherment, type DeciphermentProgress } from "../api";
+import { useCallback, useEffect, useState } from "react";
+import {
+  getDashboardDecipherment,
+  getFoundationStatus,
+  updateFoundationConfig,
+  type DeciphermentProgress,
+  type FoundationStatus,
+} from "../api";
 
 const DECIPHER_DONE_KEY    = "glossa_decipher_actions_done";    // localStorage  – success/error
 const DECIPHER_PENDING_KEY = "glossa_decipher_actions_pending"; // sessionStorage – in-flight
@@ -141,6 +147,42 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
   const [busyLabels, setBusyLabels] = useState<Set<string>>(new Set());
   // Persist done/error state across page reloads.
   const [doneLabels, setDoneLabels] = useState<Record<string, DoneResult>>(_loadDone);
+
+  // ── Foundation auto-check state ────────────────────────────────────
+  const [foundationStatus, setFoundationStatus] = useState<FoundationStatus | null>(null);
+  const [autoCheckToggling, setAutoCheckToggling] = useState(false);
+
+  const fetchFoundationStatus = useCallback(async () => {
+    try {
+      const s = await getFoundationStatus();
+      setFoundationStatus(s);
+    } catch { /* ignore */ }
+  }, []);
+
+  useEffect(() => {
+    void fetchFoundationStatus();
+  }, [fetchFoundationStatus]);
+
+  // Listen for foundation-complete events to refresh panel
+  useEffect(() => {
+    const handler = () => {
+      void fetchFoundationStatus();
+    };
+    window.addEventListener("glossa:foundation-complete", handler);
+    return () => window.removeEventListener("glossa:foundation-complete", handler);
+  }, [fetchFoundationStatus]);
+
+  const toggleAutoCheck = async () => {
+    if (!foundationStatus || autoCheckToggling) return;
+    setAutoCheckToggling(true);
+    try {
+      const result = await updateFoundationConfig({
+        auto_check_enabled: !foundationStatus.auto_check_enabled,
+      });
+      setFoundationStatus(prev => prev ? { ...prev, auto_check_enabled: result.auto_check_enabled } : prev);
+    } catch { /* ignore */ }
+    finally { setAutoCheckToggling(false); }
+  };
 
   const handleAction = async (
     label: string, actionType: string,
@@ -413,6 +455,41 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
                 </div>
               )}
             </div>
+          </div>
+        )}
+
+        {/* Foundation auto-check status */}
+        {foundationStatus && (
+          <div style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+            <span style={{ fontSize: 10, color: "#6b7280" }}>
+              Auto-check: every 15m
+              {foundationStatus.last_checked_at && (
+                <> · Last: {(() => {
+                  const t = Date.parse(foundationStatus.last_checked_at);
+                  if (Number.isNaN(t)) return foundationStatus.last_checked_at;
+                  const ago = Math.round((Date.now() - t) / 60000);
+                  return ago < 1 ? "just now" : ago < 60 ? `${ago}m ago` : `${Math.round(ago / 60)}h ago`;
+                })()}</>
+              )}
+              {foundationStatus.verdict && (
+                <> · {foundationStatus.n_fail === 0 ? "✅" : "❌"} {foundationStatus.verdict}</>
+              )}
+            </span>
+            <button
+              onClick={() => void toggleAutoCheck()}
+              disabled={autoCheckToggling}
+              style={{
+                padding: "2px 8px", fontSize: 10, fontWeight: 600,
+                border: `1px solid ${foundationStatus.auto_check_enabled ? "#86efac" : "#d1d5db"}`,
+                borderRadius: 4,
+                background: foundationStatus.auto_check_enabled ? "#f0fdf4" : "#f9fafb",
+                color: foundationStatus.auto_check_enabled ? "#15803d" : "#6b7280",
+                cursor: autoCheckToggling ? "default" : "pointer",
+              }}
+              title={foundationStatus.auto_check_enabled ? "Disable auto-checks" : "Enable auto-checks"}
+            >
+              ⚡ {foundationStatus.auto_check_enabled ? "Auto ON" : "Auto OFF"}
+            </button>
           </div>
         )}
 

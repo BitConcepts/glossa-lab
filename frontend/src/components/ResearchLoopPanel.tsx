@@ -63,12 +63,16 @@ interface AnchorCandidate {
   dedr_support?: string;
   source_experiment: string;
   conflict?: string;
-  review_status: "staged" | "blocked" | "approved" | "rejected";
+  review_status: "staged" | "blocked" | "approved" | "rejected" | "verified" | "expired";
   neighbor_reading?: string;
   neighbor_count?: number;
   corpus_freq?: number;
   animal_freq?: number;
   partner_reading?: string;
+  verified_at?: string;
+  archived_at?: string;
+  archived_reason?: string;
+  sa_delta?: number;
 }
 
 interface Synthesis {
@@ -736,11 +740,7 @@ function CandidatesTable({
                               whiteSpace: "nowrap" }}>
                 {c.evidence_type.replace(/_/g, "\u200b").slice(0, 18)}
               </span>
-              <span style={{ fontSize: 10, padding: "1px 5px", borderRadius: 3,
-                              background: "#dcfce7", color: "#15803d",
-                              fontWeight: 600, textAlign: "center" }}>
-                staged
-              </span>
+              <LifecycleBadge status={c.review_status} />
             </div>
           ))}
           {/* Blocked (collapsed) */}
@@ -757,6 +757,28 @@ function CandidatesTable({
 }
 
 // ── Sub-components ───────────────────────────────────────────────────────────
+
+/** Lifecycle stage badge for anchor candidates. */
+function LifecycleBadge({ status }: { status: string }) {
+  const styles: Record<string, { bg: string; fg: string; label: string }> = {
+    staged:   { bg: "#dcfce7", fg: "#15803d", label: "staged" },
+    approved: { bg: "#dbeafe", fg: "#1d4ed8", label: "approved" },
+    rejected: { bg: "#fef2f2", fg: "#991b1b", label: "rejected" },
+    verified: { bg: "#ecfdf5", fg: "#065f46", label: "verified" },
+    expired:  { bg: "#f3f4f6", fg: "#6b7280", label: "expired" },
+    blocked:  { bg: "#fef3c7", fg: "#92400e", label: "blocked" },
+  };
+  const s = styles[status] ?? styles.staged;
+  return (
+    <span style={{
+      fontSize: 10, padding: "1px 5px", borderRadius: 3,
+      background: s.bg, color: s.fg,
+      fontWeight: 600, textAlign: "center",
+    }}>
+      {s.label}
+    </span>
+  );
+}
 
 function FoundationBadge({ fc }: { fc: FoundationCheck }) {
   if (fc.skipped) {
@@ -955,6 +977,20 @@ function StagingReview({
             <div style={{ fontWeight: 700, color: "#15803d", fontSize: 13, marginBottom: 4 }}>
               All {approved.length + rejected.length} candidates reviewed!
             </div>
+            {/* Show auto-verified count if any candidates were auto-archived */}
+            {(() => {
+              const autoVerified = staging.candidates.filter(
+                (c) => c.review_status === "verified" || c.archived_reason === "auto_verified"
+              );
+              if (autoVerified.length > 0) {
+                return (
+                  <div style={{ fontSize: 12, color: "#15803d", marginBottom: 4 }}>
+                    ✨ Auto-verified and archived: {autoVerified.length} candidate{autoVerified.length !== 1 ? "s" : ""}
+                  </div>
+                );
+              }
+              return null;
+            })()}
             <div style={{ fontSize: 12, color: "#166534" }}>
               {approved.length > 0
                 ? <>{approved.length} approved reading{approved.length !== 1 ? "s" : ""} are ready to anchor.{" "}</>

@@ -12,23 +12,26 @@ import {
 } from "../api";
 import { CorpusAnalyticsPanel } from "./CorpusAnalyticsPanel";
 
-// ── SignGlyph placeholder ───────────────────────────────────────────────
-function hashCode(s: string): number {
-  let h = 0;
-  for (let i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0;
-  return Math.abs(h);
-}
-
-const GLYPH_HUES = [210, 30, 150, 340, 60, 270, 190, 20, 300, 120];
-
-function SignGlyph({ sign_id, size = 56 }: { sign_id: string; size?: number }) {
-  const hue = GLYPH_HUES[hashCode(sign_id) % GLYPH_HUES.length];
-  const bg = `hsl(${hue}, 25%, 18%)`;
-  const fg = `hsl(${hue}, 50%, 75%)`;
-  const border = `hsl(${hue}, 30%, 30%)`;
+// ── SignGlyph ────────────────────────────────────────────────────────────
+function SignGlyph({ sign_id, imageUrl, size = 56 }: { sign_id: string; imageUrl?: string | null; size?: number }) {
+  const [imgFailed, setImgFailed] = useState(false);
+  if (imageUrl && !imgFailed) {
+    return (
+      <img
+        src={imageUrl}
+        alt={sign_id}
+        width={size}
+        height={size}
+        onError={() => setImgFailed(true)}
+        style={{ flexShrink: 0, borderRadius: 6, objectFit: 'contain',
+                 background: '#fff', border: '1px solid #e5e7eb' }}
+      />
+    );
+  }
+  // SVG fallback — white background, black text
   return (
     <svg width={size} height={size} viewBox="0 0 56 56" style={{ flexShrink: 0 }}>
-      <rect x="2" y="2" width="52" height="52" rx="8" fill={bg} stroke={border} strokeWidth="1.5" />
+      <rect x="1" y="1" width="54" height="54" rx="6" fill="#ffffff" stroke="#d1d5db" strokeWidth="1" />
       <text
         x="28" y="33"
         textAnchor="middle"
@@ -36,7 +39,7 @@ function SignGlyph({ sign_id, size = 56 }: { sign_id: string; size?: number }) {
         fontFamily="'Georgia', 'Times New Roman', serif"
         fontWeight="700"
         fontSize={sign_id.length > 4 ? "11" : "14"}
-        fill={fg}
+        fill="#111827"
         letterSpacing="0.5"
       >
         {sign_id}
@@ -104,7 +107,7 @@ function SignCard({ sign, onClick }: { sign: SignEntry; onClick?: () => void }) 
     >
       {/* Top row: glyph + id + reading + confidence */}
       <div style={{ display: "flex", gap: 12, alignItems: "flex-start", marginBottom: 10 }}>
-        <SignGlyph sign_id={sign.sign_id} />
+        <SignGlyph sign_id={sign.sign_id} imageUrl={sign.image_url} />
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
             <span style={{ fontSize: 16, fontWeight: 700, color: "#e2e8f0", fontFamily: "monospace" }}>
@@ -192,7 +195,7 @@ function SignDetail({ sign, onClose }: { sign: SignEntry; onClose: () => void })
       </div>
 
       <div style={{ display: "flex", gap: 16, marginBottom: 20 }}>
-        <SignGlyph sign_id={sign.sign_id} size={80} />
+        <SignGlyph sign_id={sign.sign_id} imageUrl={sign.image_url} size={80} />
         <div>
           <ConfChip level={sign.confidence} />
           {sign.reading && <div style={{ fontSize: 18, fontWeight: 700, color: "#93c5fd", marginTop: 8 }}>{sign.reading}</div>}

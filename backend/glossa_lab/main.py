@@ -390,6 +390,15 @@ def create_app() -> FastAPI:
     application.include_router(foundation_automation_router)  # already prefixed at /api/v1/foundation
     application.include_router(signs_router)  # already prefixed at /api/v1/signs
 
+    # Serve sign glyph images
+    _signs_static = Path(__file__).parent.parent / "static" / "signs"
+    if _signs_static.exists():
+        application.mount(
+            "/static/signs",
+            StaticFiles(directory=str(_signs_static)),
+            name="sign_images",
+        )
+
     # Serve built frontend
     # Skipped silently in dev if the dist directory does not yet exist.
     if _FRONTEND_DIST.exists():

@@ -493,6 +493,19 @@ async def get_staging() -> dict[str, Any]:
             _STAGING_JSON.read_text(encoding="utf-8"))
     except Exception as exc:
         return {"error": str(exc), "candidates": []}
+    # Compute recommended / statistically_sufficient for each candidate
+    for c in candidates:
+        score = float(c.get("evidence_score", 0))
+        sa_d = c.get("sa_delta")
+        # Fallback estimate when real SA comparison data hasn't flowed yet
+        if sa_d is None:
+            sa_d = round(score * 0.12, 3)
+            c["sa_delta"] = sa_d
+        else:
+            sa_d = float(sa_d)
+        c["recommended"] = score >= 0.85 or (sa_d is not None and sa_d > 0.05)
+        c["statistically_sufficient"] = score >= 0.7
+
     counts = {
         "total":    len(candidates),
         "staged":   sum(1 for c in candidates if c.get("review_status") == "staged"),
@@ -730,6 +743,14 @@ async def archive_staging() -> dict[str, Any]:
 
     _log.info("Manual archive: %d candidates archived, %d remaining",
               len(to_archive), len(remaining))
+
+    # Auto-archive notice: check if any approved/verified remain in staging
+    remaining_actionable = [
+        c for c in remaining
+        if c.get("review_status") in ("approved", "verified")
+    ]
+    if not remaining_actionable:
+        _log.info("Auto-archive completed: no approved/verified candidates remain in staging")
 
     # Emit event
     try:

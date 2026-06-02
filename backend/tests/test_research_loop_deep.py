@@ -191,11 +191,22 @@ def test_multi_cycle_varying_insights():
 def test_db_persistence_survives_restart(tmp_db):
     """Run 3 cycles, 'restart' (new ResearchLoop), run 2 more — state continues."""
 
+    # Shared mocks: fast execution and always-pass verification — this test
+    # is about DB persistence state, not corpus analysis or verify logic.
+    def _mock_exec(template: str, timeout: int = 300) -> tuple:
+        return (f"{template}: mock result", {"verdict": "mock"})
+
+    from glossa_lab.loop_proposal import VerificationResult
+    _mock_verify_pass = VerificationResult(ok=True, recommendation="pass")
+    _VERIFY_PATH = "glossa_lab.loop_proposal.verify_before_run"
+
     async def _test():
         # Phase 1: Run 3 cycles
         loop1 = ResearchLoop(max_cycles=3, db=tmp_db)
         with patch.object(loop1, "_mine", side_effect=_make_mine_fn(["reading"])), \
-             patch.object(loop1, "_blitz_mine", return_value=([], [], {})):
+             patch.object(loop1, "_blitz_mine", return_value=([], [], {})), \
+             patch.object(loop1, "_execute_with_corpus_timeout", side_effect=_mock_exec), \
+             patch(_VERIFY_PATH, return_value=_mock_verify_pass):
             all_events1 = list(loop1.run())
         entries1 = _cycle_entries(all_events1)
         assert len(entries1) == 3
@@ -213,14 +224,36 @@ def test_db_persistence_survives_restart(tmp_db):
         papers_seen_after_phase1 = len(state["all_seen"])
 
         # Phase 2: "Restart" — create a brand new ResearchLoop with same DB
+        # (Using __new__ to skip I/O-heavy __init__; set all attributes manually)
         loop2 = ResearchLoop.__new__(ResearchLoop)
         loop2.max_cycles = 2
+        loop2.max_cycle_timeout = 300
         loop2.all_seen = set()
         loop2.history = []
         loop2.running = False
         loop2.should_stop = False
         loop2._db = tmp_db
         loop2._used_experiments = set()
+        # Corpus / anchor attributes (Phase 8+)
+        loop2.corpus_seqs = []
+        loop2.corpus_sites = []
+        loop2.corpus_motifs = []
+        loop2.anchors = {}
+        loop2.high_signs = set()
+        loop2.low_signs = set()
+        loop2.blocker_signs = set()
+        loop2.anchor_candidates = []
+        loop2.path_signals = {}
+        loop2.cycle_analyses = []
+        # Phase E: proposal engine
+        from glossa_lab.loop_proposal import ProposalEngine  # noqa: PLC0415
+        from glossa_lab.pipelines.research_loop import (  # noqa: PLC0415
+            EXPERIMENT_NAMES, TEMPLATE_TO_GRAPH, INSIGHT_TO_EXPERIMENTS)
+        loop2._proposal_engine = ProposalEngine(
+            experiment_names=EXPERIMENT_NAMES,
+            template_to_graph=TEMPLATE_TO_GRAPH,
+            insight_to_experiments=INSIGHT_TO_EXPERIMENTS,
+        )
 
         # Manually load (simulating __init__ with working event loop)
         loaded = await tmp_db.load_research_loop_state()
@@ -232,7 +265,9 @@ def test_db_persistence_survives_restart(tmp_db):
 
         # Run 2 more cycles with guild insights
         with patch.object(loop2, "_mine", side_effect=_make_mine_fn(["guild"])), \
-             patch.object(loop2, "_blitz_mine", return_value=([], [], {})):
+             patch.object(loop2, "_blitz_mine", return_value=([], [], {})), \
+             patch.object(loop2, "_execute_with_corpus_timeout", side_effect=_mock_exec), \
+             patch(_VERIFY_PATH, return_value=_mock_verify_pass):
             all_events2 = list(loop2.run())
         entries2 = _cycle_entries(all_events2)
         assert len(entries2) == 2

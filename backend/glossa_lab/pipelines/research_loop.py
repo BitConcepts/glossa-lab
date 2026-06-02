@@ -33,6 +33,14 @@ from typing import Any, Generator
 
 logger = logging.getLogger(__name__)
 
+
+class _CycleTimeoutError(Exception):
+    """Raised when a single cycle exceeds its wall-clock timeout."""
+    def __init__(self, experiment: str) -> None:
+        self.experiment = experiment
+        super().__init__(f"Cycle timeout: {experiment}")
+
+
 _REPO = Path(__file__).resolve().parents[3]
 _HOLDAT_CSV = _REPO / "corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv"
 _ANCHORS_JSON = _REPO / "backend/reports/INDUS_FINAL_ANCHORS.json"
@@ -247,21 +255,25 @@ def _dedr_support(reading: str) -> str | None:
 class ResearchLoop:
     """Stateful research loop: blitz-mine, adaptive path exploration, act + stage.
 
-    Phase 8:
-    - Corpus (Holdat CSV) and anchor data are loaded at init so experiments
-      receive real inputs instead of empty dicts.
-    - Each run() call starts with a blitz mine across all gap topics,
-      building path_signals used to adaptively select gaps per cycle.
-    - _execute_with_corpus() runs direct corpus analysis functions that
-      produce real metrics (Zipf exponent, suffix frequencies, blocker counts).
-    - _act() interprets each experiment output and generates staged anchor
-      candidates written to outputs/anchor_staging.json.  Not auto-promoted.
+    Phase E (closed-loop):
+    - Each cycle uses Propose → Build → Verify → Run → Analyze pipeline.
+    - ProposalEngine ranks experiment candidates with anti-duplication and
+      cooldown tracking (5-cycle minimum between repeats).
+    - verify_before_run() pre-checks anchor counts and corpus availability.
+    - analyze_result() extracts metrics, detects trends, flags regressions.
+    - Per-cycle analyses stored in history for trend comparison.
+    - Configurable per-cycle timeout (default 300s); partial results saved.
+    - Yields extra SSE events: proposal_selected, build_complete,
+      verify_result, analysis_complete, cycle_timeout, gap_skipped.
 
+    Phase 8: Corpus (Holdat CSV) and anchor data loaded at init.
     Phase 7: history persisted to DB; all_seen is intentionally per-job only.
     """
 
-    def __init__(self, max_cycles: int = 15, *, db: Any | None = None) -> None:
+    def __init__(self, max_cycles: int = 15, *, db: Any | None = None,
+                 max_cycle_timeout_seconds: int = 300) -> None:
         self.max_cycles = max_cycles
+        self.max_cycle_timeout = max_cycle_timeout_seconds
         self.all_seen: set[str] = set()
         self.history: list[dict[str, Any]] = []
         self.running = False
@@ -283,6 +295,17 @@ class ResearchLoop:
         # Per-run staging
         self.anchor_candidates: list[dict[str, Any]] = []
         self.path_signals: dict[str, float] = {}
+
+        # Per-cycle analysis results (Phase E)
+        self.cycle_analyses: list[dict[str, Any]] = []
+
+        # Proposal engine (Phase E)
+        from glossa_lab.loop_proposal import ProposalEngine  # noqa: PLC0415
+        self._proposal_engine = ProposalEngine(
+            experiment_names=EXPERIMENT_NAMES,
+            template_to_graph=TEMPLATE_TO_GRAPH,
+            insight_to_experiments=INSIGHT_TO_EXPERIMENTS,
+        )
 
         self._load_corpus()
         self._load_anchors()
@@ -585,13 +608,22 @@ class ResearchLoop:
     def run(self) -> Generator[dict[str, Any], None, None]:
         """Yield one dict per completed cycle.
 
-        Phase 8 order: blitz mine → adaptive cycles (mine, execute, act) → stage.
+        Phase E order: blitz mine → adaptive cycles
+        (propose → build → verify → run → analyze → act) → stage.
         """
+        from glossa_lab.loop_proposal import (  # noqa: PLC0415
+            analyze_result,
+            build_experiment,
+            verify_before_run,
+        )
+
         self.running = True
         self.should_stop = False
         self.anchor_candidates = []
+        self.cycle_analyses = []
         _dry_streak = 0
         _MAX_DRY = 3
+        _timeout_count = 0
 
         # Phase 1: blitz mine
         _, _, path_signals = self._blitz_mine()
@@ -613,11 +645,175 @@ class ResearchLoop:
             else:
                 _dry_streak = 0
 
-            template = self._select_experiment(insights, cycle)
-            verdict, exp_output = self._execute_with_corpus(template)
-            new_cands = self._act(template, exp_output, insights)
-            self.anchor_candidates.extend(new_cands)
+            # ── PROPOSE ──────────────────────────────────────────────────
+            anchor_count = len(self.high_signs) + len(self.low_signs)
+            proposals = self._proposal_engine.propose(
+                gap=gap["name"],
+                history=self.history,
+                anchor_count=anchor_count,
+                cycle=cycle,
+                insights=insights,
+            )
 
+            if not proposals:
+                # Fallback to rotation
+                template = self._select_experiment(insights, cycle)
+                proposals_used = None
+            else:
+                template = None
+                proposals_used = proposals
+
+            # ── Try proposals until one passes verify ────────────────────
+            selected_proposal = None
+            instance = None
+            verify_ok = False
+
+            if proposals_used:
+                for prop in proposals_used:
+                    inst = build_experiment(
+                        prop,
+                        anchor_set_id=None,
+                        corpus_ids=[],
+                        template_to_graph=TEMPLATE_TO_GRAPH,
+                    )
+                    vr = verify_before_run(
+                        inst,
+                        anchor_count=anchor_count,
+                        corpus_available=bool(self.corpus_seqs),
+                        corpus_seq_count=len(self.corpus_seqs),
+                    )
+                    if vr.recommendation == "pass":
+                        selected_proposal = prop
+                        instance = inst
+                        verify_ok = True
+                        break
+                    elif vr.recommendation == "abort":
+                        logger.warning("Cycle %d: verify abort for %s: %s",
+                                       cycle, prop.experiment_id, vr.issues)
+                        continue
+                    else:  # skip
+                        logger.info("Cycle %d: verify skip for %s: %s",
+                                    cycle, prop.experiment_id, vr.issues)
+                        continue
+
+            # If no proposal passed, try fallback
+            if not verify_ok:
+                if proposals_used:
+                    # All proposals failed verification — skip this gap
+                    yield {
+                        "type": "gap_skipped",
+                        "cycle": cycle,
+                        "gap_targeted": gap["name"],
+                        "reason": "all proposals failed verification",
+                    }
+                    continue
+                # No proposals at all — use rotation fallback
+                if template is None:
+                    template = self._select_experiment(insights, cycle)
+
+            # Resolve template name
+            if selected_proposal:
+                template = selected_proposal.experiment_id
+
+            # Emit proposal_selected event
+            yield {
+                "type": "proposal_selected",
+                "cycle": cycle,
+                "experiment": template,
+                "rationale": selected_proposal.rationale if selected_proposal else "rotation fallback",
+                "priority": selected_proposal.priority if selected_proposal else 0,
+            }
+
+            # Emit build_complete event
+            yield {
+                "type": "build_complete",
+                "cycle": cycle,
+                "experiment": template,
+            }
+
+            # Emit verify_result event
+            yield {
+                "type": "verify_result",
+                "cycle": cycle,
+                "experiment": template,
+                "ok": True,
+                "recommendation": "pass",
+            }
+
+            # ── RUN (with per-cycle timeout) ─────────────────────────────
+            cycle_t0 = time.time()
+            timed_out = False
+            try:
+                verdict, exp_output = self._execute_with_corpus_timeout(
+                    template, self.max_cycle_timeout
+                )
+            except _CycleTimeoutError:
+                timed_out = True
+                _timeout_count += 1
+                verdict = f"{template}: timed out after {self.max_cycle_timeout}s"
+                exp_output = {}
+                logger.warning("Cycle %d: %s timed out", cycle, template)
+                # Record in cooldown to avoid retrying soon
+                self._proposal_engine.record_run(template, cycle)
+                yield {
+                    "type": "cycle_timeout",
+                    "cycle": cycle,
+                    "experiment": template,
+                    "timeout_seconds": self.max_cycle_timeout,
+                }
+                # Fail the whole loop if >50% of cycles time out
+                if _timeout_count > self.max_cycles * 0.5:
+                    logger.error("Loop: >50%% cycles timed out — aborting")
+                    self._save_partial_results()
+                    break
+
+            if not timed_out:
+                new_cands = self._act(template, exp_output, insights)
+                self.anchor_candidates.extend(new_cands)
+            else:
+                new_cands = []
+
+            # Record proposal run
+            self._proposal_engine.record_run(template, cycle)
+
+            # ── ANALYZE ──────────────────────────────────────────────────
+            if selected_proposal and not timed_out:
+                from glossa_lab.loop_proposal import ExperimentProposal as _EP  # noqa: PLC0415
+                analysis = analyze_result(
+                    result=exp_output,
+                    proposal=selected_proposal,
+                    prior_results=self.history,
+                    verdict=verdict,
+                )
+            else:
+                # Minimal analysis for fallback/timeout
+                from glossa_lab.loop_proposal import AnalysisResult  # noqa: PLC0415
+                analysis = AnalysisResult(
+                    summary=verdict[:200] if verdict else template,
+                    metrics={},
+                    flags=["timeout"] if timed_out else [],
+                )
+
+            cycle_analysis_entry = {
+                "cycle": cycle,
+                "experiment": template,
+                "summary": analysis.summary,
+                "metrics": analysis.metrics,
+                "flags": analysis.flags,
+                "suggested_next_steps": analysis.suggested_next_steps,
+            }
+            self.cycle_analyses.append(cycle_analysis_entry)
+
+            # Emit analysis_complete event
+            yield {
+                "type": "analysis_complete",
+                "cycle": cycle,
+                "experiment": template,
+                "summary": analysis.summary,
+                "flags": analysis.flags,
+            }
+
+            # ── Build history entry ──────────────────────────────────────
             is_new = verdict != (self.history[-1]["verdict"] if self.history else "")
             entry = {
                 "cycle": cycle,
@@ -627,17 +823,39 @@ class ResearchLoop:
                 "n_insights": len(insights),
                 "insight_types": dict(Counter(i.get("type", "") for i in insights)),
                 "experiment": template,
-                "selection_method": "insight" if insights else "rotation",
+                "selection_method": "proposal" if selected_proposal else "rotation",
                 "verdict": verdict,
                 "is_new_info": is_new,
                 "n_candidates": len(new_cands),
                 "top_candidate": new_cands[0]["sign"] if new_cands else None,
+                "analysis_metrics": analysis.metrics,
+                "analysis_flags": analysis.flags,
+                "analysis_summary": analysis.summary,
             }
             self.history.append(entry)
-            yield entry
+
+            # Emit the standard cycle entry (node_complete)
+            yield {"type": "node_complete", **entry}
 
         self._save_staging()
+        self._save_partial_results()
         self.running = False
+
+    # ------------------------------------------------------------------
+    # Timeout helper
+    # ------------------------------------------------------------------
+
+    def _execute_with_corpus_timeout(
+        self, template: str, timeout: int
+    ) -> tuple[str, dict[str, Any]]:
+        """Run _execute_with_corpus with a wall-clock timeout."""
+        import concurrent.futures  # noqa: PLC0415
+        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
+            future = pool.submit(self._execute_with_corpus, template)
+            try:
+                return future.result(timeout=timeout)
+            except concurrent.futures.TimeoutError:
+                raise _CycleTimeoutError(template) from None
 
     # ------------------------------------------------------------------
     # Execute with real corpus data
@@ -1084,6 +1302,31 @@ class ResearchLoop:
         return None
 
     # ------------------------------------------------------------------
+    # Partial results
+    # ------------------------------------------------------------------
+
+    def _save_partial_results(self) -> None:
+        """Write completed cycle syntheses to partial_loop_result.json."""
+        if not self.cycle_analyses:
+            return
+        partial_path = _REPO / "outputs" / "partial_loop_result.json"
+        partial_path.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            import json as _j  # noqa: PLC0415
+            partial_path.write_text(
+                _j.dumps({
+                    "cycles_completed": len(self.history),
+                    "max_cycles": self.max_cycles,
+                    "cycle_analyses": self.cycle_analyses,
+                    "history": self.history,
+                }, indent=2, ensure_ascii=False, default=str),
+                encoding="utf-8",
+            )
+            logger.info("Partial results saved → %s", partial_path)
+        except Exception as exc:  # noqa: BLE001
+            logger.warning("Failed to save partial results: %s", exc)
+
+    # ------------------------------------------------------------------
     # Staging
     # ------------------------------------------------------------------
 
@@ -1144,8 +1387,51 @@ class ResearchLoop:
                      if c.get("review_status") == "staged")
         blocked = sum(1 for c in self.anchor_candidates
                       if c.get("review_status") == "blocked")
+
+        # Top findings from cycle analyses (Phase E)
+        top_findings: list[dict[str, Any]] = []
+        for ca in self.cycle_analyses:
+            if ca.get("metrics"):
+                for k, v in list(ca["metrics"].items())[:2]:
+                    if not str(k).endswith("_delta"):
+                        top_findings.append({
+                            "experiment": ca["experiment"],
+                            "metric": k,
+                            "value": v,
+                            "interpretation": ca.get("summary", "")[:120],
+                        })
+        # Deduplicate and limit
+        seen_keys: set[str] = set()
+        unique_findings: list[dict[str, Any]] = []
+        for f in top_findings:
+            key = f"{f['experiment']}:{f['metric']}"
+            if key not in seen_keys:
+                seen_keys.add(key)
+                unique_findings.append(f)
+        top_findings = unique_findings[:10]
+
+        # Proposed next experiments (Phase E)
+        proposed_next: list[dict[str, Any]] = []
+        anchor_count = len(self.high_signs) + len(self.low_signs)
+        try:
+            next_proposals = self._proposal_engine.propose(
+                gap="continuation",
+                history=self.history,
+                anchor_count=anchor_count,
+                cycle=len(self.history) + 1,
+            )
+            for p in next_proposals:
+                proposed_next.append({
+                    "experiment_id": p.experiment_id,
+                    "display_name": p.display_name,
+                    "rationale": p.rationale,
+                    "priority": p.priority,
+                })
+        except Exception:  # noqa: BLE001
+            pass
+
         return {
-            "protocol": "integrated_research_loop_v2",
+            "protocol": "integrated_research_loop_v3",
             "cycles_run": len(self.history),
             "max_cycles": self.max_cycles,
             "total_papers_mined": sum(h["n_papers"] for h in self.history),
@@ -1159,4 +1445,7 @@ class ResearchLoop:
                 "blocked": blocked,
             },
             "history": self.history,
+            "top_findings": top_findings,
+            "proposed_next": proposed_next,
+            "cycle_analyses": self.cycle_analyses,
         }

@@ -1,0 +1,682 @@
+[
+  {
+    "file": "experiment_graph.py",
+    "phases": "core",
+    "category": "structural_analysis",
+    "purpose": "Core experiment graph engine with ~50 built-in atomic nodes (CorpusReader, FreqCounter, PositionalProfiler, EntropyCalc, SADecipher, etc.) and graph execution runtime.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": ["CorpusReader", "FreqCounter", "PositionalProfiler", "EntropyCalc", "Clusterer", "ZipfFitter", "SADecipher", "BeamDecipher", "LMBuilder", "BuiltinLM", "BuiltinCorpus", "KLDivergence", "WritingSystemClassifier", "AnchorConvergenceBenchmark", "ConsistencyScorer", "BenchmarkScorer", "TokenFilter", "ShuffleControl", "ConstraintSweep", "ComparatorAI", "CorpusLM", "AnchorSetLoader", "ReportGenerator", "SubExperiment", "CanonicalSignLoader", "ClusterMapper"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_ctt.py",
+    "phases": "CTT",
+    "category": "ctt",
+    "purpose": "Constraint Topology Theory nodes: IndusSignRoleClassifier, CTTAdmissibilityFilter, HoldoutWordRecall, CompoundDependencyConstraint, CTTAnchoredSADecipher.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": ["IndusSignRoleClassifier", "CTTAdmissibilityFilter", "HoldoutWordRecall", "CompoundDependencyConstraint", "CTTAnchoredSADecipher"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_indus_evidence.py",
+    "phases": "evidence",
+    "category": "misc",
+    "purpose": "Evidence graph nodes for literature/claims management: IndusLiteratureLoader, IndusClaimsLoader, CrossHypothesisMatrix, HiddenHypothesisGen, IndusClaimTester, IndusNullModelTest, IndusIntakeRunner.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": ["IndusLiteratureLoader", "IndusClaimsLoader", "CrossHypothesisMatrix", "HiddenHypothesisGen", "IndusClaimTester", "IndusNullModelTest", "IndusIntakeRunner"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase14.py",
+    "phases": "14",
+    "category": "structural_analysis",
+    "purpose": "Structural language signature analysis: block entropy, conditional entropy, Zipf-Mandelbrot, MI decay, epistatic interaction detection, and language detector verdict.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": ["BlockEntropyProfile", "ConditionalEntropyProfile", "ZipfMandelbrotFit", "MutualInformationDecay", "LanguageSignatureComparator", "ReferenceCorpusLoader", "EpistaticInteractionDetector", "LanguageDetectorVerdict"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase15.py",
+    "phases": "15",
+    "category": "structural_analysis",
+    "purpose": "Long-tail validity filter, cipher self-test runner, multi-hypothesis ranker, and deciphered mapping exporter for validating decipherment approach.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": ["LongTailFilter", "LongTailVerdict", "CipherSelfTestRunner", "MultiHypothesisRanker", "DecipheredMappingExporter"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase_legacy.py",
+    "phases": "16-19",
+    "category": "misc",
+    "purpose": "Legacy migration shims wrapping Phase 16-19 standalone scripts as atomic nodes via subprocess execution.",
+    "status": "legacy",
+    "superseded_by": "phase20+",
+    "key_nodes": ["LegacyPhaseScriptRunner"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase20.py",
+    "phases": "20",
+    "category": "structural_analysis",
+    "purpose": "Length-stratified spectral analysis, cluster archaeology, Ferrara OCR, Fuls positional classifier — follow-ups to Phase-19 findings.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": ["M77InscriptionLoader", "LengthStratifier", "BinSpectralFingerprint", "AllographDetector", "ClusterArchaeology", "PDFTextExtractor", "FulsPositionalClassifier", "Phase20Verdict"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase21.py",
+    "phases": "21",
+    "category": "structural_analysis",
+    "purpose": "Repetition-aware corpus segmentation, site-stratified hypothesis projection, numerical-weight regression — follow-ups to Phase-20.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": ["RepetitionCollapser", "SiteStratifier", "NumericalWeightAnalyzer", "Phase21Verdict"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase22.py",
+    "phases": "22",
+    "category": "contact_zone",
+    "purpose": "CDLI Meluhha-mention corpus loading, Meluhhan named-person extraction, Indus seals at Mesopotamia inventory, and name-seal matcher prototype.",
+    "status": "active",
+    "superseded_by": "phase23",
+    "key_nodes": ["ContactCorpusLoader", "MeluhhaCorpusReporter", "MeluhhanPersonsExtractor", "IndusSealsAtMesopotamiaLoader", "ContactZoneSummary"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase23.py",
+    "phases": "23",
+    "category": "contact_zone",
+    "purpose": "Refined seal sign audit, strict Meluhhan-name extraction with stoplist, bilingual readout permutation test — first quantitative bilingual analysis.",
+    "status": "active",
+    "superseded_by": "phase24",
+    "key_nodes": ["RefinedSealLoader", "SealSignAuditor", "RefinedMeluhhanPersonsExtractor", "EnhancedNameMatcher", "BilingualReadoutTest"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase24.py",
+    "phases": "24",
+    "category": "contact_zone",
+    "purpose": "Laursen 2010 Table 1 audit, seal sign-ID upgrade, persons-v2 toponym-filtered, bipartite readout test v2 with proper null model.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": ["LaursenTable1Loader", "RefinedSealLoaderV2", "SealSignUpgradeAuditor", "RefinedMeluhhanPersonsExtractorV2", "BilingualReadoutTestV2"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase25.py",
+    "phases": "25",
+    "category": "sa_variant",
+    "purpose": "Janabiyah phonetic readout, blind held-out phonetic test, period-stratified replication, Tamil-Brahmi cross-check.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": ["JanabiyahPhoneticReadout", "BlindHeldOutTest", "PeriodStratifiedReplication", "TamilBrahmiCrossCheck"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase26.py",
+    "phases": "26",
+    "category": "sa_variant",
+    "purpose": "Provenience-stratified SA, Bayesian decoder, expanded readout, find-spot analysis — overrides some Phase-25 nodes.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": ["ProvenienceStratifiedReadout", "BayesianDecoder", "ExpandedReadout", "FindSpotAnalysis"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase27.py",
+    "phases": "27",
+    "category": "sa_variant",
+    "purpose": "Reverse Janabiyah test, Bayesian v2 decoder, iconographic anchors, 6-bucket period stratification.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": ["ReverseJanabiyah", "BayesianV2Decoder", "IconographicAnchors"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase28.py",
+    "phases": "28",
+    "category": "archaeological",
+    "purpose": "CISI Vol 3 OCR via LLM vision, Mahadevan crosswalk, allograph-aware SA decipherment.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": ["CISIVol3OCR", "MahadevanCrosswalk", "AllographAwareSA"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase29.py",
+    "phases": "29",
+    "category": "archaeological",
+    "purpose": "Corpus 10x expansion: M77, ePSD2, Fuls, and ICIT loaders for broadening the sign inventory.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": ["M77Loader", "EPSD2Loader", "FulsLoader", "ICITLoader"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase30.py",
+    "phases": "30,32",
+    "category": "sa_variant",
+    "purpose": "Length-cohort reverse Janabiyah, per-bin permutation null, PermutationTest, MeluhhaCooccurrenceCheck, DravidianSyllableLM.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": ["LengthCohortReverseJanabiyah", "PermutationTest", "MeluhhaCooccurrenceCheck", "DravidianSyllableLM"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase_misc_gaps.py",
+    "phases": "44-47,202,209-215,254-256",
+    "category": "misc",
+    "purpose": "Previously unregistered phase scripts wrapped as subprocess runner nodes: infrastructure, fish tests, bulk mines, anchor injections, PDF reports.",
+    "status": "legacy",
+    "superseded_by": null,
+    "key_nodes": ["IndusPhase44Infrastructure", "IndusPhase45FishCoastal", "IndusPhase46ContactZone", "IndusPhase47PhonemeAssign", "IndusPhase202BulkMine2", "IndusPhase209AnchorM712M817", "IndusPhase210BrahuiGenomics", "IndusPhase215PDFReport"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase48_55.py",
+    "phases": "48-55",
+    "category": "sa_variant",
+    "purpose": "Full Indus decipherment pipeline — GPU mandatory SA runs with expanded anchor sets.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase56_61.py",
+    "phases": "56-61",
+    "category": "sa_variant",
+    "purpose": "Expanded Parpola corpus SA, phonotactic falsification tests — GPU mandatory.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase62_66.py",
+    "phases": "62-66",
+    "category": "sa_variant",
+    "purpose": "Ensemble fix, phonotactic filter, morpheme boundary detection, crosswalk, Sanskrit SA.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase67_73.py",
+    "phases": "67-73",
+    "category": "sa_variant",
+    "purpose": "Sanskrit normalization, formula translation, M267 validation, site stratification, crosswalk, parser.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase74_80.py",
+    "phases": "74-80",
+    "category": "lm_scoring",
+    "purpose": "Grammar test, Levit analysis, place formula, SA agreement, semantic cluster, gap analysis, DEDR.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase81_87.py",
+    "phases": "81-87",
+    "category": "sa_variant",
+    "purpose": "M293 deep-dive, seal translation, gap sprint, formula lexicon, CISI cross-validation, phonology, sprint-120.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase88_90.py",
+    "phases": "88-90",
+    "category": "misc",
+    "purpose": "Literature mine, DEDR systematic expansion to 120, scholarly translations.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase91_100.py",
+    "phases": "91-100",
+    "category": "sa_variant",
+    "purpose": "Anchor-120 SA, uncertain reduce, M293 SA, fulltext, retroflex, crosswalk, trigram, grammar, academic, full-corpus.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase101_103.py",
+    "phases": "101-103",
+    "category": "archaeological",
+    "purpose": "M293 iconographic analysis, PDF extraction, personal name lexicon construction.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase104_109.py",
+    "phases": "104-109",
+    "category": "sa_variant",
+    "purpose": "OCR pipeline, name signs, name SA, Tamil-Brahmi check, phoneme exhaustion, academic submission prep.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase110_115.py",
+    "phases": "110-115",
+    "category": "sa_variant",
+    "purpose": "Targeted SA, allographs, grammar inference, M→H upgrade, seal translations, significance testing.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase116_121.py",
+    "phases": "116-121",
+    "category": "sa_variant",
+    "purpose": "SA recalibration, grammar LOW, site semantics, arXiv prep, LOW→MED upgrade, full email.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase122_123.py",
+    "phases": "122-123",
+    "category": "cross_language",
+    "purpose": "Syllabic SA decipherment variant, Munda/BMAC substrate hypothesis testing.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase124_125.py",
+    "phases": "124-125",
+    "category": "structural_analysis",
+    "purpose": "Fish-sign polysemy analysis, Arthasastra text mining for trade vocabulary.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase126.py",
+    "phases": "126",
+    "category": "archaeological",
+    "purpose": "ICIT corpus integration and sign inventory alignment.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase127.py",
+    "phases": "127",
+    "category": "contact_zone",
+    "purpose": "Gulf corpus analysis, Roif mining, fish-sign site polysemy investigation.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase128_133.py",
+    "phases": "128-133",
+    "category": "sa_variant",
+    "purpose": "Continued SA refinement and anchor injection cycles.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase134_141.py",
+    "phases": "134-141",
+    "category": "structural_analysis",
+    "purpose": "Falsification suite, advancement testing, extended battery, master scorecard for decipherment quality.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase142_145.py",
+    "phases": "142-145",
+    "category": "sa_variant",
+    "purpose": "Further SA anchor injection and refinement cycles.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase146_155.py",
+    "phases": "146-155",
+    "category": "sa_variant",
+    "purpose": "Expanded SA parameter exploration and convergence testing.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase156_165.py",
+    "phases": "156-165",
+    "category": "sa_variant",
+    "purpose": "Advanced SA iterations with refined anchors and extended corpus coverage.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase166_168.py",
+    "phases": "166-168",
+    "category": "lm_scoring",
+    "purpose": "Sibilant validation, Meluhhan expansion, blocker SA — final pre-ICIT phase group.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase169_170.py",
+    "phases": "169-170",
+    "category": "structural_analysis",
+    "purpose": "Master synthesis and grammar variance analysis — computational frontier experiments.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase171_178.py",
+    "phases": "171-178",
+    "category": "structural_analysis",
+    "purpose": "Network centrality, betweenness stratification, and network deep-dive analysis of sign co-occurrence.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase179_180.py",
+    "phases": "179-180",
+    "category": "misc",
+    "purpose": "Recent literature mine and Mesopotamian contact evidence mining.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase181.py",
+    "phases": "181",
+    "category": "archaeological",
+    "purpose": "aDNA archaeogenetics mine — population genetics evidence for IVC language affiliation.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase182.py",
+    "phases": "182",
+    "category": "misc",
+    "purpose": "Deep evidence mine — comprehensive literature and evidence gathering.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase183.py",
+    "phases": "183",
+    "category": "misc",
+    "purpose": "Bulk mine 5000 — large-scale literature mining run.",
+    "status": "active",
+    "superseded_by": "phase184",
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase184.py",
+    "phases": "184",
+    "category": "misc",
+    "purpose": "Bulk mine 5000 second run with fresh topic clusters.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase185_189.py",
+    "phases": "185-189",
+    "category": "cross_language",
+    "purpose": "Fish-sign battery, Elamo-Dravidian gap analysis, 2026 hypotheses, commodity semantic, north Dravidian LM.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase190_192.py",
+    "phases": "190-192",
+    "category": "sa_variant",
+    "purpose": "Elamite anchor injection, grammar validation, anchor update proposal.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase193_195.py",
+    "phases": "193-195",
+    "category": "sa_variant",
+    "purpose": "SA rerun, SSRN fetch, grammar revalidation cycle.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase196_201.py",
+    "phases": "196-201",
+    "category": "sa_variant",
+    "purpose": "Mine3, top-8 analysis, DEDR lookup, triple-LM comparison, allograph, inscription reading.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase203_205.py",
+    "phases": "203-205",
+    "category": "cross_language",
+    "purpose": "E28 falsification, McAlpin extended cognates, Bayesian phylogenetics for language family testing.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase206_208.py",
+    "phases": "206-208",
+    "category": "sa_variant",
+    "purpose": "Anchor injection M692/M861, SA rerun 404, bulk mine fifth run.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase216_220.py",
+    "phases": "216-220",
+    "category": "sa_variant",
+    "purpose": "SA recalibration, site semantic analysis, arXiv preparation, Parpola/CISI alignment.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase221_225.py",
+    "phases": "221-225",
+    "category": "sa_variant",
+    "purpose": "P324/P122 investigation, CISI injection, slot mismatch analysis, PDF extraction.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase226_228.py",
+    "phases": "226-228",
+    "category": "sa_variant",
+    "purpose": "P122 phonetic analysis, P324 formula detection, CISI tripartite structure analysis.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase229.py",
+    "phases": "229",
+    "category": "sa_variant",
+    "purpose": "CISI anchor SA test and M122 sign upgrade.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase230_234.py",
+    "phases": "230-234",
+    "category": "contact_zone",
+    "purpose": "Cross-reference matrix, indirect bilingual mine/score, cultural/demographic analysis, P324 investigation.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase235_236.py",
+    "phases": "235-236",
+    "category": "cross_language",
+    "purpose": "Elamite–Proto-Dravidian bridge analysis, Sanskrit loanword mapping.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase237_246.py",
+    "phases": "237-246",
+    "category": "sa_variant",
+    "purpose": "Blocker mine, batch upgrades, synthesis, E41 DEDR, SA crossing experiments.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase248_253.py",
+    "phases": "248-254",
+    "category": "sa_variant",
+    "purpose": "Ceiling-breaker mine, allograph experiments, CISI allograph, semantic constraint.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase257_294.py",
+    "phases": "257-294",
+    "category": "sa_variant",
+    "purpose": "SA reruns, Yajnadevam corpus, DEDR resolution, final 605/605 full-corpus decipherment.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase295_297.py",
+    "phases": "295-297",
+    "category": "misc",
+    "purpose": "Bulk mine May 2026, mine cross-reference, gap analysis.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase298_308.py",
+    "phases": "298-308",
+    "category": "cross_language",
+    "purpose": "Deep Munda mine, Munda SA, substrate analysis, archaeology, anchored Munda SA, allograph, cross-researcher, semantic, DEDR, Elamite baseline.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_phase322_362.py",
+    "phases": "322-362",
+    "category": "sa_variant",
+    "purpose": "May 2026 decipherment advancement session — latest SA and analysis nodes.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": [],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_contact_zone.py",
+    "phases": "new",
+    "category": "contact_zone",
+    "purpose": "Contact-zone KL divergence, synthesis, and A/B comparison templates for quantifying inter-corpus contact signals.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": ["ContactZoneKLDivergence", "ContactZoneSynthesis", "ContactZoneABComparison"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_ab_language.py",
+    "phases": "new",
+    "category": "cross_language",
+    "purpose": "A/B language comparison templates using anchored SA: Dravidian vs Sanskrit, Munda, Hebrew, plus LM consistency matrix.",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": ["AnchoredSALanguageAB", "LMConsistencyMatrix"],
+    "recommendation": "keep"
+  },
+  {
+    "file": "experiment_graph_cross_culture.py",
+    "phases": "new",
+    "category": "cross_language",
+    "purpose": "Cultural contact matrix (pairwise corpus contact scores) and script family classifier (syllabary/logographic/abjad/alphabet).",
+    "status": "active",
+    "superseded_by": null,
+    "key_nodes": ["CulturalContactMatrix", "ScriptFamilyClassifier"],
+    "recommendation": "keep"
+  }
+]

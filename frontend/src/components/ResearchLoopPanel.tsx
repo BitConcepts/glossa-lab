@@ -63,12 +63,30 @@ interface AnchorCandidate {
   dedr_support?: string;
   source_experiment: string;
   conflict?: string;
-  review_status: "staged" | "blocked" | "approved" | "rejected";
+  review_status: "staged" | "blocked" | "approved" | "rejected" | "verified" | "expired";
   neighbor_reading?: string;
   neighbor_count?: number;
   corpus_freq?: number;
   animal_freq?: number;
   partner_reading?: string;
+  verified_at?: string;
+  archived_at?: string;
+  archived_reason?: string;
+  sa_delta?: number;
+}
+
+interface TopFinding {
+  experiment: string;
+  metric: string;
+  value: number | string;
+  interpretation: string;
+}
+
+interface ProposedNext {
+  experiment_id: string;
+  display_name: string;
+  rationale: string;
+  priority: number;
 }
 
 interface Synthesis {
@@ -81,6 +99,8 @@ interface Synthesis {
   foundation_check: FoundationCheck;
   anchor_candidates?: AnchorCandidate[];
   candidate_counts?: { total: number; staged: number; blocked: number };
+  top_findings?: TopFinding[];
+  proposed_next?: ProposedNext[];
 }
 
 interface LastRun {
@@ -114,6 +134,13 @@ export function ResearchLoopPanel() {
   const [cycles, setCycles] = useState(15);
   const [log, setLog] = useState<CycleEntry[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [stallReason, setStallReason] = useState<string | null>(null);
+  const [failureDetail, setFailureDetail] = useState<{
+    reason: string;
+    cycles_completed: number;
+    last_experiment: string;
+    elapsed_seconds: number;
+  } | null>(null);
   const [lastRun, setLastRun] = useState<LastRun | null>(null);
   const [synthesis, setSynthesis] = useState<Synthesis | null>(null);
   const [staging, setStaging] = useState<StagingData | null>(null);
@@ -160,6 +187,8 @@ export function ResearchLoopPanel() {
     }
     setRunning(true);
     setError(null);
+    setStallReason(null);
+    setFailureDetail(null);
     setLog([]);
     setSynthesis(null);
 
@@ -183,14 +212,64 @@ export function ResearchLoopPanel() {
             try {
               const event = JSON.parse(line.slice(6)) as CycleEntry & {
                 type?: string; synthesis?: Synthesis;
+                  reason?: string; cycles_completed?: number;
+                  last_experiment?: string; elapsed_seconds?: number;
+                  experiment?: string; rationale?: string;
+                  summary?: string; flags?: string[];
+                  ok?: boolean; timeout_seconds?: number; gap_targeted?: string;
               };
               if (event.type === "complete") {
                 if (event.synthesis) setSynthesis(event.synthesis);
-                // Notify DashboardView so it can pull the new insight
                 window.dispatchEvent(new CustomEvent("glossa:loop-complete"));
                 void fetchStatus();
                 void fetchLastRun();
                 void fetchStaging();
+              } else if (event.type === "proposal_selected") {
+                setLog((prev) => [...prev, {
+                  cycle: event.cycle ?? 0, gap_targeted: "",
+                  experiment: event.experiment ?? "", n_papers: 0, n_insights: 0,
+                  insight_types: {}, verdict: `\u{1F4A1} Proposed: ${event.rationale ?? ""}`,
+                  is_new_info: false, selection_method: "proposal",
+                } as CycleEntry]);
+              } else if (event.type === "verify_result") {
+                setLog((prev) => [...prev, {
+                  cycle: event.cycle ?? 0, gap_targeted: "",
+                  experiment: event.experiment ?? "", n_papers: 0, n_insights: 0,
+                  insight_types: {}, verdict: `\u2713 Verified: ${event.ok ? "pass" : "fail"}`,
+                  is_new_info: false, selection_method: "verify",
+                } as CycleEntry]);
+              } else if (event.type === "analysis_complete") {
+                setLog((prev) => [...prev, {
+                  cycle: event.cycle ?? 0, gap_targeted: "",
+                  experiment: event.experiment ?? "", n_papers: 0, n_insights: 0,
+                  insight_types: {}, verdict: `\u{1F4CA} ${(event.summary ?? "").slice(0, 80)}`,
+                  is_new_info: false, selection_method: "analysis",
+                } as CycleEntry]);
+              } else if (event.type === "cycle_timeout") {
+                setLog((prev) => [...prev, {
+                  cycle: event.cycle ?? 0, gap_targeted: "",
+                  experiment: event.experiment ?? "", n_papers: 0, n_insights: 0,
+                  insight_types: {}, verdict: `\u23F1 Timeout (${event.timeout_seconds ?? 300}s)`,
+                  is_new_info: false, selection_method: "timeout",
+                } as CycleEntry]);
+              } else if (event.type === "gap_skipped") {
+                setLog((prev) => [...prev, {
+                  cycle: event.cycle ?? 0, gap_targeted: event.gap_targeted ?? "",
+                  experiment: "", n_papers: 0, n_insights: 0,
+                  insight_types: {}, verdict: `\u23ED Gap skipped: ${event.reason ?? ""}`,
+                  is_new_info: false, selection_method: "skipped",
+                } as CycleEntry]);
+                            } else if (event.type === "error") {
+                setError(event.reason || "Loop failed");
+                setStallReason(event.reason === "timeout" ? "timeout" : null);
+                setFailureDetail({
+                  reason: event.reason || "unknown",
+                  cycles_completed: event.cycles_completed ?? 0,
+                  last_experiment: event.last_experiment ?? "",
+                  elapsed_seconds: event.elapsed_seconds ?? 0,
+                });
+                } else if (event.type === "node_complete" && event.cycle) {
+                setLog((prev) => [...prev, event as CycleEntry]);
               } else if (event.cycle) {
                 setLog((prev) => [...prev, event as CycleEntry]);
               }
@@ -262,7 +341,7 @@ export function ResearchLoopPanel() {
 
       {/* ── Protocol description ── */}
       <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 10 }}>
-        Mine → Analyze → Register → Execute → Analyze · {cycles} cycles ·
+        Propose → Build → Verify → Run → Analyze · {cycles} cycles ·
         15 gap topics × 15 experiment templates
       </div>
 
@@ -399,6 +478,33 @@ export function ResearchLoopPanel() {
                       background: "#fef2f2", border: "1px solid #fca5a5",
                       borderRadius: 6, padding: "6px 10px" }}>
           {error}
+          {failureDetail && (
+            <div style={{ marginTop: 6, fontSize: 11, color: "#7f1d1d",
+                          borderTop: "1px solid #fca5a5", paddingTop: 6 }}>
+              {stallReason === "timeout" && (
+                <div style={{ marginBottom: 4, fontWeight: 700 }}>
+                  ⏱ Loop timed out after {failureDetail.cycles_completed} cycles.
+                  Try fewer cycles or check backend logs.
+                </div>
+              )}
+              <div>Cycles completed: {failureDetail.cycles_completed}</div>
+              {failureDetail.last_experiment && (
+                <div>Last experiment attempted: <code style={{
+                  background: "#fee2e2", padding: "0 4px", borderRadius: 2, fontSize: 10,
+                }}>{failureDetail.last_experiment}</code></div>
+              )}
+              <div>Time elapsed: {failureDetail.elapsed_seconds < 60
+                ? `${failureDetail.elapsed_seconds}s`
+                : `${Math.floor(failureDetail.elapsed_seconds / 60)}m ${Math.round(failureDetail.elapsed_seconds % 60)}s`
+              }</div>
+              {stallReason !== "timeout" && failureDetail.reason && (
+                <div style={{ marginTop: 4, fontFamily: "monospace", fontSize: 10,
+                              color: "#991b1b", wordBreak: "break-all" }}>
+                  {failureDetail.reason}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -515,6 +621,77 @@ function RunSummary({
               {f.replace("[FAIL] ", "")}
             </div>
           ))}
+        </div>
+      )}
+
+      {/* Top Findings (Phase E) */}
+      {(synthesis.top_findings?.length ?? 0) > 0 && (
+        <div style={{ marginBottom: 12 }}>
+          <div style={{ fontSize: 11, fontWeight: 600, color: "#374151",
+                        marginBottom: 6 }}>Top findings</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+            {synthesis.top_findings!.slice(0, 3).map((f, i) => (
+              <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start",
+                                    padding: "5px 8px", borderRadius: 5,
+                                    background: "#f0fdf4",
+                                    border: "1px solid #bbf7d0" }}>
+                <span style={{ fontSize: 13, flexShrink: 0 }}>📈</span>
+                <div style={{ flex: 1 }}>
+                  <span style={{ fontSize: 11, fontWeight: 600, color: "#15803d" }}>
+                    {f.experiment.replace(/_/g, " ")}
+                  </span>
+                  <span style={{ fontSize: 11, color: "#6b7280", marginLeft: 6 }}>
+                    {f.metric}={typeof f.value === "number" ? (f.value as number).toFixed(3) : f.value}
+                  </span>
+                  <div style={{ fontSize: 10, color: "#374151", marginTop: 2 }}>
+                    {f.interpretation}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Proposed Next Experiments (Phase E) */}
+      {(synthesis.proposed_next?.length ?? 0) > 0 && (
+        <div style={{ marginBottom: 12 }}>
+          <div style={{ fontSize: 11, fontWeight: 600, color: "#374151",
+                        marginBottom: 6 }}>Proposed next experiments</div>
+          <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+            {synthesis.proposed_next!.map((p, i) => (
+              <div key={i} style={{ display: "flex", gap: 8, alignItems: "center",
+                                    padding: "5px 8px", borderRadius: 5,
+                                    background: "#ede9fe",
+                                    border: "1px solid #c4b5fd" }}>
+                <span style={{ fontSize: 13, flexShrink: 0 }}>🔬</span>
+                <div style={{ flex: 1, fontSize: 11, color: "#374151" }}>
+                  <span style={{ fontWeight: 600, color: "#5b21b6" }}>
+                    {p.display_name}
+                  </span>
+                  <span style={{ marginLeft: 6, color: "#6b7280" }}>
+                    — {p.rationale}
+                  </span>
+                </div>
+                {onStartLoop && (
+                  <button
+                    disabled={loopRunning}
+                    onClick={() => onStartLoop(p.experiment_id)}
+                    style={{
+                      padding: "2px 8px", fontSize: 10, fontWeight: 700,
+                      borderRadius: 4, whiteSpace: "nowrap", flexShrink: 0,
+                      cursor: loopRunning ? "default" : "pointer",
+                      border: "1px solid #7c3aed",
+                      background: loopRunning ? "#f3f4f6" : "#7c3aed",
+                      color: loopRunning ? "#9ca3af" : "#fff",
+                    }}
+                  >
+                    ▶ Run
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       )}
 
@@ -689,11 +866,7 @@ function CandidatesTable({
                               whiteSpace: "nowrap" }}>
                 {c.evidence_type.replace(/_/g, "\u200b").slice(0, 18)}
               </span>
-              <span style={{ fontSize: 10, padding: "1px 5px", borderRadius: 3,
-                              background: "#dcfce7", color: "#15803d",
-                              fontWeight: 600, textAlign: "center" }}>
-                staged
-              </span>
+              <LifecycleBadge status={c.review_status} />
             </div>
           ))}
           {/* Blocked (collapsed) */}
@@ -710,6 +883,28 @@ function CandidatesTable({
 }
 
 // ── Sub-components ───────────────────────────────────────────────────────────
+
+/** Lifecycle stage badge for anchor candidates. */
+function LifecycleBadge({ status }: { status: string }) {
+  const styles: Record<string, { bg: string; fg: string; label: string }> = {
+    staged:   { bg: "#dcfce7", fg: "#15803d", label: "staged" },
+    approved: { bg: "#dbeafe", fg: "#1d4ed8", label: "approved" },
+    rejected: { bg: "#fef2f2", fg: "#991b1b", label: "rejected" },
+    verified: { bg: "#ecfdf5", fg: "#065f46", label: "verified" },
+    expired:  { bg: "#f3f4f6", fg: "#6b7280", label: "expired" },
+    blocked:  { bg: "#fef3c7", fg: "#92400e", label: "blocked" },
+  };
+  const s = styles[status] ?? styles.staged;
+  return (
+    <span style={{
+      fontSize: 10, padding: "1px 5px", borderRadius: 3,
+      background: s.bg, color: s.fg,
+      fontWeight: 600, textAlign: "center",
+    }}>
+      {s.label}
+    </span>
+  );
+}
 
 function FoundationBadge({ fc }: { fc: FoundationCheck }) {
   if (fc.skipped) {
@@ -908,6 +1103,20 @@ function StagingReview({
             <div style={{ fontWeight: 700, color: "#15803d", fontSize: 13, marginBottom: 4 }}>
               All {approved.length + rejected.length} candidates reviewed!
             </div>
+            {/* Show auto-verified count if any candidates were auto-archived */}
+            {(() => {
+              const autoVerified = staging.candidates.filter(
+                (c) => c.review_status === "verified" || c.archived_reason === "auto_verified"
+              );
+              if (autoVerified.length > 0) {
+                return (
+                  <div style={{ fontSize: 12, color: "#15803d", marginBottom: 4 }}>
+                    ✨ Auto-verified and archived: {autoVerified.length} candidate{autoVerified.length !== 1 ? "s" : ""}
+                  </div>
+                );
+              }
+              return null;
+            })()}
             <div style={{ fontSize: 12, color: "#166534" }}>
               {approved.length > 0
                 ? <>{approved.length} approved reading{approved.length !== 1 ? "s" : ""} are ready to anchor.{" "}</>

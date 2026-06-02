@@ -2,6 +2,12 @@
 
 Comprehensive catalog of all experiment graph phase files in the Glossa Lab research platform.
 
+## Canonical Experiment IDs
+
+See `experiment_id_aliases.json` for the mapping from descriptive canonical IDs
+to legacy phase-based IDs. Use canonical IDs in new code; phase-based IDs remain
+supported as aliases for backward compatibility.
+
 ## Summary
 
 | Phase File | Category | Status | Purpose | Recommendation |

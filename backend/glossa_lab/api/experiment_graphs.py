@@ -17,6 +17,7 @@ import json
 import logging
 from collections.abc import AsyncGenerator
 from datetime import UTC, datetime
+from pathlib import Path as _Path
 from typing import Any
 
 from fastapi import APIRouter, HTTPException
@@ -36,6 +37,29 @@ from glossa_lab.experiment_graph import (
 )
 
 logger = logging.getLogger(__name__)
+
+# ── Experiment ID alias resolution ────────────────────────────────────────
+
+_ALIASES_PATH = _Path(__file__).parent.parent / "experiment_id_aliases.json"
+
+
+def _load_aliases() -> dict[str, str]:
+    """Return old_id -> canonical_id mapping."""
+    if not _ALIASES_PATH.exists():
+        return {}
+    try:
+        data = json.loads(_ALIASES_PATH.read_text(encoding="utf-8"))
+        # data is canonical -> [old_ids]; invert to old_id -> canonical
+        result: dict[str, str] = {}
+        for canonical, aliases in data.items():
+            for alias in (aliases or []):
+                result[alias] = canonical
+        return result
+    except Exception:  # noqa: BLE001
+        return {}
+
+
+_EXPERIMENT_ALIASES: dict[str, str] = _load_aliases()
 router = APIRouter(prefix="/experiment-graphs", tags=["experiment-graphs"])
 
 _SSE_HEADERS = {"Cache-Control": "no-cache", "X-Accel-Buffering": "no"}
@@ -118,6 +142,7 @@ async def list_experiments() -> list[dict[str, Any]]:
 
 @router.get("/{exp_id}")
 async def get_experiment(exp_id: str) -> dict[str, Any]:
+    exp_id = _EXPERIMENT_ALIASES.get(exp_id, exp_id)
     d = get_graph_experiment(exp_id)
     if d is None:
         raise HTTPException(status_code=404, detail=f"Graph experiment '{exp_id}' not found")
@@ -558,6 +583,7 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
     the HTTP connection.  Browser disconnect / sleep / navigation never stops
     the computation.  The SA node always runs to completion.
     """
+    exp_id = _EXPERIMENT_ALIASES.get(exp_id, exp_id)
     d = get_graph_experiment(exp_id)
     if d is None:
         raise HTTPException(status_code=404, detail=f"Graph experiment '{exp_id}' not found")

@@ -1,0 +1,105 @@
+{
+  "cycles_completed": 3,
+  "max_cycles": 3,
+  "cycle_analyses": [
+    {
+      "cycle": 1,
+      "experiment": "reading_frequency_zipf",
+      "summary": "Reading Frequency Zipf: Zipf: α=0.796 (156 readings). Linguistic. · zipf_alpha=0.796",
+      "metrics": {
+        "zipf_alpha": 0.796
+      },
+      "flags": [],
+      "suggested_next_steps": [
+        "Try a different experiment type to explore new angles"
+      ]
+    },
+    {
+      "cycle": 2,
+      "experiment": "motif_title_correlation",
+      "summary": "Motif Title Correlation: Motif-title: 0 motifs have title reading profiles. · n_motifs=0",
+      "metrics": {
+        "n_motifs": 0
+      },
+      "flags": [],
+      "suggested_next_steps": [
+        "Try a different experiment type to explore new angles"
+      ]
+    },
+    {
+      "cycle": 3,
+      "experiment": "site_specific_formula",
+      "summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9",
+      "metrics": {
+        "n_sites": 9
+      },
+      "flags": [],
+      "suggested_next_steps": [
+        "Try a different experiment type to explore new angles"
+      ]
+    }
+  ],
+  "history": [
+    {
+      "cycle": 1,
+      "timestamp": "2026-06-02T10:06:24.409425+00:00",
+      "gap_targeted": "rare_sign_context",
+      "n_papers": 2,
+      "n_insights": 2,
+      "insight_types": {
+        "reading": 2
+      },
+      "experiment": "reading_frequency_zipf",
+      "selection_method": "proposal",
+      "verdict": "Zipf: α=0.796 (156 readings). Linguistic.",
+      "is_new_info": true,
+      "n_candidates": 0,
+      "top_candidate": null,
+      "analysis_metrics": {
+        "zipf_alpha": 0.796
+      },
+      "analysis_flags": [],
+      "analysis_summary": "Reading Frequency Zipf: Zipf: α=0.796 (156 readings). Linguistic. · zipf_alpha=0.796"
+    },
+    {
+      "cycle": 2,
+      "timestamp": "2026-06-02T10:06:24.409425+00:00",
+      "gap_targeted": "compound_morphology",
+      "n_papers": 1,
+      "n_insights": 1,
+      "insight_types": {
+        "guild": 1
+      },
+      "experiment": "motif_title_correlation",
+      "selection_method": "proposal",
+      "verdict": "Motif-title: 0 motifs have title reading profiles.",
+      "is_new_info": true,
+      "n_candidates": 0,
+      "top_candidate": null,
+      "analysis_metrics": {
+        "n_motifs": 0
+      },
+      "analysis_flags": [],
+      "analysis_summary": "Motif Title Correlation: Motif-title: 0 motifs have title reading profiles. · n_motifs=0"
+    },
+    {
+      "cycle": 3,
+      "timestamp": "2026-06-02T10:06:24.409425+00:00",
+      "gap_targeted": "seal_owner_identity",
+      "n_papers": 0,
+      "n_insights": 0,
+      "insight_types": {},
+      "experiment": "site_specific_formula",
+      "selection_method": "proposal",
+      "verdict": "Site formulas: 9 sites with unique formula sets.",
+      "is_new_info": true,
+      "n_candidates": 0,
+      "top_candidate": null,
+      "analysis_metrics": {
+        "n_sites": 9
+      },
+      "analysis_flags": [],
+      "analysis_summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9"
+    }
+  ]
+}

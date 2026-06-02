@@ -45,6 +45,7 @@ import { useAIChat } from "../hooks/useAIChat";
 import { useProject } from "../hooks/useProject";
 import { useToast } from "../hooks/useToast";
 import { DeciphermentPanel } from "./DeciphermentPanel";
+import ExperimentRegistry from "./ExperimentRegistry";
 import { ResearchLoopPanel } from "./ResearchLoopPanel";
 
 // ── Insight persistence ──────────────────────────────────────────────────
@@ -898,6 +899,9 @@ export function DashboardView() {
           borderRadius: 7, padding: "10px 14px", fontSize: 13, color: "#b91c1c",
           marginBottom: 12 }}>{error}</div>
       )}
+
+      {/* Experiment Registry */}
+      <ExperimentRegistry />
 
       {/* Decipherment Progress Panel */}
       <DeciphermentPanel onAction={(label, actionType, params, rationale) =>

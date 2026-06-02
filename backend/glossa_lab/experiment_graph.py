@@ -2834,6 +2834,39 @@ try:
 except Exception as _p322390_exc:  # noqa: BLE001
     logger.warning("Phase-322-390 nodes not registered: %s", _p322390_exc)
 
+# ── Contact-zone analysis templates (KL divergence, synthesis, A/B) ─────────
+try:
+    from glossa_lab.experiment_graph_contact_zone import (
+        _contact_zone_node_defs as _cz_defs,
+    )
+    for _d in _cz_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d contact-zone template nodes", len(_cz_defs()))
+except Exception as _cz_exc:  # noqa: BLE001
+    logger.warning("Contact-zone template nodes not registered: %s", _cz_exc)
+
+# ── A/B language comparison templates (anchored SA, consistency matrix) ──────
+try:
+    from glossa_lab.experiment_graph_ab_language import (
+        _ab_language_node_defs as _ab_defs,
+    )
+    for _d in _ab_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d A/B language template nodes", len(_ab_defs()))
+except Exception as _ab_exc:  # noqa: BLE001
+    logger.warning("A/B language template nodes not registered: %s", _ab_exc)
+
+# ── Cross-culture contact matrix + script family classifier ─────────────────
+try:
+    from glossa_lab.experiment_graph_cross_culture import (
+        _cross_culture_node_defs as _cc_defs,
+    )
+    for _d in _cc_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d cross-culture template nodes", len(_cc_defs()))
+except Exception as _cc_exc:  # noqa: BLE001
+    logger.warning("Cross-culture template nodes not registered: %s", _cc_exc)
+
 # ── Research Loop Runner (meta-node for Experiment Builder)
 try:
     from glossa_lab.pipelines.research_loop import ResearchLoop as _RL
@@ -2867,6 +2900,61 @@ try:
     logger.info("Registered ResearchLoopRunner atomic node")
 except Exception as _rl_exc:  # noqa: BLE001
     logger.warning("ResearchLoopRunner not registered: %s", _rl_exc)
+
+
+# ── Experiment metadata (ledger-backed) ──────────────────────────────────────
+
+def get_experiment_metadata() -> list[dict[str, Any]]:
+    """Return ledger metadata for all registered experiment nodes.
+
+    Merges the static experiment_ledger.json with live registration data
+    from ATOMIC_NODES to provide a unified metadata view.
+    """
+    ledger_path = Path(__file__).parent / "experiment_ledger.json"
+    ledger: list[dict] = []
+    if ledger_path.exists():
+        try:
+            ledger = json.loads(ledger_path.read_text("utf-8"))
+        except Exception:  # noqa: BLE001
+            pass
+
+    # Build a lookup from node ID to ledger entry
+    node_to_ledger: dict[str, dict] = {}
+    for entry in ledger:
+        for node_name in entry.get("key_nodes", []):
+            node_to_ledger[node_name] = entry
+
+    # Merge live registration with ledger
+    result: list[dict[str, Any]] = []
+    for node_id, node_def in ATOMIC_NODES.items():
+        ledger_entry = node_to_ledger.get(node_id, {})
+        result.append({
+            "id": node_id,
+            "display_name": node_def.name,
+            "category": ledger_entry.get("category", node_def.category),
+            "phase": ledger_entry.get("phases", ""),
+            "description": node_def.description,
+            "status": ledger_entry.get("status", "active"),
+            "superseded_by": ledger_entry.get("superseded_by"),
+            "source_file": ledger_entry.get("file", ""),
+        })
+
+    # Also include ledger-only entries (files without individually named nodes)
+    seen_files = {e.get("source_file") for e in result if e.get("source_file")}
+    for entry in ledger:
+        if entry.get("file") not in seen_files:
+            result.append({
+                "id": entry.get("file", "").replace(".py", ""),
+                "display_name": entry.get("file", "").replace("experiment_graph_", "").replace(".py", ""),
+                "category": entry.get("category", "misc"),
+                "phase": entry.get("phases", ""),
+                "description": entry.get("purpose", ""),
+                "status": entry.get("status", "active"),
+                "superseded_by": entry.get("superseded_by"),
+                "source_file": entry.get("file", ""),
+            })
+
+    return result
 
 
 # ── Graph execution

@@ -2614,3 +2614,76 @@ export const uploadIndusPaper = (file: File): Promise<Response> => {
   fd.append("file", file);
   return fetch(`${BASE}/indus-evidence/upload`, { method: "POST", body: fd });
 };
+
+// ── Signs API ────────────────────────────────────────────────────────────
+
+export interface SignSource {
+  experiment: string;
+  phase: number | null;
+  job_id: string | null;
+  report_ref: string;
+  staging_entry: string | null;
+  dedr_ref: string;
+  dedr_source: string;
+}
+
+export interface SignEntry {
+  sign_id: string;
+  reading: string;
+  confidence: "HIGH" | "MEDIUM" | "LOW" | "UNCERTAIN";
+  in_corpus: boolean;
+  corpus_freq: number;
+  evidence_type: string;
+  evidence_score: number;
+  basis: string;
+  gloss: string;
+  source: SignSource;
+  wells_ids: string[];
+  mahadevan_ids: string[];
+  numbering_system: string;
+}
+
+export interface SignsSummary {
+  total: number;
+  deciphered: number;
+  undeciphered: number;
+  icit_total: number;
+  high: number;
+  medium: number;
+  low: number;
+  in_corpus: number;
+}
+
+export interface SignsListResponse {
+  items: SignEntry[];
+  total: number;
+  limit: number;
+  offset: number;
+}
+
+export const getSignsSummary = (): Promise<SignsSummary> =>
+  request("GET", "/signs/summary");
+
+export const listSigns = (
+  params: {
+    deciphered?: boolean;
+    confidence?: string;
+    in_corpus?: boolean;
+    search?: string;
+    limit?: number;
+    offset?: number;
+  } = {},
+): Promise<SignsListResponse> => {
+  const qs = new URLSearchParams();
+  if (params.deciphered !== undefined) qs.set("deciphered", String(params.deciphered));
+  if (params.confidence) qs.set("confidence", params.confidence);
+  if (params.in_corpus !== undefined) qs.set("in_corpus", String(params.in_corpus));
+  if (params.search) qs.set("search", params.search);
+  if (params.limit !== undefined) qs.set("limit", String(params.limit));
+  if (params.offset !== undefined) qs.set("offset", String(params.offset));
+  const q = qs.toString();
+  return request("GET", `/signs${q ? `?${q}` : ""}`);
+};
+
+export const getSign = (signId: string): Promise<SignEntry> =>
+  request("GET", `/signs/${encodeURIComponent(signId)}`);

@@ -12,7 +12,7 @@ import { HypothesisTracker } from "./components/HypothesisTracker";
 import { ResearchNotebook } from "./components/ResearchNotebook";
 import { AIToolsView } from "./components/AIToolsView";
 import { HelpView } from "./components/HelpView";
-import { SignDictionary } from "./components/SignDictionary";
+import { SignsView } from "./components/SignsView";
 import { TimelineView } from "./components/TimelineView";
 import { CitationManager } from "./components/CitationManager";
 import { DashboardView } from "./components/DashboardView";
@@ -695,7 +695,7 @@ function AppContent() {
               {tab === "hypotheses"  && <HypothesisTracker />}
               {tab === "notebooks"   && <ResearchNotebook />}
               {tab === "ai-tools"    && <AIToolsView />}
-              {tab === "signs"       && <SignDictionary />}
+              {tab === "signs"       && <SignsView />}
               {tab === "timeline"    && <TimelineView onNavigate={(t) => setTab(t as Tab)} />}
               {tab === "citations"       && <CitationManager />}
               {tab === "correspondence"  && <CorrespondenceView />}

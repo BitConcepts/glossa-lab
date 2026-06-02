@@ -38,6 +38,17 @@ from glossa_lab.experiment_graph import list_graph_experiments
 router = APIRouter()
 
 
+@router.get("/experiments/metadata")
+async def get_experiments_metadata() -> list[dict[str, Any]]:
+    """Return experiment ledger metadata for all registered nodes.
+
+    Merges the static experiment_ledger.json with live ATOMIC_NODES
+    registration data. Used by the frontend ExperimentRegistry component.
+    """
+    from glossa_lab.experiment_graph import get_experiment_metadata  # noqa: PLC0415
+    return get_experiment_metadata()
+
+
 @router.get("/experiments")
 async def list_experiments() -> list[dict[str, Any]]:
     """Return graph experiments only (H16 compliance).

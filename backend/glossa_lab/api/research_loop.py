@@ -15,6 +15,7 @@ import json
 import logging
 import subprocess
 import sys
+import time as _time
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
@@ -175,44 +176,79 @@ async def start_loop(
     async def event_stream():
         """Run the loop in a thread via a queue, persist + stream per cycle."""
         queue: asyncio.Queue[dict[str, Any] | None] = asyncio.Queue()
+        producer_error: list[Exception] = []  # capture worker thread errors
 
         def _producer():
             """Runs in worker thread — puts entries on the queue."""
             try:
                 for entry in loop.run():
                     queue.put_nowait(entry)
+            except Exception as exc:  # noqa: BLE001
+                producer_error.append(exc)
             finally:
                 queue.put_nowait(None)  # sentinel
 
         # Start the producer in a background thread
         task = asyncio.get_event_loop().run_in_executor(None, _producer)
 
+        import time as _time
+        t0 = _time.monotonic()
         cycles_done = 0
+        last_experiment = ""
+        timed_out = False
         while True:
             # Wait for next entry (with timeout so we don't hang forever)
             try:
-                entry = await asyncio.wait_for(queue.get(), timeout=120)
+                entry = await asyncio.wait_for(queue.get(), timeout=360)
             except asyncio.TimeoutError:
+                timed_out = True
                 break
 
             if entry is None:  # producer finished
                 break
 
-            cycles_done += 1
+            # Phase E: intermediate SSE events (proposal, build, verify,
+            # analysis, timeout, gap_skipped) are streamed directly.
+            # Only persist + increment on node_complete / cycle entries.
+            entry_type = entry.get("type", "")
+            is_cycle = entry_type in ("node_complete", "") and entry.get("cycle")
+            last_experiment = entry.get("experiment", last_experiment)
             yield f"data: {json.dumps(entry)}\n\n"
 
-            # Persist state from async context (no thread issues)
-            await _persist(loop)
+            if is_cycle:
+                cycles_done += 1
+                # Persist state from async context (no thread issues)
+                await _persist(loop)
 
-            # Update job progress
-            if job_id and db:
-                try:
-                    await db.update_job_status(job_id, "running")
-                except Exception:  # noqa: BLE001
-                    pass
+                # Update job progress
+                if job_id and db:
+                    try:
+                        await db.update_job_status(job_id, "running")
+                    except Exception:  # noqa: BLE001
+                        pass
 
         # Wait for producer thread to finish
         await task
+
+        elapsed = _time.monotonic() - t0
+
+        # If the loop failed or timed out, emit an error SSE event
+        if timed_out or producer_error:
+            reason = "timeout" if timed_out else str(producer_error[0])
+            err_event = {
+                "type": "error",
+                "reason": reason,
+                "cycles_completed": cycles_done,
+                "last_experiment": last_experiment,
+                "elapsed_seconds": round(elapsed, 1),
+            }
+            yield f"data: {json.dumps(err_event)}\n\n"
+            if job_id and db:
+                try:
+                    await db.update_job_status(job_id, "failed")
+                except Exception:  # noqa: BLE001
+                    pass
+            return  # skip synthesis on failure
 
         # Final persist (before foundation check so history is durable)
         await _persist(loop)
@@ -242,6 +278,26 @@ async def start_loop(
             from glossa_lab.api.dashboard import dashboard_insight  # noqa: PLC0415
             _log.info("Research loop complete — refreshing dashboard insights")
             asyncio.create_task(_refresh_insight_background())
+        except Exception:  # noqa: BLE001
+            pass
+
+        # ── Anchor lifecycle: auto-verify approved candidates ───────────
+        _run_anchor_lifecycle(loop, synthesis)
+
+        # ── Emit event for SSE subscribers ──────────────────────────────
+        try:
+            from glossa_lab.api.events import emit_event  # noqa: PLC0415
+            asyncio.create_task(emit_event(
+                "insight_trigger", reason="loop_complete",
+                job_id=job_id, cycles=cycles_done,
+            ))
+        except Exception:  # noqa: BLE001
+            pass
+
+        # Mark foundation dirty after loop run
+        try:
+            from glossa_lab.api.foundation import mark_dirty  # noqa: PLC0415
+            mark_dirty()
         except Exception:  # noqa: BLE001
             pass
 
@@ -347,6 +403,11 @@ def _build_synthesis(loop, foundation_result: dict[str, Any] | None = None) -> d
 
     path_signals = getattr(loop, "path_signals", {})
 
+    # Phase E: include top findings and proposed next from full results
+    full_results = loop.get_full_results()
+    top_findings = full_results.get("top_findings", [])[:3]
+    proposed_next = full_results.get("proposed_next", [])
+
     return {
         "summary": (
             f"{len(history)} cycles completed. "
@@ -366,6 +427,8 @@ def _build_synthesis(loop, foundation_result: dict[str, Any] | None = None) -> d
             "blocked": len(blocked),
         },
         "foundation_check": foundation_result or {"skipped": True, "reason": "not run"},
+        "top_findings": top_findings,
+        "proposed_next": proposed_next,
     }
 
 
@@ -454,9 +517,9 @@ async def staging_action(body: dict[str, Any]) -> dict[str, Any]:
     action   = body.get("action", "")
     reason   = body.get("reason", "")
 
-    if not sign or not reading or action not in ("approve", "reject", "delete"):
+    if not sign or not reading or action not in ("approve", "reject", "delete", "staged"):
         return {"ok": False, "error": "sign, proposed_reading, and action are required; "
-                                       "action must be approve|reject|delete"}
+                                       "action must be approve|reject|delete|staged"}
 
     if not _STAGING_JSON.exists():
         return {"ok": False, "error": "staging file not found"}
@@ -483,6 +546,12 @@ async def staging_action(body: dict[str, Any]) -> dict[str, Any]:
                 c["review_status"] = "rejected"
                 c["rejected_at"] = now
                 c["rejected_reason"] = reason or "user rejected"
+            elif action == "staged":
+                # Re-stage: move approved/rejected back to staging queue
+                c["review_status"] = "staged"
+                c.pop("approved_at", None)
+                c.pop("rejected_at", None)
+                c.pop("rejected_reason", None)
         updated.append(c)
 
     if not matched:
@@ -493,8 +562,184 @@ async def staging_action(body: dict[str, Any]) -> dict[str, Any]:
     remaining = sum(1 for c in updated if c.get("review_status") == "staged")
     _log.info("Staging action %s on %s=%s; %d staged remaining",
               action, sign, reading, remaining)
+
+    # Mark foundation dirty when anchors change
+    if action in ("approve", "reject"):
+        try:
+            from glossa_lab.api.foundation import mark_dirty  # noqa: PLC0415
+            mark_dirty()
+        except Exception:  # noqa: BLE001
+            pass
+
     return {"ok": True, "action": action, "sign": sign,
             "proposed_reading": reading, "staged_remaining": remaining}
+
+
+_ARCHIVE_JSON = _REPO / "outputs" / "anchor_staging_archive.json"
+
+
+def _run_anchor_lifecycle(
+    loop: Any,
+    synthesis: dict[str, Any],
+) -> None:
+    """Auto-lifecycle for anchor candidates after a loop run.
+
+    - Approved candidates become 'verified' if SA confidence improved,
+      stay 'approved' if inconclusive.
+    - Verified candidates are auto-archived.
+    - Rejected candidates older than 7 days become 'expired' and are archived.
+    """
+    if not _STAGING_JSON.exists():
+        return
+    try:
+        candidates: list[dict] = json.loads(
+            _STAGING_JSON.read_text(encoding="utf-8"))
+    except Exception:
+        return
+
+    now_iso = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
+    now_ts = _time.time()
+    sa_delta = 0.0
+
+    # Check if SA confidence improved from synthesis foundation_check
+    fc = synthesis.get("foundation_check", {})
+    if fc and not fc.get("skipped"):
+        # Positive signal if no failures
+        sa_delta = 0.1 if fc.get("n_fail", 0) == 0 else -0.05
+
+    to_archive: list[dict] = []
+    remaining: list[dict] = []
+    auto_verified_count = 0
+
+    for c in candidates:
+        status = c.get("review_status", "staged")
+
+        # Approved → verified if SA improved
+        if status == "approved" and sa_delta > 0:
+            c["review_status"] = "verified"
+            c["verified_at"] = now_iso
+            c["sa_delta"] = sa_delta
+            auto_verified_count += 1
+            # Auto-archive verified candidates
+            c["archived_at"] = now_iso
+            c["archived_reason"] = "auto_verified"
+            to_archive.append(c)
+            continue
+
+        # Rejected for > 7 days → expired and archived
+        if status == "rejected":
+            rejected_at = c.get("rejected_at", "")
+            if rejected_at:
+                try:
+                    rej_ts = datetime.fromisoformat(
+                        rejected_at.replace("Z", "+00:00")
+                    ).timestamp()
+                    if now_ts - rej_ts > 7 * 86400:
+                        c["review_status"] = "expired"
+                        c["expired_at"] = now_iso
+                        c["archived_at"] = now_iso
+                        c["archived_reason"] = "expired_after_7d"
+                        to_archive.append(c)
+                        continue
+                except Exception:  # noqa: BLE001
+                    pass
+
+        remaining.append(c)
+
+    if to_archive:
+        # Append to archive file
+        archive: list[dict] = []
+        if _ARCHIVE_JSON.exists():
+            try:
+                archive = json.loads(_ARCHIVE_JSON.read_text(encoding="utf-8"))
+            except Exception:  # noqa: BLE001
+                pass
+        archive.extend(to_archive)
+        _ARCHIVE_JSON.write_text(
+            json.dumps(archive, indent=2, ensure_ascii=False), encoding="utf-8")
+
+        # Update staging with remaining
+        _STAGING_JSON.write_text(
+            json.dumps(remaining, indent=2, ensure_ascii=False), encoding="utf-8")
+
+        _log.info(
+            "Anchor lifecycle: %d auto-verified and archived, %d remaining",
+            auto_verified_count, len(remaining),
+        )
+
+        # Emit lifecycle event
+        try:
+            from glossa_lab.api.events import emit_event  # noqa: PLC0415
+            import asyncio as _aio  # noqa: PLC0415
+            _aio.create_task(emit_event(
+                "lifecycle_advance",
+                auto_verified=auto_verified_count,
+                archived=len(to_archive),
+                remaining=len(remaining),
+            ))
+        except Exception:  # noqa: BLE001
+            pass
+
+
+@router.post("/staging/archive")
+async def archive_staging() -> dict[str, Any]:
+    """Archive all approved and rejected candidates from staging.
+
+    Moves them to anchor_staging_archive.json with timestamps.
+    Manual override — the auto-lifecycle also archives verified candidates.
+    """
+    if not _STAGING_JSON.exists():
+        return {"ok": False, "error": "staging file not found"}
+
+    try:
+        candidates: list[dict] = json.loads(
+            _STAGING_JSON.read_text(encoding="utf-8"))
+    except Exception as exc:
+        return {"ok": False, "error": f"could not read staging: {exc}"}
+
+    now = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
+    to_archive = []
+    remaining = []
+
+    for c in candidates:
+        status = c.get("review_status", "staged")
+        if status in ("approved", "rejected", "verified", "expired"):
+            c["archived_at"] = now
+            c.setdefault("archived_reason", "manual_archive")
+            to_archive.append(c)
+        else:
+            remaining.append(c)
+
+    if not to_archive:
+        return {"ok": True, "archived": 0, "remaining": len(remaining)}
+
+    # Append to archive
+    archive: list[dict] = []
+    if _ARCHIVE_JSON.exists():
+        try:
+            archive = json.loads(_ARCHIVE_JSON.read_text(encoding="utf-8"))
+        except Exception:  # noqa: BLE001
+            pass
+    archive.extend(to_archive)
+    _ARCHIVE_JSON.write_text(
+        json.dumps(archive, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    # Update staging
+    _STAGING_JSON.write_text(
+        json.dumps(remaining, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    _log.info("Manual archive: %d candidates archived, %d remaining",
+              len(to_archive), len(remaining))
+
+    # Emit event
+    try:
+        from glossa_lab.api.events import emit_event  # noqa: PLC0415
+        await emit_event("insight_trigger", reason="staging_archived",
+                         archived=len(to_archive))
+    except Exception:  # noqa: BLE001
+        pass
+
+    return {"ok": True, "archived": len(to_archive), "remaining": len(remaining)}
 
 
 @router.get("/last-run")

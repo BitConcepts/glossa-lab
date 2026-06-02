@@ -1023,12 +1023,11 @@ async def _execute_action_inner(t: str, p: dict) -> dict[str, Any]:  # noqa: PLR
         db = get_db()
         if db is None:
             raise HTTPException(503, "Database unavailable")
-        job = await db.create_job({
-            "name": p.get("name", p.get("pipeline", "ai-job")),
-            "pipeline": p.get("pipeline", ""),
-            "params": p.get("params", {}),
-            "status": "pending",
-        })
+        job = await db.create_job(
+            name=p.get("name", p.get("pipeline", "ai-job")),
+            pipeline=p.get("pipeline", ""),
+            params=p.get("params", {}),
+        )
         return {"ok": True, "summary": f"Pipeline job queued (id={job['id']}).", "job_id": job["id"]}
 
     # ── change_setting ──────────────────────────────────────────────────────────
@@ -1293,12 +1292,12 @@ async def _execute_action_inner(t: str, p: dict) -> dict[str, Any]:  # noqa: PLR
         if db is None:
             raise HTTPException(503, "Database unavailable")
 
-        corpus = await db.create_text({
-            "name":         corpus_name,
-            "corpus_type":  corpus_type,
-            "content":      flat_tokens,
-            "description":  description or f"Acquired from {meta['source']}",
-        })
+        corpus = await db.create_text(
+            name=corpus_name,
+            corpus_type=corpus_type,
+            content=flat_tokens,
+            description=description or f"Acquired from {meta['source']}",
+        )
 
         n_insc = meta["n_inscriptions"]
         n_tok  = meta["n_tokens"]

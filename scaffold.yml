@@ -22,7 +22,9 @@ required_approvals: 1
 require_ci_pass: true
 allow_force_push: false
 use_remote_rules: false
-verification_tools: {}
+verification_tools:
+  backend: pytest
+  frontend: playwright
 detected_build_system: pyproject
 detected_test_framework: pytest
 ledger_line_threshold: 1000

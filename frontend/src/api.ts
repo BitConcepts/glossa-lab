@@ -701,6 +701,20 @@ export interface ExperimentMeta {
 export const getNodeSchema = (nodeType: string, refId: string): Promise<Record<string, any>> =>
   request("GET", `/node-registry/${nodeType}/${refId}`);
 
+export interface ExperimentLedgerEntry {
+  id: string;
+  display_name: string;
+  category: string;
+  phase: string;
+  description: string;
+  status: "active" | "superseded" | "legacy" | "scaffold";
+  superseded_by: string | null;
+  source_file: string;
+}
+
+export const getExperimentMetadata = (): Promise<ExperimentLedgerEntry[]> =>
+  request("GET", "/experiments/metadata");
+
 export const listExperiments = (): Promise<ExperimentMeta[]> =>
   request("GET", "/experiments");
 
@@ -1721,6 +1735,45 @@ export interface LatestInsightResponse {
 export const getLatestInsight = (): Promise<LatestInsightResponse> =>
   request("GET", "/dashboard/latest-insight");
 
+// ── Foundation automation ────────────────────────────────────────────
+
+export interface FoundationStatus {
+  last_checked_at: string | null;
+  verdict: string | null;
+  n_ok: number;
+  n_fail: number;
+  n_warn: number;
+  auto_check_enabled: boolean;
+  dirty: boolean;
+  running: boolean;
+}
+
+export interface FoundationCheckResult {
+  n_ok?: number;
+  n_fail?: number;
+  n_warn?: number;
+  verdict?: string;
+  failed?: string[];
+  skipped?: boolean;
+  reason?: string;
+  error?: string;
+}
+
+export const getFoundationStatus = (): Promise<FoundationStatus> =>
+  request("GET", "/foundation/status");
+
+export const runFoundationCheck = (): Promise<FoundationCheckResult> =>
+  request("POST", "/foundation/check");
+
+export const updateFoundationConfig = (
+  body: { auto_check_enabled?: boolean },
+): Promise<{ ok: boolean; auto_check_enabled: boolean }> =>
+  request("PATCH", "/foundation/config", body);
+
+// ── SSE events stream URL ───────────────────────────────────────────
+
+export const getEventsStreamUrl = (): string => `/api/v1/events/stream`;
+
 // ── AI profile suggestions ───────────────────────────────────────────
 
 export interface AIProfileSuggestion {
@@ -2561,3 +2614,76 @@ export const uploadIndusPaper = (file: File): Promise<Response> => {
   fd.append("file", file);
   return fetch(`${BASE}/indus-evidence/upload`, { method: "POST", body: fd });
 };
+
+// ── Signs API ────────────────────────────────────────────────────────────
+
+export interface SignSource {
+  experiment: string;
+  phase: number | null;
+  job_id: string | null;
+  report_ref: string;
+  staging_entry: string | null;
+  dedr_ref: string;
+  dedr_source: string;
+}
+
+export interface SignEntry {
+  sign_id: string;
+  reading: string;
+  confidence: "HIGH" | "MEDIUM" | "LOW" | "UNCERTAIN";
+  in_corpus: boolean;
+  corpus_freq: number;
+  evidence_type: string;
+  evidence_score: number;
+  basis: string;
+  gloss: string;
+  source: SignSource;
+  wells_ids: string[];
+  mahadevan_ids: string[];
+  numbering_system: string;
+}
+
+export interface SignsSummary {
+  total: number;
+  deciphered: number;
+  undeciphered: number;
+  icit_total: number;
+  high: number;
+  medium: number;
+  low: number;
+  in_corpus: number;
+}
+
+export interface SignsListResponse {
+  items: SignEntry[];
+  total: number;
+  limit: number;
+  offset: number;
+}
+
+export const getSignsSummary = (): Promise<SignsSummary> =>
+  request("GET", "/signs/summary");
+
+export const listSigns = (
+  params: {
+    deciphered?: boolean;
+    confidence?: string;
+    in_corpus?: boolean;
+    search?: string;
+    limit?: number;
+    offset?: number;
+  } = {},
+): Promise<SignsListResponse> => {
+  const qs = new URLSearchParams();
+  if (params.deciphered !== undefined) qs.set("deciphered", String(params.deciphered));
+  if (params.confidence) qs.set("confidence", params.confidence);
+  if (params.in_corpus !== undefined) qs.set("in_corpus", String(params.in_corpus));
+  if (params.search) qs.set("search", params.search);
+  if (params.limit !== undefined) qs.set("limit", String(params.limit));
+  if (params.offset !== undefined) qs.set("offset", String(params.offset));
+  const q = qs.toString();
+  return request("GET", `/signs${q ? `?${q}` : ""}`);
+};
+
+export const getSign = (signId: string): Promise<SignEntry> =>
+  request("GET", `/signs/${encodeURIComponent(signId)}`);

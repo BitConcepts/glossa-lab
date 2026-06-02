@@ -2631,6 +2631,7 @@ export interface SignEntry {
   sign_id: string;
   reading: string;
   confidence: "HIGH" | "MEDIUM" | "LOW" | "UNCERTAIN";
+  image_url?: string | null;
   in_corpus: boolean;
   corpus_freq: number;
   evidence_type: string;

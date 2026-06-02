@@ -114,6 +114,13 @@ export function ResearchLoopPanel() {
   const [cycles, setCycles] = useState(15);
   const [log, setLog] = useState<CycleEntry[]>([]);
   const [error, setError] = useState<string | null>(null);
+  const [stallReason, setStallReason] = useState<string | null>(null);
+  const [failureDetail, setFailureDetail] = useState<{
+    reason: string;
+    cycles_completed: number;
+    last_experiment: string;
+    elapsed_seconds: number;
+  } | null>(null);
   const [lastRun, setLastRun] = useState<LastRun | null>(null);
   const [synthesis, setSynthesis] = useState<Synthesis | null>(null);
   const [staging, setStaging] = useState<StagingData | null>(null);
@@ -160,6 +167,8 @@ export function ResearchLoopPanel() {
     }
     setRunning(true);
     setError(null);
+    setStallReason(null);
+    setFailureDetail(null);
     setLog([]);
     setSynthesis(null);
 
@@ -183,6 +192,8 @@ export function ResearchLoopPanel() {
             try {
               const event = JSON.parse(line.slice(6)) as CycleEntry & {
                 type?: string; synthesis?: Synthesis;
+                reason?: string; cycles_completed?: number;
+                last_experiment?: string; elapsed_seconds?: number;
               };
               if (event.type === "complete") {
                 if (event.synthesis) setSynthesis(event.synthesis);
@@ -191,6 +202,15 @@ export function ResearchLoopPanel() {
                 void fetchStatus();
                 void fetchLastRun();
                 void fetchStaging();
+              } else if (event.type === "error") {
+                setError(event.reason || "Loop failed");
+                setStallReason(event.reason === "timeout" ? "timeout" : null);
+                setFailureDetail({
+                  reason: event.reason || "unknown",
+                  cycles_completed: event.cycles_completed ?? 0,
+                  last_experiment: event.last_experiment ?? "",
+                  elapsed_seconds: event.elapsed_seconds ?? 0,
+                });
               } else if (event.cycle) {
                 setLog((prev) => [...prev, event as CycleEntry]);
               }
@@ -399,6 +419,33 @@ export function ResearchLoopPanel() {
                       background: "#fef2f2", border: "1px solid #fca5a5",
                       borderRadius: 6, padding: "6px 10px" }}>
           {error}
+          {failureDetail && (
+            <div style={{ marginTop: 6, fontSize: 11, color: "#7f1d1d",
+                          borderTop: "1px solid #fca5a5", paddingTop: 6 }}>
+              {stallReason === "timeout" && (
+                <div style={{ marginBottom: 4, fontWeight: 700 }}>
+                  ⏱ Loop timed out after {failureDetail.cycles_completed} cycles.
+                  Try fewer cycles or check backend logs.
+                </div>
+              )}
+              <div>Cycles completed: {failureDetail.cycles_completed}</div>
+              {failureDetail.last_experiment && (
+                <div>Last experiment attempted: <code style={{
+                  background: "#fee2e2", padding: "0 4px", borderRadius: 2, fontSize: 10,
+                }}>{failureDetail.last_experiment}</code></div>
+              )}
+              <div>Time elapsed: {failureDetail.elapsed_seconds < 60
+                ? `${failureDetail.elapsed_seconds}s`
+                : `${Math.floor(failureDetail.elapsed_seconds / 60)}m ${Math.round(failureDetail.elapsed_seconds % 60)}s`
+              }</div>
+              {stallReason !== "timeout" && failureDetail.reason && (
+                <div style={{ marginTop: 4, fontFamily: "monospace", fontSize: 10,
+                              color: "#991b1b", wordBreak: "break-all" }}>
+                  {failureDetail.reason}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
     </div>

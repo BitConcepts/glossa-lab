@@ -53,6 +53,35 @@ import { ResearchLoopPanel } from "./ResearchLoopPanel";
 // Bump version to invalidate stale caches that contain hallucinated hex-hash
 // experiment IDs from before the backend validation was deployed.
 const INSIGHT_LS_KEY = "glossa_dashboard_insight_v2";
+
+// ── Action result persistence ────────────────────────────────────────────
+// Persists the last N action results in localStorage so they survive page
+// reloads. Max 50 entries, trimmed FIFO.
+const ACTION_RESULTS_LS_KEY = "glossa_action_results_v1";
+interface ActionResultEntry {
+  key: string;
+  action_type: string;
+  label: string;
+  outcome: "success" | "error" | "warn";
+  timestamp: number;
+  detail?: string;
+}
+function _loadActionResults(): ActionResultEntry[] {
+  try {
+    const raw = localStorage.getItem(ACTION_RESULTS_LS_KEY);
+    if (!raw) return [];
+    const arr = JSON.parse(raw);
+    return Array.isArray(arr) ? arr : [];
+  } catch { return []; }
+}
+function _saveActionResult(entry: ActionResultEntry): void {
+  try {
+    const arr = _loadActionResults();
+    arr.unshift(entry);
+    if (arr.length > 50) arr.length = 50;
+    localStorage.setItem(ACTION_RESULTS_LS_KEY, JSON.stringify(arr));
+  } catch { /* ignore */ }
+}
 interface PersistedInsight {
   insight: DashboardInsight;
   generated_at: number;       // epoch ms when LLM generated this
@@ -147,6 +176,8 @@ export function DashboardView() {
   const [error, setError] = useState<string | null>(null);
   const [days, setDays] = useState(14);
   const [fetching, setFetching] = useState(false);
+  // Bump to force re-read of action results from localStorage
+  const [actionResultsVersion, setActionResultsVersion] = useState(0);
   // Per-button completion state for Apply / Run buttons. Persisted in
   // localStorage alongside the insight so completed actions survive reloads.
   type ApplyResult = "success" | "error" | "warn";
@@ -698,6 +729,16 @@ export function DashboardView() {
       }
       setApplyingSet(prev => { const n = new Set(prev); n.delete(key); return n; });
       setApplyResult((prev) => ({ ...prev, [key]: outcome }));
+      // Persist to action result log
+      _saveActionResult({
+        key,
+        action_type: a.action_type,
+        label: a.label,
+        outcome,
+        timestamp: Date.now(),
+        detail: outcome === "error" ? "Action completed with errors" : undefined,
+      });
+      setActionResultsVersion(v => v + 1);
       void refresh();
     }
     // Re-throw so callers like DeciphermentPanel.handleAction can catch the
@@ -715,15 +756,16 @@ export function DashboardView() {
           <h2 style={{ margin: 0, fontSize: 22, color: "#111827" }}>📊 Dashboard</h2>
           <p style={{ margin: "4px 0 0", fontSize: 13, color: "#6b7280" }}>
             What&rsquo;s new, what it means, and what to do about it.
-            Refreshes every 30 s. Fetch and insight regeneration happen
-            automatically after research loop runs.
+            Research feed window refreshes every 30 s. Fetch and insight
+            regeneration happen automatically after research loop runs.
           </p>
         </div>
         <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
-          <select value={days} onChange={(e) => setDays(parseInt(e.target.value, 10))}
+          <label htmlFor="insight-window-select" style={{ fontSize: 12, color: "#6b7280", whiteSpace: "nowrap" }}>Insight window:</label>
+          <select id="insight-window-select" value={days} onChange={(e) => setDays(parseInt(e.target.value, 10))}
             style={selectStyle}>
             {[7, 14, 30, 60, 90].map((d) => (
-              <option key={d} value={d}>last {d} days</option>
+              <option key={d} value={d}>{d} days</option>
             ))}
           </select>
           {/* Small fetch icon — fetch is automated; this is a manual override */}
@@ -750,8 +792,7 @@ export function DashboardView() {
           gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))" }}>
           <CounterTile label="Discovery items"  value={data.n_items}        emoji="🔭"
             sub={`last ${data.since_days}d`} onClick={() => navigate("discovery")} />
-          <CounterTile label="Studies"          value={data.n_studies}      emoji="📐"
-            sub="open builder" onClick={() => navigate("builder")} />
+          {/* Studies removed — no longer part of active workflow */}
           <CounterTile label="Experiments"      value={data.n_experiments}  emoji="🔀"
             sub="graph registry" onClick={() => navigate("experiments")} />
           <CounterTile label="Atomic nodes"     value={data.n_atomic_nodes ?? 0}  emoji="⚛️"
@@ -1033,19 +1074,27 @@ export function DashboardView() {
                   ⚠ {insight.error}
                 </div>
               )}
+
+              {/* ── Action Result Log ── */}
+              <ActionResultLog version={actionResultsVersion} />
             </>
           )}
         </section>
 
         {/* ── RSS-style feed ─────────────────────────────────────────── */}
         <section style={card}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
             <h3 style={cardTitle}>📡 Latest feed</h3>
             <span style={{ flex: 1 }} />
             <button onClick={() => navigate("discovery")} style={btnGhost}>
               Open Discovery →
             </button>
           </div>
+          {data && data.items.length > 0 && (
+            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 8 }}>
+              Latest: {fmtRelative(data.items[0]?.fetched_at)} · {data.n_items} items ({data.items.filter((it: DiscoveryItem) => it.status === "new").length} unreviewed)
+            </div>
+          )}
           {data && data.items.length === 0 && (
             <div style={{ fontSize: 12, color: "#9ca3af", fontStyle: "italic", padding: 8 }}>
               No items in the last {days} days. Click <strong>▶ Fetch now</strong> above
@@ -1158,6 +1207,67 @@ function Tally({ title, counts }: { title: string; counts: Record<string, number
         </div>
       )}
     </section>
+  );
+}
+
+function ActionResultLog({ version }: { version: number }) {
+  const [open, setOpen] = useState(false);
+  // Re-read from localStorage whenever version bumps
+  const results = _loadActionResults();
+  void version; // used as reactivity trigger
+  if (results.length === 0) return null;
+  const shown = results.slice(0, 10);
+  const outcomeChip = (o: string) => {
+    if (o === "success") return { text: "✓", bg: "#dcfce7", fg: "#15803d" };
+    if (o === "error")   return { text: "✕", bg: "#fef2f2", fg: "#dc2626" };
+    return { text: "⚠", bg: "#fffbeb", fg: "#92400e" };
+  };
+  return (
+    <div style={{ marginTop: 10, borderTop: "1px solid #e5e7eb", paddingTop: 8 }}>
+      <button
+        onClick={() => setOpen(v => !v)}
+        style={{
+          background: "none", border: "none", cursor: "pointer",
+          fontSize: 11, fontWeight: 700, color: "#6b7280",
+          padding: 0, display: "flex", alignItems: "center", gap: 4,
+        }}
+      >
+        {open ? "▾" : "▸"} Action history ({results.length})
+      </button>
+      {open && (
+        <div style={{ marginTop: 6, display: "flex", flexDirection: "column", gap: 3 }}>
+          {shown.map((r, i) => {
+            const chip = outcomeChip(r.outcome);
+            return (
+              <div key={i} style={{
+                display: "flex", alignItems: "center", gap: 6,
+                fontSize: 11, color: "#374151",
+              }}>
+                <span style={{ fontSize: 9, color: "#9ca3af", whiteSpace: "nowrap", width: 50 }}>
+                  {fmtRelative(new Date(r.timestamp).toISOString())}
+                </span>
+                <span style={{
+                  fontSize: 10, padding: "1px 5px", borderRadius: 3,
+                  background: chip.bg, color: chip.fg, fontWeight: 700,
+                  flexShrink: 0,
+                }}>{chip.text}</span>
+                <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", flex: 1 }}>
+                  {r.label}
+                </span>
+                <span style={{ fontSize: 9, color: "#9ca3af", flexShrink: 0 }}>
+                  {r.action_type}
+                </span>
+                {r.detail && (
+                  <span style={{ fontSize: 9, color: "#dc2626", flexShrink: 0 }}>
+                    {r.detail.slice(0, 40)}
+                  </span>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
   );
 }
 

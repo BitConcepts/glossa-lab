@@ -1,13 +1,13 @@
 {
-  "cycles_completed": 217,
+  "cycles_completed": 224,
   "max_cycles": 15,
   "cycle_analyses": [
     {
       "cycle": 1,
-      "experiment": "compound_semantic_coherence",
-      "summary": "Compound Semantic Coherence: Compound coherence: 100% (4382/4388) valid. · valid_pct=100",
+      "experiment": "blocker_sign_context",
+      "summary": "Blocker Sign Context: Blocker context: 190 blockers have HIGH-sign neighbors. · n_blockers=190",
       "metrics": {
-        "valid_pct": 100
+        "n_blockers": 190
       },
       "flags": [],
       "suggested_next_steps": [
@@ -16,10 +16,10 @@
     },
     {
       "cycle": 2,
-      "experiment": "blocker_sign_context",
-      "summary": "Blocker Sign Context: Blocker context: 190 blockers have HIGH-sign neighbors. · n_blockers=190",
+      "experiment": "site_specific_formula",
+      "summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9",
       "metrics": {
-        "n_blockers": 190
+        "n_sites": 9
       },
       "flags": [],
       "suggested_next_steps": [
@@ -3335,6 +3335,139 @@
       },
       "analysis_flags": [],
       "analysis_summary": "Blocker Sign Context: Blocker context: 190 blockers have HIGH-sign neighbors. · n_blockers=190"
+    },
+    {
+      "cycle": 1,
+      "timestamp": "2026-06-03T11:03:57.228554+00:00",
+      "gap_targeted": "rare_sign_context",
+      "n_papers": 0,
+      "n_insights": 0,
+      "insight_types": {},
+      "experiment": "site_specific_formula",
+      "selection_method": "proposal",
+      "verdict": "Site formulas: 9 sites with unique formula sets.",
+      "is_new_info": true,
+      "n_candidates": 0,
+      "top_candidate": null,
+      "analysis_metrics": {
+        "n_sites": 9
+      },
+      "analysis_flags": [],
+      "analysis_summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9"
+    },
+    {
+      "cycle": 1,
+      "timestamp": "2026-06-03T12:24:18.894090+00:00",
+      "gap_targeted": "allograph_classification",
+      "n_papers": 0,
+      "n_insights": 0,
+      "insight_types": {},
+      "experiment": "motif_title_correlation",
+      "selection_method": "proposal",
+      "verdict": "Motif-title: 0 motifs have title reading profiles.",
+      "is_new_info": true,
+      "n_candidates": 0,
+      "top_candidate": null,
+      "analysis_metrics": {
+        "n_motifs": 0
+      },
+      "analysis_flags": [],
+      "analysis_summary": "Motif Title Correlation: Motif-title: 0 motifs have title reading profiles. · n_motifs=0"
+    },
+    {
+      "cycle": 2,
+      "timestamp": "2026-06-03T12:24:25.509600+00:00",
+      "gap_targeted": "compound_morphology",
+      "n_papers": 0,
+      "n_insights": 0,
+      "insight_types": {},
+      "experiment": "suffix_chain_depth",
+      "selection_method": "proposal",
+      "verdict": "Suffix chains: avg depth 3.7. Distribution: {4: 429, 5: 524, 2: 351, 3: 366}.",
+      "is_new_info": true,
+      "n_candidates": 0,
+      "top_candidate": null,
+      "analysis_metrics": {
+        "avg_depth": 3.7
+      },
+      "analysis_flags": [],
+      "analysis_summary": "Suffix Chain Depth: Suffix chains: avg depth 3.7. Distribution: {4: 429, 5: 524, 2: 351, 3: 366}. · avg_depth=3.7"
+    },
+    {
+      "cycle": 1,
+      "timestamp": "2026-06-03T12:28:05.049164+00:00",
+      "gap_targeted": "rare_sign_context",
+      "n_papers": 0,
+      "n_insights": 0,
+      "insight_types": {},
+      "experiment": "reading_frequency_zipf",
+      "selection_method": "proposal",
+      "verdict": "Zipf: α=0.796 (156 readings). Linguistic.",
+      "is_new_info": true,
+      "n_candidates": 0,
+      "top_candidate": null,
+      "analysis_metrics": {
+        "zipf_alpha": 0.796
+      },
+      "analysis_flags": [],
+      "analysis_summary": "Reading Frequency Zipf: Zipf: α=0.796 (156 readings). Linguistic. · zipf_alpha=0.796"
+    },
+    {
+      "cycle": 2,
+      "timestamp": "2026-06-03T12:28:08.780227+00:00",
+      "gap_targeted": "compound_morphology",
+      "n_papers": 0,
+      "n_insights": 0,
+      "insight_types": {},
+      "experiment": "compound_semantic_coherence",
+      "selection_method": "proposal",
+      "verdict": "Compound coherence: 100% (4382/4388) valid.",
+      "is_new_info": true,
+      "n_candidates": 46,
+      "top_candidate": "M378",
+      "analysis_metrics": {
+        "valid_pct": 100
+      },
+      "analysis_flags": [],
+      "analysis_summary": "Compound Semantic Coherence: Compound coherence: 100% (4382/4388) valid. · valid_pct=100"
+    },
+    {
+      "cycle": 1,
+      "timestamp": "2026-06-03T12:35:02.313451+00:00",
+      "gap_targeted": "rare_sign_context",
+      "n_papers": 0,
+      "n_insights": 0,
+      "insight_types": {},
+      "experiment": "blocker_sign_context",
+      "selection_method": "proposal",
+      "verdict": "Blocker context: 190 blockers have HIGH-sign neighbors.",
+      "is_new_info": true,
+      "n_candidates": 36,
+      "top_candidate": "M288",
+      "analysis_metrics": {
+        "n_blockers": 190
+      },
+      "analysis_flags": [],
+      "analysis_summary": "Blocker Sign Context: Blocker context: 190 blockers have HIGH-sign neighbors. · n_blockers=190"
+    },
+    {
+      "cycle": 2,
+      "timestamp": "2026-06-03T12:35:05.451839+00:00",
+      "gap_targeted": "compound_morphology",
+      "n_papers": 0,
+      "n_insights": 0,
+      "insight_types": {},
+      "experiment": "site_specific_formula",
+      "selection_method": "proposal",
+      "verdict": "Site formulas: 9 sites with unique formula sets.",
+      "is_new_info": true,
+      "n_candidates": 0,
+      "top_candidate": null,
+      "analysis_metrics": {
+        "n_sites": 9
+      },
+      "analysis_flags": [],
+      "analysis_summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9"
     }
   ]
 }

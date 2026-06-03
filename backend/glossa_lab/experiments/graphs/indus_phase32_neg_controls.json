@@ -1,8 +1,7 @@
 {
   "id": "indus_phase32_neg_controls",
-  "name": "Indus Phase-32 Negative Controls — Shuffle Tests (Phase A)",
-  "description": "Phase A negative controls. Tests whether the sequential structure of the M77 corpus carries real signal vs. unigram noise. Pipeline: (1) Load real M77 corpus → FreqCounter + ZipfFitter (baseline); (2) Within-word token shuffle → FreqCounter + ZipfFitter (internal structure destroyed, word boundaries preserved); (3) Global token shuffle → FreqCounter + ZipfFitter (all structure destroyed). KL divergence between real and shuffled frequency maps quantifies information loss. Expected: Zipf exponent drops significantly for global shuffle, moderately for within-word. If Zipf exponent is preserved after shuffling, sequential patterns are epiphenomenal. CRITICAL H16 control: must run before any claim about sequential signal.",
-  "auto_migrated": false,
+  "name": "Indus Controls: Negative / Shuffle Tests",
+  "description": "Phase A negative controls. Tests whether the sequential structure of the M77 corpus carries real signal vs. unigram noise. Pipeline: (1) Load real M77 corpus \u2192 FreqCounter + ZipfFitter (baseline); (2) Within-word token shuffle \u2192 FreqCounter + ZipfFitter (internal structure destroyed, word boundaries preserved); (3) Global token shuffle \u2192 FreqCounter + ZipfFitter (all structure destroyed). KL divergence between real and shuffled frequency maps quantifies information loss. Expected: Zipf exponent drops significantly for global shuffle, moderately for within-word. If Zipf exponent is preserved after shuffling, sequential patterns are epiphenomenal. CRITICAL H16 control: must run before any claim about sequential signal.",
   "nodes": [
     {
       "id": "m77",
@@ -328,6 +327,5 @@
       "sourcePort": "json",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

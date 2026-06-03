@@ -1,6 +1,6 @@
 {
   "id": "indus_sign_function_dravidian",
-  "name": "Indus: Sign Function Classification + Dravidian Suffix-Position Analysis",
+  "name": "Indus Sign Function: Dravidian Suffix-Position",
   "description": "P2: Uses PositionalProfiler to classify Indus signs by function (INITIAL determinative, MEDIAL phoneme, TERMINAL/case marker). Terminal signs with high T-rate correspond to Dravidian case suffixes (-in genitive, -ku dative, -il locative, -al instrumental, -atu ablative). Compared against Dravidian LM consistency at terminal positions. This tests whether terminal sign distribution aligns with Dravidian agglutinative morphology. Also runs WritingSystemClassifier to anchor the tier classification. GPU: ocp_weight=0.0, n_seeds=5.",
   "nodes": [
     {
@@ -291,6 +291,5 @@
       "sourcePort": "json",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

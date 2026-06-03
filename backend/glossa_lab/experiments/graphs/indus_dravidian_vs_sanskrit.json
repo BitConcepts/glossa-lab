@@ -1,6 +1,6 @@
 {
   "id": "indus_dravidian_vs_sanskrit",
-  "name": "Tier 5 — Indus: Dravidian vs Sanskrit A/B Test",
+  "name": "Indus SA: Dravidian vs Sanskrit \u2014 Holdat Full Corpus",
   "description": "Direct A/B comparison of Dravidian (Tamil) vs Sanskrit (Indo-European) as target language models for Indus Script decipherment. Both tests use the Fuls anti-circularity protocol: TokenFilter(min_freq=8) + SADecipher(3 seeds, GPU). Higher SA consistency = stronger phonotactic match. Adjudicates between the Dravidian hypothesis (Parpola 1994) and the Indo-Aryan/Vedic hypothesis.",
   "nodes": [
     {
@@ -274,6 +274,5 @@
       "sourcePort": "json",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

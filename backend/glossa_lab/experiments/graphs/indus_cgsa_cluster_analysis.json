@@ -1,6 +1,6 @@
 {
   "id": "indus_cgsa_cluster_analysis",
-  "name": "Indus CGSA Cluster Sequence Analysis",
+  "name": "Indus CGSA: Cluster Sequence Analysis",
   "description": "CGSA Phase 5-6: Load CISI corpus, map signs to structural clusters (40 classes), analyze recurrent templates. NO phonetic mapping.",
   "nodes": [
     {
@@ -136,6 +136,5 @@
       "target": "n7",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

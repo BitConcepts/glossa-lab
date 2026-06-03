@@ -1,6 +1,6 @@
 {
   "id": "indus_structural_atlas",
-  "name": "Indus Structural Atlas",
+  "name": "Indus Structural: Entropy & Positional Atlas",
   "description": "Full Fuls (2023) structural analysis: block entropy (Rao 2009), Zipf-Mandelbrot (Yadav 2010), NWSP positional profiling (Fuls 2013), and symbol clustering. Multi-branch pipeline over the Indus corpus.",
   "nodes": [
     {
@@ -190,6 +190,5 @@
       "sourcePort": "json",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

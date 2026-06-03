@@ -1,15 +1,14 @@
 {
   "id": "indus_phase33_t2_a1_a3_validation",
-  "name": "Indus Phase-33 T2 — A1-A3 Validation: PermutationTest + Meluhha Co-occurrence",
-  "description": "Phase-33 T2: Formal graph experiment for Phase-30 A1 and A3 validation of the Phase-29d Enmenanak finding. A1: PermutationTest on Phase-29d Enmenanak score (observed=5.0/7.0 depending on scoring formula) against a random permutation null (1000 permutations). A3: MeluhhaCooccurrenceCheck — does Enmenanak or other top-5 Phase-29d candidates appear in CDLI Meluhha co-occurrence contexts? Result from Phase-33 T8 (rigorous): p=0.998, NOT SIGNIFICANT with original 15-rendering scoring. This graph provides the canonical Job-registered record of both A1 and A3 for the ledger. Citations: A.1 (M77), A.11 (ePSD2), F.2 (CDLI/Meluhha).",
-  "auto_migrated": false,
+  "name": "Indus SA: A1-A3 Anchor Holdout Validation",
+  "description": "Phase-33 T2: Formal graph experiment for Phase-30 A1 and A3 validation of the Phase-29d Enmenanak finding. A1: PermutationTest on Phase-29d Enmenanak score (observed=5.0/7.0 depending on scoring formula) against a random permutation null (1000 permutations). A3: MeluhhaCooccurrenceCheck \u2014 does Enmenanak or other top-5 Phase-29d candidates appear in CDLI Meluhha co-occurrence contexts? Result from Phase-33 T8 (rigorous): p=0.998, NOT SIGNIFICANT with original 15-rendering scoring. This graph provides the canonical Job-registered record of both A1 and A3 for the ledger. Citations: A.1 (M77), A.11 (ePSD2), F.2 (CDLI/Meluhha).",
   "nodes": [
     {
       "id": "perm",
       "type": "expNode",
       "data": {
         "atomicId": "PermutationTest",
-        "label": "A1 — Permutation null for Phase-29d Enmenanak (1000 perms)",
+        "label": "A1 \u2014 Permutation null for Phase-29d Enmenanak (1000 perms)",
         "params": {
           "n_permutations": 1000,
           "max_score": 15,
@@ -27,7 +26,7 @@
       "type": "expNode",
       "data": {
         "atomicId": "MeluhhaCooccurrenceCheck",
-        "label": "A3 — Meluhha co-occurrence check (top Phase-29d candidates)",
+        "label": "A3 \u2014 Meluhha co-occurrence check (top Phase-29d candidates)",
         "params": {}
       },
       "position": {
@@ -128,6 +127,5 @@
       "sourcePort": "json",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

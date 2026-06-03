@@ -1,8 +1,7 @@
 {
   "id": "indus_phase32_t7_sanskrit_falsification",
-  "name": "Indus Phase-32 T7 — Sanskrit Falsification (P30-E1)",
-  "description": "Phase-32 T7: SA decipherment M77 → Sanskrit LM. The identical pipeline to Phase-32 T4 (Dravidian) but with a Sanskrit target LM. If mean_consistency(Sanskrit) < mean_consistency(Dravidian 0.297) and hci_count(Sanskrit) < 4, the Dravidian hypothesis survives one head-to-head falsification round. This is a preregistered falsification experiment: the null hypothesis is H0='Sanskrit fits as well as Dravidian'. Rejection of H0 favours the Dravidian hypothesis. Citations: C.7 (Yajnadevam 2024), C.10 (S.R. Rao 1982), A.1 (M77), E.1 (DEDR).",
-  "auto_migrated": false,
+  "name": "Indus Controls: Sanskrit Falsification",
+  "description": "Phase-32 T7: SA decipherment M77 \u2192 Sanskrit LM. The identical pipeline to Phase-32 T4 (Dravidian) but with a Sanskrit target LM. If mean_consistency(Sanskrit) < mean_consistency(Dravidian 0.297) and hci_count(Sanskrit) < 4, the Dravidian hypothesis survives one head-to-head falsification round. This is a preregistered falsification experiment: the null hypothesis is H0='Sanskrit fits as well as Dravidian'. Rejection of H0 favours the Dravidian hypothesis. Citations: C.7 (Yajnadevam 2024), C.10 (S.R. Rao 1982), A.1 (M77), E.1 (DEDR).",
   "nodes": [
     {
       "id": "m77",
@@ -40,7 +39,7 @@
       "type": "expNode",
       "data": {
         "atomicId": "SADecipher",
-        "label": "SA M77 → Sanskrit LM (5 seeds × 10000 iters)",
+        "label": "SA M77 \u2192 Sanskrit LM (5 seeds \u00d7 10000 iters)",
         "params": {
           "n_seeds": 5,
           "max_iterations": 10000,
@@ -167,6 +166,5 @@
       "sourcePort": "json",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

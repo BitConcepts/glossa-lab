@@ -1,6 +1,6 @@
 {
   "id": "fuls_validation_suite",
-  "name": "Fuls Validation Suite — Composite",
+  "name": "Fuls Validation: Composite Suite",
   "description": "Composite validation running three benchmark experiments as sub-experiments: (1) Fuls NW Semitic Benchmark, (2) Ventris Linear B Validation, (3) Tier 3 Sumerian. Merges results for cross-tier comparison. Demonstrates SubExperiment subroutine pattern.",
   "nodes": [
     {
@@ -106,6 +106,5 @@
       "sourcePort": "json",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

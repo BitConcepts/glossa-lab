@@ -116,7 +116,9 @@ def _load_final_anchors() -> None:
                 source_experiment=source,
                 dedr=str(dedr) if dedr else "",
                 dedr_source=dedr_source,
-                phase_upgraded=int(phase_upgraded) if phase_upgraded else None,
+                phase_upgraded=(
+                    int(str(phase_upgraded)) if phase_upgraded and str(phase_upgraded).strip().lstrip("-").isdigit() else None
+                ),
                 gloss=gloss,
             )
             _SIGNS_INDEX[sid] = entry

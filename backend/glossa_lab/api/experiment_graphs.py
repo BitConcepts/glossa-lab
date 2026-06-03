@@ -142,7 +142,6 @@ async def list_experiments() -> list[dict[str, Any]]:
 
 @router.get("/{exp_id}")
 async def get_experiment(exp_id: str) -> dict[str, Any]:
-    exp_id = _EXPERIMENT_ALIASES.get(exp_id, exp_id)
     d = get_graph_experiment(exp_id)
     if d is None:
         raise HTTPException(status_code=404, detail=f"Graph experiment '{exp_id}' not found")
@@ -583,7 +582,6 @@ async def run_experiment(exp_id: str, body: RunGraphBody) -> StreamingResponse:
     the HTTP connection.  Browser disconnect / sleep / navigation never stops
     the computation.  The SA node always runs to completion.
     """
-    exp_id = _EXPERIMENT_ALIASES.get(exp_id, exp_id)
     d = get_graph_experiment(exp_id)
     if d is None:
         raise HTTPException(status_code=404, detail=f"Graph experiment '{exp_id}' not found")

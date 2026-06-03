@@ -1023,10 +1023,12 @@ async def _execute_action_inner(t: str, p: dict) -> dict[str, Any]:  # noqa: PLR
         db = get_db()
         if db is None:
             raise HTTPException(503, "Database unavailable")
+        now = __import__("datetime").datetime.utcnow().isoformat()
         job = await db.create_job(
             name=p.get("name", p.get("pipeline", "ai-job")),
             pipeline=p.get("pipeline", ""),
             params=p.get("params", {}),
+            created_at=now,
         )
         return {"ok": True, "summary": f"Pipeline job queued (id={job['id']}).", "job_id": job["id"]}
 

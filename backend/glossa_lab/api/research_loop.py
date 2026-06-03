@@ -763,6 +763,123 @@ async def archive_staging() -> dict[str, Any]:
     return {"ok": True, "archived": len(to_archive), "remaining": len(remaining)}
 
 
+@router.post("/staging/verify-sa")
+async def staging_verify_sa() -> dict[str, Any]:
+    """Verify approved staging candidates and archive them.
+
+    One-click action for the anchor review queue. Marks all 'approved'
+    candidates as 'verified', archives them, and queues the best available
+    anchored SA graph experiment so the user can see the result in Jobs.
+    Does NOT require a full research loop run.
+    """
+    from glossa_lab.database import get_db  # noqa: PLC0415
+    from glossa_lab.experiment_graph import (  # noqa: PLC0415
+        get_graph_experiment,
+        list_graph_experiments,
+    )
+
+    if not _STAGING_JSON.exists():
+        return {"ok": False, "error": "no staging file found"}
+
+    try:
+        candidates: list[dict] = json.loads(
+            _STAGING_JSON.read_text(encoding="utf-8"))
+    except Exception as exc:  # noqa: BLE001
+        return {"ok": False, "error": str(exc)}
+
+    now = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
+    approved = [c for c in candidates if c.get("review_status") == "approved"]
+    if not approved:
+        return {"ok": False, "error": "No approved candidates to verify. Approve some candidates first."}
+
+    # Mark all approved → verified + archive them
+    to_archive: list[dict] = []
+    remaining: list[dict] = []
+    for c in candidates:
+        if c.get("review_status") == "approved":
+            c["review_status"] = "verified"
+            c["verified_at"] = now
+            c["archived_at"] = now
+            c["archived_reason"] = "manual_verify_sa"
+            to_archive.append(c)
+        else:
+            remaining.append(c)
+
+    archive: list[dict] = []
+    if _ARCHIVE_JSON.exists():
+        try:
+            archive = json.loads(_ARCHIVE_JSON.read_text(encoding="utf-8"))
+        except Exception:  # noqa: BLE001
+            pass
+    archive.extend(to_archive)
+    _ARCHIVE_JSON.write_text(
+        json.dumps(archive, indent=2, ensure_ascii=False), encoding="utf-8")
+    _STAGING_JSON.write_text(
+        json.dumps(remaining, indent=2, ensure_ascii=False), encoding="utf-8")
+    _log.info("verify-sa: %d candidates verified and archived", len(to_archive))
+
+    # Find and queue the best anchored SA experiment
+    job_id: str | None = None
+    exp_name: str = ""
+    PREFERRED_SA_IDS = [
+        "indus_cisi_dravidian_vs_sanskrit",
+        "indus_cisi_anchored_10",
+        "indus_anchor_sweep",
+        "indus_cisi_anchored_5",
+    ]
+    exp_id: str | None = None
+    for pid in PREFERRED_SA_IDS:
+        if get_graph_experiment(pid) is not None:
+            exp_id = pid
+            exp_name = get_graph_experiment(pid).get("name", pid)  # type: ignore[union-attr]
+            break
+    if exp_id is None:
+        all_exps = list_graph_experiments()
+        for e in all_exps:
+            eid = e.get("id", "")
+            if any(k in eid.lower() for k in ["anchor", "dravidian", "cisi"]):
+                exp_id = eid
+                exp_name = e.get("name", eid)
+                break
+
+    db = get_db()
+    if exp_id and db:
+        try:
+            job = await db.create_job(
+                name=f"SA Verification: {exp_name}",
+                pipeline="exp_run",
+                params={"exp_id": exp_id, "source": "staging_verify_sa"},
+                created_at=now,
+                initial_status="pending",
+            )
+            job_id = job["id"]
+            _log.info("verify-sa: queued experiment '%s' as job %s", exp_id, job_id)
+        except Exception as exc:  # noqa: BLE001
+            _log.warning("verify-sa: could not queue experiment: %s", exc)
+
+    # Mark foundation dirty
+    try:
+        from glossa_lab.api.foundation import mark_dirty  # noqa: PLC0415
+        mark_dirty()
+    except Exception:  # noqa: BLE001
+        pass
+
+    return {
+        "ok": True,
+        "verified": len(to_archive),
+        "archived": len(to_archive),
+        "remaining_staged": sum(1 for c in remaining if c.get("review_status") == "staged"),
+        "exp_id": exp_id,
+        "exp_name": exp_name,
+        "job_id": job_id,
+        "message": (
+            f"{len(to_archive)} candidate(s) verified and archived."
+            + (f" SA experiment '{exp_name}' queued (job {job_id})." if job_id else ""
+               " No SA experiment found — create one in the builder.")
+        ),
+    }
+
+
 @router.get("/last-run")
 async def last_run() -> dict[str, Any]:
     """Return the synthesis + full results from the most recently completed loop job.

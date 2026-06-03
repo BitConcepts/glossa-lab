@@ -1075,6 +1075,22 @@ function StagingReview({
     } finally { setBulkBusy(null); }
   };
 
+  const [verifySABusy, setVerifySABusy] = useState(false);
+  const [verifyResult, setVerifyResult] = useState<{ ok: boolean; message: string; job_id?: string } | null>(null);
+  const verifyAndArchive = async () => {
+    setVerifySABusy(true);
+    setVerifyResult(null);
+    try {
+      const res = await fetch("/api/v1/research-loop/staging/verify-sa", { method: "POST" });
+      const data = await res.json() as { ok: boolean; message: string; job_id?: string; error?: string };
+      setVerifyResult({ ok: data.ok, message: data.message ?? data.error ?? "Done", job_id: data.job_id });
+    } catch (e) {
+      setVerifyResult({ ok: false, message: e instanceof Error ? e.message : "Request failed" });
+    } finally {
+      setVerifySABusy(false);
+    }
+  };
+
   const approveAll = async () => {
     setBulkBusy("approve");
     try { for (const c of staged)   await onAction(c.sign, c.proposed_reading, "approve"); }
@@ -1129,6 +1145,38 @@ function StagingReview({
             </span>
           )}
         </div>
+        {/* Verify & Archive button — appears when approved candidates exist */}
+        {approved.length > 0 && (
+          <div style={{ display: "flex", flexDirection: "column", gap: 6, width: "100%" }}>
+            <button
+              disabled={verifySABusy || isBusy}
+              onClick={() => void verifyAndArchive()}
+              style={{
+                padding: "6px 14px", fontSize: 11, fontWeight: 700,
+                border: "1px solid #7c3aed", borderRadius: 5,
+                background: verifySABusy ? "#ede9fe" : "#7c3aed",
+                color: verifySABusy ? "#5b21b6" : "#fff",
+                cursor: (verifySABusy || isBusy) ? "default" : "pointer",
+                width: "100%",
+              }}
+              title="Mark approved candidates as verified, archive them, and queue an SA experiment to confirm results">
+              {verifySABusy ? "Verifying…" : `✓ Verify & Archive (${approved.length} approved)`}
+            </button>
+            {verifyResult && (
+              <div style={{
+                fontSize: 11, padding: "6px 10px", borderRadius: 5,
+                background: verifyResult.ok ? "#f0fdf4" : "#fef2f2",
+                border: `1px solid ${verifyResult.ok ? "#86efac" : "#fca5a5"}`,
+                color: verifyResult.ok ? "#166534" : "#991b1b",
+              }}>
+                {verifyResult.ok ? "✓" : "✗"} {verifyResult.message}
+                {verifyResult.job_id && (
+                  <span style={{ marginLeft: 6, color: "#6b7280", fontSize: 10 }}>job: {verifyResult.job_id.slice(0, 8)}</span>
+                )}
+              </div>
+            )}
+          </div>
+        )}
         {staged.length > 0 && (
           <div style={{ display: "flex", gap: 6 }}>
             {staged.filter(c => c.recommended).length > 0 && (

@@ -845,17 +845,30 @@ async def staging_verify_sa() -> dict[str, Any]:
     db = get_db()
     if exp_id and db:
         try:
-            job = await db.create_job(
-                name=f"SA Verification: {exp_name}",
-                pipeline="exp_run",
-                params={"exp_id": exp_id, "source": "staging_verify_sa"},
-                created_at=now,
-                initial_status="pending",
+            # Import here to avoid circular import at module load time
+            from glossa_lab.api.experiment_graphs import _run_exp_background  # noqa: PLC0415
+            exp_data = get_graph_experiment(exp_id)  # already loaded above
+            nodes = (exp_data or {}).get("nodes", [])
+            edges = (exp_data or {}).get("edges", [])
+            # _run_exp_background creates its own job with initial_status='running'
+            # so the pipeline engine never picks it up — it's self-managed.
+            queue: asyncio.Queue[str | None] = asyncio.Queue(maxsize=128)
+            task = asyncio.create_task(
+                _run_exp_background(exp_id, exp_data or {}, nodes, edges, {}, False, queue),
+                name=f"staging-verify-sa-{exp_id}",
             )
-            job_id = job["id"]
-            _log.info("verify-sa: queued experiment '%s' as job %s", exp_id, job_id)
+            # Drain the queue in background so it doesn't fill and block the task
+            async def _drain() -> None:
+                while True:
+                    item = await queue.get()
+                    if item is None:
+                        break
+            asyncio.create_task(_drain(), name=f"drain-{exp_id}")
+            _ = task  # task is fire-and-forget; job tracking handled inside _run_exp_background
+            job_id = f"see Jobs panel — {exp_name}"
+            _log.info("verify-sa: started experiment '%s' as background task", exp_id)
         except Exception as exc:  # noqa: BLE001
-            _log.warning("verify-sa: could not queue experiment: %s", exc)
+            _log.warning("verify-sa: could not start experiment: %s", exc)
 
     # Mark foundation dirty
     try:

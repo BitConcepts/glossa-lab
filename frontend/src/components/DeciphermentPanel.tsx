@@ -369,7 +369,7 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
           />
         )}
 
-        {/* Munda SA discrimination badge — hidden after action is done */}
+        {/* Munda SA discrimination badge — hidden after action is done or dismissed */}
         {(data as any).munda_sa && !doneLabels["Plan anchored SA comparison"] && (
           <div style={{ marginTop: 8, padding: "8px 10px", borderRadius: 6, background: "#fef3c7", border: "1px solid #fbbf24", fontSize: 11 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
@@ -381,8 +381,15 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
                 <span style={{ fontWeight: 600 }}>SA non-discriminative</span>
                 {" "}(anchored SA provides the real signal)
               </span>
-              {onAction && (
-                <div style={{ display: "flex", gap: 4, flexShrink: 0, marginTop: 1 }}>
+              <div style={{ display: "flex", gap: 4, alignItems: "flex-start", flexShrink: 0, marginTop: 1 }}>
+                <button
+                  onClick={() => setDoneLabels(prev => { const n = { ...prev, "Plan anchored SA comparison": "success" as const }; _saveDone(n); return n; })}
+                  style={{ border: "none", background: "none", cursor: "pointer", fontSize: 13, color: "#9ca3af", lineHeight: 1, padding: "0 2px" }}
+                  title="Dismiss this finding">
+                  ✕
+                </button>
+                {onAction && (
+                <div style={{ display: "flex", gap: 4, flexShrink: 0 }}>
                   {renderBtn("💡 Hypothesize", "Create hypothesis: anchored SA discriminates",
                     "create_hypothesis",
                     {
@@ -413,12 +420,13 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
                     },
                     "Get AI analysis of competing LM test result")}
                 </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         )}
 
-        {/* Archaeological context badge — hidden after action is done */}
+        {/* Archaeological context badge — hidden after action is done or dismissed */}
         {(data as any).archaeology && !doneLabels["Create hypothesis: guild-identity site invariance"] && (
           <div style={{ marginTop: 6, padding: "8px 10px", borderRadius: 6, background: "#ecfdf5", border: "1px solid #6ee7b7", fontSize: 11 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
@@ -427,8 +435,15 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
                 Guild-identity model scores {(data as any).archaeology.score_pct}% across 9 sites —
                 <span style={{ fontWeight: 600 }}> {(data as any).archaeology.verdict}</span>
               </span>
-              {onAction && (
-                <div style={{ display: "flex", gap: 4, flexShrink: 0, marginTop: 1 }}>
+              <div style={{ display: "flex", gap: 4, alignItems: "flex-start", flexShrink: 0, marginTop: 1 }}>
+                <button
+                  onClick={() => setDoneLabels(prev => { const n = { ...prev, "Create hypothesis: guild-identity site invariance": "success" as const }; _saveDone(n); return n; })}
+                  style={{ border: "none", background: "none", cursor: "pointer", fontSize: 13, color: "#9ca3af", lineHeight: 1, padding: "0 2px" }}
+                  title="Dismiss this finding">
+                  ✕
+                </button>
+                {onAction && (
+                <div style={{ display: "flex", gap: 4, flexShrink: 0 }}>
                   {renderBtn("💡 Hypothesize", "Create hypothesis: guild-identity site invariance",
                     "create_hypothesis",
                     {
@@ -453,7 +468,8 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
                     },
                     "Get AI analysis of archaeological context finding")}
                 </div>
-              )}
+                )}
+              </div>
             </div>
           </div>
         )}

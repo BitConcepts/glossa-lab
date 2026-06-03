@@ -3989,11 +3989,20 @@ def auto_migrate_hardcoded_experiments() -> int:
     written = 0
 
     # IDs that were once auto-migrated but are no longer part of the active graph set.
-    # Delete their JSON files if they still exist as auto-migrated files.
+    # 1. Their JSON files are deleted if they still exist as auto-migrated files.
+    # 2. They are SKIPPED in the creation loop so they are never recreated on startup.
     _RETIRED = {
         "progression", "writing_system_progression", "ventris_validation",
         "ugaritic_proper_benchmark", "ugaritic_vs_hebrew",
         "contact_zone",  # self-referential ExperimentWrapper; replaced by indus_contact_zone_v2
+        # Archived 2026-06 experiment cleanup (kept in experiments/graphs/_archive/):
+        "positional_profile_analysis", "symbol_clustering", "luwian_kl_scoring",
+        "fuls_rtl_decipher", "geez_decipher", "bigram_analysis",
+        "kandles_bias", "linear_a_circularity", "ocr_tables", "ocr_texts",
+        "fuls_writing_system_comparison", "fuls_nw_semitic_ngram",
+        "fuls_nw_semitic_decipher_run", "fuls_constraint_space",
+        "fuls_sequence_information_test", "old_hebrew_self_benchmark",
+        "tier3_sumerian_validation",
     }
     for retired_id in _RETIRED:
         stale = _GRAPHS_DIR / f"{retired_id}.json"
@@ -4008,6 +4017,8 @@ def auto_migrate_hardcoded_experiments() -> int:
 
     for spec in specs.values():
         exp_id = spec["id"]
+        if exp_id in _RETIRED:
+            continue  # never recreate retired/archived experiments
         dest = _GRAPHS_DIR / f"{exp_id}.json"
         if dest.exists():
             try:

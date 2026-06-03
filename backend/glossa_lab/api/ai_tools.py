@@ -138,7 +138,7 @@ You can propose actions for the user to approve. After your response text, if yo
 propose one or more actions include a block formatted EXACTLY as shown:
 
 %%ACTIONS%%
-[{"type": "run_experiment", "params": {"id": "contact_zone_analysis"}, "label": "Run Contact Zone Analysis", "description": "Runs KL divergence on contact-zone vs heartland sites (~30 seconds)."}]
+[{"type": "run_experiment", "params": {"id": "indus_contact_zone_v2"}, "label": "Run Contact Zone Analysis", "description": "Runs KL divergence contact zone analysis on CISI corpus (~30 seconds)."}]
 %%END_ACTIONS%%
 
 Available action types — title/statement/id/etc. go INSIDE params{}, not at the top level:
@@ -551,19 +551,34 @@ WRONG (never do this):
 ALL 12 M77 profiles must always be included in scripts, not just 2.
 DO NOT invent T-rates/counts not in context; say 'run a script to obtain this'.
 
-EXPERIMENT CLASS IMPORTS (for running experiments from Python):
-  # Each experiment class lives in its own module:
-  from glossa_lab.experiments.prior_ablation_benchmark import PriorAblationBenchmark
-  from glossa_lab.experiments.transparency_benchmark import TransparencyBenchmark
-  from glossa_lab.experiments.beam_decipher_benchmark import BeamDecipherBenchmark
-  from glossa_lab.experiments.proto_sinaitic_benchmark import ProtoSinaiticBenchmark
-  from glossa_lab.experiments.meroitic_benchmark import MeroiticBenchmark
-  from glossa_lab.experiments.sequence_eval_benchmark import SequenceEvalBenchmark
-  from glossa_lab.experiments.ventris_validation import VentrisValidation
-  # Run any experiment with: result = ExperimentClass().run()
-  # WRONG: from experiments import X   ← missing glossa_lab prefix
-  # WRONG: from glossa_lab.experiments import X  ← experiments package __init__ not exported
-  # CORRECT: from glossa_lab.experiments.<module_name> import <ClassName>
+AVAILABLE GRAPH EXPERIMENT IDs (use exactly these with run_experiment action):
+  Indus SA:
+    indus_cisi_dravidian_vs_sanskrit   Indus SA: Dravidian vs Sanskrit — CISI Multi-Sign
+    indus_cisi_dravidian_vs_pali       Indus SA: Dravidian vs Pali/MIA — CISI Multi-Sign
+    indus_dravidian_vs_sanskrit        Indus SA: Dravidian vs Sanskrit — Holdat Full Corpus
+    indus_phase33_t1_sa_syllable       Indus SA: M77 → Dravidian Syllable LM
+    indus_phase33_t2_a1_a3_validation  Indus SA: A1-A3 Anchor Holdout Validation
+  Indus Anchored SA:
+    indus_cisi_anchored_10             Indus Anchored SA: CISI — 10 Pinned Signs
+    indus_anchor_sweep                 Indus Anchored SA: Dravidian Convergence Self-Test
+  Indus Structural / Analysis:
+    indus_cisi_structural              Indus Structural: CISI Baseline (Parpola)
+    indus_structural_atlas             Indus Structural: Entropy & Positional Atlas
+    indus_cgsa_cluster_analysis        Indus CGSA: Cluster Sequence Analysis
+    indus_sign_function_dravidian      Indus Sign Function: Dravidian Suffix-Position
+    indus_contact_zone_v2              Indus KL: Contact Zone Analysis — CISI
+  Indus Controls:
+    indus_phase32_neg_controls         Indus Controls: Negative / Shuffle Tests
+    indus_phase32_t7_sanskrit_falsification  Indus Controls: Sanskrit Falsification
+  Fuls collaboration:
+    fuls_nw_semitic_benchmark          Fuls Structural: NW Semitic Benchmark
+    fuls_validation_suite              Fuls Validation: Composite Suite
+    fuls_independence_suite            Fuls Controls: Independence — Shuffle vs Real
+  Benchmarks (known decipherments):
+    kl_comparison                      Benchmark KL: Cross-Corpus Divergence
+    ugaritic_sa_decipher               Benchmark SA: Ugaritic → Hebrew
+    ventris_validation                 Benchmark SA: Linear B (Ventris)
+  # Use these IDs directly in run_experiment actions or via the Experiment Builder UI.
 
 SAVING RESULTS:
   import json; from pathlib import Path

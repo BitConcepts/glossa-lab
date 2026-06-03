@@ -1,8 +1,7 @@
 {
   "id": "fuls_nw_semitic_benchmark",
-  "name": "NW Semitic Structural Benchmark",
+  "name": "Fuls Structural: NW Semitic Benchmark",
   "description": "Full structural analysis of the Fuls NW Semitic test1 corpus: entropy, positional profiles, Zipf fit, and n-gram statistics. All computed from RTL-corrected sequences using pure atomic nodes.",
-  "auto_migrated": true,
   "nodes": [
     {
       "id": "corpus",

@@ -866,7 +866,7 @@ async def staging_verify_sa() -> dict[str, Any]:
         "indus_cisi_dravidian_vs_sanskrit",
         "indus_cisi_anchored_10",
         "indus_anchor_sweep",
-        "indus_cisi_anchored_5",
+        "indus_cisi_structural",
     ]
     exp_id: str | None = None
     for pid in PREFERRED_SA_IDS:

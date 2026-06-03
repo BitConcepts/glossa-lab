@@ -1,8 +1,7 @@
 {
   "id": "kl_comparison",
-  "name": "Cross-Corpus KL Divergence Comparison",
+  "name": "Benchmark KL: Cross-Corpus Divergence",
   "description": "Compute KL and JS divergence between two corpora's symbol frequency distributions. Generic: works for any two corpora. Useful for script typology comparison.",
-  "auto_migrated": true,
   "nodes": [
     {
       "id": "corp_a",

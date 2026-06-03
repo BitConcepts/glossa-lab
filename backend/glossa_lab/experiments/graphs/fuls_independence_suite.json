@@ -1,6 +1,6 @@
 {
   "id": "fuls_independence_suite",
-  "name": "Fuls Independence Suite — Shuffle vs Real",
+  "name": "Fuls Controls: Independence \u2014 Shuffle vs Real",
   "description": "Tests whether NW Semitic sign sequences carry genuine linguistic signal (not random). Runs SA on both the real RTL-corrected corpus and a within-word shuffled control. Compares mean consistency: if real >> shuffled, sequential structure is informative.",
   "nodes": [
     {
@@ -235,6 +235,5 @@
       "sourcePort": "json",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

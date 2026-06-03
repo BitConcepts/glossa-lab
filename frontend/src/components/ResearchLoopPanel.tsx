@@ -1103,19 +1103,46 @@ function StagingReview({
   };
 
   const [verifySABusy, setVerifySABusy] = useState(false);
-  const [verifyResult, setVerifyResult] = useState<{ ok: boolean; message: string; job_id?: string } | null>(null);
+  const [verifyResult, setVerifyResult] = useState<{
+    ok: boolean; message: string; suggested_sa_exp?: string; suggested_sa_name?: string;
+  } | null>(null);
+  const [saRunBusy, setSaRunBusy] = useState(false);
+  const [saRunDone, setSaRunDone] = useState(false);
+
   const verifyAndArchive = async () => {
     setVerifySABusy(true);
     setVerifyResult(null);
+    setSaRunDone(false);
     try {
       const res = await fetch("/api/v1/research-loop/staging/verify-sa", { method: "POST" });
-      const data = await res.json() as { ok: boolean; message: string; job_id?: string; error?: string };
-      setVerifyResult({ ok: data.ok, message: data.message ?? data.error ?? "Done", job_id: data.job_id });
+      const data = await res.json() as {
+        ok: boolean; message: string; suggested_sa_exp?: string;
+        suggested_sa_name?: string; error?: string;
+      };
+      setVerifyResult({
+        ok: data.ok,
+        message: data.message ?? data.error ?? "Done",
+        suggested_sa_exp: data.suggested_sa_exp ?? undefined,
+        suggested_sa_name: data.suggested_sa_name ?? undefined,
+      });
     } catch (e) {
       setVerifyResult({ ok: false, message: e instanceof Error ? e.message : "Request failed" });
     } finally {
       setVerifySABusy(false);
     }
+  };
+
+  const runSaValidation = async (expId: string) => {
+    setSaRunBusy(true);
+    try {
+      const res = await fetch(`/api/v1/experiment-graphs/${encodeURIComponent(expId)}/run`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ kwargs: {}, notify: false }),
+      });
+      if (res.ok) setSaRunDone(true);
+    } catch { /* ignore */ }
+    finally { setSaRunBusy(false); }
   };
 
   const approveAll = async () => {
@@ -1172,7 +1199,7 @@ function StagingReview({
             </span>
           )}
         </div>
-        {/* Verify & Archive button — appears when approved candidates exist */}
+        {/* Verify & Archive — appears when approved candidates exist */}
         {approved.length > 0 && (
           <div style={{ display: "flex", flexDirection: "column", gap: 6, width: "100%" }}>
             <button
@@ -1186,19 +1213,40 @@ function StagingReview({
                 cursor: (verifySABusy || isBusy) ? "default" : "pointer",
                 width: "100%",
               }}
-              title="Mark approved candidates as verified, archive them, and queue an SA experiment to confirm results">
-              {verifySABusy ? "Verifying…" : `✓ Verify & Archive (${approved.length} approved)`}
+              title="Mark approved candidates as verified and archive them">
+              {verifySABusy ? "Archiving…" : `✓ Verify & Archive (${approved.length} approved)`}
             </button>
             {verifyResult && (
               <div style={{
-                fontSize: 11, padding: "6px 10px", borderRadius: 5,
+                fontSize: 11, padding: "8px 10px", borderRadius: 5,
                 background: verifyResult.ok ? "#f0fdf4" : "#fef2f2",
                 border: `1px solid ${verifyResult.ok ? "#86efac" : "#fca5a5"}`,
                 color: verifyResult.ok ? "#166534" : "#991b1b",
               }}>
-                {verifyResult.ok ? "✓" : "✗"} {verifyResult.message}
-                {verifyResult.job_id && (
-                  <span style={{ marginLeft: 6, color: "#6b7280", fontSize: 10 }}>job: {verifyResult.job_id.slice(0, 8)}</span>
+                <div>{verifyResult.ok ? "✓" : "✗"} {verifyResult.message}</div>
+                {verifyResult.ok && verifyResult.suggested_sa_exp && (
+                  <div style={{ marginTop: 6 }}>
+                    {saRunDone ? (
+                      <span style={{
+                        fontSize: 10, padding: "2px 8px", borderRadius: 4,
+                        background: "#dcfce7", color: "#15803d", fontWeight: 600,
+                      }}>✓ SA queued — check Jobs panel</span>
+                    ) : (
+                      <button
+                        disabled={saRunBusy}
+                        onClick={() => void runSaValidation(verifyResult.suggested_sa_exp!)}
+                        style={{
+                          padding: "3px 10px", fontSize: 10, fontWeight: 700,
+                          border: "1px solid #7c3aed", borderRadius: 4,
+                          background: saRunBusy ? "#ede9fe" : "#f5f3ff",
+                          color: "#5b21b6",
+                          cursor: saRunBusy ? "default" : "pointer",
+                        }}
+                        title={`Run ${verifyResult.suggested_sa_name ?? verifyResult.suggested_sa_exp} to verify SA impact`}>
+                        {saRunBusy ? "Starting…" : `▶ Run SA Validation (${verifyResult.suggested_sa_name?.slice(0, 30) ?? verifyResult.suggested_sa_exp})`}
+                      </button>
+                    )}
+                  </div>
                 )}
               </div>
             )}

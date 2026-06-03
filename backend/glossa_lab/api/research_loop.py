@@ -250,58 +250,99 @@ async def start_loop(
                     pass
             return  # skip synthesis on failure
 
-        # Final persist (before foundation check so history is durable)
-        await _persist(loop)
+        # ── Post-loop: run entirely in a detached task so client disconnect
+        # (GeneratorExit / CancelledError on the SSE stream) can never abort
+        # the foundation check, synthesis, or job-completion writes. ─────────
+        async def _finalize_post_loop() -> tuple[dict[str, Any], dict[str, Any]]:
+            """Persist, foundation check, synthesis, mark job complete.
 
-        # ── Foundation check (post-loop integrity gate, pre-synthesis) ──
-        foundation_result = await _run_foundation_check()
-
-        # ── Post-loop: synthesize results + propose next actions ────────
-        synthesis = _build_synthesis(loop, foundation_result=foundation_result)
-
-        # Mark job completed — synthesis included in stored result so it
-        # can be retrieved later via GET /last-run.
-        if job_id and db:
+            Created with asyncio.ensure_future so it runs independently of the
+            SSE connection lifetime.  Even if the browser closes the tab while
+            the foundation check is running, this task continues until done.
+            """
+            await _persist(loop)
+            fc_result = await _run_foundation_check()
+            synth = _build_synthesis(loop, foundation_result=fc_result)
+            if job_id and db:
+                try:
+                    results = {**loop.get_full_results(), "synthesis": synth}
+                    await db.store_result(
+                        job_id=job_id,
+                        data=results,
+                        created_at=datetime.now(UTC).isoformat(
+                            timespec="seconds").replace("+00:00", "Z"),
+                    )
+                    await db.update_job_status(job_id, "completed")
+                    _log.info("Research loop job %s marked completed", job_id)
+                except Exception as _je:  # noqa: BLE001
+                    _log.warning("Could not finalize job %s: %s", job_id, _je)
             try:
-                results = {**loop.get_full_results(), "synthesis": synthesis}
-                await db.store_result(
-                    job_id=job_id,
-                    data=results,
-                    created_at=datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z"),
-                )
-                await db.update_job_status(job_id, "completed")
-            except Exception as exc:  # noqa: BLE001
-                _log.warning("Could not finalize job: %s", exc)
+                asyncio.create_task(_refresh_insight_background())
+            except Exception:  # noqa: BLE001
+                pass
+            _run_anchor_lifecycle(loop, synth)
+            try:
+                from glossa_lab.api.events import emit_event  # noqa: PLC0415
+                asyncio.create_task(emit_event(
+                    "insight_trigger", reason="loop_complete",
+                    job_id=job_id, cycles=cycles_done))
+            except Exception:  # noqa: BLE001
+                pass
+            try:
+                from glossa_lab.api.foundation import mark_dirty  # noqa: PLC0415
+                mark_dirty()
+            except Exception:  # noqa: BLE001
+                pass
+            return loop.get_full_results(), synth
 
-        # Trigger dashboard insight refresh (best-effort, non-blocking)
+        # Start the finalize task BEFORE awaiting it so it survives if the
+        # SSE generator is closed while we wait.
+        finalize_task: asyncio.Task[tuple[dict[str, Any], dict[str, Any]]] = (
+            asyncio.ensure_future(_finalize_post_loop())
+        )
+
+        # Wait for synthesis so we can include it in the complete SSE event.
+        # asyncio.shield keeps finalize_task alive even if this await is
+        # interrupted by a client disconnect.
+        synthesis: dict[str, Any]
+        full_results: dict[str, Any]
         try:
-            from glossa_lab.api.dashboard import dashboard_insight  # noqa: PLC0415
-            _log.info("Research loop complete — refreshing dashboard insights")
-            asyncio.create_task(_refresh_insight_background())
-        except Exception:  # noqa: BLE001
-            pass
+            full_results, synthesis = await asyncio.wait_for(
+                asyncio.shield(finalize_task), timeout=150)
+        except asyncio.TimeoutError:
+            # Foundation check is slow; finalize_task continues in background.
+            _log.info("Post-loop finalize still running — yielding partial complete")
+            synthesis = {
+                "summary": (
+                    f"{cycles_done} cycle(s) complete. "
+                    "Synthesis is being finalised in the background — "
+                    "reload in a moment to see the full summary."
+                ),
+                "proposals": [], "needle_moved": cycles_done > 0,
+                "anchor_candidates": [],
+                "candidate_counts": {"total": 0, "staged": 0, "blocked": 0},
+                "insight_type_totals": {}, "unexplored_types": [],
+                "foundation_check": {"skipped": True, "reason": "still running"},
+            }
+            full_results = loop.get_full_results()
+        except (asyncio.CancelledError, GeneratorExit):
+            # Client disconnected — finalize_task is still running in the
+            # background and will mark the job complete when done.
+            _log.info("SSE connection closed mid-synthesis; finalize_task continues in background")
+            raise  # must re-raise GeneratorExit so Python can close the generator
+        except Exception as _fe:  # noqa: BLE001
+            _log.warning("Post-loop finalize error: %s", _fe)
+            synthesis = {
+                "summary": "Loop complete (synthesis error).",
+                "proposals": [], "needle_moved": False,
+                "anchor_candidates": [],
+                "candidate_counts": {"total": 0, "staged": 0, "blocked": 0},
+                "insight_type_totals": {}, "unexplored_types": [],
+                "foundation_check": {"skipped": True},
+            }
+            full_results = loop.get_full_results()
 
-        # ── Anchor lifecycle: auto-verify approved candidates ───────────
-        _run_anchor_lifecycle(loop, synthesis)
-
-        # ── Emit event for SSE subscribers ──────────────────────────────
-        try:
-            from glossa_lab.api.events import emit_event  # noqa: PLC0415
-            asyncio.create_task(emit_event(
-                "insight_trigger", reason="loop_complete",
-                job_id=job_id, cycles=cycles_done,
-            ))
-        except Exception:  # noqa: BLE001
-            pass
-
-        # Mark foundation dirty after loop run
-        try:
-            from glossa_lab.api.foundation import mark_dirty  # noqa: PLC0415
-            mark_dirty()
-        except Exception:  # noqa: BLE001
-            pass
-
-        yield f"data: {json.dumps({'type': 'complete', 'job_id': job_id, **loop.get_full_results(), 'synthesis': synthesis})}\n\n"
+        yield f"data: {json.dumps({'type': 'complete', 'job_id': job_id, **full_results, 'synthesis': synthesis})}\n\n"
 
     return StreamingResponse(
         event_stream(),

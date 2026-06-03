@@ -1,6 +1,6 @@
 {
   "id": "indus_cisi_dravidian_vs_pali",
-  "name": "Indus CISI: Dravidian vs Pali (MIA) SA on Real Multi-Sign Inscriptions",
+  "name": "Indus SA: Dravidian vs Pali/MIA \u2014 CISI Multi-Sign",
   "description": "Tests whether the Dravidian advantage over Pali (Middle Indo-Aryan) observed on ICIT single-sign sequences (+27.8pp) is replicated on real CISI multi-sign inscription data with genuine bigram structure. Pali is the closest attested proxy for Proto-Indo-Aryan (Witzel hypothesis). If the gap shrinks on real bigram data, it would suggest the ICIT result was partly an artifact of degenerate sequences. If it holds or widens, it further confirms the Dravidian hypothesis on structural grounds. GPU: n_seeds=5, max_iter=8000.",
   "nodes": [
     {
@@ -252,6 +252,5 @@
       "sourcePort": "json",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

@@ -185,7 +185,7 @@ _TOOLS = {
         "experiment_id: str — e.g. 'indus_cisi_dravidian_vs_sanskrit'"),
     "read_result":      (_tool_read_result,
         "Read an experiment result file from reports/. "
-        "filename: str — e.g. 'indus_cisi_anchored_5.json'"),
+        "filename: str — e.g. 'indus_cisi_dravidian_vs_sanskrit.json'"),
     "query_corpus":     (_tool_query_corpus,
         "Get statistics (tokens, H1 entropy, sign count) for a named corpus. "
         "corpus_name: str — e.g. 'indus_cisi', 'indus', 'dravidian', 'sanskrit'"),

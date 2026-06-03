@@ -1,7 +1,7 @@
 {
   "document_id": "ancient_writing_and_modern_technologies_51831ac9",
   "title": "",
-  "extraction_date": "2026-06-02T11:22:59.850480",
+  "extraction_date": "2026-06-02T11:33:13.282710",
   "total_claims": 4,
   "auto_extracted": 4,
   "manually_curated": 0,
@@ -15,7 +15,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-06-02T11:22:59.838649"
+      "extracted_at": "2026-06-02T11:33:13.272484"
     },
     {
       "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
@@ -26,7 +26,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-06-02T11:22:59.838649"
+      "extracted_at": "2026-06-02T11:33:13.272484"
     },
     {
       "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -37,7 +37,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-06-02T11:22:59.838649"
+      "extracted_at": "2026-06-02T11:33:13.272484"
     },
     {
       "claim_id": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
@@ -48,7 +48,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-06-02T11:22:59.843379"
+      "extracted_at": "2026-06-02T11:33:13.276726"
     }
   ],
   "_citation": {

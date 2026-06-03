@@ -1,0 +1,82 @@
+{
+  "n_seals": 11,
+  "n_phonemes_in_map": 33,
+  "observed_total_weight": 3.8,
+  "null_mean_weight": 4.449,
+  "p_value": 0.756,
+  "n_perms": 1000,
+  "obs_per_seal_top10": [
+    {
+      "catalogue_id": "BM_122187_UR_seal_1",
+      "n_signs": 0,
+      "n_attributed": 0,
+      "n_high_conf": 0,
+      "weight": 0.0
+    },
+    {
+      "catalogue_id": "GADD_1",
+      "n_signs": 0,
+      "n_attributed": 0,
+      "n_high_conf": 0,
+      "weight": 0.0
+    },
+    {
+      "catalogue_id": "GADD_2",
+      "n_signs": 0,
+      "n_attributed": 0,
+      "n_high_conf": 0,
+      "weight": 0.0
+    },
+    {
+      "catalogue_id": "ASMAR_TA",
+      "n_signs": 0,
+      "n_attributed": 0,
+      "n_high_conf": 0,
+      "weight": 0.0
+    },
+    {
+      "catalogue_id": "KISH_INDUS_1",
+      "n_signs": 0,
+      "n_attributed": 0,
+      "n_high_conf": 0,
+      "weight": 0.0
+    },
+    {
+      "catalogue_id": "SUSA_INDUS_1",
+      "n_signs": 0,
+      "n_attributed": 0,
+      "n_high_conf": 0,
+      "weight": 0.0
+    },
+    {
+      "catalogue_id": "LOTHAL_PERSIAN_GULF_SEAL",
+      "n_signs": 0,
+      "n_attributed": 0,
+      "n_high_conf": 0,
+      "weight": 0.0
+    },
+    {
+      "catalogue_id": "FAILAKA_KM_1113",
+      "n_signs": 0,
+      "n_attributed": 0,
+      "n_high_conf": 0,
+      "weight": 0.0
+    },
+    {
+      "catalogue_id": "VA_243_BERLIN",
+      "n_signs": 0,
+      "n_attributed": 0,
+      "n_high_conf": 0,
+      "weight": 0.0
+    },
+    {
+      "catalogue_id": "JALALABAD_FARS",
+      "n_signs": 0,
+      "n_attributed": 0,
+      "n_high_conf": 0,
+      "weight": 0.0
+    }
+  ],
+  "verdict": "Bayesian decoder: observed total weight = 3.800 across 11 inscribed seals. Null mean = 4.449 (1000 permutations of confidence assignments). Global p-value = 0.7560. Lower p = signs assigned to high-confidence phonemes really do cluster on the inscribed-seal corpus more than chance.",
+  "interpretation": "Caveat: this null-permutation strategy keeps the multiset of confidence labels constant but breaks their assignment to specific sign IDs. A significant p means the observed map places high-confidence phonemes on more 'frequent' signs in our corpus than chance would predict. This is a NECESSARY but not SUFFICIENT condition for the Dravidian hypothesis -- it only validates that Parpola's high-confidence proposals land on the right SIGNS, not that those phoneme VALUES are correct."
+}

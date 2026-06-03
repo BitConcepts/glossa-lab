@@ -369,8 +369,8 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
           />
         )}
 
-        {/* Munda SA discrimination badge */}
-        {(data as any).munda_sa && (
+        {/* Munda SA discrimination badge — hidden after action is done */}
+        {(data as any).munda_sa && !doneLabels["Plan anchored SA comparison"] && (
           <div style={{ marginTop: 8, padding: "8px 10px", borderRadius: 6, background: "#fef3c7", border: "1px solid #fbbf24", fontSize: 11 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
               <span>
@@ -418,8 +418,8 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
           </div>
         )}
 
-        {/* Archaeological context badge */}
-        {(data as any).archaeology && (
+        {/* Archaeological context badge — hidden after action is done */}
+        {(data as any).archaeology && !doneLabels["Create hypothesis: guild-identity site invariance"] && (
           <div style={{ marginTop: 6, padding: "8px 10px", borderRadius: 6, background: "#ecfdf5", border: "1px solid #6ee7b7", fontSize: 11 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
               <span>

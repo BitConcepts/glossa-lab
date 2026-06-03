@@ -1,8 +1,7 @@
 {
   "id": "ventris_validation",
-  "name": "Ventris Grid Validation (Linear B, Tier 4)",
+  "name": "Benchmark SA: Linear B (Ventris)",
   "description": "Validates sign affinity clustering against the known Ventris grid for Linear B. Uses beam search (faster, deterministic) to find the optimal syllabic grouping and scores the result against the known Greek phonetic values.",
-  "auto_migrated": true,
   "nodes": [
     {
       "id": "corpus",

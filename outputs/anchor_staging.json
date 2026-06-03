@@ -10,8 +10,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:17Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M268",
@@ -24,8 +24,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:20Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M268",
@@ -38,8 +38,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:21Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M250",
@@ -52,8 +52,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:22Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M244",
@@ -66,8 +66,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:24Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M244",
@@ -80,8 +80,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:26Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M244",
@@ -94,8 +94,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:27Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M403",
@@ -108,8 +108,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:29Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M403",
@@ -122,8 +122,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:30Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M403",
@@ -136,8 +136,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:32Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M297",
@@ -150,8 +150,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:34Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M297",
@@ -164,8 +164,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:35Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M297",
@@ -178,8 +178,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:37Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M115",
@@ -192,8 +192,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:38Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M115",
@@ -206,8 +206,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:39Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M115",
@@ -220,8 +220,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:40Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M150",
@@ -234,8 +234,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:41Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M150",
@@ -248,8 +248,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:42Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M150",
@@ -262,8 +262,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:44Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M274",
@@ -276,8 +276,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:45Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:44Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M274",
@@ -290,8 +290,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:46Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M274",
@@ -304,8 +304,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:47Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M364",
@@ -318,8 +318,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:48Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M364",
@@ -332,8 +332,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:49Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M326",
@@ -346,8 +346,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:52Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M326",
@@ -360,8 +360,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:53Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M326",
@@ -374,8 +374,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:54Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M186",
@@ -388,8 +388,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:55Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M186",
@@ -402,8 +402,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:56Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M186",
@@ -416,8 +416,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:57Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M228",
@@ -430,8 +430,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:13:58Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M228",
@@ -444,8 +444,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:00Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M228",
@@ -458,8 +458,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:01Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M390",
@@ -472,8 +472,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:02Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M308",
@@ -486,8 +486,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:03Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M308",
@@ -500,8 +500,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:04Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M308",
@@ -514,8 +514,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:06Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M158",
@@ -528,8 +528,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:08Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M158",
@@ -542,8 +542,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:09Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M158",
@@ -556,8 +556,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:10Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M243",
@@ -570,8 +570,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:11Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M260",
@@ -584,8 +584,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:13Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M260",
@@ -598,8 +598,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:14Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M260",
@@ -612,8 +612,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:15Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M348",
@@ -626,8 +626,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:19Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M348",
@@ -640,8 +640,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:20Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M348",
@@ -654,8 +654,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:21Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M216",
@@ -668,8 +668,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:22Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M216",
@@ -682,8 +682,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:24Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M216",
@@ -696,8 +696,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:25Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M238",
@@ -710,8 +710,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:27Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M238",
@@ -724,8 +724,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:28Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M238",
@@ -738,8 +738,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:29Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M288",
@@ -752,8 +752,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:30Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M288",
@@ -766,8 +766,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:31Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M288",
@@ -780,8 +780,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:32Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M384",
@@ -794,8 +794,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:34Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M384",
@@ -808,8 +808,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:34Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M384",
@@ -822,8 +822,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:35Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M136",
@@ -836,8 +836,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:36Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M409",
@@ -850,8 +850,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:37Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M409",
@@ -864,8 +864,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:38Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M409",
@@ -878,8 +878,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:39Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:45Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M142",
@@ -892,8 +892,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:41Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M142",
@@ -906,8 +906,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:42Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M142",
@@ -920,8 +920,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:43Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M298",
@@ -934,8 +934,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:44Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M298",
@@ -948,8 +948,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:44Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M167",
@@ -962,8 +962,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:45Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M167",
@@ -976,8 +976,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:46Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M167",
@@ -990,8 +990,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:47Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M296",
@@ -1004,8 +1004,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:49Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M296",
@@ -1018,8 +1018,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:50Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M296",
@@ -1032,8 +1032,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:51Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M112",
@@ -1046,8 +1046,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:52Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M112",
@@ -1060,8 +1060,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:53Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M112",
@@ -1074,8 +1074,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:54Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M397",
@@ -1088,8 +1088,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:55Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M397",
@@ -1102,8 +1102,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:56Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M397",
@@ -1116,8 +1116,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:57Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M359",
@@ -1130,8 +1130,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:58Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M359",
@@ -1144,8 +1144,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:14:59Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M359",
@@ -1158,8 +1158,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:00Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M314",
@@ -1172,8 +1172,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:01Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M314",
@@ -1186,8 +1186,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:03Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M349",
@@ -1200,8 +1200,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:04Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M349",
@@ -1214,8 +1214,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:05Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M349",
@@ -1228,8 +1228,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:06Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M286",
@@ -1242,8 +1242,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:07Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M286",
@@ -1256,8 +1256,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:08Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M286",
@@ -1270,8 +1270,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:19Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M343",
@@ -1284,8 +1284,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:20Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M343",
@@ -1298,8 +1298,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:21Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M343",
@@ -1312,8 +1312,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:22Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M335",
@@ -1326,8 +1326,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:23Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M335",
@@ -1340,8 +1340,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:24Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M335",
@@ -1354,8 +1354,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:24Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M232",
@@ -1368,8 +1368,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:25Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M232",
@@ -1382,8 +1382,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:26Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M232",
@@ -1396,8 +1396,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:27Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M405",
@@ -1410,8 +1410,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:30Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M405",
@@ -1424,8 +1424,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:31Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M405",
@@ -1438,8 +1438,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:31Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M101",
@@ -1452,8 +1452,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:32Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:46Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M101",
@@ -1466,8 +1466,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:33Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M101",
@@ -1480,8 +1480,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:35Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M246",
@@ -1494,8 +1494,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:36Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M246",
@@ -1508,8 +1508,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:37Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M246",
@@ -1522,8 +1522,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:38Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M132",
@@ -1536,8 +1536,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:39Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M132",
@@ -1550,8 +1550,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:40Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M132",
@@ -1564,8 +1564,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:41Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M182",
@@ -1578,8 +1578,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:43Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M182",
@@ -1592,8 +1592,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:44Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M182",
@@ -1606,8 +1606,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:45Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M247",
@@ -1620,8 +1620,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:46Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M247",
@@ -1634,8 +1634,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:47Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M219",
@@ -1648,8 +1648,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:48Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M219",
@@ -1662,8 +1662,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:49Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M219",
@@ -1676,8 +1676,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:50Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M160",
@@ -1690,8 +1690,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:51Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M160",
@@ -1704,8 +1704,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:52Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M160",
@@ -1718,8 +1718,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:15:53Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M197",
@@ -1732,8 +1732,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:16:05Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M197",
@@ -1746,8 +1746,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:16:07Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M197",
@@ -1760,8 +1760,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:16:08Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M241",
@@ -1774,8 +1774,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:16:09Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M241",
@@ -1788,8 +1788,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:16:10Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M241",
@@ -1802,8 +1802,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:16:11Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M209",
@@ -1816,8 +1816,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:16:12Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M226",
@@ -1830,8 +1830,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:16:13Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M325",
@@ -1844,8 +1844,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:16:16Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M325",
@@ -1858,8 +1858,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:16:17Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M325",
@@ -1872,8 +1872,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:16:18Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M131",
@@ -1886,8 +1886,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:16:19Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M131",
@@ -1900,8 +1900,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:16:21Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M131",
@@ -1914,8 +1914,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:16:22Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M200",
@@ -1928,8 +1928,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:16:23Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M200",
@@ -1942,8 +1942,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:16:24Z",
-    "rejected_reason": "user rejected"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M200",
@@ -1956,574 +1956,8 @@
     "source_experiment": "blocker_sign_context",
     "conflict": null,
     "review_status": "rejected",
-    "rejected_at": "2026-06-02T18:16:27Z",
-    "rejected_reason": "user rejected"
-  },
-  {
-    "sign": "M378",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "ā/āl",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M277",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "kol",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M226",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "vil",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M255",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "ā/āl",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M251",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "oṉṟu/1",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M181",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "pū/puḷ",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M158",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "ay/ā",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M301",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "veL",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M406",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "ta",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M287",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "ōṭu/comitative",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M379",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "vil",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M214",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "ūr",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M131",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "cul",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M116",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "tu/tū",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M197",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "il/iḷ",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M274",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "kol/koḷ",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M318",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "ā/āl",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M123",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "ay/ā",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M397",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "oṉṟu/1",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M126",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "iN/in (genitive of)",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M346",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "ūr",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M312",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "an/aṇ",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M201",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "ūr",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M297",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "veL",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M354",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "pū/puḷ",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M120",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "kol/koḷ",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M135",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "ka/kaṇ",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M405",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "kol/koḷ",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M207",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "mu/muṉ",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M303",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "kuTam",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M105",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "vil",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M280",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "kol",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M309",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "pū/puḷ",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M195",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "tu/tū",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M382",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "ma",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M213",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "am/neuter",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M324",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "ūr",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M101",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "kaL",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M370",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "oṉṟu/1",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M316",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "il/iḷ",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M218",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "an/aṇ",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M111",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "ēḷ/eḷ",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M224",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "ēḷ/eḷ",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M322",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "al",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M408",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "an/aṇ",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M186",
-    "proposed_reading": "min",
-    "evidence_type": "compound_slot_coherence",
-    "evidence_score": 1.0,
-    "dedr_support": "shine / lightning (verb)",
-    "partner_reading": "kol/koḷ",
-    "source_experiment": "compound_semantic_coherence",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M226",
-    "proposed_reading": "kal",
-    "evidence_type": "high_neighbor_concentration",
-    "evidence_score": 0.612,
-    "dedr_support": "gem / stone",
-    "neighbor_reading": "ay",
-    "neighbor_count": 1,
-    "source_experiment": "blocker_sign_context",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M226",
-    "proposed_reading": "nal",
-    "evidence_type": "high_neighbor_concentration",
-    "evidence_score": 0.612,
-    "dedr_support": "good",
-    "neighbor_reading": "ay",
-    "neighbor_count": 1,
-    "source_experiment": "blocker_sign_context",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M369",
-    "proposed_reading": "van",
-    "evidence_type": "high_neighbor_concentration",
-    "evidence_score": 0.624,
-    "dedr_support": "smith / strong",
-    "neighbor_reading": "iN",
-    "neighbor_count": 2,
-    "source_experiment": "blocker_sign_context",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M369",
-    "proposed_reading": "iru",
-    "evidence_type": "high_neighbor_concentration",
-    "evidence_score": 0.624,
-    "dedr_support": "sit / be",
-    "neighbor_reading": "iN",
-    "neighbor_count": 2,
-    "source_experiment": "blocker_sign_context",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M369",
-    "proposed_reading": "per",
-    "evidence_type": "high_neighbor_concentration",
-    "evidence_score": 0.624,
-    "dedr_support": "big",
-    "neighbor_reading": "iN",
-    "neighbor_count": 2,
-    "source_experiment": "blocker_sign_context",
-    "conflict": null,
-    "review_status": "staged"
+    "rejected_at": "2026-06-03T11:02:47Z",
+    "rejected_reason": "batch reject"
   },
   {
     "sign": "M258",
@@ -2562,55 +1996,7 @@
     "review_status": "staged"
   },
   {
-    "sign": "M381",
-    "proposed_reading": "an",
-    "evidence_type": "high_neighbor_concentration",
-    "evidence_score": 0.636,
-    "dedr_support": "goose",
-    "neighbor_reading": "kol",
-    "neighbor_count": 3,
-    "source_experiment": "blocker_sign_context",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M381",
-    "proposed_reading": "an",
-    "evidence_type": "high_neighbor_concentration",
-    "evidence_score": 0.636,
-    "dedr_support": "goose",
-    "neighbor_reading": "kol",
-    "neighbor_count": 3,
-    "source_experiment": "blocker_sign_context",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M381",
-    "proposed_reading": "an",
-    "evidence_type": "high_neighbor_concentration",
-    "evidence_score": 0.424,
-    "dedr_support": "goose",
-    "neighbor_reading": "kol",
-    "neighbor_count": 3,
-    "source_experiment": "blocker_sign_context",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M247",
-    "proposed_reading": "pan",
-    "evidence_type": "high_neighbor_concentration",
-    "evidence_score": 0.612,
-    "dedr_support": "worker / make",
-    "neighbor_reading": "kur",
-    "neighbor_count": 1,
-    "source_experiment": "blocker_sign_context",
-    "conflict": null,
-    "review_status": "staged"
-  },
-  {
-    "sign": "M390",
+    "sign": "M250",
     "proposed_reading": "kal",
     "evidence_type": "high_neighbor_concentration",
     "evidence_score": 0.624,
@@ -2622,11 +2008,179 @@
     "review_status": "staged"
   },
   {
-    "sign": "M390",
+    "sign": "M250",
     "proposed_reading": "nal",
     "evidence_type": "high_neighbor_concentration",
     "evidence_score": 0.624,
     "dedr_support": "good",
+    "neighbor_reading": "ay",
+    "neighbor_count": 2,
+    "source_experiment": "blocker_sign_context",
+    "conflict": null,
+    "review_status": "staged"
+  },
+  {
+    "sign": "M109",
+    "proposed_reading": "an",
+    "evidence_type": "high_neighbor_concentration",
+    "evidence_score": 0.624,
+    "dedr_support": "goose",
+    "neighbor_reading": "kol",
+    "neighbor_count": 2,
+    "source_experiment": "blocker_sign_context",
+    "conflict": null,
+    "review_status": "staged"
+  },
+  {
+    "sign": "M109",
+    "proposed_reading": "an",
+    "evidence_type": "high_neighbor_concentration",
+    "evidence_score": 0.624,
+    "dedr_support": "goose",
+    "neighbor_reading": "kol",
+    "neighbor_count": 2,
+    "source_experiment": "blocker_sign_context",
+    "conflict": null,
+    "review_status": "staged"
+  },
+  {
+    "sign": "M109",
+    "proposed_reading": "an",
+    "evidence_type": "high_neighbor_concentration",
+    "evidence_score": 0.416,
+    "dedr_support": "goose",
+    "neighbor_reading": "kol",
+    "neighbor_count": 2,
+    "source_experiment": "blocker_sign_context",
+    "conflict": null,
+    "review_status": "staged"
+  },
+  {
+    "sign": "M226",
+    "proposed_reading": "kal",
+    "evidence_type": "high_neighbor_concentration",
+    "evidence_score": 0.612,
+    "dedr_support": "gem / stone",
+    "neighbor_reading": "ay",
+    "neighbor_count": 1,
+    "source_experiment": "blocker_sign_context",
+    "conflict": null,
+    "review_status": "staged"
+  },
+  {
+    "sign": "M226",
+    "proposed_reading": "nal",
+    "evidence_type": "high_neighbor_concentration",
+    "evidence_score": 0.612,
+    "dedr_support": "good",
+    "neighbor_reading": "ay",
+    "neighbor_count": 1,
+    "source_experiment": "blocker_sign_context",
+    "conflict": null,
+    "review_status": "staged"
+  },
+  {
+    "sign": "M310",
+    "proposed_reading": "an",
+    "evidence_type": "high_neighbor_concentration",
+    "evidence_score": 0.408,
+    "dedr_support": "goose",
+    "neighbor_reading": "mutalai",
+    "neighbor_count": 1,
+    "source_experiment": "blocker_sign_context",
+    "conflict": null,
+    "review_status": "staged"
+  },
+  {
+    "sign": "M310",
+    "proposed_reading": "in",
+    "evidence_type": "high_neighbor_concentration",
+    "evidence_score": 0.408,
+    "dedr_support": "genitive / of",
+    "neighbor_reading": "mutalai",
+    "neighbor_count": 1,
+    "source_experiment": "blocker_sign_context",
+    "conflict": null,
+    "review_status": "staged"
+  },
+  {
+    "sign": "M310",
+    "proposed_reading": "ku",
+    "evidence_type": "high_neighbor_concentration",
+    "evidence_score": 0.408,
+    "dedr_support": "short",
+    "neighbor_reading": "mutalai",
+    "neighbor_count": 1,
+    "source_experiment": "blocker_sign_context",
+    "conflict": null,
+    "review_status": "staged"
+  },
+  {
+    "sign": "M227",
+    "proposed_reading": "kal",
+    "evidence_type": "high_neighbor_concentration",
+    "evidence_score": 0.624,
+    "dedr_support": "gem / stone",
+    "neighbor_reading": "ay",
+    "neighbor_count": 2,
+    "source_experiment": "blocker_sign_context",
+    "conflict": null,
+    "review_status": "staged"
+  },
+  {
+    "sign": "M227",
+    "proposed_reading": "nal",
+    "evidence_type": "high_neighbor_concentration",
+    "evidence_score": 0.624,
+    "dedr_support": "good",
+    "neighbor_reading": "ay",
+    "neighbor_count": 2,
+    "source_experiment": "blocker_sign_context",
+    "conflict": null,
+    "review_status": "staged"
+  },
+  {
+    "sign": "M227",
+    "proposed_reading": "an",
+    "evidence_type": "high_neighbor_concentration",
+    "evidence_score": 0.416,
+    "dedr_support": "goose",
+    "neighbor_reading": "ay",
+    "neighbor_count": 2,
+    "source_experiment": "blocker_sign_context",
+    "conflict": null,
+    "review_status": "staged"
+  },
+  {
+    "sign": "M415",
+    "proposed_reading": "kal",
+    "evidence_type": "high_neighbor_concentration",
+    "evidence_score": 0.624,
+    "dedr_support": "gem / stone",
+    "neighbor_reading": "ay",
+    "neighbor_count": 2,
+    "source_experiment": "blocker_sign_context",
+    "conflict": null,
+    "review_status": "staged"
+  },
+  {
+    "sign": "M415",
+    "proposed_reading": "nal",
+    "evidence_type": "high_neighbor_concentration",
+    "evidence_score": 0.624,
+    "dedr_support": "good",
+    "neighbor_reading": "ay",
+    "neighbor_count": 2,
+    "source_experiment": "blocker_sign_context",
+    "conflict": null,
+    "review_status": "staged"
+  },
+  {
+    "sign": "M415",
+    "proposed_reading": "an",
+    "evidence_type": "high_neighbor_concentration",
+    "evidence_score": 0.416,
+    "dedr_support": "goose",
     "neighbor_reading": "ay",
     "neighbor_count": 2,
     "source_experiment": "blocker_sign_context",

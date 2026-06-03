@@ -883,33 +883,10 @@ async def staging_verify_sa() -> dict[str, Any]:
                 exp_name = e.get("name", eid)
                 break
 
-    db = get_db()
-    if exp_id and db:
-        try:
-            # Import here to avoid circular import at module load time
-            from glossa_lab.api.experiment_graphs import _run_exp_background  # noqa: PLC0415
-            exp_data = get_graph_experiment(exp_id)  # already loaded above
-            nodes = (exp_data or {}).get("nodes", [])
-            edges = (exp_data or {}).get("edges", [])
-            # _run_exp_background creates its own job with initial_status='running'
-            # so the pipeline engine never picks it up — it's self-managed.
-            queue: asyncio.Queue[str | None] = asyncio.Queue(maxsize=128)
-            task = asyncio.create_task(
-                _run_exp_background(exp_id, exp_data or {}, nodes, edges, {}, False, queue),
-                name=f"staging-verify-sa-{exp_id}",
-            )
-            # Drain the queue in background so it doesn't fill and block the task
-            async def _drain() -> None:
-                while True:
-                    item = await queue.get()
-                    if item is None:
-                        break
-            asyncio.create_task(_drain(), name=f"drain-{exp_id}")
-            _ = task  # task is fire-and-forget; job tracking handled inside _run_exp_background
-            job_id = f"see Jobs panel — {exp_name}"
-            _log.info("verify-sa: started experiment '%s' as background task", exp_id)
-        except Exception as exc:  # noqa: BLE001
-            _log.warning("verify-sa: could not start experiment: %s", exc)
+    # SA experiment is NO LONGER queued automatically.
+    # The frontend shows a 'Run SA Validation' button after archive so the
+    # user can trigger it explicitly when they're ready.
+    _log.info("verify-sa: archive complete; SA run deferred to user action")
 
     # Mark foundation dirty
     try:
@@ -926,11 +903,9 @@ async def staging_verify_sa() -> dict[str, Any]:
         "exp_id": exp_id,
         "exp_name": exp_name,
         "job_id": job_id,
-        "message": (
-            f"{len(to_archive)} candidate(s) verified and archived."
-            + (f" SA experiment '{exp_name}' queued (job {job_id})." if job_id else ""
-               " No SA experiment found — create one in the builder.")
-        ),
+        "message": f"{len(to_archive)} candidate(s) verified and archived.",
+        "suggested_sa_exp": exp_id,
+        "suggested_sa_name": exp_name,
     }
 
 

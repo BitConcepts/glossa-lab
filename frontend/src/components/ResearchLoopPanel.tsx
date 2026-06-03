@@ -288,11 +288,38 @@ export function ResearchLoopPanel() {
               } else if (event.type === "node_complete" && event.cycle) {
                 setCurrentPhase("build");
                 setCurrentWork({ cycle: event.cycle, gap: event.gap_targeted ?? "", experiment: event.experiment ?? "" });
-                setLog((prev) => [...prev, event as CycleEntry]);
+                setLog((prev) => {
+                  const entry: CycleEntry = {
+                    cycle: event.cycle ?? 0,
+                    gap_targeted: event.gap_targeted ?? "",
+                    experiment: event.experiment ?? "",
+                    n_papers: 0, n_insights: 0,
+                    insight_types: {},
+                    verdict: event.verdict ?? `⚙ ${event.experiment ?? "node"}`,
+                    is_new_info: false,
+                    selection_method: "node_complete",
+                  };
+                  const next = [...prev, entry];
+                  return next.length > 400 ? next.slice(next.length - 400) : next;
+                });
               } else if (event.cycle) {
                 setCurrentPhase("build");
                 setCurrentWork({ cycle: event.cycle, gap: event.gap_targeted ?? "", experiment: event.experiment ?? "" });
-                setLog((prev) => [...prev, event as CycleEntry]);
+                setLog((prev) => {
+                  const entry: CycleEntry = {
+                    cycle: event.cycle ?? 0,
+                    gap_targeted: event.gap_targeted ?? "",
+                    experiment: event.experiment ?? "",
+                    n_papers: event.n_papers ?? 0,
+                    n_insights: event.n_insights ?? 0,
+                    insight_types: (event.insight_types ?? {}) as Record<string, number>,
+                    verdict: event.verdict ?? "",
+                    is_new_info: event.is_new_info ?? false,
+                    selection_method: event.selection_method ?? "cycle",
+                  };
+                  const next = [...prev, entry];
+                  return next.length > 400 ? next.slice(next.length - 400) : next;
+                });
               }
             } catch { /* ignore parse errors */ }
           }
@@ -311,8 +338,8 @@ export function ResearchLoopPanel() {
   };
 
   const activeSynthesis = synthesis;
-  const totalPapers = log.reduce((s, c) => s + c.n_papers, 0);
-  const totalInsights = log.reduce((s, c) => s + c.n_insights, 0);
+  const totalPapers = log.reduce((s, c) => s + (c.n_papers ?? 0), 0);
+  const totalInsights = log.reduce((s, c) => s + (c.n_insights ?? 0), 0);
 
   return (
     <div style={{ border: "1px solid #c4b5fd", borderRadius: 10, padding: 16,
@@ -449,7 +476,7 @@ export function ResearchLoopPanel() {
                     </span>
                     <span style={{ flex: 1, color: "#6b7280", overflow: "hidden",
                                    textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
-                      {entry.verdict.slice(0, 60)}
+                      {(entry.verdict ?? "").slice(0, 60)}
                     </span>
                     <InsightTypePills types={entry.insight_types} max={2} />
                     <span style={{ fontSize: 9, padding: "1px 4px", borderRadius: 3,
@@ -1002,7 +1029,7 @@ function FoundationBadge({ fc }: { fc: FoundationCheck }) {
 function InsightTypePills({
   types, max,
 }: { types: Record<string, number>; max: number }) {
-  const entries = Object.entries(types).sort(([, a], [, b]) => b - a).slice(0, max);
+  const entries = Object.entries(types ?? {}).sort(([, a], [, b]) => b - a).slice(0, max);
   return (
     <div style={{ display: "flex", gap: 2, flexShrink: 0 }}>
       {entries.map(([t, c]) => {

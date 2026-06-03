@@ -1052,8 +1052,9 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     draggedNodeType.current = null;
   }, [catalog, savedExps, darkMode]);
   const onDragOver = (ev: React.DragEvent) => {
-    if (!activeExp) return;  // no drop target when no experiment open
-    ev.preventDefault(); ev.dataTransfer.dropEffect = "move";
+    ev.preventDefault();  // must always prevent default to allow drops
+    if (!activeExp) return;
+    ev.dataTransfer.dropEffect = "move";
   };
 
   const nodeCtxItems = useCallback((nodeId: string): CtxItem[] => {
@@ -1495,6 +1496,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
             onConnect={onConnect}
             onNodeClick={onNodeClick} onPaneClick={onPaneClick}
             onNodeContextMenu={onNodeCtx}
+            onDrop={onDrop} onDragOver={onDragOver}
             snapToGrid snapGrid={[15, 15]}
             deleteKeyCode={["Backspace", "Delete"]}
             fitView fitViewOptions={{ padding: 0.2 }}

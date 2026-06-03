@@ -1,0 +1,104 @@
+{
+  "data": {
+    "a": [
+      {
+        "bin": "L1-2",
+        "n_seqs": 269,
+        "n_tokens": 538,
+        "n_distinct_signs": 95,
+        "mean_length": 2.0
+      },
+      {
+        "bin": "L3-4",
+        "n_seqs": 745,
+        "n_tokens": 2650,
+        "n_distinct_signs": 303,
+        "mean_length": 3.557046979865772
+      },
+      {
+        "bin": "L5-6",
+        "n_seqs": 494,
+        "n_tokens": 2634,
+        "n_distinct_signs": 303,
+        "mean_length": 5.331983805668016
+      },
+      {
+        "bin": "L7+",
+        "n_seqs": 162,
+        "n_tokens": 1180,
+        "n_distinct_signs": 228,
+        "mean_length": 7.283950617283951
+      }
+    ],
+    "b__L1-2": {
+      "n_seqs": 269,
+      "n_tokens": 538,
+      "n_signs": 95,
+      "spectral_gap": 0.46052,
+      "top_eigenvalues": [
+        0.802495,
+        0.53948,
+        0.53948,
+        0.410182,
+        0.410182,
+        0.403987,
+        0.403987,
+        0.37918
+      ],
+      "verdict": "natural-language regime"
+    },
+    "b__L3-4": {
+      "n_seqs": 745,
+      "n_tokens": 2650,
+      "n_signs": 303,
+      "spectral_gap": 0.683421,
+      "top_eigenvalues": [
+        0.962418,
+        0.316579,
+        0.316579,
+        0.306794,
+        0.306794,
+        0.301756,
+        0.301756,
+        0.300757
+      ],
+      "verdict": "natural-language regime"
+    },
+    "b__L5-6": {
+      "n_seqs": 494,
+      "n_tokens": 2634,
+      "n_signs": 303,
+      "spectral_gap": 0.577672,
+      "top_eigenvalues": [
+        0.989558,
+        0.422328,
+        0.365288,
+        0.365288,
+        0.328239,
+        0.328239,
+        0.30683,
+        0.30683
+      ],
+      "verdict": "natural-language regime"
+    },
+    "b__L7+": {
+      "n_seqs": 162,
+      "n_tokens": 1180,
+      "n_signs": 228,
+      "spectral_gap": 0.459803,
+      "top_eigenvalues": [
+        1.0,
+        0.540197,
+        0.540197,
+        0.531678,
+        0.531678,
+        0.512636,
+        0.512636,
+        0.4917
+      ],
+      "verdict": "natural-language regime"
+    },
+    "c": "PREDICTION 1 NOT CONFIRMED: spectral gap goes from 0.4605 (L1-2) to 0.4598 (L7+) across length bins (min=0.4598, max=0.6834). No length effect.",
+    "d": 1670
+  }
+}

@@ -805,7 +805,7 @@ test.describe("Research Loop API", () => {
     expect(resp.status()).toBe(200);
     const body = await resp.json();
     expect(body).toHaveProperty("protocol");
-    expect(body.protocol).toBe("integrated_research_loop");
+    expect(body.protocol).toBe("integrated_research_loop_v3");
     expect(body).toHaveProperty("cycles_run");
     expect(body).toHaveProperty("max_cycles");
     expect(body).toHaveProperty("total_papers_mined");
@@ -846,7 +846,7 @@ test.describe("Research Loop API", () => {
     expect(lastEvent).toHaveProperty("type");
     expect(lastEvent.type).toBe("complete");
     expect(lastEvent).toHaveProperty("protocol");
-    expect(lastEvent.protocol).toBe("integrated_research_loop");
+    expect(lastEvent.protocol).toBe("integrated_research_loop_v3");
   });
 
   test("after start, status shows cycles_completed >= 1", async ({ request }) => {
@@ -948,5 +948,114 @@ test.describe("Status view - system metrics", () => {
     await btn.click();
     // Should not throw; backend will respond
     await page.waitForTimeout(500);
+  });
+});
+
+// ── Phase Advancement API ─────────────────────────────────────────────────────
+
+test.describe("Phase Advancement API", () => {
+  test("GET /api/v1/phase/status returns valid structure", async ({ request }) => {
+    const resp = await request.get("/api/v1/phase/status");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body).toHaveProperty("current_phase");
+    expect(body).toHaveProperty("phase_label");
+    expect(body).toHaveProperty("coverage");
+    expect(body).toHaveProperty("next_milestone");
+    expect(body).toHaveProperty("top_actions");
+    expect(typeof body.current_phase).toBe("number");
+    expect(typeof body.phase_label).toBe("string");
+    expect(typeof body.coverage).toBe("number");
+    expect(Array.isArray(body.top_actions)).toBeTruthy();
+  });
+
+  test("GET /api/v1/phase/plan returns actions array", async ({ request }) => {
+    const resp = await request.get("/api/v1/phase/plan");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body).toHaveProperty("current_phase");
+    expect(body).toHaveProperty("actions");
+    expect(Array.isArray(body.actions)).toBeTruthy();
+    if (body.actions.length > 0) {
+      const a = body.actions[0];
+      expect(a).toHaveProperty("action_type");
+      expect(a).toHaveProperty("label");
+      expect(a).toHaveProperty("priority");
+    }
+  });
+
+  test("POST /api/v1/phase/override accepts phase number", async ({ request }) => {
+    const resp = await request.post("/api/v1/phase/override", {
+      data: { phase: 1 },
+    });
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body.ok).toBe(true);
+    expect(body.override_phase).toBe(1);
+
+    // Clear override
+    const clear = await request.post("/api/v1/phase/override", {
+      data: { phase: null },
+    });
+    expect(clear.status()).toBe(200);
+    expect((await clear.json()).ok).toBe(true);
+  });
+});
+
+// ── Staging Prune API ─────────────────────────────────────────────────────────
+
+test.describe("Staging Prune API", () => {
+  test("DELETE /api/v1/research-loop/staging/rejected returns valid response", async ({ request }) => {
+    const resp = await request.delete("/api/v1/research-loop/staging/rejected");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body).toHaveProperty("ok");
+    expect(body.ok).toBe(true);
+    expect(body).toHaveProperty("pruned");
+    expect(typeof body.pruned).toBe("number");
+    expect(body).toHaveProperty("message");
+  });
+});
+
+// ── SA Multi-Comparison Build API ─────────────────────────────────────────────
+
+test.describe("SA Multi-Comparison Build API", () => {
+  test("POST /experiments/build-sa with valid params returns experiment", async ({ request }) => {
+    const resp = await request.post("/api/v1/experiments/build-sa", {
+      data: {
+        corpus: "indus_cisi",
+        languages: "dravidian,sanskrit",
+        n_seeds: 1,
+        max_iterations: 100,
+      },
+    });
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body.ok).toBe(true);
+    expect(body).toHaveProperty("experiment_id");
+    expect(body).toHaveProperty("name");
+    expect(body.n_languages).toBe(2);
+    expect(body.languages).toEqual(["dravidian", "sanskrit"]);
+    expect(body.corpus).toBe("indus_cisi");
+  });
+
+  test("POST /experiments/build-sa with invalid corpus returns error", async ({ request }) => {
+    const resp = await request.post("/api/v1/experiments/build-sa", {
+      data: { corpus: "nonexistent", languages: "hebrew" },
+    });
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body.ok).toBe(false);
+    expect(body.error).toContain("Unknown corpus");
+  });
+
+  test("POST /experiments/build-sa with invalid language returns error", async ({ request }) => {
+    const resp = await request.post("/api/v1/experiments/build-sa", {
+      data: { corpus: "indus_cisi", languages: "klingon" },
+    });
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body.ok).toBe(false);
+    expect(body.error).toContain("Unknown language");
   });
 });

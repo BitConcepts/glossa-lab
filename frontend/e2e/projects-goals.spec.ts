@@ -108,10 +108,11 @@ test.describe("Dashboard highlights — n_hypotheses", () => {
 
 test.describe("Dashboard insight — experiment_id in open_view actions", () => {
   test("downgraded actions carry experiment_id in params", async ({ request }) => {
+    test.setTimeout(90_000); // insight endpoint calls LLM — can take up to 60s
     const up = await backendUp(request);
     test.skip(!up, "Backend not running");
 
-    const resp = await request.post(`${BACKEND}/api/v1/dashboard/insight?days=14&limit=30`);
+    const resp = await request.post(`${BACKEND}/api/v1/dashboard/insight?days=14&limit=30`, { timeout: 75_000 });
     if (resp.status() !== 200) return;
     const body = await resp.json();
 

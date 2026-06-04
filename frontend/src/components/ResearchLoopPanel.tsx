@@ -152,6 +152,7 @@ export function ResearchLoopPanel() {
   const [currentPhase, setCurrentPhase] = useState<"idle" | "propose" | "build" | "verify" | "analyze">("idle");
   const [currentWork, setCurrentWork] = useState<{ cycle: number; gap: string; experiment: string } | null>(null);
   const [showFullLog, setShowFullLog] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const fetchStatus = useCallback(async () => {
     try {
@@ -369,14 +370,15 @@ export function ResearchLoopPanel() {
               <option key={n} value={n}>{n} cycles</option>
             ))}
           </select>
-          {!running ? (
-            <button onClick={() => void startLoop()}
+          {!running && !showConfirm && (
+            <button onClick={() => setShowConfirm(true)}
               style={{ padding: "6px 14px", border: "1px solid #7c3aed",
                        borderRadius: 6, background: "#7c3aed", color: "#fff",
                        fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
               ▶ Start Loop
             </button>
-          ) : (
+          )}
+          {running && (
             <button onClick={() => void stopLoop()}
               style={{ padding: "6px 14px", border: "1px solid #dc2626",
                        borderRadius: 6, background: "#dc2626", color: "#fff",
@@ -386,6 +388,43 @@ export function ResearchLoopPanel() {
           )}
         </div>
       </div>
+
+      {/* ── Confirmation panel ── */}
+      {!running && showConfirm && (
+        <div style={{
+          border: "1px solid #c4b5fd", borderRadius: 8, padding: "12px 16px",
+          background: "#ede9fe", marginBottom: 12,
+        }}>
+          <div style={{ fontSize: 13, fontWeight: 700, color: "#5b21b6", marginBottom: 8 }}>
+            🔄 Research Loop — {cycles} cycles planned
+          </div>
+          <div style={{ fontSize: 11, color: "#374151", lineHeight: 1.6 }}>
+            <div><strong>Phase 1:</strong> Blitz-mine all 15 gap topics</div>
+            <div><strong>Phase 2:</strong> Adaptive exploration — propose → build → verify → run → analyze</div>
+            <div><strong>Phase 3:</strong> Stage anchor candidates for your review</div>
+          </div>
+          <div style={{ display: "flex", justifyContent: "flex-end", gap: 8, marginTop: 10 }}>
+            <button
+              onClick={() => setShowConfirm(false)}
+              style={{
+                padding: "6px 14px", border: "1px solid #d1d5db",
+                borderRadius: 6, background: "#fff", color: "#374151",
+                fontSize: 12, fontWeight: 600, cursor: "pointer",
+              }}>
+              Cancel
+            </button>
+            <button
+              onClick={() => { setShowConfirm(false); void startLoop(); }}
+              style={{
+                padding: "6px 14px", border: "1px solid #7c3aed",
+                borderRadius: 6, background: "#7c3aed", color: "#fff",
+                fontSize: 12, fontWeight: 600, cursor: "pointer",
+              }}>
+              ▶ Start
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* ── Live progress: phase strip + metrics + collapsed log ── */}
       {(running || log.length > 0) && (

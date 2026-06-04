@@ -73,6 +73,29 @@ function _saveDone(d: Record<string, DoneResult>) {
   } catch { /* ignore */ }
 }
 
+// ── Server-side persistent dismissal helpers ──────────────────────
+
+async function fetchServerDismissed(): Promise<string[]> {
+  try {
+    const res = await fetch("/api/v1/dismissals");
+    if (!res.ok) return [];
+    const data = (await res.json()) as { dismissed?: string[] };
+    return data.dismissed ?? [];
+  } catch {
+    return [];
+  }
+}
+
+async function postServerDismissal(key: string): Promise<void> {
+  try {
+    await fetch("/api/v1/dismissals", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ key }),
+    });
+  } catch { /* best-effort */ }
+}
+
 type ActionFn = (
   label: string,
   actionType: string,
@@ -147,6 +170,23 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
   const [busyLabels, setBusyLabels] = useState<Set<string>>(new Set());
   // Persist done/error state across page reloads.
   const [doneLabels, setDoneLabels] = useState<Record<string, DoneResult>>(_loadDone);
+
+  // ── Merge server-side dismissed keys on mount ─────────────────────
+  useEffect(() => {
+    void (async () => {
+      const serverKeys = await fetchServerDismissed();
+      if (serverKeys.length > 0) {
+        setDoneLabels(prev => {
+          const merged = { ...prev };
+          for (const k of serverKeys) {
+            if (!merged[k]) merged[k] = "success";
+          }
+          _saveDone(merged);
+          return merged;
+        });
+      }
+    })();
+  }, []);
 
   // ── Foundation auto-check state ────────────────────────────────────
   const [foundationStatus, setFoundationStatus] = useState<FoundationStatus | null>(null);
@@ -383,7 +423,7 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
               </span>
               <div style={{ display: "flex", gap: 4, alignItems: "flex-start", flexShrink: 0, marginTop: 1 }}>
                 <button
-                  onClick={() => setDoneLabels(prev => { const n = { ...prev, "Plan anchored SA comparison": "success" as const }; _saveDone(n); return n; })}
+                  onClick={() => { setDoneLabels(prev => { const n = { ...prev, "Plan anchored SA comparison": "success" as const }; _saveDone(n); return n; }); void postServerDismissal("Plan anchored SA comparison"); }}
                   style={{ border: "none", background: "none", cursor: "pointer", fontSize: 13, color: "#9ca3af", lineHeight: 1, padding: "0 2px" }}
                   title="Dismiss this finding">
                   ✕
@@ -437,7 +477,7 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
               </span>
               <div style={{ display: "flex", gap: 4, alignItems: "flex-start", flexShrink: 0, marginTop: 1 }}>
                 <button
-                  onClick={() => setDoneLabels(prev => { const n = { ...prev, "Create hypothesis: guild-identity site invariance": "success" as const }; _saveDone(n); return n; })}
+                  onClick={() => { setDoneLabels(prev => { const n = { ...prev, "Create hypothesis: guild-identity site invariance": "success" as const }; _saveDone(n); return n; }); void postServerDismissal("Create hypothesis: guild-identity site invariance"); }}
                   style={{ border: "none", background: "none", cursor: "pointer", fontSize: 13, color: "#9ca3af", lineHeight: 1, padding: "0 2px" }}
                   title="Dismiss this finding">
                   ✕

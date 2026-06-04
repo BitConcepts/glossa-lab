@@ -4042,6 +4042,43 @@ def auto_migrate_hardcoded_experiments() -> int:
     return written
 
 
+async def queue_graph_experiment(
+    experiment_id: str,
+    *,
+    db: Any,
+    params: dict | None = None,
+    name_override: str | None = None,
+) -> dict | None:
+    """Create a Job record for a graph experiment and return the job dict.
+
+    Returns the job dict on success, or None if db is unavailable or the
+    experiment_id is not found in the graph registry.
+    """
+    from datetime import datetime, timezone  # noqa: PLC0415
+
+    experiments = list_graph_experiments()
+    match = None
+    for exp in experiments:
+        if exp.get("id") == experiment_id:
+            match = exp
+            break
+    if match is None:
+        return None
+    if db is None:
+        return None
+
+    job_name = name_override or match.get("name", experiment_id)
+    now = datetime.now(timezone.utc).isoformat()
+    job = await db.create_job(
+        name=job_name,
+        pipeline="graph_experiment",
+        params={"experiment_id": experiment_id, **(params or {})},
+        created_at=now,
+        initial_status="pending",
+    )
+    return job
+
+
 def register_graph_experiments() -> None:
     """Inject all saved graph experiments into the ExperimentBase discovery registry."""
     if not _GRAPHS_DIR.exists():

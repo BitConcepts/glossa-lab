@@ -159,6 +159,16 @@ export function PhaseAdvancerPanel() {
           padding: "10px 14px",
           background: "#fff",
         }}>
+          {/* Purpose banner */}
+          <div style={{
+            padding: "6px 10px", marginBottom: 10,
+            background: "#f0f9ff", border: "1px solid #bae6fd",
+            borderRadius: 5, fontSize: 10, color: "#0369a1", lineHeight: 1.5,
+          }}>
+            <strong>🧭 Phase Guide</strong> queues SA &amp; validation <strong>experiments as background jobs</strong>.
+            Check the <strong>Jobs panel</strong> to monitor progress.
+            For paper mining, use the <strong>Research Loop</strong> below.
+          </div>
           {/* Phase description */}
           <p style={{ fontSize: 11, color: "#6b7280", margin: "0 0 10px", lineHeight: 1.5 }}>
             {status.phase_description}
@@ -186,30 +196,38 @@ export function PhaseAdvancerPanel() {
                              textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6 }}>
                 Recommended Actions
               </div>
-              {status.top_actions.map((action, i) => (
-                <div key={i} style={{
-                  padding: "6px 10px", marginBottom: 4,
-                  background: i === 0 ? `${colors.bg}` : "#f9fafb",
-                  border: `1px solid ${i === 0 ? colors.border : "#e5e7eb"}`,
-                  borderRadius: 5,
-                }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                    <span style={{ fontSize: 11, fontWeight: i === 0 ? 700 : 600,
-                                    color: i === 0 ? colors.text : "#374151" }}>
-                      {i === 0 && "⭐ "}{action.label}
-                    </span>
-                    <span style={{
-                      fontSize: 9, color: "#9ca3af",
-                      background: "#f3f4f6", borderRadius: 3, padding: "1px 5px", whiteSpace: "nowrap",
-                    }}>
-                      {action.action_type.replace(/_/g, " ")}
-                    </span>
+              {status.top_actions.map((action, i) => {
+                const isJob = action.action_type === "run_experiment";
+                const isInfo = ["review_candidates","verify_sa","open_view"].includes(action.action_type);
+                const chipLabel = isJob ? "⚙ queues job" : isInfo ? "ℹ action needed" : action.action_type.replace(/_/g, " ");
+                const chipBg   = isJob ? "#dcfce7" : isInfo ? "#fef3c7" : "#f3f4f6";
+                const chipFg   = isJob ? "#15803d" : isInfo ? "#92400e" : "#6b7280";
+                return (
+                  <div key={i} style={{
+                    padding: "6px 10px", marginBottom: 4,
+                    background: i === 0 ? colors.bg : "#f9fafb",
+                    border: `1px solid ${i === 0 ? colors.border : "#e5e7eb"}`,
+                    borderRadius: 5,
+                  }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+                      <span style={{ fontSize: 11, fontWeight: i === 0 ? 700 : 600,
+                                      color: i === 0 ? colors.text : "#374151" }}>
+                        {i === 0 && "⭐ "}{action.label}
+                      </span>
+                      <span style={{
+                        fontSize: 9, fontWeight: 600,
+                        background: chipBg, color: chipFg,
+                        borderRadius: 3, padding: "1px 6px", whiteSpace: "nowrap", marginLeft: 6,
+                      }}>
+                        {chipLabel}
+                      </span>
+                    </div>
+                    <div style={{ fontSize: 10, color: "#6b7280", marginTop: 2 }}>
+                      {action.rationale}
+                    </div>
                   </div>
-                  <div style={{ fontSize: 10, color: "#6b7280", marginTop: 2 }}>
-                    {action.rationale}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
 

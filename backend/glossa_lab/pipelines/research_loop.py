@@ -45,6 +45,7 @@ _REPO = Path(__file__).resolve().parents[3]
 _HOLDAT_CSV = _REPO / "corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv"
 _ANCHORS_JSON = _REPO / "backend/reports/INDUS_FINAL_ANCHORS.json"
 _STAGING_JSON = _REPO / "outputs/anchor_staging.json"
+_STAGING_ARCHIVE_JSON = _REPO / "outputs/anchor_staging_archive.json"
 
 # ---------------------------------------------------------------------------
 # Gap topics (15 rotating)
@@ -1330,6 +1331,57 @@ class ResearchLoop:
     # Staging
     # ------------------------------------------------------------------
 
+    def _build_exclusion_set(self) -> set[tuple[str, str]]:
+        """Return (sign, proposed_reading) pairs that must never be re-staged.
+
+        Merges:
+        1. All entries in anchor_staging_archive.json (any status).
+        2. All sign IDs in INDUS_FINAL_ANCHORS.json (every reading variant).
+        3. All HIGH/MEDIUM signs paired with their existing anchor reading.
+        """
+        excluded: set[tuple[str, str]] = set()
+
+        # 1. Archive — every (sign, proposed_reading) regardless of status
+        if _STAGING_ARCHIVE_JSON.exists():
+            try:
+                archive = json.loads(
+                    _STAGING_ARCHIVE_JSON.read_text(encoding="utf-8"))
+                if isinstance(archive, list):
+                    for entry in archive:
+                        sid = entry.get("sign") or entry.get("sign_id", "")
+                        pr = entry.get("proposed_reading", "")
+                        if sid and pr:
+                            excluded.add((sid, pr))
+            except Exception as exc:
+                logger.warning("Could not read staging archive for exclusion: %s", exc)
+
+        # 2. Final anchors — every reading variant per sign
+        if _ANCHORS_JSON.exists():
+            try:
+                fa = json.loads(_ANCHORS_JSON.read_text(encoding="utf-8"))
+                for sid, info in (fa.get("anchors") or {}).items():
+                    reading = info.get("reading", "")
+                    if reading:
+                        # Include each slash-delimited variant
+                        for variant in reading.split("/"):
+                            variant = variant.strip()
+                            if variant:
+                                excluded.add((sid, variant))
+            except Exception as exc:
+                logger.warning("Could not read final anchors for exclusion: %s", exc)
+
+        # 3. HIGH/MEDIUM signs with their current anchor reading
+        for sid in self.high_signs:
+            anchor = self.anchors.get(sid, {})
+            reading = anchor.get("reading", "")
+            if reading:
+                for variant in reading.split("/"):
+                    variant = variant.strip()
+                    if variant:
+                        excluded.add((sid, variant))
+
+        return excluded
+
     def _save_staging(self) -> None:
         if not self.anchor_candidates:
             logger.info("No anchor candidates staged this run.")
@@ -1342,8 +1394,14 @@ class ResearchLoop:
             except Exception:
                 existing = []
         seen_keys = {(c["sign"], c["proposed_reading"]) for c in existing}
+        exclusion = self._build_exclusion_set()
+        before_count = len(self.anchor_candidates)
         new_unique = [c for c in self.anchor_candidates
-                      if (c["sign"], c["proposed_reading"]) not in seen_keys]
+                      if (c["sign"], c["proposed_reading"]) not in seen_keys
+                      and (c["sign"], c["proposed_reading"]) not in exclusion]
+        dropped = before_count - len(new_unique)
+        if dropped:
+            logger.info("Excluded %d previously-processed candidates from staging", dropped)
         merged = existing + new_unique
         _STAGING_JSON.write_text(json.dumps(merged, indent=2, ensure_ascii=False),
                                  encoding="utf-8")

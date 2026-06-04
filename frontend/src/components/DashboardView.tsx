@@ -46,7 +46,6 @@ import { useAIChat } from "../hooks/useAIChat";
 import { useProject } from "../hooks/useProject";
 import { useToast } from "../hooks/useToast";
 import { DeciphermentPanel } from "./DeciphermentPanel";
-import ExperimentRegistry from "./ExperimentRegistry";
 import { ResearchLoopPanel } from "./ResearchLoopPanel";
 
 // ── Insight persistence ──────────────────────────────────────────────────
@@ -918,11 +917,10 @@ export function DashboardView() {
           gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))" }}>
           <CounterTile label="Discovery items"  value={data.n_items}        emoji="🔭"
             sub={`last ${data.since_days}d`} onClick={() => navigate("discovery")} />
-          {/* Studies removed — no longer part of active workflow */}
           <CounterTile label="Experiments"      value={data.n_experiments}  emoji="🔀"
-            sub="graph registry" onClick={() => navigate("experiments")} />
-          <CounterTile label="Atomic nodes"     value={data.n_atomic_nodes ?? 0}  emoji="⚛️"
-            sub="registered" onClick={() => navigate("experiments")} />
+            sub="graph experiments" onClick={() => navigate("experiments")} />
+          <CounterTile label="Palette nodes"    value={data.n_atomic_nodes ?? 0}  emoji="⚛"
+            sub="builder palette" onClick={() => navigate("experiments")} />
           <CounterTile label="Saved findings"   value={data.by_status.saved ?? 0}
             emoji="★" sub="for follow-up" onClick={() => navigate("discovery")} />
           <CounterTile label="Hypotheses"       value={data.n_hypotheses ?? data.by_kind.hypothesis ?? 0}
@@ -936,8 +934,7 @@ export function DashboardView() {
           marginBottom: 12 }}>{error}</div>
       )}
 
-      {/* Experiment Registry */}
-      <ExperimentRegistry />
+      {/* Experiment Registry moved to dedicated Experiments view — no longer inline on dashboard */}
 
       {/* Decipherment Progress Panel */}
       <DeciphermentPanel onAction={(label, actionType, params, rationale) =>

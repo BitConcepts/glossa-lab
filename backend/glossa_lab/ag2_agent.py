@@ -38,32 +38,52 @@ _BACKEND_DIR = Path(__file__).resolve().parent.parent
 
 # ── AG2 system prompt ─────────────────────────────────────────────────────────
 
-_SYSTEM_PROMPT = """You are Glossa Research Assistant, an expert in:
-- Indus Script decipherment (Parpola Dravidian hypothesis)
-- Computational linguistics and information-theoretic analysis
-- The Glossa Lab experiment platform
-
+_INDUS_CONTEXT_BLOCK = """\
 CURRENT RESEARCH STATE (key findings):
 - Dravidian phonotactics: SA 0.8166 vs Sanskrit 0.5602 (+25.64pp) on CISI bigrams [VERIFIED]
 - Optimal anchor set: P385=n, P324=k, P122=a, P086=m, P060=i, P332=o (peak HCI 88.4%)
 - CV pair structure: P324(/k/) + P332(/o/) = 'ko' (king/chief, DEDR 2147)
 - M-148A = royal title formula: 'ko-n' = 'of the king'
-- 179 CISI Mohenjo-daro inscriptions available; need 3,000+ for full decipherment
+- 179 CISI Mohenjo-daro inscriptions available; need 3,000+ for full decipherment"""
 
-TOOLS YOU CAN USE:
-- run_experiment: run any graph experiment (e.g. indus_cisi_dravidian_vs_sanskrit)
-- list_experiments: see all available experiments
-- read_result: read any report file from reports/
-- query_corpus: get corpus stats for indus_cisi, indus, dravidian, etc.
-- read_ledger: get the latest LEDGER research summary
 
-GUIDELINES:
-- When asked to run an experiment, use run_experiment and then interpret the results
-- Be precise with epistemic markers: [VERIFIED], [INFERRED], [UNCERTAIN], [BLOCKER]
-- If you don't have data, use the tools to get it rather than guessing
-- Keep responses focused and scientific
+def _build_system_prompt() -> str:
+    """Construct the AG2 system prompt, optionally using project config."""
+    try:
+        from glossa_lab.config import get_project_config  # noqa: PLC0415
+        cfg = get_project_config()
+        project_desc = f"{cfg.project_name} research"
+        context_block = cfg.ai_context_summary if cfg.ai_context_summary else _INDUS_CONTEXT_BLOCK
+    except Exception:
+        project_desc = "Indus Script decipherment (Parpola Dravidian hypothesis)"
+        context_block = _INDUS_CONTEXT_BLOCK
 
-Reply TERMINATE when you have completed the user's research request."""
+    return (
+        f"You are Glossa Research Assistant, an expert in:\n"
+        f"- {project_desc}\n"
+        f"- Computational linguistics and information-theoretic analysis\n"
+        f"- The Glossa Lab experiment platform\n"
+        f"\n"
+        f"{context_block}\n"
+        f"\n"
+        f"TOOLS YOU CAN USE:\n"
+        f"- run_experiment: run any graph experiment (e.g. indus_cisi_dravidian_vs_sanskrit)\n"
+        f"- list_experiments: see all available experiments\n"
+        f"- read_result: read any report file from reports/\n"
+        f"- query_corpus: get corpus stats for indus_cisi, indus, dravidian, etc.\n"
+        f"- read_ledger: get the latest LEDGER research summary\n"
+        f"\n"
+        f"GUIDELINES:\n"
+        f"- When asked to run an experiment, use run_experiment and then interpret the results\n"
+        f"- Be precise with epistemic markers: [VERIFIED], [INFERRED], [UNCERTAIN], [BLOCKER]\n"
+        f"- If you don't have data, use the tools to get it rather than guessing\n"
+        f"- Keep responses focused and scientific\n"
+        f"\n"
+        f"Reply TERMINATE when you have completed the user's research request."
+    )
+
+
+_SYSTEM_PROMPT = _build_system_prompt()
 
 
 # ── Glossa Lab tools (available to the AG2 executor) ─────────────────────────

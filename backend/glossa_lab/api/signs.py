@@ -240,8 +240,12 @@ async def signs_summary() -> dict[str, Any]:
     low = sum(1 for s in signs if s["confidence"] == "LOW")
     in_corpus = sum(1 for s in signs if s.get("in_corpus"))
     deciphered = high + medium + low  # all with readings
-    # ICIT reference: 713 known signs total
-    icit_total = 713
+    # ICIT reference: known signs total (from project config)
+    try:
+        from glossa_lab.config import get_project_config  # noqa: PLC0415
+        icit_total = get_project_config().sign_total
+    except Exception:
+        icit_total = 713
     undeciphered = max(0, icit_total - deciphered)
     return {
         "total": total,

@@ -182,7 +182,12 @@ class PhaseAdvancer:
             actions.append(PhaseAction(
                 action_type="open_view",
                 label="Fix Foundation Check failures",
-                rationale="Foundation check has failures — resolve before advancing.",
+                rationale=(
+                    "Foundation check has failures — go to Foundation Check view. "
+                    "Auto-fixes are available for most issues (blue ⚡ buttons). "
+                    "Note: fixing foundation check does NOT block phase advancement — "
+                    "it is a data integrity audit, not a gate."
+                ),
                 params={"view": "foundation"},
                 priority=priority,
             ))

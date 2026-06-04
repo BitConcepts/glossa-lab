@@ -157,7 +157,7 @@ async def start_loop(
             if rows:
                 ts = rows[0].get("fetched_at", "")
                 if ts:
-                    from datetime import datetime as _dt, timezone as _tz  # noqa: PLC0415
+                    from datetime import datetime as _dt  # noqa: PLC0415
                     try:
                         last_fetch = _dt.fromisoformat(
                             ts.replace("Z", "+00:00")
@@ -809,6 +809,45 @@ async def archive_staging() -> dict[str, Any]:
     return {"ok": True, "archived": len(to_archive), "remaining": len(remaining)}
 
 
+@router.delete("/staging/rejected")
+async def prune_rejected_staging() -> dict[str, Any]:
+    """Permanently delete all rejected candidates from the staging queue.
+
+    Unlike archive, this removes them from the file entirely (no archive copy).
+    Use when rejected items are definitely wrong and should not be re-staged.
+    Returns {ok, pruned, remaining_staged}.
+    """
+    if not _STAGING_JSON.exists():
+        return {"ok": True, "pruned": 0, "remaining_staged": 0,
+                "message": "No staging file — nothing to prune."}
+    try:
+        candidates: list[dict] = json.loads(
+            _STAGING_JSON.read_text(encoding="utf-8"))
+    except Exception as exc:
+        return {"ok": False, "error": f"could not read staging file: {exc}"}
+
+    pruned = [c for c in candidates if c.get("review_status") == "rejected"]
+    remaining = [c for c in candidates if c.get("review_status") != "rejected"]
+
+    if not pruned:
+        return {"ok": True, "pruned": 0,
+                "remaining_staged": sum(1 for c in remaining if c.get("review_status") == "staged"),
+                "message": "No rejected candidates to prune."}
+
+    _STAGING_JSON.write_text(
+        json.dumps(remaining, indent=2, ensure_ascii=False), encoding="utf-8")
+    _log.info("Prune rejected: %d items removed, %d remaining", len(pruned), len(remaining))
+
+    remaining_staged = sum(1 for c in remaining if c.get("review_status") == "staged")
+    return {
+        "ok": True,
+        "pruned": len(pruned),
+        "remaining": len(remaining),
+        "remaining_staged": remaining_staged,
+        "message": f"{len(pruned)} rejected candidate(s) permanently deleted.",
+    }
+
+
 @router.post("/staging/verify-sa")
 async def staging_verify_sa() -> dict[str, Any]:
     """Verify approved staging candidates and archive them.
@@ -818,7 +857,6 @@ async def staging_verify_sa() -> dict[str, Any]:
     anchored SA graph experiment so the user can see the result in Jobs.
     Does NOT require a full research loop run.
     """
-    from glossa_lab.database import get_db  # noqa: PLC0415
     from glossa_lab.experiment_graph import (  # noqa: PLC0415
         get_graph_experiment,
         list_graph_experiments,

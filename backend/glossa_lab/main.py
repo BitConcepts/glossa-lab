@@ -390,6 +390,12 @@ def create_app() -> FastAPI:
     application.include_router(foundation_automation_router)  # already prefixed at /api/v1/foundation
     application.include_router(signs_router)  # already prefixed at /api/v1/signs
 
+    try:
+        from glossa_lab.api.cldf import router as cldf_router  # noqa: PLC0415
+        application.include_router(cldf_router)  # already prefixed at /api/v1/cldf
+    except ImportError:
+        pass
+
     # Serve sign glyph images
     _signs_static = Path(__file__).parent.parent / "static" / "signs"
     if _signs_static.exists():

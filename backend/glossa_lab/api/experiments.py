@@ -369,6 +369,123 @@ async def _stream_experiment(
         )
 
 
+_VALID_BUILTIN_LANGUAGES = {
+    "hebrew", "geez", "phoenician", "sumerian",
+    "dravidian", "south_dravidian", "kannada", "telugu",
+    "pali", "sanskrit", "coptic", "linear_b",
+    "meroitic", "proto_sinaitic",
+}
+
+_VALID_BUILTIN_CORPORA = {
+    "indus", "indus_cisi", "indus_m77",
+    "hebrew", "geez", "phoenician", "nw_semitic", "ugaritic",
+    "meroitic", "proto_sinaitic", "linear_b", "sanskrit", "dravidian",
+}
+
+
+@router.post("/experiments/build-sa")
+async def build_sa_experiment(body: dict[str, Any]) -> dict[str, Any]:
+    """Build and register a new SA multi-language comparison graph experiment.
+
+    Body: {corpus, languages, name?, n_seeds?, max_iterations?}
+    - corpus: BuiltinCorpus name (e.g. 'indus_cisi')
+    - languages: comma-separated language list (e.g. 'dravidian,sanskrit,hebrew')
+    - name: optional human-readable name
+    - n_seeds: seeds per language (default 3)
+    - max_iterations: SA iterations (default 5000)
+
+    Returns: {experiment_id, name, graph_file, ok}
+    """
+    import re as _re  # noqa: PLC0415
+    import time as _t  # noqa: PLC0415
+    from pathlib import Path  # noqa: PLC0415
+
+    corpus = str(body.get("corpus", "indus_cisi")).strip().lower()
+    languages_raw = str(body.get("languages", "dravidian,sanskrit")).strip()
+    name = str(body.get("name", "")).strip()
+    n_seeds = max(1, int(body.get("n_seeds", 3)))
+    max_iterations = max(100, int(body.get("max_iterations", 5000)))
+
+    if corpus not in _VALID_BUILTIN_CORPORA:
+        return {"ok": False, "error": f"Unknown corpus '{corpus}'. Valid: {', '.join(sorted(_VALID_BUILTIN_CORPORA))}"}
+
+    lang_list = [l.strip().lower() for l in _re.split(r"[,;\s]+", languages_raw) if l.strip()]
+    invalid = [l for l in lang_list if l not in _VALID_BUILTIN_LANGUAGES]
+    if invalid:
+        return {"ok": False, "error": f"Unknown language(s): {', '.join(invalid)}. Valid: {', '.join(sorted(_VALID_BUILTIN_LANGUAGES))}"}
+    if not lang_list:
+        return {"ok": False, "error": "No languages specified."}
+
+    # Generate unique experiment ID
+    slug = _re.sub(r"[^a-z0-9]+", "_", f"{corpus}_sa_{'_vs_'.join(lang_list)}").strip("_")
+    ts = int(_t.time())
+    exp_id = f"{slug}_{ts}"
+    if not name:
+        name = f"SA: {corpus} vs {' / '.join(lang_list)}"
+
+    graph = {
+        "id": exp_id,
+        "name": name,
+        "description": f"Auto-generated SA multi-language comparison. Corpus: {corpus}. Languages: {', '.join(lang_list)}. Seeds: {n_seeds}. Max iterations: {max_iterations}.",
+        "nodes": [
+            {"id": "corpus", "type": "expNode",
+             "position": {"x": 60, "y": 200},
+             "data": {"atomicId": "BuiltinCorpus", "label": f"Corpus: {corpus}",
+                      "params": {"corpus": corpus}}},
+            {"id": "multi_sa", "type": "expNode",
+             "position": {"x": 340, "y": 200},
+             "data": {"atomicId": "SAMultiComparison",
+                      "label": f"SA vs {' / '.join(lang_list)}",
+                      "params": {"languages": ",".join(lang_list),
+                                 "n_seeds": n_seeds,
+                                 "max_iterations": max_iterations}}},
+            {"id": "merge", "type": "expNode",
+             "position": {"x": 660, "y": 200},
+             "data": {"atomicId": "Merger", "label": "Collect results", "params": {}}},
+            {"id": "out", "type": "expNode",
+             "position": {"x": 920, "y": 200},
+             "data": {"atomicId": "JSONExport",
+                      "label": "Export results",
+                      "params": {"filename": f"{exp_id}.json"}}},
+        ],
+        "edges": [
+            {"id": "e1", "source": "corpus", "target": "multi_sa",
+             "sourcePort": "sequences", "targetPort": "sequences"},
+            {"id": "e2", "source": "multi_sa", "target": "merge",
+             "sourcePort": "comparison_results", "targetPort": "a"},
+            {"id": "e3", "source": "multi_sa", "target": "merge",
+             "sourcePort": "best_language", "targetPort": "b"},
+            {"id": "e4", "source": "multi_sa", "target": "merge",
+             "sourcePort": "best_consistency", "targetPort": "c"},
+            {"id": "e5", "source": "merge", "target": "out",
+             "sourcePort": "json", "targetPort": "data"},
+        ],
+    }
+
+    graphs_dir = Path(__file__).resolve().parents[1] / "experiments" / "graphs"
+    graphs_dir.mkdir(parents=True, exist_ok=True)
+    graph_file = graphs_dir / f"{exp_id}.json"
+    graph_file.write_text(
+        __import__("json").dumps(graph, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    # Invalidate graph experiment cache so the new experiment appears immediately
+    try:
+        from glossa_lab.experiment_graph import _invalidate  # noqa: PLC0415
+        _invalidate()
+    except Exception:  # noqa: BLE001
+        pass
+
+    return {
+        "ok": True,
+        "experiment_id": exp_id,
+        "name": name,
+        "graph_file": str(graph_file.name),
+        "n_languages": len(lang_list),
+        "languages": lang_list,
+        "corpus": corpus,
+    }
+
+
 @router.get("/experiments/{experiment_id}/stream")
 async def stream_experiment(experiment_id: str) -> StreamingResponse:
     """SSE endpoint: run experiment and stream progress events.

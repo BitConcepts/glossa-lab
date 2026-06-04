@@ -1,0 +1,58 @@
+{
+  "id": "generic_sa_multi_comparison",
+  "name": "SA: Multi-Language Comparison (Generic)",
+  "description": "Compare Simulated Annealing performance across multiple reference languages. Edit the SAMultiComparison node's 'languages' param to select which languages to test. Default compares Dravidian vs Sanskrit vs Hebrew for the Indus corpus. Best-practice: run 3+ seeds for reliable ranking.",
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "position": {"x": 60, "y": 200},
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "Indus Corpus (CISI)",
+        "params": {"corpus": "indus_cisi"}
+      }
+    },
+    {
+      "id": "multi_sa",
+      "type": "expNode",
+      "position": {"x": 340, "y": 200},
+      "data": {
+        "atomicId": "SAMultiComparison",
+        "label": "SA vs Dravidian / Sanskrit / Hebrew",
+        "params": {
+          "languages": "dravidian,sanskrit,hebrew",
+          "n_seeds": 3,
+          "max_iterations": 5000
+        }
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "position": {"x": 660, "y": 200},
+      "data": {
+        "atomicId": "Merger",
+        "label": "Collect comparison results",
+        "params": {}
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "position": {"x": 920, "y": 200},
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save multi-language SA results",
+        "params": {"filename": "sa_multi_comparison.json"}
+      }
+    }
+  ],
+  "edges": [
+    {"id": "e_corp_sa", "source": "corpus", "target": "multi_sa", "sourcePort": "sequences", "targetPort": "sequences"},
+    {"id": "e_sa_merge_r", "source": "multi_sa", "target": "merge", "sourcePort": "comparison_results", "targetPort": "a"},
+    {"id": "e_sa_merge_b", "source": "multi_sa", "target": "merge", "sourcePort": "best_language", "targetPort": "b"},
+    {"id": "e_sa_merge_c", "source": "multi_sa", "target": "merge", "sourcePort": "best_consistency", "targetPort": "c"},
+    {"id": "e_merge_out", "source": "merge", "target": "out", "sourcePort": "json", "targetPort": "data"}
+  ]
+}

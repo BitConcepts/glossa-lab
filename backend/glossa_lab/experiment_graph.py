@@ -562,6 +562,87 @@ def _sa_decipher(inputs: dict, params: dict) -> dict:
             "n_seeds": len(all_maps), "n_signs": len(modal)}
 
 
+def _sa_multi_comparison(inputs: dict, params: dict) -> dict:
+    """Run SA decipherment against multiple language models and compare results.
+
+    For each language in the `languages` param list, loads the corresponding
+    BuiltinLM and runs SADecipher, then ranks by mean_consistency.
+    Returns a comparison table and the best-performing language.
+    """
+    import logging as _logging  # noqa: PLC0415
+    _mc_log = _logging.getLogger("glossa_lab.sa_multi")
+
+    sequences = inputs.get("sequences") or []
+    if not sequences:
+        return {"error": "No sequences — connect CorpusReader or BuiltinCorpus."}
+
+    anchors = inputs.get("anchors") or None
+
+    # Parse languages param
+    raw_langs = params.get("languages", "dravidian,sanskrit")
+    if isinstance(raw_langs, list):
+        lang_list = [l.strip() for l in raw_langs if l.strip()]
+    else:
+        import re as _re  # noqa: PLC0415
+        lang_list = [l.strip() for l in _re.split(r"[,;\s]+", str(raw_langs)) if l.strip()]
+
+    if not lang_list:
+        return {"error": "No languages specified. Set the 'languages' param."}
+
+    n_seeds  = max(1, int(params.get("n_seeds", 3)))
+    max_iter = max(100, int(params.get("max_iterations", 5000)))
+    restarts = max(1, int(params.get("restarts", 5)))
+
+    results: list[dict] = []
+    for lang in lang_list:
+        _mc_log.info("SAMultiComparison: running SA against language=%s", lang)
+        lm_out = _builtin_lm({}, {"language": lang})
+        if "error" in lm_out:
+            results.append({"language": lang, "error": lm_out["error"],
+                             "mean_consistency": 0.0, "hci_count": 0})
+            continue
+        lm = lm_out.get("lm")
+        if lm is None:
+            results.append({"language": lang, "error": "LM not loaded",
+                             "mean_consistency": 0.0, "hci_count": 0})
+            continue
+        sa_out = _sa_decipher(
+            {"sequences": sequences, "lm": lm,
+             **({"anchors": anchors} if anchors else {})},
+            {"n_seeds": n_seeds, "max_iterations": max_iter,
+             "restarts": restarts, "surjective": True, "ocp_weight": 0.0},
+        )
+        if "error" in sa_out:
+            results.append({"language": lang, "error": sa_out["error"],
+                             "mean_consistency": 0.0, "hci_count": 0})
+        else:
+            results.append({
+                "language": lang,
+                "mean_consistency": round(float(sa_out.get("mean_consistency", 0)), 4),
+                "hci_count": int(sa_out.get("hci_count", 0)),
+                "n_signs": int(sa_out.get("n_signs", 0)),
+                "proposed_mapping": sa_out.get("proposed_mapping", {}),
+            })
+
+    # Sort by mean_consistency descending
+    ranked = sorted(
+        [r for r in results if "error" not in r],
+        key=lambda x: x["mean_consistency"], reverse=True,
+    )
+    errored = [r for r in results if "error" in r]
+    ranking = ranked + errored
+
+    best = ranked[0] if ranked else None
+    return {
+        "comparison_results": results,
+        "ranking": ranking,
+        "best_language": best["language"] if best else "",
+        "best_consistency": best["mean_consistency"] if best else 0.0,
+        "n_languages_tested": len(lang_list),
+        "n_languages_ok": len(ranked),
+    }
+
+
 def _consistency_scorer(inputs: dict, params: dict) -> dict:
     """Aggregate multiple SA run mappings into per-sign consistency statistics."""
     from collections import Counter as _C  # noqa: PLC0415
@@ -1945,7 +2026,7 @@ for _d in [
                  {"name":"n_signs","type":"number"},{"name":"n_tokens","type":"number"}],
         params_schema={"type":"object","properties":{
             "language":{"type":"string","title":"Language","default":"hebrew",
-                        "description":"hebrew | geez | phoenician | sumerian | dravidian"}}},
+                        "description":"hebrew | geez | phoenician | sumerian | dravidian | south_dravidian | kannada | telugu | pali | sanskrit | coptic | linear_b | meroitic | proto_sinaitic"}}},
         fn=_builtin_lm),
     AtomicNodeDef("BuiltinCorpus","Built-in Corpus","Sources",
         "Load a named built-in corpus directly. Does not require a DB corpus ID — always available offline.",
@@ -2000,6 +2081,26 @@ for _d in [
                           "description":"0.0 = GPU fast path via BigramScorer (recommended). >0 = enable OCP penalty (slower)."},
         }},
         fn=_sa_decipher),
+    AtomicNodeDef("SAMultiComparison","SA Multi-Language Comparison","Decipherment",
+        "Run Simulated Annealing against multiple reference language models and rank by consistency. "
+        "Specify 2\u20136 languages in the 'languages' param (comma-separated). "
+        "Each language runs independently; results are sorted best\u2192worst by mean_consistency. "
+        "Connects: BuiltinCorpus/CorpusReader \u2192 sequences. No external LM port needed.",
+        inputs=[{"name":"sequences","type":"sequences","required":True},
+                {"name":"anchors","type":"any","required":False}],
+        outputs=[{"name":"comparison_results","type":"json"},
+                 {"name":"best_language","type":"text"},
+                 {"name":"best_consistency","type":"number"},
+                 {"name":"ranking","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "languages":{"type":"string","title":"Languages (comma-separated)",
+                         "default":"dravidian,sanskrit",
+                         "description":"Comma-separated list of languages to compare. Valid: hebrew, geez, phoenician, sumerian, dravidian, south_dravidian, kannada, telugu, pali, sanskrit, coptic, linear_b, meroitic, proto_sinaitic"},
+            "n_seeds":{"type":"integer","title":"Seeds per Language","default":3,"minimum":1},
+            "max_iterations":{"type":"integer","title":"Max Iterations","default":5000,"minimum":100},
+            "restarts":{"type":"integer","title":"Restarts per Seed","default":5,"minimum":1},
+        }},
+        fn=_sa_multi_comparison),
     AtomicNodeDef("ConsistencyScorer","Consistency Scorer","Decipherment",
         "Aggregate multiple SA seed mappings into per-sign consistency statistics. "
         "Connects: SADecipher.all_mappings → all_mappings.",

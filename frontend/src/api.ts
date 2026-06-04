@@ -1615,8 +1615,25 @@ export type DashboardActionType =
   | "run_mine"
   | "create_hypothesis"
   | "propose_experiment_chain"
+  | "build_sa_experiment"
   | "ai_chat"
   | "no_op";
+
+export interface BuildSaResult {
+  ok: boolean;
+  experiment_id?: string;
+  name?: string;
+  graph_file?: string;
+  n_languages?: number;
+  languages?: string[];
+  corpus?: string;
+  error?: string;
+}
+
+export const buildSaExperiment = (
+  body: { corpus: string; languages: string; name?: string; n_seeds?: number; max_iterations?: number },
+): Promise<BuildSaResult> =>
+  request("POST", "/experiments/build-sa", body);
 
 export interface DashboardNextAction {
   label:        string;

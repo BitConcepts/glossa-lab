@@ -291,7 +291,7 @@ class PhaseAdvancer:
                 exp_id = top.params.get("experiment_id", "")
                 if exp_id and db:
                     from glossa_lab.experiment_graph import queue_graph_experiment  # noqa: PLC0415
-                    job = await queue_graph_experiment(exp_id, db)
+                    job = await queue_graph_experiment(exp_id, db=db)
                     job_id = job.get("id") if job else None
                 message = (
                     f"Experiment queued: {top.label}"

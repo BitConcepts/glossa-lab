@@ -42,9 +42,10 @@ test.describe("Experiment registry", () => {
 
 test.describe("Dashboard insight API", () => {
   test("POST /insight returns valid structure", async ({ request }) => {
+    test.setTimeout(90_000); // insight endpoint calls LLM — can take up to 60s
     const up = await backendUp(request);
     test.skip(!up, "Backend not running");
-    const resp = await request.post(`${BACKEND}/api/v1/dashboard/insight?days=14&limit=30`);
+    const resp = await request.post(`${BACKEND}/api/v1/dashboard/insight?days=14&limit=30`, { timeout: 75_000 });
     expect(resp.status()).toBe(200);
     const body = await resp.json();
     expect(body).toHaveProperty("highlights");
@@ -58,6 +59,7 @@ test.describe("Dashboard insight API", () => {
   });
 
   test("impact items have valid experiment IDs (no hex hashes)", async ({ request }) => {
+    test.setTimeout(90_000);
     const up = await backendUp(request);
     test.skip(!up, "Backend not running");
     // Get experiment registry for cross-check
@@ -66,7 +68,7 @@ test.describe("Dashboard insight API", () => {
     const validIds = new Set(exps.map((e: { id: string }) => e.id));
     const hexRe = /^[0-9a-f]{8,}$/i;
 
-    const resp = await request.post(`${BACKEND}/api/v1/dashboard/insight?days=14&limit=30`);
+    const resp = await request.post(`${BACKEND}/api/v1/dashboard/insight?days=14&limit=30`, { timeout: 75_000 });
     const body = await resp.json();
     for (const im of body.impact) {
       const eid = im.study_or_experiment_id ?? "";
@@ -84,13 +86,14 @@ test.describe("Dashboard insight API", () => {
   });
 
   test("next_actions with run_experiment have valid experiment IDs", async ({ request }) => {
+    test.setTimeout(90_000);
     const up = await backendUp(request);
     test.skip(!up, "Backend not running");
     const expResp = await request.get(`${BACKEND}/api/v1/experiments`);
     const exps = await expResp.json();
     const validIds = new Set(exps.map((e: { id: string }) => e.id));
 
-    const resp = await request.post(`${BACKEND}/api/v1/dashboard/insight?days=14&limit=30`);
+    const resp = await request.post(`${BACKEND}/api/v1/dashboard/insight?days=14&limit=30`, { timeout: 75_000 });
     const body = await resp.json();
     for (const a of body.next_actions) {
       if (a.action_type === "run_experiment") {

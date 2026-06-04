@@ -416,12 +416,37 @@ async def build_sa_experiment(body: dict[str, Any]) -> dict[str, Any]:
     if not lang_list:
         return {"ok": False, "error": "No languages specified."}
 
-    # Generate unique experiment ID
-    slug = _re.sub(r"[^a-z0-9]+", "_", f"{corpus}_sa_{'_vs_'.join(lang_list)}").strip("_")
-    ts = int(_t.time())
-    exp_id = f"{slug}_{ts}"
     if not name:
         name = f"SA: {corpus} vs {' / '.join(lang_list)}"
+
+    # ── Deduplication: return existing experiment if same name already exists ──
+    graphs_dir_check = Path(__file__).resolve().parents[1] / "experiments" / "graphs"
+    if graphs_dir_check.exists():
+        for existing in graphs_dir_check.glob("*.json"):
+            try:
+                existing_data = __import__("json").loads(existing.read_text(encoding="utf-8"))
+                if existing_data.get("name", "").strip().lower() == name.lower():
+                    return {
+                        "ok": True,
+                        "experiment_id": existing_data["id"],
+                        "name": existing_data["name"],
+                        "graph_file": existing.name,
+                        "n_languages": len(lang_list),
+                        "languages": lang_list,
+                        "corpus": corpus,
+                        "existing": True,
+                    }
+            except Exception:  # noqa: BLE001
+                pass
+
+    # Generate unique experiment ID
+    slug = _re.sub(r"[^a-z0-9]+", "_", f"{corpus}_sa_{'_vs_'.join(lang_list)}").strip("_")
+    exp_id = slug  # stable ID — no timestamp suffix
+    # If the slug-based ID file somehow exists (different name), add suffix
+    graphs_dir_id_check = Path(__file__).resolve().parents[1] / "experiments" / "graphs" / f"{slug}.json"
+    if graphs_dir_id_check.exists():
+        exp_id = f"{slug}_{int(_t.time())}"
+    
 
     graph = {
         "id": exp_id,

@@ -128,6 +128,7 @@ interface LoopStatus {
 interface StagingData {
   candidates: AnchorCandidate[];
   counts: { total: number; staged: number; approved: number; rejected: number };
+  archive_counts?: { total: number; approved: number; verified: number; promotable: number };
   error?: string;
 }
 
@@ -635,6 +636,17 @@ export function ResearchLoopPanel() {
               }}
             />
           )}
+        </div>
+      )}
+
+      {/* ── Promote to Anchors ── (always shown when archive has promotable items) */}
+      {(staging?.archive_counts?.promotable ?? 0) > 0 && (
+        <div style={{ marginTop: 6 }}>
+          <PromoteToAnchors
+            promotable={staging!.archive_counts!.promotable}
+            archiveTotal={staging!.archive_counts!.total}
+            onPromoted={() => void fetchStaging()}
+          />
         </div>
       )}
 
@@ -1892,6 +1904,152 @@ function StagingReview({
           No candidates in queue.
         </div>
       )}
+    </div>
+  );
+}
+
+// ── Promote to Anchors ────────────────────────────────────────────────────────
+
+function PromoteToAnchors({
+  promotable,
+  archiveTotal,
+  onPromoted,
+}: {
+  promotable: number;
+  archiveTotal: number;
+  onPromoted: () => void;
+}) {
+  const [busy, setBusy] = useState(false);
+  const [confirm, setConfirm] = useState(false);
+  const [result, setResult] = useState<{
+    ok: boolean;
+    promoted: number;
+    skipped: number;
+    prev_coverage: number;
+    new_coverage: number;
+    coverage_delta: number;
+    message: string;
+  } | null>(null);
+
+  const doPromote = async () => {
+    setBusy(true);
+    setConfirm(false);
+    setResult(null);
+    try {
+      const res = await fetch("/api/v1/research-loop/staging/promote", { method: "POST" });
+      const data = await res.json() as typeof result & { ok: boolean; message: string };
+      setResult(data);
+      if (data?.ok) onPromoted();
+    } catch (e) {
+      setResult({ ok: false, promoted: 0, skipped: 0,
+        prev_coverage: 0, new_coverage: 0, coverage_delta: 0,
+        message: e instanceof Error ? e.message : "Request failed" });
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  if (result?.ok && result.promoted > 0) {
+    return (
+      <div style={{
+        border: "1px solid #a5f3fc", borderRadius: 8, background: "#ecfeff",
+        padding: "12px 16px",
+      }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <span style={{ fontSize: 18 }}>📌</span>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontWeight: 700, color: "#0e7490", fontSize: 13 }}>
+              {result.promoted} signs promoted to INDUS_FINAL_ANCHORS
+            </div>
+            <div style={{ fontSize: 11, color: "#164e63", marginTop: 2 }}>
+              Coverage: {(result.prev_coverage * 100).toFixed(1)}%
+              {" "}<span style={{ color: "#15803d", fontWeight: 600 }}>
+                → {(result.new_coverage * 100).toFixed(1)}%
+                {result.coverage_delta > 0 &&
+                  ` (+${(result.coverage_delta * 100).toFixed(1)}%)`}
+              </span>
+              {result.skipped > 0 && (
+                <span style={{ color: "#6b7280", marginLeft: 8 }}>
+                  · {result.skipped} skipped (already HIGH/MEDIUM)
+                </span>
+              )}
+            </div>
+            <div style={{ fontSize: 10, color: "#0891b2", marginTop: 4 }}>
+              ✓ Signs index refreshed · Insights stale flag set · Foundation check marked dirty
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{
+      border: "1px solid #bae6fd", borderRadius: 8, background: "#f0f9ff",
+      padding: "10px 14px",
+    }}>
+      <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+        <span style={{ fontSize: 18 }}>📌</span>
+        <div style={{ flex: 1 }}>
+          <div style={{ fontWeight: 700, color: "#0369a1", fontSize: 12, marginBottom: 2 }}>
+            {promotable} archive sign{promotable !== 1 ? "s" : ""} ready to promote to INDUS_FINAL_ANCHORS
+          </div>
+          <div style={{ fontSize: 10, color: "#075985", lineHeight: 1.5 }}>
+            {archiveTotal} total in archive · {promotable} not yet in anchors file
+            (HIGH/MEDIUM existing signs are never overwritten).
+            Verified entries become MEDIUM confidence; approved-only become LOW.
+            Coverage is recalculated after promotion.
+          </div>
+          {result && !result.ok && (
+            <div style={{
+              marginTop: 6, fontSize: 10, color: "#991b1b",
+              background: "#fef2f2", border: "1px solid #fca5a5",
+              borderRadius: 4, padding: "4px 8px",
+            }}>
+              ✗ {result.message}
+            </div>
+          )}
+        </div>
+        <div style={{ flexShrink: 0 }}>
+          {!confirm ? (
+            <button
+              disabled={busy}
+              onClick={() => setConfirm(true)}
+              style={{
+                padding: "6px 14px", fontSize: 11, fontWeight: 700,
+                border: "1px solid #0369a1", borderRadius: 5,
+                background: busy ? "#e0f2fe" : "#0369a1",
+                color: busy ? "#0c4a6e" : "#fff",
+                cursor: busy ? "default" : "pointer",
+                whiteSpace: "nowrap",
+              }}>
+              {busy ? "Promoting…" : `🚀 Promote ${promotable} to Anchors`}
+            </button>
+          ) : (
+            <div style={{ display: "flex", flexDirection: "column", gap: 4, alignItems: "flex-end" }}>
+              <span style={{ fontSize: 10, color: "#0c4a6e", fontWeight: 600 }}>
+                Write {promotable} new anchors?
+              </span>
+              <div style={{ display: "flex", gap: 4 }}>
+                <button
+                  onClick={() => void doPromote()}
+                  style={{
+                    padding: "4px 10px", fontSize: 10, fontWeight: 700,
+                    border: "1px solid #0369a1", borderRadius: 4,
+                    background: "#0369a1", color: "#fff", cursor: "pointer",
+                  }}>Confirm</button>
+                <button
+                  onClick={() => setConfirm(false)}
+                  style={{
+                    padding: "4px 10px", fontSize: 10,
+                    border: "1px solid #d1d5db", borderRadius: 4,
+                    background: "#fff", cursor: "pointer",
+                  }}>Cancel</button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

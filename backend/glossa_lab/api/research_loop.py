@@ -20,7 +20,7 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, Query, Request
 from fastapi.responses import StreamingResponse
 
 _REPO = Path(__file__).resolve().parents[3]
@@ -521,6 +521,7 @@ async def loop_results() -> dict[str, Any]:
 
 
 _STAGING_JSON = _REPO / "outputs" / "anchor_staging.json"
+_ARCHIVE_JSON = _REPO / "outputs" / "anchor_staging_archive.json"
 
 
 @router.get("/staging")
@@ -553,7 +554,47 @@ async def get_staging() -> dict[str, Any]:
         "approved": sum(1 for c in candidates if c.get("review_status") == "approved"),
         "rejected": sum(1 for c in candidates if c.get("review_status") == "rejected"),
     }
-    return {"candidates": candidates, "counts": counts}
+    # Include archive summary so the frontend can show the promote-to-anchors CTA
+    archive_counts: dict[str, int] = {"total": 0, "approved": 0, "verified": 0, "promotable": 0}
+    if _ARCHIVE_JSON.exists():
+        try:
+            archive_raw: list[dict] = json.loads(_ARCHIVE_JSON.read_text(encoding="utf-8"))
+            # Read current anchors to determine which archive entries are promotable
+            _promoted_signs: set[str] = set()
+            try:
+                fa_path = _REPO / "backend" / "reports" / "INDUS_FINAL_ANCHORS.json"
+                if fa_path.exists():
+                    fa = json.loads(fa_path.read_text(encoding="utf-8"))
+                    _promoted_signs = {
+                        sid for sid, info in (fa.get("anchors") or {}).items()
+                        if (info.get("confidence") or "").upper() in ("HIGH", "MEDIUM")
+                    }
+            except Exception:  # noqa: BLE001
+                pass
+            _seen_signs: set[str] = set()
+            promotable = 0
+            n_approved = 0
+            n_verified = 0
+            for c in archive_raw:
+                st = (c.get("review_status") or "").lower()
+                if st == "approved":
+                    n_approved += 1
+                elif st == "verified":
+                    n_verified += 1
+                if st in ("approved", "verified"):
+                    sid = c.get("sign") or c.get("sign_id", "")
+                    if sid and sid not in _promoted_signs and sid not in _seen_signs:
+                        promotable += 1
+                        _seen_signs.add(sid)
+            archive_counts = {
+                "total":     len(archive_raw),
+                "approved":  n_approved,
+                "verified":  n_verified,
+                "promotable": promotable,
+            }
+        except Exception:  # noqa: BLE001
+            pass
+    return {"candidates": candidates, "counts": counts, "archive_counts": archive_counts}
 
 
 @router.post("/staging/action")
@@ -633,8 +674,6 @@ async def staging_action(body: dict[str, Any]) -> dict[str, Any]:
     return {"ok": True, "action": action, "sign": sign,
             "proposed_reading": reading, "staged_remaining": remaining}
 
-
-_ARCHIVE_JSON = _REPO / "outputs" / "anchor_staging_archive.json"
 
 
 def _run_anchor_lifecycle(
@@ -1041,6 +1080,222 @@ async def staging_verify_sa() -> dict[str, Any]:
         "message": f"{len(to_archive)} candidate(s) verified and archived.",
         "suggested_sa_exp": exp_id,
         "suggested_sa_name": exp_name,
+    }
+
+
+# ── Anchor promotion helpers ────────────────────────────────────────────────
+
+_FA_PATH = _REPO / "backend" / "reports" / "INDUS_FINAL_ANCHORS.json"
+
+
+def _recalc_corpus_coverage(anchors: dict[str, Any]) -> float:
+    """Recalculate corpus token coverage from the Holdat CSV.
+
+    Coverage = fraction of corpus sign tokens with HIGH or MEDIUM anchor.
+    Returns 0.0 if corpus is unavailable.
+    """
+    import csv as _csv  # noqa: PLC0415
+    try:
+        from glossa_lab.config import get_project_config  # noqa: PLC0415
+        holdat_path = get_project_config().corpus_csv_path()
+    except Exception:  # noqa: BLE001
+        holdat_path = (_REPO
+                       / "corpora/downloads/external_repos/holdatllc_indus"
+                       / "indus_corpus 2.csv")
+    if not holdat_path.exists():
+        _log.warning("_recalc_corpus_coverage: corpus CSV not found at %s", holdat_path)
+        return 0.0
+    hm_signs: set[str] = {
+        sid for sid, info in anchors.items()
+        if (info.get("confidence") or "").upper() in ("HIGH", "MEDIUM")
+    }
+    total_tokens = 0
+    covered_tokens = 0
+    try:
+        with open(holdat_path, encoding="utf-8") as f:
+            for row in _csv.DictReader(f):
+                sign = (row.get("letters") or "").strip()
+                if sign:
+                    total_tokens += 1
+                    if sign in hm_signs:
+                        covered_tokens += 1
+    except Exception as exc:  # noqa: BLE001
+        _log.warning("_recalc_corpus_coverage: CSV read error: %s", exc)
+        return 0.0
+    if total_tokens == 0:
+        return 0.0
+    coverage = round(covered_tokens / total_tokens, 4)
+    _log.info("Coverage recalc: %d/%d tokens covered = %.2f%%",
+              covered_tokens, total_tokens, coverage * 100)
+    return coverage
+
+
+@router.post("/staging/promote")
+async def promote_to_anchors(request: Request) -> dict[str, Any]:
+    """Promote verified/approved archive candidates to INDUS_FINAL_ANCHORS.json.
+
+    Reads anchor_staging_archive.json, deduplicates by sign ID (highest
+    evidence_score wins; 'verified' beats 'approved' for equal scores), and
+    promotes entries whose signs do not already have a HIGH or MEDIUM anchor.
+
+    Confidence mapping:
+      - review_status == 'verified' OR evidence_score >= 0.8 → MEDIUM
+      - otherwise                                             → LOW
+
+    After writing, recalculates corpus_token_coverage and invalidates the
+    in-memory signs index and foundation check dirty flag.
+
+    Body (optional JSON):
+      dry_run (bool, default False) — return stats without modifying files.
+
+    Returns:
+      {ok, dry_run, promoted, skipped, total_anchors,
+       prev_coverage, new_coverage, promotable}
+    """
+    try:
+        body: dict[str, Any] = await request.json()
+    except Exception:  # noqa: BLE001
+        body = {}
+    dry_run: bool = bool(body.get("dry_run", False))
+
+    if not _ARCHIVE_JSON.exists():
+        return {"ok": True, "promoted": 0, "skipped": 0,
+                "promotable": 0, "message": "Archive file not found."}
+
+    # ── 1. Read archive ───────────────────────────────────────────────────
+    try:
+        archive: list[dict] = json.loads(_ARCHIVE_JSON.read_text(encoding="utf-8"))
+    except Exception as exc:  # noqa: BLE001
+        return {"ok": False, "error": f"Could not read archive: {exc}"}
+
+    # ── 2. Read INDUS_FINAL_ANCHORS.json ──────────────────────────────────
+    if not _FA_PATH.exists():
+        return {"ok": False, "error": "INDUS_FINAL_ANCHORS.json not found"}
+    try:
+        fa_data: dict[str, Any] = json.loads(_FA_PATH.read_text(encoding="utf-8"))
+    except Exception as exc:  # noqa: BLE001
+        return {"ok": False, "error": f"Could not read anchors file: {exc}"}
+
+    current_anchors: dict[str, Any] = dict(fa_data.get("anchors") or {})
+    prev_coverage: float = float(fa_data.get("corpus_token_coverage", 0.0) or 0.0)
+
+    # Existing HIGH/MEDIUM signs that should not be overwritten
+    hm_signs: set[str] = {
+        sid for sid, info in current_anchors.items()
+        if (info.get("confidence") or "").upper() in ("HIGH", "MEDIUM")
+    }
+
+    # ── 3. Deduplicate archive — best entry per sign ───────────────────────
+    # Priority: verified > approved; then higher evidence_score wins.
+    best_per_sign: dict[str, dict] = {}
+    for c in archive:
+        st = (c.get("review_status") or "").lower()
+        if st not in ("approved", "verified"):
+            continue
+        sid = c.get("sign") or c.get("sign_id", "")
+        if not sid:
+            continue
+        score = float(c.get("evidence_score", 0) or 0)
+        st_rank = 1 if st == "verified" else 0  # verified > approved
+        prev = best_per_sign.get(sid)
+        if prev is None:
+            best_per_sign[sid] = c
+        else:
+            prev_score = float(prev.get("evidence_score", 0) or 0)
+            prev_rank = 1 if (prev.get("review_status") or "").lower() == "verified" else 0
+            if (st_rank, score) > (prev_rank, prev_score):
+                best_per_sign[sid] = c
+
+    promotable_count = sum(1 for sid in best_per_sign if sid not in hm_signs)
+
+    # ── 4. Promote ────────────────────────────────────────────────────────
+    promoted_signs: list[str] = []
+    skipped_signs: list[str] = []
+    now_label = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
+
+    for sid, c in best_per_sign.items():
+        if sid in hm_signs:
+            skipped_signs.append(sid)  # already HIGH/MEDIUM — never downgrade
+            continue
+        score = float(c.get("evidence_score", 0) or 0)
+        st = (c.get("review_status") or "").lower()
+        new_conf = "MEDIUM" if (st == "verified" or score >= 0.8) else "LOW"
+        reading = c.get("proposed_reading", "")
+        basis_parts = [
+            f"Promoted from anchor staging archive ({now_label})",
+            f"evidence_type={c.get('evidence_type', '')}",
+            f"score={score:.2f}",
+            f"status={st}",
+        ]
+        if c.get("dedr_support"):
+            basis_parts.append(f"DEDR: {c['dedr_support']}")
+        current_anchors[sid] = {
+            "reading":    reading,
+            "confidence": new_conf,
+            "basis":      "; ".join(p for p in basis_parts if p),
+            "source":     f"anchor_staging_archive:{c.get('source_experiment', '')}",
+        }
+        if c.get("dedr_support"):
+            current_anchors[sid]["dedr_support"] = c["dedr_support"]
+        promoted_signs.append(sid)
+
+    new_coverage = prev_coverage  # default: unchanged if dry_run or coverage calc fails
+
+    if not dry_run and promoted_signs:
+        # ── 5. Recalculate coverage ────────────────────────────────────────
+        new_coverage = _recalc_corpus_coverage(current_anchors)
+
+        # ── 6. Write updated anchors file ─────────────────────────────────
+        fa_data["anchors"] = current_anchors
+        fa_data["total"] = sum(
+            1 for info in current_anchors.values()
+            if (info.get("confidence") or "").upper() in ("HIGH", "MEDIUM")
+        )
+        if new_coverage > 0:
+            fa_data["corpus_token_coverage"] = new_coverage
+        _FA_PATH.write_text(
+            json.dumps(fa_data, indent=2, ensure_ascii=False), encoding="utf-8")
+        _log.info(
+            "promote_to_anchors: wrote %d new anchors; coverage %.4f → %.4f",
+            len(promoted_signs), prev_coverage, new_coverage,
+        )
+
+        # ── 7. Invalidate caches ───────────────────────────────────────────
+        try:
+            from glossa_lab.api.signs import invalidate_signs_index  # noqa: PLC0415
+            invalidate_signs_index()
+        except Exception:  # noqa: BLE001
+            pass
+        try:
+            from glossa_lab.api.foundation import mark_dirty  # noqa: PLC0415
+            mark_dirty()
+        except Exception:  # noqa: BLE001
+            pass
+        try:
+            from glossa_lab.api.dashboard import mark_insights_stale  # noqa: PLC0415
+            mark_insights_stale()
+        except Exception:  # noqa: BLE001
+            pass
+
+    cov_delta = round(new_coverage - prev_coverage, 4) if not dry_run else 0.0
+    return {
+        "ok":           True,
+        "dry_run":      dry_run,
+        "promoted":     len(promoted_signs),
+        "skipped":      len(skipped_signs),
+        "promotable":   promotable_count,
+        "total_anchors": len(current_anchors),
+        "prev_coverage":  round(prev_coverage, 4),
+        "new_coverage":   round(new_coverage, 4),
+        "coverage_delta": cov_delta,
+        "message": (
+            f"{len(promoted_signs)} signs promoted to INDUS_FINAL_ANCHORS.json. "
+            f"Coverage: {prev_coverage*100:.1f}% → {new_coverage*100:.1f}% "
+            f"(+{cov_delta*100:.1f}%)."
+        ) if not dry_run and promoted_signs else (
+            f"Dry run: {len(promoted_signs)} would be promoted, "
+            f"{len(skipped_signs)} skipped (already HIGH/MEDIUM)."
+        ) if dry_run else "No new signs to promote.",
     }
 
 

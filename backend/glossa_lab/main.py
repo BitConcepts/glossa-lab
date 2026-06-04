@@ -391,6 +391,12 @@ def create_app() -> FastAPI:
     application.include_router(signs_router)  # already prefixed at /api/v1/signs
 
     try:
+        from glossa_lab.api.dismissals import router as dismissals_router  # noqa: PLC0415
+        application.include_router(dismissals_router)  # already prefixed at /api/v1/dismissals
+    except ImportError:
+        pass
+
+    try:
         from glossa_lab.api.cldf import router as cldf_router  # noqa: PLC0415
         application.include_router(cldf_router)  # already prefixed at /api/v1/cldf
     except ImportError:

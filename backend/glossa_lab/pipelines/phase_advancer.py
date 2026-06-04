@@ -311,6 +311,9 @@ class PhaseAdvancer:
                     "Go to the Staging Review queue below to take action."
                 )
 
+            elif top.action_type == "regenerate_insights":
+                message = f"{top.label} — navigate to Dashboard to regenerate"
+
             elif top.action_type == "open_view":
                 message = f"{top.label}"
 

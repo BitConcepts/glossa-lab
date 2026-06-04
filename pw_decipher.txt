@@ -1,0 +1,678 @@
+
+Running 25 tests using 1 worker
+
+  ok  1 [chromium] › e2e\decipherment-actions.spec.ts:269:3 › DeciphermentPanel › ▶ Run SA button state machine › 1. initial state: shows '▶ Run SA' when no localStorage entry (429ms)
+  x   2 [chromium] › e2e\decipherment-actions.spec.ts:281:3 › DeciphermentPanel › ▶ Run SA button state machine › 2. click makes button show '⏳ Running…' and disables it immediately (2.3s)
+  x   3 [chromium] › e2e\decipherment-actions.spec.ts:294:3 › DeciphermentPanel › ▶ Run SA button state machine › 3. double-click while busy does not start a second run (5.8s)
+  x   4 [chromium] › e2e\decipherment-actions.spec.ts:317:3 › DeciphermentPanel › ▶ Run SA button state machine › 4. Ctrl+R mid-run still shows '⏳ Running…' (pending survives reload via sessionStorage) (2.5s)
+  x   5 [chromium] › e2e\decipherment-actions.spec.ts:334:3 › DeciphermentPanel › ▶ Run SA button state machine › 5. clicking Run SA writes pending to sessionStorage, NOT localStorage (6.0s)
+  x   6 [chromium] › e2e\decipherment-actions.spec.ts:360:3 › DeciphermentPanel › ▶ Run SA button state machine › 6. ✕ dismiss button clears pending and shows '▶ Run SA' again (2.5s)
+  x   7 [chromium] › e2e\decipherment-actions.spec.ts:378:3 › DeciphermentPanel › ▶ Run SA button state machine › 7. 'success' persists on reload; stale 'pending' in localStorage is ignored (15.5s)
+  x   8 [chromium] › e2e\decipherment-actions.spec.ts:402:3 › DeciphermentPanel › ▶ Run SA button state machine › 8. 'success' in localStorage shows '✓ Done' + ↻ on load (10.5s)
+  x   9 [chromium] › e2e\decipherment-actions.spec.ts:416:3 › DeciphermentPanel › ▶ Run SA button state machine › 9. 'error' in localStorage shows '✗ Error' + ↻ on load (10.5s)
+  x  10 [chromium] › e2e\decipherment-actions.spec.ts:429:3 › DeciphermentPanel › ▶ Run SA button state machine › 10. successful run transitions to '✓ Done' and writes 'success' to localStorage (15.5s)
+  x  11 [chromium] › e2e\decipherment-actions.spec.ts:442:3 › DeciphermentPanel › ▶ Run SA button state machine › 11. '✓ Done' survives page reload (localStorage persistence) (15.6s)
+  x  12 [chromium] › e2e\decipherment-actions.spec.ts:456:3 › DeciphermentPanel › ▶ Run SA button state machine › 12. clicking ↻ from '✓ Done' clears done and re-runs (shows '⏳ Running…') (10.5s)
+  x  13 [chromium] › e2e\decipherment-actions.spec.ts:474:3 › DeciphermentPanel › ▶ Run SA button state machine › 13. clicking ↻ from '✗ Error' clears error and re-runs (10.5s)
+  x  14 [chromium] › e2e\decipherment-actions.spec.ts:489:3 › DeciphermentPanel › ▶ Run SA button state machine › 14. clicking ↻ from '✗ Error' re-runs and transitions to '✓ Done' (15.6s)
+  x  15 [chromium] › e2e\decipherment-actions.spec.ts:514:3 › DeciphermentPanel › ▶ Run SA button state machine › 15. done state survives navigating away and back (10.5s)
+  x  16 [chromium] › e2e\decipherment-actions.spec.ts:552:3 › DeciphermentPanel › propose_experiment_chain keyword matching › 16. SA hypothesis with >=2-char words matches all 3 SA experiments (not just 1) (20.5s)
+  ok 17 [chromium] › e2e\decipherment-actions.spec.ts:585:3 › DeciphermentPanel › propose_experiment_chain keyword matching › 17. toast reports correct experiment count when chain runs (649ms)
+  x  18 [chromium] › e2e\decipherment-actions.spec.ts:602:3 › DeciphermentPanel › other action buttons › 18. '💡 Hypothesize' has independent state from '▶ Run SA' (10.4s)
+  ok 19 [chromium] › e2e\decipherment-actions.spec.ts:615:3 › DeciphermentPanel › other action buttons › 19. clicking '💡 Hypothesize' transitions to done independently (662ms)
+  ok 20 [chromium] › e2e\decipherment-actions.spec.ts:627:3 › DeciphermentPanel › other action buttons › 20. each action key stored independently in localStorage (561ms)
+  x  21 [chromium] › e2e\decipherment-actions.spec.ts:660:3 › DeciphermentPanel › Run SA — error scenarios › 21. SSE run_error transitions button to '✗ Error' and stores 'error' in localStorage (15.5s)
+  x  22 [chromium] › e2e\decipherment-actions.spec.ts:673:3 › DeciphermentPanel › Run SA — error scenarios › 22. error state injected via localStorage shows '✗ Error' + persists on reload (10.5s)
+  x  23 [chromium] › e2e\decipherment-actions.spec.ts:687:3 › DeciphermentPanel › Run SA — error scenarios › 23. re-run from injected '✗ Error' clears error and succeeds (10.5s)
+  ok 24 [chromium] › e2e\decipherment-actions.spec.ts:711:3 › DeciphermentPanel › backend integration › 24. decipherment endpoint returns expected fields (350ms)
+  ok 25 [chromium] › e2e\decipherment-actions.spec.ts:721:3 › DeciphermentPanel › backend integration › 25. Run SA button visible when backend returns munda_sa (449ms)
+
+
+  1) [chromium] › e2e\decipherment-actions.spec.ts:281:3 › DeciphermentPanel › ▶ Run SA button state machine › 2. click makes button show '⏳ Running…' and disables it immediately 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: '⏳ Running…' }).first()
+    Expected: visible
+    Timeout: 2000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 2000ms[22m
+    [2m  - waiting for getByRole('button', { name: '⏳ Running…' }).first()[22m
+
+
+      286 |     void btn.click();
+      287 |     // Button should show ⏳ Running… and be disabled within 1s
+    > 288 |     await expect(page.getByRole("button", { name: "⏳ Running…" }).first()).toBeVisible({ timeout: 2000 });
+          |                                                                            ^
+      289 |     // Original "▶ Run SA" label should be gone
+      290 |     await expect(page.getByRole("button", { name: "▶ Run SA" })).not.toBeVisible();
+      291 |   });
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:288:76
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-35382-and-disables-it-immediately-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-35382-and-disables-it-immediately-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-35382-and-disables-it-immediately-chromium\error-context.md
+
+  2) [chromium] › e2e\decipherment-actions.spec.ts:294:3 › DeciphermentPanel › ▶ Run SA button state machine › 3. double-click while busy does not start a second run 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeDisabled[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: '⏳ Running…' }).first()
+    Expected: disabled
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeDisabled" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('button', { name: '⏳ Running…' }).first()[22m
+
+
+      306 |     // Button is now disabled — second click should be blocked
+      307 |     const busyBtn = page.getByRole("button", { name: "⏳ Running…" }).first();
+    > 308 |     await expect(busyBtn).toBeDisabled();
+          |                           ^
+      309 |     await busyBtn.dispatchEvent("click"); // force a click on disabled button
+      310 |     await page.waitForTimeout(300);
+      311 |     // Only 1 call should have reached the SSE endpoint (from the hypothesis step onwards)
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:308:27
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-494e4-does-not-start-a-second-run-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-494e4-does-not-start-a-second-run-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-494e4-does-not-start-a-second-run-chromium\error-context.md
+
+  3) [chromium] › e2e\decipherment-actions.spec.ts:317:3 › DeciphermentPanel › ▶ Run SA button state machine › 4. Ctrl+R mid-run still shows '⏳ Running…' (pending survives reload via sessionStorage) 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: '⏳ Running…' }).first()
+    Expected: visible
+    Timeout: 2000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 2000ms[22m
+    [2m  - waiting for getByRole('button', { name: '⏳ Running…' }).first()[22m
+
+
+      322 |     await loadDashboard(page);
+      323 |     void page.getByRole("button", { name: "▶ Run SA" }).click();
+    > 324 |     await expect(page.getByRole("button", { name: "⏳ Running…" }).first()).toBeVisible({ timeout: 2000 });
+          |                                                                            ^
+      325 |     // Simulate Ctrl+R
+      326 |     await page.reload();
+      327 |     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:324:76
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-f20ad--reload-via-sessionStorage--chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-f20ad--reload-via-sessionStorage--chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-f20ad--reload-via-sessionStorage--chromium\error-context.md
+
+  4) [chromium] › e2e\decipherment-actions.spec.ts:334:3 › DeciphermentPanel › ▶ Run SA button state machine › 5. clicking Run SA writes pending to sessionStorage, NOT localStorage 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: '⏳ Running…' }).first()
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('button', { name: '⏳ Running…' }).first()[22m
+
+
+      338 |     void btn.click();
+      339 |     await page.waitForTimeout(500);
+    > 340 |     await expect(page.getByRole("button", { name: "⏳ Running…" }).first()).toBeVisible();
+          |                                                                            ^
+      341 |     // localStorage must NOT have 'pending' (only terminal states go there)
+      342 |     const lsState = await getLS(page);
+      343 |     expect(lsState).toBeNull();
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:340:76
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-0ab50-ionStorage-NOT-localStorage-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-0ab50-ionStorage-NOT-localStorage-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-0ab50-ionStorage-NOT-localStorage-chromium\error-context.md
+
+  5) [chromium] › e2e\decipherment-actions.spec.ts:360:3 › DeciphermentPanel › ▶ Run SA button state machine › 6. ✕ dismiss button clears pending and shows '▶ Run SA' again 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: '⏳ Running…' }).first()
+    Expected: visible
+    Timeout: 2000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 2000ms[22m
+    [2m  - waiting for getByRole('button', { name: '⏳ Running…' }).first()[22m
+
+
+      364 |     void page.getByRole("button", { name: "▶ Run SA" }).click();
+      365 |     // Wait for the busy state so sessionStorage is written before we reload
+    > 366 |     await expect(page.getByRole("button", { name: "⏳ Running…" }).first()).toBeVisible({ timeout: 2000 });
+          |                                                                            ^
+      367 |     // Reload mid-run
+      368 |     await page.reload();
+      369 |     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:366:76
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-af164-ng-and-shows-▶-Run-SA-again-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-af164-ng-and-shows-▶-Run-SA-again-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-af164-ng-and-shows-▶-Run-SA-again-chromium\error-context.md
+
+  6) [chromium] › e2e\decipherment-actions.spec.ts:378:3 › DeciphermentPanel › ▶ Run SA button state machine › 7. 'success' persists on reload; stale 'pending' in localStorage is ignored 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=✓ Done').first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for locator('text=✓ Done').first()[22m
+
+
+      382 |     await loadDashboard(page);
+      383 |     await page.getByRole("button", { name: "▶ Run SA" }).click();
+    > 384 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
+          |                                                       ^
+      385 |     await page.reload();
+      386 |     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
+      387 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 3000 });
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:384:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-1810b--in-localStorage-is-ignored-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-1810b--in-localStorage-is-ignored-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-1810b--in-localStorage-is-ignored-chromium\error-context.md
+
+  7) [chromium] › e2e\decipherment-actions.spec.ts:402:3 › DeciphermentPanel › ▶ Run SA button state machine › 8. 'success' in localStorage shows '✓ Done' + ↻ on load 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=Competing LM Test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for locator('text=Competing LM Test')[22m
+
+
+      405 |     await setLS(page, "success");
+      406 |     await page.reload();
+    > 407 |     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
+          |                                                          ^
+      408 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 3000 });
+      409 |     await expect(page.getByRole("button", { name: "▶ Run SA" })).not.toBeVisible();
+      410 |     // ↻ re-run button must be present
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:407:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-49adc-rage-shows-✓-Done-↻-on-load-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-49adc-rage-shows-✓-Done-↻-on-load-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-49adc-rage-shows-✓-Done-↻-on-load-chromium\error-context.md
+
+  8) [chromium] › e2e\decipherment-actions.spec.ts:416:3 › DeciphermentPanel › ▶ Run SA button state machine › 9. 'error' in localStorage shows '✗ Error' + ↻ on load 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=Competing LM Test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for locator('text=Competing LM Test')[22m
+
+
+      419 |     await setLS(page, "error");
+      420 |     await page.reload();
+    > 421 |     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
+          |                                                          ^
+      422 |     await expect(page.locator("text=✗ Error").first()).toBeVisible({ timeout: 3000 });
+      423 |     await expect(page.getByRole("button", { name: "▶ Run SA" })).not.toBeVisible();
+      424 |     const rerunBtns = page.getByRole("button", { name: "↻" });
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:421:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-9bda2-age-shows-✗-Error-↻-on-load-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-9bda2-age-shows-✗-Error-↻-on-load-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-9bda2-age-shows-✗-Error-↻-on-load-chromium\error-context.md
+
+  9) [chromium] › e2e\decipherment-actions.spec.ts:429:3 › DeciphermentPanel › ▶ Run SA button state machine › 10. successful run transitions to '✓ Done' and writes 'success' to localStorage 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=✓ Done').first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for locator('text=✓ Done').first()[22m
+
+
+      433 |     await btn.click();
+      434 |     // Wait for done chip to appear (SSE resolves quickly in mock)
+    > 435 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
+          |                                                       ^
+      436 |     await expect(page.getByRole("button", { name: "▶ Run SA" })).not.toBeVisible();
+      437 |     const state = await getLS(page);
+      438 |     expect(state).toBe("success");
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:435:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-8d856-tes-success-to-localStorage-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-8d856-tes-success-to-localStorage-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-8d856-tes-success-to-localStorage-chromium\error-context.md
+
+  10) [chromium] › e2e\decipherment-actions.spec.ts:442:3 › DeciphermentPanel › ▶ Run SA button state machine › 11. '✓ Done' survives page reload (localStorage persistence) 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=✓ Done').first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for locator('text=✓ Done').first()[22m
+
+
+      446 |     // Click and wait for done
+      447 |     await page.getByRole("button", { name: "▶ Run SA" }).click();
+    > 448 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
+          |                                                       ^
+      449 |     // Reload
+      450 |     await page.reload();
+      451 |     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:448:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-a0605-d-localStorage-persistence--chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-a0605-d-localStorage-persistence--chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-a0605-d-localStorage-persistence--chromium\error-context.md
+
+  11) [chromium] › e2e\decipherment-actions.spec.ts:456:3 › DeciphermentPanel › ▶ Run SA button state machine › 12. clicking ↻ from '✓ Done' clears done and re-runs (shows '⏳ Running…') 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=✓ Done').first()
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for locator('text=✓ Done').first()[22m
+
+
+      459 |     await setLS(page, "success");
+      460 |     await page.reload();
+    > 461 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 10_000 });
+          |                                                       ^
+      462 |     const rerun = page.getByRole("button", { name: "↻" }).first();
+      463 |     await rerun.click();
+      464 |     await expect(page.getByRole("button", { name: "⏳ Running…" }).first()).toBeVisible({ timeout: 2000 });
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:461:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-372a0-d-re-runs-shows-⏳-Running…--chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-372a0-d-re-runs-shows-⏳-Running…--chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-372a0-d-re-runs-shows-⏳-Running…--chromium\error-context.md
+
+  12) [chromium] › e2e\decipherment-actions.spec.ts:474:3 › DeciphermentPanel › ▶ Run SA button state machine › 13. clicking ↻ from '✗ Error' clears error and re-runs 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=✗ Error').first()
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for locator('text=✗ Error').first()[22m
+
+
+      477 |     await setLS(page, "error");
+      478 |     await page.reload();
+    > 479 |     await expect(page.locator("text=✗ Error").first()).toBeVisible({ timeout: 10_000 });
+          |                                                        ^
+      480 |     const rerun = page.getByRole("button", { name: "↻" }).first();
+      481 |     await rerun.click();
+      482 |     // Should go through busy then done
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:479:56
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-9ad50-or-clears-error-and-re-runs-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-9ad50-or-clears-error-and-re-runs-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-9ad50-or-clears-error-and-re-runs-chromium\error-context.md
+
+  13) [chromium] › e2e\decipherment-actions.spec.ts:489:3 › DeciphermentPanel › ▶ Run SA button state machine › 14. clicking ↻ from '✗ Error' re-runs and transitions to '✓ Done' 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=✗ Error').first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for locator('text=✗ Error').first()[22m
+
+
+      496 |     const btn = await loadDashboard(page);
+      497 |     await btn.click();
+    > 498 |     await expect(page.locator("text=✗ Error").first()).toBeVisible({ timeout: 15_000 });
+          |                                                        ^
+      499 |     // Re-set mocks to succeed for the retry
+      500 |     await page.route("**/api/v1/experiment-graphs/**/run", (r) => {
+      501 |       if (r.request().method() !== "POST") return r.continue();
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:498:56
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-ba0a2--and-transitions-to-✓-Done--chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-ba0a2--and-transitions-to-✓-Done--chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-ba0a2--and-transitions-to-✓-Done--chromium\error-context.md
+
+  14) [chromium] › e2e\decipherment-actions.spec.ts:514:3 › DeciphermentPanel › ▶ Run SA button state machine › 15. done state survives navigating away and back 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=Competing LM Test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for locator('text=Competing LM Test')[22m
+
+
+      518 |     // Navigate to a different view via the sidebar
+      519 |     await page.reload();
+    > 520 |     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
+          |                                                          ^
+      521 |     // Click a sidebar link (Discovery) and back to Dashboard.
+      522 |     // If the target view crashes (missing mocks in the test environment), skip
+      523 |     // gracefully — the equivalent localStorage persistence is already covered
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:520:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-ee600-es-navigating-away-and-back-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-ee600-es-navigating-away-and-back-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-ee600-es-navigating-away-and-back-chromium\error-context.md
+
+  15) [chromium] › e2e\decipherment-actions.spec.ts:552:3 › DeciphermentPanel › propose_experiment_chain keyword matching › 16. SA hypothesis with >=2-char words matches all 3 SA experiments (not just 1) 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=✓ Done').first()
+    Expected: visible
+    Timeout: 20000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 20000ms[22m
+    [2m  - waiting for locator('text=✓ Done').first()[22m
+
+
+      571 |     await btn.click();
+      572 |     // Wait for run to complete
+    > 573 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 20_000 });
+          |                                                       ^
+      574 |
+      575 |     // With min word length >= 2, "sa" matches bigram_sa_consistency, sa_z_score_comparison,
+      576 |     // and anchored_sa_validation — all 3 SA experiments, not unrelated_morphology
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:573:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-f05ac--SA-experiments-not-just-1--chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-f05ac--SA-experiments-not-just-1--chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-f05ac--SA-experiments-not-just-1--chromium\error-context.md
+
+  16) [chromium] › e2e\decipherment-actions.spec.ts:602:3 › DeciphermentPanel › other action buttons › 18. '💡 Hypothesize' has independent state from '▶ Run SA' 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=Competing LM Test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for locator('text=Competing LM Test')[22m
+
+
+      606 |     await setLS(page, "success");
+      607 |     await page.reload();
+    > 608 |     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
+          |                                                          ^
+      609 |     // Run SA should show done
+      610 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 3000 });
+      611 |     // Hypothesize button should still be in initial state (not done)
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:608:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-b08c6-endent-state-from-▶-Run-SA--chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-b08c6-endent-state-from-▶-Run-SA--chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-b08c6-endent-state-from-▶-Run-SA--chromium\error-context.md
+
+  17) [chromium] › e2e\decipherment-actions.spec.ts:660:3 › DeciphermentPanel › Run SA — error scenarios › 21. SSE run_error transitions button to '✗ Error' and stores 'error' in localStorage 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=✗ Error').first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for locator('text=✗ Error').first()[22m
+
+
+      666 |     const btn = await loadDashboard(page);
+      667 |     await btn.click();
+    > 668 |     await expect(page.locator("text=✗ Error").first()).toBeVisible({ timeout: 15_000 });
+          |                                                        ^
+      669 |     const state = await getLS(page);
+      670 |     expect(state).toBe("error");
+      671 |   });
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:668:56
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-ec0fe-tores-error-in-localStorage-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-ec0fe-tores-error-in-localStorage-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-ec0fe-tores-error-in-localStorage-chromium\error-context.md
+
+  18) [chromium] › e2e\decipherment-actions.spec.ts:673:3 › DeciphermentPanel › Run SA — error scenarios › 22. error state injected via localStorage shows '✗ Error' + persists on reload 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=Competing LM Test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for locator('text=Competing LM Test')[22m
+
+
+      677 |     await setLS(page, "error");
+      678 |     await page.reload();
+    > 679 |     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
+          |                                                          ^
+      680 |     await expect(page.locator("text=✗ Error").first()).toBeVisible({ timeout: 3000 });
+      681 |     // Reload again — state must still be there
+      682 |     await page.reload();
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:679:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-9874e--✗-Error-persists-on-reload-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-9874e--✗-Error-persists-on-reload-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-9874e--✗-Error-persists-on-reload-chromium\error-context.md
+
+  19) [chromium] › e2e\decipherment-actions.spec.ts:687:3 › DeciphermentPanel › Run SA — error scenarios › 23. re-run from injected '✗ Error' clears error and succeeds 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=✗ Error').first()
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for locator('text=✗ Error').first()[22m
+
+
+      690 |     await setLS(page, "error");
+      691 |     await page.reload();
+    > 692 |     await expect(page.locator("text=✗ Error").first()).toBeVisible({ timeout: 10_000 });
+          |                                                        ^
+      693 |     const rerun = page.getByRole("button", { name: "↻" }).first();
+      694 |     await rerun.click();
+      695 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:692:56
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-2bd67-r-clears-error-and-succeeds-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-2bd67-r-clears-error-and-succeeds-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-2bd67-r-clears-error-and-succeeds-chromium\error-context.md
+
+  19 failed
+    [chromium] › e2e\decipherment-actions.spec.ts:281:3 › DeciphermentPanel › ▶ Run SA button state machine › 2. click makes button show '⏳ Running…' and disables it immediately 
+    [chromium] › e2e\decipherment-actions.spec.ts:294:3 › DeciphermentPanel › ▶ Run SA button state machine › 3. double-click while busy does not start a second run 
+    [chromium] › e2e\decipherment-actions.spec.ts:317:3 › DeciphermentPanel › ▶ Run SA button state machine › 4. Ctrl+R mid-run still shows '⏳ Running…' (pending survives reload via sessionStorage) 
+    [chromium] › e2e\decipherment-actions.spec.ts:334:3 › DeciphermentPanel › ▶ Run SA button state machine › 5. clicking Run SA writes pending to sessionStorage, NOT localStorage 
+    [chromium] › e2e\decipherment-actions.spec.ts:360:3 › DeciphermentPanel › ▶ Run SA button state machine › 6. ✕ dismiss button clears pending and shows '▶ Run SA' again 
+    [chromium] › e2e\decipherment-actions.spec.ts:378:3 › DeciphermentPanel › ▶ Run SA button state machine › 7. 'success' persists on reload; stale 'pending' in localStorage is ignored 
+    [chromium] › e2e\decipherment-actions.spec.ts:402:3 › DeciphermentPanel › ▶ Run SA button state machine › 8. 'success' in localStorage shows '✓ Done' + ↻ on load 
+    [chromium] › e2e\decipherment-actions.spec.ts:416:3 › DeciphermentPanel › ▶ Run SA button state machine › 9. 'error' in localStorage shows '✗ Error' + ↻ on load 
+    [chromium] › e2e\decipherment-actions.spec.ts:429:3 › DeciphermentPanel › ▶ Run SA button state machine › 10. successful run transitions to '✓ Done' and writes 'success' to localStorage 
+    [chromium] › e2e\decipherment-actions.spec.ts:442:3 › DeciphermentPanel › ▶ Run SA button state machine › 11. '✓ Done' survives page reload (localStorage persistence) 
+    [chromium] › e2e\decipherment-actions.spec.ts:456:3 › DeciphermentPanel › ▶ Run SA button state machine › 12. clicking ↻ from '✓ Done' clears done and re-runs (shows '⏳ Running…') 
+    [chromium] › e2e\decipherment-actions.spec.ts:474:3 › DeciphermentPanel › ▶ Run SA button state machine › 13. clicking ↻ from '✗ Error' clears error and re-runs 
+    [chromium] › e2e\decipherment-actions.spec.ts:489:3 › DeciphermentPanel › ▶ Run SA button state machine › 14. clicking ↻ from '✗ Error' re-runs and transitions to '✓ Done' 
+    [chromium] › e2e\decipherment-actions.spec.ts:514:3 › DeciphermentPanel › ▶ Run SA button state machine › 15. done state survives navigating away and back 
+    [chromium] › e2e\decipherment-actions.spec.ts:552:3 › DeciphermentPanel › propose_experiment_chain keyword matching › 16. SA hypothesis with >=2-char words matches all 3 SA experiments (not just 1) 
+    [chromium] › e2e\decipherment-actions.spec.ts:602:3 › DeciphermentPanel › other action buttons › 18. '💡 Hypothesize' has independent state from '▶ Run SA' 
+    [chromium] › e2e\decipherment-actions.spec.ts:660:3 › DeciphermentPanel › Run SA — error scenarios › 21. SSE run_error transitions button to '✗ Error' and stores 'error' in localStorage 
+    [chromium] › e2e\decipherment-actions.spec.ts:673:3 › DeciphermentPanel › Run SA — error scenarios › 22. error state injected via localStorage shows '✗ Error' + persists on reload 
+    [chromium] › e2e\decipherment-actions.spec.ts:687:3 › DeciphermentPanel › Run SA — error scenarios › 23. re-run from injected '✗ Error' clears error and succeeds 
+  6 passed (3.8m)

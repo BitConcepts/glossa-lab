@@ -140,6 +140,11 @@ async function setupMocks(
         python_version: "3.12.0", pkg_count: 0, backend_dir: "mock",
       }) }));
 
+  // Dismissals — return empty list so server-side dismissals don't hide badges
+  await page.route("**/api/v1/dismissals**", (r) =>
+    r.fulfill({ status: 200, contentType: "application/json",
+      body: JSON.stringify({ dismissed: [] }) }));
+
   // Research loop — return proper idle/empty state
   await page.route("**/api/v1/research-loop/status**", (r) =>
     r.fulfill({ status: 200, contentType: "application/json",
@@ -368,8 +373,8 @@ test.describe("DeciphermentPanel › ▶ Run SA button state machine", () => {
     await page.reload();
     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
     await expect(page.locator("text=⏳ Running…").first()).toBeVisible({ timeout: 3000 });
-    // Click ✕ to dismiss
-    await page.getByRole("button", { name: "✕" }).first().click();
+    // Click ✕ to dismiss the pending state (not the top-level badge dismiss)
+    await page.locator('button[title="Dismiss \u2014 job may still be running in background"]').click();
     await expect(page.getByRole("button", { name: "▶ Run SA" })).toBeVisible({ timeout: 2000 });
     await expect(page.locator("text=⏳ Running…").first()).not.toBeVisible();
   });

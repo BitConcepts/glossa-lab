@@ -1,0 +1,1022 @@
+
+Running 271 tests using 1 worker
+
+[1A[2K[1/271] [chromium] › e2e\backend-integration.spec.ts:27:3 › Backend health › health endpoint returns healthy
+[1A[2K[2/271] [chromium] › e2e\backend-integration.spec.ts:35:3 › Backend health › studies endpoint returns array
+[1A[2K[3/271] [chromium] › e2e\backend-integration.spec.ts:42:3 › Backend health › texts endpoint returns array
+[1A[2K[4/271] [chromium] › e2e\backend-integration.spec.ts:48:3 › Backend health › hypotheses endpoint works
+[1A[2K[5/271] [chromium] › e2e\backend-integration.spec.ts:54:3 › Backend health › notebooks endpoint works
+[1A[2K[6/271] [chromium] › e2e\backend-integration.spec.ts:60:3 › Backend health › citations endpoint works
+[1A[2K[7/271] [chromium] › e2e\backend-integration.spec.ts:66:3 › Backend health › system metrics endpoint works
+[1A[2K  1) [chromium] › e2e\backend-integration.spec.ts:66:3 › Backend health › system metrics endpoint works 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: apiRequestContext.get: Request context disposed.
+    Call log:
+    [2m  - → GET http://localhost:4173/api/v1/system/metrics[22m
+    [2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.7727.15 Safari/537.36[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+
+
+      65 |
+      66 |   test("system metrics endpoint works", async ({ request }) => {
+    > 67 |     const resp = await request.get("/api/v1/system/metrics");
+         |                                ^
+      68 |     expect(resp.status()).toBe(200);
+      69 |     const body = await resp.json();
+      70 |     expect(body).toHaveProperty("cpu");
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\backend-integration.spec.ts:67:32
+
+    Error Context: test-results\backend-integration-Backen-b30f7-stem-metrics-endpoint-works-chromium\error-context.md
+
+
+[1A[2K[8/271] [chromium] › e2e\backend-integration.spec.ts:78:3 › Backend health › system GPU endpoint works
+[1A[2K  2) [chromium] › e2e\backend-integration.spec.ts:78:3 › Backend health › system GPU endpoint works 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: apiRequestContext.get: Request context disposed.
+    Call log:
+    [2m  - → GET http://localhost:4173/api/v1/system/gpu[22m
+    [2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.7727.15 Safari/537.36[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+
+
+      77 |
+      78 |   test("system GPU endpoint works", async ({ request }) => {
+    > 79 |     const resp = await request.get("/api/v1/system/gpu");
+         |                                ^
+      80 |     expect(resp.status()).toBe(200);
+      81 |     expect(Array.isArray(await resp.json())).toBeTruthy();
+      82 |   });
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\backend-integration.spec.ts:79:32
+
+    Error Context: test-results\backend-integration-Backend-health-system-GPU-endpoint-works-chromium\error-context.md
+
+
+[1A[2K[9/271] [chromium] › e2e\backend-integration.spec.ts:84:3 › Backend health › ollama status endpoint works
+[1A[2K[10/271] [chromium] › e2e\backend-integration.spec.ts:92:3 › Backend health › ollama library endpoint returns curated models
+[1A[2K[11/271] [chromium] › e2e\backend-integration.spec.ts:103:3 › Backend health › ollama recommend endpoint returns recommendation
+[1A[2K[12/271] [chromium] › e2e\backend-integration.spec.ts:126:3 › Corpus analysis routes › entropy endpoint returns H1/H2 metrics
+[1A[2K[13/271] [chromium] › e2e\backend-integration.spec.ts:139:3 › Corpus analysis routes › ngrams endpoint returns bigrams
+[1A[2K[14/271] [chromium] › e2e\backend-integration.spec.ts:151:3 › Corpus analysis routes › concordance endpoint returns KWIC hits
+[1A[2K[15/271] [chromium] › e2e\backend-integration.spec.ts:168:3 › Corpus analysis routes › export endpoint returns txt file
+[1A[2K[16/271] [chromium] › e2e\backend-integration.spec.ts:176:3 › Corpus analysis routes › export endpoint returns csv file
+[1A[2K[17/271] [chromium] › e2e\backend-integration.spec.ts:183:3 › Corpus analysis routes › export endpoint returns json file
+[1A[2K[18/271] [chromium] › e2e\backend-integration.spec.ts:198:3 › Hypothesis CRUD › create hypothesis
+[1A[2K[19/271] [chromium] › e2e\backend-integration.spec.ts:209:3 › Hypothesis CRUD › update hypothesis status
+[1A[2K[20/271] [chromium] › e2e\backend-integration.spec.ts:219:3 › Hypothesis CRUD › add evidence to hypothesis
+[1A[2K[21/271] [chromium] › e2e\backend-integration.spec.ts:229:3 › Hypothesis CRUD › list hypotheses includes our test entry
+[1A[2K[22/271] [chromium] › e2e\backend-integration.spec.ts:237:3 › Hypothesis CRUD › delete hypothesis
+[1A[2K[23/271] [chromium] › e2e\backend-integration.spec.ts:251:3 › Notebook CRUD › create notebook
+[1A[2K[24/271] [chromium] › e2e\backend-integration.spec.ts:261:3 › Notebook CRUD › update notebook content
+[1A[2K[25/271] [chromium] › e2e\backend-integration.spec.ts:270:3 › Notebook CRUD › delete notebook
+[1A[2K[26/271] [chromium] › e2e\backend-integration.spec.ts:279:3 › Citation CRUD › create citation
+[1A[2K[27/271] [chromium] › e2e\backend-integration.spec.ts:289:3 › Citation CRUD › update citation notes
+[1A[2K[28/271] [chromium] › e2e\backend-integration.spec.ts:296:3 › Citation CRUD › delete citation
+[1A[2K[29/271] [chromium] › e2e\backend-integration.spec.ts:305:3 › System metrics peaks › clear peaks resets all peak values
+[1A[2K[30/271] [chromium] › e2e\backend-integration.spec.ts:313:3 › System metrics peaks › metrics snapshot includes peaks object
+[1A[2K  3) [chromium] › e2e\backend-integration.spec.ts:313:3 › System metrics peaks › metrics snapshot includes peaks object 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: apiRequestContext.get: Request context disposed.
+    Call log:
+    [2m  - → GET http://localhost:4173/api/v1/system/metrics[22m
+    [2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.7727.15 Safari/537.36[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+
+
+      312 |
+      313 |   test("metrics snapshot includes peaks object", async ({ request }) => {
+    > 314 |     const resp = await request.get("/api/v1/system/metrics");
+          |                                ^
+      315 |     const body = await resp.json();
+      316 |     expect(body).toHaveProperty("peaks");
+      317 |     expect(typeof body.peaks).toBe("object");
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\backend-integration.spec.ts:314:32
+
+    Error Context: test-results\backend-integration-System-9b882-pshot-includes-peaks-object-chromium\error-context.md
+
+
+[1A[2K[31/271] [chromium] › e2e\backend-integration.spec.ts:324:3 › Corpora UI › corpora page shows corpus cards
+[1A[2K[32/271] [chromium] › e2e\backend-integration.spec.ts:334:3 › Corpora UI › corpus card expands on click
+[1A[2K[33/271] [chromium] › e2e\backend-integration.spec.ts:355:3 › Entropy Dashboard UI › entropy tab shows dashboard with corpus selector
+[1A[2K[34/271] [chromium] › e2e\backend-integration.spec.ts:362:3 › Entropy Dashboard UI › entropy dashboard shows select corpus dropdown
+[1A[2K[35/271] [chromium] › e2e\backend-integration.spec.ts:371:3 › Hypothesis Tracker UI › hypotheses tab loads
+[1A[2K[36/271] [chromium] › e2e\backend-integration.spec.ts:378:3 › Hypothesis Tracker UI › can type a hypothesis title
+[1A[2K[37/271] [chromium] › e2e\backend-integration.spec.ts:390:3 › Research Notebook UI › notebooks tab loads
+[1A[2K[38/271] [chromium] › e2e\backend-integration.spec.ts:399:3 › Citation Manager UI › citations tab loads with add form
+[1A[2K[39/271] [chromium] › e2e\backend-integration.spec.ts:410:3 › AI Chat UI › Glossa AI panel opens with chat textarea
+[1A[2K[40/271] [chromium] › e2e\backend-integration.spec.ts:429:3 › AI Chat UI › Glossa AI panel shows starter prompt buttons
+[1A[2K  4) [chromium] › e2e\backend-integration.spec.ts:429:3 › AI Chat UI › Glossa AI panel shows starter prompt buttons 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText(/Ventris/i)
+    Expected: visible
+    Timeout: 3000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 3000ms[22m
+    [2m  - waiting for getByText(/Ventris/i)[22m
+
+
+      431 |     await page.getByTitle(/Open AI assistant/i).first().click();
+      432 |     // Starter prompts: "What experiments should I run?", "Explain the Ventris method", etc.
+    > 433 |     await expect(page.getByText(/Ventris/i)).toBeVisible({ timeout: 3000 });
+          |                                              ^
+      434 |   });
+      435 |
+      436 |   test("Glossa AI panel has Research context button", async ({ page }) => {
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\backend-integration.spec.ts:433:46
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\backend-integration-AI-Cha-bf3c8-hows-starter-prompt-buttons-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\backend-integration-AI-Cha-bf3c8-hows-starter-prompt-buttons-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\backend-integration-AI-Cha-bf3c8-hows-starter-prompt-buttons-chromium\error-context.md
+
+
+[1A[2K[41/271] [chromium] › e2e\backend-integration.spec.ts:436:3 › AI Chat UI › Glossa AI panel has Research context button
+[1A[2K[42/271] [chromium] › e2e\backend-integration.spec.ts:452:3 › AI Tools UI › AI Tools tab shows tool sections
+[1A[2K[43/271] [chromium] › e2e\backend-integration.spec.ts:464:3 › Sign Dictionary UI › signs tab shows dictionary grid
+[1A[2K  5) [chromium] › e2e\backend-integration.spec.ts:464:3 › Sign Dictionary UI › signs tab shows dictionary grid 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('heading', { name: 'Sign Dictionary' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByRole('heading', { name: 'Sign Dictionary' })[22m
+
+
+      465 |     await page.goto("/");
+      466 |     await page.getByTitle("Signs").first().click();
+    > 467 |     await expect(page.getByRole("heading", { name: "Sign Dictionary" })).toBeVisible();
+          |                                                                          ^
+      468 |     // Check that SOME sign content is visible (sign IDs or entries)
+      469 |     const hasSignIds = await page.getByText(/^\d{3}$/).first().isVisible({ timeout: 4000 }).catch(() => false);
+      470 |     const hasDictContent = await page.locator("[data-testid], table, .sign-grid").first().isVisible({ timeout: 3000 }).catch(() => false);
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\backend-integration.spec.ts:467:74
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\backend-integration-Sign-D-6b7ef-s-tab-shows-dictionary-grid-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\backend-integration-Sign-D-6b7ef-s-tab-shows-dictionary-grid-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\backend-integration-Sign-D-6b7ef-s-tab-shows-dictionary-grid-chromium\error-context.md
+
+
+[1A[2K[44/271] [chromium] › e2e\backend-integration.spec.ts:476:3 › Sign Dictionary UI › sign search filters results
+[1A[2K[45/271] [chromium] › e2e\backend-integration.spec.ts:496:3 › Timeline UI › timeline tab loads
+[1A[2K[46/271] [chromium] › e2e\backend-integration.spec.ts:512:3 › Command Palette › opens on Ctrl+K
+[1A[2K[47/271] [chromium] › e2e\backend-integration.spec.ts:518:3 › Command Palette › closes on Escape
+[1A[2K[48/271] [chromium] › e2e\backend-integration.spec.ts:525:3 › Command Palette › filtering by query shows relevant commands
+[1A[2K[49/271] [chromium] › e2e\backend-integration.spec.ts:532:3 › Command Palette › clicking ⌘K button opens palette
+[1A[2K[50/271] [chromium] › e2e\backend-integration.spec.ts:538:3 › Command Palette › palette header can be dragged without going off-screen
+[1A[2K[51/271] [chromium] › e2e\backend-integration.spec.ts:568:3 › Settings - AI tab › settings AI tab loads and shows provider/AI content
+[1A[2K[52/271] [chromium] › e2e\backend-integration.spec.ts:578:3 › Settings - AI tab › settings AI tab shows model-related content
+[1A[2K[53/271] [chromium] › e2e\backend-integration.spec.ts:587:3 › Settings - AI tab › settings AI tab shows Ollama or local provider info
+[1A[2K[54/271] [chromium] › e2e\backend-integration.spec.ts:601:3 › Evidence Graph API › library endpoint returns document list
+[1A[2K[55/271] [chromium] › e2e\backend-integration.spec.ts:614:3 › Evidence Graph API › library endpoint total >= 11 (from Batch 1+2 intake)
+[1A[2K[56/271] [chromium] › e2e\backend-integration.spec.ts:621:3 › Evidence Graph API › library limit param works
+[1A[2K[57/271] [chromium] › e2e\backend-integration.spec.ts:628:3 › Evidence Graph API › claims endpoint returns claim list
+[1A[2K[58/271] [chromium] › e2e\backend-integration.spec.ts:638:3 › Evidence Graph API › claims type filter returns only matching type
+[1A[2K[59/271] [chromium] › e2e\backend-integration.spec.ts:647:3 › Evidence Graph API › claims bogus type returns empty list
+[1A[2K[60/271] [chromium] › e2e\backend-integration.spec.ts:653:3 › Evidence Graph API › hypotheses endpoint returns models list
+[1A[2K[61/271] [chromium] › e2e\backend-integration.spec.ts:663:3 › Evidence Graph API › hypotheses models have expected shape
+[1A[2K[62/271] [chromium] › e2e\backend-integration.spec.ts:675:3 › Evidence Graph API › sweep config endpoint returns schema_version and sweep
+[1A[2K[63/271] [chromium] › e2e\backend-integration.spec.ts:687:3 › Evidence Graph API › sweep candidates endpoint returns shape even when empty
+[1A[2K[64/271] [chromium] › e2e\backend-integration.spec.ts:695:3 › Evidence Graph API › intake run endpoint returns queued ack
+[1A[2K[65/271] [chromium] › e2e\backend-integration.spec.ts:703:3 › Evidence Graph API › sweep run endpoint returns running ack
+[1A[2K[66/271] [chromium] › e2e\backend-integration.spec.ts:710:3 › Evidence Graph API › upload non-PDF returns 400
+[1A[2K[67/271] [chromium] › e2e\backend-integration.spec.ts:718:3 › Evidence Graph API › import-url with empty url returns 400
+[1A[2K[68/271] [chromium] › e2e\backend-integration.spec.ts:725:3 › Evidence Graph API › sweep intake with non-PDF url returns pending_manual
+[1A[2K[69/271] [chromium] › e2e\backend-integration.spec.ts:738:3 › Evidence Graph UI (with backend) › Evidence Graph tab is reachable and shows library stats
+[1A[2K[70/271] [chromium] › e2e\backend-integration.spec.ts:745:3 › Evidence Graph UI (with backend) › claims count in stats row is >= 22
+[1A[2K[71/271] [chromium] › e2e\backend-integration.spec.ts:760:3 › Evidence Graph UI (with backend) › Sweep tab config loads from backend
+[1A[2K[72/271] [chromium] › e2e\backend-integration.spec.ts:770:3 › Evidence Graph UI (with backend) › command palette includes Evidence Graph command
+[1A[2K[73/271] [chromium] › e2e\backend-integration.spec.ts:781:3 › Research Loop API › GET /status returns valid structure
+[1A[2K[74/271] [chromium] › e2e\backend-integration.spec.ts:796:3 › Research Loop API › GET /results returns valid structure with protocol field
+[1A[2K  6) [chromium] › e2e\backend-integration.spec.ts:796:3 › Research Loop API › GET /results returns valid structure with protocol field 
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m"integrated_research_loop"[39m
+    Received: [31m"integrated_research_loop[7m_v3[27m"[39m
+
+      799 |     const body = await resp.json();
+      800 |     expect(body).toHaveProperty("protocol");
+    > 801 |     expect(body.protocol).toBe("integrated_research_loop");
+          |                           ^
+      802 |     expect(body).toHaveProperty("cycles_run");
+      803 |     expect(body).toHaveProperty("max_cycles");
+      804 |     expect(body).toHaveProperty("total_papers_mined");
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\backend-integration.spec.ts:801:27
+
+    Error Context: test-results\backend-integration-Resear-b3277-ructure-with-protocol-field-chromium\error-context.md
+
+
+[1A[2K[75/271] [chromium] › e2e\backend-integration.spec.ts:811:3 › Research Loop API › POST /stop returns stopping status
+[1A[2K[76/271] [chromium] › e2e\backend-integration.spec.ts:820:3 › Research Loop API › POST /start returns SSE stream (1-cycle, no network)
+[1A[2K  7) [chromium] › e2e\backend-integration.spec.ts:820:3 › Research Loop API › POST /start returns SSE stream (1-cycle, no network) 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: apiRequestContext.post: Request context disposed.
+    Call log:
+    [2m  - → POST http://localhost:4173/api/v1/research-loop/start?max_cycles=1[22m
+    [2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.7727.15 Safari/537.36[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+
+
+      821 |     // Start with 1 cycle — the loop will attempt to mine from OpenAlex
+      822 |     // which may or may not succeed in CI, but the SSE structure should be valid
+    > 823 |     const resp = await request.post("/api/v1/research-loop/start?max_cycles=1");
+          |                                ^
+      824 |     expect(resp.status()).toBe(200);
+      825 |     const ct = resp.headers()["content-type"];
+      826 |     expect(ct).toContain("text/event-stream");
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\backend-integration.spec.ts:823:32
+
+    Error Context: test-results\backend-integration-Resear-4d394--stream-1-cycle-no-network--chromium\error-context.md
+
+
+[1A[2K[77/271] [chromium] › e2e\backend-integration.spec.ts:845:3 › Research Loop API › after start, status shows cycles_completed >= 1
+[1A[2K[78/271] [chromium] › e2e\backend-integration.spec.ts:853:3 › Research Loop API › after start, results show history with insight_types and selection_method
+[1A[2K[79/271] [chromium] › e2e\backend-integration.spec.ts:876:3 › Research Loop Dashboard (with backend) › dashboard highlights include n_atomic_nodes
+[1A[2K[80/271] [chromium] › e2e\backend-integration.spec.ts:884:3 › Research Loop Dashboard (with backend) › atomic nodes catalog includes ResearchLoopRunner
+[1A[2K[81/271] [chromium] › e2e\backend-integration.spec.ts:892:3 › Research Loop Dashboard (with backend) › ResearchLoopRunner catalog entry has correct metadata
+[1A[2K[82/271] [chromium] › e2e\backend-integration.spec.ts:901:3 › Research Loop Dashboard (with backend) › Research Loop panel is visible on dashboard page
+[1A[2K[83/271] [chromium] › e2e\backend-integration.spec.ts:909:3 › Research Loop Dashboard (with backend) › Atomic nodes counter shows 400+
+[1A[2K[84/271] [chromium] › e2e\backend-integration.spec.ts:919:3 › Status view - system metrics › status page shows system metrics sections
+[1A[2K  8) [chromium] › e2e\backend-integration.spec.ts:919:3 › Status view - system metrics › status page shows system metrics sections 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByText(/CPU/i).first()
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 5000ms[22m
+    [2m  - waiting for getByText(/CPU/i).first()[22m
+
+
+      922 |     await page.waitForTimeout(2000);
+      923 |     // Should show CPU, Memory, Disk, Network sections
+    > 924 |     await expect(page.getByText(/CPU/i).first()).toBeVisible({ timeout: 5000 });
+          |                                                  ^
+      925 |     await expect(page.getByText(/Memory/i).first()).toBeVisible({ timeout: 5000 });
+      926 |   });
+      927 |
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\backend-integration.spec.ts:924:50
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\backend-integration-Status-35c8a-ows-system-metrics-sections-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\backend-integration-Status-35c8a-ows-system-metrics-sections-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\backend-integration-Status-35c8a-ows-system-metrics-sections-chromium\error-context.md
+
+
+[1A[2K[85/271] [chromium] › e2e\backend-integration.spec.ts:928:3 › Status view - system metrics › status page shows Clear Peaks button
+[1A[2K[86/271] [chromium] › e2e\backend-integration.spec.ts:934:3 › Status view - system metrics › Clear Peaks button is clickable
+[1A[2K[87/271] [chromium] › e2e\corpora.spec.ts:17:3 › Corpora view structure › shows the Corpora heading
+[1A[2K[88/271] [chromium] › e2e\corpora.spec.ts:24:3 › Corpora view structure › shows the upload summary element
+[1A[2K[89/271] [chromium] › e2e\corpora.spec.ts:28:3 › Corpora view structure › expanding upload section reveals name field
+[1A[2K[90/271] [chromium] › e2e\corpora.spec.ts:33:3 › Corpora view structure › upload form has corpus type selector
+[1A[2K[91/271] [chromium] › e2e\corpora.spec.ts:38:3 › Corpora view structure › upload form has tokenisation selector
+[1A[2K[92/271] [chromium] › e2e\corpora.spec.ts:46:3 › Corpora view structure › upload form has content textarea
+[1A[2K[93/271] [chromium] › e2e\corpora.spec.ts:51:3 › Corpora view structure › upload form has Upload button
+[1A[2K[94/271] [chromium] › e2e\corpora.spec.ts:56:3 › Corpora view structure › tokenisation options include Character-level, Space-separated, Line-per-token
+[1A[2K[95/271] [chromium] › e2e\corpora.spec.ts:69:3 › Corpora view structure › corpus type options include linguistic, dna, ancient, code
+[1A[2K[96/271] [chromium] › e2e\corpora.spec.ts:85:3 › Corpora view with backend › shows empty state OR list of corpora
+[1A[2K[97/271] [chromium] › e2e\dashboard-actions.spec.ts:27:3 › Experiment registry › all experiment IDs are non-hash human-readable strings
+[1A[2K[98/271] [chromium] › e2e\dashboard-actions.spec.ts:44:3 › Dashboard insight API › POST /insight returns valid structure
+[1A[2K  9) [chromium] › e2e\dashboard-actions.spec.ts:44:3 › Dashboard insight API › POST /insight returns valid structure 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: apiRequestContext.post: Request context disposed.
+    Call log:
+    [2m  - → POST http://localhost:8001/api/v1/dashboard/insight?days=14&limit=30[22m
+    [2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.7727.15 Safari/537.36[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+
+
+      45 |     const up = await backendUp(request);
+      46 |     test.skip(!up, "Backend not running");
+    > 47 |     const resp = await request.post(`${BACKEND}/api/v1/dashboard/insight?days=14&limit=30`);
+         |                                ^
+      48 |     expect(resp.status()).toBe(200);
+      49 |     const body = await resp.json();
+      50 |     expect(body).toHaveProperty("highlights");
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\dashboard-actions.spec.ts:47:32
+
+    Error Context: test-results\dashboard-actions-Dashboar-68685-ght-returns-valid-structure-chromium\error-context.md
+
+
+[1A[2K[99/271] [chromium] › e2e\dashboard-actions.spec.ts:60:3 › Dashboard insight API › impact items have valid experiment IDs (no hex hashes)
+[1A[2K  10) [chromium] › e2e\dashboard-actions.spec.ts:60:3 › Dashboard insight API › impact items have valid experiment IDs (no hex hashes) 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: apiRequestContext.post: Request context disposed.
+    Call log:
+    [2m  - → POST http://localhost:8001/api/v1/dashboard/insight?days=14&limit=30[22m
+    [2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.7727.15 Safari/537.36[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+
+
+      67 |     const hexRe = /^[0-9a-f]{8,}$/i;
+      68 |
+    > 69 |     const resp = await request.post(`${BACKEND}/api/v1/dashboard/insight?days=14&limit=30`);
+         |                                ^
+      70 |     const body = await resp.json();
+      71 |     for (const im of body.impact) {
+      72 |       const eid = im.study_or_experiment_id ?? "";
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\dashboard-actions.spec.ts:69:32
+
+    Error Context: test-results\dashboard-actions-Dashboar-957e6-periment-IDs-no-hex-hashes--chromium\error-context.md
+
+
+[1A[2K[100/271] [chromium] › e2e\dashboard-actions.spec.ts:86:3 › Dashboard insight API › next_actions with run_experiment have valid experiment IDs
+[1A[2K  11) [chromium] › e2e\dashboard-actions.spec.ts:86:3 › Dashboard insight API › next_actions with run_experiment have valid experiment IDs 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: apiRequestContext.post: Request context disposed.
+    Call log:
+    [2m  - → POST http://localhost:8001/api/v1/dashboard/insight?days=14&limit=30[22m
+    [2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.7727.15 Safari/537.36[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+
+
+      91 |     const validIds = new Set(exps.map((e: { id: string }) => e.id));
+      92 |
+    > 93 |     const resp = await request.post(`${BACKEND}/api/v1/dashboard/insight?days=14&limit=30`);
+         |                                ^
+      94 |     const body = await resp.json();
+      95 |     for (const a of body.next_actions) {
+      96 |       if (a.action_type === "run_experiment") {
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\dashboard-actions.spec.ts:93:32
+
+    Error Context: test-results\dashboard-actions-Dashboar-657d8-t-have-valid-experiment-IDs-chromium\error-context.md
+
+
+[1A[2K[101/271] [chromium] › e2e\dashboard-actions.spec.ts:121:3 › Dashboard UI › dashboard loads with counters
+[1A[2K[102/271] [chromium] › e2e\dashboard-actions.spec.ts:131:3 › Dashboard UI › AI Insight section renders
+[1A[2K[103/271] [chromium] › e2e\dashboard-actions.spec.ts:136:3 › Dashboard UI › Regenerate button triggers LLM call
+[1A[2K[104/271] [chromium] › e2e\dashboard-actions.spec.ts:147:3 › Dashboard UI › impact section shows experiment names, not hex hashes
+[1A[2K[105/271] [chromium] › e2e\dashboard-actions.spec.ts:169:3 › Dashboard UI › next actions buttons are present and clickable
+[1A[2K[106/271] [chromium] › e2e\dashboard-actions.spec.ts:184:3 › Dashboard action: run_experiment › clicking Run does not show 'not registered' toast for valid experiments
+[1A[2K[107/271] [chromium] › e2e\dashboard-actions.spec.ts:203:3 › Dashboard action: plan_chain › clicking Plan chain does not error immediately
+[1A[2K[108/271] [chromium] › e2e\decipherment-actions.spec.ts:274:3 › DeciphermentPanel › ▶ Run SA button state machine › 1. initial state: shows '▶ Run SA' when no localStorage entry
+[1A[2K[109/271] [chromium] › e2e\decipherment-actions.spec.ts:286:3 › DeciphermentPanel › ▶ Run SA button state machine › 2. click makes button show '⏳ Running…' and disables it immediately
+[1A[2K[110/271] [chromium] › e2e\decipherment-actions.spec.ts:299:3 › DeciphermentPanel › ▶ Run SA button state machine › 3. double-click while busy does not start a second run
+[1A[2K[111/271] [chromium] › e2e\decipherment-actions.spec.ts:322:3 › DeciphermentPanel › ▶ Run SA button state machine › 4. Ctrl+R mid-run still shows '⏳ Running…' (pending survives reload via sessionStorage)
+[1A[2K[112/271] [chromium] › e2e\decipherment-actions.spec.ts:339:3 › DeciphermentPanel › ▶ Run SA button state machine › 5. clicking Run SA writes pending to sessionStorage, NOT localStorage
+[1A[2K[113/271] [chromium] › e2e\decipherment-actions.spec.ts:365:3 › DeciphermentPanel › ▶ Run SA button state machine › 6. ✕ dismiss button clears pending and shows '▶ Run SA' again
+[1A[2K  12) [chromium] › e2e\decipherment-actions.spec.ts:365:3 › DeciphermentPanel › ▶ Run SA button state machine › 6. ✕ dismiss button clears pending and shows '▶ Run SA' again 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: '▶ Run SA' })
+    Expected: visible
+    Timeout: 2000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 2000ms[22m
+    [2m  - waiting for getByRole('button', { name: '▶ Run SA' })[22m
+
+
+      376 |     // Click ✕ to dismiss
+      377 |     await page.getByRole("button", { name: "✕" }).first().click();
+    > 378 |     await expect(page.getByRole("button", { name: "▶ Run SA" })).toBeVisible({ timeout: 2000 });
+          |                                                                  ^
+      379 |     await expect(page.locator("text=⏳ Running…").first()).not.toBeVisible();
+      380 |   });
+      381 |
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:378:66
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-af164-ng-and-shows-▶-Run-SA-again-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-af164-ng-and-shows-▶-Run-SA-again-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-af164-ng-and-shows-▶-Run-SA-again-chromium\error-context.md
+
+
+[1A[2K[114/271] [chromium] › e2e\decipherment-actions.spec.ts:383:3 › DeciphermentPanel › ▶ Run SA button state machine › 7. 'success' persists on reload; stale 'pending' in localStorage is ignored
+[1A[2K  13) [chromium] › e2e\decipherment-actions.spec.ts:383:3 › DeciphermentPanel › ▶ Run SA button state machine › 7. 'success' persists on reload; stale 'pending' in localStorage is ignored 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=✓ Done').first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for locator('text=✓ Done').first()[22m
+
+
+      387 |     await loadDashboard(page);
+      388 |     await page.getByRole("button", { name: "▶ Run SA" }).click();
+    > 389 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
+          |                                                       ^
+      390 |     await page.reload();
+      391 |     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
+      392 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 3000 });
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:389:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-1810b--in-localStorage-is-ignored-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-1810b--in-localStorage-is-ignored-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-1810b--in-localStorage-is-ignored-chromium\error-context.md
+
+
+[1A[2K[115/271] [chromium] › e2e\decipherment-actions.spec.ts:407:3 › DeciphermentPanel › ▶ Run SA button state machine › 8. 'success' in localStorage shows '✓ Done' + ↻ on load
+[1A[2K  14) [chromium] › e2e\decipherment-actions.spec.ts:407:3 › DeciphermentPanel › ▶ Run SA button state machine › 8. 'success' in localStorage shows '✓ Done' + ↻ on load 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=Competing LM Test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for locator('text=Competing LM Test')[22m
+
+
+      410 |     await setLS(page, "success");
+      411 |     await page.reload();
+    > 412 |     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
+          |                                                          ^
+      413 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 3000 });
+      414 |     await expect(page.getByRole("button", { name: "▶ Run SA" })).not.toBeVisible();
+      415 |     // ↻ re-run button must be present
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:412:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-49adc-rage-shows-✓-Done-↻-on-load-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-49adc-rage-shows-✓-Done-↻-on-load-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-49adc-rage-shows-✓-Done-↻-on-load-chromium\error-context.md
+
+
+[1A[2K[116/271] [chromium] › e2e\decipherment-actions.spec.ts:421:3 › DeciphermentPanel › ▶ Run SA button state machine › 9. 'error' in localStorage shows '✗ Error' + ↻ on load
+[1A[2K[117/271] [chromium] › e2e\decipherment-actions.spec.ts:434:3 › DeciphermentPanel › ▶ Run SA button state machine › 10. successful run transitions to '✓ Done' and writes 'success' to localStorage
+[1A[2K  15) [chromium] › e2e\decipherment-actions.spec.ts:434:3 › DeciphermentPanel › ▶ Run SA button state machine › 10. successful run transitions to '✓ Done' and writes 'success' to localStorage 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=✓ Done').first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for locator('text=✓ Done').first()[22m
+
+
+      438 |     await btn.click();
+      439 |     // Wait for done chip to appear (SSE resolves quickly in mock)
+    > 440 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
+          |                                                       ^
+      441 |     await expect(page.getByRole("button", { name: "▶ Run SA" })).not.toBeVisible();
+      442 |     const state = await getLS(page);
+      443 |     expect(state).toBe("success");
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:440:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-8d856-tes-success-to-localStorage-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-8d856-tes-success-to-localStorage-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-8d856-tes-success-to-localStorage-chromium\error-context.md
+
+
+[1A[2K[118/271] [chromium] › e2e\decipherment-actions.spec.ts:447:3 › DeciphermentPanel › ▶ Run SA button state machine › 11. '✓ Done' survives page reload (localStorage persistence)
+[1A[2K  16) [chromium] › e2e\decipherment-actions.spec.ts:447:3 › DeciphermentPanel › ▶ Run SA button state machine › 11. '✓ Done' survives page reload (localStorage persistence) 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=✓ Done').first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for locator('text=✓ Done').first()[22m
+
+
+      451 |     // Click and wait for done
+      452 |     await page.getByRole("button", { name: "▶ Run SA" }).click();
+    > 453 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
+          |                                                       ^
+      454 |     // Reload
+      455 |     await page.reload();
+      456 |     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:453:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-a0605-d-localStorage-persistence--chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-a0605-d-localStorage-persistence--chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-a0605-d-localStorage-persistence--chromium\error-context.md
+
+
+[1A[2K[119/271] [chromium] › e2e\decipherment-actions.spec.ts:461:3 › DeciphermentPanel › ▶ Run SA button state machine › 12. clicking ↻ from '✓ Done' clears done and re-runs (shows '⏳ Running…')
+[1A[2K  17) [chromium] › e2e\decipherment-actions.spec.ts:461:3 › DeciphermentPanel › ▶ Run SA button state machine › 12. clicking ↻ from '✓ Done' clears done and re-runs (shows '⏳ Running…') 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=✓ Done').first()
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for locator('text=✓ Done').first()[22m
+
+
+      464 |     await setLS(page, "success");
+      465 |     await page.reload();
+    > 466 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 10_000 });
+          |                                                       ^
+      467 |     const rerun = page.getByRole("button", { name: "↻" }).first();
+      468 |     await rerun.click();
+      469 |     await expect(page.getByRole("button", { name: "⏳ Running…" }).first()).toBeVisible({ timeout: 2000 });
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:466:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-372a0-d-re-runs-shows-⏳-Running…--chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-372a0-d-re-runs-shows-⏳-Running…--chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-372a0-d-re-runs-shows-⏳-Running…--chromium\error-context.md
+
+
+[1A[2K[120/271] [chromium] › e2e\decipherment-actions.spec.ts:479:3 › DeciphermentPanel › ▶ Run SA button state machine › 13. clicking ↻ from '✗ Error' clears error and re-runs
+[1A[2K  18) [chromium] › e2e\decipherment-actions.spec.ts:479:3 › DeciphermentPanel › ▶ Run SA button state machine › 13. clicking ↻ from '✗ Error' clears error and re-runs 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=✓ Done').first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for locator('text=✓ Done').first()[22m
+
+
+      486 |     await rerun.click();
+      487 |     // Should go through busy then done
+    > 488 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
+          |                                                       ^
+      489 |     const state = await getLS(page);
+      490 |     expect(state).toBe("success");
+      491 |   });
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:488:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-9ad50-or-clears-error-and-re-runs-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-9ad50-or-clears-error-and-re-runs-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-9ad50-or-clears-error-and-re-runs-chromium\error-context.md
+
+
+[1A[2K[121/271] [chromium] › e2e\decipherment-actions.spec.ts:494:3 › DeciphermentPanel › ▶ Run SA button state machine › 14. clicking ↻ from '✗ Error' re-runs and transitions to '✓ Done'
+[1A[2K  19) [chromium] › e2e\decipherment-actions.spec.ts:494:3 › DeciphermentPanel › ▶ Run SA button state machine › 14. clicking ↻ from '✗ Error' re-runs and transitions to '✓ Done' 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=✓ Done').first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for locator('text=✓ Done').first()[22m
+
+
+      511 |     const rerun = page.getByRole("button", { name: "↻" }).first();
+      512 |     await rerun.click();
+    > 513 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
+          |                                                       ^
+      514 |     const state = await getLS(page);
+      515 |     expect(state).toBe("success");
+      516 |   });
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:513:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-ba0a2--and-transitions-to-✓-Done--chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-ba0a2--and-transitions-to-✓-Done--chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-ba0a2--and-transitions-to-✓-Done--chromium\error-context.md
+
+
+[1A[2K[122/271] [chromium] › e2e\decipherment-actions.spec.ts:519:3 › DeciphermentPanel › ▶ Run SA button state machine › 15. done state survives navigating away and back
+[1A[2K  20) [chromium] › e2e\decipherment-actions.spec.ts:519:3 › DeciphermentPanel › ▶ Run SA button state machine › 15. done state survives navigating away and back 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=Competing LM Test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for locator('text=Competing LM Test')[22m
+
+
+      523 |     // Navigate to a different view via the sidebar
+      524 |     await page.reload();
+    > 525 |     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
+          |                                                          ^
+      526 |     // Click a sidebar link (Discovery) and back to Dashboard.
+      527 |     // If the target view crashes (missing mocks in the test environment), skip
+      528 |     // gracefully — the equivalent localStorage persistence is already covered
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:525:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-ee600-es-navigating-away-and-back-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-ee600-es-navigating-away-and-back-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-ee600-es-navigating-away-and-back-chromium\error-context.md
+
+
+[1A[2K[123/271] [chromium] › e2e\decipherment-actions.spec.ts:557:3 › DeciphermentPanel › propose_experiment_chain keyword matching › 16. SA hypothesis with >=2-char words matches all 3 SA experiments (not just 1)
+[1A[2K  21) [chromium] › e2e\decipherment-actions.spec.ts:557:3 › DeciphermentPanel › propose_experiment_chain keyword matching › 16. SA hypothesis with >=2-char words matches all 3 SA experiments (not just 1) 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=✓ Done').first()
+    Expected: visible
+    Timeout: 20000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 20000ms[22m
+    [2m  - waiting for locator('text=✓ Done').first()[22m
+
+
+      576 |     await btn.click();
+      577 |     // Wait for run to complete
+    > 578 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 20_000 });
+          |                                                       ^
+      579 |
+      580 |     // With min word length >= 2, "sa" matches bigram_sa_consistency, sa_z_score_comparison,
+      581 |     // and anchored_sa_validation — all 3 SA experiments, not unrelated_morphology
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:578:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-f05ac--SA-experiments-not-just-1--chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-f05ac--SA-experiments-not-just-1--chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-f05ac--SA-experiments-not-just-1--chromium\error-context.md
+
+
+[1A[2K[124/271] [chromium] › e2e\decipherment-actions.spec.ts:590:3 › DeciphermentPanel › propose_experiment_chain keyword matching › 17. toast reports correct experiment count when chain runs
+[1A[2K[125/271] [chromium] › e2e\decipherment-actions.spec.ts:607:3 › DeciphermentPanel › other action buttons › 18. '💡 Hypothesize' has independent state from '▶ Run SA'
+[1A[2K  22) [chromium] › e2e\decipherment-actions.spec.ts:607:3 › DeciphermentPanel › other action buttons › 18. '💡 Hypothesize' has independent state from '▶ Run SA' 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=Competing LM Test')
+    Expected: visible
+    Timeout: 10000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 10000ms[22m
+    [2m  - waiting for locator('text=Competing LM Test')[22m
+
+
+      611 |     await setLS(page, "success");
+      612 |     await page.reload();
+    > 613 |     await expect(page.locator("text=Competing LM Test")).toBeVisible({ timeout: 10_000 });
+          |                                                          ^
+      614 |     // Run SA should show done
+      615 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 3000 });
+      616 |     // Hypothesize button should still be in initial state (not done)
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:613:58
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-b08c6-endent-state-from-▶-Run-SA--chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-b08c6-endent-state-from-▶-Run-SA--chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-b08c6-endent-state-from-▶-Run-SA--chromium\error-context.md
+
+
+[1A[2K[126/271] [chromium] › e2e\decipherment-actions.spec.ts:620:3 › DeciphermentPanel › other action buttons › 19. clicking '💡 Hypothesize' transitions to done independently
+[1A[2K[127/271] [chromium] › e2e\decipherment-actions.spec.ts:632:3 › DeciphermentPanel › other action buttons › 20. each action key stored independently in localStorage
+[1A[2K[128/271] [chromium] › e2e\decipherment-actions.spec.ts:665:3 › DeciphermentPanel › Run SA — error scenarios › 21. SSE run_error transitions button to '✗ Error' and stores 'error' in localStorage
+[1A[2K[129/271] [chromium] › e2e\decipherment-actions.spec.ts:678:3 › DeciphermentPanel › Run SA — error scenarios › 22. error state injected via localStorage shows '✗ Error' + persists on reload
+[1A[2K[130/271] [chromium] › e2e\decipherment-actions.spec.ts:692:3 › DeciphermentPanel › Run SA — error scenarios › 23. re-run from injected '✗ Error' clears error and succeeds
+[1A[2K  23) [chromium] › e2e\decipherment-actions.spec.ts:692:3 › DeciphermentPanel › Run SA — error scenarios › 23. re-run from injected '✗ Error' clears error and succeeds 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: locator('text=✓ Done').first()
+    Expected: visible
+    Timeout: 15000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 15000ms[22m
+    [2m  - waiting for locator('text=✓ Done').first()[22m
+
+
+      698 |     const rerun = page.getByRole("button", { name: "↻" }).first();
+      699 |     await rerun.click();
+    > 700 |     await expect(page.locator("text=✓ Done").first()).toBeVisible({ timeout: 15_000 });
+          |                                                       ^
+      701 |     const state = await getLS(page);
+      702 |     expect(state).toBe("success");
+      703 |   });
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:700:55
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-2bd67-r-clears-error-and-succeeds-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-2bd67-r-clears-error-and-succeeds-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-2bd67-r-clears-error-and-succeeds-chromium\error-context.md
+
+
+[1A[2K[131/271] [chromium] › e2e\decipherment-actions.spec.ts:716:3 › DeciphermentPanel › backend integration › 24. decipherment endpoint returns expected fields
+[1A[2K[132/271] [chromium] › e2e\decipherment-actions.spec.ts:726:3 › DeciphermentPanel › backend integration › 25. Run SA button visible when backend returns munda_sa
+[1A[2K[133/271] [chromium] › e2e\evidence-graph.spec.ts:36:3 › Evidence Graph navigation › Evidence Graph nav item is visible in sidebar Research section
+[1A[2K[134/271] [chromium] › e2e\evidence-graph.spec.ts:41:3 › Evidence Graph navigation › clicking Evidence Graph tab renders the view header
+[1A[2K[135/271] [chromium] › e2e\evidence-graph.spec.ts:46:3 › Evidence Graph navigation › view shows sub-title about Literature, Claims and Sweep
+[1A[2K[136/271] [chromium] › e2e\evidence-graph.spec.ts:57:3 › Evidence Graph tab bar › Library sub-tab button is visible
+[1A[2K[137/271] [chromium] › e2e\evidence-graph.spec.ts:62:3 › Evidence Graph tab bar › Claims sub-tab button is visible
+[1A[2K[138/271] [chromium] › e2e\evidence-graph.spec.ts:67:3 › Evidence Graph tab bar › Sweep sub-tab button is visible
+[1A[2K[139/271] [chromium] › e2e\evidence-graph.spec.ts:72:3 › Evidence Graph tab bar › Library is the default active tab on load
+[1A[2K[140/271] [chromium] › e2e\evidence-graph.spec.ts:78:3 › Evidence Graph tab bar › clicking Claims tab switches content
+[1A[2K[141/271] [chromium] › e2e\evidence-graph.spec.ts:85:3 › Evidence Graph tab bar › clicking Sweep tab switches content
+[1A[2K[142/271] [chromium] › e2e\evidence-graph.spec.ts:92:3 › Evidence Graph tab bar › clicking Library tab restores Library content
+[1A[2K[143/271] [chromium] › e2e\evidence-graph.spec.ts:103:3 › Evidence Graph — Library tab › stats row is visible (Registered Papers, Hypothesis Models)
+[1A[2K[144/271] [chromium] › e2e\evidence-graph.spec.ts:109:3 › Evidence Graph — Library tab › upload dropzone shows drop target text
+[1A[2K[145/271] [chromium] › e2e\evidence-graph.spec.ts:114:3 › Evidence Graph — Library tab › dropzone shows secondary instruction text
+[1A[2K[146/271] [chromium] › e2e\evidence-graph.spec.ts:119:3 › Evidence Graph — Library tab › URL import field is visible
+[1A[2K[147/271] [chromium] › e2e\evidence-graph.spec.ts:124:3 › Evidence Graph — Library tab › Import URL button is visible
+[1A[2K[148/271] [chromium] › e2e\evidence-graph.spec.ts:129:3 › Evidence Graph — Library tab › Re-run intake button is visible
+[1A[2K[149/271] [chromium] › e2e\evidence-graph.spec.ts:134:3 › Evidence Graph — Library tab › search papers input is visible
+[1A[2K[150/271] [chromium] › e2e\evidence-graph.spec.ts:139:3 › Evidence Graph — Library tab › typing in search field updates it
+[1A[2K[151/271] [chromium] › e2e\evidence-graph.spec.ts:147:3 › Evidence Graph — Library tab › Import URL button is disabled when URL field is empty
+[1A[2K[152/271] [chromium] › e2e\evidence-graph.spec.ts:155:3 › Evidence Graph — Library tab › library shows paper list when backend available
+[1A[2K[153/271] [chromium] › e2e\evidence-graph.spec.ts:168:3 › Evidence Graph — Claims tab › claims total counter is visible
+[1A[2K[154/271] [chromium] › e2e\evidence-graph.spec.ts:178:3 › Evidence Graph — Claims tab › search claim text input is visible
+[1A[2K[155/271] [chromium] › e2e\evidence-graph.spec.ts:184:3 › Evidence Graph — Claims tab › claim type select dropdown is visible
+[1A[2K[156/271] [chromium] › e2e\evidence-graph.spec.ts:190:3 › Evidence Graph — Claims tab › filter by sign input is visible
+[1A[2K[157/271] [chromium] › e2e\evidence-graph.spec.ts:196:3 › Evidence Graph — Claims tab › typing in claim search filters the list
+[1A[2K[158/271] [chromium] › e2e\evidence-graph.spec.ts:211:3 › Evidence Graph — Claims tab › claim cards expand on click when available
+[1A[2K[159/271] [chromium] › e2e\evidence-graph.spec.ts:229:3 › Evidence Graph — Sweep tab › Sweep Configuration heading is visible
+[1A[2K[160/271] [chromium] › e2e\evidence-graph.spec.ts:235:3 › Evidence Graph — Sweep tab › Save Config button is visible
+[1A[2K[161/271] [chromium] › e2e\evidence-graph.spec.ts:241:3 › Evidence Graph — Sweep tab › Run Sweep button is visible
+[1A[2K[162/271] [chromium] › e2e\evidence-graph.spec.ts:247:3 › Evidence Graph — Sweep tab › Sweep Name field is visible when config loads
+[1A[2K[163/271] [chromium] › e2e\evidence-graph.spec.ts:257:3 › Evidence Graph — Sweep tab › Primary Keywords label appears in config form
+[1A[2K[164/271] [chromium] › e2e\evidence-graph.spec.ts:267:3 › Evidence Graph — Sweep tab › Exclusions field is visible in config form
+[1A[2K[165/271] [chromium] › e2e\evidence-graph.spec.ts:276:3 › Evidence Graph — Sweep tab › Sweep Candidates section heading is visible
+[1A[2K[166/271] [chromium] › e2e\evidence-graph.spec.ts:283:3 › Evidence Graph — Sweep tab › Refresh candidates button is visible
+[1A[2K[167/271] [chromium] › e2e\evidence-graph.spec.ts:289:3 › Evidence Graph — Sweep tab › No candidates message shown when no sweep has run
+[1A[2K[168/271] [chromium] › e2e\evidence-graph.spec.ts:303:3 › Evidence Graph — backend integration › Library tab shows registered paper count from backend
+[1A[2K[169/271] [chromium] › e2e\evidence-graph.spec.ts:312:3 › Evidence Graph — backend integration › Hypothesis Models stat shows count from backend
+[1A[2K[170/271] [chromium] › e2e\evidence-graph.spec.ts:318:3 › Evidence Graph — backend integration › Claims tab shows total count after API load
+[1A[2K[171/271] [chromium] › e2e\evidence-graph.spec.ts:325:3 › Evidence Graph — backend integration › Sweep tab loads and displays config name from sweep.yaml
+[1A[2K[172/271] [chromium] › e2e\experiment-builder.spec.ts:32:3 › Experiment Builder navigation › Experiments tab is visible in sidebar
+[1A[2K[173/271] [chromium] › e2e\experiment-builder.spec.ts:41:3 › Experiment Builder navigation › clicking Experiments tab renders the Experiment Builder canvas
+[1A[2K[174/271] [chromium] › e2e\experiment-builder.spec.ts:47:3 › Experiment Builder navigation › old Exp. Builder tab no longer exists
+[1A[2K[175/271] [chromium] › e2e\experiment-builder.spec.ts:59:3 › Experiment Builder toolbar › New button is visible
+[1A[2K[176/271] [chromium] › e2e\experiment-builder.spec.ts:64:3 › Experiment Builder toolbar › Auto-arrange button is visible
+[1A[2K[177/271] [chromium] › e2e\experiment-builder.spec.ts:69:3 › Experiment Builder toolbar › Run button is visible
+[1A[2K[178/271] [chromium] › e2e\experiment-builder.spec.ts:77:3 › Experiment Builder toolbar › Save button is visible
+[1A[2K[179/271] [chromium] › e2e\experiment-builder.spec.ts:82:3 › Experiment Builder toolbar › Import and Export buttons are visible
+[1A[2K[180/271] [chromium] › e2e\experiment-builder.spec.ts:92:3 › New experiment dialog › clicking New opens dialog
+[1A[2K[181/271] [chromium] › e2e\experiment-builder.spec.ts:98:3 › New experiment dialog › dialog has Name input and Create button
+[1A[2K[182/271] [chromium] › e2e\experiment-builder.spec.ts:105:3 › New experiment dialog › Cancel closes dialog
+[1A[2K[183/271] [chromium] › e2e\experiment-builder.spec.ts:112:3 › New experiment dialog › creating experiment removes the dialog
+[1A[2K[184/271] [chromium] › e2e\experiment-builder.spec.ts:126:3 › Node palette › palette shows Node Palette heading
+[1A[2K[185/271] [chromium] › e2e\experiment-builder.spec.ts:131:3 › Node palette › palette shows Sources category with Corpus Reader (requires backend)
+[1A[2K[186/271] [chromium] › e2e\experiment-builder.spec.ts:148:3 › Node palette › palette search filters nodes (requires backend)
+[1A[2K[187/271] [chromium] › e2e\experiment-builder.spec.ts:157:3 › Node palette › clearing palette search shows all nodes (requires backend)
+[1A[2K[188/271] [chromium] › e2e\experiment-builder.spec.ts:177:3 › Node rendering (ComfyUI layout) › exp-node header contains only title text and × button (no port labels)
+[1A[2K[189/271] [chromium] › e2e\experiment-builder.spec.ts:206:3 › Node rendering (ComfyUI layout) › exp-node-ports section exists and is outside the header
+[1A[2K[190/271] [chromium] › e2e\experiment-builder.spec.ts:226:3 › Node rendering (ComfyUI layout) › port squares in port section have correct test ids
+[1A[2K[191/271] [chromium] › e2e\experiment-builder.spec.ts:252:3 › Auto-arrange › Arrange button is disabled when no experiment is open
+[1A[2K[192/271] [chromium] › e2e\experiment-builder.spec.ts:258:3 › Auto-arrange › Arrange button is enabled when experiment with nodes is open
+[1A[2K[193/271] [chromium] › e2e\experiment-builder.spec.ts:289:3 › Saved Graph Experiments list › Saved Graph Experiments heading is visible
+[1A[2K[194/271] [chromium] › e2e\experiment-builder.spec.ts:298:3 › Saved Graph Experiments list › loading an experiment updates the toolbar name
+[1A[2K[195/271] [chromium] › e2e\experiment-builder.spec.ts:326:3 › Inspector panel › inspector appears on node click (if nodes exist)
+[1A[2K[196/271] [chromium] › e2e\jobs.spec.ts:33:3 › Jobs view structure › shows the Jobs heading
+[1A[2K[197/271] [chromium] › e2e\jobs.spec.ts:37:3 › Jobs view structure › shows the submit summary element
+[1A[2K[198/271] [chromium] › e2e\jobs.spec.ts:41:3 › Jobs view structure › expanding submit section shows job name field
+[1A[2K[199/271] [chromium] › e2e\jobs.spec.ts:48:3 › Jobs view structure › submit form has pipeline selector
+[1A[2K[200/271] [chromium] › e2e\jobs.spec.ts:53:3 › Jobs view structure › pipeline selector has at least one option
+[1A[2K[201/271] [chromium] › e2e\jobs.spec.ts:64:3 › Jobs view structure › submit form has parameters JSON textarea
+[1A[2K[202/271] [chromium] › e2e\jobs.spec.ts:74:3 › Jobs view structure › submit form has Submit button
+[1A[2K[203/271] [chromium] › e2e\jobs.spec.ts:79:3 › Jobs view structure › selecting a different pipeline updates the params field (requires backend)
+[1A[2K[204/271] [chromium] › e2e\jobs.spec.ts:109:3 › Jobs view with backend › pipeline selector contains all registered pipelines
+[1A[2K[205/271] [chromium] › e2e\jobs.spec.ts:126:3 › Jobs view with backend › shows empty state message when no jobs exist
+[1A[2K[206/271] [chromium] › e2e\jobs.spec.ts:140:3 › Jobs view with backend › submitting a job with invalid JSON shows an error
+[1A[2K[207/271] [chromium] › e2e\jobs.spec.ts:154:3 › Jobs view with backend › submitting a job with empty name shows an error
+[1A[2K[208/271] [chromium] › e2e\navigation.spec.ts:9:3 › App shell › loads and shows Glossa Lab title
+[1A[2K[209/271] [chromium] › e2e\navigation.spec.ts:15:3 › App shell › shows collaboration subtitle
+[1A[2K[210/271] [chromium] › e2e\navigation.spec.ts:20:3 › App shell › shows health badge in header
+[1A[2K[211/271] [chromium] › e2e\navigation.spec.ts:26:3 › App shell › shows Cmd+K button in header
+[1A[2K[212/271] [chromium] › e2e\navigation.spec.ts:31:3 › App shell › shows dark mode toggle in header
+[1A[2K[213/271] [chromium] › e2e\navigation.spec.ts:41:3 › Grouped tab navigation › Workflow section tabs are visible
+[1A[2K[214/271] [chromium] › e2e\navigation.spec.ts:51:3 › Grouped tab navigation › default tab renders Dashboard
+[1A[2K[215/271] [chromium] › e2e\navigation.spec.ts:58:3 › Grouped tab navigation › clicking Projects tab renders Projects management view
+[1A[2K[216/271] [chromium] › e2e\navigation.spec.ts:66:3 › Grouped tab navigation › clicking Status tab shows System Status
+[1A[2K[217/271] [chromium] › e2e\navigation.spec.ts:72:3 › Grouped tab navigation › clicking Experiments tab renders Experiment Builder canvas
+[1A[2K[218/271] [chromium] › e2e\navigation.spec.ts:79:3 › Grouped tab navigation › clicking Corpora tab shows Corpora view
+[1A[2K[219/271] [chromium] › e2e\navigation.spec.ts:85:3 › Grouped tab navigation › AI Tools tab is visible in Research section
+[1A[2K[220/271] [chromium] › e2e\navigation.spec.ts:90:3 › Grouped tab navigation › Evidence Graph tab is visible in Research section
+[1A[2K[221/271] [chromium] › e2e\navigation.spec.ts:95:3 › Grouped tab navigation › clicking Evidence Graph tab renders the evidence workspace
+[1A[2K[222/271] [chromium] › e2e\navigation.spec.ts:102:3 › Grouped tab navigation › Research group tabs are visible
+[1A[2K[223/271] [chromium] › e2e\navigation.spec.ts:109:3 › Grouped tab navigation › Analysis group tabs are visible
+[1A[2K[224/271] [chromium] › e2e\navigation.spec.ts:118:3 › Grouped tab navigation › System items visible at sidebar bottom
+[1A[2K[225/271] [chromium] › e2e\navigation.spec.ts:126:3 › Grouped tab navigation › Exp. Builder tab is no longer in sidebar (merged into Experiments)
+[1A[2K[226/271] [chromium] › e2e\navigation.spec.ts:135:3 › Studies workspace features › Projects view shows + New Project button
+[1A[2K[227/271] [chromium] › e2e\navigation.spec.ts:143:3 › Studies workspace features › floating Run Study button appears on canvas when study is open (requires backend)
+[1A[2K[228/271] [chromium] › e2e\navigation.spec.ts:157:3 › Studies workspace features › nav Studies indicator starts clean (no stale orange dot on page load)
+[1A[2K[229/271] [chromium] › e2e\navigation.spec.ts:171:3 › Experiments workspace features › Run All button is visible in Experiments list header
+[1A[2K[230/271] [chromium] › e2e\navigation.spec.ts:178:3 › Experiments workspace features › Stop All button not visible when nothing is running
+[1A[2K[231/271] [chromium] › e2e\navigation.spec.ts:187:3 › Experiments workspace features › floating Run button in canvas only appears when experiment is open
+[1A[2K[232/271] [chromium] › e2e\navigation.spec.ts:198:3 › Jobs panel › Jobs tab is visible in sidebar
+[1A[2K[233/271] [chromium] › e2e\navigation.spec.ts:204:3 › Jobs panel › clicking Jobs tab shows jobs panel
+[1A[2K[234/271] [chromium] › e2e\navigation.spec.ts:212:3 › Dark mode › toggling dark mode changes body background
+[1A[2K[235/271] [chromium] › e2e\navigation.spec.ts:220:3 › Dark mode › dark mode preference persists via localStorage
+[1A[2K[236/271] [chromium] › e2e\projects-goals.spec.ts:29:3 › Projects API — goals roundtrip › create project with prompt_context
+[1A[2K[237/271] [chromium] › e2e\projects-goals.spec.ts:49:3 › Projects API — goals roundtrip › get project returns goals
+[1A[2K[238/271] [chromium] › e2e\projects-goals.spec.ts:59:3 › Projects API — goals roundtrip › update prompt_context (goals) persists
+[1A[2K[239/271] [chromium] › e2e\projects-goals.spec.ts:75:3 › Projects API — goals roundtrip › activate + active endpoint returns goals
+[1A[2K[240/271] [chromium] › e2e\projects-goals.spec.ts:87:3 › Projects API — goals roundtrip › cleanup: delete test project
+[1A[2K[241/271] [chromium] › e2e\projects-goals.spec.ts:97:3 › Dashboard highlights — n_hypotheses › highlights payload includes n_hypotheses
+[1A[2K[242/271] [chromium] › e2e\projects-goals.spec.ts:110:3 › Dashboard insight — experiment_id in open_view actions › downgraded actions carry experiment_id in params
+[1A[2K  24) [chromium] › e2e\projects-goals.spec.ts:110:3 › Dashboard insight — experiment_id in open_view actions › downgraded actions carry experiment_id in params 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: apiRequestContext.post: Request context disposed.
+    Call log:
+    [2m  - → POST http://localhost:8001/api/v1/dashboard/insight?days=14&limit=30[22m
+    [2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.7727.15 Safari/537.36[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+
+
+      112 |     test.skip(!up, "Backend not running");
+      113 |
+    > 114 |     const resp = await request.post(`${BACKEND}/api/v1/dashboard/insight?days=14&limit=30`);
+          |                                ^
+      115 |     if (resp.status() !== 200) return;
+      116 |     const body = await resp.json();
+      117 |
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\projects-goals.spec.ts:114:32
+
+    Error Context: test-results\projects-goals-Dashboard-i-1de9c-rry-experiment-id-in-params-chromium\error-context.md
+
+
+[1A[2K[243/271] [chromium] › e2e\reports.spec.ts:20:3 › Reports & Data tab bar › Reports heading is visible
+[1A[2K[244/271] [chromium] › e2e\reports.spec.ts:25:3 › Reports & Data tab bar › Reports tab button is visible
+[1A[2K[245/271] [chromium] › e2e\reports.spec.ts:30:3 › Reports & Data tab bar › Data tab button is visible
+[1A[2K[246/271] [chromium] › e2e\reports.spec.ts:35:3 › Reports & Data tab bar › clicking Data tab changes view description
+[1A[2K[247/271] [chromium] › e2e\reports.spec.ts:50:3 › Reports & Data tab bar › clicking Reports tab shows PDF description
+[1A[2K[248/271] [chromium] › e2e\reports.spec.ts:63:3 › Reports toolbar › Generate Report button is visible
+[1A[2K[249/271] [chromium] › e2e\reports.spec.ts:68:3 › Reports toolbar › Compose button is visible
+[1A[2K[250/271] [chromium] › e2e\reports.spec.ts:73:3 › Reports toolbar › Refresh button is visible
+[1A[2K[251/271] [chromium] › e2e\reports.spec.ts:84:3 › Reports view with backend › shows empty state or table when no reports exist
+[1A[2K[252/271] [chromium] › e2e\research-loop.spec.ts:29:3 › Research Loop Panel — visibility › panel header is visible on dashboard
+[1A[2K[253/271] [chromium] › e2e\research-loop.spec.ts:36:3 › Research Loop Panel — visibility › panel shows protocol description
+[1A[2K[254/271] [chromium] › e2e\research-loop.spec.ts:43:3 › Research Loop Panel — visibility › panel shows Ready badge when not running
+[1A[2K[255/271] [chromium] › e2e\research-loop.spec.ts:54:3 › Research Loop Panel — controls › cycle selector is visible
+[1A[2K[256/271] [chromium] › e2e\research-loop.spec.ts:60:3 › Research Loop Panel — controls › cycle selector has expected options
+[1A[2K[257/271] [chromium] › e2e\research-loop.spec.ts:68:3 › Research Loop Panel — controls › cycle selector default is 15
+[1A[2K[258/271] [chromium] › e2e\research-loop.spec.ts:74:3 › Research Loop Panel — controls › changing cycle selector updates value
+[1A[2K[259/271] [chromium] › e2e\research-loop.spec.ts:81:3 › Research Loop Panel — controls › Start Loop button is visible when not running
+[1A[2K[260/271] [chromium] › e2e\research-loop.spec.ts:88:3 › Research Loop Panel — controls › Stop button is NOT visible when not running
+[1A[2K[261/271] [chromium] › e2e\research-loop.spec.ts:99:3 › Research Loop Panel — status display › panel shows last run summary or empty state
+[1A[2K[262/271] [chromium] › e2e\research-loop.spec.ts:109:3 › Research Loop Panel — status display › panel does not show error on initial load
+[1A[2K[263/271] [chromium] › e2e\research-loop.spec.ts:122:3 › Dashboard — Atomic Nodes counter › atomic nodes tile is visible on dashboard
+[1A[2K[264/271] [chromium] › e2e\research-loop.spec.ts:129:3 › Dashboard — Atomic Nodes counter › atomic nodes count is a positive number
+[1A[2K[265/271] [chromium] › e2e\status.spec.ts:19:3 › Status view structure › shows System Status heading
+[1A[2K[266/271] [chromium] › e2e\status.spec.ts:23:3 › Status view structure › shows loading or a status row within 5 seconds
+[1A[2K[267/271] [chromium] › e2e\status.spec.ts:31:3 › Status view structure › shows Offline/Disconnected when backend is unreachable
+[1A[2K[268/271] [chromium] › e2e\status.spec.ts:54:3 › Status view with backend › shows healthy status when backend is running
+[1A[2K[269/271] [chromium] › e2e\status.spec.ts:60:3 › Status view with backend › shows backend version string
+[1A[2K[270/271] [chromium] › e2e\status.spec.ts:70:3 › Status view with backend › shows uptime in seconds
+[1A[2K[271/271] [chromium] › e2e\status.spec.ts:78:3 › Status view with backend › shows registered pipeline count
+[1A[2K  24 failed
+    [chromium] › e2e\backend-integration.spec.ts:66:3 › Backend health › system metrics endpoint works 
+    [chromium] › e2e\backend-integration.spec.ts:78:3 › Backend health › system GPU endpoint works ─
+    [chromium] › e2e\backend-integration.spec.ts:313:3 › System metrics peaks › metrics snapshot includes peaks object 
+    [chromium] › e2e\backend-integration.spec.ts:429:3 › AI Chat UI › Glossa AI panel shows starter prompt buttons 
+    [chromium] › e2e\backend-integration.spec.ts:464:3 › Sign Dictionary UI › signs tab shows dictionary grid 
+    [chromium] › e2e\backend-integration.spec.ts:796:3 › Research Loop API › GET /results returns valid structure with protocol field 
+    [chromium] › e2e\backend-integration.spec.ts:820:3 › Research Loop API › POST /start returns SSE stream (1-cycle, no network) 
+    [chromium] › e2e\backend-integration.spec.ts:919:3 › Status view - system metrics › status page shows system metrics sections 
+    [chromium] › e2e\dashboard-actions.spec.ts:44:3 › Dashboard insight API › POST /insight returns valid structure 
+    [chromium] › e2e\dashboard-actions.spec.ts:60:3 › Dashboard insight API › impact items have valid experiment IDs (no hex hashes) 
+    [chromium] › e2e\dashboard-actions.spec.ts:86:3 › Dashboard insight API › next_actions with run_experiment have valid experiment IDs 
+    [chromium] › e2e\decipherment-actions.spec.ts:365:3 › DeciphermentPanel › ▶ Run SA button state machine › 6. ✕ dismiss button clears pending and shows '▶ Run SA' again 
+    [chromium] › e2e\decipherment-actions.spec.ts:383:3 › DeciphermentPanel › ▶ Run SA button state machine › 7. 'success' persists on reload; stale 'pending' in localStorage is ignored 
+    [chromium] › e2e\decipherment-actions.spec.ts:407:3 › DeciphermentPanel › ▶ Run SA button state machine › 8. 'success' in localStorage shows '✓ Done' + ↻ on load 
+    [chromium] › e2e\decipherment-actions.spec.ts:434:3 › DeciphermentPanel › ▶ Run SA button state machine › 10. successful run transitions to '✓ Done' and writes 'success' to localStorage 
+    [chromium] › e2e\decipherment-actions.spec.ts:447:3 › DeciphermentPanel › ▶ Run SA button state machine › 11. '✓ Done' survives page reload (localStorage persistence) 
+    [chromium] › e2e\decipherment-actions.spec.ts:461:3 › DeciphermentPanel › ▶ Run SA button state machine › 12. clicking ↻ from '✓ Done' clears done and re-runs (shows '⏳ Running…') 
+    [chromium] › e2e\decipherment-actions.spec.ts:479:3 › DeciphermentPanel › ▶ Run SA button state machine › 13. clicking ↻ from '✗ Error' clears error and re-runs 
+    [chromium] › e2e\decipherment-actions.spec.ts:494:3 › DeciphermentPanel › ▶ Run SA button state machine › 14. clicking ↻ from '✗ Error' re-runs and transitions to '✓ Done' 
+    [chromium] › e2e\decipherment-actions.spec.ts:519:3 › DeciphermentPanel › ▶ Run SA button state machine › 15. done state survives navigating away and back 
+    [chromium] › e2e\decipherment-actions.spec.ts:557:3 › DeciphermentPanel › propose_experiment_chain keyword matching › 16. SA hypothesis with >=2-char words matches all 3 SA experiments (not just 1) 
+    [chromium] › e2e\decipherment-actions.spec.ts:607:3 › DeciphermentPanel › other action buttons › 18. '💡 Hypothesize' has independent state from '▶ Run SA' 
+    [chromium] › e2e\decipherment-actions.spec.ts:692:3 › DeciphermentPanel › Run SA — error scenarios › 23. re-run from injected '✗ Error' clears error and succeeds 
+    [chromium] › e2e\projects-goals.spec.ts:110:3 › Dashboard insight — experiment_id in open_view actions › downgraded actions carry experiment_id in params 
+  16 skipped
+  231 passed (10.7m)

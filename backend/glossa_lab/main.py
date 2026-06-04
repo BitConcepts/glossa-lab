@@ -33,6 +33,7 @@ from glossa_lab.api.env import router as env_router
 from glossa_lab.api.events import router as events_router
 from glossa_lab.api.foundation import router as foundation_automation_router
 from glossa_lab.api.experiment_graphs import router as experiment_graphs_router
+from glossa_lab.api.phase import router as phase_router
 from glossa_lab.api.experiments import router as experiments_router
 from glossa_lab.api.foundation_check import router as foundation_check_router
 from glossa_lab.api.health import router as health_router
@@ -389,6 +390,7 @@ def create_app() -> FastAPI:
     application.include_router(events_router)  # already prefixed at /api/v1/events
     application.include_router(foundation_automation_router)  # already prefixed at /api/v1/foundation
     application.include_router(signs_router)  # already prefixed at /api/v1/signs
+    application.include_router(phase_router)  # already prefixed at /api/v1/phase
 
     try:
         from glossa_lab.api.dismissals import router as dismissals_router  # noqa: PLC0415

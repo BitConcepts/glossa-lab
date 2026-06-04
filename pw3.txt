@@ -1,0 +1,104 @@
+
+Running 62 tests using 1 worker
+
+  ok  1 [chromium] › e2e\decipherment-actions.spec.ts:274:3 › DeciphermentPanel › ▶ Run SA button state machine › 1. initial state: shows '▶ Run SA' when no localStorage entry (554ms)
+  ok  2 [chromium] › e2e\decipherment-actions.spec.ts:286:3 › DeciphermentPanel › ▶ Run SA button state machine › 2. click makes button show '⏳ Running…' and disables it immediately (591ms)
+  ok  3 [chromium] › e2e\decipherment-actions.spec.ts:299:3 › DeciphermentPanel › ▶ Run SA button state machine › 3. double-click while busy does not start a second run (1.1s)
+  ok  4 [chromium] › e2e\decipherment-actions.spec.ts:322:3 › DeciphermentPanel › ▶ Run SA button state machine › 4. Ctrl+R mid-run still shows '⏳ Running…' (pending survives reload via sessionStorage) (620ms)
+  ok  5 [chromium] › e2e\decipherment-actions.spec.ts:339:3 › DeciphermentPanel › ▶ Run SA button state machine › 5. clicking Run SA writes pending to sessionStorage, NOT localStorage (946ms)
+  x   6 [chromium] › e2e\decipherment-actions.spec.ts:365:3 › DeciphermentPanel › ▶ Run SA button state machine › 6. ✕ dismiss button clears pending and shows '▶ Run SA' again (2.7s)
+  ok  7 [chromium] › e2e\decipherment-actions.spec.ts:383:3 › DeciphermentPanel › ▶ Run SA button state machine › 7. 'success' persists on reload; stale 'pending' in localStorage is ignored (796ms)
+  ok  8 [chromium] › e2e\decipherment-actions.spec.ts:407:3 › DeciphermentPanel › ▶ Run SA button state machine › 8. 'success' in localStorage shows '✓ Done' + ↻ on load (466ms)
+  ok  9 [chromium] › e2e\decipherment-actions.spec.ts:421:3 › DeciphermentPanel › ▶ Run SA button state machine › 9. 'error' in localStorage shows '✗ Error' + ↻ on load (487ms)
+  ok 10 [chromium] › e2e\decipherment-actions.spec.ts:434:3 › DeciphermentPanel › ▶ Run SA button state machine › 10. successful run transitions to '✓ Done' and writes 'success' to localStorage (561ms)
+  ok 11 [chromium] › e2e\decipherment-actions.spec.ts:447:3 › DeciphermentPanel › ▶ Run SA button state machine › 11. '✓ Done' survives page reload (localStorage persistence) (624ms)
+  ok 12 [chromium] › e2e\decipherment-actions.spec.ts:461:3 › DeciphermentPanel › ▶ Run SA button state machine › 12. clicking ↻ from '✓ Done' clears done and re-runs (shows '⏳ Running…') (573ms)
+  ok 13 [chromium] › e2e\decipherment-actions.spec.ts:479:3 › DeciphermentPanel › ▶ Run SA button state machine › 13. clicking ↻ from '✗ Error' clears error and re-runs (611ms)
+  ok 14 [chromium] › e2e\decipherment-actions.spec.ts:494:3 › DeciphermentPanel › ▶ Run SA button state machine › 14. clicking ↻ from '✗ Error' re-runs and transitions to '✓ Done' (731ms)
+  -  15 [chromium] › e2e\decipherment-actions.spec.ts:519:3 › DeciphermentPanel › ▶ Run SA button state machine › 15. done state survives navigating away and back
+  ok 16 [chromium] › e2e\decipherment-actions.spec.ts:557:3 › DeciphermentPanel › propose_experiment_chain keyword matching › 16. SA hypothesis with >=2-char words matches all 3 SA experiments (not just 1) (575ms)
+  ok 17 [chromium] › e2e\decipherment-actions.spec.ts:590:3 › DeciphermentPanel › propose_experiment_chain keyword matching › 17. toast reports correct experiment count when chain runs (573ms)
+  ok 18 [chromium] › e2e\decipherment-actions.spec.ts:607:3 › DeciphermentPanel › other action buttons › 18. '💡 Hypothesize' has independent state from '▶ Run SA' (497ms)
+  ok 19 [chromium] › e2e\decipherment-actions.spec.ts:620:3 › DeciphermentPanel › other action buttons › 19. clicking '💡 Hypothesize' transitions to done independently (550ms)
+  ok 20 [chromium] › e2e\decipherment-actions.spec.ts:632:3 › DeciphermentPanel › other action buttons › 20. each action key stored independently in localStorage (569ms)
+  ok 21 [chromium] › e2e\decipherment-actions.spec.ts:665:3 › DeciphermentPanel › Run SA — error scenarios › 21. SSE run_error transitions button to '✗ Error' and stores 'error' in localStorage (598ms)
+  ok 22 [chromium] › e2e\decipherment-actions.spec.ts:678:3 › DeciphermentPanel › Run SA — error scenarios › 22. error state injected via localStorage shows '✗ Error' + persists on reload (533ms)
+  ok 23 [chromium] › e2e\decipherment-actions.spec.ts:692:3 › DeciphermentPanel › Run SA — error scenarios › 23. re-run from injected '✗ Error' clears error and succeeds (632ms)
+  ok 24 [chromium] › e2e\decipherment-actions.spec.ts:716:3 › DeciphermentPanel › backend integration › 24. decipherment endpoint returns expected fields (334ms)
+  ok 25 [chromium] › e2e\decipherment-actions.spec.ts:726:3 › DeciphermentPanel › backend integration › 25. Run SA button visible when backend returns munda_sa (364ms)
+  ok 26 [chromium] › e2e\experiment-builder.spec.ts:32:3 › Experiment Builder navigation › Experiments tab is visible in sidebar (364ms)
+  ok 27 [chromium] › e2e\experiment-builder.spec.ts:41:3 › Experiment Builder navigation › clicking Experiments tab renders the Experiment Builder canvas (493ms)
+  ok 28 [chromium] › e2e\experiment-builder.spec.ts:47:3 › Experiment Builder navigation › old Exp. Builder tab no longer exists (375ms)
+  ok 29 [chromium] › e2e\experiment-builder.spec.ts:59:3 › Experiment Builder toolbar › New button is visible (433ms)
+  ok 30 [chromium] › e2e\experiment-builder.spec.ts:64:3 › Experiment Builder toolbar › Auto-arrange button is visible (441ms)
+  ok 31 [chromium] › e2e\experiment-builder.spec.ts:69:3 › Experiment Builder toolbar › Run button is visible (443ms)
+  ok 32 [chromium] › e2e\experiment-builder.spec.ts:77:3 › Experiment Builder toolbar › Save button is visible (446ms)
+  ok 33 [chromium] › e2e\experiment-builder.spec.ts:82:3 › Experiment Builder toolbar › Import and Export buttons are visible (469ms)
+  ok 34 [chromium] › e2e\experiment-builder.spec.ts:92:3 › New experiment dialog › clicking New opens dialog (443ms)
+  ok 35 [chromium] › e2e\experiment-builder.spec.ts:98:3 › New experiment dialog › dialog has Name input and Create button (510ms)
+  ok 36 [chromium] › e2e\experiment-builder.spec.ts:105:3 › New experiment dialog › Cancel closes dialog (500ms)
+  ok 37 [chromium] › e2e\experiment-builder.spec.ts:112:3 › New experiment dialog › creating experiment removes the dialog (515ms)
+  ok 38 [chromium] › e2e\experiment-builder.spec.ts:126:3 › Node palette › palette shows Node Palette heading (435ms)
+  -  39 [chromium] › e2e\experiment-builder.spec.ts:131:3 › Node palette › palette shows Sources category with Corpus Reader (requires backend)
+  -  40 [chromium] › e2e\experiment-builder.spec.ts:148:3 › Node palette › palette search filters nodes (requires backend)
+  -  41 [chromium] › e2e\experiment-builder.spec.ts:157:3 › Node palette › clearing palette search shows all nodes (requires backend)
+  ok 42 [chromium] › e2e\experiment-builder.spec.ts:177:3 › Node rendering (ComfyUI layout) › exp-node header contains only title text and × button (no port labels) (1.1s)
+  ok 43 [chromium] › e2e\experiment-builder.spec.ts:206:3 › Node rendering (ComfyUI layout) › exp-node-ports section exists and is outside the header (1.1s)
+  ok 44 [chromium] › e2e\experiment-builder.spec.ts:226:3 › Node rendering (ComfyUI layout) › port squares in port section have correct test ids (1.1s)
+  ok 45 [chromium] › e2e\experiment-builder.spec.ts:252:3 › Auto-arrange › Arrange button is disabled when no experiment is open (433ms)
+  ok 46 [chromium] › e2e\experiment-builder.spec.ts:258:3 › Auto-arrange › Arrange button is enabled when experiment with nodes is open (1.1s)
+  ok 47 [chromium] › e2e\experiment-builder.spec.ts:289:3 › Saved Graph Experiments list › Saved Graph Experiments heading is visible (1.4s)
+  ok 48 [chromium] › e2e\experiment-builder.spec.ts:298:3 › Saved Graph Experiments list › loading an experiment updates the toolbar name (1.1s)
+  -  49 [chromium] › e2e\experiment-builder.spec.ts:326:3 › Inspector panel › inspector appears on node click (if nodes exist)
+  ok 50 [chromium] › e2e\research-loop.spec.ts:29:3 › Research Loop Panel — visibility › panel header is visible on dashboard (736ms)
+  ok 51 [chromium] › e2e\research-loop.spec.ts:36:3 › Research Loop Panel — visibility › panel shows protocol description (718ms)
+  ok 52 [chromium] › e2e\research-loop.spec.ts:43:3 › Research Loop Panel — visibility › panel shows Ready badge when not running (738ms)
+  ok 53 [chromium] › e2e\research-loop.spec.ts:54:3 › Research Loop Panel — controls › cycle selector is visible (731ms)
+  ok 54 [chromium] › e2e\research-loop.spec.ts:60:3 › Research Loop Panel — controls › cycle selector has expected options (739ms)
+  ok 55 [chromium] › e2e\research-loop.spec.ts:68:3 › Research Loop Panel — controls › cycle selector default is 15 (738ms)
+  ok 56 [chromium] › e2e\research-loop.spec.ts:74:3 › Research Loop Panel — controls › changing cycle selector updates value (723ms)
+  ok 57 [chromium] › e2e\research-loop.spec.ts:81:3 › Research Loop Panel — controls › Start Loop button is visible when not running (731ms)
+  ok 58 [chromium] › e2e\research-loop.spec.ts:88:3 › Research Loop Panel — controls › Stop button is NOT visible when not running (730ms)
+  ok 59 [chromium] › e2e\research-loop.spec.ts:99:3 › Research Loop Panel — status display › panel shows last run summary or empty state (733ms)
+  ok 60 [chromium] › e2e\research-loop.spec.ts:109:3 › Research Loop Panel — status display › panel does not show error on initial load (1.7s)
+  ok 61 [chromium] › e2e\research-loop.spec.ts:122:3 › Dashboard — Atomic Nodes counter › atomic nodes tile is visible on dashboard (1.1s)
+  ok 62 [chromium] › e2e\research-loop.spec.ts:129:3 › Dashboard — Atomic Nodes counter › atomic nodes count is a positive number (1.1s)
+
+
+  1) [chromium] › e2e\decipherment-actions.spec.ts:365:3 › DeciphermentPanel › ▶ Run SA button state machine › 6. ✕ dismiss button clears pending and shows '▶ Run SA' again 
+
+    Error: [2mexpect([22m[31mlocator[39m[2m).[22mtoBeVisible[2m([22m[2m)[22m failed
+
+    Locator: getByRole('button', { name: '▶ Run SA' })
+    Expected: visible
+    Timeout: 2000ms
+    Error: element(s) not found
+
+    Call log:
+    [2m  - Expect "toBeVisible" with timeout 2000ms[22m
+    [2m  - waiting for getByRole('button', { name: '▶ Run SA' })[22m
+
+
+      376 |     // Click ✕ to dismiss
+      377 |     await page.getByRole("button", { name: "✕" }).first().click();
+    > 378 |     await expect(page.getByRole("button", { name: "▶ Run SA" })).toBeVisible({ timeout: 2000 });
+          |                                                                  ^
+      379 |     await expect(page.locator("text=⏳ Running…").first()).not.toBeVisible();
+      380 |   });
+      381 |
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\decipherment-actions.spec.ts:378:66
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-af164-ng-and-shows-▶-Run-SA-again-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results\decipherment-actions-Decip-af164-ng-and-shows-▶-Run-SA-again-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results\decipherment-actions-Decip-af164-ng-and-shows-▶-Run-SA-again-chromium\error-context.md
+
+  1 failed
+    [chromium] › e2e\decipherment-actions.spec.ts:365:3 › DeciphermentPanel › ▶ Run SA button state machine › 6. ✕ dismiss button clears pending and shows '▶ Run SA' again 
+  5 skipped
+  56 passed (54.3s)

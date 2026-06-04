@@ -1,0 +1,194 @@
+
+Running 113 tests using 1 worker
+
+[1A[2K[1/113] [chromium] › e2e\dashboard-actions.spec.ts:27:3 › Experiment registry › all experiment IDs are non-hash human-readable strings
+[1A[2K[2/113] [chromium] › e2e\dashboard-actions.spec.ts:44:3 › Dashboard insight API › POST /insight returns valid structure
+[1A[2K  1) [chromium] › e2e\dashboard-actions.spec.ts:44:3 › Dashboard insight API › POST /insight returns valid structure 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: apiRequestContext.post: Request context disposed.
+    Call log:
+    [2m  - → POST http://localhost:8001/api/v1/dashboard/insight?days=14&limit=30[22m
+    [2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.7727.15 Safari/537.36[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+
+
+      45 |     const up = await backendUp(request);
+      46 |     test.skip(!up, "Backend not running");
+    > 47 |     const resp = await request.post(`${BACKEND}/api/v1/dashboard/insight?days=14&limit=30`);
+         |                                ^
+      48 |     expect(resp.status()).toBe(200);
+      49 |     const body = await resp.json();
+      50 |     expect(body).toHaveProperty("highlights");
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\dashboard-actions.spec.ts:47:32
+
+    Error Context: test-results\dashboard-actions-Dashboar-68685-ght-returns-valid-structure-chromium\error-context.md
+
+
+[1A[2K[3/113] [chromium] › e2e\dashboard-actions.spec.ts:60:3 › Dashboard insight API › impact items have valid experiment IDs (no hex hashes)
+[1A[2K  2) [chromium] › e2e\dashboard-actions.spec.ts:60:3 › Dashboard insight API › impact items have valid experiment IDs (no hex hashes) 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: apiRequestContext.post: Request context disposed.
+    Call log:
+    [2m  - → POST http://localhost:8001/api/v1/dashboard/insight?days=14&limit=30[22m
+    [2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.7727.15 Safari/537.36[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+
+
+      67 |     const hexRe = /^[0-9a-f]{8,}$/i;
+      68 |
+    > 69 |     const resp = await request.post(`${BACKEND}/api/v1/dashboard/insight?days=14&limit=30`);
+         |                                ^
+      70 |     const body = await resp.json();
+      71 |     for (const im of body.impact) {
+      72 |       const eid = im.study_or_experiment_id ?? "";
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\dashboard-actions.spec.ts:69:32
+
+    Error Context: test-results\dashboard-actions-Dashboar-957e6-periment-IDs-no-hex-hashes--chromium\error-context.md
+
+
+[1A[2K[4/113] [chromium] › e2e\dashboard-actions.spec.ts:86:3 › Dashboard insight API › next_actions with run_experiment have valid experiment IDs
+[1A[2K  3) [chromium] › e2e\dashboard-actions.spec.ts:86:3 › Dashboard insight API › next_actions with run_experiment have valid experiment IDs 
+
+    [31mTest timeout of 30000ms exceeded.[39m
+
+    Error: apiRequestContext.post: Request context disposed.
+    Call log:
+    [2m  - → POST http://localhost:8001/api/v1/dashboard/insight?days=14&limit=30[22m
+    [2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.7727.15 Safari/537.36[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+
+
+      91 |     const validIds = new Set(exps.map((e: { id: string }) => e.id));
+      92 |
+    > 93 |     const resp = await request.post(`${BACKEND}/api/v1/dashboard/insight?days=14&limit=30`);
+         |                                ^
+      94 |     const body = await resp.json();
+      95 |     for (const a of body.next_actions) {
+      96 |       if (a.action_type === "run_experiment") {
+        at C:\Users\trist\Development\BitConcepts\glossa-lab\frontend\e2e\dashboard-actions.spec.ts:93:32
+
+    Error Context: test-results\dashboard-actions-Dashboar-657d8-t-have-valid-experiment-IDs-chromium\error-context.md
+
+
+[1A[2K[5/113] [chromium] › e2e\dashboard-actions.spec.ts:121:3 › Dashboard UI › dashboard loads with counters
+[1A[2K[6/113] [chromium] › e2e\dashboard-actions.spec.ts:131:3 › Dashboard UI › AI Insight section renders
+[1A[2K[7/113] [chromium] › e2e\dashboard-actions.spec.ts:136:3 › Dashboard UI › Regenerate button triggers LLM call
+[1A[2K[8/113] [chromium] › e2e\dashboard-actions.spec.ts:147:3 › Dashboard UI › impact section shows experiment names, not hex hashes
+[1A[2K[9/113] [chromium] › e2e\dashboard-actions.spec.ts:169:3 › Dashboard UI › next actions buttons are present and clickable
+[1A[2K[10/113] [chromium] › e2e\dashboard-actions.spec.ts:184:3 › Dashboard action: run_experiment › clicking Run does not show 'not registered' toast for valid experiments
+[1A[2K[11/113] [chromium] › e2e\dashboard-actions.spec.ts:203:3 › Dashboard action: plan_chain › clicking Plan chain does not error immediately
+[1A[2K[12/113] [chromium] › e2e\decipherment-actions.spec.ts:274:3 › DeciphermentPanel › ▶ Run SA button state machine › 1. initial state: shows '▶ Run SA' when no localStorage entry
+[1A[2K[13/113] [chromium] › e2e\decipherment-actions.spec.ts:286:3 › DeciphermentPanel › ▶ Run SA button state machine › 2. click makes button show '⏳ Running…' and disables it immediately
+[1A[2K[14/113] [chromium] › e2e\decipherment-actions.spec.ts:299:3 › DeciphermentPanel › ▶ Run SA button state machine › 3. double-click while busy does not start a second run
+[1A[2K[15/113] [chromium] › e2e\decipherment-actions.spec.ts:322:3 › DeciphermentPanel › ▶ Run SA button state machine › 4. Ctrl+R mid-run still shows '⏳ Running…' (pending survives reload via sessionStorage)
+[1A[2K[16/113] [chromium] › e2e\decipherment-actions.spec.ts:339:3 › DeciphermentPanel › ▶ Run SA button state machine › 5. clicking Run SA writes pending to sessionStorage, NOT localStorage
+[1A[2K[17/113] [chromium] › e2e\decipherment-actions.spec.ts:365:3 › DeciphermentPanel › ▶ Run SA button state machine › 6. ✕ dismiss button clears pending and shows '▶ Run SA' again
+[1A[2K[18/113] [chromium] › e2e\decipherment-actions.spec.ts:383:3 › DeciphermentPanel › ▶ Run SA button state machine › 7. 'success' persists on reload; stale 'pending' in localStorage is ignored
+[1A[2K[19/113] [chromium] › e2e\decipherment-actions.spec.ts:407:3 › DeciphermentPanel › ▶ Run SA button state machine › 8. 'success' in localStorage shows '✓ Done' + ↻ on load
+[1A[2K[20/113] [chromium] › e2e\decipherment-actions.spec.ts:421:3 › DeciphermentPanel › ▶ Run SA button state machine › 9. 'error' in localStorage shows '✗ Error' + ↻ on load
+[1A[2K[21/113] [chromium] › e2e\decipherment-actions.spec.ts:434:3 › DeciphermentPanel › ▶ Run SA button state machine › 10. successful run transitions to '✓ Done' and writes 'success' to localStorage
+[1A[2K[22/113] [chromium] › e2e\decipherment-actions.spec.ts:447:3 › DeciphermentPanel › ▶ Run SA button state machine › 11. '✓ Done' survives page reload (localStorage persistence)
+[1A[2K[23/113] [chromium] › e2e\decipherment-actions.spec.ts:461:3 › DeciphermentPanel › ▶ Run SA button state machine › 12. clicking ↻ from '✓ Done' clears done and re-runs (shows '⏳ Running…')
+[1A[2K[24/113] [chromium] › e2e\decipherment-actions.spec.ts:479:3 › DeciphermentPanel › ▶ Run SA button state machine › 13. clicking ↻ from '✗ Error' clears error and re-runs
+[1A[2K[25/113] [chromium] › e2e\decipherment-actions.spec.ts:494:3 › DeciphermentPanel › ▶ Run SA button state machine › 14. clicking ↻ from '✗ Error' re-runs and transitions to '✓ Done'
+[1A[2K[26/113] [chromium] › e2e\decipherment-actions.spec.ts:519:3 › DeciphermentPanel › ▶ Run SA button state machine › 15. done state survives navigating away and back
+[1A[2K[27/113] [chromium] › e2e\decipherment-actions.spec.ts:557:3 › DeciphermentPanel › propose_experiment_chain keyword matching › 16. SA hypothesis with >=2-char words matches all 3 SA experiments (not just 1)
+[1A[2K[28/113] [chromium] › e2e\decipherment-actions.spec.ts:590:3 › DeciphermentPanel › propose_experiment_chain keyword matching › 17. toast reports correct experiment count when chain runs
+[1A[2K[29/113] [chromium] › e2e\decipherment-actions.spec.ts:607:3 › DeciphermentPanel › other action buttons › 18. '💡 Hypothesize' has independent state from '▶ Run SA'
+[1A[2K[30/113] [chromium] › e2e\decipherment-actions.spec.ts:620:3 › DeciphermentPanel › other action buttons › 19. clicking '💡 Hypothesize' transitions to done independently
+[1A[2K[31/113] [chromium] › e2e\decipherment-actions.spec.ts:632:3 › DeciphermentPanel › other action buttons › 20. each action key stored independently in localStorage
+[1A[2K[32/113] [chromium] › e2e\decipherment-actions.spec.ts:665:3 › DeciphermentPanel › Run SA — error scenarios › 21. SSE run_error transitions button to '✗ Error' and stores 'error' in localStorage
+[1A[2K[33/113] [chromium] › e2e\decipherment-actions.spec.ts:678:3 › DeciphermentPanel › Run SA — error scenarios › 22. error state injected via localStorage shows '✗ Error' + persists on reload
+[1A[2K[34/113] [chromium] › e2e\decipherment-actions.spec.ts:692:3 › DeciphermentPanel › Run SA — error scenarios › 23. re-run from injected '✗ Error' clears error and succeeds
+[1A[2K[35/113] [chromium] › e2e\decipherment-actions.spec.ts:716:3 › DeciphermentPanel › backend integration › 24. decipherment endpoint returns expected fields
+[1A[2K[36/113] [chromium] › e2e\decipherment-actions.spec.ts:726:3 › DeciphermentPanel › backend integration › 25. Run SA button visible when backend returns munda_sa
+[1A[2K[37/113] [chromium] › e2e\experiment-builder.spec.ts:32:3 › Experiment Builder navigation › Experiments tab is visible in sidebar
+[1A[2K[38/113] [chromium] › e2e\experiment-builder.spec.ts:41:3 › Experiment Builder navigation › clicking Experiments tab renders the Experiment Builder canvas
+[1A[2K[39/113] [chromium] › e2e\experiment-builder.spec.ts:47:3 › Experiment Builder navigation › old Exp. Builder tab no longer exists
+[1A[2K[40/113] [chromium] › e2e\experiment-builder.spec.ts:59:3 › Experiment Builder toolbar › New button is visible
+[1A[2K[41/113] [chromium] › e2e\experiment-builder.spec.ts:64:3 › Experiment Builder toolbar › Auto-arrange button is visible
+[1A[2K[42/113] [chromium] › e2e\experiment-builder.spec.ts:69:3 › Experiment Builder toolbar › Run button is visible
+[1A[2K[43/113] [chromium] › e2e\experiment-builder.spec.ts:77:3 › Experiment Builder toolbar › Save button is visible
+[1A[2K[44/113] [chromium] › e2e\experiment-builder.spec.ts:82:3 › Experiment Builder toolbar › Import and Export buttons are visible
+[1A[2K[45/113] [chromium] › e2e\experiment-builder.spec.ts:92:3 › New experiment dialog › clicking New opens dialog
+[1A[2K[46/113] [chromium] › e2e\experiment-builder.spec.ts:98:3 › New experiment dialog › dialog has Name input and Create button
+[1A[2K[47/113] [chromium] › e2e\experiment-builder.spec.ts:105:3 › New experiment dialog › Cancel closes dialog
+[1A[2K[48/113] [chromium] › e2e\experiment-builder.spec.ts:112:3 › New experiment dialog › creating experiment removes the dialog
+[1A[2K[49/113] [chromium] › e2e\experiment-builder.spec.ts:126:3 › Node palette › palette shows Node Palette heading
+[1A[2K[50/113] [chromium] › e2e\experiment-builder.spec.ts:131:3 › Node palette › palette shows Sources category with Corpus Reader (requires backend)
+[1A[2K[51/113] [chromium] › e2e\experiment-builder.spec.ts:148:3 › Node palette › palette search filters nodes (requires backend)
+[1A[2K[52/113] [chromium] › e2e\experiment-builder.spec.ts:157:3 › Node palette › clearing palette search shows all nodes (requires backend)
+[1A[2K[53/113] [chromium] › e2e\experiment-builder.spec.ts:177:3 › Node rendering (ComfyUI layout) › exp-node header contains only title text and × button (no port labels)
+[1A[2K[54/113] [chromium] › e2e\experiment-builder.spec.ts:206:3 › Node rendering (ComfyUI layout) › exp-node-ports section exists and is outside the header
+[1A[2K[55/113] [chromium] › e2e\experiment-builder.spec.ts:226:3 › Node rendering (ComfyUI layout) › port squares in port section have correct test ids
+[1A[2K[56/113] [chromium] › e2e\experiment-builder.spec.ts:252:3 › Auto-arrange › Arrange button is disabled when no experiment is open
+[1A[2K[57/113] [chromium] › e2e\experiment-builder.spec.ts:258:3 › Auto-arrange › Arrange button is enabled when experiment with nodes is open
+[1A[2K[58/113] [chromium] › e2e\experiment-builder.spec.ts:289:3 › Saved Graph Experiments list › Saved Graph Experiments heading is visible
+[1A[2K[59/113] [chromium] › e2e\experiment-builder.spec.ts:298:3 › Saved Graph Experiments list › loading an experiment updates the toolbar name
+[1A[2K[60/113] [chromium] › e2e\experiment-builder.spec.ts:326:3 › Inspector panel › inspector appears on node click (if nodes exist)
+[1A[2K[61/113] [chromium] › e2e\jobs.spec.ts:33:3 › Jobs view structure › shows the Jobs heading
+[1A[2K[62/113] [chromium] › e2e\jobs.spec.ts:37:3 › Jobs view structure › shows the submit summary element
+[1A[2K[63/113] [chromium] › e2e\jobs.spec.ts:41:3 › Jobs view structure › expanding submit section shows job name field
+[1A[2K[64/113] [chromium] › e2e\jobs.spec.ts:48:3 › Jobs view structure › submit form has pipeline selector
+[1A[2K[65/113] [chromium] › e2e\jobs.spec.ts:53:3 › Jobs view structure › pipeline selector has at least one option
+[1A[2K[66/113] [chromium] › e2e\jobs.spec.ts:64:3 › Jobs view structure › submit form has parameters JSON textarea
+[1A[2K[67/113] [chromium] › e2e\jobs.spec.ts:74:3 › Jobs view structure › submit form has Submit button
+[1A[2K[68/113] [chromium] › e2e\jobs.spec.ts:79:3 › Jobs view structure › selecting a different pipeline updates the params field (requires backend)
+[1A[2K[69/113] [chromium] › e2e\jobs.spec.ts:109:3 › Jobs view with backend › pipeline selector contains all registered pipelines
+[1A[2K[70/113] [chromium] › e2e\jobs.spec.ts:126:3 › Jobs view with backend › shows empty state message when no jobs exist
+[1A[2K[71/113] [chromium] › e2e\jobs.spec.ts:140:3 › Jobs view with backend › submitting a job with invalid JSON shows an error
+[1A[2K[72/113] [chromium] › e2e\jobs.spec.ts:154:3 › Jobs view with backend › submitting a job with empty name shows an error
+[1A[2K[73/113] [chromium] › e2e\navigation.spec.ts:9:3 › App shell › loads and shows Glossa Lab title
+[1A[2K[74/113] [chromium] › e2e\navigation.spec.ts:15:3 › App shell › shows collaboration subtitle
+[1A[2K[75/113] [chromium] › e2e\navigation.spec.ts:20:3 › App shell › shows health badge in header
+[1A[2K[76/113] [chromium] › e2e\navigation.spec.ts:26:3 › App shell › shows Cmd+K button in header
+[1A[2K[77/113] [chromium] › e2e\navigation.spec.ts:31:3 › App shell › shows dark mode toggle in header
+[1A[2K[78/113] [chromium] › e2e\navigation.spec.ts:41:3 › Grouped tab navigation › Workflow section tabs are visible
+[1A[2K[79/113] [chromium] › e2e\navigation.spec.ts:51:3 › Grouped tab navigation › default tab renders Dashboard
+[1A[2K[80/113] [chromium] › e2e\navigation.spec.ts:58:3 › Grouped tab navigation › clicking Projects tab renders Projects management view
+[1A[2K[81/113] [chromium] › e2e\navigation.spec.ts:66:3 › Grouped tab navigation › clicking Status tab shows System Status
+[1A[2K[82/113] [chromium] › e2e\navigation.spec.ts:72:3 › Grouped tab navigation › clicking Experiments tab renders Experiment Builder canvas
+[1A[2K[83/113] [chromium] › e2e\navigation.spec.ts:79:3 › Grouped tab navigation › clicking Corpora tab shows Corpora view
+[1A[2K[84/113] [chromium] › e2e\navigation.spec.ts:85:3 › Grouped tab navigation › AI Tools tab is visible in Research section
+[1A[2K[85/113] [chromium] › e2e\navigation.spec.ts:90:3 › Grouped tab navigation › Evidence Graph tab is visible in Research section
+[1A[2K[86/113] [chromium] › e2e\navigation.spec.ts:95:3 › Grouped tab navigation › clicking Evidence Graph tab renders the evidence workspace
+[1A[2K[87/113] [chromium] › e2e\navigation.spec.ts:102:3 › Grouped tab navigation › Research group tabs are visible
+[1A[2K[88/113] [chromium] › e2e\navigation.spec.ts:109:3 › Grouped tab navigation › Analysis group tabs are visible
+[1A[2K[89/113] [chromium] › e2e\navigation.spec.ts:118:3 › Grouped tab navigation › System items visible at sidebar bottom
+[1A[2K[90/113] [chromium] › e2e\navigation.spec.ts:126:3 › Grouped tab navigation › Exp. Builder tab is no longer in sidebar (merged into Experiments)
+[1A[2K[91/113] [chromium] › e2e\navigation.spec.ts:135:3 › Studies workspace features › Projects view shows + New Project button
+[1A[2K[92/113] [chromium] › e2e\navigation.spec.ts:143:3 › Studies workspace features › floating Run Study button appears on canvas when study is open (requires backend)
+[1A[2K[93/113] [chromium] › e2e\navigation.spec.ts:157:3 › Studies workspace features › nav Studies indicator starts clean (no stale orange dot on page load)
+[1A[2K[94/113] [chromium] › e2e\navigation.spec.ts:171:3 › Experiments workspace features › Run All button is visible in Experiments list header
+[1A[2K[95/113] [chromium] › e2e\navigation.spec.ts:178:3 › Experiments workspace features › Stop All button not visible when nothing is running
+[1A[2K[96/113] [chromium] › e2e\navigation.spec.ts:187:3 › Experiments workspace features › floating Run button in canvas only appears when experiment is open
+[1A[2K[97/113] [chromium] › e2e\navigation.spec.ts:198:3 › Jobs panel › Jobs tab is visible in sidebar
+[1A[2K[98/113] [chromium] › e2e\navigation.spec.ts:204:3 › Jobs panel › clicking Jobs tab shows jobs panel
+[1A[2K[99/113] [chromium] › e2e\navigation.spec.ts:212:3 › Dark mode › toggling dark mode changes body background
+[1A[2K[100/113] [chromium] › e2e\navigation.spec.ts:220:3 › Dark mode › dark mode preference persists via localStorage
+[1A[2K[101/113] [chromium] › e2e\research-loop.spec.ts:29:3 › Research Loop Panel — visibility › panel header is visible on dashboard
+[1A[2K[102/113] [chromium] › e2e\research-loop.spec.ts:36:3 › Research Loop Panel — visibility › panel shows protocol description
+[1A[2K[103/113] [chromium] › e2e\research-loop.spec.ts:43:3 › Research Loop Panel — visibility › panel shows Ready badge when not running
+[1A[2K[104/113] [chromium] › e2e\research-loop.spec.ts:54:3 › Research Loop Panel — controls › cycle selector is visible
+[1A[2K[105/113] [chromium] › e2e\research-loop.spec.ts:60:3 › Research Loop Panel — controls › cycle selector has expected options
+[1A[2K[106/113] [chromium] › e2e\research-loop.spec.ts:68:3 › Research Loop Panel — controls › cycle selector default is 15
+[1A[2K[107/113] [chromium] › e2e\research-loop.spec.ts:74:3 › Research Loop Panel — controls › changing cycle selector updates value
+[1A[2K[108/113] [chromium] › e2e\research-loop.spec.ts:81:3 › Research Loop Panel — controls › Start Loop button is visible when not running
+[1A[2K[109/113] [chromium] › e2e\research-loop.spec.ts:88:3 › Research Loop Panel — controls › Stop button is NOT visible when not running
+[1A[2K[110/113] [chromium] › e2e\research-loop.spec.ts:99:3 › Research Loop Panel — status display › panel shows last run summary or empty state
+[1A[2K[111/113] [chromium] › e2e\research-loop.spec.ts:109:3 › Research Loop Panel — status display › panel does not show error on initial load
+[1A[2K[112/113] [chromium] › e2e\research-loop.spec.ts:122:3 › Dashboard — Atomic Nodes counter › atomic nodes tile is visible on dashboard
+[1A[2K[113/113] [chromium] › e2e\research-loop.spec.ts:129:3 › Dashboard — Atomic Nodes counter › atomic nodes count is a positive number
+[1A[2K  3 failed
+    [chromium] › e2e\dashboard-actions.spec.ts:44:3 › Dashboard insight API › POST /insight returns valid structure 
+    [chromium] › e2e\dashboard-actions.spec.ts:60:3 › Dashboard insight API › impact items have valid experiment IDs (no hex hashes) 
+    [chromium] › e2e\dashboard-actions.spec.ts:86:3 › Dashboard insight API › next_actions with run_experiment have valid experiment IDs 
+  11 skipped
+  99 passed (3.0m)

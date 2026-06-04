@@ -21,7 +21,7 @@ import {
 
 const DECIPHER_DONE_KEY    = "glossa_decipher_actions_done";    // localStorage  – success/error
 const DECIPHER_PENDING_KEY = "glossa_decipher_actions_pending"; // sessionStorage – in-flight
-type DoneResult = "success" | "error" | "warn" | "pending";
+type DoneResult = "success" | "error" | "warn" | "pending" | "dismissed";
 
 /**
  * Load terminal states (success/error) from localStorage and merge in
@@ -179,7 +179,7 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
         setDoneLabels(prev => {
           const merged = { ...prev };
           for (const k of serverKeys) {
-            if (!merged[k]) merged[k] = "success";
+            if (!merged[k]) merged[k] = "dismissed";
           }
           _saveDone(merged);
           return merged;
@@ -409,8 +409,8 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
           />
         )}
 
-        {/* Munda SA discrimination badge — hidden after action is done or dismissed */}
-        {(data as any).munda_sa && !doneLabels["Plan anchored SA comparison"] && (
+        {/* Munda SA discrimination badge — hidden only after permanently dismissed via X */}
+        {(data as any).munda_sa && doneLabels["Plan anchored SA comparison"] !== "dismissed" && (
           <div style={{ marginTop: 8, padding: "8px 10px", borderRadius: 6, background: "#fef3c7", border: "1px solid #fbbf24", fontSize: 11 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
               <span>
@@ -423,9 +423,9 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
               </span>
               <div style={{ display: "flex", gap: 4, alignItems: "flex-start", flexShrink: 0, marginTop: 1 }}>
                 <button
-                  onClick={() => { setDoneLabels(prev => { const n = { ...prev, "Plan anchored SA comparison": "success" as const }; _saveDone(n); return n; }); void postServerDismissal("Plan anchored SA comparison"); }}
+                  onClick={() => { setDoneLabels(prev => { const n = { ...prev, "Plan anchored SA comparison": "dismissed" as const }; _saveDone(n); return n; }); void postServerDismissal("Plan anchored SA comparison"); }}
                   style={{ border: "none", background: "none", cursor: "pointer", fontSize: 13, color: "#9ca3af", lineHeight: 1, padding: "0 2px" }}
-                  title="Dismiss this finding">
+                  title="Dismiss this finding permanently">
                   ✕
                 </button>
                 {onAction && (
@@ -466,8 +466,8 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
           </div>
         )}
 
-        {/* Archaeological context badge — hidden after action is done or dismissed */}
-        {(data as any).archaeology && !doneLabels["Create hypothesis: guild-identity site invariance"] && (
+        {/* Archaeological context badge — hidden only after permanently dismissed via X */}
+        {(data as any).archaeology && doneLabels["Create hypothesis: guild-identity site invariance"] !== "dismissed" && (
           <div style={{ marginTop: 6, padding: "8px 10px", borderRadius: 6, background: "#ecfdf5", border: "1px solid #6ee7b7", fontSize: 11 }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
               <span>
@@ -477,9 +477,9 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
               </span>
               <div style={{ display: "flex", gap: 4, alignItems: "flex-start", flexShrink: 0, marginTop: 1 }}>
                 <button
-                  onClick={() => { setDoneLabels(prev => { const n = { ...prev, "Create hypothesis: guild-identity site invariance": "success" as const }; _saveDone(n); return n; }); void postServerDismissal("Create hypothesis: guild-identity site invariance"); }}
+                  onClick={() => { setDoneLabels(prev => { const n = { ...prev, "Create hypothesis: guild-identity site invariance": "dismissed" as const }; _saveDone(n); return n; }); void postServerDismissal("Create hypothesis: guild-identity site invariance"); }}
                   style={{ border: "none", background: "none", cursor: "pointer", fontSize: 13, color: "#9ca3af", lineHeight: 1, padding: "0 2px" }}
-                  title="Dismiss this finding">
+                  title="Dismiss this finding permanently">
                   ✕
                 </button>
                 {onAction && (

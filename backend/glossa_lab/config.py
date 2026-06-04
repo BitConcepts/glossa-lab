@@ -1,12 +1,22 @@
-"""Configuration management for Glossa Lab."""
+"""Configuration management for Glossa Lab.
+
+Contains two layers:
+
+1. ``Settings`` — application settings (host, port, paths, etc.).
+2. ``ProjectConfig`` — per-project research parameters loaded from
+   ``project.yml`` at the repository root (git-ignored).  Defaults match
+   the Indus Script project.
+"""
 
 from __future__ import annotations
 
+import logging
 import os
 import sys
 from dataclasses import dataclass, field
 from functools import lru_cache
 from pathlib import Path
+from typing import Any
 
 if sys.version_info >= (3, 11):
     import tomllib
@@ -116,3 +126,78 @@ def get_settings() -> Settings:
                 setattr(settings, key, value)
 
     return settings
+
+
+# ---------------------------------------------------------------------------
+# Project configuration (per-language-project settings)
+# ---------------------------------------------------------------------------
+
+_log = logging.getLogger("glossa_lab.config")
+_REPO_ROOT = Path(__file__).resolve().parents[2]  # backend -> glossa_lab -> repo_root
+
+
+@dataclass
+class ProjectConfig:
+    project_id: str = "indus"
+    project_name: str = "Indus Script Decipherment"
+    # Paths relative to repo root (resolved at access time)
+    corpus_csv: str = "corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv"
+    anchors_json: str = "backend/reports/INDUS_FINAL_ANCHORS.json"
+    cldf_dir: str = "reports/jambu-dedr/cldf"
+    # Project parameters
+    sign_total: int = 713
+    language_family_bias: str = "Dravidian"
+    ai_context_summary: str = ""  # if non-empty, replaces the context block in AG2 system prompt
+
+    def corpus_csv_path(self) -> Path:
+        return _REPO_ROOT / self.corpus_csv
+
+    def anchors_json_path(self) -> Path:
+        return _REPO_ROOT / self.anchors_json
+
+    def cldf_dir_path(self) -> Path:
+        return _REPO_ROOT / self.cldf_dir
+
+
+_config: ProjectConfig | None = None
+
+
+def get_project_config() -> ProjectConfig:
+    """Return the singleton ProjectConfig, loading from project.yml if present."""
+    global _config
+    if _config is not None:
+        return _config
+    _config = _load_config()
+    return _config
+
+
+def reload_project_config() -> ProjectConfig:
+    """Force reload from project.yml."""
+    global _config
+    _config = None
+    return get_project_config()
+
+
+def _load_config() -> ProjectConfig:
+    """Load from project.yml at repo root; fall back to Indus defaults."""
+    yml_path = _REPO_ROOT / "project.yml"
+    if not yml_path.exists():
+        return ProjectConfig()
+    try:
+        import yaml  # type: ignore[import]
+        data = yaml.safe_load(yml_path.read_text(encoding="utf-8")) or {}
+        return ProjectConfig(**{k: v for k, v in data.items()
+                                if k in ProjectConfig.__dataclass_fields__})
+    except ImportError:
+        # PyYAML not installed — try basic key: value parsing
+        data_fallback: dict[str, Any] = {}
+        for line in yml_path.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if line and not line.startswith("#") and ":" in line:
+                k, _, v = line.partition(":")
+                data_fallback[k.strip()] = v.strip()
+        return ProjectConfig(**{k: v for k, v in data_fallback.items()
+                                if k in ProjectConfig.__dataclass_fields__})
+    except Exception as exc:
+        _log.warning("Failed to load project.yml: %s — using defaults", exc)
+        return ProjectConfig()

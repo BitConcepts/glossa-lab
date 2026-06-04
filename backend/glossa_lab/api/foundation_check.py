@@ -577,6 +577,26 @@ async def apply_fix(body: dict[str, Any]) -> dict[str, Any]:
                 mark_dirty()
             except Exception:  # noqa: BLE001
                 pass
+            # Re-run checks and update the cached report so phase_advancer
+            # picks up the new clean state immediately
+            try:
+                fresh_checks = _run_checks()
+                fresh_summary = _summarize(fresh_checks)
+                report_path = REPO / "reports" / "foundation_check_report.json"
+                report_path.parent.mkdir(parents=True, exist_ok=True)
+                report_path.write_text(
+                    json.dumps({
+                        "n_pass": fresh_summary["n_pass"],
+                        "n_fail": fresh_summary["n_fail"],
+                        "n_warn": fresh_summary["n_warn"],
+                        "verdict": fresh_summary["overall_status"],
+                        "failed": [c["label"] for c in fresh_checks if c["status"] == "fail"],
+                        "timestamp": _dt.datetime.now(_dt.timezone.utc).isoformat(),
+                    }, indent=2, ensure_ascii=False),
+                    encoding="utf-8",
+                )
+            except Exception:  # noqa: BLE001
+                pass  # non-critical — phase_advancer will re-read on next request
             return {
                 "ok": True,
                 "fix_id": fix_id,

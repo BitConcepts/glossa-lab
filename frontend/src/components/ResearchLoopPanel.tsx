@@ -1910,6 +1910,30 @@ function StagingReview({
 
 // ── Promote to Anchors ────────────────────────────────────────────────────────
 
+const PROMOTE_RESULT_KEY = "glossa_promote_result";
+
+type PromoteResult = {
+  ok: boolean;
+  promoted: number;
+  skipped: number;
+  prev_coverage: number;
+  new_coverage: number;
+  coverage_delta: number;
+  message: string;
+  ts?: number;
+};
+
+function _loadPromoteResult(): PromoteResult | null {
+  try {
+    const raw = localStorage.getItem(PROMOTE_RESULT_KEY);
+    if (!raw) return null;
+    const r = JSON.parse(raw) as PromoteResult;
+    // Expire after 24h
+    if (r.ts && Date.now() - r.ts > 86_400_000) { localStorage.removeItem(PROMOTE_RESULT_KEY); return null; }
+    return r;
+  } catch { return null; }
+}
+
 function PromoteToAnchors({
   promotable,
   archiveTotal,
@@ -1921,15 +1945,14 @@ function PromoteToAnchors({
 }) {
   const [busy, setBusy] = useState(false);
   const [confirm, setConfirm] = useState(false);
-  const [result, setResult] = useState<{
-    ok: boolean;
-    promoted: number;
-    skipped: number;
-    prev_coverage: number;
-    new_coverage: number;
-    coverage_delta: number;
-    message: string;
-  } | null>(null);
+  const [result, setResult] = useState<PromoteResult | null>(() => {
+    // Restore persisted result on mount; clear if there are still promotable items
+    // (meaning the previous promotion data was refreshed and there are new ones)
+    const stored = _loadPromoteResult();
+    // If promotable > 0 it means either the result was dismissed or new archive
+    // entries arrived after the last promotion — show it anyway for context
+    return stored;
+  });
 
   const doPromote = async () => {
     setBusy(true);
@@ -1937,9 +1960,14 @@ function PromoteToAnchors({
     setResult(null);
     try {
       const res = await fetch("/api/v1/research-loop/staging/promote", { method: "POST" });
-      const data = await res.json() as typeof result & { ok: boolean; message: string };
-      setResult(data);
-      if (data?.ok) onPromoted();
+      const data = await res.json() as PromoteResult & { ok: boolean; message: string };
+      const withTs = { ...data, ts: Date.now() };
+      setResult(withTs);
+      if (data?.ok) {
+        // Persist so the result survives navigation
+        try { localStorage.setItem(PROMOTE_RESULT_KEY, JSON.stringify(withTs)); } catch { /* ignore */ }
+        onPromoted();
+      }
     } catch (e) {
       setResult({ ok: false, promoted: 0, skipped: 0,
         prev_coverage: 0, new_coverage: 0, coverage_delta: 0,

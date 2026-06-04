@@ -246,7 +246,15 @@ _DEFAULT_PHASE_GOALS: list[PhaseGoal] = [
     ),
     PhaseGoal(
         phase=5, label="Done",
-        description="Target reached: ≥95% corpus token coverage.",
+        description=(
+            "Target reached: ≥95% corpus token coverage. "
+            "The research phase goal is complete. "
+            "Next steps: (1) Run Foundation Check to verify data integrity, "
+            "(2) Review promoted signs in the Signs view to spot-check readings, "
+            "(3) Upgrade LOW-confidence signs by running SA validation experiments, "
+            "(4) Regenerate AI Insights to reflect the updated anchor set. "
+            "The Research Loop is still available for additional literature mining."
+        ),
         min_coverage=0.95, max_coverage=1.01,
         recommended_experiments=[],
         recommended_actions=[

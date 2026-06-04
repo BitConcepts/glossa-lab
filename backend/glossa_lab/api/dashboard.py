@@ -43,6 +43,32 @@ _log = logging.getLogger("glossa_lab.api.dashboard")
 _LATEST_INSIGHT: dict[str, Any] | None = None
 _LATEST_INSIGHT_AT: float = 0.0  # epoch seconds
 
+# ── Insight stale flag ──────────────────────────────────────────────────────
+# Set to True by any module that produces new results (experiments, jobs).
+# Cleared when the LLM generates a fresh insight. Exposed via GET /highlights
+# so the frontend can show a "New results — Regenerate" badge.
+_INSIGHTS_STALE: bool = False
+_STALE_SINCE: float = 0.0   # epoch seconds
+
+
+def mark_insights_stale() -> None:
+    """Signal that new experiment/job results are available.
+
+    Called from experiment_graphs.py, jobs.py, phase.py after any job
+    completes or phase action is taken. Thread-safe (GIL-protected bool write).
+    """
+    global _INSIGHTS_STALE, _STALE_SINCE  # noqa: PLW0603
+    _INSIGHTS_STALE = True
+    if not _STALE_SINCE:
+        _STALE_SINCE = _time.time()
+
+
+def clear_insights_stale() -> None:
+    """Clear the stale flag after a fresh insight is generated."""
+    global _INSIGHTS_STALE, _STALE_SINCE  # noqa: PLW0603
+    _INSIGHTS_STALE = False
+    _STALE_SINCE = 0.0
+
 
 # ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -102,6 +128,64 @@ async def _study_count() -> int:
         return len(rows)
     except Exception:  # noqa: BLE001
         return 0
+
+
+async def _recent_experiment_results(limit: int = 5) -> list[dict[str, Any]]:
+    """Return recent completed experiment jobs with key metrics for the prompt."""
+    db = get_db()
+    if db is None:
+        return []
+    try:
+        jobs = await db.list_jobs()
+    except Exception:  # noqa: BLE001
+        return []
+
+    # Only graph_experiment / exp_run pipelines, completed, newest first
+    _EXP_PIPELINES = {"graph_experiment", "exp_run", "experiment"}
+    completed = [
+        j for j in jobs
+        if j.get("status") == "completed"
+        and j.get("pipeline", "") in _EXP_PIPELINES
+    ][:limit]
+
+    results: list[dict[str, Any]] = []
+    for job in completed:
+        try:
+            row = await db.get_result_for_job(job["id"])
+        except Exception:  # noqa: BLE001
+            continue
+        if not row:
+            continue
+        data = row.get("data") or {}
+        result_summary = data.get("result") or {}
+        # Extract scalar metrics that fit in a prompt
+        _METRIC_KEYS = [
+            "mean_consistency", "hci_count", "best_language", "best_consistency",
+            "n_signs", "accuracy", "n_anchors", "kl_divergence", "js_divergence",
+            "tier_classification", "nearest_script",
+        ]
+        metrics: dict[str, Any] = {}
+        for k in _METRIC_KEYS:
+            if k in result_summary:
+                v = result_summary[k]
+                if isinstance(v, float):
+                    metrics[k] = round(v, 4)
+                elif isinstance(v, (int, str, bool)):
+                    metrics[k] = v
+        # Include comparison ranking summary for SAMultiComparison
+        if "ranking" in result_summary and isinstance(result_summary["ranking"], list):
+            ranking = result_summary["ranking"]
+            metrics["ranking_top3"] = [
+                {"language": r.get("language"), "consistency": r.get("mean_consistency")}
+                for r in ranking[:3] if not r.get("error")
+            ]
+        results.append({
+            "exp_id":   data.get("exp_id", job.get("name", "")),
+            "exp_name": data.get("exp_name", job.get("name", "")),
+            "completed_at": job.get("updated_at", ""),
+            "metrics":  metrics,
+        })
+    return results
 
 
 def _graph_experiment_ids() -> list[str]:
@@ -237,6 +321,7 @@ def _build_insight_prompt(
     studies: list[dict[str, Any]],
     experiments: list[str],
     goal: dict[str, Any] | None = None,
+    exp_results: list[dict[str, Any]] | None = None,
 ) -> str:
     items_block = "\n".join(
         f"- id={it.get('id', '')[:10]} kind={it.get('kind', 'other')} "
@@ -257,6 +342,22 @@ def _build_insight_prompt(
     goal_ctx = ""
     if goal and goal.get("prompt_context"):
         goal_ctx = f"\n## Research goal context\n{goal['prompt_context']}\n"
+    results_block = ""
+    if exp_results:
+        lines = []
+        for r in exp_results[:5]:
+            metrics_str = ", ".join(f"{k}={v}" for k, v in (r.get("metrics") or {}).items())
+            completed_str = r.get("completed_at", "")[:16].replace("T", " ")
+            lines.append(
+                f"- {r['exp_name']} ({r['exp_id']})"
+                + (f" [{completed_str}]" if completed_str else "")
+                + (f": {metrics_str}" if metrics_str else " (no scalar metrics)")
+            )
+        results_block = (
+            f"\n## Recent experiment results (last {len(exp_results)} completed)\n"
+            + "\n".join(lines)
+            + "\n"
+        )
     return (
         f"{prompt_text}\n\n"
         f"{goal_ctx}"
@@ -264,6 +365,7 @@ def _build_insight_prompt(
         f"{items_block}\n\n"
         f"## User's studies\n{studies_block}\n\n"
         f"## Registered experiments\n{exp_block}\n"
+        f"{results_block}"
     )
 
 
@@ -379,7 +481,14 @@ async def _generate_insight(
         except Exception:  # noqa: BLE001
             pass
 
-    prompt = _build_insight_prompt(items, studies, experiments, goal=goal)
+    # Load recent experiment results for context
+    exp_results: list[dict[str, Any]] = []
+    try:
+        exp_results = await _recent_experiment_results(limit=5)
+    except Exception:  # noqa: BLE001
+        pass
+
+    prompt = _build_insight_prompt(items, studies, experiments, goal=goal, exp_results=exp_results)
 
     try:
         from glossa_lab.ai_utils import call_llm  # noqa: PLC0415
@@ -524,7 +633,7 @@ async def _generate_insight(
         # ── Attempt 3: reasoning bucket, shorter prompt, excluding all failed providers
         if not raw or not raw.strip():
             short_items = items[:8]  # minimal context to reduce token pressure
-            short_prompt = _build_insight_prompt(short_items, studies[:5], experiments[:20], goal=goal)
+            short_prompt = _build_insight_prompt(short_items, studies[:5], experiments[:20], goal=goal, exp_results=exp_results[:3])
             try:
                 raw = await loop.run_in_executor(
                     None,
@@ -763,6 +872,7 @@ async def _generate_insight(
         global _LATEST_INSIGHT, _LATEST_INSIGHT_AT  # noqa: PLW0603
         _LATEST_INSIGHT = parsed
         _LATEST_INSIGHT_AT = _time.time()
+        clear_insights_stale()
         return parsed
     except Exception as exc:  # noqa: BLE001
         _log.warning("dashboard insight LLM call failed: %s", exc)
@@ -840,6 +950,8 @@ async def dashboard_highlights(
         "n_hypotheses":  n_hypotheses,
         "since_days":    days,
         "project_id":    project["id"] if project else None,
+        "insights_stale": _INSIGHTS_STALE,
+        "stale_since": _STALE_SINCE,
     }
 
     if include_ai:

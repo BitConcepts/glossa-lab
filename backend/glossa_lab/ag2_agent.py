@@ -81,25 +81,35 @@ def _tool_list_experiments() -> str:
 
 
 def _tool_run_experiment(experiment_id: str) -> str:
-    """Run a graph experiment and return a summary of the result."""
-    try:
-        result = subprocess.run(
-            [sys.executable, "-m", "glossa_lab.experiments", experiment_id],
-            capture_output=True, text=True, timeout=600,
-            cwd=str(_BACKEND_DIR),
-        )
-        if result.returncode != 0:
-            return f"Experiment failed:\n{result.stderr[-500:]}"
+    """Queue a graph experiment via the Glossa Lab backend API.
 
-        # Try to read the result from reports/
-        out = _tool_read_result(f"{experiment_id}.json")
-        if "not found" in out.lower():
-            return f"Experiment completed. Output:\n{result.stdout[-300:]}"
-        return f"Experiment '{experiment_id}' completed.\n{out}"
-    except subprocess.TimeoutExpired:
-        return f"Experiment '{experiment_id}' timed out after 600s."
+    Returns a summary including the job_id so the user can track it in the Jobs panel.
+    """
+    import json as _json  # noqa: PLC0415
+    import urllib.error  # noqa: PLC0415
+    import urllib.request  # noqa: PLC0415
+
+    base = "http://127.0.0.1:8001"
+    url = f"{base}/api/v1/experiments/{experiment_id}/queue"
+    try:
+        req = urllib.request.Request(
+            url, data=b'{}', method='POST',
+            headers={'Content-Type': 'application/json'},
+        )
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            result = _json.loads(resp.read().decode('utf-8'))
+        job_id = result.get('job_id', 'unknown')
+        return (
+            f"Experiment '{experiment_id}' queued successfully. "
+            f"Job ID: {job_id}. "
+            f"Track progress in the Jobs panel."
+        )
+    except urllib.error.HTTPError as exc:
+        if exc.code == 404:
+            return f"Experiment '{experiment_id}' not found. Use list_experiments to see available IDs."
+        return f"Failed to queue experiment (HTTP {exc.code}): {exc.reason}"
     except Exception as exc:  # noqa: BLE001
-        return f"Error running experiment: {exc}"
+        return f"Could not reach backend to queue '{experiment_id}': {exc}"
 
 
 def _tool_read_result(filename: str) -> str:
@@ -181,7 +191,7 @@ _TOOLS = {
     "list_experiments": (_tool_list_experiments,
         "List all available graph experiment IDs that can be run."),
     "run_experiment":   (_tool_run_experiment,
-        "Run a specific graph experiment by ID and return the result summary. "
+        "Queue a graph experiment as a background job. Returns a job_id visible in the Jobs panel. "
         "experiment_id: str — e.g. 'indus_cisi_dravidian_vs_sanskrit'"),
     "read_result":      (_tool_read_result,
         "Read an experiment result file from reports/. "

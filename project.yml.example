@@ -1,0 +1,21 @@
+# Glossa Lab project configuration
+# Copy to project.yml and customise for your language project.
+# project.yml is gitignored — safe for project-specific overrides.
+
+project_id: indus
+project_name: "Indus Script Decipherment"
+
+# Paths (relative to repo root)
+corpus_csv: "corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv"
+anchors_json: "backend/reports/INDUS_FINAL_ANCHORS.json"
+cldf_dir: "reports/jambu-dedr/cldf"
+
+# Reference sign inventory size (Indus: 713 per ICIT)
+sign_total: 713
+
+# Language family to bias DEDR vocabulary queries toward
+language_family_bias: "Dravidian"
+
+# Optional: override the AG2 research assistant context summary block.
+# Leave empty to use the built-in Indus-specific context.
+ai_context_summary: ""

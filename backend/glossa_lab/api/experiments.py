@@ -33,7 +33,11 @@ from glossa_lab.experiment_base import (
     import_experiment_file,
     invalidate_cache,
 )
-from glossa_lab.experiment_graph import list_graph_experiments
+from glossa_lab.experiment_graph import (
+    get_graph_experiment,
+    list_graph_experiments,
+    queue_graph_experiment,
+)
 
 router = APIRouter()
 
@@ -91,7 +95,28 @@ class RunRequest(BaseModel):
 
 @router.post("/experiments/{experiment_id}/run")
 async def run_experiment(experiment_id: str, body: RunRequest) -> dict[str, Any]:
-    """Execute an experiment and return the result."""
+    """Execute an experiment and return the result.
+
+    Tries graph experiments first (queue as a Job); falls back to legacy
+    ExperimentBase subclasses for backwards compatibility.
+    """
+    # ── Graph experiment path (preferred) ─────────────────────────────────
+    graph_spec = get_graph_experiment(experiment_id)
+    if graph_spec is not None:
+        from glossa_lab.database import get_db  # noqa: PLC0415
+        db = get_db()
+        job = await queue_graph_experiment(
+            experiment_id, db=db, params=body.kwargs,
+        ) if db is not None else None
+        if job is not None:
+            return {
+                "experiment_id": experiment_id,
+                "job_id": job["id"],
+                "status": "queued",
+            }
+        # db unavailable or queue failed — fall through to legacy path
+
+    # ── Legacy ExperimentBase path ────────────────────────────────────────
     cls = get_experiment(experiment_id)
     if cls is None:
         raise HTTPException(status_code=404, detail=f"Experiment '{experiment_id}' not found")
@@ -111,6 +136,34 @@ async def run_experiment(experiment_id: str, body: RunRequest) -> dict[str, Any]
         )
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))
+
+
+@router.post("/experiments/{experiment_id}/queue", status_code=202)
+async def queue_experiment(experiment_id: str, body: RunRequest) -> dict[str, Any]:
+    """Queue a graph experiment as a background Job. Returns {job_id, experiment_id}.
+
+    Non-blocking — the job engine picks it up asynchronously.
+    """
+    graph_spec = get_graph_experiment(experiment_id)
+    if graph_spec is None:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Graph experiment '{experiment_id}' not found",
+        )
+    from glossa_lab.database import get_db  # noqa: PLC0415
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+    job = await queue_graph_experiment(
+        experiment_id, db=db, params=body.kwargs,
+    )
+    if job is None:
+        raise HTTPException(status_code=503, detail="Failed to create job")
+    return {
+        "experiment_id": experiment_id,
+        "job_id": job["id"],
+        "queued": True,
+    }
 
 
 class ImportRequest(BaseModel):

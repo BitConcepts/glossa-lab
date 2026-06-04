@@ -76,9 +76,9 @@ function FilterChip({ label, active, onClick }: { label: string; active: boolean
   return (
     <button onClick={onClick} style={{
       padding: "4px 12px", borderRadius: 14, fontSize: 11, fontWeight: active ? 700 : 500,
-      border: active ? "1px solid #3b82f6" : "1px solid rgba(255,255,255,0.12)",
-      background: active ? "rgba(59,130,246,0.2)" : "rgba(255,255,255,0.04)",
-      color: active ? "#93c5fd" : "rgba(255,255,255,0.5)",
+      border: active ? "1px solid #2563eb" : "1px solid #d1d5db",
+      background: active ? "#dbeafe" : "#f9fafb",
+      color: active ? "#1d4ed8" : "#6b7280",
       cursor: "pointer", transition: "all 0.12s",
     }}>
       {label}
@@ -320,9 +320,9 @@ export function SignsView() {
         {(["signs", "corpus"] as const).map(t => (
           <button key={t} onClick={() => setActiveTab(t)} style={{
             padding: "6px 16px", borderRadius: 6, fontSize: 12, fontWeight: activeTab === t ? 700 : 500,
-            border: activeTab === t ? "1px solid #3b82f6" : "1px solid rgba(255,255,255,0.08)",
-            background: activeTab === t ? "rgba(59,130,246,0.15)" : "rgba(255,255,255,0.03)",
-            color: activeTab === t ? "#93c5fd" : "rgba(255,255,255,0.5)",
+            border: activeTab === t ? "1px solid #2563eb" : "1px solid #d1d5db",
+            background: activeTab === t ? "#dbeafe" : "#f9fafb",
+            color: activeTab === t ? "#1d4ed8" : "#374151",
             cursor: "pointer",
           }}>
             {t === "signs" ? "🔣 Signs Index" : "📊 Corpus Analytics"}
@@ -345,11 +345,11 @@ export function SignsView() {
               onChange={e => { setSearch(e.target.value); setOffset(0); }}
               style={{
                 padding: "5px 12px", borderRadius: 6, fontSize: 12, width: 220,
-                border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.04)",
-                color: "#e2e8f0", outline: "none",
+                border: "1px solid #d1d5db", background: "#fff",
+                color: "#111827", outline: "none",
               }}
             />
-            <label style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 11, color: "#94a3b8", cursor: "pointer" }}>
+            <label style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 11, color: "#6b7280", cursor: "pointer" }}>
               <input type="checkbox" checked={inCorpusOnly} onChange={e => { setInCorpusOnly(e.target.checked); setOffset(0); }} />
               In corpus only
             </label>

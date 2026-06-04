@@ -75,8 +75,16 @@ export function PhaseAdvancerPanel() {
           ok: boolean; message: string; job_id?: string | null;
           experiment_id?: string | null; action_type?: string | null;
         };
+        // For regenerate_insights: navigate to dashboard + fire regeneration event
+        if (data.ok && data.action_type === "regenerate_insights") {
+          window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: "dashboard" } }));
+          // Small delay so the dashboard mounts before the event fires
+          setTimeout(() => {
+            window.dispatchEvent(new CustomEvent("glossa:regenerate-insight"));
+          }, 300);
+          await fetchStatus();
         // For open_view actions, navigate directly and don't linger
-        if (data.ok && data.action_type === "open_view") {
+        } else if (data.ok && data.action_type === "open_view") {
           const viewParam = (nextAction?.params?.view as string) || "signs";
           window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: viewParam } }));
           // Don't show the result card — just refresh
@@ -227,12 +235,13 @@ export function PhaseAdvancerPanel() {
               {status.top_actions.map((action, i) => {
                 const isJob = action.action_type === "run_experiment";
                 const isInfo = ["review_candidates","verify_sa","open_view"].includes(action.action_type);
+                const isRegen = action.action_type === "regenerate_insights";
                 const expId = action.params.experiment_id as string | undefined;
                 const wasQueued = isJob && expId && queuedExpIds.has(expId);
                 const isNext = !wasQueued && action === nextAction;
-                const chipLabel = wasQueued ? "✔ queued" : isJob ? "⚙ queues job" : isInfo ? "ℹ action needed" : action.action_type.replace(/_/g, " ");
-                const chipBg   = wasQueued ? "#f0fdf4" : isJob ? "#dcfce7" : isInfo ? "#fef3c7" : "#f3f4f6";
-                const chipFg   = wasQueued ? "#15803d" : isJob ? "#15803d" : isInfo ? "#92400e" : "#6b7280";
+                const chipLabel = wasQueued ? "✔ queued" : isJob ? "⚙ queues job" : isRegen ? "✨ triggers regen" : isInfo ? "ℹ action needed" : action.action_type.replace(/_/g, " ");
+                const chipBg   = wasQueued ? "#f0fdf4" : isJob ? "#dcfce7" : isRegen ? "#ede9fe" : isInfo ? "#fef3c7" : "#f3f4f6";
+                const chipFg   = wasQueued ? "#15803d" : isJob ? "#15803d" : isRegen ? "#6d28d9" : isInfo ? "#92400e" : "#6b7280";
                 return (
                   <div key={i} style={{
                     padding: "6px 10px", marginBottom: 4,

@@ -375,6 +375,13 @@ export function DashboardView() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
+  // Listen for Phase Guide's 'regenerate insights' action
+  useEffect(() => {
+    const handler = () => void generateInsight();
+    window.addEventListener("glossa:regenerate-insight", handler);
+    return () => window.removeEventListener("glossa:regenerate-insight", handler);
+  }, [generateInsight]);
+
   // When a research loop completes (dispatched by ResearchLoopPanel),
   // pull the latest cached insight from the backend WITHOUT re-running the LLM.
   useEffect(() => {

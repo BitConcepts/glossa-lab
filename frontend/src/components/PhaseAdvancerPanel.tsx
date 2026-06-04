@@ -49,6 +49,8 @@ export function PhaseAdvancerPanel() {
     ok: boolean; message: string; job_id?: string | null;
   } | null>(null);
   const [expanded, setExpanded] = useState(true);
+  // Track experiment IDs queued this session so button advances to next action
+  const [queuedExpIds, setQueuedExpIds] = useState<Set<string>>(new Set());
 
   const fetchStatus = useCallback(async () => {
     try {
@@ -68,8 +70,15 @@ export function PhaseAdvancerPanel() {
       const res = await fetch(`${BASE}/advance`, { method: "POST",
         headers: { "Content-Type": "application/json" }, body: "{}" });
       if (res.ok) {
-        const data = await res.json() as { ok: boolean; message: string; job_id?: string | null };
+        const data = await res.json() as {
+          ok: boolean; message: string; job_id?: string | null;
+          experiment_id?: string | null;
+        };
         setAdvanceResult(data);
+        // Mark this experiment as queued so button advances to next action
+        if (data.ok && data.experiment_id) {
+          setQueuedExpIds(prev => new Set([...prev, data.experiment_id!]));
+        }
         await fetchStatus();
       }
     } catch { /* ignore */ }
@@ -88,6 +97,16 @@ export function PhaseAdvancerPanel() {
   const barWidth = Math.min(100, Math.round(
     (status.coverage / Math.max(0.01, status.next_milestone)) * 100
   ));
+
+  // Next unqueued experiment action (skip ones already queued this session)
+  const nextAction = status.top_actions.find(a => {
+    if (a.action_type !== "run_experiment") return true;
+    const expId = a.params.experiment_id as string | undefined;
+    return !expId || !queuedExpIds.has(expId);
+  }) ?? null;
+  const allExpQueued = status.top_actions
+    .filter(a => a.action_type === "run_experiment")
+    .every(a => queuedExpIds.has(a.params.experiment_id as string));
 
   return (
     <div style={{
@@ -199,20 +218,25 @@ export function PhaseAdvancerPanel() {
               {status.top_actions.map((action, i) => {
                 const isJob = action.action_type === "run_experiment";
                 const isInfo = ["review_candidates","verify_sa","open_view"].includes(action.action_type);
-                const chipLabel = isJob ? "⚙ queues job" : isInfo ? "ℹ action needed" : action.action_type.replace(/_/g, " ");
-                const chipBg   = isJob ? "#dcfce7" : isInfo ? "#fef3c7" : "#f3f4f6";
-                const chipFg   = isJob ? "#15803d" : isInfo ? "#92400e" : "#6b7280";
+                const expId = action.params.experiment_id as string | undefined;
+                const wasQueued = isJob && expId && queuedExpIds.has(expId);
+                const isNext = !wasQueued && action === nextAction;
+                const chipLabel = wasQueued ? "✔ queued" : isJob ? "⚙ queues job" : isInfo ? "ℹ action needed" : action.action_type.replace(/_/g, " ");
+                const chipBg   = wasQueued ? "#f0fdf4" : isJob ? "#dcfce7" : isInfo ? "#fef3c7" : "#f3f4f6";
+                const chipFg   = wasQueued ? "#15803d" : isJob ? "#15803d" : isInfo ? "#92400e" : "#6b7280";
                 return (
                   <div key={i} style={{
                     padding: "6px 10px", marginBottom: 4,
-                    background: i === 0 ? colors.bg : "#f9fafb",
-                    border: `1px solid ${i === 0 ? colors.border : "#e5e7eb"}`,
+                    opacity: wasQueued ? 0.55 : 1,
+                    background: isNext ? colors.bg : "#f9fafb",
+                    border: `1px solid ${isNext ? colors.border : "#e5e7eb"}`,
                     borderRadius: 5,
                   }}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-                      <span style={{ fontSize: 11, fontWeight: i === 0 ? 700 : 600,
-                                      color: i === 0 ? colors.text : "#374151" }}>
-                        {i === 0 && "⭐ "}{action.label}
+                      <span style={{ fontSize: 11, fontWeight: isNext ? 700 : 600,
+                                      color: isNext ? colors.text : "#374151",
+                                      textDecoration: wasQueued ? "line-through" : "none" }}>
+                        {isNext && "⭐ "}{action.label}
                       </span>
                       <span style={{
                         fontSize: 9, fontWeight: 600,
@@ -233,24 +257,34 @@ export function PhaseAdvancerPanel() {
 
           {/* Advance button */}
           <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-            <button
-              disabled={advancing || status.top_actions.length === 0}
-              onClick={() => void advance()}
-              style={{
-                padding: "7px 16px", fontSize: 12, fontWeight: 700,
-                border: `1px solid ${colors.text}`,
-                borderRadius: 6,
-                background: advancing ? "#e5e7eb" : colors.text,
-                color: advancing ? "#6b7280" : "#fff",
-                cursor: (advancing || status.top_actions.length === 0) ? "default" : "pointer",
-                whiteSpace: "nowrap",
+            {allExpQueued && status.top_actions.filter(a => a.action_type === "run_experiment").length > 0 ? (
+              <div style={{
+                padding: "7px 14px", fontSize: 12, fontWeight: 700,
+                borderRadius: 6, background: "#f0fdf4",
+                border: "1px solid #86efac", color: "#15803d",
               }}>
-              {advancing
-                ? "Advancing…"
-                : status.top_actions.length > 0
-                  ? `▶ ${status.top_actions[0].label.slice(0, 50)}`
-                  : "▶ No actions planned"}
-            </button>
+                ✅ All experiments queued — check Jobs panel
+              </div>
+            ) : (
+              <button
+                disabled={advancing || !nextAction}
+                onClick={() => void advance()}
+                style={{
+                  padding: "7px 16px", fontSize: 12, fontWeight: 700,
+                  border: `1px solid ${colors.text}`,
+                  borderRadius: 6,
+                  background: advancing ? "#e5e7eb" : colors.text,
+                  color: advancing ? "#6b7280" : "#fff",
+                  cursor: (advancing || !nextAction) ? "default" : "pointer",
+                  whiteSpace: "nowrap",
+                }}>
+                {advancing
+                  ? "Advancing…"
+                  : nextAction
+                    ? `▶ ${nextAction.label.slice(0, 50)}`
+                    : "▶ No actions planned"}
+              </button>
+            )}
             <button
               onClick={() => void fetchStatus()}
               disabled={loading}

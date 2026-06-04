@@ -79,9 +79,33 @@ class OpenAlexFetcher(Fetcher):
         try:
             data = await run_in_thread(http_get_json, _ENDPOINT, params=params, timeout=15.0)
         except FetcherError as exc:
-            _429_cooldown(str(exc), self.source)
-            _log.warning("OpenAlex error for topic %s: %s", topic.id, exc)
-            return []
+            err_str = str(exc)
+            # Detect budget-exhausted errors from OpenAlex premium/paid tier.
+            # The free polite-pool (mailto only, no API key) has no budget limit,
+            # so retry without the mailto param — this downgrades to anonymous access
+            # which is rate-limited but never budget-gated.
+            if "budget" in err_str.lower() or "insufficient" in err_str.lower():
+                _log.warning(
+                    "OpenAlex: paid API budget exhausted for topic %s — "
+                    "retrying without authentication (free tier). "
+                    "Check your OpenAlex account balance or remove the API key "
+                    "from Settings to use the free polite pool permanently.",
+                    topic.id,
+                )
+                params_anon = {k: v for k, v in params.items() if k != "mailto"}
+                try:
+                    data = await run_in_thread(
+                        http_get_json, _ENDPOINT, params=params_anon, timeout=15.0
+                    )
+                except FetcherError as exc2:
+                    _429_cooldown(str(exc2), self.source)
+                    _log.warning("OpenAlex anonymous retry failed for topic %s: %s",
+                                 topic.id, exc2)
+                    return []
+            else:
+                _429_cooldown(err_str, self.source)
+                _log.warning("OpenAlex error for topic %s: %s", topic.id, exc)
+                return []
 
         items: list[RawItem] = []
         for w in (data or {}).get("results", []) or []:

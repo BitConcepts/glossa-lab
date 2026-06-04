@@ -151,7 +151,11 @@ class PhaseGoal:
 _DEFAULT_PHASE_GOALS: list[PhaseGoal] = [
     PhaseGoal(
         phase=1, label="Bootstrap",
-        description="Initial SA exploration — establish first anchor candidates.",
+        description=(
+            "Run SA experiments to find initial anchor candidates. "
+            "Each experiment queues as a background job — monitor progress in the Jobs panel. "
+            "After jobs complete, use the Research Loop (below) to mine literature for corroborating evidence."
+        ),
         min_coverage=0.0, max_coverage=0.30,
         recommended_experiments=[
             "indus_sa_dravidian_syllable",
@@ -159,17 +163,23 @@ _DEFAULT_PHASE_GOALS: list[PhaseGoal] = [
             "generic_sa_multi_comparison",
         ],
         recommended_actions=[
-            {"action_type": "run_experiment", "label": "Run SA Dravidian Syllable",
-             "rationale": "Establish initial anchor set via syllable-level SA",
+            {"action_type": "run_experiment",
+             "label": "Queue SA: Dravidian Syllable LM",
+             "rationale": "Establishes initial syllable-level anchor candidates via SA",
              "params": {"experiment_id": "indus_sa_dravidian_syllable"}},
-            {"action_type": "run_research_loop", "label": "Start Research Loop (5 cycles)",
-             "rationale": "Mine papers for anchor candidates",
-             "params": {"max_cycles": 5}},
+            {"action_type": "run_experiment",
+             "label": "Queue SA: Multi-Language Comparison",
+             "rationale": "Compares Dravidian vs Sanskrit vs Hebrew to find best-fit language",
+             "params": {"experiment_id": "generic_sa_multi_comparison"}},
         ],
     ),
     PhaseGoal(
         phase=2, label="Growth",
-        description="Systematic SA comparison and anchor expansion.",
+        description=(
+            "Expand anchor coverage with broader SA experiments. "
+            "All actions queue background jobs — check the Jobs panel for results. "
+            "Use the Research Loop separately to find literature-backed candidates."
+        ),
         min_coverage=0.30, max_coverage=0.60,
         recommended_experiments=[
             "indus_cisi_dravidian_vs_sanskrit",
@@ -177,20 +187,23 @@ _DEFAULT_PHASE_GOALS: list[PhaseGoal] = [
             "generic_sa_multi_comparison",
         ],
         recommended_actions=[
-            {"action_type": "run_experiment", "label": "Run CISI Dravidian vs Sanskrit",
-             "rationale": "Broader corpus SA with current anchors",
+            {"action_type": "run_experiment",
+             "label": "Queue SA: CISI Dravidian vs Sanskrit",
+             "rationale": "Full-corpus SA with current anchors to widen coverage",
              "params": {"experiment_id": "indus_cisi_dravidian_vs_sanskrit"}},
-            {"action_type": "run_experiment", "label": "Run Anchor Sweep",
-             "rationale": "Validate anchor quality across constraint levels",
+            {"action_type": "run_experiment",
+             "label": "Queue Anchor Sweep",
+             "rationale": "Tests how SA consistency improves as anchor count grows",
              "params": {"experiment_id": "indus_anchor_sweep"}},
-            {"action_type": "run_research_loop", "label": "Start Research Loop (10 cycles)",
-             "rationale": "Expand anchor candidates from literature",
-             "params": {"max_cycles": 10}},
         ],
     ),
     PhaseGoal(
         phase=3, label="Validation",
-        description="Cross-validation and falsification experiments.",
+        description=(
+            "Validate and falsify anchor assignments with held-out data and negative controls. "
+            "All actions queue background jobs. "
+            "Use the Research Loop to find literature evidence for disputed readings."
+        ),
         min_coverage=0.60, max_coverage=0.85,
         recommended_experiments=[
             "indus_validation_a1_a3_holdout",
@@ -198,32 +211,37 @@ _DEFAULT_PHASE_GOALS: list[PhaseGoal] = [
             "indus_cisi_structural",
         ],
         recommended_actions=[
-            {"action_type": "run_experiment", "label": "Run A1-A3 Holdout Validation",
-             "rationale": "Cross-validate anchor assignments on held-out data",
+            {"action_type": "run_experiment",
+             "label": "Queue A1–A3 Holdout Validation",
+             "rationale": "Cross-validates anchor assignments on withheld inscription data",
              "params": {"experiment_id": "indus_validation_a1_a3_holdout"}},
-            {"action_type": "run_experiment", "label": "Run Negative Controls",
-             "rationale": "Falsification test to check against random assignment",
+            {"action_type": "run_experiment",
+             "label": "Queue Negative Controls",
+             "rationale": "Falsification: verifies SA beats random assignment",
              "params": {"experiment_id": "indus_validation_neg_controls"}},
-            {"action_type": "run_research_loop", "label": "Start Research Loop (15 cycles)",
-             "rationale": "Focus on validation and falsification gaps",
-             "params": {"max_cycles": 15}},
         ],
     ),
     PhaseGoal(
         phase=4, label="Completion",
-        description="Gap-filling and final validation before 100% coverage.",
+        description=(
+            "Fill remaining gaps to reach 95%+ coverage. "
+            "Run structural experiments to identify unanchored sign clusters. "
+            "Use the Research Loop to mine literature for the remaining hard cases."
+        ),
         min_coverage=0.85, max_coverage=0.95,
         recommended_experiments=[
             "indus_structural_atlas",
             "indus_cgsa_cluster_analysis",
         ],
         recommended_actions=[
-            {"action_type": "run_experiment", "label": "Run Structural Atlas",
-             "rationale": "Map remaining unanchored signs by structural similarity",
+            {"action_type": "run_experiment",
+             "label": "Queue Structural Atlas",
+             "rationale": "Maps unanchored signs by structural similarity to anchored ones",
              "params": {"experiment_id": "indus_structural_atlas"}},
-            {"action_type": "run_research_loop", "label": "Start Research Loop (15 cycles)",
-             "rationale": "Final literature sweep for remaining gap signs",
-             "params": {"max_cycles": 15}},
+            {"action_type": "run_experiment",
+             "label": "Queue CGSA Cluster Analysis",
+             "rationale": "Groups remaining signs by corpus-graph clustering",
+             "params": {"experiment_id": "indus_cgsa_cluster_analysis"}},
         ],
     ),
     PhaseGoal(

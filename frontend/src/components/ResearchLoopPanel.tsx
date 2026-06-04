@@ -349,10 +349,10 @@ export function ResearchLoopPanel() {
 
       {/* ── Header ── */}
       <div style={{ display: "flex", justifyContent: "space-between",
-                    alignItems: "center", marginBottom: 12 }}>
+                    alignItems: "center", marginBottom: 6 }}>
         <div>
           <span style={{ fontSize: 16, fontWeight: 700, color: "#5b21b6" }}>
-            🔄 Integrated Research Loop
+            📚 Paper Mining Engine
           </span>
           <span style={{ marginLeft: 8, padding: "2px 8px", borderRadius: 4,
                          fontSize: 11, fontWeight: 600,
@@ -391,17 +391,21 @@ export function ResearchLoopPanel() {
         </div>
       </div>
 
-      {/* ── Workflow hint ── */}
+      {/* ── Purpose + workflow hint ── */}
       {!running && (
         <div style={{
-          fontSize: 10, color: "#9ca3af", marginBottom: 8,
-          padding: "4px 8px", background: "#f9fafb",
-          borderRadius: 4, lineHeight: 1.5,
+          fontSize: 10, color: "#6b7280", marginBottom: 10,
+          padding: "6px 10px", background: "#f5f3ff",
+          border: "1px solid #e9d5ff",
+          borderRadius: 5, lineHeight: 1.6,
         }}>
-          💡 <strong style={{ color: "#6b7280" }}>Suggested flow:</strong>{" "}
-          Use <em>Phase Guide</em> above to advance automatically ·
-          Then review candidates below ·
-          <em> Manual Loop</em> = override for direct control
+          <strong>What this does:</strong> mines academic papers for sign-reading evidence → extracts insights → stages anchor candidates for your review.
+          {" "}<strong>Separate from SA experiments</strong> — use the Phase Guide above to queue SA jobs.
+          <br />
+          <span style={{ color: "#9ca3af" }}>
+            💡 Typical session: Phase Guide queues SA job → Jobs panel completes → new candidates appear → review below → Archive &amp; Clean → repeat.
+            Run the Paper Mining Loop separately when you want fresh literature evidence.
+          </span>
         </div>
       )}
 

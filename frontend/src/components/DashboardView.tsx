@@ -21,6 +21,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
+  buildSaExperiment,
   createHypothesis,
   updateHypothesis,
   executeAiAction,
@@ -786,6 +787,37 @@ export function DashboardView() {
           // Propagate the failure so the caller (e.g. DeciphermentPanel) can
           // show ✗ Error + retry. 'warn' is reserved for the no-match case above.
           outcome = chainOk ? "success" : "error";
+          break;
+        }
+        case "build_sa_experiment": {
+          const corpus = String(a.params?.corpus || "indus_cisi").trim();
+          const languages = String(a.params?.languages || "dravidian,sanskrit").trim();
+          const saName = a.params?.name ? String(a.params.name) : undefined;
+          const saNSeeds = a.params?.n_seeds ? Number(a.params.n_seeds) : undefined;
+          const saMaxIter = a.params?.max_iterations ? Number(a.params.max_iterations) : undefined;
+          try {
+            const result = await buildSaExperiment({
+              corpus, languages, name: saName,
+              n_seeds: saNSeeds, max_iterations: saMaxIter,
+            });
+            if (result.ok && result.experiment_id) {
+              toast(`Experiment '${result.name}' created! Opening in Experiment Builder...`, "success");
+              // Refresh the experiment registry so the new experiment is visible.
+              void ensureExpRegistry(true);
+              // Navigate to the experiment builder with the new experiment loaded.
+              localStorage.setItem(
+                "glossa_exp_builder_open",
+                JSON.stringify({ action: "load", id: result.experiment_id }),
+              );
+              navigate("exp-builder");
+            } else {
+              toast(result.error || "Failed to build SA experiment", "error");
+              outcome = "error";
+            }
+          } catch (err) {
+            toast(err instanceof Error ? err.message : "Failed to build SA experiment", "error");
+            outcome = "error";
+          }
           break;
         }
         case "ai_chat": {

@@ -137,6 +137,110 @@ _REPO_ROOT = Path(__file__).resolve().parents[2]  # backend -> glossa_lab -> rep
 
 
 @dataclass
+class PhaseGoal:
+    """A research phase milestone."""
+    phase: int
+    label: str
+    description: str
+    min_coverage: float   # corpus_token_coverage lower bound (inclusive)
+    max_coverage: float   # corpus_token_coverage upper bound (exclusive, use 1.01 for 'done')
+    recommended_experiments: list = field(default_factory=list)  # list of experiment IDs
+    recommended_actions: list = field(default_factory=list)       # list of action dicts
+
+
+_DEFAULT_PHASE_GOALS: list[PhaseGoal] = [
+    PhaseGoal(
+        phase=1, label="Bootstrap",
+        description="Initial SA exploration — establish first anchor candidates.",
+        min_coverage=0.0, max_coverage=0.30,
+        recommended_experiments=[
+            "indus_sa_dravidian_syllable",
+            "indus_dravidian_vs_sanskrit",
+            "generic_sa_multi_comparison",
+        ],
+        recommended_actions=[
+            {"action_type": "run_experiment", "label": "Run SA Dravidian Syllable",
+             "rationale": "Establish initial anchor set via syllable-level SA",
+             "params": {"experiment_id": "indus_sa_dravidian_syllable"}},
+            {"action_type": "run_research_loop", "label": "Start Research Loop (5 cycles)",
+             "rationale": "Mine papers for anchor candidates",
+             "params": {"max_cycles": 5}},
+        ],
+    ),
+    PhaseGoal(
+        phase=2, label="Growth",
+        description="Systematic SA comparison and anchor expansion.",
+        min_coverage=0.30, max_coverage=0.60,
+        recommended_experiments=[
+            "indus_cisi_dravidian_vs_sanskrit",
+            "indus_anchor_sweep",
+            "generic_sa_multi_comparison",
+        ],
+        recommended_actions=[
+            {"action_type": "run_experiment", "label": "Run CISI Dravidian vs Sanskrit",
+             "rationale": "Broader corpus SA with current anchors",
+             "params": {"experiment_id": "indus_cisi_dravidian_vs_sanskrit"}},
+            {"action_type": "run_experiment", "label": "Run Anchor Sweep",
+             "rationale": "Validate anchor quality across constraint levels",
+             "params": {"experiment_id": "indus_anchor_sweep"}},
+            {"action_type": "run_research_loop", "label": "Start Research Loop (10 cycles)",
+             "rationale": "Expand anchor candidates from literature",
+             "params": {"max_cycles": 10}},
+        ],
+    ),
+    PhaseGoal(
+        phase=3, label="Validation",
+        description="Cross-validation and falsification experiments.",
+        min_coverage=0.60, max_coverage=0.85,
+        recommended_experiments=[
+            "indus_validation_a1_a3_holdout",
+            "indus_validation_neg_controls",
+            "indus_cisi_structural",
+        ],
+        recommended_actions=[
+            {"action_type": "run_experiment", "label": "Run A1-A3 Holdout Validation",
+             "rationale": "Cross-validate anchor assignments on held-out data",
+             "params": {"experiment_id": "indus_validation_a1_a3_holdout"}},
+            {"action_type": "run_experiment", "label": "Run Negative Controls",
+             "rationale": "Falsification test to check against random assignment",
+             "params": {"experiment_id": "indus_validation_neg_controls"}},
+            {"action_type": "run_research_loop", "label": "Start Research Loop (15 cycles)",
+             "rationale": "Focus on validation and falsification gaps",
+             "params": {"max_cycles": 15}},
+        ],
+    ),
+    PhaseGoal(
+        phase=4, label="Completion",
+        description="Gap-filling and final validation before 100% coverage.",
+        min_coverage=0.85, max_coverage=0.95,
+        recommended_experiments=[
+            "indus_structural_atlas",
+            "indus_cgsa_cluster_analysis",
+        ],
+        recommended_actions=[
+            {"action_type": "run_experiment", "label": "Run Structural Atlas",
+             "rationale": "Map remaining unanchored signs by structural similarity",
+             "params": {"experiment_id": "indus_structural_atlas"}},
+            {"action_type": "run_research_loop", "label": "Start Research Loop (15 cycles)",
+             "rationale": "Final literature sweep for remaining gap signs",
+             "params": {"max_cycles": 15}},
+        ],
+    ),
+    PhaseGoal(
+        phase=5, label="Done",
+        description="Target reached: ≥95% corpus token coverage.",
+        min_coverage=0.95, max_coverage=1.01,
+        recommended_experiments=[],
+        recommended_actions=[
+            {"action_type": "open_view", "label": "Review Final Anchors",
+             "rationale": "Decipherment target reached — review and publish anchor set",
+             "params": {"view": "signs"}},
+        ],
+    ),
+]
+
+
+@dataclass
 class ProjectConfig:
     project_id: str = "indus"
     project_name: str = "Indus Script Decipherment"
@@ -148,6 +252,7 @@ class ProjectConfig:
     sign_total: int = 713
     language_family_bias: str = "Dravidian"
     ai_context_summary: str = ""  # if non-empty, replaces the context block in AG2 system prompt
+    phase_goals: list = field(default_factory=lambda: list(_DEFAULT_PHASE_GOALS))
 
     def corpus_csv_path(self) -> Path:
         return _REPO_ROOT / self.corpus_csv

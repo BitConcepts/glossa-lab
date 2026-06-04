@@ -14,6 +14,7 @@
  */
 
 import { Fragment, useCallback, useEffect, useState } from "react";
+import { PhaseAdvancerPanel } from "./PhaseAdvancerPanel";
 
 const BASE = "/api/v1/research-loop";
 
@@ -542,6 +543,9 @@ export function ResearchLoopPanel() {
           proposalKey={proposalKey}
           onStartLoop={(key) => void startLoop(key)} />
       )}
+
+      {/* ── Phase Advancement ── */}
+      <PhaseAdvancerPanel />
 
       {/* ── Staging review queue ── */}
       {staging?.counts != null &&

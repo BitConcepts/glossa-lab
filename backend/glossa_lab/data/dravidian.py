@@ -12,7 +12,45 @@ likely represented on Indus seals (animals, trade, religion, numerals).
 
 from __future__ import annotations
 
+import logging as _logging
 from pathlib import Path
+
+_log = _logging.getLogger(__name__)
+
+
+def get_dravidian_vocab_cldf(limit: int = 5000) -> dict[str, str]:
+    """Build a form→gloss dict from CLDF data for Dravidian languages.
+
+    Falls through silently on any error so it never blocks startup.
+    """
+    try:
+        from glossa_lab.data.cldf_loader import load_forms, load_languages  # noqa: PLC0415
+
+        languages = load_languages()
+        drav_ids = {
+            lang.get("language_id")
+            for lang in languages
+            if "dravidian" in (lang.get("family") or "").lower()
+        }
+        if not drav_ids:
+            return {}
+
+        forms = load_forms()
+        result: dict[str, str] = {}
+        for f in forms:
+            if len(result) >= limit:
+                break
+            if f.get("language_id") not in drav_ids:
+                continue
+            form_str = f.get("form", "").strip()
+            gloss_str = f.get("gloss", "").strip()
+            if form_str and gloss_str and form_str not in result:
+                result[form_str] = gloss_str
+        return result
+    except Exception:
+        _log.debug("get_dravidian_vocab_cldf failed", exc_info=True)
+        return {}
+
 
 # ── Proto-Dravidian reconstructed vocabulary (from DEDR) ──────────
 # Format: root → English gloss

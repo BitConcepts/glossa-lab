@@ -1025,7 +1025,10 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   const draggedExpId = useRef<string | null>(null);
   const onDrop = useCallback((ev: React.DragEvent<HTMLDivElement>) => {
     ev.preventDefault();
-    if (!activeExp) return;  // guard: no experiment open, ignore drop
+    if (!activeExp) {
+      // Auto-create an unsaved draft so users can start building immediately
+      setActiveExp({ name: "Untitled Draft", description: "", nodes: [], edges: [] });
+    }
     if (!reactFlowWrapper.current) return;
     const rect = reactFlowWrapper.current.getBoundingClientRect();
     const pos = { x: Math.round((ev.clientX - rect.left - 80) / 15) * 15, y: Math.round((ev.clientY - rect.top - 30) / 15) * 15 };
@@ -1053,7 +1056,6 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   }, [catalog, savedExps, darkMode]);
   const onDragOver = (ev: React.DragEvent) => {
     ev.preventDefault();  // must always prevent default to allow drops
-    if (!activeExp) return;
     ev.dataTransfer.dropEffect = "move";
   };
 
@@ -1432,7 +1434,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
           { label: "＋ New",    title: "New experiment",      action: () => setShowNew(true) },
           { label: "↑ Import",  title: "Import from JSON",    action: () => importRef.current?.click() },
           { label: "↓ Export",  title: "Export to JSON",      disabled: !activeExp,                 action: exportExp },
-          { label: saving ? "…" : "💾 Save", title: "Save",   disabled: saving || !activeExp,       action: () => void doSave() },
+          { label: saving ? "…" : "💾 Save", title: "Save",   disabled: saving,       action: () => void doSave() },
           { label: "⬦ Arrange", title: "Auto-arrange nodes",  disabled: !activeExp || nodes.length === 0, action: doArrange },
         ].map(({ label, title, action, disabled }) => (
           <button key={label} onClick={action} disabled={disabled} title={title}
@@ -1454,7 +1456,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
           {!activeExp && (
             <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 10, zIndex: 5, pointerEvents: "none" }}>
               <div style={{ fontSize: 40 }}>🔀</div>
-              <div style={{ fontSize: 14, color: th.textMuted, fontWeight: 600 }}>Create or select a graph experiment</div>
+              <div style={{ fontSize: 14, color: th.textMuted, fontWeight: 600 }}>Drag nodes from the palette to start — or create a named experiment first</div>
               <div style={{ fontSize: 11, color: th.textFaint }}>Use the panel on the left</div>
             </div>
           )}

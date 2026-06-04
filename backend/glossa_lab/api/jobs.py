@@ -103,6 +103,13 @@ async def update_job(job_id: str, body: JobUpdate) -> JobResponse:
     if job is None:
         raise HTTPException(status_code=404, detail="Job not found")
     await db.update_job_status(job_id, body.status)
+    # Mark dashboard insights stale when any job completes
+    if body.status == "completed":
+        try:
+            from glossa_lab.api.dashboard import mark_insights_stale  # noqa: PLC0415
+            mark_insights_stale()
+        except Exception:  # noqa: BLE001
+            pass
     if body.result_data:
         now = datetime.now(timezone.utc).isoformat()
         await db.store_result(job_id=job_id, data=body.result_data, created_at=now)

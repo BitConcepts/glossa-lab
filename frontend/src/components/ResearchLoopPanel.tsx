@@ -373,10 +373,11 @@ export function ResearchLoopPanel() {
           </select>
           {!running && !showConfirm && (
             <button onClick={() => setShowConfirm(true)}
+              title="Manually start the research loop — or use Phase Guide above for guided advancement"
               style={{ padding: "6px 14px", border: "1px solid #7c3aed",
-                       borderRadius: 6, background: "#7c3aed", color: "#fff",
+                       borderRadius: 6, background: "#fff", color: "#7c3aed",
                        fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
-              ▶ Start Loop
+              ▶ Manual Loop
             </button>
           )}
           {running && (
@@ -390,6 +391,20 @@ export function ResearchLoopPanel() {
         </div>
       </div>
 
+      {/* ── Workflow hint ── */}
+      {!running && (
+        <div style={{
+          fontSize: 10, color: "#9ca3af", marginBottom: 8,
+          padding: "4px 8px", background: "#f9fafb",
+          borderRadius: 4, lineHeight: 1.5,
+        }}>
+          💡 <strong style={{ color: "#6b7280" }}>Suggested flow:</strong>{" "}
+          Use <em>Phase Guide</em> above to advance automatically ·
+          Then review candidates below ·
+          <em> Manual Loop</em> = override for direct control
+        </div>
+      )}
+
       {/* ── Confirmation panel ── */}
       {!running && showConfirm && (
         <div style={{
@@ -397,12 +412,15 @@ export function ResearchLoopPanel() {
           background: "#ede9fe", marginBottom: 12,
         }}>
           <div style={{ fontSize: 13, fontWeight: 700, color: "#5b21b6", marginBottom: 8 }}>
-            🔄 Research Loop — {cycles} cycles planned
+            🔄 Manual Research Loop — {cycles} cycles
           </div>
           <div style={{ fontSize: 11, color: "#374151", lineHeight: 1.6 }}>
             <div><strong>Phase 1:</strong> Blitz-mine all 15 gap topics</div>
             <div><strong>Phase 2:</strong> Adaptive exploration — propose → build → verify → run → analyze</div>
             <div><strong>Phase 3:</strong> Stage anchor candidates for your review</div>
+          </div>
+          <div style={{ fontSize: 10, color: "#6b7280", marginTop: 4 }}>
+            ℹ Use Phase Guide above for guided advancement. Manual loop runs all cycles unconditionally.
           </div>
           <div style={{ display: "flex", justifyContent: "flex-end", gap: 8, marginTop: 10 }}>
             <button

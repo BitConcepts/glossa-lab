@@ -48,7 +48,7 @@ export function PhaseAdvancerPanel() {
   const [advanceResult, setAdvanceResult] = useState<{
     ok: boolean; message: string; job_id?: string | null;
   } | null>(null);
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(true);
 
   const fetchStatus = useCallback(async () => {
     try {
@@ -91,7 +91,7 @@ export function PhaseAdvancerPanel() {
 
   return (
     <div style={{
-      border: `1px solid ${colors.border}`,
+      border: `2px solid ${colors.border}`,
       borderRadius: 8,
       background: colors.bg,
       margin: "12px 0",
@@ -114,6 +114,9 @@ export function PhaseAdvancerPanel() {
           </span>
           <span style={{ fontWeight: 700, color: colors.text, fontSize: 13 }}>
             {status.phase_label}
+          </span>
+          <span style={{ fontSize: 10, color: "#9ca3af", marginLeft: 4 }}>
+            Guided autopilot
           </span>
           <span style={{ fontSize: 11, color: "#6b7280" }}>
             {pct}% coverage
@@ -224,7 +227,11 @@ export function PhaseAdvancerPanel() {
                 cursor: (advancing || status.top_actions.length === 0) ? "default" : "pointer",
                 whiteSpace: "nowrap",
               }}>
-              {advancing ? "Advancing…" : "▶ Advance One Step"}
+              {advancing
+                ? "Advancing…"
+                : status.top_actions.length > 0
+                  ? `▶ ${status.top_actions[0].label.slice(0, 50)}`
+                  : "▶ No actions planned"}
             </button>
             <button
               onClick={() => void fetchStatus()}
@@ -256,6 +263,13 @@ export function PhaseAdvancerPanel() {
               )}
             </div>
           )}
+
+          <div style={{ fontSize: 10, color: "#9ca3af", marginTop: 8, textAlign: "center" }}>
+            Or{" "}
+            <span style={{ color: "#6b7280", textDecoration: "underline", cursor: "default" }}>
+              use the Research Loop below for manual control
+            </span>
+          </div>
         </div>
       )}
     </div>

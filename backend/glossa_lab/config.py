@@ -248,18 +248,29 @@ _DEFAULT_PHASE_GOALS: list[PhaseGoal] = [
         phase=5, label="Done",
         description=(
             "Target reached: ≥95% corpus token coverage. "
-            "The research phase goal is complete. "
-            "Next steps: (1) Run Foundation Check to verify data integrity, "
-            "(2) Review promoted signs in the Signs view to spot-check readings, "
-            "(3) Upgrade LOW-confidence signs by running SA validation experiments, "
-            "(4) Regenerate AI Insights to reflect the updated anchor set. "
-            "The Research Loop is still available for additional literature mining."
+            "Complete these validation steps to confirm the decipherment: "
+            "(1) Run SA experiments to validate anchor consistency at the new coverage level, "
+            "(2) Regenerate AI Insights once experiments complete to reflect the updated anchor set, "
+            "(3) Review promoted signs to spot-check readings and mark any incorrect ones. "
+            "The Phase Guide will walk you through each step in order."
         ),
         min_coverage=0.95, max_coverage=1.01,
-        recommended_experiments=[],
+        # SA validation experiments come first — validate the promoted signs
+        recommended_experiments=[
+            "indus_cisi_dravidian_vs_sanskrit",
+            "indus_anchor_sweep",
+        ],
         recommended_actions=[
-            {"action_type": "open_view", "label": "Review Final Anchors",
-             "rationale": "Decipherment target reached — review and publish anchor set",
+            # These run AFTER the SA experiments above (which are added first by plan_next)
+            {"action_type": "regenerate_insights", "label": "Regenerate AI Insights",
+             "rationale": (
+                 "SA experiments complete — regenerate the AI insight now so it reflects "
+                 "the validated anchor set and 96%+ coverage. This opens the Dashboard and triggers regeneration."
+             ),
+             "params": {}},
+            {"action_type": "open_view", "label": "Review Promoted Signs",
+             "rationale": "Spot-check newly promoted signs in the Signs index. "
+                          "Verify readings, mark any incorrect ones for re-review.",
              "params": {"view": "signs"}},
         ],
     ),

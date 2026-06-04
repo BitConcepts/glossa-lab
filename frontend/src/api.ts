@@ -1677,6 +1677,8 @@ export interface DashboardHighlights {
   n_atomic_nodes: number;
   since_days: number;
   insight: DashboardInsight | null;
+  insights_stale?: boolean;
+  stale_since?: number;   // epoch seconds
 }
 
 export const getDashboardHighlights = (

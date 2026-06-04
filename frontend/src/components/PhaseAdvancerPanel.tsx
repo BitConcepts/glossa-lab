@@ -47,6 +47,7 @@ export function PhaseAdvancerPanel() {
   const [advancing, setAdvancing] = useState(false);
   const [advanceResult, setAdvanceResult] = useState<{
     ok: boolean; message: string; job_id?: string | null;
+    action_type?: string | null;
   } | null>(null);
   const [expanded, setExpanded] = useState(true);
   // Track experiment IDs queued this session so button advances to next action
@@ -70,16 +71,24 @@ export function PhaseAdvancerPanel() {
       const res = await fetch(`${BASE}/advance`, { method: "POST",
         headers: { "Content-Type": "application/json" }, body: "{}" });
       if (res.ok) {
-        const data = await res.json() as {
+      const data = await res.json() as {
           ok: boolean; message: string; job_id?: string | null;
-          experiment_id?: string | null;
+          experiment_id?: string | null; action_type?: string | null;
         };
-        setAdvanceResult(data);
-        // Mark this experiment as queued so button advances to next action
-        if (data.ok && data.experiment_id) {
-          setQueuedExpIds(prev => new Set([...prev, data.experiment_id!]));
+        // For open_view actions, navigate directly and don't linger
+        if (data.ok && data.action_type === "open_view") {
+          const viewParam = (nextAction?.params?.view as string) || "signs";
+          window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: viewParam } }));
+          // Don't show the result card — just refresh
+          await fetchStatus();
+        } else {
+          setAdvanceResult(data);
+          // Mark this experiment as queued so button advances to next action
+          if (data.ok && data.experiment_id) {
+            setQueuedExpIds(prev => new Set([...prev, data.experiment_id!]));
+          }
+          await fetchStatus();
         }
-        await fetchStatus();
       }
     } catch { /* ignore */ }
     finally { setAdvancing(false); }

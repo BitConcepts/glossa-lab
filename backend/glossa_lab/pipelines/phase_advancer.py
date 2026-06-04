@@ -42,8 +42,19 @@ class PhaseStatus:
 
 @dataclass
 class PhaseAction:
-    """A recommended action for phase advancement."""
-    action_type: str    # run_experiment | run_research_loop | open_view | review_candidates
+    """A recommended action for phase advancement.
+
+    action_type values:
+      run_experiment    — queue a graph experiment as a background job
+      review_candidates — informational: staged candidates need review (no job queued)
+      verify_sa         — informational: approved candidates ready to archive (no job queued)
+      open_view         — informational: navigate to a specific view (no job queued)
+
+    Note: 'run_research_loop' is intentionally NOT supported here. The Research Loop
+    is a paper-mining SSE stream that must be started manually from the loop panel.
+    It operates independently of the phase advancement system.
+    """
+    action_type: str
     label: str
     rationale: str
     params: dict
@@ -199,31 +210,59 @@ class PhaseAdvancer:
             ))
             priority += 1
 
-        # 3. Phase-specific recommended experiments
+        # 3. Phase-specific recommended actions (from config)
+        # These may include run_experiment entries from recommended_experiments + recommended_actions.
+        # run_research_loop is intentionally excluded — it can't be queued as a background job.
+        seen_exp_ids: set[str] = set()
         for exp_id in current_goal.recommended_experiments:
+            if exp_id in seen_exp_ids:
+                continue
+            seen_exp_ids.add(exp_id)
             actions.append(PhaseAction(
                 action_type="run_experiment",
-                label=f"Run: {exp_id.replace('_', ' ').title()}",
+                label=f"Queue: {exp_id.replace('_', ' ').title()}",
                 rationale=(
-                    f"Recommended for {current_goal.label} phase "
-                    f"(coverage {status.coverage:.1%} → "
-                    f"target {status.next_milestone:.1%})"
+                    f"Recommended SA/validation experiment for {current_goal.label} phase "
+                    f"(coverage {status.coverage:.1%} → target {status.next_milestone:.1%})"
                 ),
                 params={"experiment_id": exp_id},
                 priority=priority,
             ))
             priority += 1
 
-        # 4. Phase-specific recommended actions
         for act in current_goal.recommended_actions:
+            atype = act.get("action_type", "no_op")
+            # Skip run_research_loop — the Research Loop is a separate manual tool
+            # and cannot be queued as a background job from the Phase Advancer.
+            if atype == "run_research_loop":
+                continue
+            exp_id_act = act.get("params", {}).get("experiment_id", "")
+            if exp_id_act and exp_id_act in seen_exp_ids:
+                continue  # already added via recommended_experiments
+            if exp_id_act:
+                seen_exp_ids.add(exp_id_act)
             actions.append(PhaseAction(
-                action_type=act.get("action_type", "no_op"),
+                action_type=atype,
                 label=act.get("label", ""),
                 rationale=act.get("rationale", ""),
                 params=act.get("params", {}),
                 priority=priority,
             ))
             priority += 1
+
+        # 4. If no experiment actions available, suggest using the Research Loop
+        has_experiment_actions = any(a.action_type == "run_experiment" for a in actions)
+        if not has_experiment_actions and current_goal.phase < 5:
+            actions.append(PhaseAction(
+                action_type="open_view",
+                label="No experiments queued — use Manual Loop for paper mining",
+                rationale=(
+                    "No SA experiments are configured for this phase. "
+                    "Use the Research Loop below to mine literature for anchor candidates."
+                ),
+                params={"view": "research_loop"},
+                priority=priority,
+            ))
 
         return sorted(actions, key=lambda a: a.priority)
 
@@ -233,8 +272,6 @@ class PhaseAdvancer:
         Queues a job for experiment or research loop actions.
         Returns a PhaseAdvanceResult with job_id if applicable.
         """
-        from datetime import UTC, datetime  # noqa: PLC0415
-
         status = self.assess()
         plan = self.plan_next()
         if not plan:
@@ -256,19 +293,24 @@ class PhaseAdvancer:
                     from glossa_lab.experiment_graph import queue_graph_experiment  # noqa: PLC0415
                     job = await queue_graph_experiment(exp_id, db)
                     job_id = job.get("id") if job else None
+                message = (
+                    f"Experiment queued: {top.label}"
+                    + (f" — job {job_id}" if job_id else " (no DB, dry-run)")
+                    + ". Monitor progress in the Jobs panel."
+                )
 
-            elif top.action_type == "run_research_loop":
-                if db:
-                    max_cycles = int(top.params.get("max_cycles", 10))
-                    now = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
-                    job = await db.create_job(
-                        name=f"Phase {status.current_phase} Research Loop ({max_cycles} cycles)",
-                        pipeline="research_loop",
-                        params={"max_cycles": max_cycles},
-                        created_at=now,
-                        initial_status="pending",
-                    )
-                    job_id = job.get("id") if job else None
+            elif top.action_type in ("review_candidates", "verify_sa"):
+                # Informational actions — no job queued; user action required in UI
+                message = (
+                    f"{top.label} — no job needed. "
+                    "Go to the Staging Review queue below to take action."
+                )
+
+            elif top.action_type == "open_view":
+                message = f"{top.label}"
+
+            else:
+                message = f"Action acknowledged: {top.label}"
 
             return PhaseAdvanceResult(
                 ok=True,
@@ -276,7 +318,7 @@ class PhaseAdvancer:
                 action_type=top.action_type,
                 job_id=job_id,
                 experiment_id=exp_id,
-                message=f"Action queued: {top.label}" + (f" (job {job_id})" if job_id else ""),
+                message=message,
                 current_phase=status.current_phase,
                 coverage=status.coverage,
             )

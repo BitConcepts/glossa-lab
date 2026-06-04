@@ -1949,17 +1949,20 @@ function PromoteToAnchors({
     }
   };
 
+  const navigate = (view: string) =>
+    window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view } }));
+
   if (result?.ok && result.promoted > 0) {
     return (
       <div style={{
         border: "1px solid #a5f3fc", borderRadius: 8, background: "#ecfeff",
         padding: "12px 16px",
       }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          <span style={{ fontSize: 18 }}>📌</span>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
+          <span style={{ fontSize: 18 }}>📋</span>
           <div style={{ flex: 1 }}>
             <div style={{ fontWeight: 700, color: "#0e7490", fontSize: 13 }}>
-              {result.promoted} signs promoted to INDUS_FINAL_ANCHORS
+              {result.promoted} sign{result.promoted !== 1 ? "s" : ""} promoted to INDUS_FINAL_ANCHORS
             </div>
             <div style={{ fontSize: 11, color: "#164e63", marginTop: 2 }}>
               Coverage: {(result.prev_coverage * 100).toFixed(1)}%
@@ -1974,10 +1977,52 @@ function PromoteToAnchors({
                 </span>
               )}
             </div>
-            <div style={{ fontSize: 10, color: "#0891b2", marginTop: 4 }}>
+            <div style={{ fontSize: 10, color: "#0891b2", marginTop: 3 }}>
               ✓ Signs index refreshed · Insights stale flag set · Foundation check marked dirty
             </div>
           </div>
+        </div>
+        {/* Next steps */}
+        <div style={{
+          background: "#f0f9ff", border: "1px solid #bae6fd",
+          borderRadius: 6, padding: "8px 12px", fontSize: 11,
+        }}>
+          <div style={{ fontWeight: 700, color: "#0369a1", marginBottom: 6 }}>
+            🧩 What to do next:
+          </div>
+          <ol style={{ margin: 0, paddingLeft: 18, color: "#075985", lineHeight: 1.8 }}>
+            <li>
+              <button
+                onClick={() => navigate("foundation-check")}
+                style={{ background: "none", border: "none", color: "#0369a1", cursor: "pointer",
+                  fontWeight: 600, fontSize: 11, padding: 0, textDecoration: "underline" }}
+              >✅ Run Foundation Check
+              </button>
+              {" "}— verify the new LOW-confidence anchors don’t conflict with existing HIGH/MEDIUM ones
+            </li>
+            <li>
+              <button
+                onClick={() => navigate("signs")}
+                style={{ background: "none", border: "none", color: "#0369a1", cursor: "pointer",
+                  fontWeight: 600, fontSize: 11, padding: 0, textDecoration: "underline" }}
+              >🔤 Review Signs
+              </button>
+              {" "}— inspect the newly promoted signs, upgrade confident ones to MEDIUM via SA experiments
+            </li>
+            <li>
+              🔄 Regenerate AI Insights on the Dashboard — the stale flag is set so new coverage will appear
+            </li>
+            <li>
+              ▶ Run SA Experiments (Phase Guide above) to validate promoted readings at the new coverage level
+            </li>
+          </ol>
+        </div>
+        <div style={{ marginTop: 8, fontSize: 10, color: "#64748b", lineHeight: 1.5 }}>
+          <strong>About “Review Final Anchors”</strong> in the Phase Guide: that button navigates you to
+          the Signs page, which now shows all {result.promoted + result.skipped} promoted signs alongside
+          the existing HIGH/MEDIUM anchors. Use it to spot-check readings and mark any incorrect ones for
+          re-review. Promoted signs start as LOW or MEDIUM confidence — run an SA experiment to gather
+          statistical evidence before upgrading them further.
         </div>
       </div>
     );

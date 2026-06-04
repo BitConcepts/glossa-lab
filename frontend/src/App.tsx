@@ -360,8 +360,14 @@ function AppContent() {
       // Redirect legacy exp-builder links to the unified experiments canvas
       if (view === "exp-builder") view = "experiments";
       // Redirect "studies" to builder (Projects/Studies view); "indus-data" to dashboard
-      if ((view as string) === "studies") view = "builder" as Tab;
-      if ((view as string) === "indus-data") view = "dashboard" as Tab;
+      if ((view as string) === "studies")     view = "builder" as Tab;
+      if ((view as string) === "indus-data")  view = "dashboard" as Tab;
+      // Phase Advancer + backend use short aliases — map to real Tab IDs
+      if ((view as string) === "foundation")  view = "foundation-check" as Tab;
+      if ((view as string) === "ai_tools")    view = "ai-tools" as Tab;
+      if ((view as string) === "hypothesis" || (view as string) === "hypotheses") view = "hypotheses" as Tab;
+      if ((view as string) === "notebook" || (view as string) === "notebooks")    view = "notebooks" as Tab;
+      if ((view as string) === "job" || (view as string) === "jobs")              view = "jobs" as Tab;
       if (view && (allItems.some(i => i.id === view) || view === "experiments")) setTab(view);
     };
     window.addEventListener("glossa:navigate", handler);

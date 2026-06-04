@@ -599,6 +599,10 @@ export function ResearchLoopPanel() {
                 await fetch(`${BASE}/staging/archive`, { method: "POST" });
                 void fetchStaging();
               }}
+              onPrune={async () => {
+                const res = await fetch(`${BASE}/staging/rejected`, { method: "DELETE" });
+                if (res.ok) await fetchStaging();
+              }}
             />
           )}
         </div>
@@ -1106,15 +1110,18 @@ function StagingReview({
   staging,
   onAction,
   onArchive: _onArchive,
+  onPrune,
 }: {
   staging: StagingData;
   onAction: (sign: string, reading: string, action: StagingAction,
              reason?: string) => Promise<void>;
   onArchive: () => Promise<void>;
+  onPrune: () => Promise<void>;
 }) {
   void _onArchive; // retained for caller compatibility; auto-archive replaces manual
   const [bulkBusy, setBulkBusy] = useState<"approve" | "reject" | null>(null);
   const [busyKey,  setBusyKey]  = useState<string | null>(null);
+  const [pruneConfirm, setPruneConfirm] = useState(false);
   const [rejectingKey, setRejectingKey] = useState<string | null>(null);
   const [rejectReason, setRejectReason] = useState("");
   const [showApproved, setShowApproved] = useState(true);
@@ -1203,6 +1210,15 @@ function StagingReview({
     setBulkBusy("reject");
     try { for (const c of rejected) await onAction(c.sign, c.proposed_reading, "staged"); }
     finally { setBulkBusy(null); }
+  };
+  const pruneRejected = async () => {
+    setPruneConfirm(false);
+    setBulkBusy("reject");
+    try {
+      await onPrune();
+    } catch { /* ignore */ } finally {
+      setBulkBusy(null);
+    }
   };
   const allReviewed = staged.length === 0 && (approved.length + rejected.length) > 0;
 
@@ -1629,6 +1645,41 @@ function StagingReview({
               }}>
               ↩ Re-stage All
             </button>
+            {!pruneConfirm ? (
+              <button
+                disabled={isBusy || rejected.length === 0}
+                onClick={() => setPruneConfirm(true)}
+                title="Permanently delete all rejected candidates (cannot be undone)"
+                style={{
+                  padding: "3px 10px", fontSize: 10, fontWeight: 600,
+                  border: "1px solid #dc2626", borderRadius: 4,
+                  background: "#fef2f2", color: "#dc2626",
+                  cursor: (isBusy || rejected.length === 0) ? "default" : "pointer",
+                  whiteSpace: "nowrap", marginLeft: 6,
+                }}>
+                🗑 Prune {rejected.length}
+              </button>
+            ) : (
+              <span style={{ display: "flex", gap: 4, alignItems: "center", marginLeft: 6 }}>
+                <span style={{ fontSize: 10, color: "#dc2626", fontWeight: 600 }}>
+                  Delete {rejected.length} rejected?
+                </span>
+                <button
+                  onClick={() => void pruneRejected()}
+                  style={{
+                    padding: "3px 8px", fontSize: 10, fontWeight: 700,
+                    border: "1px solid #dc2626", borderRadius: 4,
+                    background: "#dc2626", color: "#fff", cursor: "pointer",
+                  }}>Yes</button>
+                <button
+                  onClick={() => setPruneConfirm(false)}
+                  style={{
+                    padding: "3px 8px", fontSize: 10,
+                    border: "1px solid #d1d5db", borderRadius: 4,
+                    background: "#fff", cursor: "pointer",
+                  }}>No</button>
+              </span>
+            )}
           </div>
           {showRejected && rejected.map((c) => (
             <div key={`${c.sign}:${c.proposed_reading}`} style={{

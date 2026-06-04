@@ -5,9 +5,10 @@
  * and an "Advance One Step" button that queues the top action as a job.
  */
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 const BASE = "/api/v1/phase";
+const JOBS_BASE = "/api/v1/jobs";
 
 interface PhaseAction {
   action_type: string;
@@ -50,8 +51,10 @@ export function PhaseAdvancerPanel() {
     action_type?: string | null;
   } | null>(null);
   const [expanded, setExpanded] = useState(true);
-  // Track experiment IDs queued this session so button advances to next action
+  // Experiment IDs that have been queued/started/completed — drives button advancement.
+  // Populated from the Jobs API on mount and updated live by polling.
   const [queuedExpIds, setQueuedExpIds] = useState<Set<string>>(new Set());
+  const pollingRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const fetchStatus = useCallback(async () => {
     try {
@@ -62,7 +65,53 @@ export function PhaseAdvancerPanel() {
     finally { setLoading(false); }
   }, []);
 
+  /** Check the Jobs API for any experiment jobs that are already queued/running/done.
+   *  Called on mount and every 8 s so the button auto-advances without user action. */
+  const syncQueuedFromJobs = useCallback(async (watchExpIds: string[]) => {
+    if (watchExpIds.length === 0) return;
+    try {
+      const res = await fetch(JOBS_BASE);
+      if (!res.ok) return;
+      const jobs = await res.json() as Array<{ params?: { exp_id?: string }; status?: string }>;
+      const found = new Set<string>();
+      for (const job of jobs) {
+        const expId = job.params?.exp_id ?? "";
+        if (watchExpIds.includes(expId) &&
+            ["pending", "running", "completed"].includes(job.status ?? "")) {
+          found.add(expId);
+        }
+      }
+      if (found.size > 0) {
+        setQueuedExpIds(prev => {
+          const merged = new Set([...prev, ...found]);
+          // Only trigger re-render if something actually changed
+          if (merged.size === prev.size) return prev;
+          return merged;
+        });
+      }
+    } catch { /* jobs endpoint unavailable — silently skip */ }
+  }, []);
+
   useEffect(() => { void fetchStatus(); }, [fetchStatus]);
+
+  // Once we have the phase status, start polling the Jobs API every 8 s.
+  // This makes the button auto-advance as soon as a job is created or completes,
+  // with no user interaction needed.
+  useEffect(() => {
+    if (!status) return;
+    const expIds = status.top_actions
+      .filter(a => a.action_type === "run_experiment")
+      .map(a => a.params.experiment_id as string)
+      .filter(Boolean);
+    if (expIds.length === 0) return;
+    // Sync immediately on mount (restores state after navigation/reload)
+    void syncQueuedFromJobs(expIds);
+    // Then poll every 8 s
+    pollingRef.current = setInterval(() => void syncQueuedFromJobs(expIds), 8_000);
+    return () => {
+      if (pollingRef.current) clearInterval(pollingRef.current);
+    };
+  }, [status?.top_actions, syncQueuedFromJobs]);
 
   const advance = async () => {
     setAdvancing(true);

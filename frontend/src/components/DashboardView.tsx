@@ -526,6 +526,10 @@ export function DashboardView() {
   const applyAction = async (a: DashboardNextAction, key: string) => {
     if (isApplying(key)) return; // only block the SAME action, not others
     setApplyingSet(prev => new Set(prev).add(key));
+    // Safety timeout: if action takes more than 45s, auto-release so button doesn't stay stuck
+    const timeoutId = setTimeout(() => {
+      setApplyingSet(prev => { const n = new Set(prev); n.delete(key); return n; });
+    }, 45_000);
     // Track outcome for the per-button checkmark/error indicator. Initially
     // assume success; downgrade on warning/error inside each branch.
     let outcome: ApplyResult = "success";
@@ -852,6 +856,7 @@ export function DashboardView() {
       if (outcome === "error" || outcome === "warn") {
         console.warn(`[Dashboard] action ${a.action_type} (${key}) outcome=${outcome}`);
       }
+      clearTimeout(timeoutId);
       setApplyingSet(prev => { const n = new Set(prev); n.delete(key); return n; });
       setApplyResult((prev) => ({ ...prev, [key]: outcome }));
       // Persist to action result log

@@ -833,7 +833,7 @@ export function AIChatWindow() {
               {msg.role === "user" ? "U" : "G"}
             </div>
             <div style={{ maxWidth: "80%", display: "flex", flexDirection: "column", gap: 2, minWidth: 0 }}>
-              <div style={{ padding: "8px 11px", borderRadius: 8, fontSize: 12, lineHeight: 1.65, background: msg.role === "user" ? "#1e3a5f" : msg.error ? "#fef2f2" : "#f8f9fa", color: msg.role === "user" ? "#fff" : msg.error ? "#dc2626" : "#111827", border: msg.role === "user" ? "none" : `1px solid ${msg.error ? "#fca5a5" : "#e5e7eb"}` }}>
+            <div style={{ padding: "8px 11px", borderRadius: 8, fontSize: 12, lineHeight: 1.65, userSelect: "text", background: msg.role === "user" ? "#1e3a5f" : msg.error ? "#fef2f2" : "#f8f9fa", color: msg.role === "user" ? "#fff" : msg.error ? "#dc2626" : "#111827", border: msg.role === "user" ? "none" : `1px solid ${msg.error ? "#fca5a5" : "#e5e7eb"}` }}>
                 {msg.loading
                   ? <span style={{ color: "#9ca3af" }}>✨ Thinking…</span>
                   : msg.role === "user"
@@ -863,9 +863,9 @@ export function AIChatWindow() {
               {/* Per-message actions row */}
               <div style={{ display: "flex", gap: 5, alignItems: "center", paddingLeft: msg.role === "user" ? 0 : 4, justifyContent: msg.role === "user" ? "flex-end" : "flex-start" }}>
                 <span style={{ fontSize: 9, color: "#9ca3af" }}>{fmtTime(msg.timestamp)}</span>
-                {!msg.loading && (
+              {!msg.loading && (
                   <>
-                    <CopyButton text={msg.content} />
+                    <CopyButton text={msg.content} label="📋 Copy" style={{ fontSize: 10 }} />
                     <button onClick={() => setMessages(prev => prev.filter((_, i) => i !== idx))} title="Delete"
                       style={{ border: "none", background: "none", cursor: "pointer", fontSize: 10, color: "#d1d5db", padding: 0 }}>×</button>
                   </>
@@ -878,7 +878,7 @@ export function AIChatWindow() {
         {/* Bottom toolbar */}
         {messages.length > 0 && !busy && (
           <div style={{ display: "flex", gap: 5, justifyContent: "center", marginTop: 4, flexWrap: "wrap" }}>
-            <button onClick={() => { const t = messages.filter(m => !m.loading).map(m => `[${m.role.toUpperCase()} ${fmtTime(m.timestamp)}]\n${m.content}`).join("\n\n"); navigator.clipboard.writeText(t); }} style={botBtn}>⏘ Copy all</button>
+          <button onClick={() => { const t = messages.filter(m => !m.loading).map(m => `[${m.role.toUpperCase()} ${fmtTime(m.timestamp)}]\n${m.content}`).join("\n\n"); navigator.clipboard.writeText(t).then(() => undefined); }} style={{ ...botBtn, fontWeight: 600 }}>📋 Copy All</button>
             <button onClick={exportMd}  style={botBtn}>📥 Export MD</button>
             <button onClick={exportPdf} style={botBtn}>📥 Export PDF</button>
           </div>
@@ -1192,7 +1192,7 @@ export function ChatInline() {
           return (
             <div key={msg.id}>
               <div style={{ display: "flex", gap: 4, alignItems: "flex-start", flexDirection: msg.role === "user" ? "row-reverse" : "row" }}>
-                <div style={{ padding: "4px 8px", borderRadius: 5, fontSize: 11, lineHeight: 1.5, maxWidth: "85%", background: msg.role === "user" ? "#1e3a5f" : msg.error ? "#450a0a" : "#1e293b", color: msg.role === "user" ? "#e2e8f0" : msg.error ? "#fca5a5" : "#cbd5e1" }}>
+                <div style={{ padding: "4px 8px", borderRadius: 5, fontSize: 11, lineHeight: 1.5, maxWidth: "85%", userSelect: "text", background: msg.role === "user" ? "#1e3a5f" : msg.error ? "#450a0a" : "#1e293b", color: msg.role === "user" ? "#e2e8f0" : msg.error ? "#fca5a5" : "#cbd5e1" }}>
                   {msg.loading
                     ? <span style={{ color: "#94a3b8" }}>&#x2728;...</span>
                     : msg.role === "user"
@@ -1201,11 +1201,16 @@ export function ChatInline() {
                   }
                 </div>
               </div>
-              {/* Timestamp */}
+              {/* Timestamp + copy */}
               {!msg.loading && (
                 <div style={{ fontSize: 9, color: "#64748b", paddingLeft: msg.role === "user" ? 0 : 4,
-                              textAlign: msg.role === "user" ? "right" : "left", marginTop: 1 }}>
-                  {fmtTime(msg.timestamp)}
+                              marginTop: 1, display: "flex", alignItems: "center", gap: 4,
+                              flexDirection: msg.role === "user" ? "row-reverse" : "row" }}>
+                  <span>{fmtTime(msg.timestamp)}</span>
+                  <button onClick={() => navigator.clipboard.writeText(displayContent)}
+                    title="Copy message"
+                    style={{ border: "none", background: "none", cursor: "pointer",
+                      fontSize: 9, color: "#475569", padding: "0 2px", lineHeight: 1 }}>📋</button>
                   {navView && (
                     <button
                       onClick={() => navigateTo(navView)}

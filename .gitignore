@@ -100,6 +100,7 @@ temp/
 *.db-wal
 
 # ---- Local config / secrets ----
+project.yml
 .env
 .env.*
 *.pem

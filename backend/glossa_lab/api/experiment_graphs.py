@@ -350,6 +350,12 @@ async def _run_exp_background(
             if job_id and db:
                 try: await db.update_job_status(job_id, "completed")
                 except Exception: pass  # noqa: BLE001
+            # Mark insights stale
+            try:
+                from glossa_lab.api.dashboard import mark_insights_stale  # noqa: PLC0415
+                mark_insights_stale()
+            except Exception:  # noqa: BLE001
+                pass
             if notify_on_done:
                 await _maybe_notify_experiment(
                     exp_id=exp_id, exp_name=d.get("name", exp_id),
@@ -516,6 +522,13 @@ async def _run_exp_background(
         if job_id and db:
             try:
                 await db.update_job_status(job_id, final_status)
+                # Mark dashboard insights stale when new results arrive
+                if final_status == "completed":
+                    try:
+                        from glossa_lab.api.dashboard import mark_insights_stale  # noqa: PLC0415
+                        mark_insights_stale()
+                    except Exception:  # noqa: BLE001
+                        pass
                 await db._conn.execute(  # noqa: SLF001
                     "UPDATE jobs SET params = ? WHERE id = ?",
                     (json.dumps({

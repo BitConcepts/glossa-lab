@@ -92,6 +92,13 @@ async def advance_phase() -> dict[str, Any]:
     db = get_db()
     adv = _advancer()
     result = await adv.advance(db=db)
+    # Mark insights stale — the research plan has changed, insights should refresh
+    if result.ok:
+        try:
+            from glossa_lab.api.dashboard import mark_insights_stale  # noqa: PLC0415
+            mark_insights_stale()
+        except Exception:  # noqa: BLE001
+            pass
     return {
         "ok": result.ok,
         "action_taken": result.action_taken,

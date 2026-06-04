@@ -50,6 +50,8 @@ export function AG2Panel({ contextType = "", contextId = "" }: {
   const [input, setInput]     = useState("");
   const [busy, setBusy]       = useState(false);
   const [collapsed, setCollapsed] = useState<Set<number>>(new Set());
+  const [copiedAll, setCopiedAll] = useState(false);
+  const [copiedIds, setCopiedIds] = useState<Set<number>>(new Set());
   const abortRef = useRef<AbortController | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -64,6 +66,11 @@ export function AG2Panel({ contextType = "", contextId = "" }: {
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  // Scroll to bottom on initial mount (e.g. pre-loaded history)
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behavior: "instant" });
+  }, []);
 
   const addMsg = useCallback((msg: Omit<Message, "id">) => {
     setMessages(prev => [...prev, { ...msg, id: nextId() }]);
@@ -133,6 +140,18 @@ export function AG2Panel({ contextType = "", contextId = "" }: {
           )}
         </div>
         {messages.length > 0 && (
+          <button onClick={() => {
+              const allText = messages.map(m => `[${(m.agent || m.role).toUpperCase()}]\n${m.content.replace(/TERMINATE\s*$/, '').trim()}`).join('\n\n');
+              navigator.clipboard.writeText(allText);
+              setCopiedAll(true);
+              setTimeout(() => setCopiedAll(false), 1500);
+            }}
+            style={{ border: "none", background: "rgba(255,255,255,0.1)", color: "#94a3b8",
+                     cursor: "pointer", borderRadius: 4, padding: "2px 8px", fontSize: 11 }}>
+            {copiedAll ? "✓ Copied" : "Copy All"}
+          </button>
+        )}
+        {messages.length > 0 && (
           <button onClick={() => setMessages([])}
             style={{ border: "none", background: "rgba(255,255,255,0.1)", color: "#94a3b8",
                      cursor: "pointer", borderRadius: 4, padding: "2px 8px", fontSize: 11 }}>
@@ -184,6 +203,23 @@ export function AG2Panel({ contextType = "", contextId = "" }: {
                   </button>
                 )}
               </div>
+              <button
+                onClick={() => {
+                  navigator.clipboard.writeText(msg.content.replace(/TERMINATE\s*$/, '').trim());
+                  setCopiedIds(prev => { const s = new Set(prev); s.add(msg.id); return s; });
+                  setTimeout(() => setCopiedIds(prev => { const s = new Set(prev); s.delete(msg.id); return s; }), 1500);
+                }}
+                onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.opacity = "1"; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.opacity = "0.3"; }}
+                style={{
+                  position: "absolute", top: 4, right: isCollapsible ? 60 : 6,
+                  border: "none", background: "none", cursor: "pointer",
+                  fontSize: 12, padding: "2px 4px", opacity: 0.3, lineHeight: 1,
+                }}
+                title="Copy message"
+              >
+                {copiedIds.has(msg.id) ? "✓" : "📋"}
+              </button>
               <div style={{
                 whiteSpace: "pre-wrap", wordBreak: "break-word", fontSize: 12, lineHeight: 1.6,
                 maxHeight: isCollapsed ? "3em" : "none", overflow: isCollapsed ? "hidden" : "visible",

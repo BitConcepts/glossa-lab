@@ -888,6 +888,14 @@ test.describe("Research Loop Dashboard (with backend)", () => {
     expect(body.n_atomic_nodes).toBeGreaterThanOrEqual(400);
   });
 
+  test("dashboard highlights include insights_stale field", async ({ request }) => {
+    const resp = await request.get("/api/v1/dashboard/highlights");
+    expect(resp.status()).toBe(200);
+    const body = await resp.json();
+    expect(body).toHaveProperty("insights_stale");
+    expect(typeof body.insights_stale).toBe("boolean");
+  });
+
   test("atomic nodes catalog includes ResearchLoopRunner", async ({ request }) => {
     const resp = await request.get("/api/v1/experiment-graphs/catalog");
     expect(resp.status()).toBe(200);

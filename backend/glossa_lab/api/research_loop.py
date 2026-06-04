@@ -848,6 +848,98 @@ async def prune_rejected_staging() -> dict[str, Any]:
     }
 
 
+@router.post("/staging/cleanup")
+async def cleanup_staging() -> dict[str, Any]:
+    """Archive approved candidates + permanently delete rejected candidates in one step.
+
+    - Approved items  → marked 'verified', moved to archive file
+    - Rejected items  → deleted permanently (no archive copy)
+    - Staged / blocked → remain in staging for future review
+
+    Use after reviewing a batch: approve the good ones, reject the bad ones,
+    then call this once to flush everything and leave only unreviewed items.
+    Returns {ok, archived, pruned, remaining_staged}.
+    """
+    if not _STAGING_JSON.exists():
+        return {"ok": True, "archived": 0, "pruned": 0, "remaining_staged": 0,
+                "message": "No staging file — nothing to clean up."}
+    try:
+        candidates: list[dict] = json.loads(
+            _STAGING_JSON.read_text(encoding="utf-8"))
+    except Exception as exc:
+        return {"ok": False, "error": f"could not read staging file: {exc}"}
+
+    now = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
+    to_archive: list[dict] = []
+    remaining: list[dict] = []
+    pruned_count = 0
+
+    for c in candidates:
+        status = c.get("review_status", "staged")
+        if status in ("approved", "verified"):
+            c = dict(c)
+            c["review_status"] = "verified"
+            c["verified_at"] = now
+            c["archived_at"] = now
+            c["archived_reason"] = "cleanup_action"
+            to_archive.append(c)
+        elif status == "rejected":
+            pruned_count += 1  # dropped — no archive copy
+        else:
+            remaining.append(c)  # staged / blocked stay
+
+    if to_archive:
+        archive: list[dict] = []
+        if _ARCHIVE_JSON.exists():
+            try:
+                archive = json.loads(_ARCHIVE_JSON.read_text(encoding="utf-8"))
+            except Exception:  # noqa: BLE001
+                pass
+        archive.extend(to_archive)
+        _ARCHIVE_JSON.write_text(
+            json.dumps(archive, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    _STAGING_JSON.write_text(
+        json.dumps(remaining, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    remaining_staged = sum(1 for c in remaining if c.get("review_status") == "staged")
+    _log.info(
+        "Staging cleanup: %d archived, %d pruned, %d remaining",
+        len(to_archive), pruned_count, len(remaining),
+    )
+
+    if to_archive:
+        try:
+            from glossa_lab.api.foundation import mark_dirty  # noqa: PLC0415
+            mark_dirty()
+        except Exception:  # noqa: BLE001
+            pass
+        try:
+            from glossa_lab.api.signs import invalidate_signs_index  # noqa: PLC0415
+            invalidate_signs_index()
+        except Exception:  # noqa: BLE001
+            pass
+
+    try:
+        from glossa_lab.api.events import emit_event  # noqa: PLC0415
+        await emit_event("insight_trigger", reason="staging_cleanup",
+                         archived=len(to_archive), pruned=pruned_count)
+    except Exception:  # noqa: BLE001
+        pass
+
+    return {
+        "ok": True,
+        "archived": len(to_archive),
+        "pruned": pruned_count,
+        "remaining_staged": remaining_staged,
+        "remaining": len(remaining),
+        "message": (
+            f"{len(to_archive)} approved archived, {pruned_count} rejected deleted. "
+            f"{remaining_staged} item(s) still awaiting review."
+        ),
+    }
+
+
 @router.post("/staging/verify-sa")
 async def staging_verify_sa() -> dict[str, Any]:
     """Verify approved staging candidates and archive them.

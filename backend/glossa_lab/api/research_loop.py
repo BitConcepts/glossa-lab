@@ -624,6 +624,11 @@ async def staging_action(body: dict[str, Any]) -> dict[str, Any]:
             mark_dirty()
         except Exception:  # noqa: BLE001
             pass
+        try:
+            from glossa_lab.api.signs import invalidate_signs_index  # noqa: PLC0415
+            invalidate_signs_index()
+        except Exception:  # noqa: BLE001
+            pass
 
     return {"ok": True, "action": action, "sign": sign,
             "proposed_reading": reading, "staged_remaining": remaining}

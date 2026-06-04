@@ -589,7 +589,7 @@ export function ResearchLoopPanel() {
             </span>
           </button>
           {showReview && staging && (
-            <StagingReview
+          <StagingReview
               staging={staging}
               onAction={async (sign, reading, action, reason) => {
                 const res = await fetch(`${BASE}/staging/action`, {
@@ -605,6 +605,10 @@ export function ResearchLoopPanel() {
               }}
               onPrune={async () => {
                 const res = await fetch(`${BASE}/staging/rejected`, { method: "DELETE" });
+                if (res.ok) await fetchStaging();
+              }}
+              onCleanup={async () => {
+                const res = await fetch(`${BASE}/staging/cleanup`, { method: "POST" });
                 if (res.ok) await fetchStaging();
               }}
             />
@@ -1115,15 +1119,17 @@ function StagingReview({
   onAction,
   onArchive: _onArchive,
   onPrune,
+  onCleanup,
 }: {
   staging: StagingData;
   onAction: (sign: string, reading: string, action: StagingAction,
              reason?: string) => Promise<void>;
   onArchive: () => Promise<void>;
   onPrune: () => Promise<void>;
+  onCleanup: () => Promise<void>;
 }) {
-  void _onArchive; // retained for caller compatibility; auto-archive replaces manual
-  const [bulkBusy, setBulkBusy] = useState<"approve" | "reject" | null>(null);
+  void _onArchive; // retained for caller compatibility; cleanup replaces manual archive
+  const [bulkBusy, setBulkBusy] = useState<"approve" | "reject" | "cleanup" | null>(null);
   const [busyKey,  setBusyKey]  = useState<string | null>(null);
   const [pruneConfirm, setPruneConfirm] = useState(false);
   const [rejectingKey, setRejectingKey] = useState<string | null>(null);
@@ -1131,13 +1137,51 @@ function StagingReview({
   const [showApproved, setShowApproved] = useState(true);
   const [showRejected, setShowRejected] = useState(false);
 
-  const staged   = staging.candidates.filter((c) => c.review_status === "staged");
-  const approved = staging.candidates.filter((c) => c.review_status === "approved");
-  const rejected = staging.candidates.filter((c) => c.review_status === "rejected");
+  // ── Optimistic local overrides ────────────────────────────────────────────
+  // Maps "sign:reading" → 'approved' | 'rejected' | null (null = deleted/hidden).
+  // Applied on top of server state for immediate visual feedback.
+  // Cleared when the parent refreshes staging data from the server.
+  const [pendingOverrides, setPendingOverrides] = useState<Record<string, "approved" | "rejected" | null>>({});
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { setPendingOverrides({}); }, [staging]);
+
+  // Effective candidates: server list with optimistic overrides applied
+  const effectiveCandidates: AnchorCandidate[] = staging.candidates.flatMap((c): AnchorCandidate[] => {
+    const key = `${c.sign}:${c.proposed_reading}`;
+    if (!(key in pendingOverrides)) return [c];
+    const ov = pendingOverrides[key];
+    if (ov === null) return []; // optimistically deleted
+    return [{ ...c, review_status: ov }];
+  });
+
+  const staged   = effectiveCandidates.filter((c) => c.review_status === "staged");
+  const approved = effectiveCandidates.filter((c) => c.review_status === "approved");
+  const rejected = effectiveCandidates.filter((c) => c.review_status === "rejected");
 
   const isBusy = bulkBusy !== null || busyKey !== null;
 
+  // Apply an optimistic override for one item
+  const applyOverride = (sign: string, reading: string, action: StagingAction) => {
+    const key = `${sign}:${reading}`;
+    setPendingOverrides((prev) => {
+      const next = { ...prev };
+      if (action === "delete") {
+        next[key] = null;
+      } else if (action === "approve") {
+        next[key] = "approved";
+      } else if (action === "reject") {
+        next[key] = "rejected";
+      } else {
+        // "staged" = unstage / re-stage → remove override so server state shows
+        delete next[key];
+      }
+      return next;
+    });
+  };
+
   const doOne = async (sign: string, reading: string, action: StagingAction, reason?: string) => {
+    applyOverride(sign, reading, action); // immediate visual update
     const key = `${sign}:${reading}`;
     setBusyKey(key);
     try { await onAction(sign, reading, action, reason); }
@@ -1145,9 +1189,17 @@ function StagingReview({
   };
 
   const acceptRecommended = async () => {
+    // Snapshot recommended items NOW (from current effectiveCandidates)
+    const recs = staged.filter((c) => c.recommended);
+    // Apply all optimistic approvals immediately so "Reject Remaining" sees updated list
+    setPendingOverrides((prev) => {
+      const next = { ...prev };
+      for (const c of recs) next[`${c.sign}:${c.proposed_reading}`] = "approved";
+      return next;
+    });
     setBulkBusy("approve");
     try {
-      for (const c of staged.filter((c) => c.recommended))
+      for (const c of recs)
         await onAction(c.sign, c.proposed_reading, "approve");
     } finally { setBulkBusy(null); }
   };
@@ -1158,6 +1210,8 @@ function StagingReview({
   } | null>(null);
   const [saRunBusy, setSaRunBusy] = useState(false);
   const [saRunDone, setSaRunDone] = useState(false);
+  const [cleanupBusy, setCleanupBusy] = useState(false);
+  const [cleanupResult, setCleanupResult] = useState<{ ok: boolean; message: string } | null>(null);
 
   const verifyAndArchive = async () => {
     setVerifySABusy(true);
@@ -1169,6 +1223,14 @@ function StagingReview({
         ok: boolean; message: string; suggested_sa_exp?: string;
         suggested_sa_name?: string; error?: string;
       };
+      if (data.ok) {
+        // Optimistically hide all approved
+        setPendingOverrides((prev) => {
+          const next = { ...prev };
+          for (const c of approved) next[`${c.sign}:${c.proposed_reading}`] = null;
+          return next;
+        });
+      }
       setVerifyResult({
         ok: data.ok,
         message: data.message ?? data.error ?? "Done",
@@ -1190,39 +1252,93 @@ function StagingReview({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ kwargs: {}, notify: false }),
       });
-      if (res.ok) setSaRunDone(true);
+      if (res.ok) {
+        setSaRunDone(true);
+        // SA queued — auto-cleanup remaining staging items
+        await onCleanup();
+      }
     } catch { /* ignore */ }
     finally { setSaRunBusy(false); }
   };
 
+  // Combined archive-approved + prune-rejected in one click
+  const handleCleanup = async () => {
+    // Optimistically hide all approved and rejected immediately
+    setPendingOverrides((prev) => {
+      const next = { ...prev };
+      for (const c of [...approved, ...rejected]) next[`${c.sign}:${c.proposed_reading}`] = null;
+      return next;
+    });
+    setCleanupBusy(true);
+    setCleanupResult(null);
+    try {
+      const res = await fetch("/api/v1/research-loop/staging/cleanup", { method: "POST" });
+      const data = await res.json() as { ok: boolean; message: string };
+      setCleanupResult(data);
+      await onCleanup();
+    } catch (e) {
+      setCleanupResult({ ok: false, message: e instanceof Error ? e.message : "Request failed" });
+    } finally {
+      setCleanupBusy(false);
+    }
+  };
+
   const approveAll = async () => {
+    const snap = [...staged]; // snapshot of current effective staged
+    setPendingOverrides((prev) => {
+      const next = { ...prev };
+      for (const c of snap) next[`${c.sign}:${c.proposed_reading}`] = "approved";
+      return next;
+    });
     setBulkBusy("approve");
-    try { for (const c of staged)   await onAction(c.sign, c.proposed_reading, "approve"); }
+    try { for (const c of snap) await onAction(c.sign, c.proposed_reading, "approve"); }
     finally { setBulkBusy(null); }
   };
-  const rejectAll = async () => {
+  const rejectRemaining = async () => {
+    const snap = [...staged]; // snapshot of CURRENT effective staged (excludes just-approved)
+    setPendingOverrides((prev) => {
+      const next = { ...prev };
+      for (const c of snap) next[`${c.sign}:${c.proposed_reading}`] = "rejected";
+      return next;
+    });
     setBulkBusy("reject");
-    try { for (const c of staged)   await onAction(c.sign, c.proposed_reading, "reject", "batch reject"); }
+    try { for (const c of snap) await onAction(c.sign, c.proposed_reading, "reject", "batch reject"); }
     finally { setBulkBusy(null); }
   };
   const unstageAll = async () => {
-    setBulkBusy("approve"); // reuse as "bulk in progress"
-    try { for (const c of approved) await onAction(c.sign, c.proposed_reading, "staged"); }
+    setBulkBusy("approve");
+    const snap = [...approved];
+    setPendingOverrides((prev) => {
+      const next = { ...prev };
+      for (const c of snap) delete next[`${c.sign}:${c.proposed_reading}`];
+      return next;
+    });
+    try { for (const c of snap) await onAction(c.sign, c.proposed_reading, "staged"); }
     finally { setBulkBusy(null); }
   };
   const restageAll = async () => {
     setBulkBusy("reject");
-    try { for (const c of rejected) await onAction(c.sign, c.proposed_reading, "staged"); }
+    const snap = [...rejected];
+    setPendingOverrides((prev) => {
+      const next = { ...prev };
+      for (const c of snap) delete next[`${c.sign}:${c.proposed_reading}`];
+      return next;
+    });
+    try { for (const c of snap) await onAction(c.sign, c.proposed_reading, "staged"); }
     finally { setBulkBusy(null); }
   };
   const pruneRejected = async () => {
     setPruneConfirm(false);
+    // Optimistically hide all current rejected immediately
+    setPendingOverrides((prev) => {
+      const next = { ...prev };
+      for (const c of rejected) next[`${c.sign}:${c.proposed_reading}`] = null;
+      return next;
+    });
     setBulkBusy("reject");
-    try {
-      await onPrune();
-    } catch { /* ignore */ } finally {
-      setBulkBusy(null);
-    }
+    try { await onPrune(); }
+    catch { /* ignore */ }
+    finally { setBulkBusy(null); }
   };
   const allReviewed = staged.length === 0 && (approved.length + rejected.length) > 0;
 
@@ -1335,7 +1451,8 @@ function StagingReview({
               }}>
               {bulkBusy === "approve" ? "Approving…" : `✔ Approve All (${staged.length})`}
             </button>
-            <button disabled={isBusy} onClick={() => void rejectAll()}
+            <button disabled={isBusy} onClick={() => void rejectRemaining()}
+              title="Reject all remaining staged items (excludes already-approved)"
               style={{
                 padding: "4px 12px", fontSize: 11, fontWeight: 700,
                 border: "1px solid #dc2626", borderRadius: 5,
@@ -1343,7 +1460,7 @@ function StagingReview({
                 color: bulkBusy === "reject" ? "#dc2626" : "#fff",
                 cursor: isBusy ? "default" : "pointer",
               }}>
-              {bulkBusy === "reject" ? "Rejecting…" : `✕ Reject All`}
+              {bulkBusy === "reject" ? "Rejecting…" : `✕ Reject Remaining (${staged.length})`}
             </button>
           </div>
         )}
@@ -1363,19 +1480,48 @@ function StagingReview({
       {/* ── All-reviewed CTA ── */}
       {allReviewed && (
         <div style={{ margin: 10, padding: "12px 16px",
-          background: "#f0fdf4", border: "1px solid #86efac", borderRadius: 8,
-          display: "flex", alignItems: "flex-start", gap: 12 }}>
-          <span style={{ fontSize: 22 }}>✅</span>
-          <div style={{ flex: 1 }}>
-            <div style={{ fontWeight: 700, color: "#15803d", fontSize: 13, marginBottom: 4 }}>
-              All {approved.length + rejected.length} candidates reviewed!
-            </div>
-            <div style={{ fontSize: 12, color: "#166534" }}>
-              {approved.length > 0 && <>{approved.length} approved reading{approved.length !== 1 ? "s" : ""} queued for anchoring. </>}
-              Readings will be automatically archived after the next loop run verifies SA improvement.
-              ▶ Start Loop above to run SA with the updated anchor set.
+          background: "#f0fdf4", border: "1px solid #86efac", borderRadius: 8 }}>
+          <div style={{ display: "flex", alignItems: "flex-start", gap: 12, marginBottom: 10 }}>
+            <span style={{ fontSize: 22 }}>✅</span>
+            <div style={{ flex: 1 }}>
+              <div style={{ fontWeight: 700, color: "#15803d", fontSize: 13, marginBottom: 2 }}>
+                All {approved.length + rejected.length} candidates reviewed!
+              </div>
+              <div style={{ fontSize: 11, color: "#166534" }}>
+                {approved.length > 0 && (
+                  <>{approved.length} approved — click below to archive them and clean up the queue.<br /></>
+                )}
+                {rejected.length > 0 && (
+                  <>{rejected.length} rejected will be permanently deleted (not archived).<br /></>
+                )}
+              </div>
             </div>
           </div>
+          {/* One-click cleanup button */}
+          <button
+            disabled={cleanupBusy || isBusy}
+            onClick={() => void handleCleanup()}
+            style={{
+              width: "100%", padding: "8px 16px", fontSize: 12, fontWeight: 700,
+              border: "1px solid #15803d", borderRadius: 6,
+              background: cleanupBusy ? "#dcfce7" : "#15803d",
+              color: cleanupBusy ? "#15803d" : "#fff",
+              cursor: (cleanupBusy || isBusy) ? "default" : "pointer",
+            }}>
+            {cleanupBusy
+              ? "Cleaning up…"
+              : `✅ Archive ${approved.length} Approved & Delete ${rejected.length} Rejected`}
+          </button>
+          {cleanupResult && (
+            <div style={{
+              marginTop: 8, padding: "6px 10px", borderRadius: 5, fontSize: 11,
+              background: cleanupResult.ok ? "#f0fdf4" : "#fef2f2",
+              border: `1px solid ${cleanupResult.ok ? "#bbf7d0" : "#fca5a5"}`,
+              color: cleanupResult.ok ? "#166534" : "#991b1b",
+            }}>
+              {cleanupResult.ok ? "✔" : "✕"} {cleanupResult.message}
+            </div>
+          )}
         </div>
       )}
 

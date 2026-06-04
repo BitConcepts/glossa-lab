@@ -1309,11 +1309,17 @@ async def _execute_action_inner(t: str, p: dict) -> dict[str, Any]:  # noqa: PLR
         if db is None:
             raise HTTPException(503, "Database unavailable")
 
+        from datetime import datetime as _dt, timezone as _tz  # noqa: PLC0415
         corpus = await db.create_text(
             name=corpus_name,
             corpus_type=corpus_type,
             content=flat_tokens,
-            description=description or f"Acquired from {meta['source']}",
+            metadata={
+                "description": description or f"Acquired from {meta['source']}",
+                "source_id": source_id,
+                "source_url": custom_url or "",
+            },
+            created_at=_dt.now(_tz.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
         )
 
         n_insc = meta["n_inscriptions"]

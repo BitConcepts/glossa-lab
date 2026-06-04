@@ -193,6 +193,8 @@ export function DashboardView() {
   const [insight, setInsight] = useState<DashboardInsight | null>(null);
   const [insightGeneratedAt, setInsightGeneratedAt] = useState<number>(0);
   const [insightLoading, setInsightLoading] = useState(false);
+  // True when the backend says new experiment results are available
+  const insightsStale = data?.insights_stale === true && !!insight;
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [days, setDays] = useState(14);
@@ -239,6 +241,8 @@ export function DashboardView() {
       const generatedAt = Date.now();
       setInsight(ins);
       setInsightGeneratedAt(generatedAt);
+      // Refresh data so insights_stale clears
+      void refresh();
       // Persist along with backend boot time so we can detect restarts on
       // future mounts and skip auto-regen otherwise.
       try {
@@ -1010,8 +1014,24 @@ export function DashboardView() {
                 <option key={m} value={m}>{m}m</option>
               ))}
             </select>
+            {insightsStale && (
+              <span style={{
+                display: "inline-flex", alignItems: "center", gap: 5,
+                padding: "3px 10px", borderRadius: 5, fontSize: 11, fontWeight: 700,
+                background: "#fef3c7", color: "#92400e",
+                border: "1px solid #fcd34d",
+                marginRight: 6, whiteSpace: "nowrap",
+                cursor: "pointer",
+              }}
+              onClick={() => void generateInsight()}
+              title="New experiment results are available — click to update insights">
+              ⚡ New results
+            </span>
+            )}
             <button onClick={() => void generateInsight()} disabled={insightLoading}
-              style={btnGhost}
+              style={insightsStale
+                ? { ...btnGhost, background: "#7c3aed", color: "#fff", border: "1px solid #7c3aed" }
+                : btnGhost}
               title="Re-run the AI to summarise the latest items. Auto-runs after Fetch, after a backend restart, or after a hard reload — but NOT on every page refresh.">
               {insightLoading ? "…" : "↻ Regenerate"}
             </button>

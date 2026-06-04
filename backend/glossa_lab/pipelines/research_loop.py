@@ -42,8 +42,13 @@ class _CycleTimeoutError(Exception):
 
 
 _REPO = Path(__file__).resolve().parents[3]
-_HOLDAT_CSV = _REPO / "corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv"
-_ANCHORS_JSON = _REPO / "backend/reports/INDUS_FINAL_ANCHORS.json"
+try:
+    from glossa_lab.config import get_project_config as _get_cfg  # noqa: PLC0415
+    _HOLDAT_CSV = _get_cfg().corpus_csv_path()
+    _ANCHORS_JSON = _get_cfg().anchors_json_path()
+except Exception:
+    _HOLDAT_CSV = _REPO / "corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv"
+    _ANCHORS_JSON = _REPO / "backend/reports/INDUS_FINAL_ANCHORS.json"
 _STAGING_JSON = _REPO / "outputs/anchor_staging.json"
 _STAGING_ARCHIVE_JSON = _REPO / "outputs/anchor_staging_archive.json"
 

@@ -247,8 +247,14 @@ async def summarize_experiment(experiment_id: str) -> dict[str, Any]:
 
     meta = cls.to_dict()
 
+    try:
+        from glossa_lab.config import get_project_config  # noqa: PLC0415
+        _project_name = get_project_config().project_name
+    except Exception:
+        _project_name = "Indus Script"
+
     system = (
-        "You are a research assistant summarizing scientific experiments on the Indus Script "
+        f"You are a research assistant summarizing scientific experiments on the {_project_name} "
         "and ancient script analysis. Return ONLY valid JSON with these exact fields:\n"
         '{"abstract": "2-3 sentence summary", '
         '"hypothesis": "the hypothesis being tested or null", '

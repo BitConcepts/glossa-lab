@@ -202,6 +202,18 @@ async def _load_anchor_sets() -> None:
         _log.warning("Failed to load anchor_sets", exc_info=True)
 
 
+def invalidate_signs_index() -> None:
+    """Reset the signs index so it is rebuilt on next access.
+
+    Call after staging changes (approve / reject) so the live sign
+    index picks up the latest data.
+    """
+    global _INDEX_BUILT  # noqa: PLW0603
+    _INDEX_BUILT = False
+    _SIGNS_INDEX.clear()
+    _log.info("Signs index invalidated — will rebuild on next request")
+
+
 async def _ensure_index() -> None:
     """Build the index once on first access."""
     global _INDEX_BUILT  # noqa: PLW0603

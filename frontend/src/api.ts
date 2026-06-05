@@ -2707,3 +2707,39 @@ export const listSigns = (
 
 export const getSign = (signId: string): Promise<SignEntry> =>
   request("GET", `/signs/${encodeURIComponent(signId)}`);
+
+// ── Sign Images API ──────────────────────────────────────────────────────
+
+export interface SignImagesStatus {
+  total_signs: number;
+  with_image: number;
+  without_image: number;
+  coverage_pct: number;
+  by_source: Record<string, number>;
+  missing_sample: string[];
+  processing_running: boolean;
+  last_run_stats: Record<string, number> | null;
+}
+
+export const getSignImagesStatus = (): Promise<SignImagesStatus> =>
+  request("GET", "/signs/images/status");
+
+export const triggerSignImageProcessing = (opts: {
+  force?: boolean;
+  skip_wikimedia?: boolean;
+  sign_ids?: string[];
+} = {}): Promise<{ queued: boolean; message?: string; reason?: string }> =>
+  request("POST", "/signs/images/process", opts);
+
+export const processOneSignImage = (
+  signId: string,
+  force = false,
+  skipWikimedia = false,
+): Promise<{ sign_id: string; source: string; image_url: string | null }> =>
+  request("POST", `/signs/images/process/${encodeURIComponent(signId)}?force=${force}&skip_wikimedia=${skipWikimedia}`);
+
+export const getSignImageManifest = (): Promise<Record<string, {
+  status: string; source: string; timestamp: string;
+  processed_path: string | null; original_path: string | null;
+}>> =>
+  request("GET", "/signs/images/manifest");

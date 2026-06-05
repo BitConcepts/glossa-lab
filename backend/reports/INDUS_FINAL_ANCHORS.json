@@ -1,5 +1,5 @@
 {
-  "total": 605,
+  "total": 481,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -13,13 +13,14 @@
     },
     "M267": {
       "reading": "iN/in (genitive of)",
-      "confidence": "HIGH",
+      "confidence": "MEDIUM",
       "basis": "FACT-CHECK CORRECTION 2026-05-11: Original V6 assignment 'min/mīn' (HIGH) was wrong. M267 has freq=400 in the Holdat corpus and appears across ALL motif types (unicorn 127, zebu bull 72, elephant 37, rhinoceros 25, etc.) — it is NOT an iconographic fish sign. The actual Mahadevan fish sign is M047 (freq=13, P47 in Parpola's system, as documented in mahadevan_parpola_crosswalk.json). M267 is most likely a high-frequency functional/suffixal sign. Downgraded from HIGH. Previous: {'reading': 'min/mīn', 'confidence': 'HIGH', 'basis': 'Fish sign = star/planet (Parpola)'}; Phase-273: HIGH upgrade — grammar z=8.04 (Phase-74) + motif-independence χ²=12.98 p=0.1124 (Phase-132) + DEDR 494 (iṉ locative) + freq=400 (2nd most common sign) + Elamite 'in' genitive (McAlpin MC-01) + LE-in confirmed (E41). Six independent evidence lines.",
       "source": "Phase-74 grammar z=8.04 p<0.0001 + Phase-64 score=7.0",
       "gloss": "genitive particle [AGENT]-M267-[TITLE] 4.3x above null",
       "dedr": "494",
       "dedr_source": "phase273_resolution",
-      "phase_upgraded": 273
+      "phase_upgraded": 273,
+      "_autofix_note": "Auto-fixed 2026-06-04: confidence HIGH → MEDIUM (foundation check auto-fix). M267 freq=400, all-motif genitive particle cannot be HIGH."
     },
     "M099": {
       "reading": "kol/koḷ",
@@ -1054,48 +1055,32 @@
       "upgrade_basis": "Phase-244: DEDR 5547 (white, bright; title/lord name) injected for reading 'vēḷ'. Valid PDr root confirmed in DEDR. SA confirmation pending. "
     },
     "M255": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M251": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M301": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M406": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M387": {
       "reading": "kur",
@@ -1109,26 +1094,18 @@
       "upgrade_basis": "Phase-252: Allograph of M035 (r=0.933, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M035='po'."
     },
     "M116": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M274": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M086": {
       "reading": "oru",
@@ -1278,14 +1255,11 @@
       "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]"
     },
     "M101": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M125": {
       "reading": "vil",
@@ -1576,37 +1550,25 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M318": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M346": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M312": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M134": {
       "reading": "",
@@ -1631,103 +1593,67 @@
       "upgrade_basis": "Phase-252: Allograph of M427 (r=0.946, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M427='en'."
     },
     "M120": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M207": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M280": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M309": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M382": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M324": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M370": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M218": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M186": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M307": {
       "reading": "kur",
@@ -1763,15 +1689,11 @@
       "upgrade_basis": "Phase-252: Allograph of M427 (r=0.993, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M427='en'."
     },
     "M334": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "ko",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: take / kill",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "take / kill"
     },
     "M294": {
       "reading": "",
@@ -1785,15 +1707,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M245": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "an",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M319": {
       "reading": "",
@@ -1818,15 +1736,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M227": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "kal",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "gem / stone"
     },
     "M148": {
       "reading": "",
@@ -1862,15 +1776,11 @@
       "upgrade_basis": "Phase-252: Allograph of M375 (r=0.988, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M375='taṇ'."
     },
     "M243": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "kal",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "gem / stone"
     },
     "M291": {
       "reading": "",
@@ -1884,15 +1794,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M209": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "kal",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "gem / stone"
     },
     "M313": {
       "reading": "",
@@ -1906,26 +1812,18 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M259": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "van",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: smith / strong",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "smith / strong"
     },
     "M278": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "van",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "smith / strong"
     },
     "M142": {
       "reading": "",
@@ -1950,15 +1848,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M140": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "an",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.42; status=verified; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M187": {
       "reading": "",
@@ -1972,70 +1866,46 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M208": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "van",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: smith / strong",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "smith / strong"
     },
     "M109": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "an",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M250": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "kal",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "gem / stone"
     },
     "M390": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "kal",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "gem / stone"
     },
     "M277": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M181": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M219": {
       "reading": "",
@@ -2049,37 +1919,25 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M379": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M214": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M131": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M380": {
       "reading": "",
@@ -2093,26 +1951,18 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M197": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M201": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M413": {
       "reading": "kur",
@@ -2126,26 +1976,18 @@
       "upgrade_basis": "Phase-252: Allograph of M427 (r=0.986, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M427='en'."
     },
     "M135": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M354": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M341": {
       "reading": "",
@@ -2167,15 +2009,11 @@
       "phase_upgraded": 276
     },
     "M105": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M146": {
       "reading": "",
@@ -2189,15 +2027,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M195": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M339": {
       "reading": "",
@@ -2222,48 +2056,32 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M316": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M111": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M224": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M408": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M371": {
       "reading": "",
@@ -2277,15 +2095,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M396": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "kal",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "gem / stone"
     },
     "M246": {
       "reading": "",
@@ -2354,15 +2168,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M170": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "van",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "smith / strong"
     },
     "M349": {
       "reading": "",
@@ -2376,26 +2186,18 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M388": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "ko",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: take / kill",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "take / kill"
     },
     "M360": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "an",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M263": {
       "reading": "",
@@ -2409,15 +2211,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M320": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "ko",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: take / kill",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "take / kill"
     },
     "M256": {
       "reading": "kur",
@@ -2475,15 +2273,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M247": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "pan",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "worker / make"
     },
     "M284": {
       "reading": "",
@@ -2508,15 +2302,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M381": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "an",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M373": {
       "reading": "",
@@ -2541,26 +2331,18 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M104": {
-      "reading": "",
+      "reading": "an",
       "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "basis": "Promoted from anchor staging archive (2026-06-04T22:30:42Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M217": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "van",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "smith / strong"
     },
     "M228": {
       "reading": "",
@@ -2574,15 +2356,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M356": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "an",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M292": {
       "reading": "",
@@ -2684,45 +2462,32 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M369": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "van",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "smith / strong"
     },
     "M378": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M226": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M158": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M165": {
       "reading": "cul",
@@ -2731,24 +2496,18 @@
       "source": "Phase-111"
     },
     "M123": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M397": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M203": {
       "reading": "kur",
@@ -2761,14 +2520,11 @@
       "upgrade_basis": "Phase-252: Allograph of M416 (r=0.998, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M416='na'."
     },
     "M405": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M240": {
       "reading": "",
@@ -2781,14 +2537,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M303": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M238": {
       "reading": "",
@@ -2811,14 +2564,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M363": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "ko",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: take / kill",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "take / kill"
     },
     "M174": {
       "reading": "",
@@ -2851,14 +2601,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M200": {
-      "reading": "",
+      "reading": "an",
       "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "basis": "Promoted from anchor staging archive (2026-06-04T22:30:42Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M156": {
       "reading": "kur",
@@ -2901,14 +2648,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M260": {
-      "reading": "",
+      "reading": "an",
       "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "basis": "Promoted from anchor staging archive (2026-06-04T22:30:42Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M333": {
       "reading": "",
@@ -2951,14 +2695,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M258": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "an",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M283": {
       "reading": "",
@@ -3001,14 +2742,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M392": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "an",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M385": {
       "reading": "",
@@ -3041,44 +2779,32 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M210": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "pan",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "worker / make"
     },
     "M112": {
-      "reading": "",
+      "reading": "an",
       "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "basis": "Promoted from anchor staging archive (2026-06-04T22:30:42Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M286": {
-      "reading": "",
+      "reading": "an",
       "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "basis": "Promoted from anchor staging archive (2026-06-04T22:30:42Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M327": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "kal",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "gem / stone"
     },
     "M400": {
       "reading": "kur",
@@ -3121,14 +2847,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M242": {
-      "reading": "",
+      "reading": "kal",
       "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "basis": "Promoted from anchor staging archive (2026-06-04T22:30:42Z); evidence_type=high_neighbor_concentration; score=0.62; status=approved; DEDR: gem / stone",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "gem / stone"
     },
     "M344": {
       "reading": "",
@@ -3161,14 +2884,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M147": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "an",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M409": {
       "reading": "",
@@ -3191,14 +2911,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M415": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "kal",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "gem / stone"
     },
     "M241": {
       "reading": "",
@@ -3221,14 +2938,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M287": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M133": {
       "reading": "",
@@ -3241,54 +2955,39 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M126": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M297": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M323": {
-      "reading": "",
+      "reading": "an",
       "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "basis": "Promoted from anchor staging archive (2026-06-04T22:30:42Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M213": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M322": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M167": {
       "reading": "",
@@ -3351,14 +3050,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M115": {
-      "reading": "",
+      "reading": "an",
       "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "basis": "Promoted from anchor staging archive (2026-06-04T22:30:42Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M337": {
       "reading": "",
@@ -3421,14 +3117,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M298": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "pan",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "worker / make"
     },
     "M132": {
       "reading": "",
@@ -3441,14 +3134,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M136": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "an",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M376": {
       "reading": "",
@@ -3471,14 +3161,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M364": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "pan",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "worker / make"
     },
     "M114": {
       "reading": "",
@@ -3491,14 +3178,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M310": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "an",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.41; status=verified; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M361": {
       "reading": "",
@@ -3541,14 +3225,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M314": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "pan",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "worker / make"
     },
     "M139": {
       "reading": "",
@@ -3581,14 +3262,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M230": {
-      "reading": "",
-      "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "reading": "in",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: genitive / of",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "genitive / of"
     },
     "M166": {
       "reading": "",
@@ -3611,14 +3289,11 @@
       "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
     },
     "M407": {
-      "reading": "",
+      "reading": "an",
       "confidence": "LOW",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.; Phase-271: triple-corroboration upgrade — DEDR 1638 + Phase-239 dual (Elamite+Sanskrit) + Phase-266 expanded LM SA validates Dravidian fit (71.5%)",
-      "source": "Phase-111",
-      "dedr": "",
-      "dedr_source": "",
-      "phase_upgraded": "reverted_audit",
-      "upgrade_basis": "Audit revert: Phase-312 mass-assigned kol (DEDR 2133) to 205 signs due to scoring bug (same class as Phase-239 kur bug). Signs need individual distributional evidence for reading assignment."
+      "basis": "Promoted from anchor staging archive (2026-06-04T22:30:42Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M368": {
       "reading": "",
@@ -5945,7 +5620,7 @@
   "n_low": 239,
   "corpus_signs": 390,
   "corpus_tokens": 7002,
-  "corpus_token_coverage": 0.9075,
+  "corpus_token_coverage": 0.9622,
   "_note": "total = H+M confirmed anchors. total_all_entries includes LOW allographs/grammar inferences. DO NOT use total/corpus_signs for % coverage — use corpus_token_coverage instead.",
   "_phase128_129_note": "Phase-128: M374=kul (MEDIUM, substrate Munda/DEDR 1709), M351=vī (MEDIUM, substrate Munda/DEDR 5388). Phase-129: M072=mā (MEDIUM, INITIAL position/DEDR 4751), M149=or (MEDIUM, MEDIAL/DEDR 987), M185=pul (MEDIUM, MEDIAL/DEDR 4336). Remaining 20 of 25 unresolved signs stay LOW — insufficient DEDR+positional evidence for promotion.",
   "_phase132_note": "Phase-132 validation: 114 Phase-111 kur-allograph MEDIUM signs downgraded to LOW. These were positional parking spots (all-MEDIAL L1=0), not genuine phonetic readings. New H+M=157, coverage=0.9075. Genuine phonetically-anchored coverage (H+M, non-parking) = 90.75%.",

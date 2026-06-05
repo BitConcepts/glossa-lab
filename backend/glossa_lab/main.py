@@ -59,6 +59,7 @@ from glossa_lab.api.studies import router as studies_router
 from glossa_lab.api.system import router as system_router
 from glossa_lab.api.terminal import router as terminal_router
 from glossa_lab.api.signs import router as signs_router
+from glossa_lab.api.sign_images import router as sign_images_router
 from glossa_lab.api.texts import router as texts_router
 from glossa_lab.config import get_settings
 from glossa_lab.database import close_db, init_db
@@ -390,6 +391,7 @@ def create_app() -> FastAPI:
     application.include_router(events_router)  # already prefixed at /api/v1/events
     application.include_router(foundation_automation_router)  # already prefixed at /api/v1/foundation
     application.include_router(signs_router)  # already prefixed at /api/v1/signs
+    application.include_router(sign_images_router)  # already prefixed at /api/v1/signs/images
     application.include_router(phase_router)  # already prefixed at /api/v1/phase
 
     try:

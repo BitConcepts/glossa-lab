@@ -21,6 +21,7 @@ from typing import Any
 
 _log = logging.getLogger("glossa_lab.phase_advancer")
 _REPO = Path(__file__).resolve().parents[3]  # repo root
+_PHASE_STATE_JSON = _REPO / "outputs" / "phase_state.json"
 
 
 @dataclass
@@ -80,6 +81,63 @@ class PhaseAdvancer:
     def __init__(self) -> None:
         from glossa_lab.config import get_project_config  # noqa: PLC0415
         self.cfg = get_project_config()
+
+    # ── Completion tracking ────────────────────────────────────────────────
+    # Persisted in outputs/phase_state.json so state survives restarts.
+
+    def _read_phase_state(self) -> dict:
+        if _PHASE_STATE_JSON.exists():
+            try:
+                return json.loads(_PHASE_STATE_JSON.read_text(encoding="utf-8"))
+            except Exception:  # noqa: BLE001
+                pass
+        return {}
+
+    def _write_phase_state(self, state: dict) -> None:
+        _PHASE_STATE_JSON.parent.mkdir(parents=True, exist_ok=True)
+        _PHASE_STATE_JSON.write_text(
+            json.dumps(state, indent=2, ensure_ascii=False), encoding="utf-8"
+        )
+
+    def _get_completed_actions(self, phase: int) -> set[str]:
+        """Return set of action labels completed for the given phase."""
+        state = self._read_phase_state()
+        return set(state.get(f"phase_{phase}_completed", []))
+
+    def _mark_action_done(self, phase: int, label: str) -> None:
+        state = self._read_phase_state()
+        key = f"phase_{phase}_completed"
+        done = set(state.get(key, []))
+        done.add(label)
+        state[key] = sorted(done)
+        self._write_phase_state(state)
+
+    def _get_queued_experiment_ids(self) -> set[str]:
+        """Return experiment IDs that already have a pending/running/completed job."""
+        try:
+            # Use sync DB access via sqlite3 directly (same pattern as experiment_graph._sync_db_all)
+            import sqlite3  # noqa: PLC0415
+            db_path = _REPO / "backend" / "data" / "glossa.db"
+            if not db_path.exists():
+                return set()
+            conn = sqlite3.connect(str(db_path), timeout=3)
+            conn.row_factory = sqlite3.Row
+            rows = conn.execute(
+                "SELECT params, status FROM jobs WHERE status IN ('pending','running','completed')"
+            ).fetchall()
+            conn.close()
+            queued = set()
+            for row in rows:
+                try:
+                    params = json.loads(row["params"]) if row["params"] else {}
+                except (json.JSONDecodeError, TypeError):
+                    continue
+                exp_id = params.get("exp_id") or params.get("experiment_id", "")
+                if exp_id:
+                    queued.add(exp_id)
+            return queued
+        except Exception:  # noqa: BLE001
+            return set()
 
     def _read_anchors(self) -> dict[str, Any]:
         """Read INDUS_FINAL_ANCHORS.json for coverage metrics."""
@@ -169,11 +227,19 @@ class PhaseAdvancer:
             anchors_hm=anchors_hm,
         )
 
-    def plan_next(self) -> list[PhaseAction]:
-        """Return ordered list of recommended actions for the current phase."""
+    def plan_next(self, *, include_done: bool = True) -> list[PhaseAction]:
+        """Return ordered list of recommended actions for the current phase.
+
+        When include_done=False, filters out actions that are already completed
+        (experiments already queued, non-experiment steps already marked done).
+        """
         status = self.assess()
         current_goal = self._get_phase_for_coverage(status.coverage)
         actions: list[PhaseAction] = []
+
+        # Load completion state for filtering
+        queued_exp_ids = self._get_queued_experiment_ids() if not include_done else set()
+        completed_labels = self._get_completed_actions(status.current_phase) if not include_done else set()
 
         priority = 0
 
@@ -269,16 +335,29 @@ class PhaseAdvancer:
                 priority=priority,
             ))
 
-        return sorted(actions, key=lambda a: a.priority)
+        all_actions = sorted(actions, key=lambda a: a.priority)
+        if include_done:
+            return all_actions
+        # Filter out already-completed actions
+        remaining = []
+        for a in all_actions:
+            if a.action_type == "run_experiment":
+                exp_id = a.params.get("experiment_id", "")
+                if exp_id and exp_id in queued_exp_ids:
+                    continue  # already queued
+            elif a.label in completed_labels:
+                continue  # already done this session
+            remaining.append(a)
+        return remaining
 
     async def advance(self, db: Any = None) -> PhaseAdvanceResult:
-        """Execute the highest-priority recommended action.
+        """Execute the highest-priority UNCOMPLETED action.
 
-        Queues a job for experiment or research loop actions.
-        Returns a PhaseAdvanceResult with job_id if applicable.
+        Skips experiments already queued in the Jobs table and actions
+        already marked done in phase_state.json.
         """
         status = self.assess()
-        plan = self.plan_next()
+        plan = self.plan_next(include_done=False)
         if not plan:
             return PhaseAdvanceResult(
                 ok=False, action_taken="none", action_type="no_op",
@@ -305,20 +384,27 @@ class PhaseAdvancer:
                 )
 
             elif top.action_type in ("review_candidates", "verify_sa"):
-                # Informational actions — no job queued; user action required in UI
-                message = (
-                    f"{top.label} — no job needed. "
-                    "Go to the Staging Review queue below to take action."
-                )
+                # Mark done so advance() moves to next action
+                self._mark_action_done(status.current_phase, top.label)
+                message = f"✔ {top.label} — acknowledged, advancing to next step."
 
             elif top.action_type == "regenerate_insights":
-                message = f"{top.label} — navigate to Dashboard to regenerate"
+                # Try to actually trigger regeneration
+                try:
+                    from glossa_lab.api.dashboard import _generate_insight  # noqa: PLC0415
+                    await _generate_insight()
+                    message = "✨ AI insights regenerated successfully."
+                except Exception:  # noqa: BLE001
+                    message = "✔ Regenerate Insights — acknowledged (trigger manually from Dashboard if needed)."
+                self._mark_action_done(status.current_phase, top.label)
 
             elif top.action_type == "open_view":
-                message = f"{top.label}"
+                self._mark_action_done(status.current_phase, top.label)
+                message = f"✔ {top.label} — acknowledged, advancing to next step."
 
             else:
-                message = f"Action acknowledged: {top.label}"
+                self._mark_action_done(status.current_phase, top.label)
+                message = f"✔ {top.label} — acknowledged."
 
             return PhaseAdvanceResult(
                 ok=True,

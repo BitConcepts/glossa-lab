@@ -33,6 +33,7 @@ async def phase_status() -> dict[str, Any]:
     adv = _advancer()
     status = adv.assess()
     plan = adv.plan_next()[:5]
+    remaining = adv.plan_next(include_done=False)
     # Read override if present
     override_phase: int | None = None
     if _PHASE_STATE_JSON.exists():
@@ -54,6 +55,8 @@ async def phase_status() -> dict[str, Any]:
             }
             for a in plan
         ],
+        "remaining_actions": len(remaining),
+        "all_done": len(remaining) == 0 and len(plan) > 0,
     }
 
 

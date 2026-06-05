@@ -9,6 +9,9 @@ import {
   listSigns,
   type SignEntry,
   type SignsSummary,
+  getSignImagesStatus,
+  triggerSignImageProcessing,
+  type SignImagesStatus,
 } from "../api";
 import { CorpusAnalyticsPanel } from "./CorpusAnalyticsPanel";
 
@@ -231,6 +234,31 @@ function SignDetail({ sign, onClose }: { sign: SignEntry; onClose: () => void })
   );
 }
 
+// ── Sample grid for Image Analyzer tab ─────────────────────────────────
+function SignSampleGrid() {
+  const [signs, setSigns] = useState<SignEntry[]>([]);
+  useEffect(() => {
+    listSigns({ limit: 60, offset: 0 }).then(r => setSigns(r.items)).catch(() => {});
+  }, []);
+  return (
+    <div style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fill, minmax(64px, 1fr))",
+      gap: 6,
+    }}>
+      {signs.map(s => (
+        <div key={s.sign_id} title={`${s.sign_id}${s.reading ? ` · ${s.reading}` : ""}`}
+          style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 2 }}>
+          <SignGlyph sign_id={s.sign_id} imageUrl={s.image_url} size={56} />
+          <span style={{ fontSize: 8, color: "#6b7280", textAlign: "center", lineHeight: 1.2 }}>
+            {s.sign_id}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // ── Main component ──────────────────────────────────────────────────────
 export function SignsView() {
   const [summary, setSummary] = useState<SignsSummary | null>(null);
@@ -245,7 +273,41 @@ export function SignsView() {
   const [inCorpusOnly, setInCorpusOnly] = useState(false);
   const [offset, setOffset] = useState(0);
   const [selected, setSelected] = useState<SignEntry | null>(null);
-  const [activeTab, setActiveTab] = useState<"signs" | "corpus">("signs");
+  const [activeTab, setActiveTab] = useState<"signs" | "corpus" | "analyzer">("signs");
+  const [imgStatus, setImgStatus] = useState<SignImagesStatus | null>(null);
+  const [imgStatusLoading, setImgStatusLoading] = useState(false);
+  const [imgMsg, setImgMsg] = useState<string | null>(null);
+
+  const loadImgStatus = useCallback(async () => {
+    setImgStatusLoading(true);
+    try { setImgStatus(await getSignImagesStatus()); }
+    catch { /* backend may be offline */ }
+    finally { setImgStatusLoading(false); }
+  }, []);
+
+  useEffect(() => {
+    if (activeTab === "analyzer") void loadImgStatus();
+  }, [activeTab, loadImgStatus]);
+
+  const handleEnrichWikimedia = async () => {
+    setImgMsg("Queuing WikiMedia enrichment… this may take several minutes.");
+    try {
+      const res = await triggerSignImageProcessing({ force: true, skip_wikimedia: false });
+      setImgMsg(res.queued ? "✔ Running in background — refresh status in a moment." : (res.reason ?? "Already running."));
+    } catch (e) {
+      setImgMsg(`Error: ${e instanceof Error ? e.message : String(e)}`);
+    }
+  };
+
+  const handleRegenFallbacks = async () => {
+    setImgMsg("Regenerating all fallback icons…");
+    try {
+      const res = await triggerSignImageProcessing({ force: true, skip_wikimedia: true });
+      setImgMsg(res.queued ? "✔ Running in background." : (res.reason ?? "Already running."));
+    } catch (e) {
+      setImgMsg(`Error: ${e instanceof Error ? e.message : String(e)}`);
+    }
+  };
 
   const limit = 100;
 
@@ -316,8 +378,8 @@ export function SignsView() {
       </div>
 
       {/* Tab bar */}
-      <div style={{ display: "flex", gap: 4, marginBottom: 16 }}>
-        {(["signs", "corpus"] as const).map(t => (
+      <div style={{ display: "flex", gap: 4, marginBottom: 16, flexWrap: "wrap" }}>
+        {(["signs", "corpus", "analyzer"] as const).map(t => (
           <button key={t} onClick={() => setActiveTab(t)} style={{
             padding: "6px 16px", borderRadius: 6, fontSize: 12, fontWeight: activeTab === t ? 700 : 500,
             border: activeTab === t ? "1px solid #2563eb" : "1px solid #d1d5db",
@@ -325,13 +387,133 @@ export function SignsView() {
             color: activeTab === t ? "#1d4ed8" : "#374151",
             cursor: "pointer",
           }}>
-            {t === "signs" ? "🔣 Signs Index" : "📊 Corpus Analytics"}
+            {t === "signs" ? "🔣 Signs Index" : t === "corpus" ? "📊 Corpus Analytics" : "🖼 Image Analyzer"}
           </button>
         ))}
       </div>
 
       {activeTab === "corpus" ? (
         <CorpusAnalyticsPanel />
+      ) : activeTab === "analyzer" ? (
+        <div>
+          {/* Header */}
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+            <h3 style={{ margin: 0, fontSize: 15, fontWeight: 700 }}>Sign Image Analyzer</h3>
+            <button onClick={() => void loadImgStatus()} disabled={imgStatusLoading}
+              style={{ padding: "4px 12px", fontSize: 11, borderRadius: 5, border: "1px solid #d1d5db",
+                       background: "#f9fafb", cursor: "pointer", color: "#374151" }}>
+              {imgStatusLoading ? "…" : "↻ Refresh"}
+            </button>
+          </div>
+
+          {imgStatus && (
+            <>
+              {/* Coverage bar */}
+              <div style={{ marginBottom: 16, padding: "12px 16px", background: "#f0fdf4",
+                             border: "1px solid #86efac", borderRadius: 8 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13, marginBottom: 6 }}>
+                  <span style={{ fontWeight: 700, color: "#15803d" }}>Image Coverage</span>
+                  <span style={{ fontWeight: 700, color: "#15803d" }}>{imgStatus.coverage_pct}%</span>
+                </div>
+                <div style={{ height: 8, background: "#dcfce7", borderRadius: 4, overflow: "hidden" }}>
+                  <div style={{ height: "100%", width: `${imgStatus.coverage_pct}%`,
+                                 background: "#16a34a", borderRadius: 4, transition: "width 0.4s" }} />
+                </div>
+                <div style={{ display: "flex", gap: 16, marginTop: 8, fontSize: 12, color: "#374151" }}>
+                  <span>✅ {imgStatus.with_image} with image</span>
+                  <span>⬜ {imgStatus.without_image} without</span>
+                  <span>Total: {imgStatus.total_signs}</span>
+                </div>
+              </div>
+
+              {/* Source breakdown */}
+              <div style={{ marginBottom: 16 }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#6b7280",
+                               textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8 }}>By Source</div>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  {Object.entries(imgStatus.by_source).map(([src, count]) => (
+                    <div key={src} style={{ padding: "6px 12px", borderRadius: 6, fontSize: 12, fontWeight: 600,
+                                            background: src === "wikimedia" ? "#dbeafe" :
+                                                        src === "fallback_icon" ? "#fef3c7" :
+                                                        src === "manual_upload" ? "#ede9fe" : "#f3f4f6",
+                                            color: src === "wikimedia" ? "#1e40af" :
+                                                   src === "fallback_icon" ? "#92400e" :
+                                                   src === "manual_upload" ? "#5b21b6" : "#374151",
+                                            border: "1px solid rgba(0,0,0,0.08)" }}>
+                      {src === "wikimedia" ? "🌐" : src === "fallback_icon" ? "✏️" :
+                       src === "manual_upload" ? "📤" : src === "none" ? "⬜" : "📄"}
+                      {" "}{src}: {count}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Explanation */}
+              <div style={{ marginBottom: 16, padding: "10px 14px", background: "#f0f9ff",
+                             border: "1px solid #bae6fd", borderRadius: 6, fontSize: 11,
+                             color: "#0369a1", lineHeight: 1.6 }}>
+                <strong>✏️ Fallback icons</strong> are geometric reconstructions drawn from iconic descriptions
+                (fish, bull, elephant, strokes, etc.). They are accurate identifiers but not archaeological facsimiles.
+                <br />
+                <strong>🌐 WikiMedia</strong> images are downloaded real sign renderings where they exist on Commons.
+                <br />
+                <strong>📤 Manual upload</strong>: drop a sign scan via the API{" "}
+                <code style={{ background: "#e0f2fe", padding: "1px 4px", borderRadius: 3 }}>POST /api/v1/signs/images/upload/{"<sign_id>"}</code>
+                <br />
+                <strong>📄 Grid extraction</strong>: place a Mahadevan sign-table PNG + spec JSON in{" "}
+                <code style={{ background: "#e0f2fe", padding: "1px 4px", borderRadius: 3 }}>backend/static/signs/source_pages/</code>
+                and re-run the analyzer.
+              </div>
+
+              {/* Actions */}
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
+                <button onClick={() => void handleEnrichWikimedia()}
+                  disabled={imgStatus.processing_running}
+                  style={{
+                    padding: "7px 16px", fontSize: 12, fontWeight: 700, borderRadius: 6,
+                    background: imgStatus.processing_running ? "#e5e7eb" : "#1d4ed8",
+                    color: imgStatus.processing_running ? "#9ca3af" : "#fff",
+                    border: "none", cursor: imgStatus.processing_running ? "default" : "pointer",
+                  }}>
+                  {imgStatus.processing_running ? "⏳ Processing…" : "🌐 Enrich via WikiMedia"}
+                </button>
+                <button onClick={() => void handleRegenFallbacks()}
+                  disabled={imgStatus.processing_running}
+                  style={{
+                    padding: "7px 16px", fontSize: 12, fontWeight: 600, borderRadius: 6,
+                    background: "#fff", color: "#374151",
+                    border: "1px solid #d1d5db",
+                    cursor: imgStatus.processing_running ? "default" : "pointer",
+                  }}>
+                  ↻ Regenerate Fallback Icons
+                </button>
+              </div>
+
+              {imgMsg && (
+                <div style={{ padding: "8px 12px", borderRadius: 5, fontSize: 11,
+                               background: "#f0fdf4", border: "1px solid #86efac", color: "#15803d",
+                               marginBottom: 12 }}>
+                  {imgMsg}
+                </div>
+              )}
+
+              {/* Sample grid */}
+              {imgStatus.with_image > 0 && (
+                <div>
+                  <div style={{ fontSize: 11, fontWeight: 700, color: "#6b7280",
+                                 textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8 }}>
+                    Sample — first 60 signs
+                  </div>
+                  <SignSampleGrid />
+                </div>
+              )}
+            </>
+          )}
+
+          {!imgStatus && !imgStatusLoading && (
+            <div style={{ color: "#9ca3af", fontSize: 12 }}>Backend offline — cannot load image status.</div>
+          )}
+        </div>
       ) : (
         <>
           {/* Filter bar */}

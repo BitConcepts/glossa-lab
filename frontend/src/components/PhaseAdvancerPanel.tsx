@@ -3,12 +3,21 @@
  *
  * Shows: current phase badge, coverage progress bar, top recommended actions,
  * and an "Advance One Step" button that queues the top action as a job.
+ *
+ * Action sequencing (all phases):
+ *   run_experiment  → tracked via Jobs API polling (auto-advances when job created/done)
+ *   regenerate_insights → tracked in completedSteps after user clicks Advance
+ *   open_view       → tracked in completedSteps after user clicks Advance
+ *   review_candidates / verify_sa → informational, tracked in completedSteps
+ *
+ * When ALL actions in the phase are done, PhaseHighlightsCard is shown.
  */
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const BASE = "/api/v1/phase";
 const JOBS_BASE = "/api/v1/jobs";
+const DECIPHER_BASE = "/api/v1/dashboard/decipherment";
 
 interface PhaseAction {
   action_type: string;
@@ -54,7 +63,12 @@ export function PhaseAdvancerPanel() {
   // Experiment IDs that have been queued/started/completed — drives button advancement.
   // Populated from the Jobs API on mount and updated live by polling.
   const [queuedExpIds, setQueuedExpIds] = useState<Set<string>>(new Set());
+  // Non-experiment steps (regenerate_insights, open_view, etc.) that have been
+  // completed in this session — keyed by action label.
+  const [completedSteps, setCompletedSteps] = useState<Set<string>>(new Set());
   const pollingRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  // Coverage when panel first mounted, for ‘before’ comparison in Phase Highlights.
+  const coverageAtMountRef = useRef<number | null>(null);
 
   const fetchStatus = useCallback(async () => {
     try {
@@ -94,6 +108,13 @@ export function PhaseAdvancerPanel() {
 
   useEffect(() => { void fetchStatus(); }, [fetchStatus]);
 
+  // Capture coverage on first status load
+  useEffect(() => {
+    if (status && coverageAtMountRef.current === null) {
+      coverageAtMountRef.current = status.coverage;
+    }
+  }, [status]);
+
   // Once we have the phase status, start polling the Jobs API every 8 s.
   // This makes the button auto-advance as soon as a job is created or completes,
   // with no user interaction needed.
@@ -126,17 +147,20 @@ export function PhaseAdvancerPanel() {
         };
         // For regenerate_insights: navigate to dashboard + fire regeneration event
         if (data.ok && data.action_type === "regenerate_insights") {
+          if (nextAction) setCompletedSteps(prev => new Set([...prev, nextAction.label]));
           window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: "dashboard" } }));
           // Small delay so the dashboard mounts before the event fires
           setTimeout(() => {
             window.dispatchEvent(new CustomEvent("glossa:regenerate-insight"));
           }, 300);
           await fetchStatus();
-        // For open_view actions, navigate directly and don't linger
-        } else if (data.ok && data.action_type === "open_view") {
-          const viewParam = (nextAction?.params?.view as string) || "signs";
-          window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: viewParam } }));
-          // Don't show the result card — just refresh
+        // For open_view / review_candidates / verify_sa: mark done and navigate if applicable
+        } else if (data.ok && ["open_view", "review_candidates", "verify_sa"].includes(data.action_type ?? "")) {
+          if (nextAction) setCompletedSteps(prev => new Set([...prev, nextAction.label]));
+          if (data.action_type === "open_view") {
+            const viewParam = (nextAction?.params?.view as string) || "signs";
+            window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: viewParam } }));
+          }
           await fetchStatus();
         } else {
           setAdvanceResult(data);
@@ -164,15 +188,26 @@ export function PhaseAdvancerPanel() {
     (status.coverage / Math.max(0.01, status.next_milestone)) * 100
   ));
 
-  // Next unqueued experiment action (skip ones already queued this session)
+  // Next action: first action not yet done (experiments not in queuedExpIds, others not in completedSteps)
   const nextAction = status.top_actions.find(a => {
-    if (a.action_type !== "run_experiment") return true;
-    const expId = a.params.experiment_id as string | undefined;
-    return !expId || !queuedExpIds.has(expId);
+    if (a.action_type === "run_experiment") {
+      const expId = a.params.experiment_id as string | undefined;
+      return !expId || !queuedExpIds.has(expId); // include if not yet queued
+    }
+    return !completedSteps.has(a.label); // include non-exp actions if not yet completed
   }) ?? null;
+
   const allExpQueued = status.top_actions
     .filter(a => a.action_type === "run_experiment")
     .every(a => queuedExpIds.has(a.params.experiment_id as string));
+
+  // All actions in this phase complete (experiments queued + non-exp steps clicked through)
+  const allDone = status.top_actions.length > 0 && status.top_actions.every(a => {
+    if (a.action_type === "run_experiment") {
+      return queuedExpIds.has(a.params.experiment_id as string);
+    }
+    return completedSteps.has(a.label);
+  });
 
   return (
     <div style={{
@@ -324,7 +359,16 @@ export function PhaseAdvancerPanel() {
 
           {/* Advance button */}
           <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap" }}>
-            {allExpQueued && status.top_actions.filter(a => a.action_type === "run_experiment").length > 0 ? (
+            {allDone ? (
+              <div style={{
+                padding: "7px 14px", fontSize: 12, fontWeight: 700,
+                borderRadius: 6, background: "#f0fdf4",
+                border: "1px solid #86efac", color: "#15803d",
+              }}>
+                ✅ All steps complete — see highlights below
+              </div>
+            ) : allExpQueued && !nextAction ? (
+              // Experiments done but nothing else to advance (shouldn’t normally happen)
               <div style={{
                 padding: "7px 14px", fontSize: 12, fontWeight: 700,
                 borderRadius: 6, background: "#f0fdf4",
@@ -352,17 +396,19 @@ export function PhaseAdvancerPanel() {
                     : "▶ No actions planned"}
               </button>
             )}
-            <button
-              onClick={() => void fetchStatus()}
-              disabled={loading}
-              style={{
-                padding: "7px 12px", fontSize: 11,
-                border: "1px solid #d1d5db", borderRadius: 6,
-                background: "#fff", cursor: loading ? "default" : "pointer",
-                color: "#6b7280",
-              }}>
-              ↻ Refresh
-            </button>
+            {!allDone && (
+              <button
+                onClick={() => void fetchStatus()}
+                disabled={loading}
+                style={{
+                  padding: "7px 12px", fontSize: 11,
+                  border: "1px solid #d1d5db", borderRadius: 6,
+                  background: "#fff", cursor: loading ? "default" : "pointer",
+                  color: "#6b7280",
+                }}>
+                ↻ Refresh
+              </button>
+            )}
           </div>
 
           {/* Advance result */}
@@ -383,11 +429,218 @@ export function PhaseAdvancerPanel() {
             </div>
           )}
 
-          <div style={{ fontSize: 10, color: "#9ca3af", marginTop: 8, textAlign: "center" }}>
-            Or{" "}
-            <span style={{ color: "#6b7280", textDecoration: "underline", cursor: "default" }}>
-              use the Research Loop below for manual control
-            </span>
+          {!allDone && (
+            <div style={{ fontSize: 10, color: "#9ca3af", marginTop: 8, textAlign: "center" }}>
+              Or{" "}
+              <span style={{ color: "#6b7280", textDecoration: "underline", cursor: "default" }}>
+                use the Research Loop below for manual control
+              </span>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Phase Highlights — shown when all actions in this phase are done */}
+      {allDone && expanded && (
+        <PhaseHighlightsCard
+          phase={status.current_phase}
+          phaseLabel={status.phase_label}
+          coverage={status.coverage}
+          coverageAtStart={coverageAtMountRef.current ?? status.coverage}
+          anchorsHm={status.anchors_hm}
+          colors={colors}
+        />
+      )}
+    </div>
+  );
+}
+
+// ── Phase Highlights Card ────────────────────────────────────────────────
+
+interface DeciphermentSummary {
+  corpus_token_coverage?: number;
+  n_high?: number;
+  n_medium?: number;
+  n_low?: number;
+  total_all?: number;
+  sa_aggregate?: number;
+}
+
+function PhaseHighlightsCard({
+  phase, phaseLabel, coverage, coverageAtStart, anchorsHm, colors,
+}: {
+  phase: number;
+  phaseLabel: string;
+  coverage: number;
+  coverageAtStart: number;
+  anchorsHm: number;
+  colors: { bg: string; text: string; border: string };
+}) {
+  const [decipher, setDecipher] = useState<DeciphermentSummary | null>(null);
+
+  // Load richer decipherment metrics once
+  useEffect(() => {
+    fetch(DECIPHER_BASE)
+      .then(r => r.ok ? r.json() : null)
+      .then(d => {
+        if (!d) return;
+        const a = d.anchors ?? {};
+        setDecipher({
+          corpus_token_coverage: a.corpus_token_coverage,
+          n_high: a.n_high,
+          n_medium: a.n_medium,
+          n_low: a.n_low,
+          total_all: a.total_all,
+          sa_aggregate: d.sa_aggregate,
+        });
+      })
+      .catch(() => {});
+  }, []);
+
+  const coverageDelta = coverage - coverageAtStart;
+  const pct = Math.round(coverage * 100);
+  const startPct = Math.round(coverageAtStart * 100);
+  const deltaPct = Math.round(Math.abs(coverageDelta) * 100);
+  const needleMoved = Math.abs(coverageDelta) >= 0.001;
+
+  // Phase-specific "what remains" text for Indus decipherment project
+  const remainsText: Record<number, string[]> = {
+    1: [
+      "Expand anchor set beyond initial candidates via more SA experiments",
+      "Run Paper Mining Loop to find corroborating literature evidence",
+      "Review and approve staged candidates",
+    ],
+    2: [
+      "Validate anchor assignments with holdout data and negative controls",
+      "Continue SA experiments to push coverage toward 60%",
+      "Mine literature for disputed sign readings",
+    ],
+    3: [
+      "Fill remaining coverage gaps using Structural Atlas and CGSA Cluster Analysis",
+      "Continue Research Loop to find evidence for hard-to-decode signs",
+    ],
+    4: [
+      "Final validation of all promoted signs via anchored SA experiments",
+      "Regenerate AI insights to reflect 95%+ anchor set",
+      "Spot-check and publish the decipherment anchor set",
+    ],
+    5: [
+      `Upgrade ${(decipher?.n_low ?? 0)} LOW-confidence signs to MEDIUM via SA validation`,
+      "Continue Paper Mining Loop to gather additional literature evidence",
+      "Run contact-zone analysis to validate against Gulf site inscriptions",
+      "Prepare final decipherment report and anchor set for publication",
+    ],
+  };
+  const remains = remainsText[phase] ?? ["Continue research experiments"];
+
+  // What was accomplished this phase
+  const accomplishments: string[] = [];
+  if (needleMoved && coverageDelta > 0) {
+    accomplishments.push(`Coverage moved ${startPct}% → ${pct}% (+${deltaPct}%)`);
+  } else if (pct >= 95) {
+    accomplishments.push(`Coverage target reached: ${pct}% corpus token coverage`);
+  }
+  accomplishments.push(`${anchorsHm} HIGH + MEDIUM confidence anchors validated`);
+  if (decipher?.sa_aggregate && decipher.sa_aggregate > 0) {
+    accomplishments.push(`SA aggregate confidence: ${Math.round(decipher.sa_aggregate * 100)}%`);
+  }
+  if (decipher?.n_low && decipher.n_low > 0) {
+    accomplishments.push(`${decipher.n_low} LOW-confidence signs staged for future validation`);
+  }
+
+  const isLastPhase = phase >= 5;
+
+  return (
+    <div style={{
+      borderTop: `2px solid ${colors.border}`,
+      background: "#fff",
+      padding: "14px 16px",
+    }}>
+      {/* Header */}
+      <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12 }}>
+        <span style={{
+          fontSize: 22, lineHeight: 1,
+        }}>
+          {isLastPhase ? "🏆" : "✅"}
+        </span>
+        <div>
+          <div style={{ fontWeight: 800, fontSize: 14, color: colors.text }}>
+            Phase {phase} {phaseLabel} — Complete
+          </div>
+          <div style={{ fontSize: 11, color: "#6b7280", marginTop: 1 }}>
+            {isLastPhase
+              ? "Decipherment target reached. All validation steps done."
+              : `All Phase ${phase} actions done. Ready to advance.`}
+          </div>
+        </div>
+      </div>
+
+      {/* Coverage progress bar — big visual */}
+      <div style={{ marginBottom: 12 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: 10, color: "#6b7280", marginBottom: 3 }}>
+          <span>Corpus token coverage</span>
+          <span style={{ fontWeight: 700, color: pct >= 95 ? "#16a34a" : colors.text }}>{pct}%</span>
+        </div>
+        <div style={{ height: 10, background: "#e5e7eb", borderRadius: 5, overflow: "hidden" }}>
+          <div style={{
+            height: "100%", width: `${Math.min(100, pct)}%`,
+            background: pct >= 95 ? "#16a34a" : colors.text,
+            borderRadius: 5, transition: "width 0.5s ease",
+          }} />
+        </div>
+        {needleMoved && (
+          <div style={{ fontSize: 10, marginTop: 3, color: coverageDelta > 0 ? "#15803d" : "#dc2626", fontWeight: 600 }}>
+            {coverageDelta > 0 ? "⬆" : "⬇"} {coverageDelta > 0 ? "+" : ""}{deltaPct}% this phase
+            <span style={{ fontWeight: 400, color: "#9ca3af", marginLeft: 4 }}>(was {startPct}%)</span>
+          </div>
+        )}
+      </div>
+
+      {/* Accomplished */}
+      <div style={{ marginBottom: 12 }}>
+        <div style={{ fontSize: 10, fontWeight: 700, color: "#374151",
+          textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 5 }}>
+          ✨ Accomplished this phase
+        </div>
+        <ul style={{ margin: 0, paddingLeft: 16, display: "flex", flexDirection: "column", gap: 4 }}>
+          {accomplishments.map((a, i) => (
+            <li key={i} style={{ fontSize: 11, color: "#374151", lineHeight: 1.5 }}>{a}</li>
+          ))}
+        </ul>
+      </div>
+
+      {/* What remains */}
+      <div style={{ marginBottom: 12 }}>
+        <div style={{ fontSize: 10, fontWeight: 700, color: "#374151",
+          textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 5 }}>
+          🔭 What remains (Indus decipherment)
+        </div>
+        <ul style={{ margin: 0, paddingLeft: 16, display: "flex", flexDirection: "column", gap: 4 }}>
+          {remains.map((r, i) => (
+            <li key={i} style={{ fontSize: 11, color: "#6b7280", lineHeight: 1.5 }}>{r}</li>
+          ))}
+        </ul>
+      </div>
+
+      {/* CTA */}
+      {isLastPhase ? (
+        <div style={{
+          padding: "10px 14px", background: "#f0fdf4", border: "1px solid #86efac",
+          borderRadius: 8, fontSize: 11, color: "#166534", lineHeight: 1.6,
+        }}>
+          <strong>🏁 Decipherment target complete.</strong>{" "}
+          The anchor set is validated at {pct}% corpus coverage with {anchorsHm} H+M confidence signs.
+          Continue with the Research Loop for literature mining, or export the anchor set for publication.
+          The Phase Guide will reactivate if coverage drops below 95% (e.g. after a corpus expansion).
+        </div>
+      ) : (
+        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <div style={{
+            padding: "7px 14px", fontSize: 11, fontWeight: 600,
+            background: colors.bg, border: `1px solid ${colors.border}`,
+            color: colors.text, borderRadius: 6,
+          }}>
+            ▶ Next: Phase {phase + 1} — click Advance above to continue
           </div>
         </div>
       )}

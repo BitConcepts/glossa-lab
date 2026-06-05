@@ -1,10 +1,10 @@
 {
   "M001": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M001.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:10:51Z"
+    "original_path": "static\\signs\\originals\\M001.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M002": {
     "status": "ok",
@@ -50,17 +50,17 @@
   },
   "M008": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M008.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:11:09Z"
+    "original_path": "static\\signs\\originals\\M008.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M009": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M009.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:11:10Z"
+    "original_path": "static\\signs\\originals\\M009.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M010": {
     "status": "ok",
@@ -78,10 +78,10 @@
   },
   "M012": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M012.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:11:15Z"
+    "original_path": "static\\signs\\originals\\M012.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M013": {
     "status": "ok",
@@ -92,17 +92,17 @@
   },
   "M014": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M014.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:11:18Z"
+    "original_path": "static\\signs\\originals\\M014.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M015": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M015.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:11:19Z"
+    "original_path": "static\\signs\\originals\\M015.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M016": {
     "status": "ok",
@@ -113,10 +113,10 @@
   },
   "M017": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M017.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:11:22Z"
+    "original_path": "static\\signs\\originals\\M017.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M018": {
     "status": "ok",
@@ -127,10 +127,10 @@
   },
   "M019": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M019.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:11:25Z"
+    "original_path": "static\\signs\\originals\\M019.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M020": {
     "status": "ok",
@@ -190,17 +190,17 @@
   },
   "M028": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M028.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:11:37Z"
+    "original_path": "static\\signs\\originals\\M028.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M029": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M029.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:11:39Z"
+    "original_path": "static\\signs\\originals\\M029.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M030": {
     "status": "ok",
@@ -218,10 +218,10 @@
   },
   "M032": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M032.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:11:43Z"
+    "original_path": "static\\signs\\originals\\M032.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M033": {
     "status": "ok",
@@ -239,10 +239,10 @@
   },
   "M035": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M035.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:11:46Z"
+    "original_path": "static\\signs\\originals\\M035.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M036": {
     "status": "ok",
@@ -260,10 +260,10 @@
   },
   "M038": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M038.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:11:49Z"
+    "original_path": "static\\signs\\originals\\M038.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M039": {
     "status": "ok",
@@ -274,10 +274,10 @@
   },
   "M040": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M040.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:11:51Z"
+    "original_path": "static\\signs\\originals\\M040.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M041": {
     "status": "ok",
@@ -330,31 +330,31 @@
   },
   "M048": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M048.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:11:59Z"
+    "original_path": "static\\signs\\originals\\M048.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M049": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M049.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:00Z"
+    "original_path": "static\\signs\\originals\\M049.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M050": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M050.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:02Z"
+    "original_path": "static\\signs\\originals\\M050.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M051": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M051.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:03Z"
+    "original_path": "static\\signs\\originals\\M051.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M052": {
     "status": "ok",
@@ -365,38 +365,38 @@
   },
   "M053": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M053.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:06Z"
+    "original_path": "static\\signs\\originals\\M053.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M054": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p793",
     "processed_path": "static\\signs\\M054.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:07Z"
+    "original_path": "static\\signs\\originals\\M054.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M055": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M055.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:08Z"
+    "original_path": "static\\signs\\originals\\M055.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M056": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M056.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:10Z"
+    "original_path": "static\\signs\\originals\\M056.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M057": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M057.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:12Z"
+    "original_path": "static\\signs\\originals\\M057.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M058": {
     "status": "ok",
@@ -414,10 +414,10 @@
   },
   "M060": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M060.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:16Z"
+    "original_path": "static\\signs\\originals\\M060.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M061": {
     "status": "ok",
@@ -463,31 +463,31 @@
   },
   "M067": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M067.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:26Z"
+    "original_path": "static\\signs\\originals\\M067.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M068": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M068.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:28Z"
+    "original_path": "static\\signs\\originals\\M068.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M069": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M069.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:29Z"
+    "original_path": "static\\signs\\originals\\M069.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M070": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M070.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:30Z"
+    "original_path": "static\\signs\\originals\\M070.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M071": {
     "status": "ok",
@@ -498,24 +498,24 @@
   },
   "M072": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M072.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:33Z"
+    "original_path": "static\\signs\\originals\\M072.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M073": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M073.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:35Z"
+    "original_path": "static\\signs\\originals\\M073.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M074": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M074.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:36Z"
+    "original_path": "static\\signs\\originals\\M074.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M075": {
     "status": "ok",
@@ -526,10 +526,10 @@
   },
   "M076": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M076.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:39Z"
+    "original_path": "static\\signs\\originals\\M076.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M077": {
     "status": "ok",
@@ -540,10 +540,10 @@
   },
   "M078": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M078.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:41Z"
+    "original_path": "static\\signs\\originals\\M078.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M079": {
     "status": "ok",
@@ -561,10 +561,10 @@
   },
   "M081": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M081.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:44Z"
+    "original_path": "static\\signs\\originals\\M081.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M082": {
     "status": "ok",
@@ -575,17 +575,17 @@
   },
   "M086": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M086.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:46Z"
+    "original_path": "static\\signs\\originals\\M086.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M087": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M087.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:47Z"
+    "original_path": "static\\signs\\originals\\M087.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M088": {
     "status": "ok",
@@ -596,24 +596,24 @@
   },
   "M089": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M089.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:50Z"
+    "original_path": "static\\signs\\originals\\M089.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M090": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M090.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:51Z"
+    "original_path": "static\\signs\\originals\\M090.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M091": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M091.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:52Z"
+    "original_path": "static\\signs\\originals\\M091.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M092": {
     "status": "ok",
@@ -631,10 +631,10 @@
   },
   "M094": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M094.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:55Z"
+    "original_path": "static\\signs\\originals\\M094.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M095": {
     "status": "ok",
@@ -645,10 +645,10 @@
   },
   "M096": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M096.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:57Z"
+    "original_path": "static\\signs\\originals\\M096.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M097": {
     "status": "ok",
@@ -659,10 +659,10 @@
   },
   "M098": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M098.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:12:59Z"
+    "original_path": "static\\signs\\originals\\M098.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M099": {
     "status": "ok",
@@ -687,24 +687,24 @@
   },
   "M102": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M102.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:05Z"
+    "original_path": "static\\signs\\originals\\M102.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M103": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p794",
     "processed_path": "static\\signs\\M103.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:06Z"
+    "original_path": "static\\signs\\originals\\M103.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M104": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M104.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:07Z"
+    "original_path": "static\\signs\\originals\\M104.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M105": {
     "status": "ok",
@@ -715,10 +715,10 @@
   },
   "M106": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M106.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:10Z"
+    "original_path": "static\\signs\\originals\\M106.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M107": {
     "status": "ok",
@@ -736,10 +736,10 @@
   },
   "M109": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M109.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:15Z"
+    "original_path": "static\\signs\\originals\\M109.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M110": {
     "status": "ok",
@@ -750,17 +750,17 @@
   },
   "M111": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M111.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:17Z"
+    "original_path": "static\\signs\\originals\\M111.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M112": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M112.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:19Z"
+    "original_path": "static\\signs\\originals\\M112.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M113": {
     "status": "ok",
@@ -806,24 +806,24 @@
   },
   "M119": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M119.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:29Z"
+    "original_path": "static\\signs\\originals\\M119.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M120": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M120.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:30Z"
+    "original_path": "static\\signs\\originals\\M120.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M121": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M121.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:32Z"
+    "original_path": "static\\signs\\originals\\M121.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M122": {
     "status": "ok",
@@ -834,24 +834,24 @@
   },
   "M123": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M123.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:35Z"
+    "original_path": "static\\signs\\originals\\M123.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M124": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M124.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:36Z"
+    "original_path": "static\\signs\\originals\\M124.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M125": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M125.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:38Z"
+    "original_path": "static\\signs\\originals\\M125.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M126": {
     "status": "ok",
@@ -869,10 +869,10 @@
   },
   "M128": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M128.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:41Z"
+    "original_path": "static\\signs\\originals\\M128.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M129": {
     "status": "ok",
@@ -897,10 +897,10 @@
   },
   "M132": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M132.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:45Z"
+    "original_path": "static\\signs\\originals\\M132.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M133": {
     "status": "ok",
@@ -925,17 +925,17 @@
   },
   "M136": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M136.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:50Z"
+    "original_path": "static\\signs\\originals\\M136.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M137": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M137.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:51Z"
+    "original_path": "static\\signs\\originals\\M137.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M138": {
     "status": "ok",
@@ -960,24 +960,24 @@
   },
   "M141": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M141.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:55Z"
+    "original_path": "static\\signs\\originals\\M141.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M142": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M142.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:56Z"
+    "original_path": "static\\signs\\originals\\M142.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M143": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M143.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:13:57Z"
+    "original_path": "static\\signs\\originals\\M143.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M144": {
     "status": "ok",
@@ -995,10 +995,10 @@
   },
   "M146": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M146.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:00Z"
+    "original_path": "static\\signs\\originals\\M146.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M147": {
     "status": "ok",
@@ -1016,17 +1016,17 @@
   },
   "M149": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M149.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:04Z"
+    "original_path": "static\\signs\\originals\\M149.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M150": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M150.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:06Z"
+    "original_path": "static\\signs\\originals\\M150.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M151": {
     "status": "ok",
@@ -1058,10 +1058,10 @@
   },
   "M155": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M155.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:13Z"
+    "original_path": "static\\signs\\originals\\M155.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M156": {
     "status": "ok",
@@ -1079,17 +1079,17 @@
   },
   "M158": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M158.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:17Z"
+    "original_path": "static\\signs\\originals\\M158.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M159": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M159.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:20Z"
+    "original_path": "static\\signs\\originals\\M159.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M160": {
     "status": "ok",
@@ -1107,10 +1107,10 @@
   },
   "M162": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M162.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:24Z"
+    "original_path": "static\\signs\\originals\\M162.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M163": {
     "status": "ok",
@@ -1142,10 +1142,10 @@
   },
   "M167": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p795",
     "processed_path": "static\\signs\\M167.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:31Z"
+    "original_path": "static\\signs\\originals\\M167.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M168": {
     "status": "ok",
@@ -1170,10 +1170,10 @@
   },
   "M171": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M171.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:37Z"
+    "original_path": "static\\signs\\originals\\M171.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M172": {
     "status": "ok",
@@ -1198,17 +1198,17 @@
   },
   "M176": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M176.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:42Z"
+    "original_path": "static\\signs\\originals\\M176.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M177": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M177.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:43Z"
+    "original_path": "static\\signs\\originals\\M177.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M178": {
     "status": "ok",
@@ -1219,10 +1219,10 @@
   },
   "M179": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M179.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:45Z"
+    "original_path": "static\\signs\\originals\\M179.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M180": {
     "status": "ok",
@@ -1233,24 +1233,24 @@
   },
   "M181": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M181.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:47Z"
+    "original_path": "static\\signs\\originals\\M181.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M182": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M182.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:48Z"
+    "original_path": "static\\signs\\originals\\M182.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M183": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M183.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:49Z"
+    "original_path": "static\\signs\\originals\\M183.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M184": {
     "status": "ok",
@@ -1261,17 +1261,17 @@
   },
   "M185": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M185.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:51Z"
+    "original_path": "static\\signs\\originals\\M185.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M186": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M186.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:52Z"
+    "original_path": "static\\signs\\originals\\M186.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M187": {
     "status": "ok",
@@ -1282,17 +1282,17 @@
   },
   "M188": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M188.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:54Z"
+    "original_path": "static\\signs\\originals\\M188.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M189": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M189.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:55Z"
+    "original_path": "static\\signs\\originals\\M189.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M190": {
     "status": "ok",
@@ -1310,10 +1310,10 @@
   },
   "M193": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M193.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:14:58Z"
+    "original_path": "static\\signs\\originals\\M193.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M194": {
     "status": "ok",
@@ -1324,10 +1324,10 @@
   },
   "M195": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M195.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:00Z"
+    "original_path": "static\\signs\\originals\\M195.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M197": {
     "status": "ok",
@@ -1345,17 +1345,17 @@
   },
   "M199": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M199.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:05Z"
+    "original_path": "static\\signs\\originals\\M199.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M200": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M200.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:06Z"
+    "original_path": "static\\signs\\originals\\M200.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M201": {
     "status": "ok",
@@ -1422,10 +1422,10 @@
   },
   "M211": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M211.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:20Z"
+    "original_path": "static\\signs\\originals\\M211.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M212": {
     "status": "ok",
@@ -1457,24 +1457,24 @@
   },
   "M216": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M216.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:27Z"
+    "original_path": "static\\signs\\originals\\M216.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M217": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M217.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:28Z"
+    "original_path": "static\\signs\\originals\\M217.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M218": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M218.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:30Z"
+    "original_path": "static\\signs\\originals\\M218.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M219": {
     "status": "ok",
@@ -1485,24 +1485,24 @@
   },
   "M220": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M220.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:32Z"
+    "original_path": "static\\signs\\originals\\M220.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M221": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M221.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:34Z"
+    "original_path": "static\\signs\\originals\\M221.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M222": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M222.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:35Z"
+    "original_path": "static\\signs\\originals\\M222.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M223": {
     "status": "ok",
@@ -1513,31 +1513,31 @@
   },
   "M224": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M224.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:38Z"
+    "original_path": "static\\signs\\originals\\M224.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M226": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p796",
     "processed_path": "static\\signs\\M226.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:39Z"
+    "original_path": "static\\signs\\originals\\M226.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M227": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M227.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:40Z"
+    "original_path": "static\\signs\\originals\\M227.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M228": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M228.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:41Z"
+    "original_path": "static\\signs\\originals\\M228.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M229": {
     "status": "ok",
@@ -1548,31 +1548,31 @@
   },
   "M230": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M230.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:43Z"
+    "original_path": "static\\signs\\originals\\M230.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M231": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M231.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:44Z"
+    "original_path": "static\\signs\\originals\\M231.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M232": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M232.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:45Z"
+    "original_path": "static\\signs\\originals\\M232.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M233": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M233.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:47Z"
+    "original_path": "static\\signs\\originals\\M233.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M234": {
     "status": "ok",
@@ -1590,24 +1590,24 @@
   },
   "M236": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M236.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:50Z"
+    "original_path": "static\\signs\\originals\\M236.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M237": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M237.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:51Z"
+    "original_path": "static\\signs\\originals\\M237.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M238": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M238.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:52Z"
+    "original_path": "static\\signs\\originals\\M238.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M239": {
     "status": "ok",
@@ -1618,17 +1618,17 @@
   },
   "M240": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M240.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:54Z"
+    "original_path": "static\\signs\\originals\\M240.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M241": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M241.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:55Z"
+    "original_path": "static\\signs\\originals\\M241.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M242": {
     "status": "ok",
@@ -1639,17 +1639,17 @@
   },
   "M243": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M243.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:57Z"
+    "original_path": "static\\signs\\originals\\M243.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M244": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M244.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:15:58Z"
+    "original_path": "static\\signs\\originals\\M244.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M245": {
     "status": "ok",
@@ -1660,10 +1660,10 @@
   },
   "M246": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M246.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:00Z"
+    "original_path": "static\\signs\\originals\\M246.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M247": {
     "status": "ok",
@@ -1674,17 +1674,17 @@
   },
   "M248": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M248.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:03Z"
+    "original_path": "static\\signs\\originals\\M248.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M249": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M249.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:04Z"
+    "original_path": "static\\signs\\originals\\M249.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M250": {
     "status": "ok",
@@ -1695,10 +1695,10 @@
   },
   "M251": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M251.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:07Z"
+    "original_path": "static\\signs\\originals\\M251.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M252": {
     "status": "ok",
@@ -1709,17 +1709,17 @@
   },
   "M253": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M253.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:10Z"
+    "original_path": "static\\signs\\originals\\M253.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M254": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M254.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:11Z"
+    "original_path": "static\\signs\\originals\\M254.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M255": {
     "status": "ok",
@@ -1744,10 +1744,10 @@
   },
   "M258": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M258.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:17Z"
+    "original_path": "static\\signs\\originals\\M258.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M259": {
     "status": "ok",
@@ -1758,31 +1758,31 @@
   },
   "M260": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M260.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:20Z"
+    "original_path": "static\\signs\\originals\\M260.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M261": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M261.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:21Z"
+    "original_path": "static\\signs\\originals\\M261.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M262": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M262.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:23Z"
+    "original_path": "static\\signs\\originals\\M262.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M263": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M263.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:24Z"
+    "original_path": "static\\signs\\originals\\M263.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M264": {
     "status": "ok",
@@ -1807,52 +1807,52 @@
   },
   "M267": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M267.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:29Z"
+    "original_path": "static\\signs\\originals\\M267.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M268": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p797",
     "processed_path": "static\\signs\\M268.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:31Z"
+    "original_path": "static\\signs\\originals\\M268.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M269": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M269.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:32Z"
+    "original_path": "static\\signs\\originals\\M269.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M270": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M270.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:34Z"
+    "original_path": "static\\signs\\originals\\M270.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M271": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M271.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:35Z"
+    "original_path": "static\\signs\\originals\\M271.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M272": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M272.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:36Z"
+    "original_path": "static\\signs\\originals\\M272.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M273": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M273.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:38Z"
+    "original_path": "static\\signs\\originals\\M273.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M274": {
     "status": "ok",
@@ -1863,17 +1863,17 @@
   },
   "M275": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M275.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:40Z"
+    "original_path": "static\\signs\\originals\\M275.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M276": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M276.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:41Z"
+    "original_path": "static\\signs\\originals\\M276.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M277": {
     "status": "ok",
@@ -1884,31 +1884,31 @@
   },
   "M278": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M278.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:43Z"
+    "original_path": "static\\signs\\originals\\M278.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M279": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M279.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:44Z"
+    "original_path": "static\\signs\\originals\\M279.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M280": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M280.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:45Z"
+    "original_path": "static\\signs\\originals\\M280.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M281": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M281.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:47Z"
+    "original_path": "static\\signs\\originals\\M281.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M282": {
     "status": "ok",
@@ -1919,24 +1919,24 @@
   },
   "M283": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M283.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:49Z"
+    "original_path": "static\\signs\\originals\\M283.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M284": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M284.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:50Z"
+    "original_path": "static\\signs\\originals\\M284.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M285": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M285.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:51Z"
+    "original_path": "static\\signs\\originals\\M285.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M286": {
     "status": "ok",
@@ -1961,10 +1961,10 @@
   },
   "M289": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M289.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:55Z"
+    "original_path": "static\\signs\\originals\\M289.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M290": {
     "status": "ok",
@@ -1975,10 +1975,10 @@
   },
   "M291": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M291.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:57Z"
+    "original_path": "static\\signs\\originals\\M291.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M292": {
     "status": "ok",
@@ -1989,10 +1989,10 @@
   },
   "M293": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M293.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:16:59Z"
+    "original_path": "static\\signs\\originals\\M293.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M294": {
     "status": "ok",
@@ -2003,17 +2003,17 @@
   },
   "M295": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M295.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:01Z"
+    "original_path": "static\\signs\\originals\\M295.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M296": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M296.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:03Z"
+    "original_path": "static\\signs\\originals\\M296.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M297": {
     "status": "ok",
@@ -2024,10 +2024,10 @@
   },
   "M298": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M298.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:06Z"
+    "original_path": "static\\signs\\originals\\M298.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M299": {
     "status": "ok",
@@ -2038,17 +2038,17 @@
   },
   "M300": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M300.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:09Z"
+    "original_path": "static\\signs\\originals\\M300.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M301": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M301.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:10Z"
+    "original_path": "static\\signs\\originals\\M301.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M302": {
     "status": "ok",
@@ -2059,17 +2059,17 @@
   },
   "M303": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M303.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:13Z"
+    "original_path": "static\\signs\\originals\\M303.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M304": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p798",
     "processed_path": "static\\signs\\M304.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:14Z"
+    "original_path": "static\\signs\\originals\\M304.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M305": {
     "status": "ok",
@@ -2080,59 +2080,59 @@
   },
   "M307": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M307.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:17Z"
+    "original_path": "static\\signs\\originals\\M307.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M308": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M308.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:18Z"
+    "original_path": "static\\signs\\originals\\M308.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M309": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M309.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:20Z"
+    "original_path": "static\\signs\\originals\\M309.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M310": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M310.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:21Z"
+    "original_path": "static\\signs\\originals\\M310.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M311": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M311.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:22Z"
+    "original_path": "static\\signs\\originals\\M311.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M312": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M312.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:24Z"
+    "original_path": "static\\signs\\originals\\M312.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M313": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M313.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:25Z"
+    "original_path": "static\\signs\\originals\\M313.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M314": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M314.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:26Z"
+    "original_path": "static\\signs\\originals\\M314.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M315": {
     "status": "ok",
@@ -2143,17 +2143,17 @@
   },
   "M316": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M316.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:29Z"
+    "original_path": "static\\signs\\originals\\M316.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M317": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M317.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:32Z"
+    "original_path": "static\\signs\\originals\\M317.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M318": {
     "status": "ok",
@@ -2164,108 +2164,108 @@
   },
   "M319": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M319.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:35Z"
+    "original_path": "static\\signs\\originals\\M319.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M320": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M320.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:36Z"
+    "original_path": "static\\signs\\originals\\M320.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M321": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M321.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:38Z"
+    "original_path": "static\\signs\\originals\\M321.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M322": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M322.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:39Z"
+    "original_path": "static\\signs\\originals\\M322.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M323": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M323.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:40Z"
+    "original_path": "static\\signs\\originals\\M323.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M324": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M324.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:42Z"
+    "original_path": "static\\signs\\originals\\M324.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M325": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M325.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:43Z"
+    "original_path": "static\\signs\\originals\\M325.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M326": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M326.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:44Z"
+    "original_path": "static\\signs\\originals\\M326.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M327": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M327.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:45Z"
+    "original_path": "static\\signs\\originals\\M327.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M328": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M328.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:46Z"
+    "original_path": "static\\signs\\originals\\M328.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M329": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M329.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:47Z"
+    "original_path": "static\\signs\\originals\\M329.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M330": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M330.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:48Z"
+    "original_path": "static\\signs\\originals\\M330.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M331": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M331.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:50Z"
+    "original_path": "static\\signs\\originals\\M331.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M332": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M332.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:51Z"
+    "original_path": "static\\signs\\originals\\M332.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M333": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p799",
     "processed_path": "static\\signs\\M333.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:52Z"
+    "original_path": "static\\signs\\originals\\M333.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M334": {
     "status": "ok",
@@ -2283,24 +2283,24 @@
   },
   "M336": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M336.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:55Z"
+    "original_path": "static\\signs\\originals\\M336.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M337": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M337.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:56Z"
+    "original_path": "static\\signs\\originals\\M337.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M338": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M338.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:57Z"
+    "original_path": "static\\signs\\originals\\M338.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M339": {
     "status": "ok",
@@ -2311,31 +2311,31 @@
   },
   "M340": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M340.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:17:59Z"
+    "original_path": "static\\signs\\originals\\M340.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M341": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M341.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:00Z"
+    "original_path": "static\\signs\\originals\\M341.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M342": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M342.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:01Z"
+    "original_path": "static\\signs\\originals\\M342.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M343": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M343.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:03Z"
+    "original_path": "static\\signs\\originals\\M343.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M344": {
     "status": "ok",
@@ -2346,10 +2346,10 @@
   },
   "M345": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M345.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:05Z"
+    "original_path": "static\\signs\\originals\\M345.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M346": {
     "status": "ok",
@@ -2360,17 +2360,17 @@
   },
   "M347": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M347.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:08Z"
+    "original_path": "static\\signs\\originals\\M347.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M348": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M348.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:09Z"
+    "original_path": "static\\signs\\originals\\M348.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M349": {
     "status": "ok",
@@ -2437,10 +2437,10 @@
   },
   "M359": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M359.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:23Z"
+    "original_path": "static\\signs\\originals\\M359.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M360": {
     "status": "ok",
@@ -2479,17 +2479,17 @@
   },
   "M365": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M365.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:32Z"
+    "original_path": "static\\signs\\originals\\M365.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M367": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M367.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:33Z"
+    "original_path": "static\\signs\\originals\\M367.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M368": {
     "status": "ok",
@@ -2514,31 +2514,31 @@
   },
   "M371": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M371.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:39Z"
+    "original_path": "static\\signs\\originals\\M371.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M373": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M373.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:40Z"
+    "original_path": "static\\signs\\originals\\M373.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M374": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M374.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:41Z"
+    "original_path": "static\\signs\\originals\\M374.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M375": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M375.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:42Z"
+    "original_path": "static\\signs\\originals\\M375.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M376": {
     "status": "ok",
@@ -2563,10 +2563,10 @@
   },
   "M379": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M379.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:46Z"
+    "original_path": "static\\signs\\originals\\M379.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M380": {
     "status": "ok",
@@ -2577,10 +2577,10 @@
   },
   "M381": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M381.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:48Z"
+    "original_path": "static\\signs\\originals\\M381.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M382": {
     "status": "ok",
@@ -2598,241 +2598,241 @@
   },
   "M384": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p800",
     "processed_path": "static\\signs\\M384.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:51Z"
+    "original_path": "static\\signs\\originals\\M384.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   },
   "M385": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M385.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:52Z"
+    "original_path": "static\\signs\\originals\\M385.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M386": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M386.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:53Z"
+    "original_path": "static\\signs\\originals\\M386.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M387": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M387.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:55Z"
+    "original_path": "static\\signs\\originals\\M387.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M388": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M388.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:56Z"
+    "original_path": "static\\signs\\originals\\M388.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M389": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M389.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:57Z"
+    "original_path": "static\\signs\\originals\\M389.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M390": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M390.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:58Z"
+    "original_path": "static\\signs\\originals\\M390.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M391": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M391.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:18:59Z"
+    "original_path": "static\\signs\\originals\\M391.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M392": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M392.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:00Z"
+    "original_path": "static\\signs\\originals\\M392.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M393": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M393.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:01Z"
+    "original_path": "static\\signs\\originals\\M393.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M394": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M394.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:02Z"
+    "original_path": "static\\signs\\originals\\M394.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M395": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M395.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:04Z"
+    "original_path": "static\\signs\\originals\\M395.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M396": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M396.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:05Z"
+    "original_path": "static\\signs\\originals\\M396.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M397": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M397.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:07Z"
+    "original_path": "static\\signs\\originals\\M397.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M398": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M398.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:08Z"
+    "original_path": "static\\signs\\originals\\M398.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M399": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M399.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:09Z"
+    "original_path": "static\\signs\\originals\\M399.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M400": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M400.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:11Z"
+    "original_path": "static\\signs\\originals\\M400.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M401": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M401.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:12Z"
+    "original_path": "static\\signs\\originals\\M401.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M402": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M402.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:14Z"
+    "original_path": "static\\signs\\originals\\M402.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M403": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M403.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:15Z"
+    "original_path": "static\\signs\\originals\\M403.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M404": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M404.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:16Z"
+    "original_path": "static\\signs\\originals\\M404.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M405": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M405.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:18Z"
+    "original_path": "static\\signs\\originals\\M405.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M406": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p801",
     "processed_path": "static\\signs\\M406.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:19Z"
+    "original_path": "static\\signs\\originals\\M406.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M407": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p802",
     "processed_path": "static\\signs\\M407.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:21Z"
+    "original_path": "static\\signs\\originals\\M407.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M408": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p802",
     "processed_path": "static\\signs\\M408.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:22Z"
+    "original_path": "static\\signs\\originals\\M408.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M409": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p802",
     "processed_path": "static\\signs\\M409.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:24Z"
+    "original_path": "static\\signs\\originals\\M409.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M410": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p802",
     "processed_path": "static\\signs\\M410.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:25Z"
+    "original_path": "static\\signs\\originals\\M410.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M411": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p802",
     "processed_path": "static\\signs\\M411.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:26Z"
+    "original_path": "static\\signs\\originals\\M411.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M412": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p802",
     "processed_path": "static\\signs\\M412.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:28Z"
+    "original_path": "static\\signs\\originals\\M412.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M413": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p802",
     "processed_path": "static\\signs\\M413.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:29Z"
+    "original_path": "static\\signs\\originals\\M413.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M414": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p802",
     "processed_path": "static\\signs\\M414.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:31Z"
+    "original_path": "static\\signs\\originals\\M414.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M415": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p802",
     "processed_path": "static\\signs\\M415.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:32Z"
+    "original_path": "static\\signs\\originals\\M415.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M416": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p802",
     "processed_path": "static\\signs\\M416.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:33Z"
+    "original_path": "static\\signs\\originals\\M416.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M417": {
     "status": "ok",
-    "source": "fallback_icon",
+    "source": "mahadevan_appendix_i:mah_p802",
     "processed_path": "static\\signs\\M417.png",
-    "original_path": null,
-    "timestamp": "2026-06-05T14:19:35Z"
+    "original_path": "static\\signs\\originals\\M417.png",
+    "timestamp": "2026-06-05T15:10:06Z"
   },
   "M420": {
     "status": "ok",
@@ -4233,5 +4233,33 @@
     "processed_path": "static\\signs\\P385.png",
     "original_path": null,
     "timestamp": "2026-06-05T14:23:42Z"
+  },
+  "M084": {
+    "status": "ok",
+    "source": "mahadevan_appendix_i:mah_p794",
+    "processed_path": "static\\signs\\M084.png",
+    "original_path": "static\\signs\\originals\\M084.png",
+    "timestamp": "2026-06-05T15:10:05Z"
+  },
+  "M225": {
+    "status": "ok",
+    "source": "mahadevan_appendix_i:mah_p796",
+    "processed_path": "static\\signs\\M225.png",
+    "original_path": "static\\signs\\originals\\M225.png",
+    "timestamp": "2026-06-05T15:10:05Z"
+  },
+  "M306": {
+    "status": "ok",
+    "source": "mahadevan_appendix_i:mah_p799",
+    "processed_path": "static\\signs\\M306.png",
+    "original_path": "static\\signs\\originals\\M306.png",
+    "timestamp": "2026-06-05T15:10:05Z"
+  },
+  "M358": {
+    "status": "ok",
+    "source": "mahadevan_appendix_i:mah_p800",
+    "processed_path": "static\\signs\\M358.png",
+    "original_path": "static\\signs\\originals\\M358.png",
+    "timestamp": "2026-06-05T15:10:05Z"
   }
 }

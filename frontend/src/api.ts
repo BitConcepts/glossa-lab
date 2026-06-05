@@ -2743,3 +2743,13 @@ export const getSignImageManifest = (): Promise<Record<string, {
   processed_path: string | null; original_path: string | null;
 }>> =>
   request("GET", "/signs/images/manifest");
+
+export interface PagePreview {
+  filename: string;
+  source: string;
+  url: string;
+  size_bytes: number;
+}
+
+export const getPagePreviews = (): Promise<{ count: number; pages: PagePreview[] }> =>
+  request("GET", "/signs/images/page-previews");

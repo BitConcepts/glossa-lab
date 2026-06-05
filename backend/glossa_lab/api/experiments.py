@@ -373,7 +373,8 @@ _VALID_BUILTIN_LANGUAGES = {
     "hebrew", "geez", "phoenician", "sumerian",
     "dravidian", "south_dravidian", "kannada", "telugu",
     "pali", "sanskrit", "coptic", "linear_b",
-    "meroitic", "proto_sinaitic",
+    "meroitic", "proto_sinaitic", "nw_semitic",
+    "hieroglyphic_luwian",
 }
 
 _VALID_BUILTIN_CORPORA = {
@@ -405,6 +406,21 @@ async def build_sa_experiment(body: dict[str, Any]) -> dict[str, Any]:
     name = str(body.get("name", "")).strip()
     n_seeds = max(1, int(body.get("n_seeds", 3)))
     max_iterations = max(100, int(body.get("max_iterations", 5000)))
+
+    # Normalize common AI-generated corpus name variations
+    _CORPUS_ALIASES: dict[str, str] = {
+        "indus script": "indus_cisi",
+        "indus_script": "indus_cisi",
+        "indus-script": "indus_cisi",
+        "cisi": "indus_cisi",
+        "indus parpola": "indus_cisi",
+        "indus-cisi": "indus_cisi",
+        "m77": "indus_m77",
+        "mahadevan": "indus_m77",
+        "fuls": "nw_semitic",
+        "fuls_nw_semitic": "nw_semitic",
+    }
+    corpus = _CORPUS_ALIASES.get(corpus, corpus)
 
     if corpus not in _VALID_BUILTIN_CORPORA:
         return {"ok": False, "error": f"Unknown corpus '{corpus}'. Valid: {', '.join(sorted(_VALID_BUILTIN_CORPORA))}"}

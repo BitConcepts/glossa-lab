@@ -1,7 +1,7 @@
 {
   "document_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb",
   "title": "",
-  "extraction_date": "2026-06-02T11:33:13.307507",
+  "extraction_date": "2026-06-04T18:37:40.982110",
   "total_claims": 1,
   "auto_extracted": 1,
   "manually_curated": 0,
@@ -15,7 +15,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-06-02T11:33:13.301355"
+      "extracted_at": "2026-06-04T18:37:40.974608"
     }
   ],
   "_citation": {

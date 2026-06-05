@@ -348,6 +348,12 @@ def _builtin_lm(inputs: dict, params: dict) -> dict:
         elif lang in ("proto_sinaitic", "proto-sinaitic"):
             from glossa_lab.data.proto_sinaitic import get_corpus_symbols as _ps  # noqa: PLC0415
             syms = _ps(); inscs = None
+        elif lang in ("nw_semitic", "ugaritic", "fuls"):
+            from glossa_lab.data.nw_semitic import (  # noqa: PLC0415
+                get_corpus_inscriptions,
+                get_corpus_symbols,
+            )
+            syms = get_corpus_symbols(); inscs = get_corpus_inscriptions()
         elif lang in ("hieroglyphic_luwian", "luwian", "hluwian", "chli"):
             from glossa_lab.data.hieroglyphic_luwian import (  # noqa: PLC0415
                 get_corpus_inscriptions,
@@ -355,7 +361,7 @@ def _builtin_lm(inputs: dict, params: dict) -> dict:
             )
             syms = get_corpus_symbols(); inscs = get_corpus_inscriptions()
         else:
-            return {"error": f"Unknown language '{lang}'. Valid: hebrew, geez, phoenician, sumerian, dravidian, south_dravidian, kannada, telugu, pali, sanskrit, coptic, linear_b, meroitic, proto_sinaitic, hieroglyphic_luwian"}
+            return {"error": f"Unknown language '{lang}'. Valid: hebrew, geez, phoenician, sumerian, dravidian, south_dravidian, kannada, telugu, pali, sanskrit, coptic, linear_b, meroitic, proto_sinaitic, nw_semitic, hieroglyphic_luwian"}
     except ImportError as exc:
         return {"error": str(exc)}
     from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
@@ -1308,12 +1314,29 @@ def _cluster_mapper(inputs: dict, params: dict) -> dict:
             except Exception:  # noqa: BLE001
                 assignments = []
 
+    # ── Fallback: generate simple frequency-rank clusters from corpus ──────
     if not assignments:
-        return {
-            "error": "Cluster assignments unavailable. "
-                     "Seed via POST /sign-clusters/seed or run scripts/cgsa_pipeline.py",
-            "n_assignments": 0,
-        }
+        from collections import Counter as _FC  # noqa: PLC0415
+        sequences = inputs.get("sequences") or []
+        flat = [s for seq in sequences for s in seq]
+        if not flat:
+            return {
+                "error": "Cluster assignments unavailable and no sequences to generate from. "
+                         "Seed via POST /sign-clusters/seed or run scripts/cgsa_pipeline.py",
+                "n_assignments": 0,
+            }
+        # Assign cluster labels by frequency rank, binned into ~40 groups
+        freq = _FC(flat)
+        ranked = [s for s, _ in freq.most_common()]
+        n_clusters = min(40, len(ranked))
+        bin_size = max(1, len(ranked) // n_clusters)
+        for i, sign in enumerate(ranked):
+            cluster_lbl = min(i // bin_size, n_clusters - 1)
+            assignments.append({"sign_id": sign, "cluster_label": cluster_lbl})
+        summary = {"n_clusters": n_clusters, "cluster_k": n_clusters,
+                   "n_signs": len(ranked), "source": "frequency_rank_fallback"}
+        _log.info("ClusterMapper: generated %d frequency-rank clusters for %d signs",
+                  n_clusters, len(ranked))
 
     s2c: dict[str, int] = {a["sign_id"]: a["cluster_label"] for a in assignments}
     sequences = inputs.get("sequences") or []
@@ -2019,14 +2042,14 @@ for _d in [
                              "description":"ID of the graph experiment to invoke as a subroutine"}}},
         fn=_sub_experiment),
     AtomicNodeDef("BuiltinLM","Built-in Reference LM","Decipherment",
-        "Load a pre-built language model for a known language (hebrew, geez, phoenician, sumerian, dravidian, south_dravidian, kannada, telugu, pali, sanskrit, coptic, linear_b, meroitic, proto_sinaitic). "
+        "Load a pre-built language model for a known language (hebrew, geez, phoenician, sumerian, dravidian, south_dravidian, kannada, telugu, pali, sanskrit, coptic, linear_b, meroitic, proto_sinaitic, nw_semitic). "
         "Use as the target LM in SADecipher or BeamDecipher.",
         inputs=[],
         outputs=[{"name":"lm","type":"any"},{"name":"language","type":"text"},
                  {"name":"n_signs","type":"number"},{"name":"n_tokens","type":"number"}],
         params_schema={"type":"object","properties":{
             "language":{"type":"string","title":"Language","default":"hebrew",
-                        "description":"hebrew | geez | phoenician | sumerian | dravidian | south_dravidian | kannada | telugu | pali | sanskrit | coptic | linear_b | meroitic | proto_sinaitic"}}},
+                        "description":"hebrew | geez | phoenician | sumerian | dravidian | south_dravidian | kannada | telugu | pali | sanskrit | coptic | linear_b | meroitic | proto_sinaitic | nw_semitic"}}},
         fn=_builtin_lm),
     AtomicNodeDef("BuiltinCorpus","Built-in Corpus","Sources",
         "Load a named built-in corpus directly. Does not require a DB corpus ID — always available offline.",

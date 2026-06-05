@@ -1,13 +1,13 @@
 {
   "cycles_completed": 263,
-  "max_cycles": 15,
+  "max_cycles": 30,
   "cycle_analyses": [
     {
       "cycle": 1,
       "experiment": "suffix_chain_depth",
-      "summary": "Suffix Chain Depth: Suffix chains: avg depth 3.7. Distribution: {4: 429, 5: 524, 2: 351, 3: 366}. · avg_depth=3.7",
+      "summary": "Suffix Chain Depth: Suffix chains: avg depth 3.8. Distribution: {4: 431, 5: 584, 2: 313, 3: 342}. · avg_depth=3.8",
       "metrics": {
-        "avg_depth": 3.7
+        "avg_depth": 3.8
       },
       "flags": [],
       "suggested_next_steps": [
@@ -17,9 +17,9 @@
     {
       "cycle": 2,
       "experiment": "reading_frequency_zipf",
-      "summary": "Reading Frequency Zipf: Zipf: α=0.796 (156 readings). Linguistic. · zipf_alpha=0.796",
+      "summary": "Reading Frequency Zipf: Zipf: α=0.867 (160 readings). Linguistic. · zipf_alpha=0.867",
       "metrics": {
-        "zipf_alpha": 0.796
+        "zipf_alpha": 0.867
       },
       "flags": [],
       "suggested_next_steps": [
@@ -4174,41 +4174,41 @@
     },
     {
       "cycle": 1,
-      "timestamp": "2026-06-04T18:43:08.405384+00:00",
+      "timestamp": "2026-06-05T21:24:45.894626+00:00",
       "gap_targeted": "rare_sign_context",
       "n_papers": 0,
       "n_insights": 0,
       "insight_types": {},
       "experiment": "suffix_chain_depth",
       "selection_method": "proposal",
-      "verdict": "Suffix chains: avg depth 3.7. Distribution: {4: 429, 5: 524, 2: 351, 3: 366}.",
+      "verdict": "Suffix chains: avg depth 3.8. Distribution: {4: 431, 5: 584, 2: 313, 3: 342}.",
       "is_new_info": true,
       "n_candidates": 0,
       "top_candidate": null,
       "analysis_metrics": {
-        "avg_depth": 3.7
+        "avg_depth": 3.8
       },
       "analysis_flags": [],
-      "analysis_summary": "Suffix Chain Depth: Suffix chains: avg depth 3.7. Distribution: {4: 429, 5: 524, 2: 351, 3: 366}. · avg_depth=3.7"
+      "analysis_summary": "Suffix Chain Depth: Suffix chains: avg depth 3.8. Distribution: {4: 431, 5: 584, 2: 313, 3: 342}. · avg_depth=3.8"
     },
     {
       "cycle": 2,
-      "timestamp": "2026-06-04T18:43:09.981745+00:00",
+      "timestamp": "2026-06-05T21:24:48.550971+00:00",
       "gap_targeted": "allograph_classification",
       "n_papers": 0,
       "n_insights": 0,
       "insight_types": {},
       "experiment": "reading_frequency_zipf",
       "selection_method": "proposal",
-      "verdict": "Zipf: α=0.796 (156 readings). Linguistic.",
+      "verdict": "Zipf: α=0.867 (160 readings). Linguistic.",
       "is_new_info": true,
       "n_candidates": 0,
       "top_candidate": null,
       "analysis_metrics": {
-        "zipf_alpha": 0.796
+        "zipf_alpha": 0.867
       },
       "analysis_flags": [],
-      "analysis_summary": "Reading Frequency Zipf: Zipf: α=0.796 (156 readings). Linguistic. · zipf_alpha=0.796"
+      "analysis_summary": "Reading Frequency Zipf: Zipf: α=0.867 (160 readings). Linguistic. · zipf_alpha=0.867"
     }
   ]
 }

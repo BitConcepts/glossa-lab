@@ -42,7 +42,7 @@ _MANIFEST_PATH = _STATIC_SIGNS / "manifest.json"
 APPENDIX_I_PAGES = list(range(793, 805))
 
 # Output sign image size
-SIGN_SIZE = 128
+SIGN_SIZE = 256
 
 # ── Known sign sequence per page (from visual inspection) ────────────────
 # Each entry: (page_index, column, [sign_numbers])
@@ -183,8 +183,14 @@ def detect_hlines(binary: np.ndarray, min_width_frac: float = 0.3) -> list[int]:
     return clusters
 
 
-def _find_best_glyph(cell: np.ndarray, min_area: int = 60) -> np.ndarray | None:
-    """Find the largest ink blob in a cell and return it as a cropped image."""
+def _find_best_glyph(
+    cell: np.ndarray, min_area: int = 60, prefer_leftmost: bool = False,
+) -> np.ndarray | None:
+    """Find the primary ink blob in a cell and return it as a cropped image.
+
+    When prefer_leftmost=True, takes the leftmost sufficiently-large blob
+    (the primary variant), otherwise takes the largest blob.
+    """
     inv = 255 - cell
     n_labels, labels, stats, _ = cv2.connectedComponentsWithStats(inv, connectivity=8)
 
@@ -198,18 +204,27 @@ def _find_best_glyph(cell: np.ndarray, min_area: int = 60) -> np.ndarray | None:
             continue
         if bw < 6 or bh < 6:
             continue
-        candidates.append((area, lbl))
+        x = stats[lbl, cv2.CC_STAT_LEFT]
+        candidates.append((area, x, lbl))
 
     if not candidates:
         return None
 
-    candidates.sort(key=lambda x: -x[0])
-    best = candidates[0][1]
+    if prefer_leftmost:
+        # Take the leftmost blob that's at least 30% the size of the largest
+        max_a = max(c[0] for c in candidates)
+        viable = [c for c in candidates if c[0] >= max_a * 0.3]
+        viable.sort(key=lambda c: c[1])  # sort by x position
+        best = viable[0][2]
+    else:
+        candidates.sort(key=lambda c: -c[0])
+        best = candidates[0][2]
+
     bx = stats[best, cv2.CC_STAT_LEFT]
     by = stats[best, cv2.CC_STAT_TOP]
     bw = stats[best, cv2.CC_STAT_WIDTH]
     bh = stats[best, cv2.CC_STAT_HEIGHT]
-    pad = max(3, int(0.08 * max(bw, bh)))
+    pad = max(3, int(0.10 * max(bw, bh)))
     cx0 = max(0, bx - pad)
     cy0 = max(0, by - pad)
     cx1 = min(cell.shape[1], bx + bw + pad)
@@ -283,8 +298,8 @@ def extract_signs_from_page(
             if cell.size == 0:
                 continue
 
-            # Find the primary glyph in this cell
-            crop = _find_best_glyph(cell)
+            # Find the primary glyph in this cell (leftmost = primary variant)
+            crop = _find_best_glyph(cell, prefer_leftmost=True)
             if crop is None:
                 print(f"    {sign_id}: no glyph found")
                 continue
@@ -295,89 +310,229 @@ def extract_signs_from_page(
     return results
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Extract Mahadevan sign glyphs from Appendix I pages"
-    )
-    parser.add_argument(
-        "--dry-run", action="store_true", help="Count signs without saving"
-    )
-    parser.add_argument(
-        "--page", type=int, help="Process a single page index (e.g. 793)"
-    )
-    parser.add_argument(
-        "--force", action="store_true", help="Overwrite existing sign images"
-    )
-    args = parser.parse_args()
+# ── Table III extraction ──────────────────────────────────────────────────
+# Table III (Distribution of Signs by Sites) pages 757-762 have ALL 417 signs
+# in sequential Mahadevan order. Each sign is a small glyph in the SIGN column.
 
-    print("Mahadevan 1977 Appendix I — Sign Glyph Extraction\n")
+TABLE_III_PAGES = list(range(757, 763))
 
-    _STATIC_SIGNS.mkdir(parents=True, exist_ok=True)
-    _ORIGINALS_DIR.mkdir(parents=True, exist_ok=True)
 
-    pages = [args.page] if args.page else APPENDIX_I_PAGES
-    manifest = _load_manifest()
+def extract_signs_from_table_iii() -> list[tuple[str, np.ndarray]]:
+    """Extract individual sign glyphs from Table III pages.
 
-    total_extracted = 0
-    total_saved = 0
-    total_skipped = 0
+    Signs appear in Mahadevan order (M001-M417) across pages 757-762,
+    in two columns per page, ~40 rows per column.
+    """
+    all_glyphs: list[tuple[int, np.ndarray]] = []  # (row_index, glyph)
 
-    for page_idx in pages:
-        if page_idx not in PAGE_SIGN_MAP:
+    for page_idx in TABLE_III_PAGES:
+        page_path = _PAGE_DIR / f"mah_p{page_idx:03d}.png"
+        if not page_path.exists():
+            print(f"  Table III: SKIP {page_path.name} (not found)")
             continue
-        print(f"\n  Page {page_idx} (mah_p{page_idx:03d}.png):")
-        results = extract_signs_from_page(page_idx, dry_run=args.dry_run)
 
-        for sign_id, normalized in results:
-            total_extracted += 1
+        img = cv2.imread(str(page_path))
+        if img is None:
+            continue
 
-            if not args.force and not args.dry_run:
-                existing = manifest.get(sign_id, {})
-                # Don't overwrite wikimedia or manual uploads
-                if existing.get("source") in ("wikimedia", "manual_upload"):
-                    total_skipped += 1
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        _, binary = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+        h, w = binary.shape
+        mid_x = w // 2
+
+        # Table area: skip header (~5%) and footer (~3%)
+        table_y0 = int(h * 0.05)
+        table_y1 = int(h * 0.97)
+        table_h = table_y1 - table_y0
+
+        page_glyphs = []
+
+        for col in ("L", "R"):
+            if col == "L":
+                # SIGN column is the leftmost ~10% of the left half
+                sign_x0 = 0
+                sign_x1 = int(mid_x * 0.18)
+            else:
+                # SIGN column is the leftmost ~10% of the right half
+                sign_x0 = mid_x
+                sign_x1 = mid_x + int(mid_x * 0.18)
+
+            col_region = binary[table_y0:table_y1, sign_x0:sign_x1]
+            col_h, col_w = col_region.shape
+
+            # Detect individual rows by finding horizontal gaps
+            # Each row is roughly equal height; estimate from page
+            # Count ink blobs vertically to find row count
+            inv = 255 - col_region
+            n_labels, labels, stats, _ = cv2.connectedComponentsWithStats(
+                inv, connectivity=8
+            )
+
+            # Get y-centers of all blobs above minimum size
+            blob_ys = []
+            for lbl in range(1, n_labels):
+                area = stats[lbl, cv2.CC_STAT_AREA]
+                bh = stats[lbl, cv2.CC_STAT_HEIGHT]
+                if area < 20 or bh < 4:
                     continue
+                cy = stats[lbl, cv2.CC_STAT_TOP] + bh // 2
+                blob_ys.append((cy, lbl))
 
-            if args.dry_run:
-                print(f"    {sign_id}: would extract ({normalized.shape})")
+            if not blob_ys:
                 continue
 
-            # Save processed image
-            out_path = _STATIC_SIGNS / f"{sign_id}.png"
-            Image.fromarray(normalized).convert("L").save(
-                str(out_path), optimize=True
+            # Cluster by y-position (within 8px = same row)
+            blob_ys.sort()
+            rows: list[list[int]] = []
+            cur_row = [blob_ys[0]]
+            for cy, lbl in blob_ys[1:]:
+                if cy - cur_row[-1][0] < 8:
+                    cur_row.append((cy, lbl))
+                else:
+                    rows.append([lbl for _, lbl in cur_row])
+                    cur_row = [(cy, lbl)]
+            rows.append([lbl for _, lbl in cur_row])
+
+            # For each row, extract the largest blob as the sign glyph
+            for row_lbls in rows:
+                best_area = 0
+                best_lbl = -1
+                for lbl in row_lbls:
+                    a = stats[lbl, cv2.CC_STAT_AREA]
+                    if a > best_area:
+                        best_area = a
+                        best_lbl = lbl
+
+                if best_lbl < 0 or best_area < 20:
+                    continue
+
+                bx = stats[best_lbl, cv2.CC_STAT_LEFT]
+                by = stats[best_lbl, cv2.CC_STAT_TOP]
+                bw = stats[best_lbl, cv2.CC_STAT_WIDTH]
+                bh = stats[best_lbl, cv2.CC_STAT_HEIGHT]
+                pad = max(2, int(0.12 * max(bw, bh)))
+                cx0 = max(0, bx - pad)
+                cy0 = max(0, by - pad)
+                cx1 = min(col_w, bx + bw + pad)
+                cy1 = min(col_h, by + bh + pad)
+                crop = col_region[cy0:cy1, cx0:cx1]
+                if crop.size > 0 and bh >= 6 and bw >= 4:
+                    page_glyphs.append(crop)
+
+        print(f"  Table III p{page_idx}: {len(page_glyphs)} glyphs")
+        all_glyphs.extend((i, g) for i, g in enumerate(page_glyphs, start=len(all_glyphs)))
+
+    # Map sequential index to M-number (signs 1-417)
+    results: list[tuple[str, np.ndarray]] = []
+    for seq_idx, (_, crop) in enumerate(all_glyphs):
+        sign_num = seq_idx + 1
+        if sign_num > 417:
+            break
+        sign_id = f"M{sign_num:03d}"
+        normalized = normalize_glyph(crop)
+        results.append((sign_id, normalized))
+
+    return results
+
+
+def _save_results(
+    results: list[tuple[str, np.ndarray]],
+    source_label: str,
+    manifest: dict,
+    *,
+    force: bool = False,
+    dry_run: bool = False,
+) -> tuple[int, int, int]:
+    """Save extracted sign images. Returns (extracted, saved, skipped)."""
+    extracted = saved = skipped = 0
+    for sign_id, normalized in results:
+        extracted += 1
+        if not force and not dry_run:
+            existing = manifest.get(sign_id, {})
+            src = existing.get("source", "")
+            # Don't overwrite wikimedia, manual, or appendix_i with table_iii
+            if src in ("wikimedia", "manual_upload"):
+                skipped += 1
+                continue
+            if "appendix_i" in source_label and "appendix_i" not in src:
+                pass  # appendix_i always writes
+            elif "table_iii" in source_label and "appendix_i" in src:
+                skipped += 1  # don't downgrade appendix_i with table_iii
+                continue
+
+        if dry_run:
+            continue
+
+        out_path = _STATIC_SIGNS / f"{sign_id}.png"
+        Image.fromarray(normalized).convert("L").save(str(out_path), optimize=True)
+        orig_path = _ORIGINALS_DIR / f"{sign_id}.png"
+        Image.fromarray(normalized).convert("L").save(str(orig_path), optimize=True)
+
+        manifest[sign_id] = {
+            "status": "ok",
+            "source": source_label,
+            "processed_path": f"static\\signs\\{sign_id}.png",
+            "original_path": f"static\\signs\\originals\\{sign_id}.png",
+            "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        }
+        saved += 1
+    return extracted, saved, skipped
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="Extract Mahadevan sign glyphs from Appendix I + Table III"
+    )
+    parser.add_argument("--dry-run", action="store_true", help="Count without saving")
+    parser.add_argument("--page", type=int, help="Process a single Appendix I page")
+    parser.add_argument("--force", action="store_true", help="Overwrite all")
+    parser.add_argument("--skip-appendix", action="store_true", help="Skip Appendix I")
+    parser.add_argument("--skip-table", action="store_true", help="Skip Table III")
+    args = parser.parse_args()
+
+    print("Mahadevan 1977 — Sign Glyph Extraction\n")
+    _STATIC_SIGNS.mkdir(parents=True, exist_ok=True)
+    _ORIGINALS_DIR.mkdir(parents=True, exist_ok=True)
+    manifest = _load_manifest()
+    total_e = total_s = total_k = 0
+
+    # ── Phase 1: Appendix I (higher quality, ~226 signs with variants)
+    if not args.skip_appendix:
+        print("\n══ Appendix I: List of Sign Variants ══")
+        pages = [args.page] if args.page else APPENDIX_I_PAGES
+        for page_idx in pages:
+            if page_idx not in PAGE_SIGN_MAP:
+                continue
+            print(f"  Page {page_idx}:")
+            results = extract_signs_from_page(page_idx)
+            e, s, k = _save_results(
+                results, f"mahadevan_appendix_i:mah_p{page_idx:03d}",
+                manifest, force=args.force, dry_run=args.dry_run,
             )
+            total_e += e; total_s += s; total_k += k
+            if s > 0:
+                print(f"    → {s} saved")
+        _save_manifest(manifest)
 
-            # Save original crop
-            orig_path = _ORIGINALS_DIR / f"{sign_id}.png"
-            Image.fromarray(normalized).convert("L").save(
-                str(orig_path), optimize=True
-            )
-
-            # Update manifest
-            manifest[sign_id] = {
-                "status": "ok",
-                "source": f"mahadevan_appendix_i:mah_p{page_idx:03d}",
-                "processed_path": f"static\\signs\\{sign_id}.png",
-                "original_path": f"static\\signs\\originals\\{sign_id}.png",
-                "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
-            }
-            total_saved += 1
-            print(f"    {sign_id}: ✓ saved")
-
-        # Save manifest periodically
-        if not args.dry_run and total_saved > 0:
-            _save_manifest(manifest)
+    # ── Phase 2: Table III (fills gaps — all 417 signs, smaller glyphs)
+    if not args.skip_table and not args.page:
+        print("\n══ Table III: Distribution of Signs by Sites ══")
+        t3_results = extract_signs_from_table_iii()
+        # Only save signs that don't already have an appendix_i image
+        e, s, k = _save_results(
+            t3_results, "mahadevan_table_iii",
+            manifest, force=args.force, dry_run=args.dry_run,
+        )
+        total_e += e; total_s += s; total_k += k
+        print(f"    → {s} saved (gap-fill)")
+        _save_manifest(manifest)
 
     print(f"\n{'=' * 50}")
-    print(f"  Extracted: {total_extracted} signs")
-    print(f"  Saved:     {total_saved} new images")
-    print(f"  Skipped:   {total_skipped} (existing wikimedia/manual)")
-    print(f"  Manifest:  {_MANIFEST_PATH}")
-
-    if not args.dry_run and total_saved > 0:
-        _save_manifest(manifest)
-        print(f"\n  ✓ Manifest updated with {total_saved} mahadevan_appendix_i entries")
+    print(f"  Extracted: {total_e}")
+    print(f"  Saved:     {total_s}")
+    print(f"  Skipped:   {total_k}")
+    if total_s > 0:
+        print(f"  ✓ Manifest updated")
 
 
 if __name__ == "__main__":

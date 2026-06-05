@@ -185,9 +185,46 @@ function SignCard({ sign, onClick }: { sign: SignEntry; onClick?: () => void }) 
   );
 }
 
+// ── Lightbox ────────────────────────────────────────────────────────────
+function SignLightbox({ sign, onClose }: { sign: SignEntry; onClose: () => void }) {
+  return (
+    <div
+      onClick={onClose}
+      style={{
+        position: "fixed", inset: 0, background: "rgba(0,0,0,0.85)",
+        zIndex: 600, display: "flex", alignItems: "center", justifyContent: "center",
+        cursor: "zoom-out",
+      }}
+    >
+      <div onClick={e => e.stopPropagation()} style={{ textAlign: "center" }}>
+        {sign.image_url ? (
+          <img
+            src={sign.image_url}
+            alt={sign.sign_id}
+            style={{
+              width: 400, height: 400, objectFit: "contain",
+              background: "#fff", borderRadius: 12, padding: 24,
+              imageRendering: "pixelated",
+            }}
+          />
+        ) : (
+          <SignGlyph sign_id={sign.sign_id} size={400} />
+        )}
+        <div style={{ color: "#e2e8f0", fontSize: 18, fontWeight: 700, marginTop: 16 }}>
+          {sign.sign_id}{sign.reading ? ` — ${sign.reading}` : ""}
+        </div>
+        <div style={{ color: "#64748b", fontSize: 12, marginTop: 4 }}>Click anywhere to close</div>
+      </div>
+    </div>
+  );
+}
+
 // ── Detail panel ────────────────────────────────────────────────────────
 function SignDetail({ sign, onClose }: { sign: SignEntry; onClose: () => void }) {
+  const [showLightbox, setShowLightbox] = useState(false);
   return (
+    <>
+    {showLightbox && <SignLightbox sign={sign} onClose={() => setShowLightbox(false)} />}
     <div style={{
       position: "fixed", top: 0, right: 0, bottom: 0, width: 420,
       background: "#0f172a", borderLeft: "1px solid rgba(255,255,255,0.1)",
@@ -199,13 +236,34 @@ function SignDetail({ sign, onClose }: { sign: SignEntry; onClose: () => void })
         <button onClick={onClose} style={{ border: "none", background: "none", color: "#94a3b8", fontSize: 20, cursor: "pointer" }}>×</button>
       </div>
 
-      <div style={{ display: "flex", gap: 16, marginBottom: 20 }}>
-        <SignGlyph sign_id={sign.sign_id} imageUrl={sign.image_url} size={80} />
-        <div>
-          <ConfChip level={sign.confidence} />
-          {sign.reading && <div style={{ fontSize: 18, fontWeight: 700, color: "#93c5fd", marginTop: 8 }}>{sign.reading}</div>}
-          {sign.gloss && <div style={{ fontSize: 12, color: "#94a3b8", marginTop: 4 }}>{sign.gloss}</div>}
-        </div>
+      {/* Large sign image — click to open lightbox */}
+      <div
+        onClick={() => setShowLightbox(true)}
+        style={{
+          display: "flex", justifyContent: "center", marginBottom: 20,
+          cursor: "zoom-in", padding: 16, background: "#fff", borderRadius: 10,
+          border: "1px solid rgba(255,255,255,0.1)",
+        }}
+        title="Click to enlarge"
+      >
+        {sign.image_url ? (
+          <img
+            src={sign.image_url}
+            alt={sign.sign_id}
+            style={{
+              width: 200, height: 200, objectFit: "contain",
+              imageRendering: "pixelated",
+            }}
+          />
+        ) : (
+          <SignGlyph sign_id={sign.sign_id} size={200} />
+        )}
+      </div>
+
+      <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 16, flexWrap: "wrap" }}>
+        <ConfChip level={sign.confidence} />
+        {sign.reading && <span style={{ fontSize: 20, fontWeight: 700, color: "#93c5fd" }}>{sign.reading}</span>}
+        {sign.gloss && <span style={{ fontSize: 13, color: "#94a3b8" }}>({sign.gloss})</span>}
       </div>
 
       {/* Fields */}
@@ -233,6 +291,7 @@ function SignDetail({ sign, onClose }: { sign: SignEntry; onClose: () => void })
         </div>
       )}
     </div>
+    </>
   );
 }
 

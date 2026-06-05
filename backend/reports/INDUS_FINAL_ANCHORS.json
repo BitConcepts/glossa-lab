@@ -1,5 +1,5 @@
 {
-  "total": 605,
+  "total": 481,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -2333,7 +2333,7 @@
     "M104": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-05T17:59:17Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-05T23:24:45Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
@@ -2603,7 +2603,7 @@
     "M200": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-05T17:59:17Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-05T23:24:45Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
@@ -2650,7 +2650,7 @@
     "M260": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-05T17:59:17Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-05T23:24:45Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
@@ -2788,14 +2788,14 @@
     "M112": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-05T17:59:17Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-05T23:24:45Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
     "M286": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-05T17:59:17Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-05T23:24:45Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
@@ -2849,7 +2849,7 @@
     "M242": {
       "reading": "kal",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-05T17:59:17Z); evidence_type=high_neighbor_concentration; score=0.62; status=approved; DEDR: gem / stone",
+      "basis": "Promoted from anchor staging archive (2026-06-05T23:24:45Z); evidence_type=high_neighbor_concentration; score=0.62; status=approved; DEDR: gem / stone",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "gem / stone"
     },
@@ -2971,7 +2971,7 @@
     "M323": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-05T17:59:17Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-05T23:24:45Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
@@ -3052,7 +3052,7 @@
     "M115": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-05T17:59:17Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-05T23:24:45Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
@@ -3291,7 +3291,7 @@
     "M407": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-05T17:59:17Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-05T23:24:45Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },

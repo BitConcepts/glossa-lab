@@ -23,6 +23,8 @@ router = APIRouter(prefix="/api/v1/signs/images", tags=["sign-images"])
 _log = logging.getLogger("glossa_lab.api.sign_images")
 
 _STATIC_SIGNS = Path(__file__).resolve().parent.parent.parent / "static" / "signs"
+_DATA_DIR = Path(__file__).resolve().parent.parent.parent.parent / "data"
+_PAGE_PREVIEWS = _DATA_DIR / "page_previews"
 
 # ── Background task state ─────────────────────────────────────────────────
 _processing_lock = asyncio.Lock()
@@ -158,6 +160,30 @@ async def process_one_sign(
     except Exception as exc:
         _log.error("Failed to process sign %s: %s", sign_id, exc)
         raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+
+@router.get("/page-previews")
+async def list_page_previews() -> dict[str, Any]:
+    """List available local page preview images."""
+    pages: list[dict[str, Any]] = []
+    if _PAGE_PREVIEWS.exists():
+        for f in sorted(_PAGE_PREVIEWS.iterdir()):
+            if f.suffix.lower() in (".png", ".jpg", ".jpeg"):
+                # Parse source and page number from filename
+                stem = f.stem  # e.g. "mah_p001" or "fuls23_p01"
+                source = "mahadevan" if stem.startswith("mah_") else (
+                    "fuls" if stem.startswith("fuls") else "unknown"
+                )
+                pages.append({
+                    "filename": f.name,
+                    "source": source,
+                    "url": f"/static/page_previews/{f.name}",
+                    "size_bytes": f.stat().st_size,
+                })
+    return {
+        "count": len(pages),
+        "pages": pages,
+    }
 
 
 @router.post("/upload/{sign_id}")

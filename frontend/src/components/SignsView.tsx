@@ -12,6 +12,8 @@ import {
   getSignImagesStatus,
   triggerSignImageProcessing,
   type SignImagesStatus,
+  getPagePreviews,
+  type PagePreview,
 } from "../api";
 import { CorpusAnalyticsPanel } from "./CorpusAnalyticsPanel";
 
@@ -277,6 +279,8 @@ export function SignsView() {
   const [imgStatus, setImgStatus] = useState<SignImagesStatus | null>(null);
   const [imgStatusLoading, setImgStatusLoading] = useState(false);
   const [imgMsg, setImgMsg] = useState<string | null>(null);
+  const [pagePreviews, setPagePreviews] = useState<PagePreview[]>([]);
+  const [selectedPreview, setSelectedPreview] = useState<PagePreview | null>(null);
 
   const loadImgStatus = useCallback(async () => {
     setImgStatusLoading(true);
@@ -286,24 +290,17 @@ export function SignsView() {
   }, []);
 
   useEffect(() => {
-    if (activeTab === "analyzer") void loadImgStatus();
+    if (activeTab === "analyzer") {
+      void loadImgStatus();
+      getPagePreviews().then(r => setPagePreviews(r.pages)).catch(() => {});
+    }
   }, [activeTab, loadImgStatus]);
 
-  const handleEnrichWikimedia = async () => {
-    setImgMsg("Queuing WikiMedia enrichment… this may take several minutes.");
-    try {
-      const res = await triggerSignImageProcessing({ force: true, skip_wikimedia: false });
-      setImgMsg(res.queued ? "✔ Running in background — refresh status in a moment." : (res.reason ?? "Already running."));
-    } catch (e) {
-      setImgMsg(`Error: ${e instanceof Error ? e.message : String(e)}`);
-    }
-  };
-
-  const handleRegenFallbacks = async () => {
-    setImgMsg("Regenerating all fallback icons…");
+  const handleRegenLocal = async () => {
+    setImgMsg("Regenerating sign images from local sources (no external downloads)…");
     try {
       const res = await triggerSignImageProcessing({ force: true, skip_wikimedia: true });
-      setImgMsg(res.queued ? "✔ Running in background." : (res.reason ?? "Already running."));
+      setImgMsg(res.queued ? "✔ Running in background — refresh status in a moment." : (res.reason ?? "Already running."));
     } catch (e) {
       setImgMsg(`Error: ${e instanceof Error ? e.message : String(e)}`);
     }
@@ -467,7 +464,7 @@ export function SignsView() {
 
               {/* Actions */}
               <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 12 }}>
-                <button onClick={() => void handleEnrichWikimedia()}
+                <button onClick={() => void handleRegenLocal()}
                   disabled={imgStatus.processing_running}
                   style={{
                     padding: "7px 16px", fontSize: 12, fontWeight: 700, borderRadius: 6,
@@ -475,17 +472,7 @@ export function SignsView() {
                     color: imgStatus.processing_running ? "#9ca3af" : "#fff",
                     border: "none", cursor: imgStatus.processing_running ? "default" : "pointer",
                   }}>
-                  {imgStatus.processing_running ? "⏳ Processing…" : "🌐 Enrich via WikiMedia"}
-                </button>
-                <button onClick={() => void handleRegenFallbacks()}
-                  disabled={imgStatus.processing_running}
-                  style={{
-                    padding: "7px 16px", fontSize: 12, fontWeight: 600, borderRadius: 6,
-                    background: "#fff", color: "#374151",
-                    border: "1px solid #d1d5db",
-                    cursor: imgStatus.processing_running ? "default" : "pointer",
-                  }}>
-                  ↻ Regenerate Fallback Icons
+                  {imgStatus.processing_running ? "⏳ Processing…" : "✨ Regenerate Local Images"}
                 </button>
               </div>
 
@@ -512,6 +499,67 @@ export function SignsView() {
 
           {!imgStatus && !imgStatusLoading && (
             <div style={{ color: "#9ca3af", fontSize: 12 }}>Backend offline — cannot load image status.</div>
+          )}
+
+          {/* Local Page Previews — reference images from Mahadevan, Fuls etc. */}
+          {pagePreviews.length > 0 && (
+            <div style={{ marginTop: 20 }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: "#6b7280",
+                             textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 8 }}>
+                📖 Local Source Pages ({pagePreviews.length} available)
+              </div>
+              <div style={{ padding: "10px 14px", background: "#f0f9ff",
+                             border: "1px solid #bae6fd", borderRadius: 6, fontSize: 11,
+                             color: "#0369a1", lineHeight: 1.6, marginBottom: 12 }}>
+                These are locally stored page scans from published sign catalogs (Mahadevan 1977, Fuls 2023).
+                They serve as reference material for sign identification and can be used for manual grid extraction.
+              </div>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                {pagePreviews.map(p => (
+                  <button
+                    key={p.filename}
+                    onClick={() => setSelectedPreview(p)}
+                    style={{
+                      padding: "6px 12px", borderRadius: 6, fontSize: 11, fontWeight: 600,
+                      background: p.source === "mahadevan" ? "#fef3c7" : "#dbeafe",
+                      color: p.source === "mahadevan" ? "#92400e" : "#1e40af",
+                      border: "1px solid rgba(0,0,0,0.08)", cursor: "pointer",
+                      transition: "all 0.12s",
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.opacity = "0.85"; }}
+                    onMouseLeave={e => { e.currentTarget.style.opacity = "1"; }}
+                  >
+                    {p.source === "mahadevan" ? "📜" : "📘"} {p.filename.replace(".png", "")}
+                    <span style={{ fontSize: 9, opacity: 0.7, marginLeft: 4 }}>
+                      ({(p.size_bytes / 1024).toFixed(0)}KB)
+                    </span>
+                  </button>
+                ))}
+              </div>
+
+              {/* Selected preview viewer */}
+              {selectedPreview && (
+                <div style={{ marginTop: 12, padding: 12, background: "#fff",
+                               border: "1px solid #e5e7eb", borderRadius: 8 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 8 }}>
+                    <span style={{ fontSize: 13, fontWeight: 700, color: "#111827" }}>
+                      {selectedPreview.filename}
+                    </span>
+                    <button onClick={() => setSelectedPreview(null)} style={{
+                      border: "none", background: "none", fontSize: 16, cursor: "pointer", color: "#6b7280",
+                    }}>×</button>
+                  </div>
+                  <img
+                    src={selectedPreview.url}
+                    alt={selectedPreview.filename}
+                    style={{
+                      maxWidth: "100%", maxHeight: 600, borderRadius: 4,
+                      border: "1px solid #e5e7eb", objectFit: "contain",
+                    }}
+                  />
+                </div>
+              )}
+            </div>
           )}
         </div>
       ) : (

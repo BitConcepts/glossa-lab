@@ -415,6 +415,15 @@ def create_app() -> FastAPI:
             name="sign_images",
         )
 
+    # Serve page preview images (local scans of Mahadevan, Fuls, etc.)
+    _page_previews = Path(__file__).parent.parent.parent / "data" / "page_previews"
+    if _page_previews.exists():
+        application.mount(
+            "/static/page_previews",
+            StaticFiles(directory=str(_page_previews)),
+            name="page_previews",
+        )
+
     # Serve built frontend
     # Skipped silently in dev if the dist directory does not yet exist.
     if _FRONTEND_DIST.exists():

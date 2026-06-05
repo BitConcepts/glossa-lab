@@ -55,10 +55,8 @@ export function PhaseAdvancerPanel() {
   const [status, setStatus] = useState<PhaseStatus | null>(null);
   const [loading, setLoading] = useState(false);
   const [advancing, setAdvancing] = useState(false);
-  const [advanceResult, setAdvanceResult] = useState<{
-    ok: boolean; message: string; job_id?: string | null;
-    action_type?: string | null;
-  } | null>(null);
+  const [advanceStatus, setAdvanceStatus] = useState<string | null>(null); // inline status line
+  const [regenBusy, setRegenBusy] = useState(false);
   const [expanded, setExpanded] = useState(true);
   // Experiment IDs that have been queued/started/completed — drives button advancement.
   // Populated from the Jobs API on mount and updated live by polling.
@@ -135,43 +133,60 @@ export function PhaseAdvancerPanel() {
   }, [status?.top_actions, syncQueuedFromJobs]);
 
   const advance = async () => {
+    if (!nextAction) return;
     setAdvancing(true);
-    setAdvanceResult(null);
+    setAdvanceStatus(null);
+
     try {
-      const res = await fetch(`${BASE}/advance`, { method: "POST",
-        headers: { "Content-Type": "application/json" }, body: "{}" });
-      if (res.ok) {
-      const data = await res.json() as {
-          ok: boolean; message: string; job_id?: string | null;
-          experiment_id?: string | null; action_type?: string | null;
-        };
-        // For regenerate_insights: navigate to dashboard + fire regeneration event
-        if (data.ok && data.action_type === "regenerate_insights") {
-          if (nextAction) setCompletedSteps(prev => new Set([...prev, nextAction.label]));
-          window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: "dashboard" } }));
-          // Small delay so the dashboard mounts before the event fires
-          setTimeout(() => {
-            window.dispatchEvent(new CustomEvent("glossa:regenerate-insight"));
-          }, 300);
-          await fetchStatus();
-        // For open_view / review_candidates / verify_sa: mark done and navigate if applicable
-        } else if (data.ok && ["open_view", "review_candidates", "verify_sa"].includes(data.action_type ?? "")) {
-          if (nextAction) setCompletedSteps(prev => new Set([...prev, nextAction.label]));
-          if (data.action_type === "open_view") {
-            const viewParam = (nextAction?.params?.view as string) || "signs";
-            window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: viewParam } }));
-          }
-          await fetchStatus();
-        } else {
-          setAdvanceResult(data);
-          // Mark this experiment as queued so button advances to next action
+      // ── run_experiment: queue via backend ──────────────────────────────
+      if (nextAction.action_type === "run_experiment") {
+        const res = await fetch(`${BASE}/advance`, {
+          method: "POST", headers: { "Content-Type": "application/json" }, body: "{}",
+        });
+        if (res.ok) {
+          const data = await res.json() as {
+            ok: boolean; message: string;
+            job_id?: string | null; experiment_id?: string | null;
+          };
           if (data.ok && data.experiment_id) {
             setQueuedExpIds(prev => new Set([...prev, data.experiment_id!]));
+            setAdvanceStatus(data.job_id
+              ? `✔ Queued — job ${data.job_id.slice(0, 8)}… · Waiting for next experiment to complete…`
+              : "✔ Queued — check the Jobs panel for progress");
           }
-          await fetchStatus();
         }
+        await fetchStatus();
+
+      // ── regenerate_insights: call insight API inline ───────────────────
+      } else if (nextAction.action_type === "regenerate_insights") {
+        setRegenBusy(true);
+        setAdvanceStatus("⏳ Regenerating AI insights…");
+        try {
+          const res = await fetch("/api/v1/dashboard/insight", { method: "POST" });
+          if (res.ok) {
+            // Also fire the event so any mounted DashboardView picks it up
+            window.dispatchEvent(new CustomEvent("glossa:regenerate-insight"));
+            setAdvanceStatus("✨ Insights regenerated");
+            setCompletedSteps(prev => new Set([...prev, nextAction.label]));
+          } else {
+            setAdvanceStatus("⚠ Regeneration failed — try from the Dashboard manually");
+            // Mark done anyway so button advances
+            setCompletedSteps(prev => new Set([...prev, nextAction.label]));
+          }
+        } finally {
+          setRegenBusy(false);
+        }
+        await fetchStatus();
+
+      // ── everything else (open_view, review_candidates, verify_sa) ─────
+      // Just mark done — stay on the page
+      } else {
+        setCompletedSteps(prev => new Set([...prev, nextAction.label]));
+        setAdvanceStatus("✔ Done — proceeding to next step");
+        await fetchStatus();
       }
-    } catch { /* ignore */ }
+
+    } catch { /* ignore network errors */ }
     finally { setAdvancing(false); }
   };
 
@@ -389,11 +404,13 @@ export function PhaseAdvancerPanel() {
                   cursor: (advancing || !nextAction) ? "default" : "pointer",
                   whiteSpace: "nowrap",
                 }}>
-                {advancing
-                  ? "Advancing…"
-                  : nextAction
-                    ? `▶ ${nextAction.label.slice(0, 50)}`
-                    : "▶ No actions planned"}
+                {regenBusy
+                  ? "⏳ Regenerating insights…"
+                  : advancing
+                    ? "Advancing…"
+                    : nextAction
+                      ? `▶ ${nextAction.label.slice(0, 50)}`
+                      : "▶ No actions planned"}
               </button>
             )}
             {!allDone && (
@@ -411,21 +428,14 @@ export function PhaseAdvancerPanel() {
             )}
           </div>
 
-          {/* Advance result */}
-          {advanceResult && (
+          {/* Inline status line */}
+          {advanceStatus && !allDone && (
             <div style={{
-              marginTop: 8, padding: "7px 10px", borderRadius: 5,
-              background: advanceResult.ok ? "#f0fdf4" : "#fef2f2",
-              border: `1px solid ${advanceResult.ok ? "#bbf7d0" : "#fecaca"}`,
-              fontSize: 11,
-              color: advanceResult.ok ? "#15803d" : "#dc2626",
+              marginTop: 8, padding: "6px 10px", borderRadius: 5,
+              background: "#f0f9ff", border: "1px solid #bae6fd",
+              fontSize: 11, color: "#0369a1",
             }}>
-              {advanceResult.ok ? "✔" : "✕"} {advanceResult.message}
-              {advanceResult.job_id && (
-                <span style={{ marginLeft: 8, color: "#6b7280", fontFamily: "monospace", fontSize: 10 }}>
-                  job: {advanceResult.job_id}
-                </span>
-              )}
+              {advanceStatus}
             </div>
           )}
 

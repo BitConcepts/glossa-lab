@@ -32,7 +32,7 @@ async def phase_status() -> dict[str, Any]:
     """Return current phase status and top 5 recommended actions."""
     adv = _advancer()
     status = adv.assess()
-    plan = adv.plan_next()[:5]
+    plan = adv.plan_next()[:10]  # show more actions including Complete Phase
     remaining = adv.plan_next(include_done=False)
     # Read override if present
     override_phase: int | None = None

@@ -367,33 +367,63 @@ function JobsPanel() {
       const fetched = await listJobs();
       setJobs(fetched);
       setLoading(false);
-      // Sequential queue: check if watched job completed and advance queue
+
+      // Sequential queue: clean up completed items and advance
       setSeqQueue(prev => {
-        if (!prev.watchJobId || (prev.queue?.length ?? 0) === 0) return prev;
-        const watched = fetched.find(j => j.id === prev.watchJobId);
-        if (!watched) return prev;
-        if (watched.status === "completed" || watched.status === "failed" || watched.status === "cancelled") {
-          // Advance: run next in queue
-          const [next, ...rest] = prev.queue;
-          if (next) {
-            // small delay to let GPU cool down
-            setTimeout(() => runExpBackground(next), 2000);
-            // Watch for the new job: find it after a delay
-            setTimeout(async () => {
-              const fresh = await listJobs();
-              const newJob = fresh.find(j =>
-                (j.params?.exp_id as string) === next && j.status === "running"
-              );
-              if (newJob) {
-                setSeqQueue(_prev => {
-                  const updated = { queue: rest, watchJobId: newJob.id };
-                  saveSeqQueue(updated);
-                  return updated;
-                });
-              }
-            }, 5000);
+        let { queue, watchJobId } = prev;
+        let changed = false;
+
+        // 1. Remove queue entries that already have a completed/failed job
+        if (queue.length > 0) {
+          const completedExpIds = new Set(
+            fetched
+              .filter(j => ["completed", "failed", "cancelled"].includes(j.status))
+              .map(j => (j.params?.exp_id as string) || (j.params?.experiment_id as string) || "")
+              .filter(Boolean)
+          );
+          const cleaned = queue.filter(expId => !completedExpIds.has(expId));
+          if (cleaned.length !== queue.length) {
+            queue = cleaned;
+            changed = true;
           }
-          const updated = { queue: rest, watchJobId: null };
+        }
+
+        // 2. Clear watchJobId if the watched job no longer exists or is done
+        if (watchJobId) {
+          const watched = fetched.find(j => j.id === watchJobId);
+          if (!watched || ["completed", "failed", "cancelled"].includes(watched?.status ?? "")) {
+            watchJobId = null;
+            changed = true;
+            // Advance: run next in queue
+            if (queue.length > 0) {
+              const [next, ...rest] = queue;
+              setTimeout(() => runExpBackground(next), 2000);
+              setTimeout(async () => {
+                const fresh = await listJobs();
+                const newJob = fresh.find(j =>
+                  ((j.params?.exp_id as string) === next || (j.params?.experiment_id as string) === next)
+                  && (j.status === "running" || j.status === "pending")
+                );
+                if (newJob) {
+                  setSeqQueue(_prev => {
+                    const updated = { queue: rest, watchJobId: newJob.id };
+                    saveSeqQueue(updated);
+                    return updated;
+                  });
+                }
+              }, 5000);
+              queue = rest;
+            }
+          }
+        }
+
+        // 3. Clear the whole queue if it's empty and nothing is watched
+        if (queue.length === 0 && !watchJobId && (prev.queue.length > 0 || prev.watchJobId)) {
+          changed = true;
+        }
+
+        if (changed) {
+          const updated = { queue, watchJobId };
           saveSeqQueue(updated);
           return updated;
         }

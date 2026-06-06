@@ -184,6 +184,8 @@ async def start_loop(
                 for entry in loop.run():
                     queue.put_nowait(entry)
             except Exception as exc:  # noqa: BLE001
+                import traceback as _tb
+                _log.error("Research loop producer crashed: %s\n%s", exc, _tb.format_exc())
                 producer_error.append(exc)
             finally:
                 queue.put_nowait(None)  # sentinel
@@ -245,6 +247,18 @@ async def start_loop(
             yield f"data: {json.dumps(err_event)}\n\n"
             if job_id and db:
                 try:
+                    await db.store_result(
+                        job_id=job_id,
+                        data={
+                            "error": reason,
+                            "cycles_completed": cycles_done,
+                            "last_experiment": last_experiment,
+                            "elapsed_seconds": round(elapsed, 1),
+                            "traceback": str(producer_error[0]) if producer_error else "",
+                        },
+                        created_at=datetime.now(UTC).isoformat(
+                            timespec="seconds").replace("+00:00", "Z"),
+                    )
                     await db.update_job_status(job_id, "failed")
                 except Exception:  # noqa: BLE001
                     pass

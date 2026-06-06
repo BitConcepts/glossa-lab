@@ -900,9 +900,9 @@ class ResearchLoop:
         seqs = self.corpus_seqs
         sites = self.corpus_sites
         motifs = self.corpus_motifs
-        high = self.high_signs
-        low = self.low_signs
-        anchors = self.anchors
+        high = set(self.high_signs)      # snapshot to avoid concurrent modification
+        low = set(self.low_signs)         # snapshot
+        anchors = dict(self.anchors)      # snapshot — prevents 'dictionary changed size'
 
         if template == "suffix_chain_depth":
             depths: Counter[int] = Counter()

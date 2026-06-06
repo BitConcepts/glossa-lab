@@ -76,6 +76,8 @@ export function FoundationCheckView() {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data: FoundationCheckResult = await res.json();
       setResult(data);
+      // Notify other components (e.g. RunSummary) that foundation status changed
+      window.dispatchEvent(new Event("glossa:foundation-updated"));
     } catch (e) {
       toast(e instanceof Error ? e.message : "Foundation check failed", "error");
     } finally {

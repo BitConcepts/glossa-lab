@@ -711,7 +711,48 @@ function RunSummary({
   proposalKey?: string | null;
   onStartLoop?: (key: string) => void;
 }) {
-  const fc = synthesis.foundation_check;
+  // Fetch live foundation status so it's not stale from last loop run
+  const [liveFC, setLiveFC] = useState<FoundationCheck | null>(null);
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch("/api/v1/foundation/status");
+        if (res.ok) {
+          const data = await res.json() as { n_ok?: number; n_fail?: number; n_warn?: number; verdict?: string };
+          if (data.verdict != null) {
+            setLiveFC({
+              n_ok: data.n_ok ?? 0,
+              n_fail: data.n_fail ?? 0,
+              n_warn: data.n_warn ?? 0,
+              verdict: data.verdict ?? "UNKNOWN",
+              failed: [],
+            });
+          }
+        }
+      } catch { /* use synthesis fallback */ }
+    })();
+    // Also listen for foundation_complete events to refresh
+    const handler = () => {
+      fetch("/api/v1/foundation/status")
+        .then(r => r.ok ? r.json() : null)
+        .then((data: { n_ok?: number; n_fail?: number; n_warn?: number; verdict?: string } | null) => {
+          if (data?.verdict != null) {
+            setLiveFC({
+              n_ok: data.n_ok ?? 0,
+              n_fail: data.n_fail ?? 0,
+              n_warn: data.n_warn ?? 0,
+              verdict: data.verdict ?? "UNKNOWN",
+              failed: [],
+            });
+          }
+        })
+        .catch(() => {});
+    };
+    window.addEventListener("glossa:foundation-updated", handler);
+    return () => window.removeEventListener("glossa:foundation-updated", handler);
+  }, []);
+
+  const fc = liveFC ?? synthesis.foundation_check;
   const insightTotals = synthesis.insight_type_totals;
   const totalInsightCount = Object.values(insightTotals).reduce((a, b) => a + b, 0);
   const maxInsight = Math.max(...Object.values(insightTotals), 1);
@@ -2038,10 +2079,25 @@ function PromoteToAnchors({
               {" "}— inspect the newly promoted signs, upgrade confident ones to MEDIUM via SA experiments
             </li>
             <li>
-              🔄 Regenerate AI Insights on the Dashboard — the stale flag is set so new coverage will appear
+              <button
+                onClick={() => {
+                  window.dispatchEvent(new Event("glossa:regenerate-insight"));
+                  navigate("dashboard");
+                }}
+                style={{ background: "none", border: "none", color: "#0369a1", cursor: "pointer",
+                  fontWeight: 600, fontSize: 11, padding: 0, textDecoration: "underline" }}
+              >🔄 Regenerate AI Insights
+              </button>
+              {" "}— the stale flag is set so new coverage will appear
             </li>
             <li>
-              ▶ Run SA Experiments (Phase Guide above) to validate promoted readings at the new coverage level
+              <button
+                onClick={() => navigate("experiments")}
+                style={{ background: "none", border: "none", color: "#0369a1", cursor: "pointer",
+                  fontWeight: 600, fontSize: 11, padding: 0, textDecoration: "underline" }}
+              >▶ Run SA Experiments
+              </button>
+              {" "}— validate promoted readings at the new coverage level
             </li>
           </ol>
         </div>

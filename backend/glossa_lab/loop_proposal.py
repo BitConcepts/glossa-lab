@@ -345,17 +345,21 @@ def analyze_result(
 
     if same_type_priors and metrics:
         prev_metrics = same_type_priors[-1].get("analysis_metrics", {})
-        for key, val in metrics.items():
+        # Snapshot keys to avoid 'dictionary changed size during iteration'
+        # when we add _delta keys below
+        deltas: dict[str, float] = {}
+        for key, val in list(metrics.items()):
             if key in prev_metrics and isinstance(val, (int, float)):
                 prev_val = prev_metrics[key]
                 if isinstance(prev_val, (int, float)) and prev_val != 0:
                     pct_change = (val - prev_val) / abs(prev_val)
                     if pct_change > 0.1:
                         flags.append("needle_moved")
-                        metrics[f"{key}_delta"] = round(pct_change, 3)
+                        deltas[f"{key}_delta"] = round(pct_change, 3)
                     elif pct_change < -0.1:
                         flags.append("regression_detected")
-                        metrics[f"{key}_delta"] = round(pct_change, 3)
+                        deltas[f"{key}_delta"] = round(pct_change, 3)
+        metrics.update(deltas)
 
     # Generate summary
     metric_strs = [f"{k}={v}" for k, v in list(metrics.items())[:5]

@@ -234,9 +234,11 @@ async def detect_direction_raw(
         cf = body.corpus_file.lower().strip()
         if cf in ("holdat", "icit"):
             # Load Holdat CSV — group by seal, build word = sign sequence per seal
-            holdat_path = backend_dir / "data" / "holdat_latest.csv"
-            if not holdat_path.exists():
-                holdat_path = backend_dir.parent / "data" / "holdat_latest.csv"
+            try:
+                from glossa_lab.config import get_project_config  # noqa: PLC0415
+                holdat_path = get_project_config().corpus_csv_path()
+            except Exception:  # noqa: BLE001
+                holdat_path = backend_dir.parent / "corpora" / "downloads" / "external_repos" / "holdatllc_indus" / "indus_corpus 2.csv"
             if holdat_path.exists():
                 seals: dict[str, list[tuple[int, str]]] = {}
                 with open(holdat_path, encoding="utf-8") as f:

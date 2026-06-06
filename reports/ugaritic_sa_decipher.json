@@ -1,0 +1,214 @@
+{
+  "data": {
+    "'": {
+      "modal": "w",
+      "consistency": 0.6,
+      "n_runs": 5,
+      "top3": [
+        "w",
+        "y",
+        "h"
+      ]
+    },
+    "d": {
+      "modal": "w",
+      "consistency": 0.8,
+      "n_runs": 5,
+      "top3": [
+        "w",
+        "h"
+      ]
+    },
+    "n": {
+      "modal": "y",
+      "consistency": 0.6,
+      "n_runs": 5,
+      "top3": [
+        "y",
+        "w"
+      ]
+    },
+    "m": {
+      "modal": "y",
+      "consistency": 0.6,
+      "n_runs": 5,
+      "top3": [
+        "y",
+        "w"
+      ]
+    },
+    "s": {
+      "modal": "w",
+      "consistency": 0.8,
+      "n_runs": 5,
+      "top3": [
+        "w",
+        "h"
+      ]
+    },
+    "C": {
+      "modal": "h",
+      "consistency": 0.6,
+      "n_runs": 5,
+      "top3": [
+        "h",
+        "y",
+        "w"
+      ]
+    },
+    "T": {
+      "modal": "w",
+      "consistency": 0.6,
+      "n_runs": 5,
+      "top3": [
+        "w",
+        "h",
+        "y"
+      ]
+    },
+    "p": {
+      "modal": "h",
+      "consistency": 0.4,
+      "n_runs": 5,
+      "top3": [
+        "h",
+        "w",
+        "y"
+      ]
+    },
+    "E": {
+      "modal": "h",
+      "consistency": 0.6,
+      "n_runs": 5,
+      "top3": [
+        "h",
+        "y"
+      ]
+    },
+    "h": {
+      "modal": "h",
+      "consistency": 0.6,
+      "n_runs": 5,
+      "top3": [
+        "h",
+        "y",
+        "w"
+      ]
+    },
+    "l": {
+      "modal": "y",
+      "consistency": 0.6,
+      "n_runs": 5,
+      "top3": [
+        "y",
+        "w"
+      ]
+    },
+    "y": {
+      "modal": "w",
+      "consistency": 0.4,
+      "n_runs": 5,
+      "top3": [
+        "w",
+        "h",
+        "y"
+      ]
+    },
+    "H": {
+      "modal": "m",
+      "consistency": 0.4,
+      "n_runs": 5,
+      "top3": [
+        "m",
+        "y",
+        "h"
+      ]
+    },
+    "z": {
+      "modal": "w",
+      "consistency": 0.8,
+      "n_runs": 5,
+      "top3": [
+        "w",
+        "h"
+      ]
+    },
+    "r": {
+      "modal": "y",
+      "consistency": 0.6,
+      "n_runs": 5,
+      "top3": [
+        "y",
+        "w"
+      ]
+    },
+    "b": {
+      "modal": "y",
+      "consistency": 0.6,
+      "n_runs": 5,
+      "top3": [
+        "y",
+        "w"
+      ]
+    },
+    "g": {
+      "modal": "h",
+      "consistency": 0.6,
+      "n_runs": 5,
+      "top3": [
+        "h",
+        "y",
+        "w"
+      ]
+    },
+    "t": {
+      "modal": "w",
+      "consistency": 0.6,
+      "n_runs": 5,
+      "top3": [
+        "w",
+        "y"
+      ]
+    },
+    "q": {
+      "modal": "h",
+      "consistency": 0.4,
+      "n_runs": 5,
+      "top3": [
+        "h",
+        "w",
+        "y"
+      ]
+    },
+    "w": {
+      "modal": "w",
+      "consistency": 0.4,
+      "n_runs": 5,
+      "top3": [
+        "w",
+        "h",
+        "y"
+      ]
+    },
+    "G": {
+      "modal": "w",
+      "consistency": 0.4,
+      "n_runs": 5,
+      "top3": [
+        "w",
+        "h",
+        "y"
+      ]
+    },
+    "k": {
+      "modal": "h",
+      "consistency": 0.6,
+      "n_runs": 5,
+      "top3": [
+        "h",
+        "y",
+        "w"
+      ]
+    }
+  }
+}

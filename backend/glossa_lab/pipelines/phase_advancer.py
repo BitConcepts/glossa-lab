@@ -113,9 +113,12 @@ class PhaseAdvancer:
         self._write_phase_state(state)
 
     def _get_queued_experiment_ids(self) -> set[str]:
-        """Return experiment IDs that already have a pending/running/completed job."""
+        """Return experiment IDs that already have a pending/running/completed job.
+
+        Checks BOTH exp_run AND graph_experiment pipeline jobs, since the GPU
+        concurrency guard queues experiments as graph_experiment pipeline jobs.
+        """
         try:
-            # Use sync DB access via sqlite3 directly (same pattern as experiment_graph._sync_db_all)
             import sqlite3  # noqa: PLC0415
             db_path = _REPO / "backend" / "data" / "glossa.db"
             if not db_path.exists():
@@ -123,7 +126,9 @@ class PhaseAdvancer:
             conn = sqlite3.connect(str(db_path), timeout=3)
             conn.row_factory = sqlite3.Row
             rows = conn.execute(
-                "SELECT params, status FROM jobs WHERE status IN ('pending','running','completed')"
+                "SELECT params, status FROM jobs "
+                "WHERE pipeline IN ('exp_run', 'graph_experiment') "
+                "AND status IN ('pending', 'running', 'completed')"
             ).fetchall()
             conn.close()
             queued = set()
@@ -335,6 +340,19 @@ class PhaseAdvancer:
                 priority=priority,
             ))
 
+        # 5. Complete Phase — final action when all others are done
+        actions.append(PhaseAction(
+            action_type="complete_phase",
+            label=f"Complete Phase {current_goal.phase}",
+            rationale=(
+                f"All validation steps for {current_goal.label} are complete. "
+                "Click to clear the phase summary, regenerate insights, "
+                "and start a fresh research mining cycle."
+            ),
+            params={"phase": current_goal.phase},
+            priority=priority + 10,  # always last
+        ))
+
         all_actions = sorted(actions, key=lambda a: a.priority)
         if include_done:
             return all_actions
@@ -397,6 +415,41 @@ class PhaseAdvancer:
                 except Exception:  # noqa: BLE001
                     message = "✔ Regenerate Insights — acknowledged (trigger manually from Dashboard if needed)."
                 self._mark_action_done(status.current_phase, top.label)
+
+            elif top.action_type == "complete_phase":
+                phase_num = top.params.get("phase", status.current_phase)
+                # Clear completed actions for this phase
+                state = self._read_phase_state()
+                state.pop(f"phase_{phase_num}_completed", None)
+                self._write_phase_state(state)
+                # Clear stale insights so dashboard regenerates
+                try:
+                    from glossa_lab.api.dashboard import mark_insights_stale  # noqa: PLC0415
+                    mark_insights_stale()
+                except Exception:  # noqa: BLE001
+                    pass
+                # Clear finished jobs so queue is fresh
+                try:
+                    import sqlite3 as _sql  # noqa: PLC0415
+                    _db_path = _REPO / "backend" / "data" / "glossa.db"
+                    if _db_path.exists():
+                        _conn = _sql.connect(str(_db_path), timeout=3)
+                        _conn.execute(
+                            "DELETE FROM job_results WHERE job_id IN "
+                            "(SELECT id FROM jobs WHERE status IN ('completed','failed','cancelled'))"
+                        )
+                        _conn.execute(
+                            "DELETE FROM jobs WHERE status IN ('completed','failed','cancelled')"
+                        )
+                        _conn.commit()
+                        _conn.close()
+                except Exception:  # noqa: BLE001
+                    pass
+                message = (
+                    f"🏆 Phase {phase_num} complete! "
+                    "Insights cleared, jobs cleaned up. "
+                    "Dashboard will regenerate with fresh data."
+                )
 
             elif top.action_type == "open_view":
                 self._mark_action_done(status.current_phase, top.label)

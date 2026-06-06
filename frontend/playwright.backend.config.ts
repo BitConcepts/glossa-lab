@@ -11,7 +11,7 @@ import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
   testDir: "./e2e",
-  testMatch: ["**/backend-integration.spec.ts"],
+  testMatch: ["**/backend-integration.spec.ts", "**/phase-queue-foundation.spec.ts"],
   fullyParallel: false,
   retries: 1,
   workers: 1,

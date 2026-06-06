@@ -2606,10 +2606,9 @@
     "M104": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-05T23:24:45Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-06T14:24:45Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl"
+      "dedr_support": "goose"
     },
     "M217": {
       "reading": "van",
@@ -2906,10 +2905,9 @@
     "M200": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-05T23:24:45Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-06T14:24:45Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl"
+      "dedr_support": "goose"
     },
     "M156": {
       "reading": "kur",
@@ -2958,10 +2956,9 @@
     "M260": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-05T23:24:45Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-06T14:24:45Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl"
+      "dedr_support": "goose"
     },
     "M333": {
       "reading": "",
@@ -3111,18 +3108,16 @@
     "M112": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-05T23:24:45Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-06T14:24:45Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl"
+      "dedr_support": "goose"
     },
     "M286": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-05T23:24:45Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-06T14:24:45Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl"
+      "dedr_support": "goose"
     },
     "M327": {
       "reading": "kal",
@@ -3179,10 +3174,9 @@
     "M242": {
       "reading": "kal",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-05T23:24:45Z); evidence_type=high_neighbor_concentration; score=0.62; status=approved; DEDR: gem / stone",
+      "basis": "Promoted from anchor staging archive (2026-06-06T14:24:45Z); evidence_type=high_neighbor_concentration; score=0.62; status=approved; DEDR: gem / stone",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone",
-      "reading_direction": "rtl"
+      "dedr_support": "gem / stone"
     },
     "M344": {
       "reading": "",
@@ -3315,10 +3309,9 @@
     "M323": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-05T23:24:45Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-06T14:24:45Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl"
+      "dedr_support": "goose"
     },
     "M213": {
       "reading": "min",
@@ -3405,10 +3398,9 @@
     "M115": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-05T23:24:45Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-06T14:24:45Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl"
+      "dedr_support": "goose"
     },
     "M337": {
       "reading": "",
@@ -3670,10 +3662,9 @@
     "M407": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-05T23:24:45Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-06T14:24:45Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl"
+      "dedr_support": "goose"
     },
     "M368": {
       "reading": "",

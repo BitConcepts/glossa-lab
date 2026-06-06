@@ -259,7 +259,10 @@ async def _run_exp_background(
             except Exception as _re:  # noqa: BLE001
                 logger.debug("VRAM pre-check skipped: %s", _re)
 
-        # ── GPU concurrency guard ─────────────────────────────────────────────
+        # ── GPU concurrency guard ─────────────────────────────────────────
+        # When GPU slots are full, queue the experiment as a pending
+        # background job instead of rejecting it. The engine's resource-
+        # aware scheduler will pick it up when GPU becomes available.
         if db is not None and (_has_sa_node or _compute_device == "gpu"):
             try:
                 _max_gpu = int(__import__("os").environ.get("GLOSSA_MAX_CONCURRENT_GPU_JOBS", "1"))
@@ -270,25 +273,34 @@ async def _run_exp_background(
                 )
                 _gpu_running = await _gpu_cursor.fetchall()
                 if len(_gpu_running) >= _max_gpu:
-                    _blocking_id  = _gpu_running[0]["id"]
-                    _blocking_exp = _gpu_running[0]["exp_id"] or _blocking_id
-                    logger.warning(
-                        "GPU concurrency guard: '%s' rejected (%d/%d GPU slots occupied by %s)",
+                    _blocking_exp = (_gpu_running[0]["exp_id"] or _gpu_running[0]["id"]) if _gpu_running else "?"
+                    logger.info(
+                        "GPU concurrency guard: '%s' queued as pending (%d/%d GPU slots occupied by %s)",
                         exp_id, len(_gpu_running), _max_gpu, _blocking_exp,
                     )
+                    # Queue as a pending background job via the graph_experiment pipeline
+                    _queued_job = await db.create_job(
+                        name=f"{d.get('name', exp_id)} [queued]",
+                        pipeline="graph_experiment",
+                        params={
+                            "experiment_id": exp_id,
+                            "compute_device": _compute_device,
+                            "queued_reason": f"GPU slot occupied by {_blocking_exp}",
+                        },
+                        created_at=datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z"),
+                        initial_status="pending",
+                    )
                     _q({
-                        "event": "run_error",
+                        "event": "queued",
                         "message": (
-                            f"{len(_gpu_running)}/{_max_gpu} GPU slot(s) occupied "
-                            f"({_blocking_exp} is running). "
-                            "Wait for it to finish, abort it, or use the sequential queue. "
-                            f"Override limit: set GLOSSA_MAX_CONCURRENT_GPU_JOBS > {_max_gpu}."
+                            f"GPU busy ({_blocking_exp} running). "
+                            f"Experiment queued as job {_queued_job['id']} — "
+                            f"will start automatically when GPU is free."
                         ),
+                        "job_id": _queued_job["id"],
                         "gpu_blocked": True,
                         "gpu_running": len(_gpu_running),
                         "gpu_limit": _max_gpu,
-                        "blocking_job_id": _blocking_id,
-                        "blocking_exp_id": _blocking_exp,
                     })
                     return
             except Exception as _ge:  # noqa: BLE001

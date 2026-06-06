@@ -283,6 +283,15 @@ async def _stall_watchdog() -> None:
                     "params = json_set(params, '$.stall_reason', 'timeout') WHERE id = ?",
                     (jid,),
                 )
+                # Store an error result so the Jobs panel can show what happened
+                await db.store_result(
+                    job_id=jid,
+                    data={
+                        "error": f"Job '{jname}' timed out after {_JOB_STALL_TIMEOUT_SECONDS}s with no heartbeat.",
+                        "stall_reason": "timeout",
+                    },
+                    created_at=datetime.now(timezone.utc).isoformat(),
+                )
             if stalled:
                 await db._conn.commit()  # noqa: SLF001
         except asyncio.CancelledError:
@@ -324,6 +333,15 @@ async def _orphan_sweep() -> None:
                 "params = json_set(params, '$.stall_reason', 'orphaned at startup') "
                 "WHERE id = ?",
                 (jid,),
+            )
+            # Store an error result so the Jobs panel shows a reason
+            await db.store_result(
+                job_id=jid,
+                data={
+                    "error": f"Job '{jname}' was still running when the backend restarted. It was orphaned and marked as failed.",
+                    "stall_reason": "orphaned at startup",
+                },
+                created_at=datetime.now(timezone.utc).isoformat(),
             )
         await db._conn.commit()  # noqa: SLF001
         logger.info("Startup orphan sweep: marked %d job(s) as failed", len(orphans))

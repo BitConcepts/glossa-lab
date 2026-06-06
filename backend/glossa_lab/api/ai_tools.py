@@ -1250,9 +1250,19 @@ async def _execute_action_inner(t: str, p: dict) -> dict[str, Any]:  # noqa: PLR
         a = _safe_load(file_a)
         b = _safe_load(file_b)
         if a is None:
-            raise HTTPException(404, f"Report '{file_a}' not found")
+            raise HTTPException(
+                404,
+                f"Report '{file_a}' not found in reports/. "
+                f"The job that was supposed to generate it may have failed — "
+                f"check the Jobs panel for details.",
+            )
         if b is None:
-            raise HTTPException(404, f"Report '{file_b}' not found")
+            raise HTTPException(
+                404,
+                f"Report '{file_b}' not found in reports/. "
+                f"The job that was supposed to generate it may have failed — "
+                f"check the Jobs panel for details.",
+            )
         # Build a flat diff of numeric values
         def _flatten(d: Any, prefix: str = "") -> dict[str, Any]:
             out: dict[str, Any] = {}

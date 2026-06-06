@@ -57,14 +57,22 @@ export function PhaseAdvancerPanel() {
   const [advancing, setAdvancing] = useState(false);
   const [lastMessage, setLastMessage] = useState<string | null>(null);
   const [expanded, setExpanded] = useState(true);
+  const [refreshedAt, setRefreshedAt] = useState<string | null>(null);
 
   const refresh = useCallback(async () => {
     setLoading(true);
+    setRefreshedAt(null);
     try {
       const res = await fetch(`${BASE}/status`);
-      if (res.ok) setStatus(await res.json() as PhaseStatus);
-    } catch { /* offline */ }
-    finally { setLoading(false); }
+      if (res.ok) {
+        setStatus(await res.json() as PhaseStatus);
+        setRefreshedAt(new Date().toLocaleTimeString());
+      } else {
+        setLastMessage(`Refresh failed (${res.status})`);
+      }
+    } catch {
+      setLastMessage("Refresh failed — backend offline?");
+    } finally { setLoading(false); }
   }, []);
 
   useEffect(() => { void refresh(); }, [refresh]);
@@ -218,12 +226,15 @@ export function PhaseAdvancerPanel() {
               disabled={loading}
               style={{
                 padding: "8px 12px", fontSize: 11, borderRadius: 6,
-                border: "1px solid #d1d5db", background: "#fff",
+                border: "1px solid #d1d5db", background: loading ? "#f3f4f6" : "#fff",
                 cursor: loading ? "default" : "pointer", color: "#6b7280",
               }}
             >
-              ↻ Refresh
+              {loading ? "⏳ Refreshing…" : "↻ Refresh"}
             </button>
+            {refreshedAt && !loading && (
+              <span style={{ fontSize: 10, color: "#9ca3af" }}>Updated {refreshedAt}</span>
+            )}
           </div>
 
           {lastMessage && (

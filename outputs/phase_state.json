@@ -4,5 +4,8 @@
     "Queue: Indus Cgsa Cluster Analysis",
     "Queue: Indus Structural Atlas"
   ],
-  "completed_through_phase": 5
+  "completed_through_phase": 6,
+  "phase_5_completed": [
+    "Queue: Indus Cisi Dravidian Vs Sanskrit"
+  ]
 }

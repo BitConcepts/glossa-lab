@@ -257,7 +257,7 @@ export function PhaseAdvancerPanel() {
             </div>
           )}
 
-          {/* Advance button */}
+          {/* Advance buttons */}
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
             {status.all_done ? (
               <div data-testid="phase-all-done" style={{
@@ -266,7 +266,7 @@ export function PhaseAdvancerPanel() {
               }}>
                 🏆 Phase {status.current_phase} complete
               </div>
-            ) : (
+            ) : (<>
               <button
                 data-testid="advance-button"
                 disabled={advancing}
@@ -278,9 +278,35 @@ export function PhaseAdvancerPanel() {
                   color: advancing ? "#6b7280" : "#fff",
                 }}
               >
-                {advancing ? "⏳ Advancing…" : `▶ Advance (${status.remaining_actions} left)`}
+                {advancing ? "⏳ Advancing…" : `▶ Next (${status.remaining_actions} left)`}
               </button>
-            )}
+              <button
+                data-testid="advance-all-button"
+                disabled={advancing}
+                onClick={async () => {
+                  setAdvancing(true); setLastMessage(null);
+                  try {
+                    const res = await fetch(`${BASE}/advance-all`, {
+                      method: "POST", headers: { "Content-Type": "application/json" }, body: "{}",
+                    });
+                    if (res.ok) {
+                      const data = await res.json() as { queued: number; results: { action: string; message: string }[] };
+                      setLastMessage(`Queued ${data.queued} action(s): ${data.results.map(r => r.action).join(", ")}`);
+                    }
+                  } catch { setLastMessage("Network error."); }
+                  finally { setAdvancing(false); await refresh(); }
+                }}
+                style={{
+                  padding: "8px 14px", fontSize: 11, fontWeight: 700, borderRadius: 6,
+                  border: `1px solid ${colors.border}`, cursor: advancing ? "default" : "pointer",
+                  background: advancing ? "#e5e7eb" : "#fff",
+                  color: advancing ? "#6b7280" : colors.text,
+                }}
+                title="Queue all ready actions at once (experiments run in parallel)"
+              >
+                ⏩ Queue All Ready
+              </button>
+            </>)}
             <button
               data-testid="refresh-button"
               onClick={() => void refresh()}

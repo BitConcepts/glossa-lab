@@ -13,8 +13,8 @@
         "system": "statistical_annealing",
         "domain": "grammatical_structure",
         "focus": "case suffixes, particles, verbal markers",
-        "grammar_signs": 110,
-        "content_signs": 176
+        "grammar_signs": 111,
+        "content_signs": 175
       }
     }
   },

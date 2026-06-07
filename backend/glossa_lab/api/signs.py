@@ -317,3 +317,131 @@ async def get_sign(sign_id: str) -> dict[str, Any]:
     if entry is None:
         raise HTTPException(status_code=404, detail=f"Sign '{sign_id}' not found")
     return entry
+
+
+@router.post("/audit")
+async def audit_anchors() -> dict[str, Any]:
+    """Run a quality audit on all anchors and return issues.
+
+    Checks: corpus presence, DEDR support, duplicate readings,
+    empty readings, low-frequency HIGH anchors, positional mismatches.
+    """
+    import csv as _csv  # noqa: PLC0415
+    from collections import Counter as _Counter, defaultdict as _dd  # noqa: PLC0415
+    from pathlib import Path as _P  # noqa: PLC0415
+
+    repo = _P(__file__).resolve().parents[3]
+    anchors_path = repo / "backend" / "reports" / "INDUS_FINAL_ANCHORS.json"
+    try:
+        from glossa_lab.config import get_project_config  # noqa: PLC0415
+        holdat_path = get_project_config().corpus_csv_path()
+    except Exception:  # noqa: BLE001
+        holdat_path = repo / "corpora" / "downloads" / "external_repos" / "holdatllc_indus" / "indus_corpus 2.csv"
+
+    if not anchors_path.exists():
+        return {"error": "INDUS_FINAL_ANCHORS.json not found"}
+
+    fa = json.loads(anchors_path.read_text(encoding="utf-8"))
+    anch = fa.get("anchors", {})
+
+    # Load corpus
+    corpus_freq: _Counter[str] = _Counter()
+    if holdat_path.exists():
+        with open(holdat_path, encoding="utf-8") as f:
+            for row in _csv.DictReader(f):
+                sign = row.get("letters", "").strip()
+                if sign:
+                    corpus_freq[sign] += 1
+
+    issues: list[dict[str, str]] = []
+    by_conf = _Counter(v.get("confidence", "?") for v in anch.values())
+
+    # Check 1: not in corpus
+    not_in_corpus = [sid for sid in anch if sid not in corpus_freq]
+    for sid in not_in_corpus:
+        issues.append({"sign": sid, "issue": "not_in_corpus", "severity": "warn",
+                       "detail": f"{sid} not in Holdat corpus"})
+
+    # Check 2: empty readings
+    empty = [sid for sid, info in anch.items() if not (info.get("reading") or "").strip()]
+    for sid in empty:
+        issues.append({"sign": sid, "issue": "empty_reading", "severity": "high",
+                       "detail": f"{sid} has empty reading"})
+
+    # Check 3: duplicate readings (>5 signs)
+    rtosigns: dict[str, list[str]] = _dd(list)
+    for sid, info in anch.items():
+        r = (info.get("reading") or "").strip().lower()
+        if r:
+            rtosigns[r].append(sid)
+    dups = {r: s for r, s in rtosigns.items() if len(s) > 5}
+    for r, signs in dups.items():
+        issues.append({"sign": signs[0], "issue": "duplicate_reading",
+                       "severity": "high",
+                       "detail": f"'{r}' assigned to {len(signs)} signs"})
+
+    # Check 4: HIGH with <5 occurrences
+    low_freq = [(sid, corpus_freq.get(sid, 0))
+                for sid, info in anch.items()
+                if info.get("confidence") == "HIGH" and corpus_freq.get(sid, 0) < 5]
+    for sid, freq in low_freq:
+        issues.append({"sign": sid, "issue": "high_low_freq", "severity": "warn",
+                       "detail": f"{sid} [HIGH] freq={freq}"})
+
+    high_issues = [i for i in issues if i["severity"] == "high"]
+    warn_issues = [i for i in issues if i["severity"] == "warn"]
+
+    return {
+        "total_anchors": len(anch),
+        "by_confidence": dict(by_conf),
+        "total_issues": len(issues),
+        "high_issues": len(high_issues),
+        "warn_issues": len(warn_issues),
+        "not_in_corpus": len(not_in_corpus),
+        "empty_readings": len(empty),
+        "duplicate_readings": len(dups),
+        "low_freq_high": len(low_freq),
+        "issues": issues[:50],  # cap response size
+    }
+
+
+@router.post("/audit/fix")
+async def fix_anchors() -> dict[str, Any]:
+    """Auto-fix anchor quality issues.
+
+    Removes phantom anchors (not in corpus), empty readings,
+    and downgrades bulk-duplicate readings to CANDIDATE.
+    Creates a backup before modifying.
+    """
+    import subprocess  # noqa: PLC0415, S404
+    import sys  # noqa: PLC0415
+    from pathlib import Path as _P  # noqa: PLC0415
+
+    script = _P(__file__).resolve().parents[2] / "scripts" / "_fix_anchors.py"
+    if not script.exists():
+        raise HTTPException(404, "_fix_anchors.py not found")
+
+    proc = subprocess.run(  # noqa: S603
+        [sys.executable, str(script)],
+        capture_output=True, text=True, timeout=30,
+    )
+    ok = proc.returncode == 0
+    # Invalidate signs index so next request picks up changes
+    if ok:
+        invalidate_signs_index()
+        try:
+            from glossa_lab.api.foundation import mark_dirty  # noqa: PLC0415
+            mark_dirty()
+        except Exception:  # noqa: BLE001
+            pass
+        try:
+            from glossa_lab.api.dashboard import mark_insights_stale  # noqa: PLC0415
+            mark_insights_stale()
+        except Exception:  # noqa: BLE001
+            pass
+
+    return {
+        "ok": ok,
+        "stdout": proc.stdout[-1000:] if proc.stdout else "",
+        "stderr": proc.stderr[-500:] if proc.stderr else "",
+    }

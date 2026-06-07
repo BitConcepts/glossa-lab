@@ -74,7 +74,12 @@ async def phase_status() -> dict[str, Any]:
         "override_phase": override_phase,
         "top_actions": enriched_actions,
         "remaining_actions": len(remaining),
-        "all_done": len(remaining) == 0 and len(plan) > 0,
+        # all_done is only True after the user explicitly executes 'Complete Phase N'
+        # (which sets completed_through_phase).  Do NOT derive it from remaining_actions
+        # alone — when experiments are 'running', remaining drops to 0 but complete_phase
+        # is still blocked, so showing '🏆 Phase complete' and hiding the Next button
+        # would permanently prevent the user from advancing.
+        "all_done": status.completed_through_phase >= status.current_phase,
     }
 
 

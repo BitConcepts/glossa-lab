@@ -1,7 +1,3 @@
 {
-  "phase_5_completed": [
-    "Queue: Indus Anchor Sweep",
-    "Regenerate AI Insights",
-    "Review Promoted Signs"
-  ]
+  "completed_through_phase": 7
 }

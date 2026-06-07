@@ -16225,5 +16225,21 @@
     "verified_at": "2026-06-07T15:48:57Z",
     "archived_at": "2026-06-07T15:48:57Z",
     "archived_reason": "manual_verify_sa"
+  },
+  {
+    "sign": "M138",
+    "proposed_reading": "pan",
+    "evidence_type": "high_neighbor_concentration",
+    "evidence_score": 0.624,
+    "dedr_support": "worker / make",
+    "neighbor_reading": "kuTam",
+    "neighbor_count": 2,
+    "source_experiment": "blocker_sign_context",
+    "conflict": null,
+    "review_status": "verified",
+    "approved_at": "2026-06-07T17:33:17Z",
+    "verified_at": "2026-06-07T17:33:19Z",
+    "archived_at": "2026-06-07T17:33:19Z",
+    "archived_reason": "manual_verify_sa"
   }
 ]

@@ -106,3 +106,9 @@ Open TODOs:
 Next step:
   Run Phase 6 (Peer Review) experiments from the Phase Advancer UI.
 
+
+## 2026-06-07T14:07 — specsmith migration: 0.11.7 → 0.13.0
+- **Author**: specsmith
+- **Type**: migration
+- **Status**: complete
+- **Chain hash**: `8fdaa4a6a232e910...`

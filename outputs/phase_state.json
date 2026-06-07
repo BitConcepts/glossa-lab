@@ -4,7 +4,5 @@
     "Queue: Indus Cgsa Cluster Analysis",
     "Queue: Indus Structural Atlas"
   ],
-  "phase_5_completed": [
-    "Fix Foundation Check failures"
-  ]
+  "completed_through_phase": 5
 }

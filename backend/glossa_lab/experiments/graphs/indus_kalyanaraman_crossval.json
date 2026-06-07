@@ -1,0 +1,38 @@
+{
+  "id": "indus_kalyanaraman_crossval",
+  "name": "Kalyanaraman Rebus Cross-Validation",
+  "description": "Cross-validates INDUS_FINAL_ANCHORS against Kalyanaraman's rebus lexicon (52 papers, metalwork/trade content-word readings). Reports corroborated signs, divergent readings, new anchor candidates, and measures complementarity between the two independent decipherment approaches (our SA-derived grammatical markers vs. his content-word rebus system).",
+  "nodes": [
+    {
+      "id": "crossval",
+      "type": "expNode",
+      "data": {
+        "atomicId": "KalyanCrossValidation",
+        "label": "Kalyanaraman × Anchors",
+        "params": {}
+      },
+      "position": { "x": 200, "y": 200 }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Save Results",
+        "params": {
+          "filename": "indus_kalyanaraman_crossval.json"
+        }
+      },
+      "position": { "x": 500, "y": 200 }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "crossval",
+      "target": "out",
+      "sourcePort": "data",
+      "targetPort": "data"
+    }
+  ]
+}

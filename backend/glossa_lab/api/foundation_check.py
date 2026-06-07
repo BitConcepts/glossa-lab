@@ -559,11 +559,8 @@ async def apply_fix(body: dict[str, Any]) -> dict[str, Any]:
                 f"confidence {old_conf} → MEDIUM (foundation check auto-fix). "
                 "M267 freq=400, all-motif genitive particle cannot be HIGH."
             )
-            # Recalculate total (H+M count)
-            fa["total"] = sum(
-                1 for info in fa["anchors"].values()
-                if (info.get("confidence") or "").upper() in ("HIGH", "MEDIUM")
-            )
+            # Recalculate total (all anchors — must match len(anchors))
+            fa["total"] = len(fa["anchors"])
             anchors_path.write_text(
                 json.dumps(fa, indent=2, ensure_ascii=False), encoding="utf-8")
             # Invalidate caches

@@ -1,6 +1,6 @@
 {
-  "n_ok": 39,
-  "n_fail": 1,
+  "n_ok": 40,
+  "n_fail": 0,
   "n_warn": 8,
   "passed": [
     "[OK]   Holdat seal count: 1670 seals (expected 1670)",
@@ -9,8 +9,9 @@
     "[OK]   Holdat M-prefix signs: all sign IDs are M-prefixed",
     "[OK]   Holdat M-number range: M1-M416",
     "[OK]   Holdat position order: 0 seals with out-of-order positions",
-    "[OK]   Core HIGH anchors >= 7: HIGH=399 (core=7, Phase-48 promoted 30 more)",
-    "[OK]   M267 resolved: UNCERTAIN=0, MEDIUM=82 (M267 promoted Phase-74)",
+    "[OK]   Anchor total count: total=286 actual=286 (H+M=260 LOW+CANDIDATE=26)",
+    "[OK]   Core HIGH anchors >= 7: HIGH=166 (core=7, Phase-48 promoted 30 more)",
+    "[OK]   M267 resolved: UNCERTAIN=0, MEDIUM=94 (M267 promoted Phase-74)",
     "[OK]   HIGH anchor M342=ay: reading='ay/\u0101' conf=HIGH",
     "[OK]   HIGH anchor M176=an: reading='an/a\u1e47' conf=HIGH",
     "[OK]   HIGH anchor M099=kol: reading='kol/ko\u1e37' conf=HIGH",
@@ -43,9 +44,7 @@
     "[OK]   Phase-170 grammar sign accuracy >= 90%: 93.2% sign-level grammar accuracy at 161 H+M anchors",
     "[OK]   Phase-170 H+M count == 161: 161 H+M signs tested (expected 161)"
   ],
-  "failed": [
-    "[FAIL] Anchor total count: total=481 actual=605 (H+M=481 LOW+CANDIDATE=124)"
-  ],
+  "failed": [],
   "warnings": [
     "[WARN] Site coverage: 9 sites in Holdat; Gulf/western require ICIT. Phase-46 contact zone analysis (1,462 CDLI Meluhha tablets + Janabiyah seal) partially addresses this.",
     "[WARN] Sign numbering (iconographic_anchors): Uses Parpola P-numbers (47, 87, 261, etc.); INDUS_FINAL_ANCHORS uses Mahadevan M-numbers. Phase-51 crosswalk bridges 45 P\u2192M entries. SEPARATE SYSTEMS for uncrosswalked signs.",
@@ -255,6 +254,6 @@
       "status": "NEEDS CAVEAT \u2014 ensemble method limited by SA variance"
     }
   ],
-  "verdict": "NEEDS FIXES BEFORE SEND",
+  "verdict": "READY WITH CAVEATS",
   "send_to_fuls": "YES \u2014 for ICIT access request only. Present Phase-31 T3, Phase-29d, anchor data. Caveat TB correlation and distributional assignments. DO NOT claim phonetic decipherment."
 }

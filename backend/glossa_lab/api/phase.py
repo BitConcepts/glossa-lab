@@ -42,19 +42,37 @@ async def phase_status() -> dict[str, Any]:
             override_phase = state.get("override_phase")
         except Exception:  # noqa: BLE001
             pass
+    # Merge DB-persisted action status into the plan
+    from glossa_lab.database import get_db as _gdb  # noqa: PLC0415
+    _db = _gdb()
+    db_actions: dict[str, dict] = {}
+    if _db:
+        try:
+            import asyncio as _aio  # noqa: PLC0415
+            rows = await _db.list_phase_actions(phase=status.current_phase)
+            db_actions = {r["action_label"]: r for r in rows}
+        except Exception:  # noqa: BLE001
+            pass
+
+    enriched_actions = []
+    for a in plan:
+        db_entry = db_actions.get(a.label, {})
+        enriched_actions.append({
+            "action_type": a.action_type,
+            "label": a.label,
+            "rationale": a.rationale,
+            "params": a.params,
+            "priority": a.priority,
+            "db_status": db_entry.get("status", "pending"),
+            "job_id": db_entry.get("job_id"),
+            "error_message": db_entry.get("error_message", ""),
+            "completed_at": db_entry.get("completed_at"),
+        })
+
     return {
         **asdict(status),
         "override_phase": override_phase,
-        "top_actions": [
-            {
-                "action_type": a.action_type,
-                "label": a.label,
-                "rationale": a.rationale,
-                "params": a.params,
-                "priority": a.priority,
-            }
-            for a in plan
-        ],
+        "top_actions": enriched_actions,
         "remaining_actions": len(remaining),
         "all_done": len(remaining) == 0 and len(plan) > 0,
     }
@@ -112,6 +130,48 @@ async def advance_phase() -> dict[str, Any]:
         "current_phase": result.current_phase,
         "coverage": result.coverage,
     }
+
+
+@router.get("/actions")
+async def list_phase_actions(phase: int | None = None) -> dict[str, Any]:
+    """Return all tracked phase actions with DB-persisted status."""
+    from glossa_lab.database import get_db  # noqa: PLC0415
+    db = get_db()
+    if db is None:
+        return {"actions": [], "error": "database not available"}
+    actions = await db.list_phase_actions(phase=phase)
+    return {"actions": actions}
+
+
+@router.post("/actions/{label}/skip")
+async def skip_phase_action(label: str, body: dict[str, Any] | None = None) -> dict[str, Any]:
+    """Skip a phase action (mark as skipped)."""
+    from glossa_lab.database import get_db  # noqa: PLC0415
+    db = get_db()
+    if db is None:
+        return {"ok": False, "error": "database not available"}
+    phase = (body or {}).get("phase")
+    if phase is None:
+        adv = _advancer()
+        phase = adv.assess().current_phase
+    result = await db.upsert_phase_action(
+        phase=phase, label=label, status="skipped")
+    return {"ok": True, "action": result}
+
+
+@router.post("/actions/{label}/redo")
+async def redo_phase_action(label: str, body: dict[str, Any] | None = None) -> dict[str, Any]:
+    """Reset a completed/failed/skipped action back to pending."""
+    from glossa_lab.database import get_db  # noqa: PLC0415
+    db = get_db()
+    if db is None:
+        return {"ok": False, "error": "database not available"}
+    phase = (body or {}).get("phase")
+    if phase is None:
+        adv = _advancer()
+        phase = adv.assess().current_phase
+    result = await db.reset_phase_action(phase, label)
+    return {"ok": True, "action": result}
 
 
 @router.get("/goals")

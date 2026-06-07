@@ -1,22 +1,24 @@
 /**
- * ResearchLoopPanel — dashboard tile for the Integrated Research Loop.
+ * ResearchLoopPanel — Autonomous Study Loop dashboard panel.
  *
- * Shows last run results + Start/Stop controls. When running, displays
- * real-time cycle-by-cycle progress via SSE from the backend. After
- * completion (and on initial load) shows a full RunSummary with insight
- * breakdown, foundation check status, and proposals.
+ * Shows last session insights, scheduler toggle, iteration presets,
+ * live progress, and full run history. SSE events flow from
+ * POST /api/v1/study-loop/start?iterations=N.
  *
  * API:
- *   POST /api/v1/research-loop/start?max_cycles=N  → SSE stream
- *   GET  /api/v1/research-loop/status               → current state
- *   POST /api/v1/research-loop/stop                 → graceful stop
- *   GET  /api/v1/research-loop/last-run             → last synthesis + results
+ *   POST /api/v1/study-loop/start?iterations=N    → SSE stream
+ *   GET  /api/v1/study-loop/status                → current state
+ *   POST /api/v1/study-loop/stop                  → graceful stop
+ *   GET  /api/v1/study-loop/last-session          → last session insights
+ *   GET  /api/v1/study-loop/history               → past sessions
+ *   GET  /api/v1/study-loop/scheduler/status      → scheduler on/off
+ *   POST /api/v1/study-loop/scheduler/enable      → enable daily loop
+ *   POST /api/v1/study-loop/scheduler/disable     → disable daily loop
  */
 
 import { Fragment, useCallback, useEffect, useState } from "react";
-import { PhaseAdvancerPanel } from "./PhaseAdvancerPanel";
 
-const BASE = "/api/v1/research-loop";
+const BASE = "/api/v1/study-loop";
 
 // Insight type colour map
 const INSIGHT_COLORS: Record<string, { bg: string; text: string }> = {
@@ -132,10 +134,38 @@ interface StagingData {
   error?: string;
 }
 
-interface PhaseContext {
-  current_phase: number;
-  phase_label: string;
-  pending_loop_experiments: number; // how many run_experiment actions are pending
+// ── Study-loop–specific types ────────────────────────────────────────────────
+
+interface StudySession {
+  session_id?: string;
+  completed_at?: string;
+  iterations_run?: number;
+  coverage_before?: number;
+  coverage_after?: number;
+  anchor_delta?: number;
+  where_we_came_from?: string;
+  what_we_learned?: string;
+  actions_taken?: string;
+  whats_next?: string;
+  synthesis?: Synthesis;
+  total_papers_mined?: number;
+  total_insights?: number;
+}
+
+interface SchedulerStatus {
+  enabled: boolean;
+  next_run?: string;
+  last_run?: string;
+}
+
+interface HistorySession {
+  session_id: string;
+  completed_at: string;
+  iterations_run: number;
+  coverage_before?: number;
+  coverage_after?: number;
+  coverage_delta?: number;
+  what_we_learned?: string;
 }
 
 export function ResearchLoopPanel() {
@@ -160,8 +190,14 @@ export function ResearchLoopPanel() {
   const [currentWork, setCurrentWork] = useState<{ cycle: number; gap: string; experiment: string } | null>(null);
   const [showFullLog, setShowFullLog] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-  const [phaseContext, setPhaseContext] = useState<PhaseContext | null>(null);
-  const [phaseQueued, setPhaseQueued] = useState<{ label: string; exp_id: string }[]>([]);
+
+  // Study-loop additions
+  const [lastSession, setLastSession] = useState<StudySession | null>(null);
+  const [showInsights, setShowInsights] = useState(true);
+  const [schedulerStatus, setSchedulerStatus] = useState<SchedulerStatus | null>(null);
+  const [schedulerBusy, setSchedulerBusy] = useState(false);
+  const [history, setHistory] = useState<HistorySession[]>([]);
+  const [showHistory, setShowHistory] = useState(false);
 
   const fetchStatus = useCallback(async () => {
     try {
@@ -170,13 +206,21 @@ export function ResearchLoopPanel() {
     } catch { /* backend may not be running */ }
   }, []);
 
-  const fetchLastRun = useCallback(async () => {
+  const fetchLastSession = useCallback(async () => {
     try {
-      const res = await fetch(`${BASE}/last-run`);
+      const res = await fetch(`${BASE}/last-session`);
       if (res.ok) {
-        const data = await res.json() as LastRun;
-        setLastRun(data);
+        const data = await res.json() as StudySession;
+        setLastSession(data);
         if (data.synthesis) setSynthesis(data.synthesis);
+        // Backfill lastRun for RunSummary compat
+        setLastRun({
+          completed_at: data.completed_at,
+          total_papers_mined: data.total_papers_mined,
+          total_insights: data.total_insights,
+          cycles_run: data.iterations_run,
+          synthesis: data.synthesis,
+        });
       }
     } catch { /* ignore */ }
   }, []);
@@ -188,47 +232,38 @@ export function ResearchLoopPanel() {
     } catch { /* ignore */ }
   }, []);
 
-  // Fetch current phase context so the loop can show what it will prioritise
-  const fetchPhaseContext = useCallback(async () => {
+  const fetchSchedulerStatus = useCallback(async () => {
     try {
-      const res = await fetch("/api/v1/phase/status");
-      if (!res.ok) return;
-      const data = await res.json() as {
-        current_phase: number; phase_label: string;
-        top_actions?: { action_type: string; db_status?: string }[];
-      };
-      const pendingLoopExps = (data.top_actions ?? []).filter(
-        a => a.action_type === "run_experiment" && (!a.db_status || a.db_status === "pending")
-      ).length;
-      setPhaseContext({
-        current_phase: data.current_phase,
-        phase_label: data.phase_label,
-        pending_loop_experiments: pendingLoopExps,
-      });
+      const res = await fetch(`${BASE}/scheduler/status`);
+      if (res.ok) setSchedulerStatus(await res.json() as SchedulerStatus);
+    } catch { /* ignore */ }
+  }, []);
+
+  const fetchHistory = useCallback(async () => {
+    try {
+      const res = await fetch(`${BASE}/history`);
+      if (res.ok) setHistory(await res.json() as HistorySession[]);
     } catch { /* ignore */ }
   }, []);
 
   useEffect(() => {
     void fetchStatus();
-    void fetchLastRun();
+    void fetchLastSession();
     void fetchStaging();
-    void fetchPhaseContext();
-  }, [fetchStatus, fetchLastRun, fetchStaging, fetchPhaseContext]);
+    void fetchSchedulerStatus();
+    void fetchHistory();
+  }, [fetchStatus, fetchLastSession, fetchStaging, fetchSchedulerStatus, fetchHistory]);
 
-  // Listen for glossa:start-research-loop dispatched by PhaseAdvancerPanel
-  useEffect(() => {
-    const handler = (e: Event) => {
-      const detail = (e as CustomEvent<{ cycles?: number }>).detail;
-      if (!running) {
-        setCycles(detail?.cycles ?? 15);
-        // Small delay so state updates flush before startLoop reads `cycles`
-        setTimeout(() => void startLoop(), 50);
-      }
-    };
-    window.addEventListener("glossa:start-research-loop", handler);
-    return () => window.removeEventListener("glossa:start-research-loop", handler);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [running]);
+  const toggleScheduler = async () => {
+    if (!schedulerStatus) return;
+    setSchedulerBusy(true);
+    try {
+      const action = schedulerStatus.enabled ? "disable" : "enable";
+      const res = await fetch(`${BASE}/scheduler/${action}`, { method: "POST" });
+      if (res.ok) await fetchSchedulerStatus();
+    } catch { /* ignore */ }
+    finally { setSchedulerBusy(false); }
+  };
 
   const startLoop = async (fromProposal?: string) => {
     if (fromProposal) {
@@ -247,7 +282,7 @@ export function ResearchLoopPanel() {
     setShowFullLog(false);
 
     try {
-      const res = await fetch(`${BASE}/start?max_cycles=${cycles}`, { method: "POST" });
+      const res = await fetch(`${BASE}/start?iterations=${cycles}`, { method: "POST" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
       const reader = res.body?.getReader();
@@ -271,24 +306,25 @@ export function ResearchLoopPanel() {
                   experiment?: string; rationale?: string;
                   summary?: string; flags?: string[];
                   ok?: boolean; timeout_seconds?: number; gap_targeted?: string;
+                  session?: StudySession;
               };
-              if (event.type === "phase_experiments_queued") {
-                // Phase experiments were auto-queued as background jobs
-                const queuedList = (event as unknown as { queued?: { label: string; exp_id: string }[] }).queued ?? [];
-                setPhaseQueued(queuedList);
-              } else if (event.type === "complete") {
+              if (event.type === "complete") {
                 setCurrentPhase("idle");
                 setCurrentWork(null);
-                setPhaseQueued([]);
                 if (event.synthesis) setSynthesis(event.synthesis);
                 if (event.synthesis?.anchor_candidates && event.synthesis.anchor_candidates.length > 0) {
                   setTimeout(() => setShowReview(true), 400);
                 }
                 window.dispatchEvent(new CustomEvent("glossa:loop-complete"));
                 void fetchStatus();
-                void fetchLastRun();
+                void fetchLastSession();
                 void fetchStaging();
-                void fetchPhaseContext();
+                void fetchHistory();
+              } else if (event.type === "study_loop_complete") {
+                if (event.session) {
+                  setLastSession(event.session);
+                  setShowInsights(true);
+                }
               } else if (event.type === "proposal_selected") {
                 setCurrentPhase("propose");
                 if (event.cycle) setCurrentWork({ cycle: event.cycle ?? 0, gap: event.gap_targeted ?? "", experiment: event.experiment ?? "" });
@@ -328,7 +364,7 @@ export function ResearchLoopPanel() {
                   insight_types: {}, verdict: `\u23ED Gap skipped: ${event.reason ?? ""}`,
                   is_new_info: false, selection_method: "skipped",
                 } as CycleEntry]);
-                            } else if (event.type === "error") {
+              } else if (event.type === "error") {
                 setError(event.reason || "Loop failed");
                 setStallReason(event.reason === "timeout" ? "timeout" : null);
                 setFailureDetail({
@@ -402,7 +438,7 @@ export function ResearchLoopPanel() {
                     alignItems: "center", marginBottom: 6 }}>
         <div>
           <span style={{ fontSize: 16, fontWeight: 700, color: "#5b21b6" }}>
-            📚 Research Loop
+            📚 Autonomous Study Loop
           </span>
           <span style={{ marginLeft: 8, padding: "2px 8px", borderRadius: 4,
                          fontSize: 11, fontWeight: 600,
@@ -424,7 +460,7 @@ export function ResearchLoopPanel() {
           </select>
           {!running && !showConfirm && (
             <button onClick={() => setShowConfirm(true)}
-              title="Start the autonomous research loop"
+              title="Start the autonomous study loop"
               style={{ padding: "6px 14px", border: "1px solid #7c3aed",
                        borderRadius: 6, background: "#7c3aed", color: "#fff",
                        fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
@@ -442,40 +478,129 @@ export function ResearchLoopPanel() {
         </div>
       </div>
 
-      {/* ── Phase context banner ── */}
-      {!running && phaseContext && (
+      {/* ── Daily scheduler toggle ── */}
+      {schedulerStatus && (
         <div style={{
-          fontSize: 11, marginBottom: 10,
-          padding: "7px 12px", background: "#f5f3ff",
-          border: "1px solid #ddd6fe", borderRadius: 6,
           display: "flex", alignItems: "center", gap: 8,
+          fontSize: 11, marginBottom: 10,
+          padding: "6px 10px", background: "#f9fafb",
+          border: "1px solid #e5e7eb", borderRadius: 5,
         }}>
-          <span style={{ fontWeight: 700, color: "#5b21b6" }}>
-            Phase {phaseContext.current_phase} · {phaseContext.phase_label}
+          <span style={{ color: "#374151" }}>
+            Daily loop:{" "}
+            <strong style={{ color: schedulerStatus.enabled ? "#15803d" : "#9ca3af" }}>
+              {schedulerStatus.enabled ? "Enabled" : "Disabled"}
+            </strong>
           </span>
-          <span style={{ color: "#6b7280" }}>—</span>
-          {phaseContext.pending_loop_experiments > 0 ? (
-            <span style={{ color: "#4c1d95" }}>
-              Loop will queue{" "}
-              <strong>{phaseContext.pending_loop_experiments} phase experiment{phaseContext.pending_loop_experiments !== 1 ? "s" : ""}</strong>{" "}
-              as background jobs when you start.
-            </span>
-          ) : (
+          {schedulerStatus.next_run && schedulerStatus.enabled && (
             <span style={{ color: "#6b7280" }}>
-              No pending phase experiments — loop runs for research &amp; anchoring.
+              · next:{" "}
+              {new Date(schedulerStatus.next_run).toLocaleString(undefined, {
+                month: "short", day: "numeric", hour: "2-digit", minute: "2-digit",
+              })}
             </span>
           )}
+          <button
+            disabled={schedulerBusy}
+            onClick={() => void toggleScheduler()}
+            style={{
+              marginLeft: "auto",
+              padding: "3px 10px", fontSize: 10, fontWeight: 600,
+              border: `1px solid ${schedulerStatus.enabled ? "#dc2626" : "#16a34a"}`,
+              borderRadius: 4,
+              background: schedulerBusy ? "#f3f4f6" : schedulerStatus.enabled ? "#fef2f2" : "#dcfce7",
+              color: schedulerStatus.enabled ? "#dc2626" : "#15803d",
+              cursor: schedulerBusy ? "default" : "pointer",
+            }}>
+            {schedulerBusy ? "…" : schedulerStatus.enabled ? "Disable" : "Enable"}
+          </button>
         </div>
       )}
 
-      {/* ── Phase experiments queued notification (during run) ── */}
-      {running && phaseQueued.length > 0 && (
+      {/* ── Session Insights card ── */}
+      {!running && lastSession && showInsights && lastSession.completed_at && (
         <div style={{
-          fontSize: 10, marginBottom: 8, padding: "6px 10px",
-          background: "#ede9fe", border: "1px solid #c4b5fd", borderRadius: 5,
+          border: "1px solid #a5b4fc", borderRadius: 8, background: "#eef2ff",
+          padding: "12px 16px", marginBottom: 12,
         }}>
-          <span style={{ fontWeight: 700, color: "#5b21b6" }}>🔄 Phase experiments queued as background jobs:</span>{" "}
-          {phaseQueued.map(q => q.label.replace("Queue: ", "")).join(", ")}
+          <div style={{ display: "flex", justifyContent: "space-between",
+                        alignItems: "center", marginBottom: 10 }}>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#4338ca" }}>
+              📊 Session Insights
+            </span>
+            <button
+              onClick={() => setShowInsights(false)}
+              style={{
+                padding: "3px 10px", fontSize: 10, fontWeight: 600,
+                border: "1px solid #c7d2fe", borderRadius: 4,
+                background: "#fff", color: "#6366f1", cursor: "pointer",
+              }}>
+              Dismiss
+            </button>
+          </div>
+
+          {/* Coverage before/after bar */}
+          {lastSession.coverage_before != null && lastSession.coverage_after != null && (
+            <div style={{ marginBottom: 10 }}>
+              <div style={{ fontSize: 11, fontWeight: 600, color: "#374151",
+                            marginBottom: 4 }}>
+                Coverage
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontSize: 11, color: "#6b7280", width: 50,
+                               textAlign: "right" }}>
+                  {(lastSession.coverage_before * 100).toFixed(1)}%
+                </span>
+                <div style={{ flex: 1, height: 10, background: "#e5e7eb",
+                              borderRadius: 5, overflow: "hidden", position: "relative" }}>
+                  <div style={{
+                    position: "absolute", left: 0, top: 0, height: "100%",
+                    width: `${lastSession.coverage_after * 100}%`,
+                    background: "#6366f1", borderRadius: 5,
+                    transition: "width 0.4s",
+                  }} />
+                  <div style={{
+                    position: "absolute", left: 0, top: 0, height: "100%",
+                    width: `${lastSession.coverage_before * 100}%`,
+                    background: "#a5b4fc", borderRadius: 5,
+                  }} />
+                </div>
+                <span style={{ fontSize: 11, color: "#4338ca", fontWeight: 700,
+                               width: 50 }}>
+                  {(lastSession.coverage_after * 100).toFixed(1)}%
+                </span>
+              </div>
+            </div>
+          )}
+
+          {/* Anchor delta */}
+          {lastSession.anchor_delta != null && lastSession.anchor_delta !== 0 && (
+            <div style={{
+              fontSize: 11, marginBottom: 8, fontWeight: 600,
+              color: lastSession.anchor_delta > 0 ? "#15803d" : "#dc2626",
+            }}>
+              Anchor Δ: {lastSession.anchor_delta > 0 ? "+" : ""}
+              {lastSession.anchor_delta}
+            </div>
+          )}
+
+          {/* Narrative fields */}
+          {lastSession.where_we_came_from && (
+            <NarrativeField label="Where we came from"
+                            text={lastSession.where_we_came_from} />
+          )}
+          {lastSession.what_we_learned && (
+            <NarrativeField label="What we learned"
+                            text={lastSession.what_we_learned} />
+          )}
+          {lastSession.actions_taken && (
+            <NarrativeField label="Actions taken"
+                            text={lastSession.actions_taken} />
+          )}
+          {lastSession.whats_next && (
+            <NarrativeField label="What's next"
+                            text={lastSession.whats_next} />
+          )}
         </div>
       )}
 
@@ -486,18 +611,13 @@ export function ResearchLoopPanel() {
           background: "#ede9fe", marginBottom: 12,
         }}>
           <div style={{ fontSize: 13, fontWeight: 700, color: "#5b21b6", marginBottom: 8 }}>
-            🔄 Research Loop — {cycles} iterations
+            🔄 Study Loop — {cycles} iterations
           </div>
           <div style={{ fontSize: 11, color: "#374151", lineHeight: 1.8 }}>
-            <div>📘 <strong>Mine</strong>: Blitz all 15 gap topics for literature evidence</div>
+            <div>📘 <strong>Mine</strong>: Blitz all gap topics for literature evidence</div>
             <div>💡 <strong>Propose</strong>: Select the highest-signal experiment for each gap</div>
             <div>⚙️ <strong>Run &amp; Analyze</strong>: Execute, interpret, stage anchor candidates</div>
             <div>🔄 <strong>Iterate</strong>: Repeat for each of the {cycles} iterations</div>
-            {phaseContext && phaseContext.pending_loop_experiments > 0 && (
-              <div style={{ marginTop: 6, color: "#5b21b6", fontWeight: 600 }}>
-                + Queues {phaseContext.pending_loop_experiments} phase experiment{phaseContext.pending_loop_experiments !== 1 ? "s" : ""} as background jobs
-              </div>
-            )}
           </div>
           <div style={{ display: "flex", justifyContent: "flex-end", gap: 8, marginTop: 10 }}>
             <button
@@ -639,9 +759,6 @@ export function ResearchLoopPanel() {
           onStartLoop={(key) => void startLoop(key)} />
       )}
 
-      {/* ── Phase Advancement ── */}
-      <PhaseAdvancerPanel />
-
       {/* ── Staging review queue ── */}
       {staging?.counts != null &&
         ((staging.counts.staged ?? 0) > 0 ||
@@ -726,7 +843,7 @@ export function ResearchLoopPanel() {
       {!running && !log.length && !activeSynthesis && lastRun?.no_runs && (
         <div style={{ fontSize: 12, color: "#9ca3af", textAlign: "center",
                       padding: "16px 0" }}>
-          No runs yet. Start the loop to begin mining.
+          No sessions yet. Start the loop to begin mining.
         </div>
       )}
 
@@ -764,6 +881,78 @@ export function ResearchLoopPanel() {
           )}
         </div>
       )}
+
+      {/* ── Loop History ── */}
+      {history.length > 0 && (
+        <details
+          open={showHistory}
+          onToggle={(e) => setShowHistory((e.currentTarget as HTMLDetailsElement).open)}
+          style={{ fontSize: 11, border: "1px solid #e5e7eb", borderRadius: 5, marginTop: 10 }}>
+          <summary style={{
+            padding: "6px 10px", cursor: "pointer",
+            color: "#6b7280", background: "#f9fafb",
+            listStyle: "none", display: "flex",
+            justifyContent: "space-between", alignItems: "center",
+          }}>
+            <span>📜 Loop History</span>
+            <span style={{ fontSize: 10 }}>
+              {history.length} session{history.length !== 1 ? "s" : ""}{" "}
+              {showHistory ? "▲" : "▼"}
+            </span>
+          </summary>
+          <div style={{ maxHeight: 200, overflowY: "auto", background: "#fff" }}>
+            {history.map((h) => (
+              <div key={h.session_id} style={{
+                display: "flex", alignItems: "center", gap: 8,
+                padding: "5px 10px", borderBottom: "1px solid #f3f4f6",
+                fontSize: 10,
+              }}>
+                <span style={{ width: 80, color: "#6b7280", flexShrink: 0 }}>
+                  {new Date(h.completed_at).toLocaleDateString(undefined, {
+                    month: "short", day: "numeric",
+                  })}
+                </span>
+                <span style={{ width: 50, color: "#5b21b6", fontWeight: 600, flexShrink: 0 }}>
+                  {h.iterations_run} iter
+                </span>
+                {h.coverage_delta != null && (
+                  <span style={{
+                    width: 60, fontWeight: 600, flexShrink: 0,
+                    color: h.coverage_delta > 0 ? "#15803d" : "#6b7280",
+                  }}>
+                    {h.coverage_delta > 0 ? "+" : ""}
+                    {(h.coverage_delta * 100).toFixed(1)}%
+                  </span>
+                )}
+                <span style={{
+                  flex: 1, color: "#374151",
+                  overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap",
+                }}>
+                  {h.what_we_learned?.slice(0, 80) ?? "—"}
+                </span>
+              </div>
+            ))}
+          </div>
+        </details>
+      )}
+    </div>
+  );
+}
+
+// ── Narrative field helper ────────────────────────────────────────────────────
+
+function NarrativeField({ label, text }: { label: string; text: string }) {
+  return (
+    <div style={{ marginBottom: 6 }}>
+      <div style={{
+        fontSize: 10, fontWeight: 700, color: "#4338ca",
+        textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 2,
+      }}>
+        {label}
+      </div>
+      <div style={{ fontSize: 11, color: "#374151", lineHeight: 1.5 }}>
+        {text}
+      </div>
     </div>
   );
 }
@@ -1290,14 +1479,10 @@ function StagingReview({
   const [showRejected, setShowRejected] = useState(false);
 
   // ── Optimistic local overrides ────────────────────────────────────────
-  // Maps "sign:reading" → 'approved' | 'rejected' | null (null = deleted/hidden).
-  // Applied on top of server state for immediate visual feedback.
-  // Only clear overrides that the server has already absorbed.
   const [pendingOverrides, setPendingOverrides] = useState<Record<string, "approved" | "rejected" | null>>({});
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    // Build a set of server-side statuses to check which overrides are stale
     const serverStatus: Record<string, string> = {};
     for (const c of staging.candidates) {
       serverStatus[`${c.sign}:${c.proposed_reading}`] = c.review_status;
@@ -1307,15 +1492,11 @@ function StagingReview({
       let changed = false;
       for (const [key, override] of Object.entries(prev)) {
         const serverSt = serverStatus[key];
-        // Keep override if server hasn't caught up yet
         if (override === null) {
-          // Item was optimistically deleted — keep until server removes it
           if (key in serverStatus) { next[key] = null; } else { changed = true; }
         } else if (serverSt && serverSt !== override) {
-          // Server still shows old status — keep the optimistic override
           next[key] = override;
         } else {
-          // Server matches or item gone — drop the override
           changed = true;
         }
       }
@@ -1323,12 +1504,11 @@ function StagingReview({
     });
   }, [staging]);
 
-  // Effective candidates: server list with optimistic overrides applied
   const effectiveCandidates: AnchorCandidate[] = staging.candidates.flatMap((c): AnchorCandidate[] => {
     const key = `${c.sign}:${c.proposed_reading}`;
     if (!(key in pendingOverrides)) return [c];
     const ov = pendingOverrides[key];
-    if (ov === null) return []; // optimistically deleted
+    if (ov === null) return [];
     return [{ ...c, review_status: ov }];
   });
 
@@ -1338,7 +1518,6 @@ function StagingReview({
 
   const isBusy = bulkBusy !== null || busyKey !== null;
 
-  // Apply an optimistic override for one item
   const applyOverride = (sign: string, reading: string, action: StagingAction) => {
     const key = `${sign}:${reading}`;
     setPendingOverrides((prev) => {
@@ -1350,7 +1529,6 @@ function StagingReview({
       } else if (action === "reject") {
         next[key] = "rejected";
       } else {
-        // "staged" = unstage / re-stage → remove override so server state shows
         delete next[key];
       }
       return next;
@@ -1358,7 +1536,7 @@ function StagingReview({
   };
 
   const doOne = async (sign: string, reading: string, action: StagingAction, reason?: string) => {
-    applyOverride(sign, reading, action); // immediate visual update
+    applyOverride(sign, reading, action);
     const key = `${sign}:${reading}`;
     setBusyKey(key);
     try { await onAction(sign, reading, action, reason); }
@@ -1366,9 +1544,7 @@ function StagingReview({
   };
 
   const acceptRecommended = async () => {
-    // Snapshot recommended items NOW (from current effectiveCandidates)
     const recs = staged.filter((c) => c.recommended);
-    // Apply all optimistic approvals immediately so "Reject Remaining" sees updated list
     setPendingOverrides((prev) => {
       const next = { ...prev };
       for (const c of recs) next[`${c.sign}:${c.proposed_reading}`] = "approved";
@@ -1395,13 +1571,12 @@ function StagingReview({
     setVerifyResult(null);
     setSaRunDone(false);
     try {
-      const res = await fetch("/api/v1/research-loop/staging/verify-sa", { method: "POST" });
+      const res = await fetch(`${BASE}/staging/verify-sa`, { method: "POST" });
       const data = await res.json() as {
         ok: boolean; message: string; suggested_sa_exp?: string;
         suggested_sa_name?: string; error?: string;
       };
       if (data.ok) {
-        // Optimistically hide all approved
         setPendingOverrides((prev) => {
           const next = { ...prev };
           for (const c of approved) next[`${c.sign}:${c.proposed_reading}`] = null;
@@ -1431,16 +1606,13 @@ function StagingReview({
       });
       if (res.ok) {
         setSaRunDone(true);
-        // SA queued — auto-cleanup remaining staging items
         await onCleanup();
       }
     } catch { /* ignore */ }
     finally { setSaRunBusy(false); }
   };
 
-  // Combined archive-approved + prune-rejected in one click
   const handleCleanup = async () => {
-    // Optimistically hide all approved and rejected immediately
     setPendingOverrides((prev) => {
       const next = { ...prev };
       for (const c of [...approved, ...rejected]) next[`${c.sign}:${c.proposed_reading}`] = null;
@@ -1449,7 +1621,7 @@ function StagingReview({
     setCleanupBusy(true);
     setCleanupResult(null);
     try {
-      const res = await fetch("/api/v1/research-loop/staging/cleanup", { method: "POST" });
+      const res = await fetch(`${BASE}/staging/cleanup`, { method: "POST" });
       const data = await res.json() as { ok: boolean; message: string };
       setCleanupResult(data);
       await onCleanup();
@@ -1461,7 +1633,7 @@ function StagingReview({
   };
 
   const approveAll = async () => {
-    const snap = [...staged]; // snapshot of current effective staged
+    const snap = [...staged];
     setPendingOverrides((prev) => {
       const next = { ...prev };
       for (const c of snap) next[`${c.sign}:${c.proposed_reading}`] = "approved";
@@ -1472,7 +1644,7 @@ function StagingReview({
     finally { setBulkBusy(null); }
   };
   const rejectRemaining = async () => {
-    const snap = [...staged]; // snapshot of CURRENT effective staged (excludes just-approved)
+    const snap = [...staged];
     setPendingOverrides((prev) => {
       const next = { ...prev };
       for (const c of snap) next[`${c.sign}:${c.proposed_reading}`] = "rejected";
@@ -1506,7 +1678,6 @@ function StagingReview({
   };
   const deleteRejected = async () => {
     setdeleteConfirm(false);
-    // Optimistically hide all current rejected immediately
     setPendingOverrides((prev) => {
       const next = { ...prev };
       for (const c of rejected) next[`${c.sign}:${c.proposed_reading}`] = null;
@@ -1551,7 +1722,6 @@ function StagingReview({
             </span>
           )}
         </div>
-        {/* Verify & Archive — appears when approved candidates exist */}
         {approved.length > 0 && (
           <div style={{ display: "flex", flexDirection: "column", gap: 6, width: "100%" }}>
             <button
@@ -1674,7 +1844,6 @@ function StagingReview({
               </div>
             </div>
           </div>
-          {/* One-click cleanup button */}
           <button
             disabled={cleanupBusy || isBusy}
             onClick={() => void handleCleanup()}
@@ -1718,7 +1887,6 @@ function StagingReview({
               gridTemplateColumns: "58px 72px 1fr 46px 88px 80px",
               gap: 10, alignItems: "start",
             }}>
-              {/* Sign + corpus freq */}
               <div>
                 <div style={{ fontFamily: "monospace", fontWeight: 700, fontSize: 13,
                                color: "#111827" }}>{c.sign}</div>
@@ -1728,7 +1896,6 @@ function StagingReview({
                   </div>
                 )}
               </div>
-              {/* Proposed reading + neighbor */}
               <div>
                 <div style={{ fontWeight: 700, color: "#5b21b6", fontSize: 13 }}>
                   {c.proposed_reading}
@@ -1740,7 +1907,6 @@ function StagingReview({
                   </div>
                 )}
               </div>
-              {/* Evidence + type + conflict */}
               <div>
                 {c.dedr_support && (
                   <div style={{ fontSize: 11, color: "#374151" }}>
@@ -1775,7 +1941,6 @@ function StagingReview({
                   </div>
                 )}
               </div>
-              {/* Score */}
               <div style={{ textAlign: "right", paddingTop: 1 }}>
                 <span style={{
                   fontSize: 12, fontWeight: 700,
@@ -1784,7 +1949,6 @@ function StagingReview({
                 }}>
                   {(c.evidence_score * 100).toFixed(0)}%
                 </span>
-                {/* SA Δ badge */}
                 {c.sa_delta !== undefined && (
                   <div style={{ fontSize: 9, marginTop: 2, fontWeight: 600,
                                 color: (c.sa_delta ?? 0) > 0 ? "#15803d" : "#9ca3af" }}>
@@ -1792,7 +1956,6 @@ function StagingReview({
                   </div>
                 )}
               </div>
-              {/* Approve — single click, no confirmation */}
               <button
                 disabled={thisRowBusy}
                 onClick={() => void doOne(c.sign, c.proposed_reading, "approve")}
@@ -1805,7 +1968,6 @@ function StagingReview({
                 }}>
                 ✔ Approve
               </button>
-              {/* Reject — shows inline reason */}
               <button
                 disabled={thisRowBusy}
                 onClick={() => { setRejectingKey(key); setRejectReason(""); }}
@@ -1819,7 +1981,6 @@ function StagingReview({
                 ✕ Reject
               </button>
             </div>
-            {/* Inline reject form */}
             {isRejecting && (
               <div style={{
                 padding: "8px 14px", background: "#fef9c3",
@@ -1869,7 +2030,7 @@ function StagingReview({
         );
       })}
 
-      {/* ── Approved section (expandable, with Unstage) ── */}
+      {/* ── Approved section ── */}
       {approved.length > 0 && (
         <div style={{ borderTop: staged.length > 0 ? "2px solid #86efac" : undefined }}>
           <div style={{
@@ -1942,7 +2103,7 @@ function StagingReview({
         </div>
       )}
 
-      {/* ── Rejected section (collapsed by default) ── */}
+      {/* ── Rejected section ── */}
       {rejected.length > 0 && (
         <div style={{ borderTop: "1px solid #fecaca" }}>
           <div style={{
@@ -2071,7 +2232,7 @@ function _loadPromoteResult(): PromoteResult | null {
     const raw = localStorage.getItem(PROMOTE_RESULT_KEY);
     if (!raw) return null;
     const r = JSON.parse(raw) as PromoteResult;
-    // Expire after 2h (was 24h)
+    // Expire after 2h
     if (r.ts && Date.now() - r.ts > 7_200_000) { localStorage.removeItem(PROMOTE_RESULT_KEY); return null; }
     return r;
   } catch { return null; }
@@ -2094,8 +2255,6 @@ function PromoteToAnchors({
   const [confirm, setConfirm] = useState(false);
   const [result, setResult] = useState<PromoteResult | null>(() => {
     const stored = _loadPromoteResult();
-    // Auto-hide: if there's nothing left to promote, the confirmation card
-    // is no longer useful — clear it silently so it doesn't persist forever.
     if (stored && promotable === 0 && archiveTotal === 0) {
       _clearPromoteResult();
       return null;
@@ -2108,12 +2267,11 @@ function PromoteToAnchors({
     setConfirm(false);
     setResult(null);
     try {
-      const res = await fetch("/api/v1/research-loop/staging/promote", { method: "POST" });
+      const res = await fetch(`${BASE}/staging/promote`, { method: "POST" });
       const data = await res.json() as PromoteResult & { ok: boolean; message: string };
       const withTs = { ...data, ts: Date.now() };
       setResult(withTs);
       if (data?.ok) {
-        // Persist so the result survives navigation
         try { localStorage.setItem(PROMOTE_RESULT_KEY, JSON.stringify(withTs)); } catch { /* ignore */ }
         onPromoted();
       }
@@ -2159,7 +2317,6 @@ function PromoteToAnchors({
             </div>
           </div>
         </div>
-        {/* Next steps */}
         <div style={{
           background: "#f0f9ff", border: "1px solid #bae6fd",
           borderRadius: 6, padding: "8px 12px", fontSize: 11,
@@ -2175,7 +2332,7 @@ function PromoteToAnchors({
                   fontWeight: 600, fontSize: 11, padding: 0, textDecoration: "underline" }}
               >✅ Run Foundation Check
               </button>
-              {" "}— verify the new LOW-confidence anchors don’t conflict with existing HIGH/MEDIUM ones
+              {" "}— verify the new LOW-confidence anchors don't conflict with existing HIGH/MEDIUM ones
             </li>
             <li>
               <button

@@ -1,13 +1,13 @@
 {
-  "cycles_completed": 304,
+  "cycles_completed": 306,
   "max_cycles": 15,
   "cycle_analyses": [
     {
       "cycle": 1,
-      "experiment": "motif_title_correlation",
-      "summary": "Motif Title Correlation: Motif-title: 0 motifs have title reading profiles. · n_motifs=0",
+      "experiment": "reading_frequency_zipf",
+      "summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623",
       "metrics": {
-        "n_motifs": 0
+        "zipf_alpha": 0.623
       },
       "flags": [],
       "suggested_next_steps": [
@@ -16,10 +16,10 @@
     },
     {
       "cycle": 2,
-      "experiment": "suffix_chain_depth",
-      "summary": "Suffix Chain Depth: Suffix chains: avg depth 3.8. Distribution: {4: 434, 5: 586, 2: 310, 3: 340}. · avg_depth=3.8",
+      "experiment": "compound_semantic_coherence",
+      "summary": "Compound Semantic Coherence: Compound coherence: 100% (4900/4906) valid. · valid_pct=100",
       "metrics": {
-        "avg_depth": 3.8
+        "valid_pct": 100
       },
       "flags": [],
       "suggested_next_steps": [
@@ -5000,6 +5000,44 @@
       },
       "analysis_flags": [],
       "analysis_summary": "Suffix Chain Depth: Suffix chains: avg depth 3.8. Distribution: {4: 434, 5: 586, 2: 310, 3: 340}. · avg_depth=3.8"
+    },
+    {
+      "cycle": 1,
+      "timestamp": "2026-06-07T22:06:34.127575+00:00",
+      "gap_targeted": "rare_sign_context",
+      "n_papers": 0,
+      "n_insights": 0,
+      "insight_types": {},
+      "experiment": "reading_frequency_zipf",
+      "selection_method": "proposal",
+      "verdict": "Zipf: α=0.623 (129 readings). Linguistic.",
+      "is_new_info": true,
+      "n_candidates": 0,
+      "top_candidate": null,
+      "analysis_metrics": {
+        "zipf_alpha": 0.623
+      },
+      "analysis_flags": [],
+      "analysis_summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623"
+    },
+    {
+      "cycle": 2,
+      "timestamp": "2026-06-07T22:06:35.676292+00:00",
+      "gap_targeted": "compound_morphology",
+      "n_papers": 0,
+      "n_insights": 0,
+      "insight_types": {},
+      "experiment": "compound_semantic_coherence",
+      "selection_method": "proposal",
+      "verdict": "Compound coherence: 100% (4900/4906) valid.",
+      "is_new_info": true,
+      "n_candidates": 0,
+      "top_candidate": null,
+      "analysis_metrics": {
+        "valid_pct": 100
+      },
+      "analysis_flags": [],
+      "analysis_summary": "Compound Semantic Coherence: Compound coherence: 100% (4900/4906) valid. · valid_pct=100"
     }
   ]
 }

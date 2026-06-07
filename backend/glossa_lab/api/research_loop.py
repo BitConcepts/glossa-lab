@@ -1259,7 +1259,7 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
         # ── 5. Recalculate coverage ────────────────────────────────────────
         new_coverage = _recalc_corpus_coverage(current_anchors)
 
-        # ── 6. Write updated anchors file ─────────────────────────────────
+        # ── 6. Write updated anchors file ───────────────────────────────────
         fa_data["anchors"] = current_anchors
         fa_data["total"] = sum(
             1 for info in current_anchors.values()
@@ -1291,7 +1291,40 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
         except Exception:  # noqa: BLE001
             pass
 
+        # ── 8. Mandatory SA validation ───────────────────────────────────
+        # Auto-queue SA experiments to validate the newly promoted anchors.
+        # This runs as background jobs — results appear in the Jobs panel.
+        sa_jobs_queued: list[str] = []
+        SA_EXPERIMENTS = [
+            "indus_cisi_dravidian_vs_sanskrit",
+            "indus_anchor_sweep",
+        ]
+        try:
+            from glossa_lab.database import get_db as _get_db  # noqa: PLC0415
+            _db = _get_db()
+            if _db is not None:
+                for sa_exp_id in SA_EXPERIMENTS:
+                    try:
+                        _sa_job = await _db.create_job(
+                            name=f"SA validation: {sa_exp_id} [post-promote]",
+                            pipeline="graph_experiment",
+                            params={"experiment_id": sa_exp_id},
+                            created_at=datetime.now(UTC).isoformat(
+                                timespec="seconds").replace("+00:00", "Z"),
+                            initial_status="pending",
+                        )
+                        sa_jobs_queued.append(_sa_job["id"])
+                        _log.info("Post-promote SA queued: %s (job %s)",
+                                  sa_exp_id, _sa_job["id"])
+                    except Exception as _sae:  # noqa: BLE001
+                        _log.warning("Could not queue SA %s: %s", sa_exp_id, _sae)
+        except Exception:  # noqa: BLE001
+            pass
+
     cov_delta = round(new_coverage - prev_coverage, 4) if not dry_run else 0.0
+    sa_msg = ""
+    if not dry_run and promoted_signs and sa_jobs_queued:
+        sa_msg = f" SA validation auto-queued ({len(sa_jobs_queued)} job(s))."
     return {
         "ok":           True,
         "dry_run":      dry_run,
@@ -1302,10 +1335,11 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
         "prev_coverage":  round(prev_coverage, 4),
         "new_coverage":   round(new_coverage, 4),
         "coverage_delta": cov_delta,
+        "sa_validation_jobs": sa_jobs_queued if not dry_run else [],
         "message": (
             f"{len(promoted_signs)} signs promoted to INDUS_FINAL_ANCHORS.json. "
             f"Coverage: {prev_coverage*100:.1f}% → {new_coverage*100:.1f}% "
-            f"(+{cov_delta*100:.1f}%)."
+            f"(+{cov_delta*100:.1f}%).{sa_msg}"
         ) if not dry_run and promoted_signs else (
             f"Dry run: {len(promoted_signs)} would be promoted, "
             f"{len(skipped_signs)} skipped (already HIGH/MEDIUM)."

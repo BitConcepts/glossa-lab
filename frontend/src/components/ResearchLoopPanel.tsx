@@ -626,7 +626,7 @@ export function ResearchLoopPanel() {
                 await fetch(`${BASE}/staging/archive`, { method: "POST" });
                 void fetchStaging();
               }}
-              onPrune={async () => {
+              onDelete={async () => {
                 const res = await fetch(`${BASE}/staging/rejected`, { method: "DELETE" });
                 if (res.ok) await fetchStaging();
               }}
@@ -1193,33 +1193,58 @@ function StagingReview({
   staging,
   onAction,
   onArchive: _onArchive,
-  onPrune,
+  onDelete,
   onCleanup,
 }: {
   staging: StagingData;
   onAction: (sign: string, reading: string, action: StagingAction,
              reason?: string) => Promise<void>;
   onArchive: () => Promise<void>;
-  onPrune: () => Promise<void>;
+  onDelete: () => Promise<void>;
   onCleanup: () => Promise<void>;
 }) {
   void _onArchive; // retained for caller compatibility; cleanup replaces manual archive
   const [bulkBusy, setBulkBusy] = useState<"approve" | "reject" | "cleanup" | null>(null);
   const [busyKey,  setBusyKey]  = useState<string | null>(null);
-  const [pruneConfirm, setPruneConfirm] = useState(false);
+  const [deleteConfirm, setdeleteConfirm] = useState(false);
   const [rejectingKey, setRejectingKey] = useState<string | null>(null);
   const [rejectReason, setRejectReason] = useState("");
   const [showApproved, setShowApproved] = useState(true);
   const [showRejected, setShowRejected] = useState(false);
 
-  // ── Optimistic local overrides ────────────────────────────────────────────
+  // ── Optimistic local overrides ────────────────────────────────────────
   // Maps "sign:reading" → 'approved' | 'rejected' | null (null = deleted/hidden).
   // Applied on top of server state for immediate visual feedback.
-  // Cleared when the parent refreshes staging data from the server.
+  // Only clear overrides that the server has already absorbed.
   const [pendingOverrides, setPendingOverrides] = useState<Record<string, "approved" | "rejected" | null>>({});
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => { setPendingOverrides({}); }, [staging]);
+  useEffect(() => {
+    // Build a set of server-side statuses to check which overrides are stale
+    const serverStatus: Record<string, string> = {};
+    for (const c of staging.candidates) {
+      serverStatus[`${c.sign}:${c.proposed_reading}`] = c.review_status;
+    }
+    setPendingOverrides(prev => {
+      const next: Record<string, "approved" | "rejected" | null> = {};
+      let changed = false;
+      for (const [key, override] of Object.entries(prev)) {
+        const serverSt = serverStatus[key];
+        // Keep override if server hasn't caught up yet
+        if (override === null) {
+          // Item was optimistically deleted — keep until server removes it
+          if (key in serverStatus) { next[key] = null; } else { changed = true; }
+        } else if (serverSt && serverSt !== override) {
+          // Server still shows old status — keep the optimistic override
+          next[key] = override;
+        } else {
+          // Server matches or item gone — drop the override
+          changed = true;
+        }
+      }
+      return changed || Object.keys(next).length !== Object.keys(prev).length ? next : prev;
+    });
+  }, [staging]);
 
   // Effective candidates: server list with optimistic overrides applied
   const effectiveCandidates: AnchorCandidate[] = staging.candidates.flatMap((c): AnchorCandidate[] => {
@@ -1402,8 +1427,8 @@ function StagingReview({
     try { for (const c of snap) await onAction(c.sign, c.proposed_reading, "staged"); }
     finally { setBulkBusy(null); }
   };
-  const pruneRejected = async () => {
-    setPruneConfirm(false);
+  const deleteRejected = async () => {
+    setdeleteConfirm(false);
     // Optimistically hide all current rejected immediately
     setPendingOverrides((prev) => {
       const next = { ...prev };
@@ -1411,7 +1436,7 @@ function StagingReview({
       return next;
     });
     setBulkBusy("reject");
-    try { await onPrune(); }
+    try { await onDelete(); }
     catch { /* ignore */ }
     finally { setBulkBusy(null); }
   };
@@ -1870,10 +1895,10 @@ function StagingReview({
               }}>
               ↩ Re-stage All
             </button>
-            {!pruneConfirm ? (
+            {!deleteConfirm ? (
               <button
                 disabled={isBusy || rejected.length === 0}
-                onClick={() => setPruneConfirm(true)}
+                onClick={() => setdeleteConfirm(true)}
                 title="Permanently delete all rejected candidates (cannot be undone)"
                 style={{
                   padding: "3px 10px", fontSize: 10, fontWeight: 600,
@@ -1882,7 +1907,7 @@ function StagingReview({
                   cursor: (isBusy || rejected.length === 0) ? "default" : "pointer",
                   whiteSpace: "nowrap", marginLeft: 6,
                 }}>
-                🗑 Prune {rejected.length}
+                🗑 Delete {rejected.length}
               </button>
             ) : (
               <span style={{ display: "flex", gap: 4, alignItems: "center", marginLeft: 6 }}>
@@ -1890,14 +1915,14 @@ function StagingReview({
                   Delete {rejected.length} rejected?
                 </span>
                 <button
-                  onClick={() => void pruneRejected()}
+                  onClick={() => void deleteRejected()}
                   style={{
                     padding: "3px 8px", fontSize: 10, fontWeight: 700,
                     border: "1px solid #dc2626", borderRadius: 4,
                     background: "#dc2626", color: "#fff", cursor: "pointer",
                   }}>Yes</button>
                 <button
-                  onClick={() => setPruneConfirm(false)}
+                  onClick={() => setdeleteConfirm(false)}
                   style={{
                     padding: "3px 8px", fontSize: 10,
                     border: "1px solid #d1d5db", borderRadius: 4,

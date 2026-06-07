@@ -1,0 +1,3134 @@
+{
+  "total_anchors": 605,
+  "by_confidence": {
+    "HIGH": 399,
+    "MEDIUM": 93,
+    "LOW": 113
+  },
+  "total_issues": 519,
+  "high_issues": 260,
+  "medium_issues": 0,
+  "warn_issues": 259,
+  "not_in_corpus": 215,
+  "no_dedr_support": 144,
+  "no_basis": 0,
+  "duplicate_readings": 64,
+  "low_freq_high": 249,
+  "empty_readings": 105,
+  "issues": [
+    {
+      "sign": "M086",
+      "issue": "not_in_corpus",
+      "severity": "warn",
+      "detail": "M086 [HIGH] not found in Holdat corpus"
+    },
+    {
+      "sign": "M091",
+      "issue": "not_in_corpus",
+      "severity": "warn",
+      "detail": "M091 [HIGH] not found in Holdat corpus"
+    },
+    {
+      "sign": "M092",
+      "issue": "not_in_corpus",
+      "severity": "warn",
+      "detail": "M092 [HIGH] not found in Holdat corpus"
+    },
+    {
+      "sign": "M088",
+      "issue": "not_in_corpus",
+      "severity": "warn",
+      "detail": "M088 [HIGH] not found in Holdat corpus"
+    },
+    {
+      "sign": "M090",
+      "issue": "not_in_corpus",
+      "severity": "warn",
+      "detail": "M090 [HIGH] not found in Holdat corpus"
+    },
+    {
+      "sign": "M093",
+      "issue": "not_in_corpus",
+      "severity": "warn",
+      "detail": "M093 [HIGH] not found in Holdat corpus"
+    },
+    {
+      "sign": "M094",
+      "issue": "not_in_corpus",
+      "severity": "warn",
+      "detail": "M094 [HIGH] not found in Holdat corpus"
+    },
+    {
+      "sign": "M740",
+      "issue": "not_in_corpus",
+      "severity": "warn",
+      "detail": "M740 [HIGH] not found in Holdat corpus"
+    },
+    {
+      "sign": "M455",
+      "issue": "not_in_corpus",
+      "severity": "warn",
+      "detail": "M455 [HIGH] not found in Holdat corpus"
+    },
+    {
+      "sign": "M868",
+      "issue": "not_in_corpus",
+      "severity": "warn",
+      "detail": "M868 [HIGH] not found in Holdat corpus"
+    },
+    {
+      "sign": "M233",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M233 [HIGH] = 'ūr' has no DEDR etymology match"
+    },
+    {
+      "sign": "M328",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M328 [HIGH] = 'ā/āl' has no DEDR etymology match"
+    },
+    {
+      "sign": "M059",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M059 [HIGH] = 'ēḷ/eḷ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M336",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M336 [HIGH] = 'iṉ/locative' has no DEDR etymology match"
+    },
+    {
+      "sign": "M012",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M012 [HIGH] = 'oṉṟu/1' has no DEDR etymology match"
+    },
+    {
+      "sign": "M305",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M305 [HIGH] = 'ōṭu/comitative' has no DEDR etymology match"
+    },
+    {
+      "sign": "M073",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M073 [HIGH] = 'kōṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M045",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M045 [HIGH] = 'yānai' has no DEDR etymology match"
+    },
+    {
+      "sign": "M016",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M016 [HIGH] = 'kaḷiṟu' has no DEDR etymology match"
+    },
+    {
+      "sign": "M060",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M060 [HIGH] = 'kāṇṭāmirukam' has no DEDR etymology match"
+    },
+    {
+      "sign": "M080",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M080 [HIGH] = 'vēṅkai' has no DEDR etymology match"
+    },
+    {
+      "sign": "M067",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M067 [HIGH] = 'kōṭṭāṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M068",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M068 [HIGH] = 'maṟi' has no DEDR etymology match"
+    },
+    {
+      "sign": "M018",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M018 [HIGH] = 'nēr' has no DEDR etymology match"
+    },
+    {
+      "sign": "M030",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M030 [HIGH] = 'kō' has no DEDR etymology match"
+    },
+    {
+      "sign": "M017",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M017 [HIGH] = 'kai' has no DEDR etymology match"
+    },
+    {
+      "sign": "M004",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M004 [HIGH] = 'kēḷ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M026",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M026 [HIGH] = 'mā' has no DEDR etymology match"
+    },
+    {
+      "sign": "M034",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M034 [HIGH] = 'tōḷ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M027",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M027 [HIGH] = 'māṟ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M041",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M041 [HIGH] = 'pēr' has no DEDR etymology match"
+    },
+    {
+      "sign": "M038",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M038 [HIGH] = 'pōr' has no DEDR etymology match"
+    },
+    {
+      "sign": "M050",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M050 [HIGH] = 'pār' has no DEDR etymology match"
+    },
+    {
+      "sign": "M070",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M070 [HIGH] = 'vēl' has no DEDR etymology match"
+    },
+    {
+      "sign": "M078",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M078 [HIGH] = 'cēr' has no DEDR etymology match"
+    },
+    {
+      "sign": "M066",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M066 [HIGH] = 'cōḻ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M009",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M009 [HIGH] = 'āṇ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M069",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M069 [HIGH] = 'nēr' has no DEDR etymology match"
+    },
+    {
+      "sign": "M021",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M021 [HIGH] = 'kō' has no DEDR etymology match"
+    },
+    {
+      "sign": "M031",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M031 [HIGH] = 'kai' has no DEDR etymology match"
+    },
+    {
+      "sign": "M037",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M037 [HIGH] = 'kēḷ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M005",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M005 [HIGH] = 'kōṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M011",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M011 [HIGH] = 'kaḷiṟu' has no DEDR etymology match"
+    },
+    {
+      "sign": "M015",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M015 [HIGH] = 'mā' has no DEDR etymology match"
+    },
+    {
+      "sign": "M001",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M001 [HIGH] = 'tōḷ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M075",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M075 [HIGH] = 'māṟ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M040",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M040 [HIGH] = 'ri' has no DEDR etymology match"
+    },
+    {
+      "sign": "M024",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M024 [HIGH] = 'nē' has no DEDR etymology match"
+    },
+    {
+      "sign": "M074",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M074 [HIGH] = 'ker' has no DEDR etymology match"
+    },
+    {
+      "sign": "M072",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M072 [HIGH] = 'mā' has no DEDR etymology match"
+    },
+    {
+      "sign": "M028",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M028 [HIGH] = 'cōḻ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M029",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M029 [HIGH] = 'yānai' has no DEDR etymology match"
+    },
+    {
+      "sign": "M007",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M007 [HIGH] = 'aaL' has no DEDR etymology match"
+    },
+    {
+      "sign": "M169",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M169 [HIGH] = 'rā' has no DEDR etymology match"
+    },
+    {
+      "sign": "M235",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M235 [HIGH] = 'vē' has no DEDR etymology match"
+    },
+    {
+      "sign": "M401",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M401 [HIGH] = 'vē' has no DEDR etymology match"
+    },
+    {
+      "sign": "M127",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M127 [HIGH] = 'vē' has no DEDR etymology match"
+    },
+    {
+      "sign": "M351",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M351 [HIGH] = 'vī' has no DEDR etymology match"
+    },
+    {
+      "sign": "M183",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M183 [HIGH] = 'vēḷ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M365",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M365 [HIGH] = 'vāṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M412",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M412 [HIGH] = 'cūḷ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M304",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M304 [HIGH] = 'vēṟ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M355",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M355 [HIGH] = 'lu' has no DEDR etymology match"
+    },
+    {
+      "sign": "M178",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M178 [HIGH] = 'i' has no DEDR etymology match"
+    },
+    {
+      "sign": "M254",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M254 [HIGH] = 'tēṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M262",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M262 [HIGH] = 'i' has no DEDR etymology match"
+    },
+    {
+      "sign": "M402",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M402 [HIGH] = 'vēḷ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M088",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M088 [HIGH] = 'muu(n)-' has no DEDR etymology match"
+    },
+    {
+      "sign": "M090",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M090 [HIGH] = 'aintu' has no DEDR etymology match"
+    },
+    {
+      "sign": "M100",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M100 [HIGH] = 'maa' has no DEDR etymology match"
+    },
+    {
+      "sign": "M249",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M249 [HIGH] = 'tii' has no DEDR etymology match"
+    },
+    {
+      "sign": "M130",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M130 [HIGH] = 'mui' has no DEDR etymology match"
+    },
+    {
+      "sign": "M192",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M192 [HIGH] = 'ṇā' has no DEDR etymology match"
+    },
+    {
+      "sign": "M193",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M193 [HIGH] = 'ḷā' has no DEDR etymology match"
+    },
+    {
+      "sign": "M398",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M398 [HIGH] = 'kuṟi' has no DEDR etymology match"
+    },
+    {
+      "sign": "M165",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M165 [HIGH] = 'cul' has no DEDR etymology match"
+    },
+    {
+      "sign": "M350",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M350 [HIGH] = 'vē' has no DEDR etymology match"
+    },
+    {
+      "sign": "M740",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M740 [HIGH] = 'su' has no DEDR etymology match"
+    },
+    {
+      "sign": "M455",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M455 [HIGH] = 'zi' has no DEDR etymology match"
+    },
+    {
+      "sign": "M868",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M868 [HIGH] = 'gi' has no DEDR etymology match"
+    },
+    {
+      "sign": "M520",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M520 [HIGH] = 'kō' has no DEDR etymology match"
+    },
+    {
+      "sign": "M705",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M705 [HIGH] = 'vē' has no DEDR etymology match"
+    },
+    {
+      "sign": "M920",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M920 [HIGH] = 'iṭ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M900",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M900 [HIGH] = 'vē' has no DEDR etymology match"
+    },
+    {
+      "sign": "M706",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M706 [HIGH] = 'ru' has no DEDR etymology match"
+    },
+    {
+      "sign": "M892",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M892 [HIGH] = 'ru' has no DEDR etymology match"
+    },
+    {
+      "sign": "M617",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M617 [HIGH] = 'kō' has no DEDR etymology match"
+    },
+    {
+      "sign": "M440",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M440 [HIGH] = 'ru' has no DEDR etymology match"
+    },
+    {
+      "sign": "M850",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M850 [HIGH] = 'vē' has no DEDR etymology match"
+    },
+    {
+      "sign": "M832",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M832 [HIGH] = 'aṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M824",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M824 [HIGH] = 'māṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M495",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M495 [HIGH] = 'iṭ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M095",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M095 [HIGH] = 'vē' has no DEDR etymology match"
+    },
+    {
+      "sign": "M540",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M540 [HIGH] = 'aṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M877",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M877 [HIGH] = 'iṭ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M679",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M679 [HIGH] = 'kō' has no DEDR etymology match"
+    },
+    {
+      "sign": "M530",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M530 [HIGH] = 'vē' has no DEDR etymology match"
+    },
+    {
+      "sign": "M831",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M831 [HIGH] = 'iṭ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M519",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M519 [HIGH] = 'iṭ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M605",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M605 [HIGH] = 'iṭam' has no DEDR etymology match"
+    },
+    {
+      "sign": "M821",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M821 [HIGH] = 'uḷ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M526",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M526 [HIGH] = 'vāṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M792",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M792 [HIGH] = 'uḷ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M794",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M794 [HIGH] = 'ru' has no DEDR etymology match"
+    },
+    {
+      "sign": "M905",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M905 [HIGH] = 'iṭam' has no DEDR etymology match"
+    },
+    {
+      "sign": "M511",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M511 [HIGH] = 'aṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M776",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M776 [HIGH] = 'uḷ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M625",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M625 [HIGH] = 'iṭ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M098",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M098 [HIGH] = 'āl' has no DEDR etymology match"
+    },
+    {
+      "sign": "M924",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M924 [HIGH] = 'ru' has no DEDR etymology match"
+    },
+    {
+      "sign": "M698",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M698 [HIGH] = 'ōṭu' has no DEDR etymology match"
+    },
+    {
+      "sign": "M552",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M552 [HIGH] = 'vē' has no DEDR etymology match"
+    },
+    {
+      "sign": "M504",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M504 [HIGH] = 'uḷ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M467",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M467 [HIGH] = 'iṭam' has no DEDR etymology match"
+    },
+    {
+      "sign": "M808",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M808 [HIGH] = 'ōṭu' has no DEDR etymology match"
+    },
+    {
+      "sign": "M849",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M849 [HIGH] = 'ōṭu' has no DEDR etymology match"
+    },
+    {
+      "sign": "M422",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M422 [HIGH] = 'vēḷ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M426",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M426 [HIGH] = 'vāṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M804",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M804 [HIGH] = 'kō' has no DEDR etymology match"
+    },
+    {
+      "sign": "M747",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M747 [HIGH] = 'iṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M791",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M791 [HIGH] = 'iṭ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M869",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M869 [HIGH] = 'pōr' has no DEDR etymology match"
+    },
+    {
+      "sign": "M420",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M420 [HIGH] = 'ru' has no DEDR etymology match"
+    },
+    {
+      "sign": "M749",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M749 [HIGH] = 'kōṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M842",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M842 [HIGH] = 'pōr' has no DEDR etymology match"
+    },
+    {
+      "sign": "M710",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M710 [HIGH] = 'iṭ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M681",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M681 [HIGH] = 'ē' has no DEDR etymology match"
+    },
+    {
+      "sign": "M871",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M871 [HIGH] = 'pōr' has no DEDR etymology match"
+    },
+    {
+      "sign": "M797",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M797 [HIGH] = 'ē' has no DEDR etymology match"
+    },
+    {
+      "sign": "M799",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M799 [HIGH] = 'āl' has no DEDR etymology match"
+    },
+    {
+      "sign": "M470",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M470 [HIGH] = 'āl' has no DEDR etymology match"
+    },
+    {
+      "sign": "M922",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M922 [HIGH] = 'ē' has no DEDR etymology match"
+    },
+    {
+      "sign": "M930",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M930 [HIGH] = 'māṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M600",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M600 [HIGH] = 'pōr' has no DEDR etymology match"
+    },
+    {
+      "sign": "M912",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M912 [HIGH] = 'ru' has no DEDR etymology match"
+    },
+    {
+      "sign": "M899",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M899 [HIGH] = 'aṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M096",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M096 [HIGH] = 'ōṭu' has no DEDR etymology match"
+    },
+    {
+      "sign": "M909",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M909 [HIGH] = 'kō' has no DEDR etymology match"
+    },
+    {
+      "sign": "M720",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M720 [HIGH] = 'iṭam' has no DEDR etymology match"
+    },
+    {
+      "sign": "M678",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M678 [HIGH] = 'ōṭu' has no DEDR etymology match"
+    },
+    {
+      "sign": "M829",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M829 [HIGH] = 'iṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M843",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M843 [HIGH] = 'iṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M534",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M534 [HIGH] = 'aṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M805",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M805 [HIGH] = 'ru' has no DEDR etymology match"
+    },
+    {
+      "sign": "M852",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M852 [HIGH] = 'ē' has no DEDR etymology match"
+    },
+    {
+      "sign": "M856",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M856 [HIGH] = 'vēḷ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M870",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M870 [HIGH] = 'iṭam' has no DEDR etymology match"
+    },
+    {
+      "sign": "M561",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M561 [HIGH] = 'aṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M685",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M685 [HIGH] = 'vāṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M865",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M865 [HIGH] = 'māṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M956",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M956 [HIGH] = 'iṉ' has no DEDR etymology match"
+    },
+    {
+      "sign": "M683",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M683 [HIGH] = 'ōṭu' has no DEDR etymology match"
+    },
+    {
+      "sign": "M424",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M424 [HIGH] = 'pōr' has no DEDR etymology match"
+    },
+    {
+      "sign": "M839",
+      "issue": "no_dedr_support",
+      "severity": "high",
+      "detail": "M839 [HIGH] = 'ē' has no DEDR etymology match"
+    },
+    {
+      "sign": "M252",
+      "issue": "duplicate_reading_high",
+      "severity": "high",
+      "detail": "Reading 'kur' assigned to 20 signs: ['M252', 'M222', 'M231', 'M387', 'M129', 'M307', 'M106', 'M138', 'M413', 'M256', 'M203', 'M156', 'M157', 'M400', 'M394', 'M435', 'M632', 'M555', 'M838', 'M807']"
+    },
+    {
+      "sign": "M046",
+      "issue": "duplicate_reading_high",
+      "severity": "high",
+      "detail": "Reading 'kal' assigned to 19 signs: ['M046', 'M108', 'M134', 'M227', 'M243', 'M209', 'M250', 'M390', 'M219', 'M380', 'M146', 'M339', 'M359', 'M396', 'M327', 'M242', 'M415', 'M133', 'M323']"
+    },
+    {
+      "sign": "M163",
+      "issue": "duplicate_reading_high",
+      "severity": "high",
+      "detail": "Reading 'il' assigned to 11 signs: ['M163', 'M239', 'M164', 'M741', 'M798', 'M904', 'M554', 'M812', 'M578', 'M443', 'M502']"
+    },
+    {
+      "sign": "M615",
+      "issue": "duplicate_reading_high",
+      "severity": "high",
+      "detail": "Reading 'ci' assigned to 11 signs: ['M615', 'M923', 'M463', 'M890', 'M702', 'M942', 'M597', 'M604', 'M472', 'M572', 'M543']"
+    },
+    {
+      "sign": "M235",
+      "issue": "duplicate_reading_high",
+      "severity": "high",
+      "detail": "Reading 'vē' assigned to 10 signs: ['M235', 'M401', 'M127', 'M350', 'M705', 'M900', 'M850', 'M095', 'M530', 'M552']"
+    },
+    {
+      "sign": "M043",
+      "issue": "duplicate_reading_high",
+      "severity": "high",
+      "detail": "Reading 'mu' assigned to 9 signs: ['M043', 'M760', 'M436', 'M999', 'M484', 'M525', 'M746', 'M825', 'M908']"
+    },
+    {
+      "sign": "M032",
+      "issue": "duplicate_reading_high",
+      "severity": "high",
+      "detail": "Reading 'kol' assigned to 9 signs: ['M032', 'M383', 'M321', 'M103', 'M211', 'M621', 'M565', 'M697', 'M748']"
+    },
+    {
+      "sign": "M082",
+      "issue": "duplicate_reading_high",
+      "severity": "high",
+      "detail": "Reading 'pa' assigned to 9 signs: ['M082', 'M590', 'M803', 'M575', 'M482', 'M645', 'M844', 'M642', 'M786']"
+    },
+    {
+      "sign": "M387",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M387 [HIGH] has only 4 corpus occurrences"
+    },
+    {
+      "sign": "M086",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M086 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M091",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M091 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M092",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M092 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M124",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M124 [HIGH] has only 3 corpus occurrences"
+    },
+    {
+      "sign": "M175",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M175 [HIGH] has only 2 corpus occurrences"
+    },
+    {
+      "sign": "M261",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M261 [HIGH] has only 2 corpus occurrences"
+    },
+    {
+      "sign": "M264",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M264 [HIGH] has only 2 corpus occurrences"
+    },
+    {
+      "sign": "M281",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M281 [HIGH] has only 4 corpus occurrences"
+    },
+    {
+      "sign": "M311",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M311 [HIGH] has only 1 corpus occurrences"
+    },
+    {
+      "sign": "M117",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M117 [HIGH] has only 3 corpus occurrences"
+    },
+    {
+      "sign": "M088",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M088 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M090",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M090 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M093",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M093 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M094",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M094 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M100",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M100 [HIGH] has only 2 corpus occurrences"
+    },
+    {
+      "sign": "M202",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M202 [HIGH] has only 4 corpus occurrences"
+    },
+    {
+      "sign": "M107",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M107 [HIGH] has only 3 corpus occurrences"
+    },
+    {
+      "sign": "M164",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M164 [HIGH] has only 3 corpus occurrences"
+    },
+    {
+      "sign": "M118",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M118 [HIGH] has only 3 corpus occurrences"
+    },
+    {
+      "sign": "M130",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M130 [HIGH] has only 3 corpus occurrences"
+    },
+    {
+      "sign": "M221",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M221 [HIGH] has only 1 corpus occurrences"
+    },
+    {
+      "sign": "M192",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M192 [HIGH] has only 4 corpus occurrences"
+    },
+    {
+      "sign": "M193",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M193 [HIGH] has only 3 corpus occurrences"
+    },
+    {
+      "sign": "M194",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M194 [HIGH] has only 4 corpus occurrences"
+    },
+    {
+      "sign": "M145",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M145 [HIGH] has only 3 corpus occurrences"
+    },
+    {
+      "sign": "M362",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M362 [HIGH] has only 3 corpus occurrences"
+    },
+    {
+      "sign": "M398",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M398 [HIGH] has only 3 corpus occurrences"
+    },
+    {
+      "sign": "M129",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M129 [HIGH] has only 4 corpus occurrences"
+    },
+    {
+      "sign": "M307",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M307 [HIGH] has only 4 corpus occurrences"
+    },
+    {
+      "sign": "M106",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M106 [HIGH] has only 4 corpus occurrences"
+    },
+    {
+      "sign": "M138",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M138 [HIGH] has only 4 corpus occurrences"
+    },
+    {
+      "sign": "M413",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M413 [HIGH] has only 3 corpus occurrences"
+    },
+    {
+      "sign": "M330",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M330 [HIGH] has only 3 corpus occurrences"
+    },
+    {
+      "sign": "M256",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M256 [HIGH] has only 3 corpus occurrences"
+    },
+    {
+      "sign": "M165",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M165 [HIGH] has only 2 corpus occurrences"
+    },
+    {
+      "sign": "M203",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M203 [HIGH] has only 2 corpus occurrences"
+    },
+    {
+      "sign": "M156",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M156 [HIGH] has only 2 corpus occurrences"
+    },
+    {
+      "sign": "M157",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M157 [HIGH] has only 2 corpus occurrences"
+    },
+    {
+      "sign": "M400",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M400 [HIGH] has only 2 corpus occurrences"
+    },
+    {
+      "sign": "M394",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M394 [HIGH] has only 1 corpus occurrences"
+    },
+    {
+      "sign": "M740",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M740 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M455",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M455 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M868",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M868 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M427",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M427 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M874",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M874 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M692",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M692 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M861",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M861 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M712",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M712 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M817",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M817 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M700",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M700 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M527",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M527 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M790",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M790 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M858",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M858 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "P324",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "P324 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "P385",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "P385 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "P332",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "P332 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M520",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M520 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M820",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M820 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M590",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M590 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M741",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M741 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M705",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M705 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M920",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M920 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M798",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M798 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M806",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M806 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M803",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M803 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M760",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M760 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M840",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M840 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M550",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M550 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M690",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M690 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M900",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M900 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M706",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M706 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M892",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M892 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M503",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M503 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M575",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M575 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M617",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M617 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M435",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M435 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M615",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M615 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M904",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M904 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M585",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M585 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M440",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M440 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M850",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M850 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M742",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M742 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M845",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M845 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M717",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M717 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M752",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M752 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M595",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M595 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M923",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M923 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M832",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M832 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M480",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M480 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M482",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M482 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M630",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M630 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M460",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M460 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M745",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M745 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M632",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M632 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M824",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M824 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M501",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M501 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M495",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M495 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M095",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M095 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M645",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M645 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M463",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M463 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M500",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M500 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M555",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M555 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M540",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M540 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M877",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M877 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M636",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M636 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M711",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M711 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M679",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M679 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M838",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M838 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M097",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M097 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M530",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M530 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M515",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M515 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M831",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M831 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M491",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M491 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M621",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M621 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M519",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M519 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M436",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M436 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M999",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M999 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M906",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M906 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M921",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M921 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M554",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M554 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M605",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M605 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M565",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M565 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M844",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M844 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M484",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M484 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M510",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M510 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M821",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M821 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M526",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M526 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M317",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M317 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M792",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M792 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M794",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M794 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M905",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M905 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M511",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M511 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M703",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M703 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M890",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M890 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M592",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M592 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M776",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M776 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M525",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M525 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M556",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M556 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M880",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M880 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M625",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M625 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M927",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M927 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M853",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M853 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M702",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M702 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M697",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M697 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M098",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M098 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M924",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M924 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M698",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M698 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M942",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M942 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M772",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M772 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M468",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M468 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M545",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M545 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M234",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M234 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M552",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M552 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M504",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M504 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M467",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M467 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M746",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M746 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M812",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M812 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M773",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M773 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M417",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M417 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M597",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M597 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M808",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M808 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M642",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M642 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M849",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M849 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M626",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M626 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M422",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M422 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M426",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M426 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M603",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M603 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M804",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M804 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M851",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M851 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M777",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M777 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M747",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M747 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M423",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M423 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M456",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M456 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M791",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M791 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M825",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M825 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M611",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M611 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M869",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M869 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M420",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M420 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M604",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M604 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M518",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M518 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M472",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M472 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M465",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M465 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M564",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M564 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M572",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M572 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M749",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M749 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M634",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M634 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M842",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M842 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M531",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M531 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M521",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M521 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M710",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M710 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M578",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M578 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M687",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M687 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M352",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M352 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M637",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M637 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M681",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M681 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M443",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M443 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M871",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M871 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M744",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M744 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M704",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M704 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M421",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M421 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M797",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M797 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M879",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M879 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M893",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M893 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M799",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M799 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M775",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M775 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M470",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M470 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M910",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M910 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M922",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M922 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M898",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M898 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M736",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M736 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M930",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M930 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M600",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M600 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M442",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M442 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M543",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M543 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M912",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M912 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M899",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M899 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M096",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M096 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M502",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M502 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M903",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M903 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M748",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M748 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M909",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M909 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M716",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M716 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M551",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M551 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M720",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M720 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M678",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M678 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M829",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M829 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M516",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M516 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M843",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M843 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M534",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M534 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M805",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M805 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M490",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M490 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M852",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M852 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M856",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M856 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M643",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M643 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M870",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M870 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M807",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M807 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M452",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M452 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M561",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M561 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M685",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M685 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M865",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M865 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M956",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M956 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M908",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M908 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M683",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M683 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M560",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M560 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M786",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M786 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M424",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M424 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M631",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M631 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M839",
+      "issue": "high_low_freq",
+      "severity": "warn",
+      "detail": "M839 [HIGH] has only 0 corpus occurrences"
+    },
+    {
+      "sign": "M342",
+      "issue": "positional_mismatch",
+      "severity": "high",
+      "detail": "M342 labeled terminal but T-rate=0.12 (<0.2)"
+    },
+    {
+      "sign": "M176",
+      "issue": "positional_mismatch",
+      "severity": "high",
+      "detail": "M176 labeled terminal but T-rate=0.19 (<0.2)"
+    },
+    {
+      "sign": "M267",
+      "issue": "positional_mismatch",
+      "severity": "high",
+      "detail": "M267 labeled terminal but T-rate=0.15 (<0.2)"
+    },
+    {
+      "sign": "M326",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M326 [LOW] has empty reading"
+    },
+    {
+      "sign": "M265",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M265 [LOW] has empty reading"
+    },
+    {
+      "sign": "M294",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M294 [LOW] has empty reading"
+    },
+    {
+      "sign": "M319",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M319 [LOW] has empty reading"
+    },
+    {
+      "sign": "M171",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M171 [LOW] has empty reading"
+    },
+    {
+      "sign": "M148",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M148 [LOW] has empty reading"
+    },
+    {
+      "sign": "M290",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M290 [LOW] has empty reading"
+    },
+    {
+      "sign": "M291",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M291 [LOW] has empty reading"
+    },
+    {
+      "sign": "M313",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M313 [LOW] has empty reading"
+    },
+    {
+      "sign": "M142",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M142 [LOW] has empty reading"
+    },
+    {
+      "sign": "M199",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M199 [LOW] has empty reading"
+    },
+    {
+      "sign": "M187",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M187 [LOW] has empty reading"
+    },
+    {
+      "sign": "M371",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M371 [LOW] has empty reading"
+    },
+    {
+      "sign": "M246",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M246 [LOW] has empty reading"
+    },
+    {
+      "sign": "M395",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M395 [LOW] has empty reading"
+    },
+    {
+      "sign": "M229",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M229 [LOW] has empty reading"
+    },
+    {
+      "sign": "M399",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M399 [LOW] has empty reading"
+    },
+    {
+      "sign": "M331",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M331 [LOW] has empty reading"
+    },
+    {
+      "sign": "M410",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M410 [LOW] has empty reading"
+    },
+    {
+      "sign": "M349",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M349 [LOW] has empty reading"
+    },
+    {
+      "sign": "M263",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M263 [LOW] has empty reading"
+    },
+    {
+      "sign": "M257",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M257 [LOW] has empty reading"
+    },
+    {
+      "sign": "M338",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M338 [LOW] has empty reading"
+    },
+    {
+      "sign": "M288",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M288 [LOW] has empty reading"
+    },
+    {
+      "sign": "M244",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M244 [LOW] has empty reading"
+    },
+    {
+      "sign": "M284",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M284 [LOW] has empty reading"
+    },
+    {
+      "sign": "M121",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M121 [LOW] has empty reading"
+    },
+    {
+      "sign": "M373",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M373 [LOW] has empty reading"
+    },
+    {
+      "sign": "M110",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M110 [LOW] has empty reading"
+    },
+    {
+      "sign": "M228",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M228 [LOW] has empty reading"
+    },
+    {
+      "sign": "M292",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M292 [LOW] has empty reading"
+    },
+    {
+      "sign": "M141",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M141 [LOW] has empty reading"
+    },
+    {
+      "sign": "M188",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M188 [LOW] has empty reading"
+    },
+    {
+      "sign": "M296",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M296 [LOW] has empty reading"
+    },
+    {
+      "sign": "M216",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M216 [LOW] has empty reading"
+    },
+    {
+      "sign": "M348",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M348 [LOW] has empty reading"
+    },
+    {
+      "sign": "M268",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M268 [LOW] has empty reading"
+    },
+    {
+      "sign": "M325",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M325 [LOW] has empty reading"
+    },
+    {
+      "sign": "M289",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M289 [LOW] has empty reading"
+    },
+    {
+      "sign": "M238",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M238 [LOW] has empty reading"
+    },
+    {
+      "sign": "M276",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M276 [LOW] has empty reading"
+    },
+    {
+      "sign": "M174",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M174 [LOW] has empty reading"
+    },
+    {
+      "sign": "M384",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M384 [LOW] has empty reading"
+    },
+    {
+      "sign": "M353",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M353 [LOW] has empty reading"
+    },
+    {
+      "sign": "M271",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M271 [LOW] has empty reading"
+    },
+    {
+      "sign": "M204",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M204 [LOW] has empty reading"
+    },
+    {
+      "sign": "M333",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M333 [LOW] has empty reading"
+    },
+    {
+      "sign": "M285",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M285 [LOW] has empty reading"
+    },
+    {
+      "sign": "M184",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M184 [LOW] has empty reading"
+    },
+    {
+      "sign": "M266",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M266 [LOW] has empty reading"
+    },
+    {
+      "sign": "M283",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M283 [LOW] has empty reading"
+    },
+    {
+      "sign": "M308",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M308 [LOW] has empty reading"
+    },
+    {
+      "sign": "M154",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M154 [LOW] has empty reading"
+    },
+    {
+      "sign": "M302",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M302 [LOW] has empty reading"
+    },
+    {
+      "sign": "M385",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M385 [LOW] has empty reading"
+    },
+    {
+      "sign": "M282",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M282 [LOW] has empty reading"
+    },
+    {
+      "sign": "M215",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M215 [LOW] has empty reading"
+    },
+    {
+      "sign": "M172",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M172 [LOW] has empty reading"
+    },
+    {
+      "sign": "M403",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M403 [LOW] has empty reading"
+    },
+    {
+      "sign": "M159",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M159 [LOW] has empty reading"
+    },
+    {
+      "sign": "M344",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M344 [LOW] has empty reading"
+    },
+    {
+      "sign": "M179",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M179 [LOW] has empty reading"
+    },
+    {
+      "sign": "M343",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M343 [LOW] has empty reading"
+    },
+    {
+      "sign": "M409",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M409 [LOW] has empty reading"
+    },
+    {
+      "sign": "M248",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M248 [LOW] has empty reading"
+    },
+    {
+      "sign": "M241",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M241 [LOW] has empty reading"
+    },
+    {
+      "sign": "M167",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M167 [LOW] has empty reading"
+    },
+    {
+      "sign": "M232",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M232 [LOW] has empty reading"
+    },
+    {
+      "sign": "M411",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M411 [LOW] has empty reading"
+    },
+    {
+      "sign": "M236",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M236 [LOW] has empty reading"
+    },
+    {
+      "sign": "M182",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M182 [LOW] has empty reading"
+    },
+    {
+      "sign": "M337",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M337 [LOW] has empty reading"
+    },
+    {
+      "sign": "M300",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M300 [LOW] has empty reading"
+    },
+    {
+      "sign": "M393",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M393 [LOW] has empty reading"
+    },
+    {
+      "sign": "M414",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M414 [LOW] has empty reading"
+    },
+    {
+      "sign": "M161",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M161 [LOW] has empty reading"
+    },
+    {
+      "sign": "M299",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M299 [LOW] has empty reading"
+    },
+    {
+      "sign": "M132",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M132 [LOW] has empty reading"
+    },
+    {
+      "sign": "M376",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M376 [LOW] has empty reading"
+    },
+    {
+      "sign": "M269",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M269 [LOW] has empty reading"
+    },
+    {
+      "sign": "M114",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M114 [LOW] has empty reading"
+    },
+    {
+      "sign": "M361",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M361 [LOW] has empty reading"
+    },
+    {
+      "sign": "M113",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M113 [LOW] has empty reading"
+    },
+    {
+      "sign": "M315",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M315 [LOW] has empty reading"
+    },
+    {
+      "sign": "M150",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M150 [LOW] has empty reading"
+    },
+    {
+      "sign": "M139",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M139 [LOW] has empty reading"
+    },
+    {
+      "sign": "M189",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M189 [LOW] has empty reading"
+    },
+    {
+      "sign": "M160",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M160 [LOW] has empty reading"
+    },
+    {
+      "sign": "M166",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M166 [LOW] has empty reading"
+    },
+    {
+      "sign": "M377",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M377 [LOW] has empty reading"
+    },
+    {
+      "sign": "M368",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M368 [LOW] has empty reading"
+    },
+    {
+      "sign": "M152",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M152 [LOW] has empty reading"
+    },
+    {
+      "sign": "M273",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M273 [LOW] has empty reading"
+    },
+    {
+      "sign": "M335",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M335 [LOW] has empty reading"
+    },
+    {
+      "sign": "M206",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M206 [LOW] has empty reading"
+    },
+    {
+      "sign": "M122",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M122 [LOW] has empty reading"
+    },
+    {
+      "sign": "M340",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M340 [LOW] has empty reading"
+    },
+    {
+      "sign": "M279",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M279 [LOW] has empty reading"
+    },
+    {
+      "sign": "M404",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M404 [LOW] has empty reading"
+    },
+    {
+      "sign": "M180",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M180 [LOW] has empty reading"
+    },
+    {
+      "sign": "M275",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M275 [LOW] has empty reading"
+    },
+    {
+      "sign": "M253",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M253 [LOW] has empty reading"
+    },
+    {
+      "sign": "M212",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M212 [LOW] has empty reading"
+    },
+    {
+      "sign": "M144",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M144 [LOW] has empty reading"
+    },
+    {
+      "sign": "M119",
+      "issue": "empty_reading",
+      "severity": "high",
+      "detail": "M119 [LOW] has empty reading"
+    }
+  ]
+}

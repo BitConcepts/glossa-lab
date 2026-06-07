@@ -80,6 +80,11 @@ KNOWN_KEYS = [
     # automatically when the backend lifespan boots. Surfaced in the
     # Notifications panel as a toggle so the user doesn't need shell access.
     "discovery_daily",
+    # Study loop scheduler settings. "1" = run autonomous study loop on a
+    # fixed cadence. Interval defaults to 24 h; iterations defaults to 15.
+    "study_loop_daily",
+    "study_loop_interval_hours",
+    "study_loop_daily_iterations",
 ]
 
 KNOWN_PROVIDERS = ["openai", "anthropic", "google", "mistral", "ollama"]
@@ -362,6 +367,20 @@ async def verify_key(body: VerifyRequest) -> dict[str, Any]:
                 "valid": False,
                 "provider": ep["provider"],
                 "message": f"Invalid key (HTTP {exc.code}: Unauthorized).",
+            }
+        if exc.code == 429:
+            # 429 means the key is almost certainly valid — daily quota is exhausted.
+            # The discovery scheduler or research loop likely consumed the budget.
+            # Returning valid=True avoids confusing the user into thinking their key
+            # is broken; the fetchers have their own _429_cooldown backoff.
+            return {
+                "valid": True,
+                "provider": ep["provider"],
+                "message": (
+                    f"{ep['provider']} key is valid — daily quota temporarily exhausted "
+                    "(HTTP 429). The scheduler consumed today's budget. "
+                    "Requests resume automatically once the rate-limit window resets."
+                ),
             }
         return {
             "valid": False,

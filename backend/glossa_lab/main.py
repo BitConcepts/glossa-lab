@@ -51,6 +51,7 @@ from glossa_lab.api.report_templates import router as report_templates_router
 from glossa_lab.api.reports import router as reports_router
 from glossa_lab.api.research import router as research_router
 from glossa_lab.api.research_loop import router as research_loop_router
+from glossa_lab.api.study_loop import router as study_loop_router
 from glossa_lab.api.results import router as results_router
 from glossa_lab.api.settings import router as settings_router
 from glossa_lab.api.shutdown import router as shutdown_router
@@ -198,6 +199,11 @@ async def lifespan(app: FastAPI):
 
     discovery_task = start_scheduler()
 
+    # Optional: start the study loop scheduler when GLOSSA_STUDY_LOOP_DAILY=1.
+    from glossa_lab.study_loop_scheduler import start_scheduler as start_study_loop_scheduler  # noqa: PLC0415
+
+    study_loop_task = start_study_loop_scheduler()
+
     # Probe all enabled providers to refresh available_models (non-blocking)
     async def _probe_all_providers() -> None:
         from glossa_lab.api.provider_registry import probe_provider  # noqa: PLC0415
@@ -316,6 +322,12 @@ async def lifespan(app: FastAPI):
             await discovery_task
         except asyncio.CancelledError:
             pass
+    if study_loop_task is not None:
+        study_loop_task.cancel()
+        try:
+            await study_loop_task
+        except asyncio.CancelledError:
+            pass
     await close_db()
     _start_time = 0.0
 
@@ -388,6 +400,7 @@ def create_app() -> FastAPI:
     application.include_router(model_intelligence_router)  # /api/v1/model-intelligence
     application.include_router(indus_evidence_router)  # already prefixed at /api/v1/indus-evidence
     application.include_router(research_loop_router)  # already prefixed at /api/v1/research-loop
+    application.include_router(study_loop_router)  # already prefixed at /api/v1/study-loop
     application.include_router(events_router)  # already prefixed at /api/v1/events
     application.include_router(foundation_automation_router)  # already prefixed at /api/v1/foundation
     application.include_router(signs_router)  # already prefixed at /api/v1/signs

@@ -144,6 +144,12 @@ async def advance_all_ready() -> dict[str, Any]:
     adv = _advancer()
     results: list[dict] = []
     for _ in range(20):  # safety cap
+        # Peek at what advance would do — stop BEFORE complete_phase
+        plan = adv.plan_next(include_done=False)
+        if not plan:
+            break
+        if plan[0].action_type == "complete_phase":
+            break  # never auto-complete — user must explicitly advance
         result = await adv.advance(db=db)
         if not result.ok:
             break
@@ -153,9 +159,6 @@ async def advance_all_ready() -> dict[str, Any]:
             "job_id": result.job_id,
             "message": result.message,
         })
-        # Stop if we hit complete_phase
-        if result.action_type == "complete_phase":
-            break
     if results:
         try:
             from glossa_lab.api.dashboard import mark_insights_stale  # noqa: PLC0415

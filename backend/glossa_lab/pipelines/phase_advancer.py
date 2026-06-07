@@ -416,7 +416,21 @@ class PhaseAdvancer:
                 if exp_id and exp_id in queued_exp_ids and db_st != "failed":
                     continue  # already queued
             elif a.action_type == "complete_phase":
-                pass  # always include
+                # GATE: only include if ALL other actions are completed or skipped.
+                # If any action is pending, running, or failed, complete_phase is blocked.
+                other_statuses = {
+                    lbl: st for lbl, st in db_action_status.items()
+                    if lbl != a.label
+                }
+                # Count non-complete_phase actions that exist in the plan
+                plan_labels = {x.label for x in all_actions if x.action_type != "complete_phase"}
+                # Check: every plan action must be in DB as completed/skipped
+                all_plan_done = all(
+                    db_action_status.get(lbl, "") in ("completed", "skipped")
+                    for lbl in plan_labels
+                )
+                if not all_plan_done:
+                    continue  # blocked — not all actions are done
             elif a.label in completed_labels and db_st != "failed":
                 continue  # done in phase_state.json
             remaining.append(a)

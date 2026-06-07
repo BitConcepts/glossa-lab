@@ -29,7 +29,7 @@
   "source_overrides": {
     "newsapi": {"page_size": 50, "sort_by": "publishedAt", "search_in": "title,description"},
     "brave":   {"count": 20, "search_endpoint": "news"},
-    "serpapi": {"engine": "google_news", "num": 20},
+    "serpapi": {"engine": "google_scholar", "num": 25},
     "openalex":{"per_page": 25, "filter": "concepts.id:C2778407484|C2779033659"},
     "arxiv":   {"max_results": 25, "search_query_extra": "cat:cs.CL OR cat:stat.AP"},
     "crossref":{"rows": 25},

@@ -6,7 +6,7 @@ platforms:
 - linux
 - macos
 language: python
-spec_version: 0.11.7
+spec_version: 0.13.0
 aee_phase: release
 description: Imported project (119 files detected)
 services: false

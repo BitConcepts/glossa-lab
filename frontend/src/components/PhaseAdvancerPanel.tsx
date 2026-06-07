@@ -65,6 +65,18 @@ const STATUS_BADGE: Record<string, { bg: string; fg: string; label: string }> = 
   running:   { bg: "#dbeafe", fg: "#1d4ed8", label: "running" },
 };
 
+/** Dispatch event to start the Research Loop from any panel. */
+function dispatchStartLoop(cycles = 15) {
+  window.dispatchEvent(
+    new CustomEvent("glossa:start-research-loop", { detail: { cycles } })
+  );
+}
+
+/** True when the action is a phase-recommended experiment (runs via loop). */
+function isLoopAction(action: PhaseAction) {
+  return action.action_type === "run_experiment";
+}
+
 export function PhaseAdvancerPanel() {
   const [status, setStatus] = useState<PhaseStatus | null>(null);
   const [loading, setLoading] = useState(true);
@@ -183,31 +195,60 @@ export function PhaseAdvancerPanel() {
                 const isDone = st === "completed";
                 const isFailed = st === "failed";
                 const isSkipped = st === "skipped";
+                const isRunning = st === "running";
                 const isPending = st === "pending";
                 const isActionBusy = actionBusy === action.label;
+                const isLoop = isLoopAction(action);
+
                 return (
                   <div key={i} data-testid={`phase-action-${i}`} style={{
                     padding: "6px 10px", marginBottom: 4, borderRadius: 5,
                     opacity: isSkipped ? 0.4 : 1,
-                    background: isDone ? "#f0fdf4" : isFailed ? "#fef2f2" : isPending ? "#f9fafb" : "#fefce8",
-                    border: `1px solid ${isDone ? "#86efac" : isFailed ? "#fca5a5" : isSkipped ? "#fde68a" : "#e5e7eb"}`,
+                    background: isDone ? "#f0fdf4" : isFailed ? "#fef2f2"
+                      : isRunning ? "#eff6ff"
+                      : isLoop && isPending ? "#f5f3ff"
+                      : isPending ? "#f9fafb" : "#fefce8",
+                    border: `1px solid ${isDone ? "#86efac" : isFailed ? "#fca5a5"
+                      : isRunning ? "#bfdbfe"
+                      : isLoop && isPending ? "#ddd6fe"
+                      : isSkipped ? "#fde68a" : "#e5e7eb"}`,
                   }}>
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 6 }}>
                       <span style={{
                         fontSize: 11, fontWeight: isPending ? 600 : 500, flex: 1,
-                        color: isDone ? "#16a34a" : isFailed ? "#dc2626" : isSkipped ? "#92400e" : "#374151",
+                        color: isDone ? "#16a34a" : isFailed ? "#dc2626"
+                          : isRunning ? "#1d4ed8"
+                          : isSkipped ? "#92400e"
+                          : isLoop && isPending ? "#6d28d9"
+                          : "#374151",
                         textDecoration: isSkipped ? "line-through" : "none",
                       }}>
-                        {isDone ? "✓ " : isFailed ? "✗ " : isPending ? "▸ " : "⊘ "}{action.label}
+                        {isDone ? "✓ " : isFailed ? "✗ " : isRunning ? "⏳ "
+                          : isLoop && isPending ? "🔬 "
+                          : isPending ? "▸ " : "⊘ "}
+                        {action.label}
                       </span>
-                      <span style={{
-                        fontSize: 9, fontWeight: 600, borderRadius: 3, padding: "1px 6px",
-                        background: badge.bg, color: badge.fg,
-                      }}>
-                        {badge.label}
-                      </span>
-                      {/* Skip button for pending/failed */}
-                      {(isPending || isFailed) && (
+
+                      {/* Loop badge for pending run_experiment actions */}
+                      {isLoop && isPending && (
+                        <span style={{
+                          fontSize: 9, fontWeight: 700, borderRadius: 3, padding: "1px 7px",
+                          background: "#ede9fe", color: "#5b21b6", whiteSpace: "nowrap",
+                        }}>🔄 in Research Loop</span>
+                      )}
+
+                      {/* Status badge for non-loop or non-pending */}
+                      {(!isLoop || !isPending) && (
+                        <span style={{
+                          fontSize: 9, fontWeight: 600, borderRadius: 3, padding: "1px 6px",
+                          background: badge.bg, color: badge.fg,
+                        }}>
+                          {badge.label}
+                        </span>
+                      )}
+
+                      {/* Skip — not shown for loop experiments (loop handles them) */}
+                      {!isLoop && (isPending || isFailed) && (
                         <button
                           disabled={isActionBusy}
                           onClick={async () => {
@@ -225,7 +266,28 @@ export function PhaseAdvancerPanel() {
                           title="Skip this action"
                         >skip</button>
                       )}
-                      {/* Redo button for completed/skipped */}
+
+                      {/* Skip still available for failed loop experiments */}
+                      {isLoop && isFailed && (
+                        <button
+                          disabled={isActionBusy}
+                          onClick={async () => {
+                            setActionBusy(action.label);
+                            try {
+                              await fetch(`${BASE}/actions/${encodeURIComponent(action.label)}/skip`, {
+                                method: "POST", headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ phase: status.current_phase }),
+                              });
+                            } finally { setActionBusy(null); await refresh(); }
+                          }}
+                          style={{ fontSize: 9, padding: "1px 6px", borderRadius: 3,
+                            border: "1px solid #d1d5db", background: "#fff", color: "#6b7280",
+                            cursor: "pointer" }}
+                          title="Skip this failed experiment"
+                        >skip</button>
+                      )}
+
+                      {/* Redo for completed/skipped */}
                       {(isDone || isSkipped) && (
                         <button
                           disabled={isActionBusy}
@@ -245,12 +307,22 @@ export function PhaseAdvancerPanel() {
                         >redo</button>
                       )}
                     </div>
+
                     {isFailed && action.error_message && (
                       <div style={{ fontSize: 10, color: "#dc2626", marginTop: 2, fontFamily: "monospace" }}>
                         {action.error_message}
                       </div>
                     )}
-                    {isPending && <div style={{ fontSize: 10, color: "#6b7280", marginTop: 2 }}>{action.rationale}</div>}
+
+                    {/* Rationale — loop experiments show "runs with Research Loop" */}
+                    {isPending && isLoop && (
+                      <div style={{ fontSize: 10, color: "#6d28d9", marginTop: 2 }}>
+                        Queued automatically when you start the Research Loop below.
+                      </div>
+                    )}
+                    {isPending && !isLoop && (
+                      <div style={{ fontSize: 10, color: "#6b7280", marginTop: 2 }}>{action.rationale}</div>
+                    )}
                   </div>
                 );
               })}
@@ -258,61 +330,99 @@ export function PhaseAdvancerPanel() {
           )}
 
           {/* Advance buttons */}
-          <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
-            {status.all_done ? (
-              <div data-testid="phase-all-done" style={{
-                padding: "8px 16px", fontSize: 12, fontWeight: 700, borderRadius: 6,
-                background: "#f0fdf4", border: "1px solid #86efac", color: "#15803d",
-              }}>
-                🏆 Phase {status.current_phase} complete
+          {(() => {
+            // Determine what kind of remaining actions we have
+            const pendingLoopActions = status.top_actions.filter(
+              a => isLoopAction(a) && (a.db_status === "pending" || !a.db_status)
+            );
+            const pendingNonLoopActions = status.top_actions.filter(
+              a => !isLoopAction(a) && a.action_type !== "complete_phase"
+                && (a.db_status === "pending" || !a.db_status)
+            );
+            const allRemainingAreLoopActions =
+              status.remaining_actions > 0 &&
+              pendingLoopActions.length === status.remaining_actions;
+
+            return (
+              <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+                {status.all_done ? (
+                  <div data-testid="phase-all-done" style={{
+                    padding: "8px 16px", fontSize: 12, fontWeight: 700, borderRadius: 6,
+                    background: "#f0fdf4", border: "1px solid #86efac", color: "#15803d",
+                  }}>
+                    🏆 Phase {status.current_phase} complete
+                  </div>
+                ) : allRemainingAreLoopActions ? (
+                  // All remaining actions are loop experiments — show Run Loop CTA
+                  <button
+                    data-testid="run-loop-button"
+                    disabled={advancing}
+                    onClick={() => dispatchStartLoop(15)}
+                    style={{
+                      padding: "8px 18px", fontSize: 12, fontWeight: 700, borderRadius: 6,
+                      border: "none", cursor: advancing ? "default" : "pointer",
+                      background: "#7c3aed", color: "#fff",
+                    }}
+                    title="Start the Research Loop — phase experiments queue automatically"
+                  >
+                    🔄 Run Research Loop
+                  </button>
+                ) : pendingNonLoopActions.length > 0 ? (<>
+                  <button
+                    data-testid="advance-button"
+                    disabled={advancing}
+                    onClick={() => void advance()}
+                    style={{
+                      padding: "8px 18px", fontSize: 12, fontWeight: 700, borderRadius: 6,
+                      border: "none", cursor: advancing ? "default" : "pointer",
+                      background: advancing ? "#e5e7eb" : colors.text,
+                      color: advancing ? "#6b7280" : "#fff",
+                    }}
+                  >
+                    {advancing ? "⏳ Advancing…" : `▶ Next (${status.remaining_actions} left)`}
+                  </button>
+                  {pendingLoopActions.length > 0 && (
+                    <button
+                      data-testid="run-loop-button"
+                      onClick={() => dispatchStartLoop(15)}
+                      style={{
+                        padding: "8px 14px", fontSize: 11, fontWeight: 700, borderRadius: 6,
+                        border: "1px solid #7c3aed", cursor: "pointer",
+                        background: "#fff", color: "#7c3aed",
+                      }}
+                      title="Also queue phase experiments via the Research Loop"
+                    >
+                      🔄 + Run Loop
+                    </button>
+                  )}
+                </>) : (
+                  // Only complete_phase remaining (or nothing actionable manually)
+                  <button
+                    data-testid="advance-button"
+                    disabled={advancing}
+                    onClick={() => void advance()}
+                    style={{
+                      padding: "8px 18px", fontSize: 12, fontWeight: 700, borderRadius: 6,
+                      border: "none", cursor: advancing ? "default" : "pointer",
+                      background: advancing ? "#e5e7eb" : colors.text,
+                      color: advancing ? "#6b7280" : "#fff",
+                    }}
+                  >
+                    {advancing ? "⏳ Advancing…" : `▶ Next (${status.remaining_actions} left)`}
+                  </button>
+                )}
               </div>
-            ) : (<>
-              <button
-                data-testid="advance-button"
-                disabled={advancing}
-                onClick={() => void advance()}
-                style={{
-                  padding: "8px 18px", fontSize: 12, fontWeight: 700, borderRadius: 6,
-                  border: "none", cursor: advancing ? "default" : "pointer",
-                  background: advancing ? "#e5e7eb" : colors.text,
-                  color: advancing ? "#6b7280" : "#fff",
-                }}
-              >
-                {advancing ? "⏳ Advancing…" : `▶ Next (${status.remaining_actions} left)`}
-              </button>
-              <button
-                data-testid="advance-all-button"
-                disabled={advancing}
-                onClick={async () => {
-                  setAdvancing(true); setLastMessage(null);
-                  try {
-                    const res = await fetch(`${BASE}/advance-all`, {
-                      method: "POST", headers: { "Content-Type": "application/json" }, body: "{}",
-                    });
-                    if (res.ok) {
-                      const data = await res.json() as { queued: number; results: { action: string; message: string }[] };
-                      setLastMessage(`Queued ${data.queued} action(s): ${data.results.map(r => r.action).join(", ")}`);
-                    }
-                  } catch { setLastMessage("Network error."); }
-                  finally { setAdvancing(false); await refresh(); }
-                }}
-                style={{
-                  padding: "8px 14px", fontSize: 11, fontWeight: 700, borderRadius: 6,
-                  border: `1px solid ${colors.border}`, cursor: advancing ? "default" : "pointer",
-                  background: advancing ? "#e5e7eb" : "#fff",
-                  color: advancing ? "#6b7280" : colors.text,
-                }}
-                title="Queue all ready actions at once (experiments run in parallel)"
-              >
-                ⏩ Queue All Ready
-              </button>
-            </>)}
+            );
+          })()}
+
+          {/* Refresh row */}
+          <div style={{ display: "flex", gap: 8, alignItems: "center", marginTop: 8 }}>
             <button
               data-testid="refresh-button"
               onClick={() => void refresh()}
               disabled={loading}
               style={{
-                padding: "8px 12px", fontSize: 11, borderRadius: 6,
+                padding: "6px 12px", fontSize: 11, borderRadius: 6,
                 border: "1px solid #d1d5db", background: loading ? "#f3f4f6" : "#fff",
                 cursor: loading ? "default" : "pointer", color: "#6b7280",
               }}

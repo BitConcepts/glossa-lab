@@ -39,6 +39,7 @@ class PhaseStatus:
     foundation_ok: bool
     anchors_total: int
     anchors_hm: int           # HIGH + MEDIUM confidence anchors
+    completed_through_phase: int = 0  # highest phase explicitly completed via complete_phase
 
 
 @dataclass
@@ -219,6 +220,50 @@ class PhaseAdvancer:
         # All matching phases completed — return the last one
         return matching[-1]
 
+    def get_pending_experiment_actions(self) -> list[dict]:
+        """Return pending run_experiment phase actions for the current phase.
+
+        Filters out actions already completed/skipped/running in the DB.
+        Used by the research loop to auto-queue phase experiments at loop start.
+        Returns list of {label, experiment_id, params, phase, phase_label} dicts.
+        """
+        status = self.assess()
+        plan = self.plan_next()
+
+        # Load DB statuses so we don't re-queue already-running/completed actions
+        db_statuses: dict[str, str] = {}
+        try:
+            import sqlite3 as _sql  # noqa: PLC0415
+            db_path = _REPO / "backend" / "data" / "glossa.db"
+            if db_path.exists():
+                conn = _sql.connect(str(db_path), timeout=3)
+                conn.row_factory = _sql.Row
+                rows = conn.execute(
+                    "SELECT action_label, status FROM phase_actions WHERE phase = ?",
+                    (status.current_phase,),
+                ).fetchall()
+                conn.close()
+                db_statuses = {r["action_label"]: r["status"] for r in rows}
+        except Exception:  # noqa: BLE001
+            pass
+
+        pending = []
+        for action in plan:
+            if action.action_type != "run_experiment":
+                continue
+            if db_statuses.get(action.label) in ("completed", "skipped", "running"):
+                continue
+            exp_id = action.params.get("experiment_id", "")
+            if exp_id:
+                pending.append({
+                    "label": action.label,
+                    "experiment_id": exp_id,
+                    "params": action.params,
+                    "phase": status.current_phase,
+                    "phase_label": status.phase_label,
+                })
+        return pending
+
     def assess(self) -> PhaseStatus:
         """Read current project state and return phase status."""
         anchors_data = self._read_anchors()
@@ -233,6 +278,7 @@ class PhaseAdvancer:
 
         staging = self._read_staging_counts()
         foundation_ok = self._read_foundation_ok()
+        completed_through = self._get_completed_through_phase()
 
         current_goal = self._get_phase_for_coverage(coverage)
         from glossa_lab.config import _DEFAULT_PHASE_GOALS  # noqa: PLC0415
@@ -257,6 +303,7 @@ class PhaseAdvancer:
             foundation_ok=foundation_ok,
             anchors_total=anchors_total,
             anchors_hm=anchors_hm,
+            completed_through_phase=completed_through,
         )
 
     def plan_next(self, *, include_done: bool = True) -> list[PhaseAction]:

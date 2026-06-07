@@ -1,11 +1,7 @@
 {
-  "phase_4_completed": [
-    "Fix Foundation Check failures",
-    "Queue: Indus Cgsa Cluster Analysis",
-    "Queue: Indus Structural Atlas"
-  ],
-  "completed_through_phase": 6,
   "phase_5_completed": [
-    "Queue: Indus Cisi Dravidian Vs Sanskrit"
+    "Queue: Indus Anchor Sweep",
+    "Regenerate AI Insights",
+    "Review Promoted Signs"
   ]
 }

@@ -82,13 +82,26 @@ async def create_text(body: TextCreate) -> TextResponse:
 
 
 @router.get("/texts")
-async def list_texts() -> list[TextResponse]:
-    """List all text corpora."""
+async def list_texts(
+    include_synthetic: bool = False,
+) -> list[TextResponse]:
+    """List all text corpora.
+
+    By default, synthetic/test corpora are hidden. Pass
+    ``include_synthetic=true`` to show them (advanced use).
+    """
     db = get_db()
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
 
     rows = await db.list_texts()
+    if not include_synthetic:
+        filtered = []
+        for r in rows:
+            meta = r.get("metadata") or {}
+            if not meta.get("synthetic"):
+                filtered.append(r)
+        rows = filtered
     return [TextResponse(**r) for r in rows]
 
 

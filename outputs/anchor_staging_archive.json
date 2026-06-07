@@ -16241,5 +16241,53 @@
     "verified_at": "2026-06-07T17:33:19Z",
     "archived_at": "2026-06-07T17:33:19Z",
     "archived_reason": "manual_verify_sa"
+  },
+  {
+    "sign": "M106",
+    "proposed_reading": "an",
+    "evidence_type": "high_neighbor_concentration",
+    "evidence_score": 0.624,
+    "dedr_support": "goose",
+    "neighbor_reading": "kol",
+    "neighbor_count": 2,
+    "source_experiment": "blocker_sign_context",
+    "conflict": null,
+    "review_status": "verified",
+    "approved_at": "2026-06-07T18:21:24Z",
+    "verified_at": "2026-06-07T18:21:26Z",
+    "archived_at": "2026-06-07T18:21:26Z",
+    "archived_reason": "manual_verify_sa"
+  },
+  {
+    "sign": "M106",
+    "proposed_reading": "an",
+    "evidence_type": "high_neighbor_concentration",
+    "evidence_score": 0.624,
+    "dedr_support": "goose",
+    "neighbor_reading": "kol",
+    "neighbor_count": 2,
+    "source_experiment": "blocker_sign_context",
+    "conflict": null,
+    "review_status": "verified",
+    "approved_at": "2026-06-07T18:21:24Z",
+    "verified_at": "2026-06-07T18:21:26Z",
+    "archived_at": "2026-06-07T18:21:26Z",
+    "archived_reason": "manual_verify_sa"
+  },
+  {
+    "sign": "M106",
+    "proposed_reading": "an",
+    "evidence_type": "high_neighbor_concentration",
+    "evidence_score": 0.416,
+    "dedr_support": "goose",
+    "neighbor_reading": "kol",
+    "neighbor_count": 2,
+    "source_experiment": "blocker_sign_context",
+    "conflict": null,
+    "review_status": "verified",
+    "approved_at": "2026-06-07T18:21:24Z",
+    "verified_at": "2026-06-07T18:21:26Z",
+    "archived_at": "2026-06-07T18:21:26Z",
+    "archived_reason": "manual_verify_sa"
   }
 ]

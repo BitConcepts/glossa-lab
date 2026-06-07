@@ -114,6 +114,50 @@ async def advance_phase() -> dict[str, Any]:
     }
 
 
+@router.get("/goals")
+async def get_phase_goals() -> dict[str, Any]:
+    """Return current phase goals (dynamic or default)."""
+    from glossa_lab.pipelines.phase_generator import load_phase_goals  # noqa: PLC0415
+    from glossa_lab.config import _DEFAULT_PHASE_GOALS, PhaseGoal  # noqa: PLC0415
+    saved = load_phase_goals()
+    if saved:
+        return {"goals": saved, "source": "dynamic", "editable": True}
+    # Convert defaults to dicts
+    from dataclasses import asdict as _asdict  # noqa: PLC0415
+    defaults = [_asdict(g) for g in _DEFAULT_PHASE_GOALS]
+    return {"goals": defaults, "source": "default", "editable": True}
+
+
+@router.post("/goals")
+async def save_phase_goals_endpoint(body: dict[str, Any]) -> dict[str, Any]:
+    """Save edited phase goals.
+
+    Body: {goals: [...]}  — list of phase goal dicts.
+    """
+    from glossa_lab.pipelines.phase_generator import save_phase_goals  # noqa: PLC0415
+    from glossa_lab.config import reload_project_config  # noqa: PLC0415
+    goals = body.get("goals", [])
+    if not goals:
+        return {"ok": False, "error": "No goals provided"}
+    path = save_phase_goals(goals)
+    reload_project_config()  # pick up the new goals
+    return {"ok": True, "saved": len(goals), "path": str(path.name)}
+
+
+@router.post("/generate")
+async def generate_phase_goals_endpoint() -> dict[str, Any]:
+    """Auto-generate phase goals from current project state and save them."""
+    from glossa_lab.pipelines.phase_generator import (  # noqa: PLC0415
+        generate_phase_goals,
+        save_phase_goals,
+    )
+    from glossa_lab.config import reload_project_config  # noqa: PLC0415
+    goals = generate_phase_goals()
+    path = save_phase_goals(goals)
+    reload_project_config()
+    return {"ok": True, "generated": len(goals), "goals": goals, "path": str(path.name)}
+
+
 @router.post("/override")
 async def override_phase(body: dict[str, Any]) -> dict[str, Any]:
     """Manually set a phase override stored in outputs/phase_state.json.

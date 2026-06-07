@@ -425,7 +425,17 @@ async def build_sa_experiment(body: dict[str, Any]) -> dict[str, Any]:
     if corpus not in _VALID_BUILTIN_CORPORA:
         return {"ok": False, "error": f"Unknown corpus '{corpus}'. Valid: {', '.join(sorted(_VALID_BUILTIN_CORPORA))}"}
 
-    lang_list = [l.strip().lower() for l in _re.split(r"[,;\s]+", languages_raw) if l.strip()]
+    # Normalize multi-word language names before splitting
+    _LANG_NORMALIZATIONS = {
+        "nw semitic": "nw_semitic", "proto sinaitic": "proto_sinaitic",
+        "south dravidian": "south_dravidian", "old hebrew": "old_hebrew",
+        "hieroglyphic luwian": "hieroglyphic_luwian", "linear b": "linear_b",
+        "middle indo aryan": "pali",
+    }
+    _norm_raw = languages_raw.lower()
+    for phrase, replacement in _LANG_NORMALIZATIONS.items():
+        _norm_raw = _norm_raw.replace(phrase, replacement)
+    lang_list = [l.strip() for l in _re.split(r"[,;\s]+", _norm_raw) if l.strip()]
     invalid = [l for l in lang_list if l not in _VALID_BUILTIN_LANGUAGES]
     if invalid:
         return {"ok": False, "error": f"Unknown language(s): {', '.join(invalid)}. Valid: {', '.join(sorted(_VALID_BUILTIN_LANGUAGES))}"}

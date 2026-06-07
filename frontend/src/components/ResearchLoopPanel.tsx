@@ -921,13 +921,17 @@ function RunSummary({
         </div>
       )}
 
-      {/* Proposals */}
-      {synthesis.proposals.length > 0 && (
+      {/* Proposals — filter out stale fix_foundation when live FC passes */}
+      {(() => {
+        const liveProposals = synthesis.proposals.filter(
+          (p) => !(p.action === "fix_foundation" && fc && !fc.skipped && fc.n_fail === 0),
+        );
+        return liveProposals.length > 0 ? (
         <div>
           <div style={{ fontSize: 11, fontWeight: 600, color: "#374151",
                         marginBottom: 6 }}>Next steps</div>
           <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-            {synthesis.proposals.slice(0, 4).map((p, i) => {
+            {liveProposals.slice(0, 4).map((p, i) => {
               const isFixFoundation = p.action === "fix_foundation";
               const isExpandMining = p.action === "expand_mining";
               const isReviewCandidates = p.action === "review_candidates";
@@ -998,7 +1002,8 @@ function RunSummary({
             })}
           </div>
         </div>
-      )}
+      ) : null;
+      })()}
 
       {/* Anchor candidates table */}
       <CandidatesTable candidates={synthesis.anchor_candidates}

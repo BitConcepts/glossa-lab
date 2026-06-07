@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 21
+_SCHEMA_VERSION = 22
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -426,6 +426,25 @@ CREATE TABLE IF NOT EXISTS research_loop_state (
 );
 """
 
+_SCHEMA_V22 = """
+CREATE TABLE IF NOT EXISTS phase_actions (
+    id            TEXT PRIMARY KEY,
+    phase         INTEGER NOT NULL,
+    action_label  TEXT NOT NULL,
+    action_type   TEXT NOT NULL DEFAULT '',
+    params_json   TEXT NOT NULL DEFAULT '{}',
+    status        TEXT NOT NULL DEFAULT 'pending',
+    job_id        TEXT,
+    error_message TEXT NOT NULL DEFAULT '',
+    started_at    TEXT,
+    completed_at  TEXT,
+    created_at    TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_phase_actions_phase ON phase_actions(phase);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_phase_actions_phase_label ON phase_actions(phase, action_label);
+""";
+
 _SCHEMA_V12 = """
 CREATE TABLE IF NOT EXISTS canonical_signs (
     internal_id        TEXT PRIMARY KEY,
@@ -742,6 +761,11 @@ class Database:
             await self._conn.executescript(_SCHEMA_V21)
             await self._conn.execute("UPDATE _schema_version SET version = ?", (21,))
             current_version = 21
+
+        if current_version < 22:
+            await self._conn.executescript(_SCHEMA_V22)
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (22,))
+            current_version = 22
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(
@@ -2795,6 +2819,67 @@ class Database:
         if isinstance(d.get("history"), str):
             d["history"] = json.loads(d["history"])
         return d
+
+    # ── Phase actions ─────────────────────────────────────────
+
+    async def list_phase_actions(self, phase: int | None = None) -> list[dict[str, Any]]:
+        assert self._conn
+        if phase is not None:
+            cursor = await self._conn.execute(
+                "SELECT * FROM phase_actions WHERE phase = ? ORDER BY created_at", (phase,))
+        else:
+            cursor = await self._conn.execute(
+                "SELECT * FROM phase_actions ORDER BY phase, created_at")
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def upsert_phase_action(
+        self, *, phase: int, label: str, action_type: str = "",
+        params: dict | None = None, status: str = "pending",
+        job_id: str | None = None, error_message: str = "",
+    ) -> dict[str, Any]:
+        """Insert or update a phase action by (phase, label) unique key."""
+        assert self._conn
+        from datetime import datetime, timezone  # noqa: PLC0415
+        now = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+        aid = uuid.uuid4().hex[:12]
+        params_json = json.dumps(params or {})
+        started = now if status in ("running", "completed", "failed") else None
+        completed = now if status in ("completed", "skipped") else None
+        await self._conn.execute(
+            """INSERT INTO phase_actions
+               (id, phase, action_label, action_type, params_json, status,
+                job_id, error_message, started_at, completed_at, created_at)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+               ON CONFLICT(phase, action_label) DO UPDATE SET
+                 status = excluded.status,
+                 job_id = COALESCE(excluded.job_id, phase_actions.job_id),
+                 error_message = excluded.error_message,
+                 started_at = COALESCE(phase_actions.started_at, excluded.started_at),
+                 completed_at = excluded.completed_at""",
+            (aid, phase, label, action_type, params_json, status,
+             job_id, error_message, started, completed, now),
+        )
+        await self._conn.commit()
+        cursor = await self._conn.execute(
+            "SELECT * FROM phase_actions WHERE phase = ? AND action_label = ?",
+            (phase, label))
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else {}
+
+    async def reset_phase_action(self, phase: int, label: str) -> dict[str, Any] | None:
+        """Reset a completed/failed action back to pending (redo)."""
+        assert self._conn
+        await self._conn.execute(
+            """UPDATE phase_actions SET status = 'pending', error_message = '',
+               started_at = NULL, completed_at = NULL, job_id = NULL
+               WHERE phase = ? AND action_label = ?""",
+            (phase, label))
+        await self._conn.commit()
+        cursor = await self._conn.execute(
+            "SELECT * FROM phase_actions WHERE phase = ? AND action_label = ?",
+            (phase, label))
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
 
     # ── Legacy goal compat (delegates to projects) ───────────────
 

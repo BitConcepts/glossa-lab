@@ -18,6 +18,10 @@ interface PhaseAction {
   rationale: string;
   params: Record<string, unknown>;
   priority: number;
+  db_status: "pending" | "completed" | "failed" | "skipped" | "running";
+  job_id?: string | null;
+  error_message?: string;
+  completed_at?: string | null;
 }
 
 interface PhaseStatus {
@@ -49,12 +53,23 @@ const PHASE_COLORS: Record<number, { bg: string; text: string; border: string }>
   3: { bg: "#fefce8", text: "#854d0e", border: "#fde68a" },
   4: { bg: "#fff7ed", text: "#9a3412", border: "#fed7aa" },
   5: { bg: "#f0fdf4", text: "#166534", border: "#86efac" },
+  6: { bg: "#ede9fe", text: "#5b21b6", border: "#c4b5fd" },
+  7: { bg: "#fef3c7", text: "#92400e", border: "#fcd34d" },
+};
+
+const STATUS_BADGE: Record<string, { bg: string; fg: string; label: string }> = {
+  pending:   { bg: "#f3f4f6", fg: "#6b7280", label: "pending" },
+  completed: { bg: "#dcfce7", fg: "#15803d", label: "done" },
+  failed:    { bg: "#fef2f2", fg: "#dc2626", label: "failed" },
+  skipped:   { bg: "#fef3c7", fg: "#92400e", label: "skipped" },
+  running:   { bg: "#dbeafe", fg: "#1d4ed8", label: "running" },
 };
 
 export function PhaseAdvancerPanel() {
   const [status, setStatus] = useState<PhaseStatus | null>(null);
   const [loading, setLoading] = useState(true);
   const [advancing, setAdvancing] = useState(false);
+  const [actionBusy, setActionBusy] = useState<string | null>(null);
   const [lastMessage, setLastMessage] = useState<string | null>(null);
   const [expanded, setExpanded] = useState(true);
   const [refreshedAt, setRefreshedAt] = useState<string | null>(null);
@@ -163,33 +178,79 @@ export function PhaseAdvancerPanel() {
                 Phase Actions ({status.remaining_actions} remaining)
               </div>
               {status.top_actions.map((action, i) => {
-                const doneCount = status.top_actions.length - status.remaining_actions;
-                const isDone = i < doneCount;
-                const isNext = i === doneCount;
+                const st = action.db_status || "pending";
+                const badge = STATUS_BADGE[st] || STATUS_BADGE.pending;
+                const isDone = st === "completed";
+                const isFailed = st === "failed";
+                const isSkipped = st === "skipped";
+                const isPending = st === "pending";
+                const isActionBusy = actionBusy === action.label;
                 return (
                   <div key={i} data-testid={`phase-action-${i}`} style={{
                     padding: "6px 10px", marginBottom: 4, borderRadius: 5,
-                    opacity: isDone ? 0.5 : 1,
-                    background: isDone ? "#f0fdf4" : isNext ? colors.bg : "#f9fafb",
-                    border: `1px solid ${isDone ? "#86efac" : isNext ? colors.border : "#e5e7eb"}`,
+                    opacity: isSkipped ? 0.4 : 1,
+                    background: isDone ? "#f0fdf4" : isFailed ? "#fef2f2" : isPending ? "#f9fafb" : "#fefce8",
+                    border: `1px solid ${isDone ? "#86efac" : isFailed ? "#fca5a5" : isSkipped ? "#fde68a" : "#e5e7eb"}`,
                   }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 6 }}>
                       <span style={{
-                        fontSize: 11, fontWeight: isNext ? 700 : 500,
-                        color: isDone ? "#16a34a" : isNext ? colors.text : "#374151",
-                        textDecoration: isDone ? "line-through" : "none",
+                        fontSize: 11, fontWeight: isPending ? 600 : 500, flex: 1,
+                        color: isDone ? "#16a34a" : isFailed ? "#dc2626" : isSkipped ? "#92400e" : "#374151",
+                        textDecoration: isSkipped ? "line-through" : "none",
                       }}>
-                        {isDone ? "✓ " : isNext ? "▶ " : ""}{action.label}
+                        {isDone ? "✓ " : isFailed ? "✗ " : isPending ? "▸ " : "⊘ "}{action.label}
                       </span>
                       <span style={{
                         fontSize: 9, fontWeight: 600, borderRadius: 3, padding: "1px 6px",
-                        background: isDone ? "#dcfce7" : "#f3f4f6",
-                        color: isDone ? "#15803d" : "#6b7280",
+                        background: badge.bg, color: badge.fg,
                       }}>
-                        {isDone ? "done" : action.action_type.replace(/_/g, " ")}
+                        {badge.label}
                       </span>
+                      {/* Skip button for pending/failed */}
+                      {(isPending || isFailed) && (
+                        <button
+                          disabled={isActionBusy}
+                          onClick={async () => {
+                            setActionBusy(action.label);
+                            try {
+                              await fetch(`${BASE}/actions/${encodeURIComponent(action.label)}/skip`, {
+                                method: "POST", headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ phase: status.current_phase }),
+                              });
+                            } finally { setActionBusy(null); await refresh(); }
+                          }}
+                          style={{ fontSize: 9, padding: "1px 6px", borderRadius: 3,
+                            border: "1px solid #d1d5db", background: "#fff", color: "#6b7280",
+                            cursor: "pointer" }}
+                          title="Skip this action"
+                        >skip</button>
+                      )}
+                      {/* Redo button for completed/skipped */}
+                      {(isDone || isSkipped) && (
+                        <button
+                          disabled={isActionBusy}
+                          onClick={async () => {
+                            setActionBusy(action.label);
+                            try {
+                              await fetch(`${BASE}/actions/${encodeURIComponent(action.label)}/redo`, {
+                                method: "POST", headers: { "Content-Type": "application/json" },
+                                body: JSON.stringify({ phase: status.current_phase }),
+                              });
+                            } finally { setActionBusy(null); await refresh(); }
+                          }}
+                          style={{ fontSize: 9, padding: "1px 6px", borderRadius: 3,
+                            border: "1px solid #c4b5fd", background: "#f5f3ff", color: "#5b21b6",
+                            cursor: "pointer" }}
+                          title="Redo this action"
+                        >redo</button>
+                      )}
                     </div>
-                    {!isDone && <div style={{ fontSize: 10, color: "#6b7280", marginTop: 2 }}>{action.rationale}</div>}
+                    {isFailed && action.error_message && (
+                      <div style={{ fontSize: 10, color: "#dc2626", marginTop: 2, fontFamily: "monospace" }}>
+                        {action.error_message}
+                      </div>
+                    )}
+                    {isPending && <div style={{ fontSize: 10, color: "#6b7280", marginTop: 2 }}>{action.rationale}</div>}
                   </div>
                 );
               })}

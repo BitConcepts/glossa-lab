@@ -223,6 +223,8 @@ async def _process_one() -> bool:
         now = datetime.now(timezone.utc).isoformat()
         await db.store_result(job_id=job_id, data=result_data, created_at=now)
         await db.update_job_status(job_id, "completed")
+        # Update any phase_action linked to this job
+        await _sync_phase_action(db, job_id, "completed")
         # Also save to reports/ so the Jobs panel can navigate to Reports → Data
         import json as _json  # noqa: PLC0415
 
@@ -246,8 +248,41 @@ async def _process_one() -> bool:
             created_at=datetime.now(timezone.utc).isoformat(),
         )
         await db.update_job_status(job_id, "failed")
+        # Update any phase_action linked to this job
+        await _sync_phase_action(db, job_id, "failed", error_message=str(exc))
 
     return True
+
+
+async def _sync_phase_action(
+    db: Any, job_id: str, status: str, error_message: str = ""
+) -> None:
+    """Update the phase_action row linked to this job_id.
+
+    This is the critical hook that ties the job system to the phase
+    advancement system. When a job completes or fails, the corresponding
+    phase action is updated so the Phase Advancer knows it's done.
+    """
+    try:
+        cursor = await db._conn.execute(  # noqa: SLF001
+            "SELECT id, phase, action_label FROM phase_actions WHERE job_id = ?",
+            (job_id,),
+        )
+        row = await cursor.fetchone()
+        if row:
+            from datetime import datetime, timezone  # noqa: PLC0415
+            now = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+            await db._conn.execute(  # noqa: SLF001
+                "UPDATE phase_actions SET status = ?, error_message = ?, completed_at = ? WHERE id = ?",
+                (status, error_message[:500], now, row["id"]),
+            )
+            await db._conn.commit()  # noqa: SLF001
+            logger.info(
+                "Phase action '%s' (phase %d) → %s (job %s)",
+                row["action_label"], row["phase"], status, job_id,
+            )
+    except Exception as exc:  # noqa: BLE001
+        logger.debug("_sync_phase_action failed: %s", exc)
 
 
 async def _stall_watchdog() -> None:

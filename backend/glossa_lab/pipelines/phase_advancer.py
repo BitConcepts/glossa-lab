@@ -383,17 +383,42 @@ class PhaseAdvancer:
         all_actions = sorted(actions, key=lambda a: a.priority)
         if include_done:
             return all_actions
-        # Filter out already-completed actions
+
+        # Load DB action status for dependency-aware filtering
+        db_action_status: dict[str, str] = {}  # label -> status
+        try:
+            import sqlite3 as _sql  # noqa: PLC0415
+            db_path = _REPO / "backend" / "data" / "glossa.db"
+            if db_path.exists():
+                conn = _sql.connect(str(db_path), timeout=3)
+                conn.row_factory = _sql.Row
+                rows = conn.execute(
+                    "SELECT action_label, status FROM phase_actions WHERE phase = ?",
+                    (status.current_phase,),
+                ).fetchall()
+                conn.close()
+                db_action_status = {r["action_label"]: r["status"] for r in rows}
+        except Exception:  # noqa: BLE001
+            pass
+
+        # Filter: skip completed/skipped/running actions
         remaining = []
         for a in all_actions:
+            db_st = db_action_status.get(a.label, "")
+            # Already done in DB
+            if db_st in ("completed", "skipped"):
+                continue
+            # Already running (queued job in progress)
+            if db_st == "running":
+                continue
             if a.action_type == "run_experiment":
                 exp_id = a.params.get("experiment_id", "")
-                if exp_id and exp_id in queued_exp_ids:
+                if exp_id and exp_id in queued_exp_ids and db_st != "failed":
                     continue  # already queued
             elif a.action_type == "complete_phase":
-                pass  # always include Complete Phase
-            elif a.label in completed_labels:
-                continue  # already done this session
+                pass  # always include
+            elif a.label in completed_labels and db_st != "failed":
+                continue  # done in phase_state.json
             remaining.append(a)
         return remaining
 
@@ -426,16 +451,15 @@ class PhaseAdvancer:
                         job = await queue_graph_experiment(exp_id, db=db)
                         job_id = job.get("id") if job else None
                     except Exception as _qe:  # noqa: BLE001
-                        # If queuing fails (e.g. experiment not found), mark done and skip
                         self._mark_action_done(status.current_phase, top.label)
                         job_id = None
                         _log.warning("Could not queue experiment %s: %s", exp_id, _qe)
                 message = (
                     f"Experiment queued: {top.label}"
                     + (f" — job {job_id}" if job_id else " (no DB, dry-run)")
-                    + ". Monitor progress in the Jobs panel."
+                    + ". Will be marked done when job completes."
                 )
-                # Mark the experiment action as done so we don't get stuck
+                # Mark as RUNNING (not completed) — job completion hook will mark done
                 self._mark_action_done(status.current_phase, top.label)
 
             elif top.action_type in ("review_candidates", "verify_sa"):
@@ -501,12 +525,14 @@ class PhaseAdvancer:
             # Persist action status to DB
             if db is not None:
                 try:
+                    # run_experiment: mark as 'running' until job completes
+                    db_status = "running" if (top.action_type == "run_experiment" and job_id) else "completed"
                     await db.upsert_phase_action(
                         phase=status.current_phase,
                         label=top.label,
                         action_type=top.action_type,
                         params=top.params,
-                        status="completed",
+                        status=db_status,
                         job_id=job_id,
                     )
                 except Exception:  # noqa: BLE001

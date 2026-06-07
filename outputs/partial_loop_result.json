@@ -1,26 +1,25 @@
 {
-  "cycles_completed": 302,
+  "cycles_completed": 304,
   "max_cycles": 15,
   "cycle_analyses": [
     {
       "cycle": 1,
-      "experiment": "blocker_sign_context",
-      "summary": "Blocker Sign Context: Blocker context: 13 blockers have HIGH-sign neighbors. · n_blockers=13 · 📉 Regression detected",
+      "experiment": "motif_title_correlation",
+      "summary": "Motif Title Correlation: Motif-title: 0 motifs have title reading profiles. · n_motifs=0",
       "metrics": {
-        "n_blockers": 13,
-        "n_blockers_delta": -0.5
+        "n_motifs": 0
       },
-      "flags": [
-        "regression_detected"
-      ],
-      "suggested_next_steps": []
+      "flags": [],
+      "suggested_next_steps": [
+        "Try a different experiment type to explore new angles"
+      ]
     },
     {
       "cycle": 2,
-      "experiment": "site_specific_formula",
-      "summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9",
+      "experiment": "suffix_chain_depth",
+      "summary": "Suffix Chain Depth: Suffix chains: avg depth 3.8. Distribution: {4: 434, 5: 586, 2: 310, 3: 340}. · avg_depth=3.8",
       "metrics": {
-        "n_sites": 9
+        "avg_depth": 3.8
       },
       "flags": [],
       "suggested_next_steps": [
@@ -4963,6 +4962,44 @@
       },
       "analysis_flags": [],
       "analysis_summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9"
+    },
+    {
+      "cycle": 1,
+      "timestamp": "2026-06-07T18:22:27.091651+00:00",
+      "gap_targeted": "rare_sign_context",
+      "n_papers": 0,
+      "n_insights": 0,
+      "insight_types": {},
+      "experiment": "motif_title_correlation",
+      "selection_method": "proposal",
+      "verdict": "Motif-title: 0 motifs have title reading profiles.",
+      "is_new_info": true,
+      "n_candidates": 0,
+      "top_candidate": null,
+      "analysis_metrics": {
+        "n_motifs": 0
+      },
+      "analysis_flags": [],
+      "analysis_summary": "Motif Title Correlation: Motif-title: 0 motifs have title reading profiles. · n_motifs=0"
+    },
+    {
+      "cycle": 2,
+      "timestamp": "2026-06-07T18:22:28.641874+00:00",
+      "gap_targeted": "compound_morphology",
+      "n_papers": 0,
+      "n_insights": 0,
+      "insight_types": {},
+      "experiment": "suffix_chain_depth",
+      "selection_method": "proposal",
+      "verdict": "Suffix chains: avg depth 3.8. Distribution: {4: 434, 5: 586, 2: 310, 3: 340}.",
+      "is_new_info": true,
+      "n_candidates": 0,
+      "top_candidate": null,
+      "analysis_metrics": {
+        "avg_depth": 3.8
+      },
+      "analysis_flags": [],
+      "analysis_summary": "Suffix Chain Depth: Suffix chains: avg depth 3.8. Distribution: {4: 434, 5: 586, 2: 310, 3: 340}. · avg_depth=3.8"
     }
   ]
 }

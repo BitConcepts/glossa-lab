@@ -19,6 +19,8 @@ from typing import Iterable
 from glossa_lab.discovery import store
 from glossa_lab.discovery.fetchers.academia import AcademiaFetcher
 from glossa_lab.discovery.fetchers.academia_rss import AcademiaRSSFetcher
+from glossa_lab.discovery.fetchers.core_ac import COREFetcher
+from glossa_lab.discovery.fetchers.unpaywall import UnpaywallFetcher
 from glossa_lab.discovery.fetchers.arxiv import ArxivFetcher
 from glossa_lab.discovery.fetchers.base import (
     Fetcher,
@@ -72,6 +74,10 @@ _REGISTRY: tuple[type[Fetcher], ...] = (
     AcademiaFetcher,
     # Academia.edu — topic-category RSS feeds (bypasses Cloudflare, no key needed).
     AcademiaRSSFetcher,
+    # CORE.ac.uk — 200M+ open access papers (keyless, optional CORE_API_KEY).
+    COREFetcher,
+    # Unpaywall — find OA versions of papers (requires UNPAYWALL_EMAIL).
+    UnpaywallFetcher,
 )
 
 _RUN_ALL_LOCK = asyncio.Lock()

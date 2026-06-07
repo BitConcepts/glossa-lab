@@ -1261,10 +1261,7 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
 
         # ── 6. Write updated anchors file ───────────────────────────────────
         fa_data["anchors"] = current_anchors
-        fa_data["total"] = sum(
-            1 for info in current_anchors.values()
-            if (info.get("confidence") or "").upper() in ("HIGH", "MEDIUM")
-        )
+        fa_data["total"] = len(current_anchors)
         if new_coverage > 0:
             fa_data["corpus_token_coverage"] = new_coverage
         _FA_PATH.write_text(
@@ -1298,6 +1295,7 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
         SA_EXPERIMENTS = [
             "indus_cisi_dravidian_vs_sanskrit",
             "indus_anchor_sweep",
+            "indus_kalyanaraman_crossval",
         ]
         try:
             from glossa_lab.database import get_db as _get_db  # noqa: PLC0415

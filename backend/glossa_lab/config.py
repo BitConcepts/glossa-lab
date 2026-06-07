@@ -255,17 +255,15 @@ _DEFAULT_PHASE_GOALS: list[PhaseGoal] = [
             "The Phase Guide will walk you through each step in order."
         ),
         min_coverage=0.95, max_coverage=1.01,
-        # SA validation experiments come first — validate the promoted signs
         recommended_experiments=[
             "indus_cisi_dravidian_vs_sanskrit",
             "indus_anchor_sweep",
         ],
         recommended_actions=[
-            # These run AFTER the SA experiments above (which are added first by plan_next)
             {"action_type": "regenerate_insights", "label": "Regenerate AI Insights",
              "rationale": (
                  "SA experiments complete — regenerate the AI insight now so it reflects "
-                 "the validated anchor set and 96%+ coverage. This opens the Dashboard and triggers regeneration."
+                 "the validated anchor set and 96%+ coverage."
              ),
              "params": {}},
             {"action_type": "open_view", "label": "Review Promoted Signs",
@@ -274,7 +272,62 @@ _DEFAULT_PHASE_GOALS: list[PhaseGoal] = [
              "params": {"view": "signs"}},
         ],
     ),
+    PhaseGoal(
+        phase=6, label="Peer Review",
+        description=(
+            "Decipherment validated at 95%+ coverage. Prepare for external review: "
+            "(1) Run Kalyanaraman cross-validation as independent second-source check, "
+            "(2) Run full falsification suite (negative controls, Sanskrit falsification), "
+            "(3) Generate the foundation report PDF for sharing."
+        ),
+        min_coverage=0.95, max_coverage=1.01,
+        recommended_experiments=[
+            "indus_kalyanaraman_crossval",
+            "indus_validation_neg_controls",
+            "indus_sa_sanskrit_falsification",
+        ],
+        recommended_actions=[
+            {"action_type": "run_experiment",
+             "label": "Queue Kalyanaraman Cross-Validation",
+             "rationale": "Independent second-source validation against 52 rebus papers",
+             "params": {"experiment_id": "indus_kalyanaraman_crossval"}},
+            {"action_type": "run_experiment",
+             "label": "Queue Sanskrit Falsification",
+             "rationale": "Confirm Dravidian SA beats Sanskrit SA (language family validation)",
+             "params": {"experiment_id": "indus_sa_sanskrit_falsification"}},
+            {"action_type": "open_view", "label": "Generate Foundation Report",
+             "rationale": "Create a PDF summary of all validation results for external review.",
+             "params": {"view": "foundation"}},
+        ],
+    ),
+    PhaseGoal(
+        phase=7, label="Publication",
+        description=(
+            "All validations passed, falsification checks complete. "
+            "The decipherment is ready for academic publication. "
+            "Final steps: review the full report, prepare submission materials."
+        ),
+        min_coverage=0.95, max_coverage=1.01,
+        recommended_experiments=[],
+        recommended_actions=[
+            {"action_type": "open_view", "label": "Review Final Report",
+             "rationale": "Review the complete foundation check report and evidence chain.",
+             "params": {"view": "foundation"}},
+        ],
+    ),
 ]
+
+
+def _load_dynamic_or_default_goals() -> list:
+    """Load phase goals from outputs/phase_goals.json if available, else use defaults."""
+    try:
+        from glossa_lab.pipelines.phase_generator import load_phase_goals, goals_to_phase_goals  # noqa: PLC0415
+        saved = load_phase_goals()
+        if saved:
+            return goals_to_phase_goals(saved)
+    except Exception:  # noqa: BLE001
+        pass
+    return list(_DEFAULT_PHASE_GOALS)
 
 
 @dataclass
@@ -289,7 +342,7 @@ class ProjectConfig:
     sign_total: int = 713
     language_family_bias: str = "Dravidian"
     ai_context_summary: str = ""  # if non-empty, replaces the context block in AG2 system prompt
-    phase_goals: list = field(default_factory=lambda: list(_DEFAULT_PHASE_GOALS))
+    phase_goals: list = field(default_factory=lambda: _load_dynamic_or_default_goals())
 
     def corpus_csv_path(self) -> Path:
         return _REPO_ROOT / self.corpus_csv

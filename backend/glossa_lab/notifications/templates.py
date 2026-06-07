@@ -250,10 +250,134 @@ def format_test() -> tuple[str, str, str]:
     return subject, body_text, body_html
 
 
+# ── Study loop completion ────────────────────────────────────────────────────
+
+
+def format_study_loop_complete(session: dict[str, Any]) -> tuple[str, str, str]:
+    """Compose an email summarising a completed autonomous study loop session."""
+    before = session.get("before", {})
+    after = session.get("after", {})
+    narrative = session.get("narrative", {})
+
+    cov_before = before.get("coverage", 0)
+    cov_after = after.get("coverage", 0)
+    pct = int(cov_before * 100)
+    new_pct = int(cov_after * 100)
+
+    subject = f"[Glossa Lab] \U0001f52c Study Loop complete — coverage {pct}% → {new_pct}%"
+
+    hm_before = before.get("anchors_hm", 0)
+    hm_after = after.get("anchors_hm", 0)
+    hm_delta = hm_after - hm_before
+
+    cycles = session.get("cycles_run", 0)
+    papers = session.get("total_papers", 0)
+    insights = session.get("total_insights", 0)
+    trigger = session.get("trigger", "user")
+    session_id = session.get("session_id", "?")
+
+    actions = narrative.get("actions_taken", [])
+    actions_text = "\n".join(f"  • {a}" for a in actions) if actions else "  (none)"
+
+    # Plain text
+    body_text = "\n".join([
+        f"Glossa Lab Study Loop complete — {_now_human()}",
+        f"Session: {session_id}",
+        f"Triggered by: {trigger}",
+        "",
+        f"Coverage: {pct}% → {new_pct}% (delta {new_pct - pct:+d}%)",
+        f"HIGH+MEDIUM anchors: {hm_before} → {hm_after} (delta {hm_delta:+d})",
+        f"Cycles: {cycles} | Papers mined: {papers} | Insights: {insights}",
+        "",
+        "Where we came from:",
+        f"  {narrative.get('where_we_came_from', '')}",
+        "",
+        "What we learned:",
+        f"  {narrative.get('what_we_learned', '')}",
+        "",
+        "Actions taken:",
+        actions_text,
+        "",
+        "What's next:",
+        f"  {narrative.get('whats_next', '')}",
+    ])
+
+    # HTML
+    actions_html = "".join(
+        f'<li style="margin:2px 0;font-size:12px;color:#374151">{_escape(a)}</li>'
+        for a in actions
+    ) if actions else '<li style="color:#9ca3af">None</li>'
+
+    delta_color = "#16a34a" if new_pct >= pct else "#dc2626"
+
+    body_html = f"""\
+<!doctype html>
+<html><body style="font-family:system-ui,sans-serif;background:#f8fafc;margin:0;padding:0">
+<table role="presentation" width="100%" style="background:#f8fafc;padding:24px 12px">
+<tr><td align="center">
+  <table role="presentation" width="600" style="background:#fff;border-radius:10px;
+         border:1px solid #e5e7eb;border-collapse:collapse">
+    <tr><td style="padding:18px 18px 4px">
+      <div style="font-size:20px;font-weight:700;color:#111827">\U0001f52c Study Loop complete</div>
+      <div style="font-size:12px;color:#6b7280;margin-top:4px">
+        {_escape(_now_human())} · session {_escape(session_id)} · triggered by {_escape(trigger)}
+      </div>
+    </td></tr>
+    <tr><td style="padding:10px 18px">
+      <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;font-size:13px">
+        <tr>
+          <td style="padding:4px 0;color:#6b7280">Coverage</td>
+          <td style="padding:4px 0 4px 12px;font-family:monospace;color:{delta_color};font-weight:600">
+            {pct}% → {new_pct}% ({new_pct - pct:+d}%)
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:4px 0;color:#6b7280">HIGH+MED anchors</td>
+          <td style="padding:4px 0 4px 12px;font-family:monospace">
+            {hm_before} → {hm_after} ({hm_delta:+d})
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:4px 0;color:#6b7280">Cycles / Papers / Insights</td>
+          <td style="padding:4px 0 4px 12px;font-family:monospace">
+            {cycles} / {papers} / {insights}
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+    <tr><td style="padding:6px 18px">
+      <div style="font-size:12px;font-weight:600;color:#111827;margin-bottom:4px">Where we came from</div>
+      <div style="font-size:12px;color:#374151">{_escape(narrative.get('where_we_came_from', ''))}</div>
+    </td></tr>
+    <tr><td style="padding:6px 18px">
+      <div style="font-size:12px;font-weight:600;color:#111827;margin-bottom:4px">What we learned</div>
+      <div style="font-size:12px;color:#374151">{_escape(narrative.get('what_we_learned', ''))}</div>
+    </td></tr>
+    <tr><td style="padding:6px 18px">
+      <div style="font-size:12px;font-weight:600;color:#111827;margin-bottom:4px">Actions taken</div>
+      <ul style="margin:0;padding-left:18px">{actions_html}</ul>
+    </td></tr>
+    <tr><td style="padding:6px 18px">
+      <div style="font-size:12px;font-weight:600;color:#111827;margin-bottom:4px">What's next</div>
+      <div style="font-size:12px;color:#374151">{_escape(narrative.get('whats_next', ''))}</div>
+    </td></tr>
+    <tr><td style="padding:14px 18px;background:#f8fafc;border-top:1px solid #e5e7eb;
+            color:#9ca3af;font-size:11px">
+      Manage recipients in Settings → Notifications.
+    </td></tr>
+  </table>
+</td></tr>
+</table>
+</body></html>
+"""
+    return subject, body_text, body_html
+
+
 # Keep the helpers re-exported via __init__.py
 __all__ = [
     "format_discovery_digest",
     "format_study_complete",
     "format_experiment_complete",
     "format_test",
+    "format_study_loop_complete",
 ]

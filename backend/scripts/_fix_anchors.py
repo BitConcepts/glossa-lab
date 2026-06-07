@@ -109,7 +109,7 @@ covered_tokens = sum(corpus_freq[s] for s in hm_signs if s in corpus_freq)
 coverage = round(covered_tokens / total_tokens, 4) if total_tokens > 0 else 0.0
 
 fa["anchors"] = anchors
-fa["total"] = hm_count
+fa["total"] = len(anchors)  # total anchors, not only HIGH+MEDIUM
 fa["corpus_token_coverage"] = coverage
 fa["_cleanup_note"] = (
     f"Quality audit cleanup {now}: "

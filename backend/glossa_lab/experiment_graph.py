@@ -1335,7 +1335,7 @@ def _cluster_mapper(inputs: dict, params: dict) -> dict:
             assignments.append({"sign_id": sign, "cluster_label": cluster_lbl})
         summary = {"n_clusters": n_clusters, "cluster_k": n_clusters,
                    "n_signs": len(ranked), "source": "frequency_rank_fallback"}
-        _log.info("ClusterMapper: generated %d frequency-rank clusters for %d signs",
+        logger.info("ClusterMapper: generated %d frequency-rank clusters for %d signs",
                   n_clusters, len(ranked))
 
     s2c: dict[str, int] = {a["sign_id"]: a["cluster_label"] for a in assignments}
@@ -3193,6 +3193,17 @@ def execute_graph(graph_def: dict[str, Any], kwargs: dict[str, Any] | None = Non
         return merged
     return res.get(ordered[-1]["id"], {}) if ordered else {}
 
+
+# ── Kalyanaraman rebus cross-validation node ─────────────────────────────────
+try:
+    from glossa_lab.experiment_graph_kalyanaraman import (
+        _kalyanaraman_node_defs as _kalyan_defs,  # noqa: PLC0415
+    )
+    for _d in _kalyan_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered Kalyanaraman cross-validation node")
+except Exception as _kalyan_exc:  # noqa: BLE001
+    logger.warning("Kalyanaraman node not registered: %s", _kalyan_exc)
 
 # ── Graph experiment file storage ────────────────────────────────────────────
 

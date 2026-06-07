@@ -182,15 +182,42 @@ class PhaseAdvancer:
         except Exception:  # noqa: BLE001
             return True
 
+    def _get_completed_through_phase(self) -> int:
+        """Return the highest phase number that has been explicitly completed."""
+        state = self._read_phase_state()
+        return int(state.get("completed_through_phase", 0))
+
+    def _set_completed_through_phase(self, phase: int) -> None:
+        """Record that the user has completed through the given phase."""
+        state = self._read_phase_state()
+        state["completed_through_phase"] = phase
+        self._write_phase_state(state)
+
     def _get_phase_for_coverage(self, coverage: float) -> Any:
-        """Return the PhaseGoal that matches the given coverage."""
+        """Return the PhaseGoal that matches coverage + completion history.
+
+        When multiple phases share the same coverage range (e.g. 5, 6, 7 all
+        cover 0.95-1.01), the completed_through_phase field determines which
+        one is current: the first uncompleted phase in the range.
+        """
         from glossa_lab.config import _DEFAULT_PHASE_GOALS  # noqa: PLC0415
         goals = getattr(self.cfg, "phase_goals", None) or _DEFAULT_PHASE_GOALS
-        for goal in sorted(goals, key=lambda g: g.phase):
-            if goal.min_coverage <= coverage < goal.max_coverage:
-                return goal
-        # Fallback: last goal
-        return sorted(goals, key=lambda g: g.phase)[-1]
+        completed_through = self._get_completed_through_phase()
+
+        # Find all goals whose coverage range matches
+        matching = [
+            g for g in sorted(goals, key=lambda g: g.phase)
+            if g.min_coverage <= coverage < g.max_coverage
+        ]
+        if not matching:
+            return sorted(goals, key=lambda g: g.phase)[-1]
+
+        # Return the first matching goal whose phase > completed_through
+        for g in matching:
+            if g.phase > completed_through:
+                return g
+        # All matching phases completed — return the last one
+        return matching[-1]
 
     def assess(self) -> PhaseStatus:
         """Read current project state and return phase status."""
@@ -428,6 +455,8 @@ class PhaseAdvancer:
 
             elif top.action_type == "complete_phase":
                 phase_num = top.params.get("phase", status.current_phase)
+                # Mark this phase as completed so we advance to the next
+                self._set_completed_through_phase(phase_num)
                 # Clear completed actions for this phase
                 state = self._read_phase_state()
                 state.pop(f"phase_{phase_num}_completed", None)

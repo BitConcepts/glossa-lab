@@ -1,5 +1,5 @@
 {
-  "total": 172,
+  "total": 260,
   "anchors": {
     "M342": {
       "reading": "ay/ā",
@@ -1192,39 +1192,31 @@
     },
     "M255": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M251": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M301": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M406": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M387": {
       "reading": "kur",
@@ -1241,21 +1233,17 @@
     },
     "M116": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M274": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M087": {
       "reading": "veL",
@@ -1350,12 +1338,10 @@
     },
     "M101": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M125": {
       "reading": "vil",
@@ -1665,38 +1651,31 @@
     },
     "M318": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M346": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M312": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M134": {
       "reading": "kal",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-06T19:11:15Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "gem / stone",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'kal' shared by 19 signs (bulk assignment)"
+      "dedr_support": "gem / stone"
     },
     "M129": {
       "reading": "kur",
@@ -1713,84 +1692,66 @@
     },
     "M120": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M207": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M280": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M309": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M382": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M324": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M370": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M218": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M186": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M307": {
       "reading": "kur",
@@ -1828,21 +1789,17 @@
     },
     "M245": {
       "reading": "an",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'an' shared by 18 signs (bulk assignment)"
+      "dedr_support": "goose"
     },
     "M227": {
       "reading": "kal",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'kal' shared by 19 signs (bulk assignment)"
+      "dedr_support": "gem / stone"
     },
     "M138": {
       "reading": "kur",
@@ -1859,163 +1816,129 @@
     },
     "M243": {
       "reading": "kal",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'kal' shared by 19 signs (bulk assignment)"
+      "dedr_support": "gem / stone"
     },
     "M209": {
       "reading": "kal",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'kal' shared by 19 signs (bulk assignment)"
+      "dedr_support": "gem / stone"
     },
     "M259": {
       "reading": "van",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: smith / strong",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: smith / strong",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "smith / strong",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'van' shared by 7 signs (bulk assignment)"
+      "dedr_support": "smith / strong"
     },
     "M278": {
       "reading": "van",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "smith / strong",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'van' shared by 7 signs (bulk assignment)"
+      "dedr_support": "smith / strong"
     },
     "M140": {
       "reading": "an",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.42; status=verified; DEDR: goose",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.42; status=verified; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'an' shared by 18 signs (bulk assignment)"
+      "dedr_support": "goose"
     },
     "M208": {
       "reading": "van",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: smith / strong",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: smith / strong",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "smith / strong",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'van' shared by 7 signs (bulk assignment)"
+      "dedr_support": "smith / strong"
     },
     "M109": {
       "reading": "an",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'an' shared by 18 signs (bulk assignment)"
+      "dedr_support": "goose"
     },
     "M250": {
       "reading": "kal",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'kal' shared by 19 signs (bulk assignment)"
+      "dedr_support": "gem / stone"
     },
     "M390": {
       "reading": "kal",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'kal' shared by 19 signs (bulk assignment)"
+      "dedr_support": "gem / stone"
     },
     "M277": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M181": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M219": {
       "reading": "kal",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-06T19:11:15Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "gem / stone",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'kal' shared by 19 signs (bulk assignment)"
+      "dedr_support": "gem / stone"
     },
     "M379": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M214": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M131": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M380": {
       "reading": "kal",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-06T19:11:15Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "gem / stone",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'kal' shared by 19 signs (bulk assignment)"
+      "dedr_support": "gem / stone"
     },
     "M197": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M201": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M413": {
       "reading": "kur",
@@ -2032,29 +1955,24 @@
     },
     "M135": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M354": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M341": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-06T19:11:15Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M330": {
       "reading": "can",
@@ -2067,99 +1985,80 @@
     },
     "M105": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M146": {
       "reading": "kal",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-06T19:11:15Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "gem / stone",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'kal' shared by 19 signs (bulk assignment)"
+      "dedr_support": "gem / stone"
     },
     "M195": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M339": {
       "reading": "kal",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-06T19:11:15Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "gem / stone",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'kal' shared by 19 signs (bulk assignment)"
+      "dedr_support": "gem / stone"
     },
     "M359": {
       "reading": "kal",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-06T19:11:15Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "gem / stone",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'kal' shared by 19 signs (bulk assignment)"
+      "dedr_support": "gem / stone"
     },
     "M316": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M111": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M224": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M408": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M396": {
       "reading": "kal",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'kal' shared by 19 signs (bulk assignment)"
+      "dedr_support": "gem / stone"
     },
     "M170": {
       "reading": "van",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "smith / strong",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'van' shared by 7 signs (bulk assignment)"
+      "dedr_support": "smith / strong"
     },
     "M388": {
       "reading": "ko",
@@ -2171,12 +2070,10 @@
     },
     "M360": {
       "reading": "an",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'an' shared by 18 signs (bulk assignment)"
+      "dedr_support": "goose"
     },
     "M320": {
       "reading": "ko",
@@ -2201,82 +2098,66 @@
     },
     "M247": {
       "reading": "pan",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "worker / make",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'pan' shared by 6 signs (bulk assignment)"
+      "dedr_support": "worker / make"
     },
     "M381": {
       "reading": "an",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'an' shared by 18 signs (bulk assignment)"
+      "dedr_support": "goose"
     },
     "M104": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-07T11:10:13Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
     "M217": {
       "reading": "van",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "smith / strong",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'van' shared by 7 signs (bulk assignment)"
+      "dedr_support": "smith / strong"
     },
     "M356": {
       "reading": "an",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'an' shared by 18 signs (bulk assignment)"
+      "dedr_support": "goose"
     },
     "M369": {
       "reading": "van",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "smith / strong",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'van' shared by 7 signs (bulk assignment)"
+      "dedr_support": "smith / strong"
     },
     "M378": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M226": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M158": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M165": {
       "reading": "cul",
@@ -2287,21 +2168,17 @@
     },
     "M123": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M397": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M203": {
       "reading": "kur",
@@ -2317,29 +2194,24 @@
     },
     "M405": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M240": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-06T19:11:15Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M303": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M363": {
       "reading": "ko",
@@ -2352,7 +2224,7 @@
     "M200": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-07T11:10:13Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
@@ -2383,59 +2255,51 @@
     "M260": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-07T11:10:13Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
     "M258": {
       "reading": "an",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'an' shared by 18 signs (bulk assignment)"
+      "dedr_support": "goose"
     },
     "M392": {
       "reading": "an",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'an' shared by 18 signs (bulk assignment)"
+      "dedr_support": "goose"
     },
     "M210": {
       "reading": "pan",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "worker / make",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'pan' shared by 6 signs (bulk assignment)"
+      "dedr_support": "worker / make"
     },
     "M112": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-07T11:10:13Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
     "M286": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-07T11:10:13Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
     "M327": {
       "reading": "kal",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'kal' shared by 19 signs (bulk assignment)"
+      "dedr_support": "gem / stone"
     },
     "M400": {
       "reading": "kur",
@@ -2452,96 +2316,79 @@
     "M242": {
       "reading": "kal",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-07T11:10:13Z); evidence_type=high_neighbor_concentration; score=0.62; status=approved; DEDR: gem / stone",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=approved; DEDR: gem / stone",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "gem / stone"
     },
     "M147": {
       "reading": "an",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'an' shared by 18 signs (bulk assignment)"
+      "dedr_support": "goose"
     },
     "M415": {
       "reading": "kal",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'kal' shared by 19 signs (bulk assignment)"
+      "dedr_support": "gem / stone"
     },
     "M389": {
       "reading": "pan",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-06T19:11:15Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "worker / make",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'pan' shared by 6 signs (bulk assignment)"
+      "dedr_support": "worker / make"
     },
     "M287": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M133": {
       "reading": "kal",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-06T19:11:15Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "gem / stone",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'kal' shared by 19 signs (bulk assignment)"
+      "dedr_support": "gem / stone"
     },
     "M126": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M297": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M323": {
       "reading": "kal",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-06T19:11:15Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "gem / stone",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'kal' shared by 19 signs (bulk assignment)"
+      "dedr_support": "gem / stone"
     },
     "M213": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M322": {
       "reading": "min",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'min' shared by 48 signs (bulk assignment)"
+      "dedr_support": "shine / lightning (verb)"
     },
     "M394": {
       "reading": "kur",
@@ -2558,54 +2405,44 @@
     "M115": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-07T11:10:13Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
     "M298": {
       "reading": "pan",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "worker / make",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'pan' shared by 6 signs (bulk assignment)"
+      "dedr_support": "worker / make"
     },
     "M136": {
       "reading": "an",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: goose",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'an' shared by 18 signs (bulk assignment)"
+      "dedr_support": "goose"
     },
     "M364": {
       "reading": "pan",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "worker / make",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'pan' shared by 6 signs (bulk assignment)"
+      "dedr_support": "worker / make"
     },
     "M310": {
       "reading": "an",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.41; status=verified; DEDR: goose",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.41; status=verified; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'an' shared by 18 signs (bulk assignment)"
+      "dedr_support": "goose"
     },
     "M314": {
       "reading": "pan",
-      "confidence": "CANDIDATE",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "worker / make",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded MEDIUM→CANDIDATE on 2026-06-07: reading 'pan' shared by 6 signs (bulk assignment)"
+      "dedr_support": "worker / make"
     },
     "M230": {
       "reading": "in",
@@ -2618,7 +2455,7 @@
     "M407": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-07T11:10:13Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
@@ -2638,6 +2475,13 @@
       "dedr_source": "phase272_DEDR_injection",
       "phase_upgraded": 272,
       "reading_direction": "rtl"
+    },
+    "M340": {
+      "reading": "pan",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "worker / make"
     }
   },
   "_citation": {
@@ -2677,7 +2521,7 @@
   "n_low": 8,
   "corpus_signs": 390,
   "corpus_tokens": 7002,
-  "corpus_token_coverage": 0.9189,
+  "corpus_token_coverage": 0.9549,
   "_note": "total = H+M confirmed anchors. total_all_entries includes LOW allographs/grammar inferences. DO NOT use total/corpus_signs for % coverage — use corpus_token_coverage instead.",
   "_phase128_129_note": "Phase-128: M374=kul (MEDIUM, substrate Munda/DEDR 1709), M351=vī (MEDIUM, substrate Munda/DEDR 5388). Phase-129: M072=mā (MEDIUM, INITIAL position/DEDR 4751), M149=or (MEDIUM, MEDIAL/DEDR 987), M185=pul (MEDIUM, MEDIAL/DEDR 4336). Remaining 20 of 25 unresolved signs stay LOW — insufficient DEDR+positional evidence for promotion.",
   "_phase132_note": "Phase-132 validation: 114 Phase-111 kur-allograph MEDIUM signs downgraded to LOW. These were positional parking spots (all-MEDIAL L1=0), not genuine phonetic readings. New H+M=157, coverage=0.9075. Genuine phonetically-anchored coverage (H+M, non-parking) = 90.75%.",

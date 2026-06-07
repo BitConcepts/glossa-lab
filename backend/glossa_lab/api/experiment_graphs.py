@@ -505,6 +505,10 @@ async def _run_exp_background(
             if job_id and db:
                 try: await db.update_job_status(job_id, "failed")
                 except Exception: pass  # noqa: BLE001
+                try:
+                    from glossa_lab.engine import _sync_phase_action  # noqa: PLC0415
+                    await _sync_phase_action(db, job_id, "failed", error_message=str(exc))
+                except Exception: pass  # noqa: BLE001
             if notify_on_done:
                 await _maybe_notify_experiment(
                     exp_id=exp_id, exp_name=d.get("name", exp_id),
@@ -534,6 +538,14 @@ async def _run_exp_background(
         if job_id and db:
             try:
                 await db.update_job_status(job_id, final_status)
+                # Sync phase_action status (job→phase link)
+                try:
+                    from glossa_lab.engine import _sync_phase_action  # noqa: PLC0415
+                    await _sync_phase_action(
+                        db, job_id, final_status,
+                        error_message="Node errors detected" if had_errors else "",
+                    )
+                except Exception: pass  # noqa: BLE001
                 # Mark dashboard insights stale when new results arrive
                 if final_status == "completed":
                     try:

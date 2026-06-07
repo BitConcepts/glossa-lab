@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 22
+_SCHEMA_VERSION = 23
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -766,6 +766,16 @@ class Database:
             await self._conn.executescript(_SCHEMA_V22)
             await self._conn.execute("UPDATE _schema_version SET version = ?", (22,))
             current_version = 22
+
+        if current_version < 23:
+            try:
+                await self._conn.execute(
+                    "ALTER TABLE phase_actions ADD COLUMN depends_on TEXT NOT NULL DEFAULT '[]'"
+                )
+            except Exception:  # noqa: BLE001
+                pass  # column may already exist
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (23,))
+            current_version = 23
 
         if current_version > _SCHEMA_VERSION:
             logger.warning(

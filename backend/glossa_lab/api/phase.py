@@ -104,16 +104,16 @@ async def phase_plan() -> dict[str, Any]:
 
 @router.post("/advance")
 async def advance_phase() -> dict[str, Any]:
-    """Execute the highest-priority action for the current phase.
+    """Execute the highest-priority READY action for the current phase.
 
-    Queues a job for run_experiment / run_research_loop actions.
+    An action is 'ready' if all its dependencies (depends_on) are completed/skipped.
+    Running actions are not re-queued. Failed actions stay on the list.
     Returns {ok, action_taken, job_id, message, current_phase, coverage}.
     """
     from glossa_lab.database import get_db  # noqa: PLC0415
     db = get_db()
     adv = _advancer()
     result = await adv.advance(db=db)
-    # Mark insights stale — the research plan has changed, insights should refresh
     if result.ok:
         try:
             from glossa_lab.api.dashboard import mark_insights_stale  # noqa: PLC0415
@@ -129,6 +129,47 @@ async def advance_phase() -> dict[str, Any]:
         "message": result.message,
         "current_phase": result.current_phase,
         "coverage": result.coverage,
+    }
+
+
+@router.post("/advance-all")
+async def advance_all_ready() -> dict[str, Any]:
+    """Queue ALL ready (non-blocked, non-running) actions at once.
+
+    Dependency-aware: only queues actions whose depends_on are all completed/skipped.
+    Returns list of results for each action attempted.
+    """
+    from glossa_lab.database import get_db  # noqa: PLC0415
+    db = get_db()
+    adv = _advancer()
+    results: list[dict] = []
+    for _ in range(20):  # safety cap
+        result = await adv.advance(db=db)
+        if not result.ok:
+            break
+        results.append({
+            "action": result.action_taken,
+            "type": result.action_type,
+            "job_id": result.job_id,
+            "message": result.message,
+        })
+        # Stop if we hit complete_phase
+        if result.action_type == "complete_phase":
+            break
+    if results:
+        try:
+            from glossa_lab.api.dashboard import mark_insights_stale  # noqa: PLC0415
+            mark_insights_stale()
+        except Exception:  # noqa: BLE001
+            pass
+    status = adv.assess()
+    return {
+        "ok": len(results) > 0,
+        "queued": len(results),
+        "results": results,
+        "current_phase": status.current_phase,
+        "phase_label": status.phase_label,
+        "coverage": status.coverage,
     }
 
 

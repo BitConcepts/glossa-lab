@@ -401,7 +401,7 @@ class PhaseAdvancer:
         """Execute the highest-priority UNCOMPLETED action.
 
         Skips experiments already queued in the Jobs table and actions
-        already marked done in phase_state.json.
+        already marked done in phase_state.json. Persists action status to DB.
         """
         status = self.assess()
         plan = self.plan_next(include_done=False)
@@ -498,6 +498,20 @@ class PhaseAdvancer:
                 self._mark_action_done(status.current_phase, top.label)
                 message = f"✔ {top.label} — acknowledged."
 
+            # Persist action status to DB
+            if db is not None:
+                try:
+                    await db.upsert_phase_action(
+                        phase=status.current_phase,
+                        label=top.label,
+                        action_type=top.action_type,
+                        params=top.params,
+                        status="completed",
+                        job_id=job_id,
+                    )
+                except Exception:  # noqa: BLE001
+                    pass
+
             return PhaseAdvanceResult(
                 ok=True,
                 action_taken=top.label,
@@ -510,6 +524,19 @@ class PhaseAdvancer:
             )
         except Exception as exc:  # noqa: BLE001
             _log.error("Phase advance failed: %s", exc)
+            # Persist failure to DB
+            if db is not None:
+                try:
+                    await db.upsert_phase_action(
+                        phase=status.current_phase,
+                        label=top.label,
+                        action_type=top.action_type,
+                        params=top.params,
+                        status="failed",
+                        error_message=str(exc),
+                    )
+                except Exception:  # noqa: BLE001
+                    pass
             return PhaseAdvanceResult(
                 ok=False, action_taken=top.label, action_type=top.action_type,
                 job_id=None, experiment_id=None,

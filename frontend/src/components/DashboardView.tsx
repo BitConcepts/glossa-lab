@@ -196,7 +196,10 @@ export function DashboardView() {
   const insightsStale = data?.insights_stale === true && !!insight;
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [days, setDays] = useState(14);
+  const [days, setDays] = useState(() => {
+    const saved = localStorage.getItem("glossa_insight_window_days");
+    return saved ? parseInt(saved, 10) : 14;
+  });
   const [fetching, setFetching] = useState(false);
   // Bump to force re-read of action results from localStorage
   const [actionResultsVersion, setActionResultsVersion] = useState(0);
@@ -899,7 +902,11 @@ export function DashboardView() {
         </div>
         <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
           <label htmlFor="insight-window-select" style={{ fontSize: 12, color: "#6b7280", whiteSpace: "nowrap" }}>Insight window:</label>
-          <select id="insight-window-select" value={days} onChange={(e) => setDays(parseInt(e.target.value, 10))}
+          <select id="insight-window-select" value={days} onChange={(e) => {
+            const v = parseInt(e.target.value, 10);
+            setDays(v);
+            localStorage.setItem("glossa_insight_window_days", String(v));
+          }}
             style={selectStyle}>
             {[7, 14, 30, 60, 90].map((d) => (
               <option key={d} value={d}>{d} days</option>

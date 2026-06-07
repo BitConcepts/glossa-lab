@@ -132,6 +132,12 @@ interface StagingData {
   error?: string;
 }
 
+interface PhaseContext {
+  current_phase: number;
+  phase_label: string;
+  pending_loop_experiments: number; // how many run_experiment actions are pending
+}
+
 export function ResearchLoopPanel() {
   const [, setStatus] = useState<LoopStatus | null>(null);
   const [running, setRunning] = useState(false);
@@ -149,12 +155,13 @@ export function ResearchLoopPanel() {
   const [synthesis, setSynthesis] = useState<Synthesis | null>(null);
   const [staging, setStaging] = useState<StagingData | null>(null);
   const [showReview, setShowReview] = useState(false);
-  // Track which proposal button was last clicked so it can show Done/Retry
   const [proposalKey, setProposalKey] = useState<string | null>(null);
   const [currentPhase, setCurrentPhase] = useState<"idle" | "propose" | "build" | "verify" | "analyze">("idle");
   const [currentWork, setCurrentWork] = useState<{ cycle: number; gap: string; experiment: string } | null>(null);
   const [showFullLog, setShowFullLog] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [phaseContext, setPhaseContext] = useState<PhaseContext | null>(null);
+  const [phaseQueued, setPhaseQueued] = useState<{ label: string; exp_id: string }[]>([]);
 
   const fetchStatus = useCallback(async () => {
     try {
@@ -181,11 +188,47 @@ export function ResearchLoopPanel() {
     } catch { /* ignore */ }
   }, []);
 
+  // Fetch current phase context so the loop can show what it will prioritise
+  const fetchPhaseContext = useCallback(async () => {
+    try {
+      const res = await fetch("/api/v1/phase/status");
+      if (!res.ok) return;
+      const data = await res.json() as {
+        current_phase: number; phase_label: string;
+        top_actions?: { action_type: string; db_status?: string }[];
+      };
+      const pendingLoopExps = (data.top_actions ?? []).filter(
+        a => a.action_type === "run_experiment" && (!a.db_status || a.db_status === "pending")
+      ).length;
+      setPhaseContext({
+        current_phase: data.current_phase,
+        phase_label: data.phase_label,
+        pending_loop_experiments: pendingLoopExps,
+      });
+    } catch { /* ignore */ }
+  }, []);
+
   useEffect(() => {
     void fetchStatus();
     void fetchLastRun();
     void fetchStaging();
-  }, [fetchStatus, fetchLastRun, fetchStaging]);
+    void fetchPhaseContext();
+  }, [fetchStatus, fetchLastRun, fetchStaging, fetchPhaseContext]);
+
+  // Listen for glossa:start-research-loop dispatched by PhaseAdvancerPanel
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent<{ cycles?: number }>).detail;
+      if (!running) {
+        setCycles(detail?.cycles ?? 15);
+        // Small delay so state updates flush before startLoop reads `cycles`
+        setTimeout(() => void startLoop(), 50);
+      }
+    };
+    window.addEventListener("glossa:start-research-loop", handler);
+    return () => window.removeEventListener("glossa:start-research-loop", handler);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [running]);
 
   const startLoop = async (fromProposal?: string) => {
     if (fromProposal) {
@@ -229,9 +272,14 @@ export function ResearchLoopPanel() {
                   summary?: string; flags?: string[];
                   ok?: boolean; timeout_seconds?: number; gap_targeted?: string;
               };
-              if (event.type === "complete") {
+              if (event.type === "phase_experiments_queued") {
+                // Phase experiments were auto-queued as background jobs
+                const queuedList = (event as unknown as { queued?: { label: string; exp_id: string }[] }).queued ?? [];
+                setPhaseQueued(queuedList);
+              } else if (event.type === "complete") {
                 setCurrentPhase("idle");
                 setCurrentWork(null);
+                setPhaseQueued([]);
                 if (event.synthesis) setSynthesis(event.synthesis);
                 if (event.synthesis?.anchor_candidates && event.synthesis.anchor_candidates.length > 0) {
                   setTimeout(() => setShowReview(true), 400);
@@ -240,6 +288,7 @@ export function ResearchLoopPanel() {
                 void fetchStatus();
                 void fetchLastRun();
                 void fetchStaging();
+                void fetchPhaseContext();
               } else if (event.type === "proposal_selected") {
                 setCurrentPhase("propose");
                 if (event.cycle) setCurrentWork({ cycle: event.cycle ?? 0, gap: event.gap_targeted ?? "", experiment: event.experiment ?? "" });
@@ -353,7 +402,7 @@ export function ResearchLoopPanel() {
                     alignItems: "center", marginBottom: 6 }}>
         <div>
           <span style={{ fontSize: 16, fontWeight: 700, color: "#5b21b6" }}>
-            📚 Paper Mining Engine
+            📚 Research Loop
           </span>
           <span style={{ marginLeft: 8, padding: "2px 8px", borderRadius: 4,
                          fontSize: 11, fontWeight: 600,
@@ -368,17 +417,18 @@ export function ResearchLoopPanel() {
             disabled={running}
             style={{ padding: "4px 8px", border: "1px solid #d1d5db",
                      borderRadius: 5, fontSize: 12, background: "#fff" }}>
-            {[5, 10, 15, 20, 30].map((n) => (
-              <option key={n} value={n}>{n} cycles</option>
-            ))}
+            <option value={5}>5 — Quick Scan</option>
+            <option value={15}>15 — Standard</option>
+            <option value={30}>30 — Deep Dive</option>
+            <option value={50}>50 — Extensive</option>
           </select>
           {!running && !showConfirm && (
             <button onClick={() => setShowConfirm(true)}
-              title="Manually start the research loop — or use Phase Guide above for guided advancement"
+              title="Start the autonomous research loop"
               style={{ padding: "6px 14px", border: "1px solid #7c3aed",
-                       borderRadius: 6, background: "#fff", color: "#7c3aed",
+                       borderRadius: 6, background: "#7c3aed", color: "#fff",
                        fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
-              ▶ Manual Loop
+              ▶ Run Loop
             </button>
           )}
           {running && (
@@ -392,21 +442,40 @@ export function ResearchLoopPanel() {
         </div>
       </div>
 
-      {/* ── Purpose + workflow hint ── */}
-      {!running && (
+      {/* ── Phase context banner ── */}
+      {!running && phaseContext && (
         <div style={{
-          fontSize: 10, color: "#6b7280", marginBottom: 10,
-          padding: "6px 10px", background: "#f5f3ff",
-          border: "1px solid #e9d5ff",
-          borderRadius: 5, lineHeight: 1.6,
+          fontSize: 11, marginBottom: 10,
+          padding: "7px 12px", background: "#f5f3ff",
+          border: "1px solid #ddd6fe", borderRadius: 6,
+          display: "flex", alignItems: "center", gap: 8,
         }}>
-          <strong>What this does:</strong> mines academic papers for sign-reading evidence → extracts insights → stages anchor candidates for your review.
-          {" "}<strong>Separate from SA experiments</strong> — use the Phase Guide above to queue SA jobs.
-          <br />
-          <span style={{ color: "#9ca3af" }}>
-            💡 Typical session: Phase Guide queues SA job → Jobs panel completes → new candidates appear → review below → Archive &amp; Clean → repeat.
-            Run the Paper Mining Loop separately when you want fresh literature evidence.
+          <span style={{ fontWeight: 700, color: "#5b21b6" }}>
+            Phase {phaseContext.current_phase} · {phaseContext.phase_label}
           </span>
+          <span style={{ color: "#6b7280" }}>—</span>
+          {phaseContext.pending_loop_experiments > 0 ? (
+            <span style={{ color: "#4c1d95" }}>
+              Loop will queue{" "}
+              <strong>{phaseContext.pending_loop_experiments} phase experiment{phaseContext.pending_loop_experiments !== 1 ? "s" : ""}</strong>{" "}
+              as background jobs when you start.
+            </span>
+          ) : (
+            <span style={{ color: "#6b7280" }}>
+              No pending phase experiments — loop runs for research &amp; anchoring.
+            </span>
+          )}
+        </div>
+      )}
+
+      {/* ── Phase experiments queued notification (during run) ── */}
+      {running && phaseQueued.length > 0 && (
+        <div style={{
+          fontSize: 10, marginBottom: 8, padding: "6px 10px",
+          background: "#ede9fe", border: "1px solid #c4b5fd", borderRadius: 5,
+        }}>
+          <span style={{ fontWeight: 700, color: "#5b21b6" }}>🔄 Phase experiments queued as background jobs:</span>{" "}
+          {phaseQueued.map(q => q.label.replace("Queue: ", "")).join(", ")}
         </div>
       )}
 
@@ -417,15 +486,18 @@ export function ResearchLoopPanel() {
           background: "#ede9fe", marginBottom: 12,
         }}>
           <div style={{ fontSize: 13, fontWeight: 700, color: "#5b21b6", marginBottom: 8 }}>
-            🔄 Manual Research Loop — {cycles} cycles
+            🔄 Research Loop — {cycles} iterations
           </div>
-          <div style={{ fontSize: 11, color: "#374151", lineHeight: 1.6 }}>
-            <div><strong>Phase 1:</strong> Blitz-mine all 15 gap topics</div>
-            <div><strong>Phase 2:</strong> Adaptive exploration — propose → build → verify → run → analyze</div>
-            <div><strong>Phase 3:</strong> Stage anchor candidates for your review</div>
-          </div>
-          <div style={{ fontSize: 10, color: "#6b7280", marginTop: 4 }}>
-            ℹ Use Phase Guide above for guided advancement. Manual loop runs all cycles unconditionally.
+          <div style={{ fontSize: 11, color: "#374151", lineHeight: 1.8 }}>
+            <div>📘 <strong>Mine</strong>: Blitz all 15 gap topics for literature evidence</div>
+            <div>💡 <strong>Propose</strong>: Select the highest-signal experiment for each gap</div>
+            <div>⚙️ <strong>Run &amp; Analyze</strong>: Execute, interpret, stage anchor candidates</div>
+            <div>🔄 <strong>Iterate</strong>: Repeat for each of the {cycles} iterations</div>
+            {phaseContext && phaseContext.pending_loop_experiments > 0 && (
+              <div style={{ marginTop: 6, color: "#5b21b6", fontWeight: 600 }}>
+                + Queues {phaseContext.pending_loop_experiments} phase experiment{phaseContext.pending_loop_experiments !== 1 ? "s" : ""} as background jobs
+              </div>
+            )}
           </div>
           <div style={{ display: "flex", justifyContent: "flex-end", gap: 8, marginTop: 10 }}>
             <button
@@ -1999,10 +2071,14 @@ function _loadPromoteResult(): PromoteResult | null {
     const raw = localStorage.getItem(PROMOTE_RESULT_KEY);
     if (!raw) return null;
     const r = JSON.parse(raw) as PromoteResult;
-    // Expire after 24h
-    if (r.ts && Date.now() - r.ts > 86_400_000) { localStorage.removeItem(PROMOTE_RESULT_KEY); return null; }
+    // Expire after 2h (was 24h)
+    if (r.ts && Date.now() - r.ts > 7_200_000) { localStorage.removeItem(PROMOTE_RESULT_KEY); return null; }
     return r;
   } catch { return null; }
+}
+
+function _clearPromoteResult() {
+  try { localStorage.removeItem(PROMOTE_RESULT_KEY); } catch { /* ignore */ }
 }
 
 function PromoteToAnchors({
@@ -2017,11 +2093,13 @@ function PromoteToAnchors({
   const [busy, setBusy] = useState(false);
   const [confirm, setConfirm] = useState(false);
   const [result, setResult] = useState<PromoteResult | null>(() => {
-    // Restore persisted result on mount; clear if there are still promotable items
-    // (meaning the previous promotion data was refreshed and there are new ones)
     const stored = _loadPromoteResult();
-    // If promotable > 0 it means either the result was dismissed or new archive
-    // entries arrived after the last promotion — show it anyway for context
+    // Auto-hide: if there's nothing left to promote, the confirmation card
+    // is no longer useful — clear it silently so it doesn't persist forever.
+    if (stored && promotable === 0 && archiveTotal === 0) {
+      _clearPromoteResult();
+      return null;
+    }
     return stored;
   });
 
@@ -2131,12 +2209,18 @@ function PromoteToAnchors({
             </li>
           </ol>
         </div>
-        <div style={{ marginTop: 8, fontSize: 10, color: "#64748b", lineHeight: 1.5 }}>
-          <strong>About “Review Final Anchors”</strong> in the Phase Guide: that button navigates you to
-          the Signs page, which now shows all {result.promoted + result.skipped} promoted signs alongside
-          the existing HIGH/MEDIUM anchors. Use it to spot-check readings and mark any incorrect ones for
-          re-review. Promoted signs start as LOW or MEDIUM confidence — run an SA experiment to gather
-          statistical evidence before upgrading them further.
+        <div style={{ marginTop: 10, display: "flex", justifyContent: "flex-end" }}>
+          <button
+            onClick={() => { _clearPromoteResult(); setResult(null); }}
+            style={{
+              padding: "4px 12px", fontSize: 10, fontWeight: 600,
+              border: "1px solid #a5f3fc", borderRadius: 4,
+              background: "#fff", color: "#0e7490", cursor: "pointer",
+            }}
+            title="Dismiss this notification"
+          >
+            ✓ Dismiss
+          </button>
         </div>
       </div>
     );

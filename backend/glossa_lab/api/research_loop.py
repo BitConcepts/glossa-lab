@@ -113,14 +113,64 @@ async def _run_foundation_check() -> dict[str, Any]:
         return {"skipped": True, "reason": str(exc)}
 
 
+async def _queue_phase_experiments_on_loop_start(db: Any) -> list[dict[str, Any]]:
+    """Auto-queue pending phase run_experiment actions when the research loop starts.
+
+    Reads the current phase's pending experiment actions and queues each as a
+    background job so they run alongside (not inside) the research loop.  The
+    engine's _sync_phase_action hook marks each action 'completed' when its
+    job finishes, so the Phase Guide updates automatically.
+
+    Returns list of {label, exp_id, job_id, phase, phase_label} for the SSE event.
+    """
+    try:
+        from glossa_lab.pipelines.phase_advancer import PhaseAdvancer  # noqa: PLC0415
+        from glossa_lab.experiment_graph import queue_graph_experiment  # noqa: PLC0415
+        adv = PhaseAdvancer()
+        pending = adv.get_pending_experiment_actions()
+        queued: list[dict[str, Any]] = []
+        for action in pending:
+            exp_id = action["experiment_id"]
+            label  = action["label"]
+            phase  = action["phase"]
+            try:
+                job = await queue_graph_experiment(exp_id, db=db)
+                job_id = job.get("id") if job else None
+                if job_id:
+                    await db.upsert_phase_action(
+                        phase=phase, label=label,
+                        action_type="run_experiment",
+                        params=action["params"],
+                        status="running", job_id=job_id,
+                    )
+                    queued.append({
+                        "label":      label,
+                        "exp_id":     exp_id,
+                        "job_id":     job_id,
+                        "phase":      phase,
+                        "phase_label": action["phase_label"],
+                    })
+                    _log.info("Phase experiment queued with loop: %s (job %s)", exp_id, job_id)
+            except Exception as exc:  # noqa: BLE001
+                _log.warning("Could not queue phase experiment %s: %s", exp_id, exc)
+        return queued
+    except Exception as exc:  # noqa: BLE001
+        _log.warning("Phase experiment auto-queue failed (non-critical): %s", exc)
+        return []
+
+
 @router.post("/start")
 async def start_loop(
     max_cycles: int = Query(15, ge=1, le=100),
 ) -> StreamingResponse:
     """Start the research loop and stream cycle results as SSE events.
 
-    Creates a Job record visible in the Jobs panel. Each cycle yields an
+    Creates a Job record visible in the Jobs panel.  Each cycle yields an
     SSE event and persists state to the DB from the async context.
+
+    At start, any pending phase run_experiment actions are automatically
+    queued as background jobs so the Phase Guide advances without manual
+    intervention.  A phase_experiments_queued SSE event reports which were queued.
     """
     from glossa_lab.database import get_db
     from glossa_lab.pipelines.research_loop import ResearchLoop
@@ -145,6 +195,15 @@ async def start_loop(
             job_id = job["id"]
         except Exception as exc:  # noqa: BLE001
             _log.warning("Could not create job for research loop: %s", exc)
+
+    # ── Auto-queue pending phase experiments alongside this loop run ─────
+    # These run as background jobs; _sync_phase_action in engine.py marks
+    # them done when they complete, so Phase Guide advances automatically.
+    phase_queued: list[dict[str, Any]] = []
+    if db is not None:
+        phase_queued = await _queue_phase_experiments_on_loop_start(db)
+        if phase_queued:
+            _log.info("Queued %d phase experiment(s) alongside loop start", len(phase_queued))
 
     # Trigger a discovery fetch before the loop if data is stale (> 6 h).
     # This ensures the dashboard feed has fresh items when insight regenerates.
@@ -175,6 +234,10 @@ async def start_loop(
 
     async def event_stream():
         """Run the loop in a thread via a queue, persist + stream per cycle."""
+        # ── Emit phase experiment queuing notification immediately ──────
+        if phase_queued:
+            yield f"data: {json.dumps({'type': 'phase_experiments_queued', 'queued': phase_queued, 'phase': phase_queued[0].get('phase'), 'phase_label': phase_queued[0].get('phase_label')})}\n\n"
+
         queue: asyncio.Queue[dict[str, Any] | None] = asyncio.Queue()
         producer_error: list[Exception] = []  # capture worker thread errors
 

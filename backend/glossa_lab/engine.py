@@ -378,6 +378,12 @@ async def _orphan_sweep() -> None:
                 },
                 created_at=datetime.now(timezone.utc).isoformat(),
             )
+            # Also sync the linked phase_action from 'running' to 'failed' so the
+            # Phase Advancer doesn't get stuck waiting for a job that will never finish.
+            await _sync_phase_action(
+                db, jid, "failed",
+                error_message=f"Job '{jname}' was orphaned (backend restarted while it was running).",
+            )
         await db._conn.commit()  # noqa: SLF001
         logger.info("Startup orphan sweep: marked %d job(s) as failed", len(orphans))
     except Exception as exc:  # noqa: BLE001

@@ -1,25 +1,26 @@
 {
-  "cycles_completed": 300,
-  "max_cycles": 30,
+  "cycles_completed": 302,
+  "max_cycles": 15,
   "cycle_analyses": [
     {
       "cycle": 1,
-      "experiment": "reading_frequency_zipf",
-      "summary": "Reading Frequency Zipf: Zipf: α=0.607 (129 readings). Linguistic. · zipf_alpha=0.607",
+      "experiment": "blocker_sign_context",
+      "summary": "Blocker Sign Context: Blocker context: 13 blockers have HIGH-sign neighbors. · n_blockers=13 · 📉 Regression detected",
       "metrics": {
-        "zipf_alpha": 0.607
+        "n_blockers": 13,
+        "n_blockers_delta": -0.5
       },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
+      "flags": [
+        "regression_detected"
+      ],
+      "suggested_next_steps": []
     },
     {
       "cycle": 2,
-      "experiment": "compound_semantic_coherence",
-      "summary": "Compound Semantic Coherence: Compound coherence: 100% (4900/4906) valid. · valid_pct=100",
+      "experiment": "site_specific_formula",
+      "summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9",
       "metrics": {
-        "valid_pct": 100
+        "n_sites": 9
       },
       "flags": [],
       "suggested_next_steps": [
@@ -4921,6 +4922,47 @@
       },
       "analysis_flags": [],
       "analysis_summary": "Compound Semantic Coherence: Compound coherence: 100% (4900/4906) valid. · valid_pct=100"
+    },
+    {
+      "cycle": 1,
+      "timestamp": "2026-06-07T18:21:17.968034+00:00",
+      "gap_targeted": "rare_sign_context",
+      "n_papers": 0,
+      "n_insights": 0,
+      "insight_types": {},
+      "experiment": "blocker_sign_context",
+      "selection_method": "proposal",
+      "verdict": "Blocker context: 13 blockers have HIGH-sign neighbors.",
+      "is_new_info": true,
+      "n_candidates": 36,
+      "top_candidate": "M106",
+      "analysis_metrics": {
+        "n_blockers": 13,
+        "n_blockers_delta": -0.5
+      },
+      "analysis_flags": [
+        "regression_detected"
+      ],
+      "analysis_summary": "Blocker Sign Context: Blocker context: 13 blockers have HIGH-sign neighbors. · n_blockers=13 · 📉 Regression detected"
+    },
+    {
+      "cycle": 2,
+      "timestamp": "2026-06-07T18:21:19.520606+00:00",
+      "gap_targeted": "compound_morphology",
+      "n_papers": 0,
+      "n_insights": 0,
+      "insight_types": {},
+      "experiment": "site_specific_formula",
+      "selection_method": "proposal",
+      "verdict": "Site formulas: 9 sites with unique formula sets.",
+      "is_new_info": true,
+      "n_candidates": 0,
+      "top_candidate": null,
+      "analysis_metrics": {
+        "n_sites": 9
+      },
+      "analysis_flags": [],
+      "analysis_summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9"
     }
   ]
 }

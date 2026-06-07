@@ -476,16 +476,11 @@
       "reading_direction": "rtl"
     },
     "M042": {
-      "confidence": "CANDIDATE",
-      "reading": "vaN",
-      "dedr_id": "DEDR 5231",
-      "meaning": "arch/bow",
-      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
-      "corpus_freq": 13,
-      "evidence_score": 1.7,
-      "basis": " [Phase-116 recal: SA-cons=0.62✓ DEDR✓]",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'van' shared by 7 signs (bulk assignment)"
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M040": {
       "reading": "ri",
@@ -641,16 +636,11 @@
       "reading_direction": "rtl"
     },
     "M046": {
-      "confidence": "CANDIDATE",
-      "reading": "kaL",
-      "dedr_id": "DEDR 1286",
-      "meaning": "leg/stem",
-      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
-      "corpus_freq": 11,
-      "evidence_score": 1.7,
-      "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kal' shared by 19 signs (bulk assignment)"
+      "reading": "kal",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=high_neighbor_concentration; score=0.65; status=verified; DEDR: gem / stone",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "gem / stone"
     },
     "M032": {
       "confidence": "HIGH",
@@ -822,15 +812,11 @@
       "reading_direction": "rtl"
     },
     "M252": {
-      "reading": "kur",
-      "confidence": "CANDIDATE",
-      "basis": "Phase-122 syllabic LM SA: modal='kur' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=6.; Phase-272: DEDR 1638 injected + existing evidence → HIGH",
-      "source": "Phase-122",
-      "dedr": "1638",
-      "dedr_source": "phase272_DEDR_injection",
-      "phase_upgraded": 272,
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kur' shared by 15 signs (bulk assignment)"
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M386": {
       "reading": "maṇ",
@@ -897,17 +883,11 @@
       "reading_direction": "rtl"
     },
     "M222": {
-      "confidence": "CANDIDATE",
-      "reading": "kur",
-      "source": "Phase-87 DEDR_REBUS_EXTENDED",
-      "corpus_freq": 5,
-      "evidence_score": 2.0,
-      "dedr": "1638",
-      "dedr_source": "phase272_DEDR_injection",
-      "phase_upgraded": 276,
-      "basis": "; Phase-276: dual external corroboration — Elamite 'ur' (MC-05) + Sanskrit '-ur' (SL-02) + DEDR 1638",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kur' shared by 15 signs (bulk assignment)"
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M365": {
       "reading": "vāṉ",
@@ -987,27 +967,18 @@
       "reading_direction": "rtl"
     },
     "M108": {
-      "confidence": "CANDIDATE",
-      "reading": "kaL",
-      "dedr_id": "DEDR 1286",
-      "meaning": "wheel/circle",
-      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
-      "corpus_freq": 5,
-      "evidence_score": 1.6,
-      "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kal' shared by 19 signs (bulk assignment)"
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M231": {
-      "reading": "kur",
-      "confidence": "CANDIDATE",
-      "basis": "Phase-122 syllabic LM SA: modal='kur' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5.; Phase-272: DEDR 1638 injected + existing evidence → HIGH",
-      "source": "Phase-122",
-      "dedr": "1638",
-      "dedr_source": "phase272_DEDR_injection",
-      "phase_upgraded": 272,
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kur' shared by 15 signs (bulk assignment)"
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M321": {
       "reading": "kol",
@@ -1219,17 +1190,11 @@
       "dedr_support": "shine / lightning (verb)"
     },
     "M387": {
-      "reading": "kur",
-      "confidence": "CANDIDATE",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "1638",
-      "dedr_source": "elamite",
-      "phase_upgraded": 252,
-      "upgrade_basis": "Phase-252: Allograph of M035 (r=0.933, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M035='po'.",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kur' shared by 15 signs (bulk assignment)"
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M116": {
       "reading": "min",
@@ -1678,17 +1643,11 @@
       "dedr_support": "gem / stone"
     },
     "M129": {
-      "reading": "kur",
-      "confidence": "CANDIDATE",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "1638",
-      "dedr_source": "elamite",
-      "phase_upgraded": 252,
-      "upgrade_basis": "Phase-252: Allograph of M427 (r=0.946, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M427='en'.",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kur' shared by 15 signs (bulk assignment)"
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M120": {
       "reading": "min",
@@ -1802,17 +1761,11 @@
       "dedr_support": "gem / stone"
     },
     "M138": {
-      "reading": "kur",
-      "confidence": "CANDIDATE",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "1638",
-      "dedr_source": "elamite",
-      "phase_upgraded": 252,
-      "upgrade_basis": "Phase-252: Allograph of M375 (r=0.988, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M375='taṇ'.",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kur' shared by 15 signs (bulk assignment)"
+      "reading": "pan",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: worker / make",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "worker / make"
     },
     "M243": {
       "reading": "kal",
@@ -1941,17 +1894,11 @@
       "dedr_support": "shine / lightning (verb)"
     },
     "M413": {
-      "reading": "kur",
-      "confidence": "CANDIDATE",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
-      "source": "Phase-111",
-      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
-      "dedr": "1638",
-      "dedr_source": "elamite",
-      "phase_upgraded": 252,
-      "upgrade_basis": "Phase-252: Allograph of M427 (r=0.986, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M427='en'.",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kur' shared by 15 signs (bulk assignment)"
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M135": {
       "reading": "min",
@@ -2113,7 +2060,7 @@
     "M104": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:21:21Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
@@ -2181,16 +2128,11 @@
       "dedr_support": "shine / lightning (verb)"
     },
     "M203": {
-      "reading": "kur",
-      "confidence": "CANDIDATE",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111",
-      "dedr": "1638",
-      "dedr_source": "elamite",
-      "phase_upgraded": 252,
-      "upgrade_basis": "Phase-252: Allograph of M416 (r=0.998, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M416='na'.",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kur' shared by 15 signs (bulk assignment)"
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)"
     },
     "M405": {
       "reading": "min",
@@ -2224,21 +2166,16 @@
     "M200": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:21:21Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
     "M156": {
-      "reading": "kur",
-      "confidence": "CANDIDATE",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
-      "source": "Phase-111",
-      "dedr": "1638",
-      "dedr_source": "elamite",
-      "phase_upgraded": 252,
-      "upgrade_basis": "Phase-252: Allograph of M375 (r=0.982, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M375='taṇ'.",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kur' shared by 15 signs (bulk assignment)"
+      "reading": "kal",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: gem / stone",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "gem / stone"
     },
     "M157": {
       "reading": "kur",
@@ -2255,7 +2192,7 @@
     "M260": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:21:21Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
@@ -2283,14 +2220,14 @@
     "M112": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:21:21Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
     "M286": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:21:21Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
@@ -2316,7 +2253,7 @@
     "M242": {
       "reading": "kal",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=approved; DEDR: gem / stone",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:21:21Z); evidence_type=high_neighbor_concentration; score=0.62; status=approved; DEDR: gem / stone",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "gem / stone"
     },
@@ -2391,21 +2328,16 @@
       "dedr_support": "shine / lightning (verb)"
     },
     "M394": {
-      "reading": "kur",
-      "confidence": "CANDIDATE",
-      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
-      "source": "Phase-111",
-      "dedr": "1638",
-      "dedr_source": "elamite",
-      "phase_upgraded": 252,
-      "upgrade_basis": "Phase-252: Allograph of M416 (r=1.000, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M416='na'.",
-      "reading_direction": "rtl",
-      "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kur' shared by 15 signs (bulk assignment)"
+      "reading": "an",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: goose",
+      "source": "anchor_staging_archive:blocker_sign_context",
+      "dedr_support": "goose"
     },
     "M115": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:21:21Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
@@ -2455,7 +2387,7 @@
     "M407": {
       "reading": "an",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:21:21Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
       "dedr_support": "goose"
     },
@@ -2521,7 +2453,7 @@
   "n_low": 8,
   "corpus_signs": 390,
   "corpus_tokens": 7002,
-  "corpus_token_coverage": 0.9549,
+  "corpus_token_coverage": 0.9642,
   "_note": "total = H+M confirmed anchors. total_all_entries includes LOW allographs/grammar inferences. DO NOT use total/corpus_signs for % coverage — use corpus_token_coverage instead.",
   "_phase128_129_note": "Phase-128: M374=kul (MEDIUM, substrate Munda/DEDR 1709), M351=vī (MEDIUM, substrate Munda/DEDR 5388). Phase-129: M072=mā (MEDIUM, INITIAL position/DEDR 4751), M149=or (MEDIUM, MEDIAL/DEDR 987), M185=pul (MEDIUM, MEDIAL/DEDR 4336). Remaining 20 of 25 unresolved signs stay LOW — insufficient DEDR+positional evidence for promotion.",
   "_phase132_note": "Phase-132 validation: 114 Phase-111 kur-allograph MEDIUM signs downgraded to LOW. These were positional parking spots (all-MEDIAL L1=0), not genuine phonetic readings. New H+M=157, coverage=0.9075. Genuine phonetically-anchored coverage (H+M, non-parking) = 90.75%.",

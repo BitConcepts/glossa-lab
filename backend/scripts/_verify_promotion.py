@@ -1,5 +1,6 @@
 """Verify the anchor promotion was done correctly."""
-import json, csv
+import json
+import csv
 from pathlib import Path
 from collections import Counter
 
@@ -34,7 +35,7 @@ print(f"Verified coverage: {actual*100:.1f}% ({covered}/{total} tokens)")
 if abs(actual - coverage) > 0.01:
     print(f"  ⚠ MISMATCH: declared {coverage*100:.1f}% vs actual {actual*100:.1f}%")
 else:
-    print(f"  ✓ Coverage matches")
+    print("  ✓ Coverage matches")
 
 # Phantom check
 corpus_signs = set(freq.keys())

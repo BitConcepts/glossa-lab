@@ -1277,7 +1277,6 @@ def _cluster_mapper(inputs: dict, params: dict) -> dict:
     directly from analysis/sign_clusters.json.
     Unmapped signs receive label -1. NO phonetic mapping is performed.
     """
-    import asyncio  # noqa: PLC0415
     import json as _json  # noqa: PLC0415
     from pathlib import Path as _Path  # noqa: PLC0415
 

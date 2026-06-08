@@ -43,7 +43,7 @@ else:
     # Try to infer inscriptions from token patterns
     # If content is a flat list, check for delimiters or patterns
     freq = Counter(content)
-    print(f"\nTop 10 signs by frequency:")
+    print("\nTop 10 signs by frequency:")
     for sign, count in freq.most_common(10):
         print(f"  '{sign}': {count}")
 

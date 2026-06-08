@@ -472,7 +472,7 @@ async def build_sa_experiment(body: dict[str, Any]) -> dict[str, Any]:
     graphs_dir_id_check = Path(__file__).resolve().parents[1] / "experiments" / "graphs" / f"{slug}.json"
     if graphs_dir_id_check.exists():
         exp_id = f"{slug}_{int(_t.time())}"
-    
+
 
     graph = {
         "id": exp_id,

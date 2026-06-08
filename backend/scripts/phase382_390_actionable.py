@@ -13,7 +13,9 @@ Phase 390: Parpola full cross-check (extend to 60+ sign values)
 Output: outputs/phase382_390_actionable.json
 """
 from __future__ import annotations
-import csv, json, math
+import csv
+import json
+import math
 from collections import Counter, defaultdict
 from pathlib import Path
 

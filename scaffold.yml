@@ -25,8 +25,9 @@ use_remote_rules: false
 verification_tools:
   backend: pytest
   frontend: playwright
-detected_build_system: pyproject
-detected_test_framework: pytest
+detected_build_system: pyproject+vite
+detected_frontend_framework: react
+detected_test_framework: pytest+playwright
 ledger_line_threshold: 1000
 integrations:
 - agents-md

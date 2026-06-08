@@ -24,7 +24,7 @@ test.describe("Phase Status API", () => {
     const data = await resp.json();
 
     expect(data.current_phase).toBeGreaterThanOrEqual(1);
-    expect(data.current_phase).toBeLessThanOrEqual(5);
+    expect(data.current_phase).toBeLessThanOrEqual(10); // phases 1-7 + buffer
     expect(data.phase_label).toBeTruthy();
     expect(data.coverage).toBeGreaterThanOrEqual(0);
     expect(data.coverage).toBeLessThanOrEqual(1);

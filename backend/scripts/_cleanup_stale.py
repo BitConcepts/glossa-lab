@@ -197,10 +197,10 @@ print("    location.reload()")
 
 # ── Summary ──────────────────────────────────────────────────────────
 print(f"\n{'='*60}")
-print(f"CLEANUP SUMMARY")
+print("CLEANUP SUMMARY")
 print(f"{'='*60}")
 print(f"Files removed: {removed_files}")
 print(f"Space freed: {removed_bytes/1024:.0f} KB")
 print(f"Jobs cleaned: {deleted_jobs}")
 print(f"Results cleaned: {deleted_results + orphan_results}")
-print(f"\n✅ Clean slate ready")
+print("\n✅ Clean slate ready")

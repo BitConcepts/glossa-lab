@@ -26,7 +26,7 @@ HOLDAT_PATH = REPO / "corpora" / "downloads" / "external_repos" / "holdatllc_ind
 # Load anchors
 fa = json.loads(ANCHORS_PATH.read_text(encoding="utf-8"))
 anchors = fa.get("anchors", {})
-print(f"=== ANCHOR QUALITY AUDIT ===")
+print("=== ANCHOR QUALITY AUDIT ===")
 print(f"Total anchors: {len(anchors)}")
 
 by_conf = Counter(v.get("confidence", "?") for v in anchors.values())
@@ -231,7 +231,7 @@ print(f"  {len(empty_readings)} anchors with empty reading")
 # ── Summary ──────────────────────────────────────────────────────────
 
 print(f"\n{'='*60}")
-print(f"AUDIT SUMMARY")
+print("AUDIT SUMMARY")
 print(f"{'='*60}")
 
 high_issues = [i for i in issues if i["severity"] == "high"]
@@ -244,7 +244,7 @@ print(f"  🟡 MEDIUM severity: {len(med_issues)}")
 print(f"  ⚪ WARN severity: {len(warn_issues)}")
 
 if high_issues:
-    print(f"\n🔴 HIGH SEVERITY ISSUES (require review):")
+    print("\n🔴 HIGH SEVERITY ISSUES (require review):")
     for i in high_issues[:20]:
         print(f"  {i['issue']}: {i['detail']}")
 

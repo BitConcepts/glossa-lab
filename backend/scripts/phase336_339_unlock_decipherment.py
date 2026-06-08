@@ -293,7 +293,7 @@ def phase337_missing_phonemes():
                 "candidates": data["candidates"],
             }
         else:
-            resolution[phoneme] = {"status": "COVERED", "reason": f"Covered by existing readings"}
+            resolution[phoneme] = {"status": "COVERED", "reason": "Covered by existing readings"}
 
     # Count phonemes by resolution status
     expected_absent = sum(1 for v in resolution.values() if v["status"] == "EXPECTED_ABSENT")

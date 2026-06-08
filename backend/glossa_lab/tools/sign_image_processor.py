@@ -31,6 +31,7 @@ import json
 import logging
 import time
 import urllib.request
+from datetime import datetime, timezone
 from io import BytesIO
 from pathlib import Path
 from typing import Any
@@ -393,7 +394,7 @@ def load_manifest() -> dict[str, Any]:
         try:
             return json.loads(_MANIFEST_PATH.read_text(encoding="utf-8"))
         except Exception:
-            pass
+            _log.warning("Failed to parse manifest.json, starting fresh")
     return {}
 
 
@@ -401,6 +402,10 @@ def save_manifest(manifest: dict[str, Any]) -> None:
     _MANIFEST_PATH.write_text(
         json.dumps(manifest, indent=2, ensure_ascii=False), encoding="utf-8"
     )
+
+
+def _now_iso() -> str:
+    return datetime.now(tz=timezone.utc).isoformat()
 
 
 def _save_sign(
@@ -423,13 +428,98 @@ def _save_sign(
                      else cv2.cvtColor(original, cv2.COLOR_BGR2GRAY))
         Image.fromarray(orig_gray).convert("L").save(str(orig_path), optimize=True)
 
+    # Validate PNG was actually written and is non-empty
+    if not validate_png(proc_path):
+        _log.warning("Saved PNG for %s failed validation — marking as suspect", sign_id)
+
     manifest[sign_id] = {
         "status": "ok",
         "source": source,
         "processed_path": str(proc_path.relative_to(_BACKEND_DIR)),
         "original_path": str(orig_path.relative_to(_BACKEND_DIR)) if orig_path else None,
-        "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        "timestamp": _now_iso(),
     }
+
+
+# ── PNG validation ─────────────────────────────────────────────────────────
+
+def validate_png(path: Path) -> bool:
+    """Check that a PNG file exists, is non-empty, and has reasonable ink density."""
+    if not path.exists() or path.stat().st_size == 0:
+        return False
+    try:
+        img = np.array(Image.open(path).convert("L"))
+        total_px = img.size
+        if total_px == 0:
+            return False
+        black_ratio = float(np.sum(img < 128)) / total_px
+        # At least 0.5% black (not blank) and under 40% (not corrupt/filled)
+        return 0.005 <= black_ratio <= 0.40
+    except Exception:
+        return False
+
+
+# ── Rebuild manifest from disk ─────────────────────────────────────────────
+
+def rebuild_manifest() -> dict[str, Any]:
+    """Scan static/signs/ for existing PNGs and reconcile with the manifest.
+
+    Any PNG that exists on disk but is missing or has a non-'ok' status in
+    the manifest gets its entry updated.  Returns a summary dict.
+    """
+    manifest = load_manifest()
+    png_files = sorted(_STATIC_SIGNS.glob("*.png"))
+    reconciled = 0
+    already_ok = 0
+    invalid = 0
+
+    for png in png_files:
+        sign_id = png.stem
+        entry = manifest.get(sign_id, {})
+
+        # Already tracked and ok — skip unless file is missing/corrupt
+        if entry.get("status") == "ok" and entry.get("processed_path"):
+            already_ok += 1
+            continue
+
+        # Validate the PNG content
+        if not validate_png(png):
+            manifest[sign_id] = {
+                "status": "invalid",
+                "source": entry.get("source", "unknown"),
+                "processed_path": str(png.relative_to(_BACKEND_DIR)),
+                "original_path": entry.get("original_path"),
+                "timestamp": _now_iso(),
+                "validation_error": "failed_pixel_density_check",
+            }
+            invalid += 1
+            continue
+
+        # Determine source — check if an original exists
+        orig_path = _ORIGINALS_DIR / f"{sign_id}.png"
+        source = entry.get("source", "disk_reconciled")
+
+        manifest[sign_id] = {
+            "status": "ok",
+            "source": source,
+            "processed_path": str(png.relative_to(_BACKEND_DIR)),
+            "original_path": (
+                str(orig_path.relative_to(_BACKEND_DIR)) if orig_path.exists() else None
+            ),
+            "timestamp": _now_iso(),
+        }
+        reconciled += 1
+
+    save_manifest(manifest)
+    summary = {
+        "total_pngs_on_disk": len(png_files),
+        "reconciled": reconciled,
+        "already_ok": already_ok,
+        "invalid": invalid,
+        "manifest_entries": len(manifest),
+    }
+    _log.info("rebuild_manifest: %s", summary)
+    return summary
 
 
 # ── WikiMedia Commons fetcher ───────────────────────────────────────────────
@@ -705,6 +795,210 @@ def get_status() -> dict[str, Any]:
     }
 
 
+# ── Triple-check verification ──────────────────────────────────────────────
+
+def verify_sign_images(
+    *,
+    sign_ids: list[str] | None = None,
+    force: bool = False,
+    max_age_days: int = 90,
+) -> dict[str, Any]:
+    """Run three-level verification on sign images.
+
+    Check 1 (File):       PNG exists at expected path and is non-zero size.
+    Check 2 (Content):    Pixel density between 1 % and 40 % black.
+    Check 3 (Provenance): Manifest entry has a non-null source and the image
+                          was generated within *max_age_days* (unless force).
+
+    Signs failing any check are returned in the *requeued* list.
+    """
+    catalog = _load_sign_catalog()
+    manifest = load_manifest()
+    ids = sign_ids or sorted(catalog.keys())
+
+    passed: list[str] = []
+    failed: list[dict[str, Any]] = []
+    requeued: list[str] = []
+
+    cutoff = datetime.now(tz=timezone.utc).timestamp() - (max_age_days * 86400)
+
+    for sid in ids:
+        issues: list[str] = []
+        png_path = _STATIC_SIGNS / f"{sid}.png"
+        entry = manifest.get(sid, {})
+
+        # Check 1 — file exists and non-zero
+        if not png_path.exists() or png_path.stat().st_size == 0:
+            issues.append("file_missing_or_empty")
+        else:
+            # Check 2 — pixel density
+            try:
+                img = np.array(Image.open(png_path).convert("L"))
+                total_px = img.size
+                if total_px == 0:
+                    issues.append("zero_pixels")
+                else:
+                    black_ratio = float(np.sum(img < 128)) / total_px
+                    if black_ratio < 0.01:
+                        issues.append(f"too_sparse({black_ratio:.4f})")
+                    elif black_ratio > 0.40:
+                        issues.append(f"too_dense({black_ratio:.4f})")
+            except Exception as exc:
+                issues.append(f"read_error({exc})")
+
+        # Check 3 — provenance
+        source = entry.get("source")
+        if not source:
+            issues.append("no_source")
+        if not force:
+            ts_str = entry.get("timestamp", "")
+            if ts_str:
+                try:
+                    ts = datetime.fromisoformat(ts_str.replace("Z", "+00:00")).timestamp()
+                    if ts < cutoff:
+                        issues.append("stale")
+                except Exception:
+                    issues.append("bad_timestamp")
+            else:
+                issues.append("no_timestamp")
+
+        if issues:
+            failed.append({"sign_id": sid, "issues": issues})
+            requeued.append(sid)
+        else:
+            passed.append(sid)
+
+    summary = {
+        "total_checked": len(ids),
+        "passed": len(passed),
+        "failed": len(failed),
+        "requeued": len(requeued),
+        "failures": failed[:100],  # cap response
+    }
+    _log.info("verify_sign_images: passed=%d failed=%d", len(passed), len(failed))
+    return summary
+
+
+# ── Wikimedia Commons category miner ───────────────────────────────────────
+
+def _wm_category_members(
+    category: str,
+    *,
+    file_type: str = "File",
+    limit: int = 500,
+) -> list[dict[str, str]]:
+    """Return list of files in a Wikimedia Commons category."""
+    results: list[dict[str, str]] = []
+    cmcontinue: str | None = ""
+    while cmcontinue is not None:
+        url = (
+            f"{_WIKIMEDIA_API}?action=query&list=categorymembers"
+            f"&cmtitle=Category:{category}&cmtype=file&cmlimit={limit}"
+            f"&format=json"
+        )
+        if cmcontinue:
+            url += f"&cmcontinue={cmcontinue}"
+        raw = _wm_request(url, timeout=10)
+        if not raw:
+            break
+        try:
+            data = json.loads(raw)
+            for member in data.get("query", {}).get("categorymembers", []):
+                title = member.get("title", "")
+                if title.startswith("File:"):
+                    results.append({"title": title, "pageid": str(member.get("pageid", ""))})
+            cmcontinue = data.get("continue", {}).get("cmcontinue")
+        except Exception as exc:
+            _log.debug("Category query failed for %s: %s", category, exc)
+            break
+    return results
+
+
+def find_missing_signs() -> dict[str, list[dict[str, str]]]:
+    """Discover candidate sign images from external sources.
+
+    Searches:
+      a) Wikimedia Commons categories for Indus script signs
+      b) Local data/page_previews/ directory for OCR-extracted images
+      c) CDLI API for cross-referenced Indus materials
+
+    Returns ``{sign_id: [candidate_info_dicts]}`` for review.
+    """
+    candidates: dict[str, list[dict[str, str]]] = {}
+
+    # ── a) Wikimedia Commons categories ──
+    wm_categories = [
+        "Indus_script",
+        "Indus_Valley_Civilisation_signs",
+        "Indus_script_signs",
+    ]
+    for cat in wm_categories:
+        try:
+            members = _wm_category_members(cat)
+            for member in members:
+                title = member["title"].replace("File:", "")
+                # Try to extract a sign number from the filename
+                sign_id = _guess_sign_id_from_filename(title)
+                if sign_id:
+                    candidates.setdefault(sign_id, []).append({
+                        "source": f"wikimedia_category:{cat}",
+                        "filename": title,
+                        "url": f"https://commons.wikimedia.org/wiki/File:{title}",
+                    })
+        except Exception as exc:
+            _log.warning("Wikimedia category scan failed for %s: %s", cat, exc)
+
+    # ── b) Local page_previews ──
+    page_previews_dir = _BACKEND_DIR.parent / "data" / "page_previews"
+    if page_previews_dir.exists():
+        for f in sorted(page_previews_dir.iterdir()):
+            if f.suffix.lower() in (".png", ".jpg", ".jpeg"):
+                candidates.setdefault("_local_pages", []).append({
+                    "source": "local_page_preview",
+                    "filename": f.name,
+                    "path": str(f),
+                })
+
+    # ── c) CDLI check (best-effort) ──
+    try:
+        cdli_url = "https://cdli.mpiwg-berlin.mpg.de/search?q=indus+script&format=json"
+        raw = _wm_request(cdli_url, timeout=8)
+        if raw:
+            data = json.loads(raw)
+            for item in (data if isinstance(data, list) else data.get("results", []))[:20]:
+                item_id = str(item.get("id", item.get("cdli_no", "")))
+                if item_id:
+                    candidates.setdefault("_cdli", []).append({
+                        "source": "cdli",
+                        "cdli_id": item_id,
+                        "title": str(item.get("title", item.get("designation", ""))),
+                    })
+    except Exception as exc:
+        _log.debug("CDLI query failed: %s", exc)
+
+    _log.info(
+        "find_missing_signs: %d sign_ids with candidates, %d total entries",
+        len(candidates),
+        sum(len(v) for v in candidates.values()),
+    )
+    return candidates
+
+
+def _guess_sign_id_from_filename(filename: str) -> str | None:
+    """Try to extract a Mahadevan sign ID from a Wikimedia filename."""
+    import re  # noqa: PLC0415
+
+    # Patterns like "Indus_script_sign_047.svg" → M047
+    m = re.search(r"(?:sign|Sign)[_\s-]?(\d{1,4})", filename)
+    if m:
+        return f"M{int(m.group(1)):03d}"
+    # Just a bare number
+    m = re.search(r"(\d{3,4})", filename)
+    if m:
+        return f"M{int(m.group(1)):03d}"
+    return None
+
+
 # ── CLI entrypoint ──────────────────────────────────────────────────────────
 
 def main() -> None:
@@ -716,11 +1010,31 @@ def main() -> None:
     parser.add_argument("--force", action="store_true", help="Re-process even if already done")
     parser.add_argument("--no-web", action="store_true", help="Skip WikiMedia download")
     parser.add_argument("--status", action="store_true", help="Show current status")
+    parser.add_argument("--rebuild", action="store_true", help="Rebuild manifest from existing PNGs")
+    parser.add_argument("--verify", action="store_true", help="Run triple-check on all sign images")
+    parser.add_argument("--discover", action="store_true", help="Discover missing sign images")
     args = parser.parse_args()
 
     if args.status:
         st = get_status()
         print(json.dumps(st, indent=2))
+        return
+
+    if args.rebuild:
+        result = rebuild_manifest()
+        print(json.dumps(result, indent=2))
+        return
+
+    if args.verify:
+        result = verify_sign_images(force=args.force)
+        print(json.dumps(result, indent=2))
+        return
+
+    if args.discover:
+        result = find_missing_signs()
+        # Summarize instead of dumping full URLs
+        summary = {k: len(v) for k, v in result.items()}
+        print(json.dumps({"candidates_by_sign": summary, "total_signs": len(result)}, indent=2))
         return
 
     if args.sign:

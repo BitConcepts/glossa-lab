@@ -224,7 +224,50 @@ function AppContent() {
   // Dashboard is the default landing tab — it's the only screen that gives a
   // global picture of the project (highlights, feed, AI insight). Persisted
   // selection from a prior session still wins via the navigate event below.
-  const [tab, setTab] = useState<Tab>("dashboard");
+  const [tab, _setTab] = useState<Tab>("dashboard");
+  // Navigation history: tabRef keeps the current value accessible synchronously
+  // so goBack/goForward can read it without stale-closure issues.
+  const tabRef = useRef<Tab>("dashboard");
+  const [navHistory, setNavHistory] = useState<Tab[]>([]);
+  const [navFuture,  setNavFuture]  = useState<Tab[]>([]);
+
+  /** Set the active tab AND keep tabRef in sync. */
+  const setTab = (v: Tab) => { tabRef.current = v; _setTab(v); };
+
+  /** Navigate to a view, pushing the current tab onto the history stack. */
+  const goTo = (view: Tab) => {
+    const cur = tabRef.current;
+    if (cur !== view) {
+      setNavHistory(prev => [...prev, cur].slice(-40));
+      setNavFuture([]);
+    }
+    setTab(view);
+  };
+  /** Go back one step in navigation history. */
+  const goBack = () => {
+    const cur = tabRef.current;
+    setNavHistory(prev => {
+      if (prev.length === 0) return prev;
+      const dest = prev[prev.length - 1];
+      setNavFuture(f => [cur, ...f].slice(0, 40));
+      setTab(dest);
+      return prev.slice(0, -1);
+    });
+  };
+  /** Go forward one step (after going back). */
+  const goForward = () => {
+    const cur = tabRef.current;
+    setNavFuture(prev => {
+      if (prev.length === 0) return prev;
+      const dest = prev[0];
+      setNavHistory(h => [...h, cur].slice(-40));
+      setTab(dest);
+      return prev.slice(1);
+    });
+  };
+  /** Jump straight to the Dashboard home view. */
+  const goHome = () => goTo("dashboard");
+
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("glossa_dark") === "1");
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [aiPanelOpen, setAiPanelOpen] = useState(false);
@@ -331,9 +374,13 @@ function AppContent() {
     const handler = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") { e.preventDefault(); setPaletteOpen(p => !p); }
       if ((e.metaKey || e.ctrlKey) && e.key === "j") { e.preventDefault(); setPanelVisible(v => !v); }
+      // Alt+← / Alt+→ — back/forward (mirrors browser default on most OSes)
+      if (e.altKey && e.key === "ArrowLeft")  { e.preventDefault(); goBack(); }
+      if (e.altKey && e.key === "ArrowRight") { e.preventDefault(); goForward(); }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Allow other components (e.g. AIToolsView "Glossa AI chat" card) to
@@ -368,11 +415,11 @@ function AppContent() {
       if ((view as string) === "hypothesis" || (view as string) === "hypotheses") view = "hypotheses" as Tab;
       if ((view as string) === "notebook" || (view as string) === "notebooks")    view = "notebooks" as Tab;
       if ((view as string) === "job" || (view as string) === "jobs")              view = "jobs" as Tab;
-      if (view && (allItems.some(i => i.id === view) || view === "experiments")) setTab(view);
+      if (view && (allItems.some(i => i.id === view) || view === "experiments")) goTo(view);
     };
     window.addEventListener("glossa:navigate", handler);
     return () => window.removeEventListener("glossa:navigate", handler);
-  // allItems is stable (built from constants)
+  // allItems and goTo are stable
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -418,7 +465,7 @@ function AppContent() {
     const jobsActive = item.id === "jobs" && activeJobCount > 0;
     return (
       <button
-        onClick={() => { setTab(item.id); if (isMobile) setSidebarOpen(false); }}
+        onClick={() => { goTo(item.id); if (isMobile) setSidebarOpen(false); }}
         title={item.label + (dirty ? " (unsaved changes)" : "")}
         style={{
           display: "flex", alignItems: "center", gap: 9,
@@ -556,7 +603,7 @@ function AppContent() {
         {SYSTEM_ITEMS.map((item) => (
           <button
             key={item.id}
-            onClick={() => { setTab(item.id); if (isMobile) setSidebarOpen(false); }}
+            onClick={() => { goTo(item.id); if (isMobile) setSidebarOpen(false); }}
             title={item.label}
             style={{
               display: "flex", alignItems: "center", gap: 9,
@@ -626,7 +673,7 @@ function AppContent() {
                   background: darkMode ? "rgba(37,99,235,0.18)" : "#eff6ff",
                   color: "#2563eb", fontWeight: 600, cursor: "pointer",
                   border: "1px solid rgba(37,99,235,0.25)" }}
-                onClick={() => setTab("builder")}
+                onClick={() => goTo("builder")}
                 title={`Active project: ${projCtx.activeProject.label}`}
               >
                 {projCtx.activeProject.label}
@@ -637,6 +684,45 @@ function AppContent() {
           <span style={{ fontSize: isMobile ? 15 : 13, fontWeight: 600, color: fg }}>{currentLabel}</span>
 
           <div style={{ flex: 1 }} />
+
+          {/* ← → 🏠 navigation buttons */}
+          {!isMobile && (
+            <div style={{ display: "flex", gap: 2, marginRight: 4 }}>
+              <button
+                onClick={goBack}
+                disabled={navHistory.length === 0}
+                title={navHistory.length > 0 ? `Back to ${navHistory[navHistory.length - 1]} (Alt+←)` : "No history"}
+                style={{
+                  padding: "4px 8px", border: `1px solid ${border}`, borderRadius: 6,
+                  background: "none", cursor: navHistory.length > 0 ? "pointer" : "default",
+                  fontSize: 13, color: navHistory.length > 0 ? fg : (darkMode ? "#475569" : "#d1d5db"),
+                  lineHeight: 1,
+                }}
+              >←</button>
+              <button
+                onClick={goForward}
+                disabled={navFuture.length === 0}
+                title={navFuture.length > 0 ? `Forward to ${navFuture[0]} (Alt+→)` : "No forward history"}
+                style={{
+                  padding: "4px 8px", border: `1px solid ${border}`, borderRadius: 6,
+                  background: "none", cursor: navFuture.length > 0 ? "pointer" : "default",
+                  fontSize: 13, color: navFuture.length > 0 ? fg : (darkMode ? "#475569" : "#d1d5db"),
+                  lineHeight: 1,
+                }}
+              >→</button>
+              <button
+                onClick={goHome}
+                title="Home (Dashboard)"
+                style={{
+                  padding: "4px 8px", border: `1px solid ${border}`, borderRadius: 6,
+                  background: tab === "dashboard" ? (darkMode ? "rgba(37,99,235,0.18)" : "#eff6ff") : "none",
+                  cursor: "pointer", fontSize: 13,
+                  color: tab === "dashboard" ? "#2563eb" : fg,
+                  lineHeight: 1,
+                }}
+              >🏠</button>
+            </div>
+          )}
 
           {/* ⌘K and panel toggle — desktop only; not useful on touch */}
           {!isMobile && (

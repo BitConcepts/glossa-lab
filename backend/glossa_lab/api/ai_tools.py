@@ -134,54 +134,84 @@ def _build_settings_context() -> str:
 _ACTION_SYSTEM_ADDENDUM = """
 
 === GLOSSA LAB ACTIONS ===
-You can propose actions for the user to approve. After your response text, if you want to
-propose one or more actions include a block formatted EXACTLY as shown:
 
+CRITICAL: You ARE capable of running experiments. NEVER say "I cannot execute scripts" or
+"I don't have the capability" — you CAN and MUST use run_experiment with REGISTERED IDs.
+When a user says "run", "execute", "plan and execute", or "do these" — always respond with
+a %%ACTIONS%% block containing real run_experiment IDs. No exceptions.
+
+Action block format (EXACTLY as shown, one block per response):
 %%ACTIONS%%
-[{"type": "run_experiment", "params": {"id": "indus_contact_zone_v2"}, "label": "Run Contact Zone Analysis", "description": "Runs KL divergence contact zone analysis on CISI corpus (~30 seconds)."}]
+[{"type": "run_experiment", "params": {"id": "indus_contact_zone_v2"}, "label": "Run Contact Zone Analysis", "description": "KL divergence contact zone analysis on CISI corpus (~30 seconds)."}]
 %%END_ACTIONS%%
 
-Available action types — title/statement/id/etc. go INSIDE params{}, not at the top level:
+Available action types:
   run_experiment:    {"type":"run_experiment",  "params":{"id":"<exp_id>"},                             "label":"...", "description":"..."}
   run_pipeline:      {"type":"run_pipeline",    "params":{"pipeline":"<id>","params":{},"name":"..."},   "label":"...", "description":"..."}
   change_setting:    {"type":"change_setting",  "params":{"key":"<key>","value":"<val>"},               "label":"...", "description":"..."}
-  generate_report:   {"type":"generate_report", "params":{"script":"<script.py>"},                      "label":"...", "description":"..."}
   create_hypothesis: {"type":"create_hypothesis","params":{"title":"...","statement":"..."},            "label":"...", "description":"..."}
   create_notebook:   {"type":"create_notebook", "params":{"title":"...","content":"..."},               "label":"...", "description":"..."}
   open_view:         {"type":"open_view",        "params":{"view":"<view_id>"},                         "label":"...", "description":"..."}
-  clear_jobs:        {"type":"clear_jobs",       "params":{},                                            "label":"...", "description":"..."}
-  execute_script:    {"type":"execute_script",   "params":{"code":"<python_code>","description":"..."},  "label":"...", "description":"..."}   ← runs Python inline against the corpus
-  query_corpus:      {"type":"query_corpus",     "params":{"pattern":["sign_id",...],"position":"any"},  "label":"...", "description":"..."}   ← find inscriptions matching a sign pattern
-  compare_results:   {"type":"compare_results",  "params":{"file_a":"<report.json>","file_b":"..."},    "label":"...", "description":"..."}   ← diff two experiment result files
-  summarize_session: {"type":"summarize_session","params":{"title":"..."},                              "label":"...", "description":"..."}   ← save this conversation as a notebook entry
-  acquire_corpus:    {"type":"acquire_corpus",  "params":{"source_id":"<id>","name":"...","corpus_type":"ancient","url":"<opt>"},  "label":"...", "description":"..."}   ← download & register a corpus from a known source
+  execute_script:    {"type":"execute_script",   "params":{"code":"<python_code>","description":"..."},  "label":"...", "description":"..."}   ← ONLY for glossa_lab built-in analytics (collections/math/statistics). FORBIDDEN: ML training, pandas on non-existent files, pip installs, fake file paths.
+  query_corpus:      {"type":"query_corpus",     "params":{"pattern":["sign_id",...],"position":"any"},  "label":"...", "description":"..."}   ← find inscriptions matching a Parpola sign-ID pattern in CISI
+  compare_results:   {"type":"compare_results",  "params":{"file_a":"<report.json>","file_b":"..."},    "label":"...", "description":"..."}   ← diff two experiment JSON result files
+  summarize_session: {"type":"summarize_session","params":{"title":"..."},                              "label":"...", "description":"..."}   ← save conversation as notebook
+  acquire_corpus:    {"type":"acquire_corpus",  "params":{"source_id":"<id>","name":"...","corpus_type":"ancient","url":"<opt>"},  "label":"...", "description":"..."}   ← download a corpus
 
-ACQUIRABLE CORPUS SOURCE IDs (use exactly in acquire_corpus):
-  cdli_proto_elamite    — Proto-Elamite ~5k tablets from Iran via CDLI API (available now)
-  cdli_sumerian_ur3     — Sumerian Ur III via CDLI API (available now)
-  oracc_akkadian        — Akkadian ORACC corpus, ~200k tokens (available now, 30-60s download)
-  sigla_linear_a        — Linear A SigLA/TylerLengyel CSV ~7.5k tokens (available now)
-  tylerlengyel_linear_a — Linear A JSON fallback (available now)
-  custom_url            — Any URL: provide url param; auto-detects CSV/JSON/text format
-  meroitic_rilly_expanded — Requires manual book acquisition (contact rilly@cnrs.fr)
-  rongorongo_fischer    — Requires Fischer 1997 book
-  cretan_hieroglyphic_chic — Requires CHIC 1996 book
-  yadav2010_indus       — Requires PLOS ONE supplementary download
-  mahadevan1977_concordance — Already covered by OCR pipeline
+ACQUIRABLE CORPUS SOURCE IDs:
+  cdli_proto_elamite, cdli_sumerian_ur3, oracc_akkadian, sigla_linear_a,
+  tylerlengyel_linear_a, custom_url (provide url param)
 
 View IDs for open_view: studies, builder, experiments, corpora, reports, entropy, signs,
   timeline, hypotheses, notebooks, citations, ai-tools, status, pipelines, jobs, settings
 
-Rules:
-- Propose actions when the user asks you to run, execute, or plan experiments, or when they ask
-  "can you do that", "run them", "do them all", "run as a plan", or any similar request.
-- NEVER propose actions unsolicited (e.g. don't propose actions when just asked to explain something).
-- When recommending MULTIPLE experiments in a response and the user asks to run them, ALWAYS
-  include ALL of them in a SINGLE %%ACTIONS%% block as a JSON array — never say you cannot
-  run multiple actions. The frontend auto-executes them in sequence.
-- Always explain what you're proposing and why, BEFORE the %%ACTIONS%% block.
-- One %%ACTIONS%% block per response, containing a JSON array (even for a single action).
-- NEVER ask for or suggest API key values in change_setting actions.
+=== DISCOVERY ITEM PROTOCOL (MANDATORY) ===
+When a user shares a discovery item (paper/article) and asks to plan or run experiments:
+
+1. YOU CAN RUN EXPERIMENTS — always propose 2-5 run_experiment actions from REGISTERED IDs.
+   NEVER say you cannot execute or run anything.
+
+2. Do NOT use execute_script to implement new methods. Do NOT reference fake file paths.
+   The system does not have CSV files from external papers or ML training infrastructure.
+
+3. Map the discovery topic to the closest REGISTERED experiments using this guide:
+   Fragmentary/incomplete texts, text gaps, restoration:
+     → decoded_text_repetition, blocker_sign_context, reading_frequency_zipf
+   RNN / neural / ML / computational linguistics methods:
+     → decoded_text_repetition, compound_semantic_coherence, rare_sign_neighbor_profile
+   Cross-language comparison, phonological mapping:
+     → indus_dravidian_vs_sanskrit, indus_cisi_dravidian_vs_sanskrit, indus_sign_function_dravidian
+   Rural distribution, ceramic economy, trade, provenance:
+     → blocker_sign_context, reading_frequency_zipf, indus_cisi_structural
+   Sign frequency, Zipf law, statistical patterns:
+     → reading_frequency_zipf, rare_sign_neighbor_profile, decoded_text_repetition
+   Structural analysis, sign position, inscription layout:
+     → indus_cisi_structural, blocker_sign_context, compound_semantic_coherence
+   Anchors, validation, confidence building:
+     → indus_cisi_anchored_10, indus_validation_a1_a3_holdout
+
+4. Always include a create_hypothesis action alongside run_experiment actions to record
+   the research question the discovery raised.
+
+5. After proposing the %%ACTIONS%% block, briefly state what results to look for.
+
+Example response to "plan and execute experiments" about a discovery item:
+  "Based on this paper on fragmentary text analysis, I'll run three experiments that
+   probe the same question from our existing corpus angle...
+   %%ACTIONS%%
+   [{"type":"run_experiment","params":{"id":"decoded_text_repetition"},"label":"Decoded Text Repetition","description":"Checks if decoded readings produce expected text repetition patterns consistent with real language."},
+    {"type":"run_experiment","params":{"id":"blocker_sign_context"},"label":"Blocker Sign Context","description":"Identifies signs that appear in positions suggesting they carry structural/grammatical function."},
+    {"type":"create_hypothesis","params":{"title":"RNN restoration insight","statement":"Fragmented Indus inscriptions may be restorable using positional frequency priors similar to Babylonian RNN approach."},"label":"Record Hypothesis","description":"Save the research question raised by this paper."}]
+   %%END_ACTIONS%%"
+
+=== GENERAL RULES ===
+- Propose actions when user says run/execute/plan/do these/build experiments.
+- NEVER propose actions unsolicited when just explaining something.
+- Include ALL actions in ONE %%ACTIONS%% block as a JSON array.
+- Always explain what you're proposing and why BEFORE the %%ACTIONS%% block.
+- NEVER use experiment IDs not in REGISTERED EXPERIMENT IDs.
+- NEVER reference file paths that don't exist (path_to_file.csv, data.json, etc.).
+- NEVER claim you cannot execute — you CAN run registered experiments.
 === END GLOSSA LAB ACTIONS ==="""
 
 _REPORTS = Path(__file__).resolve().parent.parent.parent.parent / "reports"
@@ -1107,30 +1137,35 @@ async def _execute_action_inner(t: str, p: dict) -> dict[str, Any]:  # noqa: PLR
         return {"ok": ok, "summary": f"Report script finished (exit {proc.returncode}).",
                 "stdout": proc.stdout[-500:], "stderr": proc.stderr[-200:]}
 
-    # ── create_hypothesis ───────────────────────────────────────────────────────
+    # ── create_hypothesis ──────────────────────────────────────────────────────────
     if t == "create_hypothesis":
         from glossa_lab.database import get_db  # noqa: PLC0415
+        from datetime import datetime as _dt, timezone as _tz  # noqa: PLC0415
         db = get_db()
         if db is None:
             raise HTTPException(503, "Database unavailable")
-        h = await db.create_hypothesis({
-            "title": p.get("title", "AI-generated hypothesis"),
-            "statement": p.get("statement", ""),
-            "status": "active", "evidence": [], "study_ids": [], "exp_ids": [],
-        })
+        h = await db.create_hypothesis(
+            title=p.get("title", "AI-generated hypothesis"),
+            statement=p.get("statement", ""),
+            status="active",
+            created_at=_dt.now(_tz.utc).isoformat(),
+        )
         return {"ok": True, "summary": f"Hypothesis '{h['title']}' created.", "id": h["id"]}
 
-    # ── create_notebook ─────────────────────────────────────────────────────────
+    # ── create_notebook ────────────────────────────────────────────────────────────
     if t == "create_notebook":
         from glossa_lab.database import get_db  # noqa: PLC0415
+        from datetime import datetime as _dt, timezone as _tz  # noqa: PLC0415
         db = get_db()
         if db is None:
             raise HTTPException(503, "Database unavailable")
-        nb = await db.create_notebook({
-            "title": p.get("title", "AI note"),
-            "content": p.get("content", ""),
-            "study_id": None, "tags": ["ai-generated"],
-        })
+        nb = await db.create_notebook(
+            title=p.get("title", "AI note"),
+            content=p.get("content", ""),
+            study_id=None,
+            tags=["ai-generated"],
+            created_at=_dt.now(_tz.utc).isoformat(),
+        )
         return {"ok": True, "summary": f"Notebook entry '{nb['title']}' created.", "id": nb["id"]}
 
     # ── clear_jobs ──────────────────────────────────────────────────────────────
@@ -1180,10 +1215,14 @@ async def _execute_action_inner(t: str, p: dict) -> dict[str, Any]:  # noqa: PLR
                 break
             except Exception:  # noqa: BLE001
                 pass
+        err_hint = (stderr.strip()[:300] or stdout.strip()[:300]) if not ok else ""
         return {
             "ok": ok,
-            "summary": f"Script executed (exit {proc.returncode}). "
-                       f"{len(stdout.splitlines())} output lines.",
+            "summary": (
+                f"Script executed (exit {proc.returncode}). {len(stdout.splitlines())} output lines."
+                if ok else
+                f"Script failed (exit {proc.returncode}): {err_hint or 'no output'}"
+            ),
             "stdout": stdout,
             "stderr": stderr,
             "result_json": result_json,
@@ -1194,17 +1233,41 @@ async def _execute_action_inner(t: str, p: dict) -> dict[str, Any]:  # noqa: PLR
         pattern: list[str] = p.get("pattern", [])
         position: str = p.get("position", "any")  # any | initial | terminal | medial
         max_results: int = min(int(p.get("max_results", 50)), 200)
-        corpus_file = Path(__file__).resolve().parent.parent.parent.parent / "reports" / "icit_extracted_corpus.json"
-        if not corpus_file.exists():
-            return {"ok": False, "summary": "Corpus file not found.", "matches": []}
-        try:
-            corpus_data = json.loads(corpus_file.read_text(encoding="utf-8"))
-            inscriptions = [i["sequence"] for i in corpus_data.get("inscriptions", []) if i.get("sequence")]
-        except Exception as exc:  # noqa: BLE001
-            raise HTTPException(500, f"Corpus load error: {exc}") from exc
 
         if not pattern:
             return {"ok": False, "summary": "No pattern provided.", "matches": []}
+
+        # Load corpus — prefer live CISI module, fall back to legacy JSON file.
+        inscriptions: list[list[str]] = []
+        corpus_name = "unknown"
+        try:
+            from glossa_lab.data.indus_cisi import get_corpus_inscriptions  # noqa: PLC0415
+            inscriptions = get_corpus_inscriptions(min_length=1)
+            corpus_name = "CISI"
+        except FileNotFoundError:
+            # CISI JSON not downloaded yet — try legacy extracted file
+            corpus_file = Path(__file__).resolve().parent.parent.parent.parent / "reports" / "icit_extracted_corpus.json"
+            if corpus_file.exists():
+                try:
+                    corpus_data = json.loads(corpus_file.read_text(encoding="utf-8"))
+                    inscriptions = [
+                        i["sequence"] for i in corpus_data.get("inscriptions", [])
+                        if i.get("sequence")
+                    ]
+                    corpus_name = "ICIT"
+                except Exception as exc:  # noqa: BLE001
+                    raise HTTPException(500, f"Corpus load error: {exc}") from exc
+            else:
+                return {
+                    "ok": False,
+                    "summary": (
+                        "No corpus available for pattern matching. "
+                        "The CISI corpus has not been downloaded yet. "
+                        "Use run_experiment with a built-in analysis experiment instead, "
+                        "e.g. blocker_sign_context or reading_frequency_zipf."
+                    ),
+                    "matches": [],
+                }
 
         matches: list[dict[str, Any]] = []
         for insc in inscriptions:
@@ -1226,10 +1289,11 @@ async def _execute_action_inner(t: str, p: dict) -> dict[str, Any]:  # noqa: PLR
                     break
         return {
             "ok": True,
-            "summary": f"Found {len(matches)} inscriptions matching {pattern} ({position}).",
+            "summary": f"Found {len(matches)} inscriptions matching {pattern} ({position}) in {corpus_name} corpus.",
             "matches": matches,
             "pattern": pattern,
             "position": position,
+            "corpus": corpus_name,
         }
 
     # ── compare_results ─────────────────────────────────────────────────────────
@@ -1349,21 +1413,23 @@ async def _execute_action_inner(t: str, p: dict) -> dict[str, Any]:  # noqa: PLR
             ),
         }
 
-    # ── summarize_session ───────────────────────────────────────────────────────
+    # ── summarize_session ──────────────────────────────────────────────────────────
     if t == "summarize_session":
         from glossa_lab.database import get_db  # noqa: PLC0415
+        from datetime import datetime as _dt, timezone as _tz  # noqa: PLC0415
         db = get_db()
         if db is None:
             raise HTTPException(503, "Database unavailable")
         title = p.get("title", "AI Session Summary")
-        # Use any provided conversation content; otherwise generate a stub
         conv_content = p.get("content", "")
-        nb = await db.create_notebook({
-            "title": title,
-            "content": conv_content or f"Session summary saved at {__import__('datetime').datetime.utcnow().isoformat()}",
-            "study_id": None,
-            "tags": ["ai-generated", "session-summary"],
-        })
+        now = _dt.now(_tz.utc).isoformat()
+        nb = await db.create_notebook(
+            title=title,
+            content=conv_content or f"Session summary saved at {now}",
+            study_id=None,
+            tags=["ai-generated", "session-summary"],
+            created_at=now,
+        )
         return {"ok": True, "summary": f"Session summary '{title}' saved to notebooks.", "id": nb["id"]}
 
     # ── Unknown action type — return 400 with helpful message ────────────────

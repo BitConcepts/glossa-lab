@@ -13,7 +13,7 @@
  * controls so users have a single place to see "is the discovery loop running?"
  */
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   getDiscoverySchedulerStatus,
   getNotifierStatus,
@@ -36,7 +36,7 @@ import {
 import { useToast } from "../../hooks/useToast";
 
 // Keys that enable a source (source won't fetch without the key).
-const REQUIRED_KEYS: { id: string; label: string; href: string; hint?: string }[] = [
+const REQUIRED_KEYS: { id: string; label: string; href: string; hint?: string; inputType?: string }[] = [
   { id: "news_api_key",              label: "NewsAPI",       href: "https://newsapi.org/account",
     hint: "Global news articles. Free tier: 100 req/day." },
   { id: "serp_api_key",              label: "SerpAPI",       href: "https://serpapi.com/manage-api-key",
@@ -45,14 +45,21 @@ const REQUIRED_KEYS: { id: string; label: string; href: string; hint?: string }[
     hint: "Web search. Free tier: 2,000 queries/month." },
   { id: "uspto_api_key",             label: "USPTO (ODP)",   href: "https://developer.uspto.gov/",
     hint: "US patent search via the Open Data Portal. Free key." },
+  { id: "unpaywall_email",           label: "Unpaywall (email)", href: "https://unpaywall.org/products/api",
+    hint: "Email required to use Unpaywall OA lookup. 100,000 req/day free.",
+    inputType: "email" },
 ];
 
 // Optional keys that upgrade a source that already works without one.
-const UPGRADE_KEYS: { id: string; label: string; href: string; hint?: string }[] = [
+const UPGRADE_KEYS: { id: string; label: string; href: string; hint?: string; inputType?: string }[] = [
   { id: "semantic_scholar_api_key",  label: "Semantic Scholar", href: "https://www.semanticscholar.org/product/api#api-key-form",
     hint: "Removes the 100 req/5 min cap. Strongly recommended." },
   { id: "openalex_email",            label: "OpenAlex (email)", href: "https://docs.openalex.org/how-to-use-the-api/rate-limits-and-authentication",
-    hint: "Enter your email for priority access. Not a key — just an email." },
+    hint: "Enter your email for polite-pool priority access. Not a key.",
+    inputType: "email" },
+  { id: "core_api_key",              label: "CORE (core.ac.uk)", href: "https://core.ac.uk/services/api",
+    hint: "449M+ open access papers. Free key: 1,000 calls/day vs 100 anonymous.",
+    inputType: "text" },
 ];
 
 export function AutoDiscoveryPanel() {
@@ -65,10 +72,12 @@ export function AutoDiscoveryPanel() {
 
   const [pendingKeys, setPendingKeys] = useState<Record<string, string>>({});
   const [verify,      setVerify]      = useState<Record<string, VerifyKeyResult | "loading">>({});
+  // Per-key save state: idle | saving | saved | error
+  const [keyState, setKeyState] = useState<Record<string, "idle" | "saving" | "saved" | "error">>({});
 
-  const [busy,    setBusy]    = useState(false);
   const [fetching, setFetching] = useState(false);
   const [mining,   setMining]   = useState(false);
+  // busy is no longer shared; per-key state is in keyState, scheduler uses schedBusy
 
   const refresh = useCallback(async () => {
     try {
@@ -88,19 +97,33 @@ export function AutoDiscoveryPanel() {
 
   useEffect(() => { void refresh(); }, [refresh]);
 
-  // ── Source-key save+verify ─────────────────────────────────────────────
+  // ── Source-key save+verify ─────────────────────────────────────────────────────
   const onSaveKey = async (k: string) => {
     const v = (pendingKeys[k] ?? "").trim();
-    if (!v) { toast("Paste a value first", "warning"); return; }
-    setBusy(true);
+    if (!v) { toast("Enter a value first", "warning"); return; }
+    setKeyState((s) => ({ ...s, [k]: "saving" }));
     try {
       await updateSettings({ [k]: v });
       setPendingKeys((p) => ({ ...p, [k]: "" }));
-      toast(`${k} saved`, "success");
-      await refresh();
+      setKeyState((s) => ({ ...s, [k]: "saved" }));
+      // Refresh settings so SET badge updates immediately
+      void refresh();
+      // Auto-verify after save so the user knows it works
+      setVerify((vv) => ({ ...vv, [k]: "loading" }));
+      try {
+        const r = await verifyKey(k);
+        setVerify((vv) => ({ ...vv, [k]: r }));
+      } catch {
+        setVerify((vv) => ({ ...vv, [k]: "loading" }));
+        // Silently skip verify failure — the key is saved regardless
+      }
+      // Reset save button to idle after 4s
+      setTimeout(() => setKeyState((s) => ({ ...s, [k]: "idle" })), 4000);
     } catch (e) {
+      setKeyState((s) => ({ ...s, [k]: "error" }));
       toast(e instanceof Error ? e.message : "Save failed", "error");
-    } finally { setBusy(false); }
+      setTimeout(() => setKeyState((s) => ({ ...s, [k]: "idle" })), 3000);
+    }
   };
 
   const onVerifyKey = async (k: string) => {
@@ -116,9 +139,10 @@ export function AutoDiscoveryPanel() {
     }
   };
 
+  const [schedBusy, setSchedBusy] = useState(false);
   // ── Scheduler toggle ───────────────────────────────────────────────────
   const onToggleScheduler = async (enable: boolean) => {
-    setBusy(true);
+    setSchedBusy(true);
     try {
       const next = enable ? await startDiscoveryScheduler() : await stopDiscoveryScheduler();
       setSched(next);
@@ -127,7 +151,7 @@ export function AutoDiscoveryPanel() {
         : "Auto-start OFF", "info");
     } catch (e) {
       toast(e instanceof Error ? e.message : "Toggle failed", "error");
-    } finally { setBusy(false); }
+    } finally { setSchedBusy(false); }
   };
 
   // ── Manual fetch + mine ────────────────────────────────────────────────
@@ -183,13 +207,13 @@ export function AutoDiscoveryPanel() {
             {topics.length > 0 ? ` · ${topics.length} topic(s)` : ""}
           </div>
         </div>
-        <div onClick={() => !busy && void onToggleScheduler(!sched?.running)}
+        <div onClick={() => !schedBusy && void onToggleScheduler(!sched?.running)}
           title={sched?.running ? "Stop scheduler" : "Start scheduler + persist"}
           style={{ width: 44, height: 24, borderRadius: 12,
-            cursor: busy ? "not-allowed" : "pointer", flexShrink: 0,
+            cursor: schedBusy ? "not-allowed" : "pointer", flexShrink: 0,
             position: "relative",
             background: sched?.running ? "#22c55e" : "#d1d5db",
-            opacity: busy ? 0.5 : 1, transition: "background 0.2s" }}>
+            opacity: schedBusy ? 0.5 : 1, transition: "background 0.2s" }}>
           <div style={{ position: "absolute", top: 3, left: sched?.running ? 23 : 3,
             width: 18, height: 18, borderRadius: "50%", background: "#fff",
             boxShadow: "0 1px 3px rgba(0,0,0,0.25)", transition: "left 0.2s" }} />
@@ -241,14 +265,15 @@ export function AutoDiscoveryPanel() {
           Academia) are always on.
         </p>
 
-        {/* Required keys */}
+      {/* 2 ─ Required keys ─ rendered with per-key state */}
         <div style={{ marginTop: 10, marginBottom: 4 }}>
           <span style={groupLabel}>🔑 Required — source won’t fetch without these</span>
         </div>
         <div style={{ display: "grid", gap: 8 }}>
           {REQUIRED_KEYS.map((k) => <KeyRow key={k.id} k={k} settings={settings}
             pendingKeys={pendingKeys} setPendingKeys={setPendingKeys}
-            verify={verify} onSaveKey={onSaveKey} onVerifyKey={onVerifyKey} busy={busy} />)}
+            verify={verify} onSaveKey={onSaveKey} onVerifyKey={onVerifyKey}
+            ks={keyState[k.id] ?? "idle"} />)}
         </div>
 
         {/* Upgrade keys */}
@@ -258,7 +283,8 @@ export function AutoDiscoveryPanel() {
         <div style={{ display: "grid", gap: 8 }}>
           {UPGRADE_KEYS.map((k) => <KeyRow key={k.id} k={k} settings={settings}
             pendingKeys={pendingKeys} setPendingKeys={setPendingKeys}
-            verify={verify} onSaveKey={onSaveKey} onVerifyKey={onVerifyKey} busy={busy} />)}
+            verify={verify} onSaveKey={onSaveKey} onVerifyKey={onVerifyKey}
+            ks={keyState[k.id] ?? "idle"} />)}
         </div>
       </div>
 
@@ -341,68 +367,137 @@ export function AutoDiscoveryPanel() {
 
 // ── Extracted key-row component ───────────────────────────────────────────────────
 
-function KeyRow({ k, settings, pendingKeys, setPendingKeys, verify, onSaveKey, onVerifyKey, busy }: {
-  k: { id: string; label: string; href: string; hint?: string };
+function KeyRow({ k, settings, pendingKeys, setPendingKeys, verify, onSaveKey, onVerifyKey, ks }: {
+  k: { id: string; label: string; href: string; hint?: string; inputType?: string };
   settings: SettingsResponse | null;
   pendingKeys: Record<string, string>;
   setPendingKeys: React.Dispatch<React.SetStateAction<Record<string, string>>>;
   verify: Record<string, VerifyKeyResult | "loading">;
   onSaveKey: (k: string) => Promise<void>;
   onVerifyKey: (k: string) => Promise<void>;
-  busy: boolean;
+  ks: "idle" | "saving" | "saved" | "error";
 }) {
   const isSet = settings?.keys[k.id]?.set ?? false;
   const src   = (settings?.keys[k.id]?.source ?? null) as "env" | "stored" | null;
   const v     = verify[k.id];
+  const hasPending = !!(pendingKeys[k.id]?.trim());
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const saveBtnStyle: React.CSSProperties = {
+    ...btnGhostStrong,
+    ...(ks === "saved" ? { background: "#dcfce7", color: "#15803d", borderColor: "#86efac" } : {}),
+    ...(ks === "error" ? { background: "#fef2f2", color: "#b91c1c", borderColor: "#fca5a5" } : {}),
+    opacity: (ks === "saving" || (!hasPending && ks === "idle")) ? 0.55 : 1,
+    cursor:  (ks === "saving" || (!hasPending && ks === "idle")) ? "not-allowed" : "pointer",
+    minWidth: 72,
+    transition: "background 0.2s, color 0.2s, border-color 0.2s",
+  };
+
   return (
     <div style={{
-      padding: "8px 10px", border: "1px solid #e5e7eb", borderRadius: 7,
-      background: "#fff", display: "flex", flexDirection: "column", gap: 5,
+      padding: "10px 12px",
+      border: `1px solid ${ks === "saved" ? "#86efac" : ks === "error" ? "#fca5a5" : "#e5e7eb"}`,
+      borderRadius: 7,
+      background: "#fff",
+      display: "flex", flexDirection: "column", gap: 6,
+      transition: "border-color 0.2s",
     }}>
+      {/* Header row */}
       <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
         <span style={{ fontSize: 13, fontWeight: 600, color: "#111827" }}>{k.label}</span>
-        {isSet ? (
+
+        {/* Status badge */}
+        {ks === "saved" ? (
           <span style={{ fontSize: 10, padding: "1px 7px", borderRadius: 9,
             background: "#dcfce7", color: "#15803d", fontWeight: 700 }}>
-            SET ({src})
+            ✓ Saved
+          </span>
+        ) : isSet ? (
+          <span style={{ fontSize: 10, padding: "1px 7px", borderRadius: 9,
+            background: "#dcfce7", color: "#15803d", fontWeight: 700 }}>
+            ✓ Set ({src})
           </span>
         ) : (
           <span style={{ fontSize: 10, padding: "1px 7px", borderRadius: 9,
             background: "#fee2e2", color: "#b91c1c", fontWeight: 700 }}>
-            MISSING
+            Not set
           </span>
         )}
+
+        {/* Verify result inline badge */}
+        {v && v !== "loading" && (
+          <span style={{
+            fontSize: 10, padding: "1px 7px", borderRadius: 9, fontWeight: 600,
+            background: v.valid ? "#f0fdf4" : "#fef2f2",
+            color: v.valid ? "#15803d" : "#b91c1c",
+            border: `1px solid ${v.valid ? "#bbf7d0" : "#fca5a5"}`,
+          }}>
+            {v.valid ? "✓ Valid" : "✗ Invalid"}
+          </span>
+        )}
+
         {k.hint && (
           <span style={{ fontSize: 10, color: "#6b7280" }}>— {k.hint}</span>
         )}
         <a href={k.href} target="_blank" rel="noopener noreferrer"
-          style={{ fontSize: 11, color: "#2563eb", marginLeft: "auto" }}>
-          Get key →
+          style={{ fontSize: 11, color: "#2563eb", marginLeft: "auto", whiteSpace: "nowrap" }}>
+          {k.inputType === "email" ? "Learn more →" : "Get key →"}
         </a>
       </div>
+
+      {/* Input + buttons */}
       <div style={{ display: "flex", gap: 6 }}>
-        <input value={pendingKeys[k.id] ?? ""}
+        <input
+          ref={inputRef}
+          value={pendingKeys[k.id] ?? ""}
           onChange={(e) => setPendingKeys((p) => ({ ...p, [k.id]: e.target.value }))}
-          placeholder={isSet ? "●●●●●●●● (paste new value)" : `Paste ${k.label} key`}
-          type="password" autoComplete="off" style={input} />
-        <button onClick={() => void onSaveKey(k.id)}
-          disabled={busy || !(pendingKeys[k.id]?.trim())}
-          style={{ ...btnGhostStrong,
-            opacity: (busy || !pendingKeys[k.id]?.trim()) ? 0.5 : 1,
-            cursor:  (busy || !pendingKeys[k.id]?.trim()) ? "not-allowed" : "pointer" }}>
-          Save
+          onKeyDown={(e) => { if (e.key === "Enter" && hasPending) void onSaveKey(k.id); }}
+          placeholder={isSet
+            ? (k.inputType === "email" ? "Enter new email address" : "●●●●●●●● (paste new value)")
+            : k.inputType === "email" ? `Your ${k.label} email address` : `Paste ${k.label} key`}
+          type={k.inputType ?? "password"}
+          autoComplete="off"
+          spellCheck={false}
+          style={{
+            ...input,
+            border: `1px solid ${hasPending ? "#6366f1" : "#d1d5db"}`,
+            transition: "border-color 0.15s",
+          }} />
+
+        <button
+          onClick={() => void onSaveKey(k.id)}
+          disabled={ks === "saving" || (!hasPending && ks === "idle")}
+          style={saveBtnStyle}>
+          {ks === "saving" ? "⏳ Saving…"
+            : ks === "saved" ? "✓ Saved"
+            : ks === "error" ? "✗ Error"
+            : "Save"}
         </button>
-        <button onClick={() => void onVerifyKey(k.id)}
-          disabled={!isSet || v === "loading"}
-          style={{ ...btnGhost,
-            opacity: (!isSet || v === "loading") ? 0.5 : 1,
-            cursor:  (!isSet || v === "loading") ? "not-allowed" : "pointer" }}>
-          {v === "loading" ? "…" : "Verify"}
+
+        <button
+          onClick={() => void onVerifyKey(k.id)}
+          disabled={(!isSet && ks !== "saved") || v === "loading"}
+          title={isSet || ks === "saved" ? "Verify this key against the provider" : "Save the key first"}
+          style={{
+            ...btnGhost,
+            opacity: ((!isSet && ks !== "saved") || v === "loading") ? 0.45 : 1,
+            cursor:  ((!isSet && ks !== "saved") || v === "loading") ? "not-allowed" : "pointer",
+            minWidth: 60,
+          }}>
+          {v === "loading" ? "⏳…" : "Verify"}
         </button>
       </div>
+
+      {/* Verify detail message */}
       {v && v !== "loading" && (
-        <div style={{ fontSize: 11, color: v.valid ? "#15803d" : "#b91c1c" }}>
-          {v.valid ? "✓" : "✗"} {v.message}
+        <div style={{
+          fontSize: 11, lineHeight: 1.4,
+          color: v.valid ? "#15803d" : "#b91c1c",
+          background: v.valid ? "#f0fdf4" : "#fef2f2",
+          border: `1px solid ${v.valid ? "#bbf7d0" : "#fca5a5"}`,
+          borderRadius: 5, padding: "5px 8px",
+        }}>
+          {v.message}
         </div>
       )}
     </div>

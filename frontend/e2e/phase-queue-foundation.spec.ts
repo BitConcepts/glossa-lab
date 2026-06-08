@@ -12,8 +12,9 @@
  */
 import { test, expect } from "@playwright/test";
 
-// Uses baseURL from playwright config (port 8001 for backend-integration)
-const BASE = "http://localhost:8000/api/v1";  // direct URL since config uses 8001
+// Uses baseURL from playwright config.
+// With PLAYWRIGHT_USE_BACKEND=1, baseURL = http://127.0.0.1:8001, so relative paths work.
+const BASE = "/api/v1";
 
 // ── Phase Status ──────────────────────────────────────────────────────────
 

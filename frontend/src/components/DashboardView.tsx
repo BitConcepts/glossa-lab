@@ -533,7 +533,7 @@ export function DashboardView() {
   const [applyingSet, setApplyingSet] = useState<Set<string>>(new Set());
   const _applying = applyingSet.size > 0 ? Array.from(applyingSet)[0] : ""; void _applying; // compat — kept for debugging
   const isApplying = (key: string) => applyingSet.has(key);
-  const applyAction = async (a: DashboardNextAction, key: string) => {
+  const applyAction = async (origAction: DashboardNextAction, key: string) => {
     if (isApplying(key)) return; // only block the SAME action, not others
     setApplyingSet(prev => new Set(prev).add(key));
     // Safety timeout: if action takes more than 45s, auto-release so button doesn't stay stuck
@@ -543,7 +543,50 @@ export function DashboardView() {
     // Track outcome for the per-button checkmark/error indicator. Initially
     // assume success; downgrade on warning/error inside each branch.
     let outcome: ApplyResult = "success";
+    // Hoist `a` so catch/finally can access action_type/label for logging.
+    let a = origAction;
     try {
+      // ── Smart upgrade: LLM often emits open_view for actions that should actually
+      // RUN experiments (e.g. “Run Dravidian Convergence Test”, “Compare with NW Semitic”,
+      // “Open Rakhigarhi Bioarchaeology Study”).  Detect and upgrade BEFORE the switch
+      // so callers and the telemetry log see the resolved action_type.
+      const _at = a.action_type as string;
+      if (_at === "open_view" || _at.startsWith("open_")) {
+        const _lbl    = a.label;
+        const _lblLow = _lbl.toLowerCase();
+        const _hasView = !!String(a.params?.view || "").trim();
+        if (!_hasView) {
+          // Explicit experiment_id in params → always run it
+          if (a.params?.experiment_id) {
+            a = { ...a, action_type: "run_experiment" as DashboardActionType };
+          }
+          // Action verb (Run / Compare / Analyze / …) → try experiment registry match
+          else if (/^(run|compare|analyz|test|evaluat|validat|build|detect|comput|check|measure|assess)\b/i.test(_lbl)) {
+            const _reg = await ensureExpRegistry();
+            const _words = _lblLow.replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter((w: string) => w.length >= 4);
+            const _ranked = _reg.map(e => {
+              const txt = `${e.id} ${e.name ?? ""} ${e.description ?? ""}`.toLowerCase();
+              const wordHits = _words.filter((w: string) => txt.includes(w)).length;
+              return { id: e.id, score: _scoreMatch(_lbl, e.id) + wordHits * 30 };
+            }).sort((x: {score:number}, y: {score:number}) => y.score - x.score);
+            if (_ranked[0]?.score >= 50) {
+              toast(`Resolved action → run ${_ranked[0].id}`, "info", 2500);
+              a = { ...a, action_type: "run_experiment" as DashboardActionType,
+                    params: { ...a.params, experiment_id: _ranked[0].id } };
+            } else {
+              // No strong experiment match → propose a chain using the label as hypothesis
+              a = { ...a, action_type: "propose_experiment_chain" as DashboardActionType,
+                    params: { ...a.params, hypothesis: _lbl } };
+            }
+          }
+          // Research / study keyword (no explicit verb) → propose experiment chain
+          else if (/\b(bioarchaeolog|archaeolog|convergence|decipherment|analysis|comparison|structural|entropy|falsif|phonolog|syllabic|dravidian|anchor.sign|sign.reading|language.model)\b/i.test(_lblLow)) {
+            a = { ...a, action_type: "propose_experiment_chain" as DashboardActionType,
+                  params: { ...a.params, hypothesis: _lbl } };
+          }
+          // Otherwise: leave as open_view (genuine view-navigation)
+        }
+      }
       switch (a.action_type) {
         case "run_experiment": {
           const expId = String(a.params?.experiment_id || "").trim();
@@ -1247,13 +1290,13 @@ export function DashboardView() {
                                   >✕</button>
                                 </div>
                               ) : (
-                                <button
+                              <button
                                   onClick={() => void applyAction(a, k)}
                                   disabled={isApplying(k)}
                                   style={applyButtonStyle(applyResult[k])}
                                   title={applyResultTitle(applyResult[k], a.action_type)}
                                 >
-                                  {renderApplyLabel(isApplying(k), applyResult[k], actionLabel(a.action_type))}
+                                  {renderApplyLabel(isApplying(k), applyResult[k], _smartActionBtnLabel(a))}
                                 </button>
                               )
                             )}
@@ -1557,4 +1600,24 @@ function actionLabel(t: DashboardActionType): string {
       if (typeof t === "string" && t.startsWith("open_")) return "Open";
       return "Apply";
   }
+}
+
+/**
+ * Smart button label for a next_action: returns "Run" instead of "Open" when
+ * the smart upgrade in applyAction will actually run an experiment or propose
+ * a chain (i.e. the LLM generated open_view for an experiment-like action).
+ */
+function _smartActionBtnLabel(a: DashboardNextAction): string {
+  const at = a.action_type as string;
+  // Non-open types — use the regular label
+  if (at !== "open_view" && !at.startsWith("open_")) return actionLabel(a.action_type);
+  // Genuine view navigation (has explicit view param) — keep "Open"
+  if (String(a.params?.view || "").trim()) return "Open";
+  // Has explicit experiment_id — will run it
+  if (a.params?.experiment_id) return "Run";
+  // Action verb in label — will run or propose chain
+  if (/^(run|compare|analyz|test|evaluat|validat|build|detect|comput|check|measure|assess)\b/i.test(a.label)) return "Run";
+  // Research / study keyword — will propose chain
+  if (/\b(bioarchaeolog|archaeolog|convergence|decipherment|analysis|comparison|structural|entropy|dravidian|sign.reading)\b/i.test(a.label.toLowerCase())) return "Run";
+  return "Open";
 }

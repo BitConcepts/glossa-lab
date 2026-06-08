@@ -135,22 +135,17 @@ test.describe("Dashboard — Atomic Nodes counter", () => {
   });
 });
 
-// ── Phase Advancer Panel ───────────────────────────────────────────────────────
+// ── Scheduler toggle (Study Loop) ─────────────────────────────────────────────
+// Phase Guide was removed; the loop panel now shows a daily scheduler toggle.
 
-test.describe("Phase Advancer Panel", () => {
-  test("phase advancer section is visible on dashboard", async ({ page }) => {
+test.describe("Study Loop Scheduler", () => {
+  test("dashboard renders without errors when scheduler status is unavailable", async ({ page }) => {
     await navigateToDashboard(page);
-    // The PhaseAdvancerPanel is rendered inside ResearchLoopPanel
-    // It should show a phase label or coverage indicator
-    const phaseText = page.getByText(/Phase \d/i).first();
-    const visible = await phaseText.isVisible({ timeout: 8000 }).catch(() => false);
-    // Phase advancer may not render if backend is slow — just confirm no error
-    if (!visible) {
-      // Should at least not show an error
-      const errorBox = page.locator("div[style*='#dc2626']");
-      await page.waitForTimeout(1000);
-      expect(await errorBox.count()).toBe(0);
-    }
+    // The scheduler status row loads async; either it shows or doesn't.
+    // Either way, no error box should appear.
+    const errorBox = page.locator("div[style*='#dc2626']");
+    await page.waitForTimeout(1500);
+    expect(await errorBox.count()).toBe(0);
   });
 });
 

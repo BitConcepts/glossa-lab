@@ -16,6 +16,14 @@ import { defineConfig, devices } from "@playwright/test";
  *   npx playwright test --headed
  */
 
+// When PLAYWRIGHT_USE_BACKEND=1, the Glossa Lab backend (port 8001) serves both
+// the built frontend (via StaticFiles) and the API.  This is the correct mode for CI:
+// no separate Vite preview server is needed, and API calls resolve on the same origin.
+const USE_BACKEND = !!process.env.PLAYWRIGHT_USE_BACKEND;
+const BACKEND_URL = process.env.PLAYWRIGHT_BACKEND_URL || "http://127.0.0.1:8001";
+const PREVIEW_URL = "http://localhost:4173";
+const BASE_URL = USE_BACKEND ? BACKEND_URL : PREVIEW_URL;
+
 export default defineConfig({
   testDir: "./e2e",
   fullyParallel: false,
@@ -25,7 +33,7 @@ export default defineConfig({
   reporter: process.env.CI ? "github" : "list",
 
   use: {
-    baseURL: "http://localhost:4173",
+    baseURL: BASE_URL,
     trace: "on-first-retry",
     screenshot: "only-on-failure",
     video: "retain-on-failure",
@@ -41,22 +49,29 @@ export default defineConfig({
   /**
    * Start a server before running tests.
    *
-   * Locally: uses `vite preview` (serves the production build from dist/).
-   *   Run `npm run build` first if dist/ is stale.
+   * PLAYWRIGHT_USE_BACKEND=1 (CI): re-use the already-running Glossa backend
+   *   which serves the built frontend from frontend/dist/ via StaticFiles mount.
+   *   API calls resolve on the same origin so no proxy is needed.
+   *
+   * Local (default): uses `vite preview` at port 4173. Run `npm run build` first.
    *   Set PLAYWRIGHT_DEV=1 to use `npm run dev` instead.
-   *
-   * CI: controlled by the `playwright` job in ci.yml which starts the backend
-   *   and sets CI=true, so reuseExistingServer=false and a fresh server starts.
-   *
-   * Tests tolerate the backend being down; they check both connected and
-   * disconnected states.
    */
-  webServer: {
-    command: process.env.PLAYWRIGHT_DEV ? "npm run dev" : "npm run preview",
-    url: "http://localhost:4173",
-    reuseExistingServer: !process.env.CI,
-    timeout: 60_000,
-    stdout: "ignore",
-    stderr: "pipe",
-  },
+  webServer: USE_BACKEND
+    ? {
+        // Backend already started externally — just wait for it to be healthy.
+        command: "echo \"Using backend as server\"",
+        url: BACKEND_URL + "/api/v1/health",
+        reuseExistingServer: true,
+        timeout: 60_000,
+        stdout: "ignore",
+        stderr: "ignore",
+      }
+    : {
+        command: process.env.PLAYWRIGHT_DEV ? "npm run dev" : "npm run preview",
+        url: PREVIEW_URL,
+        reuseExistingServer: !process.env.CI,
+        timeout: 60_000,
+        stdout: "ignore",
+        stderr: "pipe",
+      },
 });

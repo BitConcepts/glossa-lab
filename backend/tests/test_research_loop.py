@@ -263,8 +263,16 @@ def test_rl015_cycle_entry_fields():
 
     Phase E: run() also emits proposal_selected, build_complete, verify_result,
     and analysis_complete SSE events. We filter to the node_complete cycle entry.
+
+    CI note: populate corpus_seqs with minimal stub data so verify_before_run()
+    returns 'pass' rather than 'abort' (which happens when corpus_available=False
+    because the Holdat CSV is not present in the CI environment).
     """
     loop = ResearchLoop(max_cycles=1)
+    # Provide minimal corpus data so verify_before_run() sees corpus_available=True
+    loop.corpus_seqs = [["M1", "M2", "M3"]] * 20
+    loop.corpus_sites = ["Mohenjo-daro"] * 20
+    loop.corpus_motifs = ["unicorn"] * 20
 
     # Mock _mine and _blitz_mine to avoid network calls; return predictable data
     def mock_mine(gap):

@@ -132,6 +132,10 @@ jobs:
         env:
           CI: "true"
           BACKEND_RUNNING: "true"
+          # Backend at port 8001 serves both the built frontend (StaticFiles) and
+          # the API on the same origin.  No separate Vite preview server needed.
+          PLAYWRIGHT_USE_BACKEND: "1"
+          PLAYWRIGHT_BACKEND_URL: "http://127.0.0.1:8001"
         run: |
           npx playwright test \
             --reporter=github \

@@ -136,6 +136,15 @@ interface StagingData {
 
 // ── Study-loop–specific types ────────────────────────────────────────────────
 
+interface WhatsNextItem {
+  experiment_id: string;
+  display_name: string;
+  rationale: string;
+  priority: number;
+  novelty?: number;
+  epistemic?: boolean;
+}
+
 interface StudySession {
   session_id?: string;
   completed_at?: string;
@@ -145,8 +154,9 @@ interface StudySession {
   anchor_delta?: number;
   where_we_came_from?: string;
   what_we_learned?: string;
-  actions_taken?: string;
+  actions_taken?: string | string[];
   whats_next?: string;
+  whats_next_items?: WhatsNextItem[];
   synthesis?: Synthesis;
   total_papers_mined?: number;
   total_insights?: number;
@@ -171,7 +181,13 @@ interface HistorySession {
 export function ResearchLoopPanel() {
   const [, setStatus] = useState<LoopStatus | null>(null);
   const [running, setRunning] = useState(false);
-  const [cycles, setCycles] = useState(15);
+  const [cycles, setCycles] = useState(() => {
+    try {
+      const v = parseInt(localStorage.getItem("glossa_loop_iterations") ?? "", 10);
+      if ([5, 15, 30, 50].includes(v)) return v;
+    } catch { /* ignore */ }
+    return 15;
+  });
   const [log, setLog] = useState<CycleEntry[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [stallReason, setStallReason] = useState<string | null>(null);
@@ -239,11 +255,10 @@ export function ResearchLoopPanel() {
         // Narrative fields (nested under "narrative" in the API)
         where_we_came_from: narr.where_we_came_from,
         what_we_learned:    narr.what_we_learned,
-        // actions_taken is an array in the API; join for display
-        actions_taken: Array.isArray(narr.actions_taken)
-          ? narr.actions_taken.join(" · ")
-          : narr.actions_taken,
+        // keep actions_taken as array for bullet rendering
+        actions_taken: narr.actions_taken,
         whats_next: narr.whats_next,
+        whats_next_items: narr.whats_next_items,
       };
 
       setLastSession(flat);
@@ -369,6 +384,8 @@ export function ResearchLoopPanel() {
                 void fetchStaging();
                 void fetchHistory();
               } else if (event.type === "study_loop_complete") {
+                // Notify the dashboard so it regenerates the AI insight.
+                window.dispatchEvent(new CustomEvent("glossa:loop-complete"));
                 if (event.session) {
                   // Same flattening as fetchLastSession — session is nested
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -389,10 +406,9 @@ export function ResearchLoopPanel() {
                     anchor_delta:    delta || undefined,
                     where_we_came_from: narr.where_we_came_from,
                     what_we_learned:    narr.what_we_learned,
-                    actions_taken: Array.isArray(narr.actions_taken)
-                      ? narr.actions_taken.join(" \u00b7 ")
-                      : narr.actions_taken,
+                    actions_taken: narr.actions_taken,
                     whats_next: narr.whats_next,
+                    whats_next_items: narr.whats_next_items,
                   });
                   setShowInsights(true);
                 }
@@ -520,7 +536,11 @@ export function ResearchLoopPanel() {
         </div>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
           <select value={cycles}
-            onChange={(e) => setCycles(parseInt(e.target.value, 10))}
+            onChange={(e) => {
+              const v = parseInt(e.target.value, 10);
+              setCycles(v);
+              try { localStorage.setItem("glossa_loop_iterations", String(v)); } catch { /* ignore */ }
+            }}
             disabled={running}
             style={{ padding: "4px 8px", border: "1px solid #d1d5db",
                      borderRadius: 5, fontSize: 12, background: "#fff" }}>
@@ -665,13 +685,14 @@ export function ResearchLoopPanel() {
                             text={lastSession.what_we_learned} />
           )}
           {lastSession.actions_taken && (
-            <NarrativeField label="Actions taken"
-                            text={lastSession.actions_taken} />
+            <ActionsTakenField actions={lastSession.actions_taken} />
           )}
-          {lastSession.whats_next && (
-            <NarrativeField label="What's next"
-                            text={lastSession.whats_next} />
-          )}
+          {(lastSession.whats_next_items?.length ?? 0) > 0
+            ? <WhatsNextList items={lastSession.whats_next_items!} />
+            : lastSession.whats_next
+              ? <NarrativeField label="What's next" text={lastSession.whats_next} />
+              : null
+          }
         </div>
       )}
 
@@ -1010,7 +1031,7 @@ export function ResearchLoopPanel() {
   );
 }
 
-// ── Narrative field helper ────────────────────────────────────────────────────
+// ── Narrative field helper ────────────────────────────────────────────────
 
 function NarrativeField({ label, text }: { label: string; text: string }) {
   return (
@@ -1023,6 +1044,114 @@ function NarrativeField({ label, text }: { label: string; text: string }) {
       </div>
       <div style={{ fontSize: 11, color: "#374151", lineHeight: 1.5 }}>
         {text}
+      </div>
+    </div>
+  );
+}
+
+/** Actions taken — renders either a string or string[] as a bullet list. */
+function ActionsTakenField({ actions }: { actions: string | string[] }) {
+  const items: string[] = Array.isArray(actions)
+    ? actions
+    : actions.split(" \u00b7 ").map((s) => s.trim()).filter(Boolean);
+  return (
+    <div style={{ marginBottom: 6 }}>
+      <div style={{
+        fontSize: 10, fontWeight: 700, color: "#4338ca",
+        textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 4,
+      }}>
+        Actions taken
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+        {items.map((item, i) => (
+          <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 6 }}>
+            <span style={{ color: "#6366f1", fontWeight: 700, fontSize: 11,
+                           flexShrink: 0, marginTop: 1 }}>\u2022</span>
+            <span style={{ fontSize: 11, color: "#374151", lineHeight: 1.5 }}>
+              {item}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** What's next — renders the structured proposal list as priority cards. */
+function WhatsNextList({ items }: { items: WhatsNextItem[] }) {
+  return (
+    <div style={{ marginBottom: 6 }}>
+      <div style={{
+        fontSize: 10, fontWeight: 700, color: "#4338ca",
+        textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6,
+      }}>
+        What’s next — top candidates for next run
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+        {items.map((item, i) => (
+          <div key={item.experiment_id} style={{
+            padding: "7px 10px",
+            borderRadius: 6,
+            border: item.epistemic
+              ? "1px solid #c4b5fd"
+              : "1px solid #e5e7eb",
+            background: item.epistemic ? "#faf5ff" : "#f9fafb",
+            display: "flex", gap: 8, alignItems: "flex-start",
+          }}>
+            {/* rank badge */}
+            <div style={{
+              flexShrink: 0, width: 20, height: 20,
+              borderRadius: "50%",
+              background: i === 0 ? "#7c3aed" : i === 1 ? "#6366f1" : "#9ca3af",
+              color: "#fff", fontSize: 10, fontWeight: 800,
+              display: "flex", alignItems: "center", justifyContent: "center",
+            }}>
+              {i + 1}
+            </div>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{
+                display: "flex", alignItems: "center", gap: 6,
+                flexWrap: "wrap", marginBottom: 3,
+              }}>
+                <span style={{ fontSize: 12, fontWeight: 700, color: "#374151" }}>
+                  {item.display_name}
+                </span>
+                {item.epistemic && (
+                  <span style={{
+                    fontSize: 9, padding: "1px 5px", borderRadius: 3,
+                    background: "#ede9fe", color: "#5b21b6", fontWeight: 700,
+                    letterSpacing: 0.3,
+                  }}>\u26a1 EPISTEMIC</span>
+                )}
+                {item.novelty != null && item.novelty >= 1.0 && (
+                  <span style={{
+                    fontSize: 9, padding: "1px 5px", borderRadius: 3,
+                    background: "#dcfce7", color: "#15803d", fontWeight: 700,
+                  }}>NEW</span>
+                )}
+                <span style={{
+                  marginLeft: "auto", fontSize: 10, color: "#6b7280",
+                  fontWeight: 600, flexShrink: 0,
+                }}>
+                  priority {(item.priority * 100).toFixed(0)}%
+                </span>
+              </div>
+              <div style={{
+                fontSize: 11, color: "#6b7280", lineHeight: 1.45,
+                wordBreak: "break-word",
+              }}>
+                {item.rationale}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{
+        marginTop: 5, fontSize: 10, color: "#9ca3af",
+        fontStyle: "italic",
+      }}>
+        These are the highest-scoring experiments the loop will attempt first.
+        Actual selection may vary by gap and cycle state.
       </div>
     </div>
   );

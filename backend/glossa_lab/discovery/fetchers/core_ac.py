@@ -1,8 +1,12 @@
-"""CORE.ac.uk fetcher — 200M+ open access research papers.
+"""CORE.ac.uk fetcher — 449M+ open access research papers.
 
 API docs: https://api.core.ac.uk/docs/v3
-Free tier: 10 req/s, no key needed for basic search.
-Optional: CORE_API_KEY for higher limits.
+Auth:     Bearer token via Authorization header (optional but recommended)
+Rate limits:
+  Unauthenticated:  100 requests/day, 10 req/min
+  Personal key:     1,000 tokens/day, 25 req/min
+  Academic key:     5,000 tokens/day, 10 req/min
+Obtain a free key at: https://core.ac.uk/services/api
 """
 from __future__ import annotations
 
@@ -22,15 +26,20 @@ from glossa_lab.discovery.store import RawItem
 
 _log = logging.getLogger("glossa_lab.discovery.fetchers.core_ac")
 
-_ENDPOINT = "https://api.core.ac.uk/v3/search/works"
+# Trailing slash is required — the API 301-redirects the slash-less URL
+# and Python's urllib drops the Authorization header on the redirect.
+_ENDPOINT = "https://api.core.ac.uk/v3/search/works/"
 
 
 class COREFetcher(Fetcher):
     source = "core"
-    requires = ()  # keyless — optional CORE_API_KEY for higher limits
+    requires = ()  # keyless — optional core_api_key for higher limits
     upgrade_key = "core_api_key"
     upgrade_url = "https://core.ac.uk/services/api"
-    rate_delay = 0.5  # 0.5s between requests
+    # Free tier: 10 req/min → 6s gap. Keyed personal: 25 req/min → 2.5s gap.
+    # We default to the conservative free-tier value; fetch() tightens it
+    # at runtime when a key is present.
+    rate_delay = 6.0
 
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,
@@ -38,6 +47,9 @@ class COREFetcher(Fetcher):
         from glossa_lab.api.settings import get_key  # noqa: PLC0415
 
         api_key = get_key("core_api_key") or ""
+        # Honour faster rate for authenticated requests.
+        if api_key:
+            self.__class__.rate_delay = 2.5  # 25 req/min personal tier
         opts = topic.overrides_for(self.source)
         limit = int(opts.get("limit", 25))
 

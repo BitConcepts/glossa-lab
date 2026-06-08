@@ -57,10 +57,18 @@ class UnpaywallFetcher(Fetcher):
             _log.warning("Unpaywall error for topic %s: %s", topic.id, exc)
             return []
 
-        results = (data or {}).get("results") or []
+        # The /v2/search endpoint returns a plain JSON array
+        # [{snippet, response, score}, ...], NOT {"results": [...]}.
+        # Guard against both shapes so a future API change doesn't crash.
+        if isinstance(data, list):
+            results = data
+        else:
+            results = (data or {}).get("results") or []
         items: list[RawItem] = []
         for r in results[:limit]:
-            resp = r.get("response") or r
+            # Each item is {snippet, response, score}; fall back to the item
+            # itself if the API shape changes to a flat list of DOI objects.
+            resp = (r.get("response") if isinstance(r, dict) else None) or r
             title = (resp.get("title") or "").strip()
             doi = resp.get("doi") or ""
             if not title:

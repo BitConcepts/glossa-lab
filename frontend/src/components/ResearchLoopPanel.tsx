@@ -544,10 +544,10 @@ export function ResearchLoopPanel() {
             disabled={running}
             style={{ padding: "4px 8px", border: "1px solid #d1d5db",
                      borderRadius: 5, fontSize: 12, background: "#fff" }}>
-            <option value={5}>5 — Quick Scan</option>
-            <option value={15}>15 — Standard</option>
-            <option value={30}>30 — Deep Dive</option>
-            <option value={50}>50 — Extensive</option>
+            <option value={5}>5 cycles — Quick Scan</option>
+            <option value={15}>15 cycles — Standard</option>
+            <option value={30}>30 cycles — Deep Dive</option>
+            <option value={50}>50 cycles — Extensive</option>
           </select>
           {!running && !showConfirm && (
             <button onClick={() => setShowConfirm(true)}
@@ -703,13 +703,13 @@ export function ResearchLoopPanel() {
           background: "#ede9fe", marginBottom: 12,
         }}>
           <div style={{ fontSize: 13, fontWeight: 700, color: "#5b21b6", marginBottom: 8 }}>
-            🔄 Study Loop — {cycles} iterations
+            🔄 Study Loop — {cycles} experiment cycles
           </div>
           <div style={{ fontSize: 11, color: "#374151", lineHeight: 1.8 }}>
             <div>📘 <strong>Mine</strong>: Blitz all gap topics for literature evidence</div>
             <div>💡 <strong>Propose</strong>: Select the highest-signal experiment for each gap</div>
             <div>⚙️ <strong>Run &amp; Analyze</strong>: Execute, interpret, stage anchor candidates</div>
-            <div>🔄 <strong>Iterate</strong>: Repeat for each of the {cycles} iterations</div>
+            <div>🔄 <strong>Iterate</strong>: Each of the {cycles} cycles runs one full mine→propose→execute→analyze pipeline</div>
           </div>
           <div style={{ display: "flex", justifyContent: "flex-end", gap: 8, marginTop: 10 }}>
             <button

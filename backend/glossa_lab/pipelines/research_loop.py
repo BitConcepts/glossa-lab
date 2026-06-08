@@ -673,6 +673,11 @@ class ResearchLoop:
             gap = self._select_gap_adaptive(cycle, path_signals)
             papers, insights = self._mine(gap)
 
+            logger.info(
+                "=== Cycle %d/%d | gap=%s | papers=%d | insights=%d ===",
+                cycle, self.max_cycles, gap["name"], len(papers), len(insights),
+            )
+
             if not papers:
                 _dry_streak += 1
                 if _dry_streak >= _MAX_DRY:
@@ -703,6 +708,8 @@ class ResearchLoop:
             # ── Try proposals until one passes verify ────────────
             selected_proposal = None
             verify_ok = False
+            best_skip_proposal = None  # best "skip" (warning) proposal
+            all_abort = True  # track whether every proposal was "abort"
 
             if proposals_used:
                 for prop in proposals_used:
@@ -726,7 +733,10 @@ class ResearchLoop:
                         logger.warning("Cycle %d: verify abort for %s: %s",
                                        cycle, prop.experiment_id, vr.issues)
                         continue
-                    else:  # skip
+                    else:  # skip — warning, not blocking
+                        all_abort = False
+                        if best_skip_proposal is None:
+                            best_skip_proposal = prop
                         logger.info("Cycle %d: verify skip for %s: %s",
                                     cycle, prop.experiment_id, vr.issues)
                         continue
@@ -734,21 +744,39 @@ class ResearchLoop:
             # If no proposal passed, try fallback
             if not verify_ok:
                 if proposals_used:
-                    # All proposals failed verification — skip this gap
-                    yield {
-                        "type": "gap_skipped",
-                        "cycle": cycle,
-                        "gap_targeted": gap["name"],
-                        "reason": "all proposals failed verification",
-                    }
-                    continue
-                # No proposals at all — use rotation fallback
+                    if all_abort:
+                        # Every proposal was hard-blocked — skip gap
+                        yield {
+                            "type": "gap_skipped",
+                            "cycle": cycle,
+                            "gap_targeted": gap["name"],
+                            "reason": "all proposals failed verification (abort)",
+                        }
+                        continue
+                    # At least one proposal had 'skip' (warning) — use it
+                    selected_proposal = best_skip_proposal
+                    verify_ok = True
+                    logger.info(
+                        "Cycle %d: using best skip-warning proposal %s",
+                        cycle, selected_proposal.experiment_id if selected_proposal else "?",
+                    )
+                else:
+                    # No proposals at all — use rotation fallback
+                    logger.info("Cycle %d: no proposals — using rotation fallback", cycle)
                 if template is None:
                     template = self._select_experiment(insights, cycle)
 
             # Resolve template name
             if selected_proposal:
                 template = selected_proposal.experiment_id
+
+            selection_path = (
+                "proposal" if selected_proposal else "rotation"
+            )
+            logger.info(
+                "Cycle %d/%d | template=%s | path=%s | verify_ok=%s",
+                cycle, self.max_cycles, template, selection_path, verify_ok,
+            )
 
             # Emit proposal_selected event
             yield {

@@ -112,5 +112,119 @@
       "epistemic": 0.01,
       "blocker_context": 1.0
     }
+  },
+  {
+    "session_id": "a21f7959d0e0",
+    "started_at": "2026-06-08T09:04:21.997609+00:00",
+    "completed_at": "2026-06-08T09:05:52.691782+00:00",
+    "iterations": 50,
+    "trigger": "user",
+    "before": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T09:04:21.999332+00:00"
+    },
+    "after": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T09:05:52.691782+00:00"
+    },
+    "narrative": {
+      "where_we_came_from": "Coverage: 95.8% · 274 HIGH+MEDIUM anchors · 12 staged candidates. Epistemic entropy: 52% (moderate), 0 signs with no evidence chain.",
+      "what_happened": "Ran 64 research iteration(s), mining 972 paper(s) and extracting 1 insight(s).",
+      "what_we_learned": "Coverage stable at 95.8%. Dominant evidence path: blocker_context (100% of insights).",
+      "actions_taken": [
+        "compound_semantic_coherence: valid_pct=100",
+        "reading_frequency_zipf: zipf_alpha=0.623"
+      ],
+      "whats_next": "Blocker Sign Context: blocker sign context: never run before; high historical success (100%); epistemic priority: targets  | Decoded Text Repetition: decoded text repetition: never run before; high historical success (100%); epistemic priority: targe",
+      "epistemic_entropy_before": 0.5239,
+      "epistemic_entropy_after": 0.5239
+    },
+    "cycles_run": 64,
+    "total_papers": 972,
+    "total_insights": 1,
+    "path_signals": {
+      "reading": 0.309,
+      "formula": 0.346,
+      "function": 0.08,
+      "morphology": 0.042,
+      "compound": 0.031,
+      "guild": 0.18,
+      "self_improvement": 0.002,
+      "epistemic": 0.01,
+      "blocker_context": 1.0
+    }
+  },
+  {
+    "session_id": "e979ce52f3de",
+    "started_at": "2026-06-08T09:07:12.787329+00:00",
+    "completed_at": "2026-06-08T09:08:38.309313+00:00",
+    "iterations": 15,
+    "trigger": "scheduler",
+    "before": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T09:07:12.787329+00:00"
+    },
+    "after": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T09:08:38.310596+00:00"
+    },
+    "narrative": {
+      "where_we_came_from": "Coverage: 95.8% · 274 HIGH+MEDIUM anchors · 12 staged candidates. Epistemic entropy: 52% (moderate), 0 signs with no evidence chain.",
+      "what_happened": "Ran 64 research iteration(s), mining 972 paper(s) and extracting 1 insight(s).",
+      "what_we_learned": "Coverage stable at 95.8%. Dominant evidence path: blocker_context (100% of insights).",
+      "actions_taken": [
+        "compound_semantic_coherence: valid_pct=100",
+        "reading_frequency_zipf: zipf_alpha=0.623"
+      ],
+      "whats_next": "Blocker Sign Context: blocker sign context: never run before; high historical success (100%); epistemic priority: targets  | Decoded Text Repetition: decoded text repetition: never run before; high historical success (100%); epistemic priority: targe",
+      "epistemic_entropy_before": 0.5239,
+      "epistemic_entropy_after": 0.5239
+    },
+    "cycles_run": 64,
+    "total_papers": 972,
+    "total_insights": 1,
+    "path_signals": {
+      "reading": 0.31,
+      "formula": 0.347,
+      "function": 0.08,
+      "morphology": 0.043,
+      "compound": 0.029,
+      "guild": 0.18,
+      "self_improvement": 0.002,
+      "epistemic": 0.01,
+      "blocker_context": 1.0
+    }
   }
 ]

@@ -1,6 +1,6 @@
 {
   "cycles_completed": 64,
-  "max_cycles": 50,
+  "max_cycles": 15,
   "cycle_analyses": [
     {
       "cycle": 1,
@@ -790,7 +790,7 @@
     },
     {
       "cycle": 1,
-      "timestamp": "2026-06-08T08:42:48.678883+00:00",
+      "timestamp": "2026-06-08T09:08:33.310681+00:00",
       "gap_targeted": "rare_sign_context",
       "n_papers": 0,
       "n_insights": 0,
@@ -809,7 +809,7 @@
     },
     {
       "cycle": 2,
-      "timestamp": "2026-06-08T08:42:50.855331+00:00",
+      "timestamp": "2026-06-08T09:08:35.834506+00:00",
       "gap_targeted": "compound_morphology",
       "n_papers": 0,
       "n_insights": 0,

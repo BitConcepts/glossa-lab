@@ -1,4 +1,5 @@
-import json, csv
+import json
+import csv
 from collections import Counter
 from pathlib import Path
 

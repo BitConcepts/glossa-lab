@@ -122,7 +122,7 @@ print(f"\nRebus matches: {rebus_matches}, New: {rebus_new}")
 
 # Summary
 print(f"\n{'='*60}")
-print(f"EVALUATION SUMMARY")
+print("EVALUATION SUMMARY")
 print(f"{'='*60}")
 print(f"Papers analyzed:           {paper_count}")
 print(f"Unique Dravidian terms:    {len(all_terms)}")

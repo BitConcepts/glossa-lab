@@ -1,5 +1,6 @@
 """Strict Parpola comparison: check all slash-alternatives, no substring tricks."""
-import json, unicodedata
+import json
+import unicodedata
 from pathlib import Path
 
 anchors = json.loads(Path(r'C:\Users\trist\Development\BitConcepts\glossa-lab\backend\reports\INDUS_FINAL_ANCHORS.json').read_text('utf-8')).get('anchors', {})
@@ -40,7 +41,7 @@ for sign_id in sorted(PARPOLA.keys()):
 
     # STRICT: any of our alternatives exactly matches any of Parpola's alternatives
     exact_match = bool(set(our_alts) & set(par_alts))
-    
+
     # PARTIAL: first 3 chars of any pair match
     partial_match = False
     if not exact_match:
@@ -69,9 +70,9 @@ for sign_id in sorted(PARPOLA.keys()):
 
 total = exact + partial + disagree
 rate = (exact + partial) / total if total else 0
-print(f"\nSTRICT RESULTS:")
+print("\nSTRICT RESULTS:")
 print(f"  Exact: {exact}")
 print(f"  Partial: {partial}")
 print(f"  Disagree: {disagree}")
 print(f"  Rate: {exact+partial}/{total} = {rate:.0%}")
-print(f"\nThis is the HONEST Parpola agreement rate.")
+print("\nThis is the HONEST Parpola agreement rate.")

@@ -274,11 +274,11 @@ def main():
     covered = sum(1 for t in flat if t in signs_with_reading)
     token_coverage = covered / len(flat) if flat else 0
 
-    print(f"\n  Results:")
+    print("\n  Results:")
     print(f"    MEDIUM confidence proposals: {n_medium}")
     print(f"    LOW confidence proposals: {n_low}")
     print(f"    Unresolved: {n_unresolved}")
-    print(f"\n  Final anchor model:")
+    print("\n  Final anchor model:")
     print(f"    {final_high} HIGH + {final_med} MEDIUM + {final_low} LOW")
     print(f"    {final_reading} with readings ({final_distinct} distinct)")
     print(f"    Token coverage: {covered}/{len(flat)} = {token_coverage:.1%}")

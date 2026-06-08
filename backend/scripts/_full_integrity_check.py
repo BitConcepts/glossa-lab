@@ -206,7 +206,7 @@ for label, path in key_files.items():
 
 # ── Summary ──────────────────────────────────────────────────────────
 print(f"\n{'='*70}")
-print(f"INTEGRITY CHECK SUMMARY")
+print("INTEGRITY CHECK SUMMARY")
 print(f"{'='*70}")
 
 high = [i for i in issues if i["severity"] == "high"]

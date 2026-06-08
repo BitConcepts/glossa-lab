@@ -28,15 +28,15 @@ async function navigateToDashboard(page: import("@playwright/test").Page) {
 test.describe("Research Loop Panel — visibility", () => {
   test("panel header is visible on dashboard", async ({ page }) => {
     await navigateToDashboard(page);
+    // Matches 'Autonomous Study Loop' or 'Research Loop' heading
     await expect(
-      page.getByText("Integrated Research Loop").first()
+      page.getByText(/Research Loop|Autonomous Study Loop/i).first()
     ).toBeVisible({ timeout: 8000 });
   });
 
   test("panel shows protocol description", async ({ page }) => {
     await navigateToDashboard(page);
-    // The panel header or status badge should be visible
-    const panelVisible = await page.getByText("Integrated Research Loop").first().isVisible({ timeout: 5000 }).catch(() => false);
+    const panelVisible = await page.getByText(/Research Loop|Autonomous Study Loop/i).first().isVisible({ timeout: 5000 }).catch(() => false);
     expect(panelVisible).toBeTruthy();
   });
 
@@ -53,42 +53,44 @@ test.describe("Research Loop Panel — visibility", () => {
 test.describe("Research Loop Panel — controls", () => {
   test("cycle selector is visible", async ({ page }) => {
     await navigateToDashboard(page);
-    const select = page.locator("select").filter({ hasText: "cycles" }).first();
+    // Cycle selector now uses labelled presets (Quick Scan, Standard, etc.)
+    const select = page.locator("select").filter({ hasText: /Quick Scan|Standard|Deep Dive/ }).first();
     await expect(select).toBeVisible({ timeout: 5000 });
   });
 
   test("cycle selector has expected options", async ({ page }) => {
     await navigateToDashboard(page);
-    const select = page.locator("select").filter({ hasText: "cycles" }).first();
+    // 4 presets: 5 Quick Scan, 15 Standard, 30 Deep Dive, 50 Extensive
+    const select = page.locator("select").filter({ hasText: /Quick Scan|Standard|Deep Dive/ }).first();
     const options = select.locator("option");
     const count = await options.count();
-    expect(count).toBe(5); // 5, 10, 15, 20, 30
+    expect(count).toBe(4);
   });
 
   test("cycle selector default is 15", async ({ page }) => {
     await navigateToDashboard(page);
-    const select = page.locator("select").filter({ hasText: "cycles" }).first();
+    const select = page.locator("select").filter({ hasText: /Quick Scan|Standard|Deep Dive/ }).first();
     await expect(select).toHaveValue("15");
   });
 
   test("changing cycle selector updates value", async ({ page }) => {
     await navigateToDashboard(page);
-    const select = page.locator("select").filter({ hasText: "cycles" }).first();
+    const select = page.locator("select").filter({ hasText: /Quick Scan|Standard|Deep Dive/ }).first();
     await select.selectOption("5");
     await expect(select).toHaveValue("5");
   });
 
-  test("Start Loop button is visible when not running", async ({ page }) => {
+  test("Run Loop button is visible when not running", async ({ page }) => {
     await navigateToDashboard(page);
     await expect(
-      page.getByRole("button", { name: /Start Loop/i })
+      page.getByRole("button", { name: /Run Loop/i })
     ).toBeVisible({ timeout: 5000 });
   });
 
   test("Stop button is NOT visible when not running", async ({ page }) => {
     await navigateToDashboard(page);
     await expect(
-      page.getByRole("button", { name: /Stop/i })
+      page.getByRole("button", { name: /^\u25a0 Stop$/i })
     ).not.toBeVisible();
   });
 });
@@ -98,9 +100,8 @@ test.describe("Research Loop Panel — controls", () => {
 test.describe("Research Loop Panel — status display", () => {
   test("panel shows last run summary or empty state", async ({ page }) => {
     await navigateToDashboard(page);
-    // Either shows "Last run: X cycles" or has no cycle log (fresh install)
     const panel = page.locator("div").filter({
-      hasText: "Integrated Research Loop",
+      hasText: /Research Loop|Autonomous Study Loop/,
     }).first();
     await expect(panel).toBeVisible({ timeout: 5000 });
     // Both states are valid — just verify the panel doesn't error out

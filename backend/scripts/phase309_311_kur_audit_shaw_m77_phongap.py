@@ -96,10 +96,10 @@ def phase309_kur_audit():
         info["dedr_source"] = ""
         info["phase_upgraded"] = 309
         info["upgrade_basis"] = (
-            f"Phase-309: Reverted from kur (DEDR 1638). "
-            f"Original assignment by Phase-111 was mass-assigned "
-            f"without distributional evidence. Phase-239 Elamite "
-            f"corroboration invalidated (same DEDR for 205 signs)."
+            "Phase-309: Reverted from kur (DEDR 1638). "
+            "Original assignment by Phase-111 was mass-assigned "
+            "without distributional evidence. Phase-239 Elamite "
+            "corroboration invalidated (same DEDR for 205 signs)."
         )
 
         reverted.append({
@@ -554,11 +554,11 @@ def phase311_phonological_gap():
             ),
         },
         "verdict": (
-            f"Phonological inventory: 19/25 PD initials attested (76%). "
-            f"4/6 missing initials (b, d, ṉ, ṟ) are rarely word-initial in PD. "
-            f"ñ and ḻ are notable absences but may reflect pre-literary mergers. "
-            f"Overall: the gap is consistent with expectations for a 3rd-millennium "
-            f"administrative seal register, not a deficiency in the reading model."
+            "Phonological inventory: 19/25 PD initials attested (76%). "
+            "4/6 missing initials (b, d, ṉ, ṟ) are rarely word-initial in PD. "
+            "ñ and ḻ are notable absences but may reflect pre-literary mergers. "
+            "Overall: the gap is consistent with expectations for a 3rd-millennium "
+            "administrative seal register, not a deficiency in the reading model."
         ),
     }
 

@@ -48,6 +48,13 @@ def _get_processor():
     return get_status, load_manifest, run_batch, process_single, _load_sign_catalog
 
 
+def _get_extras():
+    from glossa_lab.tools.sign_image_processor import (  # noqa: PLC0415
+        rebuild_manifest, verify_sign_images, find_missing_signs,
+    )
+    return rebuild_manifest, verify_sign_images, find_missing_signs
+
+
 # ── Endpoints ─────────────────────────────────────────────────────────────
 
 @router.get("/status")
@@ -183,6 +190,69 @@ async def list_page_previews() -> dict[str, Any]:
         "count": len(pages),
         "pages": pages,
     }
+
+
+class VerifyRequest(BaseModel):
+    sign_ids: list[str] | None = None
+    force: bool = False
+    max_age_days: int = 90
+
+
+@router.post("/verify")
+async def verify_images(req: VerifyRequest | None = None) -> dict[str, Any]:
+    """Run triple-check verification on sign images.
+
+    Check 1 (File): PNG exists and is non-zero.
+    Check 2 (Content): Pixel density between 1% and 40% black.
+    Check 3 (Provenance): Non-null source and generated within max_age_days.
+    """
+    try:
+        _, verify_sign_images, _ = _get_extras()
+        body = req or VerifyRequest()
+        result = verify_sign_images(
+            sign_ids=body.sign_ids,
+            force=body.force,
+            max_age_days=body.max_age_days,
+        )
+        return result
+    except Exception as exc:
+        _log.error("Verify failed: %s", exc, exc_info=True)
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+
+@router.get("/discover")
+async def discover_missing() -> dict[str, Any]:
+    """Discover candidate sign images from Wikimedia, CDLI, and local sources."""
+    try:
+        _, _, find_missing_signs = _get_extras()
+        candidates = find_missing_signs()
+        # Return summary + first few candidates per sign
+        summary: dict[str, Any] = {}
+        for sign_id, cands in candidates.items():
+            summary[sign_id] = {
+                "count": len(cands),
+                "candidates": cands[:5],  # cap per sign
+            }
+        return {
+            "total_signs_with_candidates": len(candidates),
+            "total_candidates": sum(len(v) for v in candidates.values()),
+            "by_sign": summary,
+        }
+    except Exception as exc:
+        _log.error("Discover failed: %s", exc, exc_info=True)
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+
+
+@router.post("/rebuild")
+async def rebuild_manifest_endpoint() -> dict[str, Any]:
+    """Rebuild the sign image manifest from existing PNG files on disk."""
+    try:
+        rebuild_manifest, _, _ = _get_extras()
+        result = rebuild_manifest()
+        return result
+    except Exception as exc:
+        _log.error("Rebuild failed: %s", exc, exc_info=True)
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
 
 
 @router.post("/upload/{sign_id}")

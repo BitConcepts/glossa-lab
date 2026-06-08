@@ -11,9 +11,13 @@ import {
   type SignsSummary,
   getSignImagesStatus,
   triggerSignImageProcessing,
+  processOneSignImage,
   type SignImagesStatus,
   getPagePreviews,
   type PagePreview,
+  verifySignImages,
+  type VerifyResult,
+  rebuildSignManifest,
 } from "../api";
 import { CorpusAnalyticsPanel } from "./CorpusAnalyticsPanel";
 
@@ -155,7 +159,31 @@ function SignCard({ sign, onClick }: { sign: SignEntry; onClick?: () => void }) 
       </div>
 
       {/* Action buttons */}
-      <div style={{ display: "flex", gap: 6, marginTop: 8, flexWrap: "wrap" }}>
+      <div style={{ display: "flex", gap: 6, marginTop: 8, flexWrap: "wrap", alignItems: "center" }}>
+        {/* Triple-check badge */}
+        <span title={sign.image_url ? "Image present" : "Missing image"}
+          style={{ fontSize: 10, fontWeight: 700, letterSpacing: 1,
+                   color: sign.image_url ? "#4ade80" : "#f87171" }}>
+          {sign.image_url ? "✓✓✓" : "✗"}
+        </span>
+        {/* Reprocess button */}
+        <button
+          onClick={async (e) => {
+            e.stopPropagation();
+            try {
+              await processOneSignImage(sign.sign_id, true);
+              window.dispatchEvent(new CustomEvent("glossa:sign-reprocessed", { detail: { sign_id: sign.sign_id } }));
+            } catch { /* best effort */ }
+          }}
+          style={{
+            padding: "2px 8px", fontSize: 10, borderRadius: 4,
+            border: "1px solid rgba(255,255,255,0.1)", background: "rgba(255,255,255,0.04)",
+            color: "#fbbf24", cursor: "pointer",
+          }}
+          title="Reprocess this sign image"
+        >
+          🔄 Reprocess
+        </button>
         {sign.source?.report_ref && (
           <button
             onClick={e => { e.stopPropagation(); window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: "reports" } })); }}
@@ -340,6 +368,9 @@ export function SignsView() {
   const [imgMsg, setImgMsg] = useState<string | null>(null);
   const [pagePreviews, setPagePreviews] = useState<PagePreview[]>([]);
   const [selectedPreview, setSelectedPreview] = useState<PagePreview | null>(null);
+  const [verifyResult, setVerifyResult] = useState<VerifyResult | null>(null);
+  const [verifying, setVerifying] = useState(false);
+  const [rebuildMsg, setRebuildMsg] = useState<string | null>(null);
 
   const loadImgStatus = useCallback(async () => {
     setImgStatusLoading(true);
@@ -533,7 +564,65 @@ export function SignsView() {
                   }}>
                   {imgStatus.processing_running ? "⏳ Processing…" : "✨ Regenerate Local Images"}
                 </button>
+                <button onClick={async () => {
+                  setRebuildMsg("Rebuilding manifest…");
+                  try {
+                    const r = await rebuildSignManifest();
+                    setRebuildMsg(`✔ Rebuilt: ${r.reconciled} reconciled, ${r.already_ok} already ok, ${r.invalid} invalid`);
+                    void loadImgStatus();
+                  } catch (e) { setRebuildMsg(`Error: ${e instanceof Error ? e.message : String(e)}`); }
+                }}
+                  style={{
+                    padding: "7px 16px", fontSize: 12, fontWeight: 700, borderRadius: 6,
+                    background: "#059669", color: "#fff", border: "none", cursor: "pointer",
+                  }}>
+                  🔧 Rebuild Manifest
+                </button>
+                <button onClick={async () => {
+                  setVerifying(true);
+                  try { setVerifyResult(await verifySignImages({ force: false })); }
+                  catch { /* backend offline */ }
+                  finally { setVerifying(false); }
+                }}
+                  disabled={verifying}
+                  style={{
+                    padding: "7px 16px", fontSize: 12, fontWeight: 700, borderRadius: 6,
+                    background: "#7c3aed", color: "#fff", border: "none", cursor: "pointer",
+                  }}>
+                  {verifying ? "⏳ Verifying…" : "✓✓✓ Triple Check"}
+                </button>
               </div>
+
+              {rebuildMsg && (
+                <div style={{ padding: "8px 12px", borderRadius: 5, fontSize: 11,
+                               background: "#f0fdf4", border: "1px solid #86efac", color: "#15803d",
+                               marginBottom: 12 }}>
+                  {rebuildMsg}
+                </div>
+              )}
+
+              {verifyResult && (
+                <div style={{ padding: "10px 14px", borderRadius: 6, fontSize: 12,
+                               background: verifyResult.failed > 0 ? "#fef2f2" : "#f0fdf4",
+                               border: `1px solid ${verifyResult.failed > 0 ? "#fca5a5" : "#86efac"}`,
+                               color: verifyResult.failed > 0 ? "#991b1b" : "#15803d",
+                               marginBottom: 12, lineHeight: 1.6 }}>
+                  <strong>Triple-Check Results:</strong><br />
+                  ✅ Passed: {verifyResult.passed} &nbsp;
+                  ❌ Failed: {verifyResult.failed} &nbsp;
+                  🔄 Requeued: {verifyResult.requeued}
+                  {verifyResult.failures.length > 0 && (
+                    <div style={{ marginTop: 6, fontSize: 11 }}>
+                      <strong>Sample failures:</strong>
+                      {verifyResult.failures.slice(0, 10).map(f => (
+                        <div key={f.sign_id}>
+                          {f.sign_id}: {f.issues.join(", ")}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
 
               {imgMsg && (
                 <div style={{ padding: "8px 12px", borderRadius: 5, fontSize: 11,

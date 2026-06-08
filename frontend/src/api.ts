@@ -2753,3 +2753,34 @@ export interface PagePreview {
 
 export const getPagePreviews = (): Promise<{ count: number; pages: PagePreview[] }> =>
   request("GET", "/signs/images/page-previews");
+
+export interface VerifyResult {
+  total_checked: number;
+  passed: number;
+  failed: number;
+  requeued: number;
+  failures: { sign_id: string; issues: string[] }[];
+}
+
+export const verifySignImages = (opts: {
+  sign_ids?: string[];
+  force?: boolean;
+  max_age_days?: number;
+} = {}): Promise<VerifyResult> =>
+  request("POST", "/signs/images/verify", opts);
+
+export const discoverMissingSigns = (): Promise<{
+  total_signs_with_candidates: number;
+  total_candidates: number;
+  by_sign: Record<string, { count: number; candidates: { source: string; filename?: string; url?: string }[] }>;
+}> =>
+  request("GET", "/signs/images/discover");
+
+export const rebuildSignManifest = (): Promise<{
+  total_pngs_on_disk: number;
+  reconciled: number;
+  already_ok: number;
+  invalid: number;
+  manifest_entries: number;
+}> =>
+  request("POST", "/signs/images/rebuild");

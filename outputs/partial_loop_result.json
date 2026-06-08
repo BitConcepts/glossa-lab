@@ -5,9 +5,9 @@
     {
       "cycle": 1,
       "experiment": "compound_semantic_coherence",
-      "summary": "Compound Semantic Coherence: Compound coherence: 100% (4900/4906) valid. · valid_pct=100",
+      "summary": "Compound Semantic Coherence: Compound coherence: 0% (0/0) valid. · valid_pct=0",
       "metrics": {
-        "valid_pct": 100
+        "valid_pct": 0
       },
       "flags": [],
       "suggested_next_steps": [
@@ -18,7 +18,7 @@
   "history": [
     {
       "cycle": 1,
-      "timestamp": "2026-06-08T01:48:24.415371+00:00",
+      "timestamp": "2026-06-08T02:04:05.185927+00:00",
       "gap_targeted": "rare_sign_context",
       "n_papers": 1,
       "n_insights": 1,
@@ -27,15 +27,15 @@
       },
       "experiment": "compound_semantic_coherence",
       "selection_method": "proposal",
-      "verdict": "Compound coherence: 100% (4900/4906) valid.",
+      "verdict": "Compound coherence: 0% (0/0) valid.",
       "is_new_info": true,
       "n_candidates": 0,
       "top_candidate": null,
       "analysis_metrics": {
-        "valid_pct": 100
+        "valid_pct": 0
       },
       "analysis_flags": [],
-      "analysis_summary": "Compound Semantic Coherence: Compound coherence: 100% (4900/4906) valid. · valid_pct=100"
+      "analysis_summary": "Compound Semantic Coherence: Compound coherence: 0% (0/0) valid. · valid_pct=0"
     }
   ]
 }

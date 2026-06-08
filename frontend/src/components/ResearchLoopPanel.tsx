@@ -209,19 +209,52 @@ export function ResearchLoopPanel() {
   const fetchLastSession = useCallback(async () => {
     try {
       const res = await fetch(`${BASE}/last-session`);
-      if (res.ok) {
-        const data = await res.json() as StudySession;
-        setLastSession(data);
-        if (data.synthesis) setSynthesis(data.synthesis);
-        // Backfill lastRun for RunSummary compat
-        setLastRun({
-          completed_at: data.completed_at,
-          total_papers_mined: data.total_papers_mined,
-          total_insights: data.total_insights,
-          cycles_run: data.iterations_run,
-          synthesis: data.synthesis,
-        });
-      }
+      if (!res.ok) return;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const raw = await res.json() as Record<string, any>;
+      if (raw.no_sessions) return;
+
+      // The API returns a nested structure; flatten it into StudySession.
+      //   before.coverage / after.coverage  → coverage_before / coverage_after
+      //   narrative.*                        → top-level narrative fields
+      //   narrative.actions_taken (array)    → joined string
+      //   iterations                         → iterations_run
+      //   total_papers                       → total_papers_mined
+      const narr = raw.narrative || {};
+      const before = raw.before || {};
+      const after  = raw.after  || {};
+      const anchorDelta = ((after.anchors_hm ?? 0) - (before.anchors_hm ?? 0));
+
+      const flat: StudySession = {
+        session_id:      raw.session_id,
+        completed_at:    raw.completed_at,
+        iterations_run:  raw.iterations ?? raw.iterations_run,
+        total_papers_mined: raw.total_papers ?? raw.total_papers_mined,
+        total_insights:  raw.total_insights,
+        synthesis:       raw.synthesis,
+        // Coverage extracted from before/after snapshots
+        coverage_before: before.coverage,
+        coverage_after:  after.coverage,
+        anchor_delta:    anchorDelta || undefined,
+        // Narrative fields (nested under "narrative" in the API)
+        where_we_came_from: narr.where_we_came_from,
+        what_we_learned:    narr.what_we_learned,
+        // actions_taken is an array in the API; join for display
+        actions_taken: Array.isArray(narr.actions_taken)
+          ? narr.actions_taken.join(" · ")
+          : narr.actions_taken,
+        whats_next: narr.whats_next,
+      };
+
+      setLastSession(flat);
+      if (flat.synthesis) setSynthesis(flat.synthesis);
+      setLastRun({
+        completed_at:    flat.completed_at,
+        total_papers_mined: flat.total_papers_mined,
+        total_insights:  flat.total_insights,
+        cycles_run:      flat.iterations_run,
+        synthesis:       flat.synthesis,
+      });
     } catch { /* ignore */ }
   }, []);
 
@@ -242,7 +275,22 @@ export function ResearchLoopPanel() {
   const fetchHistory = useCallback(async () => {
     try {
       const res = await fetch(`${BASE}/history`);
-      if (res.ok) setHistory(await res.json() as HistorySession[]);
+      if (!res.ok) return;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const raw = await res.json() as { sessions?: any[] } | any[];
+      // API returns {sessions: [...]} not []
+      const sessions: any[] = Array.isArray(raw) ? raw : (raw as any).sessions ?? []; // eslint-disable-line @typescript-eslint/no-explicit-any
+      setHistory(sessions.map((s: any) => ({ // eslint-disable-line @typescript-eslint/no-explicit-any
+        session_id:    s.session_id,
+        completed_at:  s.completed_at,
+        iterations_run: s.iterations ?? s.iterations_run,
+        coverage_before: s.before?.coverage,
+        coverage_after:  s.after?.coverage,
+        coverage_delta:  s.after && s.before
+          ? (s.after.coverage ?? 0) - (s.before.coverage ?? 0)
+          : undefined,
+        what_we_learned: s.narrative?.what_we_learned,
+      })));
     } catch { /* ignore */ }
   }, []);
 
@@ -322,7 +370,30 @@ export function ResearchLoopPanel() {
                 void fetchHistory();
               } else if (event.type === "study_loop_complete") {
                 if (event.session) {
-                  setLastSession(event.session);
+                  // Same flattening as fetchLastSession — session is nested
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                  const s = event.session as any;
+                  const narr = s.narrative || {};
+                  const before = s.before || {};
+                  const after  = s.after  || {};
+                  const delta = ((after.anchors_hm ?? 0) - (before.anchors_hm ?? 0));
+                  setLastSession({
+                    session_id:      s.session_id,
+                    completed_at:    s.completed_at,
+                    iterations_run:  s.iterations ?? s.iterations_run,
+                    total_papers_mined: s.total_papers ?? s.total_papers_mined,
+                    total_insights:  s.total_insights,
+                    synthesis:       s.synthesis,
+                    coverage_before: before.coverage,
+                    coverage_after:  after.coverage,
+                    anchor_delta:    delta || undefined,
+                    where_we_came_from: narr.where_we_came_from,
+                    what_we_learned:    narr.what_we_learned,
+                    actions_taken: Array.isArray(narr.actions_taken)
+                      ? narr.actions_taken.join(" \u00b7 ")
+                      : narr.actions_taken,
+                    whats_next: narr.whats_next,
+                  });
                   setShowInsights(true);
                 }
               } else if (event.type === "proposal_selected") {

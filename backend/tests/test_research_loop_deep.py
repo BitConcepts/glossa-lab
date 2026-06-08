@@ -46,6 +46,20 @@ def _cycle_entries(events: list[dict]) -> list[dict]:
     return [e for e in events if e.get("type") == "node_complete"]
 
 
+def _stub_corpus(loop: ResearchLoop) -> None:
+    """Populate minimal corpus data so verify_before_run() passes in CI.
+
+    In production the Holdat CSV is on disk, but in CI (no corpus file)
+    corpus_seqs=[] causes verify_before_run() to return 'abort' for all
+    proposals, yielding gap_skipped events instead of node_complete entries.
+    A small stub corpus (20 sequences) satisfies the corpus_available=True
+    check without changing any test semantics.
+    """
+    loop.corpus_seqs = [["M1", "M2", "M3"]] * 20
+    loop.corpus_sites = ["Mohenjo-daro"] * 20
+    loop.corpus_motifs = ["unicorn"] * 20
+
+
 def _make_mine_fn(insight_types: list[str]):
     """Return a mock _mine that produces papers with specific insight types."""
     def mock_mine(gap):
@@ -86,6 +100,7 @@ def test_each_insight_type_routes_correctly(insight_type, expected_first):
     We check membership in the type's pool rather than exact first match.
     """
     loop = ResearchLoop(max_cycles=1)
+    _stub_corpus(loop)  # CI: no Holdat CSV — stub so verify_before_run() passes
     with patch.object(loop, "_mine", side_effect=_make_mine_fn([insight_type])), \
          patch.object(loop, "_blitz_mine", return_value=([], [], {})):
         all_events = list(loop.run())
@@ -104,6 +119,7 @@ def test_each_insight_type_routes_correctly(insight_type, expected_first):
 def test_recency_skip_prevents_repeat():
     """Same insight type across 3 cycles should pick 3 different experiments."""
     loop = ResearchLoop(max_cycles=3)
+    _stub_corpus(loop)
     with patch.object(loop, "_mine", side_effect=_make_mine_fn(["reading"])), \
          patch.object(loop, "_blitz_mine", return_value=([], [], {})):
         all_events = list(loop.run())
@@ -123,6 +139,7 @@ def test_recency_skip_prevents_repeat():
 def test_dominant_insight_type_wins():
     """When multiple insight types appear, the most frequent one drives selection."""
     loop = ResearchLoop(max_cycles=1)
+    _stub_corpus(loop)
     # 3 compound + 1 reading → compound should dominate
     mixed = ["compound", "compound", "compound", "reading"]
     with patch.object(loop, "_mine", side_effect=_make_mine_fn(mixed)), \
@@ -168,6 +185,7 @@ def test_multi_cycle_varying_insights():
         [],               # C5: empty → rotation / proposal
     ]
     loop = ResearchLoop(max_cycles=5)
+    _stub_corpus(loop)
     with patch.object(loop, "_mine", side_effect=_make_sequential_mine_fn(cycle_insights)), \
          patch.object(loop, "_blitz_mine", return_value=([], [], {})):
         all_events = list(loop.run())
@@ -301,6 +319,7 @@ def test_cycle_entry_has_all_fields():
         "insight_types", "experiment", "selection_method", "verdict", "is_new_info",
     }
     loop = ResearchLoop(max_cycles=2)
+    _stub_corpus(loop)
     with patch.object(loop, "_mine", side_effect=_make_mine_fn(["compound"])), \
          patch.object(loop, "_blitz_mine", return_value=([], [], {})):
         all_events = list(loop.run())
@@ -329,6 +348,7 @@ def test_stop_halts_loop():
     entries to determine how many full cycles completed.
     """
     loop = ResearchLoop(max_cycles=10)
+    _stub_corpus(loop)
     cycle_results = []
     all_results = []
 
@@ -355,6 +375,7 @@ def test_stop_halts_loop():
 def test_paper_deduplication():
     """Deduplication via all_seen works when _mine returns raw (pre-dedup) papers."""
     loop = ResearchLoop(max_cycles=1)
+    _stub_corpus(loop)
     # Pre-populate all_seen as if cycle 1 already ran
     loop.all_seen.add("identical paper title")
 

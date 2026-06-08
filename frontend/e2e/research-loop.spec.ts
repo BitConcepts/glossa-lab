@@ -122,15 +122,15 @@ test.describe("Research Loop Panel — status display", () => {
 test.describe("Dashboard — Atomic Nodes counter", () => {
   test("atomic nodes tile is visible on dashboard", async ({ page }) => {
     await navigateToDashboard(page);
+    // UI label is 'Palette nodes' (was 'Atomic nodes' in earlier versions)
     await expect(
-      page.getByText(/Atomic nodes/i).first()
+      page.getByText(/Palette nodes|Atomic nodes/i).first()
     ).toBeVisible({ timeout: 8000 });
   });
 
   test("atomic nodes count is a positive number", async ({ page }) => {
     await navigateToDashboard(page);
-    // The counter tile shows a number >= 400
-    const tile = page.locator("text=Atomic nodes").first();
+    const tile = page.locator("text=/Palette nodes|Atomic nodes/").first();
     await expect(tile).toBeVisible({ timeout: 5000 });
   });
 });

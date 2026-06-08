@@ -128,7 +128,8 @@ test.describe("Dashboard UI", () => {
     // Should show counter tiles
     await expect(page.getByText("Discovery items")).toBeVisible({ timeout: 5000 });
     // Use exact role match to avoid strict-mode violation (sidebar + description + counter all contain "Experiments")
-    await expect(page.getByRole("button", { name: /Experiments.*graph registry/i })).toBeVisible({ timeout: 5000 });
+    // Sub text is 'graph experiments' (not 'graph registry')
+    await expect(page.getByRole("button", { name: /Experiments.*graph/i })).toBeVisible({ timeout: 5000 });
   });
 
   test("AI Insight section renders", async ({ page }) => {

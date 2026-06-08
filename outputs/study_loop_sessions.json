@@ -226,5 +226,176 @@
       "epistemic": 0.01,
       "blocker_context": 1.0
     }
+  },
+  {
+    "session_id": "ea723418a89c",
+    "started_at": "2026-06-08T09:43:44.555865+00:00",
+    "completed_at": "2026-06-08T09:44:49.689131+00:00",
+    "iterations": 15,
+    "trigger": "scheduler",
+    "before": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T09:43:44.555865+00:00"
+    },
+    "after": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T09:44:49.690454+00:00"
+    },
+    "narrative": {
+      "where_we_came_from": "Coverage: 95.8% · 274 HIGH+MEDIUM anchors · 12 staged candidates. Epistemic entropy: 52% (moderate), 0 signs with no evidence chain.",
+      "what_happened": "Ran 2 research iteration(s), mining 0 paper(s) and extracting 0 insight(s).",
+      "what_we_learned": "Coverage stable at 95.8%. Dominant evidence path: blocker_context (100% of insights).",
+      "actions_taken": [
+        "reading_frequency_zipf: zipf_alpha=0.623",
+        "compound_semantic_coherence: valid_pct=100"
+      ],
+      "whats_next": "Blocker Sign Context: blocker sign context: never run before; epistemic priority: targets high-uncertainty signs (system e | Decoded Text Repetition: decoded text repetition: never run before; epistemic priority: targets high-uncertainty signs (syste",
+      "epistemic_entropy_before": 0.5239,
+      "epistemic_entropy_after": 0.5239
+    },
+    "cycles_run": 2,
+    "total_papers": 0,
+    "total_insights": 0,
+    "path_signals": {
+      "reading": 0.309,
+      "formula": 0.346,
+      "function": 0.08,
+      "morphology": 0.042,
+      "compound": 0.031,
+      "guild": 0.18,
+      "self_improvement": 0.002,
+      "epistemic": 0.01,
+      "blocker_context": 1.0
+    }
+  },
+  {
+    "session_id": "73d8300750ff",
+    "started_at": "2026-06-08T09:49:41.258334+00:00",
+    "completed_at": "2026-06-08T09:50:46.281141+00:00",
+    "iterations": 50,
+    "trigger": "user",
+    "before": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T09:49:41.258334+00:00"
+    },
+    "after": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T09:50:46.281141+00:00"
+    },
+    "narrative": {
+      "where_we_came_from": "Coverage: 95.8% · 274 HIGH+MEDIUM anchors · 12 staged candidates. Epistemic entropy: 52% (moderate), 0 signs with no evidence chain.",
+      "what_happened": "Ran 2 research iteration(s), mining 0 paper(s) and extracting 0 insight(s).",
+      "what_we_learned": "Coverage stable at 95.8%. Dominant evidence path: blocker_context (100% of insights).",
+      "actions_taken": [
+        "reading_frequency_zipf: zipf_alpha=0.623",
+        "compound_semantic_coherence: valid_pct=100"
+      ],
+      "whats_next": "Blocker Sign Context: blocker sign context: never run before; epistemic priority: targets high-uncertainty signs (system e | Decoded Text Repetition: decoded text repetition: never run before; epistemic priority: targets high-uncertainty signs (syste",
+      "epistemic_entropy_before": 0.5239,
+      "epistemic_entropy_after": 0.5239
+    },
+    "cycles_run": 2,
+    "total_papers": 0,
+    "total_insights": 0,
+    "path_signals": {
+      "reading": 0.309,
+      "formula": 0.346,
+      "function": 0.08,
+      "morphology": 0.042,
+      "compound": 0.031,
+      "guild": 0.18,
+      "self_improvement": 0.002,
+      "epistemic": 0.01,
+      "blocker_context": 1.0
+    }
+  },
+  {
+    "session_id": "b7073a915d90",
+    "started_at": "2026-06-08T09:55:24.111738+00:00",
+    "completed_at": "2026-06-08T09:56:29.279053+00:00",
+    "iterations": 50,
+    "trigger": "user",
+    "before": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T09:55:24.112779+00:00"
+    },
+    "after": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T09:56:29.281056+00:00"
+    },
+    "narrative": {
+      "where_we_came_from": "Coverage: 95.8% · 274 HIGH+MEDIUM anchors · 12 staged candidates. Epistemic entropy: 52% (moderate), 0 signs with no evidence chain.",
+      "what_happened": "Ran 2 research iteration(s), mining 0 paper(s) and extracting 0 insight(s).",
+      "what_we_learned": "Coverage stable at 95.8%. Dominant evidence path: blocker_context (100% of insights).",
+      "actions_taken": [
+        "reading_frequency_zipf: zipf_alpha=0.623",
+        "compound_semantic_coherence: valid_pct=100"
+      ],
+      "whats_next": "Blocker Sign Context: blocker sign context: never run before; epistemic priority: targets high-uncertainty signs (system e | Decoded Text Repetition: decoded text repetition: never run before; epistemic priority: targets high-uncertainty signs (syste",
+      "epistemic_entropy_before": 0.5239,
+      "epistemic_entropy_after": 0.5239
+    },
+    "cycles_run": 2,
+    "total_papers": 0,
+    "total_insights": 0,
+    "path_signals": {
+      "reading": 0.309,
+      "formula": 0.346,
+      "function": 0.08,
+      "morphology": 0.042,
+      "compound": 0.031,
+      "guild": 0.18,
+      "self_improvement": 0.002,
+      "epistemic": 0.01,
+      "blocker_context": 1.0
+    }
   }
 ]

@@ -28,7 +28,6 @@ import {
   getDashboardHighlights,
   getEventsStreamUrl,
   getHealth,
-  getLatestInsight,
   listExperiments,
   listGraphExperiments,
   regenerateDashboardInsight,
@@ -200,6 +199,11 @@ export function DashboardView() {
     const saved = localStorage.getItem("glossa_insight_window_days");
     return saved ? parseInt(saved, 10) : 14;
   });
+  // Keep the persisted value in sync whenever `days` changes (e.g. from
+  // the select, from a restored session, or any future code path).
+  useEffect(() => {
+    try { localStorage.setItem("glossa_insight_window_days", String(days)); } catch { /* ignore */ }
+  }, [days]);
   const [fetching, setFetching] = useState(false);
   // Bump to force re-read of action results from localStorage
   const [actionResultsVersion, setActionResultsVersion] = useState(0);
@@ -385,38 +389,16 @@ export function DashboardView() {
     return () => window.removeEventListener("glossa:regenerate-insight", handler);
   }, [generateInsight]);
 
-  // When a research loop completes (dispatched by ResearchLoopPanel),
-  // pull the latest cached insight from the backend WITHOUT re-running the LLM.
+  // When a study loop completes (dispatched by ResearchLoopPanel),
+  // regenerate the AI insight so it reflects the new data produced by the loop.
   useEffect(() => {
-    const handler = async () => {
-      try {
-        const result = await getLatestInsight();
-        if (result.available && result.insight &&
-            result.generated_at * 1000 > insightGeneratedAt) {
-          setInsight(result.insight);
-          const genMs = Math.round(result.generated_at * 1000);
-          setInsightGeneratedAt(genMs);
-          try {
-            const h = await getHealth();
-            const bootAt = Math.round((Date.now() - h.uptime_seconds * 1000) / 1000) * 1000;
-            _savePersistedInsight({
-              insight: result.insight, generated_at: genMs,
-              backend_boot_at: bootAt, days,
-            });
-          } catch {
-            _savePersistedInsight({
-              insight: result.insight, generated_at: genMs,
-              backend_boot_at: 0, days,
-            });
-          }
-          setApplyResult({});
-        }
-      } catch { /* ignore — backend may not have insight yet */ }
+    const handler = () => {
       void refresh();
+      void generateInsight();
     };
     window.addEventListener("glossa:loop-complete", handler);
     return () => window.removeEventListener("glossa:loop-complete", handler);
-  }, [insightGeneratedAt, refresh, days, setApplyResult]);
+  }, [refresh, generateInsight]);
 
   const onRunFetch = async () => {
     setFetching(true);

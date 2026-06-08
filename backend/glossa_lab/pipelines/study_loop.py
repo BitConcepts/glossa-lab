@@ -312,10 +312,17 @@ async def run_study_loop(
 ) -> AsyncGenerator[dict[str, Any], None]:
     """Run a full study loop session, yielding SSE-compatible dicts.
 
-    1. Capture ``before`` state.
-    2. Create and iterate a ``ResearchLoop(max_cycles=iterations)``.
-    3. Capture ``after`` state, generate narrative, persist session.
-    4. Yield final ``study_loop_complete`` event.
+    Args:
+        iterations: Number of **experiment cycles** to run.  Each cycle
+            performs: mine → propose → verify → execute → analyze → act.
+            This corresponds directly to ``ResearchLoop.max_cycles``.
+            Preset values: 5 (Quick Scan), 15 (Standard), 30 (Deep Dive),
+            50 (Extensive).
+        trigger: Who/what started this run ("user", "scheduler", etc.).
+
+    Yields:
+        SSE-compatible dicts including ``node_complete`` for each finished
+        experiment cycle and ``study_loop_complete`` at the end.
     """
     from glossa_lab.database import get_db  # noqa: PLC0415
     from glossa_lab.pipelines.research_loop import ResearchLoop  # noqa: PLC0415

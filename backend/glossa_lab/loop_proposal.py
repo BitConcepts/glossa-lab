@@ -62,13 +62,31 @@ class AnalysisResult:
 # Proposal engine
 # ---------------------------------------------------------------------------
 
+# Experiments most effective at reducing epistemic uncertainty —
+# i.e. they target high-uncertainty signs or probe evidence diversity.
+_EPISTEMIC_PRIORITY_EXPERIMENTS: frozenset[str] = frozenset({
+    "blocker_sign_context",       # highest-uncertainty signs adjacent to HIGH anchors
+    "rare_sign_neighbor_profile", # hapax-like signs with no assigned reading
+    "reading_frequency_zipf",     # statistical consistency of assigned readings
+    "decoded_text_repetition",    # text-type ratio reveals gaps in reading coverage
+    "compound_semantic_coherence",# coherence loss flags implausible readings
+})
+
+
 class ProposalEngine:
     """Generate ranked experiment proposals for a given research gap.
+
+    Epistemic principle: every proposal is scored by expected information gain
+    — how much will this experiment reduce our uncertainty about sign readings?
+    Experiments that target high-uncertainty signs (LOW confidence, blocker
+    signs, hapax logograms) receive an epistemic bonus over experiments that
+    would revisit already-confident territory.
 
     Rule-based scorer that prefers:
     - Registered experiment templates
     - Templates with high historical success rate
     - Experiments covering unseen gaps
+    - Experiments with high epistemic value (uncertainty reduction)
 
     Anti-patterns rejected:
     - Same experiment twice in a row
@@ -104,8 +122,15 @@ class ProposalEngine:
         anchor_count: int,
         cycle: int = 0,
         insights: list[dict[str, Any]] | None = None,
+        epistemic_entropy: float = 0.5,
     ) -> list[ExperimentProposal]:
-        """Return 2-3 ranked proposals for what experiment to run next."""
+        """Return 2-3 ranked proposals for what experiment to run next.
+
+        Args:
+            epistemic_entropy: 0–1 normalised uncertainty across current anchor set.
+                Higher = more unknown signs; triggers stronger epistemic-priority boost.
+                Computed by study_loop.capture_state() and passed through per cycle.
+        """
         insights = insights or []
 
         # Gather recent experiment IDs
@@ -171,10 +196,21 @@ class ProposalEngine:
             if exp_id in self.template_to_graph:
                 priority += 0.05
 
+            # ── Epistemic boost ──────────────────────────────────────────
+            # Experiments targeting high-uncertainty signs get a boost
+            # proportional to current epistemic entropy (0–1).  When
+            # entropy is high (many unknown signs), reducing uncertainty
+            # matters most, so we boost the experiments best positioned
+            # to identify readings for the hardest signs.
+            if exp_id in _EPISTEMIC_PRIORITY_EXPERIMENTS:
+                epistemic_boost = epistemic_entropy * 0.35
+                priority += epistemic_boost
+
             estimated_value = round(priority * novelty, 3)
 
             rationale = self._build_rationale(
-                exp_id, gap, novelty, sr, type_counts
+                exp_id, gap, novelty, sr, type_counts,
+                epistemic_entropy=epistemic_entropy,
             )
 
             candidates.append(ExperimentProposal(
@@ -202,6 +238,7 @@ class ProposalEngine:
         novelty: float,
         success_rate: float,
         type_counts: Counter,
+        epistemic_entropy: float = 0.5,
     ) -> str:
         parts: list[str] = []
         if novelty >= 1.0:
@@ -211,6 +248,11 @@ class ProposalEngine:
         top_type = type_counts.most_common(1)
         if top_type:
             parts.append(f"aligns with dominant insight type '{top_type[0][0]}'")
+        if exp_id in _EPISTEMIC_PRIORITY_EXPERIMENTS and epistemic_entropy > 0.4:
+            parts.append(
+                f"epistemic priority: targets high-uncertainty signs "
+                f"(system entropy {epistemic_entropy:.0%})"
+            )
         parts.append(f"targets gap '{gap}'")
         return f"{exp_id.replace('_', ' ')}: " + "; ".join(parts) + "."
 

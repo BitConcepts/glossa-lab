@@ -126,7 +126,8 @@ test.describe("Dashboard UI", () => {
     // Dashboard is the default view — wait for heading
     await expect(page.getByRole("heading", { name: /Dashboard/i })).toBeVisible({ timeout: 10_000 });
     // Should show counter tiles (allow longer wait for backend API calls)
-    await expect(page.getByText("Discovery items")).toBeVisible({ timeout: 10_000 });
+    // Use .first() to avoid strict-mode violation when the text appears in multiple elements
+    await expect(page.getByText("Discovery items").first()).toBeVisible({ timeout: 10_000 });
     // CounterTile for Experiments — may render as div with onClick rather than button role;
     // use getByText which is role-agnostic.  'graph experiments' is the sub text.
     const hasExperiments = await page.getByText(/Experiments/i).first().isVisible({ timeout: 8000 }).catch(() => false);

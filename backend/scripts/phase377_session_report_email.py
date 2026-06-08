@@ -7,7 +7,9 @@ Output: outputs/phase377_session_report.json
 Email: tpierson@bitconcepts.tech
 """
 from __future__ import annotations
-import json, os, sys
+import json
+import os
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 

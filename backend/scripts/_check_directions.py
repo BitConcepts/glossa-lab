@@ -36,7 +36,7 @@ for r in rows:
     name = r["name"] or ""
     direction = r["reading_direction"] or "unknown"
     alpha = r["alphabet_size"] or 0
-    
+
     # Determine expected direction
     expected = None
     matched_key = None
@@ -45,7 +45,7 @@ for r in rows:
             expected = exp_dir
             matched_key = key
             break
-    
+
     # Check
     if expected and direction != "unknown":
         if direction == expected:
@@ -57,7 +57,7 @@ for r in rows:
         status = "— (unset)"
     else:
         status = f"~ ({direction})"
-    
+
     print(f"{rid:12} {direction:8} {status:20} {alpha:5} {name[:50]}")
 
 # Check for duplicate corpus names with different directions

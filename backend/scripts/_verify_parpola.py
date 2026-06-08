@@ -1,4 +1,5 @@
-import json, unicodedata
+import json
+import unicodedata
 from pathlib import Path
 
 anchors = json.loads(Path(r'C:\Users\trist\Development\BitConcepts\glossa-lab\backend\reports\INDUS_FINAL_ANCHORS.json').read_text('utf-8')).get('anchors', {})
@@ -33,7 +34,7 @@ for sign_id in sorted(PARPOLA.keys()):
 
     # Check: is p_s contained in the stripped full reading?
     full_stripped = strip(our_r)
-    
+
     if our_s == p_s:
         match = "EXACT (first-word match)"
         exact += 1
@@ -63,7 +64,7 @@ for sign_id in sorted(PARPOLA.keys()):
     our_s = strip(our_r.split('/')[0].strip())
     p_s = strip(p_reading.split('/')[0].strip())
     full_stripped = strip(our_r)
-    
+
     if our_s != p_s and p_s in full_stripped:
         print(f"  LOOSE: {sign_id}: our='{our_r}' parpola='{p_reading}'")
         print(f"         our_s='{our_s}' != p_s='{p_s}' but p_s in full='{full_stripped}'")

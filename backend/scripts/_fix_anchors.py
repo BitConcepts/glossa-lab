@@ -131,7 +131,7 @@ if "metadata" in fa:
 ANCHORS_PATH.write_text(json.dumps(fa, indent=2, ensure_ascii=False), encoding="utf-8")
 
 print(f"\n{'='*60}")
-print(f"CLEANUP COMPLETE")
+print("CLEANUP COMPLETE")
 print(f"{'='*60}")
 print(f"Before: {original_count} anchors")
 print(f"After:  {len(anchors)} anchors")

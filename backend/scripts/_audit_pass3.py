@@ -1,5 +1,8 @@
 """Third-pass deep audit: verify the DATA behind each release finding, not just the numbers."""
-import json, csv, math, unicodedata
+import json
+import csv
+import math
+import unicodedata
 from collections import Counter
 from pathlib import Path
 
@@ -105,7 +108,7 @@ print(f"    Release says: {release['1_discrimination']['dravidian_hit_rate']}")
 if abs(rate - release['1_discrimination']['dravidian_hit_rate']) > 0.001:
     errors.append(f"Discrimination rate mismatch: {rate} vs {release['1_discrimination']['dravidian_hit_rate']}")
 else:
-    print(f"    MATCH OK")
+    print("    MATCH OK")
 
 # C2: Is the discrimination test meaningful?
 # If we have 400 anchor pins covering 92.8% of tokens, how many bigram pairs tested?
@@ -136,9 +139,9 @@ print(f"C3. Quick scramble test (10 trials): null mean={null_mean:.4f}, real={ra
 print(f"    Real - Null = {rate - null_mean:+.4f}")
 if rate <= null_mean:
     warnings.append(f"Discrimination rate ({rate:.4f}) is NOT above scramble null ({null_mean:.4f})")
-    print(f"    WARNING: Real is not above null!")
+    print("    WARNING: Real is not above null!")
 else:
-    print(f"    Real is above null — discrimination signal present")
+    print("    Real is above null — discrimination signal present")
 
 # ═══════════════════════════════════════════════════════════
 # D. TEST 3: PARPOLA - verify each match manually
@@ -213,7 +216,7 @@ print(f"    Release: H2={release['4_reading_entropy']['h2_conditional']}")
 if abs(h2 - release['4_reading_entropy']['h2_conditional']) > 0.01:
     errors.append(f"Entropy mismatch: {h2:.4f} vs {release['4_reading_entropy']['h2_conditional']}")
 else:
-    print(f"    MATCH OK")
+    print("    MATCH OK")
 
 # E2: Is H2 in linguistic range?
 print(f"E2. H2={h2:.2f} in [2.0, 4.5]? {'YES' if 2.0 <= h2 <= 4.5 else 'NO'}")
@@ -230,7 +233,7 @@ print(f"F1. Holdat-validated HIGH: {len(holdat_high)}")
 holdat_freq = Counter(holdat)
 high_freq = [(s, holdat_freq.get(s, 0)) for s in holdat_high]
 high_freq.sort(key=lambda x: -x[1])
-print(f"F2. Top 10 by corpus frequency:")
+print("F2. Top 10 by corpus frequency:")
 for s, f in high_freq[:10]:
     r = holdat_high[s].get('reading', '')
     print(f"    {s}: freq={f:4d} reading='{r}'")

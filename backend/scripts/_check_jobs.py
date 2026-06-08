@@ -1,5 +1,7 @@
 """Quick diagnostic: dump all jobs and identify issues."""
-import sqlite3, json, sys
+import sqlite3
+import json
+import sys
 from pathlib import Path
 
 db_path = Path(__file__).resolve().parent.parent / "data" / "glossa.db"

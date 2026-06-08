@@ -9,10 +9,8 @@ Verifies:
 6. all_done is based on completed_through_phase, NOT remaining_actions count
 7. Orphan sweep syncs phase_actions from 'running' to 'failed'
 """
-import json
 import pytest
 import pytest_asyncio
-from pathlib import Path
 
 from glossa_lab.database import Database
 

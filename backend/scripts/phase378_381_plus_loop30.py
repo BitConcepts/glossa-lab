@@ -10,7 +10,14 @@ Then: 30 integrated research loop iterations
 Output: outputs/phase378_381_plus_loop30.json
 """
 from __future__ import annotations
-import csv, json, math, random, re, time, urllib.parse, urllib.request
+import csv
+import json
+import math
+import random
+import re
+import time
+import urllib.parse
+import urllib.request
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path

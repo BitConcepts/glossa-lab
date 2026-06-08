@@ -443,7 +443,7 @@ CREATE TABLE IF NOT EXISTS phase_actions (
 
 CREATE INDEX IF NOT EXISTS idx_phase_actions_phase ON phase_actions(phase);
 CREATE UNIQUE INDEX IF NOT EXISTS idx_phase_actions_phase_label ON phase_actions(phase, action_label);
-""";
+"""
 
 _SCHEMA_V12 = """
 CREATE TABLE IF NOT EXISTS canonical_signs (

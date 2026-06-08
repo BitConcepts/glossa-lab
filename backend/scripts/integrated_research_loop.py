@@ -13,7 +13,15 @@ Usage: python backend/scripts/integrated_research_loop.py [--max-cycles 15]
 Output: outputs/integrated_research_loop.json
 """
 from __future__ import annotations
-import argparse, csv, json, math, random, re, time, urllib.parse, urllib.request
+import argparse
+import csv
+import json
+import math
+import random
+import re
+import time
+import urllib.parse
+import urllib.request
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path

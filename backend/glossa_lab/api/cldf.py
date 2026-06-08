@@ -13,7 +13,6 @@ from fastapi import APIRouter, Query
 
 from glossa_lab.data.cldf_loader import (
     get_cldf_summary,
-    get_forms_by_language,
     get_forms_by_parameter,
     load_forms,
     load_languages,

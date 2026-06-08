@@ -117,6 +117,23 @@ GAP_TOPICS = [
         "Indus sign allograph variant identification method computational",
         "undeciphered script sign variant graphic classification",
         "ancient writing system sign merger simplification evidence"]},
+    # ── Epistemic / methodology gaps ──────────────────────────────────────
+    {"name": "epistemic_self_improvement", "queries": [
+        "epistemic self-improving system autonomous knowledge acquisition loop",
+        "Bayesian belief updating uncertain knowledge iterative refinement",
+        "active learning uncertainty reduction decipherment autonomous"]},
+    {"name": "decipherment_methodology", "queries": [
+        "undeciphered script systematic decipherment methodology evidence chain",
+        "ancient writing decoding epistemic uncertainty reduction strategy",
+        "computational decipherment probabilistic evidence integration method"]},
+    {"name": "computational_linguistics_methods", "queries": [
+        "computational linguistics unsupervised ancient script analysis 2024 2025",
+        "machine learning low-resource language script feature extraction",
+        "neural network ancient writing classification uncertainty quantification"]},
+    {"name": "evidence_chain_validation", "queries": [
+        "epistemic evidence chain validation ancient language reading",
+        "multi-source evidence integration uncertainty scoring linguistics",
+        "falsification methodology ancient script reading rebus phonetic"]},
 ]
 
 EXPERIMENT_NAMES = [
@@ -197,6 +214,14 @@ _INSIGHT_KEYWORDS: list[tuple[str, str]] = [
     ("glyph", "reading"), ("sign list", "reading"),
     ("cuneiform", "reading"), ("hieroglyph", "reading"),
     ("linear a", "reading"), ("linear b", "reading"),
+    # Epistemic / self-improvement signals
+    ("epistemic", "epistemic"), ("belief update", "epistemic"),
+    ("uncertainty reduction", "epistemic"),
+    ("active learning", "epistemic"), ("information gain", "epistemic"),
+    ("self-improving", "self_improvement"), ("autonomous research", "self_improvement"),
+    ("iterative refinement", "self_improvement"), ("knowledge acquisition", "self_improvement"),
+    ("evidence chain", "epistemic"), ("falsif", "epistemic"),
+    ("decipherment method", "epistemic"), ("proof of concept", "epistemic"),
 ]
 
 INSIGHT_TO_EXPERIMENTS: dict[str, list[str]] = {
@@ -212,6 +237,12 @@ INSIGHT_TO_EXPERIMENTS: dict[str, list[str]] = {
                    "position_entropy_by_site", "suffix_after_animal"],
     "morphology": ["suffix_chain_depth", "title_root_suffix_trigram",
                    "compound_semantic_coherence", "decoded_text_repetition"],
+    # Epistemic: target the highest-uncertainty signs and evidence gaps
+    "epistemic":  ["blocker_sign_context", "rare_sign_neighbor_profile",
+                   "reading_frequency_zipf", "decoded_text_repetition"],
+    # Self-improvement signals: focus on iterative refinement experiments
+    "self_improvement": ["compound_semantic_coherence", "cross_site_formula_overlap",
+                         "inscription_uniqueness", "motif_reading_mutual_info"],
 }
 
 # ---------------------------------------------------------------------------

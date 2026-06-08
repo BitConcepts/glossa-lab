@@ -398,6 +398,7 @@ def test_paper_deduplication():
 def test_get_full_results_consistency():
     """get_full_results() aggregates match the actual cycle data."""
     loop = ResearchLoop(max_cycles=3)
+    _stub_corpus(loop)
 
     cycle_insights = [
         ["reading", "reading"],  # 2 insights

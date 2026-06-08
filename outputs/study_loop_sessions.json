@@ -397,5 +397,580 @@
       "epistemic": 0.01,
       "blocker_context": 1.0
     }
+  },
+  {
+    "session_id": "33f5442e293f",
+    "started_at": "2026-06-08T12:24:10.926682+00:00",
+    "completed_at": "2026-06-08T12:25:11.218020+00:00",
+    "iterations": 50,
+    "trigger": "user",
+    "before": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T12:24:10.936241+00:00"
+    },
+    "after": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T12:25:11.218020+00:00"
+    },
+    "narrative": {
+      "where_we_came_from": "Coverage: 95.8% · 274 HIGH+MEDIUM anchors · 12 staged candidates. Epistemic entropy: 52% (moderate), 0 signs with no evidence chain.",
+      "what_happened": "Ran 306 research iteration(s), mining 3888 paper(s) and extracting 764 insight(s).",
+      "what_we_learned": "Coverage stable at 95.8%. Dominant evidence path: blocker_context (100% of insights).",
+      "actions_taken": [
+        "reading_frequency_zipf: zipf_alpha=0.623",
+        "compound_semantic_coherence: valid_pct=100"
+      ],
+      "whats_next": "Blocker Sign Context: blocker sign context: never run before; high historical success (100%); epistemic priority: targets high-uncertainty sig | Decoded Text Repetition: decoded text repetition: never run before; high historical success (100%); epistemic priority: targets high-uncertainty ",
+      "whats_next_items": [
+        {
+          "experiment_id": "blocker_sign_context",
+          "display_name": "Blocker Sign Context",
+          "rationale": "blocker sign context: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        },
+        {
+          "experiment_id": "decoded_text_repetition",
+          "display_name": "Decoded Text Repetition",
+          "rationale": "decoded text repetition: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        },
+        {
+          "experiment_id": "rare_sign_neighbor_profile",
+          "display_name": "Rare Sign Neighbor Profile",
+          "rationale": "rare sign neighbor profile: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        }
+      ],
+      "epistemic_entropy_before": 0.5239,
+      "epistemic_entropy_after": 0.5239
+    },
+    "cycles_run": 306,
+    "total_papers": 3888,
+    "total_insights": 764,
+    "path_signals": {
+      "reading": 0.31,
+      "formula": 0.345,
+      "function": 0.08,
+      "morphology": 0.043,
+      "compound": 0.031,
+      "guild": 0.18,
+      "self_improvement": 0.002,
+      "epistemic": 0.01,
+      "blocker_context": 1.0
+    }
+  },
+  {
+    "session_id": "696cdbcb10f8",
+    "started_at": "2026-06-08T12:27:34.137041+00:00",
+    "completed_at": "2026-06-08T12:28:30.162862+00:00",
+    "iterations": 50,
+    "trigger": "user",
+    "before": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T12:27:34.140520+00:00"
+    },
+    "after": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T12:28:30.168524+00:00"
+    },
+    "narrative": {
+      "where_we_came_from": "Coverage: 95.8% · 274 HIGH+MEDIUM anchors · 12 staged candidates. Epistemic entropy: 52% (moderate), 0 signs with no evidence chain.",
+      "what_happened": "Ran 306 research iteration(s), mining 3888 paper(s) and extracting 764 insight(s).",
+      "what_we_learned": "Coverage stable at 95.8%. Dominant evidence path: blocker_context (100% of insights).",
+      "actions_taken": [
+        "reading_frequency_zipf: zipf_alpha=0.623",
+        "compound_semantic_coherence: valid_pct=100"
+      ],
+      "whats_next": "Blocker Sign Context: blocker sign context: never run before; high historical success (100%); epistemic priority: targets high-uncertainty sig | Decoded Text Repetition: decoded text repetition: never run before; high historical success (100%); epistemic priority: targets high-uncertainty ",
+      "whats_next_items": [
+        {
+          "experiment_id": "blocker_sign_context",
+          "display_name": "Blocker Sign Context",
+          "rationale": "blocker sign context: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        },
+        {
+          "experiment_id": "decoded_text_repetition",
+          "display_name": "Decoded Text Repetition",
+          "rationale": "decoded text repetition: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        },
+        {
+          "experiment_id": "rare_sign_neighbor_profile",
+          "display_name": "Rare Sign Neighbor Profile",
+          "rationale": "rare sign neighbor profile: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        }
+      ],
+      "epistemic_entropy_before": 0.5239,
+      "epistemic_entropy_after": 0.5239
+    },
+    "cycles_run": 306,
+    "total_papers": 3888,
+    "total_insights": 764,
+    "path_signals": {
+      "reading": 0.31,
+      "formula": 0.345,
+      "function": 0.08,
+      "morphology": 0.043,
+      "compound": 0.031,
+      "guild": 0.18,
+      "self_improvement": 0.002,
+      "epistemic": 0.01,
+      "blocker_context": 1.0
+    }
+  },
+  {
+    "session_id": "dd6e8bd7ea49",
+    "started_at": "2026-06-08T12:30:36.034360+00:00",
+    "completed_at": "2026-06-08T12:31:40.396338+00:00",
+    "iterations": 50,
+    "trigger": "user",
+    "before": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T12:30:36.037635+00:00"
+    },
+    "after": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T12:31:40.396338+00:00"
+    },
+    "narrative": {
+      "where_we_came_from": "Coverage: 95.8% · 274 HIGH+MEDIUM anchors · 12 staged candidates. Epistemic entropy: 52% (moderate), 0 signs with no evidence chain.",
+      "what_happened": "Ran 306 research iteration(s), mining 3888 paper(s) and extracting 764 insight(s).",
+      "what_we_learned": "Coverage stable at 95.8%. Dominant evidence path: blocker_context (100% of insights).",
+      "actions_taken": [
+        "reading_frequency_zipf: zipf_alpha=0.623",
+        "compound_semantic_coherence: valid_pct=100"
+      ],
+      "whats_next": "Blocker Sign Context: blocker sign context: never run before; high historical success (100%); epistemic priority: targets high-uncertainty sig | Decoded Text Repetition: decoded text repetition: never run before; high historical success (100%); epistemic priority: targets high-uncertainty ",
+      "whats_next_items": [
+        {
+          "experiment_id": "blocker_sign_context",
+          "display_name": "Blocker Sign Context",
+          "rationale": "blocker sign context: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        },
+        {
+          "experiment_id": "decoded_text_repetition",
+          "display_name": "Decoded Text Repetition",
+          "rationale": "decoded text repetition: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        },
+        {
+          "experiment_id": "rare_sign_neighbor_profile",
+          "display_name": "Rare Sign Neighbor Profile",
+          "rationale": "rare sign neighbor profile: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        }
+      ],
+      "epistemic_entropy_before": 0.5239,
+      "epistemic_entropy_after": 0.5239
+    },
+    "cycles_run": 306,
+    "total_papers": 3888,
+    "total_insights": 764,
+    "path_signals": {
+      "reading": 0.31,
+      "formula": 0.345,
+      "function": 0.08,
+      "morphology": 0.043,
+      "compound": 0.031,
+      "guild": 0.18,
+      "self_improvement": 0.002,
+      "epistemic": 0.01,
+      "blocker_context": 1.0
+    }
+  },
+  {
+    "session_id": "7209e59e7b8a",
+    "started_at": "2026-06-08T13:05:43.263357+00:00",
+    "completed_at": "2026-06-08T13:06:37.975392+00:00",
+    "iterations": 15,
+    "trigger": "user",
+    "before": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T13:05:43.265881+00:00"
+    },
+    "after": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T13:06:37.975392+00:00"
+    },
+    "narrative": {
+      "where_we_came_from": "Coverage: 95.8% · 274 HIGH+MEDIUM anchors · 12 staged candidates. Epistemic entropy: 52% (moderate), 0 signs with no evidence chain.",
+      "what_happened": "Ran 306 research iteration(s), mining 3888 paper(s) and extracting 764 insight(s).",
+      "what_we_learned": "Coverage stable at 95.8%. Dominant evidence path: blocker_context (100% of insights).",
+      "actions_taken": [
+        "reading_frequency_zipf: zipf_alpha=0.623",
+        "compound_semantic_coherence: valid_pct=100"
+      ],
+      "whats_next": "Blocker Sign Context: blocker sign context: never run before; high historical success (100%); epistemic priority: targets high-uncertainty sig | Decoded Text Repetition: decoded text repetition: never run before; high historical success (100%); epistemic priority: targets high-uncertainty ",
+      "whats_next_items": [
+        {
+          "experiment_id": "blocker_sign_context",
+          "display_name": "Blocker Sign Context",
+          "rationale": "blocker sign context: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        },
+        {
+          "experiment_id": "decoded_text_repetition",
+          "display_name": "Decoded Text Repetition",
+          "rationale": "decoded text repetition: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        },
+        {
+          "experiment_id": "rare_sign_neighbor_profile",
+          "display_name": "Rare Sign Neighbor Profile",
+          "rationale": "rare sign neighbor profile: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        }
+      ],
+      "epistemic_entropy_before": 0.5239,
+      "epistemic_entropy_after": 0.5239
+    },
+    "cycles_run": 306,
+    "total_papers": 3888,
+    "total_insights": 764,
+    "path_signals": {
+      "reading": 0.31,
+      "formula": 0.345,
+      "function": 0.08,
+      "morphology": 0.043,
+      "compound": 0.031,
+      "guild": 0.18,
+      "self_improvement": 0.002,
+      "epistemic": 0.01,
+      "blocker_context": 1.0
+    }
+  },
+  {
+    "session_id": "d46aa81ac333",
+    "started_at": "2026-06-08T13:07:52.288800+00:00",
+    "completed_at": "2026-06-08T13:08:46.635329+00:00",
+    "iterations": 15,
+    "trigger": "user",
+    "before": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T13:07:52.289930+00:00"
+    },
+    "after": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T13:08:46.635329+00:00"
+    },
+    "narrative": {
+      "where_we_came_from": "Coverage: 95.8% · 274 HIGH+MEDIUM anchors · 12 staged candidates. Epistemic entropy: 52% (moderate), 0 signs with no evidence chain.",
+      "what_happened": "Ran 306 research iteration(s), mining 3888 paper(s) and extracting 764 insight(s).",
+      "what_we_learned": "Coverage stable at 95.8%. Dominant evidence path: blocker_context (100% of insights).",
+      "actions_taken": [
+        "reading_frequency_zipf: zipf_alpha=0.623",
+        "compound_semantic_coherence: valid_pct=100"
+      ],
+      "whats_next": "Blocker Sign Context: blocker sign context: never run before; high historical success (100%); epistemic priority: targets high-uncertainty sig | Decoded Text Repetition: decoded text repetition: never run before; high historical success (100%); epistemic priority: targets high-uncertainty ",
+      "whats_next_items": [
+        {
+          "experiment_id": "blocker_sign_context",
+          "display_name": "Blocker Sign Context",
+          "rationale": "blocker sign context: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        },
+        {
+          "experiment_id": "decoded_text_repetition",
+          "display_name": "Decoded Text Repetition",
+          "rationale": "decoded text repetition: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        },
+        {
+          "experiment_id": "rare_sign_neighbor_profile",
+          "display_name": "Rare Sign Neighbor Profile",
+          "rationale": "rare sign neighbor profile: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        }
+      ],
+      "epistemic_entropy_before": 0.5239,
+      "epistemic_entropy_after": 0.5239
+    },
+    "cycles_run": 306,
+    "total_papers": 3888,
+    "total_insights": 764,
+    "path_signals": {
+      "reading": 0.31,
+      "formula": 0.345,
+      "function": 0.08,
+      "morphology": 0.043,
+      "compound": 0.031,
+      "guild": 0.18,
+      "self_improvement": 0.002,
+      "epistemic": 0.01,
+      "blocker_context": 1.0
+    }
+  },
+  {
+    "session_id": "00c1ab805786",
+    "started_at": "2026-06-08T13:09:10.356307+00:00",
+    "completed_at": "2026-06-08T13:09:45.236762+00:00",
+    "iterations": 15,
+    "trigger": "user",
+    "before": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T13:09:10.358749+00:00"
+    },
+    "after": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T13:09:45.236762+00:00"
+    },
+    "narrative": {
+      "where_we_came_from": "Coverage: 95.8% · 274 HIGH+MEDIUM anchors · 12 staged candidates. Epistemic entropy: 52% (moderate), 0 signs with no evidence chain.",
+      "what_happened": "Ran 306 research iteration(s), mining 3888 paper(s) and extracting 764 insight(s).",
+      "what_we_learned": "Coverage stable at 95.8%. Dominant evidence path: blocker_context (100% of insights).",
+      "actions_taken": [
+        "reading_frequency_zipf: zipf_alpha=0.623",
+        "compound_semantic_coherence: valid_pct=100"
+      ],
+      "whats_next": "Blocker Sign Context: blocker sign context: never run before; high historical success (100%); epistemic priority: targets high-uncertainty sig | Decoded Text Repetition: decoded text repetition: never run before; high historical success (100%); epistemic priority: targets high-uncertainty ",
+      "whats_next_items": [
+        {
+          "experiment_id": "blocker_sign_context",
+          "display_name": "Blocker Sign Context",
+          "rationale": "blocker sign context: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        },
+        {
+          "experiment_id": "decoded_text_repetition",
+          "display_name": "Decoded Text Repetition",
+          "rationale": "decoded text repetition: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        },
+        {
+          "experiment_id": "rare_sign_neighbor_profile",
+          "display_name": "Rare Sign Neighbor Profile",
+          "rationale": "rare sign neighbor profile: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        }
+      ],
+      "epistemic_entropy_before": 0.5239,
+      "epistemic_entropy_after": 0.5239
+    },
+    "cycles_run": 306,
+    "total_papers": 3888,
+    "total_insights": 764,
+    "path_signals": {
+      "formula": 0.04,
+      "reading": 0.4,
+      "function": 0.04,
+      "guild": 0.34,
+      "compound": 0.18,
+      "blocker_context": 1.0
+    }
+  },
+  {
+    "session_id": "ccfd5a2e1706",
+    "started_at": "2026-06-08T21:41:04.737148+00:00",
+    "completed_at": "2026-06-08T21:41:38.424946+00:00",
+    "iterations": 15,
+    "trigger": "scheduler",
+    "before": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T21:41:04.800648+00:00"
+    },
+    "after": {
+      "coverage": 0.958,
+      "anchors_total": 286,
+      "anchors_hm": 274,
+      "anchors_high": 166,
+      "anchors_low": 12,
+      "staged_candidates": 12,
+      "blocker_count": 0,
+      "epistemic_entropy": 0.5239,
+      "high_uncertainty_signs": 0,
+      "timestamp": "2026-06-08T21:41:38.426946+00:00"
+    },
+    "narrative": {
+      "where_we_came_from": "Coverage: 95.8% · 274 HIGH+MEDIUM anchors · 12 staged candidates. Epistemic entropy: 52% (moderate), 0 signs with no evidence chain.",
+      "what_happened": "Ran 306 research iteration(s), mining 3888 paper(s) and extracting 764 insight(s).",
+      "what_we_learned": "Coverage stable at 95.8%. Dominant evidence path: blocker_context (100% of insights).",
+      "actions_taken": [
+        "reading_frequency_zipf: zipf_alpha=0.623",
+        "compound_semantic_coherence: valid_pct=100"
+      ],
+      "whats_next": "Blocker Sign Context: blocker sign context: never run before; high historical success (100%); epistemic priority: targets high-uncertainty sig | Decoded Text Repetition: decoded text repetition: never run before; high historical success (100%); epistemic priority: targets high-uncertainty ",
+      "whats_next_items": [
+        {
+          "experiment_id": "blocker_sign_context",
+          "display_name": "Blocker Sign Context",
+          "rationale": "blocker sign context: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        },
+        {
+          "experiment_id": "decoded_text_repetition",
+          "display_name": "Decoded Text Repetition",
+          "rationale": "decoded text repetition: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        },
+        {
+          "experiment_id": "rare_sign_neighbor_profile",
+          "display_name": "Rare Sign Neighbor Profile",
+          "rationale": "rare sign neighbor profile: never run before; high historical success (100%); epistemic priority: targets high-uncertainty signs (system entropy 50%); targets gap 'continuation'.",
+          "priority": 0.925,
+          "novelty": null,
+          "epistemic": true
+        }
+      ],
+      "epistemic_entropy_before": 0.5239,
+      "epistemic_entropy_after": 0.5239
+    },
+    "cycles_run": 306,
+    "total_papers": 3888,
+    "total_insights": 764,
+    "path_signals": {
+      "formula": 0.04,
+      "reading": 0.4,
+      "function": 0.04,
+      "guild": 0.34,
+      "compound": 0.18,
+      "blocker_context": 1.0
+    }
   }
 ]

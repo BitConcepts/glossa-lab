@@ -68,7 +68,7 @@ jobs:
   frontend-tests:
     name: Frontend tests (Playwright)
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 35  # includes 2-min research-loop SSE test
     needs: []  # run in parallel with backend-tests
 
     steps:

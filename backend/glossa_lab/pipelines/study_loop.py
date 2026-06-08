@@ -240,11 +240,29 @@ def generate_narrative(
     for p in proposed_next[:2]:
         whats_next_parts.append(
             f"{p.get('display_name', p.get('experiment_id', '?'))}: "
-            f"{p.get('rationale', '')[:100]}"
+            f"{p.get('rationale', '')[:120]}"
         )
     if not whats_next_parts:
         whats_next_parts.append("Continue scheduled study loop.")
     whats_next = " | ".join(whats_next_parts)
+
+    # Structured list — each top-priority experiment as its own object so the
+    # UI can render them as cards rather than a truncated pipe-joined string.
+    whats_next_items: list[dict[str, Any]] = []
+    for p in proposed_next[:3]:
+        exp_id = p.get("experiment_id") or p.get("experiment", "")
+        whats_next_items.append({
+            "experiment_id": exp_id,
+            "display_name": p.get("display_name", exp_id.replace("_", " ").title()),
+            "rationale": p.get("rationale", ""),
+            "priority": round(float(p.get("priority", 0.5)), 3),
+            "novelty": p.get("novelty_score", None),
+            "epistemic": exp_id in {
+                "blocker_sign_context", "rare_sign_neighbor_profile",
+                "reading_frequency_zipf", "decoded_text_repetition",
+                "compound_semantic_coherence",
+            },
+        })
 
     return {
         "where_we_came_from": where_we_came_from,
@@ -252,6 +270,7 @@ def generate_narrative(
         "what_we_learned": what_we_learned,
         "actions_taken": actions,
         "whats_next": whats_next,
+        "whats_next_items": whats_next_items,
         # Pass entropy forward so the UI / email can display it
         "epistemic_entropy_before": entropy_before,
         "epistemic_entropy_after": entropy_after,

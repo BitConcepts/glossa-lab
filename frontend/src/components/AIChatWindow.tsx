@@ -598,13 +598,21 @@ export function AIChatWindow() {
       // Ensure params is always an object, never undefined/null
       const params = action.params && typeof action.params === "object" ? action.params : {};
       const result = await executeAiAction({ type: action.type, params });
+      // Treat ok===false (backend returned 200 but reported failure) as a failure
+      if (!result.ok) {
+        updateActionState(msg.id, idx, "failed");
+        setMessages(prev => [...prev, { id: ++_msgId, role: "assistant",
+          content: `\u2717 **${label}** \u2014 ${result.summary ?? "Action failed"}`,
+          timestamp: Date.now(), error: true }]);
+        return;
+      }
       updateActionState(msg.id, idx, "done");
       if (action.type === "open_view" && result.navigate)
         window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: result.navigate } }));
-      setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: `✓ **${label}** — ${result.summary ?? "done"}`, timestamp: Date.now() }]);
+      setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: `\u2713 **${label}** \u2014 ${result.summary ?? "done"}`, timestamp: Date.now() }]);
     } catch (e) {
       updateActionState(msg.id, idx, "failed");
-      setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: `✗ **${label}** failed: ${e instanceof Error ? e.message : String(e)}`, timestamp: Date.now(), error: true }]);
+      setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: `\u2717 **${label}** failed: ${e instanceof Error ? e.message : String(e)}`, timestamp: Date.now(), error: true }]);
     }
   }, [updateActionState]);
 
@@ -1055,6 +1063,14 @@ export function ChatInline() {
     const label = resolveLabel(action);
     try {
       const r = await executeAiAction({ type: action.type, params: action.params ?? {} });
+      // Treat ok===false (backend returned 200 but reported failure) as a failure
+      if (!r.ok) {
+        upd("failed");
+        setMessages(p => [...p, { id: ++_msgId, role: "assistant",
+          content: `\u2717 **${label}** \u2014 ${r.summary ?? "Action failed"}`,
+          timestamp: Date.now(), error: true }]);
+        return;
+      }
       upd("done");
       if (action.type === "open_view" && r.navigate) {
         window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: r.navigate } }));
@@ -1062,14 +1078,14 @@ export function ChatInline() {
       // For long-running actions: offer navigation link rather than just a text message
       const viewHint = r.navigate ?? _actionViewHint(action);
       const doneContent = viewHint
-        ? `[NAVIGATE:${viewHint}]✓ **${label}** — ${r.summary ?? "done"}`
-        : `✓ **${label}** — ${r.summary ?? "done"}`;
+        ? `[NAVIGATE:${viewHint}]\u2713 **${label}** \u2014 ${r.summary ?? "done"}`
+        : `\u2713 **${label}** \u2014 ${r.summary ?? "done"}`;
       setMessages(p => [...p, { id: ++_msgId, role: "assistant", content: doneContent, timestamp: Date.now() }]);
     } catch (e) {
       upd("failed");
       const errText = e instanceof Error ? e.message : String(e);
       setMessages(p => [...p, { id: ++_msgId, role: "assistant",
-        content: `✗ **${label}** failed: ${errText}`,
+        content: `\u2717 **${label}** failed: ${errText}`,
         timestamp: Date.now(), error: true }]);
     }
   }, []);

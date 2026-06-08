@@ -87,27 +87,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e ".[dev]" || pip install -e "." || true
 
-      - name: Start backend in background
-        working-directory: backend
-        env:
-          GLOSSA_DATA_DIR: ${{ runner.temp }}/glossa_playwright_data
-          GLOSSA_DEV_MODE: "1"
-          PYTHONPATH: ${{ github.workspace }}/backend
-        run: |
-          python -m uvicorn glossa_lab.main:app \
-            --host 127.0.0.1 --port 8001 \
-            --log-level warning &
-          echo $! > /tmp/backend.pid
-          # Wait for backend to be healthy (up to 30s)
-          for i in $(seq 1 30); do
-            if curl -sf http://127.0.0.1:8001/api/v1/health > /dev/null 2>&1; then
-              echo "Backend healthy after ${i}s"
-              break
-            fi
-            sleep 1
-          done
-          curl -sf http://127.0.0.1:8001/api/v1/health || echo "Backend may not be running"
-
+      # Build the frontend FIRST so the backend can mount dist/ via StaticFiles
+      # when it starts.  If the frontend is built after the backend starts, the
+      # StaticFiles mount is never registered and Playwright gets 404s.
       - name: Set up Node.js 20
         uses: actions/setup-node@v4
         with:
@@ -122,6 +104,29 @@ jobs:
       - name: Build frontend
         working-directory: frontend
         run: npm run build
+
+      - name: Start backend in background
+        working-directory: backend
+        env:
+          GLOSSA_DATA_DIR: ${{ runner.temp }}/glossa_playwright_data
+          GLOSSA_DEV_MODE: "1"
+          PYTHONPATH: ${{ github.workspace }}/backend
+        run: |
+          python -m uvicorn glossa_lab.main:app \
+            --host 127.0.0.1 --port 8001 \
+            --log-level warning &
+          echo $! > /tmp/backend.pid
+          # Wait for backend to be healthy (up to 30s) AND frontend to be served
+          for i in $(seq 1 30); do
+            if curl -sf http://127.0.0.1:8001/api/v1/health > /dev/null 2>&1; then
+              echo "Backend healthy after ${i}s"
+              break
+            fi
+            sleep 1
+          done
+          curl -sf http://127.0.0.1:8001/api/v1/health || echo "Backend may not be running"
+          # Verify frontend is served
+          curl -sf http://127.0.0.1:8001/ > /dev/null && echo "Frontend OK" || echo "Frontend not served"
 
       - name: Install Playwright browsers (Chromium only)
         working-directory: frontend

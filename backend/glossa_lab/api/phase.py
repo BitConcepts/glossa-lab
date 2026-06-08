@@ -48,7 +48,6 @@ async def phase_status() -> dict[str, Any]:
     db_actions: dict[str, dict] = {}
     if _db:
         try:
-            import asyncio as _aio  # noqa: PLC0415
             rows = await _db.list_phase_actions(phase=status.current_phase)
             db_actions = {r["action_label"]: r for r in rows}
         except Exception:  # noqa: BLE001
@@ -227,7 +226,7 @@ async def redo_phase_action(label: str, body: dict[str, Any] | None = None) -> d
 async def get_phase_goals() -> dict[str, Any]:
     """Return current phase goals (dynamic or default)."""
     from glossa_lab.pipelines.phase_generator import load_phase_goals  # noqa: PLC0415
-    from glossa_lab.config import _DEFAULT_PHASE_GOALS, PhaseGoal  # noqa: PLC0415
+    from glossa_lab.config import _DEFAULT_PHASE_GOALS  # noqa: PLC0415
     saved = load_phase_goals()
     if saved:
         return {"goals": saved, "source": "dynamic", "editable": True}

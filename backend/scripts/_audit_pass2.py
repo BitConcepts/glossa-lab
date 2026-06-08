@@ -1,5 +1,7 @@
 """Second-pass accuracy audit: verify every release number independently."""
-import json, csv, unicodedata
+import json
+import csv
+import unicodedata
 from collections import Counter
 from pathlib import Path
 
@@ -121,7 +123,7 @@ yaj_high = sum(1 for i in anchors.values()
 yaj_in_holdat = sum(1 for s, i in anchors.items()
                     if i.get('source') == 'Phase-288 Yajnadevam' and s in set(holdat))
 print(f"\n11. Yajnadevam HIGH: {yaj_high} signs, {yaj_in_holdat} in Holdat")
-print(f"    These inflate the 400 HIGH count but contribute 0% to Holdat coverage")
+print("    These inflate the 400 HIGH count but contribute 0% to Holdat coverage")
 print(f"    Holdat-validated HIGH signs: {len(high) - yaj_high}")
 print(f"    DISCLOSURE: 400 HIGH = {len(high) - yaj_high} Holdat-validated + {yaj_high} Yajnadevam-only")
 
@@ -134,7 +136,7 @@ if errors:
 else:
     print("ALL 11 CHECKS PASSED — no errors found")
 
-print(f"\nDISCLOSURES (not errors, but should be noted in preprint):")
+print("\nDISCLOSURES (not errors, but should be noted in preprint):")
 print(f"  • Pin distribution: '{top_pin}' covers {top_pct:.0f}% of anchor first-chars")
 print(f"  • 400 HIGH = {len(high) - yaj_high} Holdat-validated + {yaj_high} Yajnadevam-only (0 in Holdat)")
 print(f"  • Dravidian LM has {n_bi} bigrams")

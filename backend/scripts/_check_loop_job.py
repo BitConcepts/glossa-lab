@@ -1,4 +1,5 @@
-import sqlite3, json
+import sqlite3
+import json
 
 conn = sqlite3.connect(r"C:\Users\trist\Development\BitConcepts\glossa-lab\backend\data\glossa.db", timeout=3)
 conn.row_factory = sqlite3.Row

@@ -10,7 +10,6 @@ Only stdlib is used: csv, json, pathlib, threading, logging.
 from __future__ import annotations
 
 import csv
-import json
 import logging
 import threading
 from pathlib import Path

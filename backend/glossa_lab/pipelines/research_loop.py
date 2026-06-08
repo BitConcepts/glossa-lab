@@ -700,9 +700,8 @@ class ResearchLoop:
                 template = None
                 proposals_used = proposals
 
-            # ── Try proposals until one passes verify ────────────────────
+            # ── Try proposals until one passes verify ────────────
             selected_proposal = None
-            instance = None
             verify_ok = False
 
             if proposals_used:
@@ -721,7 +720,6 @@ class ResearchLoop:
                     )
                     if vr.recommendation == "pass":
                         selected_proposal = prop
-                        instance = inst
                         verify_ok = True
                         break
                     elif vr.recommendation == "abort":
@@ -777,8 +775,8 @@ class ResearchLoop:
                 "recommendation": "pass",
             }
 
-            # ── RUN (with per-cycle timeout) ─────────────────────────────
-            cycle_t0 = time.time()
+            # ── RUN (with per-cycle timeout) ──────────────────────────────────
+            _cycle_t0 = time.time()  # noqa: F841 — reserved for per-cycle timing
             timed_out = False
             try:
                 verdict, exp_output = self._execute_with_corpus_timeout(
@@ -815,7 +813,6 @@ class ResearchLoop:
 
             # ── ANALYZE ──────────────────────────────────────────────────
             if selected_proposal and not timed_out:
-                from glossa_lab.loop_proposal import ExperimentProposal as _EP  # noqa: PLC0415
                 analysis = analyze_result(
                     result=exp_output,
                     proposal=selected_proposal,
@@ -932,7 +929,7 @@ class ResearchLoop:
         sites = self.corpus_sites
         motifs = self.corpus_motifs
         high = set(self.high_signs)      # snapshot to avoid concurrent modification
-        low = set(self.low_signs)         # snapshot
+        _low = set(self.low_signs)        # noqa: F841 — snapshot (used via self.low_signs below)
         anchors = dict(self.anchors)      # snapshot — prevents 'dictionary changed size'
 
         if template == "suffix_chain_depth":
@@ -1245,7 +1242,6 @@ class ResearchLoop:
             valid_pct = output.get("valid_pct", 0)
             if valid_pct > 15:
                 seen: set[str] = set()
-                vocab = _get_dedr_vocab()
                 for seq in self.corpus_seqs[:200]:
                     for i, sign in enumerate(seq[:-1]):
                         if sign not in self.low_signs or sign in seen:

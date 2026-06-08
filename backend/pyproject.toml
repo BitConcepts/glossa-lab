@@ -108,6 +108,20 @@ known-first-party = ["glossa_lab", "tests"]
 "glossa_lab/api/dashboard.py" = ["F401"]
 "glossa_lab/corpus_utils.py" = ["F841"]
 "glossa_lab/corpus_acquirer.py" = ["F401"]
+# Research loop API — intermediate verdict/diff variables kept for debugging
+"glossa_lab/api/research_loop.py" = ["F841"]
+# Discovery fetcher — intermediate HTML extraction variables
+"glossa_lab/discovery/fetchers/unpaywall.py" = ["F841"]
+# Kalyanaraman experiment graph — intermediate term variables
+"glossa_lab/experiment_graph_kalyanaraman.py" = ["F841"]
+# Phase 322-362 experiment graph — intermediate node reference
+"glossa_lab/experiment_graph_phase322_362.py" = ["F841"]
+# Phase advancer — debug variable kept for future diagnostics
+"glossa_lab/pipelines/phase_advancer.py" = ["F841"]
+# Phase generator — intermediate coverage variable
+"glossa_lab/pipelines/phase_generator.py" = ["F841"]
+# Sign image processor — intermediate geometry variables
+"glossa_lab/tools/sign_image_processor.py" = ["F841"]
 # Legacy experiment files — pre-existing code, not actively maintained
 "glossa_lab/experiments/_legacy/*.py" = ["F821", "F841", "F401", "F601"]
 # Research scripts — intermediate variables kept intentionally for readability

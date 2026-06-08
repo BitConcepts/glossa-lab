@@ -139,9 +139,18 @@ def test_rl009_all_exhausted_still_returns():
 
 
 def test_rl016_all_insight_types_covered():
-    """TEST-RL-016: INSIGHT_TO_EXPERIMENTS covers all 6 insight types."""
-    expected = {"reading", "guild", "compound", "formula", "function", "morphology"}
-    assert set(INSIGHT_TO_EXPERIMENTS.keys()) == expected
+    """TEST-RL-016: INSIGHT_TO_EXPERIMENTS covers all base insight types.
+
+    The mapping now includes epistemic types (epistemic, self_improvement) added
+    to guide the autonomous study loop toward uncertainty-reducing experiments.
+    """
+    base = {"reading", "guild", "compound", "formula", "function", "morphology"}
+    epistemic = {"epistemic", "self_improvement"}
+    expected = base | epistemic
+    assert set(INSIGHT_TO_EXPERIMENTS.keys()) == expected, (
+        f"Missing: {expected - set(INSIGHT_TO_EXPERIMENTS.keys())}, "
+        f"Extra: {set(INSIGHT_TO_EXPERIMENTS.keys()) - expected}"
+    )
 
 
 def test_rl017_all_mapped_experiments_valid():

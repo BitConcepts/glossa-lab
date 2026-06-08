@@ -532,7 +532,7 @@ def main() -> None:
     print(f"  Saved:     {total_s}")
     print(f"  Skipped:   {total_k}")
     if total_s > 0:
-        print(f"  ✓ Manifest updated")
+        print("  ✓ Manifest updated")
 
 
 if __name__ == "__main__":

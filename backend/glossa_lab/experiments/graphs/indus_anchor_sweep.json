@@ -1,6 +1,6 @@
 {
   "id": "indus_anchor_sweep",
-  "name": "Tier 5 — Dravidian LM Anchor Convergence Self-Test",
+  "name": "Indus Anchored SA: Dravidian Convergence Self-Test",
   "description": "Validates the Dravidian LM's usefulness for Indus Script decipherment via a self-test. The Dravidian (Tamil) corpus is split into train/test; a cipher is constructed from the test set using the LM alphabet; AnchorConvergenceBenchmark sweeps k=0,3,10,20 structured anchors and measures accuracy + consistency. High accuracy at low k = strong Dravidian bigram constraints = trustworthy LM for the Indus decipherment. Word-final anchor priority (Dr. Fuls 2026) used for structured anchor selection.",
   "nodes": [
     {
@@ -170,6 +170,5 @@
       "sourcePort": "summary_table",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

@@ -30,9 +30,44 @@ from fastapi import APIRouter, Query
 
 from glossa_lab.database import get_db
 
+import time as _time
+
 router = APIRouter(prefix="/api/v1/dashboard", tags=["dashboard"])
 
 _log = logging.getLogger("glossa_lab.api.dashboard")
+
+# ── Server-side insight cache ───────────────────────────────────────────────
+# Stores the last generated insight so the frontend can poll for updates
+# without burning LLM tokens.  Written by _generate_insight(); read by
+# GET /latest-insight.  Module-level so it survives across requests.
+_LATEST_INSIGHT: dict[str, Any] | None = None
+_LATEST_INSIGHT_AT: float = 0.0  # epoch seconds
+
+# ── Insight stale flag ──────────────────────────────────────────────────────
+# Set to True by any module that produces new results (experiments, jobs).
+# Cleared when the LLM generates a fresh insight. Exposed via GET /highlights
+# so the frontend can show a "New results — Regenerate" badge.
+_INSIGHTS_STALE: bool = False
+_STALE_SINCE: float = 0.0   # epoch seconds
+
+
+def mark_insights_stale() -> None:
+    """Signal that new experiment/job results are available.
+
+    Called from experiment_graphs.py, jobs.py, phase.py after any job
+    completes or phase action is taken. Thread-safe (GIL-protected bool write).
+    """
+    global _INSIGHTS_STALE, _STALE_SINCE  # noqa: PLW0603
+    _INSIGHTS_STALE = True
+    if not _STALE_SINCE:
+        _STALE_SINCE = _time.time()
+
+
+def clear_insights_stale() -> None:
+    """Clear the stale flag after a fresh insight is generated."""
+    global _INSIGHTS_STALE, _STALE_SINCE  # noqa: PLW0603
+    _INSIGHTS_STALE = False
+    _STALE_SINCE = 0.0
 
 
 # ── Helpers ────────────────────────────────────────────────────────────────
@@ -95,6 +130,64 @@ async def _study_count() -> int:
         return 0
 
 
+async def _recent_experiment_results(limit: int = 5) -> list[dict[str, Any]]:
+    """Return recent completed experiment jobs with key metrics for the prompt."""
+    db = get_db()
+    if db is None:
+        return []
+    try:
+        jobs = await db.list_jobs()
+    except Exception:  # noqa: BLE001
+        return []
+
+    # Only graph_experiment / exp_run pipelines, completed, newest first
+    _EXP_PIPELINES = {"graph_experiment", "exp_run", "experiment"}
+    completed = [
+        j for j in jobs
+        if j.get("status") == "completed"
+        and j.get("pipeline", "") in _EXP_PIPELINES
+    ][:limit]
+
+    results: list[dict[str, Any]] = []
+    for job in completed:
+        try:
+            row = await db.get_result_for_job(job["id"])
+        except Exception:  # noqa: BLE001
+            continue
+        if not row:
+            continue
+        data = row.get("data") or {}
+        result_summary = data.get("result") or {}
+        # Extract scalar metrics that fit in a prompt
+        _METRIC_KEYS = [
+            "mean_consistency", "hci_count", "best_language", "best_consistency",
+            "n_signs", "accuracy", "n_anchors", "kl_divergence", "js_divergence",
+            "tier_classification", "nearest_script",
+        ]
+        metrics: dict[str, Any] = {}
+        for k in _METRIC_KEYS:
+            if k in result_summary:
+                v = result_summary[k]
+                if isinstance(v, float):
+                    metrics[k] = round(v, 4)
+                elif isinstance(v, (int, str, bool)):
+                    metrics[k] = v
+        # Include comparison ranking summary for SAMultiComparison
+        if "ranking" in result_summary and isinstance(result_summary["ranking"], list):
+            ranking = result_summary["ranking"]
+            metrics["ranking_top3"] = [
+                {"language": r.get("language"), "consistency": r.get("mean_consistency")}
+                for r in ranking[:3] if not r.get("error")
+            ]
+        results.append({
+            "exp_id":   data.get("exp_id", job.get("name", "")),
+            "exp_name": data.get("exp_name", job.get("name", "")),
+            "completed_at": job.get("updated_at", ""),
+            "metrics":  metrics,
+        })
+    return results
+
+
 def _graph_experiment_ids() -> list[str]:
     """Return sorted IDs of graph experiments (what the user actually sees)."""
     try:
@@ -103,6 +196,16 @@ def _graph_experiment_ids() -> list[str]:
         return sorted(spec["id"] for spec in list_graph_experiments())
     except Exception:  # noqa: BLE001
         return []
+
+
+def _atomic_node_count() -> int:
+    """Return count of registered atomic experiment nodes."""
+    try:
+        from glossa_lab.experiment_graph import ATOMIC_NODES  # noqa: PLC0415
+
+        return len(ATOMIC_NODES)
+    except Exception:  # noqa: BLE001
+        return 0
 
 
 def _graph_experiment_id_name_map() -> dict[str, str]:
@@ -205,7 +308,8 @@ _INSIGHT_PROMPT_TEMPLATE = (
     "  or study lists below. NEVER invent or abbreviate an id.\n"
     "- next_actions: 3-5 executable suggestions.\n"
     "- action_type is one of: run_experiment, open_view, run_fetch, run_mine,\n"
-    "  create_hypothesis, propose_experiment_chain, ai_chat, no_op.\n"
+    "  create_hypothesis, propose_experiment_chain, build_sa_experiment, ai_chat, no_op.\n"
+    "- For build_sa_experiment, params must include: corpus (string) and languages (comma-separated string).\n"
     "- params is always a JSON object (use {{}} when empty).\n"
     "- Be concise. Keep each string under 120 chars.\n"
     "- Return ONLY the JSON object. No markdown, no explanation."
@@ -217,6 +321,7 @@ def _build_insight_prompt(
     studies: list[dict[str, Any]],
     experiments: list[str],
     goal: dict[str, Any] | None = None,
+    exp_results: list[dict[str, Any]] | None = None,
 ) -> str:
     items_block = "\n".join(
         f"- id={it.get('id', '')[:10]} kind={it.get('kind', 'other')} "
@@ -237,6 +342,22 @@ def _build_insight_prompt(
     goal_ctx = ""
     if goal and goal.get("prompt_context"):
         goal_ctx = f"\n## Research goal context\n{goal['prompt_context']}\n"
+    results_block = ""
+    if exp_results:
+        lines = []
+        for r in exp_results[:5]:
+            metrics_str = ", ".join(f"{k}={v}" for k, v in (r.get("metrics") or {}).items())
+            completed_str = r.get("completed_at", "")[:16].replace("T", " ")
+            lines.append(
+                f"- {r['exp_name']} ({r['exp_id']})"
+                + (f" [{completed_str}]" if completed_str else "")
+                + (f": {metrics_str}" if metrics_str else " (no scalar metrics)")
+            )
+        results_block = (
+            f"\n## Recent experiment results (last {len(exp_results)} completed)\n"
+            + "\n".join(lines)
+            + "\n"
+        )
     return (
         f"{prompt_text}\n\n"
         f"{goal_ctx}"
@@ -244,6 +365,7 @@ def _build_insight_prompt(
         f"{items_block}\n\n"
         f"## User's studies\n{studies_block}\n\n"
         f"## Registered experiments\n{exp_block}\n"
+        f"{results_block}"
     )
 
 
@@ -359,7 +481,14 @@ async def _generate_insight(
         except Exception:  # noqa: BLE001
             pass
 
-    prompt = _build_insight_prompt(items, studies, experiments, goal=goal)
+    # Load recent experiment results for context
+    exp_results: list[dict[str, Any]] = []
+    try:
+        exp_results = await _recent_experiment_results(limit=5)
+    except Exception:  # noqa: BLE001
+        pass
+
+    prompt = _build_insight_prompt(items, studies, experiments, goal=goal, exp_results=exp_results)
 
     try:
         from glossa_lab.ai_utils import call_llm  # noqa: PLC0415
@@ -504,7 +633,7 @@ async def _generate_insight(
         # ── Attempt 3: reasoning bucket, shorter prompt, excluding all failed providers
         if not raw or not raw.strip():
             short_items = items[:8]  # minimal context to reduce token pressure
-            short_prompt = _build_insight_prompt(short_items, studies[:5], experiments[:20], goal=goal)
+            short_prompt = _build_insight_prompt(short_items, studies[:5], experiments[:20], goal=goal, exp_results=exp_results[:3])
             try:
                 raw = await loop.run_in_executor(
                     None,
@@ -739,6 +868,11 @@ async def _generate_insight(
             "bucket": "reasoning",
             "is_fallback": False,
         }
+        # Cache the result so /latest-insight can return it without re-running LLM
+        global _LATEST_INSIGHT, _LATEST_INSIGHT_AT  # noqa: PLW0603
+        _LATEST_INSIGHT = parsed
+        _LATEST_INSIGHT_AT = _time.time()
+        clear_insights_stale()
         return parsed
     except Exception as exc:  # noqa: BLE001
         _log.warning("dashboard insight LLM call failed: %s", exc)
@@ -812,9 +946,12 @@ async def dashboard_highlights(
         "by_source": _tally(items, "source"),
         "n_studies":     len(studies),
         "n_experiments": len(exp_ids),
+        "n_atomic_nodes": _atomic_node_count(),
         "n_hypotheses":  n_hypotheses,
         "since_days":    days,
         "project_id":    project["id"] if project else None,
+        "insights_stale": _INSIGHTS_STALE,
+        "stale_since": _STALE_SINCE,
     }
 
     if include_ai:
@@ -844,6 +981,24 @@ async def dashboard_insight(
             studies = []
     exp_ids = _graph_experiment_ids()
     return await _generate_insight(items, studies, exp_ids, project=project)
+
+
+@router.get("/latest-insight")
+async def latest_insight() -> dict[str, Any]:
+    """Return the most recently generated AI insight without running the LLM.
+
+    Used by the frontend to detect when a background insight generation
+    (e.g. triggered by the research loop) has completed.  The response
+    includes ``generated_at`` (epoch seconds) so the client can compare
+    against its own cached timestamp and update only when newer.
+    """
+    if _LATEST_INSIGHT is None:
+        return {"available": False, "generated_at": 0.0, "insight": None}
+    return {
+        "available": True,
+        "generated_at": _LATEST_INSIGHT_AT,
+        "insight": _LATEST_INSIGHT,
+    }
 
 
 @router.get("/feed")
@@ -930,6 +1085,10 @@ async def dashboard_decipherment() -> dict[str, Any]:
                         except Exception:  # noqa: BLE001
                             pass
 
+            # ICIT 2026 revision metadata
+            _ICIT_TOTAL = int(fa_data.get("icit_total_signs", 0))
+            _ICIT_COV   = float(fa_data.get("icit_coverage_pct", 0.0))
+
             anchors_summary = {
                 # n_hm = confirmed H+M count (the meaningful decipherment metric)
                 "total":        n_hm,
@@ -943,6 +1102,9 @@ async def dashboard_decipherment() -> dict[str, Any]:
                 "corpus_tokens":          _CORPUS_TOKENS,
                 "corpus_token_coverage":  round(min(1.0, token_cov), 4),
                 "corpus_sign_coverage":   round(min(1.0, sign_cov), 4),
+                # ICIT 2026 inventory (713 signs, corrected inscriptions)
+                "icit_total_signs":       _ICIT_TOTAL if _ICIT_TOTAL > 0 else None,
+                "icit_coverage_pct":      round(_ICIT_COV, 4) if _ICIT_COV > 0 else None,
                 # Legacy field kept for backward compat — now equals n_hm, never >100%
                 "pct_confirmed": round(n_hm / max(1, _TOTAL_ANCHORS), 4),
             }
@@ -1040,6 +1202,21 @@ async def dashboard_decipherment() -> dict[str, Any]:
         fully_decoded_pct = 0.691  # Phase-218 known value
         n_fully_decoded = 1165
 
+    # ── 4. Phase 299-302 metrics (Munda SA + archaeology) ─────────────
+    munda_sa: dict[str, Any] = {}
+    archaeology: dict[str, Any] = {}
+    p299_path = outputs_dir / "phase299_302_munda_sa_substrate_archaeology.json" if outputs_dir.is_dir() else None
+    if p299_path and p299_path.exists():
+        try:
+            p299 = json.loads(p299_path.read_text(encoding="utf-8"))
+            munda_sa = p299.get("phase300_discrimination", {})
+            archaeology = {
+                "score_pct": p299.get("phase302_archaeology", {}).get("score_pct", 0),
+                "verdict": p299.get("phase302_archaeology", {}).get("verdict", ""),
+            }
+        except Exception:  # noqa: BLE001
+            pass
+
     return {
         "available": True,
         "archived": is_archived,
@@ -1056,6 +1233,10 @@ async def dashboard_decipherment() -> dict[str, Any]:
         "fully_decoded_pct": round(fully_decoded_pct, 4),
         "n_fully_decoded": n_fully_decoded,
         "total_seals": 1670,
+        # Phase 300 Munda SA discrimination
+        "munda_sa": munda_sa if munda_sa else None,
+        # Phase 302 archaeological context
+        "archaeology": archaeology if archaeology.get("verdict") else None,
     }
 
 

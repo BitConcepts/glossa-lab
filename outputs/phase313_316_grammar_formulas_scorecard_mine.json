@@ -1,0 +1,460 @@
+{
+  "phase313_grammar": {
+    "total_bigrams_tested": 2537,
+    "valid": 2329,
+    "invalid": 208,
+    "unknown_category": 1851,
+    "conformance_rate": 0.918,
+    "top_valid_patterns": [
+      {
+        "pattern": "GENDER->GENDER",
+        "count": 234
+      },
+      {
+        "pattern": "STEM->GENDER",
+        "count": 232
+      },
+      {
+        "pattern": "GENDER->VERB",
+        "count": 196
+      },
+      {
+        "pattern": "VERB->GENDER",
+        "count": 188
+      },
+      {
+        "pattern": "STEM->VERB",
+        "count": 179
+      },
+      {
+        "pattern": "STEM->STEM",
+        "count": 179
+      },
+      {
+        "pattern": "CASE->VERB",
+        "count": 164
+      },
+      {
+        "pattern": "STEM->CASE",
+        "count": 163
+      },
+      {
+        "pattern": "GENDER->STEM",
+        "count": 157
+      },
+      {
+        "pattern": "VERB->STEM",
+        "count": 141
+      }
+    ],
+    "top_violations": [
+      {
+        "pattern": "CASE->CASE",
+        "example": "ā/āl+iN/in (genitive of)",
+        "count": 40
+      },
+      {
+        "pattern": "CASE->GENDER",
+        "example": "iN/in (genitive of)+ay/ā",
+        "count": 31
+      },
+      {
+        "pattern": "CASE->CASE",
+        "example": "iN/in (genitive of)+ā/āl",
+        "count": 18
+      },
+      {
+        "pattern": "CASE->GENDER",
+        "example": "ā/āl+ay/ā",
+        "count": 15
+      },
+      {
+        "pattern": "CASE->GENDER",
+        "example": "iṉ/locative+ay/ā",
+        "count": 14
+      },
+      {
+        "pattern": "CASE->CASE",
+        "example": "iN/in (genitive of)+iN/in (genitive of)",
+        "count": 13
+      },
+      {
+        "pattern": "CASE->GENDER",
+        "example": "iN/in (genitive of)+am/neuter",
+        "count": 12
+      },
+      {
+        "pattern": "CASE->CASE",
+        "example": "iN/in (genitive of)+iṉ/locative",
+        "count": 12
+      },
+      {
+        "pattern": "CASE->GENDER",
+        "example": "iN/in (genitive of)+an/aṇ",
+        "count": 8
+      },
+      {
+        "pattern": "CASE->GENDER",
+        "example": "ā/āl+an/aṇ",
+        "count": 6
+      }
+    ],
+    "verdict": "PD grammar conformance: 91.8% (2329/2537 bigrams). 208 violations, 1851 uncategorized. STRONG conformance — readings follow PD suffix ordering."
+  },
+  "phase314_formulas": {
+    "n_decoded_inscriptions": 1252,
+    "n_distinct_bigrams": 1396,
+    "n_distinct_trigrams": 1987,
+    "n_distinct_tetragrams": 1371,
+    "top_bigrams": [
+      {
+        "formula": "ay/ā + an/aṇ",
+        "count": 100
+      },
+      {
+        "formula": "kol/koḷ + ay/ā",
+        "count": 69
+      },
+      {
+        "formula": "iN/in (genitive of) + kol/koḷ",
+        "count": 64
+      },
+      {
+        "formula": "an/aṇ + kol/koḷ",
+        "count": 62
+      },
+      {
+        "formula": "kol + ay/ā",
+        "count": 39
+      },
+      {
+        "formula": "ā/āl + iN/in (genitive of)",
+        "count": 37
+      },
+      {
+        "formula": "ta + iN/in (genitive of)",
+        "count": 34
+      },
+      {
+        "formula": "iN/in (genitive of) + ay/ā",
+        "count": 27
+      },
+      {
+        "formula": "ay/ā + ay/ā",
+        "count": 27
+      },
+      {
+        "formula": "ēḷ/eḷ + iN/in (genitive of)",
+        "count": 24
+      }
+    ],
+    "top_trigrams_classified": [
+      {
+        "formula": "ay/ā + an/aṇ + kol/koḷ",
+        "count": 27,
+        "categories": "GENDER->GENDER->VERB",
+        "type": "PROFESSION+SUFFIX"
+      },
+      {
+        "formula": "kol/koḷ + ay/ā + an/aṇ",
+        "count": 15,
+        "categories": "VERB->GENDER->GENDER",
+        "type": "PROFESSION+SUFFIX"
+      },
+      {
+        "formula": "an/aṇ + kol/koḷ + ay/ā",
+        "count": 14,
+        "categories": "GENDER->VERB->GENDER",
+        "type": "PROFESSION+SUFFIX"
+      },
+      {
+        "formula": "il/iḷ + kol/koḷ + ay/ā",
+        "count": 13,
+        "categories": "UNKNOWN->VERB->GENDER",
+        "type": "PROFESSION+SUFFIX"
+      },
+      {
+        "formula": "iN/in (genitive of) + kol/koḷ + ay/ā",
+        "count": 12,
+        "categories": "CASE->VERB->GENDER",
+        "type": "PROFESSION+SUFFIX"
+      },
+      {
+        "formula": "kol + ay/ā + an/aṇ",
+        "count": 8,
+        "categories": "STEM->GENDER->GENDER",
+        "type": "TITLE+SUFFIX"
+      },
+      {
+        "formula": "ta + iN/in (genitive of) + kol/koḷ",
+        "count": 7,
+        "categories": "VERB->CASE->VERB",
+        "type": "OTHER"
+      },
+      {
+        "formula": "ay/ā + an/aṇ + ay/ā",
+        "count": 7,
+        "categories": "GENDER->GENDER->GENDER",
+        "type": "SUFFIX_CHAIN"
+      },
+      {
+        "formula": "ā/āl + iN/in (genitive of) + kol/koḷ",
+        "count": 7,
+        "categories": "CASE->CASE->VERB",
+        "type": "OTHER"
+      },
+      {
+        "formula": "ēḷ/eḷ + iN/in (genitive of) + kol/koḷ",
+        "count": 6,
+        "categories": "UNKNOWN->CASE->VERB",
+        "type": "OTHER"
+      },
+      {
+        "formula": "ay/ā + an/aṇ + tu/tū",
+        "count": 6,
+        "categories": "GENDER->GENDER->VERB",
+        "type": "PROFESSION+SUFFIX"
+      },
+      {
+        "formula": "iN/in (genitive of) + ay/ā + an/aṇ",
+        "count": 6,
+        "categories": "CASE->GENDER->GENDER",
+        "type": "OTHER"
+      },
+      {
+        "formula": "ā/āl + iN/in (genitive of) + kol",
+        "count": 6,
+        "categories": "CASE->CASE->STEM",
+        "type": "PLACE+CASE"
+      },
+      {
+        "formula": "ay/ā + an/aṇ + iN/in (genitive of)",
+        "count": 5,
+        "categories": "GENDER->GENDER->CASE",
+        "type": "OTHER"
+      },
+      {
+        "formula": "ay/ā + an/aṇ + il/iḷ",
+        "count": 5,
+        "categories": "GENDER->GENDER->UNKNOWN",
+        "type": "OTHER"
+      }
+    ],
+    "formula_type_distribution": {
+      "PROFESSION+SUFFIX": 12,
+      "TITLE+SUFFIX": 1,
+      "OTHER": 12,
+      "SUFFIX_CHAIN": 1,
+      "PLACE+CASE": 4
+    },
+    "repeated_full_inscriptions": [
+      {
+        "reading": "mā ōṭu/comitative",
+        "count": 4,
+        "length": 2
+      },
+      {
+        "reading": "ēḷ/eḷ tu/tū",
+        "count": 3,
+        "length": 2
+      }
+    ],
+    "n_repeated_formulas": 2,
+    "verdict": "1252 fully decoded inscriptions. 1396 distinct bigrams, 1987 trigrams. 2 inscriptions repeated 3+ times. Formula types: {'PROFESSION+SUFFIX': 12, 'TITLE+SUFFIX': 1, 'OTHER': 12, 'SUFFIX_CHAIN': 1, 'PLACE+CASE': 4}."
+  },
+  "phase315_scorecard": {
+    "metric1_brevity": {
+      "mean_length": 4.19,
+      "median_length": 4,
+      "nair_indus": 4.4,
+      "match": true
+    },
+    "metric2_repetition": {
+      "repeated_phrases": {
+        "3": 227,
+        "4": 36,
+        "5": 2,
+        "6": 0
+      },
+      "nair_note": "Nair found Indus has moderate repetition, between heraldic and admin baselines"
+    },
+    "metric3_hapax": {
+      "hapax_count": 57,
+      "vocab_size": 390,
+      "hapax_rate": 0.1462,
+      "nair_indus": 0.35,
+      "match": false
+    },
+    "metric4_positional_rigidity": {
+      "mean_cramers_v": 0.5442,
+      "top10_details": [
+        {
+          "sign": "M342",
+          "cramers_v": 0.7941,
+          "start": 12,
+          "middle": 502,
+          "end": 70
+        },
+        {
+          "sign": "M267",
+          "cramers_v": 0.7208,
+          "start": 17,
+          "middle": 324,
+          "end": 59
+        },
+        {
+          "sign": "M099",
+          "cramers_v": 0.6561,
+          "start": 24,
+          "middle": 298,
+          "end": 67
+        },
+        {
+          "sign": "M176",
+          "cramers_v": 0.6722,
+          "start": 13,
+          "middle": 275,
+          "end": 68
+        },
+        {
+          "sign": "M211",
+          "cramers_v": 0.5579,
+          "start": 12,
+          "middle": 170,
+          "end": 67
+        },
+        {
+          "sign": "M328",
+          "cramers_v": 0.4986,
+          "start": 15,
+          "middle": 149,
+          "end": 70
+        },
+        {
+          "sign": "M293",
+          "cramers_v": 0.4591,
+          "start": 16,
+          "middle": 139,
+          "end": 77
+        },
+        {
+          "sign": "M059",
+          "cramers_v": 0.2381,
+          "start": 43,
+          "middle": 104,
+          "end": 75
+        },
+        {
+          "sign": "M162",
+          "cramers_v": 0.4444,
+          "start": 14,
+          "middle": 119,
+          "end": 72
+        },
+        {
+          "sign": "M391",
+          "cramers_v": 0.4008,
+          "start": 22,
+          "middle": 111,
+          "end": 60
+        }
+      ],
+      "nair_indus": 0.45,
+      "match": true
+    },
+    "scorecard_summary": {
+      "our_metrics": {
+        "mean_length": 4.19,
+        "hapax_rate": 0.1462,
+        "positional_rigidity": 0.5442,
+        "repeated_3grams": 227
+      },
+      "nair_indus_reference": {
+        "mean_length": 4.4,
+        "hapax_rate": 0.35,
+        "positional_rigidity": 0.45
+      },
+      "consistent_with_nair": false
+    },
+    "verdict": "Scorecard: mean length 4.2 (Nair: 4.4), hapax rate 0.15 (Nair: 0.35), positional rigidity 0.544 (Nair: 0.45). Repeated 3-grams: 227. Some metrics DIVERGE from Nair's measurements."
+  },
+  "phase316_mine": {
+    "topics_mined": 5,
+    "total_papers": 24,
+    "strong_relevant": 7,
+    "strong_papers": [
+      {
+        "topic": "pd_morphology",
+        "title": "Morphologic, Syntactic, and Phonologic Distance Between Japanese and Altaic, Dravidian, Austronesian, and Korean Languages",
+        "authors": "Wenchao Li",
+        "year": 2023,
+        "cited_by": 0
+      },
+      {
+        "topic": "keezhadi_ivc",
+        "title": "Addendum to Molina (2026e) — The Meluhhan Commercial Package and the Keezhadi Phonologization Event: Triple-Point Verification of Proto-Dravidian Continuity from the Indus Valley to Tamil-Brahmi (2500-600 BCE)",
+        "authors": "Juan Gabriel Molina",
+        "year": 2026,
+        "cited_by": 0
+      },
+      {
+        "topic": "keezhadi_ivc",
+        "title": "Addendum to Molina (2026e) — The Meluhhan Commercial Package and the Keezhadi Phonologization Event: Triple-Point Verification of Proto-Dravidian Continuity from the Indus Valley to Tamil-Brahmi (2500-600 BCE)",
+        "authors": "Juan Gabriel Molina",
+        "year": 2026,
+        "cited_by": 0
+      },
+      {
+        "topic": "keezhadi_ivc",
+        "title": "Genomic, Hydrogeomorphic, and Linguistic Syntaxis in the Indus Valley Civilization: Insights from Rakhigarhi DNA to Keezhadi and Quaternary Proxies",
+        "authors": "Ashokaditya P. Dhurandhar",
+        "year": 2025,
+        "cited_by": 0
+      },
+      {
+        "topic": "mukhopadhyay_indus",
+        "title": "Can the semasiographic/logographic Indus script answer the Dravidian question? Insights from Indus script’s gemstone related fish-signs, and Indus gemstone-word “maṇi”",
+        "authors": "Bahata Ansumali Mukhopadhyay",
+        "year": 2023,
+        "cited_by": 0
+      },
+      {
+        "topic": "computational_indus",
+        "title": "Integrated Genetic Algorithm and Deep Learning Approach for Effective Cyber-Attack Detection and Classification in Industrial Internet of Things (IIoT) Environments",
+        "authors": "Nadia Alkhafaji, Thiago Viana, Ali Al-Sherbaz",
+        "year": 2024,
+        "cited_by": 18
+      },
+      {
+        "topic": "computational_indus",
+        "title": "AI-EPIGRAPHY: An Interactive Tool for Computational Decipherment of the Indus Valley Script",
+        "authors": "Aruna Sharma, Shubhajit Roy Chowdhury",
+        "year": 2025,
+        "cited_by": 0
+      }
+    ],
+    "by_topic": {
+      "pd_morphology": {
+        "n_results": 3,
+        "top_paper": "The Structural Consequences of Lexical Transfer in Ibatan"
+      },
+      "keezhadi_ivc": {
+        "n_results": 4,
+        "top_paper": "Addendum to Molina (2026e) — The Meluhhan Commercial Package and the Keezhadi Phonologization Event: Triple-Point Verification of Proto-Dravidian Continuity from the Indus Valley to Tamil-Brahmi (2500-600 BCE)"
+      },
+      "mukhopadhyay_indus": {
+        "n_results": 1,
+        "top_paper": "Can the semasiographic/logographic Indus script answer the Dravidian question? Insights from Indus script’s gemstone related fish-signs, and Indus gemstone-word “maṇi”"
+      },
+      "computational_indus": {
+        "n_results": 16,
+        "top_paper": "Integrated Genetic Algorithm and Deep Learning Approach for Effective Cyber-Attack Detection and Classification in Industrial Internet of Things (IIoT) Environments"
+      },
+      "sangam_seals": {
+        "n_results": 0,
+        "top_paper": "none"
+      }
+    },
+    "verdict": "Mined 24 papers across 5 topics. 7 strongly relevant papers found."
+  }
+}

@@ -266,6 +266,198 @@ async def mine_endpoint(body: MineRequest) -> JobAck:
     return JobAck(job_id=job_id, status="running", message="Mine started")
 
 
+# ── Manual import ────────────────────────────────────────────────────
+
+
+class ImportPDFRequest(BaseModel):
+    """Import a local PDF file as a discovery item."""
+    file_path: str
+    topic: str = "indus_script"
+    source: str = "local_pdf"
+
+
+class ImportBatchRequest(BaseModel):
+    """Import multiple local PDF files."""
+    file_paths: list[str]
+    topic: str = "indus_script"
+    source: str = "local_pdf"
+
+
+def _extract_pdf_text(file_path: str, max_pages: int = 10) -> tuple[str, str]:
+    """Extract title and text from a PDF. Returns (title, text)."""
+    from pathlib import Path as _P  # noqa: PLC0415
+    p = _P(file_path)
+    if not p.exists():
+        raise FileNotFoundError(f"PDF not found: {file_path}")
+
+    title = p.stem.replace("_", " ").replace("  ", " ").strip()
+    text = ""
+
+    # Try pdfplumber first (better text extraction)
+    try:
+        import pdfplumber  # noqa: PLC0415
+        with pdfplumber.open(str(p)) as pdf:
+            pages = pdf.pages[:max_pages]
+            chunks = []
+            for page in pages:
+                t = page.extract_text()
+                if t:
+                    chunks.append(t)
+            text = "\n".join(chunks)
+            # Try to extract title from first line
+            if chunks and chunks[0].strip():
+                first_lines = chunks[0].strip().split("\n")
+                candidate = first_lines[0].strip()
+                if 10 < len(candidate) < 200 and not candidate[0].isdigit():
+                    title = candidate
+        return title, text[:5000]  # cap at 5K chars
+    except Exception:  # noqa: BLE001
+        pass
+
+    # Fallback: pymupdf
+    try:
+        import fitz  # noqa: PLC0415
+        doc = fitz.open(str(p))
+        chunks = []
+        for i, page in enumerate(doc):
+            if i >= max_pages:
+                break
+            t = page.get_text()
+            if t:
+                chunks.append(t)
+        text = "\n".join(chunks)
+        if chunks and chunks[0].strip():
+            first_lines = chunks[0].strip().split("\n")
+            candidate = first_lines[0].strip()
+            if 10 < len(candidate) < 200 and not candidate[0].isdigit():
+                title = candidate
+        doc.close()
+        return title, text[:5000]
+    except Exception:  # noqa: BLE001
+        pass
+
+    return title, f"(PDF text extraction failed for {p.name})"
+
+
+@router.post("/import-pdf")
+async def import_pdf(body: ImportPDFRequest) -> dict[str, Any]:
+    """Import a local PDF file as a discovery item.
+
+    Extracts title and text from the PDF, creates a discovery item,
+    and optionally classifies it. Returns the created item.
+    """
+    try:
+        title, text = _extract_pdf_text(body.file_path)
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(status_code=500, detail=f"PDF extraction failed: {exc}") from exc
+
+    from pathlib import Path as _P  # noqa: PLC0415
+    filename = _P(body.file_path).name
+    url = f"file:///{body.file_path.replace(chr(92), '/')}"
+
+    # Create the discovery item
+    raw_item = store.RawItem(
+        title=title,
+        url=url,
+        source=body.source,
+        topic=body.topic,
+        published_at=_now_iso(),
+        lang="en",
+        raw={
+            "filename": filename,
+            "text_preview": text[:2000],
+            "text_length": len(text),
+            "import_method": "manual_pdf",
+        },
+    )
+    is_new = await store.upsert_raw(raw_item)
+
+    # Auto-classify with summary from extracted text
+    summary = text[:500].replace("\n", " ").strip()
+    if summary:
+        await store.update_classification(
+            raw_item.item_id,
+            kind="paper",
+            confidence=0.9,
+            summary=summary,
+        )
+
+    item = await store.get(raw_item.item_id)
+    return {
+        "ok": True,
+        "is_new": is_new,
+        "item_id": raw_item.item_id,
+        "title": title,
+        "text_length": len(text),
+        "item": item.to_dict() if item else None,
+    }
+
+
+@router.post("/import-batch")
+async def import_batch(body: ImportBatchRequest) -> dict[str, Any]:
+    """Import multiple local PDF files as discovery items."""
+    results: list[dict[str, Any]] = []
+    imported = 0
+    errors = 0
+
+    for fp in body.file_paths:
+        try:
+            title, text = _extract_pdf_text(fp)
+        except Exception as exc:  # noqa: BLE001
+            results.append({"file": fp, "ok": False, "error": str(exc)})
+            errors += 1
+            continue
+
+        from pathlib import Path as _P  # noqa: PLC0415
+        filename = _P(fp).name
+        url = f"file:///{fp.replace(chr(92), '/')}"
+
+        raw_item = store.RawItem(
+            title=title,
+            url=url,
+            source=body.source,
+            topic=body.topic,
+            published_at=_now_iso(),
+            lang="en",
+            raw={
+                "filename": filename,
+                "text_preview": text[:2000],
+                "text_length": len(text),
+                "import_method": "manual_pdf",
+            },
+        )
+        is_new = await store.upsert_raw(raw_item)
+
+        summary = text[:500].replace("\n", " ").strip()
+        if summary:
+            await store.update_classification(
+                raw_item.item_id,
+                kind="paper",
+                confidence=0.9,
+                summary=summary,
+            )
+
+        results.append({
+            "file": filename,
+            "ok": True,
+            "is_new": is_new,
+            "item_id": raw_item.item_id,
+            "title": title,
+            "text_length": len(text),
+        })
+        imported += 1
+
+    return {
+        "ok": True,
+        "imported": imported,
+        "errors": errors,
+        "total": len(body.file_paths),
+        "results": results,
+    }
+
+
 # ── Scheduler runtime control ─────────────────────────────────────
 
 

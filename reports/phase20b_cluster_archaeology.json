@@ -1,0 +1,184 @@
+{
+  "data": {
+    "a__members": [
+      "M001",
+      "M003",
+      "M004",
+      "M005",
+      "M007",
+      "M008",
+      "M009",
+      "M010",
+      "M011",
+      "M013",
+      "M014",
+      "M015",
+      "M016",
+      "M017",
+      "M018",
+      "M019",
+      "M020",
+      "M021",
+      "M023",
+      "M024",
+      "M025",
+      "M026",
+      "M027",
+      "M028",
+      "M030",
+      "M031",
+      "M033",
+      "M034",
+      "M035",
+      "M036",
+      "M037",
+      "M038",
+      "M039",
+      "M040",
+      "M041",
+      "M044",
+      "M045",
+      "M046",
+      "M047",
+      "M050",
+      "M052",
+      "M053",
+      "M055",
+      "M056",
+      "M057",
+      "M058",
+      "M060",
+      "M061",
+      "M062",
+      "M063",
+      "M064",
+      "M066",
+      "M067",
+      "M068",
+      "M069",
+      "M070",
+      "M071",
+      "M073",
+      "M074",
+      "M075",
+      "M077",
+      "M078",
+      "M079",
+      "M080",
+      "M081",
+      "M082"
+    ],
+    "a__size": 66,
+    "b": [
+      {
+        "site_prefix": "Mo0000",
+        "n_inscriptions": 606,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0,
+        "enrichment": null
+      },
+      {
+        "site_prefix": "Ha0000",
+        "n_inscriptions": 492,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0,
+        "enrichment": null
+      },
+      {
+        "site_prefix": "Lo0000",
+        "n_inscriptions": 124,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0,
+        "enrichment": null
+      },
+      {
+        "site_prefix": "Ka0000",
+        "n_inscriptions": 110,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0,
+        "enrichment": null
+      },
+      {
+        "site_prefix": "Dh0000",
+        "n_inscriptions": 106,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0,
+        "enrichment": null
+      },
+      {
+        "site_prefix": "Ch0000",
+        "n_inscriptions": 78,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0,
+        "enrichment": null
+      },
+      {
+        "site_prefix": "Su0000",
+        "n_inscriptions": 61,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0,
+        "enrichment": null
+      },
+      {
+        "site_prefix": "Ba0000",
+        "n_inscriptions": 60,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0,
+        "enrichment": null
+      },
+      {
+        "site_prefix": "Ra0000",
+        "n_inscriptions": 33,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0,
+        "enrichment": null
+      }
+    ],
+    "c": [
+      {
+        "length": 2,
+        "n_inscriptions": 269,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0
+      },
+      {
+        "length": 3,
+        "n_inscriptions": 330,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0
+      },
+      {
+        "length": 4,
+        "n_inscriptions": 415,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0
+      },
+      {
+        "length": 5,
+        "n_inscriptions": 330,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0
+      },
+      {
+        "length": 6,
+        "n_inscriptions": 164,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0
+      },
+      {
+        "length": 7,
+        "n_inscriptions": 116,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0
+      },
+      {
+        "length": 8,
+        "n_inscriptions": 46,
+        "n_with_cluster": 0,
+        "rate_with_cluster": 0.0
+      }
+    ],
+    "d": 0.0,
+    "e": "PREDICTION 2 NOT CONFIRMED: chi2=0.00 dof=8; per-site rate range 0.000-0.000 (corpus baseline 0.000)."
+  }
+}

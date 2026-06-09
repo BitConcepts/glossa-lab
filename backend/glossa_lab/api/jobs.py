@@ -103,10 +103,77 @@ async def update_job(job_id: str, body: JobUpdate) -> JobResponse:
     if job is None:
         raise HTTPException(status_code=404, detail="Job not found")
     await db.update_job_status(job_id, body.status)
+    # Mark dashboard insights stale when any job completes
+    if body.status == "completed":
+        try:
+            from glossa_lab.api.dashboard import mark_insights_stale  # noqa: PLC0415
+            mark_insights_stale()
+        except Exception:  # noqa: BLE001
+            pass
     if body.result_data:
         now = datetime.now(timezone.utc).isoformat()
         await db.store_result(job_id=job_id, data=body.result_data, created_at=now)
     return JobResponse(**(await db.get_job(job_id)))  # type: ignore[arg-type]
+
+
+@router.post("/jobs/{job_id}/pause")
+async def pause_job(job_id: str) -> JobResponse:
+    """Pause a job (pending → paused; running → paused in DB, caller must abort SSE stream)."""
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+    job = await db.get_job(job_id)
+    if job is None:
+        raise HTTPException(status_code=404, detail="Job not found")
+    if job["status"] not in ("pending", "running"):
+        raise HTTPException(status_code=409, detail=f"Cannot pause job with status '{job['status']}'")
+    await db.update_job_status(job_id, "paused")
+    return JobResponse(**(await db.get_job(job_id)))  # type: ignore[arg-type]
+
+
+@router.post("/jobs/{job_id}/resume")
+async def resume_job(job_id: str) -> JobResponse:
+    """Resume a paused job by re-queuing it as pending."""
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+    job = await db.get_job(job_id)
+    if job is None:
+        raise HTTPException(status_code=404, detail="Job not found")
+    if job["status"] != "paused":
+        raise HTTPException(status_code=409, detail=f"Cannot resume job with status '{job['status']}'")
+    await db.update_job_status(job_id, "pending")
+    return JobResponse(**(await db.get_job(job_id)))  # type: ignore[arg-type]
+
+
+@router.post("/jobs/pause-all")
+async def pause_all_jobs() -> dict[str, int]:
+    """Pause all pending and running jobs."""
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+    rows = await db.list_jobs()
+    paused = 0
+    for job in rows:
+        if job["status"] in ("pending", "running"):
+            await db.update_job_status(job["id"], "paused")
+            paused += 1
+    return {"paused": paused}
+
+
+@router.post("/jobs/resume-all")
+async def resume_all_jobs() -> dict[str, int]:
+    """Resume all paused jobs by re-queuing them as pending."""
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+    rows = await db.list_jobs()
+    resumed = 0
+    for job in rows:
+        if job["status"] == "paused":
+            await db.update_job_status(job["id"], "pending")
+            resumed += 1
+    return {"resumed": resumed}
 
 
 @router.delete("/jobs", status_code=200)
@@ -123,12 +190,33 @@ async def clear_jobs(finished_only: bool = False) -> ClearJobsResponse:
 
 @router.delete("/jobs/{job_id}", status_code=200)
 async def cancel_job(job_id: str) -> JobResponse:
-    """Cancel (delete) a job."""
+    """Hard-delete a job record (abort).  The record is removed entirely so
+    the jobs list stays clean and re-running the same experiment starts fresh.
+    Paused jobs should use the /pause endpoint instead.
+    """
     db = get_db()
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
 
-    job = await db.cancel_job(job_id)
+    job = await db.delete_job(job_id)
     if job is None:
         raise HTTPException(status_code=404, detail="Job not found")
     return JobResponse(**job)
+
+
+@router.post("/jobs/clear-cache", status_code=200)
+async def clear_cache() -> dict:
+    """Hard-delete all non-running jobs (completed, failed, paused, pending).
+
+    Running jobs are left completely untouched. The frontend is responsible
+    for also clearing its localStorage caches (geb_run_cache,
+    glossa_seq_run_queue) after calling this endpoint.
+    """
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+    cleared = await db.clear_non_running_jobs()
+    return {
+        "cleared_jobs": cleared,
+        "message": f"Cleared {cleared} non-running job(s). Running jobs were left untouched.",
+    }

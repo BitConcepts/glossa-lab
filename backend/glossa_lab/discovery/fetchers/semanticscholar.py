@@ -1,13 +1,32 @@
 """Semantic Scholar fetcher.
 
-Uses the ``semanticscholar`` PyPI package (danielnsilva/semanticscholar) when
-available, which supports automatic pagination beyond the 100-result-per-page
-REST API limit.  Falls back to a direct HTTP call when the package is not
-installed, which is capped at 100 results per request.
+Uses the S2AG (Semantic Scholar Academic Graph) API and S2ORC (Open Research
+Corpus) fields to discover and expand the academic literature corpus relevant
+to Indus script decipherment.
 
-With an API key (``semantic_scholar_api_key`` in Settings) the rate limit
-improves to 1 req/sec across all endpoints.  Without a key the free tier
-is ~100 req/5 min, shared with all unauthenticated users.
+API surfaces used
+-----------------
+S2AG endpoints:
+  /graph/v1/paper/search          — keyword search (primary discovery)
+  /graph/v1/paper/{id}/citations  — find papers that CITE a key paper
+  /graph/v1/paper/{id}/references — find papers a key paper REFERENCES
+  /graph/v1/paper/batch           — bulk detail fetch for multiple paper IDs
+  /recommendations/v1/papers/     — seed-based paper recommendations
+
+S2ORC fields (via S2AG graph API):
+  openAccessPdf      — URL to open-access full PDF (S2ORC provenance)
+  s2FieldsOfStudy    — S2ORC field-of-study taxonomy classifications
+  isOpenAccess       — whether the paper has an OA version
+
+These fields are requested in every search so the discovery pipeline can:
+  * surface open-access PDFs for deep-evidence extraction
+  * filter / weight by academic field (Linguistics, History, CompSci, etc.)
+  * use highly-cited papers as seeds for citation-graph expansion
+
+Rate limits
+-----------
+With an API key: 1 req/sec.  Without: ~100 req/5 min (shared / IP-level).
+Exponential backoff + global cooldown protect against 429s.
 """
 
 from __future__ import annotations
@@ -28,9 +47,28 @@ from glossa_lab.discovery.store import RawItem
 
 _log = logging.getLogger("glossa_lab.discovery.fetchers.semanticscholar")
 
-_ENDPOINT = "https://api.semanticscholar.org/graph/v1/paper/search"
-_FIELDS = "paperId,title,url,abstract,authors,year,citationCount,externalIds,tldr,publicationDate"
-_FIELDS_LIST = _FIELDS.split(",")
+_BASE    = "https://api.semanticscholar.org"
+_ENDPOINT = f"{_BASE}/graph/v1/paper/search"
+_BATCH_ENDPOINT = f"{_BASE}/graph/v1/paper/batch"
+_RECOM_ENDPOINT = f"{_BASE}/recommendations/v1/papers/"
+
+# ── S2AG + S2ORC field sets ──────────────────────────────────────────────────
+# Core search fields (kept lean to stay within S2 response-size limits)
+_SEARCH_FIELDS = (
+    "paperId,title,url,abstract,authors,year,citationCount,"
+    "externalIds,tldr,publicationDate,"
+    # S2ORC provenance fields:
+    "isOpenAccess,openAccessPdf,s2FieldsOfStudy"
+)
+_FIELDS = _SEARCH_FIELDS  # backwards-compat alias
+_FIELDS_LIST = _SEARCH_FIELDS.split(",")
+
+# Citation / reference expansion fields (minimal — we only need identity + abstract)
+_EXPAND_FIELDS = (
+    "paperId,title,url,abstract,authors,year,citationCount,"
+    "externalIds,tldr,publicationDate,isOpenAccess,openAccessPdf,s2FieldsOfStudy"
+)
+_EXPAND_FIELDS_LIST = _EXPAND_FIELDS.split(",")
 
 # ── SDK circuit breaker ─────────────────────────────────────────────────
 # After _SDK_MAX_CONSECUTIVE_FAILS consecutive network errors, skip the
@@ -111,7 +149,9 @@ def _sdk_search(
 ) -> list[dict]:
     """Search via the semanticscholar PyPI SDK (auto-paginates).
 
-    Returns raw paper dicts compatible with the existing fetch() processing.
+    Requests S2AG core fields plus S2ORC provenance fields (openAccessPdf,
+    s2FieldsOfStudy, isOpenAccess).  Returns raw paper dicts compatible with
+    the existing fetch() processing.
     Raises ImportError if the package is not installed.
     """
     from semanticscholar import SemanticScholar  # noqa: PLC0415
@@ -131,6 +171,18 @@ def _sdk_search(
             tldr_text = tldr.get("text") or ""
         elif hasattr(tldr, "text"):
             tldr_text = str(tldr.text or "")
+        # S2ORC fields
+        oap = getattr(p, "openAccessPdf", None)
+        oa_pdf = ""
+        if isinstance(oap, dict):
+            oa_pdf = oap.get("url") or ""
+        elif isinstance(oap, str):
+            oa_pdf = oap
+        fos_raw = getattr(p, "s2FieldsOfStudy", None) or []
+        fields_of_study = [
+            (f.get("category") if isinstance(f, dict) else str(f))
+            for f in fos_raw
+        ]
         out.append({
             "paperId": str(getattr(p, "paperId", "") or ""),
             "title": str(getattr(p, "title", "") or ""),
@@ -145,8 +197,46 @@ def _sdk_search(
             "externalIds": ext,
             "tldr": {"text": tldr_text},
             "publicationDate": str(getattr(p, "publicationDate", "") or ""),
+            # S2ORC provenance
+            "isOpenAccess": bool(getattr(p, "isOpenAccess", False)),
+            "openAccessPdf": oa_pdf,
+            "s2FieldsOfStudy": [f for f in fields_of_study if f],
         })
     return out
+
+
+def _http_get_json_sync(
+    url: str,
+    *,
+    params: dict | None = None,
+    headers: dict | None = None,
+    json_body: dict | None = None,
+    timeout: float = 15.0,
+) -> dict:
+    """Synchronous HTTP GET or POST (for use inside run_in_thread)."""
+    import json as _json  # noqa: PLC0415
+    import urllib.error  # noqa: PLC0415
+    import urllib.parse  # noqa: PLC0415
+    import urllib.request  # noqa: PLC0415
+
+    if params:
+        url = url + "?" + urllib.parse.urlencode(params)
+    hdrs = {"Accept": "application/json", "User-Agent": "GlossaLab/0.9"}
+    if headers:
+        hdrs.update(headers)
+    if json_body is not None:
+        data = _json.dumps(json_body).encode()
+        hdrs["Content-Type"] = "application/json"
+        req = urllib.request.Request(url, data=data, headers=hdrs, method="POST")
+    else:
+        req = urllib.request.Request(url, headers=hdrs, method="GET")
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as r:
+            return _json.loads(r.read().decode("utf-8", errors="replace"))
+    except urllib.error.HTTPError as exc:
+        raise FetcherError(f"{exc.code}: {exc.reason}") from exc
+    except Exception as exc:  # noqa: BLE001
+        raise FetcherError(str(exc)) from exc
 
 
 class SemanticScholarFetcher(Fetcher):
@@ -161,6 +251,99 @@ class SemanticScholarFetcher(Fetcher):
     # full rate_delay — prevents 429s when the backend restarts quickly.
     import time as _time_init
     _last_request: float = _time_init.monotonic()
+
+    # ── S2AG: citation / reference graph expansion ──────────────────────
+
+    async def _expand_via_citations(
+        self,
+        paper_id: str,
+        *,
+        headers: dict | None,
+        limit: int = 15,
+        direction: str = "citations",   # "citations" | "references"
+    ) -> list[dict]:
+        """Fetch papers that CITE or are REFERENCED BY a seed paper.
+
+        direction="citations"  → papers that cited this paper (follow-on work)
+        direction="references" → papers this paper cited (foundational work)
+
+        Both use the S2AG /graph/v1/paper/{id}/{direction} endpoint.
+        Results are deduplicated against the main search results by the caller.
+        """
+        cooling, _ = _s2_is_cooling()
+        if cooling:
+            return []
+        url = f"{_BASE}/graph/v1/paper/{paper_id}/{direction}"
+        params: dict[str, object] = {
+            "fields": _EXPAND_FIELDS,
+            "limit": min(limit, 50),
+        }
+        try:
+            data = await run_in_thread(
+                _http_get_json_sync, url,
+                params=params, headers=headers, timeout=12.0,
+            )
+            if not isinstance(data, dict):
+                return []
+            # The response shape is {"data": [{"citingPaper": {...}}, ...]}
+            # for citations and {"data": [{"citedPaper": {...}}, ...]} for
+            # references.  Extract the nested paper object.
+            key = "citingPaper" if direction == "citations" else "citedPaper"
+            return [
+                entry[key] for entry in (data.get("data") or [])
+                if isinstance(entry, dict) and key in entry
+            ]
+        except FetcherError as exc:
+            if "429" in str(exc):
+                _s2_cooldown_trip(_S2_DEFAULT_COOLDOWN)
+            _log.debug("S2AG %s expansion failed for %s: %s", direction, paper_id, exc)
+            return []
+
+    # ── S2AG: seed-based paper recommendations ───────────────────────────
+
+    async def _fetch_recommendations(
+        self,
+        positive_ids: list[str],
+        *,
+        headers: dict | None,
+        limit: int = 20,
+    ) -> list[dict]:
+        """Use S2AG recommendations API to find related papers.
+
+        Sends a POST to /recommendations/v1/papers/ with a list of
+        positive paper IDs (found by search) as seeds.  Returns papers
+        that are semantically close but would not appear in a keyword search.
+        Requires an API key for higher rate limits but works keyless too.
+        """
+        if not positive_ids:
+            return []
+        cooling, _ = _s2_is_cooling()
+        if cooling:
+            return []
+        body: dict = {
+            "positivePaperIds": positive_ids[:5],  # S2AG cap is ~5 positive seeds
+            "negativePaperIds": [],
+        }
+        params: dict[str, object] = {
+            "fields": _EXPAND_FIELDS,
+            "limit": min(limit, 100),
+        }
+        try:
+            data = await run_in_thread(
+                _http_get_json_sync, _RECOM_ENDPOINT,
+                params=params, headers=headers,
+                json_body=body, timeout=15.0,
+            )
+            if not isinstance(data, dict):
+                return []
+            return data.get("recommendedPapers") or []
+        except FetcherError as exc:
+            if "429" in str(exc):
+                _s2_cooldown_trip(_S2_DEFAULT_COOLDOWN)
+            _log.debug("S2AG recommendations failed: %s", exc)
+            return []
+
+    # ── Main fetch ───────────────────────────────────────────────────────
 
     async def fetch(
         self, topic: TopicProfile, *, since: datetime | None = None,
@@ -271,14 +454,15 @@ class SemanticScholarFetcher(Fetcher):
                     return []
 
         # ── HTTP fallback (SDK not installed OR network error from SDK) ──
+        headers: dict[str, str] | None = None
+        if s2_key:
+            headers = {"x-api-key": s2_key}
+
         if not papers:
-            headers: dict[str, str] | None = None
-            if s2_key:
-                headers = {"x-api-key": s2_key}
             params: dict[str, object] = {
                 "query": query,
                 "limit": min(max_results, 100),
-                "fields": _FIELDS,
+                "fields": _SEARCH_FIELDS,
             }
             if year_filter:
                 params["year"] = year_filter
@@ -292,8 +476,6 @@ class SemanticScholarFetcher(Fetcher):
                 is_429 = "429" in err_str
                 is_timeout = "timed out" in err_str.lower() or "timeout" in err_str.lower()
                 if is_429:
-                    # 429 on HTTP fallback — trip global cooldown so all parallel
-                    # and subsequent tasks know the IP-wide budget is exhausted.
                     import re as _re  # noqa: PLC0415
                     ra_match = _re.search(r"Retry-After:\s*(\d+)", err_str)
                     cooldown = int(ra_match.group(1)) + 5 if ra_match else _S2_DEFAULT_COOLDOWN
@@ -310,17 +492,65 @@ class SemanticScholarFetcher(Fetcher):
                 return []
             papers = data.get("data") or []
 
+        # ── S2AG expansion: citations + recommendations (API-key only to
+        # protect the shared IP-wide rate limit; skipped when keyless). ──
+        # Elect the top-2 papers by citation count as seeds.
+        # With an API key we can afford up to 3 extra requests per topic
+        # (1 citations, 1 references, 1 recommendations).  Without a key
+        # the base search already consumes most of the budget.
+        if s2_key and papers and not _s2_is_cooling()[0]:
+            do_expand = bool(opts.get("expand", True))  # opt-out with {"expand": false}
+            if do_expand:
+                sorted_by_cit = sorted(
+                    [p for p in papers if p.get("paperId")],
+                    key=lambda p: int(p.get("citationCount") or 0),
+                    reverse=True,
+                )
+                seed_ids = [p["paperId"] for p in sorted_by_cit[:2]]
+
+                expand_limit = int(opts.get("expand_limit", 15))
+
+                # 1. Citing papers (follow-on work in the same area)
+                if seed_ids:
+                    extra_cit = await self._expand_via_citations(
+                        seed_ids[0], headers=headers,
+                        limit=expand_limit, direction="citations",
+                    )
+                    papers.extend(extra_cit)
+                    _log.debug(
+                        "S2AG citation expansion for topic %s: +%d papers from citing %s",
+                        topic.id, len(extra_cit), seed_ids[0],
+                    )
+
+                # 2. Recommendations seeded from top search results
+                recom = await self._fetch_recommendations(
+                    seed_ids, headers=headers, limit=expand_limit,
+                )
+                papers.extend(recom)
+                _log.debug(
+                    "S2AG recommendations for topic %s: +%d papers",
+                    topic.id, len(recom),
+                )
+
+        # ── Deduplicate by paperId, then convert to RawItems ─────────
+        seen_ids: set[str] = set()
         items: list[RawItem] = []
         for p in papers:
             title = (p.get("title") or "").strip()
             if not title:
                 continue
+            paper_id = p.get("paperId") or ""
+            if paper_id and paper_id in seen_ids:
+                continue
+            if paper_id:
+                seen_ids.add(paper_id)
+
             ext = p.get("externalIds") or {}
             doi = ext.get("DOI") or ""
             url = (
                 p.get("url")
                 or (f"https://doi.org/{doi}" if doi else "")
-                or f"https://www.semanticscholar.org/paper/{p.get('paperId', '')}"
+                or (f"https://www.semanticscholar.org/paper/{paper_id}" if paper_id else "")
             )
             if not url:
                 continue
@@ -341,6 +571,23 @@ class SemanticScholarFetcher(Fetcher):
                 if isinstance(a, dict)
             ]
             tldr = (p.get("tldr") or {}).get("text") or ""
+
+            # ── S2ORC provenance fields ────────────────────────────────
+            # openAccessPdf: {"url": "...", "status": "GREEN"} or None
+            oap = p.get("openAccessPdf")
+            oa_pdf_url = ""
+            if isinstance(oap, dict):
+                oa_pdf_url = oap.get("url") or ""
+            elif isinstance(oap, str):
+                oa_pdf_url = oap
+            is_oa = bool(p.get("isOpenAccess", False))
+            # s2FieldsOfStudy: [{"category": "Linguistics", "source": "s2-fos-model"}, ...]
+            fos_raw = p.get("s2FieldsOfStudy") or []
+            fields_of_study = [
+                f.get("category", "") if isinstance(f, dict) else str(f)
+                for f in fos_raw
+            ]
+
             items.append(
                 RawItem(
                     title=title,
@@ -355,7 +602,11 @@ class SemanticScholarFetcher(Fetcher):
                         "authors": [a for a in authors if a],
                         "citation_count": p.get("citationCount"),
                         "tldr": tldr[:500],
-                        "paper_id": p.get("paperId") or "",
+                        "paper_id": paper_id,
+                        # S2ORC provenance
+                        "open_access": is_oa,
+                        "open_access_pdf": oa_pdf_url,
+                        "fields_of_study": [f for f in fields_of_study if f],
                     },
                 )
             )

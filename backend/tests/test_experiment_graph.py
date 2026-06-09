@@ -544,7 +544,9 @@ def test_auto_migrate_creates_proper_graphs(tmp_path, monkeypatch):
 
     n = auto_migrate_hardcoded_experiments()
     specs = _build_proper_graph_specs()
-    assert n == len(specs)
+    # Only non-retired specs are written; n < len(specs) because many are retired.
+    assert n > 0
+    assert n <= len(specs)
 
     # Check indus_structural_atlas has 8 nodes
     p = tmp_path / "indus_structural_atlas.json"
@@ -554,27 +556,31 @@ def test_auto_migrate_creates_proper_graphs(tmp_path, monkeypatch):
     assert len(data["edges"]) == 11
     assert data.get("auto_migrated") is True
 
-    # Check positional_profile_analysis has 3 nodes (pure atomic)
-    p2 = tmp_path / "positional_profile_analysis.json"
+    # Check ugaritic_sa_decipher is a pure atomic pipeline (no ExperimentWrapper)
+    p2 = tmp_path / "ugaritic_sa_decipher.json"
+    assert p2.exists()
     data2 = json.loads(p2.read_text("utf-8"))
-    assert len(data2["nodes"]) == 3
-    # No ExperimentWrapper in pure atomic graph
-    atomic_ids = [n["data"]["atomicId"] for n in data2["nodes"]]
+    assert len(data2["nodes"]) == 6
+    atomic_ids = [nd["data"]["atomicId"] for nd in data2["nodes"]]
     assert "ExperimentWrapper" not in atomic_ids
+    assert "SADecipher" in atomic_ids
 
-    # CLI-only OCR experiments use StaticValue + ExperimentWrapper
-    p3 = tmp_path / "ocr_tables.json"
+    # kl_comparison uses two CorpusReader nodes (multi-corpus pipeline)
+    p3 = tmp_path / "kl_comparison.json"
+    assert p3.exists()
     data3 = json.loads(p3.read_text("utf-8"))
-    aids = [n["data"]["atomicId"] for n in data3["nodes"]]
-    assert "StaticValue" in aids
-    assert "ExperimentWrapper" in aids
+    aids = [nd["data"]["atomicId"] for nd in data3["nodes"]]
+    assert aids.count("CorpusReader") == 2
+    assert "KLDivergence" in aids
 
-    # kandles_bias is now a runnable graph (not CLI-only)
-    p4 = tmp_path / "kandles_bias.json"
+    # fuls_nw_semitic_benchmark is a multi-branch pipeline
+    p4 = tmp_path / "fuls_nw_semitic_benchmark.json"
+    assert p4.exists()
     data4 = json.loads(p4.read_text("utf-8"))
-    aids4 = [n["data"]["atomicId"] for n in data4["nodes"]]
-    assert "ExperimentWrapper" in aids4
-    assert "CorpusReader" in aids4
+    assert len(data4["nodes"]) == 9
+    aids4 = [nd["data"]["atomicId"] for nd in data4["nodes"]]
+    assert "BuiltinCorpus" in aids4
+    assert "Merger" in aids4
 
 
 def test_auto_migrate_preserves_user_graphs(tmp_path, monkeypatch):
@@ -585,9 +591,9 @@ def test_auto_migrate_preserves_user_graphs(tmp_path, monkeypatch):
     tmp_path.mkdir(exist_ok=True)
 
     # Write a user-saved file (no auto_migrated flag)
-    user_file = tmp_path / "positional_profile_analysis.json"
+    user_file = tmp_path / "indus_structural_atlas.json"
     user_data = {
-        "id": "positional_profile_analysis",
+        "id": "indus_structural_atlas",
         "name": "My Custom Graph",
         "nodes": [{"id": "x"}],
         "edges": [],
@@ -611,10 +617,10 @@ def test_auto_migrate_overwrites_old_3node_wrapper(tmp_path, monkeypatch):
     tmp_path.mkdir(exist_ok=True)
 
     # Old 3-node pattern: CorpusReader → ExperimentWrapper → PassResult
-    old_file = tmp_path / "positional_profile_analysis.json"
+    old_file = tmp_path / "indus_structural_atlas.json"
     old_data = {
-        "id": "positional_profile_analysis",
-        "name": "Old Positional Profile",
+        "id": "indus_structural_atlas",
+        "name": "Old Indus Atlas",
         "nodes": [
             {
                 "id": "corpus",
@@ -627,7 +633,7 @@ def test_auto_migrate_overwrites_old_3node_wrapper(tmp_path, monkeypatch):
                 "data": {
                     "atomicId": "ExperimentWrapper",
                     "label": "Old Wrapper",
-                    "params": {"experiment_id": "positional_profile_analysis"},
+                    "params": {"experiment_id": "indus_structural_atlas"},
                 },
             },
             {
@@ -647,11 +653,11 @@ def test_auto_migrate_overwrites_old_3node_wrapper(tmp_path, monkeypatch):
 
     auto_migrate_hardcoded_experiments()
 
-    # Should have been replaced with 3-node pure atomic (no ExperimentWrapper)
+    # Should have been replaced with 8-node proper graph (no ExperimentWrapper)
     result = json.loads(old_file.read_text())
     atomic_ids = [n["data"]["atomicId"] for n in result["nodes"]]
     assert "ExperimentWrapper" not in atomic_ids
-    assert "PositionalProfiler" in atomic_ids
+    assert len(result["nodes"]) == 8
 
 
 def test_execute_graph_canonical_positional_profile():

@@ -110,8 +110,13 @@ def _snapshot() -> dict[str, Any]:
     vm = psutil.virtual_memory()
     swap = psutil.swap_memory()
 
-    # Disk I/O delta
-    disk_io = psutil.disk_io_counters()
+    # Disk I/O delta — protected against WMI hangs on Windows (2s timeout)
+    try:
+        import concurrent.futures as _cf  # noqa: PLC0415
+        with _cf.ThreadPoolExecutor(max_workers=1) as _pool:
+            disk_io = _pool.submit(psutil.disk_io_counters).result(timeout=2.0)
+    except Exception:  # noqa: BLE001
+        disk_io = None
     disk_read_mbps = 0.0
     disk_write_mbps = 0.0
     if _prev_disk and disk_io:

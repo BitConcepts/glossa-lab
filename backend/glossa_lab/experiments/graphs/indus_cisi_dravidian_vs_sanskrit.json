@@ -1,7 +1,7 @@
 {
   "id": "indus_cisi_dravidian_vs_sanskrit",
-  "name": "Indus CISI: Dravidian vs Sanskrit SA on Real Multi-Sign Inscriptions",
-  "description": "Critical test: uses real CISI inscription sequences (178 inscriptions, 1003 tokens, Parpola numbering) instead of ICIT single-sign sequences. For the first time, SA exploits real bigram structure (e.g. P122→P385 n=29, P324→P332 n=10). LMBuilder first builds an Indus self-LM from CISI to get H1. Then SA decipherment against Dravidian and Sanskrit target LMs. With real multi-sign data, the phonotactic signal is much richer. GPU fast path: ocp_weight=0.0, n_seeds=5, max_iter=8000.",
+  "name": "Indus SA: Dravidian vs Sanskrit \u2014 CISI Multi-Sign",
+  "description": "Critical test: uses real CISI inscription sequences (178 inscriptions, 1003 tokens, Parpola numbering) instead of ICIT single-sign sequences. For the first time, SA exploits real bigram structure (e.g. P122\u2192P385 n=29, P324\u2192P332 n=10). LMBuilder first builds an Indus self-LM from CISI to get H1. Then SA decipherment against Dravidian and Sanskrit target LMs. With real multi-sign data, the phonotactic signal is much richer. GPU fast path: ocp_weight=0.0, n_seeds=5, max_iter=8000.",
   "nodes": [
     {
       "id": "corpus",
@@ -259,6 +259,5 @@
       "sourcePort": "json",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

@@ -332,6 +332,30 @@ export const cancelJob = (id: string): Promise<JobResponse> =>
 export const clearJobs = (finishedOnly = false): Promise<{ cleared: number }> =>
   request("DELETE", finishedOnly ? "/jobs?finished_only=true" : "/jobs");
 
+export const pauseJob = (id: string): Promise<JobResponse> =>
+  request("POST", `/jobs/${id}/pause`);
+
+export const resumeJob = (id: string): Promise<JobResponse> =>
+  request("POST", `/jobs/${id}/resume`);
+
+export const pauseAllJobs = (): Promise<{ paused: number }> =>
+  request("POST", "/jobs/pause-all");
+
+export const resumeAllJobs = (): Promise<{ resumed: number }> =>
+  request("POST", "/jobs/resume-all");
+
+/** Clear all finished jobs from DB AND reset frontend caches.
+ *  Call this when you want a completely clean slate before re-running. */
+export const clearCache = (): Promise<{ cleared_jobs: number; message: string }> =>
+  request("POST", "/jobs/clear-cache");
+
+/** Clear only localStorage-based run caches (no server call). */
+export function clearLocalCache(): void {
+  localStorage.removeItem("geb_run_cache");             // experiment ✓/✗ badges
+  localStorage.removeItem("glossa_seq_run_queue");       // sequential queue
+  localStorage.removeItem("glossa_dashboard_insight_v2"); // AI insight + exp_results + completed action states
+}
+
 // ── Results ───────────────────────────────────────────────────────────
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -676,6 +700,20 @@ export interface ExperimentMeta {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getNodeSchema = (nodeType: string, refId: string): Promise<Record<string, any>> =>
   request("GET", `/node-registry/${nodeType}/${refId}`);
+
+export interface ExperimentLedgerEntry {
+  id: string;
+  display_name: string;
+  category: string;
+  phase: string;
+  description: string;
+  status: "active" | "superseded" | "legacy" | "scaffold";
+  superseded_by: string | null;
+  source_file: string;
+}
+
+export const getExperimentMetadata = (): Promise<ExperimentLedgerEntry[]> =>
+  request("GET", "/experiments/metadata");
 
 export const listExperiments = (): Promise<ExperimentMeta[]> =>
   request("GET", "/experiments");
@@ -1577,8 +1615,25 @@ export type DashboardActionType =
   | "run_mine"
   | "create_hypothesis"
   | "propose_experiment_chain"
+  | "build_sa_experiment"
   | "ai_chat"
   | "no_op";
+
+export interface BuildSaResult {
+  ok: boolean;
+  experiment_id?: string;
+  name?: string;
+  graph_file?: string;
+  n_languages?: number;
+  languages?: string[];
+  corpus?: string;
+  error?: string;
+}
+
+export const buildSaExperiment = (
+  body: { corpus: string; languages: string; name?: string; n_seeds?: number; max_iterations?: number },
+): Promise<BuildSaResult> =>
+  request("POST", "/experiments/build-sa", body);
 
 export interface DashboardNextAction {
   label:        string;
@@ -1619,8 +1674,11 @@ export interface DashboardHighlights {
   n_studies: number;
   n_experiments: number;
   n_hypotheses: number;
+  n_atomic_nodes: number;
   since_days: number;
   insight: DashboardInsight | null;
+  insights_stale?: boolean;
+  stale_since?: number;   // epoch seconds
 }
 
 export const getDashboardHighlights = (
@@ -1686,6 +1744,54 @@ export interface DeciphermentProgress {
 
 export const getDashboardDecipherment = (): Promise<DeciphermentProgress> =>
   request("GET", "/dashboard/decipherment");
+
+export interface LatestInsightResponse {
+  available: boolean;
+  generated_at: number;  // epoch seconds
+  insight: DashboardInsight | null;
+}
+
+export const getLatestInsight = (): Promise<LatestInsightResponse> =>
+  request("GET", "/dashboard/latest-insight");
+
+// ── Foundation automation ────────────────────────────────────────────
+
+export interface FoundationStatus {
+  last_checked_at: string | null;
+  verdict: string | null;
+  n_ok: number;
+  n_fail: number;
+  n_warn: number;
+  auto_check_enabled: boolean;
+  dirty: boolean;
+  running: boolean;
+}
+
+export interface FoundationCheckResult {
+  n_ok?: number;
+  n_fail?: number;
+  n_warn?: number;
+  verdict?: string;
+  failed?: string[];
+  skipped?: boolean;
+  reason?: string;
+  error?: string;
+}
+
+export const getFoundationStatus = (): Promise<FoundationStatus> =>
+  request("GET", "/foundation/status");
+
+export const runFoundationCheck = (): Promise<FoundationCheckResult> =>
+  request("POST", "/foundation/check");
+
+export const updateFoundationConfig = (
+  body: { auto_check_enabled?: boolean },
+): Promise<{ ok: boolean; auto_check_enabled: boolean }> =>
+  request("PATCH", "/foundation/config", body);
+
+// ── SSE events stream URL ───────────────────────────────────────────
+
+export const getEventsStreamUrl = (): string => `/api/v1/events/stream`;
 
 // ── AI profile suggestions ───────────────────────────────────────────
 
@@ -2527,3 +2633,154 @@ export const uploadIndusPaper = (file: File): Promise<Response> => {
   fd.append("file", file);
   return fetch(`${BASE}/indus-evidence/upload`, { method: "POST", body: fd });
 };
+
+// ── Signs API ────────────────────────────────────────────────────────────
+
+export interface SignSource {
+  experiment: string;
+  phase: number | null;
+  job_id: string | null;
+  report_ref: string;
+  staging_entry: string | null;
+  dedr_ref: string;
+  dedr_source: string;
+}
+
+export interface SignEntry {
+  sign_id: string;
+  reading: string;
+  confidence: "HIGH" | "MEDIUM" | "LOW" | "UNCERTAIN";
+  image_url?: string | null;
+  in_corpus: boolean;
+  corpus_freq: number;
+  evidence_type: string;
+  evidence_score: number;
+  basis: string;
+  gloss: string;
+  source: SignSource;
+  wells_ids: string[];
+  mahadevan_ids: string[];
+  numbering_system: string;
+}
+
+export interface SignsSummary {
+  total: number;
+  deciphered: number;
+  undeciphered: number;
+  icit_total: number;
+  high: number;
+  medium: number;
+  low: number;
+  in_corpus: number;
+}
+
+export interface SignsListResponse {
+  items: SignEntry[];
+  total: number;
+  limit: number;
+  offset: number;
+}
+
+export const getSignsSummary = (): Promise<SignsSummary> =>
+  request("GET", "/signs/summary");
+
+export const listSigns = (
+  params: {
+    deciphered?: boolean;
+    confidence?: string;
+    in_corpus?: boolean;
+    search?: string;
+    limit?: number;
+    offset?: number;
+  } = {},
+): Promise<SignsListResponse> => {
+  const qs = new URLSearchParams();
+  if (params.deciphered !== undefined) qs.set("deciphered", String(params.deciphered));
+  if (params.confidence) qs.set("confidence", params.confidence);
+  if (params.in_corpus !== undefined) qs.set("in_corpus", String(params.in_corpus));
+  if (params.search) qs.set("search", params.search);
+  if (params.limit !== undefined) qs.set("limit", String(params.limit));
+  if (params.offset !== undefined) qs.set("offset", String(params.offset));
+  const q = qs.toString();
+  return request("GET", `/signs${q ? `?${q}` : ""}`);
+};
+
+export const getSign = (signId: string): Promise<SignEntry> =>
+  request("GET", `/signs/${encodeURIComponent(signId)}`);
+
+// ── Sign Images API ──────────────────────────────────────────────────────
+
+export interface SignImagesStatus {
+  total_signs: number;
+  with_image: number;
+  without_image: number;
+  coverage_pct: number;
+  by_source: Record<string, number>;
+  missing_sample: string[];
+  processing_running: boolean;
+  last_run_stats: Record<string, number> | null;
+}
+
+export const getSignImagesStatus = (): Promise<SignImagesStatus> =>
+  request("GET", "/signs/images/status");
+
+export const triggerSignImageProcessing = (opts: {
+  force?: boolean;
+  skip_wikimedia?: boolean;
+  sign_ids?: string[];
+} = {}): Promise<{ queued: boolean; message?: string; reason?: string }> =>
+  request("POST", "/signs/images/process", opts);
+
+export const processOneSignImage = (
+  signId: string,
+  force = false,
+  skipWikimedia = false,
+): Promise<{ sign_id: string; source: string; image_url: string | null }> =>
+  request("POST", `/signs/images/process/${encodeURIComponent(signId)}?force=${force}&skip_wikimedia=${skipWikimedia}`);
+
+export const getSignImageManifest = (): Promise<Record<string, {
+  status: string; source: string; timestamp: string;
+  processed_path: string | null; original_path: string | null;
+}>> =>
+  request("GET", "/signs/images/manifest");
+
+export interface PagePreview {
+  filename: string;
+  source: string;
+  url: string;
+  size_bytes: number;
+}
+
+export const getPagePreviews = (): Promise<{ count: number; pages: PagePreview[] }> =>
+  request("GET", "/signs/images/page-previews");
+
+export interface VerifyResult {
+  total_checked: number;
+  passed: number;
+  failed: number;
+  requeued: number;
+  failures: { sign_id: string; issues: string[] }[];
+}
+
+export const verifySignImages = (opts: {
+  sign_ids?: string[];
+  force?: boolean;
+  max_age_days?: number;
+} = {}): Promise<VerifyResult> =>
+  request("POST", "/signs/images/verify", opts);
+
+export const discoverMissingSigns = (): Promise<{
+  total_signs_with_candidates: number;
+  total_candidates: number;
+  by_sign: Record<string, { count: number; candidates: { source: string; filename?: string; url?: string }[] }>;
+}> =>
+  request("GET", "/signs/images/discover");
+
+export const rebuildSignManifest = (): Promise<{
+  total_pngs_on_disk: number;
+  reconciled: number;
+  already_ok: number;
+  invalid: number;
+  manifest_entries: number;
+}> =>
+  request("POST", "/signs/images/rebuild");

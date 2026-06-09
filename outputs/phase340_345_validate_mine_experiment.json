@@ -1,0 +1,378 @@
+{
+  "phase340": {
+    "test1_prior_only": {
+      "description": "Prior-only LM (Krishnamurti patterns, NO corpus data)",
+      "n_prior_bigrams": 60,
+      "real_coverage": 0.0232,
+      "null_mean": 0.006,
+      "null_std": 0.0061,
+      "z_score": 2.82,
+      "p_value": 0.03,
+      "circular": false
+    },
+    "test2_held_out": {
+      "description": "80/20 held-out split (train LM from 80%, test on 20%)",
+      "train_inscriptions": 1336,
+      "test_inscriptions": 334,
+      "test_coverage": 0.7973,
+      "null_mean": 0.8499,
+      "null_std": 0.0136,
+      "z_score": -3.85,
+      "p_value": 1.0
+    },
+    "test3_prior_corpus_overlap": {
+      "description": "How many Krishnamurti bigrams appear in decoded corpus?",
+      "prior_bigrams_in_corpus": 25,
+      "total_prior_bigrams": 60,
+      "hit_rate": 0.4167
+    },
+    "verdict": "Anti-circularity: Prior-only z=2.8 (p=0.0300), Held-out z=-3.9 (p=1.0000), Prior overlap 25/60 (42%). PARTIALLY VALIDATED — some signal survives."
+  },
+  "phase341": {
+    "F1_permutation_null": {
+      "real_r2": 0,
+      "null_mean": 0.0,
+      "z_score": 0
+    },
+    "F7_held_out": {
+      "n_common": 71,
+      "accuracy": 0.9718,
+      "train_n": 1336,
+      "test_n": 334
+    },
+    "F9_motif_conditioned": {
+      "motif_hits": {
+        "unicorn": {
+          "expected_readings": [
+            "kol",
+            "koḷ",
+            "kol/koḷ"
+          ],
+          "hits": 0,
+          "total": 0,
+          "rate": 0.0
+        },
+        "bull": {
+          "expected_readings": [
+            "erutu",
+            "kōṉ",
+            "māṭu"
+          ],
+          "hits": 0,
+          "total": 0,
+          "rate": 0.0
+        },
+        "elephant": {
+          "expected_readings": [
+            "yānai",
+            "kaḷiṟu",
+            "āṉai"
+          ],
+          "hits": 0,
+          "total": 0,
+          "rate": 0.0
+        },
+        "rhinoceros": {
+          "expected_readings": [
+            "kāṇṭāmirukam",
+            "kōṭṭāṉ"
+          ],
+          "hits": 0,
+          "total": 0,
+          "rate": 0.0
+        },
+        "tiger": {
+          "expected_readings": [
+            "puli",
+            "vēṅkai"
+          ],
+          "hits": 0,
+          "total": 0,
+          "rate": 0.0
+        },
+        "gharial": {
+          "expected_readings": [
+            "nakaram",
+            "mutalai"
+          ],
+          "hits": 0,
+          "total": 0,
+          "rate": 0.0
+        }
+      },
+      "avg_motif_rate": 0.0
+    },
+    "verdict": "Falsification: F1 positional z=0.0, F7 held-out accuracy 97%, F9 motif-reading match 0%. PARTIAL PASS"
+  },
+  "phase342": {
+    "total_raw": 37,
+    "total_unique": 28,
+    "source_distribution": {
+      "openalex": 27,
+      "semantic_scholar": 1
+    },
+    "top_20_papers": [
+      {
+        "title": "Metal-smithy, Bead-making, Gemstones, Jeweller’s Weight, Trade-permits, Tax-stamps: Indus Script’s Semasiography Partly Decoded",
+        "doi": "https://doi.org/10.31235/osf.io/942ra",
+        "year": 2021,
+        "score": 6
+      },
+      {
+        "title": "Semantic scope of Indus inscriptions comprising taxation, trade and craft licensing, commodity control and access control: archaeological and script-internal evidence",
+        "doi": "https://doi.org/10.31235/osf.io/7dtqz",
+        "year": 2023,
+        "score": 6
+      },
+      {
+        "title": "Proto-Dravidian as the Spoken Language of the Mature Harappan Civilization: A Five-Domain Convergence Analysis",
+        "doi": "https://doi.org/10.5281/zenodo.19655727",
+        "year": 2026,
+        "score": 6
+      },
+      {
+        "title": "Interrogating Indus inscriptions to unravel their mechanisms of meaning conveyance",
+        "doi": "https://doi.org/10.1057/s41599-019-0274-1",
+        "year": 2019,
+        "score": 3
+      },
+      {
+        "title": "Ancient tax tokens, trade licenses and metrological records?: Making sense of Indus inscribed objects through script-internal, contextual, linguistic, and ethnohistorical lenses.",
+        "doi": "https://doi.org/10.31235/osf.io/h8ct7",
+        "year": 2021,
+        "score": 3
+      },
+      {
+        "title": "Multilingual Neural Machine Translation for Indic to Indic Languages",
+        "doi": "https://doi.org/10.1145/3652026",
+        "year": 2024,
+        "score": 3
+      },
+      {
+        "title": "Malayalam and core Dravidian phonology: A view from early language acquisition",
+        "doi": "https://doi.org/10.31234/osf.io/ksnw5",
+        "year": 2023,
+        "score": 3
+      },
+      {
+        "title": "Generating new product ideas for a social media, Case company: Glostars",
+        "doi": null,
+        "year": 2018,
+        "score": 3
+      },
+      {
+        "title": "Study of using hybrid deep neural networks in character extraction from images containing text",
+        "doi": "https://doi.org/10.17352/tcsit.000039",
+        "year": 2021,
+        "score": 3
+      },
+      {
+        "title": "Deep Learning in Archiving Indus Script and Motif Information",
+        "doi": "https://doi.org/10.5334/jcaa.175",
+        "year": 2025,
+        "score": 3
+      },
+      {
+        "title": "The Indus sings on the tablets from Harappa",
+        "doi": "https://doi.org/10.36948/ijfmr.2026.v08i01.68878",
+        "year": 2026,
+        "score": 3
+      },
+      {
+        "title": "The Alphabet of Sindhu Prakrit (The decipherment of the Indus Script)",
+        "doi": "https://doi.org/10.31219/osf.io/aey8m",
+        "year": 2022,
+        "score": 3
+      },
+      {
+        "title": "Auricular malformations are driven by copy number variations in a hierarchical enhancer cluster and a dominant enhancer recapitulates human pathogenesis",
+        "doi": "https://doi.org/10.1038/s41467-025-59735-w",
+        "year": 2025,
+        "score": 3
+      },
+      {
+        "title": "Scribe Verification in Chinese manuscripts using Siamese, Triplet, and Vision Transformer Neural Networks",
+        "doi": null,
+        "year": 2026,
+        "score": 3
+      },
+      {
+        "title": "AI-Powered Ancient Inscription Analysis and Translation (Halmidi)",
+        "doi": "https://doi.org/10.1051/itmconf/20268101020",
+        "year": 2026,
+        "score": 3
+      },
+      {
+        "title": "Machine Learning In The Study Of Ancient Civilizations: Transforming Archaeology, Linguistics And Historical Analysis",
+        "doi": "https://doi.org/10.5281/zenodo.20112845",
+        "year": 2026,
+        "score": 3
+      },
+      {
+        "title": "Data Contamination in Neural Hieroglyphic Translation: A Reproducibility Study",
+        "doi": null,
+        "year": 2026,
+        "score": 3
+      },
+      {
+        "title": "Global and Local Feature Extraction Using Deep Learning Technique for Keyword Spotting in Ancient Tamil Inscriptions",
+        "doi": "https://doi.org/10.47857/irjms.2026.v07i01.08737",
+        "year": 2026,
+        "score": 3
+      },
+      {
+        "title": "A novel GAN-transformer framework for early Brahmi script generation and recognition",
+        "doi": "https://doi.org/10.64960/easr.2026.261416",
+        "year": 2026,
+        "score": 3
+      },
+      {
+        "title": "Ancient mitogenomes from the <scp>Southern Pampas</scp> of <scp>A</scp>rgentina reflect local differentiation and limited extra‐regional linkages after rapid initial colonization",
+        "doi": "https://doi.org/10.1002/ajpa.24727",
+        "year": 2023,
+        "score": 3
+      }
+    ],
+    "verdict": "Mine round 2: 28 unique papers from 3 sources."
+  },
+  "phase343": {
+    "total_pairs_with_pmi": 2315,
+    "median_pmi": 2.501,
+    "within_word_pairs": 577,
+    "boundary_pairs": 1119,
+    "stem_suffix_in_within_word": 15,
+    "total_classified_within": 34,
+    "stem_suffix_rate": 0.441,
+    "top_10_within_word": [
+      {
+        "pair": "M130→M143",
+        "readings": "mui→maṇ",
+        "pmi": 9.259
+      },
+      {
+        "pair": "M107→M163",
+        "readings": "ko→il",
+        "pmi": 9.259
+      },
+      {
+        "pair": "M137→M130",
+        "readings": "kuṟ→mui",
+        "pmi": 9.259
+      },
+      {
+        "pair": "M386→M117",
+        "readings": "maṇ→ar",
+        "pmi": 8.996
+      },
+      {
+        "pair": "M194→M357",
+        "readings": "kaṭ→kuḷ",
+        "pmi": 8.844
+      },
+      {
+        "pair": "M185→M362",
+        "readings": "pul→aṇi",
+        "pmi": 8.774
+      },
+      {
+        "pair": "M252→M202",
+        "readings": "kur→can",
+        "pmi": 8.581
+      },
+      {
+        "pair": "M332→M138",
+        "readings": "intu→kur",
+        "pmi": 8.581
+      },
+      {
+        "pair": "M330→M237",
+        "readings": "can→ce",
+        "pmi": 8.581
+      },
+      {
+        "pair": "M347→M145",
+        "readings": "ka→miṭ",
+        "pmi": 8.581
+      }
+    ],
+    "top_10_boundary": [
+      {
+        "pair": "M099→M048",
+        "readings": "kol→mu",
+        "pmi": -2.732
+      },
+      {
+        "pair": "M012→M099",
+        "readings": "oṉṟu→kol",
+        "pmi": -2.597
+      },
+      {
+        "pair": "M367→M059",
+        "readings": "am→ēḷ",
+        "pmi": -2.198
+      },
+      {
+        "pair": "M293→M089",
+        "readings": "ta→tu",
+        "pmi": -2.109
+      },
+      {
+        "pair": "M048→M211",
+        "readings": "mu→kol",
+        "pmi": -2.088
+      },
+      {
+        "pair": "M336→M328",
+        "readings": "iṉ→ā",
+        "pmi": -2.035
+      },
+      {
+        "pair": "M391→M391",
+        "readings": "ka→ka",
+        "pmi": -2.018
+      },
+      {
+        "pair": "M367→M391",
+        "readings": "am→ka",
+        "pmi": -1.996
+      },
+      {
+        "pair": "M305→M267",
+        "readings": "ōṭu→in",
+        "pmi": -1.852
+      },
+      {
+        "pair": "M162→M065",
+        "readings": "il→kutam",
+        "pmi": -1.78
+      }
+    ],
+    "verdict": "Word boundary: 577 high-PMI (within-word), 1119 low-PMI (boundary). STEM→SUFFIX in high-PMI: 44%. STRONG — high-PMI pairs are morphologically coherent."
+  },
+  "phase344": {
+    "motif_results": {},
+    "total_match": 0,
+    "total_mismatch": 0,
+    "match_rate": 0.0,
+    "null_mean": 0.0,
+    "null_std": 0.0,
+    "z_score": 0,
+    "verdict": "Motif validation: 0% animal readings match motif vs null 0% (z=0.0). NOT SIGNIFICANT — readings don't correlate with motifs."
+  },
+  "phase345": {
+    "channel_scores": {
+      "entropy_linguistic": "moderate",
+      "terminal_marker_system": "strong",
+      "word_structure_family": "strong",
+      "affinity_grid": "strong",
+      "predictive_validation": "weak",
+      "null_controls": "moderate"
+    },
+    "n_strong": 3,
+    "n_moderate_plus": 5,
+    "total_strength": 14,
+    "claim_level": 2,
+    "claim": "Level 2 — Moderate convergent evidence",
+    "verdict": "Convergence: 3 strong, 5 moderate+. Claim level 2. Total strength 14/18."
+  }
+}

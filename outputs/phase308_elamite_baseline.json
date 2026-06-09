@@ -1,0 +1,293 @@
+{
+  "elamite_lm": {
+    "language": "Elamite",
+    "source": "Hinz & Koch 1987, Stolper 1984, Grillot-Susini 1987, Tavernier 2007",
+    "n_words": 160,
+    "n_chars": 630,
+    "n_distinct_chars": 18,
+    "n_bigrams": 470,
+    "n_distinct_bigrams": 98,
+    "h1": 3.6711,
+    "top_15_chars": [
+      [
+        "u",
+        85
+      ],
+      [
+        "i",
+        85
+      ],
+      [
+        "a",
+        84
+      ],
+      [
+        "t",
+        56
+      ],
+      [
+        "n",
+        44
+      ],
+      [
+        "p",
+        42
+      ],
+      [
+        "k",
+        40
+      ],
+      [
+        "r",
+        39
+      ],
+      [
+        "h",
+        38
+      ],
+      [
+        "š",
+        30
+      ],
+      [
+        "l",
+        29
+      ],
+      [
+        "m",
+        24
+      ],
+      [
+        "e",
+        17
+      ],
+      [
+        "s",
+        10
+      ],
+      [
+        "y",
+        4
+      ]
+    ],
+    "top_15_bigrams": [
+      [
+        [
+          "t",
+          "i"
+        ],
+        18
+      ],
+      [
+        [
+          "h",
+          "a"
+        ],
+        16
+      ],
+      [
+        [
+          "h",
+          "u"
+        ],
+        15
+      ],
+      [
+        [
+          "k",
+          "u"
+        ],
+        15
+      ],
+      [
+        [
+          "i",
+          "r"
+        ],
+        14
+      ],
+      [
+        [
+          "t",
+          "u"
+        ],
+        14
+      ],
+      [
+        [
+          "a",
+          "n"
+        ],
+        13
+      ],
+      [
+        [
+          "p",
+          "i"
+        ],
+        13
+      ],
+      [
+        [
+          "u",
+          "r"
+        ],
+        12
+      ],
+      [
+        [
+          "r",
+          "u"
+        ],
+        11
+      ],
+      [
+        [
+          "u",
+          "t"
+        ],
+        11
+      ],
+      [
+        [
+          "a",
+          "l"
+        ],
+        11
+      ],
+      [
+        [
+          "t",
+          "a"
+        ],
+        11
+      ],
+      [
+        [
+          "u",
+          "n"
+        ],
+        10
+      ],
+      [
+        [
+          "n",
+          "a"
+        ],
+        10
+      ]
+    ]
+  },
+  "anchored_bigram_test": {
+    "Dravidian (TamilTB)": {
+      "hits": 4107,
+      "total": 7001,
+      "hit_rate": 0.5866
+    },
+    "Elamite": {
+      "hits": 3136,
+      "total": 7001,
+      "hit_rate": 0.4479
+    },
+    "Proto-Munda": {
+      "hits": 2414,
+      "total": 7001,
+      "hit_rate": 0.3448
+    },
+    "Hebrew (OT consonantal)": {
+      "hits": 530,
+      "total": 7001,
+      "hit_rate": 0.0757
+    },
+    "Uniform": {
+      "hits": 0,
+      "total": 7001,
+      "hit_rate": 0.0
+    }
+  },
+  "unconstrained_sa": {
+    "Dravidian (TamilTB)": {
+      "n_seeds": 5,
+      "n_signs": 390,
+      "n_distinct_modals": 27,
+      "mean_consistency": 0.3462,
+      "degenerate": false
+    },
+    "Elamite": {
+      "n_seeds": 5,
+      "n_signs": 390,
+      "n_distinct_modals": 13,
+      "mean_consistency": 0.4472,
+      "degenerate": false
+    },
+    "Proto-Munda": {
+      "n_seeds": 5,
+      "n_signs": 390,
+      "n_distinct_modals": 16,
+      "mean_consistency": 0.399,
+      "degenerate": false
+    },
+    "Hebrew (OT consonantal)": {
+      "n_seeds": 5,
+      "n_signs": 390,
+      "n_distinct_modals": 7,
+      "mean_consistency": 0.6974,
+      "degenerate": false
+    },
+    "Uniform": {
+      "n_seeds": 5,
+      "n_signs": 390,
+      "n_distinct_modals": 26,
+      "mean_consistency": 0.2728,
+      "degenerate": false
+    }
+  },
+  "elamo_dravidian_comparison": {
+    "shared_features": [
+      "Agglutinative morphology",
+      "SOV word order",
+      "Retroflex series (ṭ, ḍ, ṇ)",
+      "Vowel harmony tendencies",
+      "Case suffix chains"
+    ],
+    "divergent_features": [
+      "Elamite lacks Dravidian inclusive/exclusive pronoun distinction",
+      "Elamite s/š distinction absent in Dravidian",
+      "Proto-Dravidian *z has no Elamite cognate",
+      "Elamite numeral system unrelated to Dravidian"
+    ],
+    "mcalpin_status": "Hypothesis remains controversial. Mainstream Dravidianists (Krishnamurti 2003, Zvelebil 1990) reject genetic link; treat similarities as areal contact."
+  },
+  "discrimination": {
+    "anchored_ranking": [
+      {
+        "lm": "Dravidian (TamilTB)",
+        "hit_rate": 0.5866
+      },
+      {
+        "lm": "Elamite",
+        "hit_rate": 0.4479
+      },
+      {
+        "lm": "Proto-Munda",
+        "hit_rate": 0.3448
+      },
+      {
+        "lm": "Hebrew (OT consonantal)",
+        "hit_rate": 0.0757
+      },
+      {
+        "lm": "Uniform",
+        "hit_rate": 0.0
+      }
+    ],
+    "best_fit": "Dravidian (TamilTB)",
+    "dravidian_vs_elamite_delta": 0.1387,
+    "dravidian_vs_munda_delta": 0.2418,
+    "dravidian_vs_hebrew_delta": 0.5109,
+    "dravidian_vs_uniform_delta": 0.5866,
+    "discriminative": true,
+    "conclusion": "Anchored bigram test: Dravidian (TamilTB) best-fits the 605 Dravidian anchors (rate=0.5866). Dravidian-Elamite delta=+0.1387. DRAVIDIAN ANCHORS DISCRIMINATE against Elamite — language-specific signal confirmed."
+  },
+  "n_pinned_anchors": 605
+}

@@ -76,23 +76,77 @@ class AtomicNodeDef:
 
 # ── Atomic node implementations ─────────────────────────────────────────────
 
+def _sync_db_one(table: str, row_id: str) -> dict | None:
+    """Fetch one row from the Glossa Lab SQLite DB synchronously.
+
+    Node functions run inside asyncio.run_in_executor threads. The aiosqlite
+    connection is bound to the *main* event loop and cannot be used from those
+    threads even with asyncio.run() (which creates a *new* loop).  This helper
+    uses stdlib sqlite3 directly — no event loop required.
+    """
+    import sqlite3 as _sql  # noqa: PLC0415
+    import json as _js   # noqa: PLC0415
+    db_path = Path(__file__).parents[1] / "data" / "glossa.db"
+    if not db_path.exists():
+        return None
+    conn = _sql.connect(str(db_path), check_same_thread=False)
+    conn.row_factory = _sql.Row
+    try:
+        row = conn.execute(f"SELECT * FROM {table} WHERE id = ?", (row_id,)).fetchone()  # noqa: S608
+        if row is None:
+            return None
+        d = dict(row)
+        for k, v in d.items():
+            if isinstance(v, str) and v and v[0] in ("{", "["):
+                try:
+                    d[k] = _js.loads(v)
+                except Exception:  # noqa: BLE001
+                    pass
+        return d
+    finally:
+        conn.close()
+
+
+def _sync_db_all(table: str, where: str = "", params: tuple = ()) -> list[dict]:
+    """Fetch all rows from a table synchronously (same rationale as _sync_db_one)."""
+    import sqlite3 as _sql  # noqa: PLC0415
+    import json as _js   # noqa: PLC0415
+    db_path = Path(__file__).parents[1] / "data" / "glossa.db"
+    if not db_path.exists():
+        return []
+    conn = _sql.connect(str(db_path), check_same_thread=False)
+    conn.row_factory = _sql.Row
+    try:
+        sql = f"SELECT * FROM {table}"  # noqa: S608
+        if where:
+            sql += f" WHERE {where}"
+        rows = conn.execute(sql, params).fetchall()
+        result = []
+        for row in rows:
+            d = dict(row)
+            for k, v in d.items():
+                if isinstance(v, str) and v and v[0] in ("{", "["):
+                    try:
+                        d[k] = _js.loads(v)
+                    except Exception:  # noqa: BLE001
+                        pass
+            result.append(d)
+        return result
+    finally:
+        conn.close()
+
+
 def _corpus_reader(inputs: dict, params: dict) -> dict:
     corpus_id = params.get("corpus_id") or ""
     sequences: list[list[str]] = []
     if corpus_id:
-        import asyncio  # noqa: PLC0415
-
-        from glossa_lab.database import get_db  # noqa: PLC0415
-        db = get_db()
-        if db:
-            try:
-                loop = asyncio.get_event_loop()
-                text = loop.run_until_complete(db.get_text(corpus_id))
-                if text and text.get("content"):
-                    raw = text["content"]
-                    sequences = raw if raw and isinstance(raw[0], list) else [raw]
-            except Exception:  # noqa: BLE001
-                pass
+        try:
+            text = _sync_db_one("texts", corpus_id)
+            if text and text.get("content"):
+                raw = text["content"]
+                sequences = raw if raw and isinstance(raw[0], list) else [raw]
+        except Exception:  # noqa: BLE001
+            pass
     if not sequences:
         icit = Path(__file__).parents[2] / "reports" / "icit_extracted_corpus.json"
         if icit.exists():
@@ -294,6 +348,12 @@ def _builtin_lm(inputs: dict, params: dict) -> dict:
         elif lang in ("proto_sinaitic", "proto-sinaitic"):
             from glossa_lab.data.proto_sinaitic import get_corpus_symbols as _ps  # noqa: PLC0415
             syms = _ps(); inscs = None
+        elif lang in ("nw_semitic", "ugaritic", "fuls"):
+            from glossa_lab.data.nw_semitic import (  # noqa: PLC0415
+                get_corpus_inscriptions,
+                get_corpus_symbols,
+            )
+            syms = get_corpus_symbols(); inscs = get_corpus_inscriptions()
         elif lang in ("hieroglyphic_luwian", "luwian", "hluwian", "chli"):
             from glossa_lab.data.hieroglyphic_luwian import (  # noqa: PLC0415
                 get_corpus_inscriptions,
@@ -301,7 +361,7 @@ def _builtin_lm(inputs: dict, params: dict) -> dict:
             )
             syms = get_corpus_symbols(); inscs = get_corpus_inscriptions()
         else:
-            return {"error": f"Unknown language '{lang}'. Valid: hebrew, geez, phoenician, sumerian, dravidian, south_dravidian, kannada, telugu, pali, sanskrit, coptic, linear_b, meroitic, proto_sinaitic, hieroglyphic_luwian"}
+            return {"error": f"Unknown language '{lang}'. Valid: hebrew, geez, phoenician, sumerian, dravidian, south_dravidian, kannada, telugu, pali, sanskrit, coptic, linear_b, meroitic, proto_sinaitic, nw_semitic, hieroglyphic_luwian"}
     except ImportError as exc:
         return {"error": str(exc)}
     from glossa_lab.pipelines.decipher import LanguageModel  # noqa: PLC0415
@@ -506,6 +566,87 @@ def _sa_decipher(inputs: dict, params: dict) -> dict:
     return {"proposed_mapping": modal, "all_mappings": all_maps,
             "mean_consistency": round(mean_c, 4), "hci_count": hci,
             "n_seeds": len(all_maps), "n_signs": len(modal)}
+
+
+def _sa_multi_comparison(inputs: dict, params: dict) -> dict:
+    """Run SA decipherment against multiple language models and compare results.
+
+    For each language in the `languages` param list, loads the corresponding
+    BuiltinLM and runs SADecipher, then ranks by mean_consistency.
+    Returns a comparison table and the best-performing language.
+    """
+    import logging as _logging  # noqa: PLC0415
+    _mc_log = _logging.getLogger("glossa_lab.sa_multi")
+
+    sequences = inputs.get("sequences") or []
+    if not sequences:
+        return {"error": "No sequences — connect CorpusReader or BuiltinCorpus."}
+
+    anchors = inputs.get("anchors") or None
+
+    # Parse languages param
+    raw_langs = params.get("languages", "dravidian,sanskrit")
+    if isinstance(raw_langs, list):
+        lang_list = [l.strip() for l in raw_langs if l.strip()]
+    else:
+        import re as _re  # noqa: PLC0415
+        lang_list = [l.strip() for l in _re.split(r"[,;\s]+", str(raw_langs)) if l.strip()]
+
+    if not lang_list:
+        return {"error": "No languages specified. Set the 'languages' param."}
+
+    n_seeds  = max(1, int(params.get("n_seeds", 3)))
+    max_iter = max(100, int(params.get("max_iterations", 5000)))
+    restarts = max(1, int(params.get("restarts", 5)))
+
+    results: list[dict] = []
+    for lang in lang_list:
+        _mc_log.info("SAMultiComparison: running SA against language=%s", lang)
+        lm_out = _builtin_lm({}, {"language": lang})
+        if "error" in lm_out:
+            results.append({"language": lang, "error": lm_out["error"],
+                             "mean_consistency": 0.0, "hci_count": 0})
+            continue
+        lm = lm_out.get("lm")
+        if lm is None:
+            results.append({"language": lang, "error": "LM not loaded",
+                             "mean_consistency": 0.0, "hci_count": 0})
+            continue
+        sa_out = _sa_decipher(
+            {"sequences": sequences, "lm": lm,
+             **({"anchors": anchors} if anchors else {})},
+            {"n_seeds": n_seeds, "max_iterations": max_iter,
+             "restarts": restarts, "surjective": True, "ocp_weight": 0.0},
+        )
+        if "error" in sa_out:
+            results.append({"language": lang, "error": sa_out["error"],
+                             "mean_consistency": 0.0, "hci_count": 0})
+        else:
+            results.append({
+                "language": lang,
+                "mean_consistency": round(float(sa_out.get("mean_consistency", 0)), 4),
+                "hci_count": int(sa_out.get("hci_count", 0)),
+                "n_signs": int(sa_out.get("n_signs", 0)),
+                "proposed_mapping": sa_out.get("proposed_mapping", {}),
+            })
+
+    # Sort by mean_consistency descending
+    ranked = sorted(
+        [r for r in results if "error" not in r],
+        key=lambda x: x["mean_consistency"], reverse=True,
+    )
+    errored = [r for r in results if "error" in r]
+    ranking = ranked + errored
+
+    best = ranked[0] if ranked else None
+    return {
+        "comparison_results": results,
+        "ranking": ranking,
+        "best_language": best["language"] if best else "",
+        "best_consistency": best["mean_consistency"] if best else 0.0,
+        "n_languages_tested": len(lang_list),
+        "n_languages_ok": len(ranked),
+    }
 
 
 def _consistency_scorer(inputs: dict, params: dict) -> dict:
@@ -918,16 +1059,8 @@ def _corpus_lm(inputs: dict, params: dict) -> dict:
     if not corpus_id:
         return {"error": "No corpus_id param — select a corpus from the dropdown or connect CorpusReader."}
 
-    # Load sequences from DB (same pattern as _corpus_reader)
-    import asyncio  # noqa: PLC0415
-
-    from glossa_lab.database import get_db  # noqa: PLC0415
-    db = get_db()
-    if db is None:
-        return {"error": "Database not available — is the backend running?"}
     try:
-        loop = asyncio.get_event_loop()
-        text = loop.run_until_complete(db.get_text(corpus_id))
+        text = _sync_db_one("texts", corpus_id)
     except Exception as exc:  # noqa: BLE001
         return {"error": f"Failed to load corpus '{corpus_id}': {exc}"}
 
@@ -969,23 +1102,17 @@ def _anchor_set_loader(inputs: dict, params: dict) -> dict:
     if not anchor_set_id:
         return {"error": "No anchor_set_id param — select an anchor set.", "anchors": {}}
 
-    import asyncio  # noqa: PLC0415
-
-    from glossa_lab.database import get_db  # noqa: PLC0415
-    db = get_db()
-    if db is None:
-        return {"error": "Database not available.", "anchors": {}}
     try:
-        loop = asyncio.get_event_loop()
-        anchor_set = loop.run_until_complete(db.get_anchor_set(anchor_set_id))
+        anchor_set = _sync_db_one("anchor_sets", anchor_set_id)
     except Exception as exc:  # noqa: BLE001
         return {"error": f"Failed to load anchor set: {exc}", "anchors": {}}
 
     if anchor_set is None:
         return {"error": f"Anchor set '{anchor_set_id}' not found.", "anchors": {}}
 
-    pairs = anchor_set.get("pairs", []) or []
-    # Convert list of {cipher, target, confidence, note} to {cipher: target}
+    pairs = anchor_set.get("pairs") or []
+    if isinstance(pairs, str):
+        import json as _j; pairs = _j.loads(pairs)  # noqa: PLC0415,E702
     anchors = {p["cipher"]: p["target"] for p in pairs if p.get("cipher") and p.get("target")}
     return {
         "anchors": anchors,
@@ -1009,15 +1136,8 @@ def _report_generator(inputs: dict, params: dict) -> dict:
     if not template_id:
         return {"error": "No template_id param — select a report template."}
 
-    import asyncio  # noqa: PLC0415
-
-    from glossa_lab.database import get_db  # noqa: PLC0415
-    db = get_db()
-    if db is None:
-        return {"error": "Database not available."}
     try:
-        loop = asyncio.get_event_loop()
-        template = loop.run_until_complete(db.get_report_template(template_id))
+        template = _sync_db_one("report_templates", template_id)
     except Exception as exc:  # noqa: BLE001
         return {"error": f"Failed to load template: {exc}"}
     if template is None:
@@ -1119,18 +1239,15 @@ def _canonical_sign_loader(inputs: dict, params: dict) -> dict:
     filter_in_corpus = bool(params.get("in_corpus_only", True))
     numbering_system = params.get("numbering_system") or None
 
-    import asyncio  # noqa: PLC0415
-
-    from glossa_lab.database import get_db  # noqa: PLC0415
-    db = get_db()
-    if db is None:
-        return {"error": "Database not available"}
     try:
-        loop = asyncio.get_event_loop()
-        signs = loop.run_until_complete(
-            db.list_canonical_signs(in_corpus_only=filter_in_corpus,
-                                    numbering_system=numbering_system)
-        )
+        where = "1=1"
+        args: list = []
+        if filter_in_corpus:
+            where += " AND in_corpus = 1"
+        if numbering_system:
+            where += " AND numbering_system = ?"
+            args.append(numbering_system)
+        signs = _sync_db_all("canonical_signs", where, tuple(args))
     except Exception as exc:  # noqa: BLE001
         return {"error": f"Failed to load registry: {exc}"}
 
@@ -1160,7 +1277,6 @@ def _cluster_mapper(inputs: dict, params: dict) -> dict:
     directly from analysis/sign_clusters.json.
     Unmapped signs receive label -1. NO phonetic mapping is performed.
     """
-    import asyncio  # noqa: PLC0415
     import json as _json  # noqa: PLC0415
     from pathlib import Path as _Path  # noqa: PLC0415
 
@@ -1168,15 +1284,14 @@ def _cluster_mapper(inputs: dict, params: dict) -> dict:
     summary: dict = {}
 
     # ── Try DB first (live backend context) ──────────────────────────────────
-    from glossa_lab.database import get_db  # noqa: PLC0415
-    db = get_db()
-    if db is not None:
-        try:
-            loop = asyncio.get_event_loop()
-            assignments = loop.run_until_complete(db.list_cluster_assignments())
-            summary     = loop.run_until_complete(db.get_clusters_summary())
-        except Exception:  # noqa: BLE001
-            assignments = []
+    try:
+        assignments = _sync_db_all("sign_cluster_assignments")
+        if assignments:
+            n_clusters = len({a.get("cluster_label") for a in assignments})
+            best_k = assignments[0].get("cluster_k", n_clusters) if assignments else 0
+            summary = {"n_clusters": n_clusters, "cluster_k": best_k, "n_signs": len(assignments)}
+    except Exception:  # noqa: BLE001
+        assignments = []
 
     # ── Fallback: load from analysis/sign_clusters.json ──────────────────────
     if not assignments:
@@ -1198,12 +1313,29 @@ def _cluster_mapper(inputs: dict, params: dict) -> dict:
             except Exception:  # noqa: BLE001
                 assignments = []
 
+    # ── Fallback: generate simple frequency-rank clusters from corpus ──────
     if not assignments:
-        return {
-            "error": "Cluster assignments unavailable. "
-                     "Seed via POST /sign-clusters/seed or run scripts/cgsa_pipeline.py",
-            "n_assignments": 0,
-        }
+        from collections import Counter as _FC  # noqa: PLC0415
+        sequences = inputs.get("sequences") or []
+        flat = [s for seq in sequences for s in seq]
+        if not flat:
+            return {
+                "error": "Cluster assignments unavailable and no sequences to generate from. "
+                         "Seed via POST /sign-clusters/seed or run scripts/cgsa_pipeline.py",
+                "n_assignments": 0,
+            }
+        # Assign cluster labels by frequency rank, binned into ~40 groups
+        freq = _FC(flat)
+        ranked = [s for s, _ in freq.most_common()]
+        n_clusters = min(40, len(ranked))
+        bin_size = max(1, len(ranked) // n_clusters)
+        for i, sign in enumerate(ranked):
+            cluster_lbl = min(i // bin_size, n_clusters - 1)
+            assignments.append({"sign_id": sign, "cluster_label": cluster_lbl})
+        summary = {"n_clusters": n_clusters, "cluster_k": n_clusters,
+                   "n_signs": len(ranked), "source": "frequency_rank_fallback"}
+        logger.info("ClusterMapper: generated %d frequency-rank clusters for %d signs",
+                  n_clusters, len(ranked))
 
     s2c: dict[str, int] = {a["sign_id"]: a["cluster_label"] for a in assignments}
     sequences = inputs.get("sequences") or []
@@ -1909,14 +2041,14 @@ for _d in [
                              "description":"ID of the graph experiment to invoke as a subroutine"}}},
         fn=_sub_experiment),
     AtomicNodeDef("BuiltinLM","Built-in Reference LM","Decipherment",
-        "Load a pre-built language model for a known language (hebrew, geez, phoenician, sumerian, dravidian, south_dravidian, kannada, telugu, pali, sanskrit, coptic, linear_b, meroitic, proto_sinaitic). "
+        "Load a pre-built language model for a known language (hebrew, geez, phoenician, sumerian, dravidian, south_dravidian, kannada, telugu, pali, sanskrit, coptic, linear_b, meroitic, proto_sinaitic, nw_semitic). "
         "Use as the target LM in SADecipher or BeamDecipher.",
         inputs=[],
         outputs=[{"name":"lm","type":"any"},{"name":"language","type":"text"},
                  {"name":"n_signs","type":"number"},{"name":"n_tokens","type":"number"}],
         params_schema={"type":"object","properties":{
             "language":{"type":"string","title":"Language","default":"hebrew",
-                        "description":"hebrew | geez | phoenician | sumerian | dravidian"}}},
+                        "description":"hebrew | geez | phoenician | sumerian | dravidian | south_dravidian | kannada | telugu | pali | sanskrit | coptic | linear_b | meroitic | proto_sinaitic | nw_semitic"}}},
         fn=_builtin_lm),
     AtomicNodeDef("BuiltinCorpus","Built-in Corpus","Sources",
         "Load a named built-in corpus directly. Does not require a DB corpus ID — always available offline.",
@@ -1971,6 +2103,26 @@ for _d in [
                           "description":"0.0 = GPU fast path via BigramScorer (recommended). >0 = enable OCP penalty (slower)."},
         }},
         fn=_sa_decipher),
+    AtomicNodeDef("SAMultiComparison","SA Multi-Language Comparison","Decipherment",
+        "Run Simulated Annealing against multiple reference language models and rank by consistency. "
+        "Specify 2\u20136 languages in the 'languages' param (comma-separated). "
+        "Each language runs independently; results are sorted best\u2192worst by mean_consistency. "
+        "Connects: BuiltinCorpus/CorpusReader \u2192 sequences. No external LM port needed.",
+        inputs=[{"name":"sequences","type":"sequences","required":True},
+                {"name":"anchors","type":"any","required":False}],
+        outputs=[{"name":"comparison_results","type":"json"},
+                 {"name":"best_language","type":"text"},
+                 {"name":"best_consistency","type":"number"},
+                 {"name":"ranking","type":"json"}],
+        params_schema={"type":"object","properties":{
+            "languages":{"type":"string","title":"Languages (comma-separated)",
+                         "default":"dravidian,sanskrit",
+                         "description":"Comma-separated list of languages to compare. Valid: hebrew, geez, phoenician, sumerian, dravidian, south_dravidian, kannada, telugu, pali, sanskrit, coptic, linear_b, meroitic, proto_sinaitic"},
+            "n_seeds":{"type":"integer","title":"Seeds per Language","default":3,"minimum":1},
+            "max_iterations":{"type":"integer","title":"Max Iterations","default":5000,"minimum":100},
+            "restarts":{"type":"integer","title":"Restarts per Seed","default":5,"minimum":1},
+        }},
+        fn=_sa_multi_comparison),
     AtomicNodeDef("ConsistencyScorer","Consistency Scorer","Decipherment",
         "Aggregate multiple SA seed mappings into per-sign consistency statistics. "
         "Connects: SADecipher.all_mappings → all_mappings.",
@@ -2716,6 +2868,17 @@ try:
 except Exception as _p235236_exc:  # noqa: BLE001
     logger.warning("Phase-235-236 nodes not registered: %s", _p235236_exc)
 
+# ── Phase-237-246 nodes (blocker mine, batch upgrades, synthesis, E41 DEDR, SA crossing)
+try:
+    from glossa_lab.experiment_graph_phase237_246 import (
+        _phase237_246_node_defs as _p237246_defs,
+    )
+    for _d in _p237246_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-237-246 nodes", len(_p237246_defs()))
+except Exception as _p237246_exc:
+    logger.warning("Phase-237-246 nodes not registered: %s", _p237246_exc)
+
 # ── Phase-248-254 nodes (ceiling-breaker mine, allograph experiments, CISI allograph, semantic constraint)
 try:
     from glossa_lab.experiment_graph_phase248_253 import (
@@ -2737,6 +2900,185 @@ try:
     logger.info("Registered %d Phase-257-294 nodes", len(_p257294_defs()))
 except Exception as _p257294_exc:  # noqa: BLE001
     logger.warning("Phase-257-294 nodes not registered: %s", _p257294_exc)
+
+# ── Phase-295-297 nodes (bulk mine May 2026, mine cross-reference, gap analysis)
+try:
+    from glossa_lab.experiment_graph_phase295_297 import (
+        _phase295_297_node_defs as _p295297_defs,
+    )
+    for _d in _p295297_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-295-297 nodes", len(_p295297_defs()))
+except Exception as _p295297_exc:
+    logger.warning("Phase-295-297 nodes not registered: %s", _p295297_exc)
+
+# ── Phase-127 nodes (Gulf corpus analysis, Roif mining, fish site polysemy)
+try:
+    from glossa_lab.experiment_graph_phase127 import (
+        _phase127_node_defs as _p127_defs,
+    )
+    for _d in _p127_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-127 nodes", len(_p127_defs()))
+except Exception as _p127_exc:  # noqa: BLE001
+    logger.warning("Phase-127 nodes not registered: %s", _p127_exc)
+
+# ── Misc gap phases (44-47, 202, 209-215, 254-256) — previously unregistered scripts
+try:
+    from glossa_lab.experiment_graph_phase_misc_gaps import (
+        _misc_gaps_node_defs as _pmiscgaps_defs,
+    )
+    for _d in _pmiscgaps_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d misc-gap phase nodes (44-47, 202, 209-215, 254-256)", len(_pmiscgaps_defs()))
+except Exception as _pmiscgaps_exc:  # noqa: BLE001
+    logger.warning("Misc-gap phase nodes not registered: %s", _pmiscgaps_exc)
+
+# ── Phase-298-308 nodes (deep Munda mine, Munda SA, substrate, archaeology,
+#    anchored Munda SA, allograph, cross-researcher, semantic, DEDR, Elamite baseline)
+try:
+    from glossa_lab.experiment_graph_phase298_308 import (
+        _phase298_308_node_defs as _p298308_defs,
+    )
+    for _d in _p298308_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-298-308 nodes", len(_p298308_defs()))
+except Exception as _p298308_exc:  # noqa: BLE001
+    logger.warning("Phase-298-308 nodes not registered: %s", _p298308_exc)
+
+# ── Phase-322-390 nodes (May 2026 decipherment advancement session)
+try:
+    from glossa_lab.experiment_graph_phase322_362 import (
+        phase322_362_node_defs as _p322390_defs,
+    )
+    for _d in _p322390_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-322-390 nodes", len(_p322390_defs()))
+except Exception as _p322390_exc:  # noqa: BLE001
+    logger.warning("Phase-322-390 nodes not registered: %s", _p322390_exc)
+
+# ── Contact-zone analysis templates (KL divergence, synthesis, A/B) ─────────
+try:
+    from glossa_lab.experiment_graph_contact_zone import (
+        _contact_zone_node_defs as _cz_defs,
+    )
+    for _d in _cz_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d contact-zone template nodes", len(_cz_defs()))
+except Exception as _cz_exc:  # noqa: BLE001
+    logger.warning("Contact-zone template nodes not registered: %s", _cz_exc)
+
+# ── A/B language comparison templates (anchored SA, consistency matrix) ──────
+try:
+    from glossa_lab.experiment_graph_ab_language import (
+        _ab_language_node_defs as _ab_defs,
+    )
+    for _d in _ab_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d A/B language template nodes", len(_ab_defs()))
+except Exception as _ab_exc:  # noqa: BLE001
+    logger.warning("A/B language template nodes not registered: %s", _ab_exc)
+
+# ── Cross-culture contact matrix + script family classifier ─────────────────
+try:
+    from glossa_lab.experiment_graph_cross_culture import (
+        _cross_culture_node_defs as _cc_defs,
+    )
+    for _d in _cc_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d cross-culture template nodes", len(_cc_defs()))
+except Exception as _cc_exc:  # noqa: BLE001
+    logger.warning("Cross-culture template nodes not registered: %s", _cc_exc)
+
+# ── Research Loop Runner (meta-node for Experiment Builder)
+try:
+    from glossa_lab.pipelines.research_loop import ResearchLoop as _RL
+
+    def _research_loop_runner(inputs: dict, params: dict) -> dict:
+        """Run the integrated research loop as an atomic node."""
+        max_cycles = int(params.get("max_cycles", 5))
+        loop = _RL(max_cycles=max_cycles)
+        for _ in loop.run():
+            pass
+        return loop.get_full_results()
+
+    ATOMIC_NODES["ResearchLoopRunner"] = AtomicNodeDef(
+        id="ResearchLoopRunner",
+        name="Research Loop Runner",
+        category="Research",
+        description="Run the Mine\u2192Analyze\u2192Register\u2192Execute\u2192Analyze cycle for N iterations.",
+        inputs=[],
+        outputs=[
+            {"name": "total_papers", "type": "number"},
+            {"name": "total_insights", "type": "number"},
+            {"name": "json", "type": "json"},
+            {"name": "text", "type": "text"},
+        ],
+        params_schema={
+            "max_cycles": {"type": "integer", "title": "Max Cycles", "default": 5,
+                          "description": "Number of Mine\u2192Execute cycles to run."},
+        },
+        fn=_research_loop_runner,
+    )
+    logger.info("Registered ResearchLoopRunner atomic node")
+except Exception as _rl_exc:  # noqa: BLE001
+    logger.warning("ResearchLoopRunner not registered: %s", _rl_exc)
+
+
+# ── Experiment metadata (ledger-backed) ──────────────────────────────────────
+
+def get_experiment_metadata() -> list[dict[str, Any]]:
+    """Return ledger metadata for all registered experiment nodes.
+
+    Merges the static experiment_ledger.json with live registration data
+    from ATOMIC_NODES to provide a unified metadata view.
+    """
+    ledger_path = Path(__file__).parent / "experiment_ledger.json"
+    ledger: list[dict] = []
+    if ledger_path.exists():
+        try:
+            ledger = json.loads(ledger_path.read_text("utf-8"))
+        except Exception:  # noqa: BLE001
+            pass
+
+    # Build a lookup from node ID to ledger entry
+    node_to_ledger: dict[str, dict] = {}
+    for entry in ledger:
+        for node_name in entry.get("key_nodes", []):
+            node_to_ledger[node_name] = entry
+
+    # Merge live registration with ledger
+    result: list[dict[str, Any]] = []
+    for node_id, node_def in ATOMIC_NODES.items():
+        ledger_entry = node_to_ledger.get(node_id, {})
+        result.append({
+            "id": node_id,
+            "display_name": node_def.name,
+            "category": ledger_entry.get("category", node_def.category),
+            "phase": ledger_entry.get("phases", ""),
+            "description": node_def.description,
+            "status": ledger_entry.get("status", "active"),
+            "superseded_by": ledger_entry.get("superseded_by"),
+            "source_file": ledger_entry.get("file", ""),
+        })
+
+    # Also include ledger-only entries (files without individually named nodes)
+    seen_files = {e.get("source_file") for e in result if e.get("source_file")}
+    for entry in ledger:
+        if entry.get("file") not in seen_files:
+            result.append({
+                "id": entry.get("file", "").replace(".py", ""),
+                "display_name": entry.get("file", "").replace("experiment_graph_", "").replace(".py", ""),
+                "category": entry.get("category", "misc"),
+                "phase": entry.get("phases", ""),
+                "description": entry.get("purpose", ""),
+                "status": entry.get("status", "active"),
+                "superseded_by": entry.get("superseded_by"),
+                "source_file": entry.get("file", ""),
+            })
+
+    return result
+
 
 # ── Graph execution
 
@@ -2850,6 +3192,17 @@ def execute_graph(graph_def: dict[str, Any], kwargs: dict[str, Any] | None = Non
         return merged
     return res.get(ordered[-1]["id"], {}) if ordered else {}
 
+
+# ── Kalyanaraman rebus cross-validation node ─────────────────────────────────
+try:
+    from glossa_lab.experiment_graph_kalyanaraman import (
+        _kalyanaraman_node_defs as _kalyan_defs,  # noqa: PLC0415
+    )
+    for _d in _kalyan_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered Kalyanaraman cross-validation node")
+except Exception as _kalyan_exc:  # noqa: BLE001
+    logger.warning("Kalyanaraman node not registered: %s", _kalyan_exc)
 
 # ── Graph experiment file storage ────────────────────────────────────────────
 
@@ -3770,11 +4123,20 @@ def auto_migrate_hardcoded_experiments() -> int:
     written = 0
 
     # IDs that were once auto-migrated but are no longer part of the active graph set.
-    # Delete their JSON files if they still exist as auto-migrated files.
+    # 1. Their JSON files are deleted if they still exist as auto-migrated files.
+    # 2. They are SKIPPED in the creation loop so they are never recreated on startup.
     _RETIRED = {
         "progression", "writing_system_progression", "ventris_validation",
         "ugaritic_proper_benchmark", "ugaritic_vs_hebrew",
         "contact_zone",  # self-referential ExperimentWrapper; replaced by indus_contact_zone_v2
+        # Archived 2026-06 experiment cleanup (kept in experiments/graphs/_archive/):
+        "positional_profile_analysis", "symbol_clustering", "luwian_kl_scoring",
+        "fuls_rtl_decipher", "geez_decipher", "bigram_analysis",
+        "kandles_bias", "linear_a_circularity", "ocr_tables", "ocr_texts",
+        "fuls_writing_system_comparison", "fuls_nw_semitic_ngram",
+        "fuls_nw_semitic_decipher_run", "fuls_constraint_space",
+        "fuls_sequence_information_test", "old_hebrew_self_benchmark",
+        "tier3_sumerian_validation",
     }
     for retired_id in _RETIRED:
         stale = _GRAPHS_DIR / f"{retired_id}.json"
@@ -3789,6 +4151,8 @@ def auto_migrate_hardcoded_experiments() -> int:
 
     for spec in specs.values():
         exp_id = spec["id"]
+        if exp_id in _RETIRED:
+            continue  # never recreate retired/archived experiments
         dest = _GRAPHS_DIR / f"{exp_id}.json"
         if dest.exists():
             try:
@@ -3812,6 +4176,43 @@ def auto_migrate_hardcoded_experiments() -> int:
     return written
 
 
+async def queue_graph_experiment(
+    experiment_id: str,
+    *,
+    db: Any,
+    params: dict | None = None,
+    name_override: str | None = None,
+) -> dict | None:
+    """Create a Job record for a graph experiment and return the job dict.
+
+    Returns the job dict on success, or None if db is unavailable or the
+    experiment_id is not found in the graph registry.
+    """
+    from datetime import datetime, timezone  # noqa: PLC0415
+
+    experiments = list_graph_experiments()
+    match = None
+    for exp in experiments:
+        if exp.get("id") == experiment_id:
+            match = exp
+            break
+    if match is None:
+        return None
+    if db is None:
+        return None
+
+    job_name = name_override or match.get("name", experiment_id)
+    now = datetime.now(timezone.utc).isoformat()
+    job = await db.create_job(
+        name=job_name,
+        pipeline="graph_experiment",
+        params={"experiment_id": experiment_id, **(params or {})},
+        created_at=now,
+        initial_status="pending",
+    )
+    return job
+
+
 def register_graph_experiments() -> None:
     """Inject all saved graph experiments into the ExperimentBase discovery registry."""
     if not _GRAPHS_DIR.exists():
@@ -3827,3 +4228,4 @@ def register_graph_experiments() -> None:
             registry[cls.id] = cls
         except Exception as exc:  # noqa: BLE001
             logger.warning("GraphExperiment load failed (%s): %s", p.name, exc)
+

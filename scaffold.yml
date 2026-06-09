@@ -1,12 +1,13 @@
 extends: ''
 name: glossa-lab
-type: backend-frontend
+type: research-python  # specsmith detects this; project has FastAPI backend + React frontend
 platforms:
 - windows
 - linux
 - macos
 language: python
-spec_version: 0.11.7
+spec_version: 0.13.0
+aee_phase: release
 description: Imported project (119 files detected)
 services: false
 shell_wrappers: false
@@ -21,9 +22,17 @@ required_approvals: 1
 require_ci_pass: true
 allow_force_push: false
 use_remote_rules: false
-verification_tools: {}
-detected_build_system: pyproject
-detected_test_framework: pytest
+verification_tools:
+  backend: pytest
+  frontend: playwright
+detected_build_system: pyproject+vite
+detected_frontend_framework: react
+detected_test_framework: pytest+playwright
+# The project IS backend-frontend (FastAPI + React/Vite). specsmith detects
+# 'research-python' because of the research scripts directory. Suppress the
+# false-positive type mismatch — verified false positive per governance rules.
+suppress_checks:
+  - scaffold_type_mismatch
 ledger_line_threshold: 1000
 integrations:
 - agents-md

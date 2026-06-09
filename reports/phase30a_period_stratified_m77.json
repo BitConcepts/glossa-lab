@@ -1,0 +1,128 @@
+{
+  "data": {
+    "a": [
+      {
+        "bin": "L1-1",
+        "n_seqs": 0,
+        "n_tokens": 0,
+        "n_distinct_signs": 0,
+        "mean_length": 0.0
+      },
+      {
+        "bin": "L2-2",
+        "n_seqs": 0,
+        "n_tokens": 0,
+        "n_distinct_signs": 0,
+        "mean_length": 0.0
+      },
+      {
+        "bin": "L3-3",
+        "n_seqs": 0,
+        "n_tokens": 0,
+        "n_distinct_signs": 0,
+        "mean_length": 0.0
+      },
+      {
+        "bin": "L4-4",
+        "n_seqs": 0,
+        "n_tokens": 0,
+        "n_distinct_signs": 0,
+        "mean_length": 0.0
+      },
+      {
+        "bin": "L5-5",
+        "n_seqs": 0,
+        "n_tokens": 0,
+        "n_distinct_signs": 0,
+        "mean_length": 0.0
+      },
+      {
+        "bin": "L6-6",
+        "n_seqs": 0,
+        "n_tokens": 0,
+        "n_distinct_signs": 0,
+        "mean_length": 0.0
+      },
+      {
+        "bin": "L7-8",
+        "n_seqs": 0,
+        "n_tokens": 0,
+        "n_distinct_signs": 0,
+        "mean_length": 0.0
+      },
+      {
+        "bin": "L9+",
+        "n_seqs": 0,
+        "n_tokens": 0,
+        "n_distinct_signs": 0,
+        "mean_length": 0.0
+      }
+    ],
+    "b__L1-1": {
+      "n_seqs": 0,
+      "n_tokens": 0,
+      "n_signs": 0,
+      "spectral_gap": null,
+      "top_eigenvalues": [],
+      "verdict": "insufficient data"
+    },
+    "b__L2-2": {
+      "n_seqs": 0,
+      "n_tokens": 0,
+      "n_signs": 0,
+      "spectral_gap": null,
+      "top_eigenvalues": [],
+      "verdict": "insufficient data"
+    },
+    "b__L3-3": {
+      "n_seqs": 0,
+      "n_tokens": 0,
+      "n_signs": 0,
+      "spectral_gap": null,
+      "top_eigenvalues": [],
+      "verdict": "insufficient data"
+    },
+    "b__L4-4": {
+      "n_seqs": 0,
+      "n_tokens": 0,
+      "n_signs": 0,
+      "spectral_gap": null,
+      "top_eigenvalues": [],
+      "verdict": "insufficient data"
+    },
+    "b__L5-5": {
+      "n_seqs": 0,
+      "n_tokens": 0,
+      "n_signs": 0,
+      "spectral_gap": null,
+      "top_eigenvalues": [],
+      "verdict": "insufficient data"
+    },
+    "b__L6-6": {
+      "n_seqs": 0,
+      "n_tokens": 0,
+      "n_signs": 0,
+      "spectral_gap": null,
+      "top_eigenvalues": [],
+      "verdict": "insufficient data"
+    },
+    "b__L7-8": {
+      "n_seqs": 0,
+      "n_tokens": 0,
+      "n_signs": 0,
+      "spectral_gap": null,
+      "top_eigenvalues": [],
+      "verdict": "insufficient data"
+    },
+    "b__L9+": {
+      "n_seqs": 0,
+      "n_tokens": 0,
+      "n_signs": 0,
+      "spectral_gap": null,
+      "top_eigenvalues": [],
+      "verdict": "insufficient data"
+    },
+    "c": "insufficient data across bins",
+    "error": "Mahadevan decoded JSON not found: C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\reports\\mahadevan_texts_decoded.json"
+  }
+}

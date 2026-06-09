@@ -12,6 +12,7 @@ import importlib
 import logging
 import os as _os_eng
 import pkgutil
+import time as _time_mod
 import traceback
 from datetime import datetime, timezone
 from pathlib import Path
@@ -22,14 +23,91 @@ from glossa_lab.database import get_db
 logger = logging.getLogger(__name__)
 
 # How long a running job can go without a heartbeat (updated_at) before being
-# marked as timed_out.  exp_run jobs update updated_at on every node completion.
-# GPU SA experiments (e.g. indus_cisi_dravidian_vs_sanskrit with 8000 iterations,
-# 5 seeds, 3 restarts) can run a SINGLE NODE for 60+ minutes without producing
-# a heartbeat.  Default raised to 2 hours to accommodate these.
+# marked as failed by the stall watchdog.  exp_run jobs update updated_at only
+# on node completion, so an SA node can run for hours without a DB heartbeat.
+# 30 minutes is enough for any non-SA node; SA jobs orphaned by a backend
+# restart are cleaned up by the startup orphan sweep (see run_engine_loop).
 # Override via env GLOSSA_JOB_STALL_TIMEOUT_SECONDS.
 _JOB_STALL_TIMEOUT_SECONDS = int(
-    _os_eng.environ.get("GLOSSA_JOB_STALL_TIMEOUT_SECONDS", "7200")
+    _os_eng.environ.get("GLOSSA_JOB_STALL_TIMEOUT_SECONDS", "1800")  # 30 min default
 )
+
+# ── Resource-aware scheduling thresholds ──────────────────────────────────────
+# All overridable via environment variables.
+_CPU_MAX_PCT     = float(_os_eng.environ.get("GLOSSA_CPU_MAX_PCT",      "85"))   # %
+_RAM_MIN_FREE_GB = float(_os_eng.environ.get("GLOSSA_RAM_MIN_FREE_GB",  "1.0"))  # GB
+_VRAM_MIN_FREE_GB = float(_os_eng.environ.get("GLOSSA_VRAM_MIN_FREE_GB", "2.5")) # GB
+
+# Pipelines that may use GPU (checked for VRAM in addition to CPU/RAM)
+_GPU_PIPELINES = frozenset({"decipher", "distributional_decipherment"})
+
+# Anti-spam: log resource-wait messages at most once per N seconds
+_RESOURCE_LOG_INTERVAL_SEC = 60.0
+_last_resource_log: dict[str, float] = {}  # job_id -> last log timestamp
+
+
+def _get_system_resources() -> tuple[float, float, float | None]:
+    """Return (cpu_pct, ram_free_gb, vram_free_gb).
+
+    vram_free_gb is None when CUDA is unavailable.
+    cpu_pct uses a 0.2 s sampling window to get a meaningful read.
+    All failures are swallowed — returns safe defaults so a missing
+    dependency never blocks job dispatch.
+    """
+    cpu_pct: float = 0.0
+    ram_free_gb: float = 999.0
+    vram_free_gb: float | None = None
+
+    try:
+        import psutil  # noqa: PLC0415
+        cpu_pct = psutil.cpu_percent(interval=0.2)
+        ram_free_gb = psutil.virtual_memory().available / 1024 ** 3
+    except Exception:  # noqa: BLE001
+        pass
+
+    try:
+        import torch  # noqa: PLC0415
+        if torch.cuda.is_available():
+            total  = torch.cuda.get_device_properties(0).total_memory
+            reserved = torch.cuda.memory_reserved(0)
+            vram_free_gb = (total - reserved) / 1024 ** 3
+    except Exception:  # noqa: BLE001
+        pass
+
+    return cpu_pct, ram_free_gb, vram_free_gb
+
+
+def _check_resources_for_job(
+    job: dict[str, Any],
+    cpu_pct: float,
+    ram_free_gb: float,
+    vram_free_gb: float | None,
+) -> tuple[bool, str]:
+    """Return (ok, reason).  ok=True means resources are sufficient."""
+    if cpu_pct > _CPU_MAX_PCT:
+        return False, (
+            f"CPU at {cpu_pct:.0f}% (threshold {_CPU_MAX_PCT:.0f}%). "
+            "Waiting for CPU to free up."
+        )
+    if ram_free_gb < _RAM_MIN_FREE_GB:
+        return False, (
+            f"RAM only {ram_free_gb:.1f} GB free (need {_RAM_MIN_FREE_GB:.1f} GB). "
+            "Waiting for RAM."
+        )
+    # GPU check: pipeline-level GPU flag OR explicit compute_device param
+    needs_gpu = (
+        job.get("pipeline") in _GPU_PIPELINES
+        or (job.get("params") or {}).get("compute_device") == "gpu"
+    )
+    if needs_gpu:
+        if vram_free_gb is None:
+            return False, "Job requires GPU but CUDA is not available on this machine."
+        if vram_free_gb < _VRAM_MIN_FREE_GB:
+            return False, (
+                f"VRAM only {vram_free_gb:.1f} GB free (need {_VRAM_MIN_FREE_GB:.1f} GB). "
+                "Waiting for GPU to free up."
+            )
+    return True, ""
 
 # Pipeline registry — maps pipeline name to callable
 _PIPELINES: dict[str, Any] = {}
@@ -75,14 +153,67 @@ async def _run_job(job: dict[str, Any]) -> dict[str, Any]:
 
 
 async def _process_one() -> bool:
-    """Try to claim and process one pending job. Returns True if work was done."""
+    """Try to claim and process one pending job. Returns True if work was done.
+
+    Resource-aware: peeks at the next pending job first, checks CPU/RAM/VRAM
+    against configured thresholds, and defers (returns False without claiming)
+    when resources are insufficient.  The engine loop will sleep poll_interval
+    and retry, keeping the job in 'pending' until the machine is ready.
+    """
     db = get_db()
     if db is None:
         return False
 
+    # Peek first (no claim) so we can run a resource check before committing.
+    next_job = await db.peek_next_pending_job()
+    if next_job is None:
+        return False
+
+    # Resource gate
+    cpu_pct, ram_free_gb, vram_free_gb = _get_system_resources()
+    ok, reason = _check_resources_for_job(next_job, cpu_pct, ram_free_gb, vram_free_gb)
+    if not ok:
+        jid = next_job["id"]
+        now = _time_mod.monotonic()
+        last = _last_resource_log.get(jid, 0.0)
+        if now - last >= _RESOURCE_LOG_INTERVAL_SEC:
+            logger.warning(
+                "Job %s ('%s') deferred — %s [CPU=%.0f%% RAM=%.1fGB VRAM=%s]",
+                jid,
+                next_job.get("name", ""),
+                reason,
+                cpu_pct,
+                ram_free_gb,
+                f"{vram_free_gb:.1f}GB" if vram_free_gb is not None else "N/A",
+            )
+            _last_resource_log[jid] = now
+            # Stamp the job params with the current wait reason so the Jobs
+            # panel can display it without re-querying system metrics.
+            try:
+                await db._conn.execute(  # noqa: SLF001
+                    "UPDATE jobs SET params = json_set(params, '$.resource_wait', ?) "
+                    "WHERE id = ?",
+                    (reason[:200], jid),
+                )
+                await db._conn.commit()  # noqa: SLF001
+            except Exception:  # noqa: BLE001
+                pass
+        return False  # leave the job pending; caller sleeps and retries
+
+    # Resources look good — clear any previous wait reason and claim the job.
+    try:
+        await db._conn.execute(  # noqa: SLF001
+            "UPDATE jobs SET params = json_remove(params, '$.resource_wait') WHERE id = ?",
+            (next_job["id"],),
+        )
+        await db._conn.commit()  # noqa: SLF001
+    except Exception:  # noqa: BLE001
+        pass
+    _last_resource_log.pop(next_job["id"], None)
+
     job = await db.claim_pending_job()
     if job is None:
-        return False
+        return False  # claimed between peek and claim (race) — harmless
 
     job_id = job["id"]
     logger.info("Running job %s (pipeline=%s)", job_id, job["pipeline"])
@@ -92,6 +223,8 @@ async def _process_one() -> bool:
         now = datetime.now(timezone.utc).isoformat()
         await db.store_result(job_id=job_id, data=result_data, created_at=now)
         await db.update_job_status(job_id, "completed")
+        # Update any phase_action linked to this job
+        await _sync_phase_action(db, job_id, "completed")
         # Also save to reports/ so the Jobs panel can navigate to Reports → Data
         import json as _json  # noqa: PLC0415
 
@@ -115,8 +248,41 @@ async def _process_one() -> bool:
             created_at=datetime.now(timezone.utc).isoformat(),
         )
         await db.update_job_status(job_id, "failed")
+        # Update any phase_action linked to this job
+        await _sync_phase_action(db, job_id, "failed", error_message=str(exc))
 
     return True
+
+
+async def _sync_phase_action(
+    db: Any, job_id: str, status: str, error_message: str = ""
+) -> None:
+    """Update the phase_action row linked to this job_id.
+
+    This is the critical hook that ties the job system to the phase
+    advancement system. When a job completes or fails, the corresponding
+    phase action is updated so the Phase Advancer knows it's done.
+    """
+    try:
+        cursor = await db._conn.execute(  # noqa: SLF001
+            "SELECT id, phase, action_label FROM phase_actions WHERE job_id = ?",
+            (job_id,),
+        )
+        row = await cursor.fetchone()
+        if row:
+            from datetime import datetime, timezone  # noqa: PLC0415
+            now = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+            await db._conn.execute(  # noqa: SLF001
+                "UPDATE phase_actions SET status = ?, error_message = ?, completed_at = ? WHERE id = ?",
+                (status, error_message[:500], now, row["id"]),
+            )
+            await db._conn.commit()  # noqa: SLF001
+            logger.info(
+                "Phase action '%s' (phase %d) → %s (job %s)",
+                row["action_label"], row["phase"], status, job_id,
+            )
+    except Exception as exc:  # noqa: BLE001
+        logger.debug("_sync_phase_action failed: %s", exc)
 
 
 async def _stall_watchdog() -> None:
@@ -152,6 +318,15 @@ async def _stall_watchdog() -> None:
                     "params = json_set(params, '$.stall_reason', 'timeout') WHERE id = ?",
                     (jid,),
                 )
+                # Store an error result so the Jobs panel can show what happened
+                await db.store_result(
+                    job_id=jid,
+                    data={
+                        "error": f"Job '{jname}' timed out after {_JOB_STALL_TIMEOUT_SECONDS}s with no heartbeat.",
+                        "stall_reason": "timeout",
+                    },
+                    created_at=datetime.now(timezone.utc).isoformat(),
+                )
             if stalled:
                 await db._conn.commit()  # noqa: SLF001
         except asyncio.CancelledError:
@@ -160,11 +335,69 @@ async def _stall_watchdog() -> None:
             logger.debug("Stall watchdog error: %s", exc)
 
 
+async def _orphan_sweep() -> None:
+    """At startup, mark any jobs still 'running' from the previous session as failed.
+
+    Jobs left in 'running' state after a backend restart are orphans — their
+    worker threads died with the old process.  Cleaning them up immediately
+    prevents the stall watchdog from needing to wait 30 minutes, and ensures
+    the Jobs panel shows accurate status straight away.
+
+    exp_run jobs whose exp_id is still running (duplicate guard) would be
+    blocked by the duplicate check even without this sweep, but marking them
+    failed makes the UI consistent.
+    """
+    db = get_db()
+    if db is None or db._conn is None:  # noqa: SLF001
+        return
+    try:
+        cursor = await db._conn.execute(  # noqa: SLF001
+            "SELECT id, name FROM jobs WHERE status = 'running'"
+        )
+        orphans = await cursor.fetchall()
+        if not orphans:
+            return
+        for row in orphans:
+            jid, jname = row["id"], row["name"]
+            logger.warning(
+                "Startup orphan sweep: marking job %s ('%s') as failed",
+                jid, jname,
+            )
+            await db._conn.execute(  # noqa: SLF001
+                "UPDATE jobs SET status = 'failed', updated_at = datetime('now'), "
+                "params = json_set(params, '$.stall_reason', 'orphaned at startup') "
+                "WHERE id = ?",
+                (jid,),
+            )
+            # Store an error result so the Jobs panel shows a reason
+            await db.store_result(
+                job_id=jid,
+                data={
+                    "error": f"Job '{jname}' was still running when the backend restarted. It was orphaned and marked as failed.",
+                    "stall_reason": "orphaned at startup",
+                },
+                created_at=datetime.now(timezone.utc).isoformat(),
+            )
+            # Also sync the linked phase_action from 'running' to 'failed' so the
+            # Phase Advancer doesn't get stuck waiting for a job that will never finish.
+            await _sync_phase_action(
+                db, jid, "failed",
+                error_message=f"Job '{jname}' was orphaned (backend restarted while it was running).",
+            )
+        await db._conn.commit()  # noqa: SLF001
+        logger.info("Startup orphan sweep: marked %d job(s) as failed", len(orphans))
+    except Exception as exc:  # noqa: BLE001
+        logger.warning("Startup orphan sweep failed: %s", exc)
+
+
 async def run_engine_loop(*, poll_interval: float = 2.0) -> None:
     """Main engine loop — runs until cancelled."""
     logger.info("Pipeline engine started (poll_interval=%.1fs)", poll_interval)
     # Import pipelines so they register themselves
     _ensure_pipelines_loaded()
+
+    # Clean up orphaned running jobs from previous backend session
+    await _orphan_sweep()
 
     # Start stall watchdog as a sibling task (cancelled when engine is cancelled)
     watchdog = asyncio.create_task(_stall_watchdog())

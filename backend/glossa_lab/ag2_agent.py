@@ -26,7 +26,6 @@ from __future__ import annotations
 
 import asyncio
 import json
-import subprocess
 import sys
 from pathlib import Path
 from typing import Any, AsyncGenerator
@@ -38,32 +37,52 @@ _BACKEND_DIR = Path(__file__).resolve().parent.parent
 
 # ── AG2 system prompt ─────────────────────────────────────────────────────────
 
-_SYSTEM_PROMPT = """You are Glossa Research Assistant, an expert in:
-- Indus Script decipherment (Parpola Dravidian hypothesis)
-- Computational linguistics and information-theoretic analysis
-- The Glossa Lab experiment platform
-
+_INDUS_CONTEXT_BLOCK = """\
 CURRENT RESEARCH STATE (key findings):
 - Dravidian phonotactics: SA 0.8166 vs Sanskrit 0.5602 (+25.64pp) on CISI bigrams [VERIFIED]
 - Optimal anchor set: P385=n, P324=k, P122=a, P086=m, P060=i, P332=o (peak HCI 88.4%)
 - CV pair structure: P324(/k/) + P332(/o/) = 'ko' (king/chief, DEDR 2147)
 - M-148A = royal title formula: 'ko-n' = 'of the king'
-- 179 CISI Mohenjo-daro inscriptions available; need 3,000+ for full decipherment
+- 179 CISI Mohenjo-daro inscriptions available; need 3,000+ for full decipherment"""
 
-TOOLS YOU CAN USE:
-- run_experiment: run any graph experiment (e.g. indus_cisi_dravidian_vs_sanskrit)
-- list_experiments: see all available experiments
-- read_result: read any report file from reports/
-- query_corpus: get corpus stats for indus_cisi, indus, dravidian, etc.
-- read_ledger: get the latest LEDGER research summary
 
-GUIDELINES:
-- When asked to run an experiment, use run_experiment and then interpret the results
-- Be precise with epistemic markers: [VERIFIED], [INFERRED], [UNCERTAIN], [BLOCKER]
-- If you don't have data, use the tools to get it rather than guessing
-- Keep responses focused and scientific
+def _build_system_prompt() -> str:
+    """Construct the AG2 system prompt, optionally using project config."""
+    try:
+        from glossa_lab.config import get_project_config  # noqa: PLC0415
+        cfg = get_project_config()
+        project_desc = f"{cfg.project_name} research"
+        context_block = cfg.ai_context_summary if cfg.ai_context_summary else _INDUS_CONTEXT_BLOCK
+    except Exception:
+        project_desc = "Indus Script decipherment (Parpola Dravidian hypothesis)"
+        context_block = _INDUS_CONTEXT_BLOCK
 
-Reply TERMINATE when you have completed the user's research request."""
+    return (
+        f"You are Glossa Research Assistant, an expert in:\n"
+        f"- {project_desc}\n"
+        f"- Computational linguistics and information-theoretic analysis\n"
+        f"- The Glossa Lab experiment platform\n"
+        f"\n"
+        f"{context_block}\n"
+        f"\n"
+        f"TOOLS YOU CAN USE:\n"
+        f"- run_experiment: run any graph experiment (e.g. indus_cisi_dravidian_vs_sanskrit)\n"
+        f"- list_experiments: see all available experiments\n"
+        f"- read_result: read any report file from reports/\n"
+        f"- query_corpus: get corpus stats for indus_cisi, indus, dravidian, etc.\n"
+        f"- read_ledger: get the latest LEDGER research summary\n"
+        f"\n"
+        f"GUIDELINES:\n"
+        f"- When asked to run an experiment, use run_experiment and then interpret the results\n"
+        f"- Be precise with epistemic markers: [VERIFIED], [INFERRED], [UNCERTAIN], [BLOCKER]\n"
+        f"- If you don't have data, use the tools to get it rather than guessing\n"
+        f"- Keep responses focused and scientific\n"
+        f"\n"
+        f"Reply TERMINATE when you have completed the user's research request."
+    )
+
+
+_SYSTEM_PROMPT = _build_system_prompt()
 
 
 # ── Glossa Lab tools (available to the AG2 executor) ─────────────────────────
@@ -81,25 +100,35 @@ def _tool_list_experiments() -> str:
 
 
 def _tool_run_experiment(experiment_id: str) -> str:
-    """Run a graph experiment and return a summary of the result."""
-    try:
-        result = subprocess.run(
-            [sys.executable, "-m", "glossa_lab.experiments", experiment_id],
-            capture_output=True, text=True, timeout=600,
-            cwd=str(_BACKEND_DIR),
-        )
-        if result.returncode != 0:
-            return f"Experiment failed:\n{result.stderr[-500:]}"
+    """Queue a graph experiment via the Glossa Lab backend API.
 
-        # Try to read the result from reports/
-        out = _tool_read_result(f"{experiment_id}.json")
-        if "not found" in out.lower():
-            return f"Experiment completed. Output:\n{result.stdout[-300:]}"
-        return f"Experiment '{experiment_id}' completed.\n{out}"
-    except subprocess.TimeoutExpired:
-        return f"Experiment '{experiment_id}' timed out after 600s."
+    Returns a summary including the job_id so the user can track it in the Jobs panel.
+    """
+    import json as _json  # noqa: PLC0415
+    import urllib.error  # noqa: PLC0415
+    import urllib.request  # noqa: PLC0415
+
+    base = "http://127.0.0.1:8001"
+    url = f"{base}/api/v1/experiments/{experiment_id}/queue"
+    try:
+        req = urllib.request.Request(
+            url, data=b'{}', method='POST',
+            headers={'Content-Type': 'application/json'},
+        )
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            result = _json.loads(resp.read().decode('utf-8'))
+        job_id = result.get('job_id', 'unknown')
+        return (
+            f"Experiment '{experiment_id}' queued successfully. "
+            f"Job ID: {job_id}. "
+            f"Track progress in the Jobs panel."
+        )
+    except urllib.error.HTTPError as exc:
+        if exc.code == 404:
+            return f"Experiment '{experiment_id}' not found. Use list_experiments to see available IDs."
+        return f"Failed to queue experiment (HTTP {exc.code}): {exc.reason}"
     except Exception as exc:  # noqa: BLE001
-        return f"Error running experiment: {exc}"
+        return f"Could not reach backend to queue '{experiment_id}': {exc}"
 
 
 def _tool_read_result(filename: str) -> str:
@@ -181,11 +210,11 @@ _TOOLS = {
     "list_experiments": (_tool_list_experiments,
         "List all available graph experiment IDs that can be run."),
     "run_experiment":   (_tool_run_experiment,
-        "Run a specific graph experiment by ID and return the result summary. "
+        "Queue a graph experiment as a background job. Returns a job_id visible in the Jobs panel. "
         "experiment_id: str — e.g. 'indus_cisi_dravidian_vs_sanskrit'"),
     "read_result":      (_tool_read_result,
         "Read an experiment result file from reports/. "
-        "filename: str — e.g. 'indus_cisi_anchored_5.json'"),
+        "filename: str — e.g. 'indus_cisi_dravidian_vs_sanskrit.json'"),
     "query_corpus":     (_tool_query_corpus,
         "Get statistics (tokens, H1 entropy, sign count) for a named corpus. "
         "corpus_name: str — e.g. 'indus_cisi', 'indus', 'dravidian', 'sanskrit'"),

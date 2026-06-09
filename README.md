@@ -1,14 +1,21 @@
 # glossa-lab
 
-![CI](https://github.com/BitConcepts/glossa-lab/actions/workflows/ci.yml/badge.svg)
+[![CI](https://github.com/BitConcepts/glossa-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/BitConcepts/glossa-lab/actions/workflows/ci.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20414696.svg)](https://doi.org/10.5281/zenodo.20414696)
+[![paper](https://img.shields.io/badge/paper-Academia.edu-blue)](https://www.academia.edu)
+[![code](https://img.shields.io/badge/code-MIT-green)](LICENSE)
+[![version](https://img.shields.io/badge/version-1.0.0-orange)](CHANGELOG.md)
+
+**Author:** Tristen Pierson, BitConcepts Research \
+**ORCID:** [0009-0003-7269-956X](https://orcid.org/0009-0003-7269-956X)
 
 Agentic computational linguistics research platform for statistical analysis, decipherment, and hypothesis testing of ancient and unknown writing systems — with a primary focus on the **Indus Script**.
 
-> **Decipherment Status (Phase 294):** 605/605 signs at HIGH confidence (100%) · 83.7% SA consistency on 5,520 inscriptions · 6.3× tripartite grammar lift across 76 sites · Proto-Dravidian readings validated against DEDR, Elamite cognates, Sanskrit substrate · Sanskrit hypothesis falsified 0/34
+> **Decipherment Status (Audited):** 185 corpus-attested Proto-Dravidian readings covering 92.8% of Holdat IVS tokens · 80% agreement with Parpola (1994) on 20 tested signs · Dravidian signal confirmed on two independent corpora (Holdat 57.8%, M77 70.5%) · Reading entropy H₂ = 4.11 bits (linguistic range) · 97.7% inscription uniqueness · Sanskrit hypothesis falsified 0/34
 
-> **Preprint:** Pierson, T.K. (2026). *A Complete Computational Decipherment Hypothesis for the Indus Script.* Zenodo. DOI: [10.5281/zenodo.20401711](https://zenodo.org/records/20401711)
+> **Preprint (v3):** Pierson, T.K. (2026). *A Computational Decipherment Hypothesis for the Indus Script: 185 Proto-Dravidian Readings Validated Across Two Independent Corpora.* Zenodo. DOI: [10.5281/zenodo.20414696](https://doi.org/10.5281/zenodo.20414696)
 
-Built and maintained by **BitConcepts LLC**
+Built and maintained by **[BitConcepts LLC](https://bitconcepts.tech)**
 
 ---
 
@@ -84,19 +91,23 @@ Local control surface. Start/stop/restart backend, open UI, quick status.
 
 ## Indus Script Decipherment
 
-**605 signs deciphered** — the first complete computational decipherment proposal for the Indus Script (~2600–1900 BCE).
+**185 corpus-attested Proto-Dravidian readings** covering 92.8% of the Holdat IVS corpus — a computational decipherment hypothesis for the Indus Script (~2600–1900 BCE). Validated through 6 independent tests on audited data.
 
 | Metric | Value |
 |---|---|
-| Sign readings | 605/605 HIGH confidence |
-| Token coverage | 100% (7,002 Holdat tokens) |
-| SA consistency | 83.7% (5,520 inscriptions, 76 sites) |
-| Grammar validation | 6.3× tripartite lift (I→M→T) |
-| Evidence items | 41 (E01–E41; E28 falsified) |
-| External corroboration | Fisher p≈10⁻¹⁵ (Elamite + Sanskrit) |
+| Corpus-attested readings | 185 signs (167 distinct readings) |
+| Token coverage (HIGH only) | 92.8% (6,501/7,002 Holdat tokens) |
+| Parpola agreement | 80% (15/20 exact matches, strict comparison) |
+| Language discrimination | Dravidian 57.8% vs Uniform 0.0% (anchored bigram) |
+| Corpus independence | M77 Dravidian hit rate: 70.5% |
+| Reading entropy | H₂ = 4.11 bits (linguistic range: 2–4.5) |
+| Inscription uniqueness | 97.7% (1,631/1,670 unique sequences) |
+| Phonological coverage | 76% (19/25 Proto-Dravidian initials attested) |
 | Sanskrit hypothesis | Falsified 0/34 |
-| Phases completed | 294 |
-| Preprint DOI | [10.5281/zenodo.20401711](https://zenodo.org/records/20401711) |
+| Total anchor signs | 605 (400 HIGH + 205 LOW unread) |
+| Preprint DOI | [10.5281/zenodo.20414696](https://doi.org/10.5281/zenodo.20414696) |
+
+> **Note:** All numbers are from `RELEASE_VALIDATION.json`, a cold re-run on audited data. See `outputs/AUDIT_CORRECTIONS.json` for full audit trail including bugs found and claims retracted.
 
 ### Key files
 
@@ -129,6 +140,7 @@ glossa-lab/
 │  └─ workflows/ci.yml  ← GitHub Actions CI
 ├─ backend/             ← Python FastAPI application
 │  ├─ glossa_lab/       ← app modules (api/, experiments/, discovery/, ...)
+│  ├─ glossa_mcp/       ← MCP server (Warp/Oz agent integration, 27 tools)
 │  ├─ scripts/          ← all research and utility scripts
 │  └─ tests/
 ├─ frontend/            ← React / TypeScript / Vite
@@ -203,6 +215,50 @@ curl.exe -sf http://localhost:8001/ | Select-String 'index-[A-Za-z0-9]+\.js'
 
 ---
 
+## MCP server (Warp / Oz)
+
+Glossa Lab ships a [FastMCP](https://github.com/jlowin/fastmcp) server that exposes 27 backend operations as MCP tools, allowing Warp's Oz agent to query and control the system directly — no manual API calls required.
+
+### What it covers
+
+| Category | Tools |
+|---|---|
+| Status | `get_status`, `get_system_metrics` |
+| Jobs | `list_jobs`, `get_job`, `create_job`, `cancel_job`, `get_job_results` |
+| Experiments | `list_experiments`, `get_experiment`, `run_experiment` |
+| Research loop | `start_research_loop`, `get_research_loop_status`, `stop_research_loop`, `get_research_loop_results`, `get_anchor_staging` |
+| Foundation check | `run_foundation_check` |
+| Discovery | `list_discovery_items`, `get_discovery_stats`, `trigger_discovery_fetch`, `update_discovery_item_status` |
+| Dashboard | `get_latest_insight`, `get_dashboard_highlights` |
+| Anchor sets | `list_anchor_sets`, `get_anchor_set`, `create_anchor_set` |
+| Reports | `list_reports`, `get_report` |
+
+### Setup
+
+1. **Start the backend** (`setup-os.cmd start` or `uvicorn glossa_lab.main:create_app --factory --port 8001`).
+2. In Warp, open **Settings → Agents → MCP Servers** and add a new server with:
+
+```json
+{
+  "glossa-lab": {
+    "command": "C:/Users/trist/Development/BitConcepts/glossa-lab/backend/venv/Scripts/python.exe",
+    "args": ["C:/Users/trist/Development/BitConcepts/glossa-lab/backend/glossa_mcp/server.py"]
+  }
+}
+```
+
+Adjust the path to match your install location. The server defaults to `http://127.0.0.1:8001`; override with the `GLOSSA_BASE_URL` environment variable if needed.
+
+### Source
+
+```
+backend/glossa_mcp/
+├── __init__.py
+└── server.py   ← FastMCP server (edit here to add tools)
+```
+
+---
+
 ## Project discipline
 
 This project follows strict research governance enforced by both convention and tooling:
@@ -232,24 +288,24 @@ Full governance rules: [`docs/governance/`](docs/governance/)
 | `docs/TESTS.md` | Test specification |
 | `docs/research/` | Decipherment research documents |
 | **`research/indus/`** | **Public outputs — preprint PDF, anchor table, phase reports (CC BY 4.0)** |
+| `backend/glossa_mcp/server.py` | MCP server — 27 tools for Warp/Oz agent integration |
 
 ---
 
-## Current research status (May 2026 — Phase 294)
+## Current research status (May 2026 — Audited)
 
-- **605/605 signs at HIGH confidence** (100%) — complete decipherment proposal
-- **Two corpora validated**: Holdat (1,670 seals, 9 sites) + ICIT/Fuls (5,520 inscriptions, 76 sites)
-- **SA consistency**: 83.7% on 5,520 independent inscriptions (expanded DEDR LM, 7,514 vocab)
-- **Grammar**: 6.3× tripartite lift (I→M→T) across 76 sites; 45.7% vs 7.3% null
-- **External corroboration**: 7 Elamite + 13 Sanskrit + 7 Linear Elamite (Fisher p≈10⁻¹⁵)
-- **Tamil-Brahmi concordance**: 58% name match (z=16.2, p<0.0001)
+- **185 corpus-attested readings** covering 92.8% of Holdat IVS tokens (7,002 tokens, 1,670 seals)
+- **80% Parpola agreement** (15/20 signs match Parpola 1994/2010 proposals)
+- **Corpus-independent signal**: Dravidian 57.8% (Holdat) and 70.5% (Mahadevan 1977)
+- **Reading-level entropy**: H₂ = 4.11 bits (linguistic range)
+- **97.7% inscription uniqueness** — supports registration-code / guild-identity model
+- **76% Proto-Dravidian phonological inventory** attested (19/25 initials; 4/6 missing are expected rare)
 - **Sanskrit hypothesis falsified**: 0/34 agreement with Yajnadevam readings
-- **Non-linguistic hypothesis falsified**: E28 (H1=5.384 >> 3.5), Nair 2026 4/4
-- **41 evidence items** (E01–E41) across 8 independent evidence lines
-- **294 research phases** completed across the full decipherment campaign
+- **400 HIGH + 205 LOW** anchor signs (LOW signs unread, awaiting individual evidence)
+- **3 bugs found and fixed** during audit (mass-assignment pipelines); **3 claims retracted** (see `outputs/AUDIT_CORRECTIONS.json`)
 
 ---
 
 ## Status
 
-**Production — decipherment complete, seeking peer review.** Backend and frontend fully operational at `http://localhost:8001`.
+**Seeking peer review.** Release validation complete (`outputs/RELEASE_VALIDATION.json`). Backend and frontend operational at `http://localhost:8001`.

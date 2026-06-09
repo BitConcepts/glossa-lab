@@ -809,7 +809,7 @@ export function ResearchLoopPanel() {
               background: "#faf5ff", border: "1px solid #c4b5fd",
               fontSize: 11, color: "#5b21b6",
             }}>
-              <span style={{ fontSize: 14 }}>\u26a1</span>
+              <span style={{ fontSize: 14 }}>{"\u26a1"}</span>
               <span style={{ fontWeight: 700 }}>Blitz Mining</span>
               <span style={{ color: "#7c3aed" }}>
                 — scanning {blitzTopics || 19} gap topics for literature evidence&#8230;
@@ -1343,7 +1343,7 @@ function WhatsNextList({ items }: { items: WhatsNextItem[] }) {
                     fontSize: 9, padding: "1px 5px", borderRadius: 3,
                     background: "#ede9fe", color: "#5b21b6", fontWeight: 700,
                     letterSpacing: 0.3,
-                  }}>\u26a1 EPISTEMIC</span>
+                  }}>{"\u26a1"} EPISTEMIC</span>
                 )}
                 {item.novelty != null && item.novelty >= 1.0 && (
                   <span style={{

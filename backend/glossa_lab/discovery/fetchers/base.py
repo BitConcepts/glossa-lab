@@ -383,7 +383,6 @@ _source_cooldowns: dict[str, float] = {}   # source -> wall-clock deadline
 
 def _cooldown_state_path() -> "Path | None":
     """Return path to the persistent cooldown state file, or None if not writable."""
-    import os  # noqa: PLC0415
     # Walk up from this file to find the repo root (where .specsmith lives).
     # base.py is at backend/glossa_lab/discovery/fetchers/base.py so root is 5 up.
     try:

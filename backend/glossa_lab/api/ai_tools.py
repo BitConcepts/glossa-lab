@@ -177,19 +177,21 @@ When a user shares a discovery item (paper/article) and asks to plan or run expe
 
 3. Map the discovery topic to the closest REGISTERED experiments using this guide:
    Fragmentary/incomplete texts, text gaps, restoration:
-     → decoded_text_repetition, blocker_sign_context, reading_frequency_zipf
+     → indus_validation_neg_controls, indus_structural_atlas, indus_cisi_structural
    RNN / neural / ML / computational linguistics methods:
-     → decoded_text_repetition, compound_semantic_coherence, rare_sign_neighbor_profile
+     → indus_cgsa_cluster_analysis, indus_structural_atlas, indus_sign_function_dravidian
    Cross-language comparison, phonological mapping:
      → indus_dravidian_vs_sanskrit, indus_cisi_dravidian_vs_sanskrit, indus_sign_function_dravidian
    Rural distribution, ceramic economy, trade, provenance:
-     → blocker_sign_context, reading_frequency_zipf, indus_cisi_structural
+     → indus_contact_zone_v2, indus_cisi_structural, indus_structural_atlas
    Sign frequency, Zipf law, statistical patterns:
-     → reading_frequency_zipf, rare_sign_neighbor_profile, decoded_text_repetition
+     → indus_structural_atlas, indus_contact_zone_v2, indus_cisi_structural
    Structural analysis, sign position, inscription layout:
-     → indus_cisi_structural, blocker_sign_context, compound_semantic_coherence
+     → indus_cisi_structural, indus_cgsa_cluster_analysis, indus_structural_atlas
    Anchors, validation, confidence building:
-     → indus_cisi_anchored_10, indus_validation_a1_a3_holdout
+     → indus_cisi_anchored_10, indus_validation_a1_a3_holdout, indus_validation_neg_controls
+   General IVC archaeology, Indus script overview:
+     → indus_contact_zone_v2, indus_structural_atlas, indus_sa_dravidian
 
 4. Always include a create_hypothesis action alongside run_experiment actions to record
    the research question the discovery raised.
@@ -200,8 +202,8 @@ Example response to "plan and execute experiments" about a discovery item:
   "Based on this paper on fragmentary text analysis, I'll run three experiments that
    probe the same question from our existing corpus angle...
    %%ACTIONS%%
-   [{"type":"run_experiment","params":{"id":"decoded_text_repetition"},"label":"Decoded Text Repetition","description":"Checks if decoded readings produce expected text repetition patterns consistent with real language."},
-    {"type":"run_experiment","params":{"id":"blocker_sign_context"},"label":"Blocker Sign Context","description":"Identifies signs that appear in positions suggesting they carry structural/grammatical function."},
+   [{"type":"run_experiment","params":{"id":"indus_validation_neg_controls"},"label":"Negative Controls Validation","description":"Checks if decoded readings pass negative-control statistical tests consistent with real language."},
+    {"type":"run_experiment","params":{"id":"indus_structural_atlas"},"label":"Structural Atlas","description":"Analyses sign position, frequency distribution and structural roles across the CISI corpus."},
     {"type":"create_hypothesis","params":{"title":"RNN restoration insight","statement":"Fragmented Indus inscriptions may be restorable using positional frequency priors similar to Babylonian RNN approach."},"label":"Record Hypothesis","description":"Save the research question raised by this paper."}]
    %%END_ACTIONS%%"
 
@@ -213,6 +215,12 @@ Example response to "plan and execute experiments" about a discovery item:
 - NEVER use experiment IDs not in REGISTERED EXPERIMENT IDs.
 - NEVER reference file paths that don't exist (path_to_file.csv, data.json, etc.).
 - NEVER claim you cannot execute — you CAN run registered experiments.
+
+=== BUILD_SA_EXPERIMENT CORPUS NAMES (use EXACTLY one of these) ===
+Valid corpus values: indus, indus_cisi, indus_m77, hebrew, geez, phoenician,
+  nw_semitic, ugaritic, meroitic, proto_sinaitic, linear_b, sanskrit, dravidian
+DO NOT use natural-language phrases like "indus valley civilization" — use indus_cisi instead.
+DO NOT use "indus script" or "IVC" — use indus or indus_cisi.
 === END GLOSSA LAB ACTIONS ==="""
 
 _REPORTS = Path(__file__).resolve().parent.parent.parent.parent / "reports"

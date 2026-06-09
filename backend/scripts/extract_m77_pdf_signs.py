@@ -63,8 +63,12 @@ def save_manifest(m: dict) -> None:
 # Page 3: 220-329 (110 signs)
 # Page 4: 330-417 (88 signs)
 _PAGE_STARTS = [1, 111, 220, 330, 418]  # 418 is a sentinel
-# Number of rows per page (used for cell-height calculation)
+# Number of sign rows per page
 _PAGE_ROWS   = [11, 11, 11, 9]
+# Bottom margin of the sign table (fraction of page height).
+# Pages 1-3 fill almost to the bottom; page 4 has a NOTES section
+# at ~77-83%, so signs end at ~74%.
+_PAGE_BOT    = [0.92, 0.92, 0.92, 0.74]
 
 
 def sign_to_page_cell(sign_num: int) -> tuple[int, int, int] | None:
@@ -118,42 +122,92 @@ def render_page(doc: fitz.Document, page_idx: int) -> np.ndarray:
     return img  # grayscale
 
 
-def _detect_col_centers(page_img: np.ndarray, n_rows: int = 9) -> list[int] | None:
-    """Auto-detect column x-centers from ink clusters in the first data row.
+def _detect_col_centers(page_img: np.ndarray, n_rows: int = 9,
+                        t_bot: float = 0.92) -> list[int] | None:
+    """Auto-detect column x-centers from ink clusters in the first complete row.
 
-    Returns a list of 10 x-pixel centers, one per column, or None if detection
-    fails.
+    Tries rows 0-4 in order and returns the first that yields exactly 10
+    clusters.  Returns None only if all rows fail (fallback: uniform spacing).
     """
     h, w = page_img.shape
-    t_top, t_bot = 0.09, 0.92
+    t_top = 0.09
     cell_h = (t_bot - t_top) * h / n_rows
-    # Use row 0 (most complete) to detect column positions
-    cy0 = int(t_top * h)
-    cy1 = cy0 + int(cell_h * 0.65)
-    strip = page_img[cy0:cy1, :]
-    _, b = cv2.threshold(strip, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-    if b.mean() < 128:
-        b = cv2.bitwise_not(b)
-    col_ink = (b < 128).sum(axis=0)
-    min_ink = (cy1 - cy0) * 0.015
-    ink_x = np.where(col_ink > min_ink)[0]
-    if len(ink_x) < 5:
-        return None
-    breaks = np.where(np.diff(ink_x) > 40)[0]
-    groups = np.split(ink_x, breaks + 1)
-    groups = [g for g in groups if len(g) > 5]  # filter noise
-    if len(groups) != 10:
-        # Fallback: not exactly 10 clusters — use uniform spacing
-        return None
-    return [int((g[0] + g[-1]) // 2) for g in groups]
+
+    # Try to get actual row starts for more accurate column detection
+    row_key = (id(page_img), n_rows, t_bot, "rows")
+    row_starts = _ROW_STARTS.get(row_key)
+
+    for row_idx in range(min(5, n_rows)):
+        if row_starts and len(row_starts) == n_rows:
+            cy0 = row_starts[row_idx]
+            next_start = row_starts[row_idx + 1] if row_idx + 1 < n_rows else int(t_bot * h)
+            row_h_local = next_start - cy0
+        else:
+            cy0 = int(t_top * h + row_idx * cell_h)
+            row_h_local = int(cell_h)
+        cy1 = cy0 + int(row_h_local * 0.55)
+        strip = page_img[cy0:cy1, :]
+        _, b = cv2.threshold(strip, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+        if b.mean() < 128:
+            b = cv2.bitwise_not(b)
+        col_ink = (b < 128).sum(axis=0)
+        min_ink = (cy1 - cy0) * 0.012
+        ink_x = np.where(col_ink > min_ink)[0]
+        if len(ink_x) < 5:
+            continue
+        breaks = np.where(np.diff(ink_x) > 35)[0]
+        groups = np.split(ink_x, breaks + 1)
+        groups = [g for g in groups if len(g) > 4]
+        if len(groups) == 10:
+            return [int((g[0] + g[-1]) // 2) for g in groups]
+
+    return None  # all rows failed; caller will use uniform-spacing fallback
 
 
 # Page-level column-center cache to avoid re-detecting every call
 _COL_CENTERS: dict[tuple, list[int]] = {}
+# Page-level row-start cache
+_ROW_STARTS: dict[tuple, list[int]] = {}
+
+
+def _detect_row_starts(page_img: np.ndarray, n_rows: int,
+                       t_bot: float = 0.92) -> list[int] | None:
+    """Auto-detect the y-start of each sign row from horizontal ink bands.
+
+    Returns a list of *n_rows* y-start pixel positions, or None if the
+    number of detected bands doesn't match *n_rows*.
+    """
+    h, w = page_img.shape
+    # Work below the title header (top ~7% of page)
+    search_top = int(0.07 * h)
+    search_bot = int(t_bot * h)
+    strip = page_img[search_top:search_bot, :]
+
+    _, b = cv2.threshold(strip, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+    if b.mean() < 128:
+        b = cv2.bitwise_not(b)
+
+    row_ink = (b < 128).sum(axis=1)
+    min_ink  = w * 0.003
+    ink_y    = np.where(row_ink > min_ink)[0]
+    if len(ink_y) < 5:
+        return None
+
+    breaks = np.where(np.diff(ink_y) > 15)[0]
+    groups = np.split(ink_y, breaks + 1)
+    # Sign rows span ~130-170 px; title and page-number bands are <50 px
+    groups = [g for g in groups if len(g) > 50]
+
+    if len(groups) != n_rows:
+        return None
+
+    # Return the y-start of each band (adjusted back to full-page coordinates)
+    return [int(g[0]) + search_top for g in groups]
 
 
 def extract_sign_from_page(page_img: np.ndarray, row: int, col: int,
-                           n_rows: int = 11) -> np.ndarray | None:
+                           n_rows: int = 11,
+                           t_bot: float = 0.92) -> np.ndarray | None:
     """Crop one sign cell from a rendered page image.
 
     First attempts to auto-detect the 10 column x-centers from row-0 ink
@@ -161,40 +215,59 @@ def extract_sign_from_page(page_img: np.ndarray, row: int, col: int,
     uniform spacing if detection fails.
     """
     h, w = page_img.shape[:2]
-    t_top = 0.09
-    t_bot = 0.92
-    table_h = (t_bot - t_top) * h
-    cell_h  = table_h / n_rows
-    label_frac = 0.32
 
-    # ── Row y-bounds ─────────────────────────────────────────────────────────
-    cy0 = int(t_top * h + row * cell_h)
-    cy1 = cy0 + int(cell_h * (1 - label_frac))
+    # ── Row y-bounds: use auto-detected ink-band starts if available ─────
+    row_cache_key = (id(page_img), n_rows, t_bot, "rows")
+    if row_cache_key not in _ROW_STARTS:
+        _ROW_STARTS[row_cache_key] = _detect_row_starts(page_img, n_rows, t_bot)
+
+    row_starts = _ROW_STARTS.get(row_cache_key)
+    if row_starts and len(row_starts) == n_rows:
+        cy0 = row_starts[row]
+        # Row height = distance to the next row's start (or page bottom for last row)
+        if row + 1 < n_rows:
+            row_h = row_starts[row + 1] - cy0
+        else:
+            row_h = int(t_bot * h) - cy0
+    else:
+        # Fallback: uniform spacing
+        t_top  = 0.09
+        cell_h = (t_bot - t_top) * h / n_rows
+        cy0    = int(t_top * h + row * cell_h)
+        row_h  = int(cell_h)
+
+    # label_frac: fraction of ROW HEIGHT to drop from the bottom.
+    # Each ink band = sign glyph (~50%) + number label (~35%) + gap (~15%).
+    # Keeping only the top 50% of the ink band isolates the glyph cleanly.
+    label_frac = 0.50
+    cy1 = cy0 + int(row_h * (1 - label_frac))
 
     # ── Column x-bounds: try auto-detection first ─────────────────────────
-    cache_key = (id(page_img), n_rows)
+    cache_key = (id(page_img), n_rows, t_bot)
     if cache_key not in _COL_CENTERS:
-        _COL_CENTERS[cache_key] = _detect_col_centers(page_img, n_rows)
+        _COL_CENTERS[cache_key] = _detect_col_centers(page_img, n_rows, t_bot)
 
     centers = _COL_CENTERS.get(cache_key)
     if centers and len(centers) == 10:
-        # Use detected center; crop ±half_cell around it
+        # Use detected center ± (half-neighbour-gap) with a small inward
+        # trim (6 px each side at 300 dpi ≈ 0.5 mm) to prevent adjacent-
+        # sign strokes from bleeding while not clipping wide glyphs.
         cx_center = centers[col]
-        # Estimate half-width from neighbour spacing
         if col > 0:
             half = (cx_center - centers[col - 1]) // 2
         elif col < 9:
             half = (centers[col + 1] - cx_center) // 2
         else:
             half = 130
-        cx0 = max(0, cx_center - half - 10)
-        cx1 = min(w, cx_center + half + 10)
+        cx0 = max(0, cx_center - half + 6)
+        cx1 = min(w, cx_center + half - 6)
     else:
-        # Fallback: uniform spacing
+        # Fallback: uniform spacing with ~3% inward crop per side
         t_left, t_right = 0.03, 0.97
         cell_w = (t_right - t_left) * w / 10
-        cx0 = int(t_left * w + col * cell_w)
-        cx1 = min(int(cx0 + cell_w), w)
+        inset = int(cell_w * 0.04)
+        cx0 = int(t_left * w + col * cell_w) + inset
+        cx1 = min(int(cx0 + cell_w) - inset * 2, w)
 
     cell = page_img[cy0:cy1, cx0:cx1]
     return cell if cell.size > 0 else None
@@ -297,7 +370,8 @@ def main() -> None:
         page_img = page_cache[page_idx]
 
         n_rows = _PAGE_ROWS[page_idx]
-        cell = extract_sign_from_page(page_img, row, col, n_rows=n_rows)
+        t_bot  = _PAGE_BOT[page_idx]
+        cell = extract_sign_from_page(page_img, row, col, n_rows=n_rows, t_bot=t_bot)
         if cell is None or cell.size == 0:
             print(f"  FAIL {sid}: empty cell")
             failed += 1

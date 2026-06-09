@@ -231,7 +231,7 @@ def check_sequential(manifest: dict, stride: int = 1) -> dict[str, dict]:
         if img_a is None or img_b is None:
             continue
         ssi = structural_similarity(img_a, img_b)
-        if ssi >= 0.80:
+        if ssi >= 0.92:
             flags[f"{a}_{b}"] = {
                 "sign_a": a, "sign_b": b, "ssi": round(ssi, 3),
                 "note": "suspiciously_similar_neighbours",

@@ -327,19 +327,21 @@ function ModelPickerDropdown({ installed, providers, current, onSelect, onReset,
 // ── Action approval card ──────────────────────────────────────────────────────
 
 const ACTION_ICONS: Record<string, string> = {
-  run_experiment:    "🧪",
-  run_pipeline:      "⚙️",
-  change_setting:    "⚙️",
-  generate_report:   "📄",
-  create_hypothesis: "💡",
-  create_notebook:   "📓",
-  open_view:         "→",
-  clear_jobs:        "🗑️",
-  execute_script:    "🔧",
-  query_corpus:      "🔍",
-  compare_results:   "📊",
-  summarize_session: "💾",
-  acquire_corpus:    "📥",
+  run_experiment:       "🧪",
+  run_pipeline:         "⚙️",
+  change_setting:       "⚙️",
+  generate_report:      "📄",
+  create_hypothesis:    "💡",
+  create_notebook:      "📓",
+  open_view:            "→",
+  clear_jobs:           "🗑️",
+  execute_script:       "🔧",
+  query_corpus:         "🔍",
+  compare_results:      "📊",
+  summarize_session:    "💾",
+  acquire_corpus:       "📥",
+  build_tooling:        "🔨",
+  build_sa_experiment:  "🧬",
 };
 
 function ActionCard({ action, status, onApprove, onCancel, onAutoApproveAll }: {
@@ -545,7 +547,7 @@ export function AIChatWindow() {
   const resetModelPref = useCallback(() => { setModelPref(null); localStorage.removeItem(MODEL_PREF_KEY); }, []);
   const modelLabel = modelPref ? (modelPref.model.length > 18 ? modelPref.model.slice(0, 15) + "…" : modelPref.model) : "auto";
 
-  // Compress
+  // Compress: summarise context and keep a single summary message
   const compress = useCallback(async () => {
     if (messages.length < 4) { toast("Not enough messages to compress", "info"); return; }
     setCompressing(true);
@@ -562,6 +564,24 @@ export function AIChatWindow() {
     } catch { toast("Compression failed", "error"); }
     finally { setCompressing(false); }
   }, [messages, toast, modelPref]);
+
+  // Save & Reset: persist full conversation to notebooks, then clear
+  const saveAndReset = useCallback(async () => {
+    if (messages.length < 2) { setMessages([]); localStorage.removeItem(CHAT_HISTORY_KEY); return; }
+    setCompressing(true);
+    try {
+      const content = messages.filter(m => !m.loading)
+        .map(m => `${m.role === "user" ? "You" : "Glossa AI"}: ${m.content}`).join("\n\n");
+      const title = `AI Session ${new Date().toLocaleDateString(undefined, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}`;
+      await executeAiAction({ type: "summarize_session", params: { title, content } });
+      toast("Saved to Notebooks — starting fresh", "success");
+    } catch { toast("Could not save — clearing anyway", "info"); }
+    finally {
+      setCompressing(false);
+      setMessages([]);
+      localStorage.removeItem(CHAT_HISTORY_KEY);
+    }
+  }, [messages, toast]);
 
   useEffect(() => { if (ctxPct >= 90 && !compressing && !busy && messages.length > 4) compress(); }, [ctxPct, compressing, busy, messages.length, compress]);
 
@@ -605,7 +625,12 @@ export function AIChatWindow() {
     try {
       // Ensure params is always an object, never undefined/null
       const params = action.params && typeof action.params === "object" ? action.params : {};
-      const result = await executeAiAction({ type: action.type, params });
+      // For summarize_session, inject the full conversation as content if not provided
+      const finalParams = action.type === "summarize_session" && !params.content
+        ? { ...params, content: messages.filter(m => !m.loading)
+            .map(m => `${m.role === "user" ? "You" : "Glossa AI"}: ${m.content}`).join("\n\n") }
+        : params;
+      const result = await executeAiAction({ type: action.type, params: finalParams });
       // Treat ok===false (backend returned 200 but reported failure) as a failure
       if (!result.ok) {
         updateActionState(msg.id, idx, "failed");
@@ -619,6 +644,13 @@ export function AIChatWindow() {
       updateActionState(msg.id, idx, isQueued ? "queued" : "done");
       if (action.type === "open_view" && result.navigate)
         window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: result.navigate } }));
+      // summarize_session: clear messages so context resets after saving
+      if (action.type === "summarize_session") {
+        toast(`\u2713 Saved to Notebooks — context reset`, "success");
+        setMessages([]);
+        localStorage.removeItem(CHAT_HISTORY_KEY);
+        return;
+      }
       const resultContent = isQueued
         ? `[NAVIGATE:jobs]\u23f3 **${label}** \u2014 ${result.summary ?? "queued"} \u2014 monitor in Jobs panel`
         : `\u2713 **${label}** \u2014 ${result.summary ?? "done"}`;
@@ -627,7 +659,7 @@ export function AIChatWindow() {
       updateActionState(msg.id, idx, "failed");
       setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: `\u2717 **${label}** failed: ${e instanceof Error ? e.message : String(e)}`, timestamp: Date.now(), error: true }]);
     }
-  }, [updateActionState]);
+  }, [updateActionState, messages, toast]);
 
   // Auto-execute: either the lite AUTO_EXEC set or (if autoApprove) all actions
   const autoExec = useCallback((msg: MsgUI, forceAll = false) => {
@@ -778,8 +810,14 @@ export function AIChatWindow() {
           )}
         </div>
 
-        <button onClick={() => setDocked(true)} title="Dock to panel" style={hdrBtn}>⊟</button>
-        <button onClick={() => { setMessages([]); localStorage.removeItem(CHAT_HISTORY_KEY); }} title="Clear chat history" style={hdrBtn}>🗑</button>
+        <button onClick={() => setDocked(true)} title="Dock to panel" style={hdrBtn}>⋟</button>
+        <button
+          onClick={() => void saveAndReset()}
+          disabled={compressing}
+          title="Save conversation to Notebooks then start a fresh chat"
+          style={{ ...hdrBtn, fontSize: 10, padding: "2px 6px" }}
+        >💾↺</button>
+        <button onClick={() => { setMessages([]); localStorage.removeItem(CHAT_HISTORY_KEY); }} title="Clear chat history (no save)" style={hdrBtn}>🗑</button>
         <button onClick={closeChat} style={{ ...hdrBtn, fontSize: 16 }}>×</button>
       </div>
 

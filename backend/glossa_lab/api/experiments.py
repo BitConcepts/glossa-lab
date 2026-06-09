@@ -409,16 +409,31 @@ async def build_sa_experiment(body: dict[str, Any]) -> dict[str, Any]:
 
     # Normalize common AI-generated corpus name variations
     _CORPUS_ALIASES: dict[str, str] = {
+        # indus variants
         "indus script": "indus_cisi",
         "indus_script": "indus_cisi",
         "indus-script": "indus_cisi",
+        "indus valley": "indus_cisi",
+        "indus valley civilization": "indus_cisi",
+        "indus valley civilisation": "indus_cisi",
+        "the indus valley civilization": "indus_cisi",
+        "ivc": "indus_cisi",
+        "harappan": "indus_cisi",
+        "harappa": "indus_cisi",
         "cisi": "indus_cisi",
         "indus parpola": "indus_cisi",
         "indus-cisi": "indus_cisi",
+        "indus-script-cisi": "indus_cisi",
+        # m77 variants
         "m77": "indus_m77",
         "mahadevan": "indus_m77",
+        "mahadevan_1977": "indus_m77",
+        "mahadevan 1977": "indus_m77",
+        # nw_semitic / fuls variants
         "fuls": "nw_semitic",
         "fuls_nw_semitic": "nw_semitic",
+        "northwest semitic": "nw_semitic",
+        "north-west semitic": "nw_semitic",
     }
     corpus = _CORPUS_ALIASES.get(corpus, corpus)
 

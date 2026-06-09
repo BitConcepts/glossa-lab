@@ -510,6 +510,22 @@ class Database:
         await self._apply_schema()
         logger.info("Database ready", extra={"path": str(self._path)})
 
+    def is_connected(self) -> bool:
+        """Return True iff the aiosqlite connection is open and usable.
+
+        Checks the aiosqlite-internal ``_connection`` attribute so callers can
+        detect a stale connection (e.g. after an unexpected close) before
+        attempting a DB operation that would raise ValueError.
+        """
+        if self._conn is None:
+            return False
+        # aiosqlite.Connection stores the underlying sqlite3.Connection as
+        # _connection; it is set to None by close().
+        try:
+            return getattr(self._conn, "_connection", None) is not None
+        except Exception:  # noqa: BLE001
+            return False
+
     async def close(self) -> None:
         """Close the database connection."""
         if self._conn:

@@ -583,7 +583,9 @@ export function AIChatWindow() {
     }
   }, [messages, toast]);
 
-  useEffect(() => { if (ctxPct >= 90 && !compressing && !busy && messages.length > 4) compress(); }, [ctxPct, compressing, busy, messages.length, compress]);
+  // Auto-compress when context reaches 75% — gives comfortable headroom before hitting the limit.
+  // This fires at most once per session-fill cycle (compressing guard prevents re-entry).
+  useEffect(() => { if (ctxPct >= 75 && !compressing && !busy && messages.length > 4) compress(); }, [ctxPct, compressing, busy, messages.length, compress]);
 
   // Export
   const exportMd = useCallback(() => {
@@ -1440,6 +1442,7 @@ export function AISidePanel({
   initialWidth = 320,
   onWidthChange,
   onSideChange,
+  isMobile = false,
 }: {
   onClose: () => void;
   leftOffset?: number;
@@ -1448,6 +1451,7 @@ export function AISidePanel({
   initialWidth?: number;
   onWidthChange?: (w: number) => void;
   onSideChange?: (s: "left" | "right") => void;
+  isMobile?: boolean;
 }) {
   const [side, setSide] = useCallback_SIDE(initialSide, onSideChange);
   const [width, setWidth] = useCallback_WIDTH(initialWidth, onWidthChange);
@@ -1480,20 +1484,31 @@ export function AISidePanel({
     setSide(next);
   };
 
-  const panelStyle: React.CSSProperties = {
-    position: "fixed",
-    top: 0,
-    bottom: bottomOffset,
-    width,
-    background: "#0a0f1e",
-    display: "flex",
-    flexDirection: "column",
-    zIndex: 195,
-    ...(side === "left"
-      ? { left: leftOffset, borderRight: "1px solid #1e293b", boxShadow: "6px 0 24px rgba(0,0,0,0.45)" }
-      : { right: 0, borderLeft: "1px solid #1e293b", boxShadow: "-6px 0 24px rgba(0,0,0,0.45)" }
-    ),
-  };
+  // On mobile: occupy the full screen like a native chat app sheet.
+  const panelStyle: React.CSSProperties = isMobile
+    ? {
+        position: "fixed",
+        inset: 0,
+        paddingBottom: "env(safe-area-inset-bottom, 0px)",
+        background: "#0a0f1e",
+        display: "flex",
+        flexDirection: "column",
+        zIndex: 9100,
+      }
+    : {
+        position: "fixed",
+        top: 0,
+        bottom: bottomOffset,
+        width,
+        background: "#0a0f1e",
+        display: "flex",
+        flexDirection: "column",
+        zIndex: 195,
+        ...(side === "left"
+          ? { left: leftOffset, borderRight: "1px solid #1e293b", boxShadow: "6px 0 24px rgba(0,0,0,0.45)" }
+          : { right: 0, borderLeft: "1px solid #1e293b", boxShadow: "-6px 0 24px rgba(0,0,0,0.45)" }
+        ),
+      };
 
   const dragHandleStyle: React.CSSProperties = {
     position: "absolute",
@@ -1509,18 +1524,21 @@ export function AISidePanel({
 
   return (
     <div style={panelStyle}>
-      {/* Resize handle */}
-      <div
-        style={dragHandleStyle}
-        onMouseDown={handleDragStart}
-        onMouseEnter={e => (e.currentTarget.style.background = "rgba(96,165,250,0.35)")}
-        onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
-      />
+      {/* Resize handle — desktop only */}
+      {!isMobile && (
+        <div
+          style={dragHandleStyle}
+          onMouseDown={handleDragStart}
+          onMouseEnter={e => (e.currentTarget.style.background = "rgba(96,165,250,0.35)")}
+          onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
+        />
+      )}
 
       {/* Header */}
       <div
         style={{
-          padding: "11px 12px 10px",
+          padding: isMobile ? "14px 16px 12px" : "11px 12px 10px",
+          paddingTop: isMobile ? "max(14px, env(safe-area-inset-top, 14px))" : "11px",
           background: "linear-gradient(135deg, #1e1b4b 0%, #1e3a5f 100%)",
           borderBottom: "1px solid rgba(255,255,255,0.07)",
           display: "flex",
@@ -1543,29 +1561,37 @@ export function AISidePanel({
           <div style={{ fontSize: 12, fontWeight: 700, color: "#e2e8f0", lineHeight: 1.2 }}>Glossa AI</div>
           <div style={{ fontSize: 9, color: "#64748b", lineHeight: 1.4 }}>Research assistant</div>
         </div>
-        {/* Dock side toggle */}
-        <button
-          onClick={toggleSide}
-          title={side === "left" ? "Move to right side" : "Move to left side"}
-          style={{
-            background: "none", border: "none",
-            color: "rgba(255,255,255,0.4)",
-            cursor: "pointer", fontSize: 12, lineHeight: 1,
-            padding: "2px 5px", borderRadius: 3,
-          }}
-          onMouseEnter={e => (e.currentTarget.style.color = "#e2e8f0")}
-          onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
-        >
-          {side === "left" ? "\u2192" : "\u2190"}
-        </button>
+        {/* Dock side toggle — desktop only */}
+        {!isMobile && (
+          <button
+            onClick={toggleSide}
+            title={side === "left" ? "Move to right side" : "Move to left side"}
+            style={{
+              background: "none", border: "none",
+              color: "rgba(255,255,255,0.4)",
+              cursor: "pointer", fontSize: 12, lineHeight: 1,
+              padding: "2px 5px", borderRadius: 3,
+            }}
+            onMouseEnter={e => (e.currentTarget.style.color = "#e2e8f0")}
+            onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
+          >
+            {side === "left" ? "\u2192" : "\u2190"}
+          </button>
+        )}
         <button
           onClick={onClose}
           title="Close AI panel"
           style={{
             background: "none", border: "none",
             color: "rgba(255,255,255,0.4)",
-            cursor: "pointer", fontSize: 16, lineHeight: 1,
-            padding: "2px 4px", borderRadius: 3,
+            cursor: "pointer",
+            fontSize: isMobile ? 22 : 16,
+            lineHeight: 1,
+            padding: isMobile ? "6px 10px" : "2px 4px",
+            borderRadius: 3,
+            minWidth: isMobile ? 44 : undefined,
+            minHeight: isMobile ? 44 : undefined,
+            display: "flex", alignItems: "center", justifyContent: "center",
             transition: "color 0.15s",
           }}
           onMouseEnter={e => (e.currentTarget.style.color = "#e2e8f0")}

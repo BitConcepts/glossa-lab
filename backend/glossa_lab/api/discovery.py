@@ -91,26 +91,43 @@ async def _create_bg_job(
     db = get_db()
     if db is None:
         raise HTTPException(status_code=503, detail="Database not available")
-    return await db.create_job(
-        name=name,
-        pipeline=pipeline,
-        params=params,
-        created_at=_now_iso(),
-        initial_status="running",
-    )
+    try:
+        return await db.create_job(
+            name=name,
+            pipeline=pipeline,
+            params=params,
+            created_at=_now_iso(),
+            initial_status="running",
+        )
+    except (ValueError, Exception) as exc:
+        # aiosqlite raises ValueError('no active connection') when the DB
+        # connection has closed unexpectedly (e.g. after a long-running
+        # background task crashes the internal worker).  Convert to 503 so
+        # the frontend sees a clear, retryable error instead of an empty-body 500.
+        _log.warning("_create_bg_job: DB error creating job '%s': %s", name, exc)
+        raise HTTPException(
+            status_code=503,
+            detail=f"Database unavailable — {type(exc).__name__}: {exc}",
+        ) from exc
 
 
 async def _finish_job(
     job_id: str, *, status: str, result: dict[str, Any] | None = None,
 ) -> None:
+    """Persist job completion to the DB.  Never raises — swallows DB errors so a
+    broken connection does not produce an unhandled asyncio task exception."""
     db = get_db()
     if db is None:
         return
-    if result is not None:
-        await db.store_result(
-            job_id=job_id, data=result, created_at=_now_iso(),
-        )
-    await db.update_job_status(job_id, status)
+    try:
+        if result is not None:
+            await db.store_result(
+                job_id=job_id, data=result, created_at=_now_iso(),
+            )
+        await db.update_job_status(job_id, status)
+    except Exception as exc:  # noqa: BLE001
+        # Log but never propagate — the background task is already finishing.
+        _log.warning("_finish_job: could not persist job %s (%s): %s", job_id, status, exc)
 
 
 # ── Items ────────────────────────────────────────────────────────────────────
@@ -256,6 +273,8 @@ async def mine_endpoint(body: MineRequest) -> JobAck:
             await _finish_job(job_id, status="completed", result=result)
         except Exception as exc:  # noqa: BLE001
             _log.warning("discovery mine job %s failed: %s", job_id, exc)
+            # _finish_job now swallows its own exceptions, so this is safe
+            # even when the DB connection has gone stale.
             await _finish_job(
                 job_id,
                 status="failed",

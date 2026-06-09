@@ -4303,5 +4303,12 @@
     "processed_path": "static\\signs\\M205.png",
     "original_path": "static\\signs\\originals\\M205.png",
     "timestamp": "2026-06-09T03:24:17.313356+00:00"
+  },
+  "066": {
+    "status": "ok",
+    "source": "fallback_icon",
+    "processed_path": "static\\signs\\066.png",
+    "original_path": null,
+    "timestamp": "2026-06-09T03:29:20.140173+00:00"
   }
 }

@@ -1,7 +1,7 @@
 {
   "summary": {
     "verdict": "COMPLEMENTARY",
-    "interpretation": "Kalyanaraman's rebus system covers 144 signs (105 overlap with our 286 anchors). 0 corroborated, 384 divergent, 113 new candidates. Complementarity=1.00 (his system focuses on content-words/trade vocabulary; ours on grammatical markers).",
+    "interpretation": "Kalyanaraman's rebus system covers 144 signs (105 overlap with our 287 anchors). 0 corroborated, 384 divergent, 113 new candidates. Complementarity=1.00 (his system focuses on content-words/trade vocabulary; ours on grammatical markers).",
     "complementarity_score": 1.0,
     "system_comparison": {
       "kalyanaraman": {
@@ -13,7 +13,7 @@
         "system": "statistical_annealing",
         "domain": "grammatical_structure",
         "focus": "case suffixes, particles, verbal markers",
-        "grammar_signs": 111,
+        "grammar_signs": 112,
         "content_signs": 175
       }
     }
@@ -3277,7 +3277,7 @@
     }
   ],
   "coverage": {
-    "our_anchors": 286,
+    "our_anchors": 287,
     "kalyanaraman_signs": 144,
     "overlap_signs": 105,
     "corroborated_count": 0,

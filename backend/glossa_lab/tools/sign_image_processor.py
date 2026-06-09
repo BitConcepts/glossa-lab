@@ -63,8 +63,16 @@ _HEADERS = {
     "User-Agent": "GlossaLabSignProcessor/1.0 (research; contact: glossa@bitconcepts.tech)"
 }
 
+# Local Fuls catalog pages (data/fuls_page_*.png)
+_DATA_DIR = _BACKEND_DIR.parent / "data"
+
 # ── Sign number patterns tried on WikiMedia ────────────────────────────────
-_WM_PATTERNS = [
+# Patterns are tried in order; first hit wins.  WikiMedia Commons has files
+# under BOTH Parpola sign numbers and Mahadevan numbers — we try both.
+# Confirmed existing patterns (from Commons category scan 2026-06):
+#   "Indus sign {n}.png"          — Parpola numbers, NO zero-padding
+#   "Indus script sign {n:03d}.svg" — only ~1 confirmed (sign 045)
+_WM_PATTERNS_MAHADEVAN = [
     "Indus_script_sign_{n:03d}.svg",
     "Indus_script_sign_{n}.svg",
     "Indus_sign_{n}.svg",
@@ -73,6 +81,15 @@ _WM_PATTERNS = [
     "Indus_script_sign_{n:03d}.png",
     "Indus_script_sign_{n}.png",
 ]
+# Parpola-number patterns (confirmed to exist on WikiMedia Commons)
+_WM_PATTERNS_PARPOLA = [
+    "Indus_sign_{n}.png",
+    "Indus_script_sign_{n}.png",
+    "Indus_script_sign_{n:03d}.svg",
+    "Indus_sign_{n}.svg",
+]
+# Legacy alias kept for compatibility
+_WM_PATTERNS = _WM_PATTERNS_MAHADEVAN
 
 # ── Mahadevan concordance sign grid layout ─────────────────────────────────
 # The standard Mahadevan 1977 sign table has 417 signs in a roughly 24×18 grid.
@@ -671,48 +688,94 @@ def _wm_file_url(filename: str) -> str | None:
     return None
 
 
-def fetch_from_wikimedia(sign_id: str) -> tuple[np.ndarray, np.ndarray] | None:
-    """Return (original_array, processed_array) from WikiMedia, or None."""
-    # Extract numeric part — only attempt for M-prefixed (Mahadevan) IDs.
-    # P- (Parpola), W- (Wells), F- (Fuls) etc. have no known WikiMedia pattern.
-    raw_num = sign_id.lstrip("M").lstrip("0") or "0"
-    if not raw_num.isdigit():
-        return None  # non-numeric suffix (e.g. P324, W12a) — skip silently
-    n = int(raw_num)
+def _load_parpola_map() -> dict[str, int]:
+    """Return {mahadevan_sign_id: parpola_number} from the crosswalk.
 
-    for pattern in _WM_PATTERNS:
+    Used to look up signs on WikiMedia Commons which indexes by Parpola number.
+    Returns empty dict if crosswalk is unavailable.
+    """
+    if not _CROSSWALK_PATH.exists():
+        return {}
+    try:
+        cw = json.loads(_CROSSWALK_PATH.read_text(encoding="utf-8"))
+        result: dict[str, int] = {}
+        for sid, info in cw.get("crosswalk", {}).items():
+            pid = info.get("parpola_id")
+            if pid is not None:
+                try:
+                    result[sid] = int(str(pid).lstrip("0") or "0")
+                except (ValueError, TypeError):
+                    pass
+        return result
+    except Exception:  # noqa: BLE001
+        return {}
+
+
+_parpola_map: dict[str, int] | None = None
+
+
+def _get_parpola_number(sign_id: str) -> int | None:
+    """Return the Parpola sign number for a given sign ID, or None."""
+    global _parpola_map  # noqa: PLW0603
+    if _parpola_map is None:
+        _parpola_map = _load_parpola_map()
+    return _parpola_map.get(sign_id)
+
+
+def _try_fetch_wm_patterns(
+    n: int, patterns: list[str], label: str
+) -> tuple[np.ndarray, np.ndarray] | None:
+    """Try a list of WikiMedia filename patterns for sign number *n*."""
+    for pattern in patterns:
         filename = pattern.format(n=n)
         file_url = _wm_file_url(filename)
         if not file_url:
             continue
-
         raw_bytes = _wm_request(file_url, timeout=12)
         if not raw_bytes:
             continue
-
         try:
-            # Handle SVG → rasterize via PIL (needs cairosvg or pillow-svg)
             if filename.endswith(".svg"):
-                # Try cairosvg first, fall back to PIL
                 try:
                     import cairosvg  # type: ignore[import]
-                    png_bytes = cairosvg.svg2png(bytestring=raw_bytes,
-                                                  output_width=256, output_height=256)
+                    png_bytes = cairosvg.svg2png(
+                        bytestring=raw_bytes, output_width=256, output_height=256
+                    )
                     pil_img = Image.open(BytesIO(png_bytes)).convert("RGBA")
                 except ImportError:
-                    # Try PIL native SVG (limited support)
                     pil_img = Image.open(BytesIO(raw_bytes)).convert("RGBA")
             else:
                 pil_img = Image.open(BytesIO(raw_bytes)).convert("RGBA")
-
             orig_arr = np.array(pil_img)
             processed = normalize_sign_image(orig_arr)
-            _log.info("WikiMedia: fetched %s from %s", sign_id, filename)
+            _log.info("WikiMedia (%s): fetched sign %d from %s", label, n, filename)
             return orig_arr, processed
-
         except Exception as exc:
             _log.debug("WikiMedia: failed to decode %s: %s", filename, exc)
-            continue
+    return None
+
+
+def fetch_from_wikimedia(sign_id: str) -> tuple[np.ndarray, np.ndarray] | None:
+    """Return (original_array, processed_array) from WikiMedia, or None.
+
+    Tries two numbering systems in order:
+    1. Mahadevan (M-prefix) — original patterns
+    2. Parpola — confirmed to exist as ``Indus_sign_{n}.png`` on WikiMedia Commons
+    """
+    # ── Mahadevan number ──────────────────────────────────────────────────────
+    raw_num = sign_id.lstrip("M").lstrip("0") or "0"
+    if raw_num.isdigit():
+        n_m = int(raw_num)
+        result = _try_fetch_wm_patterns(n_m, _WM_PATTERNS_MAHADEVAN, "mahadevan")
+        if result is not None:
+            return result
+
+    # ── Parpola number (better WikiMedia coverage) ────────────────────────────
+    p_num = _get_parpola_number(sign_id)
+    if p_num is not None:
+        result = _try_fetch_wm_patterns(p_num, _WM_PATTERNS_PARPOLA, "parpola")
+        if result is not None:
+            return result
 
     return None
 
@@ -821,6 +884,25 @@ def _load_anchor_data() -> dict[str, dict[str, str]]:
         return {}
 
 
+# Sources that represent real extracted sign images (never overwrite with fallback)
+_PROTECTED_SOURCES = frozenset({
+    "wikimedia",
+    "fuls_page",
+})
+
+
+def _source_is_real(source: str | None) -> bool:
+    """Return True when *source* represents a real extracted image (not a fallback)."""
+    if not source:
+        return False
+    if source in _PROTECTED_SOURCES:
+        return True
+    # mahadevan_table_iii, mahadevan_appendix_i:*, grid:*, etc.
+    return (source.startswith("mahadevan_")
+            or source.startswith("grid:")
+            or source.startswith("fuls"))
+
+
 def process_single(
     sign_id: str,
     iconic: str = "",
@@ -828,13 +910,31 @@ def process_single(
     *,
     force: bool = False,
     skip_wikimedia: bool = False,
+    allow_downgrade: bool = False,
 ) -> str:
-    """Acquire and store image for a single sign. Returns source used."""
+    """Acquire and store image for a single sign. Returns source used.
+
+    ``allow_downgrade=False`` (default) prevents replacing a real extracted
+    image (Mahadevan/WikiMedia/Fuls) with a generated fallback icon.  Pass
+    ``allow_downgrade=True`` only when explicitly re-extracting everything.
+    """
     if manifest is None:
         manifest = load_manifest()
 
-    if not force and manifest.get(sign_id, {}).get("status") == "ok":
-        return manifest[sign_id]["source"]
+    existing = manifest.get(sign_id, {})
+    existing_source = existing.get("source", "")
+
+    # Always skip if already ok and not forcing
+    if not force and existing.get("status") == "ok":
+        return existing_source
+
+    # With force=True, still protect real images unless caller explicitly allows downgrade.
+    # This prevents run_batch(force=True) from nuking Mahadevan-extracted images.
+    if force and not allow_downgrade and _source_is_real(existing_source):
+        existing_path = _STATIC_SIGNS / f"{sign_id}.png"
+        if existing_path.exists() and existing_path.stat().st_size > 0:
+            # The real image is still on disk — keep it.
+            return existing_source
 
     # Strategy 1: WikiMedia Commons
     if not skip_wikimedia:
@@ -868,11 +968,78 @@ def process_single(
             except Exception as exc:
                 _log.debug("Grid extraction failed for %s on %s: %s", sign_id, page_file, exc)
 
-    # Strategy 3: Iconic fallback
+    # Strategy 3: Local Fuls catalog pages (data/fuls_page_*.png)
+    fuls_result = fetch_from_fuls_pages(sign_id)
+    if fuls_result is not None:
+        orig, proc = fuls_result
+        _save_sign(sign_id, proc, orig, "fuls_page", manifest)
+        save_manifest(manifest)
+        return "fuls_page"
+
+    # Strategy 4: Iconic fallback
     fallback = generate_fallback_icon(sign_id, iconic)
     _save_sign(sign_id, fallback, None, "fallback_icon", manifest)
     save_manifest(manifest)
     return "fallback_icon"
+
+
+def fetch_from_fuls_pages(sign_id: str) -> tuple[np.ndarray, np.ndarray] | None:
+    """Try to extract a sign image from the local Fuls catalog pages.
+
+    The Fuls catalog pages live at data/fuls_page_*.png (13 pages).
+    Each page has a ``fuls_page_{N}.json`` spec alongside it that declares
+    the sign ordering and grid dimensions.  If no spec exists the page is
+    skipped (avoids guessing at layouts).
+
+    The Fuls catalog uses numeric sign IDs (e.g. 159 for plain fish).
+    We translate via the crosswalk ``fuls_id`` field.
+    """
+    # Translate sign_id to Fuls number via crosswalk
+    if not _CROSSWALK_PATH.exists():
+        return None
+    try:
+        cw = json.loads(_CROSSWALK_PATH.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return None
+    info = cw.get("crosswalk", {}).get(sign_id, {})
+    fuls_id = info.get("fuls_id")
+    if not fuls_id:
+        return None  # no Fuls number for this sign
+
+    fuls_n = str(fuls_id)  # Fuls IDs are numeric strings like "159"
+
+    # Scan data/ for fuls_page_*.png files that have a matching JSON spec
+    data_dir = _DATA_DIR
+    if not data_dir.exists():
+        return None
+
+    for page_file in sorted(data_dir.glob("fuls_page_*.png")):
+        spec_file = page_file.with_suffix(".json")
+        if not spec_file.exists():
+            continue
+        try:
+            spec = json.loads(spec_file.read_text(encoding="utf-8"))
+        except Exception:  # noqa: BLE001
+            continue
+        sign_order: list[str] = spec.get("sign_order", [])
+        if fuls_n not in sign_order:
+            continue
+        try:
+            extracted = extract_from_grid(
+                page_file,
+                sign_order,
+                spec.get("rows", 6),
+                spec.get("cols", 9),
+            )
+            if fuls_n in extracted:
+                orig, proc = extracted[fuls_n]
+                _log.info("Fuls page: fetched sign %s (Fuls %s) from %s",
+                          sign_id, fuls_n, page_file.name)
+                return orig, proc
+        except Exception as exc:  # noqa: BLE001
+            _log.debug("Fuls page extraction failed for %s: %s", page_file.name, exc)
+
+    return None
 
 
 def run_batch(
@@ -881,15 +1048,21 @@ def run_batch(
     force: bool = False,
     skip_wikimedia: bool = False,
     delay_secs: float = 0.5,
+    allow_downgrade: bool = False,
 ) -> dict[str, Any]:
-    """Process all (or given) signs. Returns summary stats."""
+    """Process all (or given) signs. Returns summary stats.
+
+    ``allow_downgrade=False`` (default) ensures that signs already backed by a
+    real extracted image (Mahadevan, WikiMedia, Fuls) are never replaced by a
+    generated fallback icon, even when ``force=True``.
+    """
     catalog = _load_sign_catalog()
     if sign_ids is None:
         sign_ids = sorted(catalog.keys())
 
     manifest = load_manifest()
 
-    stats = {"total": len(sign_ids), "wikimedia": 0, "grid": 0, "fallback": 0, "skipped": 0}
+    stats = {"total": len(sign_ids), "wikimedia": 0, "grid": 0, "fuls_page": 0, "fallback": 0, "skipped": 0}
 
     for i, sid in enumerate(sign_ids):
         if not force and manifest.get(sid, {}).get("status") == "ok":
@@ -897,12 +1070,19 @@ def run_batch(
             continue
 
         iconic = catalog.get(sid, "")
-        src = process_single(sid, iconic, manifest, force=force, skip_wikimedia=skip_wikimedia)
+        src = process_single(
+            sid, iconic, manifest,
+            force=force,
+            skip_wikimedia=skip_wikimedia,
+            allow_downgrade=allow_downgrade,
+        )
 
         if src == "wikimedia":
             stats["wikimedia"] += 1
         elif src.startswith("grid:"):
             stats["grid"] += 1
+        elif src == "fuls_page":
+            stats["fuls_page"] += 1
         else:
             stats["fallback"] += 1
 

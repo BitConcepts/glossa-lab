@@ -51,24 +51,95 @@ _HF_MAX_RETRIES = 4   # retries per page on 429
 _HF_PAGE_DELAY = 3.5  # seconds between pages — HF API bucket: 1000 req/5min with token
 _sync_lock = threading.Lock()  # prevent concurrent HF syncs
 
-# ── Global HF endpoint cooldown ────────────────────────────────────────────
+# ── Global HF endpoint cooldown ──────────────────────────────────────────
 # Rate limits are per-IP.  When the 429 retry budget is exhausted the
 # remaining cool-off period is recorded here so that:
 #   1. Concurrent callers (manual sync endpoint) skip instead of piling in.
 #   2. The daily re-sync respects the window instead of immediately retrying.
-_hf_cooldown_until: float = 0.0
+# Uses wall-clock time.time() and persists to .specsmith/rate_limits.json so
+# the cooldown survives process restarts.
+_hf_cooldown_until: float = 0.0  # wall-clock (time.time()) deadline
 
 import time as _time_hf  # noqa: E402
+
+_HF_COOLDOWN_KEY = "huggingface_leaderboard"
+
+
+def _hf_cooldown_path() -> "Path | None":
+    try:
+        p = Path(__file__).resolve().parents[2] / ".specsmith" / "rate_limits.json"
+        p.parent.mkdir(parents=True, exist_ok=True)
+        return p
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def _hf_cooldown_load() -> None:
+    """Populate _hf_cooldown_until from the persisted state file on startup."""
+    global _hf_cooldown_until  # noqa: PLW0603
+    path = _hf_cooldown_path()
+    if path is None or not path.exists():
+        return
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+        deadline = float(data.get(_HF_COOLDOWN_KEY, 0.0))
+        now = _time_hf.time()
+        if deadline > now:
+            _hf_cooldown_until = deadline
+            _log.info(
+                "HF cooldown restored from disk: %.0fs remaining (until %s)",
+                deadline - now,
+                _time_hf.strftime("%Y-%m-%dT%H:%M:%SZ", _time_hf.gmtime(deadline)),
+            )
+    except Exception:  # noqa: BLE001
+        pass
+
+
+def _hf_cooldown_save() -> None:
+    """Write the current HF cooldown deadline to the shared rate_limits file."""
+    path = _hf_cooldown_path()
+    if path is None:
+        return
+    try:
+        # Merge with any existing entries from other sources.
+        existing: dict[str, float] = {}
+        if path.exists():
+            try:
+                existing = {k: float(v) for k, v in json.loads(
+                    path.read_text(encoding="utf-8")
+                ).items()}
+            except Exception:  # noqa: BLE001
+                existing = {}
+        now = _time_hf.time()
+        # Prune expired entries
+        existing = {k: v for k, v in existing.items() if v > now}
+        if _hf_cooldown_until > now:
+            existing[_HF_COOLDOWN_KEY] = _hf_cooldown_until
+        elif _HF_COOLDOWN_KEY in existing:
+            del existing[_HF_COOLDOWN_KEY]
+        path.write_text(json.dumps(existing, indent=2), encoding="utf-8")
+    except Exception:  # noqa: BLE001
+        pass
+
+
+# Load persisted state on module import.
+_hf_cooldown_load()
 
 
 def _hf_cooldown_trip(secs: float) -> None:
     global _hf_cooldown_until  # noqa: PLW0603
-    _hf_cooldown_until = _time_hf.monotonic() + secs
-    _log.warning("HF global cooldown: pausing HF requests for %.0fs", secs)
+    _hf_cooldown_until = _time_hf.time() + secs
+    _hf_cooldown_save()
+    remaining = max(0.0, _hf_cooldown_until - _time_hf.time())
+    _log.warning(
+        "HF global cooldown: pausing HF requests for %.0fs (until %s)",
+        remaining,
+        _time_hf.strftime("%Y-%m-%dT%H:%M:%SZ", _time_hf.gmtime(_hf_cooldown_until)),
+    )
 
 
 def _hf_is_cooling() -> tuple[bool, float]:
-    remaining = _hf_cooldown_until - _time_hf.monotonic()
+    remaining = _hf_cooldown_until - _time_hf.time()
     return remaining > 0, max(0.0, remaining)
 
 

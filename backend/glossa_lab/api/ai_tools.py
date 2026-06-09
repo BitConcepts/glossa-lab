@@ -157,6 +157,7 @@ Available action types:
   compare_results:   {"type":"compare_results",  "params":{"file_a":"<report.json>","file_b":"..."},    "label":"...", "description":"..."}   ← diff two experiment JSON result files
   summarize_session: {"type":"summarize_session","params":{"title":"..."},                              "label":"...", "description":"..."}   ← save conversation as notebook
   acquire_corpus:    {"type":"acquire_corpus",  "params":{"source_id":"<id>","name":"...","corpus_type":"ancient","url":"<opt>"},  "label":"...", "description":"..."}   ← download a corpus
+  build_tooling:     {"type":"build_tooling",   "params":{"name":"...","description":"...","code":"<opt python>","pipeline":"<opt>","experiment_id":"<opt>"},  "label":"...", "description":"..."}   ← build/configure a research tool or utility
 
 ACQUIRABLE CORPUS SOURCE IDs:
   cdli_proto_elamite, cdli_sumerian_ur3, oracc_akkadian, sigla_linear_a,
@@ -1413,6 +1414,35 @@ async def _execute_action_inner(t: str, p: dict) -> dict[str, Any]:  # noqa: PLR
             ),
         }
 
+    # ── build_tooling ──────────────────────────────────────────────────────────────
+    # The LLM sometimes emits build_tooling when it wants to create an analysis
+    # tool, utility script, or build/configure a research pipeline component.
+    # We route it to the most appropriate concrete action based on params:
+    #   code → execute_script
+    #   pipeline → run_pipeline
+    #   experiment_id / id → run_experiment
+    #   otherwise → create_notebook (records the tooling intent)
+    if t == "build_tooling":
+        if p.get("code"):
+            return await _execute_action_inner("execute_script", p)
+        if p.get("pipeline"):
+            return await _execute_action_inner("run_pipeline", p)
+        exp_id = p.get("experiment_id") or p.get("id", "")
+        if exp_id:
+            return await _execute_action_inner("run_experiment", {**p, "id": exp_id})
+        # Fallback: save as notebook entry so the intent is not lost
+        return await _execute_action_inner(
+            "create_notebook",
+            {
+                "title": p.get("title", "Tooling: " + p.get("name", "AI-proposed tool")),
+                "content": (
+                    f"**Tool requested by AI:**\n\n"
+                    f"{p.get('description', p.get('label', 'No description provided.'))}\n\n"
+                    f"Params: {json.dumps(p, indent=2)}"
+                ),
+            },
+        )
+
     # ── summarize_session ──────────────────────────────────────────────────────────
     if t == "summarize_session":
         from glossa_lab.database import get_db  # noqa: PLC0415
@@ -1437,7 +1467,7 @@ async def _execute_action_inner(t: str, p: dict) -> dict[str, Any]:  # noqa: PLR
         "open_view", "run_experiment", "run_pipeline", "change_setting",
         "generate_report", "create_hypothesis", "create_notebook",
         "clear_jobs", "execute_script", "query_corpus", "compare_results",
-        "acquire_corpus", "summarize_session",
+        "acquire_corpus", "summarize_session", "build_tooling",
     ]
     raise HTTPException(
         400,

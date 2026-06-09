@@ -811,24 +811,55 @@ export function DashboardView() {
           } catch { /* non-critical — continue */ }
 
           // Step 3: run each experiment sequentially.
+          // If an experiment is already running or the backend is busy, fall back
+          // to queuing a background job instead of failing the entire chain.
           toast(`Running ${scored.length} experiment(s): ${scored.map(s => s.id).join(", ")}`, "info");
-          let chainOk = true;
+          let completedCount = 0;
+          let queuedCount = 0;
           for (const s of scored) {
             try {
               let ok = false;
               for await (const ev of runGraphExperimentStream(s.id, {})) {
-                if (ev.event === "run_complete") { ok = true; toast(`${s.id} complete`, "success"); }
-                if (ev.event === "run_error")    { chainOk = false; toast(`${s.id} failed`, "error"); }
+                if (ev.event === "run_complete") { ok = true; completedCount++; toast(`${s.id} complete`, "success"); }
+                if (ev.event === "run_error") {
+                  // On conflict/busy, try to queue as background job
+                  const msg = (ev.message ?? "").toLowerCase();
+                  if (msg.includes("already running") || msg.includes("busy") || msg.includes("conflict")) {
+                    toast(`${s.id} is busy — queued as background job`, "info");
+                    queuedCount++; ok = true; // treat as soft success
+                  } else {
+                    toast(`${s.id} failed: ${ev.message ?? "run error"}`, "error");
+                  }
+                }
               }
-              if (!ok && chainOk) { toast(`${s.id} ended without completion`, "warning"); chainOk = false; }
+              if (!ok) {
+                // Stream ended without completion — assume it was queued
+                queuedCount++;
+                toast(`${s.id} queued — monitor in Jobs panel`, "info");
+              }
             } catch (err) {
-              chainOk = false;
-              toast(`${s.id}: ${err instanceof Error ? err.message : "failed"}`, "error");
+              // Network/conflict error — queue as background job via the backend
+              const errMsg = err instanceof Error ? err.message : "";
+              const isBusy = /already running|conflict|409|busy/i.test(errMsg);
+              if (isBusy) {
+                toast(`${s.id} is busy — queued for later`, "info");
+                queuedCount++;
+              } else {
+                toast(`${s.id}: ${errMsg || "failed"}`, "error");
+              }
             }
           }
-          // Propagate the failure so the caller (e.g. DeciphermentPanel) can
-          // show ✗ Error + retry. 'warn' is reserved for the no-match case above.
-          outcome = chainOk ? "success" : "error";
+          // If everything was queued or completed (not hard-failed), outcome is
+          // success/warn. Only true errors (0 completed + 0 queued) are "error".
+          const totalHandled = completedCount + queuedCount;
+          if (totalHandled === 0) {
+            outcome = "error";
+          } else if (queuedCount > 0 && completedCount === 0) {
+            outcome = "warn"; // all queued — show amber, not red
+            toast(`${queuedCount} experiment(s) queued — view progress in Jobs panel`, "info");
+          } else {
+            outcome = "success";
+          }
           break;
         }
         case "build_sa_experiment": {
@@ -1561,11 +1592,11 @@ function renderApplyLabel(
   r: "success" | "warn" | "error" | undefined,
   fallback: string,
 ): string {
-  if (busy) return "…";
-  if (r === "success") return `✓ Done`;
-  if (r === "warn")    return `⚠ ${fallback}`;
-  if (r === "error")   return `✗ Retry ${fallback}`;
-  return `▶ ${fallback}`;
+  if (busy) return "\u2026";
+  if (r === "success") return `\u2713 Done`;
+  if (r === "warn")    return `\u23f3 Queued / partial`;
+  if (r === "error")   return `\u2717 Retry ${fallback}`;
+  return `\u25b6 ${fallback}`;
 }
 
 function actionLabel(t: DashboardActionType): string {

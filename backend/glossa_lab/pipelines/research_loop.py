@@ -472,18 +472,24 @@ class ResearchLoop:
                          for s in list(self.blocker_signs)[:8]]
 
         for gap in GAP_TOPICS:
+            if self.should_stop:
+                break  # Honour stop requests during blitz mine
             for q in gap["queries"]:
                 papers, _ = self._fetch_openalex(q)
                 all_papers.extend(papers)
                 time.sleep(0.2)
 
         for q in extra_queries:
+            if self.should_stop:
+                break
             papers, _ = self._fetch_openalex(q)
             all_papers.extend(papers)
             time.sleep(0.2)
 
         # CrossRef supplement (first 5 gaps only)
         for gap in GAP_TOPICS[:5]:
+            if self.should_stop:
+                break
             papers, _ = self._fetch_crossref(gap["queries"][0])
             all_papers.extend(papers)
             time.sleep(0.25)
@@ -570,8 +576,12 @@ class ResearchLoop:
     # ------------------------------------------------------------------
 
     def _mine(self, gap: dict) -> tuple[list[dict], list[dict]]:
+        if self.should_stop:
+            return [], []  # Don't start mining if stop was requested
         bucket: list[dict] = []
         for q in gap["queries"]:
+            if self.should_stop:
+                break  # Abort mid-gap if stop fires between queries
             papers, _ = self._fetch_openalex(q)
             bucket.extend(papers)
             time.sleep(0.4)
@@ -658,34 +668,60 @@ class ResearchLoop:
         self.should_stop = False
         self.anchor_candidates = []
         self.cycle_analyses = []
-        _dry_streak = 0
-        _MAX_DRY = 3
+        _consecutive_empty_mines = 0  # counted for logging only — NEVER stops loop
         _timeout_count = 0
 
-        # Phase 1: blitz mine
+        # Phase 1: blitz mine (all gap topics, runs once before any cycles)
+        yield {
+            "type": "blitz_mine_start",
+            "n_topics": len(GAP_TOPICS),
+        }
         _, _, path_signals = self._blitz_mine()
         self.path_signals = path_signals
+        yield {
+            "type": "blitz_mine_complete",
+            "path_signals": path_signals,
+        }
 
         for cycle in range(1, self.max_cycles + 1):
             if self.should_stop:
+                logger.info("Loop: stop requested at cycle %d/%d", cycle, self.max_cycles)
                 break
 
             gap = self._select_gap_adaptive(cycle, path_signals)
+
+            # Emit mine_start before fetching so the UI can show the Mine phase
+            yield {
+                "type": "mine_start",
+                "cycle": cycle,
+                "gap_targeted": gap["name"],
+            }
+
             papers, insights = self._mine(gap)
+
+            yield {
+                "type": "mine_complete",
+                "cycle": cycle,
+                "gap_targeted": gap["name"],
+                "n_papers": len(papers),
+                "n_insights": len(insights),
+                "api_limited": len(papers) == 0,
+            }
+
+            if not papers:
+                _consecutive_empty_mines += 1
+                logger.warning(
+                    "Cycle %d/%d: 0 papers mined (API rate-limited?). "
+                    "Consecutive empty mines: %d. Continuing with local corpus analysis.",
+                    cycle, self.max_cycles, _consecutive_empty_mines,
+                )
+            else:
+                _consecutive_empty_mines = 0
 
             logger.info(
                 "=== Cycle %d/%d | gap=%s | papers=%d | insights=%d ===",
                 cycle, self.max_cycles, gap["name"], len(papers), len(insights),
             )
-
-            if not papers:
-                _dry_streak += 1
-                if _dry_streak >= _MAX_DRY:
-                    logger.warning("Loop: %d dry cycles — stopping at %d/%d",
-                                   _dry_streak, cycle, self.max_cycles)
-                    break
-            else:
-                _dry_streak = 0
 
             # ── PROPOSE ──────────────────────────────────────────────────
             anchor_count = len(self.high_signs) + len(self.low_signs)

@@ -198,55 +198,98 @@ def _compute_bucket_scores(
 
 # ── Sync from HuggingFace ─────────────────────────────────────────────────
 
+# Lazily created asyncio.Lock — prevents concurrent callers from piling into
+# a live HF sync.  Created on first use (inside a running event loop).
+_hf_sync_async_lock: asyncio.Lock | None = None
+
+
+def _get_hf_sync_lock() -> asyncio.Lock:
+    global _hf_sync_async_lock  # noqa: PLW0603
+    if _hf_sync_async_lock is None:
+        _hf_sync_async_lock = asyncio.Lock()
+    return _hf_sync_async_lock
+
 
 async def sync_from_huggingface() -> dict[str, Any]:
     """Fetch the Open LLM Leaderboard data and upsert scores into the DB.
 
-    Runs in a thread executor since it does synchronous HTTP I/O.
-    Returns {synced: int, errors: int, message: str}.
+    Two-phase design to eliminate competing raw sqlite3 write connections:
+
+    1. *Fetch phase* — runs in a thread executor; does HTTP I/O only, no DB
+       access at all.  Returns a list of ready-to-insert score dicts.
+    2. *Write phase* — runs in the asyncio event loop; writes all records
+       through the single aiosqlite connection so it can never race with
+       other async writers and cause SQLITE_BUSY / 'database is locked'.
     """
-    loop = asyncio.get_event_loop()
-    return await loop.run_in_executor(None, _sync_hf_blocking)
-
-
-def _sync_hf_blocking() -> dict[str, Any]:
-    """Blocking HF sync — fetches leaderboard data and stores scores."""
-    # Check global cooldown first — rate limits are per-IP and global.
-    # A previous 429-exhaustion sets _hf_cooldown_until; respect it here
-    # so that the manual sync endpoint and the daily scheduler both back off.
     cooling, remaining = _hf_is_cooling()
     if cooling:
         msg = f"HF global cooldown active ({remaining:.0f}s remaining) — skipping sync"
         _log.info(msg)
         return {"synced": 0, "errors": 0, "message": msg}
+
+    async with _get_hf_sync_lock():
+        loop = asyncio.get_event_loop()
+        try:
+            fetch_result = await loop.run_in_executor(None, _fetch_hf_records)
+        except Exception as exc:  # noqa: BLE001
+            _log.warning("HF leaderboard fetch failed: %s", exc)
+            return await _sync_static_fallback_async()
+
+        records = fetch_result.get("records", [])
+        if not records:
+            err = fetch_result.get("error", "no parseable records from HF")
+            _log.warning("HF leaderboard sync yielded no data: %s", err)
+            return await _sync_static_fallback_async()
+
+        if fetch_result.get("partial"):
+            _log.info(
+                "HF sync: partial data (%d records collected before interruption)",
+                len(records),
+            )
+
+        return await _write_hf_scores_async(records)
+
+
+def _fetch_hf_records() -> dict[str, Any]:
+    """Fetch HF leaderboard data **without** touching the database.
+
+    Runs inside a thread-pool executor.  Returns::
+
+        {"records": [...score_dicts], "partial": bool, "error": str|None}
+
+    On network failure before any records are fetched, ``records`` is empty
+    and ``error`` contains the exception string.  On partial completion
+    (e.g. rate-limit after N pages) ``records`` holds what was collected and
+    ``partial`` is True.
+    """
+    # Double-check cooldown from the thread — a concurrent caller may have
+    # tripped it between the async check above and this executor invocation.
+    cooling, remaining = _hf_is_cooling()
+    if cooling:
+        return {"records": [], "partial": False,
+                "error": f"cooldown active ({remaining:.0f}s)"}
+
     if not _sync_lock.acquire(blocking=False):
-        _log.info("HF sync already in progress, skipping")
-        return {"synced": 0, "errors": 0, "message": "Sync already in progress"}
+        _log.info("HF sync already in progress (thread lock), skipping")
+        return {"records": [], "partial": False, "error": "sync already in progress"}
     try:
-        return _sync_hf_inner()
+        return _fetch_hf_records_inner()
     finally:
         _sync_lock.release()
 
 
-def _sync_hf_inner() -> dict[str, Any]:
-    """Inner sync logic — called under _sync_lock."""
-    _log.info("Model intelligence sync START — fetching HF Open LLM Leaderboard...")
-    db = get_db()
-    if db is None:
-        return {"synced": 0, "errors": 0, "message": "Database not ready"}
-
-    import os  # noqa: PLC0415
-    import sqlite3  # noqa: PLC0415
+def _fetch_hf_records_inner() -> dict[str, Any]:  # noqa: PLR0912
+    """Inner HTTP-only fetch — called under *_sync_lock*.  No DB access."""
+    import os   # noqa: PLC0415
     import ssl  # noqa: PLC0415
+    import time  # noqa: PLC0415
 
-    # SSL context
     ssl_ctx: ssl.SSLContext | None = None
     if os.environ.get("GLOSSA_SSL_VERIFY", "1").strip() in ("0", "false", "no"):
         ssl_ctx = ssl.create_default_context()
         ssl_ctx.check_hostname = False
         ssl_ctx.verify_mode = ssl.CERT_NONE
 
-    # Optional HF token — authenticated users get 1000 req/5min vs 500 anonymous
     from glossa_lab.api.settings import get_key  # noqa: PLC0415
     hf_token = get_key("hf_api_token") or ""
     if not hf_token:
@@ -255,16 +298,12 @@ def _sync_hf_inner() -> dict[str, Any]:
             "(500 req/5min). Set hf_api_token in Settings to double the limit."
         )
 
-    synced = 0
-    errors = 0
     now = datetime.now(timezone.utc).isoformat()
-    db_path = str(db._path)  # noqa: SLF001
     offset = 0
-
-    import time  # noqa: PLC0415
+    records: list[dict[str, Any]] = []
+    partial = False
 
     def _fetch_page(page_url: str) -> dict[str, Any]:
-        """Fetch one page with retry + exponential backoff on 429."""
         hdrs: dict[str, str] = {"Accept": "application/json"}
         if hf_token:
             hdrs["Authorization"] = f"Bearer {hf_token}"
@@ -275,8 +314,6 @@ def _sync_hf_inner() -> dict[str, Any]:
                     return json.loads(rsp.read().decode())
             except urllib.error.HTTPError as he:
                 if he.code == 429:
-                    # Parse the exact window-reset time from HF's RateLimit header.
-                    # This is the ground truth for how long we must wait.
                     wait = (
                         _parse_ratelimit_reset(he.headers)
                         or (float(he.headers.get("Retry-After") or 0))
@@ -290,31 +327,21 @@ def _sync_hf_inner() -> dict[str, Any]:
                         time.sleep(wait)
                         continue
                     else:
-                        # All retries exhausted.  Record the remaining cooldown
-                        # globally so ANY subsequent call (concurrent or scheduled)
-                        # skips rather than firing into the same depleted window.
                         _hf_cooldown_trip(max(wait, 60.0))
                         raise
                 raise
-        return {}  # unreachable
+        return {}
 
+    _log.info("Model intelligence sync START — fetching HF Open LLM Leaderboard...")
     try:
-        # Open ONE connection for the entire HF sync (all pages).
-        # Previously a new connection was opened per page, causing brief
-        # write-lock contention with the aiosqlite connection.
-        conn = sqlite3.connect(db_path, timeout=30)
-        conn.execute("PRAGMA journal_mode=WAL")
-        conn.execute("PRAGMA busy_timeout=30000")
         while True:
             url = f"{_HF_DATASETS_API}&offset={offset}&length={_HF_PAGE_SIZE}"
             data = _fetch_page(url)
 
             rows = data.get("rows", [])
             if not rows:
-                conn.close()
                 break
 
-            # (conn is already open from above)
             for row_wrapper in rows:
                 try:
                     entry = row_wrapper.get("row", row_wrapper)
@@ -335,83 +362,98 @@ def _sync_hf_inner() -> dict[str, Any]:
                         if isinstance(val, (int, float)):
                             benchmarks[our_key] = float(val)
 
-                    # Skip entries with no benchmark data at all
                     if not any(v > 0 for v in benchmarks.values()):
                         continue
 
                     scores = _compute_bucket_scores(benchmarks)
-                    conn.execute(
-                        """INSERT OR REPLACE INTO model_scores
-                           (id, model_name, provider_type, reasoning_score,
-                            conversational_score, longform_score, source,
-                            raw_benchmarks_json, scored_at)
-                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-                        (
-                            f"hf_{model_name[:80]}",
-                            model_name,
-                            "huggingface",
-                            scores["reasoning"],
-                            scores["conversational"],
-                            scores["longform"],
-                            "huggingface",
-                            json.dumps(benchmarks),
-                            now,
-                        ),
-                    )
+                    base_rec: dict[str, Any] = {
+                        "id": f"hf_{model_name[:80]}",
+                        "model_name": model_name,
+                        "provider_type": "huggingface",
+                        "reasoning_score": scores["reasoning"],
+                        "conversational_score": scores["conversational"],
+                        "longform_score": scores["longform"],
+                        "source": "huggingface",
+                        "raw_benchmarks_json": json.dumps(benchmarks),
+                        "scored_at": now,
+                    }
+                    records.append(base_rec)
+
                     # Also store under the base name without org prefix
-                    # so "Qwen/Qwen3-14B" also matches as "Qwen3-14B"
+                    # so "Qwen/Qwen3-14B" also matches as "Qwen3-14B".
                     if "/" in model_name:
                         base_name = model_name.split("/", 1)[1]
                         if base_name and len(base_name) >= 3:
-                            conn.execute(
-                                """INSERT OR REPLACE INTO model_scores
-                                   (id, model_name, provider_type, reasoning_score,
-                                    conversational_score, longform_score, source,
-                                    raw_benchmarks_json, scored_at)
-                                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-                                (
-                                    f"hf_base_{base_name[:76]}",
-                                    base_name,
-                                    "huggingface",
-                                    scores["reasoning"],
-                                    scores["conversational"],
-                                    scores["longform"],
-                                    "huggingface",
-                                    json.dumps(benchmarks),
-                                    now,
-                                ),
-                            )
-                    synced += 1
-                except Exception:  # noqa: BLE001
-                    errors += 1
-            conn.commit()
+                            records.append({
+                                **base_rec,
+                                "id": f"hf_base_{base_name[:76]}",
+                                "model_name": base_name,
+                            })
 
-            # Check if there are more pages
+                except Exception:  # noqa: BLE001
+                    pass  # skip unparseable row
+
             total = data.get("num_rows_total", 0)
             offset += len(rows)
             if offset >= total or len(rows) < _HF_PAGE_SIZE:
-                conn.close()
                 break
-            # Courtesy delay between pages
             time.sleep(_HF_PAGE_DELAY)
 
     except Exception as exc:  # noqa: BLE001
-        try:
-            conn.close()  # noqa: F821
-        except Exception:  # noqa: BLE001
-            pass
-        if synced > 0:
-            # Partial sync is fine — we got data before the rate limit kicked in
-            _log.info("HF sync stopped after %d models (rate limit), continuing with partial data", synced)
+        if records:
+            partial = True
+            _log.info(
+                "HF sync interrupted after %d records (rate limit / network), "
+                "partial data will be committed",
+                len(records),
+            )
         else:
-            _log.warning("HF leaderboard sync failed: %s", exc)
-            return _sync_static_fallback()
+            return {"records": [], "partial": False, "error": str(exc)}
 
-    _log.info("Model intelligence sync COMPLETE — %d models scored, %d errors", synced, errors)
-    if synced == 0:
-        # HF returned data but no parseable entries — use static fallback
-        return _sync_static_fallback()
-    return {"synced": synced, "errors": errors, "message": f"Synced {synced} models from HF"}
+    _log.info("HF leaderboard fetch COMPLETE — %d score records collected", len(records))
+    return {"records": records, "partial": partial, "error": None}
+
+
+async def _write_hf_scores_async(records: list[dict[str, Any]]) -> dict[str, Any]:
+    """Write HF leaderboard records to the DB via the shared aiosqlite connection.
+
+    Using the single aiosqlite connection (never a raw sqlite3.connect()) ensures
+    all writes are serialised through aiosqlite's internal queue and cannot race
+    with other async DB writers — eliminating SQLITE_BUSY / 'database is locked'.
+    """
+    db = get_db()
+    if db is None or db._conn is None:  # noqa: SLF001
+        return {"synced": 0, "errors": 0, "message": "Database not ready"}
+    synced = 0
+    errors = 0
+    for rec in records:
+        try:
+            await db._conn.execute(  # noqa: SLF001
+                """INSERT OR REPLACE INTO model_scores
+                   (id, model_name, provider_type, reasoning_score,
+                    conversational_score, longform_score, source,
+                    raw_benchmarks_json, scored_at)
+                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                (
+                    rec["id"], rec["model_name"], rec["provider_type"],
+                    rec["reasoning_score"], rec["conversational_score"],
+                    rec["longform_score"], rec["source"],
+                    rec["raw_benchmarks_json"], rec["scored_at"],
+                ),
+            )
+            synced += 1
+        except Exception:  # noqa: BLE001
+            errors += 1
+    try:
+        await db._conn.commit()  # noqa: SLF001
+    except Exception:  # noqa: BLE001
+        pass
+    _log.info(
+        "Model intelligence sync COMPLETE — %d models written, %d errors",
+        synced, errors,
+    )
+    return {"synced": synced, "errors": errors,
+            "message": f"Synced {synced} models from HF"}
 
 
 # ── Module-level model score table (shared by sync and async write paths) ────

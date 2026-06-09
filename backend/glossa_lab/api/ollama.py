@@ -74,8 +74,37 @@ _CTX_TIERS: list[dict[str, Any]] = [
     },
 ]
 
-# Session context length — stored in memory, updated via API
-_session_ctx_length: int = 4096
+# Session context length — stored in memory, updated via API.
+# Auto-tuned on import: we probe GPU VRAM (via nvidia-smi) and system RAM
+# so the context window is as large as hardware allows by default.
+def _detect_optimal_ctx() -> int:
+    """Detect available GPU VRAM (or system RAM) and return the best context length."""
+    import platform, subprocess  # noqa: PLC0415
+    vram_gb = 0.0
+    try:
+        out = subprocess.check_output(
+            ["nvidia-smi", "--query-gpu=memory.total", "--format=csv,noheader,nounits"],
+            stderr=subprocess.DEVNULL, timeout=3,
+            creationflags=0x08000000 if platform.system() == "Windows" else 0,
+        )
+        vram_gb = float(out.decode(errors="replace").strip().splitlines()[0]) / 1024
+    except Exception:  # noqa: BLE001
+        pass
+    # Fallback: use system RAM when no GPU found (CPU inference)
+    if vram_gb == 0:
+        try:
+            import psutil  # noqa: PLC0415
+            ram_gb = psutil.virtual_memory().available / 1_073_741_824
+            # For CPU inference reserve half available RAM for the model weights;
+            # use 1/8 of the remainder for context (very conservative).
+            vram_gb = max(0.0, (ram_gb - 4) / 8)  # treat leftover as pseudo-VRAM
+        except Exception:  # noqa: BLE001
+            pass
+    tier = _recommended_ctx(vram_gb)
+    return int(tier["ctx"])
+
+
+_session_ctx_length: int = _detect_optimal_ctx()
 
 
 # ── Curated model library ─────────────────────────────────────────────────────

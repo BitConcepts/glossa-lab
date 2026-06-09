@@ -47,12 +47,23 @@ def is_study_loop_running() -> bool:
 async def start_study_loop_session(
     iterations: int = 15,
     trigger: str = "user",
+    notify: bool | None = None,
 ) -> None:
     """Start a study loop session without SSE streaming (for scheduler use).
 
-    Consumes all events internally. Sends completion email if configured.
+    Consumes all events internally.
+
+    *notify* controls whether a completion email is sent when the session
+    finishes.  Defaults to ``True`` when *trigger* is ``"user"`` and
+    ``False`` for any automated/scheduler trigger — so the startup scheduler
+    tick no longer floods the inbox with a notification email every time
+    Glossa Lab starts.  Pass ``notify=True`` explicitly to override.
     """
     from glossa_lab.pipelines.study_loop import run_study_loop  # noqa: PLC0415
+
+    # Default notify based on trigger: only user-initiated runs send email.
+    if notify is None:
+        notify = (trigger == "user")
 
     global _running, _session_id, _iterations, _trigger, _started_at  # noqa: PLW0603
     if _running:
@@ -72,8 +83,14 @@ async def start_study_loop_session(
                 session = event.get("session")
                 if session:
                     _session_id = session.get("session_id")
-        if session:
+        if session and notify:
             asyncio.create_task(_send_loop_email(session))
+        elif session and not notify:
+            _log.info(
+                "Study loop session complete (trigger=%s) — email suppressed "
+                "for automated runs. Pass notify=True to override.",
+                trigger,
+            )
     except Exception as exc:  # noqa: BLE001
         _log.warning("Study loop session error: %s", exc)
     finally:

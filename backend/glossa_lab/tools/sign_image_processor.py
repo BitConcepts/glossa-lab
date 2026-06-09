@@ -257,81 +257,198 @@ def _draw_label(draw: ImageDraw.ImageDraw, sign_id: str, size: int) -> None:
 
 # ── Fallback icon dispatcher ────────────────────────────────────────────────
 
+def _draw_reading_icon(
+    draw: ImageDraw.ImageDraw,
+    sign_id: str,
+    reading: str,
+    confidence: str,
+    size: int,
+) -> None:
+    """Draw a labeled fallback icon with reading text and confidence badge."""
+    # Border style per confidence tier
+    pad = 6
+    if confidence == "HIGH":
+        # Solid border
+        draw.rectangle([(pad, pad), (size - pad, size - pad)], outline=0, width=3)
+    elif confidence == "MEDIUM":
+        # Dashed border (simulated with segments)
+        _draw_dashed_rect(draw, pad, size - pad, pad, size - pad, dash_len=8, gap=4, width=2)
+    else:
+        # Dotted border
+        _draw_dashed_rect(draw, pad, size - pad, pad, size - pad, dash_len=3, gap=4, width=2)
+
+    # Sign ID at top-left
+    try:
+        small_font = ImageFont.truetype("arial.ttf", 11)
+    except OSError:
+        small_font = ImageFont.load_default()
+    draw.text((pad + 4, pad + 2), sign_id, fill=0, font=small_font)
+
+    # Reading text prominently centered
+    try:
+        main_font = ImageFont.truetype("arial.ttf", 20)
+    except OSError:
+        main_font = ImageFont.load_default()
+    # Truncate long readings
+    display_reading = reading if len(reading) <= 12 else reading[:11] + "\u2026"
+    _, _, tw, th = draw.textbbox((0, 0), display_reading, font=main_font)
+    tx = (size - tw) // 2
+    ty = (size - th) // 2
+    draw.text((tx, ty), display_reading, fill=0, font=main_font)
+
+    # Confidence badge at bottom-right
+    badge = confidence[:3] if confidence else "?"
+    try:
+        badge_font = ImageFont.truetype("arial.ttf", 10)
+    except OSError:
+        badge_font = ImageFont.load_default()
+    _, _, bw, bh = draw.textbbox((0, 0), badge, font=badge_font)
+    bx = size - pad - bw - 4
+    by = size - pad - bh - 3
+    # Badge background
+    draw.rectangle([(bx - 2, by - 1), (bx + bw + 2, by + bh + 1)], fill=0)
+    draw.text((bx, by), badge, fill=255, font=badge_font)
+
+
+def _draw_dashed_rect(
+    draw: ImageDraw.ImageDraw,
+    x0: int, x1: int, y0: int, y1: int,
+    *, dash_len: int = 8, gap: int = 4, width: int = 2,
+) -> None:
+    """Draw a dashed rectangle."""
+    for edge in [
+        ((x0, y0), (x1, y0)),  # top
+        ((x1, y0), (x1, y1)),  # right
+        ((x1, y1), (x0, y1)),  # bottom
+        ((x0, y1), (x0, y0)),  # left
+    ]:
+        (sx, sy), (ex, ey) = edge
+        length = max(abs(ex - sx), abs(ey - sy))
+        dx = (ex - sx) / max(length, 1)
+        dy = (ey - sy) / max(length, 1)
+        pos = 0
+        while pos < length:
+            seg_end = min(pos + dash_len, length)
+            draw.line(
+                [(sx + dx * pos, sy + dy * pos), (sx + dx * seg_end, sy + dy * seg_end)],
+                fill=0, width=width,
+            )
+            pos = seg_end + gap
+
+
 def generate_fallback_icon(sign_id: str, iconic: str) -> np.ndarray:
-    """Generate a clean black-on-white iconic representation using PIL."""
+    """Generate a clean black-on-white iconic representation using PIL.
+
+    If the iconic description contains a 'reading:' annotation (from anchor data),
+    the icon shows the reading prominently with a confidence badge.
+    """
     img = Image.new("L", (SIGN_SIZE, SIGN_SIZE), 255)
     draw = ImageDraw.Draw(img)
     iconic_l = (iconic or "").lower()
 
+    # Check for reading-based icon (from anchor data)
+    import re as _re  # noqa: PLC0415
+    reading_match = _re.search(r"reading:\s*([^(]+)\s*\(([^)]+)\)", iconic or "")
+    # Strip the reading annotation for iconic matching
+    iconic_for_match = _re.sub(r"\s*\|?\s*reading:[^)]+\)", "", iconic or "").strip().lower()
+
     # Stroke / numeral signs
     for n in range(9, 0, -1):
-        if f"{n} stroke" in iconic_l or f"{n} vertical" in iconic_l:
+        if f"{n} stroke" in iconic_for_match or f"{n} vertical" in iconic_for_match:
             _draw_strokes(draw, n, SIGN_SIZE)
+            _add_sign_id_corner(draw, sign_id, SIGN_SIZE)
             return np.array(img)
-    if "stroke" in iconic_l or "vertical" in iconic_l:
+    if "stroke" in iconic_for_match or "vertical" in iconic_for_match:
         _draw_strokes(draw, 1, SIGN_SIZE)
+        _add_sign_id_corner(draw, sign_id, SIGN_SIZE)
         return np.array(img)
 
     # Fish family
-    if "fish" in iconic_l:
+    if "fish" in iconic_for_match:
         mod = ""
-        if "roof" in iconic_l:
+        if "roof" in iconic_for_match:
             mod = "roof"
-        elif "trefoil" in iconic_l:
+        elif "trefoil" in iconic_for_match:
             mod = "trefoil"
-        elif "fin" in iconic_l:
+        elif "fin" in iconic_for_match:
             mod = "fins"
         _draw_fish(draw, SIGN_SIZE, mod)
+        _add_sign_id_corner(draw, sign_id, SIGN_SIZE)
         return np.array(img)
 
     # Unicorn (before bull check)
-    if "unicorn" in iconic_l or "one-horn" in iconic_l:
+    if "unicorn" in iconic_for_match or "one-horn" in iconic_for_match:
         _draw_unicorn(draw, SIGN_SIZE)
+        _add_sign_id_corner(draw, sign_id, SIGN_SIZE)
         return np.array(img)
 
     # Bovine family
-    if any(k in iconic_l for k in ("zebu", "bull", "humped")):
-        _draw_bull(draw, SIGN_SIZE, humped="zebu" in iconic_l or "humped" in iconic_l)
+    if any(k in iconic_for_match for k in ("zebu", "bull", "humped")):
+        _draw_bull(draw, SIGN_SIZE, humped="zebu" in iconic_for_match or "humped" in iconic_for_match)
+        _add_sign_id_corner(draw, sign_id, SIGN_SIZE)
         return np.array(img)
 
     # Man / human
-    if any(k in iconic_l for k in ("man", "human", "person", "figure")):
+    if any(k in iconic_for_match for k in ("man", "human", "person", "figure")):
         _draw_man(draw, SIGN_SIZE)
+        _add_sign_id_corner(draw, sign_id, SIGN_SIZE)
         return np.array(img)
 
     # Elephant
-    if "elephant" in iconic_l:
+    if "elephant" in iconic_for_match:
         _draw_elephant(draw, SIGN_SIZE)
+        _add_sign_id_corner(draw, sign_id, SIGN_SIZE)
         return np.array(img)
 
     # Gharial / crocodile
-    if any(k in iconic_l for k in ("gharial", "crocodile", "alligator")):
+    if any(k in iconic_for_match for k in ("gharial", "crocodile", "alligator")):
         _draw_gharial(draw, SIGN_SIZE)
+        _add_sign_id_corner(draw, sign_id, SIGN_SIZE)
         return np.array(img)
 
     # Tiger / feline
-    if any(k in iconic_l for k in ("tiger", "lion", "feline", "leopard")):
+    if any(k in iconic_for_match for k in ("tiger", "lion", "feline", "leopard")):
         _draw_animal_generic(draw, SIGN_SIZE)
+        _add_sign_id_corner(draw, sign_id, SIGN_SIZE)
         return np.array(img)
 
     # Jar / vessel
-    if any(k in iconic_l for k in ("jar", "pot", "vessel", "cup")):
+    if any(k in iconic_for_match for k in ("jar", "pot", "vessel", "cup")):
         _draw_jar(draw, SIGN_SIZE)
+        _add_sign_id_corner(draw, sign_id, SIGN_SIZE)
         return np.array(img)
 
     # Cross
-    if "cross" in iconic_l:
+    if "cross" in iconic_for_match:
         _draw_cross(draw, SIGN_SIZE)
+        _add_sign_id_corner(draw, sign_id, SIGN_SIZE)
         return np.array(img)
 
     # Circle / dotted circle
-    if "circle" in iconic_l or "dotted" in iconic_l:
-        _draw_circle(draw, SIGN_SIZE, dotted="dotted" in iconic_l)
+    if "circle" in iconic_for_match or "dotted" in iconic_for_match:
+        _draw_circle(draw, SIGN_SIZE, dotted="dotted" in iconic_for_match)
+        _add_sign_id_corner(draw, sign_id, SIGN_SIZE)
         return np.array(img)
 
-    # Default: labeled box
+    # If we have a reading from anchors but no iconic match, show reading icon
+    if reading_match:
+        reading_text = reading_match.group(1).strip()
+        confidence = reading_match.group(2).strip()
+        _draw_reading_icon(draw, sign_id, reading_text, confidence, SIGN_SIZE)
+        return np.array(img)
+
+    # Default: labeled box with sign ID
     _draw_label(draw, sign_id, SIGN_SIZE)
     return np.array(img)
+
+
+def _add_sign_id_corner(draw: ImageDraw.ImageDraw, sign_id: str, size: int) -> None:
+    """Add sign ID in the bottom-left corner of an iconic fallback."""
+    try:
+        font = ImageFont.truetype("arial.ttf", 10)
+    except OSError:
+        font = ImageFont.load_default()
+    draw.text((4, size - 14), sign_id, fill=0, font=font)
 
 
 # ── Image normalization ─────────────────────────────────────────────────────
@@ -648,7 +765,12 @@ def extract_from_grid(
 # ── Main batch processor ────────────────────────────────────────────────────
 
 def _load_sign_catalog() -> dict[str, str]:
-    """Return {sign_id: iconic_description} for all known signs."""
+    """Return {sign_id: iconic_description} for all known signs.
+
+    Merges crosswalk (iconic descriptions) with anchors (readings).
+    Signs with anchor readings get 'reading: X (CONF)' as iconic if
+    they have no better iconic description from the crosswalk.
+    """
     catalog: dict[str, str] = {}
 
     # From crosswalk
@@ -660,17 +782,43 @@ def _load_sign_catalog() -> dict[str, str]:
         except Exception:
             pass
 
-    # From anchors (to pick up IDs not in crosswalk)
+    # From anchors — enrich with reading/confidence for ALL anchor signs
     if _ANCHORS_PATH.exists():
         try:
             data = json.loads(_ANCHORS_PATH.read_text(encoding="utf-8"))
-            for sid in (data.get("anchors") or {}):
-                if sid not in catalog:
-                    catalog[sid] = ""
+            for sid, anchor in (data.get("anchors") or {}).items():
+                reading = anchor.get("reading", "")
+                confidence = anchor.get("confidence", "")
+                if sid not in catalog or not catalog[sid]:
+                    # No crosswalk iconic — use reading as iconic
+                    if reading:
+                        catalog[sid] = f"reading: {reading} ({confidence})"
+                    else:
+                        catalog[sid] = ""
+                elif reading and "reading:" not in catalog[sid]:
+                    # Has crosswalk iconic but append reading info
+                    catalog[sid] = f"{catalog[sid]} | reading: {reading} ({confidence})"
         except Exception:
             pass
 
     return catalog
+
+
+def _load_anchor_data() -> dict[str, dict[str, str]]:
+    """Return {sign_id: {reading, confidence}} from anchors file."""
+    if not _ANCHORS_PATH.exists():
+        return {}
+    try:
+        data = json.loads(_ANCHORS_PATH.read_text(encoding="utf-8"))
+        result: dict[str, dict[str, str]] = {}
+        for sid, anchor in (data.get("anchors") or {}).items():
+            result[sid] = {
+                "reading": anchor.get("reading", ""),
+                "confidence": anchor.get("confidence", ""),
+            }
+        return result
+    except Exception:
+        return {}
 
 
 def process_single(
@@ -997,6 +1145,123 @@ def _guess_sign_id_from_filename(filename: str) -> str | None:
     if m:
         return f"M{int(m.group(1)):03d}"
     return None
+
+
+# ── Wikimedia-only harvest ───────────────────────────────────────────────────
+
+def harvest_wikimedia_only(
+    sign_ids: list[str],
+    *,
+    delay_secs: float = 0.3,
+) -> dict[str, Any]:
+    """Try Wikimedia for every sign in *sign_ids*, regardless of manifest status.
+
+    Only updates manifest if Wikimedia succeeds (keeps existing source otherwise).
+    Uses a polite delay between requests.
+    """
+    manifest = load_manifest()
+    stats = {"attempted": 0, "fetched": 0, "failed": 0, "errors": []}
+
+    for i, sid in enumerate(sign_ids):
+        stats["attempted"] += 1
+        try:
+            result = fetch_from_wikimedia(sid)
+            if result is not None:
+                orig, proc = result
+                _save_sign(sid, proc, orig, "wikimedia", manifest)
+                stats["fetched"] += 1
+                _log.info("harvest_wikimedia_only: %s → wikimedia", sid)
+            else:
+                stats["failed"] += 1
+        except Exception as exc:
+            stats["failed"] += 1
+            stats["errors"].append(f"{sid}: {exc}")
+            _log.debug("harvest_wikimedia_only: %s error: %s", sid, exc)
+
+        if (i + 1) % 25 == 0:
+            save_manifest(manifest)
+            _log.info("harvest_wikimedia_only: %d/%d done (%d fetched)",
+                      i + 1, len(sign_ids), stats["fetched"])
+
+        # Polite delay
+        if delay_secs > 0:
+            time.sleep(delay_secs)
+
+    save_manifest(manifest)
+    _log.info("harvest_wikimedia_only complete: %s", stats)
+    return stats
+
+
+def regenerate_all_fallback_icons() -> dict[str, Any]:
+    """Regenerate every sign that still has source='fallback_icon'.
+
+    Uses the expanded catalog (with anchor readings) so icons get
+    meaningful labels where available.
+    """
+    catalog = _load_sign_catalog()
+    manifest = load_manifest()
+    stats = {"regenerated": 0, "skipped": 0}
+
+    for sid, entry in list(manifest.items()):
+        if entry.get("source") != "fallback_icon":
+            stats["skipped"] += 1
+            continue
+
+        iconic = catalog.get(sid, "")
+        fallback = generate_fallback_icon(sid, iconic)
+        _save_sign(sid, fallback, None, "fallback_icon", manifest)
+        stats["regenerated"] += 1
+
+        if stats["regenerated"] % 50 == 0:
+            save_manifest(manifest)
+            _log.info("regenerate_all_fallback_icons: %d done", stats["regenerated"])
+
+    save_manifest(manifest)
+    _log.info("regenerate_all_fallback_icons complete: %s", stats)
+    return stats
+
+
+def run_full_pipeline() -> dict[str, Any]:
+    """Run complete reharvest + regenerate + rebuild + verify pipeline."""
+    results: dict[str, Any] = {}
+
+    # Step 1: Get all fallback_icon sign IDs
+    manifest = load_manifest()
+    fallback_ids = sorted(
+        sid for sid, entry in manifest.items()
+        if entry.get("source") == "fallback_icon"
+    )
+    _log.info("Pipeline: %d fallback_icon signs to try Wikimedia for", len(fallback_ids))
+
+    # Step 2: Wikimedia harvest for all fallback signs
+    results["wikimedia_harvest"] = harvest_wikimedia_only(fallback_ids, delay_secs=0.3)
+
+    # Step 3: Regenerate all remaining fallbacks with improved icons
+    results["regeneration"] = regenerate_all_fallback_icons()
+
+    # Step 4: Rebuild manifest
+    results["rebuild"] = rebuild_manifest()
+
+    # Step 5: Verify
+    results["verification"] = verify_sign_images(force=True)
+
+    # Final stats
+    manifest = load_manifest()
+    by_source: dict[str, int] = {}
+    for entry in manifest.values():
+        src = entry.get("source", "unknown")
+        by_source[src] = by_source.get(src, 0) + 1
+
+    results["final_stats"] = {
+        "total_signs": len(manifest),
+        "by_source": by_source,
+        "verification_pass_rate": round(
+            results["verification"]["passed"] / max(results["verification"]["total_checked"], 1) * 100, 1
+        ),
+    }
+
+    _log.info("Full pipeline complete: %s", results["final_stats"])
+    return results
 
 
 # ── CLI entrypoint ──────────────────────────────────────────────────────────

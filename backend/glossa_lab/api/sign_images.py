@@ -51,8 +51,10 @@ def _get_processor():
 def _get_extras():
     from glossa_lab.tools.sign_image_processor import (  # noqa: PLC0415
         rebuild_manifest, verify_sign_images, find_missing_signs,
+        harvest_wikimedia_only, regenerate_all_fallback_icons, run_full_pipeline,
     )
-    return rebuild_manifest, verify_sign_images, find_missing_signs
+    return (rebuild_manifest, verify_sign_images, find_missing_signs,
+            harvest_wikimedia_only, regenerate_all_fallback_icons, run_full_pipeline)
 
 
 # ── Endpoints ─────────────────────────────────────────────────────────────
@@ -207,7 +209,7 @@ async def verify_images(req: VerifyRequest | None = None) -> dict[str, Any]:
     Check 3 (Provenance): Non-null source and generated within max_age_days.
     """
     try:
-        _, verify_sign_images, _ = _get_extras()
+        rebuild_manifest, verify_sign_images, find_missing_signs, *_ = _get_extras()
         body = req or VerifyRequest()
         result = verify_sign_images(
             sign_ids=body.sign_ids,
@@ -220,11 +222,44 @@ async def verify_images(req: VerifyRequest | None = None) -> dict[str, Any]:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
 
 
+@router.post("/regenerate")
+async def regenerate_all(
+    background_tasks: BackgroundTasks,
+) -> dict[str, Any]:
+    """Trigger a full reharvest + regenerate pipeline in background.
+
+    Runs: Wikimedia harvest → fallback regeneration → manifest rebuild → verify.
+    Poll /status for progress.
+    """
+    global _processing_running  # noqa: PLW0603
+    if _processing_running:
+        return {"queued": False, "reason": "Processing already running"}
+
+    async def _run() -> None:
+        global _processing_running, _last_run_stats  # noqa: PLW0603
+        async with _processing_lock:
+            _processing_running = True
+            try:
+                *_, run_full_pipeline = _get_extras()
+                loop = asyncio.get_event_loop()
+                stats = await loop.run_in_executor(None, run_full_pipeline)
+                _last_run_stats = stats
+                _log.info("Full pipeline complete: %s", stats.get("final_stats"))
+            except Exception as exc:
+                _log.error("Full pipeline failed: %s", exc, exc_info=True)
+                _last_run_stats = {"error": str(exc)}
+            finally:
+                _processing_running = False
+
+    background_tasks.add_task(_run)
+    return {"queued": True, "message": "Full reharvest + regenerate pipeline started — poll /status for progress"}
+
+
 @router.get("/discover")
 async def discover_missing() -> dict[str, Any]:
     """Discover candidate sign images from Wikimedia, CDLI, and local sources."""
     try:
-        _, _, find_missing_signs = _get_extras()
+        _, _, find_missing_signs, *_ = _get_extras()
         candidates = find_missing_signs()
         # Return summary + first few candidates per sign
         summary: dict[str, Any] = {}
@@ -247,7 +282,7 @@ async def discover_missing() -> dict[str, Any]:
 async def rebuild_manifest_endpoint() -> dict[str, Any]:
     """Rebuild the sign image manifest from existing PNG files on disk."""
     try:
-        rebuild_manifest, _, _ = _get_extras()
+        rebuild_manifest, *_ = _get_extras()
         result = rebuild_manifest()
         return result
     except Exception as exc:

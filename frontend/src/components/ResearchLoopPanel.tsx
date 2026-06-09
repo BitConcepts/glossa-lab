@@ -189,6 +189,9 @@ export function ResearchLoopPanel() {
     return 15;
   });
   const [log, setLog] = useState<CycleEntry[]>([]);
+  // Counts only completed experiment cycles (node_complete events).
+  // log.length includes proposal/verify/analysis events too (~4× per cycle).
+  const [cyclesCompleted, setCyclesCompleted] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const [stallReason, setStallReason] = useState<string | null>(null);
   const [failureDetail, setFailureDetail] = useState<{
@@ -202,7 +205,10 @@ export function ResearchLoopPanel() {
   const [staging, setStaging] = useState<StagingData | null>(null);
   const [showReview, setShowReview] = useState(false);
   const [proposalKey, setProposalKey] = useState<string | null>(null);
-  const [currentPhase, setCurrentPhase] = useState<"idle" | "propose" | "build" | "verify" | "analyze">("idle");
+  // init = corpus/anchor loading; blitz = full-topics mine; mine = per-cycle mine; run = build+verify+execute
+  const [currentPhase, setCurrentPhase] = useState<"idle" | "init" | "blitz" | "mine" | "propose" | "run" | "analyze" | "done">("idle");
+  const [blitzTopics, setBlitzTopics] = useState<number>(0);
+  const [initStats, setInitStats] = useState<{ corpus: number; anchors: number } | null>(null);
   const [currentWork, setCurrentWork] = useState<{ cycle: number; gap: string; experiment: string } | null>(null);
   const [showFullLog, setShowFullLog] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
@@ -215,12 +221,42 @@ export function ResearchLoopPanel() {
   const [history, setHistory] = useState<HistorySession[]>([]);
   const [showHistory, setShowHistory] = useState(false);
 
+  // ── Live-state sessionStorage key ────────────────────────────────
+  // Persists log, phase, and currentWork across SPA navigation. Hard-refresh
+  // survival uses the backend /status endpoint instead.
+  const LIVE_STATE_KEY = "glossa_loop_live_state";
+
   const fetchStatus = useCallback(async () => {
     try {
       const res = await fetch(`${BASE}/status`);
-      if (res.ok) setStatus(await res.json() as LoopStatus);
+      if (!res.ok) return;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const s = await res.json() as any;
+      setStatus(s as LoopStatus);
+      // If the backend says the loop is running but our React state disagrees
+      // (e.g. after a page refresh or navigation), recover the display state.
+      if (s.running && !running) {
+        setRunning(true);
+                setCurrentPhase((p) => p === "idle" || p === "done" ? "run" : p);
+        if (s.iterations && typeof s.iterations === "number") {
+          setCycles(s.iterations);
+        }
+        // Restore live cycle count from backend counter
+        if (typeof s.cycles_completed === "number" && s.cycles_completed > 0) {
+          setCyclesCompleted((prev) => Math.max(prev, s.cycles_completed));
+        }
+      }
+      // Loop just finished on the backend while we had it open elsewhere
+      if (!s.running && running) {
+        setRunning(false);
+        setCurrentPhase("done");
+        void fetchLastSession();
+        void fetchHistory();
+        void fetchStaging();
+      }
     } catch { /* backend may not be running */ }
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [running]);
 
   const fetchLastSession = useCallback(async () => {
     try {
@@ -309,13 +345,71 @@ export function ResearchLoopPanel() {
     } catch { /* ignore */ }
   }, []);
 
+  // ── On-mount: restore sessionStorage live state then reconcile with backend
   useEffect(() => {
+    // 1. Restore navigation-safe state from sessionStorage
+    try {
+      const saved = sessionStorage.getItem(LIVE_STATE_KEY);
+      if (saved) {
+        const s = JSON.parse(saved) as {
+          running?: boolean;
+          currentPhase?: string;
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          log?: any[];
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          currentWork?: any;
+          cycles?: number;
+          cyclesCompleted?: number;
+        };
+        if (s.log?.length) setLog(s.log as CycleEntry[]);
+        if (s.currentWork)  setCurrentWork(s.currentWork);
+        if (s.currentPhase && s.currentPhase !== "idle") {
+          setCurrentPhase(s.currentPhase as typeof currentPhase);
+        }
+        if (s.cycles && [5, 15, 30, 50].includes(s.cycles)) setCycles(s.cycles);
+        if (typeof s.cyclesCompleted === "number" && s.cyclesCompleted > 0) {
+          setCyclesCompleted((prev) => Math.max(prev, s.cyclesCompleted ?? 0));
+        }
+      }
+    } catch { /* ignore */ }
+
+    // 2. Authoritative backend check (overrides sessionStorage if diverged)
     void fetchStatus();
     void fetchLastSession();
     void fetchStaging();
     void fetchSchedulerStatus();
     void fetchHistory();
-  }, [fetchStatus, fetchLastSession, fetchStaging, fetchSchedulerStatus, fetchHistory]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // ── Persist live state to sessionStorage on every significant change ────
+  useEffect(() => {
+    if (!running && log.length === 0 && currentPhase === "idle") return; // nothing to save
+    try {
+      sessionStorage.setItem(LIVE_STATE_KEY, JSON.stringify({
+        running,
+        currentPhase,
+        log: log.slice(-200),
+        currentWork,
+        cycles,
+        cyclesCompleted,
+      }));
+    } catch { /* ignore */ }
+  }, [running, currentPhase, log, currentWork, cycles, cyclesCompleted]);
+
+  // ── Poll backend every 5 s while running to catch remote completions ────
+  useEffect(() => {
+    if (!running) return;
+    const id = setInterval(() => void fetchStatus(), 5000);
+    return () => clearInterval(id);
+  }, [running, fetchStatus]);
+
+  // ── Clear sessionStorage when loop completes cleanly ────────────────────
+  useEffect(() => {
+    if (currentPhase === "done" && !running) {
+      try { sessionStorage.removeItem(LIVE_STATE_KEY); } catch { /* ignore */ }
+    }
+  }, [currentPhase, running]);
 
   const toggleScheduler = async () => {
     if (!schedulerStatus) return;
@@ -339,8 +433,9 @@ export function ResearchLoopPanel() {
     setStallReason(null);
     setFailureDetail(null);
     setLog([]);
+    setCyclesCompleted(0);
     setSynthesis(null);
-    setCurrentPhase("idle");
+    setCurrentPhase("init");  // corpus/anchor loading happens first
     setCurrentWork(null);
     setShowFullLog(false);
 
@@ -370,9 +465,13 @@ export function ResearchLoopPanel() {
                   summary?: string; flags?: string[];
                   ok?: boolean; timeout_seconds?: number; gap_targeted?: string;
                   session?: StudySession;
+                  // blitz/mine/init phase events
+                  n_topics?: number; path_signals?: Record<string, number>;
+                  n_papers?: number; n_insights?: number; api_limited?: boolean;
+                  corpus_seqs?: number; anchors?: number; message?: string;
               };
               if (event.type === "complete") {
-                setCurrentPhase("idle");
+                setCurrentPhase("done");
                 setCurrentWork(null);
                 if (event.synthesis) setSynthesis(event.synthesis);
                 if (event.synthesis?.anchor_candidates && event.synthesis.anchor_candidates.length > 0) {
@@ -384,6 +483,7 @@ export function ResearchLoopPanel() {
                 void fetchStaging();
                 void fetchHistory();
               } else if (event.type === "study_loop_complete") {
+                setCurrentPhase("done");
                 // Notify the dashboard so it regenerates the AI insight.
                 window.dispatchEvent(new CustomEvent("glossa:loop-complete"));
                 if (event.session) {
@@ -421,8 +521,29 @@ export function ResearchLoopPanel() {
                   insight_types: {}, verdict: `\u{1F4A1} Proposed: ${event.rationale ?? ""}`,
                   is_new_info: false, selection_method: "proposal",
                 } as CycleEntry]);
+              } else if (event.type === "init_start") {
+                setCurrentPhase("init");
+              } else if (event.type === "init_complete") {
+                setInitStats({ corpus: event.corpus_seqs ?? 0, anchors: event.anchors ?? 0 });
+                setCurrentPhase("blitz"); // init done — blitz mine about to start
+              } else if (event.type === "blitz_mine_start") {
+                setCurrentPhase("blitz");
+                setBlitzTopics(event.n_topics ?? 0);
+              } else if (event.type === "blitz_mine_complete") {
+                // Blitz mine done — first cycle about to start
+                setCurrentPhase("idle");
+              } else if (event.type === "mine_start") {
+                setCurrentPhase("mine");
+                if (event.cycle) setCurrentWork({ cycle: event.cycle ?? 0, gap: event.gap_targeted ?? "", experiment: "" });
+              } else if (event.type === "mine_complete") {
+                // Mine done — will transition to propose next
+                setCurrentPhase("mine");
+              } else if (event.type === "build_complete") {
+                // Experiment instantiated — execution starting
+                setCurrentPhase("run");  // Build+Verify+Execute = "Run"
+                if (event.cycle) setCurrentWork({ cycle: event.cycle ?? 0, gap: event.gap_targeted ?? "", experiment: event.experiment ?? "" });
               } else if (event.type === "verify_result") {
-                setCurrentPhase("verify");
+                setCurrentPhase("run");  // stays in Run phase during verification
                 setLog((prev) => [...prev, {
                   cycle: event.cycle ?? 0, gap_targeted: "",
                   experiment: event.experiment ?? "", n_papers: 0, n_insights: 0,
@@ -461,24 +582,29 @@ export function ResearchLoopPanel() {
                   elapsed_seconds: event.elapsed_seconds ?? 0,
                 });
               } else if (event.type === "node_complete" && event.cycle) {
-                setCurrentPhase("build");
+                // Full cycle done — keep at analyze until next mine starts
+                setCurrentPhase("analyze");
+                setCyclesCompleted((n) => n + 1);
+                // Sync status so hard-refresh recovery has an up-to-date cycle count
+                void fetchStatus();
                 setCurrentWork({ cycle: event.cycle, gap: event.gap_targeted ?? "", experiment: event.experiment ?? "" });
                 setLog((prev) => {
                   const entry: CycleEntry = {
                     cycle: event.cycle ?? 0,
                     gap_targeted: event.gap_targeted ?? "",
                     experiment: event.experiment ?? "",
-                    n_papers: 0, n_insights: 0,
-                    insight_types: {},
-                    verdict: event.verdict ?? `⚙ ${event.experiment ?? "node"}`,
-                    is_new_info: false,
+                    n_papers: event.n_papers ?? 0,
+                    n_insights: event.n_insights ?? 0,
+                    insight_types: (event.insight_types ?? {}) as Record<string, number>,
+                    verdict: event.verdict ?? `⧙ ${event.experiment ?? "node"}`,
+                    is_new_info: event.is_new_info ?? false,
                     selection_method: "node_complete",
                   };
                   const next = [...prev, entry];
                   return next.length > 400 ? next.slice(next.length - 400) : next;
                 });
               } else if (event.cycle) {
-                setCurrentPhase("build");
+                setCurrentPhase("run");
                 setCurrentWork({ cycle: event.cycle, gap: event.gap_targeted ?? "", experiment: event.experiment ?? "" });
                 setLog((prev) => {
                   const entry: CycleEntry = {
@@ -544,10 +670,10 @@ export function ResearchLoopPanel() {
             disabled={running}
             style={{ padding: "4px 8px", border: "1px solid #d1d5db",
                      borderRadius: 5, fontSize: 12, background: "#fff" }}>
-            <option value={5}>5 cycles — Quick Scan</option>
-            <option value={15}>15 cycles — Standard</option>
-            <option value={30}>30 cycles — Deep Dive</option>
-            <option value={50}>50 cycles — Extensive</option>
+            <option value={5}>5 — Quick (5 experiment runs)</option>
+            <option value={15}>15 — Standard (15 experiment runs)</option>
+            <option value={30}>30 — Deep Dive (30 runs)</option>
+            <option value={50}>50 — Extensive (50 runs)</option>
           </select>
           {!running && !showConfirm && (
             <button onClick={() => setShowConfirm(true)}
@@ -608,94 +734,6 @@ export function ResearchLoopPanel() {
         </div>
       )}
 
-      {/* ── Session Insights card ── */}
-      {!running && lastSession && showInsights && lastSession.completed_at && (
-        <div style={{
-          border: "1px solid #a5b4fc", borderRadius: 8, background: "#eef2ff",
-          padding: "12px 16px", marginBottom: 12,
-        }}>
-          <div style={{ display: "flex", justifyContent: "space-between",
-                        alignItems: "center", marginBottom: 10 }}>
-            <span style={{ fontSize: 13, fontWeight: 700, color: "#4338ca" }}>
-              📊 Session Insights
-            </span>
-            <button
-              onClick={() => setShowInsights(false)}
-              style={{
-                padding: "3px 10px", fontSize: 10, fontWeight: 600,
-                border: "1px solid #c7d2fe", borderRadius: 4,
-                background: "#fff", color: "#6366f1", cursor: "pointer",
-              }}>
-              Dismiss
-            </button>
-          </div>
-
-          {/* Coverage before/after bar */}
-          {lastSession.coverage_before != null && lastSession.coverage_after != null && (
-            <div style={{ marginBottom: 10 }}>
-              <div style={{ fontSize: 11, fontWeight: 600, color: "#374151",
-                            marginBottom: 4 }}>
-                Coverage
-              </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                <span style={{ fontSize: 11, color: "#6b7280", width: 50,
-                               textAlign: "right" }}>
-                  {(lastSession.coverage_before * 100).toFixed(1)}%
-                </span>
-                <div style={{ flex: 1, height: 10, background: "#e5e7eb",
-                              borderRadius: 5, overflow: "hidden", position: "relative" }}>
-                  <div style={{
-                    position: "absolute", left: 0, top: 0, height: "100%",
-                    width: `${lastSession.coverage_after * 100}%`,
-                    background: "#6366f1", borderRadius: 5,
-                    transition: "width 0.4s",
-                  }} />
-                  <div style={{
-                    position: "absolute", left: 0, top: 0, height: "100%",
-                    width: `${lastSession.coverage_before * 100}%`,
-                    background: "#a5b4fc", borderRadius: 5,
-                  }} />
-                </div>
-                <span style={{ fontSize: 11, color: "#4338ca", fontWeight: 700,
-                               width: 50 }}>
-                  {(lastSession.coverage_after * 100).toFixed(1)}%
-                </span>
-              </div>
-            </div>
-          )}
-
-          {/* Anchor delta */}
-          {lastSession.anchor_delta != null && lastSession.anchor_delta !== 0 && (
-            <div style={{
-              fontSize: 11, marginBottom: 8, fontWeight: 600,
-              color: lastSession.anchor_delta > 0 ? "#15803d" : "#dc2626",
-            }}>
-              Anchor Δ: {lastSession.anchor_delta > 0 ? "+" : ""}
-              {lastSession.anchor_delta}
-            </div>
-          )}
-
-          {/* Narrative fields */}
-          {lastSession.where_we_came_from && (
-            <NarrativeField label="Where we came from"
-                            text={lastSession.where_we_came_from} />
-          )}
-          {lastSession.what_we_learned && (
-            <NarrativeField label="What we learned"
-                            text={lastSession.what_we_learned} />
-          )}
-          {lastSession.actions_taken && (
-            <ActionsTakenField actions={lastSession.actions_taken} />
-          )}
-          {(lastSession.whats_next_items?.length ?? 0) > 0
-            ? <WhatsNextList items={lastSession.whats_next_items!} />
-            : lastSession.whats_next
-              ? <NarrativeField label="What's next" text={lastSession.whats_next} />
-              : null
-          }
-        </div>
-      )}
-
       {/* ── Confirmation panel ── */}
       {!running && showConfirm && (
         <div style={{
@@ -734,42 +772,130 @@ export function ResearchLoopPanel() {
         </div>
       )}
 
+
       {/* ── Live progress: phase strip + metrics + collapsed log ── */}
       {(running || log.length > 0) && (
         <div style={{ marginBottom: 12 }}>
-          {/* Phase progress strip */}
-          <div style={{ display: "flex", alignItems: "center", gap: 0, marginBottom: 8 }}>
-            {(["propose", "build", "verify", "analyze"] as const).map((phase, i) => {
+          {/* Phase progress strip with feedback loop and Done */}
+
+          {/* Init indicator — shown while corpus + anchors load from disk */}
+          {currentPhase === "init" && running && (
+            <div style={{
+              display: "flex", alignItems: "center", gap: 6,
+              padding: "5px 10px", borderRadius: 7, marginBottom: 6,
+              background: "#f0f9ff", border: "1px solid #bae6fd",
+              fontSize: 11, color: "#0369a1",
+            }}>
+              <span style={{ fontSize: 13 }}>&#x2699;&#xFE0F;</span>
+              <span style={{ fontWeight: 700 }}>Initialising</span>
+              <span style={{ color: "#0284c7" }}>
+                &mdash; loading corpus data and anchor assignments&hellip;
+              </span>
+              {initStats && (
+                <span style={{ fontSize: 10, color: "#0369a1" }}>
+                  {initStats.corpus} inscriptions · {initStats.anchors} anchors ready
+                </span>
+              )}
+              <span style={{ marginLeft: "auto", fontSize: 10, color: "#9ca3af",
+                             fontStyle: "italic" }}>(1&ndash;3 seconds)</span>
+            </div>
+          )}
+
+          {/* Blitz Mine pre-indicator — shown only during the opening blitz pass */}
+          {currentPhase === "blitz" && running && (
+            <div style={{
+              display: "flex", alignItems: "center", gap: 6,
+              padding: "5px 10px", borderRadius: 7, marginBottom: 6,
+              background: "#faf5ff", border: "1px solid #c4b5fd",
+              fontSize: 11, color: "#5b21b6",
+            }}>
+              <span style={{ fontSize: 14 }}>\u26a1</span>
+              <span style={{ fontWeight: 700 }}>Blitz Mining</span>
+              <span style={{ color: "#7c3aed" }}>
+                — scanning {blitzTopics || 19} gap topics for literature evidence&#8230;
+              </span>
+              <span style={{ marginLeft: "auto", fontSize: 10, color: "#9ca3af",
+                             fontStyle: "italic" }}>(runs once before cycles start)</span>
+            </div>
+          )}
+
+          <div style={{ display: "flex", alignItems: "center", gap: 0, marginBottom: 8, flexWrap: "wrap", rowGap: 4 }}>
+            {(["mine", "propose", "run", "analyze"] as const).map((phase, i) => {
               const labels: Record<string, string> = {
-                propose: "Propose", build: "Build", verify: "Verify", analyze: "Analyze"
+                mine: "Mine", propose: "Propose", run: "Run", analyze: "Analyze",
+              };
+              const tooltips: Record<string, string> = {
+                mine:    "Per-cycle: fetch literature for the selected gap topic",
+                propose: "Select the highest-signal experiment based on insights",
+                run:     "Build, verify, and execute the experiment on local corpus data",
+                analyze: "Synthesize results, detect trends, stage anchor candidates",
               };
               const active = currentPhase === phase;
-              const done = running &&
-                (["propose", "build", "verify", "analyze"].indexOf(currentPhase) >
-                 ["propose", "build", "verify", "analyze"].indexOf(phase));
+              const phaseOrder = ["mine", "propose", "run", "analyze"];
+              const isPast = (running || currentPhase === "done") &&
+                phaseOrder.indexOf(currentPhase as string) > phaseOrder.indexOf(phase);
               return (
                 <Fragment key={phase}>
                   {i > 0 && (
-                    <div style={{ width: 20, height: 1,
-                      background: done || active ? "#7c3aed" : "#d1d5db" }} />
+                    <div style={{ width: 16, height: 1,
+                      background: isPast || active ? "#7c3aed" : "#d1d5db" }} />
                   )}
-                  <div style={{
-                    padding: "4px 12px", borderRadius: 14, fontSize: 11, fontWeight: active ? 800 : 600,
-                    background: active ? "#7c3aed" : done ? "#ede9fe" : "#f3f4f6",
-                    color: active ? "#fff" : done ? "#5b21b6" : "#9ca3af",
-                    border: active ? "none" : "1px solid transparent",
-                    transition: "all 0.2s",
-                  }}>
+                  <div
+                    title={tooltips[phase]}
+                    style={{
+                      padding: "4px 10px", borderRadius: 14, fontSize: 11, fontWeight: active ? 800 : 600,
+                      background: active ? "#7c3aed" : isPast ? "#ede9fe" : "#f3f4f6",
+                      color: active ? "#fff" : isPast ? "#5b21b6" : "#9ca3af",
+                      border: active ? "none" : "1px solid transparent",
+                      cursor: "default",
+                      transition: "all 0.2s",
+                    }}>
                     {labels[phase]}
                   </div>
                 </Fragment>
               );
             })}
-            {running && (
-              <div style={{ marginLeft: "auto", fontSize: 11, color: "#6b7280" }}>
-                {log.length}/{cycles} cycles
+
+            {/* Feedback-loop connector: Analyze ↺ back to Propose, with cycle progress.
+                cyclesCompleted counts node_complete events only (1 per experiment run). */}
+            {(running || (cyclesCompleted > 0 && currentPhase !== "done")) && (
+              <div
+                title={`${cyclesCompleted} of ${cycles} experiment runs complete`}
+                style={{
+                  display: "flex", alignItems: "center", gap: 4,
+                  margin: "0 6px", padding: "3px 8px",
+                  borderRadius: 10, background: "#f5f3ff", border: "1px solid #c4b5fd",
+                }}>
+                <span style={{ fontSize: 12, color: "#7c3aed", lineHeight: 1 }}>{"\u21BA"}</span>
+                <span style={{ fontSize: 10, color: "#5b21b6", fontWeight: 700, whiteSpace: "nowrap" }}>
+                  {cyclesCompleted}/{cycles}
+                </span>
+                <div style={{ width: 44, height: 4, background: "#ddd6fe",
+                              borderRadius: 2, overflow: "hidden", flexShrink: 0 }}>
+                  <div style={{
+                    width: `${Math.min((cyclesCompleted / Math.max(cycles, 1)) * 100, 100)}%`,
+                    height: "100%", background: "#7c3aed", borderRadius: 2,
+                    transition: "width 0.4s",
+                  }} />
+                </div>
+                <span style={{ fontSize: 10, color: "#6b7280", whiteSpace: "nowrap" }}>
+                  {Math.round((cyclesCompleted / Math.max(cycles, 1)) * 100)}%
+                </span>
               </div>
             )}
+
+            {/* Done pill — grayed until all cycles complete */}
+            <div style={{ width: 16, height: 1,
+              background: currentPhase === "done" ? "#7c3aed" : "#d1d5db" }} />
+            <div style={{
+              padding: "4px 10px", borderRadius: 14, fontSize: 11,
+              fontWeight: currentPhase === "done" ? 800 : 600,
+              background: currentPhase === "done" ? "#7c3aed" : "#f3f4f6",
+              color: currentPhase === "done" ? "#fff" : "#9ca3af",
+              transition: "all 0.2s",
+            }}>
+              {currentPhase === "done" ? "\u2713 Done" : "Done"}
+            </div>
           </div>
 
           {/* Current work line */}
@@ -974,6 +1100,94 @@ export function ResearchLoopPanel() {
         </div>
       )}
 
+      {/* ── Session Insights card ── */}
+      {!running && lastSession && showInsights && lastSession.completed_at && (
+        <div style={{
+          border: "1px solid #a5b4fc", borderRadius: 8, background: "#eef2ff",
+          padding: "12px 16px", marginTop: 10, marginBottom: 10,
+        }}>
+          <div style={{ display: "flex", justifyContent: "space-between",
+                        alignItems: "center", marginBottom: 10 }}>
+            <span style={{ fontSize: 13, fontWeight: 700, color: "#4338ca" }}>
+              📊 Session Insights
+            </span>
+            <button
+              onClick={() => setShowInsights(false)}
+              style={{
+                padding: "3px 10px", fontSize: 10, fontWeight: 600,
+                border: "1px solid #c7d2fe", borderRadius: 4,
+                background: "#fff", color: "#6366f1", cursor: "pointer",
+              }}>
+              Dismiss
+            </button>
+          </div>
+
+          {/* Coverage before/after bar */}
+          {lastSession.coverage_before != null && lastSession.coverage_after != null && (
+            <div style={{ marginBottom: 10 }}>
+              <div style={{ fontSize: 11, fontWeight: 600, color: "#374151",
+                            marginBottom: 4 }}>
+                Coverage
+              </div>
+              <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                <span style={{ fontSize: 11, color: "#6b7280", width: 50,
+                               textAlign: "right" }}>
+                  {(lastSession.coverage_before * 100).toFixed(1)}%
+                </span>
+                <div style={{ flex: 1, height: 10, background: "#e5e7eb",
+                              borderRadius: 5, overflow: "hidden", position: "relative" }}>
+                  <div style={{
+                    position: "absolute", left: 0, top: 0, height: "100%",
+                    width: `${lastSession.coverage_after * 100}%`,
+                    background: "#6366f1", borderRadius: 5,
+                    transition: "width 0.4s",
+                  }} />
+                  <div style={{
+                    position: "absolute", left: 0, top: 0, height: "100%",
+                    width: `${lastSession.coverage_before * 100}%`,
+                    background: "#a5b4fc", borderRadius: 5,
+                  }} />
+                </div>
+                <span style={{ fontSize: 11, color: "#4338ca", fontWeight: 700,
+                               width: 50 }}>
+                  {(lastSession.coverage_after * 100).toFixed(1)}%
+                </span>
+              </div>
+            </div>
+          )}
+
+          {/* Anchor delta */}
+          {lastSession.anchor_delta != null && lastSession.anchor_delta !== 0 && (
+            <div style={{
+              fontSize: 11, marginBottom: 8, fontWeight: 600,
+              color: lastSession.anchor_delta > 0 ? "#15803d" : "#dc2626",
+            }}>
+              Anchor Δ: {lastSession.anchor_delta > 0 ? "+" : ""}
+              {lastSession.anchor_delta}
+            </div>
+          )}
+
+          {/* Narrative fields */}
+          {lastSession.where_we_came_from && (
+            <NarrativeField label="Where we came from"
+                            text={lastSession.where_we_came_from} />
+          )}
+          {lastSession.what_we_learned && (
+            <NarrativeField label="What we learned"
+                            text={lastSession.what_we_learned} />
+          )}
+          {lastSession.actions_taken && (
+            <ActionsTakenField actions={lastSession.actions_taken} />
+          )}
+          {(lastSession.whats_next_items?.length ?? 0) > 0
+            ? <WhatsNextList items={lastSession.whats_next_items!} />
+            : lastSession.whats_next
+              ? <NarrativeField label="What's next" text={lastSession.whats_next} />
+              : null
+          }
+        </div>
+      )}
+
       {/* ── Loop History ── */}
       {history.length > 0 && (
         <details
@@ -1049,7 +1263,8 @@ function NarrativeField({ label, text }: { label: string; text: string }) {
   );
 }
 
-/** Actions taken — renders either a string or string[] as a bullet list. */
+/** Actions taken — renders either a string or string[] as a bullet list.
+ *  Label clarifies these are experiments that ran in THIS session. */
 function ActionsTakenField({ actions }: { actions: string | string[] }) {
   const items: string[] = Array.isArray(actions)
     ? actions
@@ -1058,15 +1273,18 @@ function ActionsTakenField({ actions }: { actions: string | string[] }) {
     <div style={{ marginBottom: 6 }}>
       <div style={{
         fontSize: 10, fontWeight: 700, color: "#4338ca",
-        textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 4,
+        textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 2,
       }}>
-        Actions taken
+        Experiments run this session
+      </div>
+      <div style={{ fontSize: 9, color: "#9ca3af", marginBottom: 4 }}>
+        Top findings from the {items.length} best-performing experiment{items.length !== 1 ? "s" : ""} this run:
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 3 }}>
         {items.map((item, i) => (
           <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 6 }}>
             <span style={{ color: "#6366f1", fontWeight: 700, fontSize: 11,
-                           flexShrink: 0, marginTop: 1 }}>\u2022</span>
+                           flexShrink: 0, marginTop: 1 }}>{"•"}</span>
             <span style={{ fontSize: 11, color: "#374151", lineHeight: 1.5 }}>
               {item}
             </span>
@@ -1083,9 +1301,13 @@ function WhatsNextList({ items }: { items: WhatsNextItem[] }) {
     <div style={{ marginBottom: 6 }}>
       <div style={{
         fontSize: 10, fontWeight: 700, color: "#4338ca",
-        textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 6,
+        textTransform: "uppercase", letterSpacing: 0.5, marginBottom: 2,
       }}>
         What’s next — top candidates for next run
+      </div>
+      <div style={{ fontSize: 9, color: "#9ca3af", marginBottom: 6 }}>
+        These experiments will be automatically prioritised when you start the next loop.
+        No action needed — the autonomous loop selects and runs them.
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
         {items.map((item, i) => (

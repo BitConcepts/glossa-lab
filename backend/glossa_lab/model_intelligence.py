@@ -30,6 +30,8 @@ import urllib.request
 from datetime import datetime, timezone
 from typing import Any
 
+from pathlib import Path
+
 from fastapi import APIRouter, HTTPException
 
 from glossa_lab.database import get_db

@@ -366,6 +366,14 @@ function ActionCard({ action, status, onApprove, onCancel, onAutoApproveAll }: {
   const base: React.CSSProperties = { borderRadius: 6, padding: "8px 10px", margin: "5px 0", fontSize: 11, border: "1px solid" };
   if (status === "cancelled") return <div style={{ ...base, borderColor: "#374151", background: "#1a2332", color: "#6b7280" }}>✗ {label} — cancelled</div>;
   if (status === "done")      return <div style={{ ...base, borderColor: "#14532d", background: "#052e16", color: "#86efac" }}>✓ {label} — done</div>;
+  if (status === "queued")    return <div style={{ ...base, borderColor: "#78350f", background: "#1c1005", color: "#fbbf24", display: "flex", alignItems: "center", gap: 6 }}>
+    <span>⏳</span><span>{label} — queued in Jobs</span>
+    <button onClick={() => window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: "jobs" } }))}
+      style={{ marginLeft: "auto", padding: "1px 6px", fontSize: 9, border: "1px solid #78350f",
+               borderRadius: 3, background: "none", color: "#fbbf24", cursor: "pointer" }}>
+      View Jobs →
+    </button>
+  </div>;
   if (status === "failed")    return <div style={{ ...base, borderColor: "#7f1d1d", background: "#1a0505", color: "#f87171" }}>⚠ {label} — failed</div>;
   return (
     <div style={{ ...base, borderColor: "#1d4ed8", background: "#eff6ff" }}>
@@ -606,10 +614,15 @@ export function AIChatWindow() {
           timestamp: Date.now(), error: true }]);
         return;
       }
-      updateActionState(msg.id, idx, "done");
+      // If the action queued a background job, show "queued" not "done"
+      const isQueued = !!result.job_id && /queue/i.test(result.summary ?? "");
+      updateActionState(msg.id, idx, isQueued ? "queued" : "done");
       if (action.type === "open_view" && result.navigate)
         window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: result.navigate } }));
-      setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: `\u2713 **${label}** \u2014 ${result.summary ?? "done"}`, timestamp: Date.now() }]);
+      const resultContent = isQueued
+        ? `[NAVIGATE:jobs]\u23f3 **${label}** \u2014 ${result.summary ?? "queued"} \u2014 monitor in Jobs panel`
+        : `\u2713 **${label}** \u2014 ${result.summary ?? "done"}`;
+      setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: resultContent, timestamp: Date.now() }]);
     } catch (e) {
       updateActionState(msg.id, idx, "failed");
       setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: `\u2717 **${label}** failed: ${e instanceof Error ? e.message : String(e)}`, timestamp: Date.now(), error: true }]);
@@ -1071,14 +1084,15 @@ export function ChatInline() {
           timestamp: Date.now(), error: true }]);
         return;
       }
-      upd("done");
+      // If the action queued a background job, show "queued" not "done"
+      const isQueuedInline = !!r.job_id && /queue/i.test(r.summary ?? "");
+      upd(isQueuedInline ? "queued" : "done");
       if (action.type === "open_view" && r.navigate) {
         window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: r.navigate } }));
       }
-      // For long-running actions: offer navigation link rather than just a text message
-      const viewHint = r.navigate ?? _actionViewHint(action);
+      const viewHint = isQueuedInline ? "jobs" : (r.navigate ?? _actionViewHint(action));
       const doneContent = viewHint
-        ? `[NAVIGATE:${viewHint}]\u2713 **${label}** \u2014 ${r.summary ?? "done"}`
+        ? `[NAVIGATE:${viewHint}]${isQueuedInline ? "\u23f3" : "\u2713"} **${label}** \u2014 ${r.summary ?? (isQueuedInline ? "queued" : "done")}`
         : `\u2713 **${label}** \u2014 ${r.summary ?? "done"}`;
       setMessages(p => [...p, { id: ++_msgId, role: "assistant", content: doneContent, timestamp: Date.now() }]);
     } catch (e) {

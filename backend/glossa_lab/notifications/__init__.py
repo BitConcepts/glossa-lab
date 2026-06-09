@@ -38,6 +38,7 @@ from glossa_lab.notifications.templates import (
     format_discovery_digest,
     format_experiment_complete,
     format_study_complete,
+    format_study_loop_complete,
     format_test,
 )
 
@@ -49,5 +50,6 @@ __all__ = [
     "format_discovery_digest",
     "format_experiment_complete",
     "format_study_complete",
+    "format_study_loop_complete",
     "format_test",
 ]

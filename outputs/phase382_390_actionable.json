@@ -1,0 +1,2310 @@
+{
+  "phase382": {
+    "crosswalk": [
+      {
+        "rank": 1,
+        "m77_sign": "047",
+        "m77_freq": 541,
+        "holdat_sign": "M342",
+        "holdat_freq": 584,
+        "holdat_reading": "ay/ā",
+        "freq_ratio": 0.93
+      },
+      {
+        "rank": 2,
+        "m77_sign": "740",
+        "m77_freq": 432,
+        "holdat_sign": "M267",
+        "holdat_freq": 400,
+        "holdat_reading": "iN/in (genitive of)",
+        "freq_ratio": 1.08
+      },
+      {
+        "rank": 3,
+        "m77_sign": "700",
+        "m77_freq": 355,
+        "holdat_sign": "M099",
+        "holdat_freq": 389,
+        "holdat_reading": "kol/koḷ",
+        "freq_ratio": 0.91
+      },
+      {
+        "rank": 4,
+        "m77_sign": "874",
+        "m77_freq": 219,
+        "holdat_sign": "M176",
+        "holdat_freq": 356,
+        "holdat_reading": "an/aṇ",
+        "freq_ratio": 0.62
+      },
+      {
+        "rank": 5,
+        "m77_sign": "400",
+        "m77_freq": 211,
+        "holdat_sign": "M211",
+        "holdat_freq": 249,
+        "holdat_reading": "kol",
+        "freq_ratio": 0.85
+      },
+      {
+        "rank": 6,
+        "m77_sign": "520",
+        "m77_freq": 196,
+        "holdat_sign": "M328",
+        "holdat_freq": 234,
+        "holdat_reading": "ā/āl",
+        "freq_ratio": 0.84
+      },
+      {
+        "rank": 7,
+        "m77_sign": "481",
+        "m77_freq": 179,
+        "holdat_sign": "M293",
+        "holdat_freq": 232,
+        "holdat_reading": "ta",
+        "freq_ratio": 0.77
+      },
+      {
+        "rank": 8,
+        "m77_sign": "692",
+        "m77_freq": 171,
+        "holdat_sign": "M059",
+        "holdat_freq": 222,
+        "holdat_reading": "ēḷ/eḷ",
+        "freq_ratio": 0.77
+      },
+      {
+        "rank": 9,
+        "m77_sign": "427",
+        "m77_freq": 147,
+        "holdat_sign": "M162",
+        "holdat_freq": 205,
+        "holdat_reading": "il/iḷ",
+        "freq_ratio": 0.72
+      },
+      {
+        "rank": 10,
+        "m77_sign": "861",
+        "m77_freq": 138,
+        "holdat_sign": "M391",
+        "holdat_freq": 193,
+        "holdat_reading": "ka/kaṇ",
+        "freq_ratio": 0.72
+      },
+      {
+        "rank": 11,
+        "m77_sign": "003",
+        "m77_freq": 124,
+        "holdat_sign": "M367",
+        "holdat_freq": 190,
+        "holdat_reading": "am/neuter",
+        "freq_ratio": 0.65
+      },
+      {
+        "rank": 12,
+        "m77_sign": "820",
+        "m77_freq": 121,
+        "holdat_sign": "M089",
+        "holdat_freq": 171,
+        "holdat_reading": "tu/tū",
+        "freq_ratio": 0.71
+      },
+      {
+        "rank": 13,
+        "m77_sign": "817",
+        "m77_freq": 107,
+        "holdat_sign": "M233",
+        "holdat_freq": 171,
+        "holdat_reading": "ūr",
+        "freq_ratio": 0.63
+      },
+      {
+        "rank": 14,
+        "m77_sign": "858",
+        "m77_freq": 105,
+        "holdat_sign": "M051",
+        "holdat_freq": 163,
+        "holdat_reading": "pū/puḷ",
+        "freq_ratio": 0.64
+      },
+      {
+        "rank": 15,
+        "m77_sign": "090",
+        "m77_freq": 102,
+        "holdat_sign": "M336",
+        "holdat_freq": 161,
+        "holdat_reading": "iṉ/locative",
+        "freq_ratio": 0.63
+      },
+      {
+        "rank": 16,
+        "m77_sign": "045",
+        "m77_freq": 92,
+        "holdat_sign": "M048",
+        "holdat_freq": 157,
+        "holdat_reading": "mu/muṉ",
+        "freq_ratio": 0.59
+      },
+      {
+        "rank": 17,
+        "m77_sign": "203",
+        "m77_freq": 85,
+        "holdat_sign": "M065",
+        "holdat_freq": 154,
+        "holdat_reading": "kuTam",
+        "freq_ratio": 0.55
+      },
+      {
+        "rank": 18,
+        "m77_sign": "034",
+        "m77_freq": 80,
+        "holdat_sign": "M012",
+        "holdat_freq": 143,
+        "holdat_reading": "oṉṟu/1",
+        "freq_ratio": 0.56
+      },
+      {
+        "rank": 19,
+        "m77_sign": "920",
+        "m77_freq": 76,
+        "holdat_sign": "M125",
+        "holdat_freq": 132,
+        "holdat_reading": "vil",
+        "freq_ratio": 0.58
+      },
+      {
+        "rank": 20,
+        "m77_sign": "256",
+        "m77_freq": 73,
+        "holdat_sign": "M087",
+        "holdat_freq": 130,
+        "holdat_reading": "veL",
+        "freq_ratio": 0.56
+      }
+    ],
+    "verdict": "M77 freq crosswalk: top-20 signs matched by frequency rank. Ratio range: 0.93-0.56."
+  },
+  "phase383": {
+    "n_proposals": 102,
+    "n_root": 10,
+    "n_suffix": 35,
+    "top_20": [
+      {
+        "sign": "M255",
+        "freq": 4,
+        "role": "UNCERTAIN",
+        "left_context": [
+          "vē(1)",
+          "nē(1)",
+          "māṟ(1)"
+        ],
+        "right_context": [
+          "kol(2)",
+          "ā(1)",
+          "am(1)"
+        ],
+        "candidate_readings": [],
+        "current": ""
+      },
+      {
+        "sign": "M251",
+        "freq": 4,
+        "role": "UNCERTAIN",
+        "left_context": [
+          "am(1)",
+          "kaḷiṟu(1)",
+          "ay(1)"
+        ],
+        "right_context": [
+          "oṉṟu(1)",
+          "kutam(1)",
+          "ēḷ(1)"
+        ],
+        "candidate_readings": [],
+        "current": ""
+      },
+      {
+        "sign": "M301",
+        "freq": 4,
+        "role": "UNCERTAIN",
+        "left_context": [
+          "ampu(1)",
+          "ve(1)",
+          "ūr(1)"
+        ],
+        "right_context": [
+          "in(2)",
+          "vel(1)",
+          "kol(1)"
+        ],
+        "candidate_readings": [],
+        "current": ""
+      },
+      {
+        "sign": "M406",
+        "freq": 4,
+        "role": "SUFFIX",
+        "left_context": [
+          "kol(2)",
+          "iṉ(1)",
+          "māṭu(1)"
+        ],
+        "right_context": [
+          "ta(1)",
+          "kol(1)",
+          "kutam(1)"
+        ],
+        "candidate_readings": [
+          "ay",
+          "an",
+          "am"
+        ],
+        "current": ""
+      },
+      {
+        "sign": "M116",
+        "freq": 4,
+        "role": "SUFFIX",
+        "left_context": [
+          "kol(1)",
+          "ta(1)",
+          "il(1)"
+        ],
+        "right_context": [
+          "tu(2)",
+          "ta(1)",
+          "in(1)"
+        ],
+        "candidate_readings": [
+          "ay",
+          "an",
+          "am"
+        ],
+        "current": ""
+      },
+      {
+        "sign": "M274",
+        "freq": 4,
+        "role": "ROOT",
+        "left_context": [
+          "an(1)",
+          "ēḷ(1)",
+          "ku(1)"
+        ],
+        "right_context": [
+          "kol(1)",
+          "in(1)",
+          "ēḷ(1)"
+        ],
+        "candidate_readings": [
+          "nal",
+          "mā",
+          "kōṉ"
+        ],
+        "current": ""
+      },
+      {
+        "sign": "M326",
+        "freq": 4,
+        "role": "SUFFIX",
+        "left_context": [
+          "kōṉ(1)",
+          "kōṭṭāṉ(1)",
+          "pēr(1)"
+        ],
+        "right_context": [
+          "ēḷ(1)"
+        ],
+        "candidate_readings": [
+          "ay",
+          "an",
+          "am"
+        ],
+        "current": ""
+      },
+      {
+        "sign": "M318",
+        "freq": 4,
+        "role": "UNCERTAIN",
+        "left_context": [
+          "paṭ(1)",
+          "vēḷ(1)",
+          "mi(1)"
+        ],
+        "right_context": [
+          "ā(1)",
+          "ta(1)",
+          "kol(1)"
+        ],
+        "candidate_readings": [],
+        "current": ""
+      },
+      {
+        "sign": "M346",
+        "freq": 4,
+        "role": "SUFFIX",
+        "left_context": [
+          "kol(1)",
+          "il(1)",
+          "an(1)"
+        ],
+        "right_context": [
+          "ka(2)",
+          "ūr(1)",
+          "il(1)"
+        ],
+        "candidate_readings": [
+          "ay",
+          "an",
+          "am"
+        ],
+        "current": ""
+      },
+      {
+        "sign": "M312",
+        "freq": 4,
+        "role": "UNCERTAIN",
+        "left_context": [
+          "ay(1)",
+          "kōṉ(1)",
+          "viḷ(1)"
+        ],
+        "right_context": [
+          "an(1)",
+          "ay(1)",
+          "in(1)"
+        ],
+        "candidate_readings": [],
+        "current": ""
+      },
+      {
+        "sign": "M134",
+        "freq": 4,
+        "role": "UNCERTAIN",
+        "left_context": [
+          "kol(1)",
+          "māṟ(1)",
+          "kaḷiṟu(1)"
+        ],
+        "right_context": [
+          "in(1)",
+          "muḷ(1)",
+          "mu(1)"
+        ],
+        "candidate_readings": [],
+        "current": ""
+      },
+      {
+        "sign": "M120",
+        "freq": 4,
+        "role": "SUFFIX",
+        "left_context": [
+          "mu(1)",
+          "pū(1)",
+          "kāṇṭāmirukam(1)"
+        ],
+        "right_context": [
+          "kol(2)",
+          "ay(1)",
+          "ēḷ(1)"
+        ],
+        "candidate_readings": [
+          "ay",
+          "an",
+          "am"
+        ],
+        "current": ""
+      },
+      {
+        "sign": "M207",
+        "freq": 4,
+        "role": "SUFFIX",
+        "left_context": [
+          "yānai(1)",
+          "aṇi(1)",
+          "maṇ(1)"
+        ],
+        "right_context": [
+          "mu(1)",
+          "ōṭu(1)",
+          "pū(1)"
+        ],
+        "candidate_readings": [
+          "ay",
+          "an",
+          "am"
+        ],
+        "current": ""
+      },
+      {
+        "sign": "M280",
+        "freq": 4,
+        "role": "UNCERTAIN",
+        "left_context": [
+          "ka(1)",
+          "ūr(1)",
+          "ay(1)"
+        ],
+        "right_context": [
+          "kol(2)",
+          "ay(1)",
+          "mu(1)"
+        ],
+        "candidate_readings": [],
+        "current": ""
+      },
+      {
+        "sign": "M309",
+        "freq": 4,
+        "role": "SUFFIX",
+        "left_context": [
+          "kol(1)",
+          "pū(1)",
+          "māṭu(1)"
+        ],
+        "right_context": [
+          "pū(1)",
+          "kol(1)",
+          "ka(1)"
+        ],
+        "candidate_readings": [
+          "ay",
+          "an",
+          "am"
+        ],
+        "current": ""
+      },
+      {
+        "sign": "M382",
+        "freq": 4,
+        "role": "UNCERTAIN",
+        "left_context": [
+          "ka(2)",
+          "yānai(1)",
+          "in(1)"
+        ],
+        "right_context": [
+          "ma(1)",
+          "ā(1)",
+          "ka(1)"
+        ],
+        "candidate_readings": [],
+        "current": ""
+      },
+      {
+        "sign": "M324",
+        "freq": 4,
+        "role": "UNCERTAIN",
+        "left_context": [
+          "vel(1)",
+          "kuṉ(1)",
+          "pul(1)"
+        ],
+        "right_context": [
+          "ūr(1)",
+          "tu(1)",
+          "in(1)"
+        ],
+        "candidate_readings": [],
+        "current": ""
+      },
+      {
+        "sign": "M370",
+        "freq": 4,
+        "role": "UNCERTAIN",
+        "left_context": [
+          "mu(1)",
+          "kō(1)",
+          "oṉṟu(1)"
+        ],
+        "right_context": [
+          "oṉṟu(1)",
+          "kol(1)",
+          "kutam(1)"
+        ],
+        "candidate_readings": [],
+        "current": ""
+      },
+      {
+        "sign": "M218",
+        "freq": 4,
+        "role": "SUFFIX",
+        "left_context": [
+          "ūr(1)",
+          "tōḷ(1)",
+          "kol(1)"
+        ],
+        "right_context": [
+          "an(1)",
+          "ta(1)",
+          "mu(1)"
+        ],
+        "candidate_readings": [
+          "ay",
+          "an",
+          "am"
+        ],
+        "current": ""
+      },
+      {
+        "sign": "M186",
+        "freq": 4,
+        "role": "ROOT",
+        "left_context": [
+          "in(1)",
+          "āṇ(1)",
+          "mā(1)"
+        ],
+        "right_context": [
+          "ūr(2)",
+          "kol(1)",
+          "ā(1)"
+        ],
+        "candidate_readings": [
+          "nal",
+          "mā",
+          "kōṉ"
+        ],
+        "current": ""
+      }
+    ],
+    "verdict": "Blocker proposals: 102 signs scored. 10 ROOT, 35 SUFFIX candidates."
+  },
+  "phase384": {
+    "n_candidates": 15,
+    "decoded": [
+      {
+        "id": "M-0088",
+        "signs": [
+          "M065",
+          "M267",
+          "M099",
+          "M125",
+          "M087",
+          "M305"
+        ],
+        "readings": [
+          "kuTam",
+          "iN/in (genitive of)",
+          "kol/koḷ",
+          "vil",
+          "veL",
+          "ōṭu/comitative"
+        ],
+        "pdr_name": "kutam-in-kol-vil-vel-ōṭu",
+        "english": "kutam of weapon/vessel bow vel with",
+        "score": 4,
+        "motif": "script only"
+      },
+      {
+        "id": "BN-0013",
+        "signs": [
+          "M006",
+          "M281",
+          "M305"
+        ],
+        "readings": [
+          "puli",
+          "piLLai",
+          "ōṭu/comitative"
+        ],
+        "pdr_name": "puli-pillai-ōṭu",
+        "english": "tiger pillai with",
+        "score": 4,
+        "motif": "rhinoceros"
+      },
+      {
+        "id": "H-0114",
+        "signs": [
+          "M008",
+          "M051",
+          "M198",
+          "M089",
+          "M305"
+        ],
+        "readings": [
+          "erumai",
+          "pū/puḷ",
+          "co",
+          "tu/tū",
+          "ōṭu/comitative"
+        ],
+        "pdr_name": "erumai-pū-co-tu-ōṭu",
+        "english": "erumai flower co do/give with",
+        "score": 4,
+        "motif": "elephant"
+      },
+      {
+        "id": "M-0136",
+        "signs": [
+          "M006",
+          "M347",
+          "M211",
+          "M342",
+          "M305"
+        ],
+        "readings": [
+          "puli",
+          "ka",
+          "kol",
+          "ay/ā",
+          "ōṭu/comitative"
+        ],
+        "pdr_name": "puli-ka-kol-ay-ōṭu",
+        "english": "tiger see weapon/vessel one(f/n) with",
+        "score": 4,
+        "motif": "elephant"
+      },
+      {
+        "id": "DK-0026",
+        "signs": [
+          "M033",
+          "M267",
+          "M305"
+        ],
+        "readings": [
+          "puli",
+          "iN/in (genitive of)",
+          "ōṭu/comitative"
+        ],
+        "pdr_name": "puli-in-ōṭu",
+        "english": "tiger of with",
+        "score": 4,
+        "motif": "unicorn"
+      },
+      {
+        "id": "M-0176",
+        "signs": [
+          "M059",
+          "M162",
+          "M125",
+          "M305"
+        ],
+        "readings": [
+          "ēḷ/eḷ",
+          "il/iḷ",
+          "vil",
+          "ōṭu/comitative"
+        ],
+        "pdr_name": "ēḷ-il-vil-ōṭu",
+        "english": "seven house bow with",
+        "score": 4,
+        "motif": "unicorn"
+      },
+      {
+        "id": "H-0240",
+        "signs": [
+          "M014",
+          "M048",
+          "M162",
+          "M342",
+          "M367",
+          "M305"
+        ],
+        "readings": [
+          "tiru",
+          "mu/muṉ",
+          "il/iḷ",
+          "ay/ā",
+          "am/neuter",
+          "ōṭu/comitative"
+        ],
+        "pdr_name": "tiru-mu-il-ay-am-ōṭu",
+        "english": "sacred three/front house one(f/n) thing(n) with",
+        "score": 4,
+        "motif": "script only"
+      },
+      {
+        "id": "H-0243",
+        "signs": [
+          "M023",
+          "M048",
+          "M125",
+          "M211",
+          "M342",
+          "M305"
+        ],
+        "readings": [
+          "vaḷ",
+          "mu/muṉ",
+          "vil",
+          "kol",
+          "ay/ā",
+          "ōṭu/comitative"
+        ],
+        "pdr_name": "vaḷ-mu-vil-kol-ay-ōṭu",
+        "english": "strong three/front bow weapon/vessel one(f/n) with",
+        "score": 4,
+        "motif": "elephant"
+      },
+      {
+        "id": "L-0080",
+        "signs": [
+          "M328",
+          "M342",
+          "M367",
+          "M176",
+          "M162",
+          "M305"
+        ],
+        "readings": [
+          "ā/āl",
+          "ay/ā",
+          "am/neuter",
+          "an/aṇ",
+          "il/iḷ",
+          "ōṭu/comitative"
+        ],
+        "pdr_name": "ā-ay-am-an-il-ōṭu",
+        "english": "of one(f/n) thing(n) man(m) house with",
+        "score": 4,
+        "motif": "zebu bull"
+      },
+      {
+        "id": "C-0055",
+        "signs": [
+          "M080",
+          "M125",
+          "M160",
+          "M267",
+          "M293",
+          "M305"
+        ],
+        "readings": [
+          "vēṅkai",
+          "vil",
+          "???",
+          "iN/in (genitive of)",
+          "ta",
+          "ōṭu/comitative"
+        ],
+        "pdr_name": "vēṅkai-vil-in-ta-ōṭu",
+        "english": "tiger bow ??? of ta with",
+        "score": 4,
+        "motif": "unicorn"
+      },
+      {
+        "id": "H-0317",
+        "signs": [
+          "M016",
+          "M176",
+          "M099",
+          "M162",
+          "M162",
+          "M305"
+        ],
+        "readings": [
+          "kaḷiṟu",
+          "an/aṇ",
+          "kol/koḷ",
+          "il/iḷ",
+          "il/iḷ",
+          "ōṭu/comitative"
+        ],
+        "pdr_name": "kaḷiṟu-an-kol-il-il-ōṭu",
+        "english": "kaḷiṟu man(m) weapon/vessel house house with",
+        "score": 4,
+        "motif": "elephant"
+      },
+      {
+        "id": "H-0324",
+        "signs": [
+          "M045",
+          "M162",
+          "M305"
+        ],
+        "readings": [
+          "yānai",
+          "il/iḷ",
+          "ōṭu/comitative"
+        ],
+        "pdr_name": "yānai-il-ōṭu",
+        "english": "elephant house with",
+        "score": 4,
+        "motif": "elephant"
+      },
+      {
+        "id": "H-0329",
+        "signs": [
+          "M013",
+          "M162",
+          "M305"
+        ],
+        "readings": [
+          "nakaram",
+          "il/iḷ",
+          "ōṭu/comitative"
+        ],
+        "pdr_name": "nakaram-il-ōṭu",
+        "english": "crocodile house with",
+        "score": 4,
+        "motif": "script only"
+      },
+      {
+        "id": "C-0078",
+        "signs": [
+          "M006",
+          "M162",
+          "M305"
+        ],
+        "readings": [
+          "puli",
+          "il/iḷ",
+          "ōṭu/comitative"
+        ],
+        "pdr_name": "puli-il-ōṭu",
+        "english": "tiger house with",
+        "score": 4,
+        "motif": "unicorn"
+      },
+      {
+        "id": "M-0597",
+        "signs": [
+          "M001",
+          "M162",
+          "M162",
+          "M099",
+          "M342",
+          "M305"
+        ],
+        "readings": [
+          "tōḷ",
+          "il/iḷ",
+          "il/iḷ",
+          "kol/koḷ",
+          "ay/ā",
+          "ōṭu/comitative"
+        ],
+        "pdr_name": "tōḷ-il-il-kol-ay-ōṭu",
+        "english": "tōḷ house house weapon/vessel one(f/n) with",
+        "score": 4,
+        "motif": "rhinoceros"
+      }
+    ],
+    "verdict": "Shu-ilishu decode: 15 candidates. Top: 'kutam-in-kol-vil-vel-ōṭu' = 'kutam of weapon/vessel bow vel with'"
+  },
+  "phase385": {
+    "n_comparisons": 3,
+    "n_both_match": 1,
+    "matches": [
+      {
+        "tb_aksara": "ka",
+        "indus_sign": "M391",
+        "our_reading": "ka",
+        "shape_similarity": "HIGH",
+        "reading_match": true,
+        "both_match": true
+      },
+      {
+        "tb_aksara": "ma",
+        "indus_sign": "M367",
+        "our_reading": "am",
+        "shape_similarity": "MEDIUM",
+        "reading_match": false,
+        "both_match": false
+      },
+      {
+        "tb_aksara": "na",
+        "indus_sign": "M024",
+        "our_reading": "nē",
+        "shape_similarity": "LOW",
+        "reading_match": false,
+        "both_match": false
+      }
+    ],
+    "verdict": "TB shape: 1/3 signs match in BOTH shape and reading. Limited by available shape data."
+  },
+  "phase386": {
+    "n_entries": 619,
+    "top_30": [
+      {
+        "signs": "M342+M176",
+        "readings": "ay+an",
+        "gloss": "one(f/n) + man(m)",
+        "pmi": 2.43,
+        "count": 122
+      },
+      {
+        "signs": "M267+M099",
+        "readings": "in+kol",
+        "gloss": "of + weapon/vessel",
+        "pmi": 2.31,
+        "count": 84
+      },
+      {
+        "signs": "M176+M099",
+        "readings": "an+kol",
+        "gloss": "man(m) + weapon/vessel",
+        "pmi": 2.3,
+        "count": 74
+      },
+      {
+        "signs": "M062+M087",
+        "readings": "erutu+vel",
+        "gloss": "bull + vel",
+        "pmi": 3.66,
+        "count": 5
+      },
+      {
+        "signs": "M031+M342",
+        "readings": "kai+ay",
+        "gloss": "hand + one(f/n)",
+        "pmi": 2.3,
+        "count": 5
+      },
+      {
+        "signs": "M071+M267",
+        "readings": "nal+in",
+        "gloss": "good + of",
+        "pmi": 2.52,
+        "count": 4
+      },
+      {
+        "signs": "M061+M267",
+        "readings": "ka+in",
+        "gloss": "see + of",
+        "pmi": 2.06,
+        "count": 4
+      },
+      {
+        "signs": "M033+M267",
+        "readings": "puli+in",
+        "gloss": "tiger + of",
+        "pmi": 2.94,
+        "count": 4
+      },
+      {
+        "signs": "M075+M267",
+        "readings": "māṟ+in",
+        "gloss": "māṟ + of",
+        "pmi": 2.72,
+        "count": 4
+      },
+      {
+        "signs": "M068+M342",
+        "readings": "maṟi+ay",
+        "gloss": "young-animal + one(f/n)",
+        "pmi": 2.28,
+        "count": 4
+      },
+      {
+        "signs": "M054+M089",
+        "readings": "mi+tu",
+        "gloss": "mi + do/give",
+        "pmi": 4.16,
+        "count": 4
+      },
+      {
+        "signs": "M005+M342",
+        "readings": "kōṉ+ay",
+        "gloss": "king/chief + one(f/n)",
+        "pmi": 2.07,
+        "count": 4
+      },
+      {
+        "signs": "M045+M162",
+        "readings": "yānai+il",
+        "gloss": "elephant + house",
+        "pmi": 2.9,
+        "count": 4
+      },
+      {
+        "signs": "M037+M267",
+        "readings": "kēḷ+in",
+        "gloss": "kēḷ + of",
+        "pmi": 2.52,
+        "count": 4
+      },
+      {
+        "signs": "M008+M328",
+        "readings": "erumai+ā",
+        "gloss": "erumai + of",
+        "pmi": 2.42,
+        "count": 3
+      },
+      {
+        "signs": "M074+M267",
+        "readings": "ker+in",
+        "gloss": "ker + of",
+        "pmi": 2.52,
+        "count": 3
+      },
+      {
+        "signs": "M304+M099",
+        "readings": "vēṟ+kol",
+        "gloss": "vēṟ + weapon/vessel",
+        "pmi": 3.83,
+        "count": 3
+      },
+      {
+        "signs": "M021+M211",
+        "readings": "kō+kol",
+        "gloss": "king + weapon/vessel",
+        "pmi": 2.79,
+        "count": 3
+      },
+      {
+        "signs": "M021+M176",
+        "readings": "kō+an",
+        "gloss": "king + man(m)",
+        "pmi": 2.28,
+        "count": 3
+      },
+      {
+        "signs": "M060+M328",
+        "readings": "kāṇṭāmirukam+ā",
+        "gloss": "rhinoceros + of",
+        "pmi": 2.56,
+        "count": 3
+      },
+      {
+        "signs": "M014+M176",
+        "readings": "tiru+an",
+        "gloss": "sacred + man(m)",
+        "pmi": 2.19,
+        "count": 3
+      },
+      {
+        "signs": "M022+M367",
+        "readings": "kalam+am",
+        "gloss": "vessel + thing(n)",
+        "pmi": 2.72,
+        "count": 3
+      },
+      {
+        "signs": "M019+M328",
+        "readings": "ampu+ā",
+        "gloss": "ampu + of",
+        "pmi": 2.56,
+        "count": 3
+      },
+      {
+        "signs": "M082+M342",
+        "readings": "pa+ay",
+        "gloss": "pa + one(f/n)",
+        "pmi": 2.75,
+        "count": 3
+      },
+      {
+        "signs": "M002+M336",
+        "readings": "kuṉ+iṉ",
+        "gloss": "kuṉ + of(gen)",
+        "pmi": 3.42,
+        "count": 3
+      },
+      {
+        "signs": "M045+M293",
+        "readings": "yānai+ta",
+        "gloss": "elephant + ta",
+        "pmi": 2.31,
+        "count": 3
+      },
+      {
+        "signs": "M039+M391",
+        "readings": "āṉai+ka",
+        "gloss": "elephant + see",
+        "pmi": 2.99,
+        "count": 3
+      },
+      {
+        "signs": "M015+M176",
+        "readings": "mā+an",
+        "gloss": "great + man(m)",
+        "pmi": 2.37,
+        "count": 3
+      },
+      {
+        "signs": "M061+M089",
+        "readings": "ka+tu",
+        "gloss": "see + do/give",
+        "pmi": 2.87,
+        "count": 3
+      },
+      {
+        "signs": "M056+M089",
+        "readings": "min4+tu",
+        "gloss": "min4 + do/give",
+        "pmi": 3.09,
+        "count": 3
+      }
+    ],
+    "verdict": "Compound dictionary: 619 glossed entries. Top: 'one(f/n) + man(m)' (122x)."
+  },
+  "phase387": {
+    "n_translated": 1252,
+    "avg_length": 3.9,
+    "motif_distribution": {
+      "unicorn": 395,
+      "zebu bull": 255,
+      "elephant": 146,
+      "rhinoceros": 130,
+      "script only": 104,
+      "geometric": 65,
+      "buffalo": 59,
+      "gharial": 49,
+      "tiger": 49
+    },
+    "site_distribution": {
+      "Mohenjo-daro": 444,
+      "Harappa": 365,
+      "Lothal": 99,
+      "Dholavira": 82,
+      "Kalibangan": 76,
+      "Chanhu-daro": 63,
+      "Surkotada": 49,
+      "Banawali": 47,
+      "Rakhigarhi": 27
+    },
+    "sample_10": [
+      {
+        "id": "H-0001",
+        "motif": "elephant",
+        "site": "Harappa",
+        "signs": [
+          "M391",
+          "M211",
+          "M099",
+          "M220"
+        ],
+        "readings": [
+          "ka/kaṇ",
+          "kol",
+          "kol/koḷ",
+          "al"
+        ],
+        "pdr": "ka kol kol al",
+        "english": "see weapon/vessel weapon/vessel al",
+        "length": 4
+      },
+      {
+        "id": "M-0001",
+        "motif": "geometric",
+        "site": "Mohenjo-daro",
+        "signs": [
+          "M022",
+          "M270",
+          "M342",
+          "M211",
+          "M087"
+        ],
+        "readings": [
+          "kalam",
+          "muḷ",
+          "ay/ā",
+          "kol",
+          "veL"
+        ],
+        "pdr": "kalam muḷ ay kol vel",
+        "english": "vessel muḷ one(f/n) weapon/vessel vel",
+        "length": 5
+      },
+      {
+        "id": "H-0002",
+        "motif": "script only",
+        "site": "Harappa",
+        "signs": [
+          "M042",
+          "M012"
+        ],
+        "readings": [
+          "vaN",
+          "oṉṟu/1"
+        ],
+        "pdr": "van oṉṟu",
+        "english": "van one",
+        "length": 2
+      },
+      {
+        "id": "DK-0001",
+        "motif": "zebu bull",
+        "site": "Dholavira",
+        "signs": [
+          "M062",
+          "M162",
+          "M267"
+        ],
+        "readings": [
+          "erutu",
+          "il/iḷ",
+          "iN/in (genitive of)"
+        ],
+        "pdr": "erutu il in",
+        "english": "bull house of",
+        "length": 3
+      },
+      {
+        "id": "H-0003",
+        "motif": "unicorn",
+        "site": "Harappa",
+        "signs": [
+          "M059",
+          "M059"
+        ],
+        "readings": [
+          "ēḷ/eḷ",
+          "ēḷ/eḷ"
+        ],
+        "pdr": "ēḷ ēḷ",
+        "english": "seven seven",
+        "length": 2
+      },
+      {
+        "id": "M-0003",
+        "motif": "zebu bull",
+        "site": "Mohenjo-daro",
+        "signs": [
+          "M004",
+          "M391",
+          "M099"
+        ],
+        "readings": [
+          "kēḷ",
+          "ka/kaṇ",
+          "kol/koḷ"
+        ],
+        "pdr": "kēḷ ka kol",
+        "english": "kēḷ see weapon/vessel",
+        "length": 3
+      },
+      {
+        "id": "K-0001",
+        "motif": "elephant",
+        "site": "Kalibangan",
+        "signs": [
+          "M012",
+          "M183",
+          "M391",
+          "M048"
+        ],
+        "readings": [
+          "oṉṟu/1",
+          "vēḷ",
+          "ka/kaṇ",
+          "mu/muṉ"
+        ],
+        "pdr": "oṉṟu vēḷ ka mu",
+        "english": "one priest see three/front",
+        "length": 4
+      },
+      {
+        "id": "M-0004",
+        "motif": "unicorn",
+        "site": "Mohenjo-daro",
+        "signs": [
+          "M048",
+          "M328",
+          "M328"
+        ],
+        "readings": [
+          "mu/muṉ",
+          "ā/āl",
+          "ā/āl"
+        ],
+        "pdr": "mu ā ā",
+        "english": "three/front of of",
+        "length": 3
+      },
+      {
+        "id": "H-0004",
+        "motif": "unicorn",
+        "site": "Harappa",
+        "signs": [
+          "M014",
+          "M162",
+          "M342",
+          "M176",
+          "M099",
+          "M125"
+        ],
+        "readings": [
+          "tiru",
+          "il/iḷ",
+          "ay/ā",
+          "an/aṇ",
+          "kol/koḷ",
+          "vil"
+        ],
+        "pdr": "tiru il ay an kol vil",
+        "english": "sacred house one(f/n) man(m) weapon/vessel bow",
+        "length": 6
+      },
+      {
+        "id": "L-0001",
+        "motif": "elephant",
+        "site": "Lothal",
+        "signs": [
+          "M023",
+          "M176",
+          "M099",
+          "M328"
+        ],
+        "readings": [
+          "vaḷ",
+          "an/aṇ",
+          "kol/koḷ",
+          "ā/āl"
+        ],
+        "pdr": "vaḷ an kol ā",
+        "english": "strong man(m) weapon/vessel of",
+        "length": 4
+      }
+    ],
+    "verdict": "Full translation: 1252 inscriptions rendered. Avg length 3.9. Top motif: unicorn."
+  },
+  "phase388": {
+    "n_unique_patterns": 544,
+    "top_20_patterns": [
+      {
+        "pattern": "?S",
+        "count": 58
+      },
+      {
+        "pattern": "RS",
+        "count": 52
+      },
+      {
+        "pattern": "RR",
+        "count": 41
+      },
+      {
+        "pattern": "?R",
+        "count": 35
+      },
+      {
+        "pattern": "?SS",
+        "count": 32
+      },
+      {
+        "pattern": "RSS",
+        "count": 32
+      },
+      {
+        "pattern": "R?",
+        "count": 29
+      },
+      {
+        "pattern": "R?S",
+        "count": 26
+      },
+      {
+        "pattern": "?SR",
+        "count": 24
+      },
+      {
+        "pattern": "??",
+        "count": 24
+      },
+      {
+        "pattern": "??S",
+        "count": 20
+      },
+      {
+        "pattern": "RS?",
+        "count": 20
+      },
+      {
+        "pattern": "RSSS",
+        "count": 19
+      },
+      {
+        "pattern": "R?R",
+        "count": 18
+      },
+      {
+        "pattern": "RSSR",
+        "count": 17
+      },
+      {
+        "pattern": "?SSR",
+        "count": 16
+      },
+      {
+        "pattern": "R??",
+        "count": 16
+      },
+      {
+        "pattern": "RRS",
+        "count": 15
+      },
+      {
+        "pattern": "??SS",
+        "count": 15
+      },
+      {
+        "pattern": "SSS",
+        "count": 14
+      }
+    ],
+    "by_length": {
+      "2": {
+        "n_patterns": 9,
+        "top_3": [
+          "?S",
+          "RS",
+          "RR"
+        ]
+      },
+      "3": {
+        "n_patterns": 27,
+        "top_3": [
+          "?SS",
+          "RSS",
+          "R?S"
+        ]
+      },
+      "4": {
+        "n_patterns": 72,
+        "top_3": [
+          "RSSS",
+          "RSSR",
+          "?SSR"
+        ]
+      },
+      "5": {
+        "n_patterns": 147,
+        "top_3": [
+          "?SSRR",
+          "RSSRS",
+          "RRSSS"
+        ]
+      },
+      "6": {
+        "n_patterns": 132,
+        "top_3": [
+          "RSSSSS",
+          "?SSSS?",
+          "R????S"
+        ]
+      },
+      "7": {
+        "n_patterns": 111,
+        "top_3": [
+          "R???SR?",
+          "RSS?SSS",
+          "RSS??R?"
+        ]
+      },
+      "8": {
+        "n_patterns": 46,
+        "top_3": [
+          "?R??SR?S",
+          "?SSSRSRS",
+          "R?S?S?SS"
+        ]
+      }
+    },
+    "verdict": "Taxonomy: 544 unique reading patterns. Top: '?S' (58x). Most patterns at length 5."
+  },
+  "phase389": {
+    "n_motif_types": 9,
+    "dictionaries": {
+      "unicorn": {
+        "n_seals": 514,
+        "n_tokens": 1999,
+        "top_10": [
+          {
+            "reading": "kol",
+            "gloss": "weapon/vessel",
+            "count": 198
+          },
+          {
+            "reading": "ay",
+            "gloss": "one(f/n)",
+            "count": 184
+          },
+          {
+            "reading": "in",
+            "gloss": "of",
+            "count": 147
+          },
+          {
+            "reading": "an",
+            "gloss": "man(m)",
+            "count": 128
+          },
+          {
+            "reading": "ēḷ",
+            "gloss": "seven",
+            "count": 101
+          },
+          {
+            "reading": "ā",
+            "gloss": "of",
+            "count": 73
+          },
+          {
+            "reading": "ta",
+            "gloss": "ta",
+            "count": 70
+          },
+          {
+            "reading": "ka",
+            "gloss": "see",
+            "count": 69
+          },
+          {
+            "reading": "am",
+            "gloss": "thing(n)",
+            "count": 64
+          },
+          {
+            "reading": "il",
+            "gloss": "house",
+            "count": 62
+          }
+        ],
+        "unique_readings": 112
+      },
+      "zebu bull": {
+        "n_seals": 347,
+        "n_tokens": 1309,
+        "top_10": [
+          {
+            "reading": "kol",
+            "gloss": "weapon/vessel",
+            "count": 139
+          },
+          {
+            "reading": "ay",
+            "gloss": "one(f/n)",
+            "count": 102
+          },
+          {
+            "reading": "in",
+            "gloss": "of",
+            "count": 78
+          },
+          {
+            "reading": "an",
+            "gloss": "man(m)",
+            "count": 70
+          },
+          {
+            "reading": "ā",
+            "gloss": "of",
+            "count": 50
+          },
+          {
+            "reading": "ta",
+            "gloss": "ta",
+            "count": 46
+          },
+          {
+            "reading": "tu",
+            "gloss": "do/give",
+            "count": 45
+          },
+          {
+            "reading": "ka",
+            "gloss": "see",
+            "count": 40
+          },
+          {
+            "reading": "am",
+            "gloss": "thing(n)",
+            "count": 39
+          },
+          {
+            "reading": "il",
+            "gloss": "house",
+            "count": 38
+          }
+        ],
+        "unique_readings": 104
+      },
+      "elephant": {
+        "n_seals": 200,
+        "n_tokens": 793,
+        "top_10": [
+          {
+            "reading": "kol",
+            "gloss": "weapon/vessel",
+            "count": 80
+          },
+          {
+            "reading": "ay",
+            "gloss": "one(f/n)",
+            "count": 66
+          },
+          {
+            "reading": "in",
+            "gloss": "of",
+            "count": 43
+          },
+          {
+            "reading": "ta",
+            "gloss": "ta",
+            "count": 39
+          },
+          {
+            "reading": "an",
+            "gloss": "man(m)",
+            "count": 37
+          },
+          {
+            "reading": "il",
+            "gloss": "house",
+            "count": 34
+          },
+          {
+            "reading": "ka",
+            "gloss": "see",
+            "count": 31
+          },
+          {
+            "reading": "ā",
+            "gloss": "of",
+            "count": 31
+          },
+          {
+            "reading": "ēḷ",
+            "gloss": "seven",
+            "count": 29
+          },
+          {
+            "reading": "kaḷiṟu",
+            "gloss": "kaḷiṟu",
+            "count": 25
+          }
+        ],
+        "unique_readings": 90
+      },
+      "rhinoceros": {
+        "n_seals": 170,
+        "n_tokens": 675,
+        "top_10": [
+          {
+            "reading": "ay",
+            "gloss": "one(f/n)",
+            "count": 76
+          },
+          {
+            "reading": "kol",
+            "gloss": "weapon/vessel",
+            "count": 69
+          },
+          {
+            "reading": "an",
+            "gloss": "man(m)",
+            "count": 38
+          },
+          {
+            "reading": "il",
+            "gloss": "house",
+            "count": 29
+          },
+          {
+            "reading": "in",
+            "gloss": "of",
+            "count": 26
+          },
+          {
+            "reading": "ta",
+            "gloss": "ta",
+            "count": 25
+          },
+          {
+            "reading": "pū",
+            "gloss": "flower",
+            "count": 24
+          },
+          {
+            "reading": "ā",
+            "gloss": "of",
+            "count": 21
+          },
+          {
+            "reading": "mu",
+            "gloss": "three/front",
+            "count": 21
+          },
+          {
+            "reading": "iṉ",
+            "gloss": "of(gen)",
+            "count": 21
+          }
+        ],
+        "unique_readings": 91
+      },
+      "script only": {
+        "n_seals": 138,
+        "n_tokens": 533,
+        "top_10": [
+          {
+            "reading": "kol",
+            "gloss": "weapon/vessel",
+            "count": 52
+          },
+          {
+            "reading": "ay",
+            "gloss": "one(f/n)",
+            "count": 46
+          },
+          {
+            "reading": "in",
+            "gloss": "of",
+            "count": 34
+          },
+          {
+            "reading": "ta",
+            "gloss": "ta",
+            "count": 26
+          },
+          {
+            "reading": "an",
+            "gloss": "man(m)",
+            "count": 25
+          },
+          {
+            "reading": "il",
+            "gloss": "house",
+            "count": 22
+          },
+          {
+            "reading": "ā",
+            "gloss": "of",
+            "count": 19
+          },
+          {
+            "reading": "mu",
+            "gloss": "three/front",
+            "count": 18
+          },
+          {
+            "reading": "ūr",
+            "gloss": "village",
+            "count": 17
+          },
+          {
+            "reading": "ka",
+            "gloss": "see",
+            "count": 16
+          }
+        ],
+        "unique_readings": 80
+      },
+      "geometric": {
+        "n_seals": 93,
+        "n_tokens": 362,
+        "top_10": [
+          {
+            "reading": "kol",
+            "gloss": "weapon/vessel",
+            "count": 40
+          },
+          {
+            "reading": "ay",
+            "gloss": "one(f/n)",
+            "count": 27
+          },
+          {
+            "reading": "an",
+            "gloss": "man(m)",
+            "count": 19
+          },
+          {
+            "reading": "in",
+            "gloss": "of",
+            "count": 19
+          },
+          {
+            "reading": "ka",
+            "gloss": "see",
+            "count": 17
+          },
+          {
+            "reading": "am",
+            "gloss": "thing(n)",
+            "count": 16
+          },
+          {
+            "reading": "ūr",
+            "gloss": "village",
+            "count": 14
+          },
+          {
+            "reading": "ta",
+            "gloss": "ta",
+            "count": 14
+          },
+          {
+            "reading": "ā",
+            "gloss": "of",
+            "count": 14
+          },
+          {
+            "reading": "pū",
+            "gloss": "flower",
+            "count": 13
+          }
+        ],
+        "unique_readings": 71
+      },
+      "tiger": {
+        "n_seals": 72,
+        "n_tokens": 293,
+        "top_10": [
+          {
+            "reading": "ay",
+            "gloss": "one(f/n)",
+            "count": 30
+          },
+          {
+            "reading": "kol",
+            "gloss": "weapon/vessel",
+            "count": 30
+          },
+          {
+            "reading": "in",
+            "gloss": "of",
+            "count": 17
+          },
+          {
+            "reading": "ka",
+            "gloss": "see",
+            "count": 14
+          },
+          {
+            "reading": "an",
+            "gloss": "man(m)",
+            "count": 12
+          },
+          {
+            "reading": "kutam",
+            "gloss": "kutam",
+            "count": 12
+          },
+          {
+            "reading": "am",
+            "gloss": "thing(n)",
+            "count": 11
+          },
+          {
+            "reading": "ta",
+            "gloss": "ta",
+            "count": 10
+          },
+          {
+            "reading": "ā",
+            "gloss": "of",
+            "count": 9
+          },
+          {
+            "reading": "iṉ",
+            "gloss": "of(gen)",
+            "count": 9
+          }
+        ],
+        "unique_readings": 68
+      },
+      "buffalo": {
+        "n_seals": 72,
+        "n_tokens": 278,
+        "top_10": [
+          {
+            "reading": "kol",
+            "gloss": "weapon/vessel",
+            "count": 34
+          },
+          {
+            "reading": "ay",
+            "gloss": "one(f/n)",
+            "count": 31
+          },
+          {
+            "reading": "in",
+            "gloss": "of",
+            "count": 20
+          },
+          {
+            "reading": "kutam",
+            "gloss": "kutam",
+            "count": 13
+          },
+          {
+            "reading": "an",
+            "gloss": "man(m)",
+            "count": 12
+          },
+          {
+            "reading": "ta",
+            "gloss": "ta",
+            "count": 11
+          },
+          {
+            "reading": "ka",
+            "gloss": "see",
+            "count": 10
+          },
+          {
+            "reading": "ūr",
+            "gloss": "village",
+            "count": 10
+          },
+          {
+            "reading": "vil",
+            "gloss": "bow",
+            "count": 8
+          },
+          {
+            "reading": "ēḷ",
+            "gloss": "seven",
+            "count": 8
+          }
+        ],
+        "unique_readings": 56
+      },
+      "gharial": {
+        "n_seals": 64,
+        "n_tokens": 259,
+        "top_10": [
+          {
+            "reading": "kol",
+            "gloss": "weapon/vessel",
+            "count": 22
+          },
+          {
+            "reading": "ay",
+            "gloss": "one(f/n)",
+            "count": 22
+          },
+          {
+            "reading": "in",
+            "gloss": "of",
+            "count": 16
+          },
+          {
+            "reading": "an",
+            "gloss": "man(m)",
+            "count": 15
+          },
+          {
+            "reading": "ta",
+            "gloss": "ta",
+            "count": 13
+          },
+          {
+            "reading": "il",
+            "gloss": "house",
+            "count": 12
+          },
+          {
+            "reading": "oṉṟu",
+            "gloss": "one",
+            "count": 10
+          },
+          {
+            "reading": "ka",
+            "gloss": "see",
+            "count": 10
+          },
+          {
+            "reading": "ā",
+            "gloss": "of",
+            "count": 10
+          },
+          {
+            "reading": "tu",
+            "gloss": "do/give",
+            "count": 7
+          }
+        ],
+        "unique_readings": 62
+      }
+    },
+    "verdict": "Motif dicts: 9 types. Unicorn: 514 seals, 112 unique readings."
+  },
+  "phase390": {
+    "total_compared": 47,
+    "exact": 42,
+    "partial": 1,
+    "disagree": 4,
+    "missing": 0,
+    "agreement_rate": 0.915,
+    "details": [
+      {
+        "sign": "M047",
+        "parpola": "mīn",
+        "ours": "min/mīn",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M048",
+        "parpola": "mīn",
+        "ours": "mu/muṉ",
+        "status": "DISAGREE"
+      },
+      {
+        "sign": "M176",
+        "parpola": "kō/an",
+        "ours": "an/aṇ",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M342",
+        "parpola": "jar/pot",
+        "ours": "ay/ā",
+        "status": "DISAGREE"
+      },
+      {
+        "sign": "M099",
+        "parpola": "kol/vil",
+        "ours": "kol/koḷ",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M001",
+        "parpola": "tōḷ",
+        "ours": "tōḷ",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M086",
+        "parpola": "oru/oṉṟu",
+        "ours": "oru",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M087",
+        "parpola": "veḷ/iraṇṭu",
+        "ours": "veL",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M088",
+        "parpola": "mūṉṟu",
+        "ours": "muu(n)-",
+        "status": "DISAGREE"
+      },
+      {
+        "sign": "M091",
+        "parpola": "āṟu",
+        "ours": "aru",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M092",
+        "parpola": "ēḻu",
+        "ours": "elu",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M060",
+        "parpola": "kāṇṭāmṛga",
+        "ours": "kāṇṭāmirukam",
+        "status": "PARTIAL"
+      },
+      {
+        "sign": "M261",
+        "parpola": "muruku",
+        "ours": "muruku",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M281",
+        "parpola": "piḷḷai",
+        "ours": "piLLai",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M175",
+        "parpola": "katir",
+        "ours": "katir",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M211",
+        "parpola": "kō",
+        "ours": "kol",
+        "status": "DISAGREE"
+      },
+      {
+        "sign": "M124",
+        "parpola": "kuṭam",
+        "ours": "kuTam",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M117",
+        "parpola": "ar/cakra",
+        "ours": "ar",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M233",
+        "parpola": "ūr",
+        "ours": "ūr",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M162",
+        "parpola": "il",
+        "ours": "il/iḷ",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M073",
+        "parpola": "kōṉ",
+        "ours": "kōṉ",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M045",
+        "parpola": "yānai",
+        "ours": "yānai",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M062",
+        "parpola": "erutu",
+        "ours": "erutu",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M057",
+        "parpola": "māṭu",
+        "ours": "māṭu",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M006",
+        "parpola": "puli",
+        "ours": "puli",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M080",
+        "parpola": "vēṅkai",
+        "ours": "vēṅkai",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M016",
+        "parpola": "kaḷiṟu",
+        "ours": "kaḷiṟu",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M013",
+        "parpola": "nakaram",
+        "ours": "nakaram",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M039",
+        "parpola": "āṉai",
+        "ours": "āṉai",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M305",
+        "parpola": "ōṭu",
+        "ours": "ōṭu/comitative",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M336",
+        "parpola": "iṉ",
+        "ours": "iṉ/locative",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M367",
+        "parpola": "am",
+        "ours": "am/neuter",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M089",
+        "parpola": "tu",
+        "ours": "tu/tū",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M051",
+        "parpola": "pū/puḷ",
+        "ours": "pū/puḷ",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M012",
+        "parpola": "oṉṟu/1",
+        "ours": "oṉṟu/1",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M059",
+        "parpola": "ēḻu/eḷ",
+        "ours": "ēḷ/eḷ",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M328",
+        "parpola": "āl",
+        "ours": "ā/āl",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M267",
+        "parpola": "iN/in",
+        "ours": "iN/in (genitive of)",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M030",
+        "parpola": "kō",
+        "ours": "kō",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M018",
+        "parpola": "nēr",
+        "ours": "nēr",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M077",
+        "parpola": "nal",
+        "ours": "nal",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M031",
+        "parpola": "kai",
+        "ours": "kai",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M033",
+        "parpola": "puli",
+        "ours": "puli",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M011",
+        "parpola": "kaḷiṟu",
+        "ours": "kaḷiṟu",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M071",
+        "parpola": "nal",
+        "ours": "nal",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M026",
+        "parpola": "mā",
+        "ours": "mā",
+        "status": "EXACT"
+      },
+      {
+        "sign": "M024",
+        "parpola": "nē",
+        "ours": "nē",
+        "status": "EXACT"
+      }
+    ],
+    "verdict": "Parpola full: 42 exact + 1 partial = 91% agreement (47 signs compared, 4 disagree, 0 missing)."
+  }
+}

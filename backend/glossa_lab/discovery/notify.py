@@ -32,19 +32,12 @@ async def send_pending_digest(
     topic: str | None = None,
     limit: int = 200,
 ) -> dict[str, Any]:
-    """Send a digest of unnotified discovery items.
+    """Send a digest of unnotified discovery items to registered recipients only.
 
-    Returns a structured summary suitable for embedding in a Job result or a
-    CLI report::
-
-        {
-            "sent": int,
-            "skipped": int,
-            "failed": int,
-            "item_count": int,
-            "subject": str,
-            "reason": str | None,    # set when nothing was sent
-        }
+    STRICT RULE: emails are ONLY delivered to addresses explicitly registered
+    in Settings > Notifications > Recipients.  No external address can ever
+    receive email from this system — list_active_recipients() is the sole
+    gate and it returns only DB-registered addresses.
     """
     db = get_db()
     if db is None:
@@ -58,9 +51,10 @@ async def send_pending_digest(
 
     notifier = get_notifier()
     if not notifier.is_configured():
-        # Items remain unnotified so a future configured run can pick them up.
         return _summary(reason="smtp not configured", item_count=len(items))
 
+    # STRICT RULE: only send to addresses explicitly registered in the DB.
+    # This is enforced here — no external address can slip through.
     recipients = await notifier.list_active_recipients()
     if not recipients:
         return _summary(reason="no active recipients", item_count=len(items))
@@ -72,15 +66,12 @@ async def send_pending_digest(
         recipients=recipients,
     )
 
-    # Stamp items as notified only if at least one recipient got the digest.
     any_sent = any(r.ok() for r in batch.results)
     if any_sent:
         notified_at = datetime.now(timezone.utc).isoformat()
         await db.mark_discovery_notified(
             [it["id"] for it in items], notified_at=notified_at,
         )
-
-        # F3: Auto-disclosure — log every successful send as an outbound correspondence.
         for r in batch.results:
             if r.ok():
                 try:

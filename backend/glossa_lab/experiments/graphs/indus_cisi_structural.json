@@ -1,6 +1,6 @@
 {
   "id": "indus_cisi_structural",
-  "name": "Indus CISI: Structural Analysis on Real Multi-Sign Inscriptions (Parpola)",
+  "name": "Indus Structural: CISI Baseline (Parpola)",
   "description": "P1: Full structural atlas of the CISI corpus (179 Mohenjo-daro inscriptions, 1,003 tokens, 182 distinct Parpola signs). Unlike BuiltinCorpus('indus') which returns single-sign sequences, indus_cisi provides real multi-sign inscription sequences enabling meaningful positional profiling (I/M/T rates per sign), bigram statistics, and writing system classification. Source: mayig/indus-valley-script-corpus (MIT, 2024-2025).",
   "nodes": [
     {
@@ -257,6 +257,5 @@
       "sourcePort": "json",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

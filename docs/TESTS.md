@@ -1225,3 +1225,79 @@ experiments and that every phase node is properly registered in the Experiment G
 **Expected**: HIGH anchor count ≥ 37, total anchors ≥ 149.
 **Failure**: Anchor counts regressed from baseline.
 
+
+---
+
+## Tests for R20 — Jobs Panel UX
+
+### TEST-JOBS-001 — Elapsed time displayed as HH:MM:SS
+
+**Requirement**: REQ-JOBS-001, REQ-JOBS-002
+**Precondition**: A pipeline job is in running state.
+**Steps**:
+1. Open the Jobs tab in the bottom panel while a job is running.
+2. Observe the elapsed time and ETA displayed next to the job name.
+**Expected**: Both elapsed and ETA are shown in HH:MM:SS format (e.g.  0:04:23 / ~00:32:00 left). Raw seconds (e.g. 263s) MUST NOT appear.
+**Failure**: Raw seconds or non-zero-padded format (e.g. 4:23) displayed.
+
+---
+
+### TEST-JOBS-002 — ETA uses historical average when progress < 15%
+
+**Requirement**: REQ-JOBS-003, REQ-JOBS-004
+**Precondition**: At least one completed job of the same pipeline exists. A new job of the same pipeline starts.
+**Steps**:
+1. Start a new job of a pipeline that has at least one completed run.
+2. While progress is < 15%, observe the ETA.
+**Expected**: ETA is close to the historical average duration of past completed jobs, not a tiny extrapolated value. ETA does not start at 0 and grow.
+**Failure**: ETA starts very small (e.g.  0:00:05) and increases, indicating linear extrapolation from near-zero progress.
+
+---
+
+### TEST-JOBS-003 — ETA and elapsed visible in BottomPanel Jobs tab
+
+**Requirement**: REQ-JOBS-005
+**Steps**:
+1. Start a running job.
+2. Open the BottomPanel Jobs tab (not the full Jobs page).
+3. Observe the elapsed/ETA display.
+**Expected**: HH:MM:SS format shown in BottomPanel, same as the full Jobs page.
+**Failure**: Raw seconds or no time display in BottomPanel.
+
+---
+
+## Tests for R21 — Experiment Builder Layout
+
+### TEST-EB-ARRANGE-001 — No overlap after opening an experiment
+
+**Requirement**: REQ-EB-ARRANGE-001, REQ-EB-ARRANGE-002, REQ-EB-ARRANGE-003
+**Precondition**: A saved graph experiment with >= 3 nodes exists.
+**Steps**:
+1. Click the experiment in the Experiment Builder left panel to open it.
+2. Visually inspect the canvas immediately after opening.
+**Expected**: All nodes are positioned without overlap; at least 80px horizontal gap between columns; at least 40px vertical gap between rows within a column.
+**Failure**: Any two nodes visually overlap on load.
+
+---
+
+### TEST-EB-ARRANGE-002 — Arrange button produces non-overlapping layout
+
+**Requirement**: REQ-EB-ARRANGE-005
+**Precondition**: An experiment with multiple nodes is open. Nodes have been manually repositioned and overlap.
+**Steps**:
+1. Drag nodes so they overlap.
+2. Click the ⬦ Arrange toolbar button.
+**Expected**: All nodes separate cleanly; no overlaps; layout respects column and row padding constraints.
+**Failure**: Any two nodes overlap after clicking Arrange.
+
+---
+
+### TEST-EB-ARRANGE-003 — Dynamic height avoids overlap for tall nodes
+
+**Requirement**: REQ-EB-ARRANGE-004
+**Precondition**: An experiment contains a node with >= 6 input/output ports.
+**Steps**:
+1. Open the experiment in the Experiment Builder.
+2. Inspect node positions after auto-arrange.
+**Expected**: The tall node (many ports) does not overlap the node below it in the same column. Row height accounts for port count, not a fixed constant.
+**Failure**: A tall node overlaps a neighbour in the same column.

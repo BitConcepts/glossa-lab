@@ -1,0 +1,2729 @@
+{
+  "_citation": "Kalyanaraman, S. (2017-2024). Indus Script Cipher: Hieroglyphs of Indian linguistic area. 52 papers on rebus interpretation of Indus Script seal inscriptions. Sarasvati Research Center.",
+  "_method": "Extracted via pdfplumber from 52 PDF papers. Rebus pairs identified by 'X rebus Y' pattern. Dravidian terms by single-quote extraction. Sign references by M-number proximity.",
+  "_built": "2026-06-07T13:00:47+00:00",
+  "_stats": {
+    "papers_processed": 52,
+    "rebus_pairs": 24,
+    "dravidian_terms": 200,
+    "sign_references": 144,
+    "craft_terms": 31
+  },
+  "system": "content_word_rebus",
+  "domain": "metalwork_trade_craft",
+  "rebus_pairs": [
+    {
+      "pictogram": "splinter",
+      "meaning": "sal",
+      "sources": [
+        "badhia_boar_rebus_badhi_worker_in_wood_a",
+        "Bar_of_metal_equipment_account_metalsmit",
+        "Inscriptions_on_implements_are_metalwork",
+        "Konda_circular_artisan_hamlet_singi_orna",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcastings_copper_gold_despatch_accou",
+        "Semantographs_of_Maritime_ornament_gold"
+      ],
+      "count": 9
+    },
+    {
+      "pictogram": "metalcasting",
+      "meaning": "khaṛu",
+      "sources": [
+        "Dul_metalcasting_rebus_khau_bier_rebu",
+        "Metalcastings_copper_gold_despatch_accou"
+      ],
+      "count": 8
+    },
+    {
+      "pictogram": "stars",
+      "meaning": "tāra",
+      "sources": [
+        "Kot_Diji_pot_painted_with_buffalo_horns",
+        "Metalwork_semantographs_of_Gadd_hierogly",
+        "Thar_line_row_in_lines_in_rows_tara_star"
+      ],
+      "count": 5
+    },
+    {
+      "pictogram": "fish",
+      "meaning": "ayas",
+      "sources": [
+        "Eureka_Cargo_of_amsu_soma_on__saga",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Soma_tin_artisan_s_workshop_H_884_Soma_c"
+      ],
+      "count": 4
+    },
+    {
+      "pictogram": "sprout",
+      "meaning": "kor̤u",
+      "sources": [
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Semantograph_khara_hare_rebus_khar_black",
+        "Steersman_in_charge_of_1_bell_metal_smel"
+      ],
+      "count": 4
+    },
+    {
+      "pictogram": "four",
+      "meaning": "kaṇḍ",
+      "sources": [
+        "Bronze_Age_Svastika_furnace_burning_alta",
+        "satavu__Svastika_of_Indus_Script_Cor",
+        "Steersman_in_charge_of_1_bell_metal_smel"
+      ],
+      "count": 3
+    },
+    {
+      "pictogram": "hare",
+      "meaning": "khār",
+      "sources": [
+        "Chimerae_of_short_sequence_signs_and_fie",
+        "Semantograph_khara_hare_rebus_khar_black"
+      ],
+      "count": 3
+    },
+    {
+      "pictogram": "scraper",
+      "meaning": "kāraṇī",
+      "sources": [
+        "Metalcasting_forge_smelter_bell_metal_ir",
+        "Metalwork_semantographs_of_Gadd_hierogly"
+      ],
+      "count": 3
+    },
+    {
+      "pictogram": "five",
+      "meaning": "muṇḍa",
+      "sources": [
+        "Bronze_Age_Svastika_furnace_burning_alta",
+        "satavu__Svastika_of_Indus_Script_Cor"
+      ],
+      "count": 2
+    },
+    {
+      "pictogram": "spike",
+      "meaning": "ṭaṅkaśālā",
+      "sources": [
+        "Koiya_young_bull_rebus_koiya_dhow_seaf"
+      ],
+      "count": 2
+    },
+    {
+      "pictogram": "bulat",
+      "meaning": "steel",
+      "sources": [
+        "A_Black_drongo_in_Rajasthan_state_northe"
+      ],
+      "count": 1
+    },
+    {
+      "pictogram": "interlocked",
+      "meaning": "śālikā",
+      "sources": [
+        "Bar_of_metal_equipment_account_metalsmit"
+      ],
+      "count": 1
+    },
+    {
+      "pictogram": "ox",
+      "meaning": "bharata",
+      "sources": [
+        "Eureka_Cargo_of_amsu_soma_on__saga"
+      ],
+      "count": 1
+    },
+    {
+      "pictogram": "platform",
+      "meaning": "manḍa",
+      "sources": [
+        "Fauna_economic_court_word_semantographs"
+      ],
+      "count": 1
+    },
+    {
+      "pictogram": "star",
+      "meaning": "tara",
+      "sources": [
+        "Kamaha_yogi_in_penance_rebus__kama"
+      ],
+      "count": 1
+    },
+    {
+      "pictogram": "penance",
+      "meaning": "kammaṭa",
+      "sources": [
+        "Kamaha_yogi_in_penance_rebus__kama"
+      ],
+      "count": 1
+    },
+    {
+      "pictogram": "Unicorn",
+      "meaning": "goat",
+      "sources": [
+        "Konda_circular_artisan_hamlet_singi_orna"
+      ],
+      "count": 1
+    },
+    {
+      "pictogram": "mat",
+      "meaning": "ṭhaṭherā",
+      "sources": [
+        "Konda_circular_artisan_hamlet_singi_orna"
+      ],
+      "count": 1
+    },
+    {
+      "pictogram": "lid",
+      "meaning": "dhakka",
+      "sources": [
+        "Kuikuila_bronze_smelter_of_smithy_for"
+      ],
+      "count": 1
+    },
+    {
+      "pictogram": "stones",
+      "meaning": "kundana",
+      "sources": [
+        "Kunda_pillar_patthar_stones_rebus_kundan"
+      ],
+      "count": 1
+    },
+    {
+      "pictogram": "bison",
+      "meaning": "araṇa",
+      "sources": [
+        "Metalwork_semantographs_of_Gadd_hierogly"
+      ],
+      "count": 1
+    },
+    {
+      "pictogram": "circle",
+      "meaning": "dhāvaḍa",
+      "sources": [
+        "Metalwork_semantographs_of_Gadd_hierogly"
+      ],
+      "count": 1
+    },
+    {
+      "pictogram": "squirrel",
+      "meaning": "Śreṣṭhin",
+      "sources": [
+        "Semantographs_of_anthropomorph_narrative"
+      ],
+      "count": 1
+    },
+    {
+      "pictogram": "tree",
+      "meaning": "kuṭhi",
+      "sources": [
+        "Thar_line_row_in_lines_in_rows_tara_star"
+      ],
+      "count": 1
+    }
+  ],
+  "dravidian_terms": [
+    {
+      "term": "iron",
+      "frequency": 273
+    },
+    {
+      "term": "blacksmith",
+      "frequency": 121
+    },
+    {
+      "term": "workshop",
+      "frequency": 112
+    },
+    {
+      "term": "fish",
+      "frequency": 103
+    },
+    {
+      "term": "furnace",
+      "frequency": 103
+    },
+    {
+      "term": "implements",
+      "frequency": 87
+    },
+    {
+      "term": "copper",
+      "frequency": 85
+    },
+    {
+      "term": "merchant",
+      "frequency": 83
+    },
+    {
+      "term": "smelter",
+      "frequency": 82
+    },
+    {
+      "term": "two",
+      "frequency": 75
+    },
+    {
+      "term": "ingot",
+      "frequency": 71
+    },
+    {
+      "term": "three",
+      "frequency": 69
+    },
+    {
+      "term": "potter",
+      "frequency": 45
+    },
+    {
+      "term": "metalcasting",
+      "frequency": 43
+    },
+    {
+      "term": "brass",
+      "frequency": 42
+    },
+    {
+      "term": "four",
+      "frequency": 42
+    },
+    {
+      "term": "splinter",
+      "frequency": 36
+    },
+    {
+      "term": "maritime",
+      "frequency": 35
+    },
+    {
+      "term": "lathe",
+      "frequency": 34
+    },
+    {
+      "term": "sprout",
+      "frequency": 33
+    },
+    {
+      "term": "body",
+      "frequency": 32
+    },
+    {
+      "term": "bent",
+      "frequency": 32
+    },
+    {
+      "term": "tiger",
+      "frequency": 32
+    },
+    {
+      "term": "anvil",
+      "frequency": 31
+    },
+    {
+      "term": "tin",
+      "frequency": 28
+    },
+    {
+      "term": "soma",
+      "frequency": 28
+    },
+    {
+      "term": "corner",
+      "frequency": 27
+    },
+    {
+      "term": "smithy",
+      "frequency": 27
+    },
+    {
+      "term": "alloymetal",
+      "frequency": 27
+    },
+    {
+      "term": "one",
+      "frequency": 27
+    },
+    {
+      "term": "unicorn",
+      "frequency": 26
+    },
+    {
+      "term": "artificer",
+      "frequency": 26
+    },
+    {
+      "term": "pot",
+      "frequency": 25
+    },
+    {
+      "term": "leg",
+      "frequency": 24
+    },
+    {
+      "term": "supercargo",
+      "frequency": 23
+    },
+    {
+      "term": "pair",
+      "frequency": 23
+    },
+    {
+      "term": "mint",
+      "frequency": 22
+    },
+    {
+      "term": "artisan",
+      "frequency": 22
+    },
+    {
+      "term": "account",
+      "frequency": 22
+    },
+    {
+      "term": "wheel",
+      "frequency": 22
+    },
+    {
+      "term": "zebu",
+      "frequency": 21
+    },
+    {
+      "term": "helmsman",
+      "frequency": 20
+    },
+    {
+      "term": "accounting",
+      "frequency": 20
+    },
+    {
+      "term": "steel",
+      "frequency": 19
+    },
+    {
+      "term": "equipment",
+      "frequency": 19
+    },
+    {
+      "term": "lid",
+      "frequency": 19
+    },
+    {
+      "term": "overflow",
+      "frequency": 18
+    },
+    {
+      "term": "elephant",
+      "frequency": 17
+    },
+    {
+      "term": "metal",
+      "frequency": 17
+    },
+    {
+      "term": "scraper",
+      "frequency": 17
+    },
+    {
+      "term": "thigh",
+      "frequency": 17
+    },
+    {
+      "term": "duck",
+      "frequency": 17
+    },
+    {
+      "term": "scarf",
+      "frequency": 16
+    },
+    {
+      "term": "hare",
+      "frequency": 16
+    },
+    {
+      "term": "silver",
+      "frequency": 16
+    },
+    {
+      "term": "goat",
+      "frequency": 16
+    },
+    {
+      "term": "thorny",
+      "frequency": 15
+    },
+    {
+      "term": "trade",
+      "frequency": 15
+    },
+    {
+      "term": "cross",
+      "frequency": 15
+    },
+    {
+      "term": "arrow",
+      "frequency": 14
+    },
+    {
+      "term": "onager",
+      "frequency": 14
+    },
+    {
+      "term": "spokes",
+      "frequency": 14
+    },
+    {
+      "term": "curve",
+      "frequency": 14
+    },
+    {
+      "term": "drop",
+      "frequency": 14
+    },
+    {
+      "term": "penance",
+      "frequency": 14
+    },
+    {
+      "term": "ox",
+      "frequency": 13
+    },
+    {
+      "term": "duplicated",
+      "frequency": 13
+    },
+    {
+      "term": "bronze",
+      "frequency": 12
+    },
+    {
+      "term": "pewter",
+      "frequency": 12
+    },
+    {
+      "term": "tail",
+      "frequency": 12
+    },
+    {
+      "term": "warrior",
+      "frequency": 11
+    },
+    {
+      "term": "ladle",
+      "frequency": 11
+    },
+    {
+      "term": "gold",
+      "frequency": 11
+    },
+    {
+      "term": "five",
+      "frequency": 11
+    },
+    {
+      "term": "worshipper",
+      "frequency": 11
+    },
+    {
+      "term": "goldsmith",
+      "frequency": 11
+    },
+    {
+      "term": "raft",
+      "frequency": 11
+    },
+    {
+      "term": "bull",
+      "frequency": 10
+    },
+    {
+      "term": "ear",
+      "frequency": 10
+    },
+    {
+      "term": "peg",
+      "frequency": 10
+    },
+    {
+      "term": "tree",
+      "frequency": 10
+    },
+    {
+      "term": "guild",
+      "frequency": 10
+    },
+    {
+      "term": "bead",
+      "frequency": 10
+    },
+    {
+      "term": "markhor",
+      "frequency": 10
+    },
+    {
+      "term": "turner",
+      "frequency": 10
+    },
+    {
+      "term": "brassworker",
+      "frequency": 10
+    },
+    {
+      "term": "boat",
+      "frequency": 9
+    },
+    {
+      "term": "stars",
+      "frequency": 9
+    },
+    {
+      "term": "scribe",
+      "frequency": 9
+    },
+    {
+      "term": "sluice",
+      "frequency": 9
+    },
+    {
+      "term": "smith",
+      "frequency": 9
+    },
+    {
+      "term": "hoof",
+      "frequency": 9
+    },
+    {
+      "term": "dagger",
+      "frequency": 9
+    },
+    {
+      "term": "face",
+      "frequency": 9
+    },
+    {
+      "term": "wheelwright",
+      "frequency": 8
+    },
+    {
+      "term": "mineral",
+      "frequency": 8
+    },
+    {
+      "term": "armourer",
+      "frequency": 8
+    },
+    {
+      "term": "buffalo",
+      "frequency": 8
+    },
+    {
+      "term": "horn",
+      "frequency": 8
+    },
+    {
+      "term": "cart",
+      "frequency": 8
+    },
+    {
+      "term": "pickaxe",
+      "frequency": 8
+    },
+    {
+      "term": "mattock",
+      "frequency": 8
+    },
+    {
+      "term": "hoe",
+      "frequency": 8
+    },
+    {
+      "term": "ram",
+      "frequency": 7
+    },
+    {
+      "term": "division",
+      "frequency": 7
+    },
+    {
+      "term": "notch",
+      "frequency": 7
+    },
+    {
+      "term": "temple",
+      "frequency": 7
+    },
+    {
+      "term": "svastika",
+      "frequency": 7
+    },
+    {
+      "term": "warehouse",
+      "frequency": 7
+    },
+    {
+      "term": "circumference",
+      "frequency": 7
+    },
+    {
+      "term": "declivity",
+      "frequency": 7
+    },
+    {
+      "term": "crucible",
+      "frequency": 7
+    },
+    {
+      "term": "daybook",
+      "frequency": 7
+    },
+    {
+      "term": "crocodile",
+      "frequency": 7
+    },
+    {
+      "term": "hut",
+      "frequency": 7
+    },
+    {
+      "term": "bud",
+      "frequency": 6
+    },
+    {
+      "term": "zinc",
+      "frequency": 6
+    },
+    {
+      "term": "mason",
+      "frequency": 6
+    },
+    {
+      "term": "sailor",
+      "frequency": 6
+    },
+    {
+      "term": "circle",
+      "frequency": 6
+    },
+    {
+      "term": "antelope",
+      "frequency": 6
+    },
+    {
+      "term": "octopus",
+      "frequency": 6
+    },
+    {
+      "term": "spike",
+      "frequency": 6
+    },
+    {
+      "term": "harrow",
+      "frequency": 6
+    },
+    {
+      "term": "speech",
+      "frequency": 6
+    },
+    {
+      "term": "fireplace",
+      "frequency": 6
+    },
+    {
+      "term": "rhinoceros",
+      "frequency": 5
+    },
+    {
+      "term": "market",
+      "frequency": 5
+    },
+    {
+      "term": "horns",
+      "frequency": 5
+    },
+    {
+      "term": "post",
+      "frequency": 5
+    },
+    {
+      "term": "collection",
+      "frequency": 5
+    },
+    {
+      "term": "company",
+      "frequency": 5
+    },
+    {
+      "term": "squirrel",
+      "frequency": 5
+    },
+    {
+      "term": "twig",
+      "frequency": 5
+    },
+    {
+      "term": "star",
+      "frequency": 5
+    },
+    {
+      "term": "preserve",
+      "frequency": 5
+    },
+    {
+      "term": "harbour",
+      "frequency": 5
+    },
+    {
+      "term": "bison",
+      "frequency": 5
+    },
+    {
+      "term": "donkey",
+      "frequency": 5
+    },
+    {
+      "term": "boar",
+      "frequency": 4
+    },
+    {
+      "term": "pin",
+      "frequency": 4
+    },
+    {
+      "term": "chemistry",
+      "frequency": 4
+    },
+    {
+      "term": "wrist",
+      "frequency": 4
+    },
+    {
+      "term": "six",
+      "frequency": 4
+    },
+    {
+      "term": "strand",
+      "frequency": 4
+    },
+    {
+      "term": "cover",
+      "frequency": 4
+    },
+    {
+      "term": "storehouse",
+      "frequency": 4
+    },
+    {
+      "term": "seven",
+      "frequency": 4
+    },
+    {
+      "term": "eye",
+      "frequency": 4
+    },
+    {
+      "term": "gadget",
+      "frequency": 4
+    },
+    {
+      "term": "handcart",
+      "frequency": 4
+    },
+    {
+      "term": "stick",
+      "frequency": 4
+    },
+    {
+      "term": "wedge",
+      "frequency": 4
+    },
+    {
+      "term": "assemblage",
+      "frequency": 4
+    },
+    {
+      "term": "trough",
+      "frequency": 4
+    },
+    {
+      "term": "goldsmiths",
+      "frequency": 4
+    },
+    {
+      "term": "hieroglyphic",
+      "frequency": 4
+    },
+    {
+      "term": "granary",
+      "frequency": 4
+    },
+    {
+      "term": "dishevelled",
+      "frequency": 4
+    },
+    {
+      "term": "pure",
+      "frequency": 4
+    },
+    {
+      "term": "true",
+      "frequency": 4
+    },
+    {
+      "term": "praise",
+      "frequency": 4
+    },
+    {
+      "term": "verse",
+      "frequency": 4
+    },
+    {
+      "term": "ascetism",
+      "frequency": 4
+    },
+    {
+      "term": "buttocks",
+      "frequency": 4
+    },
+    {
+      "term": "honeycomb",
+      "frequency": 4
+    },
+    {
+      "term": "pebble",
+      "frequency": 4
+    },
+    {
+      "term": "fist",
+      "frequency": 4
+    },
+    {
+      "term": "girl",
+      "frequency": 4
+    },
+    {
+      "term": "flash",
+      "frequency": 4
+    },
+    {
+      "term": "shining",
+      "frequency": 4
+    },
+    {
+      "term": "rim",
+      "frequency": 3
+    },
+    {
+      "term": "minerals",
+      "frequency": 3
+    },
+    {
+      "term": "steersman",
+      "frequency": 3
+    },
+    {
+      "term": "drummer",
+      "frequency": 3
+    },
+    {
+      "term": "ore",
+      "frequency": 3
+    },
+    {
+      "term": "compounds",
+      "frequency": 3
+    },
+    {
+      "term": "shoulder",
+      "frequency": 3
+    },
+    {
+      "term": "hill",
+      "frequency": 3
+    },
+    {
+      "term": "profession",
+      "frequency": 3
+    },
+    {
+      "term": "archer",
+      "frequency": 3
+    },
+    {
+      "term": "twisted",
+      "frequency": 3
+    },
+    {
+      "term": "craftsman",
+      "frequency": 3
+    },
+    {
+      "term": "riceplant",
+      "frequency": 3
+    },
+    {
+      "term": "messenger",
+      "frequency": 3
+    },
+    {
+      "term": "arm",
+      "frequency": 3
+    },
+    {
+      "term": "throat",
+      "frequency": 3
+    },
+    {
+      "term": "arbour",
+      "frequency": 3
+    },
+    {
+      "term": "writes",
+      "frequency": 3
+    },
+    {
+      "term": "ironsmelter",
+      "frequency": 3
+    },
+    {
+      "term": "spade",
+      "frequency": 3
+    },
+    {
+      "term": "flapping",
+      "frequency": 3
+    },
+    {
+      "term": "kid",
+      "frequency": 3
+    },
+    {
+      "term": "protector",
+      "frequency": 3
+    },
+    {
+      "term": "accurate",
+      "frequency": 3
+    },
+    {
+      "term": "cage",
+      "frequency": 3
+    },
+    {
+      "term": "ass",
+      "frequency": 3
+    },
+    {
+      "term": "mule",
+      "frequency": 3
+    },
+    {
+      "term": "house",
+      "frequency": 3
+    },
+    {
+      "term": "spine",
+      "frequency": 3
+    }
+  ],
+  "sign_readings": {
+    "M001": [
+      "iron",
+      "copper",
+      "one",
+      "workshop",
+      "two"
+    ],
+    "M002": [
+      "workshop",
+      "body",
+      "iron",
+      "smelter",
+      "arrow"
+    ],
+    "M007": [
+      "duplicate",
+      "metalcasting",
+      "archer",
+      "workshop",
+      "mint"
+    ],
+    "M008": [
+      "tin",
+      "sprout",
+      "warrior",
+      "furnace",
+      "accounting"
+    ],
+    "M012": [
+      "duplicated",
+      "fish",
+      "iron",
+      "goatskin",
+      "smelter"
+    ],
+    "M013": [
+      "notch",
+      "equipment",
+      "smelter"
+    ],
+    "M015": [
+      "smelter",
+      "three",
+      "sprout",
+      "bud",
+      "gold"
+    ],
+    "M017": [
+      "iron",
+      "metalsmith",
+      "warrior",
+      "furnace",
+      "bent"
+    ],
+    "M018": [
+      "smelter",
+      "body",
+      "iron",
+      "copper",
+      "notch"
+    ],
+    "M023": [
+      "turner",
+      "smelter",
+      "bent",
+      "curve"
+    ],
+    "M025": [
+      "body",
+      "iron",
+      "copper",
+      "one",
+      "workshop"
+    ],
+    "M028": [
+      "archer"
+    ],
+    "M042": [
+      "two",
+      "metalcasting",
+      "potter",
+      "body",
+      "iron"
+    ],
+    "M045": [
+      "fish",
+      "iron",
+      "metal",
+      "adorant",
+      "twig"
+    ],
+    "M046": [
+      "bronze",
+      "furnace"
+    ],
+    "M048": [
+      "fish",
+      "alloymetal",
+      "cover",
+      "crucible",
+      "four"
+    ],
+    "M051": [
+      "ear",
+      "blacksmith",
+      "equipment",
+      "three",
+      "seven"
+    ],
+    "M053": [
+      "appendage",
+      "silver",
+      "fish",
+      "alloymetal",
+      "cover"
+    ],
+    "M056": [
+      "sprout",
+      "bud",
+      "four",
+      "equipment",
+      "notch"
+    ],
+    "M059": [
+      "fish",
+      "iron",
+      "soma",
+      "silver",
+      "smithy"
+    ],
+    "M062": [
+      "four",
+      "equipment",
+      "steel",
+      "ingot"
+    ],
+    "M063": [
+      "market",
+      "penis",
+      "metal",
+      "four",
+      "equipment"
+    ],
+    "M065": [
+      "appendage",
+      "silver",
+      "fish",
+      "alloymetal",
+      "cover"
+    ],
+    "M067": [
+      "fish",
+      "iron",
+      "implements",
+      "three",
+      "metal"
+    ],
+    "M070": [
+      "fish",
+      "iron",
+      "metal",
+      "implements",
+      "ladle"
+    ],
+    "M072": [
+      "fish",
+      "iron",
+      "implements",
+      "ingot",
+      "mineral"
+    ],
+    "M073": [
+      "sluice",
+      "artisan",
+      "four",
+      "implements",
+      "ingot"
+    ],
+    "M075": [
+      "fish",
+      "alloymetal",
+      "soma",
+      "iron"
+    ],
+    "M078": [
+      "penis",
+      "metal",
+      "four",
+      "equipment",
+      "steel"
+    ],
+    "M080": [
+      "steel",
+      "wing",
+      "workshop"
+    ],
+    "M081": [
+      "wing",
+      "workshop"
+    ],
+    "M086": [
+      "iron",
+      "one",
+      "artisan",
+      "furnace",
+      "cover"
+    ],
+    "M087": [
+      "metalcasting",
+      "three",
+      "iron",
+      "furnace",
+      "two"
+    ],
+    "M089": [
+      "three",
+      "ingot",
+      "metalcasting",
+      "daybook",
+      "splinter"
+    ],
+    "M093": [
+      "declivity",
+      "bdellium",
+      "tiger",
+      "tail",
+      "accounting"
+    ],
+    "M095": [
+      "iron",
+      "furnace",
+      "four",
+      "three",
+      "corner"
+    ],
+    "M096": [
+      "splinter",
+      "workshop",
+      "five"
+    ],
+    "M097": [
+      "notch",
+      "drummer",
+      "furnace",
+      "tiger",
+      "smelter"
+    ],
+    "M098": [
+      "smelter",
+      "equipment",
+      "artificer"
+    ],
+    "M099": [
+      "merchant",
+      "corner",
+      "splinter",
+      "workshop",
+      "cross"
+    ],
+    "M109": [
+      "copper",
+      "antelope",
+      "three",
+      "duplicated",
+      "fish"
+    ],
+    "M110": [
+      "ingot",
+      "seven",
+      "steel"
+    ],
+    "M111": [
+      "ingot",
+      "seven"
+    ],
+    "M112": [
+      "strand",
+      "splinter",
+      "workshop",
+      "cross",
+      "four"
+    ],
+    "M120": [
+      "bdellium",
+      "tiger",
+      "tail",
+      "turner",
+      "onager"
+    ],
+    "M123": [
+      "accounting",
+      "artificer",
+      "bent",
+      "equipment"
+    ],
+    "M124": [
+      "iron",
+      "furnace",
+      "one",
+      "workshop",
+      "inclination"
+    ],
+    "M127": [
+      "notch",
+      "equipment",
+      "iron",
+      "metalsmith",
+      "warrior"
+    ],
+    "M130": [
+      "iron",
+      "squirrel"
+    ],
+    "M134": [
+      "lid",
+      "three",
+      "one",
+      "workshop",
+      "ingot"
+    ],
+    "M135": [
+      "fish",
+      "company",
+      "workshop",
+      "copper"
+    ],
+    "M137": [
+      "silver",
+      "cross",
+      "body",
+      "iron",
+      "copper"
+    ],
+    "M142": [
+      "ligatue",
+      "sprout",
+      "bud"
+    ],
+    "M147": [
+      "silver",
+      "cross",
+      "one",
+      "artisan",
+      "six"
+    ],
+    "M148": [
+      "notch",
+      "drummer",
+      "furnace",
+      "tiger",
+      "smelter"
+    ],
+    "M149": [
+      "smelter",
+      "cross",
+      "minerals",
+      "two",
+      "iron"
+    ],
+    "M150": [
+      "corner",
+      "splinter",
+      "workshop",
+      "cross",
+      "four"
+    ],
+    "M155": [
+      "iron",
+      "furnace",
+      "cover",
+      "ingot",
+      "one"
+    ],
+    "M162": [
+      "cross",
+      "four",
+      "cob",
+      "zebu",
+      "smelter"
+    ],
+    "M164": [
+      "sprout",
+      "bud",
+      "four",
+      "equipment",
+      "notch"
+    ],
+    "M169": [
+      "ram",
+      "merchant",
+      "sprout",
+      "banyan",
+      "stars"
+    ],
+    "M171": [
+      "iron",
+      "furnace",
+      "merchant",
+      "harrow",
+      "cross"
+    ],
+    "M175": [
+      "archer"
+    ],
+    "M176": [
+      "dispatch",
+      "daybook",
+      "blacksmith",
+      "account",
+      "bronze"
+    ],
+    "M177": [
+      "wrist",
+      "scraper",
+      "supercargo",
+      "iron",
+      "furnace"
+    ],
+    "M178": [
+      "sprout"
+    ],
+    "M180": [
+      "appendage",
+      "silver",
+      "fish",
+      "alloymetal",
+      "cover"
+    ],
+    "M184": [
+      "onager",
+      "goat",
+      "copper",
+      "crucible",
+      "tail"
+    ],
+    "M186": [
+      "armourer",
+      "ladder",
+      "iron"
+    ],
+    "M188": [
+      "splinter",
+      "workshop",
+      "fireplace",
+      "hut",
+      "granary"
+    ],
+    "M190": [
+      "three",
+      "sprout",
+      "four",
+      "twigs",
+      "implements"
+    ],
+    "M193": [
+      "splinter",
+      "workshop",
+      "fireplace",
+      "hut",
+      "granary"
+    ],
+    "M194": [
+      "iron",
+      "ingot",
+      "sluice",
+      "artisan",
+      "sprout"
+    ],
+    "M195": [
+      "furnace",
+      "ingot",
+      "sluice",
+      "artisan"
+    ],
+    "M196": [
+      "implements",
+      "five",
+      "declivity"
+    ],
+    "M197": [
+      "one",
+      "workshop",
+      "seven",
+      "steel",
+      "four"
+    ],
+    "M202": [
+      "iron",
+      "copper",
+      "temple"
+    ],
+    "M210": [
+      "one",
+      "workshop",
+      "four",
+      "implements",
+      "splinter"
+    ],
+    "M211": [
+      "iron",
+      "furnace",
+      "arrow",
+      "implements",
+      "pair"
+    ],
+    "M212": [
+      "implements",
+      "warehouse"
+    ],
+    "M213": [
+      "bdellium",
+      "tiger",
+      "tail",
+      "onager"
+    ],
+    "M214": [
+      "body",
+      "iron",
+      "copper",
+      "one",
+      "workshop"
+    ],
+    "M216": [
+      "body",
+      "lid",
+      "ingot",
+      "blacksmith",
+      "account"
+    ],
+    "M219": [
+      "tongs",
+      "anvil",
+      "smith",
+      "bronze",
+      "two"
+    ],
+    "M229": [
+      "iron",
+      "gold",
+      "tongs",
+      "anvil",
+      "smith"
+    ],
+    "M233": [
+      "scribe",
+      "accounting",
+      "helmsman",
+      "supercargo",
+      "hill"
+    ],
+    "M236": [
+      "implements",
+      "ladle",
+      "ingot",
+      "furnace",
+      "three"
+    ],
+    "M241": [
+      "smelter",
+      "arrow",
+      "implements",
+      "iron"
+    ],
+    "M242": [
+      "workshop",
+      "temple",
+      "body",
+      "iron",
+      "copper"
+    ],
+    "M244": [
+      "brass",
+      "potter",
+      "splinter",
+      "workshop",
+      "armourer"
+    ],
+    "M245": [
+      "body",
+      "iron",
+      "copper",
+      "one",
+      "workshop"
+    ],
+    "M249": [
+      "two",
+      "tin",
+      "one",
+      "workshop",
+      "sluice"
+    ],
+    "M252": [
+      "body",
+      "iron",
+      "copper",
+      "implements"
+    ],
+    "M253": [
+      "tin",
+      "one",
+      "workshop",
+      "temple",
+      "iron"
+    ],
+    "M254": [
+      "iron",
+      "furnace",
+      "arrow",
+      "implements",
+      "pair"
+    ],
+    "M256": [
+      "division",
+      "implements",
+      "peg",
+      "pin",
+      "blacksmith"
+    ],
+    "M259": [
+      "soma",
+      "iron",
+      "fish"
+    ],
+    "M267": [
+      "iron",
+      "merchant",
+      "corner",
+      "splinter",
+      "workshop"
+    ],
+    "M271": [
+      "ram",
+      "merchant",
+      "sprout",
+      "banyan",
+      "corner"
+    ],
+    "M272": [
+      "goat",
+      "copper",
+      "crucible"
+    ],
+    "M284": [
+      "declivity",
+      "two",
+      "corner",
+      "bronze",
+      "four"
+    ],
+    "M286": [
+      "zebu",
+      "spoke",
+      "brass",
+      "potter"
+    ],
+    "M287": [
+      "bent",
+      "curve",
+      "brass",
+      "smelter"
+    ],
+    "M290": [
+      "bdellium",
+      "tiger",
+      "tail",
+      "onager"
+    ],
+    "M293": [
+      "warrior",
+      "furnace",
+      "warehouse",
+      "smelter",
+      "three"
+    ],
+    "M294": [
+      "bent",
+      "curve",
+      "brass",
+      "fish",
+      "iron"
+    ],
+    "M295": [
+      "temple",
+      "tiger",
+      "interlocked",
+      "corner",
+      "splinter"
+    ],
+    "M297": [
+      "octopus",
+      "priest",
+      "chieftains",
+      "unicorn",
+      "body"
+    ],
+    "M298": [
+      "soma",
+      "iron",
+      "fish",
+      "alloymetal",
+      "ox"
+    ],
+    "M300": [
+      "horns",
+      "workshop",
+      "trunk",
+      "blacksmith",
+      "supercargo"
+    ],
+    "M301": [
+      "trunk",
+      "blacksmith",
+      "furnace",
+      "pair",
+      "bent"
+    ],
+    "M304": [
+      "helmsman",
+      "brassworker",
+      "tuft",
+      "ascetism",
+      "harbour"
+    ],
+    "M305": [
+      "penance",
+      "mint",
+      "scarf",
+      "blacksmith",
+      "polarstar"
+    ],
+    "M319": [
+      "iron",
+      "copper",
+      "ingot",
+      "implements",
+      "mint"
+    ],
+    "M321": [
+      "ingot",
+      "smith",
+      "two",
+      "cross"
+    ],
+    "M325": [
+      "splinter",
+      "copper",
+      "antelope",
+      "three",
+      "duplicated"
+    ],
+    "M326": [
+      "iron",
+      "ingot",
+      "copper"
+    ],
+    "M327": [
+      "iron",
+      "metalsmith",
+      "warrior",
+      "furnace",
+      "ear"
+    ],
+    "M328": [
+      "three",
+      "smelter",
+      "ingot",
+      "workshop",
+      "iron"
+    ],
+    "M330": [
+      "furnace",
+      "three",
+      "division",
+      "implements"
+    ],
+    "M336": [
+      "ear",
+      "two",
+      "metalcasting",
+      "ladle",
+      "ingot"
+    ],
+    "M341": [
+      "accounting",
+      "smelter",
+      "body",
+      "iron",
+      "copper"
+    ],
+    "M342": [
+      "three",
+      "pot",
+      "rim",
+      "splinter",
+      "workshop"
+    ],
+    "M343": [
+      "slant",
+      "sluice",
+      "artisan",
+      "splinter",
+      "artificer"
+    ],
+    "M344": [
+      "three",
+      "pot",
+      "rim",
+      "splinter",
+      "workshop"
+    ],
+    "M345": [
+      "three",
+      "accounting"
+    ],
+    "M346": [
+      "ingot"
+    ],
+    "M347": [
+      "implements",
+      "riceplant",
+      "two",
+      "metalcasting"
+    ],
+    "M352": [
+      "drop"
+    ],
+    "M355": [
+      "corner",
+      "splinter",
+      "workshop",
+      "warrior",
+      "ron"
+    ],
+    "M358": [
+      "iron",
+      "potter",
+      "spokes",
+      "brass",
+      "moltencast"
+    ],
+    "M373": [
+      "archer",
+      "appendage",
+      "silver",
+      "implements",
+      "iron"
+    ],
+    "M374": [
+      "fish",
+      "silver",
+      "six",
+      "furnace",
+      "iron"
+    ],
+    "M375": [
+      "tree",
+      "hedge",
+      "ingot"
+    ],
+    "M381": [
+      "ingot",
+      "mint",
+      "workshop"
+    ],
+    "M386": [
+      "iron",
+      "copper",
+      "ingot",
+      "smelter"
+    ],
+    "M387": [
+      "ingot",
+      "fish",
+      "smelter"
+    ],
+    "M389": [
+      "sprout",
+      "bud",
+      "smelter"
+    ],
+    "M391": [
+      "potter",
+      "unicorn",
+      "two",
+      "metalcasting",
+      "iron"
+    ],
+    "M402": [
+      "dispatch",
+      "ingot",
+      "smelter",
+      "cross",
+      "minerals"
+    ],
+    "M403": [
+      "implements",
+      "smelter",
+      "income",
+      "blacksmith",
+      "declivity"
+    ],
+    "M410": [
+      "iron",
+      "blacksmith",
+      "hare"
+    ],
+    "M411": [
+      "steel",
+      "wing",
+      "mint"
+    ],
+    "M418": [
+      "trade",
+      "scraper"
+    ]
+  },
+  "craft_vocabulary": [
+    {
+      "term": "kol",
+      "count": 451,
+      "sources": [
+        "A_Black_drongo_in_Rajasthan_state_northe",
+        "Array_of_instruments_supercargo_metals_m",
+        "Bar_of_metal_equipment_account_metalsmit",
+        "Bronze_Age_Svastika_furnace_burning_alta",
+        "Chimerae_of_Indus_Script_in_Margush_Turk",
+        "Chimerae_of_short_sequence_signs_and_fie",
+        "Dul_metalcasting_rebus_khau_bier_rebu",
+        "Etymology_of_Me_lah_ha_Mel_guild_company",
+        "Eureka_Cargo_of_amsu_soma_on__saga",
+        "Fauna_economic_court_word_semantographs",
+        "Focus_on_Kodava_Meluhha_language_of_Indu",
+        "Inscriptions_on_implements_are_metalwork",
+        "Kaa_wealth_goods_possessions_on_232_ins",
+        "Kamaha_yogi_in_penance_rebus__kama",
+        "Koava_create_Indus_Script_superb_narrat",
+        "Koiya_young_bull_rebus_koiya_dhow_seaf",
+        "kol_raftof_kol_iron_smelters",
+        "Konda_circular_artisan_hamlet_singi_orna",
+        "Kot_Diji_pot_painted_with_buffalo_horns",
+        "kuavari_f_A_roll_of_the_farming",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Kunda_pillar_patthar_stones_rebus_kundan",
+        "Ledgers_of_metalwork_46_wealth_categorie",
+        "Maritime_brass_workers_artisan_village_M",
+        "Meluhha_Mleccha_bhaa_of_Indus_Script_is",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcasting_forge_smelter_bell_metal_ir",
+        "Metalcastings_copper_gold_despatch_accou",
+        "Metalwork_semantographs_of_Gadd_hierogly",
+        "Pon_pavana_gold_kiln_kondaa_gem_setter",
+        "Proto_elamite_susa_seals_with_Indus_Scri",
+        "satavu__Svastika_of_Indus_Script_Cor",
+        "Semantograph_khara_hare_rebus_khar_black",
+        "Semantographs_kolhe_jhal_blazing_iron_sm",
+        "Semantographs_of_anthropomorph_narrative",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Semantographs_of_metalwork_ledgers_on_co",
+        "Smelted_bar_of_metal_to_forge_equipment",
+        "Soma_tin_artisan_s_workshop_H_884_Soma_c",
+        "Steersman_in_charge_of_1_bell_metal_smel",
+        "Thar_line_row_in_lines_in_rows_tara_star",
+        "The_three_sign_sequence_of_Vaisali_seal",
+        "Treasure_guard_with_body_armour_metalwor",
+        "Trisiras_and_other_Indus_script_semantog",
+        "Warehouse_mint_Pavana_pottery_kiln_in_fr",
+        "Wealth_goods_mart_copper_coin_Taxila_wit"
+      ]
+    },
+    {
+      "term": "dul",
+      "count": 263,
+      "sources": [
+        "Array_of_instruments_supercargo_metals_m",
+        "Bar_of_metal_equipment_account_metalsmit",
+        "Bronze_Age_Svastika_furnace_burning_alta",
+        "Chimerae_of_short_sequence_signs_and_fie",
+        "Dul_metalcasting_rebus_khau_bier_rebu",
+        "Etymology_of_Me_lah_ha_Mel_guild_company",
+        "Fauna_economic_court_word_semantographs",
+        "Focus_on_Kodava_Meluhha_language_of_Indu",
+        "Inscriptions_on_implements_are_metalwork",
+        "Kaa_wealth_goods_possessions_on_232_ins",
+        "Koava_create_Indus_Script_superb_narrat",
+        "Konda_circular_artisan_hamlet_singi_orna",
+        "Kot_Diji_pot_painted_with_buffalo_horns",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Kunda_pillar_patthar_stones_rebus_kundan",
+        "Ledgers_of_metalwork_46_wealth_categorie",
+        "Maritime_brass_workers_artisan_village_M",
+        "Meluhha_Mleccha_bhaa_of_Indus_Script_is",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcasting_forge_smelter_bell_metal_ir",
+        "Metalcastings_copper_gold_despatch_accou",
+        "Metalwork_semantographs_of_Gadd_hierogly",
+        "Pon_pavana_gold_kiln_kondaa_gem_setter",
+        "Proto_elamite_susa_seals_with_Indus_Scri",
+        "satavu__Svastika_of_Indus_Script_Cor",
+        "Semantograph_khara_hare_rebus_khar_black",
+        "Semantographs_kolhe_jhal_blazing_iron_sm",
+        "Semantographs_of_anthropomorph_narrative",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Semantographs_of_metalwork_ledgers_on_co",
+        "Soma_tin_artisan_s_workshop_H_884_Soma_c",
+        "Steersman_in_charge_of_1_bell_metal_smel",
+        "Thar_line_row_in_lines_in_rows_tara_star",
+        "The_three_sign_sequence_of_Vaisali_seal",
+        "Trisiras_and_other_Indus_script_semantog",
+        "Warehouse_mint_Pavana_pottery_kiln_in_fr"
+      ]
+    },
+    {
+      "term": "meḍ",
+      "count": 134,
+      "sources": [
+        "Array_of_instruments_supercargo_metals_m",
+        "badhia_boar_rebus_badhi_worker_in_wood_a",
+        "Bar_of_metal_equipment_account_metalsmit",
+        "Bronze_Age_Svastika_furnace_burning_alta",
+        "Chimerae_of_short_sequence_signs_and_fie",
+        "Dul_metalcasting_rebus_khau_bier_rebu",
+        "Etymology_of_Me_lah_ha_Mel_guild_company",
+        "Eureka_Cargo_of_amsu_soma_on__saga",
+        "Fauna_economic_court_word_semantographs",
+        "Focus_on_Kodava_Meluhha_language_of_Indu",
+        "Inscriptions_on_implements_are_metalwork",
+        "Kamaha_yogi_in_penance_rebus__kama",
+        "Konda_circular_artisan_hamlet_singi_orna",
+        "Kot_Diji_pot_painted_with_buffalo_horns",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Kunda_pillar_patthar_stones_rebus_kundan",
+        "Ledgers_of_metalwork_46_wealth_categorie",
+        "Maritime_brass_workers_artisan_village_M",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcastings_copper_gold_despatch_accou",
+        "Metalwork_semantographs_of_Gadd_hierogly",
+        "Ninth_kamaha_yogi_in_penance_is_buffalo",
+        "Proto_elamite_susa_seals_with_Indus_Scri",
+        "satavu__Svastika_of_Indus_Script_Cor",
+        "Semantograph_khara_hare_rebus_khar_black",
+        "Semantographs_kolhe_jhal_blazing_iron_sm",
+        "Semantographs_of_anthropomorph_narrative",
+        "Semantographs_of_metalwork_ledgers_on_co",
+        "Thar_line_row_in_lines_in_rows_tara_star",
+        "Trisiras_and_other_Indus_script_semantog",
+        "Warehouse_mint_Pavana_pottery_kiln_in_fr"
+      ]
+    },
+    {
+      "term": "baṭa",
+      "count": 122,
+      "sources": [
+        "Bar_of_metal_equipment_account_metalsmit",
+        "Chimerae_of_short_sequence_signs_and_fie",
+        "Dul_metalcasting_rebus_khau_bier_rebu",
+        "Etymology_of_Me_lah_ha_Mel_guild_company",
+        "Inscriptions_on_implements_are_metalwork",
+        "Kaa_wealth_goods_possessions_on_232_ins",
+        "Kamaha_yogi_in_penance_rebus__kama",
+        "Koava_create_Indus_Script_superb_narrat",
+        "Konda_circular_artisan_hamlet_singi_orna",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Ledgers_of_metalwork_46_wealth_categorie",
+        "Meluhha_Mleccha_bhaa_of_Indus_Script_is",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcastings_copper_gold_despatch_accou",
+        "Metalwork_semantographs_of_Gadd_hierogly",
+        "Proto_elamite_susa_seals_with_Indus_Scri",
+        "Semantograph_khara_hare_rebus_khar_black",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Semantographs_of_metalwork_ledgers_on_co",
+        "Thar_line_row_in_lines_in_rows_tara_star",
+        "The_three_sign_sequence_of_Vaisali_seal",
+        "Warehouse_mint_Pavana_pottery_kiln_in_fr",
+        "Wealth_goods_mart_copper_coin_Taxila_wit"
+      ]
+    },
+    {
+      "term": "khār",
+      "count": 121,
+      "sources": [
+        "Array_of_instruments_supercargo_metals_m",
+        "Bar_of_metal_equipment_account_metalsmit",
+        "Bronze_Age_Svastika_furnace_burning_alta",
+        "Chimerae_of_short_sequence_signs_and_fie",
+        "Dul_metalcasting_rebus_khau_bier_rebu",
+        "Etymology_of_Me_lah_ha_Mel_guild_company",
+        "Fauna_economic_court_word_semantographs",
+        "Inscriptions_on_implements_are_metalwork",
+        "Kaa_wealth_goods_possessions_on_232_ins",
+        "Kamaha_yogi_in_penance_rebus__kama",
+        "Koava_create_Indus_Script_superb_narrat",
+        "Koiya_young_bull_rebus_koiya_dhow_seaf",
+        "Konda_circular_artisan_hamlet_singi_orna",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Kunda_pillar_patthar_stones_rebus_kundan",
+        "Meluhha_Mleccha_bhaa_of_Indus_Script_is",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcasting_forge_smelter_bell_metal_ir",
+        "Metalwork_semantographs_of_Gadd_hierogly",
+        "Pon_pavana_gold_kiln_kondaa_gem_setter",
+        "Proto_elamite_susa_seals_with_Indus_Scri",
+        "satavu__Svastika_of_Indus_Script_Cor",
+        "Semantograph_khara_hare_rebus_khar_black",
+        "Semantographs_kolhe_jhal_blazing_iron_sm",
+        "Semantographs_of_anthropomorph_narrative",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Semantographs_of_metalwork_ledgers_on_co",
+        "Smelted_bar_of_metal_to_forge_equipment",
+        "Soma_tin_artisan_s_workshop_H_884_Soma_c",
+        "Steersman_in_charge_of_1_bell_metal_smel",
+        "Thar_line_row_in_lines_in_rows_tara_star",
+        "The_three_sign_sequence_of_Vaisali_seal",
+        "Treasure_guard_with_body_armour_metalwor",
+        "Trisiras_and_other_Indus_script_semantog",
+        "Wealth_goods_mart_copper_coin_Taxila_wit"
+      ]
+    },
+    {
+      "term": "dula",
+      "count": 114,
+      "sources": [
+        "Array_of_instruments_supercargo_metals_m",
+        "Bar_of_metal_equipment_account_metalsmit",
+        "Bronze_Age_Svastika_furnace_burning_alta",
+        "Chimerae_of_short_sequence_signs_and_fie",
+        "Dul_metalcasting_rebus_khau_bier_rebu",
+        "Etymology_of_Me_lah_ha_Mel_guild_company",
+        "Focus_on_Kodava_Meluhha_language_of_Indu",
+        "Inscriptions_on_implements_are_metalwork",
+        "Kaa_wealth_goods_possessions_on_232_ins",
+        "Koava_create_Indus_Script_superb_narrat",
+        "Konda_circular_artisan_hamlet_singi_orna",
+        "Kot_Diji_pot_painted_with_buffalo_horns",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Kunda_pillar_patthar_stones_rebus_kundan",
+        "Ledgers_of_metalwork_46_wealth_categorie",
+        "Maritime_brass_workers_artisan_village_M",
+        "Meluhha_Mleccha_bhaa_of_Indus_Script_is",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcasting_forge_smelter_bell_metal_ir",
+        "Metalcastings_copper_gold_despatch_accou",
+        "Metalwork_semantographs_of_Gadd_hierogly",
+        "Pon_pavana_gold_kiln_kondaa_gem_setter",
+        "Proto_elamite_susa_seals_with_Indus_Scri",
+        "satavu__Svastika_of_Indus_Script_Cor",
+        "Semantograph_khara_hare_rebus_khar_black",
+        "Semantographs_kolhe_jhal_blazing_iron_sm",
+        "Semantographs_of_anthropomorph_narrative",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Semantographs_of_metalwork_ledgers_on_co",
+        "Soma_tin_artisan_s_workshop_H_884_Soma_c",
+        "Steersman_in_charge_of_1_bell_metal_smel",
+        "Thar_line_row_in_lines_in_rows_tara_star",
+        "The_three_sign_sequence_of_Vaisali_seal",
+        "Trisiras_and_other_Indus_script_semantog",
+        "Warehouse_mint_Pavana_pottery_kiln_in_fr"
+      ]
+    },
+    {
+      "term": "arka",
+      "count": 106,
+      "sources": [
+        "A_Black_drongo_in_Rajasthan_state_northe",
+        "badhia_boar_rebus_badhi_worker_in_wood_a",
+        "Bar_of_metal_equipment_account_metalsmit",
+        "Dul_metalcasting_rebus_khau_bier_rebu",
+        "Etymology_of_Me_lah_ha_Mel_guild_company",
+        "Fauna_economic_court_word_semantographs",
+        "Focus_on_Kodava_Meluhha_language_of_Indu",
+        "Inscriptions_on_implements_are_metalwork",
+        "Kamaha_yogi_in_penance_rebus__kama",
+        "Koava_create_Indus_Script_superb_narrat",
+        "Konda_circular_artisan_hamlet_singi_orna",
+        "Malhar_fire_altar_iron_smelter_M_352_Dot",
+        "Meluhha_Mleccha_bhaa_of_Indus_Script_is",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcastings_copper_gold_despatch_accou",
+        "Semantograph_khara_hare_rebus_khar_black",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Thar_line_row_in_lines_in_rows_tara_star",
+        "Trisiras_and_other_Indus_script_semantog"
+      ]
+    },
+    {
+      "term": "phaḍ",
+      "count": 105,
+      "sources": [
+        "Array_of_instruments_supercargo_metals_m",
+        "badhia_boar_rebus_badhi_worker_in_wood_a",
+        "Chimerae_of_Indus_Script_in_Margush_Turk",
+        "Dul_metalcasting_rebus_khau_bier_rebu",
+        "Fauna_economic_court_word_semantographs",
+        "Focus_on_Kodava_Meluhha_language_of_Indu",
+        "Kaa_wealth_goods_possessions_on_232_ins",
+        "Kamaha_yogi_in_penance_rebus__kama",
+        "Koava_create_Indus_Script_superb_narrat",
+        "Koiya_young_bull_rebus_koiya_dhow_seaf",
+        "kol_raftof_kol_iron_smelters",
+        "kuavari_f_A_roll_of_the_farming",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Kunda_pillar_patthar_stones_rebus_kundan",
+        "Ledgers_of_metalwork_46_wealth_categorie",
+        "Meluhha_Mleccha_bhaa_of_Indus_Script_is",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcasting_forge_smelter_bell_metal_ir",
+        "Metalwork_semantographs_of_Gadd_hierogly",
+        "Pon_pavana_gold_kiln_kondaa_gem_setter",
+        "Proto_elamite_susa_seals_with_Indus_Scri",
+        "Semantograph_khara_hare_rebus_khar_black",
+        "Semantographs_of_anthropomorph_narrative",
+        "Semantographs_of_Indus_Script_on_Kasargo",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Smelted_bar_of_metal_to_forge_equipment",
+        "Soma_tin_artisan_s_workshop_H_884_Soma_c",
+        "Steersman_in_charge_of_1_bell_metal_smel",
+        "The_three_sign_sequence_of_Vaisali_seal",
+        "Treasure_guard_with_body_armour_metalwor",
+        "Wealth_goods_mart_copper_coin_Taxila_wit"
+      ]
+    },
+    {
+      "term": "kunda",
+      "count": 104,
+      "sources": [
+        "badhia_boar_rebus_badhi_worker_in_wood_a",
+        "Dul_metalcasting_rebus_khau_bier_rebu",
+        "Kaa_wealth_goods_possessions_on_232_ins",
+        "Kamaha_yogi_in_penance_rebus__kama",
+        "Koava_create_Indus_Script_superb_narrat",
+        "Koiya_young_bull_rebus_koiya_dhow_seaf",
+        "Konda_circular_artisan_hamlet_singi_orna",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Kunda_pillar_patthar_stones_rebus_kundan",
+        "Ledgers_of_metalwork_46_wealth_categorie",
+        "Maritime_brass_workers_artisan_village_M",
+        "Meluhha_Mleccha_bhaa_of_Indus_Script_is",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcasting_forge_smelter_bell_metal_ir",
+        "Metalcastings_copper_gold_despatch_accou",
+        "Metalwork_semantographs_of_Gadd_hierogly",
+        "Pon_pavana_gold_kiln_kondaa_gem_setter",
+        "Proto_elamite_susa_seals_with_Indus_Scri",
+        "Semantographs_kolhe_jhal_blazing_iron_sm",
+        "Semantographs_of_anthropomorph_narrative",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Smelted_bar_of_metal_to_forge_equipment",
+        "Soma_tin_artisan_s_workshop_H_884_Soma_c",
+        "Steersman_in_charge_of_1_bell_metal_smel",
+        "Thar_line_row_in_lines_in_rows_tara_star",
+        "The_three_sign_sequence_of_Vaisali_seal",
+        "Treasure_guard_with_body_armour_metalwor",
+        "Trisiras_and_other_Indus_script_semantog"
+      ]
+    },
+    {
+      "term": "kuṭhi",
+      "count": 97,
+      "sources": [
+        "Bar_of_metal_equipment_account_metalsmit",
+        "Bronze_Age_Svastika_furnace_burning_alta",
+        "Chimerae_of_short_sequence_signs_and_fie",
+        "Dul_metalcasting_rebus_khau_bier_rebu",
+        "Etymology_of_Me_lah_ha_Mel_guild_company",
+        "Fauna_economic_court_word_semantographs",
+        "Inscriptions_on_implements_are_metalwork",
+        "Kaa_wealth_goods_possessions_on_232_ins",
+        "Kamaha_yogi_in_penance_rebus__kama",
+        "Konda_circular_artisan_hamlet_singi_orna",
+        "Kot_Diji_pot_painted_with_buffalo_horns",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Kunda_pillar_patthar_stones_rebus_kundan",
+        "Ledgers_of_metalwork_46_wealth_categorie",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcasting_forge_smelter_bell_metal_ir",
+        "Metalcastings_copper_gold_despatch_accou",
+        "Metalwork_semantographs_of_Gadd_hierogly",
+        "satavu__Svastika_of_Indus_Script_Cor",
+        "Semantograph_khara_hare_rebus_khar_black",
+        "Semantographs_kolhe_jhal_blazing_iron_sm",
+        "Semantographs_of_anthropomorph_narrative",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Smelted_bar_of_metal_to_forge_equipment",
+        "Steersman_in_charge_of_1_bell_metal_smel",
+        "Thar_line_row_in_lines_in_rows_tara_star",
+        "The_three_sign_sequence_of_Vaisali_seal",
+        "Trisiras_and_other_Indus_script_semantog"
+      ]
+    },
+    {
+      "term": "kolimi",
+      "count": 87,
+      "sources": [
+        "A_Black_drongo_in_Rajasthan_state_northe",
+        "Array_of_instruments_supercargo_metals_m",
+        "Bar_of_metal_equipment_account_metalsmit",
+        "Chimerae_of_short_sequence_signs_and_fie",
+        "Etymology_of_Me_lah_ha_Mel_guild_company",
+        "Eureka_Cargo_of_amsu_soma_on__saga",
+        "Fauna_economic_court_word_semantographs",
+        "Inscriptions_on_implements_are_metalwork",
+        "Kaa_wealth_goods_possessions_on_232_ins",
+        "Koava_create_Indus_Script_superb_narrat",
+        "Konda_circular_artisan_hamlet_singi_orna",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Kunda_pillar_patthar_stones_rebus_kundan",
+        "Ledgers_of_metalwork_46_wealth_categorie",
+        "Meluhha_Mleccha_bhaa_of_Indus_Script_is",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcasting_forge_smelter_bell_metal_ir",
+        "Metalcastings_copper_gold_despatch_accou",
+        "Metalwork_semantographs_of_Gadd_hierogly",
+        "Pon_pavana_gold_kiln_kondaa_gem_setter",
+        "Semantograph_khara_hare_rebus_khar_black",
+        "Semantographs_of_anthropomorph_narrative",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Semantographs_of_metalwork_ledgers_on_co",
+        "Smelted_bar_of_metal_to_forge_equipment",
+        "Soma_tin_artisan_s_workshop_H_884_Soma_c",
+        "Steersman_in_charge_of_1_bell_metal_smel",
+        "Thar_line_row_in_lines_in_rows_tara_star",
+        "The_three_sign_sequence_of_Vaisali_seal",
+        "Treasure_guard_with_body_armour_metalwor",
+        "Trisiras_and_other_Indus_script_semantog"
+      ]
+    },
+    {
+      "term": "kaṇḍ",
+      "count": 85,
+      "sources": [
+        "A_Black_drongo_in_Rajasthan_state_northe",
+        "Array_of_instruments_supercargo_metals_m",
+        "Bronze_Age_Svastika_furnace_burning_alta",
+        "Chimerae_of_short_sequence_signs_and_fie",
+        "Dul_metalcasting_rebus_khau_bier_rebu",
+        "Fauna_economic_court_word_semantographs",
+        "Inscriptions_on_implements_are_metalwork",
+        "Kaa_wealth_goods_possessions_on_232_ins",
+        "Kamaha_yogi_in_penance_rebus__kama",
+        "Koava_create_Indus_Script_superb_narrat",
+        "Koiya_young_bull_rebus_koiya_dhow_seaf",
+        "Konda_circular_artisan_hamlet_singi_orna",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Kunda_pillar_patthar_stones_rebus_kundan",
+        "Maritime_brass_workers_artisan_village_M",
+        "Meluhha_Mleccha_bhaa_of_Indus_Script_is",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcasting_forge_smelter_bell_metal_ir",
+        "Metalwork_semantographs_of_Gadd_hierogly",
+        "Pon_pavana_gold_kiln_kondaa_gem_setter",
+        "Proto_elamite_susa_seals_with_Indus_Scri",
+        "satavu__Svastika_of_Indus_Script_Cor",
+        "Semantograph_khara_hare_rebus_khar_black",
+        "Semantographs_kolhe_jhal_blazing_iron_sm",
+        "Semantographs_of_anthropomorph_narrative",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Semantographs_of_metalwork_ledgers_on_co",
+        "Smelted_bar_of_metal_to_forge_equipment",
+        "Soma_tin_artisan_s_workshop_H_884_Soma_c",
+        "Steersman_in_charge_of_1_bell_metal_smel",
+        "Thar_line_row_in_lines_in_rows_tara_star",
+        "The_three_sign_sequence_of_Vaisali_seal",
+        "Treasure_guard_with_body_armour_metalwor",
+        "Trisiras_and_other_Indus_script_semantog"
+      ]
+    },
+    {
+      "term": "kolhe",
+      "count": 77,
+      "sources": [
+        "Array_of_instruments_supercargo_metals_m",
+        "Bar_of_metal_equipment_account_metalsmit",
+        "Bronze_Age_Svastika_furnace_burning_alta",
+        "Chimerae_of_Indus_Script_in_Margush_Turk",
+        "Chimerae_of_short_sequence_signs_and_fie",
+        "Dul_metalcasting_rebus_khau_bier_rebu",
+        "Etymology_of_Me_lah_ha_Mel_guild_company",
+        "Eureka_Cargo_of_amsu_soma_on__saga",
+        "Fauna_economic_court_word_semantographs",
+        "Kamaha_yogi_in_penance_rebus__kama",
+        "Kot_Diji_pot_painted_with_buffalo_horns",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Kunda_pillar_patthar_stones_rebus_kundan",
+        "Ledgers_of_metalwork_46_wealth_categorie",
+        "Maritime_brass_workers_artisan_village_M",
+        "Meluhha_Mleccha_bhaa_of_Indus_Script_is",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcasting_forge_smelter_bell_metal_ir",
+        "Metalwork_semantographs_of_Gadd_hierogly",
+        "Proto_elamite_susa_seals_with_Indus_Scri",
+        "satavu__Svastika_of_Indus_Script_Cor",
+        "Semantograph_khara_hare_rebus_khar_black",
+        "Semantographs_kolhe_jhal_blazing_iron_sm",
+        "Semantographs_of_anthropomorph_narrative",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Semantographs_of_metalwork_ledgers_on_co",
+        "Steersman_in_charge_of_1_bell_metal_smel",
+        "Thar_line_row_in_lines_in_rows_tara_star",
+        "Trisiras_and_other_Indus_script_semantog"
+      ]
+    },
+    {
+      "term": "eraka",
+      "count": 71,
+      "sources": [
+        "A_Black_drongo_in_Rajasthan_state_northe",
+        "Bar_of_metal_equipment_account_metalsmit",
+        "Dul_metalcasting_rebus_khau_bier_rebu",
+        "Etymology_of_Me_lah_ha_Mel_guild_company",
+        "Inscriptions_on_implements_are_metalwork",
+        "Kamaha_yogi_in_penance_rebus__kama",
+        "Konda_circular_artisan_hamlet_singi_orna",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcastings_copper_gold_despatch_accou",
+        "Metalwork_semantographs_of_Gadd_hierogly",
+        "Semantograph_khara_hare_rebus_khar_black",
+        "Semantographs_of_anthropomorph_narrative"
+      ]
+    },
+    {
+      "term": "kammaṭa",
+      "count": 67,
+      "sources": [
+        "A_Black_drongo_in_Rajasthan_state_northe",
+        "Bar_of_metal_equipment_account_metalsmit",
+        "Bronze_Age_Svastika_furnace_burning_alta",
+        "Dul_metalcasting_rebus_khau_bier_rebu",
+        "Eureka_Cargo_of_amsu_soma_on__saga",
+        "Fauna_economic_court_word_semantographs",
+        "Focus_on_Kodava_Meluhha_language_of_Indu",
+        "Inscriptions_on_implements_are_metalwork",
+        "Kamaha_yogi_in_penance_rebus__kama",
+        "Koava_create_Indus_Script_superb_narrat",
+        "Konda_circular_artisan_hamlet_singi_orna",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Kunda_pillar_patthar_stones_rebus_kundan",
+        "Malhar_fire_altar_iron_smelter_M_352_Dot",
+        "Maritime_brass_workers_artisan_village_M",
+        "Meluhha_Mleccha_bhaa_of_Indus_Script_is",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcastings_copper_gold_despatch_accou",
+        "Ninth_kamaha_yogi_in_penance_is_buffalo",
+        "satavu__Svastika_of_Indus_Script_Cor",
+        "Semantograph_khara_hare_rebus_khar_black",
+        "Semantographs_kolhe_jhal_blazing_iron_sm",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Semantographs_of_metalwork_ledgers_on_co",
+        "Soma_tin_artisan_s_workshop_H_884_Soma_c",
+        "Steersman_in_charge_of_1_bell_metal_smel",
+        "Trisiras_and_other_Indus_script_semantog"
+      ]
+    },
+    {
+      "term": "sāṅgaḍa",
+      "count": 62,
+      "sources": [
+        "Chimerae_of_short_sequence_signs_and_fie",
+        "Dul_metalcasting_rebus_khau_bier_rebu",
+        "Eureka_Cargo_of_amsu_soma_on__saga",
+        "Fauna_economic_court_word_semantographs",
+        "Koava_create_Indus_Script_superb_narrat",
+        "Koiya_young_bull_rebus_koiya_dhow_seaf",
+        "Konda_circular_artisan_hamlet_singi_orna",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Ledgers_of_metalwork_46_wealth_categorie",
+        "Meluhha_Mleccha_bhaa_of_Indus_Script_is",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcasting_forge_smelter_bell_metal_ir",
+        "Metalcastings_copper_gold_despatch_accou",
+        "Metalwork_semantographs_of_Gadd_hierogly",
+        "Pon_pavana_gold_kiln_kondaa_gem_setter",
+        "Proto_elamite_susa_seals_with_Indus_Scri",
+        "Semantographs_of_anthropomorph_narrative",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Smelted_bar_of_metal_to_forge_equipment",
+        "Soma_tin_artisan_s_workshop_H_884_Soma_c",
+        "Steersman_in_charge_of_1_bell_metal_smel",
+        "Treasure_guard_with_body_armour_metalwor"
+      ]
+    },
+    {
+      "term": "loa",
+      "count": 61,
+      "sources": [
+        "Array_of_instruments_supercargo_metals_m",
+        "Bronze_Age_Svastika_furnace_burning_alta",
+        "Chimerae_of_short_sequence_signs_and_fie",
+        "Dul_metalcasting_rebus_khau_bier_rebu",
+        "Etymology_of_Me_lah_ha_Mel_guild_company",
+        "Eureka_Cargo_of_amsu_soma_on__saga",
+        "Fauna_economic_court_word_semantographs",
+        "Focus_on_Kodava_Meluhha_language_of_Indu",
+        "Kamaha_yogi_in_penance_rebus__kama",
+        "Koava_create_Indus_Script_superb_narrat",
+        "Koiya_young_bull_rebus_koiya_dhow_seaf",
+        "kol_raftof_kol_iron_smelters",
+        "Konda_circular_artisan_hamlet_singi_orna",
+        "Kot_Diji_pot_painted_with_buffalo_horns",
+        "Ledgers_of_metalwork_46_wealth_categorie",
+        "Maritime_brass_workers_artisan_village_M",
+        "Meluhha_Mleccha_bhaa_of_Indus_Script_is",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcasting_forge_smelter_bell_metal_ir",
+        "Metalcastings_copper_gold_despatch_accou",
+        "Pon_pavana_gold_kiln_kondaa_gem_setter",
+        "Proto_elamite_susa_seals_with_Indus_Scri",
+        "Sarasvati_Rastri_Vac_speech_Me_luh_ha_vi",
+        "satavu__Svastika_of_Indus_Script_Cor",
+        "Semantograph_khara_hare_rebus_khar_black",
+        "Semantographs_kolhe_jhal_blazing_iron_sm",
+        "Semantographs_of_anthropomorph_narrative",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Semantographs_of_metalwork_ledgers_on_co",
+        "Soma_tin_artisan_s_workshop_H_884_Soma_c",
+        "Trisiras_and_other_Indus_script_semantog"
+      ]
+    },
+    {
+      "term": "karṇī",
+      "count": 61,
+      "sources": [
+        "badhia_boar_rebus_badhi_worker_in_wood_a",
+        "Bar_of_metal_equipment_account_metalsmit",
+        "Bronze_Age_Svastika_furnace_burning_alta",
+        "Chimerae_of_short_sequence_signs_and_fie",
+        "Dul_metalcasting_rebus_khau_bier_rebu",
+        "Etymology_of_Me_lah_ha_Mel_guild_company",
+        "Fauna_economic_court_word_semantographs",
+        "Focus_on_Kodava_Meluhha_language_of_Indu",
+        "Inscriptions_on_implements_are_metalwork",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Kunda_pillar_patthar_stones_rebus_kundan",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcasting_forge_smelter_bell_metal_ir",
+        "Metalcastings_copper_gold_despatch_accou",
+        "satavu__Svastika_of_Indus_Script_Cor",
+        "Semantographs_of_anthropomorph_narrative",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Steersman_in_charge_of_1_bell_metal_smel",
+        "Thar_line_row_in_lines_in_rows_tara_star",
+        "The_three_sign_sequence_of_Vaisali_seal",
+        "Warehouse_mint_Pavana_pottery_kiln_in_fr",
+        "Wealth_goods_mart_copper_coin_Taxila_wit"
+      ]
+    },
+    {
+      "term": "kuṭila",
+      "count": 49,
+      "sources": [
+        "Bar_of_metal_equipment_account_metalsmit",
+        "Fauna_economic_court_word_semantographs",
+        "Inscriptions_on_implements_are_metalwork",
+        "Kamaha_yogi_in_penance_rebus__kama",
+        "Konda_circular_artisan_hamlet_singi_orna",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Maritime_brass_workers_artisan_village_M",
+        "Meluhha_Mleccha_bhaa_of_Indus_Script_is",
+        "Merchant_metalalloy_furnace_produce_impl",
+        "Metalcastings_copper_gold_despatch_accou",
+        "Pon_pavana_gold_kiln_kondaa_gem_setter",
+        "Proto_elamite_susa_seals_with_Indus_Scri",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Semantographs_of_metalwork_ledgers_on_co",
+        "Steersman_in_charge_of_1_bell_metal_smel"
+      ]
+    },
+    {
+      "term": "jhāl",
+      "count": 45,
+      "sources": [
+        "A_Black_drongo_in_Rajasthan_state_northe",
+        "Kunda_pillar_patthar_stones_rebus_kundan",
+        "Maritime_brass_workers_artisan_village_M",
+        "Semantographs_kolhe_jhal_blazing_iron_sm",
+        "Trisiras_and_other_Indus_script_semantog"
+      ]
+    },
+    {
+      "term": "pōḷa",
+      "count": 39,
+      "sources": [
+        "A_Black_drongo_in_Rajasthan_state_northe",
+        "Chimerae_of_Indus_Script_in_Margush_Turk",
+        "Koava_create_Indus_Script_superb_narrat",
+        "Meluhha_Mleccha_bhaa_of_Indus_Script_is",
+        "Metalcasting_forge_smelter_bell_metal_ir",
+        "Semantographs_kolhe_jhal_blazing_iron_sm",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Trisiras_and_other_Indus_script_semantog"
+      ]
+    },
+    {
+      "term": "dhāḷ",
+      "count": 29,
+      "sources": [
+        "Fauna_economic_court_word_semantographs",
+        "Inscriptions_on_implements_are_metalwork",
+        "Koava_create_Indus_Script_superb_narrat",
+        "Konda_circular_artisan_hamlet_singi_orna",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Ledgers_of_metalwork_46_wealth_categorie",
+        "Meluhha_Mleccha_bhaa_of_Indus_Script_is",
+        "Metalcastings_copper_gold_despatch_accou",
+        "Semantograph_khara_hare_rebus_khar_black",
+        "Semantographs_of_metalwork_ledgers_on_co",
+        "Soma_tin_artisan_s_workshop_H_884_Soma_c"
+      ]
+    },
+    {
+      "term": "arke",
+      "count": 25,
+      "sources": [
+        "A_Black_drongo_in_Rajasthan_state_northe",
+        "Bronze_Age_Svastika_furnace_burning_alta",
+        "Chimerae_of_short_sequence_signs_and_fie",
+        "Koava_create_Indus_Script_superb_narrat",
+        "Ledgers_of_metalwork_46_wealth_categorie",
+        "Malhar_fire_altar_iron_smelter_M_352_Dot",
+        "Maritime_brass_workers_artisan_village_M",
+        "Meluhha_Mleccha_bhaa_of_Indus_Script_is",
+        "Metalwork_semantographs_of_Gadd_hierogly",
+        "Ninth_kamaha_yogi_in_penance_is_buffalo",
+        "satavu__Svastika_of_Indus_Script_Cor",
+        "Semantographs_of_anthropomorph_narrative",
+        "Thar_line_row_in_lines_in_rows_tara_star",
+        "Trisiras_and_other_Indus_script_semantog",
+        "Wealth_goods_mart_copper_coin_Taxila_wit"
+      ]
+    },
+    {
+      "term": "ṭhākur",
+      "count": 23,
+      "sources": [
+        "Chimerae_of_Indus_Script_in_Margush_Turk",
+        "Etymology_of_Me_lah_ha_Mel_guild_company",
+        "Kuikuila_bronze_smelter_of_smithy_for",
+        "Metalcasting_forge_smelter_bell_metal_ir",
+        "Proto_elamite_susa_seals_with_Indus_Scri",
+        "Semantographs_of_Maritime_ornament_gold",
+        "Steersman_in_charge_of_1_bell_metal_smel",
+        "Thar_line_row_in_lines_in_rows_tara_star"
+      ]
+    },
+    {
+      "term": "satavu",
+      "count": 13,
+      "sources": [
+        "Bronze_Age_Svastika_furnace_burning_alta",
+        "satavu__Svastika_of_Indus_Script_Cor",
+        "Wealth_goods_mart_copper_coin_Taxila_wit"
+      ]
+    },
+    {
+      "term": "tagar",
+      "count": 12,
+      "sources": [
+        "Semantographs_of_anthropomorph_narrative"
+      ]
+    },
+    {
+      "term": "mēḍh",
+      "count": 9,
+      "sources": [
+        "Array_of_instruments_supercargo_metals_m",
+        "Bronze_Age_Svastika_furnace_burning_alta",
+        "Maritime_brass_workers_artisan_village_M",
+        "Proto_elamite_susa_seals_with_Indus_Scri",
+        "satavu__Svastika_of_Indus_Script_Cor",
+        "Thar_line_row_in_lines_in_rows_tara_star"
+      ]
+    },
+    {
+      "term": "kamaṭha",
+      "count": 2,
+      "sources": [
+        "Kamaha_yogi_in_penance_rebus__kama"
+      ]
+    },
+    {
+      "term": "badhia",
+      "count": 1,
+      "sources": [
+        "badhia_boar_rebus_badhi_worker_in_wood_a"
+      ]
+    },
+    {
+      "term": "bica",
+      "count": 1,
+      "sources": [
+        "Fauna_economic_court_word_semantographs"
+      ]
+    },
+    {
+      "term": "kaḍa",
+      "count": 1,
+      "sources": [
+        "Semantographs_of_Maritime_ornament_gold"
+      ]
+    }
+  ]
+}

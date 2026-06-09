@@ -100,6 +100,7 @@ temp/
 *.db-wal
 
 # ---- Local config / secrets ----
+project.yml
 .env
 .env.*
 *.pem
@@ -147,6 +148,7 @@ data/.keys.json
 
 # ---- Database files ----
 data/glossa.db
+frontend/data/glossa.db
 
 # ---- Backend runtime logs at root ----
 backend/uvicorn_stdout.log
@@ -215,6 +217,9 @@ docs/*.bak
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+
+# Bulk mine outputs — large JSON files (regenerable from scripts)
+outputs/phase*_bulk_mine_*.json
 
 # Private correspondence — local context only, never pushed
 .correspondence/

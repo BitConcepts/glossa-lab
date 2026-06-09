@@ -1,0 +1,119 @@
+{
+  "phase346": {
+    "motif_results": {
+      "unicorn": {
+        "n_seals": 514,
+        "n_match": 115,
+        "n_has_any_animal_reading": 146,
+        "match_rate": 0.2237,
+        "precision": 0.7877,
+        "expected_readings": [
+          "kol/koḷ"
+        ]
+      },
+      "zebu bull": {
+        "n_seals": 347,
+        "n_match": 71,
+        "n_has_any_animal_reading": 146,
+        "match_rate": 0.2046,
+        "precision": 0.4863,
+        "expected_readings": [
+          "kōṉ",
+          "māṭu",
+          "erutu"
+        ]
+      },
+      "elephant": {
+        "n_seals": 200,
+        "n_match": 68,
+        "n_has_any_animal_reading": 104,
+        "match_rate": 0.34,
+        "precision": 0.6538,
+        "expected_readings": [
+          "yānai",
+          "āṉai",
+          "kaḷiṟu"
+        ]
+      },
+      "rhinoceros": {
+        "n_seals": 170,
+        "n_match": 48,
+        "n_has_any_animal_reading": 82,
+        "match_rate": 0.2824,
+        "precision": 0.5854,
+        "expected_readings": [
+          "kāṇṭāmirukam",
+          "kōṭṭāṉ",
+          "maṟi"
+        ]
+      },
+      "tiger": {
+        "n_seals": 72,
+        "n_match": 7,
+        "n_has_any_animal_reading": 24,
+        "match_rate": 0.0972,
+        "precision": 0.2917,
+        "expected_readings": [
+          "puli",
+          "vēṅkai"
+        ]
+      },
+      "gharial": {
+        "n_seals": 64,
+        "n_match": 6,
+        "n_has_any_animal_reading": 15,
+        "match_rate": 0.0938,
+        "precision": 0.4,
+        "expected_readings": [
+          "mutalai",
+          "nakaram"
+        ]
+      },
+      "buffalo": {
+        "n_seals": 72,
+        "n_match": 0,
+        "n_has_any_animal_reading": 26,
+        "match_rate": 0.0,
+        "precision": 0.0,
+        "expected_readings": [
+          "māṭu",
+          "erutu"
+        ]
+      }
+    },
+    "overall_match_rate": 0.2189,
+    "overall_precision": 0.5801,
+    "total_match": 315,
+    "total_motif_seals": 1439,
+    "null_mean": 0.1044,
+    "null_std": 0.0064,
+    "z_score": 17.87,
+    "p_value": 0.0,
+    "verdict": "Motif validation: 21.9% match rate vs null 10.4% (z=17.9, p=0.0000). Precision (among animal-reading seals): 58%. HIGHLY SIGNIFICANT — iconographic anchors strongly confirmed."
+  },
+  "phase347": {
+    "root_suffix": 820,
+    "root_root": 478,
+    "suffix_root": 610,
+    "suffix_suffix": 996,
+    "other": 1927,
+    "total_bigrams": 4831,
+    "classified_bigrams": 2904,
+    "morphological_order_rate": 0.2824,
+    "null_mean": 0.0432,
+    "null_std": 0.0216,
+    "z_score": 11.06,
+    "verdict": "Morpheme LM: ROOT→SUFFIX=820 (28% of classified) vs null 4% (z=11.1). ROOT→ROOT=478, SUFFIX→ROOT=610, SUFFIX→SUFFIX=996. HIGHLY SIGNIFICANT — agglutinative morphological ordering confirmed."
+  },
+  "phase348": {
+    "m77_tokens": 5361,
+    "m77_mapped_tokens": 4611,
+    "token_coverage": 0.8601,
+    "m77_unique_bigrams": 228,
+    "holdat_unique_bigrams": 1557,
+    "common_bigrams": 8,
+    "bigram_jaccard": 0.0045,
+    "pearson_r": 0.0065,
+    "verdict": "M77 replication: 86% token coverage, 8 common bigrams (Jaccard=0.00), Pearson r=0.006. WEAK — M77 structure diverges from Holdat."
+  }
+}

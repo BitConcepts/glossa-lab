@@ -678,7 +678,12 @@ async def _maybe_notify_study(
     *, study_id: str, study_name: str, status: str,
     summary: dict[str, Any], duration_s: float | None,
 ) -> None:
-    """Fire a study_complete email; never raises into the runner."""
+    """Fire a study_complete email to registered recipients only.
+
+    STRICT RULE: emails are ONLY sent to addresses explicitly registered in
+    Settings > Notifications > Recipients.  No external address can ever
+    receive email — list_active_recipients() is the sole gate.
+    """
     try:
         from glossa_lab.notifications import (  # noqa: PLC0415
             format_study_complete,
@@ -687,6 +692,7 @@ async def _maybe_notify_study(
         notifier = get_notifier()
         if not notifier.is_configured():
             return
+        # STRICT RULE: only registered recipients.
         recipients = await notifier.list_active_recipients()
         if not recipients:
             return

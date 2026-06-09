@@ -7,8 +7,12 @@
  * - AI Chat tab appears when docked
  */
 import { useCallback, useEffect, useRef, useState } from "react";
-import { cancelJob, clearJobs, createJob, getJobResults, getEnvStatus, getLogStreamUrl, listJobs, purgeLog, runTerminalCommand, type EnvStatus, type JobResponse } from "../api";
-import { fmtDateTimeCompact } from "../dateFormat";
+import {
+  cancelJob, clearJobs, createJob, getJobResults, getEnvStatus,
+  getLogStreamUrl, listJobs, pauseJob, resumeJob, pauseAllJobs, resumeAllJobs,
+  purgeLog, runTerminalCommand, type EnvStatus, type JobResponse,
+} from "../api";
+import { fmtDateTimeCompact, fmtElapsed } from "../dateFormat";
 import { ChatInline } from "./AIChatWindow";
 import { JobErrorModal } from "./JobsView";
 import { useAIChat } from "../hooks/useAIChat";
@@ -254,12 +258,52 @@ function LogPanel() {
 
 // ── Jobs Panel ────────────────────────────────────────────────────────────────
 
+// ── Sequential Run Queue (fire-and-forget SSE experiment runner) ───────────────
+const SEQ_QUEUE_KEY = "glossa_seq_run_queue";
+interface SeqQueue { queue: string[]; watchJobId: string | null; }
+
+function loadSeqQueue(): SeqQueue {
+  try {
+    const raw = JSON.parse(localStorage.getItem(SEQ_QUEUE_KEY) ?? "{}") as Partial<SeqQueue>;
+    return { queue: Array.isArray(raw.queue) ? raw.queue : [], watchJobId: raw.watchJobId ?? null };
+  }
+  catch { return { queue: [], watchJobId: null }; }
+}
+function saveSeqQueue(q: SeqQueue) { localStorage.setItem(SEQ_QUEUE_KEY, JSON.stringify(q)); }
+
+/** Start an experiment SSE run in the background (fire-and-forget). Returns job tracker. */
+function runExpBackground(expId: string) {
+  fetch(`/api/v1/experiment-graphs/${expId}/run`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ kwargs: {} }),
+  }).then(resp => {
+    if (!resp.body) return;
+    const reader = resp.body.getReader();
+    const consume = (): void => { reader.read().then(({ done }) => { if (!done) consume(); }).catch(() => {}); };
+    consume();
+  }).catch(() => {});
+}
+
 function JobsPanel() {
   const { toast } = useToast();
   const [jobs, setJobs] = useState<JobResponse[]>([]);
   const [loading, setLoading] = useState(true);
   const [cancelling, setCancelling] = useState<Set<string>>(new Set());
+  const [pausing, setPausing] = useState<Set<string>>(new Set());
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [seqQueue, setSeqQueue] = useState<SeqQueue>(() => loadSeqQueue());
+  // Track nodes_done per job to detect slow SA nodes
+  const nodesDoneTracker = useRef<Map<string, { done: number; since: number }>>(new Map());
+
+  // Refresh queue state when Experiment Builder (or anything) writes to it
+  useEffect(() => {
+    const refresh = () => setSeqQueue(loadSeqQueue());
+    window.addEventListener("glossa:seq_queue_updated", refresh);
+    // Also poll every 3s so the banner appears even if event was missed
+    const t = setInterval(refresh, 3000);
+    return () => { window.removeEventListener("glossa:seq_queue_updated", refresh); clearInterval(t); };
+  }, []);
   const [errorModal, setErrorModal] = useState<{
     title: string; message: string; detail?: string;
     params?: Record<string, unknown> | null;
@@ -319,8 +363,73 @@ function JobsPanel() {
   };
 
   const load = useCallback(async () => {
-    try { setJobs(await listJobs()); setLoading(false); }
-    catch { setLoading(false); }
+    try {
+      const fetched = await listJobs();
+      setJobs(fetched);
+      setLoading(false);
+
+      // Sequential queue: clean up completed items and advance
+      setSeqQueue(prev => {
+        let { queue, watchJobId } = prev;
+        let changed = false;
+
+        // 1. Remove queue entries that already have a completed/failed job
+        if (queue.length > 0) {
+          const completedExpIds = new Set(
+            fetched
+              .filter(j => ["completed", "failed", "cancelled"].includes(j.status))
+              .map(j => (j.params?.exp_id as string) || (j.params?.experiment_id as string) || "")
+              .filter(Boolean)
+          );
+          const cleaned = queue.filter(expId => !completedExpIds.has(expId));
+          if (cleaned.length !== queue.length) {
+            queue = cleaned;
+            changed = true;
+          }
+        }
+
+        // 2. Clear watchJobId if the watched job no longer exists or is done
+        if (watchJobId) {
+          const watched = fetched.find(j => j.id === watchJobId);
+          if (!watched || ["completed", "failed", "cancelled"].includes(watched?.status ?? "")) {
+            watchJobId = null;
+            changed = true;
+            // Advance: run next in queue
+            if (queue.length > 0) {
+              const [next, ...rest] = queue;
+              setTimeout(() => runExpBackground(next), 2000);
+              setTimeout(async () => {
+                const fresh = await listJobs();
+                const newJob = fresh.find(j =>
+                  ((j.params?.exp_id as string) === next || (j.params?.experiment_id as string) === next)
+                  && (j.status === "running" || j.status === "pending")
+                );
+                if (newJob) {
+                  setSeqQueue(_prev => {
+                    const updated = { queue: rest, watchJobId: newJob.id };
+                    saveSeqQueue(updated);
+                    return updated;
+                  });
+                }
+              }, 5000);
+              queue = rest;
+            }
+          }
+        }
+
+        // 3. Clear the whole queue if it's empty and nothing is watched
+        if (queue.length === 0 && !watchJobId && (prev.queue.length > 0 || prev.watchJobId)) {
+          changed = true;
+        }
+
+        if (changed) {
+          const updated = { queue, watchJobId };
+          saveSeqQueue(updated);
+          return updated;
+        }
+        return prev;
+      });
+    } catch { setLoading(false); }
   }, []);
 
   useEffect(() => {
@@ -334,6 +443,36 @@ function JobsPanel() {
     try { await cancelJob(id); await load(); toast("Job aborted", "info"); }
     catch { toast("Cancel failed", "error"); }
     finally { setCancelling((s) => { const n = new Set(s); n.delete(id); return n; }); }
+  };
+
+  const handlePause = async (id: string) => {
+    setPausing(s => new Set([...s, id]));
+    try { await pauseJob(id); await load(); toast("Job paused", "info"); }
+    catch { toast("Pause failed", "error"); }
+    finally { setPausing(s => { const n = new Set(s); n.delete(id); return n; }); }
+  };
+
+  const handleResume = async (id: string) => {
+    setPausing(s => new Set([...s, id]));
+    try { await resumeJob(id); await load(); toast("Job resumed", "info"); }
+    catch { toast("Resume failed", "error"); }
+    finally { setPausing(s => { const n = new Set(s); n.delete(id); return n; }); }
+  };
+
+  const handlePauseAll = async () => {
+    try { await pauseAllJobs(); await load(); toast("All jobs paused", "info"); }
+    catch { toast("Pause all failed", "error"); }
+  };
+
+  const handleResumeAll = async () => {
+    try { await resumeAllJobs(); await load(); toast("All jobs resumed", "info"); }
+    catch { toast("Resume all failed", "error"); }
+  };
+
+  const clearQueue = () => {
+    const empty = { queue: [], watchJobId: null };
+    saveSeqQueue(empty);
+    setSeqQueue(empty);
   };
 
   const handleClearAll = async () => {
@@ -362,7 +501,8 @@ function JobsPanel() {
   };
 
   const statusColor: Record<string, string> = {
-    pending: "#d97706", running: "#2563eb", completed: "#16a34a", failed: "#dc2626", cancelled: "#6b7280",
+    pending: "#d97706", running: "#2563eb", completed: "#16a34a",
+    failed: "#dc2626", cancelled: "#6b7280", paused: "#92400e",
   };
 
   return (
@@ -372,16 +512,39 @@ function JobsPanel() {
         <div style={{ display: "flex", gap: 4 }}>
           <button onClick={load} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#94a3b8", cursor: "pointer", fontSize: 10 }}>⟳</button>
           {activeJobs.length > 0 && (
-            <button onClick={handleStopAll} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#f97316", cursor: "pointer", fontSize: 10 }}>Stop All ({activeJobs.length})</button>
+            <button onClick={handleStopAll} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#f97316", cursor: "pointer", fontSize: 10 }}>Stop All</button>
+          )}
+          {activeJobs.length > 0 && (
+            <button onClick={handlePauseAll} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#d97706", cursor: "pointer", fontSize: 10 }}>⏸ Pause All</button>
+          )}
+          {jobs.filter(j => j.status === "paused").length > 0 && (
+            <button onClick={handleResumeAll} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#22c55e", cursor: "pointer", fontSize: 10 }}>▶ Resume All</button>
           )}
           {finishedCount > 0 && (
-            <button onClick={handleClearDone} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#94a3b8", cursor: "pointer", fontSize: 10 }}>Clear Done ({finishedCount})</button>
+            <button onClick={handleClearDone} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#94a3b8", cursor: "pointer", fontSize: 10 }}>Clear Done</button>
           )}
           {jobs.length > 0 && (
             <button onClick={handleClearAll} style={{ padding: "2px 8px", background: "#334155", border: "none", borderRadius: 3, color: "#ef4444", cursor: "pointer", fontSize: 10 }}>Delete All</button>
           )}
         </div>
       </div>
+      {/* Sequential run queue banner */}
+      {((seqQueue.queue?.length ?? 0) > 0 || seqQueue.watchJobId) && (
+        <div style={{ padding: "5px 10px", background: "#0a1525", borderBottom: "1px solid #1e293b",
+          display: "flex", alignItems: "center", gap: 8 }}>
+          <span style={{ fontSize: 9, color: "#60a5fa", fontWeight: 700, flexShrink: 0 }}>⏭ QUEUE</span>
+          <span style={{ fontSize: 10, color: "#94a3b8", flex: 1, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+            {seqQueue.watchJobId
+              ? `Watching job ${seqQueue.watchJobId.slice(0, 8)}…`
+              : ""}
+            {(seqQueue.queue?.length ?? 0) > 0
+              ? ` → ${seqQueue.queue.map(e => e.replace("indus_phase", "ph")).join(" → ")}`
+              : " (all queued experiments dispatched)"}
+          </span>
+          <button onClick={clearQueue} style={{ padding: "1px 6px", background: "none", border: "1px solid #334155",
+            borderRadius: 3, color: "#64748b", cursor: "pointer", fontSize: 9, flexShrink: 0 }}>clear</button>
+        </div>
+      )}
       {loading && <div style={{ padding: 10, color: "#64748b", fontSize: 12 }}>Loading…</div>}
       {!loading && jobs.length === 0 && (
         <div style={{ padding: "1rem", textAlign: "center", color: "#64748b", fontSize: 12 }}>
@@ -399,20 +562,52 @@ function JobsPanel() {
         const nodeCount  = (job.params?.node_count  as number) ?? 0;
         const nodesDone  = (job.params?.nodes_done  as number) ?? 0;
         const pct        = isRunning && nodeCount > 0 ? Math.min(99, Math.round((nodesDone / nodeCount) * 100)) : null;
-        const etaSec     = (pct !== null && pct > 5 && elapsed !== null)
-          ? Math.round((elapsed / pct) * (100 - pct)) : null;
+        // Historical avg for this pipeline (completed jobs)
+        const historicalAvgSec = (() => {
+          const done = jobs.filter(
+            d => d.status === "completed" && d.pipeline === job.pipeline
+              && d.id !== job.id && d.updated_at
+          );
+          if (done.length === 0) return null;
+          const durations = done.map(d =>
+            (new Date(d.updated_at!).getTime() - new Date(d.created_at).getTime()) / 1000
+          ).filter(x => x > 0);
+          return durations.length > 0
+            ? durations.reduce((a, b) => a + b, 0) / durations.length
+            : null;
+        })();
+        // ETA: historical avg when < 15%, linear extrapolation after (REQ-JOBS-002)
+        const etaSec = elapsed !== null && pct !== null
+          ? (() => {
+              if (pct >= 15) return Math.round((elapsed / pct) * (100 - pct));
+              if (historicalAvgSec !== null) return Math.max(0, Math.round(historicalAvgSec - elapsed));
+              return null;
+            })()
+          : null;
         const isExpRun   = job.pipeline === "exp_run";
         const device     = job.params?.compute_device as string | undefined;
         const deviceLabel = job.params?.compute_device_label as string | undefined;
         // Stall: running exp_run > 5min with 0 nodes completed
         const isStalled  = isRunning && isExpRun && elapsed !== null && elapsed > 300
           && nodesDone === 0 && nodeCount > 0;
+        // Stuck-node detection
+        const nowMs2 = Date.now();
+        const tracker2 = nodesDoneTracker.current.get(job.id);
+        if (!tracker2 || tracker2.done !== nodesDone) {
+          nodesDoneTracker.current.set(job.id, { done: nodesDone, since: nowMs2 });
+        }
+        const stuckMs2 = tracker2 && tracker2.done === nodesDone ? nowMs2 - tracker2.since : 0;
+        const nodeComputingLabel = isExpRun && isRunning && nodeCount > 0
+          && stuckMs2 > 180_000 && etaSec !== null && elapsed !== null && etaSec > elapsed * 1.5
+          ? `node ${nodesDone + 1}/${nodeCount} computing…`
+          : null;
         return (
           <div key={job.id} style={{ borderBottom: "1px solid #1e293b" }}>
             {/* Clickable header row */}
             <div
               onClick={() => setExpandedId(isExpanded ? null : job.id)}
-              style={{ padding: "8px 10px", cursor: "pointer", userSelect: "none" }}
+              style={{ padding: "8px 10px", cursor: "pointer", userSelect: "none",
+                touchAction: "manipulation", WebkitTapHighlightColor: "transparent" }}
             >
               <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 3 }}>
                 <span style={{ fontSize: 9, color: "#64748b", flexShrink: 0 }}>{isExpanded ? "▼" : "►"}</span>
@@ -433,16 +628,40 @@ function JobsPanel() {
                 <span style={{ flex: 1, fontWeight: 600, fontSize: 12, color: "#e2e8f0", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{job.name}</span>
                 {elapsed !== null && (
                   <span style={{ fontSize: 10, color: "#64748b", flexShrink: 0 }}>
-                    {elapsed}s{etaSec !== null ? ` / ~${etaSec}s left` : ""}
+                    {fmtElapsed(elapsed)}
+                    {nodeComputingLabel
+                      ? ` / ${nodeComputingLabel}`
+                      : etaSec !== null ? ` / ~${fmtElapsed(etaSec)} left` : ""}
                   </span>
                 )}
                 {(isRunning || job.status === "pending") && (
+                  <>
+                    <button
+                      onClick={e => { e.stopPropagation(); handlePause(job.id); }}
+                      disabled={pausing.has(job.id)}
+                      style={{ padding: "2px 6px", border: "1px solid #d97706", borderRadius: 3,
+                        background: "none", color: "#d97706", cursor: "pointer", fontSize: 9, flexShrink: 0 }}
+                      title="Pause">
+                      {pausing.has(job.id) ? "…" : "⏸"}
+                    </button>
+                    <button
+                      onClick={e => { e.stopPropagation(); handleCancel(job.id); }}
+                      disabled={cancelling.has(job.id)}
+                      style={{ padding: "2px 7px", border: "1px solid #ef4444", borderRadius: 3,
+                        background: "none", color: "#ef4444", cursor: "pointer", fontSize: 10, flexShrink: 0 }}
+                      title="Abort">
+                      {cancelling.has(job.id) ? "…" : "Abort"}
+                    </button>
+                  </>
+                )}
+                {job.status === "paused" && (
                   <button
-                    onClick={e => { e.stopPropagation(); handleCancel(job.id); }}
-                    disabled={cancelling.has(job.id)}
-                    style={{ padding: "2px 7px", border: "1px solid #ef4444", borderRadius: 3, background: "none", color: "#ef4444", cursor: "pointer", fontSize: 10, flexShrink: 0 }}
-                  >
-                    {cancelling.has(job.id) ? "…" : "Abort"}
+                    onClick={e => { e.stopPropagation(); handleResume(job.id); }}
+                    disabled={pausing.has(job.id)}
+                    style={{ padding: "2px 6px", border: "1px solid #22c55e", borderRadius: 3,
+                      background: "none", color: "#22c55e", cursor: "pointer", fontSize: 9, flexShrink: 0 }}
+                    title="Resume">
+                    {pausing.has(job.id) ? "…" : "▶"}
                   </button>
                 )}
               </div>
@@ -837,9 +1056,11 @@ interface BottomPanelProps {
   activeTab: PanelTab;
   onTabChange: (t: PanelTab) => void;
   leftOffset?: number;
+  /** Number of active (pending/running) jobs — drives the Jobs tab dot. */
+  activeJobCount?: number;
 }
 
-export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChange, activeTab, onTabChange, leftOffset = 0 }: BottomPanelProps) {
+export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChange, activeTab, onTabChange, leftOffset = 0, activeJobCount = 0 }: BottomPanelProps) {
   const [maximized, setMaximized] = useState(false);
   const dragging = useRef(false);
   const dragStartY = useRef(0);
@@ -847,7 +1068,7 @@ export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChan
   const { isOpen: chatOpen, isDocked } = useAIChat();
 
   const TABS: Array<{ id: PanelTab; label: string; icon: string }> = [
-    { id: "logs", label: "Logs (BE+FE)", icon: "📋" },
+    { id: "logs", label: "Logs", icon: "📋" },
     { id: "jobs", label: "Jobs", icon: "📦" },
     { id: "terminal", label: "Terminal", icon: ">_" },
     ...(isDocked && chatOpen ? [{ id: "chat" as PanelTab, label: "AI Chat", icon: "✨" }] : []),
@@ -875,12 +1096,14 @@ export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChan
     return () => { window.removeEventListener("mousemove", onMove); window.removeEventListener("mouseup", onUp); };
   }, [height, minimized, onHeightChange, onMinimizedChange]);
 
+  const isMobilePanel = typeof window !== "undefined" && window.innerWidth <= 768;
   const panelH = maximized
     ? Math.floor(window.innerHeight * MAX_HEIGHT_RATIO)
     : minimized ? 30 : height;
+  const TAB_BAR_H = isMobilePanel ? 36 : 30;
 
   return (
-    <div style={{
+    <div className="glossa-bottom-panel" style={{
       position: "fixed", bottom: 0, left: leftOffset, right: 0,
       height: panelH, background: "#0f172a", borderTop: "1px solid #1e293b",
       display: "flex", flexDirection: "column", zIndex: 5000, userSelect: "none",
@@ -896,32 +1119,47 @@ export function BottomPanel({ height, onHeightChange, minimized, onMinimizedChan
       )}
 
       {/* Tab bar */}
-      <div style={{ display: "flex", alignItems: "center", height: 26, flexShrink: 0, borderBottom: minimized ? "none" : "1px solid #1e293b", paddingLeft: 6 }}>
+      <div style={{ display: "flex", alignItems: "center", height: TAB_BAR_H, flexShrink: 0, borderBottom: minimized ? "none" : "1px solid #1e293b", paddingLeft: 6 }}>
         {TABS.map((tab) => (
           <button
             key={tab.id}
             onClick={() => { onTabChange(tab.id); if (minimized) onMinimizedChange(false); }}
             style={{
-              padding: "3px 10px", border: "none", borderBottom: activeTab === tab.id && !minimized ? "2px solid #3b82f6" : "2px solid transparent",
+              padding: "4px 12px", border: "none", borderBottom: activeTab === tab.id && !minimized ? "2px solid #3b82f6" : "2px solid transparent",
               background: "none", cursor: "pointer", fontSize: 11, fontWeight: activeTab === tab.id ? 600 : 400,
               color: activeTab === tab.id ? "#e2e8f0" : "#64748b",
-              display: "flex", alignItems: "center", gap: 4,
+              display: "flex", alignItems: "center", gap: 4, height: "100%",
             }}
           >
             <span style={{ fontSize: 10 }}>{tab.icon}</span>
             {tab.label}
+            {/* Activity dot: pulsing blue for active jobs */}
+            {tab.id === "jobs" && activeJobCount > 0 && (
+              <span
+                style={{
+                  width: 6, height: 6, borderRadius: "50%",
+                  background: "#3b82f6",
+                  boxShadow: "0 0 6px #3b82f6",
+                  animation: "healthPulse 0.7s ease-in-out infinite",
+                  flexShrink: 0, marginLeft: 2,
+                }}
+                title={`${activeJobCount} active job(s)`}
+              />
+            )}
           </button>
         ))}
         <div style={{ flex: 1 }} />
         {/* Panel controls */}
         <button onClick={() => { setMaximized(false); onMinimizedChange(!minimized); }}
           title={minimized ? "Restore" : "Minimize"}
-          style={{ padding: "3px 8px", border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 13 }}>
+          style={{ padding: "5px 18px", border: "none", background: "none", color: "#94a3b8",
+            cursor: "pointer", fontSize: 14, height: "100%", display: "flex", alignItems: "center" }}>
           {minimized ? "▲" : "▼"}
         </button>
         <button onClick={() => { setMaximized(!maximized); if (minimized) onMinimizedChange(false); }}
           title={maximized ? "Restore" : "Maximize"}
-          style={{ padding: "3px 8px", border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 11 }}>
+          style={{ padding: "5px 12px", border: "none", background: "none", color: "#64748b",
+            cursor: "pointer", fontSize: 11, height: "100%", display: "flex", alignItems: "center" }}>
           {maximized ? "⊟" : "⊞"}
         </button>
       </div>

@@ -21,10 +21,12 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
+  buildSaExperiment,
   createHypothesis,
   updateHypothesis,
   executeAiAction,
   getDashboardHighlights,
+  getEventsStreamUrl,
   getHealth,
   listExperiments,
   listGraphExperiments,
@@ -43,6 +45,7 @@ import { useAIChat } from "../hooks/useAIChat";
 import { useProject } from "../hooks/useProject";
 import { useToast } from "../hooks/useToast";
 import { DeciphermentPanel } from "./DeciphermentPanel";
+import { ResearchLoopPanel } from "./ResearchLoopPanel";
 
 // ── Insight persistence ──────────────────────────────────────────────────
 // Insights are expensive to regenerate (LLM call). We cache the last result
@@ -51,6 +54,53 @@ import { DeciphermentPanel } from "./DeciphermentPanel";
 // Bump version to invalidate stale caches that contain hallucinated hex-hash
 // experiment IDs from before the backend validation was deployed.
 const INSIGHT_LS_KEY = "glossa_dashboard_insight_v2";
+
+// ── Action result persistence ────────────────────────────────────────────
+// Persists the last N action results in localStorage so they survive page
+// reloads. Max 50 entries, trimmed FIFO.
+const ACTION_RESULTS_LS_KEY = "glossa_action_results_v1";
+interface ActionResultEntry {
+  key: string;
+  action_type: string;
+  label: string;
+  outcome: "success" | "error" | "warn";
+  timestamp: number;
+  detail?: string;
+}
+function _loadActionResults(): ActionResultEntry[] {
+  try {
+    const raw = localStorage.getItem(ACTION_RESULTS_LS_KEY);
+    if (!raw) return [];
+    const arr = JSON.parse(raw);
+    return Array.isArray(arr) ? arr : [];
+  } catch { return []; }
+}
+function _saveActionResult(entry: ActionResultEntry): void {
+  try {
+    const arr = _loadActionResults();
+    arr.unshift(entry);
+    if (arr.length > 50) arr.length = 50;
+    localStorage.setItem(ACTION_RESULTS_LS_KEY, JSON.stringify(arr));
+  } catch { /* ignore */ }
+}
+
+const INSIGHT_INTERVAL_LS_KEY = "glossa_insight_interval_min";
+const INSIGHT_LAST_AUTO_KEY = "insight_last_auto_regen";
+
+/** Read auto-refresh interval from localStorage (default 20 min). */
+function _getInsightInterval(): number {
+  try {
+    const v = parseInt(localStorage.getItem(INSIGHT_INTERVAL_LS_KEY) ?? "20", 10);
+    if ([10, 15, 20, 30, 60].includes(v)) return v;
+  } catch { /* ignore */ }
+  return 20;
+}
+function _getLastAutoRegen(): number {
+  try { return parseInt(localStorage.getItem(INSIGHT_LAST_AUTO_KEY) ?? "0", 10) || 0; } catch { return 0; }
+}
+function _setLastAutoRegen(ms: number): void {
+  try { localStorage.setItem(INSIGHT_LAST_AUTO_KEY, String(ms)); } catch { /* ignore */ }
+}
 interface PersistedInsight {
   insight: DashboardInsight;
   generated_at: number;       // epoch ms when LLM generated this
@@ -72,15 +122,6 @@ function _loadPersistedInsight(): PersistedInsight | null {
 }
 function _savePersistedInsight(p: PersistedInsight): void {
   try { localStorage.setItem(INSIGHT_LS_KEY, JSON.stringify(p)); } catch { /* ignore */ }
-}
-
-// Mine batch-size preference (how many un-mined items to classify per click).
-const MINE_LIMIT_LS_KEY = "glossa_dashboard_mine_limit";
-const MINE_LIMIT_OPTIONS = [10, 25, 50, 100, 200, 500];
-const MINE_LIMIT_DEFAULT = 50;
-function _loadMineLimit(): number {
-  const raw = parseInt(localStorage.getItem(MINE_LIMIT_LS_KEY) ?? "", 10);
-  return MINE_LIMIT_OPTIONS.includes(raw) ? raw : MINE_LIMIT_DEFAULT;
 }
 
 const KIND_COLOURS: Record<string, { bg: string; fg: string }> = {
@@ -150,18 +191,22 @@ export function DashboardView() {
   const [insight, setInsight] = useState<DashboardInsight | null>(null);
   const [insightGeneratedAt, setInsightGeneratedAt] = useState<number>(0);
   const [insightLoading, setInsightLoading] = useState(false);
+  // True when the backend says new experiment results are available
+  const insightsStale = data?.insights_stale === true && !!insight;
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [days, setDays] = useState(14);
-  const [running, setRunning] = useState<"" | "fetch" | "mine">("");
-  const [mineDropOpen, setMineDropOpen] = useState(false);
-  // Mine batch size — persisted; controls how many un-mined items the LLM
-  // classifies per "✨ Mine N" click. Default 50.
-  const [mineLimit, setMineLimitState] = useState<number>(_loadMineLimit);
-  const setMineLimit = (n: number) => {
-    setMineLimitState(n);
-    try { localStorage.setItem(MINE_LIMIT_LS_KEY, String(n)); } catch { /* ignore */ }
-  };
+  const [days, setDays] = useState(() => {
+    const saved = localStorage.getItem("glossa_insight_window_days");
+    return saved ? parseInt(saved, 10) : 14;
+  });
+  // Keep the persisted value in sync whenever `days` changes (e.g. from
+  // the select, from a restored session, or any future code path).
+  useEffect(() => {
+    try { localStorage.setItem("glossa_insight_window_days", String(days)); } catch { /* ignore */ }
+  }, [days]);
+  const [fetching, setFetching] = useState(false);
+  // Bump to force re-read of action results from localStorage
+  const [actionResultsVersion, setActionResultsVersion] = useState(0);
   // Per-button completion state for Apply / Run buttons. Persisted in
   // localStorage alongside the insight so completed actions survive reloads.
   type ApplyResult = "success" | "error" | "warn";
@@ -202,6 +247,8 @@ export function DashboardView() {
       const generatedAt = Date.now();
       setInsight(ins);
       setInsightGeneratedAt(generatedAt);
+      // Refresh data so insights_stale clears
+      void refresh();
       // Persist along with backend boot time so we can detect restarts on
       // future mounts and skip auto-regen otherwise.
       try {
@@ -220,6 +267,82 @@ export function DashboardView() {
       setInsightLoading(false);
     }
   }, [days, projectId, toast, setApplyResult]);
+
+  // ── Insight auto-refresh interval setting ────────────────────────────
+  const [insightIntervalMin, setInsightIntervalMin] = useState(_getInsightInterval);
+  const [autoCountdown, setAutoCountdown] = useState("");
+  const [jobsRunning, setJobsRunning] = useState(false);
+
+  // Listen for loop-running custom event (dispatched by ResearchLoopPanel)
+  useEffect(() => {
+    const onRunning = (e: Event) => {
+      setJobsRunning((e as CustomEvent).detail?.running ?? true);
+    };
+    window.addEventListener("glossa:loop-running", onRunning);
+    return () => window.removeEventListener("glossa:loop-running", onRunning);
+  }, []);
+
+  // shouldAutoRegen — checks throttle and whether batch jobs are active
+  const shouldAutoRegen = useCallback((): boolean => {
+    if (jobsRunning) return false;
+    if (insightLoading) return false;
+    const last = _getLastAutoRegen();
+    const intervalMs = insightIntervalMin * 60 * 1000;
+    return Date.now() - last > intervalMs;
+  }, [jobsRunning, insightLoading, insightIntervalMin]);
+
+  // Auto-refresh timer: check every 60s
+  useEffect(() => {
+    const tick = () => {
+      const last = _getLastAutoRegen();
+      const intervalMs = insightIntervalMin * 60 * 1000;
+      const remaining = Math.max(0, intervalMs - (Date.now() - last));
+      const mins = Math.ceil(remaining / 60_000);
+      if (jobsRunning) {
+        setAutoCountdown("⏳ Waiting for jobs to complete...");
+      } else if (remaining <= 0 || last === 0) {
+        setAutoCountdown("✅ Up to date");
+      } else {
+        setAutoCountdown(`🔄 Auto-update in ${mins}m`);
+      }
+      // Trigger auto-regen if due
+      if (shouldAutoRegen()) {
+        _setLastAutoRegen(Date.now());
+        void generateInsight();
+      }
+    };
+    tick(); // run immediately
+    const id = setInterval(tick, 60_000);
+    return () => clearInterval(id);
+  }, [insightIntervalMin, jobsRunning, shouldAutoRegen, generateInsight]);
+
+  // ── SSE subscription for real-time insight triggers ──────────────────
+  useEffect(() => {
+    const url = getEventsStreamUrl();
+    let es: EventSource | null = null;
+    try {
+      es = new EventSource(url);
+      es.onmessage = (ev) => {
+        try {
+          const data = JSON.parse(ev.data) as { type?: string };
+          if (data.type === "insight_trigger" && shouldAutoRegen()) {
+            _setLastAutoRegen(Date.now());
+            void generateInsight();
+          }
+        } catch { /* ignore parse errors */ }
+      };
+      es.onerror = () => {
+        // Silently reconnect — browser EventSource handles this
+      };
+    } catch { /* SSE not available */ }
+    return () => { es?.close(); };
+  }, [shouldAutoRegen, generateInsight]);
+
+  // Auto-refresh dashboard data every 30 s
+  useEffect(() => {
+    const id = setInterval(() => void refresh(), 30_000);
+    return () => clearInterval(id);
+  }, [refresh]);
 
   useEffect(() => { void refresh(); }, [refresh]);
 
@@ -256,42 +379,40 @@ export function DashboardView() {
     if (data.n_items > 0) {
       void generateInsight();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
-  const onRunFetch = async () => {
-    setRunning("fetch");
-    try {
-      await startDiscoveryFetch({});
-      toast(`Fetch started · will regenerate insight when complete`, "info");
-    } catch (e) {
-      toast(e instanceof Error ? e.message : "Fetch failed", "error");
-      setRunning("");
-      return;
-    }
-    // Per the spec: Fetch Now → always followed by an Insight regen so the
-    // Dashboard reflects the new items. We give the backend a moment to
-    // ingest+mine the items before asking the LLM to summarise.
-    setTimeout(() => {
+  // Listen for Phase Guide's 'regenerate insights' action
+  useEffect(() => {
+    const handler = () => void generateInsight();
+    window.addEventListener("glossa:regenerate-insight", handler);
+    return () => window.removeEventListener("glossa:regenerate-insight", handler);
+  }, [generateInsight]);
+
+  // When a study loop completes (dispatched by ResearchLoopPanel),
+  // regenerate the AI insight so it reflects the new data produced by the loop.
+  useEffect(() => {
+    const handler = () => {
       void refresh();
       void generateInsight();
-      setRunning("");
-    }, 1500);
-  };
+    };
+    window.addEventListener("glossa:loop-complete", handler);
+    return () => window.removeEventListener("glossa:loop-complete", handler);
+  }, [refresh, generateInsight]);
 
-  const onRunMine = async () => {
-    setRunning("mine");
+  const onRunFetch = async () => {
+    setFetching(true);
     try {
-      await startDiscoveryMine({ limit: mineLimit });
-      toast(
-        `Mine started · classifying up to ${mineLimit} items`,
-        "info",
-      );
+      await startDiscoveryFetch({});
+      toast("Fetch started — insight will refresh when complete", "info");
     } catch (e) {
-      toast(e instanceof Error ? e.message : "Mine failed", "error");
+      toast(e instanceof Error ? e.message : "Fetch failed", "error");
     } finally {
-      setRunning("");
-      void refresh();
+      setTimeout(() => {
+        void refresh();
+        void generateInsight();
+        setFetching(false);
+      }, 1500);
     }
   };
 
@@ -394,13 +515,60 @@ export function DashboardView() {
   const [applyingSet, setApplyingSet] = useState<Set<string>>(new Set());
   const _applying = applyingSet.size > 0 ? Array.from(applyingSet)[0] : ""; void _applying; // compat — kept for debugging
   const isApplying = (key: string) => applyingSet.has(key);
-  const applyAction = async (a: DashboardNextAction, key: string) => {
+  const applyAction = async (origAction: DashboardNextAction, key: string) => {
     if (isApplying(key)) return; // only block the SAME action, not others
     setApplyingSet(prev => new Set(prev).add(key));
+    // Safety timeout: if action takes more than 45s, auto-release so button doesn't stay stuck
+    const timeoutId = setTimeout(() => {
+      setApplyingSet(prev => { const n = new Set(prev); n.delete(key); return n; });
+    }, 45_000);
     // Track outcome for the per-button checkmark/error indicator. Initially
     // assume success; downgrade on warning/error inside each branch.
     let outcome: ApplyResult = "success";
+    // Hoist `a` so catch/finally can access action_type/label for logging.
+    let a = origAction;
     try {
+      // ── Smart upgrade: LLM often emits open_view for actions that should actually
+      // RUN experiments (e.g. “Run Dravidian Convergence Test”, “Compare with NW Semitic”,
+      // “Open Rakhigarhi Bioarchaeology Study”).  Detect and upgrade BEFORE the switch
+      // so callers and the telemetry log see the resolved action_type.
+      const _at = a.action_type as string;
+      if (_at === "open_view" || _at.startsWith("open_")) {
+        const _lbl    = a.label;
+        const _lblLow = _lbl.toLowerCase();
+        const _hasView = !!String(a.params?.view || "").trim();
+        if (!_hasView) {
+          // Explicit experiment_id in params → always run it
+          if (a.params?.experiment_id) {
+            a = { ...a, action_type: "run_experiment" as DashboardActionType };
+          }
+          // Action verb (Run / Compare / Analyze / …) → try experiment registry match
+          else if (/^(run|compare|analyz|test|evaluat|validat|build|detect|comput|check|measure|assess)\b/i.test(_lbl)) {
+            const _reg = await ensureExpRegistry();
+            const _words = _lblLow.replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter((w: string) => w.length >= 4);
+            const _ranked = _reg.map(e => {
+              const txt = `${e.id} ${e.name ?? ""} ${e.description ?? ""}`.toLowerCase();
+              const wordHits = _words.filter((w: string) => txt.includes(w)).length;
+              return { id: e.id, score: _scoreMatch(_lbl, e.id) + wordHits * 30 };
+            }).sort((x: {score:number}, y: {score:number}) => y.score - x.score);
+            if (_ranked[0]?.score >= 50) {
+              toast(`Resolved action → run ${_ranked[0].id}`, "info", 2500);
+              a = { ...a, action_type: "run_experiment" as DashboardActionType,
+                    params: { ...a.params, experiment_id: _ranked[0].id } };
+            } else {
+              // No strong experiment match → propose a chain using the label as hypothesis
+              a = { ...a, action_type: "propose_experiment_chain" as DashboardActionType,
+                    params: { ...a.params, hypothesis: _lbl } };
+            }
+          }
+          // Research / study keyword (no explicit verb) → propose experiment chain
+          else if (/\b(bioarchaeolog|archaeolog|convergence|decipherment|analysis|comparison|structural|entropy|falsif|phonolog|syllabic|dravidian|anchor.sign|sign.reading|language.model)\b/i.test(_lblLow)) {
+            a = { ...a, action_type: "propose_experiment_chain" as DashboardActionType,
+                  params: { ...a.params, hypothesis: _lbl } };
+          }
+          // Otherwise: leave as open_view (genuine view-navigation)
+        }
+      }
       switch (a.action_type) {
         case "run_experiment": {
           const expId = String(a.params?.experiment_id || "").trim();
@@ -610,7 +778,7 @@ export function DashboardView() {
           // names/descriptions to select the top 3 most relevant.
           const chainRegistry = await ensureExpRegistry();
           const hypWords = new Set(
-            hypothesis.toLowerCase().replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter(w => w.length > 3),
+            hypothesis.toLowerCase().replace(/[^a-z0-9 ]/g, " ").split(/\s+/).filter(w => w.length >= 2),
           );
           const scored = chainRegistry
             .map((e) => {
@@ -658,10 +826,40 @@ export function DashboardView() {
               toast(`${s.id}: ${err instanceof Error ? err.message : "failed"}`, "error");
             }
           }
-          // Always mark as done — the hypothesis was created and the chain
-          // was executed. Even if no experiments matched (warn) it does not
-          // make sense to retry; the user should open Experiments to act next.
-          outcome = "success";
+          // Propagate the failure so the caller (e.g. DeciphermentPanel) can
+          // show ✗ Error + retry. 'warn' is reserved for the no-match case above.
+          outcome = chainOk ? "success" : "error";
+          break;
+        }
+        case "build_sa_experiment": {
+          const corpus = String(a.params?.corpus || "indus_cisi").trim();
+          const languages = String(a.params?.languages || "dravidian,sanskrit").trim();
+          const saName = a.params?.name ? String(a.params.name) : undefined;
+          const saNSeeds = a.params?.n_seeds ? Number(a.params.n_seeds) : undefined;
+          const saMaxIter = a.params?.max_iterations ? Number(a.params.max_iterations) : undefined;
+          try {
+            const result = await buildSaExperiment({
+              corpus, languages, name: saName,
+              n_seeds: saNSeeds, max_iterations: saMaxIter,
+            });
+            if (result.ok && result.experiment_id) {
+              toast(`Experiment '${result.name}' created! Opening in Experiment Builder...`, "success");
+              // Refresh the experiment registry so the new experiment is visible.
+              void ensureExpRegistry(true);
+              // Navigate to the experiment builder with the new experiment loaded.
+              localStorage.setItem(
+                "glossa_exp_builder_open",
+                JSON.stringify({ action: "load", id: result.experiment_id }),
+              );
+              navigate("exp-builder");
+            } else {
+              toast(result.error || "Failed to build SA experiment", "error");
+              outcome = "error";
+            }
+          } catch (err) {
+            toast(err instanceof Error ? err.message : "Failed to build SA experiment", "error");
+            outcome = "error";
+          }
           break;
         }
         case "ai_chat": {
@@ -693,10 +891,24 @@ export function DashboardView() {
       if (outcome === "error" || outcome === "warn") {
         console.warn(`[Dashboard] action ${a.action_type} (${key}) outcome=${outcome}`);
       }
+      clearTimeout(timeoutId);
       setApplyingSet(prev => { const n = new Set(prev); n.delete(key); return n; });
       setApplyResult((prev) => ({ ...prev, [key]: outcome }));
+      // Persist to action result log
+      _saveActionResult({
+        key,
+        action_type: a.action_type,
+        label: a.label,
+        outcome,
+        timestamp: Date.now(),
+        detail: outcome === "error" ? "Action completed with errors" : undefined,
+      });
+      setActionResultsVersion(v => v + 1);
       void refresh();
     }
+    // Re-throw so callers like DeciphermentPanel.handleAction can catch the
+    // error and show ✗ Error + ↻ retry without needing a separate state pipe.
+    if (outcome === "error") throw new Error("Action completed with errors");
   };
 
   // ── render ───────────────────────────────────────────────────────────
@@ -708,82 +920,38 @@ export function DashboardView() {
         <div style={{ flex: 1, minWidth: 240 }}>
           <h2 style={{ margin: 0, fontSize: 22, color: "#111827" }}>📊 Dashboard</h2>
           <p style={{ margin: "4px 0 0", fontSize: 13, color: "#6b7280" }}>
-            What&rsquo;s new, what it means, and what to do about it. Highlights
-            are pulled from the last {days} days of your discovery feed; AI
-            insight tells you how new findings might shift your studies and
-            experiments.
+            What&rsquo;s new, what it means, and what to do about it.
+            Research feed window refreshes every 30 s. Fetch and insight
+            regeneration happen automatically after research loop runs.
           </p>
         </div>
-        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <select value={days} onChange={(e) => setDays(parseInt(e.target.value, 10))}
+        <div style={{ display: "flex", gap: 6, alignItems: "center" }}>
+          <label htmlFor="insight-window-select" style={{ fontSize: 12, color: "#6b7280", whiteSpace: "nowrap" }}>Insight window:</label>
+          <select id="insight-window-select" value={days} onChange={(e) => {
+            const v = parseInt(e.target.value, 10);
+            setDays(v);
+            localStorage.setItem("glossa_insight_window_days", String(v));
+          }}
             style={selectStyle}>
             {[7, 14, 30, 60, 90].map((d) => (
-              <option key={d} value={d}>last {d} days</option>
+              <option key={d} value={d}>{d} days</option>
             ))}
           </select>
-          <button onClick={() => void refresh()} disabled={loading} style={btnGhost}>
-            {loading ? "…" : "⟳ Reload"}
+          {/* Small fetch icon — fetch is automated; this is a manual override */}
+          <button
+            onClick={() => void onRunFetch()}
+            disabled={fetching || loading}
+            title="Manually fetch new items from all configured discovery sources. Runs automatically on startup and before each research loop."
+            style={{
+              padding: "5px 8px", border: "1px solid #d1d5db", borderRadius: 5,
+              background: fetching ? "#eff6ff" : "#fff",
+              color: fetching ? "#2563eb" : "#6b7280",
+              fontSize: 13, cursor: fetching ? "default" : "pointer",
+              lineHeight: 1,
+            }}
+          >
+            {fetching ? "⏳" : "📡"}
           </button>
-          <button onClick={() => void onRunFetch()} disabled={!!running} style={btnPrimary}
-            title="Pull new items from every configured source for every topic. Insight regenerates automatically when fetch completes.">
-            {running === "fetch" ? "⏳ Fetching…" : "▶ Fetch now"}
-          </button>
-          {/* Split Mine button: main click runs at current limit; ▾ opens
-              a dropdown to pick a different limit before running. */}
-          <div style={{ position: "relative", display: "inline-flex" }}
-            title={
-              "Mine = ask the LLM to read the next N un-mined items and assign "
-              + "each one a kind (study / hypothesis / finding / tablet / review / "
-              + "tooling / other), confidence score, short summary, and any extracted "
-              + "entity/provider links."
-            }>
-            <button onClick={() => void onRunMine()} disabled={!!running} style={{
-              ...btnAccent, borderTopRightRadius: 0, borderBottomRightRadius: 0,
-              paddingRight: 10,
-            }}>
-              {running === "mine" ? "⏳ Mining…" : `✨ Mine ${mineLimit}`}
-            </button>
-            <button
-              onClick={() => setMineDropOpen((o) => !o)}
-              disabled={!!running}
-              style={{
-                ...btnAccent,
-                borderTopLeftRadius: 0, borderBottomLeftRadius: 0,
-                borderLeft: "1px solid rgba(255,255,255,0.25)",
-                padding: "6px 7px", fontSize: 9, lineHeight: 1,
-              }}>
-              ▾
-            </button>
-            {mineDropOpen && (
-              <div style={{
-                position: "absolute", top: "calc(100% + 4px)", right: 0,
-                background: "#fff", border: "1px solid #d1d5db", borderRadius: 6,
-                boxShadow: "0 4px 12px rgba(0,0,0,0.15)", zIndex: 100,
-                minWidth: 130, overflow: "hidden",
-              }}>
-                {MINE_LIMIT_OPTIONS.map((n) => (
-                  <button key={n} onClick={() => {
-                    setMineLimit(n); setMineDropOpen(false);
-                    // Run with the selected value directly — don't rely on
-                    // stale mineLimit state which hasn't re-rendered yet.
-                    setRunning("mine");
-                    startDiscoveryMine({ limit: n })
-                      .then(() => toast(`Mine started · classifying up to ${n} items`, "info"))
-                      .catch((e: unknown) => toast(e instanceof Error ? e.message : "Mine failed", "error"))
-                      .finally(() => { setRunning(""); void refresh(); });
-                  }} style={{
-                    display: "block", width: "100%", padding: "7px 14px",
-                    border: "none", background: n === mineLimit ? "#f5f3ff" : "#fff",
-                    color: "#374151", fontSize: 12, textAlign: "left",
-                    cursor: "pointer", fontWeight: n === mineLimit ? 700 : 400,
-                  }}>
-                    ✨ Mine {n}
-                    {n === mineLimit && <span style={{ color: "#7c3aed", marginLeft: 6, fontSize: 10 }}>✓</span>}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
         </div>
       </div>
 
@@ -793,10 +961,10 @@ export function DashboardView() {
           gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))" }}>
           <CounterTile label="Discovery items"  value={data.n_items}        emoji="🔭"
             sub={`last ${data.since_days}d`} onClick={() => navigate("discovery")} />
-          <CounterTile label="Studies"          value={data.n_studies}      emoji="📐"
-            sub="open builder" onClick={() => navigate("builder")} />
           <CounterTile label="Experiments"      value={data.n_experiments}  emoji="🔀"
-            sub="graph registry" onClick={() => navigate("experiments")} />
+            sub="graph experiments" onClick={() => navigate("experiments")} />
+          <CounterTile label="Palette nodes"    value={data.n_atomic_nodes ?? 0}  emoji="⚛"
+            sub="builder palette" onClick={() => navigate("experiments")} />
           <CounterTile label="Saved findings"   value={data.by_status.saved ?? 0}
             emoji="★" sub="for follow-up" onClick={() => navigate("discovery")} />
           <CounterTile label="Hypotheses"       value={data.n_hypotheses ?? data.by_kind.hypothesis ?? 0}
@@ -810,8 +978,34 @@ export function DashboardView() {
           marginBottom: 12 }}>{error}</div>
       )}
 
+      {/* Experiment Registry moved to dedicated Experiments view — no longer inline on dashboard */}
+
       {/* Decipherment Progress Panel */}
-      <DeciphermentPanel />
+      <DeciphermentPanel onAction={(label, actionType, params, rationale) =>
+        applyAction({
+          label,
+          action_type: actionType as import("../api").DashboardActionType,
+          params,
+          rationale: rationale ?? "",
+        }, `decipher-${label.slice(0, 30)}`)
+      } />
+
+      {/* Quick link to full Signs view */}
+      <div style={{ marginBottom: 12, textAlign: "right" }}>
+        <button
+          onClick={() => window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: "signs" } }))}
+          style={{
+            padding: "4px 12px", border: "1px solid #c4b5fd", borderRadius: 6,
+            background: "#f5f3ff", color: "#5b21b6", fontSize: 12, fontWeight: 600,
+            cursor: "pointer",
+          }}
+        >
+          🔣 View all signs →
+        </button>
+      </div>
+
+      {/* Integrated Research Loop */}
+      <ResearchLoopPanel />
 
       {/* Two-column main: AI insight (left) + RSS feed (right) */}
       <div style={{ display: "grid", gap: 14, marginBottom: 16,
@@ -841,8 +1035,44 @@ export function DashboardView() {
                 <span style={{ color: "#9ca3af", marginLeft: 4 }}>({fmtRelative(new Date(insightGeneratedAt).toISOString())})</span>
               </span>
             )}
+            {/* Auto-refresh freshness indicator */}
+            <span style={{ fontSize: 10, color: "#6b7280", whiteSpace: "nowrap" }}>
+              {autoCountdown}
+            </span>
+            {/* Auto-refresh interval setting */}
+            <select
+              value={insightIntervalMin}
+              onChange={(e) => {
+                const v = parseInt(e.target.value, 10);
+                setInsightIntervalMin(v);
+                localStorage.setItem(INSIGHT_INTERVAL_LS_KEY, String(v));
+              }}
+              style={{ padding: "2px 4px", border: "1px solid #e5e7eb", borderRadius: 4,
+                       fontSize: 10, background: "#fff", color: "#6b7280" }}
+              title="Auto-refresh interval for AI insight"
+            >
+              {[10, 15, 20, 30, 60].map((m) => (
+                <option key={m} value={m}>{m}m</option>
+              ))}
+            </select>
+            {insightsStale && (
+              <span style={{
+                display: "inline-flex", alignItems: "center", gap: 5,
+                padding: "3px 10px", borderRadius: 5, fontSize: 11, fontWeight: 700,
+                background: "#fef3c7", color: "#92400e",
+                border: "1px solid #fcd34d",
+                marginRight: 6, whiteSpace: "nowrap",
+                cursor: "pointer",
+              }}
+              onClick={() => void generateInsight()}
+              title="New experiment results are available — click to update insights">
+              ⚡ New results
+            </span>
+            )}
             <button onClick={() => void generateInsight()} disabled={insightLoading}
-              style={btnGhost}
+              style={insightsStale
+                ? { ...btnGhost, background: "#7c3aed", color: "#fff", border: "1px solid #7c3aed" }
+                : btnGhost}
               title="Re-run the AI to summarise the latest items. Auto-runs after Fetch, after a backend restart, or after a hard reload — but NOT on every page refresh.">
               {insightLoading ? "…" : "↻ Regenerate"}
             </button>
@@ -933,19 +1163,38 @@ export function DashboardView() {
                             )}
                           </div>
                           {at !== "no_op" && (
-                            <button
-                              onClick={() => void applyAction({
-                                label: actionLabel(at),
-                                action_type: at,
-                                params: sp,
-                                rationale: im.impact,
-                              }, k)}
-                              disabled={isApplying(k) || applyResult[k] === "success"}
-                              style={applyButtonStyle(applyResult[k])}
-                              title={applyResultTitle(applyResult[k], at)}
-                            >
-                              {renderApplyLabel(isApplying(k), applyResult[k], actionLabel(at))}
-                            </button>
+                    applyResult[k] === "success" && !isApplying(k) ? (
+                              <div style={{ display: "flex", gap: 4, alignItems: "center", flexShrink: 0 }}>
+                                <span style={btnApplySuccess} title={`Done · ${at}`}>✓ Done</span>
+                                <button
+                                  onClick={() => {
+                                    setApplyResult(prev => { const n = { ...prev }; delete n[k]; return n; });
+                                    void applyAction({ label: actionLabel(at), action_type: at, params: sp, rationale: im.impact }, k);
+                                  }}
+                                  style={{ ...miniBtn, fontSize: 11, color: "#5b21b6", border: "1px solid #c4b5fd" }}
+                                  title="Re-run this action"
+                                >↻</button>
+                                <button
+                                  onClick={() => setApplyResult(prev => { const n = { ...prev }; delete n[k]; return n; })}
+                                  style={{ ...miniBtn, fontSize: 11, color: "#9ca3af" }}
+                                  title="Dismiss"
+                                >✕</button>
+                              </div>
+                            ) : (
+                              <button
+                                onClick={() => void applyAction({
+                                  label: actionLabel(at),
+                                  action_type: at,
+                                  params: sp,
+                                  rationale: im.impact,
+                                }, k)}
+                                disabled={isApplying(k)}
+                                style={applyButtonStyle(applyResult[k])}
+                                title={applyResultTitle(applyResult[k], at)}
+                              >
+                                {renderApplyLabel(isApplying(k), applyResult[k], actionLabel(at))}
+                              </button>
+                            )
                           )}
                           {/* Inline result highlight after experiment completes */}
                           {(() => {
@@ -995,7 +1244,9 @@ export function DashboardView() {
                           lineHeight: 1.5 }}>
                           <div style={{ display: "flex", alignItems: "flex-start", gap: 8 }}>
                             <div style={{ flex: 1 }}>
-                              <strong>{a.label}</strong>
+                              <strong>{(a.action_type && a.action_type !== "no_op" && !String(a.action_type).startsWith("open_"))
+                                ? a.label.replace(/^plan\s+/i, "Run ")
+                                : a.label}</strong>
                               {a.rationale && (
                                 <div style={{ color: "#6b7280", fontSize: 11, marginTop: 2 }}>
                                   {a.rationale}
@@ -1003,14 +1254,33 @@ export function DashboardView() {
                               )}
                             </div>
                             {isApplyable && (
+                              applyResult[k] === "success" && !isApplying(k) ? (
+                                <div style={{ display: "flex", gap: 4, alignItems: "center", flexShrink: 0 }}>
+                                  <span style={btnApplySuccess} title={`Done · ${a.action_type}`}>✓ Done</span>
+                                  <button
+                                    onClick={() => {
+                                      setApplyResult(prev => { const n = { ...prev }; delete n[k]; return n; });
+                                      void applyAction(a, k);
+                                    }}
+                                    style={{ ...miniBtn, fontSize: 11, color: "#5b21b6", border: "1px solid #c4b5fd" }}
+                                    title="Re-run this action"
+                                  >↻</button>
+                                  <button
+                                    onClick={() => setApplyResult(prev => { const n = { ...prev }; delete n[k]; return n; })}
+                                    style={{ ...miniBtn, fontSize: 11, color: "#9ca3af" }}
+                                    title="Dismiss"
+                                  >✕</button>
+                                </div>
+                              ) : (
                               <button
-                                onClick={() => void applyAction(a, k)}
-                              disabled={isApplying(k) || applyResult[k] === "success"}
-                              style={applyButtonStyle(applyResult[k])}
-                              title={applyResultTitle(applyResult[k], a.action_type)}
-                            >
-                              {renderApplyLabel(isApplying(k), applyResult[k], actionLabel(a.action_type))}
-                              </button>
+                                  onClick={() => void applyAction(a, k)}
+                                  disabled={isApplying(k)}
+                                  style={applyButtonStyle(applyResult[k])}
+                                  title={applyResultTitle(applyResult[k], a.action_type)}
+                                >
+                                  {renderApplyLabel(isApplying(k), applyResult[k], _smartActionBtnLabel(a))}
+                                </button>
+                              )
                             )}
                           </div>
                         </li>
@@ -1024,19 +1294,27 @@ export function DashboardView() {
                   ⚠ {insight.error}
                 </div>
               )}
+
+              {/* ── Action Result Log ── */}
+              <ActionResultLog version={actionResultsVersion} />
             </>
           )}
         </section>
 
         {/* ── RSS-style feed ─────────────────────────────────────────── */}
         <section style={card}>
-          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
             <h3 style={cardTitle}>📡 Latest feed</h3>
             <span style={{ flex: 1 }} />
             <button onClick={() => navigate("discovery")} style={btnGhost}>
               Open Discovery →
             </button>
           </div>
+          {data && data.items.length > 0 && (
+            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 8 }}>
+              Latest: {fmtRelative(data.items[0]?.fetched_at)} · {data.n_items} items ({data.items.filter((it: DiscoveryItem) => it.status === "new").length} unreviewed)
+            </div>
+          )}
           {data && data.items.length === 0 && (
             <div style={{ fontSize: 12, color: "#9ca3af", fontStyle: "italic", padding: 8 }}>
               No items in the last {days} days. Click <strong>▶ Fetch now</strong> above
@@ -1152,6 +1430,67 @@ function Tally({ title, counts }: { title: string; counts: Record<string, number
   );
 }
 
+function ActionResultLog({ version }: { version: number }) {
+  const [open, setOpen] = useState(false);
+  // Re-read from localStorage whenever version bumps
+  const results = _loadActionResults();
+  void version; // used as reactivity trigger
+  if (results.length === 0) return null;
+  const shown = results.slice(0, 10);
+  const outcomeChip = (o: string) => {
+    if (o === "success") return { text: "✓", bg: "#dcfce7", fg: "#15803d" };
+    if (o === "error")   return { text: "✕", bg: "#fef2f2", fg: "#dc2626" };
+    return { text: "⚠", bg: "#fffbeb", fg: "#92400e" };
+  };
+  return (
+    <div style={{ marginTop: 10, borderTop: "1px solid #e5e7eb", paddingTop: 8 }}>
+      <button
+        onClick={() => setOpen(v => !v)}
+        style={{
+          background: "none", border: "none", cursor: "pointer",
+          fontSize: 11, fontWeight: 700, color: "#6b7280",
+          padding: 0, display: "flex", alignItems: "center", gap: 4,
+        }}
+      >
+        {open ? "▾" : "▸"} Action history ({results.length})
+      </button>
+      {open && (
+        <div style={{ marginTop: 6, display: "flex", flexDirection: "column", gap: 3 }}>
+          {shown.map((r, i) => {
+            const chip = outcomeChip(r.outcome);
+            return (
+              <div key={i} style={{
+                display: "flex", alignItems: "center", gap: 6,
+                fontSize: 11, color: "#374151",
+              }}>
+                <span style={{ fontSize: 9, color: "#9ca3af", whiteSpace: "nowrap", width: 50 }}>
+                  {fmtRelative(new Date(r.timestamp).toISOString())}
+                </span>
+                <span style={{
+                  fontSize: 10, padding: "1px 5px", borderRadius: 3,
+                  background: chip.bg, color: chip.fg, fontWeight: 700,
+                  flexShrink: 0,
+                }}>{chip.text}</span>
+                <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", flex: 1 }}>
+                  {r.label}
+                </span>
+                <span style={{ fontSize: 9, color: "#9ca3af", flexShrink: 0 }}>
+                  {r.action_type}
+                </span>
+                {r.detail && (
+                  <span style={{ fontSize: 9, color: "#dc2626", flexShrink: 0 }}>
+                    {r.detail.slice(0, 40)}
+                  </span>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ── Styles ────────────────────────────────────────────────────────────
 const card: React.CSSProperties = {
   padding: "14px 16px", border: "1px solid #e5e7eb", borderRadius: 10,
@@ -1175,11 +1514,6 @@ const btnGhost: React.CSSProperties = {
 const btnPrimary: React.CSSProperties = {
   padding: "6px 12px", border: "1px solid #2563eb", borderRadius: 6,
   background: "#2563eb", color: "#fff", fontSize: 12, fontWeight: 600,
-  cursor: "pointer",
-};
-const btnAccent: React.CSSProperties = {
-  padding: "6px 12px", border: "1px solid #7c3aed", borderRadius: 6,
-  background: "#7c3aed", color: "#fff", fontSize: 12, fontWeight: 600,
   cursor: "pointer",
 };
 const miniBtn: React.CSSProperties = {
@@ -1248,4 +1582,24 @@ function actionLabel(t: DashboardActionType): string {
       if (typeof t === "string" && t.startsWith("open_")) return "Open";
       return "Apply";
   }
+}
+
+/**
+ * Smart button label for a next_action: returns "Run" instead of "Open" when
+ * the smart upgrade in applyAction will actually run an experiment or propose
+ * a chain (i.e. the LLM generated open_view for an experiment-like action).
+ */
+function _smartActionBtnLabel(a: DashboardNextAction): string {
+  const at = a.action_type as string;
+  // Non-open types — use the regular label
+  if (at !== "open_view" && !at.startsWith("open_")) return actionLabel(a.action_type);
+  // Genuine view navigation (has explicit view param) — keep "Open"
+  if (String(a.params?.view || "").trim()) return "Open";
+  // Has explicit experiment_id — will run it
+  if (a.params?.experiment_id) return "Run";
+  // Action verb in label — will run or propose chain
+  if (/^(run|compare|analyz|test|evaluat|validat|build|detect|comput|check|measure|assess)\b/i.test(a.label)) return "Run";
+  // Research / study keyword — will propose chain
+  if (/\b(bioarchaeolog|archaeolog|convergence|decipherment|analysis|comparison|structural|entropy|dravidian|sign.reading)\b/i.test(a.label.toLowerCase())) return "Run";
+  return "Open";
 }

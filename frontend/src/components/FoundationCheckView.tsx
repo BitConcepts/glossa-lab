@@ -3,14 +3,13 @@
  *
  * Calls GET /api/v1/research/foundation-check and displays:
  *   ✓ pass   — check passed
- *   ✗ fail   — check failed (red, blocks external communication)
+ *   ✗ fail   — check failed (flags data integrity issue)
  *   ⚠ warn  — known limitation or caveat
+ *   ⚡ auto_fix — fixable with one click
  *
- * Each check with an action_type gets a "Fix" button that dispatches the
- * appropriate action (run_script, run_experiment, open_view, etc.).
- *
- * Pre-communication requirement (AGENTS.md H20):
- *   Run this check before sending anything to Dr. Fuls or any external party.
+ * NOTE: Foundation Check ≠ Phase Unlocker. Phase advancement is driven by
+ * corpus_token_coverage (≥95% = Phase 5 Done). This check is a data-integrity
+ * audit — failures do NOT block the research loop or phase guide.
  */
 
 import { useCallback, useEffect, useState } from "react";
@@ -30,7 +29,9 @@ interface CheckSummary {
   n_pass:          number;
   n_fail:          number;
   n_warn:          number;
+  n_fixable?:      number;
   overall_status:  string;
+  integrity_ok?:   boolean;
   send_to_fuls_ok: boolean;
   send_to_fuls_msg: string;
 }
@@ -75,6 +76,8 @@ export function FoundationCheckView() {
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data: FoundationCheckResult = await res.json();
       setResult(data);
+      // Notify other components (e.g. RunSummary) that foundation status changed
+      window.dispatchEvent(new Event("glossa:foundation-updated"));
     } catch (e) {
       toast(e instanceof Error ? e.message : "Foundation check failed", "error");
     } finally {
@@ -88,10 +91,25 @@ export function FoundationCheckView() {
     const key = check.label;
     setRunning((r) => ({ ...r, [key]: true }));
     try {
-      if (check.action_type === "run_script") {
+      if (check.action_type === "auto_fix") {
+        const fixId = check.action_params.fix_id ?? "";
+        toast(`Applying auto-fix: ${fixId} …`, "info");
+        const res = await fetch("/api/v1/research/apply-fix", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ fix_id: fixId }),
+        });
+        const data = await res.json() as { ok: boolean; message?: string; error?: string };
+        if (data.ok) {
+          toast(data.message ?? "Fix applied", "success");
+          // Re-run check after fix
+          setTimeout(() => void runCheck(), 800);
+        } else {
+          toast(data.error ?? "Fix failed", "error");
+        }
+      } else if (check.action_type === "run_script") {
         const script = check.action_params.script ?? "";
         toast(`Running ${script} …`, "info");
-        // POST to terminal execute
         const res = await fetch("/api/v1/terminal/run", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -124,15 +142,34 @@ export function FoundationCheckView() {
 
   return (
     <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+      {/* Phase clarification banner */}
+      <div style={{
+        padding: "10px 16px", borderRadius: 8, marginBottom: 16,
+        background: "#eff6ff", border: "1px solid #bfdbfe",
+        fontSize: 12, color: "#1e40af", lineHeight: 1.6,
+      }}>
+        <strong>ℹ Foundation Check ≠ Phase Unlocker.</strong>{" "}
+        You are already at <strong>Phase 5 Done (96%+ coverage)</strong> — phase advancement is
+        driven by corpus token coverage, not by this check.
+        Foundation Check is a <em>data integrity audit</em>: it verifies anchor quality,
+        corpus counts, and citation provenance before you share results externally.
+        Failures here do <em>not</em> block the research loop or phase guide.
+        {(summary?.n_fixable ?? 0) > 0 && (
+          <span style={{ marginLeft: 6, padding: "2px 8px", borderRadius: 4,
+            background: "#dbeafe", color: "#1d4ed8", fontWeight: 700, fontSize: 11 }}>
+            ⚡ {summary!.n_fixable} auto-fix{summary!.n_fixable !== 1 ? "es" : ""} available — click the buttons below
+          </span>
+        )}
+      </div>
+
       {/* Header */}
       <div style={{ display: "flex", alignItems: "flex-end", gap: 12, marginBottom: 20 }}>
         <div style={{ flex: 1 }}>
           <h2 style={{ margin: 0, fontSize: 22, color: "#111827" }}>
-            🔬 Foundation Check
+            ✅ Foundation Check
           </h2>
           <p style={{ margin: "4px 0 0", fontSize: 13, color: "#6b7280" }}>
-            Research integrity audit. Run before any external communication (Fuls, Parpola, prize submission).
-            Checks corpora, anchors, citations, and all verified results.
+            Data integrity audit. Checks corpora, anchor quality, citations, and all verified results.
           </p>
         </div>
         <button
@@ -237,18 +274,23 @@ export function FoundationCheckView() {
                   disabled={running[check.label]}
                   style={{
                     padding: "4px 12px",
-                    border: `1px solid ${STATUS_COLORS[check.status]}`,
+                    border: `1px solid ${check.action_type === "auto_fix" ? "#2563eb" : STATUS_COLORS[check.status]}`,
                     borderRadius: 5,
-                    background: "transparent",
-                    color: STATUS_COLORS[check.status],
-                    fontSize: 11, fontWeight: 600,
+                    background: check.action_type === "auto_fix" ? "#2563eb" : "transparent",
+                    color: check.action_type === "auto_fix" ? "#fff" : STATUS_COLORS[check.status],
+                    fontSize: 11, fontWeight: 700,
                     cursor: running[check.label] ? "wait" : "pointer",
                     whiteSpace: "nowrap",
                     flexShrink: 0,
                     marginTop: 2,
+                    boxShadow: check.action_type === "auto_fix" ? "0 1px 4px rgba(37,99,235,0.3)" : "none",
                   }}
                 >
-                  {running[check.label] ? "Running…" : `▶ ${check.action_label}`}
+                  {running[check.label]
+                    ? "Applying…"
+                    : check.action_type === "auto_fix"
+                      ? `⚡ ${check.action_label}`
+                      : `▶ ${check.action_label}`}
                 </button>
               )}
             </div>
@@ -273,7 +315,7 @@ export function FoundationCheckView() {
         border: "1px solid #e5e7eb", fontSize: 11, color: "#6b7280",
       }}>
         <div style={{ fontWeight: 700, marginBottom: 4, color: "#374151" }}>
-          📖 Citation Policy (AGENTS.md H19)
+          📖 Citation Policy
         </div>
         Every data file, corpus, and report must have{" "}
         <code style={{ background: "#e5e7eb", padding: "1px 4px", borderRadius: 3 }}>

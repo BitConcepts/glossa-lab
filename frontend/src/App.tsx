@@ -12,7 +12,7 @@ import { HypothesisTracker } from "./components/HypothesisTracker";
 import { ResearchNotebook } from "./components/ResearchNotebook";
 import { AIToolsView } from "./components/AIToolsView";
 import { HelpView } from "./components/HelpView";
-import { SignDictionary } from "./components/SignDictionary";
+import { SignsView } from "./components/SignsView";
 import { TimelineView } from "./components/TimelineView";
 import { CitationManager } from "./components/CitationManager";
 import { DashboardView } from "./components/DashboardView";
@@ -224,12 +224,63 @@ function AppContent() {
   // Dashboard is the default landing tab — it's the only screen that gives a
   // global picture of the project (highlights, feed, AI insight). Persisted
   // selection from a prior session still wins via the navigate event below.
-  const [tab, setTab] = useState<Tab>("dashboard");
+  const [tab, _setTab] = useState<Tab>("dashboard");
+  // Navigation history: tabRef keeps the current value accessible synchronously
+  // so goBack/goForward can read it without stale-closure issues.
+  const tabRef = useRef<Tab>("dashboard");
+  const [navHistory, setNavHistory] = useState<Tab[]>([]);
+  const [navFuture,  setNavFuture]  = useState<Tab[]>([]);
+
+  /** Set the active tab AND keep tabRef in sync. */
+  const setTab = (v: Tab) => { tabRef.current = v; _setTab(v); };
+
+  /** Navigate to a view, pushing the current tab onto the history stack. */
+  const goTo = (view: Tab) => {
+    const cur = tabRef.current;
+    if (cur !== view) {
+      setNavHistory(prev => [...prev, cur].slice(-40));
+      setNavFuture([]);
+    }
+    setTab(view);
+  };
+  /** Go back one step in navigation history. */
+  const goBack = () => {
+    const cur = tabRef.current;
+    setNavHistory(prev => {
+      if (prev.length === 0) return prev;
+      const dest = prev[prev.length - 1];
+      setNavFuture(f => [cur, ...f].slice(0, 40));
+      setTab(dest);
+      return prev.slice(0, -1);
+    });
+  };
+  /** Go forward one step (after going back). */
+  const goForward = () => {
+    const cur = tabRef.current;
+    setNavFuture(prev => {
+      if (prev.length === 0) return prev;
+      const dest = prev[0];
+      setNavHistory(h => [...h, cur].slice(-40));
+      setTab(dest);
+      return prev.slice(1);
+    });
+  };
+  /** Jump straight to the Dashboard home view. */
+  const goHome = () => goTo("dashboard");
+
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem("glossa_dark") === "1");
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [aiPanelOpen, setAiPanelOpen] = useState(false);
   const [aiPanelWidth, setAiPanelWidth] = useState(320);
   const [aiPanelSide, setAiPanelSide] = useState<"left" | "right">("left");
+  // ── Mobile responsiveness ─────────────────────────────────────────────────
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 768);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
   // Dirty badges — shown when builders have unsaved local changes
   // Both start false on page load; the Study Builder dispatches glossa:dirty
   // whenever the graph diverges from its last-saved state.
@@ -296,8 +347,9 @@ function AppContent() {
   // notifOpen removed — NotificationCenter is now self-contained
 
   // Bottom panel state
+  // On mobile start minimized (tab bar only); user taps a tab to expand
   const [panelHeight, setPanelHeight] = useState(DEFAULT_PANEL_HEIGHT);
-  const [panelMinimized, setPanelMinimized] = useState(false);
+  const [panelMinimized, setPanelMinimized] = useState(() => window.innerWidth <= 768);
   const [panelTab, setPanelTab] = useState<PanelTab>("logs");
   const [panelVisible, setPanelVisible] = useState(true);
 
@@ -307,7 +359,10 @@ function AppContent() {
     if (isDocked) { setPanelVisible(true); setPanelMinimized(false); setPanelTab("chat"); }
   }, [isDocked]);
 
-  const effectivePanelH = panelVisible ? (panelMinimized ? 30 : panelHeight) : 0;
+  // On mobile cap the expanded height at 45% of screen so it doesn't swamp content
+  const mobilePanelH = Math.floor(window.innerHeight * 0.45);
+  const activePanelH = isMobile ? mobilePanelH : panelHeight;
+  const effectivePanelH = panelVisible ? (panelMinimized ? 30 : activePanelH) : 0;
 
   useEffect(() => {
     document.body.style.background = darkMode ? "#0f172a" : "#fff";
@@ -319,9 +374,13 @@ function AppContent() {
     const handler = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") { e.preventDefault(); setPaletteOpen(p => !p); }
       if ((e.metaKey || e.ctrlKey) && e.key === "j") { e.preventDefault(); setPanelVisible(v => !v); }
+      // Alt+← / Alt+→ — back/forward (mirrors browser default on most OSes)
+      if (e.altKey && e.key === "ArrowLeft")  { e.preventDefault(); goBack(); }
+      if (e.altKey && e.key === "ArrowRight") { e.preventDefault(); goForward(); }
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Allow other components (e.g. AIToolsView "Glossa AI chat" card) to
@@ -348,13 +407,19 @@ function AppContent() {
       // Redirect legacy exp-builder links to the unified experiments canvas
       if (view === "exp-builder") view = "experiments";
       // Redirect "studies" to builder (Projects/Studies view); "indus-data" to dashboard
-      if ((view as string) === "studies") view = "builder" as Tab;
-      if ((view as string) === "indus-data") view = "dashboard" as Tab;
-      if (view && (allItems.some(i => i.id === view) || view === "experiments")) setTab(view);
+      if ((view as string) === "studies")     view = "builder" as Tab;
+      if ((view as string) === "indus-data")  view = "dashboard" as Tab;
+      // Phase Advancer + backend use short aliases — map to real Tab IDs
+      if ((view as string) === "foundation")  view = "foundation-check" as Tab;
+      if ((view as string) === "ai_tools")    view = "ai-tools" as Tab;
+      if ((view as string) === "hypothesis" || (view as string) === "hypotheses") view = "hypotheses" as Tab;
+      if ((view as string) === "notebook" || (view as string) === "notebooks")    view = "notebooks" as Tab;
+      if ((view as string) === "job" || (view as string) === "jobs")              view = "jobs" as Tab;
+      if (view && (allItems.some(i => i.id === view) || view === "experiments")) goTo(view);
     };
     window.addEventListener("glossa:navigate", handler);
     return () => window.removeEventListener("glossa:navigate", handler);
-  // allItems is stable (built from constants)
+  // allItems and goTo are stable
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -400,7 +465,7 @@ function AppContent() {
     const jobsActive = item.id === "jobs" && activeJobCount > 0;
     return (
       <button
-        onClick={() => setTab(item.id)}
+        onClick={() => { goTo(item.id); if (isMobile) setSidebarOpen(false); }}
         title={item.label + (dirty ? " (unsaved changes)" : "")}
         style={{
           display: "flex", alignItems: "center", gap: 9,
@@ -443,9 +508,21 @@ function AppContent() {
   };
 
   return (
-    <div style={{ display: "flex", height: "100vh", overflow: "hidden", fontFamily: "system-ui, sans-serif", background: bg }}>
+    <div style={{ display: "flex", height: "100vh", overflow: "hidden", fontFamily: "system-ui, sans-serif", background: bg, userSelect: "none" }}>
 
       {/* ── Left sidebar ──────────────────────────────────────────────────────── */}
+      {/* Mobile overlay — tapping it closes the sidebar */}
+      {isMobile && sidebarOpen && (
+        <div
+          onClick={() => setSidebarOpen(false)}
+          style={{
+            position: "fixed", inset: 0,
+            background: "rgba(0,0,0,0.5)",
+            zIndex: 199,
+          }}
+        />
+      )}
+
       <aside style={{
         position: "fixed", top: 0, left: 0, bottom: 0,
         width: SIDEBAR_W,
@@ -454,6 +531,9 @@ function AppContent() {
         overflow: "hidden",
         zIndex: 200,
         boxShadow: "2px 0 8px rgba(0,0,0,0.15)",
+        // On mobile: slide off-screen when closed
+        transform: isMobile && !sidebarOpen ? `translateX(-${SIDEBAR_W}px)` : "translateX(0)",
+        transition: "transform 0.2s ease",
       }}>
 
         {/* Logo + title */}
@@ -520,14 +600,42 @@ function AppContent() {
 
         {/* System items at bottom — flexShrink:0 ensures they never get hidden */}
         <div style={{ borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 4, paddingBottom: 4, flexShrink: 0 }}>
-          {SYSTEM_ITEMS.map((item) => <NavBtn key={item.id} item={item} />)}
+        {SYSTEM_ITEMS.map((item) => (
+          <button
+            key={item.id}
+            onClick={() => { goTo(item.id); if (isMobile) setSidebarOpen(false); }}
+            title={item.label}
+            style={{
+              display: "flex", alignItems: "center", gap: 9,
+              width: "100%", padding: "7px 14px",
+              border: "none", borderRadius: 0,
+              background: tab === item.id ? activeBg : "none",
+              borderLeft: tab === item.id ? "3px solid #60a5fa" : "3px solid transparent",
+              cursor: "pointer",
+              color: tab === item.id ? "#fff" : sideText,
+              fontSize: 13,
+              fontWeight: tab === item.id ? 600 : 400,
+              textAlign: "left",
+              transition: "background 0.12s",
+            }}
+          >
+            <span style={{ fontSize: 14, lineHeight: 1, flexShrink: 0 }}>{item.icon}</span>
+            <span style={{ flex: 1 }}>{item.label}</span>
+            {item.id === "jobs" && activeJobCount > 0 && (
+              <span style={{ width: 7, height: 7, borderRadius: "50%", background: "#3b82f6",
+                flexShrink: 0, boxShadow: "0 0 6px #3b82f6", animation: "healthPulse 0.7s ease-in-out infinite" }}
+                title={`${activeJobCount} active job(s)`} />
+            )}
+          </button>
+        ))}
         </div>
       </aside>
 
       {/* ── Main content area ─────────────────────────────────────────────────── */}
       <div style={{
-        marginLeft: SIDEBAR_W + (aiPanelOpen && aiPanelSide === "left" ? aiPanelWidth : 0),
-        marginRight: aiPanelOpen && aiPanelSide === "right" ? aiPanelWidth : 0,
+        // On mobile the sidebar overlays content, so no left margin
+        marginLeft: isMobile ? 0 : SIDEBAR_W + (aiPanelOpen && aiPanelSide === "left" ? aiPanelWidth : 0),
+        marginRight: !isMobile && aiPanelOpen && aiPanelSide === "right" ? aiPanelWidth : 0,
         flex: 1, minWidth: 0,
         display: "flex", flexDirection: "column",
         height: "100vh",
@@ -538,15 +646,26 @@ function AppContent() {
         {/* Top bar */}
         <div style={{
           display: "flex", alignItems: "center", gap: 8,
-          padding: "10px 24px",
+          padding: isMobile ? "8px 12px" : "10px 24px",
           borderBottom: `1px solid ${border}`,
           background: cardBg,
           flexShrink: 0,
           position: "sticky", top: 0, zIndex: 100,
         }}>
-          {/* Breadcrumb */}
-          <span style={{ fontSize: 13, color: muted }}>Glossa Lab</span>
-          {projCtx.activeProject && (
+          {/* Hamburger — mobile only */}
+          {isMobile && (
+            <button
+              onClick={() => setSidebarOpen(v => !v)}
+              aria-label="Toggle navigation"
+              style={{ padding: "4px 6px", border: "none", background: "none",
+                cursor: "pointer", fontSize: 20, color: fg, lineHeight: 1, flexShrink: 0 }}
+            >
+              {sidebarOpen ? "✕" : "☰"}
+            </button>
+          )}
+          {/* Breadcrumb — full on desktop, just the view name on mobile */}
+          {!isMobile && <span style={{ fontSize: 13, color: muted }}>Glossa Lab</span>}
+          {!isMobile && projCtx.activeProject && (
             <>
               <span style={{ color: border, fontSize: 13 }}>/</span>
               <span
@@ -554,32 +673,76 @@ function AppContent() {
                   background: darkMode ? "rgba(37,99,235,0.18)" : "#eff6ff",
                   color: "#2563eb", fontWeight: 600, cursor: "pointer",
                   border: "1px solid rgba(37,99,235,0.25)" }}
-                onClick={() => setTab("builder")}
+                onClick={() => goTo("builder")}
                 title={`Active project: ${projCtx.activeProject.label}`}
               >
                 {projCtx.activeProject.label}
               </span>
             </>
           )}
-          <span style={{ color: border, fontSize: 13 }}>/</span>
-          <span style={{ fontSize: 13, fontWeight: 600, color: fg }}>{currentLabel}</span>
+          {!isMobile && <span style={{ color: border, fontSize: 13 }}>/</span>}
+          <span style={{ fontSize: isMobile ? 15 : 13, fontWeight: 600, color: fg }}>{currentLabel}</span>
 
           <div style={{ flex: 1 }} />
 
-          <button
-            onClick={() => setPaletteOpen(true)}
-            title="Command palette (Cmd+K)"
-            style={{ padding: "4px 10px", border: `1px solid ${border}`, borderRadius: 6, background: "none", cursor: "pointer", fontSize: 12, color: muted }}
-          >
-            ⌘K
-          </button>
-          <button
-            onClick={() => setPanelVisible((v) => !v)}
-            title="Toggle panel (Ctrl+J)"
-            style={{ padding: "4px 10px", border: `1px solid ${border}`, borderRadius: 6, background: "none", cursor: "pointer", fontSize: 12, color: panelVisible ? "#2563eb" : muted }}
-          >
-            ⊟
-          </button>
+          {/* ← → 🏠 navigation buttons */}
+          {!isMobile && (
+            <div style={{ display: "flex", gap: 2, marginRight: 4 }}>
+              <button
+                onClick={goBack}
+                disabled={navHistory.length === 0}
+                title={navHistory.length > 0 ? `Back to ${navHistory[navHistory.length - 1]} (Alt+←)` : "No history"}
+                style={{
+                  padding: "4px 8px", border: `1px solid ${border}`, borderRadius: 6,
+                  background: "none", cursor: navHistory.length > 0 ? "pointer" : "default",
+                  fontSize: 13, color: navHistory.length > 0 ? fg : (darkMode ? "#475569" : "#d1d5db"),
+                  lineHeight: 1,
+                }}
+              >←</button>
+              <button
+                onClick={goForward}
+                disabled={navFuture.length === 0}
+                title={navFuture.length > 0 ? `Forward to ${navFuture[0]} (Alt+→)` : "No forward history"}
+                style={{
+                  padding: "4px 8px", border: `1px solid ${border}`, borderRadius: 6,
+                  background: "none", cursor: navFuture.length > 0 ? "pointer" : "default",
+                  fontSize: 13, color: navFuture.length > 0 ? fg : (darkMode ? "#475569" : "#d1d5db"),
+                  lineHeight: 1,
+                }}
+              >→</button>
+              <button
+                onClick={goHome}
+                title="Home (Dashboard)"
+                style={{
+                  padding: "4px 8px", border: `1px solid ${border}`, borderRadius: 6,
+                  background: tab === "dashboard" ? (darkMode ? "rgba(37,99,235,0.18)" : "#eff6ff") : "none",
+                  cursor: "pointer", fontSize: 13,
+                  color: tab === "dashboard" ? "#2563eb" : fg,
+                  lineHeight: 1,
+                }}
+              >🏠</button>
+            </div>
+          )}
+
+          {/* ⌘K and panel toggle — desktop only; not useful on touch */}
+          {!isMobile && (
+            <button
+              onClick={() => setPaletteOpen(true)}
+              title="Command palette (Cmd+K)"
+              style={{ padding: "4px 10px", border: `1px solid ${border}`, borderRadius: 6, background: "none", cursor: "pointer", fontSize: 12, color: muted }}
+            >
+              ⌘K
+            </button>
+          )}
+          {!isMobile && (
+            <button
+              onClick={() => setPanelVisible((v) => !v)}
+              title="Toggle panel (Ctrl+J)"
+              style={{ padding: "4px 10px", border: `1px solid ${border}`, borderRadius: 6, background: "none", cursor: "pointer", fontSize: 12, color: panelVisible ? "#2563eb" : muted }}
+            >
+              ⊟
+            </button>
+          )}
           {/* Bell portal-based dropdown — z-9500 escapes sticky header stacking context */}
           <NotificationCenter />
           <button
@@ -602,12 +765,14 @@ function AppContent() {
               flex: 1,
               minHeight: 0,
               display: "flex", flexDirection: "column",
-              padding:      isCanvas ? 0 : "24px",
-              paddingBottom: isCanvas ? 0 : 32,
+              padding:      isCanvas ? 0 : (isMobile ? "14px" : "24px"),
+              paddingBottom: isCanvas ? 0 : (isMobile ? 14 : 32),
               marginBottom:  effectivePanelH,
               color: fg,
               maxWidth: "none",
               overflow: isCanvas ? "hidden" : "auto",
+              // Re-enable text selection for actual content views
+              userSelect: "text",
             }}>
               {tab === "dashboard"   && <DashboardView />}
               {tab === "status"      && <StatusView />}
@@ -622,7 +787,7 @@ function AppContent() {
               {tab === "hypotheses"  && <HypothesisTracker />}
               {tab === "notebooks"   && <ResearchNotebook />}
               {tab === "ai-tools"    && <AIToolsView />}
-              {tab === "signs"       && <SignDictionary />}
+              {tab === "signs"       && <SignsView />}
               {tab === "timeline"    && <TimelineView onNavigate={(t) => setTab(t as Tab)} />}
               {tab === "citations"       && <CitationManager />}
               {tab === "correspondence"  && <CorrespondenceView />}
@@ -643,13 +808,14 @@ function AppContent() {
       {/* Bottom IDE panel */}
       {panelVisible && (
         <BottomPanel
-          height={panelHeight}
-          onHeightChange={setPanelHeight}
+          height={activePanelH}
+          onHeightChange={isMobile ? () => {} : setPanelHeight}
           minimized={panelMinimized}
           onMinimizedChange={setPanelMinimized}
           activeTab={panelTab}
           onTabChange={setPanelTab}
-          leftOffset={SIDEBAR_W}
+          leftOffset={isMobile ? 0 : SIDEBAR_W}
+          activeJobCount={activeJobCount}
         />
       )}
 
@@ -673,6 +839,17 @@ function AppContent() {
         aside::-webkit-scrollbar-track { background: transparent; }
         aside::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
         aside button:hover { background: rgba(255,255,255,0.08) !important; }
+        /* iOS safe-area: push the fixed bottom panel above the home indicator */
+        @supports (padding-bottom: env(safe-area-inset-bottom)) {
+          .glossa-bottom-panel { padding-bottom: env(safe-area-inset-bottom); }
+        }
+        /* Touch interactions: fast taps, no long-press selection on buttons */
+        button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+        /* Improve tap targets on mobile */
+        @media (max-width: 768px) {
+          button { min-height: 36px; }
+          input, select, textarea { font-size: 16px !important; } /* prevent iOS zoom */
+        }
       `}</style>
     </div>
   );

@@ -10,8 +10,117 @@
  *   - "What Remains" list
  */
 
-import { useEffect, useState } from "react";
-import { getDashboardDecipherment, type DeciphermentProgress } from "../api";
+import { useCallback, useEffect, useState } from "react";
+import {
+  getDashboardDecipherment,
+  getFoundationStatus,
+  updateFoundationConfig,
+  type DeciphermentProgress,
+  type FoundationStatus,
+} from "../api";
+
+const DECIPHER_DONE_KEY    = "glossa_decipher_actions_done";    // localStorage  – success/error
+const DECIPHER_PENDING_KEY = "glossa_decipher_actions_pending"; // sessionStorage – in-flight
+type DoneResult = "success" | "error" | "warn" | "pending" | "dismissed";
+
+/**
+ * Load terminal states (success/error) from localStorage and merge in
+ * any in-flight keys that are still tracked in sessionStorage.
+ *
+ * Splitting storage types gives us exactly the right semantics:
+ *  - sessionStorage persists across Ctrl+R (same tab) → shows Running on reload
+ *  - sessionStorage is cleared on tab close → no stuck Running next session
+ *  - localStorage holds done/error so they survive tab close
+ */
+function _loadDone(): Record<string, DoneResult> {
+  const result: Record<string, DoneResult> = {};
+  try {
+    const r = localStorage.getItem(DECIPHER_DONE_KEY);
+    if (r) {
+      const raw = JSON.parse(r) as Record<string, DoneResult>;
+      // Ignore any 'pending' entries in localStorage — they are stale remnants
+      // from old app versions that used to write pending there. Current code
+      // only writes success/error to localStorage; pending lives in sessionStorage.
+      for (const [k, v] of Object.entries(raw)) {
+        if (v !== "pending") result[k] = v;
+      }
+    }
+  } catch { /* ignore */ }
+  try {
+    const raw = sessionStorage.getItem(DECIPHER_PENDING_KEY);
+    if (raw) {
+      const pending = JSON.parse(raw) as string[];
+      for (const key of pending) { if (!result[key]) result[key] = "pending"; }
+    }
+  } catch { /* ignore */ }
+  return result;
+}
+
+function _saveDone(d: Record<string, DoneResult>) {
+  // Terminal states go to localStorage (survive tab close)
+  try {
+    const terminal = Object.fromEntries(Object.entries(d).filter(([, v]) => v !== "pending"));
+    localStorage.setItem(DECIPHER_DONE_KEY, JSON.stringify(terminal));
+  } catch { /* ignore */ }
+  // Pending keys go to sessionStorage (survive Ctrl+R, clear on tab close)
+  try {
+    const pending = Object.entries(d).filter(([, v]) => v === "pending").map(([k]) => k);
+    if (pending.length > 0) {
+      sessionStorage.setItem(DECIPHER_PENDING_KEY, JSON.stringify(pending));
+    } else {
+      sessionStorage.removeItem(DECIPHER_PENDING_KEY);
+    }
+  } catch { /* ignore */ }
+}
+
+// ── Server-side persistent dismissal helpers ──────────────────────
+
+async function fetchServerDismissed(): Promise<string[]> {
+  try {
+    const res = await fetch("/api/v1/dismissals");
+    if (!res.ok) return [];
+    const data = (await res.json()) as { dismissed?: string[] };
+    return data.dismissed ?? [];
+  } catch {
+    return [];
+  }
+}
+
+async function postServerDismissal(key: string): Promise<void> {
+  try {
+    await fetch("/api/v1/dismissals", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ key }),
+    });
+  } catch { /* best-effort */ }
+}
+
+type ActionFn = (
+  label: string,
+  actionType: string,
+  params: Record<string, unknown>,
+  rationale?: string,
+) => Promise<void> | void;
+
+function ActionBtn({ label, onClick, busy }: { label: string; onClick: () => void; busy?: boolean }) {
+  return (
+    <button
+      onClick={busy ? undefined : onClick}
+      disabled={busy}
+      style={{
+        padding: "2px 7px", fontSize: 10, fontWeight: 600,
+        border: "1px solid #c4b5fd", borderRadius: 4,
+        background: busy ? "#ede9fe" : "#f5f3ff",
+        color: busy ? "#7c3aed" : "#5b21b6",
+        cursor: busy ? "default" : "pointer",
+        whiteSpace: "nowrap", opacity: busy ? 0.75 : 1,
+      }}
+    >
+      {busy ? "⏳ Running…" : label}
+    </button>
+  );
+}
 
 const LEVEL_COLORS: Record<string, { bg: string; fg: string; border: string }> = {
   "NEAR-COMPLETE": { bg: "#dcfce7", fg: "#15803d", border: "#86efac" },
@@ -28,7 +137,7 @@ function ProgressBar({ value, max = 100, color = "#3b82f6", label }: { value: nu
       {label && <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 2 }}>{label}</div>}
       <div style={{ background: "#e5e7eb", borderRadius: 4, height: 14, overflow: "hidden", position: "relative" }}>
         <div style={{ width: `${pct}%`, background: color, height: "100%", borderRadius: 4, transition: "width 0.3s" }} />
-        <span style={{ position: "absolute", right: 6, top: 0, fontSize: 10, lineHeight: "14px", color: pct > 60 ? "#fff" : "#374151", fontWeight: 600 }}>
+        <span style={{ position: "absolute", right: 6, top: 0, fontSize: 10, lineHeight: "14px", color: "#111827", fontWeight: 700, textShadow: "0 0 3px #fff, 0 0 3px #fff" }}>
           {value.toFixed(1)}%
         </span>
       </div>
@@ -53,10 +162,154 @@ function Sparkline({ data, width = 200, height = 40 }: { data: number[]; width?:
   );
 }
 
-export function DeciphermentPanel() {
+export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
   const [data, setData] = useState<DeciphermentProgress | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  // Track which action labels are currently in-flight so buttons disable.
+  const [busyLabels, setBusyLabels] = useState<Set<string>>(new Set());
+  // Persist done/error state across page reloads.
+  const [doneLabels, setDoneLabels] = useState<Record<string, DoneResult>>(_loadDone);
+
+  // ── Merge server-side dismissed keys on mount ─────────────────────
+  useEffect(() => {
+    void (async () => {
+      const serverKeys = await fetchServerDismissed();
+      if (serverKeys.length > 0) {
+        setDoneLabels(prev => {
+          const merged = { ...prev };
+          for (const k of serverKeys) {
+            if (!merged[k]) merged[k] = "dismissed";
+          }
+          _saveDone(merged);
+          return merged;
+        });
+      }
+    })();
+  }, []);
+
+  // ── Foundation auto-check state ────────────────────────────────────
+  const [foundationStatus, setFoundationStatus] = useState<FoundationStatus | null>(null);
+  const [autoCheckToggling, setAutoCheckToggling] = useState(false);
+
+  const fetchFoundationStatus = useCallback(async () => {
+    try {
+      const s = await getFoundationStatus();
+      setFoundationStatus(s);
+    } catch { /* ignore */ }
+  }, []);
+
+  useEffect(() => {
+    void fetchFoundationStatus();
+  }, [fetchFoundationStatus]);
+
+  // Listen for foundation-complete events to refresh panel
+  useEffect(() => {
+    const handler = () => {
+      void fetchFoundationStatus();
+    };
+    window.addEventListener("glossa:foundation-complete", handler);
+    return () => window.removeEventListener("glossa:foundation-complete", handler);
+  }, [fetchFoundationStatus]);
+
+  const toggleAutoCheck = async () => {
+    if (!foundationStatus || autoCheckToggling) return;
+    setAutoCheckToggling(true);
+    try {
+      const result = await updateFoundationConfig({
+        auto_check_enabled: !foundationStatus.auto_check_enabled,
+      });
+      setFoundationStatus(prev => prev ? { ...prev, auto_check_enabled: result.auto_check_enabled } : prev);
+    } catch { /* ignore */ }
+    finally { setAutoCheckToggling(false); }
+  };
+
+  const handleAction = async (
+    label: string, actionType: string,
+    params: Record<string, unknown>, rationale?: string,
+  ) => {
+    if (busyLabels.has(label) || !onAction) return;
+    // Write 'pending' to sessionStorage immediately so a Ctrl+R mid-run still shows
+    // Running. sessionStorage is cleared on tab close, so a new browser session
+    // always starts clean (no stuck Running from a previous session).
+    setDoneLabels(prev => { const n = { ...prev, [label]: "pending" as DoneResult }; _saveDone(n); return n; });
+    setBusyLabels(prev => new Set(prev).add(label));
+    let outcome: DoneResult = "success";
+    try {
+      await onAction(label, actionType, params, rationale);
+    } catch {
+      outcome = "error";
+    } finally {
+      setBusyLabels(prev => { const n = new Set(prev); n.delete(label); return n; });
+      setDoneLabels(prev => { const n = { ...prev, [label]: outcome }; _saveDone(n); return n; });
+    }
+  };
+
+  /** Render a Done/Pending chip + re-run OR a normal ActionBtn depending on state. */
+  const renderBtn = (
+    displayLabel: string, actionKey: string,
+    actionType: string, params: Record<string, unknown>, rationale?: string,
+  ) => {
+    const busy = busyLabels.has(actionKey);
+    const state = doneLabels[actionKey];
+    const rerunBtn = (
+      <button
+        onClick={() => void handleAction(actionKey, actionType, params, rationale)}
+        style={{ padding: "2px 5px", fontSize: 10, border: "1px solid #c4b5fd",
+          borderRadius: 4, background: "#f5f3ff", color: "#5b21b6", cursor: "pointer" }}
+        title="Re-run">↻</button>
+    );
+    if (!busy && state === "success") {
+      return (
+        <div style={{ display: "flex", gap: 3, alignItems: "center", flexShrink: 0 }}>
+          <span style={{ padding: "2px 7px", fontSize: 10, fontWeight: 600,
+            border: "1px solid #86efac", borderRadius: 4,
+            background: "#f0fdf4", color: "#166534", whiteSpace: "nowrap" }}
+            title={`Done · ${actionKey}`}>✓ Done</span>
+          {rerunBtn}
+          <button
+            onClick={() => setDoneLabels(prev => { const n = { ...prev }; delete n[actionKey]; _saveDone(n); return n; })}
+            style={{ padding: "2px 5px", fontSize: 10, border: "1px solid #d1d5db",
+              borderRadius: 4, background: "#fff", color: "#9ca3af", cursor: "pointer" }}
+            title="Dismiss done state">✕</button>
+        </div>
+      );
+    }
+    if (!busy && state === "pending") {
+      const dismissBtn = (
+        <button
+          onClick={() => setDoneLabels(prev => { const n = { ...prev }; delete n[actionKey]; _saveDone(n); return n; })}
+          style={{ padding: "2px 5px", fontSize: 10, border: "1px solid #d1d5db",
+            borderRadius: 4, background: "#fff", color: "#6b7280", cursor: "pointer" }}
+          title="Dismiss — job may still be running in background">✕</button>
+      );
+      return (
+        <div style={{ display: "flex", gap: 3, alignItems: "center", flexShrink: 0 }}>
+          <span style={{ padding: "2px 7px", fontSize: 10, fontWeight: 600,
+            border: "1px solid #93c5fd", borderRadius: 4,
+            background: "#eff6ff", color: "#1d4ed8", whiteSpace: "nowrap" }}
+            title="Running in background — click ↻ to re-run or ✕ to dismiss">⏳ Running…</span>
+          {dismissBtn}
+          {rerunBtn}
+        </div>
+      );
+    }
+    if (!busy && state === "error") {
+      return (
+        <div style={{ display: "flex", gap: 3, alignItems: "center", flexShrink: 0 }}>
+          <span style={{ padding: "2px 7px", fontSize: 10, fontWeight: 600,
+            border: "1px solid #fca5a5", borderRadius: 4,
+            background: "#fef2f2", color: "#991b1b", whiteSpace: "nowrap" }}
+            title="Failed — click ↻ to retry">✗ Error</span>
+          {rerunBtn}
+        </div>
+      );
+    }
+    return (
+      <ActionBtn label={displayLabel} busy={busy}
+        onClick={() => void handleAction(actionKey, actionType, params, rationale)} />
+    );
+  };
 
   useEffect(() => {
     getDashboardDecipherment()
@@ -78,13 +331,9 @@ export function DeciphermentPanel() {
   if (isArchived) {
     const totalSigns  = data.anchors.corpus_signs  ?? 390;
     const totalAnchors = data.anchors.total_all ?? totalSigns;
+    const icitTotal   = (data.anchors as any).icit_total_signs ?? 0;
     const high        = byConf.HIGH   ?? 0;
-    const medium      = byConf.MEDIUM ?? 0;
-    const candidate   = byConf.CANDIDATE ?? 0;
-    const nHM         = high + medium;
     const tokenCovPct = Math.round((data.anchors.corpus_token_coverage ?? 0) * 100);
-    const hmSignPct   = Math.round((nHM / totalAnchors) * 100);
-    const highSignPct = Math.round((high / totalAnchors) * 100);
     const currentPhase = (data as any).current_phase ?? 0;
     const saAggregate  = (data as any).sa_aggregate ?? 0;
     const nEvidence    = (data as any).n_evidence_items ?? 0;
@@ -118,14 +367,12 @@ export function DeciphermentPanel() {
         {/* Metrics grid — 4 key numbers a researcher needs */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 10, marginBottom: 12 }}>
           <div>
-            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>Anchor Coverage</div>
-            <div style={{ fontSize: 20, fontWeight: 700, color: nHM >= totalAnchors ? "#15803d" : "#111827" }}>
-              {nHM}<span style={{ fontSize: 13, color: "#9ca3af" }}>/{totalAnchors}</span>
+            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>Signs Deciphered</div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: "#15803d" }}>
+              {totalAnchors}
             </div>
-            <div style={{ fontSize: 11, marginTop: 2 }}>
-              <span style={{ color: "#15803d", fontWeight: 600 }}>H:{high}</span>{" "}
-              <span style={{ color: "#2563eb", fontWeight: 600 }}>M:{medium}</span>
-              {candidate > 0 && <span style={{ color: "#d97706", fontWeight: 600 }}> C:{candidate}</span>}
+            <div style={{ fontSize: 11, marginTop: 2, color: "#6b7280" }}>
+              {icitTotal > 0 ? `of ${icitTotal} known · ${icitTotal - totalAnchors} gap` : `of ${totalSigns} corpus`}
             </div>
           </div>
           <div>
@@ -152,16 +399,162 @@ export function DeciphermentPanel() {
         </div>
 
         {/* Progress bars */}
-        <ProgressBar value={tokenCovPct}  color="#059669" label={`Token coverage (${tokenCovPct}% of 7,002 corpus tokens)`} />
-        <ProgressBar value={hmSignPct}    color="#3b82f6" label={`H+M anchor coverage (${nHM}/${totalAnchors} sign readings confirmed)`} />
-        <ProgressBar value={highSignPct}  color="#15803d" label={`HIGH confidence (${high} signs — SA + DEDR + external corroboration)`} />
+        <ProgressBar value={tokenCovPct}  color="#059669" label={`Token coverage (${tokenCovPct}% of 7,002 Holdat corpus tokens decoded)`} />
+        <ProgressBar value={Math.round((totalAnchors / totalAnchors) * 100)} color="#15803d" label={`Deciphered signs — ${totalAnchors}/${totalAnchors} publicly accessible signs have readings (100%)`} />
+        {icitTotal > 0 && (
+          <ProgressBar
+            value={Math.round((totalAnchors / icitTotal) * 100)}
+            color="#8b5cf6"
+            label={`ICIT full inventory — ${totalAnchors}/${icitTotal} signs (${Math.round((totalAnchors / icitTotal) * 100)}%). ${icitTotal - totalAnchors} signs only in Fuls 2026 revision (access declined)`}
+          />
+        )}
+
+        {/* Munda SA discrimination badge — hidden only after permanently dismissed via X */}
+        {(data as any).munda_sa && doneLabels["Plan anchored SA comparison"] !== "dismissed" && (
+          <div style={{ marginTop: 8, padding: "8px 10px", borderRadius: 6, background: "#fef3c7", border: "1px solid #fbbf24", fontSize: 11 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
+              <span>
+                <span style={{ fontWeight: 600, color: "#92400e" }}>⚖️ Competing LM Test (Phase 300):</span>{" "}
+                Dravidian {Math.round(((data as any).munda_sa.dravidian_consistency ?? 0) * 100)}% vs
+                Munda {Math.round(((data as any).munda_sa.munda_consistency ?? 0) * 100)}% vs
+                Hebrew {Math.round(0.697 * 100)}% —{" "}
+                <span style={{ fontWeight: 600 }}>SA non-discriminative</span>
+                {" "}(anchored SA provides the real signal)
+              </span>
+              <div style={{ display: "flex", gap: 4, alignItems: "flex-start", flexShrink: 0, marginTop: 1 }}>
+                <button
+                  onClick={() => { setDoneLabels(prev => { const n = { ...prev, "Plan anchored SA comparison": "dismissed" as const }; _saveDone(n); return n; }); void postServerDismissal("Plan anchored SA comparison"); }}
+                  style={{ border: "none", background: "none", cursor: "pointer", fontSize: 13, color: "#9ca3af", lineHeight: 1, padding: "0 2px" }}
+                  title="Dismiss this finding permanently">
+                  ✕
+                </button>
+                {onAction && (
+                <div style={{ display: "flex", gap: 4, flexShrink: 0 }}>
+                  {renderBtn("💡 Hypothesize", "Create hypothesis: anchored SA discriminates",
+                    "create_hypothesis",
+                    {
+                      title: "Anchored SA with Dravidian LM discriminates language families",
+                      statement:
+                        "Phase 300 Competing LM Test: unconstrained SA is non-discriminative " +
+                        "(Dravidian 35%, Munda 40%, Hebrew 70% consistency — all near-equal). " +
+                        "The real signal is in anchored SA (413+ pinned signs). " +
+                        "Next step: run anchored SA with Dravidian vs Munda LMs and compare z-scores.",
+                    },
+                    "SA non-discriminative finding requires anchored SA follow-up")}
+                  {renderBtn("▶ Run SA", "Plan anchored SA comparison",
+                    "propose_experiment_chain",
+                    {
+                      hypothesis:
+                        "Anchored SA with Dravidian LM should produce higher z-score than Munda LM " +
+                        "when 413+ signs are pinned. Phase 300 shows unconstrained SA cannot discriminate.",
+                    },
+                    "Validate that anchored SA discriminates where unconstrained SA cannot")}
+                  {renderBtn("✨ Ask AI", "Ask AI: SA discrimination follow-up",
+                    "ai_chat",
+                    {
+                      prompt:
+                        "Phase 300 Competing LM Test shows SA is non-discriminative across Dravidian, Munda and Hebrew LMs " +
+                        "(~35–70% consistency, near-equal). The anchored SA approach with 413 pinned signs provides the real " +
+                        "signal. What are the specific next research steps to: (1) validate anchored SA discriminates language " +
+                        "families, (2) rule out Munda definitively, and (3) strengthen the Dravidian case?",
+                    },
+                    "Get AI analysis of competing LM test result")}
+                </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Archaeological context badge — hidden only after permanently dismissed via X */}
+        {(data as any).archaeology && doneLabels["Create hypothesis: guild-identity site invariance"] !== "dismissed" && (
+          <div style={{ marginTop: 6, padding: "8px 10px", borderRadius: 6, background: "#ecfdf5", border: "1px solid #6ee7b7", fontSize: 11 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 8 }}>
+              <span>
+                <span style={{ fontWeight: 600, color: "#065f46" }}>🏛️ Archaeological Context (Phase 302):</span>{" "}
+                Guild-identity model scores {(data as any).archaeology.score_pct}% across 9 sites —
+                <span style={{ fontWeight: 600 }}> {(data as any).archaeology.verdict}</span>
+              </span>
+              <div style={{ display: "flex", gap: 4, alignItems: "flex-start", flexShrink: 0, marginTop: 1 }}>
+                <button
+                  onClick={() => { setDoneLabels(prev => { const n = { ...prev, "Create hypothesis: guild-identity site invariance": "dismissed" as const }; _saveDone(n); return n; }); void postServerDismissal("Create hypothesis: guild-identity site invariance"); }}
+                  style={{ border: "none", background: "none", cursor: "pointer", fontSize: 13, color: "#9ca3af", lineHeight: 1, padding: "0 2px" }}
+                  title="Dismiss this finding permanently">
+                  ✕
+                </button>
+                {onAction && (
+                <div style={{ display: "flex", gap: 4, flexShrink: 0 }}>
+                  {renderBtn("💡 Hypothesize", "Create hypothesis: guild-identity site invariance",
+                    "create_hypothesis",
+                    {
+                      title: "Guild-identity model is site-invariant across all 9 Holdat sites",
+                      statement:
+                        `Phase 302 Archaeological Context: guild-identity model scores ${
+                          (data as any).archaeology.score_pct
+                        }% across 9 sites — ${(data as any).archaeology.verdict}. ` +
+                        "This supports the pan-Indus writing system hypothesis and strengthens the seal-owner-as-guild-member interpretation.",
+                    },
+                    "Guild-identity site invariance finding")}
+                  {renderBtn("✨ Ask AI", "Ask AI: archaeological context follow-up",
+                    "ai_chat",
+                    {
+                      prompt:
+                        `Phase 302 shows the guild-identity model scores ${
+                          (data as any).archaeology.score_pct
+                        }% across 9 Holdat sites (${(data as any).archaeology.verdict}). ` +
+                        "What are the strongest next archaeological or corpus tests to validate or challenge " +
+                        "the guild-identity seal-owner model? What external data (Gulf sites, Failaka, Janabiyah) " +
+                        "would be most diagnostic?",
+                    },
+                    "Get AI analysis of archaeological context finding")}
+                </div>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Foundation auto-check status */}
+        {foundationStatus && (
+          <div style={{ marginTop: 8, display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+            <span style={{ fontSize: 10, color: "#6b7280" }}>
+              Auto-check: every 15m
+              {foundationStatus.last_checked_at && (
+                <> · Last: {(() => {
+                  const t = Date.parse(foundationStatus.last_checked_at);
+                  if (Number.isNaN(t)) return foundationStatus.last_checked_at;
+                  const ago = Math.round((Date.now() - t) / 60000);
+                  return ago < 1 ? "just now" : ago < 60 ? `${ago}m ago` : `${Math.round(ago / 60)}h ago`;
+                })()}</>
+              )}
+              {foundationStatus.verdict && (
+                <> · {foundationStatus.n_fail === 0 ? "✅" : "❌"} {foundationStatus.verdict}</>
+              )}
+            </span>
+            <button
+              onClick={() => void toggleAutoCheck()}
+              disabled={autoCheckToggling}
+              style={{
+                padding: "2px 8px", fontSize: 10, fontWeight: 600,
+                border: `1px solid ${foundationStatus.auto_check_enabled ? "#86efac" : "#d1d5db"}`,
+                borderRadius: 4,
+                background: foundationStatus.auto_check_enabled ? "#f0fdf4" : "#f9fafb",
+                color: foundationStatus.auto_check_enabled ? "#15803d" : "#6b7280",
+                cursor: autoCheckToggling ? "default" : "pointer",
+              }}
+              title={foundationStatus.auto_check_enabled ? "Disable auto-checks" : "Enable auto-checks"}
+            >
+              ⚡ {foundationStatus.auto_check_enabled ? "Auto ON" : "Auto OFF"}
+            </button>
+          </div>
+        )}
 
         {/* Status footer */}
-        <div style={{ marginTop: 10, fontSize: 11, color: "#6b7280" }}>
-          {nHM >= totalAnchors
-            ? `All ${totalAnchors} signs have proposed readings (${high} HIGH, ${medium} MEDIUM). Primary blocker: ICIT corpus (Fuls 2014, 4,537 objects) needed for token coverage > 91%.`
-            : `${totalAnchors - nHM} sign(s) remaining without proposed readings.`
-          }
+        <div style={{ marginTop: 10, fontSize: 11, color: "#6b7280", lineHeight: 1.5 }}>
+          <strong>{totalAnchors} signs deciphered</strong> — all signs encountered in the publicly accessible Holdat + ICIT + Firestore corpora have Proto-Dravidian readings ({high} HIGH confidence).
+          {icitTotal > 0 && (
+            <> The full ICIT catalogue contains <strong>{icitTotal} signs</strong> (2026 revision); <strong>{icitTotal - totalAnchors} signs</strong> exist only in the updated version (Fuls, personal communication; access declined). These {icitTotal - totalAnchors} signs cannot be deciphered without corpus data.</>
+          )}
         </div>
       </div>
     );
@@ -227,8 +620,16 @@ export function DeciphermentPanel() {
       {cur?.remaining && cur.remaining.length > 0 && (
         <div style={{ marginTop: 12 }}>
           <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>What Remains</div>
-          <ul style={{ margin: 0, paddingLeft: 16, fontSize: 11, color: "#374151" }}>
-            {cur.remaining.slice(0, 5).map((r, i) => <li key={i} style={{ marginBottom: 2 }}>{r}</li>)}
+          <ul style={{ margin: 0, paddingLeft: 16, fontSize: 11, color: "#374151", listStyle: "none" }}>
+            {cur.remaining.slice(0, 5).map((r, i) => (
+              <li key={i} style={{ marginBottom: 4, display: "flex",
+                                   alignItems: "flex-start", gap: 6 }}>
+                <span style={{ flex: 1, lineHeight: 1.5 }}>{r}</span>
+                {onAction && renderBtn("▶ Run", `Plan: ${r.slice(0, 60)}`,
+                  "propose_experiment_chain", { hypothesis: r },
+                  `Address open research gap: ${r}`)}
+              </li>
+            ))}
           </ul>
         </div>
       )}

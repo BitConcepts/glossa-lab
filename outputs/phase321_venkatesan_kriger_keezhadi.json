@@ -1,0 +1,231 @@
+{
+  "phase321a_venkatesan": {
+    "signs_compared": 56,
+    "exact_match": 0,
+    "partial_match": 0,
+    "disagree": 56,
+    "no_our_reading": 0,
+    "agreement_rate": 0.0,
+    "exact_matches": [],
+    "partial_matches": [],
+    "disagreements": [
+      {
+        "sign": "M402",
+        "ours": "vēḷ",
+        "venkatesan": "nāṭu",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M342",
+        "ours": "ay/ā",
+        "venkatesan": "ūr",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M176",
+        "ours": "an/aṇ",
+        "venkatesan": "añcal",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M254",
+        "ours": "tēṉ",
+        "venkatesan": "paṭṭi",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M245",
+        "ours": "kol",
+        "venkatesan": "taṭṭi",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M137",
+        "ours": "kuṟ",
+        "venkatesan": "cēri",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M190",
+        "ours": "paṉ",
+        "venkatesan": "pāḷaiyam",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M086",
+        "ours": "oru",
+        "venkatesan": "mutal",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M087",
+        "ours": "veL",
+        "venkatesan": "iru",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M089",
+        "ours": "tu/tū",
+        "venkatesan": "mū",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M095",
+        "ours": "vē",
+        "venkatesan": "nal",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M096",
+        "ours": "ōṭu",
+        "venkatesan": "ai",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M108",
+        "ours": "kaL",
+        "venkatesan": "yāṟu",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M110",
+        "ours": "kol",
+        "venkatesan": "ēṟu",
+        "match": "DISAGREE"
+      },
+      {
+        "sign": "M001",
+        "ours": "tōḷ",
+        "venkatesan": "an",
+        "match": "DISAGREE"
+      }
+    ],
+    "verdict": "Venkatesan cross-check: 0 exact + 0 partial = 0/56 (0%) agreement. 56 disagreements. WEAK convergence — readings diverge significantly."
+  },
+  "phase321b_kriger": {
+    "total_inscriptions": 1670,
+    "unique_inscriptions": 1631,
+    "uniqueness_rate": 0.9766,
+    "kriger_claim": 0.983,
+    "match": true,
+    "most_repeated": [
+      {
+        "inscription": "M059 M089",
+        "count": 3
+      },
+      {
+        "inscription": "M059 M293 M391",
+        "count": 2
+      },
+      {
+        "inscription": "M050 M211",
+        "count": 2
+      },
+      {
+        "inscription": "M061 M065",
+        "count": 2
+      },
+      {
+        "inscription": "M012 M391",
+        "count": 2
+      },
+      {
+        "inscription": "M367 M162",
+        "count": 2
+      },
+      {
+        "inscription": "M056 M305",
+        "count": 2
+      },
+      {
+        "inscription": "M072 M305",
+        "count": 2
+      },
+      {
+        "inscription": "M065 M342",
+        "count": 2
+      },
+      {
+        "inscription": "M078 M099",
+        "count": 2
+      }
+    ],
+    "verdict": "Uniqueness: 1631/1670 = 97.7% (Kriger claims 98.3% on unicorn seals). CONSISTENT with Kriger's registration-code hypothesis."
+  },
+  "phase321c_outreach": {
+    "tier1_immediate": [
+      {
+        "name": "S.K. Venkatesan",
+        "affiliation": "CQRL Bits, Chennai",
+        "work": "decipher-ivc: Proto-Dravidian logo-syllabic decipherment using DEDR + M77",
+        "why": "Most directly comparable independent work. Uses same data (M77, DEDR). Head-to-head reading comparison possible.",
+        "contact": "GitHub: Sukii/decipher-ivc (send feedback via repo)",
+        "action": "Share our reading table for comparison. Propose joint validation."
+      },
+      {
+        "name": "Ashish Nair",
+        "affiliation": "Independent (CMU alumni)",
+        "work": "Synthetic-Baseline Scorecard (arXiv:2604.17828, Apr 2026)",
+        "why": "His multi-metric framework is the most rigorous structural test. We should run his exact code on our decoded corpus.",
+        "contact": "ashishn@alumni.cmu.edu",
+        "action": "Share our decoded corpus for scorecard testing. Propose collaboration."
+      },
+      {
+        "name": "Kevin Shaw",
+        "affiliation": "Independent, Wales",
+        "work": "LISSE framework + Harappan Phonetic Constraint Field (2026)",
+        "why": "Different theoretical stance (non-phonetic). Structural comparison valuable.",
+        "contact": "Academia.edu: independent.academia.edu/KevinShaw75; Medium: @kev.shaw.2012",
+        "action": "Share preprint v3. Discuss structural vs phonetic approaches."
+      }
+    ],
+    "tier2_validation": [
+      {
+        "name": "Bahata Ansumali Mukhopadhyay",
+        "affiliation": "Independent (Infor/Koch Industries, Bengaluru)",
+        "work": "Semasiographic decipherment: fish=gemstone, taxation/licensing model (Nature HSS Comms 2023, SSRN 2021-2025)",
+        "why": "Most rigorous semasiographic researcher. Our fish-sign 0/140 finding confirms her compound-only observation. Published in peer-reviewed venue.",
+        "contact": "alapchari@gmail.com (from Nature HSS paper)",
+        "action": "Share fish-sign finding + guild-identity formula results. Discuss phonetic vs semasiographic."
+      },
+      {
+        "name": "Boris Kriger",
+        "affiliation": "Institute of Integrative and Interdisciplinary Research, Toronto",
+        "work": "Seals as 'Bronze Age credit cards' — registration code model (2026, 3-paper programme)",
+        "why": "His registration-code model partly overlaps with our guild-identity reading. First positional entropy analysis.",
+        "contact": "Via IIIR or Zenodo DOI: 10.5281/zenodo.19103880",
+        "action": "Share uniqueness test results. Discuss overlap between registration-code and guild-identity."
+      },
+      {
+        "name": "Aruna Sharma & Shubhajit Roy Chowdhury",
+        "affiliation": "AI-EPIGRAPHY project",
+        "work": "Interactive computational decipherment tool (ACM HCI 2025)",
+        "why": "Computational tool with n-gram modeling and naive Bayes classifier. Could test our readings.",
+        "contact": "GitHub: atulsharma0071/indiahci2025",
+        "action": "Propose testing our reading model in their interactive framework."
+      }
+    ],
+    "tier3_specialist": [
+      {
+        "name": "Dravidianist specialists (existing outreach)",
+        "contacts": "Renganathan, Murugaiyan, Kobayashi, Kolichala, Vasu",
+        "status": "Packets sent; Vasu gave preliminary positive response",
+        "action": "Follow up with v3 preprint including corrected 400 HIGH model + 50% Parpola agreement."
+      },
+      {
+        "name": "Juan Gabriel Molina",
+        "work": "Five-domain convergence (2026) + Meluhha Nexus",
+        "why": "Provides macro-level archaeological/linguistic/genetic convergence evidence for Proto-Dravidian hypothesis.",
+        "contact": "Via Academia.edu",
+        "action": "Share preprint. His convergence framework supports our computational findings."
+      },
+      {
+        "name": "Keeladi/Tamil Nadu State Archaeology Dept",
+        "work": "60% graffiti mark parallels to Indus signs; 580 BCE dating",
+        "why": "Archaeological continuity evidence. Our readings could be tested against Keezhadi graffiti.",
+        "contact": "Via TN Dept of Archaeology (tnarch.gov.in)",
+        "action": "Long-term: propose reading validation against Keezhadi graffiti marks."
+      }
+    ]
+  }
+}

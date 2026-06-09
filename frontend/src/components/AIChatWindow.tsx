@@ -199,7 +199,37 @@ interface MsgUI extends ChatMessage {
 }
 
 interface ModelPref { provider: string; model: string; }
-const MODEL_PREF_KEY = "glossa_model_pref";
+const MODEL_PREF_KEY   = "glossa_model_pref";
+const CHAT_HISTORY_KEY = "glossa_chat_history";
+// Keep at most 200 messages and 400 KB of JSON in storage.
+const HISTORY_MAX_MSGS = 200;
+const HISTORY_MAX_BYTES = 400_000;
+
+function _loadHistory(): MsgUI[] {
+  try {
+    const raw = localStorage.getItem(CHAT_HISTORY_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw) as MsgUI[];
+    // Bump the module-level counter past any stored ids so new messages
+    // don't collide with persisted ones.
+    if (parsed.length > 0) _msgId = Math.max(_msgId, ...parsed.map(m => m.id));
+    return parsed;
+  } catch { return []; }
+}
+
+function _saveHistory(msgs: MsgUI[]): void {
+  try {
+    // Never store transient loading messages.
+    const clean = msgs.filter(m => !m.loading).slice(-HISTORY_MAX_MSGS);
+    // If still over size budget, trim from the front.
+    let json = JSON.stringify(clean);
+    while (json.length > HISTORY_MAX_BYTES && clean.length > 0) {
+      clean.shift();
+      json = JSON.stringify(clean);
+    }
+    localStorage.setItem(CHAT_HISTORY_KEY, json);
+  } catch { /* storage full — silently skip */ }
+}
 
 // Action types that execute immediately without an approval card
 const AUTO_EXEC = new Set(["open_view", "create_hypothesis", "create_notebook"]);
@@ -398,7 +428,8 @@ export function AIChatWindow() {
   const { activeProject } = useProject();
   const { toast } = useToast();
 
-  const [messages, setMessages] = useState<MsgUI[]>([]);
+  // Load history from localStorage so conversations survive page reloads.
+  const [messages, setMessages] = useState<MsgUI[]>(_loadHistory);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [compressing, setCompressing] = useState(false);
@@ -492,6 +523,11 @@ export function AIChatWindow() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [request]);
 
+  // Persist history whenever messages change (skip loading-only updates).
+  useEffect(() => {
+    if (messages.some(m => !m.loading)) _saveHistory(messages);
+  }, [messages]);
+
   useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: "smooth" }); }, [messages]);
 
   // Drag removed — window is fixed at bottom-right above panel
@@ -562,13 +598,21 @@ export function AIChatWindow() {
       // Ensure params is always an object, never undefined/null
       const params = action.params && typeof action.params === "object" ? action.params : {};
       const result = await executeAiAction({ type: action.type, params });
+      // Treat ok===false (backend returned 200 but reported failure) as a failure
+      if (!result.ok) {
+        updateActionState(msg.id, idx, "failed");
+        setMessages(prev => [...prev, { id: ++_msgId, role: "assistant",
+          content: `\u2717 **${label}** \u2014 ${result.summary ?? "Action failed"}`,
+          timestamp: Date.now(), error: true }]);
+        return;
+      }
       updateActionState(msg.id, idx, "done");
       if (action.type === "open_view" && result.navigate)
         window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: result.navigate } }));
-      setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: `✓ **${label}** — ${result.summary ?? "done"}`, timestamp: Date.now() }]);
+      setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: `\u2713 **${label}** \u2014 ${result.summary ?? "done"}`, timestamp: Date.now() }]);
     } catch (e) {
       updateActionState(msg.id, idx, "failed");
-      setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: `✗ **${label}** failed: ${e instanceof Error ? e.message : String(e)}`, timestamp: Date.now(), error: true }]);
+      setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: `\u2717 **${label}** failed: ${e instanceof Error ? e.message : String(e)}`, timestamp: Date.now(), error: true }]);
     }
   }, [updateActionState]);
 
@@ -592,7 +636,7 @@ export function AIChatWindow() {
     if (text.startsWith("/")) {
       const parts = text.toLowerCase().split(/\s+/);
       if (parts[0] === "/compress" || parts[0] === "/summarize" || parts[0] === "/summarise") { await compress(); return; }
-      if (parts[0] === "/clear") { setMessages([]); toast("Chat cleared", "info"); return; }
+      if (parts[0] === "/clear") { setMessages([]); localStorage.removeItem(CHAT_HISTORY_KEY); toast("Chat cleared", "info"); return; }
       if (parts[0] === "/export") { parts[1] === "pdf" ? exportPdf() : exportMd(); return; }
       if (parts[0] === "/help") {
         setMessages(p => [...p, { id: ++_msgId, role: "assistant", timestamp: Date.now(), content: "**Slash commands**\n- `/compress` — summarise & compress context\n- `/clear` — clear all messages\n- `/export md` — download as Markdown\n- `/export pdf` — open print/PDF dialog\n- `/help` — this message" }]);
@@ -722,7 +766,7 @@ export function AIChatWindow() {
         </div>
 
         <button onClick={() => setDocked(true)} title="Dock to panel" style={hdrBtn}>⊟</button>
-        <button onClick={() => setMessages([])} title="Clear chat" style={hdrBtn}>🗑</button>
+        <button onClick={() => { setMessages([]); localStorage.removeItem(CHAT_HISTORY_KEY); }} title="Clear chat history" style={hdrBtn}>🗑</button>
         <button onClick={closeChat} style={{ ...hdrBtn, fontSize: 16 }}>×</button>
       </div>
 
@@ -797,7 +841,7 @@ export function AIChatWindow() {
               {msg.role === "user" ? "U" : "G"}
             </div>
             <div style={{ maxWidth: "80%", display: "flex", flexDirection: "column", gap: 2, minWidth: 0 }}>
-              <div style={{ padding: "8px 11px", borderRadius: 8, fontSize: 12, lineHeight: 1.65, background: msg.role === "user" ? "#1e3a5f" : msg.error ? "#fef2f2" : "#f8f9fa", color: msg.role === "user" ? "#fff" : msg.error ? "#dc2626" : "#111827", border: msg.role === "user" ? "none" : `1px solid ${msg.error ? "#fca5a5" : "#e5e7eb"}` }}>
+            <div style={{ padding: "8px 11px", borderRadius: 8, fontSize: 12, lineHeight: 1.65, userSelect: "text", background: msg.role === "user" ? "#1e3a5f" : msg.error ? "#fef2f2" : "#f8f9fa", color: msg.role === "user" ? "#fff" : msg.error ? "#dc2626" : "#111827", border: msg.role === "user" ? "none" : `1px solid ${msg.error ? "#fca5a5" : "#e5e7eb"}` }}>
                 {msg.loading
                   ? <span style={{ color: "#9ca3af" }}>✨ Thinking…</span>
                   : msg.role === "user"
@@ -827,9 +871,9 @@ export function AIChatWindow() {
               {/* Per-message actions row */}
               <div style={{ display: "flex", gap: 5, alignItems: "center", paddingLeft: msg.role === "user" ? 0 : 4, justifyContent: msg.role === "user" ? "flex-end" : "flex-start" }}>
                 <span style={{ fontSize: 9, color: "#9ca3af" }}>{fmtTime(msg.timestamp)}</span>
-                {!msg.loading && (
+              {!msg.loading && (
                   <>
-                    <CopyButton text={msg.content} />
+                    <CopyButton text={msg.content} label="📋 Copy" style={{ fontSize: 10 }} />
                     <button onClick={() => setMessages(prev => prev.filter((_, i) => i !== idx))} title="Delete"
                       style={{ border: "none", background: "none", cursor: "pointer", fontSize: 10, color: "#d1d5db", padding: 0 }}>×</button>
                   </>
@@ -842,7 +886,7 @@ export function AIChatWindow() {
         {/* Bottom toolbar */}
         {messages.length > 0 && !busy && (
           <div style={{ display: "flex", gap: 5, justifyContent: "center", marginTop: 4, flexWrap: "wrap" }}>
-            <button onClick={() => { const t = messages.filter(m => !m.loading).map(m => `[${m.role.toUpperCase()} ${fmtTime(m.timestamp)}]\n${m.content}`).join("\n\n"); navigator.clipboard.writeText(t); }} style={botBtn}>⏘ Copy all</button>
+          <button onClick={() => { const t = messages.filter(m => !m.loading).map(m => `[${m.role.toUpperCase()} ${fmtTime(m.timestamp)}]\n${m.content}`).join("\n\n"); navigator.clipboard.writeText(t).then(() => undefined); }} style={{ ...botBtn, fontWeight: 600 }}>📋 Copy All</button>
             <button onClick={exportMd}  style={botBtn}>📥 Export MD</button>
             <button onClick={exportPdf} style={botBtn}>📥 Export PDF</button>
           </div>
@@ -949,7 +993,8 @@ function _actionViewHint(action: AIAction): string | null {
 export function ChatInline() {
   const { setDocked, request } = useAIChat();
   const { activeProject } = useProject();
-  const [messages, setMessages] = useState<MsgUI[]>([]);
+  // Share history with AIChatWindow via the same localStorage key.
+  const [messages, setMessages] = useState<MsgUI[]>(_loadHistory);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
   const [contextType, setContextType] = useState<"" | "corpus" | "experiment" | "study">("");
@@ -1005,6 +1050,10 @@ export function ChatInline() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [request]);
+  useEffect(() => {
+    if (messages.some(m => !m.loading)) _saveHistory(messages);
+  }, [messages]);
+
   useEffect(() => { bottomRef.current?.scrollIntoView({ behavior: "smooth" }); }, [messages]);
 
   const handleInlineAction = useCallback(async (msg: MsgUI, idx: number, action: AIAction, approve: boolean) => {
@@ -1014,6 +1063,14 @@ export function ChatInline() {
     const label = resolveLabel(action);
     try {
       const r = await executeAiAction({ type: action.type, params: action.params ?? {} });
+      // Treat ok===false (backend returned 200 but reported failure) as a failure
+      if (!r.ok) {
+        upd("failed");
+        setMessages(p => [...p, { id: ++_msgId, role: "assistant",
+          content: `\u2717 **${label}** \u2014 ${r.summary ?? "Action failed"}`,
+          timestamp: Date.now(), error: true }]);
+        return;
+      }
       upd("done");
       if (action.type === "open_view" && r.navigate) {
         window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: r.navigate } }));
@@ -1021,14 +1078,14 @@ export function ChatInline() {
       // For long-running actions: offer navigation link rather than just a text message
       const viewHint = r.navigate ?? _actionViewHint(action);
       const doneContent = viewHint
-        ? `[NAVIGATE:${viewHint}]✓ **${label}** — ${r.summary ?? "done"}`
-        : `✓ **${label}** — ${r.summary ?? "done"}`;
+        ? `[NAVIGATE:${viewHint}]\u2713 **${label}** \u2014 ${r.summary ?? "done"}`
+        : `\u2713 **${label}** \u2014 ${r.summary ?? "done"}`;
       setMessages(p => [...p, { id: ++_msgId, role: "assistant", content: doneContent, timestamp: Date.now() }]);
     } catch (e) {
       upd("failed");
       const errText = e instanceof Error ? e.message : String(e);
       setMessages(p => [...p, { id: ++_msgId, role: "assistant",
-        content: `✗ **${label}** failed: ${errText}`,
+        content: `\u2717 **${label}** failed: ${errText}`,
         timestamp: Date.now(), error: true }]);
     }
   }, []);
@@ -1135,7 +1192,7 @@ export function ChatInline() {
           {messages.length > 0 && (
             <button onClick={copyAll} title="Copy all" style={{ border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 9, padding: "0 2px" }}>&#x23E9;</button>
           )}
-          <button onClick={() => setMessages([])} title="Clear chat" style={{ border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 9 }}>&#x1F5D1;</button>
+          <button onClick={() => { setMessages([]); localStorage.removeItem(CHAT_HISTORY_KEY); }} title="Clear chat history" style={{ border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 9 }}>&#x1F5D1;</button>
           <button onClick={() => setDocked(false)} title="Undock" style={{ border: "none", background: "none", color: "#64748b", cursor: "pointer", fontSize: 9 }}>&#x229E;</button>
         </div>
       </div>
@@ -1151,7 +1208,7 @@ export function ChatInline() {
           return (
             <div key={msg.id}>
               <div style={{ display: "flex", gap: 4, alignItems: "flex-start", flexDirection: msg.role === "user" ? "row-reverse" : "row" }}>
-                <div style={{ padding: "4px 8px", borderRadius: 5, fontSize: 11, lineHeight: 1.5, maxWidth: "85%", background: msg.role === "user" ? "#1e3a5f" : msg.error ? "#450a0a" : "#1e293b", color: msg.role === "user" ? "#e2e8f0" : msg.error ? "#fca5a5" : "#cbd5e1" }}>
+                <div style={{ padding: "4px 8px", borderRadius: 5, fontSize: 11, lineHeight: 1.5, maxWidth: "85%", userSelect: "text", background: msg.role === "user" ? "#1e3a5f" : msg.error ? "#450a0a" : "#1e293b", color: msg.role === "user" ? "#e2e8f0" : msg.error ? "#fca5a5" : "#cbd5e1" }}>
                   {msg.loading
                     ? <span style={{ color: "#94a3b8" }}>&#x2728;...</span>
                     : msg.role === "user"
@@ -1160,11 +1217,16 @@ export function ChatInline() {
                   }
                 </div>
               </div>
-              {/* Timestamp */}
+              {/* Timestamp + copy */}
               {!msg.loading && (
                 <div style={{ fontSize: 9, color: "#64748b", paddingLeft: msg.role === "user" ? 0 : 4,
-                              textAlign: msg.role === "user" ? "right" : "left", marginTop: 1 }}>
-                  {fmtTime(msg.timestamp)}
+                              marginTop: 1, display: "flex", alignItems: "center", gap: 4,
+                              flexDirection: msg.role === "user" ? "row-reverse" : "row" }}>
+                  <span>{fmtTime(msg.timestamp)}</span>
+                  <button onClick={() => navigator.clipboard.writeText(displayContent)}
+                    title="Copy message"
+                    style={{ border: "none", background: "none", cursor: "pointer",
+                      fontSize: 9, color: "#475569", padding: "0 2px", lineHeight: 1 }}>📋</button>
                   {navView && (
                     <button
                       onClick={() => navigateTo(navView)}

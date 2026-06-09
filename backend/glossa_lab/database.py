@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 # Increment this when adding a new _SCHEMA_Vn block below.
 # _apply_schema will raise if the DB is somehow ahead of the code.
-_SCHEMA_VERSION = 20
+_SCHEMA_VERSION = 23
 
 _SCHEMA_V1 = """
 CREATE TABLE IF NOT EXISTS _schema_version (
@@ -416,6 +416,35 @@ CREATE TABLE IF NOT EXISTS model_scores (
 CREATE INDEX IF NOT EXISTS idx_model_scores_name ON model_scores(model_name);
 """
 
+_SCHEMA_V21 = """
+CREATE TABLE IF NOT EXISTS research_loop_state (
+    id          TEXT PRIMARY KEY,
+    all_seen    TEXT NOT NULL DEFAULT '[]',
+    history     TEXT NOT NULL DEFAULT '[]',
+    created_at  TEXT NOT NULL,
+    updated_at  TEXT NOT NULL
+);
+"""
+
+_SCHEMA_V22 = """
+CREATE TABLE IF NOT EXISTS phase_actions (
+    id            TEXT PRIMARY KEY,
+    phase         INTEGER NOT NULL,
+    action_label  TEXT NOT NULL,
+    action_type   TEXT NOT NULL DEFAULT '',
+    params_json   TEXT NOT NULL DEFAULT '{}',
+    status        TEXT NOT NULL DEFAULT 'pending',
+    job_id        TEXT,
+    error_message TEXT NOT NULL DEFAULT '',
+    started_at    TEXT,
+    completed_at  TEXT,
+    created_at    TEXT NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_phase_actions_phase ON phase_actions(phase);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_phase_actions_phase_label ON phase_actions(phase, action_label);
+"""
+
 _SCHEMA_V12 = """
 CREATE TABLE IF NOT EXISTS canonical_signs (
     internal_id        TEXT PRIMARY KEY,
@@ -728,6 +757,26 @@ class Database:
             await self._conn.execute("UPDATE _schema_version SET version = ?", (20,))
             current_version = 20
 
+        if current_version < 21:
+            await self._conn.executescript(_SCHEMA_V21)
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (21,))
+            current_version = 21
+
+        if current_version < 22:
+            await self._conn.executescript(_SCHEMA_V22)
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (22,))
+            current_version = 22
+
+        if current_version < 23:
+            try:
+                await self._conn.execute(
+                    "ALTER TABLE phase_actions ADD COLUMN depends_on TEXT NOT NULL DEFAULT '[]'"
+                )
+            except Exception:  # noqa: BLE001
+                pass  # column may already exist
+            await self._conn.execute("UPDATE _schema_version SET version = ?", (23,))
+            current_version = 23
+
         if current_version > _SCHEMA_VERSION:
             logger.warning(
                 "DB schema version %s is ahead of code version %s",
@@ -774,6 +823,7 @@ class Database:
         return self._row_to_dict(row) if row else None
 
     async def cancel_job(self, job_id: str) -> dict[str, Any] | None:
+        """Soft-cancel: marks status='cancelled'. Used internally for stale/orphaned jobs."""
         assert self._conn
         job = await self.get_job(job_id)
         if job is None:
@@ -784,6 +834,24 @@ class Database:
         )
         await self._conn.commit()
         return await self.get_job(job_id)
+
+    async def delete_job(self, job_id: str) -> dict[str, Any] | None:
+        """Hard-delete: removes the job record and its results entirely.
+
+        This is the correct action for user-initiated Abort so the jobs list
+        stays clean and there are no stale records to confuse subsequent runs.
+        """
+        assert self._conn
+        job = await self.get_job(job_id)
+        if job is None:
+            return None
+        # Snapshot before deletion so we can return it
+        snapshot = dict(job)
+        snapshot["status"] = "cancelled"  # logical status for the caller
+        await self._conn.execute("DELETE FROM job_results WHERE job_id = ?", (job_id,))
+        await self._conn.execute("DELETE FROM jobs WHERE id = ?", (job_id,))
+        await self._conn.commit()
+        return snapshot
 
     async def clear_jobs(self) -> int:
         """Delete all jobs and job results, returning the number of jobs removed."""
@@ -802,6 +870,28 @@ class Database:
         statuses = ("completed", "cancelled", "failed")
         placeholders = ",".join("?" * len(statuses))
         # Remove results for finished jobs first
+        await self._conn.execute(
+            f"DELETE FROM job_results WHERE job_id IN "
+            f"(SELECT id FROM jobs WHERE status IN ({placeholders}))",
+            statuses,
+        )
+        cursor = await self._conn.execute(
+            f"DELETE FROM jobs WHERE status IN ({placeholders}) RETURNING id",
+            statuses,
+        )
+        rows = await cursor.fetchall()
+        await self._conn.commit()
+        return len(rows)
+
+    async def clear_non_running_jobs(self) -> int:
+        """Hard-delete every job that is NOT actively running.
+
+        Removes completed, failed, cancelled, paused, and pending jobs while
+        leaving jobs with status='running' completely untouched.
+        """
+        assert self._conn
+        statuses = ("completed", "cancelled", "failed", "paused", "pending")
+        placeholders = ",".join("?" * len(statuses))
         await self._conn.execute(
             f"DELETE FROM job_results WHERE job_id IN "
             f"(SELECT id FROM jobs WHERE status IN ({placeholders}))",
@@ -992,6 +1082,20 @@ class Database:
         job = self._row_to_dict(row)
         await self.update_job_status(job["id"], "running")
         return job
+
+    async def peek_next_pending_job(self) -> dict[str, Any] | None:
+        """Return the oldest pending job WITHOUT claiming it (no status change).
+
+        Used by the resource-aware scheduler to inspect what would be run next
+        so it can check whether sufficient CPU/RAM/VRAM are available before
+        committing to the claim.
+        """
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM jobs WHERE status = 'pending' ORDER BY created_at ASC LIMIT 1"
+        )
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
 
     # ── Studies ────────────────────────────────────────────────
 
@@ -2676,6 +2780,114 @@ class Database:
             "SELECT * FROM model_scores WHERE model_name=? ORDER BY source ASC LIMIT 1",
             (model_name,),
         )
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else None
+
+    # ── Research Loop State (V21) ─────────────────────────────────
+
+    async def save_research_loop_state(
+        self, *, all_seen: list[str], history: list[dict[str, Any]],
+    ) -> None:
+        """Upsert the research loop state (singleton row, id='main')."""
+        assert self._conn
+        now = __import__("datetime").datetime.now(
+            __import__("datetime").timezone.utc
+        ).isoformat()
+        cursor = await self._conn.execute(
+            "SELECT id FROM research_loop_state WHERE id='main'"
+        )
+        row = await cursor.fetchone()
+        if row:
+            await self._conn.execute(
+                """UPDATE research_loop_state
+                   SET all_seen=?, history=?, updated_at=?
+                   WHERE id='main'""",
+                (json.dumps(all_seen), json.dumps(history, default=str), now),
+            )
+        else:
+            await self._conn.execute(
+                """INSERT INTO research_loop_state
+                   (id, all_seen, history, created_at, updated_at)
+                   VALUES ('main', ?, ?, ?, ?)""",
+                (json.dumps(all_seen), json.dumps(history, default=str), now, now),
+            )
+        await self._conn.commit()
+
+    async def load_research_loop_state(self) -> dict[str, Any] | None:
+        """Load the persisted research loop state, or None if empty."""
+        assert self._conn
+        cursor = await self._conn.execute(
+            "SELECT * FROM research_loop_state WHERE id='main'"
+        )
+        row = await cursor.fetchone()
+        if not row:
+            return None
+        d = self._row_to_dict(row)
+        # Ensure all_seen and history are proper types
+        if isinstance(d.get("all_seen"), str):
+            d["all_seen"] = json.loads(d["all_seen"])
+        if isinstance(d.get("history"), str):
+            d["history"] = json.loads(d["history"])
+        return d
+
+    # ── Phase actions ─────────────────────────────────────────
+
+    async def list_phase_actions(self, phase: int | None = None) -> list[dict[str, Any]]:
+        assert self._conn
+        if phase is not None:
+            cursor = await self._conn.execute(
+                "SELECT * FROM phase_actions WHERE phase = ? ORDER BY created_at", (phase,))
+        else:
+            cursor = await self._conn.execute(
+                "SELECT * FROM phase_actions ORDER BY phase, created_at")
+        return [self._row_to_dict(r) for r in await cursor.fetchall()]
+
+    async def upsert_phase_action(
+        self, *, phase: int, label: str, action_type: str = "",
+        params: dict | None = None, status: str = "pending",
+        job_id: str | None = None, error_message: str = "",
+    ) -> dict[str, Any]:
+        """Insert or update a phase action by (phase, label) unique key."""
+        assert self._conn
+        from datetime import datetime, timezone  # noqa: PLC0415
+        now = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+        aid = uuid.uuid4().hex[:12]
+        params_json = json.dumps(params or {})
+        started = now if status in ("running", "completed", "failed") else None
+        completed = now if status in ("completed", "skipped") else None
+        await self._conn.execute(
+            """INSERT INTO phase_actions
+               (id, phase, action_label, action_type, params_json, status,
+                job_id, error_message, started_at, completed_at, created_at)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+               ON CONFLICT(phase, action_label) DO UPDATE SET
+                 status = excluded.status,
+                 job_id = COALESCE(excluded.job_id, phase_actions.job_id),
+                 error_message = excluded.error_message,
+                 started_at = COALESCE(phase_actions.started_at, excluded.started_at),
+                 completed_at = excluded.completed_at""",
+            (aid, phase, label, action_type, params_json, status,
+             job_id, error_message, started, completed, now),
+        )
+        await self._conn.commit()
+        cursor = await self._conn.execute(
+            "SELECT * FROM phase_actions WHERE phase = ? AND action_label = ?",
+            (phase, label))
+        row = await cursor.fetchone()
+        return self._row_to_dict(row) if row else {}
+
+    async def reset_phase_action(self, phase: int, label: str) -> dict[str, Any] | None:
+        """Reset a completed/failed action back to pending (redo)."""
+        assert self._conn
+        await self._conn.execute(
+            """UPDATE phase_actions SET status = 'pending', error_message = '',
+               started_at = NULL, completed_at = NULL, job_id = NULL
+               WHERE phase = ? AND action_label = ?""",
+            (phase, label))
+        await self._conn.commit()
+        cursor = await self._conn.execute(
+            "SELECT * FROM phase_actions WHERE phase = ? AND action_label = ?",
+            (phase, label))
         row = await cursor.fetchone()
         return self._row_to_dict(row) if row else None
 

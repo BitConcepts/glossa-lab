@@ -127,14 +127,17 @@ def _run_checks() -> list[dict[str, Any]]:
         ))
         # M267 UNCERTAIN check
         m267 = anchors.get("M267", {})
+        m267_conf = m267.get("confidence", "?")
+        m267_ok = m267_conf in ("UNCERTAIN", "MEDIUM")
         checks.append(_check(
             "M267 = MEDIUM (not fish sign — freq=400, all motifs)",
-            "pass" if m267.get("confidence") in ("UNCERTAIN", "MEDIUM") else "fail",
-            f"conf={m267.get('confidence','?')} — M267 has freq=400, appears on all motifs. "
-            "Reading: genitive 'iN/in'. MEDIUM accepted (UNCERTAIN is also valid).",
-            action_type="no_op",
-            action_label="",
-            action_params={"script": "backend/scripts/factcheck_fix_anchors.py"},
+            "pass" if m267_ok else "fail",
+            f"conf={m267_conf} — M267 has freq=400, appears on all motifs. "
+            "Reading: genitive ‘iN/in’. MEDIUM accepted (UNCERTAIN is also valid). "
+            + ("Auto-fix available: downgrade HIGH → MEDIUM." if not m267_ok else ""),
+            action_type="auto_fix" if not m267_ok else "no_op",
+            action_label="Auto-fix: downgrade M267 HIGH → MEDIUM" if not m267_ok else "",
+            action_params={"fix_id": "m267_downgrade_to_medium"},
             citations=["A.13"],
         ))
         # M047 fish check
@@ -478,17 +481,21 @@ def _summarize(checks: list[dict]) -> dict[str, Any]:
     n_warn = sum(1 for c in checks if c["status"] == "warn")
     overall = "PASS" if n_fail == 0 else "FAIL"
     send_ok = n_fail == 0 and n_pass >= len(checks) * 0.7
+    n_fixable = sum(1 for c in checks if c.get("action_type") == "auto_fix")
     return {
         "n_pass":          n_pass,
         "n_fail":          n_fail,
         "n_warn":          n_warn,
+        "n_fixable":       n_fixable,
         "overall_status":  overall,
-        "send_to_fuls_ok": send_ok,
+        "send_to_fuls_ok": send_ok,   # kept for backward compat
+        "integrity_ok":    send_ok,
         "send_to_fuls_msg": (
-            "Foundation check passed. Fuls email is safe to send. "
-            "Use fuls_contact_email.md + fuls_research_brief_may2026.md."
+            "All checks passed. Data integrity verified."
             if send_ok else
-            f"Foundation check has {n_fail} FAIL(s). Resolve before sending to Dr. Fuls."
+            f"Foundation check has {n_fail} FAIL(s). "
+            + (f"{n_fixable} can be auto-fixed. " if n_fixable else "")
+            + "Resolve remaining issues before publishing or sharing results."
         ),
     }
 
@@ -505,3 +512,96 @@ async def run_foundation_check() -> dict[str, Any]:
         "summary":   summary,
         "citations": ["CITATIONS.md"],
     }
+
+
+# ── Auto-fix endpoint ────────────────────────────────────────────────────────
+
+_FIXES: dict[str, dict] = {
+    "m267_downgrade_to_medium": {
+        "description": "Downgrade M267 confidence from HIGH to MEDIUM."
+            " M267 (freq=400, all-motif genitive particle) cannot be HIGH — it appears on every seal type.",
+        "field": "confidence",
+        "sign": "M267",
+        "value": "MEDIUM",
+    },
+}
+
+
+@router.post("/apply-fix")
+async def apply_fix(body: dict[str, Any]) -> dict[str, Any]:
+    """Apply a specific auto-fix to the anchor file.
+
+    Body: {fix_id: str}
+    Returns: {ok, message, fix_id}
+    """
+    fix_id = body.get("fix_id", "")
+    fix = _FIXES.get(fix_id)
+    if not fix:
+        return {"ok": False, "error": f"Unknown fix_id: {fix_id}",
+                "available": list(_FIXES.keys())}
+
+    import datetime as _dt  # noqa: PLC0415
+
+    if fix_id == "m267_downgrade_to_medium":
+        try:
+            anchors_path = BKRPT / "INDUS_FINAL_ANCHORS.json"
+            if not anchors_path.exists():
+                return {"ok": False, "error": "INDUS_FINAL_ANCHORS.json not found"}
+            fa = json.loads(anchors_path.read_text(encoding="utf-8"))
+            m267 = fa["anchors"].get("M267", {})
+            old_conf = m267.get("confidence", "?")
+            if old_conf == "MEDIUM":
+                return {"ok": True, "message": "M267 is already MEDIUM — nothing to do.",
+                        "fix_id": fix_id}
+            fa["anchors"]["M267"]["confidence"] = "MEDIUM"
+            fa["anchors"]["M267"]["_autofix_note"] = (
+                f"Auto-fixed {_dt.datetime.now(_dt.timezone.utc).isoformat()[:10]}: "
+                f"confidence {old_conf} → MEDIUM (foundation check auto-fix). "
+                "M267 freq=400, all-motif genitive particle cannot be HIGH."
+            )
+            # Recalculate total (all anchors — must match len(anchors))
+            fa["total"] = len(fa["anchors"])
+            anchors_path.write_text(
+                json.dumps(fa, indent=2, ensure_ascii=False), encoding="utf-8")
+            # Invalidate caches
+            try:
+                from glossa_lab.api.signs import invalidate_signs_index  # noqa: PLC0415
+                invalidate_signs_index()
+            except Exception:  # noqa: BLE001
+                pass
+            try:
+                from glossa_lab.api.foundation import mark_dirty  # noqa: PLC0415
+                mark_dirty()
+            except Exception:  # noqa: BLE001
+                pass
+            # Re-run checks and update the cached report so phase_advancer
+            # picks up the new clean state immediately
+            try:
+                fresh_checks = _run_checks()
+                fresh_summary = _summarize(fresh_checks)
+                report_path = REPO / "reports" / "foundation_check_report.json"
+                report_path.parent.mkdir(parents=True, exist_ok=True)
+                report_path.write_text(
+                    json.dumps({
+                        "n_pass": fresh_summary["n_pass"],
+                        "n_fail": fresh_summary["n_fail"],
+                        "n_warn": fresh_summary["n_warn"],
+                        "verdict": fresh_summary["overall_status"],
+                        "failed": [c["label"] for c in fresh_checks if c["status"] == "fail"],
+                        "timestamp": _dt.datetime.now(_dt.timezone.utc).isoformat(),
+                    }, indent=2, ensure_ascii=False),
+                    encoding="utf-8",
+                )
+            except Exception:  # noqa: BLE001
+                pass  # non-critical — phase_advancer will re-read on next request
+            return {
+                "ok": True,
+                "fix_id": fix_id,
+                "message": f"M267 confidence updated: {old_conf} → MEDIUM. Signs index invalidated.",
+                "old_value": old_conf,
+                "new_value": "MEDIUM",
+            }
+        except Exception as exc:  # noqa: BLE001
+            return {"ok": False, "error": str(exc), "fix_id": fix_id}
+
+    return {"ok": False, "error": f"Fix {fix_id} not implemented", "fix_id": fix_id}

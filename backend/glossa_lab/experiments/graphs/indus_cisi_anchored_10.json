@@ -1,6 +1,6 @@
 {
   "id": "indus_cisi_anchored_10",
-  "name": "Indus CISI: Anchored Decipherment — 10 Anchor Readings",
+  "name": "Indus Anchored SA: CISI \u2014 10 Pinned Signs",
   "description": "Maximum-evidence anchored decipherment: 10 structurally motivated sign-to-phoneme assignments covering 2 terminal, 3 initial, and 5 medial positions. VERIFIED (structural): P385->n (genitive suffix, T=0.83), P324->k (dominant initial, I=0.78). INFERRED (positional): P122->a (pure medial n=76), P086->m (initial n=35), P060->i (medial n=20). NEW INFERRED: P256->l (2nd terminal T=0.75, Dravidian locative -il), P217->p (initial n=18, Tamil pal/puli), P050->v (pure medial n=32, Tamil val/vay), P145->r (medial n=27, Tamil maram/aravu), P062->u (pure medial n=21, Tamil mul/kul). With 10 anchors covering key positions, the SA should produce candidate readings for common 3-sign inscriptions. Key prediction: P324+P122+P256 = k+a+l = 'kal' (stone); P217+P122+P385 = p+a+n = 'pan' (work/pig). GPU: n_seeds=8, max_iter=15000.",
   "nodes": [
     {
@@ -156,6 +156,5 @@
       "sourcePort": "json",
       "targetPort": "data"
     }
-  ],
-  "graph_type": "experiment"
+  ]
 }

@@ -1,7 +1,7 @@
 {
   "document_id": "positional_analysis_of_indus_signs_a2bedc93",
   "title": "",
-  "extraction_date": "2026-06-09T05:35:44.629792",
+  "extraction_date": "2026-06-09T23:33:56.594429",
   "total_claims": 1,
   "auto_extracted": 1,
   "manually_curated": 0,
@@ -15,7 +15,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-06-09T05:35:44.625328"
+      "extracted_at": "2026-06-09T23:33:56.588941"
     }
   ],
   "_citation": {

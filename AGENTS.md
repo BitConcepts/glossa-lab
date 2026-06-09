@@ -34,12 +34,43 @@ change against docs/governance/rules.md.
 
 ---
 
+## Preprint — Current Version
+
+**Title:** A Falsifiable Computational Decipherment Hypothesis for the Indus Valley Script:
+161 Candidate Proto-Dravidian Anchors and a Three-Slot Positional Grammar
+
+**Author:** Tristen Kyle Pierson / BitConcepts LLC
+
+**Current version:** v4 (June 2026)
+
+**Source:** `glossa-corpus/indus/preprint_v1.tex`
+
+**PDF:** `glossa-corpus/indus/preprint_v1.pdf`
+
+**DOI:** https://doi.org/10.5281/ZENODO.20414696 (Zenodo)
+
+**SSRN:** Submission ID 6827038 (check status)
+
+**Versioning rule:** Bump the version number in the title block and footer of the
+`.tex` whenever substantive content changes and recompile. The filename stays
+`preprint_v1.tex` / `preprint_v1.pdf` (stable path for scripts and links); the
+version is declared inside the document. Full version history: see
+`docs/research/PREPRINT_VERSIONING.md`.
+
+**Attribution:** Zero tolerance for uncited material. Any contribution from private
+correspondence that has not been independently published must not appear without
+explicit prior consent. See `ATTRIBUTION.md`.
+
+---
+
 ## Supplementary Rule Files
 
 The following project-specific rule files apply to all sessions:
 
 - `docs/research/NORMALIZATION_RULES.md` — Indus sign normalization rules for
   corpus processing and sign-ID canonicalization.
+- `docs/research/PREPRINT_VERSIONING.md` — Preprint version history and naming
+  conventions.
 
 ---
 

@@ -1218,7 +1218,7 @@ Additional acknowledgements since the last update:
 
 ---
 
-*Last updated: 2026-05-13.*
+*Last updated: June 2026. For attribution concerns contact tpierson@bitconcepts.tech — we respond within 48 hours. See also ATTRIBUTION.md.*
 
 ---
 

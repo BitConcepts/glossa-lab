@@ -1,9 +1,7 @@
 {
   "total": 615,
   "by_source": {
-    "m77_pdf": 406,
-    "mahadevan_appendix_i:mah_p795": 1,
-    "mahadevan_appendix_i:mah_p802": 8,
+    "m77_pdf": 415,
     "ivc2tyc": 198,
     "fallback_icon": 2
   },
@@ -12,159 +10,149 @@
   "multi_source": {
     "M117": {
       "icit_n": 550,
-      "ssi": 0.014,
+      "ssi": 0.009,
       "status": "MISMATCH"
     },
     "M324": {
       "icit_n": 324,
-      "ssi": 0.015,
+      "ssi": 0.019,
       "status": "MISMATCH"
     },
     "M344": {
       "icit_n": 344,
-      "ssi": 0.084,
-      "status": "ok"
+      "ssi": 0.038,
+      "status": "MISMATCH"
     },
     "M346": {
       "icit_n": 346,
-      "ssi": -0.032,
-      "status": "MISMATCH"
+      "ssi": 0.132,
+      "status": "ok"
     },
     "M350": {
       "icit_n": 350,
-      "ssi": 0.016,
+      "ssi": 0.022,
       "status": "MISMATCH"
     },
     "M351": {
       "icit_n": 351,
-      "ssi": 0.094,
+      "ssi": 0.089,
       "status": "ok"
     },
     "M352": {
       "icit_n": 352,
-      "ssi": 0.088,
+      "ssi": 0.071,
       "status": "ok"
     },
     "M353": {
       "icit_n": 353,
-      "ssi": -0.01,
-      "status": "MISMATCH"
+      "ssi": 0.108,
+      "status": "ok"
     },
     "M354": {
       "icit_n": 354,
-      "ssi": 0.105,
-      "status": "ok"
+      "ssi": 0.046,
+      "status": "MISMATCH"
     },
     "M360": {
       "icit_n": 360,
-      "ssi": -0.16,
-      "status": "MISMATCH"
+      "ssi": 0.102,
+      "status": "ok"
     },
     "M361": {
       "icit_n": 361,
-      "ssi": -0.026,
+      "ssi": 0.01,
       "status": "MISMATCH"
     },
     "M362": {
       "icit_n": 362,
-      "ssi": 0.016,
+      "ssi": 0.004,
       "status": "MISMATCH"
     },
     "M363": {
       "icit_n": 363,
-      "ssi": 0.02,
+      "ssi": -0.088,
       "status": "MISMATCH"
     },
     "M368": {
       "icit_n": 368,
-      "ssi": 0.106,
-      "status": "ok"
+      "ssi": 0.033,
+      "status": "MISMATCH"
     },
     "M370": {
       "icit_n": 370,
-      "ssi": 0.164,
+      "ssi": 0.246,
       "status": "ok"
     },
     "M376": {
       "icit_n": 376,
-      "ssi": 0.136,
+      "ssi": 0.088,
       "status": "ok"
     },
     "M380": {
       "icit_n": 380,
-      "ssi": 0.048,
-      "status": "MISMATCH"
+      "ssi": 0.094,
+      "status": "ok"
     },
     "M382": {
       "icit_n": 382,
-      "ssi": 0.022,
-      "status": "MISMATCH"
+      "ssi": 0.108,
+      "status": "ok"
     },
     "M383": {
       "icit_n": 383,
-      "ssi": 0.081,
+      "ssi": 0.135,
       "status": "ok"
     },
     "M385": {
       "icit_n": 385,
-      "ssi": 0.126,
+      "ssi": 0.151,
       "status": "ok"
     }
   },
   "multi_source_mismatches": {
     "M117": {
       "icit_n": 550,
-      "ssi": 0.014,
+      "ssi": 0.009,
       "status": "MISMATCH"
     },
     "M324": {
       "icit_n": 324,
-      "ssi": 0.015,
+      "ssi": 0.019,
       "status": "MISMATCH"
     },
-    "M346": {
-      "icit_n": 346,
-      "ssi": -0.032,
+    "M344": {
+      "icit_n": 344,
+      "ssi": 0.038,
       "status": "MISMATCH"
     },
     "M350": {
       "icit_n": 350,
-      "ssi": 0.016,
+      "ssi": 0.022,
       "status": "MISMATCH"
     },
-    "M353": {
-      "icit_n": 353,
-      "ssi": -0.01,
-      "status": "MISMATCH"
-    },
-    "M360": {
-      "icit_n": 360,
-      "ssi": -0.16,
+    "M354": {
+      "icit_n": 354,
+      "ssi": 0.046,
       "status": "MISMATCH"
     },
     "M361": {
       "icit_n": 361,
-      "ssi": -0.026,
+      "ssi": 0.01,
       "status": "MISMATCH"
     },
     "M362": {
       "icit_n": 362,
-      "ssi": 0.016,
+      "ssi": 0.004,
       "status": "MISMATCH"
     },
     "M363": {
       "icit_n": 363,
-      "ssi": 0.02,
+      "ssi": -0.088,
       "status": "MISMATCH"
     },
-    "M380": {
-      "icit_n": 380,
-      "ssi": 0.048,
-      "status": "MISMATCH"
-    },
-    "M382": {
-      "icit_n": 382,
-      "ssi": 0.022,
+    "M368": {
+      "icit_n": 368,
+      "ssi": 0.033,
       "status": "MISMATCH"
     }
   },

@@ -222,6 +222,8 @@ export function ResearchLoopPanel() {
   const [schedulerBusy, setSchedulerBusy] = useState(false);
   const [history, setHistory] = useState<HistorySession[]>([]);
   const [showHistory, setShowHistory] = useState(false);
+  const [paused, setPaused] = useState(false);
+  const [pausedAtCycle, setPausedAtCycle] = useState(0);
 
   // ── Live-state sessionStorage key ────────────────────────────────
   // Persists log, phase, and currentWork across SPA navigation. Hard-refresh
@@ -424,25 +426,27 @@ export function ResearchLoopPanel() {
     finally { setSchedulerBusy(false); }
   };
 
-  const startLoop = async (fromProposal?: string) => {
+  const startLoop = async (fromProposal?: string, iterationOverride?: number) => {
     if (fromProposal) {
       setProposalKey(fromProposal);
     } else {
-      setProposalKey(null); // main button clears proposal tracking
+      setProposalKey(null);
     }
+    const iterCount = iterationOverride ?? cycles;
     setRunning(true);
+    setPaused(false);
     setError(null);
     setStallReason(null);
     setFailureDetail(null);
     setLog([]);
     setCyclesCompleted(0);
     setSynthesis(null);
-    setCurrentPhase("init");  // corpus/anchor loading happens first
+    setCurrentPhase("init");
     setCurrentWork(null);
     setShowFullLog(false);
 
     try {
-      const res = await fetch(`${BASE}/start?iterations=${cycles}`, { method: "POST" });
+      const res = await fetch(`${BASE}/start?iterations=${iterCount}`, { method: "POST" });
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
       const reader = res.body?.getReader();
@@ -640,6 +644,23 @@ export function ResearchLoopPanel() {
     try { await fetch(`${BASE}/stop`, { method: "POST" }); } catch { /* ignore */ }
   };
 
+  const pauseLoop = async () => {
+    setPausedAtCycle(cyclesCompleted);
+    setPaused(true);
+    await stopLoop();
+  };
+
+  const resumeLoop = () => {
+    const remaining = Math.max(1, cycles - pausedAtCycle);
+    void startLoop(undefined, remaining);
+  };
+
+  const restartLoop = () => {
+    setPaused(false);
+    setPausedAtCycle(0);
+    void startLoop();
+  };
+
   const activeSynthesis = synthesis;
   const totalPapers = log.reduce((s, c) => s + (c.n_papers ?? 0), 0);
   const totalInsights = log.reduce((s, c) => s + (c.n_insights ?? 0), 0);
@@ -657,27 +678,31 @@ export function ResearchLoopPanel() {
           </span>
           <span style={{ marginLeft: 8, padding: "2px 8px", borderRadius: 4,
                          fontSize: 11, fontWeight: 600,
-                         background: running ? "#dcfce7" : "#f3f4f6",
-                         color: running ? "#15803d" : "#6b7280" }}>
-            {running ? "⏳ Running…" : "Ready"}
+                         background: running ? "#dcfce7" : paused ? "#fef3c7" : currentPhase === "done" ? "#ede9fe" : "#f3f4f6",
+                         color: running ? "#15803d" : paused ? "#92400e" : currentPhase === "done" ? "#5b21b6" : "#6b7280" }}>
+            {running ? "⏳ Running…" : paused ? "⏸ Paused" : currentPhase === "done" ? "✓ Done" : "Ready"}
           </span>
         </div>
-        <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-          <select value={cycles}
-            onChange={(e) => {
-              const v = parseInt(e.target.value, 10);
-              setCycles(v);
-              try { localStorage.setItem("glossa_loop_iterations", String(v)); } catch { /* ignore */ }
-            }}
-            disabled={running}
-            style={{ padding: "4px 8px", border: "1px solid #d1d5db",
-                     borderRadius: 5, fontSize: 12, background: "#fff" }}>
-            <option value={5}>5 — Quick (5 experiment runs)</option>
-            <option value={15}>15 — Standard (15 experiment runs)</option>
-            <option value={30}>30 — Deep Dive (30 runs)</option>
-            <option value={50}>50 — Extensive (50 runs)</option>
-          </select>
-          {!running && !showConfirm && (
+        <div style={{ display: "flex", gap: 6, alignItems: "center", flexWrap: "wrap" }}>
+          {/* Cycle count selector — hidden while running or paused */}
+          {!running && !paused && (
+            <select value={cycles}
+              onChange={(e) => {
+                const v = parseInt(e.target.value, 10);
+                setCycles(v);
+                try { localStorage.setItem("glossa_loop_iterations", String(v)); } catch { /* ignore */ }
+              }}
+              style={{ padding: "4px 8px", border: "1px solid #d1d5db",
+                       borderRadius: 5, fontSize: 12, background: "#fff" }}>
+              <option value={5}>5 — Quick</option>
+              <option value={15}>15 — Standard</option>
+              <option value={30}>30 — Deep Dive</option>
+              <option value={50}>50 — Extensive</option>
+            </select>
+          )}
+
+          {/* ── IDLE: Run Loop (with confirm) ─────────────────────── */}
+          {!running && !paused && !showConfirm && currentPhase !== "done" && (
             <button onClick={() => setShowConfirm(true)}
               title="Start the autonomous study loop"
               style={{ padding: "6px 14px", border: "1px solid #7c3aed",
@@ -686,13 +711,75 @@ export function ResearchLoopPanel() {
               ▶ Run Loop
             </button>
           )}
+
+          {/* ── DONE: Next Round + Restart ────────────────────────── */}
+          {!running && !paused && currentPhase === "done" && (
+            <>
+              <button
+                onClick={() => void startLoop()}
+                title={`Start another ${cycles}-cycle round immediately`}
+                style={{ padding: "6px 14px", border: "1px solid #7c3aed",
+                         borderRadius: 6, background: "#7c3aed", color: "#fff",
+                         fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
+                ▶▶ Next Round
+              </button>
+              <button
+                onClick={restartLoop}
+                title="Clear results and start fresh"
+                style={{ padding: "6px 14px", border: "1px solid #6b7280",
+                         borderRadius: 6, background: "#f9fafb", color: "#374151",
+                         fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
+                ↺ Restart
+              </button>
+            </>
+          )}
+
+          {/* ── RUNNING: Pause + Stop ─────────────────────────────── */}
           {running && (
-            <button onClick={() => void stopLoop()}
-              style={{ padding: "6px 14px", border: "1px solid #dc2626",
-                       borderRadius: 6, background: "#dc2626", color: "#fff",
-                       fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
-              ■ Stop
-            </button>
+            <>
+              <button
+                onClick={() => void pauseLoop()}
+                title={`Pause after current cycle (${cyclesCompleted}/${cycles} done)`}
+                style={{ padding: "6px 14px", border: "1px solid #d97706",
+                         borderRadius: 6, background: "#fffbeb", color: "#92400e",
+                         fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
+                ⏸ Pause
+              </button>
+              <button
+                onClick={() => void stopLoop()}
+                title="Stop the loop"
+                style={{ padding: "6px 14px", border: "1px solid #dc2626",
+                         borderRadius: 6, background: "#dc2626", color: "#fff",
+                         fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
+                ■ Stop
+              </button>
+            </>
+          )}
+
+          {/* ── PAUSED: Resume + Restart ──────────────────────────── */}
+          {paused && !running && (
+            <>
+              <span style={{ fontSize: 11, color: "#92400e", background: "#fef3c7",
+                             padding: "3px 8px", borderRadius: 4, fontWeight: 600 }}>
+                ⏸ Paused at cycle {pausedAtCycle}/{cycles}
+              </span>
+              <button
+                onClick={resumeLoop}
+                title={`Resume from cycle ${pausedAtCycle} (${cycles - pausedAtCycle} remaining)`}
+                style={{ padding: "6px 14px", border: "1px solid #16a34a",
+                         borderRadius: 6, background: "#16a34a", color: "#fff",
+                         fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
+                ▶ Resume
+              </button>
+              <button
+                onClick={restartLoop}
+                title="Discard paused state and start fresh"
+                style={{ padding: "6px 14px", border: "1px solid #6b7280",
+                         borderRadius: 6, background: "#f9fafb", color: "#374151",
+                         fontSize: 12, fontWeight: 600, cursor: "pointer" }}>
+                ↺ Restart
+              </button>
+            </>
           )}
         </div>
       </div>

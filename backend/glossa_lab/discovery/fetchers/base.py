@@ -363,6 +363,9 @@ def get_rate_tracker() -> RateLimitTracker:
 # ALL subsequent requests to that source's endpoints are skipped until the
 # window resets — regardless of which topic or coroutine is calling.
 #
+# Cooldowns are persisted to .specsmith/rate_limits.json using wall-clock
+# timestamps so they survive process restarts (restarts don't reset cooldowns).
+#
 # Usage in a fetcher:
 #   # Check at entry:
 #   if source_is_cooling(self.source): return []
@@ -371,23 +374,91 @@ def get_rate_tracker() -> RateLimitTracker:
 
 import time as _time_global  # noqa: E402
 
-_source_cooldowns: dict[str, float] = {}   # source -> monotonic deadline
-_DEFAULT_COOLDOWN = 120.0                   # 2 min when no Retry-After header
+_DEFAULT_COOLDOWN = 120.0   # 2 min when no Retry-After header
+
+# _source_cooldowns stores wall-clock (time.time()) deadlines so they are
+# comparable across process restarts (unlike monotonic() which resets).
+_source_cooldowns: dict[str, float] = {}   # source -> wall-clock deadline
+
+
+def _cooldown_state_path() -> "Path | None":
+    """Return path to the persistent cooldown state file, or None if not writable."""
+    import os  # noqa: PLC0415
+    # Walk up from this file to find the repo root (where .specsmith lives).
+    # base.py is at backend/glossa_lab/discovery/fetchers/base.py so root is 5 up.
+    try:
+        candidate = Path(__file__).resolve().parents[4] / ".specsmith" / "rate_limits.json"
+        candidate.parent.mkdir(parents=True, exist_ok=True)
+        return candidate
+    except Exception:  # noqa: BLE001
+        return None
+
+
+def _load_cooldowns() -> None:
+    """Load persisted cooldown deadlines from disk into _source_cooldowns.
+
+    Called once at module import time.  Entries whose deadline has already
+    passed are silently dropped.
+    """
+    import json as _json  # noqa: PLC0415
+    p = _cooldown_state_path()
+    if p is None or not p.exists():
+        return
+    try:
+        data = _json.loads(p.read_text(encoding="utf-8"))
+        now = _time_global.time()
+        for source, deadline in data.items():
+            if isinstance(deadline, (int, float)) and float(deadline) > now:
+                _source_cooldowns[source] = float(deadline)
+    except Exception:  # noqa: BLE001
+        pass  # stale / corrupt file — ignore, will be overwritten on next trip
+
+
+def _save_cooldowns() -> None:
+    """Persist current cooldown state to disk."""
+    import json as _json  # noqa: PLC0415
+    p = _cooldown_state_path()
+    if p is None:
+        return
+    now = _time_global.time()
+    # Only persist deadlines still in the future.
+    active = {s: d for s, d in _source_cooldowns.items() if d > now}
+    try:
+        p.write_text(_json.dumps(active, indent=2), encoding="utf-8")
+    except Exception:  # noqa: BLE001
+        pass
+
+
+# Load persisted state immediately so the first call to source_is_cooling()
+# already reflects any unexpired cooldowns from before the restart.
+_load_cooldowns()
 
 
 def source_cooldown_trip(source: str, secs: float = _DEFAULT_COOLDOWN) -> None:
     """Record a rate-limit event for *source*.  All subsequent calls to
-    :func:`source_is_cooling` return True until *secs* have elapsed."""
+    :func:`source_is_cooling` return True until *secs* have elapsed.
+    The deadline is persisted to disk so it survives process restarts.
+    """
     import logging as _lg  # noqa: PLC0415
-    _source_cooldowns[source] = _time_global.monotonic() + secs
+    deadline = _time_global.time() + secs
+    _source_cooldowns[source] = deadline
+    _save_cooldowns()
+    remaining = max(0.0, deadline - _time_global.time())
     _lg.getLogger("glossa_lab.discovery.fetchers").warning(
-        "fetcher %s global cooldown: pausing all requests for %.0fs", source, secs
+        "fetcher %s global cooldown: pausing all requests for %.0fs (until %s)",
+        source, remaining,
+        _time_global.strftime("%Y-%m-%dT%H:%M:%SZ", _time_global.gmtime(deadline)),
     )
 
 
 def source_is_cooling(source: str) -> tuple[bool, float]:
     """Return ``(is_cooling, seconds_remaining)`` for *source*."""
-    remaining = _source_cooldowns.get(source, 0.0) - _time_global.monotonic()
+    deadline = _source_cooldowns.get(source, 0.0)
+    remaining = deadline - _time_global.time()
+    if remaining <= 0 and source in _source_cooldowns:
+        # Cooldown expired — remove from dict to keep it clean
+        del _source_cooldowns[source]
+        _save_cooldowns()
     return remaining > 0, max(0.0, remaining)
 
 

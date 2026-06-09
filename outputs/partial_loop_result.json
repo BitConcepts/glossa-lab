@@ -1,13 +1,13 @@
 {
-  "cycles_completed": 354,
-  "max_cycles": 50,
+  "cycles_completed": 319,
+  "max_cycles": 15,
   "cycle_analyses": [
     {
       "cycle": 1,
       "experiment": "reading_frequency_zipf",
-      "summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623",
+      "summary": "Reading Frequency Zipf: Zipf: α=0.624 (129 readings). Linguistic. · zipf_alpha=0.624",
       "metrics": {
-        "zipf_alpha": 0.623
+        "zipf_alpha": 0.624
       },
       "flags": [],
       "suggested_next_steps": [
@@ -77,9 +77,9 @@
     {
       "cycle": 7,
       "experiment": "reading_frequency_zipf",
-      "summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623",
+      "summary": "Reading Frequency Zipf: Zipf: α=0.624 (129 readings). Linguistic. · zipf_alpha=0.624",
       "metrics": {
-        "zipf_alpha": 0.623
+        "zipf_alpha": 0.624
       },
       "flags": [],
       "suggested_next_steps": [
@@ -149,9 +149,9 @@
     {
       "cycle": 13,
       "experiment": "reading_frequency_zipf",
-      "summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623",
+      "summary": "Reading Frequency Zipf: Zipf: α=0.624 (129 readings). Linguistic. · zipf_alpha=0.624",
       "metrics": {
-        "zipf_alpha": 0.623
+        "zipf_alpha": 0.624
       },
       "flags": [],
       "suggested_next_steps": [
@@ -176,426 +176,6 @@
       "summary": "Blocker Sign Context: Blocker context: 12 blockers have HIGH-sign neighbors. · n_blockers=12",
       "metrics": {
         "n_blockers": 12
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 16,
-      "experiment": "decoded_text_repetition",
-      "summary": "Decoded Text Repetition: Text repetition: TTR=0.019 (130 types / 6781 tokens). · ttr=0.019",
-      "metrics": {
-        "ttr": 0.019
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 17,
-      "experiment": "rare_sign_neighbor_profile",
-      "summary": "Rare Sign Neighbor Profile: Rare sign neighbors: 269 hapax-like signs profiled. · n_rare=269",
-      "metrics": {
-        "n_rare": 269
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 18,
-      "experiment": "site_specific_formula",
-      "summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9",
-      "metrics": {
-        "n_sites": 9
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 19,
-      "experiment": "reading_frequency_zipf",
-      "summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623",
-      "metrics": {
-        "zipf_alpha": 0.623
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 20,
-      "experiment": "compound_semantic_coherence",
-      "summary": "Compound Semantic Coherence: Compound coherence: 100% (4900/4906) valid. · valid_pct=100",
-      "metrics": {
-        "valid_pct": 100
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 21,
-      "experiment": "blocker_sign_context",
-      "summary": "Blocker Sign Context: Blocker context: 12 blockers have HIGH-sign neighbors. · n_blockers=12",
-      "metrics": {
-        "n_blockers": 12
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 22,
-      "experiment": "decoded_text_repetition",
-      "summary": "Decoded Text Repetition: Text repetition: TTR=0.019 (130 types / 6781 tokens). · ttr=0.019",
-      "metrics": {
-        "ttr": 0.019
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 23,
-      "experiment": "rare_sign_neighbor_profile",
-      "summary": "Rare Sign Neighbor Profile: Rare sign neighbors: 269 hapax-like signs profiled. · n_rare=269",
-      "metrics": {
-        "n_rare": 269
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 24,
-      "experiment": "site_specific_formula",
-      "summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9",
-      "metrics": {
-        "n_sites": 9
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 25,
-      "experiment": "reading_frequency_zipf",
-      "summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623",
-      "metrics": {
-        "zipf_alpha": 0.623
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 26,
-      "experiment": "compound_semantic_coherence",
-      "summary": "Compound Semantic Coherence: Compound coherence: 100% (4900/4906) valid. · valid_pct=100",
-      "metrics": {
-        "valid_pct": 100
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 27,
-      "experiment": "blocker_sign_context",
-      "summary": "Blocker Sign Context: Blocker context: 12 blockers have HIGH-sign neighbors. · n_blockers=12",
-      "metrics": {
-        "n_blockers": 12
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 28,
-      "experiment": "decoded_text_repetition",
-      "summary": "Decoded Text Repetition: Text repetition: TTR=0.019 (130 types / 6781 tokens). · ttr=0.019",
-      "metrics": {
-        "ttr": 0.019
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 29,
-      "experiment": "rare_sign_neighbor_profile",
-      "summary": "Rare Sign Neighbor Profile: Rare sign neighbors: 269 hapax-like signs profiled. · n_rare=269",
-      "metrics": {
-        "n_rare": 269
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 30,
-      "experiment": "site_specific_formula",
-      "summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9",
-      "metrics": {
-        "n_sites": 9
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 31,
-      "experiment": "reading_frequency_zipf",
-      "summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623",
-      "metrics": {
-        "zipf_alpha": 0.623
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 32,
-      "experiment": "compound_semantic_coherence",
-      "summary": "Compound Semantic Coherence: Compound coherence: 100% (4900/4906) valid. · valid_pct=100",
-      "metrics": {
-        "valid_pct": 100
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 33,
-      "experiment": "blocker_sign_context",
-      "summary": "Blocker Sign Context: Blocker context: 12 blockers have HIGH-sign neighbors. · n_blockers=12",
-      "metrics": {
-        "n_blockers": 12
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 34,
-      "experiment": "decoded_text_repetition",
-      "summary": "Decoded Text Repetition: Text repetition: TTR=0.019 (130 types / 6781 tokens). · ttr=0.019",
-      "metrics": {
-        "ttr": 0.019
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 35,
-      "experiment": "rare_sign_neighbor_profile",
-      "summary": "Rare Sign Neighbor Profile: Rare sign neighbors: 269 hapax-like signs profiled. · n_rare=269",
-      "metrics": {
-        "n_rare": 269
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 36,
-      "experiment": "site_specific_formula",
-      "summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9",
-      "metrics": {
-        "n_sites": 9
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 37,
-      "experiment": "reading_frequency_zipf",
-      "summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623",
-      "metrics": {
-        "zipf_alpha": 0.623
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 38,
-      "experiment": "compound_semantic_coherence",
-      "summary": "Compound Semantic Coherence: Compound coherence: 100% (4900/4906) valid. · valid_pct=100",
-      "metrics": {
-        "valid_pct": 100
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 39,
-      "experiment": "blocker_sign_context",
-      "summary": "Blocker Sign Context: Blocker context: 12 blockers have HIGH-sign neighbors. · n_blockers=12",
-      "metrics": {
-        "n_blockers": 12
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 40,
-      "experiment": "decoded_text_repetition",
-      "summary": "Decoded Text Repetition: Text repetition: TTR=0.019 (130 types / 6781 tokens). · ttr=0.019",
-      "metrics": {
-        "ttr": 0.019
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 41,
-      "experiment": "rare_sign_neighbor_profile",
-      "summary": "Rare Sign Neighbor Profile: Rare sign neighbors: 269 hapax-like signs profiled. · n_rare=269",
-      "metrics": {
-        "n_rare": 269
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 42,
-      "experiment": "site_specific_formula",
-      "summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9",
-      "metrics": {
-        "n_sites": 9
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 43,
-      "experiment": "reading_frequency_zipf",
-      "summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623",
-      "metrics": {
-        "zipf_alpha": 0.623
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 44,
-      "experiment": "compound_semantic_coherence",
-      "summary": "Compound Semantic Coherence: Compound coherence: 100% (4900/4906) valid. · valid_pct=100",
-      "metrics": {
-        "valid_pct": 100
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 45,
-      "experiment": "blocker_sign_context",
-      "summary": "Blocker Sign Context: Blocker context: 12 blockers have HIGH-sign neighbors. · n_blockers=12",
-      "metrics": {
-        "n_blockers": 12
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 46,
-      "experiment": "decoded_text_repetition",
-      "summary": "Decoded Text Repetition: Text repetition: TTR=0.019 (130 types / 6781 tokens). · ttr=0.019",
-      "metrics": {
-        "ttr": 0.019
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 47,
-      "experiment": "rare_sign_neighbor_profile",
-      "summary": "Rare Sign Neighbor Profile: Rare sign neighbors: 269 hapax-like signs profiled. · n_rare=269",
-      "metrics": {
-        "n_rare": 269
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 48,
-      "experiment": "site_specific_formula",
-      "summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9",
-      "metrics": {
-        "n_sites": 9
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 49,
-      "experiment": "reading_frequency_zipf",
-      "summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623",
-      "metrics": {
-        "zipf_alpha": 0.623
-      },
-      "flags": [],
-      "suggested_next_steps": [
-        "Try a different experiment type to explore new angles"
-      ]
-    },
-    {
-      "cycle": 50,
-      "experiment": "compound_semantic_coherence",
-      "summary": "Compound Semantic Coherence: Compound coherence: 100% (4900/4906) valid. · valid_pct=100",
-      "metrics": {
-        "valid_pct": 100
       },
       "flags": [],
       "suggested_next_steps": [
@@ -5579,26 +5159,26 @@
     },
     {
       "cycle": 1,
-      "timestamp": "2026-06-09T02:03:04.028756+00:00",
+      "timestamp": "2026-06-09T05:09:56.175196+00:00",
       "gap_targeted": "rare_sign_context",
       "n_papers": 0,
       "n_insights": 0,
       "insight_types": {},
       "experiment": "reading_frequency_zipf",
       "selection_method": "proposal",
-      "verdict": "Zipf: α=0.623 (129 readings). Linguistic.",
+      "verdict": "Zipf: α=0.624 (129 readings). Linguistic.",
       "is_new_info": true,
       "n_candidates": 0,
       "top_candidate": null,
       "analysis_metrics": {
-        "zipf_alpha": 0.623
+        "zipf_alpha": 0.624
       },
       "analysis_flags": [],
-      "analysis_summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623"
+      "analysis_summary": "Reading Frequency Zipf: Zipf: α=0.624 (129 readings). Linguistic. · zipf_alpha=0.624"
     },
     {
       "cycle": 2,
-      "timestamp": "2026-06-09T02:03:05.610156+00:00",
+      "timestamp": "2026-06-09T05:09:57.718545+00:00",
       "gap_targeted": "compound_morphology",
       "n_papers": 0,
       "n_insights": 0,
@@ -5617,7 +5197,7 @@
     },
     {
       "cycle": 3,
-      "timestamp": "2026-06-09T02:03:07.223029+00:00",
+      "timestamp": "2026-06-09T05:09:59.271512+00:00",
       "gap_targeted": "allograph_classification",
       "n_papers": 0,
       "n_insights": 0,
@@ -5627,7 +5207,7 @@
       "verdict": "Blocker context: 12 blockers have HIGH-sign neighbors.",
       "is_new_info": true,
       "n_candidates": 36,
-      "top_candidate": "M256",
+      "top_candidate": "M307",
       "analysis_metrics": {
         "n_blockers": 12
       },
@@ -5636,7 +5216,7 @@
     },
     {
       "cycle": 4,
-      "timestamp": "2026-06-09T02:03:09.041493+00:00",
+      "timestamp": "2026-06-09T05:10:00.804441+00:00",
       "gap_targeted": "cross_script_transfer",
       "n_papers": 0,
       "n_insights": 0,
@@ -5655,7 +5235,7 @@
     },
     {
       "cycle": 5,
-      "timestamp": "2026-06-09T02:03:10.844552+00:00",
+      "timestamp": "2026-06-09T05:10:02.374966+00:00",
       "gap_targeted": "trade_network_vocabulary",
       "n_papers": 0,
       "n_insights": 0,
@@ -5674,7 +5254,7 @@
     },
     {
       "cycle": 6,
-      "timestamp": "2026-06-09T02:03:12.594335+00:00",
+      "timestamp": "2026-06-09T05:10:03.907203+00:00",
       "gap_targeted": "inscription_formula_syntax",
       "n_papers": 0,
       "n_insights": 0,
@@ -5693,26 +5273,26 @@
     },
     {
       "cycle": 7,
-      "timestamp": "2026-06-09T02:03:14.611666+00:00",
+      "timestamp": "2026-06-09T05:10:05.442338+00:00",
       "gap_targeted": "iconographic_semantic",
       "n_papers": 0,
       "n_insights": 0,
       "insight_types": {},
       "experiment": "reading_frequency_zipf",
       "selection_method": "proposal",
-      "verdict": "Zipf: α=0.623 (129 readings). Linguistic.",
+      "verdict": "Zipf: α=0.624 (129 readings). Linguistic.",
       "is_new_info": true,
       "n_candidates": 0,
       "top_candidate": null,
       "analysis_metrics": {
-        "zipf_alpha": 0.623
+        "zipf_alpha": 0.624
       },
       "analysis_flags": [],
-      "analysis_summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623"
+      "analysis_summary": "Reading Frequency Zipf: Zipf: α=0.624 (129 readings). Linguistic. · zipf_alpha=0.624"
     },
     {
       "cycle": 8,
-      "timestamp": "2026-06-09T02:03:16.521323+00:00",
+      "timestamp": "2026-06-09T05:10:07.034836+00:00",
       "gap_targeted": "phonological_reconstruction",
       "n_papers": 0,
       "n_insights": 0,
@@ -5731,7 +5311,7 @@
     },
     {
       "cycle": 9,
-      "timestamp": "2026-06-09T02:03:18.315466+00:00",
+      "timestamp": "2026-06-09T05:10:08.612737+00:00",
       "gap_targeted": "computational_upgrade",
       "n_papers": 0,
       "n_insights": 0,
@@ -5741,7 +5321,7 @@
       "verdict": "Blocker context: 12 blockers have HIGH-sign neighbors.",
       "is_new_info": true,
       "n_candidates": 36,
-      "top_candidate": "M256",
+      "top_candidate": "M307",
       "analysis_metrics": {
         "n_blockers": 12
       },
@@ -5750,7 +5330,7 @@
     },
     {
       "cycle": 10,
-      "timestamp": "2026-06-09T02:03:20.082961+00:00",
+      "timestamp": "2026-06-09T05:10:10.133466+00:00",
       "gap_targeted": "archaeological_context",
       "n_papers": 0,
       "n_insights": 0,
@@ -5769,7 +5349,7 @@
     },
     {
       "cycle": 11,
-      "timestamp": "2026-06-09T02:03:21.698637+00:00",
+      "timestamp": "2026-06-09T05:10:11.684221+00:00",
       "gap_targeted": "personal_name_structure",
       "n_papers": 0,
       "n_insights": 0,
@@ -5788,7 +5368,7 @@
     },
     {
       "cycle": 12,
-      "timestamp": "2026-06-09T02:03:23.248903+00:00",
+      "timestamp": "2026-06-09T05:10:13.195712+00:00",
       "gap_targeted": "rare_sign_context",
       "n_papers": 0,
       "n_insights": 0,
@@ -5807,26 +5387,26 @@
     },
     {
       "cycle": 13,
-      "timestamp": "2026-06-09T02:03:24.805390+00:00",
+      "timestamp": "2026-06-09T05:10:14.782299+00:00",
       "gap_targeted": "substrate_loanword",
       "n_papers": 0,
       "n_insights": 0,
       "insight_types": {},
       "experiment": "reading_frequency_zipf",
       "selection_method": "proposal",
-      "verdict": "Zipf: α=0.623 (129 readings). Linguistic.",
+      "verdict": "Zipf: α=0.624 (129 readings). Linguistic.",
       "is_new_info": true,
       "n_candidates": 0,
       "top_candidate": null,
       "analysis_metrics": {
-        "zipf_alpha": 0.623
+        "zipf_alpha": 0.624
       },
       "analysis_flags": [],
-      "analysis_summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623"
+      "analysis_summary": "Reading Frequency Zipf: Zipf: α=0.624 (129 readings). Linguistic. · zipf_alpha=0.624"
     },
     {
       "cycle": 14,
-      "timestamp": "2026-06-09T02:03:26.439234+00:00",
+      "timestamp": "2026-06-09T05:10:16.361033+00:00",
       "gap_targeted": "allograph_classification",
       "n_papers": 0,
       "n_insights": 0,
@@ -5845,7 +5425,7 @@
     },
     {
       "cycle": 15,
-      "timestamp": "2026-06-09T02:03:28.160176+00:00",
+      "timestamp": "2026-06-09T05:10:17.924915+00:00",
       "gap_targeted": "allograph_classification",
       "n_papers": 0,
       "n_insights": 0,
@@ -5855,677 +5435,12 @@
       "verdict": "Blocker context: 12 blockers have HIGH-sign neighbors.",
       "is_new_info": true,
       "n_candidates": 36,
-      "top_candidate": "M256",
+      "top_candidate": "M307",
       "analysis_metrics": {
         "n_blockers": 12
       },
       "analysis_flags": [],
       "analysis_summary": "Blocker Sign Context: Blocker context: 12 blockers have HIGH-sign neighbors. · n_blockers=12"
-    },
-    {
-      "cycle": 16,
-      "timestamp": "2026-06-09T02:03:29.775953+00:00",
-      "gap_targeted": "epistemic_self_improvement",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "decoded_text_repetition",
-      "selection_method": "proposal",
-      "verdict": "Text repetition: TTR=0.019 (130 types / 6781 tokens).",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "ttr": 0.019
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Decoded Text Repetition: Text repetition: TTR=0.019 (130 types / 6781 tokens). · ttr=0.019"
-    },
-    {
-      "cycle": 17,
-      "timestamp": "2026-06-09T02:03:31.377846+00:00",
-      "gap_targeted": "decipherment_methodology",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "rare_sign_neighbor_profile",
-      "selection_method": "proposal",
-      "verdict": "Rare sign neighbors: 269 hapax-like signs profiled.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "n_rare": 269
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Rare Sign Neighbor Profile: Rare sign neighbors: 269 hapax-like signs profiled. · n_rare=269"
-    },
-    {
-      "cycle": 18,
-      "timestamp": "2026-06-09T02:03:33.009764+00:00",
-      "gap_targeted": "computational_linguistics_methods",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "site_specific_formula",
-      "selection_method": "proposal",
-      "verdict": "Site formulas: 9 sites with unique formula sets.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "n_sites": 9
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9"
-    },
-    {
-      "cycle": 19,
-      "timestamp": "2026-06-09T02:03:34.625172+00:00",
-      "gap_targeted": "evidence_chain_validation",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "reading_frequency_zipf",
-      "selection_method": "proposal",
-      "verdict": "Zipf: α=0.623 (129 readings). Linguistic.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "zipf_alpha": 0.623
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623"
-    },
-    {
-      "cycle": 20,
-      "timestamp": "2026-06-09T02:03:36.278260+00:00",
-      "gap_targeted": "rare_sign_context",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "compound_semantic_coherence",
-      "selection_method": "proposal",
-      "verdict": "Compound coherence: 100% (4900/4906) valid.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "valid_pct": 100
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Compound Semantic Coherence: Compound coherence: 100% (4900/4906) valid. · valid_pct=100"
-    },
-    {
-      "cycle": 21,
-      "timestamp": "2026-06-09T02:03:37.970663+00:00",
-      "gap_targeted": "compound_morphology",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "blocker_sign_context",
-      "selection_method": "proposal",
-      "verdict": "Blocker context: 12 blockers have HIGH-sign neighbors.",
-      "is_new_info": true,
-      "n_candidates": 36,
-      "top_candidate": "M256",
-      "analysis_metrics": {
-        "n_blockers": 12
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Blocker Sign Context: Blocker context: 12 blockers have HIGH-sign neighbors. · n_blockers=12"
-    },
-    {
-      "cycle": 22,
-      "timestamp": "2026-06-09T02:03:39.514392+00:00",
-      "gap_targeted": "seal_owner_identity",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "decoded_text_repetition",
-      "selection_method": "proposal",
-      "verdict": "Text repetition: TTR=0.019 (130 types / 6781 tokens).",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "ttr": 0.019
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Decoded Text Repetition: Text repetition: TTR=0.019 (130 types / 6781 tokens). · ttr=0.019"
-    },
-    {
-      "cycle": 23,
-      "timestamp": "2026-06-09T02:03:41.063904+00:00",
-      "gap_targeted": "cross_script_transfer",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "rare_sign_neighbor_profile",
-      "selection_method": "proposal",
-      "verdict": "Rare sign neighbors: 269 hapax-like signs profiled.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "n_rare": 269
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Rare Sign Neighbor Profile: Rare sign neighbors: 269 hapax-like signs profiled. · n_rare=269"
-    },
-    {
-      "cycle": 24,
-      "timestamp": "2026-06-09T02:03:42.623958+00:00",
-      "gap_targeted": "trade_network_vocabulary",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "site_specific_formula",
-      "selection_method": "proposal",
-      "verdict": "Site formulas: 9 sites with unique formula sets.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "n_sites": 9
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9"
-    },
-    {
-      "cycle": 25,
-      "timestamp": "2026-06-09T02:03:44.148527+00:00",
-      "gap_targeted": "inscription_formula_syntax",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "reading_frequency_zipf",
-      "selection_method": "proposal",
-      "verdict": "Zipf: α=0.623 (129 readings). Linguistic.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "zipf_alpha": 0.623
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623"
-    },
-    {
-      "cycle": 26,
-      "timestamp": "2026-06-09T02:03:45.766117+00:00",
-      "gap_targeted": "allograph_classification",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "compound_semantic_coherence",
-      "selection_method": "proposal",
-      "verdict": "Compound coherence: 100% (4900/4906) valid.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "valid_pct": 100
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Compound Semantic Coherence: Compound coherence: 100% (4900/4906) valid. · valid_pct=100"
-    },
-    {
-      "cycle": 27,
-      "timestamp": "2026-06-09T02:03:47.372090+00:00",
-      "gap_targeted": "phonological_reconstruction",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "blocker_sign_context",
-      "selection_method": "proposal",
-      "verdict": "Blocker context: 12 blockers have HIGH-sign neighbors.",
-      "is_new_info": true,
-      "n_candidates": 36,
-      "top_candidate": "M256",
-      "analysis_metrics": {
-        "n_blockers": 12
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Blocker Sign Context: Blocker context: 12 blockers have HIGH-sign neighbors. · n_blockers=12"
-    },
-    {
-      "cycle": 28,
-      "timestamp": "2026-06-09T02:03:49.022233+00:00",
-      "gap_targeted": "computational_upgrade",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "decoded_text_repetition",
-      "selection_method": "proposal",
-      "verdict": "Text repetition: TTR=0.019 (130 types / 6781 tokens).",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "ttr": 0.019
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Decoded Text Repetition: Text repetition: TTR=0.019 (130 types / 6781 tokens). · ttr=0.019"
-    },
-    {
-      "cycle": 29,
-      "timestamp": "2026-06-09T02:03:50.720752+00:00",
-      "gap_targeted": "archaeological_context",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "rare_sign_neighbor_profile",
-      "selection_method": "proposal",
-      "verdict": "Rare sign neighbors: 269 hapax-like signs profiled.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "n_rare": 269
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Rare Sign Neighbor Profile: Rare sign neighbors: 269 hapax-like signs profiled. · n_rare=269"
-    },
-    {
-      "cycle": 30,
-      "timestamp": "2026-06-09T02:03:52.343468+00:00",
-      "gap_targeted": "personal_name_structure",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "site_specific_formula",
-      "selection_method": "proposal",
-      "verdict": "Site formulas: 9 sites with unique formula sets.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "n_sites": 9
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9"
-    },
-    {
-      "cycle": 31,
-      "timestamp": "2026-06-09T02:03:53.959774+00:00",
-      "gap_targeted": "rare_sign_context",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "reading_frequency_zipf",
-      "selection_method": "proposal",
-      "verdict": "Zipf: α=0.623 (129 readings). Linguistic.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "zipf_alpha": 0.623
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623"
-    },
-    {
-      "cycle": 32,
-      "timestamp": "2026-06-09T02:03:55.584589+00:00",
-      "gap_targeted": "substrate_loanword",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "compound_semantic_coherence",
-      "selection_method": "proposal",
-      "verdict": "Compound coherence: 100% (4900/4906) valid.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "valid_pct": 100
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Compound Semantic Coherence: Compound coherence: 100% (4900/4906) valid. · valid_pct=100"
-    },
-    {
-      "cycle": 33,
-      "timestamp": "2026-06-09T02:03:57.162757+00:00",
-      "gap_targeted": "gulf_foreign_attestation",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "blocker_sign_context",
-      "selection_method": "proposal",
-      "verdict": "Blocker context: 12 blockers have HIGH-sign neighbors.",
-      "is_new_info": true,
-      "n_candidates": 36,
-      "top_candidate": "M256",
-      "analysis_metrics": {
-        "n_blockers": 12
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Blocker Sign Context: Blocker context: 12 blockers have HIGH-sign neighbors. · n_blockers=12"
-    },
-    {
-      "cycle": 34,
-      "timestamp": "2026-06-09T02:03:58.708732+00:00",
-      "gap_targeted": "allograph_classification",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "decoded_text_repetition",
-      "selection_method": "proposal",
-      "verdict": "Text repetition: TTR=0.019 (130 types / 6781 tokens).",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "ttr": 0.019
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Decoded Text Repetition: Text repetition: TTR=0.019 (130 types / 6781 tokens). · ttr=0.019"
-    },
-    {
-      "cycle": 35,
-      "timestamp": "2026-06-09T02:04:00.221604+00:00",
-      "gap_targeted": "epistemic_self_improvement",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "rare_sign_neighbor_profile",
-      "selection_method": "proposal",
-      "verdict": "Rare sign neighbors: 269 hapax-like signs profiled.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "n_rare": 269
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Rare Sign Neighbor Profile: Rare sign neighbors: 269 hapax-like signs profiled. · n_rare=269"
-    },
-    {
-      "cycle": 36,
-      "timestamp": "2026-06-09T02:04:01.773695+00:00",
-      "gap_targeted": "decipherment_methodology",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "site_specific_formula",
-      "selection_method": "proposal",
-      "verdict": "Site formulas: 9 sites with unique formula sets.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "n_sites": 9
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9"
-    },
-    {
-      "cycle": 37,
-      "timestamp": "2026-06-09T02:04:03.331096+00:00",
-      "gap_targeted": "computational_linguistics_methods",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "reading_frequency_zipf",
-      "selection_method": "proposal",
-      "verdict": "Zipf: α=0.623 (129 readings). Linguistic.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "zipf_alpha": 0.623
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623"
-    },
-    {
-      "cycle": 38,
-      "timestamp": "2026-06-09T02:04:04.899740+00:00",
-      "gap_targeted": "evidence_chain_validation",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "compound_semantic_coherence",
-      "selection_method": "proposal",
-      "verdict": "Compound coherence: 100% (4900/4906) valid.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "valid_pct": 100
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Compound Semantic Coherence: Compound coherence: 100% (4900/4906) valid. · valid_pct=100"
-    },
-    {
-      "cycle": 39,
-      "timestamp": "2026-06-09T02:04:06.474404+00:00",
-      "gap_targeted": "rare_sign_context",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "blocker_sign_context",
-      "selection_method": "proposal",
-      "verdict": "Blocker context: 12 blockers have HIGH-sign neighbors.",
-      "is_new_info": true,
-      "n_candidates": 36,
-      "top_candidate": "M256",
-      "analysis_metrics": {
-        "n_blockers": 12
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Blocker Sign Context: Blocker context: 12 blockers have HIGH-sign neighbors. · n_blockers=12"
-    },
-    {
-      "cycle": 40,
-      "timestamp": "2026-06-09T02:04:08.068025+00:00",
-      "gap_targeted": "compound_morphology",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "decoded_text_repetition",
-      "selection_method": "proposal",
-      "verdict": "Text repetition: TTR=0.019 (130 types / 6781 tokens).",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "ttr": 0.019
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Decoded Text Repetition: Text repetition: TTR=0.019 (130 types / 6781 tokens). · ttr=0.019"
-    },
-    {
-      "cycle": 41,
-      "timestamp": "2026-06-09T02:04:09.779512+00:00",
-      "gap_targeted": "seal_owner_identity",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "rare_sign_neighbor_profile",
-      "selection_method": "proposal",
-      "verdict": "Rare sign neighbors: 269 hapax-like signs profiled.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "n_rare": 269
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Rare Sign Neighbor Profile: Rare sign neighbors: 269 hapax-like signs profiled. · n_rare=269"
-    },
-    {
-      "cycle": 42,
-      "timestamp": "2026-06-09T02:04:11.346859+00:00",
-      "gap_targeted": "cross_script_transfer",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "site_specific_formula",
-      "selection_method": "proposal",
-      "verdict": "Site formulas: 9 sites with unique formula sets.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "n_sites": 9
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9"
-    },
-    {
-      "cycle": 43,
-      "timestamp": "2026-06-09T02:04:12.985325+00:00",
-      "gap_targeted": "trade_network_vocabulary",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "reading_frequency_zipf",
-      "selection_method": "proposal",
-      "verdict": "Zipf: α=0.623 (129 readings). Linguistic.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "zipf_alpha": 0.623
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623"
-    },
-    {
-      "cycle": 44,
-      "timestamp": "2026-06-09T02:04:14.636770+00:00",
-      "gap_targeted": "inscription_formula_syntax",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "compound_semantic_coherence",
-      "selection_method": "proposal",
-      "verdict": "Compound coherence: 100% (4900/4906) valid.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "valid_pct": 100
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Compound Semantic Coherence: Compound coherence: 100% (4900/4906) valid. · valid_pct=100"
-    },
-    {
-      "cycle": 45,
-      "timestamp": "2026-06-09T02:04:16.268972+00:00",
-      "gap_targeted": "allograph_classification",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "blocker_sign_context",
-      "selection_method": "proposal",
-      "verdict": "Blocker context: 12 blockers have HIGH-sign neighbors.",
-      "is_new_info": true,
-      "n_candidates": 36,
-      "top_candidate": "M256",
-      "analysis_metrics": {
-        "n_blockers": 12
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Blocker Sign Context: Blocker context: 12 blockers have HIGH-sign neighbors. · n_blockers=12"
-    },
-    {
-      "cycle": 46,
-      "timestamp": "2026-06-09T02:04:17.889462+00:00",
-      "gap_targeted": "phonological_reconstruction",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "decoded_text_repetition",
-      "selection_method": "proposal",
-      "verdict": "Text repetition: TTR=0.019 (130 types / 6781 tokens).",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "ttr": 0.019
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Decoded Text Repetition: Text repetition: TTR=0.019 (130 types / 6781 tokens). · ttr=0.019"
-    },
-    {
-      "cycle": 47,
-      "timestamp": "2026-06-09T02:04:19.543065+00:00",
-      "gap_targeted": "computational_upgrade",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "rare_sign_neighbor_profile",
-      "selection_method": "proposal",
-      "verdict": "Rare sign neighbors: 269 hapax-like signs profiled.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "n_rare": 269
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Rare Sign Neighbor Profile: Rare sign neighbors: 269 hapax-like signs profiled. · n_rare=269"
-    },
-    {
-      "cycle": 48,
-      "timestamp": "2026-06-09T02:04:21.073132+00:00",
-      "gap_targeted": "archaeological_context",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "site_specific_formula",
-      "selection_method": "proposal",
-      "verdict": "Site formulas: 9 sites with unique formula sets.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "n_sites": 9
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Site Specific Formula: Site formulas: 9 sites with unique formula sets. · n_sites=9"
-    },
-    {
-      "cycle": 49,
-      "timestamp": "2026-06-09T02:04:22.632400+00:00",
-      "gap_targeted": "personal_name_structure",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "reading_frequency_zipf",
-      "selection_method": "proposal",
-      "verdict": "Zipf: α=0.623 (129 readings). Linguistic.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "zipf_alpha": 0.623
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Reading Frequency Zipf: Zipf: α=0.623 (129 readings). Linguistic. · zipf_alpha=0.623"
-    },
-    {
-      "cycle": 50,
-      "timestamp": "2026-06-09T02:04:24.203970+00:00",
-      "gap_targeted": "rare_sign_context",
-      "n_papers": 0,
-      "n_insights": 0,
-      "insight_types": {},
-      "experiment": "compound_semantic_coherence",
-      "selection_method": "proposal",
-      "verdict": "Compound coherence: 100% (4900/4906) valid.",
-      "is_new_info": true,
-      "n_candidates": 0,
-      "top_candidate": null,
-      "analysis_metrics": {
-        "valid_pct": 100
-      },
-      "analysis_flags": [],
-      "analysis_summary": "Compound Semantic Coherence: Compound coherence: 100% (4900/4906) valid. · valid_pct=100"
     }
   ]
 }

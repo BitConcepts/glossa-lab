@@ -1,0 +1,33 @@
+{
+  "phase349": {
+    "decoded_syllables": 7161,
+    "decoded_bigrams": 2225,
+    "sangam_lm_size": 4381,
+    "real_coverage": 0.1191,
+    "real_cross_entropy": 35.982,
+    "null_cov_mean": 0.0832,
+    "null_cov_std": 0.0337,
+    "cov_z_score": 1.07,
+    "cov_p_value": 0.14,
+    "null_ce_mean": 36.9664,
+    "ce_z_score": 1.1,
+    "dravidian_beats_null_ce": true,
+    "dravidian_beats_null_cov": true,
+    "verdict": "Sangam syllable CE: coverage 11.9% vs null 8.3% (z=1.1, p=0.1400). CE: 35.98 vs null 36.97 (z=1.1). MARGINAL — some Dravidian signal."
+  },
+  "phase350": {
+    "m77_inscriptions": 1105,
+    "m77_tokens_total": 4797,
+    "m77_tokens_decoded": 4134,
+    "m77_coverage": 0.8618,
+    "m77_unique_bigrams": 171,
+    "holdat_unique_bigrams": 1557,
+    "common_bigrams": 5,
+    "bigram_jaccard": 0.0029,
+    "pearson_r": 0.6394,
+    "m77_root_suffix_rate": 0.0,
+    "holdat_root_suffix_rate": 0.2821,
+    "rs_rate_match": false,
+    "verdict": "M77 replication: 86% coverage, 5 common bigrams (Jaccard=0.00), r=0.639. ROOT→SUFFIX: M77=0% vs Holdat=28%. MODERATE — partial replication."
+  }
+}

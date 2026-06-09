@@ -754,12 +754,6 @@ def _indus_anchor_set_syllable(inputs: dict, params: dict) -> dict:
     conf_order = {"HIGH": 3, "MEDIUM": 2, "LOW": 1, "UNCERTAIN": 0}
     min_conf_level = conf_order.get(min_conf, 2)
 
-    # Diacritic strip table (Tamil/Dravidian → ASCII)
-    _DIAC = str.maketrans(
-        "āīūṭṇḷṟṙāîÂṃẽõ",
-        "iiutnnrraiaamon",
-    )
-
     def _strip_diacritics(s: str) -> str:
         s = s.lower()
         replacements = [

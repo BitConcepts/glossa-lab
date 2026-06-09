@@ -1,14 +1,9 @@
-import { useEffect, useState, useCallback } from "react";
-import { fmtTime, fmtDateTimeCompact } from "../dateFormat";
+import { useEffect, useState, useCallback, useRef } from "react";
+import { fmtTime, fmtDateTimeCompact, fmtElapsed } from "../dateFormat";
 import {
-  cancelJob,
-  clearJobs,
-  createJob,
-  getJobResults,
-  getPipelineCatalog,
-  listJobs,
-  CatalogPipeline,
-  JobResponse,
+  cancelJob, clearJobs, createJob, getJobResults, getPipelineCatalog,
+  listJobs, pauseJob, resumeJob, pauseAllJobs, resumeAllJobs,
+  CatalogPipeline, JobResponse,
 } from "../api";
 
 // Internal runtime-only param keys that should NOT be re-submitted on retry
@@ -210,6 +205,9 @@ export function JobsView() {
   const [error, setError] = useState<string | null>(null);
   const [pipelines, setPipelines] = useState<CatalogPipeline[]>([]);
   const [clearing, setClearing] = useState(false);
+  const [pausing, setPausing] = useState<Set<string>>(new Set());
+  // Track nodes_done per job to detect slow SA nodes (avoid growing ETA)
+  const nodesDoneTracker = useRef<Map<string, { done: number; since: number }>>(new Map());
 
   // Submit form
   const [jobName, setJobName] = useState("");
@@ -355,11 +353,36 @@ export function JobsView() {
     }
   };
 
+  const handlePause = async (id: string) => {
+    setPausing(s => new Set([...s, id]));
+    try { await pauseJob(id); await load(); }
+    catch (e) { alert(e instanceof Error ? e.message : "Pause failed"); }
+    finally { setPausing(s => { const n = new Set(s); n.delete(id); return n; }); }
+  };
+
+  const handleResume = async (id: string) => {
+    setPausing(s => new Set([...s, id]));
+    try { await resumeJob(id); await load(); }
+    catch (e) { alert(e instanceof Error ? e.message : "Resume failed"); }
+    finally { setPausing(s => { const n = new Set(s); n.delete(id); return n; }); }
+  };
+
+  const handlePauseAll = async () => {
+    try { await pauseAllJobs(); await load(); }
+    catch (e) { alert(e instanceof Error ? e.message : "Pause all failed"); }
+  };
+
+  const handleResumeAll = async () => {
+    try { await resumeAllJobs(); await load(); }
+    catch (e) { alert(e instanceof Error ? e.message : "Resume all failed"); }
+  };
+
   const statusColor = (s: string) => {
     if (s === "completed") return "#16a34a";
     if (s === "failed")    return "#dc2626";
     if (s === "running")   return "#2563eb";
     if (s === "pending")   return "#d97706";
+    if (s === "paused")    return "#92400e";
     if (s === "cancelled") return "#6b7280";
     return "#6b7280";
   };
@@ -368,6 +391,7 @@ export function JobsView() {
     if (s === "failed")    return "#fee2e2";
     if (s === "running")   return "#dbeafe";
     if (s === "pending")   return "#fef3c7";
+    if (s === "paused")    return "#fef3c7";
     if (s === "cancelled") return "#f3f4f6";
     return "#f3f4f6";
   };
@@ -384,20 +408,28 @@ export function JobsView() {
           )}
         </div>
         <div style={{ display: "flex", gap: 6 }}>
-          <button
-            onClick={() => load(true)}
-            disabled={refreshing}
+          <button onClick={() => load(true)} disabled={refreshing}
             style={{ ...btnStyle, background: "#f3f4f6", color: "#374151", fontSize: 12, padding: "4px 12px" }}
-            title="Manually refresh the job list"
-          >
+            title="Manually refresh the job list">
             {refreshing ? "Refreshing…" : "⟳ Refresh"}
           </button>
           <button
-            onClick={handleClearJobs}
-            disabled={clearing || jobs.length === 0}
-            style={{ ...btnStyle, background: "#6b7280", fontSize: 12, padding: "4px 12px" }}
-          >
-            {clearing ? "Clearing…" : "Clear all"}
+            onClick={handlePauseAll}
+            disabled={jobs.filter(j => j.status === "pending" || j.status === "running").length === 0}
+            style={{ ...btnStyle, background: "#d97706", fontSize: 12, padding: "4px 12px" }}
+            title="Pause all pending and running jobs">
+            ⏸ Pause All
+          </button>
+          <button
+            onClick={handleResumeAll}
+            disabled={jobs.filter(j => j.status === "paused").length === 0}
+            style={{ ...btnStyle, background: "#059669", fontSize: 12, padding: "4px 12px" }}
+            title="Resume all paused jobs">
+            ▶ Resume All
+          </button>
+          <button onClick={handleClearJobs} disabled={clearing || jobs.length === 0}
+            style={{ ...btnStyle, background: "#6b7280", fontSize: 12, padding: "4px 12px" }}>
+            {clearing ? "Clearing…" : "Delete All"}
           </button>
         </div>
       </div>
@@ -502,11 +534,43 @@ export function JobsView() {
               const nodesDone = (j.params?.nodes_done as number) ?? 0;
               const pct = nodeCount > 0 ? Math.round((nodesDone / nodeCount) * 100) : null;
               const isExpRun = j.pipeline === "exp_run";
+              const resourceWait = (j.params?.resource_wait as string) ?? null;
               const elapsedSec = j.status === "running"
                 ? Math.round((Date.now() - new Date(j.created_at).getTime()) / 1000)
                 : null;
-              const etaSec = (pct !== null && pct > 5 && elapsedSec !== null)
-                ? Math.round((elapsedSec / pct) * (100 - pct))
+              // Historical average duration for this pipeline (from completed jobs)
+              const historicalAvgSec = (() => {
+                const done = jobs.filter(
+                  d => d.status === "completed" && d.pipeline === j.pipeline
+                    && d.id !== j.id && d.updated_at
+                );
+                if (done.length === 0) return null;
+                const durations = done.map(d =>
+                  (new Date(d.updated_at!).getTime() - new Date(d.created_at).getTime()) / 1000
+                ).filter(x => x > 0);
+                return durations.length > 0
+                  ? durations.reduce((a, b) => a + b, 0) / durations.length
+                  : null;
+              })();
+              // ETA: use historical avg when < 15% complete; blend to linear extrapolation after
+              const etaSec = elapsedSec !== null && pct !== null
+                ? (() => {
+                    if (pct >= 15) return Math.round((elapsedSec / pct) * (100 - pct));
+                    if (historicalAvgSec !== null) return Math.max(0, Math.round(historicalAvgSec - elapsedSec));
+                    return null;
+                  })()
+                : null;
+              // Stuck-node detection: update tracker when nodes_done changes
+              const nowMs = Date.now();
+              const tracker = nodesDoneTracker.current.get(j.id);
+              if (!tracker || tracker.done !== nodesDone) {
+                nodesDoneTracker.current.set(j.id, { done: nodesDone, since: nowMs });
+              }
+              const stuckMs = tracker && tracker.done === nodesDone ? nowMs - tracker.since : 0;
+              // When a node has been running > 3 min and ETA would be > 2× elapsed: show computing label
+              const nodeComputingLabel = isExpRun && j.status === "running" && nodeCount > 0
+                && stuckMs > 180_000 && etaSec !== null && elapsedSec !== null && etaSec > elapsedSec * 1.5
+                ? `node ${nodesDone + 1}/${nodeCount} computing…`
                 : null;
               return (
               <tr key={j.id}>
@@ -515,6 +579,16 @@ export function JobsView() {
                   <div style={{ fontSize: 11, color: "#6b7280", fontFamily: "monospace" }}>
                     {j.id.slice(0, 8)}…
                   </div>
+                  {/* Resource-wait banner — job is pending but blocked on CPU/RAM/VRAM */}
+                  {j.status === "pending" && resourceWait && (
+                    <div style={{ marginTop: 4, fontSize: 10, color: "#92400e",
+                                  background: "#fef3c7", border: "1px solid #fcd34d",
+                                  borderRadius: 4, padding: "2px 7px",
+                                  display: "flex", alignItems: "center", gap: 4 }}>
+                      <span>⏳</span>
+                      <span>{resourceWait}</span>
+                    </div>
+                  )}
                   {/* Progress bar for running exp_run jobs */}
                   {j.status === "running" && isExpRun && nodeCount > 0 && (
                     <div style={{ marginTop: 4, display: "flex", alignItems: "center", gap: 6 }}>
@@ -523,8 +597,10 @@ export function JobsView() {
                       </div>
                       <span style={{ fontSize: 10, color: "#6b7280", whiteSpace: "nowrap" }}>
                         {nodesDone}/{nodeCount} nodes{pct !== null ? ` (${pct}%)` : ""}
-                        {elapsedSec !== null && ` · ${elapsedSec}s`}
-                        {etaSec !== null && ` · ~${etaSec}s left`}
+                        {elapsedSec !== null && ` · ${fmtElapsed(elapsedSec)}`}
+                        {nodeComputingLabel
+                          ? ` · ${nodeComputingLabel}`
+                          : etaSec !== null ? ` · ~${fmtElapsed(etaSec)} left` : ""}
                       </span>
                     </div>
                   )}
@@ -568,7 +644,7 @@ export function JobsView() {
                     {j.status}
                   </span>
                   {j.status === "running" && elapsedSec !== null && !isExpRun && (
-                    <div style={{ fontSize: 10, color: "#9ca3af" }}>{elapsedSec}s elapsed</div>
+                    <div style={{ fontSize: 10, color: "#9ca3af" }}>{fmtElapsed(elapsedSec ?? 0)} elapsed</div>
                   )}
                 </Td>
                 <Td>{fmtDateTimeCompact(j.created_at)}</Td>
@@ -596,13 +672,30 @@ export function JobsView() {
                       <span style={{ fontSize: 11, color: "#6b7280", fontStyle: "italic" }}>cancelled</span>
                     )}
                     {(j.status === "pending" || j.status === "running") && (
+                      <>
+                        <button
+                          style={{ ...btnStyle, padding: "2px 10px", fontSize: 12, background: "#d97706" }}
+                          onClick={() => handlePause(j.id)}
+                          disabled={pausing.has(j.id)}
+                          title="Pause this job">
+                          {pausing.has(j.id) ? "…" : "⏸ Pause"}
+                        </button>
+                        <button
+                          style={{ ...btnStyle, padding: "2px 10px", fontSize: 12,
+                            background: j.status === "running" ? "#ea580c" : "#6b7280" }}
+                          onClick={() => handleCancel(j.id)}
+                          title={j.status === "running" ? "Abort this running job" : "Cancel this queued job"}>
+                          {j.status === "running" ? "❌ Abort" : "⏸ Cancel"}
+                        </button>
+                      </>
+                    )}
+                    {j.status === "paused" && (
                       <button
-                        style={{ ...btnStyle, padding: "2px 10px", fontSize: 12,
-                          background: j.status === "running" ? "#ea580c" : "#d97706" }}
-                        onClick={() => handleCancel(j.id)}
-                        title={j.status === "running" ? "Abort this running job" : "Cancel this queued job"}
-                      >
-                        {j.status === "running" ? "❌ Abort" : "⏸ Cancel"}
+                        style={{ ...btnStyle, padding: "2px 10px", fontSize: 12, background: "#059669" }}
+                        onClick={() => handleResume(j.id)}
+                        disabled={pausing.has(j.id)}
+                        title="Resume this paused job">
+                        {pausing.has(j.id) ? "…" : "▶ Resume"}
                       </button>
                     )}
                   </span>

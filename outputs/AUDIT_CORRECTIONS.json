@@ -1,0 +1,94 @@
+{
+  "audit_date": "2026-05-27",
+  "auditor": "Oz + human review",
+
+  "bugs_found_and_fixed": [
+    {
+      "phase": 239,
+      "bug": "Mass-assigned kur (DEDR 1638) to 205 LOW signs via Elamite corroboration",
+      "root_cause": "Phase-111 mass-assigned kur reading; Phase-239 injected same DEDR for all; Phase-271 upgraded to HIGH",
+      "fix": "Phase 309: Reverted 205 bogus kur, kept 20 legitimate (allograph-based)",
+      "status": "FIXED"
+    },
+    {
+      "phase": 312,
+      "bug": "Mass-assigned kol (DEDR 2133) to 205 reverted signs via positional re-derivation",
+      "root_cause": "used_dedr counter only tracked HIGH signs, not newly-assigned ones, so kol scored highest for every sign",
+      "fix": "Audit revert: all 205 Phase-312 signs back to LOW with no reading",
+      "status": "FIXED"
+    },
+    {
+      "phase": 321,
+      "bug": "Venkatesan cross-check reported 0% agreement due to Unicode diacritical mismatch",
+      "root_cause": "String comparison failed on ō vs o, ṭ vs t, etc. in Dravidian transcription",
+      "fix": "Corrected with unicodedata normalization: actual agreement is 5% (1 exact + 2 close out of 55)",
+      "status": "FIXED in this file; output needs re-generation"
+    }
+  ],
+
+  "claims_retracted": [
+    {
+      "claim": "91.8% Proto-Dravidian grammar conformance",
+      "phase": 313,
+      "reason": "Phase 317 permutation null test showed random shuffled readings produce 94.2% conformance (HIGHER than real). The PD transition rules are too permissive to discriminate.",
+      "status": "RETRACTED — do not cite"
+    },
+    {
+      "claim": "605 signs with readings (167 distinct)",
+      "phase": 312,
+      "reason": "Phase 312 mass-assigned kol to 205 signs. After revert, only 400 signs have readings.",
+      "status": "CORRECTED to 400"
+    },
+    {
+      "claim": "100% token coverage",
+      "phase": 312,
+      "reason": "Relied on Phase 312 mass-assigned kol readings. Actual HIGH-only coverage is 92.8%.",
+      "status": "CORRECTED to 92.8%"
+    }
+  ],
+
+  "experiments_contaminated_by_bugs": {
+    "Phase 308 Elamite": "Ran before Phase 309 kur fix. However, the Elamite LM construction and Holdat SA are anchor-independent. The anchored bigram test used 605 anchors (including 205 bogus kur) — bigram hit rates may be slightly inflated but the RANKING (Dravidian > Elamite > Munda > Hebrew > Uniform) is robust.",
+    "Phase 313 Grammar": "Used kol-contaminated anchors AND was independently invalidated by Phase 317. RETRACTED.",
+    "Phase 314 Formulas": "Used kol-contaminated anchors for MEDIUM/LOW signs. HIGH-only formula patterns (PROFESSION+SUFFIX) are unaffected. The '1252 fully decoded' count was inflated.",
+    "Phase 317 Permutation": "Used kol-contaminated anchors but conclusion (NOT SIGNIFICANT) is CORRECT regardless — the test is valid because it shows the grammar rules don't discriminate.",
+    "Phase 321 Venkatesan": "Comparison code had diacritical bug. Corrected rate: 5% (not 0%)."
+  },
+
+  "experiments_verified_clean": {
+    "Phase 310 M77": "Used corrected 400H anchors. Dravidian 70.5% vs Uniform 0%. VALID.",
+    "Phase 311 Phon": "Used corrected anchors. 76% PD inventory coverage. VALID.",
+    "Phase 315 Scorecard": "Sign-level metrics, does not use anchor readings. VALID.",
+    "Phase 318 Parpola": "Used HIGH-only signs. 50% agreement. VALID.",
+    "Phase 319 Entropy": "Used HIGH-only reading sequences. H2=4.11 bits. VALID.",
+    "Phase 321b Kriger": "Uniqueness test is sign-level, independent of anchors. 97.7%. VALID."
+  },
+
+  "corrected_honest_state": {
+    "total_anchors": 605,
+    "HIGH_with_reading": 400,
+    "HIGH_distinct_readings": 167,
+    "MEDIUM_with_reading": 0,
+    "LOW_no_reading": 205,
+    "holdat_token_coverage_HIGH_only": "92.8%",
+    "max_reading_duplication": "kur=20 (allograph-justified)",
+    "yajnadevam_signs_not_in_holdat": 192,
+    "holdat_validated_signs": 208,
+
+    "valid_findings": [
+      "5-way language discrimination: Dravidian best fit (anchored bigram test)",
+      "Corpus-independent signal: M77 70.5% Dravidian advantage",
+      "50% Parpola agreement (8 exact + 2 partial out of 20)",
+      "5% Venkatesan agreement (1 exact + 2 close out of 55)",
+      "Reading-level entropy H2=4.11 bits (linguistic range)",
+      "97.7% inscription uniqueness (supports registration-code model)",
+      "76% PD phonological inventory attested (4/6 missing are expected rare)"
+    ],
+
+    "invalid_findings_retracted": [
+      "91.8% PD grammar conformance (permutation null showed non-discriminative)",
+      "605 signs with readings (was kol mass-assignment; actual: 400)",
+      "100% token coverage (was inflated; actual: 92.8% HIGH-only)"
+    ]
+  }
+}

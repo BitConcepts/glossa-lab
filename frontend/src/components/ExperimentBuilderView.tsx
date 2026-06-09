@@ -470,6 +470,17 @@ const _erStore = { runs: {} as _ERM, cbs: new Set<(r: _ERM) => void>() };
 function _erSet(fn: (prev: _ERM) => _ERM) { _erStore.runs = fn(_erStore.runs); _erStore.cbs.forEach(c => c(_erStore.runs)); }
 function _erSub(cb: (r: _ERM) => void): () => void { _erStore.cbs.add(cb); return () => _erStore.cbs.delete(cb); }
 
+// ── Sequential queue helpers (shared localStorage key with BottomPanel) ────
+const _SEQ_KEY = "glossa_seq_run_queue";
+interface _SeqQ { queue: string[]; watchJobId: string | null; }
+function loadSeqQueueExt(): _SeqQ {
+  try {
+    const raw = JSON.parse(localStorage.getItem(_SEQ_KEY) ?? "{}") as Partial<_SeqQ>;
+    return { queue: Array.isArray(raw.queue) ? raw.queue : [], watchJobId: raw.watchJobId ?? null };
+  } catch { return { queue: [], watchJobId: null }; }
+}
+function saveSeqQueueExt(q: _SeqQ) { localStorage.setItem(_SEQ_KEY, JSON.stringify(q)); }
+
 // ── Main ExperimentBuilderView ─────────────────────────────────────────────
 
 let _eid = 0;
@@ -512,6 +523,25 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   const [ctxMenu, setCtxMenu]   = useState<{ x: number; y: number; type: "pane" | "node"; nodeId?: string } | null>(null);
   const [deleteConfirm, setDeleteConfirm] = useState<string | null>(null);
   const [fitTrigger, setFitTrigger] = useState(0);
+  // Sequential queue state — synced with localStorage
+  const [seqQueue, setSeqQueueLocal] = useState<_SeqQ>(() => loadSeqQueueExt());
+  useEffect(() => {
+    const refresh = () => setSeqQueueLocal(loadSeqQueueExt());
+    window.addEventListener("glossa:seq_queue_updated", refresh);
+    // Also poll occasionally so queue banner stays in sync
+    const t = setInterval(refresh, 5000);
+    return () => { window.removeEventListener("glossa:seq_queue_updated", refresh); clearInterval(t); };
+  }, []);
+  const addToSeqQueue = useCallback((expId: string) => {
+    // Find currently running GPU job to watch
+    const { queue: prevQ, watchJobId: prevW } = loadSeqQueueExt();
+    if (prevQ.includes(expId)) return; // already queued
+    // Use the first running exp_run job as the watch target (if any)
+    const updated: _SeqQ = { queue: [...prevQ, expId], watchJobId: prevW };
+    saveSeqQueueExt(updated);
+    setSeqQueueLocal(updated);
+    window.dispatchEvent(new CustomEvent("glossa:seq_queue_updated"));
+  }, []);
 
   // ── Active runs — backed by the module-level store (survives navigation) ──────────
   type ExpRun = _ER;
@@ -756,7 +786,13 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
       });
 
       // Auto-arrange on load so the graph is always presented in a clean layout
-      setNodes(autoArrangeNodes(mappedNodes as Node[], mappedEdges) as Node<ExpNodeData>[]);
+      const heightFn = (data: Record<string, unknown>): number => {
+        const d = data as ExpNodeData;
+        const portRows = Math.max(d.inputs?.length ?? 0, d.outputs?.length ?? 0);
+        const paramRows = Math.min(Object.keys(d.params_schema?.properties ?? {}).length, 4);
+        return HEADER_H + portRows * PORT_ROW_H + paramRows * 22 + 20;
+      };
+      setNodes(autoArrangeNodes(mappedNodes as Node[], mappedEdges, { nodeHeightFn: heightFn }) as Node<ExpNodeData>[]);
       setEdges(mappedEdges);
       setFitTrigger(t => t + 1);
     } catch { /* ignore */ }
@@ -853,9 +889,35 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
           setRunResult(`complete: ${keys || "done"}`);
         } else if (ev.event === "run_error") {
           hadError = true;
-          setRunResult(`Error: ${ev.message ?? "run failed"}`);
-          if (activeExp?.id === exp.id) {
-            setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: "error" } as ExpNodeData })));
+          // Surface GPU-blocked errors with a clear message (don't mark nodes as error)
+          const isGpuBlocked = (ev as unknown as Record<string, unknown>).gpu_blocked === true;
+          const isVramBlocked = (ev as unknown as Record<string, unknown>).resource_blocked === true;
+          if (isGpuBlocked) {
+            // Auto-enqueue this experiment to run after the blocking job finishes
+            const blockingJobId = (ev as unknown as Record<string, unknown>).blocking_job_id as string | undefined;
+            if (exp.id && blockingJobId) {
+              const { queue: prevQ, watchJobId: prevW } = loadSeqQueueExt();
+              if (!prevQ.includes(exp.id)) {
+                const newQueue = [...prevQ, exp.id];
+                const watchId = prevW || blockingJobId;
+                saveSeqQueueExt({ queue: newQueue, watchJobId: watchId });
+                setRunResult(`⏭ Queued after current GPU job — will run automatically when it finishes.`);
+                // Notify BottomPanel to refresh its queue display
+                window.dispatchEvent(new CustomEvent("glossa:seq_queue_updated"));
+              } else {
+                setRunResult(`⏭ Already queued.`);
+              }
+            } else {
+              setRunResult(`⚠ ${ev.message ?? "GPU blocked"}`);
+            }
+            hadError = false; // not a real error
+          } else if (isVramBlocked) {
+            setRunResult(`⚠ ${ev.message ?? "VRAM insufficient"}`);
+          } else {
+            setRunResult(`Error: ${ev.message ?? "run failed"}`);
+            if (activeExp?.id === exp.id) {
+              setNodes(prev => prev.map(n => ({ ...n, data: { ...n.data, runStatus: "error" } as ExpNodeData })));
+            }
           }
         }
       }
@@ -963,7 +1025,10 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
   const draggedExpId = useRef<string | null>(null);
   const onDrop = useCallback((ev: React.DragEvent<HTMLDivElement>) => {
     ev.preventDefault();
-    if (!activeExp) return;  // guard: no experiment open, ignore drop
+    if (!activeExp) {
+      // Auto-create an unsaved draft so users can start building immediately
+      setActiveExp({ name: "Untitled Draft", description: "", nodes: [], edges: [] });
+    }
     if (!reactFlowWrapper.current) return;
     const rect = reactFlowWrapper.current.getBoundingClientRect();
     const pos = { x: Math.round((ev.clientX - rect.left - 80) / 15) * 15, y: Math.round((ev.clientY - rect.top - 30) / 15) * 15 };
@@ -990,8 +1055,8 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     draggedNodeType.current = null;
   }, [catalog, savedExps, darkMode]);
   const onDragOver = (ev: React.DragEvent) => {
-    if (!activeExp) return;  // no drop target when no experiment open
-    ev.preventDefault(); ev.dataTransfer.dropEffect = "move";
+    ev.preventDefault();  // must always prevent default to allow drops
+    ev.dataTransfer.dropEffect = "move";
   };
 
   const nodeCtxItems = useCallback((nodeId: string): CtxItem[] => {
@@ -1051,11 +1116,20 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
     document.addEventListener("mousemove", onMove); document.addEventListener("mouseup", onUp);
   }, [expsH]);
 
+  // Height estimator for ExpNode — used by auto-arrange to avoid vertical overlap
+  // HEADER_H + max(inputs, outputs) * PORT_ROW_H + 28 for param preview rows
+  const expNodeHeight = useCallback((data: Record<string, unknown>): number => {
+    const d = data as ExpNodeData;
+    const portRows = Math.max(d.inputs?.length ?? 0, d.outputs?.length ?? 0);
+    const paramRows = Math.min(Object.keys(d.params_schema?.properties ?? {}).length, 4);
+    return HEADER_H + portRows * PORT_ROW_H + paramRows * 22 + 20;
+  }, []);
+
   // Auto-arrange
   const doArrange = useCallback(() => {
-    setNodes(prev => autoArrangeNodes(prev, edges) as Node<ExpNodeData>[]);
+    setNodes(prev => autoArrangeNodes(prev, edges, { nodeHeightFn: expNodeHeight }) as Node<ExpNodeData>[]);
     setFitTrigger(t => t + 1);
-  }, [edges]);
+  }, [edges, expNodeHeight]);
 
   // Import/export helpers
   const importRef = useRef<HTMLInputElement>(null);
@@ -1217,30 +1291,45 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
                     </span>
                   )}
                   <span style={{ fontSize: 9, color: th.textFaint, flexShrink: 0 }}>{e.node_count}n</span>
-                  {/* Run / running indicator button */}
-                  {e.id && (
-                    <>
-                      <button
-                        onClick={ev => { ev.stopPropagation(); if (!isRunning) void doRun({ id: e.id, name: e.name, description: e.description ?? "", nodes: [], edges: [] }); }}
-                        title={isRunning ? "Running…" : "Run"}
-                        disabled={isRunning}
-                        style={{ border: "none", background: "none", color: isRunning ? "#60a5fa" : "#22c55e",
-                          cursor: isRunning ? "default" : "pointer", fontSize: 10, padding: "0 2px",
-                          lineHeight: "18px", borderRadius: 3, flexShrink: 0, opacity: isRunning ? 0.6 : 1 }}>
-                        {isRunning ? "⏳" : "▶"}
-                      </button>
-                      {!isRunning && (
+                  {/* Run / Queue / running indicator buttons */}
+                  {e.id && (() => {
+                    const isQueued = (seqQueue.queue ?? []).includes(e.id);
+                    return (
+                      <>
                         <button
-                          onClick={ev => { ev.stopPropagation(); void doRun({ id: e.id, name: e.name, description: e.description ?? "", nodes: [], edges: [] }, true); }}
-                          title="Run + email recipients on completion"
-                          style={{ border: "none", background: "none", color: "#7c3aed",
-                            cursor: "pointer", fontSize: 10, padding: "0 2px",
-                            lineHeight: "18px", borderRadius: 3, flexShrink: 0 }}>
-                          ✉
+                          onClick={ev => { ev.stopPropagation(); if (!isRunning) void doRun({ id: e.id, name: e.name, description: e.description ?? "", nodes: [], edges: [] }); }}
+                          title={isRunning ? "Running…" : "Run now (queues automatically if GPU is busy)"}
+                          disabled={isRunning}
+                          style={{ border: "none", background: "none", color: isRunning ? "#60a5fa" : "#22c55e",
+                            cursor: isRunning ? "default" : "pointer", fontSize: 10, padding: "0 2px",
+                            lineHeight: "18px", borderRadius: 3, flexShrink: 0, opacity: isRunning ? 0.6 : 1 }}>
+                          {isRunning ? "⏳" : "▶"}
                         </button>
-                      )}
-                    </>
-                  )}
+                        {!isRunning && (
+                          <button
+                            onClick={ev => { ev.stopPropagation(); addToSeqQueue(e.id!); }}
+                            title={isQueued ? "Already in queue" : "Add to sequential queue (runs after current GPU job)"}
+                            style={{ border: "none", background: "none",
+                              color: isQueued ? "#60a5fa" : th.textFaint,
+                              cursor: "pointer", fontSize: 10, padding: "0 2px",
+                              lineHeight: "18px", borderRadius: 3, flexShrink: 0,
+                              opacity: isQueued ? 1 : 0.5 }}>
+                            ⏭
+                          </button>
+                        )}
+                        {!isRunning && (
+                          <button
+                            onClick={ev => { ev.stopPropagation(); void doRun({ id: e.id, name: e.name, description: e.description ?? "", nodes: [], edges: [] }, true); }}
+                            title="Run + email recipients on completion"
+                            style={{ border: "none", background: "none", color: "#7c3aed",
+                              cursor: "pointer", fontSize: 10, padding: "0 2px",
+                              lineHeight: "18px", borderRadius: 3, flexShrink: 0 }}>
+                            ✉
+                          </button>
+                        )}
+                      </>
+                    );
+                  })()}
                   <button onClick={ev => { ev.stopPropagation(); void doDeleteExp(e.id); }} title={deleteConfirm === e.id ? "Confirm?" : "Delete"}
                     style={{ border: "none", background: "none", color: deleteConfirm === e.id ? "#f87171" : th.textMuted, cursor: "pointer", fontSize: 10, padding: "0 3px", lineHeight: "18px", borderRadius: 3, flexShrink: 0 }}>
                     {deleteConfirm === e.id ? "!" : "×"}
@@ -1345,7 +1434,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
           { label: "＋ New",    title: "New experiment",      action: () => setShowNew(true) },
           { label: "↑ Import",  title: "Import from JSON",    action: () => importRef.current?.click() },
           { label: "↓ Export",  title: "Export to JSON",      disabled: !activeExp,                 action: exportExp },
-          { label: saving ? "…" : "💾 Save", title: "Save",   disabled: saving || !activeExp,       action: () => void doSave() },
+          { label: saving ? "…" : "💾 Save", title: "Save",   disabled: saving,       action: () => void doSave() },
           { label: "⬦ Arrange", title: "Auto-arrange nodes",  disabled: !activeExp || nodes.length === 0, action: doArrange },
         ].map(({ label, title, action, disabled }) => (
           <button key={label} onClick={action} disabled={disabled} title={title}
@@ -1367,7 +1456,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
           {!activeExp && (
             <div style={{ position: "absolute", inset: 0, display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", gap: 10, zIndex: 5, pointerEvents: "none" }}>
               <div style={{ fontSize: 40 }}>🔀</div>
-              <div style={{ fontSize: 14, color: th.textMuted, fontWeight: 600 }}>Create or select a graph experiment</div>
+              <div style={{ fontSize: 14, color: th.textMuted, fontWeight: 600 }}>Drag nodes from the palette to start — or create a named experiment first</div>
               <div style={{ fontSize: 11, color: th.textFaint }}>Use the panel on the left</div>
             </div>
           )}
@@ -1409,6 +1498,7 @@ export function ExperimentBuilderView({ darkMode = true }: { darkMode?: boolean 
             onConnect={onConnect}
             onNodeClick={onNodeClick} onPaneClick={onPaneClick}
             onNodeContextMenu={onNodeCtx}
+            onDrop={onDrop} onDragOver={onDragOver}
             snapToGrid snapGrid={[15, 15]}
             deleteKeyCode={["Backspace", "Delete"]}
             fitView fitViewOptions={{ padding: 0.2 }}

@@ -1,0 +1,11 @@
+{
+  "experiment": "indus_phase31_t3_zipf",
+  "status": "PASS",
+  "m77_zipf_slope": 0.75,
+  "tb_zipf_slope": 0.93,
+  "slope_diff": 0.18,
+  "delta": 0.18,
+  "threshold": 0.3,
+  "verdict": "Both corpora in syllabic regime (0.5-1.5)",
+  "note": "Reconstructed from archived result (original deleted 2026-05-17)"
+}

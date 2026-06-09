@@ -1,0 +1,1166 @@
+{
+  "phase352": {
+    "total_low_signs": 0,
+    "scored_signs": 0,
+    "upgrade_to_medium": 0,
+    "review_needed": 0,
+    "top_20_candidates": [],
+    "verdict": "LOW upgrade: 0 signs ready for MEDIUM, 0 need review, out of 0 scored."
+  },
+  "phase353": {
+    "readings_with_multiple_signs": 121,
+    "allograph_groups": 28,
+    "total_allograph_pairs": 84,
+    "groups": [
+      {
+        "reading": "kol",
+        "n_signs": 6,
+        "pairs": [
+          {
+            "sign_a": "M099",
+            "sign_b": "M211",
+            "reading": "kol",
+            "l1_distance": 0.194,
+            "freq_a": 389,
+            "freq_b": 249
+          },
+          {
+            "sign_a": "M383",
+            "sign_b": "M321",
+            "reading": "kol",
+            "l1_distance": 0.0,
+            "freq_a": 7,
+            "freq_b": 5
+          },
+          {
+            "sign_a": "M383",
+            "sign_b": "M103",
+            "reading": "kol",
+            "l1_distance": 0.0,
+            "freq_a": 7,
+            "freq_b": 5
+          },
+          {
+            "sign_a": "M321",
+            "sign_b": "M103",
+            "reading": "kol",
+            "l1_distance": 0.0,
+            "freq_a": 5,
+            "freq_b": 5
+          }
+        ]
+      },
+      {
+        "reading": "ka",
+        "n_signs": 4,
+        "pairs": [
+          {
+            "sign_a": "M155",
+            "sign_b": "M347",
+            "reading": "ka",
+            "l1_distance": 0.0,
+            "freq_a": 5,
+            "freq_b": 8
+          }
+        ]
+      },
+      {
+        "reading": "il",
+        "n_signs": 4,
+        "pairs": [
+          {
+            "sign_a": "M163",
+            "sign_b": "M239",
+            "reading": "il",
+            "l1_distance": 0.0,
+            "freq_a": 5,
+            "freq_b": 5
+          },
+          {
+            "sign_a": "M163",
+            "sign_b": "M164",
+            "reading": "il",
+            "l1_distance": 0.0,
+            "freq_a": 5,
+            "freq_b": 3
+          },
+          {
+            "sign_a": "M239",
+            "sign_b": "M164",
+            "reading": "il",
+            "l1_distance": 0.0,
+            "freq_a": 5,
+            "freq_b": 3
+          }
+        ]
+      },
+      {
+        "reading": "kōṉ",
+        "n_signs": 2,
+        "pairs": [
+          {
+            "sign_a": "M073",
+            "sign_b": "M005",
+            "reading": "kōṉ",
+            "l1_distance": 0.0,
+            "freq_a": 25,
+            "freq_b": 15
+          }
+        ]
+      },
+      {
+        "reading": "yānai",
+        "n_signs": 2,
+        "pairs": [
+          {
+            "sign_a": "M045",
+            "sign_b": "M029",
+            "reading": "yānai",
+            "l1_distance": 0.0,
+            "freq_a": 24,
+            "freq_b": 11
+          }
+        ]
+      },
+      {
+        "reading": "kaḷiṟu",
+        "n_signs": 2,
+        "pairs": [
+          {
+            "sign_a": "M016",
+            "sign_b": "M011",
+            "reading": "kaḷiṟu",
+            "l1_distance": 0.0,
+            "freq_a": 23,
+            "freq_b": 15
+          }
+        ]
+      },
+      {
+        "reading": "puli",
+        "n_signs": 2,
+        "pairs": [
+          {
+            "sign_a": "M006",
+            "sign_b": "M033",
+            "reading": "puli",
+            "l1_distance": 0.0,
+            "freq_a": 15,
+            "freq_b": 12
+          }
+        ]
+      },
+      {
+        "reading": "nal",
+        "n_signs": 2,
+        "pairs": [
+          {
+            "sign_a": "M077",
+            "sign_b": "M071",
+            "reading": "nal",
+            "l1_distance": 0.0,
+            "freq_a": 18,
+            "freq_b": 16
+          }
+        ]
+      },
+      {
+        "reading": "nēr",
+        "n_signs": 2,
+        "pairs": [
+          {
+            "sign_a": "M018",
+            "sign_b": "M069",
+            "reading": "nēr",
+            "l1_distance": 0.0,
+            "freq_a": 18,
+            "freq_b": 16
+          }
+        ]
+      },
+      {
+        "reading": "kō",
+        "n_signs": 2,
+        "pairs": [
+          {
+            "sign_a": "M030",
+            "sign_b": "M021",
+            "reading": "kō",
+            "l1_distance": 0.0,
+            "freq_a": 18,
+            "freq_b": 16
+          }
+        ]
+      },
+      {
+        "reading": "kai",
+        "n_signs": 2,
+        "pairs": [
+          {
+            "sign_a": "M017",
+            "sign_b": "M031",
+            "reading": "kai",
+            "l1_distance": 0.0,
+            "freq_a": 18,
+            "freq_b": 16
+          }
+        ]
+      },
+      {
+        "reading": "kuṉ",
+        "n_signs": 2,
+        "pairs": [
+          {
+            "sign_a": "M020",
+            "sign_b": "M002",
+            "reading": "kuṉ",
+            "l1_distance": 0.0,
+            "freq_a": 18,
+            "freq_b": 16
+          }
+        ]
+      },
+      {
+        "reading": "kēḷ",
+        "n_signs": 2,
+        "pairs": [
+          {
+            "sign_a": "M004",
+            "sign_b": "M037",
+            "reading": "kēḷ",
+            "l1_distance": 0.0,
+            "freq_a": 17,
+            "freq_b": 16
+          }
+        ]
+      },
+      {
+        "reading": "tiru",
+        "n_signs": 2,
+        "pairs": [
+          {
+            "sign_a": "M014",
+            "sign_b": "M036",
+            "reading": "tiru",
+            "l1_distance": 0.0,
+            "freq_a": 17,
+            "freq_b": 15
+          }
+        ]
+      },
+      {
+        "reading": "mā",
+        "n_signs": 3,
+        "pairs": [
+          {
+            "sign_a": "M026",
+            "sign_b": "M015",
+            "reading": "mā",
+            "l1_distance": 0.0,
+            "freq_a": 17,
+            "freq_b": 15
+          },
+          {
+            "sign_a": "M026",
+            "sign_b": "M072",
+            "reading": "mā",
+            "l1_distance": 0.0,
+            "freq_a": 17,
+            "freq_b": 12
+          },
+          {
+            "sign_a": "M015",
+            "sign_b": "M072",
+            "reading": "mā",
+            "l1_distance": 0.0,
+            "freq_a": 15,
+            "freq_b": 12
+          }
+        ]
+      }
+    ],
+    "verdict": "Allographs: 84 candidate pairs across 28 readings. Consolidation could simplify the sign inventory."
+  },
+  "phase354": {
+    "numeral_signs": 10,
+    "measure_signs": 4,
+    "numeral_near_measure": 38,
+    "numeral_total": 368,
+    "real_rate": 0.1033,
+    "null_mean": 0.1112,
+    "z_score": -0.17,
+    "verdict": "Metrological: 10% numerals near measure signs vs null 11% (z=-0.2). WEAK"
+  },
+  "phase355": {
+    "m047_reading": "min/mīn",
+    "m047_freq": 13,
+    "n_seals_with_m047": 13,
+    "m047_motif_distribution": {
+      "geometric": 1,
+      "unicorn": 2,
+      "zebu bull": 2,
+      "rhinoceros": 3,
+      "buffalo": 2,
+      "script only": 2,
+      "elephant": 1
+    },
+    "top_collocates": [
+      {
+        "sign": "M267",
+        "count": 2,
+        "reading": "iN/in (genitive of)"
+      },
+      {
+        "sign": "M059",
+        "count": 2,
+        "reading": "ēḷ/eḷ"
+      },
+      {
+        "sign": "M367",
+        "count": 1,
+        "reading": "am/neuter"
+      },
+      {
+        "sign": "M065",
+        "count": 1,
+        "reading": "kuTam"
+      },
+      {
+        "sign": "M048",
+        "count": 1,
+        "reading": "mu/muṉ"
+      },
+      {
+        "sign": "M099",
+        "count": 1,
+        "reading": "kol/koḷ"
+      },
+      {
+        "sign": "M217",
+        "count": 1,
+        "reading": "?"
+      },
+      {
+        "sign": "M233",
+        "count": 1,
+        "reading": "ūr"
+      },
+      {
+        "sign": "M125",
+        "count": 1,
+        "reading": "vil"
+      },
+      {
+        "sign": "M176",
+        "count": 1,
+        "reading": "an/aṇ"
+      }
+    ],
+    "gem_collocate_count": 0,
+    "sample_seals": [
+      {
+        "id": "M-0074",
+        "signs": [
+          "M047",
+          "M367",
+          "M065"
+        ],
+        "readings": [
+          "min/mīn",
+          "am/neuter",
+          "kuTam"
+        ],
+        "motif": "geometric"
+      },
+      {
+        "id": "DK-0012",
+        "signs": [
+          "M047",
+          "M065",
+          "M367",
+          "M202",
+          "M293"
+        ],
+        "readings": [
+          "min/mīn",
+          "kuTam",
+          "am/neuter",
+          "can",
+          "ta"
+        ],
+        "motif": "unicorn"
+      },
+      {
+        "id": "BN-0012",
+        "signs": [
+          "M047",
+          "M267",
+          "M305"
+        ],
+        "readings": [
+          "min/mīn",
+          "iN/in (genitive of)",
+          "ōṭu/comitative"
+        ],
+        "motif": "zebu bull"
+      },
+      {
+        "id": "H-0143",
+        "signs": [
+          "M047",
+          "M059",
+          "M328",
+          "M059",
+          "M176"
+        ],
+        "readings": [
+          "min/mīn",
+          "ēḷ/eḷ",
+          "ā/āl",
+          "ēḷ/eḷ",
+          "an/aṇ"
+        ],
+        "motif": "rhinoceros"
+      },
+      {
+        "id": "H-0145",
+        "signs": [
+          "M047",
+          "M267",
+          "M342",
+          "M176",
+          "M099"
+        ],
+        "readings": [
+          "min/mīn",
+          "iN/in (genitive of)",
+          "ay/ā",
+          "an/aṇ",
+          "kol/koḷ"
+        ],
+        "motif": "rhinoceros"
+      }
+    ],
+    "verdict": "Fish sign M047: freq=13, 13 seals. Motifs: {'geometric': 1, 'unicorn': 2, 'zebu bull': 2, 'rhinoceros': 3, 'buffalo': 2, 'script only': 2, 'elephant': 1}. Gem collocates: 0. Reading: 'min/mīn'."
+  },
+  "phase356": {
+    "translations_produced": 50,
+    "average_coherence": 0.56,
+    "top_10": [
+      {
+        "id": "SK-0002",
+        "count": 1,
+        "motif": "unicorn",
+        "signs": [
+          "M053",
+          "M342",
+          "M176",
+          "M267",
+          "M211",
+          "M342",
+          "M211",
+          "M089"
+        ],
+        "gloss": "mi ay an iN kol ay kol tu",
+        "coherence": 0.83,
+        "interlinear": [
+          {
+            "sign": "M053",
+            "reading": "mi",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "cat": "CASE",
+            "conf": "H"
+          },
+          {
+            "sign": "M211",
+            "reading": "kol",
+            "cat": "STEM",
+            "conf": "H"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M211",
+            "reading": "kol",
+            "cat": "STEM",
+            "conf": "H"
+          },
+          {
+            "sign": "M089",
+            "reading": "tu/tū",
+            "cat": "VERBAL",
+            "conf": "H"
+          }
+        ]
+      },
+      {
+        "id": "H-0061",
+        "count": 1,
+        "motif": "unicorn",
+        "signs": [
+          "M069",
+          "M125",
+          "M065",
+          "M193",
+          "M099",
+          "M293",
+          "M342",
+          "M342"
+        ],
+        "gloss": "nēr vil kuTam ḷā kol ta ay ay",
+        "coherence": 0.5,
+        "interlinear": [
+          {
+            "sign": "M069",
+            "reading": "nēr",
+            "cat": "STEM",
+            "conf": "H"
+          },
+          {
+            "sign": "M125",
+            "reading": "vil",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M065",
+            "reading": "kuTam",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M193",
+            "reading": "ḷā",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M293",
+            "reading": "ta",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX",
+            "conf": "H"
+          }
+        ]
+      },
+      {
+        "id": "H-0120",
+        "count": 1,
+        "motif": "tiger",
+        "signs": [
+          "M015",
+          "M391",
+          "M342",
+          "M065",
+          "M099",
+          "M342",
+          "M176",
+          "M065"
+        ],
+        "gloss": "mā ka ay kuTam kol ay an kuTam",
+        "coherence": 0.5,
+        "interlinear": [
+          {
+            "sign": "M015",
+            "reading": "mā",
+            "cat": "STEM",
+            "conf": "H"
+          },
+          {
+            "sign": "M391",
+            "reading": "ka/kaṇ",
+            "cat": "VERBAL",
+            "conf": "H"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M065",
+            "reading": "kuTam",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M065",
+            "reading": "kuTam",
+            "cat": "OTHER",
+            "conf": "H"
+          }
+        ]
+      },
+      {
+        "id": "M-0146",
+        "count": 1,
+        "motif": "unicorn",
+        "signs": [
+          "M125",
+          "M162",
+          "M237",
+          "M267",
+          "M267",
+          "M267",
+          "M336",
+          "M089"
+        ],
+        "gloss": "vil il ce iN iN iN iṉ tu",
+        "coherence": 0.0,
+        "interlinear": [
+          {
+            "sign": "M125",
+            "reading": "vil",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M162",
+            "reading": "il/iḷ",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M237",
+            "reading": "ce",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "cat": "CASE",
+            "conf": "H"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "cat": "CASE",
+            "conf": "H"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "cat": "CASE",
+            "conf": "H"
+          },
+          {
+            "sign": "M336",
+            "reading": "iṉ/locative",
+            "cat": "CASE",
+            "conf": "H"
+          },
+          {
+            "sign": "M089",
+            "reading": "tu/tū",
+            "cat": "VERBAL",
+            "conf": "H"
+          }
+        ]
+      },
+      {
+        "id": "H-0157",
+        "count": 1,
+        "motif": "unicorn",
+        "signs": [
+          "M078",
+          "M342",
+          "M176",
+          "M099",
+          "M342",
+          "M233",
+          "M375",
+          "M065"
+        ],
+        "gloss": "cēr ay an kol ay ūr taṇ kuTam",
+        "coherence": 0.33,
+        "interlinear": [
+          {
+            "sign": "M078",
+            "reading": "cēr",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "cat": "STEM",
+            "conf": "H"
+          },
+          {
+            "sign": "M375",
+            "reading": "taṇ",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M065",
+            "reading": "kuTam",
+            "cat": "OTHER",
+            "conf": "H"
+          }
+        ]
+      },
+      {
+        "id": "M-0195",
+        "count": 1,
+        "motif": "elephant",
+        "signs": [
+          "M233",
+          "M267",
+          "M342",
+          "M176",
+          "M099",
+          "M059",
+          "M267",
+          "M233"
+        ],
+        "gloss": "ūr iN ay an kol ēḷ iN ūr",
+        "coherence": 0.8,
+        "interlinear": [
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "cat": "STEM",
+            "conf": "H"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "cat": "CASE",
+            "conf": "H"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M059",
+            "reading": "ēḷ/eḷ",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "cat": "CASE",
+            "conf": "H"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "cat": "STEM",
+            "conf": "H"
+          }
+        ]
+      },
+      {
+        "id": "C-0031",
+        "count": 1,
+        "motif": "unicorn",
+        "signs": [
+          "M087",
+          "M342",
+          "M176",
+          "M099",
+          "M342",
+          "M176",
+          "M267",
+          "M391"
+        ],
+        "gloss": "veL ay an kol ay an iN ka",
+        "coherence": 0.33,
+        "interlinear": [
+          {
+            "sign": "M087",
+            "reading": "veL",
+            "cat": "STEM",
+            "conf": "H"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "cat": "CASE",
+            "conf": "H"
+          },
+          {
+            "sign": "M391",
+            "reading": "ka/kaṇ",
+            "cat": "VERBAL",
+            "conf": "H"
+          }
+        ]
+      },
+      {
+        "id": "BN-0024",
+        "count": 1,
+        "motif": "script only",
+        "signs": [
+          "M176",
+          "M099",
+          "M342",
+          "M267",
+          "M162",
+          "M367",
+          "M367",
+          "M233"
+        ],
+        "gloss": "an kol ay iN il am am ūr",
+        "coherence": 0.6,
+        "interlinear": [
+          {
+            "sign": "M176",
+            "reading": "an/aṇ",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M342",
+            "reading": "ay/ā",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "cat": "CASE",
+            "conf": "H"
+          },
+          {
+            "sign": "M162",
+            "reading": "il/iḷ",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M367",
+            "reading": "am/neuter",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M367",
+            "reading": "am/neuter",
+            "cat": "SUFFIX",
+            "conf": "H"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "cat": "STEM",
+            "conf": "H"
+          }
+        ]
+      },
+      {
+        "id": "H-0273",
+        "count": 1,
+        "motif": "unicorn",
+        "signs": [
+          "M025",
+          "M099",
+          "M252",
+          "M125",
+          "M211",
+          "M106",
+          "M233",
+          "M328"
+        ],
+        "gloss": "cem kol kur vil kol kur ūr ā",
+        "coherence": 1.0,
+        "interlinear": [
+          {
+            "sign": "M025",
+            "reading": "cem",
+            "cat": "STEM",
+            "conf": "H"
+          },
+          {
+            "sign": "M099",
+            "reading": "kol/koḷ",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M252",
+            "reading": "kur",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M125",
+            "reading": "vil",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M211",
+            "reading": "kol",
+            "cat": "STEM",
+            "conf": "H"
+          },
+          {
+            "sign": "M106",
+            "reading": "kur",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M233",
+            "reading": "ūr",
+            "cat": "STEM",
+            "conf": "H"
+          },
+          {
+            "sign": "M328",
+            "reading": "ā/āl",
+            "cat": "CASE",
+            "conf": "H"
+          }
+        ]
+      },
+      {
+        "id": "M-0351",
+        "count": 1,
+        "motif": "unicorn",
+        "signs": [
+          "M025",
+          "M386",
+          "M391",
+          "M059",
+          "M267",
+          "M048",
+          "M328",
+          "M305"
+        ],
+        "gloss": "cem maṇ ka ēḷ iN mu ā ōṭu",
+        "coherence": 0.33,
+        "interlinear": [
+          {
+            "sign": "M025",
+            "reading": "cem",
+            "cat": "STEM",
+            "conf": "H"
+          },
+          {
+            "sign": "M386",
+            "reading": "maṇ",
+            "cat": "STEM",
+            "conf": "H"
+          },
+          {
+            "sign": "M391",
+            "reading": "ka/kaṇ",
+            "cat": "VERBAL",
+            "conf": "H"
+          },
+          {
+            "sign": "M059",
+            "reading": "ēḷ/eḷ",
+            "cat": "OTHER",
+            "conf": "H"
+          },
+          {
+            "sign": "M267",
+            "reading": "iN/in (genitive of)",
+            "cat": "CASE",
+            "conf": "H"
+          },
+          {
+            "sign": "M048",
+            "reading": "mu/muṉ",
+            "cat": "VERBAL",
+            "conf": "H"
+          },
+          {
+            "sign": "M328",
+            "reading": "ā/āl",
+            "cat": "CASE",
+            "conf": "H"
+          },
+          {
+            "sign": "M305",
+            "reading": "ōṭu/comitative",
+            "cat": "CASE",
+            "conf": "H"
+          }
+        ]
+      }
+    ],
+    "verdict": "Translation: 50 seals rendered, avg coherence 56%. READABLE"
+  },
+  "phase357": {
+    "comparisons": [
+      {
+        "sign": "M047",
+        "our_reading": "min/mīn",
+        "mukhopadhyay": "gemstone marker (maṇi)",
+        "our_category": "fish_sign",
+        "agreement": "DISAGREE"
+      },
+      {
+        "sign": "M099",
+        "our_reading": "kol/koḷ",
+        "mukhopadhyay": "trade/commodity marker",
+        "our_category": "vessel",
+        "agreement": "DISAGREE"
+      },
+      {
+        "sign": "M342",
+        "our_reading": "ay/ā",
+        "mukhopadhyay": "terminal classifier",
+        "our_category": "suffix",
+        "agreement": "COMPATIBLE"
+      },
+      {
+        "sign": "M176",
+        "our_reading": "an/aṇ",
+        "mukhopadhyay": "person/agent marker",
+        "our_category": "suffix",
+        "agreement": "COMPATIBLE"
+      },
+      {
+        "sign": "M267",
+        "our_reading": "iN/in (genitive of)",
+        "mukhopadhyay": "relational marker",
+        "our_category": "case",
+        "agreement": "COMPATIBLE"
+      }
+    ],
+    "n_compatible": 3,
+    "n_partial": 0,
+    "n_disagree": 2,
+    "verdict": "Mukhopadhyay cross-check: 3/5 compatible, 2/5 disagree. Key disagreement: fish sign M047 — our 'mīn' vs her 'gemstone marker'. Suffix/case readings are compatible with her functional classification."
+  }
+}

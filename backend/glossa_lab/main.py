@@ -6,6 +6,7 @@ import shutil
 import subprocess
 import sys
 import time
+import time as _time
 import urllib.request
 from contextlib import asynccontextmanager
 from pathlib import Path
@@ -29,7 +30,10 @@ from glossa_lab.api.correspondences import router as correspondences_router
 from glossa_lab.api.dashboard import router as dashboard_router
 from glossa_lab.api.discovery import router as discovery_router
 from glossa_lab.api.env import router as env_router
+from glossa_lab.api.events import router as events_router
+from glossa_lab.api.foundation import router as foundation_automation_router
 from glossa_lab.api.experiment_graphs import router as experiment_graphs_router
+from glossa_lab.api.phase import router as phase_router
 from glossa_lab.api.experiments import router as experiments_router
 from glossa_lab.api.foundation_check import router as foundation_check_router
 from glossa_lab.api.health import router as health_router
@@ -46,6 +50,8 @@ from glossa_lab.api.rag import router as rag_router
 from glossa_lab.api.report_templates import router as report_templates_router
 from glossa_lab.api.reports import router as reports_router
 from glossa_lab.api.research import router as research_router
+from glossa_lab.api.research_loop import router as research_loop_router
+from glossa_lab.api.study_loop import router as study_loop_router
 from glossa_lab.api.results import router as results_router
 from glossa_lab.api.settings import router as settings_router
 from glossa_lab.api.shutdown import router as shutdown_router
@@ -53,6 +59,8 @@ from glossa_lab.api.status import router as status_router
 from glossa_lab.api.studies import router as studies_router
 from glossa_lab.api.system import router as system_router
 from glossa_lab.api.terminal import router as terminal_router
+from glossa_lab.api.signs import router as signs_router
+from glossa_lab.api.sign_images import router as sign_images_router
 from glossa_lab.api.texts import router as texts_router
 from glossa_lab.config import get_settings
 from glossa_lab.database import close_db, init_db
@@ -191,6 +199,11 @@ async def lifespan(app: FastAPI):
 
     discovery_task = start_scheduler()
 
+    # Optional: start the study loop scheduler when GLOSSA_STUDY_LOOP_DAILY=1.
+    from glossa_lab.study_loop_scheduler import start_scheduler as start_study_loop_scheduler  # noqa: PLC0415
+
+    study_loop_task = start_study_loop_scheduler()
+
     # Probe all enabled providers to refresh available_models (non-blocking)
     async def _probe_all_providers() -> None:
         from glossa_lab.api.provider_registry import probe_provider  # noqa: PLC0415
@@ -254,6 +267,47 @@ async def lifespan(app: FastAPI):
 
     _start_time = time.time()
     _log.info("=== Glossa Lab startup complete (%.1fs) ===", time.time() - _start_time)
+
+    # Auto-fetch discovery on startup if data is stale (> 12 h since last fetch).
+    # Runs in the background after a 30 s settle delay so the server is fully
+    # ready before hitting external APIs.  Non-blocking and non-critical.
+    async def _auto_startup_fetch() -> None:
+        await asyncio.sleep(30)
+        try:
+            _fdb = get_db()
+            if _fdb is None:
+                return
+            # Check most-recent fetched_at across discovery_items
+            import datetime as _dt  # noqa: PLC0415
+            rows = await _fdb.list_discovery_items(
+                topic=None, kind=None, status=None, since=None, limit=1, offset=0)
+            last_fetch: float = 0.0
+            if rows:
+                ts_str = rows[0].get("fetched_at", "")
+                if ts_str:
+                    try:
+                        last_fetch = _dt.datetime.fromisoformat(
+                            ts_str.replace("Z", "+00:00")
+                        ).timestamp()
+                    except Exception:  # noqa: BLE001
+                        pass
+            age_hours = (_time.time() - last_fetch) / 3600 if last_fetch else 999
+            if age_hours < 12:
+                _log.info("Auto-fetch skipped: last fetch %.1f h ago", age_hours)
+                return
+            _log.info("Auto-fetch: triggering discovery fetch (last fetch %.1f h ago)",
+                      age_hours)
+            from glossa_lab.api.discovery import fetch_endpoint, FetchRequest  # noqa: PLC0415
+            await fetch_endpoint(FetchRequest())
+        except Exception as _exc:  # noqa: BLE001
+            _log.info("Auto-fetch: skipped or failed (%s)", _exc)
+
+    asyncio.create_task(_auto_startup_fetch())
+
+    # Start foundation auto-check background task
+    from glossa_lab.api.foundation import start_auto_check  # noqa: PLC0415
+    start_auto_check()
+
     yield
     # Shutdown: stop engine + scheduler, close database, flush logs
     _log.info("=== Glossa Lab shutting down ===")
@@ -266,6 +320,12 @@ async def lifespan(app: FastAPI):
         discovery_task.cancel()
         try:
             await discovery_task
+        except asyncio.CancelledError:
+            pass
+    if study_loop_task is not None:
+        study_loop_task.cancel()
+        try:
+            await study_loop_task
         except asyncio.CancelledError:
             pass
     await close_db()
@@ -339,6 +399,43 @@ def create_app() -> FastAPI:
     application.include_router(model_assignments_router)  # /api/v1/model-assignments
     application.include_router(model_intelligence_router)  # /api/v1/model-intelligence
     application.include_router(indus_evidence_router)  # already prefixed at /api/v1/indus-evidence
+    application.include_router(research_loop_router)  # already prefixed at /api/v1/research-loop
+    application.include_router(study_loop_router)  # already prefixed at /api/v1/study-loop
+    application.include_router(events_router)  # already prefixed at /api/v1/events
+    application.include_router(foundation_automation_router)  # already prefixed at /api/v1/foundation
+    application.include_router(signs_router)  # already prefixed at /api/v1/signs
+    application.include_router(sign_images_router)  # already prefixed at /api/v1/signs/images
+    application.include_router(phase_router)  # already prefixed at /api/v1/phase
+
+    try:
+        from glossa_lab.api.dismissals import router as dismissals_router  # noqa: PLC0415
+        application.include_router(dismissals_router)  # already prefixed at /api/v1/dismissals
+    except ImportError:
+        pass
+
+    try:
+        from glossa_lab.api.cldf import router as cldf_router  # noqa: PLC0415
+        application.include_router(cldf_router)  # already prefixed at /api/v1/cldf
+    except ImportError:
+        pass
+
+    # Serve sign glyph images
+    _signs_static = Path(__file__).parent.parent / "static" / "signs"
+    if _signs_static.exists():
+        application.mount(
+            "/static/signs",
+            StaticFiles(directory=str(_signs_static)),
+            name="sign_images",
+        )
+
+    # Serve page preview images (local scans of Mahadevan, Fuls, etc.)
+    _page_previews = Path(__file__).parent.parent.parent / "data" / "page_previews"
+    if _page_previews.exists():
+        application.mount(
+            "/static/page_previews",
+            StaticFiles(directory=str(_page_previews)),
+            name="page_previews",
+        )
 
     # Serve built frontend
     # Skipped silently in dev if the dist directory does not yet exist.

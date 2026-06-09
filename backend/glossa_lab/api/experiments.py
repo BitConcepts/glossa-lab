@@ -33,9 +33,24 @@ from glossa_lab.experiment_base import (
     import_experiment_file,
     invalidate_cache,
 )
-from glossa_lab.experiment_graph import list_graph_experiments
+from glossa_lab.experiment_graph import (
+    get_graph_experiment,
+    list_graph_experiments,
+    queue_graph_experiment,
+)
 
 router = APIRouter()
+
+
+@router.get("/experiments/metadata")
+async def get_experiments_metadata() -> list[dict[str, Any]]:
+    """Return experiment ledger metadata for all registered nodes.
+
+    Merges the static experiment_ledger.json with live ATOMIC_NODES
+    registration data. Used by the frontend ExperimentRegistry component.
+    """
+    from glossa_lab.experiment_graph import get_experiment_metadata  # noqa: PLC0415
+    return get_experiment_metadata()
 
 
 @router.get("/experiments")
@@ -80,7 +95,28 @@ class RunRequest(BaseModel):
 
 @router.post("/experiments/{experiment_id}/run")
 async def run_experiment(experiment_id: str, body: RunRequest) -> dict[str, Any]:
-    """Execute an experiment and return the result."""
+    """Execute an experiment and return the result.
+
+    Tries graph experiments first (queue as a Job); falls back to legacy
+    ExperimentBase subclasses for backwards compatibility.
+    """
+    # ── Graph experiment path (preferred) ─────────────────────────────────
+    graph_spec = get_graph_experiment(experiment_id)
+    if graph_spec is not None:
+        from glossa_lab.database import get_db  # noqa: PLC0415
+        db = get_db()
+        job = await queue_graph_experiment(
+            experiment_id, db=db, params=body.kwargs,
+        ) if db is not None else None
+        if job is not None:
+            return {
+                "experiment_id": experiment_id,
+                "job_id": job["id"],
+                "status": "queued",
+            }
+        # db unavailable or queue failed — fall through to legacy path
+
+    # ── Legacy ExperimentBase path ────────────────────────────────────────
     cls = get_experiment(experiment_id)
     if cls is None:
         raise HTTPException(status_code=404, detail=f"Experiment '{experiment_id}' not found")
@@ -100,6 +136,34 @@ async def run_experiment(experiment_id: str, body: RunRequest) -> dict[str, Any]
         )
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))
+
+
+@router.post("/experiments/{experiment_id}/queue", status_code=202)
+async def queue_experiment(experiment_id: str, body: RunRequest) -> dict[str, Any]:
+    """Queue a graph experiment as a background Job. Returns {job_id, experiment_id}.
+
+    Non-blocking — the job engine picks it up asynchronously.
+    """
+    graph_spec = get_graph_experiment(experiment_id)
+    if graph_spec is None:
+        raise HTTPException(
+            status_code=404,
+            detail=f"Graph experiment '{experiment_id}' not found",
+        )
+    from glossa_lab.database import get_db  # noqa: PLC0415
+    db = get_db()
+    if db is None:
+        raise HTTPException(status_code=503, detail="Database not available")
+    job = await queue_graph_experiment(
+        experiment_id, db=db, params=body.kwargs,
+    )
+    if job is None:
+        raise HTTPException(status_code=503, detail="Failed to create job")
+    return {
+        "experiment_id": experiment_id,
+        "job_id": job["id"],
+        "queued": True,
+    }
 
 
 class ImportRequest(BaseModel):
@@ -183,8 +247,14 @@ async def summarize_experiment(experiment_id: str) -> dict[str, Any]:
 
     meta = cls.to_dict()
 
+    try:
+        from glossa_lab.config import get_project_config  # noqa: PLC0415
+        _project_name = get_project_config().project_name
+    except Exception:
+        _project_name = "Indus Script"
+
     system = (
-        "You are a research assistant summarizing scientific experiments on the Indus Script "
+        f"You are a research assistant summarizing scientific experiments on the {_project_name} "
         "and ancient script analysis. Return ONLY valid JSON with these exact fields:\n"
         '{"abstract": "2-3 sentence summary", '
         '"hypothesis": "the hypothesis being tested or null", '
@@ -297,6 +367,174 @@ async def _stream_experiment(
             "complete",
             {"experiment_id": experiment_id, "result": result_holder.get("result")},
         )
+
+
+_VALID_BUILTIN_LANGUAGES = {
+    "hebrew", "geez", "phoenician", "sumerian",
+    "dravidian", "south_dravidian", "kannada", "telugu",
+    "pali", "sanskrit", "coptic", "linear_b",
+    "meroitic", "proto_sinaitic", "nw_semitic",
+    "hieroglyphic_luwian",
+}
+
+_VALID_BUILTIN_CORPORA = {
+    "indus", "indus_cisi", "indus_m77",
+    "hebrew", "geez", "phoenician", "nw_semitic", "ugaritic",
+    "meroitic", "proto_sinaitic", "linear_b", "sanskrit", "dravidian",
+}
+
+
+@router.post("/experiments/build-sa")
+async def build_sa_experiment(body: dict[str, Any]) -> dict[str, Any]:
+    """Build and register a new SA multi-language comparison graph experiment.
+
+    Body: {corpus, languages, name?, n_seeds?, max_iterations?}
+    - corpus: BuiltinCorpus name (e.g. 'indus_cisi')
+    - languages: comma-separated language list (e.g. 'dravidian,sanskrit,hebrew')
+    - name: optional human-readable name
+    - n_seeds: seeds per language (default 3)
+    - max_iterations: SA iterations (default 5000)
+
+    Returns: {experiment_id, name, graph_file, ok}
+    """
+    import re as _re  # noqa: PLC0415
+    import time as _t  # noqa: PLC0415
+    from pathlib import Path  # noqa: PLC0415
+
+    corpus = str(body.get("corpus", "indus_cisi")).strip().lower()
+    languages_raw = str(body.get("languages", "dravidian,sanskrit")).strip()
+    name = str(body.get("name", "")).strip()
+    n_seeds = max(1, int(body.get("n_seeds", 3)))
+    max_iterations = max(100, int(body.get("max_iterations", 5000)))
+
+    # Normalize common AI-generated corpus name variations
+    _CORPUS_ALIASES: dict[str, str] = {
+        "indus script": "indus_cisi",
+        "indus_script": "indus_cisi",
+        "indus-script": "indus_cisi",
+        "cisi": "indus_cisi",
+        "indus parpola": "indus_cisi",
+        "indus-cisi": "indus_cisi",
+        "m77": "indus_m77",
+        "mahadevan": "indus_m77",
+        "fuls": "nw_semitic",
+        "fuls_nw_semitic": "nw_semitic",
+    }
+    corpus = _CORPUS_ALIASES.get(corpus, corpus)
+
+    if corpus not in _VALID_BUILTIN_CORPORA:
+        return {"ok": False, "error": f"Unknown corpus '{corpus}'. Valid: {', '.join(sorted(_VALID_BUILTIN_CORPORA))}"}
+
+    # Normalize multi-word language names before splitting
+    _LANG_NORMALIZATIONS = {
+        "nw semitic": "nw_semitic", "proto sinaitic": "proto_sinaitic",
+        "south dravidian": "south_dravidian", "old hebrew": "old_hebrew",
+        "hieroglyphic luwian": "hieroglyphic_luwian", "linear b": "linear_b",
+        "middle indo aryan": "pali",
+    }
+    _norm_raw = languages_raw.lower()
+    for phrase, replacement in _LANG_NORMALIZATIONS.items():
+        _norm_raw = _norm_raw.replace(phrase, replacement)
+    lang_list = [l.strip() for l in _re.split(r"[,;\s]+", _norm_raw) if l.strip()]
+    invalid = [l for l in lang_list if l not in _VALID_BUILTIN_LANGUAGES]
+    if invalid:
+        return {"ok": False, "error": f"Unknown language(s): {', '.join(invalid)}. Valid: {', '.join(sorted(_VALID_BUILTIN_LANGUAGES))}"}
+    if not lang_list:
+        return {"ok": False, "error": "No languages specified."}
+
+    if not name:
+        name = f"SA: {corpus} vs {' / '.join(lang_list)}"
+
+    # ── Deduplication: return existing experiment if same name already exists ──
+    graphs_dir_check = Path(__file__).resolve().parents[1] / "experiments" / "graphs"
+    if graphs_dir_check.exists():
+        for existing in graphs_dir_check.glob("*.json"):
+            try:
+                existing_data = __import__("json").loads(existing.read_text(encoding="utf-8"))
+                if existing_data.get("name", "").strip().lower() == name.lower():
+                    return {
+                        "ok": True,
+                        "experiment_id": existing_data["id"],
+                        "name": existing_data["name"],
+                        "graph_file": existing.name,
+                        "n_languages": len(lang_list),
+                        "languages": lang_list,
+                        "corpus": corpus,
+                        "existing": True,
+                    }
+            except Exception:  # noqa: BLE001
+                pass
+
+    # Generate unique experiment ID
+    slug = _re.sub(r"[^a-z0-9]+", "_", f"{corpus}_sa_{'_vs_'.join(lang_list)}").strip("_")
+    exp_id = slug  # stable ID — no timestamp suffix
+    # If the slug-based ID file somehow exists (different name), add suffix
+    graphs_dir_id_check = Path(__file__).resolve().parents[1] / "experiments" / "graphs" / f"{slug}.json"
+    if graphs_dir_id_check.exists():
+        exp_id = f"{slug}_{int(_t.time())}"
+
+
+    graph = {
+        "id": exp_id,
+        "name": name,
+        "description": f"Auto-generated SA multi-language comparison. Corpus: {corpus}. Languages: {', '.join(lang_list)}. Seeds: {n_seeds}. Max iterations: {max_iterations}.",
+        "nodes": [
+            {"id": "corpus", "type": "expNode",
+             "position": {"x": 60, "y": 200},
+             "data": {"atomicId": "BuiltinCorpus", "label": f"Corpus: {corpus}",
+                      "params": {"corpus": corpus}}},
+            {"id": "multi_sa", "type": "expNode",
+             "position": {"x": 340, "y": 200},
+             "data": {"atomicId": "SAMultiComparison",
+                      "label": f"SA vs {' / '.join(lang_list)}",
+                      "params": {"languages": ",".join(lang_list),
+                                 "n_seeds": n_seeds,
+                                 "max_iterations": max_iterations}}},
+            {"id": "merge", "type": "expNode",
+             "position": {"x": 660, "y": 200},
+             "data": {"atomicId": "Merger", "label": "Collect results", "params": {}}},
+            {"id": "out", "type": "expNode",
+             "position": {"x": 920, "y": 200},
+             "data": {"atomicId": "JSONExport",
+                      "label": "Export results",
+                      "params": {"filename": f"{exp_id}.json"}}},
+        ],
+        "edges": [
+            {"id": "e1", "source": "corpus", "target": "multi_sa",
+             "sourcePort": "sequences", "targetPort": "sequences"},
+            {"id": "e2", "source": "multi_sa", "target": "merge",
+             "sourcePort": "comparison_results", "targetPort": "a"},
+            {"id": "e3", "source": "multi_sa", "target": "merge",
+             "sourcePort": "best_language", "targetPort": "b"},
+            {"id": "e4", "source": "multi_sa", "target": "merge",
+             "sourcePort": "best_consistency", "targetPort": "c"},
+            {"id": "e5", "source": "merge", "target": "out",
+             "sourcePort": "json", "targetPort": "data"},
+        ],
+    }
+
+    graphs_dir = Path(__file__).resolve().parents[1] / "experiments" / "graphs"
+    graphs_dir.mkdir(parents=True, exist_ok=True)
+    graph_file = graphs_dir / f"{exp_id}.json"
+    graph_file.write_text(
+        __import__("json").dumps(graph, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    # Invalidate graph experiment cache so the new experiment appears immediately
+    try:
+        from glossa_lab.experiment_graph import _invalidate  # noqa: PLC0415
+        _invalidate()
+    except Exception:  # noqa: BLE001
+        pass
+
+    return {
+        "ok": True,
+        "experiment_id": exp_id,
+        "name": name,
+        "graph_file": str(graph_file.name),
+        "n_languages": len(lang_list),
+        "languages": lang_list,
+        "corpus": corpus,
+    }
 
 
 @router.get("/experiments/{experiment_id}/stream")

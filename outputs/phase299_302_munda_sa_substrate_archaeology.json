@@ -1,0 +1,519 @@
+{
+  "phase299_munda_lm": {
+    "language": "Proto-Munda",
+    "source": "Pinnow 1959 + Anderson 2008 + Witzel 1999 + Fuller 2006 + DEDR Munda entries",
+    "n_words": 185,
+    "n_chars": 621,
+    "n_distinct_chars": 23,
+    "n_bigrams": 436,
+    "n_distinct_bigrams": 132,
+    "h1": 4.0025,
+    "top_15_chars": [
+      [
+        "a",
+        105
+      ],
+      [
+        "u",
+        55
+      ],
+      [
+        "r",
+        52
+      ],
+      [
+        "i",
+        48
+      ],
+      [
+        "o",
+        46
+      ],
+      [
+        "n",
+        40
+      ],
+      [
+        "e",
+        33
+      ],
+      [
+        "d",
+        28
+      ],
+      [
+        "l",
+        28
+      ],
+      [
+        "k",
+        25
+      ],
+      [
+        "g",
+        25
+      ],
+      [
+        "m",
+        23
+      ],
+      [
+        "b",
+        22
+      ],
+      [
+        "h",
+        22
+      ],
+      [
+        "t",
+        22
+      ]
+    ],
+    "top_15_bigrams": [
+      [
+        [
+          "a",
+          "r"
+        ],
+        18
+      ],
+      [
+        [
+          "h",
+          "a"
+        ],
+        13
+      ],
+      [
+        [
+          "d",
+          "a"
+        ],
+        12
+      ],
+      [
+        [
+          "k",
+          "u"
+        ],
+        11
+      ],
+      [
+        [
+          "a",
+          "n"
+        ],
+        11
+      ],
+      [
+        [
+          "n",
+          "g"
+        ],
+        11
+      ],
+      [
+        [
+          "o",
+          "n"
+        ],
+        10
+      ],
+      [
+        [
+          "u",
+          "r"
+        ],
+        9
+      ],
+      [
+        [
+          "d",
+          "i"
+        ],
+        9
+      ],
+      [
+        [
+          "a",
+          "l"
+        ],
+        8
+      ],
+      [
+        [
+          "o",
+          "r"
+        ],
+        8
+      ],
+      [
+        [
+          "b",
+          "a"
+        ],
+        8
+      ],
+      [
+        [
+          "r",
+          "a"
+        ],
+        8
+      ],
+      [
+        [
+          "g",
+          "a"
+        ],
+        8
+      ],
+      [
+        [
+          "t",
+          "u"
+        ],
+        8
+      ]
+    ]
+  },
+  "phase300_competing_sa": {
+    "Dravidian (TamilTB)": {
+      "n_seeds": 5,
+      "n_signs": 390,
+      "n_distinct_modals": 27,
+      "mean_consistency": 0.3462,
+      "degenerate": false
+    },
+    "Proto-Munda": {
+      "n_seeds": 5,
+      "n_signs": 390,
+      "n_distinct_modals": 16,
+      "mean_consistency": 0.399,
+      "degenerate": false
+    },
+    "Hebrew (OT consonantal)": {
+      "n_seeds": 5,
+      "n_signs": 390,
+      "n_distinct_modals": 7,
+      "mean_consistency": 0.6974,
+      "degenerate": false
+    },
+    "Uniform (language-neutral)": {
+      "n_seeds": 5,
+      "n_signs": 390,
+      "n_distinct_modals": 26,
+      "mean_consistency": 0.2728,
+      "degenerate": false
+    }
+  },
+  "phase300_discrimination": {
+    "dravidian_consistency": 0.3462,
+    "munda_consistency": 0.399,
+    "delta": -0.0528,
+    "dravidian_modals": 27,
+    "munda_modals": 16,
+    "discriminative": true,
+    "conclusion": "Dravidian cons=0.3462 vs Munda cons=0.3990 (delta=-0.0528). MUNDA PREFERRED — delta 0.0528 exceeds 0.05 threshold."
+  },
+  "phase301_substrate": {
+    "confirmed_matches": 2,
+    "potential_matches": 71,
+    "matches": [
+      {
+        "munda_word": "kul",
+        "meaning": "tiger, clan",
+        "sign": "M374",
+        "reading": "kul",
+        "status": "CONFIRMED_MATCH"
+      },
+      {
+        "munda_word": "vi",
+        "meaning": "seed, sprout",
+        "sign": "M351",
+        "reading": "vī",
+        "status": "CONFIRMED_MATCH"
+      }
+    ],
+    "potential": [
+      {
+        "munda_word": "dal",
+        "meaning": "branch, pulse",
+        "sign": "M220",
+        "reading": "al",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "dal",
+        "meaning": "branch, pulse",
+        "sign": "M221",
+        "reading": "al",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "dal",
+        "meaning": "branch, pulse",
+        "sign": "M806",
+        "reading": "al",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "dal",
+        "meaning": "branch, pulse",
+        "sign": "M550",
+        "reading": "al",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "dal",
+        "meaning": "branch, pulse",
+        "sign": "M592",
+        "reading": "al",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "dal",
+        "meaning": "branch, pulse",
+        "sign": "M234",
+        "reading": "al",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "dal",
+        "meaning": "branch, pulse",
+        "sign": "M603",
+        "reading": "al",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "dal",
+        "meaning": "branch, pulse",
+        "sign": "M851",
+        "reading": "al",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "dal",
+        "meaning": "branch, pulse",
+        "sign": "M898",
+        "reading": "al",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "gundli",
+        "meaning": "millet",
+        "sign": "M178",
+        "reading": "i",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "gundli",
+        "meaning": "millet",
+        "sign": "M262",
+        "reading": "i",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "kusum",
+        "meaning": "safflower",
+        "sign": "M044",
+        "reading": "ku",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "kusum",
+        "meaning": "safflower",
+        "sign": "M740",
+        "reading": "su",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "kusum",
+        "meaning": "safflower",
+        "sign": "M585",
+        "reading": "ku",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "kusum",
+        "meaning": "safflower",
+        "sign": "M745",
+        "reading": "ku",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "kusum",
+        "meaning": "safflower",
+        "sign": "M097",
+        "reading": "ku",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "kusum",
+        "meaning": "safflower",
+        "sign": "M510",
+        "reading": "um",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "kusum",
+        "meaning": "safflower",
+        "sign": "M703",
+        "reading": "ku",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "kusum",
+        "meaning": "safflower",
+        "sign": "M880",
+        "reading": "um",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      },
+      {
+        "munda_word": "kusum",
+        "meaning": "safflower",
+        "sign": "M772",
+        "reading": "ku",
+        "confidence": "HIGH",
+        "match_type": "PARTIAL_PHONETIC"
+      }
+    ],
+    "total_substrate_words": 12,
+    "verdict": "2 confirmed + 71 potential Munda substrate matches in anchor table"
+  },
+  "phase302_archaeology": {
+    "guild_identity_score": 21,
+    "max_possible": 36,
+    "score_pct": 58.3,
+    "sites_scored": 9,
+    "site_scores": [
+      {
+        "site": "Mohenjo-daro",
+        "type": "urban_center",
+        "seals": 606,
+        "score": 4,
+        "max_score": 4,
+        "reasoning": [
+          "Urban center with high seal density — consistent with guild registry",
+          "Weights + seals co-occur — consistent with trade administration",
+          "High seal count (606) — active seal usage"
+        ]
+      },
+      {
+        "site": "Harappa",
+        "type": "urban_center",
+        "seals": 492,
+        "score": 4,
+        "max_score": 4,
+        "reasoning": [
+          "Urban center with high seal density — consistent with guild registry",
+          "Weights + seals co-occur — consistent with trade administration",
+          "High seal count (492) — active seal usage"
+        ]
+      },
+      {
+        "site": "Lothal",
+        "type": "port_town",
+        "seals": 124,
+        "score": 3,
+        "max_score": 4,
+        "reasoning": [
+          "Port town — consistent with trade seal usage",
+          "High seal count (124) — active seal usage"
+        ]
+      },
+      {
+        "site": "Dholavira",
+        "type": "fortified_town",
+        "seals": 106,
+        "score": 2,
+        "max_score": 4,
+        "reasoning": [
+          "Non-commercial (manufacturing_signboard) — neutral",
+          "High seal count (106) — active seal usage"
+        ]
+      },
+      {
+        "site": "Kalibangan",
+        "type": "fortified_town",
+        "seals": 110,
+        "score": 2,
+        "max_score": 4,
+        "reasoning": [
+          "Non-commercial (ritual_agricultural) — neutral",
+          "High seal count (110) — active seal usage"
+        ]
+      },
+      {
+        "site": "Chanhu-daro",
+        "type": "craft_center",
+        "seals": 78,
+        "score": 3,
+        "max_score": 4,
+        "reasoning": [
+          "Craft center — consistent with artisan guild seals",
+          "Weights + seals co-occur — consistent with trade administration"
+        ]
+      },
+      {
+        "site": "Surkotada",
+        "type": "fortified_outpost",
+        "seals": 61,
+        "score": 1,
+        "max_score": 4,
+        "reasoning": [
+          "Non-commercial (frontier_defense) — neutral"
+        ]
+      },
+      {
+        "site": "Banawali",
+        "type": "fortified_town",
+        "seals": 60,
+        "score": 1,
+        "max_score": 4,
+        "reasoning": [
+          "Non-commercial (agricultural) — neutral"
+        ]
+      },
+      {
+        "site": "Rakhigarhi",
+        "type": "urban_center",
+        "seals": 33,
+        "score": 1,
+        "max_score": 4,
+        "reasoning": [
+          "Non-commercial (agricultural_urban) — neutral"
+        ]
+      }
+    ],
+    "verdict": "WEAK",
+    "interpretation": "Guild-identity model scores 21/36 (58%) across 9 sites. Seal distribution correlates with commercial/administrative site function, consistent with professional identity seals rather than commodity tallies."
+  },
+  "summary": {
+    "munda_sa_tested": true,
+    "munda_discriminative": true,
+    "substrate_matches": 2,
+    "archaeology_verdict": "WEAK",
+    "overall": "Dravidian cons=0.3462 vs Munda cons=0.3990 (delta=-0.0528). MUNDA PREFERRED — delta 0.0528 exceeds 0.05 threshold."
+  }
+}

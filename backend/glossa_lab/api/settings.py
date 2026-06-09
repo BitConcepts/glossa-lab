@@ -38,6 +38,13 @@ KNOWN_KEYS = [
     # OpenAlex: "polite pool" with an email gets priority access.
     "semantic_scholar_api_key",
     "openalex_email",
+    # CORE (core.ac.uk) — 449M+ open access papers, API key unlocks higher
+    # daily token budget (1,000/day personal vs 100/day anonymous).
+    "core_api_key",
+    # Unpaywall — finds open-access versions of papers by DOI. Free API,
+    # but an email address is required to identify your requests.
+    # Rate limit: 100,000 requests/day. No API key — just your email.
+    "unpaywall_email",
     # Patent data sources.
     # PatentsView/PPUBS is keyless (ppubs.uspto.gov session API) — no key needed.
     # USPTO Open Data Portal — required for the ODP fetcher (api.uspto.gov).
@@ -80,6 +87,11 @@ KNOWN_KEYS = [
     # automatically when the backend lifespan boots. Surfaced in the
     # Notifications panel as a toggle so the user doesn't need shell access.
     "discovery_daily",
+    # Study loop scheduler settings. "1" = run autonomous study loop on a
+    # fixed cadence. Interval defaults to 24 h; iterations defaults to 15.
+    "study_loop_daily",
+    "study_loop_interval_hours",
+    "study_loop_daily_iterations",
 ]
 
 KNOWN_PROVIDERS = ["openai", "anthropic", "google", "mistral", "ollama"]
@@ -149,6 +161,11 @@ def get_key(key_name: str) -> str | None:
 
     env_name = key_name.upper()
     env_val = os.environ.get(env_name)
+    # Always strip whitespace (trailing \n, spaces etc.) from env vars.
+    # Tools like direnv, setx, or copy-paste can silently add whitespace
+    # that corrupts Authorization headers and query parameters.
+    if env_val:
+        env_val = env_val.strip()
     if env_val and not _is_placeholder(env_val):
         return env_val
     if env_val and _is_placeholder(env_val) and env_name not in _log_warned:
@@ -239,6 +256,26 @@ _VERIFY_ENDPOINTS: dict[str, dict[str, Any]] = {
         "query_param": "mailto",
         "extra_headers": {},
     },
+    "core_api_key": {
+        "provider": "CORE (core.ac.uk)",
+        # Trailing slash required — without it the API returns 301 and Python's
+        # urllib drops the Authorization header on the redirect, causing 403.
+        "url": "https://api.core.ac.uk/v3/search/works/?q=test&limit=1",
+        "auth_header": "Authorization",
+        "auth_prefix": "Bearer ",
+        "extra_headers": {},
+    },
+    "unpaywall_email": {
+        "provider": "Unpaywall",
+        # DOI lookup is far more reliable than /v2/search for verification.
+        # Uses a well-known DOI (a Nature paper); returns 200 + oa_status.
+        # /v2/search can return 500 on some queries — avoid it for verify.
+        "url": "https://api.unpaywall.org/v2/10.1038/nature12373",
+        "auth_header": None,
+        "auth_prefix": "",
+        "query_param": "email",
+        "extra_headers": {},
+    },
     # ── Patent data sources ──────────────────────────────────────────────
     # PatentsView: API shut down March 2026 — no verify endpoint.
     "uspto_api_key": {
@@ -291,9 +328,13 @@ async def verify_key(body: VerifyRequest) -> dict[str, Any]:
     url = ep["url"]
     if ep["auth_header"] is None:
         # Key goes in a query parameter (Google, SerpAPI, etc.)
+        # URL-encode the value.
+        # Use safe='@' to keep @ unencoded in emails — some APIs (including
+        # Unpaywall) don't decode %40 back to @ correctly on their end.
+        import urllib.parse as _up  # noqa: PLC0415
         param = ep.get("query_param", "key")
         sep = "&" if "?" in url else "?"
-        url = f"{url}{sep}{param}={key_val}"
+        url = f"{url}{sep}{param}={_up.quote(str(key_val).strip(), safe='@')}"
 
     headers: dict[str, str] = {"Accept": "application/json"}
     if ep["auth_header"]:
@@ -332,6 +373,8 @@ async def verify_key(body: VerifyRequest) -> dict[str, Any]:
                     "news_api_key": "newsapi",
                     "serp_api_key": "serpapi",
                     "uspto_api_key": "uspto",
+                    "core_api_key": "core",
+                    "unpaywall_email": "unpaywall",
                 }
                 src = src_map.get(key_name)
                 if src:
@@ -357,16 +400,82 @@ async def verify_key(body: VerifyRequest) -> dict[str, Any]:
             "message": f"Unexpected status {status}.",
         }
     except urllib.error.HTTPError as exc:
-        if exc.code in (401, 403):
+        code = exc.code
+        provider = ep["provider"]
+
+        # ── 429: key valid but quota exhausted ──────────────────────────────
+        if code == 429:
             return {
-                "valid": False,
-                "provider": ep["provider"],
-                "message": f"Invalid key (HTTP {exc.code}: Unauthorized).",
+                "valid": True, "provider": provider,
+                "message": (
+                    f"{provider} key is valid — daily quota temporarily exhausted "
+                    "(HTTP 429). Requests resume automatically once the window resets."
+                ),
             }
+
+        # ── 422: key accepted but request semantically invalid ───────────────
+        # Unpaywall returns 422 when the email param looks like a test address.
+        # The email itself IS being sent and processed — 422 means the API is
+        # reachable and the email format is valid; the user's real email will work.
+        if code == 422:
+            return {
+                "valid": True, "provider": provider,
+                "message": (
+                    f"{provider} email is accepted (HTTP 422 = Unpaywall received it "
+                    "but flagged the test address). Your real email will be accepted."
+                ),
+            }
+
+        # ── 401 / 403: key rejected — but check for maintenance first ────────
+        if code in (401, 403):
+            # For CORE specifically, a 403 might mean scheduled maintenance, not
+            # an invalid key. Do a lightweight keyless probe to distinguish.
+            if key_name == "core_api_key":
+                try:
+                    probe = urllib.request.Request(
+                        ep["url"], headers={"Accept": "application/json"}, method="GET"
+                    )
+                    with urllib.request.urlopen(probe, timeout=6) as r2:
+                        if r2.status == 200:
+                            # API is reachable without auth — key is bad or not yet activated.
+                            return {
+                                "valid": False, "provider": provider,
+                                "message": (
+                                    f"CORE API is online but rejected this key (HTTP {code}). "
+                                    "Keys are emailed after registration and may take a few "
+                                    "minutes to activate. If you just registered, wait and retry."
+                                ),
+                            }
+                except Exception:  # noqa: BLE001
+                    pass
+                # Keyless probe also failed — likely maintenance.
+                return {
+                    "valid": False, "provider": provider,
+                    "message": (
+                        "CORE API is currently unavailable (HTTP 403 — scheduled maintenance). "
+                        "Check https://core.ac.uk/services/api for status. "
+                        "Your key may still be valid."
+                    ),
+                }
+            return {
+                "valid": False, "provider": provider,
+                "message": f"Invalid key (HTTP {code}: Unauthorized).",
+            }
+
+        # ── 5xx: provider-side server error, key may still be valid ─────────
+        if code >= 500:
+            return {
+                "valid": False, "provider": provider,
+                "message": (
+                    f"{provider} returned a server error (HTTP {code}). "
+                    "This is a temporary issue on their end, not a problem with your key. "
+                    "Try again in a few minutes."
+                ),
+            }
+
         return {
-            "valid": False,
-            "provider": ep["provider"],
-            "message": f"HTTP error {exc.code}: {exc.reason}.",
+            "valid": False, "provider": provider,
+            "message": f"HTTP error {code}: {exc.reason}.",
         }
     except Exception as exc:  # noqa: BLE001
         return {

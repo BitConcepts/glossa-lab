@@ -6,6 +6,10 @@ const apiProxy = {
     target: "http://localhost:8001",
     changeOrigin: true,
   },
+  "/static": {
+    target: "http://localhost:8001",
+    changeOrigin: true,
+  },
 };
 
 export default defineConfig({

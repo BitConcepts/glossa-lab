@@ -36,7 +36,7 @@ _session_id: str | None = None
 _iterations: int = 0
 _trigger: str = "user"
 _started_at: str | None = None
-_current_loop: Any = None  # reference to the ResearchLoop for stop()
+_cycles_completed: int = 0  # live counter incremented per node_complete event
 
 
 def is_study_loop_running() -> bool:
@@ -162,12 +162,16 @@ async def start_loop(
             _log.warning("Could not create job for study loop: %s", exc)
 
     async def event_stream():
-        global _running, _session_id  # noqa: PLW0603
+        global _running, _session_id, _cycles_completed  # noqa: PLW0603
         session: dict[str, Any] | None = None
+        _cycles_completed = 0
         try:
             async for event in run_study_loop(iterations=iterations, trigger="user"):
                 yield f"data: {json.dumps(event, default=str)}\n\n"
-                if event.get("type") == "study_loop_complete":
+                etype = event.get("type")
+                if etype == "node_complete":
+                    _cycles_completed += 1
+                elif etype == "study_loop_complete":
                     session = event.get("session")
                     if session:
                         _session_id = session.get("session_id")
@@ -203,6 +207,7 @@ async def loop_status() -> dict[str, Any]:
         "running": _running,
         "session_id": _session_id,
         "iterations": _iterations,
+        "cycles_completed": _cycles_completed,
         "trigger": _trigger,
         "started_at": _started_at,
     }
@@ -210,13 +215,16 @@ async def loop_status() -> dict[str, Any]:
 
 @router.post("/stop")
 async def stop_loop() -> dict[str, str]:
-    """Set should_stop on the running loop instance."""
+    """Signal the running ResearchLoop to stop after the current cycle."""
     if not _running:
         return {"status": "idle", "message": "No study loop is running."}
-    # The ResearchLoop is inside the pipeline generator; we can't reach it
-    # directly here. The producer will stop at the next cycle boundary
-    # naturally if iterations are exhausted.
-    return {"status": "stop_requested", "message": "Study loop will stop after the current cycle."}
+    from glossa_lab.pipelines.study_loop import stop_active_loop  # noqa: PLC0415
+    stopped = stop_active_loop()
+    return {
+        "status": "stop_requested",
+        "message": "Loop will stop after the current cycle completes." if stopped
+                   else "Stop signal sent (loop may have just finished).",
+    }
 
 
 @router.get("/history")

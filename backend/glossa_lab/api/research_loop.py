@@ -1334,7 +1334,29 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
             len(promoted_signs), prev_coverage, new_coverage,
         )
 
-        # ── 7. Invalidate caches ───────────────────────────────────────────
+        # ── 7a. Mark promoted entries in archive as 'promoted' ───────────────────────────
+        # Without this, promoted entries stay as 'approved'/'verified' and the
+        # /staging endpoint keeps counting them as promotable (promotable never
+        # drops to 0), so the "Promote to Anchors" button re-appears every time.
+        promoted_set: set[str] = set(promoted_signs)
+        try:
+            updated_archive: list[dict] = [
+                {**c, "review_status": "promoted",
+                 "promoted_at": now_label}
+                if (c.get("sign") or c.get("sign_id", "")) in promoted_set
+                else c
+                for c in archive
+            ]
+            _ARCHIVE_JSON.write_text(
+                json.dumps(updated_archive, indent=2, ensure_ascii=False),
+                encoding="utf-8",
+            )
+            _log.info("promote_to_anchors: marked %d archive entries as 'promoted'",
+                      len(promoted_signs))
+        except Exception as _ae:  # noqa: BLE001
+            _log.warning("Could not update archive status: %s", _ae)
+
+        # ── 7b. Invalidate caches ─────────────────────────────────────────────────────
         try:
             from glossa_lab.api.signs import invalidate_signs_index  # noqa: PLC0415
             invalidate_signs_index()

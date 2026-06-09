@@ -97,11 +97,48 @@ _PROFILES: dict[str, ModelProfile] = {
     "claude-3":             {"max_tokens": 4096, "temperature": 0.15, "ctx_budget": 16000, "action_capable": True,  "prompt_style": "xml"},
 }
 
-# Sensible fallback when no profile matches
+# Sensible fallback when no profile matches.
+# ctx_budget is raised dynamically at import time based on available RAM/VRAM
+# so that unrecognised or new models get a generous context window.
+def _detect_default_ctx_budget() -> int:
+    """Return a ctx_budget appropriate for the available hardware."""
+    import platform  # noqa: PLC0415
+    import subprocess  # noqa: PLC0415
+    vram_gb = 0.0
+    try:
+        out = subprocess.check_output(
+            ["nvidia-smi", "--query-gpu=memory.total", "--format=csv,noheader,nounits"],
+            stderr=subprocess.DEVNULL, timeout=2,
+            creationflags=0x08000000 if platform.system() == "Windows" else 0,
+        )
+        vram_gb = float(out.decode(errors="replace").strip().splitlines()[0]) / 1024
+    except Exception:  # noqa: BLE001
+        pass
+    if vram_gb >= 24:
+        return 32000
+    if vram_gb >= 16:
+        return 24000
+    if vram_gb >= 8:
+        return 16000
+    if vram_gb >= 4:
+        return 8000
+    # CPU/low VRAM — try RAM heuristic
+    try:
+        import psutil  # noqa: PLC0415
+        ram_gb = psutil.virtual_memory().total / 1_073_741_824
+        if ram_gb >= 32:
+            return 16000
+        if ram_gb >= 16:
+            return 8000
+    except Exception:  # noqa: BLE001
+        pass
+    return 6000
+
+
 _DEFAULT: ModelProfile = {
     "max_tokens": 2500,
     "temperature": 0.25,
-    "ctx_budget": 6000,
+    "ctx_budget": _detect_default_ctx_budget(),
     "action_capable": True,
     "prompt_style": "sections",
 }

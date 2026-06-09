@@ -76,8 +76,9 @@
 \textbf{Tristen Kyle Pierson}\\
 Glossa-Lab / BitConcepts LLC\\
 Correspondence: tpierson@bitconcepts.tech\\
-Date: May 2026\\
-Version: Preprint v1 --- Not peer-reviewed
+Date: May 2026 (revised June 2026)\\
+DOI: \href{https://doi.org/10.5281/ZENODO.20414696}{10.5281/ZENODO.20414696}\\
+Version: Preprint v2 --- Not peer-reviewed
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -97,7 +98,7 @@ Proto-Dravidian administrative vocabulary framework, and propose 161
 candidate readings at HIGH or MEDIUM confidence (90.96\% token coverage;
 69.8\% of seals fully covered by H+M candidates; coverage measures
 anchor-model assignment, not verified phonetic transcription). A
-systematic fish-sign polysemy test finds 0 isolated fish signs in the
+systematic fish-sign isolation test finds 0 isolated fish signs in the
 1,670-seal corpus (0/113 across 9 corpus sites) and 0 in the Gulf deposit
 catalog (0/27; Laursen 2010), for a combined result of 0/140.
 We correct a prior sign-counting error: an earlier count of 268 H+M signs
@@ -168,7 +169,7 @@ We present a computational grammar and candidate anchor model (Glossa-Lab, Phase
 \item
   Identification of 2 Munda substrate loans in the sign corpus
 \item
-  A fish-sign polysemy test: 0/140 isolated across all 9 sites and Gulf deposit catalog (site-invariant)
+  A fish-sign isolation test: 0/140 isolated across all 9 sites and Gulf deposit catalog (site-invariant)
 \item
   Correction of M267: genitive particle, not fish sign
 \item
@@ -203,12 +204,6 @@ We present a computational grammar and candidate anchor model (Glossa-Lab, Phase
 \item
   Grammar variance retest (Phase-170): 93.2\% sign-level accuracy at
   161 H+M (stable from Phase-133 baseline)
-\item
-  Betweenness centrality stratification (Phases 172--177): full
-  161-sign H+M directed bigram graph (161 nodes, 414 edges); M267
-  confirmed rank~3 MEDIAL bridge (BC\,=\,0.051, 81\% MEDIAL); M342
-  rank~1 structural hub (BC\,=\,0.055); 141/161 H+M signs with
-  BC\,=\,0 consistent with personal-name syllable candidates
 \end{enumerate}
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
@@ -465,11 +460,10 @@ particle), derived from its consistent pre-title distribution.
 This correction is methodologically important: it demonstrates the risk
 of reading frequency alone as a phonetic indicator.
 
-\subsubsection{3.5 Fish Sign Polysemy
-Test}\label{fish-sign-polysemy-test}
+\subsubsection{3.5 Fish Sign Isolation
+ Test}\label{fish-sign-isolation-test}
 
-We tested the hypothesis, raised in recent mnemonic/commodity interpretations of the fish-sign family,
-that isolated fish signs encode commodity units while compound fish signs encode occupational titles.
+We tested whether fish signs appear in isolation anywhere in the formal stamp-seal corpus.
 Testing the full fish sign family (M047, M049, M052--M056, M145) across
 all 9 sites:
 
@@ -493,9 +487,12 @@ All others & inland & 28 & 0 (0\%) & 28 (100\%) \\
 
 The fish sign is \textbf{never} isolated in the formal stamp seal
 corpus, at any site, including Lothal (the IVC's primary coastal port
-with documented ancient dock). This result is compatible with the
-possibility that commodity tallies were recorded outside the formal stamp-seal corpus,
-but the fish-sign result does not depend on that premise.
+with documented ancient dock). The compound-only constraint is
+site-invariant: it holds at coastal and inland sites equally, indicating
+it is a scribal rule rather than a geographic pattern. This result is
+compatible with a range of interpretations of the fish sign's function;
+the present study does not adjudicate between them but establishes the
+structural constraint as a corpus-level fact.
 
 Convergent evidence from the Gulf seal tradition: Dilmun-style seals at
 Failaka Island (Hojlund \& Abu-Laban 2012) show fish in compound
@@ -944,43 +941,6 @@ methodological definitions (Phase-133 used a `relaxed' full-match
 criterion over tokens; Phase-170 uses strict sign-level accuracy).
 Both results are consistent with the 3-slot grammar model as a good description of the positional behaviour of H+M signs.
 
-\subsubsection{3.32 Betweenness Centrality Stratification
-(Phases 172--177)}\label{betweenness-centrality-stratification-phases-172-177}
-
-We applied betweenness centrality (BC) analysis to the full H+M directed
-bigram network to identify which signs function as structural bridges
-between the INITIAL classifier and TERMINAL suffix clusters. The network
-includes all H+M\texttimes{}H+M adjacent bigrams at \textgreater{}=2 seal tokens
-(161 nodes, 414 directed edges; Holdat LLC Corpus V3, unified per-seal
-sequences). BC was computed as the normalised fraction of shortest paths
-between all node pairs that pass through each node.
-
-Ranked by BC: \textbf{M342} (ay/\={a}, rank~1, BC\,=\,0.055) is the
-highest-betweenness sign. Every inscription formula converges on the
-terminal slot regardless of semantic domain, placing M342 on the
-maximum number of inter-cluster shortest paths and making it the
-structural hub of the full network. \textbf{M267} (iN/in, rank~3, BC\,=\,0.051), at 81\% MEDIAL in the corpus, functions as a
-grammatical junction marker connecting INITIAL classifiers to MEDIAL
-guild-title expressions; this confirms the bridge-node interpretation
-of the genitive particle (\S3.4) on independent network-structural
-evidence. \textbf{M099} (kol/ko\d{l}, rank~10, BC\,=\,0.018) is a
-confirmed bridge node (BC\,\textgreater{}\,0, 77\% MEDIAL). Its rank is
-lower in the full 414-edge graph than in sparser filtered networks
-(high PMI threshold, top-30 bigrams) because denser graphs distribute
-inter-cluster shortest paths across more intermediate medial signs;
-M099 is rank~1 in focused sub-graphs such as the 22-anchor network
-analysed by Roif. Betweenness centrality analysis in this section
-was conducted by A.\,Roif using network-theoretic methods developed
-independently; the full methodological framework will appear in
-Roif (forthcoming, \emph{Semiotica}).
-
-141 of 161 H+M signs have BC\,=\,0. These signs lie on no shortest
-path between formula clusters and are consistent with personal-name
-syllable candidates: their collocate profiles are idiosyncratic and
-not shared across formula types. This is the network signature expected
-for arbitrary phonetic content (name syllables) rather than grammatical
-structure, and it is consistent with the structural-ceiling finding in
-\S3.9.
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
@@ -1116,10 +1076,6 @@ All sign readings, confidence levels, DEDR citations, basis statements, analysis
 Mahadevan (1977) for the
 sign catalogue. Parpola (1994, 2010) for the Dravidian decipherment
 framework that grounds all readings. I thank G. Martini for discussion of later South Asian administrative vocabulary.
-I thank Avishai Roif (Ben-Gurion University of the Negev) for
-correspondence on fish-sign polysemy, mnemonic/shorthand interpretations,
-and for contributing the betweenness centrality analysis in \S3.32 as
-co-author of that section.
 Ashish Nair for the independent replication study (arXiv:2604.17828).
 
 \textbf{AI Disclosure}: This research was conducted with AI-assisted
@@ -1278,12 +1234,12 @@ Dravidian Tier 1 lift ratio: 3.13x above null (Phase-44) - Contact zone
 HIGH anchors: supported within internal checks (Phase-46) - Sign coverage: 397 M-numbers all
 addressed - Dashboard coverage metrics: guaranteed \textless{}=1.0 (no inflation) -
 Grammar model: {[}CLASSIFIER{]}--{[}TITLE{]}--{[}SUFFIX{]} pattern
-supported - Fish sign polysemy: 0/140 isolated (0/113 corpus + 0/27 Gulf; Phases 124/127/156)
+supported - Fish sign isolation: 0/140 isolated (0/113 corpus + 0/27 Gulf; Phases 124/127/156)
 - Sign accounting: 390 attested corpus signs; 397 Mahadevan catalogue signs; 7 catalogue-only signs with zero corpus tokens
 
 \begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\emph{End of Preprint Draft v1}\\
+\emph{End of Preprint v2}\\
 \emph{Glossa-Lab, May 2026}\\
 \emph{Word count: \textasciitilde3,800}
 

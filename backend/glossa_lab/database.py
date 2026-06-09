@@ -501,12 +501,30 @@ class Database:
         # (provider probes, model intelligence sync, discovery scheduler) wrote to
         # the DB at the same time as test write operations.
         await self._conn.execute("PRAGMA journal_mode=WAL")
-        # Wait up to 5 seconds for a lock to clear before raising OperationalError.
-        await self._conn.execute("PRAGMA busy_timeout=5000")
+        # Wait up to 30 seconds for a write lock to clear before raising OperationalError.
+        # Increased from 5s: the HF leaderboard sync can hold a write transaction
+        # for several seconds per page while aiosqlite fetcher writes also queue up.
+        await self._conn.execute("PRAGMA busy_timeout=30000")
         # NORMAL sync is safe with WAL and faster than the default FULL.
         await self._conn.execute("PRAGMA synchronous=NORMAL")
         await self._apply_schema()
         logger.info("Database ready", extra={"path": str(self._path)})
+
+    def is_connected(self) -> bool:
+        """Return True iff the aiosqlite connection is open and usable.
+
+        Checks the aiosqlite-internal ``_connection`` attribute so callers can
+        detect a stale connection (e.g. after an unexpected close) before
+        attempting a DB operation that would raise ValueError.
+        """
+        if self._conn is None:
+            return False
+        # aiosqlite.Connection stores the underlying sqlite3.Connection as
+        # _connection; it is set to None by close().
+        try:
+            return getattr(self._conn, "_connection", None) is not None
+        except Exception:  # noqa: BLE001
+            return False
 
     async def close(self) -> None:
         """Close the database connection."""

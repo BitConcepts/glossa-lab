@@ -189,6 +189,13 @@ backend/glossa_lab/data/phase16_corpora/kalyanaraman_devanagari_corpus.txt
 # Phase-18 derived: large stream txt regenerable from CSV
 backend/glossa_lab/data/phase18_corpora/rv_padapatha_stream.txt
 
+# ---- Sign image raw download cache (reconstructable via harvest_ivc2tyc_signs.py) ----
+backend/static/signs/originals/ivc2tyc_cache/
+# The manifest.json and processed M*.png files ARE committed (authoritative).
+# The originals/ folder itself is also gitignored to keep the repo lean.
+backend/static/signs/originals/
+!backend/static/signs/originals/.gitkeep
+
 # ---- ML model weights (large binaries, not for version control) ----
 *.pt
 *.pth

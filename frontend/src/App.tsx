@@ -27,7 +27,7 @@ import { NotificationCenter } from "./components/NotificationDrawer";
 import { ToastProvider } from "./hooks/useToast";
 import { AIChatProvider, useAIChat } from "./hooks/useAIChat";
 import { ProjectProvider, useProject } from "./hooks/useProject";
-import { getHealth, listJobs } from "./api";
+import { getHealth, listJobs, getOllamaContextConfig, setLocalCtxLength } from "./api";
 
 type Tab =
   | "dashboard"
@@ -94,7 +94,71 @@ const SYSTEM_ITEMS: NavItem[] = [
 
 const SIDEBAR_W = 220;
 const DEFAULT_PANEL_HEIGHT = 220;
+const MOBILE_NAV_H = 56; // height of the bottom nav bar on mobile
 type PanelTab = "logs" | "jobs" | "terminal" | "chat";
+
+// ── Mobile bottom nav bar ─────────────────────────────────────────────────────
+function MobileNavBar({
+  active, onNav, onAI, aiOpen,
+}: {
+  active: Tab;
+  onNav: (t: Tab) => void;
+  onAI: () => void;
+  aiOpen: boolean;
+}) {
+  const items: { id: Tab | "ai" | "menu"; label: string; icon: string }[] = [
+    { id: "dashboard",  label: "Home",      icon: "\ud83d\udcca" },
+    { id: "discovery",  label: "Discovery", icon: "\ud83d\udd2d" },
+    { id: "ai",         label: "AI",        icon: "\u2728" },
+    { id: "reports",    label: "Reports",   icon: "\ud83d\udcc4" },
+    { id: "menu",       label: "More",      icon: "\u2630" },
+  ];
+  return (
+    <div style={{
+      position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 250,
+      height: MOBILE_NAV_H,
+      paddingBottom: "env(safe-area-inset-bottom, 0px)",
+      background: "#1e3a5f",
+      borderTop: "1px solid rgba(255,255,255,0.10)",
+      display: "flex", alignItems: "stretch",
+      boxShadow: "0 -2px 12px rgba(0,0,0,0.3)",
+    }}>
+      {items.map(item => {
+        const isAI   = item.id === "ai";
+        const isMenu = item.id === "menu";
+        const isActive = isAI ? aiOpen : (!isMenu && active === item.id);
+        return (
+          <button
+            key={item.id}
+            onClick={() => {
+              if (isAI)   { onAI(); return; }
+              if (isMenu) { window.dispatchEvent(new CustomEvent("glossa:toggle-sidebar")); return; }
+              onNav(item.id as Tab);
+            }}
+            style={{
+              flex: 1, border: "none", background: "none",
+              display: "flex", flexDirection: "column",
+              alignItems: "center", justifyContent: "center",
+              gap: 3, cursor: "pointer",
+              color: isActive
+                ? (isAI ? "#c4b5fd" : "#60a5fa")
+                : "rgba(255,255,255,0.5)",
+              fontSize: 10, fontWeight: isActive ? 700 : 400,
+              padding: "4px 0 2px",
+              borderTop: isActive
+                ? `2px solid ${isAI ? "#7c3aed" : "#3b82f6"}`
+                : "2px solid transparent",
+              transition: "color 0.15s, border-color 0.15s",
+            }}
+          >
+            <span style={{ fontSize: isAI ? 20 : 17, lineHeight: 1 }}>{item.icon}</span>
+            <span>{item.label}</span>
+          </button>
+        );
+      })}
+    </div>
+  );
+}
 
 function HealthBadge() {
   const [status, setStatus] = useState<"healthy" | "degraded" | "down">("down");
@@ -280,6 +344,27 @@ function AppContent() {
     const onResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
+  }, []);
+
+  // Listen for the MobileNavBar "More" tap to toggle the sidebar
+  useEffect(() => {
+    const h = () => setSidebarOpen(v => !v);
+    window.addEventListener("glossa:toggle-sidebar", h);
+    return () => window.removeEventListener("glossa:toggle-sidebar", h);
+  }, []);
+
+  // ── Auto-init context length from hardware recommendation ─────────────────
+  useEffect(() => {
+    getOllamaContextConfig()
+      .then(cfg => {
+        // Only update if the backend detected a larger context than the current default
+        const current = parseInt(localStorage.getItem("glossa_ollama_ctx") ?? "0", 10) || 0;
+        if (cfg.session_ctx_length > current) {
+          setLocalCtxLength(cfg.session_ctx_length);
+        }
+      })
+      .catch(() => { /* Ollama not running — keep localStorage default */ });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // Dirty badges — shown when builders have unsaved local changes
   // Both start false on page load; the Study Builder dispatches glossa:dirty
@@ -760,14 +845,16 @@ function AppContent() {
              All other views get the standard padded, scrollable layout. */}
         {(() => {
           const isCanvas = tab === "experiments" || tab === "exp-builder";
+          // On mobile: add bottom padding for nav bar; hide bottom IDE panel
+          const mobileBottomPad = isMobile ? MOBILE_NAV_H + 8 : 0;
           return (
             <main style={{
               flex: 1,
               minHeight: 0,
               display: "flex", flexDirection: "column",
-              padding:      isCanvas ? 0 : (isMobile ? "14px" : "24px"),
-              paddingBottom: isCanvas ? 0 : (isMobile ? 14 : 32),
-              marginBottom:  effectivePanelH,
+              padding:      isCanvas ? 0 : (isMobile ? "12px" : "24px"),
+              paddingBottom: isCanvas ? mobileBottomPad : (isMobile ? mobileBottomPad + 8 : 32),
+              marginBottom:  isMobile ? 0 : effectivePanelH,
               color: fg,
               maxWidth: "none",
               overflow: isCanvas ? "hidden" : "auto",
@@ -805,8 +892,9 @@ function AppContent() {
 
       {/* NotificationDrawer removed — NotificationCenter is self-contained */}
 
-      {/* Bottom IDE panel */}
-      {panelVisible && (
+      {/* Bottom IDE panel — hidden on mobile (logs/terminal not useful on phone;
+           the mobile nav bar occupies the bottom) */}
+      {panelVisible && !isMobile && (
         <BottomPanel
           height={activePanelH}
           onHeightChange={isMobile ? () => {} : setPanelHeight}
@@ -819,8 +907,7 @@ function AppContent() {
         />
       )}
 
-      {/* AI side panel — the only Glossa AI surface. Dockable left/right, resizable.
-           The legacy floating AIChatWindow has been retired; openChat() always opens this. */}
+      {/* AI side panel — full-screen modal on mobile, dockable panel on desktop */}
       {aiPanelOpen && (
         <AISidePanel
           onClose={() => setAiPanelOpen(false)}
@@ -830,6 +917,17 @@ function AppContent() {
           initialWidth={aiPanelWidth}
           onWidthChange={setAiPanelWidth}
           onSideChange={setAiPanelSide}
+          isMobile={isMobile}
+        />
+      )}
+
+      {/* Mobile bottom nav bar */}
+      {isMobile && (
+        <MobileNavBar
+          active={tab}
+          onNav={goTo}
+          onAI={() => setAiPanelOpen(o => !o)}
+          aiOpen={aiPanelOpen}
         />
       )}
 
@@ -847,9 +945,17 @@ function AppContent() {
         button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
         /* Improve tap targets on mobile */
         @media (max-width: 768px) {
-          button { min-height: 36px; }
+          button { min-height: 44px; }  /* Apple HIG minimum touch target */
           input, select, textarea { font-size: 16px !important; } /* prevent iOS zoom */
+          /* Cards and panels: full-width with less horizontal padding */
+          .glossa-card { padding: 10px 12px !important; }
+          /* Reduce font sizes slightly for better scan density */
+          body { font-size: 14px; }
         }
+        /* Smooth momentum scrolling on iOS */
+        main { -webkit-overflow-scrolling: touch; }
+        /* Prevent double-tap zoom on nav buttons */
+        .mobile-nav-btn { touch-action: manipulation; }
       `}</style>
     </div>
   );

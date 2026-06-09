@@ -1,0 +1,104 @@
+{
+  "id": "indus_sa_dravidian_vs_nw_semitic",
+  "name": "SA: indus vs dravidian / nw_semitic",
+  "description": "Auto-generated SA multi-language comparison. Corpus: indus. Languages: dravidian, nw_semitic. Seeds: 3. Max iterations: 5000.",
+  "nodes": [
+    {
+      "id": "corpus",
+      "type": "expNode",
+      "position": {
+        "x": 60,
+        "y": 105
+      },
+      "data": {
+        "atomicId": "BuiltinCorpus",
+        "label": "Corpus: indus",
+        "params": {
+          "corpus": "indus"
+        }
+      }
+    },
+    {
+      "id": "multi_sa",
+      "type": "expNode",
+      "position": {
+        "x": 420,
+        "y": 60
+      },
+      "data": {
+        "atomicId": "SAMultiComparison",
+        "label": "SA vs dravidian / nw_semitic",
+        "params": {
+          "languages": "dravidian,nw_semitic",
+          "n_seeds": 3,
+          "max_iterations": 5000
+        }
+      }
+    },
+    {
+      "id": "merge",
+      "type": "expNode",
+      "position": {
+        "x": 780,
+        "y": 90
+      },
+      "data": {
+        "atomicId": "Merger",
+        "label": "Collect results",
+        "params": {}
+      }
+    },
+    {
+      "id": "out",
+      "type": "expNode",
+      "position": {
+        "x": 1140,
+        "y": 120
+      },
+      "data": {
+        "atomicId": "JSONExport",
+        "label": "Export results",
+        "params": {
+          "filename": "indus_sa_dravidian_vs_nw_semitic.json"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "source": "corpus",
+      "target": "multi_sa",
+      "sourcePort": "sequences",
+      "targetPort": "sequences"
+    },
+    {
+      "id": "e2",
+      "source": "multi_sa",
+      "target": "merge",
+      "sourcePort": "comparison_results",
+      "targetPort": "a"
+    },
+    {
+      "id": "e3",
+      "source": "multi_sa",
+      "target": "merge",
+      "sourcePort": "best_language",
+      "targetPort": "b"
+    },
+    {
+      "id": "e4",
+      "source": "multi_sa",
+      "target": "merge",
+      "sourcePort": "best_consistency",
+      "targetPort": "c"
+    },
+    {
+      "id": "e5",
+      "source": "merge",
+      "target": "out",
+      "sourcePort": "json",
+      "targetPort": "data"
+    }
+  ]
+}

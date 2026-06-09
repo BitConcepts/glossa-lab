@@ -102,7 +102,8 @@ _PROFILES: dict[str, ModelProfile] = {
 # so that unrecognised or new models get a generous context window.
 def _detect_default_ctx_budget() -> int:
     """Return a ctx_budget appropriate for the available hardware."""
-    import platform, subprocess  # noqa: PLC0415
+    import platform  # noqa: PLC0415
+    import subprocess  # noqa: PLC0415
     vram_gb = 0.0
     try:
         out = subprocess.check_output(

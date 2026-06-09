@@ -18,7 +18,9 @@
 
 import { Fragment, useCallback, useEffect, useState } from "react";
 
-const BASE = "/api/v1/study-loop";
+const BASE    = "/api/v1/study-loop";
+// Staging and SA-delta endpoints live on the older research-loop router
+const BASE_RL = "/api/v1/research-loop";
 
 // Insight type colour map
 const INSIGHT_COLORS: Record<string, { bg: string; text: string }> = {
@@ -311,7 +313,7 @@ export function ResearchLoopPanel() {
 
   const fetchStaging = useCallback(async () => {
     try {
-      const res = await fetch(`${BASE}/staging`);
+      const res = await fetch(`${BASE_RL}/staging`);
       if (res.ok) setStaging(await res.json() as StagingData);
     } catch { /* ignore */ }
   }, []);
@@ -1022,7 +1024,7 @@ export function ResearchLoopPanel() {
           <StagingReview
               staging={staging}
               onAction={async (sign, reading, action, reason) => {
-                const res = await fetch(`${BASE}/staging/action`, {
+                const res = await fetch(`${BASE_RL}/staging/action`, {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({ sign, proposed_reading: reading, action, reason }),
@@ -1030,15 +1032,15 @@ export function ResearchLoopPanel() {
                 if (res.ok) void fetchStaging();
               }}
               onArchive={async () => {
-                await fetch(`${BASE}/staging/archive`, { method: "POST" });
+                await fetch(`${BASE_RL}/staging/archive`, { method: "POST" });
                 void fetchStaging();
               }}
               onDelete={async () => {
-                const res = await fetch(`${BASE}/staging/rejected`, { method: "DELETE" });
+                const res = await fetch(`${BASE_RL}/staging/rejected`, { method: "DELETE" });
                 if (res.ok) await fetchStaging();
               }}
               onCleanup={async () => {
-                const res = await fetch(`${BASE}/staging/cleanup`, { method: "POST" });
+                const res = await fetch(`${BASE_RL}/staging/cleanup`, { method: "POST" });
                 if (res.ok) await fetchStaging();
               }}
             />
@@ -1993,7 +1995,7 @@ function StagingReview({
     setVerifyResult(null);
     setSaRunDone(false);
     try {
-      const res = await fetch(`${BASE}/staging/verify-sa`, { method: "POST" });
+      const res = await fetch(`${BASE_RL}/staging/verify-sa`, { method: "POST" });
       const data = await res.json() as {
         ok: boolean; message: string; suggested_sa_exp?: string;
         suggested_sa_name?: string; error?: string;
@@ -2043,7 +2045,7 @@ function StagingReview({
     setCleanupBusy(true);
     setCleanupResult(null);
     try {
-      const res = await fetch(`${BASE}/staging/cleanup`, { method: "POST" });
+      const res = await fetch(`${BASE_RL}/staging/cleanup`, { method: "POST" });
       const data = await res.json() as { ok: boolean; message: string };
       setCleanupResult(data);
       await onCleanup();
@@ -2677,7 +2679,10 @@ function PromoteToAnchors({
   const [confirm, setConfirm] = useState(false);
   const [result, setResult] = useState<PromoteResult | null>(() => {
     const stored = _loadPromoteResult();
-    if (stored && promotable === 0 && archiveTotal === 0) {
+    // Auto-clear stale success card: if there are no longer any promotable
+    // entries (backend already marked them 'promoted'), the card should not
+    // reappear. Check promotable===0 alone — archiveTotal can still be >0.
+    if (stored && stored.ok && stored.promoted > 0 && promotable === 0) {
       _clearPromoteResult();
       return null;
     }
@@ -2689,7 +2694,7 @@ function PromoteToAnchors({
     setConfirm(false);
     setResult(null);
     try {
-      const res = await fetch(`${BASE}/staging/promote`, { method: "POST" });
+      const res = await fetch(`${BASE_RL}/staging/promote`, { method: "POST" });
       const data = await res.json() as PromoteResult & { ok: boolean; message: string };
       const withTs = { ...data, ts: Date.now() };
       setResult(withTs);
@@ -2789,8 +2794,14 @@ function PromoteToAnchors({
           </ol>
         </div>
         <div style={{ marginTop: 10, display: "flex", justifyContent: "flex-end" }}>
-          <button
-            onClick={() => { _clearPromoteResult(); setResult(null); }}
+        <button
+            onClick={() => {
+              _clearPromoteResult();
+              setResult(null);
+              // Refresh staging data so the parent sees promotable=0
+              // and doesn't re-show the PromoteToAnchors button.
+              onPromoted();
+            }}
             style={{
               padding: "4px 12px", fontSize: 10, fontWeight: 600,
               border: "1px solid #a5f3fc", borderRadius: 4,
@@ -2798,7 +2809,7 @@ function PromoteToAnchors({
             }}
             title="Dismiss this notification"
           >
-            ✓ Dismiss
+            ✓ Done
           </button>
         </div>
       </div>

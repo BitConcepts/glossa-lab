@@ -79,7 +79,8 @@ _CTX_TIERS: list[dict[str, Any]] = [
 # so the context window is as large as hardware allows by default.
 def _detect_optimal_ctx() -> int:
     """Detect available GPU VRAM (or system RAM) and return the best context length."""
-    import platform, subprocess  # noqa: PLC0415
+    import platform  # noqa: PLC0415
+    import subprocess  # noqa: PLC0415
     vram_gb = 0.0
     try:
         out = subprocess.check_output(
@@ -100,8 +101,14 @@ def _detect_optimal_ctx() -> int:
             vram_gb = max(0.0, (ram_gb - 4) / 8)  # treat leftover as pseudo-VRAM
         except Exception:  # noqa: BLE001
             pass
-    tier = _recommended_ctx(vram_gb)
-    return int(tier["ctx"])
+    # _recommended_ctx is defined later in the file; inline the lookup here
+    # to avoid a forward-reference NameError at module import time.
+    for tier in reversed(_CTX_TIERS):
+        if vram_gb >= tier["min_vram_gb"] or (
+            vram_gb == 0 and tier["min_vram_gb"] == 0 and tier["max_vram_gb"] == 0
+        ):
+            return int(tier["ctx"])
+    return int(_CTX_TIERS[0]["ctx"])  # fallback: CPU-only
 
 
 _session_ctx_length: int = _detect_optimal_ctx()

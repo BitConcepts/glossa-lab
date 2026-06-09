@@ -36,7 +36,7 @@ _session_id: str | None = None
 _iterations: int = 0
 _trigger: str = "user"
 _started_at: str | None = None
-_current_loop: Any = None  # reference to the ResearchLoop for stop()
+_cycles_completed: int = 0  # live counter incremented per node_complete event
 
 
 def is_study_loop_running() -> bool:
@@ -47,12 +47,23 @@ def is_study_loop_running() -> bool:
 async def start_study_loop_session(
     iterations: int = 15,
     trigger: str = "user",
+    notify: bool | None = None,
 ) -> None:
     """Start a study loop session without SSE streaming (for scheduler use).
 
-    Consumes all events internally. Sends completion email if configured.
+    Consumes all events internally.
+
+    *notify* controls whether a completion email is sent when the session
+    finishes.  Defaults to ``True`` when *trigger* is ``"user"`` and
+    ``False`` for any automated/scheduler trigger — so the startup scheduler
+    tick no longer floods the inbox with a notification email every time
+    Glossa Lab starts.  Pass ``notify=True`` explicitly to override.
     """
     from glossa_lab.pipelines.study_loop import run_study_loop  # noqa: PLC0415
+
+    # Default notify based on trigger: only user-initiated runs send email.
+    if notify is None:
+        notify = (trigger == "user")
 
     global _running, _session_id, _iterations, _trigger, _started_at  # noqa: PLW0603
     if _running:
@@ -72,8 +83,14 @@ async def start_study_loop_session(
                 session = event.get("session")
                 if session:
                     _session_id = session.get("session_id")
-        if session:
+        if session and notify:
             asyncio.create_task(_send_loop_email(session))
+        elif session and not notify:
+            _log.info(
+                "Study loop session complete (trigger=%s) — email suppressed "
+                "for automated runs. Pass notify=True to override.",
+                trigger,
+            )
     except Exception as exc:  # noqa: BLE001
         _log.warning("Study loop session error: %s", exc)
     finally:
@@ -162,12 +179,16 @@ async def start_loop(
             _log.warning("Could not create job for study loop: %s", exc)
 
     async def event_stream():
-        global _running, _session_id  # noqa: PLW0603
+        global _running, _session_id, _cycles_completed  # noqa: PLW0603
         session: dict[str, Any] | None = None
+        _cycles_completed = 0
         try:
             async for event in run_study_loop(iterations=iterations, trigger="user"):
                 yield f"data: {json.dumps(event, default=str)}\n\n"
-                if event.get("type") == "study_loop_complete":
+                etype = event.get("type")
+                if etype == "node_complete":
+                    _cycles_completed += 1
+                elif etype == "study_loop_complete":
                     session = event.get("session")
                     if session:
                         _session_id = session.get("session_id")
@@ -203,6 +224,7 @@ async def loop_status() -> dict[str, Any]:
         "running": _running,
         "session_id": _session_id,
         "iterations": _iterations,
+        "cycles_completed": _cycles_completed,
         "trigger": _trigger,
         "started_at": _started_at,
     }
@@ -210,13 +232,16 @@ async def loop_status() -> dict[str, Any]:
 
 @router.post("/stop")
 async def stop_loop() -> dict[str, str]:
-    """Set should_stop on the running loop instance."""
+    """Signal the running ResearchLoop to stop after the current cycle."""
     if not _running:
         return {"status": "idle", "message": "No study loop is running."}
-    # The ResearchLoop is inside the pipeline generator; we can't reach it
-    # directly here. The producer will stop at the next cycle boundary
-    # naturally if iterations are exhausted.
-    return {"status": "stop_requested", "message": "Study loop will stop after the current cycle."}
+    from glossa_lab.pipelines.study_loop import stop_active_loop  # noqa: PLC0415
+    stopped = stop_active_loop()
+    return {
+        "status": "stop_requested",
+        "message": "Loop will stop after the current cycle completes." if stopped
+                   else "Stop signal sent (loop may have just finished).",
+    }
 
 
 @router.get("/history")

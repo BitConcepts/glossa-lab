@@ -113,6 +113,10 @@ class ProposalEngine:
         self.insight_to_experiments = insight_to_experiments
         self.seen_experiments: set[str] = set()
         self.cooldown_map: dict[str, int] = {}  # experiment_id → last-run cycle
+        # Cross-session history: experiment IDs run in PREVIOUS sessions.
+        # Set by run_study_loop() after loading persisted sessions.
+        # Used only in _build_rationale to give accurate novelty labels.
+        self.cross_session_seen: set[str] = set()
 
     def propose(
         self,
@@ -241,7 +245,11 @@ class ProposalEngine:
     ) -> str:
         parts: list[str] = []
         if novelty >= 1.0:
-            parts.append("never run before")
+            # Only say "never run before" if it's truly new across all sessions
+            if exp_id in self.cross_session_seen:
+                parts.append("not run this session")
+            else:
+                parts.append("never run before")
         if success_rate > 0.6:
             parts.append(f"high historical success ({success_rate:.0%})")
         top_type = type_counts.most_common(1)

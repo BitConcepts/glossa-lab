@@ -327,19 +327,21 @@ function ModelPickerDropdown({ installed, providers, current, onSelect, onReset,
 // ── Action approval card ──────────────────────────────────────────────────────
 
 const ACTION_ICONS: Record<string, string> = {
-  run_experiment:    "🧪",
-  run_pipeline:      "⚙️",
-  change_setting:    "⚙️",
-  generate_report:   "📄",
-  create_hypothesis: "💡",
-  create_notebook:   "📓",
-  open_view:         "→",
-  clear_jobs:        "🗑️",
-  execute_script:    "🔧",
-  query_corpus:      "🔍",
-  compare_results:   "📊",
-  summarize_session: "💾",
-  acquire_corpus:    "📥",
+  run_experiment:       "🧪",
+  run_pipeline:         "⚙️",
+  change_setting:       "⚙️",
+  generate_report:      "📄",
+  create_hypothesis:    "💡",
+  create_notebook:      "📓",
+  open_view:            "→",
+  clear_jobs:           "🗑️",
+  execute_script:       "🔧",
+  query_corpus:         "🔍",
+  compare_results:      "📊",
+  summarize_session:    "💾",
+  acquire_corpus:       "📥",
+  build_tooling:        "🔨",
+  build_sa_experiment:  "🧬",
 };
 
 function ActionCard({ action, status, onApprove, onCancel, onAutoApproveAll }: {
@@ -366,6 +368,14 @@ function ActionCard({ action, status, onApprove, onCancel, onAutoApproveAll }: {
   const base: React.CSSProperties = { borderRadius: 6, padding: "8px 10px", margin: "5px 0", fontSize: 11, border: "1px solid" };
   if (status === "cancelled") return <div style={{ ...base, borderColor: "#374151", background: "#1a2332", color: "#6b7280" }}>✗ {label} — cancelled</div>;
   if (status === "done")      return <div style={{ ...base, borderColor: "#14532d", background: "#052e16", color: "#86efac" }}>✓ {label} — done</div>;
+  if (status === "queued")    return <div style={{ ...base, borderColor: "#78350f", background: "#1c1005", color: "#fbbf24", display: "flex", alignItems: "center", gap: 6 }}>
+    <span>⏳</span><span>{label} — queued in Jobs</span>
+    <button onClick={() => window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: "jobs" } }))}
+      style={{ marginLeft: "auto", padding: "1px 6px", fontSize: 9, border: "1px solid #78350f",
+               borderRadius: 3, background: "none", color: "#fbbf24", cursor: "pointer" }}>
+      View Jobs →
+    </button>
+  </div>;
   if (status === "failed")    return <div style={{ ...base, borderColor: "#7f1d1d", background: "#1a0505", color: "#f87171" }}>⚠ {label} — failed</div>;
   return (
     <div style={{ ...base, borderColor: "#1d4ed8", background: "#eff6ff" }}>
@@ -537,7 +547,7 @@ export function AIChatWindow() {
   const resetModelPref = useCallback(() => { setModelPref(null); localStorage.removeItem(MODEL_PREF_KEY); }, []);
   const modelLabel = modelPref ? (modelPref.model.length > 18 ? modelPref.model.slice(0, 15) + "…" : modelPref.model) : "auto";
 
-  // Compress
+  // Compress: summarise context and keep a single summary message
   const compress = useCallback(async () => {
     if (messages.length < 4) { toast("Not enough messages to compress", "info"); return; }
     setCompressing(true);
@@ -555,7 +565,27 @@ export function AIChatWindow() {
     finally { setCompressing(false); }
   }, [messages, toast, modelPref]);
 
-  useEffect(() => { if (ctxPct >= 90 && !compressing && !busy && messages.length > 4) compress(); }, [ctxPct, compressing, busy, messages.length, compress]);
+  // Save & Reset: persist full conversation to notebooks, then clear
+  const saveAndReset = useCallback(async () => {
+    if (messages.length < 2) { setMessages([]); localStorage.removeItem(CHAT_HISTORY_KEY); return; }
+    setCompressing(true);
+    try {
+      const content = messages.filter(m => !m.loading)
+        .map(m => `${m.role === "user" ? "You" : "Glossa AI"}: ${m.content}`).join("\n\n");
+      const title = `AI Session ${new Date().toLocaleDateString(undefined, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}`;
+      await executeAiAction({ type: "summarize_session", params: { title, content } });
+      toast("Saved to Notebooks — starting fresh", "success");
+    } catch { toast("Could not save — clearing anyway", "info"); }
+    finally {
+      setCompressing(false);
+      setMessages([]);
+      localStorage.removeItem(CHAT_HISTORY_KEY);
+    }
+  }, [messages, toast]);
+
+  // Auto-compress when context reaches 75% — gives comfortable headroom before hitting the limit.
+  // This fires at most once per session-fill cycle (compressing guard prevents re-entry).
+  useEffect(() => { if (ctxPct >= 75 && !compressing && !busy && messages.length > 4) compress(); }, [ctxPct, compressing, busy, messages.length, compress]);
 
   // Export
   const exportMd = useCallback(() => {
@@ -597,7 +627,12 @@ export function AIChatWindow() {
     try {
       // Ensure params is always an object, never undefined/null
       const params = action.params && typeof action.params === "object" ? action.params : {};
-      const result = await executeAiAction({ type: action.type, params });
+      // For summarize_session, inject the full conversation as content if not provided
+      const finalParams = action.type === "summarize_session" && !params.content
+        ? { ...params, content: messages.filter(m => !m.loading)
+            .map(m => `${m.role === "user" ? "You" : "Glossa AI"}: ${m.content}`).join("\n\n") }
+        : params;
+      const result = await executeAiAction({ type: action.type, params: finalParams });
       // Treat ok===false (backend returned 200 but reported failure) as a failure
       if (!result.ok) {
         updateActionState(msg.id, idx, "failed");
@@ -606,15 +641,27 @@ export function AIChatWindow() {
           timestamp: Date.now(), error: true }]);
         return;
       }
-      updateActionState(msg.id, idx, "done");
+      // If the action queued a background job, show "queued" not "done"
+      const isQueued = !!result.job_id && /queue/i.test(result.summary ?? "");
+      updateActionState(msg.id, idx, isQueued ? "queued" : "done");
       if (action.type === "open_view" && result.navigate)
         window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: result.navigate } }));
-      setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: `\u2713 **${label}** \u2014 ${result.summary ?? "done"}`, timestamp: Date.now() }]);
+      // summarize_session: clear messages so context resets after saving
+      if (action.type === "summarize_session") {
+        toast(`\u2713 Saved to Notebooks — context reset`, "success");
+        setMessages([]);
+        localStorage.removeItem(CHAT_HISTORY_KEY);
+        return;
+      }
+      const resultContent = isQueued
+        ? `[NAVIGATE:jobs]\u23f3 **${label}** \u2014 ${result.summary ?? "queued"} \u2014 monitor in Jobs panel`
+        : `\u2713 **${label}** \u2014 ${result.summary ?? "done"}`;
+      setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: resultContent, timestamp: Date.now() }]);
     } catch (e) {
       updateActionState(msg.id, idx, "failed");
       setMessages(prev => [...prev, { id: ++_msgId, role: "assistant", content: `\u2717 **${label}** failed: ${e instanceof Error ? e.message : String(e)}`, timestamp: Date.now(), error: true }]);
     }
-  }, [updateActionState]);
+  }, [updateActionState, messages, toast]);
 
   // Auto-execute: either the lite AUTO_EXEC set or (if autoApprove) all actions
   const autoExec = useCallback((msg: MsgUI, forceAll = false) => {
@@ -765,8 +812,14 @@ export function AIChatWindow() {
           )}
         </div>
 
-        <button onClick={() => setDocked(true)} title="Dock to panel" style={hdrBtn}>⊟</button>
-        <button onClick={() => { setMessages([]); localStorage.removeItem(CHAT_HISTORY_KEY); }} title="Clear chat history" style={hdrBtn}>🗑</button>
+        <button onClick={() => setDocked(true)} title="Dock to panel" style={hdrBtn}>⋟</button>
+        <button
+          onClick={() => void saveAndReset()}
+          disabled={compressing}
+          title="Save conversation to Notebooks then start a fresh chat"
+          style={{ ...hdrBtn, fontSize: 10, padding: "2px 6px" }}
+        >💾↺</button>
+        <button onClick={() => { setMessages([]); localStorage.removeItem(CHAT_HISTORY_KEY); }} title="Clear chat history (no save)" style={hdrBtn}>🗑</button>
         <button onClick={closeChat} style={{ ...hdrBtn, fontSize: 16 }}>×</button>
       </div>
 
@@ -1071,14 +1124,15 @@ export function ChatInline() {
           timestamp: Date.now(), error: true }]);
         return;
       }
-      upd("done");
+      // If the action queued a background job, show "queued" not "done"
+      const isQueuedInline = !!r.job_id && /queue/i.test(r.summary ?? "");
+      upd(isQueuedInline ? "queued" : "done");
       if (action.type === "open_view" && r.navigate) {
         window.dispatchEvent(new CustomEvent("glossa:navigate", { detail: { view: r.navigate } }));
       }
-      // For long-running actions: offer navigation link rather than just a text message
-      const viewHint = r.navigate ?? _actionViewHint(action);
+      const viewHint = isQueuedInline ? "jobs" : (r.navigate ?? _actionViewHint(action));
       const doneContent = viewHint
-        ? `[NAVIGATE:${viewHint}]\u2713 **${label}** \u2014 ${r.summary ?? "done"}`
+        ? `[NAVIGATE:${viewHint}]${isQueuedInline ? "\u23f3" : "\u2713"} **${label}** \u2014 ${r.summary ?? (isQueuedInline ? "queued" : "done")}`
         : `\u2713 **${label}** \u2014 ${r.summary ?? "done"}`;
       setMessages(p => [...p, { id: ++_msgId, role: "assistant", content: doneContent, timestamp: Date.now() }]);
     } catch (e) {
@@ -1388,6 +1442,7 @@ export function AISidePanel({
   initialWidth = 320,
   onWidthChange,
   onSideChange,
+  isMobile = false,
 }: {
   onClose: () => void;
   leftOffset?: number;
@@ -1396,6 +1451,7 @@ export function AISidePanel({
   initialWidth?: number;
   onWidthChange?: (w: number) => void;
   onSideChange?: (s: "left" | "right") => void;
+  isMobile?: boolean;
 }) {
   const [side, setSide] = useCallback_SIDE(initialSide, onSideChange);
   const [width, setWidth] = useCallback_WIDTH(initialWidth, onWidthChange);
@@ -1428,20 +1484,31 @@ export function AISidePanel({
     setSide(next);
   };
 
-  const panelStyle: React.CSSProperties = {
-    position: "fixed",
-    top: 0,
-    bottom: bottomOffset,
-    width,
-    background: "#0a0f1e",
-    display: "flex",
-    flexDirection: "column",
-    zIndex: 195,
-    ...(side === "left"
-      ? { left: leftOffset, borderRight: "1px solid #1e293b", boxShadow: "6px 0 24px rgba(0,0,0,0.45)" }
-      : { right: 0, borderLeft: "1px solid #1e293b", boxShadow: "-6px 0 24px rgba(0,0,0,0.45)" }
-    ),
-  };
+  // On mobile: occupy the full screen like a native chat app sheet.
+  const panelStyle: React.CSSProperties = isMobile
+    ? {
+        position: "fixed",
+        inset: 0,
+        paddingBottom: "env(safe-area-inset-bottom, 0px)",
+        background: "#0a0f1e",
+        display: "flex",
+        flexDirection: "column",
+        zIndex: 9100,
+      }
+    : {
+        position: "fixed",
+        top: 0,
+        bottom: bottomOffset,
+        width,
+        background: "#0a0f1e",
+        display: "flex",
+        flexDirection: "column",
+        zIndex: 195,
+        ...(side === "left"
+          ? { left: leftOffset, borderRight: "1px solid #1e293b", boxShadow: "6px 0 24px rgba(0,0,0,0.45)" }
+          : { right: 0, borderLeft: "1px solid #1e293b", boxShadow: "-6px 0 24px rgba(0,0,0,0.45)" }
+        ),
+      };
 
   const dragHandleStyle: React.CSSProperties = {
     position: "absolute",
@@ -1457,18 +1524,21 @@ export function AISidePanel({
 
   return (
     <div style={panelStyle}>
-      {/* Resize handle */}
-      <div
-        style={dragHandleStyle}
-        onMouseDown={handleDragStart}
-        onMouseEnter={e => (e.currentTarget.style.background = "rgba(96,165,250,0.35)")}
-        onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
-      />
+      {/* Resize handle — desktop only */}
+      {!isMobile && (
+        <div
+          style={dragHandleStyle}
+          onMouseDown={handleDragStart}
+          onMouseEnter={e => (e.currentTarget.style.background = "rgba(96,165,250,0.35)")}
+          onMouseLeave={e => (e.currentTarget.style.background = "transparent")}
+        />
+      )}
 
       {/* Header */}
       <div
         style={{
-          padding: "11px 12px 10px",
+          padding: isMobile ? "14px 16px 12px" : "11px 12px 10px",
+          paddingTop: isMobile ? "max(14px, env(safe-area-inset-top, 14px))" : "11px",
           background: "linear-gradient(135deg, #1e1b4b 0%, #1e3a5f 100%)",
           borderBottom: "1px solid rgba(255,255,255,0.07)",
           display: "flex",
@@ -1491,29 +1561,37 @@ export function AISidePanel({
           <div style={{ fontSize: 12, fontWeight: 700, color: "#e2e8f0", lineHeight: 1.2 }}>Glossa AI</div>
           <div style={{ fontSize: 9, color: "#64748b", lineHeight: 1.4 }}>Research assistant</div>
         </div>
-        {/* Dock side toggle */}
-        <button
-          onClick={toggleSide}
-          title={side === "left" ? "Move to right side" : "Move to left side"}
-          style={{
-            background: "none", border: "none",
-            color: "rgba(255,255,255,0.4)",
-            cursor: "pointer", fontSize: 12, lineHeight: 1,
-            padding: "2px 5px", borderRadius: 3,
-          }}
-          onMouseEnter={e => (e.currentTarget.style.color = "#e2e8f0")}
-          onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
-        >
-          {side === "left" ? "\u2192" : "\u2190"}
-        </button>
+        {/* Dock side toggle — desktop only */}
+        {!isMobile && (
+          <button
+            onClick={toggleSide}
+            title={side === "left" ? "Move to right side" : "Move to left side"}
+            style={{
+              background: "none", border: "none",
+              color: "rgba(255,255,255,0.4)",
+              cursor: "pointer", fontSize: 12, lineHeight: 1,
+              padding: "2px 5px", borderRadius: 3,
+            }}
+            onMouseEnter={e => (e.currentTarget.style.color = "#e2e8f0")}
+            onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.4)")}
+          >
+            {side === "left" ? "\u2192" : "\u2190"}
+          </button>
+        )}
         <button
           onClick={onClose}
           title="Close AI panel"
           style={{
             background: "none", border: "none",
             color: "rgba(255,255,255,0.4)",
-            cursor: "pointer", fontSize: 16, lineHeight: 1,
-            padding: "2px 4px", borderRadius: 3,
+            cursor: "pointer",
+            fontSize: isMobile ? 22 : 16,
+            lineHeight: 1,
+            padding: isMobile ? "6px 10px" : "2px 4px",
+            borderRadius: 3,
+            minWidth: isMobile ? 44 : undefined,
+            minHeight: isMobile ? 44 : undefined,
+            display: "flex", alignItems: "center", justifyContent: "center",
             transition: "color 0.15s",
           }}
           onMouseEnter={e => (e.currentTarget.style.color = "#e2e8f0")}

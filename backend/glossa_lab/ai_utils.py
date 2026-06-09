@@ -171,6 +171,51 @@ def _get_provider_prefs() -> dict[str, Any]:
     return _load_keys().get(_PROVIDERS_KEY, {})
 
 
+# ── Per-provider circuit breaker ────────────────────────────────────────────
+# Providers that consistently fail (e.g. wrong API key, unsupported model)
+# waste latency on every LLM call.  After _CIRCUIT_THRESHOLD consecutive
+# failures across calls we open the circuit for _CIRCUIT_DURATION seconds.
+# The circuit resets automatically on the first successful response.
+_CIRCUIT_THRESHOLD = 5     # open after this many consecutive failures
+_CIRCUIT_DURATION  = 600   # 10 minutes in the open state before retrying
+_provider_fail_counts: dict[str, int]   = {}  # provider_id → consecutive fails
+_provider_circuit_until: dict[str, float] = {}  # provider_id → wall-clock deadline
+
+
+import time as _time_utils  # noqa: E402
+
+
+def _circuit_is_open(provider_id: str, provider_name: str = "") -> bool:
+    """Return True and log a skip if the provider's circuit is open."""
+    until = _provider_circuit_until.get(provider_id, 0.0)
+    if until <= _time_utils.time():
+        return False
+    remaining = until - _time_utils.time()
+    _log.debug(
+        "call_llm: provider %s circuit open — %.0fs remaining, skipping",
+        provider_name or provider_id, remaining,
+    )
+    return True
+
+
+def _circuit_record_failure(provider_id: str, provider_name: str = "") -> None:
+    count = _provider_fail_counts.get(provider_id, 0) + 1
+    _provider_fail_counts[provider_id] = count
+    if count >= _CIRCUIT_THRESHOLD:
+        _provider_circuit_until[provider_id] = _time_utils.time() + _CIRCUIT_DURATION
+        _provider_fail_counts.pop(provider_id, None)  # reset counter for next window
+        _log.warning(
+            "call_llm: provider %s CIRCUIT OPEN after %d consecutive failures — "
+            "will skip for %.0f min. Fix the API key / model name in Settings → Providers.",
+            provider_name or provider_id, count, _CIRCUIT_DURATION / 60,
+        )
+
+
+def _circuit_record_success(provider_id: str) -> None:
+    _provider_fail_counts.pop(provider_id, None)
+    _provider_circuit_until.pop(provider_id, None)
+
+
 # Models known to use chain-of-thought / thinking tokens internally.
 # These require special handling with json_mode to avoid empty responses.
 _THINKING_MODEL_PATTERNS = (
@@ -302,7 +347,7 @@ def call_llm(
             max_tokens=max_tokens, temperature=temperature,
         )
 
-    # ── 1. Bucket-based resolution (new system) ──────────────────────
+    # ── 1. Bucket-based resolution (new system) ──────────────────
     if bucket:
         _excluded = set(exclude_provider_ids) if exclude_provider_ids else set()
         # Try up to 4 slots: bucket-primary, bucket-fallback, global-primary, global-fallback
@@ -311,25 +356,35 @@ def call_llm(
             if not resolved:
                 break
             prov = resolved["_provider"]
+            prov_id = prov["id"]
             model = resolved["model"]
             params = resolved.get("params") or {}
             eff_temp = params.get("temperature", temperature)
             eff_max = params.get("max_tokens", max_tokens)
             is_fb = resolved.get("rank", 1) == 2 or resolved.get("bucket") != bucket
+
+            # Skip providers whose circuit is open (too many consecutive failures).
+            if _circuit_is_open(prov_id, prov["name"]):
+                _excluded.add(prov_id)
+                continue
+
             _log.info(
                 "call_llm → bucket=%s provider=%s model=%s%s",
                 bucket, prov["name"], model,
                 " (fallback)" if is_fb else "",
             )
             try:
-                return _dispatch_provider(
+                result = _dispatch_provider(
                     prov, model, messages,
                     json_mode=json_mode, json_schema=json_schema,
                     max_tokens=eff_max, temperature=eff_temp,
                 )
+                _circuit_record_success(prov_id)  # reset failure counter on success
+                return result
             except RuntimeError as _rt_err:
-                # Connection refused or provider down → exclude and try next
-                _excluded.add(prov["id"])
+                # Record failure; open circuit when threshold is reached.
+                _circuit_record_failure(prov_id, prov["name"])
+                _excluded.add(prov_id)
                 _log.warning(
                     "call_llm: provider %s failed (%s), trying fallback",
                     prov["name"], type(_rt_err).__name__,

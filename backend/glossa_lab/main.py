@@ -11,8 +11,9 @@ import urllib.request
 from contextlib import asynccontextmanager
 from pathlib import Path
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from glossa_lab import __version__
@@ -341,6 +342,27 @@ def create_app() -> FastAPI:
         version=__version__,
         lifespan=lifespan,
     )
+
+    # Global fallback handler: converts any unhandled non-HTTP exception (e.g.
+    # aiosqlite ValueError('no active connection'), AssertionError) into a
+    # proper JSON response instead of Starlette's empty-body 500.
+    @application.exception_handler(Exception)
+    async def _global_exception_handler(request: Request, exc: Exception) -> JSONResponse:
+        from fastapi import HTTPException as _HTTPEx  # noqa: PLC0415
+        if isinstance(exc, _HTTPEx):
+            # FastAPI's own ExceptionMiddleware should have handled this;
+            # re-raise so the normal flow works.
+            raise exc
+        _log.error(
+            "Unhandled exception on %s %s: %s: %s",
+            request.method, request.url.path,
+            type(exc).__name__, exc,
+            exc_info=True,
+        )
+        return JSONResponse(
+            status_code=503 if isinstance(exc, (ValueError, AssertionError)) else 500,
+            content={"detail": f"{type(exc).__name__}: {exc}"},
+        )
 
     # CORS — allow localhost origins in development mode
     if settings.dev_mode:

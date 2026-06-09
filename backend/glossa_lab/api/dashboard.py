@@ -43,6 +43,16 @@ _log = logging.getLogger("glossa_lab.api.dashboard")
 _LATEST_INSIGHT: dict[str, Any] | None = None
 _LATEST_INSIGHT_AT: float = 0.0  # epoch seconds
 
+# ── Server-side cooldown between insight generation attempts ─────────────────
+# When the LLM returns invalid/truncated JSON the dashboard retries on the
+# next auto-refresh tick (~21 min frontend interval).  Without a server-side
+# guard this hammers external APIs even though nothing has changed.
+# After a failed attempt we impose a 5-minute back-off so the auto-refresh
+# doesn't trigger a redundant LLM call until the window clears.
+_LAST_INSIGHT_ATTEMPT_AT: float = 0.0   # epoch seconds of most recent attempt
+_LAST_INSIGHT_SUCCEEDED: bool = True    # False when last attempt returned error/fallback
+_INSIGHT_FAILURE_COOLDOWN: float = 300  # 5 minutes
+
 # ── Insight stale flag ──────────────────────────────────────────────────────
 # Set to True by any module that produces new results (experiments, jobs).
 # Cleared when the LLM generates a fresh insight. Exposed via GET /highlights
@@ -335,7 +345,16 @@ def _build_insight_prompt(
     ) or "(no studies yet)"
     # Include experiment name so the LLM can use real labels, not invented ones.
     _names = _graph_experiment_id_name_map()
-    exp_lines = [f"{eid} ({_names.get(eid, eid)})" for eid in experiments[:80]]
+    # Limit to 20 experiments — 80 items at ~50 chars each consumed ~2 000 prompt
+    # tokens that left too little room for the model's JSON output, causing
+    # truncated responses.  Prefer experiments whose ids contain actionable
+    # keywords so the most useful ones appear first.
+    _priority_keywords = ("sa_", "dravidian", "indus", "compare", "cross")
+    def _exp_priority(eid: str) -> int:
+        low = eid.lower()
+        return next((i for i, kw in enumerate(_priority_keywords) if kw in low), 99)
+    sorted_exps = sorted(experiments[:80], key=_exp_priority)
+    exp_lines = [f"{eid} ({_names.get(eid, eid)})" for eid in sorted_exps[:20]]
     exp_block = ", ".join(exp_lines) or "(no experiments registered)"
     goal_label = (goal or {}).get("label", "research")
     prompt_text = _INSIGHT_PROMPT_TEMPLATE.replace("{goal_label}", goal_label)
@@ -456,17 +475,37 @@ async def _generate_insight(
     Falls back to a minimal heuristic summary if no provider is configured
     or if the call fails — so the dashboard never blocks on a 500.
     """
+    global _LAST_INSIGHT_ATTEMPT_AT, _LAST_INSIGHT_SUCCEEDED  # noqa: PLW0603
+    global _LATEST_INSIGHT, _LATEST_INSIGHT_AT  # noqa: PLW0603
+
+    # Server-side cooldown: if the last attempt failed recently, return the
+    # cached insight (or a minimal heuristic) so we don't hammer the LLM on
+    # every frontend auto-refresh tick.
+    now_ts = _time.time()
+    if (
+        not _LAST_INSIGHT_SUCCEEDED
+        and (now_ts - _LAST_INSIGHT_ATTEMPT_AT) < _INSIGHT_FAILURE_COOLDOWN
+        and _LATEST_INSIGHT is not None
+    ):
+        _log.info(
+            "dashboard insight: returning cached insight (failure cooldown %.0fs remaining)",
+            _INSIGHT_FAILURE_COOLDOWN - (now_ts - _LAST_INSIGHT_ATTEMPT_AT),
+        )
+        return dict(_LATEST_INSIGHT)
+
+    _LAST_INSIGHT_ATTEMPT_AT = now_ts
+
     if not items:
+        _LAST_INSIGHT_SUCCEEDED = True
         return {
             "highlights": [],
-            "what_it_means": "No discovery items yet \u2014 trigger a fetch from "
-                              "Settings \u2192 Auto Discovery to populate the dashboard.",
+            "what_it_means": "No discovery items yet — trigger a fetch from "
+                              "Settings → Auto Discovery to populate the dashboard.",
             "impact": [],
             "next_actions": [
-                "Settings \u2192 Auto Discovery \u2192 Fetch now",
+                "Settings → Auto Discovery → Fetch now",
                 "Add at least one source API key (NewsAPI / SerpAPI / Brave) "
                 "if no key-bearing source is configured",
-                "Add one recipient + send a test email so digests land in your inbox",
             ],
             "model": "heuristic",
         }
@@ -554,7 +593,7 @@ async def _generate_insight(
                     bucket="reasoning",
                     json_mode=True,
                     json_schema=_INSIGHT_JSON_SCHEMA,
-                    max_tokens=2000, temperature=0.2,
+                    max_tokens=4096, temperature=0.2,
                     exclude_provider_ids=_failed_provider_ids if _failed_provider_ids else None,
                 ),
             )
@@ -613,7 +652,7 @@ async def _generate_insight(
                         ],
                         bucket="conversational",
                         json_mode=True,
-                        max_tokens=1800, temperature=0.3,
+                        max_tokens=3072, temperature=0.3,
                         exclude_provider_ids=_failed_provider_ids if _failed_provider_ids else None,
                     ),
                 )
@@ -648,7 +687,7 @@ async def _generate_insight(
                         ],
                         bucket="reasoning",
                         json_mode=True,
-                        max_tokens=1200, temperature=0.2,
+                        max_tokens=2048, temperature=0.2,
                         exclude_provider_ids=_failed_provider_ids if _failed_provider_ids else None,
                     ),
                 )
@@ -869,12 +908,13 @@ async def _generate_insight(
             "is_fallback": False,
         }
         # Cache the result so /latest-insight can return it without re-running LLM
-        global _LATEST_INSIGHT, _LATEST_INSIGHT_AT  # noqa: PLW0603
         _LATEST_INSIGHT = parsed
         _LATEST_INSIGHT_AT = _time.time()
+        _LAST_INSIGHT_SUCCEEDED = True
         clear_insights_stale()
         return parsed
     except Exception as exc:  # noqa: BLE001
+        _LAST_INSIGHT_SUCCEEDED = False
         _log.warning("dashboard insight LLM call failed: %s", exc)
         # Heuristic fallback: use the top-3 highest-confidence items.
         ranked = sorted(

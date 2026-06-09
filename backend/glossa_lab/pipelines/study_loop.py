@@ -17,6 +17,22 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, AsyncGenerator
 
+# Module-level reference to the currently-running ResearchLoop.
+# Allows the /stop endpoint to call loop.stop() from the API layer.
+_active_loop: Any = None
+
+
+def stop_active_loop() -> bool:
+    """Signal the running ResearchLoop to stop after the current cycle.
+
+    Returns True if a loop was running and was signalled, False otherwise.
+    """
+    global _active_loop  # noqa: PLW0603
+    if _active_loop is not None:
+        _active_loop.stop()
+        return True
+    return False
+
 _log = logging.getLogger("glossa_lab.pipelines.study_loop")
 
 _REPO = Path(__file__).resolve().parents[3]
@@ -333,7 +349,41 @@ async def run_study_loop(
     before = capture_state()
     yield {"type": "study_loop_state", "phase": "before", "state": before}
 
+    # Emit init_start so the UI can show "Initialising" while the loop loads
+    # corpus data (Holdat CSV) and anchors from disk — this takes 1–3 seconds.
+    yield {"type": "init_start", "message": "Loading corpus and anchor data…"}
+
+    global _active_loop  # noqa: PLW0603
     loop = ResearchLoop(max_cycles=iterations, db=get_db())
+    _active_loop = loop
+
+    # Pre-populate cross-session experiment history so the proposal engine
+    # can correctly say "run N sessions ago" instead of "never run before".
+    try:
+        past_sessions = _load_sessions()
+        cross_session_runs: set[str] = set()
+        for s in past_sessions[-20:]:  # look back at most 20 sessions
+            # node_complete entries aren't in the persisted session directly,
+            # but top_findings / actions_taken include experiment names.
+            for finding in (s.get("path_signals") or {}):
+                pass  # path signals are insight types, not experiment names
+            # The narrative actions_taken contains experiment names
+            narr = s.get("narrative") or {}
+            for action in (narr.get("actions_taken") or []):
+                if isinstance(action, str):
+                    # "experiment_id: metric=value" format
+                    exp_id = action.split(":")[0].strip()
+                    if exp_id:
+                        cross_session_runs.add(exp_id)
+        if cross_session_runs:
+            loop._proposal_engine.cross_session_seen = cross_session_runs
+            _log.debug("Pre-loaded %d cross-session experiment IDs",
+                       len(cross_session_runs))
+    except Exception:  # noqa: BLE001
+        pass  # non-critical — novelty labels just won’t be accurate
+
+    yield {"type": "init_complete", "corpus_seqs": len(loop.corpus_seqs),
+           "anchors": len(loop.anchors)}
 
     # Run the synchronous generator in a thread via a queue
     queue: asyncio.Queue[dict[str, Any] | None] = asyncio.Queue()
@@ -392,4 +442,5 @@ async def run_study_loop(
     _log.info("Study loop session %s persisted (%d total sessions)",
               session_id, len(sessions))
 
+    _active_loop = None  # release reference once done
     yield {"type": "study_loop_complete", "session": session}

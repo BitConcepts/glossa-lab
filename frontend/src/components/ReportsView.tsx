@@ -834,8 +834,16 @@ export function ReportsView() {
           {error} — <button onClick={load} style={{ background: "none", border: "none", cursor: "pointer", color: "#2563eb", textDecoration: "underline" }}>Retry</button>
         </div>
       )}
-      {!loading && !error && reports.length === 0 && (
-        <p style={{ color: "#6b7280" }}>No reports yet. Run an experiment to generate one.</p>
+      {!loading && !error && areaTab !== "templates" && sorted.length === 0 && (
+        <p data-testid="reports-empty-state" style={{ color: "#6b7280" }}>
+          {reports.length === 0
+            ? "No reports yet. Run an experiment to generate one."
+            : areaFiltered.length === 0
+            ? areaTab === "reports"
+              ? "No PDF reports yet. Use Generate Report to create one, or open the Data & Docs tab for JSON/CSV outputs."
+              : "No data files yet. Run an experiment to generate one."
+            : "No items match the current search or filters."}
+        </p>
       )}
 
       {sorted.length > 0 && (

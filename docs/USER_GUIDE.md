@@ -1,8 +1,9 @@
 # Glossa Lab — User Guide
 
-> **Version**: current `main` branch — Phase 170 (May 2026)
-> **Last updated**: 2026-05-21
+> **Version**: current `main` branch — Phase 170+ (June 2026)
+> **Last updated**: 2026-06-10
 > **Maintained by**: BitConcepts LLC
+> **Preprint**: v4 — DOI [10.5281/zenodo.20414696](https://doi.org/10.5281/zenodo.20414696)
 
 ---
 

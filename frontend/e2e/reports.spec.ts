@@ -83,7 +83,9 @@ test.describe("Reports view with backend", () => {
 
   test("shows empty state or table when no reports exist", async ({ page }) => {
     await navigateToReports(page);
-    const empty = page.getByText(/No reports yet/i);
+    // The Reports tab defaults to PDF-only; in CI only data files exist (PDFs
+    // are gitignored), so the empty state — not a table — is what renders.
+    const empty = page.getByTestId("reports-empty-state");
     const table = page.locator("table");
     await expect(empty.or(table)).toBeVisible({ timeout: 5000 });
   });

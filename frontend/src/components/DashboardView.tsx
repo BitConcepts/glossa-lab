@@ -819,6 +819,7 @@ export function DashboardView() {
           for (const s of scored) {
             try {
               let ok = false;
+              let hadError = false; // true when run_error with a non-busy message is received
               for await (const ev of runGraphExperimentStream(s.id, {})) {
                 if (ev.event === "run_complete") { ok = true; completedCount++; toast(`${s.id} complete`, "success"); }
                 if (ev.event === "run_error") {
@@ -828,12 +829,13 @@ export function DashboardView() {
                     toast(`${s.id} is busy — queued as background job`, "info");
                     queuedCount++; ok = true; // treat as soft success
                   } else {
+                    hadError = true; // genuine failure — do NOT count as queued
                     toast(`${s.id} failed: ${ev.message ?? "run error"}`, "error");
                   }
                 }
               }
-              if (!ok) {
-                // Stream ended without completion — assume it was queued
+              if (!ok && !hadError) {
+                // Stream ended without any event — assume it was queued
                 queuedCount++;
                 toast(`${s.id} queued — monitor in Jobs panel`, "info");
               }

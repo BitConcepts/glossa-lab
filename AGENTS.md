@@ -43,19 +43,18 @@ change against docs/governance/rules.md.
 
 **Current version:** v4 (June 2026)
 
-**Source:** `glossa-corpus/indus/preprint_v1.tex`
+**Source:** `glossa-corpus/indus/pierson_2026_indus_decipherment.tex`
 
-**PDF:** `glossa-corpus/indus/preprint_v1.pdf`
+**PDF:** `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v4.pdf`
 
 **DOI:** https://doi.org/10.5281/ZENODO.20414696 (Zenodo)
 
 **SSRN:** Submission ID 6827038 (check status)
 
-**Versioning rule:** Bump the version number in the title block and footer of the
-`.tex` whenever substantive content changes and recompile. The filename stays
-`preprint_v1.tex` / `preprint_v1.pdf` (stable path for scripts and links); the
-version is declared inside the document. Full version history: see
-`docs/research/PREPRINT_VERSIONING.md`.
+**Versioning rule:** The `.tex` filename is stable (`pierson_2026_indus_decipherment.tex`).
+Bump the version number in the title block and footer, and rename the PDF to
+`pierson_2026_indus_decipherment_preprint_vN.pdf` on each new version.
+Full version history and step-by-step bump procedure: `docs/research/PREPRINT_VERSIONING.md`.
 
 **Attribution:** Zero tolerance for uncited material. Any contribution from private
 correspondence that has not been independently published must not appear without

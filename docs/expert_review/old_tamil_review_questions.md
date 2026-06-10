@@ -12,8 +12,8 @@ These questions are designed to solicit expert critique of the proposed Proto-Dr
    plausible for the period ~2600–1900 BCE? Which forms appear anachronistic?
 
 2. The model assumes rebus-principle encoding (phonetic punning). Is this
-   mechanism well-attested enough in early Dravidian to support 605 sign
-   readings, or is it being over-applied?
+   mechanism well-attested enough in early Dravidian to support 161 H+M candidate
+   readings (75 HIGH + 86 MEDIUM confidence), or is it being over-applied?
 
 3. Several readings use retroflex consonants (ḷ, ṟ, ṉ, ḻ) that we claim
    are Dravidian-exclusive. Is this phonological argument sound, or could

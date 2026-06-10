@@ -9,23 +9,17 @@
 | **Contact** | tpierson@bitconcepts.tech |
 | **DOI (Zenodo)** | https://doi.org/10.5281/ZENODO.20414696 |
 | **SSRN submission** | ID 6827038 (status: check SSRN portal) |
-| **Source file** | `glossa-corpus/indus/preprint_v1.tex` |
-| **PDF file** | `glossa-corpus/indus/preprint_v1.pdf` |
+| **Source file** | `glossa-corpus/indus/pierson_2026_indus_decipherment.tex` |
+| **PDF (current)** | `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v4.pdf` |
 | **Research anchor** | `research/indus/indus-anchor-model/` |
 
 ## Filename convention
 
-The source and PDF filenames are **stable** (`preprint_v1.tex` / `preprint_v1.pdf`)
-so that scripts, CI, and external links never break between revisions. The version
-number lives **inside** the document (title block and footer), not in the filename.
+- **Source `.tex`**: `pierson_2026_indus_decipherment.tex` (stable — never rename)
+- **PDF**: `pierson_2026_indus_decipherment_preprint_v{N}.pdf` — rename the PDF on each
+  new version so the version is visible in the filename
 
-For distribution to third parties (email attachments, Zenodo uploads) use:
-
-```
-pierson_2026_indus_decipherment_preprint_v{N}.pdf
-```
-
-where `{N}` is the current version number below.
+The version number is also declared inside the document (title block and footer).
 
 ## Version history
 
@@ -38,17 +32,17 @@ where `{N}` is the current version number below.
 
 ## How to bump the version
 
-1. Edit `glossa-corpus/indus/preprint_v1.tex`:
+1. Edit `glossa-corpus/indus/pierson_2026_indus_decipherment.tex`:
    - Line ~81: `Version: Preprint vN --- Not peer-reviewed`
    - Last line before `\end{document}`: `\emph{End of Preprint vN}`
 2. If distributing, also update the date line: `Date: Month YYYY (revised Month YYYY)`
-3. Recompile: `xelatex -interaction=nonstopmode preprint_v1.tex` (run twice for cross-refs)
-4. If the PDF is locked by a viewer: compile with `-jobname=preprint_tmp`, then replace when closed
-5. Update this file's version table
-6. Update `AGENTS.md` **Current version** field
-7. If publishing: upload new PDF to Zenodo as a **new version** (keeps DOI concept pointing to latest)
-8. If SSRN is live: use SSRN "Submit a Revision" to replace the PDF
-9. Commit: `git add glossa-corpus/indus/preprint_v1.tex glossa-corpus/indus/preprint_v1.pdf docs/research/PREPRINT_VERSIONING.md AGENTS.md && git commit -m "preprint: bump to vN"`
+3. Recompile: `xelatex -interaction=nonstopmode pierson_2026_indus_decipherment.tex` (run twice)
+4. If PDF is locked: compile with `-jobname=preprint_tmp`, copy over when viewer is closed
+5. Rename the PDF: `git mv pierson_2026_indus_decipherment_preprint_v{N-1}.pdf pierson_2026_indus_decipherment_preprint_vN.pdf`
+6. Update this file's version table
+7. Update `AGENTS.md` **Source**, **PDF**, and **Current version** fields
+8. If publishing: upload new PDF to Zenodo as a **new version**; update SSRN with "Submit a Revision"
+9. Commit: `git add glossa-corpus/indus/ docs/research/PREPRINT_VERSIONING.md AGENTS.md && git commit -m "preprint: bump to vN"`
 
 ## Attribution policy (enforced)
 

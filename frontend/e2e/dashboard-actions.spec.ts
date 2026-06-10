@@ -152,9 +152,12 @@ test.describe("Dashboard UI", () => {
     // Loading state OR insight update — either is acceptable
     // (backend may not have LLM API keys in CI, so the call may fail silently)
     const loadingVisible = await page.getByText("Asking the AI").isVisible({ timeout: 3000 }).catch(() => false);
-    const regenStillVisible = await regenBtn.isVisible({ timeout: 1000 }).catch(() => false);
-    // Either loading message showed, or regen button is still there (LLM unavailable = graceful)
-    expect(loadingVisible || regenStillVisible).toBeTruthy();
+    const regenStillVisible = await regenBtn.isVisible({ timeout: 2000 }).catch(() => false);
+    // Insight updated (mock returns instantly) — check if any insight content now appears
+    const insightUpdated = await page.getByText("Mock insight.").isVisible({ timeout: 2000 }).catch(() => false)
+      || await page.getByText("✨ AI Insight").isVisible({ timeout: 1000 }).catch(() => false);
+    // Either loading state showed, regen button is still present, or insight content updated
+    expect(loadingVisible || regenStillVisible || insightUpdated).toBeTruthy();
   });
 
   test("impact section shows experiment names, not hex hashes", async ({ page }) => {

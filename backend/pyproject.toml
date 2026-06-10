@@ -38,8 +38,8 @@ tray = [
     "Pillow>=12.2.0,<14",
 ]
 dev = [
-    "pytest>=9",
-    "pytest-asyncio>=0.23,<1",
+    "pytest>=8",
+    "pytest-asyncio>=0.25",
     "httpx>=0.28,<1",
     "anyio>=4,<5",
     "ruff>=0.9,<1",

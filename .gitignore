@@ -230,3 +230,9 @@ outputs/phase*_bulk_mine_*.json
 
 # Private correspondence — local context only, never pushed
 .correspondence/
+
+# ---- PDF policy ----
+# Only the canonical preprint PDF is tracked. All other PDFs stay local.
+*.pdf
+!glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v4.pdf
+

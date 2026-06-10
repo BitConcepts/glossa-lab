@@ -11,9 +11,9 @@
 
 Agentic computational linguistics research platform for statistical analysis, decipherment, and hypothesis testing of ancient and unknown writing systems — with a primary focus on the **Indus Script**.
 
-> **Decipherment Status (Audited):** 185 corpus-attested Proto-Dravidian readings covering 92.8% of Holdat IVS tokens · 80% agreement with Parpola (1994) on 20 tested signs · Dravidian signal confirmed on two independent corpora (Holdat 57.8%, M77 70.5%) · Reading entropy H₂ = 4.11 bits (linguistic range) · 97.7% inscription uniqueness · Sanskrit hypothesis falsified 0/34
+> **Decipherment Status (v4 preprint):** 161 H+M candidate readings (75 HIGH + 86 MEDIUM) covering 90.96% of Holdat IVS tokens · 59% agreement with Parpola (1994) · Fish-sign isolation test: 0/140 isolated across all 9 sites and Gulf catalog · M267 reclassified as genitive particle · 3-slot positional grammar z=10.3 (0/2000 permutations) · Independent replication: Nair 2026 (arXiv:2604.17828)
 
-> **Preprint (v3):** Pierson, T.K. (2026). *A Computational Decipherment Hypothesis for the Indus Script: 185 Proto-Dravidian Readings Validated Across Two Independent Corpora.* Zenodo. DOI: [10.5281/zenodo.20414696](https://doi.org/10.5281/zenodo.20414696)
+> **Preprint (v4):** Pierson, T.K. (2026). *A Falsifiable Computational Decipherment Hypothesis for the Indus Valley Script: 161 Candidate Proto-Dravidian Anchors and a Three-Slot Positional Grammar.* Zenodo. DOI: [10.5281/zenodo.20414696](https://doi.org/10.5281/zenodo.20414696)
 
 Built and maintained by **[BitConcepts LLC](https://bitconcepts.tech)**
 
@@ -91,36 +91,30 @@ Local control surface. Start/stop/restart backend, open UI, quick status.
 
 ## Indus Script Decipherment
 
-**185 corpus-attested Proto-Dravidian readings** covering 92.8% of the Holdat IVS corpus — a computational decipherment hypothesis for the Indus Script (~2600–1900 BCE). Validated through 6 independent tests on audited data.
+**161 H+M candidate readings** (75 HIGH + 86 MEDIUM) covering 90.96% of the Holdat IVS corpus — a falsifiable computational decipherment hypothesis for the Indus Script (~2600–1900 BCE).
 
 | Metric | Value |
 |---|---|
-| Corpus-attested readings | 185 signs (167 distinct readings) |
-| Token coverage (HIGH only) | 92.8% (6,501/7,002 Holdat tokens) |
-| Parpola agreement | 80% (15/20 exact matches, strict comparison) |
-| Language discrimination | Dravidian 57.8% vs Uniform 0.0% (anchored bigram) |
-| Corpus independence | M77 Dravidian hit rate: 70.5% |
-| Reading entropy | H₂ = 4.11 bits (linguistic range: 2–4.5) |
-| Inscription uniqueness | 97.7% (1,631/1,670 unique sequences) |
-| Phonological coverage | 76% (19/25 Proto-Dravidian initials attested) |
-| Sanskrit hypothesis | Falsified 0/34 |
-| Total anchor signs | 605 (400 HIGH + 205 LOW unread) |
+| H+M candidate readings | 161 (75 HIGH + 86 MEDIUM) |
+| Token coverage (H+M) | 90.96% (6,363/7,002 Holdat tokens) |
+| Seal coverage | 69.8% (1,165/1,670 seals fully covered by H+M) |
+| Parpola agreement | 59% (44/75 HIGH readings in Parpola 1994) |
+| Positional grammar | z=10.3; 0/2000 permutations exceeded observed |
+| Fish-sign isolation | 0/140 isolated (0/113 corpus + 0/27 Gulf) |
+| External replication | Nair 2026 (arXiv:2604.17828) on ICIT corpus |
+| Grammar accuracy | 93.2% sign-level at 161 H+M (Phase-170) |
 | Preprint DOI | [10.5281/zenodo.20414696](https://doi.org/10.5281/zenodo.20414696) |
-
-> **Note:** All numbers are from `RELEASE_VALIDATION.json`, a cold re-run on audited data. See `outputs/AUDIT_CORRECTIONS.json` for full audit trail including bugs found and claims retracted.
 
 ### Key files
 
 ```
 backend/reports/
-├── INDUS_FINAL_ANCHORS.json          ← 605-sign anchor table with all readings
-├── INDUS_DECIPHERMENT_REPORT.pdf     ← PDF report
-outputs/
-├── indus_decipherment_report_final.json  ← comprehensive report (JSON)
-├── phase219_arxiv_updated.json       ← arXiv preprint text + data
+├── INDUS_FINAL_ANCHORS.json                        ← anchor table with all readings
+glossa-corpus/indus/
+├── pierson_2026_indus_decipherment.tex              ← preprint source (LaTeX)
+└── pierson_2026_indus_decipherment_preprint_v4.pdf  ← preprint PDF (CC BY 4.0)
 research/indus/
-├── pierson_2026_indus_preprint.pdf
-└── phase_reports/
+└── phase_reports/                                   ← all phase analysis reports
 ```
 
 ---
@@ -292,20 +286,20 @@ Full governance rules: [`docs/governance/`](docs/governance/)
 
 ---
 
-## Current research status (May 2026 — Audited)
+## Current research status (June 2026 — Preprint v4)
 
-- **185 corpus-attested readings** covering 92.8% of Holdat IVS tokens (7,002 tokens, 1,670 seals)
-- **80% Parpola agreement** (15/20 signs match Parpola 1994/2010 proposals)
-- **Corpus-independent signal**: Dravidian 57.8% (Holdat) and 70.5% (Mahadevan 1977)
-- **Reading-level entropy**: H₂ = 4.11 bits (linguistic range)
-- **97.7% inscription uniqueness** — supports registration-code / guild-identity model
-- **76% Proto-Dravidian phonological inventory** attested (19/25 initials; 4/6 missing are expected rare)
-- **Sanskrit hypothesis falsified**: 0/34 agreement with Yajnadevam readings
-- **400 HIGH + 205 LOW** anchor signs (LOW signs unread, awaiting individual evidence)
-- **3 bugs found and fixed** during audit (mass-assignment pipelines); **3 claims retracted** (see `outputs/AUDIT_CORRECTIONS.json`)
+- **161 H+M candidate readings** — 75 HIGH + 86 MEDIUM confidence (4 PROVISIONAL_MEDIUM flagged)
+- **90.96% token coverage** of the 7,002-token Holdat corpus; 69.8% of seals fully covered
+- **59% Parpola agreement**: 44/75 HIGH readings appear in Parpola (1994)
+- **Fish-sign isolation test**: 0/140 isolated across all 9 sites and Gulf deposit catalog
+- **M267 reclassified**: genitive particle (iN/in), not fish sign
+- **Three-slot grammar** (CLASSIFIER–TITLE–SUFFIX): z=10.3, 93.2% sign-level accuracy
+- **External replication**: Nair 2026 (arXiv:2604.17828) confirms non-random structure on ICIT corpus
+- **4 provisional sibilant readings** (M330, M165, M202, M198) added in Phase-163/166
+- **Preprint v4** available at `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v4.pdf`
 
 ---
 
 ## Status
 
-**Seeking peer review.** Release validation complete (`outputs/RELEASE_VALIDATION.json`). Backend and frontend operational at `http://localhost:8001`.
+**Preprint v4 published (Zenodo DOI: 10.5281/zenodo.20414696). Seeking peer review.** Backend and frontend operational at `http://localhost:8001`.

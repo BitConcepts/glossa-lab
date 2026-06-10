@@ -2,6 +2,10 @@
 
 Covers: manifest rebuild, triple-check verification, iconic fallback
 generation, and new-source discovery.
+
+Requires: opencv-python (cv2). The sign image processor uses OpenCV for
+image processing. These tests are skipped automatically in CI environments
+where cv2 is not installed. Install with: pip install opencv-python
 """
 from __future__ import annotations
 
@@ -13,6 +17,10 @@ from unittest import mock
 import numpy as np
 import pytest
 from PIL import Image
+
+# Skip the entire module if OpenCV is not installed.
+# cv2 is an optional dependency used only for sign image processing.
+pytest.importorskip("cv2", reason="cv2 (OpenCV) not installed — install opencv-python to run sign image tests")
 
 # ── Helpers ────────────────────────────────────────────────────────────────
 

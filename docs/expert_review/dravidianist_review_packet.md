@@ -6,7 +6,9 @@ geometry: "margin=1in"
 fontsize: 11pt
 ---
 
-**Preprint DOI:** 10.5281/zenodo.20401711 | **Repository:** github.com/BitConcepts/glossa-lab
+**Preprint DOI:** [10.5281/zenodo.20414696](https://doi.org/10.5281/zenodo.20414696) | **Repository:** github.com/BitConcepts/glossa-lab
+
+**Preprint:** v4, June 2026 — *A Falsifiable Computational Decipherment Hypothesis for the Indus Valley Script: 161 Candidate Proto-Dravidian Anchors and a Three-Slot Positional Grammar*
 
 **Purpose:** We are requesting expert critique of the proposed Proto-Dravidian sign readings. We ask for honest assessment, not endorsement.
 
@@ -14,20 +16,22 @@ fontsize: 11pt
 
 ## 1. What This Paper Claims
 
-- A computational model assigns Proto-Dravidian readings to 605 Indus signs: **413 independently confirmed** (two or more independent evidence sources) and **192 allograph-inferred** (provisional, based on positional profile similarity).
+- A computational model assigns **161 H+M candidate readings** (75 HIGH confidence + 86 MEDIUM confidence) to Indus signs, covering **90.96% of corpus tokens** (6,363/7,002 Holdat tokens).
 - Each reading is linked to a **DEDR entry** (Burrow & Emeneau 1984).
-- The model predicts a **tripartite grammar**: [CLASSIFIER/TITLE] – [NAME/CONTENT] – [CASE SUFFIX].
-- Simulated annealing (SA) achieves 83.7% consistency on an independent 5,520-inscription corpus.
-- Tamil-Brahmi personal name concordance reaches 58% (z=16.2).
+- The model identifies a **three-slot positional grammar**: [ANIMAL CLASSIFIER] – [GUILD TITLE] – [PERSONAL NAME/SUFFIX], with z=10.3 (0/2000 permutations exceeded observed statistic).
+- Fish-sign isolation test: **0/140 isolated** across all 9 sites and Gulf deposit catalog (site-invariant scribal rule).
+- M267 reclassified as genitive particle (iN/in), not fish sign.
+- Tamil-Brahmi terminal cross-validation: 73% category coverage (8/11 categories).
 
 ## 2. What This Paper Does NOT Claim
 
 - The paper does **not** claim epigraphic finality or definitive decipherment.
 - The readings are **candidate** Proto-Dravidian forms, not established translations.
-- The paper does **not** claim the Indus script is purely syllabic; the proposed model is mixed logo-syllabic.
-- The statistical profile alone does not prove linguistic status (see Sproat 2014 benchmark comparison in the preprint).
+- The paper does **not** claim the Indus script is purely syllabic.
+- The statistical profile alone does not prove linguistic status.
 - Individual seal "translations" are interpretive and caveated.
-- 192 of 605 readings are allograph-inferred and should be treated as provisional.
+- 4 PROVISIONAL_MEDIUM readings (M330, M165, M202, M198) are flagged for expert review before any HIGH-confidence promotion.
+- Dravidian superiority over Proto-Munda has not been formally quantified against a matched baseline.
 
 ## 3. Key Readings for Review
 
@@ -56,7 +60,7 @@ Detailed questions are in Section 7 below. Summary:
 The following categories of readings are most likely to contain errors:
 
 - **Low-frequency signs** (corpus frequency < 10): Limited distributional evidence; rely heavily on SA modal + DEDR lookup.
-- **Allograph-resolved signs** (192 signs): Promoted via positional profile similarity (L1 distance < 0.2). If the allograph grouping is wrong, the inherited reading is also wrong.
+- **MEDIUM-confidence signs** (86 signs): Single strong evidence source; positional profile or SA-consistency match. Allograph-resolved signs use L1 distance < 0.2. If the grouping is wrong, the inherited reading is also wrong.
 - **Munda substrate readings** (M374=kul, M351=vī): Cross language-family boundaries and require specialist assessment.
 - **MEDIAL-only signs**: Signs appearing exclusively in the name/content slot may have correct positional classification but incorrect phonetic assignment.
 
@@ -64,7 +68,7 @@ The following categories of readings are most likely to contain errors:
 
 1. Review the attached **dravidianist_anchor_subset.csv** for specific sign readings.
 2. Consult **Section 7** below for 18 targeted review questions.
-3. The full anchor table (605 signs) is in the repository at github.com/BitConcepts/glossa-lab.
+3. The full anchor table (161 H+M + 236 LOW signs) is in the repository at github.com/BitConcepts/glossa-lab.
 4. The full preprint PDF is attached or available at the DOI above.
 
 We welcome critique rather than endorsement. The goal is to identify which readings are linguistically defensible and which should be downgraded or removed before journal submission.

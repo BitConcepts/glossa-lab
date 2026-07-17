@@ -91,7 +91,7 @@ jobs:
       # when it starts.  If the frontend is built after the backend starts, the
       # StaticFiles mount is never registered and Playwright gets 404s.
       - name: Set up Node.js 24
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: "24"
           cache: npm

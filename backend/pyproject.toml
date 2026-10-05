@@ -49,6 +49,9 @@ dev = [
     "httpx>=0.28,<1",
     "anyio>=4,<5",
     "ruff>=0.9,<1",
+    # tests/test_glossa_mcp.py imports the MCP server; CI installs only
+    # the dev extra, so mcp must be here as well as in the mcp extra.
+    "mcp>=1,<2",
 ]
 
 # GPU acceleration — install ONE of these via 'shell.cmd setup'

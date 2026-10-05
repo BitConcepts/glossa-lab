@@ -247,3 +247,35 @@ the direction of Tristen Pierson, per constitution §VI.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+---
+
+## 2026-10-05 — MCP update (Stage A of feat/mcp-gaps-indus-continuation)
+
+- **Route-drift audit:** enumerated the live FastAPI route table from the
+  running app (311 method/path routes via the OpenAPI schema) and checked
+  every route called by the 27 existing MCP tools. Result: **no functional
+  drift** — every method/path resolves. Sole mismatch is cosmetic: the
+  experiment-graphs item routes name their path parameter `{exp_id}`
+  (MCP interpolates a concrete ID, so calls are unaffected).
+- **New MCP tools (+6 → 33 total)** in `backend/glossa_mcp/server.py`,
+  following the existing `_get`/`_fmt`/`_err` conventions:
+  `list_indus_claims` (filters + opt-in `aee=true` AEE score attachment),
+  `get_indus_claim` (resolved via the claims list endpoint — the evidence
+  API has no per-claim route), `get_indus_claim_aee_scores`
+  (GET /api/v1/indus-evidence/claims/aee-scores), `list_indus_library`,
+  `list_indus_hypotheses`, and `get_foundation_status`
+  (GET /api/v1/foundation/status — last-check state the existing
+  `run_foundation_check` tool did not expose).
+- **GDELT consistency:** `trigger_discovery_fetch` docstring now states
+  GDELT is served by the `gdelt_ngrams` fetcher by default and the DOC
+  API fetcher is paused/opt-in, matching post-migration discovery
+  defaults. Tool inventory docs updated (README.md, backend/README.md,
+  AGENTS.md: 27 → 33 tools).
+- **Requirements gap found & fixed here:** the `mcp` package was declared
+  in no dependency manifest — the MCP server could not be imported from a
+  clean install of the declared deps. Added an `mcp` optional-dependency
+  group (`mcp>=1,<2`, `httpx`) to `backend/pyproject.toml`.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

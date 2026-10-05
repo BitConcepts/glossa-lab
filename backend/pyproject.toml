@@ -38,6 +38,11 @@ tray = [
     "pystray>=0.19,<1",
     "Pillow>=12.2.0,<14",
 ]
+mcp = [
+    # Required for the MCP server (glossa_mcp/server.py, FastMCP)
+    "mcp>=1,<2",
+    "httpx>=0.28,<1",
+]
 dev = [
     "pytest>=8",
     "pytest-asyncio>=0.25",

@@ -206,8 +206,8 @@ backend/static/signs/originals/
 glossa-indus/raw/user_uploads/*.pdf
 
 
-# governance-tool — internal agent governance state; not for public repos
-.specsmith/
+# Spec-kit + AEE runtime state — local agent/governance state; not for public repos
+.glossa-state/
 
 # governance-tool / general backup files — regeneratable, never commit
 *.bak

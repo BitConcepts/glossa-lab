@@ -29,8 +29,13 @@ session. Read the following before any non-trivial action:
 **Before any action that modifies production code or data:** verify the proposed
 change against docs/governance/rules.md.
 
-**Governance data** is gitignored and lives in local runtime directories (`.specsmith/`, `.chronomemory/`)
-(local runtime only — never committed).
+**Governance configuration** is shared and tracked in `.specify/` (spec-kit:
+constitution at `.specify/memory/constitution.md`, specs in `specs/NNN-name/`).
+Session workflow is git + the spec-kit flow (`specify` / speckit skills with
+the AEE + evaluator extension hooks in `.specify/extensions.yml`) — specsmith
+was retired 2026-10-05 and is no longer active tooling.
+**Runtime state** is gitignored and lives in local runtime directories
+(`.glossa-state/`, `.chronomemory/`) (local runtime only — never committed).
 
 ---
 

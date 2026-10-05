@@ -58,7 +58,7 @@ _sync_lock = threading.Lock()  # prevent concurrent HF syncs
 # remaining cool-off period is recorded here so that:
 #   1. Concurrent callers (manual sync endpoint) skip instead of piling in.
 #   2. The daily re-sync respects the window instead of immediately retrying.
-# Uses wall-clock time.time() and persists to .specsmith/rate_limits.json so
+# Uses wall-clock time.time() and persists to .glossa-state/rate_limits.json so
 # the cooldown survives process restarts.
 _hf_cooldown_until: float = 0.0  # wall-clock (time.time()) deadline
 
@@ -69,7 +69,7 @@ _HF_COOLDOWN_KEY = "huggingface_leaderboard"
 
 def _hf_cooldown_path() -> "Path | None":
     try:
-        p = Path(__file__).resolve().parents[2] / ".specsmith" / "rate_limits.json"
+        p = Path(__file__).resolve().parents[2] / ".glossa-state" / "rate_limits.json"
         p.parent.mkdir(parents=True, exist_ok=True)
         return p
     except Exception:  # noqa: BLE001

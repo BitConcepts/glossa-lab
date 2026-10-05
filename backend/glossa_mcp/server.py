@@ -36,7 +36,9 @@ mcp = FastMCP(
         "Use list_jobs / get_job to monitor pipeline execution. "
         "Use run_experiment to launch graph experiments as background jobs. "
         "Use start_research_loop to mine new insights (fires in background). "
-        "Use run_foundation_check to validate research data integrity."
+        "Use run_foundation_check to validate research data integrity. "
+        "Use list_indus_claims / get_indus_claim_aee_scores for the Indus "
+        "decipherment evidence base (extracted claims scored by the AEE library)."
     ),
 )
 
@@ -435,6 +437,12 @@ def trigger_discovery_fetch(topics: str = "", sources: str = "") -> str:
 
     Returns a job acknowledgement. The fetch runs as a background job.
 
+    Note: GDELT is served by the Web Ngrams fetcher (source id
+    ``gdelt_ngrams``), which is the default GDELT source since the
+    spec-kit/AEE migration — the legacy GDELT DOC API fetcher (``gdelt``)
+    is paused per GDELT's own migration guidance and only runs when a
+    topic explicitly enables it via source overrides.
+
     Args:
         topics:  Comma-separated topic IDs to fetch (empty = all configured topics).
         sources: Comma-separated source IDs to query (empty = all configured sources).
@@ -612,6 +620,165 @@ def get_report(report_name: str) -> str:
     try:
         with httpx.Client(base_url=BASE_URL, timeout=60.0) as c:
             r = c.get(f"/api/v1/reports/{report_name}")
+            r.raise_for_status()
+            return _fmt(r.json())
+    except Exception as e:
+        return _err(e)
+
+
+@mcp.tool()
+def get_foundation_status() -> str:
+    """Return the foundation auto-check state without running a new check.
+
+    Reports the last completed check's verdict and ok/fail/warn counts, when
+    it ran, whether research data has changed since (dirty flag), and whether
+    the periodic auto-check is enabled. Use run_foundation_check to force a
+    fresh full check.
+    """
+    try:
+        with _get() as c:
+            r = c.get("/api/v1/foundation/status")
+            r.raise_for_status()
+            return _fmt(r.json())
+    except Exception as e:
+        return _err(e)
+
+
+# ── 10. Indus evidence (claims, AEE scores, library, hypotheses) ─────────────
+
+@mcp.tool()
+def list_indus_claims(
+    claim_status: str = "",
+    claim_type: str = "",
+    sign: str = "",
+    doc_id: str = "",
+    q: str = "",
+    limit: int = 200,
+    offset: int = 0,
+    aee: bool = False,
+) -> str:
+    """List extracted Indus decipherment claims from the evidence base.
+
+    Claims are extracted from registered literature documents; each carries a
+    claim_status (e.g. untested, partially_supported, strongly_supported,
+    contradicted), a falsification_condition, and its evidence basis.
+
+    Args:
+        claim_status: Filter by status (empty = all statuses).
+        claim_type:   Filter by claim type (empty = all types).
+        sign:         Filter to claims involving a sign (e.g. M293).
+        doc_id:       Filter to one source document ID.
+        q:            Substring filter on the normalized claim text.
+        limit:        Maximum claims to return (default 200).
+        offset:       Pagination offset (default 0).
+        aee:          Set True to attach an ``aee_score`` per claim, scored by
+                      the Applied Epistemic Engineering library.
+    """
+    try:
+        params: dict[str, Any] = {"limit": limit, "offset": offset}
+        if claim_status:
+            params["claim_status"] = claim_status
+        if claim_type:
+            params["claim_type"] = claim_type
+        if sign:
+            params["sign"] = sign
+        if doc_id:
+            params["doc_id"] = doc_id
+        if q:
+            params["q"] = q
+        if aee:
+            params["aee"] = "true"
+        with _get() as c:
+            r = c.get("/api/v1/indus-evidence/claims", params=params)
+            r.raise_for_status()
+            return _fmt(r.json())
+    except Exception as e:
+        return _err(e)
+
+
+@mcp.tool()
+def get_indus_claim(claim_id: str, aee: bool = False) -> str:
+    """Return a single extracted claim by its claim_id.
+
+    The evidence API has no per-claim route, so this resolves the claim via
+    the claims list endpoint and returns the matching record (or an error
+    object if no claim carries that ID).
+
+    Args:
+        claim_id: The claim ID (e.g. as returned by list_indus_claims).
+        aee:      Set True to attach the claim's ``aee_score``.
+    """
+    try:
+        params: dict[str, Any] = {"limit": 1000, "offset": 0}
+        if aee:
+            params["aee"] = "true"
+        with _get() as c:
+            r = c.get("/api/v1/indus-evidence/claims", params=params)
+            r.raise_for_status()
+            data = r.json()
+        for claim in data.get("claims", []):
+            if str(claim.get("claim_id")) == claim_id:
+                return _fmt(claim)
+        return _fmt({"error": f"claim not found: {claim_id}"})
+    except Exception as e:
+        return _err(e)
+
+
+@mcp.tool()
+def get_indus_claim_aee_scores() -> str:
+    """Return AEE scores for every extracted Indus claim.
+
+    Scores are computed by the Applied Epistemic Engineering library
+    (glossa_lab.aee_core): each claim's evidence is mapped into an AEE
+    ClaimGraph and propagated by the AEE ScoringEngine. The summary includes
+    per-claim scores plus aggregate counts by status/confidence band.
+    """
+    try:
+        with _get() as c:
+            r = c.get("/api/v1/indus-evidence/claims/aee-scores")
+            r.raise_for_status()
+            return _fmt(r.json())
+    except Exception as e:
+        return _err(e)
+
+
+@mcp.tool()
+def list_indus_library(q: str = "", status: str = "", limit: int = 100, offset: int = 0) -> str:
+    """List registered literature documents in the Indus evidence base.
+
+    Each entry carries title/authors/year/DOI, processing status, and the
+    number of claims extracted from it.
+
+    Args:
+        q:      Substring filter on title/authors (empty = all documents).
+        status: Filter by processing status (empty = all).
+        limit:  Maximum documents to return (default 100).
+        offset: Pagination offset (default 0).
+    """
+    try:
+        params: dict[str, Any] = {"limit": limit, "offset": offset}
+        if q:
+            params["q"] = q
+        if status:
+            params["status"] = status
+        with _get() as c:
+            r = c.get("/api/v1/indus-evidence/library", params=params)
+            r.raise_for_status()
+            return _fmt(r.json())
+    except Exception as e:
+        return _err(e)
+
+
+@mcp.tool()
+def list_indus_hypotheses() -> str:
+    """List Indus decipherment hypothesis model summaries.
+
+    Returns each registered hypothesis model's id, name, status, type, and
+    its core-claim / planned-test counts.
+    """
+    try:
+        with _get() as c:
+            r = c.get("/api/v1/indus-evidence/hypotheses")
             r.raise_for_status()
             return _fmt(r.json())
     except Exception as e:

@@ -247,3 +247,118 @@ the direction of Tristen Pierson, per constitution §VI.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+---
+
+## 2026-10-05 — MCP update (Stage A of feat/mcp-gaps-indus-continuation)
+
+- **Route-drift audit:** enumerated the live FastAPI route table from the
+  running app (311 method/path routes via the OpenAPI schema) and checked
+  every route called by the 27 existing MCP tools. Result: **no functional
+  drift** — every method/path resolves. Sole mismatch is cosmetic: the
+  experiment-graphs item routes name their path parameter `{exp_id}`
+  (MCP interpolates a concrete ID, so calls are unaffected).
+- **New MCP tools (+6 → 33 total)** in `backend/glossa_mcp/server.py`,
+  following the existing `_get`/`_fmt`/`_err` conventions:
+  `list_indus_claims` (filters + opt-in `aee=true` AEE score attachment),
+  `get_indus_claim` (resolved via the claims list endpoint — the evidence
+  API has no per-claim route), `get_indus_claim_aee_scores`
+  (GET /api/v1/indus-evidence/claims/aee-scores), `list_indus_library`,
+  `list_indus_hypotheses`, and `get_foundation_status`
+  (GET /api/v1/foundation/status — last-check state the existing
+  `run_foundation_check` tool did not expose).
+- **GDELT consistency:** `trigger_discovery_fetch` docstring now states
+  GDELT is served by the `gdelt_ngrams` fetcher by default and the DOC
+  API fetcher is paused/opt-in, matching post-migration discovery
+  defaults. Tool inventory docs updated (README.md, backend/README.md,
+  AGENTS.md: 27 → 33 tools).
+- **Requirements gap found & fixed here:** the `mcp` package was declared
+  in no dependency manifest — the MCP server could not be imported from a
+  clean install of the declared deps. Added an `mcp` optional-dependency
+  group (`mcp>=1,<2`, `httpx`) to `backend/pyproject.toml`.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+---
+
+## 2026-10-05 — Requirements & test gaps (Stage B of feat/mcp-gaps-indus-continuation)
+
+- **Traceability:** specs/003-mcp-and-test-gaps/ (spec/plan/tasks) carries
+  the requirement → implementation → test matrix over specs 001–002
+  (R1–R12). Two genuine gaps found and fixed; spec 002 T006/T007 are
+  future-scoped by their own spec and were left alone.
+- **Gap 1 — MCP had zero tests:** added `backend/tests/test_glossa_mcp.py`
+  (24 tests): httpx MockTransport happy-path request formation/response
+  formatting for every tool family, error-path helper coverage, a
+  33-tool inventory assertion, and a drift guard that extracts every
+  route called in the MCP source and asserts it exists in the live
+  FastAPI route table.
+- **Gap 2 — foundation_check.py unrunnable off Windows:** the hardcoded
+  `C:\Users\trist\...` repo path is replaced by `resolve_repo_root()`
+  (`GLOSSA_REPO_ROOT` env override, else script-location-derived —
+  identical target on the Windows dev box). Added
+  `backend/tests/test_foundation_check_script.py` (5 tests).
+- **Foundation check real run (this environment):** with the Holdat
+  corpus fetched from its cited public source (CITATIONS.md A.13) into
+  the gitignored `corpora/` layout, the script now runs end-to-end:
+  **39 checks passed, 0 failed, 9 warnings** (verdict READY WITH
+  CAVEATS; warnings are the script's pre-existing documented caveats:
+  site coverage, P/M numbering crosswalk, superseded TB corpus,
+  phase52 result absent, torch absent). Report regenerated at
+  `reports/foundation_check_report.json`.
+- **Full backend suite:** 562 passed, 9 skipped, 0 failed (baseline
+  533 + 24 MCP + 5 foundation-script tests). Ruff clean on changed files.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+---
+
+## 2026-10-05 — Indus program continuation (Stage C of feat/mcp-gaps-indus-continuation)
+
+- **Phase-104 (claims evaluation):** all 21 untested extracted claims
+  evaluated against in-repo evidence under pre-stated rules
+  (`backend/scripts/phase104_claims_evaluation.py`, graph node
+  `IndusClaimsEval`). 5 claims moved to `contradicted` — duplicate
+  extractions of the already-adjudicated Farmer/Sproat/Witzel
+  proposition, verdict + cited evidence carried over with cross-reference.
+  16 stay untested, each with a recorded reason (site-typology data,
+  sign-class set, or atlas definitions absent from the repo; unstated
+  sign numbering; or extraction fragments with no falsification
+  condition). Detail: `glossa-indus/LEDGER.md`,
+  `glossa-indus/reports/phase104_claims_evaluation.json`.
+- **Phase-105 (name-sign adjudication):** the unrun draft
+  `phase105_name_signs.py` (pre-written readings/promotions) was replaced
+  with a Phase-101-style positional/formula adjudication over the Holdat
+  corpus. Verdicts: M375 CORROBORATED; M362 and M398 INCONCLUSIVE
+  (3 tokens each — underpowered); **M024 CHALLENGED** as a medial
+  name-component (100% INITIAL profile; Holdat roles: CLASSIFIER_PREFIX)
+  and flagged for future adjudication. No anchor promoted, demoted, or
+  modified. Report: `reports/phase105_name_signs.json`.
+- **Phase-102 follow-up (Mistral OCR): BLOCKED** — no Mistral key
+  configured, `pypdfium2` absent, and `im77intro.pdf` not in this
+  checkout. Recorded, not fabricated.
+- **Foundation check (H21):** re-run after Stage C — 39 passed,
+  0 failed, 9 warnings.
+- PRED-2026-001..003 remain PENDING (external ICIT data); untouched.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+### [2026-10-05] Entry — Spec 003 follow-up fix: mcp in dev extra (CI)
+
+**Type:** bugfix (test infrastructure)
+**Summary:**
+
+- PR #55's backend CI job failed at collection: `tests/test_glossa_mcp.py`
+  raised `ModuleNotFoundError: No module named 'mcp'` because CI installs
+  only `pip install -e ".[dev]"` and Stage A had declared `mcp` solely in
+  its own optional-dependency group. Local runs passed because the venv
+  had the mcp extra installed — a local/CI environment divergence.
+- Fix: added `mcp>=1,<2` to the `dev` extra in `backend/pyproject.toml`
+  (with an explanatory comment). The standalone `mcp` extra remains for
+  runtime installs of the server itself. No other files changed.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

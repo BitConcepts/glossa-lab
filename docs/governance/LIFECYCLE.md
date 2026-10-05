@@ -25,7 +25,9 @@ inception → architecture → requirements → test_spec → implementation →
 ## Advancing Phases
 
 Check readiness: review the Phase Artifacts checklist below against the current codebase.
-Advance to next: update `scaffold.yml` `current_phase` field and record in `LEDGER.md`.
+Advance to next: record the new phase in `LEDGER.md` and in the active
+spec under `specs/` (the former `scaffold.yml` phase field was retired with
+specsmith on 2026-10-05; lifecycle state now lives in `.specify/` + `specs/`).
 Force-advance: add a ledger note explaining the override rationale.
 
 All Phase Artifacts for the current phase must exist and be committed before advancing.
@@ -34,7 +36,7 @@ All Phase Artifacts for the current phase must exist and be committed before adv
 
 Each phase produces specific artifacts:
 
-- **Inception**: `scaffold.yml`, `AGENTS.md`, `LEDGER.md`
+- **Inception**: `.specify/memory/constitution.md`, `AGENTS.md`, `LEDGER.md`
 - **Architecture**: `docs/ARCHITECTURE.md`, trace vault seal
 - **Requirements**: `docs/REQUIREMENTS.md`, `docs/TESTS.md`
 - **Test Specification**: TESTS.md with ≥ 80% REQ coverage

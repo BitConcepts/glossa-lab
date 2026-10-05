@@ -363,7 +363,7 @@ def get_rate_tracker() -> RateLimitTracker:
 # ALL subsequent requests to that source's endpoints are skipped until the
 # window resets — regardless of which topic or coroutine is calling.
 #
-# Cooldowns are persisted to .specsmith/rate_limits.json using wall-clock
+# Cooldowns are persisted to .glossa-state/rate_limits.json using wall-clock
 # timestamps so they survive process restarts (restarts don't reset cooldowns).
 #
 # Usage in a fetcher:
@@ -383,10 +383,10 @@ _source_cooldowns: dict[str, float] = {}   # source -> wall-clock deadline
 
 def _cooldown_state_path() -> "Path | None":
     """Return path to the persistent cooldown state file, or None if not writable."""
-    # Walk up from this file to find the repo root (where .specsmith lives).
+    # Walk up from this file to find the repo root (where .glossa-state lives).
     # base.py is at backend/glossa_lab/discovery/fetchers/base.py so root is 5 up.
     try:
-        candidate = Path(__file__).resolve().parents[4] / ".specsmith" / "rate_limits.json"
+        candidate = Path(__file__).resolve().parents[4] / ".glossa-state" / "rate_limits.json"
         candidate.parent.mkdir(parents=True, exist_ok=True)
         return candidate
     except Exception:  # noqa: BLE001

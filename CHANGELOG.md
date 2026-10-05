@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+#### Governance + epistemic core — spec-kit + AEE migration (2026-10-05)
+- **Spec-driven development migrated from specsmith to spec-kit + AEE**:
+  `.specify/` constitution + extensions (aee, evaluator) and `specs/001`
+  baseline now carry governance; specsmith skills/scaffolding retired.
+  Runtime rate-limit state moved `.specsmith/` → `.glossa-state/`.
+- **Core claim scoring now runs on the AEE library**
+  (`applied-epistemic-engineering>=1.0.4,<2`): new
+  `backend/glossa_lab/aee_core.py` adapter over the extracted-claims
+  corpus, surfaced additively via
+  `GET /api/v1/indus-evidence/claims/aee-scores` and `?aee=true` on
+  `GET /claims` (existing response shapes unchanged).
+- **GDELT source switched to the Web Ngrams dataset** per GDELT's
+  migration guidance: new default fetcher `gdelt_ngrams` (quadgram
+  matching + TOC cross-reference + `.glossa-state/` watermark); the
+  DOC-API fetcher is opt-in only while GDELT's Spanner migration runs.
+  See `specs/002-gdelt-ngrams-and-frontier-methods/`.
+
 ### Added
 
 #### Indus Script research — network centrality analysis (Phases 172–178)

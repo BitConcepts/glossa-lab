@@ -279,3 +279,36 @@ the direction of Tristen Pierson, per constitution §VI.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+---
+
+## 2026-10-05 — Requirements & test gaps (Stage B of feat/mcp-gaps-indus-continuation)
+
+- **Traceability:** specs/003-mcp-and-test-gaps/ (spec/plan/tasks) carries
+  the requirement → implementation → test matrix over specs 001–002
+  (R1–R12). Two genuine gaps found and fixed; spec 002 T006/T007 are
+  future-scoped by their own spec and were left alone.
+- **Gap 1 — MCP had zero tests:** added `backend/tests/test_glossa_mcp.py`
+  (24 tests): httpx MockTransport happy-path request formation/response
+  formatting for every tool family, error-path helper coverage, a
+  33-tool inventory assertion, and a drift guard that extracts every
+  route called in the MCP source and asserts it exists in the live
+  FastAPI route table.
+- **Gap 2 — foundation_check.py unrunnable off Windows:** the hardcoded
+  `C:\Users\trist\...` repo path is replaced by `resolve_repo_root()`
+  (`GLOSSA_REPO_ROOT` env override, else script-location-derived —
+  identical target on the Windows dev box). Added
+  `backend/tests/test_foundation_check_script.py` (5 tests).
+- **Foundation check real run (this environment):** with the Holdat
+  corpus fetched from its cited public source (CITATIONS.md A.13) into
+  the gitignored `corpora/` layout, the script now runs end-to-end:
+  **39 checks passed, 0 failed, 9 warnings** (verdict READY WITH
+  CAVEATS; warnings are the script's pre-existing documented caveats:
+  site coverage, P/M numbering crosswalk, superseded TB corpus,
+  phase52 result absent, torch absent). Report regenerated at
+  `reports/foundation_check_report.json`.
+- **Full backend suite:** 562 passed, 9 skipped, 0 failed (baseline
+  533 + 24 MCP + 5 foundation-script tests). Ruff clean on changed files.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

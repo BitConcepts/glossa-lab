@@ -1091,3 +1091,50 @@ file and now reports 184/390.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+### Spec 004 WS3 — INDUS_FINAL_ANCHORS bookkeeping reconciliation
+
+**Date**: 2026-10-05. File: `backend/reports/INDUS_FINAL_ANCHORS.json`.
+Bookkeeping only — **no anchor entry was modified**: the `anchors`
+mapping is byte-identical under canonical JSON (sha256
+fa16861c3b896266508cab805bc69b21a620db46b536f4cb8e5f4fed04f294f7
+before and after; also verified equal to git HEAD entry-for-entry).
+
+Regenerated from the 287 entries: by_confidence HIGH 166 / MEDIUM 109 /
+LOW 8 / CANDIDATE 4 (was 105/59/243/6, summing to a stale 413);
+metadata.total_count 172 → 287; metadata.medium_count 6 → 109;
+total_all_entries 397 → 287; n_medium 6 → 109; added
+metadata.candidate_count=4, metadata.hm_confirmed_count=275, n_candidate=4.
+Canonical definitions recorded in `metadata.canonical_counts`,
+including: the preprint's "161 anchors" = the H+M count at the Phase-170
+grammar-variance retest (preserved as hm_count=161 in
+`reports/phase170_grammar_variance.json`, asserted by foundation CHECK
+NEW-V) — a historical snapshot quantity, not the current file total.
+The file's `_note` was corrected where it contradicted the `total`
+field's actual value (change recorded in `_ws3_reconciliation_note`).
+
+### Spec 004 WS4 — Discovery queue triage (78 items)
+
+**Date**: 2026-10-05. All 78 items were topic `ancient_near_east`,
+kind `other`, unmined. The pipeline's enrichment step could not run:
+`POST /api/v1/discovery/mine` refuses with "No LLM provider configured.
+Set MISTRAL_API_KEY / OPENAI_API_KEY / GOOGLE_API_KEY in Settings before
+mining." (same key-absence class as the Phase-102 Mistral blocker).
+Triage therefore used the pipeline's own disposition mechanism —
+`POST /api/v1/discovery/items/{id}/status`, status vocabulary enforced
+by the DB layer (new/reviewed/saved/dismissed) — with a dated reason
+note per item, applying the topic file's scope (Mesopotamia, Sumerian/
+Akkadian, cuneiform, Ur III, Dilmun/Gulf trade, incl. computational
+cuneiform/Akkadian methods). No DB hand-edits; no new fetching.
+
+**Dispositions**: saved 33 (on-topic scholarship; by source: doaj 18,
+openalex 5, europepmc 5, crossref 5) · reviewed 10 (flagged for human
+judgment: ANE-adjacent or borderline items; europepmc 8, doaj 2) ·
+dismissed 35 (modern biomedical/clinical and other keyword collisions,
+incl. one duplicate pair; crossref 20, europepmc 12, doaj 3).
+Queue status "new" is now empty. Items the pipeline could not process:
+none at the status layer — all 78 accepted a disposition; the mining/
+classification layer processed 0 of 78 (no LLM provider, above).
+
+**AI disclosure:** WS3–WS4 executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.

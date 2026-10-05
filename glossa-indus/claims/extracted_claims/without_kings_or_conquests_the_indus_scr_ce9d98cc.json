@@ -12,10 +12,16 @@
       "claim_type": "language_claim",
       "normalized_claim": "Language hypothesis: non-linguistic symbol",
       "quote_fragment": "non-linguistic symbol",
-      "claim_status": "untested",
+      "claim_status": "contradicted",
       "testability": "directly_testable",
       "confidence_in_source": 0.7,
-      "extracted_at": "2026-06-09T23:57:21.011134"
+      "extracted_at": "2026-06-09T23:57:21.011134",
+      "contradicting_evidence": [
+        "Rao et al. 2009: conditional entropy falls in linguistic range",
+        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
+        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start"
+      ],
+      "glossa_lab_evidence": "Phase-104 (RULE-DUP): duplicate extraction of the proposition adjudicated in farmer_sproat_witzel_2004_manual_001; verdict carried over with its cited evidence. See glossa-indus/reports/phase104_claims_evaluation.json."
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
@@ -34,10 +40,16 @@
       "claim_type": "critique_claim",
       "normalized_claim": "Critique: Myth of a Literate Harappan",
       "quote_fragment": "Myth of a Literate Harappan",
-      "claim_status": "untested",
+      "claim_status": "contradicted",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-06-09T23:57:21.014883"
+      "extracted_at": "2026-06-09T23:57:21.014883",
+      "contradicting_evidence": [
+        "Rao et al. 2009: conditional entropy falls in linguistic range",
+        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
+        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start"
+      ],
+      "glossa_lab_evidence": "Phase-104 (RULE-DUP): duplicate extraction of the proposition adjudicated in farmer_sproat_witzel_2004_manual_001; verdict carried over with its cited evidence. See glossa-indus/reports/phase104_claims_evaluation.json."
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004",
@@ -45,10 +57,16 @@
       "claim_type": "critique_claim",
       "normalized_claim": "Critique: Collapse of the \nIndus-Script Thesis",
       "quote_fragment": "Collapse of the \nIndus-Script Thesis",
-      "claim_status": "untested",
+      "claim_status": "contradicted",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-06-09T23:57:21.014883"
+      "extracted_at": "2026-06-09T23:57:21.014883",
+      "contradicting_evidence": [
+        "Rao et al. 2009: conditional entropy falls in linguistic range",
+        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
+        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start"
+      ],
+      "glossa_lab_evidence": "Phase-104 (RULE-DUP): duplicate extraction of the proposition adjudicated in farmer_sproat_witzel_2004_manual_001; verdict carried over with its cited evidence. See glossa-indus/reports/phase104_claims_evaluation.json."
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001",

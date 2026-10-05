@@ -1,259 +1,257 @@
-"""Phase-105: Decode top personal name signs.
+"""Phase-105: Positional/formula adjudication of personal-name candidates.
 
-Promotes M024=nē (SA modal confirmed in Phase-73) to MEDIUM,
-and decodes M362, M398, M375 using name-slot positional evidence
-from Phase-103 plus iconographic basis.
+Adjudicates the Phase-103 top personal-name candidates (M362, M398,
+M375, M024) against the Holdat corpus, in the style of the Phase-101
+M293 adjudication: compute each sign's positional profile and name-slot
+pattern membership from the corpus itself, compare against the animal
+classifier class (Phase-101: classifiers are ~100% INITIAL), and let
+the computed evidence decide the verdict.
 
-CPU only. Output: reports/phase105_name_signs.json
-Also updates backend/reports/INDUS_FINAL_ANCHORS.json
+This script REPLACES an earlier unrun draft of phase105_name_signs.py
+that asserted pre-written readings and anchor promotions. No readings
+are asserted here and no anchor is promoted or demoted by this script:
+all four candidates already stand as HIGH anchors in
+backend/reports/INDUS_FINAL_ANCHORS.json (their bases were folded in by
+later phases), so the question adjudicated is whether the corpus
+positional/formula evidence CORROBORATES the personal-name-component
+role those anchors assert.
+
+Verdict rules (stated up front, Phase-101 thresholds):
+  CORROBORATED   freq >= 5 AND initial_rate < 0.50 (not classifier-like)
+                 AND name_slot_count >= 2 across the Phase-103 patterns.
+  INCONCLUSIVE   freq < 5 — token count too low for a positional verdict
+                 (Phase-103 pattern counts are reported as context).
+  CHALLENGED     freq >= 5 AND (initial_rate >= 0.50 OR
+                 name_slot_count == 0) — profile fits a classifier or
+                 shows no name-slot behaviour.
+
+Name-slot patterns (Phase-103 definitions):
+  ANIMAL_NAME_TITLE   [ANIMAL_CLASSIFIER]-[X]-[TITLE]
+  GENITIVE_NAME       [M267]-[X]-... (genitive precedes the candidate)
+  NAME_AY_AN          [X]-[M342]-[M176]
+
+Corpus order follows the Holdat CSV (grouped by cisi_number, ascending
+position), the same convention as Phase-101. CPU only.
+Output: reports/phase105_name_signs.json
 """
 from __future__ import annotations
 
 import csv
 import json
-from collections import Counter
+from collections import Counter, defaultdict
 from pathlib import Path
 
-REPO    = Path(__file__).parents[2]
-HOLDAT  = REPO / "corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv"
+REPO = Path(__file__).resolve().parents[2]
+HOLDAT = REPO / "corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv"
+ROLES = REPO / "corpora/downloads/external_repos/holdatllc_indus/all_symbol_semantic_roles 2.csv"
 ANCHORS = REPO / "backend/reports/INDUS_FINAL_ANCHORS.json"
-P73     = REPO / "reports/phase73_ensemble_calibration.json"
-P103    = REPO / "reports/phase103_name_lexicon.json"
-REPORTS = REPO / "reports"
-REPORTS.mkdir(exist_ok=True)
-OUT     = REPORTS / "phase105_name_signs.json"
+P103 = REPO / "outputs/phase103_name_lexicon.json"
+OUT = REPO / "reports" / "phase105_name_signs.json"
 
-# Name sign candidates with evidence-based readings
-# Source: Phase-73 SA modal + Phase-103 name slots + iconographic analysis
-NAME_SIGN_PROPOSALS = {
-    "M024": {
-        "reading": "nē",
-        "dedr": "DEDR 3741",
-        "confidence": "MEDIUM",
-        "basis": (
-            "Phase-73 SA syl_modal='nē' (Dravidian syllabic LM). "
-            "Iconography: potted-plant/sprout sign ~ nē (sprouting). "
-            "Phase-103: appears in 13 name slots; NAME_AY_AN pattern. "
-            "DEDR 3741 nē = 'you (formal)' or nēr = 'straight/true'. "
-            "Personal name component: Nē-an (true man)."
-        ),
-        "pattern_evidence": ["NAME_AY_AN", "HIGH_CONTEXT"],
-        "sa_modal": "nē",
-        "corpus_freq": 13,
-    },
-    "M362": {
-        "reading": "aṇi",
-        "dedr": "DEDR 0145",
-        "confidence": "MEDIUM",
-        "basis": (
-            "Starburst / asterisk iconography ~ aṇi 'ornament/adorn' (DEDR 0145). "
-            "Phase-103: appears in name-slot patterns between animal classifiers and titles. "
-            "Sangam literature: aṇi- prefix in personal names (Aṇi-van, Aṇi-tan). "
-            "Positional: predominantly MEDIAL in personal name sequences."
-        ),
-        "pattern_evidence": ["ANIMAL_NAME_TITLE", "HIGH_CONTEXT"],
-        "sa_modal": "",
-        "corpus_freq": 0,  # will be updated from corpus
-    },
-    "M375": {
-        "reading": "taṇ",
-        "dedr": "DEDR 3009",
-        "confidence": "MEDIUM",
-        "basis": (
-            "Folded-arm sign ~ taṇ 'cool/refreshing' (DEDR 3009) or "
-            "taṇṭu 'staff/rod'. Phase-103 NAME_AY_AN pattern: [M375]-M342-M176 "
-            "(taṇ-ay-an = 'cool/noble man'). "
-            "Sangam Akam poetry: taṇ- is a common personal name prefix."
-        ),
-        "pattern_evidence": ["NAME_AY_AN", "HIGH_CONTEXT", "ANIMAL_NAME_TITLE"],
-        "sa_modal": "",
-        "corpus_freq": 7,
-    },
-    "M398": {
-        "reading": "kuṟi",
-        "dedr": "DEDR 1769",
-        "confidence": "MEDIUM",
-        "basis": (
-            "Hook+ring iconography ~ kuṟi 'mark/sign' (DEDR 1769) or "
-            "kuṟu 'small/short'. Phase-103: NAME_AY_AN + GENITIVE_NAME_SUFFIX patterns. "
-            "Pattern [M267]-[M398]-[M342]: 'of-kuṟi-belonging' = genitive personal name. "
-            "Score 1.2 (highest name_score in Phase-103 top candidates)."
-        ),
-        "pattern_evidence": ["NAME_AY_AN", "GENITIVE_NAME_SUFFIX"],
-        "sa_modal": "",
-        "corpus_freq": 3,
-    },
-}
+CANDIDATES = ["M362", "M398", "M375", "M024"]
 
-# Grammar roles
+# Grammar role sets — identical to backend/scripts/phase103_name_lexicon.py
+ANIMAL_CLASSIFIERS = {"M006", "M016", "M045", "M062", "M047", "M039", "M040", "M001", "M007"}
+TITLE_SIGNS = {"M099", "M073", "M059", "M030", "M041", "M107", "M017", "M063"}
 SUFFIX_SIGNS = {"M342", "M176", "M367", "M391", "M336", "M089", "M328", "M162"}
-GENITIVE     = {"M267"}
-ANIMAL_CLASS = {"M006", "M016", "M045", "M062", "M047", "M039", "M040", "M001"}
-TITLE_SIGNS  = {"M099", "M073", "M059", "M030", "M041", "M107", "M017", "M063"}
+GENITIVE = "M267"
+# Phase-101 adjudicated reference profile (M293, personal-name component)
+M293_REFERENCE = {"initial": 0.069, "medial": 0.599, "terminal": 0.332}
 
 
-def load_corpus():
-    seals = {}
+def load_sequences() -> list[list[str]]:
+    by_seal: dict[str, list[tuple[int, str]]] = defaultdict(list)
     with open(HOLDAT, encoding="utf-8") as f:
         for row in csv.DictReader(f):
-            s = (row.get("letters") or "").strip()
-            c = row.get("cisi_number", ""); p = int(row.get("position", 0) or 0)
-            if not c: continue
-            if c not in seals: seals[c] = {"signs": []}
-            while len(seals[c]["signs"]) <= p: seals[c]["signs"].append("")
-            seals[c]["signs"][p] = s
-    return {c: [s for s in v["signs"] if s] for c, v in seals.items() if any(v["signs"])}
+            c = row.get("cisi_number", "")
+            p = int(row.get("position", 0) or 0)
+            by_seal[c].append((p, row.get("letters", "")))
+    return [[s for _, s in sorted(v)] for v in by_seal.values()]
 
 
-def analyze_name_sign(sign: str, seals: dict) -> dict:
-    """Positional deep-dive for a personal name sign candidate."""
-    contexts = []
-    initial = medial = terminal = 0
-    total = 0
-
-    for cisi_id, signs in seals.items():
-        n = len(signs)
-        for i, s in enumerate(signs):
+def profile(sign: str, seqs: list[list[str]]) -> dict:
+    n = n_init = n_med = n_term = 0
+    after_genitive = before_suffix = name_slots = 0
+    patterns: Counter = Counter()
+    samples: list[str] = []
+    for seq in seqs:
+        for i, s in enumerate(seq):
             if s != sign:
                 continue
-            total += 1
-            if i == 0: initial += 1
-            elif i == n - 1: terminal += 1
-            else: medial += 1
+            n += 1
+            if i == 0:
+                n_init += 1
+            elif i == len(seq) - 1:
+                n_term += 1
+            else:
+                n_med += 1
+            prev = seq[i - 1] if i > 0 else None
+            nxt = seq[i + 1] if i + 1 < len(seq) else None
+            nxt2 = seq[i + 2] if i + 2 < len(seq) else None
+            if prev == GENITIVE:
+                after_genitive += 1
+                patterns["GENITIVE_NAME"] += 1
+                name_slots += 1
+            if nxt in SUFFIX_SIGNS:
+                before_suffix += 1
+            if prev in ANIMAL_CLASSIFIERS and nxt in TITLE_SIGNS:
+                patterns["ANIMAL_NAME_TITLE"] += 1
+                name_slots += 1
+            if nxt == "M342" and nxt2 == "M176":
+                patterns["NAME_AY_AN"] += 1
+                name_slots += 1
+            if len(samples) < 4:
+                ctx = seq[max(0, i - 1): i + 2]
+                samples.append("-".join(ctx))
+    return {
+        "freq": n,
+        "initial": n_init, "medial": n_med, "terminal": n_term,
+        "initial_rate": round(n_init / n, 4) if n else 0.0,
+        "medial_rate": round(n_med / n, 4) if n else 0.0,
+        "terminal_rate": round(n_term / n, 4) if n else 0.0,
+        "after_genitive_count": after_genitive,
+        "before_case_suffix_count": before_suffix,
+        "name_slot_count": name_slots,
+        "patterns": dict(patterns),
+        "sample_contexts": samples,
+    }
 
-            # Collect trigram context
-            prev = signs[i - 1] if i > 0 else "^"
-            nxt  = signs[i + 1] if i < n - 1 else "$"
-            contexts.append(f"{prev}-[{sign}]-{nxt}")
 
-    ctx_counts = Counter(contexts)
-    name_slot_count = sum(
-        1 for ctx in contexts
-        if any(s in ctx for s in GENITIVE)
-        or any(s in ctx for s in ANIMAL_CLASS)
-        or any(s in ctx for s in SUFFIX_SIGNS)
+def verdict(p: dict, role: str | None) -> tuple[str, str]:
+    if p["freq"] < 5:
+        return (
+            "INCONCLUSIVE",
+            f"Only {p['freq']} corpus tokens — too few for a positional verdict "
+            "(Phase-101 adjudication rested on 100+ tokens). Phase-103 pattern "
+            "counts stand as the only evidence and are not re-tested here.",
+        )
+    if p["initial_rate"] >= 0.50 or p["name_slot_count"] == 0:
+        rationale = (
+            "Positional profile is classifier-like (INITIAL >= 50%) or the sign "
+            "never occupies a defined name slot; inconsistent with a "
+            "personal-name-component role."
+        )
+        if role == "CLASSIFIER_PREFIX":
+            rationale += (
+                " The Holdat semantic-roles file independently classifies this "
+                "sign as CLASSIFIER_PREFIX. NAME_AY_AN occurrences (the sign "
+                "heading the [X]-M342-M176 formula) are the counter-consideration: "
+                "the sign may head a name formula rather than sit medially in "
+                "one, but under the Phase-101 adjudication standard its profile "
+                "is a prefix/head profile, not a name-component profile. "
+                "Flagged for future adjudication; the standing anchor is not "
+                "changed by this phase."
+            )
+        return ("CHALLENGED", rationale)
+    if p["name_slot_count"] >= 2:
+        rationale = (
+            "Non-initial positional profile plus repeated occupation of "
+            "Phase-103 name slots; consistent with a personal-name component "
+            "(compare M293 reference profile)."
+        )
+        if role == "PERSON_OR_OWNER":
+            rationale += (
+                " The Holdat semantic-roles file independently classifies this "
+                "sign as PERSON_OR_OWNER, agreeing with the name-slot evidence."
+            )
+        return ("CORROBORATED", rationale)
+    return (
+        "INCONCLUSIVE",
+        "Positional profile is not classifier-like, but name-slot evidence is "
+        "thinner than the corroboration bar (>= 2 slots).",
     )
 
-    return {
-        "freq": total,
-        "initial_rate": round(initial / max(1, total), 3),
-        "medial_rate":  round(medial  / max(1, total), 3),
-        "terminal_rate":round(terminal/ max(1, total), 3),
-        "pos_class": (
-            "TERMINAL" if terminal / max(1, total) >= 0.60 else
-            "INITIAL"  if initial  / max(1, total) >= 0.50 else
-            "MEDIAL"   if medial   / max(1, total) >= 0.65 else "MIXED"
-        ),
-        "name_slot_count": name_slot_count,
-        "top_contexts": [ctx for ctx, _ in ctx_counts.most_common(8)],
-    }
 
+def main() -> int:
+    seqs = load_sequences()
+    print(f"Loaded {len(seqs)} inscriptions from Holdat corpus")
 
-def main():
-    print("Phase-105: Personal Name Signs Decipherment\n")
+    roles: dict[str, str] = {}
+    if ROLES.exists():
+        with open(ROLES, encoding="utf-8") as f:
+            for r in csv.DictReader(f):
+                roles[r["symbol"]] = r.get("semantic_role", "")
 
-    # Load existing anchors
-    anchors_data = json.loads(ANCHORS.read_text("utf-8"))
-    anchors = anchors_data.get("anchors", {})
-    confirmed = {s for s, v in anchors.items() if v.get("confidence") in ("HIGH", "MEDIUM")}
-    print(f"  Existing confirmed anchors: {len(confirmed)}")
+    p103: dict[str, dict] = {}
+    if P103.exists():
+        for c in json.loads(P103.read_text(encoding="utf-8")).get("name_candidates", []):
+            p103[c.get("sign")] = c
 
-    # Load corpus
-    seals = load_corpus()
-    flat_freq = Counter(s for signs in seals.values() for s in signs)
-    print(f"  Corpus: {len(seals)} seals, {sum(flat_freq.values())} tokens")
+    anchors = json.loads(ANCHORS.read_text(encoding="utf-8")).get("anchors", {})
 
-    # Load Phase-73 SA data
-    p73_map = {}
-    if P73.exists():
-        p73 = json.loads(P73.read_text())
-        for entry in p73.get("calibrated_table", []):
-            p73_map[entry["sign"]] = entry
+    # Comparison class: aggregate animal-classifier profile (Phase-101 method)
+    clf_profiles = {s: profile(s, seqs) for s in sorted(ANIMAL_CLASSIFIERS)}
+    clf_freq = sum(p["freq"] for p in clf_profiles.values())
+    clf_init_rate = (
+        sum(p["initial"] for p in clf_profiles.values()) / clf_freq if clf_freq else 0.0
+    )
+    print(f"Animal classifiers: {clf_freq} tokens, aggregate INITIAL rate {clf_init_rate:.1%}")
 
-    # Analyze and promote each name sign
-    decoded = []
-    newly_added = []
-
-    for sign, proposal in NAME_SIGN_PROPOSALS.items():
-        print(f"\n  Analyzing {sign}...")
-        pos = analyze_name_sign(sign, seals)
-        freq = pos["freq"] or flat_freq.get(sign, 0)
-
-        # Update frequency from corpus
-        proposal["corpus_freq"] = freq
-
-        # Check SA data
-        sa = p73_map.get(sign, {})
-        sa_modal = sa.get("syl_modal", proposal.get("sa_modal", ""))
-
+    results = []
+    for sign in CANDIDATES:
+        p = profile(sign, seqs)
+        v, rationale = verdict(p, roles.get(sign))
+        anchor = anchors.get(sign, {})
         entry = {
             "sign": sign,
-            "reading": proposal["reading"],
-            "dedr": proposal["dedr"],
-            "confidence": proposal["confidence"],
-            "basis": proposal["basis"],
-            "corpus_freq": freq,
-            "pos_class": pos["pos_class"],
-            "initial_rate": pos["initial_rate"],
-            "medial_rate": pos["medial_rate"],
-            "terminal_rate": pos["terminal_rate"],
-            "name_slot_count": pos["name_slot_count"],
-            "sa_modal": sa_modal,
-            "pattern_evidence": proposal["pattern_evidence"],
-            "top_contexts": pos["top_contexts"],
-            "source": "Phase-105",
+            "corpus_profile": p,
+            "holdat_semantic_role": roles.get(sign),
+            "phase103": {
+                "name_score": p103.get(sign, {}).get("name_score"),
+                "name_slot_count": p103.get(sign, {}).get("name_slot_count"),
+                "sa_modal": p103.get(sign, {}).get("sa_modal"),
+                "pattern_types": p103.get(sign, {}).get("pattern_types"),
+            },
+            "standing_anchor": {
+                "reading": anchor.get("reading"),
+                "confidence": anchor.get("confidence"),
+            },
+            "verdict": v,
+            "rationale": rationale,
         }
-        decoded.append(entry)
+        results.append(entry)
+        print(
+            f"  {sign}: freq={p['freq']} INIT={p['initial_rate']:.0%} "
+            f"MED={p['medial_rate']:.0%} TERM={p['terminal_rate']:.0%} "
+            f"name_slots={p['name_slot_count']} -> {v}"
+        )
 
-        print(f"    Freq: {freq}, Pos: {pos['pos_class']}")
-        print(f"    Name slots: {pos['name_slot_count']}")
-        print(f"    SA modal: '{sa_modal}'")
-        print(f"    Reading: '{proposal['reading']}' ({proposal['dedr']})")
+    try:
+        from glossa_lab.gpu_utils import detect_device  # noqa: PLC0415
 
-        # Add or update in INDUS_FINAL_ANCHORS
-        if sign not in anchors or anchors[sign].get("confidence") in ("LOW", "UNCERTAIN", ""):
-            anchors[sign] = {
-                "reading": proposal["reading"],
-                "confidence": proposal["confidence"],
-                "basis": proposal["basis"] + f" Freq={freq}; Pos={pos['pos_class']}; name_slots={pos['name_slot_count']}.",
-                "source": "Phase-105",
-            }
-            newly_added.append(sign)
-            print("    ✓ Added/promoted to MEDIUM")
-        else:
-            print(f"    Already confirmed at {anchors[sign].get('confidence')}, skipping")
+        gpu_device = str(detect_device())
+    except Exception:  # noqa: BLE001
+        gpu_device = "unavailable (torch not installed); CPU positional analysis only"
 
-    # Save updated anchors
-    anchors_data["anchors"] = anchors
-    anchors_data["total"] = len(anchors)
-    ANCHORS.write_text(json.dumps(anchors_data, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"\n  Updated INDUS_FINAL_ANCHORS.json: {len(anchors)} total anchors")
-
-    # Build result
-    result = {
+    report = {
+        "_citation": ["A.13", "C.1", "C.2"],
         "phase": 105,
-        "n_confirmed_before": len(confirmed),
-        "n_decoded_this_phase": len(decoded),
-        "n_newly_added": len(newly_added),
-        "newly_added_signs": newly_added,
-        "n_total_anchors": len(anchors),
-        "decoded_signs": decoded,
-        "summary": {
-            sign: {
-                "reading": d["reading"],
-                "confidence": d["confidence"],
-                "freq": d["corpus_freq"],
-                "pos": d["pos_class"],
-            }
-            for d in decoded
-            for sign in [d["sign"]]
+        "title": "Positional/formula adjudication of Phase-103 personal-name candidates",
+        "method": (
+            "Phase-101 style: per-sign positional profile + Phase-103 name-slot "
+            "patterns computed from the Holdat corpus; classifier comparison "
+            "class = Phase-103 ANIMAL_CLASSIFIERS set."
+        ),
+        "classifier_comparison": {
+            "aggregate_freq": clf_freq,
+            "aggregate_initial_rate": round(clf_init_rate, 4),
+            "per_sign": {s: clf_profiles[s] for s in sorted(clf_profiles)},
         },
+        "m293_reference_profile": M293_REFERENCE,
+        "anchors_modified": False,
+        "anchor_note": (
+            "All four candidates already stand as HIGH anchors in "
+            "INDUS_FINAL_ANCHORS.json; this phase adjudicates the "
+            "personal-name-component role only and changes no anchor."
+        ),
+        "gpu_device": gpu_device,
+        "results": results,
     }
-    OUT.write_text(json.dumps(result, indent=2, ensure_ascii=False), encoding="utf-8")
-    print(f"\n  Saved → {OUT}")
-    print(f"  Phase-105 complete: {len(newly_added)} signs newly promoted, {len(anchors)} total anchors")
-    return result
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text(json.dumps(report, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"Report: {OUT}")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

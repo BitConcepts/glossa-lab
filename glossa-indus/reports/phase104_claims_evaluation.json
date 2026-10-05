@@ -1,0 +1,312 @@
+{
+  "_citation": [
+    "A.13",
+    "C.1"
+  ],
+  "phase": 104,
+  "title": "Evaluation of untested extracted claims",
+  "n_untested_evaluated": 21,
+  "n_status_changed": 5,
+  "n_stays_untested": 16,
+  "rules": {
+    "RULE-DUP": "verdict carried over from an already-adjudicated identical proposition",
+    "RULE-NOCOND": "no falsification condition / extraction fragment",
+    "RULE-SITE": "falsification needs site-typology data not in repo",
+    "RULE-CLASS": "falsification needs a sign-class set not in repo data",
+    "RULE-REF": "referenced artifact definitions not in repo",
+    "RULE-NUM": "sign numbering unstated / not crosswalked in repo"
+  },
+  "note": "AEE scores are recorded as supporting consistency signals only; no verdict rests on an AEE score.",
+  "results": [
+    {
+      "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+      "source_document_id": "ancient_writing_and_modern_technologies_51831ac9",
+      "claim_type": "sign_value_claim",
+      "normalized_claim": "Sign value: 900 / number six",
+      "aee_score_supporting_signal_only": 0.289375,
+      "verdict": "stays_untested",
+      "new_status": null,
+      "rule": "RULE-NUM",
+      "reason": "Sign number cited without a stated numbering system; no matching entry was located in the in-repo crosswalk (data/crosswalks/canonical_sign_registry.csv), and the extraction carries no falsification condition.",
+      "evidence": [
+        "Crosswalk numeric IDs present in registry: 86"
+      ]
+    },
+    {
+      "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
+      "source_document_id": "ancient_writing_and_modern_technologies_51831ac9",
+      "claim_type": "sign_value_claim",
+      "normalized_claim": "Sign value: 700 / a volumetric system with a unit \nof 40",
+      "aee_score_supporting_signal_only": 0.289375,
+      "verdict": "stays_untested",
+      "new_status": null,
+      "rule": "RULE-NUM",
+      "reason": "Sign number cited without a stated numbering system; no matching entry was located in the in-repo crosswalk (data/crosswalks/canonical_sign_registry.csv), and the extraction carries no falsification condition.",
+      "evidence": [
+        "Crosswalk numeric IDs present in registry: 86"
+      ]
+    },
+    {
+      "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
+      "source_document_id": "ancient_writing_and_modern_technologies_51831ac9",
+      "claim_type": "sign_value_claim",
+      "normalized_claim": "Sign value: 700 / a unit of 4",
+      "aee_score_supporting_signal_only": 0.289375,
+      "verdict": "stays_untested",
+      "new_status": null,
+      "rule": "RULE-NUM",
+      "reason": "Sign number cited without a stated numbering system; no matching entry was located in the in-repo crosswalk (data/crosswalks/canonical_sign_registry.csv), and the extraction carries no falsification condition.",
+      "evidence": [
+        "Crosswalk numeric IDs present in registry: 86"
+      ]
+    },
+    {
+      "claim_id": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
+      "source_document_id": "ancient_writing_and_modern_technologies_51831ac9",
+      "claim_type": "statistical_claim",
+      "normalized_claim": "Statistical finding: positional analysis",
+      "aee_score_supporting_signal_only": 0.289375,
+      "verdict": "stays_untested",
+      "new_status": null,
+      "rule": "RULE-NOCOND",
+      "reason": "Auto-extraction fragment with no falsification condition and no stated proposition; not evaluable as stated (constitution section IV).",
+      "evidence": []
+    },
+    {
+      "claim_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb_statisti_0001",
+      "source_document_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb",
+      "claim_type": "statistical_claim",
+      "normalized_claim": "Statistical finding: Positional Analysis",
+      "aee_score_supporting_signal_only": 0.289375,
+      "verdict": "stays_untested",
+      "new_status": null,
+      "rule": "RULE-NOCOND",
+      "reason": "Auto-extraction fragment with no falsification condition and no stated proposition; not evaluable as stated (constitution section IV).",
+      "evidence": []
+    },
+    {
+      "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001",
+      "source_document_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
+      "claim_type": "critique_claim",
+      "normalized_claim": "Critique: myth of a \nliterate Harappan",
+      "aee_score_supporting_signal_only": 0.289375,
+      "verdict": "status_changed",
+      "new_status": "contradicted",
+      "rule": "RULE-DUP",
+      "reason": "Restates the proposition already adjudicated as farmer_sproat_witzel_2004_manual_001 (verdict: contradicted, with cited evidence). Verdict carries over.",
+      "evidence": [
+        "Rao et al. 2009: conditional entropy falls in linguistic range",
+        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
+        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start",
+        "Cross-reference: farmer_sproat_witzel_2004_manual_001 (farmer_sproat_witzel_2004)"
+      ]
+    },
+    {
+      "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
+      "source_document_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
+      "claim_type": "critique_claim",
+      "normalized_claim": "Critique: collapse of the Indus script thesis",
+      "aee_score_supporting_signal_only": 0.289375,
+      "verdict": "status_changed",
+      "new_status": "contradicted",
+      "rule": "RULE-DUP",
+      "reason": "Restates the proposition already adjudicated as farmer_sproat_witzel_2004_manual_001 (verdict: contradicted, with cited evidence). Verdict carries over.",
+      "evidence": [
+        "Rao et al. 2009: conditional entropy falls in linguistic range",
+        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
+        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start",
+        "Cross-reference: farmer_sproat_witzel_2004_manual_001 (farmer_sproat_witzel_2004)"
+      ]
+    },
+    {
+      "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_001",
+      "source_document_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
+      "claim_type": "sign_function_claim",
+      "normalized_claim": "The Indus script encodes an economic ledger of trade guilds, tribute, and guild authority using Akkadian-influenced mnemonics.",
+      "aee_score_supporting_signal_only": 0.439375,
+      "verdict": "stays_untested",
+      "new_status": null,
+      "rule": "RULE-SITE",
+      "reason": "Falsification condition requires site-typology data (gateway/border, fire-altar, palatial/royal, or trade-context classification of excavation sites); no such dataset exists in the repo — the Holdat corpus carries site names only.",
+      "evidence": []
+    },
+    {
+      "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_003",
+      "source_document_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
+      "claim_type": "sign_function_claim",
+      "normalized_claim": "The arrow sign (tīr) encodes border enforcement or guild authority.",
+      "aee_score_supporting_signal_only": 0.439375,
+      "verdict": "stays_untested",
+      "new_status": null,
+      "rule": "RULE-SITE",
+      "reason": "Falsification condition requires site-typology data (gateway/border, fire-altar, palatial/royal, or trade-context classification of excavation sites); no such dataset exists in the repo — the Holdat corpus carries site names only.",
+      "evidence": [
+        "M391 (arrow sign) site distribution in Holdat corpus: {'Mohenjo-daro': 75, 'Harappa': 52, 'Dholavira': 16, 'Lothal': 14, 'Surkotada': 11, 'Kalibangan': 10, 'Chanhu-daro': 10, 'Banawali': 3, 'Rakhigarhi': 2}",
+        "M391 semantic role per Holdat roles file: CASE_MARKER_SUFFIX (is_ending=True) — distributional context only; the claim's gateway/border clustering condition cannot be evaluated without a site-typology dataset."
+      ]
+    },
+    {
+      "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_004",
+      "source_document_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
+      "claim_type": "archaeological_context_claim",
+      "normalized_claim": "The horned deity sign encodes fire-altar intermediary roles (Kalibangan fire-altars).",
+      "aee_score_supporting_signal_only": 0.439375,
+      "verdict": "stays_untested",
+      "new_status": null,
+      "rule": "RULE-SITE",
+      "reason": "Falsification condition requires site-typology data (gateway/border, fire-altar, palatial/royal, or trade-context classification of excavation sites); no such dataset exists in the repo — the Holdat corpus carries site names only.",
+      "evidence": []
+    },
+    {
+      "claim_id": "positional_analysis_of_indus_signs_a2bedc93_statisti_0001",
+      "source_document_id": "positional_analysis_of_indus_signs_a2bedc93",
+      "claim_type": "statistical_claim",
+      "normalized_claim": "Statistical finding: Positional Analysis",
+      "aee_score_supporting_signal_only": 0.289375,
+      "verdict": "stays_untested",
+      "new_status": null,
+      "rule": "RULE-NOCOND",
+      "reason": "Auto-extraction fragment with no falsification condition and no stated proposition; not evaluable as stated (constitution section IV).",
+      "evidence": []
+    },
+    {
+      "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001",
+      "source_document_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
+      "claim_type": "sign_value_claim",
+      "normalized_claim": "Sign value: 821 / it is used in a variety of contexts (Figure 6",
+      "aee_score_supporting_signal_only": 0.289375,
+      "verdict": "stays_untested",
+      "new_status": null,
+      "rule": "RULE-NUM",
+      "reason": "Sign number cited without a stated numbering system; no matching entry was located in the in-repo crosswalk (data/crosswalks/canonical_sign_registry.csv), and the extraction carries no falsification condition.",
+      "evidence": [
+        "Crosswalk numeric IDs present in registry: 86"
+      ]
+    },
+    {
+      "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
+      "source_document_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
+      "claim_type": "sign_value_claim",
+      "normalized_claim": "Sign value: 297 / the horned tiger, or perhaps just ‘tiger’ generically",
+      "aee_score_supporting_signal_only": 0.289375,
+      "verdict": "stays_untested",
+      "new_status": null,
+      "rule": "RULE-NUM",
+      "reason": "Sign number cited without a stated numbering system; no matching entry was located in the in-repo crosswalk (data/crosswalks/canonical_sign_registry.csv), and the extraction carries no falsification condition.",
+      "evidence": [
+        "Crosswalk numeric IDs present in registry: 86"
+      ]
+    },
+    {
+      "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
+      "source_document_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
+      "claim_type": "statistical_claim",
+      "normalized_claim": "Statistical finding: Positional Analysis",
+      "aee_score_supporting_signal_only": 0.289375,
+      "verdict": "stays_untested",
+      "new_status": null,
+      "rule": "RULE-NOCOND",
+      "reason": "Auto-extraction fragment with no falsification condition and no stated proposition; not evaluable as stated (constitution section IV).",
+      "evidence": []
+    },
+    {
+      "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003",
+      "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+      "claim_type": "critique_claim",
+      "normalized_claim": "Critique: Myth of a Literate Harappan",
+      "aee_score_supporting_signal_only": 0.289375,
+      "verdict": "status_changed",
+      "new_status": "contradicted",
+      "rule": "RULE-DUP",
+      "reason": "Restates the proposition already adjudicated as farmer_sproat_witzel_2004_manual_001 (verdict: contradicted, with cited evidence). Verdict carries over.",
+      "evidence": [
+        "Rao et al. 2009: conditional entropy falls in linguistic range",
+        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
+        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start",
+        "Cross-reference: farmer_sproat_witzel_2004_manual_001 (farmer_sproat_witzel_2004)"
+      ]
+    },
+    {
+      "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004",
+      "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+      "claim_type": "critique_claim",
+      "normalized_claim": "Critique: Collapse of the \nIndus-Script Thesis",
+      "aee_score_supporting_signal_only": 0.289375,
+      "verdict": "status_changed",
+      "new_status": "contradicted",
+      "rule": "RULE-DUP",
+      "reason": "Restates the proposition already adjudicated as farmer_sproat_witzel_2004_manual_001 (verdict: contradicted, with cited evidence). Verdict carries over.",
+      "evidence": [
+        "Rao et al. 2009: conditional entropy falls in linguistic range",
+        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
+        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start",
+        "Cross-reference: farmer_sproat_witzel_2004_manual_001 (farmer_sproat_witzel_2004)"
+      ]
+    },
+    {
+      "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001",
+      "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+      "claim_type": "language_claim",
+      "normalized_claim": "Language hypothesis: non-linguistic symbol",
+      "aee_score_supporting_signal_only": 0.289375,
+      "verdict": "status_changed",
+      "new_status": "contradicted",
+      "rule": "RULE-DUP",
+      "reason": "Restates the proposition already adjudicated as farmer_sproat_witzel_2004_manual_001 (verdict: contradicted, with cited evidence). Verdict carries over.",
+      "evidence": [
+        "Rao et al. 2009: conditional entropy falls in linguistic range",
+        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
+        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start",
+        "Cross-reference: farmer_sproat_witzel_2004_manual_001 (farmer_sproat_witzel_2004)"
+      ]
+    },
+    {
+      "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002",
+      "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+      "claim_type": "interpretation_claim",
+      "normalized_claim": "The Indus script functioned as a civic-ritual continuity system, not a phonetic script or royal propaganda — encoding ecological cycles, distributed governance, and civic identity.",
+      "aee_score_supporting_signal_only": 0.439375,
+      "verdict": "stays_untested",
+      "new_status": null,
+      "rule": "RULE-SITE",
+      "reason": "Falsification condition requires site-typology data (gateway/border, fire-altar, palatial/royal, or trade-context classification of excavation sites); no such dataset exists in the repo — the Holdat corpus carries site names only.",
+      "evidence": []
+    },
+    {
+      "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004",
+      "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+      "claim_type": "sign_function_claim",
+      "normalized_claim": "Celestial signs function as suffix/cycle markers (terminal position).",
+      "aee_score_supporting_signal_only": 0.439375,
+      "verdict": "stays_untested",
+      "new_status": null,
+      "rule": "RULE-CLASS",
+      "reason": "Falsification condition requires a celestial sign class; the in-repo semantic-role classes are ['CASE_MARKER_SUFFIX', 'CLASSIFIER_PREFIX', 'PERSON_OR_OWNER', 'POSSIBLE_PERSON'] and no celestial classification artifact exists in repo data, so terminal enrichment for the class cannot be computed.",
+      "evidence": []
+    },
+    {
+      "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005",
+      "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+      "claim_type": "methodological_claim",
+      "normalized_claim": "A 24-cluster Translation Atlas provides canonical sign forms, frequencies, and co-occurrence sets.",
+      "aee_score_supporting_signal_only": 0.439375,
+      "verdict": "stays_untested",
+      "new_status": null,
+      "rule": "RULE-REF",
+      "reason": "The claim's 24-cluster Translation Atlas definitions are not in the repo (Glossa's own cluster artifacts are different clusterings), so the distinct-profile test cannot be run.",
+      "evidence": []
+    },
+    {
+      "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
+      "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+      "claim_type": "statistical_claim",
+      "normalized_claim": "Statistical finding: Positional analysis",
+      "aee_score_supporting_signal_only": 0.289375,
+      "verdict": "stays_untested",
+      "new_status": null,
+      "rule": "RULE-NOCOND",
+      "reason": "Auto-extraction fragment with no falsification condition and no stated proposition; not evaluable as stated (constitution section IV).",
+      "evidence": []
+    }
+  ]
+}

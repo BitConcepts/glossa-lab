@@ -12,10 +12,16 @@
       "claim_type": "critique_claim",
       "normalized_claim": "Critique: myth of a \nliterate Harappan",
       "quote_fragment": "myth of a \nliterate Harappan",
-      "claim_status": "untested",
+      "claim_status": "contradicted",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-06-09T23:57:20.934907"
+      "extracted_at": "2026-06-09T23:57:20.934907",
+      "contradicting_evidence": [
+        "Rao et al. 2009: conditional entropy falls in linguistic range",
+        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
+        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start"
+      ],
+      "glossa_lab_evidence": "Phase-104 (RULE-DUP): duplicate extraction of the proposition adjudicated in farmer_sproat_witzel_2004_manual_001; verdict carried over with its cited evidence. See glossa-indus/reports/phase104_claims_evaluation.json."
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
@@ -23,10 +29,16 @@
       "claim_type": "critique_claim",
       "normalized_claim": "Critique: collapse of the Indus script thesis",
       "quote_fragment": "collapse of the Indus script thesis",
-      "claim_status": "untested",
+      "claim_status": "contradicted",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-06-09T23:57:20.934907"
+      "extracted_at": "2026-06-09T23:57:20.934907",
+      "contradicting_evidence": [
+        "Rao et al. 2009: conditional entropy falls in linguistic range",
+        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
+        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start"
+      ],
+      "glossa_lab_evidence": "Phase-104 (RULE-DUP): duplicate extraction of the proposition adjudicated in farmer_sproat_witzel_2004_manual_001; verdict carried over with its cited evidence. See glossa-indus/reports/phase104_claims_evaluation.json."
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_001",

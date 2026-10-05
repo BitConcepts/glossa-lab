@@ -2541,6 +2541,17 @@ try:
 except Exception as _p104109_exc:  # noqa: BLE001
     logger.warning("Phase-104-109 decipherment nodes not registered: %s", _p104109_exc)
 
+# ── Phase-104 claims evaluation node (spec 003) ──
+try:
+    from glossa_lab.experiment_graph_phase104_claims import (
+        _phase104_claims_node_defs as _p104claims_defs,  # noqa: PLC0415
+    )
+    for _d in _p104claims_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-104 claims-evaluation nodes", len(list(_p104claims_defs())))
+except Exception as _p104claims_exc:  # noqa: BLE001
+    logger.warning("Phase-104 claims-evaluation nodes not registered: %s", _p104claims_exc)
+
 # ── Phase-110-115 nodes (targeted SA, allographs, grammar infer, M→H upgrade, seal translations, significance) ──
 try:
     from glossa_lab.experiment_graph_phase110_115 import (

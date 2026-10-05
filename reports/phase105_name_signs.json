@@ -1,0 +1,361 @@
+{
+  "_citation": [
+    "A.13",
+    "C.1",
+    "C.2"
+  ],
+  "phase": 105,
+  "title": "Positional/formula adjudication of Phase-103 personal-name candidates",
+  "method": "Phase-101 style: per-sign positional profile + Phase-103 name-slot patterns computed from the Holdat corpus; classifier comparison class = Phase-103 ANIMAL_CLASSIFIERS set.",
+  "classifier_comparison": {
+    "aggregate_freq": 159,
+    "aggregate_initial_rate": 1.0,
+    "per_sign": {
+      "M001": {
+        "freq": 14,
+        "initial": 14,
+        "medial": 0,
+        "terminal": 0,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "after_genitive_count": 0,
+        "before_case_suffix_count": 5,
+        "name_slot_count": 0,
+        "patterns": {},
+        "sample_contexts": [
+          "M001-M059",
+          "M001-M287",
+          "M001-M059",
+          "M001-M258"
+        ]
+      },
+      "M006": {
+        "freq": 15,
+        "initial": 15,
+        "medial": 0,
+        "terminal": 0,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "after_genitive_count": 0,
+        "before_case_suffix_count": 7,
+        "name_slot_count": 0,
+        "patterns": {},
+        "sample_contexts": [
+          "M006-M342",
+          "M006-M391",
+          "M006-M281",
+          "M006-M347"
+        ]
+      },
+      "M007": {
+        "freq": 11,
+        "initial": 11,
+        "medial": 0,
+        "terminal": 0,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "after_genitive_count": 0,
+        "before_case_suffix_count": 4,
+        "name_slot_count": 0,
+        "patterns": {},
+        "sample_contexts": [
+          "M007-M176",
+          "M007-M059",
+          "M007-M384",
+          "M007-M328"
+        ]
+      },
+      "M016": {
+        "freq": 23,
+        "initial": 23,
+        "medial": 0,
+        "terminal": 0,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "after_genitive_count": 0,
+        "before_case_suffix_count": 8,
+        "name_slot_count": 2,
+        "patterns": {
+          "NAME_AY_AN": 2
+        },
+        "sample_contexts": [
+          "M016-M342",
+          "M016-M211",
+          "M016-M267",
+          "M016-M245"
+        ]
+      },
+      "M039": {
+        "freq": 18,
+        "initial": 18,
+        "medial": 0,
+        "terminal": 0,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "after_genitive_count": 0,
+        "before_case_suffix_count": 10,
+        "name_slot_count": 0,
+        "patterns": {},
+        "sample_contexts": [
+          "M039-M211",
+          "M039-M176",
+          "M039-M342",
+          "M039-M185"
+        ]
+      },
+      "M040": {
+        "freq": 13,
+        "initial": 13,
+        "medial": 0,
+        "terminal": 0,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "after_genitive_count": 0,
+        "before_case_suffix_count": 5,
+        "name_slot_count": 0,
+        "patterns": {},
+        "sample_contexts": [
+          "M040-M391",
+          "M040-M342",
+          "M040-M342",
+          "M040-M328"
+        ]
+      },
+      "M045": {
+        "freq": 24,
+        "initial": 24,
+        "medial": 0,
+        "terminal": 0,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "after_genitive_count": 0,
+        "before_case_suffix_count": 10,
+        "name_slot_count": 0,
+        "patterns": {},
+        "sample_contexts": [
+          "M045-M207",
+          "M045-M382",
+          "M045-M328",
+          "M045-M293"
+        ]
+      },
+      "M047": {
+        "freq": 13,
+        "initial": 13,
+        "medial": 0,
+        "terminal": 0,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "after_genitive_count": 0,
+        "before_case_suffix_count": 3,
+        "name_slot_count": 0,
+        "patterns": {},
+        "sample_contexts": [
+          "M047-M367",
+          "M047-M065",
+          "M047-M267",
+          "M047-M059"
+        ]
+      },
+      "M062": {
+        "freq": 28,
+        "initial": 28,
+        "medial": 0,
+        "terminal": 0,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "after_genitive_count": 0,
+        "before_case_suffix_count": 8,
+        "name_slot_count": 0,
+        "patterns": {},
+        "sample_contexts": [
+          "M062-M162",
+          "M062-M267",
+          "M062-M131",
+          "M062-M089"
+        ]
+      }
+    }
+  },
+  "m293_reference_profile": {
+    "initial": 0.069,
+    "medial": 0.599,
+    "terminal": 0.332
+  },
+  "anchors_modified": false,
+  "anchor_note": "All four candidates already stand as HIGH anchors in INDUS_FINAL_ANCHORS.json; this phase adjudicates the personal-name-component role only and changes no anchor.",
+  "gpu_device": "cpu",
+  "results": [
+    {
+      "sign": "M362",
+      "corpus_profile": {
+        "freq": 3,
+        "initial": 0,
+        "medial": 3,
+        "terminal": 0,
+        "initial_rate": 0.0,
+        "medial_rate": 1.0,
+        "terminal_rate": 0.0,
+        "after_genitive_count": 1,
+        "before_case_suffix_count": 1,
+        "name_slot_count": 2,
+        "patterns": {
+          "ANIMAL_NAME_TITLE": 1,
+          "GENITIVE_NAME": 1
+        },
+        "sample_contexts": [
+          "M185-M362-M207",
+          "M006-M362-M059",
+          "M267-M362-M391"
+        ]
+      },
+      "holdat_semantic_role": null,
+      "phase103": {
+        "name_score": 1.25,
+        "name_slot_count": 4,
+        "sa_modal": "",
+        "pattern_types": [
+          "HIGH_CONTEXT",
+          "ANIMAL_NAME_TITLE",
+          "GENITIVE_NAME_SUFFIX"
+        ]
+      },
+      "standing_anchor": {
+        "reading": "aṇi",
+        "confidence": "HIGH"
+      },
+      "verdict": "INCONCLUSIVE",
+      "rationale": "Only 3 corpus tokens — too few for a positional verdict (Phase-101 adjudication rested on 100+ tokens). Phase-103 pattern counts stand as the only evidence and are not re-tested here."
+    },
+    {
+      "sign": "M398",
+      "corpus_profile": {
+        "freq": 3,
+        "initial": 0,
+        "medial": 3,
+        "terminal": 0,
+        "initial_rate": 0.0,
+        "medial_rate": 1.0,
+        "terminal_rate": 0.0,
+        "after_genitive_count": 1,
+        "before_case_suffix_count": 3,
+        "name_slot_count": 2,
+        "patterns": {
+          "GENITIVE_NAME": 1,
+          "NAME_AY_AN": 1
+        },
+        "sample_contexts": [
+          "M267-M398-M342",
+          "M036-M398-M162",
+          "M002-M398-M176"
+        ]
+      },
+      "holdat_semantic_role": null,
+      "phase103": {
+        "name_score": 1.2,
+        "name_slot_count": 5,
+        "sa_modal": "",
+        "pattern_types": [
+          "HIGH_CONTEXT",
+          "NAME_AY_AN",
+          "GENITIVE_NAME_SUFFIX"
+        ]
+      },
+      "standing_anchor": {
+        "reading": "kuṟi",
+        "confidence": "HIGH"
+      },
+      "verdict": "INCONCLUSIVE",
+      "rationale": "Only 3 corpus tokens — too few for a positional verdict (Phase-101 adjudication rested on 100+ tokens). Phase-103 pattern counts stand as the only evidence and are not re-tested here."
+    },
+    {
+      "sign": "M375",
+      "corpus_profile": {
+        "freq": 7,
+        "initial": 0,
+        "medial": 7,
+        "terminal": 0,
+        "initial_rate": 0.0,
+        "medial_rate": 1.0,
+        "terminal_rate": 0.0,
+        "after_genitive_count": 0,
+        "before_case_suffix_count": 3,
+        "name_slot_count": 2,
+        "patterns": {
+          "NAME_AY_AN": 2
+        },
+        "sample_contexts": [
+          "M045-M375-M342",
+          "M233-M375-M065",
+          "M059-M375-M342",
+          "M319-M375-M051"
+        ]
+      },
+      "holdat_semantic_role": "PERSON_OR_OWNER",
+      "phase103": {
+        "name_score": 1.143,
+        "name_slot_count": 7,
+        "sa_modal": "",
+        "pattern_types": [
+          "HIGH_CONTEXT",
+          "ANIMAL_NAME_TITLE",
+          "NAME_AY_AN"
+        ]
+      },
+      "standing_anchor": {
+        "reading": "taṇ",
+        "confidence": "HIGH"
+      },
+      "verdict": "CORROBORATED",
+      "rationale": "Non-initial positional profile plus repeated occupation of Phase-103 name slots; consistent with a personal-name component (compare M293 reference profile). The Holdat semantic-roles file independently classifies this sign as PERSON_OR_OWNER, agreeing with the name-slot evidence."
+    },
+    {
+      "sign": "M024",
+      "corpus_profile": {
+        "freq": 13,
+        "initial": 13,
+        "medial": 0,
+        "terminal": 0,
+        "initial_rate": 1.0,
+        "medial_rate": 0.0,
+        "terminal_rate": 0.0,
+        "after_genitive_count": 0,
+        "before_case_suffix_count": 4,
+        "name_slot_count": 2,
+        "patterns": {
+          "NAME_AY_AN": 2
+        },
+        "sample_contexts": [
+          "M024-M267",
+          "M024-M211",
+          "M024-M178",
+          "M024-M125"
+        ]
+      },
+      "holdat_semantic_role": "CLASSIFIER_PREFIX",
+      "phase103": {
+        "name_score": 3.0,
+        "name_slot_count": 2,
+        "sa_modal": "nē",
+        "pattern_types": [
+          "NAME_AY_AN"
+        ]
+      },
+      "standing_anchor": {
+        "reading": "nē",
+        "confidence": "HIGH"
+      },
+      "verdict": "CHALLENGED",
+      "rationale": "Positional profile is classifier-like (INITIAL >= 50%) or the sign never occupies a defined name slot; inconsistent with a personal-name-component role. The Holdat semantic-roles file independently classifies this sign as CLASSIFIER_PREFIX. NAME_AY_AN occurrences (the sign heading the [X]-M342-M176 formula) are the counter-consideration: the sign may head a name formula rather than sit medially in one, but under the Phase-101 adjudication standard its profile is a prefix/head profile, not a name-component profile. Flagged for future adjudication; the standing anchor is not changed by this phase."
+    }
+  ]
+}

@@ -134,7 +134,7 @@ glossa-lab/
 │  └─ workflows/ci.yml  ← GitHub Actions CI
 ├─ backend/             ← Python FastAPI application
 │  ├─ glossa_lab/       ← app modules (api/, experiments/, discovery/, ...)
-│  ├─ glossa_mcp/       ← MCP server (Warp/Oz agent integration, 27 tools)
+│  ├─ glossa_mcp/       ← MCP server (Warp/Oz agent integration, 33 tools)
 │  ├─ scripts/          ← all research and utility scripts
 │  └─ tests/
 ├─ frontend/            ← React / TypeScript / Vite
@@ -211,7 +211,7 @@ curl.exe -sf http://localhost:8001/ | Select-String 'index-[A-Za-z0-9]+\.js'
 
 ## MCP server (Warp / Oz)
 
-Glossa Lab ships a [FastMCP](https://github.com/jlowin/fastmcp) server that exposes 27 backend operations as MCP tools, allowing Warp's Oz agent to query and control the system directly — no manual API calls required.
+Glossa Lab ships a [FastMCP](https://github.com/jlowin/fastmcp) server that exposes 33 backend operations as MCP tools, allowing Warp's Oz agent to query and control the system directly — no manual API calls required.
 
 ### What it covers
 
@@ -221,7 +221,8 @@ Glossa Lab ships a [FastMCP](https://github.com/jlowin/fastmcp) server that expo
 | Jobs | `list_jobs`, `get_job`, `create_job`, `cancel_job`, `get_job_results` |
 | Experiments | `list_experiments`, `get_experiment`, `run_experiment` |
 | Research loop | `start_research_loop`, `get_research_loop_status`, `stop_research_loop`, `get_research_loop_results`, `get_anchor_staging` |
-| Foundation check | `run_foundation_check` |
+| Foundation check | `run_foundation_check`, `get_foundation_status` |
+| Indus evidence | `list_indus_claims`, `get_indus_claim`, `get_indus_claim_aee_scores`, `list_indus_library`, `list_indus_hypotheses` |
 | Discovery | `list_discovery_items`, `get_discovery_stats`, `trigger_discovery_fetch`, `update_discovery_item_status` |
 | Dashboard | `get_latest_insight`, `get_dashboard_highlights` |
 | Anchor sets | `list_anchor_sets`, `get_anchor_set`, `create_anchor_set` |

@@ -13,11 +13,29 @@ Output: reports/foundation_check_report.json + console
 """
 import csv
 import json
+import os
 import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
-REPO  = Path(r"C:\Users\trist\Development\BitConcepts\glossa-lab")
+
+def resolve_repo_root() -> Path:
+    """Resolve the glossa-lab repository root.
+
+    Order: ``GLOSSA_REPO_ROOT`` environment override, else the root
+    implied by this script's location (``backend/scripts/`` → repo root).
+    Historically this was a hardcoded Windows path
+    (``C:\\Users\\trist\\...``), which made the script unrunnable anywhere
+    else; the location-derived default resolves to the same directory on
+    the original Windows dev box, so behaviour there is unchanged.
+    """
+    override = os.environ.get("GLOSSA_REPO_ROOT", "").strip()
+    if override:
+        return Path(override)
+    return Path(__file__).resolve().parents[2]
+
+
+REPO  = resolve_repo_root()
 RPRT  = REPO / "reports"
 DATA  = REPO / "backend/glossa_lab/data"
 BKRPT = REPO / "backend/reports"

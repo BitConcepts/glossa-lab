@@ -148,3 +148,34 @@ What was done:
 
 AI disclosure: this migration was executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+### [2026-10-05] Entry — Spec-kit + AEE migration (Stage 2: AEE library core)
+
+**Type:** architecture / epistemic infrastructure
+**Summary:** The core tool now runs claim scoring on the underlying
+epistemic engineering library, `applied-epistemic-engineering` (the
+`aee` package, >=1.0.4,<2, added to `backend/pyproject.toml`).
+
+- New `backend/glossa_lab/aee_core.py`: adapter mapping Glossa's
+  extracted-claims JSON (`glossa-indus/claims/extracted_claims/*.json`)
+  onto AEE `Claim`/`Evidence`/`ClaimGraph`, scored by AEE's
+  `ScoringEngine`. `falsification_condition` maps natively onto
+  `Claim.falsification_tests`; Glossa `claim_status` maps onto
+  `ClaimStatus` (Glossa `untested` → AEE DRAFT, original preserved in
+  `Claim.metadata`); fields AEE has no concept for (claim-type taxonomy,
+  `testability`, quote fragments, sign lists, `confidence_in_source`)
+  are preserved via `Claim.metadata` / `Claim.source_ref`. Glossa's
+  assessed status enters scoring through attached evidence strength —
+  the `ScoringEngine` takes no status input — documented in the module
+  docstring.
+- API (additive only, existing shapes unchanged):
+  `GET /api/v1/indus-evidence/claims/aee-scores` returns the full AEE
+  assessment; `GET /claims?aee=true` attaches a per-claim `aee_score`.
+  Verified live: 31 claims, mean propagated score 0.485.
+- Tests: `backend/tests/test_aee_core.py` — 18 passed (mapping,
+  falsification preservation, evidence attachment, scoring sanity,
+  round-trip on the real Parpola 2010 fixture and the full claims dir);
+  `test_indus_evidence_api.py` still 25 passed.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

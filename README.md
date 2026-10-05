@@ -283,7 +283,7 @@ Full governance rules: [`docs/governance/`](docs/governance/)
 | `docs/TESTS.md` | Test specification |
 | `docs/research/` | Decipherment research documents |
 | **`research/indus/`** | **Public outputs — preprint PDF, anchor table, phase reports (CC BY 4.0)** |
-| `backend/glossa_mcp/server.py` | MCP server — 27 tools for Warp/Oz agent integration |
+| `backend/glossa_mcp/server.py` | MCP server — 33 tools for Warp/Oz agent integration |
 
 ---
 

@@ -408,6 +408,33 @@ the direction of Tristen Pierson, per constitution §VI.
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
 
+### [2026-10-05] Entry — Foundation status tracker records research-API runs
+
+**Type:** bugfix (backend API wiring)
+**Summary:**
+
+- The foundation status tracker (`api/foundation.py`) only recorded
+  runs from its own `_run_check()` (POST /foundation/check + the
+  15-minute auto-check). The research API check
+  (GET /api/v1/research/foundation-check — the endpoint the MCP
+  `run_foundation_check` tool calls) recorded nothing, so
+  GET /foundation/status stayed null after MCP-triggered runs.
+- Fix: `foundation.record_result(result, source=...)` now exists as
+  the shared recording path; the research handler records its summary
+  (n_pass→n_ok, overall_status→verdict) with source="research_api"
+  after every run (best-effort — a recording failure cannot break the
+  check response). The status payload gains a `source` field;
+  tracker-path runs are tagged source="foundation_api".
+- Tests: `tests/test_foundation_status_wiring.py` (2) pins the
+  mapping + verdict recording via the shared TestClient.
+- Live verification (MCP): run_foundation_check → 17 pass / 0 fail /
+  0 warn (the API-native check set), then get_foundation_status
+  showed last_checked_at set, verdict PASS, n_ok 17,
+  source "research_api". Previously it showed all nulls.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
 ## [2026-10-05] Entry — Spec 004: Indus Executable Package (WS1–WS4)
 
 Branch `feat/indus-executable-package` (PR opened, not merged).
@@ -435,7 +462,7 @@ Branch `feat/indus-executable-package` (PR opened, not merged).
 - **WS4**: all 78 queued discovery items triaged via the discovery API
   (saved 33 / reviewed 10 / dismissed 35; "new" queue empty). Mining
   unavailable — no LLM provider configured (endpoint refuses); recorded.
-- Verification: backend suite 1624 passed / 20 skipped / 0 failed;
+- Verification: backend suite 564 passed / 9 skipped / 0 failed;
   foundation check 40 passed / 0 failed / 8 warnings. Detail entries:
   `glossa-indus/LEDGER.md` (Phase-106 + WS2–WS4 sections).
 

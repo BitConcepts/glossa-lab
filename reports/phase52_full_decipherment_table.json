@@ -1,0 +1,5244 @@
+[
+  {
+    "sign": "M342",
+    "n_corpus": 584,
+    "sa_reading": "ay",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "ay/ā",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "ay": 5
+    }
+  },
+  {
+    "sign": "M267",
+    "n_corpus": 400,
+    "sa_reading": "in",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "iN/in (genitive of)",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "in": 5
+    }
+  },
+  {
+    "sign": "M099",
+    "n_corpus": 389,
+    "sa_reading": "ko",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kol/koḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "ko": 5
+    }
+  },
+  {
+    "sign": "M176",
+    "n_corpus": 356,
+    "sa_reading": "an",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "an/aṇ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "an": 5
+    }
+  },
+  {
+    "sign": "M211",
+    "n_corpus": 249,
+    "sa_reading": "na",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "kol",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "na": 2,
+      "di": 1,
+      "ta": 1
+    }
+  },
+  {
+    "sign": "M328",
+    "n_corpus": 234,
+    "sa_reading": "la",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "ā/āl",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "la": 2,
+      "tu": 1,
+      "i": 1
+    }
+  },
+  {
+    "sign": "M293",
+    "n_corpus": 232,
+    "sa_reading": "ri",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "ta",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ri": 2,
+      "a": 2,
+      "ma": 1
+    }
+  },
+  {
+    "sign": "M059",
+    "n_corpus": 222,
+    "sa_reading": "i",
+    "sa_consensus_pct": 0.6,
+    "confirmed_reading": "ēḷ/eḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "i": 3,
+      "ru": 1,
+      "li": 1
+    }
+  },
+  {
+    "sign": "M162",
+    "n_corpus": 205,
+    "sa_reading": "da",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "il/iḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "da": 1,
+      "na": 1,
+      "di": 1
+    }
+  },
+  {
+    "sign": "M391",
+    "n_corpus": 193,
+    "sa_reading": "ga",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ka/kaṇ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ga": 1,
+      "ra": 1,
+      "a": 1
+    }
+  },
+  {
+    "sign": "M367",
+    "n_corpus": 190,
+    "sa_reading": "mu",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "am/neuter",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "mu": 1,
+      "du": 1,
+      "va": 1
+    }
+  },
+  {
+    "sign": "M089",
+    "n_corpus": 171,
+    "sa_reading": "pa",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "tu/tū",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "pa": 1,
+      "kā": 1,
+      "tu": 1
+    }
+  },
+  {
+    "sign": "M233",
+    "n_corpus": 171,
+    "sa_reading": "ta",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "ūr",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ta": 2,
+      "lu": 1,
+      "li": 1
+    }
+  },
+  {
+    "sign": "M051",
+    "n_corpus": 163,
+    "sa_reading": "ca",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "pū/puḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ca": 1,
+      "lu": 1,
+      "ta": 1
+    }
+  },
+  {
+    "sign": "M336",
+    "n_corpus": 161,
+    "sa_reading": "na",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "iṉ/locative",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "na": 1,
+      "pa": 1,
+      "ku": 1
+    }
+  },
+  {
+    "sign": "M048",
+    "n_corpus": 157,
+    "sa_reading": "ni",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "mu/muṉ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ni": 1,
+      "tu": 1,
+      "pa": 1
+    }
+  },
+  {
+    "sign": "M065",
+    "n_corpus": 154,
+    "sa_reading": "ni",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "kuTam",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ni": 2,
+      "va": 1,
+      "ku": 1
+    }
+  },
+  {
+    "sign": "M012",
+    "n_corpus": 143,
+    "sa_reading": "ru",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "oṉṟu/1",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ru": 1,
+      "ba": 1,
+      "ra": 1
+    }
+  },
+  {
+    "sign": "M125",
+    "n_corpus": 132,
+    "sa_reading": "ma",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vil",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ma": 1,
+      "ri": 1,
+      "nu": 1
+    }
+  },
+  {
+    "sign": "M087",
+    "n_corpus": 130,
+    "sa_reading": "la",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "veL",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "la": 1,
+      "di": 1,
+      "ti": 1
+    }
+  },
+  {
+    "sign": "M305",
+    "n_corpus": 83,
+    "sa_reading": "ne",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ōṭu/comitative",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ne": 1,
+      "sa": 1,
+      "u": 1
+    }
+  },
+  {
+    "sign": "M249",
+    "n_corpus": 73,
+    "sa_reading": "si",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "tii",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "si": 1,
+      "ni": 1,
+      "lu": 1
+    }
+  },
+  {
+    "sign": "M220",
+    "n_corpus": 62,
+    "sa_reading": "ra",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "al",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ra": 1,
+      "ne": 1,
+      "du": 1
+    }
+  },
+  {
+    "sign": "M062",
+    "n_corpus": 28,
+    "sa_reading": "e",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "erutu",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "e": 5
+    }
+  },
+  {
+    "sign": "M073",
+    "n_corpus": 25,
+    "sa_reading": "mo",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kōṉ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "mo": 1,
+      "mi": 1,
+      "nā": 1
+    }
+  },
+  {
+    "sign": "M045",
+    "n_corpus": 24,
+    "sa_reading": "ya",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "yānai",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ya": 5
+    }
+  },
+  {
+    "sign": "M079",
+    "n_corpus": 24,
+    "sa_reading": "kā",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "ir",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "kā": 2,
+      "gu": 1,
+      "mu": 1
+    }
+  },
+  {
+    "sign": "M016",
+    "n_corpus": 23,
+    "sa_reading": "ka",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kaḷiṟu",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "ka": 5
+    }
+  },
+  {
+    "sign": "M013",
+    "n_corpus": 23,
+    "sa_reading": "o",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "nakaram",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "o": 1,
+      "va": 1,
+      "ju": 1
+    }
+  },
+  {
+    "sign": "M008",
+    "n_corpus": 22,
+    "sa_reading": "u",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "erumai",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "u": 1,
+      "rak": 1,
+      "kā": 1
+    }
+  },
+  {
+    "sign": "M022",
+    "n_corpus": 22,
+    "sa_reading": "du",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kalam",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "du": 1,
+      "po": 1,
+      "ha": 1
+    }
+  },
+  {
+    "sign": "M052",
+    "n_corpus": 22,
+    "sa_reading": "be",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ta",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "be": 1,
+      "da": 1,
+      "var": 1
+    }
+  },
+  {
+    "sign": "M061",
+    "n_corpus": 22,
+    "sa_reading": "ki",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ka",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ki": 1,
+      "kar": 1,
+      "gu": 1
+    }
+  },
+  {
+    "sign": "M058",
+    "n_corpus": 21,
+    "sa_reading": "re",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "ke",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "re": 2,
+      "pe": 1,
+      "lā": 1
+    }
+  },
+  {
+    "sign": "M019",
+    "n_corpus": 20,
+    "sa_reading": "gi",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ampu",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "gi": 1,
+      "me": 1,
+      "cu": 1
+    }
+  },
+  {
+    "sign": "M060",
+    "n_corpus": 20,
+    "sa_reading": "riv",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kāṇṭāmirukam",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "riv": 1,
+      "cu": 1,
+      "ruk": 1
+    }
+  },
+  {
+    "sign": "M003",
+    "n_corpus": 19,
+    "sa_reading": "nē",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kalam",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "nē": 1,
+      "val": 1,
+      "cal": 1
+    }
+  },
+  {
+    "sign": "M035",
+    "n_corpus": 19,
+    "sa_reading": "li",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "po",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "li": 1,
+      "ha": 1,
+      "ki": 1
+    }
+  },
+  {
+    "sign": "M044",
+    "n_corpus": 19,
+    "sa_reading": "hi",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ku",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "hi": 1,
+      "ki": 1,
+      "go": 1
+    }
+  },
+  {
+    "sign": "M053",
+    "n_corpus": 19,
+    "sa_reading": "rak",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "mi",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "rak": 1,
+      "sā": 1,
+      "ram": 1
+    }
+  },
+  {
+    "sign": "M056",
+    "n_corpus": 19,
+    "sa_reading": "ke",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "miN4",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ke": 1,
+      "bu": 1,
+      "sa": 1
+    }
+  },
+  {
+    "sign": "M080",
+    "n_corpus": 19,
+    "sa_reading": "sa",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vēṅkai",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "sa": 1,
+      "pe": 1,
+      "ba": 1
+    }
+  },
+  {
+    "sign": "M017",
+    "n_corpus": 18,
+    "sa_reading": "rī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kai",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "rī": 1,
+      "bo": 1,
+      "sā": 1
+    }
+  },
+  {
+    "sign": "M018",
+    "n_corpus": 18,
+    "sa_reading": "hu",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "nēr",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "hu": 1,
+      "se": 1,
+      "to": 1
+    }
+  },
+  {
+    "sign": "M020",
+    "n_corpus": 18,
+    "sa_reading": "lan",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kuṉ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "lan": 1,
+      "kan": 1,
+      "ja": 1
+    }
+  },
+  {
+    "sign": "M030",
+    "n_corpus": 18,
+    "sa_reading": "su",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kō",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "su": 1,
+      "nu": 1,
+      "rip": 1
+    }
+  },
+  {
+    "sign": "M039",
+    "n_corpus": 18,
+    "sa_reading": "to",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "āṉai",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "to": 1,
+      "ci": 1,
+      "de": 1
+    }
+  },
+  {
+    "sign": "M057",
+    "n_corpus": 18,
+    "sa_reading": "ge",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "māṭu",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ge": 1,
+      "ce": 1,
+      "o": 1
+    }
+  },
+  {
+    "sign": "M063",
+    "n_corpus": 18,
+    "sa_reading": "ci",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "mutalai",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ci": 1,
+      "kū": 1,
+      "gā": 1
+    }
+  },
+  {
+    "sign": "M077",
+    "n_corpus": 18,
+    "sa_reading": "nā",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "nal",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "nā": 1,
+      "tā": 1,
+      "ne": 1
+    }
+  },
+  {
+    "sign": "M004",
+    "n_corpus": 17,
+    "sa_reading": "ho",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kēḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ho": 1,
+      "mū": 1,
+      "nē": 1
+    }
+  },
+  {
+    "sign": "M010",
+    "n_corpus": 17,
+    "sa_reading": "rin",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "paṭ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "rin": 1,
+      "lan": 1,
+      "run": 1
+    }
+  },
+  {
+    "sign": "M014",
+    "n_corpus": 17,
+    "sa_reading": "pi",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "tiru",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "pi": 1,
+      "ral": 1,
+      "dā": 1
+    }
+  },
+  {
+    "sign": "M025",
+    "n_corpus": 17,
+    "sa_reading": "gar",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "cem",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "gar": 1,
+      "o": 1,
+      "gi": 1
+    }
+  },
+  {
+    "sign": "M026",
+    "n_corpus": 17,
+    "sa_reading": "ro",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "mā",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ro": 1,
+      "su": 1,
+      "po": 1
+    }
+  },
+  {
+    "sign": "M027",
+    "n_corpus": 17,
+    "sa_reading": "kar",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "māṟ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "kar": 1,
+      "gal": 1,
+      "tir": 1
+    }
+  },
+  {
+    "sign": "M034",
+    "n_corpus": 17,
+    "sa_reading": "gā",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "tōḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "gā": 1,
+      "rup": 1,
+      "pā": 1
+    }
+  },
+  {
+    "sign": "M038",
+    "n_corpus": 17,
+    "sa_reading": "ti",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "pōr",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ti": 1,
+      "jo": 1,
+      "si": 1
+    }
+  },
+  {
+    "sign": "M041",
+    "n_corpus": 17,
+    "sa_reading": "de",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "pēr",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "de": 1,
+      "ke": 1,
+      "rak": 1
+    }
+  },
+  {
+    "sign": "M050",
+    "n_corpus": 17,
+    "sa_reading": "se",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "pār",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "se": 1,
+      "si": 1,
+      "me": 1
+    }
+  },
+  {
+    "sign": "M070",
+    "n_corpus": 17,
+    "sa_reading": "val",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vēl",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "val": 1,
+      "mar": 1,
+      "ge": 1
+    }
+  },
+  {
+    "sign": "M078",
+    "n_corpus": 17,
+    "sa_reading": "su",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "cēr",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "su": 2,
+      "rum": 1,
+      "gar": 1
+    }
+  },
+  {
+    "sign": "M002",
+    "n_corpus": 16,
+    "sa_reading": "rā",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kuṉ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "rā": 1,
+      "ram": 1,
+      "car": 1
+    }
+  },
+  {
+    "sign": "M009",
+    "n_corpus": 16,
+    "sa_reading": "tā",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "āṇ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "tā": 1,
+      "lip": 1,
+      "gar": 1
+    }
+  },
+  {
+    "sign": "M021",
+    "n_corpus": 16,
+    "sa_reading": "me",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kō",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "me": 1,
+      "hi": 1,
+      "nī": 1
+    }
+  },
+  {
+    "sign": "M023",
+    "n_corpus": 16,
+    "sa_reading": "kan",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vaḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "kan": 1,
+      "tū": 1,
+      "pon": 1
+    }
+  },
+  {
+    "sign": "M031",
+    "n_corpus": 16,
+    "sa_reading": "tip",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kai",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "tip": 1,
+      "ji": 1,
+      "kar": 1
+    }
+  },
+  {
+    "sign": "M037",
+    "n_corpus": 16,
+    "sa_reading": "ji",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kēḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ji": 1,
+      "mī": 1,
+      "lar": 1
+    }
+  },
+  {
+    "sign": "M066",
+    "n_corpus": 16,
+    "sa_reading": "rap",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "cōḻ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "rap": 2,
+      "rin": 1,
+      "po": 1
+    }
+  },
+  {
+    "sign": "M069",
+    "n_corpus": 16,
+    "sa_reading": "le",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "nēr",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "le": 1,
+      "gi": 1,
+      "ce": 1
+    }
+  },
+  {
+    "sign": "M071",
+    "n_corpus": 16,
+    "sa_reading": "gu",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "nal",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "gu": 1,
+      "nā": 1,
+      "pe": 1
+    }
+  },
+  {
+    "sign": "M006",
+    "n_corpus": 15,
+    "sa_reading": "pu",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "puli",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "pu": 5
+    }
+  },
+  {
+    "sign": "M005",
+    "n_corpus": 15,
+    "sa_reading": "so",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kōṉ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "so": 1,
+      "run": 1,
+      "pi": 1
+    }
+  },
+  {
+    "sign": "M011",
+    "n_corpus": 15,
+    "sa_reading": "ral",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kaḷiṟu",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ral": 1,
+      "var": 1,
+      "lā": 1
+    }
+  },
+  {
+    "sign": "M015",
+    "n_corpus": 15,
+    "sa_reading": "mar",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "mā",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "mar": 1,
+      "can": 1,
+      "bi": 1
+    }
+  },
+  {
+    "sign": "M036",
+    "n_corpus": 15,
+    "sa_reading": "ran",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "tiru",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ran": 1,
+      "tar": 1,
+      "mo": 1
+    }
+  },
+  {
+    "sign": "M067",
+    "n_corpus": 15,
+    "sa_reading": "do",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kōṭṭāṉ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "do": 1,
+      "je": 1,
+      "nan": 1
+    }
+  },
+  {
+    "sign": "M001",
+    "n_corpus": 14,
+    "sa_reading": "ha",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "tōḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ha": 1,
+      "to": 1,
+      "rap": 1
+    }
+  },
+  {
+    "sign": "M075",
+    "n_corpus": 14,
+    "sa_reading": "he",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "māṟ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "he": 1,
+      "rī": 1,
+      "do": 1
+    }
+  },
+  {
+    "sign": "M042",
+    "n_corpus": 13,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M024",
+    "n_corpus": 13,
+    "sa_reading": "pin",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "nē",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "pin": 1,
+      "vak": 1,
+      "on": 1
+    }
+  },
+  {
+    "sign": "M040",
+    "n_corpus": 13,
+    "sa_reading": "it",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ri",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "it": 1,
+      "tam": 1,
+      "bā": 1
+    }
+  },
+  {
+    "sign": "M047",
+    "n_corpus": 13,
+    "sa_reading": "lam",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "min/mīn",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "lam": 1,
+      "bi": 1,
+      "ji": 1
+    }
+  },
+  {
+    "sign": "M049",
+    "n_corpus": 13,
+    "sa_reading": "par",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "pu",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "par": 2,
+      "bā": 1,
+      "mā": 1
+    }
+  },
+  {
+    "sign": "M068",
+    "n_corpus": 13,
+    "sa_reading": "on",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "maṟi",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "on": 1,
+      "tum": 1,
+      "lik": 1
+    }
+  },
+  {
+    "sign": "M081",
+    "n_corpus": 13,
+    "sa_reading": "nam",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ve",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "nam": 1,
+      "ur": 1,
+      "kī": 1
+    }
+  },
+  {
+    "sign": "M033",
+    "n_corpus": 12,
+    "sa_reading": "kī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "puli",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "kī": 1,
+      "be": 1,
+      "ho": 1
+    }
+  },
+  {
+    "sign": "M054",
+    "n_corpus": 12,
+    "sa_reading": "ram",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "mi",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ram": 1,
+      "ruk": 1,
+      "mar": 1
+    }
+  },
+  {
+    "sign": "M055",
+    "n_corpus": 12,
+    "sa_reading": "re",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "miN3",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "re": 1,
+      "ro": 1,
+      "tar": 1
+    }
+  },
+  {
+    "sign": "M072",
+    "n_corpus": 12,
+    "sa_reading": "go",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "mā",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "go": 1,
+      "al": 1,
+      "le": 1
+    }
+  },
+  {
+    "sign": "M074",
+    "n_corpus": 12,
+    "sa_reading": "pī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ker",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "pī": 1,
+      "rat": 1,
+      "tal": 1
+    }
+  },
+  {
+    "sign": "M046",
+    "n_corpus": 11,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "kal": 5
+    }
+  },
+  {
+    "sign": "M007",
+    "n_corpus": 11,
+    "sa_reading": "rat",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "aaL",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "rat": 1,
+      "go": 1,
+      "cā": 1
+    }
+  },
+  {
+    "sign": "M028",
+    "n_corpus": 11,
+    "sa_reading": "ad",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "cōḻ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ad": 1,
+      "nan": 1,
+      "en": 1
+    }
+  },
+  {
+    "sign": "M029",
+    "n_corpus": 11,
+    "sa_reading": "co",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "yānai",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "co": 1,
+      "do": 1,
+      "rup": 1
+    }
+  },
+  {
+    "sign": "M043",
+    "n_corpus": 11,
+    "sa_reading": "jā",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "mu",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "jā": 1,
+      "sī": 1,
+      "no": 1
+    }
+  },
+  {
+    "sign": "M064",
+    "n_corpus": 11,
+    "sa_reading": "tir",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "va",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "tir": 1,
+      "at": 1,
+      "rī": 1
+    }
+  },
+  {
+    "sign": "M032",
+    "n_corpus": 9,
+    "sa_reading": "lin",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "koL",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "lin": 1,
+      "so": 1,
+      "kan": 1
+    }
+  },
+  {
+    "sign": "M102",
+    "n_corpus": 8,
+    "sa_reading": "pam",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ni",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "pam": 1,
+      "pin": 1,
+      "t": 1
+    }
+  },
+  {
+    "sign": "M169",
+    "n_corpus": 8,
+    "sa_reading": "tan",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "rā",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "tan": 1,
+      "mun": 1,
+      "nū": 1
+    }
+  },
+  {
+    "sign": "M237",
+    "n_corpus": 8,
+    "sa_reading": "mū",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ce",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "mū": 1,
+      "un": 1,
+      "cī": 1
+    }
+  },
+  {
+    "sign": "M347",
+    "n_corpus": 8,
+    "sa_reading": "mē",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "ka",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "mē": 2,
+      "pit": 1,
+      "ruk": 1
+    }
+  },
+  {
+    "sign": "M076",
+    "n_corpus": 7,
+    "sa_reading": "cal",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "naN",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "cal": 1,
+      "gā": 1,
+      "tē": 1
+    }
+  },
+  {
+    "sign": "M082",
+    "n_corpus": 7,
+    "sa_reading": "bi",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "pa",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "bi": 1,
+      "lak": 1,
+      "gin": 1
+    }
+  },
+  {
+    "sign": "M128",
+    "n_corpus": 7,
+    "sa_reading": "ju",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kaṇ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ju": 1,
+      "rū": 1,
+      "cap": 1
+    }
+  },
+  {
+    "sign": "M149",
+    "n_corpus": 7,
+    "sa_reading": "kil",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "or",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "kil": 1,
+      "mul": 1,
+      "at": 1
+    }
+  },
+  {
+    "sign": "M185",
+    "n_corpus": 7,
+    "sa_reading": "rel",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "pul",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "rel": 1,
+      "mir": 1,
+      "kel": 1
+    }
+  },
+  {
+    "sign": "M235",
+    "n_corpus": 7,
+    "sa_reading": "hū",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vē",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "hū": 1,
+      "rē": 1,
+      "mū": 1
+    }
+  },
+  {
+    "sign": "M272",
+    "n_corpus": 7,
+    "sa_reading": "pū",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ma",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "pū": 1,
+      "bā": 1,
+      "so": 1
+    }
+  },
+  {
+    "sign": "M375",
+    "n_corpus": 7,
+    "sa_reading": "lī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "taṇ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "lī": 1,
+      "kun": 1,
+      "un": 1
+    }
+  },
+  {
+    "sign": "M383",
+    "n_corpus": 7,
+    "sa_reading": "mā",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kol",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "mā": 1,
+      "kat": 1,
+      "par": 1
+    }
+  },
+  {
+    "sign": "M252",
+    "n_corpus": 6,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M127",
+    "n_corpus": 6,
+    "sa_reading": "tār",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vē",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "tār": 1,
+      "nar": 1,
+      "it": 1
+    }
+  },
+  {
+    "sign": "M168",
+    "n_corpus": 6,
+    "sa_reading": "lik",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "inci",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "lik": 2,
+      "pē": 1,
+      "ek": 1
+    }
+  },
+  {
+    "sign": "M198",
+    "n_corpus": 6,
+    "sa_reading": "rip",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "co",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "rip": 1,
+      "kon": 1,
+      "ral": 1
+    }
+  },
+  {
+    "sign": "M270",
+    "n_corpus": 6,
+    "sa_reading": "rup",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "muḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "rup": 1,
+      "rik": 1,
+      "ic": 1
+    }
+  },
+  {
+    "sign": "M332",
+    "n_corpus": 6,
+    "sa_reading": "er",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "intu",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "er": 1,
+      "cak": 1,
+      "ro": 1
+    }
+  },
+  {
+    "sign": "M351",
+    "n_corpus": 6,
+    "sa_reading": "nan",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vī",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "nan": 1,
+      "riv": 1,
+      "bī": 1
+    }
+  },
+  {
+    "sign": "M374",
+    "n_corpus": 6,
+    "sa_reading": "kat",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kul",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "kat": 1,
+      "rin": 1,
+      "pas": 1
+    }
+  },
+  {
+    "sign": "M386",
+    "n_corpus": 6,
+    "sa_reading": "pon",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "maṇ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "pon": 1,
+      "net": 1,
+      "kap": 1
+    }
+  },
+  {
+    "sign": "M401",
+    "n_corpus": 6,
+    "sa_reading": "tam",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vē",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "tam": 1,
+      "tin": 1,
+      "gal": 1
+    }
+  },
+  {
+    "sign": "M222",
+    "n_corpus": 5,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M108",
+    "n_corpus": 5,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M231",
+    "n_corpus": 5,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M103",
+    "n_corpus": 5,
+    "sa_reading": "tur",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kol",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "tur": 1,
+      "pē": 1,
+      "ip": 1
+    }
+  },
+  {
+    "sign": "M137",
+    "n_corpus": 5,
+    "sa_reading": "kir",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kuṟ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "kir": 1,
+      "bū": 1,
+      "ol": 1
+    }
+  },
+  {
+    "sign": "M143",
+    "n_corpus": 5,
+    "sa_reading": "ken",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "maṇ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ken": 1,
+      "it": 1,
+      "nam": 1
+    }
+  },
+  {
+    "sign": "M151",
+    "n_corpus": 5,
+    "sa_reading": "gū",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "viḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "gū": 1,
+      "pam": 1,
+      "cam": 1
+    }
+  },
+  {
+    "sign": "M153",
+    "n_corpus": 5,
+    "sa_reading": "nt",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "pu",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "nt": 1,
+      "gel": 1,
+      "len": 1
+    }
+  },
+  {
+    "sign": "M155",
+    "n_corpus": 5,
+    "sa_reading": "cak",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ka",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "cak": 1,
+      "ho": 1,
+      "lan": 1
+    }
+  },
+  {
+    "sign": "M163",
+    "n_corpus": 5,
+    "sa_reading": "tī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "il",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "tī": 1,
+      "rum": 1,
+      "gū": 1
+    }
+  },
+  {
+    "sign": "M177",
+    "n_corpus": 5,
+    "sa_reading": "cē",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "na",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "cē": 1,
+      "ran": 1,
+      "kū": 1
+    }
+  },
+  {
+    "sign": "M178",
+    "n_corpus": 5,
+    "sa_reading": "as",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "i",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "as": 1,
+      "nen": 1,
+      "luk": 1
+    }
+  },
+  {
+    "sign": "M183",
+    "n_corpus": 5,
+    "sa_reading": "gal",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vēḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "gal": 1,
+      "ik": 1,
+      "ril": 1
+    }
+  },
+  {
+    "sign": "M190",
+    "n_corpus": 5,
+    "sa_reading": "nak",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "paṉ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "nak": 1,
+      "kot": 1,
+      "kak": 1
+    }
+  },
+  {
+    "sign": "M223",
+    "n_corpus": 5,
+    "sa_reading": "pad",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "muḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "pad": 1,
+      "ok": 1,
+      "ot": 1
+    }
+  },
+  {
+    "sign": "M239",
+    "n_corpus": 5,
+    "sa_reading": "c",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "il",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "c": 1,
+      "j": 1,
+      "k": 1
+    }
+  },
+  {
+    "sign": "M254",
+    "n_corpus": 5,
+    "sa_reading": "kul",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "tēṉ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "kul": 1,
+      "en": 1,
+      "kān": 1
+    }
+  },
+  {
+    "sign": "M262",
+    "n_corpus": 5,
+    "sa_reading": "hī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "i",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "hī": 1,
+      "lū": 1,
+      "bur": 1
+    }
+  },
+  {
+    "sign": "M295",
+    "n_corpus": 5,
+    "sa_reading": "jo",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "paṟ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "jo": 1,
+      "car": 1,
+      "mun": 1
+    }
+  },
+  {
+    "sign": "M304",
+    "n_corpus": 5,
+    "sa_reading": "tar",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vēṟ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "tar": 1,
+      "kok": 1,
+      "hu": 1
+    }
+  },
+  {
+    "sign": "M321",
+    "n_corpus": 5,
+    "sa_reading": "rut",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kol",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "rut": 1,
+      "tal": 1,
+      "lip": 1
+    }
+  },
+  {
+    "sign": "M329",
+    "n_corpus": 5,
+    "sa_reading": "rik",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "poṉ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "rik": 1,
+      "cal": 1,
+      "gur": 1
+    }
+  },
+  {
+    "sign": "M345",
+    "n_corpus": 5,
+    "sa_reading": "cil",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "taṭ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "cil": 1,
+      "pol": 1,
+      "cē": 1
+    }
+  },
+  {
+    "sign": "M350",
+    "n_corpus": 5,
+    "sa_reading": "tor",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vē",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "tor": 1,
+      "bī": 1,
+      "cel": 1
+    }
+  },
+  {
+    "sign": "M355",
+    "n_corpus": 5,
+    "sa_reading": "pun",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "lu",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "pun": 1,
+      "gur": 1,
+      "cum": 1
+    }
+  },
+  {
+    "sign": "M357",
+    "n_corpus": 5,
+    "sa_reading": "cap",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kuḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "cap": 1,
+      "dar": 1,
+      "pal": 1
+    }
+  },
+  {
+    "sign": "M365",
+    "n_corpus": 5,
+    "sa_reading": "at",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vāṉ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "at": 1,
+      "gū": 1,
+      "qe": 1
+    }
+  },
+  {
+    "sign": "M402",
+    "n_corpus": 5,
+    "sa_reading": "kū",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vēḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "kū": 1,
+      "bē": 1,
+      "tī": 1
+    }
+  },
+  {
+    "sign": "M412",
+    "n_corpus": 5,
+    "sa_reading": "pon",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "cūḷ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "pon": 2,
+      "ris": 1,
+      "ded": 1
+    }
+  },
+  {
+    "sign": "M416",
+    "n_corpus": 5,
+    "sa_reading": "tē",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "na",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "tē": 1,
+      "us": 1,
+      "lup": 1
+    }
+  },
+  {
+    "sign": "M255",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M251",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M301",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M406",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M387",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M116",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M274",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M318",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M346",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M312",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M134",
+    "n_corpus": 4,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "kal": 5
+    }
+  },
+  {
+    "sign": "M129",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M120",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M207",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M280",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M309",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M382",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M324",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M370",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M218",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M186",
+    "n_corpus": 4,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M227",
+    "n_corpus": 4,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "kal": 5
+    }
+  },
+  {
+    "sign": "M138",
+    "n_corpus": 4,
+    "sa_reading": "pan",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "pan",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "pan": 5
+    }
+  },
+  {
+    "sign": "M243",
+    "n_corpus": 4,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "kal": 5
+    }
+  },
+  {
+    "sign": "M209",
+    "n_corpus": 4,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "kal": 5
+    }
+  },
+  {
+    "sign": "M259",
+    "n_corpus": 4,
+    "sa_reading": "van",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "van",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "van": 5
+    }
+  },
+  {
+    "sign": "M278",
+    "n_corpus": 4,
+    "sa_reading": "van",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "van",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "van": 5
+    }
+  },
+  {
+    "sign": "M208",
+    "n_corpus": 4,
+    "sa_reading": "van",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "van",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "van": 5
+    }
+  },
+  {
+    "sign": "M250",
+    "n_corpus": 4,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "kal": 5
+    }
+  },
+  {
+    "sign": "M390",
+    "n_corpus": 4,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "kal": 5
+    }
+  },
+  {
+    "sign": "M106",
+    "n_corpus": 4,
+    "sa_reading": "an",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "an": 5
+    }
+  },
+  {
+    "sign": "M334",
+    "n_corpus": 4,
+    "sa_reading": "ko",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "ko",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "ko": 5
+    }
+  },
+  {
+    "sign": "M245",
+    "n_corpus": 4,
+    "sa_reading": "an",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "an": 5
+    }
+  },
+  {
+    "sign": "M140",
+    "n_corpus": 4,
+    "sa_reading": "an",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "an": 5
+    }
+  },
+  {
+    "sign": "M109",
+    "n_corpus": 4,
+    "sa_reading": "an",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "an": 5
+    }
+  },
+  {
+    "sign": "M142",
+    "n_corpus": 4,
+    "sa_reading": "rē",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "rē": 1,
+      "k": 1,
+      "pul": 1
+    }
+  },
+  {
+    "sign": "M148",
+    "n_corpus": 4,
+    "sa_reading": "p",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "p": 1,
+      "up": 1,
+      "sī": 1
+    }
+  },
+  {
+    "sign": "M171",
+    "n_corpus": 4,
+    "sa_reading": "bī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "bī": 1,
+      "jī": 1,
+      "ir": 1
+    }
+  },
+  {
+    "sign": "M187",
+    "n_corpus": 4,
+    "sa_reading": "pul",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "pul": 1,
+      "kul": 1,
+      "nik": 1
+    }
+  },
+  {
+    "sign": "M192",
+    "n_corpus": 4,
+    "sa_reading": "gil",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ṇā",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "gil": 1,
+      "or": 1,
+      "gan": 1
+    }
+  },
+  {
+    "sign": "M194",
+    "n_corpus": 4,
+    "sa_reading": "gan",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kaṭ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "gan": 1,
+      "tap": 1,
+      "ur": 1
+    }
+  },
+  {
+    "sign": "M199",
+    "n_corpus": 4,
+    "sa_reading": "sē",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "sē": 1,
+      "hē": 1,
+      "pī": 1
+    }
+  },
+  {
+    "sign": "M202",
+    "n_corpus": 4,
+    "sa_reading": "bur",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "can",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "bur": 1,
+      "am": 1,
+      "sū": 1
+    }
+  },
+  {
+    "sign": "M265",
+    "n_corpus": 4,
+    "sa_reading": "git",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "git": 1,
+      "bur": 1,
+      "kac": 1
+    }
+  },
+  {
+    "sign": "M281",
+    "n_corpus": 4,
+    "sa_reading": "tin",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "piLLai",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "tin": 1,
+      "pat": 1,
+      "am": 1
+    }
+  },
+  {
+    "sign": "M290",
+    "n_corpus": 4,
+    "sa_reading": "tuk",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "tuk": 1,
+      "kit": 1,
+      "pok": 1
+    }
+  },
+  {
+    "sign": "M291",
+    "n_corpus": 4,
+    "sa_reading": "rū",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "rū": 1,
+      "il": 1,
+      "pol": 1
+    }
+  },
+  {
+    "sign": "M294",
+    "n_corpus": 4,
+    "sa_reading": "tap",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "tap": 1,
+      "kil": 1,
+      "bū": 1
+    }
+  },
+  {
+    "sign": "M307",
+    "n_corpus": 4,
+    "sa_reading": "gī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kur",
+    "confirmed_confidence": "CANDIDATE",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "gī": 1,
+      "key": 1,
+      "sē": 1
+    }
+  },
+  {
+    "sign": "M313",
+    "n_corpus": 4,
+    "sa_reading": "cā",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "cā": 1,
+      "sū": 1,
+      "ken": 1
+    }
+  },
+  {
+    "sign": "M319",
+    "n_corpus": 4,
+    "sa_reading": "mel",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "mel": 1,
+      "sin": 1,
+      "d": 1
+    }
+  },
+  {
+    "sign": "M326",
+    "n_corpus": 4,
+    "sa_reading": "vak",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "vak": 1,
+      "pak": 1,
+      "n": 1
+    }
+  },
+  {
+    "sign": "M277",
+    "n_corpus": 3,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M181",
+    "n_corpus": 3,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M219",
+    "n_corpus": 3,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "kal": 5
+    }
+  },
+  {
+    "sign": "M379",
+    "n_corpus": 3,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M214",
+    "n_corpus": 3,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M131",
+    "n_corpus": 3,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M380",
+    "n_corpus": 3,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "kal": 5
+    }
+  },
+  {
+    "sign": "M197",
+    "n_corpus": 3,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M201",
+    "n_corpus": 3,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M413",
+    "n_corpus": 3,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M135",
+    "n_corpus": 3,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M354",
+    "n_corpus": 3,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M341",
+    "n_corpus": 3,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M105",
+    "n_corpus": 3,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M146",
+    "n_corpus": 3,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "kal": 5
+    }
+  },
+  {
+    "sign": "M195",
+    "n_corpus": 3,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M339",
+    "n_corpus": 3,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "kal": 5
+    }
+  },
+  {
+    "sign": "M359",
+    "n_corpus": 3,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "kal": 5
+    }
+  },
+  {
+    "sign": "M316",
+    "n_corpus": 3,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M111",
+    "n_corpus": 3,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M224",
+    "n_corpus": 3,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M408",
+    "n_corpus": 3,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M396",
+    "n_corpus": 3,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "kal": 5
+    }
+  },
+  {
+    "sign": "M170",
+    "n_corpus": 3,
+    "sa_reading": "van",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "van",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "van": 5
+    }
+  },
+  {
+    "sign": "M247",
+    "n_corpus": 3,
+    "sa_reading": "pan",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "pan",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "pan": 5
+    }
+  },
+  {
+    "sign": "M217",
+    "n_corpus": 3,
+    "sa_reading": "van",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "van",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "van": 5
+    }
+  },
+  {
+    "sign": "M369",
+    "n_corpus": 3,
+    "sa_reading": "van",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "van",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "van": 5
+    }
+  },
+  {
+    "sign": "M388",
+    "n_corpus": 3,
+    "sa_reading": "ko",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "ko",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "ko": 5
+    }
+  },
+  {
+    "sign": "M360",
+    "n_corpus": 3,
+    "sa_reading": "an",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "an": 5
+    }
+  },
+  {
+    "sign": "M320",
+    "n_corpus": 3,
+    "sa_reading": "ko",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "ko",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "ko": 5
+    }
+  },
+  {
+    "sign": "M381",
+    "n_corpus": 3,
+    "sa_reading": "an",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "an": 5
+    }
+  },
+  {
+    "sign": "M356",
+    "n_corpus": 3,
+    "sa_reading": "an",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "an": 5
+    }
+  },
+  {
+    "sign": "M104",
+    "n_corpus": 3,
+    "sa_reading": "d",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "LOW",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "d": 1,
+      "men": 1,
+      "s": 1
+    }
+  },
+  {
+    "sign": "M107",
+    "n_corpus": 3,
+    "sa_reading": "il",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ko",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "il": 1,
+      "pal": 1,
+      "al": 1
+    }
+  },
+  {
+    "sign": "M110",
+    "n_corpus": 3,
+    "sa_reading": "cel",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "cel": 2,
+      "kut": 1,
+      "ney": 1
+    }
+  },
+  {
+    "sign": "M117",
+    "n_corpus": 3,
+    "sa_reading": "cca",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ar",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "cca": 1,
+      "ut": 1,
+      "tap": 1
+    }
+  },
+  {
+    "sign": "M118",
+    "n_corpus": 3,
+    "sa_reading": "al",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "car",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "al": 1,
+      "pel": 1,
+      "ris": 1
+    }
+  },
+  {
+    "sign": "M121",
+    "n_corpus": 3,
+    "sa_reading": "pptt",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "pptt": 1,
+      "lap": 1,
+      "mik": 1
+    }
+  },
+  {
+    "sign": "M124",
+    "n_corpus": 3,
+    "sa_reading": "up",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kuTam",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "up": 1,
+      "tir": 1,
+      "kon": 1
+    }
+  },
+  {
+    "sign": "M130",
+    "n_corpus": 3,
+    "sa_reading": "ky",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "mui",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ky": 1,
+      "rut": 1,
+      "sin": 1
+    }
+  },
+  {
+    "sign": "M141",
+    "n_corpus": 3,
+    "sa_reading": "ttu",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "ttu": 1,
+      "ot": 1,
+      "tup": 1
+    }
+  },
+  {
+    "sign": "M145",
+    "n_corpus": 3,
+    "sa_reading": "ril",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "miṭ",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ril": 1,
+      "cca": 1,
+      "hī": 1
+    }
+  },
+  {
+    "sign": "M164",
+    "n_corpus": 3,
+    "sa_reading": "mir",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "il",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "mir": 1,
+      "sal": 1,
+      "koy": 1
+    }
+  },
+  {
+    "sign": "M188",
+    "n_corpus": 3,
+    "sa_reading": "vam",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "vam": 1,
+      "ril": 1,
+      "pat": 1
+    }
+  },
+  {
+    "sign": "M193",
+    "n_corpus": 3,
+    "sa_reading": "pē",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "ḷā",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "pē": 1,
+      "dur": 1,
+      "il": 1
+    }
+  },
+  {
+    "sign": "M216",
+    "n_corpus": 3,
+    "sa_reading": "hna",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "hna": 1,
+      "luk": 1,
+      "nal": 1
+    }
+  },
+  {
+    "sign": "M228",
+    "n_corpus": 3,
+    "sa_reading": "ac",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "ac": 1,
+      "bil": 1,
+      "ptt": 1
+    }
+  },
+  {
+    "sign": "M229",
+    "n_corpus": 3,
+    "sa_reading": "j",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "j": 1,
+      "nin": 1,
+      "kom": 1
+    }
+  },
+  {
+    "sign": "M244",
+    "n_corpus": 3,
+    "sa_reading": "may",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "may": 1,
+      "bar": 1,
+      "cū": 1
+    }
+  },
+  {
+    "sign": "M246",
+    "n_corpus": 3,
+    "sa_reading": "pen",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "pen": 1,
+      "as": 1,
+      "ad": 1
+    }
+  },
+  {
+    "sign": "M256",
+    "n_corpus": 3,
+    "sa_reading": "pel",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kur",
+    "confirmed_confidence": "CANDIDATE",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "pel": 1,
+      "ad": 1,
+      "tur": 1
+    }
+  },
+  {
+    "sign": "M257",
+    "n_corpus": 3,
+    "sa_reading": "kār",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "kār": 1,
+      "vam": 1,
+      "ap": 1
+    }
+  },
+  {
+    "sign": "M263",
+    "n_corpus": 3,
+    "sa_reading": "sar",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "sar": 1,
+      "pur": 1,
+      "em": 1
+    }
+  },
+  {
+    "sign": "M268",
+    "n_corpus": 3,
+    "sa_reading": "ol",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "ol": 1,
+      "sar": 1,
+      "kit": 1
+    }
+  },
+  {
+    "sign": "M284",
+    "n_corpus": 3,
+    "sa_reading": "tit",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "tit": 1,
+      "kir": 1,
+      "kol": 1
+    }
+  },
+  {
+    "sign": "M288",
+    "n_corpus": 3,
+    "sa_reading": "pal",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "pal": 1,
+      "nup": 1,
+      "cci": 1
+    }
+  },
+  {
+    "sign": "M289",
+    "n_corpus": 3,
+    "sa_reading": "kam",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "kam": 1,
+      "mur": 1,
+      "p": 1
+    }
+  },
+  {
+    "sign": "M292",
+    "n_corpus": 3,
+    "sa_reading": "lū",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "lū": 1,
+      "ker": 1,
+      "nar": 1
+    }
+  },
+  {
+    "sign": "M296",
+    "n_corpus": 3,
+    "sa_reading": "ptt",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "ptt": 1,
+      "sil": 1,
+      "lak": 1
+    }
+  },
+  {
+    "sign": "M325",
+    "n_corpus": 3,
+    "sa_reading": "nin",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "nin": 1,
+      "hī": 1,
+      "lo": 1
+    }
+  },
+  {
+    "sign": "M330",
+    "n_corpus": 3,
+    "sa_reading": "gel",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "can",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "gel": 1,
+      "tur": 1,
+      "per": 1
+    }
+  },
+  {
+    "sign": "M331",
+    "n_corpus": 3,
+    "sa_reading": "es",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "es": 1,
+      "gil": 1,
+      "mur": 1
+    }
+  },
+  {
+    "sign": "M338",
+    "n_corpus": 3,
+    "sa_reading": "dar",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "dar": 1,
+      "dī": 1,
+      "kat": 1
+    }
+  },
+  {
+    "sign": "M348",
+    "n_corpus": 3,
+    "sa_reading": "kor",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "kor": 2,
+      "pur": 1,
+      "lē": 1
+    }
+  },
+  {
+    "sign": "M349",
+    "n_corpus": 3,
+    "sa_reading": "kka",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "kka": 1,
+      "pū": 1,
+      "jā": 1
+    }
+  },
+  {
+    "sign": "M362",
+    "n_corpus": 3,
+    "sa_reading": "pol",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "aṇi",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "pol": 1,
+      "kka": 1,
+      "dar": 1
+    }
+  },
+  {
+    "sign": "M371",
+    "n_corpus": 3,
+    "sa_reading": "nik",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "nik": 1,
+      "cin": 1,
+      "pam": 1
+    }
+  },
+  {
+    "sign": "M373",
+    "n_corpus": 3,
+    "sa_reading": "ic",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "ic": 1,
+      "kur": 1,
+      "gel": 1
+    }
+  },
+  {
+    "sign": "M395",
+    "n_corpus": 3,
+    "sa_reading": "kay",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "kay": 1,
+      "v": 1,
+      "kur": 1
+    }
+  },
+  {
+    "sign": "M398",
+    "n_corpus": 3,
+    "sa_reading": "ter",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kuṟi",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ter": 1,
+      "pik": 1,
+      "pen": 1
+    }
+  },
+  {
+    "sign": "M399",
+    "n_corpus": 3,
+    "sa_reading": "sī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "sī": 1,
+      "lup": 1,
+      "rē": 1
+    }
+  },
+  {
+    "sign": "M410",
+    "n_corpus": 3,
+    "sa_reading": "lup",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "lup": 1,
+      "nū": 1,
+      "tor": 1
+    }
+  },
+  {
+    "sign": "M101",
+    "n_corpus": 2,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M378",
+    "n_corpus": 2,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M226",
+    "n_corpus": 2,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M158",
+    "n_corpus": 2,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M123",
+    "n_corpus": 2,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M397",
+    "n_corpus": 2,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M203",
+    "n_corpus": 2,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M405",
+    "n_corpus": 2,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M240",
+    "n_corpus": 2,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M303",
+    "n_corpus": 2,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M156",
+    "n_corpus": 2,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "kal": 5
+    }
+  },
+  {
+    "sign": "M210",
+    "n_corpus": 2,
+    "sa_reading": "pan",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "pan",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "pan": 5
+    }
+  },
+  {
+    "sign": "M327",
+    "n_corpus": 2,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "kal": 5
+    }
+  },
+  {
+    "sign": "M415",
+    "n_corpus": 2,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "kal": 5
+    }
+  },
+  {
+    "sign": "M389",
+    "n_corpus": 2,
+    "sa_reading": "pan",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "pan",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "pan": 5
+    }
+  },
+  {
+    "sign": "M363",
+    "n_corpus": 2,
+    "sa_reading": "ko",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "ko",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "ko": 5
+    }
+  },
+  {
+    "sign": "M258",
+    "n_corpus": 2,
+    "sa_reading": "an",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "an": 5
+    }
+  },
+  {
+    "sign": "M392",
+    "n_corpus": 2,
+    "sa_reading": "an",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "an": 5
+    }
+  },
+  {
+    "sign": "M147",
+    "n_corpus": 2,
+    "sa_reading": "an",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "an": 5
+    }
+  },
+  {
+    "sign": "M100",
+    "n_corpus": 2,
+    "sa_reading": "sal",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "maa",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "sal": 1,
+      "cik": 1,
+      "uk": 1
+    }
+  },
+  {
+    "sign": "M112",
+    "n_corpus": 2,
+    "sa_reading": "hē",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "LOW",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "hē": 1,
+      "tik": 1,
+      "pin": 1
+    }
+  },
+  {
+    "sign": "M154",
+    "n_corpus": 2,
+    "sa_reading": "kit",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "kit": 1,
+      "pas": 1,
+      "muk": 1
+    }
+  },
+  {
+    "sign": "M157",
+    "n_corpus": 2,
+    "sa_reading": "pok",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kur",
+    "confirmed_confidence": "CANDIDATE",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "pok": 1,
+      "ttu": 1,
+      "riv": 1
+    }
+  },
+  {
+    "sign": "M159",
+    "n_corpus": 2,
+    "sa_reading": "fem",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "fem": 1,
+      "man": 1,
+      "nen": 1
+    }
+  },
+  {
+    "sign": "M165",
+    "n_corpus": 2,
+    "sa_reading": "un",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "cul",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "un": 1,
+      "ip": 1,
+      "er": 1
+    }
+  },
+  {
+    "sign": "M172",
+    "n_corpus": 2,
+    "sa_reading": "kān",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "kān": 1,
+      "kum": 1,
+      "net": 1
+    }
+  },
+  {
+    "sign": "M174",
+    "n_corpus": 2,
+    "sa_reading": "jī",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "jī": 1,
+      "ek": 1,
+      "kip": 1
+    }
+  },
+  {
+    "sign": "M175",
+    "n_corpus": 2,
+    "sa_reading": "tik",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "katir",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "tik": 1,
+      "em": 1,
+      "ky": 1
+    }
+  },
+  {
+    "sign": "M179",
+    "n_corpus": 2,
+    "sa_reading": "len",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "len": 1,
+      "ric": 1,
+      "as": 1
+    }
+  },
+  {
+    "sign": "M184",
+    "n_corpus": 2,
+    "sa_reading": "ec",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "ec": 1,
+      "qe": 1,
+      "ner": 1
+    }
+  },
+  {
+    "sign": "M200",
+    "n_corpus": 2,
+    "sa_reading": "lap",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "LOW",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "lap": 1,
+      "dal": 1,
+      "cin": 1
+    }
+  },
+  {
+    "sign": "M204",
+    "n_corpus": 2,
+    "sa_reading": "s",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "s": 1,
+      "kac": 1,
+      "el": 1
+    }
+  },
+  {
+    "sign": "M215",
+    "n_corpus": 2,
+    "sa_reading": "kāy",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "kāy": 1,
+      "kē": 1,
+      "lū": 1
+    }
+  },
+  {
+    "sign": "M238",
+    "n_corpus": 2,
+    "sa_reading": "met",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "met": 1,
+      "ir": 1,
+      "sal": 1
+    }
+  },
+  {
+    "sign": "M241",
+    "n_corpus": 2,
+    "sa_reading": "mak",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "mak": 1,
+      "kān": 1,
+      "rel": 1
+    }
+  },
+  {
+    "sign": "M242",
+    "n_corpus": 2,
+    "sa_reading": "del",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "LOW",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "del": 1,
+      "lin": 1,
+      "kay": 1
+    }
+  },
+  {
+    "sign": "M248",
+    "n_corpus": 2,
+    "sa_reading": "ky",
+    "sa_consensus_pct": 0.6,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "ky": 3,
+      "kut": 1,
+      "git": 1
+    }
+  },
+  {
+    "sign": "M260",
+    "n_corpus": 2,
+    "sa_reading": "ok",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "LOW",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ok": 1,
+      "gul": 1,
+      "kam": 1
+    }
+  },
+  {
+    "sign": "M261",
+    "n_corpus": 2,
+    "sa_reading": "ot",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "muruku",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ot": 1,
+      "cil": 1,
+      "tik": 1
+    }
+  },
+  {
+    "sign": "M264",
+    "n_corpus": 2,
+    "sa_reading": "tum",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "peN",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "tum": 1,
+      "on": 1,
+      "kor": 1
+    }
+  },
+  {
+    "sign": "M266",
+    "n_corpus": 2,
+    "sa_reading": "op",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "op": 1,
+      "mal": 1,
+      "pit": 1
+    }
+  },
+  {
+    "sign": "M271",
+    "n_corpus": 2,
+    "sa_reading": "ded",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "ded": 1,
+      "cir": 1,
+      "bar": 1
+    }
+  },
+  {
+    "sign": "M276",
+    "n_corpus": 2,
+    "sa_reading": "gul",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "gul": 1,
+      "pen": 1,
+      "san": 1
+    }
+  },
+  {
+    "sign": "M282",
+    "n_corpus": 2,
+    "sa_reading": "ut",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "ut": 1,
+      "mut": 1,
+      "may": 1
+    }
+  },
+  {
+    "sign": "M283",
+    "n_corpus": 2,
+    "sa_reading": "bil",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "bil": 1,
+      "muk": 1,
+      "nak": 1
+    }
+  },
+  {
+    "sign": "M285",
+    "n_corpus": 2,
+    "sa_reading": "mac",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "mac": 1,
+      "kol": 1,
+      "et": 1
+    }
+  },
+  {
+    "sign": "M286",
+    "n_corpus": 2,
+    "sa_reading": "cik",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "LOW",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "cik": 1,
+      "kip": 1,
+      "can": 1
+    }
+  },
+  {
+    "sign": "M302",
+    "n_corpus": 2,
+    "sa_reading": "nū",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "nū": 1,
+      "nal": 1,
+      "nup": 1
+    }
+  },
+  {
+    "sign": "M308",
+    "n_corpus": 2,
+    "sa_reading": "pis",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "pis": 1,
+      "g": 1,
+      "b": 1
+    }
+  },
+  {
+    "sign": "M333",
+    "n_corpus": 2,
+    "sa_reading": "mut",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "mut": 1,
+      "el": 1,
+      "bil": 1
+    }
+  },
+  {
+    "sign": "M343",
+    "n_corpus": 2,
+    "sa_reading": "ton",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "ton": 1,
+      "pok": 1,
+      "pad": 1
+    }
+  },
+  {
+    "sign": "M344",
+    "n_corpus": 2,
+    "sa_reading": "am",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "am": 1,
+      "gun": 1,
+      "nil": 1
+    }
+  },
+  {
+    "sign": "M353",
+    "n_corpus": 2,
+    "sa_reading": "m",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "m": 1,
+      "ap": 1,
+      "pay": 1
+    }
+  },
+  {
+    "sign": "M384",
+    "n_corpus": 2,
+    "sa_reading": "cam",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "cam": 1,
+      "lar": 1,
+      "cit": 1
+    }
+  },
+  {
+    "sign": "M385",
+    "n_corpus": 2,
+    "sa_reading": "mal",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "mal": 1,
+      "ten": 1,
+      "vam": 1
+    }
+  },
+  {
+    "sign": "M400",
+    "n_corpus": 2,
+    "sa_reading": "ker",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "kur",
+    "confirmed_confidence": "CANDIDATE",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "ker": 1,
+      "gan": 1,
+      "tan": 1
+    }
+  },
+  {
+    "sign": "M403",
+    "n_corpus": 2,
+    "sa_reading": "can",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "can": 1,
+      "kam": 1,
+      "pik": 1
+    }
+  },
+  {
+    "sign": "M409",
+    "n_corpus": 2,
+    "sa_reading": "gre",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "gre": 1,
+      "pul": 1,
+      "ut": 1
+    }
+  },
+  {
+    "sign": "M287",
+    "n_corpus": 1,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M133",
+    "n_corpus": 1,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "kal": 5
+    }
+  },
+  {
+    "sign": "M126",
+    "n_corpus": 1,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M297",
+    "n_corpus": 1,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M323",
+    "n_corpus": 1,
+    "sa_reading": "kal",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "kal",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "kal": 5
+    }
+  },
+  {
+    "sign": "M213",
+    "n_corpus": 1,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M322",
+    "n_corpus": 1,
+    "sa_reading": "min",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "min",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "min": 5
+    }
+  },
+  {
+    "sign": "M298",
+    "n_corpus": 1,
+    "sa_reading": "pan",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "pan",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "pan": 5
+    }
+  },
+  {
+    "sign": "M364",
+    "n_corpus": 1,
+    "sa_reading": "pan",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "pan",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "pan": 5
+    }
+  },
+  {
+    "sign": "M314",
+    "n_corpus": 1,
+    "sa_reading": "pan",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "pan",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "pan": 5
+    }
+  },
+  {
+    "sign": "M340",
+    "n_corpus": 1,
+    "sa_reading": "pan",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "pan",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "pan": 5
+    }
+  },
+  {
+    "sign": "M394",
+    "n_corpus": 1,
+    "sa_reading": "an",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "an": 5
+    }
+  },
+  {
+    "sign": "M136",
+    "n_corpus": 1,
+    "sa_reading": "an",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "an": 5
+    }
+  },
+  {
+    "sign": "M310",
+    "n_corpus": 1,
+    "sa_reading": "an",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "an": 5
+    }
+  },
+  {
+    "sign": "M230",
+    "n_corpus": 1,
+    "sa_reading": "in",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "in",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "in": 5
+    }
+  },
+  {
+    "sign": "M113",
+    "n_corpus": 1,
+    "sa_reading": "pak",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "pak": 1,
+      "r": 1,
+      "mul": 1
+    }
+  },
+  {
+    "sign": "M114",
+    "n_corpus": 1,
+    "sa_reading": "iv",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "iv": 1,
+      "im": 1,
+      "lit": 1
+    }
+  },
+  {
+    "sign": "M115",
+    "n_corpus": 1,
+    "sa_reading": "un",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "LOW",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "un": 2,
+      "cir": 1,
+      "rel": 1
+    }
+  },
+  {
+    "sign": "M119",
+    "n_corpus": 1,
+    "sa_reading": "kak",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "kak": 1,
+      "tor": 1,
+      "j": 1
+    }
+  },
+  {
+    "sign": "M122",
+    "n_corpus": 1,
+    "sa_reading": "k",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "k": 1,
+      "muc": 1,
+      "pac": 1
+    }
+  },
+  {
+    "sign": "M132",
+    "n_corpus": 1,
+    "sa_reading": "cci",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "cci": 1,
+      "ptt": 1,
+      "hū": 1
+    }
+  },
+  {
+    "sign": "M139",
+    "n_corpus": 1,
+    "sa_reading": "kun",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "kun": 1,
+      "es": 1,
+      "mī": 1
+    }
+  },
+  {
+    "sign": "M144",
+    "n_corpus": 1,
+    "sa_reading": "par",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "par": 1,
+      "m": 1,
+      "dal": 1
+    }
+  },
+  {
+    "sign": "M150",
+    "n_corpus": 1,
+    "sa_reading": "ner",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "ner": 1,
+      "pptt": 1,
+      "ac": 1
+    }
+  },
+  {
+    "sign": "M152",
+    "n_corpus": 1,
+    "sa_reading": "muc",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "muc": 2,
+      "ec": 1,
+      "bat": 1
+    }
+  },
+  {
+    "sign": "M160",
+    "n_corpus": 1,
+    "sa_reading": "ir",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "ir": 1,
+      "kin": 1,
+      "h": 1
+    }
+  },
+  {
+    "sign": "M161",
+    "n_corpus": 1,
+    "sa_reading": "luk",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "luk": 1,
+      "san": 1,
+      "ec": 1
+    }
+  },
+  {
+    "sign": "M166",
+    "n_corpus": 1,
+    "sa_reading": "kūr",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "kūr": 1,
+      "cci": 1,
+      "kot": 1
+    }
+  },
+  {
+    "sign": "M167",
+    "n_corpus": 1,
+    "sa_reading": "mul",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "mul": 1,
+      "mār": 1,
+      "hē": 1
+    }
+  },
+  {
+    "sign": "M180",
+    "n_corpus": 1,
+    "sa_reading": "pas",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "pas": 1,
+      "er": 1,
+      "rnā": 1
+    }
+  },
+  {
+    "sign": "M182",
+    "n_corpus": 1,
+    "sa_reading": "pit",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "pit": 1,
+      "tel": 1,
+      "tār": 1
+    }
+  },
+  {
+    "sign": "M189",
+    "n_corpus": 1,
+    "sa_reading": "b",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "b": 1,
+      "ton": 1,
+      "m": 1
+    }
+  },
+  {
+    "sign": "M206",
+    "n_corpus": 1,
+    "sa_reading": "uk",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "uk": 1,
+      "kup": 1,
+      "gul": 1
+    }
+  },
+  {
+    "sign": "M212",
+    "n_corpus": 1,
+    "sa_reading": "cin",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "cin": 1,
+      "op": 1,
+      "lum": 1
+    }
+  },
+  {
+    "sign": "M221",
+    "n_corpus": 1,
+    "sa_reading": "kol",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "al",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "kol": 1,
+      "rnā": 1,
+      "nt": 1
+    }
+  },
+  {
+    "sign": "M232",
+    "n_corpus": 1,
+    "sa_reading": "sil",
+    "sa_consensus_pct": 0.4,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "sil": 2,
+      "pac": 1,
+      "um": 1
+    }
+  },
+  {
+    "sign": "M236",
+    "n_corpus": 1,
+    "sa_reading": "kup",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "kup": 1,
+      "len": 1,
+      "lam": 1
+    }
+  },
+  {
+    "sign": "M253",
+    "n_corpus": 1,
+    "sa_reading": "tol",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "tol": 1,
+      "tār": 1,
+      "por": 1
+    }
+  },
+  {
+    "sign": "M269",
+    "n_corpus": 1,
+    "sa_reading": "pik",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "pik": 1,
+      "koy": 1,
+      "gil": 1
+    }
+  },
+  {
+    "sign": "M273",
+    "n_corpus": 1,
+    "sa_reading": "kin",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "kin": 1,
+      "et": 1,
+      "pis": 1
+    }
+  },
+  {
+    "sign": "M275",
+    "n_corpus": 1,
+    "sa_reading": "rnā",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "rnā": 1,
+      "fem": 1,
+      "ppu": 1
+    }
+  },
+  {
+    "sign": "M279",
+    "n_corpus": 1,
+    "sa_reading": "kac",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "kac": 1,
+      "ol": 1,
+      "kir": 1
+    }
+  },
+  {
+    "sign": "M299",
+    "n_corpus": 1,
+    "sa_reading": "kel",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "kel": 1,
+      "ppu": 1,
+      "kut": 1
+    }
+  },
+  {
+    "sign": "M300",
+    "n_corpus": 1,
+    "sa_reading": "el",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "el": 1,
+      "git": 1,
+      "r": 1
+    }
+  },
+  {
+    "sign": "M311",
+    "n_corpus": 1,
+    "sa_reading": "tup",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "vaTamiin",
+    "confirmed_confidence": "HIGH",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "tup": 1,
+      "ney": 1,
+      "dur": 1
+    }
+  },
+  {
+    "sign": "M315",
+    "n_corpus": 1,
+    "sa_reading": "dal",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "dal": 1,
+      "gre": 1,
+      "pun": 1
+    }
+  },
+  {
+    "sign": "M335",
+    "n_corpus": 1,
+    "sa_reading": "ap",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "ap": 1,
+      "tī": 1,
+      "kāy": 1
+    }
+  },
+  {
+    "sign": "M337",
+    "n_corpus": 1,
+    "sa_reading": "lum",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "lum": 1,
+      "kāy": 1,
+      "ker": 1
+    }
+  },
+  {
+    "sign": "M361",
+    "n_corpus": 1,
+    "sa_reading": "bat",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "bat": 1,
+      "b": 1,
+      "mel": 1
+    }
+  },
+  {
+    "sign": "M368",
+    "n_corpus": 1,
+    "sa_reading": "net",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "net": 1,
+      "mik": 1,
+      "tak": 1
+    }
+  },
+  {
+    "sign": "M376",
+    "n_corpus": 1,
+    "sa_reading": "ten",
+    "sa_consensus_pct": 0.6,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "ten": 3,
+      "tti": 1,
+      "ter": 1
+    }
+  },
+  {
+    "sign": "M377",
+    "n_corpus": 1,
+    "sa_reading": "pat",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "pat": 1,
+      "kay": 1,
+      "kār": 1
+    }
+  },
+  {
+    "sign": "M393",
+    "n_corpus": 1,
+    "sa_reading": "et",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "et": 1,
+      "cit": 1,
+      "l": 1
+    }
+  },
+  {
+    "sign": "M404",
+    "n_corpus": 1,
+    "sa_reading": "ip",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "ip": 1,
+      "h": 1,
+      "tti": 1
+    }
+  },
+  {
+    "sign": "M407",
+    "n_corpus": 1,
+    "sa_reading": "mik",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "LOW",
+    "sa_agrees_confirmed": false,
+    "vote_distribution": {
+      "mik": 1,
+      "iv": 1,
+      "hna": 1
+    }
+  },
+  {
+    "sign": "M411",
+    "n_corpus": 1,
+    "sa_reading": "pil",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "pil": 1,
+      "kār": 1,
+      "men": 1
+    }
+  },
+  {
+    "sign": "M414",
+    "n_corpus": 1,
+    "sa_reading": "h",
+    "sa_consensus_pct": 0.2,
+    "confirmed_reading": "",
+    "confirmed_confidence": "UNREAD",
+    "sa_agrees_confirmed": null,
+    "vote_distribution": {
+      "h": 1,
+      "pad": 1,
+      "gre": 1
+    }
+  },
+  {
+    "sign": "H003",
+    "n_corpus": 0,
+    "sa_reading": "an",
+    "sa_consensus_pct": 1.0,
+    "confirmed_reading": "an",
+    "confirmed_confidence": "MEDIUM",
+    "sa_agrees_confirmed": true,
+    "vote_distribution": {
+      "an": 5
+    }
+  }
+]

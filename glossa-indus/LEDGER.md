@@ -1035,3 +1035,59 @@ via Muse) at the direction of Tristen Pierson, per constitution §VI.
 The run used the program's own registered node and unmodified Phase-52
 script; findings are reported as observed, including where they fall
 short of the historical claim.
+
+### Spec 004 WS2 — M↔P crosswalk expansion (evidence-gated)
+
+**Date**: 2026-10-05. File: `backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json`
+179 → **184 entries** (version v2.1). Admission rule: a pair enters the
+mapping only when an explicit in-repo source states the equivalence;
+the evidence is recorded per entry in a new `evidence` field.
+
+**Added (5)**: M202→P202 (Phase-56 master + Phase-65 'circle'),
+M293→P293 (Phase-51 + Phase-56 + Phase-65 'comb'), M305→P305 (Phase-51
++ Phase-56 + Phase-65 'seated figure') at MEDIUM; M221→P221 and
+M222→P222 (Phase-71 EXTENDED_MAP only, named source Parpola 1994 App. B)
+at CANDIDATE.
+
+**Held back (220 candidates)** in the new
+`mahadevan_parpola_crosswalk_candidates.json`: 216 identity-inference-only
+pairs (number identity is an inference, not evidence) + 4 conflicted
+(M101→P101 attested by Phase-56 but P101 is owned by M006 in the
+Phase-96 animal table; M103/M104/M105 identity pairs collide with
+M045→P103, M062→P104, M039→P105). Reconciliation: 170 mapped corpus
+signs + 220 candidates = all 390 Holdat signs; 0 unaccounted.
+
+**Audit facts recorded**: of the 184 entries, 113 are attested by an
+independent in-repo source (v1 curated crosswalk, Phase-51/56 outputs,
+Phase-65/71 maps) and 67 are identity-inference-only pairs carried from
+the Phase-96 expansion (the file's previous `stats` block summed to 38
+and did not describe the file; stats are now regenerated from the
+entries). **Conflicts documented, not resolved** (in the candidates
+file): M045 P103 (in file) vs P147 (Phase-51/56/65); M006/M039/M062
+animal-table mappings vs phoneme-table alternatives; M087←P311;
+M047←P53.
+
+**Phase-104 RULE-NUM addressability** (report only; no re-adjudication):
+the five blocked claims cite Wells numbers, not M/P numbers — the
+source texts attribute the values to Wells (2018) / are Wells' own book.
+Via the canonical registry's Wells column
+(`data/crosswalks/canonical_sign_registry.csv`): **3 of 5 become
+addressable** — ancient_writing sign_val_0001 (W900 → P154/M287),
+sign_val_0002 and sign_val_0003 (W700 → P310/M328). **2 remain blocked**:
+archaeology sign_val_0001 (821: no W821 in any in-repo crosswalk) and
+sign_val_0002 (297 'horned tiger': three candidate referents — M297,
+P297, W297→P205/M180 — none matching the description in-repo). Note the
+resolution path is the registry's Wells column, which Phase-104's lookup
+did not consult (it checked 86 numeric IDs); the WS2 M↔P additions are
+not what unlocks these claims. The claims also still lack falsification
+conditions.
+
+**Foundation-check note**: `backend/scripts/foundation_check.py`
+crosswalk passages (lines 172, 314, 389, 593) are historical claims
+prose about the Phase-51/71 snapshots, not derivations from the file,
+and were not edited. The API check
+(`glossa_lab/api/foundation_check.py` §10) derives its count from the
+file and now reports 184/390.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

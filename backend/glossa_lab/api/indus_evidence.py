@@ -6,6 +6,7 @@ Endpoints
 ---------
 GET  /library                   List registered literature documents
 GET  /claims                    List extracted claims (with filters)
+GET  /claims/aee-scores         AEE-library scoring of all extracted claims
 GET  /hypotheses                List hypothesis model summaries
 
 POST /upload                    Upload a PDF → run intake
@@ -162,8 +163,14 @@ async def list_claims(
     sign: str | None = None,
     limit: int = 200,
     offset: int = 0,
+    aee: bool = False,
 ) -> dict[str, Any]:
-    """List all extracted claims across all registered documents."""
+    """List all extracted claims across all registered documents.
+
+    With ``?aee=true`` each returned claim gains an additive ``aee_score``
+    field scored by the Applied Epistemic Engineering library
+    (``glossa_lab.aee_core``); the default response shape is unchanged.
+    """
     _CLAIMS_DIR.mkdir(parents=True, exist_ok=True)
     all_claims: list[dict[str, Any]] = []
     for f in sorted(_CLAIMS_DIR.glob("*.json")):
@@ -190,12 +197,32 @@ async def list_claims(
             })
 
     total = len(all_claims)
+    page = all_claims[offset: offset + limit]
+    if aee and page:
+        from glossa_lab.aee_core import score_claim_dicts  # noqa: PLC0415
+
+        scores = score_claim_dicts(page)
+        for claim in page:
+            claim["aee_score"] = scores.get(str(claim.get("claim_id") or ""))
     return {
-        "claims": all_claims[offset: offset + limit],
+        "claims": page,
         "total": total,
         "limit": limit,
         "offset": offset,
     }
+
+
+@router.get("/claims/aee-scores")
+async def claims_aee_scores() -> dict[str, Any]:
+    """AEE-backed scoring of every extracted claim (additive endpoint).
+
+    Scores are computed by the Applied Epistemic Engineering library via
+    ``glossa_lab.aee_core.assessment_summary`` — see that module for the
+    Glossa→AEE mapping. Existing endpoints are unaffected.
+    """
+    from glossa_lab.aee_core import assessment_summary  # noqa: PLC0415
+
+    return assessment_summary(_CLAIMS_DIR)
 
 
 # ── Hypotheses ────────────────────────────────────────────────────────────────

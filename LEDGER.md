@@ -210,3 +210,40 @@ reproduced, per constitution §V):
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+### [2026-10-05] Entry — Spec-kit + AEE migration (Stage 4: verification)
+
+**Type:** verification / release bookkeeping
+**Summary:**
+
+- Synced with origin/main after the Dependabot merges (#50–#53:
+  checkout/setup-node/setup-python v7, Pillow bump in
+  `tray/requirements.txt`) — clean merge, no conflicts; the AEE
+  dependency addition and the Dependabot changes coexist.
+- Tracked-file sweep for the retired tooling: remaining mentions are
+  only the constitution/AGENTS/LIFECYCLE retirement notes, this ledger,
+  the CHANGELOG, `docs/ledger-archive.md`, and the migration spec's own
+  task text — i.e. historical records and removal documentation only.
+- Tests (venv with backend deps + dev extras + AEE 1.0.4): full backend
+  suite 533 passed, 9 skipped, 0 failed (508 + 9 skipped across 45 test
+  files, plus `test_indus_evidence_api.py` 25 passed run separately).
+  New tests: `test_aee_core.py` 18, `test_gdelt_ngrams.py` 11. Ruff
+  clean on all changed Python files.
+- Foundation check: `backend/scripts/foundation_check.py` cannot run
+  off the Windows dev box (it hardcodes a `C:\Users\trist\...` repo
+  path — pre-existing, untouched by this migration); it fails at its
+  first corpus read here. The live foundation-check API module is
+  covered by the passing suite.
+- Live GDELT ngrams smoke test: endpoint and naming verified against
+  the dataset's documented example pair (2026-06-30 20:16 UTC —
+  1,063,647 quadgrams, 1,977 TOC entries; end-to-end matching on real
+  data works, e.g. the blog's own "disease" example search → 16 items;
+  "Indus script" matched 0 items in that single minute). However, NO
+  current files were found: every probed mark for 2026-10-05 (25-mark
+  walk-back) and spot marks over the preceding weeks returned 404, so
+  the dataset appears not to be publishing new files at test time.
+  The fetcher handles this correctly (bounded walk, no items, no
+  watermark advance) and will pick files up when publication resumes.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

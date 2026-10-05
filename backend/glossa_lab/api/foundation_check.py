@@ -28,6 +28,7 @@ from __future__ import annotations
 
 import csv
 import json
+import logging
 import re
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -36,6 +37,7 @@ from typing import Any
 from fastapi import APIRouter
 
 router = APIRouter()
+_log = logging.getLogger("glossa_lab.api.foundation_check")
 
 REPO  = Path(__file__).resolve().parent.parent.parent.parent
 RPRT  = REPO / "reports"
@@ -506,6 +508,25 @@ async def run_foundation_check() -> dict[str, Any]:
     import datetime
     checks   = _run_checks()
     summary  = _summarize(checks)
+    # Record the run in the foundation status tracker so
+    # GET /api/v1/foundation/status reflects it — this endpoint is the
+    # one the MCP run_foundation_check tool calls, and its runs were
+    # previously invisible to the tracker. Best-effort: a recording
+    # failure must never break the check response itself.
+    try:
+        from glossa_lab.api.foundation import record_result  # noqa: PLC0415
+        await record_result(
+            {
+                "verdict": summary["overall_status"],
+                "n_ok": summary["n_pass"],
+                "n_fail": summary["n_fail"],
+                "n_warn": summary["n_warn"],
+                "failed": [c["label"] for c in checks if c["status"] == "fail"],
+            },
+            source="research_api",
+        )
+    except Exception as exc:  # noqa: BLE001
+        _log.warning("Could not record foundation check in status tracker: %s", exc)
     return {
         "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "checks":    checks,

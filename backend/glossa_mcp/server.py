@@ -43,15 +43,21 @@ mcp = FastMCP(
 )
 
 
-def _get() -> httpx.Client:
-    """Return a short-lived sync httpx client.
+def _client(timeout: float | None) -> httpx.Client:
+    """Return a sync httpx client for the (local) backend.
 
-    trust_env=False: the server only ever talks to the (local) backend,
+    trust_env=False: the server only ever talks to the local backend,
     and ambient proxy env vars (HTTP(S)_PROXY / NO_PROXY) can corrupt or
     block those calls — e.g. a NO_PROXY list containing bracketed IPv6
     entries makes httpx raise InvalidURL ("Invalid port: ':1]'").
+    Every client in this module MUST be built here (regression-tested).
     """
-    return httpx.Client(base_url=BASE_URL, timeout=_TIMEOUT, trust_env=False)
+    return httpx.Client(base_url=BASE_URL, timeout=timeout, trust_env=False)
+
+
+def _get() -> httpx.Client:
+    """Return a short-lived sync httpx client with the default timeout."""
+    return _client(_TIMEOUT)
 
 
 def _fmt(data: Any) -> str:
@@ -235,7 +241,7 @@ def run_experiment(experiment_id: str, kwargs_json: str = "{}") -> str:
     try:
         kwargs = json.loads(kwargs_json) if kwargs_json.strip() else {}
         # Use a long timeout — SA nodes can run for hours on large sign inventories.
-        with httpx.Client(base_url=BASE_URL, timeout=7200.0) as c:
+        with _client(7200.0) as c:
             with c.stream(
                 "POST",
                 f"/api/v1/experiment-graphs/{experiment_id}/run",
@@ -271,7 +277,7 @@ def run_foundation_check() -> str:
     This operation reads files from disk — no network or GPU required.
     """
     try:
-        with httpx.Client(base_url=BASE_URL, timeout=90.0) as c:
+        with _client(90.0) as c:
             r = c.get("/api/v1/research/foundation-check")
             r.raise_for_status()
             return _fmt(r.json())
@@ -297,7 +303,7 @@ def start_research_loop(max_cycles: int = 15) -> str:
     def _fire():
         try:
             # The endpoint is SSE; open with no timeout and consume silently
-            with httpx.Client(base_url=BASE_URL, timeout=None) as c:
+            with _client(None) as c:
                 with c.stream(
                     "POST",
                     "/api/v1/research-loop/start",
@@ -518,7 +524,7 @@ def get_dashboard_highlights(include_ai: bool = False, days: int = 14) -> str:
         params: dict[str, Any] = {"days": days}
         if include_ai:
             params["include_ai"] = "true"
-        with httpx.Client(base_url=BASE_URL, timeout=120.0) as c:
+        with _client(120.0) as c:
             r = c.get("/api/v1/dashboard/highlights", params=params)
             r.raise_for_status()
             return _fmt(r.json())
@@ -624,7 +630,7 @@ def get_report(report_name: str) -> str:
                      e.g. 'phase_32_t4_result.json' or 'INDUS_FINAL_ANCHORS.json'.
     """
     try:
-        with httpx.Client(base_url=BASE_URL, timeout=60.0) as c:
+        with _client(60.0) as c:
             r = c.get(f"/api/v1/reports/{report_name}")
             r.raise_for_status()
             return _fmt(r.json())

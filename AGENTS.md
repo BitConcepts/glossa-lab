@@ -80,7 +80,7 @@ The following project-specific rule files apply to all sessions:
 
 ## MCP server
 
-A FastMCP server lives at `backend/glossa_mcp/server.py` and exposes 27 tools
+A FastMCP server lives at `backend/glossa_mcp/server.py` and exposes 33 tools
 for querying and controlling the backend without manual API calls:
 
 - **Status/metrics** — `get_status`, `get_system_metrics`
@@ -88,7 +88,9 @@ for querying and controlling the backend without manual API calls:
 - **Experiments** — `list_experiments`, `get_experiment`, `run_experiment`
 - **Research loop** — `start_research_loop`, `get_research_loop_status`,
   `stop_research_loop`, `get_research_loop_results`, `get_anchor_staging`
-- **Foundation check** — `run_foundation_check`
+- **Foundation check** — `run_foundation_check`, `get_foundation_status`
+- **Indus evidence** — `list_indus_claims`, `get_indus_claim`,
+  `get_indus_claim_aee_scores`, `list_indus_library`, `list_indus_hypotheses`
 - **Discovery** — `list_discovery_items`, `get_discovery_stats`,
   `trigger_discovery_fetch`, `update_discovery_item_status`
 - **Dashboard** — `get_latest_insight`, `get_dashboard_highlights`

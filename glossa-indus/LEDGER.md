@@ -876,3 +876,112 @@ This resolves the longest-standing single-sign uncertainty in the project.
 - **Key insight**: The personal name formula is [ANIMAL]-[NAME]-[TITLE]-[SUFFIX]
   Decoding M362, M398, M375, and M024 will unlock the personal name lexicon
 
+
+---
+
+## Phase-104 — Evaluation of the 21 Untested Extracted Claims
+**Date**: 2026-10-05
+
+**Method**: Each untested claim was evaluated against evidence already in
+the repo, using its own `falsification_condition` as the test, under rules
+stated up front (script: `backend/scripts/phase104_claims_evaluation.py`;
+graph node `IndusClaimsEval`, spec 003). AEE scores were recorded as
+supporting signals only — no verdict rests on an AEE score.
+Report: `glossa-indus/reports/phase104_claims_evaluation.json`.
+
+### Result: 5 claims moved, 16 stay untested (with reasons)
+
+**Moved to `contradicted` (RULE-DUP)** — each restates the
+Farmer/Sproat/Witzel non-linguistic-symbols proposition already adjudicated
+in this program as `farmer_sproat_witzel_2004_manual_001` (contradicted,
+evidence: Rao et al. 2009 conditional entropy in linguistic range;
+Phase-43 TERMINAL_STRONG suffix patterning; Phase-43 [M267][M99] title
+formula). The verdict and its cited evidence were carried over, with the
+cross-reference recorded in each claim's `glossa_lab_evidence`:
+- `indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001`
+- `indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002`
+- `without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001`
+- `without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003`
+- `without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004`
+
+**Stay untested** (status unchanged; full per-claim record in the report):
+- RULE-SITE (4): `..._manual_001` (Akkadian economic ledger),
+  `..._manual_003` (arrow sign / gateway sites), `..._manual_004`
+  (horned deity / fire-altar sites), `without_kings..._manual_002`
+  (civic-ritual vs palatial contexts) — falsification conditions require a
+  site-typology dataset the repo does not contain (Holdat carries site
+  names only). Context computed for the arrow claim: M391 distribution
+  across sites recorded in the report; Holdat roles classify M391 as
+  CASE_MARKER_SUFFIX.
+- RULE-CLASS (1): `without_kings..._manual_004` (celestial signs terminal)
+  — no celestial sign classification exists in any in-repo data artifact
+  (in-repo classes: CASE_MARKER_SUFFIX, CLASSIFIER_PREFIX,
+  PERSON_OR_OWNER, POSSIBLE_PERSON), so the enrichment test cannot run.
+- RULE-REF (1): `without_kings..._manual_005` (24-cluster Translation
+  Atlas) — the atlas definitions are not in the repo.
+- RULE-NUM (5): sign-value extractions citing sign numbers in an unstated
+  numbering system with no in-repo crosswalk entry and no falsification
+  condition (ancient_writing sign_val_0001–0003; archaeology sign_val_0001–0002).
+- RULE-NOCOND (5): "Statistical finding: positional analysis" extraction
+  fragments with no stated proposition and no falsification condition —
+  not evaluable as stated (constitution §IV).
+
+Claim status counts now: 16 untested, 6 contradicted, 4
+partially_supported, 4 strongly_supported, 1 partially_falsified (31 total).
+
+### Phase-102 follow-up (Mistral OCR of im77intro.pdf): BLOCKED
+Not run. Three independent blockers in this environment, all verified:
+(1) no Mistral API key configured (`get_key('mistral_api_key')` resolves
+neither env nor the settings store); (2) `pypdfium2` is not installed in
+the backend venv, so `phase104_ocr_mahadevan.py` would skip OCR;
+(3) `im77intro.pdf` is not present in this checkout. No extraction was
+fabricated. Unblocks when the PDF and a Mistral key are present on the
+dev box, where the registered `IndusOCR` node can run as planned.
+
+---
+
+## Phase-105 — Positional Adjudication of Personal-Name Candidates
+**Date**: 2026-10-05
+
+**Method**: Phase-101-style adjudication (script:
+`backend/scripts/phase105_name_signs.py`, replacing the unrun draft that
+asserted pre-written readings/promotions; graph node `IndusNameSigns`).
+Per-sign positional profile + Phase-103 name-slot patterns computed from
+the Holdat corpus (1,670 inscriptions, 7,002 tokens). Comparison class:
+Phase-103 animal classifiers aggregate **100% INITIAL** (159 tokens),
+reproducing the Phase-101 reference behaviour. All four candidates
+already stand as HIGH anchors in `INDUS_FINAL_ANCHORS.json` (folded in by
+later phases); this phase adjudicates the personal-name-component role
+only — **no anchor was promoted, demoted, or otherwise modified**.
+Report: `reports/phase105_name_signs.json`.
+
+### Verdicts
+- **M375 — CORROBORATED.** freq 7; 0% INITIAL / 100% MEDIAL / 0% TERMINAL;
+  2 name slots (incl. M045-[M375]-M342 ANIMAL_NAME_TITLE context);
+  Holdat roles file independently classifies M375 as PERSON_OR_OWNER.
+- **M362 — INCONCLUSIVE.** freq 3 (below the positional-verdict floor);
+  profile is medial (100%) with 2 name slots (M006-[M362]-M059
+  ANIMAL_NAME_TITLE; M267-[M362]-M391 genitive), consistent with a name
+  component but underpowered. Phase-103 evidence stands untested here.
+- **M398 — INCONCLUSIVE.** freq 3; medial 100%, 2 name slots
+  (M267-[M398]-M342 genitive; [M398]-M342-M176 NAME_AY_AN). Same
+  underpowered status as M362.
+- **M024 — CHALLENGED (name-component framing).** freq 13; **100% INITIAL**
+  — heads every inscription it appears in, the classifier/prefix profile,
+  opposite of the M293 name-component reference (6.9% INITIAL). The
+  Holdat roles file independently classifies M024 as CLASSIFIER_PREFIX.
+  Counter-consideration recorded: 2 of 13 occurrences head the
+  [X]-M342-M176 NAME_AY_AN formula, so M024 may head a name formula
+  rather than sit medially in one — but under the Phase-101 standard its
+  profile is a prefix/head profile. Flagged for future adjudication
+  (Phase-106 SA sprint is the planned instrument); the standing HIGH
+  anchor (reading 'nē', Phase-73 SA modal) is NOT changed by this phase.
+
+### Foundation check (H21)
+Re-run after this phase's report was added: **39 passed, 0 failed,
+9 warnings** — gate satisfied (no anchor data was modified).
+
+**AI disclosure:** Phases 104–105 were executed by an AI agent
+(Muse Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI. Statistical procedures follow the program's existing
+Phase-101/103 conventions; verdict rules were stated before the runs.

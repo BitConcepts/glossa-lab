@@ -71,6 +71,7 @@ async def _run_check() -> dict[str, Any]:
     try:
         from glossa_lab.api.research_loop import _run_foundation_check  # noqa: PLC0415
         result = await _run_foundation_check()
+        result = {**result, "source": "foundation_api"}
         now = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
         _last_result = result
         _last_checked_at = now
@@ -93,6 +94,33 @@ async def _run_check() -> dict[str, Any]:
         return {"error": str(exc)}
     finally:
         _check_running = False
+
+
+# ── External result recording ────────────────────────────────────────────
+
+async def record_result(result: dict[str, Any], *, source: str) -> None:
+    """Record a foundation check run that happened outside _run_check().
+
+    The research API (GET /api/v1/research/foundation-check — the path
+    the MCP run_foundation_check tool uses) runs its own check set and
+    previously recorded nothing, so /foundation/status stayed null even
+    after a full check had just run. Any completed run, from any entry
+    point, should be visible in the tracker.
+    """
+    global _last_result, _last_checked_at, _foundation_dirty  # noqa: PLW0603
+    _last_result = {**result, "source": source}
+    _last_checked_at = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
+    _foundation_dirty = False
+    try:
+        from glossa_lab.api.events import emit_event  # noqa: PLC0415
+        await emit_event("foundation_complete", result=_last_result)
+    except Exception:  # noqa: BLE001
+        pass
+    _log.info(
+        "Foundation check recorded (source=%s): %d ok, %d fail, %d warn",
+        source,
+        result.get("n_ok", 0), result.get("n_fail", 0), result.get("n_warn", 0),
+    )
 
 
 # ── Background auto-check task ───────────────────────────────────────────
@@ -146,11 +174,13 @@ async def foundation_status() -> dict[str, Any]:
         result["n_ok"] = _last_result.get("n_ok", 0)
         result["n_fail"] = _last_result.get("n_fail", 0)
         result["n_warn"] = _last_result.get("n_warn", 0)
+        result["source"] = _last_result.get("source", "foundation_api")
     else:
         result["verdict"] = None
         result["n_ok"] = 0
         result["n_fail"] = 0
         result["n_warn"] = 0
+        result["source"] = None
     return result
 
 

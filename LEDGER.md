@@ -384,3 +384,26 @@ the direction of Tristen Pierson, per constitution §VI.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+### [2026-10-05] Entry — MCP proxy fix completed: all client constructions
+
+**Type:** bugfix (MCP server) — completes the PR #56 fix
+**Summary:**
+
+- PR #56 fixed only `_get()`. Five direct `httpx.Client(...)`
+  constructions remained and still trusted ambient proxy env, so
+  `run_experiment`, `run_foundation_check`, the research-loop fire
+  path, `get_dashboard_highlights`, and `get_report` would still have
+  failed with the InvalidURL proxy error on affected machines.
+- Refactor: single `_client(timeout)` helper (trust_env=False);
+  `_get()` and all five call sites now go through it. New AST
+  regression test asserts every `httpx.Client` call in server.py
+  passes trust_env=False, so the pattern cannot silently return.
+  MCP suite: 26 tests, all passing.
+- Verified live with the RAW environment (no client-side env
+  sanitization): get_status, get_dashboard_highlights, list_reports,
+  get_report (JSON report), and run_foundation_check all succeed
+  through the MCP against the running backend.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

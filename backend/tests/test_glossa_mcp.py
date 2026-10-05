@@ -113,6 +113,34 @@ def test_http_client_ignores_ambient_proxy_env():
         assert client.trust_env is False
 
 
+def test_all_httpx_clients_go_through_trust_env_helper():
+    # Regression guard: PR #56 fixed _get() only, leaving five direct
+    # httpx.Client(...) constructions (run_experiment, foundation
+    # check, research loop, dashboard highlights, get_report) still
+    # trusting ambient proxy env — the bug survived in those tools.
+    # Every httpx.Client call in server.py must be the one inside
+    # _client() and must pass trust_env=False.
+    tree = ast.parse(Path(server.__file__).read_text(encoding="utf-8"))
+    offenders = []
+    for node in ast.walk(tree):
+        if not isinstance(node, ast.Call):
+            continue
+        func = node.func
+        is_client_ctor = (
+            isinstance(func, ast.Attribute)
+            and func.attr == "Client"
+            and isinstance(func.value, ast.Name)
+            and func.value.id == "httpx"
+        )
+        if not is_client_ctor:
+            continue
+        keywords = {kw.arg: kw.value for kw in node.keywords}
+        trust_env = keywords.get("trust_env")
+        if not (isinstance(trust_env, ast.Constant) and trust_env.value is False):
+            offenders.append(node.lineno)
+    assert not offenders, f"httpx.Client without trust_env=False at lines {offenders}"
+
+
 def test_get_status(rec):
     out = json.loads(server.get_status())
     assert out["status"] == "ok"

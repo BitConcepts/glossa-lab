@@ -985,3 +985,156 @@ Re-run after this phase's report was added: **39 passed, 0 failed,
 (Muse Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI. Statistical procedures follow the program's existing
 Phase-101/103 conventions; verdict rules were stated before the runs.
+
+---
+
+## Phase-106 — Phase-52 Syllabic SA Re-Run (Executable Package WS1)
+
+**Date**: 2026-10-05
+
+**Method**: Executed the registered experiment-graph node
+`IndusConstrainedSA` (`backend/glossa_lab/experiment_graph_phase48_55.py`),
+which subprocess-runs `backend/scripts/phase52_syllabic_sa.py` unchanged:
+constrained simulated annealing against the Phase-49 Dravidian syllabic LM
+(500 syllable types, 15,426 bigrams), Holdat corpus (1,670 inscriptions,
+7,002 tokens, 391 signs in the SA's sign inventory). 5 seeds × 10 restarts
+× 30,000 iterations; elapsed 420.8 s on CPU (torch not installed in this
+environment; the artifact records `gpu_device: "cpu"` honestly).
+Artifacts: `reports/phase52_syllabic_sa.json`,
+`reports/phase52_full_decipherment_table.json` (391 rows).
+
+**Why this phase number**: Phase-105's entry named "Phase-106 SA sprint"
+as the planned next instrument; this run is that sprint.
+
+### Findings (as observed, not as previously claimed)
+- **z = 17.642** against the permutation null (null mean −124,333.44,
+  sd 1,555.75; observed mean score −96,886.12; best −96,389.55);
+  lift 0.7792. The constrained-SA signal therefore **reproduces** at the
+  magnitude of the historical Phase-52 claim (z = 16.01) — whose original
+  artifact had been lost, leaving the claim unverifiable until now.
+- **Pinning differs from the historical claim**: 116 signs pinned (anchor
+  readings expressible as a single LM syllable), not the historical 59.
+- **Per-sign agreement does NOT reproduce at the historical level**: SA
+  agrees with confirmed (HIGH+MEDIUM) anchor readings on 113/275 =
+  41.09%, vs the historical claim of 55%. Cross-seed consensus is strong
+  for a few high-frequency signs (M342 'ay', M099 'ko', M176 'an' at 100%)
+  and weak (0.2) for much of the top-30 — per-sign SA readings beyond the
+  top signs are unstable across seeds and should not be cited as
+  confirmations. The SA additionally proposed readings for 104 signs with
+  no confirmed anchor (SA-only; unadjudicated).
+- No anchor was modified by this run.
+
+### Foundation check (H21)
+Re-run of `backend/scripts/foundation_check.py` after the artifacts were
+added: **40 passed, 0 failed, 8 warnings** (baseline 39/0/9). CHECK NEW-F
+now passes — "Phase-52 constrained SA z >= 4: z=17.64 (116 anchors
+pinned)" — and the standing "Phase-52 result not found" warning is gone.
+
+**AI disclosure:** Phase-106 was executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per constitution §VI.
+The run used the program's own registered node and unmodified Phase-52
+script; findings are reported as observed, including where they fall
+short of the historical claim.
+
+### Spec 004 WS2 — M↔P crosswalk expansion (evidence-gated)
+
+**Date**: 2026-10-05. File: `backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json`
+179 → **184 entries** (version v2.1). Admission rule: a pair enters the
+mapping only when an explicit in-repo source states the equivalence;
+the evidence is recorded per entry in a new `evidence` field.
+
+**Added (5)**: M202→P202 (Phase-56 master + Phase-65 'circle'),
+M293→P293 (Phase-51 + Phase-56 + Phase-65 'comb'), M305→P305 (Phase-51
++ Phase-56 + Phase-65 'seated figure') at MEDIUM; M221→P221 and
+M222→P222 (Phase-71 EXTENDED_MAP only, named source Parpola 1994 App. B)
+at CANDIDATE.
+
+**Held back (220 candidates)** in the new
+`mahadevan_parpola_crosswalk_candidates.json`: 216 identity-inference-only
+pairs (number identity is an inference, not evidence) + 4 conflicted
+(M101→P101 attested by Phase-56 but P101 is owned by M006 in the
+Phase-96 animal table; M103/M104/M105 identity pairs collide with
+M045→P103, M062→P104, M039→P105). Reconciliation: 170 mapped corpus
+signs + 220 candidates = all 390 Holdat signs; 0 unaccounted.
+
+**Audit facts recorded**: of the 184 entries, 113 are attested by an
+independent in-repo source (v1 curated crosswalk, Phase-51/56 outputs,
+Phase-65/71 maps) and 67 are identity-inference-only pairs carried from
+the Phase-96 expansion (the file's previous `stats` block summed to 38
+and did not describe the file; stats are now regenerated from the
+entries). **Conflicts documented, not resolved** (in the candidates
+file): M045 P103 (in file) vs P147 (Phase-51/56/65); M006/M039/M062
+animal-table mappings vs phoneme-table alternatives; M087←P311;
+M047←P53.
+
+**Phase-104 RULE-NUM addressability** (report only; no re-adjudication):
+the five blocked claims cite Wells numbers, not M/P numbers — the
+source texts attribute the values to Wells (2018) / are Wells' own book.
+Via the canonical registry's Wells column
+(`data/crosswalks/canonical_sign_registry.csv`): **3 of 5 become
+addressable** — ancient_writing sign_val_0001 (W900 → P154/M287),
+sign_val_0002 and sign_val_0003 (W700 → P310/M328). **2 remain blocked**:
+archaeology sign_val_0001 (821: no W821 in any in-repo crosswalk) and
+sign_val_0002 (297 'horned tiger': three candidate referents — M297,
+P297, W297→P205/M180 — none matching the description in-repo). Note the
+resolution path is the registry's Wells column, which Phase-104's lookup
+did not consult (it checked 86 numeric IDs); the WS2 M↔P additions are
+not what unlocks these claims. The claims also still lack falsification
+conditions.
+
+**Foundation-check note**: `backend/scripts/foundation_check.py`
+crosswalk passages (lines 172, 314, 389, 593) are historical claims
+prose about the Phase-51/71 snapshots, not derivations from the file,
+and were not edited. The API check
+(`glossa_lab/api/foundation_check.py` §10) derives its count from the
+file and now reports 184/390.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+### Spec 004 WS3 — INDUS_FINAL_ANCHORS bookkeeping reconciliation
+
+**Date**: 2026-10-05. File: `backend/reports/INDUS_FINAL_ANCHORS.json`.
+Bookkeeping only — **no anchor entry was modified**: the `anchors`
+mapping is byte-identical under canonical JSON (sha256
+fa16861c3b896266508cab805bc69b21a620db46b536f4cb8e5f4fed04f294f7
+before and after; also verified equal to git HEAD entry-for-entry).
+
+Regenerated from the 287 entries: by_confidence HIGH 166 / MEDIUM 109 /
+LOW 8 / CANDIDATE 4 (was 105/59/243/6, summing to a stale 413);
+metadata.total_count 172 → 287; metadata.medium_count 6 → 109;
+total_all_entries 397 → 287; n_medium 6 → 109; added
+metadata.candidate_count=4, metadata.hm_confirmed_count=275, n_candidate=4.
+Canonical definitions recorded in `metadata.canonical_counts`,
+including: the preprint's "161 anchors" = the H+M count at the Phase-170
+grammar-variance retest (preserved as hm_count=161 in
+`reports/phase170_grammar_variance.json`, asserted by foundation CHECK
+NEW-V) — a historical snapshot quantity, not the current file total.
+The file's `_note` was corrected where it contradicted the `total`
+field's actual value (change recorded in `_ws3_reconciliation_note`).
+
+### Spec 004 WS4 — Discovery queue triage (78 items)
+
+**Date**: 2026-10-05. All 78 items were topic `ancient_near_east`,
+kind `other`, unmined. The pipeline's enrichment step could not run:
+`POST /api/v1/discovery/mine` refuses with "No LLM provider configured.
+Set MISTRAL_API_KEY / OPENAI_API_KEY / GOOGLE_API_KEY in Settings before
+mining." (same key-absence class as the Phase-102 Mistral blocker).
+Triage therefore used the pipeline's own disposition mechanism —
+`POST /api/v1/discovery/items/{id}/status`, status vocabulary enforced
+by the DB layer (new/reviewed/saved/dismissed) — with a dated reason
+note per item, applying the topic file's scope (Mesopotamia, Sumerian/
+Akkadian, cuneiform, Ur III, Dilmun/Gulf trade, incl. computational
+cuneiform/Akkadian methods). No DB hand-edits; no new fetching.
+
+**Dispositions**: saved 33 (on-topic scholarship; by source: doaj 18,
+openalex 5, europepmc 5, crossref 5) · reviewed 10 (flagged for human
+judgment: ANE-adjacent or borderline items; europepmc 8, doaj 2) ·
+dismissed 35 (modern biomedical/clinical and other keyword collisions,
+incl. one duplicate pair; crossref 20, europepmc 12, doaj 3).
+Queue status "new" is now empty. Items the pipeline could not process:
+none at the status layer — all 78 accepted a disposition; the mining/
+classification layer processed 0 of 78 (no LLM provider, above).
+
+**AI disclosure:** WS3–WS4 executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.

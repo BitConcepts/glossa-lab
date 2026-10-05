@@ -312,3 +312,36 @@ the direction of Tristen Pierson, per constitution §VI.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+---
+
+## 2026-10-05 — Indus program continuation (Stage C of feat/mcp-gaps-indus-continuation)
+
+- **Phase-104 (claims evaluation):** all 21 untested extracted claims
+  evaluated against in-repo evidence under pre-stated rules
+  (`backend/scripts/phase104_claims_evaluation.py`, graph node
+  `IndusClaimsEval`). 5 claims moved to `contradicted` — duplicate
+  extractions of the already-adjudicated Farmer/Sproat/Witzel
+  proposition, verdict + cited evidence carried over with cross-reference.
+  16 stay untested, each with a recorded reason (site-typology data,
+  sign-class set, or atlas definitions absent from the repo; unstated
+  sign numbering; or extraction fragments with no falsification
+  condition). Detail: `glossa-indus/LEDGER.md`,
+  `glossa-indus/reports/phase104_claims_evaluation.json`.
+- **Phase-105 (name-sign adjudication):** the unrun draft
+  `phase105_name_signs.py` (pre-written readings/promotions) was replaced
+  with a Phase-101-style positional/formula adjudication over the Holdat
+  corpus. Verdicts: M375 CORROBORATED; M362 and M398 INCONCLUSIVE
+  (3 tokens each — underpowered); **M024 CHALLENGED** as a medial
+  name-component (100% INITIAL profile; Holdat roles: CLASSIFIER_PREFIX)
+  and flagged for future adjudication. No anchor promoted, demoted, or
+  modified. Report: `reports/phase105_name_signs.json`.
+- **Phase-102 follow-up (Mistral OCR): BLOCKED** — no Mistral key
+  configured, `pypdfium2` absent, and `im77intro.pdf` not in this
+  checkout. Recorded, not fabricated.
+- **Foundation check (H21):** re-run after Stage C — 39 passed,
+  0 failed, 9 warnings.
+- PRED-2026-001..003 remain PENDING (external ICIT data); untouched.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

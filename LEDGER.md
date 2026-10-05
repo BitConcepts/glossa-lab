@@ -407,3 +407,37 @@ the direction of Tristen Pierson, per constitution §VI.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## [2026-10-05] Entry — Spec 004: Indus Executable Package (WS1–WS4)
+
+Branch `feat/indus-executable-package` (PR opened, not merged).
+
+- **WS1 / Phase-106**: Phase-52 syllabic SA re-run through the registered
+  `IndusConstrainedSA` experiment-graph node (unmodified script, CPU,
+  420.8 s). Artifacts restored: `reports/phase52_syllabic_sa.json`,
+  `reports/phase52_full_decipherment_table.json`. z = 17.642 (reproduces
+  the historical z = 16.01 claim's magnitude; its artifact was lost);
+  per-sign agreement with confirmed anchors 113/275 = 41.09% (historical
+  claim said 55% — reported as observed). Foundation CHECK NEW-F passes;
+  the Phase-52 warning is gone.
+- **WS2**: M↔P crosswalk v2.1, 179 → 184 entries, evidence-gated (each
+  addition carries an `evidence` field); 220 unadmitted pairs held in a
+  new candidates file (216 identity-inference-only, 4 conflicted);
+  stats regenerated from entries (113/184 independently attested).
+  Phase-104 RULE-NUM addressability reported (3 of 5 via the canonical
+  registry's Wells column; no re-adjudication).
+- **WS3**: `INDUS_FINAL_ANCHORS.json` bookkeeping regenerated from the
+  287 entries (HIGH 166 / MEDIUM 109 / LOW 8 / CANDIDATE 4; H+M = 275);
+  anchors mapping provably unchanged (canonical sha256
+  fa16861c3b896266508cab805bc69b21a620db46b536f4cb8e5f4fed04f294f7
+  before/after); canonical count definitions recorded in metadata,
+  incl. "161 anchors" = Phase-170 grammar-retest H+M snapshot.
+- **WS4**: all 78 queued discovery items triaged via the discovery API
+  (saved 33 / reviewed 10 / dismissed 35; "new" queue empty). Mining
+  unavailable — no LLM provider configured (endpoint refuses); recorded.
+- Verification: backend suite 1624 passed / 20 skipped / 0 failed;
+  foundation check 40 passed / 0 failed / 8 warnings. Detail entries:
+  `glossa-indus/LEDGER.md` (Phase-106 + WS2–WS4 sections).
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

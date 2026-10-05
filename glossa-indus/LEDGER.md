@@ -985,3 +985,53 @@ Re-run after this phase's report was added: **39 passed, 0 failed,
 (Muse Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI. Statistical procedures follow the program's existing
 Phase-101/103 conventions; verdict rules were stated before the runs.
+
+---
+
+## Phase-106 — Phase-52 Syllabic SA Re-Run (Executable Package WS1)
+
+**Date**: 2026-10-05
+
+**Method**: Executed the registered experiment-graph node
+`IndusConstrainedSA` (`backend/glossa_lab/experiment_graph_phase48_55.py`),
+which subprocess-runs `backend/scripts/phase52_syllabic_sa.py` unchanged:
+constrained simulated annealing against the Phase-49 Dravidian syllabic LM
+(500 syllable types, 15,426 bigrams), Holdat corpus (1,670 inscriptions,
+7,002 tokens, 391 signs in the SA's sign inventory). 5 seeds × 10 restarts
+× 30,000 iterations; elapsed 420.8 s on CPU (torch not installed in this
+environment; the artifact records `gpu_device: "cpu"` honestly).
+Artifacts: `reports/phase52_syllabic_sa.json`,
+`reports/phase52_full_decipherment_table.json` (391 rows).
+
+**Why this phase number**: Phase-105's entry named "Phase-106 SA sprint"
+as the planned next instrument; this run is that sprint.
+
+### Findings (as observed, not as previously claimed)
+- **z = 17.642** against the permutation null (null mean −124,333.44,
+  sd 1,555.75; observed mean score −96,886.12; best −96,389.55);
+  lift 0.7792. The constrained-SA signal therefore **reproduces** at the
+  magnitude of the historical Phase-52 claim (z = 16.01) — whose original
+  artifact had been lost, leaving the claim unverifiable until now.
+- **Pinning differs from the historical claim**: 116 signs pinned (anchor
+  readings expressible as a single LM syllable), not the historical 59.
+- **Per-sign agreement does NOT reproduce at the historical level**: SA
+  agrees with confirmed (HIGH+MEDIUM) anchor readings on 113/275 =
+  41.09%, vs the historical claim of 55%. Cross-seed consensus is strong
+  for a few high-frequency signs (M342 'ay', M099 'ko', M176 'an' at 100%)
+  and weak (0.2) for much of the top-30 — per-sign SA readings beyond the
+  top signs are unstable across seeds and should not be cited as
+  confirmations. The SA additionally proposed readings for 104 signs with
+  no confirmed anchor (SA-only; unadjudicated).
+- No anchor was modified by this run.
+
+### Foundation check (H21)
+Re-run of `backend/scripts/foundation_check.py` after the artifacts were
+added: **40 passed, 0 failed, 8 warnings** (baseline 39/0/9). CHECK NEW-F
+now passes — "Phase-52 constrained SA z >= 4: z=17.64 (116 anchors
+pinned)" — and the standing "Phase-52 result not found" warning is gone.
+
+**AI disclosure:** Phase-106 was executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per constitution §VI.
+The run used the program's own registered node and unmodified Phase-52
+script; findings are reported as observed, including where they fall
+short of the historical claim.

@@ -345,3 +345,20 @@ the direction of Tristen Pierson, per constitution §VI.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+### [2026-10-05] Entry — Spec 003 follow-up fix: mcp in dev extra (CI)
+
+**Type:** bugfix (test infrastructure)
+**Summary:**
+
+- PR #55's backend CI job failed at collection: `tests/test_glossa_mcp.py`
+  raised `ModuleNotFoundError: No module named 'mcp'` because CI installs
+  only `pip install -e ".[dev]"` and Stage A had declared `mcp` solely in
+  its own optional-dependency group. Local runs passed because the venv
+  had the mcp extra installed — a local/CI environment divergence.
+- Fix: added `mcp>=1,<2` to the `dev` extra in `backend/pyproject.toml`
+  (with an explanatory comment). The standalone `mcp` extra remains for
+  runtime installs of the server itself. No other files changed.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

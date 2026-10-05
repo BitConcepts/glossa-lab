@@ -105,6 +105,14 @@ def _last(rec: Recorder) -> httpx.Request:
 
 # ── TEST-MCP-001/002: happy paths + request formation ───────────────────────
 
+def test_http_client_ignores_ambient_proxy_env():
+    # The server only talks to the local backend; ambient proxy env
+    # (e.g. a NO_PROXY list with bracketed IPv6 entries) corrupts
+    # httpx URL parsing, so the client must not trust the env.
+    with server._get() as client:
+        assert client.trust_env is False
+
+
 def test_get_status(rec):
     out = json.loads(server.get_status())
     assert out["status"] == "ok"

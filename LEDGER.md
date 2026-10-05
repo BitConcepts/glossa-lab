@@ -362,3 +362,25 @@ the direction of Tristen Pierson, per constitution §VI.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+### [2026-10-05] Entry — MCP robustness: ignore ambient proxy env + README count
+
+**Type:** bugfix (MCP server) / docs
+**Summary:**
+
+- First live use of the MCP server from the Muse VM failed on every
+  tool call: `InvalidURL — Invalid port: ':1]'`. Root cause: the MCP
+  server's httpx client trusted ambient proxy env; this VM's NO_PROXY
+  list contains bracketed IPv6 entries that corrupt httpx URL parsing.
+  The server only ever talks to the local backend, so `_get()` now
+  passes `trust_env=False`. Covered by a new test
+  (`test_http_client_ignores_ambient_proxy_env`; MCP suite now 25).
+- README's key-files table still said "27 tools" for the MCP server;
+  corrected to 33 (the count everywhere else was already right).
+- A `glossa-lab-mcp` skill (SKILL.md + stdio client wrapper) now lives
+  in Tristen's Muse workspace skills, wrapping all 33 tools; the
+  backend + MCP were started locally and exercised live (status,
+  foundation status, AEE claim scores, discovery stats, hypotheses).
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

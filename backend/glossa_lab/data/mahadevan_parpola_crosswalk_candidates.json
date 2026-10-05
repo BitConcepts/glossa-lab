@@ -1,0 +1,1570 @@
+{
+  "_citation": "CITATIONS.md A.1 (Mahadevan 1977), C.1/C.2 (Parpola 1994/2010)",
+  "_doc": "Candidate M<->P pairs NOT admitted to mahadevan_parpola_crosswalk_v2.json. Admission rule (spec 004 WS2): a pair enters the mapping only when an explicit in-repo source states the equivalence, with the evidence recorded per entry. Number-identity alone is an inference, not evidence, and is held here.",
+  "generated": "2026-10-05 (spec 004 WS2)",
+  "n_candidates": 220,
+  "known_conflicts_not_resolved": [
+    {
+      "sign": "M045",
+      "in_crosswalk": "P103 (Phase-96 animal-sign table, Parpola 1994 App. B)",
+      "conflicting_claims": "P147 claimed by phase51 output, phase56 master_crosswalk, and phase65 SUPPLEMENTARY_MAP ('elephant = Parpola P147'); v1 allograph_families also lists P147 in the fish family. Not resolvable in-repo; crosswalk entry left unchanged."
+    },
+    {
+      "sign": "M006/M039/M062",
+      "in_crosswalk": "P101/P105/P104 (Phase-96 animal-sign table)",
+      "conflicting_claims": "phase51/phase56 phoneme-derived tables additionally claim identity/other numbers (M006<-P6, P364; M062<-P62, P126; M039<-P39). Those tables encode phoneme equivalence in part, not pure sign identity; crosswalk entries left unchanged."
+    },
+    {
+      "sign": "M087",
+      "in_crosswalk": "P87",
+      "conflicting_claims": "phase56 master_crosswalk also claims M087<-P311. Left unchanged."
+    },
+    {
+      "sign": "M047",
+      "in_crosswalk": "P47",
+      "conflicting_claims": "phase51/phase56 also claim M047<-P53 (allograph/phoneme relative). Canonical P47 retained."
+    }
+  ],
+  "candidates": [
+    {
+      "mahadevan_id": "M101",
+      "parpola_num": 101,
+      "basis": "identity pair attested by phase56 master_crosswalk",
+      "held_back_reason": "P-side conflict: P101 is already mapped from M006 (unicorn sign) by the Phase-96 animal-sign table (Parpola 1994 App. B) in the v2 crosswalk. Two in-repo sources disagree on the owner of P101; not resolvable in-repo.",
+      "status": "conflicted"
+    },
+    {
+      "mahadevan_id": "M102",
+      "parpola_num": 102,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M103",
+      "parpola_num": 103,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "P103 already mapped from M045; identity pair would collide.",
+      "status": "conflicted"
+    },
+    {
+      "mahadevan_id": "M104",
+      "parpola_num": 104,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "P104 already mapped from M062; identity pair would collide.",
+      "status": "conflicted"
+    },
+    {
+      "mahadevan_id": "M105",
+      "parpola_num": 105,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "P105 already mapped from M039; identity pair would collide.",
+      "status": "conflicted"
+    },
+    {
+      "mahadevan_id": "M106",
+      "parpola_num": 106,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M169",
+      "parpola_num": 169,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M170",
+      "parpola_num": 170,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M171",
+      "parpola_num": 171,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M172",
+      "parpola_num": 172,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M174",
+      "parpola_num": 174,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M177",
+      "parpola_num": 177,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M178",
+      "parpola_num": 178,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M179",
+      "parpola_num": 179,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M180",
+      "parpola_num": 180,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M181",
+      "parpola_num": 181,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M182",
+      "parpola_num": 182,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M183",
+      "parpola_num": 183,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M184",
+      "parpola_num": 184,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M185",
+      "parpola_num": 185,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M186",
+      "parpola_num": 186,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M187",
+      "parpola_num": 187,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M188",
+      "parpola_num": 188,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M189",
+      "parpola_num": 189,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M190",
+      "parpola_num": 190,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M192",
+      "parpola_num": 192,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M193",
+      "parpola_num": 193,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M194",
+      "parpola_num": 194,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M195",
+      "parpola_num": 195,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M197",
+      "parpola_num": 197,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M198",
+      "parpola_num": 198,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M199",
+      "parpola_num": 199,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M200",
+      "parpola_num": 200,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M201",
+      "parpola_num": 201,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M203",
+      "parpola_num": 203,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M204",
+      "parpola_num": 204,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M206",
+      "parpola_num": 206,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M207",
+      "parpola_num": 207,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M208",
+      "parpola_num": 208,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M209",
+      "parpola_num": 209,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M210",
+      "parpola_num": 210,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M212",
+      "parpola_num": 212,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M213",
+      "parpola_num": 213,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M214",
+      "parpola_num": 214,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M215",
+      "parpola_num": 215,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M216",
+      "parpola_num": 216,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M217",
+      "parpola_num": 217,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M218",
+      "parpola_num": 218,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M219",
+      "parpola_num": 219,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M223",
+      "parpola_num": 223,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M224",
+      "parpola_num": 224,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M226",
+      "parpola_num": 226,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M227",
+      "parpola_num": 227,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M228",
+      "parpola_num": 228,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M229",
+      "parpola_num": 229,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M230",
+      "parpola_num": 230,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M231",
+      "parpola_num": 231,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M232",
+      "parpola_num": 232,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M235",
+      "parpola_num": 235,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M236",
+      "parpola_num": 236,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M237",
+      "parpola_num": 237,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M238",
+      "parpola_num": 238,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M239",
+      "parpola_num": 239,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M240",
+      "parpola_num": 240,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M241",
+      "parpola_num": 241,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M242",
+      "parpola_num": 242,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M243",
+      "parpola_num": 243,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M244",
+      "parpola_num": 244,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M245",
+      "parpola_num": 245,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M246",
+      "parpola_num": 246,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M247",
+      "parpola_num": 247,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M248",
+      "parpola_num": 248,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M250",
+      "parpola_num": 250,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M251",
+      "parpola_num": 251,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M252",
+      "parpola_num": 252,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M253",
+      "parpola_num": 253,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M254",
+      "parpola_num": 254,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M255",
+      "parpola_num": 255,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M256",
+      "parpola_num": 256,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M257",
+      "parpola_num": 257,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M258",
+      "parpola_num": 258,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M259",
+      "parpola_num": 259,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M260",
+      "parpola_num": 260,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M262",
+      "parpola_num": 262,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M263",
+      "parpola_num": 263,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M265",
+      "parpola_num": 265,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M266",
+      "parpola_num": 266,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M268",
+      "parpola_num": 268,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M269",
+      "parpola_num": 269,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M270",
+      "parpola_num": 270,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M271",
+      "parpola_num": 271,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M272",
+      "parpola_num": 272,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M273",
+      "parpola_num": 273,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M274",
+      "parpola_num": 274,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M275",
+      "parpola_num": 275,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M276",
+      "parpola_num": 276,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M277",
+      "parpola_num": 277,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M278",
+      "parpola_num": 278,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M279",
+      "parpola_num": 279,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M280",
+      "parpola_num": 280,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M282",
+      "parpola_num": 282,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M283",
+      "parpola_num": 283,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M284",
+      "parpola_num": 284,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M285",
+      "parpola_num": 285,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M286",
+      "parpola_num": 286,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M287",
+      "parpola_num": 287,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M288",
+      "parpola_num": 288,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M289",
+      "parpola_num": 289,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M290",
+      "parpola_num": 290,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M291",
+      "parpola_num": 291,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M292",
+      "parpola_num": 292,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M294",
+      "parpola_num": 294,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M295",
+      "parpola_num": 295,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M296",
+      "parpola_num": 296,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M297",
+      "parpola_num": 297,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M298",
+      "parpola_num": 298,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M299",
+      "parpola_num": 299,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M300",
+      "parpola_num": 300,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M301",
+      "parpola_num": 301,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M302",
+      "parpola_num": 302,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M303",
+      "parpola_num": 303,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M304",
+      "parpola_num": 304,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M307",
+      "parpola_num": 307,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M308",
+      "parpola_num": 308,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M309",
+      "parpola_num": 309,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M310",
+      "parpola_num": 310,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M312",
+      "parpola_num": 312,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M313",
+      "parpola_num": 313,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M314",
+      "parpola_num": 314,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M315",
+      "parpola_num": 315,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M316",
+      "parpola_num": 316,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M318",
+      "parpola_num": 318,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M319",
+      "parpola_num": 319,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M320",
+      "parpola_num": 320,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M321",
+      "parpola_num": 321,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M322",
+      "parpola_num": 322,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M323",
+      "parpola_num": 323,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M324",
+      "parpola_num": 324,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M325",
+      "parpola_num": 325,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M326",
+      "parpola_num": 326,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M327",
+      "parpola_num": 327,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M329",
+      "parpola_num": 329,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M330",
+      "parpola_num": 330,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M331",
+      "parpola_num": 331,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M332",
+      "parpola_num": 332,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M333",
+      "parpola_num": 333,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M334",
+      "parpola_num": 334,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M335",
+      "parpola_num": 335,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M337",
+      "parpola_num": 337,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M338",
+      "parpola_num": 338,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M339",
+      "parpola_num": 339,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M340",
+      "parpola_num": 340,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M341",
+      "parpola_num": 341,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M343",
+      "parpola_num": 343,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M344",
+      "parpola_num": 344,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M345",
+      "parpola_num": 345,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M346",
+      "parpola_num": 346,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M347",
+      "parpola_num": 347,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M348",
+      "parpola_num": 348,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M349",
+      "parpola_num": 349,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M350",
+      "parpola_num": 350,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M351",
+      "parpola_num": 351,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M353",
+      "parpola_num": 353,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M354",
+      "parpola_num": 354,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M355",
+      "parpola_num": 355,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M356",
+      "parpola_num": 356,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M357",
+      "parpola_num": 357,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M359",
+      "parpola_num": 359,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M360",
+      "parpola_num": 360,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M361",
+      "parpola_num": 361,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M362",
+      "parpola_num": 362,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M363",
+      "parpola_num": 363,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M365",
+      "parpola_num": 365,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M368",
+      "parpola_num": 368,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M369",
+      "parpola_num": 369,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M370",
+      "parpola_num": 370,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M371",
+      "parpola_num": 371,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M373",
+      "parpola_num": 373,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M374",
+      "parpola_num": 374,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M375",
+      "parpola_num": 375,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M376",
+      "parpola_num": 376,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M377",
+      "parpola_num": 377,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M378",
+      "parpola_num": 378,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M379",
+      "parpola_num": 379,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M380",
+      "parpola_num": 380,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M381",
+      "parpola_num": 381,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M382",
+      "parpola_num": 382,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M383",
+      "parpola_num": 383,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M384",
+      "parpola_num": 384,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M385",
+      "parpola_num": 385,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M386",
+      "parpola_num": 386,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M387",
+      "parpola_num": 387,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M388",
+      "parpola_num": 388,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M389",
+      "parpola_num": 389,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M390",
+      "parpola_num": 390,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M392",
+      "parpola_num": 392,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M393",
+      "parpola_num": 393,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M394",
+      "parpola_num": 394,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M395",
+      "parpola_num": 395,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M396",
+      "parpola_num": 396,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M397",
+      "parpola_num": 397,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M398",
+      "parpola_num": 398,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M399",
+      "parpola_num": 399,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M400",
+      "parpola_num": 400,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M401",
+      "parpola_num": 401,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M402",
+      "parpola_num": 402,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M403",
+      "parpola_num": 403,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M404",
+      "parpola_num": 404,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M405",
+      "parpola_num": 405,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M406",
+      "parpola_num": 406,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M407",
+      "parpola_num": 407,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M408",
+      "parpola_num": 408,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M409",
+      "parpola_num": 409,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M410",
+      "parpola_num": 410,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M411",
+      "parpola_num": 411,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M412",
+      "parpola_num": 412,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M413",
+      "parpola_num": 413,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M414",
+      "parpola_num": 414,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M415",
+      "parpola_num": 415,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    },
+    {
+      "mahadevan_id": "M416",
+      "parpola_num": 416,
+      "basis": "number-identity inference only (Phase-96 method)",
+      "held_back_reason": "No explicit in-repo source states this equivalence.",
+      "status": "identity_inference_only"
+    }
+  ]
+}

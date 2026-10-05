@@ -12,19 +12,24 @@
     "see_also": "CITATIONS.md",
     "compiled_by": "Glossa-Lab Phase-28; hand-curated subset."
   },
-  "_doc": "Comprehensive Mahadevan-Parpola sign crosswalk v2. Sources: mahadevan_parpola_crosswalk.json (Phase-28, 25 hand-curated entries), iconographic_anchors.json, yajnadevam_to_parpola_crosswalk_extended.csv, literature synthesis (Mahadevan 1977 + Parpola 1994/2010). NOTE: Many LOW-confidence entries infer M-ID = M+P-number, which is valid for signs where both numbering systems converged (numerals, common iconic signs). Verify against Mahadevan 1977 Appendix III for publication-grade use.",
-  "version": "v2 (2026-05-11)",
+  "_doc": "Comprehensive Mahadevan-Parpola sign crosswalk v2. Sources: mahadevan_parpola_crosswalk.json (Phase-28, 25 hand-curated entries), iconographic_anchors.json, yajnadevam_to_parpola_crosswalk_extended.csv, literature synthesis (Mahadevan 1977 + Parpola 1994/2010). NOTE: Many LOW-confidence entries infer M-ID = M+P-number, which is valid for signs where both numbering systems converged (numerals, common iconic signs). Verify against Mahadevan 1977 Appendix III for publication-grade use. | v2.1 (2026-10-05, spec 004 WS2): +5 entries (M202, M221, M222, M293, M305) admitted only on explicit in-repo sources, each with an 'evidence' field; M101->P101 held back to the candidates file (P-side conflict with M006->P101); stats regenerated from entries.",
+  "version": "v2.1 (2026-10-05)",
   "stats": {
-    "total_entries": 179,
+    "total_entries": 184,
     "by_confidence": {
-      "HIGH": 25,
-      "MEDIUM": 13,
-      "LOW": 0
+      "HIGH": 36,
+      "MEDIUM": 146,
+      "CANDIDATE": 2
     },
     "by_source": {
-      "mahadevan_parpola_crosswalk.json": 25,
-      "literature_synthesis": 13
-    }
+      "Parpola 1994 Appendix B": 171,
+      "mahadevan_parpola_crosswalk.json Phase-28": 6,
+      "literature_synthesis (Mahadevan 1977 + Parpola 1994/2010 + Holdat V7)": 2,
+      "spec 004 WS2 expansion (2026-10-05)": 5
+    },
+    "n_attested_by_independent_inrepo_sources": 113,
+    "n_identity_inference_only": 67,
+    "note": "Regenerated 2026-10-05 (spec 004 WS2) from the crosswalk entries themselves. Attestation = the (M,P) pair is also stated by at least one independent in-repo source (v1 curated crosswalk, Phase-51/56 outputs, Phase-65 supplementary map, Phase-71 extended map). Identity-inference-only = number-identity pairs carried from the Phase-96 expansion with no independent in-repo attestation."
   },
   "crosswalk": {
     "M001": {
@@ -1629,6 +1634,56 @@
       "confidence": "MEDIUM",
       "reading": "paṉ",
       "anchor_confidence": "LOW"
+    },
+    "M202": {
+      "parpola_id": "P202",
+      "parpola_num": 202,
+      "reading": "can",
+      "confidence": "MEDIUM",
+      "source": "spec 004 WS2 expansion (2026-10-05)",
+      "iconographic_match": true,
+      "evidence": "phase56 master_crosswalk (outputs/phase56_parpola_expansion.json, source: Parpola 1994) + phase65 SUPPLEMENTARY_MAP 'circle = Parpola P202' (backend/scripts/phase65_crosswalk_top100.py). Two independent in-repo tables.",
+      "added": "2026-10-05"
+    },
+    "M293": {
+      "parpola_id": "P293",
+      "parpola_num": 293,
+      "reading": "ta",
+      "confidence": "MEDIUM",
+      "source": "spec 004 WS2 expansion (2026-10-05)",
+      "iconographic_match": true,
+      "evidence": "phase51 parpola_to_m_crosswalk (outputs/phase51_parpola_crosswalk.json) + phase56 master_crosswalk + phase65 SUPPLEMENTARY_MAP 'comb sign = Parpola P293'. Three independent in-repo tables.",
+      "added": "2026-10-05"
+    },
+    "M305": {
+      "parpola_id": "P305",
+      "parpola_num": 305,
+      "reading": "ōṭu/comitative",
+      "confidence": "MEDIUM",
+      "source": "spec 004 WS2 expansion (2026-10-05)",
+      "iconographic_match": true,
+      "evidence": "phase51 parpola_to_m_crosswalk + phase56 master_crosswalk + phase65 SUPPLEMENTARY_MAP 'seated figure = Parpola P305'. Three independent in-repo tables.",
+      "added": "2026-10-05"
+    },
+    "M221": {
+      "parpola_id": "P221",
+      "parpola_num": 221,
+      "reading": "al",
+      "confidence": "CANDIDATE",
+      "source": "spec 004 WS2 expansion (2026-10-05)",
+      "iconographic_match": false,
+      "evidence": "phase71 EXTENDED_MAP (backend/scripts/phase71_crosswalk_complete.py): 'abstract compound 2', source stated as Parpola 1994 App. B. Single in-repo source.",
+      "added": "2026-10-05"
+    },
+    "M222": {
+      "parpola_id": "P222",
+      "parpola_num": 222,
+      "reading": "min",
+      "confidence": "CANDIDATE",
+      "source": "spec 004 WS2 expansion (2026-10-05)",
+      "iconographic_match": false,
+      "evidence": "phase71 EXTENDED_MAP: 'hook sign', source stated as Parpola 1994 App. B. Single in-repo source.",
+      "added": "2026-10-05"
     }
   }
 }

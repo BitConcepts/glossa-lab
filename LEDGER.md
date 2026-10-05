@@ -112,3 +112,39 @@ Next step:
 - **Type**: migration
 - **Status**: complete
 - **Chain hash**: `8fdaa4a6a232e910...`
+
+## [2026-10-05] Entry — Spec-kit + AEE migration (Stage 1): specsmith retired
+
+Objective:
+  Replace specsmith as the active governance/SDD tooling with spec-kit +
+  the AEE and evaluator extensions, following the adoption pattern already
+  used for the Axiovex website and Rockeagle projects. Recorded as
+  specs/001-glossa-lab-baseline/ (as-built baseline).
+
+What was done:
+  1. `specify init` (spec-kit 1.0.10, copilot integration, sh scripts)
+     into the existing repo; extensions `aee` and `evaluator` installed
+     from the local spec-kit-aee / spec-kit-evaluator clones with --dev
+     and vendored as real files under .specify/extensions/ (nested .git
+     directories and dev venvs stripped — no gitlinks).
+  2. Constitution ratified at .specify/memory/constitution.md, codifying
+     the project's existing governance: CITATIONS.md provenance,
+     append-only ledger, foundation-check gate, falsifiable-claims
+     discipline, public/private correspondence boundary (H24), AI
+     disclosure, no secrets in tracked files.
+  3. specsmith removed as ACTIVE tooling: .agents/skills/specsmith{,-audit,-save}/,
+     scaffold.yml, and the tracked runtime state
+     backend/.specsmith/model-rate-limits.json deleted. Historical
+     mentions in this ledger, CHANGELOG.md, and docs/ledger-archive.md
+     are append-only history and were NOT rewritten.
+  4. Runtime rate-limit persistence moved from .specsmith/rate_limits.json
+     to .glossa-state/rate_limits.json at repo root (same walk-up logic)
+     in backend/glossa_lab/discovery/fetchers/base.py and
+     backend/glossa_lab/model_intelligence.py; .gitignore now ignores
+     .glossa-state/ instead of .specsmith/.
+  5. AGENTS.md updated: governance configuration lives in .specify/ +
+     specs/; session workflow is git + spec-kit flow. LIFECYCLE.md phase
+     tracking moved off scaffold.yml.
+
+AI disclosure: this migration was executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per constitution §VI.

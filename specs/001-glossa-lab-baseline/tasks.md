@@ -17,3 +17,5 @@ Baseline adoption tasks (spec-kit + AEE migration, 2026-10-05):
       tracked in this baseline's plan; executed in the same migration PR
 - [x] T009 (Stage 3) GDELT ngrams fetcher — tracked in
       `specs/002-gdelt-ngrams-and-frontier-methods/`
+- [x] T010 (Stage 4) Verification (full suite, ruff, live smoke),
+      sync with origin/main post-Dependabot, push branch, open PR

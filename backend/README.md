@@ -46,7 +46,7 @@ backend/
 │   ├── database.py      ← SQLite async layer
 │   └── main.py          ← app factory + lifespan
 ├── glossa_mcp/          ← MCP server for Warp/Oz agent integration
-│   └── server.py        ← 27 FastMCP tools (jobs, experiments, research loop, ...)
+│   └── server.py        ← 33 FastMCP tools (jobs, experiments, research loop, Indus evidence, ...)
 ├── scripts/             ← research and utility scripts
 ├── reports/             ← backend-side result files
 └── tests/

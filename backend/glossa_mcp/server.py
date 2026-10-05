@@ -44,8 +44,14 @@ mcp = FastMCP(
 
 
 def _get() -> httpx.Client:
-    """Return a short-lived sync httpx client."""
-    return httpx.Client(base_url=BASE_URL, timeout=_TIMEOUT)
+    """Return a short-lived sync httpx client.
+
+    trust_env=False: the server only ever talks to the (local) backend,
+    and ambient proxy env vars (HTTP(S)_PROXY / NO_PROXY) can corrupt or
+    block those calls — e.g. a NO_PROXY list containing bracketed IPv6
+    entries makes httpx raise InvalidURL ("Invalid port: ':1]'").
+    """
+    return httpx.Client(base_url=BASE_URL, timeout=_TIMEOUT, trust_env=False)
 
 
 def _fmt(data: Any) -> str:

@@ -13,7 +13,7 @@ Baseline adoption tasks (spec-kit + AEE migration, 2026-10-05):
       `.glossa-state/` (`fetchers/base.py`, `model_intelligence.py`),
       gitignore the new dir
 - [x] T007 Update `AGENTS.md` to the spec-kit flow; append LEDGER entry
-- [ ] T008 (Stage 2) AEE core adapter `aee_core.py` + wiring + tests —
+- [x] T008 (Stage 2) AEE core adapter `aee_core.py` + wiring + tests —
       tracked in this baseline's plan; executed in the same migration PR
 - [ ] T009 (Stage 3) GDELT ngrams fetcher — tracked in
       `specs/002-gdelt-ngrams-and-frontier-methods/`

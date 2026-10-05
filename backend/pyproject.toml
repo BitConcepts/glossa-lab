@@ -9,6 +9,7 @@ description = "Backend service for Glossa Lab — agentic research lab for langu
 requires-python = ">=3.11"
 dependencies = [
     "python-multipart>=0.0.9",
+    "applied-epistemic-engineering>=1.0.4,<2",
     "fastapi>=0.115,<1",
     "uvicorn[standard]>=0.34,<1",
     "python-json-logger>=3,<4",

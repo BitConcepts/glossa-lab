@@ -22,10 +22,12 @@ Epistemic layer (Stage 2 of the spec-kit + AEE migration):
   (`glossa-indus/claims/extracted_claims/*.json`) onto the Applied
   Epistemic Engineering library (`aee` package: `Claim`, `Evidence`,
   `ClaimGraph`, `ScoringEngine`) and surfaces AEE-backed scoring through
-  the Indus evidence API as additive fields. The AEE library's native
-  model has no field for Glossa's `falsification_condition` text, so the
-  adapter preserves it in its own mapping layer (documented in the module
-  docstring) rather than dropping it.
+  the Indus evidence API as additive fields. `falsification_condition`
+  maps natively onto AEE's `Claim.falsification_tests`; Glossa-only
+  fields AEE has no concept for (claim-type taxonomy, testability,
+  quote fragments, sign lists, `confidence_in_source`) are preserved in
+  the adapter's mapping layer via `Claim.metadata` / `source_ref`, as
+  documented in the module docstring.
 
 Development flow:
 - spec-kit (`specify` 1.0.10, copilot integration) with the AEE and

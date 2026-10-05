@@ -179,3 +179,34 @@ epistemic engineering library, `applied-epistemic-engineering` (the
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+### [2026-10-05] Entry — Spec-kit + AEE migration (Stage 3: GDELT ngrams)
+
+**Type:** discovery infrastructure / external guidance adoption
+**Summary:** Implemented GDELT's published migration guidance
+(Kalev Leetaru, GDELT Project; public posts only — no correspondence
+reproduced, per constitution §V):
+
+- New default GDELT source `backend/glossa_lab/discovery/fetchers/gdelt_ngrams.py`
+  (source id `gdelt_ngrams`): consumes the temporary Web Ngrams dataset
+  (per-minute `<ts>.ngrams.txt.gz` + `<ts>.toc.json.gz`), requests the
+  file from ~5 minutes ago, walks back over 15-minute heartbeat marks
+  (bounded, 24 marks ≈ 6 h), matches topic keywords against quadgrams
+  (with tri/bi/unigram reduction; >4-word keywords via constituent
+  windows), applies topic exclusions, cross-references DOCIDs through
+  the TOC into discovery `RawItem`s, and persists a watermark in
+  `.glossa-state/gdelt_ngrams.json`.
+- The DOC-API fetcher (`gdelt.py`) is retained but opt-in only
+  (explicit source request or topic override), docstring-noted as
+  paused per GDELT's request during the Spanner migration.
+- Tests: `backend/tests/test_gdelt_ngrams.py` — 11 passed, synthetic
+  fixtures, no network. A live smoke test against the real dataset is
+  reported in the migration PR.
+- `specs/002-gdelt-ngrams-and-frontier-methods/` documents the switch
+  plus two recorded-but-not-implemented learnings: a future fully-cited
+  daily briefing over the discovery corpus ("Today's Trends" pattern),
+  and manuscript-method design notes for future seal/tablet vision
+  work (physical metadata up front; discrete focused passes).
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

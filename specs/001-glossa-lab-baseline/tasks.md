@@ -15,5 +15,5 @@ Baseline adoption tasks (spec-kit + AEE migration, 2026-10-05):
 - [x] T007 Update `AGENTS.md` to the spec-kit flow; append LEDGER entry
 - [x] T008 (Stage 2) AEE core adapter `aee_core.py` + wiring + tests —
       tracked in this baseline's plan; executed in the same migration PR
-- [ ] T009 (Stage 3) GDELT ngrams fetcher — tracked in
+- [x] T009 (Stage 3) GDELT ngrams fetcher — tracked in
       `specs/002-gdelt-ngrams-and-frontier-methods/`

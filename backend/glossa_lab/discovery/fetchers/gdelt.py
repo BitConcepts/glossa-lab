@@ -1,5 +1,13 @@
 """GDELT DOC 2.0 API fetcher (https://api.gdeltproject.org/api/v2/doc/doc).
 
+.. note::
+   PAUSED / OPT-IN ONLY (2026-10-05): per GDELT's request during its
+   Spanner migration, the default GDELT source is now the Web Ngrams
+   dataset (``gdelt_ngrams.py``, source ``gdelt_ngrams``). This fetcher
+   runs only when explicitly requested (``only_sources`` containing
+   ``"gdelt"``) or when a topic sets ``source_overrides.gdelt.enabled``
+   to true. See ``specs/002-gdelt-ngrams-and-frontier-methods/``.
+
 Keyless. Provides global news monitoring — articles from thousands of
 worldwide news outlets, useful as a complement to the news-API-gated sources.
 

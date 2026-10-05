@@ -36,6 +36,7 @@ from glossa_lab.discovery.fetchers.crossref import CrossrefFetcher
 from glossa_lab.discovery.fetchers.doaj import DOAJFetcher
 from glossa_lab.discovery.fetchers.europepmc import EuropePMCFetcher
 from glossa_lab.discovery.fetchers.gdelt import GDELTFetcher
+from glossa_lab.discovery.fetchers.gdelt_ngrams import GDELTNgramsFetcher
 from glossa_lab.discovery.fetchers.newsapi import NewsAPIFetcher
 from glossa_lab.discovery.fetchers.openalex import OpenAlexFetcher
 from glossa_lab.discovery.fetchers.patentsview import PatentsViewFetcher
@@ -66,7 +67,10 @@ _REGISTRY: tuple[type[Fetcher], ...] = (
     # Patent sources — PatentsView requires a key; PPUBS is keyless.
     PatentsViewFetcher,
     USPTOFetcher,
-    # Keyless news + general sources.
+    # Keyless news + general sources. GDELT Web Ngrams is the DEFAULT
+    # GDELT source; the DOC-API GDELTFetcher is opt-in only while GDELT
+    # completes its Spanner migration (see gdelt.py docstring).
+    GDELTNgramsFetcher,
     GDELTFetcher,
     RSSFetcher,
     # Academia.edu — keyless metadata search; auth-gated download requires
@@ -112,13 +116,30 @@ def available_fetchers() -> list[dict[str, object]]:
     return out
 
 
-def _build_fetchers(only_sources: Iterable[str] | None) -> list[Fetcher]:
+def _build_fetchers(
+    only_sources: Iterable[str] | None,
+    topic: TopicProfile | None = None,
+) -> list[Fetcher]:
     wanted = {s.lower() for s in only_sources} if only_sources else None
     instances: list[Fetcher] = []
     for cls in _REGISTRY:
         f = cls()
         if wanted is not None and f.source not in wanted:
             continue
+        # GDELT DOC API is opt-in only during GDELT's Spanner migration:
+        # it runs when explicitly requested by source name, or when the
+        # topic enables it via source_overrides. The default GDELT
+        # source is gdelt_ngrams.
+        if f.source == "gdelt" and (wanted is None or "gdelt" not in wanted):
+            enabled = bool(
+                topic and topic.overrides_for("gdelt").get("enabled")
+            )
+            if not enabled:
+                _log.info(
+                    "fetcher gdelt skipped (DOC API paused per GDELT "
+                    "migration guidance; gdelt_ngrams is the default)",
+                )
+                continue
         if not f.is_configured():
             _log.info(
                 "fetcher %s skipped (%s)",
@@ -142,7 +163,7 @@ async def run_topic(
     in a Job result row.
     """
     profile = load_topic(topic) if isinstance(topic, str) else topic
-    fetchers = _build_fetchers(only_sources)
+    fetchers = _build_fetchers(only_sources, topic=profile)
     if not fetchers:
         return {
             "topic": profile.id,

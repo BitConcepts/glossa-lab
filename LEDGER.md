@@ -590,3 +590,39 @@ Phase-107 PR: https://github.com/BitConcepts/glossa-lab/pull/60 (opened 2026-10-
 the direction of Tristen Pierson, per constitution §VI.
 
 Phase-108 PR: https://github.com/BitConcepts/glossa-lab/pull/61 (opened 2026-10-06, NOT merged — owner review gate).
+
+## [2026-10-06] Entry — Phase-109 / Spec 007: Phase-108 Follow-Through — Staging Cohort Re-Reviewed, SA-Lineage Flagged, Headlines Re-Based
+
+- **Step 1 (staging cohort, 116):** (a) KEEP 1 (M222, Parpola
+  crosswalk support); (b) RESTORE 112 — 109 `kur`/LOW Phase-111
+  allograph priors + M042 `vaN`, M046 `kaL`, M108 `kaL` at HIGH
+  (Phase-89 DEDR); (c) DEMOTE 3 (H003, M231, M252). Two hand-check
+  corrections pre-registered in a spec addendum before apply
+  (exact reading identity; SA-origin priors not restorable).
+- **Step 2:** 44 SA-lineage HIGH anchors flagged
+  `pending_non_sa_validation` + `provenance_class`; no value/tier
+  changed.
+- **Step 3:** M293 `ta`, M362 `aṇi`, M398 `kuṟi` each HIGH →
+  MEDIUM on dossier evidence (Phase-101's own outcome; Phase-105
+  INCONCLUSIVE never superseded).
+- **Step 4:** `/staging/verify-sa` renamed `/staging/verify-archive`
+  (deprecated alias retained); `/staging/promote` gated on a
+  recorded non-SA evidence reference; SA auto-queue removed;
+  governance **H26** (no SA-sufficient promotion gates);
+  foundation-check SA framings retired as text only.
+- **Step 5 (re-based headlines):** strict SA-independent set
+  **94 H+M (90 HIGH + 4 MEDIUM), coverage 73.68%** (5,159/7,002),
+  0 phonotactic violations, site invariance 65/65; full table
+  287 (166/5/112/4), full H+M 171 at 92.19%. README re-based;
+  anchors bookkeeping regenerated; preprint v5 addendum drafted
+  in-repo only (NOT submitted; v4 untouched).
+- **Change register:** 164 records; completeness verified
+  mechanically — 162 anchor entries differ from main, all covered.
+- **Verification:** backend suite **609 passed / 9 skipped / 0
+  failed** (baseline 586/9 + 23 new tests); foundation check
+  **40/0/8** after every step; ruff clean.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+Phase-109 PR: https://github.com/BitConcepts/glossa-lab/pull/62 (opened 2026-10-06, NOT merged — owner review gate for all scientific changes).

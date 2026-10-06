@@ -1446,3 +1446,95 @@ readings or confidences changed.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-108 — Anchor Provenance Audit (Spec 006), Step 1: Evidence Extraction
+
+Question (owner-approved after Phase-107): Phase-107 falsified simulated
+annealing as evidence for sign values, but the 287 anchors in
+`backend/reports/INDUS_FINAL_ANCHORS.json` were left unchanged. What does
+each anchor's value and confidence actually rest on? Spec 006 pre-registered
+the taxonomy, the SA-dependence rules (first proposal from an SA artifact,
+OR promotion to current confidence citing SA agreement as a load-bearing
+reason), and the Step-3 recomputations BEFORE any classification
+(commit 9d17a8d2).
+
+Step 1 built the machinery graph-first (H15/H23): pipeline module
+`backend/glossa_lab/pipelines/provenance_audit.py` (SA-lineage phase table,
+phase-method map, recompute functions), four scripts
+(`phase108_provenance_{extract,classify,recompute,impact}.py`), graph module
+`experiment_graph_phase108.py` with nodes IndusProvenanceExtract/Classify/
+Recompute/Impact registered in ATOMIC_NODES, and 10 unit tests (all passing).
+
+Extraction assembled a trail for every one of the 287 anchors from in-repo
+sources only: anchor entry fields; both ledgers + CHANGELOG sections; a
+mention index over 722 JSON artifacts (26 MB) in `reports/`,
+`backend/reports/`, `outputs/`, `glossa-indus/reports/` (structured extracts
+incl. the Phase-52/57/107 SA tables, anchor backup snapshots 2026-05-20/22/23,
+crosswalk v2 entry, extracted claims citing the sign). Output:
+`reports/phase108_anchor_trails.json` (287 trails, 1.3 MB). Spot-checks
+(M267, M047, plus random M066/M043) verified trails against raw entries.
+Pass 1 (structured signals only — no keyword guessing) classified 143
+anchors explicitly and queued 144 for hand review:
+`reports/phase108_provenance_register_draft.json`. No anchor reading,
+confidence, or basis was changed by this step.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-108 — Step 2: Classification (Two-Pass, Hand Review)
+
+The hand review read every queued trail in full. Headline result
+(`reports/phase108_provenance_register.json` +
+`reports/phase108_provenance_summary.md`):
+
+- By category: GRAMMAR 163, DEDR 33, SA_DERIVED 24, SA_CONFIRMED_ONLY 20,
+  LITERATURE 17, MIXED 15, ICONOGRAPHIC 12, CROSSWALK_CORPUS 3,
+  FORMULA 0, UNTRACEABLE 0.
+- SA-dependent (SA_DERIVED + SA_CONFIRMED_ONLY + any SA line in chain): 77.
+- SA-independent, pre-registered three ways — strict / including
+  untraceable / excluding untraceable from the denominator: **210 / 210 /
+  210 of 287 (73.2%)** (all three coincide because no trail proved
+  untraceable). All 44 SA_DERIVED + SA_CONFIRMED_ONLY anchors are HIGH
+  tier; the SA-independent H+M subset is what Step 3 recomputes on.
+
+Three findings dominate the detail:
+
+1. **The staging cohort (116 anchors — 40% of the set).** Pass 1 labeled
+   these DEDR-explicit off the `dedr_support` gloss text; the Step-2 spot
+   audit (12 sampled pass-1 DEDR records, 11 of them staging) caught the
+   error. Their current readings were proposed by the automated research
+   loop's fixed heuristic tables (`research_loop.py`: `_compound_partner`
+   returns the first root of a hardcoded list — hence 'min' assigned to
+   ~40 signs) and promoted through `/staging/verify-sa`, an endpoint that
+   performs NO SA test despite its name (it flips approved→verified and
+   queues an unrelated SA experiment for display). Classified GRAMMAR
+   (distributional heuristic) — inside the strict SA-independent count by
+   the pre-registered rules, but the weakest-evidence cohort in the set.
+   The bulk promotion also overwrote earlier readings (M042 vaN→min,
+   M108 kaL→min, M222 kur→min).
+2. **The recalibration gates (Phases 116/216).** Their promotion rule was
+   `has_dedr AND (SA-consistency ≥ 0.40 OR whitelisted source)`. Signs
+   that passed on SA consistency alone (incl. M293 'ta', the corpus's
+   most frequent sign, 232 tokens) are SA_CONFIRMED_ONLY; signs where the
+   non-SA disjunct also fired keep their origin category with SA recorded
+   as a non-load-bearing chain component; signs where it never fired have
+   no SA in chain (the basis bracket is a gate log artifact).
+3. **Phase-293 promotions.** Anchors whose own records said "SA
+   confirmation pending" after their DEDR injections were promoted by
+   the SA cross-corpus validation (83.7%) — SA_CONFIRMED_ONLY (12 signs).
+   Contrast Phase-294's bundle, where a new manual DEDR assignment in the
+   same record makes SA a component but not load-bearing.
+
+285 hand-review decisions are recorded with per-sign
+rationales and citations in `reports/phase108_review_decisions.json`
+(the 144 queued trails, all 116 staging-cohort records, and 25 pass-1
+overrides/confirms);
+191 edge-case entries are logged in the register rather than forced.
+Notable single signs: M267 MIXED with SA explicitly neutral (Phase-70);
+M035 'po' SA_DERIVED by the pre-registered first-proposal rule (Phase-77's
+sole high-trust SA proposal preceded its Phase-87 DEDR-rebus promotion —
+flagged as contestable for the owner); M067's SA line is a *disagreement*
+and does not count as SA-dependence. No anchor was changed.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

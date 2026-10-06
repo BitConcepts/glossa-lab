@@ -1329,3 +1329,37 @@ therefore applies). No anchor readings or confidences changed.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-107 — Step 4 (pooling half): Enlarged Corpus, Headline Re-Run — Still Zero
+
+Pooling per the pre-registered dedupe rule (converted sequence,
+len ≥ 3, exactly matching a sequence already in the pool is dropped;
+only fully-convertible inscriptions pooled). Artifact:
+`reports/phase107_step4_pooling.json` (embeds the three-bucket
+acquisition log). Best objective = LM-only (Step 2 kept no terms).
+
+**Conversion + pool accounting.** In-repo CISI subset (179
+inscriptions / 1,003 tokens, Parpola P-numbers): only **7/179 fully
+convertible** to M-numbers via crosswalk v2.1 inversion — 19 of 182
+distinct signs covered; the crosswalk's P→M coverage is the binding
+constraint, not the corpus. ICIT layer (from the acquisition half):
+1,007 inscriptions / 2,238 tokens, 0 dropped at pool time (the fixed
+layer build had already deduped vs Holdat; none of the 7 CISI
+conversions collided either). **Pooled corpus: 2,684 inscriptions /
+9,264 tokens** (Holdat 1,670 / 7,002 + 2,262 pooled tokens, +32%).
+
+**Headline re-run (Step-1a protocol, best objective).** Held-out
+primary agreement on the enlarged pool: **0.000 in all 5 folds**
+(0/115 evaluable), fold z 11.05–15.37 (mean ≈ 11.99, vs 18.81
+Holdat-only — pooling dilutes the LM fit while adding no per-sign
+signal). **Claim E verdict by the pre-registered rule:**
+`pooling_helps = false`, `falsified = false` — an exact tie at zero:
+pooling neither helps nor, under the strict greater-than-pooled-SD
+rule, falsifies; stated plainly, a 32% larger corpus produces no
+held-out gain whatsoever. Corpus size within reach of current public
+sources is not the binding constraint on the SA's per-sign
+determination; the objective's landscape is. No anchor readings or
+confidences changed.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

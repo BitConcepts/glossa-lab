@@ -1056,14 +1056,19 @@ async def cleanup_staging() -> dict[str, Any]:
     }
 
 
-@router.post("/staging/verify-sa")
-async def staging_verify_sa() -> dict[str, Any]:
+@router.post("/staging/verify-archive")
+async def staging_verify_archive() -> dict[str, Any]:
     """Verify approved staging candidates and archive them.
 
     One-click action for the anchor review queue. Marks all 'approved'
-    candidates as 'verified', archives them, and queues the best available
-    anchored SA graph experiment so the user can see the result in Jobs.
-    Does NOT require a full research loop run.
+    candidates as 'verified' and archives them. Does NOT require a
+    full research loop run.
+
+    Phase-109 rename (spec 007 Step 4): this endpoint was previously
+    named /staging/verify-sa, but it performs NO SA test of any
+    kind — the name now matches what the endpoint does. The old
+    path remains as a deprecated alias (below) for the committed
+    frontend build.
     """
     from glossa_lab.experiment_graph import (  # noqa: PLC0415
         get_graph_experiment,
@@ -1092,7 +1097,7 @@ async def staging_verify_sa() -> dict[str, Any]:
             c["review_status"] = "verified"
             c["verified_at"] = now
             c["archived_at"] = now
-            c["archived_reason"] = "manual_verify_sa"
+            c["archived_reason"] = "manual_verify_archive"
             to_archive.append(c)
         else:
             remaining.append(c)
@@ -1108,7 +1113,7 @@ async def staging_verify_sa() -> dict[str, Any]:
         json.dumps(archive, indent=2, ensure_ascii=False), encoding="utf-8")
     _STAGING_JSON.write_text(
         json.dumps(remaining, indent=2, ensure_ascii=False), encoding="utf-8")
-    _log.info("verify-sa: %d candidates verified and archived", len(to_archive))
+    _log.info("verify-archive: %d candidates verified and archived", len(to_archive))
 
     # Find and queue the best anchored SA experiment
     job_id: str | None = None
@@ -1137,7 +1142,7 @@ async def staging_verify_sa() -> dict[str, Any]:
     # SA experiment is NO LONGER queued automatically.
     # The frontend shows a 'Run SA Validation' button after archive so the
     # user can trigger it explicitly when they're ready.
-    _log.info("verify-sa: archive complete; SA run deferred to user action")
+    _log.info("verify-archive: archive complete; SA run deferred to user action")
 
     # Mark foundation dirty
     try:
@@ -1158,6 +1163,23 @@ async def staging_verify_sa() -> dict[str, Any]:
         "suggested_sa_exp": exp_id,
         "suggested_sa_name": exp_name,
     }
+
+
+@router.post("/staging/verify-sa", deprecated=True)
+async def staging_verify_sa() -> dict[str, Any]:
+    """DEPRECATED alias of POST /staging/verify-archive (Phase-109).
+
+    The old name implied an SA validation test; the endpoint performs
+    none — it marks approved staging candidates as verified and
+    archives them. Retained ONLY because the committed frontend
+    build (frontend/dist) still calls this path; new callers must
+    use /staging/verify-archive. Remove once the frontend build no
+    longer references it.
+    """
+    _log.warning(
+        "DEPRECATED endpoint called: /staging/verify-sa — "
+        "use /staging/verify-archive")
+    return await staging_verify_archive()
 
 
 # ── Anchor promotion helpers ────────────────────────────────────────────────
@@ -1224,16 +1246,26 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
 
     Body (optional JSON):
       dry_run (bool, default False) — return stats without modifying files.
+      evidence_refs (dict sign -> ref, optional) — recorded non-SA
+        evidence references for candidates that do not carry one.
+
+    Phase-109 evidence gate (spec 007 Step 4; governance H26): a
+    candidate is promoted ONLY if it carries a recorded non-SA
+    evidence reference — its own `evidence_ref` field or an entry
+    in `evidence_refs`. Candidates without one are NOT written and
+    are reported in `blocked_no_evidence`. SA agreement is never a
+    sufficient condition for promotion (Phase-107).
 
     Returns:
-      {ok, dry_run, promoted, skipped, total_anchors,
-       prev_coverage, new_coverage, promotable}
+      {ok, dry_run, promoted, skipped, blocked_no_evidence,
+       total_anchors, prev_coverage, new_coverage, promotable}
     """
     try:
         body: dict[str, Any] = await request.json()
     except Exception:  # noqa: BLE001
         body = {}
     dry_run: bool = bool(body.get("dry_run", False))
+    evidence_refs: dict[str, Any] = body.get("evidence_refs") or {}
 
     if not _ARCHIVE_JSON.exists():
         return {"ok": True, "promoted": 0, "skipped": 0,
@@ -1288,11 +1320,19 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
     # ── 4. Promote ────────────────────────────────────────────────────────
     promoted_signs: list[str] = []
     skipped_signs: list[str] = []
+    blocked_signs: list[str] = []
     now_label = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
 
     for sid, c in best_per_sign.items():
         if sid in hm_signs:
             skipped_signs.append(sid)  # already HIGH/MEDIUM — never downgrade
+            continue
+        # Phase-109 evidence gate (H26): a recorded non-SA evidence
+        # reference is REQUIRED — the candidate's own evidence_ref
+        # field or the request's evidence_refs map.
+        ev_ref = c.get("evidence_ref") or evidence_refs.get(sid) or ""
+        if not (isinstance(ev_ref, str) and ev_ref.strip()):
+            blocked_signs.append(sid)
             continue
         score = float(c.get("evidence_score", 0) or 0)
         st = (c.get("review_status") or "").lower()
@@ -1303,6 +1343,7 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
             f"evidence_type={c.get('evidence_type', '')}",
             f"score={score:.2f}",
             f"status={st}",
+            f"evidence_ref={ev_ref}",
         ]
         if c.get("dedr_support"):
             basis_parts.append(f"DEDR: {c['dedr_support']}")
@@ -1373,60 +1414,41 @@ async def promote_to_anchors(request: Request) -> dict[str, Any]:
         except Exception:  # noqa: BLE001
             pass
 
-        # ── 8. Mandatory SA validation ───────────────────────────────────
-        # Auto-queue SA experiments to validate the newly promoted anchors.
-        # This runs as background jobs — results appear in the Jobs panel.
-        sa_jobs_queued: list[str] = []
-        SA_EXPERIMENTS = [
-            "indus_cisi_dravidian_vs_sanskrit",
-            "indus_anchor_sweep",
-            "indus_kalyanaraman_crossval",
-        ]
-        try:
-            from glossa_lab.database import get_db as _get_db  # noqa: PLC0415
-            _db = _get_db()
-            if _db is not None:
-                for sa_exp_id in SA_EXPERIMENTS:
-                    try:
-                        _sa_job = await _db.create_job(
-                            name=f"SA validation: {sa_exp_id} [post-promote]",
-                            pipeline="graph_experiment",
-                            params={"experiment_id": sa_exp_id},
-                            created_at=datetime.now(UTC).isoformat(
-                                timespec="seconds").replace("+00:00", "Z"),
-                            initial_status="pending",
-                        )
-                        sa_jobs_queued.append(_sa_job["id"])
-                        _log.info("Post-promote SA queued: %s (job %s)",
-                                  sa_exp_id, _sa_job["id"])
-                    except Exception as _sae:  # noqa: BLE001
-                        _log.warning("Could not queue SA %s: %s", sa_exp_id, _sae)
-        except Exception:  # noqa: BLE001
-            pass
+        # ── 8. SA validation is NOT auto-queued (Phase-109, H26) ──
+        # The former "Mandatory SA validation" block auto-queued SA
+        # graph experiments after every promotion. Removed: SA
+        # agreement is not evidence for sign values (Phase-107
+        # falsification), and promotion is now gated on a recorded
+        # non-SA evidence reference (Step 4 gate above). The
+        # sa_validation_jobs response key is retained, always [].
 
     cov_delta = round(new_coverage - prev_coverage, 4) if not dry_run else 0.0
-    sa_msg = ""
-    if not dry_run and promoted_signs and sa_jobs_queued:
-        sa_msg = f" SA validation auto-queued ({len(sa_jobs_queued)} job(s))."
+    blocked_msg = ""
+    if blocked_signs:
+        blocked_msg = (
+            f" {len(blocked_signs)} candidate(s) BLOCKED: no recorded "
+            "non-SA evidence reference (H26).")
     return {
         "ok":           True,
         "dry_run":      dry_run,
         "promoted":     len(promoted_signs),
         "skipped":      len(skipped_signs),
+        "blocked_no_evidence": blocked_signs,
         "promotable":   promotable_count,
         "total_anchors": len(current_anchors),
         "prev_coverage":  round(prev_coverage, 4),
         "new_coverage":   round(new_coverage, 4),
         "coverage_delta": cov_delta,
-        "sa_validation_jobs": sa_jobs_queued if not dry_run else [],
+        "sa_validation_jobs": [],
         "message": (
             f"{len(promoted_signs)} signs promoted to INDUS_FINAL_ANCHORS.json. "
             f"Coverage: {prev_coverage*100:.1f}% → {new_coverage*100:.1f}% "
-            f"(+{cov_delta*100:.1f}%).{sa_msg}"
+            f"(+{cov_delta*100:.1f}%).{blocked_msg}"
         ) if not dry_run and promoted_signs else (
             f"Dry run: {len(promoted_signs)} would be promoted, "
             f"{len(skipped_signs)} skipped (already HIGH/MEDIUM)."
-        ) if dry_run else "No new signs to promote.",
+            f"{blocked_msg}"
+        ) if dry_run else f"No new signs to promote.{blocked_msg}",
     }
 
 

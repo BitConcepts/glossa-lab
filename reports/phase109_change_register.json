@@ -1,0 +1,3368 @@
+{
+  "phase": 109,
+  "spec": "specs/007-phase109-follow-through",
+  "date": "2026-10-06",
+  "entries": [
+    {
+      "step": "step1",
+      "sign": "H003",
+      "rule": "step1(c)",
+      "action": "demote",
+      "before": {
+        "reading": "an",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-09T04:29:43Z); evidence_type=high_neighbor_concentration; score=1.20; status=verified; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "an",
+        "confidence": "LOW",
+        "basis": "Promoted from anchor staging archive (2026-06-09T04:29:43Z); evidence_type=high_neighbor_concentration; score=1.20; status=verified; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "citations": [
+        "no independent non-SA support recorded for the staging value; no restorable prior sourced reading in the backup snapshots"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M042",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "vaN",
+        "confidence": "HIGH",
+        "basis": " [Phase-116 recal: SA-cons=0.62✓ DEDR✓]",
+        "source": "Phase-89 systematic DEDR (ICON, MEDIUM)"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M046",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=high_neighbor_concentration; score=0.65; status=verified; DEDR: gem / stone",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kaL",
+        "confidence": "HIGH",
+        "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]",
+        "source": "Phase-89 systematic DEDR (ICON, MEDIUM)"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M101",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M104",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "LOW",
+        "basis": "Promoted from anchor staging archive (2026-06-09T04:41:21Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M105",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M106",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T18:22:07Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M108",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kaL",
+        "confidence": "HIGH",
+        "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]",
+        "source": "Phase-89 systematic DEDR (ICON, MEDIUM)"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M109",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M111",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M112",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "LOW",
+        "basis": "Promoted from anchor staging archive (2026-06-09T04:41:21Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M115",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "LOW",
+        "basis": "Promoted from anchor staging archive (2026-06-09T04:41:21Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M116",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M120",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M123",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M126",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M129",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M131",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M133",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M134",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M135",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M136",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M138",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "pan",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: worker / make",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M140",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.42; status=verified; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M146",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M147",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M156",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: gem / stone",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M158",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M170",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "van",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M181",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M186",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M195",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M197",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M200",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "LOW",
+        "basis": "Promoted from anchor staging archive (2026-06-09T04:41:21Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M201",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M203",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M207",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M208",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "van",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: smith / strong",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M209",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M210",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "pan",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M213",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M214",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M217",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "van",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M218",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M219",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M222",
+      "rule": "step1(a)",
+      "action": "keep+annotate",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "citations": [
+        "A1 crosswalk v2.1 Parpola reading 'min' (spec 004 WS2 expansion (2026-10-05)) equals the current reading (exact first segment)"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M224",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M226",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M227",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M230",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "in",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: genitive / of",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M231",
+      "rule": "step1(c)",
+      "action": "demote",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "min",
+        "confidence": "LOW",
+        "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "citations": [
+        "no independent non-SA support recorded for the staging value; the overwritten prior reading originates from an SA run (Phase-122) and is not restorable after Phase-107"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M240",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M242",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "LOW",
+        "basis": "Promoted from anchor staging archive (2026-06-09T04:41:21Z); evidence_type=high_neighbor_concentration; score=0.62; status=approved; DEDR: gem / stone",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M243",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M245",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M247",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "pan",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M250",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M251",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M252",
+      "rule": "step1(c)",
+      "action": "demote",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "min",
+        "confidence": "LOW",
+        "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "citations": [
+        "no independent non-SA support recorded for the staging value; the overwritten prior reading originates from an SA run (Phase-122) and is not restorable after Phase-107"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M255",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M258",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M259",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "van",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: smith / strong",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M260",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "LOW",
+        "basis": "Promoted from anchor staging archive (2026-06-09T04:41:21Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M274",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M277",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M278",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "van",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M280",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M286",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "LOW",
+        "basis": "Promoted from anchor staging archive (2026-06-09T04:41:21Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M287",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M297",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M298",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "pan",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M301",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M303",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M309",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M310",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.41; status=verified; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M312",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M314",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "pan",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M316",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M318",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M320",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "ko",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: take / kill",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M322",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M323",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M324",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M327",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M334",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "ko",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: take / kill",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M339",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M340",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "pan",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M341",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M346",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M354",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M356",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M359",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M360",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M363",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "ko",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: take / kill",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M364",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "pan",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M369",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "van",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M370",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M378",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M379",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M380",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M381",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M382",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M387",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M388",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "ko",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: take / kill",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M389",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "pan",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M390",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M392",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M394",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M396",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M397",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M405",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M406",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M407",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "an",
+        "confidence": "LOW",
+        "basis": "Promoted from anchor staging archive (2026-06-09T04:41:21Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M408",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M413",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+        "source": "anchor_staging_archive:compound_semantic_coherence"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step1",
+      "sign": "M415",
+      "rule": "step1(b)",
+      "action": "restore",
+      "before": {
+        "reading": "kal",
+        "confidence": "MEDIUM",
+        "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
+        "source": "anchor_staging_archive:blocker_sign_context"
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+        "source": "Phase-111"
+      },
+      "citations": [
+        "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M011",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "kaḷiṟu",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "kaḷiṟu",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M021",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "kō",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "kō",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M024",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "nē",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "nē",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M028",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "cōḻ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "cōḻ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M031",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "kai",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "kai",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M033",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "puli",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "puli",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M035",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "po",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "po",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M036",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "tiru",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "tiru",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M040",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "ri",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "ri",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M058",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "ke",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "ke",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M071",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "nal",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "nal",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M072",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "mā",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "mā",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M102",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "ni",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "ni",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M103",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "kol",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "kol",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M127",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "vē",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "vē",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M149",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "or",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "or",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M153",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "pu",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "pu",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M155",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "ka",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "ka",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M168",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "inci",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "inci",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M169",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "rā",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "rā",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M177",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "na",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "na",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M178",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "i",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "i",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M183",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "vēḷ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "vēḷ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M223",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "muḷ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "muḷ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M235",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "vē",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "vē",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M237",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "ce",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "ce",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M239",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "il",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "il",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M254",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "tēṉ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "tēṉ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M262",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "i",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "i",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M270",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "muḷ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "muḷ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M272",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "ma",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "ma",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M281",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "piLLai",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "piLLai",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M293",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "ta",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "ta",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M304",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "vēṟ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "vēṟ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M332",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "intu",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "intu",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M345",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "taṭ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "taṭ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M350",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "vē",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "vē",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M355",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "lu",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "lu",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M365",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "vāṉ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "vāṉ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M383",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "kol",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "kol",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M401",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "vē",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "vē",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M402",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "vēḷ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "vēḷ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M412",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "cūḷ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "cūḷ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M416",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "na",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "na",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step3",
+      "sign": "M293",
+      "rule": "step3",
+      "action": "tier_change",
+      "before": {
+        "reading": "ta",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "ta",
+        "confidence": "MEDIUM"
+      },
+      "citations": [
+        "reports/phase109_dossier_M293.json"
+      ]
+    },
+    {
+      "step": "step3",
+      "sign": "M362",
+      "rule": "step3",
+      "action": "tier_change",
+      "before": {
+        "reading": "aṇi",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "aṇi",
+        "confidence": "MEDIUM"
+      },
+      "citations": [
+        "reports/phase109_dossier_M362.json"
+      ]
+    },
+    {
+      "step": "step3",
+      "sign": "M398",
+      "rule": "step3",
+      "action": "tier_change",
+      "before": {
+        "reading": "kuṟi",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "kuṟi",
+        "confidence": "MEDIUM"
+      },
+      "citations": [
+        "reports/phase109_dossier_M398.json"
+      ]
+    },
+    {
+      "step": "step5b",
+      "sign": "*",
+      "rule": "step5(b)",
+      "action": "bookkeeping",
+      "before": {
+        "by_confidence": {
+          "HIGH": 166,
+          "MEDIUM": 109,
+          "LOW": 8,
+          "CANDIDATE": 4
+        },
+        "n_medium": 109,
+        "n_low": 8,
+        "corpus_token_coverage": 0.9647,
+        "medium_count": 109,
+        "low_count": 8,
+        "hm_confirmed_count": 275
+      },
+      "after": {
+        "by_confidence": {
+          "CANDIDATE": 4,
+          "LOW": 112,
+          "MEDIUM": 5,
+          "HIGH": 166
+        },
+        "n_medium": 5,
+        "n_low": 112,
+        "corpus_token_coverage": 0.921879,
+        "medium_count": 5,
+        "low_count": 112,
+        "hm_confirmed_count": 171
+      },
+      "citations": [
+        "reports/phase109_rebase.json",
+        "spec 004 WS3 method"
+      ]
+    }
+  ]
+}

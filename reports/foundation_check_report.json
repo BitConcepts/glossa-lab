@@ -9,9 +9,9 @@
     "[OK]   Holdat M-prefix signs: all sign IDs are M-prefixed",
     "[OK]   Holdat M-number range: M1-M416",
     "[OK]   Holdat position order: 0 seals with out-of-order positions",
-    "[OK]   Anchor total count: total=287 actual=287 (H+M=275 LOW+CANDIDATE=12)",
+    "[OK]   Anchor total count: total=287 actual=287 (H+M=171 LOW+CANDIDATE=116)",
     "[OK]   Core HIGH anchors >= 7: HIGH=166 (core=7, Phase-48 promoted 30 more)",
-    "[OK]   M267 resolved: UNCERTAIN=0, MEDIUM=109 (M267 promoted Phase-74)",
+    "[OK]   M267 resolved: UNCERTAIN=0, MEDIUM=5 (M267 promoted Phase-74)",
     "[OK]   HIGH anchor M342=ay: reading='ay/\u0101' conf=HIGH",
     "[OK]   HIGH anchor M176=an: reading='an/a\u1e47' conf=HIGH",
     "[OK]   HIGH anchor M099=kol: reading='kol/ko\u1e37' conf=HIGH",
@@ -28,7 +28,7 @@
     "[OK]   CISI corpus file exists: 179 inscriptions",
     "[OK]   Dravidian Tamil LM (clean, 944 bigrams): dravidian_tamil_lm.json: 944 bigrams, verdict=CLEAN, contamination=0/15 top bigrams, citation=\u2713. Sources: DEDR (Burrow & Emeneau 1984) + Sangam corpus + Parpola 1994/2010.",
     "[OK]   Syllabic LM present: 5630 syllables, 31681 bigrams",
-    "[OK]   Phase-52 constrained SA z >= 4: z=17.64 (116 anchors pinned)",
+    "[OK]   Phase-52 constrained SA z >= 4 (historical record; not evidence \u2014 Phase-107): z=17.64 (116 anchors pinned) \u2014 historical: Phase-107 held-out agreement 0.000 falsified SA as evidence for sign values",
     "[OK]   Phase-132 M267 motif-independence p > 0.05: \u03c7\u00b2=12.98 p=0.1124 \u2014 UNIFORM=genitive particle confirmed",
     "[OK]   Phase-132 Parpola HIGH agreement >= 90%: HIGH anchors vs Parpola 1994: 95.5%",
     "[OK]   Phase-133 genuine H+M anchors >= 150: 157 genuine phonetically-anchored signs (excludes kur-parking placeholders)",
@@ -102,11 +102,6 @@
       "status": "CONFIRMED from Fuls 2023 preview \u2014 access needed for data"
     },
     {
-      "claim": "Phase-44 Dravidian 3.13x",
-      "detail": "z=12.1, 944-LM, confirmed multi-strand",
-      "status": "VERIFIED \u2014 strongest SA result"
-    },
-    {
       "claim": "Phase-45 Fuls 7/7 concordance",
       "detail": "100% agreement HIGH anchors vs Fuls NWSP",
       "status": "VERIFIED \u2014 independent method corroboration"
@@ -127,11 +122,6 @@
       "status": "VERIFIED \u2014 3-test battery"
     },
     {
-      "claim": "Phase-52 syllabic SA z=16",
-      "detail": "59 anchors pinned; z=16.01; SA agrees 55%",
-      "status": "VERIFIED \u2014 highest z-score"
-    },
-    {
       "claim": "Phase-53 16 formulas decoded",
       "detail": "tiru-il-ay-an-kol and 15 others >=80% decoded",
       "status": "VERIFIED \u2014 pilot readings with morphological annotation"
@@ -140,11 +130,6 @@
       "claim": "Phase-56 expanded Parpola crosswalk",
       "detail": "14 new MEDIUM anchors added; 75-entry EXTENDED_PARPOLA_MAP; total anchors 163",
       "status": "VERIFIED \u2014 Parpola 1994/2010 sources cross-referenced with DEDR"
-    },
-    {
-      "claim": "Phase-57 z=19.07 (best SA result)",
-      "detail": "53 pinned anchors; z=19.07 > Phase-52 z=16.01; 5-seed consensus",
-      "status": "VERIFIED \u2014 highest z-score in the project"
     },
     {
       "claim": "Phase-58 phonotactic VALID",
@@ -160,11 +145,6 @@
       "claim": "Phase-61 94% vowel harmony",
       "detail": "94% of inscriptions (500-seal sample) pass Dravidian vowel harmony constraint",
       "status": "VERIFIED \u2014 consistent with Dravidian hypothesis"
-    },
-    {
-      "claim": "Phase-67 Sanskrit falsification 1.85x (DEFINITIVE)",
-      "detail": "Dravidian lift 23.4% vs Sanskrit lift 12.6% \u2014 same-null comparison (methodologically valid). Ratio 1.85x. Resolves Phase-66 NEEDS CAVEAT.",
-      "status": "VERIFIED \u2014 lift comparison valid across LMs"
     },
     {
       "claim": "Phase-69 grammar 100% site-invariant",
@@ -219,6 +199,16 @@
       "status": "RISK-001 partial: 45 entries now mapped, 345 remain"
     },
     {
+      "claim": "Phase-44 Dravidian 3.13x",
+      "detail": "z=12.1, 944-LM, confirmed multi-strand",
+      "status": "NEEDS CAVEAT \u2014 a language-model language-fit statistic, not an SA decipherment result; its SA framing is superseded by Phase-107"
+    },
+    {
+      "claim": "Phase-52 syllabic SA z=16",
+      "detail": "59 anchors pinned; z=16.01; SA agrees 55%",
+      "status": "SUPERSEDED (Phase-107/108) \u2014 SA recovers 0.000 held-out anchor signs; historical result only, not evidence for sign values"
+    },
+    {
       "claim": "M267 reading",
       "detail": "4 STRONG candidates (col/in/um/e) but SA cannot discriminate",
       "status": "NEEDS CAVEAT \u2014 multi-syllabic, use grammar analysis only"
@@ -234,6 +224,11 @@
       "status": "DO NOT CLAIM \u2014 needs normalization fix"
     },
     {
+      "claim": "Phase-57 z=19.07 (formerly 'best SA result')",
+      "detail": "53 pinned anchors; z=19.07 > Phase-52 z=16.01; 5-seed consensus",
+      "status": "SUPERSEDED (Phase-107) \u2014 SA z-scores do not evidence sign values; historical result only"
+    },
+    {
       "claim": "Phase-61 12% initial-consonant violation rate",
       "detail": "47/390 SA-assigned readings use voiced stops (g/b/d) as initials; invalid in Proto-Dravidian. SA-only readings not phonotactically filtered \u2014 HIGH/MEDIUM set has 0 violations.",
       "status": "NEEDS CAVEAT \u2014 SA proposals only; HIGH+MEDIUM readings are phonotactically clean"
@@ -244,6 +239,11 @@
       "status": "NEEDS INVESTIGATION \u2014 does not invalidate other Phase-56-61 results"
     },
     {
+      "claim": "Phase-67 Sanskrit falsification 1.85x",
+      "detail": "Dravidian lift 23.4% vs Sanskrit lift 12.6% \u2014 same-null comparison. Ratio 1.85x.",
+      "status": "NEEDS CAVEAT \u2014 'DEFINITIVE' retired (Phase-109): the 1.85x stands only as a same-null descriptive statistic; the SA-based falsification framing is superseded by Phase-107"
+    },
+    {
       "claim": "Phase-70 M267=in SA test",
       "detail": "Pinning M267 to 'in' degrades SA z from 14.18 to 12.54 (-1.64). SA cannot pin multi-syllabic M267 \u2014 confirms Phase-47 T3. Grammar analysis (Phase-64, score 7.0) remains primary evidence for iN.",
       "status": "NEEDS CAVEAT \u2014 SA evidence neutral; grammar evidence strong"
@@ -251,7 +251,7 @@
     {
       "claim": "Phase-73 ensemble ENSEMBLE_HIGH=4",
       "detail": "10 seeds + 2-char agreement gives ENSEMBLE_HIGH=4 (M099=ko confirmed, 3 others unverified). Still modest \u2014 SA variance limits consensus even with 10 seeds.",
-      "status": "NEEDS CAVEAT \u2014 ensemble method limited by SA variance"
+      "status": "SUPERSEDED (Phase-107) \u2014 an ensemble of SA runs cannot evidence sign values; historical result only"
     }
   ],
   "verdict": "READY WITH CAVEATS",

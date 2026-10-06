@@ -423,15 +423,15 @@ if syl_lm.exists():
 else:
     CHECK("Syllabic LM present", False, "dravidian_syllabic_lm.json missing — run phase49_syllabic_lm.py")
 
-print("\n── CHECK NEW-F: Phase-52 constrained SA z >= 4 ─────────────────────────")
+print("\n── CHECK NEW-F: Phase-52 constrained SA z >= 4 (HISTORICAL — SA superseded by Phase-107) ──")
 p52_path = RPRT / "phase52_syllabic_sa.json"
 if p52_path.exists():
     p52 = json.loads(p52_path.read_text(encoding="utf-8"))
     z52 = p52.get("results", {}).get("z_score", 0)
-    CHECK("Phase-52 constrained SA z >= 4", z52 >= 4.0,
-          f"z={z52:.2f} ({p52.get('n_pinned_signs',0)} anchors pinned)")
+    CHECK("Phase-52 constrained SA z >= 4 (historical record; not evidence — Phase-107)", z52 >= 4.0,
+          f"z={z52:.2f} ({p52.get('n_pinned_signs',0)} anchors pinned) — historical: Phase-107 held-out agreement 0.000 falsified SA as evidence for sign values")
 else:
-    WARN("Phase-52 result", "phase52_syllabic_sa.json not found — run IndusConstrainedSA node")
+    WARN("Phase-52 result", "phase52_syllabic_sa.json not found — historical artifact (SA superseded by Phase-107)")
 
 print("\n── CHECK NEW-G: GPU availability ───────────────────────────────────────")
 try:
@@ -444,8 +444,6 @@ except ImportError:
     WARN("torch not installed", "GPU checks skipped")
 
 solid_claims += [
-    ("Phase-44 Dravidian 3.13x", "z=12.1, 944-LM, confirmed multi-strand",
-     "VERIFIED — strongest SA result"),
     ("Phase-45 Fuls 7/7 concordance", "100% agreement HIGH anchors vs Fuls NWSP",
      "VERIFIED — independent method corroboration"),
     ("Phase-46 Janabiyah ALL 7 anchors", "Gulf contact zone has all 7 HIGH anchor signs",
@@ -454,12 +452,16 @@ solid_claims += [
      "VERIFIED — independent of SA"),
     ("Phase-48 30 signs promoted to HIGH", "30/30 MEDIUM signs validated; HIGH coverage 54%",
      "VERIFIED — 3-test battery"),
-    ("Phase-52 syllabic SA z=16", "59 anchors pinned; z=16.01; SA agrees 55%",
-     "VERIFIED — highest z-score"),
     ("Phase-53 16 formulas decoded", "tiru-il-ay-an-kol and 15 others >=80% decoded",
      "VERIFIED — pilot readings with morphological annotation"),
 ]
 caveated_claims += [
+    ("Phase-44 Dravidian 3.13x", "z=12.1, 944-LM, confirmed multi-strand",
+     "NEEDS CAVEAT — a language-model language-fit statistic, not an SA decipherment "
+     "result; its SA framing is superseded by Phase-107"),
+    ("Phase-52 syllabic SA z=16", "59 anchors pinned; z=16.01; SA agrees 55%",
+     "SUPERSEDED (Phase-107/108) — SA recovers 0.000 held-out anchor signs; "
+     "historical result only, not evidence for sign values"),
     ("M267 reading", "4 STRONG candidates (col/in/um/e) but SA cannot discriminate",
      "NEEDS CAVEAT — multi-syllabic, use grammar analysis only"),
     ("Phase-54 falsification", "43% support — some tests under-powered",
@@ -556,9 +558,6 @@ solid_claims += [
     ("Phase-56 expanded Parpola crosswalk",
      "14 new MEDIUM anchors added; 75-entry EXTENDED_PARPOLA_MAP; total anchors 163",
      "VERIFIED — Parpola 1994/2010 sources cross-referenced with DEDR"),
-    ("Phase-57 z=19.07 (best SA result)",
-     "53 pinned anchors; z=19.07 > Phase-52 z=16.01; 5-seed consensus",
-     "VERIFIED — highest z-score in the project"),
     ("Phase-58 phonotactic VALID",
      "0 violations in HIGH/MEDIUM set; 16 distinct initials; max phoneme share 24.7% (<30%)",
      "VERIFIED — Krishnamurti 2003 Dravidian phonotactic rules"),
@@ -570,6 +569,10 @@ solid_claims += [
      "VERIFIED — consistent with Dravidian hypothesis"),
 ]
 caveated_claims += [
+    ("Phase-57 z=19.07 (formerly 'best SA result')",
+     "53 pinned anchors; z=19.07 > Phase-52 z=16.01; 5-seed consensus",
+     "SUPERSEDED (Phase-107) — SA z-scores do not evidence sign values; "
+     "historical result only"),
     ("Phase-61 12% initial-consonant violation rate",
      "47/390 SA-assigned readings use voiced stops (g/b/d) as initials; invalid in Proto-Dravidian. "
      "SA-only readings not phonotactically filtered — HIGH/MEDIUM set has 0 violations.",
@@ -582,10 +585,6 @@ caveated_claims += [
 
 # ── Phase-67-73 solid claims ──────────────────────────────────────────────────
 solid_claims += [
-    ("Phase-67 Sanskrit falsification 1.85x (DEFINITIVE)",
-     "Dravidian lift 23.4% vs Sanskrit lift 12.6% — same-null comparison (methodologically valid). "
-     "Ratio 1.85x. Resolves Phase-66 NEEDS CAVEAT.",
-     "VERIFIED — lift comparison valid across LMs"),
     ("Phase-69 grammar 100% site-invariant",
      "100% of 65 HIGH/MEDIUM signs show consistent I/M/T grammar across all 9 Holdat sites. "
      "Chi-squared p>0.05 for all signs. Pan-Indus writing system confirmed.",
@@ -603,6 +602,12 @@ solid_claims += [
      "VERIFIED — morphological role database + DEDR citations"),
 ]
 caveated_claims += [
+    ("Phase-67 Sanskrit falsification 1.85x",
+     "Dravidian lift 23.4% vs Sanskrit lift 12.6% — same-null comparison. "
+     "Ratio 1.85x.",
+     "NEEDS CAVEAT — 'DEFINITIVE' retired (Phase-109): the 1.85x stands only as a "
+     "same-null descriptive statistic; the SA-based falsification framing is "
+     "superseded by Phase-107"),
     ("Phase-70 M267=in SA test",
      "Pinning M267 to 'in' degrades SA z from 14.18 to 12.54 (-1.64). "
      "SA cannot pin multi-syllabic M267 — confirms Phase-47 T3. "
@@ -611,7 +616,8 @@ caveated_claims += [
     ("Phase-73 ensemble ENSEMBLE_HIGH=4",
      "10 seeds + 2-char agreement gives ENSEMBLE_HIGH=4 (M099=ko confirmed, 3 others unverified). "
      "Still modest — SA variance limits consensus even with 10 seeds.",
-     "NEEDS CAVEAT — ensemble method limited by SA variance"),
+     "SUPERSEDED (Phase-107) — an ensemble of SA runs cannot evidence sign values; "
+     "historical result only"),
 ]
 
 # ── NEW-S: Phase-166 sibilant DEDR validation ──────────────────────────────

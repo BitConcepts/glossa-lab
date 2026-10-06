@@ -2649,19 +2649,19 @@
     "glossa_lab_version": "2026-05-11"
   },
   "by_confidence": {
-    "HIGH": 166,
-    "MEDIUM": 109,
-    "LOW": 8,
-    "CANDIDATE": 4
+    "CANDIDATE": 4,
+    "LOW": 112,
+    "MEDIUM": 5,
+    "HIGH": 166
   },
   "_cleanup_note": "Quality audit cleanup 2026-06-07: removed 215 phantom signs, 105 empty readings, downgraded 105 bulk-duplicate readings",
   "metadata": {
     "total_count": 287,
     "high_count": 166,
-    "medium_count": 109,
-    "low_count": 8,
+    "medium_count": 5,
+    "low_count": 112,
     "candidate_count": 4,
-    "hm_confirmed_count": 275,
+    "hm_confirmed_count": 171,
     "canonical_counts": {
       "defined": "2026-10-05 (spec 004 WS3)",
       "total_entries": "Number of entries in the `anchors` mapping. `total`, `total_all_entries` and `metadata.total_count` all denote this quantity and must always equal it.",
@@ -2673,11 +2673,11 @@
   },
   "total_all_entries": 287,
   "n_high": 166,
-  "n_medium": 109,
-  "n_low": 8,
+  "n_medium": 5,
+  "n_low": 112,
   "corpus_signs": 390,
   "corpus_tokens": 7002,
-  "corpus_token_coverage": 0.9647,
+  "corpus_token_coverage": 0.921879,
   "_note": "total / total_all_entries / metadata.total_count = ALL entries in the anchors mapping (every confidence level). H+M confirmed is reported separately as metadata.hm_confirmed_count. DO NOT use total/corpus_signs for % coverage — use corpus_token_coverage instead. (Corrected 2026-10-05, spec 004 WS3: the previous note claimed total covered H+M only, which contradicted the field's actual value.)",
   "_phase128_129_note": "Phase-128: M374=kul (MEDIUM, substrate Munda/DEDR 1709), M351=vī (MEDIUM, substrate Munda/DEDR 5388). Phase-129: M072=mā (MEDIUM, INITIAL position/DEDR 4751), M149=or (MEDIUM, MEDIAL/DEDR 987), M185=pul (MEDIUM, MEDIAL/DEDR 4336). Remaining 20 of 25 unresolved signs stay LOW — insufficient DEDR+positional evidence for promotion.",
   "_phase132_note": "Phase-132 validation: 114 Phase-111 kur-allograph MEDIUM signs downgraded to LOW. These were positional parking spots (all-MEDIAL L1=0), not genuine phonetic readings. New H+M=157, coverage=0.9075. Genuine phonetically-anchored coverage (H+M, non-parking) = 90.75%.",
@@ -2787,5 +2787,6 @@
   "reading_direction": "rtl",
   "reading_direction_basis": "RTL confirmed by positional analysis: classifier/prefix signs at position 0 (avg_position=0.000), case-marker suffixes at position end (avg_position=0.598). Position 0 = rightmost sign = first read. Consistent with Ashraf and Sinha (2018) entropy test and Mahadevan (1977) convention.",
   "n_candidate": 4,
-  "_ws3_reconciliation_note": "2026-10-05 (spec 004 WS3): all summary/bookkeeping fields regenerated from the entries (total=287; HIGH=166, MEDIUM=109, LOW=8, CANDIDATE=4; H+M=275). Before: by_confidence summed to 413 (HIGH 105/MEDIUM 59/LOW 243/CANDIDATE 6), metadata.total_count=172, total_all_entries=397, metadata.medium_count=6, n_medium=6 — all stale snapshots of earlier file states. No anchor entry was modified: anchors-mapping canonical sha256 before == after == fa16861c3b896266508cab805bc69b21a620db46b536f4cb8e5f4fed04f294f7."
+  "_ws3_reconciliation_note": "2026-10-05 (spec 004 WS3): all summary/bookkeeping fields regenerated from the entries (total=287; HIGH=166, MEDIUM=109, LOW=8, CANDIDATE=4; H+M=275). Before: by_confidence summed to 413 (HIGH 105/MEDIUM 59/LOW 243/CANDIDATE 6), metadata.total_count=172, total_all_entries=397, metadata.medium_count=6, n_medium=6 — all stale snapshots of earlier file states. No anchor entry was modified: anchors-mapping canonical sha256 before == after == fa16861c3b896266508cab805bc69b21a620db46b536f4cb8e5f4fed04f294f7.",
+  "_phase109_note": "Phase-109 (2026-10-06, spec 007): staging-cohort re-review (Step 1), SA-lineage provenance flags (Step 2), M293/M362/M398 re-reviews (Step 3) applied; summary fields regenerated from the entries; full change record in reports/phase109_change_register.json."
 }

@@ -1,0 +1,1835 @@
+{
+ "phase": 108,
+ "step": 3,
+ "gpu_device": "cpu (torch absent)",
+ "methods": {
+  "coverage": "Holdat CSV token rows; covered iff sign in set",
+  "phonotactics": "phase58 analyze_phoneme_inventory (initial-validity of readings; LOW skipped by that code)",
+  "parpola": "crosswalk v2.1 Parpola readings; normalised first-segment equality (spec 006)",
+  "parpola_p159_crosscheck": "share of the set's HIGH signs on Phase-159 confirmed_signs (source of README 59%)",
+  "site_invariance": "phase69 chi2_test + I/M/T counting; sites with per-sign total >= 3; <2 sites = insufficient data"
+ },
+ "sets": {
+  "full_hm": {
+   "n_signs": 275,
+   "coverage": {
+    "n_tokens": 7002,
+    "n_covered": 6755,
+    "coverage": 0.964724
+   },
+   "phonotactics": {
+    "n_readings_checked": 275,
+    "n_violations": 0,
+    "violations": [],
+    "n_distinct_initials": 18,
+    "max_phoneme_share": 0.2945,
+    "violation_rate": 0.0
+   },
+   "parpola": {
+    "n_compared": 121,
+    "n_agree": 110,
+    "rate": 0.909091,
+    "details": [
+     {
+      "sign": "M001",
+      "anchor_norm": "tol",
+      "parpola_norm": "tol",
+      "agree": true
+     },
+     {
+      "sign": "M002",
+      "anchor_norm": "kun",
+      "parpola_norm": "kun",
+      "agree": true
+     },
+     {
+      "sign": "M003",
+      "anchor_norm": "kalam",
+      "parpola_norm": "kalam",
+      "agree": true
+     },
+     {
+      "sign": "M004",
+      "anchor_norm": "kel",
+      "parpola_norm": "kel",
+      "agree": true
+     },
+     {
+      "sign": "M005",
+      "anchor_norm": "kon",
+      "parpola_norm": "kon",
+      "agree": true
+     },
+     {
+      "sign": "M006",
+      "anchor_norm": "puli",
+      "parpola_norm": "puli",
+      "agree": true
+     },
+     {
+      "sign": "M007",
+      "anchor_norm": "aal",
+      "parpola_norm": "aal",
+      "agree": true
+     },
+     {
+      "sign": "M008",
+      "anchor_norm": "erumai",
+      "parpola_norm": "erumai",
+      "agree": true
+     },
+     {
+      "sign": "M009",
+      "anchor_norm": "an",
+      "parpola_norm": "an",
+      "agree": true
+     },
+     {
+      "sign": "M010",
+      "anchor_norm": "pat",
+      "parpola_norm": "pat",
+      "agree": true
+     },
+     {
+      "sign": "M011",
+      "anchor_norm": "kaliru",
+      "parpola_norm": "kaliru",
+      "agree": true
+     },
+     {
+      "sign": "M012",
+      "anchor_norm": "onru",
+      "parpola_norm": "onru",
+      "agree": true
+     },
+     {
+      "sign": "M013",
+      "anchor_norm": "nakaram",
+      "parpola_norm": "nakaram",
+      "agree": true
+     },
+     {
+      "sign": "M014",
+      "anchor_norm": "tiru",
+      "parpola_norm": "tiru",
+      "agree": true
+     },
+     {
+      "sign": "M015",
+      "anchor_norm": "ma",
+      "parpola_norm": "ma",
+      "agree": true
+     },
+     {
+      "sign": "M016",
+      "anchor_norm": "kaliru",
+      "parpola_norm": "kaliru",
+      "agree": true
+     },
+     {
+      "sign": "M017",
+      "anchor_norm": "kai",
+      "parpola_norm": "kai",
+      "agree": true
+     },
+     {
+      "sign": "M018",
+      "anchor_norm": "ner",
+      "parpola_norm": "ner",
+      "agree": true
+     },
+     {
+      "sign": "M019",
+      "anchor_norm": "ampu",
+      "parpola_norm": "ampu",
+      "agree": true
+     },
+     {
+      "sign": "M020",
+      "anchor_norm": "kun",
+      "parpola_norm": "kun",
+      "agree": true
+     },
+     {
+      "sign": "M021",
+      "anchor_norm": "ko",
+      "parpola_norm": "ko",
+      "agree": true
+     },
+     {
+      "sign": "M022",
+      "anchor_norm": "kalam",
+      "parpola_norm": "kalam",
+      "agree": true
+     },
+     {
+      "sign": "M023",
+      "anchor_norm": "val",
+      "parpola_norm": "val",
+      "agree": true
+     },
+     {
+      "sign": "M024",
+      "anchor_norm": "ne",
+      "parpola_norm": "per",
+      "agree": false
+     },
+     {
+      "sign": "M025",
+      "anchor_norm": "cem",
+      "parpola_norm": "cem",
+      "agree": true
+     },
+     {
+      "sign": "M026",
+      "anchor_norm": "ma",
+      "parpola_norm": "ma",
+      "agree": true
+     },
+     {
+      "sign": "M027",
+      "anchor_norm": "mar",
+      "parpola_norm": "mar",
+      "agree": true
+     },
+     {
+      "sign": "M028",
+      "anchor_norm": "col",
+      "parpola_norm": "col",
+      "agree": true
+     },
+     {
+      "sign": "M029",
+      "anchor_norm": "yanai",
+      "parpola_norm": "yanai",
+      "agree": true
+     },
+     {
+      "sign": "M030",
+      "anchor_norm": "ko",
+      "parpola_norm": "ko",
+      "agree": true
+     },
+     {
+      "sign": "M031",
+      "anchor_norm": "kai",
+      "parpola_norm": "kai",
+      "agree": true
+     },
+     {
+      "sign": "M032",
+      "anchor_norm": "kol",
+      "parpola_norm": "kol",
+      "agree": true
+     },
+     {
+      "sign": "M033",
+      "anchor_norm": "puli",
+      "parpola_norm": "puli",
+      "agree": true
+     },
+     {
+      "sign": "M034",
+      "anchor_norm": "tol",
+      "parpola_norm": "tol",
+      "agree": true
+     },
+     {
+      "sign": "M035",
+      "anchor_norm": "po",
+      "parpola_norm": "po",
+      "agree": true
+     },
+     {
+      "sign": "M036",
+      "anchor_norm": "tiru",
+      "parpola_norm": "tiru",
+      "agree": true
+     },
+     {
+      "sign": "M037",
+      "anchor_norm": "kel",
+      "parpola_norm": "kel",
+      "agree": true
+     },
+     {
+      "sign": "M038",
+      "anchor_norm": "por",
+      "parpola_norm": "por",
+      "agree": true
+     },
+     {
+      "sign": "M039",
+      "anchor_norm": "anai",
+      "parpola_norm": "anai",
+      "agree": true
+     },
+     {
+      "sign": "M040",
+      "anchor_norm": "ri",
+      "parpola_norm": "mutalai",
+      "agree": false
+     },
+     {
+      "sign": "M041",
+      "anchor_norm": "per",
+      "parpola_norm": "per",
+      "agree": true
+     },
+     {
+      "sign": "M042",
+      "anchor_norm": "min",
+      "parpola_norm": "van",
+      "agree": false
+     },
+     {
+      "sign": "M043",
+      "anchor_norm": "mu",
+      "parpola_norm": "mu",
+      "agree": true
+     },
+     {
+      "sign": "M044",
+      "anchor_norm": "ku",
+      "parpola_norm": "ku",
+      "agree": true
+     },
+     {
+      "sign": "M045",
+      "anchor_norm": "yanai",
+      "parpola_norm": "yanai",
+      "agree": true
+     },
+     {
+      "sign": "M046",
+      "anchor_norm": "kal",
+      "parpola_norm": "kal",
+      "agree": true
+     },
+     {
+      "sign": "M047",
+      "anchor_norm": "min",
+      "parpola_norm": "min",
+      "agree": true
+     },
+     {
+      "sign": "M048",
+      "anchor_norm": "mu",
+      "parpola_norm": "mu",
+      "agree": true
+     },
+     {
+      "sign": "M049",
+      "anchor_norm": "pu",
+      "parpola_norm": "pu",
+      "agree": true
+     },
+     {
+      "sign": "M050",
+      "anchor_norm": "par",
+      "parpola_norm": "par",
+      "agree": true
+     },
+     {
+      "sign": "M051",
+      "anchor_norm": "pu",
+      "parpola_norm": "pu",
+      "agree": true
+     },
+     {
+      "sign": "M052",
+      "anchor_norm": "ta",
+      "parpola_norm": "ta",
+      "agree": true
+     },
+     {
+      "sign": "M053",
+      "anchor_norm": "mi",
+      "parpola_norm": "mi",
+      "agree": true
+     },
+     {
+      "sign": "M054",
+      "anchor_norm": "mi",
+      "parpola_norm": "mi",
+      "agree": true
+     },
+     {
+      "sign": "M055",
+      "anchor_norm": "min",
+      "parpola_norm": "min",
+      "agree": true
+     },
+     {
+      "sign": "M056",
+      "anchor_norm": "min",
+      "parpola_norm": "min",
+      "agree": true
+     },
+     {
+      "sign": "M057",
+      "anchor_norm": "matu",
+      "parpola_norm": "matu",
+      "agree": true
+     },
+     {
+      "sign": "M058",
+      "anchor_norm": "ke",
+      "parpola_norm": "ke",
+      "agree": true
+     },
+     {
+      "sign": "M059",
+      "anchor_norm": "el",
+      "parpola_norm": "el",
+      "agree": true
+     },
+     {
+      "sign": "M060",
+      "anchor_norm": "kantamirukam",
+      "parpola_norm": "kantamirukam",
+      "agree": true
+     },
+     {
+      "sign": "M061",
+      "anchor_norm": "ka",
+      "parpola_norm": "ka",
+      "agree": true
+     },
+     {
+      "sign": "M062",
+      "anchor_norm": "erutu",
+      "parpola_norm": "erutu",
+      "agree": true
+     },
+     {
+      "sign": "M063",
+      "anchor_norm": "mutalai",
+      "parpola_norm": "mutalai",
+      "agree": true
+     },
+     {
+      "sign": "M064",
+      "anchor_norm": "va",
+      "parpola_norm": "va",
+      "agree": true
+     },
+     {
+      "sign": "M065",
+      "anchor_norm": "kutam",
+      "parpola_norm": "kutam",
+      "agree": true
+     },
+     {
+      "sign": "M066",
+      "anchor_norm": "col",
+      "parpola_norm": "col",
+      "agree": true
+     },
+     {
+      "sign": "M067",
+      "anchor_norm": "kottan",
+      "parpola_norm": "kottan",
+      "agree": true
+     },
+     {
+      "sign": "M068",
+      "anchor_norm": "mari",
+      "parpola_norm": "mari",
+      "agree": true
+     },
+     {
+      "sign": "M069",
+      "anchor_norm": "ner",
+      "parpola_norm": "ner",
+      "agree": true
+     },
+     {
+      "sign": "M070",
+      "anchor_norm": "vel",
+      "parpola_norm": "vel",
+      "agree": true
+     },
+     {
+      "sign": "M071",
+      "anchor_norm": "nal",
+      "parpola_norm": "nal",
+      "agree": true
+     },
+     {
+      "sign": "M072",
+      "anchor_norm": "ma",
+      "parpola_norm": "cer",
+      "agree": false
+     },
+     {
+      "sign": "M073",
+      "anchor_norm": "kon",
+      "parpola_norm": "kon",
+      "agree": true
+     },
+     {
+      "sign": "M074",
+      "anchor_norm": "ker",
+      "parpola_norm": "ker",
+      "agree": true
+     },
+     {
+      "sign": "M075",
+      "anchor_norm": "mar",
+      "parpola_norm": "mar",
+      "agree": true
+     },
+     {
+      "sign": "M076",
+      "anchor_norm": "nan",
+      "parpola_norm": "nan",
+      "agree": true
+     },
+     {
+      "sign": "M077",
+      "anchor_norm": "nal",
+      "parpola_norm": "nal",
+      "agree": true
+     },
+     {
+      "sign": "M078",
+      "anchor_norm": "cer",
+      "parpola_norm": "cer",
+      "agree": true
+     },
+     {
+      "sign": "M079",
+      "anchor_norm": "ir",
+      "parpola_norm": "ir",
+      "agree": true
+     },
+     {
+      "sign": "M080",
+      "anchor_norm": "venkai",
+      "parpola_norm": "venkai",
+      "agree": true
+     },
+     {
+      "sign": "M081",
+      "anchor_norm": "ve",
+      "parpola_norm": "ve",
+      "agree": true
+     },
+     {
+      "sign": "M082",
+      "anchor_norm": "pa",
+      "parpola_norm": "pa",
+      "agree": true
+     },
+     {
+      "sign": "M087",
+      "anchor_norm": "vel",
+      "parpola_norm": "vel",
+      "agree": true
+     },
+     {
+      "sign": "M089",
+      "anchor_norm": "tu",
+      "parpola_norm": "tu",
+      "agree": true
+     },
+     {
+      "sign": "M099",
+      "anchor_norm": "kol",
+      "parpola_norm": "kol",
+      "agree": true
+     },
+     {
+      "sign": "M100",
+      "anchor_norm": "maa",
+      "parpola_norm": "maa",
+      "agree": true
+     },
+     {
+      "sign": "M107",
+      "anchor_norm": "ko",
+      "parpola_norm": "ko",
+      "agree": true
+     },
+     {
+      "sign": "M108",
+      "anchor_norm": "min",
+      "parpola_norm": "kal",
+      "agree": false
+     },
+     {
+      "sign": "M116",
+      "anchor_norm": "min",
+      "parpola_norm": "ur",
+      "agree": false
+     },
+     {
+      "sign": "M117",
+      "anchor_norm": "ar",
+      "parpola_norm": "ar",
+      "agree": true
+     },
+     {
+      "sign": "M118",
+      "anchor_norm": "car",
+      "parpola_norm": "car",
+      "agree": true
+     },
+     {
+      "sign": "M124",
+      "anchor_norm": "kutam",
+      "parpola_norm": "kutam",
+      "agree": true
+     },
+     {
+      "sign": "M125",
+      "anchor_norm": "vil",
+      "parpola_norm": "vil",
+      "agree": true
+     },
+     {
+      "sign": "M127",
+      "anchor_norm": "ve",
+      "parpola_norm": "mal",
+      "agree": false
+     },
+     {
+      "sign": "M128",
+      "anchor_norm": "kan",
+      "parpola_norm": "kan",
+      "agree": true
+     },
+     {
+      "sign": "M130",
+      "anchor_norm": "mui",
+      "parpola_norm": "mui",
+      "agree": true
+     },
+     {
+      "sign": "M137",
+      "anchor_norm": "kur",
+      "parpola_norm": "kur",
+      "agree": true
+     },
+     {
+      "sign": "M143",
+      "anchor_norm": "man",
+      "parpola_norm": "man",
+      "agree": true
+     },
+     {
+      "sign": "M145",
+      "anchor_norm": "mit",
+      "parpola_norm": "mit",
+      "agree": true
+     },
+     {
+      "sign": "M149",
+      "anchor_norm": "or",
+      "parpola_norm": "kul",
+      "agree": false
+     },
+     {
+      "sign": "M151",
+      "anchor_norm": "vil",
+      "parpola_norm": "vil",
+      "agree": true
+     },
+     {
+      "sign": "M153",
+      "anchor_norm": "pu",
+      "parpola_norm": "kan",
+      "agree": false
+     },
+     {
+      "sign": "M155",
+      "anchor_norm": "ka",
+      "parpola_norm": "min",
+      "agree": false
+     },
+     {
+      "sign": "M162",
+      "anchor_norm": "il",
+      "parpola_norm": "il",
+      "agree": true
+     },
+     {
+      "sign": "M163",
+      "anchor_norm": "il",
+      "parpola_norm": "il",
+      "agree": true
+     },
+     {
+      "sign": "M164",
+      "anchor_norm": "il",
+      "parpola_norm": "il",
+      "agree": true
+     },
+     {
+      "sign": "M168",
+      "anchor_norm": "inci",
+      "parpola_norm": "pan",
+      "agree": false
+     },
+     {
+      "sign": "M176",
+      "anchor_norm": "an",
+      "parpola_norm": "an",
+      "agree": true
+     },
+     {
+      "sign": "M202",
+      "anchor_norm": "can",
+      "parpola_norm": "can",
+      "agree": true
+     },
+     {
+      "sign": "M221",
+      "anchor_norm": "al",
+      "parpola_norm": "al",
+      "agree": true
+     },
+     {
+      "sign": "M222",
+      "anchor_norm": "min",
+      "parpola_norm": "min",
+      "agree": true
+     },
+     {
+      "sign": "M233",
+      "anchor_norm": "ur",
+      "parpola_norm": "ur",
+      "agree": true
+     },
+     {
+      "sign": "M249",
+      "anchor_norm": "tii",
+      "parpola_norm": "tii",
+      "agree": true
+     },
+     {
+      "sign": "M267",
+      "anchor_norm": "in",
+      "parpola_norm": "in",
+      "agree": true
+     },
+     {
+      "sign": "M293",
+      "anchor_norm": "ta",
+      "parpola_norm": "ta",
+      "agree": true
+     },
+     {
+      "sign": "M305",
+      "anchor_norm": "otu",
+      "parpola_norm": "otu",
+      "agree": true
+     },
+     {
+      "sign": "M328",
+      "anchor_norm": "a",
+      "parpola_norm": "a",
+      "agree": true
+     },
+     {
+      "sign": "M336",
+      "anchor_norm": "in",
+      "parpola_norm": "in",
+      "agree": true
+     },
+     {
+      "sign": "M342",
+      "anchor_norm": "ay",
+      "parpola_norm": "ay",
+      "agree": true
+     },
+     {
+      "sign": "M367",
+      "anchor_norm": "am",
+      "parpola_norm": "am",
+      "agree": true
+     },
+     {
+      "sign": "M391",
+      "anchor_norm": "ka",
+      "parpola_norm": "ka",
+      "agree": true
+     }
+    ]
+   },
+   "parpola_p159_crosscheck": {
+    "n_high": 166,
+    "n_on_p159_list": 40,
+    "rate": 0.240964
+   },
+   "site_invariance": {
+    "n_signs": 275,
+    "n_tested": 90,
+    "n_invariant": 90,
+    "n_variant": 0,
+    "n_insufficient_data": 185,
+    "invariant_rate_of_tested": 1.0,
+    "variant_signs": []
+   }
+  },
+  "sa_independent_strict": {
+   "n_signs": 198,
+   "coverage": {
+    "n_tokens": 7002,
+    "n_covered": 5459,
+    "coverage": 0.779634
+   },
+   "phonotactics": {
+    "n_readings_checked": 198,
+    "n_violations": 0,
+    "violations": [],
+    "n_distinct_initials": 16,
+    "max_phoneme_share": 0.3586,
+    "violation_rate": 0.0
+   },
+   "parpola": {
+    "n_compared": 82,
+    "n_agree": 79,
+    "rate": 0.963415,
+    "details": [
+     {
+      "sign": "M002",
+      "anchor_norm": "kun",
+      "parpola_norm": "kun",
+      "agree": true
+     },
+     {
+      "sign": "M004",
+      "anchor_norm": "kel",
+      "parpola_norm": "kel",
+      "agree": true
+     },
+     {
+      "sign": "M005",
+      "anchor_norm": "kon",
+      "parpola_norm": "kon",
+      "agree": true
+     },
+     {
+      "sign": "M006",
+      "anchor_norm": "puli",
+      "parpola_norm": "puli",
+      "agree": true
+     },
+     {
+      "sign": "M007",
+      "anchor_norm": "aal",
+      "parpola_norm": "aal",
+      "agree": true
+     },
+     {
+      "sign": "M009",
+      "anchor_norm": "an",
+      "parpola_norm": "an",
+      "agree": true
+     },
+     {
+      "sign": "M010",
+      "anchor_norm": "pat",
+      "parpola_norm": "pat",
+      "agree": true
+     },
+     {
+      "sign": "M012",
+      "anchor_norm": "onru",
+      "parpola_norm": "onru",
+      "agree": true
+     },
+     {
+      "sign": "M013",
+      "anchor_norm": "nakaram",
+      "parpola_norm": "nakaram",
+      "agree": true
+     },
+     {
+      "sign": "M014",
+      "anchor_norm": "tiru",
+      "parpola_norm": "tiru",
+      "agree": true
+     },
+     {
+      "sign": "M015",
+      "anchor_norm": "ma",
+      "parpola_norm": "ma",
+      "agree": true
+     },
+     {
+      "sign": "M016",
+      "anchor_norm": "kaliru",
+      "parpola_norm": "kaliru",
+      "agree": true
+     },
+     {
+      "sign": "M017",
+      "anchor_norm": "kai",
+      "parpola_norm": "kai",
+      "agree": true
+     },
+     {
+      "sign": "M018",
+      "anchor_norm": "ner",
+      "parpola_norm": "ner",
+      "agree": true
+     },
+     {
+      "sign": "M020",
+      "anchor_norm": "kun",
+      "parpola_norm": "kun",
+      "agree": true
+     },
+     {
+      "sign": "M023",
+      "anchor_norm": "val",
+      "parpola_norm": "val",
+      "agree": true
+     },
+     {
+      "sign": "M025",
+      "anchor_norm": "cem",
+      "parpola_norm": "cem",
+      "agree": true
+     },
+     {
+      "sign": "M026",
+      "anchor_norm": "ma",
+      "parpola_norm": "ma",
+      "agree": true
+     },
+     {
+      "sign": "M027",
+      "anchor_norm": "mar",
+      "parpola_norm": "mar",
+      "agree": true
+     },
+     {
+      "sign": "M029",
+      "anchor_norm": "yanai",
+      "parpola_norm": "yanai",
+      "agree": true
+     },
+     {
+      "sign": "M030",
+      "anchor_norm": "ko",
+      "parpola_norm": "ko",
+      "agree": true
+     },
+     {
+      "sign": "M032",
+      "anchor_norm": "kol",
+      "parpola_norm": "kol",
+      "agree": true
+     },
+     {
+      "sign": "M034",
+      "anchor_norm": "tol",
+      "parpola_norm": "tol",
+      "agree": true
+     },
+     {
+      "sign": "M037",
+      "anchor_norm": "kel",
+      "parpola_norm": "kel",
+      "agree": true
+     },
+     {
+      "sign": "M038",
+      "anchor_norm": "por",
+      "parpola_norm": "por",
+      "agree": true
+     },
+     {
+      "sign": "M039",
+      "anchor_norm": "anai",
+      "parpola_norm": "anai",
+      "agree": true
+     },
+     {
+      "sign": "M041",
+      "anchor_norm": "per",
+      "parpola_norm": "per",
+      "agree": true
+     },
+     {
+      "sign": "M042",
+      "anchor_norm": "min",
+      "parpola_norm": "van",
+      "agree": false
+     },
+     {
+      "sign": "M044",
+      "anchor_norm": "ku",
+      "parpola_norm": "ku",
+      "agree": true
+     },
+     {
+      "sign": "M045",
+      "anchor_norm": "yanai",
+      "parpola_norm": "yanai",
+      "agree": true
+     },
+     {
+      "sign": "M046",
+      "anchor_norm": "kal",
+      "parpola_norm": "kal",
+      "agree": true
+     },
+     {
+      "sign": "M047",
+      "anchor_norm": "min",
+      "parpola_norm": "min",
+      "agree": true
+     },
+     {
+      "sign": "M048",
+      "anchor_norm": "mu",
+      "parpola_norm": "mu",
+      "agree": true
+     },
+     {
+      "sign": "M049",
+      "anchor_norm": "pu",
+      "parpola_norm": "pu",
+      "agree": true
+     },
+     {
+      "sign": "M050",
+      "anchor_norm": "par",
+      "parpola_norm": "par",
+      "agree": true
+     },
+     {
+      "sign": "M051",
+      "anchor_norm": "pu",
+      "parpola_norm": "pu",
+      "agree": true
+     },
+     {
+      "sign": "M052",
+      "anchor_norm": "ta",
+      "parpola_norm": "ta",
+      "agree": true
+     },
+     {
+      "sign": "M053",
+      "anchor_norm": "mi",
+      "parpola_norm": "mi",
+      "agree": true
+     },
+     {
+      "sign": "M054",
+      "anchor_norm": "mi",
+      "parpola_norm": "mi",
+      "agree": true
+     },
+     {
+      "sign": "M055",
+      "anchor_norm": "min",
+      "parpola_norm": "min",
+      "agree": true
+     },
+     {
+      "sign": "M057",
+      "anchor_norm": "matu",
+      "parpola_norm": "matu",
+      "agree": true
+     },
+     {
+      "sign": "M059",
+      "anchor_norm": "el",
+      "parpola_norm": "el",
+      "agree": true
+     },
+     {
+      "sign": "M060",
+      "anchor_norm": "kantamirukam",
+      "parpola_norm": "kantamirukam",
+      "agree": true
+     },
+     {
+      "sign": "M061",
+      "anchor_norm": "ka",
+      "parpola_norm": "ka",
+      "agree": true
+     },
+     {
+      "sign": "M062",
+      "anchor_norm": "erutu",
+      "parpola_norm": "erutu",
+      "agree": true
+     },
+     {
+      "sign": "M063",
+      "anchor_norm": "mutalai",
+      "parpola_norm": "mutalai",
+      "agree": true
+     },
+     {
+      "sign": "M065",
+      "anchor_norm": "kutam",
+      "parpola_norm": "kutam",
+      "agree": true
+     },
+     {
+      "sign": "M066",
+      "anchor_norm": "col",
+      "parpola_norm": "col",
+      "agree": true
+     },
+     {
+      "sign": "M067",
+      "anchor_norm": "kottan",
+      "parpola_norm": "kottan",
+      "agree": true
+     },
+     {
+      "sign": "M068",
+      "anchor_norm": "mari",
+      "parpola_norm": "mari",
+      "agree": true
+     },
+     {
+      "sign": "M069",
+      "anchor_norm": "ner",
+      "parpola_norm": "ner",
+      "agree": true
+     },
+     {
+      "sign": "M070",
+      "anchor_norm": "vel",
+      "parpola_norm": "vel",
+      "agree": true
+     },
+     {
+      "sign": "M073",
+      "anchor_norm": "kon",
+      "parpola_norm": "kon",
+      "agree": true
+     },
+     {
+      "sign": "M074",
+      "anchor_norm": "ker",
+      "parpola_norm": "ker",
+      "agree": true
+     },
+     {
+      "sign": "M075",
+      "anchor_norm": "mar",
+      "parpola_norm": "mar",
+      "agree": true
+     },
+     {
+      "sign": "M076",
+      "anchor_norm": "nan",
+      "parpola_norm": "nan",
+      "agree": true
+     },
+     {
+      "sign": "M077",
+      "anchor_norm": "nal",
+      "parpola_norm": "nal",
+      "agree": true
+     },
+     {
+      "sign": "M078",
+      "anchor_norm": "cer",
+      "parpola_norm": "cer",
+      "agree": true
+     },
+     {
+      "sign": "M080",
+      "anchor_norm": "venkai",
+      "parpola_norm": "venkai",
+      "agree": true
+     },
+     {
+      "sign": "M082",
+      "anchor_norm": "pa",
+      "parpola_norm": "pa",
+      "agree": true
+     },
+     {
+      "sign": "M087",
+      "anchor_norm": "vel",
+      "parpola_norm": "vel",
+      "agree": true
+     },
+     {
+      "sign": "M089",
+      "anchor_norm": "tu",
+      "parpola_norm": "tu",
+      "agree": true
+     },
+     {
+      "sign": "M099",
+      "anchor_norm": "kol",
+      "parpola_norm": "kol",
+      "agree": true
+     },
+     {
+      "sign": "M108",
+      "anchor_norm": "min",
+      "parpola_norm": "kal",
+      "agree": false
+     },
+     {
+      "sign": "M116",
+      "anchor_norm": "min",
+      "parpola_norm": "ur",
+      "agree": false
+     },
+     {
+      "sign": "M124",
+      "anchor_norm": "kutam",
+      "parpola_norm": "kutam",
+      "agree": true
+     },
+     {
+      "sign": "M128",
+      "anchor_norm": "kan",
+      "parpola_norm": "kan",
+      "agree": true
+     },
+     {
+      "sign": "M130",
+      "anchor_norm": "mui",
+      "parpola_norm": "mui",
+      "agree": true
+     },
+     {
+      "sign": "M145",
+      "anchor_norm": "mit",
+      "parpola_norm": "mit",
+      "agree": true
+     },
+     {
+      "sign": "M151",
+      "anchor_norm": "vil",
+      "parpola_norm": "vil",
+      "agree": true
+     },
+     {
+      "sign": "M162",
+      "anchor_norm": "il",
+      "parpola_norm": "il",
+      "agree": true
+     },
+     {
+      "sign": "M176",
+      "anchor_norm": "an",
+      "parpola_norm": "an",
+      "agree": true
+     },
+     {
+      "sign": "M202",
+      "anchor_norm": "can",
+      "parpola_norm": "can",
+      "agree": true
+     },
+     {
+      "sign": "M222",
+      "anchor_norm": "min",
+      "parpola_norm": "min",
+      "agree": true
+     },
+     {
+      "sign": "M233",
+      "anchor_norm": "ur",
+      "parpola_norm": "ur",
+      "agree": true
+     },
+     {
+      "sign": "M267",
+      "anchor_norm": "in",
+      "parpola_norm": "in",
+      "agree": true
+     },
+     {
+      "sign": "M305",
+      "anchor_norm": "otu",
+      "parpola_norm": "otu",
+      "agree": true
+     },
+     {
+      "sign": "M328",
+      "anchor_norm": "a",
+      "parpola_norm": "a",
+      "agree": true
+     },
+     {
+      "sign": "M336",
+      "anchor_norm": "in",
+      "parpola_norm": "in",
+      "agree": true
+     },
+     {
+      "sign": "M342",
+      "anchor_norm": "ay",
+      "parpola_norm": "ay",
+      "agree": true
+     },
+     {
+      "sign": "M367",
+      "anchor_norm": "am",
+      "parpola_norm": "am",
+      "agree": true
+     },
+     {
+      "sign": "M391",
+      "anchor_norm": "ka",
+      "parpola_norm": "ka",
+      "agree": true
+     }
+    ]
+   },
+   "parpola_p159_crosscheck": {
+    "n_high": 89,
+    "n_on_p159_list": 20,
+    "rate": 0.224719
+   },
+   "site_invariance": {
+    "n_signs": 198,
+    "n_tested": 65,
+    "n_invariant": 65,
+    "n_variant": 0,
+    "n_insufficient_data": 133,
+    "invariant_rate_of_tested": 1.0,
+    "variant_signs": []
+   }
+  },
+  "sa_independent_incl_untraceable": {
+   "n_signs": 198,
+   "coverage": {
+    "n_tokens": 7002,
+    "n_covered": 5459,
+    "coverage": 0.779634
+   },
+   "phonotactics": {
+    "n_readings_checked": 198,
+    "n_violations": 0,
+    "violations": [],
+    "n_distinct_initials": 16,
+    "max_phoneme_share": 0.3586,
+    "violation_rate": 0.0
+   },
+   "parpola": {
+    "n_compared": 82,
+    "n_agree": 79,
+    "rate": 0.963415,
+    "details": [
+     {
+      "sign": "M002",
+      "anchor_norm": "kun",
+      "parpola_norm": "kun",
+      "agree": true
+     },
+     {
+      "sign": "M004",
+      "anchor_norm": "kel",
+      "parpola_norm": "kel",
+      "agree": true
+     },
+     {
+      "sign": "M005",
+      "anchor_norm": "kon",
+      "parpola_norm": "kon",
+      "agree": true
+     },
+     {
+      "sign": "M006",
+      "anchor_norm": "puli",
+      "parpola_norm": "puli",
+      "agree": true
+     },
+     {
+      "sign": "M007",
+      "anchor_norm": "aal",
+      "parpola_norm": "aal",
+      "agree": true
+     },
+     {
+      "sign": "M009",
+      "anchor_norm": "an",
+      "parpola_norm": "an",
+      "agree": true
+     },
+     {
+      "sign": "M010",
+      "anchor_norm": "pat",
+      "parpola_norm": "pat",
+      "agree": true
+     },
+     {
+      "sign": "M012",
+      "anchor_norm": "onru",
+      "parpola_norm": "onru",
+      "agree": true
+     },
+     {
+      "sign": "M013",
+      "anchor_norm": "nakaram",
+      "parpola_norm": "nakaram",
+      "agree": true
+     },
+     {
+      "sign": "M014",
+      "anchor_norm": "tiru",
+      "parpola_norm": "tiru",
+      "agree": true
+     },
+     {
+      "sign": "M015",
+      "anchor_norm": "ma",
+      "parpola_norm": "ma",
+      "agree": true
+     },
+     {
+      "sign": "M016",
+      "anchor_norm": "kaliru",
+      "parpola_norm": "kaliru",
+      "agree": true
+     },
+     {
+      "sign": "M017",
+      "anchor_norm": "kai",
+      "parpola_norm": "kai",
+      "agree": true
+     },
+     {
+      "sign": "M018",
+      "anchor_norm": "ner",
+      "parpola_norm": "ner",
+      "agree": true
+     },
+     {
+      "sign": "M020",
+      "anchor_norm": "kun",
+      "parpola_norm": "kun",
+      "agree": true
+     },
+     {
+      "sign": "M023",
+      "anchor_norm": "val",
+      "parpola_norm": "val",
+      "agree": true
+     },
+     {
+      "sign": "M025",
+      "anchor_norm": "cem",
+      "parpola_norm": "cem",
+      "agree": true
+     },
+     {
+      "sign": "M026",
+      "anchor_norm": "ma",
+      "parpola_norm": "ma",
+      "agree": true
+     },
+     {
+      "sign": "M027",
+      "anchor_norm": "mar",
+      "parpola_norm": "mar",
+      "agree": true
+     },
+     {
+      "sign": "M029",
+      "anchor_norm": "yanai",
+      "parpola_norm": "yanai",
+      "agree": true
+     },
+     {
+      "sign": "M030",
+      "anchor_norm": "ko",
+      "parpola_norm": "ko",
+      "agree": true
+     },
+     {
+      "sign": "M032",
+      "anchor_norm": "kol",
+      "parpola_norm": "kol",
+      "agree": true
+     },
+     {
+      "sign": "M034",
+      "anchor_norm": "tol",
+      "parpola_norm": "tol",
+      "agree": true
+     },
+     {
+      "sign": "M037",
+      "anchor_norm": "kel",
+      "parpola_norm": "kel",
+      "agree": true
+     },
+     {
+      "sign": "M038",
+      "anchor_norm": "por",
+      "parpola_norm": "por",
+      "agree": true
+     },
+     {
+      "sign": "M039",
+      "anchor_norm": "anai",
+      "parpola_norm": "anai",
+      "agree": true
+     },
+     {
+      "sign": "M041",
+      "anchor_norm": "per",
+      "parpola_norm": "per",
+      "agree": true
+     },
+     {
+      "sign": "M042",
+      "anchor_norm": "min",
+      "parpola_norm": "van",
+      "agree": false
+     },
+     {
+      "sign": "M044",
+      "anchor_norm": "ku",
+      "parpola_norm": "ku",
+      "agree": true
+     },
+     {
+      "sign": "M045",
+      "anchor_norm": "yanai",
+      "parpola_norm": "yanai",
+      "agree": true
+     },
+     {
+      "sign": "M046",
+      "anchor_norm": "kal",
+      "parpola_norm": "kal",
+      "agree": true
+     },
+     {
+      "sign": "M047",
+      "anchor_norm": "min",
+      "parpola_norm": "min",
+      "agree": true
+     },
+     {
+      "sign": "M048",
+      "anchor_norm": "mu",
+      "parpola_norm": "mu",
+      "agree": true
+     },
+     {
+      "sign": "M049",
+      "anchor_norm": "pu",
+      "parpola_norm": "pu",
+      "agree": true
+     },
+     {
+      "sign": "M050",
+      "anchor_norm": "par",
+      "parpola_norm": "par",
+      "agree": true
+     },
+     {
+      "sign": "M051",
+      "anchor_norm": "pu",
+      "parpola_norm": "pu",
+      "agree": true
+     },
+     {
+      "sign": "M052",
+      "anchor_norm": "ta",
+      "parpola_norm": "ta",
+      "agree": true
+     },
+     {
+      "sign": "M053",
+      "anchor_norm": "mi",
+      "parpola_norm": "mi",
+      "agree": true
+     },
+     {
+      "sign": "M054",
+      "anchor_norm": "mi",
+      "parpola_norm": "mi",
+      "agree": true
+     },
+     {
+      "sign": "M055",
+      "anchor_norm": "min",
+      "parpola_norm": "min",
+      "agree": true
+     },
+     {
+      "sign": "M057",
+      "anchor_norm": "matu",
+      "parpola_norm": "matu",
+      "agree": true
+     },
+     {
+      "sign": "M059",
+      "anchor_norm": "el",
+      "parpola_norm": "el",
+      "agree": true
+     },
+     {
+      "sign": "M060",
+      "anchor_norm": "kantamirukam",
+      "parpola_norm": "kantamirukam",
+      "agree": true
+     },
+     {
+      "sign": "M061",
+      "anchor_norm": "ka",
+      "parpola_norm": "ka",
+      "agree": true
+     },
+     {
+      "sign": "M062",
+      "anchor_norm": "erutu",
+      "parpola_norm": "erutu",
+      "agree": true
+     },
+     {
+      "sign": "M063",
+      "anchor_norm": "mutalai",
+      "parpola_norm": "mutalai",
+      "agree": true
+     },
+     {
+      "sign": "M065",
+      "anchor_norm": "kutam",
+      "parpola_norm": "kutam",
+      "agree": true
+     },
+     {
+      "sign": "M066",
+      "anchor_norm": "col",
+      "parpola_norm": "col",
+      "agree": true
+     },
+     {
+      "sign": "M067",
+      "anchor_norm": "kottan",
+      "parpola_norm": "kottan",
+      "agree": true
+     },
+     {
+      "sign": "M068",
+      "anchor_norm": "mari",
+      "parpola_norm": "mari",
+      "agree": true
+     },
+     {
+      "sign": "M069",
+      "anchor_norm": "ner",
+      "parpola_norm": "ner",
+      "agree": true
+     },
+     {
+      "sign": "M070",
+      "anchor_norm": "vel",
+      "parpola_norm": "vel",
+      "agree": true
+     },
+     {
+      "sign": "M073",
+      "anchor_norm": "kon",
+      "parpola_norm": "kon",
+      "agree": true
+     },
+     {
+      "sign": "M074",
+      "anchor_norm": "ker",
+      "parpola_norm": "ker",
+      "agree": true
+     },
+     {
+      "sign": "M075",
+      "anchor_norm": "mar",
+      "parpola_norm": "mar",
+      "agree": true
+     },
+     {
+      "sign": "M076",
+      "anchor_norm": "nan",
+      "parpola_norm": "nan",
+      "agree": true
+     },
+     {
+      "sign": "M077",
+      "anchor_norm": "nal",
+      "parpola_norm": "nal",
+      "agree": true
+     },
+     {
+      "sign": "M078",
+      "anchor_norm": "cer",
+      "parpola_norm": "cer",
+      "agree": true
+     },
+     {
+      "sign": "M080",
+      "anchor_norm": "venkai",
+      "parpola_norm": "venkai",
+      "agree": true
+     },
+     {
+      "sign": "M082",
+      "anchor_norm": "pa",
+      "parpola_norm": "pa",
+      "agree": true
+     },
+     {
+      "sign": "M087",
+      "anchor_norm": "vel",
+      "parpola_norm": "vel",
+      "agree": true
+     },
+     {
+      "sign": "M089",
+      "anchor_norm": "tu",
+      "parpola_norm": "tu",
+      "agree": true
+     },
+     {
+      "sign": "M099",
+      "anchor_norm": "kol",
+      "parpola_norm": "kol",
+      "agree": true
+     },
+     {
+      "sign": "M108",
+      "anchor_norm": "min",
+      "parpola_norm": "kal",
+      "agree": false
+     },
+     {
+      "sign": "M116",
+      "anchor_norm": "min",
+      "parpola_norm": "ur",
+      "agree": false
+     },
+     {
+      "sign": "M124",
+      "anchor_norm": "kutam",
+      "parpola_norm": "kutam",
+      "agree": true
+     },
+     {
+      "sign": "M128",
+      "anchor_norm": "kan",
+      "parpola_norm": "kan",
+      "agree": true
+     },
+     {
+      "sign": "M130",
+      "anchor_norm": "mui",
+      "parpola_norm": "mui",
+      "agree": true
+     },
+     {
+      "sign": "M145",
+      "anchor_norm": "mit",
+      "parpola_norm": "mit",
+      "agree": true
+     },
+     {
+      "sign": "M151",
+      "anchor_norm": "vil",
+      "parpola_norm": "vil",
+      "agree": true
+     },
+     {
+      "sign": "M162",
+      "anchor_norm": "il",
+      "parpola_norm": "il",
+      "agree": true
+     },
+     {
+      "sign": "M176",
+      "anchor_norm": "an",
+      "parpola_norm": "an",
+      "agree": true
+     },
+     {
+      "sign": "M202",
+      "anchor_norm": "can",
+      "parpola_norm": "can",
+      "agree": true
+     },
+     {
+      "sign": "M222",
+      "anchor_norm": "min",
+      "parpola_norm": "min",
+      "agree": true
+     },
+     {
+      "sign": "M233",
+      "anchor_norm": "ur",
+      "parpola_norm": "ur",
+      "agree": true
+     },
+     {
+      "sign": "M267",
+      "anchor_norm": "in",
+      "parpola_norm": "in",
+      "agree": true
+     },
+     {
+      "sign": "M305",
+      "anchor_norm": "otu",
+      "parpola_norm": "otu",
+      "agree": true
+     },
+     {
+      "sign": "M328",
+      "anchor_norm": "a",
+      "parpola_norm": "a",
+      "agree": true
+     },
+     {
+      "sign": "M336",
+      "anchor_norm": "in",
+      "parpola_norm": "in",
+      "agree": true
+     },
+     {
+      "sign": "M342",
+      "anchor_norm": "ay",
+      "parpola_norm": "ay",
+      "agree": true
+     },
+     {
+      "sign": "M367",
+      "anchor_norm": "am",
+      "parpola_norm": "am",
+      "agree": true
+     },
+     {
+      "sign": "M391",
+      "anchor_norm": "ka",
+      "parpola_norm": "ka",
+      "agree": true
+     }
+    ]
+   },
+   "parpola_p159_crosscheck": {
+    "n_high": 89,
+    "n_on_p159_list": 20,
+    "rate": 0.224719
+   },
+   "site_invariance": {
+    "n_signs": 198,
+    "n_tested": 65,
+    "n_invariant": 65,
+    "n_variant": 0,
+    "n_insufficient_data": 133,
+    "invariant_rate_of_tested": 1.0,
+    "variant_signs": []
+   }
+  }
+ }
+}

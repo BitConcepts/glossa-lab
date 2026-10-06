@@ -1446,3 +1446,193 @@ readings or confidences changed.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-108 — Anchor Provenance Audit (Spec 006), Step 1: Evidence Extraction
+
+Question (owner-approved after Phase-107): Phase-107 falsified simulated
+annealing as evidence for sign values, but the 287 anchors in
+`backend/reports/INDUS_FINAL_ANCHORS.json` were left unchanged. What does
+each anchor's value and confidence actually rest on? Spec 006 pre-registered
+the taxonomy, the SA-dependence rules (first proposal from an SA artifact,
+OR promotion to current confidence citing SA agreement as a load-bearing
+reason), and the Step-3 recomputations BEFORE any classification
+(commit 9d17a8d2).
+
+Step 1 built the machinery graph-first (H15/H23): pipeline module
+`backend/glossa_lab/pipelines/provenance_audit.py` (SA-lineage phase table,
+phase-method map, recompute functions), four scripts
+(`phase108_provenance_{extract,classify,recompute,impact}.py`), graph module
+`experiment_graph_phase108.py` with nodes IndusProvenanceExtract/Classify/
+Recompute/Impact registered in ATOMIC_NODES, and 10 unit tests (all passing).
+
+Extraction assembled a trail for every one of the 287 anchors from in-repo
+sources only: anchor entry fields; both ledgers + CHANGELOG sections; a
+mention index over 722 JSON artifacts (26 MB) in `reports/`,
+`backend/reports/`, `outputs/`, `glossa-indus/reports/` (structured extracts
+incl. the Phase-52/57/107 SA tables, anchor backup snapshots 2026-05-20/22/23,
+crosswalk v2 entry, extracted claims citing the sign). Output:
+`reports/phase108_anchor_trails.json` (287 trails, 1.3 MB). Spot-checks
+(M267, M047, plus random M066/M043) verified trails against raw entries.
+Pass 1 (structured signals only — no keyword guessing) classified 143
+anchors explicitly and queued 144 for hand review:
+`reports/phase108_provenance_register_draft.json`. No anchor reading,
+confidence, or basis was changed by this step.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-108 — Step 2: Classification (Two-Pass, Hand Review)
+
+The hand review read every queued trail in full. Headline result
+(`reports/phase108_provenance_register.json` +
+`reports/phase108_provenance_summary.md`):
+
+- By category: GRAMMAR 163, DEDR 33, SA_DERIVED 24, SA_CONFIRMED_ONLY 20,
+  LITERATURE 17, MIXED 15, ICONOGRAPHIC 12, CROSSWALK_CORPUS 3,
+  FORMULA 0, UNTRACEABLE 0.
+- SA-dependent (SA_DERIVED + SA_CONFIRMED_ONLY + any SA line in chain): 77.
+- SA-independent, pre-registered three ways — strict / including
+  untraceable / excluding untraceable from the denominator: **210 / 210 /
+  210 of 287 (73.2%)** (all three coincide because no trail proved
+  untraceable). All 44 SA_DERIVED + SA_CONFIRMED_ONLY anchors are HIGH
+  tier; the SA-independent H+M subset is what Step 3 recomputes on.
+
+Three findings dominate the detail:
+
+1. **The staging cohort (116 anchors — 40% of the set).** Pass 1 labeled
+   these DEDR-explicit off the `dedr_support` gloss text; the Step-2 spot
+   audit (12 sampled pass-1 DEDR records, 11 of them staging) caught the
+   error. Their current readings were proposed by the automated research
+   loop's fixed heuristic tables (`research_loop.py`: `_compound_partner`
+   returns the first root of a hardcoded list — hence 'min' assigned to
+   ~40 signs) and promoted through `/staging/verify-sa`, an endpoint that
+   performs NO SA test despite its name (it flips approved→verified and
+   queues an unrelated SA experiment for display). Classified GRAMMAR
+   (distributional heuristic) — inside the strict SA-independent count by
+   the pre-registered rules, but the weakest-evidence cohort in the set.
+   The bulk promotion also overwrote earlier readings (M042 vaN→min,
+   M108 kaL→min, M222 kur→min).
+2. **The recalibration gates (Phases 116/216).** Their promotion rule was
+   `has_dedr AND (SA-consistency ≥ 0.40 OR whitelisted source)`. Signs
+   that passed on SA consistency alone (incl. M293 'ta', the corpus's
+   most frequent sign, 232 tokens) are SA_CONFIRMED_ONLY; signs where the
+   non-SA disjunct also fired keep their origin category with SA recorded
+   as a non-load-bearing chain component; signs where it never fired have
+   no SA in chain (the basis bracket is a gate log artifact).
+3. **Phase-293 promotions.** Anchors whose own records said "SA
+   confirmation pending" after their DEDR injections were promoted by
+   the SA cross-corpus validation (83.7%) — SA_CONFIRMED_ONLY (12 signs).
+   Contrast Phase-294's bundle, where a new manual DEDR assignment in the
+   same record makes SA a component but not load-bearing.
+
+285 hand-review decisions are recorded with per-sign
+rationales and citations in `reports/phase108_review_decisions.json`
+(the 144 queued trails, all 116 staging-cohort records, and 25 pass-1
+overrides/confirms);
+191 edge-case entries are logged in the register rather than forced.
+Notable single signs: M267 MIXED with SA explicitly neutral (Phase-70);
+M035 'po' SA_DERIVED by the pre-registered first-proposal rule (Phase-77's
+sole high-trust SA proposal preceded its Phase-87 DEDR-rebus promotion —
+flagged as contestable for the owner); M067's SA line is a *disagreement*
+and does not count as SA-dependence. No anchor was changed.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-108 — Step 3: Subset Recomputation (SA-Independent H+M Only)
+
+`reports/phase108_subset_recomputation.json` (deterministic, in-repo;
+strict set = H+M anchors whose category is not SA_DERIVED/SA_CONFIRMED_ONLY/
+UNTRACEABLE and with no SA line in chain: **198 of 275 H+M**; the
+UNTRACEABLE sensitivity pair is identical because UNTRACEABLE = 0):
+
+| Quantity | Full H+M (275) | SA-independent strict (198) |
+|---|---|---|
+| Holdat token coverage | 6755/7002 = 0.9647 | 5459/7002 = 0.7796 |
+| Phonotactic violations (Phase-58 rules) | 0 / 275 readings | 0 / 198 readings |
+| Distinct initials / max phoneme share | 18 / 29.5% | 16 / 35.9% |
+| Parpola agreement (crosswalk v2.1, comparable signs) | 110/121 = 90.9% | 79/82 = 96.3% |
+| Site invariance (Phase-69 machinery, tested signs) | 90/90 = 100% | 65/65 = 100% |
+
+Method notes and divergences from the historical claims:
+
+- Coverage reproduces the anchors-file figure (0.9647) exactly on the
+  full set. SA-lineage H+M anchors carry 1,296 tokens (18.5 points).
+- Phonotactics: the foundation-era claim (0 violations, 16 initials,
+  max share 24.7%) described an older anchor set; the current full set
+  gives 18 initials / 29.5%. The zero-violation result itself survives
+  on both sets; the subset's max share RISES (35.9%) because removing
+  SA-lineage signs concentrates the remainder.
+- Parpola: the README's 59% is a different quantity — Phase-159's
+  confirmed list as a share of the Phase-170-era 75 HIGH signs (44/75).
+  On the current sets it does not reproduce (Phase-159 cross-check:
+  40/166 HIGH full, 20/89 HIGH strict). The crosswalk-comparison rate
+  (90.9% full / 96.3% strict) is partially tautological where crosswalk
+  v2.1 entries are identity-only derivations from the anchors
+  themselves (67/184, spec-004 record). Disagreements concentrate in
+  SA-derived signs (M024, M040, M072, M127, M149, M153, M155, M168) and
+  staging overwrites (M042 'min' vs Parpola 'van', M108, M116).
+- Site invariance: the historical 65-sign/100% figure is matched on the
+  strict subset (65 tested, 65 invariant); the full current set tests
+  90 signs, also 100%. **The site-invariance claim survives the audit.**
+
+No anchor was changed by this step.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-108 — Step 4: Circularity + Downstream Impact Map
+
+`reports/phase108_impact_map.json`; Step-4 section appended to
+`reports/phase108_provenance_summary.md`. A map, not an edit — nothing
+mapped was modified.
+
+- **Circular chains: 77 records** carry an SA line in chain — 24 SA-origin
+  (load-bearing by definition) + 53 pin→SA-cited promotions, of which 20
+  load-bearing (SA_CONFIRMED_ONLY) and 33 component-level. Most
+  consequential: (1) M293 'ta', the corpus's most frequent sign (232
+  tokens), HIGH via the Phase-116 gate's SA_ONLY path; (2) M416→M169,
+  SA-lineage confidence propagated by Phase-252 allograph inheritance;
+  (3) the Phase-242/244→293 pattern (12 signs): DEDR injections recorded
+  as "SA confirmation pending" promoted by Phase-293's SA cross-corpus
+  validation.
+- **Claims:** 0 of the 31 extracted claims cite any sign ID, so no
+  per-claim SA-lineage dependence is citable.
+- **Headlines:** Phase-159's 44-sign source set for the README's 59%
+  Parpola figure contains 20 SA-lineage signs (45.5%). The 161-anchor
+  set is not stored in-repo (Phase-170 artifact mentions 4 H+M signs);
+  its SA-lineage share is not computable without reconstruction.
+- **Foundation check:** all 37 SA-citing lines in
+  `backend/scripts/foundation_check.py` mapped with post-Phase-107
+  statuses (rationale in the summary's Step-4 section): the Phase-52,
+  Phase-57, Phase-67 "DEFINITIVE", and Phase-73 texts' evidential
+  readings are retired by Phase-107; Phase-56/47/58/69 stand (58 and 69
+  as recomputed in Step 3); Phase-70/55/32/60 stand as already caveated;
+  Phase-168's checks are operational only.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-108 — Step 5: Close-Out (Recommendations Authored, Not Executed)
+
+Recommendations are in the Step-5 section of
+`reports/phase108_provenance_summary.md`, authored for the owner and NOT
+executed: retire the SA-z "VERIFIED" foundation texts (Phase-52/57),
+Phase-67's "DEFINITIVE" framing, and the README/preprint headline set
+as stated (59% / 161 / 90.96% — re-base on a named, stored set; the
+register's SA-independent H+M subset, 198 signs / 77.96% coverage, is
+the natural candidate); present the 44 SA_DERIVED + SA_CONFIRMED_ONLY
+HIGH anchors as SA-lineage candidates pending non-SA validation;
+programme hygiene items (the staging cohort's promotion path, stale
+anchor-entry fields, the recalibration-gate pattern, M362/M398).
+
+Verification (this branch): backend suite **586 passed / 9 skipped /
+0 failed** (baseline 576/9 + 10 new provenance tests); foundation check
+**40 passed / 0 failed / 8 warnings** (baseline-identical, H21); ruff
+clean on all changed Python; anchors file sha256 **identical to main**
+(f2bc1d6753eba67f…) — the audit changed no anchor reading, confidence,
+or basis. Test-run side-effect diffs on claims/loop artifacts were
+restored, not committed.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

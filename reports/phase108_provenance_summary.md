@@ -1,0 +1,418 @@
+# Phase-108 Anchor Provenance Audit — Summary
+
+Spec: `specs/006-anchor-provenance-audit/` · Register: `reports/phase108_provenance_register.json` · Trails: `reports/phase108_anchor_trails.json`
+
+## Headline counts
+
+Total anchors audited: **287**
+
+| Category | n |
+|---|---|
+| ICONOGRAPHIC | 12 |
+| LITERATURE | 17 |
+| DEDR | 33 |
+| GRAMMAR | 163 |
+| FORMULA | 0 |
+| CROSSWALK_CORPUS | 3 |
+| SA_DERIVED | 24 |
+| SA_CONFIRMED_ONLY | 20 |
+| MIXED | 15 |
+| UNTRACEABLE | 0 |
+
+SA-dependent (SA_DERIVED + SA_CONFIRMED_ONLY + any SA in chain): **77**
+
+SA-independent, three ways (pre-registered):
+- strict: **210** / 287 (73.2%)
+- incl. untraceable as independent: **210** / 287 (73.2%)
+- excl. untraceable from denominator: **210** / 287 (73.2%)
+
+## By confidence tier
+
+- CANDIDATE: GRAMMAR=4
+- HIGH: CROSSWALK_CORPUS=3, DEDR=33, GRAMMAR=43, ICONOGRAPHIC=12, LITERATURE=17, MIXED=14, SA_CONFIRMED_ONLY=20, SA_DERIVED=24
+- LOW: GRAMMAR=8
+- MEDIUM: GRAMMAR=108, MIXED=1
+
+## Cohort notes (Step-2 hand review)
+
+- Research-loop staging cohort: **116** anchors carry GRAMMAR because their current readings were proposed by the automated research loop's fixed heuristic tables (June 2026) and promoted via /staging/verify-sa, which performs no SA validation. These are inside the strict SA-independent count by the pre-registered rules (no SA evidence in their chains) but are the weakest-evidence cohort in the set; see the register rationales.
+- SA_CONFIRMED_ONLY total: **20** (Phase-116/216 recalibration-gate SA_ONLY paths, Phase-293 cross-corpus promotions where 'SA confirmation pending' was the only missing piece, and M293).
+- Pass 1 misclassified the staging cohort as DEDR-explicit; the Step-2 spot audit (12 sampled) caught it and all 116 were re-decided by hand. Pass-1 explicit labels are not used anywhere without the spot-audit caveat.
+
+## Edge cases
+
+- M099: M099: depiction label and grammatical function are separate claims sharing one entry; classified MIXED rather than forcing a single family.
+- M391: pass-1 override (was LITERATURE).
+- M162: pass-1 override (was LITERATURE).
+- M089: pass-1 override (was LITERATURE).
+- M062: motif-exclusivity cohort: seal-motif exclusivity (lift>5) is iconographic evidence; where the entry also cites a DEDR number the etymological line is primary. Applied uniformly.
+- M073: motif-exclusivity cohort: seal-motif exclusivity (lift>5) is iconographic evidence; where the entry also cites a DEDR number the etymological line is primary. Applied uniformly.
+- M045: motif-exclusivity cohort: seal-motif exclusivity (lift>5) is iconographic evidence; where the entry also cites a DEDR number the etymological line is primary. Applied uniformly.
+- M016: motif-exclusivity cohort: seal-motif exclusivity (lift>5) is iconographic evidence; where the entry also cites a DEDR number the etymological line is primary. Applied uniformly.
+- M013: motif-exclusivity cohort: seal-motif exclusivity (lift>5) is iconographic evidence; where the entry also cites a DEDR number the etymological line is primary. Applied uniformly.
+- M060: motif-exclusivity cohort: seal-motif exclusivity (lift>5) is iconographic evidence; where the entry also cites a DEDR number the etymological line is primary. Applied uniformly.
+- M080: motif-exclusivity cohort: seal-motif exclusivity (lift>5) is iconographic evidence; where the entry also cites a DEDR number the etymological line is primary. Applied uniformly.
+- M057: motif-exclusivity cohort: seal-motif exclusivity (lift>5) is iconographic evidence; where the entry also cites a DEDR number the etymological line is primary. Applied uniformly.
+- M039: motif-exclusivity cohort: seal-motif exclusivity (lift>5) is iconographic evidence; where the entry also cites a DEDR number the etymological line is primary. Applied uniformly.
+- M067: M067: an SA disagreement is recorded in the trail; disagreement is not SA-dependence.
+- M006: motif-exclusivity cohort: seal-motif exclusivity (lift>5) is iconographic evidence; where the entry also cites a DEDR number the etymological line is primary. Applied uniformly.
+- M063: motif-exclusivity cohort: seal-motif exclusivity (lift>5) is iconographic evidence; where the entry also cites a DEDR number the etymological line is primary. Applied uniformly.
+- M038: pass-1 override: dedr-field presence is not a DEDR origin (see also the staging-cohort finding).
+- M050: pass-1 override: dedr-field presence is not a DEDR origin (see also the staging-cohort finding).
+- M070: pass-1 override: dedr-field presence is not a DEDR origin (see also the staging-cohort finding).
+- M078: pass-1 override: dedr-field presence is not a DEDR origin (see also the staging-cohort finding).
+- M066: pass-1 override: dedr-field presence is not a DEDR origin (see also the staging-cohort finding).
+- M071: recalibration-gate cohort: Phase-116/216 gate was has_dedr AND (SA-cons>=0.40 OR whitelisted source). SA_ONLY-path signs are SA_CONFIRMED_ONLY; BOTH-path signs keep their origin category with sa_in_chain=True (SA a sufficient but not necessary disjunct); WL_ONLY-path signs have sa_in_chain=False (SA disjunct never fired; the basis bracket is a gate log artifact).
+- M009: pass-1 override: dedr-field presence is not a DEDR origin (see also the staging-cohort finding).
+- M069: pass-1 override: dedr-field presence is not a DEDR origin (see also the staging-cohort finding).
+- M021: recalibration-gate cohort: Phase-116/216 gate was has_dedr AND (SA-cons>=0.40 OR whitelisted source). SA_ONLY-path signs are SA_CONFIRMED_ONLY; BOTH-path signs keep their origin category with sa_in_chain=True (SA a sufficient but not necessary disjunct); WL_ONLY-path signs have sa_in_chain=False (SA disjunct never fired; the basis bracket is a gate log artifact).
+- M031: recalibration-gate cohort: Phase-116/216 gate was has_dedr AND (SA-cons>=0.40 OR whitelisted source). SA_ONLY-path signs are SA_CONFIRMED_ONLY; BOTH-path signs keep their origin category with sa_in_chain=True (SA a sufficient but not necessary disjunct); WL_ONLY-path signs have sa_in_chain=False (SA disjunct never fired; the basis bracket is a gate log artifact).
+- M002: pass-1 override: dedr-field presence is not a DEDR origin (see also the staging-cohort finding).
+- M037: pass-1 override: dedr-field presence is not a DEDR origin (see also the staging-cohort finding).
+- M005: pass-1 override: dedr-field presence is not a DEDR origin (see also the staging-cohort finding).
+- M011: recalibration-gate cohort: Phase-116/216 gate was has_dedr AND (SA-cons>=0.40 OR whitelisted source). SA_ONLY-path signs are SA_CONFIRMED_ONLY; BOTH-path signs keep their origin category with sa_in_chain=True (SA a sufficient but not necessary disjunct); WL_ONLY-path signs have sa_in_chain=False (SA disjunct never fired; the basis bracket is a gate log artifact).
+- M036: recalibration-gate cohort: Phase-116/216 gate was has_dedr AND (SA-cons>=0.40 OR whitelisted source). SA_ONLY-path signs are SA_CONFIRMED_ONLY; BOTH-path signs keep their origin category with sa_in_chain=True (SA a sufficient but not necessary disjunct); WL_ONLY-path signs have sa_in_chain=False (SA disjunct never fired; the basis bracket is a gate log artifact).
+- M015: pass-1 override: dedr-field presence is not a DEDR origin (see also the staging-cohort finding).
+- M001: Phase-293 bundle: where the promotion record bundles SA cross-corpus validation WITH a completed DEDR confirmation, SA is a component (sa_in_chain) but not load-bearing; where the record shows 'SA confirmation pending' as the only missing piece (Phase-244 cohort), it is load-bearing (SA_CONFIRMED_ONLY).
+- M075: pass-1 override: dedr-field presence is not a DEDR origin (see also the staging-cohort finding).
+- M042: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M047: pass-1 override (was LITERATURE): the operative evidence in the entry is crosswalk comparison.
+- M033: recalibration-gate cohort: Phase-116/216 gate was has_dedr AND (SA-cons>=0.40 OR whitelisted source). SA_ONLY-path signs are SA_CONFIRMED_ONLY; BOTH-path signs keep their origin category with sa_in_chain=True (SA a sufficient but not necessary disjunct); WL_ONLY-path signs have sa_in_chain=False (SA disjunct never fired; the basis bracket is a gate log artifact).
+- M072: Phase-128/129 squeeze cohort: where the recorded value equals the SA modal, origin is SA; where DEDR reasoning adjusted the value away from the modal (M185 pol->pul), the record is MIXED with an SA seed component.
+- M028: Phase-293 cohort: upgrade_basis records 'SA confirmation pending/still needed' after the DEDR injection, and the Phase-293 basis is the SA cross-corpus validation. The delta that promoted these signs was SA.
+- M046: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M149: Phase-128/129 squeeze cohort (see M072).
+- M185: Phase-128/129 squeeze cohort (see M072).
+- M270: Phase-293 cohort: upgrade_basis records 'SA confirmation pending/still needed' after the DEDR injection, and the Phase-293 basis is the SA cross-corpus validation. The delta that promoted these signs was SA.
+- M252: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M386: Phase-271 cohort: final basis leads with the triple-corroboration bundle; classified MIXED rather than by origin alone because the current confidence visibly rests on the bundle.
+- M198: Phase-294 bundle: promotion record cites a new manual DEDR assignment and a grammar lift alongside the SA cross-corpus note; SA named but not load-bearing (contrast Phase-293 cohort, where no new non-SA line appeared).
+- M183: Phase-293 cohort: upgrade_basis records 'SA confirmation pending/still needed' after the DEDR injection, and the Phase-293 basis is the SA cross-corpus validation. The delta that promoted these signs was SA.
+- M222: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M365: Phase-293 cohort: upgrade_basis records 'SA confirmation pending/still needed' after the DEDR injection, and the Phase-293 basis is the SA cross-corpus validation. The delta that promoted these signs was SA.
+- M412: Phase-293 cohort: upgrade_basis records 'SA confirmation pending/still needed' after the DEDR injection, and the Phase-293 basis is the SA cross-corpus validation. The delta that promoted these signs was SA.
+- M151: pass-1 override found by the Step-2 spot audit (1 of 12 sampled pass-1 DEDR-explicit records outside the staging cohort).
+- M304: Phase-293 cohort: upgrade_basis records 'SA confirmation pending/still needed' after the DEDR injection, and the Phase-293 basis is the SA cross-corpus validation. The delta that promoted these signs was SA.
+- M108: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M231: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M321: Phase-271 cohort: final basis leads with the triple-corroboration bundle; classified MIXED rather than by origin alone because the current confidence visibly rests on the bundle.
+- M357: Phase-271 cohort: final basis leads with the triple-corroboration bundle; classified MIXED rather than by origin alone because the current confidence visibly rests on the bundle.
+- M137: Phase-271 cohort: final basis leads with the triple-corroboration bundle; classified MIXED rather than by origin alone because the current confidence visibly rests on the bundle.
+- M239: Phase-293 cohort: upgrade_basis records 'SA confirmation pending/still needed' after the DEDR injection, and the Phase-293 basis is the SA cross-corpus validation. The delta that promoted these signs was SA.
+- M223: Phase-293 cohort: upgrade_basis records 'SA confirmation pending/still needed' after the DEDR injection, and the Phase-293 basis is the SA cross-corpus validation. The delta that promoted these signs was SA.
+- M254: Phase-293 cohort: upgrade_basis records 'SA confirmation pending/still needed' after the DEDR injection, and the Phase-293 basis is the SA cross-corpus validation. The delta that promoted these signs was SA.
+- M143: Phase-271 cohort: final basis leads with the triple-corroboration bundle; classified MIXED rather than by origin alone because the current confidence visibly rests on the bundle.
+- M345: Phase-293 cohort: upgrade_basis records 'SA confirmation pending/still needed' after the DEDR injection, and the Phase-293 basis is the SA cross-corpus validation. The delta that promoted these signs was SA.
+- M190: Phase-271 cohort: final basis leads with the triple-corroboration bundle; classified MIXED rather than by origin alone because the current confidence visibly rests on the bundle.
+- M295: Phase-271 cohort: final basis leads with the triple-corroboration bundle; classified MIXED rather than by origin alone because the current confidence visibly rests on the bundle.
+- M402: Phase-293 cohort: upgrade_basis records 'SA confirmation pending/still needed' after the DEDR injection, and the Phase-293 basis is the SA cross-corpus validation. The delta that promoted these signs was SA.
+- M255: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M251: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M301: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M406: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M387: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M116: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M274: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M101: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M202: M202: entry carries a stale _phase132_note and source field from a superseded assignment; basis text governs per the spec's authority order.
+- M249: Phase-294 bundle: promotion record cites a new manual DEDR assignment and a grammar lift alongside the SA cross-corpus note; SA named but not load-bearing (contrast Phase-293 cohort, where no new non-SA line appeared).
+- M293: recalibration-gate cohort (see M071).
+- M058: Phase-293 cohort: upgrade_basis records 'SA confirmation pending/still needed' after the DEDR injection, and the Phase-293 basis is the SA cross-corpus validation. The delta that promoted these signs was SA.
+- M035: M035: genuinely contestable -- a DEDR-rebus promotion followed an SA first proposal. Classified by the pre-registered first-proposal rule; flagged for Tristen.
+- M118: Phase-294 bundle: promotion record cites a new manual DEDR assignment and a grammar lift alongside the SA cross-corpus note; SA named but not load-bearing (contrast Phase-293 cohort, where no new non-SA line appeared).
+- M221: Phase-294 bundle: promotion record cites a new manual DEDR assignment and a grammar lift alongside the SA cross-corpus note; SA named but not load-bearing (contrast Phase-293 cohort, where no new non-SA line appeared).
+- M192: Phase-294 bundle: promotion record cites a new manual DEDR assignment and a grammar lift alongside the SA cross-corpus note; SA named but not load-bearing (contrast Phase-293 cohort, where no new non-SA line appeared).
+- M193: Phase-294 bundle: promotion record cites a new manual DEDR assignment and a grammar lift alongside the SA cross-corpus note; SA named but not load-bearing (contrast Phase-293 cohort, where no new non-SA line appeared).
+- M362: M362: Phase-105's own verdict was INCONCLUSIVE (freq 3, below the positional-verdict floor), yet the anchor now sits at HIGH via the Phase-216 gate's dedr_ok + source_reliable checks. Provenance is non-SA, but the confidence level is flagged for Tristen's recommendations.
+- M398: M398: Phase-105's own verdict was INCONCLUSIVE (freq 3, below the positional-verdict floor), yet the anchor now sits at HIGH via the Phase-216 gate's dedr_ok + source_reliable checks. Provenance is non-SA, but the confidence level is flagged for Tristen's recommendations.
+- M318: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M346: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M312: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M134: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M129: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M120: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M207: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M280: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M309: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M382: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M324: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M370: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M218: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M186: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M307: M307: 'kur' bulk allograph assignment (15 signs) later judged a placeholder by Phase-132 and downgraded to CANDIDATE by audit note; classified by method (positional), with the quality flag recorded.
+- M106: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M334: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M245: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M227: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M138: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M243: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M209: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M259: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M278: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M140: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M208: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M109: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M250: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M390: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M277: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M181: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M219: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M379: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M214: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M131: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M380: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M197: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M201: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M413: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M135: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M354: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M341: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M330: M330: entry carries a stale _phase132_note and source field from a superseded assignment; basis text governs per the spec's authority order.
+- M105: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M146: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M195: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M339: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M359: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M316: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M111: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M224: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M408: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M396: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M170: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M388: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M360: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M320: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M256: M256: 'kur' bulk allograph assignment (15 signs) later judged a placeholder by Phase-132 and downgraded to CANDIDATE by audit note; classified by method (positional), with the quality flag recorded.
+- M247: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M381: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M104: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M217: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M356: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M369: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M378: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M226: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M158: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M123: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M397: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M203: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M405: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M240: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M303: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M363: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M200: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M156: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M157: pass-1 override; 'kur' placeholder cohort (see M307).
+- M260: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M258: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M392: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M210: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M112: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M286: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M327: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M400: pass-1 override; 'kur' placeholder cohort (see M307).
+- M242: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M147: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M415: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M389: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M287: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M133: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M126: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M297: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M323: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M213: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M322: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M394: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M115: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M298: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M136: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M364: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M310: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M314: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M230: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M407: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- M340: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+- H003: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+## Step 3 — Subset recomputation (SA-independent H+M only)
+
+Deterministic, in-repo; strict set = 198 of 275 H+M anchors (register
+category not SA_DERIVED/SA_CONFIRMED_ONLY/UNTRACEABLE and no SA line in
+chain). Full artifact: `reports/phase108_subset_recomputation.json`.
+The UNTRACEABLE sensitivity pair is identical (UNTRACEABLE = 0).
+
+| Quantity | Full H+M (275) | SA-independent strict (198) | Method note |
+|---|---|---|---|
+| Holdat token coverage | 6755/7002 = 0.9647 | 5459/7002 = 0.7796 | Holdat CSV token rows; reproduces the anchors-file 0.9647 exactly |
+| Phonotactic violations | 0 / 275 | 0 / 198 | Phase-58 machinery (`analyze_phoneme_inventory`) |
+| Distinct initials / max share | 18 / 29.5% | 16 / 35.9% | Foundation-era text (16 / 24.7%) described an older set |
+| Parpola agreement | 110/121 = 90.9% | 79/82 = 96.3% | Crosswalk v2.1 readings, normalised first-segment equality; partially tautological where crosswalk entries are identity-only (67/184) |
+| Site invariance | 90/90 tested = 100% | 65/65 tested = 100% | Phase-69 chi² machinery; eligibility: per-sign site total ≥ 3 |
+
+Divergences that matter: the README's 59% Parpola figure is a
+Phase-170-era quantity (Phase-159's 44 confirmed signs over the
+then-current 75 HIGH); on current sets the Phase-159 cross-check gives
+40/166 HIGH (full) and 20/89 HIGH (strict). Disagreements in the
+crosswalk comparison concentrate in SA-derived signs (M024, M040, M072,
+M127, M149, M153, M155, M168) and staging overwrites (M042 'min' vs
+Parpola 'van', M108, M116). Site invariance — a headline grammar claim —
+survives intact on the SA-independent subset.
+
+## Step 4 — Circularity + downstream impact map
+
+Full artifact: `reports/phase108_impact_map.json`. This is a map;
+nothing mapped here was edited.
+
+### Circular chains — 77 records carry an SA line in chain
+
+- **SA origin (24, all load-bearing).** Value first proposed by an SA
+  run (Phase-122 syllabic LM SA, Phase-110, Phase-106, Phase-73,
+  Phase-77, Phase-129 squeeze where the value equals the SA modal).
+- **Pin → SA-cited promotion (53).** The sign sits in the Phase-52 SA
+  table (the pinning-era artifact) and its promotion record cites SA
+  agreement. 20 are load-bearing (SA_CONFIRMED_ONLY: Phase-116/216
+  SA_ONLY gate paths; Phase-293 promotions); 33 are component-level
+  (a completed non-SA validation also stands in the record: BOTH-path
+  gate signs, the Phase-271 triple-corroboration cohort, the Phase-294
+  bundle, M001).
+
+Three most consequential:
+
+1. **M293 'ta'** — the corpus's most frequent sign (232 tokens). Its
+   HIGH confidence passed the Phase-116 gate on the SA_ONLY path
+   (SA-cons 1.00; source not whitelisted). Citations:
+   `outputs/phase116_sa_recalibration.json` (eval_log),
+   `backend/reports/INDUS_FINAL_ANCHORS.json` (entry).
+2. **M416 → M169 inheritance.** M416 'na' is Phase-122 SA-derived;
+   M169 'rā' inherited HIGH from M416 via the Phase-252 positional
+   allograph rule (r=1.000) — SA-lineage confidence propagated to a
+   second sign by a non-SA method riding on an SA-derived parent.
+   Citations: `outputs/phase122_syllabic_lm_sa.json`,
+   `outputs/phase252_allograph_upgrade.json`.
+3. **The Phase-242/244 → Phase-293 pattern (12 signs).** DEDR
+   injections whose own upgrade records state "SA confirmation
+   pending/still needed" were promoted LOW→HIGH by Phase-293's SA
+   cross-corpus validation (83.7%). Example M270: `upgrade_basis`
+   records the Phase-244 DEDR 4981 injection with "SA confirmation
+   pending"; the current basis is the Phase-293 SA text. Citations:
+   `outputs/phase244_e41_dedr_upgrade.json`,
+   `outputs/phase292_293_sa_cross_corpus.json`.
+
+Also flagged: M035 'po' — first proposed as Phase-77's sole high-trust
+SA proposal, promoted by the Phase-87 DEDR-rebus sprint, and present in
+Phase-159's Parpola-confirmed set (below).
+
+### Downstream impact
+
+- **Extracted claims (31):** no extracted claim cites any sign ID
+  (verified against `glossa-indus/claims/extracted_claims/*.json`), so
+  no per-claim SA-lineage dependence is citable: **0/31**. The claims'
+  dependence on the anchor programme is generic, not per-sign.
+- **README/preprint headlines.** The 59% Parpola figure's source set
+  (Phase-159's 44 confirmed signs) contains **20 SA-lineage signs
+  (45.5%)**, including SA_DERIVED M035 and SA_CONFIRMED_ONLY M293,
+  M071, M031, M033. The 161-anchor set is **not stored in-repo** (the
+  Phase-170 artifact mentions only 4 H+M signs), so its SA-lineage
+  share cannot be computed without reconstruction, which this audit
+  does not do; its companion figure 90.96% coverage is a Phase-170-era
+  set property (current full H+M coverage: 96.47%; SA-independent:
+  77.96%).
+- **Foundation-check claim texts:** 37 SA-citing lines in
+  `backend/scripts/foundation_check.py` mapped, each with a
+  post-Phase-107 status in the impact artifact. Rationale summary:
+  - RETIRE the evidential reading: Phase-52 "z=16 / SA agrees 55%"
+    (decomposed by Phase-107 as pinned self-agreement), Phase-57
+    "z=19.07 — VERIFIED, highest z-score in the project", Phase-67
+    "Sanskrit falsification 1.85x (DEFINITIVE)" (Phase-107's Sanskrit
+    control reached z=60.9 with 0.000 held-out), Phase-73 ensemble
+    values as support (SA outputs).
+  - NEEDS CAVEAT: Phase-44's "VERIFIED — strongest SA result" framing
+    (an LM-lift language-fit statistic, not a decipherment result);
+    Phase-61 "94% vowel harmony" (not recomputed in Phase-108;
+    Phase-107's ablation showed the term adds no held-out value).
+  - STANDS: Phase-56 crosswalk and Phase-47 lift (non-SA methods);
+    Phase-58 phonotactic cleanliness (recomputed in Step 3: 0
+    violations on both sets, with era figures superseded); Phase-61's
+    12% SA-only violation note (already caveated in its own text);
+    Phase-69 site invariance (recomputed: 100% on both sets).
+  - STANDS AS CAVEATED (the texts already carry the caveat): Phase-70
+    M267 SA test ("SA evidence neutral" — the register concurs),
+    Phase-55 ensemble (already DO NOT CLAIM), Phase-32 T4 (already
+    INCONCLUSIVE), Phase-60 note. Phase-168's checks are operational
+    only post-107.
+
+## Step 5 — Recommendations (authored for Tristen; NOT executed)
+
+This audit changed no anchor, claim, foundation text, README, or
+preprint text. The following are recommendations for the owner's
+decision.
+
+### What an honest post-Phase-107 programme statement looks like
+
+**Survives, and can be stated as-is:**
+
+- 210 of 287 anchors (73.2%) — including 89 of 166 HIGH — have values
+  and confidences that never passed through the SA lineage. The
+  decipherment programme is not "an SA result"; its core predates and
+  stands independent of the SA phases.
+- Grammar site invariance: 100% of tested signs on the full set
+  (90/90) and on the SA-independent subset (65/65). This is the
+  programme's strongest internal-consistency claim and it does not
+  depend on SA.
+- Phonotactic cleanliness: 0 violations under Phase-58 rules on both
+  sets (with era figures — 16 initials / 24.7% — updated to 18 / 29.5%
+  full-set, 16 / 35.9% subset).
+- The non-SA foundation lines: Phase-56 crosswalk expansion, Phase-47
+  rebus LM lift, Phase-48's battery, the DEDR sprint cohorts, the
+  Parpola literature anchors.
+
+**Must be retired or re-based:**
+
+- Every "VERIFIED" foundation text whose evidence is an SA z-score or
+  SA agreement rate (Phase-52 z=16 / "SA agrees 55%", Phase-57
+  z=19.07 "highest z-score in the project") — Phase-107 falsified the
+  evidential reading; Phase-108 Step 4 maps all 37 SA-citing lines.
+- Phase-67's "Sanskrit falsification (DEFINITIVE)" framing — the
+  Phase-107 Sanskrit control (z=60.9, held-out 0.000) removed the
+  discrimination the word claims.
+- The README/preprint headline set as currently stated: "59% Parpola
+  agreement" is a Phase-170-era figure whose 44-sign source set is
+  45.5% SA-lineage and which does not reproduce on current sets
+  (crosswalk comparison: 90.9% full / 96.3% strict — a different,
+  partially tautological quantity that should not silently replace it
+  either); "161 anchors / 90.96% coverage" describes a set that is not
+  stored in-repo and cannot be re-derived. Re-base all three numbers
+  on a named, stored anchor set — the natural candidate is the
+  register's SA-independent H+M subset (198 signs, 77.96% coverage).
+- The 44 SA_DERIVED + SA_CONFIRMED_ONLY anchors (all HIGH) should be
+  presented, if at all, as SA-lineage candidates pending non-SA
+  validation — starting with M293 'ta' (232 tokens; its confidence
+  moves the coverage and grammar statistics more than any other
+  single sign).
+
+**Programme hygiene the audit exposed (independent of SA):**
+
+- The 116-anchor staging cohort (40% of the set) rests on fixed
+  heuristic tables in the research loop — one reading ('min') was
+  assigned to ~40 signs by list position — and was promoted through an
+  endpoint named "verify-sa" that performs no verification. Recommend:
+  rename the endpoint, require a recorded evidence test for promotion,
+  and re-review the cohort sign-by-sign (several overwrote earlier
+  DEDR/literature readings, e.g. M042 vaN→min against Parpola 'van').
+- Anchor entries carry stale fields from superseded assignments
+  (M202/M330's `_phase132_note` and Phase-111 source strings contradict
+  their current bases). Recommend a one-time entry-hygiene pass —
+  as new, dated annotations, never silent edits (H1).
+- The Phase-116/216 recalibration pattern — promotion gates in which
+  SA agreement is a sufficient disjunct — should not be run again in
+  that form; any future gate should require the non-SA disjunct.
+- M362/M398 sit at HIGH although the programme's own Phase-105 verdict
+  was INCONCLUSIVE; their promotion rode the Phase-216 gate's weakest
+  checks. Flagged for individual re-review.
+
+### Suggested replacement headline (for the owner's wording)
+
+"287 candidate anchors are recorded; 210 (73%) rest on evidence
+independent of the programme's simulated-annealing phases, which
+Phase-107 showed cannot validate sign values. On the 198
+SA-independent HIGH+MEDIUM anchors, Holdat token coverage is 78.0%,
+phonotactic violations are zero, and positional grammar is 100%
+site-invariant across tested signs."

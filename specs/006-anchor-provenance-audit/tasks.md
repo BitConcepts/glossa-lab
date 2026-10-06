@@ -40,4 +40,4 @@
 - [x] T054 Anchors file hash identical to main (audit-only guarantee)
 - [x] T055 glossa-indus LEDGER Phase-108 entries (per step, AI disclosure)
 - [x] T056 Root LEDGER.md summary entry (AI disclosure)
-- [ ] T057 Push branch, open PR (do NOT merge)
+- [x] T057 Push branch, open PR (do NOT merge)

@@ -43,9 +43,9 @@
 - [x] T052 Step5 artifact
 
 ## Step 6 — Close-out
-- [ ] T060 Foundation check (0 failures; H21)
-- [ ] T061 Full backend test suite (exact counts)
-- [ ] T062 Ruff on changed Python files
-- [ ] T063 glossa-indus LEDGER Phase-107 entries (per step, AI disclosure)
-- [ ] T064 Root LEDGER.md summary entry (AI disclosure)
+- [x] T060 Foundation check (0 failures; H21)
+- [x] T061 Full backend test suite (exact counts)
+- [x] T062 Ruff on changed Python files
+- [x] T063 glossa-indus LEDGER Phase-107 entries (per step, AI disclosure)
+- [x] T064 Root LEDGER.md summary entry (AI disclosure)
 - [ ] T065 Push branch, open PR (do NOT merge)

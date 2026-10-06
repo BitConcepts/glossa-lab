@@ -16,11 +16,11 @@
 - [x] T016 Aggregate step1 artifact; discrimination verdict per pre-registered rule
 
 ## Step 2 — Constraint ablation
-- [ ] T020 Implement phonotactic term (Phase-58/61 rules)
-- [ ] T021 Implement vowel-harmony term (Phase-61 definition)
-- [ ] T022 Implement positional-grammar term (Phase-133b classes, per-fold profiles)
-- [ ] T023 Run ablations in order + combined kept-terms config
-- [ ] T024 Aggregate step2 artifact; kept/dropped verdicts per keep rule
+- [x] T020 Implement phonotactic term (Phase-58/61 rules)
+- [x] T021 Implement vowel-harmony term (Phase-61 definition)
+- [x] T022 Implement positional-grammar term (Phase-133b classes, per-fold profiles)
+- [x] T023 Run ablations in order + combined kept-terms config
+- [x] T024 Aggregate step2 artifact; kept/dropped verdicts per keep rule
 
 ## Step 3 — Delta scoring + scaled run
 - [ ] T030 Implement delta scorer (LM + kept terms)

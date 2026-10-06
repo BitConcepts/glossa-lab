@@ -1296,3 +1296,36 @@ recorded in the Step-1 entry above.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-107 — Step 2: Constraint Ablation — No Term Produces Held-Out Agreement
+
+One term at a time, Step-1 protocol, fixed folds/seeds (spec 005
+pre-registered order and keep rule: keep iff held-out agreement
+improves ≥ +2.0 pp over the Step-1 baseline AND mean z falls ≤ 10%
+relative). Artifact: `reports/phase107_step2_ablation.json`.
+(Phono/harmony folds were checkpointed by the previous session and
+resumed, not re-run; positional folds ran in this session.)
+
+| term | held-out agreement (5 folds) | mean z | Δ vs baseline | verdict |
+|---|---|---|---|---|
+| (baseline, LM only) | 0.000 | 18.81 | — | — |
+| + phonotactic (Phase-58/61, λ=3.0) | 0.000 | 19.01 | +0.0 pp | DROPPED |
+| + vowel harmony (Phase-61, λ=3.0) | 0.000 | 20.92 | +0.0 pp | DROPPED |
+| + positional grammar (Phase-133b, per-fold profiles) | 0.000 | 19.91 | +0.0 pp | DROPPED |
+
+**Claim C is falsified for all three terms individually**: none
+produces a single held-out agreement in any fold (0/115 evaluable per
+term), so the keep rule cannot fire and no combined run exists
+(`combined: null`, `kept_terms: []`). The terms do move z (harmony
+raises mean z to 20.92) — fit improves while per-sign generalisation
+stays at exactly zero, the same dissociation as Step 1: the SA's LM
+landscape does not determine unpinned sign values, with or without
+the project's validated constraints in the objective. The Phase-58
+retroflex rule remains vacuous on the diacritic-stripped LM
+representation, as pre-registered in the spec. **The best objective
+going forward is the LM-only baseline**; Steps 3–5 proceed on it
+(the Step-4 pool script's Claim-E fallback to the Step-1 baseline
+therefore applies). No anchor readings or confidences changed.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

@@ -273,6 +273,10 @@ This project follows strict research governance enforced by both convention and 
 
 Full governance rules: [`docs/governance/`](docs/governance/)
 
+### Provenance & source registry
+
+The programme's provenance registry is indexed publicly on the Open Science Framework: [osf.io/ybd65](https://osf.io/ybd65/) — components for literature (`zbh86`), corpora (`dfrhz`), and programme outputs (`vwa7s`). The OSF project is the public index; this repository (with `CITATIONS.md`) remains canonical.
+
 ---
 
 ## Documentation

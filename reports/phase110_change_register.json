@@ -1,0 +1,2770 @@
+{
+  "phase": 110,
+  "spec": "specs/008-m222-adjudication",
+  "date": "2026-10-06",
+  "gpu_device": "cpu (torch absent)",
+  "branch": 1,
+  "entries": [
+    {
+      "step": "stepB",
+      "sign": "M101",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M104",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M105",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M106",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M109",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M111",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M112",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M115",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M116",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M120",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M123",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M126",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M129",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M131",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M133",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M134",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M135",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M136",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M138",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M140",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M146",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M147",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M156",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M158",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M170",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M181",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M186",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M195",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M197",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M200",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M201",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M203",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M207",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M208",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M209",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M210",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M213",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M214",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M217",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M218",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M219",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M224",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M226",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M227",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M230",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M240",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M242",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M243",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M245",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M247",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M250",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M251",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M255",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M258",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M259",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M260",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M274",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M277",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M278",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M280",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M286",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M287",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M297",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M298",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M301",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M303",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M309",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M310",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M312",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M314",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M316",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M318",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M320",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M322",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M323",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M324",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M327",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M334",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M339",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M340",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M341",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M346",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M354",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M356",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M359",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M360",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M363",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M364",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M369",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M370",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M378",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M379",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M380",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M381",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M382",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M387",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M388",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M389",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M390",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M392",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M394",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M396",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M397",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M405",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M406",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M407",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M408",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M413",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M415",
+      "rule": "spec008-branch1-cohortA",
+      "action": "demote+annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "LOW",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M157",
+      "rule": "spec008-branch1-cohortB",
+      "action": "annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M256",
+      "rule": "spec008-branch1-cohortB",
+      "action": "annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M307",
+      "rule": "spec008-branch1-cohortB",
+      "action": "annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M400",
+      "rule": "spec008-branch1-cohortB",
+      "action": "annotate+status",
+      "before": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "kur",
+        "confidence": "CANDIDATE",
+        "validation_status": "premise_superseded"
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "stepB",
+      "sign": "M222",
+      "rule": "spec008-m222-record",
+      "action": "annotate",
+      "before": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "validation_status": null
+      },
+      "after": {
+        "reading": "min",
+        "confidence": "MEDIUM",
+        "validation_status": null
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json",
+        "outputs/phase111_allograph_resolution.json",
+        "backend/scripts/phase111_allograph_resolution.py",
+        "backend/reports/INDUS_FINAL_ANCHORS.json:_phase132_note",
+        "backend/glossa_lab/data/mahadevan_parpola_crosswalk_v2.json:M222",
+        "reports/phase109_change_register.json"
+      ]
+    },
+    {
+      "step": "bookkeeping",
+      "sign": "*",
+      "rule": "spec008-bookkeeping",
+      "action": "regenerate-summary-fields",
+      "before": {
+        "by_confidence": {
+          "HIGH": 166,
+          "MEDIUM": 5,
+          "LOW": 112,
+          "CANDIDATE": 4
+        }
+      },
+      "after": {
+        "by_confidence": {
+          "HIGH": 166,
+          "MEDIUM": 5,
+          "LOW": 3,
+          "CANDIDATE": 113
+        }
+      },
+      "citations": [
+        "reports/phase110_m222_dossier.json"
+      ]
+    }
+  ]
+}

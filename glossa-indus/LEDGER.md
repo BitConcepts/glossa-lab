@@ -1816,3 +1816,92 @@ Foundation check: 40 passed / 0 failed / 8 warnings.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-110 — M222 / 'kur' Adjudication (spec 008)
+
+Adjudicates the tension Phase-109 flagged verbatim and left open:
+109 anchors restored to `kur`/LOW under spec 007 Step 1(b) carry
+bases that derive the value from M222 read as `kur`, while M222
+itself stands at `min`/MEDIUM (Phase-109 Step 1(a), crosswalk
+v2.1 Parpola support). Owner-directed; rule pre-registered in
+`specs/008-m222-adjudication/` BEFORE any entry was touched: *a
+derived value may not cite as its basis a premise that the anchor
+sign's own sourced record contradicts.*
+
+**Part A — Dossier** (`reports/phase110_m222_dossier.json`,
+summary `reports/phase110_m222_summary.md`; graph node
+`IndusPhase110M222Dossier`):
+
+- Phase-111's mechanism (script + recorded run, quoted): rare
+  signs (freq 1–4) inherit the nearest confirmed sign's reading
+  **verbatim** by I/M/T positional-profile L1. The recorded run
+  resolved 220 signs: **220/220 matched M222, 220/220 at
+  L1=0.000, 220/220 inherited `kur`**. Recomputation with the
+  script's own functions: every rare sign's profile in the Holdat
+  corpus is (I=0, T=0, M=1) — all occurrences medial — and 32
+  confirmed signs shared that exact profile under the May-2026
+  state, so M222 (freq 5, the minimum donor frequency) won by
+  tie-breaking. The match carried **zero discriminating
+  information**. Phase-132's own note already said it: "positional
+  parking spots (all-MEDIAL L1=0), not genuine phonetic readings."
+- M222=`kur` at run time: Phase-87 anchor sprint, DEDR_REBUS_EXTENDED
+  (DEDR 1839, "hook sign/hook", evidence_score 2.0) → MEDIUM.
+- M222=`min` (standing record): retained Phase-109 Step 1(a) on
+  crosswalk v2.1 (M222→P222, Parpola 1994 App. B via Phase-71
+  EXTENDED_MAP, crosswalk CANDIDATE, single source) + staging-era
+  DEDR gloss. Thinness acknowledged in the spec; Phase-110 does
+  not re-try M222's own value.
+- **Verdict: the contradiction is REAL** (all four mechanical
+  predicates true). The 109 values are **pure premise
+  inheritance** — option (i); the class-label reading (ii) exists
+  only as Phase-132's post-hoc characterization, which itself
+  denies the values are genuine readings. Branch 1 applies, with
+  demotion.
+- **Addendum finding (recorded in spec 008 BEFORE apply):** the
+  four further CANDIDATE entries with a Phase-111 `kur` basis
+  (M157, M256, M307, M400) all carry Phase-252 `upgrade_basis`
+  records — but those claim allograph status under M427 ('en')
+  or M375 ('taṇ'), i.e. competing never-adopted derivations of
+  DIFFERENT values; they do not support `kur`. Cohort C (dual
+  derivation) is therefore EMPTY; all four join Cohort B's
+  disposition. All four also carry the June-2026 audit note
+  "reading 'kur' shared by 15 signs (bulk assignment)".
+- Reconciliation: of the 220 Phase-111-resolved signs, 113 still
+  carry its `kur` basis today (109 LOW + 4 CANDIDATE); 3 carry
+  later readings; 104 are absent from the current anchors file.
+
+**Part B — Disposition applied** (`reports/phase110_change_
+register.json`, 115 records; graph node `IndusPhase110M222Apply`):
+
+- **Cohort A (109):** dated `phase110_annotation` restating the
+  basis honestly (Phase-111 medial-only class assignment whose
+  M222 anchor premise is superseded), `validation_status` =
+  `premise_superseded`, **demoted LOW → CANDIDATE**. Values kept
+  as the historical label of record, not as supported readings.
+- **Cohort B (4: M157, M256, M307, M400):** same annotation +
+  status; already CANDIDATE, no tier change. Annotations also
+  record that their Phase-252 legs support 'en'/'taṇ', not `kur`.
+- **M222:** dated annotation recording the adjudication outcome;
+  reading and tier NOT re-tried (`min`/MEDIUM unchanged).
+- Bookkeeping regenerated from the entries: tiers now **166 HIGH
+  / 5 MEDIUM / 3 LOW / 113 CANDIDATE** (287 total; H+M unchanged
+  at 171). Completeness verified mechanically: exactly 114 anchor
+  entries differ from main, all 114 in the register.
+
+**Part C — OSF registry link:** README.md gained a "Provenance &
+source registry" pointer and CITATIONS.md a header note:
+https://osf.io/ybd65/ (components zbh86 / dfrhz / vwa7s) as the
+public index; the repo remains canonical.
+
+**Verification:** foundation check **40 passed / 0 failed /
+8 warnings** (H21, baseline-identical — the demotions move only
+LOW→CANDIDATE counts); backend suite **609 passed / 9 skipped /
+0 failed** (baseline-identical); ruff clean on changed Python;
+H23 gate followed (graph module registered + verified BEFORE
+either script ran).
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.
+Anchor changes in this package are made only under the
+pre-registered spec 008 rules (incl. its dated addendum); the
+package PR is opened unmerged for Tristen's review.

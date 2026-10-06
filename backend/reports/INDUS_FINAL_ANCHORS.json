@@ -476,11 +476,15 @@
       "reading_direction": "rtl"
     },
     "M042": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "confidence": "HIGH",
+      "reading": "vaN",
+      "dedr_id": "DEDR 5231",
+      "meaning": "arch/bow",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 13,
+      "evidence_score": 1.7,
+      "basis": " [Phase-116 recal: SA-cons=0.62✓ DEDR✓]",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'vaN' (HIGH); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M040": {
       "reading": "ri",
@@ -636,11 +640,15 @@
       "reading_direction": "rtl"
     },
     "M046": {
-      "reading": "kal",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=high_neighbor_concentration; score=0.65; status=verified; DEDR: gem / stone",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone"
+      "confidence": "HIGH",
+      "reading": "kaL",
+      "dedr_id": "DEDR 1286",
+      "meaning": "leg/stem",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 11,
+      "evidence_score": 1.7,
+      "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kaL' (HIGH); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (MEDIUM)."
     },
     "M032": {
       "confidence": "HIGH",
@@ -813,10 +821,11 @@
     },
     "M252": {
       "reading": "min",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "dedr_support": "shine / lightning (verb)",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — DEMOTED one tier under spec 007 Step 1(c): staging-heuristic origin, unvalidated (Phase-109). No independent non-SA support recorded and no restorable prior sourced reading."
     },
     "M386": {
       "reading": "maṇ",
@@ -887,7 +896,8 @@
       "confidence": "MEDIUM",
       "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "dedr_support": "shine / lightning (verb)",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — value RETAINED under spec 007 Step 1(a): independent non-SA support recorded (A1 crosswalk v2.1 Parpola reading 'min' (spec 004 WS2 expansion (2026-10-05)) equals the current reading (exact first segment)). Phase-108 register: reports/phase108_provenance_register.json."
     },
     "M365": {
       "reading": "vāṉ",
@@ -967,18 +977,23 @@
       "reading_direction": "rtl"
     },
     "M108": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "confidence": "HIGH",
+      "reading": "kaL",
+      "dedr_id": "DEDR 1286",
+      "meaning": "wheel/circle",
+      "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+      "corpus_freq": 5,
+      "evidence_score": 1.6,
+      "basis": " [Phase-116 recal: SA-cons=0.12✓ DEDR✓]",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kaL' (HIGH); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M231": {
       "reading": "min",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
       "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "dedr_support": "shine / lightning (verb)",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — DEMOTED one tier under spec 007 Step 1(c): staging-heuristic origin, unvalidated (Phase-109). No independent non-SA support recorded and no restorable prior sourced reading."
     },
     "M321": {
       "reading": "kol",
@@ -1162,53 +1177,60 @@
       "reading_direction": "rtl"
     },
     "M255": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M251": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M301": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M406": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M387": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M116": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M274": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M087": {
       "reading": "veL",
@@ -1302,11 +1324,11 @@
       "reading_direction": "rtl"
     },
     "M101": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M125": {
       "reading": "vil",
@@ -1615,102 +1637,116 @@
       "reading_direction": "rtl"
     },
     "M318": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M346": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M312": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M134": {
-      "reading": "kal",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "gem / stone"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (MEDIUM)."
     },
     "M129": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M120": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M207": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M280": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M309": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M382": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M324": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M370": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M218": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M186": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M307": {
       "reading": "kur",
@@ -1726,194 +1762,220 @@
       "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kur' shared by 15 signs (bulk assignment)"
     },
     "M106": {
-      "reading": "an",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T18:22:07Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (MEDIUM)."
     },
     "M334": {
-      "reading": "ko",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: take / kill",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "take / kill",
-      "reading_direction": "rtl"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'ko' (MEDIUM)."
     },
     "M245": {
-      "reading": "an",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (MEDIUM)."
     },
     "M227": {
-      "reading": "kal",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (MEDIUM)."
     },
     "M138": {
-      "reading": "pan",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: worker / make",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "worker / make"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'pan' (MEDIUM)."
     },
     "M243": {
-      "reading": "kal",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (MEDIUM)."
     },
     "M209": {
-      "reading": "kal",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (MEDIUM)."
     },
     "M259": {
-      "reading": "van",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: smith / strong",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "smith / strong"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'van' (MEDIUM)."
     },
     "M278": {
-      "reading": "van",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "smith / strong"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'van' (MEDIUM)."
     },
     "M140": {
-      "reading": "an",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.42; status=verified; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (MEDIUM)."
     },
     "M208": {
-      "reading": "van",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: smith / strong",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "smith / strong"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'van' (MEDIUM)."
     },
     "M109": {
-      "reading": "an",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (MEDIUM)."
     },
     "M250": {
-      "reading": "kal",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (MEDIUM)."
     },
     "M390": {
-      "reading": "kal",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (MEDIUM)."
     },
     "M277": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M181": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M219": {
-      "reading": "kal",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "gem / stone"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (MEDIUM)."
     },
     "M379": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M214": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M131": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M380": {
-      "reading": "kal",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "gem / stone"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (MEDIUM)."
     },
     "M197": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M201": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M413": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M135": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M354": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M341": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M330": {
       "reading": "can",
@@ -1925,104 +1987,116 @@
       "reading_direction": "rtl"
     },
     "M105": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M146": {
-      "reading": "kal",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "gem / stone"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (MEDIUM)."
     },
     "M195": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M339": {
-      "reading": "kal",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "gem / stone"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (MEDIUM)."
     },
     "M359": {
-      "reading": "kal",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "gem / stone"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (MEDIUM)."
     },
     "M316": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M111": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M224": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M408": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M396": {
-      "reading": "kal",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (MEDIUM)."
     },
     "M170": {
-      "reading": "van",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "smith / strong"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'van' (MEDIUM)."
     },
     "M388": {
-      "reading": "ko",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: take / kill",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "take / kill",
-      "reading_direction": "rtl"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'ko' (MEDIUM)."
     },
     "M360": {
-      "reading": "an",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (MEDIUM)."
     },
     "M320": {
-      "reading": "ko",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: take / kill",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "take / kill",
-      "reading_direction": "rtl"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'ko' (MEDIUM)."
     },
     "M256": {
       "reading": "kur",
@@ -2038,67 +2112,73 @@
       "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kur' shared by 15 signs (bulk assignment)"
     },
     "M247": {
-      "reading": "pan",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "worker / make"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'pan' (MEDIUM)."
     },
     "M381": {
-      "reading": "an",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (MEDIUM)."
     },
     "M104": {
-      "reading": "an",
+      "reading": "kur",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-09T04:41:21Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (LOW)."
     },
     "M217": {
-      "reading": "van",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "smith / strong"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'van' (MEDIUM)."
     },
     "M356": {
-      "reading": "an",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (MEDIUM)."
     },
     "M369": {
-      "reading": "van",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: smith / strong",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "smith / strong"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+      "source": "Phase-111",
+      "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'van' (MEDIUM)."
     },
     "M378": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M226": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M158": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M165": {
       "reading": "cul",
@@ -2108,68 +2188,67 @@
       "reading_direction": "rtl"
     },
     "M123": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M397": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M203": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M405": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M240": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M303": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M363": {
-      "reading": "ko",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: take / kill",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "take / kill",
-      "reading_direction": "rtl"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'ko' (MEDIUM)."
     },
     "M200": {
-      "reading": "an",
+      "reading": "kur",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-09T04:41:21Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (LOW)."
     },
     "M156": {
-      "reading": "kal",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: gem / stone",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (MEDIUM)."
     },
     "M157": {
       "reading": "kur",
@@ -2184,53 +2263,53 @@
       "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kur' shared by 15 signs (bulk assignment)"
     },
     "M260": {
-      "reading": "an",
+      "reading": "kur",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-09T04:41:21Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (LOW)."
     },
     "M258": {
-      "reading": "an",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (MEDIUM)."
     },
     "M392": {
-      "reading": "an",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (MEDIUM)."
     },
     "M210": {
-      "reading": "pan",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "worker / make"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'pan' (MEDIUM)."
     },
     "M112": {
-      "reading": "an",
+      "reading": "kur",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-09T04:41:21Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (LOW)."
     },
     "M286": {
-      "reading": "an",
+      "reading": "kur",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-09T04:41:21Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (LOW)."
     },
     "M327": {
-      "reading": "kal",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (MEDIUM)."
     },
     "M400": {
       "reading": "kur",
@@ -2245,145 +2324,144 @@
       "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kur' shared by 15 signs (bulk assignment)"
     },
     "M242": {
-      "reading": "kal",
+      "reading": "kur",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-09T04:41:21Z); evidence_type=high_neighbor_concentration; score=0.62; status=approved; DEDR: gem / stone",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone"
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (LOW)."
     },
     "M147": {
-      "reading": "an",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.64; status=verified; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (MEDIUM)."
     },
     "M415": {
-      "reading": "kal",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.62; status=verified; DEDR: gem / stone",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "gem / stone"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (MEDIUM)."
     },
     "M389": {
-      "reading": "pan",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "worker / make"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'pan' (MEDIUM)."
     },
     "M287": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M133": {
-      "reading": "kal",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "gem / stone"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (MEDIUM)."
     },
     "M126": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M297": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M323": {
-      "reading": "kal",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: gem / stone",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "gem / stone"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'kal' (MEDIUM)."
     },
     "M213": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M322": {
-      "reading": "min",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
-      "source": "anchor_staging_archive:compound_semantic_coherence",
-      "dedr_support": "shine / lightning (verb)"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'min' (MEDIUM)."
     },
     "M394": {
-      "reading": "an",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (MEDIUM)."
     },
     "M115": {
-      "reading": "an",
+      "reading": "kur",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-09T04:41:21Z); evidence_type=high_neighbor_concentration; score=0.41; status=approved; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (LOW)."
     },
     "M298": {
-      "reading": "pan",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "worker / make"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'pan' (MEDIUM)."
     },
     "M136": {
-      "reading": "an",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (MEDIUM)."
     },
     "M364": {
-      "reading": "pan",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "worker / make"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'pan' (MEDIUM)."
     },
     "M310": {
-      "reading": "an",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.41; status=verified; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (MEDIUM)."
     },
     "M314": {
-      "reading": "pan",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "worker / make"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'pan' (MEDIUM)."
     },
     "M230": {
-      "reading": "in",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-04T21:31:49Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: genitive / of",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "genitive / of",
-      "reading_direction": "rtl"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'in' (MEDIUM)."
     },
     "M407": {
-      "reading": "an",
+      "reading": "kur",
       "confidence": "LOW",
-      "basis": "Promoted from anchor staging archive (2026-06-09T04:41:21Z); evidence_type=high_neighbor_concentration; score=0.42; status=approved; DEDR: goose",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'an' (LOW)."
     },
     "M347": {
       "reading": "ka",
@@ -2403,18 +2481,19 @@
       "reading_direction": "rtl"
     },
     "M340": {
-      "reading": "pan",
-      "confidence": "MEDIUM",
-      "basis": "Promoted from anchor staging archive (2026-06-07T12:15:09Z); evidence_type=high_neighbor_concentration; score=0.61; status=verified; DEDR: worker / make",
-      "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "worker / make"
+      "reading": "kur",
+      "confidence": "LOW",
+      "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=1.",
+      "source": "Phase-111",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — pre-staging reading RESTORED under spec 007 Step 1(b): the June-2026 research-loop staging promotion (fixed heuristic tables; /staging/verify-sa performs no SA test) overwrote the sourced reading 'kur' (LOW); prior source: backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json. Staging value was 'pan' (MEDIUM)."
     },
     "H003": {
       "reading": "an",
-      "confidence": "MEDIUM",
+      "confidence": "LOW",
       "basis": "Promoted from anchor staging archive (2026-06-09T04:29:43Z); evidence_type=high_neighbor_concentration; score=1.20; status=verified; DEDR: goose",
       "source": "anchor_staging_archive:blocker_sign_context",
-      "dedr_support": "goose"
+      "dedr_support": "goose",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — DEMOTED one tier under spec 007 Step 1(c): staging-heuristic origin, unvalidated (Phase-109). No independent non-SA support recorded and no restorable prior sourced reading."
     }
   },
   "_citation": {

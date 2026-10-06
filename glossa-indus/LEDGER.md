@@ -1363,3 +1363,39 @@ confidences changed.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-107 — Step 3: Delta Scoring Sound, Mapping Not Identified; Scaled Run — Zero Stable Signs
+
+Artifacts: `reports/phase107_step3_scaled.json`,
+`reports/phase107_decipherment_table.json`. Best objective = LM-only
+(Step 2 kept no terms).
+
+**Equivalence (Claim D): FAIL — on the mapping criterion, not the
+score criterion.** Same seeds/config (5 × 5 × 10k), full vs delta:
+mean best-score difference **0.297%** (criterion < 1%: met) — the
+delta scorer is numerically sound, consistent with the unit tests
+proving `delta_swap` equals the exact total difference. But the two
+runs' consensus mappings agree on only **31.2%** of signs (criterion
+≥ 95%: not met), so Claim D fails as pre-registered. The cause is
+not a delta defect: float32-vs-float64 summation noise diverges the
+acceptance stream over 10k iterations, and the two trajectories land
+in different optima of *equal* score — direct evidence that the
+objective's optimum is a vast plateau of near-equivalent mappings,
+not a point. The mapping is not identified by the objective even at
+fixed protocol.
+
+**Scaled run (10 seeds × 10 restarts × 100,000 delta iterations,
+116 pins).** Mean score −95,626.51 vs null −124,333.44 ± 1,555.75 →
+**z = 18.452**. Stability selection at the pre-registered thresholds:
+**0 signs SA-supported (consensus ≥ 0.80), 0 probable (≥ 0.60),
+275 unstable**; 115 pinned signs appear in the table (the 116th pin,
+H003, has no corpus occurrences — Step-1 audit). At 10× the harness
+compute and 3.3× Phase-52's iterations, *not one unpinned sign*
+reaches even 60% cross-seed consensus. The decipherment table records
+every unpinned sign's tier as "unstable" — that is the honest output
+of the strengthened method, and it supersedes the Phase-52/106 table's
+implied per-sign readings for all unpinned signs. No anchor readings
+or confidences changed (the table is evidence, not applied).
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

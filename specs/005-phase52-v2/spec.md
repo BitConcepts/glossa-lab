@@ -237,6 +237,30 @@ numeral/metrological subsystem. Pass/fail per constraint with counts.
   H21 foundation check must show 0 failures before the close-out
   commit is pushed.
 
+## Addendum A (2026-10-05, recorded BEFORE any full protocol run)
+
+Calibration smokes on fold 0 (3 seeds × 5 restarts, at both 10K and
+30K iterations) plus a decomposition of the Phase-106 artifact
+(`reports/phase52_full_decipherment_table.json`, its own 2-char prefix
+metric) establish:
+
+- The Phase-52 table's agreement decomposes as **113/116 (97.4%) on
+  pinned signs vs 0/159 (0.0%) on never-pinned H+M signs**: the
+  historical 41.09% is entirely the pinned subset. The held-out
+  protocol below is therefore expected to measure near-zero baseline
+  agreement; that is the finding the protocol exists to test, not a
+  harness defect.
+- The 10K-iteration harness schedule and Phase-52's 30K schedule give
+  identical fold-0 smoke results (primary 0.0; held stability 0.361
+  both), so the pre-registered 10K config stands unchanged.
+- Phase-52's init pool truncates the 500-syllable target space to the
+  first 390 alphabetically (`target_tokens[:len(cipher_alpha)]`), so
+  gold values {ve, vel, vi, ya} are structurally unreachable for free
+  signs (115/116 pinnable golds are reachable). Step 1 artifacts
+  therefore ALSO report, per config, the held-out rate restricted to
+  reachable-gold signs (analysis decomposition; the headline primary
+  metric is unchanged).
+
 ## Out of scope
 
 - ANY change to anchor readings, confidences, or

@@ -1,0 +1,317 @@
+{
+  "phase": 109,
+  "step": 2,
+  "spec": "specs/007-phase109-follow-through",
+  "gpu_device": "cpu (torch absent)",
+  "n_flagged": 44,
+  "flags": [
+    {
+      "sign": "M011",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "kaḷiṟu",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M021",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "kō",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M024",
+      "provenance_class": "SA_DERIVED",
+      "reading": "nē",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M028",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "cōḻ",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M031",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "kai",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M033",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "puli",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M035",
+      "provenance_class": "SA_DERIVED",
+      "reading": "po",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M036",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "tiru",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M040",
+      "provenance_class": "SA_DERIVED",
+      "reading": "ri",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M058",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "ke",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M071",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "nal",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M072",
+      "provenance_class": "SA_DERIVED",
+      "reading": "mā",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M102",
+      "provenance_class": "SA_DERIVED",
+      "reading": "ni",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M103",
+      "provenance_class": "SA_DERIVED",
+      "reading": "kol",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M127",
+      "provenance_class": "SA_DERIVED",
+      "reading": "vē",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M149",
+      "provenance_class": "SA_DERIVED",
+      "reading": "or",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M153",
+      "provenance_class": "SA_DERIVED",
+      "reading": "pu",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M155",
+      "provenance_class": "SA_DERIVED",
+      "reading": "ka",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M168",
+      "provenance_class": "SA_DERIVED",
+      "reading": "inci",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M169",
+      "provenance_class": "SA_DERIVED",
+      "reading": "rā",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M177",
+      "provenance_class": "SA_DERIVED",
+      "reading": "na",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M178",
+      "provenance_class": "SA_DERIVED",
+      "reading": "i",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M183",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "vēḷ",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M223",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "muḷ",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M235",
+      "provenance_class": "SA_DERIVED",
+      "reading": "vē",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M237",
+      "provenance_class": "SA_DERIVED",
+      "reading": "ce",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M239",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "il",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M254",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "tēṉ",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M262",
+      "provenance_class": "SA_DERIVED",
+      "reading": "i",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M270",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "muḷ",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M272",
+      "provenance_class": "SA_DERIVED",
+      "reading": "ma",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M281",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "piLLai",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M293",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "ta",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M304",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "vēṟ",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M332",
+      "provenance_class": "SA_DERIVED",
+      "reading": "intu",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M345",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "taṭ",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M350",
+      "provenance_class": "SA_DERIVED",
+      "reading": "vē",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M355",
+      "provenance_class": "SA_DERIVED",
+      "reading": "lu",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M365",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "vāṉ",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M383",
+      "provenance_class": "SA_DERIVED",
+      "reading": "kol",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M401",
+      "provenance_class": "SA_DERIVED",
+      "reading": "vē",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M402",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "vēḷ",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M412",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "reading": "cūḷ",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    },
+    {
+      "sign": "M416",
+      "provenance_class": "SA_DERIVED",
+      "reading": "na",
+      "confidence": "HIGH",
+      "validation_status": "pending_non_sa_validation"
+    }
+  ]
+}

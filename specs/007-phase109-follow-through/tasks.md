@@ -18,9 +18,9 @@
 - [x] T016 Foundation check (0 failures; H21)
 
 ## Step 2 — SA-lineage HIGH flags (44)
-- [ ] T020 Decide run → `reports/phase109_step2_flags.json`
-- [ ] T021 Apply → `validation_status` + `provenance_class` on the 44; assert no value/tier change
-- [ ] T022 Foundation check
+- [x] T020 Decide run → `reports/phase109_step2_flags.json`
+- [x] T021 Apply → `validation_status` + `provenance_class` on the 44; assert no value/tier change
+- [x] T022 Foundation check
 
 ## Step 3 — Individual re-reviews (M293, M362, M398)
 - [ ] T030 Dossiers → `reports/phase109_dossier_M293.json` / `_M362.json` / `_M398.json` (incl. post-Phase-105 adjudication search for M362/M398)

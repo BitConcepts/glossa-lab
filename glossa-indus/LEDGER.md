@@ -1686,3 +1686,22 @@ Muse) at the direction of Tristen Pierson, per constitution §VI.
 Anchor changes in this package are made only under the
 pre-registered spec 007 rules; the package PR is opened unmerged
 for Tristen's review of all scientific changes.
+
+## Phase-109 — Step 2: SA-Lineage Provenance Flags (spec 007)
+
+The 44 SA load-bearing HIGH anchors from the Phase-108 register
+(24 SA_DERIVED + 20 SA_CONFIRMED_ONLY) each gained
+`validation_status: "pending_non_sa_validation"` and
+`provenance_class: <register category>`, plus a Phase-109
+annotation. **No reading or confidence changed in this step**
+(verified programmatically: 0 value/tier mismatches after apply).
+These anchors are presented as candidates via the Step-5
+headlines, which exclude them from the strict SA-independent set.
+M293 is among the 20 SA_CONFIRMED_ONLY and additionally goes
+through Step 3's individual re-review. Artifact:
+`reports/phase109_step2_flags.json`; changes recorded in
+`reports/phase109_change_register.json` (step2, 44 entries).
+Foundation check: 40 passed / 0 failed / 8 warnings.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.

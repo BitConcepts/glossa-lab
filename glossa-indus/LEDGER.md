@@ -1251,3 +1251,48 @@ Step 2 fixes the best objective, since the pool script reads
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-107 — Step 1 Sanity Audit: the Held-Out Zero Is Not a Harness Artifact
+
+Independent audit of the Step-1 result before Steps 2–5 build on it
+(`backend/scripts/phase107_sa_sanity_audit.py`, node
+`IndusSAStep1SanityAudit`, registered and verified in ATOMIC_NODES
+before running, H23). Artifact:
+`reports/phase107_step1_sanity_audit.json`. **All 8 checks PASS.**
+
+**Leakage (none found).** Folds are disjoint and cover the 116
+pinnable anchors (sizes 24/24/23/23/22). Per-fold pins exclude the
+fold's held-out signs, with checkpoint pin counts matching exactly.
+The Step-2 positional path is clean by construction: the driver's
+ablation task dicts — the exact objects the ablation runs consume —
+exclude held-out signs from `train_gold`. The Dravidian LM's bigram
+keys are syllables of an external corpus (no sign/anchor content);
+gold extraction reads the anchors file only. The 159-sign secondary
+set is disjoint from the pin set. One denominator subtlety, fully
+accounted: held sign **H003** (fold 1) has an anchor gold but zero
+occurrences in the Holdat corpus stream, so it has no consensus value
+and is not evaluable — total evaluable held-out = 115 of 116.
+
+**Reachability (reconciles exactly).** The Phase-52 target pool is
+the first 390 sorted LM syllables; gold values {ve, vel, vi, ya} are
+structurally unreachable for free signs (Addendum A). Recomputed
+reachable-only denominators match the Step-1 checkpoints fold by fold
+(24/22/23/23/22), and reachable-only agreement is 0.000 in every fold
+regardless — reachability does not explain the zero.
+
+**Config (zero reproduces at production scale).** Fold 0 re-run at
+the Phase-52 production config (5 seeds × 10 restarts × 30,000
+iterations, LM-only, 257.4 s): held-out agreement **0/24**, reachable-
+only **0/24**, z = 19.232 (harness fold 0: 0/24, z = 17.966). The
+reduced harness config (3×5×10k) is not the cause of the zero.
+
+**Audit-run correction (append-only honesty).** Audit run 1 reported
+a spurious B1 FAIL: the audit's own reachable count omitted corpus
+membership, double-counting H003 (23 vs the checkpoint's correct 22).
+The check was fixed to the `agreement()` evaluability definition, the
+artifact carries a `revision_note`, and the audit was re-run in full.
+No Step-1 number changed at any point; the original zero stands as
+recorded in the Step-1 entry above.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

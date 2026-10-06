@@ -142,7 +142,15 @@ def main() -> None:
     reach_rows = []
     for k, held in enumerate(folds):
         ck = json.loads((CKPT1 / f"baseline_fold{k}.json").read_text("utf-8"))
-        reach_held = [s for s in held if gold_pin[s] in pool_set]
+        # Evaluable under agreement()'s definition: held AND gold reachable
+        # AND present in the consensus map (i.e. occurring in the corpus).
+        # First audit run (2026-10-05) omitted the corpus-membership term
+        # and flagged a spurious B1 FAIL on fold 1: held sign H003 has a
+        # reachable gold but zero Holdat occurrences, so the checkpoint's
+        # reachable n_eval (22) is exactly one less than the naive count
+        # (23). Step-1 numbers were never wrong; the audit check was.
+        reach_held = [s for s in held
+                      if gold_pin[s] in pool_set and s in corpus_signs]
         reach_rows.append({
             "fold": k, "n_held": len(held), "n_reachable_gold": len(reach_held),
             "n_eval_checkpoint_reachable": ck["primary_reachable"]["n_eval"],
@@ -190,6 +198,13 @@ def main() -> None:
         "phase": 107, "step": "1-sanity-audit", "spec": "specs/005-phase52-v2",
         "gpu_device": DEVICE,
         "subject": "reports/phase107_step1_validation.json (Step-1 held-out zero)",
+        "revision_note": ("Run 2 (2026-10-05): run 1 reported B1 FAIL — an audit-side "
+                          "denominator mis-specification (reachable count omitted "
+                          "corpus membership; fold 1's held sign H003 has a reachable "
+                          "gold but zero Holdat occurrences, reconciling the 23-vs-22 "
+                          "difference exactly, cf. check A2b). B1 was corrected to the "
+                          "agreement() evaluability definition and the audit re-run in "
+                          "full. No Step-1 number changed; the Step-1 zero stands."),
         "checks": checks,
         "all_pass": all(c["pass"] for c in checks),
         "verdict": ("Step-1 zero is NOT a harness artifact: no leakage path found, "

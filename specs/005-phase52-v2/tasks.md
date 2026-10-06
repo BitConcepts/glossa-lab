@@ -23,10 +23,10 @@
 - [x] T024 Aggregate step2 artifact; kept/dropped verdicts per keep rule
 
 ## Step 3 — Delta scoring + scaled run
-- [ ] T030 Implement delta scorer (LM + kept terms)
-- [ ] T031 Equivalence test full vs delta (Claim D criteria)
-- [ ] T032 Scaled run 10×10×100K; stability selection (≥0.80 / ≥0.60 tiers)
-- [ ] T033 Final consensus decipherment table artifact
+- [x] T030 Implement delta scorer (LM + kept terms)
+- [x] T031 Equivalence test full vs delta (Claim D criteria)
+- [x] T032 Scaled run 10×10×100K; stability selection (≥0.80 / ≥0.60 tiers)
+- [x] T033 Final consensus decipherment table artifact
 
 ## Step 4 — Corpus pooling + acquisition hunt
 - [x] T040 Audit CITATIONS.md ingested sources (no re-fetch list)

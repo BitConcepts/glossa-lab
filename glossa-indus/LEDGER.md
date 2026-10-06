@@ -1705,3 +1705,36 @@ Foundation check: 40 passed / 0 failed / 8 warnings.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-109 — Step 3: Individual Re-Reviews M293 / M362 / M398 (spec 007)
+
+Dossiers: `reports/phase109_dossier_M293.json`,
+`_M362.json`, `_M398.json` (graph node `IndusPhase109Rereviews`).
+
+- **M293 `ta`: HIGH → MEDIUM.** The HIGH rested on the Phase-116
+  SA recalibration gate (eval_log: firing disjunct SA-cons=1.00;
+  source "Phase-101 positional adjudication" not whitelisted;
+  the SA modal reading was `nal`, not `ta`). The non-SA evidence
+  — the Phase-101 positional adjudication itself (2026-05-18) —
+  recorded as its own outcome PROMOTED TO MEDIUM. No completed
+  non-SA validation at HIGH level exists in the recorded chain
+  (Phase-108's load-bearing test concurs: SA_CONFIRMED_ONLY).
+  Under the no-SA-sufficient rule, MEDIUM is the highest tier its
+  non-SA evidence supports. Reading unchanged. M293 retains its
+  Step-2 `pending_non_sa_validation` flag.
+- **M362 `aṇi`: HIGH → MEDIUM; M398 `kuṟi`: HIGH → MEDIUM.** The
+  latest adjudication (Phase-105, positional/formula adjudication
+  over Holdat) is INCONCLUSIVE for both (freq 3 each, below the
+  positional-verdict floor). The dossiers' superseding-
+  adjudication search (both ledgers + phase ≥106 artifacts) found
+  only restatements of that verdict — no later superseding
+  adjudication exists. Their HIGH came from the Phase-216
+  recalibration gate (a promotion gate, not an adjudication);
+  May-2026 backups show both at MEDIUM. Rule applied: a tier may
+  not exceed what the latest adjudication supports → capped at
+  MEDIUM. Readings unchanged.
+
+Foundation check: 40 passed / 0 failed / 8 warnings.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.

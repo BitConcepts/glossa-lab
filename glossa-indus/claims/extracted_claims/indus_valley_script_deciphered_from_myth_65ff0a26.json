@@ -1,7 +1,7 @@
 {
   "document_id": "indus_valley_script_deciphered_from_myth_65ff0a26",
   "title": "",
-  "extraction_date": "2026-06-09T23:57:20.934907",
+  "extraction_date": "2026-10-06T10:42:42.131685",
   "total_claims": 6,
   "auto_extracted": 6,
   "manually_curated": 4,
@@ -12,16 +12,10 @@
       "claim_type": "critique_claim",
       "normalized_claim": "Critique: myth of a \nliterate Harappan",
       "quote_fragment": "myth of a \nliterate Harappan",
-      "claim_status": "contradicted",
+      "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-06-09T23:57:20.934907",
-      "contradicting_evidence": [
-        "Rao et al. 2009: conditional entropy falls in linguistic range",
-        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
-        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start"
-      ],
-      "glossa_lab_evidence": "Phase-104 (RULE-DUP): duplicate extraction of the proposition adjudicated in farmer_sproat_witzel_2004_manual_001; verdict carried over with its cited evidence. See glossa-indus/reports/phase104_claims_evaluation.json."
+      "extracted_at": "2026-10-06T10:42:42.125415"
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
@@ -29,16 +23,10 @@
       "claim_type": "critique_claim",
       "normalized_claim": "Critique: collapse of the Indus script thesis",
       "quote_fragment": "collapse of the Indus script thesis",
-      "claim_status": "contradicted",
+      "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-06-09T23:57:20.934907",
-      "contradicting_evidence": [
-        "Rao et al. 2009: conditional entropy falls in linguistic range",
-        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
-        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start"
-      ],
-      "glossa_lab_evidence": "Phase-104 (RULE-DUP): duplicate extraction of the proposition adjudicated in farmer_sproat_witzel_2004_manual_001; verdict carried over with its cited evidence. See glossa-indus/reports/phase104_claims_evaluation.json."
+      "extracted_at": "2026-10-06T10:42:42.125969"
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_001",
@@ -50,7 +38,7 @@
       "falsification_condition": "If sign distributions are not correlated with trade/economic contexts at excavation sites.",
       "author": "Roif, Avishai",
       "confidence_in_source": 0.5,
-      "extracted_at": "2026-06-09T23:57:20.934907"
+      "extracted_at": "2026-10-06T10:42:42.131666"
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_002",
@@ -66,7 +54,7 @@
       "falsification_condition": "Fish sign should cluster at coastal/maritime sites (Lothal, Dholavira). Phase-4x CISI data shows fish NOT coastal-enriched.",
       "glossa_lab_evidence": "Phase-4x CISI analysis: fish sign not statistically enriched at coastal sites [PARTIALLY FALSIFIED]",
       "confidence_in_source": 0.45,
-      "extracted_at": "2026-06-09T23:57:20.934907"
+      "extracted_at": "2026-10-06T10:42:42.131666"
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_003",
@@ -81,7 +69,7 @@
       "testability": "directly_testable",
       "falsification_condition": "If arrow sign does not cluster at gateway/border sites.",
       "confidence_in_source": 0.5,
-      "extracted_at": "2026-06-09T23:57:20.934907"
+      "extracted_at": "2026-10-06T10:42:42.131666"
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_004",
@@ -96,7 +84,7 @@
       "required_data": "Site metadata with fire-altar classification (Kalibangan)",
       "falsification_condition": "Horned deity sign does not cluster at fire-altar sites.",
       "confidence_in_source": 0.5,
-      "extracted_at": "2026-06-09T23:57:20.934907"
+      "extracted_at": "2026-10-06T10:42:42.131666"
     }
   ],
   "_citation": {

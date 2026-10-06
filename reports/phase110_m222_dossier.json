@@ -1,0 +1,544 @@
+{
+  "phase": 110,
+  "spec": "specs/008-m222-adjudication",
+  "part": "A — dossier",
+  "gpu_device": "cpu (torch absent)",
+  "question": "Do the 109 Phase-111 'kur' restorations genuinely depend on the premise M222='kur', and is that premise contradicted by M222's standing sourced record ('min', crosswalk v2.1)?",
+  "phase111_mechanism": {
+    "script": "backend/scripts/phase111_allograph_resolution.py",
+    "method_as_coded": "For each rare sign (corpus freq 1-4, not HIGH/MEDIUM), compute an I/M/T positional profile (initial/terminal/medial occurrence rates in the Holdat corpus); find the nearest confirmed sign (HIGH/MEDIUM, corpus freq >= 5) by L1 profile distance; if L1 <= 0.35, write the rare sign into the anchors file with the CONFIRMED SIGN'S READING VERBATIM at LOW. The value is copied from the donor entry; no per-sign evidence of any other kind enters the assignment.",
+    "code_lines_quoted": [
+      "MAX_L1_DIST = 0.35  # max L1 distance to call two signs allographs",
+      "if best_sign and best_dist <= MAX_L1_DIST:",
+      "confirmed_reading = anchors[best_sign].get(\"reading\", \"\")",
+      "\"inherited_reading\": confirmed_reading,",
+      "anchors[rare_sign] = {",
+      "\"reading\": confirmed_reading,",
+      "\"basis\": (",
+      "f\"matches {best_sign} ('{confirmed_reading}', {confirmed_conf}). \"",
+      "print(f\"  {rare_sign}(f={freq}) → {best_sign}='{confirmed_reading}' L1={best_dist:.3f}\")",
+      "\"reason\": f\"best_dist={dist_str} > threshold {MAX_L1_DIST}\","
+    ],
+    "recorded_run": {
+      "artifact": "outputs/phase111_allograph_resolution.json",
+      "n_rare_signs": 220,
+      "n_resolved": 220,
+      "n_unresolved": 0,
+      "matched_to_distribution": {
+        "M222": 220
+      },
+      "l1_dist_distribution": {
+        "0.0": 220
+      },
+      "inherited_reading_distribution": {
+        "kur": 220
+      },
+      "sample_m222_rows": [
+        {
+          "rare_sign": "M255",
+          "freq": 4,
+          "matched_to": "M222",
+          "l1_dist": 0.0,
+          "inherited_reading": "kur",
+          "base_confidence": "MEDIUM",
+          "rare_profile": {
+            "i": 0.0,
+            "t": 0.0,
+            "m": 1.0,
+            "freq": 4
+          },
+          "base_profile": {
+            "i": 0.0,
+            "t": 0.0,
+            "m": 1.0,
+            "freq": 5
+          }
+        },
+        {
+          "rare_sign": "M251",
+          "freq": 4,
+          "matched_to": "M222",
+          "l1_dist": 0.0,
+          "inherited_reading": "kur",
+          "base_confidence": "MEDIUM",
+          "rare_profile": {
+            "i": 0.0,
+            "t": 0.0,
+            "m": 1.0,
+            "freq": 4
+          },
+          "base_profile": {
+            "i": 0.0,
+            "t": 0.0,
+            "m": 1.0,
+            "freq": 5
+          }
+        }
+      ]
+    },
+    "profile_recomputation": {
+      "method": "phase111 module's own load_corpus/compute_profiles on the in-repo Holdat corpus, run 2026-10-06",
+      "corpus_tokens": 7002,
+      "corpus_distinct_signs": 390,
+      "m222_profile": {
+        "i": 0.0,
+        "t": 0.0,
+        "m": 1.0,
+        "freq": 5
+      },
+      "n_rare_signs_freq_le_4": 239,
+      "rare_profile_distribution": {
+        "(0.0, 0.0, 1.0)": 239
+      },
+      "donor_tie_analysis_may2026_state": {
+        "n_confirmed_signs": 163,
+        "n_eligible_donors_freq_ge_5": 132,
+        "n_donors_with_profile_0_0_1": 32,
+        "tied_donor_signs": [
+          "M102",
+          "M103",
+          "M108",
+          "M127",
+          "M128",
+          "M149",
+          "M153",
+          "M155",
+          "M163",
+          "M168",
+          "M169",
+          "M177",
+          "M178",
+          "M185",
+          "M198",
+          "M222",
+          "M231",
+          "M235",
+          "M237",
+          "M252",
+          "M262",
+          "M272",
+          "M332",
+          "M347",
+          "M350",
+          "M351",
+          "M355",
+          "M374",
+          "M375",
+          "M383",
+          "M401",
+          "M416"
+        ]
+      }
+    },
+    "phase132_characterization": {
+      "anchors_file_top_level_note": "Phase-132 validation: 114 Phase-111 kur-allograph MEDIUM signs downgraded to LOW. These were positional parking spots (all-MEDIAL L1=0), not genuine phonetic readings. New H+M=157, coverage=0.9075. Genuine phonetically-anchored coverage (H+M, non-parking) = 90.75%.",
+      "sample_entry_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs."
+    }
+  },
+  "m222_kur_record": {
+    "phase87_proposal": {
+      "sign": "M222",
+      "reading": "kur",
+      "method": "DEDR_REBUS_EXTENDED",
+      "dedr_id": "DEDR 1839",
+      "depiction": "hook sign/hook",
+      "icon_plausibility": "MEDIUM",
+      "corpus_freq": 5,
+      "evidence_score": 2.0,
+      "pd_valid": true
+    },
+    "phase87_artifact": "outputs/phase87_anchor_sprint_120.json",
+    "may2026_backup_entry": {
+      "confidence": "MEDIUM",
+      "reading": "kur",
+      "source": "Phase-87 DEDR_REBUS_EXTENDED",
+      "corpus_freq": 5,
+      "evidence_score": 2.0
+    },
+    "backup_file": "backend/reports/INDUS_FINAL_ANCHORS.backup_20260523_181449.json",
+    "ledger_lines": [
+      [
+        720,
+        "- M222=kur (MEDIUM — hook sign): PROMOTED"
+      ]
+    ]
+  },
+  "m222_min_record": {
+    "current_anchor_entry": {
+      "reading": "min",
+      "confidence": "MEDIUM",
+      "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+      "source": "anchor_staging_archive:compound_semantic_coherence",
+      "dedr_support": "shine / lightning (verb)",
+      "phase109_annotation": "Phase-109 (2026-10-06): staging-cohort re-review — value RETAINED under spec 007 Step 1(a): independent non-SA support recorded (A1 crosswalk v2.1 Parpola reading 'min' (spec 004 WS2 expansion (2026-10-05)) equals the current reading (exact first segment)). Phase-108 register: reports/phase108_provenance_register.json."
+    },
+    "crosswalk_v2_entry": {
+      "parpola_id": "P222",
+      "parpola_num": 222,
+      "reading": "min",
+      "confidence": "CANDIDATE",
+      "source": "spec 004 WS2 expansion (2026-10-05)",
+      "iconographic_match": false,
+      "evidence": "phase71 EXTENDED_MAP: 'hook sign', source stated as Parpola 1994 App. B. Single in-repo source.",
+      "added": "2026-10-05"
+    },
+    "phase71_extended_map_line": [
+      "\"M222\": (\"222\",  \"Parpola 1994 App.B\", \"hook sign\"),"
+    ],
+    "phase109_register_record": [
+      {
+        "step": "step1",
+        "sign": "M222",
+        "rule": "step1(a)",
+        "action": "keep+annotate",
+        "before": {
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+          "source": "anchor_staging_archive:compound_semantic_coherence"
+        },
+        "after": {
+          "reading": "min",
+          "confidence": "MEDIUM",
+          "basis": "Promoted from anchor staging archive (2026-06-07T18:20:18Z); evidence_type=compound_slot_coherence; score=1.00; status=verified; DEDR: shine / lightning (verb)",
+          "source": "anchor_staging_archive:compound_semantic_coherence"
+        },
+        "citations": [
+          "A1 crosswalk v2.1 Parpola reading 'min' (spec 004 WS2 expansion (2026-10-05)) equals the current reading (exact first segment)"
+        ]
+      }
+    ]
+  },
+  "cohorts": {
+    "cohort_a_register_set": [
+      "M101",
+      "M104",
+      "M105",
+      "M106",
+      "M109",
+      "M111",
+      "M112",
+      "M115",
+      "M116",
+      "M120",
+      "M123",
+      "M126",
+      "M129",
+      "M131",
+      "M133",
+      "M134",
+      "M135",
+      "M136",
+      "M138",
+      "M140",
+      "M146",
+      "M147",
+      "M156",
+      "M158",
+      "M170",
+      "M181",
+      "M186",
+      "M195",
+      "M197",
+      "M200",
+      "M201",
+      "M203",
+      "M207",
+      "M208",
+      "M209",
+      "M210",
+      "M213",
+      "M214",
+      "M217",
+      "M218",
+      "M219",
+      "M224",
+      "M226",
+      "M227",
+      "M230",
+      "M240",
+      "M242",
+      "M243",
+      "M245",
+      "M247",
+      "M250",
+      "M251",
+      "M255",
+      "M258",
+      "M259",
+      "M260",
+      "M274",
+      "M277",
+      "M278",
+      "M280",
+      "M286",
+      "M287",
+      "M297",
+      "M298",
+      "M301",
+      "M303",
+      "M309",
+      "M310",
+      "M312",
+      "M314",
+      "M316",
+      "M318",
+      "M320",
+      "M322",
+      "M323",
+      "M324",
+      "M327",
+      "M334",
+      "M339",
+      "M340",
+      "M341",
+      "M346",
+      "M354",
+      "M356",
+      "M359",
+      "M360",
+      "M363",
+      "M364",
+      "M369",
+      "M370",
+      "M378",
+      "M379",
+      "M380",
+      "M381",
+      "M382",
+      "M387",
+      "M388",
+      "M389",
+      "M390",
+      "M392",
+      "M394",
+      "M396",
+      "M397",
+      "M405",
+      "M406",
+      "M407",
+      "M408",
+      "M413",
+      "M415"
+    ],
+    "cohort_a_current_low_set": [
+      "M101",
+      "M104",
+      "M105",
+      "M106",
+      "M109",
+      "M111",
+      "M112",
+      "M115",
+      "M116",
+      "M120",
+      "M123",
+      "M126",
+      "M129",
+      "M131",
+      "M133",
+      "M134",
+      "M135",
+      "M136",
+      "M138",
+      "M140",
+      "M146",
+      "M147",
+      "M156",
+      "M158",
+      "M170",
+      "M181",
+      "M186",
+      "M195",
+      "M197",
+      "M200",
+      "M201",
+      "M203",
+      "M207",
+      "M208",
+      "M209",
+      "M210",
+      "M213",
+      "M214",
+      "M217",
+      "M218",
+      "M219",
+      "M224",
+      "M226",
+      "M227",
+      "M230",
+      "M240",
+      "M242",
+      "M243",
+      "M245",
+      "M247",
+      "M250",
+      "M251",
+      "M255",
+      "M258",
+      "M259",
+      "M260",
+      "M274",
+      "M277",
+      "M278",
+      "M280",
+      "M286",
+      "M287",
+      "M297",
+      "M298",
+      "M301",
+      "M303",
+      "M309",
+      "M310",
+      "M312",
+      "M314",
+      "M316",
+      "M318",
+      "M320",
+      "M322",
+      "M323",
+      "M324",
+      "M327",
+      "M334",
+      "M339",
+      "M340",
+      "M341",
+      "M346",
+      "M354",
+      "M356",
+      "M359",
+      "M360",
+      "M363",
+      "M364",
+      "M369",
+      "M370",
+      "M378",
+      "M379",
+      "M380",
+      "M381",
+      "M382",
+      "M387",
+      "M388",
+      "M389",
+      "M390",
+      "M392",
+      "M394",
+      "M396",
+      "M397",
+      "M405",
+      "M406",
+      "M407",
+      "M408",
+      "M413",
+      "M415"
+    ],
+    "cohort_a_sets_equal": true,
+    "cohort_b_candidate_pure_phase111": [
+      "M157",
+      "M256",
+      "M307",
+      "M400"
+    ],
+    "cohort_c_candidate_dual_derivation": {},
+    "candidate_detail": {
+      "M157": {
+        "entry": {
+          "reading": "kur",
+          "confidence": "CANDIDATE",
+          "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+          "source": "Phase-111",
+          "dedr": "1638",
+          "dedr_source": "elamite",
+          "phase_upgraded": 252,
+          "upgrade_basis": "Phase-252: Allograph of M427 (r=0.953, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M427='en'.",
+          "reading_direction": "rtl",
+          "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kur' shared by 15 signs (bulk assignment)"
+        },
+        "upgrade_parent": {
+          "sign": "M427",
+          "reading": "en"
+        },
+        "upgrade_basis_supports_kur": false
+      },
+      "M256": {
+        "entry": {
+          "reading": "kur",
+          "confidence": "CANDIDATE",
+          "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=3. [Phase-120: L1=0.000≤0.2, freq=3≥3 → MEDIUM]",
+          "source": "Phase-111",
+          "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+          "dedr": "1638",
+          "dedr_source": "elamite",
+          "phase_upgraded": 252,
+          "upgrade_basis": "Phase-252: Allograph of M375 (r=1.000, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M375='taṇ'.",
+          "reading_direction": "rtl",
+          "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kur' shared by 15 signs (bulk assignment)"
+        },
+        "upgrade_parent": {
+          "sign": "M375",
+          "reading": "taṇ"
+        },
+        "upgrade_basis_supports_kur": false
+      },
+      "M307": {
+        "entry": {
+          "reading": "kur",
+          "confidence": "CANDIDATE",
+          "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=4. [Phase-120: L1=0.000≤0.2, freq=4≥3 → MEDIUM]",
+          "source": "Phase-111",
+          "_phase132_note": "Downgraded MEDIUM->LOW by Phase-132 validation: Phase-111 positional allograph assignment was purely positional (all-MEDIAL L1=0), not a genuine phonetic reading. The kur reading is a parking placeholder for unresolvable MEDIAL-only signs.",
+          "dedr": "1638",
+          "dedr_source": "elamite",
+          "phase_upgraded": 252,
+          "upgrade_basis": "Phase-252: Allograph of M427 (r=0.979, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M427='en'.",
+          "reading_direction": "rtl",
+          "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kur' shared by 15 signs (bulk assignment)"
+        },
+        "upgrade_parent": {
+          "sign": "M427",
+          "reading": "en"
+        },
+        "upgrade_basis_supports_kur": false
+      },
+      "M400": {
+        "entry": {
+          "reading": "kur",
+          "confidence": "CANDIDATE",
+          "basis": "Phase-111 allograph resolution: positional profile L1=0.000 matches M222 ('kur', MEDIUM). I=0.000 T=0.000 M=1.000. freq=2.",
+          "source": "Phase-111",
+          "dedr": "1638",
+          "dedr_source": "elamite",
+          "phase_upgraded": 252,
+          "upgrade_basis": "Phase-252: Allograph of M427 (r=0.967, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M427='en'.",
+          "reading_direction": "rtl",
+          "_audit_note": "Downgraded HIGH→CANDIDATE on 2026-06-07: reading 'kur' shared by 15 signs (bulk assignment)"
+        },
+        "upgrade_parent": {
+          "sign": "M427",
+          "reading": "en"
+        },
+        "upgrade_basis_supports_kur": false
+      }
+    },
+    "n_kur_by_phase111_total": 113
+  },
+  "reconciliation": {
+    "phase111_resolved_total": 220,
+    "still_kur_with_phase111_basis_today": 113,
+    "present_with_later_readings": 3,
+    "absent_from_current_anchors": 104,
+    "note": "Of the 220 signs Phase-111 resolved: 113 still carry the Phase-111 'kur' basis in the current anchors file (the adjudicated set); 3 are present with later readings from subsequent recorded processes; 104 are absent from the current file entirely (the anchors file was reduced in later cleanups, e.g. the June-2026 quality-audit 605->285 cleanup). Only the 113 rest on the M222 premise today and are in scope."
+  },
+  "verdict": {
+    "predicates": {
+      "P1_recorded_bases_cite_m222_kur": true,
+      "P2_run_is_pure_donor_inheritance": true,
+      "P3_profile_match_informationless": true,
+      "P4_m222_standing_record_is_min": true
+    },
+    "contradiction": "REAL at the level of the recorded derivations. Every Cohort-A basis asserts, verbatim, a positional-profile match to M222 read as 'kur' as the source of the entry's value; M222's standing sourced record is 'min'/MEDIUM. The premise the derived values cite is superseded by the anchor sign's own record.",
+    "dependence_kind": "(i) literal phonetic inheritance, mechanically proven: the Phase-111 script copies the donor sign's reading verbatim, the donor was M222 in 220/220 recorded matches, and the only per-sign evidence (profile identity) is informationless — every rare sign's profile is (0,0,1) and every match is L1=0.000, so M222's selection among tied (0,0,1) donors carried no sign-specific information. The class-label characterization (ii) exists only as Phase-132's post-hoc recharacterization ('parking placeholder... not a genuine phonetic reading'), which itself denies the values are genuine readings.",
+    "branch": 1,
+    "demote_cohort_a_to_candidate": true
+  }
+}

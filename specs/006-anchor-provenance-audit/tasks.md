@@ -26,11 +26,11 @@
 - [x] T034 Aggregate → `reports/phase108_subset_recomputation.json`
 
 ## Step 4 — Circularity + downstream impact map
-- [ ] T040 Circular chains (pin → agreement → promotion/claim), cited pairs
-- [ ] T041 Claims map: 31 extracted claims vs SA-lineage anchors
-- [ ] T042 Headline-number map: 161 / 90.96% / 59% source sets + SA-lineage share
-- [ ] T043 Foundation-check map: every SA-citing claim text + post-107 status
-- [ ] T044 Aggregate → `reports/phase108_impact_map.json` + summary
+- [x] T040 Circular chains (pin → agreement → promotion/claim), cited pairs
+- [x] T041 Claims map: 31 extracted claims vs SA-lineage anchors
+- [x] T042 Headline-number map: 161 / 90.96% / 59% source sets + SA-lineage share
+- [x] T043 Foundation-check map: every SA-citing claim text + post-107 status
+- [x] T044 Aggregate → `reports/phase108_impact_map.json` + summary
 
 ## Step 5 — Close-out
 - [ ] T050 Recommendations section (authored, not executed)

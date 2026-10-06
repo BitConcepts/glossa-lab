@@ -1,0 +1,85 @@
+{
+  "phase": 107,
+  "step": 2,
+  "spec": "specs/005-phase52-v2",
+  "gpu_device": "cpu",
+  "baseline_from_step1": {
+    "held_out": {
+      "mean": 0.0,
+      "sd": 0.0,
+      "folds": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_folds_with_data": 5
+    },
+    "z_mean": 18.807
+  },
+  "keep_rule": "kept iff held-out agreement improves >= +2.0 pp AND mean z falls <= 10% relative",
+  "terms": {
+    "phono": {
+      "held_out": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "folds": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "n_folds_with_data": 5
+      },
+      "z_mean": 19.012,
+      "delta_pp_vs_baseline": 0.0,
+      "z_relative_drop": -0.0109,
+      "kept_by_rule": false
+    },
+    "harmony": {
+      "held_out": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "folds": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "n_folds_with_data": 5
+      },
+      "z_mean": 20.924,
+      "delta_pp_vs_baseline": 0.0,
+      "z_relative_drop": -0.1126,
+      "kept_by_rule": false
+    },
+    "positional": {
+      "held_out": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "folds": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "n_folds_with_data": 5
+      },
+      "z_mean": 19.908,
+      "delta_pp_vs_baseline": 0.0,
+      "z_relative_drop": -0.0585,
+      "kept_by_rule": false
+    }
+  },
+  "kept_terms": [],
+  "combined": null,
+  "weights": {
+    "lambda_phono": 3.0,
+    "lambda_harmony": 3.0,
+    "positional": 1.0
+  }
+}

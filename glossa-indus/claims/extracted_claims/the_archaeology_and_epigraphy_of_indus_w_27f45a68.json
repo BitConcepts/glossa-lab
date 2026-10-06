@@ -1,7 +1,7 @@
 {
   "document_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
   "title": "",
-  "extraction_date": "2026-06-09T23:57:21.004614",
+  "extraction_date": "2026-10-06T10:42:42.259395",
   "total_claims": 3,
   "auto_extracted": 3,
   "manually_curated": 0,
@@ -15,7 +15,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-06-09T23:57:20.955989"
+      "extracted_at": "2026-10-06T10:42:42.156991"
     },
     {
       "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
@@ -26,7 +26,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-06-09T23:57:20.955989"
+      "extracted_at": "2026-10-06T10:42:42.157001"
     },
     {
       "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
@@ -37,7 +37,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-06-09T23:57:20.973881"
+      "extracted_at": "2026-10-06T10:42:42.196379"
     }
   ],
   "_citation": {

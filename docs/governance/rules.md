@@ -130,6 +130,40 @@ Before running ANY new phase script, the following 5 steps are MANDATORY in orde
 
 Skipping steps 2–4 before step 5 is a cardinal H23 violation. Running a script before its graph node exists means the phase is unnavigable in the Experiment Builder and violates R17.
 
+### H26 — No SA-sufficient promotion gates
+
+Anchor promotions and confidence upgrades MUST cite a recorded
+**non-SA** evidence reference (a phase artifact, ledger entry, or
+adjudication record) for the value being promoted. Simulated-
+annealing (SA) agreement — a modal reading, a consistency score,
+a z-score, a consensus fraction — MUST NOT be a sufficient
+condition for promotion, upgrade, or validation of any anchor,
+whether alone or as one disjunct of a gate whose other disjuncts
+are not independently met.
+
+Basis: Phase-107 (spec 005) falsified SA as evidence for sign
+values — the strengthened Phase-52 SA recovers 0.000 held-out
+anchor signs under every lever, with Sanskrit and scrambled
+controls statistically identical to Dravidian, i.e. the SA
+objective carries no information about sign values. Phase-108
+(spec 006) traced the historical damage: 44 HIGH anchors were
+SA-derived or SA-confirmed-only, M293's HIGH rested on an
+SA-only recalibration gate, and the 116-anchor staging cohort
+had been promoted through a `/staging/verify-sa` endpoint that
+performed no SA test at all.
+
+Enforcement points (Phase-109, spec 007): (1) `POST
+/staging/promote` refuses candidates without a recorded non-SA
+evidence reference (`evidence_ref` field or `evidence_refs`
+request map) and reports them as `blocked_no_evidence` —
+regression tests in `backend/tests/test_staging_promotion_
+evidence.py`; the former post-promotion "Mandatory SA
+validation" auto-queue is removed. (2) The verify endpoint is
+named for what it does (`/staging/verify-archive`); the SA name
+survives only as a clearly-marked deprecated alias. Any future
+promotion or upgrade path MUST implement the same gate before
+it ships.
+
 ---
 
 ## Stop Conditions

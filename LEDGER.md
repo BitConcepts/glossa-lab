@@ -626,3 +626,37 @@ Phase-108 PR: https://github.com/BitConcepts/glossa-lab/pull/61 (opened 2026-10-
 the direction of Tristen Pierson, per constitution §VI.
 
 Phase-109 PR: https://github.com/BitConcepts/glossa-lab/pull/62 (opened 2026-10-06, NOT merged — owner review gate for all scientific changes).
+
+## [2026-10-06] Entry — Phase-110: M222/'kur' adjudication + OSF registry link (spec 008)
+
+Branch `feat/phase110-m222-adjudication` (PR opened, not merged).
+
+- **Adjudication of the Phase-109 flagged tension:** the 109
+  `kur`/LOW restorations derive from Phase-111 allograph
+  resolution, whose bases cite M222 read as `kur` — while M222
+  stands at `min`/MEDIUM on crosswalk support. Dossier
+  (`reports/phase110_m222_dossier.json`): Phase-111 copied the
+  donor sign's reading verbatim; its recorded run matched 220/220
+  rare signs to M222 at L1=0.000 because every rare-sign profile
+  in the corpus is (0,0,1) — the match carried zero discriminating
+  information (Phase-132 had already called the values "parking
+  placeholders"). Verdict: contradiction REAL; the values are
+  pure premise inheritance from a superseded premise.
+- **Disposition (pre-registered rule + dated spec addendum):**
+  Cohort A (109) annotated `premise_superseded` and demoted
+  LOW → CANDIDATE; the 4 CANDIDATE Phase-111 `kur` entries
+  (M157/M256/M307/M400) annotated with the same status (their
+  Phase-252 legs support 'en'/'taṇ', not `kur` — Cohort C empty);
+  M222 annotated, its `min`/MEDIUM NOT re-tried. Tiers now
+  166/5/3/113; H+M unchanged (171). Change register: 115 records,
+  diff-verified complete (114 entries).
+- **OSF link:** README "Provenance & source registry" pointer +
+  CITATIONS.md header note → https://osf.io/ybd65/ (literature
+  zbh86, corpora dfrhz, outputs vwa7s); repo remains canonical.
+- **Verification:** foundation check 40/0/8; backend suite
+  609 passed / 9 skipped / 0 failed; ruff clean; H23 graph nodes
+  `IndusPhase110M222Dossier` / `IndusPhase110M222Apply` registered
+  before running. Detail: `glossa-indus/LEDGER.md` Phase-110 entry.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

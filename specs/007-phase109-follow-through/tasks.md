@@ -28,11 +28,11 @@
 - [x] T032 Foundation check
 
 ## Step 4 — Promotion-path + governance fixes
-- [ ] T040 Rename `/staging/verify-sa` → `/staging/verify-archive` (+ deprecated alias); frontend/src updated
-- [ ] T041 `/staging/promote` evidence gate (`evidence_ref` / `evidence_refs`); remove post-promote SA auto-queue
-- [ ] T042 Regression tests `tests/test_staging_promotion_evidence.py` (no-ref fails, with-ref succeeds, routes)
-- [ ] T043 H26 added to `docs/governance/rules.md`
-- [ ] T044 Foundation-check text retirements (Phase-52/57/67/73 + Phase-44 mislabel; text only); foundation check 0 failures
+- [x] T040 Rename `/staging/verify-sa` → `/staging/verify-archive` (+ deprecated alias); frontend/src updated
+- [x] T041 `/staging/promote` evidence gate (`evidence_ref` / `evidence_refs`); remove post-promote SA auto-queue
+- [x] T042 Regression tests `tests/test_staging_promotion_evidence.py` (no-ref fails, with-ref succeeds, routes)
+- [x] T043 H26 added to `docs/governance/rules.md`
+- [x] T044 Foundation-check text retirements (Phase-52/57/67/73 + Phase-44 mislabel; text only); foundation check 0 failures
 
 ## Step 5 — Headline re-base
 - [ ] T050 Recompute → `reports/phase109_rebase.json` (post-change sets: counts, coverage, phonotactics, Parpola + caveat, site invariance)

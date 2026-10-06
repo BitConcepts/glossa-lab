@@ -3325,6 +3325,44 @@
       "citations": [
         "reports/phase109_dossier_M398.json"
       ]
+    },
+    {
+      "step": "step5b",
+      "sign": "*",
+      "rule": "step5(b)",
+      "action": "bookkeeping",
+      "before": {
+        "by_confidence": {
+          "HIGH": 166,
+          "MEDIUM": 109,
+          "LOW": 8,
+          "CANDIDATE": 4
+        },
+        "n_medium": 109,
+        "n_low": 8,
+        "corpus_token_coverage": 0.9647,
+        "medium_count": 109,
+        "low_count": 8,
+        "hm_confirmed_count": 275
+      },
+      "after": {
+        "by_confidence": {
+          "CANDIDATE": 4,
+          "LOW": 112,
+          "MEDIUM": 5,
+          "HIGH": 166
+        },
+        "n_medium": 5,
+        "n_low": 112,
+        "corpus_token_coverage": 0.921879,
+        "medium_count": 5,
+        "low_count": 112,
+        "hm_confirmed_count": 171
+      },
+      "citations": [
+        "reports/phase109_rebase.json",
+        "spec 004 WS3 method"
+      ]
     }
   ]
 }

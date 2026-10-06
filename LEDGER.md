@@ -468,3 +468,78 @@ Branch `feat/indus-executable-package` (PR opened, not merged).
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## [2026-10-05] Entry — Phase-107 / Spec 005: Phase-52 v2 — the Strengthened SA Does Not Generalise; Claims A–F Resolved as Pre-Registered
+
+Branch `feat/phase52-v2` (PR opened, not merged — owner reviews
+scientific results). Full per-step entries: `glossa-indus/LEDGER.md`
+(Phase-107, Steps 1, 1-audit, 2, 3, 4×2, 5). The package executed the
+pre-registered spec 005 protocol end-to-end; a mid-package runtime
+restart killed the first coordinator and the package was completed by
+a continuation session from committed checkpoints (Step 2's
+phono/harmony folds resumed from checkpoint, not re-run).
+
+- **Step 1 (validation):** 5-fold held-out anchor CV of the current
+  Phase-52 objective: held-out agreement **0.000 ± 0.000** (0/115
+  evaluable), secondary (never-pinned) 3/700 = 0.43%, fold z mean
+  18.81. Blind controls: Sanskrit z 60.87 / held-out 0.000; scrambled
+  z 16.48 / 0.000; Ge'ez z 6.33 / undefined. **Claims A and B
+  falsified.** The historical 41.09% decomposes as pinned 113/116 vs
+  never-pinned 0/159 (Addendum A).
+- **Step 1 sanity audit (continuation):** all 8 checks pass — no
+  leakage path; reachability denominators reconcile (unreachable
+  gold 'ya' among pinnable; H003 has a gold but zero corpus
+  occurrences, 115/116 evaluable); fold 0 at production config
+  (5×10×30k) reproduces 0/24, z 19.232. The zero is not a harness
+  artifact. (Audit run 1's spurious B1 FAIL was an audit-side
+  denominator error; fixed, re-run, recorded.)
+- **Step 2 (ablation):** phonotactic / vowel-harmony / positional
+  terms each give held-out 0.000 (z 19.01 / 20.92 / 19.91) — all
+  DROPPED by the keep rule; **Claim C falsified per term**; best
+  objective remains LM-only.
+- **Step 3 (delta + scale):** delta scorer numerically sound (mean
+  best-score diff 0.297%) but **Claim D FAILS** on consensus
+  agreement (31.2% < 95%): the objective's optimum is a plateau of
+  near-equivalent mappings. Scaled run (10×10×100K): z 18.452;
+  stability selection — **0 SA-supported, 0 probable, 275 unstable**.
+- **Step 4 (corpus):** hunt record in
+  `reports/phase107_acquisition_log.json` + CITATIONS §J. Ingested:
+  ICIT/Lipi export via field-cady MIT mirror (5,679 insc; layer
+  1,007 insc / 2,238 tok after dedupe). Not obtainable: RMRL
+  Mahadevan concordance (no bulk export; contact route closed under
+  H14), official ICIT, CISI/CISID, Wells standalone, Dixit dataset,
+  TN graffiti DB (comparative-only by design), Zenodo lexicons.
+  Not found: CDLI, OSF/Figshare, Dilmun/Gulf downloadable, Harappa.com
+  datasets. A layer-build dedupe defect (flat-list indexing) was
+  found in audit, fixed, rebuilt pre-commit (1 inscription affected;
+  pooling re-dedupes independently). Pooled corpus 2,684 insc /
+  9,264 tok: headline held-out still **0.000** (z ≈ 11.99). **Claim
+  E: pooling does not help** (exact tie at zero; not "falsified"
+  under the strict rule).
+- **Step 5 (metrology):** **C1 FAIL, C2 NOT APPLICABLE, C3 FAIL**
+  (block contiguity 0.3846 < 0.80). The pre-registered M086–M092
+  stroke family is only 2/7 present in Holdat (M087/M089, both HIGH
+  *syllabic* anchors in this programme); an unpadded-ID script defect
+  was caught pre-commit and recorded.
+- **Bottom line:** every strengthening lever in the plan was applied
+  and measured; none moves held-out agreement off zero. The Phase-52
+  SA objective fits (z ≈ 18–19) but does not determine per-sign
+  values — the decipherment programme's anchor values are not
+  corroborated by its own SA under held-out testing, and the
+  Phase-107 decipherment table marks all 275 unpinned signs
+  "unstable". No anchor readings or confidences were changed.
+- **Verification:** backend suite **576 passed / 9 skipped / 0
+  failed** (baseline 564/9; +10 new `test_sa_validation.py` tests,
+  +2 net suite growth); foundation check **40 passed / 0 failed / 8
+  warnings** (baseline-identical, H21 satisfied); ruff clean on all
+  branch-changed Python files.
+- **Out-of-scope note:** `backend/scripts/phase107_tb_name_check.py`
+  and `outputs/phase107_tb_name_check.json` are LEGACY artifacts of
+  an earlier era's Phase-107 labelling (spec 005 phase-numbering
+  note); they are not part of spec 005's tasks and were left
+  untouched.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+Phase-107 PR: https://github.com/BitConcepts/glossa-lab/pull/60 (opened 2026-10-05, NOT merged — owner review gate).

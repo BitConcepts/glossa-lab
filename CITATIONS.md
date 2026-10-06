@@ -1337,3 +1337,59 @@ in `glossa-corpus/indus/sources/*/provenance.yaml`.
 ---
 
 *Section I added: 2026-05-14. Branch: corpus/icit-scale-reconstruction.*
+
+---
+
+## Section J — Phase-107 Corpus Acquisition (2026-10-05)
+
+Systematic re-hunt for public Indus source corpora (Phase-107 Step 4).
+Full detail: `reports/phase107_acquisition_log.json`. Downloads under
+`corpora/downloads/` (gitignored); converted layers are separately flagged.
+
+### J.1 — field-cady/indus_valley_script_corpus (GitHub, MIT) — ICIT/Lipi export
+
+- **Author**: Field Cady (GitHub: field-cady), mirroring the Lipi repository
+  exports of Yajnadevam (GitHub: yajnadevam/lipi)
+- **Title**: Indus Valley Script Corpus (inscriptions.csv / xlits.csv)
+- **Repository**: https://github.com/field-cady/indus_valley_script_corpus
+- **License**: MIT (mirror repository)
+- **Accessed**: 2026-10-05
+- **Coverage**: 5,679 inscriptions, 19,942 sign tokens, Wells/ICIT numbering,
+  with CISI artifact identifiers and site metadata
+- **Original corpora**: Interactive Corpus of Indus Texts (ICIT; Fuls & Wells,
+  A.11) and Mahadevan 1977 (A.1), as digitized in the Lipi repository
+- **Provenance caveat**: The upstream Lipi repository carries no LICENSE file
+  of its own and the official ICIT channel is scholar-access only. This
+  layer is used for internal research pooling only; the raw export is NOT
+  redistributed by this project.
+- **Used in**: Phase-107 Step 4 pooled-corpus layer `icit_fieldcady`
+  (converted to M-numbers via `data/crosswalks/canonical_sign_registry.csv`
+  and crosswalk v2; see `backend/scripts/phase107_build_layers.py`)
+- **Rights gate**: Internal research use with attribution; no redistribution
+  of the raw export.
+
+### J.2 — RMRL Indus Script Text Concordance (re-verification, 2026-10-05)
+
+- Extends I.6. The Mahadevan concordance (2,906 objects, IM77/IDF80) is
+  online and free at https://indusscript.in as a searchable web application.
+- **Blocker (unchanged from 2026-05-14 record)**: no bulk download or export
+  is offered; the recorded license is "RMRL research use — contact required
+  for concordance export". Not ingested as a dataset in Phase-107;
+  Mahadevan-derived material is partially covered via J.1 instead.
+
+### J.3 — Hunt outcomes (2026-10-05)
+
+- mayig/indus-valley-script-corpus (I.1) re-downloaded in full: the repo's
+  corpus still contains exactly the 179 Mohenjo-daro inscriptions already
+  in-repo; no additional sites.
+- Found but not obtainable: official ICIT (scholar access / email request);
+  CISI print volumes and CISID (paywalled, no public release); Wells sign
+  list (no standalone public digital form); Dixit et al. 2025 imaging
+  dataset (no public sign-sequence data release); Tamil Nadu graffiti
+  database (search-only; comparative layer by design, never pooled);
+  Zenodo decipherment-lexicon documents (claim documents, CC BY-NC-ND).
+- Searched, not found: CDLI Indus inscription corpus (cuneiform only);
+  OSF/Figshare Indus epigraphy datasets; Dilmun/Gulf seal text corpora in
+  public downloadable form; Harappa.com downloadable datasets.
+
+*Section J added: 2026-10-05. Branch: feat/phase52-v2 (Phase-107).*

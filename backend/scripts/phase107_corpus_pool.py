@@ -174,7 +174,15 @@ def main() -> None:
     holdat_best = None
     if s2.get("combined"):
         holdat_best = {"held_out_mean": s2["combined"]["held_out"]["mean"],
-                       "held_out_sd": s2["combined"]["held_out"]["sd"]}
+                       "held_out_sd": s2["combined"]["held_out"]["sd"],
+                       "source": "step2 combined (kept terms) on Holdat"}
+    else:
+        # No terms kept in Step 2: the best objective IS the Step-1
+        # baseline; compare the pooled run against it.
+        s1 = json.loads((REPORTS / "phase107_step1_validation.json").read_text("utf-8"))
+        b = s1["baseline_current_objective"]["held_out_primary"]
+        holdat_best = {"held_out_mean": b["mean"], "held_out_sd": b["sd"],
+                       "source": "step1 baseline (no terms kept in step 2) on Holdat"}
     claim_e = None
     if holdat_best:
         pooled_sd = ((headline["sd"] ** 2 + holdat_best["held_out_sd"] ** 2) / 2) ** 0.5
@@ -200,7 +208,7 @@ def main() -> None:
         "holdat_only_best_objective": holdat_best,
         "claim_E_pooling": claim_e,
         "acquisition": acquisition,
-        "dedupe_rule": "converted sequence (len>=3) exactly matching a Holdat sequence is dropped",
+        "dedupe_rule": "converted sequence (len>=3) exactly matching a sequence already in the pool (Holdat first, then earlier layers in order) is dropped",
     }
     OUT.write_text(json.dumps(artifact, indent=2, ensure_ascii=False), "utf-8")
     print(f"Step 4 artifact: {OUT}")

@@ -1194,3 +1194,60 @@ only).
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-107 — Step 4 (acquisition half): Corpus Hunt, ICIT Layer Ingested, Build Defect Found and Corrected
+
+Systematic hunt for public Indus source corpora not previously ingested
+(owner addition to spec 005 Step 4; full three-bucket record:
+`reports/phase107_acquisition_log.json`; citations: CITATIONS.md §J).
+
+**Ingested.** (1) ICIT inscriptions via the Lipi repository export,
+MIT-mirrored by field-cady (`corpora/downloads/field_cady_icit/`):
+5,679 source inscriptions / 19,942 tokens in Wells/ICIT numbering;
+token map coverage 12,506/18,061 excl. illegible '000' = 69.3%;
+1,242 fully convertible inscriptions; converted layer
+`corpora/downloads/icit_fieldcady/icit_converted.json` (Wells→M via the
+canonical sign registry, else Wells→Parpola→M via crosswalk v2).
+Provenance caveat recorded in CITATIONS J.1: upstream Lipi carries no
+LICENSE and official ICIT is scholar-access only — internal research
+pooling only, raw export NOT redistributed. (2) CISI Mohenjo-daro subset
+(mayig, MIT) re-downloaded in full: exactly the same 179 inscriptions /
+1,003 tokens already in-repo; no additional sites.
+
+**Found but not obtainable (exact blockers in the acquisition log).**
+RMRL Mahadevan concordance (online/searchable, 2,906 objects; no bulk
+export; license "RMRL research use — contact required"; contact route
+closed to agents under H14); official ICIT (scholar access / email
+request, H14); CISI print vols. / CISID (paywalled, no public release);
+Wells sign list (no standalone public digital form); Dixit et al. 2025
+imaging dataset (no public sign-sequence release); Tamil Nadu graffiti
+database (search-only; comparative layer by design — never pooled);
+Zenodo decipherment-lexicon documents (claim documents, CC BY-NC-ND);
+Nair 2026 replication data (same Lipi digitization, ingested via J.1).
+
+**Searched, not found.** CDLI Indus inscription corpus (cuneiform only);
+OSF/Figshare Indus epigraphy datasets; Dilmun/Gulf seal text corpora in
+public downloadable form; Harappa.com downloadable datasets; 2025
+conference data releases (the CAA-2025-linked Zenodo release is a
+glyph-image dataset, not a text corpus).
+
+**Defect found in continuation audit (recorded, not hidden).** The
+first layer build indexed the Holdat *flat token list* instead of its
+inscription sequences, so the dedupe seen-set held per-sign character
+tuples and Holdat dedupe never fired — only intra-ICIT dedupe did
+(1008 inscriptions / 2241 tokens, and a bogus "390 sequences indexed").
+`phase107_build_layers.py` was fixed (indexes inscription sequences:
+1,399 distinct, len ≥ 3), the node `IndusSACorpusLayerBuild` was
+registered in the graph module and verified in ATOMIC_NODES before the
+re-run (H23), and the layer was rebuilt BEFORE the acquisition log was
+first committed: **1007 inscriptions / 2238 tokens** — exactly one
+inscription (3 tokens) was a Holdat duplicate. The acquisition log
+carries a `correction` field with these details. No pooled result was
+ever affected: `phase107_corpus_pool.py` independently re-dedupes every
+layer against the accumulated pool at pooling time. The pooled re-run
+of the Step-1a headline metric (tasks T041/T045/T046) executes after
+Step 2 fixes the best objective, since the pool script reads
+`kept_terms` from the Step-2 artifact.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

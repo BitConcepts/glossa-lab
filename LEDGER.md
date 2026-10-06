@@ -543,3 +543,50 @@ phono/harmony folds resumed from checkpoint, not re-run).
 the direction of Tristen Pierson, per constitution §VI.
 
 Phase-107 PR: https://github.com/BitConcepts/glossa-lab/pull/60 (opened 2026-10-05, NOT merged — owner review gate).
+
+## [2026-10-06] Entry — Phase-108 / Spec 006: Anchor Provenance Audit — 210 of 287 Anchors Are Fully SA-Independent; the Rest Is Mapped
+
+- **Question:** Phase-107 falsified simulated annealing as evidence for
+  sign values but left all 287 anchors unchanged. What does each
+  anchor's value and confidence actually rest on? Spec 006
+  pre-registered the taxonomy and SA-dependence rules before any
+  classification (commit 9d17a8d2). Full record:
+  `glossa-indus/LEDGER.md` Phase-108 sections; register:
+  `reports/phase108_provenance_register.json`; summary:
+  `reports/phase108_provenance_summary.md`.
+- **Headline:** GRAMMAR 163, DEDR 33, SA_DERIVED 24, SA_CONFIRMED_ONLY
+  20, LITERATURE 17, MIXED 15, ICONOGRAPHIC 12, CROSSWALK_CORPUS 3,
+  UNTRACEABLE 0. SA-dependent total 77; **SA-independent 210/287
+  (73.2%)** — strict, including-untraceable, and
+  excluding-untraceable-from-denominator all coincide because no trail
+  proved untraceable. All 44 SA_DERIVED + SA_CONFIRMED_ONLY anchors are
+  HIGH tier.
+- **Dominant findings:** (1) 116 anchors (40%) are the research loop's
+  staging cohort — readings from fixed heuristic tables ('min'
+  bulk-assigned to ~40 signs), promoted via an endpoint named
+  verify-sa that performs no SA test; caught by the Step-2 spot audit
+  after pass 1 mislabeled them DEDR. (2) The Phase-116/216
+  recalibration gates promoted on SA consistency as a sufficient
+  disjunct — M293 'ta' (232 tokens) reached HIGH on the SA-only path.
+  (3) Phase-293 promoted 12 DEDR-injected signs whose own records said
+  "SA confirmation pending".
+- **Recomputation (SA-independent H+M, 198/275):** coverage 77.96%
+  (full 96.47%); phonotactic violations 0 on both sets; site
+  invariance 100% on both sets (65/65 strict, 90/90 full) — the
+  programme's strongest grammar claim survives; the README's 59%
+  Parpola figure is a Phase-170-era quantity whose 44-sign source set
+  is 45.5% SA-lineage and which does not reproduce on current sets.
+- **Impact map:** 77 circular/component chains catalogued with
+  citations; 0/31 extracted claims cite any sign ID; all 37 SA-citing
+  foundation-check lines assessed post-107 (retire Phase-52/57/67
+  evidential framings; Phase-56/47/58/69 stand). Recommendations
+  authored for the owner, NOT executed (summary Step-5 section).
+- **Verification:** backend suite **586 passed / 9 skipped / 0
+  failed** (baseline 576/9 + 10 new tests); foundation check **40/0/8**
+  (baseline-identical); ruff clean; anchors file sha256 identical to
+  main — audit-only, no anchor changed.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+Phase-108 PR: https://github.com/BitConcepts/glossa-lab/pull/61 (opened 2026-10-06, NOT merged — owner review gate).

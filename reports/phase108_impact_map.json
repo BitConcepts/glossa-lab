@@ -1,0 +1,1308 @@
+{
+ "phase": 108,
+ "step": 4,
+ "gpu_device": "cpu (torch absent)",
+ "circular_chains": [
+  {
+   "sign": "M071",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M021",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M031",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M011",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M036",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M001",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "CHANGELOG.md:102 (#### Indus Script research outputs (`research/indus/`) — CC )"
+   ]
+  },
+  {
+   "sign": "M040",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M024",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "glossa-indus/LEDGER.md:867 (### Phase-103: Personal Name Lexicon)",
+    "glossa-indus/LEDGER.md:958 (### Verdicts)",
+    "LEDGER.md:318 (## 2026-10-05 — Indus program continuation (Stage C of feat/)"
+   ]
+  },
+  {
+   "sign": "M081",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M033",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M072",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M028",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M043",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M064",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "glossa-indus/LEDGER.md:653 (### Phase-80: DEDR Rebus Expansion)"
+   ]
+  },
+  {
+   "sign": "M169",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M237",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M102",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M272",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M235",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M149",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M185",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M383",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M270",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M401",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M127",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M386",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "CHANGELOG.md:31 (#### Indus Script research — network centrality analysis (Ph)"
+   ]
+  },
+  {
+   "sign": "M198",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M168",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M332",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M183",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M365",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M412",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M304",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M355",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M178",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M163",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "glossa-indus/LEDGER.md:716 (### Phase-87: Anchor Sprint to 120 (+4 MEDIUM anchors))"
+   ]
+  },
+  {
+   "sign": "M321",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M153",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M177",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M357",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M137",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M155",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M239",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M223",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M103",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "glossa-indus/LEDGER.md:1039 (### Spec 004 WS2 — M↔P crosswalk expansion (evidence-gated))"
+   ]
+  },
+  {
+   "sign": "M254",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M262",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M416",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "CHANGELOG.md:54 (#### Indus Script — corpus loader correctness)"
+   ]
+  },
+  {
+   "sign": "M143",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "CHANGELOG.md:31 (#### Indus Script research — network centrality analysis (Ph)"
+   ]
+  },
+  {
+   "sign": "M345",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M190",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M295",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M402",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M175",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M261",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M281",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M117",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M008",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M100",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "CHANGELOG.md:54 (#### Indus Script — corpus loader correctness)"
+   ]
+  },
+  {
+   "sign": "M125",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M211",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "glossa-indus/LEDGER.md:309 (### T3: M267 Reading Candidates (phase46_t3_m267_reading.py))"
+   ]
+  },
+  {
+   "sign": "M249",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M293",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "glossa-indus/LEDGER.md:647 (### Phase-79: Anchor Gap Priority Analysis)",
+    "glossa-indus/LEDGER.md:666 (## Phase-81 through Phase-87 — M293 Analysis, Seal Translati)",
+    "glossa-indus/LEDGER.md:669 (### Phase-81: M293 Sign Deep-Dive)",
+    "glossa-indus/LEDGER.md:741 (### Phase-88: Literature Mine + Extraction Pipeline)"
+   ]
+  },
+  {
+   "sign": "M058",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": true,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "glossa-indus/LEDGER.md:647 (### Phase-79: Anchor Gap Priority Analysis)",
+    "glossa-indus/LEDGER.md:653 (### Phase-80: DEDR Rebus Expansion)"
+   ]
+  },
+  {
+   "sign": "M079",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "glossa-indus/LEDGER.md:647 (### Phase-79: Anchor Gap Priority Analysis)",
+    "glossa-indus/LEDGER.md:686 (### Phase-83: Top Gap Signs Sprint (+4 MEDIUM anchors))"
+   ]
+  },
+  {
+   "sign": "M022",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "glossa-indus/LEDGER.md:647 (### Phase-79: Anchor Gap Priority Analysis)",
+    "glossa-indus/LEDGER.md:686 (### Phase-83: Top Gap Signs Sprint (+4 MEDIUM anchors))"
+   ]
+  },
+  {
+   "sign": "M019",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "glossa-indus/LEDGER.md:647 (### Phase-79: Anchor Gap Priority Analysis)",
+    "glossa-indus/LEDGER.md:686 (### Phase-83: Top Gap Signs Sprint (+4 MEDIUM anchors))"
+   ]
+  },
+  {
+   "sign": "M035",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "glossa-indus/LEDGER.md:634 (### Phase-77: SA Agreement Rate Analysis)",
+    "glossa-indus/LEDGER.md:716 (### Phase-87: Anchor Sprint to 120 (+4 MEDIUM anchors))"
+   ]
+  },
+  {
+   "sign": "M003",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "glossa-indus/LEDGER.md:751 (### Phase-89: Systematic DEDR Expansion to 120 (+4 MEDIUM an)"
+   ]
+  },
+  {
+   "sign": "M107",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "glossa-indus/LEDGER.md:751 (### Phase-89: Systematic DEDR Expansion to 120 (+4 MEDIUM an)"
+   ]
+  },
+  {
+   "sign": "M164",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "glossa-indus/LEDGER.md:751 (### Phase-89: Systematic DEDR Expansion to 120 (+4 MEDIUM an)"
+   ]
+  },
+  {
+   "sign": "M056",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "glossa-indus/LEDGER.md:812 (### Phase-89 Re-run (Threshold 1.6) — +9 MEDIUM Anchors)"
+   ]
+  },
+  {
+   "sign": "M118",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "glossa-indus/LEDGER.md:812 (### Phase-89 Re-run (Threshold 1.6) — +9 MEDIUM Anchors)"
+   ]
+  },
+  {
+   "sign": "M221",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json",
+    "glossa-indus/LEDGER.md:812 (### Phase-89 Re-run (Threshold 1.6) — +9 MEDIUM Anchors)",
+    "glossa-indus/LEDGER.md:1039 (### Spec 004 WS2 — M↔P crosswalk expansion (evidence-gated))"
+   ]
+  },
+  {
+   "sign": "M192",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M193",
+   "type": "pin_then_sa_promotion",
+   "sa_load_bearing": false,
+   "detail": "sign appears in the Phase-52 SA table and its promotion to current confidence cites SA agreement as a component (a completed non-SA validation also stands in the promotion record)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  },
+  {
+   "sign": "M350",
+   "type": "sa_origin",
+   "sa_load_bearing": true,
+   "detail": "value first proposed by an SA run (register)",
+   "citations": [
+    "reports/phase52_full_decipherment_table.json",
+    "reports/phase107_decipherment_table.json"
+   ]
+  }
+ ],
+ "claims_map": {
+  "n_claims": 31,
+  "n_claims_citing_sa_lineage": 0,
+  "claims": [
+   {
+    "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+    "status": "untested",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json"
+   },
+   {
+    "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
+    "status": "untested",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json"
+   },
+   {
+    "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
+    "status": "untested",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json"
+   },
+   {
+    "claim_id": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
+    "status": "untested",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json"
+   },
+   {
+    "claim_id": "farmer_sproat_witzel_2004_manual_001",
+    "status": "contradicted",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/farmer_sproat_witzel_2004.json"
+   },
+   {
+    "claim_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb_statisti_0001",
+    "status": "untested",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/fuls2023_catalog_of_indussigns_searchins_1dbdecdb.json"
+   },
+   {
+    "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001",
+    "status": "contradicted",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json"
+   },
+   {
+    "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
+    "status": "contradicted",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json"
+   },
+   {
+    "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_001",
+    "status": "untested",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json"
+   },
+   {
+    "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_002",
+    "status": "partially_falsified",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json"
+   },
+   {
+    "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_003",
+    "status": "untested",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json"
+   },
+   {
+    "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_004",
+    "status": "untested",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json"
+   },
+   {
+    "claim_id": "parpola_2010_dravidian_solution_manual_001",
+    "status": "partially_supported",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json"
+   },
+   {
+    "claim_id": "parpola_2010_dravidian_solution_manual_002",
+    "status": "partially_supported",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json"
+   },
+   {
+    "claim_id": "positional_analysis_of_indus_signs_a2bedc93_statisti_0001",
+    "status": "untested",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/positional_analysis_of_indus_signs_a2bedc93.json"
+   },
+   {
+    "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001",
+    "status": "untested",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json"
+   },
+   {
+    "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
+    "status": "untested",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json"
+   },
+   {
+    "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
+    "status": "untested",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json"
+   },
+   {
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001",
+    "status": "contradicted",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json"
+   },
+   {
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
+    "status": "untested",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json"
+   },
+   {
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003",
+    "status": "contradicted",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json"
+   },
+   {
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004",
+    "status": "contradicted",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json"
+   },
+   {
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001",
+    "status": "partially_supported",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json"
+   },
+   {
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002",
+    "status": "untested",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json"
+   },
+   {
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003",
+    "status": "partially_supported",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json"
+   },
+   {
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004",
+    "status": "untested",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json"
+   },
+   {
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005",
+    "status": "untested",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json"
+   },
+   {
+    "claim_id": "yadav_2009_arxiv_manual_001",
+    "status": "strongly_supported",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json"
+   },
+   {
+    "claim_id": "yadav_2009_arxiv_manual_002",
+    "status": "strongly_supported",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json"
+   },
+   {
+    "claim_id": "yadav_2010_ngrams_manual_001",
+    "status": "strongly_supported",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/yadav_2010_ngrams.json"
+   },
+   {
+    "claim_id": "yadav_2010_ngrams_manual_002",
+    "status": "strongly_supported",
+    "signs_cited": [],
+    "sa_lineage_signs": [],
+    "file": "glossa-indus/claims/extracted_claims/yadav_2010_ngrams.json"
+   }
+  ]
+ },
+ "headline_map": {
+  "parpola_59pct": {
+   "source": "backend/reports/phase157_160_reference_mining.json (phase_159.confirmed_signs, 44 signs; 44/75 HIGH then)",
+   "n_signs": 44,
+   "n_sa_lineage": 20,
+   "sa_lineage_signs": [
+    "M071",
+    "M031",
+    "M081",
+    "M033",
+    "M043",
+    "M064",
+    "M163",
+    "M261",
+    "M117",
+    "M100",
+    "M125",
+    "M211",
+    "M293",
+    "M079",
+    "M022",
+    "M019",
+    "M035",
+    "M003",
+    "M107",
+    "M164"
+   ],
+   "sa_share": 0.4545
+  },
+  "anchors_161": {
+   "source": "backend/reports/phase170_grammar_variance.json",
+   "n_signs_mentioned": 4,
+   "note": "the Phase-170 artifact does not enumerate its anchor set (only 4 H+M signs are mentioned in it); the historical 161-set is not stored in-repo, so its SA-lineage share cannot be computed without reconstructing it, which this audit does not do. The 90.96% coverage figure is likewise a Phase-170-era set property: the current full H+M coverage recomputes to 0.9647 (Phase-108 Step 3)."
+  }
+ },
+ "foundation_map": [
+  {
+   "line": 383,
+   "text": "(\"Phase-32 T4\", \"SA M77→TB LM: INCONCLUSIVE — TB LM too noisy (2 or few bigrams)\",",
+   "post107_status": "STANDS — already recorded INCONCLUSIVE in the foundation text itself."
+  },
+  {
+   "line": 426,
+   "text": "print(\"\\n── CHECK NEW-F: Phase-52 constrained SA z >= 4 ─────────────────────────\")",
+   "post107_status": "RETIRE as evidence — the check still passes mechanically, but Phase-107 removed the z-score's evidential meaning (non-discriminating controls)."
+  },
+  {
+   "line": 431,
+   "text": "CHECK(\"Phase-52 constrained SA z >= 4\", z52 >= 4.0,",
+   "post107_status": "RETIRE as evidence — the check still passes mechanically, but Phase-107 removed the z-score's evidential meaning (non-discriminating controls)."
+  },
+  {
+   "line": 434,
+   "text": "WARN(\"Phase-52 result\", \"phase52_syllabic_sa.json not found — run IndusConstrainedSA node\")",
+   "post107_status": "SEE Phase-52 — evidential reading falsified by Phase-107; artifact itself unchanged."
+  },
+  {
+   "line": 442,
+   "text": "WARN(\"GPU CUDA not available\", \"Running CPU-only — SA/decipherment experiments will be slow\")",
+   "post107_status": "OPERATIONAL — runtime warning, no claim."
+  },
+  {
+   "line": 448,
+   "text": "\"VERIFIED — strongest SA result\"),",
+   "post107_status": "NEEDS CAVEAT — Phase-44 LM lift is a language-fit statistic, not an SA decipherment result; Phase-107 showed LM fit does not identify sign values."
+  },
+  {
+   "line": 454,
+   "text": "\"VERIFIED — independent of SA\"),",
+   "post107_status": "STANDS — Phase-47 rebus LM lift is explicitly a non-SA line; unaffected by Phase-107."
+  },
+  {
+   "line": 457,
+   "text": "(\"Phase-52 syllabic SA z=16\", \"59 anchors pinned; z=16.01; SA agrees 55%\",",
+   "post107_status": "RETIRE 'VERIFIED' — 'SA agrees 55%' decomposed by Phase-107 as pinned self-agreement (113/116 pinned vs 0/159 never-pinned)."
+  },
+  {
+   "line": 463,
+   "text": "(\"M267 reading\", \"4 STRONG candidates (col/in/um/e) but SA cannot discriminate\",",
+   "post107_status": "STANDS AS CAVEATED — consistent with the Phase-108 register (M267 grammar-primary)."
+  },
+  {
+   "line": 467,
+   "text": "(\"Phase-55 ensemble\", \"Token granularity mismatch prevents reliable consensus\",",
+   "post107_status": "STANDS — already marked DO NOT CLAIM in the foundation text itself."
+  },
+  {
+   "line": 474,
+   "text": "(\"phase52_syllabic_sa.json\", \"Phase-52 constrained SA z=16.01\"),",
+   "post107_status": "SEE Phase-52 — evidential reading falsified by Phase-107; artifact itself unchanged."
+  },
+  {
+   "line": 475,
+   "text": "(\"phase56_parpola_expansion.json\", \"Phase-56 Parpola anchor expansion\"),",
+   "post107_status": "STANDS — non-SA method artifact."
+  },
+  {
+   "line": 476,
+   "text": "(\"phase57_expanded_sa.json\", \"Phase-57 expanded SA z-score\"),",
+   "post107_status": "SEE Phase-57 — evidential reading falsified by Phase-107; artifact itself unchanged."
+  },
+  {
+   "line": 479,
+   "text": "(\"phase61_phonotactic.json\", \"Phase-61 phonotactic falsification\"),",
+   "post107_status": "SEE Phase-61 entries — harmony not recomputed; phonotactic cleanliness of H+M confirmed in Phase-108 Step 3."
+  },
+  {
+   "line": 480,
+   "text": "(\"phase67_sanskrit_norm.json\", \"Phase-67 Sanskrit LM normalisation\"),",
+   "post107_status": "SEE Phase-67 — 'DEFINITIVE' framing retired by Phase-107 controls."
+  },
+  {
+   "line": 556,
+   "text": "(\"Phase-56 expanded Parpola crosswalk\",",
+   "post107_status": "STANDS — non-SA method (literature crosswalk); unaffected by Phase-107."
+  },
+  {
+   "line": 559,
+   "text": "(\"Phase-57 z=19.07 (best SA result)\",",
+   "post107_status": "RETIRE 'VERIFIED' — Phase-107 falsified SA z-scores as evidence (held-out 0.000; Sanskrit control z=60.9, scrambled z=16.5, both 0.000 held-out). The z is reproducible; its evidential reading is not."
+  },
+  {
+   "line": 560,
+   "text": "\"53 pinned anchors; z=19.07 > Phase-52 z=16.01; 5-seed consensus\",",
+   "post107_status": "SEE Phase-57 z=19.07 (detail line)."
+  },
+  {
+   "line": 568,
+   "text": "(\"Phase-61 94% vowel harmony\",",
+   "post107_status": "NOT RECOMPUTED in Phase-108 — descriptive statistic over current readings; Phase-107's ablation showed the harmony term adds no held-out predictive value, so it cannot serve as validation."
+  },
+  {
+   "line": 573,
+   "text": "(\"Phase-61 12% initial-consonant violation rate\",",
+   "post107_status": "STANDS AS CAVEATED — the text already scopes it to SA proposals; Phase-108 Step 3 confirms the H+M set (full and SA-independent) has 0 violations."
+  },
+  {
+   "line": 574,
+   "text": "\"47/390 SA-assigned readings use voiced stops (g/b/d) as initials; invalid in Proto-Dravidian. \"",
+   "post107_status": "SEE Phase-61 12% initial-consonant (detail line)."
+  },
+  {
+   "line": 575,
+   "text": "\"SA-only readings not phonotactically filtered — HIGH/MEDIUM set has 0 violations.\",",
+   "post107_status": "SEE Phase-61 12% initial-consonant (detail line)."
+  },
+  {
+   "line": 576,
+   "text": "\"NEEDS CAVEAT — SA proposals only; HIGH+MEDIUM readings are phonotactically clean\"),",
+   "post107_status": "SEE Phase-61 12% initial-consonant (verdict line)."
+  },
+  {
+   "line": 580,
+   "text": "\"NEEDS INVESTIGATION — does not invalidate other Phase-56-61 results\"),",
+   "post107_status": "STANDS AS CAVEATED — Phase-60 investigation note; makes no SA-evidence claim."
+  },
+  {
+   "line": 585,
+   "text": "(\"Phase-67 Sanskrit falsification 1.85x (DEFINITIVE)\",",
+   "post107_status": "RETIRE 'DEFINITIVE' — Phase-107's Sanskrit control reached z=60.874 with 0.000 held-out agreement; the LM comparison does not discriminate languages. The 1.85x ratio stands only as a same-null descriptive statistic."
+  },
+  {
+   "line": 587,
+   "text": "\"Ratio 1.85x. Resolves Phase-66 NEEDS CAVEAT.\",",
+   "post107_status": "SEE Phase-67 Sanskrit falsification (detail line)."
+  },
+  {
+   "line": 606,
+   "text": "(\"Phase-70 M267=in SA test\",",
+   "post107_status": "STANDS AS CAVEATED — text already records SA evidence as neutral; Phase-108 register concurs (M267 = MIXED, grammar primary, SA not in chain)."
+  },
+  {
+   "line": 607,
+   "text": "\"Pinning M267 to 'in' degrades SA z from 14.18 to 12.54 (-1.64). \"",
+   "post107_status": "SEE Phase-70 M267=in SA test (detail line)."
+  },
+  {
+   "line": 608,
+   "text": "\"SA cannot pin multi-syllabic M267 — confirms Phase-47 T3. \"",
+   "post107_status": "SEE Phase-70 M267=in SA test (detail line)."
+  },
+  {
+   "line": 610,
+   "text": "\"NEEDS CAVEAT — SA evidence neutral; grammar evidence strong\"),",
+   "post107_status": "SEE Phase-70 M267=in SA test (verdict line)."
+  },
+  {
+   "line": 611,
+   "text": "(\"Phase-73 ensemble ENSEMBLE_HIGH=4\",",
+   "post107_status": "RETIRE as support — ensemble values are SA outputs; Phase-107 removes their evidential weight. Text already caveats SA variance."
+  },
+  {
+   "line": 613,
+   "text": "\"Still modest — SA variance limits consensus even with 10 seeds.\",",
+   "post107_status": "SEE Phase-73 ensemble (detail line)."
+  },
+  {
+   "line": 614,
+   "text": "\"NEEDS CAVEAT — ensemble method limited by SA variance\"),",
+   "post107_status": "SEE Phase-73 ensemble (verdict line)."
+  },
+  {
+   "line": 634,
+   "text": "print(\"\\n── CHECK NEW-T: Phase-168 blocker plausibility ─────────────────────\")",
+   "post107_status": "OPERATIONAL ONLY — Phase-168 checks verify an SA blocker artifact's internal plausibility/coverage estimate; they carry no evidential weight after Phase-107."
+  },
+  {
+   "line": 641,
+   "text": "CHECK(\"Phase-168 blocker plausibility >= 90%\", n_plaus >= 0.9 * max(n_tested, 1),",
+   "post107_status": "OPERATIONAL ONLY — Phase-168 checks verify an SA blocker artifact's internal plausibility/coverage estimate; they carry no evidential weight after Phase-107."
+  },
+  {
+   "line": 643,
+   "text": "CHECK(\"Phase-168 coverage estimate >= 91%\", cov_est >= 91.0,",
+   "post107_status": "OPERATIONAL ONLY — Phase-168 checks verify an SA blocker artifact's internal plausibility/coverage estimate; they carry no evidential weight after Phase-107."
+  },
+  {
+   "line": 646,
+   "text": "WARN(\"Phase-168 result\", \"phase168_blocker_sa.json not found\")",
+   "post107_status": "OPERATIONAL ONLY — Phase-168 checks verify an SA blocker artifact's internal plausibility/coverage estimate; they carry no evidential weight after Phase-107."
+  }
+ ]
+}

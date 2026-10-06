@@ -1580,3 +1580,35 @@ No anchor was changed by this step.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-108 — Step 4: Circularity + Downstream Impact Map
+
+`reports/phase108_impact_map.json`; Step-4 section appended to
+`reports/phase108_provenance_summary.md`. A map, not an edit — nothing
+mapped was modified.
+
+- **Circular chains: 77 records** carry an SA line in chain — 24 SA-origin
+  (load-bearing by definition) + 53 pin→SA-cited promotions, of which 20
+  load-bearing (SA_CONFIRMED_ONLY) and 33 component-level. Most
+  consequential: (1) M293 'ta', the corpus's most frequent sign (232
+  tokens), HIGH via the Phase-116 gate's SA_ONLY path; (2) M416→M169,
+  SA-lineage confidence propagated by Phase-252 allograph inheritance;
+  (3) the Phase-242/244→293 pattern (12 signs): DEDR injections recorded
+  as "SA confirmation pending" promoted by Phase-293's SA cross-corpus
+  validation.
+- **Claims:** 0 of the 31 extracted claims cite any sign ID, so no
+  per-claim SA-lineage dependence is citable.
+- **Headlines:** Phase-159's 44-sign source set for the README's 59%
+  Parpola figure contains 20 SA-lineage signs (45.5%). The 161-anchor
+  set is not stored in-repo (Phase-170 artifact mentions 4 H+M signs);
+  its SA-lineage share is not computable without reconstruction.
+- **Foundation check:** all 37 SA-citing lines in
+  `backend/scripts/foundation_check.py` mapped with post-Phase-107
+  statuses (rationale in the summary's Step-4 section): the Phase-52,
+  Phase-57, Phase-67 "DEFINITIVE", and Phase-73 texts' evidential
+  readings are retired by Phase-107; Phase-56/47/58/69 stand (58 and 69
+  as recomputed in Step 3); Phase-70/55/32/60 stand as already caveated;
+  Phase-168's checks are operational only.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

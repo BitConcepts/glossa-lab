@@ -7,9 +7,9 @@
 - [x] T004 Write specs/005 (spec / plan / tasks) with pre-registered protocol
 
 ## Step 1 — Validation harness (current objective)
-- [ ] T010 Build `pipelines/sa_validation.py` (loaders, gold, folds, SA, terms interface)
-- [ ] T011 Unit tests `tests/test_sa_validation.py`
-- [ ] T012 Write phase107 scripts + graph module + registration; verify ATOMIC_NODES (H23)
+- [x] T010 Build `pipelines/sa_validation.py` (loaders, gold, folds, SA, terms interface)
+- [x] T011 Unit tests `tests/test_sa_validation.py`
+- [x] T012 Write phase107 scripts + graph module + registration; verify ATOMIC_NODES (H23)
 - [ ] T013 Run 1a: 5-fold primary + secondary held-out metrics (baseline)
 - [ ] T014 Run 1b: pin-count sweep {0, 53, 90, all} on fold 0
 - [ ] T015 Run 1c: blind controls (Sanskrit, Ge'ez, scrambled) × 5 folds

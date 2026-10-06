@@ -317,3 +317,48 @@ regression test lives in
   change to the 31 extracted claims; any foundation-check
   *logic* change (Step 4(c) is text only).
 - Re-running SA or any decipherment experiment.
+
+## Addendum — Step 1 hand-check corrections (2026-10-06, recorded before apply)
+
+Two refinements surfaced by the registered hand-check protocol,
+applied to the Step 1 decision machinery BEFORE any anchor was
+touched, and recorded here so the deviation from the letter above
+is explicit:
+
+1. **Reading identity is exact.** Rules A1/A2/A3 above reference
+   Phase-108 normalisation for A1; applying that lossy normalisation
+   to identity in general produced a false (a) for **M046**: the
+   loop's current `kal` (DEDR gloss "gem / stone") matched the
+   Phase-89/crosswalk `kaL` (DEDR 1286, "leg/stem") only because
+   normalisation lowercases and strips diacritics. In this
+   notation case and diacritics are phonemically significant
+   (`kaL` ≠ `kal`, `vaN` ≠ `van`) — they are different readings
+   with different DEDR entries. Identity for A1/A2/A3 is therefore
+   judged on the **exact recorded first segment**; normalised-only
+   matches are reported in the decisions artifact as notes, not
+   counted. Effect: M046 moves (a) → (b) (restore `kaL`/HIGH,
+   Phase-89 DEDR). M222's (a) is unaffected (crosswalk `min` is an
+   exact match).
+2. **SA-origin priors are not restorable under (b).** Two cohort
+   priors (M231, M252) record `kur` assigned by the **Phase-122
+   syllabic LM SA** (modal readings, consistency 0.25 / 0.17).
+   After Phase-107 an SA run's output is not a "sourced reading"
+   in the sense of rule (b); restoring SA-modal readings at
+   MEDIUM through the back door would contradict Steps 2/5's
+   treatment of SA-derived material. A prior counts as sourced
+   for (b) only when its origin is not an SA run (origin test:
+   source field names an SA phase, or the basis records an SA
+   assignment mechanism; a later recalibration bracket merely
+   mentioning SA-cons does not disqualify a DEDR-sourced reading —
+   cf. M042/M108). Effect: M231, M252 move (b) → (c) (demote
+   MEDIUM → LOW), with the SA-origin prior recorded in their
+   annotations.
+
+Also recorded for reviewer attention (no rule change): 109 of the
+(b) restorations restore `kur` at LOW from **Phase-111 allograph
+resolution** (positional-profile L1 identity with M222, then read
+as `kur`). That is the last non-loop recorded state for those
+signs and rule (b) restores it as registered; the restored basis
+text states the derivation verbatim. It coexists with M222's own
+(a)-KEEP of `min` (Parpola crosswalk) — the tension is inherent in
+the record and is flagged in the glossa-indus ledger entry.

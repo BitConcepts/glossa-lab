@@ -12,10 +12,10 @@
 - [x] T012 Write phase109 scripts (step1/step2/step3/step5) + graph module + registration; verify ATOMIC_NODES
 
 ## Step 1 — Staging-cohort re-review (116)
-- [ ] T013 Decide run → `reports/phase109_step1_decisions.json` ((a)/(b)/(c) per anchor with evidence)
-- [ ] T014 Hand-check every (a) and (c), every (b) at HIGH/MEDIUM snapshot confidence, 10 sampled (b)-to-LOW
-- [ ] T015 Apply → anchors + change register; list every (b) restoration
-- [ ] T016 Foundation check (0 failures; H21)
+- [x] T013 Decide run → `reports/phase109_step1_decisions.json` ((a)/(b)/(c) per anchor with evidence)
+- [x] T014 Hand-check every (a) and (c), every (b) at HIGH/MEDIUM snapshot confidence, 10 sampled (b)-to-LOW
+- [x] T015 Apply → anchors + change register; list every (b) restoration
+- [x] T016 Foundation check (0 failures; H21)
 
 ## Step 2 — SA-lineage HIGH flags (44)
 - [ ] T020 Decide run → `reports/phase109_step2_flags.json`

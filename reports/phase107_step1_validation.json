@@ -1,0 +1,273 @@
+{
+  "phase": 107,
+  "step": 1,
+  "spec": "specs/005-phase52-v2",
+  "gpu_device": "cpu",
+  "harness_config": {
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "n_restarts": 5,
+    "max_iter": 10000,
+    "temp": 1.0,
+    "cooling": 0.9997
+  },
+  "protocol": "k=5 stratified folds (seed 107) over the 116 Phase-52-pinnable anchors; primary = exact-match held-out agreement; secondary = 159 never-pinned H+M anchors",
+  "n_pinnable": 116,
+  "n_nonpinnable": 159,
+  "baseline_current_objective": {
+    "held_out_primary": {
+      "mean": 0.0,
+      "sd": 0.0,
+      "folds": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_folds_with_data": 5
+    },
+    "held_out_primary_reachable_only": {
+      "mean": 0.0,
+      "sd": 0.0,
+      "folds": [
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "n_folds_with_data": 5
+    },
+    "held_out_secondary_per_fold": {
+      "mean": 0.0043,
+      "sd": 0.0064,
+      "folds": [
+        0.0,
+        0.0143,
+        0.0,
+        0.0071,
+        0.0
+      ],
+      "n_folds_with_data": 5
+    },
+    "held_out_secondary_pooled": {
+      "n_agree": 3,
+      "n_eval": 700,
+      "rate": 0.0043
+    },
+    "z_mean": 18.807,
+    "folds": [
+      {
+        "fold": 0,
+        "z": 17.966,
+        "n_pins": 92,
+        "primary": {
+          "n_eval": 24,
+          "n_agree": 0,
+          "rate": 0.0
+        },
+        "secondary": {
+          "n_eval": 140,
+          "n_agree": 0,
+          "rate": 0.0
+        }
+      },
+      {
+        "fold": 1,
+        "z": 17.27,
+        "n_pins": 92,
+        "primary": {
+          "n_eval": 23,
+          "n_agree": 0,
+          "rate": 0.0
+        },
+        "secondary": {
+          "n_eval": 140,
+          "n_agree": 2,
+          "rate": 0.014285714285714285
+        }
+      },
+      {
+        "fold": 2,
+        "z": 23.677,
+        "n_pins": 93,
+        "primary": {
+          "n_eval": 23,
+          "n_agree": 0,
+          "rate": 0.0
+        },
+        "secondary": {
+          "n_eval": 140,
+          "n_agree": 0,
+          "rate": 0.0
+        }
+      },
+      {
+        "fold": 3,
+        "z": 16.708,
+        "n_pins": 93,
+        "primary": {
+          "n_eval": 23,
+          "n_agree": 0,
+          "rate": 0.0
+        },
+        "secondary": {
+          "n_eval": 140,
+          "n_agree": 1,
+          "rate": 0.007142857142857143
+        }
+      },
+      {
+        "fold": 4,
+        "z": 18.415,
+        "n_pins": 94,
+        "primary": {
+          "n_eval": 22,
+          "n_agree": 0,
+          "rate": 0.0
+        },
+        "secondary": {
+          "n_eval": 140,
+          "n_agree": 0,
+          "rate": 0.0
+        }
+      }
+    ]
+  },
+  "phase52_table_decomposition_context": {
+    "source": "reports/phase52_full_decipherment_table.json (Phase-106 artifact, 2-char prefix metric)",
+    "pinned_signs": "113/116 = 0.974",
+    "never_pinned_signs": "0/159 = 0.000",
+    "note": "The historical 41.09% headline is entirely the pinned subset; see spec 005 Addendum A."
+  },
+  "pin_sweep_fold0": {
+    "0": {
+      "n_pins": 0,
+      "z": 27.884,
+      "held_out_rate": 0.0,
+      "n_eval": 24
+    },
+    "53": {
+      "n_pins": 53,
+      "z": 18.73,
+      "held_out_rate": 0.0,
+      "n_eval": 24
+    },
+    "90": {
+      "n_pins": 90,
+      "z": 17.883,
+      "held_out_rate": 0.0,
+      "n_eval": 24
+    },
+    "all_available": {
+      "n_pins": 92,
+      "z": 17.966,
+      "held_out_rate": 0.0,
+      "n_eval": 24
+    }
+  },
+  "blind_controls": {
+    "sanskrit": {
+      "held_out": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "folds": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "n_folds_with_data": 5
+      },
+      "held_out_reachable": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "folds": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "n_folds_with_data": 5
+      },
+      "z_mean": 60.874,
+      "stability_mean": 0.339,
+      "n_pins_fold0": 42,
+      "n_eval_fold0": 4,
+      "pooled_sd_vs_dravidian": 0.0,
+      "discriminating_margin": 0.0,
+      "dravidian_beats_by_rule": false
+    },
+    "geez": {
+      "held_out": {
+        "mean": null,
+        "sd": null,
+        "folds": [],
+        "n_folds_with_data": 0
+      },
+      "held_out_reachable": {
+        "mean": null,
+        "sd": null,
+        "folds": [],
+        "n_folds_with_data": 0
+      },
+      "z_mean": 6.334,
+      "stability_mean": 0.3362,
+      "n_pins_fold0": 0,
+      "n_eval_fold0": 0,
+      "pooled_sd_vs_dravidian": null,
+      "discriminating_margin": null,
+      "dravidian_beats_by_rule": false,
+      "note": "held-out agreement undefined: 0 evaluable held-out anchors in every fold"
+    },
+    "scrambled": {
+      "held_out": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "folds": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "n_folds_with_data": 5
+      },
+      "held_out_reachable": {
+        "mean": 0.0,
+        "sd": 0.0,
+        "folds": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "n_folds_with_data": 5
+      },
+      "z_mean": 16.477,
+      "stability_mean": 0.3333,
+      "n_pins_fold0": 92,
+      "n_eval_fold0": 24,
+      "pooled_sd_vs_dravidian": 0.0,
+      "discriminating_margin": 0.0,
+      "dravidian_beats_by_rule": false
+    }
+  },
+  "verdicts": {
+    "discriminating_by_preregistered_rule": false,
+    "claim_A_generalises": false,
+    "claim_B_dravidian_best_target": false
+  },
+  "caveats": [
+    "Held-out agreement measures consistency with the anchor programme, not with historical reality (spec 005 H13).",
+    "Ge'ez held-out agreement is structurally bounded: Dravidian gold syllables are not in the Ethiopic inventory, so its evaluable n is ~0 and the metric is reported for completeness; its z/stability are the informative columns.",
+    "Sanskrit evaluable n is limited to gold syllables present in the Sanskrit vocab."
+  ]
+}

@@ -146,9 +146,13 @@ def run_tasks(tasks: list[dict], step: str, force: bool = False) -> list[dict]:
 
 
 def stats_of(rates: list[float]) -> dict:
+    rates = [r for r in rates if r is not None]
+    if not rates:
+        return {"mean": None, "sd": None, "folds": [], "n_folds_with_data": 0}
     return {"mean": round(statistics.mean(rates), 4),
             "sd": round(statistics.stdev(rates), 4) if len(rates) > 1 else 0.0,
-            "folds": [round(r, 4) for r in rates]}
+            "folds": [round(r, 4) for r in rates],
+            "n_folds_with_data": len(rates)}
 
 
 def pooled_sd(a: dict, b: dict) -> float:
@@ -231,7 +235,7 @@ def step1(force: bool = False) -> dict:
     for lm in ("sanskrit", "geez", "scrambled"):
         rs = [by[f"control_{lm}_fold{k}"] for k in range(5)]
         st = stats_of([r["primary"]["rate"] for r in rs])
-        controls[lm] = {
+        entry = {
             "held_out": st,
             "held_out_reachable": stats_of(
                 [r["primary_reachable"]["rate"] for r in rs
@@ -240,10 +244,22 @@ def step1(force: bool = False) -> dict:
             "stability_mean": round(statistics.mean(r["held_stability"] for r in rs), 4),
             "n_pins_fold0": rs[0]["n_pins"],
             "n_eval_fold0": rs[0]["primary"]["n_eval"],
-            "pooled_sd_vs_dravidian": round(pooled_sd(base_stats, st), 4),
-            "discriminating_margin": round(base_stats["mean"] - st["mean"], 4),
-            "dravidian_beats_by_rule": (base_stats["mean"] - st["mean"]) > pooled_sd(base_stats, st),
         }
+        if st["mean"] is None:
+            # No evaluable held-out anchors under this LM (its vocabulary
+            # contains none of the gold syllables): held-out agreement is
+            # undefined, so the discrimination rule cannot be satisfied.
+            entry["pooled_sd_vs_dravidian"] = None
+            entry["discriminating_margin"] = None
+            entry["dravidian_beats_by_rule"] = False
+            entry["note"] = ("held-out agreement undefined: 0 evaluable "
+                             "held-out anchors in every fold")
+        else:
+            entry["pooled_sd_vs_dravidian"] = round(pooled_sd(base_stats, st), 4)
+            entry["discriminating_margin"] = round(base_stats["mean"] - st["mean"], 4)
+            entry["dravidian_beats_by_rule"] = (
+                (base_stats["mean"] - st["mean"]) > pooled_sd(base_stats, st))
+        controls[lm] = entry
     discriminating = all(c["dravidian_beats_by_rule"] for c in controls.values())
     artifact = {
         "phase": 107, "step": 1, "spec": "specs/005-phase52-v2",

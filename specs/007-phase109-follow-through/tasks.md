@@ -46,4 +46,4 @@
 - [x] T062 Change-register completeness vs anchors diff to main
 - [x] T063 glossa-indus LEDGER Phase-109 entries (per step, AI disclosure)
 - [x] T064 Root LEDGER.md summary entry (AI disclosure)
-- [ ] T065 Push branch, open PR with change-register summary (do NOT merge)
+- [x] T065 Push branch, open PR with change-register summary (do NOT merge)

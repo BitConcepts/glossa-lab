@@ -19,11 +19,11 @@
 - [x] T022 Finalize → register + summary MD; headline counts (overall / by tier / three-way)
 
 ## Step 3 — Subset recomputation
-- [ ] T030 Coverage (a): full vs SA-independent H+M (+ sensitivity pair)
-- [ ] T031 Phonotactics (b): Phase-58 machinery on the same sets
-- [ ] T032 Parpola agreement (c): crosswalk v2.1 method + Phase-159 cross-check
-- [ ] T033 Site invariance (d): Phase-69 machinery, full-set replication then subset
-- [ ] T034 Aggregate → `reports/phase108_subset_recomputation.json`
+- [x] T030 Coverage (a): full vs SA-independent H+M (+ sensitivity pair)
+- [x] T031 Phonotactics (b): Phase-58 machinery on the same sets
+- [x] T032 Parpola agreement (c): crosswalk v2.1 method + Phase-159 cross-check
+- [x] T033 Site invariance (d): Phase-69 machinery, full-set replication then subset
+- [x] T034 Aggregate → `reports/phase108_subset_recomputation.json`
 
 ## Step 4 — Circularity + downstream impact map
 - [ ] T040 Circular chains (pin → agreement → promotion/claim), cited pairs

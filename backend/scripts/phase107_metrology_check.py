@@ -47,7 +47,13 @@ from glossa_lab.pipelines import sa_validation as sv  # noqa: E402
 
 REPORTS = REPO / "reports"
 OUT = REPORTS / "phase107_step5_metrology.json"
-STROKES = {f"M{86 + i}": i + 1 for i in range(7)}  # M086=1 .. M092=7 strokes
+STROKES = {f"M{86 + i:03d}": i + 1 for i in range(7)}  # M086=1 .. M092=7 strokes
+# NOTE (2026-10-05, continuation audit): the first execution of this
+# script built the IDs as f"M{86+i}" (unpadded "M86".."M92"), which
+# match nothing in the corpus/anchors/table — every lookup returned
+# None and C3 found 0 stroke tokens. Zero-padding fixed before any
+# result was committed; the null first run is recorded in the
+# glossa-indus ledger Phase-107 Step-5 entry.
 # Dravidian (Tamil) numeral first syllables, diacritic-stripped,
 # as extractable by the harness gold procedure:
 NUMERAL_SYLLABLES = {

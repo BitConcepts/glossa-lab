@@ -1,0 +1,230 @@
+{
+  "phase": 107,
+  "step": "1-sanity-audit",
+  "spec": "specs/005-phase52-v2",
+  "gpu_device": "cpu",
+  "subject": "reports/phase107_step1_validation.json (Step-1 held-out zero)",
+  "revision_note": "Run 2 (2026-10-05): run 1 reported B1 FAIL — an audit-side denominator mis-specification (reachable count omitted corpus membership; fold 1's held sign H003 has a reachable gold but zero Holdat occurrences, reconciling the 23-vs-22 difference exactly, cf. check A2b). B1 was corrected to the agreement() evaluability definition and the audit re-run in full. No Step-1 number changed; the Step-1 zero stands.",
+  "checks": [
+    {
+      "check": "A1 folds disjoint and cover the 116 pinnable anchors",
+      "pass": true,
+      "fold_sizes": [
+        24,
+        24,
+        23,
+        23,
+        22
+      ],
+      "n_pinnable": 116
+    },
+    {
+      "check": "A2 per-fold pins exclude held-out signs (checkpoint n_pins match)",
+      "pass": true,
+      "folds": [
+        {
+          "fold": 0,
+          "held_in_pins_used": [],
+          "n_pins_expected": 92,
+          "n_pins_checkpoint": 92
+        },
+        {
+          "fold": 1,
+          "held_in_pins_used": [],
+          "n_pins_expected": 92,
+          "n_pins_checkpoint": 92
+        },
+        {
+          "fold": 2,
+          "held_in_pins_used": [],
+          "n_pins_expected": 93,
+          "n_pins_checkpoint": 93
+        },
+        {
+          "fold": 3,
+          "held_in_pins_used": [],
+          "n_pins_expected": 93,
+          "n_pins_checkpoint": 93
+        },
+        {
+          "fold": 4,
+          "held_in_pins_used": [],
+          "n_pins_expected": 94,
+          "n_pins_checkpoint": 94
+        }
+      ]
+    },
+    {
+      "check": "A2b checkpoint evaluable denominators recomputed from corpus membership",
+      "pass": true,
+      "folds": [
+        {
+          "fold": 0,
+          "n_held": 24,
+          "held_absent_from_corpus": [],
+          "n_evaluable_recomputed": 24,
+          "n_eval_checkpoint": 24,
+          "n_agree_checkpoint": 0
+        },
+        {
+          "fold": 1,
+          "n_held": 24,
+          "held_absent_from_corpus": [
+            "H003"
+          ],
+          "n_evaluable_recomputed": 23,
+          "n_eval_checkpoint": 23,
+          "n_agree_checkpoint": 0
+        },
+        {
+          "fold": 2,
+          "n_held": 23,
+          "held_absent_from_corpus": [],
+          "n_evaluable_recomputed": 23,
+          "n_eval_checkpoint": 23,
+          "n_agree_checkpoint": 0
+        },
+        {
+          "fold": 3,
+          "n_held": 23,
+          "held_absent_from_corpus": [],
+          "n_evaluable_recomputed": 23,
+          "n_eval_checkpoint": 23,
+          "n_agree_checkpoint": 0
+        },
+        {
+          "fold": 4,
+          "n_held": 22,
+          "held_absent_from_corpus": [],
+          "n_evaluable_recomputed": 22,
+          "n_eval_checkpoint": 22,
+          "n_agree_checkpoint": 0
+        }
+      ],
+      "note": "held-out signs absent from the Holdat flat stream are not in the SA consensus map and are skipped by agreement(); they are identified per fold in held_absent_from_corpus"
+    },
+    {
+      "check": "A3 Step-2 positional train_gold excludes the fold's held-out signs (driver task construction, the exact dicts the ablation runs consume)",
+      "pass": true,
+      "folds": [
+        {
+          "fold": 0,
+          "held_in_train_gold": []
+        },
+        {
+          "fold": 1,
+          "held_in_train_gold": []
+        },
+        {
+          "fold": 2,
+          "held_in_train_gold": []
+        },
+        {
+          "fold": 3,
+          "held_in_train_gold": []
+        },
+        {
+          "fold": 4,
+          "held_in_train_gold": []
+        }
+      ]
+    },
+    {
+      "check": "A4 Dravidian LM carries no anchor/sign content (bigram keys are syllables)",
+      "pass": true,
+      "n_bigram_keys_checked": 30852,
+      "sign_like_keys": [],
+      "note": "gold extraction (sv.extract_gold) reads INDUS_FINAL_ANCHORS.json only; the LM is the external Dravidian syllabic corpus (CITATIONS A-series)"
+    },
+    {
+      "check": "A5 secondary set (159 never-pinned H+M) is disjoint from the pin set",
+      "pass": true,
+      "n_nonpinnable": 159
+    },
+    {
+      "check": "B1 reachable-only denominators match Step-1 checkpoints fold by fold",
+      "pass": true,
+      "target_pool_size": 390,
+      "n_cipher": 390,
+      "unreachable_gold_values": [
+        "ya"
+      ],
+      "folds": [
+        {
+          "fold": 0,
+          "n_held": 24,
+          "n_reachable_gold": 24,
+          "n_eval_checkpoint_reachable": 24,
+          "n_agree_checkpoint_reachable": 0
+        },
+        {
+          "fold": 1,
+          "n_held": 24,
+          "n_reachable_gold": 22,
+          "n_eval_checkpoint_reachable": 22,
+          "n_agree_checkpoint_reachable": 0
+        },
+        {
+          "fold": 2,
+          "n_held": 23,
+          "n_reachable_gold": 23,
+          "n_eval_checkpoint_reachable": 23,
+          "n_agree_checkpoint_reachable": 0
+        },
+        {
+          "fold": 3,
+          "n_held": 23,
+          "n_reachable_gold": 23,
+          "n_eval_checkpoint_reachable": 23,
+          "n_agree_checkpoint_reachable": 0
+        },
+        {
+          "fold": 4,
+          "n_held": 22,
+          "n_reachable_gold": 22,
+          "n_eval_checkpoint_reachable": 22,
+          "n_agree_checkpoint_reachable": 0
+        }
+      ],
+      "note": "Phase-52 init truncates the target space to the first n_cipher sorted LM syllables; golds outside it can never be assigned to a free sign (Addendum A). Reachable-only agreement in Step 1 is nevertheless 0.000 in every fold."
+    },
+    {
+      "check": "C1 fold 0 at production config reproduces the harness held-out result",
+      "pass": true,
+      "production_config": {
+        "seeds": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "n_restarts": 10,
+        "max_iter": 30000
+      },
+      "elapsed_s": 257.2,
+      "primary": {
+        "n_eval": 24,
+        "n_agree": 0,
+        "rate": 0.0
+      },
+      "primary_reachable_only": {
+        "n_eval": 24,
+        "n_agree": 0,
+        "rate": 0.0
+      },
+      "z_production": 19.232,
+      "harness_fold0": {
+        "primary": {
+          "n_eval": 24,
+          "n_agree": 0,
+          "rate": 0.0
+        },
+        "z": 17.966,
+        "config": "3 seeds x 5 restarts x 10,000 iters"
+      }
+    }
+  ],
+  "all_pass": true,
+  "verdict": "Step-1 zero is NOT a harness artifact: no leakage path found, reachability denominators reconcile exactly, and the production config reproduces the harness fold-0 held-out agreement."
+}

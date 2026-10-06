@@ -1538,3 +1538,45 @@ and does not count as SA-dependence. No anchor was changed.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-108 — Step 3: Subset Recomputation (SA-Independent H+M Only)
+
+`reports/phase108_subset_recomputation.json` (deterministic, in-repo;
+strict set = H+M anchors whose category is not SA_DERIVED/SA_CONFIRMED_ONLY/
+UNTRACEABLE and with no SA line in chain: **198 of 275 H+M**; the
+UNTRACEABLE sensitivity pair is identical because UNTRACEABLE = 0):
+
+| Quantity | Full H+M (275) | SA-independent strict (198) |
+|---|---|---|
+| Holdat token coverage | 6755/7002 = 0.9647 | 5459/7002 = 0.7796 |
+| Phonotactic violations (Phase-58 rules) | 0 / 275 readings | 0 / 198 readings |
+| Distinct initials / max phoneme share | 18 / 29.5% | 16 / 35.9% |
+| Parpola agreement (crosswalk v2.1, comparable signs) | 110/121 = 90.9% | 79/82 = 96.3% |
+| Site invariance (Phase-69 machinery, tested signs) | 90/90 = 100% | 65/65 = 100% |
+
+Method notes and divergences from the historical claims:
+
+- Coverage reproduces the anchors-file figure (0.9647) exactly on the
+  full set. SA-lineage H+M anchors carry 1,296 tokens (18.5 points).
+- Phonotactics: the foundation-era claim (0 violations, 16 initials,
+  max share 24.7%) described an older anchor set; the current full set
+  gives 18 initials / 29.5%. The zero-violation result itself survives
+  on both sets; the subset's max share RISES (35.9%) because removing
+  SA-lineage signs concentrates the remainder.
+- Parpola: the README's 59% is a different quantity — Phase-159's
+  confirmed list as a share of the Phase-170-era 75 HIGH signs (44/75).
+  On the current sets it does not reproduce (Phase-159 cross-check:
+  40/166 HIGH full, 20/89 HIGH strict). The crosswalk-comparison rate
+  (90.9% full / 96.3% strict) is partially tautological where crosswalk
+  v2.1 entries are identity-only derivations from the anchors
+  themselves (67/184, spec-004 record). Disagreements concentrate in
+  SA-derived signs (M024, M040, M072, M127, M149, M153, M155, M168) and
+  staging overwrites (M042 'min' vs Parpola 'van', M108, M116).
+- Site invariance: the historical 65-sign/100% figure is matched on the
+  strict subset (65 tested, 65 invariant); the full current set tests
+  90 signs, also 100%. **The site-invariance claim survives the audit.**
+
+No anchor was changed by this step.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

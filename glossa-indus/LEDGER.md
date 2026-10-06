@@ -1738,3 +1738,45 @@ Foundation check: 40 passed / 0 failed / 8 warnings.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-109 — Step 4: Promotion-Path + Governance Fixes (spec 007)
+
+- **Endpoint renamed for honesty:** `POST /staging/verify-sa` →
+  `POST /staging/verify-archive`. The endpoint marks approved
+  staging candidates verified and archives them; it has never
+  performed an SA test. The old path remains as a clearly-marked
+  **deprecated alias** delegating to the same handler (the
+  committed `frontend/dist` build still calls it; a deprecation
+  warning is logged on use). `frontend/src` now calls the new
+  path. New archives record `archived_reason:
+  manual_verify_archive`.
+- **Promotion evidence gate (H26 enforcement):** `POST
+  /staging/promote` now promotes a candidate ONLY if it carries a
+  recorded non-SA evidence reference (candidate `evidence_ref`
+  field or the request's `evidence_refs` map); blocked candidates
+  are not written and are reported as `blocked_no_evidence`; the
+  reference is recorded in the promoted entry's basis. The Step-8
+  "Mandatory SA validation" auto-queue block is **removed**
+  (`sa_validation_jobs` retained in the response, always `[]`).
+  Regression tests: `backend/tests/test_staging_promotion_
+  evidence.py` (4 tests: blocked-without-ref writes nothing;
+  ref via candidate field; ref via request map; new route +
+  deprecated alias both respond).
+- **Governance H26 added** to `docs/governance/rules.md`: no
+  SA-sufficient promotion gates — promotions/upgrades must cite a
+  recorded non-SA evidence reference; SA agreement (modal,
+  consistency, z, consensus) must never be a sufficient
+  condition, citing Phase-107/108 and naming the enforcement
+  points.
+- **Foundation-check text retirements** (text/framing ONLY —
+  diff-verified, no CHECK/WARN logic changed): CHECK NEW-F
+  reframed as a historical record; Phase-44 3.13x and Phase-52
+  z=16 moved solid → caveated (LM language-fit statistic /
+  SUPERSEDED); Phase-57 z=19.07 moved to caveated SUPERSEDED;
+  Phase-67 "DEFINITIVE" retired (1.85x stands only as a same-null
+  descriptive statistic); Phase-73 ensemble reframed SUPERSEDED.
+  Lines the Phase-108 impact map marked STANDS were not touched.
+  Foundation check: 40 passed / 0 failed / 8 warnings.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.

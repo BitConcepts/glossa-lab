@@ -39,7 +39,84 @@ FOUNDATION = REPO / "backend" / "scripts" / "foundation_check.py"
 # Post-Phase-107 status per foundation-check SA-citing item, keyed by a
 # substring of the claim text. Authored in Step 4; rationale in the
 # Step-4 section of reports/phase108_provenance_summary.md.
-FOUNDATION_STATUS: dict[str, str] = {}
+FOUNDATION_STATUS: dict[str, str] = {
+    "Phase-57 z=19.07": "RETIRE 'VERIFIED' — Phase-107 falsified SA "
+        "z-scores as evidence (held-out 0.000; Sanskrit control z=60.9, "
+        "scrambled z=16.5, both 0.000 held-out). The z is reproducible; "
+        "its evidential reading is not.",
+    "Phase-52 syllabic SA z=16": "RETIRE 'VERIFIED' — 'SA agrees 55%' "
+        "decomposed by Phase-107 as pinned self-agreement (113/116 "
+        "pinned vs 0/159 never-pinned).",
+    "Phase-52 constrained SA z >= 4": "RETIRE as evidence — the check "
+        "still passes mechanically, but Phase-107 removed the z-score's "
+        "evidential meaning (non-discriminating controls).",
+    "phase52_syllabic_sa.json": "SEE Phase-52 — evidential reading "
+        "falsified by Phase-107; artifact itself unchanged.",
+    "phase57_expanded_sa.json": "SEE Phase-57 — evidential reading "
+        "falsified by Phase-107; artifact itself unchanged.",
+    "strongest SA result": "NEEDS CAVEAT — Phase-44 LM lift is a "
+        "language-fit statistic, not an SA decipherment result; "
+        "Phase-107 showed LM fit does not identify sign values.",
+    "Phase-67 Sanskrit falsification": "RETIRE 'DEFINITIVE' — Phase-107's "
+        "Sanskrit control reached z=60.874 with 0.000 held-out agreement; "
+        "the LM comparison does not discriminate languages. The 1.85x "
+        "ratio stands only as a same-null descriptive statistic.",
+    "phase67_sanskrit_norm.json": "SEE Phase-67 — 'DEFINITIVE' framing "
+        "retired by Phase-107 controls.",
+    "Phase-61 94% vowel harmony": "NOT RECOMPUTED in Phase-108 — "
+        "descriptive statistic over current readings; Phase-107's "
+        "ablation showed the harmony term adds no held-out predictive "
+        "value, so it cannot serve as validation.",
+    "Phase-61 12% initial-consonant": "STANDS AS CAVEATED — the text "
+        "already scopes it to SA proposals; Phase-108 Step 3 confirms "
+        "the H+M set (full and SA-independent) has 0 violations.",
+    "phase61_phonotactic.json": "SEE Phase-61 entries — harmony not "
+        "recomputed; phonotactic cleanliness of H+M confirmed in "
+        "Phase-108 Step 3.",
+    "Phase-56 expanded Parpola crosswalk": "STANDS — non-SA method "
+        "(literature crosswalk); unaffected by Phase-107.",
+    "phase56_parpola_expansion.json": "STANDS — non-SA method artifact.",
+    "independent of SA": "STANDS — Phase-47 rebus LM lift is explicitly "
+        "a non-SA line; unaffected by Phase-107.",
+    "Phase-70 M267=in SA test": "STANDS AS CAVEATED — text already "
+        "records SA evidence as neutral; Phase-108 register concurs "
+        "(M267 = MIXED, grammar primary, SA not in chain).",
+    "Phase-73 ensemble ENSEMBLE_HIGH=4": "RETIRE as support — ensemble "
+        "values are SA outputs; Phase-107 removes their evidential "
+        "weight. Text already caveats SA variance.",
+    "Phase-55 ensemble": "STANDS — already marked DO NOT CLAIM in the "
+        "foundation text itself.",
+    "M267 reading": "STANDS AS CAVEATED — consistent with the Phase-108 "
+        "register (M267 grammar-primary).",
+    "Phase-168": "OPERATIONAL ONLY — Phase-168 checks verify an SA "
+        "blocker artifact's internal plausibility/coverage estimate; "
+        "they carry no evidential weight after Phase-107.",
+    "Phase-32 T4": "STANDS — already recorded INCONCLUSIVE in the "
+        "foundation text itself.",
+    "53 pinned anchors; z=19.07": "SEE Phase-57 z=19.07 (detail line).",
+    "47/390 SA-assigned readings": "SEE Phase-61 12% initial-consonant "
+        "(detail line).",
+    "SA-only readings not phonotactically filtered": "SEE Phase-61 12% "
+        "initial-consonant (detail line).",
+    "SA proposals only; HIGH+MEDIUM readings are phonotactically clean":
+        "SEE Phase-61 12% initial-consonant (verdict line).",
+    "does not invalidate other Phase-56-61 results": "STANDS AS CAVEATED "
+        "— Phase-60 investigation note; makes no SA-evidence claim.",
+    "Ratio 1.85x. Resolves Phase-66": "SEE Phase-67 Sanskrit "
+        "falsification (detail line).",
+    "Pinning M267 to 'in' degrades": "SEE Phase-70 M267=in SA test "
+        "(detail line).",
+    "SA cannot pin multi-syllabic M267": "SEE Phase-70 M267=in SA test "
+        "(detail line).",
+    "SA evidence neutral; grammar evidence strong": "SEE Phase-70 "
+        "M267=in SA test (verdict line).",
+    "SA variance limits consensus": "SEE Phase-73 ensemble (detail line).",
+    "ensemble method limited by SA variance": "SEE Phase-73 ensemble "
+        "(verdict line).",
+    "GPU CUDA not available": "OPERATIONAL — runtime warning, no claim.",
+    "SA/decipherment experiments will be slow": "OPERATIONAL — runtime "
+        "warning, no claim.",
+}
 
 
 def circular_chains(records: dict, trails: dict) -> list[dict]:
@@ -48,25 +125,35 @@ def circular_chains(records: dict, trails: dict) -> list[dict]:
         trail = trails.get(sign, {})
         st = trail.get("structured", {})
         pinned52 = "phase52_sa_table" in st
-        promoted_sa = rec.get("sa_role") == "promotion"
+        promoted_sa = rec.get("sa_role") == "promotion" or any(
+            c.get("type") == "SA" and ("promotion" in c.get("role", "")
+                                       or "gate" in c.get("role", ""))
+            for c in rec.get("components", []))
         origin_sa = rec.get("category") == "SA_DERIVED"
+        load_bearing = origin_sa or rec.get("category") == "SA_CONFIRMED_ONLY"
         inj = [m for m in trail.get("artifact_mentions", {})
                .get("upgrade_artifacts", []) if m["kind"] == "injection"]
         if origin_sa:
             chains.append({
                 "sign": sign, "type": "sa_origin",
+                "sa_load_bearing": True,
                 "detail": "value first proposed by an SA run (register)",
                 "citations": rec.get("trail_citations", [])})
         elif promoted_sa and pinned52:
             chains.append({
                 "sign": sign, "type": "pin_then_sa_promotion",
+                "sa_load_bearing": load_bearing,
                 "detail": "sign appears in the Phase-52 SA table and its "
-                          "promotion to current confidence cites SA agreement",
+                          "promotion to current confidence cites SA agreement"
+                          + ("" if load_bearing else
+                             " as a component (a completed non-SA validation "
+                             "also stands in the promotion record)"),
                 "citations": ["reports/phase52_full_decipherment_table.json"]
                              + rec.get("trail_citations", [])})
         elif promoted_sa and inj:
             chains.append({
                 "sign": sign, "type": "injection_then_sa_promotion",
+                "sa_load_bearing": load_bearing,
                 "detail": "sign entered via an anchor-injection artifact and "
                           "its promotion cites SA agreement",
                 "citations": [m["file"] for m in inj]
@@ -129,16 +216,30 @@ def headline_map(records: dict, anchors: dict) -> dict:
         signs = sorted(set(SIGN_RE.findall(json.dumps(d))))
         hm161 = [s for s in signs if s in anchors
                  and anchors[s]["confidence"] in ("HIGH", "MEDIUM")]
-        sa161 = [s for s in hm161 if s in sa_signs]
-        covered_sa = sum(1 for t in tokens if t in set(sa161))
-        out["anchors_161"] = {
-            "source": str(p.relative_to(REPO)),
-            "n_signs_mentioned": len(hm161), "n_sa_lineage": len(sa161),
-            "sa_lineage_signs": sa161,
-            "tokens_attributable_to_sa_lineage": covered_sa,
-            "note": "sign set recovered from the Phase-170 artifact's "
-                    "mentions; the historical 161-set is not stored as a "
-                    "standalone file in-repo"}
+        if len(hm161) >= 100:
+            sa161 = [s for s in hm161 if s in sa_signs]
+            covered_sa = sum(1 for t in tokens if t in set(sa161))
+            out["anchors_161"] = {
+                "source": str(p.relative_to(REPO)),
+                "n_signs_mentioned": len(hm161), "n_sa_lineage": len(sa161),
+                "sa_lineage_signs": sa161,
+                "tokens_attributable_to_sa_lineage": covered_sa,
+                "note": "sign set recovered from the Phase-170 artifact's "
+                        "mentions; the historical 161-set is not stored as a "
+                        "standalone file in-repo"}
+        else:
+            out["anchors_161"] = {
+                "source": str(p.relative_to(REPO)),
+                "n_signs_mentioned": len(hm161),
+                "note": "the Phase-170 artifact does not enumerate its "
+                        "anchor set (only "
+                        f"{len(hm161)} H+M signs are mentioned in it); the "
+                        "historical 161-set is not stored in-repo, so its "
+                        "SA-lineage share cannot be computed without "
+                        "reconstructing it, which this audit does not do. "
+                        "The 90.96% coverage figure is likewise a "
+                        "Phase-170-era set property: the current full H+M "
+                        "coverage recomputes to 0.9647 (Phase-108 Step 3)."}
     else:
         out["anchors_161"] = {
             "source": None,

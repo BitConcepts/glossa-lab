@@ -232,3 +232,109 @@ SA-independent, three ways (pre-registered):
 - M407: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
 - M340: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
 - H003: staging cohort: pass 1 misclassified all 116 staging-archive anchors as DEDR-explicit (signal fired on the loop's dedr_support gloss text). Hand review of outputs/anchor_staging_archive.json + research_loop.py shows readings come from fixed heuristic tables (hardcoded partner/complement lists), not DEDR assignment and not SA. The promotion endpoint is named verify-sa but performs no SA validation.
+## Step 3 — Subset recomputation (SA-independent H+M only)
+
+Deterministic, in-repo; strict set = 198 of 275 H+M anchors (register
+category not SA_DERIVED/SA_CONFIRMED_ONLY/UNTRACEABLE and no SA line in
+chain). Full artifact: `reports/phase108_subset_recomputation.json`.
+The UNTRACEABLE sensitivity pair is identical (UNTRACEABLE = 0).
+
+| Quantity | Full H+M (275) | SA-independent strict (198) | Method note |
+|---|---|---|---|
+| Holdat token coverage | 6755/7002 = 0.9647 | 5459/7002 = 0.7796 | Holdat CSV token rows; reproduces the anchors-file 0.9647 exactly |
+| Phonotactic violations | 0 / 275 | 0 / 198 | Phase-58 machinery (`analyze_phoneme_inventory`) |
+| Distinct initials / max share | 18 / 29.5% | 16 / 35.9% | Foundation-era text (16 / 24.7%) described an older set |
+| Parpola agreement | 110/121 = 90.9% | 79/82 = 96.3% | Crosswalk v2.1 readings, normalised first-segment equality; partially tautological where crosswalk entries are identity-only (67/184) |
+| Site invariance | 90/90 tested = 100% | 65/65 tested = 100% | Phase-69 chi² machinery; eligibility: per-sign site total ≥ 3 |
+
+Divergences that matter: the README's 59% Parpola figure is a
+Phase-170-era quantity (Phase-159's 44 confirmed signs over the
+then-current 75 HIGH); on current sets the Phase-159 cross-check gives
+40/166 HIGH (full) and 20/89 HIGH (strict). Disagreements in the
+crosswalk comparison concentrate in SA-derived signs (M024, M040, M072,
+M127, M149, M153, M155, M168) and staging overwrites (M042 'min' vs
+Parpola 'van', M108, M116). Site invariance — a headline grammar claim —
+survives intact on the SA-independent subset.
+
+## Step 4 — Circularity + downstream impact map
+
+Full artifact: `reports/phase108_impact_map.json`. This is a map;
+nothing mapped here was edited.
+
+### Circular chains — 77 records carry an SA line in chain
+
+- **SA origin (24, all load-bearing).** Value first proposed by an SA
+  run (Phase-122 syllabic LM SA, Phase-110, Phase-106, Phase-73,
+  Phase-77, Phase-129 squeeze where the value equals the SA modal).
+- **Pin → SA-cited promotion (53).** The sign sits in the Phase-52 SA
+  table (the pinning-era artifact) and its promotion record cites SA
+  agreement. 20 are load-bearing (SA_CONFIRMED_ONLY: Phase-116/216
+  SA_ONLY gate paths; Phase-293 promotions); 33 are component-level
+  (a completed non-SA validation also stands in the record: BOTH-path
+  gate signs, the Phase-271 triple-corroboration cohort, the Phase-294
+  bundle, M001).
+
+Three most consequential:
+
+1. **M293 'ta'** — the corpus's most frequent sign (232 tokens). Its
+   HIGH confidence passed the Phase-116 gate on the SA_ONLY path
+   (SA-cons 1.00; source not whitelisted). Citations:
+   `outputs/phase116_sa_recalibration.json` (eval_log),
+   `backend/reports/INDUS_FINAL_ANCHORS.json` (entry).
+2. **M416 → M169 inheritance.** M416 'na' is Phase-122 SA-derived;
+   M169 'rā' inherited HIGH from M416 via the Phase-252 positional
+   allograph rule (r=1.000) — SA-lineage confidence propagated to a
+   second sign by a non-SA method riding on an SA-derived parent.
+   Citations: `outputs/phase122_syllabic_lm_sa.json`,
+   `outputs/phase252_allograph_upgrade.json`.
+3. **The Phase-242/244 → Phase-293 pattern (12 signs).** DEDR
+   injections whose own upgrade records state "SA confirmation
+   pending/still needed" were promoted LOW→HIGH by Phase-293's SA
+   cross-corpus validation (83.7%). Example M270: `upgrade_basis`
+   records the Phase-244 DEDR 4981 injection with "SA confirmation
+   pending"; the current basis is the Phase-293 SA text. Citations:
+   `outputs/phase244_e41_dedr_upgrade.json`,
+   `outputs/phase292_293_sa_cross_corpus.json`.
+
+Also flagged: M035 'po' — first proposed as Phase-77's sole high-trust
+SA proposal, promoted by the Phase-87 DEDR-rebus sprint, and present in
+Phase-159's Parpola-confirmed set (below).
+
+### Downstream impact
+
+- **Extracted claims (31):** no extracted claim cites any sign ID
+  (verified against `glossa-indus/claims/extracted_claims/*.json`), so
+  no per-claim SA-lineage dependence is citable: **0/31**. The claims'
+  dependence on the anchor programme is generic, not per-sign.
+- **README/preprint headlines.** The 59% Parpola figure's source set
+  (Phase-159's 44 confirmed signs) contains **20 SA-lineage signs
+  (45.5%)**, including SA_DERIVED M035 and SA_CONFIRMED_ONLY M293,
+  M071, M031, M033. The 161-anchor set is **not stored in-repo** (the
+  Phase-170 artifact mentions only 4 H+M signs), so its SA-lineage
+  share cannot be computed without reconstruction, which this audit
+  does not do; its companion figure 90.96% coverage is a Phase-170-era
+  set property (current full H+M coverage: 96.47%; SA-independent:
+  77.96%).
+- **Foundation-check claim texts:** 37 SA-citing lines in
+  `backend/scripts/foundation_check.py` mapped, each with a
+  post-Phase-107 status in the impact artifact. Rationale summary:
+  - RETIRE the evidential reading: Phase-52 "z=16 / SA agrees 55%"
+    (decomposed by Phase-107 as pinned self-agreement), Phase-57
+    "z=19.07 — VERIFIED, highest z-score in the project", Phase-67
+    "Sanskrit falsification 1.85x (DEFINITIVE)" (Phase-107's Sanskrit
+    control reached z=60.9 with 0.000 held-out), Phase-73 ensemble
+    values as support (SA outputs).
+  - NEEDS CAVEAT: Phase-44's "VERIFIED — strongest SA result" framing
+    (an LM-lift language-fit statistic, not a decipherment result);
+    Phase-61 "94% vowel harmony" (not recomputed in Phase-108;
+    Phase-107's ablation showed the term adds no held-out value).
+  - STANDS: Phase-56 crosswalk and Phase-47 lift (non-SA methods);
+    Phase-58 phonotactic cleanliness (recomputed in Step 3: 0
+    violations on both sets, with era figures superseded); Phase-61's
+    12% SA-only violation note (already caveated in its own text);
+    Phase-69 site invariance (recomputed: 100% on both sets).
+  - STANDS AS CAVEATED (the texts already carry the caveat): Phase-70
+    M267 SA test ("SA evidence neutral" — the register concurs),
+    Phase-55 ensemble (already DO NOT CLAIM), Phase-32 T4 (already
+    INCONCLUSIVE), Phase-60 note. Phase-168's checks are operational
+    only post-107.

@@ -1,0 +1,78 @@
+{
+  "phase": 107,
+  "step": 3,
+  "spec": "specs/005-phase52-v2",
+  "gpu_device": "cpu",
+  "best_terms": [],
+  "equivalence": {
+    "config": {
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_restarts": 5,
+      "max_iter": 10000
+    },
+    "full_best_scores": [
+      -99447.35,
+      -98805.39,
+      -99012.36,
+      -98250.65,
+      -99551.69
+    ],
+    "delta_best_scores": [
+      -99159.51,
+      -98814.39,
+      -97595.99,
+      -99022.47,
+      -99006.86
+    ],
+    "mean_diff_pct": 0.2966,
+    "consensus_agreement_share": 0.312,
+    "claim_D_pass": false
+  },
+  "scaled_run": {
+    "config": {
+      "seeds": 10,
+      "n_restarts": 10,
+      "max_iter": 100000
+    },
+    "seed_scores": [
+      -95796.35,
+      -95915.71,
+      -96249.94,
+      -95386.43,
+      -95487.02,
+      -95719.11,
+      -94974.18,
+      -95960.75,
+      -95202.71,
+      -95572.93
+    ],
+    "mean_score": -95626.51,
+    "null_mean": -124333.44,
+    "null_std": 1555.75,
+    "z": 18.452,
+    "n_signs": 390,
+    "n_sa_supported_ge_0.80": 0,
+    "n_probable_ge_0.60": 0,
+    "n_unstable": 275,
+    "n_pinned": 115
+  },
+  "headline_comparison": {
+    "phase52_original_rerun_phase106": {
+      "z": 17.642,
+      "agreement_circular": 0.4109,
+      "config": "5 seeds x 10 restarts x 30k iters, LM-only, 116 pins, full rescoring"
+    },
+    "phase52_v2_scaled": {
+      "z": 18.452,
+      "terms": [],
+      "config": "10 seeds x 10 restarts x 100k iters, delta scoring, 116 pins"
+    },
+    "note": "z values are within-objective (each vs its own null); the honest generalisation metric is the Step-1/2 held-out agreement, not z."
+  }
+}

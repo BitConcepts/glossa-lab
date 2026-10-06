@@ -7,16 +7,16 @@
 - [x] T004 Write specs/006 (spec / plan / tasks) with pre-registered taxonomy + methods
 
 ## Step 1 — Evidence extraction
-- [ ] T010 Build `pipelines/provenance_audit.py` (loaders, trail assembly, SA-lineage tables)
-- [ ] T011 Unit tests `tests/test_provenance_audit.py`
-- [ ] T012 Write phase108 scripts + graph module + registration; verify ATOMIC_NODES (H23)
-- [ ] T013 Run extraction → `reports/phase108_anchor_trails.json`
-- [ ] T014 Spot-check trails (M267, M047 + 3 random) against raw sources
+- [x] T010 Build `pipelines/provenance_audit.py` (loaders, trail assembly, SA-lineage tables)
+- [x] T011 Unit tests `tests/test_provenance_audit.py`
+- [x] T012 Write phase108 scripts + graph module + registration; verify ATOMIC_NODES (H23)
+- [x] T013 Run extraction → `reports/phase108_anchor_trails.json`
+- [x] T014 Spot-check trails (M267, M047 + 3 random) against raw sources
 
 ## Step 2 — Classification
-- [ ] T020 Pass 1 (programmatic) → draft register
-- [ ] T021 Hand-review all undecided trails → `reports/phase108_review_decisions.json`
-- [ ] T022 Finalize → register + summary MD; headline counts (overall / by tier / three-way)
+- [x] T020 Pass 1 (programmatic) → draft register
+- [x] T021 Hand-review all undecided trails → `reports/phase108_review_decisions.json`
+- [x] T022 Finalize → register + summary MD; headline counts (overall / by tier / three-way)
 
 ## Step 3 — Subset recomputation
 - [ ] T030 Coverage (a): full vs SA-independent H+M (+ sensitivity pair)

@@ -41,9 +41,9 @@
 - [x] T053 Preprint addendum v5 DRAFT in-repo + PREPRINT_VERSIONING.md draft row (no submission)
 
 ## Step 6 — Close-out
-- [ ] T060 Full backend test suite (exact counts vs 586/9 baseline)
-- [ ] T061 Ruff on changed Python files
-- [ ] T062 Change-register completeness vs anchors diff to main
-- [ ] T063 glossa-indus LEDGER Phase-109 entries (per step, AI disclosure)
-- [ ] T064 Root LEDGER.md summary entry (AI disclosure)
+- [x] T060 Full backend test suite (exact counts vs 586/9 baseline)
+- [x] T061 Ruff on changed Python files
+- [x] T062 Change-register completeness vs anchors diff to main
+- [x] T063 glossa-indus LEDGER Phase-109 entries (per step, AI disclosure)
+- [x] T064 Root LEDGER.md summary entry (AI disclosure)
 - [ ] T065 Push branch, open PR with change-register summary (do NOT merge)

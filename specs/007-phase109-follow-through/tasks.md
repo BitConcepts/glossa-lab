@@ -7,9 +7,9 @@
 - [x] T004 Write specs/007 (spec / plan / tasks) with pre-registered decision rules (Steps 1–4), re-base targets (Step 5), acceptance checks (Step 6)
 
 ## Machinery (H23 — before any script runs)
-- [ ] T010 Build `pipelines/phase109_followthrough.py` (loaders, evidence assembly, decision rules, change application, register)
-- [ ] T011 Unit tests `tests/test_phase109_followthrough.py`
-- [ ] T012 Write phase109 scripts (step1/step2/step3/step5) + graph module + registration; verify ATOMIC_NODES
+- [x] T010 Build `pipelines/phase109_followthrough.py` (loaders, evidence assembly, decision rules, change application, register)
+- [x] T011 Unit tests `tests/test_phase109_followthrough.py`
+- [x] T012 Write phase109 scripts (step1/step2/step3/step5) + graph module + registration; verify ATOMIC_NODES
 
 ## Step 1 — Staging-cohort re-review (116)
 - [ ] T013 Decide run → `reports/phase109_step1_decisions.json` ((a)/(b)/(c) per anchor with evidence)

@@ -376,7 +376,10 @@
       "reading": "nal",
       "confidence": "HIGH",
       "basis": "Round 1: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); HIGH-anchor collocate M267 (n=4); HIGH-anchor collocate M342 (n=4); has specific PDR reading [Phase-116 recal: SA-cons=1.00✓ DEDR✓]",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M009": {
       "reading": "āṇ",
@@ -400,13 +403,19 @@
       "reading": "kō",
       "confidence": "HIGH",
       "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); has specific PDR reading [Phase-216: SA-cons=0.67 DEDR✓ source=]",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M031": {
       "reading": "kai",
       "confidence": "HIGH",
       "basis": "Round 2: INITIAL position (freq=16), distributional assignment; UPGRADED-V18: consistent INITIAL (n=16); HIGH-anchor collocate M342 (n=5); has specific PDR reading [Phase-116 recal: SA-cons=1.00✓ DEDR✓]",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M002": {
       "reading": "kuṉ",
@@ -439,13 +448,19 @@
       "reading": "kaḷiṟu",
       "confidence": "HIGH",
       "basis": "Round 2: INITIAL position (freq=15), distributional assignment; UPGRADED-V18: consistent INITIAL (n=15); has specific PDR reading [Phase-116 recal: SA-cons=0.50✓ DEDR✓]",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M036": {
       "reading": "tiru",
       "confidence": "HIGH",
       "basis": "Round 2: INITIAL position (freq=15), distributional assignment; UPGRADED-V18: consistent INITIAL (n=15); has specific PDR reading [Phase-216: SA-cons=1.00 DEDR✓ source=]",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M015": {
       "reading": "mā",
@@ -495,14 +510,20 @@
       "dedr_source": "phase294_manual_DEDR",
       "dedr_gloss": "ri = form/beauty (PDr *iru/ri)",
       "phase_upgraded": 294,
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M024": {
       "reading": "nē",
       "confidence": "HIGH",
       "basis": "Phase-73 SA syl_modal='nē' (Dravidian syllabic LM). Iconography: potted-plant/sprout sign ~ nē (sprouting). Phase-103: appears in 13 name slots; NAME_AY_AN pattern. DEDR 3741 nē = 'you (formal)' or nēr = 'straight/true'. Personal name component: Nē-an (true man). Freq=13; Pos=INITIAL; name_slots=5. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-105]",
       "source": "Phase-105",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M049": {
       "reading": "pu",
@@ -536,7 +557,10 @@
       "reading": "puli",
       "confidence": "HIGH",
       "basis": "Round 2: INITIAL position (freq=12), distributional assignment; UPGRADED-V18: HIGH-anchor collocate M267 (n=4); has specific PDR reading [Phase-116 recal: SA-cons=1.00✓ DEDR✓]",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M074": {
       "confidence": "HIGH",
@@ -571,7 +595,10 @@
       "dedr": "DEDR 4751 (mā = great/large, Tamil)",
       "source": "Phase-129 positional upgrade",
       "corpus_freq": 12,
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M055": {
       "confidence": "HIGH",
@@ -592,7 +619,10 @@
       "dedr": "2905",
       "dedr_source": "phase272_DEDR_injection",
       "phase_upgraded": 293,
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M043": {
       "reading": "mu",
@@ -668,7 +698,10 @@
       "source": "Phase-122",
       "phase_upgraded": 252,
       "upgrade_basis": "Phase-252: Allograph of M416 (r=1.000, HIGH). Daggumati & Revesz (2021) positional correlation method. Same positional profile → same grammatical function → allograph. Inherits HIGH confidence from M416='na'.",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M237": {
       "reading": "ce",
@@ -684,14 +717,20 @@
       "dedr_source": "phase294_manual_DEDR",
       "dedr_gloss": "ce = red/copper (PDr *cem/ce)",
       "phase_upgraded": 294,
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M102": {
       "reading": "ni",
       "confidence": "HIGH",
       "basis": "Phase-122 syllabic LM SA: modal='ni' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR 3596: water. freq=8. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-122]",
       "source": "Phase-122",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M076": {
       "confidence": "HIGH",
@@ -708,7 +747,10 @@
       "confidence": "HIGH",
       "basis": "Phase-122 syllabic LM SA: modal='ma' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR 4751: great. freq=7. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-122]",
       "source": "Phase-122",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M128": {
       "reading": "kaṇ",
@@ -742,7 +784,10 @@
       "dedr": "5535",
       "dedr_source": "phase272_DEDR_injection",
       "phase_upgraded": 272,
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M149": {
       "reading": "or",
@@ -752,7 +797,10 @@
       "source": "Phase-129 positional upgrade",
       "corpus_freq": 7,
       "phase_upgraded": 293,
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M185": {
       "reading": "pul",
@@ -768,7 +816,10 @@
       "confidence": "HIGH",
       "basis": "Phase-122 syllabic LM SA: modal='kol' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=7. [Phase-216: SA-cons=1.00 DEDR✓ source=Phase-122]",
       "source": "Phase-122",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M375": {
       "reading": "taṇ",
@@ -787,7 +838,10 @@
       "dedr_source": "phase244_DEDR_injection",
       "phase_upgraded": 293,
       "upgrade_basis": "Phase-244: DEDR 4981 (thorn, spike, prickle) injected for reading 'muḷ'. Valid PDr root confirmed in DEDR. SA confirmation pending. ",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M401": {
       "reading": "vē",
@@ -797,7 +851,10 @@
       "dedr": "5535",
       "dedr_source": "phase272_DEDR_injection",
       "phase_upgraded": 272,
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M374": {
       "reading": "kul",
@@ -817,7 +874,10 @@
       "dedr": "5535",
       "dedr_source": "phase272_DEDR_injection",
       "phase_upgraded": 272,
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M252": {
       "reading": "min",
@@ -864,7 +924,10 @@
       "confidence": "HIGH",
       "basis": "Phase-110 targeted SA: modal='inci', consistency=0.90, 10 seeds, 130 anchors pinned. DEDR : . freq=6. [Phase-216: SA-cons=1.00 DEDR✓ source=Phase-110]",
       "source": "Phase-110",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M332": {
       "reading": "intu",
@@ -878,7 +941,10 @@
         "chi2": 9.441,
         "lift": 3.27
       },
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M183": {
       "reading": "vēḷ",
@@ -889,7 +955,10 @@
       "dedr_source": "phase244_DEDR_injection",
       "phase_upgraded": 293,
       "upgrade_basis": "Phase-244: DEDR 5547 (white, bright; title/lord name) injected for reading 'vēḷ'. Valid PDr root confirmed in DEDR. SA confirmation pending. ",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M222": {
       "reading": "min",
@@ -908,7 +977,10 @@
       "dedr_source": "phase244_DEDR_injection",
       "phase_upgraded": 293,
       "upgrade_basis": "Phase-244: DEDR 5352 (sky, heaven; celestial) injected for reading 'vāṉ'. Valid PDr root confirmed in DEDR. SA confirmation pending. ",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M412": {
       "reading": "cūḷ",
@@ -921,7 +993,10 @@
       "dedr_source": "phase244_DEDR_injection",
       "phase_upgraded": 293,
       "upgrade_basis": "Phase-244: DEDR 2740 (to surround, encircle; trap) injected for reading 'cūḷ'. Valid PDr root confirmed in DEDR. SA confirmation pending. ",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M151": {
       "reading": "viḷ",
@@ -943,7 +1018,10 @@
       "dedr_source": "phase244_DEDR_injection",
       "phase_upgraded": 293,
       "upgrade_basis": "Phase-244: DEDR 5543 (root, foundation, base) injected for reading 'vēṟ'. Valid PDr root confirmed in DEDR. SA confirmation pending. ",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M355": {
       "reading": "lu",
@@ -954,7 +1032,10 @@
       "dedr_source": "phase294_manual_DEDR",
       "dedr_gloss": "lu = pour/flow (PDr *oḻu/lu)",
       "phase_upgraded": 294,
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M178": {
       "reading": "i",
@@ -965,7 +1046,10 @@
       "dedr_source": "phase294_manual_DEDR",
       "dedr_gloss": "i = this/here (PDr *i demonstrative)",
       "phase_upgraded": 294,
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M163": {
       "confidence": "HIGH",
@@ -1010,14 +1094,20 @@
       "confidence": "HIGH",
       "basis": "Phase-122 syllabic LM SA: modal='pu' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR 4317: flower. freq=5. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-122]",
       "source": "Phase-122",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M177": {
       "reading": "na",
       "confidence": "HIGH",
       "basis": "Phase-122 syllabic LM SA: modal='na' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR 3549: word. freq=5. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-122]",
       "source": "Phase-122",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M357": {
       "reading": "kuḷ",
@@ -1044,7 +1134,10 @@
       "confidence": "HIGH",
       "basis": "Phase-122 syllabic LM SA: modal='ka' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR 1145: eye. freq=5. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-122]",
       "source": "Phase-122",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M239": {
       "reading": "il",
@@ -1059,7 +1152,10 @@
         "meaning": "place",
         "ref": "MC-16b"
       },
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M223": {
       "reading": "muḷ",
@@ -1070,14 +1166,20 @@
       "dedr_source": "phase244_DEDR_injection",
       "phase_upgraded": 293,
       "upgrade_basis": "Phase-244: DEDR 4981 (thorn, spike, prickle) injected for reading 'muḷ'. Valid PDr root confirmed in DEDR. SA confirmation pending. ",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M103": {
       "reading": "kol",
       "confidence": "HIGH",
       "basis": "Phase-122 syllabic LM SA: modal='kol' (CV syllable), consistency=0.17, 12 seeds, 243 H+M anchors pinned. DEDR : . freq=5. [Phase-216: SA-cons=1.00 DEDR✓ source=Phase-122]",
       "source": "Phase-122",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M254": {
       "reading": "tēṉ",
@@ -1088,7 +1190,10 @@
       "dedr_source": "phase244_DEDR_injection",
       "phase_upgraded": 293,
       "upgrade_basis": "Phase-244: DEDR 3428 (honey; south direction) injected for reading 'tēṉ'. Valid PDr root confirmed in DEDR. SA confirmation pending. ",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M262": {
       "reading": "i",
@@ -1099,14 +1204,20 @@
       "dedr_source": "phase294_manual_DEDR",
       "dedr_gloss": "i = this/here (PDr *i demonstrative)",
       "phase_upgraded": 294,
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M416": {
       "reading": "na",
       "confidence": "HIGH",
       "basis": "Phase-122 syllabic LM SA: modal='na' (CV syllable), consistency=0.25, 12 seeds, 243 H+M anchors pinned. DEDR 3549: word. freq=5. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-122]",
       "source": "Phase-122",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M143": {
       "reading": "maṇ",
@@ -1132,7 +1243,10 @@
         "meaning": "star/crossing",
         "ref": "SL-16"
       },
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M329": {
       "reading": "poṉ",
@@ -1174,7 +1288,10 @@
       "dedr_source": "phase244_DEDR_injection",
       "phase_upgraded": 293,
       "upgrade_basis": "Phase-244: DEDR 5547 (white, bright; title/lord name) injected for reading 'vēḷ'. Valid PDr root confirmed in DEDR. SA confirmation pending. ",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M255": {
       "reading": "kur",
@@ -1289,7 +1406,10 @@
       },
       "phase_upgraded": 293,
       "basis": "; Phase-293: cross-corpus validation — SA 83.7% on independent 5520-inscription corpus validates Dravidian LM fit + DEDR entry confirmed",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M311": {
       "reading": "vaTamiin",
@@ -1374,7 +1494,10 @@
       "meaning": "body/self — personal name element",
       "source": "Phase-101 positional adjudication",
       "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M058": {
       "reading": "ke",
@@ -1385,7 +1508,10 @@
       "bigram_consistency": 0.0211,
       "phase_upgraded": 293,
       "basis": "; Phase-293: cross-corpus validation — SA 83.7% on independent 5520-inscription corpus validates Dravidian LM fit + DEDR entry confirmed",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_CONFIRMED_ONLY",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M065": {
       "reading": "kuTam",
@@ -1488,7 +1614,10 @@
       "corpus_freq": 19,
       "evidence_score": 2.0,
       "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M003": {
       "confidence": "HIGH",
@@ -2478,7 +2607,10 @@
       "dedr": "5535",
       "dedr_source": "phase272_DEDR_injection",
       "phase_upgraded": 272,
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "validation_status": "pending_non_sa_validation",
+      "provenance_class": "SA_DERIVED",
+      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_DERIVED (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
     },
     "M340": {
       "reading": "kur",

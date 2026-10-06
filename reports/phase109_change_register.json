@@ -2438,6 +2438,842 @@
       "citations": [
         "prior sourced reading in INDUS_FINAL_ANCHORS.backup_20260523_181449.json (all 3 backup snapshots agree), overwritten by the June-2026 staging promotion"
       ]
+    },
+    {
+      "step": "step2",
+      "sign": "M011",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "kaḷiṟu",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "kaḷiṟu",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M021",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "kō",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "kō",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M024",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "nē",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "nē",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M028",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "cōḻ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "cōḻ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M031",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "kai",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "kai",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M033",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "puli",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "puli",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M035",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "po",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "po",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M036",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "tiru",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "tiru",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M040",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "ri",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "ri",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M058",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "ke",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "ke",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M071",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "nal",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "nal",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M072",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "mā",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "mā",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M102",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "ni",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "ni",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M103",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "kol",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "kol",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M127",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "vē",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "vē",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M149",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "or",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "or",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M153",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "pu",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "pu",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M155",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "ka",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "ka",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M168",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "inci",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "inci",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M169",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "rā",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "rā",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M177",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "na",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "na",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M178",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "i",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "i",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M183",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "vēḷ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "vēḷ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M223",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "muḷ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "muḷ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M235",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "vē",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "vē",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M237",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "ce",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "ce",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M239",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "il",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "il",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M254",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "tēṉ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "tēṉ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M262",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "i",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "i",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M270",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "muḷ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "muḷ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M272",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "ma",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "ma",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M281",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "piLLai",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "piLLai",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M293",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "ta",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "ta",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M304",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "vēṟ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "vēṟ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M332",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "intu",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "intu",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M345",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "taṭ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "taṭ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M350",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "vē",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "vē",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M355",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "lu",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "lu",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M365",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "vāṉ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "vāṉ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M383",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "kol",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "kol",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M401",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "vē",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "vē",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M402",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "vēḷ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "vēḷ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M412",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "cūḷ",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "cūḷ",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_CONFIRMED_ONLY"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_CONFIRMED_ONLY)"
+      ]
+    },
+    {
+      "step": "step2",
+      "sign": "M416",
+      "rule": "step2",
+      "action": "flag",
+      "before": {
+        "reading": "na",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "na",
+        "confidence": "HIGH",
+        "validation_status": "pending_non_sa_validation",
+        "provenance_class": "SA_DERIVED"
+      },
+      "citations": [
+        "reports/phase108_provenance_register.json (SA_DERIVED)"
+      ]
     }
   ]
 }

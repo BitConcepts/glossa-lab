@@ -1399,3 +1399,50 @@ or confidences changed (the table is evidence, not applied).
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-107 — Step 5: Metrology Check — C1 FAIL, C2 Not Applicable, C3 FAIL; the Pre-Registered Subsystem Is 5/7 Absent from the Corpus
+
+Artifact: `reports/phase107_step5_metrology.json`. Subsystem as
+pre-registered (spec 005): stroke family M086–M092 from
+`indus_sign_crosswalk.py` notes, checked against outputs/phase21d and
+phase203 (block analysis confirmed there; phase203's own verdict —
+the corpus is phonetic/syllabic, not metrological — stands in-repo).
+
+**Script defect, caught before any result was committed.** The first
+execution built sign IDs unpadded (`f"M{86+i}"` → "M86".."M92"),
+matching nothing: all values None, 0 stroke tokens. Fixed to
+zero-padded IDs, with the defect noted in the script header, and
+re-run. The null first run is recorded here, not hidden.
+
+**Subsystem degeneracy (the substantive finding).** In the Holdat
+corpus only **M087 (130 tokens) and M089 (171 tokens)** of the seven
+family signs occur at all; M086, M088, M090, M091, M092 have zero
+occurrences and no anchors. The family as pre-registered from
+Mahadevan-1977 sign-list conventions is therefore only 2/7 present in
+this corpus (Holdat tokenises stroke groups differently). Moreover
+the programme's own anchors read the two present signs
+*syllabically* — M087 'veL' HIGH, M089 'tu/tū' HIGH — not as numerals.
+The constraints were evaluated exactly as pre-registered, without
+post-hoc redefinition:
+
+- **C1 Distinctness: FAIL.** SA values [None, 'mu', None, 'ti',
+  None, None, None] — 5/7 signs have no SA value (absent from the
+  corpus); the 2 present signs do receive distinct values.
+- **C2 Order: NOT APPLICABLE** (pre-registered rule). Only 1 of 7 SA
+  values is a Dravidian numeral syllable: M087 (2 strokes) → 'mu',
+  the numeral-3 syllable set — pairs [[2, 3]]; with < 3 applicable,
+  C2 is never counted pass or fail.
+- **C3 Block contiguity: FAIL.** 301 family tokens (M087+M089 only);
+  13 inscriptions contain ≥ 2 family tokens, only 5 form a single
+  contiguous block → rate 0.3846 < the pre-registered 0.80.
+
+Both present signs' SA values are unstable-tier (consensus 0.3) and
+disagree with their HIGH anchors — the same non-identification as
+Steps 1–3. **Verdict (Claim F): the metrology check does not
+validate the strengthened SA; on this corpus the pre-registered
+numeral subsystem is too degenerate to carry the validation the plan
+intended, and where it can be measured (C1, C3) it fails.** No anchor
+readings or confidences changed.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

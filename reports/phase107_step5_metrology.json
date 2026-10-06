@@ -1,0 +1,103 @@
+{
+  "phase": 107,
+  "step": 5,
+  "spec": "specs/005-phase52-v2",
+  "gpu_device": "cpu",
+  "subsystem": "additive stroke numerals M086-M092 (Mahadevan 1977 via indus_sign_crosswalk.py)",
+  "sa_values": {
+    "M086": {
+      "strokes": 1,
+      "sa_reading": null,
+      "consensus_frac": null,
+      "tier": null,
+      "anchor_reading": "",
+      "anchor_confidence": "UNREAD",
+      "n_corpus": 0
+    },
+    "M087": {
+      "strokes": 2,
+      "sa_reading": "mu",
+      "consensus_frac": 0.3,
+      "tier": "unstable",
+      "anchor_reading": "veL",
+      "anchor_confidence": "HIGH",
+      "n_corpus": 130
+    },
+    "M088": {
+      "strokes": 3,
+      "sa_reading": null,
+      "consensus_frac": null,
+      "tier": null,
+      "anchor_reading": "",
+      "anchor_confidence": "UNREAD",
+      "n_corpus": 0
+    },
+    "M089": {
+      "strokes": 4,
+      "sa_reading": "ti",
+      "consensus_frac": 0.3,
+      "tier": "unstable",
+      "anchor_reading": "tu/tū",
+      "anchor_confidence": "HIGH",
+      "n_corpus": 171
+    },
+    "M090": {
+      "strokes": 5,
+      "sa_reading": null,
+      "consensus_frac": null,
+      "tier": null,
+      "anchor_reading": "",
+      "anchor_confidence": "UNREAD",
+      "n_corpus": 0
+    },
+    "M091": {
+      "strokes": 6,
+      "sa_reading": null,
+      "consensus_frac": null,
+      "tier": null,
+      "anchor_reading": "",
+      "anchor_confidence": "UNREAD",
+      "n_corpus": 0
+    },
+    "M092": {
+      "strokes": 7,
+      "sa_reading": null,
+      "consensus_frac": null,
+      "tier": null,
+      "anchor_reading": "",
+      "anchor_confidence": "UNREAD",
+      "n_corpus": 0
+    }
+  },
+  "C1_distinctness": {
+    "pass": false,
+    "values": [
+      null,
+      "mu",
+      null,
+      "ti",
+      null,
+      null,
+      null
+    ],
+    "n_distinct": 3
+  },
+  "C2_order": {
+    "applicable": false,
+    "pass": null,
+    "note": "only 1 of 7 SA values are Dravidian numeral syllables (< 3 required); C2 NOT APPLICABLE by the pre-registered rule",
+    "pairs_strokes_to_numeral": [
+      [
+        2,
+        3
+      ]
+    ]
+  },
+  "C3_block_contiguity": {
+    "n_inscriptions_with_ge2_stroke_tokens": 13,
+    "n_contiguous_block": 5,
+    "rate": 0.3846,
+    "pass": false,
+    "n_stroke_tokens_total": 301
+  }
+}

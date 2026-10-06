@@ -38,9 +38,9 @@
 - [x] T046 Step4 artifact: ingested / not-obtained (blocker) / not-found lists
 
 ## Step 5 — Numerals/metrology
-- [ ] T050 Extract stroke-numeral family + C3 pattern from named artifacts
-- [ ] T051 Evaluate C1 distinctness, C2 order, C3 positional (pass/fail + counts)
-- [ ] T052 Step5 artifact
+- [x] T050 Extract stroke-numeral family + C3 pattern from named artifacts
+- [x] T051 Evaluate C1 distinctness, C2 order, C3 positional (pass/fail + counts)
+- [x] T052 Step5 artifact
 
 ## Step 6 — Close-out
 - [ ] T060 Foundation check (0 failures; H21)

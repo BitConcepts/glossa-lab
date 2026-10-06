@@ -48,4 +48,4 @@
 - [x] T062 Ruff on changed Python files
 - [x] T063 glossa-indus LEDGER Phase-107 entries (per step, AI disclosure)
 - [x] T064 Root LEDGER.md summary entry (AI disclosure)
-- [ ] T065 Push branch, open PR (do NOT merge)
+- [x] T065 Push branch, open PR (do NOT merge)

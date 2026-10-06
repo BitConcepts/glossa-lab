@@ -9,6 +9,11 @@ publisher, ISBN/DOI, license, URL).
 If you use the Glossa-Lab Indus pipeline in academic work, please cite **all of the
 underlying data sources below** in addition to the Glossa-Lab project itself.
 
+> **Public provenance registry:** this registry is indexed publicly on the Open
+> Science Framework — [osf.io/ybd65](https://osf.io/ybd65/) (literature: `zbh86`;
+> corpora: `dfrhz`; programme outputs: `vwa7s`). The OSF project is the public
+> index; this file and the repo remain canonical.
+
 ---
 
 ## A. Indus seal and inscription catalogues

@@ -1138,3 +1138,59 @@ classification layer processed 0 of 78 (no LLM provider, above).
 
 **AI disclosure:** WS3–WS4 executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-107 — Phase-52 v2 Strengthening Package (Spec 005), Step 1: Held-Out Validation of the Current Objective
+
+Branch `feat/phase52-v2`. Spec: `specs/005-phase52-v2/` (pre-registered
+protocol, ablation order, falsifiers; Claims A–F). Machinery:
+`backend/glossa_lab/pipelines/sa_validation.py` +
+`backend/scripts/phase107_sa_validation.py`; graph module
+`experiment_graph_phase107.py` (5 nodes, H23-verified in ATOMIC_NODES).
+Harness: 3 seeds × 5 restarts × 10,000 iterations, temp 1.0, cooling
+0.9997; null = 30 permutations (seed 42); CPU (no CUDA on this VM,
+`gpu_device=cpu` recorded in the artifact per H20). Artifact:
+`reports/phase107_step1_validation.json`.
+
+**Headline result (negative, reported as-is).** Under the pre-registered
+protocol — k=5 stratified folds (seed 107) over the 116 Phase-52-pinnable
+anchors, pinning the complementary ~4/5 and scoring exact-match agreement
+on held-out anchors only — the current Phase-52 objective generalises at
+**0.000 ± 0.000**: 0 of 115 held-out anchor evaluations agree with the
+anchor gold reading in any fold, including on the reachable-only subset.
+The secondary set (159 never-pinned H+M anchors) agrees at 3/700 pooled
+(0.43%). Mean z across folds is 18.81 — the SA still finds strong LM fits;
+those fits do not determine per-sign values for unpinned signs. Fold z:
+17.97 / 17.27 / 23.68 / 16.71 / 18.42. This replaces the circular
+historical headline (113/275 = 41.09%, which the Phase-106 table
+decomposes as pinned 113/116 = 97.4% vs never-pinned 0/159 = 0.0%; spec
+005 Addendum A) with an honest generalisation estimate of zero.
+
+**Pin-count sweep (fold 0).** Held-out agreement is 0.0 at every budget
+{0, 53, 90, 92 = all available}. Pinning does not help held-out agreement
+at any budget, and it *lowers* z (0 pins: z = 27.88; 53: 18.73; 90: 17.88;
+92: 17.97) — pins constrain the fit without informing unpinned signs.
+
+**Blind controls (identical protocol).** Sanskrit LM: z = 60.87 (far above
+the Dravidian 18.81), held-out agreement 0.000 (small evaluable n: only
+gold syllables present in the Sanskrit vocabulary). Scrambled-syllable
+control: z = 16.48, held-out 0.000. Ge'ez LM (substituted for the brief's
+NW Semitic suggestion — in-repo NW Semitic assets are consonantal, not
+syllabic LMs; recorded in spec 005): z = 6.33, held-out agreement
+undefined (0 evaluable held-out anchors; Dravidian gold syllables are
+absent from the Ethiopic inventory by construction). By the
+pre-registered discrimination rule, the Dravidian configuration does
+**not** beat the controls on held-out agreement (all defined values are
+0.000): **Claim A (generalisation) and Claim B (Dravidian is the best
+target) are falsified for the current objective.** Cross-LM z comparison
+is not evidence of decipherment quality: the control with the highest z
+(Sanskrit) has zero held-out agreement, as does the Dravidian run.
+
+**Engineering note.** The first aggregation pass crashed on the Ge'ez
+folds (held-out rate None where n_eval = 0); the driver now records
+undefined rates explicitly (`stats_of` skips None; control entries carry
+a note). All 23 runs were checkpoint-resumed, not re-run. No anchor
+readings or confidences were changed (H-rule: SA output is evidence
+only).
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

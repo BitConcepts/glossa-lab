@@ -1612,3 +1612,27 @@ mapped was modified.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-108 — Step 5: Close-Out (Recommendations Authored, Not Executed)
+
+Recommendations are in the Step-5 section of
+`reports/phase108_provenance_summary.md`, authored for the owner and NOT
+executed: retire the SA-z "VERIFIED" foundation texts (Phase-52/57),
+Phase-67's "DEFINITIVE" framing, and the README/preprint headline set
+as stated (59% / 161 / 90.96% — re-base on a named, stored set; the
+register's SA-independent H+M subset, 198 signs / 77.96% coverage, is
+the natural candidate); present the 44 SA_DERIVED + SA_CONFIRMED_ONLY
+HIGH anchors as SA-lineage candidates pending non-SA validation;
+programme hygiene items (the staging cohort's promotion path, stale
+anchor-entry fields, the recalibration-gate pattern, M362/M398).
+
+Verification (this branch): backend suite **586 passed / 9 skipped /
+0 failed** (baseline 576/9 + 10 new provenance tests); foundation check
+**40 passed / 0 failed / 8 warnings** (baseline-identical, H21); ruff
+clean on all changed Python; anchors file sha256 **identical to main**
+(f2bc1d6753eba67f…) — the audit changed no anchor reading, confidence,
+or basis. Test-run side-effect diffs on claims/loop artifacts were
+restored, not committed.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

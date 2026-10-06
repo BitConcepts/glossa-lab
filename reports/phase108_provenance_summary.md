@@ -338,3 +338,81 @@ Phase-159's Parpola-confirmed set (below).
     Phase-55 ensemble (already DO NOT CLAIM), Phase-32 T4 (already
     INCONCLUSIVE), Phase-60 note. Phase-168's checks are operational
     only post-107.
+
+## Step 5 — Recommendations (authored for Tristen; NOT executed)
+
+This audit changed no anchor, claim, foundation text, README, or
+preprint text. The following are recommendations for the owner's
+decision.
+
+### What an honest post-Phase-107 programme statement looks like
+
+**Survives, and can be stated as-is:**
+
+- 210 of 287 anchors (73.2%) — including 89 of 166 HIGH — have values
+  and confidences that never passed through the SA lineage. The
+  decipherment programme is not "an SA result"; its core predates and
+  stands independent of the SA phases.
+- Grammar site invariance: 100% of tested signs on the full set
+  (90/90) and on the SA-independent subset (65/65). This is the
+  programme's strongest internal-consistency claim and it does not
+  depend on SA.
+- Phonotactic cleanliness: 0 violations under Phase-58 rules on both
+  sets (with era figures — 16 initials / 24.7% — updated to 18 / 29.5%
+  full-set, 16 / 35.9% subset).
+- The non-SA foundation lines: Phase-56 crosswalk expansion, Phase-47
+  rebus LM lift, Phase-48's battery, the DEDR sprint cohorts, the
+  Parpola literature anchors.
+
+**Must be retired or re-based:**
+
+- Every "VERIFIED" foundation text whose evidence is an SA z-score or
+  SA agreement rate (Phase-52 z=16 / "SA agrees 55%", Phase-57
+  z=19.07 "highest z-score in the project") — Phase-107 falsified the
+  evidential reading; Phase-108 Step 4 maps all 37 SA-citing lines.
+- Phase-67's "Sanskrit falsification (DEFINITIVE)" framing — the
+  Phase-107 Sanskrit control (z=60.9, held-out 0.000) removed the
+  discrimination the word claims.
+- The README/preprint headline set as currently stated: "59% Parpola
+  agreement" is a Phase-170-era figure whose 44-sign source set is
+  45.5% SA-lineage and which does not reproduce on current sets
+  (crosswalk comparison: 90.9% full / 96.3% strict — a different,
+  partially tautological quantity that should not silently replace it
+  either); "161 anchors / 90.96% coverage" describes a set that is not
+  stored in-repo and cannot be re-derived. Re-base all three numbers
+  on a named, stored anchor set — the natural candidate is the
+  register's SA-independent H+M subset (198 signs, 77.96% coverage).
+- The 44 SA_DERIVED + SA_CONFIRMED_ONLY anchors (all HIGH) should be
+  presented, if at all, as SA-lineage candidates pending non-SA
+  validation — starting with M293 'ta' (232 tokens; its confidence
+  moves the coverage and grammar statistics more than any other
+  single sign).
+
+**Programme hygiene the audit exposed (independent of SA):**
+
+- The 116-anchor staging cohort (40% of the set) rests on fixed
+  heuristic tables in the research loop — one reading ('min') was
+  assigned to ~40 signs by list position — and was promoted through an
+  endpoint named "verify-sa" that performs no verification. Recommend:
+  rename the endpoint, require a recorded evidence test for promotion,
+  and re-review the cohort sign-by-sign (several overwrote earlier
+  DEDR/literature readings, e.g. M042 vaN→min against Parpola 'van').
+- Anchor entries carry stale fields from superseded assignments
+  (M202/M330's `_phase132_note` and Phase-111 source strings contradict
+  their current bases). Recommend a one-time entry-hygiene pass —
+  as new, dated annotations, never silent edits (H1).
+- The Phase-116/216 recalibration pattern — promotion gates in which
+  SA agreement is a sufficient disjunct — should not be run again in
+  that form; any future gate should require the non-SA disjunct.
+- M362/M398 sit at HIGH although the programme's own Phase-105 verdict
+  was INCONCLUSIVE; their promotion rode the Phase-216 gate's weakest
+  checks. Flagged for individual re-review.
+
+### Suggested replacement headline (for the owner's wording)
+
+"287 candidate anchors are recorded; 210 (73%) rest on evidence
+independent of the programme's simulated-annealing phases, which
+Phase-107 showed cannot validate sign values. On the 198
+SA-independent HIGH+MEDIUM anchors, Holdat token coverage is 78.0%,
+phonotactic violations are zero, and positional grammar is 100%
+site-invariant across tested signs."

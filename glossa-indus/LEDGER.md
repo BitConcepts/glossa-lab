@@ -1138,3 +1138,311 @@ classification layer processed 0 of 78 (no LLM provider, above).
 
 **AI disclosure:** WS3–WS4 executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-107 — Phase-52 v2 Strengthening Package (Spec 005), Step 1: Held-Out Validation of the Current Objective
+
+Branch `feat/phase52-v2`. Spec: `specs/005-phase52-v2/` (pre-registered
+protocol, ablation order, falsifiers; Claims A–F). Machinery:
+`backend/glossa_lab/pipelines/sa_validation.py` +
+`backend/scripts/phase107_sa_validation.py`; graph module
+`experiment_graph_phase107.py` (5 nodes, H23-verified in ATOMIC_NODES).
+Harness: 3 seeds × 5 restarts × 10,000 iterations, temp 1.0, cooling
+0.9997; null = 30 permutations (seed 42); CPU (no CUDA on this VM,
+`gpu_device=cpu` recorded in the artifact per H20). Artifact:
+`reports/phase107_step1_validation.json`.
+
+**Headline result (negative, reported as-is).** Under the pre-registered
+protocol — k=5 stratified folds (seed 107) over the 116 Phase-52-pinnable
+anchors, pinning the complementary ~4/5 and scoring exact-match agreement
+on held-out anchors only — the current Phase-52 objective generalises at
+**0.000 ± 0.000**: 0 of 115 held-out anchor evaluations agree with the
+anchor gold reading in any fold, including on the reachable-only subset.
+The secondary set (159 never-pinned H+M anchors) agrees at 3/700 pooled
+(0.43%). Mean z across folds is 18.81 — the SA still finds strong LM fits;
+those fits do not determine per-sign values for unpinned signs. Fold z:
+17.97 / 17.27 / 23.68 / 16.71 / 18.42. This replaces the circular
+historical headline (113/275 = 41.09%, which the Phase-106 table
+decomposes as pinned 113/116 = 97.4% vs never-pinned 0/159 = 0.0%; spec
+005 Addendum A) with an honest generalisation estimate of zero.
+
+**Pin-count sweep (fold 0).** Held-out agreement is 0.0 at every budget
+{0, 53, 90, 92 = all available}. Pinning does not help held-out agreement
+at any budget, and it *lowers* z (0 pins: z = 27.88; 53: 18.73; 90: 17.88;
+92: 17.97) — pins constrain the fit without informing unpinned signs.
+
+**Blind controls (identical protocol).** Sanskrit LM: z = 60.87 (far above
+the Dravidian 18.81), held-out agreement 0.000 (small evaluable n: only
+gold syllables present in the Sanskrit vocabulary). Scrambled-syllable
+control: z = 16.48, held-out 0.000. Ge'ez LM (substituted for the brief's
+NW Semitic suggestion — in-repo NW Semitic assets are consonantal, not
+syllabic LMs; recorded in spec 005): z = 6.33, held-out agreement
+undefined (0 evaluable held-out anchors; Dravidian gold syllables are
+absent from the Ethiopic inventory by construction). By the
+pre-registered discrimination rule, the Dravidian configuration does
+**not** beat the controls on held-out agreement (all defined values are
+0.000): **Claim A (generalisation) and Claim B (Dravidian is the best
+target) are falsified for the current objective.** Cross-LM z comparison
+is not evidence of decipherment quality: the control with the highest z
+(Sanskrit) has zero held-out agreement, as does the Dravidian run.
+
+**Engineering note.** The first aggregation pass crashed on the Ge'ez
+folds (held-out rate None where n_eval = 0); the driver now records
+undefined rates explicitly (`stats_of` skips None; control entries carry
+a note). All 23 runs were checkpoint-resumed, not re-run. No anchor
+readings or confidences were changed (H-rule: SA output is evidence
+only).
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-107 — Step 4 (acquisition half): Corpus Hunt, ICIT Layer Ingested, Build Defect Found and Corrected
+
+Systematic hunt for public Indus source corpora not previously ingested
+(owner addition to spec 005 Step 4; full three-bucket record:
+`reports/phase107_acquisition_log.json`; citations: CITATIONS.md §J).
+
+**Ingested.** (1) ICIT inscriptions via the Lipi repository export,
+MIT-mirrored by field-cady (`corpora/downloads/field_cady_icit/`):
+5,679 source inscriptions / 19,942 tokens in Wells/ICIT numbering;
+token map coverage 12,506/18,061 excl. illegible '000' = 69.3%;
+1,242 fully convertible inscriptions; converted layer
+`corpora/downloads/icit_fieldcady/icit_converted.json` (Wells→M via the
+canonical sign registry, else Wells→Parpola→M via crosswalk v2).
+Provenance caveat recorded in CITATIONS J.1: upstream Lipi carries no
+LICENSE and official ICIT is scholar-access only — internal research
+pooling only, raw export NOT redistributed. (2) CISI Mohenjo-daro subset
+(mayig, MIT) re-downloaded in full: exactly the same 179 inscriptions /
+1,003 tokens already in-repo; no additional sites.
+
+**Found but not obtainable (exact blockers in the acquisition log).**
+RMRL Mahadevan concordance (online/searchable, 2,906 objects; no bulk
+export; license "RMRL research use — contact required"; contact route
+closed to agents under H14); official ICIT (scholar access / email
+request, H14); CISI print vols. / CISID (paywalled, no public release);
+Wells sign list (no standalone public digital form); Dixit et al. 2025
+imaging dataset (no public sign-sequence release); Tamil Nadu graffiti
+database (search-only; comparative layer by design — never pooled);
+Zenodo decipherment-lexicon documents (claim documents, CC BY-NC-ND);
+Nair 2026 replication data (same Lipi digitization, ingested via J.1).
+
+**Searched, not found.** CDLI Indus inscription corpus (cuneiform only);
+OSF/Figshare Indus epigraphy datasets; Dilmun/Gulf seal text corpora in
+public downloadable form; Harappa.com downloadable datasets; 2025
+conference data releases (the CAA-2025-linked Zenodo release is a
+glyph-image dataset, not a text corpus).
+
+**Defect found in continuation audit (recorded, not hidden).** The
+first layer build indexed the Holdat *flat token list* instead of its
+inscription sequences, so the dedupe seen-set held per-sign character
+tuples and Holdat dedupe never fired — only intra-ICIT dedupe did
+(1008 inscriptions / 2241 tokens, and a bogus "390 sequences indexed").
+`phase107_build_layers.py` was fixed (indexes inscription sequences:
+1,399 distinct, len ≥ 3), the node `IndusSACorpusLayerBuild` was
+registered in the graph module and verified in ATOMIC_NODES before the
+re-run (H23), and the layer was rebuilt BEFORE the acquisition log was
+first committed: **1007 inscriptions / 2238 tokens** — exactly one
+inscription (3 tokens) was a Holdat duplicate. The acquisition log
+carries a `correction` field with these details. No pooled result was
+ever affected: `phase107_corpus_pool.py` independently re-dedupes every
+layer against the accumulated pool at pooling time. The pooled re-run
+of the Step-1a headline metric (tasks T041/T045/T046) executes after
+Step 2 fixes the best objective, since the pool script reads
+`kept_terms` from the Step-2 artifact.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-107 — Step 1 Sanity Audit: the Held-Out Zero Is Not a Harness Artifact
+
+Independent audit of the Step-1 result before Steps 2–5 build on it
+(`backend/scripts/phase107_sa_sanity_audit.py`, node
+`IndusSAStep1SanityAudit`, registered and verified in ATOMIC_NODES
+before running, H23). Artifact:
+`reports/phase107_step1_sanity_audit.json`. **All 8 checks PASS.**
+
+**Leakage (none found).** Folds are disjoint and cover the 116
+pinnable anchors (sizes 24/24/23/23/22). Per-fold pins exclude the
+fold's held-out signs, with checkpoint pin counts matching exactly.
+The Step-2 positional path is clean by construction: the driver's
+ablation task dicts — the exact objects the ablation runs consume —
+exclude held-out signs from `train_gold`. The Dravidian LM's bigram
+keys are syllables of an external corpus (no sign/anchor content);
+gold extraction reads the anchors file only. The 159-sign secondary
+set is disjoint from the pin set. One denominator subtlety, fully
+accounted: held sign **H003** (fold 1) has an anchor gold but zero
+occurrences in the Holdat corpus stream, so it has no consensus value
+and is not evaluable — total evaluable held-out = 115 of 116.
+
+**Reachability (reconciles exactly).** The Phase-52 target pool is
+the first 390 sorted LM syllables; gold values {ve, vel, vi, ya} are
+structurally unreachable for free signs (Addendum A). Recomputed
+reachable-only denominators match the Step-1 checkpoints fold by fold
+(24/22/23/23/22), and reachable-only agreement is 0.000 in every fold
+regardless — reachability does not explain the zero.
+
+**Config (zero reproduces at production scale).** Fold 0 re-run at
+the Phase-52 production config (5 seeds × 10 restarts × 30,000
+iterations, LM-only, 257.4 s): held-out agreement **0/24**, reachable-
+only **0/24**, z = 19.232 (harness fold 0: 0/24, z = 17.966). The
+reduced harness config (3×5×10k) is not the cause of the zero.
+
+**Audit-run correction (append-only honesty).** Audit run 1 reported
+a spurious B1 FAIL: the audit's own reachable count omitted corpus
+membership, double-counting H003 (23 vs the checkpoint's correct 22).
+The check was fixed to the `agreement()` evaluability definition, the
+artifact carries a `revision_note`, and the audit was re-run in full.
+No Step-1 number changed at any point; the original zero stands as
+recorded in the Step-1 entry above.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-107 — Step 2: Constraint Ablation — No Term Produces Held-Out Agreement
+
+One term at a time, Step-1 protocol, fixed folds/seeds (spec 005
+pre-registered order and keep rule: keep iff held-out agreement
+improves ≥ +2.0 pp over the Step-1 baseline AND mean z falls ≤ 10%
+relative). Artifact: `reports/phase107_step2_ablation.json`.
+(Phono/harmony folds were checkpointed by the previous session and
+resumed, not re-run; positional folds ran in this session.)
+
+| term | held-out agreement (5 folds) | mean z | Δ vs baseline | verdict |
+|---|---|---|---|---|
+| (baseline, LM only) | 0.000 | 18.81 | — | — |
+| + phonotactic (Phase-58/61, λ=3.0) | 0.000 | 19.01 | +0.0 pp | DROPPED |
+| + vowel harmony (Phase-61, λ=3.0) | 0.000 | 20.92 | +0.0 pp | DROPPED |
+| + positional grammar (Phase-133b, per-fold profiles) | 0.000 | 19.91 | +0.0 pp | DROPPED |
+
+**Claim C is falsified for all three terms individually**: none
+produces a single held-out agreement in any fold (0/115 evaluable per
+term), so the keep rule cannot fire and no combined run exists
+(`combined: null`, `kept_terms: []`). The terms do move z (harmony
+raises mean z to 20.92) — fit improves while per-sign generalisation
+stays at exactly zero, the same dissociation as Step 1: the SA's LM
+landscape does not determine unpinned sign values, with or without
+the project's validated constraints in the objective. The Phase-58
+retroflex rule remains vacuous on the diacritic-stripped LM
+representation, as pre-registered in the spec. **The best objective
+going forward is the LM-only baseline**; Steps 3–5 proceed on it
+(the Step-4 pool script's Claim-E fallback to the Step-1 baseline
+therefore applies). No anchor readings or confidences changed.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-107 — Step 4 (pooling half): Enlarged Corpus, Headline Re-Run — Still Zero
+
+Pooling per the pre-registered dedupe rule (converted sequence,
+len ≥ 3, exactly matching a sequence already in the pool is dropped;
+only fully-convertible inscriptions pooled). Artifact:
+`reports/phase107_step4_pooling.json` (embeds the three-bucket
+acquisition log). Best objective = LM-only (Step 2 kept no terms).
+
+**Conversion + pool accounting.** In-repo CISI subset (179
+inscriptions / 1,003 tokens, Parpola P-numbers): only **7/179 fully
+convertible** to M-numbers via crosswalk v2.1 inversion — 19 of 182
+distinct signs covered; the crosswalk's P→M coverage is the binding
+constraint, not the corpus. ICIT layer (from the acquisition half):
+1,007 inscriptions / 2,238 tokens, 0 dropped at pool time (the fixed
+layer build had already deduped vs Holdat; none of the 7 CISI
+conversions collided either). **Pooled corpus: 2,684 inscriptions /
+9,264 tokens** (Holdat 1,670 / 7,002 + 2,262 pooled tokens, +32%).
+
+**Headline re-run (Step-1a protocol, best objective).** Held-out
+primary agreement on the enlarged pool: **0.000 in all 5 folds**
+(0/115 evaluable), fold z 11.05–15.37 (mean ≈ 11.99, vs 18.81
+Holdat-only — pooling dilutes the LM fit while adding no per-sign
+signal). **Claim E verdict by the pre-registered rule:**
+`pooling_helps = false`, `falsified = false` — an exact tie at zero:
+pooling neither helps nor, under the strict greater-than-pooled-SD
+rule, falsifies; stated plainly, a 32% larger corpus produces no
+held-out gain whatsoever. Corpus size within reach of current public
+sources is not the binding constraint on the SA's per-sign
+determination; the objective's landscape is. No anchor readings or
+confidences changed.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-107 — Step 3: Delta Scoring Sound, Mapping Not Identified; Scaled Run — Zero Stable Signs
+
+Artifacts: `reports/phase107_step3_scaled.json`,
+`reports/phase107_decipherment_table.json`. Best objective = LM-only
+(Step 2 kept no terms).
+
+**Equivalence (Claim D): FAIL — on the mapping criterion, not the
+score criterion.** Same seeds/config (5 × 5 × 10k), full vs delta:
+mean best-score difference **0.297%** (criterion < 1%: met) — the
+delta scorer is numerically sound, consistent with the unit tests
+proving `delta_swap` equals the exact total difference. But the two
+runs' consensus mappings agree on only **31.2%** of signs (criterion
+≥ 95%: not met), so Claim D fails as pre-registered. The cause is
+not a delta defect: float32-vs-float64 summation noise diverges the
+acceptance stream over 10k iterations, and the two trajectories land
+in different optima of *equal* score — direct evidence that the
+objective's optimum is a vast plateau of near-equivalent mappings,
+not a point. The mapping is not identified by the objective even at
+fixed protocol.
+
+**Scaled run (10 seeds × 10 restarts × 100,000 delta iterations,
+116 pins).** Mean score −95,626.51 vs null −124,333.44 ± 1,555.75 →
+**z = 18.452**. Stability selection at the pre-registered thresholds:
+**0 signs SA-supported (consensus ≥ 0.80), 0 probable (≥ 0.60),
+275 unstable**; 115 pinned signs appear in the table (the 116th pin,
+H003, has no corpus occurrences — Step-1 audit). At 10× the harness
+compute and 3.3× Phase-52's iterations, *not one unpinned sign*
+reaches even 60% cross-seed consensus. The decipherment table records
+every unpinned sign's tier as "unstable" — that is the honest output
+of the strengthened method, and it supersedes the Phase-52/106 table's
+implied per-sign readings for all unpinned signs. No anchor readings
+or confidences changed (the table is evidence, not applied).
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-107 — Step 5: Metrology Check — C1 FAIL, C2 Not Applicable, C3 FAIL; the Pre-Registered Subsystem Is 5/7 Absent from the Corpus
+
+Artifact: `reports/phase107_step5_metrology.json`. Subsystem as
+pre-registered (spec 005): stroke family M086–M092 from
+`indus_sign_crosswalk.py` notes, checked against outputs/phase21d and
+phase203 (block analysis confirmed there; phase203's own verdict —
+the corpus is phonetic/syllabic, not metrological — stands in-repo).
+
+**Script defect, caught before any result was committed.** The first
+execution built sign IDs unpadded (`f"M{86+i}"` → "M86".."M92"),
+matching nothing: all values None, 0 stroke tokens. Fixed to
+zero-padded IDs, with the defect noted in the script header, and
+re-run. The null first run is recorded here, not hidden.
+
+**Subsystem degeneracy (the substantive finding).** In the Holdat
+corpus only **M087 (130 tokens) and M089 (171 tokens)** of the seven
+family signs occur at all; M086, M088, M090, M091, M092 have zero
+occurrences and no anchors. The family as pre-registered from
+Mahadevan-1977 sign-list conventions is therefore only 2/7 present in
+this corpus (Holdat tokenises stroke groups differently). Moreover
+the programme's own anchors read the two present signs
+*syllabically* — M087 'veL' HIGH, M089 'tu/tū' HIGH — not as numerals.
+The constraints were evaluated exactly as pre-registered, without
+post-hoc redefinition:
+
+- **C1 Distinctness: FAIL.** SA values [None, 'mu', None, 'ti',
+  None, None, None] — 5/7 signs have no SA value (absent from the
+  corpus); the 2 present signs do receive distinct values.
+- **C2 Order: NOT APPLICABLE** (pre-registered rule). Only 1 of 7 SA
+  values is a Dravidian numeral syllable: M087 (2 strokes) → 'mu',
+  the numeral-3 syllable set — pairs [[2, 3]]; with < 3 applicable,
+  C2 is never counted pass or fail.
+- **C3 Block contiguity: FAIL.** 301 family tokens (M087+M089 only);
+  13 inscriptions contain ≥ 2 family tokens, only 5 form a single
+  contiguous block → rate 0.3846 < the pre-registered 0.80.
+
+Both present signs' SA values are unstable-tier (consensus 0.3) and
+disagree with their HIGH anchors — the same non-identification as
+Steps 1–3. **Verdict (Claim F): the metrology check does not
+validate the strengthened SA; on this corpus the pre-registered
+numeral subsystem is too degenerate to carry the validation the plan
+intended, and where it can be measured (C1, C3) it fails.** No anchor
+readings or confidences changed.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

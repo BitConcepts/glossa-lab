@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-05",
+  "found_but_not_obtainable": [
+    {
+      "blocker": "No bulk download or data export is offered; the project's own provenance record (glossa-corpus/indus/sources/rmrl/provenance.yaml, 2026-05-14) records the license as 'RMRL research use — contact required for concordance export'. Bulk ingestion would require an institutional contact, which is outside this package's no-email rule (H14). Mahadevan-derived inscriptions are partially covered instead via the ICIT/Lipi export above (ICIT numbering).",
+      "license": "RMRL research use; redistribution requires contact.",
+      "name": "Mahadevan concordance — RMRL 'The Indus Script Text Concordance and Tables IM77/IDF80'",
+      "status": "Online, free, searchable web application covering 2,906 inscribed objects (Mahadevan 1977 / IDF-80).",
+      "url": "https://indusscript.in (portal per glossa-corpus/indus/sources/rmrl/provenance.yaml)"
+    },
+    {
+      "blocker": "Not open: 'This excellent Indus database is not open, but can be accessed by scholars' (Harappa.com, 2026). The project's Phase-29 record notes direct API access is granted by email request to the maintainer — an email route closed to agents under H14. The public Lipi/field-cady export of ICIT data was ingested instead (see 'ingested').",
+      "license": "Scholar access on request; no public license.",
+      "name": "ICIT — Interactive Corpus of Indus Texts (official, Fuls/Wells, TU Berlin)",
+      "status": "Exists and is the most complete living corpus (5,000+ inscriptions)."
+    },
+    {
+      "blocker": "Paywalled print; no public download. Only the 179-inscription Mohenjo-daro digitization (mayig, MIT) is public.",
+      "license": "Suomalainen Tiedeakatemia; all rights reserved.",
+      "name": "CISI print volumes / CISID database",
+      "status": "CISI vols. 1-3.3 remain purchasable print (project STUB record: ~EUR 520); no public CISID online release was found as of 2026-10-05."
+    },
+    {
+      "blocker": "No standalone public digital release found; the numbering is available to the project via the ICIT export and the in-repo canonical sign registry.",
+      "license": "Print / ICIT scholar access.",
+      "name": "Wells sign list in standalone public form",
+      "status": "Wells' sign list is embodied in ICIT and in his purchasable books (project STUB record: ~GBP 60)."
+    },
+    {
+      "blocker": "No public downloadable dataset of sign sequences was located alongside the paper; the resource is an imaging/OCR pipeline over RMRL-derived images, not a released text corpus.",
+      "license": "Paper CC BY 4.0; underlying images RMRL.",
+      "name": "Dixit et al. 2025 seal-imaging dataset (J. Computer Applications in Archaeology, DOI 10.5334/jcaa.175)",
+      "status": "Paper is open access (CC BY 4.0). Its image base derives from RMRL scans (CISI M0101-M0620 range) plus web images."
+    },
+    {
+      "blocker": "Search-only web database; no bulk download located. COMPARATIVE layer only by design — never pooled into the Indus training corpus (per Step-4 instruction). Not ingested.",
+      "license": "TN State Dept. of Archaeology / RMRL research use.",
+      "name": "Tamil Nadu graffiti database (RMRL / TN State Dept. of Archaeology, 'Graffiti Marks of Tamil Nadu')",
+      "status": "Online and searchable; 15,000+ graffiti-bearing potsherds, ~140 sites."
+    },
+    {
+      "blocker": "These are decipherment-claim documents or image sets, not neutral sign-sequence transcription corpora; the lexicon license (CC BY-NC-ND) also bars derivative redistribution. Not ingested.",
+      "license": "Varies; LIS lexicon CC BY-NC-ND.",
+      "name": "Zenodo Indus items (decipherment lexicons and claim documents)",
+      "status": "Multiple Zenodo records exist (e.g. 'Lexicon of the Indus Script', CC BY-NC-ND; a sound-decoding project; a glyph-image similarity dataset, record 17497875)."
+    },
+    {
+      "blocker": "No separate data release distinct from the Lipi/ICIT export was located; the same digitization was ingested via the field-cady MIT mirror.",
+      "license": "As per Lipi/ICIT chain.",
+      "name": "Nair 2026 replication data (arXiv:2604.17828)",
+      "status": "Paper reports public code/data and uses the 'ICIT/Yajnadevam digitization' (1,916 deduplicated inscriptions, 584 signs, 11,110 tokens)."
+    }
+  ],
+  "ingested": [
+    {
+      "after_dedupe_tokens": 2238,
+      "after_dedupe_vs_holdat_and_cisi_inscriptions": 1007,
+      "builder": "backend/scripts/phase107_build_layers.py",
+      "download": "https://github.com/field-cady/indus_valley_script_corpus/archive/refs/heads/main.zip -> corpora/downloads/field_cady_icit/",
+      "fully_convertible_inscriptions": 1242,
+      "layer_file": "corpora/downloads/icit_fieldcady/icit_converted.json",
+      "layer_id": "icit_fieldcady",
+      "license": "MIT (mirror repository). Provenance caveat: the upstream Lipi repository carries no LICENSE file and the official ICIT channel is scholar-access only; this layer is used for internal research pooling only and is NOT redistributed.",
+      "name": "ICIT inscriptions via Lipi repository export, MIT mirror by field-cady",
+      "numbering": "Wells/ICIT sign numbers; converted to Mahadevan M-numbers via data/crosswalks/canonical_sign_registry.csv (Wells->M direct, else Wells->Parpola->M via crosswalk v2)",
+      "source_chain": "ICIT (Fuls & Wells, A.11) + Mahadevan (A.1) -> Lipi repository CSV exports (yajnadevam/lipi) -> field-cady/indus_valley_script_corpus (GitHub, MIT License)",
+      "source_inscriptions": 5679,
+      "source_tokens_raw": 19942,
+      "token_map_coverage_excl_illegible_000": "12506/18061 = 69.3%",
+      "correction": "Continuation audit 2026-10-05: the first layer build indexed the Holdat flat token list instead of inscription sequences, so its seen-set held per-sign character tuples and Holdat dedupe never fired (only intra-ICIT dedupe did; reported as 1008 inscriptions / 2241 tokens). phase107_build_layers.py was fixed to index Holdat inscription sequences (1399 distinct sequences, len>=3) and the layer rebuilt BEFORE this log was first committed: 1007 inscriptions / 2238 tokens (exactly 1 inscription, 3 tokens, was a Holdat duplicate). Build-time dedupe is vs Holdat + intra-layer; dedupe vs the CISI subset happens in phase107_corpus_pool.py at pooling time, so no pooled result was ever affected."
+    },
+    {
+      "layer_id": "cisi_mayig_inrepo",
+      "name": "CISI Mohenjo-daro subset (in-repo, re-verified against upstream)",
+      "note": "Full upstream repo re-downloaded 2026-10-05 (corpora/downloads/mayig_indus_valley/): its corpus/ directory contains exactly the same 179 inscriptions already in-repo; no additional sites. Conversion to M-numbers is performed by backend/scripts/phase107_corpus_pool.py via crosswalk v2 inversion.",
+      "source_chain": "CISI vols. (Parpola et al.) -> mayig/indus-valley-script-corpus (GitHub, MIT) -> in-repo backend/glossa_lab/data/indus_cisi_corpus.json (ingested 2026-04)",
+      "source_inscriptions": 179,
+      "source_tokens": 1003
+    }
+  ],
+  "phase": 107,
+  "scope": "Systematic hunt for public Indus source corpora not previously ingested, per Tristen's 2026-10-05 addition to Step 4. Public download links only; nothing behind access controls was scraped. Downloads live under corpora/downloads/ (gitignored per repo convention); converted layers are separately flagged.",
+  "searched_not_found": [
+    {
+      "result": "CDLI covers cuneiform material only; Meluhha appears as references inside cuneiform texts. No Indus sign-sequence corpus exists there. Nothing beyond what the project already knew.",
+      "target": "CDLI (Cuneiform Digital Library Initiative) Indus inscription corpus"
+    },
+    {
+      "result": "No Indus inscription corpus dataset found on either platform (searches returned only GitHub/Zenodo/paper results).",
+      "target": "OSF / Figshare Indus epigraphy datasets"
+    },
+    {
+      "result": "No public downloadable corpus found; the relevant publication is CISI vol. 3.3 (print). Gulf material in-repo remains as previously catalogued (CITATIONS F.7-F.10).",
+      "target": "Dilmun / Gulf seal text corpora in public downloadable form"
+    },
+    {
+      "result": "Harappa.com hosts essays/images and links the RMRL concordance; no separate downloadable inscription dataset found.",
+      "target": "Harappa.com datasets beyond the RMRL concordance link"
+    },
+    {
+      "result": "The located CAA-2025-linked Zenodo release is a glyph-image similarity dataset, not a text corpus (see found_but_not_obtainable).",
+      "target": "2025 conference data releases (e.g. CAA 2025)"
+    }
+  ],
+  "step": 4
+}

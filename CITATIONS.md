@@ -22,6 +22,8 @@ underlying data sources below** in addition to the Glossa-Lab project itself.
 
 **Used in:** Phase-22 baseline corpus reference; Phase-28 Mahadevan-Parpola crosswalk; Phase-29 `MahadevanInscriptionLoader` (1,669 inscriptions, 5,361 sign tokens).
 
+**Local transcription (2026-10-06):** the Introduction (printed pp. 3–27) was OCR'd locally (RapidOCR) from `im77intro.pdf`, a 25-page 400-dpi bitonal scan with no text layer, supplied by T. Pierson. Transcription held in the local sources store at `glossa-corpus/indus/sources/mahadevan-1977/im77_introduction_ocr.md` (reference-grade; inline sign glyphs not OCR-recoverable; verify quotations against the scan). §11 (signs vs. symbols vs. graphic variants; 417 signs, 641 variant forms) is the signary basis for the program's M-numbering.
+
 > Mahadevan, Iravatham. 1977. *The Indus Script: Texts, Concordance and Tables.*
 > Memoirs of the Archaeological Survey of India, No. 77. New Delhi:
 > Archaeological Survey of India. Pp. 825.

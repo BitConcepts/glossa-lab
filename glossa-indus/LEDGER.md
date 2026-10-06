@@ -1636,3 +1636,53 @@ restored, not committed.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-109 — Step 1: Staging-Cohort Re-Review (spec 007)
+
+Executed the Phase-108 audit's staging-cohort recommendation under
+the rules pre-registered in `specs/007-phase109-follow-through/`.
+Cohort: the 116 anchors whose Phase-108 register records carry a
+`research_loop_heuristic` component (values bulk-assigned from the
+research loop's hardcoded heuristic tables and promoted in June
+2026 via `/staging/verify-sa`, which performs no SA test).
+Decisions (artifact: `reports/phase109_step1_decisions.json`;
+machinery: `backend/glossa_lab/pipelines/phase109_followthrough.py`,
+graph node `IndusPhase109StagingReview`):
+
+- **(a) KEEP: 1** — M222 `min`/MEDIUM retained: crosswalk v2.1
+  records Parpola reading `min` (Phase-71 EXTENDED_MAP attribution
+  to Parpola 1994 App. B, single in-repo source, crosswalk
+  CANDIDATE) — independent non-SA support, cited in the entry's
+  annotation.
+- **(b) RESTORE: 112** — the staging value lacked independent
+  support and a prior sourced reading existed in the May-2026
+  backup snapshots (all three agree in every case). 109 restore
+  `kur`/LOW from Phase-111 allograph resolution (positional-profile
+  L1 identity with M222, then read as `kur`; the restored basis
+  states the derivation verbatim). 3 restore Phase-89 systematic
+  DEDR readings at HIGH: **M042 `min`→`vaN`, M046 `kal`→`kaL`,
+  M108 `min`→`kaL`**. Every restoration is listed individually in
+  `reports/phase109_change_register.json`.
+- **(c) DEMOTE: 3** — H003 (no backup snapshot, no sourced prior;
+  MEDIUM→LOW), M231 and M252 (MEDIUM→LOW; their overwritten priors
+  were Phase-122 SA-modal readings — see addendum).
+
+Hand-check corrections (spec 007 addendum, recorded before apply):
+reading identity for (a)/(b) judged on the EXACT recorded segment
+(case/diacritics are phonemically significant — this moved M046
+from a false (a) to (b)); SA-origin priors are not restorable
+under (b) (moved M231/M252 to (c)). Hand-checks performed per
+protocol: the (a), all 3 (c), all 3 (b)-to-HIGH, and 10 sampled
+(b)-to-LOW. Known tension flagged for review: the 109 `kur`/LOW
+restorations derive from M222-as-`kur`, while M222 itself keeps
+`min` on Parpola crosswalk support — the tension is in the record
+itself; both derivations are stated in the entries' annotations.
+
+Foundation check after apply (H21): 40 passed / 0 failed /
+8 warnings (baseline-identical).
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.
+Anchor changes in this package are made only under the
+pre-registered spec 007 rules; the package PR is opened unmerged
+for Tristen's review of all scientific changes.

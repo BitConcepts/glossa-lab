@@ -139,6 +139,31 @@ def _ledger_assignments(sign: str, trail: dict) -> list[dict]:
     return out
 
 
+def _exact_segment(reading: str) -> str:
+    """First segment with parenthetical glosses stripped; case and
+    diacritics PRESERVED — both are phonemically significant in this
+    notation (kaL != kal, vaN != van)."""
+    return re.sub(r"\([^)]*\)", " ", pa.first_segment(reading or "")).strip()
+
+
+def _sa_origin(entry: dict | None) -> bool:
+    """True when a prior entry's reading ORIGINATES from an SA run
+    (post-Phase-107 an SA output is not a restorable sourced
+    reading). Tests the source field and assignment-mechanism
+    phrases in the basis; a later recalibration bracket merely
+    mentioning SA-cons does not make a DEDR-sourced reading
+    SA-origin (cf. M042/M108, source Phase-89 DEDR)."""
+    if not entry:
+        return False
+    src = (entry.get("source") or "").strip()
+    basis = entry.get("basis") or ""
+    if src.startswith(("Phase-52", "Phase-57", "Phase-122")):
+        return True
+    return any(p in basis for p in
+               ("syllabic LM SA", "SA modal", "CGSA",
+                "simulated annealing"))
+
+
 def assemble_staging_evidence(sign: str, anchors_data: dict,
                               records: dict[str, dict],
                               trails: dict[str, dict],
@@ -166,6 +191,7 @@ def assemble_staging_evidence(sign: str, anchors_data: dict,
 
     cw = structured.get("crosswalk_v2") or {}
     cur_norm = pa.normalize_reading(entry.get("reading", ""))
+    cur_exact = _exact_segment(entry.get("reading", ""))
     assignments = _ledger_assignments(sign, trail)
 
     ev = {
@@ -204,37 +230,73 @@ def assemble_staging_evidence(sign: str, anchors_data: dict,
         len({s["reading"] for s in snap_list}) == 1 if snap_list else False)
     ev["prior_differs"] = bool(
         snap_list
-        and pa.normalize_reading(snap_list[-1]["reading"] or "") != cur_norm)
+        and _exact_segment(snap_list[-1]["reading"] or "") != cur_exact)
+    # Exact-identity variants (hand-check correction, spec 007
+    # addendum): rule (a) identity is judged on the EXACT recorded
+    # first segment; the normalised flags above stay as reported
+    # secondary signals.
+    ev["a1_crosswalk_exact"] = bool(
+        ev["crosswalk"]
+        and _exact_segment(ev["crosswalk"]["reading"]) == cur_exact
+        and cur_exact)
+    ev["a2_snapshot_exact"] = bool(
+        snap_list
+        and _exact_segment(snap_list[-1]["reading"] or "") == cur_exact
+        and cur_exact)
+    ev["a3_ledger_exact_matches"] = [
+        a for a in assignments
+        if _exact_segment(a["assigned_raw"]) == cur_exact and cur_exact]
+    ev["prior_sa_origin"] = _sa_origin(latest_snap_entry)
     return ev
 
 
 def decide_staging(ev: dict) -> dict:
     """Spec 007 Step 1 rules, applied in order (a) -> (b) -> (c).
 
-    Pure function over the assembled evidence dict."""
+    Pure function over the assembled evidence dict. Rule (a)
+    identity is EXACT (spec 007 addendum hand-check correction);
+    rule (b) does not restore priors whose reading originates from
+    an SA run (Phase-107)."""
     sign = ev["sign"]
     support: list[str] = []
-    if ev["a1_crosswalk_match"]:
+    notes: list[str] = []
+    if ev.get("a1_crosswalk_exact"):
         support.append(
             "A1 crosswalk v2.1 Parpola reading "
             f"'{ev['crosswalk']['reading']}' ({ev['crosswalk']['source']}) "
-            "equals the current reading under Phase-108 normalisation")
-    if ev["a2_snapshot_same"]:
+            "equals the current reading (exact first segment)")
+    elif ev.get("a1_crosswalk_match"):
+        notes.append(
+            "A1 not counted: crosswalk reading "
+            f"'{ev['crosswalk']['reading']}' matches the current "
+            "reading only under lossy Phase-108 normalisation "
+            "(case/diacritics differ)")
+    if ev.get("a2_snapshot_exact"):
         support.append(
             "A2 latest pre-promotion backup snapshot "
             f"({ev['snapshots'][-1]['file']}) records the same reading — "
             "the value predates the research loop")
-    for a in ev["a3_ledger_matches"]:
+    elif ev.get("a2_snapshot_same"):
+        notes.append(
+            "A2 not counted: latest snapshot reading "
+            f"'{ev['snapshots'][-1]['reading']}' matches only under "
+            "lossy normalisation (case/diacritics differ)")
+    for a in ev.get("a3_ledger_exact_matches", []):
         support.append(
             f"A3 ledger assignment {sign}={a['assigned_raw']} "
             f"({a['header']}, glossa-indus/LEDGER.md:{a['line']})")
+    if not support and ev.get("a3_ledger_matches"):
+        notes.append(
+            "A3 not counted: ledger assignment(s) match only under "
+            "lossy normalisation (case/diacritics differ)")
     if support:
         return {"sign": sign, "rule": "a", "action": "keep",
-                "support": support,
-                "needs_handcheck": bool(ev["a3_ledger_matches"]),
+                "support": support, "notes": notes,
+                "needs_handcheck": True,
                 "prior": None}
     if ev["snapshots"] and ev["prior_differs"] and ev["snapshots_agree"] \
-            and ev["latest_snapshot_entry"] is not None:
+            and ev["latest_snapshot_entry"] is not None \
+            and not ev.get("prior_sa_origin"):
         prior = ev["latest_snapshot_entry"]
         return {"sign": sign, "rule": "b", "action": "restore",
                 "support": [
@@ -242,15 +304,22 @@ def decide_staging(ev: dict) -> dict:
                     f"{ev['snapshots'][-1]['file']} (all "
                     f"{len(ev['snapshots'])} backup snapshots agree), "
                     "overwritten by the June-2026 staging promotion"],
+                "notes": notes,
                 "needs_handcheck": prior.get("confidence") in ("HIGH", "MEDIUM"),
                 "prior": {"file": ev["snapshots"][-1]["file"],
                           "reading": prior.get("reading"),
                           "confidence": prior.get("confidence"),
                           "entry": prior}}
+    c_support = ["no independent non-SA support recorded for the "
+                 "staging value; no restorable prior sourced "
+                 "reading in the backup snapshots"]
+    if ev.get("prior_sa_origin"):
+        c_support = ["no independent non-SA support recorded for the "
+                     "staging value; the overwritten prior reading "
+                     "originates from an SA run (Phase-122) and is "
+                     "not restorable after Phase-107"]
     return {"sign": sign, "rule": "c", "action": "demote",
-            "support": ["no independent non-SA support recorded for the "
-                        "staging value; no restorable prior sourced "
-                        "reading in the backup snapshots"],
+            "support": c_support, "notes": notes,
             "needs_handcheck": True,
             "prior": None}
 

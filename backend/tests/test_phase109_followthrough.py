@@ -27,6 +27,10 @@ def _ev(**over):
         "a1_crosswalk_match": False,
         "a2_snapshot_same": False,
         "a3_ledger_matches": [],
+        "a1_crosswalk_exact": False,
+        "a2_snapshot_exact": False,
+        "a3_ledger_exact_matches": [],
+        "prior_sa_origin": False,
         "snapshots_agree": False,
         "prior_differs": False,
     }
@@ -41,20 +45,20 @@ def _snap(reading="vaN", confidence="HIGH", file="INDUS_FINAL_ANCHORS.backup_202
 # ── Step 1 decision rules ────────────────────────────────────────────
 
 def test_rule_a_via_crosswalk():
-    d = p109.decide_staging(_ev(a1_crosswalk_match=True,
+    d = p109.decide_staging(_ev(a1_crosswalk_exact=True,
                                 crosswalk={"reading": "min", "source": "Parpola 1994"}))
     assert d["rule"] == "a" and d["action"] == "keep"
 
 
 def test_rule_a_via_snapshot_same():
-    d = p109.decide_staging(_ev(a2_snapshot_same=True, snapshots=_snap("min")))
+    d = p109.decide_staging(_ev(a2_snapshot_exact=True, snapshots=_snap("min")))
     assert d["rule"] == "a"
 
 
 def test_rule_a_via_ledger_flags_handcheck():
     m = [{"header": "Phase-X", "line": 1, "assigned_raw": "min",
           "assigned_norm": "min", "snippet": "M999=min"}]
-    d = p109.decide_staging(_ev(a3_ledger_matches=m))
+    d = p109.decide_staging(_ev(a3_ledger_exact_matches=m))
     assert d["rule"] == "a" and d["needs_handcheck"] is True
 
 
@@ -96,11 +100,51 @@ def test_rule_c_when_snapshots_disagree():
 def test_rule_order_a_beats_b():
     prior_entry = {"reading": "vaN", "confidence": "HIGH"}
     d = p109.decide_staging(_ev(
-        a1_crosswalk_match=True,
+        a1_crosswalk_exact=True,
         crosswalk={"reading": "min", "source": "Parpola 1994"},
         snapshots=_snap(), snapshots_agree=True, prior_differs=True,
         latest_snapshot_entry=prior_entry))
     assert d["rule"] == "a"
+
+
+def test_normalised_only_match_does_not_fire_rule_a():
+    # kaL vs kal: identical under Phase-108 normalisation, different
+    # readings exactly (spec 007 addendum) — must NOT keep.
+    d = p109.decide_staging(_ev(
+        a1_crosswalk_match=True,
+        crosswalk={"reading": "kaL", "source": "Parpola 1994 App. B"}))
+    assert d["rule"] == "c"
+    assert any("A1 not counted" in n for n in d["notes"])
+
+
+def test_sa_origin_prior_is_not_restorable():
+    prior_entry = {"reading": "kur", "confidence": "MEDIUM",
+                   "basis": "Phase-122 syllabic LM SA: modal='kur'",
+                   "source": "Phase-122"}
+    d = p109.decide_staging(_ev(
+        snapshots=_snap("kur", "MEDIUM"), snapshots_agree=True,
+        prior_differs=True, latest_snapshot_entry=prior_entry,
+        prior_sa_origin=True))
+    assert d["rule"] == "c"
+    assert any("SA run" in s for s in d["support"])
+
+
+def test_sa_origin_detection():
+    assert p109._sa_origin({"source": "Phase-122",
+                            "basis": "Phase-122 syllabic LM SA: modal"})
+    assert p109._sa_origin({"source": "x", "basis": "CGSA run"})
+    # A DEDR-sourced reading with a later SA-cons recal bracket is
+    # NOT SA-origin (M042/M108 pattern).
+    assert not p109._sa_origin({
+        "source": "Phase-89 systematic DEDR (ICON, MEDIUM)",
+        "basis": " [Phase-116 recal: SA-cons=0.62✓ DEDR✓]"})
+    assert not p109._sa_origin(None)
+
+
+def test_exact_segment_is_case_and_diacritic_sensitive():
+    assert p109._exact_segment("kaL") != p109._exact_segment("kal")
+    assert p109._exact_segment("vaN") == "vaN"
+    assert p109._exact_segment("min (fish)") == "min"
 
 
 # ── Apply functions ──────────────────────────────────────────────────
@@ -145,7 +189,7 @@ def test_apply_restore_replaces_entry_and_annotates():
 def test_apply_keep_annotates_only():
     data = _anchors_data()
     before = copy.deepcopy(data["anchors"]["M999"])
-    ev = {"M999": _ev(a1_crosswalk_match=True,
+    ev = {"M999": _ev(a1_crosswalk_exact=True,
                       crosswalk={"reading": "min", "source": "Parpola 1994"})}
     d = [p109.decide_staging(ev["M999"])]
     p109.apply_staging_decisions(data, d, ev)

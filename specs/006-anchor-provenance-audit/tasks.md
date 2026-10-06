@@ -33,11 +33,11 @@
 - [x] T044 Aggregate → `reports/phase108_impact_map.json` + summary
 
 ## Step 5 — Close-out
-- [ ] T050 Recommendations section (authored, not executed)
-- [ ] T051 Foundation check (0 failures; H21)
-- [ ] T052 Full backend test suite (exact counts)
-- [ ] T053 Ruff on changed Python files
-- [ ] T054 Anchors file hash identical to main (audit-only guarantee)
-- [ ] T055 glossa-indus LEDGER Phase-108 entries (per step, AI disclosure)
-- [ ] T056 Root LEDGER.md summary entry (AI disclosure)
+- [x] T050 Recommendations section (authored, not executed)
+- [x] T051 Foundation check (0 failures; H21)
+- [x] T052 Full backend test suite (exact counts)
+- [x] T053 Ruff on changed Python files
+- [x] T054 Anchors file hash identical to main (audit-only guarantee)
+- [x] T055 glossa-indus LEDGER Phase-108 entries (per step, AI disclosure)
+- [x] T056 Root LEDGER.md summary entry (AI disclosure)
 - [ ] T057 Push branch, open PR (do NOT merge)

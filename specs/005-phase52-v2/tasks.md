@@ -29,11 +29,11 @@
 - [ ] T033 Final consensus decipherment table artifact
 
 ## Step 4 — Corpus pooling + acquisition hunt
-- [ ] T040 Audit CITATIONS.md ingested sources (no re-fetch list)
+- [x] T040 Audit CITATIONS.md ingested sources (no re-fetch list)
 - [ ] T041 Convert in-repo CISI subset via crosswalk v2.1; dedupe vs Holdat; pool
-- [ ] T042 Hunt: RMRL Mahadevan concordance (download attempt, outcome logged)
-- [ ] T043 Hunt: ICIT / CISID / CDLI / Harappa.com / Wells / code hosts / Zenodo-Figshare-OSF / 2025-conference + Dixit datasets / Dilmun-Gulf
-- [ ] T044 Ingest obtained corpora as flagged layers + CITATIONS.md entries
+- [x] T042 Hunt: RMRL Mahadevan concordance (download attempt, outcome logged)
+- [x] T043 Hunt: ICIT / CISID / CDLI / Harappa.com / Wells / code hosts / Zenodo-Figshare-OSF / 2025-conference + Dixit datasets / Dilmun-Gulf
+- [x] T044 Ingest obtained corpora as flagged layers + CITATIONS.md entries
 - [ ] T045 Re-run Step-1a primary metric on enlarged pool (best objective)
 - [ ] T046 Step4 artifact: ingested / not-obtained (blocker) / not-found lists
 

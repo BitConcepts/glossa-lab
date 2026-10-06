@@ -1780,3 +1780,39 @@ Muse) at the direction of Tristen Pierson, per constitution §VI.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-109 — Step 5: Headline Re-Base (spec 007)
+
+Recomputation on the post-Step-1–3 anchor set
+(`reports/phase109_rebase.json`, Phase-108 methods; graph node
+`IndusPhase109Rebase`):
+
+- Anchor table now: **287 entries — 166 HIGH / 5 MEDIUM / 112 LOW
+  / 4 CANDIDATE**; full H+M = 171, Holdat token coverage
+  **92.19%** (6,455/7,002), 0 phonotactic violations, site
+  invariance 90/90 tested.
+- **Strict SA-independent set: 94 H+M (90 HIGH + 4 MEDIUM),
+  coverage 73.68% (5,159/7,002)**, 0 phonotactic violations, site
+  invariance 65/65 tested. (Phase-108's pre-review figures were
+  198 / 77.96% — the drop is the staging cohort leaving H+M, as
+  registered.)
+- Parpola crosswalk comparison on the strict set: 81/81 compared
+  signs — reported ONLY with the Phase-108 caveat (partially
+  tautological; not a replacement for the retired 59%).
+
+Surfaces updated: README Decipherment Status blockquote +
+"Re-based after Phase-107/108" note, §Indus Script Decipherment
+(metrics table; Phase-170 seal-coverage/grammar-accuracy rows now
+labelled as computed on the retired set), Current research
+status. Anchors bookkeeping regenerated from the entries (spec
+004 WS3 method): all summary fields consistent (hm_confirmed_
+count 275 → 171; stored full-set coverage 0.9647 → 0.921879);
+`metadata.canonical_counts.preprint_161` left intact as the
+historical definition; `_phase109_note` added. Preprint: draft
+addendum at `glossa-corpus/indus/pierson_2026_indus_
+decipherment_addendum_v5.md` (DRAFT — NOT SUBMITTED; v4 .tex/PDF
+untouched; PREPRINT_VERSIONING.md gained a draft v5 row).
+Foundation check: 40 passed / 0 failed / 8 warnings.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.

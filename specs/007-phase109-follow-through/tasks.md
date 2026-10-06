@@ -35,10 +35,10 @@
 - [x] T044 Foundation-check text retirements (Phase-52/57/67/73 + Phase-44 mislabel; text only); foundation check 0 failures
 
 ## Step 5 — Headline re-base
-- [ ] T050 Recompute → `reports/phase109_rebase.json` (post-change sets: counts, coverage, phonotactics, Parpola + caveat, site invariance)
-- [ ] T051 README re-base (status block, §Indus Script Decipherment, Current research status) + dated re-base note
-- [ ] T052 Anchors bookkeeping regenerated (spec 004 WS3 method) + `_phase109_note`; foundation check
-- [ ] T053 Preprint addendum v5 DRAFT in-repo + PREPRINT_VERSIONING.md draft row (no submission)
+- [x] T050 Recompute → `reports/phase109_rebase.json` (post-change sets: counts, coverage, phonotactics, Parpola + caveat, site invariance)
+- [x] T051 README re-base (status block, §Indus Script Decipherment, Current research status) + dated re-base note
+- [x] T052 Anchors bookkeeping regenerated (spec 004 WS3 method) + `_phase109_note`; foundation check
+- [x] T053 Preprint addendum v5 DRAFT in-repo + PREPRINT_VERSIONING.md draft row (no submission)
 
 ## Step 6 — Close-out
 - [ ] T060 Full backend test suite (exact counts vs 586/9 baseline)

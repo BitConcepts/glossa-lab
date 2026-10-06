@@ -29,6 +29,7 @@ The version number is also declared inside the document (title block and footer)
 | **v2** | May–June 2026 | Added Zenodo DOI. Corrected §3.5 attribution issue. |
 | **v3** | June 2026 | Interim revision (attribution cleanup, internal). |
 | **v4** | June 2026 | **Current.** Removed all uncited correspondence material. §3.5 renamed "Fish Sign Isolation Test" (was "Polysemy Test"). §3.32 removed entirely. Zero third-party unconsented content. Abstract and all references to fish-sign analysis updated to use neutral structural language. |
+| **v5** | — | **DRAFT — NOT PUBLISHED.** Addendum drafted in-repo 2026-10-06 (Phase-109, spec 007) recording the post–Phase-107/108 headline re-base (strict SA-independent set: 94 H+M, 73.68% coverage). The v4 `.tex`/PDF are NOT bumped and nothing has been submitted. Draft: `glossa-corpus/indus/pierson_2026_indus_decipherment_addendum_v5.md`. |
 
 ## How to bump the version
 

@@ -1,0 +1,123 @@
+{
+  "phase": 109,
+  "step": 3,
+  "spec": "specs/007-phase109-follow-through",
+  "gpu_device": "cpu (torch absent)",
+  "sign": "M362",
+  "current": {
+    "reading": "aṇi",
+    "confidence": "HIGH",
+    "basis": "Starburst / asterisk iconography ~ aṇi 'ornament/adorn' (DEDR 0145). Phase-103: appears in name-slot patterns between animal classifiers and titles. Sangam literature: aṇi- prefix in personal names (Aṇi-van, Aṇi-tan). Positional: predominantly MEDIAL in personal name sequences. Freq=3; Pos=MEDIAL; name_slots=2. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-105]",
+    "source": "Phase-105"
+  },
+  "register": {
+    "category": "MIXED",
+    "sa_in_chain": false,
+    "reasons": [
+      "Depiction-to-lexeme assignment carried by Phase-103 name-slot patterns; Phase-216 gate via Phase-105 source path (SA-cons 0.17) -- SA not in chain."
+    ]
+  },
+  "phase105_adjudication": {
+    "verdict": "INCONCLUSIVE",
+    "rationale": "Only 3 corpus tokens — too few for a positional verdict (Phase-101 adjudication rested on 100+ tokens). Phase-103 pattern counts stand as the only evidence and are not re-tested here.",
+    "corpus_profile": {
+      "freq": 3,
+      "initial": 0,
+      "medial": 3,
+      "terminal": 0,
+      "initial_rate": 0.0,
+      "medial_rate": 1.0,
+      "terminal_rate": 0.0,
+      "after_genitive_count": 1,
+      "before_case_suffix_count": 1,
+      "name_slot_count": 2,
+      "patterns": {
+        "ANIMAL_NAME_TITLE": 1,
+        "GENITIVE_NAME": 1
+      },
+      "sample_contexts": [
+        "M185-M362-M207",
+        "M006-M362-M059",
+        "M267-M362-M391"
+      ]
+    },
+    "phase103": {
+      "name_score": 1.25,
+      "name_slot_count": 4,
+      "sa_modal": "",
+      "pattern_types": [
+        "HIGH_CONTEXT",
+        "ANIMAL_NAME_TITLE",
+        "GENITIVE_NAME_SUFFIX"
+      ]
+    },
+    "anchors_modified_by_phase105": false,
+    "citation": "reports/phase105_name_signs.json"
+  },
+  "pre_gate_tier": {
+    "INDUS_FINAL_ANCHORS.backup_20260520_100230.json": {
+      "reading": "aṇi",
+      "confidence": "MEDIUM"
+    },
+    "INDUS_FINAL_ANCHORS.backup_20260522_210001.json": {
+      "reading": "aṇi",
+      "confidence": "MEDIUM"
+    },
+    "INDUS_FINAL_ANCHORS.backup_20260523_181449.json": {
+      "reading": "aṇi",
+      "confidence": "MEDIUM"
+    }
+  },
+  "promotion_record": "Anchor basis bracket: [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-105] — a recalibration/promotion gate, not an adjudication (Phase-108 register note concurs).",
+  "superseding_adjudication_search": {
+    "method": "both ledgers scanned for verdict-bearing mentions; reports/ + outputs/ + backend/reports phase>=106 artifacts scanned for the sign + 'verdict'",
+    "hits": [
+      {
+        "source": "glossa-indus/LEDGER.md",
+        "context": "IMAL_NAME_TITLE context);   Holdat roles file independently classifies M375 as PERSON_OR_OWNER. - **M362 — INCONCLUSIVE.** freq 3 (below the positional-verdict floor);   profile is medial (100%) with 2 name slots (M006-[M362]-M059   ANIMAL_NAME_TITLE; M267-[M362]-M391 genitive), consistent with a name   component but underpowered. Phase-103 evidence stands untested here. - **M398 — INCONCLUSIVE.**"
+      },
+      {
+        "source": "glossa-indus/LEDGER.md",
+        "context": "** freq 3 (below the positional-verdict floor);   profile is medial (100%) with 2 name slots (M006-[M362]-M059   ANIMAL_NAME_TITLE; M267-[M362]-M391 genitive), consistent with a name   component but underpowered. Phase-103 evidence stands untested here. - **M398 — INCONCLUSIVE.** freq 3; medial 100%, 2 name slots   (M267-[M398]-M342 genitive; [M398]-M342-M176 NAME_AY_AN). Same   underpowered statu"
+      },
+      {
+        "source": "glossa-indus/LEDGER.md",
+        "context": "t floor);   profile is medial (100%) with 2 name slots (M006-[M362]-M059   ANIMAL_NAME_TITLE; M267-[M362]-M391 genitive), consistent with a name   component but underpowered. Phase-103 evidence stands untested here. - **M398 — INCONCLUSIVE.** freq 3; medial 100%, 2 name slots   (M267-[M398]-M342 genitive; [M398]-M342-M176 NAME_AY_AN). Same   underpowered status as M362. - **M024 — CHALLENGED (name"
+      },
+      {
+        "source": "glossa-indus/LEDGER.md",
+        "context": "ame slots   (M267-[M398]-M342 genitive; [M398]-M342-M176 NAME_AY_AN). Same   underpowered status as M362. - **M024 — CHALLENGED (name-component framing).** freq 13; **100% INITIAL**   — heads every inscription it appears in, the classifier/prefix profile,   opposite of the M293 name-component reference (6.9% INITIAL). The   Holdat roles file independently classifies M024 as CLASSIFIER_PREFIX.   Co"
+      },
+      {
+        "source": "glossa-indus/LEDGER.md",
+        "context": "ms (the staging cohort's promotion path, stale anchor-entry fields, the recalibration-gate pattern, M362/M398).  Verification (this branch): backend suite **586 passed / 9 skipped / 0 failed** (baseline 576/9 + 10 new provenance tests); foundation check **40 passed / 0 failed / 8 warnings** (baseline-identical, H21); ruff clean on all changed Python; anchors file sha256 **identical to main** (f2bc"
+      },
+      {
+        "source": "LEDGER.md",
+        "context": "se-101-style positional/formula adjudication over the Holdat   corpus. Verdicts: M375 CORROBORATED; M362 and M398 INCONCLUSIVE   (3 tokens each — underpowered); **M024 CHALLENGED** as a medial   name-component (100% INITIAL profile; Holdat roles: CLASSIFIER_PREFIX)   and flagged for future adjudication. No anchor promoted, demoted, or   modified. Report: `reports/phase105_name_signs.json`. - **Pha"
+      },
+      {
+        "source": "reports/phase108_anchor_trails.json",
+        "context": "artifact mentions sign + 'verdict'"
+      },
+      {
+        "source": "reports/phase108_provenance_register.json",
+        "context": "artifact mentions sign + 'verdict'"
+      },
+      {
+        "source": "reports/phase108_review_decisions.json",
+        "context": "artifact mentions sign + 'verdict'"
+      },
+      {
+        "source": "outputs/phase107_tb_name_check.json",
+        "context": "artifact mentions sign + 'verdict'"
+      }
+    ],
+    "conclusion": "no later superseding adjudication found; Phase-105 INCONCLUSIVE stands as the latest adjudication (restated 2026-10-05 and by the Phase-108 register)"
+  },
+  "determination": {
+    "rule": "spec 007 Step 3 (M362/M398): tier may not exceed what the latest adjudication supports; INCONCLUSIVE supports at most MEDIUM",
+    "new_confidence": "MEDIUM",
+    "reading_changed": false
+  }
+}

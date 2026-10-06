@@ -1636,3 +1636,183 @@ restored, not committed.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-109 — Step 1: Staging-Cohort Re-Review (spec 007)
+
+Executed the Phase-108 audit's staging-cohort recommendation under
+the rules pre-registered in `specs/007-phase109-follow-through/`.
+Cohort: the 116 anchors whose Phase-108 register records carry a
+`research_loop_heuristic` component (values bulk-assigned from the
+research loop's hardcoded heuristic tables and promoted in June
+2026 via `/staging/verify-sa`, which performs no SA test).
+Decisions (artifact: `reports/phase109_step1_decisions.json`;
+machinery: `backend/glossa_lab/pipelines/phase109_followthrough.py`,
+graph node `IndusPhase109StagingReview`):
+
+- **(a) KEEP: 1** — M222 `min`/MEDIUM retained: crosswalk v2.1
+  records Parpola reading `min` (Phase-71 EXTENDED_MAP attribution
+  to Parpola 1994 App. B, single in-repo source, crosswalk
+  CANDIDATE) — independent non-SA support, cited in the entry's
+  annotation.
+- **(b) RESTORE: 112** — the staging value lacked independent
+  support and a prior sourced reading existed in the May-2026
+  backup snapshots (all three agree in every case). 109 restore
+  `kur`/LOW from Phase-111 allograph resolution (positional-profile
+  L1 identity with M222, then read as `kur`; the restored basis
+  states the derivation verbatim). 3 restore Phase-89 systematic
+  DEDR readings at HIGH: **M042 `min`→`vaN`, M046 `kal`→`kaL`,
+  M108 `min`→`kaL`**. Every restoration is listed individually in
+  `reports/phase109_change_register.json`.
+- **(c) DEMOTE: 3** — H003 (no backup snapshot, no sourced prior;
+  MEDIUM→LOW), M231 and M252 (MEDIUM→LOW; their overwritten priors
+  were Phase-122 SA-modal readings — see addendum).
+
+Hand-check corrections (spec 007 addendum, recorded before apply):
+reading identity for (a)/(b) judged on the EXACT recorded segment
+(case/diacritics are phonemically significant — this moved M046
+from a false (a) to (b)); SA-origin priors are not restorable
+under (b) (moved M231/M252 to (c)). Hand-checks performed per
+protocol: the (a), all 3 (c), all 3 (b)-to-HIGH, and 10 sampled
+(b)-to-LOW. Known tension flagged for review: the 109 `kur`/LOW
+restorations derive from M222-as-`kur`, while M222 itself keeps
+`min` on Parpola crosswalk support — the tension is in the record
+itself; both derivations are stated in the entries' annotations.
+
+Foundation check after apply (H21): 40 passed / 0 failed /
+8 warnings (baseline-identical).
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.
+Anchor changes in this package are made only under the
+pre-registered spec 007 rules; the package PR is opened unmerged
+for Tristen's review of all scientific changes.
+
+## Phase-109 — Step 2: SA-Lineage Provenance Flags (spec 007)
+
+The 44 SA load-bearing HIGH anchors from the Phase-108 register
+(24 SA_DERIVED + 20 SA_CONFIRMED_ONLY) each gained
+`validation_status: "pending_non_sa_validation"` and
+`provenance_class: <register category>`, plus a Phase-109
+annotation. **No reading or confidence changed in this step**
+(verified programmatically: 0 value/tier mismatches after apply).
+These anchors are presented as candidates via the Step-5
+headlines, which exclude them from the strict SA-independent set.
+M293 is among the 20 SA_CONFIRMED_ONLY and additionally goes
+through Step 3's individual re-review. Artifact:
+`reports/phase109_step2_flags.json`; changes recorded in
+`reports/phase109_change_register.json` (step2, 44 entries).
+Foundation check: 40 passed / 0 failed / 8 warnings.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-109 — Step 3: Individual Re-Reviews M293 / M362 / M398 (spec 007)
+
+Dossiers: `reports/phase109_dossier_M293.json`,
+`_M362.json`, `_M398.json` (graph node `IndusPhase109Rereviews`).
+
+- **M293 `ta`: HIGH → MEDIUM.** The HIGH rested on the Phase-116
+  SA recalibration gate (eval_log: firing disjunct SA-cons=1.00;
+  source "Phase-101 positional adjudication" not whitelisted;
+  the SA modal reading was `nal`, not `ta`). The non-SA evidence
+  — the Phase-101 positional adjudication itself (2026-05-18) —
+  recorded as its own outcome PROMOTED TO MEDIUM. No completed
+  non-SA validation at HIGH level exists in the recorded chain
+  (Phase-108's load-bearing test concurs: SA_CONFIRMED_ONLY).
+  Under the no-SA-sufficient rule, MEDIUM is the highest tier its
+  non-SA evidence supports. Reading unchanged. M293 retains its
+  Step-2 `pending_non_sa_validation` flag.
+- **M362 `aṇi`: HIGH → MEDIUM; M398 `kuṟi`: HIGH → MEDIUM.** The
+  latest adjudication (Phase-105, positional/formula adjudication
+  over Holdat) is INCONCLUSIVE for both (freq 3 each, below the
+  positional-verdict floor). The dossiers' superseding-
+  adjudication search (both ledgers + phase ≥106 artifacts) found
+  only restatements of that verdict — no later superseding
+  adjudication exists. Their HIGH came from the Phase-216
+  recalibration gate (a promotion gate, not an adjudication);
+  May-2026 backups show both at MEDIUM. Rule applied: a tier may
+  not exceed what the latest adjudication supports → capped at
+  MEDIUM. Readings unchanged.
+
+Foundation check: 40 passed / 0 failed / 8 warnings.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-109 — Step 4: Promotion-Path + Governance Fixes (spec 007)
+
+- **Endpoint renamed for honesty:** `POST /staging/verify-sa` →
+  `POST /staging/verify-archive`. The endpoint marks approved
+  staging candidates verified and archives them; it has never
+  performed an SA test. The old path remains as a clearly-marked
+  **deprecated alias** delegating to the same handler (the
+  committed `frontend/dist` build still calls it; a deprecation
+  warning is logged on use). `frontend/src` now calls the new
+  path. New archives record `archived_reason:
+  manual_verify_archive`.
+- **Promotion evidence gate (H26 enforcement):** `POST
+  /staging/promote` now promotes a candidate ONLY if it carries a
+  recorded non-SA evidence reference (candidate `evidence_ref`
+  field or the request's `evidence_refs` map); blocked candidates
+  are not written and are reported as `blocked_no_evidence`; the
+  reference is recorded in the promoted entry's basis. The Step-8
+  "Mandatory SA validation" auto-queue block is **removed**
+  (`sa_validation_jobs` retained in the response, always `[]`).
+  Regression tests: `backend/tests/test_staging_promotion_
+  evidence.py` (4 tests: blocked-without-ref writes nothing;
+  ref via candidate field; ref via request map; new route +
+  deprecated alias both respond).
+- **Governance H26 added** to `docs/governance/rules.md`: no
+  SA-sufficient promotion gates — promotions/upgrades must cite a
+  recorded non-SA evidence reference; SA agreement (modal,
+  consistency, z, consensus) must never be a sufficient
+  condition, citing Phase-107/108 and naming the enforcement
+  points.
+- **Foundation-check text retirements** (text/framing ONLY —
+  diff-verified, no CHECK/WARN logic changed): CHECK NEW-F
+  reframed as a historical record; Phase-44 3.13x and Phase-52
+  z=16 moved solid → caveated (LM language-fit statistic /
+  SUPERSEDED); Phase-57 z=19.07 moved to caveated SUPERSEDED;
+  Phase-67 "DEFINITIVE" retired (1.85x stands only as a same-null
+  descriptive statistic); Phase-73 ensemble reframed SUPERSEDED.
+  Lines the Phase-108 impact map marked STANDS were not touched.
+  Foundation check: 40 passed / 0 failed / 8 warnings.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-109 — Step 5: Headline Re-Base (spec 007)
+
+Recomputation on the post-Step-1–3 anchor set
+(`reports/phase109_rebase.json`, Phase-108 methods; graph node
+`IndusPhase109Rebase`):
+
+- Anchor table now: **287 entries — 166 HIGH / 5 MEDIUM / 112 LOW
+  / 4 CANDIDATE**; full H+M = 171, Holdat token coverage
+  **92.19%** (6,455/7,002), 0 phonotactic violations, site
+  invariance 90/90 tested.
+- **Strict SA-independent set: 94 H+M (90 HIGH + 4 MEDIUM),
+  coverage 73.68% (5,159/7,002)**, 0 phonotactic violations, site
+  invariance 65/65 tested. (Phase-108's pre-review figures were
+  198 / 77.96% — the drop is the staging cohort leaving H+M, as
+  registered.)
+- Parpola crosswalk comparison on the strict set: 81/81 compared
+  signs — reported ONLY with the Phase-108 caveat (partially
+  tautological; not a replacement for the retired 59%).
+
+Surfaces updated: README Decipherment Status blockquote +
+"Re-based after Phase-107/108" note, §Indus Script Decipherment
+(metrics table; Phase-170 seal-coverage/grammar-accuracy rows now
+labelled as computed on the retired set), Current research
+status. Anchors bookkeeping regenerated from the entries (spec
+004 WS3 method): all summary fields consistent (hm_confirmed_
+count 275 → 171; stored full-set coverage 0.9647 → 0.921879);
+`metadata.canonical_counts.preprint_161` left intact as the
+historical definition; `_phase109_note` added. Preprint: draft
+addendum at `glossa-corpus/indus/pierson_2026_indus_
+decipherment_addendum_v5.md` (DRAFT — NOT SUBMITTED; v4 .tex/PDF
+untouched; PREPRINT_VERSIONING.md gained a draft v5 row).
+Foundation check: 40 passed / 0 failed / 8 warnings.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.

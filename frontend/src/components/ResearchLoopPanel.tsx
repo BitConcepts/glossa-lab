@@ -2082,7 +2082,7 @@ function StagingReview({
     setVerifyResult(null);
     setSaRunDone(false);
     try {
-      const res = await fetch(`${BASE_RL}/staging/verify-sa`, { method: "POST" });
+      const res = await fetch(`${BASE_RL}/staging/verify-archive`, { method: "POST" });
       const data = await res.json() as {
         ok: boolean; message: string; suggested_sa_exp?: string;
         suggested_sa_name?: string; error?: string;

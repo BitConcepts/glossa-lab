@@ -1,7 +1,7 @@
 {
   "document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
   "title": "",
-  "extraction_date": "2026-06-09T23:57:21.018416",
+  "extraction_date": "2026-10-06T10:42:42.291556",
   "total_claims": 9,
   "auto_extracted": 9,
   "manually_curated": 5,
@@ -12,16 +12,10 @@
       "claim_type": "language_claim",
       "normalized_claim": "Language hypothesis: non-linguistic symbol",
       "quote_fragment": "non-linguistic symbol",
-      "claim_status": "contradicted",
+      "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.7,
-      "extracted_at": "2026-06-09T23:57:21.011134",
-      "contradicting_evidence": [
-        "Rao et al. 2009: conditional entropy falls in linguistic range",
-        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
-        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start"
-      ],
-      "glossa_lab_evidence": "Phase-104 (RULE-DUP): duplicate extraction of the proposition adjudicated in farmer_sproat_witzel_2004_manual_001; verdict carried over with its cited evidence. See glossa-indus/reports/phase104_claims_evaluation.json."
+      "extracted_at": "2026-10-06T10:42:42.267757"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
@@ -32,7 +26,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-06-09T23:57:21.011134"
+      "extracted_at": "2026-10-06T10:42:42.272975"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003",
@@ -40,16 +34,10 @@
       "claim_type": "critique_claim",
       "normalized_claim": "Critique: Myth of a Literate Harappan",
       "quote_fragment": "Myth of a Literate Harappan",
-      "claim_status": "contradicted",
+      "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-06-09T23:57:21.014883",
-      "contradicting_evidence": [
-        "Rao et al. 2009: conditional entropy falls in linguistic range",
-        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
-        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start"
-      ],
-      "glossa_lab_evidence": "Phase-104 (RULE-DUP): duplicate extraction of the proposition adjudicated in farmer_sproat_witzel_2004_manual_001; verdict carried over with its cited evidence. See glossa-indus/reports/phase104_claims_evaluation.json."
+      "extracted_at": "2026-10-06T10:42:42.276747"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004",
@@ -57,16 +45,10 @@
       "claim_type": "critique_claim",
       "normalized_claim": "Critique: Collapse of the \nIndus-Script Thesis",
       "quote_fragment": "Collapse of the \nIndus-Script Thesis",
-      "claim_status": "contradicted",
+      "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-06-09T23:57:21.014883",
-      "contradicting_evidence": [
-        "Rao et al. 2009: conditional entropy falls in linguistic range",
-        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
-        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start"
-      ],
-      "glossa_lab_evidence": "Phase-104 (RULE-DUP): duplicate extraction of the proposition adjudicated in farmer_sproat_witzel_2004_manual_001; verdict carried over with its cited evidence. See glossa-indus/reports/phase104_claims_evaluation.json."
+      "extracted_at": "2026-10-06T10:42:42.277198"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001",
@@ -79,7 +61,7 @@
       "glossa_lab_evidence": "Phase-43 Batch 5: formula_rate=35.5% vs null 0.6% (59x lift). 20 TERMINAL_STRONG + 40 INITIAL_STRONG signs. [STRUCTURALLY SUPPORTED]",
       "author": "Hunt, Treasure A.",
       "confidence_in_source": 0.75,
-      "extracted_at": "2026-06-09T23:57:21.018416"
+      "extracted_at": "2026-10-06T10:42:42.291534"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002",
@@ -90,7 +72,7 @@
       "testability": "indirectly_testable",
       "falsification_condition": "If sign distributions correlate with palatial/royal contexts rather than civic/infrastructure contexts.",
       "confidence_in_source": 0.65,
-      "extracted_at": "2026-06-09T23:57:21.018416"
+      "extracted_at": "2026-10-06T10:42:42.291534"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003",
@@ -110,7 +92,7 @@
       "falsification_condition": "Faunal signs not enriched in initial position above random baseline.",
       "glossa_lab_evidence": "Phase-43: 40 INITIAL_STRONG signs identified; faunal-initial enrichment not yet sign-classified [STRUCTURAL SUPPORT ONLY]",
       "confidence_in_source": 0.7,
-      "extracted_at": "2026-06-09T23:57:21.018416"
+      "extracted_at": "2026-10-06T10:42:42.291534"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004",
@@ -127,7 +109,7 @@
       "testability": "directly_testable",
       "falsification_condition": "Celestial signs not enriched in terminal position above random baseline.",
       "confidence_in_source": 0.7,
-      "extracted_at": "2026-06-09T23:57:21.018416"
+      "extracted_at": "2026-10-06T10:42:42.291534"
     },
     {
       "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005",
@@ -138,7 +120,7 @@
       "testability": "indirectly_testable",
       "falsification_condition": "If the 24 clusters do not correspond to statistically distinct positional/co-occurrence profiles.",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-06-09T23:57:21.018416"
+      "extracted_at": "2026-10-06T10:42:42.291534"
     }
   ],
   "_citation": {

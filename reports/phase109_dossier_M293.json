@@ -1,0 +1,93 @@
+{
+  "phase": 109,
+  "step": 3,
+  "spec": "specs/007-phase109-follow-through",
+  "gpu_device": "cpu (torch absent)",
+  "sign": "M293",
+  "current": {
+    "reading": "ta",
+    "confidence": "HIGH",
+    "basis": " [Phase-116 recal: SA-cons=1.00✓ DEDR✓]",
+    "source": "Phase-101 positional adjudication"
+  },
+  "register": {
+    "category": "SA_CONFIRMED_ONLY",
+    "sa_in_chain": true,
+    "reasons": [
+      "Origin is Phase-101 positional adjudication (DEDR 3003 in entry), but the Phase-116 gate path was SA_ONLY (SA-cons 1.00; source not whitelisted). Highest-frequency sign in the corpus (232 tokens) -- its HIGH confidence resting on an SA gate is a consequential audit finding."
+    ]
+  },
+  "evidence_for_high": [
+    "Phase-116 recalibration upgraded M293 MEDIUM->HIGH (outputs/phase116_sa_recalibration.json: sign in upgraded_signs) — but the gate's firing disjunct was SA-cons=1.00 (eval_log: source 'Phase-101 positional adjudication' not whitelisted; has_dedr=true; new SA modal was 'nal', not 'ta'). SA evidence is void after Phase-107, so this line cannot support HIGH under the no-SA-sufficient rule (H26)."
+  ],
+  "evidence_non_sa": [
+    "Phase-101 positional adjudication (glossa-indus/LEDGER.md, 2026-05-18): M293 6.9% INITIAL vs 100% INITIAL for animal classifiers; 59.9% MEDIAL / 33.2% TERMINAL; 11x after genitive M267, 48x before case suffixes -> 'ta' (DEDR 3003, body/self), a personal-name component. Its own recorded outcome: PROMOTED TO MEDIUM.",
+    "Section text: ### Phase-101: M293 DEFINITIVE RESOLUTION (LANDMARK)\n**M293 = 'ta' (DEDR 3003) PROMOTED TO MEDIUM**\n\nThe positional adjudication provides a definitive verdict:\n- Animal classifiers (puli=M006, erutu=M016, yaanai=M045, miin=M047, e=M062) are ALL **100% INITIAL**\n- M293 is only **6.9% INITIAL**, 59.9% MEDIAL, 33.2% TERMINAL\n- M293 appears 11× after genitive M267 and 48× before case suffixes\n- This positional profile is INCOMPATIBLE with an animal/tool classifier role\n\nConclusion: M293 = 'ta' (DEDR 3003, body/self) — a PERSONAL NAME COMPONENT, not a classifier.\nThe reading 'vil' (bow) is ruled out because it would predict INITIAL position (like all other animal/tool signs).\n\n**Anchors after Phase-101: 125 HIGH+MEDIUM (37 HIGH + 88 MEDIUM)**\nThis resolves the longest-standing single-sign uncertainty in the project.\n\n### Phase-102: PDF Extraction (pdfplumber)\n- 11 PDFs found in glossa-corpus/indus/sources/\n- 6 key PDFs processed with pdfplumber\n- im77intro.pdf (Mahadevan 1977): 25 pages, 416 chars — image-based, no extractable text\n- bulletin-1.pdf: 60 pages, 9 tables — field symbol descriptions (Unicorn=01, Bull=03, etc.)\n- Most PDFs are corrupted/HTML-wrapped\n- Key finding: im77intro.",
+    "May-2026 backup snapshots already record 'ta' (HIGH in the file by then — the tier Phase-116 later re-asserted via the SA gate).",
+    "Phase-105 used M293's profile as the known name-component reference (m293_reference_profile) — a use of the reading, not a HIGH-level validation of it."
+  ],
+  "later_non_sa_high_validation_search": {
+    "method": "trail ledger_mentions + artifact_mentions reviewed; no completed non-SA validation at HIGH level found in the recorded chain (Phase-108 register concurs: SA_CONFIRMED_ONLY under the load-bearing test)",
+    "ledger_mentions": [
+      {
+        "source": "glossa-indus/LEDGER.md",
+        "header": "### Phase-79: Anchor Gap Priority Analysis",
+        "line": 647,
+        "snippet": "- **Top priority sign: M293 (freq=232, 3.3% of tokens) — highest priority unknown**"
+      },
+      {
+        "source": "glossa-indus/LEDGER.md",
+        "header": "## Phase-81 through Phase-87 — M293 Analysis, Seal Translations, Gap Sprint, Formula Lexicon, CISI Crossval, Phonology, Anchor Sprint-120",
+        "line": 666,
+        "snippet": "## Phase-81 through Phase-87 — M293 Analysis, Seal Translations, Gap Sprint, Formula Lexicon, CISI Crossval, Phonology, Anchor Sprint-120"
+      },
+      {
+        "source": "glossa-indus/LEDGER.md",
+        "header": "### Phase-81: M293 Sign Deep-Dive",
+        "line": 669,
+        "snippet": "### Phase-81: M293 Sign Deep-Dive"
+      },
+      {
+        "source": "glossa-indus/LEDGER.md",
+        "header": "### Phase-88: Literature Mine + Extraction Pipeline",
+        "line": 741,
+        "snippet": "- Queries: Indus Dravidian core, Parpola sign readings, DEDR rebus, Mahadevan crosswalk, M293/bow, phoneme proposals, grammar/formula, recent work"
+      },
+      {
+        "source": "glossa-indus/LEDGER.md",
+        "header": "## Phase-101 through Phase-103 — M293 Resolved, PDF Extraction, Personal Name Lexicon",
+        "line": 840,
+        "snippet": "## Phase-101 through Phase-103 — M293 Resolved, PDF Extraction, Personal Name Lexicon"
+      },
+      {
+        "source": "glossa-indus/LEDGER.md",
+        "header": "### Phase-101: M293 DEFINITIVE RESOLUTION (LANDMARK)",
+        "line": 843,
+        "snippet": "### Phase-101: M293 DEFINITIVE RESOLUTION (LANDMARK)"
+      },
+      {
+        "source": "glossa-indus/LEDGER.md",
+        "header": "### Phase-103: Personal Name Lexicon",
+        "line": 867,
+        "snippet": "- M293 excluded (now confirmed='ta')"
+      },
+      {
+        "source": "glossa-indus/LEDGER.md",
+        "header": "### Verdicts",
+        "line": 958,
+        "snippet": "opposite of the M293 name-component reference (6.9% INITIAL). The"
+      },
+      {
+        "source": "glossa-indus/LEDGER.md",
+        "header": "### Spec 004 WS2 — M↔P crosswalk expansion (evidence-gated)",
+        "line": 1039,
+        "snippet": "M293→P293 (Phase-51 + Phase-56 + Phase-65 'comb'), M305→P305 (Phase-51"
+      }
+    ]
+  },
+  "determination": {
+    "rule": "spec 007 Step 3 (M293): highest tier supported by NON-SA evidence; Phase-101's adjudicated outcome (MEDIUM) is that tier",
+    "new_confidence": "MEDIUM",
+    "reading_changed": false
+  }
+}

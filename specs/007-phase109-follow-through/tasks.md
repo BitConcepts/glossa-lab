@@ -23,9 +23,9 @@
 - [x] T022 Foundation check
 
 ## Step 3 — Individual re-reviews (M293, M362, M398)
-- [ ] T030 Dossiers → `reports/phase109_dossier_M293.json` / `_M362.json` / `_M398.json` (incl. post-Phase-105 adjudication search for M362/M398)
-- [ ] T031 Apply registered caps (M293 → highest non-SA-supported tier; M362/M398 → at most MEDIUM)
-- [ ] T032 Foundation check
+- [x] T030 Dossiers → `reports/phase109_dossier_M293.json` / `_M362.json` / `_M398.json` (incl. post-Phase-105 adjudication search for M362/M398)
+- [x] T031 Apply registered caps (M293 → highest non-SA-supported tier; M362/M398 → at most MEDIUM)
+- [x] T032 Foundation check
 
 ## Step 4 — Promotion-path + governance fixes
 - [ ] T040 Rename `/staging/verify-sa` → `/staging/verify-archive` (+ deprecated alias); frontend/src updated

@@ -1488,7 +1488,7 @@
       "reading_direction": "rtl"
     },
     "M293": {
-      "confidence": "HIGH",
+      "confidence": "MEDIUM",
       "reading": "ta",
       "dedr_id": "DEDR 3003",
       "meaning": "body/self — personal name element",
@@ -1497,7 +1497,7 @@
       "reading_direction": "rtl",
       "validation_status": "pending_non_sa_validation",
       "provenance_class": "SA_CONFIRMED_ONLY",
-      "phase109_annotation": "Phase-109 (2026-10-06): SA-lineage HIGH anchor flagged under spec 007 Step 2: provenance_class=SA_CONFIRMED_ONLY (Phase-108 register); value and tier unchanged in this step; presented as a candidate pending non-SA validation (Phase-107 falsified SA as evidence for sign values)."
+      "phase109_annotation": "Phase-109 (2026-10-06): individual re-review under spec 007 Step 3: HIGH rested on the Phase-116 SA-only recalibration gate (SA-cons=1.00 the firing disjunct); under the no-SA-sufficient rule the highest tier its non-SA evidence supports is MEDIUM — the Phase-101 positional adjudication's own recorded outcome (2026-05-18). Reading unchanged. Dossier: reports/phase109_dossier_M293.json."
     },
     "M058": {
       "reading": "ke",
@@ -1753,17 +1753,19 @@
     },
     "M362": {
       "reading": "aṇi",
-      "confidence": "HIGH",
+      "confidence": "MEDIUM",
       "basis": "Starburst / asterisk iconography ~ aṇi 'ornament/adorn' (DEDR 0145). Phase-103: appears in name-slot patterns between animal classifiers and titles. Sangam literature: aṇi- prefix in personal names (Aṇi-van, Aṇi-tan). Positional: predominantly MEDIAL in personal name sequences. Freq=3; Pos=MEDIAL; name_slots=2. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-105]",
       "source": "Phase-105",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "phase109_annotation": "Phase-109 (2026-10-06): individual re-review under spec 007 Step 3: tier capped at MEDIUM — the latest adjudication (Phase-105) is INCONCLUSIVE (freq 3, below the positional-verdict floor) and was never superseded; the HIGH came from the Phase-216 recalibration gate, a promotion gate, not an adjudication. Reading unchanged. Dossier: reports/phase109_dossier_M362.json."
     },
     "M398": {
       "reading": "kuṟi",
-      "confidence": "HIGH",
+      "confidence": "MEDIUM",
       "basis": "Hook+ring iconography ~ kuṟi 'mark/sign' (DEDR 1769) or kuṟu 'small/short'. Phase-103: NAME_AY_AN + GENITIVE_NAME_SUFFIX patterns. Pattern [M267]-[M398]-[M342]: 'of-kuṟi-belonging' = genitive personal name. Score 1.2 (highest name_score in Phase-103 top candidates). Freq=3; Pos=MEDIAL; name_slots=3. [Phase-216: SA-cons=0.17 DEDR✓ source=Phase-105]",
       "source": "Phase-105",
-      "reading_direction": "rtl"
+      "reading_direction": "rtl",
+      "phase109_annotation": "Phase-109 (2026-10-06): individual re-review under spec 007 Step 3: tier capped at MEDIUM — the latest adjudication (Phase-105) is INCONCLUSIVE (freq 3, below the positional-verdict floor) and was never superseded; the HIGH came from the Phase-216 recalibration gate, a promotion gate, not an adjudication. Reading unchanged. Dossier: reports/phase109_dossier_M398.json."
     },
     "M318": {
       "reading": "kur",

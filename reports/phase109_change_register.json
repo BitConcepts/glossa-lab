@@ -3274,6 +3274,57 @@
       "citations": [
         "reports/phase108_provenance_register.json (SA_DERIVED)"
       ]
+    },
+    {
+      "step": "step3",
+      "sign": "M293",
+      "rule": "step3",
+      "action": "tier_change",
+      "before": {
+        "reading": "ta",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "ta",
+        "confidence": "MEDIUM"
+      },
+      "citations": [
+        "reports/phase109_dossier_M293.json"
+      ]
+    },
+    {
+      "step": "step3",
+      "sign": "M362",
+      "rule": "step3",
+      "action": "tier_change",
+      "before": {
+        "reading": "aṇi",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "aṇi",
+        "confidence": "MEDIUM"
+      },
+      "citations": [
+        "reports/phase109_dossier_M362.json"
+      ]
+    },
+    {
+      "step": "step3",
+      "sign": "M398",
+      "rule": "step3",
+      "action": "tier_change",
+      "before": {
+        "reading": "kuṟi",
+        "confidence": "HIGH"
+      },
+      "after": {
+        "reading": "kuṟi",
+        "confidence": "MEDIUM"
+      },
+      "citations": [
+        "reports/phase109_dossier_M398.json"
+      ]
     }
   ]
 }

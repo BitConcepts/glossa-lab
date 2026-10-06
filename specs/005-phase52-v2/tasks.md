@@ -30,12 +30,12 @@
 
 ## Step 4 — Corpus pooling + acquisition hunt
 - [x] T040 Audit CITATIONS.md ingested sources (no re-fetch list)
-- [ ] T041 Convert in-repo CISI subset via crosswalk v2.1; dedupe vs Holdat; pool
+- [x] T041 Convert in-repo CISI subset via crosswalk v2.1; dedupe vs Holdat; pool
 - [x] T042 Hunt: RMRL Mahadevan concordance (download attempt, outcome logged)
 - [x] T043 Hunt: ICIT / CISID / CDLI / Harappa.com / Wells / code hosts / Zenodo-Figshare-OSF / 2025-conference + Dixit datasets / Dilmun-Gulf
 - [x] T044 Ingest obtained corpora as flagged layers + CITATIONS.md entries
-- [ ] T045 Re-run Step-1a primary metric on enlarged pool (best objective)
-- [ ] T046 Step4 artifact: ingested / not-obtained (blocker) / not-found lists
+- [x] T045 Re-run Step-1a primary metric on enlarged pool (best objective)
+- [x] T046 Step4 artifact: ingested / not-obtained (blocker) / not-found lists
 
 ## Step 5 — Numerals/metrology
 - [ ] T050 Extract stroke-numeral family + C3 pattern from named artifacts

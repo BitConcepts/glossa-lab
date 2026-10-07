@@ -568,7 +568,6 @@ def build_panel(workers: int = 2) -> dict:
                            "tokens": sum(len(t) for t in texts)}
 
     # Remap + draw + extract features.
-    jobs = []  # (cid_order, code, corpus_index, size_label, n_tokens, draw_index, texts_int)
     remapped: dict[str, list[list[int]]] = {}
     for corpus_index, code, _role in MEMBERS:
         remapped[code] = _remap(texts_by_code[code], corpus_index)

@@ -275,7 +275,6 @@ def compute_verdict(
     v2: dict[str, dict] = {}
     v2_all = True
     for code, post in rep.items():
-        ling_col_proxy = None  # linguistic mass vs single-class odds:
         # BF for linguistic over a comparator class = median over draws
         # of P(linguistic)/P(comparator) (spec section 9 operationalization)
         ling_mass = post[:, fam_cols].sum(axis=1)

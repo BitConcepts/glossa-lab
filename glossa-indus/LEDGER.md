@@ -2064,3 +2064,28 @@ reports/phase113_nonsa44_summary.md.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+---
+
+## Phase-115 — Non-SA Validation Battery v2 (spec 014): Rejected at Calibration
+
+Executed as frozen (spec committed alone in `fddd4dbf` before any
+results). T1 rebuilt on the expanded v2 ICIT layer (4,531
+inscriptions / 13,492 mapped tokens, 91.554% coverage; v1 was
+1,007 / 2,238 / 69.3% — the dominant v1 loss was a leading-zero
+key mismatch, 4,014 tokens) with opportunity-scaled attestation
+floors; T2/T3/gates/decision rule unchanged from spec 011.
+
+Positive control (STRICT94, leave-one-out): VALIDATED 1 /
+DEMOTE 57 / UNRESOLVED 36 — gate (≥ 57) **FAILED**. Negative
+control (KUR113): VALIDATED 0 — gate (≤ 5) passed. Verdict:
+**BATTERY REJECTED**; FLAGGED44 never run; anchors untouched;
+the 44 remain `pending_non_sa_validation`. Diagnosis: of 51
+judged strict signs, 43 fail T1 (40 modal-class disagreements,
+median TV 0.79; 25/94 strict signs have zero ICIT tokens).
+Cross-corpus positional profiles do not transfer between
+Holdat and the ICIT layer at the frozen tolerance — a
+harmonization question for a future spec, not another battery.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

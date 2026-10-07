@@ -2629,6 +2629,17 @@ try:
 except Exception as _p113_exc:  # noqa: BLE001
     logger.warning("Phase-113 (spec 011) nodes not registered: %s", _p113_exc)
 
+# ── Phase-115 nodes (spec 014: non-SA validation battery v2, 44 flagged anchors) ──
+try:
+    from glossa_lab.experiment_graph_phase115 import (
+        _phase115_node_defs as _p115_defs,  # noqa: PLC0415
+    )
+    for _d in _p115_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-115 (spec 014) nodes", len(list(_p115_defs())))
+except Exception as _p115_exc:  # noqa: BLE001
+    logger.warning("Phase-115 (spec 014) nodes not registered: %s", _p115_exc)
+
 # ── Phase-110-115 nodes (targeted SA, allographs, grammar infer, M→H upgrade, seal translations, significance) ──
 try:
     from glossa_lab.experiment_graph_phase110_115 import (

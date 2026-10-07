@@ -865,3 +865,72 @@ the direction of Tristen Pierson, per constitution §VI.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## [2026-10-07] Entry — Phase-113 / Spec 012: Blind Language-Affiliation Study, Adversarial Protocol — Pre-Registration Frozen
+
+- **Why this study exists:** Phase-111 fell to unigram mimicry
+  (S1/S2), Phase-112 — with only order-carrying features — fell
+  to S5, a grammar-free positional-bigram template (control
+  share 0.00). The recorded lesson, twice confirmed: a fixed
+  trap is beaten by the next subtler mimic. Owner authorized
+  the adversarial successor 2026-10-07 (roadmap item 4).
+- **Pre-registration:** spec 012
+  (`specs/012-phase113-blind-affiliation/`) committed in its own
+  commit AFTER the design-stage tooling commits (110c1fe9,
+  dc57566b) and BEFORE any Phase-113 panel build, gate
+  evaluation, adversarial round, or Indus statistic exists; the
+  git order is the registration proof. **The design change:**
+  fixed traps are replaced by an adversarial protocol — a
+  feature ladder frozen in advance (L1 = spec-010's 16; L2 =
+  L1 + admitted family B; L3 = L2 + admitted family C), three
+  rounds (one per ladder step), each with the round classifier
+  frozen while a deterministic, seeded, budgeted optimizer
+  (200 evaluations/round) searches a parametric generator
+  family G(θ) — positional/global bigram+trigram mixtures with
+  burst and copy components — for corpora that match R1 on all
+  previous rounds' feature families and maximize family
+  assignment. A round holds only if the frozen classifier
+  rejects the optimized generator in ≥ 95% of draws; a defeat
+  ends the run INVALID at that round with the defeating
+  generator reported in full. Final control validity is
+  conjunctive over S1–S5 and A1–A3 under C_3; the §10 verdict
+  fires only if every round holds.
+- **Feature admission (design stage, known corpora only):**
+  every new candidate had to pass BOTH the spec-010
+  permutation-sensitivity audit (median |d| ≥ 0.8, same sign
+  ≥ 8/9, non-degenerate ≥ 5/9) AND a new power audit at
+  N = 7,002 (median pairwise between-class |Cohen's d| ≥ 0.5).
+  Outcome: family B admitted 8 of 14 (`blockH5`, `blockH6`,
+  `mi_lag2`, `mi_lag3`, `rep_adj_4`, `adj_clustering_lag2`,
+  `restore_acc_tri`, `bigram_type_ratio_lag2`); family C
+  admitted 6 of 6. The power audit admitted all 20 candidates;
+  every exclusion was made by the permutation audit (six
+  family-B candidates with inconsistent permutation-response
+  sign). Ladder power at N = 7,002: family balanced accuracy
+  1.000 at all three ladder steps. **The pre-registered
+  INDETERMINATE AT THIS CORPUS SIZE outcome does NOT fire**
+  (criteria: < 3 admitted new features — 14 admitted; or
+  full-ladder family BA at 7,002 < 0.70 — it is 1.000), so the
+  adversarial rounds proceed. Full record:
+  `reports/phase113_feature_audit.json`.
+- **Inherited unchanged from specs 009/010:** panel (as
+  assembled, with its registered gaps), resampling
+  (N = 11,000; 100 draws; sensitivity 5k/19.6k), unit rules,
+  S1–S5 controls and their generator-training instances, LDA
+  classifier, custodian/analyst blinding, gate thresholds,
+  verdict rules and V6 vocabulary, BH q = 0.05, licensing
+  discipline (publish nothing requiring permission we lack).
+- **Staging note:** the Phase-112 panel staging was lost with
+  its worktree; the identical panel was re-obtained from the
+  same openly licensed origins into the gitignored
+  `sources/phase113/` and **verified loader-equivalent**: all
+  eleven loader-backed corpora reproduce the committed
+  Phase-111 build log exactly (11/11 MATCH; Holdat and ICIT
+  transferred with SHA-256 equality). Record:
+  `reports/phase113_acquisition_log.json`.
+- **Status at this entry:** spec frozen; no panel built, no
+  gate run, no round run, no result exists. Outcome entries
+  follow as separate appends. No anchors touched.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

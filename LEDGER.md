@@ -865,3 +865,85 @@ the direction of Tristen Pierson, per constitution §VI.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## [2026-10-07] Entry — Phase-113 / Spec 011: Non-SA Validation Battery for the 44 SA-Lineage Anchors — Pre-Registration Frozen
+
+- **Spec:** `specs/011-phase113-nonsa44-validation/` (spec/plan/tasks),
+  committed alone at `81049c98` before any battery code ran against
+  any anchor. Owner authorization: Tristen Pierson, 2026-10-07
+  (roadmap item 2).
+- **Question:** do the 44 anchors Phase-109 flagged
+  `pending_non_sa_validation` (24 SA_DERIVED + 20 SA_CONFIRMED_ONLY;
+  43 HIGH + M293 MEDIUM) survive a validation battery that never
+  touches an SA output (H26)?
+- **Frozen battery:** T1 cross-corpus consistency (ICIT converted
+  layer vs Holdat; attestation floor 3 tokens; modal-class agreement;
+  profile TV ≤ 0.40); T2 positional-grammar fit vs the strict
+  SA-independent core (profile TV ≤ 0.35 to the class centroid, modal
+  share ≥ 0.45; reading–slot phonotactics incl. Phase-58 initial
+  validity and a frozen syllable canon); T3 compositional
+  co-occurrence (≥ 3 strict partners at co-occurrence ≥ 2; ≥ 4
+  fully-core-readable contexts; ≥ 0.75 canon-legal compositions).
+- **Frozen decision rule:** VALIDATED_NON_SA iff all three PASS
+  (tier unchanged; this phase validates or demotes, never promotes);
+  DEMOTE to CANDIDATE on any FAIL; UNRESOLVED otherwise (stays
+  flagged).
+- **Frozen calibration gates (run before the 44):** STRICT94
+  leave-one-out VALIDATED ≥ 57/94; KUR113 (Phase-110
+  premise-superseded cohort) VALIDATED ≤ 5/113. A failed gate
+  rejects the battery: no re-tuning under this spec, FLAGGED44
+  never run, anchors file untouched.
+- **Machinery (H23/H15):** `phase113_battery.py` (pure counting;
+  no SA artifact read; syllabic LM deliberately unused),
+  `phase113_run.py`, runner `phase113_nonsa_battery.py`, graph
+  node `IndusPhase113NonSaValidation` registered and asserted in
+  ATOMIC_NODES before any run; 30 unit tests (canon, profiles,
+  decision-rule truth table, toy end-to-end controls, set
+  recomputation, registration).
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+## [2026-10-07] Entry — Phase-113 / Spec 011: Outcome — Battery Rejected at the Calibration Gates (BATTERY REJECTED)
+
+- **Calibration, executed exactly as frozen.** STRICT94
+  (positive control, leave-one-out): VALIDATED **3** / DEMOTE 45 /
+  UNRESOLVED 46 — the ≥ 57 gate **FAILED**. KUR113 (negative
+  control): VALIDATED **0** / DEMOTE 16 / UNRESOLVED 97 — the
+  ≤ 5 gate passed. Battery **rejected**; FLAGGED44 was never run;
+  `INDUS_FINAL_ANCHORS.json` is byte-untouched by this phase; no
+  anchor changed tier or status. Full record:
+  `reports/phase113_nonsa44_results.json` +
+  `reports/phase113_nonsa44_summary.md`.
+- **Diagnosis (descriptive, from the calibration records; no
+  re-tuning performed):** T2 is sound (profile fit passes 91/94;
+  its 13 failures are all the class-initial-inventory sub-check).
+  T3's legality component never fires (0/89 strict signs with
+  contexts below the 0.75 legal bar); its binding constraint is
+  partner support under leave-one-out. **T1 is the failing
+  component and it fails on data:** 45/94 strict signs have zero
+  tokens in the ICIT converted layer and 16 more sit below the
+  attestation floor (61/94 NOT_ATTESTED); of the 33 attested,
+  22 fail modal-class/profile agreement. The converted layer
+  (1,007 inscriptions / 2,238 tokens of 5,679 source
+  inscriptions, 69.3% token-map coverage) is too sparse and
+  conversion-noisy to carry a conjunctive cross-corpus gate —
+  the spec §8 caveat, now measured. The kur gate confirms the
+  battery does not validate known-bad readings, but a battery
+  that cannot validate the known-good core either is not a
+  validation instrument.
+- **Lesson recorded for any successor spec:** a cross-corpus
+  test is only as strong as the converted layer beneath it;
+  either rebuild T1 on a fuller ICIT extraction (the restricted
+  4,410-inscription OCR corpus exists locally but is in ICIT
+  numbering with probabilistic ordering) or scale attestation
+  floors to measured layer coverage — by new spec, never by
+  patching this run. The 44 anchors remain
+  `pending_non_sa_validation`; their status is unchanged and
+  the question stays open.
+- **Suite / foundation:** recorded in the PR body (full backend
+  suite; foundation check per H21 — anchors untouched, reports
+  added).
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

@@ -2112,3 +2112,47 @@ prior result altered.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-114 — Correction: Renumbering from Phase-113; §6 Sanity-Anchor Qualification (spec 012)
+
+Records correction, 2026-10-07. Append-only: the Phase-113 /
+spec 012 entries above (pre-registration and outcome) stand as
+written when made and are not altered. No re-run was performed
+and no study outcome is affected.
+
+This study was designed and executed as "Phase-113" in parallel
+with spec 011's non-SA validation study, which also carried
+Phase-113 and merged first (PR #69), retaining the number.
+This study (spec 012, adversarial blind affiliation) is
+renumbered **Phase-114**. Frozen artifact filenames
+(`reports/phase113_*` and the `phase113_*` code modules) are
+retained unchanged; "Phase-113" in those artifacts and in the
+entries above refers to this study. Dated renumbering notes
+were added at the top of
+`specs/012-phase113-blind-affiliation/spec.md` and of
+`reports/phase113_blind_affiliation_summary.md`.
+
+Also recorded on the same date: a qualification of the spec §6
+sanity anchor. The anchor's positional-bigram TV < 0.10 is
+statistic-dependent: under the finest-grained
+(frequency-weighted per-(b, b′, x)-context) reading, the
+identical-model sampling-noise floor at ~55k tokens is 0.246
+and G(θ_S5)-vs-S5 measured 0.243 — no systematic excess over
+the noise floor — so the committed unit test asserts TV < 0.30
+AND TV ≤ noise floor + 0.05, plus unigram TV to R1 < 0.10
+(measured 0.038); under the coarser per-bin-pair successor-TV
+reading the value is 0.064, which meets 0.10. The anchor's
+substance is confirmed three ways (S5's recorded unigram TV to
+R1 = 0.0419 reproduced exactly; no excess over the noise floor;
+candidate 0 behaved exactly as S5 in the run — objective
+0.99999995 under C_1, unigram TV 0.0383). No study outcome
+depends on the anchor's threshold; the INVALID-at-round-1
+verdict rests solely on the frozen rounds protocol (spec 012
+§§7–10). Full record: spec 012 §12.1 addendum (2026-10-07) and
+the dated footnote in
+`reports/phase113_blind_affiliation_summary.md` at the
+candidate-0 mention.
+
+**AI disclosure:** records corrections recorded by an AI agent
+(Muse Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

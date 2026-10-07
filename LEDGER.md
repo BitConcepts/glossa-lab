@@ -701,3 +701,55 @@ the direction of Tristen Pierson, per constitution §VI.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## [2026-10-06] Entry — Phase-111 / Spec 009: Outcome — Gate Passed Perfectly; Run Invalid at Control Validity (INVALID RUN)
+
+- **Execution:** pipeline as committed at 92cad2ab (custodian /
+  features / analyst / orchestrator + H23 graph nodes; 17 unit
+  tests passing pre-run). Panel built from the frozen roster +
+  Addendum A substitutions/gaps (UD treebanks for the K8/K9
+  decoys; K6 Akkadian and N2 proto-cuneiform logged gaps, never
+  scraped around; acquisition record:
+  reports/phase111_acquisition_log.json). As built: 9 known
+  corpora, 3 anonymized Indus replicates (R1 7,002 tokens /
+  390 signs; R2 14,213 / 713; R3 pooled 21,215 / 1,103),
+  4 synthetic controls. No corpus fell under the 5,000-token
+  power rule.
+- **Gate (§7): PASSED on both tests.** G1 linguistic balanced
+  accuracy 1.000 (requirement ≥ 0.85), bootstrap 95% CI lower
+  bound 1.000 (> 0.70), p = 0.00050. G2 family balanced
+  accuracy 1.000 (≥ 0.70), permutation p = 0.000999 (< 0.001,
+  1,000 permutations); per-family recall 1.000 for all seven
+  families. BH-adjusted T1/T2 p = 0.0020 (q = 0.05).
+- **Control validity (§8): FAILED — the run's binding outcome.**
+  S3 (heraldic generator) and S4 (administrative generator)
+  classified non-linguistic in 1.00 of draws, but S1 (within-text
+  permutation of R1) and S2 (i.i.d. Zipf matched to R1 unigrams)
+  classified non-linguistic in **0.00** of draws against the
+  ≥ 0.95 requirement: both Indus-derived nulls sat in family
+  space in every draw. Recorded mechanism: the gate's attested
+  non-linguistic class rested on khipu alone (N2 gap), a
+  vocabulary-10 outlier, so the validated boundary never had to
+  reject structureless draws carrying a linguistic unigram
+  profile. Per §8 this invalidates the run, not the hypotheses.
+- **Verdict (V6 vocabulary, verbatim):** `INVALID RUN —
+  CONTROL VALIDITY FAILED`. No §9 verdict rule fired; T3/T4
+  exceedance values in the results file are audit-only and carry
+  no verdict weight. No Indus affiliation claim — for or against
+  any family, or for linguistic status itself — is made by this
+  phase. Unblinding event: 2026-10-07T03:52:39.601141+00:00,
+  code HEAD 92cad2ab (digests in the results file). No re-runs,
+  no tuning, per §6/§11. Reports:
+  reports/phase111_blind_affiliation_results.json +
+  reports/phase111_blind_affiliation_summary.md.
+- **Lesson recorded for any successor spec:** a gate whose
+  non-linguistic class has one attested, extreme-outlier member
+  cannot validate the boundary the verdict path needs; control
+  validity caught it, which is the protocol working. A future
+  panel needs a comparably difficult attested non-linguistic
+  member or null classes inside the gate — by new spec, never
+  by patching this run.
+- **No anchors touched; no prior result altered.**
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

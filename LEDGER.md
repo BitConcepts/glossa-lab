@@ -1005,3 +1005,46 @@ the direction of Tristen Pierson, per constitution §VI.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## [2026-10-07] Entry — Correction: Spec 012 Study Renumbered Phase-113 → Phase-114; §6 Sanity-Anchor Qualification Recorded
+
+Append-only records correction to the two spec-012 entries above
+(freeze and outcome, both 2026-10-07). The original entries stand
+as written when made; nothing in them is altered. No re-run was
+performed and no study outcome is affected.
+
+- **Renumbering.** Spec 012's adversarial blind-affiliation study
+  was designed and executed as "Phase-113" in parallel with spec
+  011's non-SA validation study, which also carried Phase-113 and
+  merged first (PR #69), retaining the number. Spec 012's study
+  is renumbered **Phase-114**. Frozen artifact filenames
+  (`reports/phase113_*` and the `phase113_*` code modules) are
+  retained unchanged; "Phase-113" in those artifacts and in the
+  entries above refers to this study. Dated renumbering notes
+  were added at the top of
+  `specs/012-phase113-blind-affiliation/spec.md` and of
+  `reports/phase113_blind_affiliation_summary.md`.
+- **§6 sanity-anchor qualification.** Spec 012 §6 requires
+  positional-bigram TV between G(θ_S5) and the frozen S5
+  generator < 0.10. Under the finest-grained reading of that
+  statistic (frequency-weighted per-(b, b′, x)-context TV), two
+  samples from the identical model at ~55k tokens already sit at
+  0.246 (the sampling-noise floor); G(θ_S5)-vs-S5 measured 0.243
+  — no systematic excess over the noise floor. The committed
+  unit test therefore asserts TV < 0.30 AND TV ≤ noise floor +
+  0.05, plus unigram TV to R1 < 0.10 (measured 0.038); under the
+  coarser per-bin-pair successor-TV reading the value is 0.064,
+  which does meet 0.10. The anchor's substance is confirmed
+  three ways (S5's recorded unigram TV to R1 = 0.0419 reproduced
+  exactly; no excess over the identical-model noise floor;
+  candidate 0 behaved exactly as S5 in the run — objective
+  0.99999995 under C_1, unigram TV 0.0383). No study outcome
+  depends on the anchor's threshold: the INVALID-at-round-1
+  verdict rests solely on the frozen rounds protocol (spec 012
+  §§7–10). Recorded in full as the §12.1 addendum (2026-10-07)
+  in the spec and as a dated footnote in the summary at the
+  candidate-0 mention.
+
+**AI disclosure:** records corrections recorded by an AI agent
+(Muse Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

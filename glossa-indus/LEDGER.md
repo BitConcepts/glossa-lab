@@ -1985,3 +1985,36 @@ as the frozen thresholds dictate.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-112 — Outcome: Gate Passed; INVALID RUN at Control Validity, at S5 (spec 010)
+
+Executed as frozen (spec 9410a23d; pipeline 7e2626cf,
+unmodified). Gate (§7) passed perfectly: G1 linguistic balanced
+accuracy 1.000, bootstrap CI lower bound 1.000, p = 0.00050; G2
+family balanced accuracy 1.000, permutation p = 0.000999; all
+seven family recalls 1.000. Control validity (§8) then split
+exactly on the design's seam: S1 (permuted Indus texts) and S2
+(i.i.d. Zipf) — the nulls that scored 0.00 and invalidated
+Phase-111 — now scored **1.00**, rejected in every draw, as did
+S3/S4; but **S5 (positional-bigram template generator) scored
+0.00**, classified linguistic in 100% of draws. S5 has no
+grammar: it matches R1's text lengths, its unigram profile
+(TV = 0.0419), and its relative-position bigram statistics by
+construction — and the admitted order features measure exactly
+those statistics, so the template is indistinguishable from
+linguistic order for this vector. §8 is conjunctive; verdict,
+verbatim per §9 V6: **INVALID RUN — CONTROL VALIDITY FAILED**.
+The run is invalid; the hypotheses are untouched. No affiliation
+claim in either direction, no anchor changes, no re-runs or
+tuning (§6/§11). Unblinded 2026-10-07T16:02:08.334428+00:00.
+Run record (including two aborted build attempts — host
+contention stall and a VM reboot — disclosed in the summary).
+Suite 643 passed / 11 skipped / 0 failed; foundation check
+40 / 0 / 8. Full record:
+reports/phase112_blind_affiliation_results.json,
+reports/phase112_blind_affiliation_summary.md,
+reports/phase112_acquisition_log.json,
+reports/phase112_feature_audit.json.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.

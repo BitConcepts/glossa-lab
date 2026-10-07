@@ -807,3 +807,61 @@ the direction of Tristen Pierson, per constitution §VI.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## [2026-10-07] Entry — Phase-112 / Spec 010: Outcome — Gate Passed; INVALID RUN at Control Validity, at the New S5 Trap (INVALID RUN)
+
+- **Execution:** pipeline as committed at 7e2626cf (custodian /
+  features / analyst / orchestrator + H23 graph nodes, verified in
+  ATOMIC_NODES pre-run; 18 unit tests passing). Panel rebuilt from
+  the re-staged, loader-equivalence-verified sources (all 12
+  loadable corpora MATCH the Phase-111 build log exactly). Two
+  aborted build attempts preceded the completed run — a worker
+  stall under extreme host contention and a VM reboot mid-build;
+  neither produced any statistic (panel file is written only at
+  build completion). The completed run used BLAS thread-count env
+  pinning as a stall mitigation (environment only; no code, seed,
+  or threshold changed). Full disclosure in the summary.
+- **Gate (§7): PASSED on both tests.** G1 linguistic balanced
+  accuracy 1.000 (CI lower bound 1.000, p = 0.00050); G2 family
+  balanced accuracy 1.000 (permutation p = 0.000999); per-family
+  recall 1.000 for all seven families. Order-carrying features
+  alone separate the known corpora perfectly at Indus size.
+- **Control validity (§8): FAILED at S5 — the run's binding
+  outcome.** Shares classified non-linguistic (requirement
+  ≥ 0.95 each): S1 permutation **1.00**, S2 i.i.d. Zipf **1.00**,
+  S3 heraldic **1.00**, S4 administrative **1.00** — the traps
+  that invalidated Phase-111 (S1/S2 at 0.00 there) are now
+  rejected in every draw; the one design change did its work.
+  But **S5 (positional-bigram template generator) scored 0.00**:
+  a grammar-free process matching R1's lengths, its unigram
+  profile (TV distance 0.0419), and its relative-position bigram
+  statistics by construction sat in family space in 100% of
+  draws. §8 is conjunctive; the run is invalid.
+- **Verdict (V6 vocabulary, verbatim):** `INVALID RUN —
+  CONTROL VALIDITY FAILED`. No §9 verdict rule fired; T3/T4
+  exceedance values and the sensitivity descriptives in the
+  results file are audit-only and carry no verdict weight. No
+  Indus affiliation claim — for or against any family, or for
+  linguistic status itself — is made by this phase. Unblinding
+  event: 2026-10-07T16:02:08.334428+00:00, code HEAD 7e2626cf
+  (digests in the results file). No re-runs, no tuning, per
+  §6/§11. Reports:
+  reports/phase112_blind_affiliation_results.json +
+  reports/phase112_blind_affiliation_summary.md.
+- **Lesson recorded for any successor spec:** order statistics
+  up to relative-position bigrams are reproducible by a
+  positional template process with no grammar; discrimination
+  claims must be validated against positional-template nulls,
+  not only against order destruction. Any successor needs its
+  own pre-registered audit and traps for whatever longer-range
+  structure it proposes to measure — by new spec, never by
+  patching this run.
+- **Suite / foundation:** backend suite 643 passed / 11 skipped
+  / 0 failed (the +1 skip vs the Phase-111 baseline is
+  Phase-111's own panel test skipping — its runtime state lived
+  in the removed Phase-111 worktree); foundation check
+  40 passed / 0 failed / 8 warnings.
+- **No anchors touched; no prior result altered.**
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

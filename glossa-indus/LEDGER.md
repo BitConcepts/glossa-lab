@@ -2086,6 +2086,56 @@ median TV 0.79; 25/94 strict signs have zero ICIT tokens).
 Cross-corpus positional profiles do not transfer between
 Holdat and the ICIT layer at the frozen tolerance — a
 harmonization question for a future spec, not another battery.
+## Phase-116 — Corpus-Harmonization Study: Pre-Registration (spec 015)
+
+Spec `specs/015-phase116-corpus-harmonization` frozen (committed
+alone, `0b626308`, before any results). Owner direction
+2026-10-07. Diagnostic only — no anchor changes, no validation
+verdicts. Question (Phase-115's recorded successor): why do
+Holdat and ICIT positional profiles disagree (T1 v2: 51 judged,
+43 FAIL, 40 modal, median TV 0.789474)? Five frozen hypothesis
+families — composition (paired matched-text test), segmentation
+(sentinel-strip; artifact units), mapping (concentration +
+crosswalk audit), direction (matcher orientation; global flip),
+definition (continuous relative position) — numeric verdict
+thresholds, BH q = 0.05 on the one per-sign family, and a
+recommendation assembled mechanically from verdicts (spec §6).
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-116 — Outcome: Mapping and Definition Refuted; Composition, Segmentation, Direction Unresolved at Frozen Power — R-NONE (spec 015)
+
+Baseline T1 v2 reproduced exactly under assertion (51 judged /
+8 PASS / 43 FAIL / median TV 0.789474); keyed layer reproduces
+the Phase-115 v2 layer exactly (4,531 / 13,492 / 2,388);
+conversion audit 16,141 tokens, zero mismatches. Matcher yield:
+Tier A 13, Tier B 17, Tier C 1 (raw compatible pairs 135 direct
+vs 240 reversed). Verdicts: **H-COMPOSITION UNRESOLVED**
+(power — 13 pairs < the frozen 100-pair gate; the 3 qualifying
+signs agree perfectly on the restriction, which licenses
+nothing at n=3). **H-SEGMENTATION UNRESOLVED** — S1 REFUTED
+(sentinel stripping worsened failures 43 → 45; the
+sentinel-geometry mechanism is dead), S2 UNRESOLVED (power;
+descriptively no repair: TV 0.1042 artifact vs 0.0917 row).
+**H-MAPPING REFUTED** — disagreement is diffuse (top-10 TV
+share 0.2956), not crosswalk-concentrated. **H-DIRECTION
+UNRESOLVED** — D1 underpowered (30 pairs; reversed share
+0.5667), D2 in the frozen unresolved band (flip improves
+agreement 0.2157 → 0.3137, +0.098 — contributory at most, not
+primary). **H-DEFINITION REFUTED** — median W1 0.4519,
+material-displacement share 0.6863, Spearman ρ of per-sign mean
+relative positions −0.0826: genuine positional displacement,
+not binning. 43/51 judged signs disagree beyond sampling noise
+(BH). Recommendation (mechanical, spec §6): **R-NONE** — no
+harmonization transformation is justified; cross-corpus
+positional validation on this compilation pair is not viable;
+a future battery must not gate conjunctively across these
+corpora. Anchors untouched; the 44 remain
+`pending_non_sa_validation`. Suite 687 / 11 / 0 (baseline
+673 / 11 + 14 new); foundation 40 / 0 / 8; ruff clean. Reports:
+reports/phase116_harmonization_results.json,
+reports/phase116_harmonization_summary.md.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.

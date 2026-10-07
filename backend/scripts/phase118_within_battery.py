@@ -24,7 +24,8 @@ if __name__ == "__main__":
     print({"battery_accepted": gates["battery_accepted"],
            "phi": {d: rec["phi"]
                    for d, rec in out["phi"]["directions"].items()},
-           "judgeability": out["judgeability"]["counts"],
+           "judgeability": {"J94": out["judgeability"]["J94"]["n"],
+                            "JKUR": out["judgeability"]["JKUR"]["n"]},
            "positive_gate": gates["positive"],
            "negative_gate": gates["negative"],
            "strict_tally":

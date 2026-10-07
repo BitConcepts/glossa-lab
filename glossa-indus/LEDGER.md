@@ -1905,3 +1905,28 @@ Muse) at the direction of Tristen Pierson, per constitution §VI.
 Anchor changes in this package are made only under the
 pre-registered spec 008 rules (incl. its dated addendum); the
 package PR is opened unmerged for Tristen's review.
+
+## Phase-111 — Blind Language-Affiliation Study: Pre-Registration (spec 009)
+
+Spec 009 (`specs/009-phase111-blind-affiliation/`) frozen and
+committed 2026-10-06 before any pipeline output exists, executing
+the owner-approved blind-study design (deep-research report
+`indus-blind-language-affiliation-study-d-20261007-0101`). The study
+tests, with a frozen 28-feature joint vector + LDA under
+custodian/analyst blinding, whether the Indus sign system classifies
+as linguistic and — only if a pre-registered validation gate on
+known corpora truncated to Indus dimensions passes (linguistic
+balanced accuracy ≥ 0.85, family ≥ 0.70, permutation p < 0.001) —
+whether it discriminates among language families under frozen
+support (posterior ≥ 0.90, BF ≥ 10) and refutation (BF < 3 /
+TOST ±0.05) thresholds. Indus enters as 3 anonymized replicates
+(Holdat/Mahadevan, ICIT/Wells — local computation only, mixed).
+Registered gaps: Elamite (no verified open corpus), attested SCA
+heraldry (license unverified; synthetic generator substitutes).
+Dictionary-reading (SA) is excluded from the verdict path —
+falsified as a validation instrument by Phase-107. No anchors are
+touched by this phase. Outcome to be appended as a separate entry
+exactly as the frozen thresholds dictate.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.

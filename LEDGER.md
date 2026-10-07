@@ -660,3 +660,44 @@ Branch `feat/phase110-m222-adjudication` (PR opened, not merged).
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## [2026-10-06] Entry — Phase-111 / Spec 009: Blind Language-Affiliation Study — Pre-Registration Frozen
+
+- **Design source:** deep-research report
+  `~/workspace/research_notes/indus-blind-language-affiliation-study-d-20261007-0101/report.md`
+  (sourced design: ranked feature set, matched-size panel, gate and
+  verdict thresholds, blinding protocol, licensing survey).
+  Owner approved execution of the full path 2026-10-06
+  ("do all this now").
+- **Pre-registration:** spec 009
+  (`specs/009-phase111-blind-affiliation/`) is committed in its own
+  commit BEFORE any pipeline output exists; the git order is the
+  registration proof. Frozen in it: the 28-feature vector (design
+  report ranks 2–9 as one joint vector; rank 10 dictionary-reading
+  excluded — SA falsified by Phase-107), the panel (Linear B, Vedic +
+  Classical Sanskrit, Old Tamil, Sumerian Ur III, Akkadian, Ge'ez,
+  Turkish + Malay/Indonesian decoys; khipu + proto-cuneiform as
+  attested non-linguistic; synthetics S1–S4; Indus as 3 anonymized
+  replicates under Mahadevan and Wells sign lists), resampling
+  (N = 11,000, 100 draws, target length distribution = Holdat
+  empirical, mean 4.193), the VALIDATION GATE (linguistic balanced
+  accuracy ≥ 0.85 with lower 95% CI > 0.70 AND family balanced
+  accuracy ≥ 0.70 with permutation p < 0.001; failure = STOP,
+  INCONCLUSIVE, no Indus classification), SUPPORT thresholds
+  (posterior ≥ 0.90, BF ≥ 10 vs runner-up AND vs both synthetic
+  generators, same winner both sign lists in ≥ 90% of draws),
+  REFUTATION rule (BF < 3 or TOST ±0.05 = NO FAMILY
+  DISCRIMINATION), BH q = 0.05, custodian/analyst separation.
+- **Registered gaps at freeze time:** Elamite (no verified open
+  corpus — not scraped around); attested SCA heraldry (license
+  unverified — synthetic heraldic generator substitutes).
+- **Licensing:** owner directive — publish nothing requiring
+  permission we lack; raw downloads live only in the gitignored
+  sources dir; only feature vectors, statistics, code, and logs
+  are committed.
+- **Status at this entry:** spec frozen; no panel built, no gate
+  run, no result exists. Outcome entries follow as separate
+  appends.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

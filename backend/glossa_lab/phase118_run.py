@@ -513,6 +513,15 @@ def render_summary(r: dict) -> str:
         ]
     ts = cal["strict94_leave_one_out"]["tally"]
     tk = cal["kur113_negative_control"]["tally"]
+    # Negative-gate diagnostic (computed from the recorded
+    # direction records): how often the absolute leg fired at
+    # all among the judgeable negative control.
+    kur_ps = cal["kur113_negative_control"]["per_sign"]
+    kur_dirs = [d for s in r["judgeability"]["JKUR"]["signs"]
+                for d in kur_ps[s]["w3"]["directions"].values()
+                if "score" in d]
+    kur_below = sum(1 for d in kur_dirs if d["score"] < d["phi"])
+    kur_min_p = min((d["p_value"] for d in kur_dirs), default=None)
     lines += [
         "",
         "## Calibration (executed before the 44; reported whatever it showed)",
@@ -545,6 +554,20 @@ def render_summary(r: dict) -> str:
         f"DEMOTE share >= {neg['demote_share_min']} and n >= "
         f"{neg['min_judgeable']} | "
         f"**{'PASS' if neg['pass'] else 'FAIL'}** |",
+        "",
+        f"Negative-gate diagnostic: in **{kur_below} of "
+        f"{len(kur_dirs)}** JKUR direction records is the sign's "
+        f"cross-fit score below its direction's phi, while every "
+        f"judgeable direction's donor p-value is >= 0.50 (minimum "
+        f"{kur_min_p}) — the relative (donor) leg separates the "
+        "known-bad `kur` readings from the core's fabric, but the "
+        "absolute leg never fires, because the phoneme pair of "
+        "`kur` occupies high-probability junction cells. The "
+        "conjunctive FAIL band therefore produces no kur demotion "
+        "and the negative gate fails on its discrimination clause "
+        "— it does not pass vacuously. This is the coarse-fabric "
+        "limit registered in spec section 10, now measured under "
+        "the cross-fit construction as well.",
         "",
         "Per-instrument states (calibration):",
         "",

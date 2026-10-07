@@ -1,28 +1,30 @@
-"""Phase-113 (spec 011) — orchestration: calibration -> gate -> run.
+"""Phase-115 (spec 014) — orchestration: calibration -> gate -> run.
 
 Executes the frozen protocol of
-specs/011-phase113-nonsa44-validation/spec.md:
+specs/014-phase115-nonsa44-validation-v2/spec.md:
 
   1. Recompute and assert the frozen sets (FLAGGED44, STRICT94,
-     KUR113) from the anchors file + Phase-108 provenance register.
-  2. Calibration: the unchanged battery over STRICT94
-     (leave-one-out) and KUR113. Gates: strict VALIDATED >= 57/94;
-     kur VALIDATED <= 5/113. A failed gate rejects the battery —
-     the anchors file is NOT modified and FLAGGED44 is never run.
-  3. Main run (only if calibration passes): battery over
-     FLAGGED44, the section-5 decision rule applied mechanically,
-     anchors file updated with the Phase-109/110 bookkeeping
-     pattern (summary fields regenerated from the entries;
-     changed-entries == change-register signs, asserted).
+     KUR113) — definitions identical to spec 011, reused from
+     phase113_run.compute_sets.
+  2. Load the v2 ICIT converted layer (spec 014 section 2) and
+     assert its build statistics against layer_build_meta_v2.json
+     (4,531 inscriptions / 13,492 mapped tokens, frozen in spec).
+  3. Calibration: battery v2 over STRICT94 (leave-one-out) and
+     KUR113. Gates identical to spec 011: strict VALIDATED >=
+     57/94; kur VALIDATED <= 5/113. A failed gate rejects the
+     battery — the anchors file is NOT modified and FLAGGED44 is
+     never run.
+  4. Main run (only if calibration passes): battery v2 over
+     FLAGGED44, the section-6 decision rule applied mechanically,
+     anchors file updated (changed-entries == change-register
+     signs, asserted — the Phase-113 pattern).
 
-Local restricted corpora (Holdat CSV, ICIT converted layer) are
-read from the gitignored downloads area (this worktree's copy if
-present, else the main checkout's). They are never committed;
-only statistics and verdicts are published.
+Local restricted corpora (Holdat CSV, ICIT layers) are read from
+the gitignored downloads area and never committed; only
+statistics and verdicts are published.
 """
 from __future__ import annotations
 
-import importlib.util
 import json
 import sys
 from collections import Counter
@@ -36,111 +38,52 @@ _MAIN_REPO = Path.home() / "workspace" / "glossa-lab"
 sys.path.insert(0, str(_BACKEND))
 
 from glossa_lab.phase113_battery import (  # noqa: E402
-    CoreGrammar, CorpusContext, evaluate_anchor, normalize_reading,
+    CoreGrammar, CorpusContext, normalize_reading,
 )
+from glossa_lab.phase113_run import (  # noqa: E402
+    _gpu_device, _load_module_by_path, _regenerate_bookkeeping,
+    _tally, compute_sets, load_holdat_inscriptions,
+    load_icit_inscriptions,
+)
+from glossa_lab.phase115_battery import evaluate_anchor_v2  # noqa: E402
 
 ANCHORS_PATH = _BACKEND / "reports" / "INDUS_FINAL_ANCHORS.json"
 REGISTER_PATH = _REPO / "reports" / "phase108_provenance_register.json"
-RESULTS_PATH = _REPO / "reports" / "phase113_nonsa44_results.json"
-CHANGE_REGISTER_PATH = _REPO / "reports" / "phase113_nonsa44_change_register.json"
-SUMMARY_PATH = _REPO / "reports" / "phase113_nonsa44_summary.md"
-SPEC = "specs/011-phase113-nonsa44-validation"
+RESULTS_PATH = _REPO / "reports" / "phase115_nonsa44v2_results.json"
+CHANGE_REGISTER_PATH = _REPO / "reports" / "phase115_nonsa44v2_change_register.json"
+SUMMARY_PATH = _REPO / "reports" / "phase115_nonsa44v2_summary.md"
+SPEC = "specs/014-phase115-nonsa44-validation-v2"
 DATE = "2026-10-07"
+SENTINEL = "UNK"
 
-STRICT_VALIDATED_MIN = 57   # of 94  (spec 011 section 4: >= 60%)
-KUR_VALIDATED_MAX = 5       # of 113 (spec 011 section 4)
-
-
-def _gpu_device() -> str:
-    try:
-        import torch
-        return "cuda" if torch.cuda.is_available() else "cpu"
-    except Exception:  # noqa: BLE001
-        return "cpu (torch absent)"
-
-
-def _load_module_by_path(name: str, path: Path):
-    spec = importlib.util.spec_from_file_location(name, path)
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    return mod
+STRICT_VALIDATED_MIN = 57   # of 94  (spec 014 section 5: >= 60%)
+KUR_VALIDATED_MAX = 5       # of 113 (spec 014 section 5)
 
 
 def _find_downloads() -> Path:
     for cand in (_REPO / "corpora" / "downloads",
                  _MAIN_REPO / "corpora" / "downloads"):
-        if (cand / "icit_fieldcady" / "icit_converted.json").exists():
+        if (cand / "icit_fieldcady" / "icit_converted_v2.json").exists():
             return cand
-    raise FileNotFoundError("corpora/downloads not found in worktree "
-                            "or main checkout")
-
-
-def load_holdat_inscriptions(csv_path: Path):
-    """Exact replica of sa_validation.load_holdat_corpus grouping
-    (loader logic only; no SA code is executed): rows grouped by
-    cisi_number at their position index, empties dropped."""
-    import csv
-    seals: dict[str, list] = {}
-    with open(csv_path, encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            s = (row.get("letters") or "").strip()
-            c = (row.get("cisi_number") or "").strip()
-            p = int(row.get("position") or 0)
-            if c not in seals:
-                seals[c] = []
-            while len(seals[c]) <= p:
-                seals[c].append("")
-            seals[c][p] = s
-    return [[s for s in v if s] for v in seals.values() if any(v)]
-
-
-def load_icit_inscriptions(path: Path):
-    data = json.loads(path.read_text("utf-8"))
-    return [list(x) for x in data["inscriptions"] if x]
-
-
-def compute_sets(anchors: dict, register: dict) -> dict:
-    records = register["records"]
-    flagged = sorted(s for s, e in anchors.items()
-                     if e.get("validation_status")
-                     == "pending_non_sa_validation")
-    strict = sorted(
-        s for s, r in records.items()
-        if r["category"] not in ("SA_DERIVED", "SA_CONFIRMED_ONLY")
-        and not r["sa_in_chain"]
-        and anchors[s]["confidence"] in ("HIGH", "MEDIUM"))
-    kur = sorted(s for s, e in anchors.items()
-                 if e.get("validation_status") == "premise_superseded")
-    # Frozen assertions (spec 011 section 2)
-    assert len(flagged) == 44, f"FLAGGED44 size {len(flagged)}"
-    assert len(strict) == 94, f"STRICT94 size {len(strict)}"
-    assert len(kur) == 113, f"KUR113 size {len(kur)}"
-    assert not set(flagged) & set(strict), "flagged/strict overlap"
-    assert all(anchors[s]["reading"] == "kur" for s in kur)
-    assert Counter(anchors[s]["confidence"] for s in flagged) == \
-        Counter({"HIGH": 43, "MEDIUM": 1})
-    return {"flagged44": flagged, "strict94": strict, "kur113": kur}
+    raise FileNotFoundError("corpora/downloads with v2 layer not found "
+                            "in worktree or main checkout")
 
 
 def _evaluate_set(signs, anchors, core_signs, readings_norm,
-                  holdat, icit, is_valid_initial, loo=False):
+                  holdat, icit, is_valid_initial, ratio, loo=False):
     results = {}
     for s in signs:
         core = (core_signs - {s}) if loo else core_signs
         grammar = CoreGrammar(core, readings_norm, holdat)
-        results[s] = evaluate_anchor(
+        results[s] = evaluate_anchor_v2(
             s, anchors[s]["reading"], grammar, readings_norm,
-            holdat, icit, is_valid_initial)
+            holdat, icit, is_valid_initial, ratio)
     return results
 
 
-def _tally(results: dict) -> dict:
-    return dict(Counter(r["outcome"] for r in results.values()))
-
-
 def _apply_outcomes(anchors: dict, results: dict) -> list:
-    """Apply the section-5 rule to FLAGGED44 entries in-place;
-    return change-register records (Phase-110 entry shape)."""
+    """Apply the spec-014 section-6 rule to FLAGGED44 entries
+    in-place; return change-register records (Phase-113 shape)."""
     register = []
     for s in sorted(results):
         r = results[s]
@@ -148,16 +91,16 @@ def _apply_outcomes(anchors: dict, results: dict) -> list:
         before = {"confidence": e["confidence"],
                   "validation_status": e.get("validation_status")}
         states = {k: r[k]["state"] for k in ("t1", "t2", "t3")}
-        ann_head = (f"Phase-113 ({DATE}): non-SA battery (spec 011) "
+        ann_head = (f"Phase-115 ({DATE}): non-SA battery v2 (spec 014) "
                     f"outcome {r['outcome']} — T1 {states['t1']}, "
                     f"T2 {states['t2']}, T3 {states['t3']}.")
         if r["outcome"] == "VALIDATED_NON_SA":
             e["validation_status"] = "validated_non_sa"
-            ref = ("Phase-113 (spec 011) non-SA battery T1+T2+T3: "
-                   "reports/phase113_nonsa44_results.json")
+            ref = ("Phase-115 (spec 014) non-SA battery v2 T1+T2+T3: "
+                   "reports/phase115_nonsa44v2_results.json")
             e["evidence_ref"] = (f"{e['evidence_ref']}; {ref}"
                                  if e.get("evidence_ref") else ref)
-            e["phase113_annotation"] = (
+            e["phase115_annotation"] = (
                 ann_head + " validation_status set to "
                 "validated_non_sa with an H26 evidence reference. "
                 "Tier unchanged (this phase validates or demotes; "
@@ -167,22 +110,23 @@ def _apply_outcomes(anchors: dict, results: dict) -> list:
             failed = [k.upper() for k, v in states.items() if v == "FAIL"]
             e["confidence"] = "CANDIDATE"
             e["validation_status"] = "failed_non_sa_validation"
-            e["phase113_annotation"] = (
+            e["phase115_annotation"] = (
                 ann_head + f" Failed test(s): {', '.join(failed)}. "
                 "Demoted to CANDIDATE per the frozen decision rule.")
             action = "demote"
         else:
-            e["phase113_annotation"] = (
+            e["phase115_annotation"] = (
                 ann_head + " No tier change; anchor stays flagged "
                 "pending_non_sa_validation.")
             action = "unresolved-no-change"
         register.append({
-            "step": "main-run", "sign": s, "rule": "spec011-section5",
+            "step": "main-run", "sign": s, "rule": "spec014-section6",
             "action": action,
             "tests": states,
             "statistics": {
                 "t1": {k: r["t1"].get(k) for k in
-                       ("n_icit_tokens", "modal_holdat", "modal_icit", "tv")},
+                       ("n_icit_tokens", "opportunity", "floor",
+                        "modal_holdat", "modal_icit", "tv")},
                 "t2": {k: r["t2"].get(k) for k in
                        ("n_holdat_tokens", "modal_class", "modal_share")},
                 "t2a_tv": r["t2"].get("t2a", {}).get("tv_to_centroid"),
@@ -195,46 +139,34 @@ def _apply_outcomes(anchors: dict, results: dict) -> list:
     return register
 
 
-def _regenerate_bookkeeping(data: dict, holdat_tokens: list) -> dict:
-    """Phase-109/110 bookkeeping regeneration + H+M coverage."""
-    anchors = data["anchors"]
-    counts = Counter(v.get("confidence") for v in anchors.values())
-    data["total"] = len(anchors)
-    data["total_all_entries"] = len(anchors)
-    data["by_confidence"] = {k: counts.get(k, 0) for k in
-                             ("HIGH", "MEDIUM", "LOW", "CANDIDATE")}
-    data["n_high"] = counts.get("HIGH", 0)
-    data["n_medium"] = counts.get("MEDIUM", 0)
-    data["n_low"] = counts.get("LOW", 0)
-    data["n_candidate"] = counts.get("CANDIDATE", 0)
-    md = data.setdefault("metadata", {})
-    md["total_count"] = len(anchors)
-    md["high_count"] = counts.get("HIGH", 0)
-    md["medium_count"] = counts.get("MEDIUM", 0)
-    md["low_count"] = counts.get("LOW", 0)
-    md["candidate_count"] = counts.get("CANDIDATE", 0)
-    md["hm_confirmed_count"] = counts.get("HIGH", 0) + counts.get("MEDIUM", 0)
-    hm = {s for s, v in anchors.items()
-          if v.get("confidence") in ("HIGH", "MEDIUM")}
-    n_cov = sum(1 for t in holdat_tokens if t in hm)
-    data["corpus_token_coverage"] = round(n_cov / len(holdat_tokens), 6)
-    return {"by_confidence": data["by_confidence"],
-            "hm_signs": len(hm), "hm_holdat_coverage": data["corpus_token_coverage"]}
-
-
 def run_all() -> dict:
     anchors_data = json.loads(ANCHORS_PATH.read_text("utf-8"))
     anchors = anchors_data["anchors"]
     register = json.loads(REGISTER_PATH.read_text("utf-8"))
     sets = compute_sets(anchors, register)
     downloads = _find_downloads()
+    build_meta = json.loads(
+        (downloads / "layer_build_meta_v2.json").read_text("utf-8"))
+    layer_stats = build_meta["icit_v2"]
     holdat_ins = load_holdat_inscriptions(
         downloads / "external_repos" / "holdatllc_indus"
         / "indus_corpus 2.csv")
     icit_ins = load_icit_inscriptions(
-        downloads / "icit_fieldcady" / "icit_converted.json")
+        downloads / "icit_fieldcady" / "icit_converted_v2.json")
     holdat = CorpusContext(holdat_ins)
     icit = CorpusContext(icit_ins)
+    # Frozen layer assertions (spec 014 section 2): the built layer
+    # must be the layer the spec froze.
+    sentinel_tokens = sum(1 for ins in icit_ins for t in ins
+                          if t == SENTINEL)
+    mapped_tokens = icit.n_tokens - sentinel_tokens
+    assert icit.n_inscriptions == layer_stats["kept_inscriptions"], \
+        (icit.n_inscriptions, layer_stats["kept_inscriptions"])
+    assert mapped_tokens == layer_stats["kept_mapped_tokens"], \
+        (mapped_tokens, layer_stats["kept_mapped_tokens"])
+    assert layer_stats["kept_inscriptions"] == 4531, layer_stats
+    assert layer_stats["kept_mapped_tokens"] == 13492, layer_stats
+    ratio = mapped_tokens / holdat.n_tokens
     holdat_tokens = [t for ins in holdat_ins for t in ins]
     readings_norm = {s: normalize_reading(e["reading"])
                      for s, e in anchors.items()}
@@ -253,17 +185,17 @@ def run_all() -> dict:
     strict_set = set(sets["strict94"])
     cal_strict = _evaluate_set(sets["strict94"], anchors, strict_set,
                                readings_norm, holdat, icit,
-                               is_valid_initial, loo=True)
+                               is_valid_initial, ratio, loo=True)
     cal_kur = _evaluate_set(sets["kur113"], anchors, strict_set,
                             readings_norm, holdat, icit,
-                            is_valid_initial)
+                            is_valid_initial, ratio)
     t_strict, t_kur = _tally(cal_strict), _tally(cal_kur)
     gate_strict = t_strict.get("VALIDATED_NON_SA", 0) >= STRICT_VALIDATED_MIN
     gate_kur = t_kur.get("VALIDATED_NON_SA", 0) <= KUR_VALIDATED_MAX
     accepted = gate_strict and gate_kur
 
     results = {
-        "phase": 113, "spec": SPEC, "date": DATE,
+        "phase": 115, "spec": SPEC, "date": DATE,
         "gpu_device": _gpu_device(),
         "run_utc": datetime.now(timezone.utc).isoformat(),
         "sets": {
@@ -275,8 +207,11 @@ def run_all() -> dict:
         "corpora": {
             "holdat": {"inscriptions": holdat.n_inscriptions,
                        "tokens": holdat.n_tokens},
-            "icit_converted": {"inscriptions": icit.n_inscriptions,
-                               "tokens": icit.n_tokens},
+            "icit_converted_v1_phase107": build_meta.get("icit_v1_phase107"),
+            "icit_converted_v2": {
+                **layer_stats,
+                "sentinel_tokens_observed": sentinel_tokens,
+                "sampling_ratio_r": round(ratio, 6)},
         },
         "calibration": {
             "strict94_leave_one_out": {"tally": t_strict,
@@ -298,7 +233,7 @@ def run_all() -> dict:
     if accepted:
         main = _evaluate_set(sets["flagged44"], anchors, strict_set,
                              readings_norm, holdat, icit,
-                             is_valid_initial)
+                             is_valid_initial, ratio)
         before = deepcopy(anchors)
         hm_before = {s for s, v in anchors.items()
                      if v["confidence"] in ("HIGH", "MEDIUM")}
@@ -307,11 +242,11 @@ def run_all() -> dict:
             / len(holdat_tokens), 6)
         entries = _apply_outcomes(anchors, main)
         book = _regenerate_bookkeeping(anchors_data, holdat_tokens)
-        anchors_data["_phase113_note"] = (
-            f"Phase-113 ({DATE}, spec 011): non-SA validation battery "
-            "applied to the 44 Phase-109 SA-lineage flagged anchors; "
-            "outcomes per the frozen decision rule in "
-            "reports/phase113_nonsa44_change_register.json; summary "
+        anchors_data["_phase115_note"] = (
+            f"Phase-115 ({DATE}, spec 014): non-SA validation battery "
+            "v2 applied to the 44 Phase-109 SA-lineage flagged "
+            "anchors; outcomes per the frozen decision rule in "
+            "reports/phase115_nonsa44v2_change_register.json; summary "
             "fields regenerated from the entries.")
         changed = {s for s in anchors if anchors[s] != before[s]}
         reg_signs = {r["sign"] for r in entries}
@@ -319,7 +254,7 @@ def run_all() -> dict:
             f"diff/register mismatch: {sorted(changed ^ reg_signs)}")
         entries.append({
             "step": "bookkeeping", "sign": "*",
-            "rule": "spec011-bookkeeping",
+            "rule": "spec014-bookkeeping",
             "action": "regenerate-summary-fields",
             "before": {"hm_signs": len(hm_before),
                        "hm_holdat_coverage": cov_before},
@@ -328,7 +263,7 @@ def run_all() -> dict:
             json.dumps(anchors_data, indent=2, ensure_ascii=False),
             encoding="utf-8")
         change_register = {
-            "phase": 113, "spec": SPEC, "date": DATE,
+            "phase": 115, "spec": SPEC, "date": DATE,
             "gpu_device": results["gpu_device"],
             "entries": entries}
         CHANGE_REGISTER_PATH.write_text(
@@ -355,14 +290,43 @@ def run_all() -> dict:
     return results
 
 
+def _test_tallies(per_sign: dict) -> dict:
+    out = {}
+    for tk in ("t1", "t2", "t3"):
+        out[tk] = dict(Counter(r[tk]["state"] for r in per_sign.values()))
+    return out
+
+
 def render_summary(r: dict) -> str:
     cal = r["calibration"]
     gates = cal["gates"]
+    v2 = r["corpora"]["icit_converted_v2"]
+    tt_s = _test_tallies(cal["strict94_leave_one_out"]["per_sign"])
+    tt_k = _test_tallies(cal["kur113_negative_control"]["per_sign"])
     lines = [
-        "# Phase-113 — Non-SA Validation Battery for the 44 SA-Lineage Anchors",
+        "# Phase-115 — Non-SA Validation Battery v2 for the 44 SA-Lineage Anchors",
         "",
         f"**Spec:** {SPEC} (frozen before any results) · "
         f"**Date:** {r['date']} · **GPU device:** {r['gpu_device']}",
+        "",
+        "## What changed vs Phase-113 (spec 014 sections 1-2, 4)",
+        "",
+        "Phase-113's battery was rejected at calibration (STRICT94 "
+        "validated 3/94) because T1 starved on the Phase-107 ICIT "
+        "layer. Diagnosis: a leading-zero key mismatch cost 4,014 "
+        "source tokens and the all-or-nothing inscription rule "
+        "discarded the rest. Battery v2 rebuilds the layer and "
+        "scales T1's attestation floor to each sign's measured "
+        "opportunity; T2/T3, the gates, and the decision rule are "
+        "spec 011 unchanged.",
+        "",
+        f"- v2 layer: {v2['kept_inscriptions']} inscriptions / "
+        f"{v2['kept_mapped_tokens']} mapped tokens "
+        f"(+ {v2['kept_sentinel_tokens']} sentinel positions); "
+        f"token-map coverage excl. placeholders "
+        f"{v2['token_map_coverage_excl_placeholders']:.4f} "
+        "(v1: 0.693); sampling ratio r = "
+        f"{v2['sampling_ratio_r']}.",
         "",
         "## Verdict",
         "",
@@ -370,9 +334,9 @@ def render_summary(r: dict) -> str:
     if gates["battery_accepted"]:
         tally = r["main_run"]["tally"]
         lines += [
-            "Calibration gates **passed**; the frozen battery was "
-            "applied to the 44 flagged anchors and the section-5 "
-            "rule executed mechanically:",
+            "Calibration gates **passed**; the frozen battery v2 "
+            "was applied to the 44 flagged anchors and the "
+            "section-6 rule executed mechanically:",
             "",
             f"- VALIDATED_NON_SA: **{tally.get('VALIDATED_NON_SA', 0)}**",
             f"- DEMOTE (to CANDIDATE): **{tally.get('DEMOTE', 0)}**",
@@ -381,7 +345,7 @@ def render_summary(r: dict) -> str:
     else:
         lines += [
             "**BATTERY REJECTED at calibration.** The frozen gates "
-            "of spec 011 section 4 were not both met, so FLAGGED44 "
+            "of spec 014 section 5 were not both met, so FLAGGED44 "
             "was never run and the anchors file was not modified. "
             "The battery may not be re-tuned under this spec.",
         ]
@@ -402,7 +366,21 @@ def render_summary(r: dict) -> str:
         f"{tk.get('UNRESOLVED', 0)} | <= 5 required: "
         f"**{'PASS' if gates['kur_gate_pass'] else 'FAIL'}** |",
         "",
-        "## Sets and corpora (recomputed; assertions in spec section 2)",
+        "Per-test states (calibration):",
+        "",
+        "| Set | Test | PASS | FAIL | NOT_ATTESTED | INDETERMINATE |",
+        "|---|---|---|---|---|---|",
+    ]
+    for label, tt in (("STRICT94", tt_s), ("KUR113", tt_k)):
+        for tk_name in ("t1", "t2", "t3"):
+            c = tt[tk_name]
+            lines.append(
+                f"| {label} | {tk_name.upper()} | {c.get('PASS', 0)} | "
+                f"{c.get('FAIL', 0)} | {c.get('NOT_ATTESTED', 0)} | "
+                f"{c.get('INDETERMINATE', 0)} |")
+    lines += [
+        "",
+        "## Sets and corpora (recomputed; assertions in spec section 3)",
         "",
         "- FLAGGED44: 44 anchors (24 SA_DERIVED + 20 "
         "SA_CONFIRMED_ONLY; 43 HIGH + M293 MEDIUM).",
@@ -412,10 +390,9 @@ def render_summary(r: dict) -> str:
         "- KUR113: 113 premise-superseded anchors, all reading `kur`.",
         f"- Holdat: {r['corpora']['holdat']['inscriptions']} "
         f"inscriptions / {r['corpora']['holdat']['tokens']} tokens. "
-        f"ICIT converted layer: "
-        f"{r['corpora']['icit_converted']['inscriptions']} "
-        f"inscriptions / {r['corpora']['icit_converted']['tokens']} "
-        f"tokens (local restricted data; statistics only).",
+        f"ICIT v2 layer: {v2['kept_inscriptions']} inscriptions / "
+        f"{v2['kept_mapped_tokens']} mapped tokens (local "
+        "restricted data; statistics only).",
     ]
     if r["final"]:
         f = r["final"]
@@ -431,8 +408,8 @@ def render_summary(r: dict) -> str:
             f"H+M): {vc['n_signs']} signs, Holdat coverage "
             f"{vc['holdat_coverage']:.4f}.",
             "- Per-anchor records: "
-            "`reports/phase113_nonsa44_change_register.json`; full "
-            "test statistics: `reports/phase113_nonsa44_results.json`.",
+            "`reports/phase115_nonsa44v2_change_register.json`; full "
+            "test statistics: `reports/phase115_nonsa44v2_results.json`.",
         ]
     lines += [
         "",
@@ -443,8 +420,9 @@ def render_summary(r: dict) -> str:
         "the phonetic value. A FAIL demotes to CANDIDATE; it does "
         "not declare the reading false. Holdat and the ICIT layer "
         "are independent compilations of the same published "
-        "catalogues, not independent archaeology; T1 NOT_ATTESTED "
-        "partly measures ICIT conversion coverage.",
+        "catalogues, not independent archaeology; sentinel "
+        "positions preserve positional geometry but the v2 layer "
+        "measures a broader inscription population than v1.",
         "",
         "## Verification",
         "",

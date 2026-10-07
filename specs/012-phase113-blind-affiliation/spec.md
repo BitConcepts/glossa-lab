@@ -611,6 +611,42 @@ unblinding additionally require the unblinded results to be
 reported alongside the corrected ones, labelled superseded, never
 deleted.
 
+### 12.1 Addendum (2026-10-07) — §6 sanity-anchor qualification
+
+Post-execution records addendum under the §12 policy. No re-run
+was performed; no frozen rule, threshold, or outcome is changed
+by this note.
+
+The §6 sanity anchor requires positional-bigram TV between
+G(θ_S5) and the frozen S5 generator < 0.10. That figure is
+statistic-dependent. Under the finest-grained reading of the
+statistic — the frequency-weighted per-(b, b′, x)-context TV
+implemented as `positional_bigram_tv` — the 0.10 threshold sits
+below the sampling-noise floor: two samples drawn from the
+IDENTICAL model at ~55k tokens already sit at TV 0.246, and
+G(θ_S5)-vs-S5 measured 0.243 — no systematic excess over the
+noise floor. The committed unit test
+(`backend/tests/test_phase113_blind.py`) therefore asserts the
+anchor as: positional-bigram TV < 0.30 AND TV ≤ noise floor +
+0.05, plus unigram TV to R1 < 0.10 (measured 0.038). Under the
+coarser per-bin-pair successor-TV reading of the same statistic,
+the G(θ_S5)-vs-S5 value is 0.064, which does meet the 0.10
+figure as written in §6.
+
+The anchor's substance — that θ_S5 reproduces S5's construction
+— is confirmed three ways: (i) S5's recorded unigram TV to R1
+(0.0419, specs 010/012) is reproduced exactly under the test's
+mapping; (ii) no systematic excess over the identical-model
+noise floor (0.243 vs 0.246); (iii) in the run itself, candidate
+0 — the forced θ_S5 — behaved exactly as S5 did: objective
+0.99999995 under C_1, unigram TV 0.0383.
+
+No study outcome depends on the anchor's threshold. The
+INVALID-at-round-1 verdict rests solely on the frozen rounds
+protocol (§§7–10): the round-1 artifact A_1's control share of
+0.00 against the ≥ 0.95 requirement of §8.2. This addendum
+qualifies the reading of the §6 anchor; it does not amend §6.
+
 ## 13. Limitations (registered at freeze time)
 
 - All spec-009 §12 limitations stand, as carried through spec

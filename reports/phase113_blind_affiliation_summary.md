@@ -105,6 +105,20 @@ runtime state):
   space: median 0.0, but 82 candidates scored ≥ 0.99.
 - Candidate 0 — the forced θ_S5 anchor, S5's exact construction
   — scored 0.99999995, feasible (TV 0.0383).
+
+  *Sanity-anchor qualification (2026-10-07):* the spec §6
+  anchor's positional-bigram TV < 0.10 is statistic-dependent.
+  Under the finest-grained (frequency-weighted per-context)
+  reading, the identical-model sampling-noise floor at ~55k
+  tokens is 0.246 and G(θ_S5)-vs-S5 measured 0.243 — no
+  systematic excess; the committed unit test therefore asserts
+  TV < 0.30 and ≤ noise floor + 0.05, plus unigram TV to R1
+  < 0.10 (measured 0.038). Under the coarser per-bin-pair
+  successor-TV reading the value is 0.064, which meets 0.10.
+  The anchor's substance is confirmed (S5's recorded unigram
+  TV 0.0419 reproduced exactly; candidate 0 behaved exactly
+  as S5 in this run); no outcome depends on the anchor's
+  threshold. Full record: spec 012 §12.1 addendum (2026-10-07).
 - Winner (eval 53, random block; first feasible candidate at
   exactly 1.0): the θ* below. Best objective was 1.0 in both the
   random and refinement blocks.

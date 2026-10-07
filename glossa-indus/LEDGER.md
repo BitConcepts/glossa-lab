@@ -1956,3 +1956,32 @@ reports/phase111_acquisition_log.json.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-112 — Blind Language-Affiliation Study, Order-Carrying Features: Pre-Registration (spec 010)
+
+Spec 010 (`specs/010-phase112-blind-affiliation/`) frozen and
+committed 2026-10-07, after the design-stage tooling commits and
+before any Phase-112 pipeline output exists. Owner authorized
+the successor 2026-10-07 after Phase-111's INVALID RUN (its
+feature vector's power was carried by unigram statistics: S1/S2
+nulls with all sign order destroyed classified linguistic in
+100% of draws). The one design change: the classification
+vector contains ONLY permutation-sensitive features, admitted by
+a pre-registered audit on the nine known corpora only (median
+|Cohen's d| ≥ 0.8 under within-text permutation, same sign
+≥ 8/9, non-degenerate ≥ 5/9) — 16 of 23 candidates admitted;
+the positional-concentration family, `rep_adj_2`, and `fl_mi`
+dropped and recorded in spec §4.3. Everything else is inherited
+from spec 009 unchanged (panel as assembled with its registered
+gaps, resampling, LDA, blinding, gate §7, verdict §9, BH
+q = 0.05), plus S5, a positional-bigram template generator
+added as an undisclosed fifth control under §8 (no training
+instance, no class). The panel was re-staged from the same
+openly licensed origins after the Phase-111 worktree was lost,
+and verified loader-equivalent against the committed Phase-111
+build log on all 12 loadable corpora. No anchors are touched by
+this phase. Outcome to be appended as a separate entry exactly
+as the frozen thresholds dictate.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.

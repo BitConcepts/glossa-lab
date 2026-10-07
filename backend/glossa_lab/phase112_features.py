@@ -27,6 +27,8 @@ of Tristen Pierson, per constitution section VI.
 
 from __future__ import annotations
 
+from collections import Counter
+
 import numpy as np
 
 # All permutation-sensitive candidates (design stage). Spec 010
@@ -77,21 +79,23 @@ def _entropy_mm(counts: np.ndarray) -> float:
 
 
 def _block_entropy(texts: list[list[int]], k: int) -> float:
-    windows: list[np.ndarray] = []
+    # Counts of within-text k-grams. Counting method (changed at
+    # design stage for speed; values identical): the original
+    # sliding-window + void-view np.unique counts rows in
+    # lexicographic order; this Counter version emits counts in the
+    # same sorted-key order, so the entropy sum is unchanged.
+    counts: Counter = Counter()
     for t in texts:
         if len(t) < k:
             continue
-        arr = np.array(t, dtype=np.int64)
-        win = np.lib.stride_tricks.sliding_window_view(arr, k)
-        windows.append(win)
-    if not windows:
+        if k == 1:
+            counts.update(t)
+        else:
+            counts.update(zip(*(t[i:] for i in range(k))))
+    if not counts:
         return 0.0
-    all_win = np.concatenate(windows, axis=0)
-    void_view = np.ascontiguousarray(all_win).view(
-        np.dtype((np.void, all_win.dtype.itemsize * k))
-    )
-    _, cnts = np.unique(void_view, return_counts=True)
-    return _entropy_mm(cnts.astype(np.float64))
+    cnts = np.array([counts[key] for key in sorted(counts)], dtype=np.float64)
+    return _entropy_mm(cnts)
 
 
 def _cover_count(sorted_desc: np.ndarray, frac: float, total: float) -> int:

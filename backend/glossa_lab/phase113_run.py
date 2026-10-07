@@ -404,12 +404,12 @@ def render_summary(r: dict) -> str:
         "",
         "## Sets and corpora (recomputed; assertions in spec section 2)",
         "",
-        f"- FLAGGED44: 44 anchors (24 SA_DERIVED + 20 "
-        f"SA_CONFIRMED_ONLY; 43 HIGH + M293 MEDIUM).",
+        "- FLAGGED44: 44 anchors (24 SA_DERIVED + 20 "
+        "SA_CONFIRMED_ONLY; 43 HIGH + M293 MEDIUM).",
         f"- STRICT94: 94 anchors (90 HIGH + 4 MEDIUM); Holdat token "
         f"coverage {r['sets']['strict94']['holdat_coverage']:.4f} "
         f"(5,159 / 7,002).",
-        f"- KUR113: 113 premise-superseded anchors, all reading `kur`.",
+        "- KUR113: 113 premise-superseded anchors, all reading `kur`.",
         f"- Holdat: {r['corpora']['holdat']['inscriptions']} "
         f"inscriptions / {r['corpora']['holdat']['tokens']} tokens. "
         f"ICIT converted layer: "

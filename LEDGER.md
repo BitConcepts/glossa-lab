@@ -753,3 +753,57 @@ the direction of Tristen Pierson, per constitution §VI.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## [2026-10-07] Entry — Phase-112 / Spec 010: Blind Language-Affiliation Study, Order-Carrying Features — Pre-Registration Frozen
+
+- **Why this study exists:** Phase-111's gate passed perfectly,
+  but its run was invalidated at control validity — S1
+  (within-text permutation of R1) and S2 (i.i.d. unigram null)
+  classified linguistic in 100% of draws, showing the 28-feature
+  vector's power was carried by unigram statistics. Owner
+  authorized the successor study 2026-10-07 ("yes do the
+  successor now").
+- **Pre-registration:** spec 010
+  (`specs/010-phase112-blind-affiliation/`) committed in its own
+  commit AFTER the design-stage tooling commits (73ebbfb1,
+  f0e5a6c5) and BEFORE any Phase-112 panel build, gate
+  evaluation, or Indus statistic exists; the git order is the
+  registration proof. **The one design change:** the
+  classification feature set contains ONLY permutation-sensitive
+  (order-carrying) features, admitted by a pre-registered audit
+  on the nine known corpora (median |Cohen's d| ≥ 0.8 under
+  within-text permutation, same sign ≥ 8/9 corpora,
+  non-degenerate ≥ 5/9; mechanical toy test as a first screen).
+  Audit outcome: **16 of 23 candidates admitted** (entropy /
+  conditional-entropy / Markov-perplexity / repetition /
+  bigram-type / adjacency features; median |d| up to 60.0);
+  dropped: the positional-concentration family
+  (`init80_frac`, `term80_frac`, `term_init_ratio`, `hend_first`,
+  `hend_last`), `rep_adj_2`, `fl_mi`. Full record:
+  `reports/phase112_feature_audit.json`.
+- **Inherited unchanged from spec 009:** panel (as assembled,
+  incl. Addendum A substitutions and the registered gaps:
+  Elamite, K6 Akkadian, N2 proto-cuneiform, attested SCA
+  heraldry), resampling (N = 11,000; 100 draws; sensitivity
+  5k/19.6k), unit rules, S1–S4 generators, LDA classifier,
+  custodian/analyst blinding, gate thresholds (§7), verdict
+  rules (§9, V6 vocabulary), BH q = 0.05. **New:** S5, a
+  positional-bigram template generator (relative-position bins,
+  β = 1.0 interpolation), added as a fifth control under §8
+  (≥ 95% of draws non-linguistic-collapsed for EACH of S1–S5),
+  with NO disclosed training instance and NO class in the final
+  model — the undisclosed probe Phase-111's design lacked.
+- **Staging note:** the Phase-111 downloads were lost with their
+  worktree; the identical panel was re-obtained from the same
+  openly licensed origins into the gitignored
+  `sources/phase112/` and **verified loader-equivalent**: every
+  corpus's loader statistics and chunk counts reproduce the
+  committed Phase-111 build log exactly (all 12 loadable
+  corpora MATCH). Record:
+  `reports/phase112_acquisition_log.json`.
+- **Status at this entry:** spec frozen; no panel built, no gate
+  run, no result exists. Outcome entries follow as separate
+  appends. No anchors touched.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

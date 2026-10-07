@@ -1340,3 +1340,50 @@ trees identical).
 **AI disclosure:** design recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## [2026-10-07] Entry — Phase-117 (spec 016): Within-Compilation Validation Battery — EXECUTED, BATTERY REJECTED at calibration
+
+Owner approved execution 2026-10-07 (after design PR #74
+merged; main cea59cbe). Implementation (pipeline b5fd725a;
+H23 graph registration e3529b55; outcome dd898a50): W1
+split-half positional cross-fit, W3 junction coherence with
+donor-permutation null, W4 site-stratum stability; W2
+descriptive only per spec §4.2. The frozen partition was
+reproduced and asserted before any instrument ran (halves
+A = 3,531 / B = 3,471 tokens; Appendix A.5 spot counts exact:
+M293 124/108, M011 10/5, M024 12/1, M177 5/0). phi (10th
+percentile, linear interpolation, of the 81 STRICT94
+leave-one-out W3 self-scores) = -7.461366. Determinism
+verified: a second in-process execution reproduced the
+results byte-identically except the run timestamp.
+
+Calibration (spec §6), reported verbatim: STRICT94
+leave-one-out — VALIDATED 2 / DEMOTE 19 / UNRESOLVED 73;
+positive gate >= 47/94 FAILED. Per-instrument STRICT94
+(PASS/FAIL/INDETERMINATE): W1 63/5/26; W3 3/9/82; W4
+44/10/40. KUR113 — VALIDATED 0 / DEMOTE 0 / UNRESOLVED 113;
+negative gate <= 5/113 PASSED (every instrument state
+INDETERMINATE for the whole cohort — the asymmetry §6
+registered). Verdict: BATTERY REJECTED at calibration.
+FLAGGED44 was never run; the anchors file was not modified;
+no change register exists; all 44 remain
+`pending_non_sa_validation`; tier counts unchanged
+(166 HIGH / 5 MEDIUM / 3 LOW / 113 CANDIDATE); strict core
+94; Holdat H+M coverage 0.7368 unchanged.
+
+Diagnosis (post-hoc, labeled as such): the §8 conjunction's
+mandatory W3 PASS is the binding constraint — under
+leave-one-out only 3/94 core signs meet W3's frozen PASS
+band (p <= 0.05 and score >= phi) against the core-minus-self
+junction model, although W1 cross-fit PASSes 63/94 and W4
+44/94 of the core. No re-tuning under spec 016; a successor
+battery requires a new spec, and the genuinely independent
+corpus route remains the other Phase-116-licensed branch.
+Verification: 24 new unit tests pass (incl. toy end-to-end
+controls and the frozen partition assertion); full backend
+suite 758 passed / 13 skipped / 0 failed; foundation check
+40 / 0 / 8; ruff clean.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

@@ -141,7 +141,9 @@ phonemes of its normalized reading under the §3 tokenizer.
 assigned to halves A and B as follows, with no free choices:
 strata are the 15 cells of (length bin ∈ {2, 3, 4, 5, 6+} ×
 site group ∈ {Mohenjo-daro, Harappa, OTHER}); within each
-stratum, inscriptions are ordered by `cisi_number`, shuffled
+stratum, inscriptions are taken in the loader's inscription
+order (first-appearance order of `cisi_number` groups in the
+CSV — the order `load_holdat_corpus` emits), shuffled
 with Python `random.Random(117).shuffle` (strata processed in
 sorted (length bin, site group) key order, one RNG stream),
 and dealt alternately A, B, A, B, … beginning with A. The
@@ -563,4 +565,134 @@ anchors file at design stage. No instrument scored any sign;
 no profile was compared to any model; no verdict exists in
 this appendix. Per-anchor rows are counts, not results.*
 
-(Tables A.1–A.5 are added by the finalizing commit.)
+### A.1 Corpus and sets
+
+Holdat as loaded (§1): 1,670 inscriptions / 7,002 tokens;
+lengths 2–8 (269 / 330 / 415 / 330 / 164 / 116 / 46
+inscriptions of length 2 / 3 / 4 / 5 / 6 / 7 / 8); 9 sites —
+Mohenjo-daro 606, Harappa 492, Lothal 124, Kalibangan 110,
+Dholavira 106, Chanhu-daro 78, Surkotada 61, Banawali 60,
+Rakhigarhi 33 inscriptions.
+
+| Set | n | Holdat tokens per sign (min / median / mean / max) |
+|---|---|---|
+| FLAGGED44 | 44 | 4 / 6 / 13.3 / 232 (M293; next-largest 21) |
+| STRICT94 | 94 | 1 / 17 / 54.9 / 584 (coverage 5,159 / 7,002 = 0.7368) |
+| KUR113 | 113 | 1 / 3 / 2.8 / 4 |
+
+The 44 are a rare-sign cohort: excluding M293, every flagged
+anchor has ≤ 21 Holdat tokens. Every frozen floor in §§4–5
+is set against this distribution.
+
+### A.2 W1 — the frozen partition and cross-fit judgeability
+
+Partition per §3 (15 strata; seed 117): half A = 3,531
+tokens, half B = 3,471 tokens. Fully judgeable = ≥ 4 tokens
+in **both** halves (both cross-fit directions scorable);
+a FAIL can additionally arise from a single scorable
+direction (§4.1 combination rule).
+
+| Per-half floor | FLAGGED44 | STRICT94 | KUR113 |
+|---|---|---|---|
+| ≥ 4 (frozen) | **13 / 44** | **68 / 94** | 0 / 113 |
+| ≥ 5 | 9 / 44 | 65 / 94 | 0 / 113 |
+| ≥ 6 | 8 / 44 | 58 / 94 | 0 / 113 |
+| ≥ 8 | 4 / 44 | 40 / 94 | 0 / 113 |
+
+### A.3 W2 — keep/drop computation (spec-011 T3 definitions)
+
+| Quantity | FLAGGED44 | STRICT94 | KUR113 |
+|---|---|---|---|
+| PASS-capable (support ≥ 3 ∧ contexts ≥ 4) | **5 / 44** | 34 / 94 | 0 / 113 |
+| Support ≤ 1 (T3's FAIL zone) | 27 / 44 | 38 / 94 | 109 / 113 |
+| Median support / median contexts | 1 / 2 | 2 / 6 | 0 / 1 |
+
+Composed-legality base rate (all-STRICT94 inscriptions of
+length ≥ 2, core readings composed in sequence order):
+**523 / 523 = 1.000 canon-legal.** Conclusion frozen in
+§4.2: W2 is dropped as a decision-bearing instrument; its
+PASS axis is attestation volume and its legality axis is
+saturated in this corpus.
+
+### A.4 W3 / W4 judgeability
+
+W3 junction observations (other sign ∈ STRICT94), floor
+n_j ≥ 6 frozen (§4.3):
+
+| Floor | FLAGGED44 | STRICT94 | KUR113 |
+|---|---|---|---|
+| ≥ 4 | 43 / 44 | 89 / 94 | 59 / 113 |
+| **≥ 6 (frozen)** | **40 / 44** | **81 / 94** | **24 / 113** |
+| ≥ 8 | 24 / 44 | 72 / 94 | 2 / 113 |
+
+Floor 6 is the frozen compromise: floor 4 admits 4-observation
+means whose permutation p-values cannot resolve the §4.3
+bands; floor 8 would silence the negative control (2/113)
+and halve the flagged cohort's coverage. At floor 6 the
+negative control retains 24 judgeable members — the §6
+gate's teeth.
+
+W4 (≥ 2 sites with ≥ 4 tokens of the sign): judgeable
+**9 / 44** flagged, 57 / 94 STRICT94. FAIL-capable
+(≥ 2 sites with ≥ 8 tokens): **1 / 44** (M293), 20 / 94
+STRICT94 — the basis for §4.4's asymmetric FAIL.
+
+**Battery-level split of the 44:** judgeable by ≥ 1
+instrument **41 / 44**; judgeable by W3 alone 27 / 44;
+judgeable by none — M235, M254, M402 — hence UNRESOLVED
+by construction under §8 (§5).
+
+### A.5 Per-anchor attestation table (FLAGGED44; counts only)
+
+nH = Holdat tokens; A/B = frozen-partition half counts;
+W1 = both halves ≥ 4; supp = STRICT94 partners at
+co-occurrence ≥ 2; ctx = all-strict contexts (length ≥ 2);
+bi = junction observations (other sign ∈ STRICT94);
+W3 = bi ≥ 6; sites4 = sites with ≥ 4 tokens; W4 = sites4 ≥ 2.
+
+| Sign | Tier | Reading | nH | A | B | W1 | supp | ctx | bi | W3 | sites4 | W4 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| M011 | HIGH | kaḷiṟu | 15 | 10 | 5 | ✓ | 2 | 9 | 11 | ✓ | 1 | – |
+| M021 | HIGH | kō | 16 | 10 | 6 | ✓ | 1 | 7 | 8 | ✓ | 1 | – |
+| M024 | HIGH | nē | 13 | 12 | 1 | – | 1 | 4 | 7 | ✓ | 2 | ✓ |
+| M028 | HIGH | cōḻ | 11 | 4 | 7 | ✓ | 0 | 4 | 5 | – | 1 | – |
+| M031 | HIGH | kai | 16 | 9 | 7 | ✓ | 2 | 7 | 11 | ✓ | 2 | ✓ |
+| M033 | HIGH | puli | 12 | 5 | 7 | ✓ | 3 | 8 | 9 | ✓ | 1 | – |
+| M035 | HIGH | po | 19 | 11 | 8 | ✓ | 3 | 8 | 14 | ✓ | 2 | ✓ |
+| M036 | HIGH | tiru | 15 | 9 | 6 | ✓ | 2 | 7 | 10 | ✓ | 2 | ✓ |
+| M040 | HIGH | ri | 13 | 7 | 6 | ✓ | 2 | 6 | 7 | ✓ | 2 | ✓ |
+| M058 | HIGH | ke | 21 | 8 | 13 | ✓ | 3 | 8 | 14 | ✓ | 2 | ✓ |
+| M071 | HIGH | nal | 16 | 9 | 7 | ✓ | 3 | 9 | 12 | ✓ | 2 | ✓ |
+| M072 | HIGH | mā | 12 | 8 | 4 | ✓ | 2 | 7 | 8 | ✓ | 2 | ✓ |
+| M102 | HIGH | ni | 8 | 5 | 3 | – | 4 | 1 | 12 | ✓ | 0 | – |
+| M103 | HIGH | kol | 5 | 2 | 3 | – | 2 | 2 | 7 | ✓ | 0 | – |
+| M127 | HIGH | vē | 6 | 2 | 4 | – | 0 | 2 | 8 | ✓ | 0 | – |
+| M149 | HIGH | or | 7 | 4 | 3 | – | 2 | 4 | 12 | ✓ | 0 | – |
+| M153 | HIGH | pu | 5 | 4 | 1 | – | 1 | 3 | 8 | ✓ | 0 | – |
+| M155 | HIGH | ka | 5 | 4 | 1 | – | 1 | 3 | 9 | ✓ | 0 | – |
+| M168 | HIGH | inci | 6 | 5 | 1 | – | 0 | 2 | 6 | ✓ | 0 | – |
+| M169 | HIGH | rā | 8 | 3 | 5 | – | 2 | 2 | 12 | ✓ | 0 | – |
+| M177 | HIGH | na | 5 | 5 | 0 | – | 1 | 1 | 7 | ✓ | 0 | – |
+| M178 | HIGH | i | 5 | 4 | 1 | – | 1 | 3 | 8 | ✓ | 0 | – |
+| M183 | HIGH | vēḷ | 5 | 2 | 3 | – | 1 | 1 | 6 | ✓ | 0 | – |
+| M223 | HIGH | muḷ | 5 | 1 | 4 | – | 0 | 2 | 7 | ✓ | 0 | – |
+| M235 | HIGH | vē | 7 | 3 | 4 | – | 1 | 1 | 4 | – | 0 | – |
+| M237 | HIGH | ce | 8 | 4 | 4 | ✓ | 2 | 1 | 11 | ✓ | 1 | – |
+| M239 | HIGH | il | 5 | 2 | 3 | – | 0 | 3 | 7 | ✓ | 0 | – |
+| M254 | HIGH | tēṉ | 5 | 1 | 4 | – | 1 | 1 | 4 | – | 0 | – |
+| M262 | HIGH | i | 5 | 2 | 3 | – | 1 | 0 | 7 | ✓ | 0 | – |
+| M270 | HIGH | muḷ | 6 | 3 | 3 | – | 1 | 1 | 7 | ✓ | 0 | – |
+| M272 | HIGH | ma | 7 | 5 | 2 | – | 0 | 0 | 7 | ✓ | 1 | – |
+| M281 | HIGH | piLLai | 4 | 2 | 2 | – | 0 | 2 | 7 | ✓ | 0 | – |
+| M293 | MEDIUM | ta | 232 | 124 | 108 | ✓ | 28 | 94 | 275 | ✓ | 9 | ✓ |
+| M304 | HIGH | vēṟ | 5 | 4 | 1 | – | 2 | 2 | 8 | ✓ | 0 | – |
+| M332 | HIGH | intu | 6 | 3 | 3 | – | 1 | 1 | 8 | ✓ | 0 | – |
+| M345 | HIGH | taṭ | 5 | 1 | 4 | – | 1 | 1 | 6 | ✓ | 0 | – |
+| M350 | HIGH | vē | 5 | 1 | 4 | – | 0 | 2 | 8 | ✓ | 0 | – |
+| M355 | HIGH | lu | 5 | 4 | 1 | – | 0 | 1 | 8 | ✓ | 0 | – |
+| M365 | HIGH | vāṉ | 5 | 5 | 0 | – | 1 | 3 | 9 | ✓ | 0 | – |
+| M383 | HIGH | kol | 7 | 2 | 5 | – | 2 | 1 | 11 | ✓ | 1 | – |
+| M401 | HIGH | vē | 6 | 4 | 2 | – | 0 | 1 | 7 | ✓ | 0 | – |
+| M402 | HIGH | vēḷ | 5 | 3 | 2 | – | 0 | 0 | 3 | – | 0 | – |
+| M412 | HIGH | cūḷ | 5 | 3 | 2 | – | 1 | 0 | 7 | ✓ | 0 | – |
+| M416 | HIGH | na | 5 | 2 | 3 | – | 1 | 1 | 6 | ✓ | 0 | – |

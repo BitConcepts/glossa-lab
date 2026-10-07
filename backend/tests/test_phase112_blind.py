@@ -135,3 +135,140 @@ def test_single_sign_corpus_guards():
 def test_extract_features_returns_exactly_feature_names():
     f = extract_features([[0, 1, 0], [1, 0, 1]], draw_index=0)
     assert list(f.keys()) == FEATURE_NAMES
+
+
+# ---------------------------------------------------------------------------
+# Pipeline: gate branches, blinding, S5 generator (spec 010 sections 5-8)
+# ---------------------------------------------------------------------------
+
+import json  # noqa: E402
+from pathlib import Path  # noqa: E402
+
+from glossa_lab import phase112_analyst as analyst  # noqa: E402
+from glossa_lab import phase112_custodian as custodian  # noqa: E402
+
+
+def _fake_panel(separable: bool) -> dict:
+    rng = np.random.default_rng(0)
+    n_feat = len(FEATURE_NAMES)
+    members = {}
+    labels = analyst.FAMILIES + [analyst.NONLING]
+    for i, label in enumerate(labels):
+        cid = f"C{i + 1:02d}"
+        centre = i * 10.0
+        rows = []
+        for _ in range(100):
+            row = np.full(n_feat, 0.5)
+            row[0] = (centre + rng.normal(0, 0.01)) if separable else 35.0
+            rows.append(row.tolist())
+        members[cid] = {"label": label, "features_primary": rows}
+    return {"members": members,
+            "known_ids": [f"C{i + 1:02d}" for i in range(len(labels))],
+            "blind_ids": [], "generator_train": {},
+            "feature_names": FEATURE_NAMES}
+
+
+def test_gate_passes_on_separable_panel():
+    gate = analyst.evaluate_gate(_fake_panel(separable=True))
+    assert gate["g1_binary_balanced_accuracy"] == pytest.approx(1.0)
+    assert gate["gate_passed"] is True
+
+
+def test_gate_fails_on_inseparable_panel():
+    gate = analyst.evaluate_gate(_fake_panel(separable=False))
+    assert gate["gate_passed"] is False
+
+
+def test_lda_posterior_rows_sum_to_one():
+    rng = np.random.default_rng(1)
+    n_feat = len(FEATURE_NAMES)
+    X = rng.normal(size=(40, n_feat))
+    y = np.array(["a"] * 20 + ["b"] * 20)
+    model = analyst.LDA().fit(X, y, ["a", "b"])
+    post = model.posterior(X)
+    assert np.allclose(post.sum(axis=1), 1.0)
+
+
+_FORBIDDEN = ("holdat", "indus", "linear", "tamil", "sumerian", "geez",
+              "turkish", "indonesian", "khipu", "damos", "icit", "wells",
+              "mahadevan", "vedic", "sanskrit")
+
+
+def test_analyst_imports_no_custodian():
+    src = Path(analyst.__file__).read_text(encoding="utf-8")
+    assert "phase112_custodian" not in src
+    assert "phase111_custodian" not in src
+    assert "import custodian" not in src
+
+
+def test_real_panel_blinding_invariant_if_built():
+    panel_path = custodian.STATE_DIR / "panel.json"
+    if not panel_path.exists():
+        pytest.skip("panel not built in this environment")
+    panel = json.loads(panel_path.read_text(encoding="utf-8"))
+    assert panel["feature_names"] == FEATURE_NAMES
+    for cid in panel["blind_ids"]:
+        entry = panel["members"][cid]
+        assert entry["label"] is None
+        blob = json.dumps(entry).lower()
+        assert all(word not in blob for word in _FORBIDDEN)
+
+
+def test_feature_names_match_committed_audit():
+    audit_path = Path(__file__).resolve().parents[2] / "reports" / "phase112_feature_audit.json"
+    if not audit_path.exists():
+        pytest.skip("audit not committed in this environment")
+    audit = json.loads(audit_path.read_text(encoding="utf-8"))
+    assert FEATURE_NAMES == audit["admitted_features"]
+
+
+def test_reuse_wiring_points_at_phase111_loaders():
+    # Spec 010 inherits spec 009's frozen loaders/chunking/resampling
+    # by import; guard the wiring so a silent fork cannot creep in.
+    from glossa_lab import phase111_custodian as c111
+
+    assert custodian.LOADERS is c111.LOADERS
+    texts = [[1, 2, 3], [4, 5], [6, 7, 8, 9], [10]]
+    rng = np.random.default_rng(np.random.SeedSequence([20261006, 99, 0]))
+    draw = c111.resample_draw(texts, 11_000, rng)
+    assert sum(len(t) for t in draw) == 11_000
+
+
+def _toy_r1() -> list[list[str]]:
+    texts = []
+    for i in range(200):
+        length = 3 + (i % 5)
+        start = f"S{i % 3}"
+        body = [f"B{(i + j) % 6}" for j in range(length - 2)]
+        texts.append([start] + body + ["E"])
+    return texts
+
+
+def test_s5_deterministic_shaped_and_positional():
+    r1 = _toy_r1()
+    texts1, stats1 = custodian.s5_generator(r1)
+    texts2, stats2 = custodian.s5_generator(r1)
+    assert texts1 == texts2
+    assert stats1 == stats2
+    # generates at least 5 x N_PRIMARY tokens, lengths from the
+    # frozen target distribution, vocabulary from R1 only
+    assert stats1["tokens"] >= 5 * custodian.N_PRIMARY
+    assert {len(t) for t in texts1} <= set(custodian.c111.TARGET_LEN_DIST.keys())
+    r1_vocab = {tok for t in r1 for tok in t}
+    assert {tok for t in texts1 for tok in t} <= r1_vocab
+    # positional fidelity: in R1 every text ends with "E", and the
+    # positional-bigram model must place "E" finally far above its
+    # own unigram rate (relative-position bins smear finality across
+    # lengths by design, so the share is high but not ~1)
+    final_e = np.mean([t[-1] == "E" for t in texts1])
+    e_rate = np.mean([tok == "E" for t in texts1 for tok in t])
+    assert final_e > 0.5 and final_e > 2 * e_rate
+    # unigram fidelity recorded and small on this toy
+    assert stats1["unigram_tv_distance_to_R1"] < 0.25
+
+
+def test_benjamini_hochberg_monotone():
+    out = analyst.benjamini_hochberg({"a": 0.001, "b": 0.04, "c": 0.5}, q=0.05)
+    assert out["a"]["bh_adjusted_p"] <= out["b"]["bh_adjusted_p"] <= out["c"]["bh_adjusted_p"]
+    assert out["a"]["significant_at_q"] is True
+    assert out["c"]["significant_at_q"] is False

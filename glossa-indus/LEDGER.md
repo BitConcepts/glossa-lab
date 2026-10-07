@@ -2064,3 +2064,51 @@ frozen thresholds dictate.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-113 — Outcome: Gate Passed at Round 1; INVALID RUN at the Round-1 Adversarial Control (spec 012)
+
+The frozen adversarial protocol ran exactly as pre-registered
+and stopped at its first control check. The round-1 gate —
+C_1 is Phase-112's classifier (the same 16 order-carrying
+features, the same LDA) — passed perfectly: G1 balanced
+accuracy 1.000 with bootstrap CI lower bound 1.000 (p =
+0.00050), G2 family balanced accuracy 1.000 (permutation
+p = 0.000999), all seven family recalls 1.000. The power
+analysis had cleared the study to run: 14 new features
+admitted (family B 8/14, family C 6/6), ladder family balanced
+accuracy 1.000 at N = 7,002 at every step, and the
+pre-registered INDETERMINATE AT THIS CORPUS SIZE outcome did
+not fire. The adversarial search then defeated C_1
+comprehensively. Of 200 budgeted candidates, 183 satisfied the
+round-1 matching constraint (unigram TV ≤ 0.05 to R1); the
+objective was bimodal (median 0.0; 82 candidates at ≥ 0.99
+mean family posterior mass), the forced θ_S5 anchor — S5's
+exact construction — scored 0.99999995, and the winner
+(eval 53) is a trigram-dominated grammar-free mixture
+(global-trigram weight 0.534, positional-trigram 0.280,
+global-bigram 0.174; β_P2 3.0, β_P3 0.3, β_G2 1.0, β_G3 0.3;
+burst 0.048; copy 0.189; unigram TV 0.0394). Its artifact
+corpus A_1 (13,202 texts / 55,002 tokens) was classified into
+family space in all 100 draws: control share 0.00 against the
+≥ 0.95 requirement. Verdict, verbatim: **INVALID RUN —
+CONTROL VALIDITY FAILED**, fired at round 1 under spec §8.2.
+Rounds 2–3 were not run, the §8.4 final recheck was not
+reached, no §10 rule fired, and the blind key was never opened
+(the classify stage refuses by construction and was verified
+to refuse). No Indus affiliation claim — for or against any
+family, or for linguistic status itself — is made by this
+phase. The defeating generator is reported in full in
+`reports/phase113_blind_affiliation_summary.md` (spec §8.3):
+the substantive finding is that Phase-112's S5 was a single
+point of a broad defeating region — the L1 order statistics
+are producible by many bounded-order Markov/template mixtures
+that match the unigram profile. Whether the longer-range (L2)
+and cross-text (L3) features resist this process class is not
+measured by this run, because the frozen protocol forbids
+proceeding past a failed round; it is reserved to a successor
+spec. Suite: 667 passed / 12 skipped / 0 failed; foundation
+40 passed / 0 failed / 8 warnings. No anchors touched; no
+prior result altered.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.

@@ -2349,3 +2349,37 @@ compilation` status was awarded to any anchor. Reports:
 **AI disclosure:** execution recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## Phase-118 — Within-Compilation Validation Battery v2: Design + Execution (spec 017)
+
+Designed and executed 2026-10-07 under the owner's single
+commission (spec frozen first, commit 8c0d93a3; Appendix A
+9d9d037e; branch stacked on PR #75's branch). W1-primary
+redesign of spec 016: W1 verbatim primary; W3 rebuilt
+cross-fit (model + phi from the opposite half; donor null
+B = 999 per direction; median-donor bands; junction floor 2
+per direction); W4 FAIL-guard only; judgeability J94 = 67 /
+JKUR = 29 asserted and held; partition asserted (3,531 /
+3,471). phi: A->B -7.192755 (n = 83), B->A -7.088781
+(n = 89). Calibration: STRICT94 VALIDATED 14 / DEMOTE 21 /
+UNRESOLVED 59 (W1 63/5/26; W3 22/11/61; W4 44/10/40 over
+PASS/FAIL/INDETERMINATE) — positive gate FAILED (14/67 =
+0.2090 over J94; required >= 0.50). KUR113 0/0/113; over
+JKUR VALIDATED 0, DEMOTE 0/29 = 0.0000 (required >= 0.25) —
+negative gate FAILED on its discrimination clause: 0 of 58
+JKUR direction scores fall below phi_d although all
+p-values >= 0.579, so the conjunctive FAIL band never fires
+on the known-bad readings (coarse junction fabric; spec
+§10). BATTERY REJECTED at calibration (§6): FLAGGED44 never
+run, anchors untouched, all 44 remain
+`pending_non_sa_validation`, tiers and coverage unchanged
+(166/5/3/113; strict core 94; 0.7368). No
+`validated_within_compilation` status was awarded to any
+anchor. The gate failed rather than passing vacuously —
+spec 017 §6's design intent. Reports:
+`reports/phase118_within_battery_results.json` +
+`_summary.md`. Suite 770/13/0; foundation 40/0/8.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

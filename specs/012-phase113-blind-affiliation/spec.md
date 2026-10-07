@@ -18,6 +18,16 @@ or reused. All new artifacts carry distinct names
 `phase113_analyst`, `phase113_run`, `phase113_feature_audit`) and
 new graph node IDs, per the spec-009/010 precedent.
 
+**Renumbering note (2026-10-07, post-execution):** this study
+was designed and executed under the number Phase-113, in
+parallel with spec 011's non-SA validation study, which also
+carried Phase-113 and merged first (PR #69), retaining the
+number. **This study (spec 012) is renumbered Phase-114.**
+Frozen artifact filenames (`phase113_*`) and the frozen text of
+this spec are not changed; "Phase-113" in them refers to this
+study. Dated correction entries recording the renumbering are
+in both `LEDGER.md` files on this branch.
+
 **AI disclosure:** this study is designed for execution by an AI
 agent (Muse Spark, via Muse) at the direction of Tristen
 Pierson, per constitution §VI. The blinding protocol (inherited

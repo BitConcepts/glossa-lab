@@ -5,6 +5,14 @@ Study: Phase-113 (spec 012, frozen 2026-10-07, freeze commit
 010). Results file:
 `reports/phase113_blind_affiliation_results.json`.
 
+> **Renumbering note (2026-10-07):** this study was executed as
+> "Phase-113" in parallel with spec 011's non-SA validation
+> study, which merged first and holds Phase-113. **This study
+> (spec 012) is Phase-114.** The frozen artifact filenames
+> (`phase113_*`, including this summary's own) are retained and
+> are not renamed; "Phase-113" in the frozen text below refers
+> to this study.
+
 ## Verdict
 
 > **INVALID RUN — CONTROL VALIDITY FAILED** (fired at round 1,

@@ -2299,3 +2299,28 @@ IndusPhase113BlindRounds / IndusPhase113BlindClassify (spec
 **AI disclosure:** merge resolution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## Phase-117 — Within-Compilation Validation Battery: Design (spec 016)
+
+Design only, 2026-10-07, owner-authorized (execution requires
+separate approval). Phase-116's R-NONE forbids the
+cross-corpus gate on the Holdat/ICIT pair and licenses
+within-compilation validation; spec 016 designs that battery
+for the 44 anchors still `pending_non_sa_validation`. W1
+split-half positional cross-fit (frozen partition, seed 117;
+T2a thresholds carried over); W2 (T3) dropped on feasibility
+numbers (5/44 PASS-capable; legality base rate 1.000); W3
+junction coherence vs a seeded donor-permutation null
+(judgeable 40/44); W4 site-stratum stability (judgeable
+9/44; FAIL-capable 1/44). Gates: STRICT94 ≥ 47/94, KUR113
+≤ 5/113, rejection pattern as specs 011/014. New status
+value `validated_within_compilation` (spec §9): internal
+coherence within Holdat — explicitly not independence, not
+`validated_non_sa`; provenance record unaltered; outcomes
+provisional against independent corpora. Appendix A holds
+the design-stage counts (41/44 judgeable by ≥ 1 instrument;
+M235/M254/M402 by none). No anchors changed; nothing run.
+
+**AI disclosure:** design recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

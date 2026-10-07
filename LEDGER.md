@@ -948,6 +948,53 @@ the direction of Tristen Pierson, per constitution §VI.
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
 
+---
+
+## Phase-115 — Non-SA Validation Battery v2: Pre-Registration + Outcome (spec 014)
+
+Successor to Phase-113 (spec 011, battery rejected at calibration),
+authorized by Tristen Pierson 2026-10-07 ("continue fully") along
+the successor paths Phase-113 recorded. Spec 014 frozen alone in
+`fddd4dbf` before any battery-v2 code ran against any anchor.
+
+- **Layer rebuilt (spec §2):** diagnosis decomposed the Phase-107
+  loss — a leading-zero key mismatch (CSV `002` vs registry `2`)
+  cost 4,014 tokens; the all-or-nothing inscription rule cost most
+  of the rest. The v2 builder (key normalization; sentinel
+  positions for placeholders/unmapped codes; partial inscriptions
+  retained; Holdat wildcard + intra-layer exact dedupe) produces
+  **4,531 inscriptions / 13,492 mapped tokens at 91.554%
+  token-map coverage** (v1: 1,007 / 2,238 / 69.3%), byte-identical
+  across rebuilds (sha256 f837a15a…). Corpus data stays gitignored;
+  statistics only published.
+- **Battery v2:** T1 rebuilt on the v2 layer with attestation
+  floors scaled to each sign's measured opportunity
+  (O = r·n_H, r = 1.926878; bands frozen in spec §4; FAIL requires
+  ≥ 3 tokens). T2/T3, calibration gates, and the decision rule are
+  spec 011 unchanged (machinery reused, not reimplemented).
+- **Calibration outcome — BATTERY REJECTED (second frozen
+  rejection).** STRICT94 (leave-one-out): VALIDATED **1** / DEMOTE
+  57 / UNRESOLVED 36 — gate (≥ 57) FAILED. KUR113: VALIDATED **0**
+  / DEMOTE 23 / UNRESOLVED 90 — gate (≤ 5) passed. FLAGGED44 was
+  never run; `INDUS_FINAL_ANCHORS.json` is untouched (zero diff);
+  all 44 remain `pending_non_sa_validation`; tier counts and the
+  94-sign strict core / 73.68% coverage are unchanged.
+- **Diagnosis (post-hoc, descriptive):** the failure mode inverted
+  — v1 could not attest the core (61/94 NOT_ATTESTED); v2 attests
+  it (51/94 judged) and finds systematic cross-corpus
+  disagreement: 43 T1 FAILs, 40 on modal-class disagreement
+  (median TV 0.79; largest cell Holdat-INITIAL → ICIT-MEDIAL, 18;
+  direction-swap pairs only 8); 25/94 strict signs have zero
+  tokens in the ICIT corpus at all. T2/T3 tallies identical to
+  Phase-113. Recorded conclusion: a conjunctive cross-corpus gate
+  on this pair of compilations is not a validation instrument;
+  any further successor must first pre-register a
+  corpus-harmonization study of *why* the profiles disagree —
+  new spec + owner direction required.
+- **Suite / foundation:** 697 passed / 11 skipped / 0 failed
+  (673 baseline + 24 new); foundation 40 / 0 / 8; ruff clean.
+  (Full-suite side-effect churn in test-generated outputs was
+  reverted; not part of this phase.)
 ## [2026-10-07] Entry — Phase-116 / Spec 015: Corpus-Harmonization Study — Pre-Registration Frozen
 
 - **Spec:** `specs/015-phase116-corpus-harmonization` (spec/plan/tasks),

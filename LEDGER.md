@@ -900,6 +900,71 @@ the direction of Tristen Pierson, per constitution §VI.
   ATOMIC_NODES before any run; 30 unit tests (canon, profiles,
   decision-rule truth table, toy end-to-end controls, set
   recomputation, registration).
+## [2026-10-07] Entry — Phase-113 / Spec 012: Blind Language-Affiliation Study, Adversarial Protocol — Pre-Registration Frozen
+
+- **Why this study exists:** Phase-111 fell to unigram mimicry
+  (S1/S2), Phase-112 — with only order-carrying features — fell
+  to S5, a grammar-free positional-bigram template (control
+  share 0.00). The recorded lesson, twice confirmed: a fixed
+  trap is beaten by the next subtler mimic. Owner authorized
+  the adversarial successor 2026-10-07 (roadmap item 4).
+- **Pre-registration:** spec 012
+  (`specs/012-phase113-blind-affiliation/`) committed in its own
+  commit AFTER the design-stage tooling commits (110c1fe9,
+  dc57566b) and BEFORE any Phase-113 panel build, gate
+  evaluation, adversarial round, or Indus statistic exists; the
+  git order is the registration proof. **The design change:**
+  fixed traps are replaced by an adversarial protocol — a
+  feature ladder frozen in advance (L1 = spec-010's 16; L2 =
+  L1 + admitted family B; L3 = L2 + admitted family C), three
+  rounds (one per ladder step), each with the round classifier
+  frozen while a deterministic, seeded, budgeted optimizer
+  (200 evaluations/round) searches a parametric generator
+  family G(θ) — positional/global bigram+trigram mixtures with
+  burst and copy components — for corpora that match R1 on all
+  previous rounds' feature families and maximize family
+  assignment. A round holds only if the frozen classifier
+  rejects the optimized generator in ≥ 95% of draws; a defeat
+  ends the run INVALID at that round with the defeating
+  generator reported in full. Final control validity is
+  conjunctive over S1–S5 and A1–A3 under C_3; the §10 verdict
+  fires only if every round holds.
+- **Feature admission (design stage, known corpora only):**
+  every new candidate had to pass BOTH the spec-010
+  permutation-sensitivity audit (median |d| ≥ 0.8, same sign
+  ≥ 8/9, non-degenerate ≥ 5/9) AND a new power audit at
+  N = 7,002 (median pairwise between-class |Cohen's d| ≥ 0.5).
+  Outcome: family B admitted 8 of 14 (`blockH5`, `blockH6`,
+  `mi_lag2`, `mi_lag3`, `rep_adj_4`, `adj_clustering_lag2`,
+  `restore_acc_tri`, `bigram_type_ratio_lag2`); family C
+  admitted 6 of 6. The power audit admitted all 20 candidates;
+  every exclusion was made by the permutation audit (six
+  family-B candidates with inconsistent permutation-response
+  sign). Ladder power at N = 7,002: family balanced accuracy
+  1.000 at all three ladder steps. **The pre-registered
+  INDETERMINATE AT THIS CORPUS SIZE outcome does NOT fire**
+  (criteria: < 3 admitted new features — 14 admitted; or
+  full-ladder family BA at 7,002 < 0.70 — it is 1.000), so the
+  adversarial rounds proceed. Full record:
+  `reports/phase113_feature_audit.json`.
+- **Inherited unchanged from specs 009/010:** panel (as
+  assembled, with its registered gaps), resampling
+  (N = 11,000; 100 draws; sensitivity 5k/19.6k), unit rules,
+  S1–S5 controls and their generator-training instances, LDA
+  classifier, custodian/analyst blinding, gate thresholds,
+  verdict rules and V6 vocabulary, BH q = 0.05, licensing
+  discipline (publish nothing requiring permission we lack).
+- **Staging note:** the Phase-112 panel staging was lost with
+  its worktree; the identical panel was re-obtained from the
+  same openly licensed origins into the gitignored
+  `sources/phase113/` and **verified loader-equivalent**: all
+  eleven loader-backed corpora reproduce the committed
+  Phase-111 build log exactly (11/11 MATCH; Holdat and ICIT
+  transferred with SHA-256 equality). Record:
+  `reports/phase113_acquisition_log.json`.
+- **Status at this entry:** spec frozen; no panel built, no
+  gate run, no round run, no result exists. Outcome entries
+  follow as separate appends. No anchors touched.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
@@ -944,6 +1009,73 @@ the direction of Tristen Pierson, per constitution §VI.
 - **Suite / foundation:** recorded in the PR body (full backend
   suite; foundation check per H21 — anchors untouched, reports
   added).
+## [2026-10-07] Entry — Phase-113 / Spec 012: Outcome — Gate Passed at Round 1; INVALID RUN at Round-1 Adversarial Control A1 (INVALID RUN)
+
+- **Verdict (verbatim, frozen spec-012 §10 V6 vocabulary):
+  INVALID RUN — CONTROL VALIDITY FAILED**, fired at round 1
+  (spec §8.2). No affiliation verdict — for or against any
+  family, or for linguistic status itself — is produced by this
+  phase, and none may be quoted from it.
+- **Design recap:** the adversarial successor to 111/112. A
+  frozen feature ladder (L1 = spec-010's 16; L2 = L1 + family B;
+  L3 = L2 + family C) with three rounds, one per ladder step;
+  each round freezes its classifier, then a deterministic
+  seeded optimizer (200 evaluations) searches the generator
+  family G(θ) (positional/global bigram+trigram mixtures with
+  burst and copy) for corpora matching R1 on all previous
+  rounds' families and maximizing family assignment. A round
+  holds only if the frozen classifier rejects the optimized
+  corpus in ≥ 95% of 100 draws.
+- **Power analysis (§4.4):** dual audit on the nine known
+  corpora — family B admitted 8/14, family C 6/6 (the power
+  audit at N = 7,002 admitted all 20 candidates; every
+  exclusion was the permutation audit's). Ladder family
+  balanced accuracy at N = 7,002: 1.000 at all three steps.
+  **INDETERMINATE AT THIS CORPUS SIZE did not fire**; the
+  rounds proceeded.
+- **Gate (round 1, L1):** PASSED perfectly — G1 BA 1.000, CI
+  lower bound 1.000, bootstrap p = 0.00050; G2 BA 1.000,
+  permutation p = 0.000999; all 7 family recalls 1.000. Third
+  consecutive perfect gate in this study line; the failure is
+  again at control validity, not validation.
+- **Round 1 (the defeat):** 183/200 optimizer candidates were
+  feasible (unigram TV ≤ 0.05); the objective was bimodal —
+  median 0.0, but 82 candidates scored ≥ 0.99 mean family
+  posterior mass. Candidate 0 (the forced θ_S5 anchor, S5's
+  exact construction) scored 0.99999995. Winner (eval 53):
+  a trigram-dominated grammar-free mixture — w_G3 0.534,
+  w_P3 0.280, w_G2 0.174, w_P1 0.011, w_P2 0.001; β_P2 3.0,
+  β_P3 0.3, β_G2 1.0, β_G3 0.3; p_burst 0.048, p_copy 0.189;
+  evaluation-corpus unigram TV to R1 0.0394. A_1 (13,202
+  texts / 55,002 tokens, TV 0.0387): **control share under
+  C_1 = 0.00** (0/100 draws non-linguistic-collapsed). The
+  frozen §8.2 stop rule fired: rounds 2–3 not run, §8.4 final
+  recheck not reached, T3–T5 not run.
+- **Defeating generator:** reported in full in
+  `reports/phase113_blind_affiliation_summary.md` per spec
+  §8.3. Reading: Phase-112's S5 was one point of the defeating
+  region; the region is broad — L1's order statistics
+  (≤ relative-position bigrams) are producible by many
+  bounded-order Markov/template mixtures matching the unigram
+  profile. Whether the L2/L3 features resist is NOT measured
+  by this run (the protocol forbids proceeding past a failed
+  round); it is a question for a successor spec, never a
+  patch of this run.
+- **Blinding:** the key was never opened for classification
+  (unblinding is null in the results file); the classify stage
+  was invoked once as an integrity check and refused, as
+  designed. Code HEAD for the run: 24cb33a0. Deviations from
+  the frozen spec: none. One VM reboot occurred during the
+  design stage (before any run; nothing lost but /tmp
+  scratch); the run itself was uninterrupted and checkpointed.
+- **Suite / foundation:** backend suite 667 passed / 12
+  skipped / 0 failed (the +1 skip vs the 643/11 baseline is
+  Phase-112's state-dependent panel test — the same mechanism
+  recorded in Phase-112's accounting); foundation check
+  40 passed / 0 failed / 8 warnings. Reports:
+  reports/phase113_blind_affiliation_results.json +
+  reports/phase113_blind_affiliation_summary.md.
+- **No anchors touched; no prior result altered.**
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
@@ -1099,3 +1231,71 @@ the direction of Tristen Pierson, per constitution §VI.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+## [2026-10-07] Entry — Correction: Spec 012 Study Renumbered Phase-113 → Phase-114; §6 Sanity-Anchor Qualification Recorded
+
+Append-only records correction to the two spec-012 entries above
+(freeze and outcome, both 2026-10-07). The original entries stand
+as written when made; nothing in them is altered. No re-run was
+performed and no study outcome is affected.
+
+- **Renumbering.** Spec 012's adversarial blind-affiliation study
+  was designed and executed as "Phase-113" in parallel with spec
+  011's non-SA validation study, which also carried Phase-113 and
+  merged first (PR #69), retaining the number. Spec 012's study
+  is renumbered **Phase-114**. Frozen artifact filenames
+  (`reports/phase113_*` and the `phase113_*` code modules) are
+  retained unchanged; "Phase-113" in those artifacts and in the
+  entries above refers to this study. Dated renumbering notes
+  were added at the top of
+  `specs/012-phase113-blind-affiliation/spec.md` and of
+  `reports/phase113_blind_affiliation_summary.md`.
+- **§6 sanity-anchor qualification.** Spec 012 §6 requires
+  positional-bigram TV between G(θ_S5) and the frozen S5
+  generator < 0.10. Under the finest-grained reading of that
+  statistic (frequency-weighted per-(b, b′, x)-context TV), two
+  samples from the identical model at ~55k tokens already sit at
+  0.246 (the sampling-noise floor); G(θ_S5)-vs-S5 measured 0.243
+  — no systematic excess over the noise floor. The committed
+  unit test therefore asserts TV < 0.30 AND TV ≤ noise floor +
+  0.05, plus unigram TV to R1 < 0.10 (measured 0.038); under the
+  coarser per-bin-pair successor-TV reading the value is 0.064,
+  which does meet 0.10. The anchor's substance is confirmed
+  three ways (S5's recorded unigram TV to R1 = 0.0419 reproduced
+  exactly; no excess over the identical-model noise floor;
+  candidate 0 behaved exactly as S5 in the run — objective
+  0.99999995 under C_1, unigram TV 0.0383). No study outcome
+  depends on the anchor's threshold: the INVALID-at-round-1
+  verdict rests solely on the frozen rounds protocol (spec 012
+  §§7–10). Recorded in full as the §12.1 addendum (2026-10-07)
+  in the spec and as a dated footnote in the summary at the
+  candidate-0 mention.
+
+**AI disclosure:** records corrections recorded by an AI agent
+(Muse Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.
+
+## [2026-10-07] Entry — Merge Record: PR #71 Branch Merged origin/main (PR #70); Phase-Number Code Collisions Resolved
+
+The Phase-114 (spec 012) branch merged origin/main at a6d97daf
+(PR #70: spec 011 outcome, spec 013, spec 014 / Phase-115). The
+parallel use of "Phase-113" by specs 011 and 012 had produced
+same-name code modules; conflicts were resolved append-only /
+union, with no frozen spec or report text altered and no result
+changed:
+
+- Both `LEDGER.md` files: all entries from both sides retained
+  in full; the correction entry above closes each file.
+- `backend/glossa_lab/phase113_run.py`: spec 011's battery
+  orchestrator retains the name; spec 012's orchestrator moved
+  to `phase114_run.py` (import sites updated; report and state
+  artifact names remain `phase113_*` as frozen).
+- `backend/glossa_lab/experiment_graph_phase113.py`: unioned —
+  one module now registers spec 011's
+  IndusPhase113NonSaValidation plus spec 012's
+  IndusPhase113BlindRounds / IndusPhase113BlindClassify, each
+  study's node behavior preserved.
+- Recorded in spec 012 as the §12.2 addendum (2026-10-07).
+
+**AI disclosure:** merge resolution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

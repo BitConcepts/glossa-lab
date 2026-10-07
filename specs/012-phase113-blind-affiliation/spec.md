@@ -657,6 +657,37 @@ protocol (§§7–10): the round-1 artifact A_1's control share of
 0.00 against the ≥ 0.95 requirement of §8.2. This addendum
 qualifies the reading of the §6 anchor; it does not amend §6.
 
+### 12.2 Addendum (2026-10-07) — merge-collision module rename
+
+Post-execution records addendum under the §12 policy. Recorded
+at the PR #71 merge of origin/main (main a6d97daf, containing
+spec 011's Phase-113 study and spec 014's Phase-115 study, both
+merged while this study ran in parallel under the same phase
+number — see the renumbering note at the top of this spec).
+
+Two code filenames authored for this study collided with spec
+011's modules of the same name, and were resolved in the merge
+without touching any frozen artifact, report, or result:
+
+- `backend/glossa_lab/phase113_run.py` (this study's
+  orchestrator) collided with spec 011's battery orchestrator,
+  which retains the filename. This study's orchestrator moved
+  to `backend/glossa_lab/phase114_run.py`; its import sites
+  (the two `phase113_blind_*` entry scripts and
+  `backend/tests/test_phase113_blind.py`) were updated. The
+  scripts' own filenames, the reports this module writes
+  (`phase113_blind_affiliation_results.json`), and its runtime
+  state directory remain `phase113_*` exactly as frozen.
+- `backend/glossa_lab/experiment_graph_phase113.py` (both
+  studies' graph-node modules) was unioned into a single module
+  registering all three nodes (spec 011's
+  IndusPhase113NonSaValidation and this study's
+  IndusPhase113BlindRounds / IndusPhase113BlindClassify), each
+  study's node behavior preserved.
+
+No re-run is performed or implied; the recorded run (code HEAD
+24cb33a0) and its results stand exactly as reported.
+
 ## 13. Limitations (registered at freeze time)
 
 - All spec-009 §12 limitations stand, as carried through spec

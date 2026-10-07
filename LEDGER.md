@@ -1299,3 +1299,44 @@ changed:
 **AI disclosure:** merge resolution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## [2026-10-07] Entry — Phase-117 (spec 016): Within-Compilation Validation Battery — DESIGN ONLY (not executed)
+
+Owner authorized the design 2026-10-07 (execution requires his
+separate, explicit approval; this entry records a design, not
+a study). Specs 011/014 batteries were rejected at calibration
+on their cross-corpus test; Phase-116 (spec 015) returned
+R-NONE — no conjunctive cross-corpus positional gate on the
+Holdat/ICIT pair — and licensed exactly two routes: within a
+single compilation, or await a genuinely independent corpus.
+Spec 016 takes the first route. Frozen design: W1 split-half
+positional cross-fit (spec-011 T2a thresholds unretuned;
+frozen partition, 15 length×site strata, seed 117, halves
+3,531 / 3,471 tokens); W2 (spec-011 T3) DROPPED as a
+decision-bearing instrument on design-stage numbers (5/44
+PASS-capable; composed-legality base rate 1.000, 523/523);
+W3 junction model over STRICT94 readings with a frozen
+quantile floor and a seeded donor-permutation null (B = 999,
+frequency-band donors; judgeable 40/44); W4 site-stratum
+stability with an attestation-asymmetric FAIL (judgeable
+9/44). Calibration gates: STRICT94 LOO VALIDATED ≥ 47/94;
+KUR113 VALIDATED ≤ 5/113 — failure rejects the battery and
+the 44 are never run. Decision rule: VALIDATED ⟺ W3 PASS ∧
+(W1 ∨ W4) PASS ∧ no FAIL; DEMOTE on any FAIL; else
+UNRESOLVED (M235, M254, M402 are UNRESOLVED by construction
+— judgeable by no instrument). The success status is the new
+value `validated_within_compilation`, defined in spec §9
+with an anti-circularity clause: it claims internal
+coherence within Holdat only, never independence, never to
+be conflated with `validated_non_sa`; SA-lineage provenance
+is unaltered by any outcome; all outcomes are provisional
+against genuinely independent corpora. Feasibility appendix
+(A.1–A.5) computed from Holdat counts at design stage — no
+sign was scored. No anchors changed; no code written; no
+run performed. Branch `phase/within-compilation-battery-design`
+from main 83d03672 (pre-history-rewrite; rebase is mechanical,
+trees identical).
+
+**AI disclosure:** design recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

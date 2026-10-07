@@ -21,4 +21,4 @@
 - [x] T10 Results JSON + summary MD (incl. post-hoc diagnosis, labeled)
 - [x] T11 Full suite (697 passed / 11 skipped / 0 failed) + foundation check (40 / 0 / 8); ruff clean
 - [x] T12 Ledger entries (both files, AI disclosure)
-- [ ] T13 PR opened (no merge)
+- [x] T13 PR opened — #70 (no merge)

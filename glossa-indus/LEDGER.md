@@ -2019,6 +2019,76 @@ reports/phase112_feature_audit.json.
 **AI disclosure:** executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per constitution §VI.
 
+## Phase-113 — Non-SA Validation Battery for the 44 Flagged Anchors: Pre-Registration (spec 011)
+
+Spec 011 frozen at `81049c98` before any results (owner
+authorization 2026-10-07, roadmap item 2). Battery for the 44
+Phase-109 `pending_non_sa_validation` anchors (24 SA_DERIVED +
+20 SA_CONFIRMED_ONLY; 43 HIGH + M293 MEDIUM), using no SA output
+anywhere (H26): T1 cross-corpus consistency (ICIT converted
+layer vs Holdat), T2 positional-grammar fit against the strict
+SA-independent 94-sign core, T3 compositional co-occurrence
+under a frozen Dravidian syllable canon. Decision rule frozen:
+all-PASS validates (tier unchanged — validation only, never
+promotion), any FAIL demotes to CANDIDATE, otherwise the anchor
+stays flagged. Calibration gates frozen ahead of the main run:
+the battery must validate ≥ 57/94 of the strict core
+(leave-one-out) and ≤ 5/113 of the Phase-110 premise-superseded
+`kur` cohort, or it is rejected untested on the 44. Machinery:
+`phase113_battery.py` / `phase113_run.py`, H23 node
+`IndusPhase113NonSaValidation`, 30 unit tests.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-113 — Outcome: Battery Rejected at Calibration (spec 011)
+
+Executed as frozen. Positive control (STRICT94, leave-one-out):
+VALIDATED 3 / DEMOTE 45 / UNRESOLVED 46 — gate (≥ 57) FAILED.
+Negative control (KUR113): VALIDATED 0 / DEMOTE 16 /
+UNRESOLVED 97 — gate (≤ 5) passed. Verdict: **BATTERY
+REJECTED**. FLAGGED44 was never run; the anchors file is
+untouched; all 44 remain `pending_non_sa_validation` and the
+non-SA validation question stays open. Diagnosis from the
+calibration records (no re-tuning): T2 positional fit is sound
+(91/94 on profile fit); T3 legality never fires on real
+compositions (0/89 below bar) — its constraint is partner
+support; T1 fails on data sparsity — 61/94 strict signs are
+unattested or below floor in the ICIT converted layer (45 with
+zero tokens), and 22 of the 33 attested fail agreement. A
+cross-corpus gate is only as strong as its converted layer;
+any successor needs a fuller ICIT layer or coverage-scaled
+floors, by new spec. Reports:
+reports/phase113_nonsa44_results.json,
+reports/phase113_nonsa44_summary.md.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+---
+
+## Phase-115 — Non-SA Validation Battery v2 (spec 014): Rejected at Calibration
+
+Executed as frozen (spec committed alone in `fddd4dbf` before any
+results). T1 rebuilt on the expanded v2 ICIT layer (4,531
+inscriptions / 13,492 mapped tokens, 91.554% coverage; v1 was
+1,007 / 2,238 / 69.3% — the dominant v1 loss was a leading-zero
+key mismatch, 4,014 tokens) with opportunity-scaled attestation
+floors; T2/T3/gates/decision rule unchanged from spec 011.
+
+Positive control (STRICT94, leave-one-out): VALIDATED 1 /
+DEMOTE 57 / UNRESOLVED 36 — gate (≥ 57) **FAILED**. Negative
+control (KUR113): VALIDATED 0 — gate (≤ 5) passed. Verdict:
+**BATTERY REJECTED**; FLAGGED44 never run; anchors untouched;
+the 44 remain `pending_non_sa_validation`. Diagnosis: of 51
+judged strict signs, 43 fail T1 (40 modal-class disagreements,
+median TV 0.79; 25/94 strict signs have zero ICIT tokens).
+Cross-corpus positional profiles do not transfer between
+Holdat and the ICIT layer at the frozen tolerance — a
+harmonization question for a future spec, not another battery.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
 ## Phase-113 — Blind Language-Affiliation Study, Adversarial Protocol: Pre-Registration (spec 012)
 
 Spec 012 (`specs/012-phase113-blind-affiliation/`) frozen and
@@ -2154,5 +2224,28 @@ the dated footnote in
 candidate-0 mention.
 
 **AI disclosure:** records corrections recorded by an AI agent
+(Muse Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.
+
+## Phase-114 — Merge Record: PR #71 Branch Merged origin/main (PR #70); Code Collisions Resolved (spec 012)
+
+Merge record, 2026-10-07. This branch merged origin/main at
+a6d97daf (PR #70: spec 011 outcome, spec 013, spec 014 /
+Phase-115). Specs 011 and 012 had run in parallel under the
+number Phase-113, producing same-name code modules; the merge
+conflicts were resolved append-only / union, with no frozen
+spec or report text altered and no result changed: both ledgers
+retain every entry from both sides (the Phase-114 correction
+entry above stands); spec 011's battery orchestrator retains
+`backend/glossa_lab/phase113_run.py` while spec 012's
+orchestrator moved to `phase114_run.py` (import sites updated;
+report and state artifact names remain `phase113_*` as frozen);
+`experiment_graph_phase113.py` was unioned into one module
+registering IndusPhase113NonSaValidation (spec 011) plus
+IndusPhase113BlindRounds / IndusPhase113BlindClassify (spec
+012), each study's node behavior preserved. Recorded in spec
+012 as the §12.2 addendum (2026-10-07).
+
+**AI disclosure:** merge resolution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.

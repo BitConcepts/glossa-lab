@@ -2324,3 +2324,28 @@ M235/M254/M402 by none). No anchors changed; nothing run.
 **AI disclosure:** design recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## Phase-117 — Within-Compilation Validation Battery: Execution (spec 016)
+
+Executed 2026-10-07 under the owner's separate execution
+approval (design PR #74). Frozen partition asserted
+(A 3,531 / B 3,471 tokens, seed 117); phi = -7.461366
+(10th percentile of 81 STRICT94 leave-one-out W3
+self-scores). Calibration: STRICT94 LOO VALIDATED 2 /
+DEMOTE 19 / UNRESOLVED 73 — positive gate (>= 47/94)
+FAILED; per-instrument (PASS/FAIL/INDETERMINATE) W1
+63/5/26, W3 3/9/82, W4 44/10/40. KUR113 VALIDATED 0 —
+negative gate (<= 5/113) PASSED, all states INDETERMINATE.
+BATTERY REJECTED at calibration (§6): FLAGGED44 never
+run, anchors file untouched, all 44 remain
+`pending_non_sa_validation`, tiers and coverage unchanged
+(166/5/3/113; strict core 94; 0.7368). Binding constraint:
+the mandatory W3 PASS fired for only 3/94 core signs under
+leave-one-out at the frozen bands. No `validated_within_
+compilation` status was awarded to any anchor. Reports:
+`reports/phase117_within_battery_results.json` +
+`_summary.md`. Suite 758/13/0; foundation 40/0/8.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

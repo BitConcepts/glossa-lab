@@ -734,8 +734,89 @@ Per-direction φ self-score set sizes at floor 2:
 |S_{A→B}| = 83 (core signs scorable scoring on B),
 |S_{B→A}| = 89 (scoring on A).
 
-### A.2 Per-anchor attestation tables (finalized in the following commit)
+### A.2 Per-anchor attestation tables (counts only)
 
-FLAGGED44 rows (nH; half token counts; per-direction
-junction counts; W1/W3/W4 scorability) and the JKUR 29-sign
-list, computed under the frozen definitions.
+FLAGGED44. nH = Holdat tokens; A/B = frozen-partition half token counts; njA/njB = junction observations on half A / half B (other sign ∈ STRICT94); W1 = both halves ≥ 4 tokens; W3 = both directions ≥ 2 junction observations (donor band non-empty throughout); W4 = ≥ 2 sites with ≥ 4 tokens.
+
+| Sign | Tier | Reading | nH | A | B | njA | njB | W1 | W3 | W4 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| M011 | HIGH | kaḷiṟu | 15 | 10 | 5 | 7 | 4 | ✓ | ✓ | – |
+| M021 | HIGH | kō | 16 | 10 | 6 | 6 | 2 | ✓ | ✓ | – |
+| M024 | HIGH | nē | 13 | 12 | 1 | 7 | 0 | – | – | ✓ |
+| M028 | HIGH | cōḻ | 11 | 4 | 7 | 1 | 4 | ✓ | – | – |
+| M031 | HIGH | kai | 16 | 9 | 7 | 5 | 6 | ✓ | ✓ | ✓ |
+| M033 | HIGH | puli | 12 | 5 | 7 | 5 | 4 | ✓ | ✓ | – |
+| M035 | HIGH | po | 19 | 11 | 8 | 7 | 7 | ✓ | ✓ | ✓ |
+| M036 | HIGH | tiru | 15 | 9 | 6 | 7 | 3 | ✓ | ✓ | ✓ |
+| M040 | HIGH | ri | 13 | 7 | 6 | 4 | 3 | ✓ | ✓ | ✓ |
+| M058 | HIGH | ke | 21 | 8 | 13 | 5 | 9 | ✓ | ✓ | ✓ |
+| M071 | HIGH | nal | 16 | 9 | 7 | 6 | 6 | ✓ | ✓ | ✓ |
+| M072 | HIGH | mā | 12 | 8 | 4 | 7 | 1 | ✓ | – | ✓ |
+| M102 | HIGH | ni | 8 | 5 | 3 | 6 | 6 | – | ✓ | – |
+| M103 | HIGH | kol | 5 | 2 | 3 | 2 | 5 | – | ✓ | – |
+| M127 | HIGH | vē | 6 | 2 | 4 | 3 | 5 | – | ✓ | – |
+| M149 | HIGH | or | 7 | 4 | 3 | 7 | 5 | – | ✓ | – |
+| M153 | HIGH | pu | 5 | 4 | 1 | 7 | 1 | – | – | – |
+| M155 | HIGH | ka | 5 | 4 | 1 | 7 | 2 | – | ✓ | – |
+| M168 | HIGH | inci | 6 | 5 | 1 | 4 | 2 | – | ✓ | – |
+| M169 | HIGH | rā | 8 | 3 | 5 | 3 | 9 | – | ✓ | – |
+| M177 | HIGH | na | 5 | 5 | 0 | 7 | 0 | – | – | – |
+| M178 | HIGH | i | 5 | 4 | 1 | 6 | 2 | – | ✓ | – |
+| M183 | HIGH | vēḷ | 5 | 2 | 3 | 3 | 3 | – | ✓ | – |
+| M223 | HIGH | muḷ | 5 | 1 | 4 | 2 | 5 | – | ✓ | – |
+| M235 | HIGH | vē | 7 | 3 | 4 | 1 | 3 | – | – | – |
+| M237 | HIGH | ce | 8 | 4 | 4 | 5 | 6 | ✓ | ✓ | – |
+| M239 | HIGH | il | 5 | 2 | 3 | 3 | 4 | – | ✓ | – |
+| M254 | HIGH | tēṉ | 5 | 1 | 4 | 0 | 4 | – | – | – |
+| M262 | HIGH | i | 5 | 2 | 3 | 3 | 4 | – | ✓ | – |
+| M270 | HIGH | muḷ | 6 | 3 | 3 | 3 | 4 | – | ✓ | – |
+| M272 | HIGH | ma | 7 | 5 | 2 | 5 | 2 | – | ✓ | – |
+| M281 | HIGH | piLLai | 4 | 2 | 2 | 4 | 3 | – | ✓ | – |
+| M293 | MEDIUM | ta | 232 | 124 | 108 | 142 | 133 | ✓ | ✓ | ✓ |
+| M304 | HIGH | vēṟ | 5 | 4 | 1 | 6 | 2 | – | ✓ | – |
+| M332 | HIGH | intu | 6 | 3 | 3 | 4 | 4 | – | ✓ | – |
+| M345 | HIGH | taṭ | 5 | 1 | 4 | 1 | 5 | – | – | – |
+| M350 | HIGH | vē | 5 | 1 | 4 | 2 | 6 | – | ✓ | – |
+| M355 | HIGH | lu | 5 | 4 | 1 | 6 | 2 | – | ✓ | – |
+| M365 | HIGH | vāṉ | 5 | 5 | 0 | 9 | 0 | – | – | – |
+| M383 | HIGH | kol | 7 | 2 | 5 | 3 | 8 | – | ✓ | – |
+| M401 | HIGH | vē | 6 | 4 | 2 | 3 | 4 | – | ✓ | – |
+| M402 | HIGH | vēḷ | 5 | 3 | 2 | 2 | 1 | – | – | – |
+| M412 | HIGH | cūḷ | 5 | 3 | 2 | 5 | 2 | – | ✓ | – |
+| M416 | HIGH | na | 5 | 2 | 3 | 3 | 3 | – | ✓ | – |
+
+JKUR — the 29 W3-scorable signs (JKUR, §2.1), of 113; the remaining 84 kur signs fall below 2 junction observations in at least one direction (their spec-016 total junction counts are ≤ 5, split across halves). All 113 kur signs are W1-unscorable (no half reaches 4 tokens — every kur sign has ≤ 4 Holdat tokens in total) and W4-unjudgeable (no sign has 2 sites with ≥ 4 tokens).
+
+| Sign | nH | A | B | njA | njB |
+|---|---|---|---|---|---|
+| M109 | 4 | 1 | 3 | 2 | 3 |
+| M116 | 4 | 1 | 3 | 2 | 4 |
+| M120 | 4 | 3 | 1 | 5 | 2 |
+| M138 | 4 | 2 | 2 | 2 | 4 |
+| M181 | 3 | 1 | 2 | 2 | 2 |
+| M186 | 4 | 3 | 1 | 4 | 2 |
+| M207 | 4 | 2 | 2 | 3 | 3 |
+| M208 | 4 | 2 | 2 | 4 | 4 |
+| M210 | 2 | 1 | 1 | 2 | 2 |
+| M214 | 3 | 1 | 2 | 2 | 4 |
+| M218 | 4 | 1 | 3 | 2 | 5 |
+| M243 | 4 | 2 | 2 | 3 | 3 |
+| M245 | 4 | 3 | 1 | 5 | 2 |
+| M250 | 4 | 1 | 3 | 2 | 4 |
+| M274 | 4 | 1 | 3 | 2 | 4 |
+| M278 | 4 | 1 | 3 | 2 | 4 |
+| M280 | 4 | 2 | 2 | 3 | 2 |
+| M309 | 4 | 3 | 1 | 3 | 2 |
+| M312 | 4 | 3 | 1 | 5 | 2 |
+| M324 | 4 | 3 | 1 | 3 | 2 |
+| M334 | 4 | 2 | 2 | 4 | 2 |
+| M339 | 3 | 2 | 1 | 3 | 2 |
+| M346 | 4 | 3 | 1 | 6 | 2 |
+| M360 | 3 | 2 | 1 | 3 | 2 |
+| M381 | 3 | 2 | 1 | 2 | 2 |
+| M382 | 4 | 2 | 2 | 3 | 3 |
+| M390 | 4 | 2 | 2 | 4 | 2 |
+| M405 | 2 | 1 | 1 | 2 | 2 |
+| M413 | 3 | 2 | 1 | 3 | 2 |
+
+STRICT94 summary at the frozen floor: W1-scorable 68/94; W3-scorable (both directions) 80/94; per-direction scorable 89 (scoring on A) and 83 (scoring on B) — the φ self-score set sizes of §4.3; J94 = W1 ∧ W3 = **67**; W4-judgeable 57/94.

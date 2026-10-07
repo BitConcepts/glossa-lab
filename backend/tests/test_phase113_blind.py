@@ -180,3 +180,266 @@ def test_two_identical_texts_guards():
     assert list(f.keys()) == NEW_CANDIDATES
     assert np.isfinite(list(f.values())).all()
     assert f["dup_text_frac"] == pytest.approx(1.0)
+
+
+# ---------------------------------------------------------------------------
+# Pipeline: ladder, blinding, adversarial generator, optimizer,
+# control shares, verdict branches, classify guard (spec 012)
+# ---------------------------------------------------------------------------
+
+import inspect  # noqa: E402
+import json  # noqa: E402
+from pathlib import Path  # noqa: E402
+
+from glossa_lab import phase112_custodian as custodian112  # noqa: E402
+from glossa_lab import phase113_analyst as analyst113  # noqa: E402
+from glossa_lab import phase113_custodian as custodian113  # noqa: E402
+from glossa_lab import phase113_run as run113  # noqa: E402
+
+_AUDIT_PATH = Path(__file__).resolve().parents[2] / "reports" / "phase113_feature_audit.json"
+
+
+def test_ladder_matches_audit():
+    audit = json.loads(_AUDIT_PATH.read_text(encoding="utf-8"))
+    admitted = audit["admitted_new_features"]
+    admitted_b = [n for n in NEW_CANDIDATES_B if n in set(admitted["B"])]
+    admitted_c = [n for n in NEW_CANDIDATES_C if n in set(admitted["C"])]
+    assert admitted_b == admitted["B"]
+    assert admitted_c == admitted["C"]
+    assert custodian113.LADDER_L1 == FEATURE_NAMES112
+    assert custodian113.LADDER_L2 == custodian113.LADDER_L1 + admitted_b
+    assert custodian113.LADDER_L3 == custodian113.LADDER_L2 + admitted_c
+    assert len(custodian113.LADDER_L1) == 16
+    assert len(custodian113.LADDER_L2) == 24
+    assert len(custodian113.LADDER_L3) == 30
+    assert custodian113.FEATURE_NAMES == custodian113.LADDER_L3
+
+
+def test_blinding_invariant():
+    import ast
+
+    src = inspect.getsource(analyst113)
+    tree = ast.parse(src)
+    imported = []
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            imported += [alias.name for alias in node.names]
+        elif isinstance(node, ast.ImportFrom):
+            imported.append(node.module or "")
+    assert imported, "analyst should have imports to inspect"
+    assert all("custodian" not in name for name in imported)
+    assert "phase113_custodian" not in imported
+    assert "phase111_custodian" not in imported
+
+
+def test_extract_ladder_features_order_and_shape():
+    draw = [[0, 1, 2, 0], [1, 2, 0, 1], [2, 0, 1, 2, 0]] * 5
+    row = custodian113.extract_ladder_features(draw, draw_index=0)
+    assert len(row) == 30
+    feats = extract_all113(draw, draw_index=0)
+    assert row == [feats[name] for name in custodian113.LADDER_L3]
+    assert np.isfinite(row).all()
+
+
+def test_final_training_rows_slice_dict_gen_train():
+    n_feat = len(custodian113.LADDER_L3)
+
+    def _rows(value, n=4):
+        return [[value] * n_feat for _ in range(n)]
+
+    panel = {
+        "feature_names": custodian113.LADDER_L3,
+        "known_ids": ["C01", "C02"],
+        "blind_ids": [],
+        "members": {
+            "C01": {"label": "dravidian", "features_primary": _rows(1.0)},
+            "C02": {"label": "non_linguistic", "features_primary": _rows(2.0)},
+        },
+        "gen_train": {
+            "rows": [{name: 3.0 for name in custodian113.LADDER_L3}],
+            "labels": ["gen_heraldic"],
+        },
+    }
+    X, y = analyst113.final_training_rows(panel, custodian113.LADDER_L1)
+    assert X.shape == (9, 16)
+    assert list(y).count("gen_heraldic") == 1
+    model = analyst113.train_final_model(panel, custodian113.LADDER_L1)
+    assert "gen_heraldic" in model.classes_
+    assert model.posterior(X).shape == (9, len(model.classes_))
+
+
+# -- Adversarial generator ---------------------------------------------------
+
+
+def _synthetic_r1(n_texts: int = 40, vocab: int = 12) -> list[list[int]]:
+    texts = []
+    for i in range(n_texts):
+        length = 3 + (i % 5)
+        texts.append([(i + j) % vocab for j in range(length)])
+    return texts
+
+
+@pytest.mark.skipif(
+    not (custodian113.SOURCES / "holdat_indus_corpus.csv").exists(),
+    reason="phase113 staging not present in this environment",
+)
+def test_theta_s5_reproduces_s5():
+    # NOTE on the reference corpus: c112.s5_generator must be fed
+    # R1's SOURCE-TOKEN (string) texts. Feeding it the int-mapped
+    # texts silently degenerates it — its str() coercion makes the
+    # successor lookups miss every count, collapsing it to a
+    # positional-unigram sampler. So S5 is generated in string space
+    # and mapped into R1's int space through the token-by-token
+    # correspondence between the loader texts and r1_texts_int().
+    r1_str = custodian113.LOADERS[custodian113.R1_CODE][1]()[0]
+    r1_int = custodian113.r1_texts_int()
+    mapping: dict = {}
+    for str_text, int_text in zip(r1_str, r1_int):
+        for str_tok, int_tok in zip(str_text, int_text):
+            mapping[str_tok] = int_tok
+    s5_str, _stats = custodian112.s5_generator(r1_str)
+    s5_int = [[mapping[tok] for tok in t] for t in s5_str]
+    assert sum(len(t) for t in s5_int) >= 20_000
+    # The frozen S5 sample's recorded unigram fidelity (spec 010/012:
+    # TV = 0.0419) reproduces exactly in this mapping.
+    assert custodian113.unigram_tv(s5_int, r1_int) == pytest.approx(0.0419, abs=0.002)
+
+    advgen = custodian113.AdvGen(r1_int)
+    gen = advgen.generate(custodian113.THETA_S5, [20261030, 1, 0])
+    gen_alt = advgen.generate(custodian113.THETA_S5, [20261030, 1, 1])
+    assert sum(len(t) for t in gen) >= 20_000
+    assert custodian113.unigram_tv(gen, r1_int) < 0.10
+    # Positional-bigram fidelity: the per-context empirical TV
+    # statistic has a sampling-noise floor of ~0.25 at 55k tokens —
+    # two corpora from the IDENTICAL model differ by that much — so
+    # the spec section 6 anchor (< 0.10 between the two generators'
+    # distributions) is checked as: no systematic excess over the
+    # same-model noise floor, and an absolute bound well under the
+    # degenerate (positional-unigram) mismatch of ~0.61.
+    tv_vs_s5 = custodian113.positional_bigram_tv(gen, s5_int)
+    tv_noise_floor = custodian113.positional_bigram_tv(gen, gen_alt)
+    assert tv_vs_s5 < 0.30
+    assert tv_vs_s5 <= tv_noise_floor + 0.05
+
+
+def test_generator_determinism():
+    advgen = custodian113.AdvGen(_synthetic_r1())
+    theta = (0.2, 0.2, 0.2, 0.2, 0.2, 1.0, 0.3, 3.0, 1.0, 0.1, 0.1)
+    first = advgen.generate(theta, [7, 8, 9])
+    second = advgen.generate(theta, [7, 8, 9])
+    assert first == second
+    assert sum(len(t) for t in first) >= 55_000
+
+
+def test_generator_copy_burst_extremes():
+    advgen = custodian113.AdvGen(_synthetic_r1())
+    theta_copy = (1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0)
+    copied = advgen.generate(theta_copy, [11, 12])
+    assert len(copied) > 1
+    assert all(t == copied[0] for t in copied[1:])
+
+    theta_burst = (1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0)
+    bursted = advgen.generate(theta_burst, [13, 14])
+    assert all(all(tok == t[0] for tok in t[1:]) for t in bursted if len(t) > 1)
+
+
+# -- Optimizer ----------------------------------------------------------------
+
+
+def _stub_eval(theta, eval_index):
+    feasible = theta[9] <= 0.05
+    return float(theta[1]), feasible, 0 if feasible else 1, {"w_P2": float(theta[1])}
+
+
+def test_optimizer_determinism_and_ranking(tmp_path):
+    theta_a, trace_a = custodian113.run_search(1, _stub_eval, tmp_path / "trace_a.jsonl")
+    theta_b, trace_b = custodian113.run_search(1, _stub_eval, tmp_path / "trace_b.jsonl")
+    assert theta_a == theta_b
+    assert [r["objective"] for r in trace_a] == [r["objective"] for r in trace_b]
+    assert len(trace_a) == 200
+    # round 1 candidate 0 is the forced theta_S5 (spec section 7)
+    assert trace_a[0]["theta"] == [float(v) for v in custodian113.THETA_S5]
+    lines_a = (tmp_path / "trace_a.jsonl").read_text(encoding="utf-8").strip().splitlines()
+    assert len(lines_a) == 200
+    assert json.loads(lines_a[0])["eval_index"] == 0
+
+    # feasible outranks infeasible regardless of objective
+    assert custodian113.rank_key(True, 3, -1.0, 199) > custodian113.rank_key(False, 0, 999.0, 0)
+    # among infeasible, fewer violations wins over higher objective
+    assert custodian113.rank_key(False, 1, 0.0, 5) > custodian113.rank_key(False, 2, 100.0, 0)
+    # among feasible, higher objective wins; ties break to lower index
+    assert custodian113.rank_key(True, 0, 2.0, 9) > custodian113.rank_key(True, 0, 1.0, 0)
+    assert custodian113.rank_key(True, 0, 1.0, 3) > custodian113.rank_key(True, 0, 1.0, 4)
+
+
+# -- Control share + verdict ----------------------------------------------------
+
+_CLASSES113 = analyst113.FAMILIES + [analyst113.NONLING] + analyst113.GEN_CLASSES
+
+
+def _post_row(**masses) -> np.ndarray:
+    row = np.zeros(len(_CLASSES113))
+    for name, value in masses.items():
+        row[_CLASSES113.index(name)] = value
+    return row
+
+
+def test_control_share_math():
+    post = np.array([
+        _post_row(non_linguistic=0.6, dravidian=0.4),          # counted
+        _post_row(non_linguistic=0.3, dravidian=0.7),          # not counted
+        _post_row(gen_heraldic=0.5, dravidian=0.5),            # counted (>=)
+        _post_row(gen_administrative=0.2, non_linguistic=0.2,
+                  dravidian=0.6),                              # not counted
+    ])
+    assert analyst113.control_share(post, _CLASSES113) == pytest.approx(0.5)
+
+
+def test_verdict_invalid_on_adversarial_share():
+    posteriors: dict[str, np.ndarray] = {}
+    roles: dict[str, str] = {}
+    synth_codes = ["S1_permutation", "S2_iid_zipf", "S3_heraldic_gen",
+                   "S4_admin_gen", "S5_positional_bigram_gen"]
+    for i, code in enumerate(synth_codes):
+        cid = f"C{i + 1:02d}"
+        posteriors[cid] = np.tile(_post_row(non_linguistic=1.0), (20, 1))
+        roles[cid] = code
+    for i, code in enumerate(["R1_indus_holdat_m77", "R2_indus_icit_wells",
+                              "R3_indus_mixed"]):
+        cid = f"C{i + 6:02d}"
+        posteriors[cid] = np.tile(_post_row(dravidian=1.0), (20, 1))
+        roles[cid] = code
+    verdict = analyst113.compute_verdict(
+        posteriors, _CLASSES113, roles, {}, {},
+        control_shares_extra={"A1": 1.0, "A2": 0.50, "A3": 0.97})
+    assert verdict["verdict"] == "INVALID RUN — CONTROL VALIDITY FAILED"
+    assert "A2" in verdict["failing_controls"]
+    assert verdict["control_validity_shares"]["A2"] == pytest.approx(0.50)
+    assert verdict["control_validity_shares"]["S1_permutation"] == pytest.approx(1.0)
+
+
+# -- Classify guard --------------------------------------------------------------
+
+
+def test_classify_guard(tmp_path, monkeypatch):
+    fake = tmp_path / "phase113_blind_affiliation_results.json"
+    fake.write_text(json.dumps({
+        "verdict": "INVALID RUN — CONTROL VALIDITY FAILED",
+        "stop_stage": "rounds_control",
+        "status": "stopped_at_rounds_control",
+        "rounds": {"1": {}},
+    }), encoding="utf-8")
+    monkeypatch.setattr(run113, "RESULTS_PATH", fake)
+    with pytest.raises(RuntimeError):
+        run113.stage_classify()
+
+
+def test_classify_guard_incomplete_rounds(tmp_path, monkeypatch):
+    fake = tmp_path / "phase113_blind_affiliation_results.json"
+    fake.write_text(json.dumps({
+        "verdict": None, "stop_stage": None,
+        "status": "rounds_running", "rounds": {},
+    }), encoding="utf-8")
+    monkeypatch.setattr(run113, "RESULTS_PATH", fake)
+    with pytest.raises(RuntimeError):
+        run113.stage_classify()

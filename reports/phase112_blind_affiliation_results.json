@@ -1,0 +1,335 @@
+{
+ "spec": "010-phase112-blind-affiliation",
+ "phase": "Phase-112",
+ "run_started_utc": "2026-10-07T16:01:17.063337+00:00",
+ "code_hash": {
+  "git_head": "7e2626cf527fb6b8621f072256f570a8bb0d6ae0",
+  "module_sha256": {
+   "phase112_custodian.py": "64264208bb44246f3b1eefaf0c68d4f125b0816de285202c2c725286f00a3f3d",
+   "phase112_features.py": "964302c66fdbdfd05360e9eeb1cf3edc0ac522b78589598e9790ae48458fff9b",
+   "phase112_analyst.py": "829cb0775bf007f01dfcfaf0e9357e1b9e167f6e7af7d828058a902b3f833f35",
+   "phase112_run.py": "37d0b9b07cae056be9fe53ce721e9c4e9f413b649bcb632fcf42e90102d0d56d"
+  }
+ },
+ "panel_build_log": {
+  "K1_linear_b": {
+   "kind": "stream",
+   "documents": 5840,
+   "tokens": 43646,
+   "vocab": 8506,
+   "texts_after_chunking": 10443
+  },
+  "K2_vedic_sanskrit": {
+   "kind": "stream",
+   "documents": 20192,
+   "words": 163172,
+   "tokens": 374893,
+   "vocab": 2991,
+   "splitter_passthrough_words": 31934,
+   "texts_after_chunking": 89618
+  },
+  "K3_classical_sanskrit": {
+   "kind": "stream",
+   "documents": 15,
+   "words": 8958,
+   "tokens": 22298,
+   "vocab": 1696,
+   "splitter_passthrough_words": 1162,
+   "texts_after_chunking": 5331
+  },
+  "K4_old_tamil": {
+   "kind": "stream",
+   "documents": 600,
+   "tokens": 17414,
+   "vocab": 1924,
+   "texts_after_chunking": 4138
+  },
+  "K5_sumerian_ur3": {
+   "kind": "stream",
+   "documents": 30000,
+   "words": 1242023,
+   "tokens": 1920042,
+   "vocab": 3360,
+   "texts_after_chunking": 457742
+  },
+  "K7_geez": {
+   "kind": "stream",
+   "documents": 1,
+   "words": 24500,
+   "tokens": 80221,
+   "vocab": 209,
+   "texts_after_chunking": 19188
+  },
+  "K8_turkish": {
+   "kind": "stream",
+   "documents": 3,
+   "words": 47614,
+   "tokens": 125818,
+   "vocab": 2314,
+   "splitter_passthrough_words": 9169,
+   "texts_after_chunking": 29790
+  },
+  "K9_indonesian": {
+   "kind": "stream",
+   "documents": 3,
+   "words": 101254,
+   "tokens": 251339,
+   "vocab": 4891,
+   "splitter_passthrough_words": 16831,
+   "texts_after_chunking": 59903
+  },
+  "N1_khipu": {
+   "kind": "stream",
+   "documents": 619,
+   "cords": 54403,
+   "tokens": 110151,
+   "vocab": 10,
+   "texts_after_chunking": 26289
+  },
+  "R1_indus_holdat_m77": {
+   "kind": "texts",
+   "texts": 1670,
+   "tokens": 7002,
+   "vocab": 390,
+   "texts_after_chunking": 1670
+  },
+  "R2_indus_icit_wells": {
+   "kind": "texts",
+   "texts": 4410,
+   "tokens": 14213,
+   "vocab": 713,
+   "texts_after_chunking": 4410
+  },
+  "R3_indus_mixed": {
+   "kind": "texts",
+   "texts": 6080,
+   "tokens": 21215,
+   "vocab": 1103,
+   "texts_after_chunking": 6080
+  },
+  "S1_permutation": {
+   "kind": "generated",
+   "texts": 1670,
+   "tokens": 7002
+  },
+  "S2_iid_zipf": {
+   "kind": "generated",
+   "texts": 13177,
+   "tokens": 55004
+  },
+  "S3_heraldic_gen": {
+   "kind": "generated",
+   "texts": 13094,
+   "tokens": 55003
+  },
+  "S4_admin_gen": {
+   "kind": "generated",
+   "texts": 13072,
+   "tokens": 55005
+  },
+  "S5_positional_bigram_gen": {
+   "kind": "generated",
+   "texts": 13057,
+   "tokens": 55002,
+   "unigram_tv_distance_to_R1": 0.04191641609542468
+  }
+ },
+ "gate": {
+  "g1_binary_balanced_accuracy": 1.0,
+  "g1_bootstrap_ci_low_95": 1.0,
+  "g1_p_value": 0.0004997501249375312,
+  "g1_pass": true,
+  "g2_family_balanced_accuracy": 1.0,
+  "g2_permutation_p_value": 0.000999000999000999,
+  "g2_n_permutations": 1000,
+  "g2_pass": true,
+  "gate_passed": true,
+  "per_family_recall": {
+   "dravidian": 1.0,
+   "indo_aryan": 1.0,
+   "semitic": 1.0,
+   "indo_european_other": 1.0,
+   "isolate_sumerian": 1.0,
+   "turkic": 1.0,
+   "austronesian": 1.0
+  }
+ },
+ "verdict": "INVALID RUN \u2014 CONTROL VALIDITY FAILED",
+ "status": "classified",
+ "unblinding": {
+  "unblinded_utc": "2026-10-07T16:02:08.334428+00:00",
+  "key": {
+   "C05": {
+    "code": "S1_permutation",
+    "role": "synthetic",
+    "label": null,
+    "corpus_index": 31
+   },
+   "C04": {
+    "code": "S2_iid_zipf",
+    "role": "synthetic",
+    "label": null,
+    "corpus_index": 32
+   },
+   "C09": {
+    "code": "S3_heraldic_gen",
+    "role": "synthetic",
+    "label": null,
+    "corpus_index": 33
+   },
+   "C17": {
+    "code": "S4_admin_gen",
+    "role": "synthetic",
+    "label": null,
+    "corpus_index": 34
+   },
+   "C08": {
+    "code": "R1_indus_holdat_m77",
+    "role": "target",
+    "label": null,
+    "corpus_index": 21
+   },
+   "C16": {
+    "code": "R2_indus_icit_wells",
+    "role": "target",
+    "label": null,
+    "corpus_index": 22
+   },
+   "C02": {
+    "code": "R3_indus_mixed",
+    "role": "target",
+    "label": null,
+    "corpus_index": 23
+   },
+   "C13": {
+    "code": "S5_positional_bigram_gen",
+    "role": "synthetic",
+    "label": null,
+    "corpus_index": 35
+   }
+  }
+ },
+ "verdict_detail": {
+  "control_validity_shares": {
+   "S1_permutation": 1.0,
+   "S2_iid_zipf": 1.0,
+   "S3_heraldic_gen": 1.0,
+   "S4_admin_gen": 1.0,
+   "S5_positional_bigram_gen": 0.0
+  }
+ },
+ "exceedance_p_values": {
+  "T1_gate_linguistic": 0.0004997501249375312,
+  "T2_gate_family": 0.000999000999000999,
+  "T3_vs_heraldic_gen": 0.009900990099009901,
+  "T4_vs_admin_gen": 0.009900990099009901
+ },
+ "benjamini_hochberg": {
+  "T1_gate_linguistic": {
+   "raw_p": 0.0004997501249375312,
+   "bh_adjusted_p": 0.001998001998001998,
+   "significant_at_q": true
+  },
+  "T2_gate_family": {
+   "raw_p": 0.000999000999000999,
+   "bh_adjusted_p": 0.001998001998001998,
+   "significant_at_q": true
+  },
+  "T3_vs_heraldic_gen": {
+   "raw_p": 0.009900990099009901,
+   "bh_adjusted_p": 0.009900990099009901,
+   "significant_at_q": true
+  },
+  "T4_vs_admin_gen": {
+   "raw_p": 0.009900990099009901,
+   "bh_adjusted_p": 0.009900990099009901,
+   "significant_at_q": true
+  }
+ },
+ "sensitivity": {
+  "R1_indus_holdat_m77": {
+   "sens_5000": {
+    "median_linguistic_posterior": 1.7699412814563466e-103,
+    "winner_family": "semitic",
+    "median_family_posteriors": {
+     "dravidian": 0.0,
+     "indo_aryan": 0.0,
+     "semitic": 1.7699412814563466e-103,
+     "indo_european_other": 0.0,
+     "isolate_sumerian": 0.0,
+     "turkic": 0.0,
+     "austronesian": 0.0
+    }
+   },
+   "sens_19600": {
+    "median_linguistic_posterior": 9.430425310117379e-07,
+    "winner_family": "semitic",
+    "median_family_posteriors": {
+     "dravidian": 0.0,
+     "indo_aryan": 0.0,
+     "semitic": 9.430425310117379e-07,
+     "indo_european_other": 0.0,
+     "isolate_sumerian": 0.0,
+     "turkic": 0.0,
+     "austronesian": 0.0
+    }
+   }
+  },
+  "R2_indus_icit_wells": {
+   "sens_5000": {
+    "median_linguistic_posterior": 1.0,
+    "winner_family": "austronesian",
+    "median_family_posteriors": {
+     "dravidian": 4.5159400296916934e-55,
+     "indo_aryan": 2.601681530598689e-141,
+     "semitic": 1.0412279373826377e-255,
+     "indo_european_other": 3.5690773462626926e-180,
+     "isolate_sumerian": 1.5350749333568957e-89,
+     "turkic": 7.593964814684634e-156,
+     "austronesian": 1.0
+    }
+   },
+   "sens_19600": {
+    "median_linguistic_posterior": 1.0,
+    "winner_family": "isolate_sumerian",
+    "median_family_posteriors": {
+     "dravidian": 1.2657272490467121e-33,
+     "indo_aryan": 8.647751475629954e-255,
+     "semitic": 1.9310212725184774e-80,
+     "indo_european_other": 0.0,
+     "isolate_sumerian": 0.9999999999995338,
+     "turkic": 1.3193231556558482e-217,
+     "austronesian": 4.661142911810428e-13
+    }
+   }
+  },
+  "R3_indus_mixed": {
+   "sens_5000": {
+    "median_linguistic_posterior": 1.0,
+    "winner_family": "indo_european_other",
+    "median_family_posteriors": {
+     "dravidian": 4.037774475137605e-66,
+     "indo_aryan": 6.8178280190439854e-74,
+     "semitic": 0.0,
+     "indo_european_other": 0.9999999999997162,
+     "isolate_sumerian": 5.913242733659679e-115,
+     "turkic": 2.0251065357110968e-91,
+     "austronesian": 2.83799011574209e-13
+    }
+   },
+   "sens_19600": {
+    "median_linguistic_posterior": 1.0,
+    "winner_family": "isolate_sumerian",
+    "median_family_posteriors": {
+     "dravidian": 2.3931374156213604e-37,
+     "indo_aryan": 1.825171552841919e-170,
+     "semitic": 1.0144377298409241e-304,
+     "indo_european_other": 0.0,
+     "isolate_sumerian": 0.9999999977296312,
+     "turkic": 3.917051510596072e-132,
+     "austronesian": 2.2703688668080734e-09
+    }
+   }
+  }
+ }
+}

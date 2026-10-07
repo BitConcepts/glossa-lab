@@ -1956,3 +1956,65 @@ reports/phase111_acquisition_log.json.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-112 — Blind Language-Affiliation Study, Order-Carrying Features: Pre-Registration (spec 010)
+
+Spec 010 (`specs/010-phase112-blind-affiliation/`) frozen and
+committed 2026-10-07, after the design-stage tooling commits and
+before any Phase-112 pipeline output exists. Owner authorized
+the successor 2026-10-07 after Phase-111's INVALID RUN (its
+feature vector's power was carried by unigram statistics: S1/S2
+nulls with all sign order destroyed classified linguistic in
+100% of draws). The one design change: the classification
+vector contains ONLY permutation-sensitive features, admitted by
+a pre-registered audit on the nine known corpora only (median
+|Cohen's d| ≥ 0.8 under within-text permutation, same sign
+≥ 8/9, non-degenerate ≥ 5/9) — 16 of 23 candidates admitted;
+the positional-concentration family, `rep_adj_2`, and `fl_mi`
+dropped and recorded in spec §4.3. Everything else is inherited
+from spec 009 unchanged (panel as assembled with its registered
+gaps, resampling, LDA, blinding, gate §7, verdict §9, BH
+q = 0.05), plus S5, a positional-bigram template generator
+added as an undisclosed fifth control under §8 (no training
+instance, no class). The panel was re-staged from the same
+openly licensed origins after the Phase-111 worktree was lost,
+and verified loader-equivalent against the committed Phase-111
+build log on all 12 loadable corpora. No anchors are touched by
+this phase. Outcome to be appended as a separate entry exactly
+as the frozen thresholds dictate.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-112 — Outcome: Gate Passed; INVALID RUN at Control Validity, at S5 (spec 010)
+
+Executed as frozen (spec 9410a23d; pipeline 7e2626cf,
+unmodified). Gate (§7) passed perfectly: G1 linguistic balanced
+accuracy 1.000, bootstrap CI lower bound 1.000, p = 0.00050; G2
+family balanced accuracy 1.000, permutation p = 0.000999; all
+seven family recalls 1.000. Control validity (§8) then split
+exactly on the design's seam: S1 (permuted Indus texts) and S2
+(i.i.d. Zipf) — the nulls that scored 0.00 and invalidated
+Phase-111 — now scored **1.00**, rejected in every draw, as did
+S3/S4; but **S5 (positional-bigram template generator) scored
+0.00**, classified linguistic in 100% of draws. S5 has no
+grammar: it matches R1's text lengths, its unigram profile
+(TV = 0.0419), and its relative-position bigram statistics by
+construction — and the admitted order features measure exactly
+those statistics, so the template is indistinguishable from
+linguistic order for this vector. §8 is conjunctive; verdict,
+verbatim per §9 V6: **INVALID RUN — CONTROL VALIDITY FAILED**.
+The run is invalid; the hypotheses are untouched. No affiliation
+claim in either direction, no anchor changes, no re-runs or
+tuning (§6/§11). Unblinded 2026-10-07T16:02:08.334428+00:00.
+Run record (including two aborted build attempts — host
+contention stall and a VM reboot — disclosed in the summary).
+Suite 643 passed / 11 skipped / 0 failed; foundation check
+40 / 0 / 8. Full record:
+reports/phase112_blind_affiliation_results.json,
+reports/phase112_blind_affiliation_summary.md,
+reports/phase112_acquisition_log.json,
+reports/phase112_feature_audit.json.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.

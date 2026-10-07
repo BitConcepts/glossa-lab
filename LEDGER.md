@@ -947,3 +947,108 @@ the direction of Tristen Pierson, per constitution §VI.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## [2026-10-07] Entry — Phase-116 / Spec 015: Corpus-Harmonization Study — Pre-Registration Frozen
+
+- **Spec:** `specs/015-phase116-corpus-harmonization` (spec/plan/tasks),
+  committed alone (`0b626308`) before any harmonization statistic
+  existed. Owner authorization: Tristen Pierson, 2026-10-07 ("Launch
+  the corpus-harmonization study"). Phase-114 (spec 012) is reserved
+  and untouched.
+- **Question (Phase-115's recorded successor):** Phase-115's T1 v2
+  judged 51 strict signs and failed 43 — 40 on modal-position-class
+  disagreement, median TV 0.789474. Why do Holdat's and the ICIT
+  converted layer's positional profiles disagree? Five frozen
+  hypothesis families with numeric verdict thresholds:
+  H-COMPOSITION (paired matched-text core test: restrict both layers
+  to the same texts via a frozen wildcard matcher), H-SEGMENTATION
+  (S1 sentinel-strip re-judgment; S2 artifact-unit re-unitization),
+  H-MAPPING (disagreement-mass concentration + chain-share contrast
+  + top-10 crosswalk audit), H-DIRECTION (matcher orientation share;
+  global-flip agreement), H-DEFINITION (continuous relative-position
+  W1 / Spearman + 5-bin agreement). BH q = 0.05 across the one
+  per-sign permutation family. Recommendation assembled mechanically
+  from the verdicts (spec §6 templates).
+- **Diagnostic only:** no anchor changes, no validation verdicts;
+  the anchors file is never opened for writing under this spec.
+- **Pre-freeze diagnostics (schema level):** the layers share no
+  artifact key (Holdat `cisi_number` is Holdat-internal sequential;
+  ICIT `cisi` is CISI numbering; intersection 0 raw and normalized),
+  so identity is established by inscription content in M-sign space.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.
+
+## [2026-10-07] Entry — Phase-116 / Spec 015: Outcome — Two Mechanisms Refuted, Three Unresolved at Frozen Power; Recommendation R-NONE
+
+- **Baseline reproduced exactly (asserted before any arm ran):**
+  T1 v2 over STRICT94 — judged 51 (8 PASS / 43 FAIL), 40
+  modal-disagreement failures, median TV 0.789474, mean TV 0.657011,
+  A_full 11/51. The keyed ICIT layer's kept subset reproduces the
+  Phase-115 v2 layer byte-for-byte in sequence content/order
+  (4,531 inscriptions / 13,492 mapped / 2,388 sentinels); conversion
+  audit recomputed all 16,141 matcher-population tokens from their
+  stored source codes with zero mismatches.
+- **Matcher yield (itself a finding):** Tier A (direct, mutually
+  unique) **13** pairs; Tier B (reversed) **17**; Tier C
+  (containment) **1**; ambiguous-orientation 0. Before uniqueness:
+  135 direct-compatible vs **240 reversed-compatible** pairs;
+  14,456 containment candidates collapsed to 1 mutually-unique
+  pair. The two compilations share almost no mutually-unique
+  identical texts.
+- **H-COMPOSITION — UNRESOLVED (power):** Tier A 13 < the frozen
+  100-pair gate; only 3 judged signs qualify on the restriction
+  (on those 3, restricted agreement is 1.0 / TV 0.0 — n=3 licenses
+  nothing, and the frozen gate said so in advance).
+- **H-SEGMENTATION — UNRESOLVED:** arm S1 **REFUTED** — stripping
+  sentinel positions made T1 failures *worse* (43 → 45); the
+  sentinel-geometry mechanism is dead (leading-sentinel rate
+  12.84%; median demoted-initial share 0.1667, both too small and
+  the wrong direction). Arm S2 UNRESOLVED (power): 4 qualifying
+  signs; descriptively artifact-units TV 0.1042 vs row-units
+  0.0917 — no repair signal.
+- **H-MAPPING — REFUTED:** disagreement is diffuse, not
+  crosswalk-concentrated (top-5 TV share 0.1492, top-10 0.2956 ≤
+  the frozen 0.40 diffuseness bar; chain-heavy group only 3 signs
+  vs 46 clean, descriptive Δ = 0.0598). The §5.3 audit table is in
+  the results JSON.
+- **H-DIRECTION — UNRESOLVED:** D1 underpowered (A+B = 30 < 50;
+  reversed share 0.5667 suggestive but licenses no verdict). D2:
+  a global flip improves modal agreement 0.2157 → 0.3137 (+0.098),
+  inside the frozen unresolved band (0.05, 0.30) — orientation
+  contributes at most modestly; it is not the primary mechanism.
+- **H-DEFINITION — REFUTED (decisively):** median W1 = 0.4519
+  (refutation bar 0.20), material-displacement share 0.6863 (bar
+  0.50), 5-bin modal agreement 0.1373, and per-sign mean relative
+  positions are essentially uncorrelated across the compilations
+  (Spearman ρ = −0.0826). The disagreement is genuine positional
+  displacement, not a binning artifact. Permutation context: 43 of
+  51 judged signs disagree beyond token-level sampling noise
+  (BH q = 0.05, full layers).
+- **Harmonization recommendation (spec §6, mechanical): R-NONE** —
+  no transformation is justified; cross-corpus positional
+  validation on this pair of compilations is not viable under any
+  convention alignment tested; a future battery must not use a
+  conjunctive cross-corpus positional gate on this pair.
+  MAY-NOT lines recorded for crosswalk error and binning artifact;
+  composition/segmentation/direction remain unresolved — no
+  assumption licensed either way. All 44 anchors remain
+  `pending_non_sa_validation`.
+- **Deviations / interpretations (disclosed):** Tier C implemented
+  with strict length inequality (equal-length containment *is*
+  compatibility, i.e. tiers A/B); a matched Holdat text with
+  partners in both Tier A and Tier C takes its artifact group from
+  the Tier A partner; the keyed builder retains per-token source
+  codes (required by the §5.3 audit) beyond spec §2's listed
+  fields. Suite/foundation runs used the main checkout's
+  gitignored `corpora/downloads` via a temporary symlink in this
+  worktree (git-invisible; removed after); unrelated generated-file
+  churn from the suite/foundation runs was reverted and is not in
+  the PR.
+- **Suite / foundation:** full backend suite **687 passed / 11
+  skipped / 0 failed** (main-checkout baseline at 5d8f5d58: 673 /
+  11; +14 Phase-116 tests); foundation check **40 passed / 0
+  failed / 8 warnings**; ruff clean. Anchors file untouched.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

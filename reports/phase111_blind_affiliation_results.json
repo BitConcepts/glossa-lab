@@ -1,0 +1,322 @@
+{
+ "spec": "009-phase111-blind-affiliation",
+ "phase": "Phase-111",
+ "run_started_utc": "2026-10-07T03:48:02.922172+00:00",
+ "code_hash": {
+  "git_head": "92cad2ab1d14f035d04a8f440e5f21cac7fb25a4",
+  "module_sha256": {
+   "phase111_custodian.py": "4bde38135e2ee5d61147670034b59e34cace944c40fc92e30f19047116077a58",
+   "phase111_features.py": "8aeddef8f816c63fd973ff79b6a0c9d7562943cb1e609198fe07d34c8faaf1c6",
+   "phase111_analyst.py": "dc2da92f0ed16a9febd156b90c4d9669f019d51aa29afaa07fca1334a35e49dc",
+   "phase111_run.py": "41aa817838ac2d100e262e921fb16eb9dc576b10eab541b424232d91ebe9b3c8"
+  }
+ },
+ "panel_build_log": {
+  "K1_linear_b": {
+   "kind": "stream",
+   "documents": 5840,
+   "tokens": 43646,
+   "vocab": 8506,
+   "texts_after_chunking": 10443
+  },
+  "K2_vedic_sanskrit": {
+   "kind": "stream",
+   "documents": 20192,
+   "words": 163172,
+   "tokens": 374893,
+   "vocab": 2991,
+   "splitter_passthrough_words": 31934,
+   "texts_after_chunking": 89618
+  },
+  "K3_classical_sanskrit": {
+   "kind": "stream",
+   "documents": 15,
+   "words": 8958,
+   "tokens": 22298,
+   "vocab": 1696,
+   "splitter_passthrough_words": 1162,
+   "texts_after_chunking": 5331
+  },
+  "K4_old_tamil": {
+   "kind": "stream",
+   "documents": 600,
+   "tokens": 17414,
+   "vocab": 1924,
+   "texts_after_chunking": 4138
+  },
+  "K5_sumerian_ur3": {
+   "kind": "stream",
+   "documents": 30000,
+   "words": 1242023,
+   "tokens": 1920042,
+   "vocab": 3360,
+   "texts_after_chunking": 457742
+  },
+  "K7_geez": {
+   "kind": "stream",
+   "documents": 1,
+   "words": 24500,
+   "tokens": 80221,
+   "vocab": 209,
+   "texts_after_chunking": 19188
+  },
+  "K8_turkish": {
+   "kind": "stream",
+   "documents": 3,
+   "words": 47614,
+   "tokens": 125818,
+   "vocab": 2314,
+   "splitter_passthrough_words": 9169,
+   "texts_after_chunking": 29790
+  },
+  "K9_indonesian": {
+   "kind": "stream",
+   "documents": 3,
+   "words": 101254,
+   "tokens": 251339,
+   "vocab": 4891,
+   "splitter_passthrough_words": 16831,
+   "texts_after_chunking": 59903
+  },
+  "N1_khipu": {
+   "kind": "stream",
+   "documents": 619,
+   "cords": 54403,
+   "tokens": 110151,
+   "vocab": 10,
+   "texts_after_chunking": 26289
+  },
+  "R1_indus_holdat_m77": {
+   "kind": "texts",
+   "texts": 1670,
+   "tokens": 7002,
+   "vocab": 390,
+   "texts_after_chunking": 1670
+  },
+  "R2_indus_icit_wells": {
+   "kind": "texts",
+   "texts": 4410,
+   "tokens": 14213,
+   "vocab": 713,
+   "texts_after_chunking": 4410
+  },
+  "R3_indus_mixed": {
+   "kind": "texts",
+   "texts": 6080,
+   "tokens": 21215,
+   "vocab": 1103,
+   "texts_after_chunking": 6080
+  },
+  "S1_permutation": {
+   "kind": "generated",
+   "texts": 1670,
+   "tokens": 7002
+  },
+  "S2_iid_zipf": {
+   "kind": "generated",
+   "texts": 13177,
+   "tokens": 55004
+  },
+  "S3_heraldic_gen": {
+   "kind": "generated",
+   "texts": 13094,
+   "tokens": 55003
+  },
+  "S4_admin_gen": {
+   "kind": "generated",
+   "texts": 13072,
+   "tokens": 55005
+  }
+ },
+ "gate": {
+  "g1_binary_balanced_accuracy": 1.0,
+  "g1_bootstrap_ci_low_95": 1.0,
+  "g1_p_value": 0.0004997501249375312,
+  "g1_pass": true,
+  "g2_family_balanced_accuracy": 1.0,
+  "g2_permutation_p_value": 0.000999000999000999,
+  "g2_n_permutations": 1000,
+  "g2_pass": true,
+  "gate_passed": true,
+  "per_family_recall": {
+   "dravidian": 1.0,
+   "indo_aryan": 1.0,
+   "semitic": 1.0,
+   "indo_european_other": 1.0,
+   "isolate_sumerian": 1.0,
+   "turkic": 1.0,
+   "austronesian": 1.0
+  }
+ },
+ "verdict": "INVALID RUN \u2014 CONTROL VALIDITY FAILED",
+ "status": "classified",
+ "unblinding": {
+  "unblinded_utc": "2026-10-07T03:52:39.601141+00:00",
+  "key": {
+   "C05": {
+    "code": "S1_permutation",
+    "role": "synthetic",
+    "label": null,
+    "corpus_index": 31
+   },
+   "C04": {
+    "code": "S2_iid_zipf",
+    "role": "synthetic",
+    "label": null,
+    "corpus_index": 32
+   },
+   "C09": {
+    "code": "S3_heraldic_gen",
+    "role": "synthetic",
+    "label": null,
+    "corpus_index": 33
+   },
+   "C15": {
+    "code": "S4_admin_gen",
+    "role": "synthetic",
+    "label": null,
+    "corpus_index": 34
+   },
+   "C02": {
+    "code": "R1_indus_holdat_m77",
+    "role": "target",
+    "label": null,
+    "corpus_index": 21
+   },
+   "C08": {
+    "code": "R2_indus_icit_wells",
+    "role": "target",
+    "label": null,
+    "corpus_index": 22
+   },
+   "C14": {
+    "code": "R3_indus_mixed",
+    "role": "target",
+    "label": null,
+    "corpus_index": 23
+   }
+  }
+ },
+ "verdict_detail": {
+  "control_validity_shares": {
+   "S1_permutation": 0.0,
+   "S2_iid_zipf": 0.0,
+   "S3_heraldic_gen": 1.0,
+   "S4_admin_gen": 1.0
+  }
+ },
+ "exceedance_p_values": {
+  "T1_gate_linguistic": 0.0004997501249375312,
+  "T2_gate_family": 0.000999000999000999,
+  "T3_vs_heraldic_gen": 0.009900990099009901,
+  "T4_vs_admin_gen": 0.009900990099009901
+ },
+ "benjamini_hochberg": {
+  "T1_gate_linguistic": {
+   "raw_p": 0.0004997501249375312,
+   "bh_adjusted_p": 0.001998001998001998,
+   "significant_at_q": true
+  },
+  "T2_gate_family": {
+   "raw_p": 0.000999000999000999,
+   "bh_adjusted_p": 0.001998001998001998,
+   "significant_at_q": true
+  },
+  "T3_vs_heraldic_gen": {
+   "raw_p": 0.009900990099009901,
+   "bh_adjusted_p": 0.009900990099009901,
+   "significant_at_q": true
+  },
+  "T4_vs_admin_gen": {
+   "raw_p": 0.009900990099009901,
+   "bh_adjusted_p": 0.009900990099009901,
+   "significant_at_q": true
+  }
+ },
+ "sensitivity": {
+  "R1_indus_holdat_m77": {
+   "sens_5000": {
+    "median_linguistic_posterior": 0.0,
+    "winner_family": "dravidian",
+    "median_family_posteriors": {
+     "dravidian": 0.0,
+     "indo_aryan": 0.0,
+     "semitic": 0.0,
+     "indo_european_other": 0.0,
+     "isolate_sumerian": 0.0,
+     "turkic": 0.0,
+     "austronesian": 0.0
+    }
+   },
+   "sens_19600": {
+    "median_linguistic_posterior": 0.0,
+    "winner_family": "dravidian",
+    "median_family_posteriors": {
+     "dravidian": 0.0,
+     "indo_aryan": 0.0,
+     "semitic": 0.0,
+     "indo_european_other": 0.0,
+     "isolate_sumerian": 0.0,
+     "turkic": 0.0,
+     "austronesian": 0.0
+    }
+   }
+  },
+  "R2_indus_icit_wells": {
+   "sens_5000": {
+    "median_linguistic_posterior": 1.0,
+    "winner_family": "dravidian",
+    "median_family_posteriors": {
+     "dravidian": 1.0,
+     "indo_aryan": 0.0,
+     "semitic": 0.0,
+     "indo_european_other": 0.0,
+     "isolate_sumerian": 0.0,
+     "turkic": 0.0,
+     "austronesian": 1.0005647386631665e-104
+    }
+   },
+   "sens_19600": {
+    "median_linguistic_posterior": 1.0,
+    "winner_family": "dravidian",
+    "median_family_posteriors": {
+     "dravidian": 1.0,
+     "indo_aryan": 0.0,
+     "semitic": 0.0,
+     "indo_european_other": 0.0,
+     "isolate_sumerian": 0.0,
+     "turkic": 0.0,
+     "austronesian": 1.987897778391504e-148
+    }
+   }
+  },
+  "R3_indus_mixed": {
+   "sens_5000": {
+    "median_linguistic_posterior": 1.0,
+    "winner_family": "dravidian",
+    "median_family_posteriors": {
+     "dravidian": 1.0,
+     "indo_aryan": 2.4998995928931923e-170,
+     "semitic": 0.0,
+     "indo_european_other": 0.0,
+     "isolate_sumerian": 0.0,
+     "turkic": 2.00609160192992e-286,
+     "austronesian": 4.308667133671473e-76
+    }
+   },
+   "sens_19600": {
+    "median_linguistic_posterior": 1.0,
+    "winner_family": "dravidian",
+    "median_family_posteriors": {
+     "dravidian": 1.0,
+     "indo_aryan": 2.97483716505196e-196,
+     "semitic": 0.0,
+     "indo_european_other": 0.0,
+     "isolate_sumerian": 5.229e-320,
+     "turkic": 1.6498715213852487e-259,
+     "austronesian": 7.521052572508346e-128
+    }
+   }
+  }
+ }
+}

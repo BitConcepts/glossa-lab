@@ -1905,3 +1905,54 @@ Muse) at the direction of Tristen Pierson, per constitution §VI.
 Anchor changes in this package are made only under the
 pre-registered spec 008 rules (incl. its dated addendum); the
 package PR is opened unmerged for Tristen's review.
+
+## Phase-111 — Blind Language-Affiliation Study: Pre-Registration (spec 009)
+
+Spec 009 (`specs/009-phase111-blind-affiliation/`) frozen and
+committed 2026-10-06 before any pipeline output exists, executing
+the owner-approved blind-study design (deep-research report
+`indus-blind-language-affiliation-study-d-20261007-0101`). The study
+tests, with a frozen 28-feature joint vector + LDA under
+custodian/analyst blinding, whether the Indus sign system classifies
+as linguistic and — only if a pre-registered validation gate on
+known corpora truncated to Indus dimensions passes (linguistic
+balanced accuracy ≥ 0.85, family ≥ 0.70, permutation p < 0.001) —
+whether it discriminates among language families under frozen
+support (posterior ≥ 0.90, BF ≥ 10) and refutation (BF < 3 /
+TOST ±0.05) thresholds. Indus enters as 3 anonymized replicates
+(Holdat/Mahadevan, ICIT/Wells — local computation only, mixed).
+Registered gaps: Elamite (no verified open corpus), attested SCA
+heraldry (license unverified; synthetic generator substitutes).
+Dictionary-reading (SA) is excluded from the verdict path —
+falsified as a validation instrument by Phase-107. No anchors are
+touched by this phase. Outcome to be appended as a separate entry
+exactly as the frozen thresholds dictate.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-111 — Outcome: Gate Passed; INVALID RUN at Control Validity (spec 009)
+
+Executed as frozen (spec ae472242 + Addendum A 9ca1c94b; pipeline
+92cad2ab, unmodified). Gate (§7) passed perfectly: G1 linguistic
+balanced accuracy 1.000, bootstrap CI lower bound 1.000,
+p = 0.00050; G2 family balanced accuracy 1.000, permutation
+p = 0.000999; all seven family recalls 1.000. Classification
+then failed control validity (§8): S3/S4 synthetic generators
+classified non-linguistic in 1.00 of draws, but S1 (permuted
+Indus texts) and S2 (i.i.d. Zipf on Indus unigrams) scored
+0.00 against the ≥ 0.95 requirement — Indus-shaped nulls with no
+sequential structure were placed in family space in every draw,
+because the gate's attested non-linguistic anchor was khipu
+alone (vocabulary 10) after the proto-cuneiform gap. Verdict,
+verbatim per §9 V6: **INVALID RUN — CONTROL VALIDITY FAILED**.
+The run is invalid; the hypotheses are untouched (§8). No
+affiliation claim in either direction, no anchor changes, no
+re-runs or tuning (§6/§11). Unblinded
+2026-10-07T03:52:39.601141+00:00. Full record:
+reports/phase111_blind_affiliation_results.json,
+reports/phase111_blind_affiliation_summary.md,
+reports/phase111_acquisition_log.json.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.

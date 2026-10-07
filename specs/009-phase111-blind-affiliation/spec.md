@@ -531,3 +531,64 @@ Publish nothing that requires permission we do not hold.
 6. Ledger entries (root `LEDGER.md` + `glossa-indus/LEDGER.md`)
   with AI disclosure; foundation check run; full backend suite
   green; ONE PR (spec + code + reports), NOT merged.
+
+## Addendum A — 2026-10-06 (pre-run, pre-results; spec §11 procedure)
+
+Recorded after the freeze commit and BEFORE the panel build, gate
+run, or any result. No threshold, feature, or verdict rule changes.
+
+1. **K8/K9 source substitution.** Project Gutenberg's index
+   (Gutendex) returns no Turkish/Malay/Indonesian entries and the
+   direct holdings could not be verified at acquisition time. The
+   two modern decoy roles are filled instead by Universal
+   Dependencies treebanks: UD_Turkish-IMST (CC BY-NC-SA 4.0) and
+   UD_Indonesian-GSD (CC BY-SA 4.0), same unit rule (word → Latin
+   vowel-nucleus syllables) and same stream-chunking. Local
+   computation only; no text redistribution.
+2. **Gaps confirmed under the §1e rule** (failure to obtain under a
+   stated license = logged gap, never scraped around):
+   - **K6 Akkadian — GAP.** ORACC hosts were unreachable from the
+     execution network (repeated connection failures on both
+     oracc.museum.upenn.edu and the München mirror); the openly
+     available CDLI CoNLL dump carries no per-file language
+     metadata that would isolate an Akkadian subset reliably; the
+     MTAAC "gold" corpus proved to be Sumerian (ETCSRI). The
+     `semitic` family is carried by K7 Ge'ez alone.
+   - **N2 proto-cuneiform — GAP.** The only openly licensed
+     sequence-adjacent source found (SFU pe-pc datasets,
+     CC BY-SA 4.0) publishes n-gram count aggregates, not tablet
+     sign sequences; CDLI bulk routes did not yield an openly
+     licensed sequence file. The attested non-linguistic panel is
+     N1 khipu alone; the boundary role is additionally carried by
+     the synthetic generators S3/S4.
+   - Elamite and attested SCA heraldry gaps stand as frozen in §1e.
+3. **Sumerian source.** K5 is the CDLI Ur III corpus as republished
+   in the MTAAC cdli_ur3 corpus repository (repository license
+   CC0; underlying CDLI data CC BY-NC 4.0 — local computation only,
+   attribution in the acquisition log). The catalogue index is
+   filtered Language = Sumerian, Period = Ur III (72,877 entries).
+   Loader caps, frozen here: files are read in CDLI-number order
+   until 30,000 files or 2,000,000 sign tokens, whichever first.
+4. **Khipu encoding (N1), operationalized.** Token stream = for each
+   khipu (KHIPU_ID order), for each cord (CORD_ID order), the
+   cord's knot TYPE_CODEs ordered by (CLUSTER_ORDINAL,
+   KNOT_ORDINAL), from the Open Khipu Repository database
+   (MIT license; Zenodo DOI 10.5281/zenodo.5037551, record version
+   2.1.0). Stream-chunked per §2.
+5. **Generator training instances (mechanical route for §6).** The
+   final model's `gen_heraldic` / `gen_administrative` classes are
+   trained on SEPARATE generator instances produced by the frozen
+   §5 algorithms with seed stream [20261009, s, 777] and disclosed
+   (non-blind) panel entries. The blind S3/S4 members use the
+   frozen §5 seed streams and are the instances control validity
+   (§8) is evaluated on. No threshold changes.
+6. **BF operationalizations (clarifying §6/§9, no threshold
+   change).** "BF for linguistic over comparator class c" = median
+   over the replicate's draws of P(linguistic mass)/P(c). Family
+   BFs and the TOST posterior-difference are computed on the pooled
+   draws of the three replicates. Generator classes in the final
+   model come from item 5.
+7. **Classical Sanskrit (K3) obtained.** DCS CoNLL-U files
+   (Bhāgavatapurāṇa, 15 files, 10,815 word forms); the CC BY 4.0
+   license was verified in the official DCS repository's data
+   readme at acquisition time.

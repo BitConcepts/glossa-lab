@@ -1,0 +1,354 @@
+{
+ "spec": "012-phase113-blind-affiliation",
+ "phase": "Phase-113",
+ "study": "Phase-113 blind language-affiliation study (adversarial protocol)",
+ "run_started_utc": "2026-10-07T19:44:14.842764+00:00",
+ "code_head": "24cb33a0f5e8565833674d4113f006a6224bf1f2",
+ "code_hash": {
+  "git_head": "24cb33a0f5e8565833674d4113f006a6224bf1f2",
+  "module_sha256": {
+   "phase113_custodian.py": "4f9414218792496e1f69f02aa9c7f89114a1e5c94f265c64aa3cad96c332eb2e",
+   "phase113_features.py": "92c749cbd617cb8179caa390d055662b4b0ef8a3598a955eb26f7dfd7f859d64",
+   "phase113_analyst.py": "d59358088f3ce0f9215a77e5d70624d9eff83148920954eaa729927c8993815d",
+   "phase113_run.py": "a115d119018265cb9779ba37c73f525cb942262afb4e06e6c99f8b4a7b70666c",
+   "phase112_custodian.py": "64264208bb44246f3b1eefaf0c68d4f125b0816de285202c2c725286f00a3f3d",
+   "phase112_analyst.py": "829cb0775bf007f01dfcfaf0e9357e1b9e167f6e7af7d828058a902b3f833f35",
+   "phase112_features.py": "964302c66fdbdfd05360e9eeb1cf3edc0ac522b78589598e9790ae48458fff9b"
+  }
+ },
+ "environment": "BLAS thread pinning (OMP_NUM_THREADS / OPENBLAS_NUM_THREADS / MKL_NUM_THREADS = 1) is set by the entry script's environment before this module is imported.",
+ "panel_build_log": {
+  "K1_linear_b": {
+   "kind": "stream",
+   "documents": 5840,
+   "tokens": 43646,
+   "vocab": 8506,
+   "texts_after_chunking": 10443
+  },
+  "K2_vedic_sanskrit": {
+   "kind": "stream",
+   "documents": 20192,
+   "words": 163172,
+   "tokens": 374893,
+   "vocab": 2991,
+   "splitter_passthrough_words": 31934,
+   "texts_after_chunking": 89618
+  },
+  "K3_classical_sanskrit": {
+   "kind": "stream",
+   "documents": 15,
+   "words": 8958,
+   "tokens": 22298,
+   "vocab": 1696,
+   "splitter_passthrough_words": 1162,
+   "texts_after_chunking": 5331
+  },
+  "K4_old_tamil": {
+   "kind": "stream",
+   "documents": 600,
+   "tokens": 17414,
+   "vocab": 1924,
+   "texts_after_chunking": 4138
+  },
+  "K5_sumerian_ur3": {
+   "kind": "stream",
+   "documents": 30000,
+   "words": 1242023,
+   "tokens": 1920042,
+   "vocab": 3360,
+   "texts_after_chunking": 457742
+  },
+  "K7_geez": {
+   "kind": "stream",
+   "documents": 1,
+   "words": 24500,
+   "tokens": 80221,
+   "vocab": 209,
+   "texts_after_chunking": 19188
+  },
+  "K8_turkish": {
+   "kind": "stream",
+   "documents": 3,
+   "words": 47614,
+   "tokens": 125818,
+   "vocab": 2314,
+   "splitter_passthrough_words": 9169,
+   "texts_after_chunking": 29790
+  },
+  "K9_indonesian": {
+   "kind": "stream",
+   "documents": 3,
+   "words": 101254,
+   "tokens": 251339,
+   "vocab": 4891,
+   "splitter_passthrough_words": 16831,
+   "texts_after_chunking": 59903
+  },
+  "N1_khipu": {
+   "kind": "stream",
+   "documents": 619,
+   "cords": 54403,
+   "tokens": 110151,
+   "vocab": 10,
+   "texts_after_chunking": 26289
+  },
+  "R1_indus_holdat_m77": {
+   "kind": "texts",
+   "texts": 1670,
+   "tokens": 7002,
+   "vocab": 390,
+   "texts_after_chunking": 1670
+  },
+  "R2_indus_icit_wells": {
+   "kind": "texts",
+   "texts": 4410,
+   "tokens": 14213,
+   "vocab": 713,
+   "texts_after_chunking": 4410
+  },
+  "R3_indus_mixed": {
+   "kind": "texts",
+   "texts": 6080,
+   "tokens": 21215,
+   "vocab": 1103,
+   "texts_after_chunking": 6080
+  },
+  "S1_permutation": {
+   "kind": "generated",
+   "texts": 1670,
+   "tokens": 7002
+  },
+  "S2_iid_zipf": {
+   "kind": "generated",
+   "texts": 13177,
+   "tokens": 55004
+  },
+  "S3_heraldic_gen": {
+   "kind": "generated",
+   "texts": 13094,
+   "tokens": 55003
+  },
+  "S4_admin_gen": {
+   "kind": "generated",
+   "texts": 13072,
+   "tokens": 55005
+  },
+  "S5_positional_bigram_gen": {
+   "kind": "generated",
+   "texts": 13057,
+   "tokens": 55002,
+   "unigram_tv_distance_to_R1": 0.04191641609542468
+  }
+ },
+ "feature_names": [
+  "term_productivity",
+  "init_productivity",
+  "blockH2",
+  "blockH3",
+  "blockH4",
+  "cond_ent",
+  "cond_ent_gap",
+  "cond_ent2",
+  "ent_incr_43",
+  "rep_adj_1",
+  "rep_adj_3",
+  "pp_ratio",
+  "restore_acc",
+  "pp_ratio_tri",
+  "bigram_type_ratio",
+  "adj_clustering",
+  "blockH5",
+  "blockH6",
+  "mi_lag2",
+  "mi_lag3",
+  "rep_adj_4",
+  "adj_clustering_lag2",
+  "restore_acc_tri",
+  "bigram_type_ratio_lag2",
+  "dup_text_frac",
+  "dup_token_coverage",
+  "shared_bigram_type_frac",
+  "cross_bigram_texts_mean",
+  "longest_cross_repeat",
+  "pair_bigram_overlap"
+ ],
+ "gate": {
+  "feature_names": [
+   "term_productivity",
+   "init_productivity",
+   "blockH2",
+   "blockH3",
+   "blockH4",
+   "cond_ent",
+   "cond_ent_gap",
+   "cond_ent2",
+   "ent_incr_43",
+   "rep_adj_1",
+   "rep_adj_3",
+   "pp_ratio",
+   "restore_acc",
+   "pp_ratio_tri",
+   "bigram_type_ratio",
+   "adj_clustering"
+  ],
+  "g1_binary_balanced_accuracy": 1.0,
+  "g1_bootstrap_ci_low_95": 1.0,
+  "g1_p_value": 0.0004997501249375312,
+  "g1_pass": true,
+  "g2_family_balanced_accuracy": 1.0,
+  "g2_permutation_p_value": 0.000999000999000999,
+  "g2_n_permutations": 1000,
+  "g2_pass": true,
+  "gate_passed": true,
+  "per_family_recall": {
+   "dravidian": 1.0,
+   "indo_aryan": 1.0,
+   "semitic": 1.0,
+   "indo_european_other": 1.0,
+   "isolate_sumerian": 1.0,
+   "turkic": 1.0,
+   "austronesian": 1.0
+  }
+ },
+ "gates": {
+  "round1": {
+   "feature_names": [
+    "term_productivity",
+    "init_productivity",
+    "blockH2",
+    "blockH3",
+    "blockH4",
+    "cond_ent",
+    "cond_ent_gap",
+    "cond_ent2",
+    "ent_incr_43",
+    "rep_adj_1",
+    "rep_adj_3",
+    "pp_ratio",
+    "restore_acc",
+    "pp_ratio_tri",
+    "bigram_type_ratio",
+    "adj_clustering"
+   ],
+   "g1_binary_balanced_accuracy": 1.0,
+   "g1_bootstrap_ci_low_95": 1.0,
+   "g1_p_value": 0.0004997501249375312,
+   "g1_pass": true,
+   "g2_family_balanced_accuracy": 1.0,
+   "g2_permutation_p_value": 0.000999000999000999,
+   "g2_n_permutations": 1000,
+   "g2_pass": true,
+   "gate_passed": true,
+   "per_family_recall": {
+    "dravidian": 1.0,
+    "indo_aryan": 1.0,
+    "semitic": 1.0,
+    "indo_european_other": 1.0,
+    "isolate_sumerian": 1.0,
+    "turkic": 1.0,
+    "austronesian": 1.0
+   }
+  }
+ },
+ "rounds": {
+  "1": {
+   "gate": {
+    "feature_names": [
+     "term_productivity",
+     "init_productivity",
+     "blockH2",
+     "blockH3",
+     "blockH4",
+     "cond_ent",
+     "cond_ent_gap",
+     "cond_ent2",
+     "ent_incr_43",
+     "rep_adj_1",
+     "rep_adj_3",
+     "pp_ratio",
+     "restore_acc",
+     "pp_ratio_tri",
+     "bigram_type_ratio",
+     "adj_clustering"
+    ],
+    "g1_binary_balanced_accuracy": 1.0,
+    "g1_bootstrap_ci_low_95": 1.0,
+    "g1_p_value": 0.0004997501249375312,
+    "g1_pass": true,
+    "g2_family_balanced_accuracy": 1.0,
+    "g2_permutation_p_value": 0.000999000999000999,
+    "g2_n_permutations": 1000,
+    "g2_pass": true,
+    "gate_passed": true,
+    "per_family_recall": {
+     "dravidian": 1.0,
+     "indo_aryan": 1.0,
+     "semitic": 1.0,
+     "indo_european_other": 1.0,
+     "isolate_sumerian": 1.0,
+     "turkic": 1.0,
+     "austronesian": 1.0
+    }
+   },
+   "theta_star": {
+    "w_P1": 0.010579979768977585,
+    "w_P2": 0.0011356204253334993,
+    "w_P3": 0.27997998048507294,
+    "w_G2": 0.17405078588817716,
+    "w_G3": 0.5342536334324389,
+    "beta_P2": 3.0,
+    "beta_P3": 0.3,
+    "beta_G2": 1.0,
+    "beta_G3": 0.3,
+    "p_burst": 0.04765511279102019,
+    "p_copy": 0.18941991066363145
+   },
+   "theta_star_list": [
+    0.010579979768977585,
+    0.0011356204253334993,
+    0.27997998048507294,
+    0.17405078588817716,
+    0.5342536334324389,
+    3.0,
+    0.3,
+    1.0,
+    0.3,
+    0.04765511279102019,
+    0.18941991066363145
+   ],
+   "trace_summary": {
+    "n_evaluations": 200,
+    "n_feasible": 183,
+    "best_objective_random_block": 1.0,
+    "best_objective_refinement_block": 1.0,
+    "winner_eval_index": 53,
+    "winner_objective": 1.0,
+    "winner_feasible": true,
+    "winner_detail": {
+     "unigram_tv": 0.039441737835692006
+    }
+   },
+   "corpus_stats": {
+    "texts": 13202,
+    "tokens": 55002,
+    "unigram_tv_to_R1": 0.03872377687473358
+   },
+   "control_share_under_C_r": 0.0
+  }
+ },
+ "final_control_validity": null,
+ "verdict": "INVALID RUN \u2014 CONTROL VALIDITY FAILED",
+ "failing_controls": [
+  "A1"
+ ],
+ "family_posterior_medians": null,
+ "margins": null,
+ "exceedance_tests": null,
+ "exceedance_p_values": null,
+ "multiplicity": null,
+ "benjamini_hochberg": null,
+ "unblinding": null,
+ "stop_stage": "rounds_control",
+ "status": "stopped_at_rounds_control",
+ "invalid_at_round": 1
+}

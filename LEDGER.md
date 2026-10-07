@@ -934,3 +934,74 @@ the direction of Tristen Pierson, per constitution §VI.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
 the direction of Tristen Pierson, per constitution §VI.
+
+## [2026-10-07] Entry — Phase-113 / Spec 012: Outcome — Gate Passed at Round 1; INVALID RUN at Round-1 Adversarial Control A1 (INVALID RUN)
+
+- **Verdict (verbatim, frozen spec-012 §10 V6 vocabulary):
+  INVALID RUN — CONTROL VALIDITY FAILED**, fired at round 1
+  (spec §8.2). No affiliation verdict — for or against any
+  family, or for linguistic status itself — is produced by this
+  phase, and none may be quoted from it.
+- **Design recap:** the adversarial successor to 111/112. A
+  frozen feature ladder (L1 = spec-010's 16; L2 = L1 + family B;
+  L3 = L2 + family C) with three rounds, one per ladder step;
+  each round freezes its classifier, then a deterministic
+  seeded optimizer (200 evaluations) searches the generator
+  family G(θ) (positional/global bigram+trigram mixtures with
+  burst and copy) for corpora matching R1 on all previous
+  rounds' families and maximizing family assignment. A round
+  holds only if the frozen classifier rejects the optimized
+  corpus in ≥ 95% of 100 draws.
+- **Power analysis (§4.4):** dual audit on the nine known
+  corpora — family B admitted 8/14, family C 6/6 (the power
+  audit at N = 7,002 admitted all 20 candidates; every
+  exclusion was the permutation audit's). Ladder family
+  balanced accuracy at N = 7,002: 1.000 at all three steps.
+  **INDETERMINATE AT THIS CORPUS SIZE did not fire**; the
+  rounds proceeded.
+- **Gate (round 1, L1):** PASSED perfectly — G1 BA 1.000, CI
+  lower bound 1.000, bootstrap p = 0.00050; G2 BA 1.000,
+  permutation p = 0.000999; all 7 family recalls 1.000. Third
+  consecutive perfect gate in this study line; the failure is
+  again at control validity, not validation.
+- **Round 1 (the defeat):** 183/200 optimizer candidates were
+  feasible (unigram TV ≤ 0.05); the objective was bimodal —
+  median 0.0, but 82 candidates scored ≥ 0.99 mean family
+  posterior mass. Candidate 0 (the forced θ_S5 anchor, S5's
+  exact construction) scored 0.99999995. Winner (eval 53):
+  a trigram-dominated grammar-free mixture — w_G3 0.534,
+  w_P3 0.280, w_G2 0.174, w_P1 0.011, w_P2 0.001; β_P2 3.0,
+  β_P3 0.3, β_G2 1.0, β_G3 0.3; p_burst 0.048, p_copy 0.189;
+  evaluation-corpus unigram TV to R1 0.0394. A_1 (13,202
+  texts / 55,002 tokens, TV 0.0387): **control share under
+  C_1 = 0.00** (0/100 draws non-linguistic-collapsed). The
+  frozen §8.2 stop rule fired: rounds 2–3 not run, §8.4 final
+  recheck not reached, T3–T5 not run.
+- **Defeating generator:** reported in full in
+  `reports/phase113_blind_affiliation_summary.md` per spec
+  §8.3. Reading: Phase-112's S5 was one point of the defeating
+  region; the region is broad — L1's order statistics
+  (≤ relative-position bigrams) are producible by many
+  bounded-order Markov/template mixtures matching the unigram
+  profile. Whether the L2/L3 features resist is NOT measured
+  by this run (the protocol forbids proceeding past a failed
+  round); it is a question for a successor spec, never a
+  patch of this run.
+- **Blinding:** the key was never opened for classification
+  (unblinding is null in the results file); the classify stage
+  was invoked once as an integrity check and refused, as
+  designed. Code HEAD for the run: 24cb33a0. Deviations from
+  the frozen spec: none. One VM reboot occurred during the
+  design stage (before any run; nothing lost but /tmp
+  scratch); the run itself was uninterrupted and checkpointed.
+- **Suite / foundation:** backend suite 667 passed / 12
+  skipped / 0 failed (the +1 skip vs the 643/11 baseline is
+  Phase-112's state-dependent panel test — the same mechanism
+  recorded in Phase-112's accounting); foundation check
+  40 passed / 0 failed / 8 warnings. Reports:
+  reports/phase113_blind_affiliation_results.json +
+  reports/phase113_blind_affiliation_summary.md.
+- **No anchors touched; no prior result altered.**
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

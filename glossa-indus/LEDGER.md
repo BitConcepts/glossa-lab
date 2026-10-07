@@ -2018,3 +2018,49 @@ reports/phase112_feature_audit.json.
 
 **AI disclosure:** executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per constitution §VI.
+
+## Phase-113 — Blind Language-Affiliation Study, Adversarial Protocol: Pre-Registration (spec 012)
+
+Spec 012 (`specs/012-phase113-blind-affiliation/`) frozen and
+committed 2026-10-07, after the design-stage tooling commits
+(110c1fe9, dc57566b) and before any Phase-113 panel build, gate
+evaluation, adversarial round, or Indus statistic exists. Owner
+authorized the successor 2026-10-07 (roadmap item 4) after
+Phase-111 fell to unigram mimicry (S1/S2) and Phase-112 — with
+only permutation-sensitive features — fell to S5, a
+grammar-free positional-bigram template (control share 0.00).
+The design change: fixed traps are replaced by an adversarial
+protocol. A feature ladder is frozen in advance — L1 =
+spec-010's 16 admitted features; L2 adds admitted family B
+(longer-range sequential); L3 adds admitted family C
+(cross-text composition) — and three rounds run, one per ladder
+step. Each round the classifier is frozen while a
+deterministic, seeded optimizer (200 evaluations per round)
+searches a parametric generator family (positional/global
+bigram and trigram mixtures with burst and copy components)
+for synthetic corpora matching R1 on all previous rounds'
+feature families and maximizing family assignment; a round
+holds only if the frozen classifier rejects the optimized
+generator in ≥ 95% of draws, and a defeat ends the run INVALID
+at that round with the defeating generator reported in full.
+New candidates were admitted by a dual audit on the nine known
+corpora only — the spec-010 permutation-sensitivity rule plus
+a new power audit at N = 7,002: family B 8 of 14 admitted,
+family C 6 of 6 (the power audit admitted all 20; the
+permutation audit made every exclusion). The pre-registered
+INDETERMINATE AT THIS CORPUS SIZE outcome (fewer than 3
+admitted new features, or full-ladder family balanced accuracy
+at 7,002 below 0.70) does NOT fire — 14 features admitted,
+ladder family BA 1.000 — so the rounds proceed. Inherited
+unchanged: the panel as assembled (with its registered gaps)
+and its resampling, S1–S5, the LDA, blinding, gate, verdict
+rules, BH q = 0.05, and the licensing discipline. The panel was
+re-staged from the same openly licensed origins after the
+Phase-112 staging was lost, and verified loader-equivalent
+against the committed Phase-111 build log on all eleven
+loader-backed corpora. No anchors are touched by this phase.
+Outcome to be appended as a separate entry exactly as the
+frozen thresholds dictate.
+
+**AI disclosure:** executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution §VI.

@@ -60,7 +60,28 @@ CANDIDATE_FEATURES: list[str] = [
     "fl_mi",              # NEW: MI(first token; last token) / H1
 ]
 
-FEATURE_NAMES: list[str] = list(CANDIDATE_FEATURES)
+# Frozen by the spec 010 section 4 audit (admission rule applied to
+# the nine known corpora only; full record in
+# reports/phase112_feature_audit.json, frozen in the spec-freeze
+# commit). extract_features() returns exactly these, in this order.
+FEATURE_NAMES: list[str] = [
+    "term_productivity",
+    "init_productivity",
+    "blockH2",
+    "blockH3",
+    "blockH4",
+    "cond_ent",
+    "cond_ent_gap",
+    "cond_ent2",
+    "ent_incr_43",
+    "rep_adj_1",
+    "rep_adj_3",
+    "pp_ratio",
+    "restore_acc",
+    "pp_ratio_tri",
+    "bigram_type_ratio",
+    "adj_clustering",
+]
 
 _LN2 = np.log(2.0)
 ALPHA = 0.1  # add-alpha smoothing for Markov features (frozen, spec 009)

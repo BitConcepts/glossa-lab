@@ -2522,3 +2522,31 @@ reports/phase124_cisi_local_store_manifest.json. Suite 816 passed / 12 skipped /
 **AI disclosure:** execution recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## Phase-125 (Spec 019) — Cross-Compilation Positional Comparison: FAIL (2026-10-08)
+
+Cross-reference: repo LEDGER.md entry of the same date and
+`reports/phase125_cross_compilation_summary.md`. Pre-registered
+spec 019 (freeze commit 8da500c0, committed alone): mayig/CISI
+(P-space) vs Holdat (M-space) per-sign positional profiles,
+each computed within its own compilation only (never pooled),
+joined solely via the Phase-122 crosswalk v1. PRIMARY arm:
+high-confidence unambiguous pairs, 286; floor 8 per sign per
+compilation; judgeable 16. Sensitivity arm A (medium-included)
+coincides with PRIMARY (crosswalk v1 has zero medium pairs —
+registered fact, not an independent check); arm B (all 762
+pairs, pair-by-pair) judgeable 28. No object join: Holdat
+cisi_number is internal sequential numbering, not a CISI
+object ID (spec §2.1).
+
+Verdict as found: **FAIL — DISAGREEMENT** (frozen §6
+falsifier met): median TV 0.636931 (>= 0.50), pairing-shuffle
+null p_null 0.824 (> 0.05); Spearman rho initial -0.424758 /
+terminal +0.316034; modal agreement 0.1875; median W1
+0.658181. Arm B same pattern (p_null 0.737). No anchor/PRED
+change; anchors sha256 eccea6d5… unchanged. Suite 866/13/0;
+foundation 40/0/8.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

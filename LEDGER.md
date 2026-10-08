@@ -1523,6 +1523,209 @@ Pierson, per constitution §VI.
 
 Owner decision (Tristen Pierson, 2026-10-07): the anchor-validation battery line is closed. Four frozen batteries were rejected at calibration — Phase-113 (spec 011, cross-corpus v1: T1 starved on the partial ICIT layer, STRICT94 3/94), Phase-115 (spec 014, cross-corpus v2: with the expanded layer, Holdat/ICIT positional profiles genuinely disagree, STRICT94 1/94), Phase-117 (spec 016, within-compilation v1: mandatory W3 leave-one-out reference self-defeating, STRICT94 2/94), Phase-118 (spec 017, within-compilation v2 W1-primary: positive gate 14/67 judgeable; negative gate failed its discrimination clause — the coarse-fabric limit of spec 017 §10, measured under both constructions). No further battery redesigns are authorized; another redesign would be tuning toward a pass. The 44 flagged anchors remain `pending_non_sa_validation`. Their validation awaits genuinely independent data (RMRL / Dixit-Mitra / Mahadevan Chair concordance; PRED-2026 readiness proceeds under spec 018). AI-assisted record (Muse Spark, Muse), owner-directed.
 
+## [2026-10-08] Entry — Phase-120: Bhaskar (2024) descriptive triage of the 44 pending anchors
+
+First phase of the new-material program (Phase A). Commissioned as a
+triage of the 44 anchors flagged `pending_non_sa_validation` against
+the supplementary material of Bhaskar (2024), "Markers and agencies
+of anisotropy in the Indus sign system" (Indian J. Hist. Sci.,
+doi:10.1007/s43539-023-00102-3; ESM1-ESM13, acquired in the
+2026-10-08 Indus data deep-sweep).
+
+SCOPE FINDING (the phase's main result): the ESMs are NOT a
+per-sign cross-compilation disagreement table. They are anisotropy
+(sign-order/transposition) datasets — ESM1 the 33-object F3
+catalogue, ESM2 F3 simulations vs M77/ICIT with D-type results and
+the error label E1, ESM3-ESM12 sign-behaviour studies (99, 267/267a,
+doubles, 97/98/123 markers, 244 family, fish family), ESM13 an
+animal-behaviour catalogue (2,383 CISI rows). Bhaskar's stated
+method (article p. 2) notes M77/ICIT/CISI disagreements only "in
+each case", at case level. No per-sign M77/ICIT/CISI readings grid
+exists in the material, and none was fabricated.
+
+Built instead, honestly: (1) a curated register of every
+cross-source disagreement Bhaskar documents — 16 dispute cases
+(267/267a conflation BH-D01; ICIT conflations of 97/98 and 99/100;
+the 244 normalisation split; two labelled E1s + the prose E1 of
+ESM7 case 7; the M77 misprint of 257 as 197; the 162
+classification dispute; the 402 coverage gap) + 4 form-reanalysis
+notes — as `reports/phase120_bhaskar_disagreements.{csv,json}`;
+(2) a mention index over the list-structured ESMs (behavioural
+attestation only); (3) the triage of the 44 in
+`reports/phase120_bhaskar_triage_44.{md,json}` via
+`backend/glossa_lab/phase120_bhaskar.py` (H23 node
+IndusPhase120BhaskarTriage registered before any run; runner
+`backend/scripts/phase120_bhaskar_triage.py`).
+
+Classification (strict rule: CONTESTED only when a documented case
+names the sign's identity/form class; ALL-AGREE never inferred
+from silent use, because the source contains no per-sign
+concordance statements): ALL-AGREE 0 / CONTESTED 1 / NOT-COVERED
+43 (16 mentioned behaviourally, 27 not mentioned). The one
+CONTESTED anchor is M402 (BH-D10): the left-waving frontal flag on
+K-39 has no variant in M77, ICIT, or the font package, and the
+only other instance (7065) is doubted by Bhaskar to be 402 at
+all — an object-vs-inventories gap, not a source-vs-source split.
+Near-misses recorded in the report: M072 and M345 fall under
+Bhaskar's own form-reanalyses (BH-R01/R02), a different claim
+kind, and stay NOT-COVERED. Sanity check: 14/14 hand-read ESM
+items agree with the parse (error modes documented in the
+report: PUA glyph font — numbers/prose only; label-pattern
+extraction finds 2 of 3 E1s, the third is prose).
+
+NON-CLAIMS: descriptive only; no anchor status changed (anchors
+file SHA-256 identical before/after; 287 anchors, 166/5/3/113);
+nothing validated; no PRED content. Verification: 17 new tests;
+full backend suite 808 passed / 13 skipped / 0 failed;
+foundation check 40 / 0 / 8; ruff clean. PR opened against main;
+not merged (owner merges).
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.
+## Phase-121 — Soviet Positional Dataset (descriptive only)
+
+Built 2026-10-08 under the owner's direction (Glossa-Lab
+new-material program, Phase B). Extracted the printed tables of
+the Soviet reports into a machine-readable descriptive dataset
+(`data/soviet_positional/`, 7 tables, 109 records, every record
+tracing to source + printed page + table id): Kondratov 1965
+Tables 1-4 (new-sign emergence, 56 rows; sign frequency classes,
+315 Proto-Indian signs in aggregate; polygrams; stable
+initials x stable finals per-sign matrix) from Zide & Zvelebil
+1976, and Volchok's three calendrical tables from Proto-Indica
+1973. Findings recorded honestly: the 1968 Knorozov Formal
+Analysis contains NO frequency/positional tables (prose + glyph
+illustrations, searched in full), and Proto-Indica 1973 contains
+no sign-frequency tables at all; Gurov's Table 1 (pp.56-57)
+defeated extraction (diacriticised transliteration; no values
+guessed). Method: 300-DPI renders, fresh RapidOCR from the
+existing ocr venv, publisher text layer, and visual reads
+triangulated. Hand verification: 36 sampled cells re-read from
+the rendered pages, 36/36 match print. Printed anomalies
+preserved as printed, never repaired (K1965-T4 printed grand
+total 171 vs cell sum 160; K1965-T3 total mismatches). Memo:
+`reports/phase121_soviet_positional_dataset.md`. NON-CLAIMS:
+descriptive dataset only; no prediction scored, no anchor
+validated; whether the Soviet positional data can formally
+bear on PRED-2026-001/002 is an open question for a future
+spec adjudication. Suite and foundation results recorded in
+the Phase-121 PR.
+
+**AI disclosure:** design and execution recorded by an AI
+agent (Muse Spark, via Muse) at the direction of Tristen
+Pierson, per constitution §VI.
+## 2026-10-08 — Phase-122: Parpola↔Mahadevan Crosswalk v1 + mayig Corpus Integration
+
+Crosswalk v1 built as data (CSV + JSON) in `data/crosswalks/
+parpola_mahadevan_crosswalk_v1.{csv,json}`, loader
+`backend/glossa_lab/data/parpola_mahadevan_crosswalk_v1.py`,
+builder `backend/scripts/phase122_build_crosswalk_mayig.py`
+(deterministic; re-runs byte-identical). Canonical basis: the
+program's canonical registry `data/crosswalks/
+canonical_sign_registry.csv` (sha256 unchanged,
+8a0b2a82…bd420), named the map of record by spec 018 §A2; the
+sparse `mahadevan_parpola_crosswalk_v2.json` — explicitly
+REJECTED as canonical by spec 018 appendix A.4 — is used only
+as a labelled source. 766 rows = 762 pairs + 4 unmapped-P rows
+(P000, P225, P261, P358). P signs covered 412, M signs covered
+412. Relations (no forced 1:1): 1:1 352, one-to-many 78,
+many-to-one 66, many-to-many 266, unmapped 4. Confidence
+(frozen rubric: high = canonical registry AND mayig features
+agree; medium = exactly one of those; low = v2-only or
+candidate-only): high 372, medium 0, low 390 — medium is empty
+because the registry and mayig pair sets are identical
+(372/372, two independent structured maps in pair-for-pair
+agreement). Conflicts: 383 pairs across 209 P signs, kept on
+both sides with sources and flagged — essentially all are the
+documented crosswalk_v2 number-identity inversions (168 of
+v2's 171 pairs contradict the registry+mayig consensus),
+independently confirming spec 018 A.4. The candidates file's
+4 pre-recorded unresolved conflicts are carried verbatim.
+
+mayig corpus integrated as a first-class corpus layer
+alongside the existing converted layers:
+`data/corpus_layers/mayig_cisi_layer_v1.json` (+ `_meta.json`),
+loader `backend/glossa_lab/data/mayig_layer.py`, following the
+Phase-115/116 builder + build-metadata + per-inscription
+provenance pattern. Source: mayig/indus-valley-script-corpus
+commit ad2f1e218a34b8c33c57de0d6cb8d99272765bbb (2025-04-16),
+MIT license verified from its LICENSE file (Copyright (c) 2024
+Michael Carlson); because mayig is MIT the converted layer is
+committed (unlike the ICIT layers, gitignored with statistics
+only). 179 inscriptions / 179 CISI objects (all Mohenjo-daro),
+1,003 sign tokens, 182 distinct P signs; every record keyed by
+CISI object ID with side ID, description, source file, token
+sequence in source order, and per-token feature vectors.
+
+Coverage through crosswalk v1 (usable map = high+medium):
+tokens clean 768 / ambiguous 202 / unmapped 33 of 1,003;
+inscriptions clean 42 / partial 137 / none 0. Top failure
+modes: P122 ambiguous (76 tokens), P086 ambiguous (35), P000
+unmapped (19 — damage marker, correctly no M counterpart).
+CISI Vols. 1–2 overlap by object ID: against the structured ID
+lists obtainable now (Bhaskar et al. 2024 ESM13 catalogue CISI
+IDs; Phase-116 keyed ICIT layer `cisi` field), all 179 mayig
+objects are present in both (179/179, 100%); the CISI scan OCR
+extraction bases catch only 12 (Vol. 1) and 8 (Vol. 2) — an
+extraction artefact, documented in the report; the definitive
+figure awaits Phase E's structured catalogue table.
+Marshall numbering (Kondratov, Phase-121): no Marshall↔M/P
+pairs extractable from sources on main; v1 asserts none.
+
+Explicit non-claims: no positional comparison study was run
+(future spec); no anchor-status implications; the crosswalk is
+a working v1 with stated confidence, not an adjudication of
+sign identity; anchors and tiers untouched. Report:
+`reports/phase122_crosswalk_mayig.md` (+ `_results.json`).
+Verification: 8 new tests in
+`backend/tests/test_phase122_crosswalk_mayig.py`; full backend
+suite 800 passed / 12 skipped / 0 failed (run in two parts:
+790/12 excluding test_pipelines_gpu.py, plus 10/0 GPU-file);
+foundation check 40 / 0 / 8; ruff clean on new files. Test
+side-effect changes (glossa-indus/ claims, outputs/) reverted
+before commit.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson,
+per constitution §VI.
+## 2026-10-08 — Phase-123: Wells segmentation witness memo (Phase D)
+
+Witness statement (not an adjudication) recording how Bryan K. Wells's
+grapheme segmentation (MA thesis, Calgary, 1998; PhD thesis, Harvard,
+2006) treats each of the 157 anchor signs (113 CANDIDATE + 44
+`pending_non_sa_validation`). Sources: MA thesis (587 signs / 802
+varieties / 63 Sets, thesis p. 48; Fig. 3.6 concordance, p. 77) and PhD
+thesis (676 signs, pp. 67-68; Fig. 3.2 plates, pp. 90-92; Appendix I
+per-sign sheets), the held canonical registry (mayig Wells-2015
+cross-match), and Phase-123 hand glyph-matching against the PhD plates.
+Coverage: treatment determinable for 134/157 — SAME 87, SPLIT 40,
+MERGE 5, NOT-COVERED 2, INDETERMINATE 23 (incl. M033/M126, whose only
+correspondence runs through the unmerged Phase-122 chain, PR #81, and
+which are therefore recorded indeterminate with the lead noted).
+Hand verification: 20 rows checked against the thesis plates —
+17 glyph-consistent (M389 consistent by glyph but carries a recorded
+registry conflict over W805), 2 partial (M149, M401), 1 discrepancy
+(M293, registry W920 vs the looped plate glyph; Wells's own 920/921
+discussion, PhD pp. 70-71, does not settle it from the plate). The
+attestation co-occurrence method (MA Appendix 1 vs ICIT artifact sets)
+was attempted and rejected (best Jaccard 0.22) — recorded in the memo
+so it is not repeated on the same inputs. No anchor tier, value, or
+status was changed; no adoption of Wells's segmentation is recommended
+or implied. Artifacts: `reports/phase123_wells_segmentation_witness.md`,
+`data/crosswalks/wells_segmentation_witness_v1.{csv,json}`,
+`backend/scripts/phase123_build_wells_witness.py`,
+`backend/tests/test_phase123_wells_witness.py` (6 passed). Full backend
+suite: 798 passed / 12 skipped / 0 failed (corpora/downloads symlinked
+from the main checkout, as in prior phases); foundation check
+40 passed / 0 failed / 8 warnings (baseline unchanged); ruff clean.
+Test side effects (glossa-indus/ claims + reports, outputs/) reverted
+before commit.
+
+**AI disclosure:** research and execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.
+
 ## [2026-10-08] Entry — Phase-124: CISI Image Layer (enabling asset) — BUILT
 
 Built the image layer over the CISI Vol. 1 (= MASI 86) and Vol. 2

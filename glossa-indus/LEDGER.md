@@ -2409,6 +2409,93 @@ constitution §VI.
 
 Cross-reference: repo LEDGER.md entry of the same date. Specs 011/014/016/017 (Phases 113/115/117/118) all closed as BATTERY REJECTED at calibration; the battery line is closed by owner decision. The 44 anchors remain `pending_non_sa_validation`; no anchor received `validated_within_compilation` or `validated_non_sa` from any battery. Next evidence class: independent corpora only (PRED-2026, spec 018 readiness). AI-assisted record (Muse Spark, Muse), owner-directed.
 
+## 2026-10-08 — Phase-120: Bhaskar (2024) descriptive triage of the 44
+
+Cross-reference: repo LEDGER.md entry of the same date. Bhaskar
+(2024) + ESM1-ESM13 were triaged as new material for the 44
+`pending_non_sa_validation` anchors. Scope finding: the ESMs are
+anisotropy datasets, not a per-sign M77/ICIT/CISI concordance
+table; disagreements exist only as case-level notes. Documented-
+disagreement register (20 cases) + mention index built; triage:
+ALL-AGREE 0 / CONTESTED 1 (M402, the K-39 left-waving-flag
+coverage gap, BH-D10) / NOT-COVERED 43. Descriptive only — no
+anchor status changed, nothing validated, no PRED content.
+Hand-check 14/14. Suite 808/13/0; foundation 40/0/8. Reports:
+`reports/phase120_bhaskar_triage_44.md` (+ .json,
+`phase120_bhaskar_disagreements.{csv,json}`). AI-assisted record
+(Muse Spark, Muse), owner-directed.
+## Phase-121 — Soviet Positional Dataset (descriptive only)
+
+Built 2026-10-08 under the owner's direction (Glossa-Lab
+new-material program, Phase B). Extracted the printed tables of
+the Soviet reports into a machine-readable descriptive dataset
+(`data/soviet_positional/`, 7 tables, 109 records, every record
+tracing to source + printed page + table id): Kondratov 1965
+Tables 1-4 (new-sign emergence, 56 rows; sign frequency classes,
+315 Proto-Indian signs in aggregate; polygrams; stable
+initials x stable finals per-sign matrix) from Zide & Zvelebil
+1976, and Volchok's three calendrical tables from Proto-Indica
+1973. Findings recorded honestly: the 1968 Knorozov Formal
+Analysis contains NO frequency/positional tables (prose + glyph
+illustrations, searched in full), and Proto-Indica 1973 contains
+no sign-frequency tables at all; Gurov's Table 1 (pp.56-57)
+defeated extraction (diacriticised transliteration; no values
+guessed). Method: 300-DPI renders, fresh RapidOCR from the
+existing ocr venv, publisher text layer, and visual reads
+triangulated. Hand verification: 36 sampled cells re-read from
+the rendered pages, 36/36 match print. Printed anomalies
+preserved as printed, never repaired (K1965-T4 printed grand
+total 171 vs cell sum 160; K1965-T3 total mismatches). Memo:
+`reports/phase121_soviet_positional_dataset.md`. NON-CLAIMS:
+descriptive dataset only; no prediction scored, no anchor
+validated; whether the Soviet positional data can formally
+bear on PRED-2026-001/002 is an open question for a future
+spec adjudication. Suite and foundation results recorded in
+the Phase-121 PR.
+
+**AI disclosure:** design and execution recorded by an AI
+agent (Muse Spark, via Muse) at the direction of Tristen
+Pierson, per constitution §VI.
+## Phase-122 — Parpola↔Mahadevan Crosswalk v1 + mayig Corpus Integration (2026-10-08)
+
+Cross-reference: repo LEDGER.md entry of the same date.
+Crosswalk v1 (`data/crosswalks/parpola_mahadevan_crosswalk_v1.
+{csv,json}`) built on the canonical registry (spec 018 §A2 map
+of record; crosswalk_v2 explicitly rejected as canonical by
+spec 018 A.4 and used only as a labelled source): 762 pairs +
+4 unmapped-P rows; P covered 412, M covered 412; relations
+1:1 352 / one-to-many 78 / many-to-one 66 / many-to-many 266;
+confidence high 372 / medium 0 / low 390 (registry and mayig
+pair sets identical, 372/372); conflicts 383 pairs / 209 P
+signs, both sides kept and flagged (the documented v2
+inversions). mayig corpus (MIT, commit ad2f1e21…) integrated
+as committed first-class layer `data/corpus_layers/
+mayig_cisi_layer_v1.json`: 179 inscriptions / 179 CISI
+objects, 1,003 tokens, 182 distinct P signs, keyed by CISI
+object ID. Coverage through v1: tokens clean 768 / ambiguous
+202 / unmapped 33; inscriptions clean 42 / partial 137 / none
+0. CISI 1–2 overlap: 179/179 against both structured ID lists
+obtainable now (Bhaskar 2024 ESM13; keyed ICIT layer); scan-OCR
+bases documented as extraction-limited; definitive figure
+awaits Phase E. Non-claims: no positional study run, no
+anchor-status implications, crosswalk is a working v1 not an
+adjudication of sign identity. Suite 800/12/0; foundation
+40/0/8. Report: `reports/phase122_crosswalk_mayig.md`.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson,
+per constitution §VI.
+## 2026-10-08 — Phase-123: Wells segmentation witness (cross-reference)
+
+Cross-reference: repo LEDGER.md entry of the same date and
+`reports/phase123_wells_segmentation_witness.md`. Wells (MA 1998 /
+PhD 2006) segmentation recorded as a witness for all 157 anchor signs:
+SAME 87 / SPLIT 40 / MERGE 5 / NOT-COVERED 2 / INDETERMINATE 23;
+20-row hand verification against the PhD plates: 17 glyph-consistent,
+2 partial, 1 discrepancy (M293). Witness only — no anchor changed, no
+segmentation adopted. AI-assisted record (Muse Spark, Muse),
+owner-directed.
+
 ## Phase-124 — CISI Image Layer (enabling asset): BUILT
 
 Built 2026-10-08 under the new-material program (Phase E). CISI

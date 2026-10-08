@@ -1522,3 +1522,78 @@ Pierson, per constitution §VI.
 ## 2026-10-07 — Validation-battery line CLOSED (owner decision)
 
 Owner decision (Tristen Pierson, 2026-10-07): the anchor-validation battery line is closed. Four frozen batteries were rejected at calibration — Phase-113 (spec 011, cross-corpus v1: T1 starved on the partial ICIT layer, STRICT94 3/94), Phase-115 (spec 014, cross-corpus v2: with the expanded layer, Holdat/ICIT positional profiles genuinely disagree, STRICT94 1/94), Phase-117 (spec 016, within-compilation v1: mandatory W3 leave-one-out reference self-defeating, STRICT94 2/94), Phase-118 (spec 017, within-compilation v2 W1-primary: positive gate 14/67 judgeable; negative gate failed its discrimination clause — the coarse-fabric limit of spec 017 §10, measured under both constructions). No further battery redesigns are authorized; another redesign would be tuning toward a pass. The 44 flagged anchors remain `pending_non_sa_validation`. Their validation awaits genuinely independent data (RMRL / Dixit-Mitra / Mahadevan Chair concordance; PRED-2026 readiness proceeds under spec 018). AI-assisted record (Muse Spark, Muse), owner-directed.
+
+## 2026-10-08 — Phase-122: Parpola↔Mahadevan Crosswalk v1 + mayig Corpus Integration
+
+Crosswalk v1 built as data (CSV + JSON) in `data/crosswalks/
+parpola_mahadevan_crosswalk_v1.{csv,json}`, loader
+`backend/glossa_lab/data/parpola_mahadevan_crosswalk_v1.py`,
+builder `backend/scripts/phase122_build_crosswalk_mayig.py`
+(deterministic; re-runs byte-identical). Canonical basis: the
+program's canonical registry `data/crosswalks/
+canonical_sign_registry.csv` (sha256 unchanged,
+8a0b2a82…bd420), named the map of record by spec 018 §A2; the
+sparse `mahadevan_parpola_crosswalk_v2.json` — explicitly
+REJECTED as canonical by spec 018 appendix A.4 — is used only
+as a labelled source. 766 rows = 762 pairs + 4 unmapped-P rows
+(P000, P225, P261, P358). P signs covered 412, M signs covered
+412. Relations (no forced 1:1): 1:1 352, one-to-many 78,
+many-to-one 66, many-to-many 266, unmapped 4. Confidence
+(frozen rubric: high = canonical registry AND mayig features
+agree; medium = exactly one of those; low = v2-only or
+candidate-only): high 372, medium 0, low 390 — medium is empty
+because the registry and mayig pair sets are identical
+(372/372, two independent structured maps in pair-for-pair
+agreement). Conflicts: 383 pairs across 209 P signs, kept on
+both sides with sources and flagged — essentially all are the
+documented crosswalk_v2 number-identity inversions (168 of
+v2's 171 pairs contradict the registry+mayig consensus),
+independently confirming spec 018 A.4. The candidates file's
+4 pre-recorded unresolved conflicts are carried verbatim.
+
+mayig corpus integrated as a first-class corpus layer
+alongside the existing converted layers:
+`data/corpus_layers/mayig_cisi_layer_v1.json` (+ `_meta.json`),
+loader `backend/glossa_lab/data/mayig_layer.py`, following the
+Phase-115/116 builder + build-metadata + per-inscription
+provenance pattern. Source: mayig/indus-valley-script-corpus
+commit ad2f1e218a34b8c33c57de0d6cb8d99272765bbb (2025-04-16),
+MIT license verified from its LICENSE file (Copyright (c) 2024
+Michael Carlson); because mayig is MIT the converted layer is
+committed (unlike the ICIT layers, gitignored with statistics
+only). 179 inscriptions / 179 CISI objects (all Mohenjo-daro),
+1,003 sign tokens, 182 distinct P signs; every record keyed by
+CISI object ID with side ID, description, source file, token
+sequence in source order, and per-token feature vectors.
+
+Coverage through crosswalk v1 (usable map = high+medium):
+tokens clean 768 / ambiguous 202 / unmapped 33 of 1,003;
+inscriptions clean 42 / partial 137 / none 0. Top failure
+modes: P122 ambiguous (76 tokens), P086 ambiguous (35), P000
+unmapped (19 — damage marker, correctly no M counterpart).
+CISI Vols. 1–2 overlap by object ID: against the structured ID
+lists obtainable now (Bhaskar et al. 2024 ESM13 catalogue CISI
+IDs; Phase-116 keyed ICIT layer `cisi` field), all 179 mayig
+objects are present in both (179/179, 100%); the CISI scan OCR
+extraction bases catch only 12 (Vol. 1) and 8 (Vol. 2) — an
+extraction artefact, documented in the report; the definitive
+figure awaits Phase E's structured catalogue table.
+Marshall numbering (Kondratov, Phase-121): no Marshall↔M/P
+pairs extractable from sources on main; v1 asserts none.
+
+Explicit non-claims: no positional comparison study was run
+(future spec); no anchor-status implications; the crosswalk is
+a working v1 with stated confidence, not an adjudication of
+sign identity; anchors and tiers untouched. Report:
+`reports/phase122_crosswalk_mayig.md` (+ `_results.json`).
+Verification: 8 new tests in
+`backend/tests/test_phase122_crosswalk_mayig.py`; full backend
+suite 800 passed / 12 skipped / 0 failed (run in two parts:
+790/12 excluding test_pipelines_gpu.py, plus 10/0 GPU-file);
+foundation check 40 / 0 / 8; ruff clean on new files. Test
+side-effect changes (glossa-indus/ claims, outputs/) reverted
+before commit.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson,
+per constitution §VI.

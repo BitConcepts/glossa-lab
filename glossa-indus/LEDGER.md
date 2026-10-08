@@ -2408,3 +2408,33 @@ constitution §VI.
 ## 2026-10-07 — Validation-battery line CLOSED (owner decision)
 
 Cross-reference: repo LEDGER.md entry of the same date. Specs 011/014/016/017 (Phases 113/115/117/118) all closed as BATTERY REJECTED at calibration; the battery line is closed by owner decision. The 44 anchors remain `pending_non_sa_validation`; no anchor received `validated_within_compilation` or `validated_non_sa` from any battery. Next evidence class: independent corpora only (PRED-2026, spec 018 readiness). AI-assisted record (Muse Spark, Muse), owner-directed.
+
+## Phase-122 — Parpola↔Mahadevan Crosswalk v1 + mayig Corpus Integration (2026-10-08)
+
+Cross-reference: repo LEDGER.md entry of the same date.
+Crosswalk v1 (`data/crosswalks/parpola_mahadevan_crosswalk_v1.
+{csv,json}`) built on the canonical registry (spec 018 §A2 map
+of record; crosswalk_v2 explicitly rejected as canonical by
+spec 018 A.4 and used only as a labelled source): 762 pairs +
+4 unmapped-P rows; P covered 412, M covered 412; relations
+1:1 352 / one-to-many 78 / many-to-one 66 / many-to-many 266;
+confidence high 372 / medium 0 / low 390 (registry and mayig
+pair sets identical, 372/372); conflicts 383 pairs / 209 P
+signs, both sides kept and flagged (the documented v2
+inversions). mayig corpus (MIT, commit ad2f1e21…) integrated
+as committed first-class layer `data/corpus_layers/
+mayig_cisi_layer_v1.json`: 179 inscriptions / 179 CISI
+objects, 1,003 tokens, 182 distinct P signs, keyed by CISI
+object ID. Coverage through v1: tokens clean 768 / ambiguous
+202 / unmapped 33; inscriptions clean 42 / partial 137 / none
+0. CISI 1–2 overlap: 179/179 against both structured ID lists
+obtainable now (Bhaskar 2024 ESM13; keyed ICIT layer); scan-OCR
+bases documented as extraction-limited; definitive figure
+awaits Phase E. Non-claims: no positional study run, no
+anchor-status implications, crosswalk is a working v1 not an
+adjudication of sign identity. Suite 800/12/0; foundation
+40/0/8. Report: `reports/phase122_crosswalk_mayig.md`.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson,
+per constitution §VI.

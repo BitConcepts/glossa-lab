@@ -1781,3 +1781,60 @@ clean.
 **AI disclosure:** execution recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## [2026-10-08] Entry — Phase-125 (Spec 019): Cross-Compilation Positional Comparison — FAIL (agreement refuted)
+
+Spec 019 (`specs/019-phase125-cross-compilation-positional/`,
+freeze commit 8da500c0, committed alone before any comparison
+statistic) pre-registered the question: do per-sign positional
+profiles (initial/medial/terminal rates) computed WITHIN the
+mayig/CISI compilation agree with the same profiles computed
+WITHIN the Holdat compilation, for the same signs joined via
+the Phase-122 crosswalk? Profiles were computed strictly
+inside each compilation (inscriptions never pooled); the sole
+join is crosswalk v1. PRIMARY arm: high-confidence pairs that
+are unambiguous within the high set — 286 pairs of 372 high
+(762 total). Floor 8 tokens per sign per compilation, counted
+exclusions only: PRIMARY judgeable 16/286; sensitivity arm A
+(medium-included) coincides pair-for-pair with PRIMARY because
+crosswalk v1 contains zero medium pairs (registered design
+fact, not an independent check); sensitivity arm B (all 762
+pairs, pair-by-pair) judgeable 28.
+
+Object-join discipline: NO object join was performed. Holdat's
+cisi_number is internal sequential numbering (contiguous
+1..N per site prefix, re-verified at freeze), not a CISI object
+ID; the zero-padded coincidence with mayig CISI IDs is not an
+identity join and was not used (spec §2.1). The comparison is
+sign-level over full within-compilation profiles.
+
+VERDICT (PRIMARY arm, frozen §6 rule, as found): **FAIL —
+DISAGREEMENT.** Median TV 0.636931 (FAIL bound >= 0.50; PASS
+bound <= 0.35); median W1 0.658181; Spearman rho initial
+-0.424758, terminal +0.316034, medial -0.476874 (PASS bound
+>= 0.50 on both gated rates); modal-class agreement 3/16 =
+0.1875; pairing-shuffle null (B = 999, seed 125125) p_null
+0.824 (823/999 shuffled re-pairings had median TV <= the
+observed) — the falsifier pattern in full: far apart AND the
+crosswalk pairing carries no positional agreement beyond
+shuffled pairings. Arm B shows the same pattern (median TV
+0.636931 over 28 judgeable pairs, p_null 0.737). Claim scope
+per spec §7: this refutes crosswalk-joined positional
+agreement between these two compilations on the judgeable
+primary pairs; it does not identify which side produces the
+disagreement, says nothing about individual signs/readings,
+and leaves Phase-116 R-NONE (Holdat vs ICIT lineage, a
+different pair and join) untouched. Verification: 12 new
+unit tests (toy PASS / FAIL / NULL-STARVED controls through
+the real §6 rule); full backend suite 866 passed / 13
+skipped / 0 failed; foundation check 40 / 0 / 8; ruff clean.
+Anchors file byte-identical (sha256
+eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed,
+asserted in code before/after). No anchor, claim, or PRED
+status changed. Artifacts:
+`reports/phase125_cross_compilation_results.json`,
+`reports/phase125_cross_compilation_summary.md`.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

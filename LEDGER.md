@@ -1838,3 +1838,55 @@ status changed. Artifacts:
 **AI disclosure:** execution recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## [2026-10-08] Entry — Spec 020: Soviet Positional Dataset Adjudication for PRED-2026-001/002 — Verdict NO (non-qualifying)
+
+Spec 020 (`specs/020-soviet-pred-adjudication/`, STEP 2 of the
+owner-ordered Glossa-Lab program, from main `3fd5ad30`)
+adjudicated whether the Phase-121 Soviet positional dataset
+(Kondratov 1965 tables, extracted from Zide & Zvelebil 1976;
+`data/soviet_positional/`) qualifies as an evaluation source
+for PRED-2026-001/002. The paper states its criteria BEFORE
+application (spec §2), each derived mechanically from the
+registered texts (register §2; spec 018 §§3–7): C1
+source-class membership / frozen matrix qualification, C2
+identity with the withheld data or a qualifying substitute,
+C3 computability of the registered per-sign end/start
+rates, C4 applicability of the frozen §5 dedup protocol, C5
+canonical P-space mapping / harness ingestibility, C6
+independence from the CGSA derivation inputs.
+
+Application (spec §4), on the established facts (published
+aggregate tables; zero inscription-level records; the only
+per-sign table, K1965-T4, a restricted stable-initial-pair ×
+stable-final co-occurrence matrix in Marshall numbers, with
+no occurrence denominators; no Marshall↔M/P map in the
+frozen §3 map or on main): C1 FAIL (fits none of the six
+§4 classes; inventing a class would amend the frozen
+matrix), C2 FAIL (not the full ICIT database, and no
+qualifying substitute), C3 FAIL (0/14 TERMINAL end_rates and
+0/12 INITIAL start_rates computable as §6.2 defines them),
+C4 FAIL (no token sequences; Stages A–C inapplicable in
+principle), C5 FAIL (Marshall numbering unmappable under
+the frozen map; no §7 adapter ingests aggregate tables), C6
+PASS (narrow: its content was not a derivation input; the
+icit_full caveat C1 does not apply).
+
+VERDICT: **NO.** Scoring did NOT run — the Phase-119
+harness was not invoked in evaluation mode, and no dry run
+was performed. PRED-2026-001 and PRED-2026-002 remain
+PENDING; an append-only adjudication note recording the
+verdict and its reasons was added to
+`docs/PREDICTION_REGISTER.md` §6 (registered entries
+unmodified). No code changed. No anchor, claim, registry,
+or language-model file changed; anchors file byte-identical
+(sha256
+eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed,
+asserted before/after). Verification: full backend suite
+867 passed / 12 skipped / 0 failed (baseline 867/12/0);
+foundation check 40 passed / 0 failed / 8 warnings;
+branding sweep over changed files clean.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

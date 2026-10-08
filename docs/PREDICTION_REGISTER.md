@@ -113,3 +113,13 @@ No predictions have been formally tested and refuted yet. This section will be p
 ## 5. Notes
 
 The P122↔M342 crosswalk error (discovered 2026-04-22) is NOT a failed prediction — it was a data quality issue, not a falsification of the structural model. It has been corrected and logged in NORMALIZATION_RULES.md (rule N-CW-04).
+
+---
+
+## 6. Adjudication Notes (append-only)
+
+### 2026-10-08 — Soviet positional dataset (Phase-121) adjudicated NON-QUALIFYING for PRED-2026-001/002 (Spec 020)
+
+Under spec 020 (`specs/020-soviet-pred-adjudication/spec.md`), the Phase-121 Soviet positional dataset (Kondratov 1965 tables, extracted from Zide & Zvelebil 1976; `data/soviet_positional/`) was adjudicated against criteria derived mechanically from this register and spec 018 §§3–7, stated in the spec before application. **Verdict: NO — the dataset does not qualify as an evaluation source for PRED-2026-001 or PRED-2026-002.** It fails five of the six criteria: it falls within none of spec 018 §4's six frozen source classes (C1); it is not the full ICIT database named above as the withheld data, nor a qualifying substitute (C2); its published aggregate tables cannot yield the registered per-sign end_rate/start_rate statistics as spec 018 §6.2 defines them — the only per-sign table is a restricted stable-initial-pair × stable-final co-occurrence matrix with no occurrence denominators (C3); the frozen §5 deduplication protocol cannot be applied to it, as it contains no inscription token sequences (C4); and its signs are in Marshall catalogue numbers, for which no frozen map to Parpola space exists, and no spec 018 §7 adapter ingests aggregate tables (C5). It passes only the independence criterion (C6): its content was not a derivation input of the CGSA classes.
+
+No evaluation was run: the Phase-119 harness scorers were not invoked on this dataset in evaluation mode or as a dry run, and no verdict on either prediction was produced. **PRED-2026-001 and PRED-2026-002 remain PENDING** (Tested/Outcome unchanged above); this note records an adjudication about a candidate data source, not a test of either prediction.

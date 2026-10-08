@@ -2665,6 +2665,16 @@ try:
 except Exception as _p117_exc:  # noqa: BLE001
     logger.warning("Phase-117 (spec 016) nodes not registered: %s", _p117_exc)
 
+# ── Phase-119 nodes (spec 018: PRED-2026 readiness harness) ──
+try:
+    from glossa_lab.experiment_graph_phase119 import (
+        _phase119_node_defs as _p119_defs,  # noqa: PLC0415
+    )
+    for _d in _p119_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-119 (spec 018) nodes", len(list(_p119_defs())))
+except Exception as _p119_exc:  # noqa: BLE001
+    logger.warning("Phase-119 (spec 018) nodes not registered: %s", _p119_exc)
 # ── Phase-118 nodes (spec 017: within-compilation validation battery v2) ──
 try:
     from glossa_lab.experiment_graph_phase118 import (

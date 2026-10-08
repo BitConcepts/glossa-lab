@@ -1,0 +1,767 @@
+parpola_id,mahadevan_id,relation_type,confidence,sources,source_detail,conflict,conflict_detail,candidate_only
+P001,M001,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P013'] (disjoint); canonical_registry: P->['M012'] (disjoint); mayig_features: M->['P013'] (disjoint); mayig_features: P->['M012'] (disjoint),False
+P001,M012,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P012'] (disjoint); crosswalk_v2: P->['M001'] (disjoint),False
+P002,M002,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,"canonical_registry: M->['P015', 'P016'] (disjoint); canonical_registry: P->['M013'] (disjoint); mayig_features: M->['P015', 'P016'] (disjoint); mayig_features: P->['M013'] (disjoint)",False
+P002,M013,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P013'] (disjoint); crosswalk_v2: P->['M002'] (disjoint),False
+P003,M003,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,"canonical_registry: M->['P014'] (disjoint); canonical_registry: P->['M011', 'M014'] (disjoint); mayig_features: M->['P014'] (disjoint); mayig_features: P->['M011', 'M014'] (disjoint)",False
+P003,M011,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P011'] (disjoint); crosswalk_v2: P->['M003'] (disjoint),False
+P003,M014,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P014'] (disjoint); crosswalk_v2: P->['M003'] (disjoint),False
+P004,M004,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P007'] (disjoint); canonical_registry: P->['M015'] (disjoint); mayig_features: M->['P007'] (disjoint); mayig_features: P->['M015'] (disjoint),False
+P004,M015,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P015'] (disjoint); crosswalk_v2: P->['M004'] (disjoint),False
+P005,M005,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P008'] (disjoint); mayig_features: M->['P008'] (disjoint),False
+P006,M016,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P016'] (disjoint),False
+P007,M004,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P004'] (disjoint); crosswalk_v2: P->['M007'] (disjoint),False
+P007,M007,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P012'] (disjoint); canonical_registry: P->['M004'] (disjoint); mayig_features: M->['P012'] (disjoint); mayig_features: P->['M004'] (disjoint),False
+P008,M005,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P005'] (disjoint); crosswalk_v2: P->['M008'] (disjoint),False
+P008,M008,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P009'] (disjoint); canonical_registry: P->['M005'] (disjoint); mayig_features: M->['P009'] (disjoint); mayig_features: P->['M005'] (disjoint),False
+P009,M008,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P008'] (disjoint); crosswalk_v2: P->['M009'] (disjoint),False
+P009,M009,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P010'] (disjoint); canonical_registry: P->['M008'] (disjoint); mayig_features: M->['P010'] (disjoint); mayig_features: P->['M008'] (disjoint),False
+P010,M009,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P009'] (disjoint); crosswalk_v2: P->['M010'] (disjoint),False
+P010,M010,one-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: P->['M009'] (disjoint); mayig_features: P->['M009'] (disjoint),False
+P011,M011,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P003'] (disjoint); canonical_registry: P->['M017'] (disjoint); mayig_features: M->['P003'] (disjoint); mayig_features: P->['M017'] (disjoint),False
+P011,M017,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P017'] (disjoint); crosswalk_v2: P->['M011'] (disjoint),False
+P012,M007,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P007'] (disjoint); crosswalk_v2: P->['M012'] (disjoint),False
+P012,M012,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P001'] (disjoint); canonical_registry: P->['M007'] (disjoint); mayig_features: M->['P001'] (disjoint); mayig_features: P->['M007'] (disjoint),False
+P013,M001,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P001'] (disjoint); crosswalk_v2: P->['M013'] (disjoint),False
+P013,M013,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P002'] (disjoint); canonical_registry: P->['M001'] (disjoint); mayig_features: M->['P002'] (disjoint); mayig_features: P->['M001'] (disjoint),False
+P014,M003,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P003'] (disjoint); crosswalk_v2: P->['M014'] (disjoint),False
+P014,M014,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P003'] (disjoint); canonical_registry: P->['M003'] (disjoint); mayig_features: M->['P003'] (disjoint); mayig_features: P->['M003'] (disjoint),False
+P015,M002,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P002'] (disjoint); crosswalk_v2: P->['M015'] (disjoint),False
+P015,M015,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P004'] (disjoint); canonical_registry: P->['M002'] (disjoint); mayig_features: M->['P004'] (disjoint); mayig_features: P->['M002'] (disjoint),False
+P016,M002,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P002'] (disjoint); crosswalk_v2: P->['M016'] (disjoint),False
+P016,M016,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P006'] (disjoint); canonical_registry: P->['M002'] (disjoint); mayig_features: M->['P006'] (disjoint); mayig_features: P->['M002'] (disjoint),False
+P017,M017,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P011'] (disjoint); canonical_registry: P->['M043'] (disjoint); mayig_features: M->['P011'] (disjoint); mayig_features: P->['M043'] (disjoint),False
+P017,M043,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P043'] (disjoint); crosswalk_v2: P->['M017'] (disjoint),False
+P018,M018,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P023'] (disjoint); mayig_features: M->['P023'] (disjoint),False
+P019,M019,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P026'] (disjoint); canonical_registry: P->['M040'] (disjoint); mayig_features: M->['P026'] (disjoint); mayig_features: P->['M040'] (disjoint),False
+P019,M040,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P040'] (disjoint); crosswalk_v2: P->['M019'] (disjoint),False
+P020,M020,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P027'] (disjoint); canonical_registry: P->['M041'] (disjoint); mayig_features: M->['P027'] (disjoint); mayig_features: P->['M041'] (disjoint),False
+P020,M041,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P041'] (disjoint); crosswalk_v2: P->['M020'] (disjoint),False
+P021,M021,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P025'] (disjoint); canonical_registry: P->['M042'] (disjoint); mayig_features: M->['P025'] (disjoint); mayig_features: P->['M042'] (disjoint),False
+P021,M042,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P042'] (disjoint); crosswalk_v2: P->['M021'] (disjoint),False
+P022,M022,one-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: P->['M038'] (disjoint); mayig_features: P->['M038'] (disjoint),False
+P022,M038,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P038'] (disjoint); crosswalk_v2: P->['M022'] (disjoint),False
+P023,M018,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P018'] (disjoint); crosswalk_v2: P->['M023'] (disjoint),False
+P023,M023,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P028'] (disjoint); canonical_registry: P->['M018'] (disjoint); mayig_features: M->['P028'] (disjoint); mayig_features: P->['M018'] (disjoint),False
+P024,M024,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P029'] (disjoint); canonical_registry: P->['M037'] (disjoint); mayig_features: M->['P029'] (disjoint); mayig_features: P->['M037'] (disjoint),False
+P024,M037,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P037'] (disjoint); crosswalk_v2: P->['M024'] (disjoint),False
+P025,M021,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P021'] (disjoint); crosswalk_v2: P->['M025'] (disjoint),False
+P025,M025,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P031'] (disjoint); canonical_registry: P->['M021'] (disjoint); mayig_features: M->['P031'] (disjoint); mayig_features: P->['M021'] (disjoint),False
+P026,M019,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P019'] (disjoint); crosswalk_v2: P->['M026'] (disjoint),False
+P026,M026,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P032'] (disjoint); canonical_registry: P->['M019'] (disjoint); mayig_features: M->['P032'] (disjoint); mayig_features: P->['M019'] (disjoint),False
+P027,M020,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P020'] (disjoint); crosswalk_v2: P->['M027'] (disjoint),False
+P027,M027,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P034'] (disjoint); canonical_registry: P->['M020'] (disjoint); mayig_features: M->['P034'] (disjoint); mayig_features: P->['M020'] (disjoint),False
+P028,M023,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P023'] (disjoint); crosswalk_v2: P->['M028'] (disjoint),False
+P028,M028,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P035'] (disjoint); canonical_registry: P->['M023'] (disjoint); mayig_features: M->['P035'] (disjoint); mayig_features: P->['M023'] (disjoint),False
+P029,M024,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P024'] (disjoint); crosswalk_v2: P->['M029'] (disjoint),False
+P029,M029,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P036'] (disjoint); canonical_registry: P->['M024'] (disjoint); mayig_features: M->['P036'] (disjoint); mayig_features: P->['M024'] (disjoint),False
+P030,M030,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P038'] (disjoint); mayig_features: M->['P038'] (disjoint),False
+P031,M025,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P025'] (disjoint); crosswalk_v2: P->['M031'] (disjoint),False
+P031,M031,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P039'] (disjoint); canonical_registry: P->['M025'] (disjoint); mayig_features: M->['P039'] (disjoint); mayig_features: P->['M025'] (disjoint),False
+P032,M026,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P026'] (disjoint); crosswalk_v2: P->['M032'] (disjoint),False
+P032,M032,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P040'] (disjoint); canonical_registry: P->['M026'] (disjoint); mayig_features: M->['P040'] (disjoint); mayig_features: P->['M026'] (disjoint),False
+P033,M033,1:1,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],False,,False
+P034,M027,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P027'] (disjoint); crosswalk_v2: P->['M034'] (disjoint),False
+P034,M034,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P041'] (disjoint); canonical_registry: P->['M027'] (disjoint); mayig_features: M->['P041'] (disjoint); mayig_features: P->['M027'] (disjoint),False
+P035,M028,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P028'] (disjoint); crosswalk_v2: P->['M035'] (disjoint),False
+P035,M035,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P042'] (disjoint); canonical_registry: P->['M028'] (disjoint); mayig_features: M->['P042'] (disjoint); mayig_features: P->['M028'] (disjoint),False
+P036,M029,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P029'] (disjoint); crosswalk_v2: P->['M036'] (disjoint),False
+P036,M036,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P037'] (disjoint); canonical_registry: P->['M029'] (disjoint); mayig_features: M->['P037'] (disjoint); mayig_features: P->['M029'] (disjoint),False
+P037,M036,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P036'] (disjoint); crosswalk_v2: P->['M037'] (disjoint),False
+P037,M037,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P024'] (disjoint); canonical_registry: P->['M036'] (disjoint); mayig_features: M->['P024'] (disjoint); mayig_features: P->['M036'] (disjoint),False
+P038,M030,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P030'] (disjoint); crosswalk_v2: P->['M038'] (disjoint),False
+P038,M038,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P022'] (disjoint); canonical_registry: P->['M030'] (disjoint); mayig_features: M->['P022'] (disjoint); mayig_features: P->['M030'] (disjoint),False
+P039,M031,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P031'] (disjoint),False
+P040,M032,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P032'] (disjoint); crosswalk_v2: P->['M040'] (disjoint),False
+P040,M040,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P019'] (disjoint); canonical_registry: P->['M032'] (disjoint); mayig_features: M->['P019'] (disjoint); mayig_features: P->['M032'] (disjoint),False
+P041,M034,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P034'] (disjoint); crosswalk_v2: P->['M041'] (disjoint),False
+P041,M041,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P020'] (disjoint); canonical_registry: P->['M034'] (disjoint); mayig_features: M->['P020'] (disjoint); mayig_features: P->['M034'] (disjoint),False
+P042,M035,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P035'] (disjoint); crosswalk_v2: P->['M042'] (disjoint),False
+P042,M042,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P021'] (disjoint); canonical_registry: P->['M035'] (disjoint); mayig_features: M->['P021'] (disjoint); mayig_features: P->['M035'] (disjoint),False
+P043,M043,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P017'] (disjoint); canonical_registry: P->['M050'] (disjoint); mayig_features: M->['P017'] (disjoint); mayig_features: P->['M050'] (disjoint),False
+P043,M050,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P050'] (disjoint); crosswalk_v2: P->['M043'] (disjoint),False
+P044,M044,one-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: P->['M050'] (disjoint); mayig_features: P->['M050'] (disjoint),False
+P044,M050,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P050'] (disjoint); crosswalk_v2: P->['M044'] (disjoint),False
+P045,M084,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P084'] (disjoint),False
+P046,M046,one-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: P->['M085'] (disjoint); mayig_features: P->['M085'] (disjoint),False
+P046,M085,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P085'] (disjoint); crosswalk_v2: P->['M046'] (disjoint),False
+P047,M047,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P193'] (disjoint); canonical_registry: P->['M398'] (disjoint); mayig_features: M->['P193'] (disjoint); mayig_features: P->['M398'] (disjoint),False
+P047,M398,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M047'] (disjoint),False
+P048,M048,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P194'] (disjoint); canonical_registry: P->['M075'] (disjoint); mayig_features: M->['P194'] (disjoint); mayig_features: P->['M075'] (disjoint),False
+P048,M075,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P075'] (disjoint); crosswalk_v2: P->['M048'] (disjoint),False
+P049,M049,1:1,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],False,,False
+P050,M050,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,"canonical_registry: M->['P043', 'P044'] (disjoint); canonical_registry: P->['M059'] (disjoint); mayig_features: M->['P043', 'P044'] (disjoint); mayig_features: P->['M059'] (disjoint)",False
+P050,M059,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P059'] (disjoint); crosswalk_v2: P->['M050'] (disjoint),False
+P051,M051,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P073'] (disjoint); canonical_registry: P->['M060'] (disjoint); mayig_features: M->['P073'] (disjoint); mayig_features: P->['M060'] (disjoint),False
+P051,M060,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P060'] (disjoint); crosswalk_v2: P->['M051'] (disjoint),False
+P052,M052,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P074'] (disjoint); canonical_registry: P->['M061'] (disjoint); mayig_features: M->['P074'] (disjoint); mayig_features: P->['M061'] (disjoint),False
+P052,M061,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P061'] (disjoint); crosswalk_v2: P->['M052'] (disjoint),False
+P053,M053,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P075'] (disjoint); canonical_registry: P->['M062'] (disjoint); mayig_features: M->['P075'] (disjoint); mayig_features: P->['M062'] (disjoint),False
+P053,M062,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P104'] (disjoint); crosswalk_v2: P->['M053'] (disjoint),False
+P054,M054,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P076'] (disjoint); canonical_registry: P->['M064'] (disjoint); mayig_features: M->['P076'] (disjoint); mayig_features: P->['M064'] (disjoint),False
+P054,M064,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P064'] (disjoint); crosswalk_v2: P->['M054'] (disjoint),False
+P055,M055,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P076'] (disjoint); canonical_registry: P->['M064'] (disjoint); mayig_features: M->['P076'] (disjoint); mayig_features: P->['M064'] (disjoint),False
+P055,M064,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P064'] (disjoint); crosswalk_v2: P->['M055'] (disjoint),False
+P056,M056,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P083'] (disjoint); canonical_registry: P->['M070'] (disjoint); mayig_features: M->['P083'] (disjoint); mayig_features: P->['M070'] (disjoint),False
+P056,M070,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P070'] (disjoint); crosswalk_v2: P->['M056'] (disjoint),False
+P057,M057,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P082'] (disjoint); canonical_registry: P->['M071'] (disjoint); mayig_features: M->['P082'] (disjoint); mayig_features: P->['M071'] (disjoint),False
+P057,M071,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P071'] (disjoint); crosswalk_v2: P->['M057'] (disjoint),False
+P058,M058,one-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: P->['M072'] (disjoint); mayig_features: P->['M072'] (disjoint),False
+P058,M072,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P072'] (disjoint); crosswalk_v2: P->['M058'] (disjoint),False
+P059,M059,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P050'] (disjoint); canonical_registry: P->['M073'] (disjoint); mayig_features: M->['P050'] (disjoint); mayig_features: P->['M073'] (disjoint),False
+P059,M073,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P073'] (disjoint); crosswalk_v2: P->['M059'] (disjoint),False
+P060,M060,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P051'] (disjoint); canonical_registry: P->['M065'] (disjoint); mayig_features: M->['P051'] (disjoint); mayig_features: P->['M065'] (disjoint),False
+P060,M065,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P065'] (disjoint); crosswalk_v2: P->['M060'] (disjoint),False
+P061,M061,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P052'] (disjoint); canonical_registry: P->['M066'] (disjoint); mayig_features: M->['P052'] (disjoint); mayig_features: P->['M066'] (disjoint),False
+P061,M066,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P066'] (disjoint); crosswalk_v2: P->['M061'] (disjoint),False
+P062,M067,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P067'] (disjoint),False
+P063,M063,one-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: P->['M068'] (disjoint); mayig_features: P->['M068'] (disjoint),False
+P063,M068,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P068'] (disjoint); crosswalk_v2: P->['M063'] (disjoint),False
+P064,M064,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,"canonical_registry: M->['P054', 'P055'] (disjoint); canonical_registry: P->['M074'] (disjoint); mayig_features: M->['P054', 'P055'] (disjoint); mayig_features: P->['M074'] (disjoint)",False
+P064,M074,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P074'] (disjoint); crosswalk_v2: P->['M064'] (disjoint),False
+P065,M065,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P060'] (disjoint); canonical_registry: P->['M083'] (disjoint); mayig_features: M->['P060'] (disjoint); mayig_features: P->['M083'] (disjoint),False
+P065,M083,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P083'] (disjoint); crosswalk_v2: P->['M065'] (disjoint),False
+P066,M066,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,"canonical_registry: M->['P061'] (disjoint); canonical_registry: P->['M076', 'M077', 'M078'] (disjoint); mayig_features: M->['P061'] (disjoint); mayig_features: P->['M076', 'M077', 'M078'] (disjoint)",False
+P066,M076,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P076'] (disjoint); crosswalk_v2: P->['M066'] (disjoint),False
+P066,M077,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P077'] (disjoint); crosswalk_v2: P->['M066'] (disjoint),False
+P066,M078,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P078'] (disjoint); crosswalk_v2: P->['M066'] (disjoint),False
+P067,M067,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P062'] (disjoint); canonical_registry: P->['M081'] (disjoint); mayig_features: M->['P062'] (disjoint); mayig_features: P->['M081'] (disjoint),False
+P067,M081,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P081'] (disjoint); crosswalk_v2: P->['M067'] (disjoint),False
+P068,M068,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P063'] (disjoint); canonical_registry: P->['M082'] (disjoint); mayig_features: M->['P063'] (disjoint); mayig_features: P->['M082'] (disjoint),False
+P068,M082,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P082'] (disjoint); crosswalk_v2: P->['M068'] (disjoint),False
+P069,M069,one-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: P->['M079'] (disjoint); mayig_features: P->['M079'] (disjoint),False
+P069,M079,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P079'] (disjoint); crosswalk_v2: P->['M069'] (disjoint),False
+P070,M070,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P056'] (disjoint); canonical_registry: P->['M080'] (disjoint); mayig_features: M->['P056'] (disjoint); mayig_features: P->['M080'] (disjoint),False
+P070,M080,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P080'] (disjoint); crosswalk_v2: P->['M070'] (disjoint),False
+P071,M071,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P057'] (disjoint); canonical_registry: P->['M076'] (disjoint); mayig_features: M->['P057'] (disjoint); mayig_features: P->['M076'] (disjoint),False
+P071,M076,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P076'] (disjoint); crosswalk_v2: P->['M071'] (disjoint),False
+P072,M072,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P058'] (disjoint); mayig_features: M->['P058'] (disjoint),False
+P073,M051,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P051'] (disjoint); crosswalk_v2: P->['M073'] (disjoint),False
+P073,M073,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P059'] (disjoint); canonical_registry: P->['M051'] (disjoint); mayig_features: M->['P059'] (disjoint); mayig_features: P->['M051'] (disjoint),False
+P074,M052,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P052'] (disjoint); crosswalk_v2: P->['M074'] (disjoint),False
+P074,M074,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P064'] (disjoint); canonical_registry: P->['M052'] (disjoint); mayig_features: M->['P064'] (disjoint); mayig_features: P->['M052'] (disjoint),False
+P075,M053,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P053'] (disjoint); crosswalk_v2: P->['M075'] (disjoint),False
+P075,M075,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P048'] (disjoint); canonical_registry: P->['M053'] (disjoint); mayig_features: M->['P048'] (disjoint); mayig_features: P->['M053'] (disjoint),False
+P076,M054,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P054'] (disjoint); crosswalk_v2: P->['M076'] (disjoint),False
+P076,M055,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P055'] (disjoint); crosswalk_v2: P->['M076'] (disjoint),False
+P076,M076,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,"canonical_registry: M->['P066', 'P071'] (disjoint); canonical_registry: P->['M054', 'M055'] (disjoint); mayig_features: M->['P066', 'P071'] (disjoint); mayig_features: P->['M054', 'M055'] (disjoint)",False
+P077,M077,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P066'] (disjoint); canonical_registry: P->['M412'] (disjoint); mayig_features: M->['P066'] (disjoint); mayig_features: P->['M412'] (disjoint),False
+P077,M412,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M077'] (disjoint),False
+P078,M078,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P066'] (disjoint); canonical_registry: P->['M310'] (disjoint); mayig_features: M->['P066'] (disjoint); mayig_features: P->['M310'] (disjoint),False
+P078,M310,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M078'] (disjoint),False
+P079,M079,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P069'] (disjoint); canonical_registry: P->['M410'] (disjoint); mayig_features: M->['P069'] (disjoint); mayig_features: P->['M410'] (disjoint),False
+P079,M410,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M079'] (disjoint),False
+P080,M080,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P070'] (disjoint); canonical_registry: P->['M413'] (disjoint); mayig_features: M->['P070'] (disjoint); mayig_features: P->['M413'] (disjoint),False
+P080,M413,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M080'] (disjoint),False
+P081,M081,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P067'] (disjoint); mayig_features: M->['P067'] (disjoint),False
+P082,M057,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P057'] (disjoint); crosswalk_v2: P->['M082'] (disjoint),False
+P082,M082,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P068'] (disjoint); canonical_registry: P->['M057'] (disjoint); mayig_features: M->['P068'] (disjoint); mayig_features: P->['M057'] (disjoint),False
+P083,M056,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P056'] (disjoint); crosswalk_v2: P->['M083'] (disjoint),False
+P083,M083,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P065'] (disjoint); canonical_registry: P->['M056'] (disjoint); mayig_features: M->['P065'] (disjoint); mayig_features: P->['M056'] (disjoint),False
+P084,M084,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P045'] (disjoint); canonical_registry: P->['M395'] (disjoint); mayig_features: M->['P045'] (disjoint); mayig_features: P->['M395'] (disjoint),False
+P084,M395,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M084'] (disjoint),False
+P085,M085,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P046'] (disjoint); canonical_registry: P->['M161'] (disjoint); mayig_features: M->['P046'] (disjoint); mayig_features: P->['M161'] (disjoint),False
+P085,M161,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P161'] (disjoint); crosswalk_v2: P->['M085'] (disjoint),False
+P086,M086,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,"canonical_registry: M->['P144'] (disjoint); canonical_registry: P->['M161', 'M162', 'M167', 'M168', 'M169'] (disjoint); mayig_features: M->['P144'] (disjoint); mayig_features: P->['M161', 'M162', 'M167', 'M168', 'M169'] (disjoint)",False
+P086,M161,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P161'] (disjoint); crosswalk_v2: P->['M086'] (disjoint),False
+P086,M162,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P162'] (disjoint); crosswalk_v2: P->['M086'] (disjoint),False
+P086,M167,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P167'] (disjoint); crosswalk_v2: P->['M086'] (disjoint),False
+P086,M168,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P168'] (disjoint); crosswalk_v2: P->['M086'] (disjoint),False
+P086,M169,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M086'] (disjoint),False
+P087,M087,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P145'] (disjoint); canonical_registry: P->['M164'] (disjoint); mayig_features: M->['P145'] (disjoint); mayig_features: P->['M164'] (disjoint),False
+P087,M164,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P164'] (disjoint); crosswalk_v2: P->['M087'] (disjoint),False
+P088,M088,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,"canonical_registry: M->['P146'] (disjoint); canonical_registry: P->['M165', 'M166'] (disjoint); mayig_features: M->['P146'] (disjoint); mayig_features: P->['M165', 'M166'] (disjoint)",False
+P088,M165,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P165'] (disjoint); crosswalk_v2: P->['M088'] (disjoint),False
+P088,M166,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P166'] (disjoint); crosswalk_v2: P->['M088'] (disjoint),False
+P089,M089,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P147'] (disjoint); canonical_registry: P->['M163'] (disjoint); mayig_features: M->['P147'] (disjoint); mayig_features: P->['M163'] (disjoint),False
+P089,M163,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P163'] (disjoint); crosswalk_v2: P->['M089'] (disjoint),False
+P090,M090,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P148'] (disjoint); mayig_features: M->['P148'] (disjoint),False
+P091,M091,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,"canonical_registry: M->['P148'] (disjoint); canonical_registry: P->['M174', 'M175'] (disjoint); mayig_features: M->['P148'] (disjoint); mayig_features: P->['M174', 'M175'] (disjoint)",False
+P091,M174,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M091'] (disjoint),False
+P091,M175,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M091'] (disjoint),False
+P092,M092,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P149'] (disjoint); canonical_registry: P->['M171'] (disjoint); mayig_features: M->['P149'] (disjoint); mayig_features: P->['M171'] (disjoint),False
+P092,M171,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M092'] (disjoint),False
+P093,M093,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P152'] (disjoint); canonical_registry: P->['M172'] (disjoint); mayig_features: M->['P152'] (disjoint); mayig_features: P->['M172'] (disjoint),False
+P093,M172,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M093'] (disjoint),False
+P094,M094,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P152'] (disjoint); mayig_features: M->['P152'] (disjoint),False
+P095,M095,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P150'] (disjoint); canonical_registry: P->['M173'] (disjoint); mayig_features: M->['P150'] (disjoint); mayig_features: P->['M173'] (disjoint),False
+P095,M173,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M095'] (disjoint),False
+P096,M096,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P151'] (disjoint); canonical_registry: P->['M348'] (disjoint); mayig_features: M->['P151'] (disjoint); mayig_features: P->['M348'] (disjoint),False
+P096,M348,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M096'] (disjoint),False
+P097,M097,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P121'] (disjoint); mayig_features: M->['P121'] (disjoint),False
+P098,M098,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P121'] (disjoint); canonical_registry: P->['M176'] (disjoint); mayig_features: M->['P121'] (disjoint); mayig_features: P->['M176'] (disjoint),False
+P098,M176,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P176'] (disjoint); crosswalk_v2: P->['M098'] (disjoint),False
+P099,M099,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,"canonical_registry: M->['P119', 'P122'] (disjoint); canonical_registry: P->['M177'] (disjoint); mayig_features: M->['P119', 'P122'] (disjoint); mayig_features: P->['M177'] (disjoint)",False
+P099,M177,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M099'] (disjoint),False
+P100,M100,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P122'] (disjoint); canonical_registry: P->['M168'] (disjoint); mayig_features: M->['P122'] (disjoint); mayig_features: P->['M168'] (disjoint),False
+P100,M168,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P168'] (disjoint); crosswalk_v2: P->['M100'] (disjoint),False
+P101,M006,one-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: P->['M167'] (disjoint); mayig_features: P->['M167'] (disjoint),False
+P101,M101,1:1,low,candidates_unadmitted,,False,,True
+P101,M167,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P167'] (disjoint); crosswalk_v2: P->['M006'] (disjoint),False
+P102,M102,1:1,low,candidates_unadmitted,,False,,True
+P103,M045,one-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: P->['M400'] (disjoint); mayig_features: P->['M400'] (disjoint),False
+P103,M103,1:1,low,candidates_unadmitted,,False,,True
+P103,M400,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M045'] (disjoint),False
+P104,M062,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P053'] (disjoint); canonical_registry: P->['M401'] (disjoint); mayig_features: M->['P053'] (disjoint); mayig_features: P->['M401'] (disjoint),False
+P104,M104,1:1,low,candidates_unadmitted,,False,,True
+P104,M401,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M062'] (disjoint),False
+P105,M039,1:1,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],False,,False
+P105,M105,1:1,low,candidates_unadmitted,,False,,True
+P106,M106,1:1,low,candidates_unadmitted,,False,,True
+P106,M351,1:1,high,canonical_registry|mayig_features,,False,,False
+P107,M107,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P125'] (disjoint); canonical_registry: P->['M372'] (disjoint); mayig_features: M->['P125'] (disjoint); mayig_features: P->['M372'] (disjoint),False
+P107,M372,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M107'] (disjoint),False
+P108,M108,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P126'] (disjoint); canonical_registry: P->['M397'] (disjoint); mayig_features: M->['P126'] (disjoint); mayig_features: P->['M397'] (disjoint),False
+P108,M397,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M108'] (disjoint),False
+P109,M109,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P126'] (disjoint); canonical_registry: P->['M377'] (disjoint); mayig_features: M->['P126'] (disjoint); mayig_features: P->['M377'] (disjoint),False
+P109,M377,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M109'] (disjoint),False
+P110,M110,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P127'] (disjoint); canonical_registry: P->['M327'] (disjoint); mayig_features: M->['P127'] (disjoint); mayig_features: P->['M327'] (disjoint),False
+P110,M327,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M110'] (disjoint),False
+P111,M111,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P136'] (disjoint); canonical_registry: P->['M325'] (disjoint); mayig_features: M->['P136'] (disjoint); mayig_features: P->['M325'] (disjoint),False
+P111,M325,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M111'] (disjoint),False
+P112,M112,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P127'] (disjoint); canonical_registry: P->['M326'] (disjoint); mayig_features: M->['P127'] (disjoint); mayig_features: P->['M326'] (disjoint),False
+P112,M326,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M112'] (disjoint),False
+P113,M113,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P136'] (disjoint); mayig_features: M->['P136'] (disjoint),False
+P114,M114,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P128'] (disjoint); canonical_registry: P->['M155'] (disjoint); mayig_features: M->['P128'] (disjoint); mayig_features: P->['M155'] (disjoint),False
+P114,M155,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P155'] (disjoint); crosswalk_v2: P->['M114'] (disjoint),False
+P115,M115,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P129'] (disjoint); canonical_registry: P->['M156'] (disjoint); mayig_features: M->['P129'] (disjoint); mayig_features: P->['M156'] (disjoint),False
+P115,M156,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P156'] (disjoint); crosswalk_v2: P->['M115'] (disjoint),False
+P116,M116,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P129'] (disjoint); canonical_registry: P->['M157'] (disjoint); mayig_features: M->['P129'] (disjoint); mayig_features: P->['M157'] (disjoint),False
+P116,M157,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P157'] (disjoint); crosswalk_v2: P->['M116'] (disjoint),False
+P117,M117,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P137'] (disjoint); canonical_registry: P->['M367'] (disjoint); mayig_features: M->['P137'] (disjoint); mayig_features: P->['M367'] (disjoint),False
+P117,M367,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P367'] (disjoint); crosswalk_v2: P->['M117'] (disjoint),False
+P118,M118,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,"canonical_registry: M->['P130'] (disjoint); canonical_registry: P->['M362', 'M363', 'M364'] (disjoint); mayig_features: M->['P130'] (disjoint); mayig_features: P->['M362', 'M363', 'M364'] (disjoint)",False
+P118,M362,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M118'] (disjoint),False
+P118,M363,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M118'] (disjoint),False
+P118,M364,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M118'] (disjoint),False
+P119,M099,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P099'] (disjoint); crosswalk_v2: P->['M119'] (disjoint),False
+P119,M119,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P141'] (disjoint); canonical_registry: P->['M099'] (disjoint); mayig_features: M->['P141'] (disjoint); mayig_features: P->['M099'] (disjoint),False
+P120,M120,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P141'] (disjoint); canonical_registry: P->['M123'] (disjoint); mayig_features: M->['P141'] (disjoint); mayig_features: P->['M123'] (disjoint),False
+P120,M123,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P123'] (disjoint); crosswalk_v2: P->['M120'] (disjoint),False
+P121,M097,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P097'] (disjoint); crosswalk_v2: P->['M121'] (disjoint),False
+P121,M098,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P098'] (disjoint); crosswalk_v2: P->['M121'] (disjoint),False
+P121,M121,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,"canonical_registry: M->['P142'] (disjoint); canonical_registry: P->['M097', 'M098'] (disjoint); mayig_features: M->['P142'] (disjoint); mayig_features: P->['M097', 'M098'] (disjoint)",False
+P122,M099,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P099'] (disjoint); crosswalk_v2: P->['M122'] (disjoint),False
+P122,M100,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P100'] (disjoint); crosswalk_v2: P->['M122'] (disjoint),False
+P122,M122,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,"canonical_registry: M->['P143'] (disjoint); canonical_registry: P->['M099', 'M100'] (disjoint); mayig_features: M->['P143'] (disjoint); mayig_features: P->['M099', 'M100'] (disjoint)",False
+P123,M102,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M123'] (disjoint),False
+P123,M103,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M123'] (disjoint),False
+P123,M123,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,"canonical_registry: M->['P120'] (disjoint); canonical_registry: P->['M102', 'M103'] (disjoint); mayig_features: M->['P120'] (disjoint); mayig_features: P->['M102', 'M103'] (disjoint)",False
+P124,M104,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M124'] (disjoint),False
+P124,M105,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M124'] (disjoint),False
+P124,M124,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,"canonical_registry: M->['P204'] (disjoint); canonical_registry: P->['M104', 'M105'] (disjoint); mayig_features: M->['P204'] (disjoint); mayig_features: P->['M104', 'M105'] (disjoint)",False
+P125,M106,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M125'] (disjoint),False
+P125,M107,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P107'] (disjoint); crosswalk_v2: P->['M125'] (disjoint),False
+P125,M125,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,"canonical_registry: M->['P204'] (disjoint); canonical_registry: P->['M106', 'M107'] (disjoint); mayig_features: M->['P204'] (disjoint); mayig_features: P->['M106', 'M107'] (disjoint)",False
+P126,M108,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P108'] (disjoint); crosswalk_v2: P->['M126'] (disjoint),False
+P126,M109,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P109'] (disjoint); crosswalk_v2: P->['M126'] (disjoint),False
+P126,M126,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,"canonical_registry: M->['P203'] (disjoint); canonical_registry: P->['M108', 'M109'] (disjoint); mayig_features: M->['P203'] (disjoint); mayig_features: P->['M108', 'M109'] (disjoint)",False
+P127,M110,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P110'] (disjoint); crosswalk_v2: P->['M127'] (disjoint),False
+P127,M112,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P112'] (disjoint); crosswalk_v2: P->['M127'] (disjoint),False
+P127,M127,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,"canonical_registry: M->['P283'] (disjoint); canonical_registry: P->['M110', 'M112'] (disjoint); mayig_features: M->['P283'] (disjoint); mayig_features: P->['M110', 'M112'] (disjoint)",False
+P128,M114,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P114'] (disjoint); crosswalk_v2: P->['M128'] (disjoint),False
+P128,M128,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P284'] (disjoint); canonical_registry: P->['M114'] (disjoint); mayig_features: M->['P284'] (disjoint); mayig_features: P->['M114'] (disjoint),False
+P129,M115,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P115'] (disjoint); crosswalk_v2: P->['M129'] (disjoint),False
+P129,M116,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P116'] (disjoint); crosswalk_v2: P->['M129'] (disjoint),False
+P129,M129,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,"canonical_registry: M->['P185'] (disjoint); canonical_registry: P->['M115', 'M116'] (disjoint); mayig_features: M->['P185'] (disjoint); mayig_features: P->['M115', 'M116'] (disjoint)",False
+P130,M118,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P118'] (disjoint); crosswalk_v2: P->['M130'] (disjoint),False
+P130,M130,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P188'] (disjoint); canonical_registry: P->['M118'] (disjoint); mayig_features: M->['P188'] (disjoint); mayig_features: P->['M118'] (disjoint),False
+P131,M131,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P189'] (disjoint); canonical_registry: P->['M312'] (disjoint); mayig_features: M->['P189'] (disjoint); mayig_features: P->['M312'] (disjoint),False
+P131,M312,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M131'] (disjoint),False
+P132,M132,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P191'] (disjoint); canonical_registry: P->['M313'] (disjoint); mayig_features: M->['P191'] (disjoint); mayig_features: P->['M313'] (disjoint),False
+P132,M313,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M132'] (disjoint),False
+P133,M133,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P192'] (disjoint); canonical_registry: P->['M314'] (disjoint); mayig_features: M->['P192'] (disjoint); mayig_features: P->['M314'] (disjoint),False
+P133,M314,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M133'] (disjoint),False
+P134,M134,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P184'] (disjoint); mayig_features: M->['P184'] (disjoint),False
+P135,M135,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P197'] (disjoint); mayig_features: M->['P197'] (disjoint),False
+P136,M111,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P111'] (disjoint); crosswalk_v2: P->['M136'] (disjoint),False
+P136,M113,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P113'] (disjoint); crosswalk_v2: P->['M136'] (disjoint),False
+P136,M136,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,"canonical_registry: M->['P195'] (disjoint); canonical_registry: P->['M111', 'M113'] (disjoint); mayig_features: M->['P195'] (disjoint); mayig_features: P->['M111', 'M113'] (disjoint)",False
+P137,M117,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P117'] (disjoint); crosswalk_v2: P->['M137'] (disjoint),False
+P137,M137,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P240'] (disjoint); canonical_registry: P->['M117'] (disjoint); mayig_features: M->['P240'] (disjoint); mayig_features: P->['M117'] (disjoint),False
+P138,M138,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P244'] (disjoint); canonical_registry: P->['M153'] (disjoint); mayig_features: M->['P244'] (disjoint); mayig_features: P->['M153'] (disjoint),False
+P138,M153,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P153'] (disjoint); crosswalk_v2: P->['M138'] (disjoint),False
+P139,M103,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M139'] (disjoint),False
+P139,M139,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P243'] (disjoint); canonical_registry: P->['M103'] (disjoint); mayig_features: M->['P243'] (disjoint); mayig_features: P->['M103'] (disjoint),False
+P140,M101,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M140'] (disjoint),False
+P140,M140,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P242'] (disjoint); canonical_registry: P->['M101'] (disjoint); mayig_features: M->['P242'] (disjoint); mayig_features: P->['M101'] (disjoint),False
+P141,M119,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P119'] (disjoint); crosswalk_v2: P->['M141'] (disjoint),False
+P141,M120,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P120'] (disjoint); crosswalk_v2: P->['M141'] (disjoint),False
+P141,M141,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,"canonical_registry: M->['P245'] (disjoint); canonical_registry: P->['M119', 'M120'] (disjoint); mayig_features: M->['P245'] (disjoint); mayig_features: P->['M119', 'M120'] (disjoint)",False
+P142,M121,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P121'] (disjoint); crosswalk_v2: P->['M142'] (disjoint),False
+P142,M142,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P248'] (disjoint); canonical_registry: P->['M121'] (disjoint); mayig_features: M->['P248'] (disjoint); mayig_features: P->['M121'] (disjoint),False
+P143,M122,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P122'] (disjoint); crosswalk_v2: P->['M143'] (disjoint),False
+P143,M143,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P246'] (disjoint); canonical_registry: P->['M122'] (disjoint); mayig_features: M->['P246'] (disjoint); mayig_features: P->['M122'] (disjoint),False
+P144,M086,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P086'] (disjoint); crosswalk_v2: P->['M144'] (disjoint),False
+P144,M144,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P247'] (disjoint); canonical_registry: P->['M086'] (disjoint); mayig_features: M->['P247'] (disjoint); mayig_features: P->['M086'] (disjoint),False
+P145,M087,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P087'] (disjoint); crosswalk_v2: P->['M145'] (disjoint),False
+P145,M145,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P249'] (disjoint); canonical_registry: P->['M087'] (disjoint); mayig_features: M->['P249'] (disjoint); mayig_features: P->['M087'] (disjoint),False
+P146,M088,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P088'] (disjoint); crosswalk_v2: P->['M146'] (disjoint),False
+P146,M146,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P254'] (disjoint); canonical_registry: P->['M088'] (disjoint); mayig_features: M->['P254'] (disjoint); mayig_features: P->['M088'] (disjoint),False
+P147,M089,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P089'] (disjoint); crosswalk_v2: P->['M147'] (disjoint),False
+P147,M147,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P254'] (disjoint); canonical_registry: P->['M089'] (disjoint); mayig_features: M->['P254'] (disjoint); mayig_features: P->['M089'] (disjoint),False
+P148,M090,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P090'] (disjoint); crosswalk_v2: P->['M148'] (disjoint),False
+P148,M091,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P091'] (disjoint); crosswalk_v2: P->['M148'] (disjoint),False
+P148,M148,one-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,"canonical_registry: P->['M090', 'M091'] (disjoint); mayig_features: P->['M090', 'M091'] (disjoint)",False
+P149,M092,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P092'] (disjoint); crosswalk_v2: P->['M149'] (disjoint),False
+P149,M149,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P255'] (disjoint); canonical_registry: P->['M092'] (disjoint); mayig_features: M->['P255'] (disjoint); mayig_features: P->['M092'] (disjoint),False
+P150,M095,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P095'] (disjoint); crosswalk_v2: P->['M150'] (disjoint),False
+P150,M150,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P256'] (disjoint); canonical_registry: P->['M095'] (disjoint); mayig_features: M->['P256'] (disjoint); mayig_features: P->['M095'] (disjoint),False
+P151,M096,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P096'] (disjoint); crosswalk_v2: P->['M151'] (disjoint),False
+P151,M151,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P257'] (disjoint); canonical_registry: P->['M096'] (disjoint); mayig_features: M->['P257'] (disjoint); mayig_features: P->['M096'] (disjoint),False
+P152,M093,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P093'] (disjoint); crosswalk_v2: P->['M152'] (disjoint),False
+P152,M094,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P094'] (disjoint); crosswalk_v2: P->['M152'] (disjoint),False
+P152,M152,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,"canonical_registry: M->['P258'] (disjoint); canonical_registry: P->['M093', 'M094'] (disjoint); mayig_features: M->['P258'] (disjoint); mayig_features: P->['M093', 'M094'] (disjoint)",False
+P153,M153,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P138'] (disjoint); mayig_features: M->['P138'] (disjoint),False
+P154,M154,one-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: P->['M287'] (disjoint); mayig_features: P->['M287'] (disjoint),False
+P154,M287,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M154'] (disjoint),False
+P155,M155,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P114'] (disjoint); canonical_registry: P->['M289'] (disjoint); mayig_features: M->['P114'] (disjoint); mayig_features: P->['M289'] (disjoint),False
+P155,M289,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M155'] (disjoint),False
+P156,M156,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P115'] (disjoint); canonical_registry: P->['M288'] (disjoint); mayig_features: M->['P115'] (disjoint); mayig_features: P->['M288'] (disjoint),False
+P156,M288,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M156'] (disjoint),False
+P157,M157,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P116'] (disjoint); mayig_features: M->['P116'] (disjoint),False
+P158,M158,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P250'] (disjoint); mayig_features: M->['P250'] (disjoint),False
+P159,M159,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P253'] (disjoint); mayig_features: M->['P253'] (disjoint),False
+P160,M160,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P251'] (disjoint); canonical_registry: P->['M293'] (disjoint); mayig_features: M->['P251'] (disjoint); mayig_features: P->['M293'] (disjoint),False
+P160,M293,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M160'] (disjoint),False
+P161,M161,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,"canonical_registry: M->['P085', 'P086'] (disjoint); mayig_features: M->['P085', 'P086'] (disjoint)",False
+P162,M162,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P086'] (disjoint); canonical_registry: P->['M290'] (disjoint); mayig_features: M->['P086'] (disjoint); mayig_features: P->['M290'] (disjoint),False
+P162,M290,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M162'] (disjoint),False
+P163,M163,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P089'] (disjoint); canonical_registry: P->['M299'] (disjoint); mayig_features: M->['P089'] (disjoint); mayig_features: P->['M299'] (disjoint),False
+P163,M299,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M163'] (disjoint),False
+P164,M164,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P087'] (disjoint); canonical_registry: P->['M300'] (disjoint); mayig_features: M->['P087'] (disjoint); mayig_features: P->['M300'] (disjoint),False
+P164,M300,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M164'] (disjoint),False
+P165,M165,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P088'] (disjoint); canonical_registry: P->['M301'] (disjoint); mayig_features: M->['P088'] (disjoint); mayig_features: P->['M301'] (disjoint),False
+P165,M301,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M165'] (disjoint),False
+P166,M166,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P088'] (disjoint); mayig_features: M->['P088'] (disjoint),False
+P167,M167,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,"canonical_registry: M->['P086', 'P101'] (disjoint); mayig_features: M->['P086', 'P101'] (disjoint)",False
+P168,M168,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,"canonical_registry: M->['P086', 'P100'] (disjoint); mayig_features: M->['P086', 'P100'] (disjoint)",False
+P169,M169,1:1,low,candidates_unadmitted,,False,,True
+P170,M170,1:1,low,candidates_unadmitted,,False,,True
+P171,M171,1:1,low,candidates_unadmitted,,False,,True
+P171,M292,1:1,high,canonical_registry|mayig_features,,False,,False
+P172,M172,1:1,low,candidates_unadmitted,,False,,True
+P172,M294,1:1,high,canonical_registry|mayig_features,,False,,False
+P173,M295,1:1,high,canonical_registry|mayig_features,,False,,False
+P174,M174,1:1,low,candidates_unadmitted,,False,,True
+P174,M303,1:1,high,canonical_registry|mayig_features,,False,,False
+P175,M296,1:1,high,canonical_registry|mayig_features,,False,,False
+P176,M176,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P098'] (disjoint); canonical_registry: P->['M297'] (disjoint); mayig_features: M->['P098'] (disjoint); mayig_features: P->['M297'] (disjoint),False
+P176,M297,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M176'] (disjoint),False
+P177,M177,1:1,low,candidates_unadmitted,,False,,True
+P177,M298,1:1,high,canonical_registry|mayig_features,,False,,False
+P178,M178,1:1,low,candidates_unadmitted,,False,,True
+P178,M304,1:1,high,canonical_registry|mayig_features,,False,,False
+P179,M179,1:1,low,candidates_unadmitted,,False,,True
+P179,M305,1:1,high,canonical_registry|mayig_features,,False,,False
+P180,M180,1:1,low,candidates_unadmitted,,False,,True
+P180,M306,1:1,high,canonical_registry|mayig_features,,False,,False
+P181,M181,1:1,low,candidates_unadmitted,,False,,True
+P181,M311,1:1,high,canonical_registry|mayig_features,,False,,False
+P182,M182,1:1,low,candidates_unadmitted,,False,,True
+P182,M307,1:1,high,canonical_registry|mayig_features,,False,,False
+P183,M183,1:1,low,candidates_unadmitted,,False,,True
+P183,M308,1:1,high,canonical_registry|mayig_features,,False,,False
+P184,M134,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P134'] (disjoint),False
+P184,M184,1:1,low,candidates_unadmitted,,False,,True
+P185,M129,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P129'] (disjoint),False
+P185,M185,1:1,low,candidates_unadmitted,,False,,True
+P186,M178,1:1,high,canonical_registry|mayig_features,,False,,False
+P186,M186,1:1,low,candidates_unadmitted,,False,,True
+P187,M179,1:1,high,canonical_registry|mayig_features,,False,,False
+P187,M187,1:1,low,candidates_unadmitted,,False,,True
+P188,M130,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P130'] (disjoint),False
+P188,M188,1:1,low,candidates_unadmitted,,False,,True
+P189,M131,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P131'] (disjoint),False
+P189,M189,1:1,low,candidates_unadmitted,,False,,True
+P190,M190,1:1,low,candidates_unadmitted,,False,,True
+P191,M132,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P132'] (disjoint),False
+P192,M133,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P133'] (disjoint),False
+P192,M192,1:1,low,candidates_unadmitted,,False,,True
+P193,M047,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P047'] (disjoint),False
+P193,M193,1:1,low,candidates_unadmitted,,False,,True
+P194,M048,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P048'] (disjoint),False
+P194,M194,1:1,low,candidates_unadmitted,,False,,True
+P195,M136,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P136'] (disjoint),False
+P195,M195,1:1,low,candidates_unadmitted,,False,,True
+P196,M323,1:1,high,canonical_registry|mayig_features,,False,,False
+P197,M135,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P135'] (disjoint),False
+P197,M197,1:1,low,candidates_unadmitted,,False,,True
+P198,M198,1:1,low,candidates_unadmitted,,False,,True
+P198,M259,1:1,high,canonical_registry|mayig_features,,False,,False
+P199,M199,1:1,low,candidates_unadmitted,,False,,True
+P200,M200,1:1,low,candidates_unadmitted,,False,,True
+P200,M258,1:1,high,canonical_registry|mayig_features,,False,,False
+P201,M201,1:1,low,candidates_unadmitted,,False,,True
+P202,M402,1:1,high,canonical_registry|mayig_features,,False,,False
+P203,M126,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P126'] (disjoint),False
+P203,M203,1:1,low,candidates_unadmitted,,False,,True
+P204,M124,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P124'] (disjoint),False
+P204,M125,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P125'] (disjoint),False
+P204,M204,1:1,low,candidates_unadmitted,,False,,True
+P205,M180,1:1,high,canonical_registry|mayig_features,,False,,False
+P206,M181,1:1,high,canonical_registry|mayig_features,,False,,False
+P206,M206,1:1,low,candidates_unadmitted,,False,,True
+P207,M207,1:1,low,candidates_unadmitted,,False,,True
+P208,M208,1:1,low,candidates_unadmitted,,False,,True
+P208,M209,1:1,high,canonical_registry|mayig_features,,False,,False
+P209,M209,1:1,low,candidates_unadmitted,,False,,True
+P209,M210,1:1,high,canonical_registry|mayig_features,,False,,False
+P210,M204,1:1,high,canonical_registry|mayig_features,,False,,False
+P210,M210,1:1,low,candidates_unadmitted,,False,,True
+P211,M206,1:1,high,canonical_registry|mayig_features,,False,,False
+P212,M207,1:1,high,canonical_registry|mayig_features,,False,,False
+P212,M212,1:1,low,candidates_unadmitted,,False,,True
+P213,M208,1:1,high,canonical_registry|mayig_features,,False,,False
+P213,M213,1:1,low,candidates_unadmitted,,False,,True
+P214,M214,1:1,low,candidates_unadmitted,,False,,True
+P215,M215,1:1,low,candidates_unadmitted,,False,,True
+P215,M230,1:1,high,canonical_registry|mayig_features,,False,,False
+P216,M216,1:1,low,candidates_unadmitted,,False,,True
+P216,M231,1:1,high,canonical_registry|mayig_features,,False,,False
+P217,M211,1:1,high,canonical_registry|mayig_features,,False,,False
+P217,M217,1:1,low,candidates_unadmitted,,False,,True
+P218,M218,1:1,low,candidates_unadmitted,,False,,True
+P219,M219,1:1,low,candidates_unadmitted,,False,,True
+P221,M233,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P233'] (disjoint),False
+P222,M234,1:1,high,canonical_registry|mayig_features,,False,,False
+P223,M223,1:1,low,candidates_unadmitted,,False,,True
+P223,M235,1:1,high,canonical_registry|mayig_features,,False,,False
+P224,M214,1:1,high,canonical_registry|mayig_features,,False,,False
+P224,M224,1:1,low,candidates_unadmitted,,False,,True
+P226,M215,1:1,high,canonical_registry|mayig_features,,False,,False
+P226,M226,1:1,low,candidates_unadmitted,,False,,True
+P227,M225,1:1,high,canonical_registry|mayig_features,,False,,False
+P227,M227,1:1,low,candidates_unadmitted,,False,,True
+P228,M228,one-to-many,high,candidates_unadmitted|canonical_registry|mayig_features,,False,,False
+P228,M309,one-to-many,high,canonical_registry|mayig_features,,False,,False
+P229,M226,1:1,high,canonical_registry|mayig_features,,False,,False
+P229,M229,1:1,low,candidates_unadmitted,,False,,True
+P230,M216,many-to-one,high,canonical_registry|mayig_features,,False,,False
+P230,M230,1:1,low,candidates_unadmitted,,False,,True
+P231,M221,1:1,high,canonical_registry|mayig_features,,False,,False
+P231,M231,1:1,low,candidates_unadmitted,,False,,True
+P232,M219,1:1,high,canonical_registry|mayig_features,,False,,False
+P232,M232,1:1,low,candidates_unadmitted,,False,,True
+P233,M220,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M233'] (disjoint),False
+P233,M233,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P221'] (disjoint); canonical_registry: P->['M220'] (disjoint); mayig_features: M->['P221'] (disjoint); mayig_features: P->['M220'] (disjoint),False
+P234,M216,many-to-one,high,canonical_registry|mayig_features,,False,,False
+P235,M227,1:1,high,canonical_registry|mayig_features,,False,,False
+P235,M235,1:1,low,candidates_unadmitted,,False,,True
+P236,M236,1:1,low,candidates_unadmitted,,False,,True
+P237,M223,1:1,high,canonical_registry|mayig_features,,False,,False
+P237,M237,1:1,low,candidates_unadmitted,,False,,True
+P238,M224,1:1,high,canonical_registry|mayig_features,,False,,False
+P238,M238,1:1,low,candidates_unadmitted,,False,,True
+P239,M239,1:1,low,candidates_unadmitted,,False,,True
+P240,M137,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P137'] (disjoint),False
+P240,M240,1:1,low,candidates_unadmitted,,False,,True
+P241,M241,1:1,low,candidates_unadmitted,,False,,True
+P242,M140,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P140'] (disjoint),False
+P242,M242,1:1,low,candidates_unadmitted,,False,,True
+P243,M139,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P139'] (disjoint),False
+P243,M243,1:1,low,candidates_unadmitted,,False,,True
+P244,M138,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P138'] (disjoint),False
+P244,M244,1:1,low,candidates_unadmitted,,False,,True
+P245,M141,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P141'] (disjoint),False
+P245,M245,1:1,low,candidates_unadmitted,,False,,True
+P246,M143,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P143'] (disjoint),False
+P246,M246,1:1,low,candidates_unadmitted,,False,,True
+P247,M144,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P144'] (disjoint),False
+P247,M247,1:1,low,candidates_unadmitted,,False,,True
+P248,M142,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P142'] (disjoint),False
+P248,M248,1:1,low,candidates_unadmitted,,False,,True
+P249,M145,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P145'] (disjoint); crosswalk_v2: P->['M249'] (disjoint),False
+P249,M249,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P276'] (disjoint); canonical_registry: P->['M145'] (disjoint); mayig_features: M->['P276'] (disjoint); mayig_features: P->['M145'] (disjoint),False
+P250,M158,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P158'] (disjoint),False
+P250,M250,1:1,low,candidates_unadmitted,,False,,True
+P251,M160,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P160'] (disjoint),False
+P251,M251,1:1,low,candidates_unadmitted,,False,,True
+P252,M252,1:1,low,candidates_unadmitted,,False,,True
+P253,M159,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P159'] (disjoint),False
+P253,M253,1:1,low,candidates_unadmitted,,False,,True
+P254,M146,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P146'] (disjoint),False
+P254,M147,many-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P147'] (disjoint),False
+P254,M254,1:1,low,candidates_unadmitted,,False,,True
+P255,M149,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P149'] (disjoint),False
+P255,M255,1:1,low,candidates_unadmitted,,False,,True
+P256,M150,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P150'] (disjoint),False
+P256,M256,1:1,low,candidates_unadmitted,,False,,True
+P257,M151,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P151'] (disjoint),False
+P257,M257,1:1,low,candidates_unadmitted,,False,,True
+P258,M152,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P152'] (disjoint),False
+P258,M258,1:1,low,candidates_unadmitted,,False,,True
+P259,M259,1:1,low,candidates_unadmitted,,False,,True
+P260,M260,1:1,low,candidates_unadmitted,,False,,True
+P260,M264,many-to-one,high,canonical_registry|mayig_features,,False,,False
+P262,M237,1:1,high,canonical_registry|mayig_features,,False,,False
+P262,M262,1:1,low,candidates_unadmitted,,False,,True
+P263,M263,1:1,low,candidates_unadmitted,,False,,True
+P264,M238,1:1,high,canonical_registry|mayig_features,,False,,False
+P265,M242,1:1,high,canonical_registry|mayig_features,,False,,False
+P265,M265,1:1,low,candidates_unadmitted,,False,,True
+P266,M243,1:1,high,canonical_registry|mayig_features,,False,,False
+P266,M266,1:1,low,candidates_unadmitted,,False,,True
+P267,M239,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M267'] (disjoint),False
+P267,M267,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P385'] (disjoint); canonical_registry: P->['M239'] (disjoint); mayig_features: M->['P385'] (disjoint); mayig_features: P->['M239'] (disjoint),False
+P268,M241,one-to-many,high,canonical_registry|mayig_features,,False,,False
+P268,M245,one-to-many,high,canonical_registry|mayig_features,,False,,False
+P268,M268,1:1,low,candidates_unadmitted,,False,,True
+P269,M246,1:1,high,canonical_registry|mayig_features,,False,,False
+P269,M269,1:1,low,candidates_unadmitted,,False,,True
+P270,M244,1:1,high,canonical_registry|mayig_features,,False,,False
+P270,M270,1:1,low,candidates_unadmitted,,False,,True
+P271,M271,1:1,low,candidates_unadmitted,,False,,True
+P272,M201,1:1,high,canonical_registry|mayig_features,,False,,False
+P272,M272,1:1,low,candidates_unadmitted,,False,,True
+P273,M273,1:1,low,candidates_unadmitted,,False,,True
+P274,M257,1:1,high,canonical_registry|mayig_features,,False,,False
+P274,M274,1:1,low,candidates_unadmitted,,False,,True
+P275,M253,1:1,high,canonical_registry|mayig_features,,False,,False
+P275,M275,1:1,low,candidates_unadmitted,,False,,True
+P276,M249,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P249'] (disjoint),False
+P276,M276,1:1,low,candidates_unadmitted,,False,,True
+P277,M250,1:1,high,canonical_registry|mayig_features,,False,,False
+P277,M277,1:1,low,candidates_unadmitted,,False,,True
+P278,M251,1:1,high,canonical_registry|mayig_features,,False,,False
+P278,M278,1:1,low,candidates_unadmitted,,False,,True
+P279,M279,1:1,low,candidates_unadmitted,,False,,True
+P280,M252,1:1,high,canonical_registry|mayig_features,,False,,False
+P280,M280,1:1,low,candidates_unadmitted,,False,,True
+P281,M256,1:1,high,canonical_registry|mayig_features,,False,,False
+P282,M170,1:1,high,canonical_registry|mayig_features,,False,,False
+P282,M282,1:1,low,candidates_unadmitted,,False,,True
+P283,M127,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P127'] (disjoint),False
+P283,M283,1:1,low,candidates_unadmitted,,False,,True
+P284,M128,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P128'] (disjoint),False
+P284,M284,1:1,low,candidates_unadmitted,,False,,True
+P285,M195,1:1,high,canonical_registry|mayig_features,,False,,False
+P285,M285,1:1,low,candidates_unadmitted,,False,,True
+P286,M196,1:1,high,canonical_registry|mayig_features,,False,,False
+P286,M286,1:1,low,candidates_unadmitted,,False,,True
+P287,M287,1:1,low,candidates_unadmitted,,False,,True
+P288,M194,1:1,high,canonical_registry|mayig_features,,False,,False
+P288,M288,1:1,low,candidates_unadmitted,,False,,True
+P289,M197,1:1,high,canonical_registry|mayig_features,,False,,False
+P289,M289,1:1,low,candidates_unadmitted,,False,,True
+P290,M198,1:1,high,canonical_registry|mayig_features,,False,,False
+P290,M290,1:1,low,candidates_unadmitted,,False,,True
+P291,M291,1:1,low,candidates_unadmitted,,False,,True
+P292,M199,many-to-many,high,canonical_registry|mayig_features,,False,,False
+P292,M200,one-to-many,high,canonical_registry|mayig_features,,False,,False
+P292,M292,1:1,low,candidates_unadmitted,,False,,True
+P293,M199,many-to-one,high,canonical_registry|mayig_features,,False,,False
+P294,M203,1:1,high,canonical_registry|mayig_features,,False,,False
+P294,M294,1:1,low,candidates_unadmitted,,False,,True
+P295,M188,1:1,high,canonical_registry|mayig_features,,False,,False
+P295,M295,1:1,low,candidates_unadmitted,,False,,True
+P296,M186,1:1,high,canonical_registry|mayig_features,,False,,False
+P296,M296,1:1,low,candidates_unadmitted,,False,,True
+P297,M297,1:1,low,candidates_unadmitted,,False,,True
+P298,M298,1:1,low,candidates_unadmitted,,False,,True
+P299,M185,1:1,high,canonical_registry|mayig_features,,False,,False
+P299,M299,1:1,low,candidates_unadmitted,,False,,True
+P300,M187,1:1,high,canonical_registry|mayig_features,,False,,False
+P300,M300,1:1,low,candidates_unadmitted,,False,,True
+P301,M254,1:1,high,canonical_registry|mayig_features,,False,,False
+P301,M301,1:1,low,candidates_unadmitted,,False,,True
+P302,M255,1:1,high,canonical_registry|mayig_features,,False,,False
+P302,M302,1:1,low,candidates_unadmitted,,False,,True
+P303,M182,1:1,high,canonical_registry|mayig_features,,False,,False
+P303,M303,1:1,low,candidates_unadmitted,,False,,True
+P304,M183,1:1,high,canonical_registry|mayig_features,,False,,False
+P304,M304,1:1,low,candidates_unadmitted,,False,,True
+P305,M189,1:1,high,canonical_registry|mayig_features,,False,,False
+P306,M190,1:1,high,canonical_registry|mayig_features,,False,,False
+P307,M191,1:1,high,canonical_registry|mayig_features,,False,,False
+P307,M307,1:1,low,candidates_unadmitted,,False,,True
+P308,M192,1:1,high,canonical_registry|mayig_features,,False,,False
+P308,M308,1:1,low,candidates_unadmitted,,False,,True
+P309,M193,1:1,high,canonical_registry|mayig_features,,False,,False
+P309,M309,1:1,low,candidates_unadmitted,,False,,True
+P310,M310,1:1,low,candidates_unadmitted,,False,,True
+P310,M328,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P328'] (disjoint),False
+P311,M329,1:1,high,canonical_registry|mayig_features,,False,,False
+P312,M312,1:1,low,candidates_unadmitted,,False,,True
+P312,M330,1:1,high,canonical_registry|mayig_features,,False,,False
+P313,M313,1:1,low,candidates_unadmitted,,False,,True
+P313,M332,1:1,high,canonical_registry|mayig_features,,False,,False
+P314,M314,1:1,low,candidates_unadmitted,,False,,True
+P314,M334,1:1,high,canonical_registry|mayig_features,,False,,False
+P315,M315,1:1,low,candidates_unadmitted,,False,,True
+P315,M365,1:1,high,canonical_registry|mayig_features,,False,,False
+P316,M316,1:1,low,candidates_unadmitted,,False,,True
+P316,M336,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P336'] (disjoint),False
+P317,M335,1:1,high,canonical_registry|mayig_features,,False,,False
+P318,M318,1:1,low,candidates_unadmitted,,False,,True
+P319,M319,1:1,low,candidates_unadmitted,,False,,True
+P320,M320,1:1,low,candidates_unadmitted,,False,,True
+P320,M341,1:1,high,canonical_registry|mayig_features,,False,,False
+P321,M321,1:1,low,candidates_unadmitted,,False,,True
+P321,M339,1:1,high,canonical_registry|mayig_features,,False,,False
+P322,M322,1:1,low,candidates_unadmitted,,False,,True
+P322,M338,1:1,high,canonical_registry|mayig_features,,False,,False
+P323,M323,1:1,low,candidates_unadmitted,,False,,True
+P324,M324,1:1,low,candidates_unadmitted,,False,,True
+P324,M342,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P342'] (disjoint),False
+P325,M325,1:1,low,candidates_unadmitted,,False,,True
+P325,M343,1:1,high,canonical_registry|mayig_features,,False,,False
+P326,M326,1:1,low,candidates_unadmitted,,False,,True
+P326,M344,1:1,high,canonical_registry|mayig_features,,False,,False
+P327,M327,1:1,low,candidates_unadmitted,,False,,True
+P327,M345,1:1,high,canonical_registry|mayig_features,,False,,False
+P328,M328,many-to-one,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P310'] (disjoint); mayig_features: M->['P310'] (disjoint),False
+P329,M329,1:1,low,candidates_unadmitted,,False,,True
+P329,M346,1:1,high,canonical_registry|mayig_features,,False,,False
+P330,M330,1:1,low,candidates_unadmitted,,False,,True
+P331,M331,1:1,low,candidates_unadmitted,,False,,True
+P331,M352,1:1,high,canonical_registry|mayig_features,,False,,False
+P332,M332,1:1,low,candidates_unadmitted,,False,,True
+P332,M347,one-to-many,high,canonical_registry|mayig_features,,False,,False
+P332,M358,one-to-many,high,canonical_registry|mayig_features,,False,,False
+P333,M333,1:1,low,candidates_unadmitted,,False,,True
+P333,M357,1:1,high,canonical_registry|mayig_features,,False,,False
+P334,M334,1:1,low,candidates_unadmitted,,False,,True
+P334,M356,1:1,high,canonical_registry|mayig_features,,False,,False
+P335,M335,1:1,low,candidates_unadmitted,,False,,True
+P335,M349,1:1,high,canonical_registry|mayig_features,,False,,False
+P336,M336,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P316'] (disjoint); canonical_registry: P->['M350'] (disjoint); mayig_features: M->['P316'] (disjoint); mayig_features: P->['M350'] (disjoint),False
+P336,M350,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M336'] (disjoint),False
+P337,M337,1:1,low,candidates_unadmitted,,False,,True
+P337,M355,1:1,high,canonical_registry|mayig_features,,False,,False
+P338,M317,1:1,high,canonical_registry|mayig_features,,False,,False
+P338,M338,1:1,low,candidates_unadmitted,,False,,True
+P339,M339,1:1,low,candidates_unadmitted,,False,,True
+P339,M393,1:1,high,canonical_registry|mayig_features,,False,,False
+P340,M316,1:1,high,canonical_registry|mayig_features,,False,,False
+P340,M340,1:1,low,candidates_unadmitted,,False,,True
+P341,M318,1:1,high,canonical_registry|mayig_features,,False,,False
+P341,M341,1:1,low,candidates_unadmitted,,False,,True
+P342,M319,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M342'] (disjoint),False
+P342,M342,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence HIGH],True,canonical_registry: M->['P324'] (disjoint); canonical_registry: P->['M319'] (disjoint); mayig_features: M->['P324'] (disjoint); mayig_features: P->['M319'] (disjoint),False
+P343,M320,1:1,high,canonical_registry|mayig_features,,False,,False
+P343,M343,1:1,low,candidates_unadmitted,,False,,True
+P344,M321,1:1,high,canonical_registry|mayig_features,,False,,False
+P344,M344,1:1,low,candidates_unadmitted,,False,,True
+P345,M322,1:1,high,canonical_registry|mayig_features,,False,,False
+P345,M345,1:1,low,candidates_unadmitted,,False,,True
+P346,M346,1:1,low,candidates_unadmitted,,False,,True
+P346,M409,many-to-one,high,canonical_registry|mayig_features,,False,,False
+P347,M347,1:1,low,candidates_unadmitted,,False,,True
+P347,M408,1:1,high,canonical_registry|mayig_features,,False,,False
+P348,M348,1:1,low,candidates_unadmitted,,False,,True
+P348,M409,many-to-one,high,canonical_registry|mayig_features,,False,,False
+P349,M349,1:1,low,candidates_unadmitted,,False,,True
+P349,M403,1:1,high,canonical_registry|mayig_features,,False,,False
+P350,M350,1:1,low,candidates_unadmitted,,False,,True
+P350,M404,1:1,high,canonical_registry|mayig_features,,False,,False
+P351,M351,1:1,low,candidates_unadmitted,,False,,True
+P351,M405,1:1,high,canonical_registry|mayig_features,,False,,False
+P352,M407,1:1,high,canonical_registry|mayig_features,,False,,False
+P353,M353,1:1,low,candidates_unadmitted,,False,,True
+P353,M415,one-to-many,high,canonical_registry|mayig_features,,False,,False
+P353,M417,one-to-many,high,canonical_registry|mayig_features,,False,,False
+P354,M354,1:1,low,candidates_unadmitted,,False,,True
+P354,M416,1:1,high,canonical_registry|mayig_features,,False,,False
+P355,M261,one-to-many,high,canonical_registry|mayig_features,,False,,False
+P355,M355,1:1,low,candidates_unadmitted,,False,,True
+P355,M373,one-to-many,high,canonical_registry|mayig_features,,False,,False
+P355,M374,one-to-many,high,canonical_registry|mayig_features,,False,,False
+P356,M262,1:1,high,canonical_registry|mayig_features,,False,,False
+P356,M356,1:1,low,candidates_unadmitted,,False,,True
+P357,M357,1:1,low,candidates_unadmitted,,False,,True
+P359,M264,many-to-one,high,canonical_registry|mayig_features,,False,,False
+P359,M359,1:1,low,candidates_unadmitted,,False,,True
+P360,M360,1:1,low,candidates_unadmitted,,False,,True
+P360,M399,1:1,high,canonical_registry|mayig_features,,False,,False
+P361,M263,1:1,high,canonical_registry|mayig_features,,False,,False
+P361,M361,1:1,low,candidates_unadmitted,,False,,True
+P362,M362,1:1,low,candidates_unadmitted,,False,,True
+P363,M266,1:1,high,canonical_registry|mayig_features,,False,,False
+P363,M363,1:1,low,candidates_unadmitted,,False,,True
+P364,M387,1:1,high,canonical_registry|mayig_features,,False,,False
+P365,M365,1:1,low,candidates_unadmitted,,False,,True
+P365,M388,one-to-many,high,canonical_registry|mayig_features,,False,,False
+P365,M390,one-to-many,high,canonical_registry|mayig_features,,False,,False
+P366,M375,1:1,high,canonical_registry|mayig_features,,False,,False
+P367,M367,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P117'] (disjoint); canonical_registry: P->['M376'] (disjoint); mayig_features: M->['P117'] (disjoint); mayig_features: P->['M376'] (disjoint),False
+P367,M376,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M367'] (disjoint),False
+P368,M368,1:1,low,candidates_unadmitted,,False,,True
+P369,M369,1:1,low,candidates_unadmitted,,False,,True
+P369,M381,1:1,high,canonical_registry|mayig_features,,False,,False
+P370,M370,1:1,low,candidates_unadmitted,,False,,True
+P371,M371,1:1,low,candidates_unadmitted,,False,,True
+P371,M383,1:1,high,canonical_registry|mayig_features,,False,,False
+P372,M379,1:1,high,canonical_registry|mayig_features,,False,,False
+P373,M373,1:1,low,candidates_unadmitted,,False,,True
+P374,M374,1:1,low,candidates_unadmitted,,False,,True
+P375,M375,1:1,low,candidates_unadmitted,,False,,True
+P375,M384,1:1,high,canonical_registry|mayig_features,,False,,False
+P376,M376,1:1,low,candidates_unadmitted,,False,,True
+P376,M380,1:1,high,canonical_registry|mayig_features,,False,,False
+P377,M377,1:1,low,candidates_unadmitted,,False,,True
+P378,M378,1:1,low,candidates_unadmitted,,False,,True
+P378,M391,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P391'] (disjoint),False
+P379,M379,1:1,low,candidates_unadmitted,,False,,True
+P379,M392,1:1,high,canonical_registry|mayig_features,,False,,False
+P380,M247,1:1,high,canonical_registry|mayig_features,,False,,False
+P380,M380,1:1,low,candidates_unadmitted,,False,,True
+P381,M381,1:1,low,candidates_unadmitted,,False,,True
+P382,M284,1:1,high,canonical_registry|mayig_features,,False,,False
+P382,M382,1:1,low,candidates_unadmitted,,False,,True
+P383,M285,1:1,high,canonical_registry|mayig_features,,False,,False
+P383,M383,1:1,low,candidates_unadmitted,,False,,True
+P384,M286,1:1,high,canonical_registry|mayig_features,,False,,False
+P384,M384,1:1,low,candidates_unadmitted,,False,,True
+P385,M267,many-to-one,high,canonical_registry|mayig_features,,True,crosswalk_v2: M->['P267'] (disjoint),False
+P385,M385,1:1,low,candidates_unadmitted,,False,,True
+P386,M268,1:1,high,canonical_registry|mayig_features,,False,,False
+P386,M386,1:1,low,candidates_unadmitted,,False,,True
+P387,M276,1:1,high,canonical_registry|mayig_features,,False,,False
+P387,M387,1:1,low,candidates_unadmitted,,False,,True
+P388,M275,1:1,high,canonical_registry|mayig_features,,False,,False
+P388,M388,1:1,low,candidates_unadmitted,,False,,True
+P389,M272,1:1,high,canonical_registry|mayig_features,,False,,False
+P389,M389,1:1,low,candidates_unadmitted,,False,,True
+P390,M277,one-to-many,high,canonical_registry|mayig_features,,False,,False
+P390,M279,one-to-many,high,canonical_registry|mayig_features,,False,,False
+P390,M280,one-to-many,high,canonical_registry|mayig_features,,False,,False
+P390,M282,one-to-many,high,canonical_registry|mayig_features,,False,,False
+P390,M283,one-to-many,high,canonical_registry|mayig_features,,False,,False
+P390,M390,1:1,low,candidates_unadmitted,,False,,True
+P391,M278,one-to-many,high,canonical_registry|mayig_features,,True,crosswalk_v2: P->['M391'] (disjoint),False
+P391,M391,many-to-many,low,crosswalk_v2,Parpola 1994 Appendix B [v2 confidence MEDIUM],True,canonical_registry: M->['P378'] (disjoint); canonical_registry: P->['M278'] (disjoint); mayig_features: M->['P378'] (disjoint); mayig_features: P->['M278'] (disjoint),False
+P392,M270,1:1,high,canonical_registry|mayig_features,,False,,False
+P392,M392,1:1,low,candidates_unadmitted,,False,,True
+P393,M271,1:1,high,canonical_registry|mayig_features,,False,,False
+P393,M393,1:1,low,candidates_unadmitted,,False,,True
+P394,M274,1:1,high,canonical_registry|mayig_features,,False,,False
+P394,M394,1:1,low,candidates_unadmitted,,False,,True
+P395,M273,1:1,high,canonical_registry|mayig_features,,False,,False
+P395,M395,1:1,low,candidates_unadmitted,,False,,True
+P396,M236,1:1,high,canonical_registry|mayig_features,,False,,False
+P396,M396,1:1,low,candidates_unadmitted,,False,,True
+P397,M397,1:1,low,candidates_unadmitted,,False,,True
+P398,M398,1:1,low,candidates_unadmitted,,False,,True
+P399,M399,1:1,low,candidates_unadmitted,,False,,True
+P400,M400,1:1,low,candidates_unadmitted,,False,,True
+P401,M401,1:1,low,candidates_unadmitted,,False,,True
+P402,M402,1:1,low,candidates_unadmitted,,False,,True
+P403,M403,1:1,low,candidates_unadmitted,,False,,True
+P404,M404,1:1,low,candidates_unadmitted,,False,,True
+P405,M405,1:1,low,candidates_unadmitted,,False,,True
+P406,M406,1:1,low,candidates_unadmitted,,False,,True
+P407,M407,1:1,low,candidates_unadmitted,,False,,True
+P408,M408,1:1,low,candidates_unadmitted,,False,,True
+P409,M409,1:1,low,candidates_unadmitted,,False,,True
+P410,M410,1:1,low,candidates_unadmitted,,False,,True
+P411,M411,1:1,low,candidates_unadmitted,,False,,True
+P412,M412,1:1,low,candidates_unadmitted,,False,,True
+P413,M413,1:1,low,candidates_unadmitted,,False,,True
+P414,M414,1:1,low,candidates_unadmitted,,False,,True
+P415,M415,1:1,low,candidates_unadmitted,,False,,True
+P416,M416,1:1,low,candidates_unadmitted,,False,,True
+P000,,unmapped,none,,,False,,False
+P225,,unmapped,none,,,False,,False
+P261,,unmapped,none,,,False,,False
+P358,,unmapped,none,,,False,,False

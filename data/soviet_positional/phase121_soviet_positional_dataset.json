@@ -1,0 +1,1338 @@
+{
+ "dataset": "phase121_soviet_positional",
+ "created": "2026-10-08",
+ "descriptive_only": true,
+ "non_claims": "Descriptive dataset only. It scores no prediction, validates no anchor, and makes no claim about PRED-2026-001/002/003. Whether the Soviet positional data can formally bear on PRED-2026-001/002 is an open question for a future spec adjudication (the registered PRED texts name specific corpora).",
+ "tables_not_extracted": [
+  {
+   "id": "KN1968",
+   "report": "Knorozov 1968 Brief Report, 'The Formal Analysis of the Proto-Indian Texts' (Zide & Zvelebil 1976, printed pp.97-112)",
+   "finding": "No numbered or unnumbered frequency/positional tables exist in this report. It is prose plus sign-glyph illustrations (glyph forms are not numeric data and were not extracted). Searched in full."
+  },
+  {
+   "id": "PI73-G1",
+   "report": "Gurov, Proto-Indica 1973, Table 1 (printed pp.56-57), Dravidian terms derived from the 'year' base",
+   "finding": "DEFEATED OCR/extraction: two-page table of heavily diacriticised transliterated word forms; neither the embedded Acrobat OCR, RapidOCR (no Cyrillic/diacritic model in the available venv), nor the scan resolution support reliable cell-level transcription. Structure recorded only; NO values extracted, none guessed."
+  },
+  {
+   "id": "PI73-G2",
+   "report": "Gurov, Proto-Indica 1973, Table 2 (printed p.59) and Table 3 (printed pp.63-64)",
+   "finding": "Schematic diagrams of the five-term year-counting system / past-present-future deixis, not numeric data tables. Recorded, not extracted."
+  },
+  {
+   "id": "PI73-K",
+   "report": "Knorozov, Proto-Indica 1973, 'Classification of Proto-Indian inscriptions' (printed pp.4-17)",
+   "finding": "No sign-frequency or positional count tables; prose classification with glyph illustrations."
+  }
+ ],
+ "printed_anomalies": [
+  "K1965-T3: Egyptian 'Errors' row cells sum to 94, printed total 88; the len-9 cell (6) breaks the genuine+errors=total identity for len 9 (2+6 != 2). Values extracted as printed.",
+  "K1965-T3: Proto-Indian 'Errors' cells sum to 628, printed total 626; 'Total' cells sum to 1997, printed total 1999; errors relative-frequency cells sum to 169, printed total 168. Values extracted as printed.",
+  "K1965-T4: cell values sum to a grand total of 160; the printed Total row (102/28/8/20/5/6/2, grand 171) disagrees with the cells for finals 87 (+7), 124 (+3) and 66 (+1). Every row total DOES match its cells. Both cells and printed totals extracted as printed; nothing reconciled or corrected."
+ ],
+ "tables": [
+  {
+   "table_id": "K1965-T1",
+   "file": "kondratov1965_table1_new_sign_emergence.csv",
+   "n_rows": 56,
+   "meta": {
+    "title": "Frequency of increase of new signs",
+    "rows_meaning": "cumulative text length in signs (25-step increments)",
+    "columns_meaning": "number of NEW sign types first appearing in that increment, Egyptian control text vs Proto-Indian (India) texts",
+    "printed_page": 40,
+    "report": "Kondratov 1965 Preliminary Report (English translation in Zide & Zvelebil 1976)"
+   },
+   "records": [
+    {
+     "number_of_signs": "25",
+     "egypt_new_signs": "13",
+     "india_new_signs": "20",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "50",
+     "egypt_new_signs": "12",
+     "india_new_signs": "11",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "75",
+     "egypt_new_signs": "14",
+     "india_new_signs": "11",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "100",
+     "egypt_new_signs": "9",
+     "india_new_signs": "7",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "125",
+     "egypt_new_signs": "8",
+     "india_new_signs": "5",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "150",
+     "egypt_new_signs": "5",
+     "india_new_signs": "3",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "175",
+     "egypt_new_signs": "9",
+     "india_new_signs": "4",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "200",
+     "egypt_new_signs": "6",
+     "india_new_signs": "4",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "225",
+     "egypt_new_signs": "4",
+     "india_new_signs": "6",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "250",
+     "egypt_new_signs": "4",
+     "india_new_signs": "3",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "275",
+     "egypt_new_signs": "5",
+     "india_new_signs": "5",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "300",
+     "egypt_new_signs": "2",
+     "india_new_signs": "3",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "325",
+     "egypt_new_signs": "4",
+     "india_new_signs": "2",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "350",
+     "egypt_new_signs": "3",
+     "india_new_signs": "6",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "375",
+     "egypt_new_signs": "3",
+     "india_new_signs": "5",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "400",
+     "egypt_new_signs": "6",
+     "india_new_signs": "6",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "425",
+     "egypt_new_signs": "0",
+     "india_new_signs": "7",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "450",
+     "egypt_new_signs": "4",
+     "india_new_signs": "5",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "475",
+     "egypt_new_signs": "2",
+     "india_new_signs": "5",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "500",
+     "egypt_new_signs": "4",
+     "india_new_signs": "2",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "525",
+     "egypt_new_signs": "2",
+     "india_new_signs": "7",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "550",
+     "egypt_new_signs": "1",
+     "india_new_signs": "3",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "575",
+     "egypt_new_signs": "1",
+     "india_new_signs": "2",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "600",
+     "egypt_new_signs": "4",
+     "india_new_signs": "5",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "625",
+     "egypt_new_signs": "3",
+     "india_new_signs": "1",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "650",
+     "egypt_new_signs": "2",
+     "india_new_signs": "3",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "675",
+     "egypt_new_signs": "5",
+     "india_new_signs": "0",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "700",
+     "egypt_new_signs": "3",
+     "india_new_signs": "6",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "725",
+     "egypt_new_signs": "3",
+     "india_new_signs": "1",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "750",
+     "egypt_new_signs": "2",
+     "india_new_signs": "1",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "775",
+     "egypt_new_signs": "2",
+     "india_new_signs": "1",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "800",
+     "egypt_new_signs": "3",
+     "india_new_signs": "1",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "825",
+     "egypt_new_signs": "3",
+     "india_new_signs": "2",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "850",
+     "egypt_new_signs": "4",
+     "india_new_signs": "3",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "875",
+     "egypt_new_signs": "1",
+     "india_new_signs": "1",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "900",
+     "egypt_new_signs": "4",
+     "india_new_signs": "2",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "925",
+     "egypt_new_signs": "2",
+     "india_new_signs": "0",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "950",
+     "egypt_new_signs": "1",
+     "india_new_signs": "2",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "975",
+     "egypt_new_signs": "1",
+     "india_new_signs": "1",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "1000",
+     "egypt_new_signs": "1",
+     "india_new_signs": "2",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "1025",
+     "egypt_new_signs": "2",
+     "india_new_signs": "1",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "1050",
+     "egypt_new_signs": "3",
+     "india_new_signs": "4",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "1075",
+     "egypt_new_signs": "5",
+     "india_new_signs": "1",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "1100",
+     "egypt_new_signs": "1",
+     "india_new_signs": "0",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "1125",
+     "egypt_new_signs": "1",
+     "india_new_signs": "1",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "1150",
+     "egypt_new_signs": "2",
+     "india_new_signs": "4",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "1175",
+     "egypt_new_signs": "1",
+     "india_new_signs": "1",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "1200",
+     "egypt_new_signs": "1",
+     "india_new_signs": "0",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "1225",
+     "egypt_new_signs": "1",
+     "india_new_signs": "2",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "1250",
+     "egypt_new_signs": "3",
+     "india_new_signs": "0",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "1275",
+     "egypt_new_signs": "0",
+     "india_new_signs": "2",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "1300",
+     "egypt_new_signs": "0",
+     "india_new_signs": "0",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "1325",
+     "egypt_new_signs": "0",
+     "india_new_signs": "1",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "1350",
+     "egypt_new_signs": "3",
+     "india_new_signs": "0",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "1375",
+     "egypt_new_signs": "0",
+     "india_new_signs": "0",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    },
+    {
+     "number_of_signs": "1400",
+     "egypt_new_signs": "2",
+     "india_new_signs": "2",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "40",
+     "table_id": "K1965-T1"
+    }
+   ]
+  },
+  {
+   "table_id": "K1965-T2",
+   "file": "kondratov1965_table2_sign_classes.csv",
+   "n_rows": 11,
+   "meta": {
+    "title": "Different classes of signs",
+    "rows_meaning": "sign frequency class, by each sign's share of total absolute frequency (in %)",
+    "columns_meaning": "Egyptian text: n signs, sum of absolute frequencies %, and functional shares %; India: morphology/determinatives/numerals shares %, n different signs (315 total), sum of absolute frequencies %",
+    "printed_page": 41,
+    "report": "Kondratov 1965 Preliminary Report"
+   },
+   "records": [
+    {
+     "frequency_class_pct": "greater_than_10",
+     "egypt_n_signs": "0",
+     "egypt_sum_abs_freq_pct": "0",
+     "egypt_grammatical_function_pct": "0",
+     "egypt_combination_grammatical_features_pct": "0",
+     "egypt_phonetics_pct": "0",
+     "india_morphology_pct": "0",
+     "india_determinatives_pct": "0",
+     "india_numerals_pct": "0",
+     "india_n_signs": "1",
+     "india_sum_abs_freq_pct": "11.0",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "41",
+     "table_id": "K1965-T2"
+    },
+    {
+     "frequency_class_pct": "8-10",
+     "egypt_n_signs": "1",
+     "egypt_sum_abs_freq_pct": "0.0",
+     "egypt_grammatical_function_pct": "4.0",
+     "egypt_combination_grammatical_features_pct": "3.0",
+     "egypt_phonetics_pct": "2.0",
+     "india_morphology_pct": "0",
+     "india_determinatives_pct": "0",
+     "india_numerals_pct": "0",
+     "india_n_signs": "0",
+     "india_sum_abs_freq_pct": "0",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "41",
+     "table_id": "K1965-T2"
+    },
+    {
+     "frequency_class_pct": "6-8",
+     "egypt_n_signs": "1",
+     "egypt_sum_abs_freq_pct": "7.3",
+     "egypt_grammatical_function_pct": "3.6",
+     "egypt_combination_grammatical_features_pct": "1.2",
+     "egypt_phonetics_pct": "2.5",
+     "india_morphology_pct": "0",
+     "india_determinatives_pct": "0",
+     "india_numerals_pct": "0",
+     "india_n_signs": "1",
+     "india_sum_abs_freq_pct": "6.4",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "41",
+     "table_id": "K1965-T2"
+    },
+    {
+     "frequency_class_pct": "4-6",
+     "egypt_n_signs": "4",
+     "egypt_sum_abs_freq_pct": "19.9",
+     "egypt_grammatical_function_pct": "8.9",
+     "egypt_combination_grammatical_features_pct": "4.1",
+     "egypt_phonetics_pct": "4.9",
+     "india_morphology_pct": "0",
+     "india_determinatives_pct": "2.0",
+     "india_numerals_pct": "0",
+     "india_n_signs": "0",
+     "india_sum_abs_freq_pct": "0",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "41",
+     "table_id": "K1965-T2"
+    },
+    {
+     "frequency_class_pct": "2-4",
+     "egypt_n_signs": "6",
+     "egypt_sum_abs_freq_pct": "16.4",
+     "egypt_grammatical_function_pct": "1.7",
+     "egypt_combination_grammatical_features_pct": "2.5",
+     "egypt_phonetics_pct": "6.2",
+     "india_morphology_pct": "0",
+     "india_determinatives_pct": "5.4",
+     "india_numerals_pct": "0.6",
+     "india_n_signs": "4",
+     "india_sum_abs_freq_pct": "11.4",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "41",
+     "table_id": "K1965-T2"
+    },
+    {
+     "frequency_class_pct": "1-2",
+     "egypt_n_signs": "8",
+     "egypt_sum_abs_freq_pct": "10.2",
+     "egypt_grammatical_function_pct": "0",
+     "egypt_combination_grammatical_features_pct": "0.6",
+     "egypt_phonetics_pct": "5.7",
+     "india_morphology_pct": "0",
+     "india_determinatives_pct": "3.9",
+     "india_numerals_pct": "0",
+     "india_n_signs": "27",
+     "india_sum_abs_freq_pct": "36.9",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "41",
+     "table_id": "K1965-T2"
+    },
+    {
+     "frequency_class_pct": "0.5-1",
+     "egypt_n_signs": "13",
+     "egypt_sum_abs_freq_pct": "10.7",
+     "egypt_grammatical_function_pct": "0",
+     "egypt_combination_grammatical_features_pct": "0.3",
+     "egypt_phonetics_pct": "2.2",
+     "india_morphology_pct": "4.3",
+     "india_determinatives_pct": "3.9",
+     "india_numerals_pct": "0",
+     "india_n_signs": "13",
+     "india_sum_abs_freq_pct": "8.1",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "41",
+     "table_id": "K1965-T2"
+    },
+    {
+     "frequency_class_pct": "0.25-0.5",
+     "egypt_n_signs": "17",
+     "egypt_sum_abs_freq_pct": "8.0",
+     "egypt_grammatical_function_pct": "0",
+     "egypt_combination_grammatical_features_pct": "0.2",
+     "egypt_phonetics_pct": "1.7",
+     "india_morphology_pct": "3.7",
+     "india_determinatives_pct": "2.4",
+     "india_numerals_pct": "0",
+     "india_n_signs": "29",
+     "india_sum_abs_freq_pct": "10.8",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "41",
+     "table_id": "K1965-T2"
+    },
+    {
+     "frequency_class_pct": "0.1-0.25",
+     "egypt_n_signs": "40",
+     "egypt_sum_abs_freq_pct": "9.3",
+     "egypt_grammatical_function_pct": "0",
+     "egypt_combination_grammatical_features_pct": "0.1",
+     "egypt_phonetics_pct": "0.5",
+     "india_morphology_pct": "6.6",
+     "india_determinatives_pct": "2.1",
+     "india_numerals_pct": "0",
+     "india_n_signs": "35",
+     "india_sum_abs_freq_pct": "5.1",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "41",
+     "table_id": "K1965-T2"
+    },
+    {
+     "frequency_class_pct": "less_than_0.1",
+     "egypt_n_signs": "105",
+     "egypt_sum_abs_freq_pct": "9.1",
+     "egypt_grammatical_function_pct": "0",
+     "egypt_combination_grammatical_features_pct": "0",
+     "egypt_phonetics_pct": "0.1",
+     "india_morphology_pct": "6.1",
+     "india_determinatives_pct": "2.3",
+     "india_numerals_pct": "0",
+     "india_n_signs": "205",
+     "india_sum_abs_freq_pct": "10.3",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "41",
+     "table_id": "K1965-T2"
+    },
+    {
+     "frequency_class_pct": "TOTAL",
+     "egypt_n_signs": "195",
+     "egypt_sum_abs_freq_pct": "100",
+     "egypt_grammatical_function_pct": "18.2",
+     "egypt_combination_grammatical_features_pct": "12.4",
+     "egypt_phonetics_pct": "25.8",
+     "india_morphology_pct": "21.3",
+     "india_determinatives_pct": "22.0",
+     "india_numerals_pct": "0.6",
+     "india_n_signs": "315",
+     "india_sum_abs_freq_pct": "100",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "41",
+     "table_id": "K1965-T2"
+    }
+   ]
+  },
+  {
+   "table_id": "K1965-T3",
+   "file": "kondratov1965_table3_polygrams.csv",
+   "n_rows": 21,
+   "meta": {
+    "title": "Polygrams of the hieroglyphic texts",
+    "rows_meaning": "per corpus (Egyptian / Proto-Indian): total, genuine and error (accidental) recurring sign combinations, with % of text and relative frequencies, plus Egyptian referent breakdown",
+    "columns_meaning": "polygram length (2-9 signs) and row total, as printed",
+    "printed_page": 43,
+    "report": "Kondratov 1965 Preliminary Report"
+   },
+   "records": [
+    {
+     "corpus": "egyptian",
+     "row": "total",
+     "len2": "212",
+     "len3": "95",
+     "len4": "37",
+     "len5": "12",
+     "len6": "11",
+     "len7": "2",
+     "len8": "2",
+     "len9": "2",
+     "total": "373",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "egyptian",
+     "row": "total_pct_of_text",
+     "len2": "25.1",
+     "len3": "18.0",
+     "len4": "9.2",
+     "len5": "3.9",
+     "len6": "4.1",
+     "len7": "0.9",
+     "len8": "1.0",
+     "len9": "1.1",
+     "total": "63.3",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "egyptian",
+     "row": "total_relative_frequencies",
+     "len2": "76",
+     "len3": "41",
+     "len4": "16",
+     "len5": "5",
+     "len6": "5",
+     "len7": "1",
+     "len8": "1",
+     "len9": "1",
+     "total": "146",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "egyptian",
+     "row": "genuine",
+     "len2": "143",
+     "len3": "78",
+     "len4": "35",
+     "len5": "12",
+     "len6": "11",
+     "len7": "2",
+     "len8": "2",
+     "len9": "2",
+     "total": "285",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "egyptian",
+     "row": "genuine_pct_of_text",
+     "len2": "17.3",
+     "len3": "14.2",
+     "len4": "8.7",
+     "len5": "3.9",
+     "len6": "4.1",
+     "len7": "0.9",
+     "len8": "1.0",
+     "len9": "1.1",
+     "total": "51.2",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "egyptian",
+     "row": "errors",
+     "len2": "69",
+     "len3": "17",
+     "len4": "2",
+     "len5": "0",
+     "len6": "0",
+     "len7": "0",
+     "len8": "0",
+     "len9": "6",
+     "total": "88",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "egyptian",
+     "row": "errors_pct_of_text",
+     "len2": "7.8",
+     "len3": "3.8",
+     "len4": "0.5",
+     "len5": "0",
+     "len6": "0",
+     "len7": "0",
+     "len8": "0",
+     "len9": "0",
+     "total": "12.1",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "egyptian",
+     "row": "referent_phoneme",
+     "len2": "17",
+     "len3": "0",
+     "len4": "0",
+     "len5": "0",
+     "len6": "0",
+     "len7": "0",
+     "len8": "0",
+     "len9": "0",
+     "total": "17",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "egyptian",
+     "row": "referent_phoneme_pct_of_text",
+     "len2": "2.1",
+     "len3": "0",
+     "len4": "0",
+     "len5": "0",
+     "len6": "0",
+     "len7": "0",
+     "len8": "0",
+     "len9": "0",
+     "total": "2.1",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "egyptian",
+     "row": "referent_morpheme",
+     "len2": "81",
+     "len3": "21",
+     "len4": "1",
+     "len5": "0",
+     "len6": "0",
+     "len7": "0",
+     "len8": "0",
+     "len9": "0",
+     "total": "103",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "egyptian",
+     "row": "referent_morpheme_pct_of_text",
+     "len2": "9.9",
+     "len3": "4.0",
+     "len4": "0.3",
+     "len5": "0",
+     "len6": "0",
+     "len7": "0",
+     "len8": "0",
+     "len9": "0",
+     "total": "14.2",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "egyptian",
+     "row": "referent_word",
+     "len2": "45",
+     "len3": "51",
+     "len4": "16",
+     "len5": "12",
+     "len6": "4",
+     "len7": "0",
+     "len8": "2",
+     "len9": "2",
+     "total": "132",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "egyptian",
+     "row": "referent_word_pct_of_text",
+     "len2": "5.3",
+     "len3": "9.1",
+     "len4": "4.0",
+     "len5": "3.9",
+     "len6": "1.5",
+     "len7": "0",
+     "len8": "1.0",
+     "len9": "1.1",
+     "total": "25.9",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "egyptian",
+     "row": "referent_word_combination",
+     "len2": "0",
+     "len3": "6",
+     "len4": "18",
+     "len5": "0",
+     "len6": "7",
+     "len7": "2",
+     "len8": "0",
+     "len9": "0",
+     "total": "33",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "egyptian",
+     "row": "referent_word_combination_pct_of_text",
+     "len2": "0",
+     "len3": "1.1",
+     "len4": "4.4",
+     "len5": "0",
+     "len6": "3.6",
+     "len7": "0.9",
+     "len8": "0",
+     "len9": "0",
+     "total": "10.0",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "proto_indian",
+     "row": "total",
+     "len2": "1246",
+     "len3": "558",
+     "len4": "164",
+     "len5": "19",
+     "len6": "6",
+     "len7": "4",
+     "len8": "0",
+     "len9": "0",
+     "total": "1999",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "proto_indian",
+     "row": "errors",
+     "len2": "408",
+     "len3": "160",
+     "len4": "48",
+     "len5": "8",
+     "len6": "4",
+     "len7": "0",
+     "len8": "0",
+     "len9": "0",
+     "total": "626",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "proto_indian",
+     "row": "errors_relative_frequency",
+     "len2": "101",
+     "len3": "39",
+     "len4": "23",
+     "len5": "4",
+     "len6": "2",
+     "len7": "0",
+     "len8": "0",
+     "len9": "0",
+     "total": "168",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "proto_indian",
+     "row": "genuine",
+     "len2": "840",
+     "len3": "398",
+     "len4": "116",
+     "len5": "11",
+     "len6": "2",
+     "len7": "4",
+     "len8": "0",
+     "len9": "0",
+     "total": "1371",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "proto_indian",
+     "row": "genuine_pct_of_text",
+     "len2": "26.7",
+     "len3": "19.0",
+     "len4": "7.3",
+     "len5": "0.8",
+     "len6": "0.2",
+     "len7": "0.4",
+     "len8": "0",
+     "len9": "0",
+     "total": "54.4",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    },
+    {
+     "corpus": "proto_indian",
+     "row": "genuine_relative_frequencies",
+     "len2": "301",
+     "len3": "128",
+     "len4": "41",
+     "len5": "5",
+     "len6": "1",
+     "len7": "2",
+     "len8": "0",
+     "len9": "0",
+     "total": "478",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "43",
+     "table_id": "K1965-T3"
+    }
+   ]
+  },
+  {
+   "table_id": "K1965-T4",
+   "file": "kondratov1965_table4_stable_initials_finals.csv",
+   "n_rows": 9,
+   "meta": {
+    "title": "Stable initials of the Proto-Indian texts in combination with stable finals",
+    "rows_meaning": "stable initial sign pairs (Marshall catalogue numbers; 232 subsumes 126 as allographs, per the printed note)",
+    "columns_meaning": "stable final signs 87,124,68,96,97, the pair-final headed '87-', and 66; cell = absolute frequency; printed dash = no occurrence (encoded 0)",
+    "printed_page": 47,
+    "report": "Kondratov 1965 Preliminary Report"
+   },
+   "records": [
+    {
+     "initial_sign_1": "232",
+     "initial_sign_2": "501",
+     "final_87": "52",
+     "final_124": "16",
+     "final_68": "6",
+     "final_96": "12",
+     "final_97": "3",
+     "final_87_dash": "4",
+     "final_66": "1",
+     "row_total_printed": "94",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "47",
+     "table_id": "K1965-T4"
+    },
+    {
+     "initial_sign_1": "232",
+     "initial_sign_2": "118",
+     "final_87": "0",
+     "final_124": "1",
+     "final_68": "0",
+     "final_96": "1",
+     "final_97": "0",
+     "final_87_dash": "1",
+     "final_66": "0",
+     "row_total_printed": "3",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "47",
+     "table_id": "K1965-T4"
+    },
+    {
+     "initial_sign_1": "233",
+     "initial_sign_2": "500",
+     "final_87": "3",
+     "final_124": "0",
+     "final_68": "0",
+     "final_96": "0",
+     "final_97": "1",
+     "final_87_dash": "1",
+     "final_66": "0",
+     "row_total_printed": "5",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "47",
+     "table_id": "K1965-T4"
+    },
+    {
+     "initial_sign_1": "233",
+     "initial_sign_2": "501",
+     "final_87": "21",
+     "final_124": "4",
+     "final_68": "1",
+     "final_96": "5",
+     "final_97": "1",
+     "final_87_dash": "0",
+     "final_66": "0",
+     "row_total_printed": "32",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "47",
+     "table_id": "K1965-T4"
+    },
+    {
+     "initial_sign_1": "99",
+     "initial_sign_2": "507",
+     "final_87": "8",
+     "final_124": "2",
+     "final_68": "0",
+     "final_96": "0",
+     "final_97": "0",
+     "final_87_dash": "0",
+     "final_66": "0",
+     "row_total_printed": "10",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "47",
+     "table_id": "K1965-T4"
+    },
+    {
+     "initial_sign_1": "160",
+     "initial_sign_2": "507",
+     "final_87": "10",
+     "final_124": "1",
+     "final_68": "1",
+     "final_96": "1",
+     "final_97": "0",
+     "final_87_dash": "0",
+     "final_66": "0",
+     "row_total_printed": "13",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "47",
+     "table_id": "K1965-T4"
+    },
+    {
+     "initial_sign_1": "160",
+     "initial_sign_2": "118",
+     "final_87": "1",
+     "final_124": "0",
+     "final_68": "0",
+     "final_96": "1",
+     "final_97": "0",
+     "final_87_dash": "0",
+     "final_66": "0",
+     "row_total_printed": "2",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "47",
+     "table_id": "K1965-T4"
+    },
+    {
+     "initial_sign_1": "160",
+     "initial_sign_2": "500",
+     "final_87": "0",
+     "final_124": "1",
+     "final_68": "0",
+     "final_96": "0",
+     "final_97": "0",
+     "final_87_dash": "0",
+     "final_66": "0",
+     "row_total_printed": "1",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "47",
+     "table_id": "K1965-T4"
+    },
+    {
+     "initial_sign_1": "PRINTED_TOTAL",
+     "initial_sign_2": "",
+     "final_87": "102",
+     "final_124": "28",
+     "final_68": "8",
+     "final_96": "20",
+     "final_97": "5",
+     "final_87_dash": "6",
+     "final_66": "2",
+     "row_total_printed": "171",
+     "source": "Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",
+     "printed_page": "47",
+     "table_id": "K1965-T4"
+    }
+   ]
+  },
+  {
+   "table_id": "PI73-V2",
+   "file": "protoindica1973_volchok_divine_units.csv",
+   "n_rows": 3,
+   "meta": {
+    "title": "Divine-chronology unit equivalences (unnumbered, running-text table)",
+    "rows_meaning": "three unit equivalences",
+    "columns_meaning": "single equivalence expression per row",
+    "printed_page": 48,
+    "report": "Volchok, Proto-Indica 1973"
+   },
+   "records": [
+    {
+     "unit_expression_ru": "1 солнечный год = 1 год человека = 1 день и ночь богов",
+     "unit_expression_en": "1 solar year = 1 human year = 1 day-and-night of the gods",
+     "source": "Proto-Indica 1973 (Nauka, Moscow; imprint 1975), B. Ya. Volchok, calendar article",
+     "printed_page": "48",
+     "table_id": "PI73-V2"
+    },
+    {
+     "unit_expression_ru": "30 дней богов = 1 месяц богов = 30 лет человека",
+     "unit_expression_en": "30 days of the gods = 1 month of the gods = 30 human years",
+     "source": "Proto-Indica 1973 (Nauka, Moscow; imprint 1975), B. Ya. Volchok, calendar article",
+     "printed_page": "48",
+     "table_id": "PI73-V2"
+    },
+    {
+     "unit_expression_ru": "12 месяцев богов = 1 год богов = 360 лет человека",
+     "unit_expression_en": "12 months of the gods = 1 year of the gods = 360 human years",
+     "source": "Proto-Indica 1973 (Nauka, Moscow; imprint 1975), B. Ya. Volchok, calendar article",
+     "printed_page": "48",
+     "table_id": "PI73-V2"
+    }
+   ]
+  },
+  {
+   "table_id": "PI73-V3",
+   "file": "protoindica1973_volchok_yuga_durations.csv",
+   "n_rows": 5,
+   "meta": {
+    "title": "Yuga durations (unnumbered table)",
+    "rows_meaning": "the four yugas plus Mahayuga (their sum)",
+    "columns_meaning": "duration in divine years; duration in human years",
+    "printed_page": 49,
+    "report": "Volchok, Proto-Indica 1973"
+   },
+   "records": [
+    {
+     "yuga_ru": "Критаюга",
+     "yuga_en": "Kritayuga",
+     "duration_divine_years": "4800",
+     "duration_human_years": "1728000",
+     "source": "Proto-Indica 1973 (Nauka, Moscow; imprint 1975), B. Ya. Volchok, calendar article",
+     "printed_page": "49",
+     "table_id": "PI73-V3"
+    },
+    {
+     "yuga_ru": "Третаюга",
+     "yuga_en": "Tretayuga",
+     "duration_divine_years": "3600",
+     "duration_human_years": "1296000",
+     "source": "Proto-Indica 1973 (Nauka, Moscow; imprint 1975), B. Ya. Volchok, calendar article",
+     "printed_page": "49",
+     "table_id": "PI73-V3"
+    },
+    {
+     "yuga_ru": "Двапараюга",
+     "yuga_en": "Dvaparayuga",
+     "duration_divine_years": "2400",
+     "duration_human_years": "864000",
+     "source": "Proto-Indica 1973 (Nauka, Moscow; imprint 1975), B. Ya. Volchok, calendar article",
+     "printed_page": "49",
+     "table_id": "PI73-V3"
+    },
+    {
+     "yuga_ru": "Калиюга",
+     "yuga_en": "Kaliyuga",
+     "duration_divine_years": "1200",
+     "duration_human_years": "432000",
+     "source": "Proto-Indica 1973 (Nauka, Moscow; imprint 1975), B. Ya. Volchok, calendar article",
+     "printed_page": "49",
+     "table_id": "PI73-V3"
+    },
+    {
+     "yuga_ru": "Махаюга",
+     "yuga_en": "Mahayuga (sum of the four)",
+     "duration_divine_years": "12000",
+     "duration_human_years": "4320000",
+     "source": "Proto-Indica 1973 (Nauka, Moscow; imprint 1975), B. Ya. Volchok, calendar article",
+     "printed_page": "49",
+     "table_id": "PI73-V3"
+    }
+   ]
+  },
+  {
+   "table_id": "PI73-V1",
+   "file": "protoindica1973_volchok_yuga_festivals.csv",
+   "n_rows": 4,
+   "meta": {
+    "title": "Yuga beginning/end festivals (unnumbered table, after Swamikkannu Pillai 1922, 59)",
+    "rows_meaning": "the four yugas, in printed order (Krita, Dvapara, Treta, Kali)",
+    "columns_meaning": "festival of the beginning of the yuga; festival of the end of the yuga",
+    "printed_page": 42,
+    "report": "Volchok, Proto-Indica 1973 (Russian; headers hand-translated by the extractor)"
+   },
+   "records": [
+    {
+     "yuga_ru": "Критаюга",
+     "yuga_en": "Kritayuga",
+     "festival_start_of_yuga_ru": "Картика, 9 д. св. пол.",
+     "festival_start_of_yuga_en": "Kartika, day 9, bright half",
+     "festival_end_of_yuga_ru": "солнце в Льве",
+     "festival_end_of_yuga_en": "Sun in Leo",
+     "source": "Proto-Indica 1973 (Nauka, Moscow; imprint 1975), B. Ya. Volchok, calendar article",
+     "printed_page": "42",
+     "table_id": "PI73-V1"
+    },
+    {
+     "yuga_ru": "Двапараюга",
+     "yuga_en": "Dvaparayuga",
+     "festival_start_of_yuga_ru": "Магха, новолуние",
+     "festival_start_of_yuga_en": "Magha, new moon",
+     "festival_end_of_yuga_ru": "солнце в Тельце",
+     "festival_end_of_yuga_en": "Sun in Taurus",
+     "source": "Proto-Indica 1973 (Nauka, Moscow; imprint 1975), B. Ya. Volchok, calendar article",
+     "printed_page": "42",
+     "table_id": "PI73-V1"
+    },
+    {
+     "yuga_ru": "Третаюга",
+     "yuga_en": "Tretayuga",
+     "festival_start_of_yuga_ru": "Вайшакха, 3 д. св. пол.",
+     "festival_start_of_yuga_en": "Vaishakha, day 3, bright half",
+     "festival_end_of_yuga_ru": "солнце в Скорпионе",
+     "festival_end_of_yuga_en": "Sun in Scorpio",
+     "source": "Proto-Indica 1973 (Nauka, Moscow; imprint 1975), B. Ya. Volchok, calendar article",
+     "printed_page": "42",
+     "table_id": "PI73-V1"
+    },
+    {
+     "yuga_ru": "Калиюга",
+     "yuga_en": "Kaliyuga",
+     "festival_start_of_yuga_ru": "Бхадрапада, 13 д. темн. пол.",
+     "festival_start_of_yuga_en": "Bhadrapada, day 13, dark half",
+     "festival_end_of_yuga_ru": "солнце в Водолее",
+     "festival_end_of_yuga_en": "Sun in Aquarius",
+     "source": "Proto-Indica 1973 (Nauka, Moscow; imprint 1975), B. Ya. Volchok, calendar article",
+     "printed_page": "42",
+     "table_id": "PI73-V1"
+    }
+   ]
+  }
+ ]
+}

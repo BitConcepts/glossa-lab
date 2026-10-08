@@ -1,0 +1,556 @@
+{
+  "phase": 120,
+  "title": "Bhaskar (2024) descriptive triage of the 44 flagged anchors",
+  "date": "2026-10-08",
+  "source": "Bhaskar (2024), Markers and agencies of anisotropy in the Indus sign system, Indian J. Hist. Sci., doi:10.1007/s43539-023-00102-3, + ESM1-ESM13",
+  "scope_note": "The ESMs are NOT a per-sign cross-compilation disagreement table; they are anisotropy datasets. This triage reports only disagreements Bhaskar explicitly documents (case register) and never infers concordance from silent use; hence ALL-AGREE is empty by construction of the source.",
+  "anchors_file_sha256_read_only": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+  "counts": {
+    "NOT-COVERED": 43,
+    "CONTESTED": 1
+  },
+  "extraction_audit": {
+    "esm2_found": true,
+    "esm2_text_extracted": true,
+    "esm2_labelled_e1_blocks": 2,
+    "note": "Labelled-pattern extraction recovers the two ESM2 'E1 (1):' blocks; the third E1 (ESM7 case 7) is stated in prose and was recovered by the keyword sweep + hand reading, not by the label pattern."
+  },
+  "rows": [
+    {
+      "sign": "M011",
+      "sign_number": 11,
+      "reading": "kaḷiṟu",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M021",
+      "sign_number": 21,
+      "reading": "kō",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M024",
+      "sign_number": 24,
+      "reading": "nē",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M028",
+      "sign_number": 28,
+      "reading": "cōḻ",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "mentioned_behaviourally",
+      "detail": "Bhaskar's ESMs mention this sign number only as behavioural attestation (list membership / sequence participation). No passage adjudicates the sign's identity or form class across M77 / ICIT / CISI, so no concordance or disagreement can be reported.",
+      "mention_sources": [
+        "ESM1_list2_dorsal",
+        "ESM3_list1_base_of_99"
+      ],
+      "case_ids": []
+    },
+    {
+      "sign": "M031",
+      "sign_number": 31,
+      "reading": "kai",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M033",
+      "sign_number": 33,
+      "reading": "puli",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M035",
+      "sign_number": 35,
+      "reading": "po",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M036",
+      "sign_number": 36,
+      "reading": "tiru",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M040",
+      "sign_number": 40,
+      "reading": "ri",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "mentioned_behaviourally",
+      "detail": "Bhaskar's ESMs mention this sign number only as behavioural attestation (list membership / sequence participation). No passage adjudicates the sign's identity or form class across M77 / ICIT / CISI, so no concordance or disagreement can be reported.",
+      "mention_sources": [
+        "ESM8_list2_base_of_97"
+      ],
+      "case_ids": []
+    },
+    {
+      "sign": "M058",
+      "sign_number": 58,
+      "reading": "ke",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M071",
+      "sign_number": 71,
+      "reading": "nal",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M072",
+      "sign_number": 72,
+      "reading": "mā",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "mentioned_behaviourally",
+      "detail": "Bhaskar's ESMs mention this sign number only as behavioural attestation (list membership / sequence participation). No passage adjudicates the sign's identity or form class across M77 / ICIT / CISI, so no concordance or disagreement can be reported.",
+      "mention_sources": [
+        "ESM8_list2_base_of_97"
+      ],
+      "case_ids": []
+    },
+    {
+      "sign": "M102",
+      "sign_number": 102,
+      "reading": "ni",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "mentioned_behaviourally",
+      "detail": "Bhaskar's ESMs mention this sign number only as behavioural attestation (list membership / sequence participation). No passage adjudicates the sign's identity or form class across M77 / ICIT / CISI, so no concordance or disagreement can be reported.",
+      "mention_sources": [
+        "ESM1_list2_dorsal"
+      ],
+      "case_ids": []
+    },
+    {
+      "sign": "M103",
+      "sign_number": 103,
+      "reading": "kol",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M127",
+      "sign_number": 127,
+      "reading": "vē",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "mentioned_behaviourally",
+      "detail": "Bhaskar's ESMs mention this sign number only as behavioural attestation (list membership / sequence participation). No passage adjudicates the sign's identity or form class across M77 / ICIT / CISI, so no concordance or disagreement can be reported.",
+      "mention_sources": [
+        "ESM3_list2_flanking_267",
+        "ESM5_comparison_signs",
+        "ESM8_doubling_signs",
+        "ESM8_list2_base_of_97"
+      ],
+      "case_ids": []
+    },
+    {
+      "sign": "M149",
+      "sign_number": 149,
+      "reading": "or",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "mentioned_behaviourally",
+      "detail": "Bhaskar's ESMs mention this sign number only as behavioural attestation (list membership / sequence participation). No passage adjudicates the sign's identity or form class across M77 / ICIT / CISI, so no concordance or disagreement can be reported.",
+      "mention_sources": [
+        "ESM3_list2_flanking_267"
+      ],
+      "case_ids": []
+    },
+    {
+      "sign": "M153",
+      "sign_number": 153,
+      "reading": "pu",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M155",
+      "sign_number": 155,
+      "reading": "ka",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "mentioned_behaviourally",
+      "detail": "Bhaskar's ESMs mention this sign number only as behavioural attestation (list membership / sequence participation). No passage adjudicates the sign's identity or form class across M77 / ICIT / CISI, so no concordance or disagreement can be reported.",
+      "mention_sources": [
+        "ESM3_list1_base_of_99",
+        "ESM3_list2_flanking_267",
+        "ESM8_list2_base_of_97"
+      ],
+      "case_ids": []
+    },
+    {
+      "sign": "M168",
+      "sign_number": 168,
+      "reading": "inci",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M169",
+      "sign_number": 169,
+      "reading": "rā",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "mentioned_behaviourally",
+      "detail": "Bhaskar's ESMs mention this sign number only as behavioural attestation (list membership / sequence participation). No passage adjudicates the sign's identity or form class across M77 / ICIT / CISI, so no concordance or disagreement can be reported.",
+      "mention_sources": [
+        "ESM3_list1_base_of_99",
+        "ESM8_list1_base_of_123",
+        "ESM8_list2_base_of_97"
+      ],
+      "case_ids": []
+    },
+    {
+      "sign": "M177",
+      "sign_number": 177,
+      "reading": "na",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "mentioned_behaviourally",
+      "detail": "Bhaskar's ESMs mention this sign number only as behavioural attestation (list membership / sequence participation). No passage adjudicates the sign's identity or form class across M77 / ICIT / CISI, so no concordance or disagreement can be reported.",
+      "mention_sources": [
+        "ESM3_list1_base_of_99"
+      ],
+      "case_ids": []
+    },
+    {
+      "sign": "M178",
+      "sign_number": 178,
+      "reading": "i",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M183",
+      "sign_number": 183,
+      "reading": "vēḷ",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M223",
+      "sign_number": 223,
+      "reading": "muḷ",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "mentioned_behaviourally",
+      "detail": "Bhaskar's ESMs mention this sign number only as behavioural attestation (list membership / sequence participation). No passage adjudicates the sign's identity or form class across M77 / ICIT / CISI, so no concordance or disagreement can be reported.",
+      "mention_sources": [
+        "ESM3_list1_base_of_99"
+      ],
+      "case_ids": []
+    },
+    {
+      "sign": "M235",
+      "sign_number": 235,
+      "reading": "vē",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M237",
+      "sign_number": 237,
+      "reading": "ce",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "mentioned_behaviourally",
+      "detail": "Bhaskar's ESMs mention this sign number only as behavioural attestation (list membership / sequence participation). No passage adjudicates the sign's identity or form class across M77 / ICIT / CISI, so no concordance or disagreement can be reported.",
+      "mention_sources": [
+        "ESM8_doubling_signs"
+      ],
+      "case_ids": []
+    },
+    {
+      "sign": "M239",
+      "sign_number": 239,
+      "reading": "il",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M254",
+      "sign_number": 254,
+      "reading": "tēṉ",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "mentioned_behaviourally",
+      "detail": "Bhaskar's ESMs mention this sign number only as behavioural attestation (list membership / sequence participation). No passage adjudicates the sign's identity or form class across M77 / ICIT / CISI, so no concordance or disagreement can be reported.",
+      "mention_sources": [
+        "ESM3_list1_base_of_99"
+      ],
+      "case_ids": []
+    },
+    {
+      "sign": "M262",
+      "sign_number": 262,
+      "reading": "i",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M270",
+      "sign_number": 270,
+      "reading": "muḷ",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "mentioned_behaviourally",
+      "detail": "Bhaskar's ESMs mention this sign number only as behavioural attestation (list membership / sequence participation). No passage adjudicates the sign's identity or form class across M77 / ICIT / CISI, so no concordance or disagreement can be reported.",
+      "mention_sources": [
+        "ESM3_list1_base_of_99"
+      ],
+      "case_ids": []
+    },
+    {
+      "sign": "M272",
+      "sign_number": 272,
+      "reading": "ma",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M281",
+      "sign_number": 281,
+      "reading": "piLLai",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M293",
+      "sign_number": 293,
+      "reading": "ta",
+      "confidence": "MEDIUM",
+      "classification": "NOT-COVERED",
+      "subflag": "mentioned_behaviourally",
+      "detail": "Bhaskar's ESMs mention this sign number only as behavioural attestation (list membership / sequence participation). No passage adjudicates the sign's identity or form class across M77 / ICIT / CISI, so no concordance or disagreement can be reported.",
+      "mention_sources": [
+        "ESM3_list1_base_of_99",
+        "ESM3_list2_flanking_267",
+        "ESM8_doubling_signs",
+        "ESM8_list1_base_of_123",
+        "ESM8_list2_base_of_97"
+      ],
+      "case_ids": []
+    },
+    {
+      "sign": "M304",
+      "sign_number": 304,
+      "reading": "vēṟ",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M332",
+      "sign_number": 332,
+      "reading": "intu",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M345",
+      "sign_number": 345,
+      "reading": "taṭ",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M350",
+      "sign_number": 350,
+      "reading": "vē",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "mentioned_behaviourally",
+      "detail": "Bhaskar's ESMs mention this sign number only as behavioural attestation (list membership / sequence participation). No passage adjudicates the sign's identity or form class across M77 / ICIT / CISI, so no concordance or disagreement can be reported.",
+      "mention_sources": [
+        "ESM3_list1_base_of_99"
+      ],
+      "case_ids": []
+    },
+    {
+      "sign": "M355",
+      "sign_number": 355,
+      "reading": "lu",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M365",
+      "sign_number": 365,
+      "reading": "vāṉ",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M383",
+      "sign_number": 383,
+      "reading": "kol",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M401",
+      "sign_number": 401,
+      "reading": "vē",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    },
+    {
+      "sign": "M402",
+      "sign_number": 402,
+      "reading": "vēḷ",
+      "confidence": "HIGH",
+      "classification": "CONTESTED",
+      "subflag": "coverage_gap",
+      "detail": "[BH-D10] The frontal flag/banner sign on K-39 waves left. No left-waving variant of 402 exists in M77, in ICIT, or in the font package; the only other left-waving instance (object 7065, L-115) is doubted by Bhaskar to be 402 at all, or even a variant of it. The disagreement is between the object's form and every compilation's inventory of 402 -- not between the compilations themselves.",
+      "mention_sources": [
+        "ESM1_list1_frontal",
+        "ESM3_list1_base_of_99",
+        "ESM3_list2_flanking_267",
+        "ESM8_list1_base_of_123",
+        "ESM8_list2_base_of_97"
+      ],
+      "case_ids": [
+        "BH-D10"
+      ]
+    },
+    {
+      "sign": "M412",
+      "sign_number": 412,
+      "reading": "cūḷ",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "mentioned_behaviourally",
+      "detail": "Bhaskar's ESMs mention this sign number only as behavioural attestation (list membership / sequence participation). No passage adjudicates the sign's identity or form class across M77 / ICIT / CISI, so no concordance or disagreement can be reported.",
+      "mention_sources": [
+        "ESM8_list1_base_of_123"
+      ],
+      "case_ids": []
+    },
+    {
+      "sign": "M416",
+      "sign_number": 416,
+      "reading": "na",
+      "confidence": "HIGH",
+      "classification": "NOT-COVERED",
+      "subflag": "not_mentioned",
+      "detail": "This sign number does not occur in any list-structured ESM context parsed for this phase, and no passage in the article or ESMs adjudicates its identity or form class across M77 / ICIT / CISI.",
+      "mention_sources": [],
+      "case_ids": []
+    }
+  ]
+}

@@ -9,7 +9,7 @@
 - [x] T5 Verdict recorded (spec §5): **NO** — the dataset does not qualify for PRED-2026-001/002; predictions remain PENDING.
 - [x] T6 Append-only adjudication note added to `docs/PREDICTION_REGISTER.md` (registered entries unmodified; Tested/Outcome remain PENDING).
 - [x] T7 Full backend suite + foundation check (H21): 867 passed / 12 skipped / 0 failed (baseline 867/12); foundation check 40 passed / 0 failed / 8 warnings; anchors sha256 asserted unchanged; branding sweep over changed files clean.
-- [ ] T8 Ledger entries (both files; AI disclosure) and one PR; merge only when complete + CI green (standing auto-merge rule); post-merge verification on main (suite counts, anchors hash). (Ledger entries written with this task list; PR/merge/post-merge verification complete the item.)
+- [x] T8 Ledger entries (both files; AI disclosure) and PR #85, merged when complete + CI green (all 7 checks passed) as merge commit `db4a7f64`; post-merge verification on main: suite 867 passed / 12 skipped / 0 failed, foundation check 40 / 0 / 8, anchors sha256 unchanged.
 
 ## Conditional scoring branch (executes ONLY on a YES verdict)
 

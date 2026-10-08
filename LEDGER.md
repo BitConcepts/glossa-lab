@@ -1725,3 +1725,59 @@ before commit.
 **AI disclosure:** research and execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## [2026-10-08] Entry — Phase-124: CISI Image Layer (enabling asset) — BUILT
+
+Built the image layer over the CISI Vol. 1 (= MASI 86) and Vol. 2
+research scans (in-copyright research copies; 431 + 486 pages,
+image-only PDFs). The bundled djvu.txt OCR was assessed and found
+inadequate for page-anchored work (single continuous stream, zero
+page breaks, heavy garbling; corroborates only 344/1,475 (Vol. 1)
+and 794/2,019 (Vol. 2) of the distinct IDs parsed by fresh OCR), so
+all plate rows rest on fresh per-page RapidOCR (140 dpi renders,
+checkpointed) with the djvu ID sequence used only as an existence
+corroboration in each row's extraction basis.
+
+Catalogue table (LOCAL STORE ONLY): 7,705 rows (Vol. 1: 3,320;
+Vol. 2: 4,385), one per photographed side, keyed by CISI object ID
+with 22 fields (caption raw + OCR score, PDF page, printed page,
+site, object type, motif chapter, scale %, volume-level collection
+scope, photo box, extraction basis, confidence, notes). Per-object
+museum/material/dimensions are NOT printed on CISI plates and are
+recorded as "not printed per object in CISI plates" with the fields
+empty — not filled from outside sources. 3,156 non-plate
+caption-like lines (sign-index entries) were dropped by the
+plate-page/photo rule and counted. Low-confidence rows: 981, kept
+and flagged, never silently corrected. Hand verification on four
+pages read visually before extraction (Vol. 1 printed 10/30/55,
+Vol. 2 printed 31; 36 rows): CISI ID 36/36 (2 via flagged I/l→1
+normalisation), side 35/36 (M-69 a lost its side glyph), header
+fields 16/16, photo association 36/36 with one degenerate merged
+box (M-667 a, Vol. 2). Field accuracy on the sample: 87/88.
+
+Sign-crop pipeline (committed code): caption-anchored photo
+location (page-adaptive dark threshold; grid texture segmentation
+as fallback) + inscription-band contrast-projection segmentation.
+Worked sample on four plate pages (32 photos): 82 crops written,
+1 photo skipped (degenerate box); visual classification of every
+crop: 38 good / 29 partial / 15 bad — the honest single-pass yield
+of the heuristic (46 % good). The 38-crop verified sample is
+described (IDs, pages, coordinates) in
+reports/phase124_cisi_local_store_manifest.json.
+
+STORAGE GOVERNANCE: scans are in-copyright research copies; the
+catalogue CSVs, crops, OCR checkpoints and renders live ONLY in
+the gitignored local store
+corpora/downloads/cisi_image_layer/ (verified with
+git check-ignore -v from the main checkout: .gitignore:176
+corpora/ rule; git status checked before commit — no image or
+derived table staged). The PR contains only code, drivers, tests,
+the memo, the describing manifest and these ledger entries.
+NON-CLAIMS: enabling asset only; no sign identifications asserted;
+no comparison study run; no anchor/tier/corpus statistic changed.
+Verification: 24 new unit tests; full backend suite 816 passed / 12 skipped / 0 failed; foundation check 40 passed / 0 failed / 8 warnings; ruff
+clean.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

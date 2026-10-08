@@ -2576,3 +2576,20 @@ foundation 40/0/8.
 **AI disclosure:** execution recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## 2026-10-08 — Phase-126 (ledger sequence): Wells-split candidates (cross-reference)
+
+Cross-reference: repo LEDGER.md entry of the same date and
+`reports/phase126_wells_split_candidates.md`. Descriptive
+design input only: the Phase-123 Wells witness treatment of
+the 113 CANDIDATE anchors, cross-tabulated against the
+anchor evidence features recorded in
+INDUS_FINAL_ANCHORS.json. Headline: split 27 / merge 4 /
+unit-same 62 / not-covered 1 (M312) / indeterminate 19;
+split components recorded per sign (largest M120 → 5);
+Phase-252 cohort (4 signs) all unit-same. No adjudication
+phrased, no promotion or demotion proposed, no anchor
+changed (sha256 eccea6d5… unchanged, asserted before/after);
+the 44 pending_non_sa_validation anchors excluded. Suite
+883/12/0; foundation 40/0/8. AI-assisted record (Muse
+Spark, Muse), owner-directed.

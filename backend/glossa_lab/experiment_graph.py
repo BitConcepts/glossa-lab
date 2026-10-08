@@ -2708,6 +2708,17 @@ try:
 except Exception as _p125_exc:  # noqa: BLE001
     logger.warning("Phase-125 (spec 019) nodes not registered: %s", _p125_exc)
 
+# ── Phase-126 nodes (ledger sequence: Wells-split candidates) ──
+try:
+    from glossa_lab.experiment_graph_phase126_wells import (
+        _phase126_wells_node_defs as _p126w_defs,  # noqa: PLC0415
+    )
+    for _d in _p126w_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-126 (ledger) nodes", len(list(_p126w_defs())))
+except Exception as _p126w_exc:  # noqa: BLE001
+    logger.warning("Phase-126 (ledger) nodes not registered: %s", _p126w_exc)
+
 # ── Phase-110-115 nodes (targeted SA, allographs, grammar infer, M→H upgrade, seal translations, significance) ──
 try:
     from glossa_lab.experiment_graph_phase110_115 import (

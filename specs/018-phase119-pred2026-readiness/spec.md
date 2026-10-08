@@ -570,3 +570,32 @@ of class `rmrl_concordance`, `image_transcription`, or
 become evaluable on it (003 subject to its §6.1 site input);
 `icit_full`, if ever obtained, evaluates all three under
 caveat C1.
+
+### A.6 Correction (2026-10-07, post-freeze, during build)
+
+The A.1 stage counts and the post-dedup classifiability
+figure in A.2 were measured by the design-stage prototype
+on the layer's raw **M-space** sequences. Section 5 as
+frozen operates on **adapter-emitted P-space** sequences,
+and the harness — correctly implementing §5 — produces
+slightly different counts, because the §3 map merges a few
+distinct M sequences into identical P sequences. The
+spec-conformant values, which the harness dry run asserts,
+are:
+
+| Stage | Kept | Removed (stage) | Removed (cumulative) |
+|---|---|---|---|
+| input | 4,531 | — | — |
+| A exact | 3,063 | 1,468 (32.40%) | 32.40% |
+| B sentinel-normalized exact | 2,693 | 370 | 40.79% |
+| C near-dup (dist ≤ 1, stripped len ≥ 4) | 2,446 | 247 | 46.02% |
+
+Post-dedup classifiability (A.2 sense): 1,045 / 2,446
+(42.72%). The §5 parenthetical citing "45.51%" should read
+46.02% (P-space cumulative). All other Appendix A figures
+(per-sign occurrence counts, attestation, pre-dedup
+classifiability, unmapped 47 tokens = 9 unmapped + 38
+ambiguous) were reproduced by the harness exactly. The
+frozen protocol text (§§3–9) is unchanged; only the
+appendix's prototype measurements are corrected, here,
+additively.

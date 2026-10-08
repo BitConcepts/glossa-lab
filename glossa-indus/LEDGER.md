@@ -2408,3 +2408,14 @@ constitution §VI.
 ## 2026-10-07 — Validation-battery line CLOSED (owner decision)
 
 Cross-reference: repo LEDGER.md entry of the same date. Specs 011/014/016/017 (Phases 113/115/117/118) all closed as BATTERY REJECTED at calibration; the battery line is closed by owner decision. The 44 anchors remain `pending_non_sa_validation`; no anchor received `validated_within_compilation` or `validated_non_sa` from any battery. Next evidence class: independent corpora only (PRED-2026, spec 018 readiness). AI-assisted record (Muse Spark, Muse), owner-directed.
+
+## 2026-10-08 — Phase-123: Wells segmentation witness (cross-reference)
+
+Cross-reference: repo LEDGER.md entry of the same date and
+`reports/phase123_wells_segmentation_witness.md`. Wells (MA 1998 /
+PhD 2006) segmentation recorded as a witness for all 157 anchor signs:
+SAME 87 / SPLIT 40 / MERGE 5 / NOT-COVERED 2 / INDETERMINATE 23;
+20-row hand verification against the PhD plates: 17 glyph-consistent,
+2 partial, 1 discrepancy (M293). Witness only — no anchor changed, no
+segmentation adopted. AI-assisted record (Muse Spark, Muse),
+owner-directed.

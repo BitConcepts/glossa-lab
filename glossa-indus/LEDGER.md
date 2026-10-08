@@ -2495,3 +2495,30 @@ SAME 87 / SPLIT 40 / MERGE 5 / NOT-COVERED 2 / INDETERMINATE 23;
 2 partial, 1 discrepancy (M293). Witness only — no anchor changed, no
 segmentation adopted. AI-assisted record (Muse Spark, Muse),
 owner-directed.
+
+## Phase-124 — CISI Image Layer (enabling asset): BUILT
+
+Built 2026-10-08 under the new-material program (Phase E). CISI
+Vols. 1-2 research scans (431 + 486 image-only pages) were OCR'd
+fresh per page (RapidOCR, checkpointed) after the bundled djvu.txt
+layer proved inadequate for page-anchored extraction (no page
+breaks; corroborates only 344/1,475 and 794/2,019 of parsed
+distinct IDs per volume). Derived catalogue table — LOCAL
+GITIGNORED STORE ONLY (corpora/downloads/cisi_image_layer/):
+7,705 photographed-side rows (3,320 + 4,385) keyed by CISI object
+ID, 22 fields; per-object museum/material/dimensions recorded as
+not printed in CISI (fields empty, basis stated), never imported.
+Hand verification (36 rows, 4 pages read visually first): ID
+36/36, side 35/36, header fields 16/16, association 36/36 (one
+degenerate merged box). Sign-crop pipeline committed
+(caption-anchored photo location + band contrast segmentation);
+worked sample 82 crops from 32 photos on 4 plate pages, visually
+classified 38 good / 29 partial / 15 bad, 1 photo skipped. No
+sign identifications asserted; no comparison study run; anchors
+and tiers unchanged. Reports:
+reports/phase124_cisi_image_layer.md +
+reports/phase124_cisi_local_store_manifest.json. Suite 816 passed / 12 skipped / 0 failed (24 new tests included); foundation check 40 / 0 / 8; ruff clean.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

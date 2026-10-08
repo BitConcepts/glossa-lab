@@ -2550,3 +2550,29 @@ foundation 40/0/8.
 **AI disclosure:** execution recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## Spec 020 — Soviet Dataset Adjudication for PRED-2026-001/002: NO (2026-10-08)
+
+Cross-reference: repo LEDGER.md entry of the same date and
+`specs/020-soviet-pred-adjudication/spec.md`. Adjudication
+paper, criteria stated before application and derived from
+the register §2 + spec 018 §§3–7: C1 class/matrix FAIL
+(fits none of the six frozen §4 source classes), C2
+identity FAIL (not the full ICIT database; no qualifying
+substitute), C3 rate-computability FAIL (aggregate tables
+only; K1965-T4 is a restricted Marshall-numbered pair ×
+final co-occurrence matrix with no occurrence denominators;
+0/14 and 0/12 registered rates computable), C4 dedup FAIL
+(no inscription token sequences; §5 inapplicable), C5
+sign-space FAIL (no frozen Marshall→P map; no §7 adapter
+for aggregate tables), C6 independence PASS (content was
+not a CGSA derivation input). Verdict **NO**: no scoring
+ran (no evaluation mode, no dry run); PRED-2026-001/002
+remain PENDING, with an append-only adjudication note in
+`docs/PREDICTION_REGISTER.md` §6. No anchor/PRED/code
+change; anchors sha256 eccea6d5… unchanged. Suite 867/12/0;
+foundation 40/0/8.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

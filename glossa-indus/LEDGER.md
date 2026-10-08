@@ -2383,3 +2383,7 @@ spec 017 §6's design intent. Reports:
 **AI disclosure:** execution recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## 2026-10-07 — Validation-battery line CLOSED (owner decision)
+
+Cross-reference: repo LEDGER.md entry of the same date. Specs 011/014/016/017 (Phases 113/115/117/118) all closed as BATTERY REJECTED at calibration; the battery line is closed by owner decision. The 44 anchors remain `pending_non_sa_validation`; no anchor received `validated_within_compilation` or `validated_non_sa` from any battery. Next evidence class: independent corpora only (PRED-2026, spec 018 readiness). AI-assisted record (Muse Spark, Muse), owner-directed.

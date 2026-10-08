@@ -1522,3 +1522,64 @@ Pierson, per constitution §VI.
 ## 2026-10-07 — Validation-battery line CLOSED (owner decision)
 
 Owner decision (Tristen Pierson, 2026-10-07): the anchor-validation battery line is closed. Four frozen batteries were rejected at calibration — Phase-113 (spec 011, cross-corpus v1: T1 starved on the partial ICIT layer, STRICT94 3/94), Phase-115 (spec 014, cross-corpus v2: with the expanded layer, Holdat/ICIT positional profiles genuinely disagree, STRICT94 1/94), Phase-117 (spec 016, within-compilation v1: mandatory W3 leave-one-out reference self-defeating, STRICT94 2/94), Phase-118 (spec 017, within-compilation v2 W1-primary: positive gate 14/67 judgeable; negative gate failed its discrimination clause — the coarse-fabric limit of spec 017 §10, measured under both constructions). No further battery redesigns are authorized; another redesign would be tuning toward a pass. The 44 flagged anchors remain `pending_non_sa_validation`. Their validation awaits genuinely independent data (RMRL / Dixit-Mitra / Mahadevan Chair concordance; PRED-2026 readiness proceeds under spec 018). AI-assisted record (Muse Spark, Muse), owner-directed.
+
+## [2026-10-08] Entry — Phase-120: Bhaskar (2024) descriptive triage of the 44 pending anchors
+
+First phase of the new-material program (Phase A). Commissioned as a
+triage of the 44 anchors flagged `pending_non_sa_validation` against
+the supplementary material of Bhaskar (2024), "Markers and agencies
+of anisotropy in the Indus sign system" (Indian J. Hist. Sci.,
+doi:10.1007/s43539-023-00102-3; ESM1-ESM13, acquired in the
+2026-10-08 Indus data deep-sweep).
+
+SCOPE FINDING (the phase's main result): the ESMs are NOT a
+per-sign cross-compilation disagreement table. They are anisotropy
+(sign-order/transposition) datasets — ESM1 the 33-object F3
+catalogue, ESM2 F3 simulations vs M77/ICIT with D-type results and
+the error label E1, ESM3-ESM12 sign-behaviour studies (99, 267/267a,
+doubles, 97/98/123 markers, 244 family, fish family), ESM13 an
+animal-behaviour catalogue (2,383 CISI rows). Bhaskar's stated
+method (article p. 2) notes M77/ICIT/CISI disagreements only "in
+each case", at case level. No per-sign M77/ICIT/CISI readings grid
+exists in the material, and none was fabricated.
+
+Built instead, honestly: (1) a curated register of every
+cross-source disagreement Bhaskar documents — 16 dispute cases
+(267/267a conflation BH-D01; ICIT conflations of 97/98 and 99/100;
+the 244 normalisation split; two labelled E1s + the prose E1 of
+ESM7 case 7; the M77 misprint of 257 as 197; the 162
+classification dispute; the 402 coverage gap) + 4 form-reanalysis
+notes — as `reports/phase120_bhaskar_disagreements.{csv,json}`;
+(2) a mention index over the list-structured ESMs (behavioural
+attestation only); (3) the triage of the 44 in
+`reports/phase120_bhaskar_triage_44.{md,json}` via
+`backend/glossa_lab/phase120_bhaskar.py` (H23 node
+IndusPhase120BhaskarTriage registered before any run; runner
+`backend/scripts/phase120_bhaskar_triage.py`).
+
+Classification (strict rule: CONTESTED only when a documented case
+names the sign's identity/form class; ALL-AGREE never inferred
+from silent use, because the source contains no per-sign
+concordance statements): ALL-AGREE 0 / CONTESTED 1 / NOT-COVERED
+43 (16 mentioned behaviourally, 27 not mentioned). The one
+CONTESTED anchor is M402 (BH-D10): the left-waving frontal flag on
+K-39 has no variant in M77, ICIT, or the font package, and the
+only other instance (7065) is doubted by Bhaskar to be 402 at
+all — an object-vs-inventories gap, not a source-vs-source split.
+Near-misses recorded in the report: M072 and M345 fall under
+Bhaskar's own form-reanalyses (BH-R01/R02), a different claim
+kind, and stay NOT-COVERED. Sanity check: 14/14 hand-read ESM
+items agree with the parse (error modes documented in the
+report: PUA glyph font — numbers/prose only; label-pattern
+extraction finds 2 of 3 E1s, the third is prose).
+
+NON-CLAIMS: descriptive only; no anchor status changed (anchors
+file SHA-256 identical before/after; 287 anchors, 166/5/3/113);
+nothing validated; no PRED content. Verification: 17 new tests;
+full backend suite 808 passed / 13 skipped / 0 failed;
+foundation check 40 / 0 / 8; ruff clean. PR opened against main;
+not merged (owner merges).
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

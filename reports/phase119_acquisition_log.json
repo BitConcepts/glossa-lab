@@ -1,0 +1,42 @@
+{
+ "date": "2026-10-07",
+ "ingested": [],
+ "dry_run_only": [
+  {
+   "date": null,
+   "name": "icit_converted_v2 (Phase-115 layer)",
+   "source": "ICIT via Lipi repository CSV export, mirrored (MIT) in field-cady/indus_valley_script_corpus; Wells/ICIT numbers -> M via canonical sign registry (+ crosswalk v2 chain), key-normalized; unmapped/placeholder positions emitted as UNK sentinels (Phase-115, spec 014 section 2)",
+   "license": "ICIT via Lipi repository CSV export, mirrored (MIT) in field-cady/indus_valley_script_corpus",
+   "status": "dry-run-only",
+   "input_sha256": "f837a15a333f44f4261955fda626d372b23b1b10082fe9afb9b6268b6f8aa99f",
+   "text_rule": "converted layer sequences verbatim; M codes mapped to P space per spec section 3; UNK sentinels preserved",
+   "unit_rule": "one layer entry = one inscription",
+   "source_class": "icit_lineage_derivative",
+   "as_built": {
+    "inscriptions": 4531,
+    "tokens": 15880,
+    "tokens_unmapped": 9,
+    "tokens_ambiguous": 38,
+    "distinct_signs": 278
+   },
+   "note": "Phase-115 expanded ICIT converted layer; class icit_lineage_derivative (derivation-adjacent); exercised under the spec section 8 dry-run rule only."
+  }
+ ],
+ "found_but_not_obtainable": [
+  {
+   "name": "RMRL concordance export (Indus Research Centre, Roja Muthiah Research Library)",
+   "status": "GAP — not yet acquired; owner-sent request pending (access workstream). Class rmrl_concordance would qualify for PRED-2026-001..003.",
+   "license": "research use — contact required"
+  },
+  {
+   "name": "Dixit–Mitra image-derived transcription table",
+   "status": "GAP — dataset not publicly deposited; owner-sent request drafted. Class image_transcription would qualify for PRED-2026-001..003.",
+   "license": "not deposited; no data-availability statement in the article"
+  },
+  {
+   "name": "Mahadevan Chair expanded concordance",
+   "status": "GAP — future compilation, not yet published. Class future_concordance would qualify for PRED-2026-001..003.",
+   "license": "not yet published"
+  }
+ ]
+}

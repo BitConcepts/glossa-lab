@@ -1890,3 +1890,85 @@ branding sweep over changed files clean.
 **AI disclosure:** execution recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## 2026-10-08 — Phase-126 (ledger sequence): Wells-Split Descriptive Analysis of the 113 CANDIDATE Anchors — DESIGN INPUT
+
+Descriptive analysis only (owner-ordered program step 3,
+2026-10-08). For each of the 113 anchors whose `confidence`
+field is `CANDIDATE` in `backend/reports/INDUS_FINAL_ANCHORS.json`,
+the Phase-123 Wells segmentation witness treatment
+(`data/crosswalks/wells_segmentation_witness_v1.{csv,json}`;
+semantics per `reports/phase123_wells_segmentation_witness.md`)
+was recorded in this phase's vocabulary — SPLIT → split,
+MERGE → merge, SAME → unit-same, NOT-COVERED → not-covered,
+INDETERMINATE → indeterminate — with the split components
+(the witness table's `wells_graphemes`) recorded per sign,
+and cross-tabulated (counts only) against the evidence
+features actually present in the anchors file for these
+signs, named by exact field: the attestation count and
+positional profile parsed from `basis` (all 113 record
+I=0.000 / T=0.000 / M=1.000, medial-only; freq 1–4),
+`source` (Phase-111 for all 113), `validation_status`
+(`premise_superseded` for all 113), `_phase132_note`
+presence (70 present / 43 absent), `phase109_annotation`
+presence (109 / 4), and the Phase-252 cohort fields
+`dedr` / `dedr_source` / `phase_upgraded` / `upgrade_basis`
+(4 signs: M157, M256, M307, M400 — all unit-same).
+
+Headline counts (of 113): **split 27 · merge 4 · unit-same 62 ·
+not-covered 1 · indeterminate 19** — identical to the
+Phase-123 memo's CANDIDATE breakdown, re-derived here from
+the two committed inputs. Treatment determinable for 93/113.
+Split sizes: 20 signs into 2 graphemes, 6 into 3, 1 (M120)
+into 5 (025–029). Split components overlap across CANDIDATEs:
+11 Wells graphemes appear in the split sets of two CANDIDATE
+signs each (10 distinct signs involved), so the split sets
+are not disjoint. Merge: M115 and M116 share W019, M245 →
+W615, M389 → W805 (the glyph-route row carrying the recorded
+Phase-123 conflict). Not-covered: M312 only; zero CANDIDATEs
+are absent from the witness table (the builder records any
+absent sign as not-covered by construction — counted and
+listed, never dropped). Indeterminate: 19, each with the
+witness's reason carried into the memo (M126 carries the
+chain-only lead, stated conditionally as Phase-123 recorded
+it). Cross-tab highlights: by `basis` freq — freq 1: split 1 /
+unit-same 11; freq 2: split 8 / unit-same 14; freq 3: split
+11 / unit-same 17; freq 4: split 7 / unit-same 20 /
+not-covered 1; the four Phase-252-cohort signs are all
+unit-same; witness `correspondence_method` for the 113:
+REGISTRY 87, GLYPH 6, GLYPH-SEARCH-NEGATIVE 1, none recorded
+19 (the indeterminate rows); Phase-123 hand-verification
+covers 8 of the 113 (7 verified, all unit-same; 1
+verified_with_conflict, M389, merge).
+
+Output is a DESIGN-INPUT memo addressed to future battery
+design (`reports/phase126_wells_split_candidates.md` +
+`reports/phase126_wells_split_candidates_results.json`):
+which CANDIDATEs are compound-suspects under Wells, which
+are unit-confirmed, and where the witness is silent, stated
+as facts a future spec may use. No adjudication of any
+sign's status is phrased, no promotion or demotion is
+proposed, and no anchor was changed: the anchors file is
+byte-identical before and after (sha256
+eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed,
+asserted in code). The 44 `pending_non_sa_validation`
+anchors were verified disjoint from the 113 and not touched.
+Code: `backend/glossa_lab/phase126_wells_split.py` (pure
+machinery), `backend/glossa_lab/phase126_run.py`
+(orchestration + memo), `backend/scripts/phase126_wells_split_candidates.py`
+(entry point), experiment-graph node
+`IndusPhase126WellsSplitCandidates`
+(`backend/glossa_lab/experiment_graph_phase126_wells.py`;
+distinct from the legacy Phase-126 ICIT node family).
+Deterministic builder: two runs byte-identical (md5-verified).
+Verification: 16 new tests passed in isolation; full backend
+suite 883 passed / 12 skipped / 0 failed (baseline 867/12/0
+plus this phase's 16); foundation check 40 passed / 0 failed
+/ 8 warnings (baseline unchanged); ruff clean on all
+new/changed files; branding sweep over changed files clean.
+Test side effects (glossa-indus/ claims + reports, outputs/,
+foundation report) reverted before commit, per precedent.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

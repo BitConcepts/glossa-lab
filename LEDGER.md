@@ -1689,3 +1689,39 @@ before commit.
 **AI disclosure:** execution recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson,
 per constitution §VI.
+## 2026-10-08 — Phase-123: Wells segmentation witness memo (Phase D)
+
+Witness statement (not an adjudication) recording how Bryan K. Wells's
+grapheme segmentation (MA thesis, Calgary, 1998; PhD thesis, Harvard,
+2006) treats each of the 157 anchor signs (113 CANDIDATE + 44
+`pending_non_sa_validation`). Sources: MA thesis (587 signs / 802
+varieties / 63 Sets, thesis p. 48; Fig. 3.6 concordance, p. 77) and PhD
+thesis (676 signs, pp. 67-68; Fig. 3.2 plates, pp. 90-92; Appendix I
+per-sign sheets), the held canonical registry (mayig Wells-2015
+cross-match), and Phase-123 hand glyph-matching against the PhD plates.
+Coverage: treatment determinable for 134/157 — SAME 87, SPLIT 40,
+MERGE 5, NOT-COVERED 2, INDETERMINATE 23 (incl. M033/M126, whose only
+correspondence runs through the unmerged Phase-122 chain, PR #81, and
+which are therefore recorded indeterminate with the lead noted).
+Hand verification: 20 rows checked against the thesis plates —
+17 glyph-consistent (M389 consistent by glyph but carries a recorded
+registry conflict over W805), 2 partial (M149, M401), 1 discrepancy
+(M293, registry W920 vs the looped plate glyph; Wells's own 920/921
+discussion, PhD pp. 70-71, does not settle it from the plate). The
+attestation co-occurrence method (MA Appendix 1 vs ICIT artifact sets)
+was attempted and rejected (best Jaccard 0.22) — recorded in the memo
+so it is not repeated on the same inputs. No anchor tier, value, or
+status was changed; no adoption of Wells's segmentation is recommended
+or implied. Artifacts: `reports/phase123_wells_segmentation_witness.md`,
+`data/crosswalks/wells_segmentation_witness_v1.{csv,json}`,
+`backend/scripts/phase123_build_wells_witness.py`,
+`backend/tests/test_phase123_wells_witness.py` (6 passed). Full backend
+suite: 798 passed / 12 skipped / 0 failed (corpora/downloads symlinked
+from the main checkout, as in prior phases); foundation check
+40 passed / 0 failed / 8 warnings (baseline unchanged); ruff clean.
+Test side effects (glossa-indus/ claims + reports, outputs/) reverted
+before commit.
+
+**AI disclosure:** research and execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

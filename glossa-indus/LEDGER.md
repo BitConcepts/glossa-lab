@@ -2485,3 +2485,13 @@ adjudication of sign identity. Suite 800/12/0; foundation
 **AI disclosure:** execution recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson,
 per constitution §VI.
+## 2026-10-08 — Phase-123: Wells segmentation witness (cross-reference)
+
+Cross-reference: repo LEDGER.md entry of the same date and
+`reports/phase123_wells_segmentation_witness.md`. Wells (MA 1998 /
+PhD 2006) segmentation recorded as a witness for all 157 anchor signs:
+SAME 87 / SPLIT 40 / MERGE 5 / NOT-COVERED 2 / INDETERMINATE 23;
+20-row hand verification against the PhD plates: 17 glyph-consistent,
+2 partial, 1 discrepancy (M293). Witness only — no anchor changed, no
+segmentation adopted. AI-assisted record (Muse Spark, Muse),
+owner-directed.

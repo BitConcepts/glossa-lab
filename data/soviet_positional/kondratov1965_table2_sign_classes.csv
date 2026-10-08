@@ -1,0 +1,12 @@
+frequency_class_pct,egypt_n_signs,egypt_sum_abs_freq_pct,egypt_grammatical_function_pct,egypt_combination_grammatical_features_pct,egypt_phonetics_pct,india_morphology_pct,india_determinatives_pct,india_numerals_pct,india_n_signs,india_sum_abs_freq_pct,source,printed_page,table_id
+greater_than_10,0,0,0,0,0,0,0,0,1,11.0,"Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",41,K1965-T2
+8-10,1,0.0,4.0,3.0,2.0,0,0,0,0,0,"Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",41,K1965-T2
+6-8,1,7.3,3.6,1.2,2.5,0,0,0,1,6.4,"Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",41,K1965-T2
+4-6,4,19.9,8.9,4.1,4.9,0,2.0,0,0,0,"Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",41,K1965-T2
+2-4,6,16.4,1.7,2.5,6.2,0,5.4,0.6,4,11.4,"Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",41,K1965-T2
+1-2,8,10.2,0,0.6,5.7,0,3.9,0,27,36.9,"Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",41,K1965-T2
+0.5-1,13,10.7,0,0.3,2.2,4.3,3.9,0,13,8.1,"Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",41,K1965-T2
+0.25-0.5,17,8.0,0,0.2,1.7,3.7,2.4,0,29,10.8,"Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",41,K1965-T2
+0.1-0.25,40,9.3,0,0.1,0.5,6.6,2.1,0,35,5.1,"Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",41,K1965-T2
+less_than_0.1,105,9.1,0,0,0.1,6.1,2.3,0,205,10.3,"Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",41,K1965-T2
+TOTAL,195,100,18.2,12.4,25.8,21.3,22.0,0.6,315,100,"Zide & Zvelebil (eds) 1976, The Soviet Decipherment of the Indus Valley Script (Mouton)",41,K1965-T2

@@ -1,0 +1,225 @@
+{
+  "phase": 120,
+  "cases": [
+    {
+      "case_id": "BH-D01",
+      "kind": "conflation_split",
+      "signs_involved": "M267",
+      "sign_numbers": "267",
+      "context_signs": "",
+      "sources": "M77 vs Bhaskar (on CISI objects)",
+      "summary": "M77 treats the rhomboid and ovoid forms as variants of one sign 267 (sequences 2618/4090 vs the split sequence 6112 are called identical); Bhaskar argues the two forms cannot be conflated and distinguishes 267 from 267a on behavioural grounds.",
+      "location": "Article Sect. 3 (PDF p. 6); ESM3-ESM5",
+      "is_dispute": "true"
+    },
+    {
+      "case_id": "BH-D02",
+      "kind": "conflation_split",
+      "signs_involved": "M097 M098",
+      "sign_numbers": "97 98",
+      "context_signs": "",
+      "sources": "ICIT (Wells/Fuls) vs Bhaskar/M77",
+      "summary": "Wells and Fuls conflate signs 97 and 98 and assign a single ICIT number (001), denying 98 as a separate sign; Bhaskar keeps 97 and 98 distinct (97 a differential marker, 98 a neutral marker).",
+      "location": "Article Sect. 7 (PDF p. 18)",
+      "is_dispute": "true"
+    },
+    {
+      "case_id": "BH-D03",
+      "kind": "conflation_split",
+      "signs_involved": "M099 M100",
+      "sign_numbers": "99 100",
+      "context_signs": "",
+      "sources": "ICIT (Wells) vs Bhaskar/M77",
+      "summary": "Signs 99 and 100 are merged by Wells into a single ICIT number (002); Bhaskar keeps them distinct and argues at length (Sect. 5.6) for telling them apart.",
+      "location": "Article Sect. 7 (PDF p. 18); Sect. 5.6",
+      "is_dispute": "true"
+    },
+    {
+      "case_id": "BH-D04",
+      "kind": "attribution_doubt",
+      "signs_involved": "M099 M100",
+      "sign_numbers": "99 100",
+      "context_signs": "",
+      "sources": "ICIT vs Bhaskar (object absent from M77)",
+      "summary": "For one unicorn seal with no M77 entry, ICIT documents the first sign as its 002 (equivalent to M77 99); Bhaskar takes the sign as M77 100 instead, rationalised in Sect. 5.6.",
+      "location": "ESM1 row 23 (PDF p. 5)",
+      "is_dispute": "true"
+    },
+    {
+      "case_id": "BH-D05",
+      "kind": "normalisation_split",
+      "signs_involved": "M244",
+      "sign_numbers": "244",
+      "context_signs": "",
+      "sources": "M77 vs ICIT; Bhaskar proposes a third treatment",
+      "summary": "M77 normalises visibly and behaviourally distinct forms (including forms on objects 4345 and 1550) to a single sign 244, producing marker-less anisotropies (Dx); ICIT instead catalogues the forms as separate signs (ICIT 629-642). Bhaskar proposes one formative sign 244 with alphanumeric marked versions 244a-244k (ESM10).",
+      "location": "Article Sect. 8.1 (PDF p. 21); ESM10 (PDF p. 1)",
+      "is_dispute": "true"
+    },
+    {
+      "case_id": "BH-D06",
+      "kind": "misprint",
+      "signs_involved": "M257 M197",
+      "sign_numbers": "257 197",
+      "context_signs": "",
+      "sources": "M77 internal error (noted by Bhaskar)",
+      "summary": "M77 sequence 2518 (the longest frontal-sign sequence) carries a misprint: it reports sign 257 as 197. Sign 257 has only three occurrences in M77.",
+      "location": "ESM2 row 25 (PDF p. 14)",
+      "is_dispute": "true"
+    },
+    {
+      "case_id": "BH-D07",
+      "kind": "e1_corpus_error",
+      "signs_involved": "M053 M342",
+      "sign_numbers": "53 342",
+      "context_signs": "M287 M373",
+      "sources": "M77 vs ICIT",
+      "summary": "Inscription 4827 (H-1393, pottery graffiti) vs ICIT 231: the two sources give materially different sequences (in the M77 version a 342 stands after 53 and another 342 before it); the first sign is obliterated, so CISI cannot settle it. Labelled E1 in ESM2.",
+      "location": "ESM2 row 14c (PDF p. 5)",
+      "is_dispute": "true"
+    },
+    {
+      "case_id": "BH-D08",
+      "kind": "e1_corpus_error",
+      "signs_involved": "M060 M087",
+      "sign_numbers": "60 87",
+      "context_signs": "M123 M305",
+      "sources": "M77 vs ICIT (both faulted)",
+      "summary": "Object C-79 (M77 6211; ICIT 75), arising in the simulation '87 after 60': both sources normalise C-79 to an extreme and produce vastly different readings. Labelled E1 in ESM2. The E1 concerns the object's whole reading; 60/87 are the simulated pair that surfaces it.",
+      "location": "ESM2 row 28f1 (PDF p. 15)",
+      "is_dispute": "true"
+    },
+    {
+      "case_id": "BH-D09",
+      "kind": "e1_corpus_error",
+      "signs_involved": "M060",
+      "sign_numbers": "60",
+      "context_signs": "M342 M344 M328",
+      "sources": "M77 vs ICIT, one case settled by CISI, one unresolvable",
+      "summary": "Three inscriptions where 342 occurs before 60: at 2456 the ICIT version differs (if it is taken, the case drops); at 1090 CISI (M-740) settles the reading in favour of M77; at 1125 M77 and ICIT 2423 disagree over the terminal sign and CISI (M-1732) cannot resolve it because the sign is partially lost -- an E1.",
+      "location": "ESM7 case 7 (PDF p. 1)",
+      "is_dispute": "true"
+    },
+    {
+      "case_id": "BH-D10",
+      "kind": "coverage_gap",
+      "signs_involved": "M402",
+      "sign_numbers": "402",
+      "context_signs": "",
+      "sources": "CISI object vs M77 + ICIT + the Indus font package (unanimous gap)",
+      "summary": "The frontal flag/banner sign on K-39 waves left. No left-waving variant of 402 exists in M77, in ICIT, or in the font package; the only other left-waving instance (object 7065, L-115) is doubted by Bhaskar to be 402 at all, or even a variant of it. The disagreement is between the object's form and every compilation's inventory of 402 -- not between the compilations themselves.",
+      "location": "ESM1, note at row 22 / K-39 (PDF p. 4)",
+      "is_dispute": "true"
+    },
+    {
+      "case_id": "BH-D11",
+      "kind": "classification_dispute",
+      "signs_involved": "M162",
+      "sign_numbers": "162",
+      "context_signs": "",
+      "sources": "M77 vs ICIT",
+      "summary": "On M-223 (M77 1167), M77 treats sign 162 as a stand-alone sign; ICIT instead lists it as a proxy sign for the cult object. (Both sources note the reading direction of the object as LTR.)",
+      "location": "ESM2 row 13 header (PDF p. 2); ESM1 row 13",
+      "is_dispute": "true"
+    },
+    {
+      "case_id": "BH-D12",
+      "kind": "omission",
+      "signs_involved": "",
+      "sign_numbers": "",
+      "context_signs": "M267 M029 M180 M175 M028 M381 M102 M327",
+      "sources": "M77 (noted by Bhaskar)",
+      "summary": "For C-23 (M77 6402) M77 reports the sequence in three lines and omits the 'double axe' element the goat faces. The omission concerns that element, not the identity of any numbered sign in the sequence, so no sign is listed as involved.",
+      "location": "ESM2 row 29 header (PDF p. 15)",
+      "is_dispute": "true"
+    },
+    {
+      "case_id": "BH-D13",
+      "kind": "font_substitution",
+      "signs_involved": "M187",
+      "sign_numbers": "187",
+      "context_signs": "",
+      "sources": "M77 vs the Indus font package",
+      "summary": "In sequence 1325 (M-1202) the second sign from the right is 187 in M77; the font package has no exact glyph match for it, so the glyph for ICIT 257 is substituted.",
+      "location": "ESM2 row 16c (PDF p. 5)",
+      "is_dispute": "true"
+    },
+    {
+      "case_id": "BH-D14",
+      "kind": "mirrored_reckoning",
+      "signs_involved": "M216 M217",
+      "sign_numbers": "216 217",
+      "context_signs": "",
+      "sources": "M77 reckoning (noted by Bhaskar)",
+      "summary": "A mirrored form at object 7044 is reckoned in M77 as sign 217 where Bhaskar's analysis treats the underlying sign as 216 (mirrored).",
+      "location": "ESM8 entry 20 (PDF p. 2)",
+      "is_dispute": "true"
+    },
+    {
+      "case_id": "BH-D15",
+      "kind": "conflation_split",
+      "signs_involved": "M244 M219",
+      "sign_numbers": "244 219",
+      "context_signs": "",
+      "sources": "Bhaskar vs a marked-version reading of the 244 family",
+      "summary": "Within the ESM10 table, the unit catalogued as 244k is identified not as a marked version of 244 but as a compound of 244d with sign 219; another unit (641) is noted as not an independent sign but a double of 244a.",
+      "location": "ESM10 (PDF p. 1)",
+      "is_dispute": "true"
+    },
+    {
+      "case_id": "BH-D16",
+      "kind": "attribution_doubt",
+      "signs_involved": "M167",
+      "sign_numbers": "167",
+      "context_signs": "M060 M087 M123 M305",
+      "sources": "Bhaskar (identity left open)",
+      "summary": "For M-1793 (M77 2316) the frontal sign's identity is doubtful (given as 167 with a query, and in ESM1 as possibly a monkey per Mackay 1938); Bhaskar runs the simulation on the rest of the sequence only.",
+      "location": "ESM2 row 28 header (PDF p. 14); ESM1 row 28",
+      "is_dispute": "true"
+    },
+    {
+      "case_id": "BH-R01",
+      "kind": "form_reanalysis",
+      "signs_involved": "M059 M065 M067 M070 M072",
+      "sign_numbers": "59 65 67 70 72",
+      "context_signs": "",
+      "sources": "Bhaskar's analysis (M77/ICIT list the forms as separate signs)",
+      "summary": "The fish-sign family: 65, 67, 70, 72 and others are treated as intrinsically marked versions of formative sign 59, used as D5 signals of anisotropy.",
+      "location": "Article Sect. 8.3; ESM11",
+      "is_dispute": "false"
+    },
+    {
+      "case_id": "BH-R02",
+      "kind": "form_reanalysis",
+      "signs_involved": "M342 M343 M344 M345",
+      "sign_numbers": "342 343 344 345",
+      "context_signs": "",
+      "sources": "Bhaskar's analysis",
+      "summary": "Signs 343, 344, 345 are analysed as 342 with an infixed/suffixed marker (343 ~ 342+97, 344 ~ 342+99, 345 ~ 342+102, the latter two tentative).",
+      "location": "Article Sect. 5.4; ESM2 intro; ESM6-ESM7",
+      "is_dispute": "false"
+    },
+    {
+      "case_id": "BH-R03",
+      "kind": "form_reanalysis",
+      "signs_involved": "M287 M299 M303",
+      "sign_numbers": "287 299 303",
+      "context_signs": "",
+      "sources": "Bhaskar's analysis",
+      "summary": "Sign 303 is analysed as a compound of 287 + 299 and is opposed to 287 in usage.",
+      "location": "ESM8 entries B/C/28 (PDF p. 3)",
+      "is_dispute": "false"
+    },
+    {
+      "case_id": "BH-R04",
+      "kind": "form_reanalysis",
+      "signs_involved": "M171 M172",
+      "sign_numbers": "171 172",
+      "context_signs": "",
+      "sources": "Bhaskar's analysis",
+      "summary": "Sign 172 is treated as a marked version of formative sign 171, and their contrasting behaviour after sign 59 is used as D5/D1 evidence.",
+      "location": "ESM12 (PDF p. 1)",
+      "is_dispute": "false"
+    }
+  ]
+}

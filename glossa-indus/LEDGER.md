@@ -2409,6 +2409,21 @@ constitution §VI.
 
 Cross-reference: repo LEDGER.md entry of the same date. Specs 011/014/016/017 (Phases 113/115/117/118) all closed as BATTERY REJECTED at calibration; the battery line is closed by owner decision. The 44 anchors remain `pending_non_sa_validation`; no anchor received `validated_within_compilation` or `validated_non_sa` from any battery. Next evidence class: independent corpora only (PRED-2026, spec 018 readiness). AI-assisted record (Muse Spark, Muse), owner-directed.
 
+## 2026-10-08 — Phase-120: Bhaskar (2024) descriptive triage of the 44
+
+Cross-reference: repo LEDGER.md entry of the same date. Bhaskar
+(2024) + ESM1-ESM13 were triaged as new material for the 44
+`pending_non_sa_validation` anchors. Scope finding: the ESMs are
+anisotropy datasets, not a per-sign M77/ICIT/CISI concordance
+table; disagreements exist only as case-level notes. Documented-
+disagreement register (20 cases) + mention index built; triage:
+ALL-AGREE 0 / CONTESTED 1 (M402, the K-39 left-waving-flag
+coverage gap, BH-D10) / NOT-COVERED 43. Descriptive only — no
+anchor status changed, nothing validated, no PRED content.
+Hand-check 14/14. Suite 808/13/0; foundation 40/0/8. Reports:
+`reports/phase120_bhaskar_triage_44.md` (+ .json,
+`phase120_bhaskar_disagreements.{csv,json}`). AI-assisted record
+(Muse Spark, Muse), owner-directed.
 ## Phase-121 — Soviet Positional Dataset (descriptive only)
 
 Built 2026-10-08 under the owner's direction (Glossa-Lab

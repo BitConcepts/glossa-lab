@@ -1,0 +1,55 @@
+{
+ "phase": 121,
+ "dataset": "phase121_soviet_positional",
+ "descriptive_only": true,
+ "tables": {
+  "K1965-T1": 56,
+  "K1965-T2": 11,
+  "K1965-T3": 21,
+  "K1965-T4": 9,
+  "PI73-V2": 3,
+  "PI73-V3": 5,
+  "PI73-V1": 4
+ },
+ "total_records": 109,
+ "provenance_gaps": [],
+ "tables_not_extracted": [
+  "KN1968",
+  "PI73-G1",
+  "PI73-G2",
+  "PI73-K"
+ ],
+ "table4_checks": {
+  "row_totals_match_cells": true,
+  "computed_column_totals": {
+   "final_87": 95,
+   "final_124": 25,
+   "final_68": 8,
+   "final_96": 20,
+   "final_97": 5,
+   "final_87_dash": 6,
+   "final_66": 1
+  },
+  "printed_column_totals": {
+   "final_87": 102,
+   "final_124": 28,
+   "final_68": 8,
+   "final_96": 20,
+   "final_97": 5,
+   "final_87_dash": 6,
+   "final_66": 2
+  },
+  "computed_grand_total": 160,
+  "printed_grand_total": 171,
+  "columns_disagreeing": [
+   "final_87",
+   "final_124",
+   "final_66"
+  ]
+ },
+ "printed_anomalies": [
+  "K1965-T3: Egyptian 'Errors' row cells sum to 94, printed total 88; the len-9 cell (6) breaks the genuine+errors=total identity for len 9 (2+6 != 2). Values extracted as printed.",
+  "K1965-T3: Proto-Indian 'Errors' cells sum to 628, printed total 626; 'Total' cells sum to 1997, printed total 1999; errors relative-frequency cells sum to 169, printed total 168. Values extracted as printed.",
+  "K1965-T4: cell values sum to a grand total of 160; the printed Total row (102/28/8/20/5/6/2, grand 171) disagrees with the cells for finals 87 (+7), 124 (+3) and 66 (+1). Every row total DOES match its cells. Both cells and printed totals extracted as printed; nothing reconciled or corrected."
+ ]
+}

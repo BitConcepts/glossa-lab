@@ -1,0 +1,240 @@
+{
+ "phase": 119,
+ "spec": "018-phase119-pred2026-readiness",
+ "date": "2026-10-07",
+ "label": "HARNESS DRY RUN — NOT A PRED EVALUATION",
+ "gpu_device": "cpu",
+ "harness_self_checks": {
+  "toy_rate_confirmed": "CONFIRMED",
+  "toy_rate_refuted": "REFUTED",
+  "toy_template_confirmed": "CONFIRMED",
+  "toy_template_refuted": "REFUTED",
+  "gate_refuses_lineage": true
+ },
+ "appendix_a_reproduction": {
+  "dedup": true,
+  "term_per_sign": true,
+  "init_per_sign": true,
+  "med_attested": true,
+  "classifiable_pre": true,
+  "classifiable_post": true
+ },
+ "dry_run": {
+  "label": "HARNESS DRY RUN — NOT A PRED EVALUATION",
+  "dataset": {
+   "name": "icit_converted_v2 (Phase-115 layer)",
+   "source_class": "icit_lineage_derivative",
+   "content_hash": "4313828e54092419d3fa220eab6b95cf57c9475776d51f093374e8322b7aa503",
+   "stats": {
+    "inscriptions": 4531,
+    "tokens": 15880,
+    "tokens_unmapped": 9,
+    "tokens_ambiguous": 38,
+    "distinct_signs": 278
+   }
+  },
+  "dedup": {
+   "input": 4531,
+   "stage_a_removed": 1468,
+   "stage_b_removed": 370,
+   "stage_c_removed": 247,
+   "kept": 2446
+  },
+  "coverage_pre_dedup": {
+   "TERMINAL": {
+    "set_size": 14,
+    "attested": 12,
+    "per_sign_occurrences": {
+     "P020": 19,
+     "P076": 0,
+     "P095": 49,
+     "P099": 31,
+     "P108": 21,
+     "P125": 0,
+     "P210": 42,
+     "P226": 10,
+     "P256": 70,
+     "P346": 26,
+     "P359": 11,
+     "P378": 229,
+     "P384": 11,
+     "P385": 397
+    }
+   },
+   "INITIAL": {
+    "set_size": 12,
+    "attested": 11,
+    "per_sign_occurrences": {
+     "P000": 0,
+     "P001": 89,
+     "P004": 157,
+     "P013": 156,
+     "P051": 41,
+     "P098": 304,
+     "P217": 242,
+     "P238": 14,
+     "P265": 23,
+     "P301": 66,
+     "P310": 555,
+     "P324": 1413
+    }
+   },
+   "MEDIAL": {
+    "set_size": 46,
+    "attested": 38,
+    "per_sign_occurrences": {
+     "P009": 110,
+     "P026": 14,
+     "P031": 68,
+     "P050": 390,
+     "P053": 12,
+     "P056": 83,
+     "P058": 172,
+     "P062": 263,
+     "P067": 21,
+     "P091": 0,
+     "P096": 19,
+     "P110": 53,
+     "P114": 51,
+     "P117": 16,
+     "P120": 442,
+     "P121": 6,
+     "P122": 0,
+     "P127": 0,
+     "P136": 0,
+     "P142": 242,
+     "P145": 514,
+     "P147": 456,
+     "P151": 35,
+     "P154": 91,
+     "P172": 67,
+     "P174": 16,
+     "P175": 34,
+     "P178": 5,
+     "P188": 58,
+     "P201": 0,
+     "P204": 142,
+     "P205": 45,
+     "P208": 14,
+     "P215": 38,
+     "P221": 43,
+     "P276": 162,
+     "P283": 123,
+     "P288": 0,
+     "P303": 15,
+     "P309": 22,
+     "P325": 202,
+     "P326": 61,
+     "P332": 0,
+     "P349": 102,
+     "P358": 0,
+     "P369": 13
+    }
+   },
+   "classifiability": {
+    "inscriptions_with_mapped_signs": 4523,
+    "all_signs_labelled": 2544,
+    "fraction": 0.5614654601633193
+   }
+  },
+  "coverage_post_dedup": {
+   "TERMINAL": {
+    "set_size": 14,
+    "attested": 12,
+    "per_sign_occurrences": {
+     "P020": 18,
+     "P076": 0,
+     "P095": 33,
+     "P099": 22,
+     "P108": 16,
+     "P125": 0,
+     "P210": 29,
+     "P226": 10,
+     "P256": 59,
+     "P346": 18,
+     "P359": 10,
+     "P378": 178,
+     "P384": 9,
+     "P385": 236
+    }
+   },
+   "INITIAL": {
+    "set_size": 12,
+    "attested": 11,
+    "per_sign_occurrences": {
+     "P000": 0,
+     "P001": 62,
+     "P004": 83,
+     "P013": 122,
+     "P051": 37,
+     "P098": 192,
+     "P217": 170,
+     "P238": 14,
+     "P265": 21,
+     "P301": 49,
+     "P310": 70,
+     "P324": 930
+    }
+   },
+   "MEDIAL": {
+    "set_size": 46,
+    "attested": 38,
+    "per_sign_occurrences": {
+     "P009": 82,
+     "P026": 14,
+     "P031": 50,
+     "P050": 301,
+     "P053": 9,
+     "P056": 71,
+     "P058": 148,
+     "P062": 197,
+     "P067": 20,
+     "P091": 0,
+     "P096": 16,
+     "P110": 47,
+     "P114": 48,
+     "P117": 12,
+     "P120": 298,
+     "P121": 4,
+     "P122": 0,
+     "P127": 0,
+     "P136": 0,
+     "P142": 220,
+     "P145": 292,
+     "P147": 198,
+     "P151": 22,
+     "P154": 72,
+     "P172": 54,
+     "P174": 16,
+     "P175": 26,
+     "P178": 5,
+     "P188": 49,
+     "P201": 0,
+     "P204": 95,
+     "P205": 44,
+     "P208": 13,
+     "P215": 32,
+     "P221": 37,
+     "P276": 130,
+     "P283": 89,
+     "P288": 0,
+     "P303": 12,
+     "P309": 19,
+     "P325": 170,
+     "P326": 47,
+     "P332": 0,
+     "P349": 72,
+     "P358": 0,
+     "P369": 13
+    }
+   },
+   "classifiability": {
+    "inscriptions_with_mapped_signs": 2444,
+    "all_signs_labelled": 1045,
+    "fraction": 0.4272281275551921
+   }
+  }
+ },
+ "verdicts": {},
+ "note": "No PRED-2026 prediction was evaluated. The only dataset ingested is of class icit_lineage_derivative, which qualifies for no prediction (spec section 4); it was exercised in dry-run mode only (spec section 8)."
+}

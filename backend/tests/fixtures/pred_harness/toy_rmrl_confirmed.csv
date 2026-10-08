@@ -1,0 +1,6 @@
+inscription_id,site,object_type,signs
+T001,toy-north,seal,M012 M008
+T002,toy-north,seal,M012 M008 M008
+T003,toy-south,seal,M015 M008
+T004,toy-south,seal,M008 M015
+T005,toy-north,seal,M008 M012

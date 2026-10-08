@@ -1387,3 +1387,62 @@ suite 758 passed / 13 skipped / 0 failed; foundation check
 **AI disclosure:** execution recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## [2026-10-07] Entry — Phase-119 (spec 018): PRED-2026 Readiness Harness — BUILT (dry run only; no prediction evaluated)
+
+Owner directed 2026-10-07. Spec 018 frozen in its own commit
+(d09e3e47) before any code: the registered PRED-2026-001–003
+criteria quoted verbatim from docs/PREDICTION_REGISTER.md §2;
+frozen sign sets (TERMINAL 14 / INITIAL 12 / MEDIAL 46 /
+MIXED 33, corpus_freq ≥ 10 on the frozen sign inventory) and
+canonical registry map (M→P / W→P with the freq-then-lowest-P
+conflict rule; M002 ambiguous → UNK); evaluability matrix
+classifying the ICIT lineage honestly per item
+(icit_lineage_derivative and derivation_corpus qualify for
+nothing; icit_full qualifies as the registered target under
+verbatim caveat C1); dedup protocol (stage A exact, stage B
+sentinel-normalized, stage C Levenshtein ≤ 1 on UNK-stripped
+sequences of length ≥ 4 against kept anchors only); §6.1
+gates (qualifying class, complete provenance,
+unmapped+ambiguous ≤ 25% of tokens, verdict lock, ≥ 2 sites
+for 003) enforced in code before any criterion statistic
+exists; §8 dry-run rule with the in-artifact label "HARNESS
+DRY RUN — NOT A PRED EVALUATION".
+
+Built: backend/glossa_lab/pred_harness.py (adapters for
+rmrl_concordance / image_transcription / future_concordance
++ dry-run-only converted_layer, provenance log per the
+Phase-107/111 pattern), scripts/phase119_pred_harness.py,
+graph node IndusPhase119PredHarness (H23: registered and
+asserted in ATOMIC_NODES before any run), synthetic fixtures,
+21 unit tests incl. a toy prediction evaluated end-to-end
+through the real gating/scoring code in both verdict
+directions and the real PRED-2026-003 scorer on toy
+fixtures (0.80 CONFIRMED / 0.40 REFUTED).
+
+Dry run (only run performed; population = Phase-115 expanded
+ICIT converted layer, 4,531 inscriptions / 15,880 tokens,
+class icit_lineage_derivative): dedup kept 2,446 (stage A
+removed 1,468 = 32.40%; B incremental 370; C incremental 247;
+cumulative 46.02%). Sign-set coverage: TERMINAL attested
+12/14 (unattested P076, P125), INITIAL 11/12 (unattested
+P000), MEDIAL 38/46; unmapped 47 tokens (9 unmapped + 38
+ambiguous). PRED-003 classifiability coverage 2,544/4,531
+(56.15%) pre-dedup, 1,045/2,446 (42.72%) post-dedup. No rate
+against the 0.45 thresholds, no conformance fraction, and no
+verdict was computed. One additive correction: spec Appendix
+A.6 records that the appendix's prototype dedup figures were
+measured on raw M-space sequences while §5 as frozen operates
+on P-space sequences; the harness asserts the corrected
+P-space values and reproduced every other Appendix A figure
+exactly. Reports: reports/phase119_pred_harness_results.json
++ phase119_acquisition_log.json (three awaited sources as
+GAPs) + phase119_pred_harness_summary.md. Anchors unchanged
+(287; 166/5/3/113; strict core 94). Verification: 21 new
+tests pass; full backend suite 779 passed / 13 skipped /
+0 failed (main baseline 758/13); foundation check 40 / 0 / 8;
+ruff clean.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

@@ -2408,3 +2408,36 @@ constitution §VI.
 ## 2026-10-07 — Validation-battery line CLOSED (owner decision)
 
 Cross-reference: repo LEDGER.md entry of the same date. Specs 011/014/016/017 (Phases 113/115/117/118) all closed as BATTERY REJECTED at calibration; the battery line is closed by owner decision. The 44 anchors remain `pending_non_sa_validation`; no anchor received `validated_within_compilation` or `validated_non_sa` from any battery. Next evidence class: independent corpora only (PRED-2026, spec 018 readiness). AI-assisted record (Muse Spark, Muse), owner-directed.
+
+## Phase-121 — Soviet Positional Dataset (descriptive only)
+
+Built 2026-10-08 under the owner's direction (Glossa-Lab
+new-material program, Phase B). Extracted the printed tables of
+the Soviet reports into a machine-readable descriptive dataset
+(`data/soviet_positional/`, 7 tables, 109 records, every record
+tracing to source + printed page + table id): Kondratov 1965
+Tables 1-4 (new-sign emergence, 56 rows; sign frequency classes,
+315 Proto-Indian signs in aggregate; polygrams; stable
+initials x stable finals per-sign matrix) from Zide & Zvelebil
+1976, and Volchok's three calendrical tables from Proto-Indica
+1973. Findings recorded honestly: the 1968 Knorozov Formal
+Analysis contains NO frequency/positional tables (prose + glyph
+illustrations, searched in full), and Proto-Indica 1973 contains
+no sign-frequency tables at all; Gurov's Table 1 (pp.56-57)
+defeated extraction (diacriticised transliteration; no values
+guessed). Method: 300-DPI renders, fresh RapidOCR from the
+existing ocr venv, publisher text layer, and visual reads
+triangulated. Hand verification: 36 sampled cells re-read from
+the rendered pages, 36/36 match print. Printed anomalies
+preserved as printed, never repaired (K1965-T4 printed grand
+total 171 vs cell sum 160; K1965-T3 total mismatches). Memo:
+`reports/phase121_soviet_positional_dataset.md`. NON-CLAIMS:
+descriptive dataset only; no prediction scored, no anchor
+validated; whether the Soviet positional data can formally
+bear on PRED-2026-001/002 is an open question for a future
+spec adjudication. Suite and foundation results recorded in
+the Phase-121 PR.
+
+**AI disclosure:** design and execution recorded by an AI
+agent (Muse Spark, via Muse) at the direction of Tristen
+Pierson, per constitution §VI.

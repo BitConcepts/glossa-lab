@@ -151,7 +151,7 @@ Pierson, per constitution §VI.
 ## Verification runs
 
 - New tests: 7 passed (`backend/tests/test_phase121_soviet_positional.py`).
-- Full backend suite: **786 passed / 13 skipped / 0 failed**
-  (baseline 779/13/0 + 7 new).
+- Full backend suite: **799 passed / 12 skipped / 0 failed**
+  (baseline 792/12/0 + 7 new; corrected 2026-10-08 — an earlier partial-collection run was first misreported as 786/13).
 - Foundation check: **40 passed / 0 failed / 8 warnings**
   (unchanged from baseline).

@@ -1,0 +1,188 @@
+{
+ "artifacts": {
+  "crosswalk_csv": "data/crosswalks/parpola_mahadevan_crosswalk_v1.csv",
+  "crosswalk_json": "data/crosswalks/parpola_mahadevan_crosswalk_v1.json",
+  "mayig_layer": "data/corpus_layers/mayig_cisi_layer_v1.json",
+  "mayig_layer_meta": "data/corpus_layers/mayig_cisi_layer_v1_meta.json"
+ },
+ "cisi_overlap": {
+  "bhaskar2024_esm13": {
+   "mayig_coverage": 1.0,
+   "n_ids_total": 2001,
+   "n_m_ids": 1197,
+   "n_mayig_objects_in_set": 179
+  },
+  "cisi-1-ia-scan": {
+   "mayig_coverage": 0.067,
+   "n_ids_total": 160,
+   "n_m_ids": 160,
+   "n_mayig_objects_in_set": 12
+  },
+  "cisi-2-ia-scan": {
+   "mayig_coverage": 0.0447,
+   "n_ids_total": 444,
+   "n_m_ids": 444,
+   "n_mayig_objects_in_set": 8
+  },
+  "icit_keyed_layer": {
+   "mayig_coverage": 1.0,
+   "n_ids_total": 4070,
+   "n_m_ids": 1745,
+   "n_mayig_objects_in_set": 179
+  },
+  "union_of_bases": {
+   "mayig_coverage": 1.0,
+   "n_m_ids": 1983,
+   "n_mayig_objects_in_set": 179
+  }
+ },
+ "cisi_overlap_basis": "Per-basis M-prefixed CISI object IDs obtainable now: djvu OCR regex extraction from the CISI Vol. 1 / Vol. 2 IA scans (partial \u2014 plates are images, OCR misses IDs), Bhaskar et al. 2024 ESM13 catalogue CISI ID column, and the Phase-116 keyed ICIT layer `cisi` field. Phase E will produce the full structured CISI catalogue table; these figures are provisional.",
+ "coverage_inscriptions": {
+  "clean": 42,
+  "partial": 137
+ },
+ "coverage_inscriptions_registry_only": {
+  "clean": 42,
+  "partial": 137
+ },
+ "coverage_tokens": {
+  "ambiguous": 202,
+  "clean": 768,
+  "unmapped": 33
+ },
+ "coverage_tokens_registry_only": {
+  "ambiguous": 202,
+  "clean": 768,
+  "unmapped": 33
+ },
+ "crosswalk_stats": {
+  "candidate_only_pairs": 219,
+  "confidence_breakdown": {
+   "high": 372,
+   "low": 390
+  },
+  "conflict_p_signs": 209,
+  "conflict_pairs": 383,
+  "known_conflicts_from_candidates_file": [
+   {
+    "conflicting_claims": "P147 claimed by phase51 output, phase56 master_crosswalk, and phase65 SUPPLEMENTARY_MAP ('elephant = Parpola P147'); v1 allograph_families also lists P147 in the fish family. Not resolvable in-repo; crosswalk entry left unchanged.",
+    "in_crosswalk": "P103 (Phase-96 animal-sign table, Parpola 1994 App. B)",
+    "sign": "M045"
+   },
+   {
+    "conflicting_claims": "phase51/phase56 phoneme-derived tables additionally claim identity/other numbers (M006<-P6, P364; M062<-P62, P126; M039<-P39). Those tables encode phoneme equivalence in part, not pure sign identity; crosswalk entries left unchanged.",
+    "in_crosswalk": "P101/P105/P104 (Phase-96 animal-sign table)",
+    "sign": "M006/M039/M062"
+   },
+   {
+    "conflicting_claims": "phase56 master_crosswalk also claims M087<-P311. Left unchanged.",
+    "in_crosswalk": "P87",
+    "sign": "M087"
+   },
+   {
+    "conflicting_claims": "phase51/phase56 also claim M047<-P53 (allograph/phoneme relative). Canonical P47 retained.",
+    "in_crosswalk": "P47",
+    "sign": "M047"
+   }
+  ],
+  "m_signs_covered": 412,
+  "m_signs_unmapped": 0,
+  "n_pairs": 762,
+  "n_rows": 766,
+  "p_signs_covered": 412,
+  "p_signs_unmapped": 4,
+  "pairs_by_source": {
+   "candidates_unadmitted": 220,
+   "canonical_registry": 372,
+   "crosswalk_v2": 171,
+   "mayig_features": 372
+  },
+  "relation_breakdown": {
+   "1:1": 352,
+   "many-to-many": 266,
+   "many-to-one": 66,
+   "one-to-many": 78,
+   "unmapped": 4
+  }
+ },
+ "mayig_layer": {
+  "keying": "Inscriptions keyed by CISI object ID (e.g. 'M-1'); side IDs (e.g. 'M-1A') retained per record.",
+  "layer": "mayig_cisi_layer_v1",
+  "license": "MIT (LICENSE in source repo root: 'MIT License, Copyright (c) 2024 Michael Carlson' \u2014 verified from the LICENSE file at acquisition, 2026-10-08)",
+  "lineage": "Hand digitisation of the printed CISI volumes (Parpola P-numbering, Parpola 1982 allographs, Wells 2015 cross-match features). Independent transcription lineage vs the held Holdat / Mahadevan IC77 / ICIT extractions, over a substantially overlapping artefact population; deduplicate by CISI artefact ID before any independence claim.",
+  "n_distinct_signs": 182,
+  "n_inscriptions": 179,
+  "n_objects": 179,
+  "n_sign_tokens": 1003,
+  "n_source_files": 179,
+  "ordering": "Tokens in the source's own order (graphemes recorded left-to-right on the artefact side; script read right-to-left per the mayig README). No adapter reverses a sequence.",
+  "phase": 122,
+  "provenance_record": "research_notes/indus-data-deep-sweep-20261008/downloads/PROVENANCE.md entry 1",
+  "source_commit": "ad2f1e218a34b8c33c57de0d6cb8d99272765bbb",
+  "source_commit_date": "2025-04-16",
+  "source_repo": "https://github.com/mayig/indus-valley-script-corpus"
+ },
+ "phase": 122,
+ "top_failure_signs": [
+  [
+   "P122",
+   76
+  ],
+  [
+   "P086",
+   35
+  ],
+  [
+   "P000",
+   19
+  ],
+  [
+   "P123",
+   13
+  ],
+  [
+   "P332",
+   11
+  ],
+  [
+   "P268",
+   11
+  ],
+  [
+   "P121",
+   10
+  ],
+  [
+   "P126",
+   6
+  ],
+  [
+   "P076",
+   6
+  ],
+  [
+   "P201",
+   5
+  ],
+  [
+   "P091",
+   5
+  ],
+  [
+   "P204",
+   4
+  ],
+  [
+   "P124",
+   4
+  ],
+  [
+   "P355",
+   4
+  ],
+  [
+   "P125",
+   4
+  ]
+ ]
+}

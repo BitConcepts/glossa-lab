@@ -1,0 +1,17 @@
+{
+ "keying": "Inscriptions keyed by CISI object ID (e.g. 'M-1'); side IDs (e.g. 'M-1A') retained per record.",
+ "layer": "mayig_cisi_layer_v1",
+ "license": "MIT (LICENSE in source repo root: 'MIT License, Copyright (c) 2024 Michael Carlson' \u2014 verified from the LICENSE file at acquisition, 2026-10-08)",
+ "lineage": "Hand digitisation of the printed CISI volumes (Parpola P-numbering, Parpola 1982 allographs, Wells 2015 cross-match features). Independent transcription lineage vs the held Holdat / Mahadevan IC77 / ICIT extractions, over a substantially overlapping artefact population; deduplicate by CISI artefact ID before any independence claim.",
+ "n_distinct_signs": 182,
+ "n_inscriptions": 179,
+ "n_objects": 179,
+ "n_sign_tokens": 1003,
+ "n_source_files": 179,
+ "ordering": "Tokens in the source's own order (graphemes recorded left-to-right on the artefact side; script read right-to-left per the mayig README). No adapter reverses a sequence.",
+ "phase": 122,
+ "provenance_record": "research_notes/indus-data-deep-sweep-20261008/downloads/PROVENANCE.md entry 1",
+ "source_commit": "ad2f1e218a34b8c33c57de0d6cb8d99272765bbb",
+ "source_commit_date": "2025-04-16",
+ "source_repo": "https://github.com/mayig/indus-valley-script-corpus"
+}

@@ -1387,3 +1387,76 @@ suite 758 passed / 13 skipped / 0 failed; foundation check
 **AI disclosure:** execution recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## [2026-10-07] Entry — Phase-118 (spec 017): Within-Compilation Validation Battery v2 (W1-primary redesign) — DESIGNED + EXECUTED under one commission, BATTERY REJECTED at calibration
+
+Spec 017 was commissioned by the owner 2026-10-07 ("Commission
+spec 017 — W1-primary redesign") covering design and execution
+in one authorization, after spec 016's battery was rejected at
+Phase-117 calibration. Design frozen in its own commit
+(8c0d93a3) before any Phase-118 statistic existed; Appendix A
+finalized in the following commit (9d9d037e); branch stacked on
+PR #75's branch `phase/117-within-compilation-battery`.
+
+The redesign, from Phase-117's recorded diagnosis: W1
+split-half positional cross-fit PRIMARY, carried verbatim
+(frozen seed-117 partition; T2a thresholds unretuned); W3
+junction coherence rebuilt cross-fit — junction model and
+phi_d (10th percentile, type-7, of STRICT94 cross-fit
+self-scores per direction) derived on the opposite partition
+half, the leave-one-out-minus-self reference abolished,
+donor-permutation null (B = 999) retained per direction with
+median-donor bands (PASS_d: score >= phi_d and p_d <= 0.50;
+FAIL_d the mirror), per-direction junction floor 2; W4
+verbatim as FAIL-guard only; W2 remains dropped. Judgeability
+frozen as count properties (J94 = 67, JKUR = 29, asserted at
+run time and held). Gates with teeth: positive — VALIDATED
+share over J94 >= 0.50 (|J94| >= 50); negative — over JKUR,
+VALIDATED = 0 AND DEMOTE share >= 0.25, so universal
+indeterminacy fails the gate instead of passing it (spec
+016's recorded defect). Decision rule: VALIDATED iff W1 PASS
+and W3 PASS and no FAIL; §9 carried over verbatim in
+substance (validated_within_compilation; never independent
+validation; provenance unaltered; no promotion, ever).
+
+Execution: implementation + 12 unit tests (toy coherent
+validates / incoherent demotes; H23 node
+IndusPhase118WithinCompilationValidation registered before
+any run). Frozen assertions held: partition A 3,531 / B 3,471;
+J94 = 67; JKUR = 29. phi: modelA->scoreB -7.192755 (n = 83);
+modelB->scoreA -7.088781 (n = 89). Calibration — STRICT94:
+VALIDATED 14 / DEMOTE 21 / UNRESOLVED 59; per-instrument
+(PASS/FAIL/INDETERMINATE): W1 63/5/26; W3 22/11/61; W4
+44/10/40. Positive gate FAILED: VALIDATED over J94 =
+14/67 = 0.2090 (required >= 0.50). KUR113: VALIDATED 0 /
+DEMOTE 0 / UNRESOLVED 113; over JKUR: VALIDATED 0, DEMOTE
+0/29 = 0.0000 (required >= 0.25), UNRESOLVED 29. Negative
+gate FAILED on its discrimination clause. Verdict: BATTERY
+REJECTED at calibration. FLAGGED44 was never run; the anchors
+file was not modified; no change register exists; all 44
+remain `pending_non_sa_validation`; tier counts unchanged
+(166 HIGH / 5 MEDIUM / 3 LOW / 113 CANDIDATE); strict core 94;
+Holdat H+M coverage 0.7368 unchanged.
+
+Diagnosis (measured, not post-hoc speculation): the cross-fit
+rebuild repaired W3's PASS leg on the core (PASS 3 -> 22) but
+the both-directions conjunction still leaves most core signs
+INDETERMINATE (61/94), and the negative control exposed the
+deeper limit: in 0 of 58 JKUR direction records is the
+cross-fit score below phi_d, while every judgeable p-value is
+>= 0.579 (median 0.653) — the donor leg separates `kur` from
+the core's fabric but the absolute leg never fires, because
+the `kur` phoneme pair occupies high-probability junction
+cells (the coarse-fabric limit registered in spec §10). The
+negative gate failed rather than passing vacuously, which is
+the behavior spec 017 §6 was designed to force. No re-tuning
+under spec 017; a successor battery requires a new spec, and
+the genuinely independent corpus route remains the other
+Phase-116-licensed branch. Determinism verified: two
+executions byte-identical except run_utc. Verification:
+suite 770 passed / 13 skipped / 0 failed; foundation check
+40 / 0 / 8; ruff clean.
+
+**AI disclosure:** design and execution recorded by an AI
+agent (Muse Spark, via Muse) at the direction of Tristen
+Pierson, per constitution §VI.

@@ -2690,3 +2690,174 @@ registry block, H23 pattern).
 adjudicator) and this record were executed by AI agents
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution §VI.
+
+## 2026-10-09 — Zenodo v4.5.0 published (Spec 023 + Phase-132 closeout) + OSF registry update — owner-ordered program ITEM 1
+
+Publication: Zenodo **v4.5.0**, record **23266588**, DOI
+**10.5281/zenodo.23266588** (concept DOI
+10.5281/zenodo.20379070), published 2026-10-09. New version
+created from the v4.4.0 record 23261517 via the API route
+(custom.zenodo connector); the draft carried no `dates`
+stub (checked: null), all 9 inherited files were deleted
+and the 10-file curated set was uploaded fresh from the
+gated staging directory, metadata set to version 4.5.0 /
+publication_date 2026-10-09 with a description summarising
+the Spec 023 / Phase-132 outcomes, negatives verbatim
+(frozen stop-rule FIRED — exact-sequence agreement 0.20
+vs the 0.80 floor; release gates all fail; pilot dataset
+NOT published; program closeout to watch-and-respond).
+
+Release sources (PR #102, merged 4ff4cca2; gate-record
+PR #103, merged 573412cb; both 7/7 CI green before
+merge): new program note
+`glossa-corpus/indus/pierson_2026_indus_program_note_132_closeout.md`
+(precedent location of the pierson_2026 notes) covering
+Spec 023 + Phase-132 with all outcomes verbatim plus the
+program closeout statement; `outputs/RELEASE_VALIDATION.json`
+gained a release_v4_5_0 entry (Spec 023 / Phase-132
+outcomes + program closeout; suite re-verified at
+a6577d7f: 994 passed / 12 skipped / 0 failed, CI
+configuration in the release worktree — GitHub CI run
+37942349547 on the a6577d7f merge commit was green;
+foundation check re-verified 40 passed / 0 failed /
+8 warnings in the same worktree).
+
+Mandatory release gate (docs/RELEASE_CHECKLIST.md),
+`backend/scripts/release_gate.py`, manifest
+release_manifest_450.json (10 entries), run against a
+clean checkout of the final merged tree (source commit
+**573412cbac0b75e09bfb52b171e0f07f17ae42cb**; release
+sources 4ff4cca2; phase-results sources c789f7ad and
+a6577d7f): **PASS — 10/10 entries OK, 0 failed**,
+exit 0. Per-file (staged sha256 == source sha256 for
+every MATCH):
+
+| File | Status | sha256 |
+|---|---|---|
+| RELEASE_VALIDATION.json | MATCH | e67d14659406d6da67e4f300ca65a5c7aec5b36447710b7539123bfdf4d74536 |
+| INDUS_FINAL_ANCHORS.json | MATCH | eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed |
+| pierson_2026_indus_program_note_132_closeout.md | MATCH | d88f0a9b4526c31bce36223bdc91b55be81677ad683378db31da6fccd8eb8729 |
+| pierson_2026_indus_program_note_127_131.md | MATCH | 326f88072ba2382cfd7c3ffe320e77fb9ce1357cbf9e9455f55793292ac864a5 |
+| pierson_2026_indus_program_note_120_126.md | MATCH | 2d61c13647d84426d9a32c83aa2055c5eb8cd220de3254ac4db95b09e41bd4d6 |
+| pierson_2026_indus_harmonization_note_116.md | MATCH | a7236ce058cbb36ac737f970f0e786f9ab6f24c92d1dbd0828725332433fcf92 |
+| pierson_2026_indus_methods_note_111_112.md | MATCH | fdcd47704a8e023daaa81d560af79ed0af5b4115f54925600c02c71fa8dee830 |
+| pierson_2026_indus_decipherment_addendum_v5.md | MATCH | b2818df804402e2e76bdcea53000b806eb7a36442ff6270e437da53e8fc7a8dc |
+| AUDIT_CORRECTIONS.json | MATCH | 567ff7ada347c083b633d8b6709a8620832d3ffe9c1a6e67f07bcb31d9582a80 |
+| pierson_2026_indus_preprint_v3.pdf | EXTERNAL | cfa25287b30958e024988a1bf280266d880b07d3feef2215e892315bdcd0162a |
+
+The EXTERNAL entry is the built preprint v3 PDF, carried
+forward byte-identical from v4.4.0 (record md5
+b552851dbf86a8edebeb9f84d982d878; the repo holds the v4
+PDF + stable .tex, not the v3 build).
+
+Post-deposit confirmation (checklist §4): the published
+record 23266588 was re-pulled from the Zenodo API; its
+10 files' record MD5s each equal the gated staged
+files' MD5s — RELEASE_VALIDATION.json
+0dd6f48ba071252fc61dcb725cb9c2d8; INDUS_FINAL_ANCHORS.json
+00fde4dbf2ee6cbf96d020cba12ce043; note 132_closeout
+093ae180ac7a3c9cd44421ca69a8159f; note 127_131
+0350788f6912e8c72d463ecccb9ba9bb; note 120_126
+ee3397333bd11eea155b983f6293fa89; harmonization
+90d6b442fb8be605ccba2acbfcab67d6; methods
+864369942b58dbac1c73f3ffa4a73845; addendum v5
+48da2a8462eb5eb881057a18a3f2cbe1; AUDIT_CORRECTIONS
+c0202c43dfc6ae3c83ca39e52f75e012; preprint v3 PDF
+b552851dbf86a8edebeb9f84d982d878. 10/10 confirmed.
+
+OSF registry (osf.io/ybd65) updated the same day: dated
+v4.5.0 blocks appended to the parent project and to
+Components 1 (Outputs, vwa7s) and 2 (Corpora, dfrhz),
+each verified by re-reading; Component 3 (Literature,
+zbh86) unchanged — no new literature was used.
+
+**AI disclosure:** this entry and the release execution
+were performed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution §VI.
+
+## 2026-10-09 — Indus program posture: WATCH-AND-RESPOND (owner decision)
+
+Owner decision (Tristen Pierson, 2026-10-09): the
+Indus program is set to **watch-and-respond** posture.
+This entry records the closed lines, the named
+triggers, the response path, and the standing state.
+
+**(a) CLOSED LINES.**
+(i) *Within-compilation validation batteries* — already
+closed 2026-10-07 (see the closure entry of that date;
+cross-referenced here, not re-closed): specs
+011/014/016/017 (Phases 113/115/117/118) all rejected
+at their calibration gates; no anchor ever received a
+within-compilation validation; no further battery
+redesign is authorized.
+(ii) *Cross-compilation positional attribution* —
+CLOSED. The Phase-125 verdict (FAIL — DISAGREEMENT)
+stands final. Phase-127 showed the disagreement is not
+a sampling artifact (matched-size null median TV
+0.082613 vs observed 0.636931; 0 of 999 replicates
+reached the observed median). Phase-131 (spec 022)
+attributed only a composition share of 0.061321,
+leaving a residual unexplained share of 0.938679, with
+the segmentation, substitution, and
+insertion-deletion shares NOT ESTIMABLE because the
+legitimate matched-object join does not exist (4
+matched pairs, 0 exact; Holdat's `cisi_number` is
+internal sequential numbering, not a CISI key).
+Reopening requires a legitimately keyed corpus layer,
+which is external-data-dependent.
+(iii) *Keyed transcription-layer build* — STOPPED AT
+PILOT. Spec 023's Stage P pilot (Phase-132) fired its
+frozen stop-rule (exact-sequence agreement 0.20 vs the
+0.80 floor; error arm not fired) and all three release
+gates failed, so no dataset was published. No Stage T
+is proposed, scoped, or scheduled. A retry would
+require a new owner decision **and** a materially
+different transcription basis (e.g. human expert
+transcription) — not a parameter change to the stopped
+design.
+
+**(b) POSTURE — WATCH-AND-RESPOND.** The program takes
+no new internal study initiative. It responds to these
+named triggers only:
+(1) any reply to the 2026-10-08 letters — the RMRL
+concordance request and the RMRL graffiti request
+(both to R. Balakrishnan, Indus Research Centre,
+RMRL), the Mitra/Dixit data request (Dixit et al.
+2025 image-derived transcriptions), and the
+Tiedekirja digital-CISI enquiry (Vols. 3.1/3.2/3.3);
+(2) any hit from the weekly `indus-data-watch` —
+Mahadevan Chair concordance, CISID release, Dixit
+dataset deposit, CISI Vol. 3.4, Lothal 2025 seals,
+Rakhigarhi report, Keeladi report, and any complete
+digital CISI volume (3.1/3.2/3.3) appearing anywhere;
+(3) GitHub Support ticket **#4838529** completion
+(garbage collection after history purge #2) → verify
+the pre-purge-#2 main commit `9ef78ca6` returns
+HTTP 404 (404 = the commit is gone after garbage
+collection) and record the closeout in these ledgers.
+Response path for any data trigger: the Phase-130
+intake pack (provenance capture → license gate →
+dedup → spec-018 evaluability classification) →
+report to the owner **before** any study is designed.
+No study, battery, or PRED scoring runs without fresh
+owner authorization.
+
+**(c) STANDING STATE.** PRED-2026-001, PRED-2026-002,
+and PRED-2026-003 remain **PENDING**, awaiting a
+qualifying independent corpus under the frozen
+spec-018 evaluability matrix. The 44 anchors remain
+`pending_non_sa_validation`. The strict SA-free core
+(94 readings, 73.68% corpus coverage) stands as a
+hypothesis, not a validated decipherment.
+Library-loan / document-delivery activity remains on
+owner hold (2026-10-08). The pre-purge-#2 backup
+mirror (`~/workspace/glossa-run/glossa-lab-backup-20261008-prepurge2.git`,
+outside the repo) is retained pending its own owner
+order. Standing watches verified live at this entry:
+`glossa-backend-watchdog` (interval 20m, enabled) and
+`indus-data-watch` (weekly, Wednesdays ~10:39 user
+tz, enabled); their schedules are unchanged.
+
+**AI disclosure:** this entry was recorded by an AI
+agent (Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.

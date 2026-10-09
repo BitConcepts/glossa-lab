@@ -83,7 +83,13 @@
 - **T7.** Stage 1 freeze (sample rule + seed,
   codebook from §4.3 categories, gates from §4.5
   with owner values, coder basis per Decision
-  Ask 3).
+  Ask 3). — **DONE 2026-10-09 (Phase-134)**:
+  owner go given 2026-10-09 ("Approve the Stage 1
+  motif-coding pilot"); freeze record at
+  `stage1-freeze.md` in this directory (frame
+  rule + seed `phase134-20261009`, premise
+  correction of record on the sample population,
+  codebook as frozen, metric definitions).
 - **T8.** Blinded double coding + adjudication;
   disagreement log preserved; gold-subset drift
   measurement; AI disclosure attached if applicable.

@@ -883,6 +883,98 @@
    "warnings": 8,
    "run": "Run 2026-10-09 in the v4.7.0 release worktree at 11e70c98 (corpora symlinked): 40 checks passed, 0 failed, 8 warnings."
   },
+  "release_gate": {
+   "verdict": "PASS",
+   "tool": "backend/scripts/release_gate.py per docs/RELEASE_CHECKLIST.md",
+   "checklist": "Zero-fabrication release checklist (docs/RELEASE_CHECKLIST.md)",
+   "run_date": "2026-10-09",
+   "source_commit": "e698cff2",
+   "source_commit_note": "All staged files were copied from a clean worktree of the merged PR #113 commit e698cff2 (the v4.7.0 note + RELEASE_VALIDATION entry) before deposit; the publication sequence follows docs/RELEASE_CHECKLIST.md.",
+   "manifest": "release_manifest_470.json (18 entries)",
+   "files": {
+    "RELEASE_VALIDATION.json": {
+     "sha256": "7120e2108ce1e216cee3d5dbc2727fd7f556cfc6ccb767f2822647cc14361a9e",
+     "md5": "ccede7d05d0836c14c6873fa22911aa9"
+    },
+    "INDUS_FINAL_ANCHORS.json": {
+     "sha256": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+     "md5": "00fde4dbf2ee6cbf96d020cba12ce043"
+    },
+    "AUDIT_CORRECTIONS.json": {
+     "sha256": "567ff7ada347c083b633d8b6709a8620832d3ffe9c1a6e67f07bcb31d9582a80",
+     "md5": "c0202c43dfc6ae3c83ca39e52f75e012"
+    },
+    "pierson_2026_indus_program_note_134_135_motif.md": {
+     "sha256": "cb09fbea190d1c47cdd48309f9f9c63093f19494c73fa0267757861be59cd5d1",
+     "md5": "672e3fe09a8be8a40eb4f7c9dcc0ca13"
+    },
+    "pierson_2026_indus_program_note_133_stage0.md": {
+     "sha256": "f58f2363956029ae777b0ecc8e5f01748df4f4329cc7aeb03e6d43b2d9467e4e",
+     "md5": "6eaf9a63632525e812160d198f5c5241"
+    },
+    "pierson_2026_indus_program_note_132_closeout.md": {
+     "sha256": "d88f0a9b4526c31bce36223bdc91b55be81677ad683378db31da6fccd8eb8729",
+     "md5": "093ae180ac7a3c9cd44421ca69a8159f"
+    },
+    "pierson_2026_indus_program_note_127_131.md": {
+     "sha256": "326f88072ba2382cfd7c3ffe320e77fb9ce1357cbf9e9455f55793292ac864a5",
+     "md5": "0350788f6912e8c72d463ecccb9ba9bb"
+    },
+    "pierson_2026_indus_program_note_120_126.md": {
+     "sha256": "2d61c13647d84426d9a32c83aa2055c5eb8cd220de3254ac4db95b09e41bd4d6",
+     "md5": "ee3397333bd11eea155b983f6293fa89"
+    },
+    "pierson_2026_indus_harmonization_note_116.md": {
+     "sha256": "a7236ce058cbb36ac737f970f0e786f9ab6f24c92d1dbd0828725332433fcf92",
+     "md5": "90d6b442fb8be605ccba2acbfcab67d6"
+    },
+    "pierson_2026_indus_methods_note_111_112.md": {
+     "sha256": "fdcd47704a8e023daaa81d560af79ed0af5b4115f54925600c02c71fa8dee830",
+     "md5": "864369942b58dbac1c73f3ffa4a73845"
+    },
+    "pierson_2026_indus_decipherment_addendum_v5.md": {
+     "sha256": "b2818df804402e2e76bdcea53000b806eb7a36442ff6270e437da53e8fc7a8dc",
+     "md5": "48da2a8462eb5eb881057a18a3f2cbe1"
+    },
+    "phase133_stage0_inventory.json": {
+     "sha256": "1d0a3d6cb21ddc0a5b9625f57f026d302454770118e5f117a9d912a057473614",
+     "md5": "93282a90e82982b8cad10f75d4a68013"
+    },
+    "phase133_stage0_inventory_meta.json": {
+     "sha256": "e5d21392d262a3a3cf6e18e153dddd420b64454d8b44fc8554fb96dc680bc1da",
+     "md5": "ceba3e5210fd3140bd77eade1f9eb1f6"
+    },
+    "phase134_pilot_dataset.json": {
+     "sha256": "686886d4189d01b9e2f83ceb32a7292a7b1ebcdebb6b6aaa63cff9eb961c86f7",
+     "md5": "98633156ddddf6f8d611261bdc490684"
+    },
+    "phase134_pilot_dataset_meta.json": {
+     "sha256": "8090f611b2ea1a4b22e422c9329b4b84a78e0749b24dea8547b284cf59be77f1",
+     "md5": "92ff19eb53bf6c4e619738a82860bbc5"
+    },
+    "phase135_pilot_dataset.json": {
+     "sha256": "d1ed6ab381384626a4bb7d47380f6712c4f1c45e46330571fa9625243d8057f0",
+     "md5": "40c437a941b038ba60478ad74a808db7"
+    },
+    "phase135_pilot_dataset_meta.json": {
+     "sha256": "41a8913e7490389e2bc21f0f966fafac54b46a094437dd6124b424f9cefad19e",
+     "md5": "65457114ed2afd9d3c61db283e683baa"
+    },
+    "pierson_2026_indus_preprint_v3.pdf": {
+     "sha256": "cfa25287b30958e024988a1bf280266d880b07d3feef2215e892315bdcd0162a",
+     "md5": "b552851dbf86a8edebeb9f84d982d878"
+    }
+   },
+   "deposit": {
+    "provider": "Zenodo",
+    "record_id": 23270096,
+    "doi": "10.5281/zenodo.23270096",
+    "concept_doi": "10.5281/zenodo.20379070",
+    "version": "4.7.0",
+    "post_deposit_md5_confirmation": "18/18 deposited files' MD5 checksums match the staged files (verified from the provider record after publication)"
+   },
+   "release_validation_json_note": "The staged RELEASE_VALIDATION.json (sha256 7120e2108ce1e216cee3d5dbc2727fd7f556cfc6ccb767f2822647cc14361a9e) is the file at source commit e698cff2, which contains the v4.7.0 entry WITHOUT this release_gate record. The repository copy additionally contains this record (it is the file at the gate-record merge commit), so the repository hash differs from the staged hash above by the addition of this section alone. The final gate run, against the merged gate-record commit, is recorded with its verdict and counts in the repo ledger entry for this release. This is the same self-reference pattern used by v4.4.0, v4.5.0, and v4.6.0."
+  },
   "phase_outcomes": {
    "spec_024_stage1_combined_path": {
     "owner_order": "Run the combined path \u2014 clarify the boundary, re-pilot fresh, freeze Stage 2(b) only if the gates pass, publish the combined record (Tristen Pierson, 2026-10-09)",

@@ -155,6 +155,28 @@
   PASS 18/18); post-deposit checksums confirmed
   18/18; OSF registry updated the same day.
 
+## Stage 1 — Motif arm closure (owner decision 2026-10-09)
+
+- **T9f.** Motif-arm closure record. Owner decision
+  2026-10-09: paths (b) AND (c) together — the arm
+  rests now on its published two-pilot record, and
+  path (b) is preserved as the sole reopening
+  condition. — **CLOSED 2026-10-09**: the motif arm
+  is closed as run on the AI-coder basis
+  (Phase-134: 0.84 / κ 0.7885, MIDDLE BAND;
+  Phase-135: 0.78 / κ 0.7129, MIDDLE BAND;
+  Zenodo v4.7.0, DOI 10.5281/zenodo.23270096);
+  no Stage 2(b) design exists or is authorized.
+  Reopening ONLY under a new owner decision AND
+  human expert coders (path (b)), clarified
+  codebook (`stage1-freeze-2.md`), fresh sample,
+  identical frozen gates; a third AI-basis pilot is
+  expressly not a reopening path. Record:
+  `motif-arm-closure.md` in this directory.
+  T7–T9e stand as executed above; nothing in this
+  closure alters them, and Stage 2 arms (a), (c),
+  (d) are unaffected.
+
 ## Stage 2 — Association tests (each its own freeze; spec §5)
 
 - **T10.** Family declaration + first test freeze

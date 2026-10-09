@@ -1,20 +1,21 @@
-# Tasks — Spec 023 / Keyed Transcription Layer over CISI Vols. 1–2 (PROPOSAL)
+# Tasks — Spec 023 / Keyed Transcription Layer over CISI Vols. 1–2
 
-> **DRAFT — PROPOSAL FOR OWNER ADJUDICATION — NOT
-> FROZEN.** Every task below is prospective and
-> unchecked. No task may be started until the owner
-> approves spec 023 and the freeze commit (T0) is
-> recorded. Task numbering assumes the build takes
-> the next ledger phase number at freeze.
+> **FROZEN 2026-10-09** with spec 023 (owner:
+> Tristen Pierson — "merge #99 and execute the new
+> plan"). The build is **Phase-132** (Stage P pilot).
+> Stage T tasks are written only after the post-pilot
+> owner decision (T9).
 
 ## Pre-freeze (owner)
 
-- [ ] T0 Owner adjudication of spec §11 Decision
-  Asks 1–5; approved values written into the spec;
-  DRAFT banner replaced by freeze header; frozen
-  spec committed alone.
+- [x] T0 Owner adjudication of spec §11 Decision
+  Asks 1–5 — answered 2026-10-09 with the proposed
+  values as drafted (recorded in spec §11 freeze
+  record and §5.6 freeze block); DRAFT banner
+  replaced by freeze header; frozen spec committed
+  alone (this commit).
 
-## Stage P — Pilot (proposed; starts only after T0)
+## Stage P — Pilot = Phase-132 (starts only after T0)
 
 - [ ] T1 Frame draw: deterministic ~50-object pilot
   frame per spec §3.1 (strata 25/15/10; ~10

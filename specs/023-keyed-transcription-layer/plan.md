@@ -1,12 +1,12 @@
-# Plan — Spec 023 / Keyed Transcription Layer over CISI Vols. 1–2 (PROPOSAL)
+# Plan — Spec 023 / Keyed Transcription Layer over CISI Vols. 1–2
 
-> **DRAFT — PROPOSAL FOR OWNER ADJUDICATION — NOT
-> FROZEN.** This plan describes the approach that
-> *would* be executed if the owner approves spec 023
-> (in whole or amended) and the spec is frozen under
-> a separate freeze commit. Nothing in this plan is
-> authorized yet, and no task in tasks.md may be
-> started on the authority of this document.
+> **FROZEN 2026-10-09** with spec 023 (owner:
+> Tristen Pierson — "merge #99 and execute the new
+> plan"; all §11 decision asks answered with the
+> proposed values as drafted). This plan describes
+> the approved approach. The build is Phase-132
+> (Stage P pilot); Stage T remains gated on a
+> separate post-pilot owner go.
 
 ## Approach (proposed)
 

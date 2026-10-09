@@ -1,37 +1,42 @@
-# Spec 023 — Keyed Transcription Layer over CISI Vols. 1–2 (PROPOSAL)
+# Spec 023 — Keyed Transcription Layer over CISI Vols. 1–2
 
-> ## ⚠ DRAFT — PROPOSAL FOR OWNER ADJUDICATION — NOT FROZEN ⚠
+> ## FROZEN — OWNER ADJUDICATION RECORDED 2026-10-09
 >
-> This document is a **proposal**. It has not been
-> approved, it freezes nothing, and it authorizes no
-> work. No transcription, implementation, or study may
-> cite this spec as authority until the owner approves
-> it (in whole or in amended form) and a frozen copy is
-> committed under a separate freeze commit, in the
-> pattern of specs 019 / 021 / 022. Every quantity that
-> is a proposal rather than a fact of record is marked
-> **PROPOSED**. The numbered decision asks in §11 are
-> the complete list of what the owner is being asked
-> to decide.
+> This spec was drafted as a proposal (2026-10-09,
+> PR #99) and is **frozen** by this commit, under the
+> §12 freeze procedure, on the owner's instruction of
+> record: **Tristen Pierson, 2026-10-09 — "merge #99
+> and execute the new plan."** That instruction
+> answers all five §11 decision asks **with the
+> proposed values as drafted**, recorded verbatim in
+> §11 (freeze entries). The build takes ledger phase
+> number **Phase-132** (Stage P pilot). Stage T is
+> approved in principle only; it requires its own
+> separate owner go after the pilot report (§3.2,
+> Decision Ask 2). The frozen operational estimator
+> deferred to this commit by §5.6 is stated in §5.6
+> (freeze block). No other content of the proposal
+> text is altered by the freeze.
 
-**Status:** DRAFT PROPOSAL, drafted 2026-10-09 on
-`spec/023-keyed-transcription-layer` (from origin/main
-`a5b69c0b`). Owner instruction of record: "Draft the
-Spec 023 keyed transcription-layer proposal"
-(2026-10-09). The facts of record cited below are
-quoted from committed results (Phase-124 / 125 / 127 /
-128 / 131 reports and results JSONs; spec 018; the
-Phase-130 intake pack) or computed at drafting time
-from the Phase-124 local catalogue files, with the
-computation stated where it occurs (Appendix A).
-No transcription has been performed under this
-proposal and no new statistic about any inscription
-appears in it.
+**Status:** FROZEN 2026-10-09 (freeze commit on
+`spec/023-keyed-transcription-layer`, PR #99, merged
+on freeze). Drafted 2026-10-09 from origin/main
+`a5b69c0b` on the owner instruction "Draft the
+Spec 023 keyed transcription-layer proposal"; frozen
+on the owner instruction "merge #99 and execute the
+new plan" (2026-10-09). The facts of record cited
+below are quoted from committed results (Phase-124 /
+125 / 127 / 128 / 131 reports and results JSONs;
+spec 018; the Phase-130 intake pack) or computed at
+drafting time from the Phase-124 local catalogue
+files, with the computation stated where it occurs
+(Appendix A). No transcription had been performed
+under this spec at freeze time and no new statistic
+about any inscription appears in it.
 
-**Phase-numbering note:** this proposal claims **no
-phase number**. It proposes a dataset build, not a
-study. If approved, the build takes the next ledger
-phase number at freeze time, and any study consuming
+**Phase-numbering note:** at drafting this proposal
+claimed **no phase number**; at freeze, the build
+takes **Phase-132** (Stage P). Any study consuming
 the layer takes its own later number and its own
 frozen spec (§12).
 
@@ -267,6 +272,13 @@ pilot is authorized by approval of the pilot.
 
 ### 3.2 Stage T — Targeted tranche (PROPOSED, subject to the scale gate)
 
+> **FREEZE (2026-10-09):** the T1 + T2 shape below,
+> including the 600-object T2 cap, is **approved in
+> principle** (Decision Ask 2, answered as proposed).
+> Stage T itself is **not** authorized by the freeze:
+> it runs only on a separate owner go taken after the
+> Phase-132 pilot report exists.
+
 - **T1 — mayig-overlap core (PROPOSED):** all **179**
   CISI objects corresponding to the mayig layer per
   the Phase-122 mapping, re-transcribed from the
@@ -365,6 +377,10 @@ record declares: which photograph(s) were transcribed
 impression, both where both exist), and the
 **orientation convention applied**: the primary
 sequence is recorded in **impression orientation**
+(**OWNER VALUE AT FREEZE, Decision Ask 5:
+impression-primary, as proposed; the seal-face
+sequence is the derived reversal, never a second
+transcription**)
 (the text as a reader of the stamped impression
 reads it), with the seal-face sequence being its
 exact reversal, derivable mechanically and recorded
@@ -465,6 +481,80 @@ a graded token, not a silent identification.
   owner decision.
 - **Pilot stop-rule** as §3.1 (error > 5% or
   exact-sequence agreement < 80% stops the build).
+
+> **FREEZE BLOCK (2026-10-09) — gates adopted and
+> estimator frozen.** Decision Ask 3 is answered
+> **as proposed**: the release gates above
+> (exact-sequence ≥90%, per-token ≥95%, gold-sample
+> per-sign error ≤2%) and the pilot stop-rule
+> (post-adjudication per-sign error >5% OR
+> exact-sequence inter-pass agreement <80%) are the
+> owner's values, adopted verbatim. Decision Ask 4
+> is answered **as proposed**: a gate-passing stage
+> dataset is published CC BY 4.0 (sequences +
+> metadata only) through the release gate at stage
+> completion. The operational estimator deferred to
+> this commit is frozen as follows.
+>
+> - **Comparison space.** Pass and adjudicated
+>   sequences are compared token-for-token in
+>   P space: each token's value is the crosswalk-v1
+>   primary P counterpart of the sign the transcriber
+>   matched against the program's published-list
+>   reference images (Mahadevan-keyed sign drawings,
+>   `backend/static/signs/`). "Primary counterpart"
+>   is the Phase-122 primary-map rule applied to
+>   crosswalk v1's rows for the matched M: the
+>   highest-confidence row, ties broken by lowest
+>   P number, with **all** candidate rows carried in
+>   the token's §5.3 flag fields (the derivation is
+>   mechanical and identical for every pass, so it
+>   cannot manufacture agreement; list conflicts
+>   remain flagged, never resolved — K4). `UNK`
+>   compares as `UNK`. M-space agreement is computed
+>   and reported as a secondary quantity.
+> - **Exact-sequence agreement.** Per object, 1 if
+>   Pass A and Pass B primary sequences are identical
+>   (IDs incl. `UNK`, declared orientation), else 0;
+>   the rate is the mean over the object set in
+>   scope. The stop-rule applies it over **all**
+>   pilot objects; release gate (i) applies it over
+>   the **gold sample** (§5.6 text above).
+> - **Per-token agreement.** Per object, align the
+>   two sequences by minimum-edit alignment on token
+>   IDs (substitution preferred over
+>   insertion/deletion at equal cost); matches are
+>   aligned equal pairs; the rate is
+>   Σ matches / Σ max(lenA, lenB) over the object set
+>   in scope.
+> - **Gold per-sign error estimator (three-way
+>   decomposition).** For each gold object let S2 be
+>   the two-pass adjudicated sequence and S3 the
+>   three-pass adjudicated sequence (Pass A, Pass B,
+>   and the independent gold pass, adjudicated under
+>   §5.5 rules). Align S2 to S3 under the same
+>   alignment rule. A position **differs** if the
+>   aligned pair's IDs are unequal, or the token
+>   exists on only one side. The estimated
+>   post-adjudication per-sign error rate is
+>   Σ differing positions / Σ max(lenS2, lenS3) over
+>   the gold sample. This estimates the rate at
+>   which a two-pass adjudicated token value changes
+>   under a third independent reading plus
+>   adjudication; errors identical across all three
+>   passes are invisible to it (stated limitation,
+>   reported with the estimate). The stop-rule's
+>   "post-adjudication per-sign error rate" is this
+>   estimator; release gate (iii) is this estimator.
+> - **Gold sample selection.** Random 20% of the
+>   stage's objects, drawn by the frame code with
+>   recorded seed **20261009** (pilot).
+> - **Transcriber identity.** Passes, the gold pass,
+>   and adjudication are executed by AI agents in
+>   role-isolated blinded instances (pass_a, pass_b,
+>   pass_gold, adjudicator), per the AI disclosure
+>   and §5.6's measurability requirement; role IDs
+>   are the §6 `provenance.transcriber` values.
 
 ## 6. Data model — intake schema v1 conformance
 
@@ -723,6 +813,23 @@ artifact that attaches one before the pilot report
 exists misstates the record.**
 
 ## 11. Decision asks — exactly what the owner is asked to approve
+
+> **FREEZE RECORD (2026-10-09).** All five asks were
+> answered by the owner, Tristen Pierson, on
+> 2026-10-09 ("merge #99 and execute the new plan"),
+> **with the proposed values as drafted**:
+> (1) Pilot — **GO** as specified in §3.1, stop-rule
+> included. (2) Tranche scope — **approved in
+> principle** (T1 + T2 shape, 600-object cap); Stage
+> T still requires its separate post-pilot go.
+> (3) Quality gates — **adopted as proposed** in
+> §5.6 (release gates ≥90% / ≥95% / ≤2%; stop-rule
+> >5% / <80%). (4) Publication form — **approved in
+> principle as proposed**: gate-passing stage
+> datasets published CC BY 4.0, sequences + metadata
+> only, through the release gate. (5) Orientation —
+> **impression-primary** as proposed in §5.1. The
+> asks below stand as the text that was adjudicated.
 
 1. **Pilot go / no-go.** Approve Stage P as specified
    in §3.1 (~50 objects, stratified frame as stated,

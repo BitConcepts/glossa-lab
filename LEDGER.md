@@ -3209,3 +3209,81 @@ PENDING.
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution §VI.
+
+## 2026-10-09 — Phase-135 (Spec 024): Evidence Integration, Stage 1 Re-Pilot — clarified codebook, fresh sample; exact agreement 0.78, Cohen's κ 0.7129; MIDDLE BAND for the second time; no Stage 2(b) design
+
+Owner approval (Tristen Pierson, 2026-10-09): "Run
+the combined path — clarify the boundary, re-pilot
+fresh, freeze Stage 2(b) only if the gates pass,
+publish the combined record." The clarification
+(freeze record
+`specs/024-evidence-integration/stage1-freeze-2.md`,
+freeze commit `dee4e5c2`, committed before the frame
+was drawn) defines only the legibility boundary:
+five decision rules (B1–B5) for ILLEGIBLE /
+SCRIPT_ONLY / GEOMETRIC and the classifiability
+threshold, distilled from the 16 adjudicated
+Phase-134 disagreements, which are quoted as worked
+examples. The 12-code taxonomy, the precedence
+rule, and every gate threshold are unchanged by
+any amount.
+
+Phase-135 re-pilot, executed under that freeze:
+fresh 100-object stratified frame drawn from the
+frozen §4.2 population (3,245) minus the 100
+Phase-134 frame objects → 3,145 eligible; seed
+`phase135-20261009`; **overlap with the Phase-134
+frame = 0**, asserted at draw time and verified
+independently. Two blinded passes + gold third
+coding of 20 + adjudication of all 22
+disagreements; coders saw the clarified codebook
+only — its worked examples are the sole Phase-134
+material issued to any coder. All roles
+AI-executed with the §VI disclosure; all
+quantities computed by script from the on-disk
+records (verified complete: A 100, B 100, gold 20,
+adjudication 22; fail-loud checks passed on the
+first run). **Deviations: none.**
+
+Results as found: exact agreement **0.78** (78/100),
+Cohen's κ **0.7129** (Pe 0.2338). Frozen §4.5
+gates: proceed gate NOT MET (both arms — agreement
+0.78 < 0.85, κ 0.7129 < 0.75), stop rule NOT FIRED
+→ **MIDDLE BAND, for the second time**. Per
+freeze-2 §5, no Stage 2(b) design is drafted; the
+owner's decision is framed in
+`reports/phase135_pilot_report.md` §8 without a
+recommendation dressed as a verdict.
+
+Measured shifts against Phase-134 (descriptive;
+the pilots differ in sample and codebook, so this
+is not a controlled comparison): ILLEGIBLE usage
+halved (marginals 14/12 vs 27/23), in the
+clarification's intended direction, but
+reproducibility did not follow it — ILLEGIBLE
+per-category agreement fell 0.667 → 0.368, and
+depiction-identity disagreements rose from 6/16 to
+10/22. On a fresh sample under the clarified
+codebook, this pipeline's measured reliability was
+lower, not higher; the Phase-134 reading that the
+disagreement was mostly one definitional boundary
+is not supported by this run. Adjudicated
+distribution (descriptive): SCRIPT_ONLY 38,
+UNICORN 30, ILLEGIBLE 10, GEOMETRIC 8, ELEPHANT 4,
+remainder ≤2; ZEBU and COMPOSITE 0. Gold-subset
+drift: A–B 0.75, A–G 0.90, B–G 0.75, unanimous
+0.75 — no outlier pass. Descriptive concordance
+with unicorn-family motif chapters: 30 sampled,
+26 adjudicated UNICORN (concordance, never
+accuracy).
+
+No association statistic was computed. No anchor
+or PRED change — anchors sha256 eccea6d5…
+unchanged; PRED-2026-001/002/003 remain PENDING.
+Combined motif-arm publication follows as Zenodo
+v4.7.0 per the same owner approval (both pilot
+datasets, codes and logs only, no images).
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.

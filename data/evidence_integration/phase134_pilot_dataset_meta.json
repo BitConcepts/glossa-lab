@@ -1,7 +1,17 @@
 {
   "dataset": "phase134_pilot_dataset.json",
   "provenance": "Motif codes produced by this program's Stage 1 pilot (blinded double coding + adjudication) over CISI Vols. 1-2 photographs in the local store; object metadata (site, object type) from the Phase-124 CISI catalogue (local research material). Images are NOT included and never leave the local store.",
-  "license": "Codes, counts, and metadata in this dataset are this program's own work product; publication beyond the repo is NOT authorized for Stage 1 (stage1-freeze §8) pending an owner decision.",
+  "license": "Codes, counts, and metadata in this dataset are this program's own work product, published CC BY 4.0 with the combined motif-arm record (Zenodo v4.7.0) under the owner's combined-path approval of 2026-10-09 (stage1-freeze-2.md). At Phase-134 freeze time, publication beyond the repo was not yet authorized (stage1-freeze §8); that disposition was superseded by the owner's later approval, recorded here append-only in substance: no code, count, or record in the dataset itself is altered by this note.",
   "recorder_provenance": "pass_a / pass_b / pass_gold / adjudicator — AI agents, blinded role-isolated instances (see ai_disclosure in the dataset).",
-  "ai_disclosure": "All coding roles in this pilot (pass_a, pass_b, pass_gold, adjudicator) were executed by AI agents (Muse Spark, via Muse) in blinded role-isolated instances, at the direction of Tristen Pierson (constitution §VI; spec 024 §4.4). Agreement numbers are properties of this coding pipeline, never of human expert coding."
+  "ai_disclosure": "All coding roles in this pilot (pass_a, pass_b, pass_gold, adjudicator) were executed by AI agents (Muse Spark, via Muse) in blinded role-isolated instances, at the direction of Tristen Pierson (constitution §VI; spec 024 §4.4). Agreement numbers are properties of this coding pipeline, never of human expert coding.",
+  "publication_disposition_history": [
+    {
+      "date": "2026-10-09",
+      "event": "Phase-134 pilot completed; publication beyond the repo NOT authorized (stage1-freeze §8); framed as an owner decision in the pilot report."
+    },
+    {
+      "date": "2026-10-09",
+      "event": "Owner approved the combined path (stage1-freeze-2.md), including publication of the combined motif-arm record as Zenodo v4.7.0; this dataset is deposited under CC BY 4.0 as part of that record."
+    }
+  ]
 }

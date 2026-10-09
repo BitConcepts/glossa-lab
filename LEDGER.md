@@ -2861,3 +2861,197 @@ tz, enabled); their schedules are unchanged.
 **AI disclosure:** this entry was recorded by an AI
 agent (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution §VI.
+
+## 2026-10-09 — Phase-133 (Spec 024): Evidence Integration, Stage 0 Inventory — coverage matrix, join-key audit, provenance grading; facts only, no associations computed
+
+Spec 024 Stage 0 was frozen 2026-10-09 on the owner's
+instruction of record (Tristen Pierson — "Execute the
+plan"; PR #105, merge 467adbcf, freeze fecba9ec). The
+Stage 0 build is Phase-133: a (layer × field) coverage
+matrix over every machine-readable layer in hand, a
+join-key audit with empirical collision counts,
+field-provenance grading (O / C / I) of every field,
+a mayig description-parseability measurement under a
+stated rule, and a descriptive pass over the
+non-machine-readable material. Everything was
+recomputed by backend/scripts/
+phase133_stage0_inventory.py from the local-store
+files; nothing was copied from spec Appendix A —
+Appendix A values are the claims the drift table
+checks. Dataset: data/evidence_integration/
+phase133_stage0_inventory.json (+ _meta.json with
+input paths, sha256 per input, license basis per
+layer). Report: reports/phase133_stage0_report.md.
+Graph node IndusPhase133Stage0Inventory registered
+(additive module + registry block, Phase-132 pattern).
+
+Coverage, as found (243 matrix rows over 9 layers):
+CISI catalogue 7,705 photo rows (Vol. 1: 3,320;
+Vol. 2: 4,385), 22 fields, 3,494 distinct
+volume-scoped objects (1,475 / 2,019); site filled
+94.7% / 92.2%, object_type 95.1% / 96.3%,
+motif_chapter 25.1% / 26.8% (2,005 rows; 909 of
+3,494 distinct objects), material 0% and dimensions
+0% on all 7,705 rows (not printed per object;
+boundary 3; never back-filled). Object types (photo
+rows): Seals 4,778, Tablets 2,180, Graffiti 417,
+Objects 5. Holdat: 7,002 token rows, 19 fields,
+1,670 distinct seal_id; site 100% and iconography
+100% at token level (Class C; 9 values, unicorn
+2,143 tokens / 514 inscriptions); prefix and vowel
+empty on all rows; noun/verb constant 0. Holdat
+semantic-roles table: 151 symbol rows, 15 fields.
+mayig layer: 179 inscriptions / 179 objects, 1,003
+tokens, 182 distinct signs; source corpus 179 files
+/ 179 sides. horus84 (ICIT-lineage): 5,679 rows, 38
+fields (see drift); site 100% raw over 77 values;
+placeholders (-, --, None, ?, 0-in-mm-fields) encode
+absence; row lengths vary 35–38 fields. Museum:
+Met 28 curated objects (medium/dimensions on all
+28), Cleveland 10 records in the acquired search
+file (3 with type Seals), Penn 2 fetched records
+(markdown capture, not machine-readable).
+
+Join-key audit, as found: canonical key
+cisi:v{volume}:{printed_id} re-derived; exactly one
+printed ID (H-311) occurs in both volumes (unscoped
+union 3,493). Within-volume duplicate photo_keys:
+Vol. 1: 8, Vol. 2: 3 (printed IDs legitimately carry
+multiple photo rows: 1,243 / 1,513 IDs with >1 row).
+mayig cisi_object_id: 179/179 matched (all Vol. 1
+only), 0 ambiguous, 0 unmatched — USABLE for these
+values. horus84 cisi: rows matched 2,895 (Vol. 1
+only 1,365; Vol. 2 only 1,530), ambiguous 2 (the
+single distinct value H-311), unmatched 2,782
+(including 662 '-' placeholder rows); distinct
+values 4,074 (matched 2,476, ambiguous 1, unmatched
+1,597) — NOT USABLE as a general join key. Holdat
+cisi_number: PROHIBITED, never joined on; exact
+coincidence with a printed ID 0 rows / 0 distinct
+(zero-padded forms); after zero-stripping only,
+1,355 of 1,670 distinct values coincide with some
+printed ID and all 179 mayig IDs have a zero-padded
+namesake — the Phase-131 fact stands (179 apparent,
+0 validated). Holdat seal_id: intra-layer only,
+1,670 distinct, 2–8 token rows per id. Museum
+cross-reference census (rule: any string value
+containing 'CISI' or 'Corpus of Indus'): 0 of 40
+records (Met 0/28, Cleveland 0/10, Penn 0/2) — no
+museum-to-CISI join counted or performed.
+
+Provenance grading: 243 fields graded — O 207,
+C 7, I 29, each with a one-line reason in the
+dataset. The Class I exclusion list (29 fields,
+named in the report): Holdat corpus letters,
+letter_label_encoded, FormWithoutLemma,
+MorphemeSeparated, morpheme boundary, noun, verb,
+prefix, prefix_label_encoded, vowel, upos, xpos;
+Holdat roles symbol, num_prefixes, num_suffixes,
+num_shells, shell_density, is_starter, is_ending,
+is_known_role, semantic_role; mayig tokens,
+features; mayig source graphemes; horus84 class,
+text, sanskrit, translation, notes. Catalogue
+material/dimensions graded O and recorded 0%-filled
+as printed, never inferred.
+
+mayig parseability (rule declared before
+application: case-insensitive substring match
+against the §4.3-category + Holdat-iconography
+motif-term list and a stated object-type-term list;
+a parse is never ground truth): ≥1 motif term 179,
+≥1 object-type term 179, both 179, neither 0; the
+field contains only 5 distinct descriptions, all
+"unicorn {I–V} seal", so the rate measures the
+field's narrow vocabulary as acquired.
+
+Anomalies recorded, not routed around: (1)
+data/raw/other_sites/holdatllc_seal_catalog.csv is
+not CSV and contains no seal catalogue — it is a
+single-line Ollama /api/tags JSON listing three
+local LLM models (qwen2.5-coder:7b-instruct,
+qwen2.5:14b, mistral-nemo:12b); 0 seal records
+recoverable. (2) Catalogue motif_chapter carries
+spelling variants (unicorm/unicom/unicon/uricorn/
+unico, tigerwithzebu) and Vol. 1 chapter headings
+(SEALS, SEALSIMPRESSIONS) as values, as printed.
+(3) horus84 placeholder conventions and variable
+row lengths. (4) Museum directory holds 74 Met
+object files (search candidates) vs the 28-ID
+curated layer; Cleveland file holds 10 records vs
+its "3 seals" summary.
+
+Non-machine-readable pass (T4): Kodumanal volume
+(152 pp.; Kodumanal report printed pp. 1–50;
+sections incl. Trenches — 15 distinct KML-n labels
+in OCR text — and a dedicated Graffiti Marks
+section describing marks by ware and vessel
+position; its printed graffiti tallies are
+internally inconsistent — subtotals 75+70+70+10 =
+225 under a stated 175, plus a separate "99
+Graffiti marks collected" — quoted as printed prose
+only, used as no counts). Kunal article (15 pp.,
+J-STAGE 2012): stratigraphic prose/plates, no
+tabular record structure; its embedded text layer
+contains 0 alphanumeric characters (NUL glyphs), so
+no machine-readable pass is possible as acquired;
+no counts taken from it.
+
+Appendix A drift: all headline Appendix A numbers
+MATCH as re-measured except three DRIFT items —
+(1) horus84 fields: Appendix A.4 (and §2.4) say 39;
+the acquired header has 38 fields, and A.4's own
+enumerated list names the same 38 — the "39" is a
+miscount in the spec text; (2) Met "4 inscribed
+seals" (A.5) is wording: 4 stamp-seal objects
+(49.40.1–.4), only 49.40.3 titled with
+"inscription"; (3) Cleveland "3 seals" (A.5) is
+presentation: the acquired file is the full 10-record
+search set. One NOT RECOMPUTED item: the Phase-124
+98.9% sample field accuracy (Stage 0 takes no new
+hand sample; the figure stands as a fact of record).
+
+Arm-by-arm feasibility verdicts (§3.5, grounded
+only in the audit; full text in the report): (a)
+terminal-class × object-type SURVIVES IN REDUCED
+FORM on the joined subsets only — mayig joins
+179/179 but all joined objects are Seals (no
+object-type variation); horus84 joins unambiguously
+for 2,895 rows (2,752 with a filled catalogue
+object_type: Seals 1,588, Tablets 1,088, Graffiti
+69, Objects 7) under the mandatory ICIT lineage
+label; Holdat joins 0 and carries no object-type
+field. (b) motif × sequence: NO RECOMMENDATION
+(per §3.5); the motif-bearing fields and the image
+population exist at the proposed ~100-object scale
+(motif_chapter 2,005 rows / 909 objects; Holdat
+iconography complete but Class C; mayig parse
+179/179 on a 5-description vocabulary), and test
+(b) remains gated on Stage 1's separate go and
+proceed gate. (c) site repertoire SURVIVES as a
+coverage proposition — Holdat site over 1,670
+inscriptions at 9 sites (Mohenjo-daro 606, Harappa
+492, Lothal 124, Kalibangan 110, Dholavira 106,
+Chanhu-daro 78, Surkotada 61, Banawali 60,
+Rakhigarhi 33); horus84 site over 5,679 rows at 77
+values; mayig has no site field (176/179 reach a
+site via the catalogue join, all Mohenjo-Daro).
+(d) graffiti comparative SURVIVES ONLY as the
+comparative, descriptive §5.5 sketch — catalogue
+Graffiti 417 photo rows over 395 distinct objects;
+Kodumanal structure as above; the Tamil Nadu
+graffiti corpus is NOT in hand (0 records), never
+pooled (boundary 4), dating-gap caveat stands.
+
+Stage 0 makes no Stage 1 recommendation beyond the
+arm (b) existence facts. T6 (release-gated CC BY
+4.0 publication of the inventory dataset) is
+handled separately by the coordinator and was NOT
+performed by this build; no publication, external
+send, or outreach was made; no images or restricted
+source files are in the change (text/code/JSON
+only). No anchor, reading, or PRED changed:
+anchors sha256 eccea6d5… asserted unchanged.
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.

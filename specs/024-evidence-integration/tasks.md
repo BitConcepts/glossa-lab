@@ -30,24 +30,43 @@
   over the layers of spec §2, emitting the
   (layer × field) matrix of §3.2 as machine-readable
   output, with counts recomputed from the files —
-  never copied from prior reports.
+  never copied from prior reports. — **DONE
+  2026-10-09 (Phase-133)**: builder
+  `backend/scripts/phase133_stage0_inventory.py`;
+  243 (layer × field) rows over 9 layers in
+  `data/evidence_integration/`
+  `phase133_stage0_inventory.json`.
 - **T2.** Join-key audit per §3.3: volume-scoped
   catalogue keys re-derived; mayig and horus84
   candidate keys tested empirically (match /
   ambiguous / unmatched + collision rates);
   `cisi_number` documented as prohibited; museum
-  cross-reference census.
+  cross-reference census. — **DONE 2026-10-09
+  (Phase-133)**: mayig 179 matched / 0 ambiguous /
+  0 unmatched; horus84 2,895 matched / 2 ambiguous /
+  2,782 unmatched (NOT USABLE); museum
+  cross-references 0/40.
 - **T3.** Field-provenance grading per §3.4
   (O / C / I with reasons), including the explicit
-  Class I exclusion list.
+  Class I exclusion list. — **DONE 2026-10-09
+  (Phase-133)**: 243 fields graded (O 207 / C 7 /
+  I 29); Class I list named in the Stage 0 report.
 - **T4.** Non-machine-readable pass: Kodumanal
   volume and Kunal article field structure recorded
   descriptively; anomalies found during T1–T3
   (e.g. misnamed / mismatched raw files) recorded,
-  not routed around.
+  not routed around. — **DONE 2026-10-09
+  (Phase-133)**: Kodumanal/Kunal/Penn descriptive
+  pass in the inventory JSON + report §6, incl.
+  the `holdatllc_seal_catalog.csv` content
+  mismatch (Ollama model-list JSON, 0 seal records).
 - **T5.** Stage 0 report: what context evidence
   exists, what does not, which §5 sketches survive;
-  ledger entries appended.
+  ledger entries appended. — **DONE 2026-10-09
+  (Phase-133)**: `reports/`
+  `phase133_stage0_report.md` (incl. Appendix A
+  drift table and arm-by-arm verdicts); entries
+  appended to both ledgers.
 - **T6.** Inventory dataset disposition per
   Decision Ask 4 — adjudicated 2026-10-09:
   **release-gated CC BY 4.0 publication** at Stage 0

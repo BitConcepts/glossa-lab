@@ -2878,3 +2878,57 @@ enabled), indus-data-watch (weekly Wed, enabled);
 schedules unchanged. AI-assisted record (Muse
 Spark, Muse), owner-directed. Full entry:
 repo LEDGER.md, same date.
+
+## 2026-10-09 — Phase-133 (Spec 024): Evidence Integration, Stage 0 Inventory — coverage, audited keys, graded fields; facts only (cross-reference)
+
+Spec 024 Stage 0 FROZEN 2026-10-09 (owner: Tristen
+Pierson — "Execute the plan"; PR #105). Stage 0
+build = Phase-133: coverage matrix (243 rows, 9
+machine-readable layers), join-key audit,
+provenance grading (O 207 / C 7 / I 29), mayig
+parseability, non-machine-readable pass — all
+recomputed from the local-store files by
+backend/scripts/phase133_stage0_inventory.py;
+dataset in data/evidence_integration/; report:
+reports/phase133_stage0_report.md. Headlines:
+catalogue 7,705 photo rows / 3,494 volume-scoped
+objects; site 94.7%/92.2% (Vol. 1/2), object_type
+95.1%/96.3%, motif_chapter 25.1%/26.8% (2,005
+rows), material and dimensions 0% as printed
+(never back-filled). Keys: mayig cisi_object_id
+179/179 matched (all Vol. 1), 0 ambiguous, 0
+unmatched — USABLE; horus84 cisi matched 2,895
+rows, ambiguous 2 (H-311), unmatched 2,782 — NOT
+USABLE as a general key; Holdat cisi_number
+PROHIBITED (exact coincidence 0; zero-stripped
+coincidence 1,355/1,670 distinct and all 179
+mayig namesakes — Phase-131 stands: 179 apparent,
+0 validated); museum CISI cross-references 0/40.
+Class I exclusion list (29 fields) named in the
+report, incl. Holdat morpheme boundary / noun /
+verb / upos / xpos / semantic_role and horus84
+sanskrit / translation. Anomaly of record:
+holdatllc_seal_catalog.csv is an Ollama model-list
+JSON, not a seal catalogue (0 records). Drift vs
+Appendix A: horus84 fields 38 measured vs 39
+claimed (A.4's own list names 38); Met "4
+inscribed seals" wording (1 of 4 titled with an
+inscription); Cleveland layer is a 10-record
+search file (3 seals); all other headline numbers
+MATCH. Verdicts: (a) terminal × object-type
+survives in reduced form on joined subsets only
+(mayig all-Seals; horus84 joined 2,752 typed rows,
+ICIT label; Holdat 0); (b) motif × sequence — no
+recommendation per §3.5, motif fields and image
+population exist at ~100-object scale, Stage 1
+gate stands; (c) site repertoire survives as a
+coverage proposition (Holdat 9 sites / 1,670
+inscriptions; horus84 77 sites; mayig via join
+only, one site); (d) graffiti comparative survives
+only as the §5.5 descriptive sketch (catalogue
+Graffiti 417 rows / 395 objects; TN corpus not in
+hand). T6 publication handled separately, not
+performed here. No anchor or PRED change —
+anchors sha256 eccea6d5… unchanged. AI-assisted
+record (Muse Spark, Muse), owner-directed.
+Full entry: repo LEDGER.md, same date.

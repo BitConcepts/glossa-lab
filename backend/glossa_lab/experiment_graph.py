@@ -2705,6 +2705,16 @@ try:
     logger.info("Registered %d Phase-132 pilot (spec 023) nodes", len(list(_p132_defs())))
 except Exception as _p132_exc:  # noqa: BLE001
     logger.warning("Phase-132 pilot (spec 023) nodes not registered: %s", _p132_exc)
+# ── Phase-133 nodes (spec 024: evidence integration, Stage 0 inventory) ──
+try:
+    from glossa_lab.experiment_graph_phase133 import (
+        _phase133_node_defs as _p133_defs,  # noqa: PLC0415
+    )
+    for _d in _p133_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-133 inventory (spec 024) nodes", len(list(_p133_defs())))
+except Exception as _p133_exc:  # noqa: BLE001
+    logger.warning("Phase-133 inventory (spec 024) nodes not registered: %s", _p133_exc)
 # ── Phase-120 nodes (Bhaskar 2024 descriptive triage) ──
 try:
     from glossa_lab.experiment_graph_phase120 import (

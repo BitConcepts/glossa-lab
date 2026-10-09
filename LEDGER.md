@@ -2080,3 +2080,89 @@ commit, per precedent.
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution §VI.
+
+## 2026-10-08 — Phase-128: Integrated Evidence Dossiers for the 44 Pending Anchors — every Phase-120–127 record, joined per sign, gaps recorded not filled
+
+Descriptive only (owner-ordered program workstream 2,
+2026-10-08). For exactly the 44
+`pending_non_sa_validation` anchors in
+`backend/reports/INDUS_FINAL_ANCHORS.json` (sha256
+eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed,
+read-only, asserted unchanged before/after), one dossier per
+anchor joining on M-number: the anchor record; Phase-120
+Bhaskar triage classification/subflag/detail/case ids;
+Phase-123 Wells witness treatment, graphemes, correspondence
+method and hand-verification, with the Phase-126 class
+vocabulary applied as a labelled label-normalisation
+(Phase-126's own analysis set was the 113 CANDIDATE anchors —
+no Phase-126 record exists for a pending sign); every
+Phase-122 crosswalk v1 row asserted for the sign (Parpola
+ids, relation, confidence, conflict flags); the Phase-125
+PRIMARY-arm record and judgeability; Phase-127 per-pair
+diagnostic values where they exist; and a uniform spec-020
+limitation field (Soviet dataset adjudicated non-qualifying —
+NOT-EVALUABLE-VIA-SOVIET-DATASET — on every dossier, recorded
+as a limitation, not per-sign evidence). Every block carries
+a provenance pointer to its source file and row key; missing
+join keys are recorded NOT-COVERED, never inferred
+(crosswalk: M281 has no row; Phase-125 PRIMARY: 8 of 44
+signs have no record).
+
+Join integrity: 44 in = 44 out (asserted in code and tests).
+Coverage pins: Bhaskar CONTESTED is exactly {M402} (43
+NOT-COVERED); Phase-125 judgeable among the 44 is exactly
+{M072} (pair P058-M072, bootstrap CI median 1.0); Wells
+pending breakdown SAME 25 / SPLIT 13 / MERGE 1 /
+NOT-COVERED 1 / INDETERMINATE 4 (matches the Phase-123
+memo). Phase-127 global diagnostic values (matched-size
+expected median TV 0.082613, 0.000000 of 999 replicates
+reaching the observed 0.636931; bootstrap median-TV CI
+0.548638–0.722042) are recorded once in the JSON document;
+the Phase-125 FAIL — DISAGREEMENT verdict is final and
+unchanged.
+
+Triage buckets (deterministic rules stated in the report
+BEFORE membership; buckets 1–4 are independent predicates
+and may overlap; evidence-thin is the defined residual):
+evidence-complete 1 (M072 — wells_determinate ∧ crosswalk
+present ∧ Phase-125 record ∧ Phase-127 pair);
+segmentation-contested 15 (Wells SPLIT/MERGE or a recorded
+verification discrepancy); crosswalk-contested 25 (any
+crosswalk row conflict); not-covered 3 (M033, M058, M281 —
+Bhaskar NOT-COVERED ∧ Wells NOT-COVERED/INDETERMINATE ∧ no
+Phase-125/127 record); evidence-thin 10 (residual). The
+report states plainly what the dossier cannot do: Bhaskar
+covers 1/44; the Phase-125 judgeable subset is 16 of 286
+pairs (1 of the 44 anchors); spec 020 closed the Soviet
+route. No status recommendation, no adjudication, no PRED
+content; no anchor changed.
+
+Code: `backend/glossa_lab/phase128_dossiers.py`,
+`backend/glossa_lab/phase128_run.py`,
+`backend/scripts/phase128_evidence_dossiers.py`.
+Artifacts: `reports/phase128_evidence_dossiers_44.json` +
+`.csv` (flat rendering) + `.md` (synthesis). Builder
+deterministic (two runs, PYTHONHASHSEED 0/42, byte-identical
+outputs). Verification: 16 new tests passed; full backend
+suite 916 passed / 13 skipped / 0 failed locally (913-test
+baseline total preserved: 900/13 no-Holdat baseline + 16
+new; see the Phase-127 count correction entry below);
+foundation check 40 passed / 0 failed / 8 warnings
+(baseline unchanged); ruff clean on all new files. Test
+side effects (glossa-indus/ claims, outputs/) reverted
+before commit, per precedent.
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.
+
+## 2026-10-08 — CORRECTION (append-only): Phase-127 suite count reconciled — 901/12 recorded vs 900/13 verified local re-run; total 913 in both; CI green
+
+Correction to the Phase-127 entry above (appended, not
+edited): its recorded suite count of 901 passed / 12 skipped
+reflects a run with the gitignored Holdat CSV copy present;
+the verified local re-run without that copy was 900 passed /
+13 skipped / 0 failed, because the Holdat-dependent
+foundation-script test skips when the gitignored Holdat CSV
+copy is absent. Total is 913 in both counts; CI was green.
+No other Phase-127 figure is affected.

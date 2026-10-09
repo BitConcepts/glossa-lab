@@ -2732,3 +2732,29 @@ unexplained share 0.938679, stated plainly. Suite
 982/13/0; foundation 40/0/8. AI-assisted record (Muse
 Spark, Muse), owner-directed. Full entry: repo
 LEDGER.md, same date.
+
+## 2026-10-09 — Zenodo v4.4.0 published (Phases 127–131, specs 021–022) (cross-reference)
+
+Zenodo **v4.4.0**, record **23261517**, DOI
+**10.5281/zenodo.23261517** (concept DOI
+10.5281/zenodo.20379070), published 2026-10-09 — the
+program note for Phases 127–131 + specs 021/022
+(`pierson_2026_indus_program_note_127_131.md`), with all
+outcomes verbatim: Phase-127 disagreement not a sampling
+artifact (null median 0.082613 vs observed 0.636931,
+0/999); Phase-128 dossier buckets (evidence-complete 1,
+segmentation-contested 15, crosswalk-contested 25,
+not-covered 3, evidence-thin 10); the release-integrity
+staging-error finding + mandatory hash gate; cropper v2
+win + 14,166 local-only crops; Phase-130 intake pack;
+Phase-131 attribution (matched join 4 pairs / 0 exact,
+matched-object TV NOT ESTIMABLE, direction share 0.000,
+composition share 0.061321, residual unexplained
+0.938679). Release gate PASS 9/9 at source commit
+8f396348 (PRs #96/#97, 7/7 CI green); post-deposit MD5
+confirmation 9/9 against the gated staged bytes. OSF
+registry ybd65 + components vwa7s / dfrhz updated with
+dated blocks and re-read-verified; zbh86 unchanged (no
+new literature). No anchor changed (sha256 eccea6d5…).
+AI-assisted record (Muse Spark, Muse),
+owner-directed. Full entry: repo LEDGER.md, same date.

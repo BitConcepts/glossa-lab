@@ -2485,3 +2485,96 @@ reverted before commit, per precedent.
 **AI disclosure:** execution recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## 2026-10-09 — Zenodo v4.4.0 published (Phases 127–131, specs 021–022) + OSF registry update — owner-ordered program STEP 2
+
+Publication: Zenodo **v4.4.0**, record **23261517**, DOI
+**10.5281/zenodo.23261517** (concept DOI
+10.5281/zenodo.20379070), published 2026-10-09. New version
+created from the v4.3.0 record 23250395 via the API route
+(custom.zenodo connector); the draft carried no `dates`
+stub (checked: null), all 8 inherited files were deleted
+and the 9-file curated set was uploaded fresh from the
+gated staging directory, metadata set to version 4.4.0 /
+publication_date 2026-10-09 with a description summarising
+the 127–131 outcomes, negatives verbatim (Phase-131
+residual unexplained 0.938679; direction NOT supported,
+share 0.000; matched-object TV NOT ESTIMABLE).
+
+Release sources (PR #96, merged 2eb7e82d; gate-record PR
+#97, merged 8f396348; both 7/7 CI green before merge):
+new program note
+`glossa-corpus/indus/pierson_2026_indus_program_note_127_131.md`
+(precedent location of the pierson_2026 notes) covering
+Phases 127–131 + specs 021/022 with all outcomes verbatim;
+the v4.3.0 program note 120_126 — deposited at v4.3.0 but
+never committed — was committed with its exact deposited
+bytes (sha256 2d61c136…, md5 ee339733…) so the gate has a
+repo source for it; `outputs/RELEASE_VALIDATION.json`
+restored the release_v4_3_0 entry exactly as deposited and
+gained a release_v4_4_0 entry (Phase 127–131 outcomes;
+suite re-verified at 257ed964: 970 passed / 5 skipped /
+0 failed, CI configuration in the release worktree —
+Phase-131 ledger record 982/13/0 stands as that phase's
+own-environment count, and GitHub CI run 37915340386 on
+the merge commit was green; foundation check re-verified
+40 passed / 0 failed / 8 warnings).
+
+Mandatory release gate (docs/RELEASE_CHECKLIST.md),
+`backend/scripts/release_gate.py`, manifest 9 entries,
+run against the final merged tree (source commit
+**8f39634868f8bd09b4b69b2c4d3d820473dd95dd**; phase-results
+source 257ed964dfcc8d4c7068e01308efd8532bdaa65b):
+**PASS — 9/9 entries OK, 0 failed**, exit 0.
+Per-file (staged sha256 == source sha256 for every MATCH):
+
+| File | Status | sha256 |
+|---|---|---|
+| RELEASE_VALIDATION.json | MATCH | c78591f65770d86bf6b5e8c562d59bee7604b01a0c1b68e2f2e031bc8a87076b |
+| INDUS_FINAL_ANCHORS.json | MATCH | eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed |
+| pierson_2026_indus_program_note_127_131.md | MATCH | 326f88072ba2382cfd7c3ffe320e77fb9ce1357cbf9e9455f55793292ac864a5 |
+| pierson_2026_indus_program_note_120_126.md | MATCH | 2d61c13647d84426d9a32c83aa2055c5eb8cd220de3254ac4db95b09e41bd4d6 |
+| pierson_2026_indus_harmonization_note_116.md | MATCH | a7236ce058cbb36ac737f970f0e786f9ab6f24c92d1dbd0828725332433fcf92 |
+| pierson_2026_indus_methods_note_111_112.md | MATCH | fdcd47704a8e023daaa81d560af79ed0af5b4115f54925600c02c71fa8dee830 |
+| pierson_2026_indus_decipherment_addendum_v5.md | MATCH | b2818df804402e2e76bdcea53000b806eb7a36442ff6270e437da53e8fc7a8dc |
+| AUDIT_CORRECTIONS.json | MATCH | 567ff7ada347c083b633d8b6709a8620832d3ffe9c1a6e67f07bcb31d9582a80 |
+| pierson_2026_indus_preprint_v3.pdf | EXTERNAL | cfa25287b30958e024988a1bf280266d880b07d3feef2215e892315bdcd0162a |
+
+The EXTERNAL entry is the built preprint v3 PDF, carried
+forward byte-identical from v4.3.0 (its repo has the v4
+PDF + stable .tex, not the v3 build). One carried-forward
+note: AUDIT_CORRECTIONS.json is deposited as the repo's LF
+bytes (md5 c0202c43…); the v4.3.0 deposit carried a CRLF
+serialisation of the same content (md5 31de5453…) —
+content identical after CRLF→LF normalisation (verified);
+the checklist's clean-checkout rule governs. All other
+carried files are md5-identical to the v4.3.0 deposit.
+
+Post-deposit confirmation (checklist §4): the published
+record 23261517 was re-pulled from the Zenodo API; its
+9 files' record MD5s each equal the gated staged files'
+MD5s — RELEASE_VALIDATION.json 144deea4f8c9dca1b07e64b2fc3eac41;
+INDUS_FINAL_ANCHORS.json 00fde4dbf2ee6cbf96d020cba12ce043;
+note 127_131 0350788f6912e8c72d463ecccb9ba9bb; note
+120_126 ee3397333bd11eea155b983f6293fa89; harmonization
+90d6b442fb8be605ccba2acbfcab67d6; methods
+864369942b58dbac1c73f3ffa4a73845; addendum
+48da2a8462eb5eb881057a18a3f2cbe1; AUDIT_CORRECTIONS
+c0202c43dfc6ae3c83ca39e52f75e012; preprint v3 PDF
+b552851dbf86a8edebeb9f84d982d878. 9/9 confirmed.
+
+OSF: the provenance registry https://osf.io/ybd65/ was
+updated with dated 2026-10-09 blocks (appended, not
+restructured) on the parent node (ybd65) and the outputs
+component (vwa7s, outcomes verbatim) and the corpora
+component (dfrhz: no new corpus ingested; 14,166
+Phase-129 crops local-only; Phase-130 intake pack,
+synthetic fixture only), each verified by re-reading
+after the update; the literature component (zbh86) was
+left unchanged — Phases 127–131 used no new literature
+sources. No anchor, PRED, or status changed by this
+release; anchors sha256 eccea6d5… throughout.
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.

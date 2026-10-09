@@ -2957,3 +2957,25 @@ change — anchors sha256 eccea6d5… unchanged.
 AI-assisted record (Muse Spark, Muse),
 owner-directed. Full entry: repo LEDGER.md, same
 date.
+
+## 2026-10-09 — Phase-134 (Spec 024): Evidence Integration, Stage 1 Motif-Coding Pilot — agreement 0.84, κ 0.7885, MIDDLE BAND (cross-reference)
+
+Owner-approved Stage 1 pilot executed under the
+stage freeze: 100-object stratified frame (premise
+correction of record — the 909 motif_chapter objects
+are 98.9% unicorn-chapter, so the frozen §4.2
+population of 3,245 governed), two blinded passes +
+gold third coding + adjudication of 16 disagreements,
+all roles AI-executed with disclosure, all quantities
+computed from the on-disk records. Exact agreement
+0.84, Cohen's κ 0.7885; disagreement concentrated on
+the ILLEGIBLE legibility boundary (10/16). Frozen
+§4.5 gates: proceed gate NOT MET (agreement arm, one
+object short), stop rule NOT FIRED → **MIDDLE BAND**;
+Stage 2(b) eligibility not established, decision
+framed for the owner in
+`reports/phase134_pilot_report.md`. No association
+statistic computed; no anchor or PRED change —
+anchors sha256 eccea6d5… unchanged. AI-assisted
+record (Muse Spark, Muse), owner-directed.
+Full entry: repo LEDGER.md, same date.

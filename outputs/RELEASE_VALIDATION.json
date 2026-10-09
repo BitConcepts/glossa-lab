@@ -579,5 +579,224 @@
       }
     },
     "scope_note": "Extension added in v4.5.0. All pre-existing keys, including release_v4_3_0 and release_v4_4_0, are unchanged; the decipherment validation results they record were not re-run for this release. Spec 023 and Phase-132 changed no anchor and no PRED verdict."
-  }
+  },
+ "release_v4_6_0": {
+  "version": "4.6.0",
+  "date": "2026-10-09",
+  "note_file": "pierson_2026_indus_program_note_133_stage0.md",
+  "repo": "BitConcepts/glossa-lab",
+  "repo_main_commit": "a289b19b",
+  "repo_main_commit_full": "a289b19b8ae657e092e426aac651bcacb18298f9",
+  "anchors_file": "INDUS_FINAL_ANCHORS.json",
+  "anchors_sha256": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+  "backend_suite": {
+   "passed": 1005,
+   "skipped": 5,
+   "failed": 0,
+   "collected": 1010,
+   "run": "Independent run 2026-10-09 in the v4.6.0 release worktree at a289b19b (canonical venv, corpora symlinked from the main checkout, CI configuration with GPU test files ignored): 1005 passed / 5 skipped / 0 failed in 267.56s. (Phase-133 local run reported 1004 passed / 6 skipped; the one-test skip split varies with gitignored-corpus presence, as documented in prior closeouts; collected total 1010 either way.)",
+   "ci": "GitHub CI on PR #106 merge commit a289b19b: 7/7 checks green"
+  },
+  "foundation_check": {
+   "passed": 40,
+   "failed": 0,
+   "warnings": 8,
+   "run": "Run 2026-10-09 in the v4.6.0 release worktree at a289b19b (corpora symlinked): 40 checks passed, 0 failed, 8 warnings."
+  },
+  "phase_outcomes": {
+   "spec_024_evidence_integration": {
+    "status": "FROZEN 2026-10-09 for Stage 0 (owner adjudication recorded; freeze commit fecba9ec; freeze + merge PR #105, merge 467adbcf)",
+    "owner_order": "Execute the plan (Tristen Pierson, 2026-10-09)",
+    "decision_asks": "(1) Stage 0 GO as specified; (2) motif pilot (Stage 1) approved in principle with its shape as drafted, separate post-Stage-0 go still required; (3) coder basis = blinded AI double-coding with the Phase-132 disclosure, recorded at freeze; (4) Stage 0 inventory dataset published CC BY 4.0 through the release gate at Stage 0 completion (facts only, no images ever)",
+    "canonical_key": "volume-scoped cisi:v{volume}:{printed_id}",
+    "prohibited_key": "Holdat cisi_number (internal sequential numbering; expressly not a join key)"
+   },
+   "phase_133_stage0_inventory": {
+    "build_pr": "#106 (merged a289b19b)",
+    "scope": "Facts only: coverage and joinability computed; no association, correlation, or cross-tabulation beyond coverage counting",
+    "coverage_matrix_rows": 243,
+    "layers": {
+     "cisi_vol1_catalogue": {
+      "rows": 3320,
+      "unit": "photo rows",
+      "fields": 22
+     },
+     "cisi_vol2_catalogue": {
+      "rows": 4385,
+      "unit": "photo rows",
+      "fields": 22
+     },
+     "holdat_corpus": {
+      "rows": 7002,
+      "unit": "token rows",
+      "fields": 19
+     },
+     "holdat_semantic_roles": {
+      "rows": 151,
+      "unit": "symbol rows",
+      "fields": 15
+     },
+     "mayig_layer": {
+      "rows": 179,
+      "unit": "inscriptions",
+      "fields": 7
+     },
+     "mayig_source_corpus": {
+      "rows": 179,
+      "unit": "sides in 179 files",
+      "fields": 3
+     },
+     "horus84_icit_lineage": {
+      "rows": 5679,
+      "unit": "inscription rows",
+      "fields": 38
+     },
+     "museum_met_curated": {
+      "rows": 28,
+      "unit": "objects"
+     },
+     "museum_cleveland_search": {
+      "rows": 10,
+      "unit": "records"
+     },
+     "museum_penn": {
+      "rows": 2,
+      "unit": "records"
+     }
+    },
+    "catalogue_fill": {
+     "site_vol1": "3144 (94.7%)",
+     "site_vol2": "4043 (92.2%)",
+     "object_type_vol1": "3156 (95.1%)",
+     "object_type_vol2": "4224 (96.3%)",
+     "motif_chapter_vol1": "832 (25.1%)",
+     "motif_chapter_vol2": "1173 (26.8%)",
+     "motif_chapter_rows_total": 2005,
+     "motif_chapter_distinct_objects": 909,
+     "material": "0/7705 (0%) - as printed, never back-filled",
+     "dimensions": "0/7705 (0%) - as printed, never back-filled"
+    },
+    "holdat_fill": {
+     "site": "7002/7002 (100%)",
+     "iconography": "7002/7002 (100%)"
+    },
+    "join_key_audit": {
+     "canonical_keys": {
+      "distinct_vol1": 1475,
+      "distinct_vol2": 2019,
+      "distinct_volume_scoped": 3494,
+      "unscoped_union": 3493,
+      "printed_ids_in_both_volumes": [
+       "H-311"
+      ],
+      "duplicate_photo_keys_vol1": 8,
+      "duplicate_photo_keys_vol2": 3
+     },
+     "mayig_cisi_object_id": {
+      "verdict": "USABLE for this layer as found",
+      "matched": 179,
+      "matched_vol1_only": 179,
+      "ambiguous": 0,
+      "unmatched": 0
+     },
+     "horus84_cisi": {
+      "verdict": "NOT USABLE as a general join key",
+      "rows_matched_single_volume": 2895,
+      "matched_vol1_only": 1365,
+      "matched_vol2_only": 1530,
+      "rows_ambiguous": 2,
+      "ambiguous_values": [
+       "H-311"
+      ],
+      "rows_unmatched": 2782,
+      "dash_placeholder_rows": 662
+     },
+     "holdat_cisi_number": {
+      "verdict": "PROHIBITED - never joined on",
+      "exact_coincidence_rows": 0,
+      "exact_coincidence_distinct": 0,
+      "zero_stripped_coincidence_distinct": "1355 of 1670"
+     },
+     "holdat_seal_id": {
+      "scope": "intra-layer only",
+      "distinct": 1670,
+      "token_rows": 7002,
+      "rows_per_id": "2-8"
+     },
+     "museum_cisi_cross_references": {
+      "verdict": "no join exists in hand",
+      "records_with_cross_reference": 0,
+      "records_total": 40
+     }
+    },
+    "key_audit_matching_rule_note": "Key audit matches by exact string. Three horus84 cisi values carry trailing whitespace (H-1734 TAB, L-78 SPACE, M-929 SPACE); two are whitespace variants of valid printed IDs and count as unmatched under the exact rule. A whitespace-trimming recount differs by exactly those 2 rows (matched 2897 / unmatched 2780). Coordinator verification, 2026-10-09; recorded here, in the program note (section 3), and in the ledger addendum.",
+    "provenance_grades": {
+     "O_observational": 207,
+     "C_depiction_coded": 7,
+     "I_interpretive": 29,
+     "class_I_fields_excluded_from_context_evidence": [
+      "holdat_corpus: letters",
+      "holdat_corpus: letter_label_encoded",
+      "holdat_corpus: FormWithoutLemma",
+      "holdat_corpus: MorphemeSeparated",
+      "holdat_corpus: morpheme boundary",
+      "holdat_corpus: noun",
+      "holdat_corpus: verb",
+      "holdat_corpus: prefix",
+      "holdat_corpus: prefix_label_encoded",
+      "holdat_corpus: vowel",
+      "holdat_corpus: upos",
+      "holdat_corpus: xpos",
+      "holdat_roles: symbol",
+      "holdat_roles: num_prefixes",
+      "holdat_roles: num_suffixes",
+      "holdat_roles: num_shells",
+      "holdat_roles: shell_density",
+      "holdat_roles: is_starter",
+      "holdat_roles: is_ending",
+      "holdat_roles: is_known_role",
+      "holdat_roles: semantic_role",
+      "mayig_layer: tokens",
+      "mayig_layer: features",
+      "mayig_source: graphemes",
+      "horus84: class",
+      "horus84: text",
+      "horus84: sanskrit",
+      "horus84: translation",
+      "horus84: notes"
+     ]
+    },
+    "mayig_description_parseability": {
+     "rule": "declared before application (case-insensitive match against a stated motif-term and object-type-term list)",
+     "motif_term": 179,
+     "object_type_term": 179,
+     "both": 179,
+     "neither": 0,
+     "distinct_descriptions": 5,
+     "finding": "all 5 distinct descriptions are of the form \"unicorn {I-V} seal\"; the 179/179 rate measures the field narrow vocabulary, not a general motif source; no parse treated as ground truth"
+    },
+    "arm_feasibility_verdicts": {
+     "a_terminal_class_x_object_type": "SURVIVES IN REDUCED FORM, on the joined subsets only (mayig joins 179/179 but all joined objects are Seals - no object-type variation; horus84 joined subset 2895 rows, 2752 with filled object_type: Seals 1588, Tablets 1088, Graffiti 69, Objects 7; Holdat does not survive: 0 joinable, no object-type field)",
+     "b_motif_x_sequence": "NO RECOMMENDATION (spec 3.5); existence question answered YES at the proposed ~100-object scale (motif_chapter 2005 rows / 909 objects; Holdat iconography 7002/7002 Class C; image population exists). Runs only if Stage 1 passes its 4.5 proceed gate; Stage 1 requires its separate go",
+     "c_site_repertoire": "SURVIVES as a coverage proposition (Holdat site 7002/7002 over 1670 inscriptions at 9 sites; horus84 site 5679/5679 across 77 values; mayig site only via catalogue join, 176/179, all Mohenjo-Daro)",
+     "d_graffiti_comparative": "SURVIVES ONLY as the comparative, descriptive sketch (catalogue Graffiti rows 417 over 395 objects; Kodumanal prose structure; Tamil Nadu corpus NOT in hand - 0 records; never pooled; dating-gap caveat attaches)"
+    },
+    "anomalies": [
+     "data/raw/other_sites/holdatllc_seal_catalog.csv is not CSV and contains no seal catalogue: a single-line Ollama /api/tags JSON (1031 bytes) listing local LLM models; 0 seal records recoverable; recorded as found, not used as a layer",
+     "catalogue motif_chapter spelling variants as printed (unicorm 33, unicom 23, uricorn 11, unico 10, unicon 2, tigerwithzebu 8) and Vol. 1 chapter headings (SEALS 8, SEALSIMPRESSIONS 10) in the motif field",
+     "horus84 variable row lengths (35 fields: 1837 rows; 36: 1933; 37: 1850; 38: 60)",
+     "Kodumanal printed graffiti tallies internally inconsistent (subtotals 225 under a stated 175; separate \"99 Graffiti marks collected\") - quoted as prose only, used as no counts",
+     "Kunal article as acquired has an embedded text layer with 0 alphanumeric characters - no machine-readable pass possible; no counts taken"
+    ],
+    "appendix_a_drift": [
+     "horus84 fields: 38 measured vs 39 claimed in spec text (Appendix A.4 own enumerated list names the same 38; the 39 is a miscount in the proposal text, corrected on the record)",
+     "Met \"4 inscribed seals\" is wording: 4 stamp-seal objects, only 49.40.3 titled with \"inscription\"",
+     "Cleveland \"3 seals\" is presentation: the acquired file is a 10-record search set (3 seals, 1 jar, 6 other types), inventoried as acquired",
+     "NOT RECOMPUTED: Phase-124 98.9% sample field accuracy (no new hand sample taken)"
+    ],
+    "dataset_publication": "PUBLISHED with this release (v4.6.0) under CC BY 4.0 per owner adjudication Decision Ask 4 - phase133_stage0_inventory.json + provenance meta, facts only, no images; release gate PASS recorded in this entry (gate-record follow-up)"
+   }
+  },
+  "scope_note": "Extension added in v4.6.0. All pre-existing keys, including release_v4_3_0, release_v4_4_0, and release_v4_5_0, are unchanged; the decipherment validation results they record were not re-run for this release. Spec 024 and Phase-133 changed no anchor and no PRED verdict, and computed no association statistic."
+ }
 }

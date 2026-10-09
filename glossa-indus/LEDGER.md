@@ -2624,3 +2624,26 @@ the frozen Phase-125 gates. No anchor/PRED/status change;
 anchors sha256 eccea6d5… unchanged. Suite 901/12/0;
 foundation 40/0/8. AI-assisted record (Muse Spark, Muse
 Code), owner-directed.
+
+## 2026-10-08 — Phase-128: Integrated evidence dossiers for the 44 pending anchors (cross-reference)
+
+Cross-reference: repo LEDGER.md entry of the same date and
+`reports/phase128_evidence_dossiers_44.md`. Descriptive
+join only — per-anchor dossiers (JSON + flat CSV) over the
+44 `pending_non_sa_validation` anchors joining Phase-120
+Bhaskar triage, Phase-123 Wells witness (+ Phase-126 class
+vocabulary as label normalisation), Phase-122 crosswalk v1,
+Phase-125 PRIMARY judgeability, Phase-127 per-pair
+diagnostics, and the uniform spec-020 Soviet limitation
+field; missing joins recorded NOT-COVERED, never inferred.
+44 in = 44 out. Buckets (rules stated before membership in
+the report; buckets 1–4 independent, evidence-thin the
+residual): evidence-complete 1 (M072),
+segmentation-contested 15, crosswalk-contested 25,
+not-covered 3 (M033, M058, M281), evidence-thin 10. No
+status recommendation, adjudication, or PRED content; no
+anchor changed; anchors sha256 eccea6d5… unchanged. Suite
+916/13/0 local; foundation 40/0/8. AI-assisted record
+(Muse Spark, Muse), owner-directed.
+
+## 2026-10-08 — CORRECTION (append-only, cross-reference): Phase-127's recorded suite count 901/12 reconciles to a verified local re-run of 900 passed / 13 skipped / 0 failed (total 913 in both) because the Holdat-dependent foundation-script test skips when the gitignored Holdat CSV copy is absent; CI was green — see the repo LEDGER.md correction entry of the same date.

@@ -1,0 +1,62 @@
+{
+  "asset": "CISI sign-crop pipeline v2 + benchmark + gated expansion (enabling asset; no sign identifications asserted)",
+  "benchmark": {
+    "definition": "Phase-124 worked sample identically: the photos behind the 82 v1 crops (32 CISI ID+side groups, 34 distinct photo boxes incl. the two bis exemplars), 200-dpi renders, photo boxes from crops/verification.csv (sha256 6b965fc8db345148b7ac75e0477a5cc749e327f2a0c5fcb0a084a6a0a1430044)",
+    "local_files": [
+      "crops_v2/*.png (107 v2 benchmark crops, cv2_ prefix)",
+      "crops_v2/crop_manifest_v2.csv (same columns as the Phase-124 crop manifest)",
+      "crops_v2/verification_v2.csv (crop manifest columns + visual_verdict; per-crop grades live only here, never in git)"
+    ],
+    "v1_grades_frozen": {
+      "bad": 15,
+      "good": 38,
+      "partial": 29,
+      "total": 82
+    },
+    "v1_reproduction": "re-running the untouched v1 segmenter on the recorded photo boxes reproduced all 82 frozen crop boxes exactly (harness assertion)",
+    "v2_grades": {
+      "bad": 15,
+      "good": 50,
+      "partial": 42,
+      "total": 107
+    },
+    "verdict": "v2 beats v1 (all three clauses met)",
+    "win_definition_frozen": "good > 38 AND bad <= 15 AND 41 <= total <= 123"
+  },
+  "contains_no_images_or_catalogue_rows": true,
+  "date": "2026-10-08",
+  "expansion": {
+    "benchmark_photos_excluded": 34,
+    "crops_written": 14166,
+    "distinct_cisi_ids": 3287,
+    "eligible_catalogue_photos": 5281,
+    "gate": "opened only because the frozen win definition was met",
+    "local_files": [
+      "crops_v2_expansion/*.png (14,166 expansion crops, cv2x_ prefix; filename carries photo key, printed page, PDF page and 140-dpi box origin for uniqueness)",
+      "crops_v2_expansion/expansion_manifest.csv",
+      "crops_v2_expansion/expansion_summary.json",
+      "crops_v2_expansion/spotcheck_seed129.txt (fixed-seed sample list)",
+      "crops_v2_expansion/spotcheck_seed129_grades.csv (spot-check grades, local only)"
+    ],
+    "manifest_disk_consistency": "expansion_manifest.csv rows == unique filenames == PNG files on disk (14,166, asserted after the run)",
+    "per_volume_crops": {
+      "1": 6438,
+      "2": 7728
+    },
+    "photos_processed": 5247,
+    "schema_note": "Expansion manifest uses the Phase-124 crop-manifest columns. photo_box_xywh_200dpi holds the catalogue box scaled to 200 dpi with the v1 driver's int() truncation (comparability/exclusion key); crop_box_xywh_in_photo is in the coordinates of the 140-dpi photo the crop was actually cut from. Benchmark manifests use 200-dpi photos throughout, as in Phase-124.",
+    "scope": "every Phase-124 catalogue row with side A/a, a recorded photo box and a non-degenerate box (h <= 1.5 w), excluding the 34 benchmark photo boxes; crops cut from the 140-dpi page cache (page_cache/)",
+    "skipped_no_render": 0,
+    "spotcheck_seed129": {
+      "bad": 12,
+      "good": 8,
+      "n": 30,
+      "note": "context only, per protocol; the expansion pool covers all catalogue object types, not only seal plates",
+      "partial": 10
+    }
+  },
+  "local_store": "~/workspace/glossa-lab/corpora/downloads/cisi_image_layer/ (gitignored via .gitignore corpora/ rule; verified with git check-ignore -v from the main checkout)",
+  "phase": 129,
+  "protocol_freeze_commit": "8a85c55f",
+  "regeneration": "scripts/phase129_cisi/run_benchmark.py --store <local store> --mode benchmark | --mode expansion --gate-attestation <text>, run with the glossa-lab venv python; deterministic (benchmark mode asserts a bit-identical re-run and exact v1 reproduction)"
+}

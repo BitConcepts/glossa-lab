@@ -2224,3 +2224,62 @@ before/after (sha256 eccea6d5…, asserted).
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution §VI.
+
+## 2026-10-08 — Phase-129: CISI Cropper v2 — benchmarked win on the frozen Phase-124 sample, gated expansion run (enabling asset)
+
+Owner-ordered program workstream 4, 2026-10-08. Protocol frozen
+BEFORE any tuning at commit 8a85c55f
+(reports/phase129_cisi_cropper_v2_protocol.md): the benchmark is
+Phase-124's 82-crop worked sample identically (same 200-dpi
+renders, same photo boxes from the local store's
+crops/verification.csv — 34 distinct photo boxes spanning the 32
+ID+side groups Phase-124 counted), graded under the Phase-124
+rubric verbatim, v1's grades frozen at 38 good / 29 partial /
+15 bad (never re-graded); "v2 beats v1" := good > 38 AND bad <= 15
+AND 41 <= total <= 123. v2 (backend/glossa_lab/cisi_cropper_v2.py)
+keeps v1's column-std core signal and adds illumination
+normalisation, sharper projection smoothing (2.0% vs 4.5%),
+valley-capped hysteresis edges, valley splitting, a stroke-content
+rejection gate and fitted crop heights — deterministic, CPU,
+numpy+Pillow only. Two correctness defects were found and fixed
+before grading, each pinned by a test (box-blur cumsum slicing;
+y-fit capture by photo border rows).
+
+Result: v1 boxes reproduced exactly by the untouched v1 segmenter
+(harness assertion); v2 graded **50 good / 42 partial / 15 bad of
+107** under the same rubric (manual pass; 15 ambiguous crops
+re-examined at full resolution in photo context, changes in both
+directions). All three frozen clauses met — v2 beats v1, as a
+recall win at constant bad count and constant good rate, not a
+precision claim. Correspondence (x-overlap >= 50%): of v1's goods
+27 stayed good, 8 -> partial, 3 dropped; 9 partial -> good;
+2 bad -> good; per-crop regression list in
+reports/phase129_cisi_cropper_v2.md. Per-crop v2 grades live ONLY
+in the local store (crops_v2/verification_v2.csv).
+
+Expansion (gate opened by the win): v2 over the full Phase-124
+catalogue (side A/a, non-degenerate box, benchmark photos
+excluded): 5,247 photos -> **14,166 crops** (Vol. 1 6,438 /
+Vol. 2 7,728), 3,287 distinct CISI IDs, local store only
+(crops_v2_expansion/); manifest == disk exactly (14,166 unique
+filenames). A first expansion attempt was discarded (exclusion
+matched only 4/34 benchmark photos — round() vs the v1 driver's
+int() truncation — and 7 filename collisions from
+re-photographed exemplars); harness fixed + uniqueness asserted.
+Seed-129 spot-check of 30 expansion crops (context only):
+8 good / 10 partial / 12 bad — the pool covers all object types
+at 140 dpi, not only seal plates.
+
+Verification: 12 new tests passed; full backend suite 923 passed
+/ 13 skipped / 0 failed; foundation check 40 passed / 0 failed /
+8 warnings (baseline unchanged, corpora symlinked from the main
+checkout); ruff clean; anchors file byte-identical (sha256
+eccea6d5…, asserted before/after). No image, crop, render or
+per-crop grade in git (git check-ignore + git status verified).
+Reports: reports/phase129_cisi_cropper_v2.md +
+reports/phase129_cisi_local_store_manifest.json (counts/schema
+only).
+
+**AI disclosure:** execution recorded by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

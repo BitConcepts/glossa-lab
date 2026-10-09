@@ -83,13 +83,31 @@
 - **T7.** Stage 1 freeze (sample rule + seed,
   codebook from §4.3 categories, gates from §4.5
   with owner values, coder basis per Decision
-  Ask 3).
+  Ask 3). — **DONE 2026-10-09 (Phase-134)**:
+  owner go given 2026-10-09 ("Approve the Stage 1
+  motif-coding pilot"); freeze record at
+  `stage1-freeze.md` in this directory (frame
+  rule + seed `phase134-20261009`, premise
+  correction of record on the sample population,
+  codebook as frozen, metric definitions).
 - **T8.** Blinded double coding + adjudication;
   disagreement log preserved; gold-subset drift
   measurement; AI disclosure attached if applicable.
+  — **DONE 2026-10-09 (Phase-134)**: two blinded
+  passes over the 100-object frame, gold third
+  coding of the 20-object subset, adjudication of
+  all 16 disagreements with the log preserved in
+  the dataset; all roles AI-executed with the
+  disclosure attached (report §3, dataset meta).
 - **T9.** Pilot report with gate verdicts as found;
   motif arm proceeds, pauses, or closes exactly as
-  §4.5 prescribes.
+  §4.5 prescribes. — **DONE 2026-10-09
+  (Phase-134)**: `reports/phase134_pilot_report.md`
+  — exact agreement 0.84, Cohen's κ 0.7885;
+  proceed gate NOT MET (agreement arm), stop rule
+  NOT FIRED → **MIDDLE BAND** per §4.5; the
+  Stage 2(b) decision is framed for the owner,
+  not taken.
 
 ## Stage 2 — Association tests (each its own freeze; spec §5)
 

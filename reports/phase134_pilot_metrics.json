@@ -1,0 +1,282 @@
+{
+  "phase": 134,
+  "spec": "024",
+  "stage": 1,
+  "n_sample": 100,
+  "exact_agreement": 0.84,
+  "agreements": 84,
+  "cohens_kappa": 0.7884717080909571,
+  "expected_agreement_pe": 0.2436,
+  "marginals": {
+    "pass_a": {
+      "ILLEGIBLE": 27,
+      "SCRIPT_ONLY": 32,
+      "UNICORN": 25,
+      "ZEBU": 1,
+      "ELEPHANT": 1,
+      "COMPOSITE": 1,
+      "TIGER": 1,
+      "BUFFALO": 1,
+      "GEOMETRIC": 7,
+      "GOAT_ANTELOPE": 3,
+      "RHINOCEROS": 1
+    },
+    "pass_b": {
+      "ILLEGIBLE": 23,
+      "SCRIPT_ONLY": 34,
+      "UNICORN": 27,
+      "ELEPHANT": 2,
+      "COMPOSITE": 2,
+      "TIGER": 1,
+      "BUFFALO": 3,
+      "GOAT_ANTELOPE": 3,
+      "GEOMETRIC": 5
+    }
+  },
+  "per_category": {
+    "UNICORN": {
+      "pass_a_count": 25,
+      "pass_b_count": 27,
+      "union": 29,
+      "agreements": 23,
+      "agreement_rate": 0.7931034482758621
+    },
+    "ZEBU": {
+      "pass_a_count": 1,
+      "pass_b_count": 0,
+      "union": 1,
+      "agreements": 0,
+      "agreement_rate": 0.0
+    },
+    "BUFFALO": {
+      "pass_a_count": 1,
+      "pass_b_count": 3,
+      "union": 3,
+      "agreements": 1,
+      "agreement_rate": 0.3333333333333333
+    },
+    "ELEPHANT": {
+      "pass_a_count": 1,
+      "pass_b_count": 2,
+      "union": 2,
+      "agreements": 1,
+      "agreement_rate": 0.5
+    },
+    "RHINOCEROS": {
+      "pass_a_count": 1,
+      "pass_b_count": 0,
+      "union": 1,
+      "agreements": 0,
+      "agreement_rate": 0.0
+    },
+    "GOAT_ANTELOPE": {
+      "pass_a_count": 3,
+      "pass_b_count": 3,
+      "union": 4,
+      "agreements": 2,
+      "agreement_rate": 0.5
+    },
+    "TIGER": {
+      "pass_a_count": 1,
+      "pass_b_count": 1,
+      "union": 1,
+      "agreements": 1,
+      "agreement_rate": 1.0
+    },
+    "COMPOSITE": {
+      "pass_a_count": 1,
+      "pass_b_count": 2,
+      "union": 2,
+      "agreements": 1,
+      "agreement_rate": 0.5
+    },
+    "HUMAN_CULT": {
+      "pass_a_count": 0,
+      "pass_b_count": 0,
+      "union": 0,
+      "agreements": 0,
+      "agreement_rate": null
+    },
+    "GEOMETRIC": {
+      "pass_a_count": 7,
+      "pass_b_count": 5,
+      "union": 7,
+      "agreements": 5,
+      "agreement_rate": 0.7142857142857143
+    },
+    "SCRIPT_ONLY": {
+      "pass_a_count": 32,
+      "pass_b_count": 34,
+      "union": 36,
+      "agreements": 30,
+      "agreement_rate": 0.8333333333333334
+    },
+    "ILLEGIBLE": {
+      "pass_a_count": 27,
+      "pass_b_count": 23,
+      "union": 30,
+      "agreements": 20,
+      "agreement_rate": 0.6666666666666666
+    }
+  },
+  "confusion_pairs": [
+    {
+      "pass_a": "ILLEGIBLE",
+      "pass_b": "UNICORN",
+      "count": 3
+    },
+    {
+      "pass_a": "ILLEGIBLE",
+      "pass_b": "SCRIPT_ONLY",
+      "count": 3
+    },
+    {
+      "pass_a": "SCRIPT_ONLY",
+      "pass_b": "ILLEGIBLE",
+      "count": 2
+    },
+    {
+      "pass_a": "ZEBU",
+      "pass_b": "UNICORN",
+      "count": 1
+    },
+    {
+      "pass_a": "UNICORN",
+      "pass_b": "GOAT_ANTELOPE",
+      "count": 1
+    },
+    {
+      "pass_a": "UNICORN",
+      "pass_b": "BUFFALO",
+      "count": 1
+    },
+    {
+      "pass_a": "GEOMETRIC",
+      "pass_b": "SCRIPT_ONLY",
+      "count": 1
+    },
+    {
+      "pass_a": "ILLEGIBLE",
+      "pass_b": "ELEPHANT",
+      "count": 1
+    },
+    {
+      "pass_a": "GEOMETRIC",
+      "pass_b": "ILLEGIBLE",
+      "count": 1
+    },
+    {
+      "pass_a": "RHINOCEROS",
+      "pass_b": "BUFFALO",
+      "count": 1
+    },
+    {
+      "pass_a": "GOAT_ANTELOPE",
+      "pass_b": "COMPOSITE",
+      "count": 1
+    }
+  ],
+  "adjudication_rate": 0.16,
+  "n_disagreements": 16,
+  "gold_drift": {
+    "pairwise_agreement": {
+      "A-B": 0.8,
+      "A-G": 0.85,
+      "B-G": 0.75
+    },
+    "unanimous_rate": 0.7,
+    "n_gold": 20
+  },
+  "effort": {
+    "pass_a": {
+      "pass_a_batch1": {
+        "n_records": 25,
+        "setup_seconds": 16.12772297859192,
+        "per_object_median_s": 12.40149998664856,
+        "per_object_mean_s": 12.821874996026358,
+        "wall_seconds": 323.8527228832245
+      },
+      "pass_a_batch2": {
+        "n_records": 25,
+        "setup_seconds": 17.848726511001587,
+        "per_object_median_s": 10.79449999332428,
+        "per_object_mean_s": 12.759874989589056,
+        "wall_seconds": 324.0857262611389
+      },
+      "pass_a_batch3": {
+        "n_records": 25,
+        "setup_seconds": 13.871237993240356,
+        "per_object_median_s": 9.504999995231628,
+        "per_object_mean_s": 10.383208334445953,
+        "wall_seconds": 263.06823801994324
+      },
+      "pass_a_batch4": {
+        "n_records": 25,
+        "setup_seconds": 14.299038648605347,
+        "per_object_median_s": 9.896000027656555,
+        "per_object_mean_s": 9.99204166730245,
+        "wall_seconds": 254.10803866386414
+      }
+    },
+    "pass_b": {
+      "pass_b_batch1": {
+        "n_records": 25,
+        "setup_seconds": 17.850813150405884,
+        "per_object_median_s": 10.761000037193298,
+        "per_object_mean_s": 11.318124999602636,
+        "wall_seconds": 289.48581314086914
+      },
+      "pass_b_batch2": {
+        "n_records": 25,
+        "setup_seconds": 21.839900493621826,
+        "per_object_median_s": 11.146499991416931,
+        "per_object_mean_s": 12.47191666563352,
+        "wall_seconds": 321.1659004688263
+      },
+      "pass_b_batch3": {
+        "n_records": 25,
+        "setup_seconds": 12.214998006820679,
+        "per_object_median_s": 10.21500015258789,
+        "per_object_mean_s": 10.473416666189829,
+        "wall_seconds": 263.5769979953766
+      },
+      "pass_b_batch4": {
+        "n_records": 25,
+        "setup_seconds": 16.1489999294281,
+        "per_object_median_s": 9.961000084877014,
+        "per_object_mean_s": 11.223208328088125,
+        "wall_seconds": 285.5059998035431
+      }
+    },
+    "pass_gold": {
+      "pass_gold_batch1": {
+        "n_records": 20,
+        "setup_seconds": 19.591000080108643,
+        "per_object_median_s": 9.996999979019165,
+        "per_object_mean_s": 12.573052619632922,
+        "wall_seconds": 258.47899985313416
+      }
+    },
+    "method": "record-file mtimes within each batch (setup = _start marker to first record; per-object = successive record deltas). AI-agent wall times under this pipeline."
+  },
+  "concordance_motif_chapter": {
+    "n_sampled_with_unicorn_chapter": 31,
+    "adjudicated_unicorn": 22,
+    "adjudicated_other": 9,
+    "note": "Descriptive concordance only (stage1-freeze §6): the catalogue chapter is a comparison, never ground truth; NONMAPPABLE families are excluded by the frozen rule."
+  },
+  "gates": {
+    "proceed_gate": {
+      "exact_min": 0.85,
+      "kappa_min": 0.75,
+      "met": false
+    },
+    "stop_rule": {
+      "exact_below": 0.7,
+      "kappa_below": 0.5,
+      "fired": false
+    },
+    "verdict": "MIDDLE_BAND"
+  },
+  "ai_disclosure": "All coding roles in this pilot (pass_a, pass_b, pass_gold, adjudicator) were executed by AI agents (Muse Spark, via Muse) in blinded role-isolated instances, at the direction of Tristen Pierson (constitution §VI; spec 024 §4.4). Agreement numbers are properties of this coding pipeline, never of human expert coding."
+}

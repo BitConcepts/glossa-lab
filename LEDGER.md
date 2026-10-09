@@ -3119,3 +3119,93 @@ authorizes it.
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution §VI.
+
+## 2026-10-09 — Phase-134 (Spec 024): Evidence Integration, Stage 1 Motif-Coding Pilot — exact agreement 0.84, Cohen's κ 0.7885; frozen §4.5 gates resolve to the MIDDLE BAND (proceed gate not met, stop rule not fired)
+
+Owner go given 2026-10-09 ("Approve the Stage 1
+motif-coding pilot"). Stage freeze recorded before
+any sample image was viewed
+(`specs/024-evidence-integration/stage1-freeze.md`,
+commit `633e943e`), including a **premise correction
+of record**: the shorthand population of 909
+motif_chapter objects is degenerate (899/909 = 98.9%
+unicorn chapters), so the frozen §4.2 population
+governed — 3,245 catalogue objects with a parseable
+photo box and object_type ∈ {Seals, Tablets,
+Graffiti}. Frame of exactly 100 drawn by the frozen
+rule (stratified site-group × type, largest-remainder
+quotas with a 2-per-cell floor, sha256 seed
+`phase134-20261009`; commit `e51d0637`); all 100
+objects cropped from the local store (220 crops, 0
+failures, 0 replacements; images never in git).
+
+Two independent blinded passes coded all 100 objects
+under the frozen 12-code taxonomy; a gold third pass
+coded the 20-object subset; a separate adjudicator
+ruled all 16 disagreements (pass A upheld 10, pass B
+upheld 6, neither 0), the disagreement log preserved
+in full in the dataset. All roles were executed by
+AI agents in blinded role-isolated instances
+(constitution §VI), disclosed in every artifact.
+All quantities were computed by
+`backend/scripts/phase134_metrics.py` from the
+on-disk coding records — never from coder
+self-reports.
+
+**Results as found:** exact primary-motif agreement
+**0.84** (84/100); Cohen's κ **0.7885** (chance
+agreement Pe = 0.2436). Per-category agreement:
+SCRIPT_ONLY 0.833 (30/36), UNICORN 0.793 (23/29),
+GEOMETRIC 0.714 (5/7), ILLEGIBLE 0.667 (20/30);
+small categories rest on 1–4 objects. **Confusion
+structure:** 10 of 16 disagreements involve
+ILLEGIBLE on one side (ILLEGIBLE×UNICORN 3,
+ILLEGIBLE×SCRIPT_ONLY 5, ILLEGIBLE×ELEPHANT 1,
+GEOMETRIC×ILLEGIBLE 1) — the disagreement mass sits
+on the legibility boundary for worn objects, not on
+animal identity among clearly visible depictions.
+Gold-subset drift: A–B 0.80, A–G 0.85, B–G 0.75,
+unanimous 0.70 — no pass is an outlier. Descriptive
+concordance (freeze §6, never accuracy): of 31
+unicorn-chapter objects in the frame, adjudicated
+codes were UNICORN 22 / other 9. Adjudicated final
+distribution: SCRIPT_ONLY 34, ILLEGIBLE 26, UNICORN
+26, GEOMETRIC 6, COMPOSITE 2, GOAT_ANTELOPE 2,
+ELEPHANT 1, TIGER 1, BUFFALO 1, RHINOCEROS 1.
+
+**Gate verdict (frozen §4.5, applied exactly):**
+proceed gate (agreement ≥ 0.85 AND κ ≥ 0.75) **NOT
+MET** — agreement 0.84, one object short of the arm,
+κ arm met; stop rule (agreement < 0.70 OR κ <
+0.50) **NOT FIRED**. Verdict: **MIDDLE BAND**. The
+motif arm is therefore **not** eligible for Stage
+2(b) on this pilot alone; the pilot report
+(`reports/phase134_pilot_report.md`) frames the
+owner's decision without a recommendation dressed
+as a verdict. No association statistic was computed.
+Publication of the Stage 1 dataset beyond the repo
+is not pre-authorized and is framed as an owner
+decision alongside the verdict.
+
+**Process finding (deviation D1 of the report):** a
+coder completion handoff raced its own final two
+record writes; a coordinator snapshot read 23/25 and
+a blinded top-up was commissioned for the two
+apparently-missing objects before the batch's own
+records landed. The metrics script's fail-loud
+duplicate check caught the collision at assembly;
+resolved by rule (original batch records govern,
+top-up records excluded from every quantity; the two
+codings agree on both objects, so the data impact is
+none). A second live instance of the Phase-132 §4(d)
+finding, in the benign direction — and the reason
+every quantity in this phase was computed from the
+records, not from reports about the records.
+
+No anchor or PRED change — anchors sha256
+eccea6d5… unchanged; PRED-2026-001/002/003 remain
+PENDING.
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.

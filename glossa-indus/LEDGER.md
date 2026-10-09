@@ -2932,3 +2932,28 @@ performed here. No anchor or PRED change —
 anchors sha256 eccea6d5… unchanged. AI-assisted
 record (Muse Spark, Muse), owner-directed.
 Full entry: repo LEDGER.md, same date.
+
+## 2026-10-09 — Zenodo v4.6.0 published (Spec 024 + Phase-133 Stage 0) (cross-reference)
+
+Zenodo v4.6.0 — DOI 10.5281/zenodo.23267995 (record
+23267995) — deposits the Spec 024 / Phase-133
+program note and the Stage 0 inventory dataset
+(+ provenance meta) under CC BY 4.0 (facts only, no
+images), through the mandatory release gate (PASS
+13/13 at source commit 8e9a90a7; final gate run
+against the gate-record merge 580bd8ae also PASS
+13/13; post-deposit checksums confirmed 13/13).
+OSF dated blocks appended (parent + Outputs +
+Corpora; Literature unchanged). Phase-133
+verification addendum: coordinator recomputation
+matched the merged inventory exactly under the
+audit's exact-string matching rule; 3 horus84
+`cisi` values carry trailing whitespace, a
+trimming recount differing by exactly 2 rows —
+recorded in full in the repo LEDGER.md entry of
+this date, the program note §3, and
+`RELEASE_VALIDATION.json`. No anchor or PRED
+change — anchors sha256 eccea6d5… unchanged.
+AI-assisted record (Muse Spark, Muse),
+owner-directed. Full entry: repo LEDGER.md, same
+date.

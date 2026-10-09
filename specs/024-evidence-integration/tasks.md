@@ -146,7 +146,14 @@
   program note; codes and logs only, no images)
   through the mandatory release gate; OSF registry
   updated in step. Authorized by the same owner
-  approval (T9b).
+  approval (T9b). — **DONE 2026-10-09**: published
+  as Zenodo v4.7.0 (DOI 10.5281/zenodo.23270096,
+  record 23270096) through the mandatory release
+  gate (PASS 18/18 at e698cff2, recorded in
+  `RELEASE_VALIDATION.json` `release_v4_7_0`;
+  final gate run at the gate-record merge 52580e43
+  PASS 18/18); post-deposit checksums confirmed
+  18/18; OSF registry updated the same day.
 
 ## Stage 2 — Association tests (each its own freeze; spec §5)
 

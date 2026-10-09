@@ -3006,3 +3006,26 @@ computed; no anchor or PRED change — anchors
 sha256 eccea6d5… unchanged. AI-assisted record
 (Muse Spark, Muse), owner-directed.
 Full entry: repo LEDGER.md, same date.
+
+## 2026-10-09 — Zenodo v4.7.0 published (Spec 024 Stages 1–1b: motif pilots) (cross-reference)
+
+DOI 10.5281/zenodo.23270096 (record 23270096) —
+deposits the Spec 024 Stages 1–1b program note and
+both motif pilot datasets (Phase-134:
+`phase134_pilot_dataset.json`; Phase-135:
+`phase135_pilot_dataset.json`; each with provenance
+meta) CC BY 4.0 under the owner's combined-path
+approval — codes, notes, and disagreement logs only,
+no images. Release gate PASS 18/18 at e698cff2,
+recorded via PR #114; final gate run at the
+gate-record merge 52580e43 PASS 18/18. Post-deposit
+checksums confirmed 18/18. OSF registry updated in
+step (parent, Outputs, Corpora; Literature
+unchanged). Phase-134: agreement 0.84, κ 0.7885,
+MIDDLE BAND; Phase-135 (clarified codebook, fresh
+sample): 0.78, κ 0.7129, MIDDLE BAND for the second
+time; no Stage 2(b) design drafted. No anchor or
+PRED change — anchors sha256 eccea6d5… unchanged.
+AI-assisted record (Muse Spark, Muse),
+owner-directed. Full entry: repo LEDGER.md, same
+date.

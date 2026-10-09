@@ -1,0 +1,2150 @@
+{
+  "frame_summary": {
+    "rule": "Universe: distinct (volume, cisi_id) objects from catalogue/cisi_vol{1,2}_catalogue.csv. Excluded: first-photo-row site empty or 'Addenda'; first-photo-row object_type 'Graffiti'. Canonical key cisi:v{volume}:{cisi_id}. Mayig overlap: printed CISI object IDs from data/corpus_layers/mayig_cisi_layer_v1.json (Phase-122 mapping) resolved to the unique catalogue object with that printed ID; unresolvable or ambiguous entries counted, never guessed. Strata: Mohenjo-Daro 25 (mayig sub-quota 5), Harappa 15 (mayig sub-quota 3), Lothal+Kalibangan 10 = Lothal 6 then Kalibangan 4 (mayig sub-quota 2, Lothal first then Kalibangan). Within a stratum the mayig sub-quota is drawn first from the stratum's overlap objects, then the quota is filled from non-overlap objects. Sublists are sorted by (pdf_page of the object's earliest photo row, cisi_id) — volume breaks exact ties only — and drawn every-k-th with k = max(1, floor(len/needed)), start = 20261009 % k, indices start, start+k, ...; if exhausted, drawing continues from the start of the list skipping already-drawn objects (fallback recorded when it fires). A sub-quota above the available overlap pool draws the whole pool and the shortfall is filled from non-overlap objects (recorded). Gold: random.Random(20261009).sample(frame, 10) after the draw.",
+    "seed": 20261009,
+    "n_frame": 50,
+    "n_universe_objects": 3494,
+    "n_eligible_objects": 2870,
+    "per_stratum": [
+      {
+        "stratum": "Mohenjo-Daro",
+        "quota": 25,
+        "mayig_sub_quota": 5,
+        "mayig_drawn": 5,
+        "drawn": 25,
+        "sites": [
+          {
+            "site": "Mohenjo-Daro",
+            "quota": 25,
+            "drawn": 25,
+            "mayig_drawn": 5,
+            "mayig_draw": {
+              "pool_size": 176,
+              "needed": 5,
+              "k": 35,
+              "start_index": 34,
+              "fallback_fired": false
+            },
+            "fill_draw": {
+              "pool_size": 1262,
+              "needed": 20,
+              "k": 63,
+              "start_index": 20,
+              "fallback_fired": false
+            }
+          }
+        ]
+      },
+      {
+        "stratum": "Harappa",
+        "quota": 15,
+        "mayig_sub_quota": 3,
+        "mayig_drawn": 0,
+        "drawn": 15,
+        "sites": [
+          {
+            "site": "Harappa",
+            "quota": 15,
+            "drawn": 15,
+            "mayig_drawn": 0,
+            "mayig_draw": {
+              "pool_size": 0,
+              "needed": 3,
+              "k": null,
+              "start_index": null,
+              "fallback_fired": false
+            },
+            "fill_draw": {
+              "pool_size": 1085,
+              "needed": 15,
+              "k": 72,
+              "start_index": 65,
+              "fallback_fired": false
+            }
+          }
+        ]
+      },
+      {
+        "stratum": "Lothal+Kalibangan",
+        "quota": 10,
+        "mayig_sub_quota": 2,
+        "mayig_drawn": 0,
+        "drawn": 10,
+        "sites": [
+          {
+            "site": "Lothal",
+            "quota": 6,
+            "drawn": 6,
+            "mayig_drawn": 0,
+            "mayig_draw": {
+              "pool_size": 0,
+              "needed": 2,
+              "k": null,
+              "start_index": null,
+              "fallback_fired": false
+            },
+            "fill_draw": {
+              "pool_size": 199,
+              "needed": 6,
+              "k": 33,
+              "start_index": 32,
+              "fallback_fired": false
+            }
+          },
+          {
+            "site": "Kalibangan",
+            "quota": 4,
+            "drawn": 4,
+            "mayig_drawn": 0,
+            "mayig_draw": {
+              "pool_size": 0,
+              "needed": 2,
+              "k": null,
+              "start_index": null,
+              "fallback_fired": false
+            },
+            "fill_draw": {
+              "pool_size": 86,
+              "needed": 4,
+              "k": 21,
+              "start_index": 20,
+              "fallback_fired": false
+            }
+          }
+        ]
+      }
+    ],
+    "site_counts": {
+      "Mohenjo-Daro": 25,
+      "Harappa": 15,
+      "Lothal+Kalibangan": 10
+    },
+    "type_counts": {
+      "Seals": 33,
+      "Tablets": 12,
+      "": 5
+    },
+    "mayig_overlap_count": 5,
+    "mayig_resolution": {
+      "n_layer_inscriptions": 179,
+      "n_resolved_objects": 179,
+      "n_unresolved": 0,
+      "unresolved_printed_ids": [],
+      "n_ambiguous": 0,
+      "ambiguous_printed_ids": []
+    },
+    "gold_keys": [
+      "cisi:v1:L-98",
+      "cisi:v2:M-926",
+      "cisi:v2:H-271",
+      "cisi:v1:M-250",
+      "cisi:v2:M-1331",
+      "cisi:v2:M-638",
+      "cisi:v1:K-63",
+      "cisi:v1:K-88",
+      "cisi:v1:L-66",
+      "cisi:v2:H-743"
+    ]
+  },
+  "frame": [
+    {
+      "canonical_key": "cisi:v1:M-40",
+      "volume": 1,
+      "cisi_id": "M-40",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": true,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-40 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 56,
+          "printed_page": "20",
+          "photo_box_xywh": [
+            59,
+            1115,
+            357,
+            354
+          ]
+        },
+        {
+          "photo_key": "M-40 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 56,
+          "printed_page": "20",
+          "photo_box_xywh": [
+            534,
+            1120,
+            355,
+            360
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:M-75",
+      "volume": 1,
+      "cisi_id": "M-75",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": true,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-75 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 69,
+          "printed_page": "33",
+          "photo_box_xywh": [
+            112,
+            103,
+            375,
+            377
+          ]
+        },
+        {
+          "photo_key": "M-75 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 69,
+          "printed_page": "33",
+          "photo_box_xywh": [
+            616,
+            105,
+            390,
+            385
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:M-111",
+      "volume": 1,
+      "cisi_id": "M-111",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": true,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-111 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 76,
+          "printed_page": "40",
+          "photo_box_xywh": [
+            82,
+            98,
+            316,
+            315
+          ]
+        },
+        {
+          "photo_key": "M-111 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 76,
+          "printed_page": "40",
+          "photo_box_xywh": [
+            80,
+            460,
+            316,
+            310
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:M-146",
+      "volume": 1,
+      "cisi_id": "M-146",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": true,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-146 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 82,
+          "printed_page": "46",
+          "photo_box_xywh": [
+            406,
+            98,
+            319,
+            306
+          ]
+        },
+        {
+          "photo_key": "M-146 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 82,
+          "printed_page": "46",
+          "photo_box_xywh": [
+            401,
+            471,
+            331,
+            310
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:M-183",
+      "volume": 1,
+      "cisi_id": "M-183",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": true,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-183 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 88,
+          "printed_page": "52",
+          "photo_box_xywh": [
+            591,
+            417,
+            233,
+            230
+          ]
+        },
+        {
+          "photo_key": "M-183 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 88,
+          "printed_page": "52",
+          "photo_box_xywh": [
+            834,
+            414,
+            276,
+            238
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:M-638",
+      "volume": 2,
+      "cisi_id": "M-638",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": true,
+      "photos": [
+        {
+          "photo_key": "M-638 C",
+          "side": "C",
+          "bis": "",
+          "pdf_page": 56,
+          "printed_page": "21",
+          "photo_box_xywh": [
+            55,
+            970,
+            322,
+            105
+          ]
+        },
+        {
+          "photo_key": "M-638 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 56,
+          "printed_page": "21",
+          "photo_box_xywh": [
+            399,
+            818,
+            650,
+            361
+          ]
+        },
+        {
+          "photo_key": "M-638 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 56,
+          "printed_page": "21",
+          "photo_box_xywh": [
+            729,
+            1268,
+            322,
+            163
+          ]
+        },
+        {
+          "photo_key": "M-638",
+          "side": "",
+          "bis": "",
+          "pdf_page": 56,
+          "printed_page": "21",
+          "photo_box_xywh": [
+            56,
+            1156,
+            649,
+            357
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:M-704",
+      "volume": 2,
+      "cisi_id": "M-704",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-704 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 77,
+          "printed_page": "42",
+          "photo_box_xywh": [
+            148,
+            614,
+            353,
+            352
+          ]
+        },
+        {
+          "photo_key": "M-704 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 77,
+          "printed_page": "42",
+          "photo_box_xywh": [
+            633,
+            614,
+            356,
+            351
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:M-212",
+      "volume": 1,
+      "cisi_id": "M-212",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-212 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 91,
+          "printed_page": "55",
+          "photo_box_xywh": [
+            558,
+            406,
+            232,
+            235
+          ]
+        },
+        {
+          "photo_key": "M-212 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 91,
+          "printed_page": "55",
+          "photo_box_xywh": [
+            813,
+            408,
+            236,
+            234
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:M-250",
+      "volume": 1,
+      "cisi_id": "M-250",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": true,
+      "photos": [
+        {
+          "photo_key": "M-250 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 98,
+          "printed_page": "62",
+          "photo_box_xywh": [
+            611,
+            95,
+            222,
+            222
+          ]
+        },
+        {
+          "photo_key": "M-250 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 98,
+          "printed_page": "62",
+          "photo_box_xywh": [
+            846,
+            94,
+            225,
+            222
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:M-808",
+      "volume": 2,
+      "cisi_id": "M-808",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-808 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 104,
+          "printed_page": "69",
+          "photo_box_xywh": [
+            761,
+            823,
+            290,
+            291
+          ]
+        },
+        {
+          "photo_key": "M-808 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 104,
+          "printed_page": "69",
+          "photo_box_xywh": [
+            765,
+            1201,
+            294,
+            281
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:M-847",
+      "volume": 2,
+      "cisi_id": "M-847",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-847 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 111,
+          "printed_page": "76",
+          "photo_box_xywh": [
+            800,
+            1239,
+            269,
+            198
+          ]
+        },
+        {
+          "photo_key": "M-847 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 111,
+          "printed_page": "76",
+          "photo_box_xywh": null
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:M-888",
+      "volume": 2,
+      "cisi_id": "M-888",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-888 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 118,
+          "printed_page": "83",
+          "photo_box_xywh": [
+            776,
+            885,
+            265,
+            255
+          ]
+        },
+        {
+          "photo_key": "M-888 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 118,
+          "printed_page": "83",
+          "photo_box_xywh": [
+            773,
+            1232,
+            264,
+            256
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:M-926",
+      "volume": 2,
+      "cisi_id": "M-926",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": true,
+      "photos": [
+        {
+          "photo_key": "M-926 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 124,
+          "printed_page": "89",
+          "photo_box_xywh": [
+            554,
+            382,
+            216,
+            215
+          ]
+        },
+        {
+          "photo_key": "M-926 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 124,
+          "printed_page": "89",
+          "photo_box_xywh": [
+            814,
+            378,
+            212,
+            210
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:M-380",
+      "volume": 1,
+      "cisi_id": "M-380",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-380 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 130,
+          "printed_page": "94",
+          "photo_box_xywh": [
+            99,
+            1117,
+            420,
+            135
+          ]
+        },
+        {
+          "photo_key": "M-380 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 130,
+          "printed_page": "94",
+          "photo_box_xywh": [
+            99,
+            1336,
+            417,
+            134
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:M-1009",
+      "volume": 2,
+      "cisi_id": "M-1009",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-1009 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 134,
+          "printed_page": "99",
+          "photo_box_xywh": [
+            51,
+            916,
+            229,
+            250
+          ]
+        },
+        {
+          "photo_key": "M-1009 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 134,
+          "printed_page": "99",
+          "photo_box_xywh": [
+            51,
+            1234,
+            204,
+            244
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:M-427",
+      "volume": 1,
+      "cisi_id": "M-427",
+      "site": "Mohenjo-Daro",
+      "object_type": "Tablets",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-427 C",
+          "side": "C",
+          "bis": "",
+          "pdf_page": 142,
+          "printed_page": "106",
+          "photo_box_xywh": [
+            716,
+            112,
+            205,
+            73
+          ]
+        },
+        {
+          "photo_key": "M-427 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 142,
+          "printed_page": "106",
+          "photo_box_xywh": [
+            213,
+            117,
+            395,
+            418
+          ]
+        },
+        {
+          "photo_key": "M-427 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 142,
+          "printed_page": "106",
+          "photo_box_xywh": [
+            717,
+            338,
+            205,
+            191
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:M-480",
+      "volume": 1,
+      "cisi_id": "M-480",
+      "site": "Mohenjo-Daro",
+      "object_type": "Tablets",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-480 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 151,
+          "printed_page": "115",
+          "photo_box_xywh": [
+            53,
+            571,
+            432,
+            134
+          ]
+        },
+        {
+          "photo_key": "M-480 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 151,
+          "printed_page": "115",
+          "photo_box_xywh": [
+            606,
+            563,
+            436,
+            136
+          ]
+        },
+        {
+          "photo_key": "M-480 b",
+          "side": "b",
+          "bis": "",
+          "pdf_page": 151,
+          "printed_page": "115",
+          "photo_box_xywh": [
+            596,
+            748,
+            447,
+            134
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:M-1145",
+      "volume": 2,
+      "cisi_id": "M-1145",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-1145 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 163,
+          "printed_page": "128",
+          "photo_box_xywh": [
+            97,
+            465,
+            373,
+            340
+          ]
+        },
+        {
+          "photo_key": "M-1145 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 163,
+          "printed_page": "128",
+          "photo_box_xywh": [
+            694,
+            448,
+            405,
+            357
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:M-542",
+      "volume": 1,
+      "cisi_id": "M-542",
+      "site": "Mohenjo-Daro",
+      "object_type": "Tablets",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-542 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 172,
+          "printed_page": "136",
+          "photo_box_xywh": [
+            199,
+            491,
+            331,
+            242
+          ]
+        },
+        {
+          "photo_key": "M-542 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 172,
+          "printed_page": "136",
+          "photo_box_xywh": [
+            611,
+            489,
+            332,
+            245
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:M-1208",
+      "volume": 2,
+      "cisi_id": "M-1208",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-1208 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 183,
+          "printed_page": "148",
+          "photo_box_xywh": [
+            741,
+            437,
+            125,
+            104
+          ]
+        },
+        {
+          "photo_key": "M-1208 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 183,
+          "printed_page": "148",
+          "photo_box_xywh": [
+            544,
+            594,
+            242,
+            248
+          ]
+        },
+        {
+          "photo_key": "M-1208 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 183,
+          "printed_page": "148",
+          "photo_box_xywh": [
+            824,
+            595,
+            252,
+            253
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:M-1247",
+      "volume": 2,
+      "cisi_id": "M-1247",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-1247 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 192,
+          "printed_page": "157",
+          "photo_box_xywh": [
+            66,
+            1021,
+            225,
+            176
+          ]
+        },
+        {
+          "photo_key": "M-1247 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 192,
+          "printed_page": "157",
+          "photo_box_xywh": [
+            345,
+            1026,
+            217,
+            179
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:M-1331",
+      "volume": 2,
+      "cisi_id": "M-1331",
+      "site": "Mohenjo-Daro",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": true,
+      "photos": [
+        {
+          "photo_key": "M-1331 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 205,
+          "printed_page": "170",
+          "photo_box_xywh": [
+            940,
+            1034,
+            139,
+            127
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:M-1405",
+      "volume": 2,
+      "cisi_id": "M-1405",
+      "site": "Mohenjo-Daro",
+      "object_type": "Tablets",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-1405 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 224,
+          "printed_page": "189",
+          "photo_box_xywh": [
+            97,
+            117,
+            351,
+            144
+          ]
+        },
+        {
+          "photo_key": "M-1405 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 224,
+          "printed_page": "189",
+          "photo_box_xywh": [
+            94,
+            343,
+            353,
+            145
+          ]
+        },
+        {
+          "photo_key": "M-1405 C",
+          "side": "C",
+          "bis": "",
+          "pdf_page": 224,
+          "printed_page": "189",
+          "photo_box_xywh": [
+            179,
+            568,
+            180,
+            50
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:M-1478",
+      "volume": 2,
+      "cisi_id": "M-1478",
+      "site": "Mohenjo-Daro",
+      "object_type": "Tablets",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-1478 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 240,
+          "printed_page": "205",
+          "photo_box_xywh": [
+            93,
+            863,
+            368,
+            243
+          ]
+        },
+        {
+          "photo_key": "M-1478 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 240,
+          "printed_page": "205",
+          "photo_box_xywh": [
+            645,
+            858,
+            368,
+            243
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:M-1542",
+      "volume": 2,
+      "cisi_id": "M-1542",
+      "site": "Mohenjo-Daro",
+      "object_type": "Tablets",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "M-1542 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 260,
+          "printed_page": "225",
+          "photo_box_xywh": [
+            65,
+            1173,
+            379,
+            284
+          ]
+        },
+        {
+          "photo_key": "M-1542 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 260,
+          "printed_page": "225",
+          "photo_box_xywh": [
+            691,
+            1164,
+            376,
+            282
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:H-66",
+      "volume": 1,
+      "cisi_id": "H-66",
+      "site": "Harappa",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "H-66 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 220,
+          "printed_page": "184",
+          "photo_box_xywh": [
+            79,
+            855,
+            260,
+            251
+          ]
+        },
+        {
+          "photo_key": "H-66 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 220,
+          "printed_page": "184",
+          "photo_box_xywh": [
+            79,
+            1238,
+            255,
+            245
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:H-139",
+      "volume": 1,
+      "cisi_id": "H-139",
+      "site": "Harappa",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "H-139 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 236,
+          "printed_page": "200",
+          "photo_box_xywh": [
+            150,
+            103,
+            346,
+            174
+          ]
+        },
+        {
+          "photo_key": "H-139 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 236,
+          "printed_page": "200",
+          "photo_box_xywh": [
+            154,
+            341,
+            339,
+            177
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:H-212",
+      "volume": 1,
+      "cisi_id": "H-212",
+      "site": "Harappa",
+      "object_type": "Tablets",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "H-212 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 249,
+          "printed_page": "213",
+          "photo_box_xywh": [
+            487,
+            1080,
+            196,
+            102
+          ]
+        },
+        {
+          "photo_key": "H-212 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 249,
+          "printed_page": "213",
+          "photo_box_xywh": [
+            484,
+            1226,
+            200,
+            109
+          ]
+        },
+        {
+          "photo_key": "H-212 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 249,
+          "printed_page": "213",
+          "photo_box_xywh": [
+            486,
+            1394,
+            197,
+            94
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:H-305",
+      "volume": 1,
+      "cisi_id": "H-305",
+      "site": "Harappa",
+      "object_type": "Tablets",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "H-305 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 261,
+          "printed_page": "225",
+          "photo_box_xywh": [
+            902,
+            99,
+            149,
+            89
+          ]
+        },
+        {
+          "photo_key": "H-305 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 261,
+          "printed_page": "225",
+          "photo_box_xywh": [
+            903,
+            249,
+            149,
+            87
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:H-271",
+      "volume": 2,
+      "cisi_id": "H-271",
+      "site": "Harappa",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": true,
+      "photos": [
+        {
+          "photo_key": "H-271 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 291,
+          "printed_page": "256",
+          "photo_box_xywh": [
+            334,
+            114,
+            496,
+            264
+          ]
+        },
+        {
+          "photo_key": "H-271 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 291,
+          "printed_page": "256",
+          "photo_box_xywh": [
+            330,
+            442,
+            512,
+            269
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:H-451",
+      "volume": 2,
+      "cisi_id": "H-451",
+      "site": "Harappa",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "H-451 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 311,
+          "printed_page": "276",
+          "photo_box_xywh": [
+            805,
+            823,
+            272,
+            247
+          ]
+        },
+        {
+          "photo_key": "H-451 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 311,
+          "printed_page": "276",
+          "photo_box_xywh": [
+            817,
+            1247,
+            260,
+            257
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:H-523",
+      "volume": 2,
+      "cisi_id": "H-523",
+      "site": "Harappa",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "H-523 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 322,
+          "printed_page": "287",
+          "photo_box_xywh": [
+            153,
+            1249,
+            222,
+            257
+          ]
+        },
+        {
+          "photo_key": "H-523 A bis",
+          "side": "A",
+          "bis": "yes",
+          "pdf_page": 322,
+          "printed_page": "287",
+          "photo_box_xywh": [
+            434,
+            1244,
+            223,
+            260
+          ]
+        },
+        {
+          "photo_key": "H-523 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 322,
+          "printed_page": "287",
+          "photo_box_xywh": [
+            705,
+            1244,
+            224,
+            260
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:H-596",
+      "volume": 2,
+      "cisi_id": "H-596",
+      "site": "Harappa",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "H-596 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 332,
+          "printed_page": "297",
+          "photo_box_xywh": [
+            512,
+            108,
+            626,
+            154
+          ]
+        },
+        {
+          "photo_key": "H-596 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 332,
+          "printed_page": "297",
+          "photo_box_xywh": [
+            67,
+            105,
+            407,
+            206
+          ]
+        },
+        {
+          "photo_key": "H-596 a bis",
+          "side": "a",
+          "bis": "yes",
+          "pdf_page": 332,
+          "printed_page": "297",
+          "photo_box_xywh": [
+            512,
+            111,
+            626,
+            199
+          ]
+        },
+        {
+          "photo_key": "H-596",
+          "side": "",
+          "bis": "",
+          "pdf_page": 332,
+          "printed_page": "297",
+          "photo_box_xywh": [
+            70,
+            89,
+            404,
+            236
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:H-669",
+      "volume": 2,
+      "cisi_id": "H-669",
+      "site": "Harappa",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "H-669 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 345,
+          "printed_page": "310",
+          "photo_box_xywh": [
+            85,
+            483,
+            190,
+            110
+          ]
+        },
+        {
+          "photo_key": "H-669 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 345,
+          "printed_page": "310",
+          "photo_box_xywh": [
+            84,
+            668,
+            181,
+            102
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:H-743",
+      "volume": 2,
+      "cisi_id": "H-743",
+      "site": "Harappa",
+      "object_type": "Tablets",
+      "mayig_overlap": false,
+      "gold": true,
+      "photos": [
+        {
+          "photo_key": "H-743 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 357,
+          "printed_page": "322",
+          "photo_box_xywh": [
+            827,
+            108,
+            305,
+            157
+          ]
+        },
+        {
+          "photo_key": "H-743 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 357,
+          "printed_page": "322",
+          "photo_box_xywh": [
+            822,
+            329,
+            308,
+            156
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:H-814",
+      "volume": 2,
+      "cisi_id": "H-814",
+      "site": "Harappa",
+      "object_type": "Tablets",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "H-814 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 363,
+          "printed_page": "328",
+          "photo_box_xywh": [
+            350,
+            109,
+            166,
+            91
+          ]
+        },
+        {
+          "photo_key": "H-814 A bis",
+          "side": "A",
+          "bis": "yes",
+          "pdf_page": 363,
+          "printed_page": "328",
+          "photo_box_xywh": [
+            350,
+            237,
+            165,
+            87
+          ]
+        },
+        {
+          "photo_key": "H-814 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 363,
+          "printed_page": "328",
+          "photo_box_xywh": [
+            354,
+            357,
+            162,
+            88
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:H-886",
+      "volume": 2,
+      "cisi_id": "H-886",
+      "site": "Harappa",
+      "object_type": "Tablets",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "H-886 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 372,
+          "printed_page": "337",
+          "photo_box_xywh": [
+            194,
+            104,
+            243,
+            112
+          ]
+        },
+        {
+          "photo_key": "H-886 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 372,
+          "printed_page": "337",
+          "photo_box_xywh": [
+            60,
+            103,
+            111,
+            252
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:H-960",
+      "volume": 2,
+      "cisi_id": "H-960",
+      "site": "Harappa",
+      "object_type": "Tablets",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "H-960 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 377,
+          "printed_page": "342",
+          "photo_box_xywh": [
+            309,
+            106,
+            133,
+            85
+          ]
+        },
+        {
+          "photo_key": "H-960 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 377,
+          "printed_page": "342",
+          "photo_box_xywh": [
+            487,
+            107,
+            130,
+            86
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:Pk-24",
+      "volume": 2,
+      "cisi_id": "Pk-24",
+      "site": "Harappa",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "Pk-24 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 417,
+          "printed_page": "382",
+          "photo_box_xywh": [
+            479,
+            662,
+            194,
+            170
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v2:Skh-7",
+      "volume": 2,
+      "cisi_id": "Skh-7",
+      "site": "Harappa",
+      "object_type": "",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "Skh-7 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 446,
+          "printed_page": "411",
+          "photo_box_xywh": null
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:L-33",
+      "volume": 1,
+      "cisi_id": "L-33",
+      "site": "Lothal",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "L-33 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 282,
+          "printed_page": "246",
+          "photo_box_xywh": [
+            651,
+            149,
+            191,
+            149
+          ]
+        },
+        {
+          "photo_key": "L-33 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 282,
+          "printed_page": "246",
+          "photo_box_xywh": [
+            650,
+            414,
+            189,
+            123
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:L-66",
+      "volume": 1,
+      "cisi_id": "L-66",
+      "site": "Lothal",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": true,
+      "photos": [
+        {
+          "photo_key": "L-66 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 290,
+          "printed_page": "254",
+          "photo_box_xywh": [
+            73,
+            102,
+            368,
+            379
+          ]
+        },
+        {
+          "photo_key": "L-66 A bis",
+          "side": "A",
+          "bis": "yes",
+          "pdf_page": 290,
+          "printed_page": "254",
+          "photo_box_xywh": [
+            487,
+            106,
+            362,
+            369
+          ]
+        },
+        {
+          "photo_key": "L-66 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 290,
+          "printed_page": "254",
+          "photo_box_xywh": [
+            894,
+            305,
+            180,
+            180
+          ]
+        },
+        {
+          "photo_key": "L-66 C",
+          "side": "C",
+          "bis": "",
+          "pdf_page": 290,
+          "printed_page": "254",
+          "photo_box_xywh": [
+            82,
+            626,
+            153,
+            341
+          ]
+        },
+        {
+          "photo_key": "L-66 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 290,
+          "printed_page": "254",
+          "photo_box_xywh": [
+            74,
+            1118,
+            359,
+            356
+          ]
+        },
+        {
+          "photo_key": "L-66 c",
+          "side": "c",
+          "bis": "",
+          "pdf_page": 290,
+          "printed_page": "254",
+          "photo_box_xywh": [
+            475,
+            1141,
+            113,
+            337
+          ]
+        },
+        {
+          "photo_key": "L-66 c",
+          "side": "c",
+          "bis": "",
+          "pdf_page": 290,
+          "printed_page": "254",
+          "photo_box_xywh": [
+            801,
+            1143,
+            107,
+            344
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:L-98",
+      "volume": 1,
+      "cisi_id": "L-98",
+      "site": "Lothal",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": true,
+      "photos": [
+        {
+          "photo_key": "L-98 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 297,
+          "printed_page": "261",
+          "photo_box_xywh": [
+            610,
+            127,
+            253,
+            154
+          ]
+        },
+        {
+          "photo_key": "L-98 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 297,
+          "printed_page": "261",
+          "photo_box_xywh": [
+            936,
+            190,
+            136,
+            90
+          ]
+        },
+        {
+          "photo_key": "L-98 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 297,
+          "printed_page": "261",
+          "photo_box_xywh": [
+            616,
+            342,
+            248,
+            151
+          ]
+        },
+        {
+          "photo_key": "L-98",
+          "side": "",
+          "bis": "",
+          "pdf_page": 408,
+          "printed_page": "372",
+          "photo_box_xywh": [
+            632,
+            104,
+            139,
+            1420
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:L-132",
+      "volume": 1,
+      "cisi_id": "L-132",
+      "site": "Lothal",
+      "object_type": "",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "L-132 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 306,
+          "printed_page": "270",
+          "photo_box_xywh": [
+            746,
+            456,
+            326,
+            272
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:L-165",
+      "volume": 1,
+      "cisi_id": "L-165",
+      "site": "Lothal",
+      "object_type": "",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "L-165 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 313,
+          "printed_page": "277",
+          "photo_box_xywh": [
+            539,
+            452,
+            502,
+            516
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:L-227",
+      "volume": 1,
+      "cisi_id": "L-227",
+      "site": "Lothal",
+      "object_type": "",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "L-227 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 327,
+          "printed_page": "291",
+          "photo_box_xywh": [
+            874,
+            1203,
+            188,
+            51
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:K-21",
+      "volume": 1,
+      "cisi_id": "K-21",
+      "site": "Kalibangan",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "K-21 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 338,
+          "printed_page": "302",
+          "photo_box_xywh": [
+            840,
+            946,
+            246,
+            193
+          ]
+        },
+        {
+          "photo_key": "K-21 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 338,
+          "printed_page": "302",
+          "photo_box_xywh": [
+            800,
+            1311,
+            257,
+            185
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:K-42",
+      "volume": 1,
+      "cisi_id": "K-42",
+      "site": "Kalibangan",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": false,
+      "photos": [
+        {
+          "photo_key": "K-42 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 342,
+          "printed_page": "306",
+          "photo_box_xywh": [
+            84,
+            468,
+            332,
+            316
+          ]
+        },
+        {
+          "photo_key": "K-42 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 342,
+          "printed_page": "306",
+          "photo_box_xywh": [
+            91,
+            878,
+            328,
+            209
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:K-63",
+      "volume": 1,
+      "cisi_id": "K-63",
+      "site": "Kalibangan",
+      "object_type": "Seals",
+      "mayig_overlap": false,
+      "gold": true,
+      "photos": [
+        {
+          "photo_key": "K-63 a",
+          "side": "a",
+          "bis": "",
+          "pdf_page": 346,
+          "printed_page": "310",
+          "photo_box_xywh": [
+            626,
+            1358,
+            154,
+            81
+          ]
+        },
+        {
+          "photo_key": "K-63 C",
+          "side": "C",
+          "bis": "",
+          "pdf_page": 346,
+          "printed_page": "310",
+          "photo_box_xywh": null
+        },
+        {
+          "photo_key": "K-63 A",
+          "side": "A",
+          "bis": "",
+          "pdf_page": 346,
+          "printed_page": "310",
+          "photo_box_xywh": null
+        },
+        {
+          "photo_key": "K-63 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 346,
+          "printed_page": "310",
+          "photo_box_xywh": [
+            850,
+            1354,
+            84,
+            140
+          ]
+        }
+      ]
+    },
+    {
+      "canonical_key": "cisi:v1:K-88",
+      "volume": 1,
+      "cisi_id": "K-88",
+      "site": "Kalibangan",
+      "object_type": "",
+      "mayig_overlap": false,
+      "gold": true,
+      "photos": [
+        {
+          "photo_key": "K-88 B",
+          "side": "B",
+          "bis": "",
+          "pdf_page": 353,
+          "printed_page": "317",
+          "photo_box_xywh": [
+            722,
+            1261,
+            327,
+            232
+          ]
+        }
+      ]
+    }
+  ]
+}

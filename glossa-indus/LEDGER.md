@@ -2593,3 +2593,11 @@ changed (sha256 eccea6d5… unchanged, asserted before/after);
 the 44 pending_non_sa_validation anchors excluded. Suite
 883/12/0; foundation 40/0/8. AI-assisted record (Muse
 Spark, Muse), owner-directed.
+
+## 2026-10-08 — History purge #2 (revised scope): 1,935 historical-only paths removed (cross-reference)
+
+Cross-reference: repo LEDGER.md entry of the same date ("History purge #2 (revised scope)"). Owner decision (ii)+(iii): the E-CISI contested classification is resolved by the owner as human adjudicator — mayig-digitization-derived files (mayig corpus layer, crosswalk v1, sign registries, Wells witness dataset) are OWN-WORK and remain in tree and history. Purge scope was only the 1,935 historical-only restricted-derived paths of the 2026-10-08 adjudication Appendix A; no HEAD-resident file touched; HEAD tree byte-identical; suite 883/12/0 and foundation 40/0/8 on the rewritten tree; anchors sha256 eccea6d5… unchanged. Old main 9ef78ca6… historical-only; new main 7c959a81a1450c916d57364e4cb534f9e4de2acf.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

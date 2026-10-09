@@ -1972,3 +1972,19 @@ foundation report) reverted before commit, per precedent.
 **AI disclosure:** execution recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## [2026-10-08] Entry — History purge #2 (revised scope): 1,935 historical-only restricted-derived paths removed
+
+Owner decision (Tristen Pierson, 2026-10-08): recommendation (ii)+(iii) approved, following the hard stop of the full-scope purge #2 attempt at its verification gate (nothing was pushed in that attempt).
+
+**Step A — owner re-adjudication (human adjudicator).** The contested E-CISI classification in the 2026-10-08 history adjudication is resolved: files derived from the MIT-licensed mayig digitization (mayig/indus-valley-script-corpus) — including the mayig corpus layer, crosswalk v1, the sign registries, and the Wells witness dataset as the program's own generated data files — are ruled OWN-WORK (the MIT license travels with the digitization; sign-numbering/segmentation facts are data). They are NOT purge-eligible and remain in the tree and history. The conservative E-CISI rule remains the recorded basis for everything not covered by this ruling. Recorded as a dated addendum to the adjudication record (local: `~/workspace/glossa-run/history-adjudication-20261008.md`).
+
+**Step B — scope.** Exactly the 1,935 historical-only RESTRICTED-DERIVED paths of adjudication Appendix A (paths NOT present at HEAD; mechanically re-verified: Appendix A 2,766 = 831 at HEAD excluded + 1,935 in scope; scope list local: `purge2-revised-scope-20261008.txt`). No HEAD-resident file was touched; the HEAD tree is byte-identical before/after (tree `6bb5dd60e8dcdde6f93d39f195fbfd4a8071b002` both sides).
+
+**Step C — rewrite + gates.** git-filter-repo over all 21 branches + 3 tags. Gates, all passed BEFORE pushing: (a) 0 objects for every purged path across all refs in a fresh bare clone; (b) backend suite 883 passed / 12 skipped / 0 failed and foundation check 40 passed / 0 failed / 8 warnings on the rewritten tree (baseline-identical); (c) `backend/reports/INDUS_FINAL_ANCHORS.json` sha256 unchanged (`eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed`); (d) HEAD tree byte-identical (see Step B). Protection: captured fresh, `allow_force_pushes` flipped on for the push only, restored verbatim — closing GET identical to the pre-purge capture.
+
+**Result.** Old main `9ef78ca65d98449d2d781c5270cb478fa321ba2b` is historical-only. New main: `7c959a81a1450c916d57364e4cb534f9e4de2acf`. All pre-2026-10-08-purge-#2 SHAs are historical-only. Pre-purge backup retained locally only (`~/workspace/glossa-run/glossa-lab-backup-20261008-prepurge2.git`, main 9ef78ca6; not deleted — deletion needs its own future owner order). GitHub Support garbage-collection ticket for purge #2: filing prepared (text local: `purge2-gc-ticket-20261008.md`, pattern of ticket #4834257); the ticket number will be recorded in a follow-up entry once filed.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

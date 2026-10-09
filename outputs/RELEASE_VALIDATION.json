@@ -335,5 +335,181 @@
       }
     },
     "scope_note": "Extension added in v4.4.0. All pre-existing keys, including release_v4_3_0, are unchanged; the decipherment validation results they record were not re-run for this release. Phases 127-131 and specs 021-022 changed no anchor."
+  },
+  "release_v4_5_0": {
+    "version": "4.5.0",
+    "date": "2026-10-09",
+    "note_file": "pierson_2026_indus_program_note_132_closeout.md",
+    "repo": "BitConcepts/glossa-lab",
+    "repo_main_commit": "a6577d7f",
+    "repo_main_commit_full": "a6577d7f23571d799cbf4da7525ff4d863c1283c",
+    "anchors_file": "INDUS_FINAL_ANCHORS.json",
+    "anchors_sha256": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+    "backend_suite": {
+      "passed": 994,
+      "skipped": 12,
+      "failed": 0,
+      "collected": 1006,
+      "run": "Independent re-run 2026-10-09 in the v4.5.0 release worktree at a6577d7f (canonical venv, corpora symlinked from the main checkout, CI configuration with GPU test files ignored): 994 passed / 12 skipped / 0 failed.",
+      "ci": "GitHub CI run 37942349547 on merge commit a6577d7f: completed success"
+    },
+    "foundation_check": {
+      "passed": 40,
+      "failed": 0,
+      "warnings": 8,
+      "run": "Re-run 2026-10-09 in the v4.5.0 release worktree at a6577d7f (corpora symlinked): 40 checks passed, 0 failed, 8 warnings."
+    },
+    "phase_outcomes": {
+      "spec_023_keyed_transcription_layer": {
+        "status": "FROZEN 2026-10-09 (owner adjudication recorded; freeze + merge PR #99)",
+        "owner_order": "merge #99 and execute the new plan (Tristen Pierson, 2026-10-09)",
+        "decision_asks": "all five answered with the proposed values as drafted (pilot go; tranche scope in principle only; S5.6 gates as proposed; CC BY 4.0 publication of gate-passing stage datasets in principle; impression-primary orientation)",
+        "canonical_key": "volume-scoped cisi:v{volume}:{printed_id}",
+        "prohibited_key": "Holdat cisi_number (internal sequential numbering; expressly not a join key)"
+      },
+      "phase_132_stage_p_pilot": {
+        "build_pr": "#100 (merged c789f7ad)",
+        "report_pr": "#101 (merged a6577d7f)",
+        "frame": {
+          "objects": 50,
+          "mohenjo_daro": 25,
+          "harappa": 15,
+          "lothal": 6,
+          "kalibangan": 4,
+          "seals": 34,
+          "tablets": 11,
+          "type_unrecorded": 5,
+          "mayig_overlap": 10,
+          "mayig_overlap_sites": "all Mohenjo-Daro (sub-quotas corrected pre-transcription)",
+          "gold_sample": 10,
+          "seed": 20261009,
+          "ambiguity_log": "EMPTY"
+        },
+        "stop_rule": {
+          "verdict": "FIRED (agreement arm)",
+          "exact_seq_agreement_all50_P": 0.2,
+          "exact_seq_counts": "10/50",
+          "floor": 0.8,
+          "error_arm": "did not fire",
+          "gold_error_estimator_P": 0.05,
+          "gold_error_counts": "2/40",
+          "error_threshold": "strictly > 0.05"
+        },
+        "release_gates_gold": {
+          "verdict": "ALL FAIL",
+          "exact_seq": {
+            "measured": 0.1,
+            "counts": "1/10",
+            "threshold": ">= 0.90"
+          },
+          "per_token": {
+            "measured": 0.4286,
+            "counts": "18/42",
+            "threshold": ">= 0.95"
+          },
+          "gold_error": {
+            "measured": 0.05,
+            "threshold": "<= 0.02"
+          }
+        },
+        "dataset_publication": "NOT PUBLISHED (release gates failed; owner-approved CC BY 4.0 route not exercised; repo dataset JSON is the in-repo build record only)",
+        "agreement": {
+          "per_token_all50": 0.4798,
+          "per_token_counts": "95/198",
+          "exact_seq_gold": 0.1,
+          "per_token_gold": 0.4286
+        },
+        "disagreement_taxonomy": {
+          "total": 162,
+          "identity": 93,
+          "legibility": 45,
+          "count": 11,
+          "key": 10,
+          "orientation": 2,
+          "order": 1,
+          "objects_with_zero_disagreements": 5
+        },
+        "tokens": {
+          "pass_a": 191,
+          "pass_b": 190,
+          "gold_pass": 40,
+          "adjudicated_final": 189,
+          "adjudicated_per_object_mean": 3.78,
+          "adjudicated_per_object_median": 4
+        },
+        "unk_unmapped": {
+          "unk_share_adjudicated": 0.407,
+          "unmapped_share_adjudicated": 0.085,
+          "unk_plus_unmapped_share": 0.492,
+          "unk_plus_unmapped_counts": "93/189",
+          "spec018_boundary": "exceeds the spec 018 S6.1 25% NOT-EVALUABLE unmapped-share boundary as a property of this layer (no evaluation was run)"
+        },
+        "empty_final_sequences": [
+          "cisi:v1:M-566",
+          "cisi:v2:M-1542",
+          "cisi:v2:H-886",
+          "cisi:v2:Pk-24",
+          "cisi:v1:K-21",
+          "cisi:v1:K-88"
+        ],
+        "attestation": {
+          "P125": "attested (1 token)",
+          "P076": "not attested",
+          "P000": "not attested"
+        },
+        "intake": {
+          "validator": "pass-with-warnings (0 errors, 21 warnings)",
+          "license_gate": "pass (declared transcription-facts basis; does not release the dataset)",
+          "dedup_spec018": "50 -> 39 kept (stage A -8, stage B -3, stage C -0)"
+        },
+        "effort": {
+          "total_seconds": 10076,
+          "per_object_seconds": 201.5,
+          "per_final_token_seconds": 53.3,
+          "basis": "AI-agent wall times under this pipeline (320 logged events); not estimates of expert human effort",
+          "pass_a": {
+            "median_s": 51.5,
+            "mean_s": 66.68,
+            "total_s": 3334
+          },
+          "pass_b": {
+            "median_s": 70,
+            "mean_s": 76.36,
+            "total_s": 3818
+          },
+          "pass_gold": {
+            "median_s": 110,
+            "mean_s": 97.9,
+            "total_s": 979
+          },
+          "adjudication": {
+            "median_s": 30.5,
+            "mean_s": 38.9,
+            "total_s": 1945
+          }
+        },
+        "ai_disclosure": "all roles (pass_a, pass_b, pass_gold, adjudicator) executed by AI agents (Muse Spark, via Muse) in role-isolated blinded instances, at the direction of Tristen Pierson",
+        "process_finding": "pass batch self-reports' token tallies disagreed with the on-disk records those batches wrote; every reported quantity is computed from the on-disk records, never from self-reports",
+        "stage_t": "not proposed, scoped, or scheduled (per spec S3.1 after the stop-rule fired)"
+      }
+    },
+    "program_closeout": {
+      "posture": "watch-and-respond (owner decision, 2026-10-09)",
+      "closed_lines": {
+        "within_compilation_validation_batteries": "CLOSED 2026-10-07 (owner decision; specs 011/014/016/017 rejected at calibration)",
+        "cross_compilation_positional_attribution": "CLOSED (Phase-125 FAIL final; Phase-127 not sampling noise; Phase-131 composition share 0.061321, residual unexplained 0.938679, key mechanisms NOT ESTIMABLE for lack of a legitimate join; reopening requires a legitimately keyed corpus layer, external-data-dependent)",
+        "keyed_transcription_layer_build": "STOPPED AT PILOT (Spec 023 / Phase-132, frozen stop-rule fired); retry requires a new owner decision AND a materially different transcription basis (e.g. human expert transcription), not a parameter change"
+      },
+      "pred_2026_001": "PENDING",
+      "pred_2026_002": "PENDING",
+      "pred_2026_003": "PENDING",
+      "pending_anchors": 44,
+      "strict_core": "94 SA-free readings / 73.68% corpus coverage, standing as hypothesis",
+      "response_path": "Phase-130 intake pack (provenance -> license gate -> dedup -> spec-018 evaluability classification) -> report to owner BEFORE any study is designed; no study, battery, or PRED scoring without fresh owner authorization"
+    },
+    "release_gate": {
+      "verdict": "recorded in the gate-record commit for this release (see repo ledger entry, 2026-10-09, Zenodo v4.5.0)"
+    },
+    "scope_note": "Extension added in v4.5.0. All pre-existing keys, including release_v4_3_0 and release_v4_4_0, are unchanged; the decipherment validation results they record were not re-run for this release. Spec 023 and Phase-132 changed no anchor and no PRED verdict."
   }
 }

@@ -2790,3 +2790,91 @@ PRED change — anchors sha256 eccea6d5… unchanged.
 AI-assisted record (Muse Spark, Muse),
 owner-directed. Full entry: repo LEDGER.md, same date;
 report: reports/phase132_pilot_report.md.
+
+## 2026-10-09 — Zenodo v4.5.0 published (Spec 023 + Phase-132 closeout) (cross-reference)
+
+Zenodo **v4.5.0**, record **23266588**, DOI
+**10.5281/zenodo.23266588** (concept DOI
+10.5281/zenodo.20379070), published 2026-10-09. New
+program note
+`glossa-corpus/indus/pierson_2026_indus_program_note_132_closeout.md`
+covering Spec 023 (frozen via PR #99 with owner
+adjudication) and Phase-132 (Stage P pilot; frozen
+stop-rule FIRED — exact-seq 0.20 vs 0.80 floor;
+release gates all fail; pilot dataset NOT published),
+plus the program closeout statement.
+`outputs/RELEASE_VALIDATION.json` gained a
+release_v4_5_0 entry. Release sources PR #102 (merged
+4ff4cca2) + gate-record PR #103 (merged 573412cb),
+both 7/7 CI green. Mandatory release gate
+(docs/RELEASE_CHECKLIST.md) run against a clean
+checkout of 573412cb: **PASS — 10/10 entries OK,
+0 failed**, exit 0; anchors file MATCH at sha256
+eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed.
+Post-deposit confirmation: the published record's
+10 file MD5s each equal the gated staged files'
+MD5s (10/10). OSF osf.io/ybd65 updated (parent +
+Outputs vwa7s + Corpora dfrhz; Literature zbh86
+unchanged). Suite re-verified at a6577d7f: 994
+passed / 12 skipped / 0 failed; foundation 40 / 0 /
+8. No anchor or PRED change. AI-assisted record
+(Muse Spark, Muse), owner-directed. Full
+entry: repo LEDGER.md, same date.
+
+## 2026-10-09 — Indus program posture: WATCH-AND-RESPOND (owner decision)
+
+Owner decision (Tristen Pierson, 2026-10-09): the
+Indus program is set to **watch-and-respond**
+posture. (a) CLOSED LINES: (i) within-compilation
+validation batteries — already closed 2026-10-07
+(cross-reference; specs 011/014/016/017 rejected at
+calibration; no further redesign authorized);
+(ii) cross-compilation positional attribution —
+CLOSED: Phase-125 FAIL stands final; Phase-127
+showed the disagreement is not sampling noise
+(matched-size null median TV 0.082613 vs observed
+0.636931; 0/999); Phase-131 attributed only 6.1%
+(composition share 0.061321) with 93.9% residual
+unexplained (0.938679) and the segmentation /
+substitution / insertion-deletion shares NOT
+ESTIMABLE for lack of a legitimate join (4 matched
+pairs, 0 exact; Holdat `cisi_number` is internal
+numbering, not a CISI key) — reopening requires a
+legitimately keyed corpus layer, which is
+external-data-dependent; (iii) keyed
+transcription-layer build — STOPPED AT PILOT
+(Spec 023 / Phase-132): frozen stop-rule fired,
+release gates all failed, no dataset published, no
+Stage T proposed, scoped, or scheduled; a retry
+requires a new owner decision AND a materially
+different transcription basis (e.g. human expert
+transcription), not a parameter change. (b)
+POSTURE: watch-and-respond — named triggers: (1)
+any reply to the 2026-10-08 letters (RMRL
+concordance, RMRL graffiti, Mitra/Dixit,
+Tiedekirja digital CISI); (2) any hit from the
+weekly indus-data-watch (Mahadevan Chair
+concordance, CISID release, Dixit dataset deposit,
+CISI Vol. 3.4, Lothal 2025 seals, Rakhigarhi
+report, Keeladi report, any complete digital CISI
+3.1/3.2/3.3 appearing anywhere); (3) GitHub
+Support ticket #4838529 completion → verify
+pre-purge-#2 main `9ef78ca6` returns HTTP 404
+(404 = the commit is gone after garbage
+collection) and record the closeout. Response path
+for any data trigger: Phase-130 intake pack
+(provenance → license gate → dedup → spec-018
+evaluability classification) → report to owner
+BEFORE any study is designed; no study, battery,
+or PRED scoring without fresh owner authorization.
+(c) STANDING STATE: PRED-2026-001/002/003 PENDING;
+44 anchors `pending_non_sa_validation`; strict
+SA-free core 94 readings / 73.68% coverage stands
+as hypothesis; library-loan activity remains on
+owner hold; pre-purge-#2 backup mirror retained
+pending its own owner order. Standing watches
+verified live: glossa-backend-watchdog (20m,
+enabled), indus-data-watch (weekly Wed, enabled);
+schedules unchanged. AI-assisted record (Muse
+Spark, Muse), owner-directed. Full entry:
+repo LEDGER.md, same date.

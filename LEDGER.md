@@ -3287,3 +3287,56 @@ datasets, codes and logs only, no images).
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution §VI.
+
+## 2026-10-09 — Zenodo v4.7.0 published (Spec 024 Stages 1–1b: Phase-134 + clarification + Phase-135): both motif pilot datasets CC BY 4.0 through the release gate
+
+**Zenodo v4.7.0 published 2026-10-09** — DOI
+10.5281/zenodo.23270096 (record 23270096); concept DOI
+10.5281/zenodo.20379070 unchanged. The deposit (18
+files) adds the Spec 024 Stages 1–1b program note
+(`pierson_2026_indus_program_note_134_135_motif.md`)
+and both motif-coding pilot datasets
+(`phase134_pilot_dataset.json`,
+`phase135_pilot_dataset.json`, each with its
+provenance meta, CC BY 4.0 per the owner's
+combined-path approval — codes, notes, and
+disagreement logs only, no images) to the
+carried-forward v4.6.0 set. Publication flow per
+docs/RELEASE_CHECKLIST.md: program note +
+`RELEASE_VALIDATION.json` `release_v4_7_0` entry via
+PR #113 (merge e698cff2); mandatory release gate run
+at e698cff2 — **PASS 18/18** (17 MATCH + 1 EXTERNAL,
+the carried-forward v3 preprint PDF byte-identical to
+the v4.6.0 record); gate recorded via PR #114 (merge
+52580e43); final gate run against the merged
+gate-record commit 52580e43 — **PASS 18/18**, exit 0
+(final staged `RELEASE_VALIDATION.json` sha256
+10c27e6b232438dd097f1dc61ed17b09b63b61c8464681d8c4fca8b2612ada36).
+Post-deposit confirmation: **18/18** file checksums
+on record 23270096 match the staged files. Suite and
+foundation run at the Phase-135 merge 11e70c98 in
+the release worktree: **1026 passed / 5 skipped / 0
+failed**; foundation **40 passed / 0 failed / 8
+warnings**. OSF registry (osf.io/ybd65): dated
+v4.7.0 blocks appended to the parent project, the
+Program Outputs component (vwa7s), and the Corpora
+component (dfrhz); the Literature component is
+unchanged. Spec 024 tasks T9b–T9e marked DONE.
+
+The release closes the motif arm's combined path as
+the numbers dictated: Phase-134 MIDDLE BAND (0.84 /
+κ 0.7885), boundary clarified (stage1-freeze-2,
+Rules B1–B5, gates unchanged), Phase-135 fresh-sample
+re-pilot MIDDLE BAND again (0.78 / κ 0.7129), no
+Stage 2(b) design drafted. The Stage 2(b) decision
+now rests with the owner on the framed options in
+`reports/phase135_pilot_report.md` §8; nothing in
+this release authorizes it.
+
+No anchor or PRED change — anchors sha256
+eccea6d5… unchanged; PRED-2026-001/002/003 remain
+PENDING.
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.

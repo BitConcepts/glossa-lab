@@ -172,9 +172,14 @@ crops were region proposals.
   valley split / no-split, border-strip y-fit, determinism).
 - Benchmark harness assertions: v1 boxes reproduced exactly;
   v2 re-run bit-identical.
-- Full backend suite and foundation check: see the closing
-  verification block in the Phase-129 ledger entry (run on the
-  final tree).
+- Full backend suite: **923 passed / 13 skipped / 0 failed**
+  (includes the 12 new tests; the skip split differs from the
+  main-checkout baseline because the gitignored corpora are absent
+  in a fresh worktree, as in CI). Foundation check (corpora
+  symlinked from the main checkout): **40 passed / 0 failed /
+  8 warnings** — unchanged from the Phase-119 baseline.
+  Test side-effect modifications (claims JSONs, outputs/) were
+  reverted before commit.
 - Ruff: clean on all new files.
 - Anchors file sha256 unchanged (eccea6d5…), asserted before and
   after.

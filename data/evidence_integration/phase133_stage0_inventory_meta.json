@@ -1,0 +1,116 @@
+{
+ "dataset_name": "phase133_stage0_inventory",
+ "dataset_file": "data/evidence_integration/phase133_stage0_inventory.json",
+ "spec": "specs/024-evidence-integration/spec.md (FROZEN Stage 0, 2026-10-09; PR #105, merge 467adbcf, freeze fecba9ec)",
+ "phase": "Phase-133",
+ "builder": "backend/scripts/phase133_stage0_inventory.py",
+ "provenance": "Every count recomputed by the builder from the input files listed below at run time; nothing copied from spec Appendix A (Appendix A values are the claims checked in the drift table).",
+ "license_basis_per_layer": {
+  "cisi_vol1_catalogue": "Local research material (CISI volumes in copyright); derived counts only are published.",
+  "cisi_vol2_catalogue": "Local research material (CISI volumes in copyright); derived counts only are published.",
+  "holdat_indus_corpus": "Local research material; derived counts only.",
+  "holdat_symbol_semantic_roles": "Local research material; derived counts only.",
+  "mayig_cisi_layer": "MIT (source repo LICENSE, Copyright (c) 2024 Michael Carlson; verified at acquisition, Phase-122 meta).",
+  "mayig_source_corpus": "MIT (source repo LICENSE, Copyright (c) 2024 Michael Carlson).",
+  "horus84_inscriptions": "MIT per source repo metadata at acquisition; ICIT-lineage derivative — descriptive/QC use only, never an independent witness (spec section 2.4).",
+  "museum_met_indus": "CC0 (Met Open Access).",
+  "museum_cleveland_indus_search": "CC0 (Cleveland Open Access; per-record share_license_status field as acquired)."
+ },
+ "publication_basis": "Stage 0 inventory dataset approved for CC BY 4.0 publication through the release gate at Stage 0 completion (spec Decision Ask 4, freeze record 2026-10-09). This build performs no publication; disposition is task T6, handled separately. Facts only; no images, ever (boundary 5).",
+ "inputs": {
+  "cisi_vol1_catalogue": {
+   "path": "/home/hatch/workspace/glossa-lab/corpora/downloads/cisi_image_layer/catalogue/cisi_vol1_catalogue.csv",
+   "exists": true,
+   "sha256": "e0d698f991fbd7cf26c491a2b25906b422903a0e2a26ea7b8c690420ca51dc1e",
+   "bytes": 804665
+  },
+  "cisi_vol2_catalogue": {
+   "path": "/home/hatch/workspace/glossa-lab/corpora/downloads/cisi_image_layer/catalogue/cisi_vol2_catalogue.csv",
+   "exists": true,
+   "sha256": "e751244e2d51bda3181d98e56af691c0d24099d76d035b54f0888504204bc7d9",
+   "bytes": 1431631
+  },
+  "holdat_indus_corpus": {
+   "path": "/home/hatch/workspace/glossa-lab/corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv",
+   "exists": true,
+   "sha256": "62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e",
+   "bytes": 593253
+  },
+  "holdat_semantic_roles": {
+   "path": "/home/hatch/workspace/glossa-lab/corpora/downloads/external_repos/holdatllc_indus/all_symbol_semantic_roles 2.csv",
+   "exists": true,
+   "sha256": "eb6d3b6ae195a2570e098dc6779dbd6c7bea97da5c4714bf406c3bb98f9d2aaf",
+   "bytes": 11506
+  },
+  "mayig_layer": {
+   "path": "/home/hatch/workspace/glossa-lab-phase133/data/corpus_layers/mayig_cisi_layer_v1.json",
+   "exists": true,
+   "sha256": "6a7664c605079373ca80e70b7e9559c1527613e3f67b579a817ced785e129860",
+   "bytes": 102003
+  },
+  "mayig_layer_meta": {
+   "path": "/home/hatch/workspace/glossa-lab-phase133/data/corpus_layers/mayig_cisi_layer_v1_meta.json",
+   "exists": true,
+   "sha256": "0ea76c16adc7d6446a5d77781ac5a23cc685ecb80ede8bf7fe8c66b91e7ef52d",
+   "bytes": 1249
+  },
+  "horus84_inscriptions": {
+   "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/horus84-computational-linguistics/data/inscriptions.csv",
+   "exists": true,
+   "sha256": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef",
+   "bytes": 1190884
+  },
+  "anomaly_holdatllc_seal_catalog": {
+   "path": "/home/hatch/workspace/glossa-lab-phase133/data/raw/other_sites/holdatllc_seal_catalog.csv",
+   "exists": true,
+   "sha256": "919e2e47fa6d77abb035c4063ea6f82e0d6980b415b4e9349d5aaf0191611eb7",
+   "bytes": 1031,
+   "note": "Committed in the repository at data/raw/other_sites/; content inspected in this run (see anomalies)."
+  },
+  "museum_met_indus_object_ids": {
+   "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/museum-open-data/met/indus_object_ids.json",
+   "exists": true,
+   "sha256": "c83342891b97c92e2233cc38c89fcb845e73d85b4fc854ce3ceeea4b4acb6abf",
+   "bytes": 224
+  },
+  "museum_met_indus_objects_summary": {
+   "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/museum-open-data/met/indus_objects_summary.json",
+   "exists": true,
+   "sha256": "c66a6accb25e694f330e88a0ed1088c46407990fcbba4d0781c6454800112a73",
+   "bytes": 6875
+  },
+  "museum_cleveland_search_indus": {
+   "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/museum-open-data/cleveland/search_indus.json",
+   "exists": true,
+   "sha256": "554c869d05e84a62cbfc568152a164d9df2ad33add3b565036d51b3dd0cc4b96",
+   "bytes": 57973
+  },
+  "museum_penn_records_md": {
+   "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/museum-open-data/penn/penn_records.md",
+   "exists": true,
+   "sha256": "f02b85956a527e7f77c4778b15924f8215715a264ccc7a20fb49051061d71a91",
+   "bytes": 1600
+  },
+  "kodumanal_volume_pdf": {
+   "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/kodumanal-dli/TVA_BOK_0010628_Archaeological_Excavations_of_Tamilnadu_VolII_Kodumanal.pdf",
+   "exists": true,
+   "sha256": "d53e2d93793ff25a1be65389c652c958b9f1430109ce08bf0769fd87d119e0da",
+   "bytes": 115831960
+  },
+  "kunal_article_pdf": {
+   "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/jstage-kunal-2012/JOrient55_22_Kunal_PreIndusSeals.pdf",
+   "exists": true,
+   "sha256": "17f50a294355902834424f70f1046ca9189e802709c6fbdbd40478b177573444",
+   "bytes": 2831496
+  },
+  "mayig_source_corpus_dir": {
+   "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/mayig-indus-valley-script-corpus/corpus",
+   "exists": true,
+   "n_json_files_under_corpus": 179,
+   "note": "Per-file sha256 not recorded for the 179 source files; the combined acquisition hash is in the deep-sweep PROVENANCE.md entry 1."
+  }
+ },
+ "restricted_material": "No CISI image, page scan, or restricted source file is included; inputs were read from the local store and only counts, codes, and text are emitted.",
+ "dataset_content_hash": "c2f52daf21c572d26adadb2116fb4ad1d177bdba5304c6a1cad7d5352a7496a2",
+ "hash_method": "sha256 of canonical JSON (sort_keys, ensure_ascii=False) of the inventory object"
+}

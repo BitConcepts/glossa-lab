@@ -2758,3 +2758,35 @@ dated blocks and re-read-verified; zbh86 unchanged (no
 new literature). No anchor changed (sha256 eccea6d5…).
 AI-assisted record (Muse Spark, Muse),
 owner-directed. Full entry: repo LEDGER.md, same date.
+
+## 2026-10-09 — Phase-132 (Spec 023): Keyed Transcription Layer, Stage P Pilot — stop-rule FIRED, build stops, no publication (cross-reference)
+
+Spec 023 FROZEN 2026-10-09 (owner: Tristen Pierson —
+"merge #99 and execute the new plan"; PR #99 freeze +
+merge, PR #100 build, main c789f7ad). Stage P pilot:
+50-object deterministic frame (MD 25 / Harappa 15 /
+Lothal 6 / Kalibangan 4; mayig overlap 10, all MD after
+the pre-transcription quota correction, commit
+33cb4c86; gold 10, seed 20261009; ambiguity log EMPTY),
+transcribed by AI agents in role-isolated blinded
+instances (pass_a / pass_b / pass_gold / adjudicator).
+The frozen STOP-RULE FIRED: exact-sequence agreement
+all-50 (P) = 0.20 (10/50) < 0.80; the error arm did
+not fire (gold estimator 0.05, threshold > 0.05). Per
+spec §3.1 the build STOPS — no tranche proposed.
+Release gates (gold) ALL FAIL (exact-seq 0.10 < 0.90;
+per-token 0.4286 < 0.95; estimator 0.05 > 0.02), so NO
+dataset publication occurs (CC BY 4.0 route not
+exercised; the repo dataset JSON is the build record
+only). Per-token all-50 = 0.4798; adjudicated 189
+tokens; UNK 40.7%; UNK+unmapped 49.2% (exceeds the
+§7 25% NOT-EVALUABLE boundary as a property of this
+layer); attestation P125 yes (1), P076 no, P000 no;
+dedup 50 → 39. Effort: all-in 10,076 s ≈ 201.5
+s/object, 53.3 s per final token. No Stage T
+recommendation (owner decision T9 pending, with pilot
+numbers in hand); no evaluation run; no anchor or
+PRED change — anchors sha256 eccea6d5… unchanged.
+AI-assisted record (Muse Spark, Muse),
+owner-directed. Full entry: repo LEDGER.md, same date;
+report: reports/phase132_pilot_report.md.

@@ -2578,3 +2578,115 @@ release; anchors sha256 eccea6d5… throughout.
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution §VI.
+
+## 2026-10-09 — Phase-132 (Spec 023): Keyed Transcription Layer, Stage P Pilot — the frozen stop-rule FIRED (exact-sequence agreement 0.20 < 0.80); build stops, no tranche proposed, no dataset publication
+
+Spec 023 was frozen 2026-10-09 on the owner's instruction
+of record (Tristen Pierson — "merge #99 and execute the
+new plan"), answering all five §11 decision asks with
+the proposed values as drafted; freeze + merge in PR #99.
+The Stage P pilot build followed in PR #100 (merged at
+main c789f7ad): deterministic 50-object frame over the
+CISI Vol. 1–2 catalogue (Mohenjo-Daro 25 / Harappa 15 /
+Lothal 6 / Kalibangan 4; Seals 34 / Tablets 11 /
+unrecorded 5, counted from the frame records; mayig
+overlap 10, all Mohenjo-Daro — the mayig layer resolved
+176 MD / 3 site-uncaptured / 0 elsewhere, so the mayig
+sub-quotas were corrected pre-transcription to MD 10 /
+H 0 / LK 0, commit 33cb4c86; gold sample 10, seed
+20261009; ambiguity log EMPTY, no exclusions; 10 key
+disagreements logged and ruled from the plates, plate
+reading governing). Two blinded passes plus a gold pass
+and adjudication were executed by AI agents in
+role-isolated blinded instances (each pass split across
+5 batch instances); blindness held throughout.
+
+Verdict, as found: the frozen pilot STOP-RULE FIRED —
+exact-sequence inter-pass agreement (all 50 objects,
+P space) = 0.20 (10/50), below the 0.80 floor. The
+error arm did not fire (gold estimator 0.05 = 2/40;
+frozen condition is > 0.05). Per spec §3.1 the build
+STOPS: no tranche is proposed. Release gates (gold
+scope) ALL FAIL — (i) exact-sequence 0.10 < 0.90,
+(ii) per-token 0.4286 < 0.95, (iii) estimator 0.05 >
+0.02 — so NO dataset publication occurs; the
+owner-approved CC BY 4.0 route is not exercised and
+the dataset JSON in data/keyed_transcription/ is the
+in-repo build record only. A stopped pilot is a
+result (spec §3.1).
+
+Measurements (all computed from the on-disk records by
+backend/scripts/phase132_metrics.py; reports/
+phase132_pilot_metrics.json): exact-sequence agreement
+P/M all-50 = 0.20/0.20, gold = 0.10/0.10; per-token
+P/M all-50 = 0.4798 (95/198), gold = 0.4286 (18/42);
+gold estimator P/M = 0.05 (2/40), with its frozen
+limitation (errors identical across all three passes
+are invisible). Tokens: pass_a 191, pass_b 190, gold
+40, adjudicated final 189 (mean 3.78 / median 4 per
+object; mayig reference ≈5.6). UNK shares: A 39.3%,
+B 38.9%, gold 42.5%, adjudicated 40.7%;
+crosswalk-unmapped adjudicated 8.5%; UNK+unmapped
+adjudicated 49.2% — exceeding spec §7's 25%
+NOT-EVALUABLE unmapped-share boundary as a property of
+this layer; crosswalk-conflict tokens adjudicated 69.
+Attestation (§7): P125 attested (1 token), P076 NOT
+attested, P000 NOT attested. Intake validator
+pass-with-warnings (0 errors, 21 warnings:
+TOKEN_FORMAT_MISMATCH ×10, EMPTY_TOKEN_SEQUENCE ×6,
+RECOMMENDED_FIELD_MISSING ×5); license gate pass (not
+a release — the §5.6 gates failed); dedup 50 → 39 kept
+(stage A −8, stage B −3). Evaluability by class
+QUALIFIES for PRED-2026-001/002/003 (4 sites) — class
+qualification only; no evaluation run or implied.
+
+Deviations and findings, named plainly: (a) pass_b
+batch 2 used the 200-DPI page renders (page_cache_200)
+for several Vol. 2 objects after page-render access
+failures, plus a self-made tighter re-crop for M-195 —
+plate-only sources throughout, no external
+transcription consulted; (b) two-sided-tablet B-face
+ordering was flagged by passes and ruled at
+adjudication (disagreement taxonomy: identity 93,
+legibility 45, count 11, key 10, orientation 2,
+order 1; total 162; only 5/50 objects had zero
+disagreements); (c) PROCESS FINDING: several pass batch
+self-reports' token tallies disagreed with the on-disk
+records they wrote — every quantity in the pilot
+report is computed from the on-disk records, never
+from self-reports; (d) 6 objects have empty final
+sequences as found (cisi:v1:M-566, cisi:v2:M-1542,
+cisi:v2:H-886, cisi:v2:Pk-24, cisi:v1:K-21,
+cisi:v1:K-88).
+
+Effort (the pilot's explicit product): pass_a median
+51.5 s/object (mean 66.68, total 3,334 s); pass_b
+median 70 (mean 76.36, total 3,818); pass_gold median
+110 (mean 97.9, total 979); adjudication median 30.5
+(mean 38.9, total 1,945); all-in total 10,076 s ≈
+201.5 s/object; 53.3 s per final token.
+
+Stage T: this report makes NO Stage T recommendation.
+The measured unit quantities are the inputs to the
+owner's separate Stage T decision (spec §11 ask 2 /
+tasks T9); spec §10(b) (commissioned external
+transcription) is the alternative the spec names when
+pilot gates fail, now askable with pilot numbers in
+hand. Interpretation discipline (§8): the pilot
+measured THIS pipeline — AI transcribers, these plate
+renders, the Mahadevan-1977 drawings as the
+identification reference — failing the frozen gates;
+it does not measure expert human transcription, bears
+on no anchor reading, and changes no PRED verdict.
+Anchors sha256
+eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed
+asserted unchanged. Pilot report:
+reports/phase132_pilot_report.md. Graph node
+IndusPhase132PilotMetrics registered (additive module
+backend/glossa_lab/experiment_graph_phase132.py + one
+registry block, H23 pattern).
+
+**AI disclosure:** all roles (pass_a, pass_b, pass_gold,
+adjudicator) and this record were executed by AI agents
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.

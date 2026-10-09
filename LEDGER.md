@@ -2360,3 +2360,20 @@ reverted before commit, per precedent.
 **AI disclosure:** execution recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## 2026-10-09 — CORRECTION (append-only): Phase-130 suite skipped count corrected — 13 → 5; 938 passed / 0 failed unchanged
+
+Correction to the Phase-130 (Spec 021) entry above (appended,
+not edited; part of the 2026-10-08 follow-on program
+closeout): its recorded suite line "938 passed / 13 skipped /
+0 failed" is corrected — the skipped count is corrected from
+13 to 5. The verified re-run settles the suite at 938 passed
+/ 5 skipped / 0 failed (943 collected in that worktree
+environment). Passed (938) and failed (0) were correct; only
+the skipped count was wrong. Skip counts vary by worktree
+environment (gitignored corpora presence). CI was 7/7 green.
+No other Phase-130 figure is affected.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

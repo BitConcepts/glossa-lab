@@ -1,0 +1,171 @@
+{
+  "dataset_name": "phase132_keyed_transcription_pilot_v1",
+  "dataset_file": "data/keyed_transcription/phase132_pilot_dataset_v1.json",
+  "dataset_content_hash": "7bdc73f5e0f6a959f8d94a4317c642ebe36638e841f7bb80bae97c75477f224a",
+  "hash_method": "glossa_lab.intake._content_hash: sha256 of canonical JSON (sort_keys, ensure_ascii=False)",
+  "crosswalk": {
+    "path": "data/crosswalks/parpola_mahadevan_crosswalk_v1.json",
+    "sha256": "4e7559dfc2ced83c79440029a1b2749fe9d21eca7f6db3bf3b66f0cfa647dcbb"
+  },
+  "source_class_registration": {
+    "phase132_keyed_transcription_pilot_v1": "image_transcription"
+  },
+  "token_sequence_rule": "final adjudicated sequence per object (s3_tokens for gold objects, else s2_tokens), P-space primary values via crosswalk v1; UNK literal; crosswalk-unmapped tokens carried as UNMAPPED:<M_ID> with p_id null in tokens_detail",
+  "n_inscriptions": 50,
+  "n_tokens": 189,
+  "n_gold_records_from_s3": 10,
+  "excluded_ambiguity_log": [],
+  "validation": {
+    "verdict": "pass-with-warnings",
+    "errors": [],
+    "warnings": [
+      {
+        "code": "TOKEN_FORMAT_MISMATCH",
+        "path": "inscriptions[1].tokens",
+        "message": "1 token(s) do not match the declared parpola_1982 format, e.g. 'UNMAPPED:M442'"
+      },
+      {
+        "code": "TOKEN_FORMAT_MISMATCH",
+        "path": "inscriptions[3].tokens",
+        "message": "2 token(s) do not match the declared parpola_1982 format, e.g. 'UNMAPPED:M503'"
+      },
+      {
+        "code": "TOKEN_FORMAT_MISMATCH",
+        "path": "inscriptions[6].tokens",
+        "message": "1 token(s) do not match the declared parpola_1982 format, e.g. 'UNMAPPED:M817'"
+      },
+      {
+        "code": "TOKEN_FORMAT_MISMATCH",
+        "path": "inscriptions[13].tokens",
+        "message": "2 token(s) do not match the declared parpola_1982 format, e.g. 'UNMAPPED:M803'"
+      },
+      {
+        "code": "TOKEN_FORMAT_MISMATCH",
+        "path": "inscriptions[14].tokens",
+        "message": "2 token(s) do not match the declared parpola_1982 format, e.g. 'UNMAPPED:M615'"
+      },
+      {
+        "code": "TOKEN_FORMAT_MISMATCH",
+        "path": "inscriptions[15].tokens",
+        "message": "1 token(s) do not match the declared parpola_1982 format, e.g. 'UNMAPPED:M812'"
+      },
+      {
+        "code": "EMPTY_TOKEN_SEQUENCE",
+        "path": "inscriptions[20].tokens",
+        "message": "empty sign sequence"
+      },
+      {
+        "code": "EMPTY_TOKEN_SEQUENCE",
+        "path": "inscriptions[24].tokens",
+        "message": "empty sign sequence"
+      },
+      {
+        "code": "TOKEN_FORMAT_MISMATCH",
+        "path": "inscriptions[25].tokens",
+        "message": "2 token(s) do not match the declared parpola_1982 format, e.g. 'UNMAPPED:M615'"
+      },
+      {
+        "code": "TOKEN_FORMAT_MISMATCH",
+        "path": "inscriptions[29].tokens",
+        "message": "3 token(s) do not match the declared parpola_1982 format, e.g. 'UNMAPPED:M595'"
+      },
+      {
+        "code": "EMPTY_TOKEN_SEQUENCE",
+        "path": "inscriptions[36].tokens",
+        "message": "empty sign sequence"
+      },
+      {
+        "code": "EMPTY_TOKEN_SEQUENCE",
+        "path": "inscriptions[38].tokens",
+        "message": "empty sign sequence"
+      },
+      {
+        "code": "RECOMMENDED_FIELD_MISSING",
+        "path": "inscriptions[39].object_type",
+        "message": "optional-but-declared field absent: object_type"
+      },
+      {
+        "code": "TOKEN_FORMAT_MISMATCH",
+        "path": "inscriptions[42].tokens",
+        "message": "1 token(s) do not match the declared parpola_1982 format, e.g. 'UNMAPPED:M519'"
+      },
+      {
+        "code": "RECOMMENDED_FIELD_MISSING",
+        "path": "inscriptions[43].object_type",
+        "message": "optional-but-declared field absent: object_type"
+      },
+      {
+        "code": "RECOMMENDED_FIELD_MISSING",
+        "path": "inscriptions[44].object_type",
+        "message": "optional-but-declared field absent: object_type"
+      },
+      {
+        "code": "RECOMMENDED_FIELD_MISSING",
+        "path": "inscriptions[45].object_type",
+        "message": "optional-but-declared field absent: object_type"
+      },
+      {
+        "code": "EMPTY_TOKEN_SEQUENCE",
+        "path": "inscriptions[46].tokens",
+        "message": "empty sign sequence"
+      },
+      {
+        "code": "TOKEN_FORMAT_MISMATCH",
+        "path": "inscriptions[48].tokens",
+        "message": "1 token(s) do not match the declared parpola_1982 format, e.g. 'UNMAPPED:M705'"
+      },
+      {
+        "code": "EMPTY_TOKEN_SEQUENCE",
+        "path": "inscriptions[49].tokens",
+        "message": "empty sign sequence"
+      },
+      {
+        "code": "RECOMMENDED_FIELD_MISSING",
+        "path": "inscriptions[49].object_type",
+        "message": "optional-but-declared field absent: object_type"
+      }
+    ],
+    "summary": {
+      "inscriptions": 50,
+      "tokens": 189,
+      "sign_lists": [
+        "parpola_1982"
+      ],
+      "errors": 0,
+      "warnings": 21
+    }
+  },
+  "evaluability": {
+    "source_class": "image_transcription",
+    "per_prediction": {
+      "PRED-2026-001": "QUALIFIES",
+      "PRED-2026-002": "QUALIFIES",
+      "PRED-2026-003": "QUALIFIES"
+    },
+    "qualifies_any": true,
+    "caveat_c1_required": false,
+    "distinct_sites": 4,
+    "multi_site": true,
+    "pred2026_003_site_input": true,
+    "lineage_consistency_notes": []
+  },
+  "dedup": {
+    "input": 50,
+    "stage_a_removed": 8,
+    "stage_b_removed": 3,
+    "stage_c_removed": 0,
+    "kept": 39
+  },
+  "intake": {
+    "outcome": "intake-complete-dry-run-only",
+    "license_gate": "pass",
+    "label": "HARNESS DRY RUN — NOT A PRED EVALUATION",
+    "harness_dry_run_dedup": {
+      "input": 50,
+      "stage_a_removed": 8,
+      "stage_b_removed": 3,
+      "stage_c_removed": 0,
+      "kept": 39
+    }
+  }
+}

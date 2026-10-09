@@ -1988,3 +1988,95 @@ Owner decision (Tristen Pierson, 2026-10-08): recommendation (ii)+(iii) approved
 **AI disclosure:** execution recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## 2026-10-08 — Phase-127 (Spec 021): Cross-Compilation Disagreement Diagnostic — Phase-125's disagreement is not sampling noise, ambiguity, or controlled composition
+
+Diagnostic only (owner-ordered program workstream 1,
+2026-10-08). Spec 021 was frozen in its own commit
+(83252e45) before any diagnostic statistic existed. This
+phase does NOT re-score Phase-125 and issues no verdict:
+the Phase-125 verdict — **FAIL — DISAGREEMENT** (PRIMARY
+arm: 16 judgeable pairs of 286; median TV 0.636931;
+Spearman ρ initial −0.424758 / terminal 0.316034;
+pairing-shuffle null p = 0.824) — is FINAL and unchanged.
+All arms operate on exactly those 16 judgeable pairs,
+read from the Phase-125 results of record, with the
+Phase-113/125 profile/TV machinery reused unchanged;
+inscriptions never pooled; no object-level join.
+
+Headline decomposition (deterministic; two runs
+byte-identical in statistics):
+(a) Holdat split-half noise floor: raw median TV 0.059538
+across the 16 signs; full-size estimate (÷√2, registered
+multinomial scaling) **0.042100**.
+(b) Matched-size subsampling (Holdat at mayig's token
+counts, B = 999): expected median TV under pure
+Holdat-internal sampling **0.082613** (95% interval
+0.046665–0.131316); share of replicates reaching the
+observed 0.636931: **0.000000**.
+(c) Inscription bootstrap of both compilations
+(B = 999): median TV 0.643877, 95% CI
+**0.548638–0.722042** — the entire interval sits above
+the frozen Phase-125 FAIL bound 0.50. Per-pair CIs in
+the results JSON.
+(d) Crosswalk decomposition: primary TVs contain zero
+ambiguity by construction (spec 019 §3). Counterfactual
+estimator (spec 021 §6): median ambiguity share 0.666667;
+median attributable TV 0.000000, median attributable
+share −0.185664 over the 7 pairs with a judgeable
+neighbourhood comparison (9 pairs have none) — where
+defined, the ambiguous alternatives disagree as much as
+or more than the primary pairs, so ambiguity accounts
+for none of the observed disagreement under this
+estimator.
+(e) Composition controls (Holdat-side restrictions;
+mayig is entirely Mohenjo-daro unicorn seals): site =
+Mohenjo-daro → median TV 0.599138 (13 judgeable);
+iconography = unicorn → 0.650510 (13); both → 0.602896
+(11). Zero stratum-inconsistent inscriptions. Gaps
+stated in the report (unicorn variants I–V, finer
+provenience, length composition — not controllable
+from the mayig metadata, not improvised).
+(f) Power: under the registered criterion (95th
+percentile of sampling-noise median TV ≤ the frozen
+PASS bound 0.35), **8 tokens per sign** suffice — the
+grid's first point qualifies on both the median-gate
+and per-sign criteria — so the frozen gates are
+informative at the observed effect scale; the observed
+median is ~4× the noise 95th percentile even at the
+floor size.
+
+Residual reading (spec 021 §9 vocabulary): at the
+observed sizes, the disagreement is not accounted for
+by sampling noise, crosswalk ambiguity, or the
+controlled composition strata. No side or mechanism is
+attributed; no anchor, PRED, or status changed; the
+anchors file is byte-identical before and after (sha256
+eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed,
+asserted in code). One filename deviation, recorded in
+the report per spec §11: the graph module is
+`experiment_graph_phase127_diagnostic.py` (the plain
+name is a legacy node family; Phase-126 Wells
+precedent); the node id is as specified. One toy test
+premise was corrected during development (independent
+resamples of a varied corpus are not a zero-TV control;
+replaced with a degenerate identical-inscription
+control) — machinery unchanged.
+Code: `backend/glossa_lab/phase127_diagnostic.py`,
+`backend/glossa_lab/phase127_run.py`,
+`backend/scripts/phase127_cross_compilation_diagnostic.py`,
+graph node `IndusPhase127CrossCompilationDiagnostic`.
+Artifacts: `reports/phase127_cross_compilation_diagnostic.md`
++ `_results.json`.
+Verification: 18 new tests passed in isolation (stable
+across PYTHONHASHSEED 0/1/42); full backend suite
+901 passed / 12 skipped / 0 failed (main baseline
+883/12/0 plus this phase's 18); foundation check
+40 passed / 0 failed / 8 warnings (baseline unchanged);
+ruff clean on all new/changed files. Test side effects
+(glossa-indus/ claims, outputs/) reverted before
+commit, per precedent.
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.

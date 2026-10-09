@@ -2719,6 +2719,17 @@ try:
 except Exception as _p126w_exc:  # noqa: BLE001
     logger.warning("Phase-126 (ledger) nodes not registered: %s", _p126w_exc)
 
+# ── Phase-127 nodes (spec 021: cross-compilation disagreement diagnostic) ──
+try:
+    from glossa_lab.experiment_graph_phase127_diagnostic import (
+        _phase127_diagnostic_node_defs as _p127d_defs,  # noqa: PLC0415
+    )
+    for _d in _p127d_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-127 (spec 021) nodes", len(list(_p127d_defs())))
+except Exception as _p127d_exc:  # noqa: BLE001
+    logger.warning("Phase-127 (spec 021) nodes not registered: %s", _p127d_exc)
+
 # ── Phase-110-115 nodes (targeted SA, allographs, grammar infer, M→H upgrade, seal translations, significance) ──
 try:
     from glossa_lab.experiment_graph_phase110_115 import (

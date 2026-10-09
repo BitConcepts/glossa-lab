@@ -1,0 +1,1674 @@
+{
+ "phase": 127,
+ "spec": "specs/021-phase127-cross-compilation-diagnostic",
+ "date": "2026-10-08",
+ "generated_at": "2026-10-09T01:59:48.254956+00:00",
+ "gpu_device": "cpu (torch absent)",
+ "phase125_verdict_of_record": {
+  "verdict": "FAIL",
+  "substate": "DISAGREEMENT",
+  "median_tv": 0.636931,
+  "spearman_initial": -0.424758,
+  "spearman_terminal": 0.316034,
+  "p_null": 0.824,
+  "n_judgeable": 16,
+  "n_primary_pairs": 286,
+  "status": "FINAL — unchanged by this diagnostic (spec 021 section 0 non-goals)"
+ },
+ "inputs": {
+  "mayig_layer": {
+   "inscriptions": 179,
+   "tokens": 1003,
+   "signs": 182,
+   "descriptions": [
+    "unicorn I seal",
+    "unicorn II seal",
+    "unicorn III seal",
+    "unicorn IV seal",
+    "unicorn V seal"
+   ]
+  },
+  "holdat": {
+   "inscriptions": 1670,
+   "tokens": 7002,
+   "signs": 390
+  },
+  "crosswalk": {
+   "n_pairs": 762,
+   "confidence_breakdown": {
+    "high": 372,
+    "low": 390
+   }
+  },
+  "judgeable_set": "the 16 Phase-125 PRIMARY judgeable pairs, read from reports/phase125_cross_compilation_results.json"
+ },
+ "arms": {
+  "a_split_half": {
+   "per_sign": {
+    "P011-M017": {
+     "median": 0.0,
+     "ci95_lo": 0.0,
+     "ci95_hi": 0.0,
+     "n_replicates": 999,
+     "n_tokens": 18,
+     "fullsize_median_tv_est": 0.0
+    },
+    "P013-M001": {
+     "median": 0.0,
+     "ci95_lo": 0.0,
+     "ci95_hi": 0.0,
+     "n_replicates": 999,
+     "n_tokens": 14,
+     "fullsize_median_tv_est": 0.0
+    },
+    "P050-M059": {
+     "median": 0.072072,
+     "ci95_lo": 0.009009,
+     "ci95_hi": 0.162162,
+     "n_replicates": 999,
+     "n_tokens": 222,
+     "fullsize_median_tv_est": 0.050963
+    },
+    "P056-M070": {
+     "median": 0.0,
+     "ci95_lo": 0.0,
+     "ci95_hi": 0.0,
+     "n_replicates": 999,
+     "n_tokens": 17,
+     "fullsize_median_tv_est": 0.0
+    },
+    "P058-M072": {
+     "median": 0.0,
+     "ci95_lo": 0.0,
+     "ci95_hi": 0.0,
+     "n_replicates": 999,
+     "n_tokens": 12,
+     "fullsize_median_tv_est": 0.0
+    },
+    "P060-M065": {
+     "median": 0.077922,
+     "ci95_lo": 0.025974,
+     "ci95_hi": 0.181818,
+     "n_replicates": 999,
+     "n_tokens": 154,
+     "fullsize_median_tv_est": 0.055099
+    },
+    "P062-M067": {
+     "median": 0.0,
+     "ci95_lo": 0.0,
+     "ci95_hi": 0.0,
+     "n_replicates": 999,
+     "n_tokens": 15,
+     "fullsize_median_tv_est": 0.0
+    },
+    "P073-M051": {
+     "median": 0.077085,
+     "ci95_lo": 0.018217,
+     "ci95_hi": 0.178109,
+     "n_replicates": 999,
+     "n_tokens": 163,
+     "fullsize_median_tv_est": 0.054507
+    },
+    "P145-M087": {
+     "median": 0.076923,
+     "ci95_lo": 0.015385,
+     "ci95_hi": 0.2,
+     "n_replicates": 999,
+     "n_tokens": 130,
+     "fullsize_median_tv_est": 0.054393
+    },
+    "P147-M089": {
+     "median": 0.076471,
+     "ci95_lo": 0.012859,
+     "ci95_hi": 0.180848,
+     "n_replicates": 999,
+     "n_tokens": 171,
+     "fullsize_median_tv_est": 0.054073
+    },
+    "P194-M048": {
+     "median": 0.080818,
+     "ci95_lo": 0.019636,
+     "ci95_hi": 0.184193,
+     "n_replicates": 999,
+     "n_tokens": 157,
+     "fullsize_median_tv_est": 0.057147
+    },
+    "P217-M211": {
+     "median": 0.053677,
+     "ci95_lo": 0.010581,
+     "ci95_hi": 0.13871,
+     "n_replicates": 999,
+     "n_tokens": 249,
+     "fullsize_median_tv_est": 0.037955
+    },
+    "P316-M336": {
+     "median": 0.068981,
+     "ci95_lo": 0.01142,
+     "ci95_hi": 0.18044,
+     "n_replicates": 999,
+     "n_tokens": 161,
+     "fullsize_median_tv_est": 0.048777
+    },
+    "P324-M342": {
+     "median": 0.027397,
+     "ci95_lo": 0.006849,
+     "ci95_hi": 0.061644,
+     "n_replicates": 999,
+     "n_tokens": 584,
+     "fullsize_median_tv_est": 0.019373
+    },
+    "P378-M391": {
+     "median": 0.065399,
+     "ci95_lo": 0.017504,
+     "ci95_hi": 0.162586,
+     "n_replicates": 999,
+     "n_tokens": 193,
+     "fullsize_median_tv_est": 0.046244
+    },
+    "P385-M267": {
+     "median": 0.035,
+     "ci95_lo": 0.005,
+     "ci95_hi": 0.09,
+     "n_replicates": 999,
+     "n_tokens": 400,
+     "fullsize_median_tv_est": 0.024749
+    }
+   },
+   "noise_floor_median_tv": 0.059538,
+   "noise_floor_fullsize_est": 0.0421,
+   "b": 999,
+   "seed": 127001
+  },
+  "b_matched_size": {
+   "per_sign": {
+    "P011-M017": {
+     "n_tokens": 18,
+     "target_size": 10,
+     "primary_tv_sub_vs_remainder": {
+      "median": 0.0,
+      "ci95_lo": 0.0,
+      "ci95_hi": 0.0,
+      "n_replicates": 999
+     },
+     "secondary_tv_sub_vs_full": {
+      "median": 0.0,
+      "ci95_lo": 0.0,
+      "ci95_hi": 0.0,
+      "n_replicates": 999
+     },
+     "n_skipped_replicates": 0
+    },
+    "P013-M001": {
+     "n_tokens": 14,
+     "target_size": 9,
+     "primary_tv_sub_vs_remainder": {
+      "median": 0.0,
+      "ci95_lo": 0.0,
+      "ci95_hi": 0.0,
+      "n_replicates": 999
+     },
+     "secondary_tv_sub_vs_full": {
+      "median": 0.0,
+      "ci95_lo": 0.0,
+      "ci95_hi": 0.0,
+      "n_replicates": 999
+     },
+     "n_skipped_replicates": 0
+    },
+    "P050-M059": {
+     "n_tokens": 222,
+     "target_size": 32,
+     "primary_tv_sub_vs_remainder": {
+      "median": 0.102303,
+      "ci95_lo": 0.007237,
+      "ci95_hi": 0.219408,
+      "n_replicates": 999
+     },
+     "secondary_tv_sub_vs_full": {
+      "median": 0.087556,
+      "ci95_lo": 0.006194,
+      "ci95_hi": 0.187782,
+      "n_replicates": 999
+     },
+     "n_skipped_replicates": 0
+    },
+    "P056-M070": {
+     "n_tokens": 17,
+     "target_size": 9,
+     "primary_tv_sub_vs_remainder": {
+      "median": 0.0,
+      "ci95_lo": 0.0,
+      "ci95_hi": 0.0,
+      "n_replicates": 999
+     },
+     "secondary_tv_sub_vs_full": {
+      "median": 0.0,
+      "ci95_lo": 0.0,
+      "ci95_hi": 0.0,
+      "n_replicates": 999
+     },
+     "n_skipped_replicates": 0
+    },
+    "P058-M072": {
+     "n_tokens": 12,
+     "target_size": 15,
+     "primary_tv_sub_vs_remainder": {
+      "median": null,
+      "ci95_lo": null,
+      "ci95_hi": null,
+      "n_replicates": 0
+     },
+     "secondary_tv_sub_vs_full": {
+      "median": null,
+      "ci95_lo": null,
+      "ci95_hi": null,
+      "n_replicates": 0
+     },
+     "n_skipped_replicates": 999
+    },
+    "P060-M065": {
+     "n_tokens": 154,
+     "target_size": 20,
+     "primary_tv_sub_vs_remainder": {
+      "median": 0.120149,
+      "ci95_lo": 0.023881,
+      "ci95_hi": 0.28209,
+      "n_replicates": 999
+     },
+     "secondary_tv_sub_vs_full": {
+      "median": 0.104545,
+      "ci95_lo": 0.020779,
+      "ci95_hi": 0.245455,
+      "n_replicates": 999
+     },
+     "n_skipped_replicates": 0
+    },
+    "P062-M067": {
+     "n_tokens": 15,
+     "target_size": 21,
+     "primary_tv_sub_vs_remainder": {
+      "median": null,
+      "ci95_lo": null,
+      "ci95_hi": null,
+      "n_replicates": 0
+     },
+     "secondary_tv_sub_vs_full": {
+      "median": null,
+      "ci95_lo": null,
+      "ci95_hi": null,
+      "n_replicates": 0
+     },
+     "n_skipped_replicates": 999
+    },
+    "P073-M051": {
+     "n_tokens": 163,
+     "target_size": 8,
+     "primary_tv_sub_vs_remainder": {
+      "median": 0.181452,
+      "ci95_lo": 0.05,
+      "ci95_hi": 0.410484,
+      "n_replicates": 999
+     },
+     "secondary_tv_sub_vs_full": {
+      "median": 0.172546,
+      "ci95_lo": 0.047546,
+      "ci95_hi": 0.390337,
+      "n_replicates": 999
+     },
+     "n_skipped_replicates": 0
+    },
+    "P145-M087": {
+     "n_tokens": 130,
+     "target_size": 27,
+     "primary_tv_sub_vs_remainder": {
+      "median": 0.097447,
+      "ci95_lo": 0.004315,
+      "ci95_hi": 0.280115,
+      "n_replicates": 999
+     },
+     "secondary_tv_sub_vs_full": {
+      "median": 0.077208,
+      "ci95_lo": 0.003419,
+      "ci95_hi": 0.221937,
+      "n_replicates": 999
+     },
+     "n_skipped_replicates": 0
+    },
+    "P147-M089": {
+     "n_tokens": 171,
+     "target_size": 14,
+     "primary_tv_sub_vs_remainder": {
+      "median": 0.125114,
+      "ci95_lo": 0.041401,
+      "ci95_hi": 0.347589,
+      "n_replicates": 999
+     },
+     "secondary_tv_sub_vs_full": {
+      "median": 0.114871,
+      "ci95_lo": 0.038012,
+      "ci95_hi": 0.319131,
+      "n_replicates": 999
+     },
+     "n_skipped_replicates": 0
+    },
+    "P194-M048": {
+     "n_tokens": 157,
+     "target_size": 8,
+     "primary_tv_sub_vs_remainder": {
+      "median": 0.187081,
+      "ci95_lo": 0.076342,
+      "ci95_hi": 0.438758,
+      "n_replicates": 999
+     },
+     "secondary_tv_sub_vs_full": {
+      "median": 0.177548,
+      "ci95_lo": 0.072452,
+      "ci95_hi": 0.416401,
+      "n_replicates": 999
+     },
+     "n_skipped_replicates": 0
+    },
+    "P217-M211": {
+     "n_tokens": 249,
+     "target_size": 18,
+     "primary_tv_sub_vs_remainder": {
+      "median": 0.102453,
+      "ci95_lo": 0.017316,
+      "ci95_hi": 0.256854,
+      "n_replicates": 999
+     },
+     "secondary_tv_sub_vs_full": {
+      "median": 0.095047,
+      "ci95_lo": 0.016064,
+      "ci95_hi": 0.238286,
+      "n_replicates": 999
+     },
+     "n_skipped_replicates": 0
+    },
+    "P316-M336": {
+     "n_tokens": 161,
+     "target_size": 19,
+     "primary_tv_sub_vs_remainder": {
+      "median": 0.117494,
+      "ci95_lo": 0.029652,
+      "ci95_hi": 0.300222,
+      "n_replicates": 999
+     },
+     "secondary_tv_sub_vs_full": {
+      "median": 0.103629,
+      "ci95_lo": 0.026152,
+      "ci95_hi": 0.264792,
+      "n_replicates": 999
+     },
+     "n_skipped_replicates": 0
+    },
+    "P324-M342": {
+     "n_tokens": 584,
+     "target_size": 99,
+     "primary_tv_sub_vs_remainder": {
+      "median": 0.034864,
+      "ci95_lo": 0.001624,
+      "ci95_hi": 0.086348,
+      "n_replicates": 999
+     },
+     "secondary_tv_sub_vs_full": {
+      "median": 0.028954,
+      "ci95_lo": 0.001349,
+      "ci95_hi": 0.07171,
+      "n_replicates": 999
+     },
+     "n_skipped_replicates": 0
+    },
+    "P378-M391": {
+     "n_tokens": 193,
+     "target_size": 17,
+     "primary_tv_sub_vs_remainder": {
+      "median": 0.125,
+      "ci95_lo": 0.018382,
+      "ci95_hi": 0.304144,
+      "n_replicates": 999
+     },
+     "secondary_tv_sub_vs_full": {
+      "median": 0.11399,
+      "ci95_lo": 0.016763,
+      "ci95_hi": 0.277354,
+      "n_replicates": 999
+     },
+     "n_skipped_replicates": 0
+    },
+    "P385-M267": {
+     "n_tokens": 400,
+     "target_size": 35,
+     "primary_tv_sub_vs_remainder": {
+      "median": 0.057534,
+      "ci95_lo": 0.016047,
+      "ci95_hi": 0.167515,
+      "n_replicates": 999
+     },
+     "secondary_tv_sub_vs_full": {
+      "median": 0.0525,
+      "ci95_lo": 0.014643,
+      "ci95_hi": 0.152857,
+      "n_replicates": 999
+     },
+     "n_skipped_replicates": 0
+    }
+   },
+   "median_tv_distribution": {
+    "median": 0.082613,
+    "ci95_lo": 0.046665,
+    "ci95_hi": 0.131316,
+    "n_replicates": 999,
+    "share_replicates_ge_observed": 0.0,
+    "observed_median_tv": 0.636931
+   },
+   "b": 999,
+   "seed": 127002
+  },
+  "c_bootstrap": {
+   "per_pair": {
+    "P011-M017": {
+     "median": 1.0,
+     "ci95_lo": 1.0,
+     "ci95_hi": 1.0,
+     "n_replicates": 999,
+     "n_excluded_replicates": 0
+    },
+    "P013-M001": {
+     "median": 0.0,
+     "ci95_lo": 0.0,
+     "ci95_hi": 0.0,
+     "n_replicates": 999,
+     "n_excluded_replicates": 0
+    },
+    "P050-M059": {
+     "median": 0.502415,
+     "ci95_lo": 0.407716,
+     "ci95_hi": 0.581618,
+     "n_replicates": 999,
+     "n_excluded_replicates": 0
+    },
+    "P056-M070": {
+     "median": 1.0,
+     "ci95_lo": 1.0,
+     "ci95_hi": 1.0,
+     "n_replicates": 999,
+     "n_excluded_replicates": 0
+    },
+    "P058-M072": {
+     "median": 1.0,
+     "ci95_lo": 1.0,
+     "ci95_hi": 1.0,
+     "n_replicates": 999,
+     "n_excluded_replicates": 0
+    },
+    "P060-M065": {
+     "median": 0.734694,
+     "ci95_lo": 0.600181,
+     "ci95_hi": 0.827815,
+     "n_replicates": 999,
+     "n_excluded_replicates": 0
+    },
+    "P062-M067": {
+     "median": 1.0,
+     "ci95_lo": 1.0,
+     "ci95_hi": 1.0,
+     "n_replicates": 999,
+     "n_excluded_replicates": 0
+    },
+    "P073-M051": {
+     "median": 0.61147,
+     "ci95_lo": 0.29377,
+     "ci95_hi": 0.767091,
+     "n_replicates": 999,
+     "n_excluded_replicates": 0
+    },
+    "P145-M087": {
+     "median": 0.451852,
+     "ci95_lo": 0.282952,
+     "ci95_hi": 0.595273,
+     "n_replicates": 999,
+     "n_excluded_replicates": 0
+    },
+    "P147-M089": {
+     "median": 0.423472,
+     "ci95_lo": 0.251805,
+     "ci95_hi": 0.57813,
+     "n_replicates": 999,
+     "n_excluded_replicates": 0
+    },
+    "P194-M048": {
+     "median": 0.544852,
+     "ci95_lo": 0.234821,
+     "ci95_hi": 0.705202,
+     "n_replicates": 999,
+     "n_excluded_replicates": 0
+    },
+    "P217-M211": {
+     "median": 0.740945,
+     "ci95_lo": 0.517877,
+     "ci95_hi": 0.913912,
+     "n_replicates": 999,
+     "n_excluded_replicates": 0
+    },
+    "P316-M336": {
+     "median": 0.409091,
+     "ci95_lo": 0.216934,
+     "ci95_hi": 0.563022,
+     "n_replicates": 999,
+     "n_excluded_replicates": 0
+    },
+    "P324-M342": {
+     "median": 0.75725,
+     "ci95_lo": 0.666125,
+     "ci95_hi": 0.84193,
+     "n_replicates": 999,
+     "n_excluded_replicates": 0
+    },
+    "P378-M391": {
+     "median": 0.324623,
+     "ci95_lo": 0.129368,
+     "ci95_hi": 0.510169,
+     "n_replicates": 999,
+     "n_excluded_replicates": 0
+    },
+    "P385-M267": {
+     "median": 0.682412,
+     "ci95_lo": 0.535407,
+     "ci95_hi": 0.800436,
+     "n_replicates": 999,
+     "n_excluded_replicates": 0
+    }
+   },
+   "median_tv": {
+    "median": 0.643877,
+    "ci95_lo": 0.548638,
+    "ci95_hi": 0.722042,
+    "n_replicates": 999
+   },
+   "b": 999,
+   "seed": 127003
+  },
+  "d_crosswalk_decomposition": {
+   "records": [
+    {
+     "parpola_id": "P011",
+     "mahadevan_id": "M017",
+     "k_p_rows": 2,
+     "k_m_rows": 2,
+     "neighbourhood_size": 3,
+     "ambiguity_share": 0.666667,
+     "tv_primary": 1.0,
+     "n_neighbourhood_judgeable": 1,
+     "neighbourhood_comparisons": [
+      {
+       "parpola_id": "P011",
+       "mahadevan_id": "M011",
+       "tv": 1.0,
+       "judgeable": true
+      },
+      {
+       "parpola_id": "P017",
+       "mahadevan_id": "M017",
+       "tv": null,
+       "judgeable": false
+      }
+     ],
+     "neighbourhood_median_tv": 1.0,
+     "attributable_tv": 0.0,
+     "attributable_share": 0.0
+    },
+    {
+     "parpola_id": "P013",
+     "mahadevan_id": "M001",
+     "k_p_rows": 2,
+     "k_m_rows": 2,
+     "neighbourhood_size": 3,
+     "ambiguity_share": 0.666667,
+     "tv_primary": 0.0,
+     "n_neighbourhood_judgeable": 1,
+     "neighbourhood_comparisons": [
+      {
+       "parpola_id": "P001",
+       "mahadevan_id": "M001",
+       "tv": null,
+       "judgeable": false
+      },
+      {
+       "parpola_id": "P013",
+       "mahadevan_id": "M013",
+       "tv": 0.0,
+       "judgeable": true
+      }
+     ],
+     "neighbourhood_median_tv": 0.0,
+     "attributable_tv": 0.0,
+     "attributable_share": null
+    },
+    {
+     "parpola_id": "P050",
+     "mahadevan_id": "M059",
+     "k_p_rows": 2,
+     "k_m_rows": 2,
+     "neighbourhood_size": 3,
+     "ambiguity_share": 0.666667,
+     "tv_primary": 0.500282,
+     "n_neighbourhood_judgeable": 1,
+     "neighbourhood_comparisons": [
+      {
+       "parpola_id": "P050",
+       "mahadevan_id": "M050",
+       "tv": 0.96875,
+       "judgeable": true
+      },
+      {
+       "parpola_id": "P059",
+       "mahadevan_id": "M059",
+       "tv": null,
+       "judgeable": false
+      }
+     ],
+     "neighbourhood_median_tv": 0.96875,
+     "attributable_tv": -0.468468,
+     "attributable_share": -0.93641
+    },
+    {
+     "parpola_id": "P056",
+     "mahadevan_id": "M070",
+     "k_p_rows": 2,
+     "k_m_rows": 2,
+     "neighbourhood_size": 3,
+     "ambiguity_share": 0.666667,
+     "tv_primary": 1.0,
+     "n_neighbourhood_judgeable": 1,
+     "neighbourhood_comparisons": [
+      {
+       "parpola_id": "P056",
+       "mahadevan_id": "M056",
+       "tv": 1.0,
+       "judgeable": true
+      },
+      {
+       "parpola_id": "P070",
+       "mahadevan_id": "M070",
+       "tv": null,
+       "judgeable": false
+      }
+     ],
+     "neighbourhood_median_tv": 1.0,
+     "attributable_tv": 0.0,
+     "attributable_share": 0.0
+    },
+    {
+     "parpola_id": "P058",
+     "mahadevan_id": "M072",
+     "k_p_rows": 2,
+     "k_m_rows": 2,
+     "neighbourhood_size": 3,
+     "ambiguity_share": 0.666667,
+     "tv_primary": 1.0,
+     "n_neighbourhood_judgeable": 1,
+     "neighbourhood_comparisons": [
+      {
+       "parpola_id": "P058",
+       "mahadevan_id": "M058",
+       "tv": 1.0,
+       "judgeable": true
+      },
+      {
+       "parpola_id": "P072",
+       "mahadevan_id": "M072",
+       "tv": null,
+       "judgeable": false
+      }
+     ],
+     "neighbourhood_median_tv": 1.0,
+     "attributable_tv": 0.0,
+     "attributable_share": 0.0
+    },
+    {
+     "parpola_id": "P060",
+     "mahadevan_id": "M065",
+     "k_p_rows": 2,
+     "k_m_rows": 2,
+     "neighbourhood_size": 3,
+     "ambiguity_share": 0.666667,
+     "tv_primary": 0.729221,
+     "n_neighbourhood_judgeable": 1,
+     "neighbourhood_comparisons": [
+      {
+       "parpola_id": "P060",
+       "mahadevan_id": "M060",
+       "tv": 1.0,
+       "judgeable": true
+      },
+      {
+       "parpola_id": "P065",
+       "mahadevan_id": "M065",
+       "tv": null,
+       "judgeable": false
+      }
+     ],
+     "neighbourhood_median_tv": 1.0,
+     "attributable_tv": -0.270779,
+     "attributable_share": -0.371327
+    },
+    {
+     "parpola_id": "P062",
+     "mahadevan_id": "M067",
+     "k_p_rows": 1,
+     "k_m_rows": 2,
+     "neighbourhood_size": 2,
+     "ambiguity_share": 0.5,
+     "tv_primary": 1.0,
+     "n_neighbourhood_judgeable": 0,
+     "neighbourhood_comparisons": [
+      {
+       "parpola_id": "P067",
+       "mahadevan_id": "M067",
+       "tv": null,
+       "judgeable": false
+      }
+     ],
+     "neighbourhood_median_tv": null,
+     "attributable_tv": null,
+     "attributable_share": null
+    },
+    {
+     "parpola_id": "P073",
+     "mahadevan_id": "M051",
+     "k_p_rows": 2,
+     "k_m_rows": 2,
+     "neighbourhood_size": 3,
+     "ambiguity_share": 0.666667,
+     "tv_primary": 0.592791,
+     "n_neighbourhood_judgeable": 1,
+     "neighbourhood_comparisons": [
+      {
+       "parpola_id": "P051",
+       "mahadevan_id": "M051",
+       "tv": null,
+       "judgeable": false
+      },
+      {
+       "parpola_id": "P073",
+       "mahadevan_id": "M073",
+       "tv": 1.0,
+       "judgeable": true
+      }
+     ],
+     "neighbourhood_median_tv": 1.0,
+     "attributable_tv": -0.407209,
+     "attributable_share": -0.686934
+    },
+    {
+     "parpola_id": "P145",
+     "mahadevan_id": "M087",
+     "k_p_rows": 2,
+     "k_m_rows": 2,
+     "neighbourhood_size": 3,
+     "ambiguity_share": 0.666667,
+     "tv_primary": 0.44416,
+     "n_neighbourhood_judgeable": 0,
+     "neighbourhood_comparisons": [
+      {
+       "parpola_id": "P087",
+       "mahadevan_id": "M087",
+       "tv": null,
+       "judgeable": false
+      },
+      {
+       "parpola_id": "P145",
+       "mahadevan_id": "M145",
+       "tv": null,
+       "judgeable": false
+      }
+     ],
+     "neighbourhood_median_tv": null,
+     "attributable_tv": null,
+     "attributable_share": null
+    },
+    {
+     "parpola_id": "P147",
+     "mahadevan_id": "M089",
+     "k_p_rows": 2,
+     "k_m_rows": 2,
+     "neighbourhood_size": 3,
+     "ambiguity_share": 0.666667,
+     "tv_primary": 0.395155,
+     "n_neighbourhood_judgeable": 0,
+     "neighbourhood_comparisons": [
+      {
+       "parpola_id": "P089",
+       "mahadevan_id": "M089",
+       "tv": null,
+       "judgeable": false
+      },
+      {
+       "parpola_id": "P147",
+       "mahadevan_id": "M147",
+       "tv": null,
+       "judgeable": false
+      }
+     ],
+     "neighbourhood_median_tv": null,
+     "attributable_tv": null,
+     "attributable_share": null
+    },
+    {
+     "parpola_id": "P194",
+     "mahadevan_id": "M048",
+     "k_p_rows": 2,
+     "k_m_rows": 2,
+     "neighbourhood_size": 3,
+     "ambiguity_share": 0.666667,
+     "tv_primary": 0.531051,
+     "n_neighbourhood_judgeable": 0,
+     "neighbourhood_comparisons": [
+      {
+       "parpola_id": "P048",
+       "mahadevan_id": "M048",
+       "tv": null,
+       "judgeable": false
+      },
+      {
+       "parpola_id": "P194",
+       "mahadevan_id": "M194",
+       "tv": null,
+       "judgeable": false
+      }
+     ],
+     "neighbourhood_median_tv": null,
+     "attributable_tv": null,
+     "attributable_share": null
+    },
+    {
+     "parpola_id": "P217",
+     "mahadevan_id": "M211",
+     "k_p_rows": 2,
+     "k_m_rows": 1,
+     "neighbourhood_size": 2,
+     "ambiguity_share": 0.5,
+     "tv_primary": 0.729585,
+     "n_neighbourhood_judgeable": 0,
+     "neighbourhood_comparisons": [
+      {
+       "parpola_id": "P217",
+       "mahadevan_id": "M217",
+       "tv": null,
+       "judgeable": false
+      }
+     ],
+     "neighbourhood_median_tv": null,
+     "attributable_tv": null,
+     "attributable_share": null
+    },
+    {
+     "parpola_id": "P316",
+     "mahadevan_id": "M336",
+     "k_p_rows": 2,
+     "k_m_rows": 2,
+     "neighbourhood_size": 3,
+     "ambiguity_share": 0.666667,
+     "tv_primary": 0.3949,
+     "n_neighbourhood_judgeable": 0,
+     "neighbourhood_comparisons": [
+      {
+       "parpola_id": "P316",
+       "mahadevan_id": "M316",
+       "tv": null,
+       "judgeable": false
+      },
+      {
+       "parpola_id": "P336",
+       "mahadevan_id": "M336",
+       "tv": null,
+       "judgeable": false
+      }
+     ],
+     "neighbourhood_median_tv": null,
+     "attributable_tv": null,
+     "attributable_share": null
+    },
+    {
+     "parpola_id": "P324",
+     "mahadevan_id": "M342",
+     "k_p_rows": 2,
+     "k_m_rows": 2,
+     "neighbourhood_size": 3,
+     "ambiguity_share": 0.666667,
+     "tv_primary": 0.75723,
+     "n_neighbourhood_judgeable": 0,
+     "neighbourhood_comparisons": [
+      {
+       "parpola_id": "P324",
+       "mahadevan_id": "M324",
+       "tv": null,
+       "judgeable": false
+      },
+      {
+       "parpola_id": "P342",
+       "mahadevan_id": "M342",
+       "tv": null,
+       "judgeable": false
+      }
+     ],
+     "neighbourhood_median_tv": null,
+     "attributable_tv": null,
+     "attributable_share": null
+    },
+    {
+     "parpola_id": "P378",
+     "mahadevan_id": "M391",
+     "k_p_rows": 2,
+     "k_m_rows": 2,
+     "neighbourhood_size": 3,
+     "ambiguity_share": 0.666667,
+     "tv_primary": 0.281012,
+     "n_neighbourhood_judgeable": 0,
+     "neighbourhood_comparisons": [
+      {
+       "parpola_id": "P378",
+       "mahadevan_id": "M378",
+       "tv": null,
+       "judgeable": false
+      },
+      {
+       "parpola_id": "P391",
+       "mahadevan_id": "M391",
+       "tv": null,
+       "judgeable": false
+      }
+     ],
+     "neighbourhood_median_tv": null,
+     "attributable_tv": null,
+     "attributable_share": null
+    },
+    {
+     "parpola_id": "P385",
+     "mahadevan_id": "M267",
+     "k_p_rows": 2,
+     "k_m_rows": 2,
+     "neighbourhood_size": 3,
+     "ambiguity_share": 0.666667,
+     "tv_primary": 0.681071,
+     "n_neighbourhood_judgeable": 0,
+     "neighbourhood_comparisons": [
+      {
+       "parpola_id": "P267",
+       "mahadevan_id": "M267",
+       "tv": null,
+       "judgeable": false
+      },
+      {
+       "parpola_id": "P385",
+       "mahadevan_id": "M385",
+       "tv": null,
+       "judgeable": false
+      }
+     ],
+     "neighbourhood_median_tv": null,
+     "attributable_tv": null,
+     "attributable_share": null
+    }
+   ],
+   "median_ambiguity_share": 0.666667,
+   "median_attributable_tv": 0.0,
+   "median_attributable_share": -0.185664,
+   "n_pairs_no_judgeable_neighbourhood": 9,
+   "construction_note": "PRIMARY pairs are unambiguous within the high-confidence set by construction (spec 019 section 3): ambiguous mappings contribute exactly zero to the Phase-125 PRIMARY TVs. This arm prices the counterfactual under the spec 021 section 6 estimator."
+  },
+  "e_composition": {
+   "controls": {
+    "site_mohenjo_daro": {
+     "definition": "Holdat restricted to site = Mohenjo-daro",
+     "n_holdat_inscriptions": 606,
+     "n_holdat_tokens": 2534,
+     "records": [
+      {
+       "parpola_id": "P011",
+       "mahadevan_id": "M017",
+       "mayig_n": 10,
+       "holdat_n_restricted": 9,
+       "judgeable_under_control": true,
+       "tv": 1.0,
+       "w1": 1.5
+      },
+      {
+       "parpola_id": "P013",
+       "mahadevan_id": "M001",
+       "mayig_n": 9,
+       "holdat_n_restricted": 6,
+       "judgeable_under_control": false,
+       "tv": null,
+       "w1": null
+      },
+      {
+       "parpola_id": "P050",
+       "mahadevan_id": "M059",
+       "mayig_n": 32,
+       "holdat_n_restricted": 83,
+       "judgeable_under_control": true,
+       "tv": 0.426581,
+       "w1": 0.426581
+      },
+      {
+       "parpola_id": "P056",
+       "mahadevan_id": "M070",
+       "mayig_n": 9,
+       "holdat_n_restricted": 5,
+       "judgeable_under_control": false,
+       "tv": null,
+       "w1": null
+      },
+      {
+       "parpola_id": "P058",
+       "mahadevan_id": "M072",
+       "mayig_n": 15,
+       "holdat_n_restricted": 4,
+       "judgeable_under_control": false,
+       "tv": null,
+       "w1": null
+      },
+      {
+       "parpola_id": "P060",
+       "mahadevan_id": "M065",
+       "mayig_n": 20,
+       "holdat_n_restricted": 48,
+       "judgeable_under_control": true,
+       "tv": 0.783333,
+       "w1": 0.783333
+      },
+      {
+       "parpola_id": "P062",
+       "mahadevan_id": "M067",
+       "mayig_n": 21,
+       "holdat_n_restricted": 8,
+       "judgeable_under_control": true,
+       "tv": 1.0,
+       "w1": 1.0
+      },
+      {
+       "parpola_id": "P073",
+       "mahadevan_id": "M051",
+       "mayig_n": 8,
+       "holdat_n_restricted": 58,
+       "judgeable_under_control": true,
+       "tv": 0.599138,
+       "w1": 0.599138
+      },
+      {
+       "parpola_id": "P145",
+       "mahadevan_id": "M087",
+       "mayig_n": 27,
+       "holdat_n_restricted": 54,
+       "judgeable_under_control": true,
+       "tv": 0.462963,
+       "w1": 0.462963
+      },
+      {
+       "parpola_id": "P147",
+       "mahadevan_id": "M089",
+       "mayig_n": 14,
+       "holdat_n_restricted": 57,
+       "judgeable_under_control": true,
+       "tv": 0.365915,
+       "w1": 0.365915
+      },
+      {
+       "parpola_id": "P194",
+       "mahadevan_id": "M048",
+       "mayig_n": 8,
+       "holdat_n_restricted": 58,
+       "judgeable_under_control": true,
+       "tv": 0.478448,
+       "w1": 0.478448
+      },
+      {
+       "parpola_id": "P217",
+       "mahadevan_id": "M211",
+       "mayig_n": 18,
+       "holdat_n_restricted": 83,
+       "judgeable_under_control": true,
+       "tv": 0.705489,
+       "w1": 0.859438
+      },
+      {
+       "parpola_id": "P316",
+       "mahadevan_id": "M336",
+       "mayig_n": 19,
+       "holdat_n_restricted": 64,
+       "judgeable_under_control": true,
+       "tv": 0.379112,
+       "w1": 0.384868
+      },
+      {
+       "parpola_id": "P324",
+       "mahadevan_id": "M342",
+       "mayig_n": 99,
+       "holdat_n_restricted": 208,
+       "judgeable_under_control": true,
+       "tv": 0.758547,
+       "w1": 0.911908
+      },
+      {
+       "parpola_id": "P378",
+       "mahadevan_id": "M391",
+       "mayig_n": 17,
+       "holdat_n_restricted": 75,
+       "judgeable_under_control": true,
+       "tv": 0.321569,
+       "w1": 0.337255
+      },
+      {
+       "parpola_id": "P385",
+       "mahadevan_id": "M267",
+       "mayig_n": 35,
+       "holdat_n_restricted": 135,
+       "judgeable_under_control": true,
+       "tv": 0.702646,
+       "w1": 0.739683
+      }
+     ],
+     "n_judgeable": 13,
+     "median_tv": 0.599138
+    },
+    "iconography_unicorn": {
+     "definition": "Holdat restricted to iconography = unicorn",
+     "n_holdat_inscriptions": 514,
+     "n_holdat_tokens": 2143,
+     "records": [
+      {
+       "parpola_id": "P011",
+       "mahadevan_id": "M017",
+       "mayig_n": 10,
+       "holdat_n_restricted": 8,
+       "judgeable_under_control": true,
+       "tv": 1.0,
+       "w1": 1.5
+      },
+      {
+       "parpola_id": "P013",
+       "mahadevan_id": "M001",
+       "mayig_n": 9,
+       "holdat_n_restricted": 4,
+       "judgeable_under_control": false,
+       "tv": null,
+       "w1": null
+      },
+      {
+       "parpola_id": "P050",
+       "mahadevan_id": "M059",
+       "mayig_n": 32,
+       "holdat_n_restricted": 101,
+       "judgeable_under_control": true,
+       "tv": 0.632116,
+       "w1": 0.632116
+      },
+      {
+       "parpola_id": "P056",
+       "mahadevan_id": "M070",
+       "mayig_n": 9,
+       "holdat_n_restricted": 8,
+       "judgeable_under_control": true,
+       "tv": 1.0,
+       "w1": 1.0
+      },
+      {
+       "parpola_id": "P058",
+       "mahadevan_id": "M072",
+       "mayig_n": 15,
+       "holdat_n_restricted": 5,
+       "judgeable_under_control": false,
+       "tv": null,
+       "w1": null
+      },
+      {
+       "parpola_id": "P060",
+       "mahadevan_id": "M065",
+       "mayig_n": 20,
+       "holdat_n_restricted": 44,
+       "judgeable_under_control": true,
+       "tv": 0.722727,
+       "w1": 0.722727
+      },
+      {
+       "parpola_id": "P062",
+       "mahadevan_id": "M067",
+       "mayig_n": 21,
+       "holdat_n_restricted": 0,
+       "judgeable_under_control": false,
+       "tv": null,
+       "w1": null
+      },
+      {
+       "parpola_id": "P073",
+       "mahadevan_id": "M051",
+       "mayig_n": 8,
+       "holdat_n_restricted": 49,
+       "judgeable_under_control": true,
+       "tv": 0.65051,
+       "w1": 0.65051
+      },
+      {
+       "parpola_id": "P145",
+       "mahadevan_id": "M087",
+       "mayig_n": 27,
+       "holdat_n_restricted": 39,
+       "judgeable_under_control": true,
+       "tv": 0.54416,
+       "w1": 0.54416
+      },
+      {
+       "parpola_id": "P147",
+       "mahadevan_id": "M089",
+       "mayig_n": 14,
+       "holdat_n_restricted": 56,
+       "judgeable_under_control": true,
+       "tv": 0.482143,
+       "w1": 0.482143
+      },
+      {
+       "parpola_id": "P194",
+       "mahadevan_id": "M048",
+       "mayig_n": 8,
+       "holdat_n_restricted": 47,
+       "judgeable_under_control": true,
+       "tv": 0.640957,
+       "w1": 0.640957
+      },
+      {
+       "parpola_id": "P217",
+       "mahadevan_id": "M211",
+       "mayig_n": 18,
+       "holdat_n_restricted": 74,
+       "judgeable_under_control": true,
+       "tv": 0.737237,
+       "w1": 0.869369
+      },
+      {
+       "parpola_id": "P316",
+       "mahadevan_id": "M336",
+       "mayig_n": 19,
+       "holdat_n_restricted": 48,
+       "judgeable_under_control": true,
+       "tv": 0.383772,
+       "w1": 0.383772
+      },
+      {
+       "parpola_id": "P324",
+       "mahadevan_id": "M342",
+       "mayig_n": 99,
+       "holdat_n_restricted": 184,
+       "judgeable_under_control": true,
+       "tv": 0.71256,
+       "w1": 0.800285
+      },
+      {
+       "parpola_id": "P378",
+       "mahadevan_id": "M391",
+       "mayig_n": 17,
+       "holdat_n_restricted": 59,
+       "judgeable_under_control": true,
+       "tv": 0.3001,
+       "w1": 0.334995
+      },
+      {
+       "parpola_id": "P385",
+       "mahadevan_id": "M267",
+       "mayig_n": 35,
+       "holdat_n_restricted": 147,
+       "judgeable_under_control": true,
+       "tv": 0.692517,
+       "w1": 0.808163
+      }
+     ],
+     "n_judgeable": 13,
+     "median_tv": 0.65051
+    },
+    "site_and_iconography": {
+     "definition": "Holdat restricted to site = Mohenjo-daro AND iconography = unicorn",
+     "n_holdat_inscriptions": 190,
+     "n_holdat_tokens": 781,
+     "records": [
+      {
+       "parpola_id": "P011",
+       "mahadevan_id": "M017",
+       "mayig_n": 10,
+       "holdat_n_restricted": 4,
+       "judgeable_under_control": false,
+       "tv": null,
+       "w1": null
+      },
+      {
+       "parpola_id": "P013",
+       "mahadevan_id": "M001",
+       "mayig_n": 9,
+       "holdat_n_restricted": 1,
+       "judgeable_under_control": false,
+       "tv": null,
+       "w1": null
+      },
+      {
+       "parpola_id": "P050",
+       "mahadevan_id": "M059",
+       "mayig_n": 32,
+       "holdat_n_restricted": 41,
+       "judgeable_under_control": true,
+       "tv": 0.602896,
+       "w1": 0.602896
+      },
+      {
+       "parpola_id": "P056",
+       "mahadevan_id": "M070",
+       "mayig_n": 9,
+       "holdat_n_restricted": 4,
+       "judgeable_under_control": false,
+       "tv": null,
+       "w1": null
+      },
+      {
+       "parpola_id": "P058",
+       "mahadevan_id": "M072",
+       "mayig_n": 15,
+       "holdat_n_restricted": 2,
+       "judgeable_under_control": false,
+       "tv": null,
+       "w1": null
+      },
+      {
+       "parpola_id": "P060",
+       "mahadevan_id": "M065",
+       "mayig_n": 20,
+       "holdat_n_restricted": 14,
+       "judgeable_under_control": true,
+       "tv": 0.807143,
+       "w1": 0.807143
+      },
+      {
+       "parpola_id": "P062",
+       "mahadevan_id": "M067",
+       "mayig_n": 21,
+       "holdat_n_restricted": 0,
+       "judgeable_under_control": false,
+       "tv": null,
+       "w1": null
+      },
+      {
+       "parpola_id": "P073",
+       "mahadevan_id": "M051",
+       "mayig_n": 8,
+       "holdat_n_restricted": 15,
+       "judgeable_under_control": true,
+       "tv": 0.675,
+       "w1": 0.675
+      },
+      {
+       "parpola_id": "P145",
+       "mahadevan_id": "M087",
+       "mayig_n": 27,
+       "holdat_n_restricted": 18,
+       "judgeable_under_control": true,
+       "tv": 0.518519,
+       "w1": 0.518519
+      },
+      {
+       "parpola_id": "P147",
+       "mahadevan_id": "M089",
+       "mayig_n": 14,
+       "holdat_n_restricted": 20,
+       "judgeable_under_control": true,
+       "tv": 0.457143,
+       "w1": 0.457143
+      },
+      {
+       "parpola_id": "P194",
+       "mahadevan_id": "M048",
+       "mayig_n": 8,
+       "holdat_n_restricted": 19,
+       "judgeable_under_control": true,
+       "tv": 0.506579,
+       "w1": 0.506579
+      },
+      {
+       "parpola_id": "P217",
+       "mahadevan_id": "M211",
+       "mayig_n": 18,
+       "holdat_n_restricted": 27,
+       "judgeable_under_control": true,
+       "tv": 0.703704,
+       "w1": 0.888889
+      },
+      {
+       "parpola_id": "P316",
+       "mahadevan_id": "M336",
+       "mayig_n": 19,
+       "holdat_n_restricted": 17,
+       "judgeable_under_control": true,
+       "tv": 0.312693,
+       "w1": 0.312693
+      },
+      {
+       "parpola_id": "P324",
+       "mahadevan_id": "M342",
+       "mayig_n": 99,
+       "holdat_n_restricted": 62,
+       "judgeable_under_control": true,
+       "tv": 0.713262,
+       "w1": 0.832193
+      },
+      {
+       "parpola_id": "P378",
+       "mahadevan_id": "M391",
+       "mayig_n": 17,
+       "holdat_n_restricted": 21,
+       "judgeable_under_control": true,
+       "tv": 0.302521,
+       "w1": 0.37535
+      },
+      {
+       "parpola_id": "P385",
+       "mahadevan_id": "M267",
+       "mayig_n": 35,
+       "holdat_n_restricted": 58,
+       "judgeable_under_control": true,
+       "tv": 0.725123,
+       "w1": 0.81133
+      }
+     ],
+     "n_judgeable": 11,
+     "median_tv": 0.602896
+    }
+   },
+   "n_site_inconsistent_inscriptions": 0,
+   "n_iconography_inconsistent_inscriptions": 0,
+   "mayig_side": "No restriction applied or possible: all 179 mayig inscriptions are Mohenjo-daro (M-series) unicorn seals, so the mayig side is already entirely inside every controlled stratum.",
+   "gaps": [
+    "mayig unicorn variants (I-V) have no counterpart granularity in Holdat's iconography column (single 'unicorn' value): variant-level composition cannot be controlled.",
+    "The mayig layer has no non-Mohenjo-daro site, no non-seal object type, and no non-unicorn iconography: no mayig-side stratum restriction is possible, and no stratum beyond site and iconography exists on both sides.",
+    "Provenience finer than site, artefact material, and find context are absent from the mayig layer metadata and cannot be controlled.",
+    "Inscription-length composition is token data, not layer metadata; it is outside arm (e)'s registered scope and is not controlled."
+   ]
+  },
+  "f_power": {
+   "grid": [
+    {
+     "tokens_per_sign": 8,
+     "n_signs_contributing": 16,
+     "signs_excluded": [],
+     "pooled_per_sign_tv_p95": 0.339189,
+     "pooled_per_sign_tv_median": 0.104592,
+     "median_tv_p95": 0.166231,
+     "median_tv_median": 0.106867
+    },
+    {
+     "tokens_per_sign": 12,
+     "n_signs_contributing": 15,
+     "signs_excluded": [
+      "P058-M072"
+     ],
+     "pooled_per_sign_tv_p95": 0.288732,
+     "pooled_per_sign_tv_median": 0.101724,
+     "median_tv_p95": 0.14719,
+     "median_tv_median": 0.10443
+    },
+    {
+     "tokens_per_sign": 16,
+     "n_signs_contributing": 13,
+     "signs_excluded": [
+      "P013-M001",
+      "P058-M072",
+      "P062-M067"
+     ],
+     "pooled_per_sign_tv_p95": 0.259964,
+     "pooled_per_sign_tv_median": 0.102355,
+     "median_tv_p95": 0.150071,
+     "median_tv_median": 0.101335
+    },
+    {
+     "tokens_per_sign": 24,
+     "n_signs_contributing": 11,
+     "signs_excluded": [
+      "P011-M017",
+      "P013-M001",
+      "P056-M070",
+      "P058-M072",
+      "P062-M067"
+     ],
+     "pooled_per_sign_tv_p95": 0.222619,
+     "pooled_per_sign_tv_median": 0.098684,
+     "median_tv_p95": 0.142296,
+     "median_tv_median": 0.098485
+    },
+    {
+     "tokens_per_sign": 32,
+     "n_signs_contributing": 11,
+     "signs_excluded": [
+      "P011-M017",
+      "P013-M001",
+      "P056-M070",
+      "P058-M072",
+      "P062-M067"
+     ],
+     "pooled_per_sign_tv_p95": 0.196,
+     "pooled_per_sign_tv_median": 0.085207,
+     "median_tv_p95": 0.122449,
+     "median_tv_median": 0.085685
+    },
+    {
+     "tokens_per_sign": 48,
+     "n_signs_contributing": 11,
+     "signs_excluded": [
+      "P011-M017",
+      "P013-M001",
+      "P056-M070",
+      "P058-M072",
+      "P062-M067"
+     ],
+     "pooled_per_sign_tv_p95": 0.174921,
+     "pooled_per_sign_tv_median": 0.074732,
+     "median_tv_p95": 0.10781,
+     "median_tv_median": 0.074695
+    },
+    {
+     "tokens_per_sign": 64,
+     "n_signs_contributing": 11,
+     "signs_excluded": [
+      "P011-M017",
+      "P013-M001",
+      "P056-M070",
+      "P058-M072",
+      "P062-M067"
+     ],
+     "pooled_per_sign_tv_p95": 0.161458,
+     "pooled_per_sign_tv_median": 0.06951,
+     "median_tv_p95": 0.09627,
+     "median_tv_median": 0.06951
+    },
+    {
+     "tokens_per_sign": 96,
+     "n_signs_contributing": 11,
+     "signs_excluded": [
+      "P011-M017",
+      "P013-M001",
+      "P056-M070",
+      "P058-M072",
+      "P062-M067"
+     ],
+     "pooled_per_sign_tv_p95": 0.164828,
+     "pooled_per_sign_tv_median": 0.065241,
+     "median_tv_p95": 0.094062,
+     "median_tv_median": 0.065374
+    },
+    {
+     "tokens_per_sign": 128,
+     "n_signs_contributing": 11,
+     "signs_excluded": [
+      "P011-M017",
+      "P013-M001",
+      "P056-M070",
+      "P058-M072",
+      "P062-M067"
+     ],
+     "pooled_per_sign_tv_p95": 0.414062,
+     "pooled_per_sign_tv_median": 0.075893,
+     "median_tv_p95": 0.109375,
+     "median_tv_median": 0.074468
+    },
+    {
+     "tokens_per_sign": 192,
+     "n_signs_contributing": 5,
+     "signs_excluded": [
+      "P011-M017",
+      "P013-M001",
+      "P056-M070",
+      "P058-M072",
+      "P060-M065",
+      "P062-M067",
+      "P073-M051",
+      "P145-M087",
+      "P147-M089",
+      "P194-M048",
+      "P316-M336"
+     ],
+     "pooled_per_sign_tv_p95": 0.692708,
+     "pooled_per_sign_tv_median": 0.060581,
+     "median_tv_p95": 0.113755,
+     "median_tv_median": 0.060581
+    },
+    {
+     "tokens_per_sign": 256,
+     "n_signs_contributing": 2,
+     "signs_excluded": [
+      "P011-M017",
+      "P013-M001",
+      "P050-M059",
+      "P056-M070",
+      "P058-M072",
+      "P060-M065",
+      "P062-M067",
+      "P073-M051",
+      "P145-M087",
+      "P147-M089",
+      "P194-M048",
+      "P217-M211",
+      "P316-M336",
+      "P378-M391"
+     ],
+     "pooled_per_sign_tv_p95": 0.072049,
+     "pooled_per_sign_tv_median": 0.028201,
+     "median_tv_p95": 0.058489,
+     "median_tv_median": 0.030382
+    }
+   ],
+   "pass_bound": 0.35,
+   "tokens_per_sign_required_median_gate": 8,
+   "tokens_per_sign_required_per_sign": 8,
+   "b": 499,
+   "seed": 127004
+  }
+ },
+ "anchors_sha256_before": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+ "anchors_sha256_after": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+ "anchors_unchanged": true
+}

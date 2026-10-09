@@ -16,10 +16,18 @@ Implements the frozen pilot frame rule exactly as tasked:
   catalogue object carrying that printed ID. Entries that resolve to
   zero catalogue objects, or ambiguously to more than one volume,
   are counted and reported — never guessed.
-- Strata quotas: Mohenjo-Daro 25 (mayig sub-quota 5), Harappa 15
-  (mayig sub-quota 3), Lothal+Kalibangan 10 (drawn Lothal 6 then
-  Kalibangan 4; mayig sub-quota 2 taken from Lothal first, then
-  Kalibangan).
+- Strata quotas: Mohenjo-Daro 25 (mayig sub-quota 10), Harappa 15
+  (mayig sub-quota 0), Lothal+Kalibangan 10 (drawn Lothal 6 then
+  Kalibangan 4; mayig sub-quota 0). FRAME QUOTA CORRECTION
+  (Phase-132): the mayig layer is Mohenjo-Daro-only in the
+  catalogue resolution — all 179 mayig-overlap objects resolve to
+  Mohenjo-Daro (176) or site-uncaptured (3), with 0 at Harappa,
+  Lothal, Kalibangan, or any other site — so the original
+  Harappa / Lothal+Kalibangan mayig sub-quotas were unfillable and
+  only 5 mayig objects were drawn. Spec 023 section 3.1 designs
+  ~10 mayig-overlap objects into the pilot frame and site spread
+  across strata is NOT required for the overlap subset, so the
+  full mayig sub-quota of 10 is placed on Mohenjo-Daro.
 - Within a stratum: first draw the mayig sub-quota from the stratum's
   mayig-overlap objects, then fill the remaining quota from
   non-overlap objects. Each sublist is sorted by (pdf_page of the
@@ -61,6 +69,20 @@ LAYER_PATH = REPO_ROOT / "data" / "corpus_layers" / "mayig_cisi_layer_v1.json"
 REPO_FRAME_OUT = REPO_ROOT / "data" / "keyed_transcription" / \
     "phase132_pilot_frame.json"
 
+MAYIG_CORRECTION_REASON = (
+    "Frame quota correction (Phase-132): the mayig layer is "
+    "Mohenjo-Daro-only in the catalogue resolution — all 179 "
+    "mayig-overlap objects resolve to Mohenjo-Daro (176) or "
+    "site-uncaptured (3), with 0 elsewhere (0 Harappa, 0 Lothal, "
+    "0 Kalibangan). The original Harappa / Lothal+Kalibangan "
+    "mayig sub-quotas were therefore unfillable and only 5 mayig "
+    "objects were drawn. Spec 023 section 3.1 designs ~10 "
+    "mayig-overlap objects into the pilot frame and site spread "
+    "across strata is not required for the overlap subset, so the "
+    "mayig sub-quota is Mohenjo-Daro 10, Harappa 0, "
+    "Lothal+Kalibangan 0."
+)
+
 RULE_TEXT = (
     "Universe: distinct (volume, cisi_id) objects from "
     "catalogue/cisi_vol{1,2}_catalogue.csv. Excluded: first-photo-row "
@@ -69,10 +91,11 @@ RULE_TEXT = (
     "CISI object IDs from data/corpus_layers/mayig_cisi_layer_v1.json "
     "(Phase-122 mapping) resolved to the unique catalogue object with "
     "that printed ID; unresolvable or ambiguous entries counted, "
-    "never guessed. Strata: Mohenjo-Daro 25 (mayig sub-quota 5), "
-    "Harappa 15 (mayig sub-quota 3), Lothal+Kalibangan 10 = Lothal 6 "
-    "then Kalibangan 4 (mayig sub-quota 2, Lothal first then "
-    "Kalibangan). Within a stratum the mayig sub-quota is drawn first "
+    "never guessed. " + MAYIG_CORRECTION_REASON + " Strata: "
+    "Mohenjo-Daro 25 (mayig sub-quota 10), "
+    "Harappa 15 (mayig sub-quota 0), Lothal+Kalibangan 10 = Lothal 6 "
+    "then Kalibangan 4 (mayig sub-quota 0). "
+    "Within a stratum the mayig sub-quota is drawn first "
     "from the stratum's overlap objects, then the quota is filled "
     "from non-overlap objects. Sublists are sorted by (pdf_page of "
     "the object's earliest photo row, cisi_id) — volume breaks exact "
@@ -89,9 +112,9 @@ RULE_TEXT = (
 # Ordered strata specification: (stratum name, [(site, quota), ...],
 # mayig sub-quota shared across the site draws in order).
 STRATA = [
-    ("Mohenjo-Daro", [("Mohenjo-Daro", 25)], 5),
-    ("Harappa", [("Harappa", 15)], 3),
-    ("Lothal+Kalibangan", [("Lothal", 6), ("Kalibangan", 4)], 2),
+    ("Mohenjo-Daro", [("Mohenjo-Daro", 25)], 10),
+    ("Harappa", [("Harappa", 15)], 0),
+    ("Lothal+Kalibangan", [("Lothal", 6), ("Kalibangan", 4)], 0),
 ]
 
 EXCLUDED_SITES = ("", "Addenda")
@@ -310,6 +333,7 @@ def build_frame(store: Path, layer_path: Path) -> dict:
 
     summary = {
         "rule": RULE_TEXT,
+        "mayig_quota_correction": MAYIG_CORRECTION_REASON,
         "seed": SEED,
         "n_frame": len(frame),
         "n_universe_objects": len(objects),

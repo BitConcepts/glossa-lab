@@ -105,12 +105,22 @@ def test_quotas_and_exclusions(tmp_path):
 def test_mayig_subquota_and_resolution_report(tmp_path):
     store, layer_path = _synthetic(tmp_path)
     doc = frame_mod.build_frame(store, layer_path)
-    # All synthetic overlap objects are Mohenjo-Daro, so only that
-    # stratum can fill its mayig sub-quota (5); the others record a
-    # shortfall drawn from their (empty) overlap pools.
+    # Frame quota correction: the real mayig layer is
+    # Mohenjo-Daro-only in the catalogue resolution (176 MD /
+    # 3 site-uncaptured / 0 elsewhere), so the mayig sub-quota is
+    # Mohenjo-Daro 10, Harappa 0, Lothal+Kalibangan 0. All
+    # synthetic overlap objects are Mohenjo-Daro, so the full
+    # sub-quota of 10 is drawn from that stratum.
     mayig = [o for o in doc["frame"] if o["mayig_overlap"]]
-    assert len(mayig) == 5
+    assert len(mayig) == 10
     assert all(o["site"] == "Mohenjo-Daro" for o in mayig)
+    per_stratum = {s["stratum"]: s for s in
+                   doc["frame_summary"]["per_stratum"]}
+    assert per_stratum["Mohenjo-Daro"]["mayig_sub_quota"] == 10
+    assert per_stratum["Harappa"]["mayig_sub_quota"] == 0
+    assert per_stratum["Lothal+Kalibangan"]["mayig_sub_quota"] == 0
+    assert "176" in doc["frame_summary"]["mayig_quota_correction"]
+    assert "Mohenjo-Daro-only" in doc["frame_summary"]["rule"]
     rep = doc["frame_summary"]["mayig_resolution"]
     assert rep["n_layer_inscriptions"] == 14
     assert rep["n_unresolved"] == 1
@@ -170,6 +180,9 @@ def test_committed_frame_shape():
     assert sites["Mohenjo-Daro"] == 25
     assert sites["Harappa"] == 15
     assert sites["Lothal"] + sites["Kalibangan"] == 10
+    mayig = [o for o in frame if o["mayig_overlap"]]
+    assert len(mayig) == 10
+    assert all(o["site"] == "Mohenjo-Daro" for o in mayig)
     for o in frame:
         assert o["canonical_key"] == \
             f"cisi:v{o['volume']}:{o['cisi_id']}"

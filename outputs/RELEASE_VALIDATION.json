@@ -508,7 +508,75 @@
       "response_path": "Phase-130 intake pack (provenance -> license gate -> dedup -> spec-018 evaluability classification) -> report to owner BEFORE any study is designed; no study, battery, or PRED scoring without fresh owner authorization"
     },
     "release_gate": {
-      "verdict": "recorded in the gate-record commit for this release (see repo ledger entry, 2026-10-09, Zenodo v4.5.0)"
+      "verdict": "PASS - 10/10 entries OK, 0 failed",
+      "tool": "backend/scripts/release_gate.py",
+      "checklist": "docs/RELEASE_CHECKLIST.md",
+      "run_date": "2026-10-09",
+      "source_commit": "4ff4cca2989e710d54a9444265cf972fa80ff72d",
+      "source_commit_note": "Merge commit of PR #102 (release sources). Phase-results source commits: c789f7ad (merge of PR #100, pilot build) and a6577d7f (merge of PR #101, pilot report).",
+      "manifest": "release_manifest_450.json (10 entries: 9 repo sources + 1 external)",
+      "files": {
+        "RELEASE_VALIDATION.json": {
+          "status": "MATCH",
+          "sha256_note": "This file's sha256 changes when this gate record is added to it (self-referential). Its status in this run was MATCH (staged sha256 022d00592236b738f0b17201996654f1d84442c4055cce0c8799671620481981 == source sha256 at the source commit below). The final gate run, against the merged gate-record commit, is recorded with this file's final sha256 in the repo ledger entry for this release, together with the post-deposit MD5 confirmation.",
+          "staged_sha256": "022d00592236b738f0b17201996654f1d84442c4055cce0c8799671620481981",
+          "source_sha256": "022d00592236b738f0b17201996654f1d84442c4055cce0c8799671620481981",
+          "source": "outputs/RELEASE_VALIDATION.json"
+        },
+        "INDUS_FINAL_ANCHORS.json": {
+          "status": "MATCH",
+          "staged_sha256": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+          "source_sha256": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+          "source": "backend/reports/INDUS_FINAL_ANCHORS.json"
+        },
+        "pierson_2026_indus_program_note_132_closeout.md": {
+          "status": "MATCH",
+          "staged_sha256": "d88f0a9b4526c31bce36223bdc91b55be81677ad683378db31da6fccd8eb8729",
+          "source_sha256": "d88f0a9b4526c31bce36223bdc91b55be81677ad683378db31da6fccd8eb8729",
+          "source": "glossa-corpus/indus/pierson_2026_indus_program_note_132_closeout.md"
+        },
+        "pierson_2026_indus_program_note_127_131.md": {
+          "status": "MATCH",
+          "staged_sha256": "326f88072ba2382cfd7c3ffe320e77fb9ce1357cbf9e9455f55793292ac864a5",
+          "source_sha256": "326f88072ba2382cfd7c3ffe320e77fb9ce1357cbf9e9455f55793292ac864a5",
+          "source": "glossa-corpus/indus/pierson_2026_indus_program_note_127_131.md"
+        },
+        "pierson_2026_indus_program_note_120_126.md": {
+          "status": "MATCH",
+          "staged_sha256": "2d61c13647d84426d9a32c83aa2055c5eb8cd220de3254ac4db95b09e41bd4d6",
+          "source_sha256": "2d61c13647d84426d9a32c83aa2055c5eb8cd220de3254ac4db95b09e41bd4d6",
+          "source": "glossa-corpus/indus/pierson_2026_indus_program_note_120_126.md"
+        },
+        "pierson_2026_indus_harmonization_note_116.md": {
+          "status": "MATCH",
+          "staged_sha256": "a7236ce058cbb36ac737f970f0e786f9ab6f24c92d1dbd0828725332433fcf92",
+          "source_sha256": "a7236ce058cbb36ac737f970f0e786f9ab6f24c92d1dbd0828725332433fcf92",
+          "source": "glossa-corpus/indus/pierson_2026_indus_harmonization_note_116.md"
+        },
+        "pierson_2026_indus_methods_note_111_112.md": {
+          "status": "MATCH",
+          "staged_sha256": "fdcd47704a8e023daaa81d560af79ed0af5b4115f54925600c02c71fa8dee830",
+          "source_sha256": "fdcd47704a8e023daaa81d560af79ed0af5b4115f54925600c02c71fa8dee830",
+          "source": "glossa-corpus/indus/pierson_2026_indus_methods_note_111_112.md"
+        },
+        "pierson_2026_indus_decipherment_addendum_v5.md": {
+          "status": "MATCH",
+          "staged_sha256": "b2818df804402e2e76bdcea53000b806eb7a36442ff6270e437da53e8fc7a8dc",
+          "source_sha256": "b2818df804402e2e76bdcea53000b806eb7a36442ff6270e437da53e8fc7a8dc",
+          "source": "glossa-corpus/indus/pierson_2026_indus_decipherment_addendum_v5.md"
+        },
+        "AUDIT_CORRECTIONS.json": {
+          "status": "MATCH",
+          "staged_sha256": "567ff7ada347c083b633d8b6709a8620832d3ffe9c1a6e67f07bcb31d9582a80",
+          "source_sha256": "567ff7ada347c083b633d8b6709a8620832d3ffe9c1a6e67f07bcb31d9582a80",
+          "source": "outputs/AUDIT_CORRECTIONS.json"
+        },
+        "pierson_2026_indus_preprint_v3.pdf": {
+          "status": "EXTERNAL",
+          "staged_sha256": "cfa25287b30958e024988a1bf280266d880b07d3feef2215e892315bdcd0162a",
+          "external_source": "Built PDF carried forward byte-identical from Zenodo v4.4.0 (record 23261517, md5 b552851dbf86a8edebeb9f84d982d878, sha256 cfa25287b30958e024988a1bf280266d880b07d3feef2215e892315bdcd0162a); the v3 PDF build is not in the repo (glossa-corpus/indus/ holds the v4 preprint PDF and the stable .tex source)"
+        }
+      }
     },
     "scope_note": "Extension added in v4.5.0. All pre-existing keys, including release_v4_3_0 and release_v4_4_0, are unchanged; the decipherment validation results they record were not re-run for this release. Spec 023 and Phase-132 changed no anchor and no PRED verdict."
   }

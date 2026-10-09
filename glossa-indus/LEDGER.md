@@ -3029,3 +3029,26 @@ PRED change — anchors sha256 eccea6d5… unchanged.
 AI-assisted record (Muse Spark, Muse),
 owner-directed. Full entry: repo LEDGER.md, same
 date.
+
+## 2026-10-09 — Spec 024 motif arm CLOSED AS RUN (owner decision: paths (b) + (c) together)
+
+Owner decision 2026-10-09: the motif arm rests now
+on its published two-pilot record (path (c)) —
+Phase-134 (agreement 0.84, κ 0.7885, MIDDLE BAND)
+and Phase-135 (agreement 0.78, κ 0.7129, MIDDLE BAND
+again), Zenodo v4.7.0, DOI 10.5281/zenodo.23270096 —
+and path (b) is preserved as the arm's sole
+reopening condition: a new owner decision AND a
+materially different measurement basis (human
+expert coders), clarified codebook
+(`stage1-freeze-2.md`), fresh sample, identical
+frozen gates (proceed ≥0.85 AND κ ≥0.75; stop <0.70
+OR κ <0.50); a third AI-basis pilot is expressly not
+a reopening path. No Stage 2(b) design exists or is
+authorized. Stage 2 arms (a), (c), (d) unaffected,
+in their Stage-0 forms. No anchor or PRED change —
+anchors sha256 eccea6d5… unchanged. AI-assisted
+record (Muse Spark, Muse), owner-directed.
+Closure record:
+`specs/024-evidence-integration/motif-arm-closure.md`.
+Full entry: repo LEDGER.md, same date.

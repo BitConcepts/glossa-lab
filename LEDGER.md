@@ -3340,3 +3340,40 @@ PENDING.
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution §VI.
+
+## 2026-10-09 — Spec 024 motif arm CLOSED AS RUN (owner decision: paths (b) + (c) together)
+
+Owner decision 2026-10-09: the Spec 024 motif arm
+takes paths (b) AND (c) together. The arm is
+**closed as run on the AI-coder basis**, effective
+2026-10-09, resting on its published two-pilot
+record — Phase-134 (exact agreement 0.84, Cohen's
+κ 0.7885, MIDDLE BAND) and Phase-135 (clarified
+codebook, fresh sample; exact agreement 0.78,
+κ 0.7129, MIDDLE BAND for the second time) —
+published as Zenodo v4.7.0, DOI
+10.5281/zenodo.23270096. Neither pilot met the
+frozen proceed gate; no Stage 2(b) design exists
+or is authorized.
+
+**Reopening condition (the preserved path (b)):**
+the arm may be reopened ONLY under a new owner
+decision AND a materially different measurement
+basis — human expert coders — using the clarified
+codebook (`stage1-freeze-2.md`), a fresh sample,
+and the identical frozen gates (proceed ≥0.85 exact
+agreement AND κ ≥0.75; stop <0.70 OR κ <0.50). A
+third AI-basis pilot is expressly not a reopening
+path. Stage 2 arms (a), (c), and (d) are
+unaffected and stand in their Stage-0 forms;
+their design freezes remain separate future owner
+decisions. Closure record:
+`specs/024-evidence-integration/motif-arm-closure.md`.
+
+No anchor or PRED change — anchors sha256
+eccea6d5… unchanged; PRED-2026-001/002/003 remain
+PENDING.
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.

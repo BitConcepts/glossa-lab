@@ -2377,3 +2377,111 @@ No other Phase-130 figure is affected.
 **AI disclosure:** execution recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## 2026-10-09 — Phase-131 (Spec 022): Source-of-Disagreement Attribution — direction and composition explain almost none of it; the matched-object route is nearly empty and the residual stands at 0.938679 unexplained
+
+Attribution diagnostics ONLY (owner-ordered Glossa-Lab
+program STEP 1, 2026-10-09). Spec 022 was frozen in its
+own commit (b2ff5759, on phase/131-attribution from
+origin/main 7c062ddf) before any Phase-131 attribution
+statistic existed; the only pre-freeze numbers are
+Phase-125/127 facts of record and Appendix A
+join-feasibility counts. This phase does NOT re-score
+Phase-125 and issues no verdict: the Phase-125 verdict
+— FAIL — DISAGREEMENT (16 judgeable pairs; median TV
+0.636931) — is FINAL and unchanged, and spec 020's NO
+stands untouched. No anchor, PRED, or status changed;
+anchors sha256 eccea6d5… asserted unchanged before and
+after. Work was done in a dedicated worktree; the main
+checkout's stale working tree was never touched.
+
+Arm A (matched-object alignment): every join stage
+counted as found. S1 CISI-ID: 179 apparent zero-padded
+namesakes / 0 validated — rejected as non-identity
+(Holdat cisi_number is internal sequential numbering,
+spec 019 §2.1); no S1 join performed. S2 catalogue
+cross-references: 0. S3 shared artifact keys: 0. S4
+content matcher (Phase-116 route; primary crosswalk
+map, 286 pairs): 32/179 mayig inscriptions eligible
+(all tokens primary-mapped; token-weighted coverage
+0.725823); Tier EXACT / EXACT-REV matches: 0; matched
+set = 4 pairs (NEAR 1, NEAR-REV 3; similarity
+0.667–0.750; ambiguous-orientation excluded 0).
+Pair classes over the 4: substitution 2,
+insertion-deletion 2, identical / split / merge /
+order-only 0. Difference blocks: substitution 2
+(4 tokens), insertion-deletion 2 (2 tokens); all 4
+pairs are the concrete examples (fewer than 3 per
+class exist beyond those shown). Matched-object
+median TV: NOT ESTIMABLE under the frozen gate
+(matched 4 < MIN_MATCHED 10; 5 of 16 pairs have
+defined matched TVs; unthresholded median over those
+5 = 0.500000). The near-empty join is a finding: under
+the only legitimate join, the two compilations' texts
+essentially do not coincide.
+
+Arm B (reading direction; diagnostics, not a
+re-score): B1 mayig reversed median TV 0.582205;
+B2 Holdat reversed median TV 0.582205 — the arms
+coincide exactly, per pair, because TV is symmetric
+under the INITIAL↔TERMINAL swap. Reduction vs
+observed: 0.054726. Neither arm meets the frozen
+support criterion (median TV ≤ 0.131316, the Phase-127
+matched-size noise band's upper bound; band median
+0.082613, interval [0.046665, 0.131316]). Direction
+share credited: 0.000. The unreversed control
+reproduced the Phase-125 median 0.636931 exactly
+through this phase's code path (machinery check).
+
+Arm C (stratification; floor 8 re-applied in-stratum;
+estimable iff ≥ 4 judgeable pairs): site —
+Mohenjo-daro ESTIMABLE (179 mayig / 606 Holdat
+inscriptions, 13 judgeable, median TV 0.599138; same
+value as Phase-127's site control through the new code
+path); all 8 other Holdat sites NOT ESTIMABLE
+(mayig-empty, counts reported). Object type — unicorn
+III ESTIMABLE (5 judgeable, 0.663366), unicorn IV
+ESTIMABLE (6, 0.628981); unicorn I/II/V NOT ESTIMABLE
+(0/1/0 judgeable); all 8 non-unicorn Holdat
+iconographies NOT ESTIMABLE (mayig-empty). Text
+length — bin 6+ ESTIMABLE (9 judgeable, 0.512903);
+bins 1 / 2-3 / 4-5 NOT ESTIMABLE (0/1/2 judgeable;
+bin 1 has 0 Holdat inscriptions). Period: NOT
+ESTIMABLE in every cell (no period metadata exists on
+either side). Zero stratum-inconsistent inscriptions.
+Composition adjustment (Holdat profiles reweighted to
+the mayig length composition; 16/16 pairs included):
+adjusted median TV 0.597874 → composition share
+0.061321.
+
+Arm D (synthesis; frozen estimators): segmentation
+NOT ESTIMABLE, substitution NOT ESTIMABLE,
+insertion-deletion NOT ESTIMABLE (all gated on the
+4-pair matched set), order/direction 0.000 (ESTIMABLE,
+no support), composition 0.061321 (ESTIMABLE),
+matched-object residual NOT ESTIMABLE. Sum of credited
+explained shares 0.061321; residual unexplained share
+0.938679 — stated plainly: no registered estimator
+accounts for the remaining disagreement. Shares not
+forced to sum to 100%; overlaps stated, not rescaled.
+
+Deviations: one clarification (NEAR ties for best
+similarity disqualify a pairing — a tied best is not
+the best) and one presentational note (Appendix A's
+0.717 was a per-inscription mean coverage; the run
+reports the token-weighted 0.725823), both recorded in
+the report. Deterministic: two runs identical in
+statistics. Verification: 32 new tests passed; full
+backend suite 982 passed / 13 skipped / 0 failed
+(baseline 950/13/0 plus this phase's 32); foundation
+check 40 passed / 0 failed / 8 warnings (baseline
+unchanged; corpora symlinked from the main checkout
+temporarily); ruff clean on all new/changed files;
+graph node IndusPhase131Attribution registered and
+asserted in ATOMIC_NODES before the run (H23). Test
+side effects (glossa-indus/ claims + reports, outputs/)
+reverted before commit, per precedent.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

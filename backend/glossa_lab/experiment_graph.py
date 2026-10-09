@@ -2685,6 +2685,16 @@ try:
     logger.info("Registered %d Phase-130 intake (spec 021) nodes", len(list(_p130i_defs())))
 except Exception as _p130i_exc:  # noqa: BLE001
     logger.warning("Phase-130 intake (spec 021) nodes not registered: %s", _p130i_exc)
+# ── Phase-131 nodes (spec 022: source-of-disagreement attribution) ──
+try:
+    from glossa_lab.experiment_graph_phase131_attribution import (
+        _phase131_attribution_node_defs as _p131a_defs,  # noqa: PLC0415
+    )
+    for _d in _p131a_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-131 attribution (spec 022) nodes", len(list(_p131a_defs())))
+except Exception as _p131a_exc:  # noqa: BLE001
+    logger.warning("Phase-131 attribution (spec 022) nodes not registered: %s", _p131a_exc)
 # ── Phase-120 nodes (Bhaskar 2024 descriptive triage) ──
 try:
     from glossa_lab.experiment_graph_phase120 import (

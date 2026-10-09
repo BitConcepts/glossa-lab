@@ -1,24 +1,46 @@
 # Spec 024 — Evidence Integration: Tying the Inscriptions to Non-Textual Evidence
 
-> ## DRAFT — PROPOSAL FOR OWNER ADJUDICATION — NOT FROZEN
+> ## FROZEN — OWNER ADJUDICATION RECORDED 2026-10-09 (Stage 0 freeze)
 >
-> This document is a **proposal only**. It authorizes
-> nothing. No stage of it runs, and no data work beyond
-> the drafting-time verification recorded in Appendix A
-> has been performed under it. It becomes operative
-> only if the owner approves a stage (§11) and the
-> approved text is frozen under the §12 procedure.
+> This spec was drafted as a proposal (2026-10-09,
+> PR #105) and its **Stage 0 is frozen** by this
+> commit, under the §12 freeze procedure, on the
+> owner's instruction of record: **Tristen Pierson,
+> 2026-10-09 — "Execute the plan."** That instruction
+> answers the four §11 decision asks as recorded
+> verbatim in the §11 freeze record: (1) Stage 0 —
+> **GO** as specified; (2) the motif pilot (Stage 1)
+> is **approved in principle** with its shape as
+> drafted and still requires its separate
+> post-Stage-0 go; (3) the Stage 1 coder basis is
+> **blinded AI double-coding with the Phase-132
+> disclosure**, recorded now so the Stage 1 decision
+> is not blocked on it later; (4) publication form —
+> the Stage 0 inventory dataset is **published
+> CC BY 4.0 through the release gate** at Stage 0
+> completion (facts only, no images, ever). Stages 1
+> and 2 are **not** frozen by this commit; each
+> freezes separately (§12). No other content of the
+> proposal text is altered by the freeze.
 
-**Status:** DRAFT 2026-10-09 (proposal for owner
-adjudication). Drafted 2026-10-09 from origin/main
+**Status:** FROZEN 2026-10-09 (Stage 0; freeze commit
+on `spec/024-evidence-integration`, PR #105, merged
+on freeze). Drafted 2026-10-09 from origin/main
 `3511c497` on the owner instruction "Draft the
-Spec 024 evidence-integration proposal." The facts of
-record cited below are quoted from committed results
-(Phase-124 / 125 / 127 / 128 / 131 / 132 reports and
-results files; specs 018, 022, 023) or computed at
-drafting time from the local files and recorded in
-Appendix A. Nothing in this draft has been run as a
-study.
+Spec 024 evidence-integration proposal"; Stage 0
+frozen on the owner instruction "Execute the plan"
+(2026-10-09). The facts of record cited below are
+quoted from committed results (Phase-124 / 125 / 127
+/ 128 / 131 / 132 reports and results files; specs
+018, 022, 023) or computed at drafting time from the
+local files and recorded in Appendix A. Nothing in
+this document has been run as a study at freeze time.
+
+**Phase-numbering note:** at drafting this proposal
+claimed **no phase number**; at this freeze, the
+Stage 0 build takes **Phase-133**. Stage 1 and any
+Stage 2 test take their own later numbers and their
+own freezes (§12).
 
 ---
 
@@ -719,6 +741,28 @@ promises.
 ---
 
 ## 11. Decision asks — exactly what the owner is asked to approve
+
+> **FREEZE RECORD (2026-10-09).** All four asks were
+> answered by the owner, Tristen Pierson, on
+> 2026-10-09 ("Execute the plan"), as follows:
+> (1) Stage 0 inventory — **GO** as specified in §3.
+> (2) Motif pilot — **approved in principle** with
+> its shape as drafted (§4: ~100-object stratified
+> sample, codebook seeded from the §4.3 published
+> categories, blinded double-coding with
+> adjudication, §4.5 gate pattern); Stage 1 itself
+> still requires a **separate go after the Stage 0
+> report**. (3) Coder basis — **blinded AI
+> double-coding with the Phase-132 disclosure**,
+> accepting that its agreement numbers measure this
+> pipeline; recorded now so the Stage 1 decision is
+> not blocked on it later. (4) Publication form —
+> **approved as proposed**: the Stage 0 inventory
+> dataset (coverage matrix, key-audit results,
+> field-provenance grades — facts only, no images,
+> ever) is published under **CC BY 4.0 through the
+> release gate** at Stage 0 completion. The asks
+> below stand as the text that was adjudicated.
 
 1. **Stage 0 inventory go / no-go.** Approve Stage 0 as specified in §3 (field × layer coverage matrix, join-key audit with empirical collision rates, field-provenance grading; facts only, no associations computed), as a bounded build whose products are the matrix, the audit, and the Stage 0 report — or decline it, in which case §10(a) or §10(c) governs.
 2. **Motif pilot in principle.** Approve Stage 1's shape — a ~100-object stratified sample from the local CISI image store, a codebook seeded from the published iconographic categories named in §4.3, blinded double-coding with adjudication, and the §4.5 gate pattern — as the design a post-Stage-0 decision will consider, noting that Stage 1 itself requires a separate go after the Stage 0 report; or restrict the in-principle shape now (e.g. smaller sample, or no motif arm at all).

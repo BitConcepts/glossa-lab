@@ -1,21 +1,28 @@
 # Tasks — Spec 024 / Evidence Integration
 
-> ## DRAFT — PROPOSAL FOR OWNER ADJUDICATION — NOT FROZEN
+> ## FROZEN 2026-10-09 (Stage 0) with spec 024
 >
-> No task below is authorized until the owner
-> answers the corresponding §11 decision ask of
-> `spec.md` and the stage is frozen under §12.
+> The build for Stage 0 is **Phase-133**. Stage 1
+> tasks (T7–T9) remain gated on their separate
+> post-Stage-0 owner go; Stage 2 tasks (T10–T11) on
+> their own freezes.
 
 ## Pre-freeze (owner)
 
 - **T0.** Owner adjudication of Decision Asks 1–4
-  (spec §11). For Stage 0, Ask 1 (go / no-go) and
-  Ask 4 (publication form) are the operative pair;
-  Asks 2–3 may be answered in principle now or
-  deferred to the Stage 0 report.
+  (spec §11) — **DONE 2026-10-09**: the owner
+  (Tristen Pierson, "Execute the plan") answered
+  (1) Stage 0 **GO**; (2) motif pilot approved **in
+  principle** as drafted, separate post-Stage-0 go
+  still required; (3) coder basis **blinded AI
+  double-coding with the Phase-132 disclosure**;
+  (4) Stage 0 inventory dataset **published CC BY 4.0
+  through the release gate** at Stage 0 completion.
+  Recorded verbatim in the spec §11 freeze record.
 - **T0a.** Freeze commit for Stage 0 (owner values
   written in; banner flipped; committed alone —
-  Spec 023 §12 pattern).
+  Spec 023 §12 pattern) — **DONE 2026-10-09** (this
+  commit).
 
 ## Stage 0 — Context-field inventory (starts only after T0a)
 
@@ -42,8 +49,9 @@
   exists, what does not, which §5 sketches survive;
   ledger entries appended.
 - **T6.** Inventory dataset disposition per
-  Decision Ask 4 (release-gated CC BY 4.0
-  publication, or repository-local).
+  Decision Ask 4 — adjudicated 2026-10-09:
+  **release-gated CC BY 4.0 publication** at Stage 0
+  completion (facts only, no images).
 
 ## Stage 1 — Motif-coding pilot (separate go; designed in spec §4)
 

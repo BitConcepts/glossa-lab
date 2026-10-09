@@ -1,10 +1,16 @@
 # Plan — Spec 024 / Evidence Integration
 
-> ## DRAFT — PROPOSAL FOR OWNER ADJUDICATION — NOT FROZEN
+> ## FROZEN 2026-10-09 (Stage 0) with spec 024
 >
-> Companion plan to `spec.md`. Nothing in this plan
-> is authorized until the owner answers §11 of the
-> spec and a stage is frozen under §12.
+> Companion plan to `spec.md`. The owner (Tristen
+> Pierson) answered spec §11 on 2026-10-09
+> ("Execute the plan"): Stage 0 is **GO** and takes
+> **Phase-133**; Stage 1 is approved in principle
+> (coder basis: blinded AI double-coding with the
+> Phase-132 disclosure) and still requires its
+> separate post-Stage-0 go; the Stage 0 inventory
+> dataset is published CC BY 4.0 through the release
+> gate at Stage 0 completion.
 
 ## Approach (proposed)
 

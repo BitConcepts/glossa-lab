@@ -67,5 +67,212 @@
     "n_missing": 6,
     "coverage_pct": 76.0,
     "verdict": "Phonological: 19/25 = 76%"
+  },
+  "release_v4_3_0": {
+    "version": "4.3.0",
+    "date": "2026-10-08",
+    "note_file": "pierson_2026_indus_program_note_120_126.md",
+    "repo": "BitConcepts/glossa-lab",
+    "repo_main_commit": "9ef78ca6",
+    "anchors_file": "INDUS_FINAL_ANCHORS.json",
+    "anchors_sha256": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+    "backend_suite": {
+      "passed": 883,
+      "skipped": 12
+    },
+    "foundation_check": {
+      "passed": 40,
+      "failed": 0,
+      "warnings": 8
+    },
+    "phase_outcomes": {
+      "phase_120_bhaskar_triage_44": {
+        "ALL-AGREE": 0,
+        "CONTESTED": 1,
+        "contested_sign": "M402",
+        "NOT-COVERED": 43
+      },
+      "phase_121_soviet_positional_dataset": {
+        "tables": 7,
+        "records": 109,
+        "hand_verified_cells": "36/36",
+        "kondratov_1968_frequency_tables": "none present"
+      },
+      "phase_122_crosswalk_v1": {
+        "pairs": 762,
+        "high_confidence": 372,
+        "registry_mayig_agreement": "372/372",
+        "mayig_inscriptions": 179,
+        "mayig_tokens": 1003,
+        "mayig_tokens_clean": 768
+      },
+      "phase_123_wells_witness_157": {
+        "SAME": 87,
+        "SPLIT": 40,
+        "MERGE": 5,
+        "NOT-COVERED": 2,
+        "INDETERMINATE": 23,
+        "determinable": 134
+      },
+      "phase_124_cisi_image_layer": {
+        "catalogue_rows": 7705,
+        "cisi_object_ids": 3494,
+        "sample_field_accuracy": 0.989,
+        "crops": "local-only (license)"
+      },
+      "phase_125_spec_019": {
+        "verdict": "FAIL / DISAGREEMENT",
+        "judgeable_primary_pairs": "16 of 286",
+        "median_tv": 0.637,
+        "pass_bound_tv": 0.35,
+        "spearman_rho_initial": -0.425,
+        "spearman_rho_terminal": 0.316,
+        "shuffle_null_p": 0.824
+      },
+      "spec_020_adjudication": {
+        "verdict": "NO",
+        "criteria_failed": 5,
+        "criteria_passed": [
+          "C6 independence"
+        ],
+        "pred_2026_001": "PENDING",
+        "pred_2026_002": "PENDING"
+      },
+      "phase_126_wells_split_candidates_113": {
+        "split": 27,
+        "merge": 4,
+        "unit-same": 62,
+        "not-covered": 1,
+        "not_covered_sign": "M312",
+        "indeterminate": 19
+      }
+    },
+    "scope_note": "Extension added in v4.3.0. All pre-existing keys are unchanged from v4.2.0; the decipherment validation results they record were not re-run for this release. Phases 120-126 and specs 019-020 changed no anchor."
+  },
+  "release_v4_4_0": {
+    "version": "4.4.0",
+    "date": "2026-10-09",
+    "note_file": "pierson_2026_indus_program_note_127_131.md",
+    "repo": "BitConcepts/glossa-lab",
+    "repo_main_commit": "257ed964",
+    "repo_main_commit_full": "257ed964dfcc8d4c7068e01308efd8532bdaa65b",
+    "anchors_file": "INDUS_FINAL_ANCHORS.json",
+    "anchors_sha256": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+    "backend_suite": {
+      "passed": 970,
+      "skipped": 5,
+      "failed": 0,
+      "collected": 975,
+      "run": "Independent re-run 2026-10-09 in the v4.4.0 release worktree at 257ed964 (canonical venv, corpora symlinked from the main checkout, CI configuration with GPU test files ignored): 970 passed / 5 skipped / 0 failed.",
+      "phase131_ledger_recorded_run": "982 passed / 13 skipped / 0 failed (Phase-131 worktree environment; totals vary by worktree environment, per the Phase-130 correction precedent)",
+      "ci": "GitHub CI run 37915340386 on merge commit 257ed964: completed success"
+    },
+    "foundation_check": {
+      "passed": 40,
+      "failed": 0,
+      "warnings": 8
+    },
+    "phase_outcomes": {
+      "phase_127_spec_021_diagnostic": {
+        "observed_median_tv_phase125": 0.636931,
+        "matched_size_expected_median_tv": 0.082613,
+        "matched_size_interval_95": [
+          0.046665,
+          0.131316
+        ],
+        "replicates_reaching_observed": "0 of 999",
+        "split_half_noise_floor_raw": 0.059538,
+        "split_half_full_size_estimate": 0.0421,
+        "bootstrap_ci_median_tv": [
+          0.548638,
+          0.722042
+        ],
+        "median_ambiguity_share": 0.666667,
+        "median_attributable_tv": 0.0,
+        "verdict": "disagreement is not a sampling artifact; Phase-125 FAIL stands"
+      },
+      "phase_128_evidence_dossiers_44": {
+        "dossiers_in_out": "44 in = 44 out",
+        "evidence_complete": 1,
+        "evidence_complete_sign": "M072",
+        "segmentation_contested": 15,
+        "crosswalk_contested": 25,
+        "not_covered": 3,
+        "not_covered_signs": [
+          "M033",
+          "M058",
+          "M281"
+        ],
+        "evidence_thin": 10,
+        "scope": "descriptive only; no status recommendation"
+      },
+      "release_integrity_audit_and_gate": {
+        "v4_2_0_verdict": "STAGING ERROR (stale CRLF out-of-tree anchors copy, sha256 841e9067a68c933d3b9511ba95f5efae23b80a5fad0f083a8eedbde6cf078fdf)",
+        "v4_3_0_anchors": "correct eccea6d5 file, byte-identical to repo",
+        "remedy": "backend/scripts/release_gate.py + docs/RELEASE_CHECKLIST.md mandatory blocking hash gate"
+      },
+      "phase_129_cisi_cropper_v2": {
+        "benchmark_v1_frozen": {
+          "good": 38,
+          "partial": 29,
+          "bad": 15,
+          "total": 82
+        },
+        "benchmark_v2": {
+          "good": 50,
+          "partial": 42,
+          "bad": 15,
+          "total": 107
+        },
+        "win": "all three frozen clauses met; recall win at constant bad count",
+        "expansion_crops": 14166,
+        "expansion_vol1": 6438,
+        "expansion_vol2": 7728,
+        "expansion_distinct_cisi_ids": 3287,
+        "crops_location": "local-only (license); no crops deposited"
+      },
+      "phase_130_spec_021_intake_pack": {
+        "real_external_data_ingested": false,
+        "license_gate": "hard REJECT (LICENSE_BASIS_MISSING)",
+        "dedup_shared_module": "backend/glossa_lab/dedup.py (spec 018 S5 stages A/B/C)",
+        "dedup_converted_layer": {
+          "input": 4531,
+          "stage_a": 1468,
+          "stage_b": 370,
+          "stage_c": 247,
+          "kept": 2446,
+          "cumulative_removal": 0.4602
+        },
+        "synthetic_fixture": "7 in -> 4 kept; dry-run only",
+        "pred_2026_001": "PENDING",
+        "pred_2026_002": "PENDING"
+      },
+      "phase_131_spec_022_attribution": {
+        "matched_pairs": 4,
+        "exact_matches": 0,
+        "matched_tiers": {
+          "NEAR": 1,
+          "NEAR-REV": 3
+        },
+        "matched_object_median_tv": "NOT ESTIMABLE",
+        "reading_direction_arms_median_tv": {
+          "B1_mayig_reversed": 0.582205,
+          "B2_holdat_reversed": 0.582205
+        },
+        "noise_band_upper_bound": 0.131316,
+        "reading_direction": "NOT supported",
+        "order_direction_share": 0.0,
+        "composition_adjusted_median_tv": 0.597874,
+        "composition_share": 0.061321,
+        "segmentation_share": "NOT ESTIMABLE",
+        "substitution_share": "NOT ESTIMABLE",
+        "insertion_deletion_share": "NOT ESTIMABLE",
+        "residual_unexplained_share": 0.938679,
+        "phase_125_verdict": "FAIL - DISAGREEMENT (final, unchanged)",
+        "spec_020_verdict": "NO (stands)"
+      }
+    },
+    "release_gate": "PENDING - filled after the mandatory gate run against the merged release commit",
+    "scope_note": "Extension added in v4.4.0. All pre-existing keys, including release_v4_3_0, are unchanged; the decipherment validation results they record were not re-run for this release. Phases 127-131 and specs 021-022 changed no anchor."
   }
 }

@@ -109,6 +109,31 @@
   Stage 2(b) decision is framed for the owner,
   not taken.
 
+## Stage 1 continuation — Combined path (owner approval 2026-10-09)
+
+- **T9b.** Codebook clarification of the ILLEGIBLE /
+  SCRIPT_ONLY / GEOMETRIC boundary from the 16 adjudicated
+  Phase-134 disagreements + Phase-135 re-pilot freeze
+  (fresh sample, identical gates). Owner approval
+  2026-10-09: "Run the combined path — clarify the
+  boundary, re-pilot fresh, freeze Stage 2(b) only if
+  the gates pass, publish the combined record." —
+  freeze record `stage1-freeze-2.md` in this directory.
+- **T9c.** Phase-135 re-pilot execution (blinded double
+  coding + gold + adjudication under the clarified
+  codebook; all quantities from on-disk records) and
+  pilot report with the gate verdict as found.
+- **T9d.** Branch deliverable per `stage1-freeze-2.md`
+  §5: Stage 2(b) design freeze (proceed gate only) /
+  motif-arm closure statement (stop rule) / framed
+  owner decision (middle band again).
+- **T9e.** Combined motif-arm publication: Zenodo
+  v4.7.0 (Phase-134 dataset + Phase-135 dataset +
+  program note; codes and logs only, no images)
+  through the mandatory release gate; OSF registry
+  updated in step. Authorized by the same owner
+  approval (T9b).
+
 ## Stage 2 — Association tests (each its own freeze; spec §5)
 
 - **T10.** Family declaration + first test freeze

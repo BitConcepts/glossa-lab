@@ -3055,3 +3055,67 @@ anchors sha256 eccea6d5… asserted unchanged.
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution §VI.
+
+## 2026-10-09 — Zenodo v4.6.0 published (Spec 024 + Phase-133 Stage 0): inventory dataset CC BY 4.0 through the release gate; Phase-133 verification addendum
+
+**Zenodo v4.6.0 published 2026-10-09** — DOI
+10.5281/zenodo.23267995 (record 23267995); concept DOI
+10.5281/zenodo.20379070 unchanged. The deposit (13
+files) adds the Spec 024 / Phase-133 program note
+(`pierson_2026_indus_program_note_133_stage0.md`) and
+the Stage 0 inventory dataset
+(`phase133_stage0_inventory.json` +
+`phase133_stage0_inventory_meta.json`, CC BY 4.0 per
+the owner's Decision Ask 4 adjudication — facts only,
+no images) to the carried-forward v4.5.0 set.
+Publication flow per docs/RELEASE_CHECKLIST.md:
+program note + `RELEASE_VALIDATION.json`
+`release_v4_6_0` entry via PR #108 (merge 8e9a90a7);
+mandatory release gate run at 8e9a90a7 — **PASS
+13/13** (12 MATCH + 1 EXTERNAL, the carried-forward
+v3 preprint PDF byte-identical to the v4.5.0
+record); gate recorded via PR #109 (merge 580bd8ae);
+final gate run against the merged gate-record
+commit 580bd8ae — **PASS 13/13**, exit 0 (final
+staged `RELEASE_VALIDATION.json` sha256
+a28703edc2e7d7bebcd2e7f3840a7e03fca5ac61fcba46df6068a3d07f91f229).
+Post-deposit confirmation: **13/13** file checksums
+on record 23267995 match the staged files. Suite and
+foundation independently re-run at a289b19b in the
+release worktree: **1005 passed / 5 skipped / 0
+failed**; foundation **40 passed / 0 failed / 8
+warnings**. OSF registry (osf.io/ybd65): dated
+v4.6.0 blocks appended to the parent project, the
+Program Outputs component (vwa7s), and the Corpora
+component (dfrhz); the Literature component is
+unchanged. Spec 024 task T6 marked DONE.
+
+**Phase-133 verification addendum (coordinator,
+2026-10-09).** The coordinator independently
+recomputed the Stage 0 headline quantities from the
+source files before publication; every figure
+matched the merged inventory (PR #106) exactly under
+the audit's stated matching rule, with one
+clarification of record: the join-key audit matches
+candidate values by **exact string**. Three horus84
+`cisi` values carry trailing whitespace (`H-1734`
++TAB, `L-78` +space, `M-929` +space); the first
+matches no printed ID under any rule, and the other
+two are whitespace variants of valid printed IDs
+that count as unmatched under the exact rule. A
+whitespace-trimming recount differs by exactly
+those 2 rows (matched 2,897 / unmatched 2,780 vs
+the audit's 2,895 / 2,782). The report, dataset, and
+program note (§3) stand as computed under the exact
+rule; this note completes the record.
+
+No anchor or PRED change — anchors sha256
+eccea6d5… unchanged; PRED-2026-001/002/003 remain
+PENDING. Spec 024 Stage 1 (motif pilot) is approved
+in principle and still requires its separate
+post-Stage-0 owner go; nothing in this release
+authorizes it.
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.

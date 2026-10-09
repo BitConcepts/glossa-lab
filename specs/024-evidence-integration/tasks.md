@@ -70,7 +70,13 @@
 - **T6.** Inventory dataset disposition per
   Decision Ask 4 — adjudicated 2026-10-09:
   **release-gated CC BY 4.0 publication** at Stage 0
-  completion (facts only, no images).
+  completion (facts only, no images). — **DONE
+  2026-10-09**: published with Zenodo v4.6.0 (DOI
+  10.5281/zenodo.23267995, record 23267995) through
+  the mandatory release gate (PASS 13/13, recorded
+  in `RELEASE_VALIDATION.json` `release_v4_6_0`);
+  post-deposit checksums confirmed 13/13; OSF
+  registry updated the same day.
 
 ## Stage 1 — Motif-coding pilot (separate go; designed in spec §4)
 

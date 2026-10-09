@@ -2283,3 +2283,80 @@ only).
 **AI disclosure:** execution recorded by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## [2026-10-08] Entry — Phase-130 (Spec 021): Independent-Data Intake Pack
+
+Owner-ordered program Workstream 5 of 5 (2026-10-08), on
+`phase/130-intake-pack` from main `9f0ec4da` (after PR #92).
+The intake-side companion to spec 018 (Phase-119): the
+machinery that receives a genuinely independent inscription
+dataset when one lands. **No real external data was
+ingested, no one was contacted, nothing was sent**; the only
+end-to-end exercise is a synthetic fixture (invented signs
+P901–P905, invented sites).
+
+Deliverables. (1) Intake schema v1
+(`data/intake/intake_dataset_schema_v1.json`, JSON Schema
+draft 2020-12): per-inscription source-assigned ID, site,
+object type, context/period, token-list sign sequence,
+declared sign list, per-inscription provenance; dataset-level
+source, compiler, license/terms basis, acquisition date,
+upstream lineage declaration. REQUIRED = exactly the fields
+spec 018's evaluability (§4/§6.1) and dedup (§5) consume; the
+rest is optional-but-declared. The enforcing validator is
+stdlib-only Python (repo precedent: core modules stdlib-only,
+pydantic confined to the API layer, `jsonschema` not a
+dependency); tests assert schema file and validator agree.
+(2) Validator (`backend/glossa_lab/intake.py`): structured
+pass / pass-with-warnings / reject verdicts with named reason
+codes, including duplicate-ID detection and sign-list
+declaration. The license gate is hard: a dataset with no
+declared lawful basis (missing/empty `license_basis`) is a
+REJECT (`LICENSE_BASIS_MISSING`), never a warning.
+(3) Dedup lifted verbatim from `pred_harness` into the shared
+module `backend/glossa_lab/dedup.py`; the harness imports and
+re-exports it (identity asserted in tests) — no behaviour
+change: Phase-119's tests pass unmodified in outcome, and the
+Appendix A.6 measured numbers reproduce through the module on
+the harness's fixtures and on the converted layer itself
+(4,531 in; stages 1,468 / 370 / 247; kept 2,446; cumulative
+removal 46.02%, the P-space figure of App. A.6). Note: the
+tasking memo's alternate dedup stage names matched no repo
+protocol; the frozen spec 018 §5 stages (A exact / B
+sentinel-normalized / C near-duplicate) are what was lifted —
+recorded in spec 021 §B2. (4) Crosswalk adapter requirements
+(`docs/INTAKE_CROSSWALK_REQUIREMENTS.md`, requirements only,
+no crosswalk built): evidence types, confidence-rubric
+inputs and conflict handling after the Phase-122 v1 model.
+(5) Intake runbook (`docs/INTAKE_RUNBOOK.md`): provenance →
+license gate → schema validation → dedup → evaluability-class
+assignment (spec 018 §4) → harness dry-run, headed by the
+structural rule: intake output can only ever reach the
+harness's dry-run path (the intake module imports `dry_run`
+and binds no scoring name — asserted in tests); evaluation
+requires its own future spec + owner authorization.
+
+Fixture exercise (15 new tests): the synthetic dataset walks
+every runbook stage; its deliberate duplicate cluster is
+caught one per stage (7 in → 4 kept); the license-missing
+variant fixture is rejected at the license gate with no dedup
+or dry-run stage reached; a non-Parpola declared sign list
+stops at the dry-run stage with the §7-adapter skip reason.
+
+Reports: `reports/phase130_intake_pack_results.json`;
+graph node `IndusPhase130IntakePack`
+(`backend/glossa_lab/experiment_graph_phase130_intake.py`,
+registered by try/except import; distinct from the legacy
+Phase-130 decode-blocker node). Verification: 15 new tests
+passed; full backend suite 938 passed / 13 skipped / 0 failed
+(baseline 923/13/0 plus this phase's 15; corpora symlinked
+from the main checkout per Phase-129 precedent); foundation
+check 40 passed / 0 failed / 8 warnings (baseline unchanged);
+ruff clean on all new/changed files; anchors file
+byte-identical (sha256 eccea6d5…, asserted before/after).
+Test side effects (glossa-indus/ claims + reports, outputs/)
+reverted before commit, per precedent.
+
+**AI disclosure:** execution recorded by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.

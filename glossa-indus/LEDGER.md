@@ -2601,3 +2601,26 @@ Cross-reference: repo LEDGER.md entry of the same date ("History purge #2 (revis
 **AI disclosure:** execution recorded by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
 constitution §VI.
+
+## 2026-10-08 — Phase-127 (spec 021): Cross-compilation disagreement diagnostic (cross-reference)
+
+Cross-reference: repo LEDGER.md entry of the same date and
+`reports/phase127_cross_compilation_diagnostic.md`. Diagnostic
+only — the Phase-125 verdict (FAIL — DISAGREEMENT, median TV
+0.636931 over 16 judgeable primary pairs) is FINAL and
+unchanged; nothing here re-scores it. Headline: Holdat
+split-half noise floor (full-size estimate) 0.042100;
+matched-size expected median TV at mayig's token counts
+0.082613 with 0.000000 of replicates reaching the observed
+median; inscription-bootstrap CI for the median TV
+0.548638–0.722042; crosswalk ambiguity accounts for none of
+the disagreement under the registered estimator (primary
+arm excludes ambiguity by construction; median attributable
+share −0.185664 where defined); composition controls
+(site / iconography / both) leave the median at
+0.599138 / 0.650510 / 0.602896; power statement: 8 tokens
+per sign already clear the registered noise criterion for
+the frozen Phase-125 gates. No anchor/PRED/status change;
+anchors sha256 eccea6d5… unchanged. Suite 901/12/0;
+foundation 40/0/8. AI-assisted record (Muse Spark, Muse
+Code), owner-directed.

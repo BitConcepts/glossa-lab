@@ -2979,3 +2979,30 @@ statistic computed; no anchor or PRED change —
 anchors sha256 eccea6d5… unchanged. AI-assisted
 record (Muse Spark, Muse), owner-directed.
 Full entry: repo LEDGER.md, same date.
+
+## 2026-10-09 — Phase-135 (Spec 024): Evidence Integration, Stage 1 Re-Pilot — agreement 0.78, κ 0.7129, MIDDLE BAND again (cross-reference)
+
+Owner-approved combined path executed: codebook
+clarification of the legibility boundary (Rules
+B1–B5 from the 16 adjudicated Phase-134
+disagreements; freeze record `stage1-freeze-2.md`,
+gates and taxonomy unchanged) + fresh-sample
+re-pilot. Frame: 100 entirely fresh objects
+(3,245 eligible minus the 100 Phase-134 objects =
+3,145; overlap 0, verified). Two blinded passes +
+gold + adjudication of 22 disagreements, all roles
+AI-executed with disclosure, all quantities from
+the on-disk records, no deviations. Exact
+agreement **0.78**, Cohen's κ **0.7129**; frozen
+§4.5 gates: proceed NOT MET (both arms), stop NOT
+FIRED → **MIDDLE BAND for the second time**; no
+Stage 2(b) design drafted; owner's decision
+framed in `reports/phase135_pilot_report.md`.
+ILLEGIBLE usage halved under the clarification but
+its per-category agreement fell (0.667 → 0.368) —
+the clarification did not raise reproducibility
+on this fresh sample. No association statistic
+computed; no anchor or PRED change — anchors
+sha256 eccea6d5… unchanged. AI-assisted record
+(Muse Spark, Muse), owner-directed.
+Full entry: repo LEDGER.md, same date.

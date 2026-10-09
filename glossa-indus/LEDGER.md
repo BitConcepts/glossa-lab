@@ -2688,3 +2688,18 @@ No real data ingested, no contact, no prediction evaluated;
 PRED-2026-001–003 remain PENDING. No anchor changed (sha256
 eccea6d5… unchanged). Suite 938/13/0; foundation 40/0/8.
 AI-assisted record (Muse Spark, Muse), owner-directed.
+
+## 2026-10-09 — CORRECTION (append-only, cross-reference): Phase-130 suite skipped count corrected — 13 → 5; 938 passed / 0 failed unchanged
+
+Cross-reference: repo LEDGER.md correction entry of the same
+date. Correction to the Phase-130 entry above (appended, not
+edited; part of the 2026-10-08 follow-on program closeout):
+its recorded suite line "Suite 938/13/0" is corrected — the
+skipped count is corrected from 13 to 5. The verified
+re-run settles the suite at 938 passed / 5 skipped / 0
+failed (943 collected in that worktree environment). Passed
+(938) and failed (0) were correct; only the skipped count
+was wrong. Skip counts vary by worktree environment
+(gitignored corpora presence). CI was 7/7 green. No other
+Phase-130 figure is affected. AI-assisted record (Muse
+Spark, Muse), owner-directed.

@@ -1,0 +1,5467 @@
+{
+ "phase": 131,
+ "spec": "specs/022-phase131-attribution",
+ "date": "2026-10-09",
+ "generated_at": "2026-10-09T09:54:02.538012+00:00",
+ "gpu_device": "cpu (torch absent)",
+ "framing": "ATTRIBUTION DIAGNOSTICS ONLY. This phase does not re-score Phase-125 and issues no verdict. The Phase-125 verdict FAIL — DISAGREEMENT is FINAL and unchanged; spec 020's NO stands untouched. No anchor, PRED verdict, or status was modified.",
+ "phase125_verdict_of_record": {
+  "verdict": "FAIL",
+  "substate": "DISAGREEMENT",
+  "median_tv": 0.636931,
+  "n_judgeable": 16,
+  "n_primary_pairs": 286,
+  "status": "FINAL — unchanged"
+ },
+ "noise_band_of_record": {
+  "source": "Phase-127 arm (b) matched-size subsampling null",
+  "median": 0.082613,
+  "ci95_lo": 0.046665,
+  "ci95_hi": 0.131316
+ },
+ "inputs": {
+  "mayig_layer": {
+   "inscriptions": 179,
+   "tokens": 1003,
+   "signs": 182
+  },
+  "holdat": {
+   "inscriptions": 1670,
+   "tokens": 7002,
+   "signs": 390
+  },
+  "crosswalk": {
+   "n_pairs": 762,
+   "primary_map_pairs": 286
+  },
+  "judgeable_set": "the 16 Phase-125 PRIMARY judgeable pairs, read from reports/phase125_cross_compilation_results.json"
+ },
+ "arms": {
+  "a_matched_object_alignment": {
+   "join_stages": {
+    "mayig_objects": 179,
+    "holdat_inscriptions": 1670,
+    "s1_cisi_id": {
+     "apparent_zero_padded_namesakes": 179,
+     "validated_matches": 0,
+     "note": "REJECTED as non-identity: Holdat cisi_number is internal sequential numbering, not a CISI object ID (spec 019 section 2.1; spec 015 section 1). No S1 join is performed."
+    },
+    "s2_catalogue_cross_reference": {
+     "usable_cross_references_found": 0,
+     "note": "Searched the committed crosswalk v1 rows (fields: parpola_id / mahadevan_id / confidence / sources; no Holdat key field exists) and the mayig layer metadata: no table mapping Holdat keys (cisi_number / seal_id / form) to CISI object IDs exists in the committed inputs."
+    },
+    "s3_shared_artifact_keys": {
+     "shared_keys_found": 0,
+     "note": "mayig keys (cisi_object_id / side_id / source_file) and Holdat keys (cisi_number / seal_id / form) share no field with the same meaning on both sides; each side's non-CISI keys are internal."
+    }
+   },
+   "matcher": {
+    "n_eligible": 32,
+    "eligible_mayig_object_ids": [
+     "M-105",
+     "M-113",
+     "M-122",
+     "M-123",
+     "M-124",
+     "M-127",
+     "M-128",
+     "M-13",
+     "M-135",
+     "M-137",
+     "M-145",
+     "M-146",
+     "M-148",
+     "M-155",
+     "M-163",
+     "M-173",
+     "M-18",
+     "M-180",
+     "M-182",
+     "M-183",
+     "M-31",
+     "M-37",
+     "M-5",
+     "M-67",
+     "M-69",
+     "M-74",
+     "M-8",
+     "M-85",
+     "M-87",
+     "M-88",
+     "M-9",
+     "M-97"
+    ],
+    "primary_map_pairs": 286,
+    "primary_map_token_coverage_all_mayig": 0.725823,
+    "n_matched": 4,
+    "tier_counts": {
+     "NEAR": 1,
+     "NEAR-REV": 3
+    },
+    "n_ambiguous_orientation": 0,
+    "ambiguous_orientation_eligible_ids": [],
+    "matched_mayig_coverage": 0.022346,
+    "matched_holdat_coverage": 0.002395,
+    "pairs": [
+     {
+      "mayig_object_id": "M-124",
+      "holdat_key": "M-0357",
+      "tier": "NEAR",
+      "similarity": 0.75,
+      "mapped_mayig_sequence": [
+       "M342",
+       "M296",
+       "M059",
+       "M087"
+      ],
+      "holdat_sequence": [
+       "M342",
+       "M410",
+       "M059",
+       "M087"
+      ],
+      "aligned_holdat_sequence": [
+       "M342",
+       "M410",
+       "M059",
+       "M087"
+      ],
+      "alignment": [
+       {
+        "op": "match",
+        "a": "M342",
+        "b": "M342"
+       },
+       {
+        "op": "sub",
+        "a": "M296",
+        "b": "M410"
+       },
+       {
+        "op": "match",
+        "a": "M059",
+        "b": "M059"
+       },
+       {
+        "op": "match",
+        "a": "M087",
+        "b": "M087"
+       }
+      ],
+      "blocks": [
+       {
+        "class": "substitution",
+        "p": 1,
+        "q": 1,
+        "n_tokens": 2,
+        "a_tokens": [
+         "M296"
+        ],
+        "b_tokens": [
+         "M410"
+        ]
+       }
+      ],
+      "pair_class": "substitution"
+     },
+     {
+      "mayig_object_id": "M-148",
+      "holdat_key": "C-0001",
+      "tier": "NEAR-REV",
+      "similarity": 0.666667,
+      "mapped_mayig_sequence": [
+       "M342",
+       "M267",
+       "M221"
+      ],
+      "holdat_sequence": [
+       "M391",
+       "M267",
+       "M342"
+      ],
+      "aligned_holdat_sequence": [
+       "M342",
+       "M267",
+       "M391"
+      ],
+      "alignment": [
+       {
+        "op": "match",
+        "a": "M342",
+        "b": "M342"
+       },
+       {
+        "op": "match",
+        "a": "M267",
+        "b": "M267"
+       },
+       {
+        "op": "sub",
+        "a": "M221",
+        "b": "M391"
+       }
+      ],
+      "blocks": [
+       {
+        "class": "substitution",
+        "p": 1,
+        "q": 1,
+        "n_tokens": 2,
+        "a_tokens": [
+         "M221"
+        ],
+        "b_tokens": [
+         "M391"
+        ]
+       }
+      ],
+      "pair_class": "substitution"
+     },
+     {
+      "mayig_object_id": "M-37",
+      "holdat_key": "M-0512",
+      "tier": "NEAR-REV",
+      "similarity": 0.666667,
+      "mapped_mayig_sequence": [
+       "M211",
+       "M059",
+       "M171"
+      ],
+      "holdat_sequence": [
+       "M059",
+       "M211"
+      ],
+      "aligned_holdat_sequence": [
+       "M211",
+       "M059"
+      ],
+      "alignment": [
+       {
+        "op": "match",
+        "a": "M211",
+        "b": "M211"
+       },
+       {
+        "op": "match",
+        "a": "M059",
+        "b": "M059"
+       },
+       {
+        "op": "del",
+        "a": "M171",
+        "b": null
+       }
+      ],
+      "blocks": [
+       {
+        "class": "insertion-deletion",
+        "p": 1,
+        "q": 0,
+        "n_tokens": 1,
+        "a_tokens": [
+         "M171"
+        ],
+        "b_tokens": []
+       }
+      ],
+      "pair_class": "insertion-deletion"
+     },
+     {
+      "mayig_object_id": "M-87",
+      "holdat_key": "H-0262",
+      "tier": "NEAR-REV",
+      "similarity": 0.666667,
+      "mapped_mayig_sequence": [
+       "M176",
+       "M304",
+       "M041"
+      ],
+      "holdat_sequence": [
+       "M041",
+       "M176"
+      ],
+      "aligned_holdat_sequence": [
+       "M176",
+       "M041"
+      ],
+      "alignment": [
+       {
+        "op": "match",
+        "a": "M176",
+        "b": "M176"
+       },
+       {
+        "op": "del",
+        "a": "M304",
+        "b": null
+       },
+       {
+        "op": "match",
+        "a": "M041",
+        "b": "M041"
+       }
+      ],
+      "blocks": [
+       {
+        "class": "insertion-deletion",
+        "p": 1,
+        "q": 0,
+        "n_tokens": 1,
+        "a_tokens": [
+         "M304"
+        ],
+        "b_tokens": []
+       }
+      ],
+      "pair_class": "insertion-deletion"
+     }
+    ]
+   },
+   "pair_class_counts": {
+    "insertion-deletion": 2,
+    "substitution": 2
+   },
+   "block_class_counts": {
+    "insertion-deletion": 2,
+    "substitution": 2
+   },
+   "block_token_totals": {
+    "substitution": 4,
+    "all_difference_blocks": 6,
+    "insertion-deletion": 2
+   },
+   "examples_by_pair_class": {
+    "substitution": [
+     {
+      "mayig_object_id": "M-124",
+      "holdat_key": "M-0357",
+      "tier": "NEAR",
+      "mapped_mayig_sequence": [
+       "M342",
+       "M296",
+       "M059",
+       "M087"
+      ],
+      "holdat_sequence": [
+       "M342",
+       "M410",
+       "M059",
+       "M087"
+      ],
+      "aligned_holdat_sequence": [
+       "M342",
+       "M410",
+       "M059",
+       "M087"
+      ],
+      "blocks": [
+       {
+        "class": "substitution",
+        "p": 1,
+        "q": 1,
+        "n_tokens": 2,
+        "a_tokens": [
+         "M296"
+        ],
+        "b_tokens": [
+         "M410"
+        ]
+       }
+      ]
+     },
+     {
+      "mayig_object_id": "M-148",
+      "holdat_key": "C-0001",
+      "tier": "NEAR-REV",
+      "mapped_mayig_sequence": [
+       "M342",
+       "M267",
+       "M221"
+      ],
+      "holdat_sequence": [
+       "M391",
+       "M267",
+       "M342"
+      ],
+      "aligned_holdat_sequence": [
+       "M342",
+       "M267",
+       "M391"
+      ],
+      "blocks": [
+       {
+        "class": "substitution",
+        "p": 1,
+        "q": 1,
+        "n_tokens": 2,
+        "a_tokens": [
+         "M221"
+        ],
+        "b_tokens": [
+         "M391"
+        ]
+       }
+      ]
+     }
+    ],
+    "insertion-deletion": [
+     {
+      "mayig_object_id": "M-37",
+      "holdat_key": "M-0512",
+      "tier": "NEAR-REV",
+      "mapped_mayig_sequence": [
+       "M211",
+       "M059",
+       "M171"
+      ],
+      "holdat_sequence": [
+       "M059",
+       "M211"
+      ],
+      "aligned_holdat_sequence": [
+       "M211",
+       "M059"
+      ],
+      "blocks": [
+       {
+        "class": "insertion-deletion",
+        "p": 1,
+        "q": 0,
+        "n_tokens": 1,
+        "a_tokens": [
+         "M171"
+        ],
+        "b_tokens": []
+       }
+      ]
+     },
+     {
+      "mayig_object_id": "M-87",
+      "holdat_key": "H-0262",
+      "tier": "NEAR-REV",
+      "mapped_mayig_sequence": [
+       "M176",
+       "M304",
+       "M041"
+      ],
+      "holdat_sequence": [
+       "M041",
+       "M176"
+      ],
+      "aligned_holdat_sequence": [
+       "M176",
+       "M041"
+      ],
+      "blocks": [
+       {
+        "class": "insertion-deletion",
+        "p": 1,
+        "q": 0,
+        "n_tokens": 1,
+        "a_tokens": [
+         "M304"
+        ],
+        "b_tokens": []
+       }
+      ]
+     }
+    ]
+   },
+   "matched_object_tv": {
+    "records": [
+     {
+      "parpola_id": "P011",
+      "mahadevan_id": "M017",
+      "mayig_n": 0,
+      "holdat_n_restricted": 0,
+      "judgeable_under_control": false,
+      "tv": null,
+      "w1": null
+     },
+     {
+      "parpola_id": "P013",
+      "mahadevan_id": "M001",
+      "mayig_n": 0,
+      "holdat_n_restricted": 0,
+      "judgeable_under_control": false,
+      "tv": null,
+      "w1": null
+     },
+     {
+      "parpola_id": "P050",
+      "mahadevan_id": "M059",
+      "mayig_n": 2,
+      "holdat_n_restricted": 2,
+      "judgeable_under_control": true,
+      "tv": 0.5,
+      "w1": 0.5
+     },
+     {
+      "parpola_id": "P056",
+      "mahadevan_id": "M070",
+      "mayig_n": 0,
+      "holdat_n_restricted": 0,
+      "judgeable_under_control": false,
+      "tv": null,
+      "w1": null
+     },
+     {
+      "parpola_id": "P058",
+      "mahadevan_id": "M072",
+      "mayig_n": 0,
+      "holdat_n_restricted": 0,
+      "judgeable_under_control": false,
+      "tv": null,
+      "w1": null
+     },
+     {
+      "parpola_id": "P060",
+      "mahadevan_id": "M065",
+      "mayig_n": 0,
+      "holdat_n_restricted": 0,
+      "judgeable_under_control": false,
+      "tv": null,
+      "w1": null
+     },
+     {
+      "parpola_id": "P062",
+      "mahadevan_id": "M067",
+      "mayig_n": 0,
+      "holdat_n_restricted": 0,
+      "judgeable_under_control": false,
+      "tv": null,
+      "w1": null
+     },
+     {
+      "parpola_id": "P073",
+      "mahadevan_id": "M051",
+      "mayig_n": 0,
+      "holdat_n_restricted": 0,
+      "judgeable_under_control": false,
+      "tv": null,
+      "w1": null
+     },
+     {
+      "parpola_id": "P145",
+      "mahadevan_id": "M087",
+      "mayig_n": 1,
+      "holdat_n_restricted": 1,
+      "judgeable_under_control": true,
+      "tv": 0.0,
+      "w1": 0.0
+     },
+     {
+      "parpola_id": "P147",
+      "mahadevan_id": "M089",
+      "mayig_n": 0,
+      "holdat_n_restricted": 0,
+      "judgeable_under_control": false,
+      "tv": null,
+      "w1": null
+     },
+     {
+      "parpola_id": "P194",
+      "mahadevan_id": "M048",
+      "mayig_n": 0,
+      "holdat_n_restricted": 0,
+      "judgeable_under_control": false,
+      "tv": null,
+      "w1": null
+     },
+     {
+      "parpola_id": "P217",
+      "mahadevan_id": "M211",
+      "mayig_n": 1,
+      "holdat_n_restricted": 1,
+      "judgeable_under_control": true,
+      "tv": 1.0,
+      "w1": 2.0
+     },
+     {
+      "parpola_id": "P316",
+      "mahadevan_id": "M336",
+      "mayig_n": 0,
+      "holdat_n_restricted": 0,
+      "judgeable_under_control": false,
+      "tv": null,
+      "w1": null
+     },
+     {
+      "parpola_id": "P324",
+      "mahadevan_id": "M342",
+      "mayig_n": 2,
+      "holdat_n_restricted": 2,
+      "judgeable_under_control": true,
+      "tv": 0.5,
+      "w1": 1.0
+     },
+     {
+      "parpola_id": "P378",
+      "mahadevan_id": "M391",
+      "mayig_n": 0,
+      "holdat_n_restricted": 1,
+      "judgeable_under_control": false,
+      "tv": null,
+      "w1": null
+     },
+     {
+      "parpola_id": "P385",
+      "mahadevan_id": "M267",
+      "mayig_n": 1,
+      "holdat_n_restricted": 1,
+      "judgeable_under_control": true,
+      "tv": 0.0,
+      "w1": 0.0
+     }
+    ],
+    "n_defined": 5,
+    "median_tv": null,
+    "median_tv_unthresholded": 0.5,
+    "estimable": false,
+    "status": "NOT ESTIMABLE",
+    "gate": "requires MATCHED >= 10 pairs AND >= 4 of the 16 judgeable pairs with defined matched TVs (spec 3.4)"
+   }
+  },
+  "b_reading_direction": {
+   "criterion": "an arm supports direction as a mechanism iff its median TV <= 0.131316 (Phase-127 matched-size noise band upper bound; band median 0.082613, 95% interval [0.046665, 0.131316])",
+   "framing": "Attribution diagnostics ONLY — not a re-score of Phase-125; no Phase-125 gate is applied to any Arm B number and the Phase-125 FAIL verdict stands untouched (spec 022 section 0).",
+   "b1_mayig_reversed": {
+    "median_tv": 0.582205,
+    "reduction_vs_observed": 0.054726,
+    "supports_direction": false,
+    "records": [
+     {
+      "parpola_id": "P011",
+      "mahadevan_id": "M017",
+      "mayig_n": 10,
+      "holdat_n_restricted": 18,
+      "judgeable_under_control": true,
+      "tv": 0.5,
+      "w1": 0.5
+     },
+     {
+      "parpola_id": "P013",
+      "mahadevan_id": "M001",
+      "mayig_n": 9,
+      "holdat_n_restricted": 14,
+      "judgeable_under_control": true,
+      "tv": 1.0,
+      "w1": 2.0
+     },
+     {
+      "parpola_id": "P050",
+      "mahadevan_id": "M059",
+      "mayig_n": 32,
+      "holdat_n_restricted": 222,
+      "judgeable_under_control": true,
+      "tv": 0.500282,
+      "w1": 0.500282
+     },
+     {
+      "parpola_id": "P056",
+      "mahadevan_id": "M070",
+      "mayig_n": 9,
+      "holdat_n_restricted": 17,
+      "judgeable_under_control": true,
+      "tv": 1.0,
+      "w1": 1.0
+     },
+     {
+      "parpola_id": "P058",
+      "mahadevan_id": "M072",
+      "mayig_n": 15,
+      "holdat_n_restricted": 12,
+      "judgeable_under_control": true,
+      "tv": 0.933333,
+      "w1": 0.933333
+     },
+     {
+      "parpola_id": "P060",
+      "mahadevan_id": "M065",
+      "mayig_n": 20,
+      "holdat_n_restricted": 154,
+      "judgeable_under_control": true,
+      "tv": 0.729221,
+      "w1": 0.729221
+     },
+     {
+      "parpola_id": "P062",
+      "mahadevan_id": "M067",
+      "mayig_n": 21,
+      "holdat_n_restricted": 15,
+      "judgeable_under_control": true,
+      "tv": 1.0,
+      "w1": 1.0
+     },
+     {
+      "parpola_id": "P073",
+      "mahadevan_id": "M051",
+      "mayig_n": 8,
+      "holdat_n_restricted": 163,
+      "judgeable_under_control": true,
+      "tv": 0.592791,
+      "w1": 0.592791
+     },
+     {
+      "parpola_id": "P145",
+      "mahadevan_id": "M087",
+      "mayig_n": 27,
+      "holdat_n_restricted": 130,
+      "judgeable_under_control": true,
+      "tv": 0.484615,
+      "w1": 0.525071
+     },
+     {
+      "parpola_id": "P147",
+      "mahadevan_id": "M089",
+      "mayig_n": 14,
+      "holdat_n_restricted": 171,
+      "judgeable_under_control": true,
+      "tv": 0.395155,
+      "w1": 0.395155
+     },
+     {
+      "parpola_id": "P194",
+      "mahadevan_id": "M048",
+      "mayig_n": 8,
+      "holdat_n_restricted": 157,
+      "judgeable_under_control": true,
+      "tv": 0.531051,
+      "w1": 0.531051
+     },
+     {
+      "parpola_id": "P217",
+      "mahadevan_id": "M211",
+      "mayig_n": 18,
+      "holdat_n_restricted": 249,
+      "judgeable_under_control": true,
+      "tv": 0.57162,
+      "w1": 0.57162
+     },
+     {
+      "parpola_id": "P316",
+      "mahadevan_id": "M336",
+      "mayig_n": 19,
+      "holdat_n_restricted": 161,
+      "judgeable_under_control": true,
+      "tv": 0.419418,
+      "w1": 0.443936
+     },
+     {
+      "parpola_id": "P324",
+      "mahadevan_id": "M342",
+      "mayig_n": 99,
+      "holdat_n_restricted": 584,
+      "judgeable_under_control": true,
+      "tv": 0.657915,
+      "w1": 0.668362
+     },
+     {
+      "parpola_id": "P378",
+      "mahadevan_id": "M391",
+      "mayig_n": 17,
+      "holdat_n_restricted": 193,
+      "judgeable_under_control": true,
+      "tv": 0.474246,
+      "w1": 0.667479
+     },
+     {
+      "parpola_id": "P385",
+      "mahadevan_id": "M267",
+      "mayig_n": 35,
+      "holdat_n_restricted": 400,
+      "judgeable_under_control": true,
+      "tv": 0.786071,
+      "w1": 0.933571
+     }
+    ]
+   },
+   "b2_holdat_reversed": {
+    "median_tv": 0.582205,
+    "reduction_vs_observed": 0.054726,
+    "supports_direction": false,
+    "records": [
+     {
+      "parpola_id": "P011",
+      "mahadevan_id": "M017",
+      "mayig_n": 10,
+      "holdat_n_restricted": 18,
+      "judgeable_under_control": true,
+      "tv": 0.5,
+      "w1": 0.5
+     },
+     {
+      "parpola_id": "P013",
+      "mahadevan_id": "M001",
+      "mayig_n": 9,
+      "holdat_n_restricted": 14,
+      "judgeable_under_control": true,
+      "tv": 1.0,
+      "w1": 2.0
+     },
+     {
+      "parpola_id": "P050",
+      "mahadevan_id": "M059",
+      "mayig_n": 32,
+      "holdat_n_restricted": 222,
+      "judgeable_under_control": true,
+      "tv": 0.500282,
+      "w1": 0.500282
+     },
+     {
+      "parpola_id": "P056",
+      "mahadevan_id": "M070",
+      "mayig_n": 9,
+      "holdat_n_restricted": 17,
+      "judgeable_under_control": true,
+      "tv": 1.0,
+      "w1": 1.0
+     },
+     {
+      "parpola_id": "P058",
+      "mahadevan_id": "M072",
+      "mayig_n": 15,
+      "holdat_n_restricted": 12,
+      "judgeable_under_control": true,
+      "tv": 0.933333,
+      "w1": 0.933333
+     },
+     {
+      "parpola_id": "P060",
+      "mahadevan_id": "M065",
+      "mayig_n": 20,
+      "holdat_n_restricted": 154,
+      "judgeable_under_control": true,
+      "tv": 0.729221,
+      "w1": 0.729221
+     },
+     {
+      "parpola_id": "P062",
+      "mahadevan_id": "M067",
+      "mayig_n": 21,
+      "holdat_n_restricted": 15,
+      "judgeable_under_control": true,
+      "tv": 1.0,
+      "w1": 1.0
+     },
+     {
+      "parpola_id": "P073",
+      "mahadevan_id": "M051",
+      "mayig_n": 8,
+      "holdat_n_restricted": 163,
+      "judgeable_under_control": true,
+      "tv": 0.592791,
+      "w1": 0.592791
+     },
+     {
+      "parpola_id": "P145",
+      "mahadevan_id": "M087",
+      "mayig_n": 27,
+      "holdat_n_restricted": 130,
+      "judgeable_under_control": true,
+      "tv": 0.484615,
+      "w1": 0.525071
+     },
+     {
+      "parpola_id": "P147",
+      "mahadevan_id": "M089",
+      "mayig_n": 14,
+      "holdat_n_restricted": 171,
+      "judgeable_under_control": true,
+      "tv": 0.395155,
+      "w1": 0.395155
+     },
+     {
+      "parpola_id": "P194",
+      "mahadevan_id": "M048",
+      "mayig_n": 8,
+      "holdat_n_restricted": 157,
+      "judgeable_under_control": true,
+      "tv": 0.531051,
+      "w1": 0.531051
+     },
+     {
+      "parpola_id": "P217",
+      "mahadevan_id": "M211",
+      "mayig_n": 18,
+      "holdat_n_restricted": 249,
+      "judgeable_under_control": true,
+      "tv": 0.57162,
+      "w1": 0.57162
+     },
+     {
+      "parpola_id": "P316",
+      "mahadevan_id": "M336",
+      "mayig_n": 19,
+      "holdat_n_restricted": 161,
+      "judgeable_under_control": true,
+      "tv": 0.419418,
+      "w1": 0.443936
+     },
+     {
+      "parpola_id": "P324",
+      "mahadevan_id": "M342",
+      "mayig_n": 99,
+      "holdat_n_restricted": 584,
+      "judgeable_under_control": true,
+      "tv": 0.657915,
+      "w1": 0.668362
+     },
+     {
+      "parpola_id": "P378",
+      "mahadevan_id": "M391",
+      "mayig_n": 17,
+      "holdat_n_restricted": 193,
+      "judgeable_under_control": true,
+      "tv": 0.474246,
+      "w1": 0.667479
+     },
+     {
+      "parpola_id": "P385",
+      "mahadevan_id": "M267",
+      "mayig_n": 35,
+      "holdat_n_restricted": 400,
+      "judgeable_under_control": true,
+      "tv": 0.786071,
+      "w1": 0.933571
+     }
+    ]
+   }
+  },
+  "c_stratification": {
+   "strata": {
+    "site": {
+     "Mohenjo-daro": {
+      "n_mayig_inscriptions": 179,
+      "n_holdat_inscriptions": 606,
+      "n_mayig_tokens": 1003,
+      "n_holdat_tokens": 2534,
+      "n_judgeable": 13,
+      "median_tv": 0.599138,
+      "median_tv_unthresholded": 0.599138,
+      "estimable": true,
+      "status": "ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 10,
+        "holdat_n_restricted": 9,
+        "judgeable_under_control": true,
+        "tv": 1.0,
+        "w1": 1.5
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 9,
+        "holdat_n_restricted": 6,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 32,
+        "holdat_n_restricted": 83,
+        "judgeable_under_control": true,
+        "tv": 0.426581,
+        "w1": 0.426581
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 9,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 15,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 20,
+        "holdat_n_restricted": 48,
+        "judgeable_under_control": true,
+        "tv": 0.783333,
+        "w1": 0.783333
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 21,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": true,
+        "tv": 1.0,
+        "w1": 1.0
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 8,
+        "holdat_n_restricted": 58,
+        "judgeable_under_control": true,
+        "tv": 0.599138,
+        "w1": 0.599138
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 27,
+        "holdat_n_restricted": 54,
+        "judgeable_under_control": true,
+        "tv": 0.462963,
+        "w1": 0.462963
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 14,
+        "holdat_n_restricted": 57,
+        "judgeable_under_control": true,
+        "tv": 0.365915,
+        "w1": 0.365915
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 8,
+        "holdat_n_restricted": 58,
+        "judgeable_under_control": true,
+        "tv": 0.478448,
+        "w1": 0.478448
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 18,
+        "holdat_n_restricted": 83,
+        "judgeable_under_control": true,
+        "tv": 0.705489,
+        "w1": 0.859438
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 19,
+        "holdat_n_restricted": 64,
+        "judgeable_under_control": true,
+        "tv": 0.379112,
+        "w1": 0.384868
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 99,
+        "holdat_n_restricted": 208,
+        "judgeable_under_control": true,
+        "tv": 0.758547,
+        "w1": 0.911908
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 17,
+        "holdat_n_restricted": 75,
+        "judgeable_under_control": true,
+        "tv": 0.321569,
+        "w1": 0.337255
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 35,
+        "holdat_n_restricted": 135,
+        "judgeable_under_control": true,
+        "tv": 0.702646,
+        "w1": 0.739683
+       }
+      ]
+     },
+     "Banawali": {
+      "n_mayig_inscriptions": 0,
+      "n_holdat_inscriptions": 60,
+      "n_mayig_tokens": 0,
+      "n_holdat_tokens": 255,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 9,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 3,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 9,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 0,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 0,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 0,
+        "holdat_n_restricted": 10,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 0,
+        "holdat_n_restricted": 6,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 0,
+        "holdat_n_restricted": 18,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 3,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 0,
+        "holdat_n_restricted": 17,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "Chanhu-daro": {
+      "n_mayig_inscriptions": 0,
+      "n_holdat_inscriptions": 78,
+      "n_mayig_tokens": 0,
+      "n_holdat_tokens": 310,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 7,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 6,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 0,
+        "holdat_n_restricted": 7,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 0,
+        "holdat_n_restricted": 9,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 3,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 0,
+        "holdat_n_restricted": 12,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 0,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 0,
+        "holdat_n_restricted": 20,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 10,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 0,
+        "holdat_n_restricted": 26,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "Dholavira": {
+      "n_mayig_inscriptions": 0,
+      "n_holdat_inscriptions": 106,
+      "n_mayig_tokens": 0,
+      "n_holdat_tokens": 439,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 18,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 12,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 12,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 0,
+        "holdat_n_restricted": 6,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 0,
+        "holdat_n_restricted": 15,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 0,
+        "holdat_n_restricted": 21,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 0,
+        "holdat_n_restricted": 10,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 0,
+        "holdat_n_restricted": 31,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 16,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 0,
+        "holdat_n_restricted": 23,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "Harappa": {
+      "n_mayig_inscriptions": 0,
+      "n_holdat_inscriptions": 492,
+      "n_mayig_tokens": 0,
+      "n_holdat_tokens": 2079,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 0,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 65,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 0,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 55,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 7,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 49,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 0,
+        "holdat_n_restricted": 38,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 0,
+        "holdat_n_restricted": 50,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 52,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 0,
+        "holdat_n_restricted": 76,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 0,
+        "holdat_n_restricted": 43,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 0,
+        "holdat_n_restricted": 186,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 52,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 0,
+        "holdat_n_restricted": 116,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "Kalibangan": {
+      "n_mayig_inscriptions": 0,
+      "n_holdat_inscriptions": 110,
+      "n_mayig_tokens": 0,
+      "n_holdat_tokens": 485,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 14,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 9,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 12,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 0,
+        "holdat_n_restricted": 11,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 0,
+        "holdat_n_restricted": 6,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 13,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 0,
+        "holdat_n_restricted": 16,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 0,
+        "holdat_n_restricted": 10,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 0,
+        "holdat_n_restricted": 41,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 10,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 0,
+        "holdat_n_restricted": 29,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "Lothal": {
+      "n_mayig_inscriptions": 0,
+      "n_holdat_inscriptions": 124,
+      "n_mayig_tokens": 0,
+      "n_holdat_tokens": 507,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 17,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 11,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 9,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 0,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 0,
+        "holdat_n_restricted": 11,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 13,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 0,
+        "holdat_n_restricted": 21,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 0,
+        "holdat_n_restricted": 7,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 0,
+        "holdat_n_restricted": 48,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 14,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 0,
+        "holdat_n_restricted": 29,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "Rakhigarhi": {
+      "n_mayig_inscriptions": 0,
+      "n_holdat_inscriptions": 33,
+      "n_mayig_tokens": 0,
+      "n_holdat_tokens": 136,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 2,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 6,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 3,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 0,
+        "holdat_n_restricted": 2,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 0,
+        "holdat_n_restricted": 7,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 2,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 0,
+        "holdat_n_restricted": 3,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 0,
+        "holdat_n_restricted": 3,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 0,
+        "holdat_n_restricted": 12,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 2,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 0,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "Surkotada": {
+      "n_mayig_inscriptions": 0,
+      "n_holdat_inscriptions": 61,
+      "n_mayig_tokens": 0,
+      "n_holdat_tokens": 257,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 0,
+        "holdat_n_restricted": 2,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 0,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 3,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 0,
+        "holdat_n_restricted": 7,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 0,
+        "holdat_n_restricted": 10,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 0,
+        "holdat_n_restricted": 20,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 11,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 0,
+        "holdat_n_restricted": 17,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     }
+    },
+    "object_type": {
+     "unicorn I": {
+      "n_mayig_inscriptions": 9,
+      "n_holdat_inscriptions": 514,
+      "n_mayig_tokens": 55,
+      "n_holdat_tokens": 2143,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 2,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 101,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 1,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 0,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 2,
+        "holdat_n_restricted": 44,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 2,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 1,
+        "holdat_n_restricted": 49,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 1,
+        "holdat_n_restricted": 39,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 2,
+        "holdat_n_restricted": 56,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 47,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 0,
+        "holdat_n_restricted": 74,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 3,
+        "holdat_n_restricted": 48,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 2,
+        "holdat_n_restricted": 184,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 1,
+        "holdat_n_restricted": 59,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 2,
+        "holdat_n_restricted": 147,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "unicorn II": {
+      "n_mayig_inscriptions": 19,
+      "n_holdat_inscriptions": 514,
+      "n_mayig_tokens": 121,
+      "n_holdat_tokens": 2143,
+      "n_judgeable": 1,
+      "median_tv": null,
+      "median_tv_unthresholded": 0.434783,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 1,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 3,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 4,
+        "holdat_n_restricted": 101,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 1,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 5,
+        "holdat_n_restricted": 44,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 3,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 49,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 2,
+        "holdat_n_restricted": 39,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 2,
+        "holdat_n_restricted": 56,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 2,
+        "holdat_n_restricted": 47,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 1,
+        "holdat_n_restricted": 74,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 1,
+        "holdat_n_restricted": 48,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 12,
+        "holdat_n_restricted": 184,
+        "judgeable_under_control": true,
+        "tv": 0.434783,
+        "w1": 0.532609
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 1,
+        "holdat_n_restricted": 59,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 6,
+        "holdat_n_restricted": 147,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "unicorn III": {
+      "n_mayig_inscriptions": 45,
+      "n_holdat_inscriptions": 514,
+      "n_mayig_tokens": 293,
+      "n_holdat_tokens": 2143,
+      "n_judgeable": 5,
+      "median_tv": 0.663366,
+      "median_tv_unthresholded": 0.663366,
+      "estimable": true,
+      "status": "ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 4,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 2,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 11,
+        "holdat_n_restricted": 101,
+        "judgeable_under_control": true,
+        "tv": 0.663366,
+        "w1": 0.663366
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 5,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 3,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 9,
+        "holdat_n_restricted": 44,
+        "judgeable_under_control": true,
+        "tv": 0.772727,
+        "w1": 0.772727
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 8,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 2,
+        "holdat_n_restricted": 49,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 11,
+        "holdat_n_restricted": 39,
+        "judgeable_under_control": true,
+        "tv": 0.51049,
+        "w1": 0.51049
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 4,
+        "holdat_n_restricted": 56,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 2,
+        "holdat_n_restricted": 47,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 5,
+        "holdat_n_restricted": 74,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 8,
+        "holdat_n_restricted": 48,
+        "judgeable_under_control": true,
+        "tv": 0.541667,
+        "w1": 0.541667
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 24,
+        "holdat_n_restricted": 184,
+        "judgeable_under_control": true,
+        "tv": 0.768116,
+        "w1": 0.824275
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 4,
+        "holdat_n_restricted": 59,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 6,
+        "holdat_n_restricted": 147,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "unicorn IV": {
+      "n_mayig_inscriptions": 96,
+      "n_holdat_inscriptions": 514,
+      "n_mayig_tokens": 504,
+      "n_holdat_tokens": 2143,
+      "n_judgeable": 6,
+      "median_tv": 0.628981,
+      "median_tv_unthresholded": 0.628981,
+      "estimable": true,
+      "status": "ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 3,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 3,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 17,
+        "holdat_n_restricted": 101,
+        "judgeable_under_control": true,
+        "tv": 0.604543,
+        "w1": 0.604543
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 3,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 10,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 4,
+        "holdat_n_restricted": 44,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 8,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 5,
+        "holdat_n_restricted": 49,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 13,
+        "holdat_n_restricted": 39,
+        "judgeable_under_control": true,
+        "tv": 0.538462,
+        "w1": 0.538462
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 6,
+        "holdat_n_restricted": 56,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 4,
+        "holdat_n_restricted": 47,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 10,
+        "holdat_n_restricted": 74,
+        "judgeable_under_control": true,
+        "tv": 0.759459,
+        "w1": 0.802703
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 7,
+        "holdat_n_restricted": 48,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 58,
+        "holdat_n_restricted": 184,
+        "judgeable_under_control": true,
+        "tv": 0.762369,
+        "w1": 0.860195
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 11,
+        "holdat_n_restricted": 59,
+        "judgeable_under_control": true,
+        "tv": 0.348228,
+        "w1": 0.50077
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 19,
+        "holdat_n_restricted": 147,
+        "judgeable_under_control": true,
+        "tv": 0.653419,
+        "w1": 0.769066
+       }
+      ]
+     },
+     "unicorn V": {
+      "n_mayig_inscriptions": 10,
+      "n_holdat_inscriptions": 514,
+      "n_mayig_tokens": 30,
+      "n_holdat_tokens": 2143,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 0,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 1,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 101,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 1,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 44,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 49,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 0,
+        "holdat_n_restricted": 39,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 0,
+        "holdat_n_restricted": 56,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 47,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 2,
+        "holdat_n_restricted": 74,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 0,
+        "holdat_n_restricted": 48,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 3,
+        "holdat_n_restricted": 184,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 59,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 2,
+        "holdat_n_restricted": 147,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "holdat_only:buffalo": {
+      "n_mayig_inscriptions": 0,
+      "n_holdat_inscriptions": 72,
+      "n_mayig_tokens": 0,
+      "n_holdat_tokens": 292,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 12,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 0,
+        "holdat_n_restricted": 7,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 0,
+        "holdat_n_restricted": 7,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 0,
+        "holdat_n_restricted": 11,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 0,
+        "holdat_n_restricted": 7,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 0,
+        "holdat_n_restricted": 31,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 6,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 0,
+        "holdat_n_restricted": 20,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "holdat_only:elephant": {
+      "n_mayig_inscriptions": 0,
+      "n_holdat_inscriptions": 200,
+      "n_mayig_tokens": 0,
+      "n_holdat_tokens": 859,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 29,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 14,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 22,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 0,
+        "holdat_n_restricted": 15,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 0,
+        "holdat_n_restricted": 21,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 20,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 0,
+        "holdat_n_restricted": 29,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 0,
+        "holdat_n_restricted": 17,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 0,
+        "holdat_n_restricted": 66,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 26,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 0,
+        "holdat_n_restricted": 43,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "holdat_only:geometric": {
+      "n_mayig_inscriptions": 0,
+      "n_holdat_inscriptions": 93,
+      "n_mayig_tokens": 0,
+      "n_holdat_tokens": 397,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 6,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 2,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 7,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 13,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 0,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 0,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 0,
+        "holdat_n_restricted": 9,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 0,
+        "holdat_n_restricted": 12,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 0,
+        "holdat_n_restricted": 27,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 10,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 0,
+        "holdat_n_restricted": 19,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "holdat_only:gharial": {
+      "n_mayig_inscriptions": 0,
+      "n_holdat_inscriptions": 64,
+      "n_mayig_tokens": 0,
+      "n_holdat_tokens": 276,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 2,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 7,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 0,
+        "holdat_n_restricted": 6,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 0,
+        "holdat_n_restricted": 7,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 0,
+        "holdat_n_restricted": 11,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 0,
+        "holdat_n_restricted": 6,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 0,
+        "holdat_n_restricted": 22,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 0,
+        "holdat_n_restricted": 16,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "holdat_only:rhinoceros": {
+      "n_mayig_inscriptions": 0,
+      "n_holdat_inscriptions": 170,
+      "n_mayig_tokens": 0,
+      "n_holdat_tokens": 726,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 0,
+        "holdat_n_restricted": 3,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 2,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 15,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 13,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 15,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 24,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 0,
+        "holdat_n_restricted": 13,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 0,
+        "holdat_n_restricted": 9,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 21,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 0,
+        "holdat_n_restricted": 31,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 0,
+        "holdat_n_restricted": 21,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 0,
+        "holdat_n_restricted": 76,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 19,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 0,
+        "holdat_n_restricted": 26,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "holdat_only:script only": {
+      "n_mayig_inscriptions": 0,
+      "n_holdat_inscriptions": 138,
+      "n_mayig_tokens": 0,
+      "n_holdat_tokens": 572,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 15,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 11,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 12,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 0,
+        "holdat_n_restricted": 13,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 0,
+        "holdat_n_restricted": 10,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 16,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 0,
+        "holdat_n_restricted": 16,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 0,
+        "holdat_n_restricted": 10,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 0,
+        "holdat_n_restricted": 46,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 15,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 0,
+        "holdat_n_restricted": 34,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "holdat_only:tiger": {
+      "n_mayig_inscriptions": 0,
+      "n_holdat_inscriptions": 72,
+      "n_mayig_tokens": 0,
+      "n_holdat_tokens": 323,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 0,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 7,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 12,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 7,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 0,
+        "holdat_n_restricted": 3,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 0,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 0,
+        "holdat_n_restricted": 19,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 0,
+        "holdat_n_restricted": 9,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 0,
+        "holdat_n_restricted": 30,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 13,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 0,
+        "holdat_n_restricted": 17,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "holdat_only:zebu bull": {
+      "n_mayig_inscriptions": 0,
+      "n_holdat_inscriptions": 347,
+      "n_mayig_tokens": 0,
+      "n_holdat_tokens": 1414,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 0,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 3,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 34,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 0,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 37,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 27,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 0,
+        "holdat_n_restricted": 29,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 0,
+        "holdat_n_restricted": 45,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 31,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 0,
+        "holdat_n_restricted": 49,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 0,
+        "holdat_n_restricted": 31,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 0,
+        "holdat_n_restricted": 102,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 37,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 0,
+        "holdat_n_restricted": 78,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     }
+    },
+    "text_length": {
+     "1": {
+      "n_mayig_inscriptions": 1,
+      "n_holdat_inscriptions": 0,
+      "n_mayig_tokens": 1,
+      "n_holdat_tokens": 0,
+      "n_judgeable": 0,
+      "median_tv": null,
+      "median_tv_unthresholded": null,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 0,
+        "holdat_n_restricted": 0,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "2-3": {
+      "n_mayig_inscriptions": 34,
+      "n_holdat_inscriptions": 599,
+      "n_mayig_tokens": 94,
+      "n_holdat_tokens": 1528,
+      "n_judgeable": 1,
+      "median_tv": null,
+      "median_tv_unthresholded": 0.855224,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 1,
+        "holdat_n_restricted": 9,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 0,
+        "holdat_n_restricted": 6,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 2,
+        "holdat_n_restricted": 55,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 0,
+        "holdat_n_restricted": 8,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 1,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 0,
+        "holdat_n_restricted": 52,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 0,
+        "holdat_n_restricted": 5,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 1,
+        "holdat_n_restricted": 40,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 2,
+        "holdat_n_restricted": 36,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 1,
+        "holdat_n_restricted": 46,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 1,
+        "holdat_n_restricted": 40,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 2,
+        "holdat_n_restricted": 46,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 2,
+        "holdat_n_restricted": 33,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 10,
+        "holdat_n_restricted": 67,
+        "judgeable_under_control": true,
+        "tv": 0.855224,
+        "w1": 1.138806
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 0,
+        "holdat_n_restricted": 42,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 5,
+        "holdat_n_restricted": 52,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       }
+      ]
+     },
+     "4-5": {
+      "n_mayig_inscriptions": 55,
+      "n_holdat_inscriptions": 745,
+      "n_mayig_tokens": 255,
+      "n_holdat_tokens": 3310,
+      "n_judgeable": 2,
+      "median_tv": null,
+      "median_tv_unthresholded": 0.761462,
+      "estimable": false,
+      "status": "NOT ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 2,
+        "holdat_n_restricted": 6,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 4,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 6,
+        "holdat_n_restricted": 108,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 1,
+        "holdat_n_restricted": 6,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 3,
+        "holdat_n_restricted": 7,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 4,
+        "holdat_n_restricted": 66,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 2,
+        "holdat_n_restricted": 6,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 2,
+        "holdat_n_restricted": 84,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 5,
+        "holdat_n_restricted": 63,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 2,
+        "holdat_n_restricted": 80,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 2,
+        "holdat_n_restricted": 68,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 7,
+        "holdat_n_restricted": 128,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 3,
+        "holdat_n_restricted": 85,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 24,
+        "holdat_n_restricted": 293,
+        "judgeable_under_control": true,
+        "tv": 0.722696,
+        "w1": 0.84215
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 4,
+        "holdat_n_restricted": 88,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 14,
+        "holdat_n_restricted": 187,
+        "judgeable_under_control": true,
+        "tv": 0.800229,
+        "w1": 0.826967
+       }
+      ]
+     },
+     "6+": {
+      "n_mayig_inscriptions": 89,
+      "n_holdat_inscriptions": 326,
+      "n_mayig_tokens": 653,
+      "n_holdat_tokens": 2164,
+      "n_judgeable": 9,
+      "median_tv": 0.512903,
+      "median_tv_unthresholded": 0.512903,
+      "estimable": true,
+      "status": "ESTIMABLE",
+      "records": [
+       {
+        "parpola_id": "P011",
+        "mahadevan_id": "M017",
+        "mayig_n": 7,
+        "holdat_n_restricted": 3,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P013",
+        "mahadevan_id": "M001",
+        "mayig_n": 5,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P050",
+        "mahadevan_id": "M059",
+        "mayig_n": 24,
+        "holdat_n_restricted": 59,
+        "judgeable_under_control": true,
+        "tv": 0.338983,
+        "w1": 0.338983
+       },
+       {
+        "parpola_id": "P056",
+        "mahadevan_id": "M070",
+        "mayig_n": 8,
+        "holdat_n_restricted": 3,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P058",
+        "mahadevan_id": "M072",
+        "mayig_n": 11,
+        "holdat_n_restricted": 1,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P060",
+        "mahadevan_id": "M065",
+        "mayig_n": 16,
+        "holdat_n_restricted": 36,
+        "judgeable_under_control": true,
+        "tv": 0.527778,
+        "w1": 0.527778
+       },
+       {
+        "parpola_id": "P062",
+        "mahadevan_id": "M067",
+        "mayig_n": 19,
+        "holdat_n_restricted": 4,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P073",
+        "mahadevan_id": "M051",
+        "mayig_n": 5,
+        "holdat_n_restricted": 39,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P145",
+        "mahadevan_id": "M087",
+        "mayig_n": 20,
+        "holdat_n_restricted": 31,
+        "judgeable_under_control": true,
+        "tv": 0.512903,
+        "w1": 0.512903
+       },
+       {
+        "parpola_id": "P147",
+        "mahadevan_id": "M089",
+        "mayig_n": 11,
+        "holdat_n_restricted": 45,
+        "judgeable_under_control": true,
+        "tv": 0.264646,
+        "w1": 0.264646
+       },
+       {
+        "parpola_id": "P194",
+        "mahadevan_id": "M048",
+        "mayig_n": 5,
+        "holdat_n_restricted": 49,
+        "judgeable_under_control": false,
+        "tv": null,
+        "w1": null
+       },
+       {
+        "parpola_id": "P217",
+        "mahadevan_id": "M211",
+        "mayig_n": 9,
+        "holdat_n_restricted": 75,
+        "judgeable_under_control": true,
+        "tv": 0.675556,
+        "w1": 0.675556
+       },
+       {
+        "parpola_id": "P316",
+        "mahadevan_id": "M336",
+        "mayig_n": 14,
+        "holdat_n_restricted": 43,
+        "judgeable_under_control": true,
+        "tv": 0.254153,
+        "w1": 0.254153
+       },
+       {
+        "parpola_id": "P324",
+        "mahadevan_id": "M342",
+        "mayig_n": 65,
+        "holdat_n_restricted": 224,
+        "judgeable_under_control": true,
+        "tv": 0.764766,
+        "w1": 0.82081
+       },
+       {
+        "parpola_id": "P378",
+        "mahadevan_id": "M391",
+        "mayig_n": 13,
+        "holdat_n_restricted": 63,
+        "judgeable_under_control": true,
+        "tv": 0.409035,
+        "w1": 0.4884
+       },
+       {
+        "parpola_id": "P385",
+        "mahadevan_id": "M267",
+        "mayig_n": 16,
+        "holdat_n_restricted": 161,
+        "judgeable_under_control": true,
+        "tv": 0.663043,
+        "w1": 0.687888
+       }
+      ]
+     }
+    }
+   },
+   "n_site_inconsistent_inscriptions": 0,
+   "n_iconography_inconsistent_inscriptions": 0,
+   "period": {
+    "status": "NOT ESTIMABLE",
+    "note": "Neither the mayig layer metadata nor the Holdat CSV carries a period / dating field; no period stratum is estimable in any cell and none is improvised from a proxy (spec 5.1)."
+   },
+   "composition_adjustment": {
+    "method": "Holdat per-sign profiles reweighted to the mayig text-length-bin composition (spec 5.2). Site adjustment is the site stratum itself (mayig is entirely Mohenjo-daro) and object-type adjustment is the unicorn stratum; neither is double-counted here.",
+    "weights_mayig_length_bins": {
+     "1": 0.005587,
+     "2-3": 0.189944,
+     "4-5": 0.307263,
+     "6+": 0.497207
+    },
+    "records": [
+     {
+      "parpola_id": "P011",
+      "mahadevan_id": "M017",
+      "mayig_n": 10,
+      "mayig_profile": [
+       0.0,
+       0.5,
+       0.5
+      ],
+      "adjusted_holdat_profile": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "coverage": 0.994413,
+      "bins_used": [
+       "2-3",
+       "4-5",
+       "6+"
+      ],
+      "included": true,
+      "tv": 1.0
+     },
+     {
+      "parpola_id": "P013",
+      "mahadevan_id": "M001",
+      "mayig_n": 9,
+      "mayig_profile": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "adjusted_holdat_profile": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "coverage": 0.994413,
+      "bins_used": [
+       "2-3",
+       "4-5",
+       "6+"
+      ],
+      "included": true,
+      "tv": 0.0
+     },
+     {
+      "parpola_id": "P050",
+      "mahadevan_id": "M059",
+      "mayig_n": 32,
+      "mayig_profile": [
+       0.03125,
+       0.96875,
+       0.0
+      ],
+      "adjusted_holdat_profile": [
+       0.18017,
+       0.523205,
+       0.296625
+      ],
+      "coverage": 0.994413,
+      "bins_used": [
+       "2-3",
+       "4-5",
+       "6+"
+      ],
+      "included": true,
+      "tv": 0.445545
+     },
+     {
+      "parpola_id": "P056",
+      "mahadevan_id": "M070",
+      "mayig_n": 9,
+      "mayig_profile": [
+       0.0,
+       1.0,
+       0.0
+      ],
+      "adjusted_holdat_profile": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "coverage": 0.994413,
+      "bins_used": [
+       "2-3",
+       "4-5",
+       "6+"
+      ],
+      "included": true,
+      "tv": 1.0
+     },
+     {
+      "parpola_id": "P058",
+      "mahadevan_id": "M072",
+      "mayig_n": 15,
+      "mayig_profile": [
+       0.0,
+       0.933333,
+       0.066667
+      ],
+      "adjusted_holdat_profile": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "coverage": 0.994413,
+      "bins_used": [
+       "2-3",
+       "4-5",
+       "6+"
+      ],
+      "included": true,
+      "tv": 1.0
+     },
+     {
+      "parpola_id": "P060",
+      "mahadevan_id": "M065",
+      "mayig_n": 20,
+      "mayig_profile": [
+       0.0,
+       0.95,
+       0.05
+      ],
+      "adjusted_holdat_profile": [
+       0.22089,
+       0.312674,
+       0.466436
+      ],
+      "coverage": 0.994413,
+      "bins_used": [
+       "2-3",
+       "4-5",
+       "6+"
+      ],
+      "included": true,
+      "tv": 0.637326
+     },
+     {
+      "parpola_id": "P062",
+      "mahadevan_id": "M067",
+      "mayig_n": 21,
+      "mayig_profile": [
+       0.0,
+       1.0,
+       0.0
+      ],
+      "adjusted_holdat_profile": [
+       1.0,
+       0.0,
+       0.0
+      ],
+      "coverage": 0.994413,
+      "bins_used": [
+       "2-3",
+       "4-5",
+       "6+"
+      ],
+      "included": true,
+      "tv": 1.0
+     },
+     {
+      "parpola_id": "P073",
+      "mahadevan_id": "M051",
+      "mayig_n": 8,
+      "mayig_profile": [
+       0.0,
+       0.875,
+       0.125
+      ],
+      "adjusted_holdat_profile": [
+       0.214636,
+       0.316578,
+       0.468786
+      ],
+      "coverage": 0.994413,
+      "bins_used": [
+       "2-3",
+       "4-5",
+       "6+"
+      ],
+      "included": true,
+      "tv": 0.558422
+     },
+     {
+      "parpola_id": "P145",
+      "mahadevan_id": "M087",
+      "mayig_n": 27,
+      "mayig_profile": [
+       0.0,
+       0.851852,
+       0.148148
+      ],
+      "adjusted_holdat_profile": [
+       0.093521,
+       0.398248,
+       0.508231
+      ],
+      "coverage": 0.994413,
+      "bins_used": [
+       "2-3",
+       "4-5",
+       "6+"
+      ],
+      "included": true,
+      "tv": 0.453604
+     },
+     {
+      "parpola_id": "P147",
+      "mahadevan_id": "M089",
+      "mayig_n": 14,
+      "mayig_profile": [
+       0.071429,
+       0.857143,
+       0.071429
+      ],
+      "adjusted_holdat_profile": [
+       0.074649,
+       0.518241,
+       0.40711
+      ],
+      "coverage": 0.994413,
+      "bins_used": [
+       "2-3",
+       "4-5",
+       "6+"
+      ],
+      "included": true,
+      "tv": 0.338902
+     },
+     {
+      "parpola_id": "P194",
+      "mahadevan_id": "M048",
+      "mayig_n": 8,
+      "mayig_profile": [
+       0.0,
+       0.875,
+       0.125
+      ],
+      "adjusted_holdat_profile": [
+       0.195274,
+       0.392999,
+       0.411727
+      ],
+      "coverage": 0.994413,
+      "bins_used": [
+       "2-3",
+       "4-5",
+       "6+"
+      ],
+      "included": true,
+      "tv": 0.482001
+     },
+     {
+      "parpola_id": "P217",
+      "mahadevan_id": "M211",
+      "mayig_n": 18,
+      "mayig_profile": [
+       0.777778,
+       0.111111,
+       0.111111
+      ],
+      "adjusted_holdat_profile": [
+       0.053895,
+       0.682146,
+       0.263959
+      ],
+      "coverage": 0.994413,
+      "bins_used": [
+       "2-3",
+       "4-5",
+       "6+"
+      ],
+      "included": true,
+      "tv": 0.723883
+     },
+     {
+      "parpola_id": "P316",
+      "mahadevan_id": "M336",
+      "mayig_n": 19,
+      "mayig_profile": [
+       0.052632,
+       0.842105,
+       0.105263
+      ],
+      "adjusted_holdat_profile": [
+       0.061709,
+       0.515052,
+       0.423239
+      ],
+      "coverage": 0.994413,
+      "bins_used": [
+       "2-3",
+       "4-5",
+       "6+"
+      ],
+      "included": true,
+      "tv": 0.327053
+     },
+     {
+      "parpola_id": "P324",
+      "mahadevan_id": "M342",
+      "mayig_n": 99,
+      "mayig_profile": [
+       0.777778,
+       0.212121,
+       0.010101
+      ],
+      "adjusted_holdat_profile": [
+       0.019221,
+       0.853987,
+       0.126792
+      ],
+      "coverage": 0.994413,
+      "bins_used": [
+       "2-3",
+       "4-5",
+       "6+"
+      ],
+      "included": true,
+      "tv": 0.758556
+     },
+     {
+      "parpola_id": "P378",
+      "mahadevan_id": "M391",
+      "mayig_n": 17,
+      "mayig_profile": [
+       0.117647,
+       0.294118,
+       0.588235
+      ],
+      "adjusted_holdat_profile": [
+       0.10663,
+       0.599251,
+       0.294119
+      ],
+      "coverage": 0.994413,
+      "bins_used": [
+       "2-3",
+       "4-5",
+       "6+"
+      ],
+      "included": true,
+      "tv": 0.305133
+     },
+     {
+      "parpola_id": "P385",
+      "mahadevan_id": "M267",
+      "mayig_n": 35,
+      "mayig_profile": [
+       0.0,
+       0.171429,
+       0.828571
+      ],
+      "adjusted_holdat_profile": [
+       0.05007,
+       0.789656,
+       0.160274
+      ],
+      "coverage": 0.994413,
+      "bins_used": [
+       "2-3",
+       "4-5",
+       "6+"
+      ],
+      "included": true,
+      "tv": 0.668298
+     }
+    ],
+    "n_included": 16,
+    "median_tv": 0.597874,
+    "median_tv_unthresholded": 0.597874,
+    "estimable": true,
+    "status": "ESTIMABLE"
+   }
+  },
+  "d_synthesis": {
+   "rows": {
+    "segmentation": {
+     "share": null,
+     "status": "NOT ESTIMABLE",
+     "basis": "Arm A difference-block tokens over the MATCHED set",
+     "estimator": "(split + merge block tokens) / all difference-block tokens"
+    },
+    "substitution": {
+     "share": null,
+     "status": "NOT ESTIMABLE",
+     "basis": "Arm A difference-block tokens over the MATCHED set",
+     "estimator": "substitution block tokens / all difference-block tokens"
+    },
+    "insertion_deletion": {
+     "share": null,
+     "status": "NOT ESTIMABLE",
+     "basis": "Arm A difference-block tokens over the MATCHED set",
+     "estimator": "indel block tokens / all difference-block tokens"
+    },
+    "order_direction": {
+     "share": 0.0,
+     "status": "ESTIMABLE",
+     "basis": "Arm B median-TV scale vs Phase-125 observed median TV",
+     "estimator": "(0.636931 - min supporting reversed median TV) / 0.636931, clipped [0,1]; 0.000 credited if neither arm meets the section-4 support criterion",
+     "supporting_arm": null,
+     "b1_median_tv": 0.582205,
+     "b2_median_tv": 0.582205,
+     "b1_reduction": 0.054726,
+     "b2_reduction": 0.054726
+    },
+    "composition": {
+     "share": 0.061321,
+     "status": "ESTIMABLE",
+     "basis": "Arm C length-composition-adjusted median TV",
+     "estimator": "(0.636931 - adjusted median TV) / 0.636931, clipped [0,1]",
+     "adjusted_median_tv": 0.597874
+    },
+    "matched_object_residual": {
+     "share": null,
+     "status": "NOT ESTIMABLE",
+     "basis": "Arm A matched-object median TV (persistence measure, not an explained share)",
+     "estimator": "matched-object median TV / 0.636931",
+     "matched_object_median_tv": null
+    }
+   },
+   "sum_credited_shares": 0.061321,
+   "residual_unexplained_share": 0.938679,
+   "overlap_note": "Order/direction and composition shares both act on the median-TV scale and may overlap; Arm A shares act on matched-pair token differences, a different denominator. Shares are not forced to sum to 100%; if credited shares exceed 1 the residual is 0 and the overlap is stated, never rescaled away."
+  }
+ },
+ "anchors_sha256_before": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+ "anchors_sha256_after": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+ "anchors_unchanged": true
+}

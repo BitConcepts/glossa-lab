@@ -2703,3 +2703,32 @@ was wrong. Skip counts vary by worktree environment
 (gitignored corpora presence). CI was 7/7 green. No other
 Phase-130 figure is affected. AI-assisted record (Muse
 Spark, Muse), owner-directed.
+
+## 2026-10-09 — Phase-131 (Spec 022): Source-of-Disagreement Attribution (cross-reference)
+
+Attribution diagnostics ONLY; Phase-125 FAIL —
+DISAGREEMENT is FINAL and unchanged; spec 020's NO
+stands untouched; no anchor changed (sha256 eccea6d5…
+unchanged). Spec 022 frozen first (b2ff5759). Arm A:
+no legitimate key join exists (S1 apparent namesakes
+179 / 0 validated — Holdat cisi_number is internal
+numbering; S2/S3 zero); content matcher matched 4 of
+32 eligible mayig inscriptions (NEAR 1, NEAR-REV 3;
+pair classes: substitution 2, insertion-deletion 2);
+matched-object TV NOT ESTIMABLE (matched 4 < 10).
+Arm B: B1 = B2 = median TV 0.582205 (arms coincide —
+TV is INITIAL↔TERMINAL-swap symmetric); neither meets
+the support criterion (≤ 0.131316, the Phase-127
+noise band's upper bound); direction share 0.000.
+Arm C: estimable strata — site Mohenjo-daro 0.599138
+(13 judgeable), unicorn III 0.663366 (5), unicorn IV
+0.628981 (6), length 6+ 0.512903 (9); all other strata
+and period NOT ESTIMABLE with counts; length-
+composition-adjusted median TV 0.597874 → composition
+share 0.061321. Arm D: segmentation / substitution /
+insertion-deletion / matched-object residual NOT
+ESTIMABLE; credited explained sum 0.061321; residual
+unexplained share 0.938679, stated plainly. Suite
+982/13/0; foundation 40/0/8. AI-assisted record (Muse
+Spark, Muse), owner-directed. Full entry: repo
+LEDGER.md, same date.

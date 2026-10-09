@@ -859,5 +859,79 @@
    }
   },
   "scope_note": "Extension added in v4.6.0. All pre-existing keys, including release_v4_3_0, release_v4_4_0, and release_v4_5_0, are unchanged; the decipherment validation results they record were not re-run for this release. Spec 024 and Phase-133 changed no anchor and no PRED verdict, and computed no association statistic."
+ },
+ "release_v4_7_0": {
+  "version": "4.7.0",
+  "date": "2026-10-09",
+  "note_file": "pierson_2026_indus_program_note_134_135_motif.md",
+  "repo": "BitConcepts/glossa-lab",
+  "repo_main_commit": "11e70c98",
+  "repo_main_commit_full": "11e70c9889c52fe8640b89365dbecb2aa65fb48f",
+  "anchors_file": "INDUS_FINAL_ANCHORS.json",
+  "anchors_sha256": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+  "backend_suite": {
+   "passed": 1026,
+   "skipped": 5,
+   "failed": 0,
+   "collected": 1031,
+   "run": "Run 2026-10-09 in the v4.7.0 release worktree at merged main 11e70c98 (canonical venv, corpora symlinked from the main checkout, CI configuration with GPU test files ignored): 1026 passed / 5 skipped / 0 failed in 185.63s.",
+   "ci": "GitHub CI on PR #112 merge commit 11e70c98: 7/7 checks green"
+  },
+  "foundation_check": {
+   "passed": 40,
+   "failed": 0,
+   "warnings": 8,
+   "run": "Run 2026-10-09 in the v4.7.0 release worktree at 11e70c98 (corpora symlinked): 40 checks passed, 0 failed, 8 warnings."
+  },
+  "phase_outcomes": {
+   "spec_024_stage1_combined_path": {
+    "owner_order": "Run the combined path \u2014 clarify the boundary, re-pilot fresh, freeze Stage 2(b) only if the gates pass, publish the combined record (Tristen Pierson, 2026-10-09)",
+    "clarification_freeze": "specs/024-evidence-integration/stage1-freeze-2.md (freeze commit dee4e5c2, committed before the Phase-135 frame was drawn): Rules B1\u2013B5 define only the ILLEGIBLE / SCRIPT_ONLY / GEOMETRIC boundary, distilled from the 16 adjudicated Phase-134 disagreements; the 12-code taxonomy, precedence rule, and all gate thresholds (proceed >= 0.85 and kappa >= 0.75; stop < 0.70 or kappa < 0.50) are unchanged by any amount"
+   },
+   "phase_134_motif_pilot": {
+    "build_pr": "#111 (merged c4a3ef4c)",
+    "frame": "100 objects, stratified site-group x object type from the frozen section 4.2 population (3,245 eligible); seed phase134-20261009; gold subset 20",
+    "exact_agreement": 0.84,
+    "cohens_kappa": 0.7885,
+    "n_disagreements": 16,
+    "illegible_involved_disagreements": "10 of 16",
+    "adjudication_outcomes": "pass A upheld 10, pass B upheld 6, neither 0",
+    "deviations": "D1: a completion handoff raced its own final writes; blinded top-up commissioned for 2 objects, caught by the metrics script's fail-loud duplicate check; original batch records govern, top-up excluded from every quantity; data impact none",
+    "gate_verdict": "MIDDLE BAND \u2014 proceed gate NOT MET (agreement arm, one object short), stop rule NOT FIRED"
+   },
+   "phase_135_motif_repilot": {
+    "build_pr": "#112 (merged 11e70c98)",
+    "frame": "100 entirely fresh objects (3,245 eligible minus the 100 Phase-134 frame objects = 3,145); seed phase135-20261009; overlap with the Phase-134 frame = 0, asserted at draw time and verified independently; gold subset 20; 210 crops, 0 prep failures, no replacements",
+    "codebook": "frozen section 4.3 taxonomy plus the freeze-2 clarification (Rules B1\u2013B5) \u2014 the worked examples were the only Phase-134 material issued to coders",
+    "exact_agreement": 0.78,
+    "cohens_kappa": 0.712868702688593,
+    "expected_agreement_pe": 0.2338,
+    "n_disagreements": 22,
+    "illegible_involved_disagreements": "12 of 22",
+    "adjudication_outcomes": "pass A upheld 16, pass B upheld 6, neither 0",
+    "gold_drift": {
+     "A-B": 0.75,
+     "A-G": 0.9,
+     "B-G": 0.75,
+     "unanimous": 0.75
+    },
+    "illegible_marginals": {
+     "phase_134_pass_a": 27,
+     "phase_134_pass_b": 23,
+     "phase_135_pass_a": 14,
+     "phase_135_pass_b": 12
+    },
+    "illegible_per_category_agreement": {
+     "phase_134": 0.667,
+     "phase_135": 0.368
+    },
+    "deviations": "none",
+    "gate_verdict": "MIDDLE BAND (second time) \u2014 proceed gate NOT MET (both arms), stop rule NOT FIRED",
+    "branch_taken": "per stage1-freeze-2.md section 5, the middle-band branch: no Stage 2(b) design is drafted; the owner's decision is framed in reports/phase135_pilot_report.md section 8 without a recommendation dressed as a verdict"
+   },
+   "dataset_publication": "PUBLISHED with this release (v4.7.0) under CC BY 4.0 per the owner's combined-path approval \u2014 phase134_pilot_dataset.json + meta and phase135_pilot_dataset.json + meta (both passes, gold coding, adjudicated codes, full disagreement logs; codes and notes only, NO images). Phase-134's freeze-time non-authorization of beyond-repo publication was superseded by that approval; the disposition history is recorded in the Phase-134 dataset meta."
+  },
+  "scope_note": "Extension added in v4.7.0. All pre-existing keys, including release_v4_3_0 through release_v4_6_0, are unchanged; the decipherment validation results they record were not re-run for this release. Spec 024 Stages 1\u20131b changed no anchor and no PRED verdict, and computed no association statistic."
  }
+
 }

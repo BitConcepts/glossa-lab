@@ -2647,3 +2647,22 @@ anchor changed; anchors sha256 eccea6d5… unchanged. Suite
 (Muse Spark, Muse), owner-directed.
 
 ## 2026-10-08 — CORRECTION (append-only, cross-reference): Phase-127's recorded suite count 901/12 reconciles to a verified local re-run of 900 passed / 13 skipped / 0 failed (total 913 in both) because the Holdat-dependent foundation-script test skips when the gitignored Holdat CSV copy is absent; CI was green — see the repo LEDGER.md correction entry of the same date.
+
+## 2026-10-08 — Release-integrity audit + hash gate (cross-reference)
+
+Cross-reference: repo LEDGER.md entry of the same date and
+`reports/release_integrity_audit_v420.md`. Verdict (i)
+staging error: Zenodo v4.2.0's deposited anchors file
+(sha256 841e9067…, record 23223655, created 2026-10-07)
+matches no committed version (0/70 in current history and
+in the pre-purge backup mirror); its parsed content is
+the 2026-05-27 commit bbecc1cd anchors state (605 anchors,
+400 HIGH / 205 LOW) with CRLF line endings; the repo file
+had been eccea6d5… since Phase-110 Part B (2026-10-06).
+v4.3.0 deposits the correct eccea6d5… file. Remedy shipped:
+`backend/scripts/release_gate.py` + mandatory step in
+`docs/RELEASE_CHECKLIST.md`; 7 new tests; suite 910/6/0 in
+a fresh worktree (908→915 collected); foundation 40/0/8.
+No anchor changed (sha256 eccea6d5… unchanged); no deposit
+edited, no new Zenodo release. AI-assisted record (Muse
+Spark, Muse), owner-directed.

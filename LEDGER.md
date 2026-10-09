@@ -2166,3 +2166,61 @@ the verified local re-run without that copy was 900 passed /
 foundation-script test skips when the gitignored Holdat CSV
 copy is absent. Total is 913 in both counts; CI was green.
 No other Phase-127 figure is affected.
+
+## 2026-10-08 — Release-integrity audit (Zenodo v4.2.0) + release hash gate (owner-ordered program WS3)
+
+Audit (`reports/release_integrity_audit_v420.md`): verdict
+(i) STAGING ERROR. From the Zenodo records themselves
+(API via the custom.zenodo route): v4.2.0 = record 23223655,
+DOI 10.5281/zenodo.23223655, created 2026-10-07T22:12:48Z
+(publication_date 2026-10-07 — correcting the program
+record's 2026-10-08); its deposited
+`INDUS_FINAL_ANCHORS.json` is 391,969 bytes, record MD5
+b6eb0823…, downloaded sha256 841e9067…. v4.3.0 (record
+23250395, created 2026-10-08T23:25:25Z) deposits
+eccea6d5…, byte-identical to the repo file. Git history:
+70 distinct content versions of the anchors file on
+mainline in BOTH the current history and the pre-purge
+backup mirror (identical sets); 841e9067… matches 0/70 in
+either, and no blob of size 391,969 exists in either
+object store. The deposited file's parsed JSON is exactly
+commit bbecc1cd (2026-05-27, "AUDIT: Revert Phase 312 kol
+mass-assignment"; backup twin f302fa68; sha256 569e51a7…,
+605 anchors, 400 HIGH / 205 LOW); its only byte
+difference from that commit is CRLF line endings (6,054
+CRLF, 0 bare LF; LF-normalised sha256 = 569e51a7… exactly)
+— a stale Windows working-tree copy, not a git blob. That
+content left the repo 2026-06-05; eccea6d5… was
+established 2026-10-06 11:46 UTC by Phase-110 Part B
+(0ce70794), over a day before the deposit. Verdict (ii)
+is falsified (no post-deposit — indeed no post-2026-10-06
+— changing commit); no deposit was edited and no new
+release was made.
+
+Gate: `backend/scripts/release_gate.py` (offline,
+stdlib-only) — manifest (JSON/YAML) maps each deposit
+filename to a repo source or an explicit external-source
+note; hashes staged + source on raw bytes, prints a
+per-file MATCH/MISMATCH/MISSING/EXTERNAL table, exits
+non-zero on any mismatch/missing (2 on malformed
+manifest). `docs/RELEASE_CHECKLIST.md` makes the gate a
+mandatory blocking step, incl. recording the gate output
+into the release record per RELEASE_VALIDATION practice
+and post-deposit provider-checksum confirmation. Tests:
+7 new in `backend/tests/test_release_gate.py` (matching
+set passes; one-byte mutation fails; missing source
+fails; missing staged fails; external-source entry as
+specified; malformed manifest exit 2; CRLF drift fails).
+Verification: full backend suite in a fresh worktree
+908 collected at origin/main baseline → 915 with this
+work; run 910 passed / 6 skipped / 0 failed (skip/pass
+split differs from the main-checkout baseline because
+the gitignored corpora are absent, as in CI); foundation
+check 40 passed / 0 failed / 8 warnings (baseline
+unchanged, run with the Holdat copy linked in); ruff
+clean on new files. Anchors file byte-identical
+before/after (sha256 eccea6d5…, asserted).
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.

@@ -1,0 +1,4196 @@
+{
+  "schema_version": "1.0",
+  "dataset_name": "phase132_keyed_transcription_pilot_v1",
+  "source": "CISI Vols. 1–2 plate photographs, local research copies (corpora/downloads/cisi_image_layer)",
+  "source_class": "image_transcription",
+  "license_basis": "Transcription facts (sign sequences + printed metadata) produced by this program from in-copyright local research copies of CISI Vol. 1 (Joshi & Parpola 1987) and Vol. 2 (Shah & Parpola 1991); dataset published CC BY 4.0 per owner adjudication 2026-10-09 (spec 023 §11 ask 4); plate images are never published.",
+  "acquisition_date": "2026-10-09",
+  "compiler": "Glossa Lab Phase-132 (spec 023)",
+  "text_rule": "Impression-primary orientation (spec 023 §5.1, owner value at freeze); seal-face sequence is the derived reversal.",
+  "unit_rule": "One record per CISI object (volume-scoped printed ID); multi-face objects concatenate inscribed faces in A-then-B order with per-token photo attribution.",
+  "upstream_lineage": {
+    "derived_from": "Original transcription from CISI plate photographs",
+    "is_derivation_input": false,
+    "notes": "Not derived from Holdat, ICIT, or the mayig layer; passes were blinded (spec 023 §5.5). Sign identifications use the published Mahadevan/Parpola lists (spec 023 §8 limits apply)."
+  },
+  "crosswalk": {
+    "version": "v1",
+    "path": "data/crosswalks/parpola_mahadevan_crosswalk_v1.json",
+    "sha256": "4e7559dfc2ced83c79440029a1b2749fe9d21eca7f6db3bf3b66f0cfa647dcbb"
+  },
+  "inscriptions": [
+    {
+      "inscription_id": "cisi:v1:M-3",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P320",
+        "P145",
+        "P212"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-3 a",
+          "m_id": "M341",
+          "p_id": "P320",
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P320",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P341",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "M-3 a",
+          "m_id": "M087",
+          "p_id": "P145",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P145",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P087",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "photo_key": "M-3 a",
+          "m_id": "M212",
+          "p_id": "P212",
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P212",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Lower corner of the seal is broken away below the animal motif; the inscription row at the top is intact and fully legible.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. n/a / PDF p. 38 / photos M-3 a",
+        "object_id": "M-3",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:M-3",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:M-21",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P091",
+        "UNMAPPED:M442",
+        "P294",
+        "P240",
+        "P145",
+        "P385"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-21 a",
+          "m_id": "M175",
+          "p_id": "P091",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P091",
+              "confidence": "high",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "M-21 a",
+          "m_id": "M442",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": true,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "M-21 a",
+          "m_id": "M203",
+          "p_id": "P294",
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P294",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P203",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 4,
+          "photo_key": "M-21 a",
+          "m_id": "M137",
+          "p_id": "P240",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P240",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P137",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 5,
+          "photo_key": "M-21 a",
+          "m_id": "M087",
+          "p_id": "P145",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P145",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P087",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 6,
+          "photo_key": "M-21 a",
+          "m_id": "M267",
+          "p_id": "P385",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P385",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P267",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Inscription field intact; glyphs tightly packed and crowded at the right end, and the final diamond sign is overlapped at its lower point by the animal horn, but all six signs are discernible.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 13 / PDF p. 49 / photos M-21 a",
+        "object_id": "M-21",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:M-21",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:M-41",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P324",
+        "UNK",
+        "UNK",
+        "UNK",
+        "UNK",
+        "P086",
+        "UNK",
+        "P378"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-41 a",
+          "m_id": "M342",
+          "p_id": "P324",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P324",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P342",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "M-41 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "M-41 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 4,
+          "photo_key": "M-41 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 5,
+          "photo_key": "M-41 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 6,
+          "photo_key": "M-41 a",
+          "m_id": "M167",
+          "p_id": "P086",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P086",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P101",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P167",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 7,
+          "photo_key": "M-41 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 8,
+          "photo_key": "M-41 a",
+          "m_id": "M391",
+          "p_id": "P378",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P378",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P391",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Impression is light and worn with glyphs crowded together and partly overlapping; several middle glyphs are only partially legible. No glyph slot is wholly lost and no large piece of the seal appears missing.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 21 / PDF p. 57 / photos M-41 a",
+        "object_id": "M-41",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:M-41",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:M-58",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK",
+        "P215",
+        "UNMAPPED:M503",
+        "P119",
+        "UNMAPPED:M817"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-58 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 2,
+          "photo_key": "M-58 a",
+          "m_id": "M230",
+          "p_id": "P215",
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P215",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P230",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "photo_key": "M-58 a",
+          "m_id": "M503",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": true,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 4,
+          "photo_key": "M-58 a",
+          "m_id": "M099",
+          "p_id": "P119",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P119",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P122",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P099",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 5,
+          "photo_key": "M-58 a",
+          "m_id": "M817",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": true,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Left edge of the seal is rough/eroded beside the first sign and the animal, but the inscription row is complete and all five signs are discernible.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 27 / PDF p. 63 / photos M-58 a",
+        "object_id": "M-58",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:M-58",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:M-75",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P217",
+        "UNK",
+        "P123",
+        "P119",
+        "P382"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-75 a",
+          "m_id": "M211",
+          "p_id": "P217",
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P217",
+              "confidence": "high",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "M-75 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "M-75 a",
+          "m_id": "M102",
+          "p_id": "P123",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P123",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P102",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 4,
+          "photo_key": "M-75 a",
+          "m_id": "M099",
+          "p_id": "P119",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P119",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P122",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P099",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 5,
+          "photo_key": "M-75 a",
+          "m_id": "M382",
+          "p_id": "P382",
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P382",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Seal and inscription are well preserved; the last leaf/oval sign is partly overlapped at its lower tip by the animal horn.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 33 / PDF p. 69 / photos M-75 a",
+        "object_id": "M-75",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:M-75",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:M-93",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P004",
+        "P123",
+        "P245",
+        "P324",
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-93",
+          "m_id": "M015",
+          "p_id": "P004",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P004",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P015",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "M-93",
+          "m_id": "M102",
+          "p_id": "P123",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P123",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P102",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "photo_key": "M-93",
+          "m_id": "M141",
+          "p_id": "P245",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P245",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P141",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 4,
+          "photo_key": "M-93",
+          "m_id": "M342",
+          "p_id": "P324",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P324",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P342",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 5,
+          "photo_key": "M-93",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Impression photo (plate caption M-93 a; crop file carries no suffix) is blurry throughout and glyphs are crowded, especially at the left end; the seal-face photo M-93 A is also blurry. The inscription row appears complete.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 36 / PDF p. 72 / photos M-93",
+        "object_id": "M-93",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:M-93",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:M-110",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK",
+        "P184",
+        "P121",
+        "UNMAPPED:M817"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-110 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "trace",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 2,
+          "photo_key": "M-110 a",
+          "m_id": "M134",
+          "p_id": "P184",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P184",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P134",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "photo_key": "M-110 a",
+          "m_id": "M097",
+          "p_id": "P121",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P121",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P097",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 4,
+          "photo_key": "M-110 a",
+          "m_id": "M817",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": true,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": true,
+      "damage_notes": "Large diagonal break removes the upper part of the seal/impression and the tops of the inscription row; the text is visibly incomplete. A further small pointed fragment survives at the break edge between the single-stroke slot and the leaf sign, too damaged to tell what glyph stood there, so no token is recorded for it.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 39 / PDF p. 75 / photos M-110 a",
+        "object_id": "M-110",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:M-110",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:M-127",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P240",
+        "P310",
+        "UNK",
+        "P144",
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-127 a",
+          "m_id": "M137",
+          "p_id": "P240",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P240",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P137",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "M-127 a",
+          "m_id": "M328",
+          "p_id": "P310",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P310",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P328",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "photo_key": "M-127 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 4,
+          "photo_key": "M-127 a",
+          "m_id": "M086",
+          "p_id": "P144",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P144",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P086",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 5,
+          "photo_key": "M-127 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "trace",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": true,
+      "damage_notes": "Impression is faint and shallow across the whole row; the leftmost X is truncated at the photo edge and the right end of the row is obscured by the animal head/horn rising into the inscription area, so the text as photographed is incomplete.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 42 / PDF p. 78 / photos M-127 a",
+        "object_id": "M-127",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:M-127",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:M-144",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK",
+        "UNK",
+        "P092",
+        "UNK",
+        "P119",
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-144 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 2,
+          "photo_key": "M-144 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "M-144 a",
+          "m_id": "M171",
+          "p_id": "P092",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P092",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P171",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 4,
+          "photo_key": "M-144 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 5,
+          "photo_key": "M-144 a",
+          "m_id": "M099",
+          "p_id": "P119",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P119",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P122",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P099",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 6,
+          "photo_key": "M-144 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Seal and inscription are well preserved and deeply incised; the last leaf/oval sign is partly overlapped at its lower right by the animal horn.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 45 / PDF p. 81 / photos M-144 a",
+        "object_id": "M-144",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:M-144",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:M-162",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P283",
+        "UNK",
+        "UNK",
+        "P224",
+        "UNK",
+        "P123"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-162 a",
+          "m_id": "M127",
+          "p_id": "P283",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P283",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P127",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "M-162 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "M-162 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 4,
+          "photo_key": "M-162 a",
+          "m_id": "M214",
+          "p_id": "P224",
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P224",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P214",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 5,
+          "photo_key": "M-162 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 6,
+          "photo_key": "M-162 a",
+          "m_id": "M102",
+          "p_id": "P123",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P123",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P102",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Seal and inscription are generally well preserved; the right end of the row is overlapped by the animal horn and some glyph interiors are faint.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 49 / PDF p. 85 / photos M-162 a",
+        "object_id": "M-162",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:M-162",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v2:M-658",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK",
+        "UNK",
+        "P124",
+        "UNK",
+        "P125",
+        "P364"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-658 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 2,
+          "photo_key": "M-658 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "M-658 a",
+          "m_id": "M104",
+          "p_id": "P124",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P124",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P104",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 4,
+          "photo_key": "M-658 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 5,
+          "photo_key": "M-658 a",
+          "m_id": "M107",
+          "p_id": "P125",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P125",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P107",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 6,
+          "photo_key": "M-658 a",
+          "m_id": "M387",
+          "p_id": "P364",
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P364",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P387",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        }
+      ],
+      "partial": true,
+      "damage_notes": "Seal face chipped at lower right and upper right; in the impression the top-left is incomplete/pale and the far-left token is truncated at the edge. The text band is otherwise readable.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 28 / PDF p. 63 / photos M-658 a",
+        "object_id": "M-658",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:M-658",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:M-195",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK",
+        "P285",
+        "P144",
+        "P154",
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-195 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 2,
+          "photo_key": "M-195 a",
+          "m_id": "M195",
+          "p_id": "P285",
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P285",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P195",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "photo_key": "M-195 a",
+          "m_id": "M086",
+          "p_id": "P144",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P144",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P086",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 4,
+          "photo_key": "M-195 a",
+          "m_id": "M287",
+          "p_id": "P154",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P154",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P287",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 5,
+          "photo_key": "M-195 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": true,
+      "damage_notes": "Top-left corner of the impression is worn and the leftmost sign is truncated at the edge; the internal detail of the second sign is faint. The remaining signs are readable.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 53 / PDF p. 89 / photos M-195 a",
+        "object_id": "M-195",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:M-195",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:M-250",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P365",
+        "UNK",
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-250 a",
+          "m_id": "M388",
+          "p_id": "P365",
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P365",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P388",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "M-250 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "M-250 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": false,
+      "damage_notes": "No visible damage to the text band; the impression is complete.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 62 / PDF p. 98 / photos M-250 a",
+        "object_id": "M-250",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:M-250",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v2:M-819",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK",
+        "UNK",
+        "P224",
+        "UNMAPPED:M803",
+        "P119",
+        "UNMAPPED:M817"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-819 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 2,
+          "photo_key": "M-819 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "M-819 a",
+          "m_id": "M214",
+          "p_id": "P224",
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P224",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P214",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 4,
+          "photo_key": "M-819 a",
+          "m_id": "M803",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": true,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 5,
+          "photo_key": "M-819 a",
+          "m_id": "M099",
+          "p_id": "P119",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P119",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P122",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P099",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 6,
+          "photo_key": "M-819 a",
+          "m_id": "M817",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": true,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": false,
+      "damage_notes": "No visible damage to the text band; the inscription row is fully present and the impression complete, though relief is blurry in places. The unicorn motif below is not transcribed.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 71 / PDF p. 106 / photos M-819 a",
+        "object_id": "M-819",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:M-819",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:M-321",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNMAPPED:M615",
+        "UNMAPPED:M615",
+        "P372"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-321 a",
+          "m_id": "M615",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": true,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 2,
+          "photo_key": "M-321 a",
+          "m_id": "M615",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": true,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "M-321 a",
+          "m_id": "M379",
+          "p_id": "P372",
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P372",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P379",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Sides B and C bear only modern museum numbers, no inscription. The impression text band is complete and clear; the unicorn motif below the inscription is not transcribed.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 80 / PDF p. 116 / photos M-321 a",
+        "object_id": "M-321",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:M-321",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v2:M-926",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P144",
+        "P154",
+        "P375",
+        "P366",
+        "UNMAPPED:M812",
+        "P310",
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-926 a",
+          "m_id": "M086",
+          "p_id": "P144",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P144",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P086",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "M-926 a",
+          "m_id": "M287",
+          "p_id": "P154",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P154",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P287",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "photo_key": "M-926 a",
+          "m_id": "M384",
+          "p_id": "P375",
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P375",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P384",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 4,
+          "photo_key": "M-926 a",
+          "m_id": "M375",
+          "p_id": "P366",
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P366",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P375",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 5,
+          "photo_key": "M-926 a",
+          "m_id": "M812",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": true,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 6,
+          "photo_key": "M-926 a",
+          "m_id": "M328",
+          "p_id": "P310",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P310",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P328",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 7,
+          "photo_key": "M-926 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": false,
+      "damage_notes": "The rightmost text sign is partly overlapped by the unicorn horn motif; the rest of the text band is clear and the row is complete.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 89 / PDF p. 124 / photos M-926 a",
+        "object_id": "M-926",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:M-926",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v2:M-983",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P310",
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-983 A",
+          "m_id": "M328",
+          "p_id": "P310",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P310",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P328",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "M-983 A",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "trace",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": true,
+      "damage_notes": "No impression photo exists. The seal-face photograph is very dark and glossy; the top text band is largely obscured by glare and low contrast, with only the tall U and a stepped diagonal sign partly discernible. Sides B (boss) and C (edge) bear no inscription.",
+      "orientation_basis": "seal-face-mirrored",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 96 / PDF p. 131 / photos M-983 A",
+        "object_id": "M-983",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:M-983",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v2:M-1044",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P217",
+        "UNK",
+        "P145",
+        "UNK",
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-1044 a",
+          "m_id": "M211",
+          "p_id": "P217",
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P217",
+              "confidence": "high",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "M-1044 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "M-1044 a",
+          "m_id": "M087",
+          "p_id": "P145",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P145",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P087",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 4,
+          "photo_key": "M-1044 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 5,
+          "photo_key": "M-1044 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": true,
+      "damage_notes": "Seal is a broken triangular fragment with a diagonal break removing the right/lower-right portion; the text is incomplete. The animal motif below the text band is partly preserved.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 104 / PDF p. 139 / photos M-1044 a",
+        "object_id": "M-1044",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:M-1044",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:M-480",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK",
+        "P098",
+        "P013",
+        "P315",
+        "P123",
+        "UNK",
+        "P144",
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-480 A",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 2,
+          "photo_key": "M-480 A",
+          "m_id": "M176",
+          "p_id": "P098",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P098",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P176",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "photo_key": "M-480 A",
+          "m_id": "M001",
+          "p_id": "P013",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P013",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P001",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 4,
+          "photo_key": "M-480 A",
+          "m_id": "M365",
+          "p_id": "P315",
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P315",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P365",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 5,
+          "photo_key": "M-480 A",
+          "m_id": "M102",
+          "p_id": "P123",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P123",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P102",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 6,
+          "photo_key": "M-480 A",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 7,
+          "photo_key": "M-480 A",
+          "m_id": "M086",
+          "p_id": "P144",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P144",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P086",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 8,
+          "photo_key": "M-480 A",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": true,
+      "damage_notes": "Tablet surface worn and pitted, especially at the left end and centre; several signs only partial. Side B (and its impression b) carries a pictorial frieze of figures, trees and animals with no glyph row that can be segmented, so all tokens are from side A.",
+      "orientation_basis": "direct-object",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 115 / PDF p. 151 / photos M-480 A",
+        "object_id": "M-480",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:M-480",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Tablets"
+    },
+    {
+      "inscription_id": "cisi:v1:M-517",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK",
+        "UNK",
+        "UNK",
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-517 A",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 2,
+          "photo_key": "M-517 A",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "M-517 B",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 4,
+          "photo_key": "M-517 B",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "trace",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": true,
+      "damage_notes": "Incised copper tablet, heavily corroded on both faces (plate headed 'no icon., indistinct'). Only the central sign slots are discernible; the surrounding surfaces are too corroded to tell whether further glyphs stood there, so no further tokens are recorded. Sequence is side A tokens then side B tokens.",
+      "orientation_basis": "direct-object",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 130 / PDF p. 166 / photos M-517 A, M-517 B",
+        "object_id": "M-517",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:M-517",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Tablets"
+    },
+    {
+      "inscription_id": "cisi:v1:M-566",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [],
+      "tokens_detail": [],
+      "partial": true,
+      "damage_notes": "Heavily corroded/worn copper tablet. Side A appears blank with surface cracks and scratches and a modern museum number, no discernible glyph slot. Side B shows only very faint corrosion traces (curved mark upper left, Y-shaped light mark lower right) that cannot be identified as inscription glyphs; too damaged to tell if glyphs stood there, so no tokens are recorded.",
+      "orientation_basis": "direct-object",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 142 / PDF p. 178 / photos M-566 A, M-566 B",
+        "object_id": "M-566",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:M-566",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Tablets"
+    },
+    {
+      "inscription_id": "cisi:v2:M-1247",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P148"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-1247 a",
+          "m_id": "M148",
+          "p_id": "P148",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P148",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Surface is worn/granular and pitted overall, but the single motif filling the seal face is complete and clearly discernible. No separate inscription band and no other glyph slot.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 157 / PDF p. 192 / photos M-1247 a",
+        "object_id": "M-1247",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:M-1247",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v2:M-1352",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK",
+        "UNK",
+        "P310",
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-1352 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "trace",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 2,
+          "photo_key": "M-1352 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "M-1352 a",
+          "m_id": "M328",
+          "p_id": "P310",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P310",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P328",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 4,
+          "photo_key": "M-1352 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": true,
+      "damage_notes": "Seal and impression very heavily degraded/corroded: the left portion of the impression is dark and obscured, a large chunk of the seal face is spalled away, and glyph outlines are blurred and merged with corrosion throughout. Sides B and C bear no inscription. The text is visibly incomplete.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 174 / PDF p. 209 / photos M-1352 a",
+        "object_id": "M-1352",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:M-1352",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v2:M-1448",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK",
+        "P058",
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "M-1448 A",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 2,
+          "photo_key": "M-1448 A",
+          "m_id": "M072",
+          "p_id": "P058",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P058",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P072",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "photo_key": "M-1448 A",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Copper tablet, surface heavily mottled/corroded throughout, upper left corner chipped. Side B bears a deer/composite animal motif only, no inscription. Side A glyphs are incised and discernible but coarse.",
+      "orientation_basis": "direct-object",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 199 / PDF p. 234 / photos M-1448 A",
+        "object_id": "M-1448",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:M-1448",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Tablets"
+    },
+    {
+      "inscription_id": "cisi:v2:M-1542",
+      "site": "Mohenjo-Daro",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [],
+      "tokens_detail": [],
+      "partial": true,
+      "damage_notes": "Copper tablet very dark and heavily corroded/pitted on both faces; no discernible glyph slot on A or B (a faint small curl at the centre of face A cannot be identified as a glyph). Face B has a large pale corrosion patch at centre. Too damaged to tell if glyphs stood there, so no tokens are recorded.",
+      "orientation_basis": "direct-object",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 225 / PDF p. 260 / photos M-1542 A, M-1542 B",
+        "object_id": "M-1542",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:M-1542",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Tablets"
+    },
+    {
+      "inscription_id": "cisi:v1:H-66",
+      "site": "Harappa",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNMAPPED:M615",
+        "UNMAPPED:M615",
+        "P048",
+        "P282"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "H-66 a",
+          "m_id": "M615",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": true,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 2,
+          "photo_key": "H-66 a",
+          "m_id": "M615",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": true,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "H-66 a",
+          "m_id": "M075",
+          "p_id": "P048",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P048",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P075",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 4,
+          "photo_key": "H-66 a",
+          "m_id": "M170",
+          "p_id": "P282",
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P282",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P170",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Impression clear; the unicorn motif below the inscription row is not a glyph token. Seal face A is worn/darker but the impression was used for reading.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 184 / PDF p. 220 / photos H-66 a",
+        "object_id": "H-66",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:H-66",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:H-139",
+      "site": "Harappa",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P202",
+        "P385",
+        "P210"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "H-139 a",
+          "m_id": "M402",
+          "p_id": "P202",
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P202",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P402",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "H-139 a",
+          "m_id": "M267",
+          "p_id": "P385",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P385",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P267",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "photo_key": "H-139 a",
+          "m_id": "M204",
+          "p_id": "P210",
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P210",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P204",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Impression and seal face both very clear; no iconography and no visible damage to the inscription.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 200 / PDF p. 236 / photos H-139 a",
+        "object_id": "H-139",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:H-139",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:H-212",
+      "site": "Harappa",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK",
+        "UNK",
+        "UNK",
+        "UNK",
+        "UNK",
+        "P310"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "H-212 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 2,
+          "photo_key": "H-212 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "H-212 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 4,
+          "photo_key": "H-212 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 5,
+          "photo_key": "H-212 B",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 6,
+          "photo_key": "H-212 B",
+          "m_id": "M328",
+          "p_id": "P310",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P310",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P328",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Small tablet; photographs are soft/blurred throughout and glyph details on face A are merged and indistinct in both the face and impression photos. Faces A and B both bear text; face B was read as photographed after the A impression sequence.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 213 / PDF p. 249 / photos H-212 a, H-212 B",
+        "object_id": "H-212",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:H-212",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Tablets"
+    },
+    {
+      "inscription_id": "cisi:v1:H-305",
+      "site": "Harappa",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK",
+        "UNK",
+        "UNK",
+        "P144",
+        "P390",
+        "P144",
+        "P310"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "H-305 A",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 2,
+          "photo_key": "H-305 A",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "H-305 A",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 4,
+          "photo_key": "H-305 B",
+          "m_id": "M086",
+          "p_id": "P144",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P144",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P086",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 5,
+          "photo_key": "H-305 B",
+          "m_id": "M277",
+          "p_id": "P390",
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P390",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P277",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 6,
+          "photo_key": "H-305 B",
+          "m_id": "M086",
+          "p_id": "P144",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P144",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P086",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 7,
+          "photo_key": "H-305 B",
+          "m_id": "M328",
+          "p_id": "P310",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P310",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P328",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Incised tablet, both faces bear text (A sequence first, then B). Photographs are small and soft; several glyph details are blurred, especially on face A. A thin diagonal scratch crosses the lower part of face B. Both rows are complete.",
+      "orientation_basis": "direct-object",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 225 / PDF p. 261 / photos H-305 A, H-305 B",
+        "object_id": "H-305",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:H-305",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Tablets"
+    },
+    {
+      "inscription_id": "cisi:v2:H-271",
+      "site": "Harappa",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNMAPPED:M595",
+        "UNMAPPED:M420",
+        "UNMAPPED:M717",
+        "P327"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "H-271 a",
+          "m_id": "M595",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": true,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 2,
+          "photo_key": "H-271 a",
+          "m_id": "M420",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": true,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "H-271 a",
+          "m_id": "M717",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": true,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 4,
+          "photo_key": "H-271 a",
+          "m_id": "M345",
+          "p_id": "P327",
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P327",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P345",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Seal is broken: only the upper part bearing the inscription and the top of the unicorn motif at lower right survives. The inscription row itself is complete and very clear in the impression; a rough patch inside the lower interior of the third sign partly obscures its bottom.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 256 / PDF p. 291 / photos H-271 a",
+        "object_id": "H-271",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:H-271",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v2:H-451",
+      "site": "Harappa",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P296",
+        "UNK",
+        "P204"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "H-451 a",
+          "m_id": "M186",
+          "p_id": "P296",
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P296",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P186",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "H-451 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "H-451 a",
+          "m_id": "M124",
+          "p_id": "P204",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P204",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P124",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Seal surface worn, lower field and unicorn area abraded; the text row at the top is largely preserved, the rightmost token partly overlapped by the horn. No clearly lost glyph slot in the text row.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 276 / PDF p. 311 / photos H-451 a",
+        "object_id": "H-451",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:H-451",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v2:H-523",
+      "site": "Harappa",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P310",
+        "UNK",
+        "UNK",
+        "UNK",
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "H-523 a",
+          "m_id": "M328",
+          "p_id": "P310",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P310",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P328",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "H-523 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "H-523 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 4,
+          "photo_key": "H-523 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 5,
+          "photo_key": "H-523 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "trace",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": true,
+      "damage_notes": "Seal is a fragment, broken diagonally at the right and lower sides; the rightmost text area is truncated by the fracture and the animal field is incomplete. Middle strokes are abraded in the lower half.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 287 / PDF p. 322 / photos H-523 a",
+        "object_id": "H-523",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:H-523",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v2:H-596",
+      "site": "Harappa",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P147",
+        "P085"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "H-596 a bis",
+          "m_id": "M089",
+          "p_id": "P147",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P147",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P089",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "H-596 a bis",
+          "m_id": "M161",
+          "p_id": "P085",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P085",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P086",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P161",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        }
+      ],
+      "partial": true,
+      "damage_notes": "Small seal fragment with broken/trapezoidal edges and pitted surface; no animal field. Left and right margins truncated, inscription may be incomplete. Back side B shows no inscription.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 297 / PDF p. 332 / photos H-596 a bis",
+        "object_id": "H-596",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:H-596",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v2:H-669",
+      "site": "Harappa",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK",
+        "P256",
+        "P145"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "H-669 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 2,
+          "photo_key": "H-669 a",
+          "m_id": "M150",
+          "p_id": "P256",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P256",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P150",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "photo_key": "H-669 a",
+          "m_id": "M087",
+          "p_id": "P145",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P145",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P087",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Rectangular seal with no iconography; surface worn and impression blurry, left and middle glyphs only partially legible with forms merging into the background relief. The right double-stroke is clearest.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 310 / PDF p. 345 / photos H-669 a",
+        "object_id": "H-669",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:H-669",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v2:H-743",
+      "site": "Harappa",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P332",
+        "P332",
+        "UNK",
+        "P240",
+        "UNK",
+        "P310",
+        "P310"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "H-743 A",
+          "m_id": "M347",
+          "p_id": "P332",
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P332",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P347",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "H-743 A",
+          "m_id": "M347",
+          "p_id": "P332",
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P332",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P347",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "photo_key": "H-743 A",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 4,
+          "photo_key": "H-743 A",
+          "m_id": "M137",
+          "p_id": "P240",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P240",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P137",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 5,
+          "photo_key": "H-743 B",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 6,
+          "photo_key": "H-743 B",
+          "m_id": "M328",
+          "p_id": "P310",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P310",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P328",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 7,
+          "photo_key": "H-743 B",
+          "m_id": "M328",
+          "p_id": "P310",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P310",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P328",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Bas-relief tablet, both faces raised relief and generally complete; signs are thick and partly merged/abraded, several forms only partially legible. Face A's right edge is abraded, partly obscuring its last sign; face B's first sign is heavily worn. No iconography.",
+      "orientation_basis": "direct-object",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 322 / PDF p. 357 / photos H-743 A, H-743 B",
+        "object_id": "H-743",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:H-743",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Tablets"
+    },
+    {
+      "inscription_id": "cisi:v2:H-814",
+      "site": "Harappa",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK",
+        "UNK",
+        "UNK",
+        "P145",
+        "P310"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "H-814 A bis",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "trace",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 2,
+          "photo_key": "H-814 A bis",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "H-814 A bis",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 4,
+          "photo_key": "H-814 B",
+          "m_id": "M087",
+          "p_id": "P145",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P145",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P087",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 5,
+          "photo_key": "H-814 B",
+          "m_id": "M328",
+          "p_id": "P310",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P310",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P328",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        }
+      ],
+      "partial": true,
+      "damage_notes": "Bas-relief tablet; face A is dark and heavily worn in the main photo and readable only partially in the A bis view, its left end pointed/truncated, with some signs partly lost. Face B is light and clearer but worn.",
+      "orientation_basis": "direct-object",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 328 / PDF p. 363 / photos H-814 A bis, H-814 B",
+        "object_id": "H-814",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:H-814",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Tablets"
+    },
+    {
+      "inscription_id": "cisi:v2:H-886",
+      "site": "Harappa",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [],
+      "tokens_detail": [],
+      "partial": false,
+      "damage_notes": "No glyph inscription discernible on either face. Face A is a dark, worn tablet, apparently blank with only a faint central vertical trace. Face B shows only two widely spaced full-height vertical partition grooves dividing the face into panels, not glyph signs.",
+      "orientation_basis": "direct-object",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 337 / PDF p. 372 / photos H-886 A, H-886 B",
+        "object_id": "H-886",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:H-886",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Tablets"
+    },
+    {
+      "inscription_id": "cisi:v2:H-960",
+      "site": "Harappa",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P098",
+        "P315",
+        "UNK",
+        "P310",
+        "P147"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "H-960 A",
+          "m_id": "M176",
+          "p_id": "P098",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P098",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P176",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "H-960 A",
+          "m_id": "M365",
+          "p_id": "P315",
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P315",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P365",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "photo_key": "H-960 A",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 4,
+          "photo_key": "H-960 B",
+          "m_id": "M328",
+          "p_id": "P310",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P310",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P328",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 5,
+          "photo_key": "H-960 B",
+          "m_id": "M089",
+          "p_id": "P147",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P147",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P089",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Small incised tablet, both faces with coarse deep grooves, forms thick and partly merging; the right side of face A and the left side of face B are especially worn. No iconography.",
+      "orientation_basis": "direct-object",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 342 / PDF p. 377 / photos H-960 A, H-960 B",
+        "object_id": "H-960",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:H-960",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Tablets"
+    },
+    {
+      "inscription_id": "cisi:v2:Pk-24",
+      "site": "Harappa",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [],
+      "tokens_detail": [],
+      "partial": false,
+      "damage_notes": "Round post-Harappan seal face with a single geometric star/wheel design (central spoked circle surrounded by triangular star points) rather than a linear inscription row; surface heavily worn and mottled. No glyph slots are discernible.",
+      "orientation_basis": "seal-face-mirrored",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 382 / PDF p. 417 / photos Pk-24 A",
+        "object_id": "Pk-24",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:Pk-24",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v2:Skh-7",
+      "site": "Harappa",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "Skh-7 A",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": true,
+      "damage_notes": "Small triangular pottery shard fragment; no per-photo crop exists in the store (prep failure for photo Skh-7 A), so the object is read from the full plate page image only. The incised sign sits at the shard edge with its right side faint/lost; a few small dark pits/marks nearby are too ambiguous to count as a glyph slot.",
+      "orientation_basis": "direct-object",
+      "provenance": {
+        "source_reference": "CISI v2 printed p. 411 / PDF p. 446 / photos Skh-7 A",
+        "object_id": "Skh-7",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v2:Skh-7",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      }
+    },
+    {
+      "inscription_id": "cisi:v1:L-33",
+      "site": "Lothal",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P144",
+        "P230",
+        "P085"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "L-33 A",
+          "m_id": "M086",
+          "p_id": "P144",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P144",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P086",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "L-33 A",
+          "m_id": "M216",
+          "p_id": "P230",
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P230",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P234",
+              "confidence": "high",
+              "conflict": false
+            },
+            {
+              "parpola_id": "P216",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "photo_key": "L-33 A",
+          "m_id": "M161",
+          "p_id": "P085",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P085",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P086",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P161",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        }
+      ],
+      "partial": true,
+      "damage_notes": "Seal fragmentary and badly worn; the impression photo L-33 a shows only animal legs/body with no glyph field, so transcription is from the seal face alone (mirror-read into impression order). Seal-face glyphs are faint, the top and edges broken/truncated, and the left field largely blank/eroded; further glyphs may have stood in the lost portions.",
+      "orientation_basis": "seal-face-mirrored",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 246 / PDF p. 282 / photos L-33 A",
+        "object_id": "L-33",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:L-33",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:L-66",
+      "site": "Lothal",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P310",
+        "P145",
+        "UNK",
+        "UNK",
+        "UNK",
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "L-66 a",
+          "m_id": "M328",
+          "p_id": "P310",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P310",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P328",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "L-66 a",
+          "m_id": "M087",
+          "p_id": "P145",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P145",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P087",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "photo_key": "L-66 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 4,
+          "photo_key": "L-66 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 5,
+          "photo_key": "L-66 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 6,
+          "photo_key": "L-66 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": true,
+      "damage_notes": "Seal face and impression heavily worn; the top edge is broken and the right end of the inscription field is damaged/eroded beyond the last glyph, so it cannot be told whether a further glyph stood there. Seal face B is boss only; the small central rectangle on the side impression L-66 c is the boss/perforation impression, not a glyph.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 254 / PDF p. 290 / photos L-66 a",
+        "object_id": "L-66",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:L-66",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:L-98",
+      "site": "Lothal",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK",
+        "P324",
+        "P092",
+        "UNMAPPED:M519"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "L-98 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 2,
+          "photo_key": "L-98 a",
+          "m_id": "M324",
+          "p_id": "P324",
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P324",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "photo_key": "L-98 a",
+          "m_id": "M171",
+          "p_id": "P092",
+          "legibility": "clear",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P092",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P171",
+              "confidence": "low",
+              "conflict": false
+            }
+          ]
+        },
+        {
+          "position": 4,
+          "photo_key": "L-98 a",
+          "m_id": "M519",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": true,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Impression is crisp and complete for the main face; seal face A is dark and scratched but confirms the same slots in mirror. Back B bears only a modern painted number, no inscription. The extra frame photo keyed 'L-98' is a printed catalogue table, not an object view, and raises no key ambiguity.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 261 / PDF p. 297 / photos L-98 a",
+        "object_id": "L-98",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:L-98",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:L-132",
+      "site": "Lothal",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "L-132 A",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": true,
+      "damage_notes": "Rough, heavily eroded clay sealing fragment; most of the field is blank or abraded. A thick dark vertical groove at centre and a faint diagonal trace at left-centre may be glyph remains or damage, too damaged to tokenise. Top edge broken.",
+      "orientation_basis": "seal-face-mirrored",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 270 / PDF p. 306 / photos L-132 A",
+        "object_id": "L-132",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:L-132",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      }
+    },
+    {
+      "inscription_id": "cisi:v1:L-165",
+      "site": "Lothal",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P310",
+        "P378",
+        "UNK",
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "L-165 A",
+          "m_id": "M328",
+          "p_id": "P310",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P310",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P328",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "L-165 A",
+          "m_id": "M391",
+          "p_id": "P378",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P378",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P391",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 3,
+          "photo_key": "L-165 A",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 4,
+          "photo_key": "L-165 A",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Clay sealing broken below and to the left and the elephant below the inscription row is incomplete, but the rectangular inscription panel itself spans its frame and the row is complete within it. Interior of the large round glyph is worn. Surface of the sealing irregular.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 277 / PDF p. 313 / photos L-165 A",
+        "object_id": "L-165",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:L-165",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      }
+    },
+    {
+      "inscription_id": "cisi:v1:L-227",
+      "site": "Lothal",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "L-227 A",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "clear",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Graffito on a small potsherd fragment (plate headed GRAFFITI); sherd broken on all sides, surface mottled. The single incised glyph is complete and untruncated, with no cut glyph at the sherd edges; the rest of the sherd surface is blank/weathered.",
+      "orientation_basis": "direct-object",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 291 / PDF p. 327 / photos L-227 A",
+        "object_id": "L-227",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:L-227",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      }
+    },
+    {
+      "inscription_id": "cisi:v1:K-21",
+      "site": "Kalibangan",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [],
+      "tokens_detail": [],
+      "partial": true,
+      "damage_notes": "Seal broken diagonally; only a lower corner survives showing the animal body, legs and a manger-like object. The entire upper inscription field is broken away in both the face (K-21 A) and impression (K-21 a) photos; no glyph or glyph slot survives on either photo, so the object is untranscribable for text. Pass_b recorded an empty photos list where pass_a listed both photos; the ruled record lists both surviving photos.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 302 / PDF p. 338 / photos K-21 a, K-21 A",
+        "object_id": "K-21",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:K-21",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:K-42",
+      "site": "Kalibangan",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "K-42 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": true,
+      "damage_notes": "Seal has no inscription row; the animal fills the whole face and the face photo is heavily cracked and encrusted. A single sign stands in the field at the left side of the animal, partly cut at the impression's left edge; no other glyph-like marks are readable in face or impression.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 306 / PDF p. 342 / photos K-42 a",
+        "object_id": "K-42",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:K-42",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:K-63",
+      "site": "Kalibangan",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [
+        "P098",
+        "UNMAPPED:M705",
+        "UNK",
+        "UNK"
+      ],
+      "tokens_detail": [
+        {
+          "position": 1,
+          "photo_key": "K-63 a",
+          "m_id": "M176",
+          "p_id": "P098",
+          "legibility": "partial",
+          "crosswalk_conflict": true,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": [
+            {
+              "parpola_id": "P098",
+              "confidence": "high",
+              "conflict": true
+            },
+            {
+              "parpola_id": "P176",
+              "confidence": "low",
+              "conflict": true
+            }
+          ]
+        },
+        {
+          "position": 2,
+          "photo_key": "K-63 a",
+          "m_id": "M705",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": true,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 3,
+          "photo_key": "K-63 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        },
+        {
+          "position": 4,
+          "photo_key": "K-63 a",
+          "m_id": "UNK",
+          "p_id": null,
+          "legibility": "partial",
+          "crosswalk_conflict": false,
+          "crosswalk_unmapped": false,
+          "crosswalk_candidates": []
+        }
+      ],
+      "partial": false,
+      "damage_notes": "Small rectangular seal; impression is small, soft and low-contrast throughout, the leftmost glyph partly at the field edge. B/C photos show back/side with modern painted numbers only, no inscription.",
+      "orientation_basis": "impression-photo",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 310 / PDF p. 346 / photos K-63 a",
+        "object_id": "K-63",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:K-63",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      },
+      "object_type": "Seals"
+    },
+    {
+      "inscription_id": "cisi:v1:K-88",
+      "site": "Kalibangan",
+      "sign_list": "parpola_1982",
+      "sign_list_detail": "Tokens transcribed by glyph match against Mahadevan 1977 sign-list drawings (backend/static/signs, source m77_pdf); P IDs derived via crosswalk v1 primary map (freeze block §5.6); crosswalk content sha256 recorded in dataset meta.",
+      "tokens": [],
+      "tokens_detail": [],
+      "partial": true,
+      "damage_notes": "Clay sealing cracked through. The only per-photo crop supplied is face B, the cord-marked back of the sealing, showing only rough clay, horizontal cord/string striations and a crack - no glyph or glyph slot anywhere on it. Face A carries four faint seal impressions (A 1-4) visible only at plate resolution on the page image; each shows at most a faint animal and one or two vertical trace marks, too faint to segment or identify, and no A crops were provided, so the object is untranscribable from the supplied photos. Pass_a additionally listed 'K-88 A 1-4' among its photos; that is a plate area, not a provided object photo, and the ruled record rests on K-88 B.",
+      "orientation_basis": "direct-object",
+      "provenance": {
+        "source_reference": "CISI v1 printed p. 317 / PDF p. 353 / photos K-88 B",
+        "object_id": "K-88",
+        "image_ref": "local-store:corpora/downloads/cisi_image_layer/phase132_pilot/objects/cisi:v1:K-88",
+        "transcriber": "pass_a+pass_b+adjudicator (AI agents, role-isolated blinded instances; spec 023 §5.5)",
+        "transcription_date": "2026-10-09"
+      }
+    }
+  ]
+}

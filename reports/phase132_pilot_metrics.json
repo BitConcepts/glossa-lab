@@ -1,0 +1,933 @@
+{
+  "phase": "132",
+  "spec": "023 (FROZEN 2026-10-09), section 5.6 freeze block",
+  "dataset_scope": "Stage P pilot: 50 frame objects, 10-object gold sample (seed 20261009)",
+  "conventions": {
+    "p_derivation": "crosswalk-v1 primary counterpart of the matched M: highest-confidence row (high > medium > low > none), tie -> lowest P number; all candidate rows and the primary row's conflict flag carried per token",
+    "unmapped_p_value": "UNMAPPED:<M_ID> (distinct per M; never a P ID, never UNK)",
+    "alignment": "minimum-edit alignment on token ID sequences; substitution preferred over insertion/deletion at equal cost (diagonal > deletion > insertion backtrack)",
+    "estimator_limitation": "errors identical across all three passes are invisible to the gold estimator (frozen stated limitation)"
+  },
+  "crosswalk": {
+    "path": "data/crosswalks/parpola_mahadevan_crosswalk_v1.json",
+    "sha256": "4e7559dfc2ced83c79440029a1b2749fe9d21eca7f6db3bf3b66f0cfa647dcbb",
+    "rows": 766,
+    "m_ids_with_rows": 412
+  },
+  "counts": {
+    "n_objects": 50,
+    "n_gold_objects": 10,
+    "gold_keys": [
+      "cisi:v1:M-93",
+      "cisi:v1:M-144",
+      "cisi:v1:M-250",
+      "cisi:v2:M-1247",
+      "cisi:v2:H-271",
+      "cisi:v2:H-743",
+      "cisi:v1:L-66",
+      "cisi:v1:L-98",
+      "cisi:v1:K-63",
+      "cisi:v1:K-88"
+    ],
+    "total_tokens_pass_a": 191,
+    "total_tokens_pass_b": 190,
+    "total_tokens_pass_gold": 40,
+    "total_tokens_adjudicated_s2": 189,
+    "total_tokens_adjudicated_final": 189
+  },
+  "exact_sequence_agreement": {
+    "all_50": {
+      "p": {
+        "n_objects": 50,
+        "n_exact": 10,
+        "rate": 0.2
+      },
+      "m": {
+        "n_objects": 50,
+        "n_exact": 10,
+        "rate": 0.2
+      }
+    },
+    "gold_sample": {
+      "p": {
+        "n_objects": 10,
+        "n_exact": 1,
+        "rate": 0.1
+      },
+      "m": {
+        "n_objects": 10,
+        "n_exact": 1,
+        "rate": 0.1
+      }
+    }
+  },
+  "per_token_agreement": {
+    "all_50": {
+      "p": {
+        "n_objects": 50,
+        "matches": 95,
+        "denominator": 198,
+        "rate": 0.479798
+      },
+      "m": {
+        "n_objects": 50,
+        "matches": 95,
+        "denominator": 198,
+        "rate": 0.479798
+      }
+    },
+    "gold_sample": {
+      "p": {
+        "n_objects": 10,
+        "matches": 18,
+        "denominator": 42,
+        "rate": 0.428571
+      },
+      "m": {
+        "n_objects": 10,
+        "matches": 18,
+        "denominator": 42,
+        "rate": 0.428571
+      }
+    }
+  },
+  "gold_error_estimator": {
+    "p": {
+      "n_objects": 10,
+      "differing_positions": 2,
+      "denominator": 40,
+      "rate": 0.05
+    },
+    "m": {
+      "n_objects": 10,
+      "differing_positions": 2,
+      "denominator": 40,
+      "rate": 0.05
+    }
+  },
+  "unk_and_unmapped_shares": {
+    "pass_a": {
+      "tokens": 191,
+      "unk": 75,
+      "unk_share": 0.39267,
+      "crosswalk_unmapped": 16,
+      "crosswalk_unmapped_share": 0.08377,
+      "unk_plus_unmapped": 91,
+      "unk_plus_unmapped_share": 0.47644,
+      "crosswalk_conflict_tokens": 74,
+      "unmapped_m_ids": {
+        "M420": 1,
+        "M452": 1,
+        "M500": 1,
+        "M503": 1,
+        "M519": 1,
+        "M527": 1,
+        "M595": 1,
+        "M615": 2,
+        "M700": 1,
+        "M745": 1,
+        "M817": 5
+      }
+    },
+    "pass_b": {
+      "tokens": 190,
+      "unk": 74,
+      "unk_share": 0.389474,
+      "crosswalk_unmapped": 15,
+      "crosswalk_unmapped_share": 0.078947,
+      "unk_plus_unmapped": 89,
+      "unk_plus_unmapped_share": 0.468421,
+      "crosswalk_conflict_tokens": 78,
+      "unmapped_m_ids": {
+        "M420": 1,
+        "M442": 1,
+        "M516": 1,
+        "M519": 1,
+        "M595": 1,
+        "M600": 1,
+        "M700": 1,
+        "M705": 1,
+        "M803": 1,
+        "M804": 1,
+        "M805": 1,
+        "M806": 1,
+        "M808": 1,
+        "M812": 1,
+        "M817": 1
+      }
+    },
+    "pass_gold": {
+      "tokens": 40,
+      "unk": 17,
+      "unk_share": 0.425,
+      "crosswalk_unmapped": 3,
+      "crosswalk_unmapped_share": 0.075,
+      "unk_plus_unmapped": 20,
+      "unk_plus_unmapped_share": 0.5,
+      "crosswalk_conflict_tokens": 16,
+      "unmapped_m_ids": {
+        "M520": 1,
+        "M705": 1,
+        "M717": 1
+      }
+    },
+    "adjudicated_s2": {
+      "tokens": 189,
+      "unk": 77,
+      "unk_share": 0.407407,
+      "crosswalk_unmapped": 16,
+      "crosswalk_unmapped_share": 0.084656,
+      "unk_plus_unmapped": 93,
+      "unk_plus_unmapped_share": 0.492063,
+      "crosswalk_conflict_tokens": 69,
+      "unmapped_m_ids": {
+        "M420": 1,
+        "M442": 1,
+        "M503": 1,
+        "M519": 1,
+        "M595": 1,
+        "M615": 4,
+        "M705": 1,
+        "M717": 1,
+        "M803": 1,
+        "M812": 1,
+        "M817": 3
+      }
+    },
+    "adjudicated_s3_gold": {
+      "tokens": 40,
+      "unk": 16,
+      "unk_share": 0.4,
+      "crosswalk_unmapped": 5,
+      "crosswalk_unmapped_share": 0.125,
+      "unk_plus_unmapped": 21,
+      "unk_plus_unmapped_share": 0.525,
+      "crosswalk_conflict_tokens": 14,
+      "unmapped_m_ids": {
+        "M420": 1,
+        "M519": 1,
+        "M595": 1,
+        "M705": 1,
+        "M717": 1
+      }
+    },
+    "adjudicated_final": {
+      "tokens": 189,
+      "unk": 77,
+      "unk_share": 0.407407,
+      "crosswalk_unmapped": 16,
+      "crosswalk_unmapped_share": 0.084656,
+      "unk_plus_unmapped": 93,
+      "unk_plus_unmapped_share": 0.492063,
+      "crosswalk_conflict_tokens": 69,
+      "unmapped_m_ids": {
+        "M420": 1,
+        "M442": 1,
+        "M503": 1,
+        "M519": 1,
+        "M595": 1,
+        "M615": 4,
+        "M705": 1,
+        "M717": 1,
+        "M803": 1,
+        "M812": 1,
+        "M817": 3
+      }
+    }
+  },
+  "attestation": {
+    "adjudicated_final_p_sequences": {
+      "P076": {
+        "attested": false,
+        "token_count": 0
+      },
+      "P125": {
+        "attested": true,
+        "token_count": 1
+      },
+      "P000": {
+        "attested": false,
+        "token_count": 0
+      }
+    },
+    "adjudicated_s2_p_sequences": {
+      "P076": {
+        "attested": false,
+        "token_count": 0
+      },
+      "P125": {
+        "attested": true,
+        "token_count": 1
+      },
+      "P000": {
+        "attested": false,
+        "token_count": 0
+      }
+    }
+  },
+  "effort": {
+    "roles": {
+      "pass_a": {
+        "per_object_seconds": {
+          "n": 50,
+          "mean": 66.68,
+          "median": 51.5,
+          "min": 15,
+          "max": 231,
+          "total": 3334
+        },
+        "tokens_produced": 191,
+        "seconds_per_token": 17.455497
+      },
+      "pass_b": {
+        "per_object_seconds": {
+          "n": 50,
+          "mean": 76.36,
+          "median": 70.0,
+          "min": 24,
+          "max": 227,
+          "total": 3818
+        },
+        "tokens_produced": 190,
+        "seconds_per_token": 20.094737
+      },
+      "pass_gold": {
+        "per_object_seconds": {
+          "n": 10,
+          "mean": 97.9,
+          "median": 110.0,
+          "min": 26,
+          "max": 148,
+          "total": 979
+        },
+        "tokens_produced": 40,
+        "seconds_per_token": 24.475
+      },
+      "adjudicator": {
+        "per_object_seconds": {
+          "n": 50,
+          "mean": 38.9,
+          "median": 30.5,
+          "min": 7,
+          "max": 139,
+          "total": 1945
+        },
+        "tokens_produced": 189,
+        "seconds_per_token": 10.291005
+      }
+    },
+    "tokens_per_object_adjudicated_final": {
+      "n": 50,
+      "mean": 3.78,
+      "median": 4.0,
+      "min": 0,
+      "max": 8,
+      "total": 189
+    },
+    "all_roles_total_seconds": 10076,
+    "all_roles_seconds_per_final_token": 53.312169
+  },
+  "verdicts": {
+    "stop_rule": {
+      "definition": "stop if gold error estimator (P) > 0.05 OR exact-sequence agreement all-50 (P) < 0.80 (spec 023 sections 3.1 / 5.6 freeze block)",
+      "gold_error_estimator_p": 0.05,
+      "error_threshold": 0.05,
+      "error_condition_fires": false,
+      "exact_sequence_agreement_all_50_p": 0.2,
+      "exact_threshold": 0.8,
+      "exact_condition_fires": true,
+      "stop_rule_fired": true
+    },
+    "release_gates": {
+      "scope": "gold sample (10 objects), P space",
+      "gate_i_exact_sequence": {
+        "value": 0.1,
+        "threshold": 0.9,
+        "pass": false
+      },
+      "gate_ii_per_token": {
+        "value": 0.428571,
+        "threshold": 0.95,
+        "pass": false
+      },
+      "gate_iii_gold_error_estimator": {
+        "value": 0.05,
+        "threshold": 0.02,
+        "pass": false
+      },
+      "all_pass": false
+    }
+  },
+  "per_object": [
+    {
+      "key": "cisi:v1:M-3",
+      "gold": false,
+      "len_pass_a": 3,
+      "len_pass_b": 3,
+      "len_adjudicated_final": 3,
+      "exact_p": true,
+      "matches_p": 3,
+      "exact_m": true,
+      "matches_m": 3
+    },
+    {
+      "key": "cisi:v1:M-21",
+      "gold": false,
+      "len_pass_a": 8,
+      "len_pass_b": 6,
+      "len_adjudicated_final": 6,
+      "exact_p": false,
+      "matches_p": 3,
+      "exact_m": false,
+      "matches_m": 3
+    },
+    {
+      "key": "cisi:v1:M-41",
+      "gold": false,
+      "len_pass_a": 8,
+      "len_pass_b": 8,
+      "len_adjudicated_final": 8,
+      "exact_p": false,
+      "matches_p": 4,
+      "exact_m": false,
+      "matches_m": 4
+    },
+    {
+      "key": "cisi:v1:M-58",
+      "gold": false,
+      "len_pass_a": 5,
+      "len_pass_b": 5,
+      "len_adjudicated_final": 5,
+      "exact_p": false,
+      "matches_p": 2,
+      "exact_m": false,
+      "matches_m": 2
+    },
+    {
+      "key": "cisi:v1:M-75",
+      "gold": false,
+      "len_pass_a": 5,
+      "len_pass_b": 5,
+      "len_adjudicated_final": 5,
+      "exact_p": false,
+      "matches_p": 3,
+      "exact_m": false,
+      "matches_m": 3
+    },
+    {
+      "key": "cisi:v1:M-93",
+      "gold": true,
+      "len_pass_a": 5,
+      "len_pass_b": 5,
+      "len_adjudicated_final": 5,
+      "exact_p": false,
+      "matches_p": 3,
+      "exact_m": false,
+      "matches_m": 3,
+      "estimator_differing_p": 1,
+      "estimator_differing_m": 1
+    },
+    {
+      "key": "cisi:v1:M-110",
+      "gold": false,
+      "len_pass_a": 4,
+      "len_pass_b": 5,
+      "len_adjudicated_final": 4,
+      "exact_p": false,
+      "matches_p": 1,
+      "exact_m": false,
+      "matches_m": 1
+    },
+    {
+      "key": "cisi:v1:M-127",
+      "gold": false,
+      "len_pass_a": 5,
+      "len_pass_b": 5,
+      "len_adjudicated_final": 5,
+      "exact_p": false,
+      "matches_p": 4,
+      "exact_m": false,
+      "matches_m": 4
+    },
+    {
+      "key": "cisi:v1:M-144",
+      "gold": true,
+      "len_pass_a": 6,
+      "len_pass_b": 6,
+      "len_adjudicated_final": 6,
+      "exact_p": false,
+      "matches_p": 4,
+      "exact_m": false,
+      "matches_m": 4,
+      "estimator_differing_p": 1,
+      "estimator_differing_m": 1
+    },
+    {
+      "key": "cisi:v1:M-162",
+      "gold": false,
+      "len_pass_a": 6,
+      "len_pass_b": 6,
+      "len_adjudicated_final": 6,
+      "exact_p": false,
+      "matches_p": 2,
+      "exact_m": false,
+      "matches_m": 2
+    },
+    {
+      "key": "cisi:v2:M-658",
+      "gold": false,
+      "len_pass_a": 7,
+      "len_pass_b": 5,
+      "len_adjudicated_final": 6,
+      "exact_p": false,
+      "matches_p": 3,
+      "exact_m": false,
+      "matches_m": 3
+    },
+    {
+      "key": "cisi:v1:M-195",
+      "gold": false,
+      "len_pass_a": 5,
+      "len_pass_b": 5,
+      "len_adjudicated_final": 5,
+      "exact_p": false,
+      "matches_p": 3,
+      "exact_m": false,
+      "matches_m": 3
+    },
+    {
+      "key": "cisi:v1:M-250",
+      "gold": true,
+      "len_pass_a": 3,
+      "len_pass_b": 3,
+      "len_adjudicated_final": 3,
+      "exact_p": false,
+      "matches_p": 2,
+      "exact_m": false,
+      "matches_m": 2,
+      "estimator_differing_p": 0,
+      "estimator_differing_m": 0
+    },
+    {
+      "key": "cisi:v2:M-819",
+      "gold": false,
+      "len_pass_a": 6,
+      "len_pass_b": 6,
+      "len_adjudicated_final": 6,
+      "exact_p": false,
+      "matches_p": 2,
+      "exact_m": false,
+      "matches_m": 2
+    },
+    {
+      "key": "cisi:v1:M-321",
+      "gold": false,
+      "len_pass_a": 3,
+      "len_pass_b": 3,
+      "len_adjudicated_final": 3,
+      "exact_p": false,
+      "matches_p": 0,
+      "exact_m": false,
+      "matches_m": 0
+    },
+    {
+      "key": "cisi:v2:M-926",
+      "gold": false,
+      "len_pass_a": 7,
+      "len_pass_b": 7,
+      "len_adjudicated_final": 7,
+      "exact_p": false,
+      "matches_p": 3,
+      "exact_m": false,
+      "matches_m": 3
+    },
+    {
+      "key": "cisi:v2:M-983",
+      "gold": false,
+      "len_pass_a": 4,
+      "len_pass_b": 1,
+      "len_adjudicated_final": 2,
+      "exact_p": false,
+      "matches_p": 1,
+      "exact_m": false,
+      "matches_m": 1
+    },
+    {
+      "key": "cisi:v2:M-1044",
+      "gold": false,
+      "len_pass_a": 5,
+      "len_pass_b": 5,
+      "len_adjudicated_final": 5,
+      "exact_p": true,
+      "matches_p": 5,
+      "exact_m": true,
+      "matches_m": 5
+    },
+    {
+      "key": "cisi:v1:M-480",
+      "gold": false,
+      "len_pass_a": 8,
+      "len_pass_b": 8,
+      "len_adjudicated_final": 8,
+      "exact_p": false,
+      "matches_p": 7,
+      "exact_m": false,
+      "matches_m": 7
+    },
+    {
+      "key": "cisi:v1:M-517",
+      "gold": false,
+      "len_pass_a": 4,
+      "len_pass_b": 4,
+      "len_adjudicated_final": 4,
+      "exact_p": true,
+      "matches_p": 4,
+      "exact_m": true,
+      "matches_m": 4
+    },
+    {
+      "key": "cisi:v1:M-566",
+      "gold": false,
+      "len_pass_a": 0,
+      "len_pass_b": 0,
+      "len_adjudicated_final": 0,
+      "exact_p": true,
+      "matches_p": 0,
+      "exact_m": true,
+      "matches_m": 0
+    },
+    {
+      "key": "cisi:v2:M-1247",
+      "gold": true,
+      "len_pass_a": 0,
+      "len_pass_b": 1,
+      "len_adjudicated_final": 1,
+      "exact_p": false,
+      "matches_p": 0,
+      "exact_m": false,
+      "matches_m": 0,
+      "estimator_differing_p": 0,
+      "estimator_differing_m": 0
+    },
+    {
+      "key": "cisi:v2:M-1352",
+      "gold": false,
+      "len_pass_a": 4,
+      "len_pass_b": 3,
+      "len_adjudicated_final": 4,
+      "exact_p": false,
+      "matches_p": 2,
+      "exact_m": false,
+      "matches_m": 2
+    },
+    {
+      "key": "cisi:v2:M-1448",
+      "gold": false,
+      "len_pass_a": 3,
+      "len_pass_b": 3,
+      "len_adjudicated_final": 3,
+      "exact_p": false,
+      "matches_p": 2,
+      "exact_m": false,
+      "matches_m": 2
+    },
+    {
+      "key": "cisi:v2:M-1542",
+      "gold": false,
+      "len_pass_a": 0,
+      "len_pass_b": 0,
+      "len_adjudicated_final": 0,
+      "exact_p": true,
+      "matches_p": 0,
+      "exact_m": true,
+      "matches_m": 0
+    },
+    {
+      "key": "cisi:v1:H-66",
+      "gold": false,
+      "len_pass_a": 4,
+      "len_pass_b": 4,
+      "len_adjudicated_final": 4,
+      "exact_p": false,
+      "matches_p": 1,
+      "exact_m": false,
+      "matches_m": 1
+    },
+    {
+      "key": "cisi:v1:H-139",
+      "gold": false,
+      "len_pass_a": 3,
+      "len_pass_b": 3,
+      "len_adjudicated_final": 3,
+      "exact_p": false,
+      "matches_p": 2,
+      "exact_m": false,
+      "matches_m": 2
+    },
+    {
+      "key": "cisi:v1:H-212",
+      "gold": false,
+      "len_pass_a": 6,
+      "len_pass_b": 6,
+      "len_adjudicated_final": 6,
+      "exact_p": false,
+      "matches_p": 4,
+      "exact_m": false,
+      "matches_m": 4
+    },
+    {
+      "key": "cisi:v1:H-305",
+      "gold": false,
+      "len_pass_a": 6,
+      "len_pass_b": 6,
+      "len_adjudicated_final": 7,
+      "exact_p": false,
+      "matches_p": 2,
+      "exact_m": false,
+      "matches_m": 2
+    },
+    {
+      "key": "cisi:v2:H-271",
+      "gold": true,
+      "len_pass_a": 4,
+      "len_pass_b": 4,
+      "len_adjudicated_final": 4,
+      "exact_p": false,
+      "matches_p": 2,
+      "exact_m": false,
+      "matches_m": 2,
+      "estimator_differing_p": 0,
+      "estimator_differing_m": 0
+    },
+    {
+      "key": "cisi:v2:H-451",
+      "gold": false,
+      "len_pass_a": 3,
+      "len_pass_b": 4,
+      "len_adjudicated_final": 3,
+      "exact_p": false,
+      "matches_p": 0,
+      "exact_m": false,
+      "matches_m": 0
+    },
+    {
+      "key": "cisi:v2:H-523",
+      "gold": false,
+      "len_pass_a": 4,
+      "len_pass_b": 5,
+      "len_adjudicated_final": 5,
+      "exact_p": false,
+      "matches_p": 2,
+      "exact_m": false,
+      "matches_m": 2
+    },
+    {
+      "key": "cisi:v2:H-596",
+      "gold": false,
+      "len_pass_a": 2,
+      "len_pass_b": 2,
+      "len_adjudicated_final": 2,
+      "exact_p": false,
+      "matches_p": 1,
+      "exact_m": false,
+      "matches_m": 1
+    },
+    {
+      "key": "cisi:v2:H-669",
+      "gold": false,
+      "len_pass_a": 3,
+      "len_pass_b": 3,
+      "len_adjudicated_final": 3,
+      "exact_p": false,
+      "matches_p": 2,
+      "exact_m": false,
+      "matches_m": 2
+    },
+    {
+      "key": "cisi:v2:H-743",
+      "gold": true,
+      "len_pass_a": 7,
+      "len_pass_b": 7,
+      "len_adjudicated_final": 7,
+      "exact_p": false,
+      "matches_p": 2,
+      "exact_m": false,
+      "matches_m": 2,
+      "estimator_differing_p": 0,
+      "estimator_differing_m": 0
+    },
+    {
+      "key": "cisi:v2:H-814",
+      "gold": false,
+      "len_pass_a": 5,
+      "len_pass_b": 5,
+      "len_adjudicated_final": 5,
+      "exact_p": false,
+      "matches_p": 3,
+      "exact_m": false,
+      "matches_m": 3
+    },
+    {
+      "key": "cisi:v2:H-886",
+      "gold": false,
+      "len_pass_a": 0,
+      "len_pass_b": 0,
+      "len_adjudicated_final": 0,
+      "exact_p": true,
+      "matches_p": 0,
+      "exact_m": true,
+      "matches_m": 0
+    },
+    {
+      "key": "cisi:v2:H-960",
+      "gold": false,
+      "len_pass_a": 5,
+      "len_pass_b": 5,
+      "len_adjudicated_final": 5,
+      "exact_p": false,
+      "matches_p": 2,
+      "exact_m": false,
+      "matches_m": 2
+    },
+    {
+      "key": "cisi:v2:Pk-24",
+      "gold": false,
+      "len_pass_a": 0,
+      "len_pass_b": 1,
+      "len_adjudicated_final": 0,
+      "exact_p": false,
+      "matches_p": 0,
+      "exact_m": false,
+      "matches_m": 0
+    },
+    {
+      "key": "cisi:v2:Skh-7",
+      "gold": false,
+      "len_pass_a": 1,
+      "len_pass_b": 1,
+      "len_adjudicated_final": 1,
+      "exact_p": false,
+      "matches_p": 0,
+      "exact_m": false,
+      "matches_m": 0
+    },
+    {
+      "key": "cisi:v1:L-33",
+      "gold": false,
+      "len_pass_a": 3,
+      "len_pass_b": 3,
+      "len_adjudicated_final": 3,
+      "exact_p": false,
+      "matches_p": 1,
+      "exact_m": false,
+      "matches_m": 1
+    },
+    {
+      "key": "cisi:v1:L-66",
+      "gold": true,
+      "len_pass_a": 6,
+      "len_pass_b": 8,
+      "len_adjudicated_final": 6,
+      "exact_p": false,
+      "matches_p": 3,
+      "exact_m": false,
+      "matches_m": 3,
+      "estimator_differing_p": 0,
+      "estimator_differing_m": 0
+    },
+    {
+      "key": "cisi:v1:L-98",
+      "gold": true,
+      "len_pass_a": 4,
+      "len_pass_b": 4,
+      "len_adjudicated_final": 4,
+      "exact_p": false,
+      "matches_p": 2,
+      "exact_m": false,
+      "matches_m": 2,
+      "estimator_differing_p": 0,
+      "estimator_differing_m": 0
+    },
+    {
+      "key": "cisi:v1:L-132",
+      "gold": false,
+      "len_pass_a": 1,
+      "len_pass_b": 1,
+      "len_adjudicated_final": 1,
+      "exact_p": true,
+      "matches_p": 1,
+      "exact_m": true,
+      "matches_m": 1
+    },
+    {
+      "key": "cisi:v1:L-165",
+      "gold": false,
+      "len_pass_a": 4,
+      "len_pass_b": 4,
+      "len_adjudicated_final": 4,
+      "exact_p": false,
+      "matches_p": 1,
+      "exact_m": false,
+      "matches_m": 1
+    },
+    {
+      "key": "cisi:v1:L-227",
+      "gold": false,
+      "len_pass_a": 1,
+      "len_pass_b": 1,
+      "len_adjudicated_final": 1,
+      "exact_p": false,
+      "matches_p": 0,
+      "exact_m": false,
+      "matches_m": 0
+    },
+    {
+      "key": "cisi:v1:K-21",
+      "gold": false,
+      "len_pass_a": 0,
+      "len_pass_b": 0,
+      "len_adjudicated_final": 0,
+      "exact_p": true,
+      "matches_p": 0,
+      "exact_m": true,
+      "matches_m": 0
+    },
+    {
+      "key": "cisi:v1:K-42",
+      "gold": false,
+      "len_pass_a": 1,
+      "len_pass_b": 1,
+      "len_adjudicated_final": 1,
+      "exact_p": true,
+      "matches_p": 1,
+      "exact_m": true,
+      "matches_m": 1
+    },
+    {
+      "key": "cisi:v1:K-63",
+      "gold": true,
+      "len_pass_a": 4,
+      "len_pass_b": 4,
+      "len_adjudicated_final": 4,
+      "exact_p": false,
+      "matches_p": 0,
+      "exact_m": false,
+      "matches_m": 0,
+      "estimator_differing_p": 0,
+      "estimator_differing_m": 0
+    },
+    {
+      "key": "cisi:v1:K-88",
+      "gold": true,
+      "len_pass_a": 0,
+      "len_pass_b": 0,
+      "len_adjudicated_final": 0,
+      "exact_p": true,
+      "matches_p": 0,
+      "exact_m": true,
+      "matches_m": 0,
+      "estimator_differing_p": 0,
+      "estimator_differing_m": 0
+    }
+  ]
+}

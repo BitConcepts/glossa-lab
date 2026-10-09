@@ -2675,6 +2675,16 @@ try:
     logger.info("Registered %d Phase-119 (spec 018) nodes", len(list(_p119_defs())))
 except Exception as _p119_exc:  # noqa: BLE001
     logger.warning("Phase-119 (spec 018) nodes not registered: %s", _p119_exc)
+# ── Phase-130 intake nodes (spec 021: independent-data intake pack) ──
+try:
+    from glossa_lab.experiment_graph_phase130_intake import (
+        _phase130_intake_node_defs as _p130i_defs,  # noqa: PLC0415
+    )
+    for _d in _p130i_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-130 intake (spec 021) nodes", len(list(_p130i_defs())))
+except Exception as _p130i_exc:  # noqa: BLE001
+    logger.warning("Phase-130 intake (spec 021) nodes not registered: %s", _p130i_exc)
 # ── Phase-120 nodes (Bhaskar 2024 descriptive triage) ──
 try:
     from glossa_lab.experiment_graph_phase120 import (

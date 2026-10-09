@@ -381,70 +381,14 @@ def adapt_converted_layer(path: Path, mapper: SignMapper,
 
 
 # ---------------------------------------------------------------- §5 dedup
+# The frozen §5 implementation lives in glossa_lab.dedup (lifted
+# verbatim by Phase-130 / spec 021 so the harness and the intake
+# pipeline share one implementation — no behaviour change).
+# Re-exported here so existing imports (`from glossa_lab.pred_harness
+# import dedup`) keep working unchanged.
+from glossa_lab.dedup import dedup, levenshtein_le1  # noqa: E402,F401
 
-def _lev_le1(a: tuple, b: tuple) -> bool:
-    if abs(len(a) - len(b)) > 1:
-        return False
-    if len(a) == len(b):
-        return sum(1 for x, y in zip(a, b) if x != y) <= 1
-    if len(a) > len(b):
-        a, b = b, a
-    i = j = diff = 0
-    while i < len(a) and j < len(b):
-        if a[i] == b[j]:
-            i += 1
-            j += 1
-        else:
-            j += 1
-            diff += 1
-            if diff > 1:
-                return False
-    return True
-
-
-def dedup(records: list[dict]) -> tuple[list[dict], dict]:
-    """Frozen dedup protocol (spec section 5): stage A exact,
-    stage B sentinel-normalized exact, stage C near-duplicate
-    (Levenshtein <= 1 on UNK-stripped sequences of length >= 4,
-    greedy keep-first against kept anchors only)."""
-    def strip(tokens):
-        return tuple(t for t in tokens if t != UNK)
-
-    seen_a: set = set()
-    kept_a = []
-    for r in records:
-        key = tuple(r["tokens"])
-        if key not in seen_a:
-            seen_a.add(key)
-            kept_a.append(r)
-    seen_b: set = set()
-    kept_b = []
-    for r in kept_a:
-        st = strip(r["tokens"])
-        if st and st in seen_b:
-            continue
-        if st:
-            seen_b.add(st)
-        kept_b.append(r)
-    anchors: list[tuple] = []
-    kept_c = []
-    removed_c = 0
-    for r in kept_b:
-        st = strip(r["tokens"])
-        if len(st) >= 4:
-            if any(_lev_le1(st, a) for a in anchors):
-                removed_c += 1
-                continue
-            anchors.append(st)
-        kept_c.append(r)
-    counts = {
-        "input": len(records),
-        "stage_a_removed": len(records) - len(kept_a),
-        "stage_b_removed": len(kept_a) - len(kept_b),
-        "stage_c_removed": removed_c,
-        "kept": len(kept_c),
-    }
-    return kept_c, counts
+_lev_le1 = levenshtein_le1
 
 
 # ---------------------------------------------------------------- §6 scoring

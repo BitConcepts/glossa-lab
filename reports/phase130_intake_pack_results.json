@@ -1,0 +1,273 @@
+{
+  "phase": "Phase-130 (spec 021) intake pack",
+  "label": "HARNESS DRY RUN — NOT A PRED EVALUATION",
+  "synthetic_fixture": {
+    "schema_version": "1.0",
+    "dataset_content_hash": "1874e91df6d22d3c6bfa6cce0fb9ba91f739124d48cff22c97b2e04751e2da72",
+    "stages": {
+      "validation": {
+        "verdict": "pass",
+        "errors": [],
+        "warnings": [],
+        "summary": {
+          "inscriptions": 7,
+          "tokens": 26,
+          "sign_lists": [
+            "parpola_1982"
+          ],
+          "errors": 0,
+          "warnings": 0
+        }
+      },
+      "license_gate": "pass",
+      "dedup": {
+        "input": 7,
+        "stage_a_removed": 1,
+        "stage_b_removed": 1,
+        "stage_c_removed": 1,
+        "kept": 4
+      },
+      "evaluability": {
+        "source_class": "rmrl_concordance",
+        "per_prediction": {
+          "PRED-2026-001": "QUALIFIES",
+          "PRED-2026-002": "QUALIFIES",
+          "PRED-2026-003": "QUALIFIES"
+        },
+        "qualifies_any": true,
+        "caveat_c1_required": false,
+        "distinct_sites": 2,
+        "multi_site": true,
+        "pred2026_003_site_input": true,
+        "lineage_consistency_notes": []
+      },
+      "harness_dry_run": {
+        "label": "HARNESS DRY RUN — NOT A PRED EVALUATION",
+        "dataset": {
+          "name": "synthetic-intake-fixture (invented; no real corpus data)",
+          "source_class": "rmrl_concordance",
+          "content_hash": "7e95b73d8f8bebb5ff9ba10f1cf4ac84f3cc7e494a96135bfba0a3e6082f09d8",
+          "stats": {
+            "inscriptions": 7,
+            "tokens": 26,
+            "tokens_unmapped": 0,
+            "tokens_ambiguous": 0,
+            "distinct_signs": 5
+          }
+        },
+        "dedup": {
+          "input": 7,
+          "stage_a_removed": 1,
+          "stage_b_removed": 1,
+          "stage_c_removed": 1,
+          "kept": 4
+        },
+        "coverage_pre_dedup": {
+          "TERMINAL": {
+            "set_size": 14,
+            "attested": 0,
+            "per_sign_occurrences": {
+              "P020": 0,
+              "P076": 0,
+              "P095": 0,
+              "P099": 0,
+              "P108": 0,
+              "P125": 0,
+              "P210": 0,
+              "P226": 0,
+              "P256": 0,
+              "P346": 0,
+              "P359": 0,
+              "P378": 0,
+              "P384": 0,
+              "P385": 0
+            }
+          },
+          "INITIAL": {
+            "set_size": 12,
+            "attested": 0,
+            "per_sign_occurrences": {
+              "P000": 0,
+              "P001": 0,
+              "P004": 0,
+              "P013": 0,
+              "P051": 0,
+              "P098": 0,
+              "P217": 0,
+              "P238": 0,
+              "P265": 0,
+              "P301": 0,
+              "P310": 0,
+              "P324": 0
+            }
+          },
+          "MEDIAL": {
+            "set_size": 46,
+            "attested": 0,
+            "per_sign_occurrences": {
+              "P009": 0,
+              "P026": 0,
+              "P031": 0,
+              "P050": 0,
+              "P053": 0,
+              "P056": 0,
+              "P058": 0,
+              "P062": 0,
+              "P067": 0,
+              "P091": 0,
+              "P096": 0,
+              "P110": 0,
+              "P114": 0,
+              "P117": 0,
+              "P120": 0,
+              "P121": 0,
+              "P122": 0,
+              "P127": 0,
+              "P136": 0,
+              "P142": 0,
+              "P145": 0,
+              "P147": 0,
+              "P151": 0,
+              "P154": 0,
+              "P172": 0,
+              "P174": 0,
+              "P175": 0,
+              "P178": 0,
+              "P188": 0,
+              "P201": 0,
+              "P204": 0,
+              "P205": 0,
+              "P208": 0,
+              "P215": 0,
+              "P221": 0,
+              "P276": 0,
+              "P283": 0,
+              "P288": 0,
+              "P303": 0,
+              "P309": 0,
+              "P325": 0,
+              "P326": 0,
+              "P332": 0,
+              "P349": 0,
+              "P358": 0,
+              "P369": 0
+            }
+          },
+          "classifiability": {
+            "inscriptions_with_mapped_signs": 7,
+            "all_signs_labelled": 0,
+            "fraction": 0.0
+          }
+        },
+        "coverage_post_dedup": {
+          "TERMINAL": {
+            "set_size": 14,
+            "attested": 0,
+            "per_sign_occurrences": {
+              "P020": 0,
+              "P076": 0,
+              "P095": 0,
+              "P099": 0,
+              "P108": 0,
+              "P125": 0,
+              "P210": 0,
+              "P226": 0,
+              "P256": 0,
+              "P346": 0,
+              "P359": 0,
+              "P378": 0,
+              "P384": 0,
+              "P385": 0
+            }
+          },
+          "INITIAL": {
+            "set_size": 12,
+            "attested": 0,
+            "per_sign_occurrences": {
+              "P000": 0,
+              "P001": 0,
+              "P004": 0,
+              "P013": 0,
+              "P051": 0,
+              "P098": 0,
+              "P217": 0,
+              "P238": 0,
+              "P265": 0,
+              "P301": 0,
+              "P310": 0,
+              "P324": 0
+            }
+          },
+          "MEDIAL": {
+            "set_size": 46,
+            "attested": 0,
+            "per_sign_occurrences": {
+              "P009": 0,
+              "P026": 0,
+              "P031": 0,
+              "P050": 0,
+              "P053": 0,
+              "P056": 0,
+              "P058": 0,
+              "P062": 0,
+              "P067": 0,
+              "P091": 0,
+              "P096": 0,
+              "P110": 0,
+              "P114": 0,
+              "P117": 0,
+              "P120": 0,
+              "P121": 0,
+              "P122": 0,
+              "P127": 0,
+              "P136": 0,
+              "P142": 0,
+              "P145": 0,
+              "P147": 0,
+              "P151": 0,
+              "P154": 0,
+              "P172": 0,
+              "P174": 0,
+              "P175": 0,
+              "P178": 0,
+              "P188": 0,
+              "P201": 0,
+              "P204": 0,
+              "P205": 0,
+              "P208": 0,
+              "P215": 0,
+              "P221": 0,
+              "P276": 0,
+              "P283": 0,
+              "P288": 0,
+              "P303": 0,
+              "P309": 0,
+              "P325": 0,
+              "P326": 0,
+              "P332": 0,
+              "P349": 0,
+              "P358": 0,
+              "P369": 0
+            }
+          },
+          "classifiability": {
+            "inscriptions_with_mapped_signs": 4,
+            "all_signs_labelled": 0,
+            "fraction": 0.0
+          }
+        }
+      }
+    },
+    "label": "HARNESS DRY RUN — NOT A PRED EVALUATION",
+    "outcome": "intake-complete-dry-run-only"
+  },
+  "no_license_variant_outcome": "rejected",
+  "no_license_variant_errors": [
+    {
+      "code": "LICENSE_BASIS_MISSING",
+      "path": "license_basis",
+      "message": "required field missing: license_basis"
+    }
+  ],
+  "gpu_device": "cpu"
+}

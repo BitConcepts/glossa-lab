@@ -2666,3 +2666,25 @@ a fresh worktree (908→915 collected); foundation 40/0/8.
 No anchor changed (sha256 eccea6d5… unchanged); no deposit
 edited, no new Zenodo release. AI-assisted record (Muse
 Spark, Muse), owner-directed.
+
+## 2026-10-08 — Phase-130 (ledger sequence): Independent-data intake pack (cross-reference)
+
+Cross-reference: repo LEDGER.md entry of the same date
+("Phase-130 (Spec 021)") and `specs/021-phase130-intake-pack/spec.md`.
+The intake companion to the Phase-119 PRED-2026 harness:
+versioned intake schema v1 + stdlib validator with a hard
+license gate (no declared lawful basis = reject), the spec
+018 §5 dedup lifted verbatim into the shared module
+`backend/glossa_lab/dedup.py` (harness re-exports it; App.
+A.6 numbers reproduce through the module: 4,531 → 2,446 kept,
+46.02% cumulative), §4 evaluability-class assignment,
+Phase-122-style crosswalk adapter requirements (no crosswalk
+built), and a runbook ending at the harness dry-run path
+only — intake binds no scoring code; evaluation needs its
+own future spec + owner authorization. Exercised end-to-end
+only on a synthetic fixture (invented signs/sites; duplicate
+cluster caught 7 → 4; license-missing variant rejected).
+No real data ingested, no contact, no prediction evaluated;
+PRED-2026-001–003 remain PENDING. No anchor changed (sha256
+eccea6d5… unchanged). Suite 938/13/0; foundation 40/0/8.
+AI-assisted record (Muse Spark, Muse), owner-directed.

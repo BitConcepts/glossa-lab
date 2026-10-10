@@ -1024,6 +1024,100 @@
    "dataset_publication": "PUBLISHED with this release (v4.7.0) under CC BY 4.0 per the owner's combined-path approval \u2014 phase134_pilot_dataset.json + meta and phase135_pilot_dataset.json + meta (both passes, gold coding, adjudicated codes, full disagreement logs; codes and notes only, NO images). Phase-134's freeze-time non-authorization of beyond-repo publication was superseded by that approval; the disposition history is recorded in the Phase-134 dataset meta."
   },
   "scope_note": "Extension added in v4.7.0. All pre-existing keys, including release_v4_3_0 through release_v4_6_0, are unchanged; the decipherment validation results they record were not re-run for this release. Spec 024 Stages 1\u20131b changed no anchor and no PRED verdict, and computed no association statistic."
+ },
+ "release_v4_8_0": {
+  "version": "4.8.0",
+  "date": "2026-10-09",
+  "note_file": "pierson_2026_indus_program_note_136_137_138_stage2.md",
+  "repo": "BitConcepts/glossa-lab",
+  "repo_main_commit": "949d627e",
+  "repo_main_commit_full": "949d627e8eaf88a7516e8165517a9ca2268f814b",
+  "anchors_file": "INDUS_FINAL_ANCHORS.json",
+  "anchors_sha256": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+  "backend_suite": {
+   "passed": 1081,
+   "skipped": 5,
+   "failed": 0,
+   "collected": 1086,
+   "run": "Run 2026-10-09 in the v4.8.0 release worktree at merged main 949d627e (canonical venv, corpora symlinked from the main checkout, CI configuration with GPU test files ignored): 1081 passed / 5 skipped / 0 failed in 314.87s.",
+   "ci": "GitHub CI on PR #124 merge commit 949d627e: 7/7 checks green"
+  },
+  "foundation_check": {
+   "passed": 40,
+   "failed": 0,
+   "warnings": 8,
+   "run": "Run 2026-10-09 in the v4.8.0 release worktree at 949d627e (corpora symlinked): 40 checks passed, 0 failed, 8 warnings."
+  },
+  "phase_outcomes": {
+   "spec_024_stage2_family": {
+    "family_declaration": "specs/024-evidence-integration/stage2a-freeze.md section 1 (PR #117): the declared family F = {F1 (a) terminal-class x object type, F2 (c) Holdat site repertoire, F3 (c) ICIT-lineage site repertoire}, Benjamini-Hochberg FDR control at q = 0.05 applied once, across all three raw p-values, in the combined report reports/phase136_137_138_stage2_report.md (PR #124, merged 949d627e). All tests are permutation tests (B = 9,999, seed 20261009) against composition-controlled nulls; no asymptotic p-values are reported.",
+    "verdicts": {
+     "F1": {
+      "raw_p": 0.0001,
+      "bh_q": 0.00015,
+      "verdict": "SUPPORTED"
+     },
+     "F2": {
+      "raw_p": 0.7354,
+      "bh_q": 0.7354,
+      "verdict": "NOT SUPPORTED"
+     },
+     "F3": {
+      "raw_p": 0.0001,
+      "bh_q": 0.00015,
+      "verdict": "SUPPORTED"
+     }
+    }
+   },
+   "phase_136_terminal_type": {
+    "build_pr": "#121 (merged e7d17f6a)",
+    "family_member": "F1 \u2014 terminal-class x object type, within-site stratified (ICIT-lineage layer)",
+    "population": "2,062 inscriptions in the three eligible site strata (Mohenjo-daro, Harappa, Kalibangan), of 5,679 layer rows; 49.0% of the layer is unjoinable under the audited key",
+    "cmh_statistic": 47.0047,
+    "null_median": 0.455,
+    "mantel_haenszel_common_odds_ratio": 2.384,
+    "odds_ratio_95_ci": "1.847\u20133.077",
+    "terminal_shares": "pooled seals 28.1% vs tablets 12.5% (Mohenjo-daro 30.0% vs 16.4%; Harappa 24.6% vs 10.5%; Kalibangan 12.5% vs 9.1%); crude (uncontrolled) OR 2.748 \u2014 the within-site control attenuates but does not remove the association",
+    "raw_p": 0.0001,
+    "bh_q": 0.00015,
+    "verdict": "SUPPORTED",
+    "label": "ICIT-lineage derivative layer \u2014 not an independent witness; the strongest alternative explanation is compilation-internal (transcription and object typing within one scholarly tradition)"
+   },
+   "phase_137_site_repertoire": {
+    "build_pr": "#122 (merged 75943a7f)",
+    "family_members": "F2 (Holdat layer) + F3 (ICIT-lineage layer); layers tested separately, never pooled",
+    "f2_holdat": {
+     "population": "all 9 sites, 1,670 inscriptions",
+     "observed_chi_square": 745.95,
+     "permutation_median": 770.32,
+     "cramers_v": 0.1154,
+     "raw_p": 0.7354,
+     "bh_q": 0.7354,
+     "verdict": "NOT SUPPORTED \u2014 per the falsifier stated in advance, per-site repertoire 'dialects' in this layer are recorded as an artifact of what each site happens to preserve"
+    },
+    "f3_icit_lineage": {
+     "population": "7 eligible sites, 5,410 inscriptions",
+     "observed_chi_square": 4966.36,
+     "permutation_median": 2667.87,
+     "cramers_v": 0.219,
+     "raw_p": 0.0001,
+     "bh_q": 0.00015,
+     "verdict": "SUPPORTED \u2014 repertoires differ beyond object-type and text-length composition; period, preservation, and excavation history are not available in this layer and are not controlled"
+    },
+    "cross_layer_note": "F2's null and F3's positive are reported side by side; their contrast is not itself a test \u2014 site differentiation is not a layer-free fact"
+   },
+   "phase_138_graffiti_descriptive": {
+    "build_pr": "#120 (merged 4069bcb1; corrective PR #123, merged 1c2a5fd2)",
+    "family_role": "none \u2014 arm (d) is descriptive only; no test was computed",
+    "population": "417 catalogue photo rows over 395 distinct objects (Vol. 1: 119 rows / 100 objects; Vol. 2: 298 / 295)",
+    "objects_by_site": "Harappa 262, Lothal 44, Mohenjo-Daro 42, Kalibangan 26 \u2014 a Harappa-centred distribution, the reverse of the seal/tablet mass",
+    "single_side": "374 of 395 objects carry a single photographed side",
+    "depiction_chapter_field": "the editors' depiction-chapter field is filled on 0 of 417 graffiti rows \u2014 the graffiti subset carries no depiction coding in the catalogue at all",
+    "tamil_nadu": "the Tamil Nadu graffiti corpus is not in hand (0 records); no overlap statistic against the seal-text repertoire exists and no continuity, descent, or survival claim is made"
+   },
+   "process_record": "Phase-138's merging PR (#120) landed on a CI readout that did not match its run's actual conclusion (two pins in the phase's own test file had failed; test code only, no descriptive quantity affected); the discrepancy was caught against the run's API record, corrected in PR #123 with CI verified green from the run's own conclusion and job log, and is recorded in the repository ledgers and the combined report. One Phase-137 CI run failed on the same pin (a file that phase did not touch) and proceeded only after the correction landed."
+  },
+  "scope_note": "Extension added in v4.8.0. All pre-existing keys, including release_v4_3_0 through release_v4_7_0, are unchanged; the decipherment validation results they record were not re-run for this release. Spec 024 Stage 2 changed no anchor and no PRED verdict; its findings are Tier-(ii) facts about how the writing system was organized and used, labeled with the layers they were measured on."
  }
 
 }

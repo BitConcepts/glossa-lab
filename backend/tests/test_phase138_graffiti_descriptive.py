@@ -100,9 +100,14 @@ def test_site_tables_sum_to_distinct_objects():
         assert total == section["distinct_objects"], section
         no_site = [e for e in section["distinct_objects_by_site"]
                    if e["site"] == ""]
-        assert len(no_site) == 1
-        assert no_site[0]["distinct_objects"] == \
-            section["no_site_count"]
+        # a section with no no-site objects (e.g. Tablets Vol. 2)
+        # carries no empty-site entry; its count must then be 0
+        assert len(no_site) <= 1
+        if no_site:
+            assert no_site[0]["distinct_objects"] == \
+                section["no_site_count"]
+        else:
+            assert section["no_site_count"] == 0
     # pooled site counts equal the sum of the by-volume counts
     pooled = {e["site"]: e["distinct_objects"] for e in
               res["graffiti"]["pooled"][

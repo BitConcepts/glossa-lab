@@ -1,0 +1,351 @@
+{
+ "phase": "Phase-139",
+ "spec": "025",
+ "register": "chron_band citation register: every mapped (site, field, value) cell with its band and citation; unmapped cells stay UNRECORDED for the recorded reasons. Constructed context, Class C (spec sec.8.5); no decipherment claim rests on it.",
+ "citations": {
+  "KENOYER2008": "Kenoyer, J.M. (2008), 'Indus Urbanism' (Sackler Colloquium); harappa.com Ch. 1 periodization (after Meadow & Kenoyer 2001): Harappa Period 1 Ravi and Period 2 Kot Diji = Early Harappan; Period 3A/3B/3C 'Harappa Phase A/B/C' = Mature Harappan; Period 4 Transitional and Period 5 Cemetery H = Late Harappan era; concordance: Harappan 2 (Kot Diji) incl. Nausharo I, Harappan 3A incl. Nausharo II; Dholavira chronology after Bisht: Stages I-III Regionalisation era, IV-V Integration era, VI Localisation era (c.1900-1700 BCE), VII after 1700.",
+  "BISHT_DHOLAVIRA": "Bisht, R.S., Dholavira excavations (1989; 2000): seven-stage site sequence; stage-to-era assignment as summarized in Kenoyer 2008 (see KENOYER2008).",
+  "MARSHALL1931": "Marshall, J. (1931), Mohenjo-daro and the Indus Civilization: the site's published Early / Intermediate / Late period terminology.",
+  "MACKAY1938": "Mackay, E.J.H. (1938), Further Excavations at Mohenjo-daro: 'Late period' and 'intermediate Period' in the excavator's own usage.",
+  "LAL_THAPAR_KALIBANGAN": "Lal, B.B. & Thapar, B.K., Kalibangan excavations 1960-69 (ASI): Period I = Early Harappan (Soti-Siswal), Period II = Mature Harappan.",
+  "RAO1979_LOTHAL": "Rao, S.R. (1979), Lothal: A Harappan Port Town (1955-62), ASI: Period A = Mature Harappan, divided into phases I-IV; Period B = Late Harappan (= Phase V); Rao 1963 (as summarized in Lal 1997): Lothal Period V is the degeneration (Late) phase.",
+  "JARRIGE1993_NAUSHARO": "Jarrige, J.-F. (1993) and the published Nausharo chronology: Period I (IA-ID, c.2900-2550 BCE) pre-Mature (Period I corresponds to Mehrgarh VII); Period II (IIA-IIB, to c.1900 BCE) = Mature Harappan; Period III (c.1900-1800 BCE) = Late era. The scheme has no Period IV."
+ },
+ "mapped_cells": [
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "value": "1",
+   "band": "early",
+   "citation": "BISHT_DHOLAVIRA"
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "value": "2",
+   "band": "early",
+   "citation": "BISHT_DHOLAVIRA"
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "value": "3",
+   "band": "early",
+   "citation": "BISHT_DHOLAVIRA"
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "value": "4",
+   "band": "middle",
+   "citation": "BISHT_DHOLAVIRA"
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "value": "4/5",
+   "band": "middle",
+   "citation": "BISHT_DHOLAVIRA"
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "value": "5",
+   "band": "middle",
+   "citation": "BISHT_DHOLAVIRA"
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "value": "6",
+   "band": "late",
+   "citation": "BISHT_DHOLAVIRA"
+  },
+  {
+   "site": "Harappa",
+   "field": "period",
+   "value": "1",
+   "band": "early",
+   "citation": "KENOYER2008"
+  },
+  {
+   "site": "Harappa",
+   "field": "period",
+   "value": "2",
+   "band": "early",
+   "citation": "KENOYER2008"
+  },
+  {
+   "site": "Harappa",
+   "field": "period",
+   "value": "3",
+   "band": "middle",
+   "citation": "KENOYER2008"
+  },
+  {
+   "site": "Harappa",
+   "field": "period",
+   "value": "4",
+   "band": "late",
+   "citation": "KENOYER2008"
+  },
+  {
+   "site": "Harappa",
+   "field": "period",
+   "value": "4/5",
+   "band": "late",
+   "citation": "KENOYER2008"
+  },
+  {
+   "site": "Harappa",
+   "field": "period",
+   "value": "5",
+   "band": "late",
+   "citation": "KENOYER2008"
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "value": "A",
+   "band": "middle",
+   "citation": "KENOYER2008"
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "value": "A-C",
+   "band": "middle",
+   "citation": "KENOYER2008"
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "value": "B",
+   "band": "middle",
+   "citation": "KENOYER2008"
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "value": "B/C",
+   "band": "middle",
+   "citation": "KENOYER2008"
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "value": "C",
+   "band": "middle",
+   "citation": "KENOYER2008"
+  },
+  {
+   "site": "Kalibangan",
+   "field": "period",
+   "value": "1",
+   "band": "early",
+   "citation": "LAL_THAPAR_KALIBANGAN"
+  },
+  {
+   "site": "Kalibangan",
+   "field": "period",
+   "value": "2",
+   "band": "middle",
+   "citation": "LAL_THAPAR_KALIBANGAN"
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "value": "A",
+   "band": "middle",
+   "citation": "RAO1979_LOTHAL"
+  },
+  {
+   "site": "Lothal",
+   "field": "phase",
+   "value": "I",
+   "band": "middle",
+   "citation": "RAO1979_LOTHAL"
+  },
+  {
+   "site": "Lothal",
+   "field": "phase",
+   "value": "II",
+   "band": "middle",
+   "citation": "RAO1979_LOTHAL"
+  },
+  {
+   "site": "Lothal",
+   "field": "phase",
+   "value": "II-III",
+   "band": "middle",
+   "citation": "RAO1979_LOTHAL"
+  },
+  {
+   "site": "Lothal",
+   "field": "phase",
+   "value": "III",
+   "band": "middle",
+   "citation": "RAO1979_LOTHAL"
+  },
+  {
+   "site": "Lothal",
+   "field": "phase",
+   "value": "IV",
+   "band": "middle",
+   "citation": "RAO1979_LOTHAL"
+  },
+  {
+   "site": "Lothal",
+   "field": "phase",
+   "value": "V",
+   "band": "late",
+   "citation": "RAO1979_LOTHAL"
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "period",
+   "value": "Early",
+   "band": "early",
+   "citation": "MARSHALL1931"
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "period",
+   "value": "Intermediate",
+   "band": "middle",
+   "citation": "MACKAY1938"
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "period",
+   "value": "Late",
+   "band": "late",
+   "citation": "MACKAY1938"
+  },
+  {
+   "site": "Nausharo",
+   "field": "period",
+   "value": "1",
+   "band": "early",
+   "citation": "JARRIGE1993_NAUSHARO"
+  },
+  {
+   "site": "Nausharo",
+   "field": "period",
+   "value": "2",
+   "band": "middle",
+   "citation": "JARRIGE1993_NAUSHARO"
+  },
+  {
+   "site": "Nausharo",
+   "field": "period",
+   "value": "3",
+   "band": "late",
+   "citation": "JARRIGE1993_NAUSHARO"
+  }
+ ],
+ "unmapped_cells_with_reasons": [
+  {
+   "site": "Harappa",
+   "field": "period",
+   "value": "2/3",
+   "reason": "Spans the Early/Mature boundary in the cited scheme; no single band is citable."
+  },
+  {
+   "site": "Harappa",
+   "field": "period",
+   "value": "3/4",
+   "reason": "Spans the Mature/Late boundary in the cited scheme; no single band is citable."
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "value": "B?",
+   "reason": "Uncertain attribution in the layer itself (queried value); not citable to a band."
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "value": "5/6",
+   "reason": "Spans the Integration/Localisation (Mature/Late) boundary in Bisht's scheme."
+  },
+  {
+   "site": "Dholavira",
+   "field": "period",
+   "value": "5?",
+   "reason": "Uncertain attribution in the layer itself (queried value); not citable to a band."
+  },
+  {
+   "site": "Nausharo",
+   "field": "period",
+   "value": "4",
+   "reason": "No Period IV exists in Jarrige's published Nausharo chronology (the sequence ends at Period III)."
+  }
+ ],
+ "unmapped_classes": [
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "values": "Stratum I-VII",
+   "reason": "Vats-era stratum label; no correlation to the HARP periodization was citable from the published sources consulted."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "values": "Layer 2-15",
+   "reason": "Excavation layer number; no published layer-to-period correlation for Lothal was citable from the sources consulted."
+  },
+  {
+   "site": "Mohenjo-daro",
+   "field": "phase",
+   "values": "I, II, III, IA, IB",
+   "reason": "The layer's phase labels at Mohenjo-daro carry no citable published band assignment in the consulted schemes. (No F3-population row depends on them: every phase-informative Mohenjo-daro row also carries a period value.)"
+  },
+  {
+   "site": "Kalibangan",
+   "field": "phase",
+   "values": "Early, Middle, Late",
+   "reason": "Not used: every phase-informative Kalibangan row also carries a period value, and period precedence governs; no phase cell was needed."
+  },
+  {
+   "site": "Nausharo",
+   "field": "phase",
+   "values": "B, C",
+   "reason": "No citable published band assignment for these labels at Nausharo in the consulted schemes."
+  },
+  {
+   "site": "Dholavira",
+   "field": "phase",
+   "values": "F",
+   "reason": "Single opaque label; no citable published band assignment."
+  },
+  {
+   "site": "Chanhu-daro",
+   "field": "period/phase",
+   "values": "(none informative)",
+   "reason": "The layer records no informative period or phase value for Chanhu-daro; all rows UNRECORDED."
+  }
+ ],
+ "singleton_cells": [
+  {
+   "site": "Mohenjo-daro",
+   "field": "phase",
+   "values": "II/III (1 row), III? (1 row)",
+   "reason": "Phase cells on rows whose period cell (Late) maps; never consulted under precedence. Mohenjo-daro phase is unmapped as a class."
+  },
+  {
+   "site": "Lothal",
+   "field": "period",
+   "values": "II (1 row)",
+   "reason": "Not a period label in Rao's A/B scheme; no citable cell."
+  },
+  {
+   "site": "Harappa",
+   "field": "phase",
+   "values": "Ravi (1 row)",
+   "reason": "Phase cell on a row whose period cell (1) maps to early; never consulted under precedence."
+  }
+ ],
+ "precedence": "A mapped period cell wins over a mapped phase cell; disagreements are counted as conflicts (margins) and the period band is used.",
+ "ai_disclosure": "Produced by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution section VI."
+}

@@ -3618,3 +3618,68 @@ PENDING.
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution §VI.
+
+
+## 2026-10-10 — Phase-139 (Spec 025): Stage 2 controlled follow-up — covariate audit + harmonization (margins only); G1 ESTIMABLE, primary control = preservation
+
+Executed exactly as frozen in Spec 025 (owner
+adjudication 2026-10-10, spec.md sec.11; freeze merged
+PR #129, main c3101cce). MARGINS ONLY: no association
+statistic, no repertoire comparison, no G1 quantity
+computed; sign tokens read only to reproduce the
+Phase-137 F3 population (5,410 inscriptions, 7 eligible
+sites — reproduced exactly) and its composition strata.
+H23 order followed (script -> graph module
+IndusPhase139CovariateAudit -> registration verified
+-> run). Audit: backend/scripts/
+phase139_covariate_audit.py; results:
+reports/phase139_results.json; report:
+reports/phase139_report.md; dataset + citation register:
+data/evidence_integration/phase139_*.
+
+Spec sec.3 reproduction: period/phase/both/preservation
+counts reproduce EXACTLY (full layer 2,318/2,652/5,670;
+F3 pop 2,266/2,638/1,788/5,404). Three printed draft
+percentages carry documented deltas (union 57.7% =
+rounded-percentage arithmetic, exact 57.6%; depth
+48.1/49.9% under an unrecoverable draft parse rule —
+bracketed [draft, audit 49.5/51.2%], classification
+identical throughout; all-three 16.8 vs 16.9 knock-on).
+
+Harmonization: chron_band (Q2(a), Class C) — 35 mapped
+cells, 7 published citations (Kenoyer 2008/Meadow &
+Kenoyer; Bisht; Marshall 1931; Mackay 1938; Lal &
+Thapar; Rao 1979; Jarrige 1993); 0 period/phase band
+conflicts; recorded 2,267 (41.9%) = the sec.3.3 bound
+exactly (2,162 via period cells, 105 via Lothal phase
+cells; Harappa Stratum I-VII 837 rows and Lothal Layer N
+stay UNRECORDED — no citable correlation). depth_band
+(Q3(a)): within-(site x unit) tertiles, documented
+parse (VALUE 2,684 / SURFACE 50 / RANGE 10 / DOTDOT 9 /
+UNITLESS 16 / COLON_FT_IN 1 / UNPARSED 1); 145
+boundary-tie rows disclosed; recorded 2,765 (51.1%).
+Preservation collapse: complete 3,046 / fragment 1,761
+/ damaged 597 / UNRECORDED 6 — recorded 5,404 (99.9%).
+
+Gate (sec.4.2 step 3, verbatim): chron_band FAILS arm
+(i) -> SENSITIVITY; depth_band FAILS arm (i) ->
+SENSITIVITY; preservation passes all three arms ->
+PRIMARY CONTROL. Routing rule: exactly one passer, so
+G1 is ESTIMABLE with primary strata = composition
+(Phase-137 type class x length class) x preservation,
+UNRECORDED retained as a stratum level; chronology
+NOT controlled in the primary test and named as an
+uncontrolled confounder in every G1 headline;
+sensitivities S-chron / S-depth pre-declared
+EXPLORATORY in the freeze record
+(specs/025-stage2-controlled-followup/
+phase139-freeze.md: final strata, seed 20261009, BH
+q = 0.05 over G1 alone per Q4(b), sec.5 LOSO
+criterion). Publication rides with the Spec 025
+outcome record (Q6) — no release from Phase-139.
+Anchors sha256 eccea6d5... unchanged; no PRED
+movement.
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution sec.VI.

@@ -101,7 +101,7 @@
         }
       ],
       "motif_chapter": {
-        "field_class": "C (CISI editors' chapter organization)",
+        "field_class": "Class C (CISI editors' chapter organization)",
         "total_rows": 417,
         "filled_rows": 0,
         "filled_rate": 0.0,
@@ -193,7 +193,7 @@
           }
         ],
         "motif_chapter": {
-          "field_class": "C (CISI editors' chapter organization)",
+          "field_class": "Class C (CISI editors' chapter organization)",
           "total_rows": 119,
           "filled_rows": 0,
           "filled_rate": 0.0,
@@ -259,7 +259,7 @@
           }
         ],
         "motif_chapter": {
-          "field_class": "C (CISI editors' chapter organization)",
+          "field_class": "Class C (CISI editors' chapter organization)",
           "total_rows": 298,
           "filled_rows": 0,
           "filled_rate": 0.0,

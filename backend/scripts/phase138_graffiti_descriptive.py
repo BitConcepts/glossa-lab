@@ -197,7 +197,7 @@ def describe_graffiti(rows: list[dict]) -> dict:
     out["bis_value_counts"] = _value_counts(r["bis"] for r in rows)
     filled = [r for r in rows if r["motif_chapter"].strip() != ""]
     out["motif_chapter"] = {
-        "field_class": "C (CISI editors' chapter organization)",
+        "field_class": "Class C (CISI editors' chapter organization)",
         "total_rows": len(rows),
         "filled_rows": len(filled),
         "filled_rate": (len(filled) / len(rows)) if rows else 0.0,

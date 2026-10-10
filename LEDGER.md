@@ -3555,3 +3555,66 @@ task T12 (entry on completion).
 agent (Muse Spark, via Muse) at the
 direction of Tristen Pierson, per constitution
 §VI.
+
+## 2026-10-09 — Zenodo v4.8.0 published (Spec 024 Stage 2: Phases 136–138): F1 SUPPORTED, F2 NOT SUPPORTED, F3 SUPPORTED through the release gate
+
+**Zenodo v4.8.0 published 2026-10-09** — DOI
+10.5281/zenodo.23273722 (record 23273722); concept DOI
+10.5281/zenodo.20379070 unchanged. The deposit (22
+files) adds the Spec 024 Stage 2 program note
+(`pierson_2026_indus_program_note_136_137_138_stage2.md`)
+and the three phase results files
+(`phase136_results.json`, `phase137_results.json`,
+`phase138_results.json`, CC BY 4.0) to the
+carried-forward v4.7.0 set. Publication flow per
+docs/RELEASE_CHECKLIST.md: program note +
+`RELEASE_VALIDATION.json` `release_v4_8_0` entry via
+PR #125 (merge b5c6c8e2); mandatory release gate run
+at b5c6c8e2 — **PASS 22/22** (21 MATCH + 1 EXTERNAL,
+the carried-forward v3 preprint PDF byte-identical to
+the v4.7.0 record); gate recorded via PR #126 (merge
+fe734ef0); final gate run against the merged
+gate-record commit fe734ef0 — **PASS 22/22**, exit 0
+(final staged `RELEASE_VALIDATION.json` sha256
+7306f12f0d9c09d0320410b95d6a6d973993e7d5cefade39097e8d94caec8336).
+Post-deposit confirmation: **22/22** file checksums
+on record 23273722 match the staged files. Suite and
+foundation run at the Stage 2 combined-report merge
+949d627e in the release worktree: **1081 passed / 5
+skipped / 0 failed**; foundation **40 passed / 0
+failed / 8 warnings**. OSF registry (osf.io/ybd65):
+dated v4.8.0 blocks appended to the parent project,
+the Program Outputs component (vwa7s), and the
+Corpora component (dfrhz); the Literature component
+is unchanged. Spec 024 task T12 marked DONE.
+
+Stage 2 outcomes, as found (one declared family,
+Benjamini–Hochberg q = 0.05 applied once in the
+combined report): **F1** terminal-class × object
+type, within-site stratified (ICIT-lineage layer) —
+CMH 47.0047, raw p = 0.0001, q = 0.00015, **SUPPORTED**
+(Mantel–Haenszel common OR 2.384, 95% CI 1.847–3.077;
+the layer is an ICIT-lineage derivative, not an
+independent witness). **F2** site repertoire
+differentiation (Holdat layer) — χ² 745.95, below its
+permutation median 770.32, raw p = 0.7354,
+q = 0.7354, **NOT SUPPORTED**. **F3** site repertoire
+differentiation (ICIT-lineage layer) — χ² 4,966.36
+against a permutation median of 2,667.87, raw
+p = 0.0001, q = 0.00015, **SUPPORTED** (Cramér's V
+0.2190; period, preservation, and excavation history
+not controlled in that layer). Arm (d) (Phase-138)
+was descriptive only: 417 catalogue graffiti rows
+over 395 distinct objects, the editors'
+depiction-chapter field filled on 0 of 417 rows; no
+test was computed and no continuity claim is made.
+The F2/F3 contrast is not itself a test: site
+differentiation is not a layer-free fact.
+
+No anchor or PRED change — anchors sha256
+eccea6d5… unchanged; PRED-2026-001/002/003 remain
+PENDING.
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.

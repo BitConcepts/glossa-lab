@@ -22,9 +22,7 @@ of Tristen Pierson, per constitution §VI.
 
 ## 1. Mandatory statements (freeze §3)
 
-- The Tamil Nadu graffiti corpus (tngraffiti.in) is **not in
-  hand — 0 records** (access requested 2026-10-08; no reply on
-  record). No number in this arm describes it.
+- The Tamil Nadu graffiti corpus (tngraffiti.in) is **not in hand — 0 records** (access requested 2026-10-08; no reply on record). No number in this arm describes it.
 - **Dating-gap caveat:** the Tamil Nadu graffiti material is
   separated from the Indus material by **≥ 1,000 years** on the
   published rebuttal of the continuity claims (the Harappa.com

@@ -3052,3 +3052,45 @@ record (Muse Spark, Muse), owner-directed.
 Closure record:
 `specs/024-evidence-integration/motif-arm-closure.md`.
 Full entry: repo LEDGER.md, same date.
+
+
+## 2026-10-09 — Phase-136 (Spec 024): Stage 2(a) terminal-class × object type, ICIT-lineage joined subset (F1) — raw p = 0.0001 (cross-reference)
+
+CMH 47.0047; MH common OR 2.384 (1.847–3.077);
+eligible strata Mohenjo-daro / Harappa /
+Kalibangan, N = 2,062 of 5,679 layer rows (49.0%
+unjoinable or ambiguous). Verdict assigned in the
+combined Stage 2 report (F1 q = 0.00015,
+SUPPORTED). ICIT-lineage label throughout; not a
+PRED evaluation; anchors sha256 eccea6d5…
+unchanged. Full entry: repo LEDGER.md, same date.
+
+## 2026-10-09 — Phase-137 (Spec 024): Stage 2(c) site repertoire — F2 (Holdat) raw p = 0.7354; F3 (ICIT-lineage) raw p = 0.0001 (cross-reference)
+
+F2: χ² 745.95 below its composition-controlled
+null median 770.32. F3: χ² 4,966.36 vs null median
+2,667.87, Cramér's V 0.2190. Verdicts assigned in
+the combined Stage 2 report (F2 NOT SUPPORTED;
+F3 SUPPORTED). Full entry: repo LEDGER.md, same
+date (Phase-137 entry appended by the executing
+phase).
+
+## 2026-10-09 — Phase-138 (Spec 024): Stage 2(d) graffiti descriptive — 417 rows / 395 objects; motif_chapter 0/417; no test (cross-reference)
+
+Descriptive only; Tamil Nadu corpus not in hand;
+≥1,000-year dating-gap caveat on every comparative
+statement; no overlap statistic, no continuity
+claim. PR #120 merged on a mismatched CI readout;
+two test pins corrected in PR #123 with CI
+verified green from the run's own record — see the
+correction of record in the full entry: repo
+LEDGER.md, same date.
+
+## 2026-10-09 — Spec 024 Stage 2 COMBINED (Phases 136–138): BH q = 0.05 across the declared family — F1 SUPPORTED, F2 NOT SUPPORTED, F3 SUPPORTED (cross-reference)
+
+Combined report:
+`reports/phase136_137_138_stage2_report.md`. Arm
+(b) untouched (CLOSED). §8: facts about use in
+named layers only; no anchor or PRED movement.
+Publication as Zenodo v4.8.0 follows (task T12).
+Full entry: repo LEDGER.md, same date.

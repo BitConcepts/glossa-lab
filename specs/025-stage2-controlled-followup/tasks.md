@@ -65,7 +65,7 @@
 
 ## Close-out
 
-- [ ] T13 — BH correction (per Q4) + combined Spec 025 report.
-- [ ] T14 — Foundation check 0 failures; anchors re-asserted.
+- [x] T13 — BH correction (per Q4) + combined Spec 025 report.
+- [x] T14 — Foundation check 0 failures; anchors re-asserted.
 - [ ] T15 — Publication per Q6; ledgers updated (Spec 024
       records untouched).

@@ -3162,3 +3162,15 @@ criterion met in every subset -> F1 STABLE, no single
 site load-bearing. No q-values (Q4(b)); no verdicts
 minted. Anchors sha256 eccea6d5... unchanged; no PRED
 movement. Full entry: repo LEDGER.md, same date.
+
+
+## 2026-10-10 — Spec 025 combined report + foundation check (cross-reference)
+
+Combined report reports/phase139_140_141_spec025_
+report.md: G1 SUPPORTED under preservation control
+(ICIT-lineage layer, 99.9% coverage; chronology NOT
+controlled; exploratory S-chron/S-depth bounds raw
+p 0.0001); F1 LOSO STABLE. Foundation check on merged
+main: 40 passed / 0 failed / 8 warnings; anchors
+eccea6d5... unchanged. Publication: Zenodo v4.9.0
+(Q6). Full entry: repo LEDGER.md, same date.

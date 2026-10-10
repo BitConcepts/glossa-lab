@@ -3765,3 +3765,28 @@ report: reports/phase141_report.md.
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution sec.VI.
+
+
+## 2026-10-10 — Spec 025 combined report (Phases 139-141) + foundation check
+
+Combined report reports/phase139_140_141_spec025_
+report.md (T13): the not-freezable-as-sketched finding
+and Phase-139 gate outcomes (preservation PRIMARY
+CONTROL 99.9%; chron_band SENSITIVITY 41.9%;
+depth_band SENSITIVITY 51.1%); G1 SUPPORTED under
+control (raw p 0.0001; BH over G1 alone, m = 1) with
+the mandatory headline rider — ICIT-lineage layer
+(horus84), preservation recorded coverage 99.9%,
+chronology NOT controlled in the primary test;
+EXPLORATORY bounds S-chron / S-depth both raw
+p 0.0001; LOSO robustness statement verbatim (F1
+STABLE, no load-bearing site). BH applied per Q4(b)
+in the combined report (T13). Foundation check on
+merged main fdfb0b39 (T14): 40 passed / 0 failed /
+8 warnings; anchors re-asserted byte-identical
+(eccea6d5...). Publication follows as Zenodo v4.9.0
+per Q6 (T15).
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution sec.VI.

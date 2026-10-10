@@ -3377,3 +3377,65 @@ PENDING.
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution §VI.
+
+## 2026-10-09 — Phase-137 (Spec 024): Evidence Integration, Stage 2(c) Site Repertoire Differentiation — F2 (Holdat) raw p = 0.7354; F3 (ICIT-lineage) raw p = 0.0001; verdicts deferred to the combined report's BH correction
+
+Executed exactly as frozen in
+`specs/024-evidence-integration/stage2c-freeze.md`
+(merged PR #118 before any analysis code ran), under the
+owner's Stage 2 instruction of record (Tristen Pierson,
+2026-10-09 — "Do all next things"). Family members F2 and
+F3 tested separately, never pooled: site × sign profile
+tables (sign columns = layer-wide count ≥ 10 within the
+analysis population, rarer → OTHER; placeholders excluded),
+Pearson chi-square as a divergence statistic only,
+inference by permutation of site labels at inscription
+level within composition strata (B = 9,999, seed
+20261009). Class I fields entered nothing in either
+layer. H23 order followed (script → graph module
+`IndusPhase137SiteRepertoire` → registration verified →
+run). Results computed by script into
+`reports/phase137_results.json`; report at
+`reports/phase137_report.md`.
+
+**F2 — Holdat compilation layer:** all 1,670 inscriptions,
+all 9 sites eligible, length-class strata only (type
+control degenerates — no type field in the layer, stated
+in the freeze). Table 9 × 98 (OTHER = 911 tokens, 13.01%).
+Observed χ² = 745.95 vs permutation median 770.32 / 95th
+838.45; 7,353/9,999 permutations ≥ observed → **raw
+p = 0.7354**. Cramér's V 0.1154. Sparsity disclosed per
+freeze §3: 607/882 cells (68.8%) expected < 5, min
+expected 0.214.
+
+**F3 — ICIT-lineage layer (horus84):** 5,679 rows;
+7 eligible sites, 5,410 inscriptions (70 site labels
+excluded and named in the report, incl. Unknown);
+type × length strata (16). Table 7 × 187 (OTHER = 1,387
+profile tokens, 8.04% of 17,257). Observed χ² = 4,966.36
+vs permutation median 2,667.87 / 95th 2,844.61; 0/9,999
+permutations ≥ observed → **raw p = 0.0001** (the minimum
+the frozen formula returns at B = 9,999). Cramér's V
+0.2190. Sparsity: 887/1,309 cells (67.8%) expected < 5,
+min expected 0.075. The uncontrolled-confounder
+statement (freeze §6 B2: period, preservation, excavation
+history not controlled) is stated in the report wherever
+this positive result is stated.
+
+**No verdict words here:** BH at q = 0.05 across the
+family is applied once, in the combined Stage 2 report,
+per the Stage 2(a) family declaration. Deviations from
+the freeze: none (three recorded interpretations in the
+report — inclusion token arm on parsed tokens, matching
+the freeze's own audit counts with an identical eligible
+set under either basis; the Holdat single-quote strip is
+a measured no-op on the file in hand, which contains no
+quotes; F3 length class on parsed tokens per the freeze's
+wording). Verification: phase tests 22 passed (including
+full recomputation reproducing the committed JSON
+exactly); foundation check 40 passed, 0 failed. No anchor
+or PRED change — anchors sha256 eccea6d5… unchanged.
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.

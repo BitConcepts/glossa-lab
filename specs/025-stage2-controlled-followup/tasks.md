@@ -1,14 +1,17 @@
-# Spec 025 — Tasks (Proposal)
+# Spec 025 — Tasks
 
-> ## DRAFT — PROPOSAL FOR OWNER ADJUDICATION — NOT FROZEN
+> ## FROZEN — OWNER-ADJUDICATED 2026-10-10 (spec.md §11)
 >
-> All tasks are gated on owner adjudication (spec.md §11). No
-> task is authorized by this document.
+> Phase-139 is authorized by the adjudication. Phase-140
+> tasks stay gated on the Phase-139 freeze record (T6);
+> Phase-141 proceeds under the same record.
 
 ## Adjudication
 
-- [ ] T0 — Owner answers §11 Q1–Q6; answers recorded in a dated
+- [x] T0 — Owner answers §11 Q1–Q6; answers recorded in a dated
       decision entry appended to spec.md (append-only).
+      **Done 2026-10-10:** all six answered with the
+      recommended answers; record at spec.md §11.
 
 ## Phase-139 — Covariate audit + harmonization
 
@@ -17,9 +20,9 @@
 - [ ] T2 — Covariate-eligibility audit vs the frozen gate
       (coverage, per-site counts, permutable-N projections;
       margins only — no repertoire outcome computed).
-- [ ] T3 — If Q2(a): `chron_band` mapping table with per-cell
+- [ ] T3 — Q2(a) approved: `chron_band` mapping table with per-cell
       published-stratigraphy citations; Class C grading.
-- [ ] T4 — If Q3(a): `depth_band` construction (within-site
+- [ ] T4 — Q3(a) approved: `depth_band` construction (within-site
       tertiles + UNRECORDED) with parse rules documented.
 - [ ] T5 — Phase-139 audit report + freeze recommendation
       (or G1 NOT ESTIMABLE record under §4.3 F-c).

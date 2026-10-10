@@ -1,18 +1,22 @@
-# Spec 025 — Stage 2 Controlled Follow-Up (Proposal)
+# Spec 025 — Stage 2 Controlled Follow-Up
 
-> ## DRAFT — PROPOSAL FOR OWNER ADJUDICATION — NOT FROZEN
+> ## FROZEN — OWNER-ADJUDICATED 2026-10-10 (see §11)
 >
-> Nothing in this spec is frozen, authorized, or scheduled. It
-> proposes a controlled sequel to Spec 024 Stage 2 and exists to be
-> adjudicated under §11. No analysis code is written and no test is
-> run under this spec until (a) the owner approves a design in §11
-> and (b) a freeze record operationalizing that approval is
-> committed and merged first (spec-before-code, H2).
+> This spec was drafted as a proposal and adjudicated by the
+> owner (Tristen Pierson) on 2026-10-10: all six §11 asks were
+> answered **with the recommended answers** of the agent's
+> recommendation set of the same date. The adjudication record
+> (§11) is the governing text wherever it differs from the
+> proposal text. Phase-139 (covariate audit + harmonization,
+> margins only) is authorized and executes first; Phase-140 is
+> gated on the Phase-139 freeze record (plan.md, Freeze gate);
+> Phase-141 proceeds per §5 under the same freeze record. No
+> other execution is authorized by this freeze.
 
-**Proposed phases:** 139 (covariate audit + harmonization),
+**Phases:** 139 (covariate audit + harmonization),
 140 (controlled F3 re-test), 141 (F1 leave-one-site-out
 sensitivity) · **Parent spec:** 024 (Stage 2, complete 2026-10-10) ·
-**Date of proposal:** 2026-10-10.
+**Date of proposal:** 2026-10-10 · **Frozen:** 2026-10-10 (§11).
 
 **AI disclosure:** this proposal is produced by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen Pierson, per
@@ -203,13 +207,29 @@ in this order, each step decided on covariate margins only:
    with the result, and a result whose control rests on a
    minority recorded share must say so in its headline paragraph.
 
+   **Adjudication amendment (2026-10-10, §11 Q5) — the routing
+   rule.** Any approved covariate that *fails* this eligibility
+   gate routes automatically to the sensitivity panel (labeled
+   EXPLORATORY wherever it appears, reported as bounds, never as
+   the controlled verdict). If exactly one covariate passes the
+   gate, the primary strata are composition × that covariate.
+   If no covariate passes the gate, no primary strata can be
+   formed: G1 is recorded NOT ESTIMABLE under §4.3 F-c, with any
+   routed sensitivities reported as exploratory bounds only.
+   This rule governs the gate-failure case wherever §4.3's
+   fallback ladder is silent or in tension with it.
+
 ### 4.3 Pre-declared fallbacks (in order)
 
 - **F-a:** chronology harmonized but depth fails the gate →
   primary strata = composition × `chron_band`.
 - **F-b:** chronology not approved or not harmonizable → G1 as a
-  **confirmatory** test does not run. Two sensitivity analyses
-  may run instead, labeled EXPLORATORY wherever they appear:
+  **confirmatory** test does not run. (Gate failure of an
+  approved, harmonized covariate is *not* this case — it is
+  governed by the §4.2 routing rule, under which a sole
+  gate-passer forms the primary strata and G1 does run.) Two
+  sensitivity analyses may run instead, labeled EXPLORATORY
+  wherever they appear:
   (i) composition × `depth_band` permutation on the same
   population; (ii) composition × `preservation` permutation
   (`preservation` collapsed to complete / fragment / damaged,
@@ -260,19 +280,19 @@ difference between the two designs stated as the finding.
 ## 6. Family declaration and correction
 
 - **One family, F25:** { G1, L-MD, L-HA, L-KA }.
-- **Correction:** Benjamini–Hochberg at **q = 0.05** across the
-  raw permutation p-values of the members that execute and are
-  estimable, applied once in the combined Spec 025 report.
-- G1's verdict word (SUPPORTED / NOT SUPPORTED under control)
-  is assigned only from its BH-adjusted q.
-- The LOSO members' adjusted q-values are printed for
-  transparency and family completeness; per §5 they cannot
-  create, extend, or retract a finding — the robustness
-  criterion governs their interpretation. (Whether sensitivity
-  members belong in the BH denominator at all is a genuine
-  methodological choice; it is put to the owner as §11 Q4
-  rather than decided silently here. The alternative — BH over
-  G1 alone, LOSO reported without q — is stated there.)
+- **Correction (as adjudicated, §11 Q4 — option (b)):** G1's
+  verdict word (SUPPORTED / NOT SUPPORTED under control) is
+  assigned from Benjamini–Hochberg over **G1 alone** at
+  q = 0.05 — equivalently, its raw permutation p against 0.05,
+  stated as such in every report. The LOSO members mint no
+  verdicts and make no discovery claim, so they are **not**
+  in the correction denominator: they are reported with raw
+  permutation p-values, no q-values are computed for them,
+  and the §5 robustness criterion governs their
+  interpretation. (The proposal's alternative — BH across all
+  executing members — was put to the owner as Q4 and not
+  adopted; the choice was made at adjudication, before any
+  Phase-139 margins or outcomes were seen.)
 - Anything computed outside this declaration is EXPLORATORY,
   labeled as such in every artifact, and excluded from the
   family.
@@ -350,33 +370,61 @@ answered "no", the correct outcome is a one-line record that
 Spec 025 was proposed and declined, with F3's caveat standing as
 the program's final word on repertoire.
 
-## 11. Decision asks for the owner
+## 11. Adjudication record (owner, 2026-10-10)
 
-- **Q1 — Proceed at all?** Approve Phase-139 (covariate audit +
-  harmonization design; margins only, no outcome computed) as
-  the next step — or decline Spec 025 in full.
-- **Q2 — Chronology basis.** If proceeding: (a) authorize a
-  published-stratigraphy harmonization (Class C, per-cell
-  citations, §4.2 step 1) — recommended; or (b) restrict to the
-  layer's raw labels only, accepting that §3.3 makes G1 very
-  likely NOT ESTIMABLE; or (c) skip chronology and authorize
-  only the §4.3 F-b sensitivities.
-- **Q3 — Depth handling.** (a) Within-site relative depth bands
-  as a control/sensitivity covariate (§4.2 step 2) —
-  recommended; (b) exclude depth entirely; or (c) require
-  absolute cross-site depth harmonization (the draft's view:
-  not defensible from this file — datums are site-local).
-- **Q4 — Family accounting.** (a) BH over all executing members
-  {G1 + LOSO} as declared in §6 — as drafted; or (b) BH over G1
-  alone, with LOSO q-values not computed. Either way the §5
-  robustness criterion, not q, governs LOSO interpretation.
-- **Q5 — Estimability thresholds.** Approve the §4.2 gate values
-  (≥ 70% recorded coverage; ≥ 3 sites at ≥ 30 recorded
-  inscriptions; ≥ 1,000 permutable inscriptions) or amend them
-  now — they will not be tuned after Phase-139 margins are seen
-  beyond what the freeze records as a deviation.
-- **Q6 — Publication.** On completion, results publish through
-  the standing release path (repo reports + release gate +
-  Zenodo version) as with Spec 024 — or repo-local only.
+Adjudicated by the owner (Tristen Pierson) on 2026-10-10:
+**"Adjudicate Spec 025 with the recommended answers and
+execute Phase-139."** All six asks are answered with the
+recommended answers of the agent's recommendation set of
+2026-10-10 (`indus-spec025-recommendations-20261010.md`,
+prepared at the owner's request and posted as a comment on
+the draft PR). The answers below govern wherever the proposal
+text differs.
 
-*End of proposal. Awaiting owner adjudication; not frozen.*
+- **Q1 — Proceed: YES.** Phase-139 (covariate audit +
+  harmonization; margins only, no outcome computed) is
+  approved and executes first. NOT ESTIMABLE is a designed,
+  citable outcome of that phase, not a failure mode.
+- **Q2 — Chronology basis: (a)** published-stratigraphy
+  harmonization authorized, with the recommendation's three
+  conditions: (i) **three bands maximum** (early / middle /
+  late relative to each site's published sequence) plus
+  `UNRECORDED`; (ii) **per-cell citations or `UNRECORDED`** —
+  no cell is forced to chase coverage; (iii) the work is
+  scoped to the seven F3 sites' published stratigraphies, a
+  mapping table + citations, nothing more (time-boxed at this
+  freeze). `chron_band` is constructed context (Class C)
+  under §8.5.
+- **Q3 — Depth handling: (a)** within-site relative depth
+  bands (§4.2 step 2). Option (c), absolute cross-site depth
+  harmonization, is **rejected as indefensible** from this
+  file (datums are site- and trench-local). Reports repeat
+  that the depth control is relative, per §4.2.
+- **Q4 — Family accounting: (b)** Benjamini–Hochberg over
+  **G1 alone** (§6 as amended). The LOSO members are reported
+  with raw permutation p-values, no q-values are computed for
+  them, and the §5 robustness criterion governs their
+  interpretation. Decided at adjudication, before any
+  Phase-139 margins or outcomes were seen; it will not be
+  revisited after outcomes are known.
+- **Q5 — Estimability thresholds: approved as drafted** —
+  ≥ 70% recorded coverage; ≥ 3 eligible sites at ≥ 30
+  recorded inscriptions; ≥ 1,000 permutable inscriptions
+  (§4.2 step 3). **Plus the pre-declared routing rule** now
+  recorded in §4.2: an approved covariate that fails the gate
+  routes automatically to the sensitivity panel (EXPLORATORY,
+  reported as bounds), and if exactly one covariate passes
+  the gate, the primary strata are composition × that
+  covariate. The thresholds will not be tuned after
+  Phase-139 margins are seen.
+- **Q6 — Publication: the standing release path** (repo
+  reports + release gate + Zenodo version), as with Spec 024.
+  Per the executing instruction for this run, publication
+  rides with the Spec 025 outcome record (G1 executed, or the
+  NOT ESTIMABLE closeout) — Phase-139 alone does not trigger
+  a release. Negative and NOT ESTIMABLE outcomes publish with
+  the same prominence as positive ones (§8.7). Repo-local
+  only was recommended against and is not adopted.
+
+*Frozen 2026-10-10. Amendments only by a further owner
+adjudication, recorded as dated entries in this section.*

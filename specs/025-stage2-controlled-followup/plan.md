@@ -1,9 +1,12 @@
-# Spec 025 — Plan (Proposal)
+# Spec 025 — Plan
 
-> ## DRAFT — PROPOSAL FOR OWNER ADJUDICATION — NOT FROZEN
+> ## FROZEN — OWNER-ADJUDICATED 2026-10-10 (spec.md §11)
 >
-> Execution begins only after owner adjudication of spec.md §11
-> and a merged freeze record. Phase numbers are proposed.
+> Adjudication is recorded in spec.md §11 (all six asks
+> answered with the recommended answers). Phase-139 executes
+> under this freeze; Phase-140 is gated on the Phase-139
+> freeze record (step 5 below); Phase-141 proceeds per
+> spec.md §5 under the same freeze record.
 
 ## Phase-139 — Covariate audit + harmonization (no outcome data)
 

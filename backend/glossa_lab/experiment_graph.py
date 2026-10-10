@@ -2725,6 +2725,16 @@ try:
     logger.info("Registered %d Phase-134 pilot (spec 024) nodes", len(list(_p134_defs())))
 except Exception as _p134_exc:  # noqa: BLE001
     logger.warning("Phase-134 pilot (spec 024) nodes not registered: %s", _p134_exc)
+# ── Phase-138 nodes (spec 024: evidence integration, Stage 2(d) graffiti descriptive) ──
+try:
+    from glossa_lab.experiment_graph_phase138 import (
+        _phase138_node_defs as _p138_defs,  # noqa: PLC0415
+    )
+    for _d in _p138_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-138 descriptive (spec 024) nodes", len(list(_p138_defs())))
+except Exception as _p138_exc:  # noqa: BLE001
+    logger.warning("Phase-138 descriptive (spec 024) nodes not registered: %s", _p138_exc)
 # ── Phase-135 nodes (spec 024: evidence integration, Stage 1 re-pilot) ──
 try:
     from glossa_lab.experiment_graph_phase135 import (

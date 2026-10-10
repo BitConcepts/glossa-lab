@@ -1,0 +1,544 @@
+{
+  "phase": "Phase-138",
+  "spec": "024 §5.5 (arm (d), Stage 2(d))",
+  "freeze": "specs/024-evidence-integration/stage2d-freeze.md",
+  "family_role": "none (descriptive only)",
+  "descriptive_only": true,
+  "ai_disclosure": "This execution was produced by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution §VI.",
+  "inputs": [
+    {
+      "volume": 1,
+      "path": "/home/hatch/workspace/glossa-lab/corpora/downloads/cisi_image_layer/catalogue/cisi_vol1_catalogue.csv",
+      "sha256": "e0d698f991fbd7cf26c491a2b25906b422903a0e2a26ea7b8c690420ca51dc1e"
+    },
+    {
+      "volume": 2,
+      "path": "/home/hatch/workspace/glossa-lab/corpora/downloads/cisi_image_layer/catalogue/cisi_vol2_catalogue.csv",
+      "sha256": "e751244e2d51bda3181d98e56af691c0d24099d76d035b54f0888504204bc7d9"
+    }
+  ],
+  "population": {
+    "definition": "Phase-124 catalogue rows (CISI Vols. 1–2) with object_type exactly 'Graffiti'; distinct objects are volume-scoped (canonical key cisi:v{volume}:{cisi_id}).",
+    "rows_total": 417,
+    "distinct_objects_total": 395,
+    "by_volume": {
+      "1": {
+        "rows": 119,
+        "distinct_objects": 100
+      },
+      "2": {
+        "rows": 298,
+        "distinct_objects": 295
+      }
+    }
+  },
+  "graffiti": {
+    "pooled": {
+      "rows": 417,
+      "distinct_objects": 395,
+      "distinct_objects_by_site": [
+        {
+          "site": "Harappa",
+          "distinct_objects": 262
+        },
+        {
+          "site": "Lothal",
+          "distinct_objects": 44
+        },
+        {
+          "site": "Mohenjo-Daro",
+          "distinct_objects": 42
+        },
+        {
+          "site": "Kalibangan",
+          "distinct_objects": 26
+        },
+        {
+          "site": "",
+          "distinct_objects": 8
+        },
+        {
+          "site": "Banawali",
+          "distinct_objects": 8
+        },
+        {
+          "site": "Rangpur",
+          "distinct_objects": 3
+        },
+        {
+          "site": "Amri",
+          "distinct_objects": 2
+        }
+      ],
+      "no_site_count": 8,
+      "rows_per_object_distribution": {
+        "1": 374,
+        "2": 20,
+        "3": 1
+      },
+      "side_value_counts": [
+        {
+          "value": "A",
+          "count": 412
+        },
+        {
+          "value": "B",
+          "count": 4
+        },
+        {
+          "value": "C",
+          "count": 1
+        }
+      ],
+      "bis_value_counts": [
+        {
+          "value": "",
+          "count": 399
+        },
+        {
+          "value": "yes",
+          "count": 18
+        }
+      ],
+      "motif_chapter": {
+        "field_class": "C (CISI editors' chapter organization)",
+        "total_rows": 417,
+        "filled_rows": 0,
+        "filled_rate": 0.0,
+        "distinct_values": []
+      },
+      "numeric_descriptors": {
+        "caption_ocr_score": {
+          "present_count": 417,
+          "median": 0.943,
+          "q1": 0.928,
+          "q3": 0.957,
+          "iqr": 0.028999999999999915
+        },
+        "scale_pct": {
+          "present_count": 332,
+          "median": 100.0,
+          "q1": 50.0,
+          "q3": 100.0,
+          "iqr": 50.0
+        }
+      }
+    },
+    "by_volume": {
+      "1": {
+        "rows": 119,
+        "distinct_objects": 100,
+        "distinct_objects_by_site": [
+          {
+            "site": "Lothal",
+            "distinct_objects": 44
+          },
+          {
+            "site": "Kalibangan",
+            "distinct_objects": 26
+          },
+          {
+            "site": "Banawali",
+            "distinct_objects": 8
+          },
+          {
+            "site": "Harappa",
+            "distinct_objects": 6
+          },
+          {
+            "site": "Mohenjo-Daro",
+            "distinct_objects": 6
+          },
+          {
+            "site": "",
+            "distinct_objects": 5
+          },
+          {
+            "site": "Rangpur",
+            "distinct_objects": 3
+          },
+          {
+            "site": "Amri",
+            "distinct_objects": 2
+          }
+        ],
+        "no_site_count": 5,
+        "rows_per_object_distribution": {
+          "1": 82,
+          "2": 17,
+          "3": 1
+        },
+        "side_value_counts": [
+          {
+            "value": "A",
+            "count": 116
+          },
+          {
+            "value": "B",
+            "count": 2
+          },
+          {
+            "value": "C",
+            "count": 1
+          }
+        ],
+        "bis_value_counts": [
+          {
+            "value": "",
+            "count": 103
+          },
+          {
+            "value": "yes",
+            "count": 16
+          }
+        ],
+        "motif_chapter": {
+          "field_class": "C (CISI editors' chapter organization)",
+          "total_rows": 119,
+          "filled_rows": 0,
+          "filled_rate": 0.0,
+          "distinct_values": []
+        },
+        "numeric_descriptors": {
+          "caption_ocr_score": {
+            "present_count": 119,
+            "median": 0.968,
+            "q1": 0.9424999999999999,
+            "q3": 0.981,
+            "iqr": 0.03850000000000009
+          },
+          "scale_pct": {
+            "present_count": 38,
+            "median": 100.0,
+            "q1": 50.0,
+            "q3": 100.0,
+            "iqr": 50.0
+          }
+        }
+      },
+      "2": {
+        "rows": 298,
+        "distinct_objects": 295,
+        "distinct_objects_by_site": [
+          {
+            "site": "Harappa",
+            "distinct_objects": 256
+          },
+          {
+            "site": "Mohenjo-Daro",
+            "distinct_objects": 36
+          },
+          {
+            "site": "",
+            "distinct_objects": 3
+          }
+        ],
+        "no_site_count": 3,
+        "rows_per_object_distribution": {
+          "1": 292,
+          "2": 3
+        },
+        "side_value_counts": [
+          {
+            "value": "A",
+            "count": 296
+          },
+          {
+            "value": "B",
+            "count": 2
+          }
+        ],
+        "bis_value_counts": [
+          {
+            "value": "",
+            "count": 296
+          },
+          {
+            "value": "yes",
+            "count": 2
+          }
+        ],
+        "motif_chapter": {
+          "field_class": "C (CISI editors' chapter organization)",
+          "total_rows": 298,
+          "filled_rows": 0,
+          "filled_rate": 0.0,
+          "distinct_values": []
+        },
+        "numeric_descriptors": {
+          "caption_ocr_score": {
+            "present_count": 298,
+            "median": 0.9384999999999999,
+            "q1": 0.924,
+            "q3": 0.949,
+            "iqr": 0.02499999999999991
+          },
+          "scale_pct": {
+            "present_count": 294,
+            "median": 100.0,
+            "q1": 50.0,
+            "q3": 100.0,
+            "iqr": 50.0
+          }
+        }
+      }
+    }
+  },
+  "context_table": {
+    "label": "Catalogue-composition description only: the graffiti subset's catalogue shape read against the corpus it sits in. This is not a comparison of repertoires and licenses no inference. Graffiti rows are never pooled with seal or tablet rows in any joint repertoire.",
+    "by_object_type": {
+      "Seals": {
+        "rows": 4778,
+        "distinct_objects": 2016,
+        "distinct_objects_by_site": [
+          {
+            "site": "Mohenjo-Daro",
+            "distinct_objects": 1057
+          },
+          {
+            "site": "Harappa",
+            "distinct_objects": 551
+          },
+          {
+            "site": "",
+            "distinct_objects": 170
+          },
+          {
+            "site": "Lothal",
+            "distinct_objects": 124
+          },
+          {
+            "site": "Kalibangan",
+            "distinct_objects": 65
+          },
+          {
+            "site": "Banawali",
+            "distinct_objects": 22
+          },
+          {
+            "site": "Jhukar",
+            "distinct_objects": 15
+          },
+          {
+            "site": "Desalpur",
+            "distinct_objects": 7
+          },
+          {
+            "site": "Rojdi",
+            "distinct_objects": 4
+          },
+          {
+            "site": "Surkotada",
+            "distinct_objects": 1
+          }
+        ],
+        "no_site_count": 170,
+        "rows_per_object_distribution": {
+          "1": 195,
+          "2": 1229,
+          "3": 318,
+          "4": 220,
+          "5": 41,
+          "6": 8,
+          "7": 3,
+          "8": 1,
+          "9": 1
+        },
+        "by_volume": {
+          "1": {
+            "rows": 2055,
+            "distinct_objects": 866,
+            "distinct_objects_by_site": [
+              {
+                "site": "Mohenjo-Daro",
+                "distinct_objects": 416
+              },
+              {
+                "site": "Harappa",
+                "distinct_objects": 165
+              },
+              {
+                "site": "Lothal",
+                "distinct_objects": 124
+              },
+              {
+                "site": "Kalibangan",
+                "distinct_objects": 65
+              },
+              {
+                "site": "",
+                "distinct_objects": 47
+              },
+              {
+                "site": "Banawali",
+                "distinct_objects": 22
+              },
+              {
+                "site": "Jhukar",
+                "distinct_objects": 15
+              },
+              {
+                "site": "Desalpur",
+                "distinct_objects": 7
+              },
+              {
+                "site": "Rojdi",
+                "distinct_objects": 4
+              },
+              {
+                "site": "Surkotada",
+                "distinct_objects": 1
+              }
+            ],
+            "no_site_count": 47,
+            "rows_per_object_distribution": {
+              "1": 50,
+              "2": 590,
+              "3": 108,
+              "4": 97,
+              "5": 17,
+              "6": 2,
+              "7": 1,
+              "9": 1
+            }
+          },
+          "2": {
+            "rows": 2723,
+            "distinct_objects": 1150,
+            "distinct_objects_by_site": [
+              {
+                "site": "Mohenjo-Daro",
+                "distinct_objects": 641
+              },
+              {
+                "site": "Harappa",
+                "distinct_objects": 386
+              },
+              {
+                "site": "",
+                "distinct_objects": 123
+              }
+            ],
+            "no_site_count": 123,
+            "rows_per_object_distribution": {
+              "1": 145,
+              "2": 639,
+              "3": 210,
+              "4": 123,
+              "5": 24,
+              "6": 6,
+              "7": 2,
+              "8": 1
+            }
+          }
+        }
+      },
+      "Tablets": {
+        "rows": 2180,
+        "distinct_objects": 866,
+        "distinct_objects_by_site": [
+          {
+            "site": "Harappa",
+            "distinct_objects": 479
+          },
+          {
+            "site": "Mohenjo-Daro",
+            "distinct_objects": 362
+          },
+          {
+            "site": "Kalibangan",
+            "distinct_objects": 16
+          },
+          {
+            "site": "Banawali",
+            "distinct_objects": 6
+          },
+          {
+            "site": "",
+            "distinct_objects": 3
+          }
+        ],
+        "no_site_count": 3,
+        "rows_per_object_distribution": {
+          "1": 35,
+          "2": 546,
+          "3": 141,
+          "4": 112,
+          "5": 12,
+          "6": 18,
+          "7": 2
+        },
+        "by_volume": {
+          "1": {
+            "rows": 977,
+            "distinct_objects": 390,
+            "distinct_objects_by_site": [
+              {
+                "site": "Mohenjo-Daro",
+                "distinct_objects": 184
+              },
+              {
+                "site": "Harappa",
+                "distinct_objects": 181
+              },
+              {
+                "site": "Kalibangan",
+                "distinct_objects": 16
+              },
+              {
+                "site": "Banawali",
+                "distinct_objects": 6
+              },
+              {
+                "site": "",
+                "distinct_objects": 3
+              }
+            ],
+            "no_site_count": 3,
+            "rows_per_object_distribution": {
+              "1": 21,
+              "2": 240,
+              "3": 65,
+              "4": 49,
+              "5": 6,
+              "6": 8,
+              "7": 1
+            }
+          },
+          "2": {
+            "rows": 1203,
+            "distinct_objects": 476,
+            "distinct_objects_by_site": [
+              {
+                "site": "Harappa",
+                "distinct_objects": 298
+              },
+              {
+                "site": "Mohenjo-Daro",
+                "distinct_objects": 178
+              }
+            ],
+            "no_site_count": 0,
+            "rows_per_object_distribution": {
+              "1": 14,
+              "2": 306,
+              "3": 76,
+              "4": 63,
+              "5": 6,
+              "6": 10,
+              "7": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "kodumanal_qualitative": "The Kodumanal volume is a trench-organized excavation report whose Graffiti Marks section describes marks by ware and by vessel position (shoulder near the rim), and as pre-firing vs surface marks (Phase-133 Stage 0 report §6.1). Its printed tallies are quoted as prose only, with their internal inconsistency stated: the section states \"Out of 175 graffiti marks 75 in Black and Red ware, 70 Red ware, 70 Russet Coated ware and 10 Black ware were noticed\" — subtotals summing to 225 against a stated 175 — and separately that \"41 Brahmi sherds were observed and 99 Graffiti marks were collected\". No tally from the volume is used as a count anywhere in this arm.",
+  "mandatory_statements": [
+    "The Tamil Nadu graffiti corpus (tngraffiti.in) is not in hand — 0 records (access requested 2026-10-08; no reply on record). No number in this arm describes it.",
+    "Dating-gap caveat: the Tamil Nadu graffiti material is separated from the Indus material by ≥ 1,000 years on the published rebuttal of the continuity claims (the Harappa.com critique of Rajan & Sivanantham). Any resemblance ever noted across that gap is formal resemblance across a millennium-plus separation — nothing more. This caveat attaches to every comparative statement in this arm.",
+    "A permitted output of this arm is \"resemblance described\"; a prohibited output is any continuity, descent, or survival claim (spec 024 §5.5)."
+  ],
+  "no_overlap_statistic_reason": "No overlap statistic against the seal-text sign repertoire is computed: no machine-readable sign-form repertoire of the catalogue graffiti objects exists in hand (the catalogue records photographs and captions, not transcriptions; Phase-132 closed the program's attempt to manufacture transcriptions from plates).",
+  "quartile_method": "statistics.quantiles(n=4, method='inclusive'); median via statistics.median."
+}

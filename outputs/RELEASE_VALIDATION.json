@@ -1218,6 +1218,106 @@
    "process_record": "Phase-138's merging PR (#120) landed on a CI readout that did not match its run's actual conclusion (two pins in the phase's own test file had failed; test code only, no descriptive quantity affected); the discrepancy was caught against the run's API record, corrected in PR #123 with CI verified green from the run's own conclusion and job log, and is recorded in the repository ledgers and the combined report. One Phase-137 CI run failed on the same pin (a file that phase did not touch) and proceeded only after the correction landed."
   },
   "scope_note": "Extension added in v4.8.0. All pre-existing keys, including release_v4_3_0 through release_v4_7_0, are unchanged; the decipherment validation results they record were not re-run for this release. Spec 024 Stage 2 changed no anchor and no PRED verdict; its findings are Tier-(ii) facts about how the writing system was organized and used, labeled with the layers they were measured on."
+ },
+ "release_v4_9_0": {
+  "version": "4.9.0",
+  "date": "2026-10-10",
+  "note_file": "pierson_2026_indus_program_note_139_140_141_spec025.md",
+  "repo": "BitConcepts/glossa-lab",
+  "repo_main_commit": "5eec1542",
+  "repo_main_commit_full": "5eec15427086809ec914a7a66dd2d9edb074001d",
+  "anchors_file": "INDUS_FINAL_ANCHORS.json",
+  "anchors_sha256": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+  "backend_suite": {
+   "passed": 1122,
+   "skipped": 5,
+   "failed": 0,
+   "run": "Run 2026-10-10 in the v4.9.0 release worktree at merged main 5eec1542 (canonical venv, corpora symlinked from the main checkout, CI configuration with GPU test files ignored): 1122 passed / 5 skipped / 0 failed in 1494.29s.",
+   "ci": "GitHub CI on PR #134 merge commit 5eec1542: 7/7 checks green; backend job log 1109 passed / 18 skipped / 0 failed"
+  },
+  "foundation_check": {
+   "passed": 40,
+   "failed": 0,
+   "warnings": 8,
+   "run": "Run 2026-10-10 in this worktree at merged main fdfb0b39 (corpora symlinked): 40 checks passed, 0 failed, 8 warnings; recorded in the combined-report PR #134 and re-verified at the release source commit."
+  },
+  "phase_outcomes": {
+   "spec_025_controlled_followup": {
+    "design": "Spec 025 frozen 2026-10-10 (PR #129, spec.md sec.11 adjudication: all six asks answered with the recommended answers); Phase-139 freeze record (PR #130); Phase-140/141 freeze records (PR #131, merged 2ca98d05). Combined report reports/phase139_140_141_spec025_report.md (PR #134, merged 5eec1542).",
+    "phase_139_covariate_audit": {
+     "build_pr": "#130 (merged 9d917440)",
+     "finding": "the spec as sketched was NOT FREEZABLE: the layer's unit field is a locus label, not an excavation unit; depth recorded 51.1% in mixed incommensurable forms; context empty on 5,679/5,679 rows; no surface-collection rows; chronology only as published-stratigraphy compilations",
+     "gate": {
+      "chron_band": "SENSITIVITY (41.9% recorded)",
+      "depth_band": "SENSITIVITY (51.1% recorded)",
+      "preservation": "PRIMARY CONTROL (99.9% recorded; 7 sites >= 30; 5,404 permutable)"
+     },
+     "verdict": "G1 ESTIMABLE; primary strata = composition (Phase-137 type class x length class) x preservation, UNRECORDED retained as a stratum level; margins only, no association statistic computed"
+    },
+    "phase_140_g1": {
+     "build_pr": "#132 (merged f7f1292b)",
+     "regression": "uncontrolled (composition-only) configuration reproduced Phase-137 F3 EXACTLY: chi2 4,966.362228365138; 0/9,999; null median 2,667.87",
+     "observed_chi_square": 4966.362228365138,
+     "null_median_controlled": 2684.7434405035738,
+     "null_p95_controlled": 2859.3034312838636,
+     "n_perm_ge_observed": 0,
+     "raw_p": 0.0001,
+     "bh": "Benjamini-Hochberg over G1 alone (Q4(b)), m = 1, q = 0.05: adjusted 0.0001 — stated plainly, the raw p against 0.05 for a one-member family, NOT a family correction across the LOSO members",
+     "cramers_v_descriptive": 0.2190084751289231,
+     "permutable": "5,404 of 5,410 (53 strata)",
+     "sparsity": "887 / 1,309 cells expected < 5 (67.8%), disclosed",
+     "verdict": "SUPPORTED under control",
+     "headline_rider": "ICIT-lineage layer (horus84); preservation recorded coverage 99.9%; chronology is NOT controlled in the primary test — period/phase remain uncontrolled confounders",
+     "sensitivity_panel_exploratory": {
+      "S_chron": {
+       "coverage": "41.9% recorded",
+       "permutable": 5342,
+       "null_median": 2809.5319251859482,
+       "raw_p": 0.0001
+      },
+      "S_depth": {
+       "coverage": "51.1% recorded",
+       "permutable": 5406,
+       "null_median": 2682.7772946802716,
+       "raw_p": 0.0001
+      }
+     }
+    },
+    "phase_141_loso": {
+     "build_pr": "#133 (merged fdfb0b39)",
+     "reproduction": "no-drop configuration reproduced Phase-136 EXACTLY (CMH 47.004657020769315; MH OR 2.3839554105695653, CI 1.847-3.077; raw p 0.0001)",
+     "subsets": {
+      "L-MD": {
+       "mh_or": 2.7055618068767107,
+       "ci95": [
+        1.858102866245992,
+        3.939536838247833
+       ],
+       "raw_p": 0.0001
+      },
+      "L-HA": {
+       "mh_or": 2.1621109165330825,
+       "ci95": [
+        1.5414950325162773,
+        3.0325907750482255
+       ],
+       "raw_p": 0.0002
+      },
+      "L-KA": {
+       "mh_or": 2.4003056682705695,
+       "ci95": [
+        1.8569718863254783,
+        3.102614177176612
+       ],
+       "raw_p": 0.0001
+      }
+     },
+     "robustness_statement": "F1 is STABLE under leave-one-site-out: every estimable subset's Mantel-Haenszel common OR remains > 1 with its 95% CI excluding 1, so no single site is load-bearing for the F1 result.",
+     "q_values": "NONE (adjudication Q4(b)); no verdicts minted"
+    }
+   }
+  },
+  "scope_note": "Extension added in v4.9.0. All pre-existing keys, including release_v4_3_0 through release_v4_8_0, are unchanged; the decipherment validation results they record were not re-run for this release. Spec 025 changed no anchor and no PRED verdict; G1 is reported alongside the Phase-137 F3 result (never instead of it), with chronology named as an uncontrolled confounder of the primary test wherever the verdict appears."
  }
 
 }

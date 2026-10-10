@@ -3094,3 +3094,27 @@ Combined report:
 named layers only; no anchor or PRED movement.
 Publication as Zenodo v4.8.0 follows (task T12).
 Full entry: repo LEDGER.md, same date.
+
+## 2026-10-09 — Zenodo v4.8.0 published (Spec 024 Stage 2: Phases 136–138) (cross-reference)
+
+DOI 10.5281/zenodo.23273722 (record 23273722) —
+deposits the Spec 024 Stage 2 program note
+(`pierson_2026_indus_program_note_136_137_138_stage2.md`)
+and the three phase results files
+(`phase136_results.json`, `phase137_results.json`,
+`phase138_results.json`) CC BY 4.0. Release gate
+PASS 22/22 at b5c6c8e2, recorded via PR #126; final
+gate run at the gate-record merge fe734ef0 PASS
+22/22. Post-deposit checksums confirmed 22/22. OSF
+registry updated in step (parent, Outputs, Corpora;
+Literature unchanged). Family verdicts (BH q = 0.05,
+applied once): F1 terminal-class × object type
+(ICIT-lineage) q = 0.00015 SUPPORTED; F2 site
+repertoire (Holdat) q = 0.7354 NOT SUPPORTED; F3
+site repertoire (ICIT-lineage) q = 0.00015
+SUPPORTED; arm (d) descriptive only (417 rows /
+395 objects, depiction-chapter field 0/417). No
+anchor or PRED change — anchors sha256 eccea6d5…
+unchanged. AI-assisted record (Muse Spark, Muse
+Code), owner-directed. Full entry: repo LEDGER.md,
+same date.

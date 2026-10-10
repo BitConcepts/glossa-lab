@@ -229,4 +229,12 @@
   (program note + the three phase results JSONs,
   CC BY 4.0) through the mandatory release gate;
   OSF registry updated in step. (Completion
-  appended below on publication.)
+  appended below on publication.) — **DONE
+  2026-10-09**: published as Zenodo v4.8.0 (DOI
+  10.5281/zenodo.23273722, record 23273722) through
+  the mandatory release gate (PASS 22/22 at
+  b5c6c8e2, recorded in `RELEASE_VALIDATION.json`
+  `release_v4_8_0`; final gate run at the
+  gate-record merge fe734ef0 PASS 22/22);
+  post-deposit checksums confirmed 22/22; OSF
+  registry updated the same day.

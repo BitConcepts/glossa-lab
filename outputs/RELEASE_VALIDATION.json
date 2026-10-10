@@ -1241,6 +1241,122 @@
    "warnings": 8,
    "run": "Run 2026-10-10 in this worktree at merged main fdfb0b39 (corpora symlinked): 40 checks passed, 0 failed, 8 warnings; recorded in the combined-report PR #134 and re-verified at the release source commit."
   },
+  "release_gate": {
+   "verdict": "PASS",
+   "tool": "backend/scripts/release_gate.py per docs/RELEASE_CHECKLIST.md",
+   "checklist": "Zero-fabrication release checklist (docs/RELEASE_CHECKLIST.md)",
+   "run_date": "2026-10-10",
+   "source_commit": "232f0d2f",
+   "source_commit_note": "All staged files were copied from a clean worktree of the merged PR #135 commit 232f0d2f (the v4.9.0 note + RELEASE_VALIDATION entry) before deposit; the publication sequence follows docs/RELEASE_CHECKLIST.md.",
+   "manifest": "release_manifest_490.json (26 entries)",
+   "release_validation_json_note": "The staged RELEASE_VALIDATION.json (sha256 2b838c0a65a78484008dfa4271b44c1be000954b9c5b47268445b80a8ab5a179) is the file at source commit 232f0d2f, which contains the v4.9.0 entry WITHOUT this release_gate record. The deposited RELEASE_VALIDATION.json additionally contains this record (it is the file at the gate-record merge commit), so its deposited hash differs from the staged hash above by the addition of this section alone. The final gate run, against the merged gate-record commit, is recorded with its verdict and counts in the repo ledger entry for this release. This is the same self-reference pattern used by v4.4.0 through v4.8.0.",
+   "files": {
+    "AUDIT_CORRECTIONS.json": {
+     "sha256": "567ff7ada347c083b633d8b6709a8620832d3ffe9c1a6e67f07bcb31d9582a80",
+     "md5": "c0202c43dfc6ae3c83ca39e52f75e012"
+    },
+    "INDUS_FINAL_ANCHORS.json": {
+     "sha256": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+     "md5": "00fde4dbf2ee6cbf96d020cba12ce043"
+    },
+    "RELEASE_VALIDATION.json": {
+     "sha256": "2b838c0a65a78484008dfa4271b44c1be000954b9c5b47268445b80a8ab5a179",
+     "md5": "dc3179fcb65b2dbc369923e246bcb876"
+    },
+    "phase133_stage0_inventory.json": {
+     "sha256": "1d0a3d6cb21ddc0a5b9625f57f026d302454770118e5f117a9d912a057473614",
+     "md5": "93282a90e82982b8cad10f75d4a68013"
+    },
+    "phase133_stage0_inventory_meta.json": {
+     "sha256": "e5d21392d262a3a3cf6e18e153dddd420b64454d8b44fc8554fb96dc680bc1da",
+     "md5": "ceba3e5210fd3140bd77eade1f9eb1f6"
+    },
+    "phase134_pilot_dataset.json": {
+     "sha256": "686886d4189d01b9e2f83ceb32a7292a7b1ebcdebb6b6aaa63cff9eb961c86f7",
+     "md5": "98633156ddddf6f8d611261bdc490684"
+    },
+    "phase134_pilot_dataset_meta.json": {
+     "sha256": "8090f611b2ea1a4b22e422c9329b4b84a78e0749b24dea8547b284cf59be77f1",
+     "md5": "92ff19eb53bf6c4e619738a82860bbc5"
+    },
+    "phase135_pilot_dataset.json": {
+     "sha256": "d1ed6ab381384626a4bb7d47380f6712c4f1c45e46330571fa9625243d8057f0",
+     "md5": "40c437a941b038ba60478ad74a808db7"
+    },
+    "phase135_pilot_dataset_meta.json": {
+     "sha256": "41a8913e7490389e2bc21f0f966fafac54b46a094437dd6124b424f9cefad19e",
+     "md5": "65457114ed2afd9d3c61db283e683baa"
+    },
+    "phase136_results.json": {
+     "sha256": "11a0741317f50d9b8c2791fbfdd42ebec0f2a250d6f76809a2dec29fef857022",
+     "md5": "163f14b393d6b4e508bfc3081b69dc41"
+    },
+    "phase137_results.json": {
+     "sha256": "18f86f45892526b947a4a7447201be9d69584ec96d33a1d18139309b9dc2a7a1",
+     "md5": "d906202a5cf9a1a4f1bff5b3cb3e806c"
+    },
+    "phase138_results.json": {
+     "sha256": "14bf6f07255cd7b73a5fe93360b8bcc00f765120ad31c09c36456492ef3ba426",
+     "md5": "87be4de97244f078ebc9aca2eb1f8d52"
+    },
+    "phase139_results.json": {
+     "sha256": "5e802d37215238b7d43fc3b131011d6567d9faecd9addf5ac77d319f8993f2b8",
+     "md5": "b5c629b6151445abc306bbc798038cd6"
+    },
+    "phase140_results.json": {
+     "sha256": "89e1d9dfea6594974bd7a0e4d4e933cba6886db8f6fcafc21dd9e4ec6beb37ea",
+     "md5": "9c507d0c902947f6b3c4dd5d425ad2b6"
+    },
+    "phase141_results.json": {
+     "sha256": "5646d0aa797d9760d6fffe48b06d6003fea667da532cd334dd0038ee3b3683ab",
+     "md5": "c07778286a8b9a7c730704e7cc9edbd3"
+    },
+    "pierson_2026_indus_decipherment_addendum_v5.md": {
+     "sha256": "b2818df804402e2e76bdcea53000b806eb7a36442ff6270e437da53e8fc7a8dc",
+     "md5": "48da2a8462eb5eb881057a18a3f2cbe1"
+    },
+    "pierson_2026_indus_harmonization_note_116.md": {
+     "sha256": "a7236ce058cbb36ac737f970f0e786f9ab6f24c92d1dbd0828725332433fcf92",
+     "md5": "90d6b442fb8be605ccba2acbfcab67d6"
+    },
+    "pierson_2026_indus_methods_note_111_112.md": {
+     "sha256": "fdcd47704a8e023daaa81d560af79ed0af5b4115f54925600c02c71fa8dee830",
+     "md5": "864369942b58dbac1c73f3ffa4a73845"
+    },
+    "pierson_2026_indus_preprint_v3.pdf": {
+     "sha256": "cfa25287b30958e024988a1bf280266d880b07d3feef2215e892315bdcd0162a",
+     "md5": "b552851dbf86a8edebeb9f84d982d878"
+    },
+    "pierson_2026_indus_program_note_120_126.md": {
+     "sha256": "2d61c13647d84426d9a32c83aa2055c5eb8cd220de3254ac4db95b09e41bd4d6",
+     "md5": "ee3397333bd11eea155b983f6293fa89"
+    },
+    "pierson_2026_indus_program_note_127_131.md": {
+     "sha256": "326f88072ba2382cfd7c3ffe320e77fb9ce1357cbf9e9455f55793292ac864a5",
+     "md5": "0350788f6912e8c72d463ecccb9ba9bb"
+    },
+    "pierson_2026_indus_program_note_132_closeout.md": {
+     "sha256": "d88f0a9b4526c31bce36223bdc91b55be81677ad683378db31da6fccd8eb8729",
+     "md5": "093ae180ac7a3c9cd44421ca69a8159f"
+    },
+    "pierson_2026_indus_program_note_133_stage0.md": {
+     "sha256": "f58f2363956029ae777b0ecc8e5f01748df4f4329cc7aeb03e6d43b2d9467e4e",
+     "md5": "6eaf9a63632525e812160d198f5c5241"
+    },
+    "pierson_2026_indus_program_note_134_135_motif.md": {
+     "sha256": "cb09fbea190d1c47cdd48309f9f9c63093f19494c73fa0267757861be59cd5d1",
+     "md5": "672e3fe09a8be8a40eb4f7c9dcc0ca13"
+    },
+    "pierson_2026_indus_program_note_136_137_138_stage2.md": {
+     "sha256": "14c9279364b105ba861ffcbf9c34ca086502b2f440df0cb5ca6258657eeac41f",
+     "md5": "bea8823043394305f6f1ef6f7268278e"
+    },
+    "pierson_2026_indus_program_note_139_140_141_spec025.md": {
+     "sha256": "74cc3ffaa59c8832fec96b1d426612ed86887557d82d0777d7f92646038f9892",
+     "md5": "dc30650e2280692d6145ae693bbf82d6"
+    }
+   }
+  },
   "phase_outcomes": {
    "spec_025_controlled_followup": {
     "design": "Spec 025 frozen 2026-10-10 (PR #129, spec.md sec.11 adjudication: all six asks answered with the recommended answers); Phase-139 freeze record (PR #130); Phase-140/141 freeze records (PR #131, merged 2ca98d05). Combined report reports/phase139_140_141_spec025_report.md (PR #134, merged 5eec1542).",

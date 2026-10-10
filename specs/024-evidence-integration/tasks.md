@@ -198,3 +198,7 @@
   already in hand (spec §2.7).
 - Any image handling outside the gitignored local
   store.
+
+## Stage 2 — execution record (2026-10-09)
+
+- **T10.** Family declaration + test freezes — **DONE 2026-10-09**: the declared family F = {F1 (a) terminal × object type, F2 (c) Holdat site repertoire, F3 (c) ICIT-lineage site repertoire} with Benjamini–Hochberg q = 0.05 across executed members is declared in `stage2a-freeze.md` §1. Arm (a) frozen in `stage2a-freeze.md` (Phase-136) on the owner instruction "Do all next things" (2026-10-09). Arm (b) CLOSED (T9f) — not in the family, not touched.

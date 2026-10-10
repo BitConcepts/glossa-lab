@@ -1,0 +1,424 @@
+{
+  "phase": "Phase-141",
+  "spec": "025",
+  "test": "LOSO sensitivity for F1 (Spec 024)",
+  "title": "Leave-one-site-out sensitivity of F1 (terminal-class x object type) \u2014 ICIT-lineage layer (horus84) joined subset",
+  "lineage_label": "ICIT-lineage layer (horus84)",
+  "freeze": "specs/025-stage2-controlled-followup/phase141-freeze.md (under spec sec.5 and phase139-freeze.md sec.4)",
+  "inputs": {
+    "cisi_vol1_catalogue": {
+      "path": "/home/hatch/workspace/glossa-lab/corpora/downloads/cisi_image_layer/catalogue/cisi_vol1_catalogue.csv",
+      "exists": true,
+      "sha256": "e0d698f991fbd7cf26c491a2b25906b422903a0e2a26ea7b8c690420ca51dc1e",
+      "bytes": 804665
+    },
+    "cisi_vol2_catalogue": {
+      "path": "/home/hatch/workspace/glossa-lab/corpora/downloads/cisi_image_layer/catalogue/cisi_vol2_catalogue.csv",
+      "exists": true,
+      "sha256": "e751244e2d51bda3181d98e56af691c0d24099d76d035b54f0888504204bc7d9",
+      "bytes": 1431631
+    },
+    "horus84_inscriptions": {
+      "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/horus84-computational-linguistics/data/inscriptions.csv",
+      "exists": true,
+      "sha256": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef",
+      "bytes": 1190884
+    },
+    "canonical_sign_registry": {
+      "path": "/home/hatch/workspace/glossa-lab-phase140/data/crosswalks/canonical_sign_registry.csv",
+      "exists": true,
+      "sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+      "bytes": 111583
+    }
+  },
+  "anchors_sha256": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+  "parameters": {
+    "B": 9999,
+    "seed": 20261009,
+    "p_formula": "(1 + #{perm >= obs}) / (1 + B)",
+    "statistic": "Cochran-Mantel-Haenszel chi-square, no continuity correction (Phase-136)",
+    "q_values": "NONE \u2014 no q-values are computed for LOSO members (adjudication Q4(b))"
+  },
+  "flow": {
+    "layer_rows": 5679,
+    "matched_single_volume": 2895,
+    "ambiguous": 2,
+    "unmatched": 2782,
+    "restricted_seals_tablets": 2676,
+    "terminal_mapped": 2195,
+    "terminal_unk": 481,
+    "terminal_no_codes": 0,
+    "terminal14_margin_among_mapped": 475,
+    "analysis_population_eligible_strata": 2062
+  },
+  "reproduction_no_drop": {
+    "configuration": "Phase-136 exactly (no drop)",
+    "matches_committed_phase136_exactly": true,
+    "test": {
+      "statistic_observed": 47.004657020769315,
+      "B": 9999,
+      "seed": 20261009,
+      "n_perm_ge_observed": 0,
+      "raw_p": 0.0001,
+      "perm_stat_median": 0.4548516194971444,
+      "perm_stat_p95": 3.990637613400901
+    },
+    "effect_sizes": {
+      "mh_common_odds_ratio": 2.3839554105695653,
+      "mh_log_or": 0.8687610454080397,
+      "mh_var_log_or_rbg": 0.016941073871250822,
+      "mh_ci95": [
+        1.847164202454972,
+        3.076739681307485
+      ],
+      "crude_odds_ratio_uncontrolled": {
+        "odds_ratio": 2.7476843910806177,
+        "ci95_wald": [
+          2.168667783359785,
+          3.4812937098607453
+        ],
+        "label": "uncontrolled (unstratified)"
+      },
+      "pooled_terminal14_shares": {
+        "seals": 0.28135593220338984,
+        "tablets": 0.12471655328798185
+      }
+    },
+    "per_stratum": [
+      {
+        "site": "Mohenjo-daro",
+        "table": {
+          "a": 258,
+          "b": 601,
+          "c": 48,
+          "d": 244
+        },
+        "odds_ratio": 2.182196339434276,
+        "fisher_exact_two_sided_p_descriptive": 3.7526628663735642e-06,
+        "terminal14_share_seals": 0.30034924330616997,
+        "terminal14_share_tablets": 0.1643835616438356
+      },
+      {
+        "site": "Harappa",
+        "table": {
+          "a": 69,
+          "b": 212,
+          "c": 61,
+          "d": 518
+        },
+        "odds_ratio": 2.7638416331580578,
+        "fisher_exact_two_sided_p_descriptive": 2.596543524787394e-07,
+        "terminal14_share_seals": 0.24555160142348753,
+        "terminal14_share_tablets": 0.10535405872193437
+      },
+      {
+        "site": "Kalibangan",
+        "table": {
+          "a": 5,
+          "b": 35,
+          "c": 1,
+          "d": 10
+        },
+        "odds_ratio": 1.4285714285714286,
+        "fisher_exact_two_sided_p_descriptive": 1.0,
+        "terminal14_share_seals": 0.125,
+        "terminal14_share_tablets": 0.09090909090909091
+      }
+    ],
+    "committed_phase136": {
+      "cmh_statistic": 47.004657020769315,
+      "raw_p": 0.0001,
+      "mh_common_odds_ratio": 2.3839554105695653,
+      "mh_ci95": [
+        1.847164202454972,
+        3.076739681307485
+      ],
+      "verdict_spec024": "SUPPORTED"
+    }
+  },
+  "subsets": {
+    "L-MD": {
+      "strata_sites": [
+        "Harappa",
+        "Kalibangan"
+      ],
+      "estimability": {
+        "n_eligible_strata": 2,
+        "pooled_table": {
+          "a": 74,
+          "b": 247,
+          "c": 62,
+          "d": 528
+        },
+        "pooled_expected_counts": [
+          47.920965971459935,
+          273.0790340285401,
+          88.07903402854006,
+          501.9209659714599
+        ],
+        "fraction_expected_ge_5": 1.0,
+        "rule": "Phase-136 sec.5: >=2 eligible strata AND pooled expected counts >=5 in >=80% of cells",
+        "estimable": true,
+        "verdict": "ESTIMABLE"
+      },
+      "per_stratum": [
+        {
+          "site": "Harappa",
+          "table": {
+            "a": 69,
+            "b": 212,
+            "c": 61,
+            "d": 518
+          },
+          "odds_ratio": 2.7638416331580578,
+          "fisher_exact_two_sided_p_descriptive": 2.596543524787394e-07,
+          "terminal14_share_seals": 0.24555160142348753,
+          "terminal14_share_tablets": 0.10535405872193437
+        },
+        {
+          "site": "Kalibangan",
+          "table": {
+            "a": 5,
+            "b": 35,
+            "c": 1,
+            "d": 10
+          },
+          "odds_ratio": 1.4285714285714286,
+          "fisher_exact_two_sided_p_descriptive": 1.0,
+          "terminal14_share_seals": 0.125,
+          "terminal14_share_tablets": 0.09090909090909091
+        }
+      ],
+      "effect_sizes": {
+        "mh_common_odds_ratio": 2.7055618068767107,
+        "mh_log_or": 0.9953095827396237,
+        "mh_var_log_or_rbg": 0.03675311141704316,
+        "mh_ci95": [
+          1.858102866245992,
+          3.939536838247833
+        ],
+        "crude_odds_ratio_uncontrolled": {
+          "odds_ratio": 2.5513908841582866,
+          "ci95_wald": [
+            1.7628012424630464,
+            3.6927563283711864
+          ],
+          "label": "uncontrolled (unstratified)"
+        },
+        "pooled_terminal14_shares": {
+          "seals": 0.23052959501557632,
+          "tablets": 0.10508474576271186
+        }
+      },
+      "test": {
+        "statistic_observed": 28.51981216378758,
+        "B": 9999,
+        "seed": 20261009,
+        "n_perm_ge_observed": 0,
+        "raw_p": 0.0001,
+        "perm_stat_median": 0.40168493178366493,
+        "perm_stat_p95": 3.8221242865671865
+      },
+      "label": "L-MD",
+      "dropped_site": "Mohenjo-daro",
+      "criterion_reading": {
+        "mh_or_gt_1": true,
+        "ci95_excludes_1": true,
+        "passes": true
+      },
+      "robustness_reading": "L-MD (drop Mohenjo-daro): MH common OR 2.706 with 95% CI excluding 1 \u2014 criterion holds for this subset."
+    },
+    "L-HA": {
+      "strata_sites": [
+        "Mohenjo-daro",
+        "Kalibangan"
+      ],
+      "estimability": {
+        "n_eligible_strata": 2,
+        "pooled_table": {
+          "a": 263,
+          "b": 636,
+          "c": 49,
+          "d": 254
+        },
+        "pooled_expected_counts": [
+          233.35108153078204,
+          665.648918469218,
+          78.64891846921797,
+          224.35108153078204
+        ],
+        "fraction_expected_ge_5": 1.0,
+        "rule": "Phase-136 sec.5: >=2 eligible strata AND pooled expected counts >=5 in >=80% of cells",
+        "estimable": true,
+        "verdict": "ESTIMABLE"
+      },
+      "per_stratum": [
+        {
+          "site": "Mohenjo-daro",
+          "table": {
+            "a": 258,
+            "b": 601,
+            "c": 48,
+            "d": 244
+          },
+          "odds_ratio": 2.182196339434276,
+          "fisher_exact_two_sided_p_descriptive": 3.7526628663735642e-06,
+          "terminal14_share_seals": 0.30034924330616997,
+          "terminal14_share_tablets": 0.1643835616438356
+        },
+        {
+          "site": "Kalibangan",
+          "table": {
+            "a": 5,
+            "b": 35,
+            "c": 1,
+            "d": 10
+          },
+          "odds_ratio": 1.4285714285714286,
+          "fisher_exact_two_sided_p_descriptive": 1.0,
+          "terminal14_share_seals": 0.125,
+          "terminal14_share_tablets": 0.09090909090909091
+        }
+      ],
+      "effect_sizes": {
+        "mh_common_odds_ratio": 2.1621109165330825,
+        "mh_log_or": 0.7710850206453322,
+        "mh_var_log_or_rbg": 0.02979714915027583,
+        "mh_ci95": [
+          1.5414950325162773,
+          3.0325907750482255
+        ],
+        "crude_odds_ratio_uncontrolled": {
+          "odds_ratio": 2.143563085611603,
+          "ci95_wald": [
+            1.5289430744819228,
+            3.0052542692301936
+          ],
+          "label": "uncontrolled (unstratified)"
+        },
+        "pooled_terminal14_shares": {
+          "seals": 0.2925472747497219,
+          "tablets": 0.1617161716171617
+        }
+      },
+      "test": {
+        "statistic_observed": 20.592686907725735,
+        "B": 9999,
+        "seed": 20261009,
+        "n_perm_ge_observed": 1,
+        "raw_p": 0.0002,
+        "perm_stat_median": 0.5575842602574991,
+        "perm_stat_p95": 3.932086828594205
+      },
+      "label": "L-HA",
+      "dropped_site": "Harappa",
+      "criterion_reading": {
+        "mh_or_gt_1": true,
+        "ci95_excludes_1": true,
+        "passes": true
+      },
+      "robustness_reading": "L-HA (drop Harappa): MH common OR 2.162 with 95% CI excluding 1 \u2014 criterion holds for this subset."
+    },
+    "L-KA": {
+      "strata_sites": [
+        "Mohenjo-daro",
+        "Harappa"
+      ],
+      "estimability": {
+        "n_eligible_strata": 2,
+        "pooled_table": {
+          "a": 327,
+          "b": 813,
+          "c": 109,
+          "d": 762
+        },
+        "pooled_expected_counts": [
+          247.16061660865242,
+          892.8393833913476,
+          188.83938339134758,
+          682.1606166086524
+        ],
+        "fraction_expected_ge_5": 1.0,
+        "rule": "Phase-136 sec.5: >=2 eligible strata AND pooled expected counts >=5 in >=80% of cells",
+        "estimable": true,
+        "verdict": "ESTIMABLE"
+      },
+      "per_stratum": [
+        {
+          "site": "Mohenjo-daro",
+          "table": {
+            "a": 258,
+            "b": 601,
+            "c": 48,
+            "d": 244
+          },
+          "odds_ratio": 2.182196339434276,
+          "fisher_exact_two_sided_p_descriptive": 3.7526628663735642e-06,
+          "terminal14_share_seals": 0.30034924330616997,
+          "terminal14_share_tablets": 0.1643835616438356
+        },
+        {
+          "site": "Harappa",
+          "table": {
+            "a": 69,
+            "b": 212,
+            "c": 61,
+            "d": 518
+          },
+          "odds_ratio": 2.7638416331580578,
+          "fisher_exact_two_sided_p_descriptive": 2.596543524787394e-07,
+          "terminal14_share_seals": 0.24555160142348753,
+          "terminal14_share_tablets": 0.10535405872193437
+        }
+      ],
+      "effect_sizes": {
+        "mh_common_odds_ratio": 2.4003056682705695,
+        "mh_log_or": 0.875596091023481,
+        "mh_var_log_or_rbg": 0.017146158512760003,
+        "mh_ci95": [
+          1.8569718863254783,
+          3.102614177176612
+        ],
+        "crude_odds_ratio_uncontrolled": {
+          "odds_ratio": 2.811808118081181,
+          "ci95_wald": [
+            2.21574085405254,
+            3.568226346707852
+          ],
+          "label": "uncontrolled (unstratified)"
+        },
+        "pooled_terminal14_shares": {
+          "seals": 0.2868421052631579,
+          "tablets": 0.1251435132032147
+        }
+      },
+      "test": {
+        "statistic_observed": 47.151513093479494,
+        "B": 9999,
+        "seed": 20261009,
+        "n_perm_ge_observed": 0,
+        "raw_p": 0.0001,
+        "perm_stat_median": 0.39709266340104693,
+        "perm_stat_p95": 3.755206134687344
+      },
+      "label": "L-KA",
+      "dropped_site": "Kalibangan",
+      "criterion_reading": {
+        "mh_or_gt_1": true,
+        "ci95_excludes_1": true,
+        "passes": true
+      },
+      "robustness_reading": "L-KA (drop Kalibangan): MH common OR 2.400 with 95% CI excluding 1 \u2014 criterion holds for this subset."
+    }
+  },
+  "robustness_criterion": "Spec sec.5, verbatim: F1 is reported stable iff every estimable subset's Mantel-Haenszel common OR remains > 1 with its 95% CI excluding 1; if any estimable subset's CI includes 1 or its OR <= 1, the dropped site is named LOAD-BEARING and the F1 summary language is downgraded ('supported, concentrated in ...').",
+  "robustness_outcome": {
+    "stable": true,
+    "load_bearing_sites": [],
+    "not_estimable_subsets": [],
+    "statement": "F1 is STABLE under leave-one-site-out: every estimable subset's Mantel-Haenszel common OR remains > 1 with its 95% CI excluding 1, so no single site is load-bearing for the F1 result."
+  },
+  "fence": "LOSO mints no verdicts: this is a robustness statement about the already-decided F1 result only. It cannot upgrade, downgrade, or replace the Spec 024 F1 verdict (SUPPORTED, family BH q = 0.00015); it qualifies F1's summary language only, as spec sec.5 pre-specifies.",
+  "section8_language": "Associations describe co-occurrence in the recorded data of this labeled lineage layer's joined subset only, not meaning. No result under this spec can mint, promote, demote, or validate any sign reading, change any anchor's status, or move PRED-2026 in either direction.",
+  "ai_disclosure": "Produced by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution section VI."
+}

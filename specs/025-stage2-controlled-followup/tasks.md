@@ -56,11 +56,11 @@
 
 ## Phase-141 — F1 LOSO sensitivity
 
-- [ ] T10 — Stratum-drop parameter + tests incl. exact
+- [x] T10 — Stratum-drop parameter + tests incl. exact
       reproduction of Phase-136 in the no-drop configuration.
-- [ ] T11 — Run L-MD / L-HA / L-KA; per-subset estimability
+- [x] T11 — Run L-MD / L-HA / L-KA; per-subset estimability
       rule applied mechanically.
-- [ ] T12 — Phase report: robustness-criterion outcome;
+- [x] T12 — Phase report: robustness-criterion outcome;
       load-bearing site named if any.
 
 ## Close-out

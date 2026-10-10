@@ -3731,3 +3731,37 @@ report: reports/phase140_report.md.
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution sec.VI.
+
+
+## 2026-10-10 — Phase-141 (Spec 025): F1 leave-one-site-out sensitivity (ICIT-lineage layer, horus84) — F1 STABLE, no load-bearing site
+
+Executed exactly as frozen (phase141-freeze.md under
+spec sec.5 / phase139-freeze.md sec.4; freeze records
+PR #131, merged 2ca98d05): Phase-136 machinery
+unchanged (its pure functions imported and reused)
+plus the stratum-drop parameter only. No-drop
+configuration reproduced the committed Phase-136
+result EXACTLY (CMH 47.004657020769315; 0/9,999; raw
+p 0.0001; MH OR 2.3839554105695653, CI 1.847-3.077).
+
+Subsets (all ESTIMABLE under the Phase-136 sec.5 rule,
+pooled expected >= 5 fraction 1.0 each): L-MD (drop
+Mohenjo-daro): CMH 28.5198, 0/9,999, raw p 0.0001, MH
+OR 2.706 (1.858-3.940). L-HA (drop Harappa): CMH
+20.5927, 1/9,999, raw p 0.0002, MH OR 2.162
+(1.541-3.033). L-KA (drop Kalibangan): CMH 47.1515,
+0/9,999, raw p 0.0001, MH OR 2.400 (1.857-3.103).
+
+Robustness criterion (sec.5, verbatim outcome): F1 is
+STABLE under leave-one-site-out — every estimable
+subset's MH common OR remains > 1 with its 95% CI
+excluding 1, so no single site is load-bearing for
+the F1 result. Raw p reported; no q-values (Q4(b));
+no verdicts minted — a robustness statement about F1
+only. Anchors sha256 eccea6d5... unchanged; no PRED
+movement. Results: reports/phase141_results.json;
+report: reports/phase141_report.md.
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution sec.VI.

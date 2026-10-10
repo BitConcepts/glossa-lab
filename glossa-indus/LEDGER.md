@@ -3149,3 +3149,16 @@ p 0.0001 (51.1%). Pre-run regression reproduced
 Phase-137 F3 exactly. Anchors sha256 eccea6d5...
 unchanged; no PRED movement. Full entry: repo
 LEDGER.md, same date.
+
+
+## 2026-10-10 — Phase-141 (Spec 025): F1 LOSO sensitivity — F1 STABLE, no load-bearing site (cross-reference)
+
+Phase-136 machinery unchanged + stratum-drop only;
+no-drop reproduction exact. L-MD: MH OR 2.706
+(1.858-3.940), raw p 0.0001. L-HA: MH OR 2.162
+(1.541-3.033), raw p 0.0002. L-KA: MH OR 2.400
+(1.857-3.103), raw p 0.0001. All estimable; sec.5
+criterion met in every subset -> F1 STABLE, no single
+site load-bearing. No q-values (Q4(b)); no verdicts
+minted. Anchors sha256 eccea6d5... unchanged; no PRED
+movement. Full entry: repo LEDGER.md, same date.

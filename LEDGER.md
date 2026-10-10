@@ -3790,3 +3790,68 @@ per Q6 (T15).
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution sec.VI.
+
+
+## 2026-10-10 — Zenodo v4.9.0 published (Spec 025: Phases 139–141): G1 SUPPORTED under control (chronology NOT controlled); F1 LOSO STABLE
+
+**Zenodo v4.9.0 published 2026-10-10** — DOI
+10.5281/zenodo.23288406 (record 23288406); concept DOI
+10.5281/zenodo.20379070 unchanged. The deposit (26
+files) adds the Spec 025 program note
+(`pierson_2026_indus_program_note_139_140_141_spec025.md`)
+and the three phase results files
+(`phase139_results.json`, `phase140_results.json`,
+`phase141_results.json`, CC BY 4.0) to the
+carried-forward v4.8.0 set. Publication flow per
+docs/RELEASE_CHECKLIST.md: program note +
+`RELEASE_VALIDATION.json` `release_v4_9_0` entry via
+PR #135 (merge 232f0d2f); mandatory release gate run
+at 232f0d2f — **PASS 26/26** (25 MATCH + 1 EXTERNAL,
+the carried-forward v3 preprint PDF byte-identical to
+the v4.8.0 record); gate recorded via PR #136 (merge
+a4514de1); final gate run against the merged
+gate-record commit a4514de1 — **PASS 26/26**, exit 0
+(final staged `RELEASE_VALIDATION.json` sha256
+dfb95004d617ac0b47b48194b16166eb7185ff4b9ce6827b4be341166c53d03f).
+Post-deposit confirmation: **26/26** file checksums
+(MD5) on record 23288406 match the staged files.
+Suite and foundation at the release commits: local
+suite at merged main 5eec1542 in the release worktree
+(canonical venv, corpora symlinked, CI configuration,
+GPU files ignored) **1122 passed / 5 skipped / 0
+failed** (CI at the same tree: 1109 passed / 18
+skipped; the 13-test delta is exactly the local-store
+tests that skip in CI); foundation **40 passed / 0
+failed / 8 warnings**. OSF registry (osf.io/ybd65):
+dated v4.9.0 blocks appended to the parent project,
+the Program Outputs component (vwa7s), and the
+Corpora component (dfrhz); the Literature component
+is unchanged. Spec 025 task T15 marked DONE — Spec
+025 is complete.
+
+Spec 025 outcomes, as found: **Phase-139** — the
+spec as sketched was NOT FREEZABLE (unit = locus
+label, not an excavation unit; depth incommensurable;
+context empty); gate: preservation PRIMARY CONTROL
+(99.9%), chron_band SENSITIVITY (41.9%), depth_band
+SENSITIVITY (51.1%); G1 ESTIMABLE. **Phase-140 (G1)**
+— ICIT-lineage layer (horus84), permutation within
+composition x preservation strata: chi2 4,966.36 vs
+controlled null median 2,684.74; 0/9,999 >= observed;
+raw p = 0.0001; BH over G1 alone (Q4(b), m = 1) ->
+**SUPPORTED under control**; **chronology NOT
+controlled** in the primary test (period/phase remain
+uncontrolled confounders). EXPLORATORY bounds: S-chron
+raw p 0.0001 (null median 2,809.53); S-depth raw
+p 0.0001 (null median 2,682.78). **Phase-141 (LOSO)**
+— L-MD OR 2.706 (1.858-3.940) p 0.0001; L-HA OR 2.162
+(1.541-3.033) p 0.0002; L-KA OR 2.400 (1.857-3.103)
+p 0.0001; **F1 STABLE under leave-one-site-out, no
+single site load-bearing**; no q-values; no verdicts
+minted. No anchor or PRED change — anchors sha256
+eccea6d5... unchanged; PRED-2026-001/002/003 remain
+PENDING.
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution sec.VI.

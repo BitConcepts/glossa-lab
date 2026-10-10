@@ -3174,3 +3174,20 @@ p 0.0001); F1 LOSO STABLE. Foundation check on merged
 main: 40 passed / 0 failed / 8 warnings; anchors
 eccea6d5... unchanged. Publication: Zenodo v4.9.0
 (Q6). Full entry: repo LEDGER.md, same date.
+
+
+## 2026-10-10 — Zenodo v4.9.0 published (Spec 025 outcome record) (cross-reference)
+
+DOI 10.5281/zenodo.23288406 (record 23288406); concept
+DOI 10.5281/zenodo.20379070. Deposit: Spec 025
+program note + phase139/140/141 results JSONs over
+the carried v4.8.0 set (26 files, CC BY 4.0); release
+gate PASS 26/26 at 232f0d2f and again at the
+gate-record merge a4514de1; post-deposit checksums
+26/26 match. G1 SUPPORTED under preservation control
+(ICIT-lineage layer, 99.9% coverage; chronology NOT
+controlled); F1 LOSO STABLE. OSF ybd65 + vwa7s +
+dfrhz updated in step; Literature unchanged. Spec 025
+complete (T15 DONE). Anchors eccea6d5... unchanged;
+no PRED movement. Full entry: repo LEDGER.md, same
+date.

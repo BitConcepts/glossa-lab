@@ -204,3 +204,29 @@
 - **T10.** Family declaration + test freezes — **DONE 2026-10-09**: the declared family F = {F1 (a) terminal × object type, F2 (c) Holdat site repertoire, F3 (c) ICIT-lineage site repertoire} with Benjamini–Hochberg q = 0.05 across executed members is declared in `stage2a-freeze.md` §1. Arm (a) frozen in `stage2a-freeze.md` (Phase-136) on the owner instruction "Do all next things" (2026-10-09). Arm (b) CLOSED (T9f) — not in the family, not touched.
 - **T10b.** Arm (c) design freeze — **DONE 2026-10-09**: `stage2c-freeze.md` (Phase-137; family members F2 + F3; layers tested separately, never pooled; §5.1 default minimum-cell rule replaced by the stated permutation-matched rule with mandatory sparsity disclosure).
 - **T10c.** Arm (d) descriptive-protocol freeze — **DONE 2026-10-09**: `stage2d-freeze.md` (Phase-138; descriptive only; not a family member; boundary 4 and the ≥1,000-year dating-gap caveat frozen into every output).
+
+
+## Stage 2 — execution (2026-10-09)
+
+- **T11.** Per-test execution and reports —
+  **DONE 2026-10-09**: Phase-136 (arm (a), F1;
+  PR #121, merge `e7d17f6a`) — CMH 47.0047, raw
+  p = 0.0001, MH common OR 2.384 (1.847–3.077);
+  Phase-137 (arm (c), F2 + F3; PR #122, merge
+  `75943a7f`) — F2 Holdat χ² 745.95, raw
+  p = 0.7354; F3 ICIT-lineage χ² 4,966.36, raw
+  p = 0.0001; Phase-138 (arm (d), descriptive
+  only; PR #120, merge `4069bcb1`; corrective
+  PR #123, merge `1c2a5fd2`) — 417 rows / 395
+  objects, `motif_chapter` filled 0/417.
+  Combined report
+  `reports/phase136_137_138_stage2_report.md`
+  applies the declared family's Benjamini–Hochberg
+  correction once: **F1 q = 0.00015 SUPPORTED;
+  F2 q = 0.7354 NOT SUPPORTED; F3 q = 0.00015
+  SUPPORTED.** Arm (b) untouched (CLOSED, T9f).
+- **T12.** Stage 2 publication — Zenodo v4.8.0
+  (program note + the three phase results JSONs,
+  CC BY 4.0) through the mandatory release gate;
+  OSF registry updated in step. (Completion
+  appended below on publication.)

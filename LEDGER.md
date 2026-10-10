@@ -3439,3 +3439,119 @@ or PRED change — anchors sha256 eccea6d5… unchanged.
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution §VI.
+
+
+## 2026-10-09 — Phase-136 (Spec 024): Evidence Integration, Stage 2(a) — Terminal-class × object type on the ICIT-lineage joined subset (F1): CMH 47.0047, raw p = 0.0001
+
+Executed exactly as frozen in
+`specs/024-evidence-integration/stage2a-freeze.md`
+(PR #117; the freeze also carries the Stage 2
+family declaration, tasks T10). PR #121, merge
+`e7d17f6a`; CI 7/7. Flow as run, every design-audit
+number reproduced: 5,679 ICIT-lineage rows → 2,895
+joined (audited exact-string key; 2 ambiguous,
+2,782 unmatched — 49.0% of the layer unjoinable or
+ambiguous) → 2,752 typed → 2,676 in the
+pre-declared {Seals, Tablets} restriction → 2,195
+terminal-mapped → 2,062 in the 3 eligible strata
+(Mohenjo-daro, Harappa, Kalibangan). Observed CMH
+47.0047 (permutation median 0.455, 95th 3.991);
+0/9,999 permutations ≥ observed → raw p = 0.0001.
+MH common OR 2.384 (95% CI 1.847–3.077); crude OR
+2.748 (control attenuates, does not remove).
+TERMINAL shares: seals 28.1% vs tablets 12.5%
+pooled eligible. Estimability: ESTIMABLE. Verdict
+word assigned in the combined Stage 2 report after
+the family BH correction (F1 q = 0.00015,
+SUPPORTED). ICIT-lineage label in every headline;
+the compilation-internal alternative explanation
+is stated in the report. Not a PRED-2026
+evaluation. No anchor change — anchors sha256
+eccea6d5… unchanged. Results:
+`reports/phase136_results.json`; report:
+`reports/phase136_report.md`.
+
+**AI disclosure:** execution recorded by an AI
+agent (Muse Spark, via Muse) at the
+direction of Tristen Pierson, per constitution
+§VI.
+
+## 2026-10-09 — Phase-138 (Spec 024): Evidence Integration, Stage 2(d) — Graffiti descriptive protocol: 417 rows / 395 objects; motif_chapter 0/417; NO test computed
+
+Executed exactly as frozen in
+`specs/024-evidence-integration/stage2d-freeze.md`
+(PR #119). PR #120, merge `4069bcb1`. Descriptive
+only — no test, no p-value, not a family member.
+Population as run: 417 catalogue Graffiti rows /
+395 distinct objects (Vol. 1: 119/100; Vol. 2:
+298/295). Objects by site: Harappa 262, Lothal 44,
+Mohenjo-Daro 42, Kalibangan 26, no site 8.
+Photo-rows-per-object mode 1 (374/395).
+`motif_chapter` filled on 0 of 417 rows — the
+editors' chapter organization assigns no depiction
+chapter to any graffiti row. `caption_ocr_score`
+median 0.943 (IQR 0.029). Kodumanal comparative
+paragraph qualitative only, its printed tallies
+quoted as prose with their internal inconsistency;
+Tamil Nadu corpus NOT in hand (0 records);
+≥1,000-year dating-gap caveat attached to every
+comparative statement; no overlap statistic
+computed (no machine-readable graffiti sign-form
+repertoire exists in hand); no continuity claim.
+Results: `reports/phase138_results.json`; report:
+`reports/phase138_report.md`.
+
+**Correction of record (same date):** PR #120
+merged on a CI readout that did not match its
+run's actual conclusion — the backend job had
+failed on two pins in the phase's own test file
+(a field-class string pin; a line-wrap pin; both
+in test code, neither touching a descriptive
+quantity). Caught by the executing worker's
+verification against the run's API record and job
+log; corrected in PR #123 (merge `1c2a5fd2`), CI
+verified green from the run's own conclusion and
+job log (1,044 passed / 14 skipped / 0 failed)
+before merging. Foundation check 40 passed,
+0 failed. No anchor change — anchors sha256
+eccea6d5… unchanged.
+
+**AI disclosure:** execution recorded by an AI
+agent (Muse Spark, via Muse) at the
+direction of Tristen Pierson, per constitution
+§VI.
+
+## 2026-10-09 — Spec 024 Stage 2 COMBINED (Phases 136–138): declared-family BH correction applied once — F1 SUPPORTED, F2 NOT SUPPORTED, F3 SUPPORTED; arm (d) descriptive record complete
+
+Owner instruction: "Do all next things"
+(2026-10-09). Freezes PRs #117/#118/#119;
+executions PRs #121 (Phase-136), #122 (Phase-137),
+#120 + #123 (Phase-138). The combined report
+(`reports/phase136_137_138_stage2_report.md`)
+applies Benjamini–Hochberg at q = 0.05 across the
+declared family's three raw p-values, once:
+**F1** terminal × object type (ICIT-lineage):
+p 0.0001 → q 0.00015, **SUPPORTED** (MH OR 2.384);
+**F2** site repertoire (Holdat): p 0.7354 →
+q 0.7354, **NOT SUPPORTED** (observed χ² 745.95
+below its composition-controlled null median
+770.32; per the §5.4 falsifier, site "dialects" on
+this layer are recorded as an artifact of what each
+site preserves, not a finding); **F3** site
+repertoire (ICIT-lineage): p 0.0001 → q 0.00015,
+**SUPPORTED** (χ² 4,966.36 vs null median
+2,667.87; period/preservation/excavation-history
+confounders uncontrolled and stated). Arm (d):
+descriptive record complete (§5 entry above).
+Arm (b) untouched — CLOSED (motif-arm closure
+record). §8 governs: these are facts about use as
+recorded in named layers; nothing here mints or
+validates a reading, changes an anchor, or moves
+PRED-2026 (001/002/003 PENDING). Publication of
+the Stage 2 record as Zenodo v4.8.0 follows as
+task T12 (entry on completion).
+
+**AI disclosure:** execution recorded by an AI
+agent (Muse Spark, via Muse) at the
+direction of Tristen Pierson, per constitution
+§VI.

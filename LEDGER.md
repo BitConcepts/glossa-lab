@@ -3683,3 +3683,51 @@ movement.
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution sec.VI.
+
+
+## 2026-10-10 — Phase-140 (Spec 025): G1 — F3 site-repertoire re-test under preservation control (ICIT-lineage layer, horus84) — SUPPORTED under control; chronology NOT controlled
+
+Executed exactly as frozen (phase140-freeze.md under
+phase139-freeze.md; freeze records PR #131, merged
+2ca98d05): Phase-137 F3 statistic family, population
+reproduced by rule (5,410 inscriptions, 7 sites) and
+asserted against the committed F3 record; covariates
+joined from the Phase-139 harmonized dataset (5,410 /
+5,410 rows, composition-stratum agreement asserted);
+pre-run regression in the uncontrolled (composition-
+only) configuration reproduced Phase-137 F3 EXACTLY
+(chi2 4,966.362228365138; 0/9,999; median 2,667.87).
+
+G1 (permutation within composition x preservation
+strata, 53 strata, B = 9,999, seed 20261009):
+permutable 5,404 / 5,410; observed chi2 4,966.36; null
+median 2,684.74; p95 2,859.30; 0 of 9,999 permutations
+>= observed; raw p = 0.0001. BH over G1 alone (Q4(b),
+m = 1): adjusted 0.0001 <= 0.05 -> SUPPORTED under
+control. Cramer's V (descriptive) 0.2190; sparsity
+disclosed (887 / 1,309 cells expected < 5, 67.8%).
+Headline rider (mandatory): ICIT-lineage layer
+(horus84); preservation recorded coverage 99.9%;
+chronology is NOT controlled in the primary test —
+period/phase remain uncontrolled confounders.
+
+Sensitivity panel (EXPLORATORY bounds only, never the
+verdict): S-chron (composition x chron_band, 41.9%
+recorded): permutable 5,342, null median 2,809.53,
+0/9,999 >= observed, raw p 0.0001. S-depth
+(composition x depth_band, 51.1% recorded):
+permutable 5,406, null median 2,682.78, 0/9,999,
+raw p 0.0001.
+
+Deviation recorded in the phase report: first launch
+aborted on the script's own layer-hash assertion (a
+mis-split hash constant, one hex digit dropped) before
+any computation; constant corrected to the verified
+hash and relaunched; no design quantity affected.
+Anchors sha256 eccea6d5... unchanged; no PRED
+movement. Results: reports/phase140_results.json;
+report: reports/phase140_report.md.
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution sec.VI.

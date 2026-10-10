@@ -15,18 +15,35 @@
 
 ## Phase-139 — Covariate audit + harmonization
 
-- [ ] T1 — Recompute spec §3 fill-rate tables from the layer
+- [x] T1 — Recompute spec §3 fill-rate tables from the layer
       file (hash-asserted); file the audit script + tables.
-- [ ] T2 — Covariate-eligibility audit vs the frozen gate
+      **Done 2026-10-10 (Phase-139):** counts reproduce §3
+      exactly; three printed percentages carry documented
+      deltas (reports/phase139_report.md §2).
+- [x] T2 — Covariate-eligibility audit vs the frozen gate
       (coverage, per-site counts, permutable-N projections;
       margins only — no repertoire outcome computed).
-- [ ] T3 — Q2(a) approved: `chron_band` mapping table with per-cell
+      **Done 2026-10-10:** chron_band SENSITIVITY (41.9%),
+      depth_band SENSITIVITY (51.1%), preservation PRIMARY
+      CONTROL (99.9%).
+- [x] T3 — Q2(a) approved: `chron_band` mapping table with per-cell
       published-stratigraphy citations; Class C grading.
-- [ ] T4 — Q3(a) approved: `depth_band` construction (within-site
+      **Done 2026-10-10:** 35 mapped cells, 7 citations;
+      register at data/evidence_integration/
+      phase139_citation_register.json.
+- [x] T4 — Q3(a) approved: `depth_band` construction (within-site
       tertiles + UNRECORDED) with parse rules documented.
-- [ ] T5 — Phase-139 audit report + freeze recommendation
+      **Done 2026-10-10:** 2,765 banded (51.1%); parse
+      categories and 145 boundary-tie rows disclosed.
+- [x] T5 — Phase-139 audit report + freeze recommendation
       (or G1 NOT ESTIMABLE record under §4.3 F-c).
-- [ ] T6 — Freeze record committed + merged (spec-before-code).
+      **Done 2026-10-10:** reports/phase139_report.md —
+      verdict ESTIMABLE (primary = composition ×
+      preservation); sensitivities routed per §4.2.
+- [x] T6 — Freeze record committed + merged (spec-before-code).
+      **Done 2026-10-10:** phase139-freeze.md (this PR) —
+      final strata, seed 20261009, thresholds (BH over G1
+      alone) named for Phase-140/141.
 
 ## Phase-140 — G1 controlled re-test
 

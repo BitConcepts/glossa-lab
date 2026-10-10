@@ -1,0 +1,28 @@
+{
+ "dataset": "phase139_harmonized_covariates.json",
+ "phase": "Phase-139",
+ "spec": "025",
+ "rows": 5410,
+ "fields": [
+  "id",
+  "site",
+  "type_class",
+  "length_class",
+  "n_parsed_tokens",
+  "composition_stratum",
+  "period_raw",
+  "phase_raw",
+  "chron_band",
+  "chron_source_field",
+  "chron_citation",
+  "depth_raw",
+  "depth_parse_category",
+  "depth_value",
+  "depth_unit",
+  "depth_band",
+  "preservation_raw",
+  "preservation_class"
+ ],
+ "provenance": "Derived fields computed by backend/scripts/phase139_covariate_audit.py from the ICIT-lineage layer (horus84 inscriptions.csv, sha256 c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef); inscription texts are NOT included. Context fields are Class O; chron_band is constructed context, Class C (citation register: phase139_citation_register.json).",
+ "ai_disclosure": "Produced by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution section VI."
+}

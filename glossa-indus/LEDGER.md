@@ -3118,3 +3118,17 @@ anchor or PRED change — anchors sha256 eccea6d5…
 unchanged. AI-assisted record (Muse Spark, Muse
 Code), owner-directed. Full entry: repo LEDGER.md,
 same date.
+
+
+## 2026-10-10 — Phase-139 (Spec 025): covariate audit + harmonization — G1 ESTIMABLE, primary control = preservation (cross-reference)
+
+Margins only (no association statistic computed).
+Gate verbatim: chron_band 41.9% recorded ->
+SENSITIVITY; depth_band 51.1% -> SENSITIVITY;
+preservation 99.9% -> PRIMARY CONTROL (sole passer).
+Primary strata for G1 = composition x preservation;
+chronology remains an uncontrolled confounder,
+named in every G1 headline. Freeze record:
+specs/025-stage2-controlled-followup/
+phase139-freeze.md (seed 20261009; BH over G1 alone).
+Full entry: repo LEDGER.md, same date.

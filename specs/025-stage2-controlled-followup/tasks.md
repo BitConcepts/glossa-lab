@@ -47,11 +47,11 @@
 
 ## Phase-140 — G1 controlled re-test
 
-- [ ] T7 — Graph module/node registered + verified; unit tests
+- [x] T7 — Graph module/node registered + verified; unit tests
       incl. uncontrolled-configuration regression vs Phase-137.
-- [ ] T8 — Run under frozen strata (B = 9,999); anchors and
+- [x] T8 — Run under frozen strata (B = 9,999); anchors and
       layer hash asserted before/after.
-- [ ] T9 — Results JSON + phase report (lineage headline;
+- [x] T9 — Results JSON + phase report (lineage headline;
       coverage statement in the headline paragraph).
 
 ## Phase-141 — F1 LOSO sensitivity

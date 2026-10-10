@@ -3132,3 +3132,20 @@ named in every G1 headline. Freeze record:
 specs/025-stage2-controlled-followup/
 phase139-freeze.md (seed 20261009; BH over G1 alone).
 Full entry: repo LEDGER.md, same date.
+
+
+## 2026-10-10 — Phase-140 (Spec 025): G1 controlled F3 re-test — SUPPORTED under control; chronology NOT controlled (cross-reference)
+
+ICIT-lineage layer (horus84), preservation recorded
+coverage 99.9%: permutation within composition x
+preservation strata (B = 9,999, seed 20261009),
+permutable 5,404 / 5,410; observed chi2 4,966.36 vs
+controlled null median 2,684.74; 0/9,999 >= observed;
+raw p 0.0001; BH over G1 alone (m = 1) -> SUPPORTED
+under control. Chronology is NOT controlled in the
+primary test (period/phase uncontrolled). EXPLORATORY
+bounds: S-chron p 0.0001 (41.9% recorded), S-depth
+p 0.0001 (51.1%). Pre-run regression reproduced
+Phase-137 F3 exactly. Anchors sha256 eccea6d5...
+unchanged; no PRED movement. Full entry: repo
+LEDGER.md, same date.

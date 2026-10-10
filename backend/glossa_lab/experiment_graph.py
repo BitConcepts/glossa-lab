@@ -2785,6 +2785,16 @@ try:
     logger.info("Registered %d Phase-140 G1 controlled (spec 025) nodes", len(list(_p140_defs())))
 except Exception as _p140_exc:  # noqa: BLE001
     logger.warning("Phase-140 G1 controlled (spec 025) nodes not registered: %s", _p140_exc)
+# ── Phase-141 nodes (spec 025: Stage 2 controlled follow-up, F1 LOSO) ──
+try:
+    from glossa_lab.experiment_graph_phase141 import (
+        _phase141_node_defs as _p141_defs,  # noqa: PLC0415
+    )
+    for _d in _p141_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-141 LOSO (spec 025) nodes", len(list(_p141_defs())))
+except Exception as _p141_exc:  # noqa: BLE001
+    logger.warning("Phase-141 LOSO (spec 025) nodes not registered: %s", _p141_exc)
 # ── Phase-120 nodes (Bhaskar 2024 descriptive triage) ──
 try:
     from glossa_lab.experiment_graph_phase120 import (

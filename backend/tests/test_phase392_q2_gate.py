@@ -70,7 +70,6 @@ def test_pipeline_deterministic_under_seed():
 @pytest.mark.skipif(not STORE.is_dir(),
                     reason="stage1 input store not staged")
 def test_results_population_and_verdict_consistency():
-    m = _load()
     assert RESULTS.is_file(), "phase392 has not been run"
     res = json.loads(RESULTS.read_text(encoding="utf-8"))
     audit = json.loads(AUDIT.read_text(encoding="utf-8"))

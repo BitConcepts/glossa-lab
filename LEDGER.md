@@ -4210,6 +4210,73 @@ AI disclosure: executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
 
+## 2026-10-11 — Spec 027 Stage 1 FREEZE (Phase-392, Q2 gate)
+
+- Freeze record: `specs/027-movement-culture-language/
+  stage1-freeze.md` + `stage1-freeze.json` (framework026
+  digest 9c937fbc5c0fb86b48478d66a6894a708b8e2fd36eb45c098740
+  8ed01bc4a42a). Ask 5 authorises execution on this freeze's
+  merge; no separate owner go.
+- Margins-only audit first (Phase-139 pattern; no-peeking
+  fence pinned by test): flow 5,679 → dedup-kept 4,531 →
+  site-'Unknown' excluded 26 → SEAL/TAB 3,605 → legible >= 2
+  → eligible 3,144 (52 sites). Analysis population: 6 sites
+  >= 20 (Harappa 1,437; Mohenjo-daro 1,302; Dholavira 111;
+  Lothal 74; Chanhu-daro 54; Kalibangan 52) = 3,030.
+  Graffiti POT:T:g (473 kept) excluded from every Stage 1
+  population. Join: 5,678/5,679 (one unjoined record flagged
+  UNRECORDED metadata).
+- Frozen design: per-inscription M77 composition (125
+  columns: 123 signs >= 10 tokens + UNMAPPED + OTHER),
+  Bray-Curtis PERMANOVA R^2 for site; rarefaction to cell
+  n = 15 within site x type-class (10 cells, 150/draw);
+  R = 199 draws; B = 499 permutations within type strata;
+  seed 20261011; margin R^2 = 0.01 (declared convention);
+  discriminating negative + positive controls (failure =
+  INVALID); LOSO over the 6 sites; S-complete sensitivity
+  (labelled, no verdict); period not a stratum (59.2%
+  uninformative on this layer, Phase-139).
+- Parpola/CISI sensitivity assessed on margins and recorded
+  NOT ESTIMABLE at the frozen sign-by-sign unambiguity rule
+  (17.57% unambiguous token coverage vs 99.94% any-pair);
+  not run. M77 primary stands alone.
+- Multi-line status is not recorded in the ICIT-lineage
+  layer; eligibility is governed by the legible-token rule
+  alone — recorded in the freeze as a stated boundary of the
+  bounded claim.
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-11 — Spec 027 Stage 1 freeze AMENDMENT 1 (pre-merge, pre-outcome)
+
+- Three changes to the Stage 1 freeze before its merge,
+  forced by machinery smoke tests on SYNTHETIC data only (no
+  real repertoire outcome computed): (1) estimand scale =
+  adjusted PERMANOVA R^2 — the raw R^2 null expectation
+  (g-1)/(n-1) sits above the 0.01 margin at any feasible
+  cell size, which made the negative control unpassable and
+  the margin comparison vacuous; (2) rarefaction cell size
+  15 -> 49 (largest keeping all 6 sites, >= 8 cells; 392
+  inscriptions/draw); (3) positive-control sign sets made
+  deterministic (disjoint blocks of the 60 most frequent
+  sign columns) after simulation showed seed-drawn sets made
+  the planted effect luck-dependent (0.012-0.027).
+- Calibration at the amended design (identical pipeline,
+  synthetic populations): negative control PASS; positive
+  control PASS (median adjusted R^2 0.0198, interval
+  [0.0153, 0.0258], 100% draws rejecting). Amended freeze
+  digest 30861f04... Full text: stage1-freeze.md Amendment 1.
+- Process note: a VM replacement mid-program (2026-10-11
+  ~13:12 EDT) wiped /tmp scratch (incl. one un-run smoke
+  test's output) but no committed work; worktrees and stores
+  under ~/workspace were intact. The backend was restarted
+  by the watchdog per its standing job.
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
 ## 2026-10-11 — Zenodo v4.10.0 published (Spec 026: framework transfer, impact register, Phases 383–386): Phase-132 CONTRADICTED; F2 CONTRADICTED at the declared margin; F3 + G1 SUPPORTED stand; 75 historical assessments
 
 **Zenodo v4.10.0 published 2026-10-11** — DOI

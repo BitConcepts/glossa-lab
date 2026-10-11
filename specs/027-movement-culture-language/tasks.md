@@ -93,11 +93,11 @@
 
 ## Stage 1 — Q2 repertoire gate (after Stage 0 + Stage 1 freeze; Ask 5 controls the go)
 
-- [ ] **S1-1 — Margins-only corpus audit.** Population flow,
+- [x] **S1-1 — Margins-only corpus audit.** Population flow,
       sign-list coverage, completeness grid, permutable-cell
       projections, and dominant-site shares. No repertoire
       outcome is computed.
-- [ ] **S1-2 — Stage 1 freeze.** Insert the adjudicated sign
+- [x] **S1-2 — Stage 1 freeze.** Insert the adjudicated sign
       list and corpus rules; freeze estimand, practical margin,
       interval rule, rarefaction, permutation strata, jackknife,
       controls, seeds, hashes, and verdict rules.

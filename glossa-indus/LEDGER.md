@@ -3247,6 +3247,25 @@ release package prepared and gate-verified PASS 4/4 in-repo;
 no deposit made. Anchors unchanged; no PRED scoring. Full
 entry: repo LEDGER.md, same date.
 
+## 2026-10-11 — Spec 027 Stage 1 freeze (Phase-392) (cross-reference)
+
+Stage 1 (Q2 repertoire gate) frozen: margins audit (eligible
+3,144; analysis 6 sites / 3,030) → design frozen before any
+outcome (PERMANOVA R^2 on M77 composition, rarefaction to
+cell 15, margin 0.01, discriminating controls, LOSO; digest
+9c937fbc…). Parpola sensitivity NOT ESTIMABLE on margins
+(17.57% unambiguous crosswalk coverage); not run. Execution
+follows on this freeze's merge under Ask 5. Full entry: repo
+LEDGER.md, same date.
+
+## 2026-10-11 — Spec 027 Stage 1 freeze Amendment 1 (cross-reference)
+
+Pre-merge, pre-outcome amendment (synthetic-data machinery
+evidence only): adjusted R^2 estimand scale; rarefaction
+cell 15 -> 49; deterministic positive-control sign sets.
+Amended freeze digest 30861f04...; controls calibrated PASS
+at the amended design. Full entry: repo LEDGER.md, same
+date; amendment text in stage1-freeze.md.
 ## 2026-10-11 — Zenodo v4.10.0 published (Spec 026 framework + rerun record) (cross-reference)
 
 DOI 10.5281/zenodo.23298334 (record 23298334); concept

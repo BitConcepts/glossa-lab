@@ -4277,3 +4277,90 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+## 2026-10-11 — Zenodo v4.10.0 published (Spec 026: framework transfer, impact register, Phases 383–386): Phase-132 CONTRADICTED; F2 CONTRADICTED at the declared margin; F3 + G1 SUPPORTED stand; 75 historical assessments
+
+**Zenodo v4.10.0 published 2026-10-11** — DOI
+10.5281/zenodo.23298334 (record 23298334); concept DOI
+10.5281/zenodo.20379070 unchanged. The deposit (59
+files) adds the Spec 026 program note
+(`pierson_2026_indus_program_note_383_386_spec026.md`)
+and the Spec 026 record (transfer map, claim
+register, classification criteria, impact register
+md/json/csv + register classifications, Phase-383–386
+rerun contracts and freezes, the four rerun reports
+and results files, and the historical assessments
+md/json, CC BY 4.0) to the carried-forward v4.9.0
+set. Publication flow per docs/RELEASE_CHECKLIST.md:
+program note + `RELEASE_VALIDATION.json`
+`release_v4_10_0` entry via PR #149 (merge 2aa52c81);
+mandatory release gate run at 2aa52c81 — **PASS
+59/59** (58 MATCH + 1 EXTERNAL, the carried-forward
+v3 preprint PDF byte-identical to the v4.9.0 record);
+gate recorded via PR #150 (merge e42db25a); final
+gate run against the merged gate-record commit
+e42db25a — **PASS 59/59**, exit 0 (final staged
+`RELEASE_VALIDATION.json` sha256
+0055704016fb21ebd1c912fa77aac6dfc0081737021c178c7445d4705c9db9c7).
+Post-deposit confirmation: **59/59** file checksums
+(MD5) on record 23298334 match the staged files; the
+DOI resolves. Suite and foundation at the release
+commits: Spec 026 closeout verification on merged
+main bf85ff31 — full backend suite **1,152 passed /
+12 skipped / 0 failed** (the executing session's
+terminal record; an early completion summary's
+3,647-passed figure was a misread mid-run poll
+fragment, corrected on the record the same day and
+used nowhere in this release), foundation **40
+passed / 0 failed**; main CI run 38110406069 on
+bf85ff31 completed success; release PRs #149/#150 CI
+verified from their runs' own conclusions (38139670443
+and 38140305450, both completed success, 7/7 jobs).
+OSF registry (osf.io/ybd65): dated v4.10.0 blocks
+appended to the parent project, the Program Outputs
+component (vwa7s), and the Corpora component (dfrhz);
+the Literature component is unchanged.
+
+Spec 026 outcomes, as found: **Framework transfer**
+— 12 RCPH principles adopted with Indus adaptations
+(transfer map; 16 governed claims); recorded
+residuals: evaluator extension has no registered
+evaluators in this repo; AEE package version split
+across venvs (1.0.4 / 1.0.2), pinned per run.
+**Impact register** — 116 items (Specs 001–025 +
+Phases 52–141) under criteria frozen before
+classification: RERUN-REQUIRED 8, REPRODUCE-ONLY 12,
+REINTERPRET-ONLY 61, UNAFFECTED 27, NOT-RERUNNABLE 8
+(Phases 92–95, 97–100, artifacts only in outputs/).
+**Phase-383** — pilots 132/134/135 rescored from
+on-disk records, all original values exact; 132
+**CONTRADICTED** (exact-seq CI [0.10, 0.32] vs the
+0.80 floor); 134/135 **INCONCLUSIVE** (CIs span their
+gates); origin-group audit: ONE coder origin group
+across all pilots — agreement is intra-origin
+consistency, not independent corroboration.
+**Phase-384** — margin V = 0.10 declared pre-run;
+the rerun's v1 interval procedure **INVALID**
+(self-caught: CI [0.1115, 0.1242] at true V = 0 on
+its discriminating control; preserved, not used);
+v2 BASIC intervals: F2 [0.0589, 0.0778] — bounded
+claim **CONTRADICTED at the declared margin**,
+converging with the original NOT SUPPORTED
+(p = 0.7354); F3 [0.1823, 0.2104] — **SUPPORTED
+stands** at the margin. **Phase-385** — G1 BASIC CI
+[0.1838, 0.2102] — **SUPPORTED under control stands
+at the declared margin**; **chronology NOT
+controlled** in the primary test (standing rider).
+**Phase-386** — Phases 116/125/127/131 replayed in a
+disposable worktree: **all REPRODUCED exactly**; no
+verdict changes. **Historical assessments** — 75 of
+116 items carry a changed evidentiary status
+(INVALID cohort 111–114 + Spec 017; 115/117/118 →
+INCONCLUSIVE; SA-era cohort superseded under H26;
+NOT-RERUNNABLE ceiling 92–95/97–100); original files
+and labels never rewritten. No anchor or PRED
+change — anchors sha256 eccea6d5... unchanged;
+PRED-2026-001/002/003 remain PENDING.
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution sec.VI.

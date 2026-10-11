@@ -3266,3 +3266,23 @@ cell 15 -> 49; deterministic positive-control sign sets.
 Amended freeze digest 30861f04...; controls calibrated PASS
 at the amended design. Full entry: repo LEDGER.md, same
 date; amendment text in stage1-freeze.md.
+## 2026-10-11 — Zenodo v4.10.0 published (Spec 026 framework + rerun record) (cross-reference)
+
+DOI 10.5281/zenodo.23298334 (record 23298334); concept
+DOI 10.5281/zenodo.20379070. Deposit: Spec 026
+program note + the Spec 026 record (transfer map,
+impact register, rerun contracts/freezes, Phase-383–
+386 reports/results, historical assessments) over
+the carried v4.9.0 set (59 files, CC BY 4.0); release
+gate PASS 59/59 at 2aa52c81 and again at the
+gate-record merge e42db25a; post-deposit checksums
+59/59 match. Phase-132 CONTRADICTED; 134/135
+INCONCLUSIVE; F2 bounded claim CONTRADICTED at the
+declared margin; F3 SUPPORTED stands; G1 SUPPORTED
+under control stands at the margin (chronology NOT
+controlled); Phases 116/125/127/131 REPRODUCED;
+Phase-384 v1 interval INVALID (self-caught); 75 of
+116 register items carry changed evidentiary status.
+OSF ybd65 + vwa7s + dfrhz updated in step; Literature
+unchanged. Anchors eccea6d5... unchanged; no PRED
+movement. Full entry: repo LEDGER.md, same date.

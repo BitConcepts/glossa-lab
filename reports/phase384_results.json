@@ -1,0 +1,51 @@
+{
+ "phase": "Phase-384",
+ "spec": "026",
+ "version": "v2 (corrected procedure; v1 interval adjudication INVALID \u2014 see report)",
+ "reruns": "Phase-137 (F2/F3) \u2014 C1 margin completion",
+ "contract": "specs/026-rcph-framework-transfer/reruns/phase384-contract-v2.md",
+ "parameters": {
+  "B_bootstrap": 9999,
+  "seed": 20261012,
+  "margin_v": 0.1,
+  "resampling": "inscriptions within site, site sizes fixed",
+  "governing_interval": "basic bootstrap"
+ },
+ "members": {
+  "F2_holdat": {
+   "n_analysis_inscriptions": 1670,
+   "recorded_chi2": 745.9530278664314,
+   "recomputed_chi2": 745.9530278664301,
+   "recorded_v": 0.11539837515155221,
+   "recomputed_v": 0.11539837515155212,
+   "bootstrap_median": 0.16180470665653984,
+   "percentile_ci95": [
+    0.15300258989494483,
+    0.17185754599689756
+   ],
+   "basic_ci95": [
+    0.058939204306206666,
+    0.0777941604081594
+   ],
+   "margin_adjudication_basic_ci": "basic CI upper bound < 0.10: bounded claim CONTRADICTED at the declared margin"
+  },
+  "F3_icit_lineage": {
+   "n_analysis_inscriptions": 5410,
+   "recorded_chi2": 4966.362228365138,
+   "recomputed_chi2": 4966.36222836514,
+   "recorded_v": 0.2190084751289231,
+   "recomputed_v": 0.21900847512892316,
+   "bootstrap_median": 0.24066234010740262,
+   "percentile_ci95": [
+    0.22764831519619397,
+    0.2557204397264531
+   ],
+   "basic_ci95": [
+    0.18229651053139323,
+    0.21036863506165235
+   ],
+   "margin_adjudication_basic_ci": "basic CI lower bound > 0.10: SUPPORTED stands at the declared margin"
+  }
+ },
+ "ai_disclosure": "Executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution sec.VI."
+}

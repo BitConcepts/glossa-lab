@@ -326,7 +326,7 @@ def main() -> int:
         flow_match
         and flow.get("eligible_primary") == 3144
         and len(analysis) == 3030
-        and sorted({e["site"] for e in analysis}) == ANALYSIS_SITES
+        and sorted({e["site"] for e in analysis}) == sorted(ANALYSIS_SITES)
         and cell_counts == expected_cell_counts
         and len(columns) == 125)
 

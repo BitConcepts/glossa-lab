@@ -175,6 +175,17 @@
 - [ ] **X1 — No publication in the draft program.** Any later
       publication follows the owner's Ask 4 answer and the
       program release gate in a separate record.
-- [ ] **X2 — No anchor or PRED contact.** Verify at every
+      *Closeout note (2026-10-11): complied with — the Stage 0
+      package was prepared and gate-verified in-repo only; no
+      deposit or publication was made in this program. The two
+      OSF registrations (design osf.io/a2xvc; Stage 1 contract
+      osf.io/pnqrx) are program records under owner direction,
+      not result publications. X1 remains a standing boundary
+      for any future publication.*
+- [x] **X2 — No anchor or PRED contact.** Verify at every
       stage closeout that anchors are byte-identical and no
       PRED-2026 scoring occurred.
+      *Verified at program closeout (2026-10-11): anchors
+      sha256 eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86
+      ebb1fa3b602cfaed (byte-identical); zero program commits
+      touched docs/PREDICTION_REGISTER.md; no PRED scoring ran.*

@@ -3309,3 +3309,11 @@ verdict is INCONCLUSIVE. Negative closure does not fire;
 no downstream repertoire work authorised; Stage 2 not
 executed. Full record: specs/027-movement-culture-
 language/stage1-outcome.md; repo LEDGER.md, same date.
+
+## 2026-10-11 — Spec 027 closeout (cross-reference)
+
+Program complete (Stages 0-1). Verification on merged
+main a0c8566a: suite 1,162 passed / 14 skipped / 0 failed;
+foundation 40/0/8; anchors byte-identical; PRED untouched.
+Stage 2 not executed (Q6 NOT-YET-TESTABLE; Q7 owner-gated).
+Full entry: repo LEDGER.md, same date.

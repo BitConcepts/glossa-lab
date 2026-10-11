@@ -4644,3 +4644,32 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-11 — Spec 028 CLOSEOUT (program complete)
+
+- Verification on merged main (909b239a, after PRs #158
+  freeze / #159 OSF record / #160 execution): full backend
+  suite **1,170 passed, 14 skipped, 0 failed** (504.3 s,
+  local run on the merged tree; each program PR merged on
+  CI verified from its run's own conclusions — runs
+  38153881380, 38154592997, 38156384573, all success 7/7);
+  foundation check **40 passed, 0 failed, 8 warnings**;
+  anchors INDUS_FINAL_ANCHORS.json byte-identical (sha256
+  eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3
+  b602cfaed); PRED register untouched (zero program
+  commits on docs/PREDICTION_REGISTER.md).
+- Program record: delegated adjudication + freeze
+  (PR #158, digest 619ab0c3...); OSF registration of the
+  frozen contract (osf.io/7m35w, filed before execution);
+  Phase-393 execution (PR #160): Arm A INCONCLUSIVE,
+  Arm B INCONCLUSIVE, Arm C exploratory decomposition.
+  Phase-392's record was never modified; its updated
+  reading lives in the Spec 028 historical assessment.
+- Follow-on boundary: any new test of the Harappa /
+  tablet-specific structure Arm C describes requires a
+  NEW spec, freeze, and registration. Nothing in Spec 028
+  pre-registers or authorises it.
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

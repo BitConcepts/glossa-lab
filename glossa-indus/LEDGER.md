@@ -3380,3 +3380,12 @@ its reading is updated only in the new historical
 assessment. Full record:
 specs/028-harappa-robustness/outcome.md; repo LEDGER.md,
 same date.
+
+## 2026-10-11 — Spec 028 closeout (program complete)
+
+Verification on merged main 909b239a: suite 1,170 passed
+/ 14 skipped / 0 failed; foundation 40/0/8; anchors
+byte-identical; PRED untouched. Verdicts: Arm A
+INCONCLUSIVE, Arm B INCONCLUSIVE; Phase-392's record
+never modified. Any Harappa/tablet follow-up test needs
+a new spec. Full entry: repo LEDGER.md, same date.

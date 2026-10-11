@@ -67,6 +67,20 @@ _NODE_SPECS = [
      "Descriptive infrastructure only; mints no verdict. The "
      "Q6 timing-support assessment applies criteria frozen "
      "before the build. CPU."),
+    ("IndusPhase392Q2Gate", "phase392_q2_gate.py",
+     "phase392_results.json",
+     "Phase-392 Stage-1 Q2 Repertoire Gate (spec 027)",
+     "Phase-392 (spec 027, Stage 1): Q2 gate under "
+     "stage1-freeze.md as amended — adjusted PERMANOVA R^2 "
+     "for site on per-inscription M77 composition "
+     "(Bray-Curtis), rarefaction to cell n=49 within site x "
+     "type-class, 199 draws, 499 permutations within type "
+     "strata, margin adjusted R^2 = 0.01, discriminating "
+     "controls (failure = INVALID), LOSO over 6 sites, "
+     "labelled S-complete sensitivity. Verdict in the Spec "
+     "026 taxonomy; the Parpola sensitivity is recorded NOT "
+     "ESTIMABLE at the frozen crosswalk rule and is not "
+     "run. No anchor or PRED contact. CPU."),
 ]
 
 

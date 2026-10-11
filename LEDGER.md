@@ -4364,3 +4364,78 @@ PRED-2026-001/002/003 remain PENDING.
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-11 — Spec 027 Stage 1 freeze MERGED; OSF registration filed (Phase-392 contract)
+
+- Stage 1 freeze merged as PR #154 (merge 4684408f) on CI
+  run 38144799989 verified success from the run's own
+  conclusion and job list. (PR #153, the original freeze PR,
+  was closed as superseded: during a ~37-minute GitHub
+  Actions trigger outage its post-amendment head never
+  received a run — zero check-runs on the head via the API
+  across two synchronize pushes, a close/reopen, and an
+  empty commit. #154 carried the identical commits; the
+  freeze merged on green CI only.)
+- OSF follow-on executed (owner-directed 2026-10-11; the
+  Spec 027 design registration osf.io/a2xvc recorded the
+  same follow-on): the exact frozen Stage 1 contract
+  registered on OSF BEFORE Stage 1 execution —
+  https://osf.io/pnqrx/ (OSF Preregistration schema;
+  filed 2026-10-11T14:02:01Z; public, no embargo; pending
+  admin approval at filing, state 'initial'). Record:
+  specs/027-movement-culture-language/stage1/
+  osf-registration.md (incl. the source-node 410 and the
+  draft-submit 404 API notes). Stage 1 execution proceeds
+  only after this filing.
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-11 — Spec 027 Stage 1 EXECUTED (Phase-392): verdict INCONCLUSIVE
+
+- Execution after the OSF filing (osf.io/pnqrx), under the
+  merged Stage 1 freeze (digest 30861f04... see freeze
+  entry; H23 order observed, registration verified at 471
+  nodes). Population reproduced exactly before outcomes
+  (eligible 3,144; analysis 3,030; 125 columns).
+- Primary: median adjusted PERMANOVA R^2 0.01677, 95%
+  interval [0.01032, 0.02397] (entirely above the frozen
+  0.01 margin); share of 199 rarefaction draws rejecting
+  1.000 (median p 0.002). Controls PASS (negative median
+  adj R^2 0.00020, rejection share 0.005; positive median
+  adj R^2 0.02121, interval [0.01580, 0.02760], rejection
+  1.000) — the instrument discriminates at the design's
+  operating point.
+- Jackknife: dropping Harappa takes the median adjusted
+  R^2 to 0.00928 (below margin); all other drops
+  0.01677–0.01863. Under the frozen verdict rules the
+  SUPPORTED rule therefore fails on its jackknife clause
+  while the CONTRADICTED rule does not fire: **verdict
+  INCONCLUSIVE** (the freeze's named case — jackknife range
+  crosses the margin while the primary interval does not).
+  Detection is unanimous; the margin-clearing effect is
+  partially load-bearing on the corpus's dominant site.
+- S-complete sensitivity (labelled, no verdict): median
+  adj R^2 0.01793, interval [0.01139, 0.02868], rejecting
+  1.000 — consistent with the primary.
+- Consequences per the frozen rules: the section 7.2
+  negative closure does NOT fire (bound to CONTRADICTED);
+  INCONCLUSIVE authorises no downstream repertoire work.
+  Stage 2 not executed (Q6 NOT-YET-TESTABLE from Stage 0;
+  Q7 unfrozen). Phase-137 F3's SUPPORTED verdict is not
+  revised (different layer, different frozen design; the
+  two results stand side by side — see stage1-outcome.md).
+  No anchor or PRED contact.
+- Deviation recorded: the first launch stopped INVALID on
+  a defective population-guard comparison (sorted vs
+  unsorted site list); the stopped run's recorded flow was
+  diffed against the frozen audit and reproduced it
+  exactly — the guard, not the population, was wrong. One-
+  line fix committed (1646de2f), relaunch reproduced the
+  population and ran clean (155 s). Full record:
+  specs/027-movement-culture-language/stage1-outcome.md.
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

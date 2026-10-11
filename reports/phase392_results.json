@@ -1,0 +1,188 @@
+{
+ "phase": 392,
+ "spec": "027-movement-culture-language",
+ "stage": "stage1-q2-gate",
+ "seed": 20261011,
+ "margin_adj_r2": 0.01,
+ "n_cell": 49,
+ "draws": 199,
+ "perms": 499,
+ "population_flow": {
+  "layer_records": 5679,
+  "after_dedup_kept": 4531,
+  "provenanced": 4505,
+  "excluded_graffiti_pottg": 473,
+  "excluded_type_POT": 562,
+  "excluded_type_OTHER": 338,
+  "seal_tab": 3605,
+  "eligible_primary": 3144,
+  "excluded_legible_lt2": 461,
+  "excluded_status_dropped_zero_mapped": 270,
+  "excluded_status_dropped_intra_dup": 795,
+  "excluded_status_dropped_holdat_dup": 83,
+  "excluded_site_unknown": 26,
+  "unjoined_in_horus": 1
+ },
+ "population_reproduced": true,
+ "analysis_records": 3030,
+ "sign_columns": 125,
+ "deadline_s": 5400,
+ "primary": {
+  "cells_included": 8,
+  "excluded_cells": {
+   "Chanhu-daro|TAB": 2,
+   "Dholavira|TAB": 15,
+   "Kalibangan|TAB": 3,
+   "Lothal|TAB": 2
+  },
+  "median_adj_r2": 0.01676956444927269,
+  "adj_r2_interval_95": [
+   0.01031821540980971,
+   0.023971230944368645
+  ],
+  "median_raw_r2": 0.029342843676264156,
+  "share_draws_rejecting": 1.0,
+  "median_p": 0.002
+ },
+ "loso_median_adj_r2": {
+  "Harappa": 0.00927565402650643,
+  "Mohenjo-daro": 0.018059211928317942,
+  "Dholavira": 0.018627054390618847,
+  "Lothal": 0.016865459893451118,
+  "Chanhu-daro": 0.01676879926722996,
+  "Kalibangan": 0.017081828900455842
+ },
+ "sensitivity_s_complete": {
+  "cells_included": 6,
+  "excluded_cells": {
+   "Chanhu-daro|SEAL": 43,
+   "Chanhu-daro|TAB": 1,
+   "Dholavira|TAB": 10,
+   "Kalibangan|SEAL": 37,
+   "Kalibangan|TAB": 3,
+   "Lothal|TAB": 2
+  },
+  "median_adj_r2": 0.017929475429264485,
+  "adj_r2_interval_95": [
+   0.01138866638058778,
+   0.02868465806031976
+  ],
+  "median_raw_r2": 0.027984805032377925,
+  "share_draws_rejecting": 1.0,
+  "median_p": 0.002,
+  "records": 2564
+ },
+ "negative_control": {
+  "cells_included": 8,
+  "excluded_cells": {
+   "Chanhu-daro|TAB": 2,
+   "Dholavira|TAB": 15,
+   "Kalibangan|TAB": 3,
+   "Lothal|TAB": 2
+  },
+  "median_adj_r2": 0.00020241392478459463,
+  "adj_r2_interval_95": [
+   -0.002303807474898645,
+   0.0032724191317744645
+  ],
+  "median_raw_r2": 0.01298754929659043,
+  "share_draws_rejecting": 0.005025125628140704,
+  "median_p": 0.526,
+  "pass": true
+ },
+ "positive_control": {
+  "cells_included": 8,
+  "excluded_cells": {
+   "Chanhu-daro|TAB": 2,
+   "Dholavira|TAB": 15,
+   "Kalibangan|TAB": 3,
+   "Lothal|TAB": 2
+  },
+  "median_adj_r2": 0.021211459926471776,
+  "adj_r2_interval_95": [
+   0.015799445394017543,
+   0.027602361766211312
+  ],
+  "median_raw_r2": 0.03372793742101817,
+  "share_draws_rejecting": 1.0,
+  "median_p": 0.002,
+  "pass": true
+ },
+ "positive_control_planted_signs": {
+  "Harappa": [
+   "M059",
+   "M086",
+   "M087",
+   "M089",
+   "M122",
+   "M123",
+   "M176",
+   "M267",
+   "M328",
+   "M342"
+  ],
+  "Mohenjo-daro": [
+   "M065",
+   "M067",
+   "M072",
+   "M121",
+   "M211",
+   "M249",
+   "M336",
+   "M343",
+   "M387",
+   "M391"
+  ],
+  "Dholavira": [
+   "M001",
+   "M008",
+   "M015",
+   "M048",
+   "M053",
+   "M095",
+   "M171",
+   "M216",
+   "M293",
+   "M402"
+  ],
+  "Lothal": [
+   "M012",
+   "M017",
+   "M051",
+   "M070",
+   "M124",
+   "M127",
+   "M149",
+   "M244",
+   "M287",
+   "M403"
+  ],
+  "Chanhu-daro": [
+   "M025",
+   "M028",
+   "M091",
+   "M130",
+   "M150",
+   "M197",
+   "M254",
+   "M294",
+   "M307",
+   "M341"
+  ],
+  "Kalibangan": [
+   "M125",
+   "M126",
+   "M155",
+   "M173",
+   "M180",
+   "M204",
+   "M233",
+   "M327",
+   "M344",
+   "M345"
+  ]
+ },
+ "verdict": "INCONCLUSIVE",
+ "verdict_reason": "controls pass; neither the SUPPORTED nor the CONTRADICTED rule fires (or the LOSO range crosses the margin)",
+ "elapsed_s": 155.0
+}

@@ -101,10 +101,10 @@
       list and corpus rules; freeze estimand, practical margin,
       interval rule, rarefaction, permutation strata, jackknife,
       controls, seeds, hashes, and verdict rules.
-- [ ] **S1-3 — H15/H23 gate.** Future phase script, graph
+- [x] **S1-3 — H15/H23 gate.** Future phase script, graph
       module, registration, and registration verification in
       order before any run.
-- [ ] **S1-4 — Execution.** Run the frozen design once;
+- [x] **S1-4 — Execution.** Run the frozen design once;
       report effect and interval, permutation result,
       single-object-type results where supported, jackknife,
       sensitivities, and every model variant tried.

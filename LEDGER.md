@@ -4121,3 +4121,37 @@ constitution sec.VI. No external correspondence sent.
 AI disclosure: drafted by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-11 — Spec 027 FROZEN (owner adjudication of §13)
+
+- Owner decision (Tristen Pierson, 2026-10-11 08:26 EDT,
+  verbatim): "Approve Spec 027 with the recommended answers
+  and freeze it." Binding record:
+  `specs/027-movement-culture-language/adjudication.md`.
+  Answers: Ask 1 → 0A (gazetteer + chronology spine in one
+  Stage 0; order Stage 0 → Stage 1 gate → conditional
+  Stage 2); Ask 2 → M77 governs Stage 1 (Parpola/CISI only as
+  a separately labelled crosswalk-v1 sensitivity; Wells/ICIT
+  not governing); Ask 3 → corpus inclusion rules approved as
+  drafted; Ask 4 → CC BY 4.0 publication through the release
+  gate for lawfully reusable rows only; Ask 5 → Stage 1
+  executes on the adjudicated design once its own freeze is
+  committed and merged.
+- Stage phase numbers named at the freeze: Stage 0 =
+  Phase-391, Stage 1 = Phase-392 (registered space ends at
+  Phase-386; 387–390 are claimed by the docstring of the
+  legacy unregistered phase382_390_actionable.py).
+- AEE assess + evaluator-contract run for the freeze state:
+  pass (33 claims, 0 failure modes, 0 below the 0.70
+  threshold); outputs in
+  `specs/027-movement-culture-language/aee/` with the phase
+  mapping recorded in `freeze-aee-note.md`. claims.json is
+  byte-identical to the draft-final register (sha256
+  7d27d401…); Spec 026 integrity check passes (no cycles, no
+  missing dependencies, no forbidden inheritance).
+- No stage executed by this entry; no dataset acquired, no
+  publication, no anchor change, no PRED-2026 scoring.
+
+AI disclosure: recorded by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

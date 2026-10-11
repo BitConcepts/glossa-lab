@@ -1,12 +1,22 @@
 # Spec 027 — Movement, Culture, and Language in the Greater Indus World
 
-> ## DRAFT — PROPOSAL FOR OWNER ADJUDICATION
+> ## FROZEN — OWNER-ADJUDICATED 2026-10-11
 >
-> **This draft authorizes nothing.** It does not freeze a design,
-> execute a stage, acquire or copy a dataset, publish a dataset,
-> move an anchor, or score PRED-2026. Every stage below requires
-> owner adjudication of §13 and its own later freeze before any
-> execution.
+> Owner decision (Tristen Pierson, 2026-10-11 08:26 EDT,
+> verbatim): *"Approve Spec 027 with the recommended answers
+> and freeze it."* The adjudication record is
+> `adjudication.md` in this directory: Ask 1 → 0A (Stage 0 =
+> gazetteer + chronology spine together); Ask 2 → M77 governs
+> Stage 1 (Parpola/CISI only as a labelled crosswalk
+> sensitivity); Ask 3 → corpus rules approved as drafted;
+> Ask 4 → CC BY 4.0 publication through the release gate for
+> lawfully reusable rows; Ask 5 → Stage 1 executes on the
+> adjudicated design once its own freeze merges.
+>
+> This freeze authorizes Stage 0 (Phase-391) and, after
+> Stage 0 and its own merged freeze, Stage 1 (Phase-392).
+> Stage 2 remains conditional and separately frozen. Nothing
+> in this spec moves an anchor or scores PRED-2026.
 >
 > Directed by the owner (Tristen Pierson) on 2026-10-10: the
 > Indus program must also study movement of people as it relates
@@ -120,12 +130,13 @@ The lifecycle for any approved stage is:
 checklist → tasks → analyze → stage freeze → H15/H23 gate →
 execution → AEE assess + gaps → closeout`.
 
-This draft completes only the proposal side of that lifecycle.
-No stage in this document is frozen. A later stage freeze must
-be a separate commit or PR, following the Spec 024/025 pattern,
-and must name its exact phase number from the repository's
-then-current global phase registry. This draft reserves no
-phase number.
+The draft completed only the proposal side of that lifecycle.
+At the 2026-10-11 freeze the stage phase numbers were named:
+**Stage 0 = Phase-391, Stage 1 = Phase-392** (see
+`adjudication.md` for the numbering check). Each stage freeze
+is a separate record, following the Spec 024/025 pattern; the
+spec-level freeze in this document does not substitute for a
+stage freeze.
 
 ### 3.2 Claim register
 
@@ -790,10 +801,15 @@ No P1 belief artifact below MEDIUM confidence is load-bearing
 for a verdict in this draft, because this draft issues no
 verdict.
 
-## 13. Decision asks for owner adjudication
+## 13. Decision asks for owner adjudication — ANSWERED 2026-10-11
 
-The owner is asked to answer the following. Until then, this
-spec remains a draft and no stage is authorized.
+**All five asks were answered by the owner on 2026-10-11**
+("Approve Spec 027 with the recommended answers and freeze
+it"). The binding record is `adjudication.md`: Ask 1 → 0A;
+Ask 2 → M77; Ask 3 → approved as drafted; Ask 4 → CC BY 4.0
+through the release gate; Ask 5 → Stage 1 executes on the
+adjudicated design after its own merged freeze. The original
+ask texts are preserved below for the record.
 
 ### Ask 1 — Stage order and Stage 0 scope
 
@@ -879,3 +895,12 @@ After owner adjudication and completion of Stage 0, choose:
 - Analyze: `plan.md`, `tasks.md`, and
   `checklists/requirements.md` are cross-checked against
   FR-027-1…15 before the draft PR is opened.
+- **Freeze addendum (2026-10-11):** owner adjudication
+  recorded in `adjudication.md` (Asks 1–5 answered as recorded
+  there); this spec is frozen. AEE assess + evaluator-contract
+  outputs for the freeze state are saved under `aee/`
+  (`after_freeze`). Stage phase numbers named: Stage 0 =
+  Phase-391, Stage 1 = Phase-392. Draft-era statements in
+  §§1–13 that describe the spec as unauthorized are superseded
+  by this addendum and the adjudication record; the design
+  text itself is unchanged.

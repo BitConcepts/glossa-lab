@@ -1,12 +1,11 @@
 # Spec 027 — Tasks
 
-> ## DRAFT — PROPOSAL FOR OWNER ADJUDICATION
+> ## FROZEN — OWNER-ADJUDICATED 2026-10-11
 >
-> Checking a draft-lifecycle task below records drafting work
-> only. Every Stage 0, Stage 1, and Stage 2 execution task is
-> gated first on owner adjudication and then on its own stage
-> freeze. No task in this file is an execution authorization by
-> itself.
+> Adjudication is recorded in `adjudication.md` (T0 complete).
+> Every Stage 0, Stage 1, and Stage 2 execution task remains
+> gated on its own stage freeze. No task in this file is an
+> execution authorization by itself.
 
 ## Draft lifecycle
 
@@ -48,14 +47,19 @@
 
 ## Owner adjudication gate
 
-- [ ] **T0 — Owner answers spec §13 Asks 1–5.** Until this is
-      recorded, all tasks below remain blocked:
-  1. stage order and Stage 0 scope;
-  2. Q2 governing sign list;
-  3. Q2 corpus inclusion rules;
-  4. gazetteer licensing/publication posture;
-  5. whether Stage 1 executes immediately on adjudication or
-     returns for a separate go.
+- [x] **T0 — Owner answers spec §13 Asks 1–5.** Answered
+      2026-10-11 ("Approve Spec 027 with the recommended
+      answers and freeze it"); binding record in
+      `adjudication.md`:
+  1. stage order and Stage 0 scope → **0A** (gazetteer +
+     chronology spine in one Stage 0);
+  2. Q2 governing sign list → **M77** (Parpola/CISI only as a
+     labelled crosswalk sensitivity);
+  3. Q2 corpus inclusion rules → **approved as drafted**;
+  4. gazetteer licensing/publication posture → **CC BY 4.0
+     through the release gate**, lawfully reusable rows only;
+  5. Stage 1 timing → **executes on the adjudicated design**
+     once its own freeze is committed and merged.
 
 ## Stage 0 — Gazetteer and chronology spine (after T0 + Stage 0 freeze)
 

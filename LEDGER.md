@@ -4051,3 +4051,46 @@ constitution sec.VI. No external correspondence sent.
   Chronology NOT controlled (rider). Exploratory S-chron /
   S-depth basic CIs [0.1848, 0.2098] / [0.1841, 0.2096].
 - Foundation check after the phase: 40 passed / 0 failed.
+
+## Spec 026 S5 — Closeout: historical assessments + verification
+
+- Date: 2026-10-10/11. Historical assessments
+  (specs/026-rcph-framework-transfer/historical-assessments
+  .{md,json}; builder backend/scripts/
+  spec026_assessments_build.py): all 116 register items
+  assessed; **75 items carry a changed evidentiary status** —
+  the 8 RERUN-REQUIRED rows (via Phases 383–386), the INVALID
+  cohort (Phases 111–114 + Spec 017), the calibration-rejected
+  cohort remapped to INCONCLUSIVE (115/117/118), the
+  Phase-116/125/127 taxonomy mappings (bounded claims
+  CONTRADICTED; diagnostics stand), the SA-era cohort
+  (SPEC-004 + Phases 52–104: evidentiary status superseded
+  under the H26 quarantine), and the NOT-RERUNNABLE cohort
+  (Phases 92–95, 97–100: evidentiary ceiling — no claim-level
+  weight). Original files and labels untouched throughout.
+- AEE at implement stage: outcome gather_evidence (16
+  claims, 0 below the 0.70 threshold, 5 residual heuristic
+  failure modes) — recovery recorded in aee/
+  recovery-implement.md; gaps register after verify: 0 open
+  gaps (aee/gaps-implement.md).
+- Program process notes (recorded for honesty): PR #139 was
+  squash-merged minutes before its PR-head CI completed on a
+  misread poll; the merged tree was subsequently verified
+  green on BOTH the PR-head run (38107614340) and main's own
+  run (38107756265), all jobs success, before any further
+  merge. Separately, the v1 freeze records for Phases
+  384/385 (and the shared graph-module coverage in all four
+  v1 freezes) no longer verify against the current tree
+  because the graph module changed for v2 — expected and by
+  design: every freeze verified on its execution tree at run
+  time, as recorded in the phase entries above.
+- Full backend suite + foundation check on merged main and
+  the anchors byte-identity check are recorded in the S5 PR
+  and the program's final report. Anchors were not moved by
+  any part of this program; no PRED scoring was performed;
+  no publication was made (changed findings go to the owner
+  first).
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI. No external correspondence sent.

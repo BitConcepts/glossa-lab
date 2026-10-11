@@ -3191,3 +3191,22 @@ dfrhz updated in step; Literature unchanged. Spec 025
 complete (T15 DONE). Anchors eccea6d5... unchanged;
 no PRED movement. Full entry: repo LEDGER.md, same
 date.
+
+## 2026-10-10/11 — Spec 026 (RCPH framework transfer) COMPLETE
+
+The RCPH study framework was transferred into Glossa through
+a full spec-kit + AEE lifecycle (Spec 026; PRs #138–#146).
+All 116 in-scope prior items (Specs 001–025, Phases 52–141)
+were classified in a frozen impact register; all 8
+RERUN-REQUIRED items were rerun under pre-declared freezes
+(Phases 383–386). Headline outcomes: coding pilots rescored
+(132 CONTRADICTED; 134/135 INCONCLUSIVE with intervals; one
+coder origin group — agreement is intra-origin consistency);
+Phase-137 F2 bounded claim CONTRADICTED at the declared
+margin, F3 SUPPORTED margin-adjudicated; Phase-140 G1
+SUPPORTED under control stands at the declared margin
+(chronology NOT controlled); Phases 116/125/127/131 replayed
+exactly (REPRODUCED). 75 items carry a changed evidentiary
+status in specs/026-rcph-framework-transfer/
+historical-assessments.md (originals untouched). Anchors
+unchanged; no PRED scoring; no publication.

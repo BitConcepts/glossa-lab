@@ -41,8 +41,8 @@
       `working/analyze.md`: every FR has a task path, every
       blocked question has a blocker and unblocking condition,
       and no execution task lacks its adjudication/freeze gate.
-- [ ] **L10 — Draft PR and ledgers.** Open one DRAFT PR, leave
-      it unmerged, and append draft-opened entries to both
+- [x] **L10 — Draft PR and ledgers.** Draft PR #147 opened
+      and left unmerged; draft-opened entries appended to both
       program ledgers. No freeze, execution, external send, or
       publication.
 

@@ -4094,3 +4094,30 @@ constitution sec.VI. No external correspondence sent.
 AI disclosure: executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec.VI. No external correspondence sent.
+
+## 2026-10-11 — Spec 027 DRAFT opened (movement, culture, and language)
+
+- Draft PR #147 opened on branch
+  `spec/027-movement-culture-language`; **left open,
+  unmerged, and unfrozen**. This entry records a proposal,
+  not an authorization.
+- Spec 027 proposes Stage 0 (source-asserted settlement
+  gazetteer + traced chronology spine, descriptive only),
+  Stage 1 (Q2 repertoire gate with designed negative closure),
+  conditional Stage 2 designs for Q7 and Q6, and a
+  registered-but-blocked register for Q1, Q3, Q4, Q5, Q8, and
+  Q9 with exact blockers and unblocking conditions.
+- Governance: 33 claims in
+  `specs/027-movement-culture-language/claims.json`; Spec 026
+  integrity check passes. AEE outcomes after specify, plan,
+  and tasks are all `pass`; composed strict evaluator outcome
+  after tasks is `pass`. Tooling pinned per run (specify
+  1.0.10; AEE extension v1.1.0; evaluator v1.0.0; AEE package
+  1.0.4 from the Glossa venv).
+- No stage was executed, no dataset was acquired or copied,
+  no publication was made, no external party was contacted,
+  no anchor changed, and no PRED-2026 scoring occurred.
+
+AI disclosure: drafted by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

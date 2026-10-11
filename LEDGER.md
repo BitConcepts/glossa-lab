@@ -4395,7 +4395,7 @@ constitution sec.VI.
 ## 2026-10-11 — Spec 027 Stage 1 EXECUTED (Phase-392): verdict INCONCLUSIVE
 
 - Execution after the OSF filing (osf.io/pnqrx), under the
-  merged Stage 1 freeze (digest 30861f64... see freeze
+  merged Stage 1 freeze (digest 30861f04... see freeze
   entry; H23 order observed, registration verified at 471
   nodes). Population reproduced exactly before outcomes
   (eligible 3,144; analysis 3,030; 125 columns).

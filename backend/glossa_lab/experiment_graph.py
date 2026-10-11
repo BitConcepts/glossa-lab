@@ -2815,6 +2815,16 @@ try:
     logger.info("Registered %d Phase-391-392 (spec 027) nodes", len(list(_p391392_defs())))
 except Exception as _p391392_exc:  # noqa: BLE001
     logger.warning("Phase-391-392 (spec 027) nodes not registered: %s", _p391392_exc)
+# ── Phase-393 node (spec 028: Harappa robustness) ──
+try:
+    from glossa_lab.experiment_graph_phase393 import (
+        _phase393_node_defs as _p393_defs,  # noqa: PLC0415
+    )
+    for _d in _p393_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-393 (spec 028) nodes", len(list(_p393_defs())))
+except Exception as _p393_exc:  # noqa: BLE001
+    logger.warning("Phase-393 (spec 028) nodes not registered: %s", _p393_exc)
 # ── Phase-120 nodes (Bhaskar 2024 descriptive triage) ──
 try:
     from glossa_lab.experiment_graph_phase120 import (

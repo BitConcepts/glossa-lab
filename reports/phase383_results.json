@@ -1,0 +1,68 @@
+{
+ "phase": "Phase-383",
+ "spec": "026",
+ "reruns": "Phases 132/134/135 \u2014 C4 rescoring from on-disk records",
+ "contract": "specs/026-rcph-framework-transfer/reruns/phase383-contract.md",
+ "parameters": {
+  "B_bootstrap": 9999,
+  "seed": 20261011
+ },
+ "origin_group_audit": "All coding roles in all three pilots (pass_a, pass_b, pass_gold, adjudicator) were executed by AI agents of ONE model family (Muse Spark, via Muse), per the pilots' own disclosure. Effective independent coder origin groups = 1. Pass agreement is intra-origin consistency, not independent corroboration.",
+ "pilots": {
+  "phase132": {
+   "pilot": "Phase-132",
+   "n_objects": 50,
+   "recomputed_exact_sequence_agreement_all50_p": 0.2,
+   "committed_exact_sequence_agreement_all50_p": 0.2,
+   "recomputed_per_token_agreement_p": 0.4797979797979798,
+   "bootstrap_exact_seq_ci95": [
+    0.1,
+    0.32
+   ],
+   "bootstrap_per_token_ci95": [
+    0.4088656342704733,
+    0.5561238131616283
+   ],
+   "taxonomy_verdict": "CONTRADICTED (bounded claim: this AI coding basis at this protocol can produce a publishable keyed transcription layer) \u2014 the frozen stop-rule fired at 0.20 vs the 0.80 floor, and the bootstrap CI sits far below the floor"
+  },
+  "phase134": {
+   "pilot": "Phase-134",
+   "n_objects": 100,
+   "recomputed_exact_agreement": 0.84,
+   "recomputed_cohens_kappa": 0.7884717080909571,
+   "committed_exact_agreement": 0.84,
+   "committed_cohens_kappa": 0.7884717080909571,
+   "recomputed_illegible_category_agreement": 0.6666666666666666,
+   "bootstrap_agreement_ci95": [
+    0.77,
+    0.91
+   ],
+   "bootstrap_kappa_ci95": [
+    0.6889769366935493,
+    0.878002492468407
+   ],
+   "near_miss_adjudication": "CI reaches 0.85: the near-miss framing cannot be excluded on sampling grounds",
+   "taxonomy_verdict": "INCONCLUSIVE \u2014 the pilot's own frozen gates put the result in the middle band (proceed gate unmet, stop rule unfired); no confirmation test was completed on this basis"
+  },
+  "phase135": {
+   "pilot": "Phase-135",
+   "n_objects": 100,
+   "recomputed_exact_agreement": 0.78,
+   "recomputed_cohens_kappa": 0.712868702688593,
+   "committed_exact_agreement": 0.78,
+   "committed_cohens_kappa": 0.712868702688593,
+   "recomputed_illegible_category_agreement": 0.3684210526315789,
+   "bootstrap_agreement_ci95": [
+    0.7,
+    0.86
+   ],
+   "bootstrap_kappa_ci95": [
+    0.6055200885654494,
+    0.8117520505580206
+   ],
+   "near_miss_adjudication": "CI reaches 0.85: the near-miss framing cannot be excluded on sampling grounds",
+   "taxonomy_verdict": "INCONCLUSIVE \u2014 the pilot's own frozen gates put the result in the middle band (proceed gate unmet, stop rule unfired); no confirmation test was completed on this basis"
+  }
+ },
+ "ai_disclosure": "Executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution sec.VI."
+}

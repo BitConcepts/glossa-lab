@@ -4018,3 +4018,36 @@ constitution sec.VI. No external correspondence sent.
   bootstrap CI + share ≥ observed 0.0; 131 shares
   0.061321 / 0.938679). Anchors unchanged in every replay.
   Foundation check: 40/0.
+
+## Phase-384 (Spec 026 rerun) — C1 margin completion for Phase-137 F2/F3
+
+- Date: 2026-10-10. v1 (freeze bf4356440ea035f3…): χ²/V
+  reproduced exactly from the recorded tables; its
+  parametric cell-level bootstrap interval then FAILED the
+  independence negative control (CI [0.1115, 0.1242] at true
+  V = 0) — adjudication INVALID under principle 5, preserved
+  in the report. v2 (contract + freeze 4e6c78bc917c96a3…
+  frozen pre-execution in PR #142): inscription-level
+  bootstrap within site, BASIC interval governing.
+- F2 (Holdat, V 0.1154): basic CI [0.0589, 0.0778] — below
+  the declared 0.10 floor → the bounded marginal claim is
+  CONTRADICTED at the declared margin, converging with the
+  original controlled-permutation NOT SUPPORTED (p = 0.7354).
+- F3 (ICIT-lineage, V 0.2190): basic CI [0.1823, 0.2104] —
+  SUPPORTED stands at the declared margin. Original
+  confounder confessions unchanged.
+- Foundation check after the phase: 40 passed / 0 failed.
+
+## Phase-385 (Spec 026 rerun) — C1 margin completion for Phase-140 G1
+
+- Date: 2026-10-10. v1 (freeze 8af60b985d9994bc…):
+  population + χ² verified exactly; percentile-only interval
+  [0.2282, 0.2537] excluded the point estimate (resampling
+  bias) — superseded by v2 (freeze 9b20117a9ef1789d…, PR
+  #142) with the BASIC interval governing, B = 4,999.
+- G1 primary (composition × preservation strata): basic CI
+  [0.1838, 0.2102] — entirely above the 0.10 floor →
+  SUPPORTED under control STANDS at the declared margin.
+  Chronology NOT controlled (rider). Exploratory S-chron /
+  S-depth basic CIs [0.1848, 0.2098] / [0.1841, 0.2096].
+- Foundation check after the phase: 40 passed / 0 failed.

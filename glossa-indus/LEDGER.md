@@ -3257,3 +3257,12 @@ cell 15, margin 0.01, discriminating controls, LOSO; digest
 (17.57% unambiguous crosswalk coverage); not run. Execution
 follows on this freeze's merge under Ask 5. Full entry: repo
 LEDGER.md, same date.
+
+## 2026-10-11 — Spec 027 Stage 1 freeze Amendment 1 (cross-reference)
+
+Pre-merge, pre-outcome amendment (synthetic-data machinery
+evidence only): adjusted R^2 estimand scale; rarefaction
+cell 15 -> 49; deterministic positive-control sign sets.
+Amended freeze digest 30861f04...; controls calibrated PASS
+at the amended design. Full entry: repo LEDGER.md, same
+date; amendment text in stage1-freeze.md.

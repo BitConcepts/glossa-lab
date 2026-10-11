@@ -64,7 +64,7 @@ def test_frozen_margins_match_audit():
 
 def test_freeze_doc_carries_the_design_constants():
     text = FREEZE_MD.read_text(encoding="utf-8")
-    for needle in ("n_cell = 15", "R = 199", "B = 499",
-                   "20261011", "0.01", "NOT ESTIMABLE",
+    for needle in ("n_cell = 49", "R = 199", "B = 499",
+                   "20261011", "0.01", "NOT ESTIMABLE", "adjusted",
                    "M77 governs", "3,144", "3,030"):
         assert needle in text, needle

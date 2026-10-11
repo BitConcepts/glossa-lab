@@ -10,7 +10,7 @@
   "estimand": {
    "response": "per-inscription M77 sign composition (proportions, Bray-Curtis)",
    "grouping": "site (6 analysis sites)",
-   "statistic": "PERMANOVA R^2 for site, rarefaction-averaged",
+   "statistic": "adjusted PERMANOVA R^2 for site, rarefaction-averaged (Amendment 1)",
    "margin_r2": 0.01
   },
   "design": {
@@ -26,7 +26,7 @@
    ],
    "analysis_records": 3030,
    "sign_columns": 125,
-   "n_cell_rarefaction": 15,
+   "n_cell_rarefaction": 49,
    "rarefaction_draws": 199,
    "permutations_per_draw": 499,
    "permutation_strata": "object type class (SEAL/TAB)",
@@ -49,18 +49,18 @@
   }
  },
  "sources": {
-  "specs/027-movement-culture-language/stage1-freeze.md": "e8ae61488b165060f035f8bdd310a205b808f7c76d62f0efc314852ce301dbc8",
+  "specs/027-movement-culture-language/stage1-freeze.md": "afce481fd12972e2efd2343c0728fd8bd8611b6e320edf02c5fef0e46e8796e9",
   "specs/027-movement-culture-language/adjudication.md": "13cb50801ea581f84f485f622287180abdaa062af0393a01de669539f9fc6ce5",
   "specs/027-movement-culture-language/spec.md": "7fff5d5a90b0af5697afa17a631e6901702b521f7e61c3c2bb444f08e369f9b0",
   "specs/027-movement-culture-language/stage1/build_margins_audit.py": "c8ed023b6d606c57af01d648660c6d5f7dbb9e712bd4751be7c391b50fa023ef",
   "specs/027-movement-culture-language/stage1/margins-audit.json": "a45a539403ef7a29462b76b59ceaa6f6e856b9d8c46cec22e903e78628c615b1",
   "data/crosswalks/parpola_mahadevan_crosswalk_v1.csv": "3d0b9ef12e6ce4eb8426d449656272365ee157b8c326a130d2261f8e39452823",
-  "backend/tests/test_phase392_stage1_freeze.py": "f6e91c7363af7c0f8ab095d05f4b4415dbde30efd291008d1ec67f2d062d5ebb"
+  "backend/tests/test_phase392_stage1_freeze.py": "677389f5da928334b50bdb52d77a9491b869b070052e781c164e80ea7a14ce5a"
  },
  "environment": {
   "python": "3.12.3",
   "platform": "Linux",
   "aee": "1.0.4"
  },
- "digest": "9c937fbc5c0fb86b48478d66a6894a708b8e2fd36eb45c0987408ed01bc4a42a"
+ "digest": "30861f04e5968ed5c488c01dbc74891c7977cd256bc7cf9ed075c1513d145762"
 }

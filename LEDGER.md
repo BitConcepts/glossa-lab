@@ -4248,3 +4248,32 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-11 — Spec 027 Stage 1 freeze AMENDMENT 1 (pre-merge, pre-outcome)
+
+- Three changes to the Stage 1 freeze before its merge,
+  forced by machinery smoke tests on SYNTHETIC data only (no
+  real repertoire outcome computed): (1) estimand scale =
+  adjusted PERMANOVA R^2 — the raw R^2 null expectation
+  (g-1)/(n-1) sits above the 0.01 margin at any feasible
+  cell size, which made the negative control unpassable and
+  the margin comparison vacuous; (2) rarefaction cell size
+  15 -> 49 (largest keeping all 6 sites, >= 8 cells; 392
+  inscriptions/draw); (3) positive-control sign sets made
+  deterministic (disjoint blocks of the 60 most frequent
+  sign columns) after simulation showed seed-drawn sets made
+  the planted effect luck-dependent (0.012-0.027).
+- Calibration at the amended design (identical pipeline,
+  synthetic populations): negative control PASS; positive
+  control PASS (median adjusted R^2 0.0198, interval
+  [0.0153, 0.0258], 100% draws rejecting). Amended freeze
+  digest 30861f04... Full text: stage1-freeze.md Amendment 1.
+- Process note: a VM replacement mid-program (2026-10-11
+  ~13:12 EDT) wiped /tmp scratch (incl. one un-run smoke
+  test's output) but no committed work; worktrees and stores
+  under ~/workspace were intact. The backend was restarted
+  by the watchdog per its standing job.
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

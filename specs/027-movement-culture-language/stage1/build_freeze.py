@@ -28,7 +28,7 @@ DEFINITION = {
         "response": "per-inscription M77 sign composition "
                     "(proportions, Bray-Curtis)",
         "grouping": "site (6 analysis sites)",
-        "statistic": "PERMANOVA R^2 for site, rarefaction-averaged",
+        "statistic": "adjusted PERMANOVA R^2 for site, rarefaction-averaged (Amendment 1)",
         "margin_r2": 0.01,
     },
     "design": {
@@ -38,7 +38,7 @@ DEFINITION = {
                            "Lothal", "Chanhu-daro", "Kalibangan"],
         "analysis_records": 3030,
         "sign_columns": 125,
-        "n_cell_rarefaction": 15,
+        "n_cell_rarefaction": 49,
         "rarefaction_draws": 199,
         "permutations_per_draw": 499,
         "permutation_strata": "object type class (SEAL/TAB)",

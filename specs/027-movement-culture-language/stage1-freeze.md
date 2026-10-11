@@ -32,12 +32,15 @@ peoples (spec §7.1).
   over the frozen sign columns) under **M77**.
 - **Grouping:** site (6 analysis sites, §3).
 - **Distance:** Bray–Curtis on proportions.
-- **Estimand:** PERMANOVA R² for site, rarefaction-averaged
-  (§4).
-- **Practical margin:** R² = **0.01**. Declared convention
-  (spec §12): a site share of repertoire dispersion below 1%
-  is not a regional repertoire pattern for program purposes.
-  A p-value alone cannot produce SUPPORTED (§7.3).
+- **Estimand:** **adjusted** PERMANOVA R² for site,
+  rarefaction-averaged (§4; Amendment 1). The unadjusted R²
+  is reported alongside for transparency; every rule uses
+  the adjusted scale.
+- **Practical margin:** adjusted R² = **0.01**. Declared
+  convention (spec §12): a site share of repertoire
+  dispersion below 1% beyond the null expectation is not a
+  regional repertoire pattern for program purposes. A
+  p-value alone cannot produce SUPPORTED (§7.3).
 
 ## 2. Corpus (Ask 2 + Ask 3, operationalised)
 
@@ -119,31 +122,38 @@ eligible population (123 signs per the audit) + `UNMAPPED` +
 
 - **Rarefaction:** within each site × type-class cell of the
   analysis population, sample without replacement to the
-  common cell size **n_cell = 15** (the largest size keeping
-  ≥ 10 cells; cells below 15 are excluded from the rarefied
-  population and reported: Lothal TAB 2, Chanhu-daro TAB 2,
-  Kalibangan TAB 3). Included cells (10): Harappa SEAL/TAB,
-  Mohenjo-daro SEAL/TAB, Dholavira SEAL/TAB, Lothal SEAL,
-  Chanhu-daro SEAL, Kalibangan SEAL → 150 inscriptions per
-  draw. **R = 199 draws.**
+  common cell size **n_cell = 49** (Amendment 1: the largest
+  size keeping all 6 analysis sites and ≥ 8 cells; binding
+  cell Kalibangan SEAL = 49; cells below 49 are excluded
+  from the rarefied population and reported: Dholavira TAB
+  15, Lothal TAB 2, Chanhu-daro TAB 2, Kalibangan TAB 3).
+  Included cells (8): Harappa SEAL/TAB, Mohenjo-daro
+  SEAL/TAB, Dholavira SEAL, Lothal SEAL, Chanhu-daro SEAL,
+  Kalibangan SEAL → 392 inscriptions per draw. **R = 199
+  draws.**
 - **Per draw:** Bray–Curtis PERMANOVA for site on the
   rarefied inscriptions' proportions; permutation p from
   **B = 499** permutations of site labels **within type-class
   strata** (labels exchangeable only within a stratum);
   p = (1 + #{F_perm ≥ F_obs}) / (1 + B).
-- **Summaries:** draw-level R² distribution → median R² and
-  percentile interval [2.5%, 97.5%]; share of draws with
-  p ≤ 0.05.
+- **Summaries:** draw-level adjusted R² distribution →
+  median adjusted R² and percentile interval [2.5%, 97.5%];
+  share of draws with p ≤ 0.05; median raw R² reported for
+  transparency. Adjusted R² per draw =
+  1 − (1 − R²)(n − 1)/(n − g) with n = inscriptions per draw
+  and g = sites in the draw (the standard correction;
+  null expectation ≈ 0).
 - **Seed:** `20261011` for rarefaction, permutation, controls,
   and jackknife (one seed, named here so no later choice
   exists). α = 0.05.
 - **Jackknife:** leave-one-site-out over the 6 analysis
   sites; per dropped site, the rarefaction-averaged median
-  R² recomputed identically (no permutation). Reported as a
-  range.
+  adjusted R² recomputed identically (no permutation).
+  Reported as a range.
 - **Sensitivity (labelled, no verdict):** S-complete —
   exclude records whose joined `complete` field is `N`;
-  recompute median R² and the share of draws rejecting.
+  recompute median adjusted R² and the share of draws
+  rejecting.
   Period is **not** a stratum or sensitivity: the layer's
   period field is 59.2% uninformative (Phase-139 audit of
   this layer), recorded here as a limitation of the bounded
@@ -162,14 +172,18 @@ per-inscription legible lengths:
 
 - **Negative control:** each synthetic inscription's tokens
   drawn from the pooled eligible composition (no site
-  structure). PASS iff its median R² < 0.01 **and** ≥ 95% of
-  its draws have p > 0.05.
+  structure). PASS iff its median adjusted R² < 0.01 **and**
+  ≥ 95% of its draws have p > 0.05.
 - **Positive control:** each site's composition = pooled
   composition perturbed toward a site-specific set of 10
-  signs (probability × 3, renormalised; sets drawn with the
-  frozen seed), calibrated to a true site R² of roughly
-  2–3× the margin. PASS iff ≥ 95% of its draws have p ≤ 0.05
-  **and** its R² interval lies entirely above 0.01.
+  signs (probability × 3, renormalised). The sets are
+  **deterministic**: disjoint blocks of 10 from the 60 most
+  frequent sign columns (pooled-frequency ranking — margins
+  only), assigned in the §3 site order (Amendment 1).
+  Calibrated in pre-freeze simulation to a true adjusted
+  R² of roughly 2× the margin. PASS iff ≥ 95% of its draws
+  have p ≤ 0.05 **and** its adjusted R² interval lies
+  entirely above 0.01.
 
 If either control fails, the run is **INVALID** (the
 instrument cannot discriminate at the declared margin), the
@@ -183,11 +197,13 @@ population differs from §3's frozen margins in any count, the
 run is INVALID (population not reproduced) and stops.
 
 - **SUPPORTED** iff controls pass AND ≥ 95% of primary draws
-  reject (p ≤ 0.05) AND the R² percentile interval lies
-  entirely above 0.01 AND every LOSO median R² > 0.01.
+  reject (p ≤ 0.05) AND the adjusted R² percentile interval
+  lies entirely above 0.01 AND every LOSO median adjusted
+  R² > 0.01.
 - **CONTRADICTED** iff controls pass AND (≥ 95% of primary
-  draws fail to reject OR the R² percentile interval lies
-  entirely at or below 0.01). The bounded claim is defeated;
+  draws fail to reject OR the adjusted R² percentile
+  interval lies entirely at or below 0.01). The bounded
+  claim is defeated;
   spec §7.2's negative closure applies automatically: all
   downstream repertoire-geography work under Spec 027 stops.
 - **INCONCLUSIVE** iff controls pass and neither rule fires
@@ -228,3 +244,42 @@ run.** This is a margins determination, not a result.
   appears to bear on an anchor, it is recorded as a
   historical assessment and flagged for owner adjudication —
   never actioned here.
+
+## Amendment 1 — estimand scale, rarefaction size, control construction (2026-10-11, pre-merge, pre-outcome)
+
+Three changes made after the freeze was drafted and its PR
+opened, **before merge and before any repertoire outcome was
+computed on real data**, each forced by machinery evidence
+from synthetic data only:
+
+1. **Adjusted R² as the estimand scale.** A machinery smoke
+   test on a homogeneous synthetic population showed the raw
+   PERMANOVA R² centred at ≈ (g − 1)/(n − 1) under the null —
+   ≈ 0.017 at the originally drafted cell size and ≈ 0.013
+   even at n_cell = 49 — i.e. **above the 0.01 margin by
+   construction**. On the raw scale the negative control
+   could not pass and the margin comparison was vacuous.
+   The standard adjusted R² (null expectation ≈ 0) restores
+   both; the margin's value and meaning are unchanged (a
+   share of dispersion beyond null expectation).
+2. **n_cell 15 → 49.** At 15 the per-draw n was 150 and the
+   interval precision poor; 49 is the largest common size
+   keeping all 6 analysis sites and ≥ 8 cells (binding cell
+   Kalibangan SEAL = 49), giving 392 inscriptions per draw.
+3. **Deterministic positive-control sign sets.** Simulation
+   with seed-drawn sets showed the planted effect size was
+   luck-dependent (achieved adjusted R² 0.012–0.027 across
+   set draws at the same ×3 boost), because boosting rare
+   signs barely moves a composition. Sets are now disjoint
+   blocks of the 60 most frequent sign columns (margins
+   only).
+
+**Calibration evidence (synthetic populations only, the
+identical pipeline, pre-freeze):** negative control PASS
+(median adjusted R² < 0.01, ≥ 95% of draws non-rejecting);
+positive control PASS (median adjusted R² 0.0198, interval
+[0.0153, 0.0258], 100% of draws rejecting). No quantity in
+this amendment derives from the real corpus's site-by-sign
+structure; the pooled composition used by the controls is a
+whole-corpus margin, as the frozen control definitions
+themselves require.

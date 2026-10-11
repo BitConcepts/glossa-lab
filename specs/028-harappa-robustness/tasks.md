@@ -46,7 +46,7 @@
 - [x] **L7 — AEE hooks.** AEE assess + evaluator-contract
       outputs after specify, plan, and tasks saved under
       `aee/`; outcomes recorded in `aee/` notes.
-- [ ] **L8 — Freeze.** `freeze.md` + `freeze.json`
+- [x] **L8 — Freeze.** `freeze.md` + `freeze.json`
       (framework026 digest via `build_freeze.py`) + freeze
       tests (`backend/tests/test_phase393_freeze.py`).
 - [ ] **L9 — Freeze PR.** Opened, CI verified from the

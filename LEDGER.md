@@ -4439,3 +4439,34 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-11 — Spec 027 CLOSEOUT (Stages 0-1 program complete)
+
+- Verification on merged main (a0c8566a, after PRs #147
+  freeze / #151 Stage 0 / #154 Stage 1 freeze / #155 Stage
+  1 execution): full backend suite **1,162 passed, 14
+  skipped, 0 failed** (475.6 s, local run on the merged
+  tree; each program PR additionally merged on CI verified
+  from its run's own conclusion); foundation check **40
+  passed, 0 failed, 8 warnings**; anchors
+  INDUS_FINAL_ANCHORS.json byte-identical (sha256
+  eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3
+  b602cfaed); PRED register untouched (zero program commits
+  on docs/PREDICTION_REGISTER.md).
+- Program record: adjudication + freeze (PR #147, d9fa0806;
+  design registered osf.io/a2xvc); Stage 0 Phase-391
+  (PR #151): gazetteer 36 rows, chronology spine 177 rows,
+  Q6 timing-support NOT-YET-TESTABLE, Ask 4 release package
+  gate PASS 4/4 in-repo, no deposit; Stage 1 freeze
+  (PR #154, digest 30861f04...) + OSF registration of the
+  frozen contract (osf.io/pnqrx, filed before execution);
+  Stage 1 Phase-392 (PR #155): verdict INCONCLUSIVE.
+- Stage 2 was NOT executed (per program scope): Q6
+  NOT-YET-TESTABLE on the Stage 0 spine assessment; Q7
+  unfrozen and owner-gated. Any further Spec 027 work —
+  a redesigned Stage 1 estimand, a Q7 freeze, a Q6 spine
+  extension — requires a new owner decision.
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

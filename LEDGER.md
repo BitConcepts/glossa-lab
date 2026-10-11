@@ -4673,3 +4673,16 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-11 — Spec 028 bookkeeping correction
+
+- The L9/R1/E1-E5/X1-X2 task ticks in tasks.md were applied
+  with title patterns that did not match the file's final
+  task titles and silently missed in PRs #159/#160/#161;
+  the work itself was completed and verified as recorded
+  in the entries above. This entry's PR applies the ticks
+  correctly. No record content changes.
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

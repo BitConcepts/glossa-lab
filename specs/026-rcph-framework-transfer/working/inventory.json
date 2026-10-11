@@ -1,0 +1,3400 @@
+[
+ {
+  "item_id": "SPEC-001",
+  "kind": "spec",
+  "title": "001 — Glossa Lab Baseline (as-built)",
+  "claims": "Baseline specification of the platform as it exists at adoption",
+  "historical_label": "Baseline specification of the platform as it exists at adoption",
+  "data_sources": [
+   "Holdat",
+   "ICIT",
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Holdat",
+   "ICIT",
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "none recorded in spec scan",
+  "source_files": [
+   "specs/001-glossa-lab-baseline/plan.md",
+   "specs/001-glossa-lab-baseline/spec.md",
+   "specs/001-glossa-lab-baseline/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-002",
+  "kind": "spec",
+  "title": "Spec 002 — GDELT Web Ngrams switch + frontier methods",
+  "claims": "(i) implemented; (ii) and (iii) recorded as future work /",
+  "historical_label": "(i) implemented; (ii) and (iii) recorded as future work /",
+  "data_sources": [
+   "ICIT"
+  ],
+  "origin_groups": [
+   "ICIT"
+  ],
+  "controls": "unknown",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "none recorded in spec scan",
+  "source_files": [
+   "specs/002-gdelt-ngrams-and-frontier-methods/plan.md",
+   "specs/002-gdelt-ngrams-and-frontier-methods/spec.md",
+   "specs/002-gdelt-ngrams-and-frontier-methods/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-003",
+  "kind": "spec",
+  "title": "Spec 003 — MCP update, requirements/test traceability, Indus continuation",
+  "claims": "Implemented on `feat/mcp-gaps-indus-continuation` (2026-10-05).",
+  "historical_label": "Implemented on `feat/mcp-gaps-indus-continuation` (2026-10-05).",
+  "data_sources": [
+   "Holdat",
+   "ICIT"
+  ],
+  "origin_groups": [
+   "Holdat",
+   "ICIT"
+  ],
+  "controls": "unknown",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "none recorded in spec scan",
+  "source_files": [
+   "specs/003-mcp-and-test-gaps/plan.md",
+   "specs/003-mcp-and-test-gaps/spec.md",
+   "specs/003-mcp-and-test-gaps/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-004",
+  "kind": "spec",
+  "title": "Spec 004 — Indus executable package (Phase-52 SA run, crosswalk expansion, anchors reconciliation, discovery triage)",
+  "claims": "Proposed 2026-10-05 on `feat/indus-executable-package` (from main",
+  "historical_label": "Proposed 2026-10-05 on `feat/indus-executable-package` (from main",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Wells"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Wells"
+  ],
+  "controls": "unknown",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "none recorded in spec scan",
+  "source_files": [
+   "specs/004-indus-executable-package/plan.md",
+   "specs/004-indus-executable-package/spec.md",
+   "specs/004-indus-executable-package/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-005",
+  "kind": "spec",
+  "title": "Spec 005 — Phase-52 v2: held-out validation, blind controls, constraint ablation, delta search, corpus pooling, metrology check",
+  "claims": "Proposed 2026-10-05 on `feat/phase52-v2` (from main ad6de412).",
+  "historical_label": "Proposed 2026-10-05 on `feat/phase52-v2` (from main ad6de412).",
+  "data_sources": [
+   "CISI images",
+   "Fuls",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Wells"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Fuls",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Wells"
+  ],
+  "controls": "controls mentioned (see spec text); type not fully specified in excerpt",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "Pre-registered protocol (binding for Steps 1–5)",
+  "uncertainty_reported": "unknown",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "see spec text: invalidity/rejection/stop language present",
+  "source_files": [
+   "specs/005-phase52-v2/plan.md",
+   "specs/005-phase52-v2/spec.md",
+   "specs/005-phase52-v2/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-006",
+  "kind": "spec",
+  "title": "Spec 006 — Anchor Provenance Audit: what the 287 anchors rest on after Phase-107",
+  "claims": "Proposed 2026-10-06 on `feat/anchor-provenance-audit`",
+  "historical_label": "Proposed 2026-10-06 on `feat/anchor-provenance-audit`",
+  "data_sources": [
+   "CISI images",
+   "Fuls",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Wells"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Fuls",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Wells"
+  ],
+  "controls": "controls mentioned (see spec text); type not fully specified in excerpt",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "Pre-registered taxonomy (binding; fixed BEFORE any classification)",
+  "uncertainty_reported": "unknown",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "none recorded in spec scan",
+  "source_files": [
+   "specs/006-anchor-provenance-audit/plan.md",
+   "specs/006-anchor-provenance-audit/spec.md",
+   "specs/006-anchor-provenance-audit/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-007",
+  "kind": "spec",
+  "title": "Spec 007 — Phase-109 Follow-Through: executing the Phase-108 audit's recommendations",
+  "claims": "Proposed 2026-10-06 on `feat/phase109-follow-through`",
+  "historical_label": "Proposed 2026-10-06 on `feat/phase109-follow-through`",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola"
+  ],
+  "controls": "controls mentioned (see spec text); type not fully specified in excerpt",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "pre-registered mechanical rules below, with every",
+  "uncertainty_reported": "unknown",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "none recorded in spec scan",
+  "source_files": [
+   "specs/007-phase109-follow-through/plan.md",
+   "specs/007-phase109-follow-through/spec.md",
+   "specs/007-phase109-follow-through/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-008",
+  "kind": "spec",
+  "title": "Spec 008 — Phase-110: M222 / 'kur' Adjudication + OSF Registry Link",
+  "claims": "Proposed 2026-10-06 on `feat/phase110-m222-adjudication`",
+  "historical_label": "Proposed 2026-10-06 on `feat/phase110-m222-adjudication`",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "Mahadevan",
+   "Parpola"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "Mahadevan",
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "Pre-registered decision rule (binding; fixed BEFORE any entry is touched)",
+  "uncertainty_reported": "unknown",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "none recorded in spec scan",
+  "source_files": [
+   "specs/008-m222-adjudication/plan.md",
+   "specs/008-m222-adjudication/spec.md",
+   "specs/008-m222-adjudication/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-009",
+  "kind": "spec",
+  "title": "Spec 009 — Phase-111: Blind Language-Affiliation Study (pre-registration)",
+  "claims": "FROZEN 2026-10-06 on `phase/111-blind-affiliation`",
+  "historical_label": "FROZEN 2026-10-06 on `phase/111-blind-affiliation`",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Wells"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Wells"
+  ],
+  "controls": "controls mentioned (see spec text); type not fully specified in excerpt",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "pre-registration)",
+  "uncertainty_reported": "yes — CI/effect-size language in spec",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "see spec text: invalidity/rejection/stop language present",
+  "source_files": [
+   "specs/009-phase111-blind-affiliation/plan.md",
+   "specs/009-phase111-blind-affiliation/spec.md",
+   "specs/009-phase111-blind-affiliation/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-010",
+  "kind": "spec",
+  "title": "Spec 010 — Phase-112: Blind Language-Affiliation Study, Order-Carrying Features (pre-registration)",
+  "claims": "FROZEN 2026-10-07 on `phase/112-blind-affiliation-ordersensitive`",
+  "historical_label": "FROZEN 2026-10-07 on `phase/112-blind-affiliation-ordersensitive`",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT"
+  ],
+  "controls": "controls mentioned (see spec text); type not fully specified in excerpt",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "pre-registration)",
+  "uncertainty_reported": "yes — CI/effect-size language in spec",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "see spec text: invalidity/rejection/stop language present",
+  "source_files": [
+   "specs/010-phase112-blind-affiliation/plan.md",
+   "specs/010-phase112-blind-affiliation/spec.md",
+   "specs/010-phase112-blind-affiliation/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-011",
+  "kind": "spec",
+  "title": "Spec 011 — Phase-113: Non-SA Validation Battery for the 44 SA-Lineage Anchors (pre-registration)",
+  "claims": "FROZEN 2026-10-07 on `phase/nonsa44-validation` (from main",
+  "historical_label": "FROZEN 2026-10-07 on `phase/nonsa44-validation` (from main",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Wells"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Wells"
+  ],
+  "controls": "positive+negative controls mentioned in spec/tasks",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "pre-registration)",
+  "uncertainty_reported": "unknown",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "see spec text: invalidity/rejection/stop language present",
+  "source_files": [
+   "specs/011-phase113-nonsa44-validation/plan.md",
+   "specs/011-phase113-nonsa44-validation/spec.md",
+   "specs/011-phase113-nonsa44-validation/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-012",
+  "kind": "spec",
+  "title": "Spec 012 — Phase-113: Blind Language-Affiliation Study, Adversarial Protocol (pre-registration)",
+  "claims": "FROZEN 2026-10-07 on `phase/113-blind-affiliation-adversarial`",
+  "historical_label": "FROZEN 2026-10-07 on `phase/113-blind-affiliation-adversarial`",
+  "data_sources": [
+   "Holdat",
+   "ICIT"
+  ],
+  "origin_groups": [
+   "Holdat",
+   "ICIT"
+  ],
+  "controls": "controls mentioned (see spec text); type not fully specified in excerpt",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "pre-registration)",
+  "uncertainty_reported": "yes — CI/effect-size language in spec",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "see spec text: invalidity/rejection/stop language present",
+  "source_files": [
+   "specs/012-phase113-blind-affiliation/spec.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-013",
+  "kind": "spec",
+  "title": "Spec 013 — Tamil Nadu Graffiti Crosswalk: Independent Attestation Contexts for the CANDIDATE-Tier Sign Tail (feasibility + acquisition gate)",
+  "claims": "FEASIBILITY COMPLETE 2026-10-07. The study is",
+  "historical_label": "FEASIBILITY COMPLETE 2026-10-07. The study is",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan"
+  ],
+  "controls": "controls mentioned (see spec text); type not fully specified in excerpt",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "frozen at its acquisition gate (§5)**: no graffiti data has been",
+  "uncertainty_reported": "unknown",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "none recorded in spec scan",
+  "source_files": [
+   "specs/013-tn-graffiti-crosswalk/plan.md",
+   "specs/013-tn-graffiti-crosswalk/spec.md",
+   "specs/013-tn-graffiti-crosswalk/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-014",
+  "kind": "spec",
+  "title": "Spec 014 — Phase-115: Non-SA Validation Battery v2 for the 44 SA-Lineage Anchors (pre-registration)",
+  "claims": "FROZEN 2026-10-07 on `phase/nonsa44-validation-v2`",
+  "historical_label": "FROZEN 2026-10-07 on `phase/nonsa44-validation-v2`",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Wells"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Wells"
+  ],
+  "controls": "positive+negative controls mentioned in spec/tasks",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "pre-registration)",
+  "uncertainty_reported": "unknown",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "see spec text: invalidity/rejection/stop language present",
+  "source_files": [
+   "specs/014-phase115-nonsa44-validation-v2/plan.md",
+   "specs/014-phase115-nonsa44-validation-v2/spec.md",
+   "specs/014-phase115-nonsa44-validation-v2/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-015",
+  "kind": "spec",
+  "title": "Spec 015 — Phase-116: Corpus-Harmonization Study — Why Holdat and ICIT Positional Profiles Disagree (pre-registration)",
+  "claims": "FROZEN 2026-10-07 on `phase/harmonization-study`",
+  "historical_label": "FROZEN 2026-10-07 on `phase/harmonization-study`",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Wells"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Wells"
+  ],
+  "controls": "unknown",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "pre-registration)",
+  "uncertainty_reported": "unknown",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "none recorded in spec scan",
+  "source_files": [
+   "specs/015-phase116-corpus-harmonization/plan.md",
+   "specs/015-phase116-corpus-harmonization/spec.md",
+   "specs/015-phase116-corpus-harmonization/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-016",
+  "kind": "spec",
+  "title": "Spec 016 — Phase-117: Within-Compilation Validation Battery for the 44 Flagged Anchors (pre-registration)",
+  "claims": "DESIGN FROZEN 2026-10-07 on",
+  "historical_label": "DESIGN FROZEN 2026-10-07 on",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT"
+  ],
+  "controls": "positive+negative controls mentioned in spec/tasks",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "pre-registration)",
+  "uncertainty_reported": "p-values only in spec text scanned; no CI/effect-size language found",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "see spec text: invalidity/rejection/stop language present",
+  "source_files": [
+   "specs/016-phase117-within-compilation-validation/plan.md",
+   "specs/016-phase117-within-compilation-validation/spec.md",
+   "specs/016-phase117-within-compilation-validation/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-017",
+  "kind": "spec",
+  "title": "Spec 017 — Phase-118: Within-Compilation Validation Battery v2 (W1-Primary, Cross-Fit W3) for the 44 Flagged Anchors (pre-registration)",
+  "claims": "DESIGN FROZEN 2026-10-07 on",
+  "historical_label": "DESIGN FROZEN 2026-10-07 on",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT"
+  ],
+  "controls": "positive+negative controls mentioned in spec/tasks",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "pre-registration)",
+  "uncertainty_reported": "p-values only in spec text scanned; no CI/effect-size language found",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "see spec text: invalidity/rejection/stop language present",
+  "source_files": [
+   "specs/017-phase118-within-compilation-validation-v2/plan.md",
+   "specs/017-phase118-within-compilation-validation-v2/spec.md",
+   "specs/017-phase118-within-compilation-validation-v2/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-018",
+  "kind": "spec",
+  "title": "Spec 018 — Phase-119: PRED-2026 Readiness — the Pre-Registered Prediction Evaluation Harness",
+  "claims": "DESIGN FROZEN 2026-10-07 on `phase/119-pred-harness`",
+  "historical_label": "DESIGN FROZEN 2026-10-07 on `phase/119-pred-harness`",
+  "data_sources": [
+   "CISI images",
+   "Fuls",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Wells",
+   "mayig/Mahadevan-lineage"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Fuls",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Wells",
+   "mayig/Mahadevan-lineage"
+  ],
+  "controls": "unknown",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "Pre-Registered Prediction Evaluation Harness",
+  "uncertainty_reported": "unknown",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "none recorded in spec scan",
+  "source_files": [
+   "specs/018-phase119-pred2026-readiness/plan.md",
+   "specs/018-phase119-pred2026-readiness/spec.md",
+   "specs/018-phase119-pred2026-readiness/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-019",
+  "kind": "spec",
+  "title": "Spec 019 — Phase-125: Cross-Compilation Positional Comparison — mayig/CISI Layer vs Holdat Compilation, Joined Only Through the Phase-122 Crosswalk (pre-registration)",
+  "claims": "DESIGN FROZEN 2026-10-08 on",
+  "historical_label": "DESIGN FROZEN 2026-10-08 on",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Wells",
+   "mayig/Mahadevan-lineage"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Wells",
+   "mayig/Mahadevan-lineage"
+  ],
+  "controls": "controls mentioned (see spec text); type not fully specified in excerpt",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "pre-registration)",
+  "uncertainty_reported": "unknown",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "none recorded in spec scan",
+  "source_files": [
+   "specs/019-phase125-cross-compilation-positional/plan.md",
+   "specs/019-phase125-cross-compilation-positional/spec.md",
+   "specs/019-phase125-cross-compilation-positional/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-020",
+  "kind": "spec",
+  "title": "Spec 020 — Adjudication: Does the Soviet Positional Dataset (Phase-121, Kondratov 1965) Qualify as an Evaluation Source for PRED-2026-001/002?",
+  "claims": "ADJUDICATION PAPER — owner-ordered 2026-10-08",
+  "historical_label": "ADJUDICATION PAPER — owner-ordered 2026-10-08",
+  "data_sources": [
+   "CISI images",
+   "Fuls",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "PRED2026",
+   "Parpola",
+   "Soviet positional tables",
+   "Wells",
+   "mayig/Mahadevan-lineage"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Fuls",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "PRED2026",
+   "Parpola",
+   "Soviet positional tables",
+   "Wells",
+   "mayig/Mahadevan-lineage"
+  ],
+  "controls": "controls mentioned (see spec text); type not fully specified in excerpt",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "frozen evaluability matrix of",
+  "uncertainty_reported": "unknown",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "see spec text: invalidity/rejection/stop language present",
+  "source_files": [
+   "specs/020-soviet-pred-adjudication/plan.md",
+   "specs/020-soviet-pred-adjudication/spec.md",
+   "specs/020-soviet-pred-adjudication/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-021",
+  "kind": "spec",
+  "title": "Spec 021 — Phase-127: Cross-Compilation Disagreement Diagnostic — How Much of Phase-125's Disagreement Is Genuine vs Sampling Noise / Crosswalk Ambiguity / Composition (pre-registration)",
+  "claims": "DESIGN FROZEN 2026-10-08 on",
+  "historical_label": "DESIGN FROZEN 2026-10-08 on",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Wells",
+   "mayig/Mahadevan-lineage"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Wells",
+   "mayig/Mahadevan-lineage"
+  ],
+  "controls": "controls mentioned (see spec text); type not fully specified in excerpt",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "pre-registration)",
+  "uncertainty_reported": "yes — CI/effect-size language in spec",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "none recorded in spec scan",
+  "source_files": [
+   "specs/021-phase127-cross-compilation-diagnostic/plan.md",
+   "specs/021-phase127-cross-compilation-diagnostic/spec.md",
+   "specs/021-phase127-cross-compilation-diagnostic/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-021-INTAKE",
+  "kind": "spec",
+  "title": "Spec 021 — Phase-130: Independent-Data Intake Pack",
+  "claims": "BUILT 2026-10-08 on `phase/130-intake-pack`",
+  "historical_label": "BUILT 2026-10-08 on `phase/130-intake-pack`",
+  "data_sources": [
+   "CISI images",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Wells"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Wells"
+  ],
+  "controls": "unknown",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "frozen protocol",
+  "uncertainty_reported": "unknown",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "see spec text: invalidity/rejection/stop language present",
+  "source_files": [
+   "specs/021-phase130-intake-pack/spec.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-022",
+  "kind": "spec",
+  "title": "Spec 022 — Phase-131: Source-of-Disagreement Attribution for the Phase-125/127 Cross-Compilation Result (pre-registration)",
+  "claims": "DESIGN FROZEN 2026-10-09 on",
+  "historical_label": "DESIGN FROZEN 2026-10-09 on",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "mayig/Mahadevan-lineage"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "mayig/Mahadevan-lineage"
+  ],
+  "controls": "controls mentioned (see spec text); type not fully specified in excerpt",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "pre-registration)",
+  "uncertainty_reported": "yes",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "none recorded in spec scan",
+  "source_files": [
+   "specs/022-phase131-attribution/plan.md",
+   "specs/022-phase131-attribution/spec.md",
+   "specs/022-phase131-attribution/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-023",
+  "kind": "spec",
+  "title": "Spec 023 — Keyed Transcription Layer over CISI Vols. 1–2",
+  "claims": "FROZEN 2026-10-09 (freeze commit on",
+  "historical_label": "FROZEN 2026-10-09 (freeze commit on",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Soviet positional tables",
+   "Wells",
+   "mayig/Mahadevan-lineage"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Soviet positional tables",
+   "Wells",
+   "mayig/Mahadevan-lineage"
+  ],
+  "controls": "unknown",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "FROZEN — OWNER ADJUDICATION RECORDED 2026-10-09",
+  "uncertainty_reported": "yes",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "see spec text: invalidity/rejection/stop language present",
+  "source_files": [
+   "specs/023-keyed-transcription-layer/plan.md",
+   "specs/023-keyed-transcription-layer/spec.md",
+   "specs/023-keyed-transcription-layer/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-024",
+  "kind": "spec",
+  "title": "Spec 024 — Evidence Integration: Tying the Inscriptions to Non-Textual Evidence",
+  "claims": "FROZEN 2026-10-09 (Stage 0; freeze commit",
+  "historical_label": "FROZEN 2026-10-09 (Stage 0; freeze commit",
+  "data_sources": [
+   "AI coding",
+   "CISI images",
+   "Fuls",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Soviet positional tables",
+   "Wells",
+   "horus84/ICIT-lineage",
+   "mayig/Mahadevan-lineage"
+  ],
+  "origin_groups": [
+   "AI coding",
+   "CISI images",
+   "Fuls",
+   "Holdat",
+   "ICIT",
+   "Mahadevan",
+   "Parpola",
+   "Soviet positional tables",
+   "Wells",
+   "horus84/ICIT-lineage",
+   "mayig/Mahadevan-lineage"
+  ],
+  "controls": "controls mentioned (see spec text); type not fully specified in excerpt",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "FROZEN — OWNER ADJUDICATION RECORDED 2026-10-09 (Stage 0 freeze)",
+  "uncertainty_reported": "unknown",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "see spec text: invalidity/rejection/stop language present",
+  "source_files": [
+   "specs/024-evidence-integration/motif-arm-closure.md",
+   "specs/024-evidence-integration/plan.md",
+   "specs/024-evidence-integration/spec.md",
+   "specs/024-evidence-integration/stage1-freeze-2.md",
+   "specs/024-evidence-integration/stage1-freeze.md",
+   "specs/024-evidence-integration/stage2a-freeze.md",
+   "specs/024-evidence-integration/stage2c-freeze.md",
+   "specs/024-evidence-integration/stage2d-freeze.md",
+   "specs/024-evidence-integration/tasks.md"
+  ]
+ },
+ {
+  "item_id": "SPEC-025",
+  "kind": "spec",
+  "title": "Spec 025 — Stage 2 Controlled Follow-Up",
+  "claims": "Spec 025 — Stage 2 Controlled Follow-Up",
+  "historical_label": "unknown",
+  "data_sources": [
+   "CISI images",
+   "ICIT",
+   "Wells",
+   "horus84/ICIT-lineage"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "ICIT",
+   "Wells",
+   "horus84/ICIT-lineage"
+  ],
+  "controls": "controls mentioned (see spec text); type not fully specified in excerpt",
+  "control_failures": "unknown — not stated in spec/tasks scan",
+  "frozen": "FROZEN — OWNER-ADJUDICATED 2026-10-10 (see §11)",
+  "uncertainty_reported": "yes — CI/effect-size language in spec",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown",
+  "invalidity_notes": "none recorded in spec scan",
+  "source_files": [
+   "specs/025-stage2-controlled-followup/phase139-freeze.md",
+   "specs/025-stage2-controlled-followup/phase140-freeze.md",
+   "specs/025-stage2-controlled-followup/phase141-freeze.md",
+   "specs/025-stage2-controlled-followup/plan.md",
+   "specs/025-stage2-controlled-followup/spec.md",
+   "specs/025-stage2-controlled-followup/tasks.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-52",
+  "kind": "phase",
+  "title": " **39 checks passed, 0 failed, 9 warnings** (verdict READY WITH   CAVEATS; warnings are the script's pre-existing documented caveats:   site coverage,",
+  "claims": "passed, 0 failed, 9 warnings** (verdict READY WITH   CAVEATS; warnings are the script's pre-existing documented caveats:   sit",
+  "historical_label": "passed, 0 failed, 9 warnings** (verdict READY WITH   CAVEATS; warnings are the script's pre-existing documented caveats:   sit",
+  "data_sources": [
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase52_full_decipherment_table.json",
+   "reports/phase52_syllabic_sa.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-53",
+  "kind": "phase",
+  "title": "ies (up from 38) - Total anchors: 149  ### Phase-52: Constrained Syllabic SA - z=16.01, 59 anchors pinned, SA agrees 55% - Full decipherment table: `r",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-54",
+  "kind": "phase",
+  "title": " anchors pinned, SA agrees 55% - Full decipherment table: `reports/phase52_full_decipherment_table.json`  ### Phase-53: Formula Pilot - 16 formulas ≥8",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": [
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-55",
+  "kind": "phase",
+  "title": ".json`  ### Phase-53: Formula Pilot - 16 formulas ≥80% decoded (tiru-il-ay-aṇ-kol and 15 others)  ### Phase-54: Falsification Battery - 43% support ra",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": [
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-56",
+  "kind": "phase",
+  "title": "ircular/component chains catalogued with   citations; 0/31 extracted claims cite any sign ID; all 37 SA-citing   foundation-check lines assessed post-",
+  "claims": "passed / 9 skipped / 0   failed** (baseline 576/9 + 10 new tests); foundation check **40/0/8**   (baseline-identical); ruff cl",
+  "historical_label": "passed / 9 skipped / 0   failed** (baseline 576/9 + 10 new tests); foundation check **40/0/8**   (baseline-identical); ruff cl",
+  "data_sources": [
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-57",
+  "kind": "phase",
+  "title": "o token-granularity mismatch (FIXED in Phase-62a)  ### Phase-56: Parpola Sign List Expansion - +14 MEDIUM anchors via EXTENDED_PARPOLA_MAP (75 entries",
+  "claims": "confirmed readings  ### Phase-58: Phonological Gap Analysis - **VALID**: 0 phonotactic violations, 16 distinct initials, max shar",
+  "historical_label": "confirmed readings  ### Phase-58: Phonological Gap Analysis - **VALID**: 0 phonotactic violations, 16 distinct initials, max shar",
+  "data_sources": [
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "INVALID recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-58",
+  "kind": "phase",
+  "title": "al-class agreement;   profile TV ≤ 0.40); T2 positional-grammar fit vs the strict   SA-independent core (profile TV ≤ 0.35 to the class centroid, moda",
+  "claims": "PASS   (tier unchanged; this phase va tries) - Total: 163 anchors (37 HIGH / 49 MEDIUM)  ### Phase-57: Expanded Constrained",
+  "historical_label": "PASS   (tier unchanged; this phase va tries) - Total: 163 anchors (37 HIGH / 49 MEDIUM)  ### Phase-57: Expanded Constrained",
+  "data_sources": [
+   "CISI images"
+  ],
+  "origin_groups": [
+   "CISI images"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "frozen syllable canon); T3 compositional   co-occurrence (≥ 3 strict partners at co-occurrence ≥ 2; ≥ 4   fully-core-readable contexts; ≥ 0.75 can",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-59",
+  "kind": "phase",
+  "title": "hest z-score in the project** - SA agrees 39% with confirmed readings  ### Phase-58: Phonological Gap Analysis - **VALID**: 0 phonotactic violations, ",
+  "claims": "confirmed readings  ### Phase-58: Phonological Gap Analysis - **VALID**: 0 phonotactic violations, 16 distinct initials, max shar",
+  "historical_label": "confirmed readings  ### Phase-58: Phonological Gap Analysis - **VALID**: 0 phonotactic violations, 16 distinct initials, max shar",
+  "data_sources": [
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-60",
+  "kind": "phase",
+  "title": "nalysis - **VALID**: 0 phonotactic violations, 16 distinct initials, max share 24.7% (<30%)  ### Phase-59: Pilot Readings - 22 formulas ≥80% decoded (",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": [
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-61",
+  "kind": "phase",
+  "title": "tric was inverted. Constraints degrade SA. The baseline z=4+ is the correct reference. Phase-46 T2 CONSTRAINT_IMPROVES_FIT verdict should be read as C",
+  "claims": "pass Dravidian vowel harmony  ---  ## Phase-62 through Phase-66 — Ensemble Fix, Filtered SA, M267, Crosswalk, Sanskrit Falsi",
+  "historical_label": "pass Dravidian vowel harmony  ---  ## Phase-62 through Phase-66 — Ensemble Fix, Filtered SA, M267, Crosswalk, Sanskrit Falsi",
+  "data_sources": [
+   "ICIT-lineage",
+   "Parpola"
+  ],
+  "origin_groups": [
+   "ICIT-lineage",
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-62",
+  "kind": "phase",
+  "title": "t notation than our regex  ### Phase-61: Phonotactic Falsification - MOSTLY_VALID: 88% valid, 12% violations (SA-only unverified proposals) - 94% of i",
+  "claims": "pass Dravidian vowel harmony  ---  ## Phase-62 through Phase-66 — Ensemble Fix, Filtered SA, M267, Crosswalk, Sanskrit Falsi",
+  "historical_label": "pass Dravidian vowel harmony  ---  ## Phase-62 through Phase-66 — Ensemble Fix, Filtered SA, M267, Crosswalk, Sanskrit Falsi",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-63",
+  "kind": "phase",
+  "title": "words near numbers) - Parpola 2010 has 472 relevant keyword hits but uses different sign-number notation - **Conclusion**: Publication mining requires",
+  "claims": "invalid-initial syllables (b/d/g/f/w/x) from SA target vocab - z=14.18 (slight reduction from 19.07 due to smaller search space",
+  "historical_label": "invalid-initial syllables (b/d/g/f/w/x) from SA target vocab - z=14.18 (slight reduction from 19.07 due to smaller search space",
+  "data_sources": [
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "INVALID recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-64",
+  "kind": "phase",
+  "title": "otactic violations** (vs 12% in Phase-57 unfiltered) - SA agrees 41% with confirmed readings (improved from 39%) - Filtered decipherment table: `repor",
+  "claims": "confirmed readings (improved from 39%) - Filtered decipherment table: `reports/phase63_filtered_decipherment_table.json`  ### Pha",
+  "historical_label": "confirmed readings (improved from 39%) - Filtered decipherment table: `reports/phase63_filtered_decipherment_table.json`  ### Pha",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-65",
+  "kind": "phase",
+  "title": "]\" → \"[agent's lord]\" - 2nd candidate: col (to say/call, score 6.5) - M267 positional entropy H=2.851 (medial 78% — consistent with particle) - 20 top",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": [
+   "ICIT-lineage",
+   "Mahadevan",
+   "Parpola"
+  ],
+  "origin_groups": [
+   "ICIT-lineage",
+   "Mahadevan",
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-66",
+  "kind": "phase",
+  "title": "ur regex  ### Phase-61: Phonotactic Falsification - MOSTLY_VALID: 88% valid, 12% violations (SA-only unverified proposals) - 94% of inscriptions pass ",
+  "claims": "pass Dravidian vowel harmony  ---  ## Phase-62 through Phase-66 — Ensemble Fix, Filtered SA, M267, Crosswalk, Sanskrit Falsi",
+  "historical_label": "pass Dravidian vowel harmony  ---  ## Phase-62 through Phase-66 — Ensemble Fix, Filtered SA, M267, Crosswalk, Sanskrit Falsi",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "INVALID recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-67",
+  "kind": "phase",
+  "title": "_sa.json` - `reports/phase63_filtered_decipherment_table.json` - `reports/phase64_morphological_boundary.json` - `reports/phase65_crosswalk_top100.jso",
+  "claims": "null; lift = (SA - null) / |null| - **Dravidian lift: 23.4% vs Sanskrit lift: 12.6% → ratio 1.85x DRAVIDIAN_P g vs P56 cross",
+  "historical_label": "null; lift = (SA - null) / |null| - **Dravidian lift: 23.4% vs Sanskrit lift: 12.6% → ratio 1.85x DRAVIDIAN_P g vs P56 cross",
+  "data_sources": [
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-68",
+  "kind": "phase",
+  "title": "ic, SA cannot pin it - M267 remains UNCERTAIN from SA evidence - Grammar analysis (Phase-64, score 7.0 for iN) remains the primary evidence - Status: ",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-69",
+  "kind": "phase",
+  "title": "oL reading) - Still modest — SA variance limits consensus even with 10 seeds - Status: NEEDS CAVEAT — ensemble method limited by SA variance - Report:",
+  "claims": "passed, 0 failed, 6 warnings** - New VERIFIED claims: Phase-67 Sanskrit falsification 1.85x, Phase-69 100% site-invariant gram",
+  "historical_label": "passed, 0 failed, 6 warnings** - New VERIFIED claims: Phase-67 Sanskrit falsification 1.85x, Phase-69 100% site-invariant gram",
+  "data_sources": [
+   "Holdat",
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Holdat",
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-70",
+  "kind": "phase",
+  "title": "`reports/phase66_sanskrit_sa.json`   ---  ## Phase-67 through Phase-73 — Sanskrit Falsification, Formula Annotation, Site Stratification, Crosswalk, P",
+  "claims": "pass-1 overrides/confirms); 191 edge-case entries are logged in the register rather than forced. Notable single signs: M267",
+  "historical_label": "pass-1 overrides/confirms); 191 edge-case entries are logged in the register rather than forced. Notable single signs: M267",
+  "data_sources": [
+   "ICIT-lineage",
+   "Parpola"
+  ],
+  "origin_groups": [
+   "ICIT-lineage",
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "pre-registered first-proposal rule (Phase-77's sole high-trust SA proposal preceded its Phase-87 DEDR-rebus promotion — flagged as contestable for the",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-71",
+  "kind": "phase",
+  "title": " Holdat sites** - Chi-squared p>0.05 for all signs — no significant site variation - **Strong evidence for pan-Indus unified writing system** - Report",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": [
+   "Holdat",
+   "Mahadevan",
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Holdat",
+   "Mahadevan",
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-72",
+  "kind": "phase",
+  "title": "% token coverage)** - Still unmapped: 19 top-100 signs (mostly abstract geometric signs M038, M010, M078...) - RISK-001 substantially resolved - Repor",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": [
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-73",
+  "kind": "phase",
+  "title": "rts/phase63_filtered_decipherment_table.json` - `reports/phase64_morphological_boundary.json` - `reports/phase65_crosswalk_top100.json` - `reports/pha",
+  "claims": "null| - **Dravidian lift: 23.4% vs Sanskrit lift: 12.6% → ratio 1.85x DRAVIDIAN_PREFERRED** - Resolves Phase-66 NEEDS CAVEAT",
+  "historical_label": "null| - **Dravidian lift: 23.4% vs Sanskrit lift: 12.6% → ratio 1.85x DRAVIDIAN_PREFERRED** - Resolves Phase-66 NEEDS CAVEAT",
+  "data_sources": [
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-74",
+  "kind": "phase",
+  "title": "assed, 0 failed, 6 warnings** - New VERIFIED claims: Phase-67 Sanskrit falsification 1.85x, Phase-69 100% site-invariant grammar - Updated PDF: `repor",
+  "claims": "failed, 6 warnings** - New VERIFIED claims: Phase-67 Sanskrit falsification 1.85x, Phase-69 100% site-invariant grammar - Upda",
+  "historical_label": "failed, 6 warnings** - New VERIFIED claims: Phase-67 Sanskrit falsification 1.85x, Phase-69 100% site-invariant grammar - Upda",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-75",
+  "kind": "phase",
+  "title": " across 10,000 shuffles - **M267 PROMOTED: UNCERTAIN -> MEDIUM (iN/in, genitive 'of')** - The long-standing UNCERTAIN anchor is now resolved - Anchors",
+  "claims": "confirmed existing anchors (kol, miin, aaL) - Key finding: Levit 2010 is independent specialist corroboration of core anchors - S",
+  "historical_label": "confirmed existing anchors (kol, miin, aaL) - Key finding: Levit 2010 is independent specialist corroboration of core anchors - S",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-76",
+  "kind": "phase",
+  "title": "sswalk + DEDR - 3 confirmed existing anchors (kol, miin, aaL) - Key finding: Levit 2010 is independent specialist corroboration of core anchors - Stat",
+  "claims": "confirmed existing anchors (kol, miin, aaL) - Key finding: Levit 2010 is independent specialist corroboration of core anchors - S",
+  "historical_label": "confirmed existing anchors (kol, miin, aaL) - Key finding: Levit 2010 is independent specialist corroboration of core anchors - S",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-77",
+  "kind": "phase",
+  "title": "l (lord/place-title), il/in (locative) - Interpretation: seals identify place-of-origin or administrative district - Place formulas most likely encode",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": [
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "origin_groups": [
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "pre-registered first-proposal rule (Phase-77's sole high-trust SA proposal preceded its Phase-87 DEDR-rebus promotion — flagged as contestable for the",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-78",
+  "kind": "phase",
+  "title": "ncy — the real number) - High-trust proposals: M035=po (consensus 60%, freq=19, PD-valid) - Key insight: SA \"disagreements\" with M051/M336/M062/M305 a",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": [
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "origin_groups": [
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-79",
+  "kind": "phase",
+  "title": "istribution INVARIANT across all 9 sites** - Second independent confirmation of pan-Indus unified writing system - Combined with Phase-69 (grammar inv",
+  "claims": "confirmed (HIGH/MEDIUM), 76 LOW, 234 unread signs - **Top priority sign: M293 (freq=232, 3.3% of tokens) — highest priority unkno",
+  "historical_label": "confirmed (HIGH/MEDIUM), 76 LOW, 234 unread signs - **Top priority sign: M293 (freq=232, 3.3% of tokens) — highest priority unkno",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-80",
+  "kind": "phase",
+  "title": "6 warnings** - New VERIFIED claims: Phase-67 Sanskrit falsification 1.85x, Phase-69 100% site-invariant grammar - Updated PDF: `reports/indus_foundati",
+  "claims": "Confirmed (Phase-74 grammar z=8.04, p<0.0001) - [AGENT]-M267-[TITLE] pattern: 26/400 = 6.5% vs null 1.5% ( freq=232, 3.3% of toke",
+  "historical_label": "Confirmed (Phase-74 grammar z=8.04, p<0.0001) - [AGENT]-M267-[TITLE] pattern: 26/400 = 6.5% vs null 1.5% ( freq=232, 3.3% of toke",
+  "data_sources": [
+   "CISI images"
+  ],
+  "origin_groups": [
+   "CISI images"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-81",
+  "kind": "phase",
+  "title": "22% at start of this session)  ### Final Foundation Check (Phase-44 through Phase-80) - **45 checks passed, 0 failed, 6 warnings** - Final PDF: `repor",
+  "claims": "passed, 0 failed, 6 warnings** - Final PDF: `reports/indus_foundation_report_phase80.pdf`   ---  ## Phase-81 through Phase-87",
+  "historical_label": "passed, 0 failed, 6 warnings** - Final PDF: `reports/indus_foundation_report_phase80.pdf`   ---  ## Phase-81 through Phase-87",
+  "data_sources": [
+   "CISI images"
+  ],
+  "origin_groups": [
+   "CISI images"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-82",
+  "kind": "phase",
+  "title": "te: ta (DEDR 3003) or vil (DEDR 5428, bow) - Evidence score 2.25 — just below 2.5 MEDIUM threshold - **M293 remains LOW confidence. Key finding: appea",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": [
+   "human coding"
+  ],
+  "origin_groups": [
+   "human coding"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-83",
+  "kind": "phase",
+  "title": "ttlement-of-lord-title-of-settlement\"   - BN-0024: an-kol-ay-iN-il-am-am-ūr = \"lord-of-in-at-collective-settlement\" - Formula structure fully readable",
+  "claims": "passed, 0 failed, 6 warnings** - Final PDF: `reports/indus_foundat",
+  "historical_label": "passed, 0 failed, 6 warnings** - Final PDF: `reports/indus_foundat",
+  "data_sources": [
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "origin_groups": [
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-84",
+  "kind": "phase",
+  "title": "to MEDIUM - M044=ku (DEDR 1715, inside/hollow — jar with mark): PROMOTED to MEDIUM - M220=al remains LOW (abstract form, insufficient evidence) - **An",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-85",
+  "kind": "phase",
+  "title": "formula type** - TITLE_FORMULA_SIMPLE: 472 seals (28.3%) - SUFFIX_ONLY: 415 seals (24.9%) - OWNERSHIP_FORMULA: 236 seals (14.1%) - PLACE_FORMULA: 183 ",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": [
+   "CISI images",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Parpola"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-86",
+  "kind": "phase",
+  "title": " P→M crosswalk coverage: 38 entries) - Key finding: CISI uses P-numbers (P121, P202…) requiring deeper crosswalk to map - Note: Limited crosswalk cove",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": [
+   "CISI images"
+  ],
+  "origin_groups": [
+   "CISI images"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-87",
+  "kind": "phase",
+  "title": "his session)  ### Final Foundation Check (Phase-44 through Phase-80) - **45 checks passed, 0 failed, 6 warnings** - Final PDF: `reports/indus_foundati",
+  "claims": "passed, 0 failed, 6 warnings** - Final PDF: `reports/indus_foundation_report_phase80.pdf`   ---  ## Phase-81 through Phase-87",
+  "historical_label": "passed, 0 failed, 6 warnings** - Final PDF: `reports/indus_foundation_report_phase80.pdf`   ---  ## Phase-81 through Phase-87",
+  "data_sources": [
+   "CISI images",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-88",
+  "kind": "phase",
+  "title": "als - Phonological coverage: 51.6% of Proto-Dravidian inventory  ### Foundation Check - **45 checks passed, 0 failed, 6 warnings** - Final PDF: `repor",
+  "claims": "passed, 0 failed, 6 warnings** - Final PDF: `reports/indus_foundation_report_phase87.pdf`   ---  ## Phase-88 through Phase-90",
+  "historical_label": "passed, 0 failed, 6 warnings** - Final PDF: `reports/indus_foundation_report_phase87.pdf`   ---  ## Phase-88 through Phase-90",
+  "data_sources": [
+   "Mahadevan",
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Mahadevan",
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-89",
+  "kind": "phase",
+  "title": "Based  - **Step 1 (staging cohort, 116):** (a) KEEP 1 (M222, Parpola   crosswalk support); (b) RESTORE 112 — 109 `kur`/LOW Phase-111   allograph prior",
+  "claims": "pass over all 390 signs vs Parpola 1994 Appendix B iconographic table - 15 signs with corpus occurrence analyzed; 4 promoted",
+  "historical_label": "pass over all 390 signs vs Parpola 1994 Appendix B iconographic table - 15 signs with corpus occurrence analyzed; 4 promoted",
+  "data_sources": [
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "pre-registered in a spec addendum before apply   (exact reading identity; SA-origin priors not restorable). - **Step 2:** 44 SA-lineage HIGH anchors f",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-90",
+  "kind": "phase",
+  "title": "l coverage: 51.6% of Proto-Dravidian inventory  ### Foundation Check - **45 checks passed, 0 failed, 6 warnings** - Final PDF: `reports/indus_foundati",
+  "claims": "passed, 0 failed, 6 warnings** - Final PDF: `reports/indus_foundation_report_phase87.pdf`   ---  ## Phase-88 through Phase-90",
+  "historical_label": "passed, 0 failed, 6 warnings** - Final PDF: `reports/indus_foundation_report_phase87.pdf`   ---  ## Phase-88 through Phase-90",
+  "data_sources": [
+   "Mahadevan",
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Mahadevan",
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-91",
+  "kind": "phase",
+  "title": "d to extract sign proposals from: - Parpola (1994) appendix tables - Mahadevan (1977) concordance - Levit (2010) Meluhha etymologies - Other specialis",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": [
+   "Mahadevan",
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Mahadevan",
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-92",
+  "kind": "phase",
+  "title": "Phase 92",
+  "claims": "unknown — no artifact located in scope",
+  "historical_label": "unknown — no artifact in scoped locations (backend/reports, reports/, LEDGER.md, glossa-indus/LEDGER.md)",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "no artifact located",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": []
+ },
+ {
+  "item_id": "PHASE-93",
+  "kind": "phase",
+  "title": "Phase 93",
+  "claims": "unknown — no artifact located in scope",
+  "historical_label": "unknown — no artifact in scoped locations (backend/reports, reports/, LEDGER.md, glossa-indus/LEDGER.md)",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "no artifact located",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": []
+ },
+ {
+  "item_id": "PHASE-94",
+  "kind": "phase",
+  "title": "Phase 94",
+  "claims": "unknown — no artifact located in scope",
+  "historical_label": "unknown — no artifact in scoped locations (backend/reports, reports/, LEDGER.md, glossa-indus/LEDGER.md)",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "no artifact located",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": []
+ },
+ {
+  "item_id": "PHASE-95",
+  "kind": "phase",
+  "title": "Phase 95",
+  "claims": "unknown — no artifact located in scope",
+  "historical_label": "unknown — no artifact in scoped locations (backend/reports, reports/, LEDGER.md, glossa-indus/LEDGER.md)",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "no artifact located",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": []
+ },
+ {
+  "item_id": "PHASE-96",
+  "kind": "phase",
+  "title": "n_parpola_crosswalk_candidates.json`: 216 identity-inference-only pairs (number identity is an inference, not evidence) + 4 conflicted (M101→P101 atte",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": [
+   "Holdat",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Holdat",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-97",
+  "kind": "phase",
+  "title": "Phase 97",
+  "claims": "unknown — no artifact located in scope",
+  "historical_label": "unknown — no artifact in scoped locations (backend/reports, reports/, LEDGER.md, glossa-indus/LEDGER.md)",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "no artifact located",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": []
+ },
+ {
+  "item_id": "PHASE-98",
+  "kind": "phase",
+  "title": "Phase 98",
+  "claims": "unknown — no artifact located in scope",
+  "historical_label": "unknown — no artifact in scoped locations (backend/reports, reports/, LEDGER.md, glossa-indus/LEDGER.md)",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "no artifact located",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": []
+ },
+ {
+  "item_id": "PHASE-99",
+  "kind": "phase",
+  "title": "Phase 99",
+  "claims": "unknown — no artifact located in scope",
+  "historical_label": "unknown — no artifact in scoped locations (backend/reports, reports/, LEDGER.md, glossa-indus/LEDGER.md)",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "no artifact located",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": []
+ },
+ {
+  "item_id": "PHASE-100",
+  "kind": "phase",
+  "title": "Phase 100",
+  "claims": "unknown — no artifact located in scope",
+  "historical_label": "unknown — no artifact in scoped locations (backend/reports, reports/, LEDGER.md, glossa-indus/LEDGER.md)",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "no artifact located",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": []
+ },
+ {
+  "item_id": "PHASE-101",
+  "kind": "phase",
+  "title": "   `glossa-indus/reports/phase104_claims_evaluation.json`. - **Phase-105 (name-sign adjudication):** the unrun draft   `phase105_name_signs.py` (pre-w",
+  "claims": "passed, 0 failed, 6 warnings** - Total anchors in INDUS_FINAL_ANCHORS.json: 177 (37 HIGH + 81 MEDIUM + 59 LOW)   ---  ## Phase",
+  "historical_label": "passed, 0 failed, 6 warnings** - Total anchors in INDUS_FINAL_ANCHORS.json: 177 (37 HIGH + 81 MEDIUM + 59 LOW)   ---  ## Phase",
+  "data_sources": [
+   "Holdat",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "origin_groups": [
+   "Holdat",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-102",
+  "kind": "phase",
+  "title": "me-component (100% INITIAL profile; Holdat roles: CLASSIFIER_PREFIX)   and flagged for future adjudication. No anchor promoted, demoted, or   modified",
+  "claims": "BLOCKED** — no Mistral key   configured, `pypdfium2` absent, and `im77intro.pdf` not in this   checkout. Recorded, not fabricat",
+  "historical_label": "BLOCKED** — no Mistral key   configured, `pypdfium2` absent, and `im77intro.pdf` not in this   checkout. Recorded, not fabricat",
+  "data_sources": [
+   "Holdat",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "M77/Mahadevan corpus",
+   "Mahadevan"
+  ],
+  "origin_groups": [
+   "Holdat",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "M77/Mahadevan corpus",
+   "Mahadevan"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-103",
+  "kind": "phase",
+  "title": "t is publication-ready**  ### Foundation Check - **45 checks passed, 0 failed, 6 warnings** - Total anchors in INDUS_FINAL_ANCHORS.json: 177 (37 HIGH ",
+  "claims": "passed, 0 failed, 6 warnings** - Total anchors in INDUS_FINAL_ANCHORS.json: 177 (37 HIGH + 81 MEDIUM + 59 LOW)   ---  ## Phase",
+  "historical_label": "passed, 0 failed, 6 warnings** - Total anchors in INDUS_FINAL_ANCHORS.json: 177 (37 HIGH + 81 MEDIUM + 59 LOW)   ---  ## Phase",
+  "data_sources": [
+   "Holdat",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "M77/Mahadevan corpus"
+  ],
+  "origin_groups": [
+   "Holdat",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "M77/Mahadevan corpus"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-104",
+  "kind": "phase",
+  "title": "ed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution §VI.  ---  ## 2026-10-05 — Indus program continuation (",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": [
+   "Wells"
+  ],
+  "origin_groups": [
+   "Wells"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-105",
+  "kind": "phase",
+  "title": "t from the repo; unstated   sign numbering; or extraction fragments with no falsification   condition). Detail: `glossa-indus/LEDGER.md`,   `glossa-in",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": [
+   "Holdat",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "origin_groups": [
+   "Holdat",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase105_name_signs.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-106",
+  "kind": "phase",
+  "title": "e direction of Tristen Pierson, per constitution §VI.  ## [2026-10-05] Entry — Spec 004: Indus Executable Package (WS1–WS4)  Branch `feat/indus-execut",
+  "claims": "passed / 9 skipped / 0 failed;   foundation check 40 passed / 0 failed / 8 warnings. Detail entries:   `glossa-indus/LEDGER.md",
+  "historical_label": "passed / 9 skipped / 0 failed;   foundation check 40 passed / 0 failed / 8 warnings. Detail entries:   `glossa-indus/LEDGER.md",
+  "data_sources": "unknown",
+  "origin_groups": [
+   "unknown"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "Pre-Registered  Br 176 NAME_AY_AN formula, so M024 may head a name formula   rather than sit medially in one — but under the Phase-101 standard its",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-107",
+  "kind": "phase",
+  "title": "indus/LEDGER.md` (Phase-106 + WS2–WS4 sections).  **AI disclosure:** executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierso",
+  "claims": "passed / 9 skipped / 0   failed** (baseline 564/9; +10 new `test_sa_validation.py` tests,   +2 net suite growth); foundation c",
+  "historical_label": "passed / 9 skipped / 0   failed** (baseline 564/9; +10 new `test_sa_validation.py` tests,   +2 net suite growth); foundation c",
+  "data_sources": [
+   "Holdat",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "origin_groups": [
+   "Holdat",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "controls": "control(s) mentioned; type unclear from excerpt",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "Pre-Registered  Branch `feat/phase52-v2` (PR opened, not merged — owner reviews scientific results). Full per-step entries: `glossa-indus/LEDGER.md` (",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase107_acquisition_log.json",
+   "reports/phase107_decipherment_table.json",
+   "reports/phase107_step1_sanity_audit.json",
+   "reports/phase107_step1_validation.json",
+   "reports/phase107_step2_ablation.json",
+   "reports/phase107_step3_scaled.json",
+   "reports/phase107_step4_pooling.json",
+   "reports/phase107_step5_metrology.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-108",
+  "kind": "phase",
+  "title": "Phase-108 Anchor Provenance Audit — Summary",
+  "claims": "Pass 1 misclassified the staging cohort as DEDR-explicit; the Step-2 spot audit (12 sampled) caught it and all 116 were re-d",
+  "historical_label": "Pass 1 misclassified the staging cohort as DEDR-explicit; the Step-2 spot audit (12 sampled) caught it and all 116 were re-d",
+  "data_sources": [
+   "CISI images",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "pre-registered):",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase108_anchor_trails.json",
+   "reports/phase108_impact_map.json",
+   "reports/phase108_provenance_register.json",
+   "reports/phase108_provenance_register_draft.json",
+   "reports/phase108_provenance_summary.md",
+   "reports/phase108_review_decisions.json",
+   "reports/phase108_subset_recomputation.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-109",
+  "kind": "phase",
+  "title": " the direction of Tristen Pierson, per constitution §VI.  Phase-108 PR: https://github.com/BitConcepts/glossa-lab/pull/61 (opened 2026-10-06, NOT merg",
+  "claims": "unknown",
+  "historical_label": "unknown",
+  "data_sources": [
+   "CISI images",
+   "Parpola"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "pre-registered in `specs/007-phase109-follow-through/`. Cohort: the 116 anchors whose Phase-108 register records carry a `research_loop_heuristic` com",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase109_change_register.json",
+   "reports/phase109_dossier_M293.json",
+   "reports/phase109_dossier_M362.json",
+   "reports/phase109_dossier_M398.json",
+   "reports/phase109_rebase.json",
+   "reports/phase109_step1_decisions.json",
+   "reports/phase109_step2_flags.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-110",
+  "kind": "phase",
+  "title": "Phase-110 — M222 / 'kur' Adjudication: Dossier Summary (spec 008, Part A)",
+  "claims": "**Contradiction: real** (predicates P1–P4 all true — see dossier). The 109 values are **pure premise inheritance**: their recorded bases cite M222='kur', a premise M222's own sourced record contradicts. **Branch 1 applies, with demotion**: Cohort A (109) is annotated `premise_superseded` and demoted",
+  "historical_label": "**Contradiction: real** (predicates P1–P4 all true — see dossier). The 109 values are **pure premise inheritance**: their recorded bases cite M222='kur', a premise M222's own sourced record contradicts. **Branch 1 applies, with demotion**: Cohort A (109) is annotated `premise_superseded` and demoted",
+  "data_sources": [
+   "Holdat",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Parpola"
+  ],
+  "origin_groups": [
+   "Holdat",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Parpola"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "Pre-Registration Frozen  - **Design source:** deep-research report   `~/wor a draft v5 row). Foundation check: 40 passed / 0 failed / 8 warnings.  **A",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase110_change_register.json",
+   "reports/phase110_m222_dossier.json",
+   "reports/phase110_m222_summary.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-111",
+  "kind": "phase",
+  "title": "Phase-111 — Blind Language-Affiliation Study: Results Summary",
+  "claims": "INVALID RUN — CONTROL VALIDITY FAILED`",
+  "historical_label": "INVALID RUN — CONTROL VALIDITY FAILED (spec 009 §9 V6)",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "M77/Mahadevan corpus",
+   "Mahadevan",
+   "Parpola",
+   "Wells"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "M77/Mahadevan corpus",
+   "Mahadevan",
+   "Parpola",
+   "Wells"
+  ],
+  "controls": "control(s) mentioned; type unclear from excerpt",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "frozen 2026-10-06, commit",
+  "uncertainty_reported": "yes — CI/effect-size reported",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "INVALID/stop recorded",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase111_acquisition_log.json",
+   "reports/phase111_blind_affiliation_results.json",
+   "reports/phase111_blind_affiliation_summary.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-112",
+  "kind": "phase",
+  "title": "Phase-112 — Blind Language-Affiliation Study, Order-Carrying Features: Results Summary",
+  "claims": "INVALID RUN — CONTROL VALIDITY FAILED`**",
+  "historical_label": "INVALID RUN — CONTROL VALIDITY FAILED (spec 010)",
+  "data_sources": [
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "origin_groups": [
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "controls": "control(s) mentioned; type unclear from excerpt",
+  "control_failures": "control/calibration failure language present in sources — see source_files/ledger",
+  "frozen": "frozen in commit 9410a23d after design-stage tooling commits",
+  "uncertainty_reported": "yes — CI/effect-size reported",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "INVALID/stop recorded",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase112_acquisition_log.json",
+   "reports/phase112_blind_affiliation_results.json",
+   "reports/phase112_blind_affiliation_summary.md",
+   "reports/phase112_feature_audit.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-113",
+  "kind": "phase",
+  "title": "Phase-113 — Blind Language-Affiliation Study, Adversarial Protocol: Summary",
+  "claims": "> **INVALID RUN — CONTROL VALIDITY FAILED** (fired at round 1, > adversarial control A1) This is a verdict about the method's validation at ladder step L1, not about the Indus script. The frozen protocol (spec 012 §8.2) stops the study the moment an optimized adversarial generator defeats a frozen r",
+  "historical_label": "> **INVALID RUN — CONTROL VALIDITY FAILED** (fired at round 1, > adversarial control A1) This is a verdict about the method's validation at ladder step L1, not about the Indus script. The frozen protocol (spec 012 §8.2) stops the study the moment an optimized adversarial generator defeats a frozen r",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "controls": "both positive and negative controls recorded",
+  "control_failures": "control/calibration failure language present in sources — see source_files/ledger",
+  "frozen": "frozen 2026-10-07, freeze commit",
+  "uncertainty_reported": "yes — CI/effect-size reported",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "Phase-113 blind affiliation INVALID (round 1) AND Phase-113 non-SA44 battery rejected at calibration — two distinct uses of number 113 (specs 011/012); see source_files",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase113_acquisition_log.json",
+   "reports/phase113_blind_affiliation_results.json",
+   "reports/phase113_blind_affiliation_summary.md",
+   "reports/phase113_feature_audit.json",
+   "reports/phase113_nonsa44_results.json",
+   "reports/phase113_nonsa44_summary.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-114",
+  "kind": "phase",
+  "title": "Phase-114 — no standalone report; spec 012 execution renumbered (phase114_run.py) with artifacts retained as phase113_*",
+  "claims": "failed 43 — 40 on modal-position-class   disagreement, median TV 0.789474. Why do Holdat's and the ICIT   converted layer's po",
+  "historical_label": "No standalone Phase-114 report in scoped locations; execution artifacts filed as phase113_blind_affiliation_* (INVALID)",
+  "data_sources": [
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "origin_groups": [
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "freeze and outcome, both 2026-10-07). The original entries stand as written when made; nothing in them is altered. No re-run was performed and no",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "Blind affiliation INVALID (filed under phase113_* names)",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-115",
+  "kind": "phase",
+  "title": "Phase-115 — Non-SA Validation Battery v2 for the 44 SA-Lineage Anchors",
+  "claims": "**BATTERY REJECTED at calibration.** The frozen gates of spec 014 section 5 were not both met, so FLAGGED44 was never run and the anchors file was not modified. The battery may not be re-tuned under this spec. ## Calibration (executed before the 44; reported whatever it showed) | Set | n | VALIDATED",
+  "historical_label": "**BATTERY REJECTED at calibration.** The frozen gates of spec 014 section 5 were not both met, so FLAGGED44 was never run and the anchors file was not modified. The battery may not be re-tuned under this spec. ## Calibration (executed before the 44; reported whatever it showed) | Set | n | VALIDATED",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "controls": "negative control(s) recorded",
+  "control_failures": "control/calibration failure language present in sources — see source_files/ledger",
+  "frozen": "frozen before any results) · **Date:** 2026-10-07 · **GPU device:** cpu (torch absent)",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "battery rejected at calibration per summary/ledger scan",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase115_nonsa44v2_results.json",
+   "reports/phase115_nonsa44v2_summary.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-116",
+  "kind": "phase",
+  "title": "Phase-116 — Corpus-Harmonization Study: Why Holdat and ICIT Positional Profiles Disagree",
+  "claims": "| Hypothesis | Verdict | Headline numbers | |---|---|---| | H-COMPOSITION | **UNRESOLVED** | restricted: A 1.0 / TV 0.0 on 3 paired signs vs full-layer A 0.6667 / TV 0.33 (powered: False) | | H-SEGMENTATION | **UNRESOLVED** | S1 sentinel-strip: FAIL 43 → 45 (REFUTED); S2 artifact-units: TV 0.1042 vs",
+  "historical_label": "| Hypothesis | Verdict | Headline numbers | |---|---|---| | H-COMPOSITION | **UNRESOLVED** | restricted: A 1.0 / TV 0.0 on 3 paired signs vs full-layer A 0.6667 / TV 0.33 (powered: False) | | H-SEGMENTATION | **UNRESOLVED** | S1 sentinel-strip: FAIL 43 → 45 (REFUTED); S2 artifact-units: TV 0.1042 vs",
+  "data_sources": [
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "origin_groups": [
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "frozen before any results) · **Date:** 2026-10-07 · **GPU device:** cpu (torch absent)",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase116_harmonization_results.json",
+   "reports/phase116_harmonization_summary.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-117",
+  "kind": "phase",
+  "title": "Phase-117 — Within-Compilation Validation Battery for the 44 SA-Lineage Anchors",
+  "claims": "**BATTERY REJECTED at calibration.** The frozen gates of spec 016 section 6 were not both met, so FLAGGED44 was never run and the anchors file was not modified. The battery may not be re-tuned under this spec. ## Calibration (executed before the 44; reported whatever it showed) | Set | n | VALIDATED",
+  "historical_label": "**BATTERY REJECTED at calibration.** The frozen gates of spec 016 section 6 were not both met, so FLAGGED44 was never run and the anchors file was not modified. The battery may not be re-tuned under this spec. ## Calibration (executed before the 44; reported whatever it showed) | Set | n | VALIDATED",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "controls": "negative control(s) recorded",
+  "control_failures": "control/calibration failure language present in sources — see source_files/ledger",
+  "frozen": "frozen before any results) · **Date:** 2026-10-07 · **GPU device:** cpu (torch absent)",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "battery rejected at calibration per summary/ledger scan",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase117_within_battery_results.json",
+   "reports/phase117_within_battery_summary.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-118",
+  "kind": "phase",
+  "title": "Phase-118 — Within-Compilation Validation Battery v2 for the 44 SA-Lineage Anchors",
+  "claims": "**BATTERY REJECTED at calibration.** The frozen gates of spec 017 section 6 were not both met, so FLAGGED44 was never run and the anchors file was not modified. The battery may not be re-tuned under this spec. ## Calibration (executed before the 44; reported whatever it showed) phi per direction (10",
+  "historical_label": "**BATTERY REJECTED at calibration.** The frozen gates of spec 017 section 6 were not both met, so FLAGGED44 was never run and the anchors file was not modified. The battery may not be re-tuned under this spec. ## Calibration (executed before the 44; reported whatever it showed) phi per direction (10",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)"
+  ],
+  "controls": "negative control(s) recorded",
+  "control_failures": "control/calibration failure language present in sources — see source_files/ledger",
+  "frozen": "frozen before any results) · **Date:** 2026-10-07 · **GPU device:** cpu (torch absent)",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "battery rejected at calibration per summary/ledger scan",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase118_within_battery_results.json",
+   "reports/phase118_within_battery_summary.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-119",
+  "kind": "phase",
+  "title": "Phase-119 — PRED-2026 Readiness Harness: Summary",
+  "claims": "CONFIRMED / 0.40 REFUTED), gate refusals,",
+  "historical_label": "CONFIRMED / 0.40 REFUTED), gate refusals,",
+  "data_sources": [
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "PRED2026",
+   "mayig/Mahadevan-lineage"
+  ],
+  "origin_groups": [
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "PRED2026",
+   "mayig/Mahadevan-lineage"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "frozen in its",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase119_acquisition_log.json",
+   "reports/phase119_arxiv_draft.txt",
+   "reports/phase119_pred_harness_results.json",
+   "reports/phase119_pred_harness_summary.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-120",
+  "kind": "phase",
+  "title": "Phase-120 — Bhaskar (2024) triage of the 44 pending anchors",
+  "claims": "Null simulation for sign 98 as a neutral marker |",
+  "historical_label": "Null simulation for sign 98 as a neutral marker |",
+  "data_sources": [
+   "AI-assisted coding",
+   "Bhaskar",
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "M77/Mahadevan corpus",
+   "Mahadevan",
+   "Parpola",
+   "Wells"
+  ],
+  "origin_groups": [
+   "AI-assisted coding",
+   "Bhaskar",
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "M77/Mahadevan corpus",
+   "Mahadevan",
+   "Parpola",
+   "Wells"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase120_bhaskar_disagreements.csv",
+   "reports/phase120_bhaskar_disagreements.json",
+   "reports/phase120_bhaskar_triage_44.json",
+   "reports/phase120_bhaskar_triage_44.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-121",
+  "kind": "phase",
+  "title": "Phase-121 — Soviet Positional Dataset: Extraction Memo",
+  "claims": "passed (`backend/tests/test_phase121_soviet_positional.py`).",
+  "historical_label": "passed (`backend/tests/test_phase121_soviet_positional.py`).",
+  "data_sources": [
+   "AI-assisted coding",
+   "Bhaskar",
+   "CISI images",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Mahadevan",
+   "Parpola",
+   "Soviet positional tables",
+   "human coding",
+   "mayig/Mahadevan-lineage"
+  ],
+  "origin_groups": [
+   "AI-assisted coding",
+   "Bhaskar",
+   "CISI images",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Mahadevan",
+   "Parpola",
+   "Soviet positional tables",
+   "human coding",
+   "mayig/Mahadevan-lineage"
+  ],
+  "controls": "control(s) mentioned; type unclear from excerpt",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase121_soviet_positional_dataset.md",
+   "reports/phase121_soviet_positional_results.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-122",
+  "kind": "phase",
+  "title": "Phase-122 — Parpola↔Mahadevan Crosswalk v1 + mayig Corpus Integration",
+  "claims": "failure modes: **P122** (76 tokens, ambiguous — the",
+  "historical_label": "failure modes: **P122** (76 tokens, ambiguous — the",
+  "data_sources": [
+   "Bhaskar",
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Mahadevan",
+   "Parpola",
+   "Wells",
+   "mayig/Mahadevan-lineage"
+  ],
+  "origin_groups": [
+   "Bhaskar",
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Mahadevan",
+   "Parpola",
+   "Wells",
+   "mayig/Mahadevan-lineage"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "frozen for v1).** high = attested by BOTH",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase122_crosswalk_mayig.md",
+   "reports/phase122_crosswalk_mayig_results.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-123",
+  "kind": "phase",
+  "title": "Phase-123 — Wells Segmentation Witness Memo",
+  "claims": "rejected:* attestation co-occurrence (MA Appendix 1",
+  "historical_label": "rejected:* attestation co-occurrence (MA Appendix 1",
+  "data_sources": [
+   "CISI images",
+   "Fuls",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Mahadevan",
+   "Parpola",
+   "Wells",
+   "mayig/Mahadevan-lineage"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Fuls",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Mahadevan",
+   "Parpola",
+   "Wells",
+   "mayig/Mahadevan-lineage"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase123_wells_segmentation_witness.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-124",
+  "kind": "phase",
+  "title": "Phase-124 — CISI Image Layer (enabling asset)",
+  "claims": "rejected, never mistaken",
+  "historical_label": "rejected, never mistaken",
+  "data_sources": [
+   "AI-assisted coding",
+   "CISI images",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "human coding"
+  ],
+  "origin_groups": [
+   "AI-assisted coding",
+   "CISI images",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "human coding"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "frozen Phase-124 sample, gated expansion run (enabling asset)  Owner-ordered program workstream 4, 2026-10-08. Protocol frozen BEFORE any tuning a",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase124_cisi_image_layer.md",
+   "reports/phase124_cisi_local_store_manifest.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-125",
+  "kind": "phase",
+  "title": "Phase-125 — Cross-Compilation Positional Comparison (mayig/CISI vs Holdat)",
+  "claims": "**FAIL — DISAGREEMENT** (section-6.3 falsifier pattern met). Primary arm: 16 judgeable pairs of 286; median TV 0.636931 (PASS bound <= 0.35; FAIL bound >= 0.50); Spearman rho initial -0.424758, terminal 0.316034 (PASS bound >= 0.50); pairing-shuffle null (B = 999, seed 125125) p_null 0.824000 (PASS ",
+  "historical_label": "FAIL — DISAGREEMENT (§6.3 falsifier pattern met)",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Mahadevan",
+   "Parpola",
+   "mayig/Mahadevan-lineage"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Mahadevan",
+   "Parpola",
+   "mayig/Mahadevan-lineage"
+  ],
+  "controls": "control(s) mentioned; type unclear from excerpt",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "frozen before any results) · **Date:** 2026-10-08 · **GPU device:** cpu (torch absent)",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "FAIL recorded",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase125_cross_compilation_results.json",
+   "reports/phase125_cross_compilation_summary.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-126",
+  "kind": "phase",
+  "title": "Phase-126 — Wells-Split Descriptive Analysis of the 113 CANDIDATE Anchors (Design-Input Memo)",
+  "claims": "confirmed under Wells (unit-same, 62)",
+  "historical_label": "confirmed under Wells (unit-same, 62)",
+  "data_sources": [
+   "CISI images",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Mahadevan",
+   "Wells"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Mahadevan",
+   "Wells"
+  ],
+  "controls": "control(s) mentioned; type unclear from excerpt",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase126_wells_split_candidates.md",
+   "reports/phase126_wells_split_candidates_results.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-127",
+  "kind": "phase",
+  "title": "Phase-127 — Cross-Compilation Disagreement Diagnostic (spec 021)",
+  "claims": "FAIL — DISAGREEMENT, and it is FINAL.**",
+  "historical_label": "FAIL — DISAGREEMENT, and it is FINAL.**",
+  "data_sources": [
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Parpola",
+   "Soviet positional tables",
+   "Wells",
+   "mayig/Mahadevan-lineage"
+  ],
+  "origin_groups": [
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Parpola",
+   "Soviet positional tables",
+   "Wells",
+   "mayig/Mahadevan-lineage"
+  ],
+  "controls": "control(s) mentioned; type unclear from excerpt",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "frozen in spec 021 before any diagnostic statistic",
+  "uncertainty_reported": "yes — CI/effect-size reported",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "backend/reports/phase127_fish_site_results.json",
+   "backend/reports/phase127_gulf_corpus_report.json",
+   "glossa-indus/LEDGER.md",
+   "reports/phase127_cross_compilation_diagnostic.md",
+   "reports/phase127_cross_compilation_diagnostic_results.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-128",
+  "kind": "phase",
+  "title": "Phase-128 — Integrated Evidence Dossiers for the 44 Pending Anchors",
+  "claims": "FAIL — DISAGREEMENT) is final and unchanged by Phase-127 and by this phase.",
+  "historical_label": "FAIL — DISAGREEMENT) is final and unchanged by Phase-127 and by this phase.",
+  "data_sources": [
+   "AI-assisted coding",
+   "Bhaskar",
+   "Holdat",
+   "ICIT-lineage",
+   "Mahadevan",
+   "Parpola",
+   "Soviet positional tables",
+   "Wells",
+   "mayig/Mahadevan-lineage"
+  ],
+  "origin_groups": [
+   "AI-assisted coding",
+   "Bhaskar",
+   "Holdat",
+   "ICIT-lineage",
+   "Mahadevan",
+   "Parpola",
+   "Soviet positional tables",
+   "Wells",
+   "mayig/Mahadevan-lineage"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "yes — CI/effect-size reported",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "backend/reports/phase128_129_anchor_upgrades.json",
+   "glossa-indus/LEDGER.md",
+   "reports/phase128_evidence_dossiers_44.csv",
+   "reports/phase128_evidence_dossiers_44.json",
+   "reports/phase128_evidence_dossiers_44.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-129",
+  "kind": "phase",
+  "title": "Phase-129 — CISI Cropper v2 (benchmarked against the frozen v1 sample)",
+  "claims": "pass box-blur",
+  "historical_label": "pass box-blur",
+  "data_sources": [
+   "CISI images",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "human coding"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "human coding"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "frozen v1 sample)",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "backend/reports/phase128_129_anchor_upgrades.json",
+   "reports/phase129_cisi_cropper_v2.md",
+   "reports/phase129_cisi_cropper_v2_protocol.md",
+   "reports/phase129_cisi_local_store_manifest.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-130",
+  "kind": "phase",
+  "title": "re_manifest.json (counts/schema only).  **AI disclosure:** execution recorded by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierso",
+  "claims": "passed; full backend suite 938 passed / 13 skipped / 0 failed (baseline 923/13/0 plus this phase's 15; corpora symlinked from",
+  "historical_label": "passed; full backend suite 938 passed / 13 skipped / 0 failed (baseline 923/13/0 plus this phase's 15; corpora symlinked from",
+  "data_sources": [
+   "AI-assisted coding"
+  ],
+  "origin_groups": [
+   "AI-assisted coding"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "unknown",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "backend/reports/phase130_decode_blocker.json",
+   "glossa-indus/LEDGER.md",
+   "reports/phase130_intake_pack_results.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-131",
+  "kind": "phase",
+  "title": "Phase-131 — Source-of-Disagreement Attribution (spec 022)",
+  "claims": "FAIL — DISAGREEMENT, and it is FINAL** (spec 019,",
+  "historical_label": "FAIL — DISAGREEMENT, and it is FINAL** (spec 019,",
+  "data_sources": [
+   "AI-assisted coding",
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "mayig/Mahadevan-lineage"
+  ],
+  "origin_groups": [
+   "AI-assisted coding",
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "mayig/Mahadevan-lineage"
+  ],
+  "controls": "control(s) mentioned; type unclear from excerpt",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "frozen in spec",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase131_attribution.md",
+   "reports/phase131_attribution_results.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-132",
+  "kind": "phase",
+  "title": "Phase-132 — Stage P Pilot Report (Spec 023, Keyed Transcription Layer)",
+  "claims": "pass / adjudication records and",
+  "historical_label": "STOP-RULE FIRED — pilot stopped, no Stage T claim (spec via reports/phase132_pilot_report.md)",
+  "data_sources": [
+   "CISI images",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Mahadevan",
+   "human coding",
+   "mayig/Mahadevan-lineage"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "Mahadevan",
+   "human coding",
+   "mayig/Mahadevan-lineage"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "FROZEN 2026-10-09** (owner: Tristen Pierson — \"merge #99",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "INVALID/stop recorded",
+  "source_files": [
+   "LEDGER.md",
+   "backend/reports/phase132_validation_report.json",
+   "glossa-indus/LEDGER.md",
+   "reports/phase132_pilot_metrics.json",
+   "reports/phase132_pilot_report.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-133",
+  "kind": "phase",
+  "title": "Phase-133 — Stage 0 Report (Spec 024, Evidence Integration)",
+  "claims": "pass (T4) and anomalies",
+  "historical_label": "pass (T4) and anomalies",
+  "data_sources": [
+   "AI-assisted coding",
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "TN graffiti",
+   "horus84/ICIT-lineage",
+   "human coding",
+   "mayig/Mahadevan-lineage"
+  ],
+  "origin_groups": [
+   "AI-assisted coding",
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "TN graffiti",
+   "horus84/ICIT-lineage",
+   "human coding",
+   "mayig/Mahadevan-lineage"
+  ],
+  "controls": "control(s) mentioned; type unclear from excerpt",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "FROZEN 2026-10-09**",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "backend/reports/phase133_resolution.json",
+   "glossa-indus/LEDGER.md",
+   "reports/phase133_stage0_report.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-134",
+  "kind": "phase",
+  "title": "Phase-134 Pilot Report — Spec 024 Stage 1: Motif-Coding Pilot",
+  "claims": "pass A, pass B, the",
+  "historical_label": "pass A, pass B, the",
+  "data_sources": [
+   "AI-assisted coding",
+   "CISI images",
+   "Holdat",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "TN graffiti",
+   "human coding"
+  ],
+  "origin_groups": [
+   "AI-assisted coding",
+   "CISI images",
+   "Holdat",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "TN graffiti",
+   "human coding"
+  ],
+  "controls": "unknown",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "freeze:** `specs/024-evidence-integration/stage1-freeze.md`",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "stop-rule/stop recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "backend/reports/phase134_falsification_suite.json",
+   "glossa-indus/LEDGER.md",
+   "reports/phase134_pilot_metrics.json",
+   "reports/phase134_pilot_report.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-135",
+  "kind": "phase",
+  "title": "Phase-135 Pilot Report — Spec 024 Stage 1: Motif-Coding Re-Pilot (clarified codebook, fresh sample)",
+  "claims": "pass A, pass B, the gold third",
+  "historical_label": "pass A, pass B, the gold third",
+  "data_sources": [
+   "AI-assisted coding",
+   "CISI images",
+   "Holdat",
+   "TN graffiti",
+   "human coding"
+  ],
+  "origin_groups": [
+   "AI-assisted coding",
+   "CISI images",
+   "Holdat",
+   "TN graffiti",
+   "human coding"
+  ],
+  "controls": "control(s) mentioned; type unclear from excerpt",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "freeze:**",
+  "uncertainty_reported": "unknown/no CI-effect-size language in sources scanned",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "stop-rule/stop recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "backend/reports/phase135_advancement.json",
+   "glossa-indus/LEDGER.md",
+   "reports/phase135_pilot_metrics.json",
+   "reports/phase135_pilot_report.md"
+  ]
+ },
+ {
+  "item_id": "PHASE-136",
+  "kind": "phase",
+  "title": "Phases 136–138 — Spec 024 Stage 2 Combined Report",
+  "claims": "SUPPORTED** |",
+  "historical_label": "SUPPORTED** |",
+  "data_sources": [
+   "AI-assisted coding",
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "TN graffiti",
+   "horus84/ICIT-lineage"
+  ],
+  "origin_groups": [
+   "AI-assisted coding",
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "TN graffiti",
+   "horus84/ICIT-lineage"
+  ],
+  "controls": "control(s) mentioned; type unclear from excerpt",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "Freezes**",
+  "uncertainty_reported": "yes — CI/effect-size reported",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "backend/reports/phase136_140_battery.json",
+   "glossa-indus/LEDGER.md",
+   "reports/phase136_137_138_stage2_report.md",
+   "reports/phase136_report.md",
+   "reports/phase136_results.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-137",
+  "kind": "phase",
+  "title": "Phases 136–138 — Spec 024 Stage 2 Combined Report",
+  "claims": "SUPPORTED** |",
+  "historical_label": "SUPPORTED** |",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "TN graffiti",
+   "horus84/ICIT-lineage"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "TN graffiti",
+   "horus84/ICIT-lineage"
+  ],
+  "controls": "control(s) mentioned; type unclear from excerpt",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "Freezes**",
+  "uncertainty_reported": "yes — CI/effect-size reported",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase136_137_138_stage2_report.md",
+   "reports/phase137_report.md",
+   "reports/phase137_results.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-138",
+  "kind": "phase",
+  "title": "Phases 136–138 — Spec 024 Stage 2 Combined Report",
+  "claims": "SUPPORTED** |",
+  "historical_label": "SUPPORTED** |",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "TN graffiti"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "Indus corpus (unspecified lineage in excerpt)",
+   "TN graffiti"
+  ],
+  "controls": "control(s) mentioned; type unclear from excerpt",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "Freezes**",
+  "uncertainty_reported": "yes — CI/effect-size reported",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase136_137_138_stage2_report.md",
+   "reports/phase138_report.md",
+   "reports/phase138_results.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-139",
+  "kind": "phase",
+  "title": "Spec 025 Combined Report — Stage 2 Controlled Follow-Up (Phases 139–141)",
+  "claims": "SUPPORTED under a",
+  "historical_label": "SUPPORTED under a",
+  "data_sources": [
+   "AI-assisted coding",
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "horus84/ICIT-lineage"
+  ],
+  "origin_groups": [
+   "AI-assisted coding",
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "horus84/ICIT-lineage"
+  ],
+  "controls": "control(s) mentioned; type unclear from excerpt",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "frozen before",
+  "uncertainty_reported": "yes — CI/effect-size reported",
+  "grid_complete": "incomplete/gaps recorded in sources scanned",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "glossa-indus/LEDGER.md",
+   "reports/phase139_140_141_spec025_report.md",
+   "reports/phase139_report.md",
+   "reports/phase139_results.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-140",
+  "kind": "phase",
+  "title": "Spec 025 Combined Report — Stage 2 Controlled Follow-Up (Phases 139–141)",
+  "claims": "SUPPORTED under a",
+  "historical_label": "SUPPORTED under a",
+  "data_sources": [
+   "Holdat",
+   "ICIT-lineage",
+   "horus84/ICIT-lineage"
+  ],
+  "origin_groups": [
+   "Holdat",
+   "ICIT-lineage",
+   "horus84/ICIT-lineage"
+  ],
+  "controls": "control(s) mentioned; type unclear from excerpt",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "frozen before",
+  "uncertainty_reported": "yes — CI/effect-size reported",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "backend/reports/phase136_140_battery.json",
+   "glossa-indus/LEDGER.md",
+   "reports/phase139_140_141_spec025_report.md",
+   "reports/phase140_report.md",
+   "reports/phase140_results.json"
+  ]
+ },
+ {
+  "item_id": "PHASE-141",
+  "kind": "phase",
+  "title": "Spec 025 Combined Report — Stage 2 Controlled Follow-Up (Phases 139–141)",
+  "claims": "SUPPORTED under a",
+  "historical_label": "SUPPORTED under a",
+  "data_sources": [
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "horus84/ICIT-lineage"
+  ],
+  "origin_groups": [
+   "CISI images",
+   "Holdat",
+   "ICIT-lineage",
+   "horus84/ICIT-lineage"
+  ],
+  "controls": "control(s) mentioned; type unclear from excerpt",
+  "control_failures": "none recorded in sources scanned",
+  "frozen": "frozen before",
+  "uncertainty_reported": "yes — CI/effect-size reported",
+  "grid_complete": "unknown",
+  "independence_notes": "unknown — derivative/reuse not determined from excerpt scan",
+  "invalidity_notes": "none recorded in sources scanned",
+  "source_files": [
+   "LEDGER.md",
+   "backend/reports/phase141_synthesis.json",
+   "glossa-indus/LEDGER.md",
+   "reports/phase139_140_141_spec025_report.md",
+   "reports/phase141_report.md",
+   "reports/phase141_results.json"
+  ]
+ }
+]

@@ -3855,3 +3855,45 @@ PENDING.
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-10 — Spec 026 S1: RCPH framework transfer — lifecycle, machinery, criteria freeze
+
+Owner directive 2026-10-10: transfer the RCPH study framework
+into Glossa, audit all prior Indus analyses against it, and
+rerun everything the framework impacts. Spec 026
+(specs/026-rcph-framework-transfer/) runs the full spec-kit
+lifecycle with the AEE + evaluator extensions actually executed
+and saved — Specs 024/025 left no saved assessment artifacts;
+that gap is recorded as a finding in the spec.
+
+S1 delivers: the 12-principle transfer map (headline: no
+target-reading/language smuggling generalizes H26; origin-group
+evidence accounting; discriminating controls with INVALID as
+the consequence of a non-discriminating gate; verdict taxonomy
+INVALID/INCONCLUSIVE/CONTRADICTED/SUPPORTED; canonical freeze
+records; practical margins); the classification criteria,
+FROZEN in this stage before any register exists; the governed
+claim register (claims.json, 16 atomic claims); and the
+machinery in backend/glossa_lab/framework026.py — dependency
+integrity (cycles via aee_core ClaimGraph + the NEW
+forbidden-assumption inheritance check the installed aee
+package lacks) and canonical freeze build/verify, with 11 tests
+incl. planted cycle, planted forbidden inheritance, and tamper
+cases (all passing, ruff clean).
+
+AEE record (aee/ in the spec dir): specify stage ran three
+rounds — a vacuous 0-claim pass on prose (rejected as a gate
+pass), gather_evidence on 8 compound claims (recovery:
+decomposition into 16 atomic claims + second independent
+evidence per claim), and a final gather_evidence with all 16
+claims at 0.9945/high and 5 residual heuristic failure modes
+whose named recovery actions were performed and recorded
+(aee/recovery-specify.md). Plan and tasks stages: gather_evidence
+(same profile); evaluator composed outcome under strict =
+gather_evidence. Outcomes are recorded verbatim, not rounded up.
+
+No anchors touched, no PRED scoring, no publication.
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution sec.VI.

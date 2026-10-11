@@ -299,3 +299,24 @@ authorizes the transfer, the audit, and the reruns it identifies.
 Anchor changes and PRED scoring stay outside this spec whatever
 the reruns show (§2); anything of that kind returns to the
 owner as a flagged assessment.
+
+---
+
+## Amendment 1 — rerun phase numbering (2026-10-10, at S3)
+
+The stage plan's reserved rerun numbers (142–145) collide with
+an existing, unrelated line of work: the repository's global
+phase space already runs to **382** in `backend/reports/`
+(phase142_collocate_network, phase143_iconographic_formula,
+phase144_145_deep_dive, …, phase382), and the graph module name
+`experiment_graph_phase142_145.py` is taken. The collision was
+discovered during S3 implementation, before any freeze or run.
+
+**Correction:** the Spec 026 reruns are numbered **383–386**:
+Phase-383 (C4 pilot rescoring), Phase-384 (C1 Phase-137
+margins), Phase-385 (C1 Phase-140 G1 margins), Phase-386
+(replay audit). §8's "new phase numbers (142+)" is read as
+"next free numbers in the repository's global phase space".
+The impact register (S2) was corrected pre-merge in the same
+pass (PR #139). No classification, criterion, or rerun
+specification changed — numbering only.

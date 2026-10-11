@@ -2795,6 +2795,16 @@ try:
     logger.info("Registered %d Phase-141 LOSO (spec 025) nodes", len(list(_p141_defs())))
 except Exception as _p141_exc:  # noqa: BLE001
     logger.warning("Phase-141 LOSO (spec 025) nodes not registered: %s", _p141_exc)
+# ── Phase-383-386 nodes (spec 026: RCPH framework transfer reruns) ──
+try:
+    from glossa_lab.experiment_graph_phase383_386 import (
+        _phase383_386_node_defs as _p383386_defs,  # noqa: PLC0415
+    )
+    for _d in _p383386_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-383-386 (spec 026) nodes", len(list(_p383386_defs())))
+except Exception as _p383386_exc:  # noqa: BLE001
+    logger.warning("Phase-383-386 (spec 026) nodes not registered: %s", _p383386_exc)
 # ── Phase-120 nodes (Bhaskar 2024 descriptive triage) ──
 try:
     from glossa_lab.experiment_graph_phase120 import (

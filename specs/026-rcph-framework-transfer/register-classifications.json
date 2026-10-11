@@ -71,7 +71,7 @@
  },
  "SPEC-015": {
   "classification": "REPRODUCE-ONLY",
-  "rationale": "Executed as Phase-116: verdicts (H-MAPPING, H-DEFINITION refuted) rest on recorded effect estimates from recorded datasets; deterministic recomputation suffices. Replay in Phase-145 spot set.",
+  "rationale": "Executed as Phase-116: verdicts (H-MAPPING, H-DEFINITION refuted) rest on recorded effect estimates from recorded datasets; deterministic recomputation suffices. Replay in Phase-386 spot set.",
   "rerun_spec": null
  },
  "SPEC-016": {
@@ -91,7 +91,7 @@
  },
  "SPEC-019": {
   "classification": "REPRODUCE-ONLY",
-  "rationale": "Executed as Phase-125 (+127 diagnostic): the falsifier pattern was pre-declared in the spec (S6.3) and Phase-127 already computed the bootstrap interval for the effect. Replay (Phase-145) + taxonomy adjudication in the assessment; no C1-C4 correction remains unapplied.",
+  "rationale": "Executed as Phase-125 (+127 diagnostic): the falsifier pattern was pre-declared in the spec (S6.3) and Phase-127 already computed the bootstrap interval for the effect. Replay (Phase-386) + taxonomy adjudication in the assessment; no C1-C4 correction remains unapplied.",
   "rerun_spec": null
  },
  "SPEC-020": {
@@ -101,7 +101,7 @@
  },
  "SPEC-021": {
   "classification": "REPRODUCE-ONLY",
-  "rationale": "Executed as Phase-127: deterministic diagnostic (null replicates + bootstrap) over recorded Phase-125 outputs; replay in Phase-145.",
+  "rationale": "Executed as Phase-127: deterministic diagnostic (null replicates + bootstrap) over recorded Phase-125 outputs; replay in Phase-386.",
   "rerun_spec": null
  },
  "SPEC-021-INTAKE": {
@@ -111,23 +111,23 @@
  },
  "SPEC-022": {
   "classification": "REPRODUCE-ONLY",
-  "rationale": "Executed as Phase-131: attribution percentages are deterministic functions of recorded datasets; replay in Phase-145 spot set.",
+  "rationale": "Executed as Phase-131: attribution percentages are deterministic functions of recorded datasets; replay in Phase-386 spot set.",
   "rerun_spec": null
  },
  "SPEC-023": {
   "classification": "RERUN-REQUIRED",
-  "rationale": "Executed as Phase-132 (keyed-transcription pilot). C4: complete on-disk coding records exist; rescoring under the taxonomy + interval completion is specified in the Phase-142 rerun contract.",
-  "rerun_spec": "Phase-142 (C4 rescoring, shared contract)"
+  "rationale": "Executed as Phase-132 (keyed-transcription pilot). C4: complete on-disk coding records exist; rescoring under the taxonomy + interval completion is specified in the Phase-383 rerun contract.",
+  "rerun_spec": "Phase-383 (C4 rescoring, shared contract)"
  },
  "SPEC-024": {
   "classification": "RERUN-REQUIRED",
   "rationale": "Stage 1 pilots (Phases 134/135) meet C4; Stage 2 arms F2/F3 (Phase-137) meet C1 (chi-square p-values with point V only; intervals computable from the recorded layer).",
-  "rerun_spec": "Phase-142 (C4, pilots) + Phase-143 (C1, F2/F3)"
+  "rerun_spec": "Phase-383 (C4, pilots) + Phase-384 (C1, F2/F3)"
  },
  "SPEC-025": {
   "classification": "RERUN-REQUIRED",
   "rationale": "Phase-140 (G1) meets C1: SUPPORTED rested on the permutation p-value with a point Cramer's V; a stratified interval for V is computable from the recorded layer under the frozen strata.",
-  "rerun_spec": "Phase-144 (C1, G1 + exploratory sensitivity intervals)"
+  "rerun_spec": "Phase-385 (C1, G1 + exploratory sensitivity intervals)"
  },
  "PHASE-105": {
   "classification": "REINTERPRET-ONLY",
@@ -186,7 +186,7 @@
  },
  "PHASE-116": {
   "classification": "REPRODUCE-ONLY",
-  "rationale": "Refutations rest on recorded effect estimates (median W1, rho, identical-text pairs) from recorded datasets; deterministic recomputation suffices; spot replay in Phase-145.",
+  "rationale": "Refutations rest on recorded effect estimates (median W1, rho, identical-text pairs) from recorded datasets; deterministic recomputation suffices; spot replay in Phase-386.",
   "rerun_spec": null
  },
  "PHASE-117": {
@@ -231,7 +231,7 @@
  },
  "PHASE-125": {
   "classification": "REPRODUCE-ONLY",
-  "rationale": "FAIL \u2014 DISAGREEMENT under a pre-declared falsifier (Spec 019 S6.3); Phase-127 already supplied the effect interval. Replay in Phase-145; taxonomy adjudication (CONTRADICTED for the bounded agreement claim) in the assessment.",
+  "rationale": "FAIL \u2014 DISAGREEMENT under a pre-declared falsifier (Spec 019 S6.3); Phase-127 already supplied the effect interval. Replay in Phase-386; taxonomy adjudication (CONTRADICTED for the bounded agreement claim) in the assessment.",
   "rerun_spec": null
  },
  "PHASE-126": {
@@ -241,7 +241,7 @@
  },
  "PHASE-127": {
   "classification": "REPRODUCE-ONLY",
-  "rationale": "Deterministic diagnostic over Phase-125 outputs (999-replicate null + bootstrap); replay in Phase-145.",
+  "rationale": "Deterministic diagnostic over Phase-125 outputs (999-replicate null + bootstrap); replay in Phase-386.",
   "rerun_spec": null
  },
  "PHASE-128": {
@@ -261,13 +261,13 @@
  },
  "PHASE-131": {
   "classification": "REPRODUCE-ONLY",
-  "rationale": "Attribution percentages are deterministic functions of recorded datasets (6.1% attributed / 93.9% residual); spot replay in Phase-145.",
+  "rationale": "Attribution percentages are deterministic functions of recorded datasets (6.1% attributed / 93.9% residual); spot replay in Phase-386.",
   "rerun_spec": null
  },
  "PHASE-132": {
   "classification": "RERUN-REQUIRED",
   "rationale": "Stage P pilot: verdict-bearing agreement scores (exact-sequence 0.20) computed from complete on-disk coding records. C4 rescoring under the taxonomy + bootstrap intervals + coder origin-group audit (all passes share one model origin \u2014 independence note the original report disclosed but did not propagate into the verdict).",
-  "rerun_spec": "Phase-142 (C4)"
+  "rerun_spec": "Phase-383 (C4)"
  },
  "PHASE-133": {
   "classification": "REPRODUCE-ONLY",
@@ -277,12 +277,12 @@
  "PHASE-134": {
   "classification": "RERUN-REQUIRED",
   "rationale": "Motif pilot 1: agreement 0.84 / kappa 0.7885 point estimates from complete on-disk records; the middle-band call turned on one object. C4 rescoring + bootstrap intervals under the taxonomy.",
-  "rerun_spec": "Phase-142 (C4)"
+  "rerun_spec": "Phase-383 (C4)"
  },
  "PHASE-135": {
   "classification": "RERUN-REQUIRED",
   "rationale": "Motif re-pilot: agreement 0.78 / kappa 0.7129 point estimates from complete on-disk records. C4 rescoring + bootstrap intervals under the taxonomy.",
-  "rerun_spec": "Phase-142 (C4)"
+  "rerun_spec": "Phase-383 (C4)"
  },
  "PHASE-136": {
   "classification": "UNAFFECTED",
@@ -292,7 +292,7 @@
  "PHASE-137": {
   "classification": "RERUN-REQUIRED",
   "rationale": "F2 + F3: chi-square permutation verdicts with point Cramer's V only (0.1154 / 0.2190); no interval, no practical margin adjudicated. C1: bootstrap intervals for V are computable from the recorded layer under the original permutation design.",
-  "rerun_spec": "Phase-143 (C1)"
+  "rerun_spec": "Phase-384 (C1)"
  },
  "PHASE-138": {
   "classification": "UNAFFECTED",
@@ -307,7 +307,7 @@
  "PHASE-140": {
   "classification": "RERUN-REQUIRED",
   "rationale": "G1 SUPPORTED under control rested on the permutation p-value (0/9,999) with point V 0.2190; no interval for the controlled effect. C1: stratified bootstrap interval for V computable from the recorded layer under the frozen composition x preservation strata. Chronology rider is unaffected and carries into the rerun report verbatim.",
-  "rerun_spec": "Phase-144 (C1)"
+  "rerun_spec": "Phase-385 (C1)"
  },
  "PHASE-141": {
   "classification": "UNAFFECTED",

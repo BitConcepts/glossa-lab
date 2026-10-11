@@ -107,7 +107,7 @@ Total rows: 116
 
 - Title: Spec 015 — Phase-116: Corpus-Harmonization Study — Why Holdat and ICIT Positional Profiles Disagree (pre-registration)
 - Historical label: FROZEN 2026-10-07 on `phase/harmonization-study`
-- Rationale: Executed as Phase-116: verdicts (H-MAPPING, H-DEFINITION refuted) rest on recorded effect estimates from recorded datasets; deterministic recomputation suffices. Replay in Phase-145 spot set.
+- Rationale: Executed as Phase-116: verdicts (H-MAPPING, H-DEFINITION refuted) rest on recorded effect estimates from recorded datasets; deterministic recomputation suffices. Replay in Phase-386 spot set.
 
 ### SPEC-016 — REINTERPRET-ONLY
 
@@ -131,7 +131,7 @@ Total rows: 116
 
 - Title: Spec 019 — Phase-125: Cross-Compilation Positional Comparison — mayig/CISI Layer vs Holdat Compilation, Joined Only Through the Phase-122 Crosswalk (pre-registration)
 - Historical label: DESIGN FROZEN 2026-10-08 on
-- Rationale: Executed as Phase-125 (+127 diagnostic): the falsifier pattern was pre-declared in the spec (S6.3) and Phase-127 already computed the bootstrap interval for the effect. Replay (Phase-145) + taxonomy adjudication in the assessment; no C1-C4 correction remains unapplied.
+- Rationale: Executed as Phase-125 (+127 diagnostic): the falsifier pattern was pre-declared in the spec (S6.3) and Phase-127 already computed the bootstrap interval for the effect. Replay (Phase-386) + taxonomy adjudication in the assessment; no C1-C4 correction remains unapplied.
 
 ### SPEC-020 — UNAFFECTED
 
@@ -143,7 +143,7 @@ Total rows: 116
 
 - Title: Spec 021 — Phase-127: Cross-Compilation Disagreement Diagnostic — How Much of Phase-125's Disagreement Is Genuine vs Sampling Noise / Crosswalk Ambiguity / Composition (pre-registration)
 - Historical label: DESIGN FROZEN 2026-10-08 on
-- Rationale: Executed as Phase-127: deterministic diagnostic (null replicates + bootstrap) over recorded Phase-125 outputs; replay in Phase-145.
+- Rationale: Executed as Phase-127: deterministic diagnostic (null replicates + bootstrap) over recorded Phase-125 outputs; replay in Phase-386.
 
 ### SPEC-021-INTAKE — UNAFFECTED
 
@@ -155,28 +155,28 @@ Total rows: 116
 
 - Title: Spec 022 — Phase-131: Source-of-Disagreement Attribution for the Phase-125/127 Cross-Compilation Result (pre-registration)
 - Historical label: DESIGN FROZEN 2026-10-09 on
-- Rationale: Executed as Phase-131: attribution percentages are deterministic functions of recorded datasets; replay in Phase-145 spot set.
+- Rationale: Executed as Phase-131: attribution percentages are deterministic functions of recorded datasets; replay in Phase-386 spot set.
 
 ### SPEC-023 — RERUN-REQUIRED
 
 - Title: Spec 023 — Keyed Transcription Layer over CISI Vols. 1–2
 - Historical label: FROZEN 2026-10-09 (freeze commit on
-- Rationale: Executed as Phase-132 (keyed-transcription pilot). C4: complete on-disk coding records exist; rescoring under the taxonomy + interval completion is specified in the Phase-142 rerun contract.
-- Rerun: Phase-142 (C4 rescoring, shared contract)
+- Rationale: Executed as Phase-132 (keyed-transcription pilot). C4: complete on-disk coding records exist; rescoring under the taxonomy + interval completion is specified in the Phase-383 rerun contract.
+- Rerun: Phase-383 (C4 rescoring, shared contract)
 
 ### SPEC-024 — RERUN-REQUIRED
 
 - Title: Spec 024 — Evidence Integration: Tying the Inscriptions to Non-Textual Evidence
 - Historical label: FROZEN 2026-10-09 (Stage 0; freeze commit
 - Rationale: Stage 1 pilots (Phases 134/135) meet C4; Stage 2 arms F2/F3 (Phase-137) meet C1 (chi-square p-values with point V only; intervals computable from the recorded layer).
-- Rerun: Phase-142 (C4, pilots) + Phase-143 (C1, F2/F3)
+- Rerun: Phase-383 (C4, pilots) + Phase-384 (C1, F2/F3)
 
 ### SPEC-025 — RERUN-REQUIRED
 
 - Title: Spec 025 — Stage 2 Controlled Follow-Up
 - Historical label: unknown
 - Rationale: Phase-140 (G1) meets C1: SUPPORTED rested on the permutation p-value with a point Cramer's V; a stratified interval for V is computable from the recorded layer under the frozen strata.
-- Rerun: Phase-144 (C1, G1 + exploratory sensitivity intervals)
+- Rerun: Phase-385 (C1, G1 + exploratory sensitivity intervals)
 
 ### PHASE-52 — REINTERPRET-ONLY
 
@@ -566,7 +566,7 @@ Total rows: 116
 
 - Title: Phase-116 — Corpus-Harmonization Study: Why Holdat and ICIT Positional Profiles Disagree
 - Historical label: | Hypothesis | Verdict | Headline numbers | |---|---|---| | H-COMPOSITION | **UNRESOLVED** | restricted: A 1.0 / TV 0.0 on 3 paired signs vs full-layer A 0.6667 / TV 0.33 (powered: False) | | H-SEGMENTATION | **UNRESOLVED** | S1 sentinel-strip: FAIL 43 → 45 (REFUTED); S2 artifact-units: TV 0.1042 vs
-- Rationale: Refutations rest on recorded effect estimates (median W1, rho, identical-text pairs) from recorded datasets; deterministic recomputation suffices; spot replay in Phase-145.
+- Rationale: Refutations rest on recorded effect estimates (median W1, rho, identical-text pairs) from recorded datasets; deterministic recomputation suffices; spot replay in Phase-386.
 
 ### PHASE-117 — REINTERPRET-ONLY
 
@@ -620,7 +620,7 @@ Total rows: 116
 
 - Title: Phase-125 — Cross-Compilation Positional Comparison (mayig/CISI vs Holdat)
 - Historical label: FAIL — DISAGREEMENT (§6.3 falsifier pattern met)
-- Rationale: FAIL — DISAGREEMENT under a pre-declared falsifier (Spec 019 S6.3); Phase-127 already supplied the effect interval. Replay in Phase-145; taxonomy adjudication (CONTRADICTED for the bounded agreement claim) in the assessment.
+- Rationale: FAIL — DISAGREEMENT under a pre-declared falsifier (Spec 019 S6.3); Phase-127 already supplied the effect interval. Replay in Phase-386; taxonomy adjudication (CONTRADICTED for the bounded agreement claim) in the assessment.
 
 ### PHASE-126 — UNAFFECTED
 
@@ -632,7 +632,7 @@ Total rows: 116
 
 - Title: Phase-127 — Cross-Compilation Disagreement Diagnostic (spec 021)
 - Historical label: FAIL — DISAGREEMENT, and it is FINAL.**
-- Rationale: Deterministic diagnostic over Phase-125 outputs (999-replicate null + bootstrap); replay in Phase-145.
+- Rationale: Deterministic diagnostic over Phase-125 outputs (999-replicate null + bootstrap); replay in Phase-386.
 
 ### PHASE-128 — UNAFFECTED
 
@@ -656,14 +656,14 @@ Total rows: 116
 
 - Title: Phase-131 — Source-of-Disagreement Attribution (spec 022)
 - Historical label: FAIL — DISAGREEMENT, and it is FINAL** (spec 019,
-- Rationale: Attribution percentages are deterministic functions of recorded datasets (6.1% attributed / 93.9% residual); spot replay in Phase-145.
+- Rationale: Attribution percentages are deterministic functions of recorded datasets (6.1% attributed / 93.9% residual); spot replay in Phase-386.
 
 ### PHASE-132 — RERUN-REQUIRED
 
 - Title: Phase-132 — Stage P Pilot Report (Spec 023, Keyed Transcription Layer)
 - Historical label: STOP-RULE FIRED — pilot stopped, no Stage T claim (spec via reports/phase132_pilot_report.md)
 - Rationale: Stage P pilot: verdict-bearing agreement scores (exact-sequence 0.20) computed from complete on-disk coding records. C4 rescoring under the taxonomy + bootstrap intervals + coder origin-group audit (all passes share one model origin — independence note the original report disclosed but did not propagate into the verdict).
-- Rerun: Phase-142 (C4)
+- Rerun: Phase-383 (C4)
 
 ### PHASE-133 — REPRODUCE-ONLY
 
@@ -676,14 +676,14 @@ Total rows: 116
 - Title: Phase-134 Pilot Report — Spec 024 Stage 1: Motif-Coding Pilot
 - Historical label: pass A, pass B, the
 - Rationale: Motif pilot 1: agreement 0.84 / kappa 0.7885 point estimates from complete on-disk records; the middle-band call turned on one object. C4 rescoring + bootstrap intervals under the taxonomy.
-- Rerun: Phase-142 (C4)
+- Rerun: Phase-383 (C4)
 
 ### PHASE-135 — RERUN-REQUIRED
 
 - Title: Phase-135 Pilot Report — Spec 024 Stage 1: Motif-Coding Re-Pilot (clarified codebook, fresh sample)
 - Historical label: pass A, pass B, the gold third
 - Rationale: Motif re-pilot: agreement 0.78 / kappa 0.7129 point estimates from complete on-disk records. C4 rescoring + bootstrap intervals under the taxonomy.
-- Rerun: Phase-142 (C4)
+- Rerun: Phase-383 (C4)
 
 ### PHASE-136 — UNAFFECTED
 
@@ -696,7 +696,7 @@ Total rows: 116
 - Title: Phases 136–138 — Spec 024 Stage 2 Combined Report
 - Historical label: SUPPORTED** |
 - Rationale: F2 + F3: chi-square permutation verdicts with point Cramer's V only (0.1154 / 0.2190); no interval, no practical margin adjudicated. C1: bootstrap intervals for V are computable from the recorded layer under the original permutation design.
-- Rerun: Phase-143 (C1)
+- Rerun: Phase-384 (C1)
 
 ### PHASE-138 — UNAFFECTED
 
@@ -715,7 +715,7 @@ Total rows: 116
 - Title: Spec 025 Combined Report — Stage 2 Controlled Follow-Up (Phases 139–141)
 - Historical label: SUPPORTED under a
 - Rationale: G1 SUPPORTED under control rested on the permutation p-value (0/9,999) with point V 0.2190; no interval for the controlled effect. C1: stratified bootstrap interval for V computable from the recorded layer under the frozen composition x preservation strata. Chronology rider is unaffected and carries into the rerun report verbatim.
-- Rerun: Phase-144 (C1)
+- Rerun: Phase-385 (C1)
 
 ### PHASE-141 — UNAFFECTED
 

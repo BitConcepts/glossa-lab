@@ -3917,10 +3917,10 @@ Phases 136/139/141, whose intervals/criteria were already on
 record); NOT-RERUNNABLE 8 (Phases 92–95, 97–100 — no artifact
 in any scoped location).
 
-Reruns assigned: Phase-142 (C4 rescoring of the 132/134/135
-coding pilots from on-disk records), Phase-143 (C1 margin
-completion for Phase-137 F2/F3), Phase-144 (C1 margin completion
-for Phase-140 G1), Phase-145 (deterministic replay spot set for
+Reruns assigned: Phase-383 (C4 rescoring of the 132/134/135
+coding pilots from on-disk records), Phase-384 (C1 margin
+completion for Phase-137 F2/F3), Phase-385 (C1 margin completion
+for Phase-140 G1), Phase-386 (deterministic replay spot set for
 the REPRODUCE-ONLY verdict chain 116/125/127/131). The register
 is a freeze point: reruns begin only after this stage merges.
 

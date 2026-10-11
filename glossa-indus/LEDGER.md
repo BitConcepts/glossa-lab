@@ -3353,3 +3353,13 @@ binomial tolerance) on synthetic evidence only; final
 calibration PASS on all four controls. Freeze digest
 619ab0c3...; OSF registration and execution follow in
 sequence. Full entry: repo LEDGER.md, same date.
+
+## 2026-10-11 — Spec 028 OSF registration filed (Phase-393)
+
+Frozen contract registered before execution:
+https://osf.io/7m35w/ (2026-10-11T16:13:11Z; public, no
+embargo; approval pending at filing, handled in the
+parent loop per the owner's standing order). Freeze PR
+#158 merged c1fc0029, CI verified 7/7. Full record:
+specs/028-harappa-robustness/osf-registration.md; repo
+LEDGER.md, same date.

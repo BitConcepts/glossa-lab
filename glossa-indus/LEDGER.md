@@ -3338,3 +3338,18 @@ deposit made" — that was true when written; the
 deposit has now been made. Anchors eccea6d5...
 unchanged; no PRED movement. Full entry: repo
 LEDGER.md, same date.
+## 2026-10-11 — Spec 028 frozen (Phase-393, Harappa robustness)
+
+Follow-up to Spec 027 Stage 1's INCONCLUSIVE verdict, under
+the owner's delegated-design order (verbatim in
+specs/028-harappa-robustness/adjudication.md). Arm A
+(primary): Phase-392 population minus Harappa, identical
+machinery. Arm B (secondary): site-equal-weight estimand
+(quota 52/site/draw). Arm C: exploratory Harappa
+decomposition, no verdict. Calibration forced Amendment 1
+(per-draw regenerated controls; type x exact-length
+permutation strata; negative-control bound restated with
+binomial tolerance) on synthetic evidence only; final
+calibration PASS on all four controls. Freeze digest
+619ab0c3...; OSF registration and execution follow in
+sequence. Full entry: repo LEDGER.md, same date.

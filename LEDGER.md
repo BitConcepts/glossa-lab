@@ -4601,3 +4601,46 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-11 — Spec 028 EXECUTED (Phase-393): Arm A INCONCLUSIVE, Arm B INCONCLUSIVE
+
+- Single clean run under the merged freeze + OSF
+  registration (osf.io/7m35w): 540.6 s, seed 20261012;
+  population guard reproduced the frozen margins exactly;
+  executed controls reproduce the pre-freeze calibration's
+  summaries numerically, exactly.
+- **Arm A (primary) INCONCLUSIVE:** median adjusted R^2
+  0.00878 (BELOW the 0.01 margin), interval [0.00463,
+  0.01297], rejection share 0.623; all five LOSO medians
+  below the margin (0.00656-0.00948); S-complete 0.00647;
+  controls PASS. The non-Harappa sites do not clear the
+  margin on their own; CONTRADICTED does not fire (the
+  interval straddles the margin).
+- **Arm B (secondary) INCONCLUSIVE:** median 0.02237
+  (ABOVE Phase-392's 0.01677), interval [0.01222, 0.03333]
+  entirely above the margin, share 0.955 — but the
+  drop-Harappa LOSO median is 0.00661, failing the frozen
+  jackknife clause exactly as in Phase-392; every other
+  drop >= 0.0226. Controls PASS; quota allocations match
+  the frozen table exactly.
+- Joint reading (descriptive, no verdict upgraded):
+  margin-clearing is Harappa-dependent under both
+  weightings, and is NOT an inscription-count artifact
+  (equal weighting raises the estimate). Arm C
+  (exploratory): Harappa's distance from the other sites
+  (BC 0.3410) is carried by its tablets (within-TAB
+  0.4953 vs within-SEAL 0.1114); M328 alone contributes
+  ~21.5% of the distance. Full record:
+  specs/028-harappa-robustness/outcome.md; reading of
+  Phase-392 updated only in
+  specs/028-harappa-robustness/historical-assessment-
+  phase392.md (Phase-392's record untouched).
+- Deviations: two aborted launches in the execution
+  script's non-frozen glue (wrong loader name; pipeline
+  slice two lines short), both before any outcome; fixed
+  in the script's own sections only; the clean run is the
+  single executed run. Recorded in outcome.md.
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

@@ -1,0 +1,955 @@
+{
+ "experiment": "spec028-phase393-harappa-robustness",
+ "phase": 393,
+ "verdicts": {
+  "arm_a": "INCONCLUSIVE",
+  "arm_b": "INCONCLUSIVE"
+ },
+ "stop_reason": null,
+ "population": {
+  "flow": {
+   "layer_records": 5679,
+   "after_dedup_kept": 4531,
+   "provenanced": 4505,
+   "excluded_graffiti_pottg": 473,
+   "excluded_type_POT": 562,
+   "excluded_type_OTHER": 338,
+   "seal_tab": 3605,
+   "eligible_primary": 3144,
+   "excluded_legible_lt2": 461,
+   "excluded_status_dropped_zero_mapped": 270,
+   "excluded_status_dropped_intra_dup": 795,
+   "excluded_status_dropped_holdat_dup": 83,
+   "excluded_site_unknown": 26,
+   "unjoined_in_horus": 1
+  },
+  "eligible": 3144,
+  "analysis": 3030,
+  "columns": 125,
+  "guard_mismatches": []
+ },
+ "arm_a": {
+  "records": 1593,
+  "inscriptions_per_draw": 294,
+  "primary": {
+   "cells_included": 6,
+   "excluded_cells": {
+    "Chanhu-daro|TAB": 2,
+    "Dholavira|TAB": 15,
+    "Kalibangan|TAB": 3,
+    "Lothal|TAB": 2
+   },
+   "median_adj_r2": 0.00878393455594817,
+   "adj_r2_interval_95": [
+    0.004626892186724407,
+    0.01297407559730989
+   ],
+   "median_raw_r2": 0.022315894493750963,
+   "share_draws_rejecting": 0.6231155778894473,
+   "median_p": 0.034
+  },
+  "loso": {
+   "Mohenjo-daro": {
+    "cells_included": 4,
+    "excluded_cells": {
+     "Chanhu-daro|TAB": 2,
+     "Dholavira|TAB": 15,
+     "Kalibangan|TAB": 3,
+     "Lothal|TAB": 2
+    },
+    "median_adj_r2": 0.006558182455229655,
+    "adj_r2_interval_95": [
+     0.0036751351562775815,
+     0.011470690798468169
+    ],
+    "median_raw_r2": 0.02184190272514916,
+    "share_draws_rejecting": 0.507537688442211,
+    "median_p": 0.048
+   },
+   "Dholavira": {
+    "cells_included": 5,
+    "excluded_cells": {
+     "Chanhu-daro|TAB": 2,
+     "Kalibangan|TAB": 3,
+     "Lothal|TAB": 2
+    },
+    "median_adj_r2": 0.009478980983028684,
+    "adj_r2_interval_95": [
+     0.0044959078863929915,
+     0.013840028840888466
+    ],
+    "median_raw_r2": 0.02165751810208975,
+    "share_draws_rejecting": 0.5477386934673367,
+    "median_p": 0.042
+   },
+   "Lothal": {
+    "cells_included": 5,
+    "excluded_cells": {
+     "Chanhu-daro|TAB": 2,
+     "Dholavira|TAB": 15,
+     "Kalibangan|TAB": 3
+    },
+    "median_adj_r2": 0.008835920315287793,
+    "adj_r2_interval_95": [
+     0.0038861021169194765,
+     0.013777772834238644
+    ],
+    "median_raw_r2": 0.021022363917968787,
+    "share_draws_rejecting": 0.5728643216080402,
+    "median_p": 0.038
+   },
+   "Chanhu-daro": {
+    "cells_included": 5,
+    "excluded_cells": {
+     "Dholavira|TAB": 15,
+     "Kalibangan|TAB": 3,
+     "Lothal|TAB": 2
+    },
+    "median_adj_r2": 0.007614677105539092,
+    "adj_r2_interval_95": [
+     0.002136292607195461,
+     0.013328219603892796
+    ],
+    "median_raw_r2": 0.019816135993585744,
+    "share_draws_rejecting": 0.5778894472361809,
+    "median_p": 0.032
+   },
+   "Kalibangan": {
+    "cells_included": 5,
+    "excluded_cells": {
+     "Chanhu-daro|TAB": 2,
+     "Dholavira|TAB": 15,
+     "Lothal|TAB": 2
+    },
+    "median_adj_r2": 0.008590340011745967,
+    "adj_r2_interval_95": [
+     0.0031851901129968108,
+     0.014859402885787834
+    ],
+    "median_raw_r2": 0.02077980304438845,
+    "share_draws_rejecting": 0.47738693467336685,
+    "median_p": 0.056
+   }
+  },
+  "sensitivity_s_complete": {
+   "cells_included": 4,
+   "excluded_cells": {
+    "Chanhu-daro|SEAL": 43,
+    "Chanhu-daro|TAB": 1,
+    "Dholavira|TAB": 10,
+    "Kalibangan|SEAL": 37,
+    "Kalibangan|TAB": 3,
+    "Lothal|TAB": 2
+   },
+   "median_adj_r2": 0.006473949844274296,
+   "adj_r2_interval_95": [
+    0.0022445880569919975,
+    0.010888004401569378
+   ],
+   "median_raw_r2": 0.016663960615102256,
+   "share_draws_rejecting": 0.24120603015075376,
+   "median_p": 0.12
+  },
+  "negative_control": {
+   "cells_included": 6,
+   "excluded_cells": {
+    "Chanhu-daro|TAB": 2,
+    "Dholavira|TAB": 15,
+    "Kalibangan|TAB": 3,
+    "Lothal|TAB": 2
+   },
+   "median_adj_r2": 0.0004562417889948378,
+   "adj_r2_interval_95": [
+    -0.003522172705783011,
+    0.0054046383155277305
+   ],
+   "median_raw_r2": 0.014101890365254376,
+   "share_draws_rejecting": 0.04020100502512563,
+   "median_p": 0.498,
+   "pass": true
+  },
+  "positive_control": {
+   "cells_included": 6,
+   "excluded_cells": {
+    "Chanhu-daro|TAB": 2,
+    "Dholavira|TAB": 15,
+    "Kalibangan|TAB": 3,
+    "Lothal|TAB": 2
+   },
+   "median_adj_r2": 0.023963353007570576,
+   "adj_r2_interval_95": [
+    0.01564561395032637,
+    0.03362727672588614
+   ],
+   "median_raw_r2": 0.03728808538971982,
+   "share_draws_rejecting": 1.0,
+   "median_p": 0.002,
+   "pass": true
+  },
+  "controls_pass": true
+ },
+ "arm_b": {
+  "records": 3030,
+  "inscriptions_per_draw": 312,
+  "primary": {
+   "cells_included": null,
+   "excluded_cells": {},
+   "median_adj_r2": 0.02237212767139629,
+   "adj_r2_interval_95": [
+    0.0122173669984325,
+    0.03332714266060267
+   ],
+   "median_raw_r2": 0.03808961758021639,
+   "quota_allocations": {
+    "Chanhu-daro": {
+     "TAB": 2,
+     "SEAL": 50
+    },
+    "Dholavira": {
+     "SEAL": 45,
+     "TAB": 7
+    },
+    "Harappa": {
+     "TAB": 39,
+     "SEAL": 13
+    },
+    "Kalibangan": {
+     "SEAL": 49,
+     "TAB": 3
+    },
+    "Lothal": {
+     "SEAL": 51,
+     "TAB": 1
+    },
+    "Mohenjo-daro": {
+     "TAB": 7,
+     "SEAL": 45
+    }
+   },
+   "share_draws_rejecting": 0.9547738693467337,
+   "median_p": 0.004
+  },
+  "loso": {
+   "Harappa": {
+    "cells_included": null,
+    "excluded_cells": {},
+    "median_adj_r2": 0.006606790788155625,
+    "adj_r2_interval_95": [
+     0.001589009492180843,
+     0.011525184959357965
+    ],
+    "median_raw_r2": 0.021948770853203348,
+    "quota_allocations": {
+     "Chanhu-daro": {
+      "TAB": 2,
+      "SEAL": 50
+     },
+     "Dholavira": {
+      "SEAL": 45,
+      "TAB": 7
+     },
+     "Kalibangan": {
+      "SEAL": 49,
+      "TAB": 3
+     },
+     "Lothal": {
+      "SEAL": 51,
+      "TAB": 1
+     },
+     "Mohenjo-daro": {
+      "TAB": 7,
+      "SEAL": 45
+     }
+    },
+    "share_draws_rejecting": 0.5879396984924623,
+    "median_p": 0.036
+   },
+   "Mohenjo-daro": {
+    "cells_included": null,
+    "excluded_cells": {},
+    "median_adj_r2": 0.023762673885450614,
+    "adj_r2_interval_95": [
+     0.014592222541251027,
+     0.03683328898576966
+    ],
+    "median_raw_r2": 0.038839698226988094,
+    "quota_allocations": {
+     "Chanhu-daro": {
+      "TAB": 2,
+      "SEAL": 50
+     },
+     "Dholavira": {
+      "SEAL": 45,
+      "TAB": 7
+     },
+     "Harappa": {
+      "TAB": 39,
+      "SEAL": 13
+     },
+     "Kalibangan": {
+      "SEAL": 49,
+      "TAB": 3
+     },
+     "Lothal": {
+      "SEAL": 51,
+      "TAB": 1
+     }
+    },
+    "share_draws_rejecting": 0.8894472361809045,
+    "median_p": 0.008
+   },
+   "Dholavira": {
+    "cells_included": null,
+    "excluded_cells": {},
+    "median_adj_r2": 0.024356797346174908,
+    "adj_r2_interval_95": [
+     0.01330779366765461,
+     0.04074527488663408
+    ],
+    "median_raw_r2": 0.0394246460358093,
+    "quota_allocations": {
+     "Chanhu-daro": {
+      "TAB": 2,
+      "SEAL": 50
+     },
+     "Harappa": {
+      "TAB": 39,
+      "SEAL": 13
+     },
+     "Kalibangan": {
+      "SEAL": 49,
+      "TAB": 3
+     },
+     "Lothal": {
+      "SEAL": 51,
+      "TAB": 1
+     },
+     "Mohenjo-daro": {
+      "TAB": 7,
+      "SEAL": 45
+     }
+    },
+    "share_draws_rejecting": 0.6633165829145728,
+    "median_p": 0.024
+   },
+   "Lothal": {
+    "cells_included": null,
+    "excluded_cells": {},
+    "median_adj_r2": 0.024747599732298453,
+    "adj_r2_interval_95": [
+     0.014896369102429424,
+     0.039198323767353396
+    ],
+    "median_raw_r2": 0.039809412863846004,
+    "quota_allocations": {
+     "Chanhu-daro": {
+      "TAB": 2,
+      "SEAL": 50
+     },
+     "Dholavira": {
+      "SEAL": 45,
+      "TAB": 7
+     },
+     "Harappa": {
+      "TAB": 39,
+      "SEAL": 13
+     },
+     "Kalibangan": {
+      "SEAL": 49,
+      "TAB": 3
+     },
+     "Mohenjo-daro": {
+      "TAB": 7,
+      "SEAL": 45
+     }
+    },
+    "share_draws_rejecting": 0.9447236180904522,
+    "median_p": 0.004
+   },
+   "Chanhu-daro": {
+    "cells_included": null,
+    "excluded_cells": {},
+    "median_adj_r2": 0.02255868343534384,
+    "adj_r2_interval_95": [
+     0.012685728211413222,
+     0.03344848124093809
+    ],
+    "median_raw_r2": 0.03765430222398729,
+    "quota_allocations": {
+     "Dholavira": {
+      "SEAL": 45,
+      "TAB": 7
+     },
+     "Harappa": {
+      "TAB": 39,
+      "SEAL": 13
+     },
+     "Kalibangan": {
+      "SEAL": 49,
+      "TAB": 3
+     },
+     "Lothal": {
+      "SEAL": 51,
+      "TAB": 1
+     },
+     "Mohenjo-daro": {
+      "TAB": 7,
+      "SEAL": 45
+     }
+    },
+    "share_draws_rejecting": 0.9095477386934674,
+    "median_p": 0.004
+   },
+   "Kalibangan": {
+    "cells_included": null,
+    "excluded_cells": {},
+    "median_adj_r2": 0.024537325222954487,
+    "adj_r2_interval_95": [
+     0.014210253845308296,
+     0.03873531048947245
+    ],
+    "median_raw_r2": 0.03960238583727184,
+    "quota_allocations": {
+     "Chanhu-daro": {
+      "TAB": 2,
+      "SEAL": 50
+     },
+     "Dholavira": {
+      "SEAL": 45,
+      "TAB": 7
+     },
+     "Harappa": {
+      "TAB": 39,
+      "SEAL": 13
+     },
+     "Lothal": {
+      "SEAL": 51,
+      "TAB": 1
+     },
+     "Mohenjo-daro": {
+      "TAB": 7,
+      "SEAL": 45
+     }
+    },
+    "share_draws_rejecting": 0.9447236180904522,
+    "median_p": 0.004
+   }
+  },
+  "negative_control": {
+   "cells_included": null,
+   "excluded_cells": {},
+   "median_adj_r2": 0.002038254895441849,
+   "adj_r2_interval_95": [
+    -0.0018150273866385568,
+    0.007069993661134881
+   ],
+   "median_raw_r2": 0.01808265594213897,
+   "quota_allocations": {
+    "Chanhu-daro": {
+     "TAB": 2,
+     "SEAL": 50
+    },
+    "Dholavira": {
+     "SEAL": 45,
+     "TAB": 7
+    },
+    "Harappa": {
+     "TAB": 39,
+     "SEAL": 13
+    },
+    "Kalibangan": {
+     "SEAL": 49,
+     "TAB": 3
+    },
+    "Lothal": {
+     "SEAL": 51,
+     "TAB": 1
+    },
+    "Mohenjo-daro": {
+     "TAB": 7,
+     "SEAL": 45
+    }
+   },
+   "share_draws_rejecting": 0.05527638190954774,
+   "median_p": 0.504,
+   "pass": true
+  },
+  "positive_control": {
+   "cells_included": null,
+   "excluded_cells": {},
+   "median_adj_r2": 0.01670215119583185,
+   "adj_r2_interval_95": [
+    0.010465248826272838,
+    0.023963258224944037
+   ],
+   "median_raw_r2": 0.03251079828271557,
+   "quota_allocations": {
+    "Chanhu-daro": {
+     "TAB": 2,
+     "SEAL": 50
+    },
+    "Dholavira": {
+     "SEAL": 45,
+     "TAB": 7
+    },
+    "Harappa": {
+     "TAB": 39,
+     "SEAL": 13
+    },
+    "Kalibangan": {
+     "SEAL": 49,
+     "TAB": 3
+    },
+    "Lothal": {
+     "SEAL": 51,
+     "TAB": 1
+    },
+    "Mohenjo-daro": {
+     "TAB": 7,
+     "SEAL": 45
+    }
+   },
+   "share_draws_rejecting": 1.0,
+   "median_p": 0.002,
+   "pass": true
+  },
+  "controls_pass": true
+ },
+ "arm_c": {
+  "n_records": 1437,
+  "share_of_analysis_population": 0.47425742574257423,
+  "centroid_bc_matrix": {
+   "Harappa": {
+    "Harappa": 0.0,
+    "Mohenjo-daro": 0.34593791369718774,
+    "Dholavira": 0.40235416576752703,
+    "Lothal": 0.4407412766233225,
+    "Chanhu-daro": 0.40644230068667553,
+    "Kalibangan": 0.4650398449458991
+   },
+   "Mohenjo-daro": {
+    "Harappa": 0.34593791369718774,
+    "Mohenjo-daro": 0.0,
+    "Dholavira": 0.2729129308859589,
+    "Lothal": 0.25684777391879576,
+    "Chanhu-daro": 0.27997168753847756,
+    "Kalibangan": 0.2959601803224735
+   },
+   "Dholavira": {
+    "Harappa": 0.40235416576752703,
+    "Mohenjo-daro": 0.2729129308859589,
+    "Dholavira": 0.0,
+    "Lothal": 0.32227227227227234,
+    "Chanhu-daro": 0.3509364523253412,
+    "Kalibangan": 0.3474143099143099
+   },
+   "Lothal": {
+    "Harappa": 0.4407412766233225,
+    "Mohenjo-daro": 0.25684777391879576,
+    "Dholavira": 0.32227227227227234,
+    "Lothal": 0.0,
+    "Chanhu-daro": 0.31413417385639614,
+    "Kalibangan": 0.34241617991617995
+   },
+   "Chanhu-daro": {
+    "Harappa": 0.40644230068667553,
+    "Mohenjo-daro": 0.27997168753847756,
+    "Dholavira": 0.3509364523253412,
+    "Lothal": 0.31413417385639614,
+    "Chanhu-daro": 0.0,
+    "Kalibangan": 0.30277890833446386
+   },
+   "Kalibangan": {
+    "Harappa": 0.4650398449458991,
+    "Mohenjo-daro": 0.2959601803224735,
+    "Dholavira": 0.3474143099143099,
+    "Lothal": 0.34241617991617995,
+    "Chanhu-daro": 0.30277890833446386,
+    "Kalibangan": 0.0
+   }
+  },
+  "harappa_vs_pooled_others_bc": 0.34100000790386614,
+  "column_contributions_top25": [
+   {
+    "sign": "M328",
+    "contribution": 0.07344554370270019,
+    "share_of_bc": 0.21538282111537596
+   },
+   {
+    "sign": "M089",
+    "contribution": 0.027549808557998916,
+    "share_of_bc": 0.0807912255701932
+   },
+   {
+    "sign": "M095",
+    "contribution": 0.021641149088966853,
+    "share_of_bc": 0.06346377884855613
+   },
+   {
+    "sign": "M087",
+    "contribution": 0.017171881121365896,
+    "share_of_bc": 0.0503574214760926
+   },
+   {
+    "sign": "M176",
+    "contribution": 0.016152132841013103,
+    "share_of_bc": 0.047366957380149594
+   },
+   {
+    "sign": "M122",
+    "contribution": 0.01447468276563462,
+    "share_of_bc": 0.04244774906197447
+   },
+   {
+    "sign": "UNMAPPED",
+    "contribution": 0.013202158672136501,
+    "share_of_bc": 0.038716006938798724
+   },
+   {
+    "sign": "M086",
+    "contribution": 0.012763787363885282,
+    "share_of_bc": 0.03743046061008778
+   },
+   {
+    "sign": "M342",
+    "contribution": 0.010995141143422718,
+    "share_of_bc": 0.0322438149224983
+   },
+   {
+    "sign": "OTHER",
+    "contribution": 0.008037839556670362,
+    "share_of_bc": 0.023571376452684336
+   },
+   {
+    "sign": "M121",
+    "contribution": 0.006628282132952871,
+    "share_of_bc": 0.019437777065452442
+   },
+   {
+    "sign": "M387",
+    "contribution": 0.0048605615207508645,
+    "share_of_bc": 0.014253845771526028
+   },
+   {
+    "sign": "M391",
+    "contribution": 0.0046543049417457905,
+    "share_of_bc": 0.013648987782598293
+   },
+   {
+    "sign": "M072",
+    "contribution": 0.00436377755253591,
+    "share_of_bc": 0.012797001323724706
+   },
+   {
+    "sign": "M211",
+    "contribution": 0.004271665289048072,
+    "share_of_bc": 0.012526877390138738
+   },
+   {
+    "sign": "M343",
+    "contribution": 0.004083595112751894,
+    "share_of_bc": 0.011975351959238462
+   },
+   {
+    "sign": "M336",
+    "contribution": 0.0040703575991125505,
+    "share_of_bc": 0.011936532272046326
+   },
+   {
+    "sign": "M015",
+    "contribution": 0.0037106776234903304,
+    "share_of_bc": 0.010881752309332601
+   },
+   {
+    "sign": "M065",
+    "contribution": 0.003545381870283062,
+    "share_of_bc": 0.010397014041367902
+   },
+   {
+    "sign": "M293",
+    "contribution": 0.003105607884425568,
+    "share_of_bc": 0.009107354288686977
+   },
+   {
+    "sign": "M017",
+    "contribution": 0.0030797935691900266,
+    "share_of_bc": 0.00903165248623183
+   },
+   {
+    "sign": "M059",
+    "contribution": 0.0030790125049390948,
+    "share_of_bc": 0.009029361975285121
+   },
+   {
+    "sign": "M012",
+    "contribution": 0.0029950840262164464,
+    "share_of_bc": 0.008783237409955758
+   },
+   {
+    "sign": "M125",
+    "contribution": 0.002705330140370184,
+    "share_of_bc": 0.007933519289339323
+   },
+   {
+    "sign": "M053",
+    "contribution": 0.0021014170534121458,
+    "share_of_bc": 0.006162513210277027
+   }
+  ],
+  "within_type": {
+   "SEAL": 0.11135208307089986,
+   "TAB": 0.49527333173903504
+  },
+  "harappa_seal_vs_tab_bc": 0.45008043028733696,
+  "token_mass_by_site_type_eligible_population": {
+   "Allahdino|SEAL": {
+    "inscriptions": 7,
+    "tokens": 29
+   },
+   "Altyn Depe|SEAL": {
+    "inscriptions": 1,
+    "tokens": 2
+   },
+   "Bala-kot|SEAL": {
+    "inscriptions": 4,
+    "tokens": 20
+   },
+   "Banawali|SEAL": {
+    "inscriptions": 15,
+    "tokens": 41
+   },
+   "Banawali|TAB": {
+    "inscriptions": 1,
+    "tokens": 7
+   },
+   "Bhirrana|SEAL": {
+    "inscriptions": 3,
+    "tokens": 9
+   },
+   "Chanhu-daro|TAB": {
+    "inscriptions": 2,
+    "tokens": 10
+   },
+   "Chanhu-daro|SEAL": {
+    "inscriptions": 52,
+    "tokens": 258
+   },
+   "Desalpur|SEAL": {
+    "inscriptions": 2,
+    "tokens": 11
+   },
+   "Dholavira|SEAL": {
+    "inscriptions": 96,
+    "tokens": 378
+   },
+   "Dholavira|TAB": {
+    "inscriptions": 15,
+    "tokens": 43
+   },
+   "Failaka|SEAL": {
+    "inscriptions": 2,
+    "tokens": 7
+   },
+   "Farmana|SEAL": {
+    "inscriptions": 4,
+    "tokens": 8
+   },
+   "Ganweriwala|TAB": {
+    "inscriptions": 1,
+    "tokens": 3
+   },
+   "Gharo Bhiro|SEAL": {
+    "inscriptions": 1,
+    "tokens": 3
+   },
+   "Gola Dhoro (Bagasra)|SEAL": {
+    "inscriptions": 5,
+    "tokens": 28
+   },
+   "Hajar|TAB": {
+    "inscriptions": 1,
+    "tokens": 2
+   },
+   "Harappa|TAB": {
+    "inscriptions": 1076,
+    "tokens": 2857
+   },
+   "Mohenjo-daro|TAB": {
+    "inscriptions": 164,
+    "tokens": 636
+   },
+   "Harappa|SEAL": {
+    "inscriptions": 361,
+    "tokens": 1582
+   },
+   "Baror|SEAL": {
+    "inscriptions": 1,
+    "tokens": 3
+   },
+   "Mohenjo-daro|SEAL": {
+    "inscriptions": 1138,
+    "tokens": 5360
+   },
+   "Jhukar|SEAL": {
+    "inscriptions": 1,
+    "tokens": 5
+   },
+   "Kalibangan|SEAL": {
+    "inscriptions": 49,
+    "tokens": 204
+   },
+   "Kalibangan|TAB": {
+    "inscriptions": 3,
+    "tokens": 9
+   },
+   "Khirsara|SEAL": {
+    "inscriptions": 4,
+    "tokens": 27
+   },
+   "Kish|SEAL": {
+    "inscriptions": 2,
+    "tokens": 10
+   },
+   "Lohumjo-daro|SEAL": {
+    "inscriptions": 1,
+    "tokens": 10
+   },
+   "Lothal|SEAL": {
+    "inscriptions": 72,
+    "tokens": 298
+   },
+   "Lothal|TAB": {
+    "inscriptions": 2,
+    "tokens": 8
+   },
+   "Luristan|SEAL": {
+    "inscriptions": 1,
+    "tokens": 4
+   },
+   "Nausharo|SEAL": {
+    "inscriptions": 12,
+    "tokens": 67
+   },
+   "Nindowari-damb|SEAL": {
+    "inscriptions": 2,
+    "tokens": 12
+   },
+   "Pabumath|SEAL": {
+    "inscriptions": 1,
+    "tokens": 5
+   },
+   "Pirak|SEAL": {
+    "inscriptions": 1,
+    "tokens": 5
+   },
+   "Qala'at al-Bahrain|SEAL": {
+    "inscriptions": 1,
+    "tokens": 5
+   },
+   "Rakhigarhi|SEAL": {
+    "inscriptions": 6,
+    "tokens": 28
+   },
+   "Rupar|TAB": {
+    "inscriptions": 1,
+    "tokens": 3
+   },
+   "Shortughai|SEAL": {
+    "inscriptions": 1,
+    "tokens": 2
+   },
+   "Surkotada|SEAL": {
+    "inscriptions": 2,
+    "tokens": 11
+   },
+   "Susa|SEAL": {
+    "inscriptions": 2,
+    "tokens": 13
+   },
+   "Tello|SEAL": {
+    "inscriptions": 1,
+    "tokens": 4
+   },
+   "Ur|SEAL": {
+    "inscriptions": 5,
+    "tokens": 18
+   },
+   "Wattoowala|SEAL": {
+    "inscriptions": 1,
+    "tokens": 2
+   },
+   "Gonur Depe|SEAL": {
+    "inscriptions": 1,
+    "tokens": 8
+   },
+   "Salut|SEAL": {
+    "inscriptions": 1,
+    "tokens": 5
+   },
+   "Rajanpur|TAB": {
+    "inscriptions": 1,
+    "tokens": 2
+   },
+   "Girsu|SEAL": {
+    "inscriptions": 1,
+    "tokens": 4
+   },
+   "Karzakan|SEAL": {
+    "inscriptions": 3,
+    "tokens": 10
+   },
+   "Saar|SEAL": {
+    "inscriptions": 1,
+    "tokens": 6
+   },
+   "Janabiyah|SEAL": {
+    "inscriptions": 1,
+    "tokens": 7
+   },
+   "Lakhanjo-daro|SEAL": {
+    "inscriptions": 3,
+    "tokens": 12
+   },
+   "Lakhanjo-daro|TAB": {
+    "inscriptions": 1,
+    "tokens": 3
+   },
+   "Nuhato|SEAL": {
+    "inscriptions": 1,
+    "tokens": 3
+   },
+   "Rahman-deri|SEAL": {
+    "inscriptions": 1,
+    "tokens": 2
+   },
+   "Ornach area|SEAL": {
+    "inscriptions": 1,
+    "tokens": 2
+   },
+   "Kanmer|SEAL": {
+    "inscriptions": 1,
+    "tokens": 2
+   },
+   "Miri Qalat|SEAL": {
+    "inscriptions": 2,
+    "tokens": 4
+   },
+   "Shikarpur|SEAL": {
+    "inscriptions": 1,
+    "tokens": 5
+   },
+   "Karanpura|SEAL": {
+    "inscriptions": 1,
+    "tokens": 2
+   }
+  }
+ },
+ "provenance": {
+  "seed": 20261012,
+  "draws": 199,
+  "permutations_per_draw": 499,
+  "freeze_digest": "619ab0c30048b934a14f2f2e7583a1a2e93c25c0599488f97165c285cd38bb61",
+  "elapsed_s": 540.6,
+  "script": "backend/scripts/phase393_harappa_robustness.py"
+ }
+}

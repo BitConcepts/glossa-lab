@@ -3363,3 +3363,20 @@ parent loop per the owner's standing order). Freeze PR
 #158 merged c1fc0029, CI verified 7/7. Full record:
 specs/028-harappa-robustness/osf-registration.md; repo
 LEDGER.md, same date.
+
+## 2026-10-11 — Spec 028 executed (Phase-393): INCONCLUSIVE / INCONCLUSIVE
+
+Arm A (non-Harappa primary): median adj R^2 0.00878,
+below the 0.01 margin, interval straddling it — the
+non-Harappa sites do not clear the margin alone. Arm B
+(site-equal): 0.02237, above Phase-392's 0.01677, but
+drop-Harappa LOSO 0.00661 fails the jackknife clause.
+Controls PASS both arms (identical to calibration).
+Joint descriptive reading: the effect is
+Harappa-dependent, not a count artifact; Arm C locates
+it in Harappa's tablets (within-TAB BC 0.4953; M328
+~21.5% of the distance). Phase-392's record untouched;
+its reading is updated only in the new historical
+assessment. Full record:
+specs/028-harappa-robustness/outcome.md; repo LEDGER.md,
+same date.

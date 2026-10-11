@@ -39,19 +39,33 @@
       output is a pass noting none configured; the operative
       evaluator results are the AEE-produced contract results,
       recorded here rather than papered over.
-- [ ] T8 — Analyze + converge for S1: spec/plan/tasks/checklist
+- [x] T8 — Analyze + converge for S1: spec/plan/tasks/checklist
       cross-checked (analyze: FR-026-1…8 ↔ tasks T1–T16 ↔
       checklist CQ/CR/CF all trace; no orphan requirements);
       PR merged on CI verified from the run's own conclusion +
-      job logs.
+      job logs. **Done 2026-10-10:** PR #138 merged
+      (569ef565) on CI run 38106746647 completed success,
+      verified from the run record + job list (6/7 jobs success
+      with Playwright last to conclude; an early watch exit was
+      NOT trusted — the run record governed).
 
 ## Stage S2 — Impact register
 
-- [ ] T9 — register-classifications.json authored per frozen
+- [x] T9 — register-classifications.json authored per frozen
       criteria (one entry per inventory item, rationale each).
-- [ ] T10 — Register generator + emitted impact-register
+      **Done 2026-10-10:** 116 entries; counts by class —
+      RERUN-REQUIRED 8, REPRODUCE-ONLY 12, REINTERPRET-ONLY 61,
+      UNAFFECTED 27, NOT-RERUNNABLE 8.
+- [x] T10 — Register generator + emitted impact-register
       .json/.csv/.md; completeness asserted (rows = inventory
       items); PR merged before any rerun work begins.
+      **Done 2026-10-10 (build side):** generator strict
+      (duplicates/missing/extra/class-validity all abort);
+      --check drift-free; tests in
+      backend/tests/test_spec026_register.py pin completeness
+      and the exact RERUN-REQUIRED set {SPEC-023, SPEC-024,
+      SPEC-025, PHASE-132, PHASE-134, PHASE-135, PHASE-137,
+      PHASE-140}.
 
 ## Stage S3 — Rerun freezes
 

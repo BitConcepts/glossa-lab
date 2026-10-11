@@ -3317,3 +3317,24 @@ main a0c8566a: suite 1,162 passed / 14 skipped / 0 failed;
 foundation 40/0/8; anchors byte-identical; PRED untouched.
 Stage 2 not executed (Q6 NOT-YET-TESTABLE; Q7 owner-gated).
 Full entry: repo LEDGER.md, same date.
+
+## 2026-10-11 — Zenodo deposit: Spec 027 Stage 0 gazetteer + chronology spine (cross-reference)
+
+Standalone dataset DOI 10.5281/zenodo.23300361
+(record 23300361), CC BY 4.0, deposited on the owner's
+2026-10-11 order under the Spec 027 Ask 4 posture. The
+Phase-391 package exactly as gate-verified (4 files):
+21 verified_open gazetteer rows (XRONOS; the 15
+open_access_read_only CISI-derived rows of the 36-row
+gazetteer excluded) + all 177 chronology-spine rows
+(XRONOS 144 + Mutin et al. 2025 SI Table S2 33,
+scenario CONTESTED throughout, preserved as
+published) + source_register.json (verbatim) +
+package README. Release gate re-run at 9a202fe9 —
+PASS 4/4 (1 MATCH + 3 EXTERNAL); post-deposit MD5
+checksums 4/4 match; DOI resolves. This entry
+supersedes the Stage 0 note above that recorded "no
+deposit made" — that was true when written; the
+deposit has now been made. Anchors eccea6d5...
+unchanged; no PRED movement. Full entry: repo
+LEDGER.md, same date.

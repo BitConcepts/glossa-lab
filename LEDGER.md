@@ -3897,3 +3897,33 @@ No anchors touched, no PRED scoring, no publication.
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-10 — Spec 026 S2: Impact register frozen (116 items classified)
+
+Under the criteria frozen at S1 (PR #138), every prior Indus
+analysis is now classified in specs/026-rcph-framework-transfer/
+impact-register.{json,csv,md} (generator:
+backend/scripts/spec026_register_build.py; the build aborts on
+any inventory/classification mismatch and --check is drift-free;
+tests pin completeness and the exact rerun set).
+
+Counts: RERUN-REQUIRED 8 — SPEC-023, SPEC-024, SPEC-025,
+PHASE-132, PHASE-134, PHASE-135, PHASE-137, PHASE-140;
+REPRODUCE-ONLY 12; REINTERPRET-ONLY 61 (incl. the INVALID blind-
+affiliation runs 111/112/114, the calibration-rejected batteries
+113/115/117/118, and the SA-era ledger-only cohort 52–104);
+UNAFFECTED 27 (incl. Phase-107 as framework exemplar and
+Phases 136/139/141, whose intervals/criteria were already on
+record); NOT-RERUNNABLE 8 (Phases 92–95, 97–100 — no artifact
+in any scoped location).
+
+Reruns assigned: Phase-383 (C4 rescoring of the 132/134/135
+coding pilots from on-disk records), Phase-384 (C1 margin
+completion for Phase-137 F2/F3), Phase-385 (C1 margin completion
+for Phase-140 G1), Phase-386 (deterministic replay spot set for
+the REPRODUCE-ONLY verdict chain 116/125/127/131). The register
+is a freeze point: reruns begin only after this stage merges.
+
+**AI disclosure:** execution recorded by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution sec.VI.

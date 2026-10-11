@@ -3964,6 +3964,27 @@ AI disclosure: executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec.VI. No external correspondence sent.
 
+## Spec 026 S3b — Phase-384/385 contract v2 (interval procedure corrected)
+
+- Date: 2026-10-10. The Phase-384 v1 interval procedure
+  (parametric bootstrap over table cells) FAILED its
+  independence negative control: CI [0.1115, 0.1242] at true
+  V = 0 (F2 margins), [0.0984, 0.1095] (F3 margins) — a
+  non-discriminating procedure; its margin adjudication is
+  INVALID under Spec 026 principle 5 (recorded in the
+  Phase-384 report with v1 numbers preserved). Phase-385 v1
+  used the correct resampling unit but a percentile-only
+  interval that excluded its own point estimate
+  ([0.2282, 0.2537] vs 0.2190).
+- v2 contracts (reruns/phase384-contract-v2.md,
+  phase385-contract-v2.md) + v2 scripts + new canonical
+  freezes were frozen in this PR BEFORE any v2 execution.
+  Corrections: inscription-level resampling (within site for
+  384; within the frozen strata for 385) and the BASIC
+  bootstrap interval as the governing interval. Margins and
+  verdict rules unchanged (declared pre-run in v1).
+- AI disclosure: Muse Spark via Muse, at the
+  direction of Tristen Pierson, constitution sec.VI.
 ## Phase-383 (Spec 026 rerun) — C4 rescoring of pilots 132/134/135
 
 - Date: 2026-10-10. Executed under the frozen Phase-383

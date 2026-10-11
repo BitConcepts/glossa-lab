@@ -3210,3 +3210,28 @@ exactly (REPRODUCED). 75 items carry a changed evidentiary
 status in specs/026-rcph-framework-transfer/
 historical-assessments.md (originals untouched). Anchors
 unchanged; no PRED scoring; no publication.
+
+## 2026-10-11 — Spec 027 DRAFT opened (movement, culture, and language) (cross-reference)
+
+Draft PR #147 proposes a Spec 026-governed movement, culture,
+and language study: Stage 0 gazetteer/chronology
+infrastructure, the Stage 1 Q2 repertoire gate with negative
+closure, conditional Q7/Q6 designs, and Q1/Q3/Q4/Q5/Q8/Q9
+registered as blocked with exact unblocking conditions. The
+draft is open, unmerged, and unfrozen; nothing was executed,
+published, or scored, and no anchor changed. Full entry:
+repo LEDGER.md, same date.
+
+## 2026-10-11 — Spec 027 FROZEN (owner adjudication) (cross-reference)
+
+Spec 027 was frozen on the owner's decision ("Approve
+Spec 027 with the recommended answers and freeze it",
+2026-10-11 08:26 EDT). Answers: 0A stage order/scope; M77
+governing for Stage 1; corpus rules as drafted; gazetteer
+CC BY 4.0 via the release gate (lawful rows only); Stage 1
+executes on the adjudicated design after its own merged
+freeze. Stage 0 = Phase-391, Stage 1 = Phase-392. AEE freeze
+run pass. Nothing executed, published, or scored by the
+freeze itself; no anchor changed. Full entry: repo
+LEDGER.md, same date; binding record:
+specs/027-movement-culture-language/adjudication.md.

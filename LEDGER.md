@@ -4364,3 +4364,30 @@ PRED-2026-001/002/003 remain PENDING.
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-11 — Spec 027 Stage 1 freeze MERGED; OSF registration filed (Phase-392 contract)
+
+- Stage 1 freeze merged as PR #154 (merge 4684408f) on CI
+  run 38144799989 verified success from the run's own
+  conclusion and job list. (PR #153, the original freeze PR,
+  was closed as superseded: during a ~37-minute GitHub
+  Actions trigger outage its post-amendment head never
+  received a run — zero check-runs on the head via the API
+  across two synchronize pushes, a close/reopen, and an
+  empty commit. #154 carried the identical commits; the
+  freeze merged on green CI only.)
+- OSF follow-on executed (owner-directed 2026-10-11; the
+  Spec 027 design registration osf.io/a2xvc recorded the
+  same follow-on): the exact frozen Stage 1 contract
+  registered on OSF BEFORE Stage 1 execution —
+  https://osf.io/pnqrx/ (OSF Preregistration schema;
+  filed 2026-10-11T14:02:01Z; public, no embargo; pending
+  admin approval at filing, state 'initial'). Record:
+  specs/027-movement-culture-language/stage1/
+  osf-registration.md (incl. the source-node 410 and the
+  draft-submit 404 API notes). Stage 1 execution proceeds
+  only after this filing.
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

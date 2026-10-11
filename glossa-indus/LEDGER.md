@@ -3286,3 +3286,13 @@ Phase-384 v1 interval INVALID (self-caught); 75 of
 OSF ybd65 + vwa7s + dfrhz updated in step; Literature
 unchanged. Anchors eccea6d5... unchanged; no PRED
 movement. Full entry: repo LEDGER.md, same date.
+
+## 2026-10-11 — Spec 027 Stage 1 freeze merged; OSF registration filed (cross-reference)
+
+Stage 1 freeze merged (PR #154, 4684408f; CI run
+38144799989 success). Frozen Phase-392 contract registered
+on OSF before execution: https://osf.io/pnqrx/ (OSF
+Preregistration; 2026-10-11T14:02:01Z; public, no embargo;
+pending admin approval). Record:
+specs/027-movement-culture-language/stage1/
+osf-registration.md. Full entry: repo LEDGER.md, same date.

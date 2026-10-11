@@ -1456,6 +1456,254 @@
    "failed": 0,
    "run": "Foundation check recorded at 40 passed / 0 failed after each rerun phase (383-386) and at the Spec 026 S5 closeout on merged main bf85ff31."
   },
+ "release_gate": {
+  "verdict": "PASS",
+  "tool": "backend/scripts/release_gate.py per docs/RELEASE_CHECKLIST.md",
+  "checklist": "Zero-fabrication release checklist (docs/RELEASE_CHECKLIST.md)",
+  "run_date": "2026-10-11",
+  "source_commit": "2aa52c81",
+  "source_commit_note": "All staged files were copied from a clean worktree (git status empty) of the merged PR #149 commit 2aa52c816c34425c5c262869f2987f7932858e1f (the v4.10.0 note + RELEASE_VALIDATION entry) before deposit; that commit descends from the Spec 026 closeout bf85ff31 and also carries the Spec 027 freeze documentation merge (PR #148), which touches no deposit source \u2014 the gate verified every deposit file byte-identical to its named repo source at 2aa52c81. The one EXTERNAL entry (the carried-forward v3 preprint PDF) was staged from the hash-verified rel490-final staging directory and its sha256 re-verified at staging time. The publication sequence follows docs/RELEASE_CHECKLIST.md.",
+  "manifest": "release_manifest_4100.json (59 entries)",
+  "release_validation_json_note": "The staged RELEASE_VALIDATION.json (sha256 bb75e422cbd77f02910b7b6473da9027cad4eec97f11112949a1be6d2f3194c7) is the file at source commit 2aa52c81, which contains the v4.10.0 entry WITHOUT this release_gate record. The deposited RELEASE_VALIDATION.json additionally contains this record (it is the file at the gate-record merge commit), so its deposited hash differs from the staged hash above by the addition of this section alone. The final gate run, against the merged gate-record commit, is recorded with its verdict and counts in the repo ledger entry for this release. This is the same self-reference pattern used by v4.4.0 through v4.9.0.",
+  "files": {
+   "RELEASE_VALIDATION.json": {
+    "sha256": "bb75e422cbd77f02910b7b6473da9027cad4eec97f11112949a1be6d2f3194c7",
+    "md5": "93658db04abb81d3682c8dd66ab56d20"
+   },
+   "INDUS_FINAL_ANCHORS.json": {
+    "sha256": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+    "md5": "00fde4dbf2ee6cbf96d020cba12ce043"
+   },
+   "AUDIT_CORRECTIONS.json": {
+    "sha256": "567ff7ada347c083b633d8b6709a8620832d3ffe9c1a6e67f07bcb31d9582a80",
+    "md5": "c0202c43dfc6ae3c83ca39e52f75e012"
+   },
+   "pierson_2026_indus_program_note_139_140_141_spec025.md": {
+    "sha256": "74cc3ffaa59c8832fec96b1d426612ed86887557d82d0777d7f92646038f9892",
+    "md5": "dc30650e2280692d6145ae693bbf82d6"
+   },
+   "pierson_2026_indus_program_note_136_137_138_stage2.md": {
+    "sha256": "14c9279364b105ba861ffcbf9c34ca086502b2f440df0cb5ca6258657eeac41f",
+    "md5": "bea8823043394305f6f1ef6f7268278e"
+   },
+   "pierson_2026_indus_program_note_134_135_motif.md": {
+    "sha256": "cb09fbea190d1c47cdd48309f9f9c63093f19494c73fa0267757861be59cd5d1",
+    "md5": "672e3fe09a8be8a40eb4f7c9dcc0ca13"
+   },
+   "pierson_2026_indus_program_note_133_stage0.md": {
+    "sha256": "f58f2363956029ae777b0ecc8e5f01748df4f4329cc7aeb03e6d43b2d9467e4e",
+    "md5": "6eaf9a63632525e812160d198f5c5241"
+   },
+   "pierson_2026_indus_program_note_132_closeout.md": {
+    "sha256": "d88f0a9b4526c31bce36223bdc91b55be81677ad683378db31da6fccd8eb8729",
+    "md5": "093ae180ac7a3c9cd44421ca69a8159f"
+   },
+   "pierson_2026_indus_program_note_127_131.md": {
+    "sha256": "326f88072ba2382cfd7c3ffe320e77fb9ce1357cbf9e9455f55793292ac864a5",
+    "md5": "0350788f6912e8c72d463ecccb9ba9bb"
+   },
+   "pierson_2026_indus_program_note_120_126.md": {
+    "sha256": "2d61c13647d84426d9a32c83aa2055c5eb8cd220de3254ac4db95b09e41bd4d6",
+    "md5": "ee3397333bd11eea155b983f6293fa89"
+   },
+   "pierson_2026_indus_harmonization_note_116.md": {
+    "sha256": "a7236ce058cbb36ac737f970f0e786f9ab6f24c92d1dbd0828725332433fcf92",
+    "md5": "90d6b442fb8be605ccba2acbfcab67d6"
+   },
+   "pierson_2026_indus_methods_note_111_112.md": {
+    "sha256": "fdcd47704a8e023daaa81d560af79ed0af5b4115f54925600c02c71fa8dee830",
+    "md5": "864369942b58dbac1c73f3ffa4a73845"
+   },
+   "pierson_2026_indus_decipherment_addendum_v5.md": {
+    "sha256": "b2818df804402e2e76bdcea53000b806eb7a36442ff6270e437da53e8fc7a8dc",
+    "md5": "48da2a8462eb5eb881057a18a3f2cbe1"
+   },
+   "phase133_stage0_inventory.json": {
+    "sha256": "1d0a3d6cb21ddc0a5b9625f57f026d302454770118e5f117a9d912a057473614",
+    "md5": "93282a90e82982b8cad10f75d4a68013"
+   },
+   "phase133_stage0_inventory_meta.json": {
+    "sha256": "e5d21392d262a3a3cf6e18e153dddd420b64454d8b44fc8554fb96dc680bc1da",
+    "md5": "ceba3e5210fd3140bd77eade1f9eb1f6"
+   },
+   "phase134_pilot_dataset.json": {
+    "sha256": "686886d4189d01b9e2f83ceb32a7292a7b1ebcdebb6b6aaa63cff9eb961c86f7",
+    "md5": "98633156ddddf6f8d611261bdc490684"
+   },
+   "phase134_pilot_dataset_meta.json": {
+    "sha256": "8090f611b2ea1a4b22e422c9329b4b84a78e0749b24dea8547b284cf59be77f1",
+    "md5": "92ff19eb53bf6c4e619738a82860bbc5"
+   },
+   "phase135_pilot_dataset.json": {
+    "sha256": "d1ed6ab381384626a4bb7d47380f6712c4f1c45e46330571fa9625243d8057f0",
+    "md5": "40c437a941b038ba60478ad74a808db7"
+   },
+   "phase135_pilot_dataset_meta.json": {
+    "sha256": "41a8913e7490389e2bc21f0f966fafac54b46a094437dd6124b424f9cefad19e",
+    "md5": "65457114ed2afd9d3c61db283e683baa"
+   },
+   "phase136_results.json": {
+    "sha256": "11a0741317f50d9b8c2791fbfdd42ebec0f2a250d6f76809a2dec29fef857022",
+    "md5": "163f14b393d6b4e508bfc3081b69dc41"
+   },
+   "phase137_results.json": {
+    "sha256": "18f86f45892526b947a4a7447201be9d69584ec96d33a1d18139309b9dc2a7a1",
+    "md5": "d906202a5cf9a1a4f1bff5b3cb3e806c"
+   },
+   "phase138_results.json": {
+    "sha256": "14bf6f07255cd7b73a5fe93360b8bcc00f765120ad31c09c36456492ef3ba426",
+    "md5": "87be4de97244f078ebc9aca2eb1f8d52"
+   },
+   "phase139_results.json": {
+    "sha256": "5e802d37215238b7d43fc3b131011d6567d9faecd9addf5ac77d319f8993f2b8",
+    "md5": "b5c629b6151445abc306bbc798038cd6"
+   },
+   "phase140_results.json": {
+    "sha256": "89e1d9dfea6594974bd7a0e4d4e933cba6886db8f6fcafc21dd9e4ec6beb37ea",
+    "md5": "9c507d0c902947f6b3c4dd5d425ad2b6"
+   },
+   "phase141_results.json": {
+    "sha256": "5646d0aa797d9760d6fffe48b06d6003fea667da532cd334dd0038ee3b3683ab",
+    "md5": "c07778286a8b9a7c730704e7cc9edbd3"
+   },
+   "pierson_2026_indus_preprint_v3.pdf": {
+    "sha256": "cfa25287b30958e024988a1bf280266d880b07d3feef2215e892315bdcd0162a",
+    "md5": "b552851dbf86a8edebeb9f84d982d878"
+   },
+   "pierson_2026_indus_program_note_383_386_spec026.md": {
+    "sha256": "0f3fbc5ed1af95633a596e3f6a5a5cb827fe3c7d2cd5f92b269700fb6f8bf9de",
+    "md5": "5a9b1193405e399d9056e4eb629028c6"
+   },
+   "spec026_spec.md": {
+    "sha256": "83dc1c7d6395e8529d0737432610259a4fabe11d13a7c3499ba56a7a8e570353",
+    "md5": "b74a1ce7af9709e57a764ce9a558849a"
+   },
+   "spec026_plan.md": {
+    "sha256": "c61c7354961f083f0c2892cbdcbf6d8a31f624155ab682c586e67183a5ea9632",
+    "md5": "159d59aea1ac241e8f18efabb0facc88"
+   },
+   "spec026_tasks.md": {
+    "sha256": "d1a1e7d99c6d3bc56b09fcb1823cbdde4354f4e7040a88cd8c0ba3e5c9726a11",
+    "md5": "c98ddd98bfdfe85edc53569585987d90"
+   },
+   "spec026_claims.json": {
+    "sha256": "2d03346a2ab307ce914459c04c29f1dc7f90185db411ea2ee2d215f7de6f3be1",
+    "md5": "b27214fb5497ffed8b4871a0d5a88e50"
+   },
+   "spec026_transfer_map.md": {
+    "sha256": "754bbab657526e42f04983a47f580d16b0ec5fcd2817d9454ffcff7c90a11138",
+    "md5": "060961f71b9aa0fa3298f4a204ac478d"
+   },
+   "spec026_classification_criteria.md": {
+    "sha256": "d062cd925c2e0c14336d98d7ac4c5645342a8610f8e78574f0447786b460e83f",
+    "md5": "8775a59a20c7a19c227469905950b93d"
+   },
+   "spec026_impact_register.md": {
+    "sha256": "924bed749336ac6ea942be3ef694ca696c7e287a20bb4552a5813d8bd47d98f5",
+    "md5": "bbc5d9e3e34926644320e1fa05cb3d4d"
+   },
+   "spec026_impact_register.json": {
+    "sha256": "2b3cc3a3deda1ceb31ba8af90eab9d8e907a6c27ee2f0d4954c2dde4e487b0ea",
+    "md5": "5258ca3885e598fdd72b5837b08aaf09"
+   },
+   "spec026_impact_register.csv": {
+    "sha256": "dd7b757a4e13e6751cb8e42e9de2676fbc1a9ee9828a7816a7594abb5c0acdde",
+    "md5": "fb659e629b0df825a9455a9634747f6d"
+   },
+   "spec026_register_classifications.json": {
+    "sha256": "75e5fc133d18536c96a6c8e3b084739d649e32a6fe4d2ca245e779c9d77ad647",
+    "md5": "dd373b77138cb82d1514849e98d7d595"
+   },
+   "spec026_historical_assessments.md": {
+    "sha256": "ac29de6efccb1858714a8e26a1b32985be26c8f74c7d5eebf10ff9487ad8f699",
+    "md5": "1789bb84eaa126232f8a820c44bb598e"
+   },
+   "spec026_historical_assessments.json": {
+    "sha256": "299df24ff89bfba5422eed0a2f288331d102d0e83b623b1a424d03d19a296eb7",
+    "md5": "f2beeaf051b5b16454b124e73ada5f03"
+   },
+   "phase383_contract.md": {
+    "sha256": "cf0932597a91f1847a3edea16bb7ba4632f36d02c379d38d2e55a12d32c2bfec",
+    "md5": "cf3e315274c87965b2e03f753ea5d0d4"
+   },
+   "phase383_freeze.json": {
+    "sha256": "294c08efbaa28585e6b5257af618a5b1ec6dae4a6938dc28608ef4e45326b679",
+    "md5": "d466066e5264bb37428bd7fe7ce3fb2b"
+   },
+   "phase384_contract.md": {
+    "sha256": "60e43221fd23a3cb5c63795b160c46fa85ed7e9d9910c13354351ea04c08a2d8",
+    "md5": "f3dce9b791ea9049833d278ad2d5453b"
+   },
+   "phase384_contract_v2.md": {
+    "sha256": "f0a67bd766ae28a33edc33553613bf9c50cc933df1bfbe2b5e1192d6571bbc75",
+    "md5": "27fc2fdb470603ec8c972acc4b082485"
+   },
+   "phase384_freeze.json": {
+    "sha256": "a034cec5cc3bd325acd353d811f04380151791f0f25295a15953d4906cf202cd",
+    "md5": "bf5794ca816be21f87a2ede03279e8fd"
+   },
+   "phase384_freeze_v2.json": {
+    "sha256": "5749c6b89ac26be6333e0c20457bc320ca624c15f5ca65e689c107aa12b7b8e9",
+    "md5": "49fbb841e43dedc1862b9aebf7fb4d77"
+   },
+   "phase385_contract.md": {
+    "sha256": "b2d07ab63deb31f803fa06134c08ef47915ad044b13a97446cc7a15ea3e10c30",
+    "md5": "a71cd407eb35ecdf3a4d7301bad6064f"
+   },
+   "phase385_contract_v2.md": {
+    "sha256": "612e81a4f64a987dab304ead230f439069fd5dae624156e00e62617e3b8440ef",
+    "md5": "18afe640e5462245fbb5e21f19d8da14"
+   },
+   "phase385_freeze.json": {
+    "sha256": "46cb6214247210bc8d0e55e3378eebe4f7c0b1462fabecdf65d3ea33a613a6df",
+    "md5": "1f673b13bd5c7e138f1aacb05c50e4e2"
+   },
+   "phase385_freeze_v2.json": {
+    "sha256": "776500db30eeb48a5c36f1e3fa2c3a58c54176fe2d6f901a45b512075df3f706",
+    "md5": "ff3cde29823916a28636e2b5283f4422"
+   },
+   "phase386_contract.md": {
+    "sha256": "2ce007501162c1009f699ba356db085df2666b32d4e3fb7d25e5ed907258f326",
+    "md5": "18f688c2f6d052edb668e7c01e0046bb"
+   },
+   "phase386_freeze.json": {
+    "sha256": "38c55cbe7a7d30db6da7461d92f2b6bde0cd7a2009b9bd8683bf085c3488ce18",
+    "md5": "80739b596a8336934d5e3670696fe6fc"
+   },
+   "phase383_report.md": {
+    "sha256": "9f35f722611f6acd57e1ee05c9de0c8e95267ccf7f93b27eacb31bdff9cd08ca",
+    "md5": "032ed3aa0d323a3e00850e06135e6dfc"
+   },
+   "phase383_results.json": {
+    "sha256": "4e52942dc6be25fed4ab2004823a1d9353c9abfe6f5428e1050ee8d0d9a98334",
+    "md5": "1f3527899f1f40c79a622b909d8f35c9"
+   },
+   "phase384_report.md": {
+    "sha256": "f2e7ee065a519dd56e84692518975067a62b2c423a55902114abf4ff4241c60a",
+    "md5": "34ed0d3462a17eaf044da752b2ceb6ee"
+   },
+   "phase384_results.json": {
+    "sha256": "dda6092d9f4d368869a6e3a590948dfa97d02c5db50bf75868d6e055f0896aad",
+    "md5": "ccb6c2f0bd1f8e89a1e57886d8411c8b"
+   },
+   "phase385_report.md": {
+    "sha256": "31a174ab1a9b00ff8dd032216bfd583081f5b1ef784af73bbfd82baa300c6a5d",
+    "md5": "e7a77f9ef5fb33318ee35e7956614bd2"
+   },
+   "phase385_results.json": {
+    "sha256": "4aaba7f31aabd8a05bf10d9c845ab7d7cc344a6fbcbb1ac7134ce171901ef1c0",
+    "md5": "b382d04e5d4cd109e68a20fcbaa140ee"
+   },
+   "phase386_report.md": {
+    "sha256": "5c3068f84c36ce8c6e561b9d1ec61535e34e4545b3071a8a890e942167ebbab0",
+    "md5": "e01cc1dde7b0e4987c344425813f3bae"
+   },
+   "phase386_results.json": {
+    "sha256": "23b401bb83d83c78135b98f91a9484be5f5f8f75d2f35b9da3241b5aa73726cc",
+    "md5": "da69ccc3a8f3f730a4ea43049209ed8d"
+   }
+  }
+ },
   "phase_outcomes": {
    "spec_026_rcph_framework_transfer": {
     "design": "Spec 026 executed 2026-10-10/11 under the owner directive to transfer the RCPH study framework, rerun everything it impacts, and run the framework on spec-kit + the AEE extension and epistemic machinery. Full spec-kit lifecycle with AEE assessed after specify/plan/tasks/implement and gaps after verify (outputs in specs/026-rcph-framework-transfer/aee/). PRs: #138 (S1 framework transfer, freeze of classification criteria), #139 (S2 impact register), #140 (S3 rerun contracts/freezes + implementations), #141 (Phase-383), #142 (S3b v2 contracts/freezes for 384/385), #143 (Phase-384), #144 (Phase-385), #145 (Phase-386), #146 (S5 historical assessments + closeout, merged bf85ff31). Rerun phase numbers are 383-386 because the repo's global phase space already runs to 382 in backend/reports.",

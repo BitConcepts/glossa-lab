@@ -1757,5 +1757,53 @@
    }
   },
   "scope_note": "Extension added in v4.10.0. All pre-existing keys, including release_v4_3_0 through release_v4_9_0, are unchanged; the results they record were not re-run for this release except where Spec 026 itself reran them under frozen contracts (Phases 383-386, recorded above). Spec 026 changed no anchor and no PRED verdict; historical assessments supersede evidentiary readings only and are reported alongside the original results, never instead of them. G1 and F3 statements carry their standing riders (chronology NOT controlled in the G1 primary test; Phase-137 confounder confessions unchanged). No decipherment claim is advanced by this release."
+ },
+ "spec027_stage0_gazetteer_deposit": {
+  "record": "Standalone Zenodo dataset (not a version of the glossa-lab archive)",
+  "date": "2026-10-11",
+  "title": "Glossa Lab Spec 027 Stage 0 \u2014 Indus Settlement Gazetteer and Chronology Spine (Phase-391)",
+  "doi": "10.5281/zenodo.23300361",
+  "record_id": 23300361,
+  "concept_doi_new_record": "10.5281/zenodo.23300360",
+  "license": "cc-by-4.0",
+  "upload_type": "dataset",
+  "repo": "BitConcepts/glossa-lab",
+  "repo_main_commit": "9a202fe9",
+  "repo_main_commit_full": "9a202fe95737c23aedd78edc9eb8df86be9a7a87",
+  "package": "specs/027-movement-culture-language/stage0-release/",
+  "release_gate": {
+   "verdict": "PASS",
+   "tool": "backend/scripts/release_gate.py per docs/RELEASE_CHECKLIST.md",
+   "detail": "4/4 entries OK (1 MATCH + 3 EXTERNAL), exit 0. Recorded at Phase-391 (release_gate_output.json in the package) and re-run at 9a202fe9 in a fresh clean worktree before deposit; hashes identical.",
+   "files": [
+    {
+     "deposit_name": "indus_gazetteer_stage0_ccby.csv",
+     "status": "EXTERNAL",
+     "sha256": "554609aada049af2af7f11684d9c44a5e54600aa6ca75b19a6f9c65b6c3e70ec",
+     "md5": "80eea80316d790dcd484197fda2e11eb"
+    },
+    {
+     "deposit_name": "indus_chronology_spine_stage0_ccby.csv",
+     "status": "EXTERNAL",
+     "sha256": "b580d19034403cbcb8d5ec19af4d98b0244414770e323c3322f31d9d24516347",
+     "md5": "ef6aef3a255248ee65fe67943c313e40"
+    },
+    {
+     "deposit_name": "STAGE0_RELEASE_README.md",
+     "status": "EXTERNAL",
+     "sha256": "d6b4ad7db765adacdcdb3575c8404876665a392af8b0e4b456feadfd3c692ca0",
+     "md5": "d9a554a1e1dfbb60d461ce7fec35f4c5"
+    },
+    {
+     "deposit_name": "source_register.json",
+     "status": "MATCH",
+     "source": "data/movement/source_register.json",
+     "sha256": "6e1a543fa785a11520ce022a34c7ccfbee53f4ff85649cfda91537310d765b13",
+     "md5": "7b5345a1aa9a5e50c11c2649c83b20cd"
+    }
+   ]
+  },
+  "post_deposit_confirmation": "After publication, record 23300361 file checksums (MD5) were re-pulled from the Zenodo API: 4/4 match the gated staged files. DOI https://doi.org/10.5281/zenodo.23300361 resolves (HTTP 302 to the record).",
+  "scope_note": "Licence-filtered CC BY package only (Spec 027 Ask 4): 21 verified_open gazetteer rows (XRONOS) of the 36-row Stage 0 gazetteer \u2014 the 15 open_access_read_only CISI-derived rows are excluded; catalogue-only sources contribute no rows. Chronology spine: all 177 rows (XRONOS 144 + Mutin et al. 2025 SI Table S2 33, every Mutin row scenario CONTESTED, preserved as published). Coordinates never more precise than source state. No anchors file deposited or modified (anchors sha256 eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed unchanged); PRED register untouched."
  }
 }

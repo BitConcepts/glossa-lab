@@ -4470,3 +4470,69 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-11 — Zenodo deposit: Spec 027 Stage 0 gazetteer + chronology spine (Phase-391), standalone dataset, CC BY 4.0
+
+**Zenodo deposit published 2026-10-11** — DOI
+10.5281/zenodo.23300361 (record 23300361; the new
+record's own concept DOI 10.5281/zenodo.23300360). This
+is a **standalone dataset record**, not a version of
+the glossa-lab archive (concept DOI
+10.5281/zenodo.20379070, cited as a related identifier,
+relation isPartOf). Owner order 2026-10-11: "Deposit
+the Stage 0 gazetteer package on Zenodo (CC BY 4.0)" —
+executing the Spec 027 Ask 4 adjudicated posture
+(owner, 2026-10-11): CC BY 4.0 via the release gate
+for lawfully reusable rows only; restricted
+coordinates never more precise than source state;
+catalogue-only sources excluded.
+
+Deposit (4 files, exactly the Phase-391 package at
+`specs/027-movement-culture-language/stage0-release/`,
+source commit 9a202fe95737c23aedd78edc9eb8df86be9a7a87):
+`indus_gazetteer_stage0_ccby.csv` (21 verified_open
+rows, XRONOS — the full Stage 0 gazetteer holds 36
+source-asserted rows; the 15 open_access_read_only
+CISI-derived rows are EXCLUDED from CC BY
+redistribution; Possehl/Law/TwoRains/c14bazAAR are
+catalogue-only and contribute no rows);
+`indus_chronology_spine_stage0_ccby.csv` (all 177
+traced rows: XRONOS 144 + Mutin et al. 2025 SI Table
+S2 33, every Mutin row flagged scenario CONTESTED,
+preserved as published — the Mehrgarh redating
+scenario remains unreplicated and is NOT adopted);
+`source_register.json` (verbatim from
+`data/movement/source_register.json`);
+`STAGE0_RELEASE_README.md` (package documentation).
+
+Release gate (`backend/scripts/release_gate.py` per
+docs/RELEASE_CHECKLIST.md): recorded at Phase-391 and
+**re-run at 9a202fe9** in a fresh clean worktree before
+deposit — **PASS 4/4** (1 MATCH + 3 EXTERNAL), exit 0,
+hashes identical to the Phase-391 record. Staged
+sha256: gazetteer 554609aada04…, spine b580d1903440…,
+README d6b4ad7db765…, source_register 6e1a543fa785…
+(MATCH against repo source). Post-deposit
+confirmation: record 23300361 file checksums (MD5)
+re-pulled from the Zenodo API — **4/4 match** the
+gated staged files (gazetteer 80eea80316d790dcd4…,
+spine ef6aef3a255248ee…, README d9a554a1e1dfbb60…,
+source_register 7b5345a1aa9a5e50c11…); the DOI
+resolves (HTTP 302 to the record). Validation entry:
+`outputs/RELEASE_VALIDATION.json`
+`spec027_stage0_gazetteer_deposit`. Related
+identifiers on the record: glossa-lab concept DOI
+(isPartOf), GitHub repo (isDerivedFrom), OSF Spec 027
+registration osf.io/a2xvc (isDocumentedBy), Mutin et
+al. 2025 DOI (isDerivedFrom), XRONOS (isDerivedFrom).
+
+The deposit is descriptive infrastructure: it carries
+no decipherment claim and no linguistic affiliation
+for any site or period. No anchor file was deposited
+or modified — anchors sha256 eccea6d5… unchanged;
+PRED-2026-001/002/003 untouched, still PENDING; no
+other deposit or send was made in this program.
+
+**AI disclosure:** executed by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen
+Pierson, per constitution sec.VI.

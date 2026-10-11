@@ -3963,3 +3963,37 @@ Tristen Pierson, per constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec.VI. No external correspondence sent.
+
+## Phase-383 (Spec 026 rerun) — C4 rescoring of pilots 132/134/135
+
+- Date: 2026-10-10. Executed under the frozen Phase-383
+  contract (digest e94575c78f8e7a87…, verified on the
+  execution tree). Rescoring only; no re-coding.
+- Every original headline value reproduces EXACTLY from the
+  on-disk records (132: 0.20; 134: 0.84 / κ 0.7885; 135:
+  0.78 / κ 0.7129; ILLEGIBLE per-category 0.667 / 0.368).
+- New intervals (bootstrap over objects, B = 9,999): 132
+  exact-seq CI [0.10, 0.32]; 134 agreement CI [0.77, 0.91],
+  κ CI [0.689, 0.878]; 135 agreement CI [0.70, 0.86].
+- Origin-group audit: all passes in all three pilots share
+  ONE coder origin group (a single AI model family) —
+  agreement is intra-origin consistency, not independent
+  corroboration.
+- Verdicts: 132 CONTRADICTED (stop-rule; CI far below the
+  0.80 floor); 134 INCONCLUSIVE (middle band; the agreement
+  CI reaches the 0.85 gate, so the "missed by one object"
+  framing cannot be excluded on sampling grounds — and the
+  CI spanning the gate is itself the finding); 135
+  INCONCLUSIVE. Foundation check after the phase: 40/0.
+
+## Phase-386 (Spec 026 rerun) — deterministic replay audit
+
+- Date: 2026-10-10. Executed under the frozen Phase-386
+  contract (digest 38258f64cae2330d…). Original scripts for
+  Phases 116/125/127/131 re-executed in a disposable
+  worktree; comparator outcome: ALL FOUR REPRODUCED on every
+  compared headline quantity (116 median W1 + ρ; 125 median
+  TV 0.636931, 16 judgeable, null 823/999; 127 null CI +
+  bootstrap CI + share ≥ observed 0.0; 131 shares
+  0.061321 / 0.938679). Anchors unchanged in every replay.
+  Foundation check: 40/0.

@@ -4581,3 +4581,23 @@ Pierson, per constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-11 — Spec 028 OSF registration filed (Phase-393)
+
+- Frozen Spec 028 contract registered on OSF BEFORE any
+  execution, per the frozen sequencing:
+  **https://osf.io/7m35w/** (filed 2026-10-11T16:13:11Z;
+  OSF Preregistration schema; node 93bqh; 29 response
+  fields from freeze.md as amended; public, no embargo;
+  approval pending at filing — approvals are the agent's
+  standing job in the parent loop, owner order
+  2026-10-11). Record:
+  specs/028-harappa-robustness/osf-registration.md.
+- Freeze provenance: PR #158 merged c1fc0029; CI run
+  38153881380 success verified from the run's own
+  conclusion (7/7 jobs). Phase-393 execution follows
+  under H23.
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

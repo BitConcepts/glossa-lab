@@ -3296,3 +3296,16 @@ Preregistration; 2026-10-11T14:02:01Z; public, no embargo;
 pending admin approval). Record:
 specs/027-movement-culture-language/stage1/
 osf-registration.md. Full entry: repo LEDGER.md, same date.
+
+## 2026-10-11 — Spec 027 Stage 1 executed (Phase-392): INCONCLUSIVE (cross-reference)
+
+Q2 gate under the merged freeze + OSF registration
+(osf.io/pnqrx): median adjusted R^2 0.01677, interval
+[0.01032, 0.02397] above the 0.01 margin, rejection share
+1.000, controls PASS — but the leave-one-site-out median
+with Harappa dropped is 0.00928 (below margin), so the
+frozen SUPPORTED rule's jackknife clause fails and the
+verdict is INCONCLUSIVE. Negative closure does not fire;
+no downstream repertoire work authorised; Stage 2 not
+executed. Full record: specs/027-movement-culture-
+language/stage1-outcome.md; repo LEDGER.md, same date.

@@ -4536,3 +4536,48 @@ other deposit or send was made in this program.
 **AI disclosure:** executed by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen
 Pierson, per constitution sec.VI.
+## 2026-10-11 — Spec 028 FREEZE (Phase-393, Harappa robustness)
+
+- Owner order (verbatim): "Also do the Harappa robustness
+  design follow up and execute it based on what you think
+  the best way forward is." Design authority delegated to
+  the program; recorded in
+  specs/028-harappa-robustness/adjudication.md. No separate
+  owner adjudication round for this spec.
+- Design: Arm A (confirmatory, primary) — the Phase-392
+  analysis population minus Harappa (1,593 records, 5 sites)
+  through the identical Phase-392 machinery; Arm B
+  (confirmatory, secondary) — site-equal-weight estimand on
+  the full population (quota 52 per site per draw); Arm C
+  (exploratory, descriptive only) — Harappa decomposition.
+  Hierarchical reporting; no pooled headline. Verdicts are
+  per arm under the Spec 026 taxonomy.
+- Freeze inputs: margins-only audit reproducing the
+  Phase-392 frozen counts exactly (eligible 3,144; analysis
+  3,030; 125 columns; both arms ESTIMABLE on margins) and a
+  synthetic-only calibration. Calibration forced Amendment
+  1 (pre-merge, pre-outcome, synthetic evidence only):
+  controls regenerate their synthetic population per draw
+  (the inherited single-population construction made the
+  negative control's rejection share a generation-seed
+  lottery: 0.171/0.156 vs 0.015/0.000); permutation strata
+  refined to type class x legible-length value; the negative
+  control's PASS bound restated with its binomial tolerance
+  (share <= 0.10). Final calibration: all four controls PASS
+  (Arm A neg 0.00046/share 0.040, pos 0.02396/[0.0156,
+  0.0336]; Arm B neg 0.00204/share 0.055, pos 0.01670/
+  [0.0105, 0.0240]).
+- Freeze record: specs/028-harappa-robustness/freeze.md;
+  machine record freeze.json digest
+  619ab0c30048b934a14f2f2e7583a1a2e93c25c0599488f97165c285c
+  d38bb61. Claim register 16 claims, integrity check PASS;
+  AEE assess PASS at after_specify (after two recovery
+  rounds), after_plan, and after_tasks. Seed 20261012.
+- Sequencing from here: freeze PR merges on verified CI ->
+  OSF registration of the frozen contract -> Phase-393
+  execution under H23. No anchor or PRED contact; Phase-392's
+  record is never modified by this spec.
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

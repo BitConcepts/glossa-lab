@@ -1,0 +1,124 @@
+{
+ "calibration": "spec028-synthetic-only",
+ "seed": 20261012,
+ "real_outcomes_computed": false,
+ "arm_a": {
+  "negative_control": {
+   "cells_included": 6,
+   "excluded_cells": {
+    "Chanhu-daro|TAB": 2,
+    "Dholavira|TAB": 15,
+    "Kalibangan|TAB": 3,
+    "Lothal|TAB": 2
+   },
+   "median_adj_r2": 0.0004562417889948378,
+   "adj_r2_interval_95": [
+    -0.003522172705783011,
+    0.0054046383155277305
+   ],
+   "median_raw_r2": 0.014101890365254376,
+   "share_draws_rejecting": 0.04020100502512563,
+   "median_p": 0.498,
+   "pass": true
+  },
+  "positive_control": {
+   "cells_included": 6,
+   "excluded_cells": {
+    "Chanhu-daro|TAB": 2,
+    "Dholavira|TAB": 15,
+    "Kalibangan|TAB": 3,
+    "Lothal|TAB": 2
+   },
+   "median_adj_r2": 0.023963353007570576,
+   "adj_r2_interval_95": [
+    0.01564561395032637,
+    0.03362727672588614
+   ],
+   "median_raw_r2": 0.03728808538971982,
+   "share_draws_rejecting": 1.0,
+   "median_p": 0.002,
+   "pass": true
+  }
+ },
+ "arm_b": {
+  "negative_control": {
+   "cells_included": null,
+   "excluded_cells": {},
+   "median_adj_r2": 0.002038254895441849,
+   "adj_r2_interval_95": [
+    -0.0018150273866385568,
+    0.007069993661134881
+   ],
+   "median_raw_r2": 0.01808265594213897,
+   "quota_allocations": {
+    "Chanhu-daro": {
+     "TAB": 2,
+     "SEAL": 50
+    },
+    "Dholavira": {
+     "SEAL": 45,
+     "TAB": 7
+    },
+    "Harappa": {
+     "TAB": 39,
+     "SEAL": 13
+    },
+    "Kalibangan": {
+     "SEAL": 49,
+     "TAB": 3
+    },
+    "Lothal": {
+     "SEAL": 51,
+     "TAB": 1
+    },
+    "Mohenjo-daro": {
+     "TAB": 7,
+     "SEAL": 45
+    }
+   },
+   "share_draws_rejecting": 0.05527638190954774,
+   "median_p": 0.504,
+   "pass": true
+  },
+  "positive_control": {
+   "cells_included": null,
+   "excluded_cells": {},
+   "median_adj_r2": 0.01670215119583185,
+   "adj_r2_interval_95": [
+    0.010465248826272838,
+    0.023963258224944037
+   ],
+   "median_raw_r2": 0.03251079828271557,
+   "quota_allocations": {
+    "Chanhu-daro": {
+     "TAB": 2,
+     "SEAL": 50
+    },
+    "Dholavira": {
+     "SEAL": 45,
+     "TAB": 7
+    },
+    "Harappa": {
+     "TAB": 39,
+     "SEAL": 13
+    },
+    "Kalibangan": {
+     "SEAL": 49,
+     "TAB": 3
+    },
+    "Lothal": {
+     "SEAL": 51,
+     "TAB": 1
+    },
+    "Mohenjo-daro": {
+     "TAB": 7,
+     "SEAL": 45
+    }
+   },
+   "share_draws_rejecting": 1.0,
+   "median_p": 0.002,
+   "pass": true
+  }
+ },
+ "elapsed_s": 209.2
+}

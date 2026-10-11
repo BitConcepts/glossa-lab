@@ -1434,6 +1434,80 @@
    }
   },
   "scope_note": "Extension added in v4.9.0. All pre-existing keys, including release_v4_3_0 through release_v4_8_0, are unchanged; the decipherment validation results they record were not re-run for this release. Spec 025 changed no anchor and no PRED verdict; G1 is reported alongside the Phase-137 F3 result (never instead of it), with chronology named as an uncontrolled confounder of the primary test wherever the verdict appears."
+ },
+ "release_v4_10_0": {
+  "version": "4.10.0",
+  "date": "2026-10-11",
+  "note_file": "pierson_2026_indus_program_note_383_386_spec026.md",
+  "repo": "BitConcepts/glossa-lab",
+  "repo_main_commit": "bf85ff31",
+  "repo_main_commit_full": "bf85ff3105db93aeec624a6a988149fa4cde98f8",
+  "anchors_file": "INDUS_FINAL_ANCHORS.json",
+  "anchors_sha256": "eccea6d527c412c8e882f9a6a786b002aebaf8be1f282c86ebb1fa3b602cfaed",
+  "backend_suite": {
+   "passed": 1152,
+   "skipped": 12,
+   "failed": 0,
+   "run": "Terminal record of the Spec 026 closeout verification session on merged main bf85ff31: pytest backend/tests = 1,152 passed / 12 skipped / 0 failed (1,166 s). An early completion summary stated 3,647 passed / 29 skipped from a misread mid-run poll fragment; that figure was corrected on the record the same day and is NOT used anywhere in this release \u2014 the session's terminal output governs.",
+   "ci": "GitHub CI on merged main bf85ff31: run 38110406069 completed success (verified from the run's own conclusion)."
+  },
+  "foundation_check": {
+   "passed": 40,
+   "failed": 0,
+   "run": "Foundation check recorded at 40 passed / 0 failed after each rerun phase (383-386) and at the Spec 026 S5 closeout on merged main bf85ff31."
+  },
+  "phase_outcomes": {
+   "spec_026_rcph_framework_transfer": {
+    "design": "Spec 026 executed 2026-10-10/11 under the owner directive to transfer the RCPH study framework, rerun everything it impacts, and run the framework on spec-kit + the AEE extension and epistemic machinery. Full spec-kit lifecycle with AEE assessed after specify/plan/tasks/implement and gaps after verify (outputs in specs/026-rcph-framework-transfer/aee/). PRs: #138 (S1 framework transfer, freeze of classification criteria), #139 (S2 impact register), #140 (S3 rerun contracts/freezes + implementations), #141 (Phase-383), #142 (S3b v2 contracts/freezes for 384/385), #143 (Phase-384), #144 (Phase-385), #145 (Phase-386), #146 (S5 historical assessments + closeout, merged bf85ff31). Rerun phase numbers are 383-386 because the repo's global phase space already runs to 382 in backend/reports.",
+    "framework_transfer": "transfer-map.md: 12 RCPH principles transferred with Indus adaptations (no target-reading/language smuggling; stable claim IDs + dependency graph; countermodel symmetry; origin groups; discriminating controls \u2014 a non-discriminating gate marks a run INVALID; verdict taxonomy INVALID/INCONCLUSIVE/CONTRADICTED/SUPPORTED; freeze + replay integrity; practical margins + uncertainty; exploratory/confirmation separation; completeness grids; source-version checks; historical-assessment discipline). Spec claim register: 16 governed claims (claims.json). Recorded residuals: the evaluator extension has no registered evaluators in this repo; the AEE package version differs across venvs (1.0.4 Glossa / 1.0.2 spec-kit) and is pinned per run; AEE implement-stage outcome gather_evidence with recovery recorded, 0 open gaps after verify.",
+    "impact_register": {
+     "items": 116,
+     "scope": "Specs 001-025 + Phases 52-141; criteria frozen BEFORE classification (classification-criteria.md), keyed to method features, never to result direction",
+     "rerun_required": 8,
+     "reproduce_only": 12,
+     "reinterpret_only": 61,
+     "unaffected": 27,
+     "not_rerunnable": 8,
+     "coverage_gaps": "Phases 92-95, 97-100 have artifacts only in outputs/ (the NOT-RERUNNABLE cohort); Phase-113 carries two distinct studies under one number; Phase-114 has no standalone report."
+    },
+    "phase_383_pilot_rescoring": {
+     "of": "Phases 132/134/135 (C4 rescoring from on-disk records; NO re-coding; original metrics modules imported)",
+     "reproduction": "Every original headline value reproduces EXACTLY (132 exact-seq 0.20, per-token 0.4798; 134 agreement 0.84, kappa 0.7885; 135 agreement 0.78, kappa 0.7129)",
+     "intervals": "Bootstrap over objects, B = 9,999, seed 20261011: 132 exact-seq CI [0.10, 0.32]; 134 agreement CI [0.77, 0.91], kappa CI [0.689, 0.878]; 135 agreement CI [0.70, 0.86], kappa CI [0.606, 0.819]",
+     "origin_group_audit": "All coding roles in all three pilots were executed by AI agents of ONE model family; effective independent coder origin groups = 1; agreement measures intra-origin consistency, not independent corroboration",
+     "verdicts": {
+      "phase_132": "CONTRADICTED (CI far below the frozen 0.80 floor)",
+      "phase_134": "INCONCLUSIVE (CI reaches the 0.85 proceed gate; original middle-band outcome stands as a fixed decision rule on the point estimate)",
+      "phase_135": "INCONCLUSIVE"
+     }
+    },
+    "phase_384_f2_f3_margins": {
+     "of": "Phase-137 F2/F3 (C1 margin completion; margin declared before any run: Cramer's V = 0.10)",
+     "reproduction": "chi2/V reproduced exactly from the recorded tables (F2 chi2 745.953, V 0.1154; F3 chi2 4966.362, V 0.2190)",
+     "v1_interval": "INVALID \u2014 the v1 parametric cell-bootstrap interval failed the framework's own discriminating control (CI [0.1115, 0.1242] on an independence table with F2's exact margins, true V = 0); preserved in the report, not used",
+     "v2": "Inscription-level bootstrap within site (B = 9,999, seed 20261012), BASIC interval governing, contract+freeze merged (PR #142) before execution",
+     "verdicts": {
+      "f2_holdat": "Bounded claim CONTRADICTED at the declared margin (basic CI [0.0589, 0.0778], entirely below 0.10); converges with the original controlled-permutation NOT SUPPORTED (raw p = 0.7354)",
+      "f3_icit_lineage": "SUPPORTED stands at the declared margin (basic CI [0.1823, 0.2104]); original confounder confessions unchanged"
+     }
+    },
+    "phase_385_g1_margins": {
+     "of": "Phase-140 G1 (C1 margin completion; margin Cramer's V = 0.10)",
+     "reproduction": "Population (5,410 inscriptions, 7 sites) and observed chi2 4966.362228 verified exactly",
+     "v2": "BASIC bootstrap interval governing (B = 4,999, seed 20261012); v1 percentile-only interval superseded pre-execution because it excluded the point estimate under resampling bias",
+     "verdict": "G1 SUPPORTED under control STANDS at the declared margin (basic CI [0.1838, 0.2102], entirely above 0.10). Rider (mandatory): chronology is NOT controlled in the primary test \u2014 period/phase remain uncontrolled confounders. EXPLORATORY S-chron basic CI [0.1848, 0.2098]; S-depth [0.1841, 0.2096]."
+    },
+    "phase_386_replay_audit": {
+     "of": "Phases 116/125/127/131 (REPRODUCE-ONLY; original scripts re-executed in a disposable worktree; comparator against committed results)",
+     "outcome": "ALL FOUR REPRODUCED exactly (116 median W1 0.4519, rho -0.0826; 125 median TV 0.636931, 16 judgeable, null 823/999 p 0.824; 127 null CI [0.046665, 0.131316], bootstrap CI [0.548638, 0.722042], share >= observed 0.0; 131 credited 0.061321, residual 0.938679). No verdict changes; anchors unchanged in every replay."
+    },
+    "historical_assessments": {
+     "items": 116,
+     "status_changed": 75,
+     "cohorts": "8 RERUN-REQUIRED rows (via Phases 383-386); INVALID cohort (Phases 111-114 + Spec 017 \u2014 instruments could not discriminate); calibration-rejected remapped to INCONCLUSIVE (Phases 115/117/118); taxonomy mappings for 116/125/127/131 (bounded claims CONTRADICTED, diagnostics stand); SA-era cohort (Spec 004 + Phases 52-104) evidentiary status superseded under the H26 quarantine; NOT-RERUNNABLE ceiling (Phases 92-95, 97-100). Original files and historical labels NEVER rewritten."
+    }
+   }
+  },
+  "scope_note": "Extension added in v4.10.0. All pre-existing keys, including release_v4_3_0 through release_v4_9_0, are unchanged; the results they record were not re-run for this release except where Spec 026 itself reran them under frozen contracts (Phases 383-386, recorded above). Spec 026 changed no anchor and no PRED verdict; historical assessments supersede evidentiary readings only and are reported alongside the original results, never instead of them. G1 and F3 statements carry their standing riders (chronology NOT controlled in the G1 primary test; Phase-137 confounder confessions unchanged). No decipherment claim is advanced by this release."
  }
-
 }

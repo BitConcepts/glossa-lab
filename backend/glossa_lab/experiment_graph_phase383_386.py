@@ -64,7 +64,7 @@ _NODE_SPECS = [
      "audit (one origin group: a single model family), verdicts "
      "under the Spec 026 taxonomy. Rescoring only; no re-coding. "
      "CPU."),
-    ("IndusPhase384Stage2Margins", "phase384_stage2_margins.py",
+    ("IndusPhase384Stage2Margins", "phase384_stage2_margins_v2.py",
      "phase384_results.json",
      "Phase-384 Stage-2 Margin Completion (spec 026)",
      "Phase-384 (spec 026): C1 margin completion for Phase-137 "
@@ -72,7 +72,7 @@ _NODE_SPECS = [
      "recorded profile tables, parametric bootstrap 95% CI for "
      "V, adjudication against the pre-declared margin V = 0.10. "
      "CPU."),
-    ("IndusPhase385G1Margins", "phase385_g1_margins.py",
+    ("IndusPhase385G1Margins", "phase385_g1_margins_v2.py",
      "phase385_results.json",
      "Phase-385 G1 Margin Completion (spec 026)",
      "Phase-385 (spec 026): C1 margin completion for Phase-140 "

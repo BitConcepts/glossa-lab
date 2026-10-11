@@ -320,3 +320,23 @@ margins), Phase-385 (C1 Phase-140 G1 margins), Phase-386
 The impact register (S2) was corrected pre-merge in the same
 pass (PR #139). No classification, criterion, or rerun
 specification changed — numbering only.
+
+
+---
+
+## Amendment 2 — margin-interval procedure corrected (2026-10-10, at S4)
+
+The Phase-384 v1 interval procedure (parametric bootstrap over
+profile-table cells) was shown non-discriminating by its own
+independence negative control (CI [0.1115, 0.1242] at true
+V = 0 for the F2 table shape) and its adjudication is recorded
+INVALID under principle 5; the Phase-385 v1 percentile
+interval excluded its own point estimate. Corrected v2
+contracts + freezes (inscription-level resampling; basic
+bootstrap interval governing) were frozen in the S3b PR before
+any v2 execution. Margins (V = 0.10) and verdict rules are
+unchanged — they were declared before any run. The v1
+executions and the control evidence are preserved in the
+phase reports; versioning follows §10/FR-026-7 (a changed
+computation = new version + new freeze, never a regenerated
+digest over an old run).

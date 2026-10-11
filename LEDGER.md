@@ -3927,3 +3927,39 @@ is a freeze point: reruns begin only after this stage merges.
 **AI disclosure:** execution recorded by an AI agent
 (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution sec.VI.
+
+## Spec 026 S3 — Rerun contracts + freezes + graph-first implementation
+
+- Date: 2026-10-10. Stage S3 of Spec 026 (frozen plan). The
+  S3 PR merges BEFORE any rerun executes.
+- NUMBERING CORRECTION (Amendment 1 to the spec): the planned
+  142–145 collide with the repository's existing global phase
+  space (backend/reports runs to Phase-382; an
+  experiment_graph_phase142_145.py module already exists).
+  Reruns renumbered 383–386; the S2 register was corrected
+  pre-merge (PR #139 amendment commit). Numbering only — no
+  classification or criterion changed.
+- Contracts (specs/026-rcph-framework-transfer/reruns/):
+  phase383-contract.md (C4 rescoring of pilots 132/134/135 —
+  rescoring only, origin-group audit, bootstrap CIs, gates =
+  the pilots' own), phase384-contract.md (C1 for Phase-137
+  F2/F3; margin V = 0.10 declared), phase385-contract.md (C1
+  for Phase-140 G1; stratified bootstrap in the frozen strata;
+  margin V = 0.10; chronology rider mandatory),
+  phase386-contract.md (replay audit of 116/125/127/131 via
+  disposable-worktree re-execution + comparator).
+- Freeze records (framework026 canonical digests, verified
+  in-tree at build): phase383 e94575c78f8e7a87…, phase384
+  bf4356440ea035f3…, phase385 8af60b985d9994bc…, phase386
+  38258f64cae2330d… (full records under reruns/).
+- Graph-first (H15/H23): scripts written first, graph module
+  experiment_graph_phase383_386.py second, registration in
+  experiment_graph.py third, in-process registration check
+  fourth (all four node IDs in ATOMIC_NODES) — all before any
+  script execution beyond the contracts' own step-1
+  verification, which reproduced the originals exactly
+  (see tasks.md T12).
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI. No external correspondence sent.

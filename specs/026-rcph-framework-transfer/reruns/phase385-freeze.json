@@ -1,0 +1,24 @@
+{
+ "schema_version": "1.0",
+ "definition": {
+  "experiment_id": "spec026-phase385",
+  "contract": "specs/026-rcph-framework-transfer/reruns/phase385-contract.md",
+  "script": "backend/scripts/phase385_g1_margins.py",
+  "graph_module": "backend/glossa_lab/experiment_graph_phase383_386.py",
+  "environment": {
+   "python": "3.12.3",
+   "runner": "backend/scripts (venv glossa-lab)"
+  }
+ },
+ "sources": {
+  "specs/026-rcph-framework-transfer/reruns/phase385-contract.md": "b2d07ab63deb31f803fa06134c08ef47915ad044b13a97446cc7a15ea3e10c30",
+  "backend/scripts/phase385_g1_margins.py": "dc227f6ac78de53e7fd9612c37004aa61cf80bebce4981300dbdaaa79c1ceb2e",
+  "backend/glossa_lab/experiment_graph_phase383_386.py": "0e2ac8be036c9ec41678bd99e32f0ca1addd6fd33f55f9014779f31c5c47790e"
+ },
+ "environment": {
+  "python": "3.12.3",
+  "platform": "Linux",
+  "aee": "1.0.4"
+ },
+ "digest": "8af60b985d9994bc84ee396bf34285fb9b3b5748dd6ed173591110cb44adc8a5"
+}

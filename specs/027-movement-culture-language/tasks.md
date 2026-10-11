@@ -63,29 +63,29 @@
 
 ## Stage 0 — Gazetteer and chronology spine (after T0 + Stage 0 freeze)
 
-- [ ] **S0-1 — Stage 0 freeze.** Name source versions, licence
+- [x] **S0-1 — Stage 0 freeze.** Name source versions, licence
       evidence, schemas, clustering rule, calibration version,
       chronology-scenario treatment, phase number, graph nodes,
       hashes, and tests. Freeze is committed and merged before
       any Stage 0 build task runs.
-- [ ] **S0-2 — Source and licence audit.** Assign every
+- [x] **S0-2 — Source and licence audit.** Assign every
       candidate source a spec §5.1 licence state; catalogue
       non-reusable sources without copying them.
-- [ ] **S0-3 — Gazetteer schema and validators.** Implement
+- [x] **S0-3 — Gazetteer schema and validators.** Implement
       the §6.2 contract and fail-loud checks for source,
       locator, period scheme, licence, coordinate state, and
       origin group.
-- [ ] **S0-4 — Gazetteer build.** Produce source-asserted rows,
+- [x] **S0-4 — Gazetteer build.** Produce source-asserted rows,
       duplicate/conflict reports, and coverage/survey-bias
       reports. Restricted coordinates remain restricted.
-- [ ] **S0-5 — Chronology schema and validators.** Implement
+- [x] **S0-5 — Chronology schema and validators.** Implement
       the §6.4 contract; reject aggregate period assertions as
       timing rows; require material and context-association
       fields.
-- [ ] **S0-6 — Chronology build.** Trace every date to its
+- [x] **S0-6 — Chronology build.** Trace every date to its
       underlying record and publication; preserve competing
       scenarios, including the CONTESTED Mutin et al. revision.
-- [ ] **S0-7 — Stage 0 closeout.** Descriptive fitness-for-
+- [x] **S0-7 — Stage 0 closeout.** Descriptive fitness-for-
       question report for Q1–Q9, claim integrity check, H21
       foundation check if triggered, ledger entries, and the
       owner's Ask 4 publication disposition handled separately

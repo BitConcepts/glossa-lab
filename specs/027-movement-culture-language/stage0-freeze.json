@@ -1,0 +1,38 @@
+{
+ "schema_version": "1.0",
+ "definition": {
+  "experiment_id": "spec027-phase391-stage0",
+  "spec": "specs/027-movement-culture-language/spec.md",
+  "freeze_doc": "specs/027-movement-culture-language/stage0-freeze.md",
+  "script": "backend/scripts/phase391_stage0_spine.py",
+  "graph_module": "backend/glossa_lab/experiment_graph_phase391_392.py",
+  "phase": 391,
+  "inputs": {
+   "store": "corpora/downloads/spec027_stage0/ (gitignored)",
+   "sha256": {
+    "xronos_data.csv": "8570bfd9b256ced2f9e840183ea52325b9a7079b79a2957c7db797f09c118655",
+    "cisi_vol1_catalogue.csv": "e0d698f991fbd7cf26c491a2b25906b422903a0e2a26ea7b8c690420ca51dc1e",
+    "cisi_vol2_catalogue.csv": "e751244e2d51bda3181d98e56af691c0d24099d76d035b54f0888504204bc7d9",
+    "mutin_moesm1.pdf": "b5eae7291aa6a1ebb643b381bbf848651f8bccde0f68ccb282e79ed977857600"
+   }
+  },
+  "environment": {
+   "python": "3.12.3",
+   "runner": "backend/scripts (venv glossa-lab)"
+  }
+ },
+ "sources": {
+  "specs/027-movement-culture-language/stage0-freeze.md": "3d57e95c087052cfadb269d0a2174bcd96b12547c424e688368ac2fdf0c00c26",
+  "specs/027-movement-culture-language/adjudication.md": "13cb50801ea581f84f485f622287180abdaa062af0393a01de669539f9fc6ce5",
+  "specs/027-movement-culture-language/spec.md": "7fff5d5a90b0af5697afa17a631e6901702b521f7e61c3c2bb444f08e369f9b0",
+  "backend/scripts/phase391_stage0_spine.py": "76525f2754522fef1e94a67f58aa5a434d6c1604f5aed6f0561526efc5b832f3",
+  "backend/glossa_lab/experiment_graph_phase391_392.py": "9bef014251c0d9c3006be2761131c7254423edc3e3320c427e2f7098ecc48d68",
+  "backend/tests/test_phase391_stage0_spine.py": "e792d074f129f8156ea02a8717f49dd282cec270ee8976f2495ea06915dff60e"
+ },
+ "environment": {
+  "python": "3.12.3",
+  "platform": "Linux",
+  "aee": "1.0.4"
+ },
+ "digest": "4a9f69530ec13e006265ba067f1f88b855fc57352dbc5c88bf17459d76d41e2f"
+}

@@ -4155,3 +4155,57 @@ constitution sec.VI.
 AI disclosure: recorded by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-11 — Spec 027 Stage 0 EXECUTED (Phase-391: gazetteer + chronology spine)
+
+- Freeze: `specs/027-movement-culture-language/stage0-freeze.md`
+  + `stage0-freeze.json` (digest 4a9f6953… (final, after Amendments 1-3 recorded in the freeze); verify_freeze
+  clean at merge). Three amendments recorded in the
+  freeze (Mutin Table S2 regex anchoring; empty-material
+  representation as `unknown`; release-CSV line endings) —
+  the first two fired by the build's own assertions before
+  any product was written, the third was caught at staging
+  before commit; no frozen rule, count, or criterion
+  changed.
+- H15/H23 gate in order: script
+  `backend/scripts/phase391_stage0_spine.py` → graph module
+  `experiment_graph_phase391_392.py` → registration verified
+  (`IndusPhase391Stage0Spine` in ATOMIC_NODES) → run.
+- Gazetteer: 36 source-asserted rows (CISI Vol. 1 layer 11,
+  Vol. 2 layer 4, XRONOS 21) over 30 program site clusters
+  (5 multi-source). Licence states: verified_open 21 /
+  open_access_read_only 15. Coordinate states:
+  exact_published 21 / unknown 15. CISI non-site catalogue
+  rows excluded: 526.
+- Chronology spine: 177 traced rows (XRONOS 144 + Mutin et
+  al. 2025 SI Table S2 33, scenario CONTESTED). Context
+  grades: direct 33 / associated 36 / unassessed 108.
+  Material classes: long-lived 105 / short-lived 57 /
+  unknown 15. XRONOS's filtered export contains no
+  Mohenjo-Daro, Harappa, Mehrgarh, Rakhigarhi, Dholavira,
+  Kalibangan, or Lothal dates — recorded as a coverage
+  statement in the report.
+- Q6 timing-support assessment (criteria frozen in the Stage
+  0 freeze before the build): **NOT-YET-TESTABLE** — regions
+  with ≥2 window sites 1/3 required (FAIL); window
+  direct/associated sites 5/10 (FAIL); window short-lived
+  share 0.0/0.5 (FAIL); median window σ 70 BP ≤ 80 (PASS).
+  No trait-timing outcome was inspected.
+- Ask 4 release package prepared in
+  `specs/027-movement-culture-language/stage0-release/`
+  (verified_open rows only: gazetteer CSV 21 rows, chronology
+  CSV 177 rows, source register verbatim, README, manifest).
+  Release gate run in-repo: **PASS 4/4** (1 MATCH, 3 EXTERNAL
+  with hashes recorded; output saved in the package).
+  **No external deposit made** — the package is deposit-ready
+  for a future owner order.
+- Products: `data/movement/gazetteer_rows.jsonl`,
+  `data/movement/chronology_rows.jsonl`,
+  `data/movement/source_register.json`,
+  `reports/phase391_results.json`,
+  `reports/phase391_stage0_report.md`. Anchors
+  byte-identical; no PRED scoring.
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

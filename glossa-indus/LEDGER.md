@@ -3235,3 +3235,14 @@ run pass. Nothing executed, published, or scored by the
 freeze itself; no anchor changed. Full entry: repo
 LEDGER.md, same date; binding record:
 specs/027-movement-culture-language/adjudication.md.
+
+## 2026-10-11 — Spec 027 Stage 0 executed (Phase-391) (cross-reference)
+
+Gazetteer (36 source-asserted rows, 30 site clusters) +
+chronology spine (177 traced rows; Mutin 2025 series
+CONTESTED) built under the Stage 0 freeze (digest
+4a9f6953…). Q6 timing-support: NOT-YET-TESTABLE under the
+frozen criteria (3 of 4 failed on spine margins). Ask 4
+release package prepared and gate-verified PASS 4/4 in-repo;
+no deposit made. Anchors unchanged; no PRED scoring. Full
+entry: repo LEDGER.md, same date.

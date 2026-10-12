@@ -4686,3 +4686,29 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — PRED-2026-004/005/008/009 retired (owner decision)
+
+- Owner decision (Tristen Pierson, 2026-10-12): retire
+  PRED-2026-004, PRED-2026-005, PRED-2026-008, and
+  PRED-2026-009 in docs/PREDICTION_REGISTER.md.
+- Recorded under the register's append-only discipline as
+  a new dated §6 adjudication note; the §3 entries are
+  unchanged. Each prediction: RETIRED — untested, never
+  scored, NOT refuted. Cause: the registered success
+  criterion is defined on, or depends on, the Phase 9
+  simulated-annealing (SA) machinery that Phase-107
+  falsified (held-out 0.000, 0/115), so each prediction
+  is untestable as registered. PRED-2026-009 is the
+  negative control for that same SA line and has no live
+  test to control.
+- Any successor must be registered as a NEW prediction
+  number under an SA-free method; retired numbers are
+  not reused.
+- PRED-2026-001/002/003 remain PENDING; PRED-2026-006/007
+  remain PARTIALLY CONFIRMED. No anchors, phases, code,
+  or data changed — documentation only.
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

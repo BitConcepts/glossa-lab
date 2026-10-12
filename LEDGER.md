@@ -5304,3 +5304,30 @@ time.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Owner confirmation of the freeze reading ("correct, do it")
+
+Owner confirmation (Tristen Pierson, 2026-10-12
+13:30 EDT, verbatim): **"correct, do it"** —
+confirming the reading executed for both PR #170
+packets: the packets are frozen with the
+recommended options adopted as a block; execution
+runs strictly as the adopted asks authorise; and
+no OSF registration is made under that instruction.
+
+Recorded alongside the original instruction
+("Freeze it") in: the confirmation addendum
+appended to
+`specs/027-movement-culture-language/stage2-q7-adjudication.md`,
+and `specs/030-q6-chronology-spine-extension/adjudication-confirmation.md`.
+The Spec 030 adjudication file itself is not
+edited: it is a digest-covered source of the
+Spec 030 freeze (`freeze.json` digest
+`3a61c63a26ffada3c21bf8b718610e6debe7f9c9ff58bf8ff736cbb7c3db00e9`),
+and frozen bytes are never edited — the
+confirmation is carried for that record by the
+companion note and by this entry.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

@@ -152,3 +152,25 @@ constitution §VI. The decision text above is the
 owner's, given in the program chat on 2026-10-12; the
 decision substance is the packet's recommendations as
 presented to and ratified by him.
+
+---
+
+## Confirmation addendum (2026-10-12)
+
+> Owner confirmation (Tristen Pierson, 2026-10-12
+> 13:30 EDT, verbatim): **"correct, do it"** —
+> confirming the reading executed in this record:
+> both PR #170 packets are frozen with the
+> recommended options adopted as a block; execution
+> runs strictly as the adopted asks authorise; and
+> no OSF registration is made under that instruction.
+> This line is recorded alongside the original
+> instruction ("Freeze it") at the owner's direction.
+>
+> The same confirmation applies to the Spec 030
+> adjudication (`specs/030-q6-chronology-spine-extension/adjudication.md`).
+> That file is a digest-covered source of the
+> Spec 030 freeze and is not edited; the confirmation
+> is carried there by `adjudication-confirmation.md`
+> in that directory and by the program ledger entry
+> of this date.

@@ -178,10 +178,13 @@ All claims are `draft`.
 |---|---|---|
 | F029-C01 | Every governed claim carries a lifecycle stage in {created, checked, explained, accepted, digested}, separate from score, verdict, and extraction status. | P1 |
 | F029-C02 | No automated process may advance a claim beyond `checked`; later transitions require a recorded act of a named human. | P1/P6 |
-| F029-C03 | A decipherment claim is a bundle (soundness, scholarship accounting, attribution, intelligibility), each sub-claim staged and falsifiable; parent stage = minimum of sub-claim stages. | P2 |
-| F029-C04 | `accepted` requires a named-human explanation record (artifact URI + hash, challengeable); `digested` additionally requires a digestion record of independent scholarly engagement. | P3 |
+| F029-C03 | A decipherment claim is a bundle (soundness, scholarship accounting, attribution, intelligibility), each sub-claim staged and falsifiable. | P2 |
+| F029-C11 | Parent stage = minimum of sub-claim stages (split from F029-C03, L3 recovery 2026-10-12). | P2 |
+| F029-C04 | `accepted` requires a named-human explanation record (artifact URI + hash, challengeable). | P3 |
+| F029-C12 | `digested` requires a digestion record of independent scholarly engagement (split from F029-C04, L3 recovery 2026-10-12). | P3 |
 | F029-C05 | Attribution is a registered sub-claim with required completeness evidence; while contested it displays on the parent and caps the parent's stage (default cap `checked`, OD-3). | P4 |
-| F029-C06 | No surface may present a score, band, mean, or count as acceptance or decipherment; every verdict display carries a "what remains not understood" statement. | P5 |
+| F029-C06 | No surface may present a score, band, mean, or count as acceptance or decipherment. | P5 |
+| F029-C13 | Every verdict display carries a "what remains not understood" statement (split from F029-C06, L3 recovery 2026-10-12). | P5 |
 | F029-C07 | Lane-1 and lane-2 states are separate fields rendered in separate regions with lane-specific labels; no lane-1 value renders in a lane-2 position. | P6 |
 | F029-C08 | External scholars' readings can be registered at intake for timestamped priority/credit, independent of the program's assessment of the reading. | P7 |
 | F029-C09 | Every verdict and stage transition carries an inspectable trail (evidence refs + origin groups, falsifier state, actor, timestamp) retrievable from the claim's API representation. | P8 |
@@ -222,7 +225,7 @@ written only after adjudication.
   `verified_unexplained` in API output, so the risk state
   the standard names is queryable rather than anecdotal.
 
-### 5.2 Decomposition and the attribution sub-claim (C03, C05)
+### 5.2 Decomposition and the attribution sub-claim (C03, C11, C05)
 
 - **FR-029-04 — Bundle representation.** Anchor readings
   are represented as claim bundles: a parent record plus
@@ -244,7 +247,7 @@ written only after adjudication.
   the parent renders, and the parent's stage is capped at
   the adjudicated cap (default `checked`, OD-3).
 
-### 5.3 Explanation and digestion gates (C04)
+### 5.3 Explanation and digestion gates (C04, C12)
 
 - **FR-029-06 — Explanation record.** An explanation record
   names a human author, points to a readable account
@@ -264,7 +267,7 @@ written only after adjudication.
   published challenge and response, independent reuse, or
   the adjudicated equivalent) with resolvable references.
 
-### 5.4 Stage-aware display rules (C06, C07)
+### 5.4 Stage-aware display rules (C06, C13, C07)
 
 - **FR-029-08 — Score placement.** On every surface —
   `IndusEvidenceView`, `DeciphermentPanel`, reports,

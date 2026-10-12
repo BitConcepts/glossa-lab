@@ -23,13 +23,29 @@
       the 2026-10-12 scope ratification (D-A, D-B, D-D,
       D-E in; D-C out). The tooling deviation is
       recorded in plan §8.
-- [ ] **L3 — AEE hooks.** AEE assess + evaluator-contract
+- [x] **L3 — AEE hooks.** AEE assess + evaluator-contract
       pass over spec, plan, and tasks; outputs saved
       under `aee/` with outcomes recorded. A `fail`
       outcome blocks the freeze until its recovery
       record is complete. If the hook pass cannot run
       non-interactively, that outcome is recorded here
       rather than skipped silently (plan §8).
+      **Outcome (2026-10-12): the pass ran
+      non-interactively at all three phases and returned
+      a blocking `iterate` outcome at each (10 claims,
+      32 failure modes, 10 below the 0.70 threshold;
+      AEE exit code 1). The freeze is blocked until the
+      recovery recorded in `aee/l3-outcome.md` is
+      complete. L3 stays unticked.**
+      **Recovery (2026-10-12, owner-authorized): the
+      register was recovered in the Spec 028 shape
+      (evidence lists, pairwise boundary confirmations,
+      single-proposition texts, three recorded splits —
+      F029-C11/C12/C13; register 10 → 13 claims) and the
+      pass was re-run at all three phases: outcome
+      `pass` at each (13 claims, 0 failure modes, 0
+      below threshold; AEE exit code 0). Full record:
+      `aee/recovery-specify.md`. L3 is complete.**
 
 ## Freeze gate
 

@@ -5372,6 +5372,29 @@ constitution sec.VI.
   1227 passed / 6 skipped / 0 failed; PR/CI/merge
   evidence in `specs/029-tao-claim-lifecycle/
   phase-h-record.md` (H5).
+## 2026-10-12 — Spec 030 frozen contract registered on OSF (Phase-394 precondition met)
+
+The frozen Spec 030 contract (Q6 chronology-spine
+extension; freeze digest
+`3a61c63a26ffada3c21bf8b718610e6debe7f9c9ff58bf8ff736cbb7c3db00e9`,
+freeze PR #172, merge `51aec850`) was registered on
+OSF as prescribed by adopted Ask 5, before any
+Phase-394 execution: **https://osf.io/bge3k/**,
+DOI **10.17605/OSF.IO/BGE3K**, OSF Preregistration
+schema, node `4s9u2`, filed 2026-10-12T17:57:38Z
+with all 29 response fields carried from the frozen
+record. The API approval route returned HTTP 409 as
+the program record predicts; approval was effected
+via the admin-notification email token link in the
+signed-in browser (the standing approvals loop).
+Post-approval state verified via the OSF API:
+`reviews_state: accepted`, `public: true`, DOI
+minted. Full record:
+`specs/030-q6-chronology-spine-extension/osf-registration.md`.
+Phase-394 execution follows under the owner's
+authorisation of 2026-10-12 ("Register Spec 030 on
+OSF and execute Phase-394"), under the frozen route
+order and stop rules.
 
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per

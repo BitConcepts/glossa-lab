@@ -5235,6 +5235,71 @@ registration under its own go. Q6 remains
 registered-blocked under Spec 027 (F027-C16); this
 freeze changes no Spec 027 record and loosens no
 criterion.
+## 2026-10-12 — Spec 027 Stage 2: D8 source/licence audit complete (Q7 gate condition met)
+
+The D8 audit authorised by the Q7 adjudication
+(`specs/027-movement-culture-language/stage2-q7-adjudication.md`,
+adopted Ask 1B) is complete and recorded in
+`specs/027-movement-culture-language/stage2-d8-audit.md`.
+Sequenced as adopted, with a stop rule and a
+reported outcome after each stage; a desk audit of
+published sources and their terms only — no
+external contact, no rights-holder approach,
+nothing digitised.
+
+**Stage 1 — Law (2011): NOT a rights failure.**
+*Inter-Regional Interaction and Urbanism in the
+Ancient Indus Valley* (RIHN Occasional Paper 11,
+2011; Manohar edition in two parts incl. printed
+appendices). More than 2,100 provenience
+determinations for Harappa artifacts and almost 120
+for other sites, methods recorded per material
+study (INAA; Sr/S isotopes; Chapter 4
+reference-based assignment). Chapters openly posted
+on harappa.com; no open licence stated; **no bulk
+machine-readable deposit located** — Spec 027 §4's
+blocker note re-confirmed as of 2026-10-12.
+Posture `open_access_read_only`: internal
+digitisation for link construction under the
+Phase-124 precedent, never released (Ask 6A).
+Margins carried to the freeze: ~95% of
+determinations are single-site (Harappa); under
+Ask 2B only the instrumental subsets are the
+primary tier.
+
+**Stage 2 — Kenoyer/Vidale: NOT a rights failure.**
+The bead-drilling technique classification
+(Kenoyer & Vidale 1992 and its published extensions
+and applications) is lawfully readable — anchor
+texts openly posted as author PDFs, posture
+`open_access_read_only` (publisher-only items
+`catalogue_only`) — and traceable per published
+application. No consolidated per-object dataset
+exists; the bead/craft arm's data are assembled at
+the Q7 freeze from published applications, method
+and classification source recorded per cell
+(Ask 3A), against per-arm minimum-support rules.
+
+**Stage 3 — Meluhha compilations: closed as
+catalogued context.** Possehl 1996 ("Meluhha", 76
+cuneiform citations) names a source region, never
+an Indus site; it contributes **no site-pair links
+under any posture** (`catalogue_only`). Not a
+rights failure — the component was never
+link-bearing.
+
+**Conclusion.** The §8.1 gate condition for Q7 is
+met (Stage 0 complete + this audit). The Q7 freeze
+may now be designed from the audit's margins under
+Asks 2B/3A/5A with the OSF registration prescribed
+by Ask 6A — **as a separate later act; this audit
+designs and freezes nothing, and digitises
+nothing**. Residuals recorded for the freeze: the
+ceramic arm's site-report sources sit outside D8's
+three components (posture assigned at freeze time);
+appendix-level method-per-determination field
+completeness is re-verified at digitisation design
+time.
 
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per

@@ -4843,3 +4843,55 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Spec 029 adjudication addendum: D-A through D-E ratified; README errata (D-C) executed
+
+- Owner decision (Tristen Pierson, 2026-10-12, verbatim):
+  "do all this" — ratifying D-A through D-E (audit §9)
+  as a block, adopting the program's recommendations.
+  Recorded as a dated addendum in
+  `specs/029-tao-claim-lifecycle/adjudication.md`; the
+  earlier scope note leaving D-A…D-E open is superseded.
+- D-A: annotate the anchors in place, additively —
+  total `validation_status` on every anchor, a computed
+  `strict_set` flag with the rule version recorded, no
+  tier demotion, and a declared anchors-file schema
+  enforced by a CI validator.
+- D-B: deduplicate extracted claims by proposition —
+  merge, never delete; source documents preserved as
+  evidence instances, counted once per origin group; a
+  proposition-fingerprint guard at extraction intake.
+- D-C: README factual errata corrected immediately, in
+  this change, as errata (not re-staging). Against the
+  canonical file (recomputed from the entries of
+  `backend/reports/INDUS_FINAL_ANCHORS.json`: HIGH 166 /
+  MEDIUM 5 / LOW 3 / CANDIDATE 113; pending set 44 =
+  43 HIGH + 1 MEDIUM): (i) the tier split "112 LOW +
+  4 CANDIDATE" corrected to 3 LOW + 113 CANDIDATE;
+  (ii) "44 HIGH" for the `pending_non_sa_validation`
+  set corrected to 43 HIGH + 1 MEDIUM in the status
+  banner, the metrics table, and the research-status
+  list; a dated errata note added to the README. The
+  re-base note's past-tense Phase-108 narrative stands
+  unaltered (the one MEDIUM pending anchor, M293, was
+  HIGH at classification; Phase-109 demoted it).
+- D-D: foundation report annotations get a dated as-of
+  label as the interim step; structurally, annotations
+  are generated from canonical data at report time
+  (anchor-file hash stamped) and the foundation status
+  endpoint is repaired to serve the on-disk report or
+  fail loudly.
+- D-E: the audit's reclassification ledger stays the
+  source of truth for stages until the Spec 029 plan's
+  early, gated re-staging migration stamps `stage` /
+  `stage_source` / `stage_as_of` mechanically from it.
+  Invariant: a stage is always recomputable from the
+  record's evidence — the stored value is a cache with
+  provenance, never an assertion.
+- Plan scope: D-A, D-B, D-E, and D-D's structural half
+  enter the Spec 029 plan; D-C is executed here and does
+  not enter the plan.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

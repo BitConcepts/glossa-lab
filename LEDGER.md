@@ -4741,3 +4741,61 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Spec 029 retroactive realignment audit (append-only reclassification)
+
+- Owner directive (Tristen Pierson, 2026-10-12): the Tao
+  realignment is retroactive — audit and re-run the
+  discipline across ALL previously done work and prove
+  the current claim set is disciplined under the eight
+  points. Executed claims-first against the draft Spec
+  029 (PR #164): NO code changed, NO live record edited.
+- Deliverables appended in
+  `specs/029-tao-claim-lifecycle/`: `audit.md` (the
+  written audit) and `reclassification-ledger.json`
+  (345 dated reclassification entries: 287 anchors, 31
+  extracted claims, 3 hypothesis records, 5 live PRED
+  items, 10 study-headline entries, 3 grouped instrument
+  records, 6 presentation-surface flags).
+- Inventory reconciled: 287 anchors reconcile across
+  the canonical file, the Phase-108 register, and the
+  foundation report; the strict set recomputed from the
+  register + Phase-109 rule = 94 (90 HIGH + 4 MEDIUM),
+  matching the published figure; extracted claims
+  verified as exactly 31 (a single 2026-10-09
+  re-extraction batch from 10 documents — the
+  distribution differs from the Phase-104 record
+  because the set was regenerated, with two propositions
+  double-recorded).
+- Honest stage distribution after the re-run: created
+  220, checked 116, explained 0, accepted 0, digested 0.
+  Nothing in the program carries a named-human
+  explanation or digestion record; 105 entries are
+  flagged verified-but-unexplained (strict 94 + 8
+  supported-class claim records + F1/F3/G1 headlines).
+- Worst nonconformances named with evidence in the
+  audit: the DeciphermentPanel "signs deciphered"
+  headline; the dashboard API still serving the
+  falsified SA aggregate and a "fully decoded %"; 33
+  HIGH anchors with SA in their provenance chain
+  displayed indistinguishably from strict HIGH; 17 of
+  31 extracted claims with no falsifier (including 2
+  displayed strongly_supported); the exposed
+  mean_propagated_score (0.484903).
+- Unfixable published surfaces labelled HISTORICAL
+  LIMITATION in the audit: the v4 preprint (DOI
+  10.5281/zenodo.20414696; SSRN 6827038), Zenodo
+  releases v4.1.0–v4.10.0, the frozen OSF PRED mirror
+  (bg8yx), the phase-era report corpus, and the retired
+  repo description (residual).
+- Owner decisions recorded open in audit §9: evidence
+  for OD-1 (two nonconforming displays are live
+  machinery, not archived text) and OD-3 (attribution
+  contest is material in the governed population), plus
+  D-A (annotate the 33 chained HIGH) through D-E (where
+  the stages live). Display fixes remain gated behind
+  Spec 029 adjudication; PR #164 stays DRAFT, unmerged.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

@@ -351,6 +351,26 @@ entries preserved), merged as `e1f5aed3`.
   files name no external scholar (pre-existing spec
   naming and already-pushed history are untouched, per
   standing record discipline).
+- **Second integration (same day).** After PR #180 was
+  opened, main moved again to `93a84532` (PR #178,
+  Phase-394 products + outcome), making the PR
+  conflicting. It was merged into the branch as
+  `fb5823f9`: the only conflict was the LEDGER.md
+  append-append (both entries preserved in full; the
+  two entries' identical closing disclosure lines,
+  which git had deduped into one shared block, were
+  restored so each entry keeps its own). All other
+  incoming files were disjoint from Phase I. On this
+  re-integrated state the foundation check again
+  returned **40 passed / 0 failed / 8 warnings** and
+  the targeted suites (Phase I + Phase A + Phase-394)
+  passed **56 / 0 failed**; the full-suite gate above
+  was run on the `09589443`-integrated state, whose
+  Phase-I-relevant surface is unchanged by PR #178
+  (its own PR and the main push both reported the full
+  suite green at 1,238 passed on their side), and the
+  PR's CI runs the full suite again on the final head
+  before merge.
 
 ## Deviations and honest limitations
 

@@ -64,6 +64,16 @@ Mapping decisions (verified against aee 1.0.4, ``aee/model.py``):
 * ``claim_type`` → ``ClaimKind``: ``statistical_claim`` → INFERENCE,
   every other ``*_claim`` → HYPOTHESIS (these are decipherment
   hypotheses about a past writing system).
+* Lifecycle stage (Spec 029, FR-029-01) is a lane-2 axis, distinct
+  from every lane-1 value above. ``claim_from_glossa`` maps it as a
+  distinct object — ``glossa_lab.claim_stage.serialize_stage`` —
+  preserved in ``Claim.metadata["glossa_stage"]``. It is never folded
+  into ``ClaimStatus`` or confidence and does not enter scoring: the
+  ScoringEngine sees exactly the evidence it saw before this axis
+  existed, so score propagation is unchanged (a regression test in
+  ``backend/tests/test_spec029_phase_a.py`` pins the pre-change
+  scores byte-for-byte). An unstamped record maps to
+  ``stage=None`` — a stage is never invented by the adapter.
 """
 
 from __future__ import annotations
@@ -84,6 +94,8 @@ from aee.model import (
     SourceQuality,
 )
 from aee.scoring import ClaimScore, ScoringEngine
+
+from glossa_lab.claim_stage import compute_verified_unexplained, serialize_stage
 
 _log = logging.getLogger("glossa_lab.aee_core")
 
@@ -183,6 +195,10 @@ def claim_from_glossa(raw: dict[str, Any], *, source_file: str = "") -> Claim:
         "testability": testability,
         "quote_fragment": str(raw.get("quote_fragment") or ""),
         "source_file": source_file,
+        # Lane-2 lifecycle stage as a distinct object (Spec 029
+        # FR-029-01): never folded into ClaimStatus or confidence,
+        # and not an input to scoring.
+        "glossa_stage": serialize_stage(raw),
     }
     for key in ("signs_involved", "sign_ids", "proposed_value", "proposed_language",
                 "author", "extracted_at", "required_data"):
@@ -310,6 +326,8 @@ def assessment_summary(claims_dir: str | Path) -> dict[str, Any]:
         status = str(claim.metadata.get("glossa_claim_status", ""))
         status_counts[status] = status_counts.get(status, 0) + 1
         score = scores.get(claim.id)
+        score_dict = score.to_dict() if score else None
+        stage_obj = claim.metadata.get("glossa_stage") or serialize_stage({})
         per_claim.append({
             "claim_id": claim.id,
             "glossa_claim_status": status,
@@ -317,7 +335,18 @@ def assessment_summary(claims_dir: str | Path) -> dict[str, Any]:
             "falsification_condition": claim.falsification_tests[0]
             if claim.falsification_tests else "",
             "confidence_in_source": claim.metadata.get("confidence_in_source"),
-            "aee_score": score.to_dict() if score else None,
+            "aee_score": score_dict,
+            # Spec 029 (FR-029-01/03): the lane-2 stage object and
+            # the lane-1 score are serialized as distinct objects —
+            # neither is folded into the other. ``lane1_score`` is
+            # the same lane-1 score as ``aee_score`` (kept for
+            # backward compatibility), under its lane name.
+            "stage": stage_obj,
+            "lane1_score": score_dict,
+            "verified_unexplained": compute_verified_unexplained(
+                {"stage": stage_obj.get("stage"), "claim_status": status},
+                score=score_dict,
+            ),
         })
     mean_score = (
         sum(s.propagated_score for s in scores.values()) / len(scores) if scores else 0.0

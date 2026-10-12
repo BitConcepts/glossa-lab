@@ -4799,3 +4799,47 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Spec 029 owner adjudication: OD-1 through OD-6 ratified as a block
+
+- Owner decision (Tristen Pierson, 2026-10-12, verbatim):
+  "ratify all of these as a block and do it" — adopting
+  the program's recommendations for `spec.md` §8 (OD-1
+  through OD-6) exactly as presented. Recorded in
+  `specs/029-tao-claim-lifecycle/adjudication.md`;
+  `spec.md` §8 annotated DECIDED 2026-10-12 under each
+  item with the original question text preserved.
+- OD-1: immediate re-staging of all existing claims as
+  one dated reclassification event; the retroactive
+  audit's ledger is the re-staging record; stage =
+  highest stage whose evidence exists in the record.
+- OD-2: the explanation gate accepts a named, accountable
+  human author (internal or external) with a durable
+  public citable artifact; AI may draft, never be the
+  named human; `digested` additionally requires engagement
+  by at least one program-independent scholar.
+- OD-3: contested attribution caps the parent at
+  `checked`; contested (active, evidenced dispute) is
+  distinguished from unexamined (no special cap; bundle
+  minimum rule applies).
+- OD-4: Tao's five stage names verbatim in data and on
+  all displays; no synonym mapping.
+- OD-5: a digestion record qualifies on any one of
+  independent reuse, a published challenge answered in a
+  durable record, or an independent mechanism-engaging
+  citation judged by a named reviewer at intake; an
+  unanswered refutation is adverse digestion (claim
+  flagged contested, pulled back under the bundle rule).
+- OD-6: the priority register is public at intake
+  (claimant, timestamp, hash of the reading published);
+  content sealed until the claimant publishes or a
+  claimant-chosen date (default 24 months, extendable
+  once).
+- Scope: OD-1…OD-6 only; the audit §9 items D-A…D-E
+  remain open. Governed claims stay `draft`; PR #164
+  stays DRAFT, unmerged — the freeze merge is owner-gated
+  and follows the audit's landing on the same branch.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

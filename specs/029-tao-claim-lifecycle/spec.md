@@ -340,6 +340,12 @@ These are the owner's alone. The draft records the options
 and the drafting recommendation where one exists; recording
 a recommendation decides nothing.
 
+> **All six decisions were DECIDED on 2026-10-12** — the
+> owner ratified the program's recommendations as a block
+> ("ratify all of these as a block and do it"). The full
+> adjudication record is `adjudication.md` in this
+> directory; each item below carries its outcome.
+
 - **OD-1 — Retroactivity.** Do the 287 anchors' and the
   existing extracted claims' displays get re-staged
   immediately when the lifecycle is implemented, or only
@@ -348,31 +354,65 @@ a recommendation decides nothing.
   leaves known non-conforming displays — including the
   flagged DeciphermentPanel headline — live until each
   record is next edited.)
+  **DECIDED 2026-10-12:** immediate re-staging of all
+  existing claims as one dated reclassification event;
+  the retroactive audit's ledger serves as the re-staging
+  record; stage = highest stage whose evidence exists in
+  the record. See `adjudication.md`.
 - **OD-2 — Digestion authority.** Who qualifies as the
   named human whose explanation and digestion records
   count: program-internal authors, external scholars only,
   or either (and if either, whether internal and external
   records carry different weight at the `digested` gate)?
+  **DECIDED 2026-10-12:** either — the explanation gate
+  accepts a named, accountable human author, internal or
+  external, whose account is a durable public citable
+  artifact; AI systems may draft but may never be the
+  named human; `digested` additionally requires engagement
+  by at least one scholar independent of the program.
+  See `adjudication.md`.
 - **OD-3 — Contested-attribution cap.** The exact stage cap
   while attribution is contested. Drafting recommendation:
   cap the parent at `checked` — a claim whose priority or
   completeness is disputed has not been *explained into*
   the literature, only checked.
+  **DECIDED 2026-10-12:** cap the parent at `checked`
+  while attribution is contested (active, evidenced
+  dispute); unexamined attribution carries no special cap
+  — the bundle minimum rule applies. See
+  `adjudication.md`.
 - **OD-4 — Stage naming.** Adopt Tao's five stage names
   verbatim (created, checked, explained, accepted,
   digested) on all surfaces, or map them to program
   vocabulary in displays while keeping the canonical names
   in data?
+  **DECIDED 2026-10-12:** Tao's five stage names verbatim
+  in data and on all displays; no synonym mapping. See
+  `adjudication.md`.
 - **OD-5 — Digestion threshold.** What evidence qualifies
   a digestion record: e.g. one independent scholarly
   citation of the explanation, one published challenge
   that the account survived or answered, independent reuse
   of the reading, or a defined combination?
+  **DECIDED 2026-10-12:** any one of (i) independent
+  scholarly reuse in work not authored by the program;
+  (ii) a published substantive challenge answered in a
+  durable record (the exchange is the digestion record);
+  (iii) an independent citation engaging the mechanism,
+  judged by a named reviewer at intake with rationale
+  recorded. An unanswered refutation is adverse digestion:
+  the claim is flagged contested and pulled back under the
+  bundle rule. See `adjudication.md`.
 - **OD-6 — Priority register visibility.** Is the external
   priority/credit register public at intake (maximum
   protection through visibility) or embargoed until the
   claimant publishes (protection through priority proof
   without exposure)?
+  **DECIDED 2026-10-12:** public at intake — claimant,
+  timestamp, and a hash of the reading are published; the
+  reading's content stays sealed until the claimant
+  publishes or a claimant-chosen date (default 24 months,
+  extendable once). See `adjudication.md`.
 
 ## 9. Tooling note (deviation recorded)
 

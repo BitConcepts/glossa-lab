@@ -15,7 +15,23 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-11T13:32:36.269785"
+      "extracted_at": "2026-10-11T13:32:36.269785",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
@@ -26,7 +42,23 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-11T13:32:36.270316"
+      "extracted_at": "2026-10-11T13:32:36.270316",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_001",
@@ -38,7 +70,23 @@
       "falsification_condition": "If sign distributions are not correlated with trade/economic contexts at excavation sites.",
       "author": "Roif, Avishai",
       "confidence_in_source": 0.5,
-      "extracted_at": "2026-10-11T13:32:36.275957"
+      "extracted_at": "2026-10-11T13:32:36.275957",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_001",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_001"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry indus_valley_script_deciphered_from_myth_65ff0a26_manual_001; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_002",
@@ -54,7 +102,23 @@
       "falsification_condition": "Fish sign should cluster at coastal/maritime sites (Lothal, Dholavira). Phase-4x CISI data shows fish NOT coastal-enriched.",
       "glossa_lab_evidence": "Phase-4x CISI analysis: fish sign not statistically enriched at coastal sites [PARTIALLY FALSIFIED]",
       "confidence_in_source": 0.45,
-      "extracted_at": "2026-10-11T13:32:36.275957"
+      "extracted_at": "2026-10-11T13:32:36.275957",
+      "stage": "checked",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_002",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "checked",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_002"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry indus_valley_script_deciphered_from_myth_65ff0a26_manual_002; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_003",
@@ -69,7 +133,23 @@
       "testability": "directly_testable",
       "falsification_condition": "If arrow sign does not cluster at gateway/border sites.",
       "confidence_in_source": 0.5,
-      "extracted_at": "2026-10-11T13:32:36.275957"
+      "extracted_at": "2026-10-11T13:32:36.275957",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_003",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_003"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry indus_valley_script_deciphered_from_myth_65ff0a26_manual_003; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
     },
     {
       "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_004",
@@ -84,7 +164,23 @@
       "required_data": "Site metadata with fire-altar classification (Kalibangan)",
       "falsification_condition": "Horned deity sign does not cluster at fire-altar sites.",
       "confidence_in_source": 0.5,
-      "extracted_at": "2026-10-11T13:32:36.275957"
+      "extracted_at": "2026-10-11T13:32:36.275957",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_004",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_004"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry indus_valley_script_deciphered_from_myth_65ff0a26_manual_004; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
     }
   ],
   "_citation": {

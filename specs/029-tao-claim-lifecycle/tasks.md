@@ -30,6 +30,13 @@
       record is complete. If the hook pass cannot run
       non-interactively, that outcome is recorded here
       rather than skipped silently (plan §8).
+      **Outcome (2026-10-12): the pass ran
+      non-interactively at all three phases and returned
+      a blocking `iterate` outcome at each (10 claims,
+      32 failure modes, 10 below the 0.70 threshold;
+      AEE exit code 1). The freeze is blocked until the
+      recovery recorded in `aee/l3-outcome.md` is
+      complete. L3 stays unticked.**
 
 ## Freeze gate
 

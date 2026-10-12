@@ -482,13 +482,36 @@ def permutable_count(rows, level_of):
 def sha256_of(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
+def _canonical_anchors_sha256(path: Path) -> str:
+    """SHA-256 of the anchors file's pre-existing content.
+
+    Spec 029 Phase D (OD-1, 2026-10-12) added additive stage
+    keys (``stage``, ``stage_source``, ``stage_as_of``,
+    ``stage_history``, ``verified_unexplained``) to every
+    anchor record. Removing exactly those keys and
+    re-serializing canonically reproduces the pre-migration
+    file, whose hash is the pinned anchors SHA-256 — so
+    this digest keeps the original "anchors unchanged"
+    meaning after the OD-1 migration. The pinned constant
+    and every recorded hash value are unchanged.
+    """
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    for rec in doc.get("anchors", {}).values():
+        for key in ("stage", "stage_source", "stage_as_of",
+                    "stage_history", "verified_unexplained"):
+            rec.pop(key, None)
+    return hashlib.sha256(
+        json.dumps(doc, indent=2, ensure_ascii=False).encode("utf-8")
+    ).hexdigest()
+
+
 
 def informative(raw: str) -> bool:
     return (raw or "").strip() not in MISSING_SENTINELS
 
 
 def build(layer_path: Path) -> tuple[dict, list[dict], dict]:
-    anchors_digest = sha256_of(ANCHORS)
+    anchors_digest = _canonical_anchors_sha256(ANCHORS)
     assert anchors_digest == ANCHORS_SHA256, (
         f"anchors changed: {anchors_digest} != {ANCHORS_SHA256}")
     layer_digest = sha256_of(layer_path)

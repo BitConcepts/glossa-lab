@@ -367,8 +367,31 @@ def process_document(doc_id: str) -> dict:
     if not all_claims:
         return {"doc_id": doc_id, "status": "no_claims", "text_available": bool(text)}
 
-    # Save claims
+    # Spec 029 (plan §4 / Phase D): stage and stage history live on
+    # the claim record, keyed by claim identity. A regeneration must
+    # never drop them — carry the additive stage fields of any
+    # existing record for the same claim_id onto the regenerated
+    # claim, verbatim. (Extraction is an automated actor capped at
+    # 'checked'; it may not invent or alter stage state.)
     out = EXTRACTED_CLAIMS / f"{doc_id}.json"
+    if out.exists():
+        try:
+            prior = json.loads(out.read_text("utf-8"))
+            prior_stage = {
+                c.get("claim_id"): {
+                    k: c[k]
+                    for k in ("stage", "stage_source", "stage_as_of",
+                              "stage_history", "verified_unexplained")
+                    if k in c
+                }
+                for c in prior.get("claims", [])
+            }
+            for claim in all_claims:
+                claim.update(prior_stage.get(claim.get("claim_id"), {}))
+        except Exception:
+            pass
+
+    # Save claims
     record = {
         "document_id": doc_id,
         "title": doc.get("title", ""),

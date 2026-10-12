@@ -72,10 +72,27 @@ additive change):
   (imports), and `backend/scripts/
   phase137_site_repertoire.py`, `phase139_covariate_
   audit.py`, `phase140_g1_controlled.py`,
-  `phase141_loso.py`. **Disposition: untouched.** Those
-  constants are historical run records; re-running those
-  closed phases is not part of this phase, and rewriting
-  their pinned input hash would falsify their records.
+  `phase141_loso.py`. **Disposition (amended during
+  execution, recorded in D5): canonicalized, constants
+  untouched.** The inventory initially left these
+  modules untouched as historical records; execution
+  showed the backend suite itself exercises several of
+  them against the live file (Phase-128 dossiers build
+  unconditionally in its tests; the Phase-137/139/140/
+  141 recomputation tests run their scripts whenever
+  the local store exists), so their raw-byte assertions
+  failed on the OD-1 file although no pre-existing
+  content changed. Each now computes the anchors hash
+  canonically — the Phase D additive keys removed, the
+  result re-serialized and hashed — via a local
+  `_canonical_anchors_sha256` helper with the change
+  cited in its docstring. The pinned constants and
+  every recorded hash value are byte-identical to
+  before (the canonical hash of the migrated file *is*
+  the pinned hash); only the digest's definition gained
+  the OD-1 canonicalization, which restores each
+  assertion's original meaning ("pre-existing anchor
+  content unchanged").
 - Eight backend test files assert the **live** file's
   SHA-256 equals that pinned hash:
   `test_phase126_wells_split_candidates.py`,

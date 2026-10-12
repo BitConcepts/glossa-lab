@@ -48,6 +48,7 @@ from glossa_lab.claim_stage import (
 
 _REPO_ROOT = Path(__file__).resolve().parents[2]
 _REAL_CLAIMS_DIR = _REPO_ROOT / "glossa-indus" / "claims" / "extracted_claims"
+_ANCHORS_FILE = _REPO_ROOT / "backend" / "reports" / "INDUS_FINAL_ANCHORS.json"
 _PRE_CHANGE_SCORES = (
     Path(__file__).resolve().parent / "fixtures" / "spec029_pre_change_aee_scores.json"
 )
@@ -366,8 +367,13 @@ def test_claims_endpoint_serializes_stage_object_and_flag(client):
     for c in claims:
         stage = c["stage"]
         assert isinstance(stage, dict)
-        assert stage["stage"] is None  # unstamped until Phase D; never invented
-        assert stage["stamped"] is False
+        # Phase D (OD-1) has stamped the live records from the frozen
+        # reclassification ledger: stamped, with ledger provenance.
+        assert stage["stage"] in STAGES
+        assert stage["stamped"] is True
+        assert stage["stage_source"].startswith(
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:")
+        assert stage["stage_as_of"] == "2026-10-12"
         assert "stage_source" in stage and "stage_history_count" in stage
         assert isinstance(c["verified_unexplained"], bool)
         # Lane separation: no lane-1 score is folded into the stage object.
@@ -401,7 +407,9 @@ def test_aee_scores_endpoint_serializes_stage_and_lane1_distinctly(client):
         pytest.skip("No extracted claims in evidence base")
     for entry in d["claims"]:
         assert isinstance(entry["stage"], dict)
-        assert entry["stage"]["stage"] is None
+        # Phase D (OD-1) stamped every live claim from the ledger.
+        assert entry["stage"]["stage"] in STAGES
+        assert entry["stage"]["stamped"] is True
         assert entry["lane1_score"] == entry["aee_score"]
         assert isinstance(entry["verified_unexplained"], bool)
     flagged = [e for e in d["claims"] if e["verified_unexplained"]]
@@ -418,13 +426,24 @@ def test_anchor_surface_serializes_stage_object(client):
     items = r.json()["items"]
     if not items:
         pytest.skip("No signs in index")
+    anchors_doc = json.loads(_ANCHORS_FILE.read_text("utf-8"))["anchors"]
     for item in items:
         assert isinstance(item["stage"], dict)
-        assert item["stage"]["stage"] is None  # unstamped until Phase D
-        assert item["stage"]["stamped"] is False
+        if item["sign_id"] in anchors_doc:
+            # Final anchors: Phase D (OD-1) stamped them from the ledger.
+            assert item["stage"]["stage"] == anchors_doc[item["sign_id"]]["stage"]
+            assert item["stage"]["stamped"] is True
+            assert item["stage"]["stage_as_of"] == "2026-10-12"
+        else:
+            # Staging / anchor-set entries are not ledger records:
+            # they stay unstamped — a stage is never invented.
+            assert item["stage"]["stage"] is None
+            assert item["stage"]["stamped"] is False
         assert isinstance(item["verified_unexplained"], bool)
         # The lane-1 confidence tier stays its own field, not a stage:
         # it is a tier string (HIGH/MEDIUM/LOW/UNCERTAIN/CANDIDATE),
         # never one of the lane-2 stage names.
         assert isinstance(item["confidence"], str) and item["confidence"]
         assert item["confidence"].lower() not in STAGES
+    flagged = [i for i in items if i["verified_unexplained"]]
+    assert len(flagged) == 94  # the audit's strict-set anchor flags (Phase D)

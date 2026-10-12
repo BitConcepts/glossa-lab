@@ -4974,7 +4974,14 @@ constitution sec.VI.
   check 40 passed / 0 failed / 8 warnings (baseline
   identical, no new warnings); full backend suite
   2112 passed, 5 skipped, 0 failed; new Phase A tests
-  in `backend/tests/test_spec029_phase_a.py`. Record:
+  in `backend/tests/test_spec029_phase_a.py`. CI on
+  PR #169: the first run failed Backend tests on the
+  anchor-surface test (signs-index entries from anchor
+  sets carried no stage key in CI's seeded data; fixed
+  by serializing the stage object for every entry
+  source in `_build_sign_entry`); the run on the fixed
+  head `3ef6d225` (run 38270045482) is all 7 checks
+  success. Record:
   `specs/029-tao-claim-lifecycle/phase-a-record.md`.
   Honest limitations recorded there: FR-029-06/07 gate
   records above checked are Phase B machinery; anchor

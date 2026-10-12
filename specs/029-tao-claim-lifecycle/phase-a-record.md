@@ -129,18 +129,24 @@ current-claim-set audit reconciliation. Targeted run (Phase A +
   `glossa-indus/claims/extracted_claims/*.json` as a pre-existing
   side effect; those files were restored byte-identical before
   commit and are not part of this phase's diff.)
-- **CI**: <!-- CI-EVIDENCE --> pending — filled from the check
-  runs' own conclusions before merge. First CI run on head
-  `f2d3e44b` (run 38265919153): 6 of 7 checks succeeded;
-  **Backend tests (pytest) failed** on this phase's anchor-surface
-  test — in CI the signs index also holds anchor-set entries,
-  which then carried no `stage` key (the local data dir had none,
-  so the defect was invisible locally). Fixed within phase scope:
-  `_build_sign_entry` now serializes the unstamped stage object
-  for every entry source, and the test checks a full page and no
-  longer assumes the tier set. Re-verified locally against a
-  fresh data dir (86 targeted tests passing, including the
-  anchor-sets suite that seeds those entries).
+- **CI**: verified from the check runs' own conclusions.
+  First CI run on head `f2d3e44b` (run 38265919153): 6 of 7 checks
+  succeeded; **Backend tests (pytest) failed** on this phase's
+  anchor-surface test — in CI the signs index also holds
+  anchor-set entries, which then carried no `stage` key (the local
+  data dir had none, so the defect was invisible locally). Fixed
+  within phase scope: `_build_sign_entry` now serializes the
+  unstamped stage object for every entry source, and the test
+  checks a full page and no longer assumes the tier set.
+  Re-verified locally against a fresh data dir (86 targeted tests
+  passing, including the anchor-sets suite that seeds those
+  entries). Second CI run on the fixed code head `3ef6d225`
+  (run 38270045482): **all 7 checks completed / success** —
+  Backend tests (pytest), Frontend tests (Playwright), Evidence
+  Graph script smoke tests, Indus public validation checks, and
+  Shell wrappers (ubuntu / macos / windows). This record-filling
+  commit touches no code; its own CI run was likewise verified
+  all-green before the merge.
 - **Merge**: <!-- MERGE-EVIDENCE --> pending — this record ships in
   the phase PR; a record merged inside a PR cannot contain that
   PR's own merge sha, which is therefore named in the delivering

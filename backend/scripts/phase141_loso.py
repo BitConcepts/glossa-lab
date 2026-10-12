@@ -95,6 +95,29 @@ DROP_LABELS = {"Mohenjo-daro": "L-MD", "Harappa": "L-HA",
 def sha256_of(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
+def _canonical_anchors_sha256(path: Path) -> str:
+    """SHA-256 of the anchors file's pre-existing content.
+
+    Spec 029 Phase D (OD-1, 2026-10-12) added additive stage
+    keys (``stage``, ``stage_source``, ``stage_as_of``,
+    ``stage_history``, ``verified_unexplained``) to every
+    anchor record. Removing exactly those keys and
+    re-serializing canonically reproduces the pre-migration
+    file, whose hash is the pinned anchors SHA-256 — so
+    this digest keeps the original "anchors unchanged"
+    meaning after the OD-1 migration. The pinned constant
+    and every recorded hash value are unchanged.
+    """
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    for rec in doc.get("anchors", {}).values():
+        for key in ("stage", "stage_source", "stage_as_of",
+                    "stage_history", "verified_unexplained"):
+            rec.pop(key, None)
+    return hashlib.sha256(
+        json.dumps(doc, indent=2, ensure_ascii=False).encode("utf-8")
+    ).hexdigest()
+
+
 
 def fisher_exact_two_sided(a: int, b: int, c: int, d: int) -> float:
     """Two-sided Fisher exact p for [[a, b], [c, d]] with
@@ -323,7 +346,7 @@ def build_population() -> tuple[list[dict], dict, dict]:
 
 
 def build(out_path: Path) -> dict:
-    assert sha256_of(ANCHORS) == ANCHORS_SHA256, "anchors drift (pre)"
+    assert _canonical_anchors_sha256(ANCHORS) == ANCHORS_SHA256, "anchors drift (pre)"
     committed136 = json.loads(
         PHASE136_RESULTS.read_text("utf-8"))
     eligible, flow, inputs = build_population()
@@ -451,7 +474,7 @@ def build(out_path: Path) -> dict:
                    "phase141-freeze.md (under spec sec.5 and "
                    "phase139-freeze.md sec.4)"),
         "inputs": inputs,
-        "anchors_sha256": sha256_of(ANCHORS),
+        "anchors_sha256": _canonical_anchors_sha256(ANCHORS),
         "parameters": {"B": B_PERM, "seed": SEED,
                        "p_formula": "(1 + #{perm >= obs}) / (1 + B)",
                        "statistic": ("Cochran-Mantel-Haenszel "
@@ -508,7 +531,7 @@ def build(out_path: Path) -> dict:
             "Muse) at the direction of Tristen "
             "Pierson, per constitution section VI."),
     }
-    assert sha256_of(ANCHORS) == ANCHORS_SHA256, "anchors drift (post)"
+    assert _canonical_anchors_sha256(ANCHORS) == ANCHORS_SHA256, "anchors drift (post)"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(result, indent=2) + "\n",
                         encoding="utf-8")

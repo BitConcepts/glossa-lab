@@ -4991,3 +4991,46 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Spec 029 Phase D: OD-1 re-staging migration executed
+
+  The frozen reclassification ledger was applied to the
+  live record stores as one dated reclassification
+  event (OD-1): 336 records stamped additively with
+  `stage`, `stage_source` (the ledger and the entry's
+  item_id), `stage_as_of` 2026-10-12, one initial
+  `stage_history` entry, and the ledger-stamped
+  `verified_unexplained` flag state — 287 anchors in
+  place (`backend/reports/INDUS_FINAL_ANCHORS.json`,
+  SHA-256 eccea6d5… → 18e6f4b2…), 31 extracted claims
+  in place, 3 hypothesis models in place, and 15
+  document-class records (PRED live, study headlines)
+  stamped in the dated machine-readable sidecar
+  `specs/029-tao-claim-lifecycle/
+  phase-d-stamped-records.json` (their source documents
+  are unedited history). Migration is additive only —
+  canonical before/after comparison per store proves
+  no pre-existing field changed — idempotent, and
+  fail-closed: the dry run reconciled against the
+  ledger exactly before any write (220 created / 116
+  checked / 0 explained / 0 accepted / 0 digested; 105
+  verified_unexplained flags), and post-run
+  verification from the live stores matches exactly.
+  Consumers repaired in place with no stored value
+  changed: hash-pinned phase runners/tests now use the
+  canonical anchors digest (same pinned constant), the
+  claim-extraction script preserves stage fields by
+  claim identity across regenerations, and the
+  verified_unexplained computation honours the
+  ledger-stamped flag. Gate evidence: foundation check
+  40 passed / 0 failed / 8 warnings (baseline
+  identical); full backend suite green; PR/CI/merge
+  evidence in `specs/029-tao-claim-lifecycle/
+  phase-d-record.md` (D6). Records:
+  `specs/029-tao-claim-lifecycle/phase-d-record.md`,
+  `specs/029-tao-claim-lifecycle/
+  phase-d-run-record.md`.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

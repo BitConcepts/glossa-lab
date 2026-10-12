@@ -104,8 +104,17 @@ def test_frozen_parameters():
 
 def test_anchors(results):
     assert results["anchors_sha256"] == _ANCHORS_SHA256
+    # Spec 029 Phase D (OD-1, 2026-10-12): live anchors file carries
+    # additive stage stamps; canonicalizing by removing exactly the
+    # Phase D additive keys reproduces the pinned pre-migration hash.
+    _doc = json.loads(_ANCHORS.read_text("utf-8"))
+    for _rec in _doc["anchors"].values():
+        for _k in ("stage", "stage_source", "stage_as_of",
+                   "stage_history", "verified_unexplained"):
+            _rec.pop(_k, None)
     assert hashlib.sha256(
-        _ANCHORS.read_bytes()).hexdigest() == _ANCHORS_SHA256
+        json.dumps(_doc, indent=2, ensure_ascii=False).encode("utf-8")
+    ).hexdigest() == _ANCHORS_SHA256
 
 
 def test_reproduction_reproduces_phase136_exactly(results):

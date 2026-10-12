@@ -15,7 +15,23 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-11T13:32:36.306573"
+      "extracted_at": "2026-10-11T13:32:36.306573",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
     },
     {
       "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
@@ -26,7 +42,23 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-11T13:32:36.306584"
+      "extracted_at": "2026-10-11T13:32:36.306584",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
     },
     {
       "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
@@ -37,7 +69,23 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-11T13:32:36.344629"
+      "extracted_at": "2026-10-11T13:32:36.344629",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
     }
   ],
   "_citation": {

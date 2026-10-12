@@ -114,6 +114,29 @@ CHRONOLOGY_RIDER = (
 def sha256_of(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
+def _canonical_anchors_sha256(path: Path) -> str:
+    """SHA-256 of the anchors file's pre-existing content.
+
+    Spec 029 Phase D (OD-1, 2026-10-12) added additive stage
+    keys (``stage``, ``stage_source``, ``stage_as_of``,
+    ``stage_history``, ``verified_unexplained``) to every
+    anchor record. Removing exactly those keys and
+    re-serializing canonically reproduces the pre-migration
+    file, whose hash is the pinned anchors SHA-256 — so
+    this digest keeps the original "anchors unchanged"
+    meaning after the OD-1 migration. The pinned constant
+    and every recorded hash value are unchanged.
+    """
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    for rec in doc.get("anchors", {}).values():
+        for key in ("stage", "stage_source", "stage_as_of",
+                    "stage_history", "verified_unexplained"):
+            rec.pop(key, None)
+    return hashlib.sha256(
+        json.dumps(doc, indent=2, ensure_ascii=False).encode("utf-8")
+    ).hexdigest()
+
+
 
 def load_horus_with_id(path: Path) -> list[dict]:
     """Phase-137 load_horus, verbatim, plus the layer's
@@ -204,7 +227,7 @@ def run_configuration(analysis, sparse_base, table,
 
 
 def build(out_path: Path) -> dict:
-    assert sha256_of(ANCHORS) == ANCHORS_SHA256, "anchors drift (pre)"
+    assert _canonical_anchors_sha256(ANCHORS) == ANCHORS_SHA256, "anchors drift (pre)"
     layer_sha = sha256_of(HORUS84)
     assert layer_sha == LAYER_SHA256, f"layer hash drift: {layer_sha}"
 
@@ -389,7 +412,7 @@ def build(out_path: Path) -> dict:
                      "complete over the 5,410-row "
                      "population; composition_stratum "
                      "agreement asserted per row")},
-        "anchors_sha256": sha256_of(ANCHORS),
+        "anchors_sha256": _canonical_anchors_sha256(ANCHORS),
         "parameters": {
             "B": B_PERM, "seed": SEED,
             "p_formula": "(1 + #{chi2_perm >= chi2_obs}) / (1 + B)",
@@ -446,7 +469,7 @@ def build(out_path: Path) -> dict:
             "Muse) at the direction of Tristen "
             "Pierson, per constitution section VI."),
     }
-    assert sha256_of(ANCHORS) == ANCHORS_SHA256, "anchors drift (post)"
+    assert _canonical_anchors_sha256(ANCHORS) == ANCHORS_SHA256, "anchors drift (post)"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(result, indent=2) + "\n",
                         encoding="utf-8")

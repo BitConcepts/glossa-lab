@@ -43,7 +43,8 @@ from glossa_lab.phase113_battery import CorpusContext  # noqa: E402
 from glossa_lab.phase113_run import _gpu_device  # noqa: E402
 from glossa_lab.phase125_run import (  # noqa: E402
     ANCHORS_PATH, ANCHORS_SHA256, HOLDAT_EXPECTED, MAYIG_EXPECTED,
-    _find_holdat_csv, _sha256, load_holdat_inscriptions,
+    _canonical_anchors_sha256, _find_holdat_csv, _sha256,
+    load_holdat_inscriptions,
 )
 from glossa_lab.phase131_attribution import (  # noqa: E402
     NOISE_BAND_HI, NOISE_BAND_LO, NOISE_BAND_MEDIAN,
@@ -98,7 +99,7 @@ def _fmt(x, nd=6):
 
 
 def run_all(write: bool = True) -> dict:
-    anchors_before = _sha256(ANCHORS_PATH)
+    anchors_before = _canonical_anchors_sha256(ANCHORS_PATH)
     assert anchors_before == ANCHORS_SHA256, anchors_before
 
     # ── Frozen inputs (spec 022 section 2) ──

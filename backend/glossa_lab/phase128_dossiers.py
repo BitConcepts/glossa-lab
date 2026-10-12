@@ -77,6 +77,29 @@ SOVIET_LIMITATION = {
 def sha256_file(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
+def _canonical_anchors_sha256(path: Path) -> str:
+    """SHA-256 of the anchors file's pre-existing content.
+
+    Spec 029 Phase D (OD-1, 2026-10-12) added additive stage
+    keys (``stage``, ``stage_source``, ``stage_as_of``,
+    ``stage_history``, ``verified_unexplained``) to every
+    anchor record. Removing exactly those keys and
+    re-serializing canonically reproduces the pre-migration
+    file, whose hash is the pinned anchors SHA-256 — so
+    this digest keeps the original "anchors unchanged"
+    meaning after the OD-1 migration. The pinned constant
+    and every recorded hash value are unchanged.
+    """
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    for rec in doc.get("anchors", {}).values():
+        for key in ("stage", "stage_source", "stage_as_of",
+                    "stage_history", "verified_unexplained"):
+            rec.pop(key, None)
+    return hashlib.sha256(
+        json.dumps(doc, indent=2, ensure_ascii=False).encode("utf-8")
+    ).hexdigest()
+
+
 
 def pending_anchor_ids(anchors_doc: dict) -> list[str]:
     """The dossier universe: exactly the anchors whose
@@ -175,7 +198,7 @@ def _load_json(path: Path) -> dict:
 
 def build_dossiers(repo: Path) -> dict:
     anchors_path = repo / "backend/reports/INDUS_FINAL_ANCHORS.json"
-    sha_before = sha256_file(anchors_path)
+    sha_before = _canonical_anchors_sha256(anchors_path)
     if sha_before != EXPECTED_ANCHORS_SHA256:
         raise AssertionError(
             f"anchors sha256 drift: {sha_before} != {EXPECTED_ANCHORS_SHA256}"
@@ -374,7 +397,7 @@ def build_dossiers(repo: Path) -> dict:
         for b in d["buckets"]:
             buckets.setdefault(b, []).append(d["anchor_id"])
 
-    sha_after = sha256_file(anchors_path)
+    sha_after = _canonical_anchors_sha256(anchors_path)
     return {
         "phase": 128,
         "title": (

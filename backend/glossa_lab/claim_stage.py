@@ -242,7 +242,18 @@ def compute_verified_unexplained(
     the record itself (``claim_status`` / ``verdict`` / ``band``
     fields when present). The record's confidence tier is *not* a
     lane-1 verdict or band and never fires this flag on its own.
+
+    A record may also carry a **ledger-stamped** flag state: the
+    Spec 029 Phase D migration stamps ``verified_unexplained``
+    (from the frozen reclassification ledger — for anchors, the
+    Phase-108/109 strict-set derivation the audit used, which no
+    field a record itself carries can recompute) onto the record.
+    A stamped ``True`` fires the flag while the stage is below
+    ``explained``; it is OR-ed with the computed rule above, never
+    a replacement for it.
     """
+    if record.get("verified_unexplained") is True:
+        return stage_below_explained(record.get("stage"))
     eff_status = status if status is not None else record.get("claim_status")
     eff_verdict = verdict if verdict is not None else record.get("verdict")
     eff_band = band

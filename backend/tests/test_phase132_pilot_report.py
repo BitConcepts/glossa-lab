@@ -43,7 +43,18 @@ def test_release_gates_all_fail():
 
 
 def test_anchors_sha256_unchanged():
-    digest = hashlib.sha256(_ANCHORS.read_bytes()).hexdigest()
+    # Spec 029 Phase D (OD-1, 2026-10-12): the live anchors file
+    # carries additive stage stamps; its pre-existing content is
+    # unchanged — canonicalizing by removing exactly the Phase D
+    # additive keys reproduces the pinned pre-migration hash.
+    doc = json.loads(_ANCHORS.read_text("utf-8"))
+    for rec in doc["anchors"].values():
+        for k in ("stage", "stage_source", "stage_as_of",
+                  "stage_history", "verified_unexplained"):
+            rec.pop(k, None)
+    digest = hashlib.sha256(
+        json.dumps(doc, indent=2, ensure_ascii=False).encode("utf-8")
+    ).hexdigest()
     assert digest == _ANCHORS_SHA256
 
 

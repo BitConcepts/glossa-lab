@@ -1,0 +1,333 @@
+{
+  "record": "Spec 029 Phase D — dated machine-readable stage stamps for the reclassification-ledger classes with no live record store (registered_prediction, study_headline_claim)",
+  "date": "2026-10-12",
+  "source_ledger": "specs/029-tao-claim-lifecycle/reclassification-ledger.json",
+  "source_ledger_sha256": "e53a037e71439401f4114100b32495ff98adb58f8529fe83dfedde3b94d22b90",
+  "records": [
+    {
+      "item_id": "PRED-2026-001",
+      "class": "registered_prediction",
+      "live_source": "docs/PREDICTION_REGISTER.md",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:PRED-2026-001",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:PRED-2026-001"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry PRED-2026-001; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
+    },
+    {
+      "item_id": "PRED-2026-002",
+      "class": "registered_prediction",
+      "live_source": "docs/PREDICTION_REGISTER.md",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:PRED-2026-002",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:PRED-2026-002"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry PRED-2026-002; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
+    },
+    {
+      "item_id": "PRED-2026-003",
+      "class": "registered_prediction",
+      "live_source": "docs/PREDICTION_REGISTER.md",
+      "stage": "created",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:PRED-2026-003",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "created",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:PRED-2026-003"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry PRED-2026-003; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
+    },
+    {
+      "item_id": "PRED-2026-006",
+      "class": "registered_prediction",
+      "live_source": "docs/PREDICTION_REGISTER.md",
+      "stage": "checked",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:PRED-2026-006",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "checked",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:PRED-2026-006"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry PRED-2026-006; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
+    },
+    {
+      "item_id": "PRED-2026-007",
+      "class": "registered_prediction",
+      "live_source": "docs/PREDICTION_REGISTER.md",
+      "stage": "checked",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:PRED-2026-007",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "checked",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:PRED-2026-007"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry PRED-2026-007; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
+    },
+    {
+      "item_id": "STUDY-SPEC-019/PHASE-125",
+      "class": "study_headline_claim",
+      "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
+      "live_source_detail": "specs/019-phase125-cross-compilation-positional/",
+      "stage": "checked",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-019/PHASE-125",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "checked",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-019/PHASE-125"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPEC-019/PHASE-125; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
+    },
+    {
+      "item_id": "STUDY-SPEC-023/PHASE-132+383",
+      "class": "study_headline_claim",
+      "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
+      "live_source_detail": "specs/023-keyed-transcription-layer/",
+      "stage": "checked",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-023/PHASE-132+383",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "checked",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-023/PHASE-132+383"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPEC-023/PHASE-132+383; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
+    },
+    {
+      "item_id": "STUDY-SPEC-024/F1",
+      "class": "study_headline_claim",
+      "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
+      "live_source_detail": "specs/024-evidence-integration/",
+      "stage": "checked",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-024/F1",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "checked",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-024/F1"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPEC-024/F1; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": true
+    },
+    {
+      "item_id": "STUDY-SPEC-024/F2-HOLDAT",
+      "class": "study_headline_claim",
+      "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
+      "live_source_detail": "specs/024-evidence-integration/",
+      "stage": "checked",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-024/F2-HOLDAT",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "checked",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-024/F2-HOLDAT"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPEC-024/F2-HOLDAT; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
+    },
+    {
+      "item_id": "STUDY-SPEC-024/F3-ICIT",
+      "class": "study_headline_claim",
+      "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
+      "live_source_detail": "specs/024-evidence-integration/",
+      "stage": "checked",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-024/F3-ICIT",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "checked",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-024/F3-ICIT"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPEC-024/F3-ICIT; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": true
+    },
+    {
+      "item_id": "STUDY-SPEC-025/G1",
+      "class": "study_headline_claim",
+      "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
+      "live_source_detail": "specs/025-stage2-controlled-followup/",
+      "stage": "checked",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-025/G1",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "checked",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-025/G1"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPEC-025/G1; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": true
+    },
+    {
+      "item_id": "STUDY-SPEC-027/STAGE1-PHASE-392",
+      "class": "study_headline_claim",
+      "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
+      "live_source_detail": "specs/027-movement-culture-language/",
+      "stage": "checked",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-027/STAGE1-PHASE-392",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "checked",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-027/STAGE1-PHASE-392"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPEC-027/STAGE1-PHASE-392; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
+    },
+    {
+      "item_id": "STUDY-SPEC-028/ARM-A",
+      "class": "study_headline_claim",
+      "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
+      "live_source_detail": "specs/028-harappa-robustness/",
+      "stage": "checked",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-028/ARM-A",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "checked",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-028/ARM-A"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPEC-028/ARM-A; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
+    },
+    {
+      "item_id": "STUDY-SPEC-028/ARM-B",
+      "class": "study_headline_claim",
+      "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
+      "live_source_detail": "specs/028-harappa-robustness/",
+      "stage": "checked",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-028/ARM-B",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "checked",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-028/ARM-B"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPEC-028/ARM-B; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
+    },
+    {
+      "item_id": "STUDY-SPECS-001-023+PHASES-TO-141",
+      "class": "study_headline_claim",
+      "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
+      "live_source_detail": "specs/ (per-spec outcome records, Specs 001-023)",
+      "stage": "checked",
+      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPECS-001-023+PHASES-TO-141",
+      "stage_as_of": "2026-10-12",
+      "stage_history": [
+        {
+          "from_stage": null,
+          "to_stage": "checked",
+          "actor": "spec029-phase-d-restaging-migration",
+          "timestamp": "2026-10-12",
+          "evidence_refs": [
+            "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPECS-001-023+PHASES-TO-141"
+          ],
+          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPECS-001-023+PHASES-TO-141; no pre-existing field altered."
+        }
+      ],
+      "verified_unexplained": false
+    }
+  ]
+}

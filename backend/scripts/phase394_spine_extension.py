@@ -593,7 +593,7 @@ def main() -> int:
             route_details[route] = apply_record_route(pool, route,
                                                       payload)
         pool.dedupe()
-        interim[route] = criteria_only(assess(pool))
+        interim[route] = criteria_only(assess(pool.rows))
         # Section 3.5: the build is complete when the joint
         # targets are met on margins; later routes are not run
         # past a passing pool (their unrun status is recorded).
@@ -602,7 +602,7 @@ def main() -> int:
             stopped_early = route
             break
 
-    final = assess(pool)
+    final = assess(pool.rows)
     final_full = {
         label: {**a, "criteria": a["criteria"]}
         for label, a in final.items()}
@@ -684,8 +684,12 @@ def main() -> int:
     new_sites = sorted({r["program_site_id"] for r in pool.rows}
                        - known_sites)
     for site in new_sites:
-        first = next(r for r in pool.rows
-                     if r["program_site_id"] == site)
+        site_rows = [r for r in pool.rows
+                     if r["program_site_id"] == site]
+        first = next((r for r in site_rows
+                      if r.get("latitude") is not None
+                      and r.get("longitude") is not None),
+                     site_rows[0])
         gaz_out.append({
             "gazetteer_row_id": f"GAZ-P394-{site.replace(' ', '-')}",
             "program_site_id": site,

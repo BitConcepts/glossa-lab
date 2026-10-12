@@ -32,7 +32,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry yadav_2010_ngrams_manual_001; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "proposition_fingerprint": "fdd32acf462bf2d9da759fae422df691921d5ca597ca7d5c74d8e9d86a06a49f",
+      "merged_into": "yadav_2009_arxiv_manual_001"
     },
     {
       "claim_id": "yadav_2010_ngrams_manual_002",
@@ -59,7 +61,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry yadav_2010_ngrams_manual_002; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "proposition_fingerprint": "c5d0f0575c8378b1ab3b51ba889c77b6e729f5b24991e3be55a179baa4125129",
+      "merged_into": "yadav_2009_arxiv_manual_002"
     }
   ],
   "_citation": {

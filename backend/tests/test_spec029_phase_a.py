@@ -52,6 +52,12 @@ _ANCHORS_FILE = _REPO_ROOT / "backend" / "reports" / "INDUS_FINAL_ANCHORS.json"
 _PRE_CHANGE_SCORES = (
     Path(__file__).resolve().parent / "fixtures" / "spec029_pre_change_aee_scores.json"
 )
+# Spec 029 Phase I (D-B): successor fixture over the post-merge
+# 23-canonical-claim set; the pre-change fixture above is preserved
+# untouched and is still read by the Phase I tests.
+_POST_MERGE_SCORES = (
+    Path(__file__).resolve().parent / "fixtures" / "spec029_post_merge_aee_scores.json"
+)
 
 HUMAN = "Tristen Pierson"
 TS = "2026-10-12T12:00:00+00:00"
@@ -161,10 +167,21 @@ def test_stage_absent_maps_to_none_not_invented():
 
 def test_score_propagation_byte_identical_to_pre_change():
     """A2 regression: every current claim's AEE score dict equals the
-    score captured from the pre-change code (main a38cf92e)."""
+    score captured from the pre-change code (main a38cf92e).
+
+    Spec 029 Phase I supersession (D-B, 2026-10-12): the claim set
+    this test pins changed by owner order — the 31-record set was
+    deduplicated by proposition to 23 canonical claims (8 records
+    preserved as evidence instances), so the regression target is
+    now the successor fixture
+    ``fixtures/spec029_post_merge_aee_scores.json``. The pre-change
+    fixture is preserved untouched; Phase I's test file asserts
+    every surviving claim's score is byte-identical to its
+    pre-change value and reports the mean movement with its cause.
+    """
     if not _REAL_CLAIMS_DIR.exists():
         pytest.skip("extracted_claims dir not present")
-    expected = json.loads(_PRE_CHANGE_SCORES.read_text(encoding="utf-8"))
+    expected = json.loads(_POST_MERGE_SCORES.read_text(encoding="utf-8"))
     summary = assessment_summary(_REAL_CLAIMS_DIR)
     assert summary["total_claims"] == len(expected)
     for entry in summary["claims"]:
@@ -175,7 +192,7 @@ def test_score_propagation_byte_identical_to_pre_change():
         assert json.dumps(got, sort_keys=True) == json.dumps(want, sort_keys=True)
         # The lane-1 alias carries the same score, as a distinct key.
         assert entry["lane1_score"] == want
-    assert summary["mean_propagated_score"] == 0.484903
+    assert summary["mean_propagated_score"] == 0.497641
 
 
 # ── A3: transition service ───────────────────────────────────────────────
@@ -338,7 +355,17 @@ def test_flag_on_current_claim_set_matches_audit_shapes():
     """The audit flagged the 8 supported-class extracted-claim records;
     with scores in hand the high-band partially_falsified record is
     flagged too (FR-029-03's high-band disjunct) — 9 in total, and no
-    untested/contradicted record is flagged."""
+    untested/contradicted record is flagged.
+
+    Spec 029 Phase I supersession (D-B, 2026-10-12): this surface is
+    the scored canonical-claim set, which the merge reduced from 31
+    records to 23 canonical claims. Two of the audit's 8
+    supported-class records (the Yadav 2010 pair) are now evidence
+    instances of the Yadav 2009 canonicals and no longer appear as
+    claims here, so the supported class on this surface is 6 and
+    the flagged set is 7. The store still holds all 31 records
+    (merge, never delete) — the Phase I tests assert that side.
+    """
     if not _REAL_CLAIMS_DIR.exists():
         pytest.skip("extracted_claims dir not present")
     summary = assessment_summary(_REAL_CLAIMS_DIR)
@@ -348,12 +375,12 @@ def test_flag_on_current_claim_set_matches_audit_shapes():
         if e["glossa_claim_status"] in
         ("supported", "strongly_supported", "partially_supported")
     }
-    assert len(supported_class) == 8
+    assert len(supported_class) == 6
     assert supported_class <= flagged
     assert flagged == supported_class | {
         "indus_valley_script_deciphered_from_myth_65ff0a26_manual_002",
     }
-    assert len(flagged) == 9
+    assert len(flagged) == 7
 
 
 # ── A4: endpoint serialization ───────────────────────────────────────────
@@ -413,7 +440,11 @@ def test_aee_scores_endpoint_serializes_stage_and_lane1_distinctly(client):
         assert entry["lane1_score"] == entry["aee_score"]
         assert isinstance(entry["verified_unexplained"], bool)
     flagged = [e for e in d["claims"] if e["verified_unexplained"]]
-    assert len(flagged) == 9  # 8 supported-class + 1 high-band (see A5 test)
+    # Spec 029 Phase I supersession (D-B): 7 on the post-merge
+    # canonical set — 6 supported-class + 1 high-band (see A5 test;
+    # the two Yadav 2010 supported-class records are now evidence
+    # instances of the 2009 canonicals, not claims on this surface).
+    assert len(flagged) == 7
 
 
 def test_anchor_surface_serializes_stage_object(client):

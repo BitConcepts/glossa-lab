@@ -20,6 +20,18 @@ import json, re, sys
 from datetime import datetime
 from pathlib import Path
 
+# Spec 029 Phase I (D-B, tasks I4): the proposition fingerprint is
+# defined once, in the backend package; extraction intake gates on
+# it. Bootstrap the backend onto sys.path from the repo layout
+# (this script lives at glossa-indus/scripts/ in the repo).
+_BACKEND_DIR = Path(__file__).resolve().parents[2] / "backend"
+if str(_BACKEND_DIR) not in sys.path:
+    sys.path.insert(0, str(_BACKEND_DIR))
+from glossa_lab.proposition_fingerprint import (
+    DuplicatePropositionError,
+    claim_fingerprint,
+)
+
 BASE = Path(__file__).parents[1]
 LIT_DOCS = BASE / "literature" / "documents"
 PROCESSED_TEXT = BASE / "processed" / "cleaned_text"
@@ -337,6 +349,66 @@ def add_manual_claims(doc_id: str) -> list[dict]:
 
     return manual
 
+# ── Intake fingerprint gate (Spec 029 Phase I, tasks I4) ────────────────────
+
+def _store_fingerprint_groups(store_dir: Path) -> dict[str, dict]:
+    """Fingerprint → {members, canonical} over the existing store.
+
+    Computed from each record's text (never from a stored
+    fingerprint field), so the gate is correct even over records
+    that predate Phase I. A merged evidence instance
+    (``merged_into``) is a member of its proposition's group; the
+    group's canonical id is the record without the pointer.
+    """
+    groups: dict[str, dict] = {}
+    if not store_dir.exists():
+        return groups
+    for path in sorted(store_dir.glob("*.json")):
+        try:
+            data = json.loads(path.read_text("utf-8"))
+        except Exception:
+            continue
+        for record in data.get("claims", []):
+            if not isinstance(record, dict) or not record.get("claim_id"):
+                continue
+            fp = claim_fingerprint(record)
+            group = groups.setdefault(fp, {"members": set(), "canonical": None})
+            group["members"].add(record["claim_id"])
+            if not record.get("merged_into"):
+                group["canonical"] = record["claim_id"]
+    return groups
+
+
+def assert_no_duplicate_propositions(new_claims: list[dict],
+                                     store_dir: Path | None = None) -> None:
+    if store_dir is None:
+        store_dir = EXTRACTED_CLAIMS
+    """Fail loudly if any new claim duplicates an existing proposition.
+
+    A claim passes only if its proposition fingerprint is new, or
+    the claim is already a recorded member of that fingerprint's
+    group (itself the canonical record, or a merged evidence
+    instance of it) — which is exactly the wholesale-regeneration
+    case: regeneration recreates the same claim ids and must not
+    collide with itself. Any other collision raises
+    :class:`DuplicatePropositionError` naming both records, and
+    intake stops before anything is written (tasks I4).
+    """
+    groups = _store_fingerprint_groups(store_dir)
+    for claim in new_claims:
+        fp = claim_fingerprint(claim)
+        group = groups.setdefault(fp, {"members": set(), "canonical": None})
+        if group["members"] and claim.get("claim_id") not in group["members"]:
+            raise DuplicatePropositionError(
+                incoming_claim_id=str(claim.get("claim_id")),
+                existing_claim_id=str(group["canonical"] or sorted(group["members"])[0]),
+                fingerprint=fp,
+            )
+        group["members"].add(claim.get("claim_id"))
+        if not claim.get("merged_into"):
+            group["canonical"] = claim.get("claim_id")
+
+
 # ── Main ───────────────────────────────────────────────────────────────────────
 
 def process_document(doc_id: str) -> dict:
@@ -373,6 +445,10 @@ def process_document(doc_id: str) -> dict:
     # existing record for the same claim_id onto the regenerated
     # claim, verbatim. (Extraction is an automated actor capped at
     # 'checked'; it may not invent or alter stage state.)
+    # Spec 029 Phase I (D-B): the same carry-over preserves the
+    # merge state (proposition fingerprint, merged_into pointer,
+    # and a canonical record's evidence_instances) by claim
+    # identity — a regeneration must not un-merge a proposition.
     out = EXTRACTED_CLAIMS / f"{doc_id}.json"
     if out.exists():
         prior = json.loads(out.read_text("utf-8"))
@@ -380,13 +456,21 @@ def process_document(doc_id: str) -> dict:
             c.get("claim_id"): {
                 k: c[k]
                 for k in ("stage", "stage_source", "stage_as_of",
-                          "stage_history", "verified_unexplained")
+                          "stage_history", "verified_unexplained",
+                          "proposition_fingerprint", "merged_into",
+                          "evidence_instances")
                 if k in c
             }
             for c in prior.get("claims", [])
         }
         for claim in all_claims:
             claim.update(prior_stage.get(claim.get("claim_id"), {}))
+
+    # Spec 029 Phase I (tasks I4): the intake fingerprint gate runs
+    # after the merge-state carry-over (so a regeneration's known
+    # instances are recognised as group members) and before any
+    # write: a duplicate proposition stops intake loudly.
+    assert_no_duplicate_propositions(all_claims, EXTRACTED_CLAIMS)
 
     # Save claims
     record = {

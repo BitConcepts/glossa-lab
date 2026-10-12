@@ -1,0 +1,381 @@
+{
+  "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001": {
+    "band": "low",
+    "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.1625,
+      "falsifiability": 0.0,
+      "independence": 0.5
+    },
+    "direct_score": 0.289375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources"
+    ],
+    "propagated_score": 0.289375
+  },
+  "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002": {
+    "band": "low",
+    "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.1625,
+      "falsifiability": 0.0,
+      "independence": 0.5
+    },
+    "direct_score": 0.289375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources"
+    ],
+    "propagated_score": 0.289375
+  },
+  "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003": {
+    "band": "low",
+    "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.1625,
+      "falsifiability": 0.0,
+      "independence": 0.5
+    },
+    "direct_score": 0.289375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources"
+    ],
+    "propagated_score": 0.289375
+  },
+  "ancient_writing_and_modern_technologies_51831ac9_statisti_0004": {
+    "band": "low",
+    "claim_id": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.1625,
+      "falsifiability": 0.0,
+      "independence": 0.5
+    },
+    "direct_score": 0.289375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources"
+    ],
+    "propagated_score": 0.289375
+  },
+  "farmer_sproat_witzel_2004_manual_001": {
+    "band": "unknown",
+    "claim_id": "farmer_sproat_witzel_2004_manual_001",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0.75,
+      "evidence": 0.1625,
+      "falsifiability": 1.0,
+      "independence": 0.5
+    },
+    "direct_score": 0.0,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources",
+      "Contradiction penalty 0.750"
+    ],
+    "propagated_score": 0.0
+  },
+  "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001": {
+    "band": "low",
+    "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.1625,
+      "falsifiability": 0.0,
+      "independence": 0.5
+    },
+    "direct_score": 0.289375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources"
+    ],
+    "propagated_score": 0.289375
+  },
+  "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002": {
+    "band": "low",
+    "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.1625,
+      "falsifiability": 0.0,
+      "independence": 0.5
+    },
+    "direct_score": 0.289375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources"
+    ],
+    "propagated_score": 0.289375
+  },
+  "indus_valley_script_deciphered_from_myth_65ff0a26_manual_001": {
+    "band": "low",
+    "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_001",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.1625,
+      "falsifiability": 1.0,
+      "independence": 0.5
+    },
+    "direct_score": 0.439375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources"
+    ],
+    "propagated_score": 0.439375
+  },
+  "indus_valley_script_deciphered_from_myth_65ff0a26_manual_002": {
+    "band": "high",
+    "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_002",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.706875,
+      "falsifiability": 1.0,
+      "independence": 1.0
+    },
+    "direct_score": 0.838781,
+    "notes": [
+      "No observed supporting evidence"
+    ],
+    "propagated_score": 0.838781
+  },
+  "indus_valley_script_deciphered_from_myth_65ff0a26_manual_003": {
+    "band": "low",
+    "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_003",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.1625,
+      "falsifiability": 1.0,
+      "independence": 0.5
+    },
+    "direct_score": 0.439375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources"
+    ],
+    "propagated_score": 0.439375
+  },
+  "indus_valley_script_deciphered_from_myth_65ff0a26_manual_004": {
+    "band": "low",
+    "claim_id": "indus_valley_script_deciphered_from_myth_65ff0a26_manual_004",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.1625,
+      "falsifiability": 1.0,
+      "independence": 0.5
+    },
+    "direct_score": 0.439375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources"
+    ],
+    "propagated_score": 0.439375
+  },
+  "parpola_2010_dravidian_solution_manual_001": {
+    "band": "high",
+    "claim_id": "parpola_2010_dravidian_solution_manual_001",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 1.0,
+      "falsifiability": 1.0,
+      "independence": 1.0
+    },
+    "direct_score": 1.0,
+    "notes": [],
+    "propagated_score": 1.0
+  },
+  "parpola_2010_dravidian_solution_manual_002": {
+    "band": "high",
+    "claim_id": "parpola_2010_dravidian_solution_manual_002",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.706875,
+      "falsifiability": 1.0,
+      "independence": 1.0
+    },
+    "direct_score": 0.838781,
+    "notes": [
+      "No observed supporting evidence"
+    ],
+    "propagated_score": 0.838781
+  },
+  "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001": {
+    "band": "low",
+    "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.1625,
+      "falsifiability": 0.0,
+      "independence": 0.5
+    },
+    "direct_score": 0.289375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources"
+    ],
+    "propagated_score": 0.289375
+  },
+  "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002": {
+    "band": "low",
+    "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.1625,
+      "falsifiability": 0.0,
+      "independence": 0.5
+    },
+    "direct_score": 0.289375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources"
+    ],
+    "propagated_score": 0.289375
+  },
+  "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001": {
+    "band": "low",
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.1625,
+      "falsifiability": 0.0,
+      "independence": 0.5
+    },
+    "direct_score": 0.289375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources"
+    ],
+    "propagated_score": 0.289375
+  },
+  "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001": {
+    "band": "high",
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.706875,
+      "falsifiability": 1.0,
+      "independence": 1.0
+    },
+    "direct_score": 0.838781,
+    "notes": [
+      "No observed supporting evidence"
+    ],
+    "propagated_score": 0.838781
+  },
+  "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002": {
+    "band": "low",
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.1625,
+      "falsifiability": 1.0,
+      "independence": 0.5
+    },
+    "direct_score": 0.439375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources"
+    ],
+    "propagated_score": 0.439375
+  },
+  "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003": {
+    "band": "high",
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.706875,
+      "falsifiability": 1.0,
+      "independence": 1.0
+    },
+    "direct_score": 0.838781,
+    "notes": [
+      "No observed supporting evidence"
+    ],
+    "propagated_score": 0.838781
+  },
+  "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004": {
+    "band": "low",
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.1625,
+      "falsifiability": 1.0,
+      "independence": 0.5
+    },
+    "direct_score": 0.439375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources"
+    ],
+    "propagated_score": 0.439375
+  },
+  "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005": {
+    "band": "low",
+    "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 0.1625,
+      "falsifiability": 1.0,
+      "independence": 0.5
+    },
+    "direct_score": 0.439375,
+    "notes": [
+      "No observed supporting evidence",
+      "Fewer than two independent supporting sources"
+    ],
+    "propagated_score": 0.439375
+  },
+  "yadav_2009_arxiv_manual_001": {
+    "band": "high",
+    "claim_id": "yadav_2009_arxiv_manual_001",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 1.0,
+      "falsifiability": 1.0,
+      "independence": 1.0
+    },
+    "direct_score": 1.0,
+    "notes": [],
+    "propagated_score": 1.0
+  },
+  "yadav_2009_arxiv_manual_002": {
+    "band": "high",
+    "claim_id": "yadav_2009_arxiv_manual_002",
+    "components": {
+      "boundary": 1.0,
+      "contradiction_penalty": 0,
+      "evidence": 1.0,
+      "falsifiability": 0.0,
+      "independence": 1.0
+    },
+    "direct_score": 0.85,
+    "notes": [],
+    "propagated_score": 0.85
+  }
+}

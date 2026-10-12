@@ -32,7 +32,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry parpola_2010_dravidian_solution_manual_001; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "proposition_fingerprint": "89a4fd8fb4b9314464f0e9bc68e67db41e4f9c4af85e50e7d3dd17a80c2c4707"
     },
     {
       "claim_id": "parpola_2010_dravidian_solution_manual_002",
@@ -73,7 +74,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry parpola_2010_dravidian_solution_manual_002; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "proposition_fingerprint": "5822973463a0d055cf5f4b0cd9338021ffc415cc981284443bf2934c94c8c728"
     }
   ],
   "_citation": {

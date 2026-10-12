@@ -36,7 +36,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry farmer_sproat_witzel_2004_manual_001; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "proposition_fingerprint": "52e6a4be0593f83faf0942788546c5d678ada4362a1c701714482a42ce4fdd4c"
     }
   ],
   "_citation": {

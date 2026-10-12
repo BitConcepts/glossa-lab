@@ -5034,3 +5034,48 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Spec 029 Phase H: D-A anchor annotation (total validation_status, computed strict_set, declared schema)
+
+  D-A executed on the canonical anchors file
+  (`backend/reports/INDUS_FINAL_ANCHORS.json`, SHA-256
+  18e6f4b2… → df0cf620…): every one of the 287 anchors
+  now carries an explicit `validation_status` —
+  pre-existing values preserved verbatim (44
+  `pending_non_sa_validation`, 113
+  `premise_superseded`) and the 130 records that
+  carried none annotated from their own provenance
+  (94 `strict_sa_independent`, 33
+  `sa_in_provenance_chain` — the audit's chained HIGH
+  anchors, now distinguishable from strict HIGH anchors
+  in the file itself — and 3 `no_validation_record`) —
+  and a computed `strict_set` flag from the Phase-108
+  register + Phase-109 `strict_sa_independent_hm`
+  join, reconciling exactly to the canonical strict
+  core (94 = 90 HIGH + 4 MEDIUM; membership verified
+  against the frozen reclassification ledger's checked
+  set), with the rule's identifier and version recorded
+  in the file metadata. A declared schema
+  (`specs/029-tao-claim-lifecycle/anchors-schema.json`)
+  pins the file's shape, and a CI validator
+  (`backend/tests/test_spec029_phase_h.py`, over
+  `annotate_phase_h_anchors.validate_anchors_doc`)
+  fails on any undeclared shape, any missing or
+  out-of-vocabulary status, and any stored flag that
+  disagrees with its recomputation. Annotation is
+  additive only: stripping exactly the Phase H fields
+  reproduces the Phase-D-stamped bytes canonically,
+  and stripping Phase D + Phase H reproduces the
+  pre-migration bytes. No tier, reading, basis, or
+  existing value changed. The canonical-hash
+  helpers/tests Phase D canonicalized were extended
+  the same way (pinned constants unchanged). Gate
+  evidence: foundation check 40 passed / 0 failed /
+  8 warnings (baseline identical); full backend suite
+  1227 passed / 6 skipped / 0 failed; PR/CI/merge
+  evidence in `specs/029-tao-claim-lifecycle/
+  phase-h-record.md` (H5).
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

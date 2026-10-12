@@ -1078,15 +1078,28 @@ async def dashboard_decipherment() -> dict[str, Any]:
 
     # ── 1. Final anchor set (always present post-cleanup) ─────────────────
     final_path = backend_reports / "INDUS_FINAL_ANCHORS.json"
-    anchors_summary: dict[str, Any] = {"total": 0, "by_confidence": {}}
+    anchors_summary: dict[str, Any] = {
+        "total": 0, "by_confidence": {}, "by_stage": {}, "n_unstamped_stage": 0,
+    }
     archived_at: str = "2026-05-17"
     if final_path.exists():
         try:
             fa_data = json.loads(final_path.read_text(encoding="utf-8"))
             by_conf: dict[str, int] = {"HIGH": 0, "MEDIUM": 0, "LOW": 0, "UNCERTAIN": 0}
+            # Spec 029 (FR-029-01): lane-2 stage counts, kept distinct
+            # from the lane-1 confidence counts above. Anchors without
+            # a stamped stage (all of them until the Phase D migration)
+            # are counted as unstamped — a stage is never invented.
+            by_stage: dict[str, int] = {}
+            n_unstamped_stage = 0
             for _s, info in (fa_data.get("anchors") or {}).items():
                 c = (info.get("confidence") or "LOW").upper()
                 by_conf[c] = by_conf.get(c, 0) + 1
+                _stage = info.get("stage")
+                if _stage:
+                    by_stage[str(_stage)] = by_stage.get(str(_stage), 0) + 1
+                else:
+                    n_unstamped_stage += 1
 
             n_hm = by_conf.get("HIGH", 0) + by_conf.get("MEDIUM", 0)
 
@@ -1134,6 +1147,11 @@ async def dashboard_decipherment() -> dict[str, Any]:
                 "total":        n_hm,
                 "total_all":    sum(by_conf.values()),  # all entries incl. LOW
                 "by_confidence": by_conf,
+                # Lane-2 lifecycle stage distribution (Spec 029),
+                # serialized as its own object, distinct from the
+                # lane-1 confidence summary above.
+                "by_stage": by_stage,
+                "n_unstamped_stage": n_unstamped_stage,
                 "n_high":       by_conf.get("HIGH", 0),
                 "n_medium":     by_conf.get("MEDIUM", 0),
                 "n_low":        by_conf.get("LOW", 0),

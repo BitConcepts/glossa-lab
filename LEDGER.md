@@ -4936,3 +4936,58 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Spec 029 Phase A: stage axis and transition core
+
+- Phase A (tasks A1–A6; FR-029-01…03) implemented on
+  branch `impl/029-phase-a-stage-core` from main
+  `a38cf92e`: new module `backend/glossa_lab/
+  claim_stage.py` carries the additive stage shape
+  (`stage`, `stage_source`, `stage_as_of`, append-only
+  `stage_history`) shared by extracted-claim and anchor
+  records, with unstamped defaults — no live record was
+  stamped or edited (stamping is Phase D's ledger
+  replay). `aee_core.claim_from_glossa` maps the stage
+  axis as a distinct object in Claim metadata, never
+  folded into ClaimStatus or confidence; a regression
+  test pins score propagation byte-identical to the
+  pre-change scores captured at `a38cf92e` over the
+  current 31-claim set (fixture in `backend/tests/
+  fixtures/`). The transition service
+  (`transition_stage`) is the single writer of stage
+  changes: one-step-forward legality, reasoned
+  demotion, automated actors allowlisted to
+  created/checked and fail-closed above checked, a
+  named-human actor required above checked (a process
+  name never validates), and stage/source/as_of written
+  together with the appended history entry.
+  `GET /claims`, `GET /claims/aee-scores`, the signs
+  (anchor) surface, and the dashboard decipherment
+  summary serialize stage (with provenance and history
+  summary) and lane-1 score as distinct objects.
+  `verified_unexplained` is computed per FR-029-03 and
+  exposed on those surfaces (filterable on
+  `GET /claims`); on the current claim set it flags the
+  audit's 8 supported-class records, plus the
+  partially_falsified / band-high record under the
+  rule's high-band disjunct. Gate evidence: foundation
+  check 40 passed / 0 failed / 8 warnings (baseline
+  identical, no new warnings); full backend suite
+  2112 passed, 5 skipped, 0 failed; new Phase A tests
+  in `backend/tests/test_spec029_phase_a.py`. CI on
+  PR #169: the first run failed Backend tests on the
+  anchor-surface test (signs-index entries from anchor
+  sets carried no stage key in CI's seeded data; fixed
+  by serializing the stage object for every entry
+  source in `_build_sign_entry`); the run on the fixed
+  head `3ef6d225` (run 38270045482) is all 7 checks
+  success. Record:
+  `specs/029-tao-claim-lifecycle/phase-a-record.md`.
+  Honest limitations recorded there: FR-029-06/07 gate
+  records above checked are Phase B machinery; anchor
+  risk flags from the audit's strict rule are stamped
+  by Phase D, not recomputed from confidence tiers.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

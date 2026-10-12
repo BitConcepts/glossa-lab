@@ -164,13 +164,25 @@ async def list_claims(
     limit: int = 200,
     offset: int = 0,
     aee: bool = False,
+    verified_unexplained: bool | None = None,
 ) -> dict[str, Any]:
     """List all extracted claims across all registered documents.
 
     With ``?aee=true`` each returned claim gains an additive ``aee_score``
     field scored by the Applied Epistemic Engineering library
     (``glossa_lab.aee_core``); the default response shape is unchanged.
+
+    Spec 029 (FR-029-01/03): every returned claim also carries its
+    lane-2 lifecycle ``stage`` serialized as a distinct object (stage
+    value, provenance, and history summary — ``stage: None`` until a
+    record is stamped; a stage is never invented here) and the computed
+    ``verified_unexplained`` risk flag, which the
+    ``?verified_unexplained=true/false`` parameter can filter on.
+    The lane-1 score, when requested, stays a separate object
+    (``aee_score`` / ``lane1_score``) — never folded into ``stage``.
     """
+    from glossa_lab.claim_stage import compute_verified_unexplained, serialize_stage  # noqa: PLC0415
+
     _CLAIMS_DIR.mkdir(parents=True, exist_ok=True)
     all_claims: list[dict[str, Any]] = []
     for f in sorted(_CLAIMS_DIR.glob("*.json")):
@@ -191,19 +203,49 @@ async def list_claims(
                 signs_involved = " ".join(claim.get("signs_involved") or [])
                 if sign.lower() not in signs_involved.lower():
                     continue
-            all_claims.append({
+            entry = {
                 **claim,
                 "_source_file": f.stem,
-            })
+            }
+            entry["stage"] = serialize_stage(claim)
+            entry["verified_unexplained"] = compute_verified_unexplained(claim)
+            if verified_unexplained is not None and entry["verified_unexplained"] != verified_unexplained:
+                continue
+            all_claims.append(entry)
 
     total = len(all_claims)
     page = all_claims[offset: offset + limit]
     if aee and page:
         from glossa_lab.aee_core import score_claim_dicts  # noqa: PLC0415
 
-        scores = score_claim_dicts(page)
+        # Score the raw records, not the serialized entries: on an
+        # entry, ``stage`` is the serialized stage object, while the
+        # AEE adapter reads the record's flat stage fields.
+        raw_page = []
         for claim in page:
-            claim["aee_score"] = scores.get(str(claim.get("claim_id") or ""))
+            raw = dict(claim)
+            stage_obj = claim.get("stage") or {}
+            raw["stage"] = stage_obj.get("stage")
+            raw["stage_source"] = stage_obj.get("stage_source")
+            raw["stage_as_of"] = stage_obj.get("stage_as_of")
+            raw["stage_history"] = stage_obj.get("stage_history") or []
+            raw_page.append(raw)
+        scores = score_claim_dicts(raw_page)
+        for claim in page:
+            score = scores.get(str(claim.get("claim_id") or ""))
+            claim["aee_score"] = score
+            claim["lane1_score"] = score
+            # Recompute with the lane-1 score in hand: a high score
+            # band can fire the flag where the status alone did not.
+            # (claim["stage"] is the serialized stage object here, so
+            # the flag computation reads the raw stage value from it.)
+            claim["verified_unexplained"] = compute_verified_unexplained(
+                {
+                    "stage": claim["stage"].get("stage"),
+                    "claim_status": claim.get("claim_status"),
+                },
+                score=score,
+            )
     return {
         "claims": page,
         "total": total,
@@ -219,6 +261,11 @@ async def claims_aee_scores() -> dict[str, Any]:
     Scores are computed by the Applied Epistemic Engineering library via
     ``glossa_lab.aee_core.assessment_summary`` — see that module for the
     Glossa→AEE mapping. Existing endpoints are unaffected.
+
+    Spec 029 (FR-029-01/03): each per-claim entry serializes the lane-2
+    ``stage`` object and the lane-1 score (``aee_score`` /
+    ``lane1_score``) as distinct objects, plus the computed
+    ``verified_unexplained`` risk flag.
     """
     from glossa_lab.aee_core import assessment_summary  # noqa: PLC0415
 

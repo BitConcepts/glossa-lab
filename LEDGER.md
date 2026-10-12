@@ -5030,6 +5030,76 @@ constitution sec.VI.
   `specs/029-tao-claim-lifecycle/phase-d-record.md`,
   `specs/029-tao-claim-lifecycle/
   phase-d-run-record.md`.
+## 2026-10-12 — Spec 030 design draft (Q6 chronology-spine extension) + Spec 027 Stage 2/Q7 adjudication packet
+
+Internal design work only, at the owner's direction
+(2026-10-12: "Do all we can do today, no reaching out
+yet"): nothing frozen, nothing executed, no external
+contact. Two documents, one draft PR, prepared from
+branch point `028d416c` (Spec 029 Phase A merge).
+
+**Spec 030 — Q6 chronology-spine extension (design
+draft).** New spec directory
+`specs/030-q6-chronology-spine-extension/` (spec.md +
+claims.json, F030-C01…C07, all draft; the register is
+machine-validated: unique IDs, dependencies resolve,
+acyclic, every claim carries a falsifier, evidence
+list, and boundary confirmation). Q6 itself stays
+owned by Spec 027 (F027-C16); Spec 030 owns only the
+data extension. The design works from the frozen
+Stage 0 criteria (stage0-freeze.md §4) and the Stage 0
+values verified at row level against
+`data/movement/chronology_rows.jsonl`: C1 = 1 region
+of ≥3 (PK only; IN holds 44 rows / 10 sites, all
+unassessed; TM holds 3 single-row sites; IR holds one
+site in total; FI cannot qualify); C2 = 5 window d/a
+sites of ≥10 (in-spine grade-up ceiling is 9, so new
+window-dated sites are mathematically required);
+C3 = 0.0 short-lived share of ≥0.5 — the binding
+constraint, stated parametrically: with g long-lived
+grade-ups, net new short-lived window d/a rows
+s ≥ 31 + g, so long-lived grade-ups raise the
+requirement row for row and tracing order is a design
+decision (Ask 3); C4 passes at 70 BP and is a stop
+condition, not a target. Five routes in stop-point
+order (R5 XRONOS re-retrieval → R1 origin-record
+tracing → R2 c14bazAAR database audit → R4 TwoRains
+supplement audit → R3 targeted published-date
+extraction, `open_access_read_only` under the
+Phase-124 precedent); integrity rules extend Stage 0's
+(trace-or-don't-build, lab-code dedupe, grading and
+material classification on origin records only,
+CONTESTED sensitivity reported per criterion, no
+calibration computed); the re-test is the §4 assessment
+verbatim, margins only, with SUPPORTED-FOR-FREEZE-
+DESIGN or NOT-YET-TESTABLE as its only outcomes and a
+negative extension closure recorded as a valid result
+(F030-C07). Five asks for a future adjudication (§9),
+including the coordinate-less-row rule and whether
+the CONTESTED sensitivity binds.
+
+**Spec 027 Stage 2 / Q7 adjudication packet.**
+`specs/027-movement-culture-language/stage2-q7-adjudication-packet.md`
+— a pre-decision packet in the house adjudication
+format, not an adjudication. It names Q7's actual
+gate (the D8 source/licence audit has never been run;
+no lawful provenance link set exists), and puts six
+asks with options and program recommendations: Ask 1
+D8 audit sequenced Law (2011) → Kenoyer/Vidale →
+Meluhha with stop rules (1B); Ask 2 two-tier provenance
+links, instrumental primary / visual-only labelled
+sensitivity (2B); Ask 3 each response arm on its own
+eligible site set, never pooled (3A); Ask 4 Q7 does
+NOT depend on the Spec 030 spine extension — period
+eligibility is served by Stage 0 gazetteer labels (4A);
+Ask 5 inherit the Spec 026/027 control and verdict
+discipline wholesale, minimum-support fixed from
+margins after the D8 audit (5A); Ask 6 Stage 1's
+publication and OSF-registration posture mirrored
+(6A). Dependencies table and explicit non-goals
+included (no people/language conclusion, no Q1
+upgrade, no digitisation before rights clearance, no
+rights-holder contact under the packet).
 
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per

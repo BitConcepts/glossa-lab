@@ -91,7 +91,7 @@ def test_dedupe_merges_oxa1097_triple():
     assert merged["context_association_grade"] == "associated"
     # The merged rows disagreed on the site assertion (SKT vs
     # SKT 3): the conflict is reported, not silently resolved.
-    assert any(c["lab_code"] == "OXA-1097"
+    assert any(p394.lab_key(c["lab_code"]) == p394.lab_key("OxA-1097")
                for c in report["site_assertion_conflicts"])
     # Dedupe must not lose graded evidence: the deduped
     # baseline still holds all 31 window d/a measurements at

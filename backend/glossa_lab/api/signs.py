@@ -20,6 +20,8 @@ from typing import Any
 
 from fastapi import APIRouter, HTTPException, Query
 
+from glossa_lab.claim_stage import compute_verified_unexplained, serialize_stage
+
 router = APIRouter(prefix="/api/v1/signs", tags=["signs"])
 _log = logging.getLogger("glossa_lab.api.signs")
 
@@ -86,6 +88,13 @@ def _build_sign_entry(
         "wells_ids": wells_ids or [],
         "mahadevan_ids": mahadevan_ids or [],
         "numbering_system": numbering_system,
+        # Spec 029 (FR-029-01/03): every entry on this surface —
+        # final anchors, staging entries, and anchor-set pairs alike
+        # — serializes the lane-2 stage as a distinct object,
+        # unstamped by default. The final-anchors loader overwrites
+        # these with the anchor record's own stage fields.
+        "stage": serialize_stage(extra or {}),
+        "verified_unexplained": compute_verified_unexplained(extra or {}),
         **(extra or {}),
     }
 
@@ -129,11 +138,6 @@ def _load_final_anchors() -> None:
             # carries no lane-1 verdict or score band on this surface,
             # so its risk flag can only fire from stage/verdict fields
             # the record itself carries.
-            from glossa_lab.claim_stage import (  # noqa: PLC0415
-                compute_verified_unexplained,
-                serialize_stage,
-            )
-
             entry["stage"] = serialize_stage(info)
             entry["verified_unexplained"] = compute_verified_unexplained(info)
             _SIGNS_INDEX[sid] = entry

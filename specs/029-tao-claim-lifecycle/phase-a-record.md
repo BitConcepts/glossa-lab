@@ -69,8 +69,11 @@ as distinct objects on every Phase A surface:
   and `verified_unexplained`.
 - Anchor surfaces: the signs API (`backend/glossa_lab/api/signs.py`,
   the `INDUS_FINAL_ANCHORS.json` surface) adds the same `stage`
-  object and `verified_unexplained` to each anchor entry, separate
-  from its lane-1 `confidence` tier; the dashboard decipherment
+  object and `verified_unexplained` to each entry — final anchors
+  from their own record fields, and staging / anchor-set entries
+  (which share the index) as unstamped stage objects from
+  `_build_sign_entry` — separate from its lane-1 `confidence` tier;
+  the dashboard decipherment
   summary (`backend/glossa_lab/api/dashboard.py`) gains an additive
   lane-2 `by_stage` distribution plus `n_unstamped_stage` (287 at
   this phase, honestly unstamped until Phase D), distinct from
@@ -127,7 +130,17 @@ current-claim-set audit reconciliation. Targeted run (Phase A +
   side effect; those files were restored byte-identical before
   commit and are not part of this phase's diff.)
 - **CI**: <!-- CI-EVIDENCE --> pending — filled from the check
-  runs' own conclusions before merge.
+  runs' own conclusions before merge. First CI run on head
+  `f2d3e44b` (run 38265919153): 6 of 7 checks succeeded;
+  **Backend tests (pytest) failed** on this phase's anchor-surface
+  test — in CI the signs index also holds anchor-set entries,
+  which then carried no `stage` key (the local data dir had none,
+  so the defect was invisible locally). Fixed within phase scope:
+  `_build_sign_entry` now serializes the unstamped stage object
+  for every entry source, and the test checks a full page and no
+  longer assumes the tier set. Re-verified locally against a
+  fresh data dir (86 targeted tests passing, including the
+  anchor-sets suite that seeds those entries).
 - **Merge**: <!-- MERGE-EVIDENCE --> pending — this record ships in
   the phase PR; a record merged inside a PR cannot contain that
   PR's own merge sha, which is therefore named in the delivering

@@ -409,7 +409,11 @@ def test_aee_scores_endpoint_serializes_stage_and_lane1_distinctly(client):
 
 
 def test_anchor_surface_serializes_stage_object(client):
-    r = client.get("/api/v1/signs?limit=5")
+    # Every entry on the surface — final anchors and any staging /
+    # anchor-set entries sharing the index — must carry the stage
+    # object; check a full page, not a sample that could miss a
+    # non-anchor entry source.
+    r = client.get("/api/v1/signs?limit=500")
     assert r.status_code == 200, r.text
     items = r.json()["items"]
     if not items:
@@ -419,5 +423,8 @@ def test_anchor_surface_serializes_stage_object(client):
         assert item["stage"]["stage"] is None  # unstamped until Phase D
         assert item["stage"]["stamped"] is False
         assert isinstance(item["verified_unexplained"], bool)
-        # The lane-1 confidence tier stays its own field, not a stage.
-        assert item["confidence"] in ("HIGH", "MEDIUM", "LOW", "UNCERTAIN")
+        # The lane-1 confidence tier stays its own field, not a stage:
+        # it is a tier string (HIGH/MEDIUM/LOW/UNCERTAIN/CANDIDATE),
+        # never one of the lane-2 stage names.
+        assert isinstance(item["confidence"], str) and item["confidence"]
+        assert item["confidence"].lower() not in STAGES

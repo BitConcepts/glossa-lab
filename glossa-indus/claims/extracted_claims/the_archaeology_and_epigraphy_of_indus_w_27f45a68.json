@@ -31,7 +31,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "proposition_fingerprint": "43036bc7f5bd12486d2409cb9474105586a2966a7530c88a213fa25235ba593a"
     },
     {
       "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
@@ -58,7 +59,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "proposition_fingerprint": "977a00db6590b4698028ec4e8de8f5aff68978298393b91a140f32662bd4c1db"
     },
     {
       "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
@@ -85,7 +87,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "proposition_fingerprint": "a4874349e0cc0ba23b711f10c78f60372639c2dc6f352165b48d4a9e44272469",
+      "merged_into": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004"
     }
   ],
   "_citation": {

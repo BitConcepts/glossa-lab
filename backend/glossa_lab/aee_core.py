@@ -74,6 +74,20 @@ Mapping decisions (verified against aee 1.0.4, ``aee/model.py``):
   ``backend/tests/test_spec029_phase_a.py`` pins the pre-change
   scores byte-for-byte). An unstamped record maps to
   ``stage=None`` — a stage is never invented by the adapter.
+* Proposition deduplication (Spec 029 Phase I, D-B): a record
+  carrying a ``merged_into`` pointer is an *evidence instance* of
+  the canonical claim it points to, not a claim in its own right.
+  ``claims_from_record`` / ``load_claims_from_dir`` therefore skip
+  instance records: a merged proposition enters the graph exactly
+  once, through its canonical record, so its evidence counts its
+  origin group **once** (the duplicate extraction no longer
+  double-counts one proposition's evidence at set level). The
+  canonical record's own evidence fields are unchanged by the
+  merge; the instances attached under its ``evidence_instances``
+  field are preserved records, surfaced in ``Claim.metadata`` as
+  instance claim ids for trail inspectability, and are NOT
+  converted into AEE Evidence — converting them would re-create
+  the double count D-B removes.
 """
 
 from __future__ import annotations
@@ -204,6 +218,20 @@ def claim_from_glossa(raw: dict[str, Any], *, source_file: str = "") -> Claim:
                 "author", "extracted_at", "required_data"):
         if raw.get(key) not in (None, "", []):
             metadata[key] = raw[key]
+    # Spec 029 Phase I (D-B): merged evidence instances preserved on
+    # the canonical record — ids only in metadata (trail
+    # inspectability); the instance records themselves are NOT
+    # evidence inputs (origin group counted once — see docstring).
+    instances = raw.get("evidence_instances") or []
+    instance_ids = [
+        str(inst.get("claim_id"))
+        for inst in instances
+        if isinstance(inst, dict) and inst.get("claim_id")
+    ]
+    if instance_ids:
+        metadata["evidence_instance_claim_ids"] = instance_ids
+    if raw.get("proposition_fingerprint"):
+        metadata["proposition_fingerprint"] = str(raw["proposition_fingerprint"])
 
     return Claim(
         id=claim_id,
@@ -236,6 +264,17 @@ def claims_from_record(record: Any, *, source_file: str = "") -> list[Claim]:
     out: list[Claim] = []
     for row in rows:
         if isinstance(row, dict):
+            # Spec 029 Phase I (D-B): a record with a ``merged_into``
+            # pointer is an evidence instance of its canonical claim,
+            # preserved in the store — it is not a separate claim and
+            # must not enter the graph (origin group counted once).
+            if row.get("merged_into"):
+                _log.info(
+                    "evidence instance %s of canonical claim %s in %s — "
+                    "not a separate claim, skipped",
+                    row.get("claim_id"), row.get("merged_into"), source_file,
+                )
+                continue
             try:
                 out.append(claim_from_glossa(row, source_file=source_file))
             except ValueError as exc:

@@ -5376,3 +5376,60 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Spec 029 Phase I: D-B claim-store deduplication (proposition merge + intake fingerprint gate)
+
+  D-B executed on the extracted-claims store
+  (`glossa-indus/claims/extracted_claims/*.json`, the
+  2026-10-09 batch: 31 records, 10 documents). The
+  proposition fingerprint — SHA-256 over the normalised
+  claim text (NFKC + case-fold; every non-alphanumeric
+  character to a single space; whitespace collapsed),
+  defined and frozen in
+  `backend/glossa_lab/proposition_fingerprint.py`
+  (rules version `spec029-phase-i-v1`) — finds **5
+  duplicate groups, 31 records → 23 unique
+  propositions**: the audit's two Yadav propositions
+  (the Zipf-Mandelbrot frequency claim, both records
+  at score 1.0 pre-merge, and the text-begin/end sign
+  claim), the ledger-flagged positional-analysis
+  proposition recorded five times, and two critique
+  propositions (Farmer et al.'s "myth of a literate
+  Harappan" and "collapse of the Indus-Script thesis")
+  whose texts differ only in case, a mid-phrase
+  newline, and a hyphen. Merge, never delete (tool:
+  `specs/029-tao-claim-lifecycle/merge_phase_i_dedupe.py`):
+  every record stays in its own file byte-preserved
+  outside the additive Phase I keys; instances gain a
+  `merged_into` pointer; canonicals (fuller trail wins,
+  ties by scan order — in every group the record the
+  frozen ledger did not flag `duplicate_record`) carry
+  each instance's full record under
+  `evidence_instances`. Phase D stage stamps are
+  untouched on canonicals and instances alike (groups
+  are stage-uniform: checked/checked, created/created);
+  falsifiers were preserved where present and invented
+  nowhere (the text-begin/end canonical honestly
+  carries none — neither instance had one). Origin-group
+  counting in the AEE wiring: instance records no longer
+  enter the graph, so a merged proposition's evidence
+  counts once. Score movement, reported with its cause:
+  **no surviving claim's score changed** (all 23
+  byte-identical to the Phase A pre-change fixture,
+  which is preserved untouched; a post-merge successor
+  fixture is added); the mean moved 0.484903 → 0.497641
+  by composition only (the 8 surplus records — 1.0,
+  0.85, 6 × 0.289375 — left the scored set). Intake
+  gate: extraction intake
+  (`glossa-indus/scripts/indus_claims.py`) computes the
+  fingerprint for every new claim and stops loudly with
+  an error naming both records on a collision with an
+  existing proposition (known group members pass, so
+  wholesale regeneration does not collide with itself;
+  regeneration also carries the merge state by claim
+  identity). Gate evidence in
+  `specs/029-tao-claim-lifecycle/phase-i-record.md`.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

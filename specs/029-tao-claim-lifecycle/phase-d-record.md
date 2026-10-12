@@ -436,9 +436,30 @@ were not stamped (D1).
 
 ## D6 — Phase gate
 
-<!-- Filled after the PR/CI/merge sequence completes:
-     suite totals, PR number, the seven check-run
-     conclusions, merge commit, new main head. -->
+- Foundation check: 40 passed / 0 failed / 8 warnings
+  (baseline identical). Full backend suite
+  (CI-identical invocation): 1207 passed / 6 skipped
+  / 0 failed. Branding sweep over authored and edited
+  files: no other-company or other-program names.
+- PR: BitConcepts/glossa-lab **#171**
+  (`impl/029-phase-d-restaging` → `main`).
+- CI on head `585984b5` (workflow run 38279791340):
+  **all 7 checks success, read from the check runs'
+  own conclusions** — Backend tests (pytest) pass;
+  Frontend tests (Playwright) pass; Evidence Graph
+  script smoke tests pass; Indus public validation
+  checks pass; Shell wrappers (ubuntu-latest,
+  macos-latest, windows-latest) pass.
+- This record's D6 completion commit re-verified
+  green on the final head before merging (same
+  workflow, all 7 checks success on the final head —
+  conclusions read again after that run).
+- Merge: method `merge`; the merge commit SHA and
+  the new main head were verified via the GitHub API
+  immediately after merging (a merge commit cannot
+  name itself in the content it merges; the SHAs are
+  stated in the PR timeline and in this phase's
+  delivery report).
 
 ---
 

@@ -4895,3 +4895,44 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Spec 029 L3 recovery and freeze
+
+- L3 recovery (owner-authorized 2026-10-12, "Authorize
+  the L3 recovery PR and resume implementation"): the
+  Spec 029 claim register was recovered in the Spec 028
+  shape after the L3 hook pass returned a blocking
+  `iterate` at all three phases (no `evidence` field
+  and no `boundary_confirmation` metadata on any of
+  the 10 claims; all at the 0.25 no-evidence floor).
+  Evidence lists and pairwise boundary confirmations
+  added; compound texts rewritten as single positive
+  propositions; three recorded splits grew the
+  register 10 → 13 claims (minimum rule F029-C11 from
+  C03; digested gate F029-C12 from C04;
+  remaining-unknowns rule F029-C13 from C06). Re-run:
+  **pass** at after_specify / after_plan / after_tasks
+  (13 claims, 0 failure modes, 0 below the 0.70
+  threshold). Merged as PR #167 (main `e60b8408`).
+  Record: `specs/029-tao-claim-lifecycle/aee/
+  recovery-specify.md`; the blocking round's record
+  stands at `aee/l3-outcome.md`.
+- Freeze (F1): `specs/029-tao-claim-lifecycle/
+  freeze.md` + `freeze.json` (framework026 digest
+  `80d589fee7bfc0099f7df496e22d8570014817ee04bca37ca
+  8d408d3841af59d`) over spec.md, the recovered
+  claims.json, adjudication.md, assessment.md,
+  audit.md, reclassification-ledger.json, plan.md,
+  tasks.md, build_freeze.py, and the freeze tests
+  (`backend/tests/test_spec029_freeze.py`, pinning the
+  digest replay and the ledger's §3 counts: 345
+  entries; 220 created / 116 checked / 0 / 0 / 0; 105
+  `verified_unexplained` flags). Bookkeeping rule
+  recorded in freeze.md §2: plan.md and tasks.md are
+  frozen bytes; phase completion is recorded in phase
+  records and this ledger, with checkbox ticks applied
+  once at closeout (X2) as a freeze amendment.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

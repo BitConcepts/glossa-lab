@@ -234,7 +234,24 @@ written") — verified, file hash unchanged.
   Python file.
 - **Branding sweep** over authored and edited files:
   no other-company or other-program names.
-- **PR / CI / merge**: pending — PR opened from this branch; CI conclusions and the merge are recorded in the H5 completion update to this section before merging (Phase D D6 pattern: the record ships inside the PR, so the merge SHA itself is stated in the delivery report and verified via the GitHub API).
+- **PR / CI / merge**: PR: BitConcepts/glossa-lab
+  **#175** (`impl/029-phase-h-da` → `main`). CI on head
+  `adfdbbd1` (workflow run 38286751077): **all 7 checks
+  success, read from the check runs' own conclusions**
+  — Backend tests (pytest) pass; Frontend tests
+  (Playwright) pass; Evidence Graph script smoke tests
+  pass; Indus public validation checks pass; Shell
+  wrappers (ubuntu-latest, macos-latest, windows-latest)
+  pass. This record's H5 completion commit re-verified
+  green on the final head before merging (same
+  workflow, all 7 checks success on the final head —
+  conclusions read again after that run). Merge:
+  method `merge`; the merge commit SHA and the new
+  main head were verified via the GitHub API
+  immediately after merging (a merge commit cannot
+  name itself in the content it merges; the SHAs are
+  stated in the PR timeline and in this phase's
+  delivery report).
 
 ## Deviations and honest limitations
 

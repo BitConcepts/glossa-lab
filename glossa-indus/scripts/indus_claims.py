@@ -375,21 +375,18 @@ def process_document(doc_id: str) -> dict:
     # 'checked'; it may not invent or alter stage state.)
     out = EXTRACTED_CLAIMS / f"{doc_id}.json"
     if out.exists():
-        try:
-            prior = json.loads(out.read_text("utf-8"))
-            prior_stage = {
-                c.get("claim_id"): {
-                    k: c[k]
-                    for k in ("stage", "stage_source", "stage_as_of",
-                              "stage_history", "verified_unexplained")
-                    if k in c
-                }
-                for c in prior.get("claims", [])
+        prior = json.loads(out.read_text("utf-8"))
+        prior_stage = {
+            c.get("claim_id"): {
+                k: c[k]
+                for k in ("stage", "stage_source", "stage_as_of",
+                          "stage_history", "verified_unexplained")
+                if k in c
             }
-            for claim in all_claims:
-                claim.update(prior_stage.get(claim.get("claim_id"), {}))
-        except Exception:
-            pass
+            for c in prior.get("claims", [])
+        }
+        for claim in all_claims:
+            claim.update(prior_stage.get(claim.get("claim_id"), {}))
 
     # Save claims
     record = {

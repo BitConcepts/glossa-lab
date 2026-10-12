@@ -428,3 +428,68 @@ entries preserved), merged as `e1f5aed3`.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+---
+
+## Completion addendum (2026-10-12) — aee-1.5.0 blockage, pin, final gate
+
+After PR #180 was opened (head `149ca1a7`), its CI run
+38306744884 (2026-10-12T20:49:54Z) failed exactly one
+test — `tests/test_aee_core.py::test_score_dict_shape`
+(`assert 0.5 == 1.0`). The cause was external to
+Phase I: the library `applied-epistemic-engineering`
+released 1.5.0 on 2026-10-12T20:09:42Z, and its FR-8.7
+"substance over presence" change replaced binary
+falsifiability credit (1.0) with substance-scored
+credit (0.5 for a test string without a checkable
+condition). The backend declared the library unpinned
+(`>=1.0.4,<2`), so CI resolved 1.5.0. The same test
+fails on main alone under 1.5.0; it is not a Phase I
+defect, and no Phase I file, test, or fixture was
+changed in response.
+
+Resolution, kept strictly separate from Phase I so
+the record never misattributes it: standalone pin PR
+**#181** (`fix/aee-pin-pre-1-5`, commit `118f99e9`,
+merged to main as `170e6f1f`) changed only the
+dependency declaration to
+`applied-epistemic-engineering>=1.0.4,<1.5` plus a
+ledger entry, restoring the scoring semantics
+Specs 026–029 froze under. All 7 of its CI checks
+passed, with its install log resolving aee 1.4.0.
+Adopting 1.5.0 semantics remains a separate future
+decision requiring re-baselined fixtures.
+
+This branch was then integrated with the pin merge
+(merge commit `18b69e5f`; LEDGER.md auto-merged with
+both the Phase I entry and the pin entry preserved
+in full; no other conflicts). Final gate on the
+integrated head, run under a CI-identical scratch
+venv whose pinned resolution is aee **1.4.0**:
+
+- Foundation check (`backend/scripts/
+  foundation_check.py`): **40 passed / 0 failed /
+  8 warnings** — baseline identical.
+- Full backend suite (CI-identical invocation:
+  `python -m pytest tests/ --tb=short -q
+  --ignore=tests/test_pipelines_gpu.py
+  --ignore=tests/test_install_gpu.py -x` in
+  `backend/`): ****1256 passed / 6 skipped /
+  0 failed** in 0:49:42** (Phase H baseline:
+  1227 passed / 6 skipped; this phase's earlier
+  integrated gate: 1256 passed / 6 skipped /
+  0 failed — delta zero —
+  the pin merge added no tests and changed no
+  Phase I surface, so the totals are identical).
+- After the suite, the extracted-claims store was
+  restored to this branch's committed merge bytes;
+  the only changes in the bookkeeping commit are
+  this addendum (and the integration merge itself).
+
+The delayed merge of PR #180 is therefore fully
+accounted for: the blockage, its cause, and its fix
+all sit outside Phase I's change surface.
+
+*AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution §VI.*

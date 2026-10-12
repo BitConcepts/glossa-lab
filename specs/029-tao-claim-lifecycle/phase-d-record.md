@@ -357,8 +357,88 @@ Population state at dry run: 336 unstamped, 0 stamped,
 Dry run wrote nothing (`git status` after it showed
 only this phase's authored files).
 
-<!-- D4–D6 evidence sections are appended below as the
-     phase executes. -->
+## D4 — Live run (2026-10-12)
+
+Executed once: `migrate_phase_d_restaging.py --live
+--snapshot-dir <pre-run snapshots>`, snapshots taken
+before any write (named in the run record). Full inputs,
+snapshots, before/after SHA-256 per store, the additive
+assertion output, and the reconciliation are in
+`phase-d-run-record.md`. Headline: 336 records stamped
+(287 anchors in place; 31 extracted claims in place; 3
+hypothesis models in place by appended block; 15
+document-class records in the sidecar
+`phase-d-stamped-records.json`); anchors file SHA-256
+`eccea6d5…` → `18e6f4b2…`; post-run `--verify` and a
+second `--live` run: reconciliation exact, second run a
+no-op ("every record already carries this migration's
+stamp; nothing written"). The anchors file's additive
+change and the stamped extracted-claims files land in
+this phase's PR; hypothesis model files land stamped;
+the runtime-DB anchor sets are not ledger records and
+were not stamped (D1).
+
+## D5 — Post-run verification
+
+- **Ledger-vs-live reconciliation from the live
+  stores**: `--verify` recomputes from the mutated
+  stores and matches exactly (220 created / 116
+  checked / 0 / 0 / 0; 105 flags; per-class table as
+  D3). Pinned in CI by
+  `backend/tests/test_spec029_phase_d.py`, which also
+  asserts every stamped record's `stage_source`
+  (ledger name + its entry id) and `stage_as_of`
+  (2026-10-12), the initial history entry's shape, and
+  the additive-only canonical comparison for the
+  anchors file against the pinned pre-migration hash.
+- **Foundation check** (H21 anchor-data gate):
+  40 passed / 0 failed / 8 warnings — identical to the
+  pre-Phase-A baseline.
+- **Full backend suite** (CI-identical invocation:
+  `pytest tests/` in `backend/`, GPU-only files
+  ignored as in CI): **1207 passed, 6 skipped,
+  0 failed** in 15m33s on the final branch state.
+  (Phase A's record quotes 2112 passed for its local
+  run; that run used a broader invocation — the
+  backend/tests collection under the CI command is
+  1212 tests. The CI-identical command is the gate
+  used here.)
+- **Repairs the migration required in consumers**
+  (each documented at its site; no stored value
+  changed anywhere): (a) the eight phase tests that
+  asserted the anchors file's *live raw digest* now
+  assert its canonical digest (additive keys removed)
+  against the same pinned constant; (b) the
+  hash-pinned phase runners/scripts (125–128, 131,
+  137, 139–141) compute the anchors hash canonically
+  via `_canonical_anchors_sha256` — their assertions
+  failed on the raw bytes even though no pre-existing
+  content changed, and the suite itself exercises
+  several of them against the live file; (c)
+  `glossa-lab`'s `compute_verified_unexplained` honours
+  a ledger-stamped flag (Phase A design note); (d) the
+  claim-extraction script `glossa-indus/scripts/
+  indus_claims.py` now preserves stage fields by claim
+  identity across its wholesale regenerations (plan §4
+  risk control) — before this fix, a regeneration
+  (e.g. triggered by the evidence API's intake test)
+  silently dropped every stamp; verified by direct
+  re-run: `--verify` still matches after regeneration.
+- **Byte discipline**: backend test runs regenerate
+  extraction timestamps in the extracted-claims files;
+  after every local test run the stamped files were
+  restored to the exact bytes the migration wrote
+  (post-restore hashes re-verified against the run
+  record). The committed state is the migration's
+  state; in CI, any in-suite regeneration now
+  preserves the stamps per (d), changing only the
+  pre-existing volatile timestamps.
+
+## D6 — Phase gate
+
+<!-- Filled after the PR/CI/merge sequence completes:
+     suite totals, PR number, the seven check-run
+     conclusions, merge commit, new main head. -->
 
 ---
 

@@ -5182,3 +5182,60 @@ file.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Spec 030 FROZEN (Q6 chronology-spine extension)
+
+Spec 030 is frozen on its adjudication
+(`specs/030-q6-chronology-spine-extension/adjudication.md`,
+merged in PR #170): §9 Asks 1, 3, 4, 5 adopted as
+proposed under the owner's instruction "Freeze it";
+**Ask 2 expressly not covered** — the design states
+no recommendation on whether the CONTESTED
+sensitivity binds a future Q6 freeze, and the frozen
+record carries that non-decision rather than an
+invented answer (bindingness reserved to a future
+Q6 freeze's adjudication under Spec 027 §8.2).
+
+Freeze record: `freeze.md` / `freeze.json`
+(framework026 digest
+`3a61c63a26ffada3c21bf8b718610e6debe7f9c9ff58bf8ff736cbb7c3db00e9`,
+built by `build_freeze.py`), covering the design,
+the adjudication, and the governed claim register
+(F030-C01…C07, register_version 0.2-draft). The
+register enters the freeze as recovered at the
+freeze AEE pass (`aee/recovery-specify.md`): round 1
+returned `iterate` (11 failure modes — irreducibility
+×7 on compound claim texts, negation-conflict ×4
+against F030-C01); the recovery rewrote the claim
+texts as single atomic propositions with the
+enumerations and secondary clauses carried in
+boundaries and metadata (boundaries and verdict
+rules unchanged in substance) and added pairwise
+boundary confirmations for the flagged pairs; round
+2 returns **pass** at after_specify, after_plan, and
+after_tasks (7 claims, 0 failure modes, 0 below the
+0.70 threshold; framework026 register integrity
+ok). Freeze tests pin the record's replay, the
+adjudicated design constants (Phase-394; routes
+R5 → R1 → R2 → R4 → R3; Ask 2's non-coverage carried
+in the definition), the register's integrity, and
+the Stage 0 gap values from
+`reports/phase391_results.json` (Q6 NOT-YET-TESTABLE:
+C1 = 1/3, C2 = 5/10, C3 = 0.0/0.5, C4 = 70/80 pass,
+31 window d/a rows). Local gates: freeze tests 4/4;
+full backend suite 1,174 passed / 14 skipped /
+0 failed (baseline 1,170 + the 4 new freeze tests).
+
+**The Phase-394 build does not execute on this
+freeze.** Adopted Ask 5 makes OSF registration of
+the frozen contract a precondition of execution,
+mirroring Spec 027 Stage 1; the registration is
+prescribed, not performed, here. Execution follows
+registration under its own go. Q6 remains
+registered-blocked under Spec 027 (F027-C16); this
+freeze changes no Spec 027 record and loosens no
+criterion.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

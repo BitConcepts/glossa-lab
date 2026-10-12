@@ -1,13 +1,18 @@
-# Spec 030 — Q6 Chronology-Spine Extension (Design Draft)
+# Spec 030 — Q6 Chronology-Spine Extension
 
-> ## DRAFT — NOT FROZEN (2026-10-12)
+> ## ADJUDICATED 2026-10-12 — FROZEN at the Spec 030 freeze
 >
 > Design draft prepared at the owner's direction
 > (2026-10-12: "Do all we can do today, no reaching out
-> yet"). This is internal design work only: it freezes
-> nothing, executes nothing, and contacts no one. It
-> returns to the owner as a decision packet; §9 lists the
-> asks an adjudication would need to answer.
+> yet") as internal design work: at drafting it froze
+> nothing, executed nothing, and contacted no one.
+> Adjudicated the same day (owner, verbatim: "Freeze
+> it"; `adjudication.md` — §9 Asks 1, 3, 4, 5 adopted
+> as proposed; Ask 2 expressly not covered) and frozen
+> by the freeze record in this directory (`freeze.md` /
+> `freeze.json`). The Phase-394 build does not execute
+> on the freeze: adopted Ask 5 makes OSF registration
+> of this frozen contract a precondition of execution.
 >
 > Placement: this design takes the next spec number
 > (030) rather than living under `specs/027/`, following

@@ -420,28 +420,65 @@ grounds to loosen a criterion (C07).
 
 ## 9. Asks for adjudication (owner decisions)
 
+Adjudicated 2026-10-12 in `adjudication.md` (owner:
+"Freeze it", adopting the design's stated proposals
+as a block). Each ask is annotated below; the
+question text is preserved as drafted.
+
 1. **Coordinate-less chronology rows (§5.7).** Admit
    dated records without origin coordinates for
    gazetteer-established sites, or hold Stage 0's
    coordinate-bearing-only rule (which caps R1's yield
    at whatever the export's filter already passed)?
+
+   > **DECIDED 2026-10-12 — adopted as proposed:**
+   > admitted, coordinate state recorded as
+   > inherited-from-cluster (integrity rule 7).
+
 2. **CONTESTED sensitivity (§5.5).** Report-only, or
    binding — i.e. must a future Q6 freeze's support
    assessment hold with contested rows excluded?
+
+   > **NOT DECIDED 2026-10-12 — expressly not
+   > covered** by the block adoption: the design
+   > states no recommendation for this ask (F030-C04
+   > is satisfied by the reporting either way).
+   > Operative position: both computations are
+   > reported (rule 5); bindingness is reserved to a
+   > future Q6 freeze's adjudication. See
+   > `adjudication.md`.
+
 3. **Tracing selectivity (§3.3).** Trace origin records
    in short-lived-first order (the design's proposal,
    with the full pool reported), or trace everything
    before any assessment (slower; raises the C3
    requirement by every long-lived grade-up)?
+
+   > **DECIDED 2026-10-12 — adopted as proposed:**
+   > short-lived-first tracing order, full pool
+   > reported, no traced row excluded.
+
 4. **Route scope and posture.** All five routes in the
    §4 order with interim stop points, or a subset? And
    confirm: `open_access_read_only` extraction (R3) is
    internal-spine-only, never released — mirroring the
    CISI precedent — or is R3 out of scope entirely?
+
+   > **DECIDED 2026-10-12 — adopted:** all five
+   > routes in the §4 order with interim stop points;
+   > R3 posture **confirmed** internal-spine-only,
+   > never released.
+
 5. **Phase and registration.** Register the build as
    Phase-394 at freeze, and mirror Stage 1's OSF
    registration of the frozen contract before any
    execution?
+
+   > **DECIDED 2026-10-12 — adopted:** the build is
+   > Phase-394; OSF registration of the frozen
+   > contract is a precondition of execution
+   > (prescribed, not performed, by the
+   > adjudication).
 
 AI disclosure: drafted by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per

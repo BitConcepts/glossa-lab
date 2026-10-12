@@ -5104,3 +5104,81 @@ rights-holder contact under the packet).
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Spec 030 §9 + Spec 027 Q7 packet adjudicated (owner: "Freeze it")
+
+Owner decision (Tristen Pierson, 2026-10-12, verbatim):
+**"Freeze it"** — in response to the PR #170 science
+packets. Under the program's established
+block-ratification pattern (Spec 027's adjudication;
+Spec 029's OD block and D-A…D-E block), the
+instruction adopts the packets' stated
+recommendations as a block and moves both to their
+next step. Reading and answers are recorded in
+`specs/030-q6-chronology-spine-extension/adjudication.md`
+and `specs/027-movement-culture-language/stage2-q7-adjudication.md`;
+Spec 030 `spec.md` §9 is annotated under each ask
+with the original question text preserved. The Q7
+packet file itself is unaltered; the Q7 adjudication
+is a new file alongside it.
+
+**Spec 030 §9:** Ask 1 → ADOPTED as proposed
+(coordinate-less dated records admitted for
+gazetteer-established sites, coordinate state
+recorded as inherited-from-cluster; integrity
+rule 7). Ask 2 → **NOT DECIDED, expressly not
+covered**: the design states no recommendation
+(F030-C04 is satisfied by the reporting whichever
+way bindingness is later ruled), so no answer is
+invented for it; both computations are reported
+under rule 5 and bindingness is reserved to a
+future Q6 freeze's adjudication. Ask 3 → ADOPTED
+as proposed (short-lived-first tracing order, full
+pool reported, no traced row excluded; C3
+requirement stands parametrically at s ≥ 31 + g).
+Ask 4 → ADOPTED (all five routes in the §4 order —
+R5 → R1 → R2 → R4 → R3 — with margins-only interim
+assessments and owner stop points) with the R3
+posture CONFIRMED (open_access_read_only,
+internal-spine-only, never released). Ask 5 →
+ADOPTED (the build is Phase-394; OSF registration
+of the frozen contract is a precondition of
+execution — prescribed, not performed, by the
+adjudication).
+
+**Spec 027 Q7 packet:** all six recommendations
+adopted as a block — 1B (D8 audit sequenced Law
+(2011) → Kenoyer/Vidale → Meluhha, stop rule and a
+reported outcome after each stage, desk audit of
+published sources, no external contact), 2B
+(two-tier provenance links: instrumental primary,
+visual-only as a separately labelled sensitivity),
+3A (each response arm on its own eligible site
+set, never pooled), 4A (Q7 independent of the
+Spec 030 extension; Stage 0 gazetteer period
+labels serve eligibility), 5A (Spec 026/027 control
+and verdict discipline inherited wholesale;
+minimum-support rules fixed in the Q7 freeze from
+margins only, after the D8 audit), 6A (Stage 1
+publication posture mirrored; OSF registration of
+the frozen Q7 contract prescribed before
+execution, not performed by the adjudication).
+
+**Consequences.** Q7 is **not frozen** by this
+adjudication — by the packet's own logic its
+freeze is designed from the D8 audit's margins.
+The adjudication authorises, in order: (1) the D8
+audit under 1B; (2) a Q7 freeze as a separate
+later act; (3) execution only after that freeze
+merges. The Spec 030 freeze follows in its own PR;
+the Phase-394 build does **not** execute on this
+record (adopted Ask 5's OSF-registration
+precondition stands in front of it). No external
+contact of any kind was made; no OSF or other
+registration was created; no Spec 027/028/029
+record was altered beyond the new Q7 adjudication
+file.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

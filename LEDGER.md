@@ -4712,3 +4712,32 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Spec 029 drafted (claims-first): Tao claim lifecycle
+
+- Owner directive (Tristen Pierson, 2026-10-12): realign
+  Glossa-Lab's claim handling on Terence Tao's points —
+  five claim stages (created, checked, explained,
+  accepted, digested), decomposition of headline claims,
+  digestion as first-class tracked work, attribution as a
+  claim, anti-gradability, two lanes, provenance protecting
+  priority, inspectable evidence trails.
+- New draft spec `specs/029-tao-claim-lifecycle/`:
+  `assessment.md` (gap assessment of the current claim
+  machinery against the eight points, with file evidence —
+  headline finding: no lifecycle, decomposition, digestion,
+  or attribution machinery exists, and
+  `frontend/src/components/DeciphermentPanel.tsx` renders a
+  "signs deciphered" volume headline the standard forbids),
+  `spec.md` (claims-first draft), and `claims.json`
+  (register F029-C01…C10, all draft).
+- Claims-first discipline: NO plan.md and NO tasks.md were
+  written; nothing is frozen; six owner decisions are
+  recorded open in spec §8 (OD-1…OD-6). Under claim
+  F029-C10 the draft itself changes no claim, anchor,
+  verdict, score, or display.
+- Opened as a DRAFT PR for owner adjudication. Not merged.
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

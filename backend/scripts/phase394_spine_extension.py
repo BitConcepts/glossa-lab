@@ -138,10 +138,16 @@ def fatal(msg: str) -> None:
 
 
 def lab_key(lab_code: object) -> str:
-    """Dedupe identity (rule 2): the lab code, normalised."""
+    """Dedupe identity (rule 2): the lab code, normalised.
+    Punctuation-insensitive: source databases format the same
+    code differently (the Rome series appears as 'R 28680/1'
+    in XRONOS and 'R-286801' in p3k14c). Letters and digits
+    are never dropped, so suffixed codes (P-2076 vs P-2076A)
+    stay distinct measurements; the same-age corroboration
+    check in dedupe guards the rest."""
     if not lab_code:
         return ""
-    return " ".join(str(lab_code).split()).upper()
+    return "".join(c for c in str(lab_code).upper() if c.isalnum())
 
 
 def load_jsonl(path: Path) -> list[dict]:
@@ -485,6 +491,10 @@ def apply_record_route(pool: Pool, route: str, payload: dict) -> dict:
     deterministic and fails loud on untraced claims."""
     detail = {"corrections_applied": 0, "new_rows": 0,
               "citations_attached": 0}
+    if isinstance(payload.get("audit"), (dict, list)):
+        detail["audit"] = payload["audit"]
+    if isinstance(payload.get("targets"), list):
+        detail["targets"] = payload["targets"]
     for entry in payload.get("corrections", []):
         targets = []
         if entry.get("chronology_row_id"):

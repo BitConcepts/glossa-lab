@@ -43,7 +43,7 @@ from typing import Any
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "backend"))
 
-from glossa_lab.claim_stage import validate_stage_value  # noqa: E402
+from glossa_lab.claim_stage import validate_stage_value
 
 SPEC_DIR = REPO / "specs" / "029-tao-claim-lifecycle"
 LEDGER_PATH = SPEC_DIR / "reclassification-ledger.json"
@@ -300,9 +300,9 @@ def reconcile(counts: dict[str, dict[str, int]], flags: int, grouped: int) -> di
         got = counts.get(cls, {})
         if got != want:
             problems.append(f"class {cls}: got {got}, expected {want}")
-    for cls in counts:
+    for cls, cls_counts in counts.items():
         if cls not in EXPECTED:
-            problems.append(f"unexpected staged class {cls}: {counts[cls]}")
+            problems.append(f"unexpected staged class {cls}: {cls_counts}")
     if totals != EXPECTED_TOTALS:
         problems.append(f"totals: got {totals}, expected {EXPECTED_TOTALS}")
     if flags != EXPECTED_FLAGS:
@@ -342,7 +342,7 @@ def collect_live_state(by_class: dict[str, list[dict[str, Any]]]) -> list[tuple[
             raise MigrationError(f"anchor {entry['item_id']} not in anchors file")
         out.append(("anchor_reading", entry, anchors[sign]))
     all_claims: dict[str, dict[str, Any]] = {}
-    for _path, (_data, recs) in claim_records().items():
+    for _data, recs in claim_records().values():
         all_claims.update(recs)
     for entry in by_class.get("extracted_claim", []):
         if entry["item_id"] not in all_claims:
@@ -391,7 +391,7 @@ def plan() -> dict[str, Any]:
     # Extracted claims
     claims_files = claim_records()
     all_claims: dict[str, dict[str, Any]] = {}
-    for _p, (_d, recs) in claims_files.items():
+    for _d, recs in claims_files.values():
         for cid, rec in recs.items():
             if cid in all_claims:
                 problems.append(f"duplicate claim_id across files: {cid}")
@@ -437,13 +437,15 @@ def plan() -> dict[str, Any]:
         existing = json.loads(SIDECAR_PATH.read_text(encoding="utf-8"))
         want_sidecar = build_sidecar(ledger, by_class)
         if existing == want_sidecar:
-            for entry in sum((by_class.get(c, []) for c in SIDECAR_CLASSES), []):
-                note(entry["item_id"], "stamped")
+            for cls in SIDECAR_CLASSES:
+                for entry in by_class.get(cls, []):
+                    note(entry["item_id"], "stamped")
         else:
             problems.append("sidecar exists but differs from the ledger-derived sidecar")
     else:
-        for entry in sum((by_class.get(c, []) for c in SIDECAR_CLASSES), []):
-            note(entry["item_id"], "unstamped")
+        for cls in SIDECAR_CLASSES:
+            for entry in by_class.get(cls, []):
+                note(entry["item_id"], "unstamped")
 
     state_counts: dict[str, int] = {}
     for s in states.values():

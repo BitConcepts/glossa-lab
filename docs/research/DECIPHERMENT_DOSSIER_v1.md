@@ -20,7 +20,7 @@ This dossier is the comprehensive internal record of the Glossa-Lab Indus deciph
 
 The Indus corpus (2,722 inscriptions, 52 sites) exhibits a robust 3-slot positional grammar — INITIAL, MEDIAL, TERMINAL — that is:
 
-1. Reproducible from raw corpus data deterministically
+1. Reproducible from the raw corpus data by a fixed procedure — same data, same result, every time
 2. Stable across all 52 known IVC sites (85.3% full stability)
 3. Confirmed by three independent data sources (CGSA, holdatllc, Fuls prior)
 4. Inconsistent with all non-linguistic generator models tested
@@ -29,8 +29,8 @@ This finding constitutes MODERATE signal. It is scientifically defensible and pu
 
 ### 2.2 Linguistic Hypothesis (Candidate)
 
-The structural grammar matches Dravidian morphological patterns more closely than Sanskrit, Pali, or random controls, based on SA phonotactic testing. Specifically:
-- INITIAL sign class matches Dravidian classifier/determinative function
+The structural grammar matches Dravidian morphological patterns more closely than Sanskrit, Pali, or random controls, based on SA phonotactic testing — testing how well the sign sequences fit each language's patterns of allowable sounds. Specifically:
+- INITIAL sign class matches Dravidian classifier/determinative function (a sign that marks which category the following word belongs to)
 - MEDIAL sign class matches Dravidian nominal root position
 - TERMINAL sign class matches Dravidian case suffix (genitive/dative) position
 
@@ -42,7 +42,7 @@ The structural grammar matches Dravidian morphological patterns more closely tha
 
 1. **CISI corpus (Parpola 1987)**: 179 Mohenjo-daro inscriptions → baseline structural analysis
 2. **Yajnadevam corpus**: 2,543 inscriptions from 52 sites → multi-site expansion
-3. **CGSA Phases 1–6**: 40 structural clusters, entropy reduction 21.6%
+3. **CGSA Phases 1–6**: 40 structural clusters, entropy reduced 21.6% (entropy = how unpredictable the sign sequences are; the clusters made them markedly more predictable)
 4. **holdatllc cross-validation**: Independent confirmation of INITIAL signs P086 and P001
 5. **Nair (2026) scorecard**: 4/4 linguistic-consistent metrics
 6. **SA phonotactic analysis**: Dravidian > Pali > Sanskrit on Indus corpus (multiple runs)
@@ -78,7 +78,7 @@ The structural grammar matches Dravidian morphological patterns more closely tha
 1. Does the ICIT full corpus (6,800 inscriptions) show the same structural stability?
 2. Does the positional grammar hold specifically for Harappa tablet sequences?
 3. Can any held-out prediction succeed? (Registered, untested)
-4. Is the Dravidian functional interpretation the best explanation, or could another agglutinative language match as well?
+4. Is the Dravidian functional interpretation the best explanation, or could another agglutinative language (one that builds words by stringing suffixes together) match as well?
 
 ---
 

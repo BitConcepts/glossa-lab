@@ -305,7 +305,52 @@ the merge intact afterwards.
 
 ## I5 — Phase gate
 
-<!-- GATE RESULTS FILLED AT GATE TIME -->
+Filled at gate time by the recovery worker (2026-10-12;
+see the recovery note at the top of this record). The
+branch was integrated with current main before the gate:
+main had moved to `09589443` (PR #177, Spec 030
+Phase-394 infrastructure — disjoint file surface except
+a LEDGER.md append, which auto-merged cleanly with both
+entries preserved), merged as `e1f5aed3`.
+
+- **Foundation check** (`backend/scripts/
+  foundation_check.py`, Holdat CSVs present in the
+  worktree as in prior phases, never committed):
+  **40 passed / 0 failed / 8 warnings** — identical to
+  the pre-Phase-A baseline; no new warnings.
+- **Full backend suite** (CI-identical invocation:
+  `python -m pytest tests/ --tb=short -q
+  --ignore=tests/test_pipelines_gpu.py
+  --ignore=tests/test_install_gpu.py` in `backend/`,
+  per `.github/workflows/ci.yml`): **1256 passed,
+  6 skipped, 0 failed** in 1h25m19s (Phase H's gate:
+  1227 passed / 6 skipped; the +29 are this phase's
+  18 new tests, the integrated Phase-394 tests, and
+  one further integrated test). The run was unusually
+  slow because the VM was heavily loaded (load average
+  12–17 throughout; single recomputation tests took
+  tens of minutes of wall time while steadily
+  accumulating CPU) — no test was skipped or altered
+  for speed. An orphaned pytest process from the
+  original worker's session (started 18:21, stalled in
+  the same recomputation region, sharing the test-data
+  directory) was found and killed before this gate run
+  so the gate ran alone. Targeted run before the gate:
+  Phase I + Phase A suites, 49 passed.
+- **Store bytes.** After the suite, the extracted-claims
+  store was restored to the exact verified merge bytes
+  (see the recovery note) and the merge tool's
+  `--verify` re-run clean: 31 records, 23 canonical
+  claims, 8 evidence instances, 5 groups, no problems.
+  The batch-4 report and `outputs/` files touched by
+  test-run regeneration were restored to committed
+  bytes; `frontend/dist/index.html` (pre-existing CRLF
+  phantom) was never staged.
+- **Branding / attribution sweep** over authored and
+  edited files: no stray branding; the Phase I authored
+  files name no external scholar (pre-existing spec
+  naming and already-pushed history are untouched, per
+  standing record discipline).
 
 ## Deviations and honest limitations
 

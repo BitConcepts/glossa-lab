@@ -1,14 +1,14 @@
 {
  "spec": "030-q6-chronology-spine-extension",
- "register_version": "0.1-draft",
- "note": "Design-draft claim register for Spec 030 (Q6 chronology-spine extension), prepared 2026-10-12. All claims draft; nothing frozen. Q6 itself remains owned by Spec 027 (F027-C16).",
+ "register_version": "0.2-draft",
+ "note": "Claim register for Spec 030 (Q6 chronology-spine extension), drafted 2026-10-12; adjudicated the same day (adjudication.md: section 9 Asks 1, 3, 4, 5 adopted as proposed; Ask 2 expressly not covered). Register recovered at the freeze AEE pass (aee/recovery-specify.md): claim texts rewritten as single propositions, with the enumerations and secondary clauses carried in boundaries and metadata; boundaries and verdict rules unchanged in substance. Q6 itself remains owned by Spec 027 (F027-C16).",
  "claims": [
   {
    "id": "F030-C01",
-   "text": "The Q6 timing-support criteria applied to the extended spine are exactly the criteria frozen in Spec 027's Stage 0 freeze (thresholds, 5250-3850 BP window, grade and material vocabularies); this extension changes none of them.",
+   "text": "The Q6 timing-support criteria applied to the extended spine are exactly the criteria frozen in Spec 027 Stage 0 freeze.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "The assessment rule set for Q6 timing-support. This claim governs the criteria, not the spine data (C02/C03) and not the conduct of the re-test (C05).",
+   "boundary": "The assessment rule set for Q6 timing-support. This claim governs the criteria, not the spine data (C02/C03) and not the conduct of the re-test (C05). The frozen set comprises the four thresholds of stage0-freeze.md section 4 with the 5250-3850 BP window and the Stage 0 grade and material vocabularies; the extension changes none of them.",
    "depends_on": [],
    "assumptions": [
     "ASM-CRITERIA-AS-FROZEN"
@@ -30,7 +30,7 @@
     "evidence_origin_groups": [
      "spec027-stage0-freeze"
     ],
-    "boundary_confirmation": "C01 fixes WHICH criteria are applied; C05 fixes HOW the re-test is conducted (margins only). Changing conduct cannot change criteria without defeating C01, and C01 says nothing about conduct. C07's closure rule presumes C01: a negative outcome is only meaningful if the criteria were not loosened."
+    "boundary_confirmation": "C01 fixes WHICH criteria are applied; C05 fixes HOW the re-test is conducted (margins only). Changing conduct cannot change criteria without defeating C01, and C01 says nothing about conduct. C07's closure rule presumes C01: a negative outcome is only meaningful if the criteria were not loosened. C01 governs the criteria set; C03 governs measurement counting within the pool those criteria assess. Distinct boundaries; neither negates the other. C01 governs the criteria set; C06 governs the licence posture of the rows assessed under them. Distinct boundaries; neither negates the other."
    },
    "evidence": [
     {
@@ -53,10 +53,10 @@
   },
   {
    "id": "F030-C02",
-   "text": "Every chronology row the extension builds carries a complete trace: origin source, source locator, lab code, licence state, origin group, region as recorded, and scenario tag where applicable; a row missing any trace field is not built.",
+   "text": "Every chronology row the extension builds carries the complete trace the Stage 0 freeze requires.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "Row-level provenance of extension-built chronology rows. Grading and material rules themselves are inherited from the Stage 0 freeze; this claim governs traceability, not grading outcomes.",
+   "boundary": "Row-level provenance of extension-built chronology rows. Grading and material rules themselves are inherited from the Stage 0 freeze; this claim governs traceability, not grading outcomes. The trace fields are origin source, source locator, lab code, licence state, origin group, region as recorded, and scenario tag where applicable; a row missing any trace field is not built.",
    "depends_on": [],
    "assumptions": [
     "ASM-TRACE-BEFORE-USE"
@@ -101,10 +101,10 @@
   },
   {
    "id": "F030-C03",
-   "text": "No radiocarbon measurement is counted more than once in the extended spine or its assessment pool: measurement identity is the lab code, corroborated by age and material, across XRONOS, origin databases, aggregators, and literature extraction.",
+   "text": "No radiocarbon measurement is counted more than once within the extended spine.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "Counting identity of measurements across the extension's overlapping routes (R5/R1/R2/R3). This claim does not govern site clustering, which follows the Stage 0 name normalisation.",
+   "boundary": "Counting identity of measurements across the extension's overlapping routes (R5/R1/R2/R3). This claim does not govern site clustering, which follows the Stage 0 name normalisation. Measurement identity is the lab code, corroborated by age and material, across XRONOS, origin databases, aggregators, and literature extraction; the assessment pool inherits the same identity rule.",
    "depends_on": [
     "F030-C02"
    ],
@@ -128,7 +128,7 @@
     "evidence_origin_groups": [
      "spec027-dataset-inventory"
     ],
-    "boundary_confirmation": "C03 presumes C02 (identity can only be checked on traced rows) but adds a distinct obligation: cross-route uniqueness. It does not govern grading (a deduplicated row still needs its own grade under the frozen rule) and does not govern C04's scenario reporting."
+    "boundary_confirmation": "C03 presumes C02 (identity can only be checked on traced rows) but adds a distinct obligation: cross-route uniqueness. It does not govern grading (a deduplicated row still needs its own grade under the frozen rule) and does not govern C04's scenario reporting. C03 governs measurement counting; C01 governs the criteria set under which the counted pool is assessed. Distinct boundaries; neither negates the other."
    },
    "evidence": [
     {
@@ -151,10 +151,10 @@
   },
   {
    "id": "F030-C04",
-   "text": "Dependence on CONTESTED-scenario chronology is always visible: the re-test reports every criterion as frozen and again excluding CONTESTED-scenario rows, so no qualification silently rests on contested chronology.",
+   "text": "The re-test reports every criterion under both computations: the full pool plus the pool minus CONTESTED-scenario rows.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "Reporting of the re-test and of any later Q6 support assessment using the extended spine. This claim does not itself decide whether the sensitivity binds a future Q6 freeze; that is Ask 2 for owner adjudication.",
+   "boundary": "Reporting of the re-test and of any later Q6 support assessment using the extended spine. This claim does not itself decide whether the sensitivity binds a future Q6 freeze; that is Ask 2 for owner adjudication. Dependence on contested chronology is the claim's subject: the as-frozen computation includes CONTESTED-scenario rows, the sensitivity computation excludes them, and both are published side by side.",
    "depends_on": [],
    "assumptions": [
     "ASM-SCENARIO-TAGS-PERSIST"
@@ -199,10 +199,10 @@
   },
   {
    "id": "F030-C05",
-   "text": "The re-test inspects spine margins and metadata only: no trait list is built, no first-appearance outcome is examined, and no timing model is fitted before or during the timing-support assessment.",
+   "text": "The re-test inspects spine margins together with metadata only.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "Conduct of the extension's re-test. The future Q6 freeze's own model decisions (Bayesian model, priors, rival thresholds under Spec 027 section 8.2) are outside this claim and outside this spec.",
+   "boundary": "Conduct of the extension's re-test. The future Q6 freeze's own model decisions (Bayesian model, priors, rival thresholds under Spec 027 section 8.2) are outside this claim and outside this spec. No trait list is built, no first-appearance outcome is examined, and no timing model is fitted before or during the timing-support assessment.",
    "depends_on": [
     "F030-C01"
    ],
@@ -227,7 +227,7 @@
     "evidence_origin_groups": [
      "spec027-stage0-freeze"
     ],
-    "boundary_confirmation": "C05 restricts what the extension may look at; C01 restricts what it may change. Extraction targeting is ordered by criterion service on margins (site/region/material coverage), which C05 permits, and never by trait outcomes, which it forbids. C07 depends on C05: a negative closure is only honest if outcomes were never peeked at."
+    "boundary_confirmation": "C05 restricts what the extension may look at; C01 restricts what it may change. Extraction targeting is ordered by criterion service on margins (site/region/material coverage), which C05 permits, and never by trait outcomes, which it forbids. C07 depends on C05: a negative closure is only honest if outcomes were never peeked at. C05 governs the conduct of the re-test; C01 governs the criteria set that conduct applies. Distinct boundaries; neither negates the other."
    },
    "evidence": [
     {
@@ -250,10 +250,10 @@
   },
   {
    "id": "F030-C06",
-   "text": "Licence posture follows Spec 027 section 5.1 for every extension row, and no open_access_read_only or catalogue_only material enters any CC BY release package.",
+   "text": "Licence posture follows Spec 027 section 5.1 for every extension row.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "Use and publication of extension data. Internal-spine use of open_access_read_only rows follows the Phase-124 precedent; this claim governs posture and release, not row admission (C02).",
+   "boundary": "Use and publication of extension data. Internal-spine use of open_access_read_only rows follows the Phase-124 precedent; this claim governs posture and release, not row admission (C02). No open_access_read_only or catalogue_only material enters any CC BY release package.",
    "depends_on": [
     "F030-C02"
    ],
@@ -277,7 +277,7 @@
     "evidence_origin_groups": [
      "spec027-dataset-inventory"
     ],
-    "boundary_confirmation": "C06 presumes C02 (posture is a trace field) but governs a different act: publication. A row can be fully traced (C02 satisfied) and still barred from release (C06). It does not govern whether a permission_required source may be pursued - that is an owner decision outside this design (no-contact scope)."
+    "boundary_confirmation": "C06 presumes C02 (posture is a trace field) but governs a different act: publication. A row can be fully traced (C02 satisfied) and still barred from release (C06). It does not govern whether a permission_required source may be pursued - that is an owner decision outside this design (no-contact scope). C06 governs licence posture; C01 governs the criteria set applied to rows under that posture. Distinct boundaries; neither negates the other."
    },
    "evidence": [
     {
@@ -300,10 +300,10 @@
   },
   {
    "id": "F030-C07",
-   "text": "A negative extension outcome - the frozen criteria still failing after all audited routes - is a valid closure that leaves Q6 NOT-YET-TESTABLE; it is never grounds to loosen a criterion, re-grade by inference, or substitute period labels for dates.",
+   "text": "A negative extension outcome is a valid closure of the extension study.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "Closure semantics of the extension study. This claim governs responses to a negative result; it does not prejudge whether the result will be negative.",
+   "boundary": "Closure semantics of the extension study. This claim governs responses to a negative result; it does not prejudge whether the result will be negative. On a negative outcome Q6 stays NOT-YET-TESTABLE; the outcome is never grounds to loosen a criterion, re-grade by inference, or substitute period labels for dates.",
    "depends_on": [
     "F030-C01",
     "F030-C05"
@@ -329,7 +329,7 @@
     "evidence_origin_groups": [
      "spec027-registered-blocked"
     ],
-    "boundary_confirmation": "C07 presumes C01 (criteria fixed) and C05 (outcomes unpeeked); it adds the closure rule neither contains: what may and may not be done after a negative result. Revising the Q6 QUESTION remains possible - as a new Spec 027 freeze with owner adjudication - and is not a loosening under this claim."
+    "boundary_confirmation": "C07 presumes C01 (criteria fixed) and C05 (outcomes unpeeked); it adds the closure rule neither contains: what may and may not be done after a negative result. Revising the Q6 QUESTION remains possible - as a new Spec 027 freeze with owner adjudication - and is not a loosening under this claim. C07 governs closure semantics after an outcome; C01 governs the criteria set whose outcome it is. Distinct boundaries; neither negates the other."
    },
    "evidence": [
     {

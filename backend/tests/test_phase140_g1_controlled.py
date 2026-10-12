@@ -116,6 +116,18 @@ def test_population_and_anchors(results):
         for _k in ("stage", "stage_source", "stage_as_of",
                    "stage_history", "verified_unexplained"):
             _rec.pop(_k, None)
+        # Spec 029 Phase H (D-A, 2026-10-12): also remove the
+        # additive annotation — ``strict_set`` on every record,
+        # ``validation_status`` on the records that carried none
+        # (exactly the Phase H values named below; pre-existing
+        # values are untouched), and the metadata block — so the
+        # digest still reproduces the pre-migration content.
+        _rec.pop("strict_set", None)
+        if _rec.get("validation_status") in (
+                "strict_sa_independent", "sa_in_provenance_chain",
+                "no_validation_record"):
+            _rec.pop("validation_status", None)
+    _doc.get("metadata", {}).pop("spec029_phase_h_annotation", None)
     assert hashlib.sha256(
         json.dumps(_doc, indent=2, ensure_ascii=False).encode("utf-8")
     ).hexdigest() == _ANCHORS_SHA256

@@ -21,7 +21,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M342; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M176": {
       "reading": "an/aṇ",
@@ -43,7 +45,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M176; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M267": {
       "reading": "iN/in (genitive of)",
@@ -71,7 +75,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M267; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M099": {
       "reading": "kol/koḷ",
@@ -93,7 +99,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M099; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M233": {
       "reading": "ūr",
@@ -116,7 +124,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M233; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M391": {
       "reading": "ka/kaṇ",
@@ -140,7 +150,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M391; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M162": {
       "reading": "il/iḷ",
@@ -164,7 +176,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M162; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M328": {
       "reading": "ā/āl",
@@ -187,7 +201,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M328; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M059": {
       "reading": "ēḷ/eḷ",
@@ -210,7 +226,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M059; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M051": {
       "reading": "pū/puḷ",
@@ -233,7 +251,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M051; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M089": {
       "reading": "tu/tū",
@@ -257,7 +277,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M089; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M048": {
       "reading": "mu/muṉ",
@@ -281,7 +303,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M048; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M367": {
       "reading": "am/neuter",
@@ -305,7 +329,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M367; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M336": {
       "reading": "iṉ/locative",
@@ -328,7 +354,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M336; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M012": {
       "reading": "oṉṟu/1",
@@ -351,7 +379,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M012; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M305": {
       "reading": "ōṭu/comitative",
@@ -374,7 +404,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M305; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M062": {
       "reading": "erutu",
@@ -396,7 +428,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M062; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M073": {
       "reading": "kōṉ",
@@ -419,7 +453,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M073; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M045": {
       "reading": "yānai",
@@ -441,7 +477,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M045; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M016": {
       "reading": "kaḷiṟu",
@@ -463,7 +501,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M016; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M013": {
       "reading": "nakaram",
@@ -486,7 +526,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M013; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M060": {
       "reading": "kāṇṭāmirukam",
@@ -509,7 +551,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M060; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M080": {
       "reading": "vēṅkai",
@@ -532,7 +576,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M080; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M057": {
       "reading": "māṭu",
@@ -555,7 +601,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M057; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M039": {
       "reading": "āṉai",
@@ -578,7 +626,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M039; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M067": {
       "reading": "kōṭṭāṉ",
@@ -603,7 +653,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M067; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M068": {
       "reading": "maṟi",
@@ -628,7 +680,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M068; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M006": {
       "reading": "puli",
@@ -650,7 +704,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M006; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M063": {
       "reading": "mutalai",
@@ -673,7 +729,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M063; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M077": {
       "reading": "nal",
@@ -696,7 +754,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M077; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M018": {
       "reading": "nēr",
@@ -719,7 +779,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M018; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M030": {
       "reading": "kō",
@@ -742,7 +804,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M030; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M017": {
       "reading": "kai",
@@ -765,7 +829,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M017; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M020": {
       "reading": "kuṉ",
@@ -788,7 +854,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M020; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M004": {
       "reading": "kēḷ",
@@ -811,7 +879,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M004; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M014": {
       "reading": "tiru",
@@ -834,7 +904,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M014; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M026": {
       "reading": "mā",
@@ -857,7 +929,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M026; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M034": {
       "reading": "tōḷ",
@@ -880,7 +954,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M034; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M027": {
       "reading": "māṟ",
@@ -903,7 +979,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M027; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M041": {
       "reading": "pēr",
@@ -926,7 +1004,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M041; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M038": {
       "reading": "pōr",
@@ -951,7 +1031,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M038; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M010": {
       "reading": "paṭ",
@@ -980,7 +1062,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M010; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M050": {
       "reading": "pār",
@@ -1005,7 +1089,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M050; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M025": {
       "reading": "cem",
@@ -1034,7 +1120,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M025; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M070": {
       "reading": "vēl",
@@ -1059,7 +1147,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M070; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M078": {
       "reading": "cēr",
@@ -1084,7 +1174,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M078; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M023": {
       "reading": "vaḷ",
@@ -1113,7 +1205,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M023; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M066": {
       "reading": "cōḻ",
@@ -1138,7 +1232,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M066; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M071": {
       "reading": "nal",
@@ -1163,7 +1259,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M071; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M009": {
       "reading": "āṇ",
@@ -1188,7 +1285,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M009; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M069": {
       "reading": "nēr",
@@ -1213,7 +1312,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M069; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M021": {
       "reading": "kō",
@@ -1238,7 +1339,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M021; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M031": {
       "reading": "kai",
@@ -1263,7 +1365,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M031; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M002": {
       "reading": "kuṉ",
@@ -1288,7 +1391,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M002; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M037": {
       "reading": "kēḷ",
@@ -1313,7 +1418,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M037; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M005": {
       "reading": "kōṉ",
@@ -1338,7 +1445,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M005; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M011": {
       "reading": "kaḷiṟu",
@@ -1363,7 +1472,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M011; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M036": {
       "reading": "tiru",
@@ -1388,7 +1498,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M036; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M015": {
       "reading": "mā",
@@ -1413,7 +1524,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M015; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M001": {
       "reading": "tōḷ",
@@ -1439,7 +1552,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M001; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M075": {
       "reading": "māṟ",
@@ -1464,7 +1579,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M075; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M042": {
       "confidence": "HIGH",
@@ -1491,7 +1608,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M042; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M040": {
       "reading": "ri",
@@ -1521,7 +1640,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M040; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M024": {
       "reading": "nē",
@@ -1547,7 +1667,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M024; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M049": {
       "reading": "pu",
@@ -1573,7 +1694,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M049; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M081": {
       "reading": "ve",
@@ -1599,7 +1722,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M081; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M047": {
       "reading": "min/mīn",
@@ -1623,7 +1748,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M047; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M033": {
       "reading": "puli",
@@ -1648,7 +1775,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M033; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M074": {
       "confidence": "HIGH",
@@ -1680,7 +1808,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M074; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M054": {
       "reading": "mi",
@@ -1706,7 +1836,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M054; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M072": {
       "reading": "mā",
@@ -1734,7 +1866,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M072; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M055": {
       "confidence": "HIGH",
@@ -1761,7 +1894,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M055; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M028": {
       "reading": "cōḻ",
@@ -1790,7 +1925,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M028; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M043": {
       "reading": "mu",
@@ -1816,7 +1952,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M043; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M029": {
       "reading": "yānai",
@@ -1839,7 +1977,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M029; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M064": {
       "reading": "va",
@@ -1865,7 +2005,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M064; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M007": {
       "confidence": "HIGH",
@@ -1899,7 +2041,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M007; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M046": {
       "confidence": "HIGH",
@@ -1926,7 +2070,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M046; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M032": {
       "confidence": "HIGH",
@@ -1953,7 +2099,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M032; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M169": {
       "reading": "rā",
@@ -1981,7 +2129,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M169; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M237": {
       "reading": "ce",
@@ -2016,7 +2165,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M237; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M102": {
       "reading": "ni",
@@ -2042,7 +2192,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M102; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M076": {
       "confidence": "HIGH",
@@ -2068,7 +2219,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M076; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M272": {
       "reading": "ma",
@@ -2094,7 +2247,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M272; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M128": {
       "reading": "kaṇ",
@@ -2117,7 +2271,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M128; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M082": {
       "reading": "pa",
@@ -2150,7 +2306,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M082; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M235": {
       "reading": "vē",
@@ -2179,7 +2337,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M235; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M149": {
       "reading": "or",
@@ -2208,7 +2367,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M149; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M185": {
       "reading": "pul",
@@ -2233,7 +2393,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M185; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M383": {
       "reading": "kol",
@@ -2259,7 +2421,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M383; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M375": {
       "reading": "taṇ",
@@ -2282,7 +2445,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M375; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M270": {
       "reading": "muḷ",
@@ -2313,7 +2478,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M270; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M401": {
       "reading": "vē",
@@ -2342,7 +2508,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M401; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M374": {
       "reading": "kul",
@@ -2368,7 +2535,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M374; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M127": {
       "reading": "vē",
@@ -2397,7 +2566,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M127; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M252": {
       "reading": "min",
@@ -2421,7 +2591,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M252; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "no_validation_record",
+      "strict_set": false
     },
     "M386": {
       "reading": "maṇ",
@@ -2448,7 +2620,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M386; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M351": {
       "reading": "vī",
@@ -2474,7 +2648,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M351; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M198": {
       "reading": "co",
@@ -2501,7 +2677,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M198; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M168": {
       "reading": "inci",
@@ -2527,7 +2705,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M168; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M332": {
       "reading": "intu",
@@ -2560,7 +2739,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M332; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M183": {
       "reading": "vēḷ",
@@ -2590,7 +2770,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M183; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M222": {
       "reading": "min",
@@ -2615,7 +2796,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M222; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M365": {
       "reading": "vāṉ",
@@ -2645,7 +2828,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M365; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M412": {
       "reading": "cūḷ",
@@ -2677,7 +2861,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M412; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M151": {
       "reading": "viḷ",
@@ -2704,7 +2889,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M151; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M304": {
       "reading": "vēṟ",
@@ -2734,7 +2921,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M304; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M355": {
       "reading": "lu",
@@ -2764,7 +2952,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M355; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M178": {
       "reading": "i",
@@ -2794,7 +2983,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M178; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M163": {
       "confidence": "HIGH",
@@ -2819,7 +3009,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M163; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M108": {
       "confidence": "HIGH",
@@ -2846,7 +3038,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M108; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M231": {
       "reading": "min",
@@ -2870,7 +3064,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M231; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "no_validation_record",
+      "strict_set": false
     },
     "M321": {
       "reading": "kol",
@@ -2896,7 +3092,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M321; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M153": {
       "reading": "pu",
@@ -2922,7 +3120,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M153; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M177": {
       "reading": "na",
@@ -2948,7 +3147,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M177; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M357": {
       "reading": "kuḷ",
@@ -2974,7 +3174,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M357; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M137": {
       "reading": "kuṟ",
@@ -3000,7 +3202,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M137; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M155": {
       "reading": "ka",
@@ -3026,7 +3230,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M155; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M239": {
       "reading": "il",
@@ -3060,7 +3265,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M239; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M223": {
       "reading": "muḷ",
@@ -3090,7 +3296,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M223; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M103": {
       "reading": "kol",
@@ -3116,7 +3323,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M103; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M254": {
       "reading": "tēṉ",
@@ -3146,7 +3354,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M254; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M262": {
       "reading": "i",
@@ -3176,7 +3385,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M262; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M416": {
       "reading": "na",
@@ -3202,7 +3412,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M416; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M143": {
       "reading": "maṇ",
@@ -3228,7 +3439,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M143; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M345": {
       "reading": "taṭ",
@@ -3263,7 +3476,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M345; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M329": {
       "reading": "poṉ",
@@ -3290,7 +3504,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M329; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M190": {
       "reading": "paṉ",
@@ -3316,7 +3532,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M190; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M295": {
       "reading": "paṟ",
@@ -3342,7 +3560,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M295; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M402": {
       "reading": "vēḷ",
@@ -3372,7 +3592,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M402; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M255": {
       "reading": "kur",
@@ -3398,7 +3619,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M255; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M251": {
       "reading": "kur",
@@ -3424,7 +3646,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M251; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M301": {
       "reading": "kur",
@@ -3450,7 +3673,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M301; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M406": {
       "reading": "kur",
@@ -3476,7 +3700,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M406; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M387": {
       "reading": "kur",
@@ -3502,7 +3727,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M387; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M116": {
       "reading": "kur",
@@ -3528,7 +3754,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M116; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M274": {
       "reading": "kur",
@@ -3554,7 +3781,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M274; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M087": {
       "reading": "veL",
@@ -3578,7 +3806,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M087; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M124": {
       "reading": "kuTam",
@@ -3605,7 +3835,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M124; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M175": {
       "reading": "katir",
@@ -3629,7 +3861,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M175; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M261": {
       "reading": "muruku",
@@ -3653,7 +3887,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M261; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M264": {
       "reading": "peN",
@@ -3677,7 +3913,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M264; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M281": {
       "reading": "piLLai",
@@ -3712,7 +3950,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M281; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M311": {
       "reading": "vaTamiin",
@@ -3736,7 +3975,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M311; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M117": {
       "reading": "ar",
@@ -3760,7 +4001,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M117; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M008": {
       "reading": "erumai",
@@ -3784,7 +4027,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M008; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M100": {
       "reading": "maa",
@@ -3808,7 +4053,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M100; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M101": {
       "reading": "kur",
@@ -3833,7 +4080,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M101; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M125": {
       "reading": "vil",
@@ -3857,7 +4105,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M125; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M202": {
       "reading": "can",
@@ -3882,7 +4132,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M202; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M211": {
       "reading": "kol",
@@ -3906,7 +4158,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M211; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M249": {
       "reading": "tii",
@@ -3934,7 +4188,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M249; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M293": {
       "confidence": "MEDIUM",
@@ -3962,7 +4218,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M293; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M058": {
       "reading": "ke",
@@ -3992,7 +4249,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M058; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M065": {
       "reading": "kuTam",
@@ -4023,7 +4281,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M065; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M220": {
       "confidence": "HIGH",
@@ -4057,7 +4317,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M220; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M052": {
       "reading": "ta",
@@ -4083,7 +4345,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M052; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M053": {
       "reading": "mi",
@@ -4109,7 +4373,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M053; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M061": {
       "reading": "ka",
@@ -4135,7 +4401,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M061; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M079": {
       "confidence": "HIGH",
@@ -4158,7 +4426,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M079; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M022": {
       "confidence": "HIGH",
@@ -4181,7 +4451,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M022; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M019": {
       "confidence": "HIGH",
@@ -4204,7 +4476,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M019; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M044": {
       "confidence": "HIGH",
@@ -4230,7 +4504,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M044; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M035": {
       "confidence": "HIGH",
@@ -4258,7 +4534,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M035; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M003": {
       "confidence": "HIGH",
@@ -4285,7 +4562,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M003; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M107": {
       "confidence": "HIGH",
@@ -4312,7 +4591,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M107; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M164": {
       "confidence": "HIGH",
@@ -4339,7 +4620,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M164; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M056": {
       "confidence": "HIGH",
@@ -4366,7 +4649,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M056; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M118": {
       "confidence": "HIGH",
@@ -4402,7 +4687,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M118; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M130": {
       "confidence": "HIGH",
@@ -4429,7 +4716,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M130; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M221": {
       "confidence": "HIGH",
@@ -4458,7 +4747,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M221; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M192": {
       "confidence": "HIGH",
@@ -4487,7 +4778,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M192; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M193": {
       "confidence": "HIGH",
@@ -4516,7 +4809,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M193; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "sa_in_provenance_chain",
+      "strict_set": false
     },
     "M194": {
       "confidence": "HIGH",
@@ -4541,7 +4836,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M194; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M145": {
       "confidence": "HIGH",
@@ -4566,7 +4863,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M145; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M362": {
       "reading": "aṇi",
@@ -4590,7 +4889,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M362; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M398": {
       "reading": "kuṟi",
@@ -4614,7 +4915,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M398; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M318": {
       "reading": "kur",
@@ -4640,7 +4943,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M318; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M346": {
       "reading": "kur",
@@ -4666,7 +4970,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M346; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M312": {
       "reading": "kur",
@@ -4692,7 +4997,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M312; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M134": {
       "reading": "kur",
@@ -4718,7 +5024,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M134; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M129": {
       "reading": "kur",
@@ -4744,7 +5051,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M129; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M120": {
       "reading": "kur",
@@ -4770,7 +5078,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M120; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M207": {
       "reading": "kur",
@@ -4796,7 +5105,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M207; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M280": {
       "reading": "kur",
@@ -4822,7 +5132,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M280; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M309": {
       "reading": "kur",
@@ -4848,7 +5159,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M309; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M382": {
       "reading": "kur",
@@ -4874,7 +5186,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M382; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M324": {
       "reading": "kur",
@@ -4900,7 +5213,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M324; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M370": {
       "reading": "kur",
@@ -4926,7 +5240,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M370; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M218": {
       "reading": "kur",
@@ -4952,7 +5267,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M218; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M186": {
       "reading": "kur",
@@ -4978,7 +5294,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M186; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M307": {
       "reading": "kur",
@@ -5009,7 +5326,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M307; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M106": {
       "reading": "kur",
@@ -5035,7 +5353,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M106; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M334": {
       "reading": "kur",
@@ -5061,7 +5380,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M334; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M245": {
       "reading": "kur",
@@ -5087,7 +5407,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M245; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M227": {
       "reading": "kur",
@@ -5113,7 +5434,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M227; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M138": {
       "reading": "kur",
@@ -5139,7 +5461,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M138; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M243": {
       "reading": "kur",
@@ -5165,7 +5488,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M243; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M209": {
       "reading": "kur",
@@ -5191,7 +5515,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M209; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M259": {
       "reading": "kur",
@@ -5217,7 +5542,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M259; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M278": {
       "reading": "kur",
@@ -5243,7 +5569,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M278; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M140": {
       "reading": "kur",
@@ -5269,7 +5596,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M140; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M208": {
       "reading": "kur",
@@ -5295,7 +5623,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M208; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M109": {
       "reading": "kur",
@@ -5321,7 +5650,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M109; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M250": {
       "reading": "kur",
@@ -5347,7 +5677,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M250; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M390": {
       "reading": "kur",
@@ -5373,7 +5704,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M390; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M277": {
       "reading": "kur",
@@ -5399,7 +5731,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M277; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M181": {
       "reading": "kur",
@@ -5425,7 +5758,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M181; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M219": {
       "reading": "kur",
@@ -5451,7 +5785,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M219; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M379": {
       "reading": "kur",
@@ -5477,7 +5812,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M379; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M214": {
       "reading": "kur",
@@ -5503,7 +5839,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M214; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M131": {
       "reading": "kur",
@@ -5529,7 +5866,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M131; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M380": {
       "reading": "kur",
@@ -5555,7 +5893,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M380; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M197": {
       "reading": "kur",
@@ -5581,7 +5920,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M197; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M201": {
       "reading": "kur",
@@ -5607,7 +5947,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M201; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M413": {
       "reading": "kur",
@@ -5633,7 +5974,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M413; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M135": {
       "reading": "kur",
@@ -5659,7 +6001,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M135; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M354": {
       "reading": "kur",
@@ -5685,7 +6028,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M354; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M341": {
       "reading": "kur",
@@ -5711,7 +6055,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M341; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M330": {
       "reading": "can",
@@ -5736,7 +6081,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M330; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M105": {
       "reading": "kur",
@@ -5762,7 +6109,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M105; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M146": {
       "reading": "kur",
@@ -5788,7 +6136,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M146; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M195": {
       "reading": "kur",
@@ -5814,7 +6163,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M195; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M339": {
       "reading": "kur",
@@ -5840,7 +6190,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M339; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M359": {
       "reading": "kur",
@@ -5866,7 +6217,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M359; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M316": {
       "reading": "kur",
@@ -5892,7 +6244,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M316; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M111": {
       "reading": "kur",
@@ -5918,7 +6271,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M111; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M224": {
       "reading": "kur",
@@ -5944,7 +6298,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M224; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M408": {
       "reading": "kur",
@@ -5970,7 +6325,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M408; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M396": {
       "reading": "kur",
@@ -5996,7 +6352,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M396; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M170": {
       "reading": "kur",
@@ -6022,7 +6379,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M170; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M388": {
       "reading": "kur",
@@ -6048,7 +6406,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M388; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M360": {
       "reading": "kur",
@@ -6074,7 +6433,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M360; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M320": {
       "reading": "kur",
@@ -6100,7 +6460,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M320; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M256": {
       "reading": "kur",
@@ -6131,7 +6492,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M256; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M247": {
       "reading": "kur",
@@ -6157,7 +6519,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M247; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M381": {
       "reading": "kur",
@@ -6183,7 +6546,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M381; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M104": {
       "reading": "kur",
@@ -6209,7 +6573,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M104; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M217": {
       "reading": "kur",
@@ -6235,7 +6600,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M217; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M356": {
       "reading": "kur",
@@ -6261,7 +6627,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M356; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M369": {
       "reading": "kur",
@@ -6287,7 +6654,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M369; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M378": {
       "reading": "kur",
@@ -6312,7 +6680,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M378; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M226": {
       "reading": "kur",
@@ -6337,7 +6706,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M226; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M158": {
       "reading": "kur",
@@ -6362,7 +6732,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M158; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M165": {
       "reading": "cul",
@@ -6385,7 +6756,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M165; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M123": {
       "reading": "kur",
@@ -6410,7 +6783,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M123; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M397": {
       "reading": "kur",
@@ -6435,7 +6809,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M397; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M203": {
       "reading": "kur",
@@ -6460,7 +6835,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M203; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M405": {
       "reading": "kur",
@@ -6485,7 +6861,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M405; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M240": {
       "reading": "kur",
@@ -6510,7 +6887,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M240; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M303": {
       "reading": "kur",
@@ -6535,7 +6913,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M303; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M363": {
       "reading": "kur",
@@ -6560,7 +6939,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M363; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M200": {
       "reading": "kur",
@@ -6585,7 +6965,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M200; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M156": {
       "reading": "kur",
@@ -6610,7 +6991,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M156; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M157": {
       "reading": "kur",
@@ -6640,7 +7022,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M157; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M260": {
       "reading": "kur",
@@ -6665,7 +7048,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M260; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M258": {
       "reading": "kur",
@@ -6690,7 +7074,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M258; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M392": {
       "reading": "kur",
@@ -6715,7 +7100,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M392; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M210": {
       "reading": "kur",
@@ -6740,7 +7126,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M210; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M112": {
       "reading": "kur",
@@ -6765,7 +7152,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M112; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M286": {
       "reading": "kur",
@@ -6790,7 +7178,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M286; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M327": {
       "reading": "kur",
@@ -6815,7 +7204,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M327; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M400": {
       "reading": "kur",
@@ -6845,7 +7235,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M400; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M242": {
       "reading": "kur",
@@ -6870,7 +7261,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M242; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M147": {
       "reading": "kur",
@@ -6895,7 +7287,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M147; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M415": {
       "reading": "kur",
@@ -6920,7 +7313,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M415; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M389": {
       "reading": "kur",
@@ -6945,7 +7339,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M389; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M287": {
       "reading": "kur",
@@ -6970,7 +7365,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M287; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M133": {
       "reading": "kur",
@@ -6995,7 +7391,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M133; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M126": {
       "reading": "kur",
@@ -7020,7 +7417,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M126; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M297": {
       "reading": "kur",
@@ -7045,7 +7443,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M297; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M323": {
       "reading": "kur",
@@ -7070,7 +7469,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M323; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M213": {
       "reading": "kur",
@@ -7095,7 +7495,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M213; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M322": {
       "reading": "kur",
@@ -7120,7 +7521,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M322; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M394": {
       "reading": "kur",
@@ -7145,7 +7547,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M394; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M115": {
       "reading": "kur",
@@ -7170,7 +7573,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M115; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M298": {
       "reading": "kur",
@@ -7195,7 +7599,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M298; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M136": {
       "reading": "kur",
@@ -7220,7 +7625,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M136; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M364": {
       "reading": "kur",
@@ -7245,7 +7651,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M364; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M310": {
       "reading": "kur",
@@ -7270,7 +7677,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M310; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M314": {
       "reading": "kur",
@@ -7295,7 +7703,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M314; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M230": {
       "reading": "kur",
@@ -7320,7 +7729,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M230; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M407": {
       "reading": "kur",
@@ -7345,7 +7755,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M407; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M347": {
       "reading": "ka",
@@ -7368,7 +7779,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M347; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": true,
+      "validation_status": "strict_sa_independent",
+      "strict_set": true
     },
     "M350": {
       "reading": "vē",
@@ -7397,7 +7810,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M350; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "M340": {
       "reading": "kur",
@@ -7422,7 +7836,8 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-M340; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "strict_set": false
     },
     "H003": {
       "reading": "an",
@@ -7446,7 +7861,9 @@
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ANCHOR-H003; no pre-existing field altered."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "validation_status": "no_validation_record",
+      "strict_set": false
     }
   },
   "_citation": {
@@ -7488,6 +7905,27 @@
       "hm_confirmed": "HIGH + MEDIUM entries — the set the file's own citation caveat calls 'scientifically supportable' for publication.",
       "preprint_161": "The preprint's '161 anchors' is the H+M count of this file at the time of the Phase-170 grammar-variance retest (after Phase-163's sibilant upgrades raised H+M from 157 to 161); it is preserved as hm_count=161 in reports/phase170_grammar_variance.json and asserted by foundation_check.py CHECK NEW-V. It is a historical snapshot quantity, NOT the current file total.",
       "corpus_fields": "corpus_signs / corpus_tokens / corpus_token_coverage describe the Holdat corpus and token coverage of the H+M set; they are corpus statistics, not file counts, and were not changed by this reconciliation."
+    },
+    "spec029_phase_h_annotation": {
+      "spec": "specs/029-tao-claim-lifecycle (Phase H, D-A)",
+      "date": "2026-10-12",
+      "schema": "specs/029-tao-claim-lifecycle/anchors-schema.json",
+      "annotation_script": "specs/029-tao-claim-lifecycle/annotate_phase_h_anchors.py",
+      "validation_status_vocabulary": [
+        "no_validation_record",
+        "pending_non_sa_validation",
+        "premise_superseded",
+        "sa_in_provenance_chain",
+        "strict_sa_independent"
+      ],
+      "strict_set_rule": {
+        "rule_id": "strict_sa_independent_hm",
+        "rule_source": "backend/glossa_lab/pipelines/phase109_followthrough.py:strict_sa_independent_hm",
+        "rule_version": "Phase-109 follow-through (spec 007, 2026-10-06) applying the Phase-108 strict definition",
+        "register": "reports/phase108_provenance_register.json",
+        "definition": "confidence in {HIGH, MEDIUM} AND register category not in {SA_DERIVED, SA_CONFIRMED_ONLY} AND register sa_in_chain is false",
+        "strict_count": 94
+      }
     }
   },
   "total_all_entries": 287,

@@ -164,6 +164,19 @@ def test_anchors_additive_only_canonical_comparison():
     for rec in stripped["anchors"].values():
         for key in _ADDITIVE:
             rec.pop(key, None)
+        # Spec 029 Phase H (D-A, 2026-10-12): the Phase H
+        # annotation is additive on top of Phase D's stamps —
+        # ``strict_set`` on every record, ``validation_status``
+        # on the records that carried none (exactly the Phase H
+        # values; pre-existing values stand), and the metadata
+        # annotation block. Removing it too reproduces the
+        # pre-migration bytes this assertion pins.
+        rec.pop("strict_set", None)
+        if rec.get("validation_status") in (
+                "strict_sa_independent", "sa_in_provenance_chain",
+                "no_validation_record"):
+            rec.pop("validation_status", None)
+    stripped.get("metadata", {}).pop("spec029_phase_h_annotation", None)
     digest = hashlib.sha256(
         json.dumps(stripped, indent=2, ensure_ascii=False).encode("utf-8")
     ).hexdigest()

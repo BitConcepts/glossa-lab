@@ -492,7 +492,9 @@ def _canonical_anchors_sha256(path: Path) -> str:
     re-serializing canonically reproduces the pre-migration
     file, whose hash is the pinned anchors SHA-256 — so
     this digest keeps the original "anchors unchanged"
-    meaning after the OD-1 migration. The pinned constant
+    meaning after the OD-1 migration, and after Spec 029
+    Phase H (D-A) added its additive annotation the same
+    way. The pinned constant
     and every recorded hash value are unchanged.
     """
     doc = json.loads(path.read_text(encoding="utf-8"))
@@ -500,6 +502,18 @@ def _canonical_anchors_sha256(path: Path) -> str:
         for key in ("stage", "stage_source", "stage_as_of",
                     "stage_history", "verified_unexplained"):
             rec.pop(key, None)
+        # Spec 029 Phase H (D-A, 2026-10-12): also remove the
+        # additive annotation — ``strict_set`` on every record,
+        # ``validation_status`` on the records that carried none
+        # (exactly the Phase H values named below; pre-existing
+        # values are untouched), and the metadata block — so the
+        # digest still reproduces the pre-migration content.
+        rec.pop("strict_set", None)
+        if rec.get("validation_status") in (
+                "strict_sa_independent", "sa_in_provenance_chain",
+                "no_validation_record"):
+            rec.pop("validation_status", None)
+    doc.get("metadata", {}).pop("spec029_phase_h_annotation", None)
     return hashlib.sha256(
         json.dumps(doc, indent=2, ensure_ascii=False).encode("utf-8")
     ).hexdigest()

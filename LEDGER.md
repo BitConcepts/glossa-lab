@@ -5521,3 +5521,63 @@ suite 1,238 passed / 6 skipped / 0 failed.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Maintenance: AEE dependency pinned below 1.5 (pre-1.5 scoring semantics restored)
+
+The external library `applied-epistemic-engineering`
+(PyPI) released version 1.5.0 on
+2026-10-12T20:09:42Z. Its FR-8.7 "substance over
+presence" change replaced binary falsifiability
+credit (1.0 when a falsification test exists) with
+substance-scored credit: a test string without a
+checkable condition now earns partial credit (0.5).
+
+This repo declared the library unpinned
+(`>=1.0.4,<2` in `backend/pyproject.toml`), so CI
+resolved the newest 1.x release. The observed
+failure: PR #180's CI run 38306744884 (created
+2026-10-12T20:49:54Z, head `149ca1a7`) installed
+aee 1.5.0 and failed exactly one test,
+`tests/test_aee_core.py::test_score_dict_shape`
+(`assert 0.5 == 1.0` — falsifiability 0.5, expected
+1.0), on a synthetic in-test claim. The same test
+fails on main alone (`93a84532`) under aee 1.5.0
+and passes under 1.0.4 and under 1.4.0 (the version
+CI resolved in main's last green run 38300926354,
+2026-10-12T19:56:14Z). Main was therefore red in
+waiting for every future CI run; the failure is
+not a defect in PR #180 or in Spec 029 Phase I.
+
+Change (this entry's PR, standalone): the
+requirement in `backend/pyproject.toml` is pinned
+to `applied-epistemic-engineering>=1.0.4,<1.5` —
+the only file from which CI resolves this
+dependency. No test, fixture, score, anchor, or
+register file changes.
+
+The pin restores the scoring semantics that
+Specs 026–029 were frozen and gated under,
+including Phase A's byte-pinned score fixture
+(mean 0.484903 baseline) and the Spec 029 freeze.
+Adopting aee 1.5.0 semantics is a separate future
+decision, requiring re-baselined fixtures and a
+fresh gate; it is expressly NOT taken here.
+
+Gate evidence (local, CI-identical dependency
+resolution in a scratch venv): the pinned
+requirement resolved
+`applied-epistemic-engineering 1.4.0` (< 1.5);
+`tests/test_aee_core.py::test_score_dict_shape`
+passed (1 passed); foundation check
+(`backend/scripts/foundation_check.py`) 40 passed /
+0 failed / 8 warnings; full backend suite
+(`python -m pytest tests/ --tb=short -q
+--ignore=tests/test_pipelines_gpu.py
+--ignore=tests/test_install_gpu.py -x`, per
+`.github/workflows/ci.yml`) 1238 passed / 6 skipped /
+0 failed — identical totals to main's last green
+run under aee 1.4.0.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

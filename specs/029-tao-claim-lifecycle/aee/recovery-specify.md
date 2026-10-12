@@ -98,3 +98,20 @@ That residual is recorded, not papered over.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## Addendum — freeze-time uniformity fix (2026-10-12)
+
+After the recovery PR merged (PR #167), the freeze
+tests required `boundary_confirmation` on *every*
+claim; the three split claims (F029-C11/C12/C13) had
+carried their pair confirmations only on their parent
+claims. Each split claim gained its own confirmation
+stating its boundary against its parent claim. The
+metadata field is inert to the assessor (it appears
+nowhere in the AEE package), and the pass was
+re-confirmed on the final register bytes at all three
+phases (`20261012T140048Z` / `20261012T140049Z` /
+`20261012T140051Z`): outcome **pass**, 13 claims,
+0 failure modes, 0 below threshold. Those artifacts
+are saved alongside the recovery-round artifacts in
+this directory.

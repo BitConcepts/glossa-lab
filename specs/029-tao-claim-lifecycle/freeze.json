@@ -1,0 +1,69 @@
+{
+ "schema_version": "1.0",
+ "definition": {
+  "experiment_id": "spec029-tao-claim-lifecycle",
+  "spec": "specs/029-tao-claim-lifecycle/spec.md",
+  "freeze_doc": "specs/029-tao-claim-lifecycle/freeze.md",
+  "register": {
+   "path": "specs/029-tao-claim-lifecycle/claims.json",
+   "register_version": "draft-2",
+   "claims": 13,
+   "aee_hook_pass": "pass at after_specify, after_plan, after_tasks (0 failure modes, 0 below the 0.70 threshold; aee/ artifacts)"
+  },
+  "basis": {
+   "adjudication": "specs/029-tao-claim-lifecycle/adjudication.md",
+   "decisions": "OD-1..OD-6 ratified as a block 2026-10-12; addendum ratifying audit section 9 items D-A, D-B, D-D, D-E the same day; D-C excluded (executed separately, PR #166)",
+   "l3_recovery": "owner-authorized 2026-10-12; PR #167; record aee/recovery-specify.md"
+  },
+  "design": {
+   "stage_vocabulary": [
+    "created",
+    "checked",
+    "explained",
+    "accepted",
+    "digested"
+   ],
+   "automation_cap": "checked",
+   "contested_attribution_cap": "checked (OD-3)",
+   "digestion_threshold": "OD-5: any one of independent reuse, answered published challenge, mechanism-engaging citation",
+   "priority_register": "OD-6: public at intake; claimant, timestamp, reading hash; content sealed, default reveal 24 months, extendable once"
+  },
+  "inputs": {
+   "ledger": "specs/029-tao-claim-lifecycle/reclassification-ledger.json",
+   "ledger_entries": 345,
+   "ledger_stage_totals": {
+    "created": 220,
+    "checked": 116,
+    "explained": 0,
+    "accepted": 0,
+    "digested": 0
+   },
+   "verified_unexplained_flags": 105
+  },
+  "environment": {
+   "python": "3.12.3",
+   "runner": "backend (venv glossa-lab)",
+   "aee": "1.0.4 (Glossa venv, PATH-pinned)",
+   "specify": "1.0.10"
+  }
+ },
+ "sources": {
+  "specs/029-tao-claim-lifecycle/freeze.md": "6128a6e1a617dbb0540dd6809d18944358f4c87269ccfb759b8cfa2eab2d3dba",
+  "specs/029-tao-claim-lifecycle/spec.md": "c19bb16233ef8c3b7846697e6c44f57a1557b210baa3971d5877d3237d7097c7",
+  "specs/029-tao-claim-lifecycle/claims.json": "8023e336c08151f5d38da013a333c9a448dba47f64190c496439ef50d9af74de",
+  "specs/029-tao-claim-lifecycle/adjudication.md": "cdaff3bad2bc679db0bafd5c622e443a7c30449bca9b6cc8a97fbd1a55534575",
+  "specs/029-tao-claim-lifecycle/assessment.md": "fb0fc6685b880580fee173e3203e5efe82ae2e0b7a4e64f85ad95f44b1285a41",
+  "specs/029-tao-claim-lifecycle/audit.md": "d835a3f7c94aa15b3644532ddb628b0a1021cf11d1a9ad8c907c43e4a5dfceaa",
+  "specs/029-tao-claim-lifecycle/reclassification-ledger.json": "e53a037e71439401f4114100b32495ff98adb58f8529fe83dfedde3b94d22b90",
+  "specs/029-tao-claim-lifecycle/plan.md": "50db4b3767e212fcfa102a2383be2a5444d813f2c39d73fbf472a1a7a99ab201",
+  "specs/029-tao-claim-lifecycle/tasks.md": "10afdbfba268e123b661ef6090c1bcba9477c855280db48f9256c3b27bf6806c",
+  "specs/029-tao-claim-lifecycle/build_freeze.py": "1a7a615503b064b2cb292f7823d0a41c5c469409f2efc5772f4de6802b6cf2b7",
+  "backend/tests/test_spec029_freeze.py": "766190e12d3b7cccb02c7d831442da2716219f5a179848e2a88368e60253a5d5"
+ },
+ "environment": {
+  "python": "3.12.3",
+  "platform": "Linux",
+  "aee": "1.0.4"
+ },
+ "digest": "80d589fee7bfc0099f7df496e22d8570014817ee04bca37ca8d408d3841af59d"
+}

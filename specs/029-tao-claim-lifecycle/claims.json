@@ -192,7 +192,8 @@
         "evidence_origin_groups": [
           "spec029-assessment"
         ],
-        "tao_point": "P2 (decomposition)"
+        "tao_point": "P2 (decomposition)",
+        "boundary_confirmation": "C11 governs the computation of the parent stage from sub-claim stages; C03 governs bundle composition. C11 was split from C03 in the L3 recovery; the two are complementary halves of one original claim."
       },
       "evidence": [
         {
@@ -297,7 +298,8 @@
         "evidence_origin_groups": [
           "spec029-assessment"
         ],
-        "tao_point": "P3 (digestion is first-class)"
+        "tao_point": "P3 (digestion is first-class)",
+        "boundary_confirmation": "C12 governs the digested gate; C04 governs the accepted gate one stage earlier. C12 was split from C04 in the L3 recovery; the two gates are sequential and complementary."
       },
       "evidence": [
         {
@@ -469,7 +471,8 @@
         "evidence_origin_groups": [
           "spec029-assessment"
         ],
-        "tao_point": "P5 (anti-gradability)"
+        "tao_point": "P5 (anti-gradability)",
+        "boundary_confirmation": "C13 governs the remaining-unknowns statement on verdict displays; C06 governs score placement on program surfaces. C13 was split from C06 in the L3 recovery; the two display rules are complementary halves of one original claim."
       },
       "evidence": [
         {

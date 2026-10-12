@@ -5456,3 +5456,68 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+## 2026-10-12 — Spec 030 / Phase-394 executed: spine extended, Q6 re-test NOT-YET-TESTABLE (valid negative closure, F030-C07)
+
+Phase-394 ran under the frozen Spec 030 contract (OSF
+https://osf.io/bge3k/, DOI 10.17605/OSF.IO/BGE3K; record
+PR #176 merge `9a30b4f8`; infrastructure PR #177 merge
+`09589443`) through the frozen route order
+R5 → R1 → R2 → R4 → R3, with a margins-only interim
+assessment after each route. No §3.5 early stop triggered
+(no interim reached SUPPORTED). The extended spine holds
+205 rows: the 177 Stage 0 rows deduped under rule 2 to
+135 measurements (42 duplicate sightings merged — the
+Bannu series had been ingested once per source database;
+0 age conflicts; 6 site-assertion conflicts recorded),
+plus 49 new rows (R2) and 21 new rows (R3). Per route:
+R5's fresh XRONOS export is byte-identical to the frozen
+Stage 0 export (sha256
+`8570bfd9b256ced2f9e840183ea52325b9a7079b79a2957c7db797f09c118655`)
+— 0 new records, 0 corrections. R1 traced the Qasim Bagh
+series to Betts et al. 2019 Table 4 (10 material
+corrections, 10 citations, 0 grade corrections; OZT-624
+reclassifies to long_lived on its origin string). R2's
+c14bazAAR audit ingested p3k14c (CC0-1.0), NERD (CC BY
+4.0) and RADON-B (CC BY 3.0) — 124 corroborating citations
+and 49 new rows, all unassessed: every admitted RADON-B
+record carries the same type/layer formula and no named
+sample feature, the evidence class held non-grading in R1
+(census in the results file); CalPal is catalogue_only
+(no open licence verifiable). R4 located one data-bearing
+supplement (Petrie et al. 2016 OSM: 28 Masudpur
+determinations with named contexts, taxon materials and
+the authors' own flags) but the rows are NOT ADMITTED —
+neither Masudpur site is gazetteer-established and no
+publication reached states coordinates for them, and
+rule 7 admits coordinate-less rows only for
+gazetteer-established sites; the full extraction is
+preserved in the results file for a future act. R3
+extracted 21 Harappa determinations (Dales & Kenoyer
+1993, Table 40.1; internal-spine-only, never released),
+10 graded associated on the report's own feature
+evidence, making Harappa the sixth window site.
+
+The frozen §4 re-test on the extended spine, verbatim:
+C1 = 1 region (bar 3) FAIL; C2 = 6 sites (bar 10) FAIL;
+C3 = 0.0 short-lived share, 0 of 37 window
+direct/associated rows (bar 0.50) FAIL; C4 = median
+sigma 70 BP (bar 80) PASS. **Q6 status: NOT-YET-TESTABLE**
+— identical under the as-frozen computation and the
+CONTESTED-excluded computation (no CONTESTED row sits in
+the window pool); Ask 2's bindingness question is
+expressly NOT decided (reserved, Spec 027 §8.2). C3 is
+the binding constraint: every traced short-lived
+determination the routes reached is below the window,
+ungradeable on its published evidence, or behind the
+Masudpur coordinate gap. No criterion was loosened and
+no row was graded on anything but its origin record.
+Full record:
+`specs/030-q6-chronology-spine-extension/outcome.md`;
+products `data/movement/*_phase394*` +
+`reports/phase394_results.json`. Gates: foundation
+check 40 passed / 0 failed / 8 warnings; full backend
+suite 1,238 passed / 6 skipped / 0 failed.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

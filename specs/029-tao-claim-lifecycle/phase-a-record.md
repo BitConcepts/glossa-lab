@@ -147,10 +147,12 @@ current-claim-set audit reconciliation. Targeted run (Phase A +
   Shell wrappers (ubuntu / macos / windows). This record-filling
   commit touches no code; its own CI run was likewise verified
   all-green before the merge.
-- **Merge**: <!-- MERGE-EVIDENCE --> pending — this record ships in
-  the phase PR; a record merged inside a PR cannot contain that
-  PR's own merge sha, which is therefore named in the delivering
-  report and verifiable as the head of main after the merge.
+- **Merge**: PR #169 (`impl/029-phase-a-stage-core` → main),
+  merge method `merge`, merged after the all-green CI above was
+  verified from the check runs' own conclusions. This record
+  ships inside that PR, so it cannot contain the PR's own merge
+  sha; the merge sha is named in the delivering report and is
+  verifiable as the head of main after the merge.
 
 ## Deviations and honest limitations
 

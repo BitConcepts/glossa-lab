@@ -70,7 +70,7 @@ def test_dedupe_merges_oxa1097_triple():
     before = len(pool.rows)
     pool.dedupe()
     keys = [p394.lab_key(r.get("lab_code")) for r in pool.rows]
-    assert keys.count("OXA-1097") == 1
+    assert keys.count(p394.lab_key("OxA-1097")) == 1
     report = pool.dedupe_report
     # The baseline carries 42 duplicate sightings of already-
     # pooled measurements (the Sheri Khan Tarakai / Bannu series
@@ -80,7 +80,8 @@ def test_dedupe_merges_oxa1097_triple():
         report["measurements_merged"]
     assert len(pool.rows) == before - report["measurements_merged"]
     merged = next(r for r in pool.rows
-                  if p394.lab_key(r.get("lab_code")) == "OXA-1097")
+                  if p394.lab_key(r.get("lab_code"))
+                  == p394.lab_key("OxA-1097"))
     kinds = [c["kind"] for c in
              merged.get("extension", {}).get("citations", [])]
     assert kinds.count("dedupe_merged_measurement") == 3

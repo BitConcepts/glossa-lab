@@ -314,7 +314,7 @@ class Pool:
                          other["program_site_id"]}
                 if len(sites) > 1:
                     site_conflicts.append({
-                        "lab_code": key,
+                        "lab_code": canonical.get("lab_code"),
                         "kept_site": canonical["program_site_id"],
                         "other_site_assertion": other["program_site_id"],
                         "merged_row_id": other["chronology_row_id"]})

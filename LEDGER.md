@@ -5752,3 +5752,44 @@ evidence: full backend suite under the CI-parity venv
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Spec 029 Phase E1: display withdrawals (anti-gradability)
+
+Spec 029 Phase E1 (tasks E1.1–E1.5; FR-029-08; claim
+F029-C06; audit §5-P5) performs the display withdrawals
+only — no replacement rendering (that is Phase E2). The
+DeciphermentPanel's "{totalAnchors} signs deciphered"
+footer and headline tile, its "Deciphered signs — 100%"
+bar, and its SA-confidence and seals-decoded tiles are
+removed; the anchor count remains only as an index into
+the anchor records under a neutral label. The dashboard
+decipherment payload no longer serves `sa_aggregate`
+(the Phase-107-falsified SA method's aggregate),
+`fully_decoded_pct`, or `n_fully_decoded` — the serving
+code, including the hardcoded Phase-218 fallback values,
+is deleted, and the per-round progression field of the
+same name goes with it; Phase A's `by_stage` /
+`n_unstamped_stage` fields are untouched and verified
+live. `mean_propagated_score` is withdrawn from the
+`GET /claims/aee-scores` summary and retained nowhere;
+per-claim scores remain in per-claim detail entries with
+their falsifier and stage objects, and the Phase A/I
+byte-identical per-claim regressions still pass. Band
+placement (E1.4): no frontend surface renders an AEE
+band beside a claim status — the band lives only inside
+the per-claim lane-1 score object — and the panel's
+non-archived summary badge (confidence level + weighted
+percentage) and weighted-confidence bar are removed.
+Before/after screenshots at desktop and mobile widths
+and live served-payload checks are in
+`specs/029-tao-claim-lifecycle/phase-e1-evidence/` and
+`phase-e1-record.md`; other surfaces found serving
+same-named values (historical experiment-graph node
+schemas, historical phase scripts, SignsView counts)
+are inventoried in the record as E2/G follow-ups, not
+changed here. Record:
+`specs/029-tao-claim-lifecycle/phase-e1-record.md`.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

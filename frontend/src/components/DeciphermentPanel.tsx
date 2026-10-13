@@ -2,7 +2,7 @@
  * DeciphermentPanel — dashboard tile showing Indus script decipherment progress.
  *
  * Fetches from GET /api/v1/dashboard/decipherment and renders:
- *   - Current confidence level + weighted %
+ *   - Anchor-record count + token coverage (archived state)
  *   - Progression sparkline (rounds)
  *   - Anchor breakdown (HIGH / MEDIUM / LOW)
  *   - Token coverage bar
@@ -332,14 +332,12 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
     const totalSigns  = data.anchors.corpus_signs  ?? 390;
     const totalAnchors = data.anchors.total_all ?? totalSigns;
     const icitTotal   = (data.anchors as any).icit_total_signs ?? 0;
-    const high        = byConf.HIGH   ?? 0;
     const tokenCovPct = Math.round((data.anchors.corpus_token_coverage ?? 0) * 100);
     const currentPhase = (data as any).current_phase ?? 0;
-    const saAggregate  = (data as any).sa_aggregate ?? 0;
     const nEvidence    = (data as any).n_evidence_items ?? 0;
-    const fullyDecPct  = Math.round(((data as any).fully_decoded_pct ?? 0) * 100);
-    const nFullyDec    = (data as any).n_fully_decoded ?? 0;
-    const totalSeals   = (data as any).total_seals ?? 1670;
+    // Spec 029 Phase E1 (E1.1/E1.2; FR-029-08): the SA aggregate and
+    // the "fully decoded" percentage/count are withdrawn from the
+    // dashboard payload and from this panel's consumption.
 
     // Determine status badge — show research phase, not coverage (coverage is in bars)
     const statusBg = "#dbeafe";
@@ -364,11 +362,18 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
           )}
         </div>
 
-        {/* Metrics grid — 4 key numbers a researcher needs */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 10, marginBottom: 12 }}>
+        {/* Metrics grid — Spec 029 Phase E1 (E1.1; FR-029-08): the
+            volume-as-decipherment headline tile, the SA aggregate
+            tile, and the seals percentage tile are withdrawn. What
+            remains is the anchor-record count (an index into the
+            anchor records) and token coverage. The
+            standing-position / stage-summary rendering that
+            succeeds this layout is Phase E2's work, not this
+            withdrawal's. */}
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 12 }}>
           <div>
-            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>Signs Deciphered</div>
-            <div style={{ fontSize: 20, fontWeight: 700, color: "#15803d" }}>
+            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>Anchor Records</div>
+            <div style={{ fontSize: 20, fontWeight: 700, color: "#111827" }}>
               {totalAnchors}
             </div>
             <div style={{ fontSize: 11, marginTop: 2, color: "#6b7280" }}>
@@ -382,25 +387,10 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
             </div>
             <div style={{ fontSize: 11, color: "#6b7280" }}>of 7,002 tokens</div>
           </div>
-          <div>
-            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>SA Confidence</div>
-            <div style={{ fontSize: 20, fontWeight: 700, color: saAggregate >= 0.5 ? "#15803d" : "#b45309" }}>
-              {saAggregate > 0 ? `${Math.round(saAggregate * 100)}%` : "—"}
-            </div>
-            <div style={{ fontSize: 11, color: "#6b7280" }}>aggregate</div>
-          </div>
-          <div>
-            <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>Seals Decoded</div>
-            <div style={{ fontSize: 20, fontWeight: 700, color: fullyDecPct >= 65 ? "#15803d" : "#b45309" }}>
-              {fullyDecPct > 0 ? `${fullyDecPct}%` : "—"}
-            </div>
-            <div style={{ fontSize: 11, color: "#6b7280" }}>{nFullyDec > 0 ? `${nFullyDec.toLocaleString()}/${totalSeals.toLocaleString()}` : ""}</div>
-          </div>
         </div>
 
         {/* Progress bars */}
-        <ProgressBar value={tokenCovPct}  color="#059669" label={`Token coverage (${tokenCovPct}% of 7,002 Holdat corpus tokens decoded)`} />
-        <ProgressBar value={Math.round((totalAnchors / totalAnchors) * 100)} color="#15803d" label={`Deciphered signs — ${totalAnchors}/${totalAnchors} publicly accessible signs have readings (100%)`} />
+        <ProgressBar value={tokenCovPct}  color="#059669" label={`Token coverage (${tokenCovPct}% of 7,002 Holdat corpus tokens)`} />
         {icitTotal > 0 && (
           <ProgressBar
             value={Math.round((totalAnchors / icitTotal) * 100)}
@@ -549,13 +539,12 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
           </div>
         )}
 
-        {/* Status footer */}
-        <div style={{ marginTop: 10, fontSize: 11, color: "#6b7280", lineHeight: 1.5 }}>
-          <strong>{totalAnchors} signs deciphered</strong> — all signs encountered in the publicly accessible Holdat + ICIT + Firestore corpora have Proto-Dravidian readings ({high} HIGH confidence).
-          {icitTotal > 0 && (
-            <> The full ICIT catalogue contains <strong>{icitTotal} signs</strong> (2026 revision); <strong>{icitTotal - totalAnchors} signs</strong> exist only in the updated version (Fuls, personal communication; access declined). These {icitTotal - totalAnchors} signs cannot be deciphered without corpus data.</>
-          )}
-        </div>
+        {/* Spec 029 Phase E1 (E1.1; FR-029-08; audit §5-P5.1): the
+            former status footer — a volume count presented as a
+            decipherment claim, with an unqualified readings
+            assertion — is withdrawn entirely. No replacement copy
+            is authored in this phase; the honest replacement
+            rendering is Phase E2's work. */}
       </div>
     );
   }
@@ -569,12 +558,12 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
         <div>
           <span style={{ fontSize: 16, fontWeight: 700, color: "#111827" }}>🔤 Indus Script Decipherment</span>
-          <span style={{
-            marginLeft: 8, padding: "2px 8px", borderRadius: 4, fontSize: 11, fontWeight: 600,
-            background: levelStyle.bg, color: levelStyle.fg,
-          }}>
-            {cur?.level || "N/A"} — {cur?.weighted_pct || 0}%
-          </span>
+          {/* Spec 029 Phase E1 (E1.4; FR-029-08): the confidence
+              level + weighted-percentage badge is withdrawn from
+              this summary position. A band/score may appear only
+              inside a lane-1 checking presentation, alongside the
+              score and its method — never as a headline badge. */}
+
         </div>
         <span style={{ fontSize: 12, color: "#6b7280" }}>{data.n_rounds} rounds</span>
       </div>
@@ -603,10 +592,10 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
         </div>
       </div>
 
-      {/* Progress bars */}
+      {/* Progress bars — Spec 029 Phase E1 (E1.2/E1.4; FR-029-08):
+          the "fully decoded" bar and the summary-position weighted
+          confidence bar are withdrawn. */}
       <ProgressBar value={(cur?.token_coverage || 0) * 100} color="#3b82f6" label="Token Coverage" />
-      <ProgressBar value={cur?.fully_decoded_pct || 0} color="#10b981" label="Inscriptions Fully Decoded" />
-      <ProgressBar value={cur?.weighted_pct || 0} color="#8b5cf6" label="Weighted Confidence" />
 
       {/* Sparkline */}
       {data.progression.length >= 2 && (

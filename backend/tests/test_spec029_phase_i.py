@@ -234,10 +234,11 @@ def test_every_surviving_score_identical_to_pre_change_fixture():
         assert want == pre[claim_id], claim_id
     summary = assessment_summary(_CLAIMS_DIR)
     assert summary["total_claims"] == 23
-    # Mean movement is composition only: the 8 removed instance
-    # records (1.0, 0.85, 6 × 0.289375) left the scored set; no
-    # surviving claim's score moved.
-    assert summary["mean_propagated_score"] == 0.497641
+    # Spec 029 Phase E1 (E1.3): the summary-position mean was
+    # withdrawn (FR-029-08). The composition-only mean movement
+    # this test formerly pinned (0.497641) is superseded by the
+    # withdrawal; the per-claim fixture identity above stands.
+    assert "mean_propagated_score" not in summary
 
 
 # ── I4: intake fingerprint gate ──────────────────────────────────────────

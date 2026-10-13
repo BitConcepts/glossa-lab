@@ -173,4 +173,6 @@ def test_load_real_claims_dir_and_summary():
     assert summary["engine"] == "applied-epistemic-engineering"
     assert summary["total_claims"] == len(claims)
     assert summary["status_counts"].get("partially_supported", 0) >= 1
-    assert 0.0 <= summary["mean_propagated_score"] <= 1.0
+    # Spec 029 Phase E1 (E1.3): the program-level mean score is
+    # withdrawn from the summary position (FR-029-08).
+    assert "mean_propagated_score" not in summary

@@ -393,12 +393,18 @@ def test_pred_register_document_untouched():
     # 2026-10-13 under register section 6 recording the Spec
     # 032 / Phase-396 step-0 closure of PRED-2026-006 (the
     # register's existing text is unchanged by that append;
-    # Spec 032 spec section 7 prescribes it). Any further
-    # drift from this hash is unauthorised.
+    # Spec 032 spec section 7 prescribes it). It was advanced
+    # a second time, by name, for the owner-ordered
+    # registration append of 2026-10-13: the PRED-2026-010
+    # entry added to register section 3 and its dated note in
+    # section 6 (the clean-withholding successor to
+    # PRED-2026-006; insertions only, +20/-0 lines, no
+    # existing entry altered). Any further drift from this
+    # hash is unauthorised.
     digest = hashlib.sha256(
         (_REPO_ROOT / "docs" / "PREDICTION_REGISTER.md").read_bytes()
     ).hexdigest()
-    assert digest == "701787ff1f8a1f073022c0dcd28bc69a18d4e97aaedacdd880edd60909d7b748"
+    assert digest == "98474e3fe36a229dee90d8efb39c313f4175a75197abf9cf52c91e1d0c22cfc5"
 
 
 # ── Script contract: shapes, states, idempotency ─────────────────────────

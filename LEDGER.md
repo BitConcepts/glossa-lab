@@ -6349,3 +6349,54 @@ the claim's record is untouched by this design.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-13 — Spec 034 design draft (the matched-object attribution, design D-20)
+
+Design D-20 of the experiment-design portfolio of 2026-10-13
+(draft PR #195) is carried into
+`specs/034-matched-object-attribution/` without deviation,
+under the owner's freeze order of 2026-10-13 06:39 EDT
+("Freeze D-30, D-03, and D-20 for execution"; adjudication
+in the spec's `adjudication.md`). The spec attributes the
+unexplained residue of a settled result: Phase-125 closed
+FAIL — DISAGREEMENT between the CISI (Parpola) and ICIT
+(Mahadevan) compilations (16 judgeable pairs of 286; median
+TV distance 0.636931); Phase-127 showed sampling noise alone
+produces 0.083; Phase-131 attributed 6.1%, leaving 93.9%
+unexplained because the two digital layers shared zero
+object keys (the Holdat cisi_number join was rejected as
+non-identity and stays prohibited). Step 0 builds the
+object bridge through the three lawful routes the program
+holds — the 7,705-row CISI catalogue layer (Phases
+120–124), the Phase-130 intake schema on the Mahadevan
+side, and the 44 Phase-128 dossiers — behind a gate fixed
+in advance: at least 150 matched objects with texts of
+three or more signs in both compilations; below the gate
+the study closes as TOO THIN TO ATTRIBUTE with the bridge
+census published as the finding. Above the gate, per-sign
+positional profiles are computed on the matched subset only
+under Phase-125's own distance and count floors, and the
+remaining disagreement is decomposed in Phase-131's own
+categories (segmentation / substitution, checked against
+the crosswalk's conflict pairs — the crosswalk is a record
+of disagreement, never ground truth / composition
+residue). Criteria: matched median at or below 0.20
+ATTRIBUTED TO COMPOSITION; at or above 0.32 (half the
+corpus-level distance) ATTRIBUTED TO TRANSCRIPTION;
+between, a split attribution with the decomposition table
+as the result. The selection-bias report (matched subset
+mix against both full mixes) rides in every verdict
+statement. The study never judges which compilation is
+right, and the settled Phase-125 verdict is untouched.
+Governed register: 14 claims (F034-C01…C14), recovered
+through four AEE rounds (12, then 4, then 1, then 1 failure
+modes — atomic rewrites, boundary transfers, definitional
+verdict lines; record in `aee/recovery-specify.md`) to
+register_version 0.5-draft; AEE hook pass at after_specify,
+after_plan, and after_tasks (0 failure modes). Execution is
+Phase-398, gated on the OSF registration of the frozen
+contract verifying public. No object has been matched; no
+distance has been computed.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

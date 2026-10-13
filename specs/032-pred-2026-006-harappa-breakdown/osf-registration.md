@@ -87,6 +87,37 @@ register's existing text is untouched (the outcome,
 when it exists, is appended as a dated entry), and
 the Spec 026–032 frozen records stand as frozen.
 
+## Completion — APPROVED AND PUBLIC (2026-10-13)
+
+- **DOI: https://doi.org/10.17605/OSF.IO/3HTN8**
+- Approval route: the API review-action POST
+  returned **HTTP 409** at filing (recorded above),
+  as the program record predicts; approval was
+  effected via the tokenised approve link in the
+  "Pending Registration - Admin Notification" email
+  (Gmail id `1a134fc6fd2260c7`, received
+  2026-10-13T11:18:40Z), opened in the signed-in
+  browser — the standing approvals loop (owner
+  order 2026-10-11: registration approvals are the
+  agent's job, never left as an owner action item).
+  The cancel link in the same email was not
+  touched.
+- The registration's public page shows "Public
+  registration", Date Registered Oct 13, 2026,
+  7:18 AM EDT (browser-verified).
+- State verified via the OSF API after approval
+  (2026-10-13): `reviews_state: accepted`,
+  `public: true`,
+  `pending_registration_approval: false`,
+  `withdrawn: false`, `embargoed: false`;
+  `date_registered: 2026-10-13T11:18:19Z`;
+  `registered_from` node `2zcr5`; the identifiers
+  record carries DOI `10.17605/OSF.IO/3HTN8`.
+- Execution gate: the registration precondition is
+  satisfied by this approval and verification.
+  Phase-396 execution proceeds under the owner's
+  2026-10-13 order.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

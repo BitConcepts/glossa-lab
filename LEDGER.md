@@ -6148,3 +6148,38 @@ via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI. The explanation texts were AI-drafted and
 human-adopted as recorded above; the drafting AI is not the
 author of any explanation record.
+
+## 2026-10-13 — Spec 032 design draft (PRED-2026-006: the Harappa breakdown, design D-30)
+
+Design D-30 of the experiment-design portfolio of 2026-10-13
+(draft PR #195) is carried into `specs/032-pred-2026-006-harappa-breakdown/`
+without deviation, under the owner's freeze order of 2026-10-13
+06:39 EDT ("Freeze D-30, D-03, and D-20 for execution"; adjudication
+in the spec's `adjudication.md`). The spec freezes PRED-2026-006's
+registered test exactly as registered on 2026-04-22: at least 70% of
+the CISI-trained INITIAL signs show a start rate of at least 0.40 at
+Harappa, on the withheld Harappa-site Yajnadevam sequences
+(`backend/glossa_lab/data/yajnadevam_inscriptions.csv` — 5,679
+inscriptions, 77 sites, 2,717 Harappa; census counted at design
+time and pinned by the freeze tests). Step 0 fails closed: the
+trained INITIAL set is reconstructed from the recorded
+`global_class_stability.py` lineage and frozen; the withholding is
+verified as CISI Mohenjo-daro only; sign identity is carried by the
+existing crosswalks under `data/crosswalks/`, fixed before counting.
+A failed check closes the study as CANNOT BE RUN AS WRITTEN; unmappable
+trained signs are counted and reported, with coverage above 20%
+stated in the verdict's first sentence. The verdict mapping is the
+register's own (CONFIRMED at a share of at least 70%; NOT CONFIRMED
+below it; no inconclusive band exists and none is invented); the
+per-sign table is pre-registered as a descriptive addition only.
+Governed register: 12 claims (F032-C01…C12), recovered through three
+AEE rounds (17, then 4, then 1 failure modes — atomic rewrites and
+pairwise boundary confirmations; record in `aee/recovery-specify.md`)
+to register_version 0.4-draft; AEE hook pass at after_specify,
+after_plan, and after_tasks (0 failure modes). Execution is
+Phase-396, gated on the OSF registration of the frozen contract
+verifying public. The registered computation has never been run;
+the PRED register is untouched by this design.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

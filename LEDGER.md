@@ -6009,6 +6009,118 @@ AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
 
+## 2026-10-13 — Spec 031 design draft (Spec 027 Stage 2 / Q7 provenance networks)
+
+Design work at the owner's direction (2026-10-13:
+design and freeze Spec 027 Stage 2 / Q7 from the D8
+margins; execution not ordered). New spec directory
+`specs/031-stage2-q7-provenance-networks/` (spec.md +
+claims.json F031-C01…C12 + adjudication.md + plan.md
++ tasks.md + aee/). Q7 the question stays owned by
+Spec 027 (F027-C15); Spec 031 owns the Stage 2 design.
+
+The design is built from the completed D8 audit's
+margins under the adjudication adopted 2026-10-12
+(1B/2B/3A/4A/5A/6A, recorded verbatim in the spec's
+adjudication.md): two-tier links (Law 2011
+instrumental determinations primary; Chapter 4
+reference-based assignments a labelled sensitivity,
+never pooled); Meluhha contributes no site-pair
+links; each response arm on its own eligible site
+set; period eligibility from Stage 0 gazetteer
+labels only; Spec 026/027 control and verdict
+discipline inherited wholesale (MRM/MRQAP partial
+R² of the shared-source term, practical margin 0.02,
+B = 9,999, R = 199 controls, site jackknife). The
+support rules are fixed in the design from the
+margins as design decisions DD-1…DD-8 under the 5A
+mandate, each flagged with its reasoning: link
+eligibility ≥ 3 primary determinations per site,
+arm floors (ceramic ≥ 20 / bead ≥ 10 classified
+items per site), arm viability ≥ 8 eligible sites
+and ≥ 10 linked pairs, with the ceramic arm declared
+conditionally estimable and closing NOT ESTIMABLE at
+the execution margins step if its unaudited source
+basis cannot evidence the site floor, and
+sub-period variants declared untestable in advance.
+The Harappa concentration (≈95% of Law's
+determinations) and the drop-Harappa jackknife cell
+are named in the design as the expected pressure
+point; a Harappa-dependent effect cannot reach
+SUPPORTED under the frozen rules.
+
+AEE hook pass: round 1 iterate (5 failure modes) and
+round 2 iterate (4), recovered honestly in the
+Spec 030 pattern (atomic rewrites carrying
+enumerations into boundaries; pairwise boundary
+confirmations; text-level rewording of four claims
+to remove accidental token collisions the assessor's
+text-pairing check flags, propositions preserved);
+final outcome **pass** at after_specify, after_plan,
+and after_tasks (12 claims, 0 failure modes, 0 below
+the 0.70 threshold). Record:
+`specs/031-stage2-q7-provenance-networks/aee/recovery-specify.md`.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-13 — Spec 031 frozen (Stage 2 / Q7 design freeze)
+
+The Spec 031 design (design PR #191, merged `b00b3b1d`)
+is frozen: `specs/031-stage2-q7-provenance-networks/
+freeze.md` + `freeze.json`, framework026 digest
+`f63167fc99c8d3c31f885b1014cad69fab3788fcf8e6212d018aa6948a2cdac6`
+over freeze.md, spec.md, claims.json (register
+0.3-draft, F031-C01…C12), adjudication.md, the AEE
+recovery record and freeze note, build_freeze.py, and
+the freeze test. Freeze tests pin the digest replay,
+the definition constants (Phase-395; support rules
+3 / 20 / 10 / 8 / 10; margin 0.02; B = 9,999; seed
+20261013; the ceramic arm's NOT ESTIMABLE closure and
+the not-ordered execution gate carried verbatim), the
+register integrity, the D8 margins as the audit states
+them, and the Stage 0 gazetteer counts at row level
+(36 rows / 30 sites / 21 verified_open / 15
+open_access_read_only). Foundation check 40 passed /
+0 failed / 8 warnings. `plan.md` and `tasks.md` are
+bookkeeping and are not digest-covered (the Spec
+029/030 rule). Next per adopted 6A: OSF registration
+of the frozen contract, then execution only on a
+separate owner order. Nothing was executed under
+this freeze: no link digitised, no similarity
+computed, no verdict exists.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-13 — Spec 031 OSF registration filed (pending approval)
+
+The frozen Spec 031 contract was registered on OSF
+per adopted 6A, after the freeze merged (PR #192,
+`95388bbc`) and before any execution: registration
+**https://osf.io/jtwvc/** on node `rfhd4`, OSF
+Preregistration schema, all 29 response fields filed
+from the frozen record and read back exact; subjects
+mirror the precedent registrations. State at filing:
+`reviews_state: initial`,
+`pending_registration_approval: true` — the single
+recorded API approval attempt returned HTTP 409 (the
+standing route's known behaviour), and the "Pending
+Registration - Admin Notification" email arrived
+(Gmail id `1a134000191cceec`, 2026-10-13T06:42:56Z).
+The approval click is the parent chat's standing job;
+the registration record
+(`specs/031-stage2-q7-provenance-networks/osf-registration.md`)
+is filed as a PR left open pending that click, and is
+completed by append once the approval verifies with
+its DOI. Execution (Phase-395) remains un-ordered.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
 ## 2026-10-13 — Spec 029 lane-2 drafts ADOPTED (owner authorship act, OD-2)
 
 The 35 lane-2 drafts prepared earlier today (PR #190:

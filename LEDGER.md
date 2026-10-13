@@ -6231,3 +6231,42 @@ data stays in the gitignored local store and is released nowhere
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-13 — Spec 033 design draft (the SA-free language comparison, design D-03)
+
+Design D-03 of the experiment-design portfolio of 2026-10-13
+(draft PR #195) is carried into `specs/033-sa-free-language-comparison/`
+without deviation, under the owner's freeze order of 2026-10-13
+06:39 EDT ("Freeze D-30, D-03, and D-20 for execution"; adjudication
+in the spec's `adjudication.md`). The spec freezes the SA-free rerun
+of the Dravidian-versus-rivals comparison behind
+`parpola_2010_dravidian_solution_manual_001`, whose partial support
+was computed with the semantic-anchoring machinery Phase-107
+falsified (held-out 0.000, 0 of 115): no SA, no anchor promotion,
+and no SA-derived quantity anywhere in the pipeline (H26). Data:
+the strict sign set (94 readings, validation status
+strict_sa_independent, in `backend/reports/INDUS_FINAL_ANCHORS.json`)
+and the V3/Mahadevan-lineage corpus as held; anchor values from
+published sources only. The estimator the design prescribes fixing
+at freeze time is fixed in spec section 5 (counted conditional
+model over phoneme-sequence and sign-identity units, add-one
+smoothing, mean log probability per sign, identical for every family
+and control). Criteria, with margins set from the recorded
+originals (Phase-41: 1.0566 to 1; Phase-43: 0.484 log units per
+sign) so the rerun can fail: SUPPORTED at a margin of at least 0.10
+log units per sign over the best rival and above the 99th
+percentile of the 999-assignment random distribution; NOT SUPPORTED
+on a rival at or above Dravidian or Dravidian inside the random
+range; INCONCLUSIVE on a sub-margin win or a Harappa-removed
+sensitivity reversal. Governed register: 15 claims (F033-C01…C15),
+recovered through three AEE rounds (9, then 5, then 1 failure
+modes — atomic rewrites, boundary transfers, one genuine split:
+the SUPPORTED percentile condition became F033-C15; record in
+`aee/recovery-specify.md`) to register_version 0.4-draft; AEE hook
+pass at after_specify, after_plan, and after_tasks (0 failure
+modes). Execution is Phase-397, gated on the OSF registration of
+the frozen contract verifying public. No score has been computed;
+the claim's record is untouched by this design.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

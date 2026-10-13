@@ -26,8 +26,13 @@ depends on:
 
 All bundle fixtures are synthetic (invented persons, example
 references). No live record is authored a ``not_understood``
-statement by these tests — the live-store assertions pin the
-absence form, which is the honest state of the live records.
+statement by these tests. (Amended 2026-10-13: the live-store
+assertions originally pinned the absence form on every record,
+which was the honest state until the owner's lane-2 adoption act
+of 2026-10-13 authored texts for the 23 canonical claims; the
+live test below now pins the partitioned state — authored texts
+on the canonical claims, the absence form on the 8 preserved
+evidence instances.)
 """
 from __future__ import annotations
 
@@ -48,6 +53,18 @@ from glossa_lab.claim_stage import with_stage_defaults
 
 _REPO = Path(__file__).resolve().parents[2]
 _CLAIMS_DIR = _REPO / "glossa-indus" / "claims" / "extracted_claims"
+# The adopted lane-2 records (PR #190): the expected authored
+# not_understood text for each canonical extracted claim, read from
+# the adopted record itself so this test pins the live stores
+# against the durable artifact of record.
+_ADOPTED_DRAFTS = json.loads(
+    (_REPO / "specs" / "029-tao-claim-lifecycle" / "lane2-drafts"
+     / "drafts.json").read_text(encoding="utf-8"))
+_ADOPTED_NOT_UNDERSTOOD = {
+    d["claim_id"]: d["not_understood"]
+    for d in _ADOPTED_DRAFTS["drafts"]
+    if d["record_kind"] == "extracted_claim"
+}
 _PANEL = _REPO / "frontend" / "src" / "components" / "DeciphermentPanel.tsx"
 _EVIDENCE_VIEW = _REPO / "frontend" / "src" / "components" / "IndusEvidenceView.tsx"
 _LEGEND = _REPO / "frontend" / "src" / "components" / "StageLegend.tsx"
@@ -73,22 +90,32 @@ def _write_claims_file(dirpath: Path, claims: list[dict]) -> None:
     )
 
 
-# ── E2.3/E2.4: live-store serialization (the absence form) ───────────────
+# ── E2.3/E2.4: live-store serialization (authored + absence forms) ───────
 
 
-def test_live_claims_serialize_not_understood_absence_and_no_bundle():
-    """Live records: no human has authored a not_understood statement
-    and no extracted claim is a bundle parent. The endpoint must
-    serialize exactly that — the field present and None, the flag
-    False, bundle None — never substitute text."""
+def test_live_claims_serialize_not_understood_state_and_no_bundle():
+    """Live records, as amended by the lane-2 adoption act of
+    2026-10-13 (owner act; PR #190 + ingestion): the 23 canonical
+    claims carry the authored ``not_understood`` texts the owner
+    adopted — the endpoint must serialize them verbatim, with the
+    flag True. The 8 preserved evidence instances are not claims
+    of their own and carry no authored text: for them the endpoint
+    must serialize the absence form — the field present and None,
+    the flag False — never substitute text. No extracted claim is
+    a bundle parent."""
     if not _CLAIMS_DIR.exists():
         pytest.skip("extracted_claims dir not present")
     result = asyncio.run(indus_evidence.list_claims(limit=500))
-    assert result["total"] > 0
+    assert result["total"] == 31
     for entry in result["claims"]:
         assert "not_understood" in entry
-        assert entry["not_understood"] is None
-        assert entry["not_understood_recorded"] is False
+        if entry["claim_id"] in _ADOPTED_NOT_UNDERSTOOD:
+            assert entry["not_understood"] == \
+                _ADOPTED_NOT_UNDERSTOOD[entry["claim_id"]]
+            assert entry["not_understood_recorded"] is True
+        else:
+            assert entry["not_understood"] is None
+            assert entry["not_understood_recorded"] is False
         assert "bundle" in entry
         assert entry["bundle"] is None
         assert entry["bundle_serialization_error"] is None

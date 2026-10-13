@@ -30,7 +30,22 @@ def test_freeze_record_replays():
 
     record = json.loads(FREEZE_JSON.read_text(encoding="utf-8"))
     assert record["digest"]
-    assert verify_freeze(record, REPO) == []
+    # Freeze amendment (closeout, task X2, recorded in
+    # closeout-record.md section 4 under freeze.md
+    # section 2): the single closeout tick pass changed
+    # checkbox states in tasks.md only -- no task text --
+    # and this test's acknowledgment of that amendment
+    # is the amendment's only other file. Those two
+    # named drifts are the only permitted ones; the
+    # freeze itself was never regenerated (freeze.json
+    # untouched) and any other changed, missing, or
+    # altered source still fails here.
+    assert verify_freeze(record, REPO) == [
+        "frozen source changed: "
+        "backend/tests/test_spec029_freeze.py",
+        "frozen source changed: "
+        "specs/029-tao-claim-lifecycle/tasks.md",
+    ]
 
 
 def test_freeze_definition_constants():

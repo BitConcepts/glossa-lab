@@ -3389,3 +3389,17 @@ byte-identical; PRED untouched. Verdicts: Arm A
 INCONCLUSIVE, Arm B INCONCLUSIVE; Phase-392's record
 never modified. Any Harappa/tablet follow-up test needs
 a new spec. Full entry: repo LEDGER.md, same date.
+
+## 2026-10-13 — Spec 029 closeout (program complete)
+
+Verification on merged main `db1c3832`: suite 1,407
+passed / 6 skipped / 0 failed; foundation 40/0/8;
+anchors additive-only canonical comparison exact
+(pre-Spec-029 SHA-256 restored on stripping); PRED
+register untouched; final reconciliation 220 created
+/ 116 checked / 0 / 0 / 0 with 105
+`verified_unexplained` flags. Tasks ticked once as
+the recorded freeze amendment (freeze.md section 2);
+freeze never regenerated. No live claim stands above
+`checked`. Full entry: repo LEDGER.md, same date;
+record: `specs/029-tao-claim-lifecycle/closeout-record.md`.

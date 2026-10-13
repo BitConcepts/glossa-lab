@@ -7,6 +7,11 @@ Endpoints
 GET  /library                   List registered literature documents
 GET  /claims                    List extracted claims (with filters)
 GET  /claims/aee-scores         AEE-library scoring of all extracted claims
+GET  /claims/{id}/trail         Per-claim inspectable trail (Spec 029 Phase C)
+POST /priority-register         Priority-register intake (Spec 029 Phase C, OD-6)
+GET  /priority-register         Public priority register (sealed-safe)
+POST /priority-register/{id}/extend   Extend reveal date (once only)
+POST /priority-register/{id}/unseal   Unseal by claimant publication
 GET  /hypotheses                List hypothesis model summaries
 
 POST /upload                    Upload a PDF → run intake
@@ -270,6 +275,243 @@ async def claims_aee_scores() -> dict[str, Any]:
     from glossa_lab.aee_core import assessment_summary  # noqa: PLC0415
 
     return assessment_summary(_CLAIMS_DIR)
+
+
+# ── Priority register (Spec 029 Phase C, FR-029-11 / OD-6) ───────────────────
+#
+# Runtime state only: the store and its seal key live under the
+# gitignored ``.glossa-state/`` directory (plan §5/§V — register
+# records live in the backend store; a claimant's contact is kept
+# private there and never serialized).
+
+_PRIORITY_STORE = _REPO_ROOT / ".glossa-state" / "priority_register.json"
+_PRIORITY_KEY = _REPO_ROOT / ".glossa-state" / "priority_register.key"
+_ANCHORS_FILE = _REPO_ROOT / "backend" / "reports" / "INDUS_FINAL_ANCHORS.json"
+
+
+def _load_priority_register():
+    from glossa_lab.priority_register import load_register  # noqa: PLC0415
+
+    return load_register(_PRIORITY_STORE, _PRIORITY_KEY)
+
+
+def _save_priority_register(register) -> None:
+    from glossa_lab.priority_register import save_register  # noqa: PLC0415
+
+    save_register(register, _PRIORITY_STORE)
+
+
+def _priority_error_status(exc: Exception) -> int:
+    return 404 if str(exc).startswith("no priority-register entry") else 400
+
+
+class PriorityIntakeBody(BaseModel):
+    claimant: str = ""
+    claimant_contact: str = ""
+    reading: str = ""
+    evidence: list[str] = []
+    claim_id: str | None = None
+    reveal_date: str | None = None
+    supersedes: str | None = None
+
+
+@router.post("/priority-register")
+async def priority_register_intake(body: PriorityIntakeBody) -> dict[str, Any]:
+    """File a reading in the priority register (OD-6: public at intake).
+
+    Issuance is on record completeness alone — no score, stage, or
+    verdict is required, implied, or stored. The response carries
+    the entry id and the public record (claimant + server
+    timestamp + SHA-256 of the reading); the content stays sealed.
+    """
+    from glossa_lab.priority_register import (  # noqa: PLC0415
+        PriorityRegisterError,
+        public_record,
+        serialize_entry,
+    )
+
+    register = _load_priority_register()
+    try:
+        entry = register.register(
+            claimant=body.claimant,
+            claimant_contact=body.claimant_contact,
+            reading=body.reading,
+            evidence=body.evidence,
+            claim_id=body.claim_id,
+            reveal_date=body.reveal_date,
+            supersedes=body.supersedes,
+        )
+    except PriorityRegisterError as exc:
+        raise HTTPException(status_code=_priority_error_status(exc), detail=str(exc)) from exc
+    _save_priority_register(register)
+    return {
+        "entry_id": entry["entry_id"],
+        "public_record": public_record(entry),
+        "entry": serialize_entry(entry),
+    }
+
+
+@router.get("/priority-register")
+async def priority_register_list() -> dict[str, Any]:
+    """The public register: public records + sealed-safe entry views.
+
+    Reading the register applies the reveal-date unseal trigger:
+    any entry whose reveal date has been reached is unsealed (and
+    the event recorded) before the listing is serialized. Sealed
+    entries expose no content and no contact detail.
+    """
+    from glossa_lab.priority_register import (  # noqa: PLC0415
+        public_record,
+        serialize_entry,
+    )
+
+    register = _load_priority_register()
+    if register.unseal_due():
+        _save_priority_register(register)
+    entries = [serialize_entry(e) for e in register.entries]
+    return {
+        "entries": entries,
+        "public_records": [public_record(e) for e in register.entries],
+        "total": len(entries),
+    }
+
+
+@router.get("/priority-register/{entry_id}")
+async def priority_register_get(entry_id: str) -> dict[str, Any]:
+    """One register entry, sealed-safe (content only once unsealed)."""
+    from glossa_lab.priority_register import (  # noqa: PLC0415
+        PriorityRegisterError,
+        serialize_entry,
+    )
+
+    register = _load_priority_register()
+    if register.unseal_due():
+        _save_priority_register(register)
+    try:
+        entry = register.get(entry_id)
+    except PriorityRegisterError as exc:
+        raise HTTPException(status_code=404, detail=str(exc)) from exc
+    return {"entry": serialize_entry(entry)}
+
+
+class PriorityExtendBody(BaseModel):
+    new_reveal_date: str
+
+
+@router.post("/priority-register/{entry_id}/extend")
+async def priority_register_extend(entry_id: str, body: PriorityExtendBody) -> dict[str, Any]:
+    """Extend an entry's reveal date — once only, as a dated record.
+
+    A refused extension is recorded in the entry's history before
+    the error is returned (the refusal is part of the register),
+    so the store is saved on both paths.
+    """
+    from glossa_lab.priority_register import (  # noqa: PLC0415
+        PriorityRegisterError,
+        serialize_entry,
+    )
+
+    register = _load_priority_register()
+    register.unseal_due()
+    try:
+        entry = register.extend_reveal_date(entry_id, body.new_reveal_date)
+    except PriorityRegisterError as exc:
+        _save_priority_register(register)
+        raise HTTPException(status_code=_priority_error_status(exc), detail=str(exc)) from exc
+    _save_priority_register(register)
+    return {"entry": serialize_entry(entry)}
+
+
+class PriorityUnsealBody(BaseModel):
+    reading: str = ""
+    evidence: list[str] = []
+
+
+@router.post("/priority-register/{entry_id}/unseal")
+async def priority_register_unseal(entry_id: str, body: PriorityUnsealBody) -> dict[str, Any]:
+    """Unseal by claimant publication: present the content.
+
+    The presented content unseals the entry only when its
+    canonical SHA-256 matches the hash published at intake;
+    a mismatched presentation is refused and recorded.
+    """
+    from glossa_lab.priority_register import (  # noqa: PLC0415
+        PriorityRegisterError,
+        serialize_entry,
+    )
+
+    register = _load_priority_register()
+    try:
+        entry = register.unseal_by_publication(
+            entry_id, reading=body.reading, evidence=body.evidence,
+        )
+    except PriorityRegisterError as exc:
+        _save_priority_register(register)
+        raise HTTPException(status_code=_priority_error_status(exc), detail=str(exc)) from exc
+    _save_priority_register(register)
+    return {"entry": serialize_entry(entry)}
+
+
+# ── Per-claim trail view (Spec 029 Phase C, FR-029-12) ────────────────────────
+
+@router.get("/claims/{claim_id}/trail")
+async def claim_trail(claim_id: str) -> dict[str, Any]:
+    """The per-claim inspectable trail for one claim or anchor.
+
+    Assembles (``glossa_lab.claim_trail``): stage + stage history
+    with source pointers, evidence refs with origin groups, the
+    falsifier state at decision time, actor and timestamp for
+    verdicts and stage transitions alike, bundle decomposition
+    and gate records when the claim is a bundle, the anchor
+    annotation when present, evidence instances, and any
+    priority-register entries filed against the claim (sealed
+    content cannot leak through this view).
+    """
+    from glossa_lab.claim_trail import build_claim_trail  # noqa: PLC0415
+
+    record: dict[str, Any] | None = None
+    record_kind = "claim"
+    strict_rule: dict[str, Any] | None = None
+    _CLAIMS_DIR.mkdir(parents=True, exist_ok=True)
+    for f in sorted(_CLAIMS_DIR.glob("*.json")):
+        try:
+            data = json.loads(f.read_text("utf-8"))
+        except Exception:
+            continue
+        for claim in data.get("claims", []):
+            if claim.get("claim_id") == claim_id:
+                record = claim
+                break
+        if record is not None:
+            break
+    if record is None and _ANCHORS_FILE.exists():
+        try:
+            anchors_data = json.loads(_ANCHORS_FILE.read_text("utf-8"))
+            anchor = (anchors_data.get("anchors") or {}).get(claim_id)
+        except Exception:
+            anchor = None
+        if isinstance(anchor, dict):
+            record = {**anchor, "claim_id": claim_id}
+            record_kind = "anchor"
+            annotation = (anchors_data.get("metadata") or {}).get(
+                "spec029_phase_h_annotation") or {}
+            strict_rule = annotation.get("strict_set_rule")
+    if record is None:
+        raise HTTPException(status_code=404, detail=f"no claim or anchor {claim_id!r}")
+
+    priority_entries: list[dict[str, Any]] = []
+    if _PRIORITY_STORE.exists():
+        register = _load_priority_register()
+        if register.unseal_due():
+            _save_priority_register(register)
+        priority_entries = register.entries_for_claim(claim_id)
+    return build_claim_trail(
+        record,
+        record_kind=record_kind,
+        claim_id=claim_id,
+        priority_entries=priority_entries,
+        strict_set_rule=strict_rule,
+    )
 
 
 # ── Hypotheses ────────────────────────────────────────────────────────────────

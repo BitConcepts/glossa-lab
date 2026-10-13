@@ -64,6 +64,29 @@ verdict and its evidence, not a falsifier, and this machinery
 invents none — the three records' falsifier gap stays visible on
 their trails, inside their recorded Phase G baseline.
 
+**The regeneration carry-over (added after the first CI run).**
+The extracted-claims store is regenerated wholesale by
+`glossa-indus/scripts/indus_claims.py`, and a suite test that
+exercises the refresh path does exactly that. The extractor's
+carry-over preserved stage fields (Phase D) and merge state
+(Phase I) by claim identity, but a claim's status reverted to
+the extraction default — which is, in hindsight, how the
+Phase-104 outcome was lost in the first place: it was written
+to the store, and a later regeneration silently dropped it.
+The first CI run of this correction caught the same failure
+(the backend job failed on `critique_0002` reading `untested`
+after an in-suite regeneration; the local run's warm data
+directory had masked it). The correction therefore also extends
+the extractor's carry-over: a record carrying a
+`status_correction` has its outcome fields (`claim_status`,
+`contradicting_evidence`, `status_correction`) carried over by
+claim identity — a regeneration must not silently un-correct a
+record. The rule is keyed on the correction field, not on any
+claim id, and a control test pins that an uncorrected record's
+extraction status stands. Verified directly: both documents
+were regenerated wholesale against the real store and the
+correction tool's `--verify` still passed on all three records.
+
 ## Consequences, measured
 
 * **AEE scores.** A score is computed from the record, so writing
@@ -133,8 +156,15 @@ untouched.
   and G2 recompute pass (the three records audit clean; their
   gap profiles stay within the recorded baseline
   `{actor, falsifier_state}`).
-* Full backend suite (CI invocation): **1,450 passed / 6 skipped
-  / 0 failed**.
+* Full backend suite (CI invocation), locally: **1,450 passed /
+  6 skipped / 0 failed** on the corrected tree. The PR's first
+  CI run then failed the backend job on the regeneration gap
+  described above (a fresh CI data directory regenerates where
+  the local warm one did not); the carry-over fix and its two
+  tests were verified locally (affected files green; wholesale
+  regeneration of both real documents with `--verify` still
+  passing), and the PR's CI re-run is the final full-suite
+  evidence for the fixed tree.
 * Foundation check: **40 passed / 0 failed / 8 warnings**.
 
 AI disclosure: executed by an AI agent (Muse Spark, via

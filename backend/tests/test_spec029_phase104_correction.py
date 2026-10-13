@@ -248,3 +248,71 @@ def test_correction_tool_verifies_and_refuses_to_reapply():
     assert tool.main(["correct_phase104_carryover.py", "--verify"]) == 0
     with pytest.raises(tool.CorrectionError):
         tool.main(["correct_phase104_carryover.py", "--apply"])
+
+
+# ── Regeneration must not un-correct a record ───────────────────────────
+#
+# The extracted-claims store is regenerated wholesale by
+# indus_claims.py (a suite test exercising the refresh path does
+# exactly this — the first CI run of this correction failed when a
+# regeneration reset the three records to the extraction default).
+# The Phase D / Phase I carry-overs already preserve stage fields
+# and merge state by claim identity; the correction added the same
+# never-drop rule for a status_correction's outcome fields. This
+# test pins it on a synthetic store, in the Phase D pattern.
+
+def _regenerate_with_prior(tmp_path: Path, prior_claim: dict | None) -> dict:
+    spec = importlib.util.spec_from_file_location(
+        "indus_claims", _REPO_ROOT / "glossa-indus" / "scripts" / "indus_claims.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    tmp_path.mkdir(parents=True, exist_ok=True)
+    lit = tmp_path / "documents"; lit.mkdir()
+    processed = tmp_path / "cleaned"; processed.mkdir()
+    out_dir = tmp_path / "extracted"; out_dir.mkdir()
+    (lit / "demo_doc.json").write_text(json.dumps({"title": "Demo"}), "utf-8")
+    (processed / "demo_doc.txt").write_text(
+        "The Indus script encodes Proto-Dravidian language.", "utf-8")
+    if prior_claim is not None:
+        (out_dir / "demo_doc.json").write_text(
+            json.dumps({"document_id": "demo_doc", "claims": [prior_claim]}), "utf-8")
+    mod.LIT_DOCS = lit
+    mod.PROCESSED_TEXT = processed
+    mod.EXTRACTED_CLAIMS = out_dir
+    result = mod.process_document("demo_doc")
+    assert result["status"] == "extracted"
+    regenerated = json.loads((out_dir / "demo_doc.json").read_text("utf-8"))
+    (claim,) = regenerated["claims"]
+    assert claim["claim_id"] == "demo_doc_language_0001"
+    return claim
+
+
+def test_regeneration_preserves_a_status_correction(tmp_path):
+    correction = {
+        "kind": "phase104-carryover-correction",
+        "date": "2026-10-13",
+        "previous_claim_status": "untested",
+        "new_claim_status": "contradicted",
+        "basis": "glossa-indus/reports/phase104_claims_evaluation.json:demo",
+        "rule": "RULE-DUP",
+        "note": "Synthetic correction for the regeneration control.",
+    }
+    prior = {
+        "claim_id": "demo_doc_language_0001",
+        "claim_status": "contradicted",
+        "contradicting_evidence": ["Synthetic contradicting evidence"],
+        "status_correction": correction,
+    }
+    claim = _regenerate_with_prior(tmp_path / "corrected", prior)
+    assert claim["claim_status"] == "contradicted"
+    assert claim["contradicting_evidence"] == ["Synthetic contradicting evidence"]
+    assert claim["status_correction"] == correction
+
+
+def test_regeneration_without_a_correction_keeps_extraction_status(tmp_path):
+    # Control: with no status_correction on the prior record, the
+    # extraction-assigned status stands — the carry-over is keyed
+    # on the correction field, never on the claim's identity.
+    claim = _regenerate_with_prior(tmp_path / "plain", None)
+    assert claim["claim_status"] == "untested"
+    assert "status_correction" not in claim

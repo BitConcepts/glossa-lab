@@ -6143,8 +6143,13 @@ to name this correction. The two Phase-104 records Phase I
 merged as evidence instances (critique_0003 / critique_0004)
 were not rewritten — named residual in the correction record
 (specs/029-tao-claim-lifecycle/phase104-carryover-correction-record.md).
-Full suite 1,450 passed / 6 skipped / 0 failed; foundation
-40 / 0 / 8.
+The first CI run caught the gap that had caused the original
+loss — a wholesale store regeneration reverted claim_status to
+the extraction default — so the extractor's carry-over now also
+preserves a status_correction's outcome fields by claim
+identity. Full suite 1,450 passed / 6 skipped / 0 failed
+locally (CI re-run is the final evidence for the fixed tree);
+foundation 40 / 0 / 8.
 
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per

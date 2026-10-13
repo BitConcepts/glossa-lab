@@ -1737,6 +1737,9 @@ export interface DeciphermentProgress {
     corpus_token_coverage?: number;
     corpus_sign_coverage?: number;
     pct_confirmed?: number;
+    /** Lane-2 lifecycle stage counts over the anchor records (Spec 029 Phase A). */
+    by_stage?: Record<string, number>;
+    n_unstamped_stage?: number;
   };
   progression: DeciphermentRound[];
   n_rounds: number;
@@ -2484,6 +2487,69 @@ export interface IndusDoc {
   claim_extraction_status: string;
 }
 
+/**
+ * Spec 029 lane objects. Lane 2 (human-paced settlement) serializes
+ * as the `stage` object; lane 1 (machine-speed verification) as the
+ * score object. The two are distinct objects in the API and are
+ * rendered in distinct regions (FR-029-10) — never merged.
+ */
+export interface ClaimStageObject {
+  stage: string | null;
+  stage_source?: string | null;
+  stage_as_of?: string | null;
+  stamped: boolean;
+  stage_history?: Array<Record<string, unknown>>;
+  stage_history_count?: number;
+  latest_transition?: Record<string, unknown> | null;
+}
+
+export interface Lane1Score {
+  claim_id?: string;
+  direct_score?: number;
+  propagated_score?: number;
+  band?: string;
+  components?: Record<string, number>;
+  notes?: string[];
+}
+
+export interface BundleSubClaim {
+  claim_id?: string;
+  kind?: string;
+  proposition?: string;
+  evidence?: string[];
+  falsification_condition?: string | null;
+  stage?: ClaimStageObject;
+  contest_state?: string;
+  attribution_contested?: boolean;
+  contest_record?: ContestRecord | null;
+}
+
+export interface ContestRecord {
+  contested_by?: string;
+  evidence?: string[];
+  contested_on?: string;
+  resolution?: Record<string, unknown> | null;
+}
+
+/** Phase B bundle serialization (serialize_bundle): the contest travels with the parent. */
+export interface BundleSerialization {
+  claim_id?: string;
+  stage?: ClaimStageObject;
+  stage_computation?: {
+    stage?: string | null;
+    minimum_stage?: string | null;
+    subclaim_stages?: Record<string, string | null>;
+    unstamped_subclaims?: string[];
+    attribution_contested?: boolean;
+    caps_applied?: string[];
+  };
+  sub_claims?: BundleSubClaim[];
+  attribution_contested?: boolean;
+  contest_record?: ContestRecord | null;
+  contested?: boolean;
+  adverse_digestion?: Record<string, unknown> | null;
+}
+
 export interface IndusClaim {
   claim_id: string;
   source_document_id: string;
@@ -2498,6 +2564,21 @@ export interface IndusClaim {
   confidence_in_source?: number;
   extracted_at?: string;
   _source_file?: string;
+  /** Lane-2 stage object (Spec 029 Phase A serialization). */
+  stage?: ClaimStageObject | null;
+  verified_unexplained?: boolean;
+  /** Lane-1 score object — present only when the claims call requests AEE scoring. */
+  aee_score?: Lane1Score | null;
+  lane1_score?: Lane1Score | null;
+  /**
+   * The record's own "what remains not understood" statement
+   * (FR-029-09). Null/absent on records where no human has authored
+   * one yet — the UI renders that absence as an incomplete record.
+   */
+  not_understood?: string | null;
+  not_understood_recorded?: boolean;
+  /** Bundle serialization for bundle parents; null for non-bundle claims. */
+  bundle?: BundleSerialization | null;
 }
 
 export interface IndusHypothesisModel {
@@ -2579,7 +2660,7 @@ export const listIndusLibrary = (
 };
 
 export const listIndusClaims = (
-  params: { q?: string; claim_type?: string; claim_status?: string; doc_id?: string; sign?: string; limit?: number; offset?: number } = {}
+  params: { q?: string; claim_type?: string; claim_status?: string; doc_id?: string; sign?: string; limit?: number; offset?: number; aee?: boolean } = {}
 ): Promise<{ claims: IndusClaim[]; total: number; limit: number; offset: number }> => {
   const qs = new URLSearchParams();
   Object.entries(params).forEach(([k, v]) => {

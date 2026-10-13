@@ -354,7 +354,27 @@ else:
 # ── 9. WHAT WE CAN CLAIM ──────────────────────────────────────────────────
 print("\n── SUMMARY: What can we claim to Dr. Fuls? ──────────────────────────")
 
+# Spec 029 Phase J (D-D): annotations describing canonical data are
+# COMPUTED from the canonical stores at report-generation time and
+# stamped with the anchors file's SHA-256 — never hand-typed. The
+# computation lives in glossa_lab.foundation_annotations (single
+# source; the status endpoint uses the same hash helper).
+import sys as _sys
+from datetime import datetime as _datetime, timezone as _timezone
+_sys.path.insert(0, str(REPO / "backend"))
+from glossa_lab.foundation_annotations import (  # noqa: E402
+    computed_annotation_entries as _computed_entries,
+    compute_canonical_snapshot as _compute_snapshot,
+    historical_label as _historical_label,
+)
+_run_date = _datetime.now(_timezone.utc).date().isoformat()
+_snapshot = _compute_snapshot(REPO, as_of=_run_date)
+_generated_at = _datetime.now(_timezone.utc).isoformat(timespec="seconds")
+_computed_solid, _computed_caveated = _computed_entries(_snapshot)
+print(f"  Annotations {_snapshot['as_of_label']}")
+
 solid_claims = [
+    _computed_solid,
     ("Phase-31 T3 Zipf slope", "M77 slope 0.75 vs TB slope 0.93, delta 0.18 < 0.3 threshold",
      "VERIFIED — does not require TB LM, just corpus-level statistics"),
     ("Holdat corpus validity", "1,670 seals, 7,002 tokens, 390 signs, all M-prefixed, position-sorted",
@@ -377,18 +397,17 @@ solid_claims = [
 caveated_claims = [
     ("TB correlation 0.907", "Computed against approximate TB freq; clean corpus needed for verification",
      "NEEDS CAVEAT"),
-    ("signs assigned", "37 HIGH + 36 MEDIUM (Phase-48+51 validated) = 73 signs with phonetic/grammatical evidence. "
-                        "75 LOW (distributional only), 1 UNCERTAIN (M267). ~48% of corpus tokens are HIGH/MEDIUM.",
-     "CLARIFY: HIGH+MEDIUM are supported; LOW are distributional proposals only"),
+    _computed_caveated,
     ("Phase-32 T4", "SA M77→TB LM: INCONCLUSIVE — TB LM too noisy (2 or few bigrams)",
      "DO NOT CLAIM"),
     ("V8-V24 decipherment campaign", "Distributional hypothesis proposals only; not verified phonetic readings",
      "MUST CLARIFY"),
     ("P30-E1 falsification", "AMBIGUOUS after TB freq update — framework doesn't separate Dravidian from Sanskrit at phoneme distribution level",
      "NEEDS CAVEAT"),
-    ("M↔P crosswalk", "45/390 M↔P entries now mapped (Phase-51 expanded from 38). "
-                     "345 M-signs without P-equivalent. RISK-001 partially resolved.",
-     "RISK-001 partial: 45 entries now mapped, 345 remain"),
+    ("M↔P crosswalk", "45/390 M↔P entries mapped at Phase-51 (expanded from 38). "
+                     "345 M-signs without P-equivalent at that time. RISK-001 partially resolved."
+                     + _historical_label("Phase-51"),
+     "RISK-001 partial: 45 entries mapped at Phase-51, 345 remained then"),
 ]
 
 print("\nSOLID CLAIMS (defensible to Dr. Fuls):")
@@ -450,7 +469,8 @@ solid_claims += [
      "VERIFIED — external corroboration"),
     ("Phase-47 rebus LM lift 3.19x", "Etymology phonemes 3.19x more probable under Dravidian LM",
      "VERIFIED — independent of SA"),
-    ("Phase-48 30 signs promoted to HIGH", "30/30 MEDIUM signs validated; HIGH coverage 54%",
+    ("Phase-48 30 signs promoted to HIGH", "30/30 MEDIUM signs validated; HIGH coverage 54%"
+     + _historical_label("Phase-48"),
      "VERIFIED — 3-test battery"),
     ("Phase-53 16 formulas decoded", "tiru-il-ay-an-kol and 15 others >=80% decoded",
      "VERIFIED — pilot readings with morphological annotation"),
@@ -556,7 +576,8 @@ else:
 # ── Update solid/caveated claims with Phase-56-61 ─────────────────────────────
 solid_claims += [
     ("Phase-56 expanded Parpola crosswalk",
-     "14 new MEDIUM anchors added; 75-entry EXTENDED_PARPOLA_MAP; total anchors 163",
+     "14 new MEDIUM anchors added; 75-entry EXTENDED_PARPOLA_MAP; total anchors 163"
+     + _historical_label("Phase-56"),
      "VERIFIED — Parpola 1994/2010 sources cross-referenced with DEDR"),
     ("Phase-58 phonotactic VALID",
      "0 violations in HIGH/MEDIUM set; 16 distinct initials; max phoneme share 24.7% (<30%)",
@@ -587,10 +608,12 @@ caveated_claims += [
 solid_claims += [
     ("Phase-69 grammar 100% site-invariant",
      "100% of 65 HIGH/MEDIUM signs show consistent I/M/T grammar across all 9 Holdat sites. "
-     "Chi-squared p>0.05 for all signs. Pan-Indus writing system confirmed.",
+     "Chi-squared p>0.05 for all signs. Pan-Indus writing system confirmed."
+     + _historical_label("Phase-69"),
      "VERIFIED — strong evidence for unified writing system"),
     ("Phase-71 M<->P crosswalk 84.5% token coverage",
-     "115/390 M-signs mapped; 84.5% of all corpus tokens have P-number. RISK-001 substantially resolved.",
+     "115/390 M-signs mapped; 84.5% of all corpus tokens have P-number. RISK-001 substantially resolved."
+     + _historical_label("Phase-71"),
      "VERIFIED — Parpola 1994 App.B + Mahadevan 1977 sources"),
     ("Phase-72 Parpola parser: 13 Dravidian readings",
      "Parpola-specific notation parser found 13 Dravidian readings in publications "
@@ -700,8 +723,19 @@ print()
     "passed":  ok_list,
     "failed":  issues,
     "warnings": warn_list,
-    "solid_claims":    [{"claim": c[0], "detail": c[1], "status": c[2]} for c in solid_claims],
-    "caveated_claims": [{"claim": c[0], "detail": c[1], "status": c[2]} for c in caveated_claims],
+    # Spec 029 Phase J (D-D): provenance stamp — the as-of label is
+    # the report's permanent provenance line; the hash stamps name
+    # the exact canonical inputs the computed annotations describe.
+    "generated_at": _generated_at,
+    "annotations_as_of": _snapshot["as_of_label"],
+    "anchors_file": _snapshot["anchors_file"],
+    "anchors_file_sha256": _snapshot["anchors_file_sha256"],
+    "claims_store": _snapshot["claims_store"],
+    "claims_store_sha256": _snapshot["claims_store_sha256"],
+    "solid_claims":    [{"claim": c[0], "detail": c[1], "status": c[2],
+                         "as_of": _snapshot["as_of_label"]} for c in solid_claims],
+    "caveated_claims": [{"claim": c[0], "detail": c[1], "status": c[2],
+                         "as_of": _snapshot["as_of_label"]} for c in caveated_claims],
     "verdict": "READY WITH CAVEATS" if n_fails == 0 else "NEEDS FIXES BEFORE SEND",
     "send_to_fuls": "YES — for ICIT access request only. Present Phase-31 T3, Phase-29d, anchor data. Caveat TB correlation and distributional assignments. DO NOT claim phonetic decipherment.",
 }, indent=2), encoding="utf-8")

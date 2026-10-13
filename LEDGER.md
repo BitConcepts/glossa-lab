@@ -5710,3 +5710,45 @@ evidence: foundation check 40 passed / 0 failed /
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Spec 029 Phase J: foundation annotations (D-D)
+
+Spec 029 Phase J (tasks J1–J4; plan §2.7; adjudication
+D-D) repairs the foundation report's annotations and its
+status endpoint, the surfaces the audit (§5-P8 defect 3)
+found serving Phase-48-era figures ("37 HIGH + 36 MEDIUM…
+75 LOW… 1 UNCERTAIN (M267)") beside a status endpoint
+returning silent nulls while a healthy report sat on disk.
+The annotations describing canonical data are now computed
+from the canonical stores at report-generation time — new
+module `backend/glossa_lab/foundation_annotations.py`,
+used by `backend/scripts/foundation_check.py`: tier split
+(166 HIGH + 5 MEDIUM + 3 LOW + 113 CANDIDATE of 287),
+strict core (94 = 90 HIGH + 4 MEDIUM), pending count (44),
+the validation_status distribution, M267's current state
+(MEDIUM, strict — resolved, not UNCERTAIN), and the
+extracted-claims total (31 in 10 files). The generated
+report is stamped with the anchors file's SHA-256
+(df0cf620… at this head, verified) plus a combined
+claims-store digest, and every annotation carries the
+dated as-of label naming that stamped table — the label
+stands as the report's permanent provenance line.
+Historical population figures that remain (Phases 48, 51,
+56, 69, 71) are labelled in-detail with their as-of phase;
+the stale figures themselves are purged, grep-provable.
+The status endpoint serves the on-disk report (figures,
+label, stamps) or fails loudly with an explicit 503 —
+never silent nulls; a hash-stale report is served with an
+explicit staleness flag. A regeneration test proves the
+figures track the canonical file (mutation changes figures
++ stamp; unmutated regeneration reproduces them exactly).
+What the foundation check checks is unchanged: 40 passed /
+0 failed / 8 warnings, check lists byte-identical. Gate
+evidence: full backend suite under the CI-parity venv
+(aee 1.4.0) 1368 passed / 6 skipped / 0 failed — the
+1352 baseline plus this phase's 16 tests. Record:
+`specs/029-tao-claim-lifecycle/phase-j-record.md`.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

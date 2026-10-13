@@ -394,7 +394,10 @@ def test_reconcile_detects_mismatch_not_smoothed():
 def test_extraction_regeneration_preserves_stage_fields(tmp_path):
     """Plan §4 risk control: indus_claims.py regenerates the
     extracted-claims store wholesale; a regeneration must carry
-    each claim's stamped stage fields over by claim identity."""
+    each claim's stamped stage fields over by claim identity.
+    Amended 2026-10-13 (lane-2 adoption): the same carry-over
+    covers the authored ``not_understood`` / ``explanation_record``
+    fields."""
     spec = importlib.util.spec_from_file_location(
         "indus_claims", _REPO_ROOT / "glossa-indus" / "scripts" / "indus_claims.py")
     mod = importlib.util.module_from_spec(spec)
@@ -408,6 +411,17 @@ def test_extraction_regeneration_preserves_stage_fields(tmp_path):
     entry = _entries("extracted_claim")[0]
     prior_claim = {"claim_id": "demo_doc_language_0001"}
     mig.stamp_record(prior_claim, entry)
+    # Lane-2 adoption amendment (2026-10-13): the authored lane-2
+    # fields ride the same carry-over. CI on PR #197 caught the
+    # intake pipeline's regeneration stripping both fields while
+    # the stage fields survived — a regenerated record at stage
+    # 'explained' with no explanation record behind it.
+    prior_claim["not_understood"] = (
+        "Synthetic gap statement for the regeneration carry-over.")
+    prior_claim["explanation_record"] = {
+        "author": "Synthetic Author",
+        "explanation": "Synthetic explanation for the carry-over.",
+    }
     (out_dir / "demo_doc.json").write_text(
         json.dumps({"document_id": "demo_doc", "claims": [prior_claim]}), "utf-8")
     mod.LIT_DOCS = lit
@@ -419,6 +433,9 @@ def test_extraction_regeneration_preserves_stage_fields(tmp_path):
     (claim,) = regenerated["claims"]
     assert claim["claim_id"] == "demo_doc_language_0001"
     _assert_stamp(claim, entry)
+    # Lane-2 adoption amendment (2026-10-13): authored fields survive.
+    assert claim["not_understood"] == prior_claim["not_understood"]
+    assert claim["explanation_record"] == prior_claim["explanation_record"]
 
 
 def test_compute_flag_honours_stamped_state():

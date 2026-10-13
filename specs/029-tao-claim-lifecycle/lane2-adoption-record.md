@@ -174,3 +174,35 @@ Spark, via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI. The explanation texts it ingested were
 AI-drafted and human-adopted as recorded above; the drafting AI
 is not the author of any explanation record.
+
+## Addendum (2026-10-13): regeneration carry-over defect, caught by CI
+
+The first CI run on the ingestion PR (#197, run 38384800347)
+failed one backend test:
+`test_spec029_phase_e2.py::test_live_claims_serialize_not_understood_state_and_no_bundle`
+— a canonical claim serialized `not_understood` as `None` against
+its adopted text. The other six jobs were green. Diagnosis, from
+the failed job's own log and a local reproduction on a clean
+checkout: `POST /api/v1/indus-evidence/intake/run` (exercised by
+`test_indus_evidence_api.py`) queues a background task that
+re-runs `glossa-indus/scripts/indus_claims.py` over every
+registered document, regenerating the extracted-claims store in
+place. That regeneration carries prior record fields over by
+claim identity — but the carry-over list predated this act and
+did not include `not_understood` or `explanation_record`. The
+stage fields survived (a regenerated Yadav record still read
+stage `explained` with its full history) while its explanation
+record and not-understood text were stripped — an `explained`
+claim with no explanation behind it, the exact incoherence the
+lifecycle machinery exists to prevent. The local full-suite run
+had passed; why the mechanism did not fire there is not
+established, and the CI result is the governing evidence.
+
+Fix, in this same PR: the carry-over list in `indus_claims.py`
+now includes `not_understood` and `explanation_record`, under the
+same rule as the stage fields — a regeneration must never drop
+them. `test_spec029_phase_d.py`'s regeneration test now plants
+both fields on the prior record and asserts they survive
+verbatim. No live record changed: the ingestion's committed
+store was always correct; only a regeneration could have
+stripped it.

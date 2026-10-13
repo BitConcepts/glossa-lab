@@ -449,6 +449,14 @@ def process_document(doc_id: str) -> dict:
     # merge state (proposition fingerprint, merged_into pointer,
     # and a canonical record's evidence_instances) by claim
     # identity — a regeneration must not un-merge a proposition.
+    # Lane-2 adoption (2026-10-13): the same carry-over preserves
+    # the authored lane-2 fields — the not-understood statement and
+    # the explanation record the owner adopted (PR #190) and the
+    # ingestion wrote (PR #197). A regeneration must never strip
+    # an authored explanation: CI on PR #197 caught a regenerated
+    # store carrying stage 'explained' with no explanation record
+    # behind it, which is exactly the incoherence the lifecycle
+    # machinery exists to prevent.
     out = EXTRACTED_CLAIMS / f"{doc_id}.json"
     if out.exists():
         prior = json.loads(out.read_text("utf-8"))
@@ -458,7 +466,8 @@ def process_document(doc_id: str) -> dict:
                 for k in ("stage", "stage_source", "stage_as_of",
                           "stage_history", "verified_unexplained",
                           "proposition_fingerprint", "merged_into",
-                          "evidence_instances")
+                          "evidence_instances",
+                          "not_understood", "explanation_record")
                 if k in c
             }
             for c in prior.get("claims", [])

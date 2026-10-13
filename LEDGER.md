@@ -6191,3 +6191,24 @@ via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI. The ingested explanation texts were
 AI-drafted and human-adopted (see the adoption entry above);
 the drafting AI is not the author of any explanation record.
+
+## 2026-10-13 — Spec 029 lane-2 adoption: regeneration carry-over fix (PR #197)
+
+CI on the ingestion PR (run 38384800347) failed one backend test
+(E2 live serialization): the intake pipeline's background
+regeneration of the extracted-claims store (`indus_claims.py`,
+triggered by the `/intake/run` endpoint test) stripped the
+adopted `not_understood` / `explanation_record` fields, because
+the regeneration carry-over list predated the lane-2 fields —
+stage fields survived, authored fields did not. Fix: both fields
+added to the carry-over list in `indus_claims.py` under the same
+never-drop rule; the Phase D regeneration test now plants both
+fields and asserts verbatim survival. The committed store was
+never wrong; the defect was latent in any future regeneration.
+Full account:
+`specs/029-tao-claim-lifecycle/lane2-adoption-record.md`
+(2026-10-13 addendum).
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

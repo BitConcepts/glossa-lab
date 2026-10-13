@@ -6349,3 +6349,30 @@ the claim's record is untouched by this design.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-13 — Spec 033 frozen (the SA-free language comparison)
+
+Spec 033 is frozen. The frozen contract (specs/033-sa-free-language-comparison/)
+carries design D-03 without deviation: the SA-free rerun of the
+Dravidian-versus-rivals comparison behind
+`parpola_2010_dravidian_solution_manual_001`, on the strict sign
+set (94 of 287 anchors) and the V3/Mahadevan-lineage corpus, with
+no semantic anchoring, no anchor promotion, and no SA-derived
+quantity anywhere in the pipeline (H26). The estimator the design
+prescribed fixing at freeze time is fixed in spec section 5 and
+recorded in adjudication.md section 2. Criteria: SUPPORTED at a
+margin of at least 0.10 log units per sign over the best rival and
+above the 99th percentile of the 999-assignment random
+distribution; NOT SUPPORTED and INCONCLUSIVE rules as designed;
+the Harappa-removed sensitivity can route only to INCONCLUSIVE.
+Governed register: 15 claims (F033-C01…C15), register_version
+0.4-draft, AEE pass at after_specify / after_plan / after_tasks
+after three recorded recovery rounds. Freeze digest
+(framework026): 412b4805063bbffb3915a834354cb428cc9b10958f614a1680b859005a43b66d.
+Design merged as PR #203 (c1cad78e). Execution is Phase-397,
+gated on the OSF registration of this frozen contract verifying
+public. No score has been computed; no claim record, anchor, or
+frozen record is altered by this freeze.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

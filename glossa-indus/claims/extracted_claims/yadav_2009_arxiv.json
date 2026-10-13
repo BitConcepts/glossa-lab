@@ -17,9 +17,9 @@
       "glossa_lab_evidence": "Phase-43: V3 Zipf exponent ~1.35 (super-Zipfian) [VERIFIED]",
       "confidence_in_source": 0.95,
       "extracted_at": "2026-10-13T06:22:51.957213",
-      "stage": "checked",
-      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:yadav_2009_arxiv_manual_001",
-      "stage_as_of": "2026-10-12",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
       "stage_history": [
         {
           "from_stage": null,
@@ -30,9 +30,19 @@
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:yadav_2009_arxiv_manual_001"
           ],
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry yadav_2009_arxiv_manual_001; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#yadav_2009_arxiv_manual_001"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
         }
       ],
-      "verified_unexplained": true,
+      "verified_unexplained": false,
       "proposition_fingerprint": "fdd32acf462bf2d9da759fae422df691921d5ca597ca7d5c74d8e9d86a06a49f",
       "evidence_instances": [
         {
@@ -70,7 +80,18 @@
             "merged_into": "yadav_2009_arxiv_manual_001"
           }
         }
-      ]
+      ],
+      "not_understood": "A Zipf-style curve is weak evidence about meaning. Many systems that are not language at all - and some random processes - produce similar curves, so the fit cannot distinguish writing from non-writing, let alone identify a language. The exponent's exact value also moves with corpus size and with how signs are split or merged, and the field's compilations disagree on the sign inventory itself. What this claim does not establish: that the script encodes language, that any sign has any value, or that the corpus the curve was fitted on is complete. What would strengthen it: the same fit on an independent corpus with a sign inventory fixed in advance, reported alongside the fits for known non-linguistic symbol systems.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#yadav_2009_arxiv_manual_001",
+        "content_hash": "a0d1db20c86283594b62e211c8aa869be07d8787d28e9038e1bc122693cec192",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The program reran this check on its V3 corpus in Phase-43 and the fit held: the recorded exponent is about 1.35, in the range the original work reported. The claim carries a proper falsifier - it fails if the frequency distribution departs from the Zipf-Mandelbrot law - and the distribution did not depart. That is the whole of the support, and it is genuine as far as it goes. Two record-keeping cautions belong with it. First, the same claim was extracted twice (from Yadav's 2009 paper and the 2010 follow-up), and for a time the program's claim set counted this one test result twice, on two records; the Phase I dedupe of 2026-10-12 merged them into this single claim, keeping the 2010 record as an evidence instance rather than a second claim. Second, the check was run by the program itself, on a corpus from the same Mahadevan lineage the original study used."
+      }
     },
     {
       "claim_id": "yadav_2009_arxiv_manual_002",
@@ -82,9 +103,9 @@
       "glossa_lab_evidence": "Phase-43: 20 TERMINAL_STRONG + 40 INITIAL_STRONG signs identified in V3 corpus [VERIFIED]",
       "confidence_in_source": 0.95,
       "extracted_at": "2026-10-13T06:22:51.957213",
-      "stage": "checked",
-      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:yadav_2009_arxiv_manual_002",
-      "stage_as_of": "2026-10-12",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
       "stage_history": [
         {
           "from_stage": null,
@@ -95,9 +116,19 @@
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:yadav_2009_arxiv_manual_002"
           ],
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry yadav_2009_arxiv_manual_002; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#yadav_2009_arxiv_manual_002"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
         }
       ],
-      "verified_unexplained": true,
+      "verified_unexplained": false,
       "proposition_fingerprint": "c5d0f0575c8378b1ab3b51ba889c77b6e729f5b24991e3be55a179baa4125129",
       "evidence_instances": [
         {
@@ -134,7 +165,18 @@
             "merged_into": "yadav_2009_arxiv_manual_002"
           }
         }
-      ]
+      ],
+      "not_understood": "Positional preference is not meaning. Opening and closing markers appear in many symbol systems, linguistic and not, so this pattern cannot show the script encodes language. The counts also depend on where inscriptions are segmented - where one text ends and another begins - and on the sign inventory of one corpus lineage; the cross-compilation disagreement (Phase-125) means the same exercise on the other great compilation might not return the same sign sets. What would change the picture: a falsifier written onto the record, and the test rerun on the strict core and on an independent corpus with the position rules fixed in advance.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#yadav_2009_arxiv_manual_002",
+        "content_hash": "878f5021166aaf64e6a08aeab6e15cc183b50cad9e994bbd71e9c90c2bbd7308",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The program's positional battery (Phase-43) found the pattern clearly on the V3 corpus: 40 signs that strongly prefer the opening position and 20 that strongly prefer the closing position. That is a real, reproducible feature of this corpus, and it is why the claim is recorded as strongly supported. The defect sits in the claim's own paperwork, and the audit flagged it: this record carries no falsification condition - nothing on the record states what result would have counted against the claim. A strong verdict without a stated way to be wrong is exactly the verified-but-unexplained risk this program now tracks: the counts are checked, but the claim as recorded could not have failed. Like its companion Zipf claim, this one was also double-recorded (2009 and 2010 extractions) until the Phase I dedupe merged the pair into this single claim."
+      }
     }
   ],
   "_citation": {

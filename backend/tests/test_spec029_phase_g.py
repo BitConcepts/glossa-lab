@@ -414,16 +414,58 @@ def test_g2_every_live_stored_stage_recomputes_equal():
     assert failures == {}
 
 
-def test_g2_live_stages_are_all_ledger_replays_today():
+# Lane-2 adoption (2026-10-13, owner act): the 20 records that
+# advanced checked -> explained through the transition service,
+# carrying the explanation records the owner authored by adoption
+# (PR #190 + the ingestion act). Named here so the provenance
+# partition below is exact, not a count that could drift silently.
+_LANE2_EXPLAINED_IDS = {
+    "farmer_sproat_witzel_2004_manual_001",
+    "indus_valley_script_deciphered_from_myth_65ff0a26_manual_002",
+    "parpola_2010_dravidian_solution_manual_001",
+    "parpola_2010_dravidian_solution_manual_002",
+    "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001",
+    "without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003",
+    "yadav_2009_arxiv_manual_001",
+    "yadav_2009_arxiv_manual_002",
+    "STUDY-SPEC-019/PHASE-125",
+    "STUDY-SPEC-023/PHASE-132+383",
+    "STUDY-SPEC-024/F1",
+    "STUDY-SPEC-024/F2-HOLDAT",
+    "STUDY-SPEC-024/F3-ICIT",
+    "STUDY-SPEC-025/G1",
+    "STUDY-SPEC-027/STAGE1-PHASE-392",
+    "STUDY-SPEC-028/ARM-A",
+    "STUDY-SPEC-028/ARM-B",
+    "STUDY-SPECS-001-023+PHASES-TO-141",
+    "PRED-2026-006",
+    "PRED-2026-007",
+}
+
+
+def test_g2_live_stage_provenance_methods_are_the_recorded_ones():
     # The live population's provenance, stated so a future
     # transition-service or bundle record entering the live stores
     # is a deliberate, visible change to this expectation — its
     # recomputation method is gated either way (controls below).
+    # Until 2026-10-13 every live stage was a reclassification-
+    # ledger replay (this test's original assertion). The lane-2
+    # adoption of 2026-10-13 was exactly the anticipated event:
+    # precisely the named 20 now recompute by the transition-
+    # service history-tail rule; the other 324 remain ledger
+    # replays, their migration entries untouched.
     methods = {}
+    transition_service_ids = set()
     for live in _LIVE:
         _, method = gates.recompute_stage(live.record, _CTX)
         methods[method] = methods.get(method, 0) + 1
-    assert methods == {"reclassification-ledger-replay": len(_LIVE)}
+        if method == "transition-service-history-tail":
+            transition_service_ids.add(live.record_id)
+    assert methods == {
+        "reclassification-ledger-replay": len(_LIVE) - 20,
+        "transition-service-history-tail": 20,
+    }
+    assert transition_service_ids == _LANE2_EXPLAINED_IDS
 
 
 def _live_anchor():

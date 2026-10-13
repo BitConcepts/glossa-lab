@@ -6212,3 +6212,85 @@ Full account:
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+## 2026-10-13 — Spec 032 design draft (PRED-2026-006: the Harappa breakdown, design D-30)
+
+Design D-30 of the experiment-design portfolio of 2026-10-13
+(draft PR #195) is carried into `specs/032-pred-2026-006-harappa-breakdown/`
+without deviation, under the owner's freeze order of 2026-10-13
+06:39 EDT ("Freeze D-30, D-03, and D-20 for execution"; adjudication
+in the spec's `adjudication.md`). The spec freezes PRED-2026-006's
+registered test exactly as registered on 2026-04-22: at least 70% of
+the CISI-trained INITIAL signs show a start rate of at least 0.40 at
+Harappa, on the withheld Harappa-site Yajnadevam sequences
+(`backend/glossa_lab/data/yajnadevam_inscriptions.csv` — 5,679
+inscriptions, 77 sites, 2,717 Harappa; census counted at design
+time and pinned by the freeze tests). Step 0 fails closed: the
+trained INITIAL set is reconstructed from the recorded
+`global_class_stability.py` lineage and frozen; the withholding is
+verified as CISI Mohenjo-daro only; sign identity is carried by the
+existing crosswalks under `data/crosswalks/`, fixed before counting.
+A failed check closes the study as CANNOT BE RUN AS WRITTEN; unmappable
+trained signs are counted and reported, with coverage above 20%
+stated in the verdict's first sentence. The verdict mapping is the
+register's own (CONFIRMED at a share of at least 70%; NOT CONFIRMED
+below it; no inconclusive band exists and none is invented); the
+per-sign table is pre-registered as a descriptive addition only.
+Governed register: 12 claims (F032-C01…C12), recovered through three
+AEE rounds (17, then 4, then 1 failure modes — atomic rewrites and
+pairwise boundary confirmations; record in `aee/recovery-specify.md`)
+to register_version 0.4-draft; AEE hook pass at after_specify,
+after_plan, and after_tasks (0 failure modes). Execution is
+Phase-396, gated on the OSF registration of the frozen contract
+verifying public. The registered computation has never been run;
+the PRED register is untouched by this design.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-13 — Phase-395 executed: Spec 031 / Q7 closes at the margins step
+
+Execution of the frozen Spec 031 contract (Q7 provenanced-material
+networks; freeze digest f63167fc; OSF registration
+https://osf.io/jtwvc/, DOI 10.17605/OSF.IO/JTWVC, approved and
+public before execution) under the owner's order of 2026-10-13.
+Infrastructure PR #196 (merge b287e7d9): the Phase-395 build
+(backend/scripts/phase395_q7_execution.py), the experiment graph
+node IndusPhase395Q7Execution, and 11 machinery tests. The
+digitisation design step inventoried Law (2011)'s posted chapters
+(11 of 14 located; Chapters 4, 5, 9 absent from the posted set;
+appendices print-only, so D8 residual (ii) is recorded as not
+re-verifiable from the posted set), applied the frozen method
+split (primary tier = INAA and Sr/S-isotope studies only), audited
+nine ceramic classification reports for posture (2
+open_access_read_only, 7 catalogue_only), and recorded the
+bead/craft source position (no consolidated per-object dataset;
+floor not countable). Link construction: 76 counted named-source
+determinations; 6 link-eligible sites; 13 certain linked pairs
+(2 further pairs uncertain on print-only appendix data, counted
+as not linked); in the Stage 0 gazetteer universe, 2
+link-eligible sites and 1 linked pair; Meluhha 0 links. Margins
+step: of 30 gazetteer sites, 21 pass the coordinate screen and
+ZERO pass the frozen period screen (period_label_as_published
+empty on 33 of 36 rows, the only labels present being PN/Neo. on
+three Central Asian sites; program_period_assignment empty on
+all rows) — both arms therefore have 0 eligible sites. Bead/craft
+arm closes NOT-YET-TESTABLE (spec section 4.3); ceramic arm
+closes NOT ESTIMABLE (DD-7). The sensitivity tier was not
+constructed, the DD-8 river network was not pinned, and no
+response was computed in either arm; the section 5 machinery
+exists and is fenced by synthetic-population tests. Population
+record sha256
+a0c98d56780051b46795621b644457e7674f7266321073e65a67ef51f83b54b8.
+Outcome recorded at specs/031-stage2-q7-provenance-networks/
+outcome.md with per-claim stage determinations (Spec 029
+machinery; the frozen register is not edited), and cross-recorded
+under Spec 027 (stage2-q7-outcome-cross-record.md, a new pointer
+file only). Gates: foundation check 40 passed / 0 failed /
+8 warnings; backend suite green in CI on PR #196 (1,409 passed /
+20 skipped / 0 failed); branding sweep clean. The digitised link
+data stays in the gitignored local store and is released nowhere
+(F031-C11).
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

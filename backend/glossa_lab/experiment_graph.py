@@ -2835,6 +2835,16 @@ try:
     logger.info("Registered %d Phase-394 (spec 030) nodes", len(list(_p394_defs())))
 except Exception as _p394_exc:  # noqa: BLE001
     logger.warning("Phase-394 (spec 030) nodes not registered: %s", _p394_exc)
+# ── Phase-395 node (spec 031: Q7 provenanced-material networks) ──
+try:
+    from glossa_lab.experiment_graph_phase395 import (
+        _phase395_node_defs as _p395_defs,  # noqa: PLC0415
+    )
+    for _d in _p395_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-395 (spec 031) nodes", len(list(_p395_defs())))
+except Exception as _p395_exc:  # noqa: BLE001
+    logger.warning("Phase-395 (spec 031) nodes not registered: %s", _p395_exc)
 # ── Phase-120 nodes (Bhaskar 2024 descriptive triage) ──
 try:
     from glossa_lab.experiment_graph_phase120 import (

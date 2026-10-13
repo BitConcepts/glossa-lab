@@ -46,18 +46,18 @@
 
 ## Execution (Phase-395) — NOT ORDERED
 
-- [ ] **E1 — Graph-first build** (FR-027-13): script,
+- [x] **E1 — Graph-first build** (FR-027-13): script,
       graph module, registration, registration
       verification, then run.
-- [ ] **E2 — Digitisation design step:** per-source
+- [x] **E2 — Digitisation design step:** per-source
       posture assignments; D8 residual (ii)
       appendix re-verification; method split of the
       other-site determinations.
-- [ ] **E3 — Margins step:** eligibility and
+- [x] **E3 — Margins step:** eligibility and
       viability per arm; population record written
       and hashed before any response is computed;
       arm closures under spec §§4.2/4.3 recorded.
-- [ ] **E4 — Outcome step:** controls, primary
+- [x] **E4 — Outcome step:** controls, primary
       tests, labelled sensitivity, jackknife,
       verdicts per spec §5.2; outcome recorded in
       this spec and cross-recorded under Spec 027;

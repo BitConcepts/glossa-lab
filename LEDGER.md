@@ -6400,3 +6400,34 @@ distance has been computed.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-13 — Spec 034 frozen (the matched-object attribution)
+
+Spec 034 is frozen. The frozen contract
+(specs/034-matched-object-attribution/) carries design D-20
+without deviation: step 0 builds the object bridge between
+the CISI and ICIT compilations through the three lawful
+routes (the 7,705-row CISI catalogue layer; the Phase-130
+intake schema; the 44 Phase-128 dossiers), with the Holdat
+cisi_number join prohibited, behind the gate fixed in
+advance — at least 150 matched objects with texts of three
+or more signs in both compilations, below which the study
+closes as TOO THIN TO ATTRIBUTE with the bridge census
+published as the finding. Above the gate, the attribution
+runs on the matched subset under Phase-125's own distance
+and count floors, decomposed in Phase-131's categories,
+with verdict lines at 0.20 (ATTRIBUTED TO COMPOSITION) and
+0.32 (ATTRIBUTED TO TRANSCRIPTION) and a split attribution
+between. Governed register: 14 claims (F034-C01…C14),
+register_version 0.5-draft, AEE pass at after_specify /
+after_plan / after_tasks after four recorded recovery
+rounds. Freeze digest (framework026):
+696fd1855c8cbc1fe767fdc26a1697deb1f0dc85253376efdd7064f102594c2a.
+Design merged as PR #205 (805bd4ae). Execution is
+Phase-398, gated on the OSF registration of this frozen
+contract verifying public. No object has been matched; the
+settled Phase-125 verdict and every other frozen record
+stand untouched.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

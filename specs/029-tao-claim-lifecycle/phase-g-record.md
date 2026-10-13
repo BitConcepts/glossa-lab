@@ -213,7 +213,7 @@ standard suite: the CI backend job's invocation is
 `pytest tests/` from `backend/` (pyproject
 `testpaths = ["tests"]`) with exactly two GPU-only ignores.
 Verified by collection under the CI-identical invocation in
-the CI-parity venv: **1,712 tests collected**, including
+the CI-parity venv: **1,412 tests collected**, including
 `test_spec029_phase_b.py`'s full file (60 tests) — the
 named gate suite in it (the four plan §2.4 controls —
 automated actor → `explained`; human `accepted` without an
@@ -343,7 +343,7 @@ the guards' scope.
   6 skipped merged baseline plus exactly this phase's 26
   new tests.
 - **Collection check (G3)**: CI-identical `--collect-only`
-  run: 1,712 tests collected, Phase B and Phase G files
+  run: 1,412 tests collected, Phase B and Phase G files
   included, neither in the workflow's ignore list.
 - **Frontend**: the new Playwright spec **4 passed**
   locally (with E2's 5, 9 total) against the locally served

@@ -82,3 +82,34 @@ of execution, mirroring Spec 027 Stage 1).
   approval verifies. Phase-395 execution follows
   only under a separate owner order; it has not
   been ordered, and nothing has been executed.
+
+## Completion — APPROVED AND PUBLIC (2026-10-13)
+
+- **DOI: https://doi.org/10.17605/OSF.IO/JTWVC**
+- Approval route: the API review-action POST
+  returned **HTTP 409** at filing (recorded above),
+  as the program record predicts; approval was
+  effected via the tokenised approve link in the
+  "Pending Registration - Admin Notification" email
+  (Gmail id `1a134000191cceec`, received
+  2026-10-13T06:42:56Z), opened in the signed-in
+  browser — the standing approvals loop (owner
+  order 2026-10-11: registration approvals are the
+  agent's job, never left as an owner action item).
+  The cancel link in the same email was not
+  touched.
+- The registration's public page shows "Public
+  registration", Date Registered Oct 13, 2026,
+  2:42 AM EDT.
+- State verified via the OSF API after approval
+  (2026-10-13): `reviews_state: accepted`,
+  `public: true`,
+  `pending_registration_approval: false`,
+  `withdrawn: false`, `embargoed: false`;
+  `date_registered: 2026-10-13T06:42:44Z`;
+  `registered_from` node `rfhd4`; the identifiers
+  record carries DOI `10.17605/OSF.IO/JTWVC`.
+- Execution gate: adopted 6A is satisfied by this
+  approval and verification. Phase-395 execution
+  remains a separate owner act; nothing has been
+  executed under this record.

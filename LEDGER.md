@@ -6008,3 +6008,59 @@ script is not deciphered. Record:
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-13 — Spec 031 design draft (Spec 027 Stage 2 / Q7 provenance networks)
+
+Design work at the owner's direction (2026-10-13:
+design and freeze Spec 027 Stage 2 / Q7 from the D8
+margins; execution not ordered). New spec directory
+`specs/031-stage2-q7-provenance-networks/` (spec.md +
+claims.json F031-C01…C12 + adjudication.md + plan.md
++ tasks.md + aee/). Q7 the question stays owned by
+Spec 027 (F027-C15); Spec 031 owns the Stage 2 design.
+
+The design is built from the completed D8 audit's
+margins under the adjudication adopted 2026-10-12
+(1B/2B/3A/4A/5A/6A, recorded verbatim in the spec's
+adjudication.md): two-tier links (Law 2011
+instrumental determinations primary; Chapter 4
+reference-based assignments a labelled sensitivity,
+never pooled); Meluhha contributes no site-pair
+links; each response arm on its own eligible site
+set; period eligibility from Stage 0 gazetteer
+labels only; Spec 026/027 control and verdict
+discipline inherited wholesale (MRM/MRQAP partial
+R² of the shared-source term, practical margin 0.02,
+B = 9,999, R = 199 controls, site jackknife). The
+support rules are fixed in the design from the
+margins as design decisions DD-1…DD-8 under the 5A
+mandate, each flagged with its reasoning: link
+eligibility ≥ 3 primary determinations per site,
+arm floors (ceramic ≥ 20 / bead ≥ 10 classified
+items per site), arm viability ≥ 8 eligible sites
+and ≥ 10 linked pairs, with the ceramic arm declared
+conditionally estimable and closing NOT ESTIMABLE at
+the execution margins step if its unaudited source
+basis cannot evidence the site floor, and
+sub-period variants declared untestable in advance.
+The Harappa concentration (≈95% of Law's
+determinations) and the drop-Harappa jackknife cell
+are named in the design as the expected pressure
+point; a Harappa-dependent effect cannot reach
+SUPPORTED under the frozen rules.
+
+AEE hook pass: round 1 iterate (5 failure modes) and
+round 2 iterate (4), recovered honestly in the
+Spec 030 pattern (atomic rewrites carrying
+enumerations into boundaries; pairwise boundary
+confirmations; text-level rewording of four claims
+to remove accidental token collisions the assessor's
+text-pairing check flags, propositions preserved);
+final outcome **pass** at after_specify, after_plan,
+and after_tasks (12 claims, 0 failure modes, 0 below
+the 0.70 threshold). Record:
+`specs/031-stage2-q7-provenance-networks/aee/recovery-specify.md`.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

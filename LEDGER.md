@@ -6526,7 +6526,7 @@ families and carries no verdict weight. Per the frozen status
 rule, the Dravidian-solution claim's inherited partial support
 (Phase-41/43 numbers, produced by the semantic-anchoring
 method falsified in Phase-107) is replaced by a dated entry in
-its record and its status reclassified to not_supported; the
+its record and its status reclassified to unsupported (the store token for a not-supported standing); the
 old numbers stay in history, labelled as SA-produced. The
 verdict settles only the bounded claim: not the rebus method,
 not any single sign reading, not a decipherment in either

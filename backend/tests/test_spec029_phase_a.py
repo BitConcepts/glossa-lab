@@ -398,7 +398,7 @@ def test_flag_on_current_claim_set_matches_audit_shapes():
     Spec 033 / Phase-397 supersession (2026-10-13): the frozen
     Spec 033 outcome (NOT SUPPORTED) reclassified the
     Dravidian-solution claim's lane-1 status from
-    ``partially_supported`` to ``not_supported`` through the dated
+    ``partially_supported`` to ``unsupported`` through the dated
     entry Spec 033 section 6 prescribes, so the supported class on
     this surface is now 5. The claim's stage is untouched
     (``explained``; lane separation again), and the flagged set

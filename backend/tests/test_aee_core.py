@@ -154,8 +154,13 @@ def test_real_fixture_round_trip():
     claims = claims_from_record(record, source_file=fixture.stem)
     assert claims, "fixture produced no claims"
     target = next(c for c in claims if c.id.endswith("manual_001"))
-    assert target.metadata["glossa_claim_status"] == "partially_supported"
-    assert target.status is ClaimStatus.PARTIALLY_SUPPORTED
+    # Spec 033 / Phase-397 supersession (2026-10-13): the frozen
+    # SA-free rerun returned NOT SUPPORTED, and Spec 033 section 6
+    # reclassified this claim's status to ``unsupported`` through a
+    # dated entry appended to its record (the Phase-41/43 partial
+    # support was inherited from the falsified SA method).
+    assert target.metadata["glossa_claim_status"] == "unsupported"
+    assert target.status is ClaimStatus.UNSUPPORTED
     assert target.falsification_tests  # falsification condition survived
     assert target.metadata["confidence_in_source"] == 0.85
     scores = score_claims(claims)

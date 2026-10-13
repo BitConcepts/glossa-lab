@@ -11,7 +11,7 @@
       "source_document_id": "parpola_2010_dravidian_solution",
       "claim_type": "language_claim",
       "normalized_claim": "Indus script encodes Proto-Dravidian language using the rebus principle.",
-      "claim_status": "not_supported",
+      "claim_status": "unsupported",
       "testability": "directly_testable",
       "falsification_condition": "If Dravidian phonotactics do not fit Indus sign bigrams better than Sanskrit.",
       "glossa_lab_evidence": "Phase-41: 1.0566x SA advantage; Phase-43: +0.484 log-units on V3 corpus [VERIFIED]",
@@ -63,7 +63,7 @@
           "kind": "status_consequence",
           "verdict": "NOT SUPPORTED",
           "status_from": "partially_supported",
-          "status_to": "not_supported",
+          "status_to": "unsupported",
           "evidence_refs": [
             "reports/phase397_results.json",
             "specs/033-sa-free-language-comparison/outcome.md",

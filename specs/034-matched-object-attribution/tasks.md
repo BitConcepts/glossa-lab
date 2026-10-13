@@ -37,10 +37,10 @@
       digest replay, the definition constants, the
       register integrity, and the cited Phase
       records.
-- [ ] **L6 — Freeze PR merged**, house gates green
+- [x] **L6 — Freeze PR merged**, house gates green
       (foundation 0 failures, full suite, branding
       sweep).
-- [ ] **L7 — OSF registration filed** for the frozen
+- [x] **L7 — OSF registration filed** for the frozen
       contract; the registration-record PR is left
       open with the pending state and completed by
       append once the approval verifies public with a
@@ -48,17 +48,17 @@
 
 ## Execution (Phase-398) — gated on the verified registration
 
-- [ ] **E1 — Graph-first build** (H15/H23): script,
+- [x] **E1 — Graph-first build** (H15/H23): script,
       graph module, registration, registration
       verification, then run.
-- [ ] **E2 — Step 0 bridge:** the three routes as
+- [x] **E2 — Step 0 bridge:** the three routes as
       cited data; the bridge census published; the
       gate applied. Below the gate, close as TOO
       THIN TO ATTRIBUTE and stop.
-- [ ] **E3 — Step 1 measurement:** Phase-125's
+- [x] **E3 — Step 1 measurement:** Phase-125's
       distance and floors on the matched subset;
       the Phase-131-category decomposition.
-- [ ] **E4 — Outcome:** the attribution under spec
+- [x] **E4 — Outcome:** the attribution under spec
       §6 with the §7 selection-bias report in the
       verdict statement, recorded in this spec's
       directory and the root LEDGER; nothing written

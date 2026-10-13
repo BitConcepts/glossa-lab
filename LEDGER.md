@@ -6531,3 +6531,69 @@ section 7); the Spec 029 freeze replay is unaffected.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-13 — Phase-398 executed: Spec 034 matched-object attribution — ATTRIBUTED TO COMPOSITION
+
+Execution of the frozen Spec 034 contract (design D-20: why the
+two compilations disagree; freeze digest 696fd185; OSF
+registration https://osf.io/zd7uq/, DOI 10.17605/OSF.IO/ZD7UQ,
+approved and public before execution; registration record
+completed by PR #208, merge ca07abe8) under the owner's order of
+2026-10-13. Infrastructure PR #213 (merge 32f303c4): the
+Phase-398 build (backend/glossa_lab/phase398_matched_object.py),
+the experiment graph node IndusPhase398MatchedObjectAttribution,
+and 8 machinery tests fencing the join discipline. Step 0 built
+the object bridge through the three frozen routes. Route (a),
+the CISI catalogue layer (7,705 rows; 3,493 distinct objects),
+attests all 179 mayig-layer objects. Route (b), the Mahadevan
+side's published object references — the ICIT published corpus's
+per-inscription CISI references, admitted as a Phase-130
+intake-schema dataset (validation pass, 0 errors, 0 warnings;
+5,018 inscriptions, 4,074 distinct objects) and joined on
+provenance.object_id only — matched 179 objects: every mayig
+object has exactly one ICIT inscription citing it. Holdat
+cisi_number was never read and never used as a join key
+(F034-C06; spec 019 section 2.1). Route (c), the 44 Phase-128
+dossiers, intersects 61 of the gate objects (17 anchors). The
+frozen gate — at least 150 matched objects with texts of three
+or more signs in both compilations — is met at 169 (the 10
+below-condition objects are listed in the outcome); a
+kept-status sensitivity count gives 159, so the gate passes
+under both counts, and no content deduplication was applied to
+the bridge (identity rests on the published reference, not on
+text uniqueness). Step 1 ran Phase-125's own measurement
+(evaluate_arm: total variation, floor 8, the 286 PRIMARY pairs)
+on the 169 matched objects only: 25 judgeable pairs (the
+corpus-level run had 16), matched-object median TV 0.025694,
+modal agreement 1.0, Spearman rho 0.898039 / 0.932164 /
+0.850948, shuffle null p = 0.001. Under the frozen section 6
+lines the outcome is ATTRIBUTED TO COMPOSITION (0.025694 <=
+0.20); the falsifier (at or above 0.32) did not fire. In
+Phase-131's persistence estimator the matched-object residual
+is 0.040340 of the corpus-level 0.636931, against the 0.938679
+share Phase-131 left unexplained without an object bridge.
+Decomposition in Phase-131's categories over the 29
+all-or-nothing-mappable objects: 22 identical, 1 order-only
+(M-67, the same signs rotated by one position), 6 substitution;
+difference-block token shares segmentation 0.0, substitution
+0.909091, insertion/deletion 0.090909; the 10 substituted
+positions checked against the crosswalk as a record of
+disagreement — 0 conflict pairs, 0 crosswalk-attested, 10 with
+no crosswalk row. The matched subset is all Mohenjo-daro seals
+(the CISI vols 1–2 population the mayig layer transcribes), and
+the verdict statement carries that description (F034-C12).
+Nothing was written into the Phase-125/127/131 records, which
+stand as issued (F034-C14); the anchors file was asserted
+byte-identical before and after. Outcome recorded at
+specs/034-matched-object-attribution/outcome.md, with
+per-claim determinations for F034-C01…C14 (the frozen register
+is not edited); full record at reports/phase398_results.json
+and reports/phase398_matched_object_attribution.md. Gates:
+foundation check and full suite in the products PR's CI;
+branding sweep clean (run-time local suite side effects on
+claims-store files were identified as test-harness writes and
+discarded uncommitted; the run itself writes only its two
+report files).
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

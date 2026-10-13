@@ -192,7 +192,10 @@ def test_score_propagation_byte_identical_to_pre_change():
         assert json.dumps(got, sort_keys=True) == json.dumps(want, sort_keys=True)
         # The lane-1 alias carries the same score, as a distinct key.
         assert entry["lane1_score"] == want
-    assert summary["mean_propagated_score"] == 0.497641
+    # Spec 029 Phase E1 (E1.3): the summary-position mean was
+    # withdrawn (FR-029-08); the per-claim byte-identical score
+    # regression above is the surviving A2 pin.
+    assert "mean_propagated_score" not in summary
 
 
 # ── A3: transition service ───────────────────────────────────────────────

@@ -387,13 +387,16 @@ def assessment_summary(claims_dir: str | Path) -> dict[str, Any]:
                 score=score_dict,
             ),
         })
-    mean_score = (
-        sum(s.propagated_score for s in scores.values()) / len(scores) if scores else 0.0
-    )
+    # Spec 029 Phase E1 (E1.3; FR-029-08; audit §5-P5.3): the
+    # program-level ``mean_propagated_score`` is WITHDRAWN from this
+    # summary. A single mean of lane-1 checking scores in summary
+    # position presents a graded tally as standing. Per-claim scores
+    # remain below in their per-claim detail entries (``aee_score`` /
+    # ``lane1_score``), where each travels with its own claim,
+    # falsifier, and stage object.
     return {
         "engine": "applied-epistemic-engineering",
         "total_claims": len(claims),
-        "mean_propagated_score": round(mean_score, 6),
         "claims": per_claim,
         "graph": report,
         "status_counts": status_counts,

@@ -1714,7 +1714,8 @@ export interface DeciphermentRound {
   signs_assigned: number;
   signs_total: number;
   token_coverage: number;
-  fully_decoded_pct: number;
+  // Spec 029 Phase E1 (E1.2): the per-round fully-decoded
+  // percentage is withdrawn from the dashboard payload.
   tamil_brahmi_corr: number;
   remaining: string[];
 }

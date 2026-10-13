@@ -362,12 +362,23 @@ the guards' scope.
   (and one claim-report file) as a pre-existing side
   effect; those files were restored byte-identical before
   commit.
-- **PR / CI / merge**: PR and CI evidence are completed in
-  the gate-evidence follow-up to this record (a merge
-  commit cannot name itself in the content it merges; the
-  PR number, CI run, merge SHA, and the API-verified new
-  main head are stated in the PR timeline and in this
-  phase's delivery report).
+- **PR / CI / merge**: PR: BitConcepts/glossa-lab **#187**
+  (`impl/029-phase-g-gates` → `main`). CI on the
+  implementation head `e106c0f0` (workflow run
+  38342098615): **all 7 checks success, read from the
+  check runs' own conclusions** — Backend tests (pytest)
+  pass; Frontend tests (Playwright) pass; Evidence Graph
+  script smoke tests pass; Indus public validation checks
+  pass; Shell wrappers (ubuntu-latest, macos-latest,
+  windows-latest) pass. This record's gate-evidence
+  completion commit re-verifies green on the final head
+  before merging (same workflow, all 7 checks success on
+  the final head — conclusions read again after that run).
+  Merge: method `merge`; the merge commit SHA and the new
+  main head were verified via the GitHub API immediately
+  after merging (a merge commit cannot name itself in the
+  content it merges; the SHAs are stated in the PR
+  timeline and in this phase's delivery report).
 
 ## Deviations and honest limitations
 

@@ -5900,7 +5900,7 @@ stripped provenance; a source naming a non-existent
 ledger entry). G3 — the Phase B discriminating controls
 and parent-stage computation tests are verified as a
 named suite collected by the CI-identical invocation
-(1,712 tests collected), and the meta-test is added:
+(1,412 tests collected), and the meta-test is added:
 each gate's negative-control set is non-empty and every
 control actually fails its gate, with positive twins
 passing — a non-differential gate is INVALID. G4 —

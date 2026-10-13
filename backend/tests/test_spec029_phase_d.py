@@ -22,6 +22,14 @@ script's contract:
 
 The script lives in the spec directory (house style for spec
 tooling); it is loaded by path.
+
+Supersession note (2026-10-13): the Phase-104 carry-over
+correction superseded the migration stamp on exactly three
+extracted claims (named in ``_CARRYOVER_CORRECTED`` below). The
+live-state pins in this file exempt exactly those records, and
+the reconciliation / plan pins assert that the migration's own
+machinery disagrees with the frozen expectations by exactly the
+correction's movement and nothing else.
 """
 from __future__ import annotations
 
@@ -46,6 +54,21 @@ _PRE_MIGRATION_ANCHORS_SHA256 = (
 _ADDITIVE = ("stage", "stage_source", "stage_as_of", "stage_history",
              "verified_unexplained")
 _LEDGER_REF = "specs/029-tao-claim-lifecycle/reclassification-ledger.json"
+
+#: Phase-104 carry-over correction (2026-10-13): the three fragment
+#: records the Phase-104 evaluation prescribed a verdict carry-over
+#: for no longer carry the Phase D migration stamp — the correction
+#: superseded it through the transition service, appending a second
+#: history entry (the Phase D entry stands as history[0]). See
+#: ``specs/029-tao-claim-lifecycle/phase104-carryover-correction-record.md``.
+#: The Phase D pins below exempt exactly these records, by name;
+#: the correction's own shape is asserted in
+#: ``test_spec029_phase104_correction.py``.
+_CARRYOVER_CORRECTED = {
+    "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001",
+    "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
+    "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001",
+}
 
 # ── Lane-2 adoption amendment (2026-10-13, owner act) ─────────────────────
 #
@@ -165,15 +188,22 @@ def _assert_lane2_advanced(record: dict, entry: dict) -> None:
 def test_verify_mode_reconciliation_matches_the_recorded_state():
     """At the migration, this reconciliation matched the frozen
     ledger exactly (220 / 116 / 0 / 0 / 0; 105 flags — the original
-    assertions, preserved in the phase-d record). The 2026-10-13
-    lane-2 adoption then advanced the named 20 records one step
-    and cleared 9 flags, so the reconciliation now matches THAT
-    recorded state exactly: every deviation from the ledger is one
-    of the named moves, every other record still carries the
-    migration stamp untouched, and the migration's own counter
-    (``count_stamped_records``) refuses the advanced population,
-    as designed — it is a migration verifier, and the migration
-    is not re-runnable over an advanced store."""
+    assertions, preserved in the phase-d record). Two
+    owner-ordered acts of 2026-10-13 then moved records, each
+    through the transition service (the machinery's single
+    writer) and each named in this file: the lane-2 adoption
+    advanced the named 20 records one step (checked -> explained)
+    and cleared 9 flags; the Phase-104 carry-over correction
+    moved the named 3 extracted claims from created to checked,
+    writing the verdict Phase-104 had prescribed (their Phase D
+    stamps stand as stage_history[0]). The reconciliation now
+    matches THAT recorded state exactly: every deviation from
+    the ledger is one of the named moves, every other record
+    still carries the migration stamp untouched, and the
+    migration's own counter (``count_stamped_records``) refuses
+    the advanced population, as designed — it is a migration
+    verifier, and the migration is not re-runnable over an
+    advanced store."""
     by_class = mig.entries_by_class(mig.load_ledger())
     stamped = mig.collect_live_state(by_class)
     counts: dict[str, dict[str, int]] = {}
@@ -190,15 +220,15 @@ def test_verify_mode_reconciliation_matches_the_recorded_state():
         ledger_flag = "verified_unexplained" in (entry.get("flags") or [])
         if record["verified_unexplained"] is not ledger_flag:
             deviating_flag.add(entry["item_id"])
-        if entry["item_id"] not in _LANE2_EXPLAINED:
+        if entry["item_id"] not in _LANE2_EXPLAINED | _CARRYOVER_CORRECTED:
             assert record["stage"] == entry["honest_stage"]
             assert record["stage_source"] == f"{_LEDGER_REF}:{entry['item_id']}"
             assert record["stage_as_of"] == "2026-10-12"
-    assert deviating_stage == _LANE2_EXPLAINED
+    assert deviating_stage == _LANE2_EXPLAINED | _CARRYOVER_CORRECTED
     assert deviating_flag == _LANE2_FLAG_CLEARED
     assert counts == {
         "anchor_reading": {"created": 193, "checked": 94},
-        "extracted_claim": {"created": 21, "checked": 2, "explained": 8},
+        "extracted_claim": {"created": 18, "checked": 5, "explained": 8},
         "registered_prediction": {"created": 3, "explained": 2},
         "hypothesis_model": {"created": 3},
         "study_headline_claim": {"explained": 10},
@@ -209,7 +239,7 @@ def test_verify_mode_reconciliation_matches_the_recorded_state():
         for stage, n in cls_counts.items():
             totals[stage] += n
     assert totals == {
-        "created": 220, "checked": 96, "explained": 20,
+        "created": 217, "checked": 99, "explained": 20,
         "accepted": 0, "digested": 0,
     }
     assert flags == 96
@@ -236,11 +266,28 @@ def test_every_extracted_claim_stamped_with_provenance():
         for claim in data["claims"]:
             seen[claim["claim_id"]] = claim
     assert set(seen) == set(entries)
+    corrected = []
     for cid, entry in entries.items():
         if cid in _LANE2_EXPLAINED:
             _assert_lane2_advanced(seen[cid], entry)
+        elif cid in _CARRYOVER_CORRECTED:
+            # Superseded by the Phase-104 carry-over correction:
+            # the Phase D stamp survives as history[0] (asserted
+            # here); the record's current stamp is the correction's
+            # transition-service tail (asserted in the correction
+            # test file and by the Phase G recompute gate).
+            corrected.append(cid)
+            (h0, _tail) = seen[cid]["stage_history"]
+            assert h0["from_stage"] is None
+            assert h0["to_stage"] == entry["honest_stage"]
+            assert h0["actor"] == "spec029-phase-d-restaging-migration"
+            assert h0["timestamp"] == "2026-10-12"
+            assert h0["evidence_refs"] == [f"{_LEDGER_REF}:{cid}"]
+            assert seen[cid]["verified_unexplained"] is (
+                "verified_unexplained" in (entry.get("flags") or []))
         else:
             _assert_stamp(seen[cid], entry)
+    assert set(corrected) == _CARRYOVER_CORRECTED
 
 
 def test_hypothesis_models_stamped_and_parseable_where_parseable():
@@ -327,6 +374,13 @@ def test_extracted_claims_additive_only_canonical_comparison():
             pre_keys[claim["claim_id"]] = extra
             if claim["claim_id"] in _LANE2_EXPLAINED:
                 _assert_lane2_advanced(claim, entries[claim["claim_id"]])
+            elif claim["claim_id"] in _CARRYOVER_CORRECTED:
+                # The Phase-104 carry-over correction (2026-10-13)
+                # superseded these three stamps and added its two
+                # correction fields; the corrected records' exact
+                # shape is asserted in the correction test file,
+                # not by this pin.
+                continue
             else:
                 _assert_stamp(claim, entries[claim["claim_id"]])
     assert len(pre_keys) == 31
@@ -374,18 +428,22 @@ def test_record_state_transitions():
     assert mig.record_state(record, entry) == "conflict"
 
 
-def test_plan_fails_closed_on_the_lane2_advanced_population():
-    """The migration is a one-shot act, and its plan must refuse to
-    re-run over an advanced store ("refusing to smooth"). Before the
-    2026-10-13 lane-2 adoption this test asserted
-    ``state_counts == {"stamped": 336}``, no problems, and a matching
-    would-be reconciliation. After it, the plan reports exactly the
-    8 advanced file-store claims (all extracted claims) as conflicts
-    with the ledger stamp, plus the sidecar differing from its
-    ledger-derived form (the other 12 advanced records live there)
-    — and nothing else."""
+def test_plan_fails_closed_on_the_advanced_population():
+    """The migration is a one-shot act, and its plan must refuse
+    to re-run over an advanced store ("refusing to smooth").
+    Before 2026-10-13 this test asserted ``state_counts ==
+    {"stamped": 336}``, no problems, and a matching would-be
+    reconciliation. Two owner-ordered acts of 2026-10-13 then
+    advanced records through the transition service: the lane-2
+    adoption (the named 20 — the 8 extracted claims among them
+    live in the file store, the other 12 in the sidecar) and the
+    Phase-104 carry-over correction (the named 3 extracted
+    claims). The plan now reports exactly those 11 file-store
+    records as conflicts with the ledger stamp, plus the sidecar
+    differing from its ledger-derived form — and nothing else.
+    Neither act is smoothed over."""
     p = mig.plan()
-    assert p["state_counts"] == {"stamped": 313, "conflict": 8}
+    assert p["state_counts"] == {"stamped": 310, "conflict": 11}
     extracted_advanced = {
         cid for cid in _LANE2_EXPLAINED
         if any(e["item_id"] == cid and e["class"] == "extracted_claim"
@@ -394,7 +452,7 @@ def test_plan_fails_closed_on_the_lane2_advanced_population():
     assert len(extracted_advanced) == 8
     assert set(p["problems"]) == (
         {f"{cid}: existing stage fields conflict with the ledger stamp"
-         for cid in extracted_advanced}
+         for cid in extracted_advanced | _CARRYOVER_CORRECTED}
         | {"sidecar exists but differs from the ledger-derived sidecar"})
     assert p["would_be_reconciliation"] is None
 

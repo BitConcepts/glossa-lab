@@ -58,6 +58,23 @@ _PRE_CHANGE_SCORES = (
 _POST_MERGE_SCORES = (
     Path(__file__).resolve().parent / "fixtures" / "spec029_post_merge_aee_scores.json"
 )
+# Phase-104 carry-over correction supersession (2026-10-13): the
+# Phase-104 verdict carry-over was written into the three fragment
+# records it prescribed (see
+# ``specs/029-tao-claim-lifecycle/phase104-carryover-correction-record.md``),
+# so those three records now carry their contradicting evidence and
+# the AEE engine scores them with its contradiction penalty —
+# exactly as it already scored the canonical
+# farmer_sproat_witzel_2004_manual_001. The regression target is
+# therefore this successor fixture; the post-merge fixture above is
+# preserved untouched, and the correction test file
+# (``test_spec029_phase104_correction.py``) asserts that exactly
+# the three corrected claims' scores moved, each by this cause,
+# and every other score is byte-identical to the post-merge value.
+_POST_CORRECTION_SCORES = (
+    Path(__file__).resolve().parent
+    / "fixtures" / "spec029_post_phase104_correction_aee_scores.json"
+)
 
 HUMAN = "Tristen Pierson"
 TS = "2026-10-12T12:00:00+00:00"
@@ -194,10 +211,20 @@ def test_score_propagation_byte_identical_to_pre_change():
     fixture is preserved untouched; Phase I's test file asserts
     every surviving claim's score is byte-identical to its
     pre-change value and reports the mean movement with its cause.
+
+    Phase-104 carry-over correction supersession (2026-10-13): the
+    regression target moved again, to
+    ``fixtures/spec029_post_phase104_correction_aee_scores.json`` —
+    the three records the Phase-104 evaluation prescribed a verdict
+    carry-over for now carry that verdict's contradicting evidence,
+    and the engine applies its contradiction penalty to them (the
+    movement and its cause are asserted in
+    ``test_spec029_phase104_correction.py``). Both earlier fixtures
+    are preserved untouched.
     """
     if not _REAL_CLAIMS_DIR.exists():
         pytest.skip("extracted_claims dir not present")
-    expected = json.loads(_POST_MERGE_SCORES.read_text(encoding="utf-8"))
+    expected = json.loads(_POST_CORRECTION_SCORES.read_text(encoding="utf-8"))
     summary = assessment_summary(_REAL_CLAIMS_DIR)
     assert summary["total_claims"] == len(expected)
     for entry in summary["claims"]:

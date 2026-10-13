@@ -5581,3 +5581,71 @@ run under aee 1.4.0.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Spec 029 Phase B: claim bundles, attribution cap, explanation + digestion gates
+
+  The bundle machinery and the stage gates Phase A deferred
+  (FR-029-04…07; tasks B1–B5), in one new module
+  `backend/glossa_lab/claim_bundle.py` plus one additive
+  guard in `claim_stage.py`. A decipherment claim is a
+  bundle: a parent record plus sub-claim records of kinds
+  `reading_soundness`, `scholarship_accounting`,
+  `attribution`, `explanation_intelligibility` — each a
+  first-class record with its own evidence list, its own
+  falsification condition, and its own Phase A stage, moved
+  only by the Phase A transition service. The parent stage
+  is computed (minimum of sub-claim stages, then the caps;
+  F029-C11) and stored as that computation's cache
+  (`stage_source` =
+  `bundle-minimum-computation:spec029-phase-b-v1`); it is
+  never directly assignable — both the Phase A service and
+  the Phase B gate layer refuse a bundle parent (additive
+  guard: no Phase A record shape carries `sub_claims`, and
+  the Phase A suite passes unmodified; score propagation
+  remains byte-identical under the Phase A regression).
+  Attribution is a sub-claim with a governed template
+  (prior readings with resolvable citations; a completeness
+  basis naming corpora and literature searched, date, and
+  searcher; a contest state): contested — an active,
+  evidenced dispute with no durable adjudication record
+  resolving it — caps the parent at `checked` inside the
+  computation itself (OD-3); unexamined carries no cap; a
+  valid durable resolution lifts the cap, an unresolvable
+  one fails closed. The explanation record gates
+  `accepted` (FR-029-06): one named accountable human
+  (AI systems may be recorded as drafter, never as the
+  named human — AI and process names are rejected),
+  resolvable artifact URI, stored SHA-256 content hash,
+  challenge venue, AI-assistance disclosure. The digestion
+  record gates `digested` (OD-5): any one of independent
+  reuse, a published challenge answered in a durable
+  record, or a mechanism-engaging citation with a named
+  intake reviewer's stored rationale — each with
+  resolvable references and a validated
+  program-independence field (explicitly not a claim
+  author, not program staff; missing fails closed).
+  Adverse digestion: an unanswered refutation flags the
+  claim contested, blocks any advance above `checked`,
+  and pulls it back to at most `checked` by a recorded
+  demotion (plain claim) or the computation's adverse cap
+  (bundle parent). The gate layer
+  (`gated_transition_stage`) validates on a trial copy and
+  delegates the write to the Phase A service — a refused
+  transition writes nothing. Every gate ships with
+  discriminating controls (task B5): 60 new tests in
+  `backend/tests/test_spec029_phase_b.py`, all synthetic
+  fixtures; the first local run caught five real defects
+  in the new module (an AI-name token gap, a
+  resolution-validation gap), fixed in scope. No live
+  claim or anchor was promoted, decomposed, or given a
+  real gate record — machinery only, per the phase's hard
+  limit. Gate evidence: foundation check 40 passed /
+  0 failed / 8 warnings; full backend suite under the
+  CI-parity venv (aee 1.4.0) 1316 passed / 6 skipped /
+  0 failed — the 1256 baseline plus exactly this phase's
+  60 tests. Record:
+  `specs/029-tao-claim-lifecycle/phase-b-record.md`.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

@@ -169,3 +169,42 @@ untouched.
 
 AI disclosure: executed by an AI agent (Muse Spark, via
 Muse) at the direction of Tristen Pierson.
+
+## Merge reconciliation with the lane-2 ingestion (appended 2026-10-13)
+
+This correction was written against main `69f42320`. Before it
+merged, main advanced through PR #197 (the lane-2 adoption
+ingestion), which placed the owner-authored `not_understood` and
+`explanation_record` fields on all 35 adopted records — these
+three included — and advanced the canonical claim
+`farmer_sproat_witzel_2004_manual_001` from `checked` to
+`explained`. The correction branch was therefore merged with
+current main and reconciled, under three rules: no authored
+lane-2 field is dropped; no correction field is dropped; every
+pinned expectation that named the pre-ingestion state was
+amended to name both acts rather than silently re-based.
+
+The reconciliation, verified field-by-field: on each of the
+three records the merged state differs from main's at exactly
+the seven correction paths (`claim_status`,
+`contradicting_evidence`, `stage`, `stage_as_of`,
+`stage_history`, `stage_source`, `status_correction`) and is
+identical to main's on the lane-2 fields; every other record in
+the two store files is identical to main's, the canonical claim
+included. The extractor's regeneration carry-over is the union
+of both acts' field sets, so a regeneration now preserves the
+correction's outcome fields and the authored lane-2 fields
+alike. The pinned expectations were re-derived from the merged
+store and measured, not assumed: extracted claims now stand at
+18 created / 5 checked / 8 explained (the correction's three on
+top of the ingestion's twenty explained); the transition-service
+provenance partition is 23 records (20 lane-2 + 3 corrected) of
+344; the migration plan reports 310 stamped / 11 conflicts plus
+the sidecar difference. Two assertions in this correction's own
+test file were amended to the merged state (the corrected
+records' exact key set now includes the two lane-2 keys; the
+canonical claim's pin now asserts it is untouched *by this
+correction* — no `status_correction`, no correction history
+entry — its `explained` stage being the ingestion's act), and
+one test was added pinning that the correction and the authored
+lane-2 fields coexist on all three records.

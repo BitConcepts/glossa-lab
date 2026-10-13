@@ -123,7 +123,16 @@ def test_corrected_records_carry_the_phase104_outcome():
         # fragments' falsifier gap stays visible on their trails).
         assert rec["proposition_fingerprint"] == FINGERPRINTS[claim_id]
         assert "falsification_condition" not in rec, claim_id
-        want_keys = _BASE_KEYS | {"contradicting_evidence", "status_correction"}
+        # The correction's two fields on top of the base keys —
+        # plus the two authored lane-2 fields (``not_understood`` /
+        # ``explanation_record``) the lane-2 adoption ingestion
+        # (PR #197, merged from main after this correction was
+        # written) placed on every adopted record, these three
+        # included. The correction neither wrote nor removed them;
+        # their coexistence with the correction is pinned by
+        # test_carryover_and_lane2_fields_coexist below.
+        want_keys = _BASE_KEYS | {"contradicting_evidence", "status_correction",
+                                  "not_understood", "explanation_record"}
         if claim_id.endswith(("critique_0001", "critique_0002")):
             want_keys |= {"evidence_instances"}
         assert set(rec) == want_keys, claim_id
@@ -165,18 +174,44 @@ def test_corrected_records_pass_the_phase_g_gates():
         assert profile <= {"actor", "falsifier_state"}, claim_id
 
 
-def test_canonical_claim_unchanged():
+def test_canonical_claim_unchanged_by_the_correction():
     rec = _load_store()[CANONICAL]
     assert rec["claim_status"] == "contradicted"
-    assert rec["stage"] == "checked"
-    assert len(rec["stage_history"]) == 1
-    assert rec["stage_source"].endswith(f":{CANONICAL}")
     assert "status_correction" not in rec
     assert rec["contradicting_evidence"] == [
         "Rao et al. 2009: conditional entropy falls in linguistic range",
         "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
         "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start",
     ]
+    # The correction appended nothing to the canonical claim. Its
+    # one post-Phase-D movement is the lane-2 adoption's
+    # checked -> explained transition (PR #197, a separate owner
+    # act merged from main after this correction was written;
+    # the advanced shape is pinned by the Phase D tests). Here we
+    # pin that no correction entry exists anywhere in its history.
+    assert all(h["actor"] != "spec029-phase104-carryover-migration"
+               for h in rec["stage_history"])
+    assert rec["stage"] == "explained"
+    assert len(rec["stage_history"]) == 2
+
+
+def test_carryover_and_lane2_fields_coexist_on_the_corrected_records():
+    # The reconciliation requirement of the merge with main: each
+    # corrected record carries BOTH the Phase-104 carry-over
+    # correction (this act) AND the authored lane-2 fields (the
+    # adoption ingestion, PR #197) — neither act's fields dropped.
+    records = _load_store()
+    for claim_id in CORRECTED:
+        rec = records[claim_id]
+        assert rec["status_correction"]["kind"] == (
+            "phase104-carryover-correction"), claim_id
+        assert rec["claim_status"] == "contradicted", claim_id
+        assert rec["stage"] == "checked", claim_id
+        assert isinstance(rec["not_understood"], str), claim_id
+        assert rec["not_understood"].strip(), claim_id
+        explanation = rec["explanation_record"]
+        assert explanation["author"] == "Tristen Pierson", claim_id
+        assert explanation["author_kind"] == "human", claim_id
 
 
 # ── Blast radius: scores move only where the record changed ─────────────

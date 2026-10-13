@@ -1,7 +1,7 @@
 {
   "document_id": "ancient_writing_and_modern_technologies_51831ac9",
   "title": "",
-  "extraction_date": "2026-10-13T06:22:51.514835",
+  "extraction_date": "2026-10-13T11:52:25.308524",
   "total_claims": 4,
   "auto_extracted": 4,
   "manually_curated": 0,
@@ -15,7 +15,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-13T06:22:51.438847",
+      "extracted_at": "2026-10-13T11:52:25.206239",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
       "stage_as_of": "2026-10-12",
@@ -32,7 +32,18 @@
         }
       ],
       "verified_unexplained": false,
-      "proposition_fingerprint": "35b24f994a2708ee93073c3439fd1ad87caee00ae28bec2a2c91c965e98c1729"
+      "proposition_fingerprint": "35b24f994a2708ee93073c3439fd1ad87caee00ae28bec2a2c91c965e98c1729",
+      "not_understood": "What is not understood is more basic than the value itself: which sign, in which published sign list, this number refers to. Indus sign lists number signs differently, and a bare '900' cannot be matched to a drawn sign from this record. What would change the picture: the source table re-extracted with its sign list named and the sign image attached - at which point the record would become a claim that could be checked against the corpus. Until then this is a stated gap, not a claim with evidence.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+        "content_hash": "b40117b17961e9daabd67622582668d4231458ceff373f8d6eec21d3d1a23cd0",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book."
+      }
     },
     {
       "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
@@ -43,7 +54,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-13T06:22:51.438904",
+      "extracted_at": "2026-10-13T11:52:25.206291",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
       "stage_as_of": "2026-10-12",
@@ -60,7 +71,18 @@
         }
       ],
       "verified_unexplained": false,
-      "proposition_fingerprint": "aaba7e6ea70aedcec1824e8f883ada5dd357a884aaa90f0a37a6c8fa75fd5fe0"
+      "proposition_fingerprint": "aaba7e6ea70aedcec1824e8f883ada5dd357a884aaa90f0a37a6c8fa75fd5fe0",
+      "not_understood": "Unresolved at every level: the sign list is unnamed, the two extracted values for sign 700 conflict, and a 'volumetric system' claim would in any case need the sign counted on actual containers and measures, data this record does not touch. What would change the picture: the source table identified and re-extracted in full, so the two readings of sign 700 can be reconciled or one withdrawn as a copying error.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
+        "content_hash": "e2f15b60d2faf3ca251da077c9d6ef9830e2eb5d71d157dbb8236cb967933f00",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book. One further fact belongs in the open: a sibling fragment from the same source assigns the same sign number a different value (a unit of 4). Both cannot be right as stated. The Phase I dedupe reviewed the pair and kept them as separate propositions, because they do say different things - but the contradiction between them is unresolved in the record, and neither can be checked until the source table is identified."
+      }
     },
     {
       "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
@@ -71,7 +93,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-13T06:22:51.438912",
+      "extracted_at": "2026-10-13T11:52:25.206298",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
       "stage_as_of": "2026-10-12",
@@ -88,7 +110,18 @@
         }
       ],
       "verified_unexplained": false,
-      "proposition_fingerprint": "7ab30f86ed1d50ef4e8615772026ce50c539c6967d3801d86ac8b02bb739d8d6"
+      "proposition_fingerprint": "7ab30f86ed1d50ef4e8615772026ce50c539c6967d3801d86ac8b02bb739d8d6",
+      "not_understood": "Same gap as its sibling, plus the disagreement between them: until the source table is identified, there is no fact of the matter on this record to check. What would change the picture: the source table re-extracted in full with its sign list named; if one of the pair is a copying error, an appended correction - not a silent edit - is how the record should be fixed.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
+        "content_hash": "453eda328b8621ca51515b52a28256d9d2a11b64bc011e7c4c0c0b8088dd5820",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book. This fragment is also one side of an unresolved contradiction: its sibling fragment from the same source puts sign 700 in a system built on a unit of 40. The Phase I dedupe kept both, as distinct propositions; the record does not say which, if either, matches the source."
+      }
     },
     {
       "claim_id": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
@@ -99,7 +132,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-13T06:22:51.463891",
+      "extracted_at": "2026-10-13T11:52:25.252559",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
       "stage_as_of": "2026-10-12",
@@ -254,7 +287,18 @@
             "merged_into": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004"
           }
         }
-      ]
+      ],
+      "not_understood": "The topic the heading points at - whether signs occupy preferred positions - is in fact one of the better-tested topics in this program, on other records. Nothing about those results belongs on this record, because this record does not state them. What would change the picture: re-extraction of the five source passages in full, each becoming its own claim with its numbers attached, or an appended note retiring this fragment as an extraction artefact. As it stands it is a stated gap.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
+        "content_hash": "8e3d5eaea90944b02d38f61c63d53c287d3ee51ad79c8ae495a83f4f4c8b6568",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "There is no claim here to explain. Phase-104's evaluation says it exactly: an automatic-extraction fragment with no falsification condition and no stated proposition - not evaluable as stated. The extraction kept the heading of a results section and lost the results. Five source documents had such a section; whatever each of them found is not in this record."
+      }
     }
   ],
   "_citation": {

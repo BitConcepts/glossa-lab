@@ -1,7 +1,7 @@
 {
   "document_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
   "title": "",
-  "extraction_date": "2026-10-13T06:22:51.912436",
+  "extraction_date": "2026-10-13T11:52:25.930680",
   "total_claims": 3,
   "auto_extracted": 3,
   "manually_curated": 0,
@@ -15,7 +15,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-13T06:22:51.751906",
+      "extracted_at": "2026-10-13T11:52:25.639232",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001",
       "stage_as_of": "2026-10-12",
@@ -32,7 +32,18 @@
         }
       ],
       "verified_unexplained": false,
-      "proposition_fingerprint": "43036bc7f5bd12486d2409cb9474105586a2966a7530c88a213fa25235ba593a"
+      "proposition_fingerprint": "43036bc7f5bd12486d2409cb9474105586a2966a7530c88a213fa25235ba593a",
+      "not_understood": "Nothing here is understood or misunderstood - there is no proposition to attach understanding to. What would change the picture: the source passage in full. If the passage argues something specific (for example, that the sign's spread rules out a narrow meaning), that argument should be extracted as the claim, with the sign list named.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001",
+        "content_hash": "d1132061bdcee7ff2a42f18204fc753cdd4cc08cf241d5571f3675a0d4afa481",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book. Even with the sign identified, 'used in a variety of contexts' states nothing that could fail: almost any common sign is used in a variety of contexts. The observation may be a useful catalogue note; as a claim record it asserts no testable proposition."
+      }
     },
     {
       "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
@@ -43,7 +54,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-13T06:22:51.751922",
+      "extracted_at": "2026-10-13T11:52:25.639260",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
       "stage_as_of": "2026-10-12",
@@ -60,7 +71,18 @@
         }
       ],
       "verified_unexplained": false,
-      "proposition_fingerprint": "977a00db6590b4698028ec4e8de8f5aff68978298393b91a140f32662bd4c1db"
+      "proposition_fingerprint": "977a00db6590b4698028ec4e8de8f5aff68978298393b91a140f32662bd4c1db",
+      "not_understood": "Which drawn sign this is, and whether its identification as a horned tiger is agreed or one scholar's call, are both unknown from the record. Animal identifications matter beyond this fragment: several larger claims in this set (the animal-openings claim, the sky-sign claim) are untestable until signs are visually classified, and identifications like this one are the raw material such a classification would be built from. What would change the picture: the source's sign list named and the sign image attached, so the identification can enter a classification as cited data.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
+        "content_hash": "acf3ca534d7a7334182d25fe87082debf6c53f3be36cb5b875f275d5673b575e",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book. Unlike the number-value fragments, this one is at least the kind of statement that could be checked - sign identifications can be compared against sign images - but not from this record: with the sign list unnamed, the drawn sign cannot be located."
+      }
     },
     {
       "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
@@ -71,7 +93,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-13T06:22:51.814917",
+      "extracted_at": "2026-10-13T11:52:25.762069",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
       "stage_as_of": "2026-10-12",

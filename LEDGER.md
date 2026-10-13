@@ -6150,7 +6150,282 @@ preserves a status_correction's outcome fields by claim
 identity. Full suite 1,450 passed / 6 skipped / 0 failed
 locally (CI re-run is the final evidence for the fixed tree);
 foundation 40 / 0 / 8.
+## 2026-10-13 — Spec 029 lane-2 drafts ADOPTED (owner authorship act, OD-2)
+
+The 35 lane-2 drafts prepared earlier today (PR #190:
+explanation drafts + `not_understood` drafts for 23 canonical
+extracted claims, 10 study headline claims, and PRED-2026-006/007)
+were shown to the owner in full, and the owner adopted all 35 as
+authored by him, verbatim: "Adopt all 35 lane-2 drafts as authored
+by me" (2026-10-13 06:12 EDT). The adoption completed the OD-2
+authoring fields on every record in
+`specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json`: author
+Tristen Pierson (author_kind human); drafter unchanged (AI agent,
+Muse Spark, via Muse); `artifact_uri` the adopted record itself
+on main, per-claim fragment; `content_hash` the SHA-256 of each
+record's explanation text; `challenge_venue` the repository issue
+tracker; `ai_assistance_disclosure` restated to record the drafting
+and the adoption. All 35 completed records validate under
+`glossa_lab.claim_bundle.validate_explanation_record`. Adoption
+itself changed no live record; ingestion into the live stores
+(stage moves only through the transition service, only where its
+rules allow) is the companion act of the same owner order, recorded
+in `specs/029-tao-claim-lifecycle/lane2-adoption-record.md`.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI. The explanation texts were AI-drafted and
+human-adopted as recorded above; the drafting AI is not the
+author of any explanation record.
+
+## 2026-10-13 — Spec 029 lane-2 adoption INGESTED (20 claims explained; OD-2)
+
+Companion act to the adoption recorded above (same owner order,
+2026-10-13): the 35 adopted explanation records were ingested
+into the live stores by
+`specs/029-tao-claim-lifecycle/ingest_lane2_adoption.py`
+(fail-closed; `--verify` re-asserts the ingested state against
+the frozen ledger and the adopted record). `not_understood` and
+the completed `explanation_record` now stand on all 35 records.
+Stage changes went only through the Phase B gate layer
+(transition service, the single writer): the 20 records at
+`checked` advanced to `explained` (8 extracted claims, 10 study
+headlines, PRED-2026-006/007); the 15 at `created` kept their
+stage (explanation cannot precede checking) as authored-pending,
+except the 3 Phase-104 fragment claims, whose texts were
+ingested but whose stage and evaluation state this act did not
+touch (the carry-over correction owns those). The
+`verified_unexplained` stamp cleared on exactly the 9 records
+whose flag was set and whose explanation took effect. Live state
+after the act, over the 336-record stamped population: 220
+created / 96 checked / 20 explained / 0 accepted / 0 digested;
+96 stamped flags. Nothing reached `accepted` or `digested` —
+those gates need the acceptance process and independent
+scholarly engagement (OD-5), which do not exist yet. Append-only
+held: every advanced record keeps its Phase D migration entry as
+`stage_history[0]`, byte-identical; the frozen ledger, the PRED
+register document, the anchors file, and Specs 027–031 records
+are untouched; PRED-2026-001/002/003 untouched. Phase G gates
+green (provenance partition now 324 ledger replays + the named
+20 transition-service tails); full suite green with the AEE
+score regression byte-identical; foundation check 40 ok / 0
+fail / 8 warn on its own surface (this act touches none of its
+inputs). Five test files' pre-adoption live-state assertions
+were amended with dated, named notes (Phase A/D/E2/G/I) — the
+superseded expectations are preserved in prose in each file.
+Record: `specs/029-tao-claim-lifecycle/lane2-adoption-record.md`.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI. The ingested explanation texts were
+AI-drafted and human-adopted (see the adoption entry above);
+the drafting AI is not the author of any explanation record.
+
+## 2026-10-13 — Spec 029 lane-2 adoption: regeneration carry-over fix (PR #197)
+
+CI on the ingestion PR (run 38384800347) failed one backend test
+(E2 live serialization): the intake pipeline's background
+regeneration of the extracted-claims store (`indus_claims.py`,
+triggered by the `/intake/run` endpoint test) stripped the
+adopted `not_understood` / `explanation_record` fields, because
+the regeneration carry-over list predated the lane-2 fields —
+stage fields survived, authored fields did not. Fix: both fields
+added to the carry-over list in `indus_claims.py` under the same
+never-drop rule; the Phase D regeneration test now plants both
+fields and asserts verbatim survival. The committed store was
+never wrong; the defect was latent in any future regeneration.
+Full account:
+`specs/029-tao-claim-lifecycle/lane2-adoption-record.md`
+(2026-10-13 addendum).
 
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+## 2026-10-13 — Spec 032 design draft (PRED-2026-006: the Harappa breakdown, design D-30)
+
+Design D-30 of the experiment-design portfolio of 2026-10-13
+(draft PR #195) is carried into `specs/032-pred-2026-006-harappa-breakdown/`
+without deviation, under the owner's freeze order of 2026-10-13
+06:39 EDT ("Freeze D-30, D-03, and D-20 for execution"; adjudication
+in the spec's `adjudication.md`). The spec freezes PRED-2026-006's
+registered test exactly as registered on 2026-04-22: at least 70% of
+the CISI-trained INITIAL signs show a start rate of at least 0.40 at
+Harappa, on the withheld Harappa-site Yajnadevam sequences
+(`backend/glossa_lab/data/yajnadevam_inscriptions.csv` — 5,679
+inscriptions, 77 sites, 2,717 Harappa; census counted at design
+time and pinned by the freeze tests). Step 0 fails closed: the
+trained INITIAL set is reconstructed from the recorded
+`global_class_stability.py` lineage and frozen; the withholding is
+verified as CISI Mohenjo-daro only; sign identity is carried by the
+existing crosswalks under `data/crosswalks/`, fixed before counting.
+A failed check closes the study as CANNOT BE RUN AS WRITTEN; unmappable
+trained signs are counted and reported, with coverage above 20%
+stated in the verdict's first sentence. The verdict mapping is the
+register's own (CONFIRMED at a share of at least 70%; NOT CONFIRMED
+below it; no inconclusive band exists and none is invented); the
+per-sign table is pre-registered as a descriptive addition only.
+Governed register: 12 claims (F032-C01…C12), recovered through three
+AEE rounds (17, then 4, then 1 failure modes — atomic rewrites and
+pairwise boundary confirmations; record in `aee/recovery-specify.md`)
+to register_version 0.4-draft; AEE hook pass at after_specify,
+after_plan, and after_tasks (0 failure modes). Execution is
+Phase-396, gated on the OSF registration of the frozen contract
+verifying public. The registered computation has never been run;
+the PRED register is untouched by this design.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-13 — Phase-395 executed: Spec 031 / Q7 closes at the margins step
+
+Execution of the frozen Spec 031 contract (Q7 provenanced-material
+networks; freeze digest f63167fc; OSF registration
+https://osf.io/jtwvc/, DOI 10.17605/OSF.IO/JTWVC, approved and
+public before execution) under the owner's order of 2026-10-13.
+Infrastructure PR #196 (merge b287e7d9): the Phase-395 build
+(backend/scripts/phase395_q7_execution.py), the experiment graph
+node IndusPhase395Q7Execution, and 11 machinery tests. The
+digitisation design step inventoried Law (2011)'s posted chapters
+(11 of 14 located; Chapters 4, 5, 9 absent from the posted set;
+appendices print-only, so D8 residual (ii) is recorded as not
+re-verifiable from the posted set), applied the frozen method
+split (primary tier = INAA and Sr/S-isotope studies only), audited
+nine ceramic classification reports for posture (2
+open_access_read_only, 7 catalogue_only), and recorded the
+bead/craft source position (no consolidated per-object dataset;
+floor not countable). Link construction: 76 counted named-source
+determinations; 6 link-eligible sites; 13 certain linked pairs
+(2 further pairs uncertain on print-only appendix data, counted
+as not linked); in the Stage 0 gazetteer universe, 2
+link-eligible sites and 1 linked pair; Meluhha 0 links. Margins
+step: of 30 gazetteer sites, 21 pass the coordinate screen and
+ZERO pass the frozen period screen (period_label_as_published
+empty on 33 of 36 rows, the only labels present being PN/Neo. on
+three Central Asian sites; program_period_assignment empty on
+all rows) — both arms therefore have 0 eligible sites. Bead/craft
+arm closes NOT-YET-TESTABLE (spec section 4.3); ceramic arm
+closes NOT ESTIMABLE (DD-7). The sensitivity tier was not
+constructed, the DD-8 river network was not pinned, and no
+response was computed in either arm; the section 5 machinery
+exists and is fenced by synthetic-population tests. Population
+record sha256
+a0c98d56780051b46795621b644457e7674f7266321073e65a67ef51f83b54b8.
+Outcome recorded at specs/031-stage2-q7-provenance-networks/
+outcome.md with per-claim stage determinations (Spec 029
+machinery; the frozen register is not edited), and cross-recorded
+under Spec 027 (stage2-q7-outcome-cross-record.md, a new pointer
+file only). Gates: foundation check 40 passed / 0 failed /
+8 warnings; backend suite green in CI on PR #196 (1,409 passed /
+20 skipped / 0 failed); branding sweep clean. The digitised link
+data stays in the gitignored local store and is released nowhere
+(F031-C11).
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-13 — Spec 032 frozen (PRED-2026-006: the Harappa breakdown)
+
+Spec 032 is frozen: design PR #199 (merge c00b87fa) and this freeze
+record. The freeze digest (framework026, over the recovered register
+0.4-draft, 12 claims F032-C01…C12) is recorded in
+`specs/032-pred-2026-006-harappa-breakdown/freeze.json`; the freeze
+tests pin the digest replay, the registered criterion (share at
+least 70%; start-rate bar 0.40), the register integrity, the
+withheld-data census (5,679 inscriptions; 77 sites; 2,717 Harappa),
+and the PRED register entry byte-state (the freeze edited no
+register text; PRED-2026-006 still stands PARTIALLY CONFIRMED on
+the neighbouring global figure until execution appends the scored
+outcome). Execution is Phase-396, gated on the OSF registration of
+this frozen contract verifying public; the registered computation
+has never been run.
+
+## 2026-10-13 — Spec 033 design draft (the SA-free language comparison, design D-03)
+
+Design D-03 of the experiment-design portfolio of 2026-10-13
+(draft PR #195) is carried into `specs/033-sa-free-language-comparison/`
+without deviation, under the owner's freeze order of 2026-10-13
+06:39 EDT ("Freeze D-30, D-03, and D-20 for execution"; adjudication
+in the spec's `adjudication.md`). The spec freezes the SA-free rerun
+of the Dravidian-versus-rivals comparison behind
+`parpola_2010_dravidian_solution_manual_001`, whose partial support
+was computed with the semantic-anchoring machinery Phase-107
+falsified (held-out 0.000, 0 of 115): no SA, no anchor promotion,
+and no SA-derived quantity anywhere in the pipeline (H26). Data:
+the strict sign set (94 readings, validation status
+strict_sa_independent, in `backend/reports/INDUS_FINAL_ANCHORS.json`)
+and the V3/Mahadevan-lineage corpus as held; anchor values from
+published sources only. The estimator the design prescribes fixing
+at freeze time is fixed in spec section 5 (counted conditional
+model over phoneme-sequence and sign-identity units, add-one
+smoothing, mean log probability per sign, identical for every family
+and control). Criteria, with margins set from the recorded
+originals (Phase-41: 1.0566 to 1; Phase-43: 0.484 log units per
+sign) so the rerun can fail: SUPPORTED at a margin of at least 0.10
+log units per sign over the best rival and above the 99th
+percentile of the 999-assignment random distribution; NOT SUPPORTED
+on a rival at or above Dravidian or Dravidian inside the random
+range; INCONCLUSIVE on a sub-margin win or a Harappa-removed
+sensitivity reversal. Governed register: 15 claims (F033-C01…C15),
+recovered through three AEE rounds (9, then 5, then 1 failure
+modes — atomic rewrites, boundary transfers, one genuine split:
+the SUPPORTED percentile condition became F033-C15; record in
+`aee/recovery-specify.md`) to register_version 0.4-draft; AEE hook
+pass at after_specify, after_plan, and after_tasks (0 failure
+modes). Execution is Phase-397, gated on the OSF registration of
+the frozen contract verifying public. No score has been computed;
+the claim's record is untouched by this design.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-13 — Spec 034 design draft (the matched-object attribution, design D-20)
+
+Design D-20 of the experiment-design portfolio of 2026-10-13
+(draft PR #195) is carried into
+`specs/034-matched-object-attribution/` without deviation,
+under the owner's freeze order of 2026-10-13 06:39 EDT
+("Freeze D-30, D-03, and D-20 for execution"; adjudication
+in the spec's `adjudication.md`). The spec attributes the
+unexplained residue of a settled result: Phase-125 closed
+FAIL — DISAGREEMENT between the CISI (Parpola) and ICIT
+(Mahadevan) compilations (16 judgeable pairs of 286; median
+TV distance 0.636931); Phase-127 showed sampling noise alone
+produces 0.083; Phase-131 attributed 6.1%, leaving 93.9%
+unexplained because the two digital layers shared zero
+object keys (the Holdat cisi_number join was rejected as
+non-identity and stays prohibited). Step 0 builds the
+object bridge through the three lawful routes the program
+holds — the 7,705-row CISI catalogue layer (Phases
+120–124), the Phase-130 intake schema on the Mahadevan
+side, and the 44 Phase-128 dossiers — behind a gate fixed
+in advance: at least 150 matched objects with texts of
+three or more signs in both compilations; below the gate
+the study closes as TOO THIN TO ATTRIBUTE with the bridge
+census published as the finding. Above the gate, per-sign
+positional profiles are computed on the matched subset only
+under Phase-125's own distance and count floors, and the
+remaining disagreement is decomposed in Phase-131's own
+categories (segmentation / substitution, checked against
+the crosswalk's conflict pairs — the crosswalk is a record
+of disagreement, never ground truth / composition
+residue). Criteria: matched median at or below 0.20
+ATTRIBUTED TO COMPOSITION; at or above 0.32 (half the
+corpus-level distance) ATTRIBUTED TO TRANSCRIPTION;
+between, a split attribution with the decomposition table
+as the result. The selection-bias report (matched subset
+mix against both full mixes) rides in every verdict
+statement. The study never judges which compilation is
+right, and the settled Phase-125 verdict is untouched.
+Governed register: 14 claims (F034-C01…C14), recovered
+through four AEE rounds (12, then 4, then 1, then 1 failure
+modes — atomic rewrites, boundary transfers, definitional
+verdict lines; record in `aee/recovery-specify.md`) to
+register_version 0.5-draft; AEE hook pass at after_specify,
+after_plan, and after_tasks (0 failure modes). Execution is
+Phase-398, gated on the OSF registration of the frozen
+contract verifying public. No object has been matched; no
+distance has been computed.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

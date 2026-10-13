@@ -5849,3 +5849,85 @@ live served-payload checks are in
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Spec 029 Phase G: CI gates and trail completeness
+
+Spec 029 Phase G (tasks G1–G5; FR-029-12; claim
+F029-C09; plan §0, §2.4) turns the spec's invariants into
+permanent CI gates so the discipline cannot silently
+regress (new machinery:
+`backend/glossa_lab/spec029_gates.py`; new tests:
+`backend/tests/test_spec029_phase_g.py`, 26 tests, and
+`frontend/e2e/spec029-phase-g.spec.ts`, 4 tests). G1 —
+trail completeness over the real live stores: for all 344
+live records (287 anchors, 31 extracted claims, 15
+document-class records, 3 hypothesis models, 8 preserved
+evidence instances) the Phase C trail is assembled and
+every verdict and stage-transition event is checked for
+evidence refs (resolvable, with origin groups), falsifier
+state at decision time, actor, timestamp, and the
+stage_source pointer on stamped events, with Phase B gate
+records validated wherever a stage sits above `checked`.
+The gaps that legitimately exist today were measured
+before any gate was written and are carried as an explicit
+recorded baseline, named per record and per field in the
+test and the phase record: no anchor carries a per-anchor
+falsifier (the frozen ledger's own flag), no extracted
+claim's extraction-era verdict names an actor (17 also
+lack a falsification condition), and the document-class
+and hypothesis stamps carry no record-level evidence or
+falsifier. A record with no baseline entry — any new
+record — must have an empty gap profile, and a baseline
+profile that grows fails. One real defect was found by
+the gate and is recorded, not fixed (machinery Phase G
+was not assigned): the Phase C trail builder iterates a
+string-form `glossa_lab_evidence` character by character
+on 9 live claims, serializing 122 whitespace-only
+evidence pseudo-refs; it is tolerated under a named,
+dated exception covering exactly those records, and the
+follow-up fix is recorded in the phase record. G2 —
+stage-cache recompute integrity (plan §0): every stored
+stage in every live store is recomputed from its record's
+evidence (frozen-ledger replay for the migrated
+population — all 344 recompute equal today — the
+bundle-minimum computation with the OD-3 cap for bundle
+parents, the history tail for transition-service
+records) and must equal the stored cache with
+`stage_source`/`stage_as_of` present; an unrecomputable
+provenance is a defect. Corruption controls fail both
+directions (stage raised and lowered in scratch copies;
+stripped provenance; a source naming a non-existent
+ledger entry). G3 — the Phase B discriminating controls
+and parent-stage computation tests are verified as a
+named suite collected by the CI-identical invocation
+(1,712 tests collected), and the meta-test is added:
+each gate's negative-control set is non-empty and every
+control actually fails its gate, with positive twins
+passing — a non-differential gate is INVALID. G4 —
+display guards, program-wide: the withdrawn fields
+(`sa_aggregate`, `fully_decoded_pct`, `n_fully_decoded`,
+`mean_propagated_score`) stay absent from the served
+dashboard, scores-summary, claims, and trail payloads at
+any depth (each guard proven to fail on a reintroduced
+violation in a scratch payload); the "signs deciphered"
+headline pattern appears nowhere in `frontend/src` or on
+the rendered surfaces; stage synonyms never appear as
+stage labels on the claim surfaces, whose vocabulary is
+exactly the five verbatim stage names; lane labels and
+the OD-4 legend are present; and every verdict display
+serialization carries a `not_understood` slot (all 31
+live claims still unauthored — the recorded absence, no
+substituted text). SignsView's per-sign deciphered counts
+(E1's inventory) are recorded in the phase record as the
+standing follow-up, not a G4-named guard. Foundation
+check 40 passed / 0 failed / 8 warnings; full backend
+suite 1407 passed, 6 skipped (the 1381/6 merged baseline
+plus exactly the 26 new tests), CI-parity venv at aee
+1.4.0; the new Playwright spec passes locally (4, with
+E2's 5 unchanged). No stage, record, verdict, score, or
+display was changed by this phase. Record:
+`specs/029-tao-claim-lifecycle/phase-g-record.md`.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

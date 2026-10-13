@@ -1,0 +1,384 @@
+{
+ "phase": 395,
+ "spec": "031-stage2-q7-provenance-networks",
+ "question": "Q7 (owned by Spec 027, F027-C15)",
+ "freeze_digest": "f63167fc99c8d3c31f885b1014cad69fab3788fcf8e6212d018aa6948a2cdac6",
+ "registration": {
+  "osf": "https://osf.io/jtwvc/",
+  "doi": "10.17605/OSF.IO/JTWVC",
+  "state": "approved and public before execution (adopted 6A)"
+ },
+ "input_hashes": {
+  "data/movement/gazetteer_rows.jsonl": "5ac76a3031121a61fa39f87b1d2760855374d171ddd036988fee2820dca9b8b6",
+  "backend/scripts/phase395_q7_execution.py": "db6efe1e83a8b3541bfb4668c6a1736ad24ca1ea77e984aecf4c8f86a3000395",
+  "corpora/downloads/spec031_phase395/law_digitisation.json": "5932a01aae1a362c6fc692a54c48e19b9b85f72e45ef3d3b10fdb8a1e322ef7b",
+  "corpora/downloads/spec031_phase395/bead_applications.json": "9532622a79672307f44cb032b4f4843dd86a28593833a44d7a8237e7cecad292",
+  "corpora/downloads/spec031_phase395/ceramic_postures.json": "7e6c91e3715b55164eaea8986892d3e68894ad7b61667386d8340e2621596345",
+  "corpora/downloads/spec031_phase395/ch01.pdf": "c6914b82d14d360a63dce90545b759ac2fa28a08c533368e19cdbe8402f9d77d",
+  "corpora/downloads/spec031_phase395/ch02.pdf": "fe4ef4f0a3409b612de0d06647a7a71c2a6c7d2a3ec27db755c003d10e8fd7c5",
+  "corpora/downloads/spec031_phase395/ch03_2.pdf": "e311743c32df8ca9a11797fc8a041246b87c8ef9487344ddbe0828ce634b6dbf",
+  "corpora/downloads/spec031_phase395/ch06.pdf": "165293beaa4e7d45fdfa3b9cb13279a2dbbfedd9210dc2af77273a8943319896",
+  "corpora/downloads/spec031_phase395/ch07.pdf": "26214752e6e6511870f714456f2385f414185b7f29837638329216c20e150f71",
+  "corpora/downloads/spec031_phase395/ch08.pdf": "7a2309df00bfe22b23808f3a40e118ed44443d71d18b55084990139cee1c660b",
+  "corpora/downloads/spec031_phase395/ch10.pdf": "a964acea83366f716d493d5b9a0fc99aedb3e92bd012744c28b8c55658aa9453",
+  "corpora/downloads/spec031_phase395/ch11.pdf": "720b87639bfe3743b279923037c115606c8698cfe50e7fc537ccfa59b6eefb75",
+  "corpora/downloads/spec031_phase395/ch12.pdf": "11bba5c353a84d9688913ed2e1d81465835e6074d50176e8b4c5c9be9d214852",
+  "corpora/downloads/spec031_phase395/ch13.pdf": "fee09ed7632e90f9ec014dd05a4a799bf6a6d80614246f13c4c99cdb6778ce76",
+  "corpora/downloads/spec031_phase395/ch14.pdf": "ddc02d5d8116ba117cb0004d99c51a2fa0093f003e786babe2461b0fc4ccacef"
+ },
+ "digitisation_design_step": {
+  "law_posted_chapters": [
+   1,
+   2,
+   3,
+   6,
+   7,
+   8,
+   10,
+   11,
+   12,
+   13,
+   14
+  ],
+  "law_chapters_not_located": [
+   4,
+   5,
+   9
+  ],
+  "method_rule": "Spec 031 section 3: a determination is primary-tier iff attributed to a named geologic source area by a named instrumental method (INAA, Sr/S isotopes, or another instrumental method the D8 audit's Stage 1 record names).",
+  "audit_named_methods": [
+   "INAA",
+   "Sr/S isotopes"
+  ],
+  "residual_ii": "Not re-verifiable from the posted set: the appendices are print-only (Part 2). What the posted chapters do record is method per material study (Chapter 3 and each study chapter), and the combined summaries (Chapter 13) state the >2,100 Harappa / almost 120 other-site determination totals. This digitisation therefore works at study level for method and at the granularity the posted chapter text supports for counts (per-site totals and the per-source splits the text states). Appendix-level per-artifact assignments (e.g. agate Appendix 8.8) were not reachable and are recorded as a limit wherever a count depends on them.",
+  "ceramic_postures": {
+   "harappa": "open_access_read_only",
+   "mohenjo daro": "open_access_read_only",
+   "banawali": "catalogue_only",
+   "kalibangan": "catalogue_only",
+   "lothal": "catalogue_only",
+   "rojdi": "catalogue_only",
+   "kunal": "catalogue_only",
+   "khirsara": "catalogue_only",
+   "shahr i sokhta": "catalogue_only"
+  },
+  "bead_floor_enumerated": false
+ },
+ "link_construction": {
+  "named_source_totals": {
+   "harappa": 49,
+   "mohenjo-daro": 7,
+   "chanhu-daro": 5,
+   "nagwada": 3,
+   "mehrgarh": 7,
+   "nausharo": 5
+  },
+  "link_eligible_sites": [
+   "chanhu-daro",
+   "harappa",
+   "mehrgarh",
+   "mohenjo-daro",
+   "nagwada",
+   "nausharo"
+  ],
+  "linked_pairs_certain_count": 13,
+  "linked_pairs_uncertain": [
+   [
+    "chanhu-daro",
+    "mehrgarh"
+   ],
+   [
+    "mehrgarh",
+    "mohenjo-daro"
+   ]
+  ],
+  "site_id_mapping_to_gazetteer": {
+   "harappa": "harappa",
+   "mohenjo-daro": "mohenjo daro"
+  },
+  "link_eligible_sites_in_gazetteer": [
+   "harappa",
+   "mohenjo daro"
+  ],
+  "linked_pairs_in_gazetteer_count": 1,
+  "meluhha_links": 0
+ },
+ "gazetteer_screens": {
+  "amri": {
+   "rows": 2,
+   "has_coordinates": false,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "banawali": {
+   "rows": 2,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "chagylly": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": [
+    "PN",
+    "Neo."
+   ]
+  },
+  "desalpur": {
+   "rows": 1,
+   "has_coordinates": false,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "harappa": {
+   "rows": 3,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "hiregudda": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "islam chowki": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "jhukar": {
+   "rows": 2,
+   "has_coordinates": false,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "joenniemi": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "kalibangan": {
+   "rows": 1,
+   "has_coordinates": false,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "kanispur": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "khirsara": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "kunal": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "lothal": {
+   "rows": 1,
+   "has_coordinates": false,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "mohenjo daro": {
+   "rows": 2,
+   "has_coordinates": false,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "mullali": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": [
+    "PN",
+    "Neo.?"
+   ]
+  },
+  "ojiyana": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "piklihal": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "qasim bagh": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "rangpur": {
+   "rows": 1,
+   "has_coordinates": false,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "rojdi": {
+   "rows": 1,
+   "has_coordinates": false,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "sannarachamma": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "shahr i sokhta": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "sheri khan tarakai": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "sheri khan tarakai 3": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "sheri khan tarakai 4": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "surkotada": {
+   "rows": 1,
+   "has_coordinates": false,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "ter kala dheri": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "tigrana": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": []
+  },
+  "yalangach": {
+   "rows": 1,
+   "has_coordinates": true,
+   "period_eligible": false,
+   "period_labels": [
+    "PN",
+    "Neo.?"
+   ]
+  }
+ },
+ "population_record": {
+  "gazetteer_sites": 30,
+  "gazetteer_rows": 36,
+  "sites_with_coordinates": 21,
+  "sites_period_eligible": 0,
+  "link_eligible_sites_all_sources": 6,
+  "link_eligible_sites_in_gazetteer": 2,
+  "linked_pairs_certain_all_sources": 13,
+  "linked_pairs_uncertain_all_sources": 2,
+  "linked_pairs_in_gazetteer": 1,
+  "arms": {
+   "bead_craft": {
+    "eligible_sites": 0,
+    "analysis_pairs": 0,
+    "linked_pairs": 0
+   },
+   "ceramic": {
+    "eligible_sites": 0,
+    "analysis_pairs": 0,
+    "linked_pairs": 0
+   }
+  },
+  "sensitivity_tier": {
+   "constructed": false,
+   "linked_pairs": null,
+   "basis": "Computed only alongside a testable primary arm (section 4.3); no arm is testable. Chapter 4 is also absent from the posted set (digitisation record)."
+  }
+ },
+ "population_record_sha256": "a0c98d56780051b46795621b644457e7674f7266321073e65a67ef51f83b54b8",
+ "arms": {
+  "bead_craft": {
+   "arm": "bead_craft",
+   "sites_total": 30,
+   "sites_with_coordinates": 21,
+   "sites_period_eligible": 0,
+   "sites_floor_evidenced": 0,
+   "eligible_sites": [],
+   "eligible_count": 0,
+   "analysis_pairs": 0,
+   "linked_pairs_among_eligible": 0,
+   "viable": false,
+   "closure": {
+    "status": "NOT-YET-TESTABLE",
+    "rule": "Spec 031 section 4.3 / DD-3: the arm fails the frozen viability thresholds (>= 8 eligible sites and >= 10 linked pairs) at the margins step; it is not re-based on the sensitivity tier, a lower threshold, or the other arm's site set (F031-C08)."
+   }
+  },
+  "ceramic": {
+   "arm": "ceramic",
+   "sites_total": 30,
+   "sites_with_coordinates": 21,
+   "sites_period_eligible": 0,
+   "sites_floor_evidenced": 0,
+   "eligible_sites": [],
+   "eligible_count": 0,
+   "analysis_pairs": 0,
+   "linked_pairs_among_eligible": 0,
+   "viable": false,
+   "closure": {
+    "status": "NOT ESTIMABLE",
+    "rule": "Spec 031 section 4.2 / DD-7: sources at audited postures cannot evidence >= 8 eligible ceramic sites at the margins step; the arm closes at margins and no ceramic response is computed."
+   }
+  }
+ },
+ "outcome_step": {
+  "bead_craft": {
+   "status": "NOT RUN — arm closed at the margins step",
+   "closure": {
+    "status": "NOT-YET-TESTABLE",
+    "rule": "Spec 031 section 4.3 / DD-3: the arm fails the frozen viability thresholds (>= 8 eligible sites and >= 10 linked pairs) at the margins step; it is not re-based on the sensitivity tier, a lower threshold, or the other arm's site set (F031-C08)."
+   }
+  },
+  "ceramic": {
+   "status": "NOT RUN — arm closed at the margins step",
+   "closure": {
+    "status": "NOT ESTIMABLE",
+    "rule": "Spec 031 section 4.2 / DD-7: sources at audited postures cannot evidence >= 8 eligible ceramic sites at the margins step; the arm closes at margins and no ceramic response is computed."
+   }
+  }
+ },
+ "verdicts": {
+  "bead_craft": "NOT-YET-TESTABLE",
+  "ceramic": "NOT ESTIMABLE"
+ },
+ "river_network_dd8": {
+  "pinned": false,
+  "basis": "DD-8 pins the network at the execution data step for pair construction in the outcome step. No arm passed the margins step, no pair set was constructed, and no distance was computed; there is nothing to pin."
+ }
+}

@@ -170,9 +170,23 @@ anchor-table figures, and are unchanged.
   file.
 - **Branding sweep** over authored and edited files:
   no other-company or other-program names.
-- **PR / CI / merge**: PR_NUMBER (merge method; CI
-  verified from the check runs' own conclusions; new
-  main head verified via the GitHub API).
+- **PR / CI / merge**: PR: BitConcepts/glossa-lab
+  **#184** (`impl/029-phase-j-dd` → `main`). CI on the
+  implementation head (workflow run 38332155541): **all
+  7 checks success, read from the check runs' own
+  conclusions** — Backend tests (pytest) pass; Frontend
+  tests (Playwright) pass; Evidence Graph script smoke
+  tests pass; Indus public validation checks pass; Shell
+  wrappers (ubuntu-latest, macos-latest, windows-latest)
+  pass. This record's gate-evidence completion commit
+  re-verifies green on the final head before merging
+  (same workflow, all 7 checks success on the final
+  head — conclusions read again after that run). Merge:
+  method `merge`; the merge commit SHA and the new main
+  head were verified via the GitHub API immediately
+  after merging (a merge commit cannot name itself in
+  the content it merges; the SHAs are stated in the PR
+  timeline and in this phase's delivery report).
 
 ## Deviations and honest limitations
 

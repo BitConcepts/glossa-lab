@@ -208,3 +208,19 @@ correction* — no `status_correction`, no correction history
 entry — its `explained` stage being the ingestion's act), and
 one test was added pinning that the correction and the authored
 lane-2 fields coexist on all three records.
+
+A second reconciliation followed before merge, against main
+`14c3d9b8` (Specs 032/033 execution merges): main's only drift
+in the store files was regeneration timestamps
+(`extracted_at` / `extraction_date`), plus the PRED register's
+append-only Phase-396 entry and its advanced digest pin in the
+Phase D tests. The merge took main's files wholesale and
+re-applied exactly the seven correction paths above to the
+three records, re-verified path-by-path (all other records
+byte-identical to main's; the measured pins — extracted
+18 / 5 / 8, flags 96, plan 310 stamped / 11 conflicts —
+unchanged). One incident is recorded for honesty: a local
+full-suite run regenerated the store in its worktree mid-task
+and an early merge commit swept those timestamp lines in; the
+final tree contains none of that churn — its diff against main
+is exactly this correction's twelve files.

@@ -28,10 +28,10 @@
       **pass**; a stricter outcome blocks the freeze
       until its named recovery is complete and
       recorded.
-- [ ] **L4 — Design PR merged** (spec, claims,
+- [x] **L4 — Design PR merged** (spec, claims,
       adjudication, plan, tasks, AEE artifacts,
       LEDGER entry), CI green from run conclusions.
-- [ ] **L5 — Freeze.** `freeze.md` + `freeze.json`
+- [x] **L5 — Freeze.** `freeze.md` + `freeze.json`
       via `build_freeze.py`; freeze tests pin the
       digest replay, the definition constants, the
       register integrity, the strict-set census, and

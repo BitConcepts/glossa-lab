@@ -387,10 +387,18 @@ def test_extracted_claims_additive_only_canonical_comparison():
 
 
 def test_pred_register_document_untouched():
+    # The pin proves the Phase D migration itself did not alter
+    # the register. It was advanced once, by name, for the one
+    # later authorised change: the append-only dated entry of
+    # 2026-10-13 under register section 6 recording the Spec
+    # 032 / Phase-396 step-0 closure of PRED-2026-006 (the
+    # register's existing text is unchanged by that append;
+    # Spec 032 spec section 7 prescribes it). Any further
+    # drift from this hash is unauthorised.
     digest = hashlib.sha256(
         (_REPO_ROOT / "docs" / "PREDICTION_REGISTER.md").read_bytes()
     ).hexdigest()
-    assert digest == "3fb5eff1df6c4b8844bbcb8c769a8739b296c962a825557b3b1a6fe0fce75dc1"
+    assert digest == "701787ff1f8a1f073022c0dcd28bc69a18d4e97aaedacdd880edd60909d7b748"
 
 
 # ── Script contract: shapes, states, idempotency ─────────────────────────

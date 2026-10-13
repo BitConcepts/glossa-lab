@@ -6427,5 +6427,107 @@ Phase-398, gated on the OSF registration of the frozen
 contract verifying public. No object has been matched; no
 distance has been computed.
 
+## 2026-10-13 — Spec 033 frozen (the SA-free language comparison)
+
+Spec 033 is frozen. The frozen contract (specs/033-sa-free-language-comparison/)
+carries design D-03 without deviation: the SA-free rerun of the
+Dravidian-versus-rivals comparison behind
+`parpola_2010_dravidian_solution_manual_001`, on the strict sign
+set (94 of 287 anchors) and the V3/Mahadevan-lineage corpus, with
+no semantic anchoring, no anchor promotion, and no SA-derived
+quantity anywhere in the pipeline (H26). The estimator the design
+prescribed fixing at freeze time is fixed in spec section 5 and
+recorded in adjudication.md section 2. Criteria: SUPPORTED at a
+margin of at least 0.10 log units per sign over the best rival and
+above the 99th percentile of the 999-assignment random
+distribution; NOT SUPPORTED and INCONCLUSIVE rules as designed;
+the Harappa-removed sensitivity can route only to INCONCLUSIVE.
+Governed register: 15 claims (F033-C01…C15), register_version
+0.4-draft, AEE pass at after_specify / after_plan / after_tasks
+after three recorded recovery rounds. Freeze digest
+(framework026): 412b4805063bbffb3915a834354cb428cc9b10958f614a1680b859005a43b66d.
+Design merged as PR #203 (c1cad78e). Execution is Phase-397,
+gated on the OSF registration of this frozen contract verifying
+public. No score has been computed; no claim record, anchor, or
+frozen record is altered by this freeze.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-13 — Spec 034 frozen (the matched-object attribution)
+
+Spec 034 is frozen. The frozen contract
+(specs/034-matched-object-attribution/) carries design D-20
+without deviation: step 0 builds the object bridge between
+the CISI and ICIT compilations through the three lawful
+routes (the 7,705-row CISI catalogue layer; the Phase-130
+intake schema; the 44 Phase-128 dossiers), with the Holdat
+cisi_number join prohibited, behind the gate fixed in
+advance — at least 150 matched objects with texts of three
+or more signs in both compilations, below which the study
+closes as TOO THIN TO ATTRIBUTE with the bridge census
+published as the finding. Above the gate, the attribution
+runs on the matched subset under Phase-125's own distance
+and count floors, decomposed in Phase-131's categories,
+with verdict lines at 0.20 (ATTRIBUTED TO COMPOSITION) and
+0.32 (ATTRIBUTED TO TRANSCRIPTION) and a split attribution
+between. Governed register: 14 claims (F034-C01…C14),
+register_version 0.5-draft, AEE pass at after_specify /
+after_plan / after_tasks after four recorded recovery
+rounds. Freeze digest (framework026):
+696fd1855c8cbc1fe767fdc26a1697deb1f0dc85253376efdd7064f102594c2a.
+Design merged as PR #205 (805bd4ae). Execution is
+Phase-398, gated on the OSF registration of this frozen
+contract verifying public. No object has been matched; the
+settled Phase-125 verdict and every other frozen record
+stand untouched.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-13 — Phase-396 executed: Spec 032 / PRED-2026-006 closes at step 0
+
+Execution of the frozen Spec 032 contract (PRED-2026-006: the
+Harappa breakdown, computed exactly as registered; freeze
+digest 34cd6230; OSF registration https://osf.io/3htn8/, DOI
+10.17605/OSF.IO/3HTN8, approved and public before execution;
+registration record completed by PR #204, merge d08b6e3e)
+under the owner's order of 2026-10-13. Infrastructure PR #210:
+the Phase-396 build (backend/scripts/phase396_pred006_step0.py),
+the experiment graph node IndusPhase396Pred006Scoring, and 5
+machinery tests. Step 0 ran in the frozen order, before any
+counting. Check 3.1 PASSED: the classification recomputed from
+the recorded training corpus reproduces the recorded
+global_class_stability output exactly (105 classifiable signs,
+no differences), and the trained INITIAL set froze at the
+recorded 12 signs (P000, P001, P004, P013, P051, P098, P217,
+P238, P265, P301, P310, P324). Check 3.2 FAILED, and the study
+closed there: the recorded classification trained on the
+combined corpus (data/normalized/corpus_master.csv; 2,722
+inscriptions = 179 CISI, Mohenjo-daro only, + 2,543
+Yajnadevam), and 970 of the Yajnadevam inscriptions inside
+that training corpus are Harappa inscriptions carrying 1,013
+occurrences of 11 of the 12 trained signs (P324 468, P098 254,
+P217 91, P004 64, P310 60, P013 33, P001 16, P301 16, P238 5,
+P051 4, P265 2, P000 0). The withholding the registration
+specified was never real for this lineage, so under spec
+section 3 / F032-C05 the outcome is CANNOT BE RUN AS WRITTEN
+— a step-0 closure, not a verdict. Check 3.3 was not reached;
+the registered scoring never ran; no Harappa start rate was
+computed and no share exists. PRED-2026-006 remains unscored;
+its register entry stands unchanged, annotated by an
+append-only dated entry under register section 6 recording
+this closure. Step-0 record sha256
+26781336c8c34b006e62474448b17be4d895c1d7ea06d5c24418d49a38e7c4e7.
+Outcome recorded at
+specs/032-pred-2026-006-harappa-breakdown/outcome.md, with
+per-claim determinations for F032-C01…C12 (the frozen register
+is not edited). Gates: foundation check 40 passed / 0 failed /
+8 warnings; branding sweep clean. The Spec 029 Phase D
+register-hash pin (test_pred_register_document_untouched) was
+advanced by name in the products PR to the post-append hash,
+the append being the one authorised drift (Spec 032 spec
+section 7); the Spec 029 freeze replay is unaffected.
+
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.

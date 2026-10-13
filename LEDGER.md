@@ -6120,3 +6120,31 @@ its DOI. Execution (Phase-395) remains un-ordered.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-13 — Spec 029 lane-2 drafts ADOPTED (owner authorship act, OD-2)
+
+The 35 lane-2 drafts prepared earlier today (PR #190:
+explanation drafts + `not_understood` drafts for 23 canonical
+extracted claims, 10 study headline claims, and PRED-2026-006/007)
+were shown to the owner in full, and the owner adopted all 35 as
+authored by him, verbatim: "Adopt all 35 lane-2 drafts as authored
+by me" (2026-10-13 06:12 EDT). The adoption completed the OD-2
+authoring fields on every record in
+`specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json`: author
+Tristen Pierson (author_kind human); drafter unchanged (AI agent,
+Muse Spark, via Muse); `artifact_uri` the adopted record itself
+on main, per-claim fragment; `content_hash` the SHA-256 of each
+record's explanation text; `challenge_venue` the repository issue
+tracker; `ai_assistance_disclosure` restated to record the drafting
+and the adoption. All 35 completed records validate under
+`glossa_lab.claim_bundle.validate_explanation_record`. Adoption
+itself changed no live record; ingestion into the live stores
+(stage moves only through the transition service, only where its
+rules allow) is the companion act of the same owner order, recorded
+in `specs/029-tao-claim-lifecycle/lane2-adoption-record.md`.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI. The explanation texts were AI-drafted and
+human-adopted as recorded above; the drafting AI is not the
+author of any explanation record.

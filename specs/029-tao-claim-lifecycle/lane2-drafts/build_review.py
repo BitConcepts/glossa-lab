@@ -28,7 +28,7 @@ def load():
 
 def index_table(doc):
     lines = [
-        "| Claim | Stage today | One-line gist |",
+        "| Claim | Stage at drafting (2026-10-13) | One-line gist |",
         "|---|---|---|",
     ]
     for d in doc["drafts"]:
@@ -42,10 +42,12 @@ def review_md(doc):
     out.append("# Lane-2 drafts — readable copy")
     out.append("")
     out.append(
-        "**DRAFT — AI-drafted 2026-10-13, unauthored, no stage effect.** "
-        "This file is generated from `drafts.json` by `build_review.py`; edit "
-        "the JSON and re-run the script rather than editing this file. The "
-        "status that governs these drafts is stated in `README.md`.")
+        "**ADOPTED 2026-10-13 — authored by Tristen Pierson.** AI-drafted "
+        "2026-10-13 and adopted by the owner as author of record the same day "
+        "(OD-2); the drafting AI is not the author. This file is generated "
+        "from `drafts.json` by `build_review.py`; edit the JSON and re-run "
+        "the script rather than editing this file. The status that governs "
+        "these records is stated in `README.md`.")
     out.append("")
     out.append("## Index")
     out.append("")
@@ -61,7 +63,7 @@ def review_md(doc):
             er = d["explanation_record"]
             out.append("### `{}`".format(d["claim_id"]))
             out.append("")
-            out.append("- **Stage today:** {} · **Recorded status/verdict:** {}"
+            out.append("- **Stage at drafting:** {} · **Recorded status/verdict:** {}"
                        .format(d["stage"], d["lane1_status"]))
             if d.get("verified_unexplained"):
                 out.append("- **Flag:** verified but unexplained "
@@ -76,16 +78,17 @@ def review_md(doc):
             out.append("")
             out.append(d["claim_plain"])
             out.append("")
-            out.append("**Explanation draft** *(would become the explanation "
-                       "record's artifact text on human authorship; the record "
-                       "fields `author`, `artifact_uri`, `content_hash` and "
-                       "`challenge_venue` are empty in the draft on purpose — "
-                       "only the authoring human can complete them)*")
+            out.append("**Explanation** *(the adopted explanation record's "
+                       "artifact text — author of record: Tristen Pierson, "
+                       "adopted 2026-10-13; the completed record fields "
+                       "(`author`, `artifact_uri`, `content_hash`, "
+                       "`challenge_venue`, `ai_assistance_disclosure`) are in "
+                       "`drafts.json`)*")
             out.append("")
             out.append(er["explanation_text"])
             out.append("")
-            out.append("**What remains not understood — draft for the "
-                       "`not_understood` field**")
+            out.append("**What remains not understood — the adopted "
+                       "`not_understood` text**")
             out.append("")
             out.append(d["not_understood"])
             out.append("")

@@ -1,7 +1,14 @@
-# Lane-2 drafts for the live claims — Spec 029
+# Lane-2 explanations for the live claims — Spec 029
 
-**Status of everything in this directory: DRAFT — AI-drafted 2026-10-13,
-unauthored, no stage effect.**
+**Status of everything in this directory: ADOPTED — authored by
+Tristen Pierson, 2026-10-13.** The texts were AI-drafted on 2026-10-13,
+shown to the owner in full (the readable copy in this directory), and
+adopted by him as authored by him the same day, in his words: "Adopt
+all 35 lane-2 drafts as authored by me." The drafting AI is not the
+author (OD-2); the adoption is recorded in every record's
+`ai_assistance_disclosure`. Ingestion of these records into the live
+claim records is the companion act of the same owner order, recorded
+in `../lane2-adoption-record.md`.
 
 ## Why these files exist
 
@@ -29,32 +36,40 @@ the program's public evidence surface. It contains, for each in-scope claim:
 An explanation counts only when a **named, accountable human** authors it in a
 durable record. An AI may draft; an AI may never be the named human. Therefore:
 
-- Every draft here was written by an AI agent (Muse Spark, via Muse) on
+- Every text here was written by an AI agent (Muse Spark, via Muse) on
   2026-10-13, at the direction of Tristen Pierson, and is marked as such in
   every record (`drafter` set; `ai_assistance_disclosure` filled in).
 - The explanation-record fields that only a human can complete — `author`,
-  `artifact_uri`, `content_hash`, `challenge_venue` — are **deliberately
-  empty** in every draft. Filling them in is the authorship act.
-- **No live record was changed.** No stage moved. Nothing in the claims,
-  anchor or prediction stores was edited. These files sit beside the record,
-  not in it. The script is not deciphered, and nothing here says otherwise.
+  `artifact_uri`, `content_hash`, `challenge_venue` — were **deliberately
+  empty** in the drafts. Filling them in was the authorship act, and it
+  happened at adoption: `author` is Tristen Pierson (`author_kind` human);
+  `artifact_uri` is this directory's `drafts.json` on `main`, with a
+  per-claim fragment; `content_hash` is the SHA-256 of the record's
+  explanation text; `challenge_venue` is the repository's issue tracker,
+  where challenges to these accounts are filed and answered.
+- **Adoption itself changed no live record.** The stage moves and the
+  writing of these texts into the claims, anchor-adjacent and prediction
+  records are the ingestion act, recorded separately in
+  `../lane2-adoption-record.md`. The script is not deciphered, and nothing
+  here says otherwise.
 
-## How authorship would work (a later, separate step)
+## How authorship worked
 
-1. A named human reads a draft against the cited evidence, corrects it, and
-   adopts it as their own account — or rewrites it.
-2. The adopted text is published as a durable artifact; its location becomes
-   `artifact_uri` and its SHA-256 becomes `content_hash`.
-3. The completed explanation record (in the Phase B shape,
-   `backend/glossa_lab/claim_bundle.py`) and the authored `not_understood`
-   text are then written into the claim's record through the transition
-   service — the single writer for stage changes — which recomputes the stage
-   from the evidence. Automation alone can never take a claim past `checked`;
+1. The drafts were prepared (above) and the full readable copy was shown
+   to the owner.
+2. On 2026-10-13 the owner adopted all 35 as authored by him, verbatim:
+   "Adopt all 35 lane-2 drafts as authored by me." The authoring fields
+   were completed on every record in `drafts.json` at that point, and
+   each completed record validates under the Phase B machinery
+   (`backend/glossa_lab/claim_bundle.py`, `validate_explanation_record`).
+3. The completed explanation records and the adopted `not_understood`
+   texts were then written into the live claim records — stage changes
+   only through the transition service, the single writer for stage
+   changes, and only where its rules allow (a claim at `checked` with an
+   authored explanation advances to `explained`; a claim still at
+   `created` keeps its stage, because explanation cannot precede
+   checking). Automation alone can never take a claim past `checked`;
    that is by design, not by backlog.
-
-Until step 3 happens for a claim, its stage stays exactly where it is today,
-and its public surface keeps showing the stated gap where the human text
-would go.
 
 ## Scope — what was drafted, and what was not
 
@@ -113,11 +128,12 @@ substantive enough to draft against:
 
 ## Files
 
-- `drafts.json` — the structured drafts. Field names mirror the Phase B
-  explanation record (`author`, `author_kind`, `drafter`, `artifact_uri`,
-  `content_hash`, `challenge_venue`, `ai_assistance_disclosure`) and the
-  live `not_understood` field, so an authored draft can be ingested without
-  renaming anything.
+- `drafts.json` — the structured records (the drafts, as adopted on
+  2026-10-13). Field names mirror the Phase B explanation record
+  (`author`, `author_kind`, `drafter`, `artifact_uri`, `content_hash`,
+  `challenge_venue`, `ai_assistance_disclosure`) and the live
+  `not_understood` field, so the adopted records ingest without renaming
+  anything.
 - `drafts-review.md` — the same content rendered for reading, generated from
   `drafts.json` by `build_review.py`. Edit the JSON, then re-run the script.
 - `build_review.py` — the generator; it also refreshes the index table below.
@@ -126,7 +142,7 @@ substantive enough to draft against:
 
 <!-- BEGIN GENERATED INDEX -->
 
-| Claim | Stage today | One-line gist |
+| Claim | Stage at drafting (2026-10-13) | One-line gist |
 |---|---|---|
 | `farmer_sproat_witzel_2004_manual_001` | checked | The claim that the Indus signs are not writing at all - contradicted by the recorded checks. |
 | `indus_valley_script_deciphered_from_myth_65ff0a26_manual_002` | checked | The fish sign as a badge for coastal traders - its own stated test came back against it. |
@@ -166,6 +182,7 @@ substantive enough to draft against:
 
 <!-- END GENERATED INDEX -->
 
-*Drafts prepared 2026-10-13 against main `dede49f7` (Spec 029 closed).
-Nothing in this directory is a record of the program; the program's records
-are the stores and spec files the drafts cite.*
+*Drafts prepared 2026-10-13 against main `dede49f7` (Spec 029 closed);
+adopted 2026-10-13 by Tristen Pierson. As adopted, `drafts.json` is the
+durable artifact of record for the 35 explanation records; the program's
+claim records are the stores and spec files the texts cite.*

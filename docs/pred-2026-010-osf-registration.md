@@ -108,3 +108,44 @@ and every existing register entry stands unchanged.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## Completion — APPROVED AND PUBLIC (2026-10-13)
+
+- **DOI: https://doi.org/10.17605/OSF.IO/WJEBQ**
+- Approval route: the API review-action POST
+  returned **HTTP 409** at filing (recorded above),
+  as the program record predicts; approval was
+  effected via the tokenised approve link in the
+  "Pending Registration - Admin Notification" email
+  (Gmail id `1a1354c8d63d4ab9`, received
+  2026-10-13T12:46:10Z), opened in the signed-in
+  browser — the standing approvals loop (owner
+  order 2026-10-11: registration approvals are the
+  agent's job, never left as an owner action item).
+  The cancel link in the same email was not
+  touched.
+- The registration's public page shows "Public
+  registration", Date Registered Oct 13, 2026,
+  8:45 AM EDT. The page's DOI section showed no
+  value at click time (minting lag); the API
+  record below is the authority for the DOI.
+- State verified via the OSF API after approval
+  (2026-10-13): `reviews_state: accepted`,
+  `public: true`,
+  `pending_registration_approval: false`,
+  `withdrawn: false`, `embargoed: false`;
+  `date_registered: 2026-10-13T12:45:42Z` (the
+  12:45:55Z timestamp recorded at filing above is
+  the record's `date_modified`);
+  `registered_from` node `nrb9u`; the identifiers
+  record carries DOI `10.17605/OSF.IO/WJEBQ`.
+- Scoring gate: scoring runs only under a separate
+  owner order after this approval; nothing has been
+  scored under this record, and the withheld file
+  remains unopened for content.
+
+---
+
+*AI disclosure (completion append, 2026-10-13):
+executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per
+constitution §VI.*

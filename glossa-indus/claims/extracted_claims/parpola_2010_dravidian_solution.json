@@ -71,7 +71,16 @@
           ],
           "entry": "Per Spec 033 section 6 (DD-03-3): the SA-free rerun of the language comparison (Phase-397; frozen contract digest 412b4805063bbffb3915a834354cb428cc9b10958f614a1680b859005a43b66d; registered at OSF ephf7 before execution) returned NOT SUPPORTED for the bounded claim. On the strict sign set, mean log probability per sign: no-language baseline -2.6233, Dravidian -2.8465, Munda -2.8616, Sanskrit -3.1184; the margin over the best rival (the baseline) is -0.2232 against a frozen bar of +0.10, and the Dravidian score lies inside the 999 random assignments' range (88 of 999 scored above it). The partial support inherited from Phase-41 (ratio 1.0566) and Phase-43 (+0.484 log units per sign) is therefore replaced by this entry; those numbers remain in this record's history as results produced by the semantic-anchoring method the program falsified in Phase-107. Dravidian still finishes ahead of Sanskrit head-to-head (by 0.2719); the verdict concerns the full frozen field, including Munda and the baseline. The claim's stage is unchanged by this lane-1 result (explained, on its author's record). This entry appends; the status reclassification above is its only field change, and no earlier text was edited."
         }
-      ]
+      ],
+      "status_correction": {
+        "kind": "spec033-phase397-outcome",
+        "date": "2026-10-13",
+        "previous_claim_status": "partially_supported",
+        "new_claim_status": "unsupported",
+        "basis": "reports/phase397_results.json; specs/033-sa-free-language-comparison/outcome.md; frozen contract specs/033-sa-free-language-comparison/freeze.json (digest 412b4805063bbffb3915a834354cb428cc9b10958f614a1680b859005a43b66d), registered OSF https://osf.io/ephf7/",
+        "rule": "SPEC033-S6-DD-03-3",
+        "note": "The frozen Spec 033 outcome (Phase-397) returned NOT SUPPORTED for the bounded claim: on the strict sign set the no-language baseline (-2.6233) beat the Dravidian assignment (-2.8465), margin -0.2232 against the frozen +0.10 bar, and the Dravidian score lies inside the 999 random assignments' range. Per Spec 033 section 6, the partial support inherited from the Phase-41/43 semantic-anchoring numbers (falsified method, Phase-107) is replaced. Applied 2026-10-13. The previous status is preserved in this field; the full outcome entry is in this record's dated_outcome_entries and in the spec's outcome.md. This field follows the Phase-104 correction shape so a claims regeneration carries the correction over instead of silently restoring the extraction status."
+      }
     },
     {
       "claim_id": "parpola_2010_dravidian_solution_manual_002",

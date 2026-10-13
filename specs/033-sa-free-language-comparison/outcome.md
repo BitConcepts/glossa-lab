@@ -182,7 +182,11 @@ Dravidian-solution claim (`parpola_2010_dravidian_solution_
 manual_001`) inherited from the Phase-41/Phase-43 numbers is
 replaced: a dated entry recording this outcome is appended to
 that claim's record in this same change, and its status is
-reclassified to **unsupported** (the claim store's standing token for a not-supported verdict) through that entry. The old
+reclassified to **unsupported** (the claim store's standing token for a not-supported verdict) through that entry. The record also
+carries the correction in the store's `status_correction` field
+(the shape the Phase-104 correction established), so a future
+regeneration of the claims store carries the corrected status
+over instead of silently restoring the extraction status. The old
 numbers (Phase-41 ratio 1.0566; Phase-43 +0.484 log units per
 sign) stay in the claim's history, labelled as what they are:
 results produced by a method the program later falsified. The

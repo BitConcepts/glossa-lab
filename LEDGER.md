@@ -5649,3 +5649,64 @@ constitution sec.VI.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Spec 029 Phase C: priority register (OD-6) + per-claim inspectable trails
+
+Spec 029 Phase C (tasks C1–C3; FR-029-11, FR-029-12;
+claims F029-C08, F029-C09; OD-6) landed as machinery in two
+new modules plus additive endpoints on the existing claims
+router. The priority register
+(`backend/glossa_lab/priority_register.py`) files an
+external scholar's reading at intake on record completeness
+alone — claimant public identity, private claimant contact
+(correspondence only, never serialized), reading, evidence —
+with no score, stage, or verdict field existing on an entry.
+The public record is exactly claimant + server timestamp
+(claimant-asserted timestamps are ignored) + the SHA-256 of
+the canonical claim content (canonicalization
+`spec029-priority-canonical-v1`: JSON of
+{reading, evidence}, sorted keys, fixed separators, UTF-8,
+no normalisation — a one-byte difference changes the hash
+and does not verify). Per plan §2.1 the content is stored
+sealed, not hash-only: an HMAC-SHA256 sealed envelope
+(stdlib only) under a key held in a separate 0600 file in
+the gitignored runtime store (`.glossa-state/`), never in
+the store file and never serialized; tampered envelopes
+fail closed, and opened content is re-verified against the
+published hash before reveal. Unseal triggers (OD-6):
+claimant publication (presented content unseals only on an
+exact hash match; a mismatch is refused and recorded as a
+dated event) or the reveal date (claimant-chosen, or the
+default 24 months from intake), extendable once only — a
+second extension is refused and recorded. The register is
+append-only (no edit/delete path in service or API;
+corrections are new entries superseding), every transition
+is a dated history event, the clock is injectable, and the
+credit display (the public record) is invariant under
+later program assessment — all tested in both directions.
+The trail view (`backend/glossa_lab/claim_trail.py`,
+`GET /claims/{claim_id}/trail`) assembles one serialized
+trail per claim (anchors resolve by sign id too): stage +
+stage history with the record's `stage_source` as a source
+pointer on every stage event (D-E recomputability),
+verdicts and transitions alike carrying evidence refs with
+origin groups, falsifier state at decision time, actor and
+timestamp (gaps stated, e.g. `actor_recorded: False`,
+never invented), bundle decomposition + gate records
+(Phase B), `validation_status`/`strict_set` (Phase H),
+evidence instances counted once per origin group
+(Phase I), and priority entries filed against the claim —
+serialized through the register, so sealed content cannot
+leak through the trail. 36 new tests in
+`backend/tests/test_spec029_phase_c.py`, all synthetic
+fixtures; NO real priority claim was filed by this phase
+(hard limit — filing is claimant/owner action). Gate
+evidence: foundation check 40 passed / 0 failed /
+8 warnings; full backend suite under the CI-parity venv
+(aee 1.4.0) 1352 passed / 6 skipped / 0 failed — the
+1316 baseline plus exactly this phase's 36 tests. Record:
+`specs/029-tao-claim-lifecycle/phase-c-record.md`.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

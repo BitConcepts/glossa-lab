@@ -1,0 +1,728 @@
+# Lane-2 drafts — readable copy
+
+**DRAFT — AI-drafted 2026-10-13, unauthored, no stage effect.** This file is generated from `drafts.json` by `build_review.py`; edit the JSON and re-run the script rather than editing this file. The status that governs these drafts is stated in `README.md`.
+
+## Index
+
+| Claim | Stage today | One-line gist |
+|---|---|---|
+| `farmer_sproat_witzel_2004_manual_001` | checked | The claim that the Indus signs are not writing at all - contradicted by the recorded checks. |
+| `indus_valley_script_deciphered_from_myth_65ff0a26_manual_002` | checked | The fish sign as a badge for coastal traders - its own stated test came back against it. |
+| `parpola_2010_dravidian_solution_manual_001` | checked | Parpola's claim that the script writes Proto-Dravidian by the rebus method - partly supported, on a method the program later falsified. |
+| `parpola_2010_dravidian_solution_manual_002` | checked | The fish sign read as 'meen' (fish/star) - one sign of the family passed its positional test; the family's commonest sign failed it. |
+| `without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001` | checked | Inscriptions follow a three-part pattern (opening, middle, ending) - the pattern is real; what the parts mean is untested. |
+| `without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003` | checked | Animal signs as opening markers - the opening-position half is supported; the animal half was never tested. |
+| `yadav_2009_arxiv_manual_001` | checked | Sign frequencies follow the Zipf-Mandelbrot curve - the curve fits; the fit says little about what the signs mean. |
+| `yadav_2009_arxiv_manual_002` | checked | Some signs prefer the start of texts and others the end - supported by the counts, but the claim carries no falsifier. |
+| `indus_valley_script_deciphered_from_myth_65ff0a26_manual_001` | created | Roif's master claim - the script is an economic ledger of guilds and tribute. Never tested. |
+| `indus_valley_script_deciphered_from_myth_65ff0a26_manual_003` | created | The arrow sign as a border-enforcement marker. Never tested - and the counts that exist sit in the big cities. |
+| `indus_valley_script_deciphered_from_myth_65ff0a26_manual_004` | created | The horned-deity sign as a fire-altar intermediary - tied to Kalibangan. Never tested. |
+| `without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002` | created | Hunt's civic-ritual system: inscriptions encode a shared civic order, not royal power. Never tested. |
+| `without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004` | created | Sky signs (sun, star, moon) as closing markers for cycles. Never tested - the program has no sky-sign class to test with. |
+| `without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005` | created | Hunt's 24-cluster 'Translation Atlas' - the atlas itself is not in the repository, so its test cannot run. |
+| `ancient_writing_and_modern_technologies_51831ac9_sign_val_0001` | created | Fragment only: 'Sign 900 means the number six.' The sign list is never named, so nothing can be checked. |
+| `ancient_writing_and_modern_technologies_51831ac9_sign_val_0002` | created | Fragment only: 'Sign 700 belongs to a measure system with a unit of 40.' Unverifiable as written - and a sibling record disagrees with it. |
+| `ancient_writing_and_modern_technologies_51831ac9_sign_val_0003` | created | Fragment only: 'Sign 700 means a unit of 4.' The rival of the unit-of-40 fragment; neither can be checked as written. |
+| `the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001` | created | Fragment only: 'Sign 821 is used in a variety of contexts.' Too thin to test. |
+| `the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002` | created | Fragment only: 'Sign 297 is the horned tiger.' An identification with no named sign list and no test. |
+| `ancient_writing_and_modern_technologies_51831ac9_statisti_0004` | created | Fragment only: the heading 'Statistical finding: positional analysis' with no finding attached. |
+| `indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001` | created | Fragment only: the heading 'Critique: myth of a literate Harappan' - points at the Farmer thesis; an evaluation says its verdict should carry over, but the record was never updated. |
+| `indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002` | created | Fragment only: the heading 'Critique: collapse of the Indus script thesis' - same position as its sibling fragment, same unapplied carry-over. |
+| `without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001` | created | Fragment only: the label 'Language hypothesis: non-linguistic symbol' - a restatement of the Farmer thesis in label form. |
+| `STUDY-SPEC-019/PHASE-125` | checked | The two great sign compilations were expected to agree on sign positions. They do not - and 93.9 percent of the disagreement is unexplained. |
+| `STUDY-SPEC-023/PHASE-132+383` | checked | The claim that AI coders at this protocol could produce a publishable transcription layer - contradicted by its own agreement test. |
+| `STUDY-SPEC-024/F1` | checked | Seals and tablets end their texts differently: the final sign's class depends on the object type, within each site. |
+| `STUDY-SPEC-024/F2-HOLDAT` | checked | Sites were expected to have distinct sign repertoires in the Holdat compilation. Any effect there is smaller than the margin the program set in advance. |
+| `STUDY-SPEC-024/F3-ICIT` | checked | In the ICIT-lineage corpus, sites do use different sign repertoires - supported, with named confounders that could be wearing the site label. |
+| `STUDY-SPEC-025/G1` | checked | The site association survives controlling for preservation and text composition - but not for time. That rider is part of the result. |
+| `STUDY-SPEC-027/STAGE1-PHASE-392` | checked | Do cities with similar sign repertoires sit closer together? A real but tiny signal that collapses without Harappa - inconclusive. |
+| `STUDY-SPEC-028/ARM-A` | checked | The Stage-1 question with Harappa removed entirely: the effect shrinks below the margin - inconclusive. |
+| `STUDY-SPEC-028/ARM-B` | checked | The Stage-1 question with every site counting equally: the headline number clears the margin, but dropping Harappa still breaks it - inconclusive. |
+| `STUDY-SPECS-001-023+PHASES-TO-141` | checked | The audit headline: when the tightened framework re-read the program's first 141 phases, 75 of 116 items changed evidentiary status. |
+| `PRED-2026-006` | checked | Predicted: INITIAL signs stay initial at Harappa. The number on record is global, not Harappa-specific - the registered test has not actually been run. |
+| `PRED-2026-007` | checked | Predicted: at least 70 percent of ITM-coded signs land in TERMINAL clusters. The count stands at 2 of 3 - below the bar, on a sample of three. |
+
+## Extracted claims (canonical store, post-Phase-I)
+
+### `farmer_sproat_witzel_2004_manual_001`
+
+- **Stage today:** checked · **Recorded status/verdict:** contradicted
+- **Source record:** glossa-indus/claims/extracted_claims/farmer_sproat_witzel_2004.json
+
+**The claim, in plain words**
+
+In a widely cited 2004 paper, Farmer, Sproat and Witzel argued that the Indus signs are not a writing system. On their view the signs do not encode spoken language at all. They are a set of non-linguistic symbols, more like emblems or traffic signs than letters or syllables.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The program checked this claim against three pieces of evidence, and all three point the other way. First, published work by other researchers (Rao and colleagues, 2009) measured how predictable each sign is from the signs before it - a measure called conditional entropy. The Indus values fell inside the range seen for real language writing, and outside the range seen for non-linguistic symbol sets. Second, the program's own positional battery (Phase-43) found 20 signs that behave like word endings - they sit at the end of texts the way suffixes do. Third, the same battery found a fixed two-sign formula that opens inscriptions, the way a title or heading does. Non-linguistic emblem sets are not expected to show grammar-like habits of either kind. The claim also carries its own test on the record - it would be in trouble if the entropy data fell in the linguistic range and positional patterns rose above a random baseline - and that is the result the checks returned. On the strength of this, the program records the claim as contradicted. One caution belongs in the open: two of the three contradicting items come from the program's own test battery, run on corpora from one lineage (the Mahadevan/ICIT line). The published entropy result is the only one of the three that was produced entirely outside this program.
+
+**What remains not understood — draft for the `not_understood` field**
+
+Being contradicted here is narrower than it sounds. The checks argue against the strong claim that the signs encode no language at all. They do not show what language the signs encode, or what any sign says. Entropy in the linguistic range is the kind of evidence a writing system should produce, but some non-linguistic systems can produce it too, and specialists still debate the entropy result itself. The program does not know which parts of the sign system, if any, are phonetic (sound-based), and it has no check of this claim on a corpus independent of the Mahadevan/ICIT lineage. What would change the picture: a positional and entropy check on a genuinely independent corpus, and a named specialist's account that engages the suffix and title-formula findings directly.
+
+**Evidence on the record:** `glossa-indus/reports/phase104_claims_evaluation.json`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:farmer_sproat_witzel_2004_manual_001`
+
+### `indus_valley_script_deciphered_from_myth_65ff0a26_manual_002`
+
+- **Stage today:** checked · **Recorded status/verdict:** partially_falsified
+- **Source record:** glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json
+
+**The claim, in plain words**
+
+Avishai Roif's reading says the fish sign marked a coastal guild controller or maritime trader - in plain terms, that the fish sign was a badge for people who ran sea trade, tied to the port of Lothal.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+This claim is one of the few in the set that carries a test sharp enough to hurt it, and the program ran that test. If the fish sign marked coastal traders, fish signs should turn up more often at coastal and maritime sites (Lothal, Dholavira) than elsewhere. The program counted fish signs across sites in its CISI-based data (the Phase-4x analysis recorded on the claim). Fish signs were not statistically enriched at coastal sites. On that result the program records the claim as partially falsified: the specific coastal prediction failed, while the wider claim about what the fish sign meant was not directly tested. One defect in the record should be stated plainly: the claim's automatic score band reads high, which points the opposite way from its falsified-leaning status. The status rests on the actual site test; the band is a consistency score computed from the record's text, and the audit flagged the conflict rather than resolving it.
+
+**What remains not understood — draft for the `not_understood` field**
+
+What the fish signs actually marked remains unknown - this test rules out one story about them, it does not supply another. The fish family covers several distinct signs, and the test treated them together and used the site types as published in the CISI data; a finer test, sign by sign and with better site classifications, has not been run. The claim also does not stand or fall with the fish sign's other proposed readings, which are separate claims with their own records.
+
+**Evidence on the record:** `glossa-indus/reports/phase104_claims_evaluation.json`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_002`
+
+### `parpola_2010_dravidian_solution_manual_001`
+
+- **Stage today:** checked · **Recorded status/verdict:** partially_supported
+- **Flag:** verified but unexplained (checked, with no authored explanation on record)
+- **Source record:** glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json
+
+**The claim, in plain words**
+
+Asko Parpola's long-standing proposal says the Indus script writes an early form of the Dravidian language family (the family that today includes Tamil and Telugu). The writing is said to work by the rebus method: a picture of a thing stands for a word that sounds like the thing's name, the way a drawing of a bee could stand for the sound 'be' in English.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The support on the record comes from two comparisons the program ran in its Phase-41 and Phase-43 work. Both asked the same question: if you anchor a small set of signs to Dravidian word values, do the resulting sign sequences look more probable than the same exercise done with Sanskrit values? In the first run (Phase-41, on the Mahadevan corpus of 1,669 inscriptions, five anchor signs per language), the Dravidian anchors won by a ratio of 1.0566 to 1 - a real but small margin. In the second (Phase-43, on a 1,500-sequence sample of the V3 corpus), Dravidian won by 0.484 log units per sign - again a win, again modest. That is why the status is partially supported rather than supported: the comparisons favour Dravidian over Sanskrit, but only two candidate families were compared, and the margins are small. The weakness that matters most must be stated in the open: both comparisons were computed with the program's semantic-anchoring machinery, and the program later falsified that method on held-out data (Phase-107: its predictions scored 0.000, 0 of 115). No rerun of this specific Dravidian-versus-Sanskrit comparison with a method that survived testing exists in the record. The partial support on this claim is therefore inherited from a method the program no longer trusts, and the claim's checked status has never been re-earned without it.
+
+**What remains not understood — draft for the `not_understood` field**
+
+Almost everything that would settle this claim is missing. There is no SA-free rerun of the language comparison. There is no test against other candidate language families or against a no-language baseline tuned the same way. The corpora used are all from the Mahadevan lineage, so there is no independent-corpus replication. And even a clean win for Dravidian over Sanskrit would not by itself establish the rebus method or any single sign reading: it would show a statistical fit, not a decipherment. What would change the picture: the same comparison rerun under a registered, SA-free method, on the strict sign set, with the rival families and margins fixed in advance.
+
+**Evidence on the record:** `outputs/phase41_p4_sa_300k.json`; `outputs/phase43_all.json (T1_3_v3_sa)`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:parpola_2010_dravidian_solution_manual_001`
+
+### `parpola_2010_dravidian_solution_manual_002`
+
+- **Stage today:** checked · **Recorded status/verdict:** partially_supported
+- **Flag:** verified but unexplained (checked, with no authored explanation on record)
+- **Source record:** glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json
+
+**The claim, in plain words**
+
+Parpola's best-known single reading: the fish sign stands for the Dravidian word 'meen' - a word that means both 'fish' and 'star' - and works as the script's primary rebus sign (a picture used for its sound). The record names the Mahadevan sign numbers 72, 64 and 70 as the fish signs in question.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The program's check (Phase-43, test T2.4) asked whether the signs that follow the fish sign behave the way case endings (suffixes) should if the fish sign were a word being read aloud. For Mahadevan sign 72, the answer was yes: in 181 occurrences, the sign that follows it is a text-ending sign 25.9 percent of the time, matching the pattern the test required, and the test marked it supported. But the same test tried six fish candidates, and the family's most frequent member, sign 267 (356 occurrences), failed clearly: its followers end the text only 3.8 percent of the time. The claim as written - the fish sign, as a family, is the primary rebus sign - is therefore only partly supported: one member behaves as the reading predicts, the commonest member does not. A further caution: which drawn sign counts as 'the fish sign' is itself not fully settled across the field's compilations - the program's own cross-compilation study (Phase-125) found the two great sign lists disagree far more than they agree, so a reading tied to one list's numbering carries that uncertainty with it.
+
+**What remains not understood — draft for the `not_understood` field**
+
+The positional test cannot show that sign 72 was pronounced 'meen' - it shows only that what follows it looks like endings. Many signs could pass such a test for unrelated reasons. The claim does not establish the star/fish wordplay, the reading of any inscription, or what the fish signs meant in the signs the test failed. What would change the picture: the same test run sign by sign across the whole fish family on the strict corpus, with the family's membership fixed in advance, and an account of why sign 267 behaves differently if the family's reading is uniform.
+
+**Evidence on the record:** `outputs/phase43_all.json (T2_4_fish_rebus)`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:parpola_2010_dravidian_solution_manual_002`
+
+### `without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001`
+
+- **Stage today:** checked · **Recorded status/verdict:** partially_supported
+- **Flag:** verified but unexplained (checked, with no authored explanation on record)
+- **Source record:** glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json
+
+**The claim, in plain words**
+
+Treasure A. Hunt's proposal says Indus inscriptions are built in three parts, like a form with three fields: an opening part that names identity, office or goods; a middle part about an action or transaction; and a closing part about cycles, jurisdiction or logistics.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The program tested the shape of this claim, and the shape held up. In the test recorded on the claim (the positional test in the program's analysis files), 805 of 2,267 inscriptions of three or more signs followed the opening-middle-ending structure - 35.5 percent, against 0.6 percent expected by chance, a lift of about 59 times. The test also found the position-strong signs the pattern needs: 40 signs that strongly prefer the opening, 20 that strongly prefer the ending, and 61 for the middle. That is why the status is partially supported. The limit of the support is written in the test's own verdict, and it should be quoted rather than softened: the pattern is 'consistent with both Hunt model and Dravidian suffix model. Cannot distinguish between them without visual sign classification.' In other words, the check shows a three-part positional pattern exists. It does not show that the parts carry the meanings Hunt assigns them, and the same pattern is equally consistent with a rival account in which the closing signs are simply word endings in a language.
+
+**What remains not understood — draft for the `not_understood` field**
+
+The meanings of the three parts - identity, action, cycle - have never been tested; only their positions have. The program cannot yet say which signs are animal signs or sky signs from its own data (that needs a visual classification crosswalk it does not have), so the companion claims about animal openings and sky-sign endings are untested or only structurally supported. A three-part pattern is also weaker evidence than it may look: many record-keeping systems, linguistic or not, develop fixed field orders. What would change the picture: a visual classification of the sign classes, so the semantic version of the claim can be tested instead of the positional shadow of it.
+
+**Evidence on the record:** `glossa-indus/analysis/positional/hunt_tripartite_test.json`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001`
+
+### `without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003`
+
+- **Stage today:** checked · **Recorded status/verdict:** partially_supported
+- **Flag:** verified but unexplained (checked, with no authored explanation on record)
+- **Source record:** glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json
+
+**The claim, in plain words**
+
+A component of Hunt's three-part proposal: the animal signs - fish, unicorn, buffalo, rhinoceros, tiger, elephant - work as opening markers, standing at the start of inscriptions the way a name or title stands at the head of a form.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The record's own evidence sentence gives the honest position, and the draft keeps it intact: '40 INITIAL_STRONG signs identified; faunal-initial enrichment not yet sign-classified [STRUCTURAL SUPPORT ONLY]'. Unpacked: the program's positional work (Phase-43) did find 40 signs that strongly prefer the opening position of inscriptions. That is the support. But nobody has yet checked whether those 40 opening signs are in fact the animal signs - the program's own test file notes it 'cannot directly classify faunal/celestial without visual catalog crosswalk'. So the claim joins two halves: a positional half that is supported, and an animal half that has never been tested at all. The status partially supported is the average of those two halves, and it should never be quoted without the second half's absence attached.
+
+**What remains not understood — draft for the `not_understood` field**
+
+Whether the opening-strong signs are animals, and whether they marked identity, guild or goods if they are, is entirely open. The claim's own test - animal signs enriched in opening position above a random baseline - cannot be run until the program has a visual classification of which signs are animals. What would change the picture: that classification, built once and frozen, then the enrichment test run exactly as the claim's falsifier states it.
+
+**Evidence on the record:** `glossa-indus/analysis/positional/hunt_tripartite_test.json`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_003`
+
+### `yadav_2009_arxiv_manual_001`
+
+- **Stage today:** checked · **Recorded status/verdict:** strongly_supported
+- **Flag:** verified but unexplained (checked, with no authored explanation on record)
+- **Source record:** glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json
+- **Evidence instances (same proposition, merged in Phase I):** `yadav_2010_ngrams_manual_001`
+
+**The claim, in plain words**
+
+Nisha Yadav and colleagues reported that the frequencies of Indus signs follow the Zipf-Mandelbrot pattern: a few signs are used very often, most are used rarely, and the counts between fall along one specific curve. It is the frequency pattern best known from words in real languages.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The program reran this check on its V3 corpus in Phase-43 and the fit held: the recorded exponent is about 1.35, in the range the original work reported. The claim carries a proper falsifier - it fails if the frequency distribution departs from the Zipf-Mandelbrot law - and the distribution did not depart. That is the whole of the support, and it is genuine as far as it goes. Two record-keeping cautions belong with it. First, the same claim was extracted twice (from Yadav's 2009 paper and the 2010 follow-up), and for a time the program's claim set counted this one test result twice, on two records; the Phase I dedupe of 2026-10-12 merged them into this single claim, keeping the 2010 record as an evidence instance rather than a second claim. Second, the check was run by the program itself, on a corpus from the same Mahadevan lineage the original study used.
+
+**What remains not understood — draft for the `not_understood` field**
+
+A Zipf-style curve is weak evidence about meaning. Many systems that are not language at all - and some random processes - produce similar curves, so the fit cannot distinguish writing from non-writing, let alone identify a language. The exponent's exact value also moves with corpus size and with how signs are split or merged, and the field's compilations disagree on the sign inventory itself. What this claim does not establish: that the script encodes language, that any sign has any value, or that the corpus the curve was fitted on is complete. What would strengthen it: the same fit on an independent corpus with a sign inventory fixed in advance, reported alongside the fits for known non-linguistic symbol systems.
+
+**Evidence on the record:** `glossa-indus/reports/phase104_claims_evaluation.json`; `specs/029-tao-claim-lifecycle/phase-i-record.md`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:yadav_2009_arxiv_manual_001`
+
+### `yadav_2009_arxiv_manual_002`
+
+- **Stage today:** checked · **Recorded status/verdict:** strongly_supported
+- **Flag:** verified but unexplained (checked, with no authored explanation on record)
+- **Source record:** glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json
+- **Evidence instances (same proposition, merged in Phase I):** `yadav_2010_ngrams_manual_002`
+
+**The claim, in plain words**
+
+Yadav and colleagues reported that the Indus corpus has dedicated text-beginning and text-ending signs: some signs show up mostly at the start of inscriptions, others mostly at the end.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The program's positional battery (Phase-43) found the pattern clearly on the V3 corpus: 40 signs that strongly prefer the opening position and 20 that strongly prefer the closing position. That is a real, reproducible feature of this corpus, and it is why the claim is recorded as strongly supported. The defect sits in the claim's own paperwork, and the audit flagged it: this record carries no falsification condition - nothing on the record states what result would have counted against the claim. A strong verdict without a stated way to be wrong is exactly the verified-but-unexplained risk this program now tracks: the counts are checked, but the claim as recorded could not have failed. Like its companion Zipf claim, this one was also double-recorded (2009 and 2010 extractions) until the Phase I dedupe merged the pair into this single claim.
+
+**What remains not understood — draft for the `not_understood` field**
+
+Positional preference is not meaning. Opening and closing markers appear in many symbol systems, linguistic and not, so this pattern cannot show the script encodes language. The counts also depend on where inscriptions are segmented - where one text ends and another begins - and on the sign inventory of one corpus lineage; the cross-compilation disagreement (Phase-125) means the same exercise on the other great compilation might not return the same sign sets. What would change the picture: a falsifier written onto the record, and the test rerun on the strict core and on an independent corpus with the position rules fixed in advance.
+
+**Evidence on the record:** `specs/029-tao-claim-lifecycle/reclassification-ledger.json:yadav_2009_arxiv_manual_002`; `specs/029-tao-claim-lifecycle/phase-i-record.md`
+
+### `indus_valley_script_deciphered_from_myth_65ff0a26_manual_001`
+
+- **Stage today:** created · **Recorded status/verdict:** untested
+- **Source record:** glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json
+
+**The claim, in plain words**
+
+Avishai Roif's central thesis: the Indus script is not general writing but an economic ledger - a notation for trade guilds, tribute and guild authority - built with mnemonic shortcuts influenced by Akkadian practice.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+No check has ever run on this claim. What exists on the record is the source document's own assertion, plus an automatic score computed over the record's text. The program's own evaluation note is explicit that such scores are consistency signals only and no verdict rests on them. The claim therefore stands at the first stage, created: it has been written down, and nothing more has happened to it. This claim does carry a well-formed test: it predicts the signs should cluster at sites tied to administration, trade and guild authority, and it fails if they cluster mostly at domestic or purely ritual sites instead. The program's Phase-104 evaluation found the test cannot be run with the data in the repository: the corpus carries site names but no classification of sites by type (gateway, border, administrative, domestic), and no such dataset exists in the repo. The thesis is also a bundle of several claims at once - ledger function, guild authority, Akkadian influence - and no one part of it has been separated out and tested on its own.
+
+**What remains not understood — draft for the `not_understood` field**
+
+Everything about this claim is not understood, in the plain sense that nothing about it has been tested. The specific missing piece is named data: a classification of excavation sites by function that scholars would accept. Without it, the distribution test the claim itself proposes cannot run. The Akkadian-influence part additionally needs contact evidence this program does not hold. A favourable distribution, if it were ever shown, would still not establish the ledger reading of any single inscription.
+
+**Evidence on the record:** `glossa-indus/reports/phase104_claims_evaluation.json (RULE-SITE)`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_001`
+
+### `indus_valley_script_deciphered_from_myth_65ff0a26_manual_003`
+
+- **Stage today:** created · **Recorded status/verdict:** untested
+- **Source record:** glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json
+
+**The claim, in plain words**
+
+A component of Roif's ledger thesis: the arrow sign (read 'tir') marks border enforcement and guild authority - a sign you would expect where goods and people are checked at boundaries.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+No check has ever run on this claim. What exists on the record is the source document's own assertion, plus an automatic score computed over the record's text. The program's own evaluation note is explicit that such scores are consistency signals only and no verdict rests on them. The claim therefore stands at the first stage, created: it has been written down, and nothing more has happened to it. The claim proposes its own test: the arrow sign should cluster at gateway and border sites rather than being spread evenly. Phase-104 found the test cannot be run as stated, because the repository has no classification of sites as gateway or border. One piece of data does exist and should be stated, because it does not sit comfortably with the claim: the sign in question (Mahadevan 391) is counted in the corpus at Mohenjo-daro 75 times, Harappa 52, Dholavira 16, Lothal 14, Kalibangan 10 and a few more elsewhere - that is, mostly at the largest cities, not at small border points. That distribution is descriptive only: without an agreed site-type classification it cannot be turned into a verdict either way. The program's role data also treats this sign as a possible case-ending marker, a purely positional role that says nothing about borders.
+
+**What remains not understood — draft for the `not_understood` field**
+
+What the arrow sign marked - if it marked one thing - is unknown. The border story needs a site classification that does not exist in the repository; the counts that exist lean toward the great cities, which the claim would have to explain rather than cite. A positional role and a border-enforcement meaning could both be true, or neither; the record distinguishes neither. What would change the picture: a published, agreed classification of sites by function, then the clustering test run exactly as the claim's falsifier states it.
+
+**Evidence on the record:** `glossa-indus/reports/phase104_claims_evaluation.json (RULE-SITE)`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_003`
+
+### `indus_valley_script_deciphered_from_myth_65ff0a26_manual_004`
+
+- **Stage today:** created · **Recorded status/verdict:** untested
+- **Source record:** glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json
+
+**The claim, in plain words**
+
+Another component of Roif's reading: the horned-deity sign names an intermediary figure connected with fire-altar ritual, specifically at Kalibangan, the site known for its fire altars.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+No check has ever run on this claim. What exists on the record is the source document's own assertion, plus an automatic score computed over the record's text. The program's own evaluation note is explicit that such scores are consistency signals only and no verdict rests on them. The claim therefore stands at the first stage, created: it has been written down, and nothing more has happened to it. The claim names what it needs in its own record: site metadata with a fire-altar classification. Phase-104 confirmed no such dataset exists in the repository - the corpus carries site names only. The proposed test (the sign concentrated at fire-altar structures rather than domestic contexts) therefore cannot be run, and no other check on this claim exists in the record.
+
+**What remains not understood — draft for the `not_understood` field**
+
+The claim rests on one site's association, and even the first step - counting the sign's contexts classified by structure type - has never been done because the classifications are not in the data. Fire-altar attribution of structures is itself an archaeological judgement that varies between reports, so the missing dataset is not a clerical gap but a scholarly one. What would change the picture: excavation-context data for Kalibangan with structure types attached, from the published reports, entered as cited data rather than assumed labels.
+
+**Evidence on the record:** `glossa-indus/reports/phase104_claims_evaluation.json (RULE-SITE)`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_manual_004`
+
+### `without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002`
+
+- **Stage today:** created · **Recorded status/verdict:** untested
+- **Source record:** glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json
+
+**The claim, in plain words**
+
+Hunt's wider interpretation of the script: it encodes a civic-ritual continuity system - the shared administration of a society without kings - rather than royal decrees or a palace bureaucracy.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+No check has ever run on this claim. What exists on the record is the source document's own assertion, plus an automatic score computed over the record's text. The program's own evaluation note is explicit that such scores are consistency signals only and no verdict rests on them. The claim therefore stands at the first stage, created: it has been written down, and nothing more has happened to it. The claim is marked on its own record as only indirectly testable, and its test is comparative: sign distributions should track civic and infrastructure contexts more than palatial or royal ones. Phase-104 found the comparison cannot be run: the repository holds site names but no classification of contexts as palatial, royal, civic or infrastructural. The interpretation also leans on the three-part pattern claim (a separate record, partially supported for position only); the pattern's existence does not test this social reading of it.
+
+**What remains not understood — draft for the `not_understood` field**
+
+The social meaning of the inscriptions - civic, royal, commercial, ritual - is exactly what positional statistics cannot see, and this claim is a claim about social meaning. It would remain untested even if every positional claim in this set were confirmed tomorrow, because its evidence would have to come from find contexts classified by function. What would change the picture: a find-context classification from the excavation literature, entered as cited data, and the comparison run as the falsifier states it.
+
+**Evidence on the record:** `glossa-indus/reports/phase104_claims_evaluation.json (RULE-SITE)`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_002`
+
+### `without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004`
+
+- **Stage today:** created · **Recorded status/verdict:** untested
+- **Source record:** glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json
+
+**The claim, in plain words**
+
+The closing counterpart to the animal-openings claim: celestial signs - sun, star, moon - work as ending markers in inscriptions, standing for scheduling cycles and ritual calendars.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+No check has ever run on this claim. What exists on the record is the source document's own assertion, plus an automatic score computed over the record's text. The program's own evaluation note is explicit that such scores are consistency signals only and no verdict rests on them. The claim therefore stands at the first stage, created: it has been written down, and nothing more has happened to it. Phase-104 gave the precise reason, and it is a data gap, not a failed test: the claim's falsifier requires a defined class of celestial signs, and no such classification exists in the repository's data. The in-repo sign-role classes are ending-marker, classifier-prefix, person-or-owner and possible-person - none of them says which signs are sky signs. Terminal enrichment for the class therefore cannot even be computed. This is the one part of Hunt's three-part scheme where not even the positional shadow of the claim has been measured.
+
+**What remains not understood — draft for the `not_understood` field**
+
+Which signs are 'celestial' is itself a visual judgement that must be made sign by sign from the sign images, and the program has not built that classification. Until it exists, the claim is not false and not supported - it is unmeasurable. What would change the picture: a frozen visual classification of the sign list marking the celestial signs, then the terminal-enrichment test run exactly as the falsifier states it.
+
+**Evidence on the record:** `glossa-indus/reports/phase104_claims_evaluation.json (RULE-CLASS)`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004`
+
+### `without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005`
+
+- **Stage today:** created · **Recorded status/verdict:** untested
+- **Source record:** glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json
+
+**The claim, in plain words**
+
+A methodological claim from Hunt's work: a 'Translation Atlas' that groups Indus signs into 24 semantic clusters, whose members should behave alike - each cluster should show its own distinct pattern of positions and neighbours in inscriptions.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+No check has ever run on this claim. What exists on the record is the source document's own assertion, plus an automatic score computed over the record's text. The program's own evaluation note is explicit that such scores are consistency signals only and no verdict rests on them. The claim therefore stands at the first stage, created: it has been written down, and nothing more has happened to it. Phase-104's finding is the shortest in this set: the claim's test cannot be run because the 24 cluster definitions are not in the repository. The program has clusterings of its own, but they are different clusterings, built differently, and testing them would test a different claim. Until the atlas's own membership lists are in hand as cited data, there is nothing here to check.
+
+**What remains not understood — draft for the `not_understood` field**
+
+The claim is entirely in the not-understood column: the object it describes is absent from the record. What would change the picture: acquisition of the atlas definitions from the source publication, entered as cited data with provenance, then the distinct-profile test - if two clusters turn out to behave identically, the atlas's grouping claim fails on its own terms.
+
+**Evidence on the record:** `glossa-indus/reports/phase104_claims_evaluation.json (RULE-REF)`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_005`
+
+### `ancient_writing_and_modern_technologies_51831ac9_sign_val_0001`
+
+- **Stage today:** created · **Recorded status/verdict:** untested
+- **Source record:** glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json
+
+**The claim, in plain words**
+
+The record in full: 'Sign value: 900 / number six.' A source document's table assigns the value 'six' to a sign numbered 900 in some sign list.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book.
+
+**What remains not understood — draft for the `not_understood` field**
+
+What is not understood is more basic than the value itself: which sign, in which published sign list, this number refers to. Indus sign lists number signs differently, and a bare '900' cannot be matched to a drawn sign from this record. What would change the picture: the source table re-extracted with its sign list named and the sign image attached - at which point the record would become a claim that could be checked against the corpus. Until then this is a stated gap, not a claim with evidence.
+
+**Evidence on the record:** `glossa-indus/reports/phase104_claims_evaluation.json (RULE-NUM)`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0001`
+
+### `ancient_writing_and_modern_technologies_51831ac9_sign_val_0002`
+
+- **Stage today:** created · **Recorded status/verdict:** untested
+- **Source record:** glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json
+
+**The claim, in plain words**
+
+The record in full: 'Sign value: 700 / a volumetric system with a unit of 40.' A source table places sign 700 in a system of measures built on a unit of 40.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book. One further fact belongs in the open: a sibling fragment from the same source assigns the same sign number a different value (a unit of 4). Both cannot be right as stated. The Phase I dedupe reviewed the pair and kept them as separate propositions, because they do say different things - but the contradiction between them is unresolved in the record, and neither can be checked until the source table is identified.
+
+**What remains not understood — draft for the `not_understood` field**
+
+Unresolved at every level: the sign list is unnamed, the two extracted values for sign 700 conflict, and a 'volumetric system' claim would in any case need the sign counted on actual containers and measures, data this record does not touch. What would change the picture: the source table identified and re-extracted in full, so the two readings of sign 700 can be reconciled or one withdrawn as a copying error.
+
+**Evidence on the record:** `glossa-indus/reports/phase104_claims_evaluation.json (RULE-NUM)`; `specs/029-tao-claim-lifecycle/phase-i-record.md`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0002`
+
+### `ancient_writing_and_modern_technologies_51831ac9_sign_val_0003`
+
+- **Stage today:** created · **Recorded status/verdict:** untested
+- **Source record:** glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json
+
+**The claim, in plain words**
+
+The record in full: 'Sign value: 700 / a unit of 4.' A source table assigns sign 700 the value of a unit of four.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book. This fragment is also one side of an unresolved contradiction: its sibling fragment from the same source puts sign 700 in a system built on a unit of 40. The Phase I dedupe kept both, as distinct propositions; the record does not say which, if either, matches the source.
+
+**What remains not understood — draft for the `not_understood` field**
+
+Same gap as its sibling, plus the disagreement between them: until the source table is identified, there is no fact of the matter on this record to check. What would change the picture: the source table re-extracted in full with its sign list named; if one of the pair is a copying error, an appended correction - not a silent edit - is how the record should be fixed.
+
+**Evidence on the record:** `glossa-indus/reports/phase104_claims_evaluation.json (RULE-NUM)`; `specs/029-tao-claim-lifecycle/phase-i-record.md`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0003`
+
+### `the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001`
+
+- **Stage today:** created · **Recorded status/verdict:** untested
+- **Source record:** glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json
+
+**The claim, in plain words**
+
+The record in full: 'Sign value: 821 / used in a variety of contexts.' A source document notes that the sign numbered 821 appears across many contexts.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book. Even with the sign identified, 'used in a variety of contexts' states nothing that could fail: almost any common sign is used in a variety of contexts. The observation may be a useful catalogue note; as a claim record it asserts no testable proposition.
+
+**What remains not understood — draft for the `not_understood` field**
+
+Nothing here is understood or misunderstood - there is no proposition to attach understanding to. What would change the picture: the source passage in full. If the passage argues something specific (for example, that the sign's spread rules out a narrow meaning), that argument should be extracted as the claim, with the sign list named.
+
+**Evidence on the record:** `glossa-indus/reports/phase104_claims_evaluation.json (RULE-NUM)`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001`
+
+### `the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002`
+
+- **Stage today:** created · **Recorded status/verdict:** untested
+- **Source record:** glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json
+
+**The claim, in plain words**
+
+The record in full: 'Sign value: 297 / the horned tiger.' A source document identifies the sign numbered 297 as a horned tiger - an animal sign with horns.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book. Unlike the number-value fragments, this one is at least the kind of statement that could be checked - sign identifications can be compared against sign images - but not from this record: with the sign list unnamed, the drawn sign cannot be located.
+
+**What remains not understood — draft for the `not_understood` field**
+
+Which drawn sign this is, and whether its identification as a horned tiger is agreed or one scholar's call, are both unknown from the record. Animal identifications matter beyond this fragment: several larger claims in this set (the animal-openings claim, the sky-sign claim) are untestable until signs are visually classified, and identifications like this one are the raw material such a classification would be built from. What would change the picture: the source's sign list named and the sign image attached, so the identification can enter a classification as cited data.
+
+**Evidence on the record:** `glossa-indus/reports/phase104_claims_evaluation.json (RULE-NUM)`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002`
+
+### `ancient_writing_and_modern_technologies_51831ac9_statisti_0004`
+
+- **Stage today:** created · **Recorded status/verdict:** untested
+- **Source record:** glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json
+- **Evidence instances (same proposition, merged in Phase I):** `fuls2023_catalog_of_indussigns_searchins_1dbdecdb_statisti_0001`, `positional_analysis_of_indus_signs_a2bedc93_statisti_0001`, `the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003`, `without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002`
+
+**The claim, in plain words**
+
+The record in full is a heading: 'Statistical finding: positional analysis.' The same heading was extracted from five different source documents, and in the Phase I dedupe those five extractions were recognised as copies of one fragment; this record is the surviving canonical copy.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+There is no claim here to explain. Phase-104's evaluation says it exactly: an automatic-extraction fragment with no falsification condition and no stated proposition - not evaluable as stated. The extraction kept the heading of a results section and lost the results. Five source documents had such a section; whatever each of them found is not in this record.
+
+**What remains not understood — draft for the `not_understood` field**
+
+The topic the heading points at - whether signs occupy preferred positions - is in fact one of the better-tested topics in this program, on other records. Nothing about those results belongs on this record, because this record does not state them. What would change the picture: re-extraction of the five source passages in full, each becoming its own claim with its numbers attached, or an appended note retiring this fragment as an extraction artefact. As it stands it is a stated gap.
+
+**Evidence on the record:** `glossa-indus/reports/phase104_claims_evaluation.json (RULE-NOCOND)`; `specs/029-tao-claim-lifecycle/phase-i-record.md`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_statisti_0004`
+
+### `indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001`
+
+- **Stage today:** created · **Recorded status/verdict:** untested
+- **Source record:** glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json
+- **Evidence instances (same proposition, merged in Phase I):** `without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0003`
+
+**The claim, in plain words**
+
+The record in full is a book-chapter heading: 'Critique: myth of a literate Harappan.' It points at the argument that Harappan literacy is a myth - the Farmer, Sproat and Witzel position that the signs are not writing.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The record itself is a fragment - a section heading lifted by automatic extraction - but the position it points at is a real, identifiable claim: the Farmer, Sproat and Witzel thesis that the signs do not encode language. The program's Phase-104 evaluation read this fragment as restating that thesis and concluded that the thesis's recorded verdict (contradicted, on the companion record farmer_sproat_witzel_2004_manual_001) should carry over to it. That carry-over was never written into this record: the live record still stands untested, at the created stage. Both facts belong in the open - an evaluation argued the claim is already answered, and the record was never updated to say so. Under this program's rules the gap is closed by an appended, dated correction, never by quietly editing the status.
+
+**What remains not understood — draft for the `not_understood` field**
+
+Two things remain not understood. First, the bookkeeping: whether this fragment should inherit the contradicted verdict, stand as its own untested record, or be retired as an extraction artefact is an undecided question in the record - Phase-104 argued one way and the live record shows no decision applied. Second, the substance is the same open ground as the parent claim: the checks argue against the strong non-linguistic thesis without establishing what the signs do encode. What would change the picture: a dated, appended disposition of this record (carry-over applied or refused, with the reason), so the record stops saying two things at once.
+
+**Evidence on the record:** `glossa-indus/reports/phase104_claims_evaluation.json (RULE-DUP)`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001`
+
+### `indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002`
+
+- **Stage today:** created · **Recorded status/verdict:** untested
+- **Source record:** glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json
+- **Evidence instances (same proposition, merged in Phase I):** `without_kings_or_conquests_the_indus_scr_ce9d98cc_critique_0004`
+
+**The claim, in plain words**
+
+The record in full is a section heading: 'Critique: collapse of the Indus script thesis.' Like its sibling fragment, it points at the Farmer, Sproat and Witzel position that the Indus script thesis - the idea that the signs are writing - collapses under scrutiny.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The record itself is a fragment - a section heading lifted by automatic extraction - but the position it points at is a real, identifiable claim: the Farmer, Sproat and Witzel thesis that the signs do not encode language. The program's Phase-104 evaluation read this fragment as restating that thesis and concluded that the thesis's recorded verdict (contradicted, on the companion record farmer_sproat_witzel_2004_manual_001) should carry over to it. That carry-over was never written into this record: the live record still stands untested, at the created stage. Both facts belong in the open - an evaluation argued the claim is already answered, and the record was never updated to say so. Under this program's rules the gap is closed by an appended, dated correction, never by quietly editing the status.
+
+**What remains not understood — draft for the `not_understood` field**
+
+Same open bookkeeping as its sibling: Phase-104's carry-over argument was never applied to the live record, so this fragment simultaneously is (by the evaluation) a restatement of a contradicted claim and is (by the live record) untested. The substantive not-understood is also the parent claim's: refuting 'not writing at all' does not say what the signs are. What would change the picture: the same appended, dated disposition as for the sibling fragment - the two should be decided together, since they rest on the same argument.
+
+**Evidence on the record:** `glossa-indus/reports/phase104_claims_evaluation.json (RULE-DUP)`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002`
+
+### `without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001`
+
+- **Stage today:** created · **Recorded status/verdict:** untested
+- **Source record:** glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json
+
+**The claim, in plain words**
+
+The record in full is an extraction label: 'Language hypothesis: non-linguistic symbol.' It is the Farmer, Sproat and Witzel thesis - the signs are symbols that do not encode language - reduced to a category tag.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The record itself is a fragment - a section heading lifted by automatic extraction - but the position it points at is a real, identifiable claim: the Farmer, Sproat and Witzel thesis that the signs do not encode language. The program's Phase-104 evaluation read this fragment as restating that thesis and concluded that the thesis's recorded verdict (contradicted, on the companion record farmer_sproat_witzel_2004_manual_001) should carry over to it. That carry-over was never written into this record: the live record still stands untested, at the created stage. Both facts belong in the open - an evaluation argued the claim is already answered, and the record was never updated to say so. Under this program's rules the gap is closed by an appended, dated correction, never by quietly editing the status.
+
+**What remains not understood — draft for the `not_understood` field**
+
+As with the two critique fragments: the evaluation's carry-over argument and the live record disagree, and the record has never been reconciled. There is also a question this label raises that the fuller claim does not: a category tag was extracted as if it were a claim, which suggests other extraction labels may be sitting in the claim set in the same way. What would change the picture: an appended disposition for this record, and a sweep of the extraction labels for other tags mistaken for propositions.
+
+**Evidence on the record:** `glossa-indus/reports/phase104_claims_evaluation.json (RULE-DUP)`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001`
+
+## Study headline claims
+
+### `STUDY-SPEC-019/PHASE-125`
+
+- **Stage today:** checked · **Recorded status/verdict:** FAIL - DISAGREEMENT
+- **Source record:** specs/019-phase125-cross-compilation-positional/ (outcome of record: reports/phase125_cross_compilation_results.json)
+
+**The claim, in plain words**
+
+The Indus corpus exists in two great compilations, built by different scholars from different publications (the Parpola/CISI line and the Mahadevan line). The claim behind this study: for signs that appear in both, the two compilations describe the same positional behaviour - a sign that likes the start of texts in one compilation likes the start in the other. If that held, positional findings would replicate across the field's two standard sources.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The check compared the compilations sign by sign through the program's crosswalk (Phase-125). The result was a frozen-rule failure, recorded as FAIL - DISAGREEMENT. First, most signs could not be judged at all: of 286 sign pairs, only 16 had enough occurrences in both compilations to pass the count floor fixed in advance; 270 fell below it. Among the 16 judgeable pairs, the typical positional profile differed by a distance of 0.637 (median TV distance, where 0 is identical and 1 is completely different). Two follow-ups kept the failure honest. Phase-127 asked whether small samples explain the gap: sampling noise alone, measured inside one compilation at the same token counts, produces a typical distance of only 0.083 - so the disagreement is not a sampling artefact (0 of 999 trials reached it). Phase-131 then tried to attribute the disagreement to named causes - segmentation differences, sign substitutions, corpus composition - and could attribute only 6.1 percent of it. The remaining 93.9 percent is residual: present, measured, and unexplained. Under the tightened framework (Spec 026) all three phases were replayed exactly and reproduced, so the numbers stand; what they mean is the open part.
+
+**What remains not understood — draft for the `not_understood` field**
+
+The 93.9 percent residual is the single largest not-understood in this program, and this draft names it rather than smoothing it over. The program does not know why the compilations disagree: candidate causes include how each compilation segments texts into signs, the crosswalk itself (of 762 sign pairs, 383 are conflict pairs, where the sources map signs differently), and differences in which objects each compilation includes. Until the residual is attributed, every positional claim in this program that rests on one compilation carries an unmeasured cross-compilation risk. What would change the picture: a matched-object study on inscriptions both compilations record, comparing sign by sign on the same physical objects - Phase-131's first arm found zero shared object keys to join on, which is itself part of the problem.
+
+**Evidence on the record:** `reports/phase125_cross_compilation_results.json`; `reports/phase127_cross_compilation_diagnostic.md`; `reports/phase131_attribution_results.json`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-019/PHASE-125`
+
+### `STUDY-SPEC-023/PHASE-132+383`
+
+- **Stage today:** checked · **Recorded status/verdict:** CONTRADICTED (Spec 026 rerun, Phase-383)
+- **Source record:** specs/023-keyed-transcription-layer/ (outcome of record: reports/phase383_report.md)
+
+**The claim, in plain words**
+
+Before the program could build new corpus layers from sign images, it had to know whether its transcription method was reliable. The bounded claim: two blinded passes of the frozen protocol, coding the same objects independently, would agree closely enough - at least 0.80 exact-sequence agreement - to publish the result as a keyed transcription layer.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The check fired its own stop rule. The pilot (Phase-132) measured exact-sequence agreement of 0.20 against the frozen floor of 0.80, and the release gates all failed; the dataset was not published, and the line was closed. The Spec 026 rerun (Phase-383) then put a proper interval on the pilot's number: the bootstrap confidence interval for agreement is [0.10, 0.32], far below the floor - the bounded claim is not merely unproven, it is contradicted for this coding basis at this protocol. The record also carries a disclosure that must stay attached to any retelling: every coder in these passes was an AI agent of a single model family. The failure is therefore a failure of one origin group's coding, measured honestly; it is not evidence about what trained human epigraphers would do, and the two motif pilots run on a similar basis (Phases 134 and 135) separately closed as inconclusive, in the middle band - they neither rescue nor worsen this verdict.
+
+**What remains not understood — draft for the `not_understood` field**
+
+Why the passes disagreed is not understood at the level of mechanism: no named-human account exists of which signs, objects or segmentation choices drive the disagreement, and the program has not produced one. Also not established: whether the floor of 0.80 is the right bar for this material, or whether agreement would improve with a clarified codebook - both are asserted in discussion but tested nowhere. Reopening this line is a gated decision, not a default: it would require human expert transcription and a new owner decision. What would change the picture: a human-coded calibration set scored against the same frozen gates.
+
+**Evidence on the record:** `reports/phase383_report.md`; `specs/023-keyed-transcription-layer/`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-023/PHASE-132+383`
+
+### `STUDY-SPEC-024/F1`
+
+- **Stage today:** checked · **Recorded status/verdict:** SUPPORTED
+- **Flag:** verified but unexplained (checked, with no authored explanation on record)
+- **Source record:** specs/024-evidence-integration/ (outcome of record: reports/phase136_results.json; family verdict in reports/phase136_137_138_stage2_report.md)
+
+**The claim, in plain words**
+
+On the part of the ICIT-lineage corpus that could be joined to the published catalogue, the claim is that a text's final sign falls into the program's frozen TERMINAL14 class (the 14 strongest text-ending signs) at different rates on seals than on tablets - and that this difference holds within sites, not just between them, so it is about the object type rather than about place.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The check (Phase-136) used a within-site stratified test (Cochran-Mantel-Haenszel) on 2,195 inscriptions whose final sign could be mapped, drawn from 2,676 seals and tablets. The statistic came out at 47.0047; a permutation check - shuffling the labels 9,999 times to see how often chance alone produces a gap this large - never reached it (p = 0.0001, the smallest value the run could report). The size of the difference: the odds of a TERMINAL14 ending are about 2.38 times higher on one object type than the other (odds ratio 2.384, confidence interval 1.847 to 3.077). After the family correction across the three Spec 024 tests (Benjamini-Hochberg at q = 0.05), the adjusted value is q = 0.00015 - comfortably inside. A later leave-one-site-out pass (Phase-141) found the result stable when any single site is removed. The boundaries matter as much as the numbers: 49.0 percent of the lineage layer's rows could not be joined to the catalogue at all, so the result describes the joined subset of one corpus lineage (the horus84 ICIT-lineage layer), not the Indus corpus in general - the report itself insists on that wording, and so does this draft.
+
+**What remains not understood — draft for the `not_understood` field**
+
+What the seal/tablet difference means is not established. It could reflect different text genres (ownership marks versus accounts), different scribal habits, or differences in preservation and excavation between object types that the within-site control does not remove. The unjoined half of the corpus might behave differently, and there is no second, independent corpus on which the test has been replicated. The claim establishes an association inside one lineage's joined subset; it does not establish a fact about Indus writing as a whole, and it says nothing about what any sign means. What would change the picture: the same test on a corpus joined through object identifiers rather than catalogue concordance, or on any genuinely independent corpus.
+
+**Evidence on the record:** `reports/phase136_results.json`; `reports/phase136_report.md`; `reports/phase136_137_138_stage2_report.md`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-024/F1`
+
+### `STUDY-SPEC-024/F2-HOLDAT`
+
+- **Stage today:** checked · **Recorded status/verdict:** CONTRADICTED at the declared margin (bounded claim, Spec 026 Phase-384)
+- **Source record:** specs/024-evidence-integration/ (outcome of record: reports/phase137_results.json; rerun reports/phase384_report.md)
+
+**The claim, in plain words**
+
+The claim, in the Holdat compilation of the corpus: which signs appear is associated with which site they come from - in plain terms, different cities used measurably different sign repertoires.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The first check (Phase-137) found nothing: the association statistic (chi-square 745.95) was the kind of value chance produces routinely - a permutation test returned p = 0.7354, so the verdict at the time was NOT SUPPORTED. The Spec 026 rerun (Phase-384) sharpened the question into the bounded form the program now uses: is the effect at least as large as the practical margin fixed in advance (an effect size of 0.10, where the descriptive value in this layer had been 0.1154)? The rerun's answer, from an interval estimate that passed its own validity control (an earlier version of the interval was invalid and the program caught and discarded it - that self-catch is part of the record), puts the effect between 0.059 and 0.078 - entirely below the 0.10 margin. The bounded claim is therefore recorded as CONTRADICTED at the declared margin: there may be a small site effect in this layer, but not one as large as the claim required. Note what this verdict is about - the Holdat layer only. The same question in the ICIT-lineage layer (the F3 claim) came out the other way, and that disagreement between layers is itself unexplained (see the F3 draft).
+
+**What remains not understood — draft for the `not_understood` field**
+
+Why the two compilations answer the same question differently is not understood. The layers differ in which objects they include, in site mix, and in how they number signs, and Phase-125 showed the two compilations disagree positionally far beyond sampling noise - so a layer difference may be a fact about the compilations rather than about the ancient cities. The claim also does not say there is no site effect at all: it says the effect in this layer, if present, is below the size the program agreed in advance to care about. What would change the picture: the site question asked on object-matched data shared by both compilations - the same missing join that limits the Phase-125 study.
+
+**Evidence on the record:** `reports/phase137_results.json`; `reports/phase384_report.md`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-024/F2-HOLDAT`
+
+### `STUDY-SPEC-024/F3-ICIT`
+
+- **Stage today:** checked · **Recorded status/verdict:** SUPPORTED
+- **Flag:** verified but unexplained (checked, with no authored explanation on record)
+- **Source record:** specs/024-evidence-integration/ (outcome of record: reports/phase137_results.json; rerun reports/phase384_report.md)
+
+**The claim, in plain words**
+
+The mirror of the F2 claim, in the other corpus layer: in the ICIT-lineage corpus, which signs appear is associated with which site they come from - different cities used measurably different sign repertoires.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The check (Phase-137) found a strong association: chi-square 4966.36, an effect size (Cramer's V - a 0-to-1 scale for how strongly two things go together) of 0.2190, and a permutation p of 0.0001 - chance alone essentially never produces a gap this large. The Spec 026 rerun (Phase-384) confirmed the bounded form: the effect's interval [0.182, 0.210] lies entirely above the practical floor, so SUPPORTED stands. Now the conditions, which the program has attached to this result from the start and which this draft repeats because they are part of the result: the sites in this corpus differ in their period mix, in how well their objects survived, and in their excavation history - the confounders named in Spec 024 section 5.1, alongside text-type and text-length mix. An association with 'site' can be those differences wearing a site label. And the corpus is one lineage - the ICIT line, through the horus84 layer - while the same test in the Holdat layer found no effect of the required size (the F2 claim). One more fact that belongs here: when the follow-up study (Spec 025, the G1 claim) controlled for composition and preservation, the association survived - but chronology, the period mix, was not controlled there either.
+
+**What remains not understood — draft for the `not_understood` field**
+
+The mechanism behind the association is not understood: whether cities genuinely wrote differently, or whether period, preservation and excavation differences manufacture the pattern, is undecided - and the disagreement with the Holdat layer (F2) means the answer may partly be about the compilations rather than the cities. The claim does not establish local sign inventions, dialects, or any movement of people; it establishes an association in one corpus lineage with named uncontrolled confounders. What would change the picture: the same test with period controlled as the primary design, and a replication on data outside the ICIT lineage.
+
+**Evidence on the record:** `reports/phase137_results.json`; `reports/phase384_report.md`; `specs/024-evidence-integration/spec.md (section 5.1)`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-024/F3-ICIT`
+
+### `STUDY-SPEC-025/G1`
+
+- **Stage today:** checked · **Recorded status/verdict:** SUPPORTED under control
+- **Flag:** verified but unexplained (checked, with no authored explanation on record)
+- **Source record:** specs/025-stage2-controlled-followup/ (outcome of record: reports/phase140_results.json; rerun reports/phase385_report.md)
+
+**The claim, in plain words**
+
+G1 is the controlled version of the F3 claim. F3 found that in the ICIT-lineage corpus, sites use different sign repertoires - but sites also differ in preservation and in what kinds of texts survive. G1 asks: does the site association survive once preservation and text composition are held fixed?
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The check (Phase-140) re-ran the F3 test with the shuffling done inside groups matched for composition and preservation (preservation was recorded for 99.9 percent of the rows, which is what made the control possible). The observed statistic, 4966.36, stood far above the shuffled values (typical value 2684.74); not one of 9,999 shuffles reached it (p = 0.0001). The Spec 026 rerun (Phase-385) confirmed the effect size: the interval [0.184, 0.210] lies entirely above the declared margin, so SUPPORTED under control stands. The rider, which the program requires wherever this result is stated and which this draft states in the body, not a footnote: chronology is not controlled in the primary test. Sites' period mixes differ, and until period is held fixed the same way, part of what is called a site effect may be a time effect - later and earlier cities are not the same cities. A chronology sensitivity bound is reported alongside the result, but it is not the controlled verdict.
+
+**What remains not understood — draft for the `not_understood` field**
+
+The uncontrolled-chronology rider is the not-understood core of this claim: the program cannot yet say how much of the surviving association is place and how much is period. Also open: the mechanism (genuinely different local repertoires versus different mixes of text genres that composition control only partly captures), and the standing disagreement with the Holdat layer, where no effect of the required size was found. The claim does not establish population movement; the movement question was asked separately (Spec 027 Stage 1) and came back inconclusive. What would change the picture: the primary test re-run with period strata from a chronology spine strong enough to support it - the Spec 030 extension tried to build exactly that spine and closed negative, so the limiting factor is dated material, not method.
+
+**Evidence on the record:** `reports/phase140_results.json`; `reports/phase140_report.md`; `reports/phase385_report.md`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-025/G1`
+
+### `STUDY-SPEC-027/STAGE1-PHASE-392`
+
+- **Stage today:** checked · **Recorded status/verdict:** INCONCLUSIVE
+- **Source record:** specs/027-movement-culture-language/ (outcome of record: specs/027-movement-culture-language/stage1-outcome.md; reports/phase392_results.json)
+
+**The claim, in plain words**
+
+Stage 1 of the movement study asked whether a site's sign repertoire resembles the repertoires of nearby sites more than distant ones - the pattern you would expect if people, goods and habits moved between neighbouring places. The contract was frozen and registered publicly (OSF, osf.io/pnqrx) before the test ran.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The primary result: site similarity accounts for a small share of the differences between repertoires - median adjusted R-squared 0.01677, that is about 1.7 percent of the variation, with interval [0.01032, 0.02397]. The signal is consistent (the rejection share was 1.000, and both controls passed: the negative control sat near zero, the positive control behaved as designed). But the frozen SUPPORTED rule also required the result to survive leaving any one site out, and removing Harappa dropped the median to 0.00928 - below the 0.01 margin fixed in advance. The CONTRADICTED rule did not fire either. The verdict is therefore INCONCLUSIVE, exactly as the frozen rules produce it. A sensitivity version restricted to complete cases read slightly higher (0.01793) and carried no verdict. The study's own record also notes what could not be run at all: the planned Parpola-numbering sensitivity was not estimable, because the crosswalk covers only 17.57 percent of the relevant signs.
+
+**What remains not understood — draft for the `not_understood` field**
+
+The jackknife failure is the not-understood core: the program cannot tell whether Harappa carries the signal because Harappa is genuinely central, or because its corpus is so much larger than the others that it dominates any pooled measure. A 1.7-percent association also cannot carry a movement story by itself - shared period, shared trade goods and shared excavation practices all predict the same small resemblance. Stage 2 of the movement study was not executed as a stage, and the timing question behind it (Q6) remains not-yet-testable even after the chronology-spine extension (Spec 030, Phase-394) closed negative. What would change the picture: the Harappa-specific follow-up arms (Spec 028, drafted alongside this one) are the program's own answer to the jackknife problem - and both came back inconclusive as well, which is itself the current state of knowledge.
+
+**Evidence on the record:** `specs/027-movement-culture-language/stage1-outcome.md`; `reports/phase392_results.json`; `specs/030-q6-chronology-spine-extension/outcome.md`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-027/STAGE1-PHASE-392`
+
+### `STUDY-SPEC-028/ARM-A`
+
+- **Stage today:** checked · **Recorded status/verdict:** INCONCLUSIVE
+- **Source record:** specs/028-harappa-robustness/ (outcome of record: specs/028-harappa-robustness/outcome.md; reports/phase393_results.json)
+
+**The claim, in plain words**
+
+Arm A of the Harappa-robustness study asks the Stage-1 question again - do similar sites have similar sign repertoires? - with Harappa left out of the population altogether, rather than left out one run at a time. It tests whether the small Stage-1 signal was one city's weight or a property of the rest of the corpus. The contract was frozen and registered (OSF, osf.io/7m35w) before the run.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The result: median adjusted R-squared 0.00878, interval [0.00463, 0.01297] - below the 0.01 margin fixed in advance. The test rejected the null in 62.3 percent of resamples (rejection share 0.623), and every leave-one-site-out median also fell below the margin. The controls behaved. Under the frozen rules that is INCONCLUSIVE: the effect without Harappa is too small to confirm at the declared margin, and not absent enough to contradict. A sensitivity version on complete cases read lower still (0.00647) and carried no verdict.
+
+**What remains not understood — draft for the `not_understood` field**
+
+What Arm A establishes is a bound, and bounds are the honest content here: whatever site-similarity signal exists in the non-Harappa corpus is, on current data, smaller than the size the program agreed in advance to count as support. It does not show the Stage-1 signal was fake - pooling Harappa back in is exactly what Arm B weights differently - and it does not show a weaker real effect is absent; the data cannot afford that distinction yet. Not understood: whether more non-Harappa material (or better-dated material) would push the estimate over the margin or toward zero. What would change the picture: new multi-site inscription data outside the ICIT lineage - the same missing input that keeps PRED-2026-003 unscored.
+
+**Evidence on the record:** `specs/028-harappa-robustness/outcome.md`; `reports/phase393_results.json`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-028/ARM-A`
+
+### `STUDY-SPEC-028/ARM-B`
+
+- **Stage today:** checked · **Recorded status/verdict:** INCONCLUSIVE
+- **Source record:** specs/028-harappa-robustness/ (outcome of record: specs/028-harappa-robustness/outcome.md; reports/phase393_results.json)
+
+**The claim, in plain words**
+
+Arm B asks the Stage-1 question with each site weighted equally, so a large corpus cannot outvote small ones. If the association is a general property of the site network, this is the version that should show it most cleanly.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The headline number is the strongest in the movement line: median adjusted R-squared 0.02237, interval [0.01222, 0.03333] - entirely above the 0.01 margin - with a rejection share of 0.955. Most leave-one-site-out runs also stay above the margin (0.0225 to 0.0247). The exception is the one the study exists to probe: dropping Harappa pulls the median to 0.00661, below the margin, and the frozen SUPPORTED rule's jackknife clause therefore fails - the same clause that stopped Stage 1. The verdict is INCONCLUSIVE. The study's exploratory arm (Arm C, descriptive only, no verdict) adds a fact worth keeping next to this one: Harappa's repertoire profile genuinely differs from the pooled others (a dissimilarity of 0.3410), and the difference is much larger among tablets (0.4953) than among seals (0.1114) - Harappa is not merely bigger; on tablets, it is different.
+
+**What remains not understood — draft for the `not_understood` field**
+
+The Harappa-dependence itself is the not-understood: the program cannot yet separate 'Harappa is an unusual city' from 'Harappa is an unusually excavated and published corpus'. Equal weighting did not cure the dependence, which rules out the simplest size explanation but does not choose among the rest (period span, object mix, publication history). Until that separation exists, the movement question has no confirmable answer in this corpus, in either direction. What would change the picture: an object-type-stratified version of Arm B (Arm C's tablet/seal split suggests where the difference lives), run as a registered primary test rather than an exploratory description.
+
+**Evidence on the record:** `specs/028-harappa-robustness/outcome.md`; `reports/phase393_results.json`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-028/ARM-B`
+
+### `STUDY-SPECS-001-023+PHASES-TO-141`
+
+- **Stage today:** checked · **Recorded status/verdict:** Audit rollup: 75 of 116 items carry a changed evidentiary status
+- **Source record:** specs/026-rcph-framework-transfer/ (outcome of record: specs/026-rcph-framework-transfer/historical-assessments.md)
+
+**The claim, in plain words**
+
+This headline is the rollup of the program's own history: the verdicts and headline readings issued across Specs 001 to 023 and the phases up to 141, as they stood before the framework audit.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The audit (Spec 026) inventoried 116 items from that history and reclassified each under the tightened framework: 8 items required full reruns, 12 were reproduce-only, 61 reinterpret-only, 27 unaffected, and 8 not rerunnable. For 75 of the 116, the evidentiary status changed - not because the old arithmetic was wrong, but because the old labels claimed more than the old checks could carry. The four reruns show the range: the keyed-transcription claim was contradicted (Phase-383); the Holdat site claim was contradicted at its declared margin while the ICIT site claim stood (Phase-384); the controlled site claim stood at its margin (Phase-385); and the cross-compilation line (Phases 116, 125, 127, 131) replayed exactly, its uncomfortable numbers reproduced rather than revised away (Phase-386). The assessments are appended historical assessments: the original result files and ledger entries were never rewritten, and the new readings sit alongside the old labels so the change is itself inspectable.
+
+**What remains not understood — draft for the `not_understood` field**
+
+A rollup is an index, not an explanation: the per-item reasons live in the 116 assessments, and neither this draft nor the headline number should be quoted in place of them. Two open edges remain. The 61 reinterpret-only items carry new readings without new data - anyone citing a pre-audit label without its appended assessment will misstate the evidence, and the program cannot control citations it cannot see. And the audit's own framing - what counts as 'changed' - is a program judgement, recorded but not independently reviewed. What would change the picture: an outside scholar's engagement with the assessment set, which is precisely the digestion stage none of these items has reached.
+
+**Evidence on the record:** `specs/026-rcph-framework-transfer/historical-assessments.md`; `specs/026-rcph-framework-transfer/historical-assessments.json`; `specs/026-rcph-framework-transfer/tasks.md`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPECS-001-023+PHASES-TO-141`
+
+## Registered predictions with recorded partial checks
+
+### `PRED-2026-006`
+
+- **Stage today:** checked · **Recorded status/verdict:** PARTIALLY CONFIRMED (register wording; see draft)
+- **Source record:** docs/PREDICTION_REGISTER.md (PRED-2026-006)
+
+**The claim, in plain words**
+
+Registered on 2026-04-22: signs classed as text-opening (INITIAL) signs at Mohenjo-daro, in the CISI data, would also open texts at Harappa in the Yajnadevam Harappa data, which was set aside and not used in training. The success rule fixed in advance: at least 70 percent of those signs show a start rate of 0.40 or more at Harappa specifically.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The register records this prediction as PARTIALLY CONFIRMED, and the audit flagged that wording as acceptance-flavoured. The draft states the gap plainly: the number that exists - 72.7 percent stability for the INITIAL class - is a global figure across sites, from a global class-stability check. The number the registered criterion demands is Harappa-only, against the withheld Harappa data, at the 0.40 start-rate bar. The register itself says 'Harappa-specific breakdown pending'. So what has been checked is a neighbouring quantity that points the right way, not the registered test. A second condition deserves the same openness: the check that produced 72.7 percent ran on corpora of the same ICIT lineage as the training data, so even the global figure is a within-lineage result.
+
+**What remains not understood — draft for the `not_understood` field**
+
+The Harappa-specific rate itself - the entire content of the prediction - remains not understood, because it has never been computed as registered. Also open: whether the withheld Harappa material is large enough for the 70-percent rule to be meaningful sign by sign. What would change the picture: the breakdown computed exactly as registered, on the withheld set, and the register amended by an appended, dated entry - whatever it shows. Until then the honest stage wording is: a related check was run; the registered check was not.
+
+**Evidence on the record:** `docs/PREDICTION_REGISTER.md (PRED-2026-006)`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:PRED-2026-006`
+
+### `PRED-2026-007`
+
+- **Stage today:** checked · **Recorded status/verdict:** PARTIALLY CONFIRMED (register wording; see draft)
+- **Source record:** docs/PREDICTION_REGISTER.md (PRED-2026-007)
+
+**The claim, in plain words**
+
+Registered on 2026-04-22: signs carrying the ICIT function code ITM would cluster with the text-ending (TERMINAL) signs when the corpus was clustered in the program's Phase 5 work, at a rate of at least 70 percent.
+
+**Explanation draft** *(would become the explanation record's artifact text on human authorship; the record fields `author`, `artifact_uri`, `content_hash` and `challenge_venue` are empty in the draft on purpose — only the authoring human can complete them)*
+
+The recorded test, in full: three ITM-coded signs were checked. Two (P385 and P378) landed in TERMINAL clusters. The third data point in the register's note is a LOG-coded sign (P098) in an INITIAL cluster, which is not an ITM miss - it simply is not part of the count. So the ITM rate stands at 2 of 3, or 67 percent - below the 70 percent bar fixed in advance. The register's own wording is exact about what remains: 'one more ITM needed for full pass' - if a fourth ITM sign were checked and landed TERMINAL, the rate would be 3 of 4, or 75 percent, and the criterion would pass. The register records PARTIALLY CONFIRMED; the audit flagged that wording as acceptance-flavoured, and this draft keeps the arithmetic in front of the label: with three signs, each single sign is worth 33 points of the percentage, so the rate is a small-sample look at the prediction, not the registered test run at full scope.
+
+**What remains not understood — draft for the `not_understood` field**
+
+The full ITM population's rate is not known - only three of the ITM-coded signs have ever been through the clustering check, and the register does not record how many ITM signs exist in total. Also not established: whether the clustering itself is stable enough for cluster membership to carry this weight, given the cross-compilation disagreement elsewhere in the program. What would change the picture: the check run over every ITM-coded sign, with the population size stated first, and the outcome appended to the register either way.
+
+**Evidence on the record:** `docs/PREDICTION_REGISTER.md (PRED-2026-007)`; `specs/029-tao-claim-lifecycle/reclassification-ledger.json:PRED-2026-007`

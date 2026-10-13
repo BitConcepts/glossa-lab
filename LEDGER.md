@@ -6121,6 +6121,35 @@ AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
 
+## 2026-10-13 — Phase-104 carry-over correction (Spec 029 records)
+
+The Phase-104 evaluation's RULE-DUP verdict carry-over
+(contradicted, from farmer_sproat_witzel_2004_manual_001) was
+written into the three canonical live records it prescribed —
+indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001,
+indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002,
+without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001 —
+which had stood untested at stage created since extraction.
+Each record now carries the verdict and Phase-104's evidence
+verbatim, an additive status_correction note preserving the
+previous status, and a stage of checked written through the
+transition service (the Phase D stamp stands as history[0];
+the frozen reclassification ledger is untouched). Exactly the
+three claims' AEE scores moved (the engine's contradiction
+penalty now applies, as it always did on the canonical claim);
+the Phase A pin moved to a successor fixture in the Phase I
+pattern, and the Phase D / Phase I / Phase G pins were amended
+to name this correction. The two Phase-104 records Phase I
+merged as evidence instances (critique_0003 / critique_0004)
+were not rewritten — named residual in the correction record
+(specs/029-tao-claim-lifecycle/phase104-carryover-correction-record.md).
+The first CI run caught the gap that had caused the original
+loss — a wholesale store regeneration reverted claim_status to
+the extraction default — so the extractor's carry-over now also
+preserves a status_correction's outcome fields by claim
+identity. Full suite 1,450 passed / 6 skipped / 0 failed
+locally (CI re-run is the final evidence for the fixed tree);
+foundation 40 / 0 / 8.
 ## 2026-10-13 — Spec 029 lane-2 drafts ADOPTED (owner authorship act, OD-2)
 
 The 35 lane-2 drafts prepared earlier today (PR #190:

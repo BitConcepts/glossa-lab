@@ -443,17 +443,38 @@ _LANE2_EXPLAINED_IDS = {
 }
 
 
+#: Phase-104 carry-over correction (2026-10-13): exactly these
+#: three extracted claims moved from the frozen ledger's
+#: ``created`` to ``checked`` through the same transition
+#: service, on the owner's order (see
+#: ``specs/029-tao-claim-lifecycle/phase104-carryover-correction-record.md``).
+_PHASE104_CARRYOVER_IDS = {
+    "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001",
+    "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
+    "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001",
+}
+
+
+#: Every live record whose stage now recomputes from its
+#: transition-service history tail: the union of the two
+#: owner-ordered acts of 2026-10-13 named above.
+_TRANSITION_SERVICE_RECORDS = _LANE2_EXPLAINED_IDS | _PHASE104_CARRYOVER_IDS
+
+
 def test_g2_live_stage_provenance_methods_are_the_recorded_ones():
     # The live population's provenance, stated so a future
     # transition-service or bundle record entering the live stores
     # is a deliberate, visible change to this expectation — its
     # recomputation method is gated either way (controls below).
     # Until 2026-10-13 every live stage was a reclassification-
-    # ledger replay (this test's original assertion). The lane-2
-    # adoption of 2026-10-13 was exactly the anticipated event:
-    # precisely the named 20 now recompute by the transition-
-    # service history-tail rule; the other 324 remain ledger
-    # replays, their migration entries untouched.
+    # ledger replay (this test's original assertion). Two
+    # owner-ordered acts of 2026-10-13 were exactly the
+    # anticipated events: the lane-2 adoption advanced the named
+    # 20 (checked -> explained) and the Phase-104 carry-over
+    # correction moved the named 3 (created -> checked).
+    # Precisely those 23 now recompute by the transition-service
+    # history-tail rule; the other 321 remain ledger replays,
+    # their migration entries untouched.
     methods = {}
     transition_service_ids = set()
     for live in _LIVE:
@@ -461,11 +482,11 @@ def test_g2_live_stage_provenance_methods_are_the_recorded_ones():
         methods[method] = methods.get(method, 0) + 1
         if method == "transition-service-history-tail":
             transition_service_ids.add(live.record_id)
+    assert transition_service_ids == _TRANSITION_SERVICE_RECORDS
     assert methods == {
-        "reclassification-ledger-replay": len(_LIVE) - 20,
-        "transition-service-history-tail": 20,
+        "reclassification-ledger-replay": len(_LIVE) - len(_TRANSITION_SERVICE_RECORDS),
+        "transition-service-history-tail": len(_TRANSITION_SERVICE_RECORDS),
     }
-    assert transition_service_ids == _LANE2_EXPLAINED_IDS
 
 
 def _live_anchor():

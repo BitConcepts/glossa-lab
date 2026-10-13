@@ -85,3 +85,44 @@ Spec 026–034 frozen records stand as frozen.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## Completion — APPROVED AND PUBLIC (2026-10-13)
+
+- **DOI: https://doi.org/10.17605/OSF.IO/ZD7UQ**
+- Approval route: the API review-action POST
+  returned **HTTP 409** at filing (recorded above),
+  as the program record predicts; approval was
+  effected via the tokenised approve link in the
+  "Pending Registration - Admin Notification" email
+  (Gmail id `1a13513e801101b0`, received
+  2026-10-13T11:44:18Z), opened in the signed-in
+  browser — the standing approvals loop (owner
+  order 2026-10-11: registration approvals are the
+  agent's job, never left as an owner action item).
+  The cancel link in the same email was not
+  touched.
+- The registration's public page shows "Public
+  registration", Date Registered Oct 13, 2026,
+  7:44 AM EDT.
+- State verified via the OSF API after approval
+  (2026-10-13): `reviews_state: accepted`,
+  `public: true`,
+  `pending_registration_approval: false`,
+  `withdrawn: false`, `embargoed: false`;
+  `date_registered: 2026-10-13T11:44:05Z`;
+  `registered_from` node `t8p5e`; the identifiers
+  record carries DOI `10.17605/OSF.IO/ZD7UQ`.
+- Execution gate: the registration precondition
+  is satisfied by this approval and verification.
+  Execution (**Phase-398**) proceeds under the
+  owner's 2026-10-13 order freezing Spec 034 for
+  execution; its outcome is recorded separately
+  under this spec and changes no part of this
+  record or the frozen contract.
+
+---
+
+*Completion appended 2026-10-13 by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI. Append-only:
+nothing above this section was edited.*

@@ -1,7 +1,7 @@
 {
   "document_id": "positional_analysis_of_indus_signs_a2bedc93",
   "title": "",
-  "extraction_date": "2026-10-13T06:22:51.740741",
+  "extraction_date": "2026-10-13T12:11:32.668602",
   "total_claims": 1,
   "auto_extracted": 1,
   "manually_curated": 0,
@@ -15,7 +15,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-13T06:22:51.728389",
+      "extracted_at": "2026-10-13T12:11:32.571563",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:positional_analysis_of_indus_signs_a2bedc93_statisti_0001",
       "stage_as_of": "2026-10-12",

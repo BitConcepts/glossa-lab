@@ -12,13 +12,28 @@
       "claim_type": "language_claim",
       "normalized_claim": "Language hypothesis: non-linguistic symbol",
       "quote_fragment": "non-linguistic symbol",
-      "claim_status": "untested",
+      "claim_status": "contradicted",
       "testability": "directly_testable",
+      "contradicting_evidence": [
+        "Rao et al. 2009: conditional entropy falls in linguistic range",
+        "Phase-43: 20 TERMINAL_STRONG signs consistent with morphological suffixes",
+        "Phase-43: [M77/267][M77/99] = fixed title formula at inscription start",
+        "Cross-reference: farmer_sproat_witzel_2004_manual_001 (farmer_sproat_witzel_2004)"
+      ],
+      "status_correction": {
+        "kind": "phase104-carryover-correction",
+        "date": "2026-10-13",
+        "previous_claim_status": "untested",
+        "new_claim_status": "contradicted",
+        "basis": "glossa-indus/reports/phase104_claims_evaluation.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001",
+        "rule": "RULE-DUP",
+        "note": "The Phase-104 evaluation judged this record a restatement of farmer_sproat_witzel_2004_manual_001 (contradicted) and recorded that the verdict carries over; the carry-over was never written into the live record. Applied 2026-10-13 on the owner's order. The previous status is preserved in this field, and the record's earlier history is unchanged."
+      },
       "confidence_in_source": 0.7,
       "extracted_at": "2026-10-13T06:22:51.926279",
-      "stage": "created",
-      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001",
-      "stage_as_of": "2026-10-12",
+      "stage": "checked",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:18:18.548312+00:00",
       "stage_history": [
         {
           "from_stage": null,
@@ -29,6 +44,17 @@
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001"
           ],
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001; no pre-existing field altered."
+        },
+        {
+          "from_stage": "created",
+          "to_stage": "checked",
+          "actor": "spec029-phase104-carryover-migration",
+          "timestamp": "2026-10-13T10:18:18.548312+00:00",
+          "evidence_refs": [
+            "glossa-indus/reports/phase104_claims_evaluation.json:without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001",
+            "glossa-indus/claims/extracted_claims/farmer_sproat_witzel_2004.json:farmer_sproat_witzel_2004_manual_001"
+          ],
+          "reason": "Phase-104 carry-over correction (2026-10-13): the Phase-104 evaluation of untested claims found this record restates the Farmer, Sproat and Witzel thesis already judged contradicted on farmer_sproat_witzel_2004_manual_001, and recorded that the verdict carries over (rule RULE-DUP) — but the carry-over was never written into this record, which still showed untested at the created stage. This entry writes it: the claim status now reads contradicted, with the evaluation's evidence, and the stage moves to checked. The earlier stage entry in this history is unchanged."
         }
       ],
       "verified_unexplained": false,

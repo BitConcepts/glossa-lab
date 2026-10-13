@@ -414,16 +414,40 @@ def test_g2_every_live_stored_stage_recomputes_equal():
     assert failures == {}
 
 
-def test_g2_live_stages_are_all_ledger_replays_today():
-    # The live population's provenance, stated so a future
+#: The first transition-service records in the live stores: the
+#: Phase-104 carry-over correction (2026-10-13) moved exactly these
+#: three extracted claims from the frozen ledger's ``created`` to
+#: ``checked`` through the single stage writer, on the owner's
+#: order (see
+#: ``specs/029-tao-claim-lifecycle/phase104-carryover-correction-record.md``).
+_TRANSITION_SERVICE_RECORDS = {
+    "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001",
+    "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
+    "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001",
+}
+
+
+def test_g2_live_provenance_is_ledger_replay_except_named_correction():
+    # The live population's provenance, stated so any further
     # transition-service or bundle record entering the live stores
     # is a deliberate, visible change to this expectation — its
     # recomputation method is gated either way (controls below).
+    # As of the Phase-104 carry-over correction (2026-10-13),
+    # exactly the three named records recompute from their
+    # transition-service history tail; every other live record is
+    # a frozen-ledger replay.
     methods = {}
+    transition_service_ids = set()
     for live in _LIVE:
         _, method = gates.recompute_stage(live.record, _CTX)
         methods[method] = methods.get(method, 0) + 1
-    assert methods == {"reclassification-ledger-replay": len(_LIVE)}
+        if method == "transition-service-history-tail":
+            transition_service_ids.add(live.record_id)
+    assert transition_service_ids == _TRANSITION_SERVICE_RECORDS
+    assert methods == {
+        "reclassification-ledger-replay": len(_LIVE) - len(_TRANSITION_SERVICE_RECORDS),
+        "transition-service-history-tail": len(_TRANSITION_SERVICE_RECORDS),
+    }
 
 
 def _live_anchor():

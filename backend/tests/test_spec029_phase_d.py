@@ -22,6 +22,14 @@ script's contract:
 
 The script lives in the spec directory (house style for spec
 tooling); it is loaded by path.
+
+Supersession note (2026-10-13): the Phase-104 carry-over
+correction superseded the migration stamp on exactly three
+extracted claims (named in ``_CARRYOVER_CORRECTED`` below). The
+live-state pins in this file exempt exactly those records, and
+the reconciliation / plan pins assert that the migration's own
+machinery disagrees with the frozen expectations by exactly the
+correction's movement and nothing else.
 """
 from __future__ import annotations
 
@@ -46,6 +54,21 @@ _PRE_MIGRATION_ANCHORS_SHA256 = (
 _ADDITIVE = ("stage", "stage_source", "stage_as_of", "stage_history",
              "verified_unexplained")
 _LEDGER_REF = "specs/029-tao-claim-lifecycle/reclassification-ledger.json"
+
+#: Phase-104 carry-over correction (2026-10-13): the three fragment
+#: records the Phase-104 evaluation prescribed a verdict carry-over
+#: for no longer carry the Phase D migration stamp — the correction
+#: superseded it through the transition service, appending a second
+#: history entry (the Phase D entry stands as history[0]). See
+#: ``specs/029-tao-claim-lifecycle/phase104-carryover-correction-record.md``.
+#: The Phase D pins below exempt exactly these records, by name;
+#: the correction's own shape is asserted in
+#: ``test_spec029_phase104_correction.py``.
+_CARRYOVER_CORRECTED = {
+    "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001",
+    "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
+    "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001",
+}
 
 
 def _load_migration():
@@ -82,21 +105,40 @@ def _assert_stamp(record: dict, entry: dict) -> None:
 
 # ── Live reconciliation (D5) ─────────────────────────────────────────────
 
-def test_verify_mode_reconciliation_matches_ledger_exactly():
+def test_verify_mode_reconciliation_matches_ledger_except_named_correction():
+    # The reconciliation runs over the migrated population minus
+    # the three records the Phase-104 carry-over correction
+    # superseded (named above): for those, the migration's stamp
+    # check itself refuses (their stage_source no longer names the
+    # ledger). Against the frozen Phase D expectations the ONLY
+    # disagreement may be the correction's own movement — three
+    # extracted claims, created -> checked.
+    by_class = mig.entries_by_class(mig.load_ledger())
+    named = {e["item_id"] for entries in by_class.values() for e in entries
+             if e["item_id"] in _CARRYOVER_CORRECTED}
+    assert named == _CARRYOVER_CORRECTED  # the exemption names real entries
+    filtered = {
+        cls: [e for e in entries if e["item_id"] not in _CARRYOVER_CORRECTED]
+        for cls, entries in by_class.items()
+    }
     report_recon = mig.count_stamped_records(
-        mig.collect_live_state(mig.entries_by_class(mig.load_ledger())),
-        mig.grouped_count(mig.entries_by_class(mig.load_ledger())),
+        mig.collect_live_state(filtered),
+        mig.grouped_count(filtered),
     )
-    assert report_recon["match"], report_recon["problems"]
+    assert not report_recon["match"]
+    problems = report_recon["problems"]
+    assert len(problems) == 2, problems
+    assert any(p.startswith("class extracted_claim:") for p in problems)
+    assert any(p.startswith("totals:") for p in problems)
     assert report_recon["per_class"] == {
         "anchor_reading": {"created": 193, "checked": 94},
-        "extracted_claim": {"created": 21, "checked": 10},
+        "extracted_claim": {"created": 18, "checked": 10},
         "registered_prediction": {"created": 3, "checked": 2},
         "hypothesis_model": {"created": 3},
         "study_headline_claim": {"checked": 10},
     }
     assert report_recon["totals"] == {
-        "created": 220, "checked": 116, "explained": 0,
+        "created": 217, "checked": 116, "explained": 0,
         "accepted": 0, "digested": 0,
     }
     assert report_recon["verified_unexplained_flags"] == 105
@@ -119,8 +161,26 @@ def test_every_extracted_claim_stamped_with_provenance():
         for claim in data["claims"]:
             seen[claim["claim_id"]] = claim
     assert set(seen) == set(entries)
+    corrected = []
     for cid, entry in entries.items():
+        if cid in _CARRYOVER_CORRECTED:
+            # Superseded by the Phase-104 carry-over correction:
+            # the Phase D stamp survives as history[0] (asserted
+            # here); the record's current stamp is the correction's
+            # transition-service tail (asserted in the correction
+            # test file and by the Phase G recompute gate).
+            corrected.append(cid)
+            (h0, _tail) = seen[cid]["stage_history"]
+            assert h0["from_stage"] is None
+            assert h0["to_stage"] == entry["honest_stage"]
+            assert h0["actor"] == "spec029-phase-d-restaging-migration"
+            assert h0["timestamp"] == "2026-10-12"
+            assert h0["evidence_refs"] == [f"{_LEDGER_REF}:{cid}"]
+            assert seen[cid]["verified_unexplained"] is (
+                "verified_unexplained" in (entry.get("flags") or []))
+            continue
         _assert_stamp(seen[cid], entry)
+    assert set(corrected) == _CARRYOVER_CORRECTED
 
 
 def test_hypothesis_models_stamped_and_parseable_where_parseable():
@@ -198,6 +258,13 @@ def test_extracted_claims_additive_only_canonical_comparison():
             extra = set(claim) - set(_ADDITIVE)
             assert extra  # the claim still carries its own fields
             pre_keys[claim["claim_id"]] = extra
+            if claim["claim_id"] in _CARRYOVER_CORRECTED:
+                # The Phase-104 carry-over correction (2026-10-13)
+                # superseded these three stamps and added its two
+                # correction fields; the corrected records' exact
+                # shape is asserted in the correction test file,
+                # not by this pin.
+                continue
             _assert_stamp(claim, entries[claim["claim_id"]])
     assert len(pre_keys) == 31
 
@@ -230,11 +297,18 @@ def test_record_state_transitions():
     assert mig.record_state(record, entry) == "conflict"
 
 
-def test_plan_reports_stamped_population_and_no_problems():
+def test_plan_reports_stamped_population_and_named_correction_conflicts():
+    # Since the Phase-104 carry-over correction (2026-10-13), the
+    # migration's plan honestly reports the three corrected records
+    # as "conflict" against the frozen ledger stamp — the correction
+    # is a later, separate act, and the migration tool must not
+    # smooth it over. Exactly those three problems, and no others.
     p = mig.plan()
-    assert p["problems"] == []
-    assert p["state_counts"] == {"stamped": 336}
-    assert p["would_be_reconciliation"]["match"]
+    assert p["state_counts"] == {"stamped": 333, "conflict": 3}
+    assert sorted(p["problems"]) == sorted(
+        f"{cid}: existing stage fields conflict with the ledger stamp"
+        for cid in _CARRYOVER_CORRECTED)
+    assert p["would_be_reconciliation"] is None
 
 
 def test_reconcile_detects_mismatch_not_smoothed():

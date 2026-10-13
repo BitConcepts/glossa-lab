@@ -168,18 +168,45 @@ def test_instances_preserved_verbatim_on_canonical():
             assert entry["source_document_id"] == records[cid]["source_document_id"]
 
 
+# Phase-104 carry-over correction supersession (2026-10-13): the
+# merge this file pins did not touch any Phase D stamp — that is
+# still asserted for every record below. Three records were later
+# superseded by a separate act (the Phase-104 verdict carry-over,
+# written through the transition service on the owner's order; see
+# ``specs/029-tao-claim-lifecycle/phase104-carryover-correction-record.md``):
+# their Phase D entry stands as stage_history[0] and the stamp
+# fields now carry the correction's tail. Exactly these three:
+_CARRYOVER_CORRECTED = {
+    "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001",
+    "indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
+    "without_kings_or_conquests_the_indus_scr_ce9d98cc_language_0001",
+}
+
+
 def test_phase_d_stage_stamps_untouched_by_merge():
     records = _load_store()
     entries = {e["item_id"]: e for e in _LEDGER["entries"]
                if e["class"] == "extracted_claim"}
+    corrected = []
     for claim_id, record in records.items():
         entry = entries[claim_id]
+        assert record["verified_unexplained"] is (
+            "verified_unexplained" in (entry.get("flags") or []))
+        if claim_id in _CARRYOVER_CORRECTED:
+            corrected.append(claim_id)
+            h0 = record["stage_history"][0]
+            assert h0["to_stage"] == entry["honest_stage"], claim_id
+            assert h0["actor"] == "spec029-phase-d-restaging-migration"
+            assert h0["timestamp"] == "2026-10-12"
+            assert len(record["stage_history"]) == 2
+            assert record["stage"] == "checked"
+            assert record["stage_source"] == "transition-service:stage_history[1]"
+            continue
         assert record["stage"] == entry["honest_stage"], claim_id
         assert record["stage_source"].endswith(f":{claim_id}"), claim_id
         assert record["stage_as_of"] == "2026-10-12"
         assert len(record["stage_history"]) == 1
-        assert record["verified_unexplained"] is (
-            "verified_unexplained" in (entry.get("flags") or []))
+    assert set(corrected) == _CARRYOVER_CORRECTED
 
 
 def test_falsifiers_preserved_and_never_invented():

@@ -6455,3 +6455,50 @@ stand untouched.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-13 — Phase-396 executed: Spec 032 / PRED-2026-006 closes at step 0
+
+Execution of the frozen Spec 032 contract (PRED-2026-006: the
+Harappa breakdown, computed exactly as registered; freeze
+digest 34cd6230; OSF registration https://osf.io/3htn8/, DOI
+10.17605/OSF.IO/3HTN8, approved and public before execution;
+registration record completed by PR #204, merge d08b6e3e)
+under the owner's order of 2026-10-13. Infrastructure PR #210:
+the Phase-396 build (backend/scripts/phase396_pred006_step0.py),
+the experiment graph node IndusPhase396Pred006Scoring, and 5
+machinery tests. Step 0 ran in the frozen order, before any
+counting. Check 3.1 PASSED: the classification recomputed from
+the recorded training corpus reproduces the recorded
+global_class_stability output exactly (105 classifiable signs,
+no differences), and the trained INITIAL set froze at the
+recorded 12 signs (P000, P001, P004, P013, P051, P098, P217,
+P238, P265, P301, P310, P324). Check 3.2 FAILED, and the study
+closed there: the recorded classification trained on the
+combined corpus (data/normalized/corpus_master.csv; 2,722
+inscriptions = 179 CISI, Mohenjo-daro only, + 2,543
+Yajnadevam), and 970 of the Yajnadevam inscriptions inside
+that training corpus are Harappa inscriptions carrying 1,013
+occurrences of 11 of the 12 trained signs (P324 468, P098 254,
+P217 91, P004 64, P310 60, P013 33, P001 16, P301 16, P238 5,
+P051 4, P265 2, P000 0). The withholding the registration
+specified was never real for this lineage, so under spec
+section 3 / F032-C05 the outcome is CANNOT BE RUN AS WRITTEN
+— a step-0 closure, not a verdict. Check 3.3 was not reached;
+the registered scoring never ran; no Harappa start rate was
+computed and no share exists. PRED-2026-006 remains unscored;
+its register entry stands unchanged, annotated by an
+append-only dated entry under register section 6 recording
+this closure. Step-0 record sha256
+26781336c8c34b006e62474448b17be4d895c1d7ea06d5c24418d49a38e7c4e7.
+Outcome recorded at
+specs/032-pred-2026-006-harappa-breakdown/outcome.md, with
+per-claim determinations for F032-C01…C12 (the frozen register
+is not edited). Gates: foundation check 40 passed / 0 failed /
+8 warnings; branding sweep clean. The Spec 029 Phase D
+register-hash pin (test_pred_register_document_untouched) was
+advanced by name in the products PR to the post-append hash,
+the append being the one authorised drift (Spec 032 spec
+section 7); the Spec 029 freeze replay is unaffected.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

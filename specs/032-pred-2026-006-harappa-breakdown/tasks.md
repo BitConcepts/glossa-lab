@@ -36,10 +36,10 @@
       digest replay, the definition constants, the
       register integrity, the withheld-data census,
       and the register text.
-- [ ] **L6 — Freeze PR merged**, house gates green
+- [x] **L6 — Freeze PR merged**, house gates green
       (foundation 0 failures, full suite, branding
       sweep).
-- [ ] **L7 — OSF registration filed** for the frozen
+- [x] **L7 — OSF registration filed** for the frozen
       contract; the registration-record PR is left
       open with the pending state and completed by
       append once the approval verifies public with a
@@ -47,10 +47,10 @@
 
 ## Execution (Phase-396) — gated on the verified registration
 
-- [ ] **E1 — Graph-first build** (H15/H23): script,
+- [x] **E1 — Graph-first build** (H15/H23): script,
       graph module, registration, registration
       verification, then run.
-- [ ] **E2 — Step 0:** trained-set reconstruction and
+- [x] **E2 — Step 0:** trained-set reconstruction and
       freeze; withholding verification; crosswalk
       fixing; the step-0 record written and hashed
       before any counting. A step-0 failure closes
@@ -58,8 +58,11 @@
       outcome.
 - [ ] **E3 — Scoring:** the registered computation
       only (spec §5); the per-sign table produced
-      with it.
-- [ ] **E4 — Outcome:** the verdict under spec §6,
+      with it. — NOT RUN: step 0 closed the study at
+      check 3.2 (see outcome.md); the computation
+      exists in the build, gated behind a full step-0
+      pass, and is fenced by synthetic-fixture tests.
+- [x] **E4 — Outcome:** the verdict under spec §6,
       appended to the PRED register as a dated entry
       (spec §7), recorded in this spec's directory
       and the root LEDGER; nothing written into any

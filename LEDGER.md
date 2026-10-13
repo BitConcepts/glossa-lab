@@ -6231,3 +6231,22 @@ data stays in the gitignored local store and is released nowhere
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-13 — Spec 032 frozen (PRED-2026-006: the Harappa breakdown)
+
+Spec 032 is frozen: design PR #199 (merge c00b87fa) and this freeze
+record. The freeze digest (framework026, over the recovered register
+0.4-draft, 12 claims F032-C01…C12) is recorded in
+`specs/032-pred-2026-006-harappa-breakdown/freeze.json`; the freeze
+tests pin the digest replay, the registered criterion (share at
+least 70%; start-rate bar 0.40), the register integrity, the
+withheld-data census (5,679 inscriptions; 77 sites; 2,717 Harappa),
+and the PRED register entry byte-state (the freeze edited no
+register text; PRED-2026-006 still stands PARTIALLY CONFIRMED on
+the neighbouring global figure until execution appends the scored
+outcome). Execution is Phase-396, gated on the OSF registration of
+this frozen contract verifying public; the registered computation
+has never been run.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

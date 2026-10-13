@@ -253,16 +253,21 @@ verbatim under E2.4's recorded form.
   phase's 7 new tests.
 - **PR / CI / merge**: PR: BitConcepts/glossa-lab
   **#186** (`impl/029-phase-e2-rendering` → `main`).
-  CI on the implementation head (workflow run — see the
-  gate-evidence completion commit): all 7 checks success,
-  read from the check runs' own conclusions. This record's
-  gate-evidence completion commit re-verifies green on the
-  final head before merging. Merge: method `merge`; the
-  merge commit SHA and the new main head were verified via
-  the GitHub API immediately after merging (a merge commit
-  cannot name itself in the content it merges; the SHAs are
-  stated in the PR timeline and in this phase's delivery
-  report).
+  CI on the implementation head `b2adf1b3` (workflow run
+  38339672422): **all 7 checks success, read from the check
+  runs' own conclusions** — Backend tests (pytest) pass;
+  Frontend tests (Playwright) pass; Evidence Graph script
+  smoke tests pass; Indus public validation checks pass;
+  Shell wrappers (ubuntu-latest, macos-latest,
+  windows-latest) pass. This record's gate-evidence
+  completion commit re-verifies green on the final head
+  before merging (same workflow, all 7 checks success on
+  the final head — conclusions read again after that run).
+  Merge: method `merge`; the merge commit SHA and the new
+  main head were verified via the GitHub API immediately
+  after merging (a merge commit cannot name itself in the
+  content it merges; the SHAs are stated in the PR timeline
+  and in this phase's delivery report).
 - **Lint**: ruff clean on every authored/edited Python file.
 - **Branding sweep**: no other-company or other-program
   names in any authored or edited file.

@@ -71,9 +71,9 @@
       "item_id": "PRED-2026-006",
       "class": "registered_prediction",
       "live_source": "docs/PREDICTION_REGISTER.md",
-      "stage": "checked",
-      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:PRED-2026-006",
-      "stage_as_of": "2026-10-12",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
       "stage_history": [
         {
           "from_stage": null,
@@ -84,17 +84,38 @@
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:PRED-2026-006"
           ],
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry PRED-2026-006; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#PRED-2026-006"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "not_understood": "The Harappa-specific rate itself - the entire content of the prediction - remains not understood, because it has never been computed as registered. Also open: whether the withheld Harappa material is large enough for the 70-percent rule to be meaningful sign by sign. What would change the picture: the breakdown computed exactly as registered, on the withheld set, and the register amended by an appended, dated entry - whatever it shows. Until then the honest stage wording is: a related check was run; the registered check was not.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#PRED-2026-006",
+        "content_hash": "28635c41ca4bfc35a944db82efa86d32032c49bedd41c999cd55edd884dd55ec",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The register records this prediction as PARTIALLY CONFIRMED, and the audit flagged that wording as acceptance-flavoured. The draft states the gap plainly: the number that exists - 72.7 percent stability for the INITIAL class - is a global figure across sites, from a global class-stability check. The number the registered criterion demands is Harappa-only, against the withheld Harappa data, at the 0.40 start-rate bar. The register itself says 'Harappa-specific breakdown pending'. So what has been checked is a neighbouring quantity that points the right way, not the registered test. A second condition deserves the same openness: the check that produced 72.7 percent ran on corpora of the same ICIT lineage as the training data, so even the global figure is a within-lineage result."
+      }
     },
     {
       "item_id": "PRED-2026-007",
       "class": "registered_prediction",
       "live_source": "docs/PREDICTION_REGISTER.md",
-      "stage": "checked",
-      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:PRED-2026-007",
-      "stage_as_of": "2026-10-12",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
       "stage_history": [
         {
           "from_stage": null,
@@ -105,18 +126,39 @@
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:PRED-2026-007"
           ],
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry PRED-2026-007; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#PRED-2026-007"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "not_understood": "The full ITM population's rate is not known - only three of the ITM-coded signs have ever been through the clustering check, and the register does not record how many ITM signs exist in total. Also not established: whether the clustering itself is stable enough for cluster membership to carry this weight, given the cross-compilation disagreement elsewhere in the program. What would change the picture: the check run over every ITM-coded sign, with the population size stated first, and the outcome appended to the register either way.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#PRED-2026-007",
+        "content_hash": "81486be2379e717f5b10ec185f9e42452a62854293167eb54fae072cbc29386d",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The recorded test, in full: three ITM-coded signs were checked. Two (P385 and P378) landed in TERMINAL clusters. The third data point in the register's note is a LOG-coded sign (P098) in an INITIAL cluster, which is not an ITM miss - it simply is not part of the count. So the ITM rate stands at 2 of 3, or 67 percent - below the 70 percent bar fixed in advance. The register's own wording is exact about what remains: 'one more ITM needed for full pass' - if a fourth ITM sign were checked and landed TERMINAL, the rate would be 3 of 4, or 75 percent, and the criterion would pass. The register records PARTIALLY CONFIRMED; the audit flagged that wording as acceptance-flavoured, and this draft keeps the arithmetic in front of the label: with three signs, each single sign is worth 33 points of the percentage, so the rate is a small-sample look at the prediction, not the registered test run at full scope."
+      }
     },
     {
       "item_id": "STUDY-SPEC-019/PHASE-125",
       "class": "study_headline_claim",
       "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
       "live_source_detail": "specs/019-phase125-cross-compilation-positional/",
-      "stage": "checked",
-      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-019/PHASE-125",
-      "stage_as_of": "2026-10-12",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
       "stage_history": [
         {
           "from_stage": null,
@@ -127,18 +169,39 @@
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-019/PHASE-125"
           ],
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPEC-019/PHASE-125; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPEC-019/PHASE-125"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "not_understood": "The 93.9 percent residual is the single largest not-understood in this program, and this draft names it rather than smoothing it over. The program does not know why the compilations disagree: candidate causes include how each compilation segments texts into signs, the crosswalk itself (of 762 sign pairs, 383 are conflict pairs, where the sources map signs differently), and differences in which objects each compilation includes. Until the residual is attributed, every positional claim in this program that rests on one compilation carries an unmeasured cross-compilation risk. What would change the picture: a matched-object study on inscriptions both compilations record, comparing sign by sign on the same physical objects - Phase-131's first arm found zero shared object keys to join on, which is itself part of the problem.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPEC-019/PHASE-125",
+        "content_hash": "ea34d4d141695c63baaf03d8f098b7525472e909dbf4acbc2b8649d05c5eac55",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The check compared the compilations sign by sign through the program's crosswalk (Phase-125). The result was a frozen-rule failure, recorded as FAIL - DISAGREEMENT. First, most signs could not be judged at all: of 286 sign pairs, only 16 had enough occurrences in both compilations to pass the count floor fixed in advance; 270 fell below it. Among the 16 judgeable pairs, the typical positional profile differed by a distance of 0.637 (median TV distance, where 0 is identical and 1 is completely different). Two follow-ups kept the failure honest. Phase-127 asked whether small samples explain the gap: sampling noise alone, measured inside one compilation at the same token counts, produces a typical distance of only 0.083 - so the disagreement is not a sampling artefact (0 of 999 trials reached it). Phase-131 then tried to attribute the disagreement to named causes - segmentation differences, sign substitutions, corpus composition - and could attribute only 6.1 percent of it. The remaining 93.9 percent is residual: present, measured, and unexplained. Under the tightened framework (Spec 026) all three phases were replayed exactly and reproduced, so the numbers stand; what they mean is the open part."
+      }
     },
     {
       "item_id": "STUDY-SPEC-023/PHASE-132+383",
       "class": "study_headline_claim",
       "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
       "live_source_detail": "specs/023-keyed-transcription-layer/",
-      "stage": "checked",
-      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-023/PHASE-132+383",
-      "stage_as_of": "2026-10-12",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
       "stage_history": [
         {
           "from_stage": null,
@@ -149,18 +212,39 @@
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-023/PHASE-132+383"
           ],
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPEC-023/PHASE-132+383; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPEC-023/PHASE-132+383"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "not_understood": "Why the passes disagreed is not understood at the level of mechanism: no named-human account exists of which signs, objects or segmentation choices drive the disagreement, and the program has not produced one. Also not established: whether the floor of 0.80 is the right bar for this material, or whether agreement would improve with a clarified codebook - both are asserted in discussion but tested nowhere. Reopening this line is a gated decision, not a default: it would require human expert transcription and a new owner decision. What would change the picture: a human-coded calibration set scored against the same frozen gates.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPEC-023/PHASE-132+383",
+        "content_hash": "b62ff004d59ded653a6308ca36ff5d45b35ef8bacfd7a5657d4c9106381c4178",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The check fired its own stop rule. The pilot (Phase-132) measured exact-sequence agreement of 0.20 against the frozen floor of 0.80, and the release gates all failed; the dataset was not published, and the line was closed. The Spec 026 rerun (Phase-383) then put a proper interval on the pilot's number: the bootstrap confidence interval for agreement is [0.10, 0.32], far below the floor - the bounded claim is not merely unproven, it is contradicted for this coding basis at this protocol. The record also carries a disclosure that must stay attached to any retelling: every coder in these passes was an AI agent of a single model family. The failure is therefore a failure of one origin group's coding, measured honestly; it is not evidence about what trained human epigraphers would do, and the two motif pilots run on a similar basis (Phases 134 and 135) separately closed as inconclusive, in the middle band - they neither rescue nor worsen this verdict."
+      }
     },
     {
       "item_id": "STUDY-SPEC-024/F1",
       "class": "study_headline_claim",
       "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
       "live_source_detail": "specs/024-evidence-integration/",
-      "stage": "checked",
-      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-024/F1",
-      "stage_as_of": "2026-10-12",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
       "stage_history": [
         {
           "from_stage": null,
@@ -171,18 +255,39 @@
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-024/F1"
           ],
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPEC-024/F1; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPEC-024/F1"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": false,
+      "not_understood": "What the seal/tablet difference means is not established. It could reflect different text genres (ownership marks versus accounts), different scribal habits, or differences in preservation and excavation between object types that the within-site control does not remove. The unjoined half of the corpus might behave differently, and there is no second, independent corpus on which the test has been replicated. The claim establishes an association inside one lineage's joined subset; it does not establish a fact about Indus writing as a whole, and it says nothing about what any sign means. What would change the picture: the same test on a corpus joined through object identifiers rather than catalogue concordance, or on any genuinely independent corpus.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPEC-024/F1",
+        "content_hash": "06eec51cc03561a0ed1d0890cf44b0fe15683419c5c4cf82213fb931504097ef",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The check (Phase-136) used a within-site stratified test (Cochran-Mantel-Haenszel) on 2,195 inscriptions whose final sign could be mapped, drawn from 2,676 seals and tablets. The statistic came out at 47.0047; a permutation check - shuffling the labels 9,999 times to see how often chance alone produces a gap this large - never reached it (p = 0.0001, the smallest value the run could report). The size of the difference: the odds of a TERMINAL14 ending are about 2.38 times higher on one object type than the other (odds ratio 2.384, confidence interval 1.847 to 3.077). After the family correction across the three Spec 024 tests (Benjamini-Hochberg at q = 0.05), the adjusted value is q = 0.00015 - comfortably inside. A later leave-one-site-out pass (Phase-141) found the result stable when any single site is removed. The boundaries matter as much as the numbers: 49.0 percent of the lineage layer's rows could not be joined to the catalogue at all, so the result describes the joined subset of one corpus lineage (the horus84 ICIT-lineage layer), not the Indus corpus in general - the report itself insists on that wording, and so does this draft."
+      }
     },
     {
       "item_id": "STUDY-SPEC-024/F2-HOLDAT",
       "class": "study_headline_claim",
       "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
       "live_source_detail": "specs/024-evidence-integration/",
-      "stage": "checked",
-      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-024/F2-HOLDAT",
-      "stage_as_of": "2026-10-12",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
       "stage_history": [
         {
           "from_stage": null,
@@ -193,18 +298,39 @@
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-024/F2-HOLDAT"
           ],
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPEC-024/F2-HOLDAT; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPEC-024/F2-HOLDAT"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "not_understood": "Why the two compilations answer the same question differently is not understood. The layers differ in which objects they include, in site mix, and in how they number signs, and Phase-125 showed the two compilations disagree positionally far beyond sampling noise - so a layer difference may be a fact about the compilations rather than about the ancient cities. The claim also does not say there is no site effect at all: it says the effect in this layer, if present, is below the size the program agreed in advance to care about. What would change the picture: the site question asked on object-matched data shared by both compilations - the same missing join that limits the Phase-125 study.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPEC-024/F2-HOLDAT",
+        "content_hash": "9add83a4c808d2404e5f805fa0d82144dac0b0d87e2de45ecac804f79b8b3a08",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The first check (Phase-137) found nothing: the association statistic (chi-square 745.95) was the kind of value chance produces routinely - a permutation test returned p = 0.7354, so the verdict at the time was NOT SUPPORTED. The Spec 026 rerun (Phase-384) sharpened the question into the bounded form the program now uses: is the effect at least as large as the practical margin fixed in advance (an effect size of 0.10, where the descriptive value in this layer had been 0.1154)? The rerun's answer, from an interval estimate that passed its own validity control (an earlier version of the interval was invalid and the program caught and discarded it - that self-catch is part of the record), puts the effect between 0.059 and 0.078 - entirely below the 0.10 margin. The bounded claim is therefore recorded as CONTRADICTED at the declared margin: there may be a small site effect in this layer, but not one as large as the claim required. Note what this verdict is about - the Holdat layer only. The same question in the ICIT-lineage layer (the F3 claim) came out the other way, and that disagreement between layers is itself unexplained (see the F3 draft)."
+      }
     },
     {
       "item_id": "STUDY-SPEC-024/F3-ICIT",
       "class": "study_headline_claim",
       "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
       "live_source_detail": "specs/024-evidence-integration/",
-      "stage": "checked",
-      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-024/F3-ICIT",
-      "stage_as_of": "2026-10-12",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
       "stage_history": [
         {
           "from_stage": null,
@@ -215,18 +341,39 @@
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-024/F3-ICIT"
           ],
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPEC-024/F3-ICIT; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPEC-024/F3-ICIT"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": false,
+      "not_understood": "The mechanism behind the association is not understood: whether cities genuinely wrote differently, or whether period, preservation and excavation differences manufacture the pattern, is undecided - and the disagreement with the Holdat layer (F2) means the answer may partly be about the compilations rather than the cities. The claim does not establish local sign inventions, dialects, or any movement of people; it establishes an association in one corpus lineage with named uncontrolled confounders. What would change the picture: the same test with period controlled as the primary design, and a replication on data outside the ICIT lineage.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPEC-024/F3-ICIT",
+        "content_hash": "56b46015534e52affbc38b0511acc1bf9f464c080946c4cacbd9eb8508e376ab",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The check (Phase-137) found a strong association: chi-square 4966.36, an effect size (Cramer's V - a 0-to-1 scale for how strongly two things go together) of 0.2190, and a permutation p of 0.0001 - chance alone essentially never produces a gap this large. The Spec 026 rerun (Phase-384) confirmed the bounded form: the effect's interval [0.182, 0.210] lies entirely above the practical floor, so SUPPORTED stands. Now the conditions, which the program has attached to this result from the start and which this draft repeats because they are part of the result: the sites in this corpus differ in their period mix, in how well their objects survived, and in their excavation history - the confounders named in Spec 024 section 5.1, alongside text-type and text-length mix. An association with 'site' can be those differences wearing a site label. And the corpus is one lineage - the ICIT line, through the horus84 layer - while the same test in the Holdat layer found no effect of the required size (the F2 claim). One more fact that belongs here: when the follow-up study (Spec 025, the G1 claim) controlled for composition and preservation, the association survived - but chronology, the period mix, was not controlled there either."
+      }
     },
     {
       "item_id": "STUDY-SPEC-025/G1",
       "class": "study_headline_claim",
       "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
       "live_source_detail": "specs/025-stage2-controlled-followup/",
-      "stage": "checked",
-      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-025/G1",
-      "stage_as_of": "2026-10-12",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
       "stage_history": [
         {
           "from_stage": null,
@@ -237,18 +384,39 @@
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-025/G1"
           ],
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPEC-025/G1; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPEC-025/G1"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
         }
       ],
-      "verified_unexplained": true
+      "verified_unexplained": false,
+      "not_understood": "The uncontrolled-chronology rider is the not-understood core of this claim: the program cannot yet say how much of the surviving association is place and how much is period. Also open: the mechanism (genuinely different local repertoires versus different mixes of text genres that composition control only partly captures), and the standing disagreement with the Holdat layer, where no effect of the required size was found. The claim does not establish population movement; the movement question was asked separately (Spec 027 Stage 1) and came back inconclusive. What would change the picture: the primary test re-run with period strata from a chronology spine strong enough to support it - the Spec 030 extension tried to build exactly that spine and closed negative, so the limiting factor is dated material, not method.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPEC-025/G1",
+        "content_hash": "06ebeee5660f9ca6c61c6f1f99d3fb4a4afc72284760b3e36c7e7c9cfd220eb0",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The check (Phase-140) re-ran the F3 test with the shuffling done inside groups matched for composition and preservation (preservation was recorded for 99.9 percent of the rows, which is what made the control possible). The observed statistic, 4966.36, stood far above the shuffled values (typical value 2684.74); not one of 9,999 shuffles reached it (p = 0.0001). The Spec 026 rerun (Phase-385) confirmed the effect size: the interval [0.184, 0.210] lies entirely above the declared margin, so SUPPORTED under control stands. The rider, which the program requires wherever this result is stated and which this draft states in the body, not a footnote: chronology is not controlled in the primary test. Sites' period mixes differ, and until period is held fixed the same way, part of what is called a site effect may be a time effect - later and earlier cities are not the same cities. A chronology sensitivity bound is reported alongside the result, but it is not the controlled verdict."
+      }
     },
     {
       "item_id": "STUDY-SPEC-027/STAGE1-PHASE-392",
       "class": "study_headline_claim",
       "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
       "live_source_detail": "specs/027-movement-culture-language/",
-      "stage": "checked",
-      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-027/STAGE1-PHASE-392",
-      "stage_as_of": "2026-10-12",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
       "stage_history": [
         {
           "from_stage": null,
@@ -259,18 +427,39 @@
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-027/STAGE1-PHASE-392"
           ],
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPEC-027/STAGE1-PHASE-392; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPEC-027/STAGE1-PHASE-392"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "not_understood": "The jackknife failure is the not-understood core: the program cannot tell whether Harappa carries the signal because Harappa is genuinely central, or because its corpus is so much larger than the others that it dominates any pooled measure. A 1.7-percent association also cannot carry a movement story by itself - shared period, shared trade goods and shared excavation practices all predict the same small resemblance. Stage 2 of the movement study was not executed as a stage, and the timing question behind it (Q6) remains not-yet-testable even after the chronology-spine extension (Spec 030, Phase-394) closed negative. What would change the picture: the Harappa-specific follow-up arms (Spec 028, drafted alongside this one) are the program's own answer to the jackknife problem - and both came back inconclusive as well, which is itself the current state of knowledge.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPEC-027/STAGE1-PHASE-392",
+        "content_hash": "17e1a854ae4ab28c81bf21513b57f962effb03833edf7f1416a189e2b705914f",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The primary result: site similarity accounts for a small share of the differences between repertoires - median adjusted R-squared 0.01677, that is about 1.7 percent of the variation, with interval [0.01032, 0.02397]. The signal is consistent (the rejection share was 1.000, and both controls passed: the negative control sat near zero, the positive control behaved as designed). But the frozen SUPPORTED rule also required the result to survive leaving any one site out, and removing Harappa dropped the median to 0.00928 - below the 0.01 margin fixed in advance. The CONTRADICTED rule did not fire either. The verdict is therefore INCONCLUSIVE, exactly as the frozen rules produce it. A sensitivity version restricted to complete cases read slightly higher (0.01793) and carried no verdict. The study's own record also notes what could not be run at all: the planned Parpola-numbering sensitivity was not estimable, because the crosswalk covers only 17.57 percent of the relevant signs."
+      }
     },
     {
       "item_id": "STUDY-SPEC-028/ARM-A",
       "class": "study_headline_claim",
       "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
       "live_source_detail": "specs/028-harappa-robustness/",
-      "stage": "checked",
-      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-028/ARM-A",
-      "stage_as_of": "2026-10-12",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
       "stage_history": [
         {
           "from_stage": null,
@@ -281,18 +470,39 @@
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-028/ARM-A"
           ],
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPEC-028/ARM-A; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPEC-028/ARM-A"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "not_understood": "What Arm A establishes is a bound, and bounds are the honest content here: whatever site-similarity signal exists in the non-Harappa corpus is, on current data, smaller than the size the program agreed in advance to count as support. It does not show the Stage-1 signal was fake - pooling Harappa back in is exactly what Arm B weights differently - and it does not show a weaker real effect is absent; the data cannot afford that distinction yet. Not understood: whether more non-Harappa material (or better-dated material) would push the estimate over the margin or toward zero. What would change the picture: new multi-site inscription data outside the ICIT lineage - the same missing input that keeps PRED-2026-003 unscored.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPEC-028/ARM-A",
+        "content_hash": "b08d840210bd97c897cf13fc0f3f19531e224b224b7caad55672a0580ca5c598",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The result: median adjusted R-squared 0.00878, interval [0.00463, 0.01297] - below the 0.01 margin fixed in advance. The test rejected the null in 62.3 percent of resamples (rejection share 0.623), and every leave-one-site-out median also fell below the margin. The controls behaved. Under the frozen rules that is INCONCLUSIVE: the effect without Harappa is too small to confirm at the declared margin, and not absent enough to contradict. A sensitivity version on complete cases read lower still (0.00647) and carried no verdict."
+      }
     },
     {
       "item_id": "STUDY-SPEC-028/ARM-B",
       "class": "study_headline_claim",
       "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
       "live_source_detail": "specs/028-harappa-robustness/",
-      "stage": "checked",
-      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-028/ARM-B",
-      "stage_as_of": "2026-10-12",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
       "stage_history": [
         {
           "from_stage": null,
@@ -303,18 +513,39 @@
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPEC-028/ARM-B"
           ],
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPEC-028/ARM-B; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPEC-028/ARM-B"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "not_understood": "The Harappa-dependence itself is the not-understood: the program cannot yet separate 'Harappa is an unusual city' from 'Harappa is an unusually excavated and published corpus'. Equal weighting did not cure the dependence, which rules out the simplest size explanation but does not choose among the rest (period span, object mix, publication history). Until that separation exists, the movement question has no confirmable answer in this corpus, in either direction. What would change the picture: an object-type-stratified version of Arm B (Arm C's tablet/seal split suggests where the difference lives), run as a registered primary test rather than an exploratory description.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPEC-028/ARM-B",
+        "content_hash": "b0a4b2c3adee729d492cc9325184b11d7890185216252e8723a6845293f3b195",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The headline number is the strongest in the movement line: median adjusted R-squared 0.02237, interval [0.01222, 0.03333] - entirely above the 0.01 margin - with a rejection share of 0.955. Most leave-one-site-out runs also stay above the margin (0.0225 to 0.0247). The exception is the one the study exists to probe: dropping Harappa pulls the median to 0.00661, below the margin, and the frozen SUPPORTED rule's jackknife clause therefore fails - the same clause that stopped Stage 1. The verdict is INCONCLUSIVE. The study's exploratory arm (Arm C, descriptive only, no verdict) adds a fact worth keeping next to this one: Harappa's repertoire profile genuinely differs from the pooled others (a dissimilarity of 0.3410), and the difference is much larger among tablets (0.4953) than among seals (0.1114) - Harappa is not merely bigger; on tablets, it is different."
+      }
     },
     {
       "item_id": "STUDY-SPECS-001-023+PHASES-TO-141",
       "class": "study_headline_claim",
       "live_source": "specs/ (per-spec outcome records; see live_source_detail)",
       "live_source_detail": "specs/ (per-spec outcome records, Specs 001-023)",
-      "stage": "checked",
-      "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPECS-001-023+PHASES-TO-141",
-      "stage_as_of": "2026-10-12",
+      "stage": "explained",
+      "stage_source": "transition-service:stage_history[1]",
+      "stage_as_of": "2026-10-13T10:12:00+00:00",
       "stage_history": [
         {
           "from_stage": null,
@@ -325,9 +556,30 @@
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:STUDY-SPECS-001-023+PHASES-TO-141"
           ],
           "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry STUDY-SPECS-001-023+PHASES-TO-141; no pre-existing field altered."
+        },
+        {
+          "from_stage": "checked",
+          "to_stage": "explained",
+          "actor": "Tristen Pierson",
+          "timestamp": "2026-10-13T10:12:00+00:00",
+          "evidence_refs": [
+            "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPECS-001-023+PHASES-TO-141"
+          ],
+          "reason": "Lane-2 adoption (owner act, 2026-10-13): the explanation record authored by Tristen Pierson — adopted from the AI-drafted texts of PR #190, drafting disclosed in the record — is ingested; the stage advances checked -> explained through the transition service (OD-2)."
         }
       ],
-      "verified_unexplained": false
+      "verified_unexplained": false,
+      "not_understood": "A rollup is an index, not an explanation: the per-item reasons live in the 116 assessments, and neither this draft nor the headline number should be quoted in place of them. Two open edges remain. The 61 reinterpret-only items carry new readings without new data - anyone citing a pre-audit label without its appended assessment will misstate the evidence, and the program cannot control citations it cannot see. And the audit's own framing - what counts as 'changed' - is a program judgement, recorded but not independently reviewed. What would change the picture: an outside scholar's engagement with the assessment set, which is precisely the digestion stage none of these items has reached.",
+      "explanation_record": {
+        "author": "Tristen Pierson",
+        "author_kind": "human",
+        "drafter": "AI agent (Muse Spark, via Muse)",
+        "artifact_uri": "https://github.com/BitConcepts/glossa-lab/blob/main/specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json#STUDY-SPECS-001-023+PHASES-TO-141",
+        "content_hash": "b4a1c3b3df8356d8c21f679eb644e58840460f9b8e6ec18d86e71ad3bec8c795",
+        "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
+        "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
+        "explanation_text": "The audit (Spec 026) inventoried 116 items from that history and reclassified each under the tightened framework: 8 items required full reruns, 12 were reproduce-only, 61 reinterpret-only, 27 unaffected, and 8 not rerunnable. For 75 of the 116, the evidentiary status changed - not because the old arithmetic was wrong, but because the old labels claimed more than the old checks could carry. The four reruns show the range: the keyed-transcription claim was contradicted (Phase-383); the Holdat site claim was contradicted at its declared margin while the ICIT site claim stood (Phase-384); the controlled site claim stood at its margin (Phase-385); and the cross-compilation line (Phases 116, 125, 127, 131) replayed exactly, its uncomfortable numbers reproduced rather than revised away (Phase-386). The assessments are appended historical assessments: the original result files and ledger entries were never rewritten, and the new readings sit alongside the old labels so the change is itself inspectable."
+      }
     }
   ]
 }

@@ -6148,3 +6148,46 @@ via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI. The explanation texts were AI-drafted and
 human-adopted as recorded above; the drafting AI is not the
 author of any explanation record.
+
+## 2026-10-13 — Spec 029 lane-2 adoption INGESTED (20 claims explained; OD-2)
+
+Companion act to the adoption recorded above (same owner order,
+2026-10-13): the 35 adopted explanation records were ingested
+into the live stores by
+`specs/029-tao-claim-lifecycle/ingest_lane2_adoption.py`
+(fail-closed; `--verify` re-asserts the ingested state against
+the frozen ledger and the adopted record). `not_understood` and
+the completed `explanation_record` now stand on all 35 records.
+Stage changes went only through the Phase B gate layer
+(transition service, the single writer): the 20 records at
+`checked` advanced to `explained` (8 extracted claims, 10 study
+headlines, PRED-2026-006/007); the 15 at `created` kept their
+stage (explanation cannot precede checking) as authored-pending,
+except the 3 Phase-104 fragment claims, whose texts were
+ingested but whose stage and evaluation state this act did not
+touch (the carry-over correction owns those). The
+`verified_unexplained` stamp cleared on exactly the 9 records
+whose flag was set and whose explanation took effect. Live state
+after the act, over the 336-record stamped population: 220
+created / 96 checked / 20 explained / 0 accepted / 0 digested;
+96 stamped flags. Nothing reached `accepted` or `digested` —
+those gates need the acceptance process and independent
+scholarly engagement (OD-5), which do not exist yet. Append-only
+held: every advanced record keeps its Phase D migration entry as
+`stage_history[0]`, byte-identical; the frozen ledger, the PRED
+register document, the anchors file, and Specs 027–031 records
+are untouched; PRED-2026-001/002/003 untouched. Phase G gates
+green (provenance partition now 324 ledger replays + the named
+20 transition-service tails); full suite green with the AEE
+score regression byte-identical; foundation check 40 ok / 0
+fail / 8 warn on its own surface (this act touches none of its
+inputs). Five test files' pre-adoption live-state assertions
+were amended with dated, named notes (Phase A/D/E2/G/I) — the
+superseded expectations are preserved in prose in each file.
+Record: `specs/029-tao-claim-lifecycle/lane2-adoption-record.md`.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI. The ingested explanation texts were
+AI-drafted and human-adopted (see the adoption entry above);
+the drafting AI is not the author of any explanation record.

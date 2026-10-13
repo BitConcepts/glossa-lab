@@ -11,7 +11,7 @@
       "source_document_id": "parpola_2010_dravidian_solution",
       "claim_type": "language_claim",
       "normalized_claim": "Indus script encodes Proto-Dravidian language using the rebus principle.",
-      "claim_status": "partially_supported",
+      "claim_status": "not_supported",
       "testability": "directly_testable",
       "falsification_condition": "If Dravidian phonotactics do not fit Indus sign bigrams better than Sanskrit.",
       "glossa_lab_evidence": "Phase-41: 1.0566x SA advantage; Phase-43: +0.484 log-units on V3 corpus [VERIFIED]",
@@ -54,7 +54,24 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "The support on the record comes from two comparisons the program ran in its Phase-41 and Phase-43 work. Both asked the same question: if you anchor a small set of signs to Dravidian word values, do the resulting sign sequences look more probable than the same exercise done with Sanskrit values? In the first run (Phase-41, on the Mahadevan corpus of 1,669 inscriptions, five anchor signs per language), the Dravidian anchors won by a ratio of 1.0566 to 1 - a real but small margin. In the second (Phase-43, on a 1,500-sequence sample of the V3 corpus), Dravidian won by 0.484 log units per sign - again a win, again modest. That is why the status is partially supported rather than supported: the comparisons favour Dravidian over Sanskrit, but only two candidate families were compared, and the margins are small. The weakness that matters most must be stated in the open: both comparisons were computed with the program's semantic-anchoring machinery, and the program later falsified that method on held-out data (Phase-107: its predictions scored 0.000, 0 of 115). No rerun of this specific Dravidian-versus-Sanskrit comparison with a method that survived testing exists in the record. The partial support on this claim is therefore inherited from a method the program no longer trusts, and the claim's checked status has never been re-earned without it."
-      }
+      },
+      "dated_outcome_entries": [
+        {
+          "date": "2026-10-13",
+          "phase": 397,
+          "spec": "033-sa-free-language-comparison",
+          "kind": "status_consequence",
+          "verdict": "NOT SUPPORTED",
+          "status_from": "partially_supported",
+          "status_to": "not_supported",
+          "evidence_refs": [
+            "reports/phase397_results.json",
+            "specs/033-sa-free-language-comparison/outcome.md",
+            "https://osf.io/ephf7/"
+          ],
+          "entry": "Per Spec 033 section 6 (DD-03-3): the SA-free rerun of the language comparison (Phase-397; frozen contract digest 412b4805063bbffb3915a834354cb428cc9b10958f614a1680b859005a43b66d; registered at OSF ephf7 before execution) returned NOT SUPPORTED for the bounded claim. On the strict sign set, mean log probability per sign: no-language baseline -2.6233, Dravidian -2.8465, Munda -2.8616, Sanskrit -3.1184; the margin over the best rival (the baseline) is -0.2232 against a frozen bar of +0.10, and the Dravidian score lies inside the 999 random assignments' range (88 of 999 scored above it). The partial support inherited from Phase-41 (ratio 1.0566) and Phase-43 (+0.484 log units per sign) is therefore replaced by this entry; those numbers remain in this record's history as results produced by the semantic-anchoring method the program falsified in Phase-107. Dravidian still finishes ahead of Sanskrit head-to-head (by 0.2719); the verdict concerns the full frozen field, including Munda and the baseline. The claim's stage is unchanged by this lane-1 result (explained, on its author's record). This entry appends; the status reclassification above is its only field change, and no earlier text was edited."
+        }
+      ]
     },
     {
       "claim_id": "parpola_2010_dravidian_solution_manual_002",

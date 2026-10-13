@@ -18,6 +18,71 @@ import {
   type DeciphermentProgress,
   type FoundationStatus,
 } from "../api";
+import { STAGE_NAMES, StageLegend, stageColor } from "./StageLegend";
+
+/**
+ * Spec 029 Phase E2 (completing E1.1): the program's standing
+ * position, rendered ahead of every metric on this panel. The
+ * script is not deciphered — this is the repository description's
+ * standing line, and the panel now leads with it instead of a
+ * volume count.
+ */
+function StandingPosition() {
+  return (
+    <div
+      data-testid="standing-position"
+      style={{
+        border: "1px solid #d1d5db", borderRadius: 8,
+        padding: "10px 14px", marginBottom: 12, background: "#f9fafb",
+      }}
+    >
+      <div style={{ fontSize: 12, fontWeight: 700, color: "#111827", marginBottom: 3 }}>
+        Standing position
+      </div>
+      <div style={{ fontSize: 12, color: "#374151", lineHeight: 1.55 }}>
+        The Indus script is not deciphered. The readings this program records are
+        candidate readings, each one a claim standing at a stage of the claim
+        lifecycle (lane 2, below). A reading is not settled by being recorded and
+        checked, and no count on this panel is a measure of decipherment.
+      </div>
+    </div>
+  );
+}
+
+/**
+ * The lane-2 stage summary over the anchor records, from the
+ * dashboard payload's `by_stage` counts. Counts are an index into
+ * the anchor records (permitted by FR-029-08) — they are rendered
+ * under lane-2 labels, in the five verbatim stage names (OD-4),
+ * next to the OD-4 legend.
+ */
+function AnchorStageSummary({ data }: { data: DeciphermentProgress }) {
+  const byStage = data.anchors.by_stage ?? {};
+  const unstamped = data.anchors.n_unstamped_stage ?? 0;
+  return (
+    <div data-testid="stage-summary" style={{ marginBottom: 12 }}>
+      <div style={{ fontSize: 12, fontWeight: 700, color: "#111827", marginBottom: 4 }}>
+        Anchor claims by stage — lane 2 (human-paced settlement)
+      </div>
+      <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 6 }}>
+        {STAGE_NAMES.map((s) => (
+          <span key={s} style={{ fontSize: 12 }}>
+            <span style={{ fontWeight: 700, color: stageColor(s) }}>{s}</span>
+            <span style={{ color: "#374151" }}>: {byStage[s] ?? 0}</span>
+          </span>
+        ))}
+        {unstamped > 0 && (
+          <span style={{ fontSize: 12, color: "#6b7280" }}>not stamped: {unstamped}</span>
+        )}
+      </div>
+      <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 8 }}>
+        These counts are an index into the anchor records — how many records stand
+        at each stage — not a measure of decipherment.
+      </div>
+      <StageLegend fg="#111827" muted="#6b7280" border="#d1d5db" />
+    </div>
+  );
+}
 
 const DECIPHER_DONE_KEY    = "glossa_decipher_actions_done";    // localStorage  – success/error
 const DECIPHER_PENDING_KEY = "glossa_decipher_actions_pending"; // sessionStorage – in-flight
@@ -362,14 +427,18 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
           )}
         </div>
 
+        {/* Spec 029 Phase E2 (completing E1.1): the panel now leads
+            with the standing position and the lane-2 stage summary
+            with the OD-4 legend — the honest replacement rendering
+            E1 deferred to this phase. */}
+        <StandingPosition />
+        <AnchorStageSummary data={data} />
+
         {/* Metrics grid — Spec 029 Phase E1 (E1.1; FR-029-08): the
             volume-as-decipherment headline tile, the SA aggregate
             tile, and the seals percentage tile are withdrawn. What
             remains is the anchor-record count (an index into the
-            anchor records) and token coverage. The
-            standing-position / stage-summary rendering that
-            succeeds this layout is Phase E2's work, not this
-            withdrawal's. */}
+            anchor records) and token coverage. */}
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 12 }}>
           <div>
             <div style={{ fontSize: 11, color: "#6b7280", marginBottom: 4 }}>Anchor Records</div>
@@ -542,9 +611,10 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
         {/* Spec 029 Phase E1 (E1.1; FR-029-08; audit §5-P5.1): the
             former status footer — a volume count presented as a
             decipherment claim, with an unqualified readings
-            assertion — is withdrawn entirely. No replacement copy
-            is authored in this phase; the honest replacement
-            rendering is Phase E2's work. */}
+            assertion — is withdrawn entirely. Its honest
+            replacement (standing position + lane-2 stage summary +
+            OD-4 legend) is the Phase E2 block at the top of this
+            panel. */}
       </div>
     );
   }
@@ -567,6 +637,11 @@ export function DeciphermentPanel({ onAction }: { onAction?: ActionFn } = {}) {
         </div>
         <span style={{ fontSize: 12, color: "#6b7280" }}>{data.n_rounds} rounds</span>
       </div>
+
+      {/* Spec 029 Phase E2: the standing position and lane-2 stage
+          summary lead this rendering too. */}
+      <StandingPosition />
+      <AnchorStageSummary data={data} />
 
       {/* Metrics grid */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}>

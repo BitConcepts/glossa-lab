@@ -185,7 +185,16 @@ async def list_claims(
     ``?verified_unexplained=true/false`` parameter can filter on.
     The lane-1 score, when requested, stays a separate object
     (``aee_score`` / ``lane1_score``) — never folded into ``stage``.
+
+    Spec 029 Phase E2 (FR-029-05/09): each claim additionally carries
+    ``not_understood`` (the record's own statement, or ``None`` when
+    no human has authored one — the absence is serialized, never
+    filled with generated text) with ``not_understood_recorded``, and
+    ``bundle``: the Phase B bundle serialization for bundle parents
+    (the contest travels with the parent), ``None`` for records that
+    are not bundle parents.
     """
+    from glossa_lab.claim_bundle import is_bundle, serialize_bundle  # noqa: PLC0415
     from glossa_lab.claim_stage import compute_verified_unexplained, serialize_stage  # noqa: PLC0415
 
     _CLAIMS_DIR.mkdir(parents=True, exist_ok=True)
@@ -214,6 +223,21 @@ async def list_claims(
             }
             entry["stage"] = serialize_stage(claim)
             entry["verified_unexplained"] = compute_verified_unexplained(claim)
+            # Phase E2: the not-understood statement travels with the
+            # verdict display. Absence is serialized as None — it is a
+            # stated gap in the record, never filled in here.
+            _nu = claim.get("not_understood")
+            entry["not_understood"] = _nu if isinstance(_nu, str) and _nu.strip() else None
+            entry["not_understood_recorded"] = entry["not_understood"] is not None
+            # Phase E2: a bundle parent's contest state renders on the
+            # parent wherever the parent renders (FR-029-05).
+            entry["bundle"] = None
+            entry["bundle_serialization_error"] = None
+            if is_bundle(claim):
+                try:
+                    entry["bundle"] = serialize_bundle(claim)
+                except Exception as exc:  # noqa: BLE001 — a malformed bundle must not 500 the listing; the failure is serialized, not hidden
+                    entry["bundle_serialization_error"] = str(exc)
             if verified_unexplained is not None and entry["verified_unexplained"] != verified_unexplained:
                 continue
             all_claims.append(entry)

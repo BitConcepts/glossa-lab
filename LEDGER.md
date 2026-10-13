@@ -5793,3 +5793,59 @@ changed here. Record:
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-12 — Spec 029 Phase E2: lane-separated rendering
+
+Spec 029 Phase E2 (tasks E2.1–E2.3 as frozen, plus E1.1's
+deferred replacement rendering; FR-029-09, FR-029-10,
+FR-029-05 display rule; claims F029-C06/C07; OD-4) builds
+the honest replacement rendering after E1's withdrawals.
+The DeciphermentPanel now leads with the program's standing
+position — "The Indus script is not deciphered," the
+repository description's standing line — and the lane-2
+stage summary from the dashboard payload's `by_stage`
+counts (created 193 · checked 94 · explained 0 · accepted 0
+· digested 0), with the OD-4 legend: the five stage names
+verbatim, each with its plain definition, including that
+creation and checking alone never settle a claim. The
+legend also renders on the IndusEvidenceView claims
+surface. Every expanded claim renders two distinct labelled
+regions: lane 2 (human-paced settlement — stage in the
+verbatim name with its provenance and latest transition,
+the `verified_unexplained` risk flag, and the contest
+display) and lane 1 (machine-speed verification, checking
+only — the extraction status in a single neutral chip, the
+retained per-claim AEE score only inside this region with
+its band and method context, the falsification condition,
+and the not-understood statement). Lane-1 badges lost their
+per-status colours; no lane-1 value renders in a lane-2
+position or the reverse (asserted on the rendered DOM).
+`GET /claims` additively serializes `not_understood` (the
+record's own statement or `None`, with
+`not_understood_recorded`) and `bundle` (the Phase B
+serialization for bundle parents). A contested attribution
+renders on the parent with the OD-3 cap visible (stage
+capped at checked, the computation's caps shown, the
+contest record shown). No live record is a bundle parent —
+all 31 extracted claims serialize `bundle: null` and render
+the honest no-bundle absence; the contested path is proven
+on synthetic fixtures in the backend tests and the
+Playwright spec. Every verdict display renders the record's
+not-understood statement or, for unauthored records, the
+absence as a visible gap ("not yet recorded — this record
+is incomplete… no machine-generated text is substituted for
+it"): all 31 live claims are unauthored, no text was
+generated for any of them, and the authoring queue (the 8
+verified_unexplained claims first) is written down in the
+phase record as lane-2 human work. A verbatim-name guard
+pins the five stage names and bans stage-label synonyms in
+the touched sources; E1's withdrawals stay withdrawn.
+Before/after screenshots at desktop and mobile widths and
+live served-payload checks are in
+`specs/029-tao-claim-lifecycle/phase-e2-evidence/` and
+`phase-e2-record.md`. Record:
+`specs/029-tao-claim-lifecycle/phase-e2-record.md`.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

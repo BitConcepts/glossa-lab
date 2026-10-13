@@ -36,7 +36,7 @@
       via `build_freeze.py`; freeze tests pin the
       digest replay, the definition constants, the
       register integrity, and the D8 margins.
-- [ ] **L6 — Freeze PR merged**, house gates green
+- [x] **L6 — Freeze PR merged**, house gates green
       (foundation 0 failures, full suite, branding
       sweep).
 - [ ] **L7 — OSF registration filed** for the frozen

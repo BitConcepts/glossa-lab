@@ -6094,3 +6094,29 @@ computed, no verdict exists.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-13 — Spec 031 OSF registration filed (pending approval)
+
+The frozen Spec 031 contract was registered on OSF
+per adopted 6A, after the freeze merged (PR #192,
+`95388bbc`) and before any execution: registration
+**https://osf.io/jtwvc/** on node `rfhd4`, OSF
+Preregistration schema, all 29 response fields filed
+from the frozen record and read back exact; subjects
+mirror the precedent registrations. State at filing:
+`reviews_state: initial`,
+`pending_registration_approval: true` — the single
+recorded API approval attempt returned HTTP 409 (the
+standing route's known behaviour), and the "Pending
+Registration - Admin Notification" email arrived
+(Gmail id `1a134000191cceec`, 2026-10-13T06:42:56Z).
+The approval click is the parent chat's standing job;
+the registration record
+(`specs/031-stage2-q7-provenance-networks/osf-registration.md`)
+is filed as a PR left open pending that click, and is
+completed by append once the approval verifies with
+its DOI. Execution (Phase-395) remains un-ordered.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

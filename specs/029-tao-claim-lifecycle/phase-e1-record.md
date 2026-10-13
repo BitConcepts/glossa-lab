@@ -215,14 +215,24 @@ Grepped across `frontend/src` for the phase record:
   1.4.0): **1374 passed, 6 skipped, 0 failed** (8m52s) —
   the 1368 passed / 6 skipped merged baseline plus exactly
   this phase's 6 new tests.
-- **PR / CI / merge**: completed in this record's
-  gate-evidence completion commit, after the CI run on the
-  final head is read from the check runs' own conclusions.
-  Merge: method `merge`; the merge commit SHA and the new
-  main head are verified via the GitHub API immediately
-  after merging (a merge commit cannot name itself in the
-  content it merges; the SHAs are stated in the PR
-  timeline and in this phase's delivery report).
+- **PR / CI / merge**: PR: BitConcepts/glossa-lab
+  **#185** (`impl/029-phase-e1-withdrawals` → `main`).
+  CI on the implementation head `ecadd4c8` (workflow run
+  38335464696): **all 7 checks success, read from the
+  check runs' own conclusions** — Backend tests (pytest)
+  pass; Frontend tests (Playwright) pass; Evidence Graph
+  script smoke tests pass; Indus public validation
+  checks pass; Shell wrappers (ubuntu-latest,
+  macos-latest, windows-latest) pass. This record's
+  gate-evidence completion commit re-verifies green on
+  the final head before merging (same workflow, all 7
+  checks success on the final head — conclusions read
+  again after that run). Merge: method `merge`; the
+  merge commit SHA and the new main head were verified
+  via the GitHub API immediately after merging (a merge
+  commit cannot name itself in the content it merges;
+  the SHAs are stated in the PR timeline and in this
+  phase's delivery report).
 - **Lint**: ruff clean on every authored/edited Python
   file.
 - **Branding sweep**: no other-company or other-program

@@ -5931,3 +5931,80 @@ display was changed by this phase. Record:
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-13 — Spec 029 Phase X: closeout (spec complete)
+
+Spec 029 (Tao claim lifecycle) is closed. All
+implementation phases are merged: L3 recovery PR #167
+(`e60b8408`), freeze PR #168 (`a38cf92e`), A #169
+(`028d416c`), D #171 (`712f3b99`), H #175 (`f8da5eaf`),
+I #180 (`92e8f392`), B #182 (`411386a6`), C #183
+(`7f773d6b`), J #184 (`7528ddc5`), E1 #185 (`1533425b`),
+E2 #186 (`587dec70`), G #187 (`3e14dce2`) plus its
+record correction #188 (`db1c3832`). Maintenance PR
+#181 (aee pin below 1.5, merged `170e6f1f`) is
+acknowledged in the closeout record as an external
+event during implementation, not a spec phase; the
+Phase I worker runtime death and forensic recovery
+are recorded there as a process note.
+
+Final verification on merged main `db1c3832` (task
+X1, CI-parity venv at aee 1.4.0): (a) stripping all
+Spec 029 additive keys (Phase D stage stamps + Phase
+H annotation) from `INDUS_FINAL_ANCHORS.json`
+reproduces the pre-Spec-029 canonical file
+byte-identically (SHA-256 `eccea6d5…`) — no
+pre-existing anchor field changed in the whole spec;
+(b) `docs/PREDICTION_REGISTER.md` is byte-identical
+to the plan-freeze head `9202fd44` (its only
+retirement entry, PR #163, predates implementation);
+PRED-2026-001/002/003 still PENDING, unscored; (c)
+ledger-vs-live reconciliation exact: 220 created /
+116 checked / 0 explained / 0 accepted / 0 digested,
+105 `verified_unexplained` flags, anchors
+`strict_set` exactly 94 with the Phase H vocabulary
+distribution 94/44/33/113/3, extracted claims 31
+store records resolving to 23 canonical claims + 8
+evidence instances with the Zipf proposition recorded
+once; (d) framework026 `verify_freeze` returned []
+on merged main and the freeze digest stands at
+`80d589fe…` — never regenerated; (e) foundation
+check 40 passed / 0 failed / 8 warnings and the full
+backend suite 1407 passed / 6 skipped / 0 failed,
+identical to Phase G's final totals.
+
+Closeout records (task X2): the completion ticks
+(F1/F2 + phases A–X, 53 checkboxes, checkbox-state
+changes only — verified mechanically, no task text
+changed, no task incomplete) were applied to
+`tasks.md` once, as the recorded freeze amendment
+`freeze.md` section 2 prescribes; because `tasks.md`
+is a frozen source in this spec, the freeze test now
+asserts exactly the amendment's two named drifts
+(the ticks and its own acknowledgment) and fails on
+any other. Audit items D-A, D-B, D-D, D-E are
+disposed by this spec's phases; D-C was executed
+separately (PR #166). Honest residuals stand as
+recorded in the closeout record: the promotion
+writer does not yet stamp Phase H fields at write
+time (CI catches it); SignsView counts and the
+historical SA-era node schemas stand inventoried,
+not changed; aee 1.5.0 adoption remains a future
+decision (14-test census: 5 score-semantics + 9
+bundle-validation failures); the trail-builder
+string-evidence defect and the G1 recorded baseline
+stand as Phase G left them; `not_understood` remains
+unauthored on all live claims (lane-2 human work);
+and the committed foundation report's claims-store
+digest is stale beside the live store (its anchors
+hash matches; the Phase J as-of label flags exactly
+this). Standing statement: no live claim stands
+above `checked`; explained / accepted / digested
+count 0 because those are lane-2 human outcomes the
+machinery now gates but cannot manufacture. The
+script is not deciphered. Record:
+`specs/029-tao-claim-lifecycle/closeout-record.md`.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

@@ -6064,3 +6064,33 @@ the 0.70 threshold). Record:
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-13 — Spec 031 frozen (Stage 2 / Q7 design freeze)
+
+The Spec 031 design (design PR #191, merged `b00b3b1d`)
+is frozen: `specs/031-stage2-q7-provenance-networks/
+freeze.md` + `freeze.json`, framework026 digest
+`f63167fc99c8d3c31f885b1014cad69fab3788fcf8e6212d018aa6948a2cdac6`
+over freeze.md, spec.md, claims.json (register
+0.3-draft, F031-C01…C12), adjudication.md, the AEE
+recovery record and freeze note, build_freeze.py, and
+the freeze test. Freeze tests pin the digest replay,
+the definition constants (Phase-395; support rules
+3 / 20 / 10 / 8 / 10; margin 0.02; B = 9,999; seed
+20261013; the ceramic arm's NOT ESTIMABLE closure and
+the not-ordered execution gate carried verbatim), the
+register integrity, the D8 margins as the audit states
+them, and the Stage 0 gazetteer counts at row level
+(36 rows / 30 sites / 21 verified_open / 15
+open_access_read_only). Foundation check 40 passed /
+0 failed / 8 warnings. `plan.md` and `tasks.md` are
+bookkeeping and are not digest-covered (the Spec
+029/030 rule). Next per adopted 6A: OSF registration
+of the frozen contract, then execution only on a
+separate owner order. Nothing was executed under
+this freeze: no link digitised, no similarity
+computed, no verdict exists.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

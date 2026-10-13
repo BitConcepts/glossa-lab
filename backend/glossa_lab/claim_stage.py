@@ -30,6 +30,15 @@ machinery. This service enforces the Phase A rules — one-step-forward
 legality, reasoned demotion, the automated-actor allowlist, and the
 named-human requirement above ``checked``, including a non-empty
 evidence trail for those transitions — and fails closed on each.
+
+Phase B extension (additive, 2026-10-12): the gate records live in
+:mod:`glossa_lab.claim_bundle`, whose gate layer delegates the write
+to this service. One Phase B shape is refused here directly: a
+record carrying ``sub_claims`` is a bundle parent, and a bundle
+parent's stage is computed as the minimum of its sub-claim stages
+(F029-C11) — never directly assignable through this service. No
+record shape that existed in Phase A carries ``sub_claims``, so no
+Phase A behaviour changes.
 """
 
 from __future__ import annotations
@@ -297,7 +306,10 @@ def transition_stage(
       non-empty ``evidence_refs`` trail;
     * every successful write updates ``stage``, ``stage_source`` (the
       transition-service history entry) and ``stage_as_of`` together,
-      and appends the ``stage_history`` entry.
+      and appends the ``stage_history`` entry;
+    * a bundle parent (a record carrying ``sub_claims``, Phase B)
+      refuses every direct transition: its stage is computed, never
+      assigned (F029-C11).
     """
     try:
         target = validate_stage_value(to_stage)
@@ -308,6 +320,13 @@ def transition_stage(
         raise StageTransitionError(str(exc)) from exc
     if target is None:
         raise StageTransitionError("to_stage is required")
+    sub_claims = record.get("sub_claims")
+    if isinstance(sub_claims, list) and sub_claims:
+        raise StageTransitionError(
+            "a bundle parent's stage is computed as the minimum of its "
+            "sub-claim stages (claim_bundle.sync_parent_stage); "
+            "direct assignment is refused"
+        )
     history = record.get("stage_history")
     if history is not None and not isinstance(history, list):
         raise StageTransitionError("stage_history is not a list — record is defective")

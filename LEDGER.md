@@ -6502,3 +6502,41 @@ section 7); the Spec 029 freeze replay is unaffected.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-13 — PRED-2026-010 registered: clean-withholding successor to PRED-2026-006
+
+By owner order (Tristen Pierson, 2026-10-13), the successor
+prediction called for by the Phase-396 closure was
+registered the same day. PRED-2026-010 restates
+PRED-2026-006's prediction and bars (at least 70% of the
+trained INITIAL signs showing start_rate at least 0.40 at
+Harappa) with the withholding made clean by construction:
+the trained set was derived at registration by the recorded
+global_class_stability logic (verbatim, imported from the
+frozen Phase-396 build) over the CISI Mohenjo-daro pool
+only — 179 inscriptions, 28 classifiable signs, INITIAL
+set P000, P217, P324 (3 signs; registration derivation:
+backend/scripts/pred010_register_derivation.py, record:
+reports/pred010_derivation_record.json). The training
+pool, filtered-pool manifest, withheld file, and crosswalk
+are pinned by SHA-256 in the register entry; the
+small-set caveat (the 70% bar passes only at 3 of 3) and
+the disclosure (cleanliness = verified training-pool
+exclusion, not analyst blindness; the Harappa pool was
+inspected in aggregate during the Spec 032 audit) are
+stated in the entry. Register handling: insertions only
+(+20/-0 lines: the section 3 entry and a dated section 6
+note); PRED-2026-006's entries are byte-identical and it
+remains unscored. The Spec 029 Phase D register-hash pin
+(test_pred_register_document_untouched) was advanced by
+name a second time for this authorised append. OSF
+Preregistration filed from the Predictions &
+Registrations node (nrb9u): https://osf.io/wjebq/,
+pending admin approval at filing (one API approval
+attempt, HTTP 409, recorded; admin notification Gmail
+1a1354c8d63d4ab9; record: docs/pred-2026-010-osf-registration.md).
+No scoring ran; no Harappa start rate was computed for
+any sign; the withheld file was byte-hashed only.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

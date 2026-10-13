@@ -71,7 +71,11 @@ _NODE_SPECS = [
      "Phase-131's categories, under the frozen verdict lines "
      "(<= 0.20 composition; >= 0.32 transcription; between, "
      "a split attribution). The settled Phase-125 verdict "
-     "is never re-judged. CPU."),
+     "is never re-judged. In this execution the gate passed "
+     "(179 matched objects; 169 with >= 3-sign texts in both "
+     "compilations), the matched-object median TV was "
+     "0.025694 over 25 judgeable pairs, and the outcome was "
+     "ATTRIBUTED TO COMPOSITION under the frozen lines. CPU."),
 ]
 
 

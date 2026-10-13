@@ -67,7 +67,7 @@ SPEC_DIR = REPO / "specs" / "033-sa-free-language-comparison"
 ANCHOR_FREEZE = SPEC_DIR / "anchors-phase397.json"
 ANCHORS_FILE = REPO / "backend" / "reports" / "INDUS_FINAL_ANCHORS.json"
 RESULTS_FILE = REPO / "reports" / "phase397_results.json"
-DEFAULT_CORPUS = (REPO.parent / "glossa-corpus" / "indus" / "exports"
+DEFAULT_CORPUS = (REPO / "glossa-corpus" / "indus" / "exports"
                   / "indus_research.jsonl")
 
 MARGIN = 0.10            # F033-C10 (frozen)
@@ -337,7 +337,9 @@ def run(corpus_path: Path = DEFAULT_CORPUS) -> dict:
                 ANCHOR_FREEZE.read_bytes()).hexdigest(),
             "anchors_file_sha256": hashlib.sha256(
                 ANCHORS_FILE.read_bytes()).hexdigest(),
-            "corpus_file": str(corpus_path),
+            "corpus_file": (str(corpus_path.relative_to(REPO))
+                            if corpus_path.is_relative_to(REPO)
+                            else str(corpus_path)),
             "corpus_file_sha256": hashlib.sha256(
                 corpus_path.read_bytes()).hexdigest(),
         },

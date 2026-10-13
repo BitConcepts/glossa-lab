@@ -36,10 +36,10 @@
       digest replay, the definition constants, the
       register integrity, the strict-set census, and
       the recorded original margins.
-- [ ] **L6 — Freeze PR merged**, house gates green
+- [x] **L6 — Freeze PR merged**, house gates green
       (foundation 0 failures, full suite, branding
       sweep).
-- [ ] **L7 — OSF registration filed** for the frozen
+- [x] **L7 — OSF registration filed** for the frozen
       contract; the registration-record PR is left
       open with the pending state and completed by
       append once the approval verifies public with a
@@ -47,18 +47,18 @@
 
 ## Execution (Phase-397) — gated on the verified registration
 
-- [ ] **E1 — Graph-first build** (H15/H23): script,
+- [x] **E1 — Graph-first build** (H15/H23): script,
       graph module, registration, registration
       verification, then run.
-- [ ] **E2 — Anchor freeze:** both pre-registered
+- [x] **E2 — Anchor freeze:** both pre-registered
       anchor lists written as cited data (family,
       sign, published value, source) and hashed
       before any scoring.
-- [ ] **E3 — Scoring:** the frozen pipeline (spec §5)
+- [x] **E3 — Scoring:** the frozen pipeline (spec §5)
       over the families, both controls, the
       robustness arm, and the Harappa-removed
       sensitivity.
-- [ ] **E4 — Outcome:** the verdict under spec §6,
+- [x] **E4 — Outcome:** the verdict under spec §6,
       recorded in this spec's directory and the root
       LEDGER, with the claim-status consequence
       appended as a dated entry to the claim's

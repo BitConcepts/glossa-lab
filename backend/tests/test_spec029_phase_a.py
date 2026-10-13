@@ -421,6 +421,15 @@ def test_flag_on_current_claim_set_matches_audit_shapes():
     was closed by the human act, not by editing the flag. The
     supported class is unchanged (lane separation: a lane-2 stage
     move never touches a lane-1 status).
+
+    Spec 033 / Phase-397 supersession (2026-10-13): the frozen
+    Spec 033 outcome (NOT SUPPORTED) reclassified the
+    Dravidian-solution claim's lane-1 status from
+    ``partially_supported`` to ``unsupported`` through the dated
+    entry Spec 033 section 6 prescribes, so the supported class on
+    this surface is now 5. The claim's stage is untouched
+    (``explained``; lane separation again), and the flagged set
+    stays empty.
     """
     if not _REAL_CLAIMS_DIR.exists():
         pytest.skip("extracted_claims dir not present")
@@ -431,7 +440,7 @@ def test_flag_on_current_claim_set_matches_audit_shapes():
         if e["glossa_claim_status"] in
         ("supported", "strongly_supported", "partially_supported")
     }
-    assert len(supported_class) == 6
+    assert len(supported_class) == 5
     assert flagged == set()
     assert supported_class.isdisjoint(flagged)
 

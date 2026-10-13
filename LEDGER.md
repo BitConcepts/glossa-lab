@@ -6529,6 +6529,40 @@ advanced by name in the products PR to the post-append hash,
 the append being the one authorised drift (Spec 032 spec
 section 7); the Spec 029 freeze replay is unaffected.
 
+## 2026-10-13 — Spec 033 EXECUTED (Phase-397): verdict NOT SUPPORTED
+
+The SA-free rerun of the language comparison is complete, under
+the frozen contract (digest
+412b4805063bbffb3915a834354cb428cc9b10958f614a1680b859005a43b66d;
+registered before execution at OSF osf.io/ephf7, DOI
+10.17605/OSF.IO/EPHF7). On the strict sign set (94 signs; 1,722
+scored sequences from the Mahadevan-lineage corpus as held),
+mean log probability per sign: no-language baseline −2.6233,
+Dravidian −2.8465, Munda −2.8616, Sanskrit −3.1184. The frozen
+bars required Dravidian to beat the best rival by at least
+0.10 and to stand above the 99th percentile of 999 random
+assignments of the same published values; instead the best
+rival is the baseline itself (margin −0.2232), and the
+Dravidian score lies inside the random assignments' range
+(percentile 91.2; 88 of 999 scored above it; random maximum
+−2.7215). Verdict: NOT SUPPORTED (claim F033-C11 fired; the
+F033-C15 percentile condition fails with it). Dravidian still
+finishes ahead of Sanskrit head-to-head (+0.2719) — reported as
+a fact, not the verdict rule. The Harappa-removed sensitivity
+reproduces the same ordering; the robustness arm (second
+anchor list per family) puts Dravidian last of the three
+families and carries no verdict weight. Per the frozen status
+rule, the Dravidian-solution claim's inherited partial support
+(Phase-41/43 numbers, produced by the semantic-anchoring
+method falsified in Phase-107) is replaced by a dated entry in
+its record and its status reclassified to unsupported (the store token for a not-supported standing); the
+old numbers stay in history, labelled as SA-produced. The
+verdict settles only the bounded claim: not the rebus method,
+not any single sign reading, not a decipherment in either
+direction. Full record:
+specs/033-sa-free-language-comparison/outcome.md and
+reports/phase397_results.json.
+
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
 

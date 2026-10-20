@@ -405,12 +405,19 @@ def test_pred_register_document_untouched():
     # to register section 3 and its dated note in section 6
     # (the clean-withholding successor to PRED-2026-010
     # with the disclosed mappability screen; insertions
-    # only, no existing entry altered). Any further drift
+    # only, no existing entry altered). It was advanced
+    # a fourth time, by name, for the owner-ordered
+    # execution append of 2026-10-20: the dated section 6
+    # entry recording the Spec 035 / Phase-399 step-0
+    # closure of PRED-2026-010 (insertions only, no
+    # existing entry altered; the section 3 entry's
+    # Tested/Outcome fields unchanged, per claim
+    # F035-C15). Any further drift
     # from this hash is unauthorised.
     digest = hashlib.sha256(
         (_REPO_ROOT / "docs" / "PREDICTION_REGISTER.md").read_bytes()
     ).hexdigest()
-    assert digest == "64cc770da90a578b1079a39e18905b869f96ca6f22da234e29289222eb1c8228"
+    assert digest == "2e59b3316c0d1d975fe65f2132b9a7edd6dae6d360864e7f98e18711961648c9"
 
 
 # ── Script contract: shapes, states, idempotency ─────────────────────────

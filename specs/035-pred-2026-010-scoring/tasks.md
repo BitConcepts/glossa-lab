@@ -60,9 +60,10 @@
       observation). DD-035-2 stands as drafted;
       DD-035-4 decided YES (the spec files its own
       OSF contract registration).
-- [ ] **L6 — Freeze PR merged**, house gates green
+- [x] **L6 — Freeze PR merged**, house gates green
       (foundation 0 failures, full suite, branding
-      sweep).
+      sweep). PR #218 merged `b481a866`, CI 7/7 green
+      from run conclusions.
 - [x] **L7 — Registration state.** The
       prediction's OSF preregistration (wjebq,
       DOI 10.17605/OSF.IO/WJEBQ) verified accepted
@@ -74,10 +75,10 @@
 
 ## Execution (Phase-399) — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0** (spec §3), in the frozen
+- [x] **E2 — Step 0** (spec §3), in the frozen
       order: 0.1 registration re-verification;
       0.2 input integrity; 0.3 training-pool
       re-verification (filter, census, manifest
@@ -89,11 +90,13 @@
       and hashed before any scoring. On the
       draft-stage observation, 0.4 is expected to
       close the study (P000 unmappable, 33% > 20%).
-- [ ] **E3 — Scoring** (spec §5): the registered
+- [ ] **E3 — Scoring** (spec §5): **NOT REACHED** —
+      step 0 closed the study at check 0.4
+      (`outcome.md`); the registered
       computation only; the per-sign table
       produced with it. (Reached only if step 0
       passes in full.)
-- [ ] **E4 — Outcome:** the verdict under spec §6
+- [x] **E4 — Outcome:** the verdict under spec §6
       or the closure under §3, reported as itself;
       the register append (spec §7), the outcome
       record in this spec's directory, the root

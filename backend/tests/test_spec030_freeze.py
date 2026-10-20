@@ -49,6 +49,23 @@ def test_freeze_definition_constants():
     assert "not performed" in design["execution_gate"]
 
 
+def _claim_from_register(raw_claim: dict):
+    """Load one frozen-register claim under aee >= 1.5.
+
+    The frozen registers store ``boundary`` as a plain string (the
+    pre-1.5 serialization). aee 1.5.0's strict bundle loader refuses
+    a scalar where the model declares a list of strings, so the
+    string is wrapped at load time; the frozen register bytes are
+    never modified.
+    """
+    from aee.model import Claim
+
+    claim = dict(raw_claim)
+    if isinstance(claim.get("boundary"), str):
+        claim["boundary"] = [claim["boundary"]]
+    return Claim.from_dict(claim)
+
+
 def test_register_integrity():
     from glossa_lab.framework026 import check_dependency_integrity
     from aee.model import Claim
@@ -63,7 +80,7 @@ def test_register_integrity():
         assert claim["evidence"]
         assert claim["metadata"]["boundary_confirmation"]
     report = check_dependency_integrity(
-        [Claim.from_dict(c) for c in raw["claims"]]
+        [_claim_from_register(c) for c in raw["claims"]]
     )
     assert report["ok"]
 

@@ -51,10 +51,16 @@ _PHASE104 = json.loads(
     (_REPO_ROOT / "glossa-indus" / "reports" / "phase104_claims_evaluation.json")
     .read_text("utf-8"))
 _FIXTURES = Path(__file__).resolve().parent / "fixtures"
+# aee 1.5.0 adoption supersession (2026-10-20): both score
+# fixtures were regenerated under the adopted engine (the
+# post-merge one from the pre-correction store bytes, the
+# post-correction one from the live store), so the movement
+# comparison below stays within one engine's semantics; the
+# pre-1.5 fixtures are preserved untouched.
 _POST_MERGE_SCORES = json.loads(
-    (_FIXTURES / "spec029_post_merge_aee_scores.json").read_text("utf-8"))
+    (_FIXTURES / "spec029_post_merge_aee150_scores.json").read_text("utf-8"))
 _POST_CORRECTION_SCORES = json.loads(
-    (_FIXTURES / "spec029_post_phase104_correction_aee_scores.json").read_text("utf-8"))
+    (_FIXTURES / "spec029_post_phase104_correction_aee150_scores.json").read_text("utf-8"))
 
 CANONICAL = "farmer_sproat_witzel_2004_manual_001"
 CORRECTED = {
@@ -232,7 +238,7 @@ def test_score_movement_is_exactly_the_three_corrected_claims():
         # the record now carries the contradicting evidence, exactly
         # as the canonical claim's record always did.
         assert before["band"] == "low" and after["band"] == "unknown", cid
-        assert before["propagated_score"] == 0.289375, cid
+        assert before["propagated_score"] == 0.139375, cid
         assert after["propagated_score"] == 0.0, cid
         assert after["components"]["contradiction_penalty"] == 0.75, cid
         assert "Contradiction penalty 0.750" in after["notes"], cid

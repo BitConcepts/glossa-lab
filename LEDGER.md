@@ -6827,3 +6827,75 @@ completes by append on approval.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 — Maintenance: aee 1.5.0 adopted (pin >=1.5.0,<1.6)
+
+Owner decision 2026-10-20: adopt aee 1.5.0. This change lands
+only after Spec 036's freeze merged (PR #224, merge
+`3419df564b70`), per the sequencing the owner set: no pin or
+engine change on main while that freeze was in flight.
+
+Change: `backend/pyproject.toml` now declares
+`applied-epistemic-engineering>=1.5.0,<1.6` (was
+`>=1.0.4,<1.5`, PR #181). Engine versions before/after: CI
+resolved aee **1.4.0** under the old declaration; the adopted
+line is the 1.5.x series (methodology 2.0). The upper bound
+`<1.6` is justified two ways: the engine's own changelog
+records 1.5.1–1.5.3 as documentation/metadata-only (no engine
+behaviour, scoring, or methodology change), and this PR's CI
+resolves the newest 1.5.x and is green, as is the suite under
+1.5.0 exactly.
+
+First-hand census (full backend suite under aee 1.5.0 on the
+pre-adoption main, CI-identical invocation): **17 failed /
+1368 passed / 7 skipped**, against CI green on the same tree
+under the old pin. Every failure is class (a) — a test encoding
+pre-1.5 behaviour the engine intentionally changed; no
+class-(b) regression or ambiguity was found. Dispositions:
+
+- **Score semantics (3).**
+  `tests/test_aee_core.py::test_score_dict_shape`: FR-8.7
+  substance-over-presence scoring gives the fixture's
+  falsification string (no checkable condition) partial credit
+  0.5, not 1.0; the expectation now asserts 0.5 and says why.
+  `tests/test_spec029_phase_a.py::test_score_propagation_byte_identical_to_pre_change`
+  and `tests/test_spec029_phase104_correction.py::test_score_movement_is_exactly_the_three_corrected_claims`:
+  their byte-pinned score fixtures were re-baselined into
+  successor fixtures
+  (`spec029_post_merge_aee150_scores.json`,
+  `spec029_post_phase104_correction_aee150_scores.json`;
+  pre-1.5 fixtures preserved untouched, per this repo's
+  supersession pattern). The full per-claim delta audit shows
+  only documented methodology-2.0 changes: FR-8.7 boundary
+  credit 1.0 -> 0.5 for the adapter's single-token
+  `testability=...` boundaries (all 23 claims), FR-8.7
+  falsifiability credit 1.0 -> 0.5 where a falsification
+  string states no checkable condition (7 claims), FR-8.13
+  unrounded components (evidence values identical to 1e-9)
+  and the added `declared_state` / `propagation` score-dict
+  keys, and FR-8.6/8.7 note texts. The Phase-104 movement
+  assertion survives exactly: between the two regenerated
+  fixtures, precisely the three corrected claims move, each
+  by the contradiction penalty (before 0.139375 / band low;
+  after 0.0 / band unknown; penalty 0.75).
+- **Strict bundle validation (14).** aee 1.5.0's
+  `Claim.from_dict` refuses a scalar `boundary` (the model
+  declares a list of strings; the pre-1.5 loader accepted the
+  string). All frozen registers (Specs 026, 029–036) store
+  `boundary` as a plain string. The frozen register bytes are
+  NOT modified; each affected test
+  (`test_framework026.py` register test + its synthetic-claim
+  helper, `test_spec029_freeze.py`,
+  `test_spec030_freeze.py` … `test_spec036_freeze.py`
+  register-integrity tests) wraps a string boundary in a list
+  at load time through a small `_claim_from_register` helper
+  that says why. No production code loads registers through
+  `Claim.from_dict`, so no runtime code changes.
+
+Foundation check and the full backend suite are green on
+this PR (CI 7/7, including the backend suite resolving the
+newest 1.5.x under the new declaration).
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution
+sec.VI.

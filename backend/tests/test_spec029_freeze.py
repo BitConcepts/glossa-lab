@@ -98,13 +98,30 @@ def test_ledger_section3_counts():
     assert flagged == 105
 
 
+def _claim_from_register(raw_claim: dict):
+    """Load one frozen-register claim under aee >= 1.5.
+
+    The frozen registers store ``boundary`` as a plain string (the
+    pre-1.5 serialization). aee 1.5.0's strict bundle loader refuses
+    a scalar where the model declares a list of strings, so the
+    string is wrapped at load time; the frozen register bytes are
+    never modified.
+    """
+    from aee.model import Claim
+
+    claim = dict(raw_claim)
+    if isinstance(claim.get("boundary"), str):
+        claim["boundary"] = [claim["boundary"]]
+    return Claim.from_dict(claim)
+
+
 def test_register_is_the_recovered_one():
     from glossa_lab.aee_core import Claim
     from glossa_lab.framework026 import check_dependency_integrity
 
     reg = json.loads(REGISTER.read_text(encoding="utf-8"))
     assert reg["register_version"] == "draft-2"
-    claims = [Claim.from_dict(c) for c in reg["claims"]]
+    claims = [_claim_from_register(c) for c in reg["claims"]]
     assert len(claims) == 13
     ids = {c.id for c in claims}
     assert {"F029-C11", "F029-C12", "F029-C13"} <= ids

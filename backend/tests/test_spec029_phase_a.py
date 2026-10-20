@@ -71,9 +71,16 @@ _POST_MERGE_SCORES = (
 # (``test_spec029_phase104_correction.py``) asserts that exactly
 # the three corrected claims' scores moved, each by this cause,
 # and every other score is byte-identical to the post-merge value.
+# aee 1.5.0 adoption supersession (2026-10-20): the adopted
+# engine's methodology-2.0 semantics (FR-8.7 substance-over-
+# presence credit, FR-8.13 unrounded scores and the widened
+# score-dict shape) move every score the post-correction fixture
+# pins, so the regression target is the successor fixture
+# regenerated under aee 1.5.0; the post-correction fixture above
+# is preserved untouched.
 _POST_CORRECTION_SCORES = (
     Path(__file__).resolve().parent
-    / "fixtures" / "spec029_post_phase104_correction_aee_scores.json"
+    / "fixtures" / "spec029_post_phase104_correction_aee150_scores.json"
 )
 
 HUMAN = "Tristen Pierson"
@@ -221,6 +228,17 @@ def test_score_propagation_byte_identical_to_pre_change():
     movement and its cause are asserted in
     ``test_spec029_phase104_correction.py``). Both earlier fixtures
     are preserved untouched.
+
+    aee 1.5.0 adoption supersession (2026-10-20): the target moved
+    once more, to
+    ``fixtures/spec029_post_phase104_correction_aee150_scores.json``,
+    regenerated under the adopted engine. Every per-claim delta
+    against the preserved post-correction fixture is one of the
+    documented methodology-2.0 changes: FR-8.7 boundary and
+    falsifiability substance credit, FR-8.13 unrounded components
+    and the added ``declared_state`` / ``propagation`` keys, and
+    the FR-8.6/8.7 note texts. The earlier fixtures are preserved
+    untouched.
     """
     if not _REAL_CLAIMS_DIR.exists():
         pytest.skip("extracted_claims dir not present")

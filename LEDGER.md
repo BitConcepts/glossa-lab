@@ -6783,7 +6783,129 @@ and owner order.
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
 
-## 2026-10-20 — Spec 038 draft (PRED-2026-007 full-population census and scoring, D-31)
+## 2026-10-20 — Phase-400 outcome: PRED-2026-011 CONFIRMED (2 of 2)
+
+Phase-400 executed the frozen Spec 036 contract on
+2026-10-20, under the owner's do-all order. Step 0
+passed in full, in the frozen order: the prediction's
+preregistration (t6whq) stood accepted and public; all
+registered input pins matched; the CISI-Mohenjo-daro
+pool re-derived as registered (179 inscriptions,
+filtered-pool manifest hash matched), the recorded
+classification reproduced exactly (28 classifiable
+signs; unscreened INITIAL set {P000, P217, P324}), and
+the registered mappability screen re-applied returned
+{P217, P324} exactly, with P000's exclusion reproduced
+as a screen outcome; and crosswalk coverage passed
+(P217 → Y0520, confidence 1.0, confirmed; P324 →
+Y0740, confidence 0.9867, confirmed, conflict-flagged;
+no unmappable trained sign). The withheld file was
+opened only behind the full pass, and the registered
+computation ran once, in full, over its 2,717 Harappa
+rows (2,621 tokenised sequences, 7,144 tokens): P217 —
+119 Harappa occurrences, 104 initial, start rate
+0.8739; P324 — 774 Harappa occurrences, 473 initial,
+start rate 0.6111. Both signs meet the 0.40 bar: share
+1.0 (2 of 2) against the registered 70% criterion —
+**CONFIRMED**, on the exact two-sign criterion. The
+verdict concerns only P217 and P324 in this pinned
+dataset; it does not validate the INITIAL class as a
+whole and says nothing about P000. PRED-2026-011's
+section 3 Tested/Outcome fields move from PENDING to
+the verdict in the same act (register section 6 dated
+append; the Phase D register-hash pin advanced by
+name a sixth time for that authorised change).
+PRED-2026-006 and PRED-2026-010 remain unscored and
+untouched. Step-0 record sha256
+2bf0333b7d7fc437c9055299598ee83f0247acd08c7fa8b123044114e0c8e427;
+scoring record sha256
+101d54f5bd93d963402d73731962801294452c00f4fe4183e9135ba348ddb07f
+(reports/phase400_results.json). The spec-level OSF
+registration (gjen4) was filed before execution under
+DD-036-4; its record (osf-spec-registration.md)
+completes by append on approval.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 — Maintenance: aee 1.5.0 adopted (pin >=1.5.0,<1.6)
+
+Owner decision 2026-10-20: adopt aee 1.5.0. This change lands
+only after Spec 036's freeze merged (PR #224, merge
+`3419df564b70`), per the sequencing the owner set: no pin or
+engine change on main while that freeze was in flight.
+
+Change: `backend/pyproject.toml` now declares
+`applied-epistemic-engineering>=1.5.0,<1.6` (was
+`>=1.0.4,<1.5`, PR #181). Engine versions before/after: CI
+resolved aee **1.4.0** under the old declaration; the adopted
+line is the 1.5.x series (methodology 2.0). The upper bound
+`<1.6` is justified two ways: the engine's own changelog
+records 1.5.1–1.5.3 as documentation/metadata-only (verified
+directly: the 1.5.0 and 1.5.3 wheels differ only in
+`aee/_version.py`), and this PR's CI resolves the newest
+1.5.x and is green, as is the suite under 1.5.0 exactly.
+
+First-hand census (full backend suite under aee 1.5.0 on the
+pre-adoption main, CI-identical invocation): **17 failed /
+1368 passed / 7 skipped**, against CI green on the same tree
+under the old pin. Every failure is class (a) — a test encoding
+pre-1.5 behaviour the engine intentionally changed; no
+class-(b) regression or ambiguity was found. Dispositions:
+
+- **Score semantics (3).**
+  `tests/test_aee_core.py::test_score_dict_shape`: FR-8.7
+  substance-over-presence scoring gives the fixture's
+  falsification string (no checkable condition) partial credit
+  0.5, not 1.0; the expectation now asserts 0.5 and says why.
+  `tests/test_spec029_phase_a.py::test_score_propagation_byte_identical_to_pre_change`
+  and `tests/test_spec029_phase104_correction.py::test_score_movement_is_exactly_the_three_corrected_claims`:
+  their byte-pinned score fixtures were re-baselined into
+  successor fixtures
+  (`spec029_post_merge_aee150_scores.json`,
+  `spec029_post_phase104_correction_aee150_scores.json`;
+  pre-1.5 fixtures preserved untouched, per this repo's
+  supersession pattern). The full per-claim delta audit shows
+  only documented methodology-2.0 changes: FR-8.7 boundary
+  credit 1.0 -> 0.5 for the adapter's single-token
+  `testability=...` boundaries (all 23 claims), FR-8.7
+  falsifiability credit 1.0 -> 0.5 where a falsification
+  string states no checkable condition (7 claims), FR-8.13
+  unrounded components (evidence values identical to 1e-9)
+  and the added `declared_state` / `propagation` score-dict
+  keys, and FR-8.6/8.7 note texts. The Phase-104 movement
+  assertion survives exactly: between the two regenerated
+  fixtures, precisely the three corrected claims move, each
+  by the contradiction penalty (before 0.139375 / band low;
+  after 0.0 / band unknown; penalty 0.75).
+- **Strict bundle validation (14).** aee 1.5.0's
+  `Claim.from_dict` is strict by default: it refuses a
+  scalar `boundary` (the model declares a list of strings)
+  and requires the lifecycle `stage` field. Every frozen
+  register (Specs 026, 029–036) predates both — `boundary`
+  stored as a plain string, no `stage` field. The frozen
+  register bytes are NOT modified, and the freeze test
+  files cannot be edited either: each spec's freeze digest
+  covers its own test file, so any edit breaks that spec's
+  freeze-replay test (verified first-hand). The
+  compatibility therefore lives in `backend/tests/conftest.py`:
+  claim dicts carrying the legacy signature (a string
+  `boundary` or no `stage` field) are loaded leniently
+  (`strict=False` — the FR-1.3 compatibility path the
+  engine's own error text names for historical bundles,
+  reproducing the pre-1.5 loader semantics exactly); every
+  other claim dict keeps strict loading. No production
+  code loads registers through `Claim.from_dict`, so no
+  runtime code changes.
+
+Foundation check and the full backend suite are green on
+this PR (CI 7/7, including the backend suite resolving the
+newest 1.5.x under the new declaration).
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution
+sec.VI.
+Spec 038 draft (PRED-2026-007 full-population census and scoring, D-31)
 
 Spec 038 is DRAFTED under the owner's draft order of
 2026-10-20 (D-31 will be frozen for execution; this

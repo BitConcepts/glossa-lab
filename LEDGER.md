@@ -6782,3 +6782,59 @@ and owner order.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 - Spec 040 DRAFTED: D-25, the chronology-controlled rerun of G1 (design only)
+
+Under the owner's bundle decision of 2026-10-20
+(gazetteer period-assignment act first, then
+D-25; evidence standard published period
+determinations only), Spec 040 was drafted as a
+DRAFT PR and left unmerged for the owner's
+freeze decision. It designs design D-25 from
+the PR #195 portfolio: the chronology-
+controlled rerun of Spec 025's G1, the program's
+strongest positive result (SUPPORTED under
+composition and preservation control, Phase-385
+governing basic CI [0.1838, 0.2102] above the
+V = 0.10 floor), which still carries the rider
+that chronology is not controlled. Period
+enters as one added stratification
+(composition x preservation x period) over the
+Phase-137 population and columns; assignments
+come only from Spec 039's frozen artifact at
+site-period resolution (unique uncontested
+published-determination mappings; contested
+mappings excluded from the primary and included
+in a labelled sensitivity); the governing
+quantity is the Phase-385 v2 basic bootstrap
+interval against the 0.10 margin, with the
+outcome mapping written in advance (interval
+entirely above: SUPPORTED - CHRONOLOGY
+CONTROLLED, rider retired by append; straddling:
+WEAKENED - RIDER CONFIRMED AS MATERIAL, G1
+restated as a period-confounded association;
+entirely at or below: CONTRADICTED AT THE
+DECLARED MARGIN). The freeze is barred by a
+fail-closed dependency gate until Spec 039 has
+executed (its labels do not yet exist; D-25's
+feasibility line had stated them as existing,
+and the draft records that tension openly), and
+an execution-stage margins gate (at least 5
+sites in each coarse period, at most 40 percent
+unassigned, at least 1,000 permutable) closes
+the run NOT-YET-TESTABLE before any outcome
+quantity exists. DD-040-1 records the decision
+rule as re-derived from Spec 025's
+permutation-p-only rule, for the freeze to
+decide openly. Governed register F040-C01..C15;
+draft digest
+63ca1ac99ed106b7bb7cc3d0e324e7522617021ea353af2a6055d975d316ac85
+over register 0.5-draft; AEE lifecycle hooks not
+run (a freeze gate); the execution phase number
+is unassigned at draft (Phase-401 is claimed by
+the Spec 037 and Spec 038 drafts). Nothing was
+executed: no label was joined, no margin
+computed, the spine was not recomputed, and no
+repertoire quantity was calculated.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution sec.VI.

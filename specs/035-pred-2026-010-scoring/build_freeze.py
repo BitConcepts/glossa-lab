@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
-"""Build the Spec 035 DRAFT freeze record (freeze.json).
+"""Build the Spec 035 freeze record (freeze.json).
 
-Spec 035 freezes nothing yet: this builder computes
-the DRAFT digest over the draft contract under the
-owner's draft order of 2026-10-20 (adjudication.md).
-If the freeze act changes any covered text, the
-freeze PR re-runs this builder and the digest is
-recomputed there. Run with the Glossa backend venv
-python from the repository root:
+This builder computed the DRAFT digest over the draft
+contract under the owner's draft order of 2026-10-20
+(adjudication.md), and the final digest over the
+frozen contract at the freeze act of the same day
+(the owner's freeze-and-execute order), after the
+AEE lifecycle hooks passed over the recovered
+register. Run with the Glossa backend venv python
+from the repository root:
 
     python specs/035-pred-2026-010-scoring/build_freeze.py
 
@@ -36,13 +37,16 @@ DEFINITION = {
     "experiment_id": "spec035-pred-2026-010-scoring",
     "register": {
         "path": "specs/035-pred-2026-010-scoring/claims.json",
-        "register_version": "0.5-draft",
+        "register_version": "0.8-draft",
         "claims": 15,
         "aee_hook_pass": (
-            "NOT RUN AT DRAFT (2026-10-20): the hook pass "
-            "(after_specify / after_plan / after_tasks) is a "
-            "freeze gate - pass required before the freeze "
-            "merges, recovery rounds recorded (see "
+            "PASS at the freeze act (2026-10-20): "
+            "after_specify pass over register 0.8-draft "
+            "after four rounds (30, then 9, then 8 failure "
+            "modes, then 0; recovery-specify.md), "
+            "after_plan pass and after_tasks pass on the "
+            "recovered register; 0 claims below the 0.70 "
+            "threshold at every pass (see "
             "specs/035-pred-2026-010-scoring/aee/"
             "freeze-aee-note.md)"
         ),
@@ -52,14 +56,18 @@ DEFINITION = {
             "specs/035-pred-2026-010-scoring/adjudication.md"
         ),
         "decisions": (
-            "The owner's draft order of 2026-10-20 (Let's do "
-            "your recommendation) commissions this DRAFT "
-            "only; the freeze and any execution are separate "
-            "owner decisions. The contract implemented is "
-            "the PRED-2026-010 registration "
-            "(docs/PREDICTION_REGISTER.md, registered "
-            "2026-10-13) with its derivation record "
-            "(reports/pred010_derivation_record.json)."
+            "The owner's freeze-and-execute order of "
+            "2026-10-20 (go with your recommendation) "
+            "freezes this contract and orders Phase-399 "
+            "execution; the draft was commissioned by the "
+            "owner's draft order of the same day. DD-035-2 "
+            "stands as drafted; DD-035-4 is decided: the "
+            "frozen spec files its own OSF contract "
+            "registration (the Spec 032-034 pattern). The "
+            "contract implemented is the PRED-2026-010 "
+            "registration (docs/PREDICTION_REGISTER.md, "
+            "registered 2026-10-13) with its derivation "
+            "record (reports/pred010_derivation_record.json)."
         ),
     },
     "design": {
@@ -168,10 +176,13 @@ DEFINITION = {
             ),
         },
         "execution_gate": (
-            "the owner's freeze order for this contract, "
-            "the freeze PR merged, and a separate "
-            "execution order; step 0 re-verifies the OSF "
-            "registration before any run"
+            "satisfied at the freeze act of 2026-10-20: "
+            "the owner's freeze order for this contract "
+            "and the execution order were given in the "
+            "same act (go with your recommendation); the "
+            "freeze PR merged on green house gates; step "
+            "0 re-verifies the OSF registration before "
+            "any run"
         ),
     },
     "inputs": {

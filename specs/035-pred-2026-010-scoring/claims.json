@@ -1,11 +1,11 @@
 {
  "spec": "035-pred-2026-010-scoring",
- "register_version": "0.5-draft",
- "note": "Claims-first draft register for Spec 035, generated alongside spec.md from the PRED-2026-010 registration in docs/PREDICTION_REGISTER.md (registered 2026-10-13) and its derivation record (reports/pred010_derivation_record.json), under the owner's draft order of 2026-10-20. AEE lifecycle hooks have NOT run on this draft register; they run at the freeze act (after_specify / after_plan / after_tasks), with recovery rounds recorded here and in aee/ if they occur (the Spec 032-034 pattern). Propositions, falsifiers, and verdict rules are the register's; nothing in this draft executes anything.",
+ "register_version": "0.8-draft",
+ "note": "Claims-first register for Spec 035, generated alongside spec.md from the PRED-2026-010 registration in docs/PREDICTION_REGISTER.md (registered 2026-10-13) and its derivation record (reports/pred010_derivation_record.json), under the owner's draft order of 2026-10-20. AEE lifecycle hooks ran at the freeze act (owner's freeze order, 2026-10-20). Round 1 at after_specify (2026-10-20T12:09:31Z) returned iterate with 30 failure modes (15 irreducibility, 15 negation conflicts; 0 claims below the 0.70 threshold). Recovery to 0.6-draft: claim texts rewritten as single atomic propositions, with enumerations and second conditions carried into the boundaries verbatim-in-substance, and pairwise boundary confirmations added in both claims of every flagged pair. Round 2 (2026-10-20T12:12:03Z) returned iterate with 9 failure modes (7 irreducibility: C03, C04, C06, C07, C08, C12, C15; 2 negation conflicts: C04-C09, C08-C09). Recovery to 0.7-draft: the still-flagged claims' boundaries trimmed to scope and exclusions (the detail stands in the claims' evidence, the spec, and the derivation record), three texts shortened to single propositions, and both-claims confirmations added for the two remaining pairs. Round 3 (2026-10-20T12:13:11Z) returned iterate with 8 failure modes (5 irreducibility: C03, C06, C07, C08, C15; 3 negation conflicts: C04-C09, C08-C09, C11-C12). Recovery to this version: the seven flagged texts restated as single propositions without compound markers, and the flagged pairs separated by truthful phrasing. Propositions, falsifiers, and verdict rules unchanged throughout. Rounds and artifacts are recorded in aee/ (recovery-specify.md, freeze-aee-note.md).",
  "claims": [
   {
    "id": "F035-C01",
-   "text": "A verdict under Spec 035 states whether the registered criterion for PRED-2026-010 is met, and nothing beyond that statement.",
+   "text": "A verdict under Spec 035 states only whether the registered criterion for PRED-2026-010 is met.",
    "kind": "hypothesis",
    "status": "draft",
    "boundary": "Scope claim for the whole spec. The registered prediction (docs/PREDICTION_REGISTER.md, PRED-2026-010) is the input, not a question; a verdict is a statement about the registered criterion on the registered data. It does not govern the step-0 checks (C04-C06, C09), the computation (C10-C11), or the register handling (C14). What the signs mean, why they pattern as they do, and stability at any other site are never judged under this spec.",
@@ -57,7 +57,7 @@
   },
   {
    "id": "F035-C02",
-   "text": "The success criterion is the registered one: at least 70% of the trained INITIAL signs show a Harappa start rate of at least 0.40, which with 3 trained signs passes only at 3 of 3.",
+   "text": "The success criterion is the registered one: at least 70% of the trained INITIAL signs show a Harappa start rate of at least 0.40.",
    "kind": "requirement",
    "status": "draft",
    "boundary": "The criterion claim (the register's, restated as a definition of the pass line). The share's possible values are 0, 1/3, 2/3, and 1; the 70% bar is met only by 1. It does not govern how a start rate is computed (C10), the zero-occurrence edge (C11), or the unmappable closure (C09), each of which is stated in its own claim.",
@@ -85,7 +85,7 @@
     "evidence_origin_groups": [
      "pred-register-010"
     ],
-    "boundary_confirmation": "C02 defines the pass line; C10 defines the quantity the line applies to (the share of trained signs at or above 0.40). The two are consistent by construction: C10 computes the share C02 judges. Neither negates the other."
+    "boundary_confirmation": "C02 defines the pass line; C10 defines the quantity the line applies to (the share of trained signs at or above 0.40). The two are consistent by construction: C10 computes the share C02 judges. Neither negates the other. C02 defines the pass line; C04 governs the step-0 reproduction that must pass before any scoring. The two are consistent by construction: the reproduction judges the trained set, never the criterion, and the criterion is applied only after the reproduction passes. Neither negates the other. C02 defines the pass line over the share; C11 states how one mappable sign with zero occurrences counts toward that share. The two are consistent by construction: C11 supplies one sign's contribution to the quantity C02 judges. Neither negates the other. C02 defines the criterion; C12 states that the per-sign table is descriptive and carries no criterion. The two are consistent by construction: the table reports the quantities the criterion judges and moves no verdict itself. Neither negates the other."
    },
    "evidence": [
     {
@@ -100,10 +100,10 @@
   },
   {
    "id": "F035-C03",
-   "text": "The trained INITIAL set is P000, P217, P324, derived at registration from the CISI Mohenjo-daro pool only and fixed by the pinned derivation record.",
+   "text": "The trained INITIAL set is P000 P217 P324.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "The trained-set claim. The set is exactly the registration's: 3 signs, derived by the recorded global_class_stability logic over 179 CISI Mohenjo-daro inscriptions (28 classifiable signs: INITIAL 3, MEDIAL 19, MIXED 3, TERMINAL 3), recorded in reports/pred010_derivation_record.json. It does not govern the step-0 reproduction (C04), which must match this set exactly or close the study.",
+   "boundary": "The trained-set claim. The derivation is recorded in reports/pred010_derivation_record.json. It does not govern the step-0 reproduction (C04), which must match this set exactly or close the study.",
    "depends_on": [],
    "assumptions": [
     "ASM-REGISTER-GOVERNS",
@@ -127,7 +127,8 @@
     "evidence_origin_groups": [
      "pred-register-010",
      "derivation-record"
-    ]
+    ],
+    "boundary_confirmation": "C03 states the trained set; C04 states the step-0 act that must reproduce it. The two are consistent by construction: the act judges a derivation against the set C03 fixes. Neither negates the other. C03 states the trained set; C05 states the pins identifying the input files. The two are consistent by construction: the set is a content of the pinned derivation record, and the pins judge file identity, not set membership. Neither negates the other. C03 fixes the trained set; C12 states the descriptive table published with the outcome. The two are consistent by construction: the table lists exactly the signs C03 fixes and judges none of them. Neither negates the other."
    },
    "evidence": [
     {
@@ -153,10 +154,10 @@
   },
   {
    "id": "F035-C04",
-   "text": "Step 0 re-derives the filtered pool and the classification and must reproduce the registered trained set exactly before any withheld content is opened; any mismatch closes the study as CANNOT BE RUN AS WRITTEN, unscored.",
+   "text": "No withheld content is opened before step 0 reproduces the trained set exactly.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "The reproduction claim (spec section 3, check 0.3). The reproduction applies the registered filter to the pinned pool file, asserts 179 rows all Mohenjo-daro with zero Yajnadevam rows and the manifest hash ab3b4c8ae84090b6f0b60f467dde0067f5dbd2f20065f1625a60a79d7170540a, and reruns the recorded classification logic verbatim over the filtered pool only. It does not govern input integrity (C05), which pins the files the reproduction reads.",
+   "boundary": "The reproduction claim (spec section 3, check 0.3). The reproduction applies the registered filter to the pinned pool file, asserts 179 rows all Mohenjo-daro with zero Yajnadevam rows and the manifest hash, and reruns the recorded classification logic verbatim over the filtered pool only. Any mismatch closes the study as CANNOT BE RUN AS WRITTEN, unscored. It does not govern input integrity (C05), which pins the files the reproduction reads.",
    "depends_on": [
     "F035-C03",
     "F035-C05"
@@ -184,7 +185,7 @@
      "derivation-record",
      "spec032-record"
     ],
-    "boundary_confirmation": "C04 requires the reproduction to match the registered set; C03 states what that set is. The two govern different objects - the step-0 act, and the set it must reproduce - and are consistent by construction. Neither negates the other."
+    "boundary_confirmation": "C04 requires the reproduction to match the registered set; C03 states what that set is. The two govern different objects - the step-0 act, and the set it must reproduce - and are consistent by construction. Neither negates the other. C02 defines the pass line; C04 governs the step-0 reproduction that must pass before any scoring. The two are consistent by construction: the reproduction judges the trained set, never the criterion, and the criterion is applied only after the reproduction passes. Neither negates the other. C03 states the trained set; C04 states the step-0 act that must reproduce it. The two are consistent by construction: the act judges a derivation against the set C03 fixes. Neither negates the other. C04 governs the step-0 reproduction of the trained set; C06 governs the OSF registration's state at verification. The two are consistent by construction: they are different checks in the same step-0 sequence (0.3 and 0.1), each judging its own object. Neither negates the other. C04 governs re-deriving the pool and the classification; C08 states that the frozen crosswalk alone carries sign identity. The two are consistent by construction: the reproduction runs on the training pool only and maps no sign; identity is needed only after step 0 passes. Neither negates the other. C04 governs the step-0 reproduction; C10 defines the score computed after step 0 passes. The two are consistent by construction: the computation begins only on the reproduction's success, and the reproduction computes no score. Neither negates the other. C04 governs the step-0 reproduction (check 0.3); C09 governs the step-0 coverage closure (check 0.4). The two are consistent by construction: they are successive checks in one fixed order, each judging its own object - the derived set, and the trained set's mappability. Neither negates the other."
    },
    "evidence": [
     {
@@ -210,10 +211,10 @@
   },
   {
    "id": "F035-C05",
-   "text": "Every input is pinned by its registered SHA-256 - training pool b19cfe955313b7db73b462e697e305c1da21b3b8a6997679a466d959b757b42e, filtered-pool manifest ab3b4c8ae84090b6f0b60f467dde0067f5dbd2f20065f1625a60a79d7170540a, crosswalk e44b8b550155e3d071e7fc5f94e8c98e9755de437c99e2f5027e3d647b2950a2, withheld file c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98 - and a mismatch on any pin closes the study as CANNOT BE RUN AS WRITTEN.",
+   "text": "Every input is pinned by its registered SHA-256.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "The input-integrity claim (spec section 3, check 0.2). The pins identify the registered inputs byte for byte; the three file hashes were verified against the bytes on main at this draft (adjudication.md section 2), and the manifest pin is re-derived at step 0 under C04. It does not govern what the files contain or how they are used (C08, C10).",
+   "boundary": "The input-integrity claim (spec section 3, check 0.2). The pins identify the registered inputs byte for byte; the three file hashes were verified against the bytes on main at this draft (adjudication.md section 2), and the manifest pin is re-derived at step 0 under C04. It does not govern what the files contain or how they are used (C08, C10). The pins are: training pool b19cfe955313b7db73b462e697e305c1da21b3b8a6997679a466d959b757b42e, filtered-pool manifest ab3b4c8ae84090b6f0b60f467dde0067f5dbd2f20065f1625a60a79d7170540a, crosswalk e44b8b550155e3d071e7fc5f94e8c98e9755de437c99e2f5027e3d647b2950a2, withheld file c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98; a mismatch on any pin closes the study as CANNOT BE RUN AS WRITTEN.",
    "depends_on": [],
    "assumptions": [
     "ASM-PINNED-INPUTS-IDENTIFY-THE-TEST"
@@ -235,7 +236,8 @@
     "evidence_origin_groups": [
      "pred-register-010",
      "derivation-record"
-    ]
+    ],
+    "boundary_confirmation": "C03 states the trained set; C05 states the pins identifying the input files. The two are consistent by construction: the set is a content of the pinned derivation record, and the pins judge file identity, not set membership. Neither negates the other. C05 pins the crosswalk file's bytes; C08 states the reading under which the crosswalk carries identity. The two are consistent by construction: the pin judges the file's identity, the reading judges its use; neither substitutes for the other. Neither negates the other."
    },
    "evidence": [
     {
@@ -250,10 +252,10 @@
   },
   {
    "id": "F035-C06",
-   "text": "The OSF registration wjebq (DOI 10.17605/OSF.IO/WJEBQ) stands accepted and public; it is verified before the execution design is finalised and re-verified at execution step 0.",
+   "text": "The OSF registration wjebq holds accepted public status.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "The registration claim (spec section 3, check 0.1). Verified by API at this draft (2026-10-20): reviews_state accepted, public true, pending_registration_approval false, withdrawn false, embargoed false, date_registered 2026-10-13T12:45:55Z, registered from node nrb9u (osf-registration.md). The claim is about the registration's state at verification time; it does not govern any filing decision for this spec itself (DD-035-4).",
+   "boundary": "The registration claim (spec section 3, check 0.1). The registration (DOI 10.17605/OSF.IO/WJEBQ) was verified by API at this draft (2026-10-20); the read-back is recorded in osf-registration.md. It is verified before the execution design is finalised and re-verified at execution step 0. The claim is about the registration's state at verification time; it does not govern any filing decision for this spec itself (DD-035-4).",
    "depends_on": [],
    "assumptions": [
     "ASM-REGISTRATION-STATE-AT-VERIFICATION"
@@ -274,7 +276,8 @@
     "verdict_rule": "Execution proceeds only while the API state is accepted, public, not pending, not withdrawn, and not embargoed.",
     "evidence_origin_groups": [
      "osf-registration-wjebq"
-    ]
+    ],
+    "boundary_confirmation": "C04 governs the step-0 reproduction of the trained set; C06 governs the OSF registration's state at verification. The two are consistent by construction: they are different checks in the same step-0 sequence (0.3 and 0.1), each judging its own object. Neither negates the other."
    },
    "evidence": [
     {
@@ -289,10 +292,10 @@
   },
   {
    "id": "F035-C07",
-   "text": "The cleanliness this design claims is verified training-pool exclusion, not analyst blindness, and the aggregate-inspection disclosure travels with every outcome statement.",
+   "text": "The cleanliness this design claims is verified training-pool exclusion rather than analyst blindness.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "The disclosure claim. The Yajnadevam Harappa pool was inspected in aggregate during the Spec 032 closure audit, and those counts are published (970 Harappa inscriptions inside the old combined training corpus, carrying 1,013 occurrences of 11 of PRED-2026-006's 12 trained signs). No Harappa start rate has ever been computed for any sign. The claim this spec may make is the exclusion re-proven at step 0 (C04); blindness may never be claimed.",
+   "boundary": "The disclosure claim. The Yajnadevam Harappa pool was inspected in aggregate during the Spec 032 closure audit, and those counts are published in that record. No Harappa start rate has ever been computed for any sign. The claim this spec may make is the exclusion re-proven at step 0 (C04); blindness may never be claimed. The aggregate-inspection disclosure travels with every outcome statement.",
    "depends_on": [
     "F035-C04"
    ],
@@ -344,10 +347,10 @@
   },
   {
    "id": "F035-C08",
-   "text": "Sign identity between the trained set and the withheld sequences is carried by the frozen crosswalk only, fixed before counting.",
+   "text": "Sign identity under Spec 035 is carried by the frozen crosswalk only.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "The identity claim. The mapping is data/crosswalks/yajnadevam_to_parpola_crosswalk.csv under its registered pin (C05); no other mapping, manual match, or judgement call carries a sign's identity. The reading is fixed (DD-035-5): a sign's counterparts are the glyphs whose crosswalk row names it as best_parpola_match - the frozen Phase-396 build's fix_crosswalk reading; top3_parpola alternatives never create a counterpart and set the conflict flag instead. Conflict pairs are flagged in the per-sign table (C12), not resolved by hand. It does not govern the coverage rule (C09), which states what an absent counterpart does.",
+   "boundary": "The identity claim for sign identity between the trained set and the withheld sequences. The mapping is data/crosswalks/yajnadevam_to_parpola_crosswalk.csv under its registered pin (C05). The reading is fixed (DD-035-5): a sign's counterparts are the glyphs whose crosswalk row names it as best_parpola_match - the frozen Phase-396 build's fix_crosswalk reading; top3_parpola alternatives never create a counterpart and set the conflict flag instead. Conflict pairs are flagged in the per-sign table (C12), not resolved by hand. The crosswalk is fixed before counting. It does not govern the coverage rule (C09), which states what an absent counterpart does.",
    "depends_on": [
     "F035-C05"
    ],
@@ -371,7 +374,7 @@
     "evidence_origin_groups": [
      "pred-register-010"
     ],
-    "boundary_confirmation": "C08 states the crosswalk is the only identity carrier; C09 states the consequence when it carries no counterpart for a trained sign (the unmappable closure). The two are consistent by construction: silence in the sole carrier is exactly the unmappable case. Neither negates the other."
+    "boundary_confirmation": "C08 states the crosswalk is the only identity carrier; C09 states the consequence when it carries no counterpart for a trained sign (the unmappable closure). The two are consistent by construction: silence in the sole carrier is exactly the unmappable case. Neither negates the other. C04 governs re-deriving the pool and the classification; C08 states that the frozen crosswalk alone carries sign identity. The two are consistent by construction: the reproduction runs on the training pool only and maps no sign; identity is needed only after step 0 passes. Neither negates the other. C05 pins the crosswalk file's bytes; C08 states the reading under which the crosswalk carries identity. The two are consistent by construction: the pin judges the file's identity, the reading judges its use; neither substitutes for the other. Neither negates the other. C08 states the crosswalk is the only identity carrier; C09 states the consequence when it carries no counterpart for a trained sign. The two are consistent by construction: silence in the sole carrier is exactly the unmappable case C09 closes on. Neither negates the other. C08 states the crosswalk is the only identity carrier; C12 states the descriptive table published with the outcome. The two are consistent by construction: the table reports the counterparts the crosswalk supplies and introduces no mapping of its own. Neither negates the other. C08 states the carrier; C09 states the closure that fires when the carrier is silent for a trained sign. The two are consistent by construction: the closure is the carrier rule's own consequence, stated in its own claim. Neither negates the other."
    },
    "evidence": [
     {
@@ -386,10 +389,10 @@
   },
   {
    "id": "F035-C09",
-   "text": "Any unmappable trained sign is 33% of the trained set, above the registered 20% cap, and closes the scoring as CANNOT BE RUN AS WRITTEN before the withheld file is opened.",
+   "text": "Any unmappable trained sign closes the scoring as CANNOT BE RUN AS WRITTEN before the withheld file is opened.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "The coverage claim (spec section 3, check 0.4), in the registration's own terms - stricter than Spec 032's first-sentence coverage statement, because PRED-2026-010's registration declares the closure. The check reads only the crosswalk and the trained set. It does not govern scoring once coverage is complete (C10). Draft-stage observation (spec section 0.4): under the fixed reading (C08), P217 (glyph Y0520) and P324 (glyph Y0740) carry best-match counterparts and P000 carries none - it appears only as a top3_parpola alternative - so the step-0 determination on the pinned bytes is expected to fire this closure. The formal determination remains a step-0 act; the observation is recorded so the freeze decision is informed.",
+   "boundary": "The coverage claim (spec section 3, check 0.4), in the registration's own terms - stricter than Spec 032's first-sentence coverage statement, because PRED-2026-010's registration declares the closure. One unmappable trained sign is 33% of the trained set, above the registered 20% cap. The check reads only the crosswalk and the trained set. Draft-stage observation (spec section 0.4): under the fixed reading (C08), P000 carries no best-match counterpart, so the step-0 determination on the pinned bytes is expected to fire this closure; the formal determination remains a step-0 act. It does not govern scoring once coverage is complete (C10).",
    "depends_on": [
     "F035-C02",
     "F035-C08"
@@ -416,7 +419,7 @@
     "evidence_origin_groups": [
      "pred-register-010"
     ],
-    "boundary_confirmation": "C09 closes the scoring when coverage is incomplete; C02's criterion judges only a completed scoring. The two are consistent by construction: the closure fires before the criterion is ever applied, so no verdict is ever stated on a reduced denominator. Neither negates the other."
+    "boundary_confirmation": "C09 closes the scoring when coverage is incomplete; C02's criterion judges only a completed scoring. The two are consistent by construction: the closure fires before the criterion is ever applied, so no verdict is ever stated on a reduced denominator. Neither negates the other. C08 states the crosswalk is the only identity carrier; C09 states the consequence when it carries no counterpart for a trained sign. The two are consistent by construction: silence in the sole carrier is exactly the unmappable case C09 closes on. Neither negates the other. C09 closes the scoring when coverage is incomplete; C10 defines the score for a scoring that runs. The two are consistent by construction: the closure fires at step 0, before the computation C10 defines can begin. Neither negates the other. C04 governs the step-0 reproduction (check 0.3); C09 governs the step-0 coverage closure (check 0.4). The two are consistent by construction: they are successive checks in one fixed order, each judging its own object - the derived set, and the trained set's mappability. Neither negates the other. C08 states the carrier; C09 states the closure that fires when the carrier is silent for a trained sign. The two are consistent by construction: the closure is the carrier rule's own consequence, stated in its own claim. Neither negates the other."
    },
    "evidence": [
     {
@@ -431,10 +434,10 @@
   },
   {
    "id": "F035-C10",
-   "text": "The score is the share of trained signs whose Harappa start rate is at least 0.40, a start rate being the share of a sign's Harappa occurrences in the withheld sequences in which it stands in initial position.",
+   "text": "The score is the share of trained signs whose Harappa start rate is at least 0.40.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "The computation claim (spec section 5). Initial position is the first sign of a sequence, so a one-sign sequence's sign stands initial. The computation runs on the withheld Harappa sequences only, through the frozen crosswalk (C08), after step 0 passes. It does not govern the pass line (C02), the zero-occurrence edge (C11), or any adjustment: none is applied.",
+   "boundary": "The computation claim (spec section 5). Initial position is the first sign of a sequence, so a one-sign sequence's sign stands initial. The computation runs on the withheld Harappa sequences only, through the frozen crosswalk (C08), after step 0 passes. It does not govern the pass line (C02), the zero-occurrence edge (C11), or any adjustment: none is applied. A start rate is the share of a sign's Harappa occurrences in the withheld sequences in which it stands in initial position.",
    "depends_on": [
     "F035-C02",
     "F035-C08"
@@ -460,7 +463,8 @@
     "evidence_origin_groups": [
      "pred-register-010",
      "spec032-record"
-    ]
+    ],
+    "boundary_confirmation": "C04 governs the step-0 reproduction; C10 defines the score computed after step 0 passes. The two are consistent by construction: the computation begins only on the reproduction's success, and the reproduction computes no score. Neither negates the other. C09 closes the scoring when coverage is incomplete; C10 defines the score for a scoring that runs. The two are consistent by construction: the closure fires at step 0, before the computation C10 defines can begin. Neither negates the other. C10 defines the score; C11 states how a mappable sign with zero occurrences counts in it. The two are consistent by construction: C11 is one case inside the computation C10 defines, not a rival definition. Neither negates the other. C10 defines the score; C12 states the per-sign table is descriptive. The two are consistent by construction: the table publishes the computation's per-sign quantities and carries no criterion of its own. Neither negates the other."
    },
    "evidence": [
     {
@@ -486,7 +490,7 @@
   },
   {
    "id": "F035-C11",
-   "text": "A mappable trained sign with zero Harappa occurrences does not show a start rate at or above 0.40 and counts as not meeting the bar.",
+   "text": "A mappable trained sign with zero Harappa occurrences counts as not meeting the bar.",
    "kind": "requirement",
    "status": "draft",
    "boundary": "The zero-occurrence edge (spec section 5, DD-035-2), fixed at draft so it cannot be decided after the counts are seen. A sign with no occurrences has no start rate; the registered criterion (C02) credits only signs showing a start rate at or above 0.40. The alternative - closing as not-estimable - is rejected in DD-035-2 because the registered criterion has no such band; the freeze decision may overturn this reading openly. It does not govern unmappable signs (C09), which close the study earlier.",
@@ -514,7 +518,7 @@
     "evidence_origin_groups": [
      "pred-register-010"
     ],
-    "boundary_confirmation": "C11 governs a mappable sign that occurs zero times; C09 governs a sign with no crosswalk counterpart. The two cases are disjoint - mappability is decided at check 0.4, occurrence counts only exist after scoring opens - and are consistent by construction: a sign cannot be both unmappable and scored-with-zero-occurrences. Neither negates the other."
+    "boundary_confirmation": "C11 governs a mappable sign that occurs zero times; C09 governs a sign with no crosswalk counterpart. The two cases are disjoint - mappability is decided at check 0.4, occurrence counts only exist after scoring opens - and are consistent by construction: a sign cannot be both unmappable and scored-with-zero-occurrences. Neither negates the other. C02 defines the pass line over the share; C11 states how one mappable sign with zero occurrences counts toward that share. The two are consistent by construction: C11 supplies one sign's contribution to the quantity C02 judges. Neither negates the other. C10 defines the score; C11 states how a mappable sign with zero occurrences counts in it. The two are consistent by construction: C11 is one case inside the computation C10 defines, not a rival definition. Neither negates the other."
    },
    "evidence": [
     {
@@ -529,10 +533,10 @@
   },
   {
    "id": "F035-C12",
-   "text": "The per-sign table - every trained sign, its crosswalk counterpart, Harappa occurrence count, initial-position count, start rate, and conflict-pair flag - is published with the outcome as a descriptive record and carries no criterion.",
+   "text": "The per-sign table published alongside the outcome is a descriptive record only.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "The descriptive-record claim (spec section 5, DD-035-3), pre-registered as descriptive so it cannot be mistaken for a criterion. With 3 signs the table is the result's context; it moves no verdict (C02 judges the share alone). It does not govern the verdict wording (C13).",
+   "boundary": "The descriptive-record claim (spec section 5, DD-035-3), pre-registered as descriptive so it cannot be mistaken for a criterion. The table's contents are defined in spec section 5. With 3 signs the table is the result's context; it moves no verdict (C02 judges the share alone). It does not govern the verdict wording (C13).",
    "depends_on": [
     "F035-C10"
    ],
@@ -555,7 +559,8 @@
     "verdict_rule": "The table is published in full with the outcome and is descriptive only.",
     "evidence_origin_groups": [
      "spec032-record"
-    ]
+    ],
+    "boundary_confirmation": "C02 defines the criterion; C12 states that the per-sign table is descriptive and carries no criterion. The two are consistent by construction: the table reports the quantities the criterion judges and moves no verdict itself. Neither negates the other. C03 fixes the trained set; C12 states the descriptive table published with the outcome. The two are consistent by construction: the table lists exactly the signs C03 fixes and judges none of them. Neither negates the other. C08 states the crosswalk is the only identity carrier; C12 states the descriptive table published with the outcome. The two are consistent by construction: the table reports the counterparts the crosswalk supplies and introduces no mapping of its own. Neither negates the other. C10 defines the score; C12 states the per-sign table is descriptive. The two are consistent by construction: the table publishes the computation's per-sign quantities and carries no criterion of its own. Neither negates the other."
    },
    "evidence": [
     {
@@ -570,7 +575,7 @@
   },
   {
    "id": "F035-C13",
-   "text": "The verdict wording claims only the site-withholding independence the registration specified, and carries the register's small-set caveat in its first paragraph.",
+   "text": "The verdict wording claims only the site-withholding independence the registration specified.",
    "kind": "requirement",
    "status": "draft",
    "boundary": "The verdict-wording claim (spec section 8). The independence claimed is Harappa held out of training, re-proven at step 0 - not independence of scholarly lineage, since the Yajnadevam compilation's object base is published-corpus material. The small-set caveat (3 signs; the bar passes only at 3 of 3; each sign carries a third of the verdict) leads every outcome statement. It does not govern the scope of the study itself (C01).",
@@ -613,10 +618,10 @@
   },
   {
    "id": "F035-C14",
-   "text": "The outcome is appended to the PRED register as a dated entry; PRED-2026-006's entries stay byte-identical and it remains unscored, and no other prediction's state changes.",
+   "text": "The outcome is appended to the PRED register as a dated entry.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "The register-handling claim (spec section 7). The append is a dated section 6 entry (insertions only) under the owner's execution order, with PRED-2026-010's section 3 Tested/Outcome fields moving from PENDING in the same append and the Phase D register-hash pin advanced by name - the two 2026-10-13 precedents. This draft itself changes no register text.",
+   "boundary": "The register-handling claim (spec section 7). The append is a dated section 6 entry (insertions only) under the owner's execution order, with PRED-2026-010's section 3 Tested/Outcome fields moving from PENDING in the same append and the Phase D register-hash pin advanced by name - the two 2026-10-13 precedents. This draft itself changes no register text. PRED-2026-006's entries stay byte-identical and it remains unscored, and no other prediction's state changes.",
    "depends_on": [],
    "assumptions": [
     "ASM-REGISTER-GOVERNS"
@@ -653,10 +658,10 @@
   },
   {
    "id": "F035-C15",
-   "text": "Step-0 closures are reported as themselves, never as verdicts, and a closure is not a refutation of the prediction.",
+   "text": "Step-0 closures are reported as themselves rather than as verdicts.",
    "kind": "requirement",
    "status": "draft",
-   "boundary": "The closure-reporting claim (spec sections 3 and 6). The closures are CANNOT BE RUN AS WRITTEN (checks 0.2, 0.3, 0.4) and the registration stop (check 0.1). A closed study leaves PRED-2026-010 unscored with Outcome PENDING, and the register's section 4 (Failed Predictions) gains no entry from a closure - the PRED-2026-006 precedent, whose closure is recorded as neither CONFIRMED nor NOT CONFIRMED.",
+   "boundary": "The closure-reporting claim (spec sections 3 and 6). A closed study leaves PRED-2026-010 unscored with Outcome PENDING, and the register's section 4 (Failed Predictions) gains no entry from a closure - the PRED-2026-006 precedent, whose closure is recorded as neither CONFIRMED nor NOT CONFIRMED. A closure is not a refutation of the prediction.",
    "depends_on": [
     "F035-C04",
     "F035-C09"

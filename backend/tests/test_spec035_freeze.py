@@ -1,4 +1,4 @@
-"""Spec 035 draft-freeze fences (PRED-2026-010 scoring).
+"""Spec 035 freeze fences (PRED-2026-010 scoring).
 
 Pins: (1) the machine record replays exactly
 (framework026 verify_freeze over every covered
@@ -9,7 +9,8 @@ of trained signs at start rate 0.40 or above, which
 with 3 signs passes only at 3 of 3; any unmappable
 trained sign closes the scoring as CANNOT BE RUN
 AS WRITTEN); (3) the governed claim register is the
-drafted register (15 claims, integrity-clean);
+recovered register that passed the AEE lifecycle
+hooks at the freeze (15 claims, integrity-clean);
 (4) the cited records still carry the facts the
 design rests on (the derivation record's trained
 set, censuses, and pins; the PRED register entry;
@@ -53,7 +54,7 @@ def test_freeze_definition_constants():
         "spec035-pred-2026-010-scoring"
     )
     assert definition["register"]["claims"] == 15
-    assert definition["register"]["register_version"] == "0.5-draft"
+    assert definition["register"]["register_version"] == "0.8-draft"
     design = definition["design"]
     assert design["phase"] == "Phase-399"
     assert design["trained_initial_set"] == ["P000", "P217", "P324"]
@@ -90,7 +91,7 @@ def test_register_integrity():
     from aee.model import Claim
 
     raw = json.loads(REGISTER.read_text(encoding="utf-8"))
-    assert raw["register_version"] == "0.5-draft"
+    assert raw["register_version"] == "0.8-draft"
     assert [c["id"] for c in raw["claims"]] == [
         f"F035-C{i:02d}" for i in range(1, 16)
     ]

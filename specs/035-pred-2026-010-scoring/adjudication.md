@@ -132,6 +132,49 @@ the Spec 033 outcome merge):
    032–034 pattern) in addition to the
    prediction's preregistration (wjebq).
 
+## 4. Freeze adjudication — 2026-10-20
+
+4. **The owner's freeze-and-execute order of
+   2026-10-20**: "go with your recommendation" —
+   adopting the recommendation put to the owner
+   the same day (freeze Spec 035 and execute it,
+   buying the formal step-0 closure record).
+   This order decides §3's questions:
+
+   1. The contract is **FROZEN** as recovered at
+      the freeze act (register 0.8-draft; the AEE
+      lifecycle gate below), and Phase-399
+      execution is ordered in the same act.
+   2. **DD-035-2 stands as drafted**: the
+      zero-occurrence reading (a mappable sign
+      absent at Harappa counts as not meeting the
+      bar) is not overturned.
+   3. **DD-035-4 is decided YES**: the frozen
+      spec files its own OSF contract
+      registration (the Spec 032–034 pattern), in
+      addition to the prediction's
+      preregistration (wjebq). Its record is
+      filed in `osf-spec-registration.md` and
+      completed by append once the approval
+      verifies.
+
+**The freeze gate (AEE lifecycle hooks).** The
+hooks ran at this freeze act over the register
+(after_specify / after_plan / after_tasks; gate
+**pass**; `aee/freeze-aee-note.md`,
+`aee/recovery-specify.md`). after_specify took
+four rounds — 30, then 9, then 8 failure modes,
+then 0 — of atomic rewrites, boundary trims, and
+pairwise confirmations; propositions,
+falsifiers, and verdict rules were unchanged
+throughout. after_plan and after_tasks passed
+on the recovered register (0.8-draft) at the
+first pass. No claim stood below the 0.70
+threshold in any round. The freeze digest
+recorded in `freeze.json` is computed over the
+recovered register and the finalised freeze
+texts, once.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

@@ -32,27 +32,34 @@
       forbidden inheritance) replicated over the
       register JSON and clean; the freeze runs the
       framework026 machinery itself (L5).
-- [ ] **L3 — AEE hooks.** AEE assess +
+- [x] **L3 — AEE hooks.** AEE assess +
       evaluator-contract pass at after_specify,
       after_plan, and after_tasks over the
       register. **Not run at draft** (recorded in
       `aee/freeze-aee-note.md`); a freeze gate —
       the gate is **pass**, and a stricter outcome
       blocks the freeze until its named recovery
-      is complete and recorded.
-- [ ] **L4 — Design PR.** This draft, opened as a
-      DRAFT PR and left unmerged for the owner's
-      freeze decision, CI green from run
+      is complete and recorded. Run at the freeze
+      act, 2026-10-20: **pass** at all three hooks
+      over register 0.8-draft after four recorded
+      recovery rounds at after_specify
+      (`aee/recovery-specify.md`).
+- [x] **L4 — Design PR.** This draft, opened as a
+      DRAFT PR (#218) and left unmerged for the
+      owner's freeze decision, CI green from run
       conclusions.
-- [ ] **L5 — Freeze.** On the owner's freeze
-      order: hooks pass (L3), `freeze.md`
-      finalised, `freeze.json` recomputed via
-      `build_freeze.py` if any covered text
-      changed; freeze tests pin the digest replay,
-      the definition constants, the register
-      integrity, and the cited records (derivation
-      record, register entry, crosswalk
-      observation). DD-035-2 and DD-035-4 decided.
+- [x] **L5 — Freeze.** On the owner's freeze
+      order (2026-10-20, "go with your
+      recommendation"): hooks pass (L3),
+      `freeze.md` finalised, `freeze.json`
+      recomputed over the recovered register and
+      the finalised freeze texts; freeze tests pin
+      the digest replay, the definition constants,
+      the register integrity, and the cited records
+      (derivation record, register entry, crosswalk
+      observation). DD-035-2 stands as drafted;
+      DD-035-4 decided YES (the spec files its own
+      OSF contract registration).
 - [ ] **L6 — Freeze PR merged**, house gates green
       (foundation 0 failures, full suite, branding
       sweep).

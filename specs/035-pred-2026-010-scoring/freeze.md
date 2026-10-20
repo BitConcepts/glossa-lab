@@ -1,44 +1,59 @@
-# Spec 035 — Draft Freeze Record (PRED-2026-010: scoring the clean-withholding successor)
+# Spec 035 — Freeze Record (PRED-2026-010: scoring the clean-withholding successor)
 
-> ## DRAFT — NOT FROZEN — 2026-10-20
+> ## FROZEN at the Spec 035 freeze merge (2026-10-20)
 >
-> This document proposes the freeze. The freeze
-> takes effect only under the owner's freeze order
-> and the freeze PR's merge; until then Spec 035 is
-> a design draft, its digest below is a **draft
-> digest** over the draft texts, and nothing in it
-> authorises any run. If the freeze act changes any
-> covered text — the AEE recovery rounds are the
-> expected cause — the digest is recomputed in the
-> freeze PR and this document is finalised there,
-> by append where the house pattern requires it.
+> Basis: the owner's freeze-and-execute order of
+> 2026-10-20, verbatim **"go with your
+> recommendation"** (`adjudication.md` §4),
+> adopting the recommendation put to the owner the
+> same day: freeze this contract and execute it,
+> buying the formal step-0 record. The governed
+> claim register passed the AEE lifecycle hooks at
+> after_specify, after_plan, and after_tasks after
+> four recorded recovery rounds at after_specify
+> (30, then 9, then 8, then 0 failure modes;
+> `aee/recovery-specify.md`) — the freeze digest
+> recorded in `freeze.json` (framework026 digest,
+> built by `build_freeze.py` from the DEFINITION
+> and SOURCES it carries) covers the recovered
+> register (0.8-draft), never the pre-recovery
+> draft.
 
 ## 1. Basis
 
-The owner's draft order of 2026-10-20 (drafting
-only), recorded in `adjudication.md`. The contract
-implemented is the PRED-2026-010 registration of
-2026-10-13 (`docs/PREDICTION_REGISTER.md`), with
-its trained set derived at registration and frozen
-by hash (`reports/pred010_derivation_record.json`).
-The prediction's OSF preregistration (wjebq, DOI
+The contract implemented is the PRED-2026-010
+registration of 2026-10-13
+(`docs/PREDICTION_REGISTER.md`), with its trained
+set derived at registration and frozen by hash
+(`reports/pred010_derivation_record.json`). The
+prediction's OSF preregistration (wjebq, DOI
 10.17605/OSF.IO/WJEBQ) was verified accepted and
-public at this draft (`osf-registration.md`).
+public at the draft (`osf-registration.md`) and
+is re-verified at execution step 0.
 
-The draft-stage coverage observation (spec §0.4)
-is part of this basis: under the fixed crosswalk
-reading, P000 carries no best-match counterpart,
-so execution is expected to close at step 0.4 as
-CANNOT BE RUN AS WRITTEN, unscored. The freeze
-decision is taken knowing that.
+The §0.4 coverage observation is part of this
+basis: under the fixed crosswalk reading, P000
+carries no best-match counterpart, so execution
+is expected to close at step 0.4 as CANNOT BE RUN
+AS WRITTEN, unscored. The freeze decision was
+taken knowing that, on the owner's order.
+
+The freeze also decides the two open design
+decisions (`adjudication.md` §4): **DD-035-2
+stands as drafted** (a mappable trained sign
+with zero Harappa occurrences counts as not
+meeting the bar), and **DD-035-4 is decided
+YES**: this frozen spec files its own OSF
+contract registration (the Spec 032–034
+pattern), recorded in `osf-spec-registration.md`
+and completed by append once its approval
+verifies.
 
 ## 2. Machine record
 
 `freeze.json` in this directory is the canonical
 JSON record (framework026 `build_freeze`, computed
-by `build_freeze.py` in this directory). Its
-**draft digest** is recorded in `freeze.json`
-itself and reported with the draft PR. Covered
+by `build_freeze.py` in this directory). Covered
 sources (nothing else decides the question):
 
 - `specs/035-pred-2026-010-scoring/freeze.md` (this
@@ -55,7 +70,7 @@ sources (nothing else decides the question):
 and are not digest-covered (the house rule since
 Spec 026: plans change as work proceeds).
 
-## 3. What the freeze would fix
+## 3. What the freeze fixes
 
 - **The criterion** (spec §6 / F035-C02): at least
   70% of the trained INITIAL signs at Harappa
@@ -83,35 +98,38 @@ Spec 026: plans change as work proceeds).
   (F035-C07, F035-C13), and the register handling
   (F035-C14).
 
-## 4. What execution must satisfy before anything runs
+## 4. What execution must satisfy (Phase-399)
 
-- The owner's freeze order, and the freeze PR
-  merged with house gates green (foundation check
-  0 failures, full backend suite, branding sweep,
-  CI from run conclusions).
+- This freeze PR merged with house gates green
+  (foundation check 0 failures, full backend
+  suite, branding sweep, CI from run conclusions).
 - The AEE hook pass over the register at
   after_specify / after_plan / after_tasks,
-  gate **pass**, recovery rounds recorded
-  (`aee/freeze-aee-note.md`).
-- A separate owner execution order for
-  Phase-399.
+  gate **pass** — satisfied at this freeze act
+  and recorded (`aee/freeze-aee-note.md`,
+  `aee/recovery-specify.md`).
+- The owner's execution order — given in the
+  same act as the freeze order (above).
 - Step 0 (spec §3) re-verifying, in order: the
-  OSF registration (wjebq — and any spec-level
-  registration the freeze files under DD-035-4),
-  the four input pins, the training pool and
-  trained set, and the crosswalk coverage — with
-  the step-0 record written and hashed before any
-  scoring.
+  OSF registration (wjebq), the four input pins,
+  the training pool and trained set, and the
+  crosswalk coverage — with the step-0 record
+  written and hashed before any scoring. The
+  spec-level OSF registration filed under
+  DD-035-4 is recorded by append in
+  `osf-spec-registration.md`; step 0's
+  registration check is wjebq, as frozen in
+  spec §3.
 
-## 5. What this draft does not do
+## 5. What this freeze does not do
 
-It does not freeze anything, execute anything,
-open the withheld file for content, compute any
-Harappa count or start rate, file any OSF
-registration, or edit the PRED register, the
-derivation record, or any frozen record. It
-leaves the freeze — and, after it, the execution
-— to the owner's separate orders.
+It scores nothing, opens no withheld content, and
+computes no Harappa count or start rate.
+Execution is Phase-399, under the execution
+order recorded above. It does not touch any
+other frozen record (Specs 026–034), the
+PRED-2026-006 record, or any other prediction's
+state.
 
 ---
 

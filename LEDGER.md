@@ -6782,3 +6782,46 @@ and owner order.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 — Spec 038 draft (PRED-2026-007 full-population census and scoring, D-31)
+
+Spec 038 is DRAFTED under the owner's draft order of
+2026-10-20 (D-31 will be frozen for execution; this
+step drafts only): the scoring contract for
+PRED-2026-007 (H4: ICIT Function Alignment,
+registered 2026-04-22), which stands PARTIALLY
+CONFIRMED on a partial check of three named signs
+(recorded 2 of 3, 67%, against the 70% bar), the
+total ITM population never recorded. The design
+(D-31, PR #195) first enumerates every ITM-coded
+sign from the named primary source
+(reports/indus_cgsa_cluster_analysis.json,
+data.a[].icit_function; cross-check
+data/crosswalks/canonical_sign_registry.csv;
+conflict rule fixed before enumeration), then
+scores the registered criterion (>= 70% of
+ITM-coded signs TERMINAL or in TERMINAL clusters)
+over the full population, reading only the recorded
+CGSA Phase 5 output — no re-clustering; cluster
+classes per the disclosed DD-038-9
+operationalisation (the class recorded in
+reports/cluster_characterization.md). The verdict
+rule is mechanical and no outcome is pre-written
+for any branch (DD-038-1: the register's recorded
+67% is a pre-execution figure whose denominator
+mixed in the LOG-coded P098, which the frame
+excludes by rule). Claims F038-C01...C14; draft
+digest
+85081ca22ca61fb91b1c919c8728c7fe7752bcf15ec9c841ce0395e70ccb60e5.
+AEE hooks have not run on the draft register; they
+are a freeze gate, run at the freeze act under aee
+1.5.0 (DD-038-7). DD-038-6 is an open proposal for
+the freeze decision (file the frozen spec's own OSF
+contract registration). Nothing was executed,
+nothing was frozen, and the ITM population was NOT
+enumerated; the freeze and any execution
+(Phase-401, provisional) are the owner's separate
+decisions.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

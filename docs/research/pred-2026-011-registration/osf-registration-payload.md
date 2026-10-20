@@ -1,15 +1,17 @@
 # PRED-2026-011 — OSF Registration Payload
 
-> ## READY TO FILE — DO NOT FILE WITHOUT THE OWNER'S REGISTRATION ORDER
+> ## FILED — 2026-10-20 — REGISTRATION `t6whq`
 >
-> Draft prepared 2026-10-20. This is payload text only.
-> PRED-2026-011 is **not registered**. No OSF draft,
-> submission, or registration has been created from
-> this file.
+> Draft prepared 2026-10-20 and filed the same day
+> under Tristen Pierson's registration order. The
+> text below is the payload as filed from the
+> Predictions & Registrations node `nrb9u`. The
+> registration is approved and public:
+> https://osf.io/t6whq/, DOI 10.17605/OSF.IO/T6WHQ.
 
 ## Filing metadata
 
-- **Proposed title:** PRED-2026-011 — Cross-Site Class
+- **Title (as filed):** PRED-2026-011 — Cross-Site Class
   Preservation (Clean Withholding, Disclosed
   Mappability Screen): Successor Registration to
   PRED-2026-010
@@ -20,8 +22,9 @@
 - **Subjects:** Computational Linguistics; Social and
   Behavioral Sciences; Anthropology; Linguistics;
   Archaeological Anthropology
-- **Registration status of this payload:** DRAFT —
-  NOT FILED
+- **Registration status of this payload:** FILED
+  2026-10-20 (registration `t6whq`, approved and
+  public; DOI 10.17605/OSF.IO/T6WHQ)
 
 ## Study description
 

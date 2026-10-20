@@ -412,12 +412,19 @@ def test_pred_register_document_untouched():
     # closure of PRED-2026-010 (insertions only, no
     # existing entry altered; the section 3 entry's
     # Tested/Outcome fields unchanged, per claim
-    # F035-C15). Any further drift
+    # F035-C15). It was advanced a fifth time, by
+    # name, for the owner-ordered completion append
+    # of 2026-10-20: the dated section 6 entry
+    # recording the approval and public verification
+    # of PRED-2026-011's OSF registration
+    # (https://osf.io/t6whq/, DOI
+    # 10.17605/OSF.IO/T6WHQ; insertions only, no
+    # existing entry altered). Any further drift
     # from this hash is unauthorised.
     digest = hashlib.sha256(
         (_REPO_ROOT / "docs" / "PREDICTION_REGISTER.md").read_bytes()
     ).hexdigest()
-    assert digest == "2e59b3316c0d1d975fe65f2132b9a7edd6dae6d360864e7f98e18711961648c9"
+    assert digest == "548b13f22eabd1f10280d1544533b440f6d317977be2b26da6a0b4abd9de159c"
 
 
 # ── Script contract: shapes, states, idempotency ─────────────────────────

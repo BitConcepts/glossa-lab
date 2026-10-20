@@ -1,16 +1,21 @@
-# PRED-2026-011 — Draft Registration Record
+# PRED-2026-011 — Registration Record
 
-> ## DRAFT — NOT REGISTERED — 2026-10-20
+> ## REGISTERED — 2026-10-20
 >
-> This directory is a registration package prepared under
-> Tristen Pierson's order of 2026-10-20 ("go with your
-> recommendation"). It does **not** register
-> PRED-2026-011. No OSF registration has been filed, the
-> authoritative prediction register has not been changed,
-> and no scoring has run. Filing requires the owner's
-> separate registration order.
+> PRED-2026-011 was registered on 2026-10-20 under
+> Tristen Pierson's registration order of the same
+> day: the entry is appended to the authoritative
+> prediction register (`docs/PREDICTION_REGISTER.md`
+> §3, with dated notes in §6), and the OSF
+> Preregistration filed from the Predictions &
+> Registrations node `nrb9u` is approved and public:
+> https://osf.io/t6whq/, DOI **10.17605/OSF.IO/T6WHQ**
+> (API-verified 2026-10-20: accepted, public, DOI
+> as stated, `registered_from` `nrb9u`). The
+> prediction stands PENDING and unscored; scoring
+> requires its own future spec and owner order.
 
-## The proposal in brief
+## The registration in brief
 
 PRED-2026-011 asks the same question as
 PRED-2026-010:
@@ -35,7 +40,7 @@ PRED-2026-010's three signs to two:
 | P217 | Y0520 | Yes |
 | P324 | Y0740 | Yes |
 
-**Proposed trained INITIAL set: P217, P324.**
+**Trained INITIAL set: P217, P324.**
 
 This is a weak test because it has only two signs.
 The registered 70% bar can pass only if **both** signs
@@ -70,8 +75,10 @@ It creates a new prediction whose eligibility rule is
 stated before registration.
 
 This package does not alter PRED-2026-010 or its
-register status. Any formal closure record for 010
-belongs to its own scoring record.
+register status; its formal closure under Spec 035 /
+Phase-399 is recorded in the register's §6 entry of
+2026-10-20 and in
+`specs/035-pred-2026-010-scoring/outcome.md`.
 
 ## Design
 
@@ -88,8 +95,8 @@ The training pool is unchanged from PRED-2026-010:
 
 The recorded `global_class_stability` classification
 logic is carried through the PRED-2026-010 derivation
-unchanged. Recomputing it for this draft reproduced
-the 010 record exactly:
+unchanged. Recomputing it for this registration
+reproduced the 010 record exactly:
 
 - 28 classifiable signs
 - INITIAL 3
@@ -123,16 +130,17 @@ it cannot be quietly replaced.
 
 ### Withheld scoring data
 
-If PRED-2026-011 is later registered and separately
-taken to scoring, the scoring pool remains the
-Harappa-site rows of the same withheld file used for
-PRED-2026-010:
+If PRED-2026-011 is separately taken to scoring
+under a future spec and owner order, the scoring
+pool remains the Harappa-site rows of the same
+withheld file used for PRED-2026-010:
 
 - `backend/glossa_lab/data/yajnadevam_inscriptions.csv`
 - SHA-256:
   `c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98`
 
-No Harappa start rate was computed for this draft.
+No Harappa start rate was computed for this
+registration.
 
 ## Fixed inputs
 
@@ -146,7 +154,7 @@ No Harappa start rate was computed for this draft.
 | PRED-2026-010 derivation record | `95c197afd414ac0895b2e621932b9f8920aaac7a56d701702975c02951a3e9ef` |
 | PRED-2026-010 derivation script | `f7df0b94820a0dce8b1e25bb461b976e7b7fa7537728b777a78a09aaa1bac13c` |
 
-## Proposed criterion
+## Registered criterion
 
 The criterion keeps the form used by PRED-2026-006
 and PRED-2026-010:
@@ -248,42 +256,57 @@ positional behaviour.
    best-match counterpart in the frozen crosswalk.
    No Harappa behaviour for P000 was examined.
 
-## Registration gate
+## Registration record
 
-Nothing in this package is a registration. On a
-future owner registration order, the filing act
-would:
+The registration was completed on 2026-10-20, in
+this order:
 
-1. approve this exact design text;
-2. append the proposed entry in
-   `proposed-prediction-register-entry.md` to
-   `docs/PREDICTION_REGISTER.md`, completing its
-   registration date and OSF fields, and advance the
-   Phase D register-hash pin by name for that
-   authorised append;
-3. file the OSF Preregistration text in
-   `osf-registration-payload.md` from the Predictions
-   & Registrations node `nrb9u`;
-4. complete the registration record by append after
-   approval and public verification; and
-5. leave scoring for a separate owner order and
+1. This package was prepared as a draft under the
+   owner's order of 2026-10-20 ("go with your
+   recommendation") and merged as PR #219.
+2. Under the owner's registration order of the same
+   day, the entry in
+   `proposed-prediction-register-entry.md` was
+   appended to `docs/PREDICTION_REGISTER.md` (§3,
+   with a dated note in §6), and the Phase D
+   register-hash pin was advanced by name for that
+   authorised append (PR #220).
+3. The OSF Preregistration text in
+   `osf-registration-payload.md` was filed from the
+   Predictions & Registrations node `nrb9u`
+   (draft `6ad7639c62324b723e259c5e`; registration
+   `t6whq`, `date_registered` 2026-10-20T12:54:02Z).
+4. The registration was approved via the token link
+   in OSF's admin-notification email and verified
+   approved and public by API on 2026-10-20:
+   https://osf.io/t6whq/, DOI
+   **10.17605/OSF.IO/T6WHQ** (`reviews_state`
+   accepted, public, no approval pending, not
+   withdrawn, `registered_from` `nrb9u`). The
+   verified URL and DOI are recorded in the
+   register's §6 by dated append, and the
+   registration's OSF emails were archived after
+   verification.
+5. Scoring remains for a separate owner order and
    scoring design. Registration alone is not a
    scoring order.
 
 ## Package contents and reproduction
 
 - `proposed-prediction-register-entry.md` — the
-  proposed register entry and dated append note.
-- `osf-registration-payload.md` — the text ready to
-  file on OSF after the owner's registration order.
+  register entry text as appended at registration
+  (its status lines completed at filing) and its
+  dated append note.
+- `osf-registration-payload.md` — the OSF
+  Preregistration text as filed on 2026-10-20.
 - `derivation-record.json` — the machine-readable
   derivation and screening record.
 - `backend/scripts/pred011_register_derivation.py`
   — the reproducible derivation and screen.
 - `backend/tests/test_pred011_draft_registration.py`
   — checks that the derivation reproduces the
-  screened set and that the draft remains explicitly
-  unregistered.
+  screened set and that the package records the
+  completed registration.
 
 Reproduce the derivation from the repository root:
 

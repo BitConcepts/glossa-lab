@@ -1,13 +1,19 @@
-"""PRED-2026-011 — draft registration pins (2026-10-20).
+"""PRED-2026-011 — registration pins (2026-10-20).
 
-The proposed successor screens PRED-2026-010's clean
+The successor screens PRED-2026-010's clean
 CISI Mohenjo-daro INITIAL set through the frozen public
 crosswalk before registration. These tests pin the
-recomputed derivation and the screened set so the draft
-cannot quietly change. They also pin the package's
-status: PRED-2026-011 is drafted, not registered, and
-the authoritative PRED register remains unchanged until
-a separate registration act.
+recomputed derivation and the screened set so the
+registration cannot quietly change. They also pin the
+package's status: PRED-2026-011 was registered on
+2026-10-20 (register entry appended by PR #220; OSF
+registration t6whq approved and public, DOI
+10.17605/OSF.IO/T6WHQ), and the prediction stands
+PENDING and unscored. The derivation record's status
+field keeps its derivation-time value
+(DRAFT_NOT_REGISTERED): the derivation was performed
+and committed while the package was a draft, and that
+record is not rewritten by the registration act.
 """
 from __future__ import annotations
 
@@ -91,20 +97,23 @@ def test_committed_pred011_record_matches_the_derivation():
     assert committed == _load_derivation().derive()
 
 
-def test_pred011_package_is_explicitly_a_draft():
+def test_pred011_package_records_the_registration():
     readme = (PACKAGE / "README.md").read_text("utf-8")
     proposed = (PACKAGE / "proposed-prediction-register-entry.md").read_text("utf-8")
     payload = (PACKAGE / "osf-registration-payload.md").read_text("utf-8")
 
-    assert "DRAFT — NOT REGISTERED" in readme
-    assert "Proposed trained INITIAL set: P217, P324" in readme
+    assert "REGISTERED — 2026-10-20" in readme
+    assert "Trained INITIAL set: P217, P324" in readme
     assert "only 2 of 2 passes" in readme
+    assert "https://osf.io/t6whq/" in readme
+    assert "10.17605/OSF.IO/T6WHQ" in readme
 
-    assert "Registration status**: DRAFT — NOT REGISTERED" in proposed
+    assert "Registration status**: REGISTERED" in proposed
     assert "P217, P324 — 2 signs" in proposed
-    assert "OSF registration**: NOT FILED" in proposed
+    assert "OSF completion (2026-10-20)" in proposed
+    assert "10.17605/OSF.IO/T6WHQ" in proposed
 
-    assert "DO NOT FILE WITHOUT THE OWNER'S REGISTRATION ORDER" in payload
+    assert "FILED — 2026-10-20" in payload
     assert "only at **2 of 2**" in payload
     assert "would not validate the INITIAL class in general" in " ".join(
         payload.split()
@@ -114,9 +123,14 @@ def test_pred011_package_is_explicitly_a_draft():
 def test_register_carries_the_pred011_entry():
     # Registration act of 2026-10-20 (owner order): the
     # entry and its dated section 6 note are appended to
-    # the authoritative register, insertions only.
+    # the authoritative register, insertions only. The
+    # completion append of the same date records the
+    # OSF registration's approval and public state.
     register = (REPO / "docs" / "PREDICTION_REGISTER.md").read_text("utf-8")
     assert "### PRED-2026-011" in register
     assert "P217, P324" in register
     assert CROSSWALK_SHA256 in register
     assert "### 2026-10-20 — PRED-2026-011 registered" in register
+    assert "PRED-2026-011 OSF registration approved and public" in register
+    assert "https://osf.io/t6whq/" in register
+    assert "10.17605/OSF.IO/T6WHQ" in register

@@ -6753,3 +6753,32 @@ AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the direction o
 Phase-399 executed Spec 035 step 0 in the frozen order on 2026-10-20, under the owner's freeze-and-execute order. Checks 0.1–0.3 passed: the prediction's preregistration (wjebq) stood accepted and public; all registered input pins matched; and the CISI-Mohenjo-daro-only pool re-derived as registered (179 inscriptions, filtered-pool manifest hash matched), with the recorded classification reproducing the trained set {P000, P217, P324} exactly — the clean withholding verified. Check 0.4 closed the study: under the frozen crosswalk reading, P000 has no best-match counterpart (P217 → Y0520 at confidence 1.0; P324 → Y0740 at 0.9867), so one of three trained signs is unmappable — 33% against the registered 20% cap. Recorded outcome: CLOSED AT STEP 0 — CANNOT BE RUN AS WRITTEN, unscored, not a refutation; the withheld file was never opened and no Harappa count or start rate was computed. PRED-2026-010 remains unscored (register section 6 dated append; its section 3 Outcome stays PENDING per F035-C15; section 4 gains no entry); PRED-2026-006's record is untouched. Step-0 record: reports/phase399_results.json (step-0 record sha256 e231baf4cd0c664211089c6758296c10a035062b6566ac5200407872e4aeee1f). The spec-level OSF registration (qkj8d) was filed before execution under DD-035-4; its record completes by append on approval (PR #221).
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 — PRED-2026-011 registration completed: OSF registration approved and public (t6whq)
+
+The OSF Preregistration for PRED-2026-011, filed earlier
+the same day from the Predictions & Registrations node
+(nrb9u) under the owner's registration order, was
+approved via the token link in OSF's
+admin-notification email and verified approved and
+public by API on 2026-10-20: registration t6whq,
+https://osf.io/t6whq/, DOI 10.17605/OSF.IO/T6WHQ
+(reviews_state accepted; public;
+pending_registration_approval false; not withdrawn;
+registered_from nrb9u; date_registered
+2026-10-20T12:54:02Z). The verified URL and DOI are
+recorded in the prediction register by a dated
+section 6 append only; the registration package
+README is flipped to REGISTERED with the same
+identifiers, and the Spec 029 Phase D register-hash
+pin was advanced by name a fifth time for this
+authorised append. The registration's OSF emails
+(draft-created notice and admin notification) were
+archived after the API verification, per the
+standing rule. PRED-2026-011 stands PENDING and
+unscored; no scoring ran and no Harappa start rate
+was computed. Scoring requires its own future spec
+and owner order.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

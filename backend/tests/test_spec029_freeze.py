@@ -116,7 +116,6 @@ def _claim_from_register(raw_claim: dict):
 
 
 def test_register_is_the_recovered_one():
-    from glossa_lab.aee_core import Claim
     from glossa_lab.framework026 import check_dependency_integrity
 
     reg = json.loads(REGISTER.read_text(encoding="utf-8"))

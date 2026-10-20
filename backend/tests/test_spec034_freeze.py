@@ -82,7 +82,6 @@ def _claim_from_register(raw_claim: dict):
 
 def test_register_integrity():
     from glossa_lab.framework026 import check_dependency_integrity
-    from aee.model import Claim
 
     raw = json.loads(REGISTER.read_text(encoding="utf-8"))
     assert raw["register_version"] == "0.5-draft"

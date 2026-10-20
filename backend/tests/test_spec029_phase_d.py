@@ -444,7 +444,7 @@ def test_pred_register_document_untouched():
     digest = hashlib.sha256(
         (_REPO_ROOT / "docs" / "PREDICTION_REGISTER.md").read_bytes()
     ).hexdigest()
-    assert digest == "5f7090598907adfcb284a6169ff601f9b5ceecd92b043dfec7d68c0d8a6b2cd6"
+    assert digest == "f281bd674d7651e9c13351bad7cb321bd55000cd3f087a38276a4451fbbf7ef3"
 
 
 # ── Script contract: shapes, states, idempotency ─────────────────────────

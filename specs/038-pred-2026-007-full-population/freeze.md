@@ -1,20 +1,28 @@
 # Spec 038 — Freeze Record (PRED-2026-007: full-population ITM census and scoring, D-31)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-20
+> ## FROZEN at the Spec 038 freeze merge (2026-10-20)
 >
-> This record is finalised at the freeze act.
-> The digest in `freeze.json` at this draft is a
-> **draft digest**, computed by `build_freeze.py`
-> over this draft contract (register 0.5-draft)
-> under the owner's draft order of 2026-10-20
-> (`adjudication.md`). At the freeze act — on the
-> owner's freeze order — the AEE lifecycle hooks
-> run over the register first, **under aee
-> 1.5.0** (DD-038-7), and the digest is
-> recomputed **exactly once** over the recovered
-> register and the finalised freeze texts (the
-> Spec 035/036 ordering). The draft digest
-> decides nothing and is not the freeze digest.
+> Basis: the owner's freeze-and-execute order of
+> 2026-10-20, verbatim **"Freeze D-31 for
+> execution"** (`adjudication.md` §6), which
+> freezes this contract and orders Phase-401
+> execution in the same act. The governed claim
+> register passed the AEE lifecycle gate at
+> after_specify, after_plan, and after_tasks
+> under **aee 1.5.0** (DD-038-7), after three
+> recorded rounds at after_specify (24, then 20,
+> then 14 failure modes — the final 14 all
+> FR-2.3 draft-cap records; 0 correctness
+> failure modes and 0 claims below the 0.70
+> threshold from round 2 on;
+> `aee/recovery-specify.md`; the gate reading
+> under aee 1.5.0 is recorded as DD-038-10) —
+> the freeze digest recorded in `freeze.json`
+> (framework026 digest, built by
+> `build_freeze.py` from the DEFINITION and
+> SOURCES it carries) covers the recovered
+> register (0.7-draft), never the pre-recovery
+> draft.
 
 ## 1. Basis
 
@@ -40,14 +48,16 @@ function-code sources are named — primary,
 cross-check, conflict rule — before any
 enumeration (DD-038-5).
 
-The freeze also decides the one open design
-proposal (`adjudication.md` §3–§4): **DD-038-6**
-— whether this frozen spec files its own OSF
-contract registration (the proposal is to
-follow the Spec 032–036 house pattern and file
-one; PRED-2026-007 itself has no preregistration
-of its own, `osf-registration.md`). The phase
-number is confirmed at the same act (DD-038-8).
+The freeze also decides the open design
+proposal: **DD-038-6 is decided YES** — this
+frozen spec files its own OSF contract
+registration, following the Spec 032–036 house
+pattern (PRED-2026-007 itself has no
+preregistration of its own,
+`osf-registration.md`). The phase number is
+confirmed at the same act (DD-038-8):
+**Phase-401 is allocated to Spec 038** on the
+merged record (`adjudication.md` §6).
 
 ## 2. Machine record
 
@@ -71,7 +81,7 @@ lifecycle bookkeeping and are not digest-covered
 (the house rule since Spec 026: plans change as
 work proceeds).
 
-## 3. What the freeze would fix
+## 3. What the freeze fixes
 
 - **The criterion** (spec §6 / F038-C02): at
   least 70% of ITM-coded signs are TERMINAL or

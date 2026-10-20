@@ -1,6 +1,6 @@
-"""Spec 038 draft freeze fences (PRED-2026-007 full-population census, D-31).
+"""Spec 038 freeze fences (PRED-2026-007 full-population census, D-31).
 
-Pins: (1) the draft machine record replays exactly
+Pins: (1) the machine record replays exactly
 (framework026 verify_freeze over every covered
 source); (2) the definition carries the registered
 criterion verbatim, the mechanical verdict rule
@@ -10,9 +10,9 @@ cross-check sources with their hashes and the
 conflict rule, the DD-038-9 cluster-class
 operationalisation, the coverage rule, and the
 step-0 closures exactly as designed; (3) the
-governed claim register is the draft register
-(14 claims, integrity-clean, hooks not run — the
-hooks are a freeze gate under aee 1.5.0); (4) the
+governed claim register is the recovered register
+(14 claims, integrity-clean, hooks passed at the
+freeze act under aee 1.5.0); (4) the
 cited records still carry the facts the design
 rests on (the PRED register entry; the primary
 source's FORM — 611 per-sign records carrying an
@@ -63,11 +63,11 @@ def test_freeze_definition_constants():
         "spec038-pred-2026-007-full-population"
     )
     assert definition["register"]["claims"] == 14
-    assert definition["register"]["register_version"] == "0.5-draft"
-    assert "NOT RUN" in definition["register"]["aee_hook_pass"]
+    assert definition["register"]["register_version"] == "0.7-draft"
+    assert "PASS" in definition["register"]["aee_hook_pass"]
     assert "1.5.0" in definition["register"]["aee_hook_pass"]
     design = definition["design"]
-    assert "Phase-401" in design["phase"]
+    assert design["phase"] == "Phase-401"
     crit = design["criterion"]
     assert crit["share_min"] == 0.7
     assert "ITM-coded signs are TERMINAL" in crit["verbatim"]
@@ -105,10 +105,10 @@ def test_freeze_definition_constants():
         design["step0"]["failure_closure"])
     assert design["coverage_rule"]["floor"] == 0.8
     assert "no outcome is pre-written" in design["census_branch"]
-    assert "no freeze order" in design["execution_gate"]
+    assert "orders Phase-401 execution" in design["execution_gate"]
     inputs = definition["inputs"]
     assert inputs["pred_register"]["sha256"] == (
-        "548b13f22eabd1f10280d1544533b440f6d317977be2b26da6a0b4abd9de159c"
+        "4f8aeb54fd5853d73766ed9cf0222ef93cccfa8d9a8c399a4631221fbbb4c1c2"
     )
 
 
@@ -117,7 +117,7 @@ def test_register_integrity():
     from aee.model import Claim
 
     raw = json.loads(REGISTER.read_text(encoding="utf-8"))
-    assert raw["register_version"] == "0.5-draft"
+    assert raw["register_version"] == "0.7-draft"
     assert [c["id"] for c in raw["claims"]] == [
         f"F038-C{i:02d}" for i in range(1, 15)
     ]

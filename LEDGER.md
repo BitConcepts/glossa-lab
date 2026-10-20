@@ -6947,3 +6947,31 @@ decisions.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 — Spec 038 FROZEN (D-31: PRED-2026-007 full-population census and scoring)
+
+Spec 038 is FROZEN under the owner's
+freeze-and-execute order of 2026-10-20 ("Freeze
+D-31 for execution"), and Phase-401 execution
+is ordered in the same act. The AEE lifecycle
+gate ran under aee 1.5.0 (DD-038-7) — the first
+freeze gate under the 1.5 engine — over the
+recovered register 0.7-draft: three recorded
+rounds at after_specify (24, then 20, then 14
+failure modes, the last all FR-2.3 draft-cap
+records; 0 correctness failure modes and 0
+claims below the 0.70 threshold from round 2
+on), after_plan and after_tasks clean at the
+first pass each; the gate reading under aee
+1.5.0 is recorded as DD-038-10. Freeze
+decisions (adjudication.md section 6):
+DD-038-6 YES (the frozen spec files its own
+OSF contract registration); DD-038-8 decided —
+Phase-401 is allocated to Spec 038 on the
+merged record. The freeze digest is recorded
+in specs/038-pred-2026-007-full-population/freeze.json
+and computed over the recovered register and
+the finalised freeze texts, once.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

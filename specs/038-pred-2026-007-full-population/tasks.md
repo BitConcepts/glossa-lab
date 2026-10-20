@@ -43,7 +43,7 @@
       are disposed of explicitly in
       `adjudication.md` §3 and carried into the
       spec (DD-038-1, DD-038-9, DD-038-5).
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE —
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE —
       not run on this draft).** At the freeze
       act, run `run_aee.py assess` after_specify,
       after_plan, and after_tasks over the claim
@@ -60,7 +60,7 @@
       a DRAFT PR and left unmerged for the
       owner's freeze decision, CI state reported
       from run conclusions.
-- [ ] **L6 — Freeze.** On the owner's freeze
+- [x] **L6 — Freeze.** On the owner's freeze
       order: hooks pass (L4), `freeze.md`
       finalised, `freeze.json` recomputed over
       the recovered register and the finalised

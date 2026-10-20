@@ -37,6 +37,18 @@
 - Nothing in this file is a filing, and no OSF
   state is claimed anywhere in this package.
 
+## Freeze decision — 2026-10-20
+
+**DD-038-6 is decided YES** at the freeze act
+(the owner's freeze-and-execute order,
+`adjudication.md` §6): the frozen spec files
+its own OSF contract registration, following
+the Spec 032–036 house pattern. The filing is
+made at the freeze, before execution; its
+identifiers and approval state are recorded
+here by append once the filing is made and the
+approval verifies.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

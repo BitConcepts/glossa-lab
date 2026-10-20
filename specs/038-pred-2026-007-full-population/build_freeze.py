@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """Build the Spec 038 freeze record (freeze.json).
 
-This builder computes the DRAFT digest over the
+This builder computed the DRAFT digest over the
 draft contract under the owner's draft order of
-2026-10-20 (adjudication.md). At the freeze act —
-on the owner's separate freeze order, after the
-AEE lifecycle hooks pass over the recovered
-register under aee 1.5.0 (DD-038-7) — it is re-run
-to compute the final digest over the frozen
-contract exactly once, and its DEFINITION text is
-finalised in the same act (the Spec 035/036
+2026-10-20 (adjudication.md), and at the freeze
+act — on the owner's freeze-and-execute order of
+2026-10-20, after the AEE lifecycle hooks passed
+over the recovered register under aee 1.5.0
+(DD-038-7) — it computes the freeze digest over
+the frozen contract exactly once, its DEFINITION
+text finalised in the same act (the Spec 035/036
 pattern). Run with the Glossa backend venv python
 from the repository root:
 
@@ -40,15 +40,21 @@ DEFINITION = {
     "experiment_id": "spec038-pred-2026-007-full-population",
     "register": {
         "path": "specs/038-pred-2026-007-full-population/claims.json",
-        "register_version": "0.5-draft",
+        "register_version": "0.7-draft",
         "claims": 14,
         "aee_hook_pass": (
-            "NOT RUN on this draft: the AEE lifecycle "
-            "hooks (after_specify / after_plan / "
-            "after_tasks) are a freeze gate, run at the "
-            "freeze act over the recovered register "
-            "UNDER aee 1.5.0 (adoption in flight; "
-            "DD-038-7; see "
+            "PASS at the freeze act (2026-10-20) under "
+            "aee 1.5.0: after_specify clean over "
+            "register 0.7-draft after three recorded "
+            "rounds (24, then 20, then 14 failure "
+            "modes - the final 14 all FR-2.3 draft-cap "
+            "records; 0 correctness failure modes and "
+            "0 claims below the 0.70 threshold from "
+            "round 2 on), after_plan and after_tasks "
+            "clean on the recovered register at the "
+            "first pass each (DD-038-7; the gate "
+            "reading under aee 1.5.0 is recorded as "
+            "DD-038-10; see "
             "specs/038-pred-2026-007-full-population/aee/"
             "freeze-aee-note.md)"
         ),
@@ -58,28 +64,34 @@ DEFINITION = {
             "specs/038-pred-2026-007-full-population/adjudication.md"
         ),
         "decisions": (
-            "The owner's draft order of 2026-10-20 "
-            "commissions this draft only (D-31 will be "
-            "frozen for execution; this step drafts). "
-            "No freeze order and no execution order "
-            "exist for this contract. The freeze "
+            "The owner's freeze-and-execute order of "
+            "2026-10-20 ('Freeze D-31 for execution') "
+            "freezes this contract and orders "
+            "Phase-401 execution in the same act; the "
+            "draft was commissioned by the owner's "
+            "draft order of the same day. The freeze "
             "coordinator's three Stage-0 flags are "
             "disposed of in adjudication.md section 3 "
             "(DD-038-1 mechanical verdict rule, no "
             "pre-written outcome; DD-038-9 cluster-class "
             "operationalisation; DD-038-5 named sources "
-            "and conflict rule). DD-038-6 is an open "
-            "proposal for the freeze decision (file the "
-            "frozen spec's own OSF contract "
-            "registration). The contract implemented "
-            "is design D-31 (PR #195) for the "
-            "PRED-2026-007 registration "
+            "and conflict rule). DD-038-6 is decided "
+            "YES at the freeze: the frozen spec files "
+            "its own OSF contract registration. "
+            "DD-038-8 is decided at the freeze: the "
+            "execution phase is Phase-401, allocated "
+            "on the merged record (adjudication.md "
+            "section 6). DD-038-10 records the freeze "
+            "gate's reading under aee 1.5.0. The "
+            "contract implemented is design D-31 "
+            "(PR #195) for the PRED-2026-007 "
+            "registration "
             "(docs/PREDICTION_REGISTER.md, registered "
             "2026-04-22)."
         ),
     },
     "design": {
-        "phase": "Phase-401 (provisional, DD-038-8)",
+        "phase": "Phase-401",
         "question_owner": (
             "docs/PREDICTION_REGISTER.md PRED-2026-007 "
             "(H4: ICIT Function Alignment)"
@@ -270,19 +282,19 @@ DEFINITION = {
             "record"
         ),
         "execution_gate": (
-            "NOT satisfied: no freeze order and no "
-            "execution order exist for this contract; "
-            "the freeze and the execution (Phase-401, "
-            "provisional) are separate future owner "
-            "decisions; this draft performs neither and "
-            "enumerates nothing"
+            "SATISFIED at the freeze act (2026-10-20): "
+            "the owner's freeze-and-execute order "
+            "freezes this contract and orders Phase-401 "
+            "execution in the same act; execution "
+            "follows the freeze merge, and the freeze "
+            "itself enumerates nothing"
         ),
     },
     "inputs": {
         "pred_register": {
             "file": "docs/PREDICTION_REGISTER.md",
             "sha256": (
-                "548b13f22eabd1f10280d1544533b440f6d317977be2b26da6a0b4abd9de159c"
+                "4f8aeb54fd5853d73766ed9cf0222ef93cccfa8d9a8c399a4631221fbbb4c1c2"
             ),
             "entry": "PRED-2026-007 (registered 2026-04-22)",
         },
@@ -311,9 +323,9 @@ DEFINITION = {
         "python": "3.12.3",
         "runner": "backend (venv glossa-lab)",
         "aee": (
-            "1.5.0 at the freeze gate (adoption in "
-            "flight; DD-038-7); hooks NOT RUN on this "
-            "draft"
+            "1.5.0 at the freeze gate (DD-038-7); "
+            "hooks run at the freeze act "
+            "(aee/freeze-aee-note.md)"
         ),
         "specify": "1.0.10",
     },

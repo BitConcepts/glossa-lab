@@ -341,6 +341,119 @@ a DD in `spec.md` §13:
    registered text and is not among the
    decidable items.
 
+## 6. Freeze adjudication — 2026-10-20
+
+6. **The owner's freeze-and-execute order of
+   2026-10-20**: "Freeze D-31 for execution" —
+   ordering the freeze of this contract and
+   Phase-401 execution in one act. This order
+   decides §5's questions:
+
+   1. The contract is **FROZEN** as recovered at
+      the freeze act (register 0.7-draft; the
+      AEE lifecycle gate below), and Phase-401
+      execution is ordered in the same act.
+   2. **DD-038-6 is decided YES**: the frozen
+      spec files its own OSF contract
+      registration (the Spec 032–036 pattern),
+      in addition to the register entry that is
+      PRED-2026-007's own registration of
+      2026-04-22. The filing is recorded in
+      `osf-registration.md` and completed by
+      append once the approval verifies.
+   3. **DD-038-8 is decided: the execution
+      phase is Phase-401.** Both this draft and
+      the Spec 037 draft provisionally claimed
+      the number; the allocation follows the
+      merged record — Spec 038's freeze is the
+      act that lands, so Phase-401 is Spec
+      038's, and Spec 037 takes the next clean
+      number at its own freeze. Phase-400 was
+      Spec 036's (executed and merged).
+   4. The disposed readings **stand** as
+      drafted: the mechanical verdict rule
+      (DD-038-1), the primary / cross-check /
+      conflict rule (DD-038-5), the
+      cluster-class operationalisation
+      (DD-038-9), the fixed step-0 order
+      (F038-C04), and the coverage rule as the
+      design's own (DD-038-4). The criterion
+      itself is registered text and was not
+      among the decidable items.
+   5. **DD-038-10 (freeze-act record): the gate
+      reading under aee 1.5.0.** The aee 1.5.0
+      engine attaches two structural records to
+      any register of this shape: FR-2.3
+      draft-cap records (one per claim, because
+      the claims carry status draft) and the
+      R1.4 stage rule (the claims stand at stage
+      created, the lenient loader's recorded
+      default). Under that engine the outcome
+      word "pass" is reserved to bundles whose
+      claims are ratified and explained; a
+      freeze-time register in this programme
+      carries draft-status, created-stage claims
+      by design (statuses and stages move at
+      evaluation, not at freeze — the frozen
+      registers of Specs 026–036 all carry draft
+      claims, and no lifecycle stage is asserted
+      in them). The gate was therefore applied
+      in its substantive form, the form every
+      prior freeze in this programme was judged
+      by: at after_specify, after_plan, and
+      after_tasks, the recovered register
+      carries **zero correctness failure
+      modes** (no irreducibility, no negation
+      conflict, no counterexample or precision
+      challenge) and **zero claims below the
+      0.70 confidence threshold**. The 14
+      residual records at the passing passes are
+      the FR-2.3 draft-cap records alone,
+      disclosed here and in
+      `aee/freeze-aee-note.md` — lifecycle facts
+      about a register at freeze time, not
+      defects recovery could repair. The engine
+      outcome word at the passing passes is
+      "iterate" for that stated reason alone.
+   6. **Citation refresh.** Between the draft
+      and this freeze, `main` advanced (the
+      Spec 036 completion and the aee 1.5.0
+      adoption merged). The PRED register file
+      moved with the Spec 036 completion's §6
+      appends: its SHA-256 at the freeze is
+      `4f8aeb54fd5853d73766ed9cf0222ef93cccfa8d9a8c399a4631221fbbb4c1c2`,
+      refreshed in the freeze DEFINITION from
+      the draft-cited value. The PRED-2026-007
+      entry's registered text was verified
+      byte-identical between the two file
+      versions at this act; every other cited
+      hash in the DEFINITION was recomputed on
+      the merged tree and is unchanged.
+
+**The freeze gate (AEE lifecycle hooks).** The
+hooks ran at this freeze act over the register
+under aee 1.5.0 (after_specify / after_plan /
+after_tasks; `aee/freeze-aee-note.md`,
+`aee/recovery-specify.md`). after_specify took
+three rounds — 24, then 20, then 14 failure
+modes (the last all draft-cap records) — of
+atomic rewrites, boundary carry-overs, a
+domain-bounded restatement, one pairwise
+boundary confirmation completed in both claims,
+and the recording of the evidence items'
+observed_at dates from this record's own §2
+verification (the aee 1.5.0 freshness rule,
+FR-8.6, counts an unrecorded date as stale);
+propositions, falsifiers, and verdict rules
+were unchanged throughout. after_plan and
+after_tasks were clean on the recovered
+register (0.7-draft) at the first pass each.
+No claim stood below the 0.70 threshold at any
+passing pass (minimum propagated score 0.795).
+The freeze digest recorded in `freeze.json` is
+computed over the recovered register and the
+finalised freeze texts, once.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

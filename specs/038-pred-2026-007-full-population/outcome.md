@@ -1,126 +1,222 @@
-# Spec 038 / Phase-401 (provisional) — Outcome record (SKELETON — NOT EXECUTED)
+# Spec 038 / Phase-401 — Outcome record (EXECUTED 2026-10-20 — CLOSED AT STEP 0.2)
 
-> ## PRE-WRITTEN SKELETON — DRAFTED 2026-10-20 — NOTHING EXECUTED
+> ## EXECUTED — CLOSED AT STEP 0 (2026-10-20)
 >
-> This skeleton is written at draft time so the
-> execution append has its shape fixed before
-> any run (the Spec 035/036 outcome pattern).
-> Every slot below is **PENDING EXECUTION**.
-> Execution is Phase-401 (provisional number,
-> DD-038-8), gated on the owner's freeze order
-> for Spec 038 and a separate execution order;
-> neither exists at this draft. **The ITM
-> population has not been enumerated; no share
-> has been computed; no outcome is pre-written
-> for any branch (DD-038-1).** PRED-2026-007
-> stands **PARTIALLY CONFIRMED** as its
-> pre-execution record and unscored at full
-> scope.
+> Phase-401 ran under the owner's
+> freeze-and-execute order of 2026-10-20. The
+> frozen step 0 closed the study at check 0.2:
+> **CANNOT BE RUN AS WRITTEN**, unscored,
+> reported as a closure and not as a verdict.
+> PRED-2026-007 stands **PARTIALLY CONFIRMED**
+> as its pre-execution record. The skeleton's
+> slots were shapes, not outcomes (DD-038-1):
+> the determination below is the execution's
+> own.
 
 ## 1. What was executed
 
-_Pending execution._ To be completed at
-execution with: the freeze digest this
-execution ran under; the owner's freeze and
-execution orders; the graph-first build record
-(experiment script, graph module, graph
-registration); the run's own record paths.
-Nothing else is executed under this spec.
+Executed under the Spec 038 freeze (digest
+`b54571d845a2be3429bc532fee4bb58c20723f77e2d40ffcd43b56e0caab6eef`,
+merged `c363edef`) on the owner's
+freeze-and-execute order of 2026-10-20
+("Freeze D-31 for execution"), which froze the
+contract and ordered this execution in one
+act. Graph-first build (H15/H23): execution
+script `backend/scripts/phase401_pred007_step0.py`
+committed before the run; experiment-graph
+module `backend/glossa_lab/experiment_graph_phase401.py`
+(node `IndusPhase401Pred007Census`) registered
+in `backend/glossa_lab/experiment_graph.py` in
+this same record. The run's machine record is
+`reports/phase401_results.json`. Nothing else
+was executed under this spec.
 
 ## 2. Step 0, check by check
 
 _Pending execution._ One subsection per check,
 in the frozen order, each with its evidence:
 
-- **0.1 Sources and provenance** (primary
-  `reports/indus_cgsa_cluster_analysis.json`
-  and cross-check
-  `data/crosswalks/canonical_sign_registry.csv`
-  verified and hashed at the frozen commit;
-  the conflict rule in force; cross-check
-  disagreements recorded sign-by-sign) —
-  result: _pending_.
-- **0.2 Enumeration** (mechanical read of the
-  primary's `icit_function` field over all its
-  per-sign records; record-count
-  reconciliation; the full per-sign list and
-  the population size, written and hashed
-  before any Phase 5 lookup) — result:
-  _pending_. Population size: _pending — it
-  does not exist yet._
-- **0.3 Phase 5 output verification** (recorded
-  output in sign-assignable form; the sanity
-  anchor reproduced: P385 → Cluster 21, P378 →
-  Cluster 39, P098 → Cluster 10) — result:
-  _pending_.
-- **Step-0 record** — path and SHA-256:
-  _pending_ (written and hashed before any
-  scoring).
+- **0.1 Sources and provenance — PASS.** The
+  PRED register file hashed to the freeze
+  record's value (SHA-256
+  `4f8aeb54fd5853d73766ed9cf0222ef93cccfa8d9a8c399a4631221fbbb4c1c2`);
+  the PRED-2026-007 entry located standing as
+  registered (criterion line present,
+  registered 2026-04-22, Outcome PARTIALLY
+  CONFIRMED unaltered). The primary, the
+  cross-check, the recorded clustering, and
+  the characterisation were each present,
+  readable, and hashed to the freeze record's
+  cited values (primary `8c2bd605…`;
+  cross-check `8a0b2a82…`; sign_clusters
+  `623a787d…`; characterisation `54ebf660…`).
+  The coding-source readings stood in the
+  cited form: the primary's
+  `data.a[].icit_function` field present across
+  its 611 per-sign records, the cross-check's
+  `icit_function` column present. The
+  conflict rule (spec §2) in force.
+- **0.2 Enumeration — FAIL; the study closes
+  here.** The mechanical read of the primary's
+  `icit_function` field over all 611 records
+  (record-count reconciliation exact: 611
+  read against the stated 611; no internal
+  conflicts within the primary) returned an
+  enumeration of **zero ITM-coded signs**
+  (enumeration SHA-256
+  `b849b0d45d37edea7f2c18af7733143b4e631f2e1aad27c6acaf42112a0436c7`).
+  The held-record verification, read at the
+  same pass, failed: **P385's record carries
+  an empty `icit_function` value**, not ITM;
+  **P378 has no record in the primary at
+  all**; P098 likewise has no record (its
+  must-not-read-ITM condition is the only one
+  of the three met). The reason, stated
+  exactly: in this file the field is not a
+  coded field — of its 611 values, **579 are
+  empty and 32 are free-text decipherment
+  glosses** (for example "fish+two -> miiNDu
+  (fish again)"); **no record carries the
+  value ITM, and none carries LOG**. The
+  frozen population frame (DD-038-5) names
+  this field as the source of the ITM codes;
+  the codes are not in it. Population size:
+  **0** — the enumeration exists, is written
+  here and in the step-0 record, and is empty.
+- **0.3 Phase 5 output verification — NOT
+  RUN.** The frozen order is fail-closed: the
+  recorded clustering and characterisation
+  were byte-hashed at 0.1 for integrity and
+  never read for assignments. The sanity
+  anchor was not reproduced because the check
+  that reads it was never reached.
+- **Step-0 record** — `reports/phase401_results.json`,
+  step-0 record SHA-256
+  `4c026edc92cdcb0c1ba6821f5ebc8242b498bb9fc4cd158607d9b1ded24a784a`
+  (written before any scoring; no scoring
+  figure exists).
 
-_If any check fails, the study closes there:
-the closure is the outcome, sections 3–5
-record it as a closure, and the scoring section
-below records NOT REACHED. The census branch is
-not a failure: if check 0.2's population is
-exactly the ITM signs already tested, section
-3 records the census completion instead._
+The study closed at check 0.2, as the note
+to this section pre-stated: the closure is the
+outcome, sections 3–5 record it as a closure,
+and the scoring section records NOT REACHED.
+The census branch was not evaluated: the
+enumerated population (zero signs) is not the
+ITM signs already tested.
 
 ## 3. Scoring (reached only if step 0 passes in full)
 
-_Pending execution._ To be completed with: the
-per-sign table (every enumerated ITM sign, its
-cluster, its cluster's recorded class or its
-unassigned status — descriptive only,
-F038-C09); the coverage (assigned /
-enumerated) and, where the coverage rule is
-engaged, the coverage statement in the
-verdict's first sentence; the share under the
-mechanical verdict rule; the verdict under
-spec §6 (CONFIRMED at 70% or above; otherwise
-NOT CONFIRMED), the census completion, or the
-run-at-partial-scope record. _Or: NOT REACHED —
-step 0 closed the study at check 0.N._
+**NOT REACHED — step 0 closed the study at
+check 0.2.** No per-sign table is produced
+(it is a scoring artifact, F038-C09); no
+coverage, share, or verdict exists. The
+mechanical verdict rule (DD-038-1) was never
+applied, because there was no assigned
+population to apply it to.
 
 ## 4. What this outcome does and does not establish
 
-_Pending execution._ To be written under
-F038-C01, C11, and C12: the outcome concerns
-only the registered criterion over the
-enumerated population in the recorded Phase 5
-output; the clustering-stability caveat stands
-in the first paragraph; nothing is stated about
-what ITM signs mean or whether the Phase 5
-clustering carves the script at its joints. A
-closure is recorded as itself, never as a
-verdict, and is not a refutation; the census
-completion is recorded as a completion, never
-as a failure.
+This closure establishes one bounded fact:
+the frozen population frame cannot be run as
+written, because the source field it names
+for the ITM codes carries no coded values in
+the pinned primary file. It establishes
+nothing about the registered criterion's
+truth: no ITM population was scored, so the
+70% question stands exactly where the
+register's partial record left it. The
+clustering-stability caveat (F038-C11) has no
+verdict to attach to, and this closure does
+not rest on the Phase 5 clustering at all —
+the clustering output was never read. Nothing
+here states what ITM signs mean, whether the
+function coding is semantically valid, or
+whether the Phase 5 clustering carves the
+script at its joints (F038-C12). The closure
+is recorded as itself, never as a verdict,
+and is not a refutation of PRED-2026-007.
 
 ## 5. Claim consequences (governed register)
 
-_Pending execution._ One line per governed
-claim, F038-C01…C14: which claims the execution
-checked, which fired (on a closure, the closure
-claims; on a verdict, the criterion and
-computation claims; on the census branch, the
-census claim), and which were not reached — in
-the Spec 035/036 outcome pattern.
+- **F038-C01** (criterion unchanged): upheld —
+  the registered criterion governed the run
+  and was never edited.
+- **F038-C02** (criterion is the registered
+  one): upheld — it stood as the run's rule;
+  never applied to a share, because none
+  existed.
+- **F038-C03** (population frame): executed as
+  stated at check 0.2 — the frame was read
+  exactly as the claim defines it, and
+  returned the empty enumeration.
+- **F038-C04** (step-0 order, fail-closed):
+  **fired** — the study closed at check 0.2,
+  in the frozen order, before any Phase 5
+  lookup.
+- **F038-C05** (provenance reconciliation
+  appended): **done** — the dated note stands
+  in the register's §6 in this same act.
+- **F038-C06** (recorded-outputs-only
+  scoring): not reached — no scoring ran; its
+  prohibition was never engaged.
+- **F038-C07** (coverage rule): not reached —
+  no share or coverage was formed.
+- **F038-C08** (census branch): not reached —
+  the enumerated population (zero) is not the
+  partial test's ITM signs.
+- **F038-C09** (per-sign table descriptive
+  only): not produced — it is a scoring
+  artifact; the step-0 record carries the
+  enumeration and held-record reads instead.
+- **F038-C10** (record written; pin advanced
+  on a verdict): the record is written as
+  claimed; the Phase D pin is **not**
+  advanced — no verdict exists, and the
+  claim's own boundary limits advancement to
+  verdicts.
+- **F038-C11** (clustering-stability caveat):
+  carried — no verdict exists for it to
+  attach to, and the closure does not rest on
+  the clustering.
+- **F038-C12** (non-establishment): holds —
+  nothing in this record states what ITM
+  signs mean or that the clustering carves
+  the script at its joints.
+- **F038-C13** (population an execution-time
+  fact): borne out in the event — the
+  membership and size did not exist before
+  the run; the run produced them (empty; 0)
+  and closed on the frame's integrity check.
+- **F038-C14** (closure reported as closure):
+  **fired** — this record and the register's
+  §6 entry report the closure as itself; §3
+  stands PARTIALLY CONFIRMED; §4 gains no
+  entry.
 
 ## 6. Records
 
-_Pending execution._ To be completed with: the
-step-0 record path and hash; the register
-appends (the dated §6 outcome entry and the
-provenance reconciliation note; the §3
-Tested/Outcome handling per spec §7 — recorded
-as superseded by append on a verdict, census
-completion, or partial-scope record, and left
-standing as the pre-execution record on a
-closure; the Phase D pin advanced by name);
-the root LEDGER entry; the foundation check
-result (H21); the suite and CI state at the
-merge. Every other prediction's record is not
-touched by any completion of this skeleton.
+- Step-0 record: `reports/phase401_results.json`
+  (step-0 record SHA-256
+  `4c026edc92cdcb0c1ba6821f5ebc8242b498bb9fc4cd158607d9b1ded24a784a`;
+  enumeration SHA-256
+  `b849b0d45d37edea7f2c18af7733143b4e631f2e1aad27c6acaf42112a0436c7`).
+- Register appends, in this same act: the
+  dated §6 outcome entry (this closure) and
+  the provenance reconciliation note
+  (DD-038-2). The §3 entry is left standing as
+  the pre-execution record, per spec §7's
+  closure handling; the Phase D pin is not
+  advanced (no verdict).
+- Root LEDGER entry: appended in this same
+  act.
+- Foundation check (H21) and suite state:
+  verified on this record's pull request —
+  the CI backend job is the full-suite
+  verifier, and the foundation check is
+  measured at the merge commit; both are
+  reported with the merge, not asserted here.
+- Every other prediction's record is not
+  touched by this completion.
 
 ---
 

@@ -77,10 +77,10 @@
 
 ## Execution (Phase-401, provisional) — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0** (spec §3), in the frozen
+- [x] **E2 — Step 0** (spec §3), in the frozen
       order: 0.1 sources and provenance (primary
       and cross-check verified and hashed; the
       conflict rule in force; the reconciliation
@@ -98,13 +98,13 @@
       closes the study as recorded in §3,
       unscored — except the census branch (§6),
       which completes.
-- [ ] **E3 — Scoring** (spec §5): the registered
+- [ ] **E3 — Scoring** (spec §5): NOT REACHED — the study closed at step 0.2 (see outcome.md). The registered
       computation only, under the cluster-class
       operationalisation (DD-038-9) and the
       coverage rule (§6); the per-sign table
       produced with it. (Reached only if step 0
       passes in full.)
-- [ ] **E4 — Outcome:** the verdict under spec
+- [x] **E4 — Outcome:** the verdict under spec
       §6, the census completion, the
       partial-scope record, or the closure,
       reported as itself; the register appends

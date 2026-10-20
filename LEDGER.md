@@ -6975,3 +6975,38 @@ the finalised freeze texts, once.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 — Phase-401 (Spec 038) EXECUTED: PRED-2026-007 CLOSED AT STEP 0 — CANNOT BE RUN AS WRITTEN (unscored)
+
+Phase-401 executed the frozen Spec 038 contract
+under the owner's freeze-and-execute order.
+Step 0.1 passed in full (register and all four
+sources hashed to the freeze record; the
+PRED-2026-007 entry standing as registered).
+Step 0.2 closed the study: the enumeration of
+the frozen primary (reports/
+indus_cgsa_cluster_analysis.json,
+data.a[].icit_function; 611 records, count
+reconciled) returned zero ITM-coded signs, and
+the held-record verification failed — P385's
+record carries an empty icit_function value and
+P378 has no record in the primary. In this file
+the field is not a coded field: 579 of its 611
+values are empty, 32 are free-text decipherment
+glosses, and no record carries ITM or LOG.
+Check 0.3 never ran; the Phase 5 output was
+never read for assignments; no scoring figure
+exists. PRED-2026-007 remains unscored; its
+PARTIALLY CONFIRMED wording stands as the
+pre-execution record; the register gained the
+dated outcome entry and the DD-038-2 provenance
+reconciliation note (the function codes descend
+from Wells-derived catalog lines, not "mayig
+features"). Record: specs/
+038-pred-2026-007-full-population/outcome.md;
+reports/phase401_results.json (step-0 record
+sha256
+4c026edc92cdcb0c1ba6821f5ebc8242b498bb9fc4cd158607d9b1ded24a784a).
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

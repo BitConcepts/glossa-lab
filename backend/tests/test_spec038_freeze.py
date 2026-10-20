@@ -28,6 +28,7 @@ and compute no share.
 from __future__ import annotations
 
 import csv
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -87,13 +88,13 @@ def test_freeze_definition_constants():
         "8c2bd6059a671068b645204db37e29ff13ca53009117b9447ed6c7bd1ead02b3"
     )
     assert srcs["cross_check_function_code"]["sha256"] == (
-        "228a4e138c7fdb9016dae50e24db8d96767620825da7959d30963b4dd0bcee035"
+        "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420"
     )
     assert "primary governs" in srcs["conflict_rule"]
     assert "DD-038-5" in srcs["conflict_rule"]
     p5 = design["phase5_output"]
     assert p5["assignment"]["sha256"] == (
-        "27ed99060f6f6d2e3332e070a74c9b43848c1c8cd0dfd2e6abab2f48f6fa55a1"
+        "623a787dd9cc93c4d3d36377890c4753e3427f57cf7ad70adcd6e8256ba1394a"
     )
     assert p5["assignment"]["best_k"] == 40
     assert p5["assignment"]["signs_clustered"] == 160
@@ -107,7 +108,7 @@ def test_freeze_definition_constants():
     assert "no freeze order" in design["execution_gate"]
     inputs = definition["inputs"]
     assert inputs["pred_register"]["sha256"] == (
-        "425cf07b7532d4ef8baab7a81463502650b59ba54ea98f6ee34ee11e48ce8829"
+        "548b13f22eabd1f10280d1544533b440f6d317977be2b26da6a0b4abd9de159c"
     )
 
 
@@ -169,6 +170,25 @@ def test_cited_records_carry_the_design_facts():
     assert "Cluster 21 — TERMINAL" in characterization
     assert "Cluster 39 — TERMINAL" in characterization
     assert "Cluster 10 — INITIAL" in characterization
+    # The hashes recorded in the freeze definition
+    # are the cited files' actual hashes (recomputed
+    # here, so a mis-recorded citation fails).
+    def _sha(path: Path) -> str:
+        return hashlib.sha256(path.read_bytes()).hexdigest()
+
+    record = json.loads(FREEZE_JSON.read_text(encoding="utf-8"))
+    design = record["definition"]["design"]
+    inputs = record["definition"]["inputs"]
+    assert _sha(PRED_REGISTER) == inputs["pred_register"]["sha256"]
+    assert _sha(PRIMARY) == (
+        design["sources"]["primary_function_code"]["sha256"])
+    assert _sha(CROSS_CHECK) == (
+        design["sources"]["cross_check_function_code"]["sha256"])
+    assert _sha(SIGN_CLUSTERS) == (
+        design["phase5_output"]["assignment"]["sha256"])
+    assert _sha(CHARACTERIZATION) in (
+        design["phase5_output"]["cluster_class_rule"])
+    assert _sha(FULS_PARSER) == inputs["fuls_parser"]["sha256"]
     # The codes' lineage is Wells-derived, and the
     # mayig feature files carry no function field.
     parser = FULS_PARSER.read_text(encoding="utf-8")

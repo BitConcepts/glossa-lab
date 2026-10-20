@@ -80,7 +80,7 @@ hash rerun for the outcome record:
   (PRED-2026-007) and §6: prediction, withheld
   line, criterion, Tested note, Outcome — all
   as designed here. SHA-256 of the file as read:
-  `425cf07b7532d4ef8baab7a81463502650b59ba54ea98f6ee34ee11e48ce8829`.
+  `548b13f22eabd1f10280d1544533b440f6d317977be2b26da6a0b4abd9de159c`.
 - **Design D-31** — read in full on PR #195's
   branch (`designs/035-open-questions` @
   `43f56191`),
@@ -104,13 +104,13 @@ hash rerun for the outcome record:
   `data/crosswalks/canonical_sign_registry.csv`
   header carries the `icit_function` column.
   Values not inspected for ITM membership.
-  SHA-256: `228a4e138c7fdb9016dae50e24db8d96767620825da7959d30963b4dd0bcee035`.
+  SHA-256: `8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420`.
 - **Provenance lineage** —
   `backend/glossa_lab/data/fuls_parser.py`:
   the catalog parser reads function
   classification "(from Wells)" over the code
   list NUM, LON, SHN, TMK, ITM, LOG, SYL.
-  SHA-256: `da873a2e724e574fc0c65747b33cf2ff2aecbb12402a201e669f34a2accaa1f9`.
+  SHA-256: `9b57f0ecc10905c0746f1e7fb8e0622ac18e3b08e62bb2eb34fbec4bbd8ef615`.
 - **Mayig features carry no function codes** —
   a feature file's fields are `id`,
   `description`, grapheme lists
@@ -129,7 +129,7 @@ hash rerun for the outcome record:
   labels** (see §3, Flag 2). It reproduces the
   register's three named assignments (P385 →
   21, P378 → 39, P098 → 10). SHA-256:
-  `27ed99060f6f6d2e3332e070a74c9b43848c1c8cd0dfd2e6abab2f48f6fa55a1`. Corroborated by
+  `623a787dd9cc93c4d3d36377890c4753e3427f57cf7ad70adcd6e8256ba1394a`. Corroborated by
   `reports/cgsa_validation_report.md`
   (generated 2026-04-22, the registration day:
   best k 40, largest cluster 12/160, entropy
@@ -148,7 +148,7 @@ hash rerun for the outcome record:
   (members P098, P217; ICIT functions LOG(1)).
   These are the class labels the register's
   Tested note used. SHA-256:
-  `c83fc2e90386a7d349a48d00aee377316a71998f1a03df925a90c2b5c2e09aa97`.
+  `54ebf660873fd853a64ce91c7e30d8c4cedc5bc3a0a1555db1f6281a52e3c476`.
 - **Spec 029 audit record** — the adopted
   PRED-2026-007 explanation record states what
   remains not understood: the full ITM

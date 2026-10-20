@@ -143,7 +143,7 @@ DEFINITION = {
                 "file": "data/crosswalks/canonical_sign_registry.csv",
                 "field": "icit_function",
                 "sha256": (
-                    "228a4e138c7fdb9016dae50e24db8d96767620825da7959d30963b4dd0bcee035"
+                    "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420"
                 ),
             },
             "conflict_rule": (
@@ -167,7 +167,7 @@ DEFINITION = {
             "assignment": {
                 "file": "outputs/analysis/sign_clusters.json",
                 "sha256": (
-                    "27ed99060f6f6d2e3332e070a74c9b43848c1c8cd0dfd2e6abab2f48f6fa55a1"
+                    "623a787dd9cc93c4d3d36377890c4753e3427f57cf7ad70adcd6e8256ba1394a"
                 ),
                 "best_k": 40,
                 "signs_clustered": 160,
@@ -178,7 +178,7 @@ DEFINITION = {
                 "for that cluster in "
                 "reports/cluster_characterization.md "
                 "(sha256 "
-                "c83fc2e90386a7d349a48d00aee377316a71998f1a03df925a90c2b5c2e09aa97); "
+                "54ebf660873fd853a64ce91c7e30d8c4cedc5bc3a0a1555db1f6281a52e3c476); "
                 "no recorded rule assigning classes to "
                 "clusters has been located; no class is "
                 "derived from rates at execution; a "
@@ -282,7 +282,7 @@ DEFINITION = {
         "pred_register": {
             "file": "docs/PREDICTION_REGISTER.md",
             "sha256": (
-                "425cf07b7532d4ef8baab7a81463502650b59ba54ea98f6ee34ee11e48ce8829"
+                "548b13f22eabd1f10280d1544533b440f6d317977be2b26da6a0b4abd9de159c"
             ),
             "entry": "PRED-2026-007 (registered 2026-04-22)",
         },
@@ -297,13 +297,13 @@ DEFINITION = {
         "sign_inventory": {
             "file": "docs/research/SIGN_INVENTORY.md",
             "sha256": (
-                "fffda4bcab3b58302e918cb740cf6ef6d8575e34f4378d2011859090e22f2c56e"
+                "c8e588327291896abe92e732fb85a9e02ed2ee8c3ad08fc18087bf6474e49db5"
             ),
         },
         "fuls_parser": {
             "file": "backend/glossa_lab/data/fuls_parser.py",
             "sha256": (
-                "da873a2e724e574fc0c65747b33cf2ff2aecbb12402a201e669f34a2accaa1f9"
+                "9b57f0ecc10905c0746f1e7fb8e0622ac18e3b08e62bb2eb34fbec4bbd8ef615"
             ),
         },
     },

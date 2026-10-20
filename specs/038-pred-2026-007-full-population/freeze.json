@@ -40,7 +40,7 @@
     "cross_check_function_code": {
      "file": "data/crosswalks/canonical_sign_registry.csv",
      "field": "icit_function",
-     "sha256": "228a4e138c7fdb9016dae50e24db8d96767620825da7959d30963b4dd0bcee035"
+     "sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420"
     },
     "conflict_rule": "the primary governs membership; every cross-check disagreement is recorded sign-by-sign and published; ambiguity or internal conflict within the primary closes the study as CANNOT BE RUN AS WRITTEN (DD-038-5)",
     "provenance_lineage": "backend/glossa_lab/data/fuls_parser.py reads the function codes (NUM, LON, SHN, TMK, ITM, LOG, SYL) from Wells-derived catalog lines; the register's 'from mayig features' line is reconciled by appended note, never edited (DD-038-2)"
@@ -48,11 +48,11 @@
    "phase5_output": {
     "assignment": {
      "file": "outputs/analysis/sign_clusters.json",
-     "sha256": "27ed99060f6f6d2e3332e070a74c9b43848c1c8cd0dfd2e6abab2f48f6fa55a1",
+     "sha256": "623a787dd9cc93c4d3d36377890c4753e3427f57cf7ad70adcd6e8256ba1394a",
      "best_k": 40,
      "signs_clustered": 160
     },
-    "cluster_class_rule": "DD-038-9 (disclosed operationalisation): a cluster's class is the class recorded for that cluster in reports/cluster_characterization.md (sha256 c83fc2e90386a7d349a48d00aee377316a71998f1a03df925a90c2b5c2e09aa97); no recorded rule assigning classes to clusters has been located; no class is derived from rates at execution; a cluster with no recorded class leaves its signs unassigned under the coverage rule",
+    "cluster_class_rule": "DD-038-9 (disclosed operationalisation): a cluster's class is the class recorded for that cluster in reports/cluster_characterization.md (sha256 54ebf660873fd853a64ce91c7e30d8c4cedc5bc3a0a1555db1f6281a52e3c476); no recorded rule assigning classes to clusters has been located; no class is derived from rates at execution; a cluster with no recorded class leaves its signs unassigned under the coverage rule",
     "corroboration": "reports/cgsa_validation_report.md (2026-04-22): best k 40, largest cluster 12/160, entropy reduction 0.3204",
     "no_reclustering": "scoring reads the recorded output only; if it does not survive in sign-assignable form the study closes as CANNOT BE RUN AS WRITTEN; a fresh clustering is a new prediction's business",
     "sanity_anchor": {
@@ -83,7 +83,7 @@
   "inputs": {
    "pred_register": {
     "file": "docs/PREDICTION_REGISTER.md",
-    "sha256": "425cf07b7532d4ef8baab7a81463502650b59ba54ea98f6ee34ee11e48ce8829",
+    "sha256": "548b13f22eabd1f10280d1544533b440f6d317977be2b26da6a0b4abd9de159c",
     "entry": "PRED-2026-007 (registered 2026-04-22)"
    },
    "design_source": {
@@ -93,11 +93,11 @@
    },
    "sign_inventory": {
     "file": "docs/research/SIGN_INVENTORY.md",
-    "sha256": "fffda4bcab3b58302e918cb740cf6ef6d8575e34f4378d2011859090e22f2c56e"
+    "sha256": "c8e588327291896abe92e732fb85a9e02ed2ee8c3ad08fc18087bf6474e49db5"
    },
    "fuls_parser": {
     "file": "backend/glossa_lab/data/fuls_parser.py",
-    "sha256": "da873a2e724e574fc0c65747b33cf2ff2aecbb12402a201e669f34a2accaa1f9"
+    "sha256": "9b57f0ecc10905c0746f1e7fb8e0622ac18e3b08e62bb2eb34fbec4bbd8ef615"
    }
   },
   "environment": {
@@ -111,16 +111,16 @@
   "specs/038-pred-2026-007-full-population/freeze.md": "f8a0c0d5d6485c5cd94c1b22d37b30cca991012432493421f9edddc87a1ad193",
   "specs/038-pred-2026-007-full-population/spec.md": "42db3a06bb2ac3dab6f8940ac1223bc1f4710d509378dbfd036fc262e9932b4d",
   "specs/038-pred-2026-007-full-population/claims.json": "b3edcee0f6736de52b0392ae489a8d41a08886afa3708255adf58dfe12c39fb7",
-  "specs/038-pred-2026-007-full-population/adjudication.md": "45c931f15b1be39f2b360ee3c3d78fad44b4c00eae4a5e304a539d53c8d8d4fc",
+  "specs/038-pred-2026-007-full-population/adjudication.md": "c1a3b68b56fc6e8e100755ce2e15257bd6a4fe448dc93dd52b91e657c4d700e6",
   "specs/038-pred-2026-007-full-population/osf-registration.md": "c831f20c437d1bfbde6875841a211c9ebaae17b3de26e6d87a416d1d4e6a6004",
   "specs/038-pred-2026-007-full-population/aee/freeze-aee-note.md": "552d99cc2519b134fd758b8589cb4aa2cacc6a2e9fba55daa273e301cac30bbb",
-  "specs/038-pred-2026-007-full-population/build_freeze.py": "283fb759bfb4e5a8566c55ea3f1e5607ef476bbe3d04817833b4709e3e6d6044",
-  "backend/tests/test_spec038_freeze.py": "4568a0e3b06477dc75209ecaafb0cbe4125d1b8eb50f41797f8237dd298344a8"
+  "specs/038-pred-2026-007-full-population/build_freeze.py": "735d294833fc98028da931e329e467208b7d5106a1a4ecfe750857f333632897",
+  "backend/tests/test_spec038_freeze.py": "385cb5cbe87de46d9bfa1906b2e38f94b2f2d0864cddd187bf7e2163c160cfcd"
  },
  "environment": {
   "python": "3.12.3",
   "platform": "Linux",
   "aee": "1.0.4"
  },
- "digest": "00aae53b3b1cca55817a7f475dd2a46e8d71690215de11b2871487cb576ce7a5"
+ "digest": "97b13bd1622664fe8dce7da4103b6f4206dabc9ff76b805addb5490b062b947b"
 }

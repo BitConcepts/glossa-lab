@@ -27,7 +27,7 @@ def _claim(cid: str, **overrides) -> Claim:
         "text": f"claim {cid}",
         "kind": "inference",
         "status": "draft",
-        "boundary": ["test boundary"],
+        "boundary": "test boundary",
         "depends_on": [],
         "assumptions": [],
         "metadata": {},
@@ -109,29 +109,12 @@ def test_unrelated_forbidden_assumption_passes() -> None:
     assert check_dependency_integrity(claims)["ok"] is True
 
 
-def _claim_from_register(raw_claim: dict):
-    """Load one frozen-register claim under aee >= 1.5.
-
-    The frozen registers store ``boundary`` as a plain string (the
-    pre-1.5 serialization). aee 1.5.0's strict bundle loader refuses
-    a scalar where the model declares a list of strings, so the
-    string is wrapped at load time; the frozen register bytes are
-    never modified.
-    """
-    from aee.model import Claim
-
-    claim = dict(raw_claim)
-    if isinstance(claim.get("boundary"), str):
-        claim["boundary"] = [claim["boundary"]]
-    return Claim.from_dict(claim)
-
-
 def test_spec026_register_itself_is_clean() -> None:
     register = Path(__file__).resolve().parents[2] / (
         "specs/026-rcph-framework-transfer/claims.json"
     )
     rows = json.loads(register.read_text())["claims"]
-    claims = [_claim_from_register(r) for r in rows]
+    claims = [Claim.from_dict(r) for r in rows]
     report = check_dependency_integrity(claims)
     assert report["ok"] is True, report
 

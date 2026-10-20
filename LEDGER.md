@@ -6841,10 +6841,10 @@ Change: `backend/pyproject.toml` now declares
 resolved aee **1.4.0** under the old declaration; the adopted
 line is the 1.5.x series (methodology 2.0). The upper bound
 `<1.6` is justified two ways: the engine's own changelog
-records 1.5.1–1.5.3 as documentation/metadata-only (no engine
-behaviour, scoring, or methodology change), and this PR's CI
-resolves the newest 1.5.x and is green, as is the suite under
-1.5.0 exactly.
+records 1.5.1–1.5.3 as documentation/metadata-only (verified
+directly: the 1.5.0 and 1.5.3 wheels differ only in
+`aee/_version.py`), and this PR's CI resolves the newest
+1.5.x and is green, as is the suite under 1.5.0 exactly.
 
 First-hand census (full backend suite under aee 1.5.0 on the
 pre-adoption main, CI-identical invocation): **17 failed /
@@ -6879,18 +6879,24 @@ class-(b) regression or ambiguity was found. Dispositions:
   by the contradiction penalty (before 0.139375 / band low;
   after 0.0 / band unknown; penalty 0.75).
 - **Strict bundle validation (14).** aee 1.5.0's
-  `Claim.from_dict` refuses a scalar `boundary` (the model
-  declares a list of strings; the pre-1.5 loader accepted the
-  string). All frozen registers (Specs 026, 029–036) store
-  `boundary` as a plain string. The frozen register bytes are
-  NOT modified; each affected test
-  (`test_framework026.py` register test + its synthetic-claim
-  helper, `test_spec029_freeze.py`,
-  `test_spec030_freeze.py` … `test_spec036_freeze.py`
-  register-integrity tests) wraps a string boundary in a list
-  at load time through a small `_claim_from_register` helper
-  that says why. No production code loads registers through
-  `Claim.from_dict`, so no runtime code changes.
+  `Claim.from_dict` is strict by default: it refuses a
+  scalar `boundary` (the model declares a list of strings)
+  and requires the lifecycle `stage` field. Every frozen
+  register (Specs 026, 029–036) predates both — `boundary`
+  stored as a plain string, no `stage` field. The frozen
+  register bytes are NOT modified, and the freeze test
+  files cannot be edited either: each spec's freeze digest
+  covers its own test file, so any edit breaks that spec's
+  freeze-replay test (verified first-hand). The
+  compatibility therefore lives in `backend/tests/conftest.py`:
+  claim dicts carrying the legacy signature (a string
+  `boundary` or no `stage` field) are loaded leniently
+  (`strict=False` — the FR-1.3 compatibility path the
+  engine's own error text names for historical bundles,
+  reproducing the pre-1.5 loader semantics exactly); every
+  other claim dict keeps strict loading. No production
+  code loads registers through `Claim.from_dict`, so no
+  runtime code changes.
 
 Foundation check and the full backend suite are green on
 this PR (CI 7/7, including the backend suite resolving the

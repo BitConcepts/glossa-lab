@@ -1,0 +1,243 @@
+{
+  "experiment_id": "spec036-pred-2026-011-scoring",
+  "freeze_digest": "bbd5c4fd5abdb69bd79dfc1115a13e7debf56a7ec38d00ab8e2c8ff6132e946",
+  "outcome": {
+    "prediction_state": "CONFIRMED",
+    "scoring_run": true,
+    "share": 1.0,
+    "signs_meeting_bar": 2,
+    "trained_set_size": 2,
+    "type": "verdict",
+    "verdict": "CONFIRMED"
+  },
+  "phase": 400,
+  "prediction": {
+    "criterion": {
+      "quantity": "share of the trained INITIAL signs {P217, P324} whose Harappa start rate is at least 0.40, computed on the withheld Harappa-site Yajnadevam sequences only",
+      "share_min": 0.7,
+      "start_rate_bar": 0.4
+    },
+    "id": "PRED-2026-011",
+    "registered": "2026-10-20"
+  },
+  "registration": {
+    "prediction_preregistration": {
+      "doi": "10.17605/OSF.IO/T6WHQ",
+      "osf": "https://osf.io/t6whq/",
+      "state": "accepted and public; re-verified at step 0.1 of this run (2026-10-20)"
+    },
+    "spec_contract_registration": {
+      "osf": "https://osf.io/gjen4/",
+      "state": "filed 2026-10-20 under DD-036-4 (not a step-0 condition; spec section 3 names t6whq)"
+    }
+  },
+  "scoring_record": {
+    "computation": "backend/scripts/phase396_pred006_step0.py score_registered_test + fix_crosswalk, imported unchanged from the frozen Phase-396 build",
+    "harappa_rows": 2717,
+    "harappa_rows_without_tokens": 96,
+    "harappa_sequences_tokenised": 2621,
+    "per_sign_table": [
+      {
+        "crosswalk_conflict": false,
+        "harappa_occurrences": 119,
+        "initial_occurrences": 104,
+        "meets_bar": true,
+        "sign": "P217",
+        "start_rate": 0.8739,
+        "unmappable": false
+      },
+      {
+        "crosswalk_conflict": true,
+        "harappa_occurrences": 774,
+        "initial_occurrences": 473,
+        "meets_bar": true,
+        "sign": "P324",
+        "start_rate": 0.6111,
+        "unmappable": false
+      }
+    ],
+    "sequence_length_composition": {
+      "length_counts": {
+        "1": 581,
+        "2": 923,
+        "3": 457,
+        "4": 308,
+        "5": 182,
+        "6": 93,
+        "7": 37,
+        "8": 10,
+        "9": 11,
+        "10": 5,
+        "11": 11,
+        "12": 2,
+        "13": 1
+      },
+      "median_length": 2,
+      "single_sign_sequences": 581
+    },
+    "share": 1.0,
+    "signs_meeting_bar": 2,
+    "tokenisation": "the Phase-284 build's parse_lipi carried in substance (split on '-'; bracket markers stripped; only 3-digit sign codes kept, the '000' eroded-sign placeholder excluded by that parser; recorded order; codes carried as 'Y' + zero-padded four digits)",
+    "total_tokens_in_harappa_sequences": 7144,
+    "trained_set_size": 2,
+    "unmappable_coverage_leads_verdict": false,
+    "unmappable_share": 0.0,
+    "unmappable_signs": 0,
+    "verdict": "CONFIRMED",
+    "withheld_rows_total": 5679
+  },
+  "scoring_record_sha256": "101d54f5bd93d963402d73731962801294452c00f4fe4183e9135ba348ddb07f",
+  "spec": "036-pred-2026-011-scoring",
+  "step0_record": {
+    "check_0_1": {
+      "check": "0.1 prediction preregistration (t6whq) accepted and public",
+      "date_registered": "2026-10-20T12:54:02.202282",
+      "failure_outcome": null,
+      "pending_registration_approval": false,
+      "public": true,
+      "registration": "https://osf.io/t6whq/",
+      "reviews_state": "accepted",
+      "status": "pass",
+      "withdrawn": false
+    },
+    "check_0_2": {
+      "check": "0.2 input integrity against the registered pins",
+      "derivation_record_internal_pins_match_registered": true,
+      "failure_outcome": null,
+      "found": {
+        "backend/glossa_lab/data/yajnadevam_inscriptions.csv": "c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98",
+        "data/crosswalks/yajnadevam_to_parpola_crosswalk.csv": "e44b8b550155e3d071e7fc5f94e8c98e9755de437c99e2f5027e3d647b2950a2",
+        "data/normalized/corpus_master.csv": "b19cfe955313b7db73b462e697e305c1da21b3b8a6997679a466d959b757b42e"
+      },
+      "manifest_pin": "ab3b4c8ae84090b6f0b60f467dde0067f5dbd2f20065f1625a60a79d7170540a",
+      "pins": {
+        "backend/glossa_lab/data/yajnadevam_inscriptions.csv": "c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98",
+        "data/crosswalks/yajnadevam_to_parpola_crosswalk.csv": "e44b8b550155e3d071e7fc5f94e8c98e9755de437c99e2f5027e3d647b2950a2",
+        "data/normalized/corpus_master.csv": "b19cfe955313b7db73b462e697e305c1da21b3b8a6997679a466d959b757b42e"
+      },
+      "status": "pass",
+      "withheld_file_treatment": "byte-hashed only; content not opened"
+    },
+    "check_0_3": {
+      "check": "0.3 training-pool re-verification, classification reproduction, and screen reproduction",
+      "class_counts": {
+        "INITIAL": 3,
+        "MEDIAL": 19,
+        "MIXED": 3,
+        "TERMINAL": 3
+      },
+      "classifiable_signs": 28,
+      "corpus_rows_total": 2722,
+      "failure_outcome": null,
+      "filter": "source_name == \"Corpus of Indus Seals and Inscriptions (mayig digitization)\"",
+      "filtered_pool_manifest_sha256_found": "ab3b4c8ae84090b6f0b60f467dde0067f5dbd2f20065f1625a60a79d7170540a",
+      "filtered_pool_manifest_sha256_pin": "ab3b4c8ae84090b6f0b60f467dde0067f5dbd2f20065f1625a60a79d7170540a",
+      "full_class_map_identical_to_derivation_record": true,
+      "pool_rows": 179,
+      "pool_sites": {
+        "Mohenjo-daro": 179
+      },
+      "recorded_class_counts": {
+        "INITIAL": 3,
+        "MEDIAL": 19,
+        "MIXED": 3,
+        "TERMINAL": 3
+      },
+      "recorded_script_sha256_matches": true,
+      "recorded_script_sha256_pin": "37e7bb533778daf1c4cf1220f71331e38c156b09abce7436bccc53bafb97ad5d",
+      "screen_reapplied": {
+        "counterparts_identical_to_derivation_record": true,
+        "excluded_signs": [
+          "P000"
+        ],
+        "excluded_top3_only_glyphs": [
+          "Y0527",
+          "Y0740",
+          "Y0820",
+          "Y0892"
+        ],
+        "rule": "A sign is eligible only if at least one row in the frozen crosswalk names it as best_parpola_match. top3_parpola appearances never establish eligibility.",
+        "screened_trained_set": [
+          "P217",
+          "P324"
+        ],
+        "screened_trained_set_recorded": [
+          "P217",
+          "P324"
+        ]
+      },
+      "status": "pass",
+      "unscreened_initial_set_recorded": [
+        "P000",
+        "P217",
+        "P324"
+      ],
+      "unscreened_initial_set_reproduced": [
+        "P000",
+        "P217",
+        "P324"
+      ],
+      "yajnadevam_rows_in_pool": 0
+    },
+    "check_0_4": {
+      "check": "0.4 crosswalk coverage of the trained signs (DD-036-5 best-match reading)",
+      "coverage": [
+        {
+          "appears_as_top3_alternative_on": [
+            "Y0520"
+          ],
+          "best_match_confidences": [
+            "1.0"
+          ],
+          "best_match_glyphs": [
+            "Y0520"
+          ],
+          "best_match_statuses": [
+            "confirmed"
+          ],
+          "conflict_flag": false,
+          "mappable": true,
+          "sign": "P217"
+        },
+        {
+          "appears_as_top3_alternative_on": [
+            "Y0740",
+            "Y0741"
+          ],
+          "best_match_confidences": [
+            "0.9867"
+          ],
+          "best_match_glyphs": [
+            "Y0740"
+          ],
+          "best_match_statuses": [
+            "confirmed"
+          ],
+          "conflict_flag": true,
+          "mappable": true,
+          "sign": "P324"
+        }
+      ],
+      "crosswalk_header": [
+        "yajnadevam_glyph_id",
+        "registry_sign_id_yajnadevam",
+        "best_parpola_match",
+        "match_confidence",
+        "match_count",
+        "total_alignments",
+        "top3_parpola",
+        "review_status",
+        "method",
+        "source"
+      ],
+      "failure_outcome": null,
+      "registered_cap": 0.2,
+      "status": "pass",
+      "unmappable_share": 0.0,
+      "unmappable_signs": []
+    },
+    "withheld_content_opened_after": "all four step-0 checks passed (spec section 3)",
+    "withheld_file_content_opened": true
+  },
+  "step0_record_sha256": "2bf0333b7d7fc437c9055299598ee83f0247acd08c7fa8b123044114e0c8e427"
+}

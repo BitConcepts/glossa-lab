@@ -6783,67 +6783,47 @@ and owner order.
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
 
-## 2026-10-20 — Spec 036 design draft (PRED-2026-011: scoring the screened clean-withholding successor)
+## 2026-10-20 — Phase-400 outcome: PRED-2026-011 CONFIRMED (2 of 2)
 
-Spec 036 is drafted, not frozen: this draft PR carries
-specs/036-pred-2026-011-scoring/ (spec, claims
-F036-C01…C15, adjudication, plan, tasks, the OSF
-verification record, the draft freeze record, and the
-pre-written outcome skeleton; draft digest
-c865ed9323027a08aa6c309faac1f8ba468f590967c5e41be47413b228baf980).
-It designs the scoring of PRED-2026-011 exactly as
-registered: trained set P217, P324 derived from the
-CISI Mohenjo-daro pool only and screened for
-mappability under the registered rule; criterion at
-least 70% of the trained signs at Harappa start rate
-at least 0.40, which with 2 signs passes only at 2
-of 2; step 0 fail-closed in a fixed order
-(registration re-verification; input pins;
-training-pool and screen re-verification; crosswalk
-coverage), the withheld file's content opened only
-after all four pass. The prediction's OSF
-preregistration (t6whq, DOI 10.17605/OSF.IO/T6WHQ)
-was API-verified accepted and public at draft.
-Draft-stage coverage expectation, recorded in spec
-section 0.4 and adjudication.md: under the frozen
-Phase-396 crosswalk reading, both trained signs
-carry confirmed best-match counterparts (P217 →
-Y0520 at confidence 1.0; P324 → Y0740 at 0.9867),
-so check 0.4 is expected to pass and execution to
-reach the first scoring of the H3 line; the formal
-determination remains a step-0 act. AEE hooks have
-not run on the draft register; they are a freeze
-gate. DD-036-4 is an open proposal for the freeze
-decision (file the frozen spec's own OSF contract
-registration, following the DD-035-4 precedent).
-Nothing was executed, no Harappa content was opened
-for content, and the freeze and any execution
-(Phase-400) are the owner's separate decisions.
-
-AI disclosure: executed by an AI agent (Muse Spark, via Muse)
-at the direction of Tristen Pierson, per constitution sec.VI.
-
-## 2026-10-20 — Spec 036 freeze (PRED-2026-011 scoring contract frozen)
-
-Spec 036 is FROZEN under the owner's do-all order of
-2026-10-20 ("do all of spec 036 now"; adjudication
-section 4): this PR merges the finalised freeze
-record (freeze digest
-bbd5c4fd5abdb69bd79dfc1115a13e7debf56a7ec38d00ab8e2c8ff6132e946).
-The claim register passed the AEE lifecycle hooks at
-the freeze act — after_specify after five recovery
-rounds (10, 3, 1, 1, then 0 failure modes),
-after_plan and after_tasks at the first pass — over
-register 0.9-draft; the digest covers the recovered
-register, never the pre-recovery draft. DD-036-2 is
-registered text carried; DD-036-4 is decided YES:
-the frozen spec files its own OSF contract
-registration (its record lands in
-osf-spec-registration.md, completed by append on
-approval). Execution is Phase-400, ordered in the
-same act: step 0 in the frozen order, with the
-scoring expected to run on the section 0.4
-observation.
+Phase-400 executed the frozen Spec 036 contract on
+2026-10-20, under the owner's do-all order. Step 0
+passed in full, in the frozen order: the prediction's
+preregistration (t6whq) stood accepted and public; all
+registered input pins matched; the CISI-Mohenjo-daro
+pool re-derived as registered (179 inscriptions,
+filtered-pool manifest hash matched), the recorded
+classification reproduced exactly (28 classifiable
+signs; unscreened INITIAL set {P000, P217, P324}), and
+the registered mappability screen re-applied returned
+{P217, P324} exactly, with P000's exclusion reproduced
+as a screen outcome; and crosswalk coverage passed
+(P217 → Y0520, confidence 1.0, confirmed; P324 →
+Y0740, confidence 0.9867, confirmed, conflict-flagged;
+no unmappable trained sign). The withheld file was
+opened only behind the full pass, and the registered
+computation ran once, in full, over its 2,717 Harappa
+rows (2,621 tokenised sequences, 7,144 tokens): P217 —
+119 Harappa occurrences, 104 initial, start rate
+0.8739; P324 — 774 Harappa occurrences, 473 initial,
+start rate 0.6111. Both signs meet the 0.40 bar: share
+1.0 (2 of 2) against the registered 70% criterion —
+**CONFIRMED**, on the exact two-sign criterion. The
+verdict concerns only P217 and P324 in this pinned
+dataset; it does not validate the INITIAL class as a
+whole and says nothing about P000. PRED-2026-011's
+section 3 Tested/Outcome fields move from PENDING to
+the verdict in the same act (register section 6 dated
+append; the Phase D register-hash pin advanced by
+name a sixth time for that authorised change).
+PRED-2026-006 and PRED-2026-010 remain unscored and
+untouched. Step-0 record sha256
+2bf0333b7d7fc437c9055299598ee83f0247acd08c7fa8b123044114e0c8e427;
+scoring record sha256
+101d54f5bd93d963402d73731962801294452c00f4fe4183e9135ba348ddb07f
+(reports/phase400_results.json). The spec-level OSF
+registration (gjen4) was filed before execution under
+DD-036-4; its record (osf-spec-registration.md)
+completes by append on approval.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.

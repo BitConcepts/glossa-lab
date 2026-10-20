@@ -6782,3 +6782,68 @@ and owner order.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 — Spec 036 design draft (PRED-2026-011: scoring the screened clean-withholding successor)
+
+Spec 036 is drafted, not frozen: this draft PR carries
+specs/036-pred-2026-011-scoring/ (spec, claims
+F036-C01…C15, adjudication, plan, tasks, the OSF
+verification record, the draft freeze record, and the
+pre-written outcome skeleton; draft digest
+c865ed9323027a08aa6c309faac1f8ba468f590967c5e41be47413b228baf980).
+It designs the scoring of PRED-2026-011 exactly as
+registered: trained set P217, P324 derived from the
+CISI Mohenjo-daro pool only and screened for
+mappability under the registered rule; criterion at
+least 70% of the trained signs at Harappa start rate
+at least 0.40, which with 2 signs passes only at 2
+of 2; step 0 fail-closed in a fixed order
+(registration re-verification; input pins;
+training-pool and screen re-verification; crosswalk
+coverage), the withheld file's content opened only
+after all four pass. The prediction's OSF
+preregistration (t6whq, DOI 10.17605/OSF.IO/T6WHQ)
+was API-verified accepted and public at draft.
+Draft-stage coverage expectation, recorded in spec
+section 0.4 and adjudication.md: under the frozen
+Phase-396 crosswalk reading, both trained signs
+carry confirmed best-match counterparts (P217 →
+Y0520 at confidence 1.0; P324 → Y0740 at 0.9867),
+so check 0.4 is expected to pass and execution to
+reach the first scoring of the H3 line; the formal
+determination remains a step-0 act. AEE hooks have
+not run on the draft register; they are a freeze
+gate. DD-036-4 is an open proposal for the freeze
+decision (file the frozen spec's own OSF contract
+registration, following the DD-035-4 precedent).
+Nothing was executed, no Harappa content was opened
+for content, and the freeze and any execution
+(Phase-400) are the owner's separate decisions.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 — Spec 036 freeze (PRED-2026-011 scoring contract frozen)
+
+Spec 036 is FROZEN under the owner's do-all order of
+2026-10-20 ("do all of spec 036 now"; adjudication
+section 4): this PR merges the finalised freeze
+record (freeze digest
+bbd5c4fd5abdb69bd79dfc1115a13e7debf56a7ec38d00ab8e2c8ff6132e946).
+The claim register passed the AEE lifecycle hooks at
+the freeze act — after_specify after five recovery
+rounds (10, 3, 1, 1, then 0 failure modes),
+after_plan and after_tasks at the first pass — over
+register 0.9-draft; the digest covers the recovered
+register, never the pre-recovery draft. DD-036-2 is
+registered text carried; DD-036-4 is decided YES:
+the frozen spec files its own OSF contract
+registration (its record lands in
+osf-spec-registration.md, completed by append on
+approval). Execution is Phase-400, ordered in the
+same act: step 0 in the frozen order, with the
+scoring expected to run on the section 0.4
+observation.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

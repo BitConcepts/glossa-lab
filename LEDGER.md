@@ -6696,6 +6696,49 @@ executed, no Harappa content was opened for content,
 and the freeze and any execution (Phase-399) are the
 owner's separate decisions.
 
+## 2026-10-20 — PRED-2026-011 registered: clean-withholding successor to PRED-2026-010 with disclosed mappability screen
+
+By owner order (Tristen Pierson, 2026-10-20), the successor
+prediction prepared in the draft package merged the same
+day (PR #219) was registered. PRED-2026-011 restates
+PRED-2026-010's prediction and bars (at least 70% of the
+trained INITIAL signs showing start_rate at least 0.40
+at Harappa) with one disclosed design change, stated
+before registration: the trained set is screened for
+mappability against the frozen public crosswalk — an
+INITIAL sign is eligible only if a crosswalk row names
+it as best_parpola_match. The screen was applied to the
+reproduced PRED-2026-010 derivation (179 CISI
+Mohenjo-daro inscriptions, 28 classifiable signs,
+unscreened INITIAL set P000, P217, P324; derivation:
+backend/scripts/pred011_register_derivation.py, record:
+docs/research/pred-2026-011-registration/derivation-record.json)
+and yields the trained set P217, P324 (2 signs). P000
+was excluded because it has no best-match counterpart
+(it appears only in top3_parpola), not because of any
+observed Harappa behaviour; no Harappa data informed
+the design. The training pool, filtered-pool manifest,
+withheld file, and crosswalk are pinned by SHA-256 in
+the register entry; the small-set caveat (the 70% bar
+passes only at 2 of 2; either outcome concerns only
+the exact two-sign criterion) and the disclosure
+(cleanliness = verified training-pool exclusion, not
+analyst blindness; the Harappa pool was inspected in
+aggregate during the Spec 032 audit) are stated in the
+entry. Register handling: insertions only (the section
+3 entry and a dated section 6 note); every existing
+entry is byte-identical. The Spec 029 Phase D
+register-hash pin (test_pred_register_document_untouched)
+was advanced by name a third time for this authorised
+append. OSF Preregistration filed the same day from the
+Predictions & Registrations node (nrb9u) under the
+same owner order; the verified URL and DOI are recorded
+by append on approval (record:
+docs/research/pred-2026-011-registration/README.md).
+No scoring ran; no Harappa start rate was computed for
+any sign; the withheld file was byte-hashed only.
+Scoring requires its own future spec and owner order.
+
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
 

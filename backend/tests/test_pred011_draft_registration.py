@@ -111,6 +111,12 @@ def test_pred011_package_is_explicitly_a_draft():
     )
 
 
-def test_pred011_draft_does_not_change_the_authoritative_register():
+def test_register_carries_the_pred011_entry():
+    # Registration act of 2026-10-20 (owner order): the
+    # entry and its dated section 6 note are appended to
+    # the authoritative register, insertions only.
     register = (REPO / "docs" / "PREDICTION_REGISTER.md").read_text("utf-8")
-    assert "PRED-2026-011" not in register
+    assert "### PRED-2026-011" in register
+    assert "P217, P324" in register
+    assert CROSSWALK_SHA256 in register
+    assert "### 2026-10-20 — PRED-2026-011 registered" in register

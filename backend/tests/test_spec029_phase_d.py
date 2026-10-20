@@ -399,12 +399,18 @@ def test_pred_register_document_untouched():
     # entry added to register section 3 and its dated note in
     # section 6 (the clean-withholding successor to
     # PRED-2026-006; insertions only, +20/-0 lines, no
-    # existing entry altered). Any further drift from this
-    # hash is unauthorised.
+    # existing entry altered). It was advanced a third
+    # time, by name, for the owner-ordered registration
+    # append of 2026-10-20: the PRED-2026-011 entry added
+    # to register section 3 and its dated note in section 6
+    # (the clean-withholding successor to PRED-2026-010
+    # with the disclosed mappability screen; insertions
+    # only, no existing entry altered). Any further drift
+    # from this hash is unauthorised.
     digest = hashlib.sha256(
         (_REPO_ROOT / "docs" / "PREDICTION_REGISTER.md").read_bytes()
     ).hexdigest()
-    assert digest == "98474e3fe36a229dee90d8efb39c313f4175a75197abf9cf52c91e1d0c22cfc5"
+    assert digest == "64cc770da90a578b1079a39e18905b869f96ca6f22da234e29289222eb1c8228"
 
 
 # ── Script contract: shapes, states, idempotency ─────────────────────────

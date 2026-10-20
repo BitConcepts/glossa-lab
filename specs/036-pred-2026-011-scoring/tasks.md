@@ -32,8 +32,7 @@
       `backend/tests/test_spec036_freeze.py`; the
       AEE lifecycle hooks have **not** run on this
       register (L3).
-- [ ] **L3 — AEE lifecycle hooks (FREEZE GATE —
-      not run on this draft).** at the freeze act,
+- [x] **L3 — AEE lifecycle hooks (FREEZE GATE).** at the freeze act,
       run `run_aee.py assess` after_specify,
       after_plan, and after_tasks over the claim
       register; the gate is **pass**, and a
@@ -47,7 +46,7 @@
       DRAFT PR and left unmerged for the owner's
       freeze decision, CI green from run
       conclusions.
-- [ ] **L5 — Freeze.** On the owner's freeze
+- [x] **L5 — Freeze.** On the owner's freeze
       order: hooks pass (L3), `freeze.md`
       finalised, `freeze.json` recomputed over
       the recovered register and the finalised

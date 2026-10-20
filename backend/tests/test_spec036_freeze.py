@@ -1,6 +1,6 @@
-"""Spec 036 draft freeze fences (PRED-2026-011 scoring).
+"""Spec 036 freeze fences (PRED-2026-011 scoring).
 
-Pins: (1) the draft machine record replays exactly
+Pins: (1) the machine record replays exactly
 (framework026 verify_freeze over every covered
 source); (2) the definition carries the registered
 criterion, the screened trained set, the step-0
@@ -9,9 +9,8 @@ registered (70% of trained signs at start rate 0.40
 or above, which with 2 signs passes only at 2 of 2;
 any unmappable trained sign closes the scoring as
 CANNOT BE RUN AS WRITTEN); (3) the governed claim
-register is the draft register (15 claims,
-integrity-clean, hooks not run — the hooks are a
-freeze gate); (4) the cited records still carry
+register is the recovered register (15 claims,
+integrity-clean, hooks passed at the freeze act); (4) the cited records still carry
 the facts the design rests on (the derivation
 record's screened and unscreened sets, censuses,
 and pins; the PRED register entry; the crosswalk
@@ -59,8 +58,8 @@ def test_freeze_definition_constants():
         "spec036-pred-2026-011-scoring"
     )
     assert definition["register"]["claims"] == 15
-    assert definition["register"]["register_version"] == "0.5-draft"
-    assert "NOT RUN" in definition["register"]["aee_hook_pass"]
+    assert definition["register"]["register_version"] == "0.9-draft"
+    assert "PASS" in definition["register"]["aee_hook_pass"]
     design = definition["design"]
     assert design["phase"] == "Phase-400"
     assert design["trained_initial_set"] == ["P217", "P324"]
@@ -76,7 +75,7 @@ def test_freeze_definition_constants():
     assert "CANNOT BE RUN AS WRITTEN" in (
         design["unmappable"]["over_cap_closure"])
     assert "not analyst blindness" in design["disclosure"]
-    assert "no execution order" in design["execution_gate"]
+    assert "execution order" in design["execution_gate"]
     assert design["mappability_screen"]["retained"] == ["P217", "P324"]
     assert design["osf_registration"]["id"] == "t6whq"
     assert design["osf_registration"]["doi"] == (
@@ -102,7 +101,7 @@ def test_register_integrity():
     from aee.model import Claim
 
     raw = json.loads(REGISTER.read_text(encoding="utf-8"))
-    assert raw["register_version"] == "0.5-draft"
+    assert raw["register_version"] == "0.9-draft"
     assert [c["id"] for c in raw["claims"]] == [
         f"F036-C{i:02d}" for i in range(1, 16)
     ]

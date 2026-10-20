@@ -39,14 +39,17 @@ DEFINITION = {
     "experiment_id": "spec036-pred-2026-011-scoring",
     "register": {
         "path": "specs/036-pred-2026-011-scoring/claims.json",
-        "register_version": "0.5-draft",
+        "register_version": "0.9-draft",
         "claims": 15,
         "aee_hook_pass": (
-            "NOT RUN on this draft: the AEE lifecycle "
-            "hooks (after_specify / after_plan / "
-            "after_tasks) are a freeze gate, run at the "
-            "freeze act over the recovered register "
-            "(the Spec 035 ordering; see "
+            "PASS at the freeze act (2026-10-20): "
+            "after_specify pass over register 0.9-draft "
+            "after five rounds (10, then 3, then 1, then "
+            "1 failure modes, then 0; "
+            "recovery-specify.md), after_plan pass and "
+            "after_tasks pass on the recovered register; "
+            "0 claims below the 0.70 threshold at every "
+            "pass (see "
             "specs/036-pred-2026-011-scoring/aee/"
             "freeze-aee-note.md)"
         ),
@@ -56,15 +59,20 @@ DEFINITION = {
             "specs/036-pred-2026-011-scoring/adjudication.md"
         ),
         "decisions": (
-            "The owner's draft order of 2026-10-20 "
-            "commissions this draft only; no freeze "
-            "order and no execution order exist for "
-            "this contract. DD-036-4 is an open "
-            "proposal for the freeze decision (file the "
-            "frozen spec's own OSF contract "
-            "registration, following the DD-035-4 "
-            "precedent). The contract implemented is "
-            "the PRED-2026-011 registration "
+            "The owner's do-all order of 2026-10-20 "
+            "(do all of spec 036 now) freezes this "
+            "contract and orders Phase-400 execution; "
+            "the draft was commissioned by the owner's "
+            "draft order of the same day. DD-036-2 is "
+            "registered text carried, not a design "
+            "decision; DD-036-4 is decided YES: the "
+            "frozen spec files its own OSF contract "
+            "registration (the Spec 032-034 pattern). "
+            "The draft-fixed readings stand (DD-036-1 "
+            "fixed order, DD-036-3 descriptive table, "
+            "DD-036-5 counterpart reading). The "
+            "contract implemented is the "
+            "PRED-2026-011 registration "
             "(docs/PREDICTION_REGISTER.md, registered "
             "2026-10-20) with its derivation record "
             "(docs/research/pred-2026-011-registration/"
@@ -211,11 +219,13 @@ DEFINITION = {
             ),
         },
         "execution_gate": (
-            "NOT satisfied: no freeze order and no "
-            "execution order exist for this contract; "
-            "the freeze and the execution (Phase-400) "
-            "are separate future owner decisions; this "
-            "draft performs neither"
+            "satisfied at the freeze act of "
+            "2026-10-20: the owner's freeze order for "
+            "this contract and the execution order "
+            "were given in the same act (do all of "
+            "spec 036 now); the freeze PR merged on "
+            "green house gates; step 0 re-verifies "
+            "the OSF registration before any run"
         ),
     },
     "inputs": {

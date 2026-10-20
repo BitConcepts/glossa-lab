@@ -1,53 +1,44 @@
-# Spec 036 — AEE note
+# AEE at the Spec 036 freeze
 
-> ## DRAFT — HOOKS NOT RUN — 2026-10-20
->
-> The AEE lifecycle hooks (after_specify /
-> after_plan / after_tasks) have **not** run on
-> this draft register (0.5-draft). That is a
-> deliberate ordering, not an omission: the hook
-> pass is a **freeze gate** (the Spec 035
-> record). Any recovery round at after_specify
-> changes claim text, and the freeze digest must
-> be computed over the recovered register exactly
-> once, at the freeze act — so no hook output
-> exists for this draft, and none is claimed.
+The register was assessed at the freeze act
+(`aee/recovery-specify.md`): **pass** at
+after_specify, after_plan, and after_tasks over
+register_version 0.9-draft (F036-C01…C15), after
+five recorded rounds at after_specify (10, then
+3, then 1, then 1, then 0 failure modes — atomic
+rewrites, boundary trims, pairwise boundary
+confirmations, and one pair separated by
+truthful phrasing; propositions, falsifiers, and
+verdict rules unchanged throughout). No claim
+stood below the 0.70 confidence threshold in any
+round (minimum confidence 0.845). Final passing
+artifacts:
+`aee-after_specify-20261020T200301Z.json`,
+`aee-after_plan-20261020T200316Z.json`,
+`aee-after_tasks-20261020T200318Z.json`, with
+their evaluator counterparts. The register is
+unchanged since that pass; this freeze adds no
+claims and alters no claim text after it.
 
-## At the freeze act
-
-1. Run the hooks over the register in lifecycle
-   order (after_specify, after_plan, after_tasks)
-   with the Glossa venv's AEE package first on
-   PATH (pinned `>=1.0.4,<1.5` per PR #181).
-2. The gate is **pass**: a stricter outcome
-   blocks the freeze until its named recovery is
-   complete. Recovery rounds — however many the
-   register needs — are recorded here by append,
-   with their artifacts, and advance the register
-   version (the Spec 035 record: 30, then 9, then
-   8, then 0 failure modes at after_specify, over
-   register versions 0.6-draft → 0.8-draft).
-3. Only after the gate passes is `freeze.json`
-   recomputed, once, over the recovered register
-   and the finalised freeze texts, and
-   `freeze.md` finalised.
-
-## Draft-stage self-checks (not hook output)
-
-In place of hook output, this draft carries the
-mechanical self-checks the house draft pattern
-pins in tests (`backend/tests/test_spec036_freeze.py`):
-the draft freeze record replays exactly
-(framework026 `verify_freeze` over every covered
-source), the definition carries the registered
-criterion, trained set, screen, step-0 closures,
-and unmappable cap as registered, the claim
-register is integrity-clean (dependency
-integrity: no cycles, no missing dependencies,
-no forbidden-assumption inheritance), and the
-cited records still carry the facts the design
-rests on. These checks score nothing, open no
-withheld content, and compute no start rate.
+Execution note (environment): the hook passes
+were computed by the pinned AEE engine itself
+(applied-epistemic-engineering 1.0.4, the Glossa
+venv build) through the repo's own adapter
+(`.specify/extensions/aee/scripts/python/run_aee.py
+assess`), which drives the engine's CLI assess
+command; the artifacts committed here are the
+engine's own serialisations, copied byte-exact
+from the CLI's outputs. (At the Spec 035 freeze
+the same passes were computed in-process because
+that session's write restriction blocked the
+CLI's file outputs; no such block applied here,
+and no in-process substitution was needed.) The
+.specify ledger is working-tree state and is not
+part of any spec's committed record (the Spec
+032–034 pattern); no ledger append is claimed.
+The draft-stage dependency-integrity self-check
+recorded at the draft was superseded by these
+passes and by the framework026 machinery in CI.
 
 ---
 

@@ -183,6 +183,59 @@ merge):
    and changing it would be a criterion change,
    not a design decision.
 
+## 4. Freeze adjudication — 2026-10-20
+
+4. **The owner's do-all order of 2026-10-20**:
+   "do all of spec 036 now" — ordering the full
+   Spec 036 arc (freeze, the spec-level OSF
+   contract registration, and Phase-400
+   execution) in one act. This order decides
+   §3's questions:
+
+   1. The contract is **FROZEN** as recovered at
+      the freeze act (register 0.9-draft; the AEE
+      lifecycle gate below), and Phase-400
+      execution is ordered in the same act.
+   2. **DD-036-2 is registered text carried, not
+      a design decision**: the zero-occurrence
+      reading (a mappable sign absent at Harappa
+      counts as not meeting the bar) is the
+      PRED-2026-011 registration's own text,
+      restated here for the record; it is not
+      opened, adopted, or overturned by this
+      freeze.
+   3. The draft-fixed readings **stand**:
+      DD-036-1 (the fixed step-0 order,
+      fail-closed), DD-036-3 (the per-sign table
+      as descriptive only), DD-036-5 (the
+      counterpart reading).
+   4. **DD-036-4 is decided YES**: the frozen
+      spec files its own OSF contract
+      registration (the Spec 032–034 pattern), in
+      addition to the prediction's
+      preregistration (t6whq). Its record is
+      filed in `osf-spec-registration.md` and
+      completed by append once the approval
+      verifies.
+
+**The freeze gate (AEE lifecycle hooks).** The
+hooks ran at this freeze act over the register
+(after_specify / after_plan / after_tasks; gate
+**pass**; `aee/freeze-aee-note.md`,
+`aee/recovery-specify.md`). after_specify took
+five rounds — 10, then 3, then 1, then 1 failure
+modes, then 0 — of atomic rewrites, boundary
+trims, pairwise confirmations, and one pair
+separated by truthful phrasing; propositions,
+falsifiers, and verdict rules were unchanged
+throughout. after_plan and after_tasks passed
+on the recovered register (0.9-draft) at the
+first pass. No claim stood below the 0.70
+threshold in any round. The freeze digest
+recorded in `freeze.json` is computed over the
+recovered register and the finalised freeze
+texts, once.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

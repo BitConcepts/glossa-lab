@@ -6782,3 +6782,50 @@ and owner order.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 - Spec 037 DRAFTED: CISI 3.1 concordance spine and HARP provenance annex (design only)
+
+Under the owner's order of 2026-10-20 to move the
+CISI follow-on uses forward, Spec 037 was drafted
+as a DRAFT PR and left unmerged for the owner's
+freeze decision. It designs the two candidate
+uses the CISI 3.1 intake assessed (intake report
+sections 7.5-7.6), over material held under the
+Phase-130 gate (restricted store PROVENANCE entry
+22: local use, extraction, and publishable derived
+statistics permitted; redistribution of scans or
+row data prohibited; nothing derived enters git).
+Workstream A is the pilot test of the intake's 693
+exact-string matches against corpus_master: all
+693 graded as a census under a fixed ladder (site
+mandatory; object type mandatory where graded, a
+seal and a seal impression distinct classes; FC /
+excavation / museum corroboration where records
+exist on both sides; number-level ambiguity bars
+VERIFIED) into VERIFIED / CONFLICT / UNRESOLVED,
+with a seeded hand-check stratum attributing
+conflicts to causes, a 20 percent conflict-share
+halt rule on the spine build, and the spine itself
+written only as a local table in the restricted
+store. Workstream B is a descriptive annex of the
+HARP rows' dig-year, lot, and period-code
+structure, floor caveat attached; it does not
+change the Spec 031 (Q7) record and feeds no
+verdict. The fences are in the draft's first
+section: a string match is not a same-object join;
+the concordance is a finding aid, not evidence
+about readings; no PRED-2026 entry can be scored
+from this material (the tables carry no sign
+transcriptions). Governed register F037-C01..C15;
+draft digest
+f5c489f17ad671470d6d18cd76b52defc09fa25280d3f90c326f290ee79ec140
+over register 0.5-draft; AEE lifecycle hooks not
+run (a freeze gate). Nothing was executed, no
+join was computed, no candidate was graded, and
+no portion row content was read for the design:
+the draft rests on the intake's aggregates, the
+gate record, and byte-level integrity checks.
+Execution is Phase-401, gated on the owner's
+separate freeze and execution orders.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution sec.VI.

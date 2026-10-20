@@ -1,0 +1,699 @@
+{
+ "spec": "035-pred-2026-010-scoring",
+ "register_version": "0.5-draft",
+ "note": "Claims-first draft register for Spec 035, generated alongside spec.md from the PRED-2026-010 registration in docs/PREDICTION_REGISTER.md (registered 2026-10-13) and its derivation record (reports/pred010_derivation_record.json), under the owner's draft order of 2026-10-20. AEE lifecycle hooks have NOT run on this draft register; they run at the freeze act (after_specify / after_plan / after_tasks), with recovery rounds recorded here and in aee/ if they occur (the Spec 032-034 pattern). Propositions, falsifiers, and verdict rules are the register's; nothing in this draft executes anything.",
+ "claims": [
+  {
+   "id": "F035-C01",
+   "text": "A verdict under Spec 035 states whether the registered criterion for PRED-2026-010 is met, and nothing beyond that statement.",
+   "kind": "hypothesis",
+   "status": "draft",
+   "boundary": "Scope claim for the whole spec. The registered prediction (docs/PREDICTION_REGISTER.md, PRED-2026-010) is the input, not a question; a verdict is a statement about the registered criterion on the registered data. It does not govern the step-0 checks (C04-C06, C09), the computation (C10-C11), or the register handling (C14). What the signs mean, why they pattern as they do, and stability at any other site are never judged under this spec.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-REGISTER-GOVERNS"
+   ],
+   "alternatives": [
+    "A scored prediction may be read as evidence about the script's decipherment or about sign meanings."
+   ],
+   "falsification_tests": [
+    "Any Spec 035 outcome statement claiming more than the registered criterion's outcome on the registered data defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-VERDICT-AS-DECIPHERMENT"
+    ],
+    "strongest_rival": "A scored prediction may be read as evidence about the script's decipherment or about sign meanings.",
+    "verdict_rule": "A Spec 035 product makes a criterion statement only.",
+    "evidence_origin_groups": [
+     "pred-register-010",
+     "spec032-record"
+    ],
+    "boundary_confirmation": "C01 states this spec's scope (the registered criterion's outcome); C13 states the verdict wording's permitted independence claim and its required caveat. The two govern different objects - this study's outputs, and the wording of those outputs - and are consistent by construction: a verdict inside scope is exactly one whose wording claims only what C13 permits. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "docs/PREDICTION_REGISTER.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "PRED-2026-010 entry: the registered prediction, criterion, and outcome vocabulary",
+     "source_id": "docs/PREDICTION_REGISTER.md"
+    },
+    {
+     "ref": "specs/032-pred-2026-006-harappa-breakdown/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 032 section 9: what the predecessor design would and would not establish",
+     "source_id": "specs/032-pred-2026-006-harappa-breakdown/spec.md",
+     "independent_of": [
+      "docs/PREDICTION_REGISTER.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F035-C02",
+   "text": "The success criterion is the registered one: at least 70% of the trained INITIAL signs show a Harappa start rate of at least 0.40, which with 3 trained signs passes only at 3 of 3.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The criterion claim (the register's, restated as a definition of the pass line). The share's possible values are 0, 1/3, 2/3, and 1; the 70% bar is met only by 1. It does not govern how a start rate is computed (C10), the zero-occurrence edge (C11), or the unmappable closure (C09), each of which is stated in its own claim.",
+   "depends_on": [
+    "F035-C01"
+   ],
+   "assumptions": [
+    "ASM-REGISTER-GOVERNS"
+   ],
+   "alternatives": [
+    "The bar could be read as approximate, or a 2-of-3 result could be reported as substantially meeting it."
+   ],
+   "falsification_tests": [
+    "Any Spec 035 product that reports a 2-of-3 (or lower) share as meeting the criterion, or that applies any bar other than 70% at 0.40, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-ADJUSTED-BARS",
+     "ASM-WIDENED-POOL"
+    ],
+    "strongest_rival": "The bar could be read as approximate, or a 2-of-3 result could be reported as substantially meeting it.",
+    "verdict_rule": "The pass line is 70% of trained signs at start rate 0.40 or above; with 3 signs, only 3 of 3 passes.",
+    "evidence_origin_groups": [
+     "pred-register-010"
+    ],
+    "boundary_confirmation": "C02 defines the pass line; C10 defines the quantity the line applies to (the share of trained signs at or above 0.40). The two are consistent by construction: C10 computes the share C02 judges. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "docs/PREDICTION_REGISTER.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "PRED-2026-010 success criterion and small-set caveat, registered 2026-10-13",
+     "source_id": "docs/PREDICTION_REGISTER.md"
+    }
+   ]
+  },
+  {
+   "id": "F035-C03",
+   "text": "The trained INITIAL set is P000, P217, P324, derived at registration from the CISI Mohenjo-daro pool only and fixed by the pinned derivation record.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The trained-set claim. The set is exactly the registration's: 3 signs, derived by the recorded global_class_stability logic over 179 CISI Mohenjo-daro inscriptions (28 classifiable signs: INITIAL 3, MEDIAL 19, MIXED 3, TERMINAL 3), recorded in reports/pred010_derivation_record.json. It does not govern the step-0 reproduction (C04), which must match this set exactly or close the study.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-REGISTER-GOVERNS",
+    "ASM-PINNED-INPUTS-IDENTIFY-THE-TEST"
+   ],
+   "alternatives": [
+    "A larger or refreshed trained set could be substituted to make the test stronger."
+   ],
+   "falsification_tests": [
+    "Any Spec 035 product whose trained set differs from {P000, P217, P324} by any sign defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-SUBSTITUTE-SET-ACCEPTABLE",
+     "ASM-WIDENED-POOL"
+    ],
+    "strongest_rival": "A larger or refreshed trained set could be substituted to make the test stronger.",
+    "verdict_rule": "The trained set is {P000, P217, P324} as registered; no other set is scored under this spec.",
+    "evidence_origin_groups": [
+     "pred-register-010",
+     "derivation-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "reports/pred010_derivation_record.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Registration derivation record: trained_initial_set [P000, P217, P324]; 28 classifiable signs; pool 179 rows, all Mohenjo-daro, zero Yajnadevam rows",
+     "source_id": "reports/pred010_derivation_record.json"
+    },
+    {
+     "ref": "docs/PREDICTION_REGISTER.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "PRED-2026-010 entry: trained INITIAL set derived at registration, frozen",
+     "source_id": "docs/PREDICTION_REGISTER.md",
+     "independent_of": [
+      "reports/pred010_derivation_record.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F035-C04",
+   "text": "Step 0 re-derives the filtered pool and the classification and must reproduce the registered trained set exactly before any withheld content is opened; any mismatch closes the study as CANNOT BE RUN AS WRITTEN, unscored.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The reproduction claim (spec section 3, check 0.3). The reproduction applies the registered filter to the pinned pool file, asserts 179 rows all Mohenjo-daro with zero Yajnadevam rows and the manifest hash ab3b4c8ae84090b6f0b60f467dde0067f5dbd2f20065f1625a60a79d7170540a, and reruns the recorded classification logic verbatim over the filtered pool only. It does not govern input integrity (C05), which pins the files the reproduction reads.",
+   "depends_on": [
+    "F035-C03",
+    "F035-C05"
+   ],
+   "assumptions": [
+    "ASM-VERBATIM-LOGIC-REPRODUCES-THE-SET",
+    "ASM-PINNED-INPUTS-IDENTIFY-THE-TEST"
+   ],
+   "alternatives": [
+    "The registration derivation could be trusted without re-verification, since it was hash-pinned at registration."
+   ],
+   "falsification_tests": [
+    "A step-0 record that proceeds to scoring after any reproduction mismatch (pool census, manifest hash, class census, or trained set), or that opens withheld content before the reproduction passes, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-SUBSTITUTE-SET-ACCEPTABLE",
+     "ASM-REGISTRATION-TRUSTED-WITHOUT-RECHECK"
+    ],
+    "strongest_rival": "The registration derivation could be trusted without re-verification, since it was hash-pinned at registration.",
+    "verdict_rule": "Exact reproduction gates all scoring; mismatch closes the study as CANNOT BE RUN AS WRITTEN, unscored.",
+    "evidence_origin_groups": [
+     "derivation-record",
+     "spec032-record"
+    ],
+    "boundary_confirmation": "C04 requires the reproduction to match the registered set; C03 states what that set is. The two govern different objects - the step-0 act, and the set it must reproduce - and are consistent by construction. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "reports/pred010_derivation_record.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Derivation record: the verbatim-carry basis (Phase-396 check 3.1 reproduced the recorded classification exactly)",
+     "source_id": "reports/pred010_derivation_record.json"
+    },
+    {
+     "ref": "specs/032-pred-2026-006-harappa-breakdown/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 032 / Phase-396 outcome: the step-0 closure that the unverified withholding forced on PRED-2026-006",
+     "source_id": "specs/032-pred-2026-006-harappa-breakdown/outcome.md",
+     "independent_of": [
+      "reports/pred010_derivation_record.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F035-C05",
+   "text": "Every input is pinned by its registered SHA-256 - training pool b19cfe955313b7db73b462e697e305c1da21b3b8a6997679a466d959b757b42e, filtered-pool manifest ab3b4c8ae84090b6f0b60f467dde0067f5dbd2f20065f1625a60a79d7170540a, crosswalk e44b8b550155e3d071e7fc5f94e8c98e9755de437c99e2f5027e3d647b2950a2, withheld file c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98 - and a mismatch on any pin closes the study as CANNOT BE RUN AS WRITTEN.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The input-integrity claim (spec section 3, check 0.2). The pins identify the registered inputs byte for byte; the three file hashes were verified against the bytes on main at this draft (adjudication.md section 2), and the manifest pin is re-derived at step 0 under C04. It does not govern what the files contain or how they are used (C08, C10).",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-PINNED-INPUTS-IDENTIFY-THE-TEST"
+   ],
+   "alternatives": [
+    "A refreshed or corrected input file could be adopted silently, since the change would be an improvement."
+   ],
+   "falsification_tests": [
+    "A step-0 record that proceeds after any recomputed hash differs from its registered pin defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-REFRESHED-INPUTS-ADOPTED-SILENTLY"
+    ],
+    "strongest_rival": "A refreshed or corrected input file could be adopted silently, since the change would be an improvement.",
+    "verdict_rule": "Hash equality gates all scoring; mismatch closes the study as CANNOT BE RUN AS WRITTEN.",
+    "evidence_origin_groups": [
+     "pred-register-010",
+     "derivation-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "docs/PREDICTION_REGISTER.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "PRED-2026-010 entry: training pool, manifest, crosswalk, and withheld file each fixed by SHA-256",
+     "source_id": "docs/PREDICTION_REGISTER.md"
+    }
+   ]
+  },
+  {
+   "id": "F035-C06",
+   "text": "The OSF registration wjebq (DOI 10.17605/OSF.IO/WJEBQ) stands accepted and public; it is verified before the execution design is finalised and re-verified at execution step 0.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The registration claim (spec section 3, check 0.1). Verified by API at this draft (2026-10-20): reviews_state accepted, public true, pending_registration_approval false, withdrawn false, embargoed false, date_registered 2026-10-13T12:45:55Z, registered from node nrb9u (osf-registration.md). The claim is about the registration's state at verification time; it does not govern any filing decision for this spec itself (DD-035-4).",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-REGISTRATION-STATE-AT-VERIFICATION"
+   ],
+   "alternatives": [
+    "The programme record's statement that the registration is approved and public could be taken without an API check."
+   ],
+   "falsification_tests": [
+    "An API read-back at execution showing any of accepted, public, not-pending, not-withdrawn, or not-embargoed failing - with execution proceeding regardless - defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-REGISTRATION-TRUSTED-WITHOUT-RECHECK"
+    ],
+    "strongest_rival": "The programme record's statement that the registration is approved and public could be taken without an API check.",
+    "verdict_rule": "Execution proceeds only while the API state is accepted, public, not pending, not withdrawn, and not embargoed.",
+    "evidence_origin_groups": [
+     "osf-registration-wjebq"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "https://osf.io/wjebq/",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "OSF API read-back 2026-10-20: reviews_state accepted, public true, DOI identifier 10.17605/OSF.IO/WJEBQ, date_registered 2026-10-13T12:45:55Z",
+     "source_id": "specs/035-pred-2026-010-scoring/osf-registration.md"
+    }
+   ]
+  },
+  {
+   "id": "F035-C07",
+   "text": "The cleanliness this design claims is verified training-pool exclusion, not analyst blindness, and the aggregate-inspection disclosure travels with every outcome statement.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The disclosure claim. The Yajnadevam Harappa pool was inspected in aggregate during the Spec 032 closure audit, and those counts are published (970 Harappa inscriptions inside the old combined training corpus, carrying 1,013 occurrences of 11 of PRED-2026-006's 12 trained signs). No Harappa start rate has ever been computed for any sign. The claim this spec may make is the exclusion re-proven at step 0 (C04); blindness may never be claimed.",
+   "depends_on": [
+    "F035-C04"
+   ],
+   "assumptions": [
+    "ASM-EXCLUSION-NOT-BLINDNESS"
+   ],
+   "alternatives": [
+    "Because the trained set was derived from CISI data only, the test could be described as a blind holdout test."
+   ],
+   "falsification_tests": [
+    "Any Spec 035 outcome statement describing the test as blind, or omitting the aggregate-inspection disclosure, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-ANALYST-BLINDNESS"
+    ],
+    "strongest_rival": "Because the trained set was derived from CISI data only, the test could be described as a blind holdout test.",
+    "verdict_rule": "Outcome statements claim verified training-pool exclusion and carry the disclosure; blindness is never claimed.",
+    "evidence_origin_groups": [
+     "pred-register-010",
+     "spec032-record",
+     "osf-registration-wjebq"
+    ],
+    "boundary_confirmation": "C07 states what cleanliness may be claimed (exclusion, re-proven); C04 states the act that proves it (the step-0 reproduction). The two are consistent by construction: C07's claim is exactly as strong as C04's check, and neither asserts blindness. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "docs/PREDICTION_REGISTER.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "PRED-2026-010 entry disclosure: cleanliness claimed is verified training-pool exclusion, not analyst blindness",
+     "source_id": "docs/PREDICTION_REGISTER.md"
+    },
+    {
+     "ref": "specs/032-pred-2026-006-harappa-breakdown/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 032 / Phase-396 outcome: the aggregate counts (970 inscriptions, 1,013 occurrences) published in the closure audit",
+     "source_id": "specs/032-pred-2026-006-harappa-breakdown/outcome.md",
+     "independent_of": [
+      "docs/PREDICTION_REGISTER.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F035-C08",
+   "text": "Sign identity between the trained set and the withheld sequences is carried by the frozen crosswalk only, fixed before counting.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The identity claim. The mapping is data/crosswalks/yajnadevam_to_parpola_crosswalk.csv under its registered pin (C05); no other mapping, manual match, or judgement call carries a sign's identity. The reading is fixed (DD-035-5): a sign's counterparts are the glyphs whose crosswalk row names it as best_parpola_match - the frozen Phase-396 build's fix_crosswalk reading; top3_parpola alternatives never create a counterpart and set the conflict flag instead. Conflict pairs are flagged in the per-sign table (C12), not resolved by hand. It does not govern the coverage rule (C09), which states what an absent counterpart does.",
+   "depends_on": [
+    "F035-C05"
+   ],
+   "assumptions": [
+    "ASM-CROSSWALK-CARRIES-SIGN-IDENTITY"
+   ],
+   "alternatives": [
+    "Signs could be matched by visual similarity or expert judgement where the crosswalk is silent."
+   ],
+   "falsification_tests": [
+    "Any Spec 035 product that maps a trained sign to a withheld-sequence sign by any route other than the frozen crosswalk defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-MANUAL-SIGN-MATCHING"
+    ],
+    "strongest_rival": "Signs could be matched by visual similarity or expert judgement where the crosswalk is silent.",
+    "verdict_rule": "The frozen crosswalk is the only identity carrier; it is fixed before counting.",
+    "evidence_origin_groups": [
+     "pred-register-010"
+    ],
+    "boundary_confirmation": "C08 states the crosswalk is the only identity carrier; C09 states the consequence when it carries no counterpart for a trained sign (the unmappable closure). The two are consistent by construction: silence in the sole carrier is exactly the unmappable case. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "docs/PREDICTION_REGISTER.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "PRED-2026-010 entry: crosswalk fixed by reference (SHA-256 e44b8b55...) as the identity route at scoring",
+     "source_id": "docs/PREDICTION_REGISTER.md"
+    }
+   ]
+  },
+  {
+   "id": "F035-C09",
+   "text": "Any unmappable trained sign is 33% of the trained set, above the registered 20% cap, and closes the scoring as CANNOT BE RUN AS WRITTEN before the withheld file is opened.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The coverage claim (spec section 3, check 0.4), in the registration's own terms - stricter than Spec 032's first-sentence coverage statement, because PRED-2026-010's registration declares the closure. The check reads only the crosswalk and the trained set. It does not govern scoring once coverage is complete (C10). Draft-stage observation (spec section 0.4): under the fixed reading (C08), P217 (glyph Y0520) and P324 (glyph Y0740) carry best-match counterparts and P000 carries none - it appears only as a top3_parpola alternative - so the step-0 determination on the pinned bytes is expected to fire this closure. The formal determination remains a step-0 act; the observation is recorded so the freeze decision is informed.",
+   "depends_on": [
+    "F035-C02",
+    "F035-C08"
+   ],
+   "assumptions": [
+    "ASM-REGISTER-GOVERNS",
+    "ASM-CROSSWALK-CARRIES-SIGN-IDENTITY"
+   ],
+   "alternatives": [
+    "An unmappable sign could be dropped from the denominator and the remaining signs scored, as Spec 032's coverage statement allowed."
+   ],
+   "falsification_tests": [
+    "A step-0 or scoring record that scores any sign after a trained sign is found unmappable defeats this claim.",
+    "A step-0 coverage record showing a best_parpola_match counterpart for P000 on a correct reading of the pinned crosswalk defeats the draft-stage observation recorded in this claim's boundary."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-DENOMINATOR-REDUCTION"
+    ],
+    "strongest_rival": "An unmappable sign could be dropped from the denominator and the remaining signs scored, as Spec 032's coverage statement allowed.",
+    "verdict_rule": "One unmappable trained sign (33% > 20%) closes the scoring as CANNOT BE RUN AS WRITTEN, unscored.",
+    "evidence_origin_groups": [
+     "pred-register-010"
+    ],
+    "boundary_confirmation": "C09 closes the scoring when coverage is incomplete; C02's criterion judges only a completed scoring. The two are consistent by construction: the closure fires before the criterion is ever applied, so no verdict is ever stated on a reduced denominator. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "docs/PREDICTION_REGISTER.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "PRED-2026-010 entry: unmappable above 20% of the trained set closes the scoring as CANNOT BE RUN AS WRITTEN; with 3 signs any single unmappable sign is 33%",
+     "source_id": "docs/PREDICTION_REGISTER.md"
+    }
+   ]
+  },
+  {
+   "id": "F035-C10",
+   "text": "The score is the share of trained signs whose Harappa start rate is at least 0.40, a start rate being the share of a sign's Harappa occurrences in the withheld sequences in which it stands in initial position.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The computation claim (spec section 5). Initial position is the first sign of a sequence, so a one-sign sequence's sign stands initial. The computation runs on the withheld Harappa sequences only, through the frozen crosswalk (C08), after step 0 passes. It does not govern the pass line (C02), the zero-occurrence edge (C11), or any adjustment: none is applied.",
+   "depends_on": [
+    "F035-C02",
+    "F035-C08"
+   ],
+   "assumptions": [
+    "ASM-REGISTER-GOVERNS"
+   ],
+   "alternatives": [
+    "Start rates could be adjusted for sequence-length composition at Harappa, or computed over all sites rather than Harappa only."
+   ],
+   "falsification_tests": [
+    "Any Spec 035 product whose score uses a different start-rate definition, a different sequence pool, or any composition adjustment defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-SEQUENCE-COMPOSITION-ADJUSTMENT",
+     "ASM-ALL-SITES-POOL"
+    ],
+    "strongest_rival": "Start rates could be adjusted for sequence-length composition at Harappa, or computed over all sites rather than Harappa only.",
+    "verdict_rule": "The score is the unadjusted share, on Harappa sequences only, under the stated start-rate definition.",
+    "evidence_origin_groups": [
+     "pred-register-010",
+     "spec032-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/032-pred-2026-006-harappa-breakdown/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 032 section 5: the registered computation this spec restates for the successor's trained set",
+     "source_id": "specs/032-pred-2026-006-harappa-breakdown/spec.md"
+    },
+    {
+     "ref": "docs/PREDICTION_REGISTER.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "PRED-2026-010 entry: Harappa-specific Yajnadevam data is the scoring pool",
+     "source_id": "docs/PREDICTION_REGISTER.md",
+     "independent_of": [
+      "specs/032-pred-2026-006-harappa-breakdown/spec.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F035-C11",
+   "text": "A mappable trained sign with zero Harappa occurrences does not show a start rate at or above 0.40 and counts as not meeting the bar.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The zero-occurrence edge (spec section 5, DD-035-2), fixed at draft so it cannot be decided after the counts are seen. A sign with no occurrences has no start rate; the registered criterion (C02) credits only signs showing a start rate at or above 0.40. The alternative - closing as not-estimable - is rejected in DD-035-2 because the registered criterion has no such band; the freeze decision may overturn this reading openly. It does not govern unmappable signs (C09), which close the study earlier.",
+   "depends_on": [
+    "F035-C10"
+   ],
+   "assumptions": [
+    "ASM-REGISTER-GOVERNS"
+   ],
+   "alternatives": [
+    "A zero-occurrence sign could close the study as not-estimable, or be excluded from the denominator."
+   ],
+   "falsification_tests": [
+    "Any Spec 035 product that credits a zero-occurrence sign toward the share, excludes it from the denominator, or closes as not-estimable on its account defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-NOT-ESTIMABLE-BAND",
+     "ASM-DENOMINATOR-REDUCTION"
+    ],
+    "strongest_rival": "A zero-occurrence sign could close the study as not-estimable, or be excluded from the denominator.",
+    "verdict_rule": "Zero occurrences means the bar is not met for that sign; the denominator stays 3.",
+    "evidence_origin_groups": [
+     "pred-register-010"
+    ],
+    "boundary_confirmation": "C11 governs a mappable sign that occurs zero times; C09 governs a sign with no crosswalk counterpart. The two cases are disjoint - mappability is decided at check 0.4, occurrence counts only exist after scoring opens - and are consistent by construction: a sign cannot be both unmappable and scored-with-zero-occurrences. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "docs/PREDICTION_REGISTER.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "PRED-2026-010 criterion: signs show a start rate at or above 0.40; no not-estimable band is registered",
+     "source_id": "docs/PREDICTION_REGISTER.md"
+    }
+   ]
+  },
+  {
+   "id": "F035-C12",
+   "text": "The per-sign table - every trained sign, its crosswalk counterpart, Harappa occurrence count, initial-position count, start rate, and conflict-pair flag - is published with the outcome as a descriptive record and carries no criterion.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The descriptive-record claim (spec section 5, DD-035-3), pre-registered as descriptive so it cannot be mistaken for a criterion. With 3 signs the table is the result's context; it moves no verdict (C02 judges the share alone). It does not govern the verdict wording (C13).",
+   "depends_on": [
+    "F035-C10"
+   ],
+   "assumptions": [
+    "ASM-REGISTER-GOVERNS"
+   ],
+   "alternatives": [
+    "The headline share could be published alone, without the per-sign counts."
+   ],
+   "falsification_tests": [
+    "Any Spec 035 outcome published without the full per-sign table, or any product that lets a table quantity move the verdict, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-DESCRIPTIVE-AS-CRITERION"
+    ],
+    "strongest_rival": "The headline share could be published alone, without the per-sign counts.",
+    "verdict_rule": "The table is published in full with the outcome and is descriptive only.",
+    "evidence_origin_groups": [
+     "spec032-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "specs/032-pred-2026-006-harappa-breakdown/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 032 section 5: the per-sign table pre-registered as a descriptive addition carrying no criterion",
+     "source_id": "specs/032-pred-2026-006-harappa-breakdown/spec.md"
+    }
+   ]
+  },
+  {
+   "id": "F035-C13",
+   "text": "The verdict wording claims only the site-withholding independence the registration specified, and carries the register's small-set caveat in its first paragraph.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The verdict-wording claim (spec section 8). The independence claimed is Harappa held out of training, re-proven at step 0 - not independence of scholarly lineage, since the Yajnadevam compilation's object base is published-corpus material. The small-set caveat (3 signs; the bar passes only at 3 of 3; each sign carries a third of the verdict) leads every outcome statement. It does not govern the scope of the study itself (C01).",
+   "depends_on": [
+    "F035-C01"
+   ],
+   "assumptions": [
+    "ASM-EXCLUSION-NOT-BLINDNESS"
+   ],
+   "alternatives": [
+    "A confirmation could be worded as cross-corpus or cross-lineage validation of the INITIAL class."
+   ],
+   "falsification_tests": [
+    "Any Spec 035 outcome statement claiming lineage independence, or omitting the small-set caveat from its first paragraph, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-LINEAGE-INDEPENDENCE"
+    ],
+    "strongest_rival": "A confirmation could be worded as cross-corpus or cross-lineage validation of the INITIAL class.",
+    "verdict_rule": "Verdict wording claims site-withholding independence only and leads with the small-set caveat.",
+    "evidence_origin_groups": [
+     "pred-register-010",
+     "spec032-record"
+    ],
+    "boundary_confirmation": "C13 governs the wording of outcome statements; C01 governs the scope of the study's products. The two are consistent by construction: wording that claims only site-withholding independence is exactly a product inside C01's scope. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "docs/PREDICTION_REGISTER.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "PRED-2026-010 entry: small-set caveat registered with the prediction; site-withholding is the specified independence",
+     "source_id": "docs/PREDICTION_REGISTER.md"
+    }
+   ]
+  },
+  {
+   "id": "F035-C14",
+   "text": "The outcome is appended to the PRED register as a dated entry; PRED-2026-006's entries stay byte-identical and it remains unscored, and no other prediction's state changes.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The register-handling claim (spec section 7). The append is a dated section 6 entry (insertions only) under the owner's execution order, with PRED-2026-010's section 3 Tested/Outcome fields moving from PENDING in the same append and the Phase D register-hash pin advanced by name - the two 2026-10-13 precedents. This draft itself changes no register text.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-REGISTER-GOVERNS"
+   ],
+   "alternatives": [
+    "The outcome could be recorded by editing the register entry in place, or 006's PARTIALLY CONFIRMED wording could be revisited in the same change."
+   ],
+   "falsification_tests": [
+    "Any execution record that edits existing register text beyond the named append, alters PRED-2026-006's entries, or changes another prediction's state defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-REGISTER-EDITED-IN-PLACE"
+    ],
+    "strongest_rival": "The outcome could be recorded by editing the register entry in place, or 006's PARTIALLY CONFIRMED wording could be revisited in the same change.",
+    "verdict_rule": "Register changes at execution are the dated append for PRED-2026-010 only.",
+    "evidence_origin_groups": [
+     "pred-register-010",
+     "spec032-record"
+    ]
+   },
+   "evidence": [
+    {
+     "ref": "docs/PREDICTION_REGISTER.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Register protocol and section 6 log: outcomes are appended as dated entries; existing text stands",
+     "source_id": "docs/PREDICTION_REGISTER.md"
+    }
+   ]
+  },
+  {
+   "id": "F035-C15",
+   "text": "Step-0 closures are reported as themselves, never as verdicts, and a closure is not a refutation of the prediction.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The closure-reporting claim (spec sections 3 and 6). The closures are CANNOT BE RUN AS WRITTEN (checks 0.2, 0.3, 0.4) and the registration stop (check 0.1). A closed study leaves PRED-2026-010 unscored with Outcome PENDING, and the register's section 4 (Failed Predictions) gains no entry from a closure - the PRED-2026-006 precedent, whose closure is recorded as neither CONFIRMED nor NOT CONFIRMED.",
+   "depends_on": [
+    "F035-C04",
+    "F035-C09"
+   ],
+   "assumptions": [
+    "ASM-REGISTER-GOVERNS"
+   ],
+   "alternatives": [
+    "A closure could be reported as the prediction failing, since the programme could not run its test."
+   ],
+   "falsification_tests": [
+    "Any Spec 035 product that reports a step-0 closure as a verdict, a refutation, or a section 4 entry defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-CLOSURE-AS-REFUTATION"
+    ],
+    "strongest_rival": "A closure could be reported as the prediction failing, since the programme could not run its test.",
+    "verdict_rule": "Closures are reported as closures; the prediction's outcome stays PENDING after a closure.",
+    "evidence_origin_groups": [
+     "spec032-record",
+     "pred-register-010"
+    ],
+    "boundary_confirmation": "C15 governs how closures are reported; C02 governs the verdicts of a completed scoring. The two are consistent by construction: a closure means the criterion was never applied, so no verdict exists for C02 to judge and none may be reported. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "docs/PREDICTION_REGISTER.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Register section 6, 2026-10-13: PRED-2026-006's closure is neither CONFIRMED nor NOT CONFIRMED; the prediction is unscored, not refuted",
+     "source_id": "docs/PREDICTION_REGISTER.md"
+    }
+   ]
+  }
+ ]
+}

@@ -169,11 +169,12 @@ and is not a refutation of PRED-2026-007.
   artifact; the step-0 record carries the
   enumeration and held-record reads instead.
 - **F038-C10** (record written; pin advanced
-  on a verdict): the record is written as
-  claimed; the Phase D pin is **not**
-  advanced — no verdict exists, and the
-  claim's own boundary limits advancement to
-  verdicts.
+  by name): the record is written as claimed,
+  and the Phase D register-hash pin is
+  advanced by name for these authorised
+  appends, exactly as the claim's boundary
+  prescribes; on this closure the §3 Outcome
+  stays PARTIALLY CONFIRMED (C14).
 - **F038-C11** (clustering-stability caveat):
   carried — no verdict exists for it to
   attach to, and the closure does not rest on
@@ -205,8 +206,9 @@ and is not a refutation of PRED-2026-007.
   the provenance reconciliation note
   (DD-038-2). The §3 entry is left standing as
   the pre-execution record, per spec §7's
-  closure handling; the Phase D pin is not
-  advanced (no verdict).
+  closure handling; the Phase D register-hash
+  pin is advanced by name for these appends
+  (backend/tests/test_spec029_phase_d.py).
 - Root LEDGER entry: appended in this same
   act.
 - Foundation check (H21) and suite state:

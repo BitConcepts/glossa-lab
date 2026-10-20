@@ -428,12 +428,23 @@ def test_pred_register_document_untouched():
     # with the section 3 entry's Tested/Outcome
     # fields moved from PENDING to the verdict in
     # the same act, as Spec 036's register-handling
-    # claim (F036-C14) prescribes on a verdict. Any
+    # claim (F036-C14) prescribes on a verdict. It
+    # was advanced a seventh time, by name, for the
+    # owner-ordered execution appends of 2026-10-20
+    # under Spec 038 / Phase-401: the dated section
+    # 6 outcome entry (PRED-2026-007 closed at step
+    # 0.2 — CANNOT BE RUN AS WRITTEN, unscored; the
+    # section 3 entry left standing as the
+    # pre-execution record) and the DD-038-2
+    # provenance reconciliation note (insertions
+    # only, no existing entry altered), as Spec
+    # 038's register-handling claim (F038-C10)
+    # prescribes for the authorised change. Any
     # further drift from this hash is unauthorised.
     digest = hashlib.sha256(
         (_REPO_ROOT / "docs" / "PREDICTION_REGISTER.md").read_bytes()
     ).hexdigest()
-    assert digest == "4f8aeb54fd5853d73766ed9cf0222ef93cccfa8d9a8c399a4631221fbbb4c1c2"
+    assert digest == "5f7090598907adfcb284a6169ff601f9b5ceecd92b043dfec7d68c0d8a6b2cd6"
 
 
 # ── Script contract: shapes, states, idempotency ─────────────────────────

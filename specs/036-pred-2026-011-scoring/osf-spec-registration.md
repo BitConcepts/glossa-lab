@@ -110,3 +110,53 @@ registration's Gmail messages are archived.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## Completion — APPROVED AND PUBLIC (2026-10-20)
+
+- **DOI: https://doi.org/10.17605/OSF.IO/GJEN4**
+- Approval route: the API review-action POST
+  returned **HTTP 409** at filing (recorded above),
+  as the program record predicts; approval was
+  effected via the tokenised approve link in the
+  "Pending Registration - Admin Notification" email
+  (Gmail id `1a15b079160908ce`, received
+  2026-10-20T20:36:24Z), clicked in the signed-in
+  browser on 2026-10-20 — the standing approvals
+  loop (owner order 2026-10-11: registration
+  approvals are the agent's job, never left as an
+  owner action item). The cancel link in the same
+  email was not touched.
+- State verified via the OSF API after approval
+  (2026-10-20): `reviews_state: accepted`,
+  `public: true`,
+  `pending_registration_approval: false`,
+  `withdrawn: false`;
+  `date_registered: 2026-10-20T20:36:16Z`;
+  `registered_from` node `nrb9u`; the identifiers
+  record carries DOI `10.17605/OSF.IO/GJEN4`.
+- The registration's Gmail messages — the admin
+  notification above and the draft-created notice
+  (Gmail id `1a15b0423ee15ea4`) — were marked read
+  and archived after this verification, under the
+  standing OSF archiving rule, and verified out of
+  the inbox.
+- Execution note: Phase-400 executed under the
+  owner's 2026-10-20 do-all order without waiting
+  on this approval (step 0's registration check
+  names t6whq, as frozen in spec §3) and scored
+  PRED-2026-011 **CONFIRMED** — P217 start rate
+  0.8739 (104 initial of 119 occurrences), P324
+  start rate 0.6111 (473 initial of 774
+  occurrences); 2 of 2 signs at or above the
+  registered 0.40 bar (record: `outcome.md` in
+  this directory; PR #229, merged `729ddb2a`).
+  This approval completes the DD-036-4 filing; it
+  changes no part of the frozen contract or the
+  outcome record.
+
+---
+
+*Completion appended 2026-10-20 by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI. Append-only:
+nothing above this section was edited.*

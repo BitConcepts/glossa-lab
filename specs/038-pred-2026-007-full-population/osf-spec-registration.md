@@ -111,3 +111,57 @@ archived.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## Completion — APPROVED AND PUBLIC (2026-10-20)
+
+- **DOI: https://doi.org/10.17605/OSF.IO/BKQEH**
+- Approval route: the API review-action POST
+  returned **HTTP 409** at filing (recorded above),
+  as the program record predicts; approval was
+  effected via the tokenised approve link in the
+  "Pending Registration - Admin Notification" email
+  (Gmail id `1a15b8abf1bbcb05`, received
+  2026-10-20T22:59:40Z), clicked in the signed-in
+  browser on 2026-10-20 — the standing approvals
+  loop (owner order 2026-10-11: registration
+  approvals are the agent's job, never left as an
+  owner action item). The cancel link in the same
+  email was not touched.
+- State verified via the OSF API after approval
+  (2026-10-20): `reviews_state: accepted`,
+  `revision_state: approved`,
+  `public: true`,
+  `pending_registration_approval: false`,
+  `withdrawn: false`;
+  `date_registered: 2026-10-20T22:59:35Z`;
+  `registered_from` node `nrb9u`; the identifiers
+  record carries DOI `10.17605/OSF.IO/BKQEH`;
+  Internet Archive snapshot:
+  https://archive.org/details/osf-registrations-bkqeh-v1.
+- The registration's Gmail messages — the admin
+  notification above and the draft-created notice
+  (Gmail id `1a15b8861161334f`) — were marked read
+  and archived after this verification, under the
+  standing OSF archiving rule, and verified out of
+  the inbox.
+- Execution note: Phase-401 executed under the
+  owner's 2026-10-20 freeze-and-execute order
+  without waiting on this approval (the frozen
+  step 0 names the prediction's register entry, not
+  this filing) and closed at step 0.2 —
+  **CANNOT BE RUN AS WRITTEN, unscored**: the
+  enumeration of the frozen primary returned zero
+  ITM-coded signs and the held-record verification
+  failed, so PRED-2026-007 stands unscored and its
+  §3 PARTIALLY CONFIRMED wording stands as the
+  pre-execution record (record: `outcome.md` in
+  this directory; PR #232). This approval completes
+  the DD-038-6 filing; it changes no part of the
+  frozen contract or the outcome record.
+
+---
+
+*Completion appended 2026-10-20 by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI. Append-only:
+nothing above this section was edited.*

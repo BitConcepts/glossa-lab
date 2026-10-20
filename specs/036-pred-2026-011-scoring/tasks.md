@@ -58,7 +58,7 @@
       the freeze (proposal: file the spec's own
       OSF contract registration, following the
       DD-035-4 precedent).
-- [ ] **L6 — Freeze PR merged**, house gates green
+- [x] **L6 — Freeze PR merged**, house gates green
       (foundation 0 failures, full suite, branding
       sweep).
 - [x] **L7 — Registration state.** The
@@ -72,10 +72,10 @@
 
 ## Execution (Phase-400) — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0** (spec §3), in the frozen
+- [x] **E2 — Step 0** (spec §3), in the frozen
       order: 0.1 registration re-verification;
       0.2 input integrity; 0.3 training-pool and
       screen re-verification (filter, census,
@@ -90,11 +90,11 @@
       all four checks pass (both trained signs
       carry confirmed best-match counterparts) and
       scoring is reached.
-- [ ] **E3 — Scoring** (spec §5): the registered
+- [x] **E3 — Scoring** (spec §5): the registered
       computation only; the per-sign table
       produced with it. (Reached only if step 0
       passes in full.)
-- [ ] **E4 — Outcome:** the verdict under spec §6
+- [x] **E4 — Outcome:** the verdict under spec §6
       or the closure under §3, reported as itself;
       the register append (spec §7), the outcome
       record in this spec's directory, the root

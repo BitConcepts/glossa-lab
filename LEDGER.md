@@ -6812,7 +6812,7 @@ for any branch (DD-038-1: the register's recorded
 mixed in the LOG-coded P098, which the frame
 excludes by rule). Claims F038-C01...C14; draft
 digest
-85081ca22ca61fb91b1c919c8728c7fe7752bcf15ec9c841ce0395e70ccb60e5.
+00aae53b3b1cca55817a7f475dd2a46e8d71690215de11b2871487cb576ce7a5.
 AEE hooks have not run on the draft register; they
 are a freeze gate, run at the freeze act under aee
 1.5.0 (DD-038-7). DD-038-6 is an open proposal for

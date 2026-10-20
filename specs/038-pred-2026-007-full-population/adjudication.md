@@ -73,7 +73,7 @@ first-hand at drafting, 2026-10-20, against
 the record on `main` (head `5e7f3cdb`, the
 PRED-2026-011 registration-completion merge;
 hash rerun for the outcome record:
-`5e7f3cdb226f4a7b896b31e8a4d59eb1b06a3b5f`):
+`5e7f3cdbdf208bf65f58d2ea84366e064848a469`):
 
 - **Register entry** — read in
   `docs/PREDICTION_REGISTER.md` §3

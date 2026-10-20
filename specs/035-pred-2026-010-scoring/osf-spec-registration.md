@@ -100,3 +100,50 @@ and the registration's Gmail messages are archived.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## Completion — APPROVED AND PUBLIC (2026-10-20)
+
+- **DOI: https://doi.org/10.17605/OSF.IO/QKJ8D**
+- Approval route: the API review-action POST
+  returned **HTTP 409** at filing (recorded above),
+  as the program record predicts; approval was
+  effected via the tokenised approve link in the
+  "Pending Registration - Admin Notification" email
+  (Gmail id `1a1595c699d5b762`, received
+  2026-10-20T12:49:50Z), opened in the signed-in
+  browser — the standing approvals loop (owner
+  order 2026-10-11: registration approvals are the
+  agent's job, never left as an owner action item).
+  The cancel link in the same email was not
+  touched.
+- State verified via the OSF API after approval
+  (2026-10-20): `reviews_state: accepted`,
+  `public: true`,
+  `pending_registration_approval: false`,
+  `withdrawn: false`, `embargoed: false`;
+  `date_registered: 2026-10-20T12:49:44Z`;
+  `registered_from` node `fazsq`; the identifiers
+  record carries DOI `10.17605/OSF.IO/QKJ8D`.
+- The registration's Gmail messages — the admin
+  notification above and the draft-created notice
+  (Gmail id `1a159519b8e94d06`) — were marked read
+  and archived after this verification, under the
+  standing OSF archiving rule, and verified out of
+  the inbox.
+- Execution note: Phase-399 executed under the
+  owner's 2026-10-20 freeze-and-execute order
+  without waiting on this approval (step 0's
+  registration check names wjebq, as frozen in
+  spec §3) and closed at step 0.4 — CANNOT BE RUN
+  AS WRITTEN, unscored (record: `outcome.md` in
+  this directory; PR #222, merged `6f03bd7c`).
+  This approval completes the DD-035-4 filing; it
+  changes no part of the frozen contract or the
+  outcome record.
+
+---
+
+*Completion appended 2026-10-20 by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI. Append-only:
+nothing above this section was edited.*

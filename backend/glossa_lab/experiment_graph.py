@@ -2875,6 +2875,16 @@ try:
     logger.info("Registered %d Phase-398 (spec 034) nodes", len(list(_p398_defs())))
 except Exception as _p398_exc:  # noqa: BLE001
     logger.warning("Phase-398 (spec 034) nodes not registered: %s", _p398_exc)
+# ── Phase-399 node (spec 035: PRED-2026-010 scoring) ──
+try:
+    from glossa_lab.experiment_graph_phase399 import (
+        _phase399_node_defs as _p399_defs,  # noqa: PLC0415
+    )
+    for _d in _p399_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-399 (spec 035) nodes", len(list(_p399_defs())))
+except Exception as _p399_exc:  # noqa: BLE001
+    logger.warning("Phase-399 (spec 035) nodes not registered: %s", _p399_exc)
 # ── Phase-120 nodes (Bhaskar 2024 descriptive triage) ──
 try:
     from glossa_lab.experiment_graph_phase120 import (

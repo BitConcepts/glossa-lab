@@ -173,6 +173,61 @@ act, gated as stated in the header above.
   was a scratch probe only and is not part
   of the frozen tree.
 
+## 6. Amendment — 2026-10-21 (pre-merge, on first CI)
+
+The freeze PR's first CI run (run
+39581775853) ran 6 of 7 jobs green; the
+backend job failed on exactly one test —
+this spec's `test_cited_records_carry_the_design_facts`
+— and on no other (1 failed, 1,419 passed).
+Cause, verified from the job log: the test
+asserted live byte equality of the §2 pins
+against the working tree, but the suite's
+own Spec 029 regeneration tests run earlier
+in the same suite and rewrite the
+claim-lifecycle records (the claim record,
+the Phase-104 evaluation, the lane-2
+drafts) in the working tree with fresh
+`extracted_at` timestamps, so the claim
+record's live hash (`3eb89c04…`) differed
+from its committed bytes (`bd0f7abd…`) for
+that reason alone. The committed bytes, the
+§2 pins, and every other freeze fact are
+unchanged; the step-0 pin check remains an
+execution-time act over a pristine checkout
+(spec §5.1), exactly as frozen.
+
+The correction is confined to the freeze
+test: the pins stand asserted as freeze-time
+facts against `freeze.json`'s definition
+(`test_freeze_definition_constants`), and
+the cited-records test now asserts that each
+cited record is present and carries its
+design facts (the claim entry untested with
+the horned-tiger claim; the passage verbatim
+in the source text; the Phase-104 RULE-NUM
+stop for this claim; the registry census and
+traps, unchanged). No claim, decision,
+outcome, or contract wording changed.
+
+Because the test is a digest-covered source,
+`freeze.json` was recomputed **exactly once**
+over the amended state with this directory's
+`build_freeze.py`. Following the Spec 030
+precedent: the freeze-act digest computed at
+the freeze (`80c3be31…`, full value in
+`osf-spec-registration.md`) stands as the
+digest of the freeze act in every record
+that cites it, including the filed OSF
+registration `dnts8`; the successor digest
+is the value in `freeze.json` as merged, and
+is recorded in full in
+`osf-spec-registration.md`. The amended test
+suite was re-proven able to fail on the
+amended tree: the same `spec.md` mutation
+turned the replay test red, and the restore
+returned all 6 tests to green.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

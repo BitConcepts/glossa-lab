@@ -43,7 +43,7 @@
 > scoring at the freeze.
 >
 > The registration carries the frozen contract:
-> freeze digest
+> freeze-act digest
 > `80c3be31e5af5236f71cb2c1894b2946f9b8ad47b12bdeab9d03cd76468af405`,
 > execution Phase-405, the claim
 > `the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002`,
@@ -57,6 +57,32 @@
 > form, and the Spec 045 cross-check finding
 > recorded at DD-046-14 for Spec 045's freeze
 > to repair on its side.
+
+---
+
+## Amendment note — 2026-10-21 (pre-merge)
+
+The freeze PR's first CI run (39581775853)
+failed one test for a working-tree reason
+recorded in `freeze.md` §6: the suite's own
+Spec 029 regeneration tests rewrite the
+claim-lifecycle records before the freeze
+test reads them, so a live byte-hash
+assertion over those records cannot stand
+in-suite. The freeze test was corrected
+(content-level assertions for the cited
+records; the §2 pins stand as freeze-time
+facts against the definition), and
+`freeze.json` was recomputed exactly once
+over the amended state. Per the Spec 030
+precedent, the freeze-act digest above
+stands in this record and in the filed
+registration `dnts8`; the **successor
+digest** is
+`30c3480b29aeb5468615007f14de5500ba6266b9ea452c428e5d2b81d3bf36f1`,
+the value in `freeze.json` as merged. No
+claim, decision, outcome, or contract
+wording changed.
 
 ---
 

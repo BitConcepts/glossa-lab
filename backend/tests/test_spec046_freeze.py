@@ -20,8 +20,9 @@ DD-046-16 reading (zero correctness failure
 modes; only FR-2.3 draft-cap records; no claim
 below the 0.70 threshold); (4) the cited records
 still carry the facts the design rests on (the
-section 2 pins recomputed from the files
-themselves, the registry census of 803 rows, and
+section 2 pins asserted as freeze-time facts
+against the definition; the live records checked
+for their design facts, the registry census of 803 rows, and
 the two registry traps of spec section 4.3:
 Parpola P297 the Ladder motif, and W297 inside
 the multi-value wells_ids cell on the P205 row);
@@ -208,9 +209,25 @@ def test_register_integrity():
 
 
 def test_cited_records_carry_the_design_facts():
-    # Every section 2 pin recomputes from the file itself.
-    for path, expected in PINS.items():
-        assert hashlib.sha256(path.read_bytes()).hexdigest() == expected
+    # The section 2 pins are freeze-time facts: they are
+    # asserted against freeze.json's definition in
+    # test_freeze_definition_constants, and the step-0
+    # pin check is an execution-time act over a pristine
+    # checkout (spec section 5.1). Live byte equality is
+    # NOT asserted here for the claim-lifecycle records
+    # (claim record, Phase-104 evaluation, lane-2
+    # drafts): the suite's own Spec 029 regeneration
+    # tests rewrite those records in the working tree
+    # before this test runs, with fresh extracted_at
+    # timestamps (observed in CI run 39581775853, where
+    # the claim record's live hash differed from its
+    # committed bytes for exactly that reason; the
+    # amendment is recorded in freeze.md). What this
+    # test asserts live is that every cited record is
+    # present and still carries the design facts the
+    # freeze rests on.
+    for path in PINS:
+        assert path.is_file(), path
     # The registry census and the two traps of spec section 4.3.
     rows = list(
         csv.DictReader(io.StringIO(REGISTRY.read_text(encoding="utf-8")))
@@ -223,12 +240,40 @@ def test_cited_records_carry_the_design_facts():
     assert len(p205) == 1
     assert "W297" in p205[0]["wells_ids"].split("|")
     # The claim record carries the fragment as stated.
-    claim_text = CLAIM_RECORD.read_text(encoding="utf-8")
-    assert "sign_val_0002" in claim_text
-    assert "horned tiger" in claim_text
+    claim_doc = json.loads(CLAIM_RECORD.read_text(encoding="utf-8"))
+    entry = next(
+        c
+        for c in claim_doc["claims"]
+        if c["claim_id"]
+        == (
+            "the_archaeology_and_epigraphy_of_indus_w_"
+            "27f45a68_sign_val_0002"
+        )
+    )
+    assert entry["claim_status"] == "untested"
+    assert "horned tiger" in entry["normalized_claim"]
+    # The source text carries the passage verbatim.
+    source_text = SOURCE_TEXT.read_text(encoding="utf-8")
+    assert "sign 297 represents the horned tiger" in source_text
     # The Phase-104 record carries the RULE-NUM stop for this claim.
-    phase104 = PHASE104.read_text(encoding="utf-8")
-    assert "RULE-NUM" in phase104 or "RULE_NUM" in phase104
+    evaluation = json.loads(PHASE104.read_text(encoding="utf-8"))
+    found = []
+
+    def _walk(node):
+        if isinstance(node, dict):
+            if node.get("claim_id") == entry["claim_id"]:
+                found.append(node)
+            for value in node.values():
+                _walk(value)
+        elif isinstance(node, list):
+            for value in node:
+                _walk(value)
+
+    _walk(evaluation)
+    assert found and found[0]["rule"] == "RULE-NUM"
+    assert found[0]["verdict"] == "stays_untested"
+    # The lane-2 drafts carry the adopted draft for this claim.
+    assert entry["claim_id"] in LANE2.read_text(encoding="utf-8")
 
 
 FREEZE_STAMPS = [

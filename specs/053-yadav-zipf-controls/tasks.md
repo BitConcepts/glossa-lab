@@ -87,22 +87,35 @@
       record by two routes, and the execution
       phase allocated as **Phase-413**
       (DD-053-18).
-- [ ] **L7 — Freeze PR merged**, house gates
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
+      PR #257 merged 2026-10-21 at `8e7c58cc`,
+      CI 7/7 (run 39587337104).
 
 ## Execution — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0, part 1** (spec §3 gates
+      Executed 2026-10-21 as Phase-413: script
+      `backend/scripts/phase413_yadav_zipf_controls.py`,
+      node `IndusPhase413YadavZipfControls`,
+      registration verified by import before
+      the run.
+- [x] **E2 — Step 0, part 1** (spec §3 gates
       0.1–0.2): input integrity against the
       freeze pins; estimator self-test on the
       planted-parameter synthetic distribution
       (failure stops the run as INVALID before
       any corpus is touched).
-- [ ] **E3 — Step 0, part 2** (gates 0.3–0.4):
+      Executed 2026-10-21: gate 0.1 PASS
+      (every §2 pin recomputes, two routes);
+      gate 0.2 PASS (planted α 1.20 / q 2.0
+      recovered as α 1.256 / q 2.72, errors
+      0.056 / 0.72 against tolerances
+      0.10 / 1.0).
+- [x] **E3 — Step 0, part 2** (gates 0.3–0.4):
       strict corpus identified, exported, and
       pinned, with its lineage shown (failure
       closes STRICT CORPUS NOT PINNABLE);
@@ -110,6 +123,18 @@
       and frozen — N1, N2, N3's process, P1 —
       before any fit exists (failure closes
       CONTROL SET FREEZE FAILED).
+      Executed 2026-10-21: **gate 0.3 FAILED —
+      the execution closed STRICT CORPUS NOT
+      PINNABLE** (the V3 layer's Firestore
+      data file is absent from the tree, the
+      loader loads zero sequences, no database
+      copy exists in the execution tree, and
+      no other layer in the tree is the corpus
+      the Phase-43 record names); gate 0.4 was
+      NOT REACHED and no control count was
+      entered. E4–E6 cannot run under this
+      frozen contract; the record is
+      `outcome.md` in this directory.
 - [ ] **E4 — Step 0, part 3** (gate 0.5):
       strict census published (types present,
       strict tokens, inscriptions) and floors
@@ -133,20 +158,26 @@
       types named), S3 full-inventory fit
       reported beside the recorded exponent —
       none changing the headline.
-- [ ] **E7 — Outcome:** the §9 record —
+- [x] **E7 — Outcome:** the §9 record —
+      delivered 2026-10-21 in the closure form
+      the STRICT CORPUS NOT PINNABLE outcome
+      prescribes (`outcome.md`; no corpus
+      digest, control tables, per-system
+      quantities, or §4.4 evaluation exist to
+      report) —
       results JSON and report under the
-      headline rules (corpus label and digest,
-      frozen control tables with citations,
-      per-system quantities, the
-      positive-control condition stated before
-      the headline word, the §6 pre-written
-      wording, the fence sentence), the
-      appended outcome in this directory, the
-      dated strength-label append to
+      headline rules (the §6 pre-written
+      wording for the closure class, the fence
+      sentence), the appended outcome in this
+      directory, and the LEDGER entry; no
+      strength-label append was made to
       `yadav_2009_arxiv_manual_001`'s record,
-      and the LEDGER entry; anchors asserted
-      byte-identical before and after;
-      foundation check reported as measured.
+      because a step-0 closure adds no label
+      and the claim stands exactly as recorded;
+      anchors asserted byte-identical before
+      and after; foundation check reported as
+      measured (40 passed / 0 failed /
+      8 warnings at the run).
 
 ---
 

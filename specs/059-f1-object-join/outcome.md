@@ -343,3 +343,55 @@ landing append to this file.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+---
+
+## Landing record — 2026-10-21 (appended at merge; append-only)
+
+- Execution PR: **#275** (branch
+  `spec-059-phase421-execution`), merged to `main`
+  as merge commit
+  **`aa7b3b830d452875386e7c36744a3ba6caa368ef`**.
+- CI: GitHub Actions run **39633228027** on the
+  PR head `cdebd761` — **7 of 7 jobs success**,
+  verified from the run's own job conclusions
+  (Backend tests (pytest); Frontend tests
+  (Playwright); Indus public validation checks;
+  Evidence Graph script smoke tests; Shell
+  wrappers ubuntu / macos / windows). The PR's
+  original head `80a41239` also passed 7 of 7
+  (run 39628330817); two main advances during
+  the review window (Specs 055, 043, and 058
+  landing) were merged into the branch with
+  conflicts resolved by keeping both records,
+  and the merged head was re-verified green
+  before merging — the run cited here is the
+  genuine run on the head that merged.
+- Run digests re-verified on `main` at the
+  merge commit by two routes (the contents API
+  and the git-blob route):
+  `reports/phase421_results.json`
+  `3948cd01f960842b963061d96ddeabd5ee0b5cdeb572d786976d476d84ff0c7f`,
+  `reports/phase421_join_census.json`
+  `952829317a7b8e48e809da4353cdf5f6b6f872180920bc349aaf747595b99bb8`,
+  `reports/phase421_report.md`
+  `167584e18284667715b7aea31d111bd7185c11f8f86aac9b425f964f6553b064`
+  — identical to the values in §1 of this
+  record.
+- Foundation check (H21) at the merge commit,
+  on the merged tree with the two Holdat CSVs
+  copied from the existing local downloads
+  (corpus CSV SHA-256
+  `62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e`
+  verified first): **40 checks passed, 0
+  failed, 8 warnings** — the standing figure.
+- Terminal outcome stands as recorded above:
+  **CLOSED AT STEP 0 — JOIN GATE NOT MET**
+  (2,899 of 5,679 joined, 51.05%, against the
+  ≥ 3,465 / 61.0% bar of DD-059-7; shortfall
+  566 rows). No F1 quantity was computed, and
+  `STUDY-SPEC-024/F1` stands exactly as
+  recorded.
+
+*AI disclosure: appended by an AI agent (Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.*

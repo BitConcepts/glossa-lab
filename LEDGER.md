@@ -8191,6 +8191,138 @@ sha256 019c65991835505c7f8ecac11e3b62f5b01b1
 fe825bed3c46eb23fdb2879c948),
 reports/phase410_step0_report.md.
 
+## 2026-10-21 — Spec 053 EXECUTED (Phase-413): STRICT CORPUS NOT PINNABLE at gate 0.3
+
+Spec 053 was executed as Phase-413 under the
+frozen contract (freeze digest fd2d5cb8…; OSF
+registration s9yfe approved and public), in
+Wave 3 Group 2 of the runnable-experiments
+campaign (design D-07, arm A only; arm B
+trigger-armed and not joined, campaign E-3),
+under the graph-first build (script
+backend/scripts/phase413_yadav_zipf_controls.py;
+node IndusPhase413YadavZipfControls; registration
+verified by import before the run). Gate 0.1
+PASS: every spec §2 pin recomputes to its freeze
+value, verified by two independent routes (claim
+file 90476623…, anchors df0cf620… — 287 anchors,
+94 strict_sa_independent — crosswalk 4ace1a61…,
+Mahadevan–Parpola crosswalk 9ebd7723…, Phase-43
+record 78a6c219…, re-read in the same pass: no
+Zipf fit, exactly as DD-053-11 recorded; no
+Phase-43 estimator was sought or substituted).
+Gate 0.2 PASS: the §4.2 estimator the freeze
+specified completely recovered the planted
+parameters — fitted α 1.256 (error 0.056,
+tolerance 0.10) and q 2.72 (error 0.72,
+tolerance 1.0) from α 1.20 / q 2.0, V 200,
+N 50,000, seed 20261021. **Gate 0.3 FAIL — the
+execution closed STRICT CORPUS NOT PINNABLE in
+the frozen §6 wording.** The V3 /
+Mahadevan-lineage layer's only loader of record
+reads the Firestore 'indusarrays' dump at
+glossa-corpus/indus/sources/rmrl/raw/indusscript-probe/firestore_indusarrays_full.jsonl,
+which is absent from the tree (the sources/
+subtree is untracked) and from the programme's
+main checkout; the loader loads zero sequences,
+so the layer cannot be exported or pinned. No
+database copy exists in the execution tree, and
+the main-checkout database (inspected read-only)
+holds nine texts and no V3 Indus corpus. No
+other layer in the tree is the corpus the
+Phase-43 record names (Firestore source, 3,916
+records / 3,137 sequences / 2,665 dockeys /
+12,494 instances): the site-attributed layer
+carries 5,679 records, the V1 export 15,508
+mixed-source objects, the ICIT export 3,085
+ICIT-encoded sequences, and the Holdat path is
+absent and a different compilation besides. No
+layer was substituted and no rule invented.
+Gates 0.4 and 0.5 were NOT REACHED: no control
+count was entered (no judgement on the control
+set is recorded or implied), no census exists,
+no system was fitted, the §4.4 condition was
+never evaluated, and no sensitivity was
+computed. The claim yadav_2009_arxiv_manual_001
+stands exactly as recorded (strongly supported;
+recorded exponent about 1.35); no strength
+label was appended and its record was not
+edited. Anchors asserted byte-identical before
+and after (df0cf620…). Foundation check at the
+run: 40 passed / 0 failed / 8 warnings. Records:
+specs/053-yadav-zipf-controls/outcome.md,
+reports/phase413_results.json,
+reports/phase413_step0_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-21 — Spec 042 EXECUTED (Phase-407): THIN at gate 0.4 — the tablet stratum is too thin
+
+Spec 042 (design D-28, the object-type split of
+Spec 028's Arm B) executed in full under the
+runnable-experiments campaign approved
+2026-10-21 (Wave 3; campaign member 19), as
+Phase-407. The execution gate was satisfied:
+the frozen contract's OSF registration tmyzg
+is approved and public (freeze digest
+6be2988d7f4c290591d36f391ac84a772f18a9121e35ddd0e251956b5260f753).
+Graph-first build: backend/scripts/
+phase407_arm_b_object_type_split.py, graph node
+IndusPhase407ArmBObjectTypeSplit registered and
+verified by import before the run. Every spec
+section 2 pin was re-derived in the foreground
+by two independent routes (working-tree
+sha256sum; git-blob hashlib at the base commit
+3200b7b5) and agreed with the freeze record on
+all six inputs. Gate 0.1 PASS: every section 2
+input hashes to its freeze-record value.
+Gate 0.2 PASS: the frozen population flow,
+re-run on the Phase-393 machinery inputs
+(supplied from the program's existing local
+downloads and hash-verified, bbfdbcd5… /
+c368f290…), reproduces the recorded counts
+exactly (5,679 / 4,531 / 4,505 / 3,605 /
+3,144 / 3,030), the recorded flow dict of both
+the Phase-393 results and the Spec 028 margins
+audit, the recorded Arm B analysis set, its
+site x type cell table (identical to the
+margins audit's, cell for cell), and the 125
+sign columns. Gate 0.3 PASS: the partition
+census — SEAL 1,768 + TAB 1,262 = 3,030, no
+record of any other type (per site: Chanhu-daro
+52/2, Dholavira 96/15, Harappa 361/1,076,
+Kalibangan 49/3, Lothal 72/2, Mohenjo-daro
+1,138/164). **Gate 0.4 fired THIN: the seal
+stratum clears the floor at all 6 sites
+(minimum Kalibangan, 49), but the tablet
+stratum carries at least 20 inscriptions at
+only 2 of the 6 sites and is recorded TOO
+THIN with its counts; under DD-042-2 the
+execution closed at that gate with headline
+THIN, in the spec's pre-written section 4.3
+wording.** Neither stratum was computed,
+gate 0.5 (the pooled regression) was not
+reached, and no verdict is recorded: the
+section 1.2 hypothesis is unjudged, object
+type is not exonerated, and Spec 028's Arm B
+INCONCLUSIVE verdict stands exactly as
+recorded, unedited. Per-stratum period and
+preservation mixes are published with the
+record (described, not controlled; Spec
+037's 49% compilation-relativity caution
+restated). Anchors asserted byte-identical
+before and after (df0cf620…). Records:
+specs/042-arm-b-object-type-split/outcome.md,
+reports/phase407_results.json (SHA-256
+6f0f5a4f37918d7acb2e899b916131d133d13fc6cecd3b2f4b03662d96919d72),
+reports/phase407_report.md (SHA-256
+67f0cc005508e52e304bff03c277834558abc06c25d299e587b2bb4898a6c37e)
+— both digests verified by two independent
+routes, and the script deterministic
+(byte-identical on a second run).
+
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.

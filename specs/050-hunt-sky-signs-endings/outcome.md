@@ -361,3 +361,66 @@ at both points — byte-identical, asserted.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+
+---
+
+## Landing record — 2026-10-21 (appended at merge; append-only)
+
+- Execution PR: **#296** (branch
+  `spec-050-phase416-closure`), merged to `main`
+  as merge commit
+  **`1d954b5fc12efee9149ebd6c81251c5ce439ade4`**.
+- CI: GitHub Actions run **39653934856** on the
+  PR head `cc910ee4` — **7 of 7 jobs success**,
+  verified from the run's own job conclusions
+  (Backend tests (pytest); Frontend tests
+  (Playwright); Indus public validation checks;
+  Evidence Graph script smoke tests; Shell
+  wrappers ubuntu / macos / windows).
+- Absence re-verified on `main` at the merge
+  commit: the recursive tree read at
+  `1d954b5f` (5,716 files, not truncated)
+  contains no `asset-a/` path, no
+  `asset-a-freeze.json`, and no
+  `depicted-kind-classification.csv` anywhere —
+  the gate-0.1 finding stands on the merged
+  record exactly as executed.
+- Anchors re-verified on `main` at the merge
+  commit by two routes (the contents API raw
+  download and the git-blob route, blob
+  `1a67e6f05f53c65f89458b24809a4f9d38a55be0`):
+  `backend/reports/INDUS_FINAL_ANCHORS.json`
+  SHA-256
+  `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569`
+  (570,344 bytes) — byte-identical, asserted.
+- Foundation check (H21) at the merge commit:
+  **40 checks passed, 0 failed, 8 warnings** —
+  the standing figure. Method note, stated
+  plainly: a fresh clone of the merge commit
+  was blocked by this VM's write restriction
+  (git object writes denied "Operation not
+  permitted" mid-session), so the check ran on
+  the standing full checkout of Spec 061's
+  merge tree (`abdcac19`), with the two Holdat
+  CSVs in place (corpus CSV SHA-256
+  `62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e`
+  verified first). Before the run, a recursive
+  blob comparison of the two trees proved they
+  differ in exactly four files — `LEDGER.md`,
+  this outcome record, Spec 050's `tasks.md`,
+  and Spec 061's outcome record — none of which
+  the foundation check or its annotation module
+  reads; every input the check opens is
+  byte-identical between the two trees, so the
+  figure is the merge commit's figure.
+- Terminal outcome stands as recorded above:
+  **CLOSED AT STEP 0 — ASSET NOT FROZEN** — a
+  not-run dependency closure. Asset A was never
+  built and no Asset A digest exists; the D-13
+  comparison was never run, its hypothesis is
+  unjudged, and the claim stands UNTESTED as
+  recorded.
+
+*AI disclosure: appended by an AI agent (Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.*

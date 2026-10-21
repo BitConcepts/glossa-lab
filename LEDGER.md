@@ -6783,6 +6783,57 @@ and owner order.
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
 
+## 2026-10-20 — Spec 039 design draft (gazetteer period assignment: the Spec 027 §6.2 act, published determinations only)
+
+Spec 039 is drafted, not frozen: this draft PR carries
+specs/039-gazetteer-period-assignment/ (spec, claims
+F039-C01…C15, adjudication, plan, tasks, the draft
+freeze record, and the pre-written outcome skeleton;
+draft digest
+52ca7dfc6ae0b7dc6ad22eb7f5f045ccf8f2e5d364108f0ec7c752e6a2e4f9dd).
+It designs the Spec 027 §6.2 gazetteer
+period-assignment act under the owner's decisions of
+2026-10-20, recorded in its adjudication record as
+DECIDED: (D1) the act is authorised, bundled with
+the D-25 chronology test (one adjudication cycle;
+this act executes first; D-25's own spec consumes
+the assigned gazetteer as a hash-pinned input);
+(D2) the evidence standard is Option 1 — published
+period determinations only, every label traced to a
+named publication with its locator, and no
+program-derived assignments (Option 2 was not
+adopted; no label is inferred from chronology-spine
+dates). The act assigns program_period_assignment
+per program site (36 rows, 30 sites; the field
+stands null on all 36 rows on main, gazetteer
+SHA-256
+5ac76a3031121a61fa39f87b1d2760855374d171ddd036988fee2820dca9b8b6),
+carried onto every row for the site with its
+mapping rule, reviewer, and per-determination
+citations; disagreements are flagged contested and
+carried verbatim — no majority vote (§6.3) — and
+Spec 030 Ask 2 stays RESERVED, undecided by this
+act. Outputs: a new assigned-gazetteer file (the
+pre-act file is never edited), an assignment
+report, and a new version of the Stage 0 Zenodo
+record 23300361 (the existing deposit is never
+edited). The act's verification step re-runs only
+the period-eligibility gate of the Phase-395
+margins step; the standing link mass (2
+link-eligible sites, 1 linked pair, against floors
+of 8 and 10) is unaffected and is stated wherever
+the act's effect is described, and no study
+verdict changes. Open for the freeze:
+DD-039-1…DD-039-6 with recommendations (label set
+Early/Mature/Late Harappan; four-tier citation
+hierarchy; the TwoRains published-venue rule;
+Masudpur establishment — recommended default not
+in this act; the margins re-run as this act's
+verification step; the spec's own OSF contract
+registration). The AEE lifecycle hooks have not
+run on this draft; they are the freeze gate.
+Nothing was frozen, executed, or assigned by this
+draft.
 ## 2026-10-20 - Spec 037 DRAFTED: CISI 3.1 concordance spine and HARP provenance annex (design only)
 
 Under the owner's order of 2026-10-20 to move the
@@ -7187,6 +7238,38 @@ and the anchors are untouched; no prediction was
 scored, advanced, or retired. Outcome record:
 specs/037-cisi31-concordance-spine/outcome.md;
 aggregate machine record: reports/phase402_results.json.
+## 2026-10-20 — Spec 039 freeze (gazetteer period assignment: Phase-403 allocated)
+
+Spec 039 is frozen under the owner's standing
+pipeline authorisation of 2026-10-20, after Specs
+038 and 037 in the freeze order. The AEE lifecycle
+gate ran under aee 1.5.0: after_specify cleared in
+three adjudicated rounds (20 failure modes over
+register 0.5-draft; 17 over the 0.6 recovery text;
+15 FR-2.3 draft-cap records only over 0.7-draft),
+after_plan and after_tasks clean at first pass; at
+every hook zero correctness failure modes and no
+claim below the 0.70 threshold (minimum propagated
+0.72). DD-039-1…DD-039-6 were decided as
+recommended (coarse Early/Mature/Late Harappan
+label set; four-tier citation hierarchy,
+presentation only; the TwoRains published-venue
+rule with doubtful venues not counting; Masudpur
+not established — the act is confined to the
+existing 30 sites; the margins re-run as this act's
+verification step, confined to the period-eligibility
+gate; the spec's own OSF contract registration
+filed at the freeze). DD-039-7 allocates the
+execution phase as Phase-403, and DD-039-8 adopts
+the DD-038-10 / DD-037-9 AEE gate reading. The
+scheme-aware mapping table is frozen in spec §4
+before any assignment. The labels remain finding
+aids, not dating evidence; the act changes no
+verdict, and in-universe link mass stands at 2
+link-eligible sites and 1 linked pair against
+floors of 8 eligible sites and 10 linked pairs.
+Spec 030 Ask 2 stays RESERVED. Nothing was
+assigned by the freeze itself.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.

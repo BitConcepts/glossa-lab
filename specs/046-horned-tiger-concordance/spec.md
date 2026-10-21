@@ -130,7 +130,7 @@ single corroboration.
 
 | Input | Pin / state |
 |---|---|
-| Claim record (`glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json`) | SHA-256 `bd0f7abddc9c26537f4ebe5f66f6a1fc69d394a4c2edbe745a8b7eb1ddc3333a` (recomputed at this draft from `main` at 82b29490) |
+| Claim record (`glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json`) | SHA-256 `bd0f7abddc9c26537f4ebe5f66f6a1fc69d394a4c2edbe745a8b7eb1ddc3333a` (recomputed at this draft from `main` at 82b29490; the §2 inputs are unchanged on current `main`) |
 | Source book, held cleaned text (`glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt`) | SHA-256 `62acf855ac3ecf39fc7a7e6597dba9a3cb6e35948528f69e9424eb81308d261e` (recomputed at this draft) |
 | Phase-104 evaluation (`glossa-indus/reports/phase104_claims_evaluation.json`) | SHA-256 `2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d` (recomputed at this draft) |
 | Crosswalk registry (`data/crosswalks/canonical_sign_registry.csv`) | SHA-256 `8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420` (recomputed at this draft; 803 rows as held today — the registry has grown since Phase-104's 86-numeric-ID record, and execution re-asserts this pin rather than inheriting either count) |

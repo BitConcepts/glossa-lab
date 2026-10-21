@@ -154,9 +154,14 @@ Verified first-hand at drafting, 2026-10-21:
   stated in spec §2 (claim record, held
   cleaned text, Phase-104 evaluation,
   registry, lane-2 drafts file).
-- **Branch base** — this draft branches
-  from `main` at `82b29490` (re-read at the
-  start of the drafting act). No specs
+- **Branch base** — the §2 pins were
+  recomputed from `main` at `82b29490`,
+  re-read at the start of the drafting act.
+  Before the branch was cut, `main` advanced
+  to `83b6a563` (the PR #241 merge: a Spec
+  030 record touching none of this spec's §2
+  inputs, all of which re-assert unchanged);
+  this draft branches from `83b6a563`. No specs
   041–045 directories exist on `main`; Spec
   042's draft stands at PR #240 and Spec
   043's at PR #242. Spec 045 (D-05) is being

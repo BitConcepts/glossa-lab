@@ -136,6 +136,18 @@ Seeded 2026-04-22 via scripts/seed_phase9_hypotheses.py. These are the 6 falsifi
 **Tested**: 2026-10-20 (Spec 036 / Phase-400, executed exactly as registered; step 0 passed in full and the scoring ran)  
 **Outcome**: CONFIRMED — 2 of 2 trained signs at Harappa start rate ≥ 0.40 (P217: 104 initial of 119 occurrences, start rate 0.8739; P324: 473 initial of 774 occurrences, start rate 0.6111); share 1.0 against the ≥ 70% bar. The verdict concerns only these two signs in this pinned dataset; see the §6 entry of 2026-10-20 and `specs/036-pred-2026-011-scoring/outcome.md`
 
+### PRED-2026-012 (H4 successor: ICIT Function Alignment — canonical sign registry frame)
+**Date registered**: 2026-10-21  
+**Prediction**: Signs with ICIT function code ITM will cluster into TERMINAL class in CGSA Phase 5 at rate ≥ 70%.  
+**Successor to**: PRED-2026-007 (above), which stands **PARTIALLY CONFIRMED** as its pre-execution record and is untouched by this entry. Spec 038 took PRED-2026-007 to execution on 2026-10-20 and closed at step 0 as CANNOT BE RUN AS WRITTEN (unscored; see the dated §6 entries); that closure's register entry states that any future test of this hypothesis requires a population frame whose coded values are verified in the named primary source itself before the design is frozen, registered as a **new** prediction under a new PRED number. This entry is that new registration, made under the owner's campaign ruling E-4 of 2026-10-21 (see the dated §6 note below).  
+**Frame**: the canonical sign registry (`data/crosswalks/canonical_sign_registry.csv`, column `icit_function`) as primary source, its coded values verified before freeze (verified at draft and listed in the governing spec: 803 rows, 12 coded, the ITM population P056, P324, P378, P385). The CGSA analysis file is cross-check only.  
+**Success criterion**: ≥ 70% of ITM-coded signs are TERMINAL or cluster in TERMINAL clusters  
+**Step-0 provenance condition**: before any scoring, step 0 adjudicates the registry codes' Wells-derived provenance (DD-038-2) under the governing spec's documentary provenance gate (Spec 043, §4 check 0.3); a gate failure closes the study as PROVENANCE — CANNOT BE RUN AS WRITTEN, unscored, and no Phase 5 assignment is looked up before the gate has passed.  
+**Governing spec**: Spec 043 (`specs/043-pred-2026-007-registry-frame/`)  
+**Scoring gate**: registration alone is not a scoring order. Scoring requires Spec 043's freeze and a separate owner execution order.  
+**Tested**: PENDING  
+**Outcome**: PENDING
+
 ---
 
 ## 4. Failed Predictions
@@ -221,3 +233,7 @@ Check 0.1 passed in full: this register file hashed to the freeze record's value
 ### 2026-10-20 — PRED-2026-007 provenance reconciliation (Spec 038, DD-038-2)
 
 This appended note corrects, by append only, the provenance line in §2 above, which describes the per-sign function codes behind the Phase 5 classes as "from mayig features". That wording is not the lineage. The function classifications (ITM, LOG, SYL, NUM, TMK, SHN and the rest) were parsed by the programme's own sign-catalog parser (`backend/glossa_lab/data/fuls_parser.py`, SHA-256 `9b57f0ecc10905c0746f1e7fb8e0622ac18e3b08e62bb2eb34fbec4bbd8ef615` as cited at the Spec 038 freeze) from sign-catalog lines of "A Catalog of Indus Signs" (Fuls 2023), whose function classification the parser's own comment attributes to Wells ("Function classification (from Wells)"). The codes therefore descend from Wells-derived catalog lines, not from mayig features; the mayig digitisation produced inscription texts, not the function codes. §2's original wording stands unedited above, superseded by this note as the register's provenance record. This note changes no criterion, no count, and no outcome: it accompanies the Spec 038 execution record (see the entry above), under which PRED-2026-007 remains **unscored** with its §3 PARTIALLY CONFIRMED wording standing.
+
+### 2026-10-21 — PRED-2026-012 registered (registry-frame successor to PRED-2026-007)
+
+By owner ruling (Tristen Pierson, 2026-10-21) — approval of the runnable-experiments campaign plan as written, decision **E-4** — **PRED-2026-012** is registered in §3 above as the successor to PRED-2026-007, under a new PRED number, on a population frame whose coded values are verified before freezing (the canonical sign registry as primary source), with its step 0 adjudicating the registry codes' Wells-derived provenance (DD-038-2) before any scoring. Its prediction and success criterion carry PRED-2026-007's frozen texts verbatim; the governing spec is Spec 043. No scoring has run and no Phase 5 assignment has been looked up under this registration. PRED-2026-007 is unaffected by this entry and remains **PARTIALLY CONFIRMED**; no other prediction is affected.

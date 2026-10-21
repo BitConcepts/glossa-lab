@@ -417,3 +417,54 @@ at both points — byte-identical, asserted.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+---
+
+## Landing record — 2026-10-21 (appended at merge; append-only)
+
+- Execution PR: **#273** (branch
+  `spec-055-phase414-execution`), merged to `main`
+  as merge commit
+  **`02c8daf9034520540cf4cf7a16ef039bd37678de`**.
+- CI: GitHub Actions run **39627759493** on the
+  PR head `274beffd` — **7 of 7 jobs success**,
+  verified from the run's own job conclusions
+  (Backend tests (pytest); Frontend tests
+  (Playwright); Indus public validation checks;
+  Evidence Graph script smoke tests; Shell
+  wrappers ubuntu / macos / windows).
+- Run digests re-verified on `main` at the
+  merge commit by two routes (the full-clone
+  working tree and the contents API):
+  `source-table-recovery.json`
+  `439f1449b8d7707d1feb88ef34e2edf90d3d192ba5c6f30bfa29cdf34b48852d`,
+  `strict-corpus-export.jsonl`
+  `1e421af1b75f09f49c928ef7eaa86e4c9a382e059d4771f164256a069896e02c`,
+  `reports/phase414_results.json`
+  `173a67a1d22651b1da03da0c40457e7234298fc6686dc22f3c2b6a25a2a5a6d5`,
+  `reports/phase414_sign900_report.md`
+  `c12bb0fe91e21c5c658474dbafe620675b20bf3b96a33cb791676230dcb5cada`
+  — identical to the values in §1 of this
+  record. The claim record with its appended
+  `first_check` entry stands at
+  `cabba73521b19cf47df9bc6ed83731cb024b5298f3130b121ddb7a390c7a8c02`
+  on `main`; the anchors file stands at its
+  frozen pin `df0cf620…`, byte-identical.
+- Foundation check (H21) at the merge commit,
+  on a fresh full clone with the two Holdat
+  CSVs copied from the existing local downloads
+  (corpus CSV SHA-256
+  `62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e`
+  verified first): **40 checks passed, 0
+  failed, 8 warnings** — the standing figure.
+- Terminal outcome stands as recorded above:
+  **NOT NUMERAL-LIKE** — stage 1 IDENTIFIED
+  the sign (P154 / Mahadevan 287), and the
+  numeral reading is contradicted at the
+  behaviour stage on the pinned layer. The
+  recovery record is preserved as this spec's
+  record; D-16 does not join this campaign on
+  it (E-7).
+
+*AI disclosure: appended by an AI agent (Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.*

@@ -8623,3 +8623,78 @@ Records: specs/050-hunt-sky-signs-endings/outcome.md.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+## 2026-10-21 — Spec 051 EXECUTED (Phase-409): INCONCLUSIVE at gate 0.6 — the classification is the finding
+
+Spec 051 was executed as Phase-409 under the
+frozen contract (freeze digest 818cfa4e…;
+OSF registration xnrph approved and public),
+in Wave 3 Group 3 of the runnable-experiments
+campaign (member 9, design D-10). Graph-first
+build (H15/H23): script
+backend/scripts/phase409_roif_arrow_sign.py,
+graph module
+backend/glossa_lab/experiment_graph_phase409.py
+(node IndusPhase409RoifArrowSign), registration
+verified by import before the run (497
+registered nodes). Step 0, gates in frozen
+order: **0.1 PASS** (every §2 hash pin
+recomputes to its freeze value — Phase-104
+evaluation 2d0b83e8…, Holdat roles 3f1c24ed…,
+gazetteer 5ac76a30…, defect file fc05e552…,
+Spec 047 frozen spec 1a18dac0…, anchors
+df0cf620…; the claim file asserted in the
+Spec 038 form, its manual_003 facts matching
+on the live file). **0.2 PASS** (Asset B,
+consumed from Spec 047's step 1, recomputes
+to a1a9e484… — identical to the digest
+recorded in Spec 047's step-1 outcome record,
+the pin source fixed by DD-051-14; the digest's
+presence in that record verified
+mechanically). **0.3 PASS** (exactly 30 rows,
+one per gazetteer cluster, the seven contract
+fields, contract vocabularies; per-status
+counts AGREED 3, DISAGREED 1, SINGLE-SOURCE
+10, NO-SOURCE 16; testable set derived by
+rule: 2 — harappa, administrative; lothal,
+port/trade). **0.4 PASS** (the Holdat counting
+layer of record identified from the
+database-held downloads tree — the Holdat
+corpus file the Phase-45/46/54 scripts of
+record read — exported in full as held and
+pinned at 62d14d2b…: 7,002 sign-token rows,
+1,670 inscriptions over 9 sites; the
+re-derived M391 census reproduces the §1
+census exactly: 75 / 52 / 16 / 14 / 11 / 10 /
+10 / 3 / 2, total 193). **0.5 PASS** (every
+one of the 7,002 records accounted for
+exactly once: joined 6,117 to a spine cluster
+over 1,453 inscriptions; non-spine 885 over
+217 inscriptions — Dholavira 439 records /
+16 M391, Chanhu-daro 310 / 10, Rakhigarhi
+136 / 2; no site value 0). **0.6 — THE
+FLOORS FIRE; the execution closes as
+INCONCLUSIVE — THE CLASSIFICATION IS THE
+FINDING.** Testable gateway/border sites
+carrying M391: 0, against the floor of 3;
+the pooled side is non-empty (2 sites) and
+the contrast side {domestic, ritual} is
+empty in the test population. No share,
+ratio, permutation, or regression quantity
+was computed, and the §5 primary (task E5)
+did not run. The claim
+indus_valley_script_deciphered_from_myth_65ff0a26_manual_003
+stands UNTESTED, now with the reason measured
+rather than asserted; its record received its
+dated append (spec051_execution; removal
+reproduces the pre-act file byte-identically;
+status and stage unchanged). Records:
+specs/051-roif-arrow-sign/outcome.md,
+reports/phase409_results.json (SHA-256
+3f4bf2a5…), reports/phase409_report.md
+(SHA-256 51a9d3a1…). Anchors byte-identical
+before and after (df0cf620…). All products
+are held under the Roif gate (spec §9).
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.

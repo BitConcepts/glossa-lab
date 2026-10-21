@@ -79,7 +79,11 @@ _NODE_SPECS = [
      "restricted local store; this node serves the committed "
      "aggregate record. The concordance is a finding aid, not "
      "evidence about readings; no PRED-2026 entry is scored by "
-     "this phase. CPU."),
+     "this phase. Outcome (2026-10-20): step 0 passed in "
+     "full; of 693 candidates, VERIFIED 269, CONFLICT 341, "
+     "UNRESOLVED 83; the conflict share of 49.21 percent "
+     "exceeded the frozen 20 percent cap, so no spine was "
+     "written: PILOT COMPLETE - SPINE HALTED. CPU."),
 ]
 
 

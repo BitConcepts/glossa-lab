@@ -7109,3 +7109,84 @@ its PARTIALLY CONFIRMED wording stands.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
+## 2026-10-20 — Spec 037 FROZEN and Phase-402 EXECUTED: PILOT COMPLETE — SPINE HALTED
+
+Spec 037 (CISI 3.1 concordance spine and HARP
+provenance annex) was frozen and executed the same
+day under the owner's standing pipeline
+authorisation of 2026-10-20 (freeze order 038,
+then 037, then 039, then 040). Freeze: the AEE
+lifecycle gate ran under the adopted aee 1.5.0 —
+after_specify cleared in three adjudicated rounds
+(register recovered 0.5-draft to 0.7-draft; round 1:
+37 failure modes; round 2: 27; round 3: the 15
+FR-2.3 draft-cap records only, zero correctness
+failure modes, no claim below the 0.70 threshold,
+minimum propagated 0.72), after_plan and
+after_tasks clean at first pass, the gate read
+under DD-037-9 (adopting Spec 038's DD-038-10).
+Freeze decisions DD-037-4 to DD-037-9 are recorded
+in adjudication.md section 4 (halt threshold
+confirmed at 20% of all candidates; hand-check
+stratum 60; Workstream B inside Phase-402 gated on
+step 0 only; the spec's own OSF registration —
+filed as j6t9k, pending approval at this record;
+phase allocation Phase-402). Freeze digest
+122c2ea4858094d2c6514d05225dfaad1f5266cccffd764949736a78d81aa4db,
+computed once over the frozen contract; PR #225
+merged on a genuine 7/7 CI run (backend 1,479
+passed / 20 skipped), merge commit e9b5026c.
+
+Execution (Phase-402) ran graph-first (script,
+graph node IndusPhase402Concordance, registration
+committed before any run). Step 0 closed two runs
+on defects in the execution's own checker — a gate
+needle phrased from a paraphrase rather than
+PROVENANCE entry 22's own words, then a census
+assertion that counted raw strings (2,106) where
+the intake's census counts resolved numbers (2,101
+well-formed plus 5 garbled low-confidence tokens) —
+each corrected openly and committed before the
+re-run; no candidate was graded by either closed
+run. The third run passed step 0 in full (gate on
+record; portion PDF hash at the pin; local table
+2,123 x 26 with its intake census and the
+execution's own table hash 7179858d...; corpus_master
+at its pin over the exact bytes consumed; repo
+cleanliness PASS). The pilot regenerated the intake's
+693 candidates exactly (289 / 102 / 302) and graded
+the full census under the frozen ladder: VERIFIED
+269 (38.82%), CONFLICT 341 (49.21%), UNRESOLVED 83
+(11.98%). Conflicts: TYPE 339, NUMBER-AMBIGUOUS 2,
+none on site; corroboration was UNGRADED for every
+candidate (corpus_master carries no FC, excavation,
+or museum values — graded bases: site 693, type
+610, corroboration 0). An independent recount
+re-graded all 693 with 0 mismatches. The seeded
+hand-check stratum (seed 20261020; 30/15/15)
+attributed all 15 sampled conflicts to genuine
+compilation divergence (the portion's tablet
+headings against the corpus's seal classing of the
+same objects); the 30 sampled VERIFIED candidates
+all spot-checked sound. HALT RULE FIRED: the
+conflict share of 49.21% exceeds the frozen 20%
+cap, so no spine file was written; the outcome is
+PILOT COMPLETE — SPINE HALTED, as the contract
+phrases it. Workstream B (inside the phase, gated
+on step 0 only) reported the HARP annex as
+descriptive aggregates: dig years 1986-2001 with
+312 no-token rows; lot/record (registration) fill
+754 of 1,094; period fill 656 of 1,094 as a FLOOR
+(the scan's text layer loses split period tokens);
+the full period-code inventory. The Spec 031 (Q7)
+finding is unchanged. All row-level products
+(grade table, build record, stratum attribution)
+live only in the restricted portion folder; the
+repo carries aggregates only. The PRED register
+and the anchors are untouched; no prediction was
+scored, advanced, or retired. Outcome record:
+specs/037-cisi31-concordance-spine/outcome.md;
+aggregate machine record: reports/phase402_results.json.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

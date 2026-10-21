@@ -1,0 +1,423 @@
+#!/usr/bin/env python3
+"""Build the Spec 044 freeze record (freeze.json).
+
+This builder was written at the freeze act of
+2026-10-21 (campaign Wave 2, under the campaign
+plan approved AS WRITTEN on 2026-10-21; the draft
+PR #243 carried no builder and no draft digest).
+After the AEE lifecycle hooks passed over the
+recovered register (0.7-draft), it computed the
+final digest over the frozen contract exactly
+once, and its DEFINITION text was finalised in
+the same act (the Spec 035 pattern). Run with
+the Glossa backend venv python from the
+repository root:
+
+    python specs/044-fish-sign-coastal-residue/build_freeze.py
+
+Writes specs/044-fish-sign-coastal-residue/freeze.json
+(framework026 build_freeze payload: definition +
+source hashes + environment, digest = SHA-256 of
+the canonical JSON serialisation) and prints the
+digest.
+"""
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO / "backend"))
+
+from glossa_lab.framework026 import build_freeze  # noqa: E402
+
+SPEC_DIR = "specs/044-fish-sign-coastal-residue"
+
+DEFINITION = {
+    "spec": "specs/044-fish-sign-coastal-residue/spec.md",
+    "freeze_doc": "specs/044-fish-sign-coastal-residue/freeze.md",
+    "experiment_id": "spec044-fish-sign-coastal-residue",
+    "register": {
+        "path": "specs/044-fish-sign-coastal-residue/claims.json",
+        "register_version": "0.7-draft",
+        "claims": 15,
+        "aee_hook_pass": (
+            "PASSED at the freeze act of 2026-10-21 "
+            "under aee 1.5.0: the 0.5-draft register "
+            "was refused at load (evidence kind and "
+            "source_quality values outside the adopted "
+            "engine's enums); normalised to the frozen "
+            "house form at 0.6-draft; after_specify "
+            "round 1 over 0.6-draft returned 47 failure "
+            "modes (15 irreducibility, 15 independence, "
+            "1 negation-conflict, 1 counterexample, 15 "
+            "FR-2.3 draft-cap records); recovered to "
+            "0.7-draft on the Spec 039 pattern (single "
+            "head propositions, carried clauses in "
+            "boundaries, independent_of declarations); "
+            "round 2 at after_specify and first passes "
+            "at after_plan and after_tasks each carry "
+            "15 FR-2.3 draft-cap records only; at every "
+            "hook zero correctness failure modes and no "
+            "claim below the 0.70 threshold (minimum "
+            "propagated 0.72); the engine outcome word "
+            "reads iterate solely from the draft-cap "
+            "records (gate reading DD-044-9; record in "
+            "specs/044-fish-sign-coastal-residue/aee/"
+            "freeze-aee-note.md)"
+        ),
+    },
+    "basis": {
+        "adjudication": (
+            "specs/044-fish-sign-coastal-residue/adjudication.md"
+        ),
+        "decisions": (
+            "The runnable-experiments campaign plan, "
+            "approved by the owner AS WRITTEN on "
+            "2026-10-21, commissions this spec (Wave 1 "
+            "member 2, design D-02; Asset F built here "
+            "under E-6; Roif gate under E-2 / R-7; an "
+            "OSF contract registration per spec at its "
+            "freeze under E-1), and the Wave 2 freeze "
+            "wave was delegated under that approval. "
+            "Freeze decisions are recorded in "
+            "adjudication.md section 7: the consumer "
+            "name corrected to Spec 048 (7.1); "
+            "OPEN-044-1 resolved - the layer of record "
+            "identified and pinned (7.2); OPEN-044-2 "
+            "confirmed - Parpola 1994 fig. 5.1 is "
+            "Asset F's source, DD-044-5 confirmed "
+            "(7.3); OPEN-044-3 confirmed - DD-044-7 "
+            "rule-built coastal list (7.4); OPEN-044-4 "
+            "confirmed - DD-044-2 token primary and "
+            "DD-044-4 Bonferroni / Fisher one-sided "
+            "(7.5); OPEN-044-5 decided yes - own OSF "
+            "registration under E-1 (7.6); OPEN-044-6 "
+            "allocated Phase-404 (7.7); DD-044-9 adopts "
+            "the DD-038-10 AEE gate reading (7.8)."
+        ),
+    },
+    "design": {
+        "phase": "Phase-404",
+        "act": (
+            "test the fish-sign family of Asset F sign "
+            "by sign for coastal enrichment in the "
+            "pinned CISI-based corpus layer of record, "
+            "against that layer's corpus-wide coastal "
+            "share, under lists frozen at step 0 before "
+            "any counting; build Asset F at the same "
+            "step 0 as the shared fish-family list "
+            "Spec 048 (design D-04) consumes by digest"
+        ),
+        "claim": {
+            "id": (
+                "indus_valley_script_deciphered_from_"
+                "myth_65ff0a26_manual_002"
+            ),
+            "state": (
+                "SETTLED, partially falsified on the "
+                "family-level coastal test; that verdict "
+                "is not re-opened, re-run, or "
+                "re-adjudicated by this spec"
+            ),
+            "residue": (
+                "the claim record's not-understood text: "
+                "the family was treated together and the "
+                "site types were the CISI-published "
+                "types; the sign-by-sign test with "
+                "better site classifications has not "
+                "been run"
+            ),
+        },
+        "layer_of_record": {
+            "open": "OPEN-044-1 (resolved at freeze)",
+            "file": (
+                "corpora/downloads/external_repos/"
+                "holdatllc_indus/indus_corpus 2.csv"
+            ),
+            "sha256": (
+                "62d14d2bebf7c2c80d98a2958e75ec52bff3f240"
+                "ff3f5e85d1f7f40cbe28218e"
+            ),
+            "bytes": 593253,
+            "token_rows": 7002,
+            "inscriptions": 1670,
+            "key": "cisi_number",
+            "sites": {
+                "Mohenjo-daro": 606,
+                "Harappa": 492,
+                "Lothal": 124,
+                "Kalibangan": 110,
+                "Dholavira": 106,
+                "Chanhu-daro": 78,
+                "Surkotada": 61,
+                "Banawali": 60,
+                "Rakhigarhi": 33,
+            },
+            "posture": (
+                "a downloads-tree file held by the "
+                "program and read by the Phase-45/46/54 "
+                "scripts of record; not a repository "
+                "file on main; no bulk copy is committed "
+                "by this freeze; gate 0.1 re-asserts "
+                "this pin at step 0 before any counting"
+            ),
+            "reproduction": {
+                "m047_tokens": 13,
+                "m047_inscriptions": 13,
+                "table": {
+                    "coastal_with": 2,
+                    "inland_with": 10,
+                    "coastal_without": 228,
+                    "inland_without": 1369,
+                },
+                "unclassed_site": (
+                    "Surkotada (61 inscriptions), "
+                    "unclassed in the original script"
+                ),
+                "fisher_p": 0.685,
+                "recorded_phase45_t6": "n = 13, p = 0.685",
+            },
+        },
+        "asset_f": {
+            "source": (
+                "Parpola, Asko. 1994. Deciphering the "
+                "Indus Script. Cambridge: CUP - the "
+                "published sign list (fig. 5.1, "
+                "pp. 70-78), as cited in the program's "
+                "Mahadevan-Parpola crosswalk"
+            ),
+            "membership": (
+                "DD-044-5, confirmed at freeze: "
+                "Parpola's published list governs "
+                "membership (inclusion_basis "
+                "parpola-list-fish or "
+                "parpola-list-fish-variant only); "
+                "Mahadevan and Parpola numbers are "
+                "locators, never membership criteria; "
+                "the 72/64/70 trio and the Phase-43 six "
+                "are a reported cross-check in the "
+                "step-0 record"
+            ),
+            "form": (
+                "a single canonical JSON file "
+                "asset-f-fish-family.json built at "
+                "step 0 (UTF-8, keys sorted, members "
+                "sorted by sign_key), each member "
+                "carrying sign_key, mahadevan_number, "
+                "parpola_number, depiction_note, "
+                "source_citation, source_locator, "
+                "inclusion_basis, contested, and notes"
+            ),
+            "digest_rule": (
+                "the asset's identity is the SHA-256 "
+                "of its canonical file with the digest "
+                "field itself excluded; frozen before "
+                "any coastal count exists; never "
+                "edited in place after freezing - a "
+                "corrected list is a new asset version "
+                "with a new digest, usable only under "
+                "a new freeze"
+            ),
+            "consumer": (
+                "Spec 048 (design D-04) consumes Asset "
+                "F by digest and does not re-derive it; "
+                "the draft's Spec 045 consumer name was "
+                "corrected at the freeze "
+                "(adjudication.md section 7.1)"
+            ),
+        },
+        "coastal_list": {
+            "open": "OPEN-044-3 (DD-044-7 confirmed)",
+            "rule": (
+                "frozen at gate 0.3 from the Spec 027 "
+                "Stage 0 gazetteer and published site "
+                "geography: a site is coastal/maritime "
+                "if its published location is a port or "
+                "within the coastal zone"
+            ),
+            "named_members": ["Lothal", "Dholavira"],
+            "contested": (
+                "every site whose coastal status is "
+                "contested in the literature is listed "
+                "as contested in the frozen list; no "
+                "site is classed by its fish counts"
+            ),
+        },
+        "test": {
+            "open": "OPEN-044-4 (DD-044-2 and DD-044-4 confirmed)",
+            "unit": (
+                "the sign token on both sides of the "
+                "comparison (DD-044-2); the "
+                "inscription-level version is a stated "
+                "sensitivity, never the primary"
+            ),
+            "measure": (
+                "per Asset F member: coastal tokens, "
+                "inland tokens, total, coastal share, "
+                "against the corpus-wide coastal share "
+                "(base rate, gate 0.5)"
+            ),
+            "exact_test": (
+                "Fisher's exact test, one-sided in the "
+                "enrichment direction, per sign on the "
+                "2x2 table (member tokens x "
+                "coastal/inland against all other "
+                "tokens x coastal/inland)"
+            ),
+            "correction": (
+                "Bonferroni family-wise correction "
+                "across the members tested, at the 5% "
+                "family level (DD-044-4)"
+            ),
+            "criterion": (
+                "ENRICHED iff the corrected exact-test "
+                "result is below 0.05 and the coastal "
+                "share ratio (member coastal share over "
+                "corpus coastal share) is at least 1.5; "
+                "both clauses required"
+            ),
+            "floor": 30,
+            "too_thin": (
+                "members below 30 total occurrences "
+                "are recorded TOO THIN per member; "
+                "fewer than two members clearing the "
+                "floor closes the execution as TOO THIN "
+                "with the full census as its finding"
+            ),
+            "sensitivities": [
+                "inscription-level measure",
+                "site-size-matched",
+                "contested-sites-removed",
+            ],
+        },
+        "outcomes": [
+            "ENRICHED MEMBER FOUND",
+            "NO MEMBER ENRICHED",
+            "TOO THIN",
+            "ASSET F FREEZE FAILED",
+            "LAYER NOT PINNABLE",
+            "COASTAL LIST FAILED",
+            "INVALID",
+        ],
+        "fences": (
+            "the Roif hold binds every output (records "
+            "internal; campaign reporting names this "
+            "member only as executed - held under the "
+            "Roif gate, without result content); an "
+            "ENRICHED member does not change, soften, "
+            "or re-open the family-level verdict "
+            "(partially falsified); no outcome "
+            "establishes what any fish sign meant; "
+            "sign identities and site classifications "
+            "are compilation-relative to the pinned "
+            "layer and the frozen lists"
+        ),
+        "execution_gate": (
+            "Execution is Phase-404 under this frozen "
+            "contract, on a separate owner execution "
+            "order, and awaits the verified approval "
+            "of this spec's OSF contract registration "
+            "(OPEN-044-5; osf-spec-registration.md); "
+            "no count was made at the freeze itself, "
+            "Asset F has not been built, and no "
+            "coastal list has been enumerated beyond "
+            "the two sites the record itself names"
+        ),
+    },
+    "inputs": {
+        "claim_file": {
+            "file": (
+                "glossa-indus/claims/extracted_claims/"
+                "indus_valley_script_deciphered_from_"
+                "myth_65ff0a26.json"
+            ),
+            "sha256": (
+                "bc22d6f010f800d608d6e3f620fb430b3cf8d3"
+                "ccd3caadc6a989116fbfd125ed"
+            ),
+            "entry": (
+                "indus_valley_script_deciphered_from_"
+                "myth_65ff0a26_manual_002"
+            ),
+            "claim_status": "partially_falsified",
+            "stage": "explained",
+        },
+        "gazetteer": {
+            "file": "data/movement/gazetteer_rows.jsonl",
+            "sha256": (
+                "5ac76a3031121a61fa39f87b1d2760855374d171"
+                "ddd036988fee2820dca9b8b6"
+            ),
+            "rows": 36,
+            "program_sites": 30,
+        },
+        "crosswalk": {
+            "file": (
+                "backend/glossa_lab/data/"
+                "mahadevan_parpola_crosswalk.json"
+            ),
+            "sha256": (
+                "9ebd7723472d888dc8a127ff840a108d4fbd546"
+                "f7f8ed28ccc6e06444a2dc69b"
+            ),
+            "citation": (
+                "Parpola, Asko. 1994b. Sign list "
+                "(= Parpola 1994a fig. 5.1, pp. 70-78)"
+            ),
+        },
+        "anchors": {
+            "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+            "sha256": (
+                "df0cf620a0d66b71d778300b93a91d96b2f30f2"
+                "3580088e6086592b32d34f569"
+            ),
+            "posture": (
+                "asserted at the freeze from a fresh "
+                "recompute; this spec moves no anchor; "
+                "the file is asserted byte-identical "
+                "before and after any execution"
+            ),
+        },
+        "original_test_record": {
+            "phase45_t6": (
+                "NO_ENRICHMENT for M047 at coastal "
+                "sites (n = 13, p = 0.685), as recorded "
+                "in the Phase-46 script header"
+            ),
+            "scripts_of_record": [
+                "backend/scripts/phase45_fish_coastal_test.py",
+                "backend/scripts/phase46_t4_fish_expansion.py",
+                "backend/scripts/phase54_falsification.py",
+            ],
+        },
+    },
+    "environment": {
+        "python": "3.12.3",
+        "runner": "backend (venv glossa-aee150)",
+        "aee": "1.5.0 (adopted environment, PR #231; package pinned >=1.5.0,<1.6)",
+        "specify": "1.0.10",
+    },
+}
+
+SOURCES = [
+    f"{SPEC_DIR}/freeze.md",
+    f"{SPEC_DIR}/spec.md",
+    f"{SPEC_DIR}/claims.json",
+    f"{SPEC_DIR}/adjudication.md",
+    f"{SPEC_DIR}/aee/freeze-aee-note.md",
+    f"{SPEC_DIR}/build_freeze.py",
+    "backend/tests/test_spec044_freeze.py",
+]
+
+
+def main() -> None:
+    record = build_freeze(DEFINITION, REPO, SOURCES)
+    out = REPO / SPEC_DIR / "freeze.json"
+    out.write_text(json.dumps(record, indent=1) + "\n", encoding="utf-8")
+    print(record["digest"])
+
+
+if __name__ == "__main__":
+    main()

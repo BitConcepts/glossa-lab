@@ -1,6 +1,6 @@
 # Spec 042 — Arm B Split by Object Type (a Registered Primary Variant of Spec 028 Arm B)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-21
+> ## FROZEN — 2026-10-21
 >
 > Drafted under the owner's 2026-10-21 order
 > ("address all these remaining items now") and
@@ -8,21 +8,27 @@
 > (`~/workspace/research_notes/design-portfolio-triage-2026-10-21.md`),
 > which found design D-28 RIPE and the
 > highest-ranked design in the PR #195 packet
-> never yet taken up. Drafts are pre-approved
-> standing in this program; **the freeze and
-> the execution of Spec 042 are separate later
-> owner acts.** No AEE lifecycle hooks have run
-> on this draft; they are a freeze gate.
-> Nothing in this draft has been run, frozen,
-> registered, or computed.
+> never yet taken up. **Frozen on 2026-10-21**
+> under the campaign plan approved as written
+> (authorisation E-1): the AEE lifecycle hooks
+> passed over the recovered register
+> (0.7-draft) on the DD-042-9 gate reading,
+> every §2 pin was re-derived by two routes,
+> and the freeze digest was computed exactly
+> once over the frozen contract (`freeze.md` /
+> `freeze.json`). The freeze decisions
+> (DD-042-6…9) stand in `adjudication.md` §6.
+> Nothing has been computed under this spec:
+> the stratum census appears nowhere in the
+> frozen record, by design.
 >
-> The execution phase number is **unassigned**
-> at this draft. Phase-400 is Spec 036's,
+> The execution phase is **Phase-407**,
+> allocated at the freeze (DD-042-5
+> discharged). Phase-400 is Spec 036's,
 > Phase-401 Spec 038's, Phase-402 Spec 037's,
-> and Phase-403 Spec 039's; Spec 040 allocated
-> none. Spec 042 allocates its phase number at
-> the freeze act, from the merged record as it
-> then stands (DD-042-5).
+> and Phase-403 Spec 039's. Execution is a
+> separate owner act, gated on the OSF
+> registration's approval (DD-042-6).
 
 **Design source:** D-28 in the experiment-design
 packet at PR #195

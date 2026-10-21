@@ -224,6 +224,121 @@ changed — the design, gates, verdict
 rules, pins (the anchors pin stands at
 `df0cf620…`), and open items are exactly
 as drafted.
+## 6. The freeze act — 2026-10-21
+
+Frozen under the campaign plan approved as
+written on 2026-10-21 (authorisation E-1;
+campaign Wave 2). The freeze record is
+`freeze.md` / `freeze.json` in this
+directory; the AEE record is
+`aee/freeze-aee-note.md`. Each item the
+draft left open is resolved here, on the
+record:
+
+- **DD-042-6 — DECIDED: the spec files its
+  own OSF registration.** The draft's
+  proposal is adopted, following the
+  Spec 027/028 study-design pattern (and
+  the contract-registration pattern of
+  Specs 035–039): the frozen contract —
+  digest, Phase-407, gates, floors, pattern
+  rules — is filed as this spec's OSF
+  contract registration at the freeze, so
+  it is timestamped outside the repo before
+  execution. The filing is recorded in
+  `osf-registration.md`, completed by
+  append after filing. Execution awaits
+  the registration's approval by the
+  standing OSF route.
+- **DD-042-7 — DECIDED: no fresh synthetic
+  calibration is required.** The draft took
+  no position; the freeze declines, for
+  this reason: Spec 028's precedent
+  required a calibration because
+  Phase-393's machinery was then new, and
+  its control construction in fact changed
+  under calibration before that freeze
+  (Amendment 1). None of that holds here.
+  The machinery is byte-identical to the
+  pipeline of record (pin `6c2ff91c…`
+  re-derived at this freeze by two routes),
+  its synthetic calibration stands on
+  record in Spec 028 (`calibration.json`;
+  all four arm controls PASS), and the
+  variant changes only the input
+  population. Gate 0.5 — exact reproduction
+  of the recorded pooled quantities before
+  any stratum quantity — is the stronger,
+  variant-specific machinery check, and
+  each stratum's own negative and positive
+  controls run at its primary under the
+  frozen definitions (a control failure is
+  NOT ADJUDICATED, DD-042-3). A fresh
+  synthetic run would re-test code paths
+  the calibration of record already
+  exercised, on populations this variant
+  does not use.
+- **DD-042-8 — DECIDED: the census
+  suffices; no separate margins audit.**
+  The draft's proposal is confirmed, as
+  the draft framed it: this variant's
+  margins instrument is the gate-0.3
+  partition census with the gate-0.4
+  floors — computed at execution, before
+  any stratum quantity, fail-closed, and
+  published as the finding if the
+  execution closes THIN. Spec 028's
+  margins audit (`margins-audit.json`,
+  pin `15ae0281…`) stands as an input of
+  record; nothing in this variant reopens
+  the questions it answered.
+- **DD-042-2 — CONFIRMED as drafted.**
+  THIN closes the whole execution;
+  neither stratum is computed when either
+  is below its floor.
+- **DD-042-3 — CONFIRMED as drafted.**
+  NOT ADJUDICATED is the control-failure
+  class, carried in the headline with the
+  failing control named.
+- **DD-042-5 — DISCHARGED.** The execution
+  phase allocated at this freeze is
+  **Phase-407**.
+- **DD-042-9 — The AEE gate reading
+  (adopted at this freeze).** The
+  DD-038-10 reading, adopted by Spec 039
+  as DD-039-8, is adopted here: the
+  lifecycle hooks pass on zero correctness
+  failure modes with no claim below the
+  0.70 threshold, the engine's "iterate"
+  outcome word reading solely from the
+  FR-2.3 draft-cap records. The hooks met
+  that reading at this freeze (record:
+  `aee/freeze-aee-note.md`).
+
+**Pin re-assertion.** Every §2 pin was
+re-derived in the foreground at this
+freeze by two independent routes (the
+contents API raw download hashed with
+`sha256sum`; the contents payload decoded
+and hashed with Python `hashlib`, the
+corpus layer streamed), and all six agree
+with the draft's pins: corpus layer
+`c02e3d7b…`, Phase-393 results
+`0a1657a8…`, pipeline `6c2ff91c…`,
+margins audit `15ae0281…`, Spec 028
+freeze `376cd8e7…`, anchors `df0cf620…`
+(full values in `freeze.md` §2). No pin
+moved between draft and freeze. The
+stratum census was not computed at the
+freeze, by design.
+
+**What the freeze does not do.** It
+computes no stratum quantity, executes
+nothing, and approves no registration;
+execution of Phase-407 is a separate
+owner act, gated on the registration's
+approval.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

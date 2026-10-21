@@ -1,13 +1,15 @@
 # Spec 042 — Tasks
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-21
+> ## PLAN — FROZEN 2026-10-21
 >
 > Adjudication inputs are recorded in
 > `adjudication.md` (the owner's order of
 > 2026-10-21 and the portfolio triage of the
-> same date, drafting only). The freeze and
-> the execution of Spec 042 are separate
-> later owner acts.
+> same date, drafting only). The freeze was
+> executed 2026-10-21 under the campaign
+> plan approved as written (authorisation
+> E-1); the execution of Spec 042 remains a
+> separate later owner act.
 
 ## Lifecycle
 
@@ -34,8 +36,7 @@
       as a DRAFT PR and left unmerged for the
       owner's freeze decision, CI state
       reported from the run's own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
-      — not run on this draft).** At the freeze
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE).** Ran at the freeze act of 2026-10-21 under aee 1.5.0; passed on the DD-042-9 reading (zero correctness failure modes, minimum propagated 0.72, draft-cap records only). Record: `aee/freeze-aee-note.md`. The original gate text follows. At the freeze
       act, run `run_aee.py assess`
       after_specify, after_plan, and
       after_tasks over the claim register; the
@@ -47,13 +48,13 @@
       claim text, and the freeze digest is
       computed over the recovered register
       exactly once, at freeze.
-- [ ] **L5 — Freeze-decision items.** The
+- [x] **L5 — Freeze-decision items.** Decided at the freeze act of 2026-10-21 (`adjudication.md` §6): DD-042-6 adopted (OSF registration filed at the freeze), DD-042-7 declined (no fresh synthetic calibration; gate 0.5 stands as the machinery check), DD-042-8 confirmed (the census is the margins instrument), DD-042-2 and DD-042-3 confirmed. The original item follows. The
       freeze decides DD-042-6 (OSF
       registration), DD-042-7 (synthetic
       calibration), and DD-042-8 (margins
       audit), and confirms or openly overturns
       DD-042-2 and DD-042-3.
-- [ ] **L6 — Freeze.** On the owner's freeze
+- [x] **L6 — Freeze.** Executed 2026-10-21: hooks recorded, `freeze.md` finalised, `freeze.json` computed exactly once over the recovered register (0.7-draft) and the finalised texts, every spec §2 pin re-asserted by two routes, execution phase allocated as Phase-407. The original item follows. On the owner's freeze
       order, with L4 passed and L5 decided:
       hooks recorded, `freeze.md` finalised,
       `freeze.json` recomputed over the

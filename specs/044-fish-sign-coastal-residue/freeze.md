@@ -160,6 +160,46 @@ were then restored byte-identically and the
 suite re-ran green. (The full suite result at
 the freeze is recorded with the freeze PR.)
 
+## 5. Freeze repair (2026-10-21, pre-merge)
+
+Recorded openly before the freeze merge (full
+record: `adjudication.md` §7.11). The first
+freeze commit (`1768785c`, PR #243) failed one
+CI check: run `39581746155`, backend pytest,
+failed only on
+`test_cited_records_carry_the_design_facts` —
+it asserted the live claim file's hash equals
+the committed-bytes pin `bc22d6f010f8…`, but
+the backend suite itself regenerates the
+extracted-claims store mid-run
+(`indus_claims.py` rewrites `extraction_date`
+via `datetime.utcnow()`), so the working-tree
+file hashed differently (`fbddaed1431f…`). The
+pin is correct against committed bytes; no
+frozen fact was wrong. Under the coordinator
+ruling that the freeze is not locked until
+merged (Spec 042 freeze §6 precedent), only
+that assertion was repaired, to the Spec 038
+form: the claim-file hash stands as a
+`freeze.json` definition constant only, and
+manual_002's entry facts are asserted on the
+live file, with the regeneration reason
+commented in the test. The freeze digest was
+then recomputed once over the final files:
+old digest
+`9a0e6518f187bc91b342d7e8a97b56632340a8aeda9a801bb4c572816e4440dd`
+is superseded by the new digest in
+`freeze.json` (stated in full, with both
+registration ids, in the supersession note in
+`osf-spec-registration.md`, which is not
+digest-covered). The OSF registration filed
+at the first freeze commit (`3urwf`, old
+digest, pending and unapproved) is superseded
+by a corrected registration carrying the new
+digest. Execution (Phase-404) still awaits
+the corrected registration's verified
+approval.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

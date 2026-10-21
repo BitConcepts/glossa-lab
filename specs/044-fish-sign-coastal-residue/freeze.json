@@ -140,18 +140,18 @@
   }
  },
  "sources": {
-  "specs/044-fish-sign-coastal-residue/freeze.md": "b1da72e81321d94bdd88538df58fcc014084ba0ac3f928fb411cb529308fe2ad",
+  "specs/044-fish-sign-coastal-residue/freeze.md": "f43a04784643ed269e43eb809b2065f8fcfa003f40aa9d2c2dd3e8f2a3815796",
   "specs/044-fish-sign-coastal-residue/spec.md": "0289e3fe6b762800c7ca9a7942bd50f8bfb7cd0fd2cef9bd5ddc67911260a18c",
   "specs/044-fish-sign-coastal-residue/claims.json": "873b05aef8cfe2f3ec6b9c2c607ebacd67d74633dee1ab9b92eedec1d7d644ad",
-  "specs/044-fish-sign-coastal-residue/adjudication.md": "88f1c1d68adbe938b52a86a4a35795713a1fa4a23393397bda87499f37d20f4c",
+  "specs/044-fish-sign-coastal-residue/adjudication.md": "143ce19e1b116f5dac8229cd48b38ec20e34e2df7567fbc3d15449d56a20fbf6",
   "specs/044-fish-sign-coastal-residue/aee/freeze-aee-note.md": "6b82a92ae0218675a8b6e1d646c8e8d2f6b461781bbe804c10c7b3073b5a20ca",
   "specs/044-fish-sign-coastal-residue/build_freeze.py": "31d566d49164d7c51f2f8b8ae3ff2857491946611b9959ba0c0656ef92725c37",
-  "backend/tests/test_spec044_freeze.py": "476addaa9583bcbc898ee1c1b3137246886b5f4357dd2c93569e3683fcebf4da"
+  "backend/tests/test_spec044_freeze.py": "a08b708a6c4028d1843095fe22d1c38b1343fdebf61f06252d8832dd082c872d"
  },
  "environment": {
   "python": "3.12.3",
   "platform": "Linux",
   "aee": "1.5.0"
  },
- "digest": "9a0e6518f187bc91b342d7e8a97b56632340a8aeda9a801bb4c572816e4440dd"
+ "digest": "6851f943d196fa389e48b67cb5161b90daa1180d8a3e1cf3f020fcf25691d9c8"
 }

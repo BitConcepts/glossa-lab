@@ -508,6 +508,71 @@ overturned.
    two sites the record itself names. Execution
    is a separate later act under Phase-404.
 
+### 7.11 Freeze repair (2026-10-21, pre-merge)
+
+**Recorded openly, before the freeze merge.**
+The first freeze commit (`1768785c`, PR #243)
+failed one CI check: in run `39581746155` the
+backend pytest job failed only on
+`test_cited_records_carry_the_design_facts` in
+`backend/tests/test_spec044_freeze.py`, which
+asserted the live claim file's SHA-256 equals
+the committed-bytes pin
+`bc22d6f010f800d608d6e3f620fb430b3cf8d3ccd3caadc6a989116fbfd125ed`.
+By the time that test ran, the backend suite
+itself had regenerated the extracted-claims
+store mid-run
+(`glossa-indus/scripts/indus_claims.py` rewrites
+`extraction_date` via `datetime.utcnow()`; the
+regeneration is documented in
+`backend/tests/test_spec029_phase104_correction.py`),
+so the working-tree file hashed differently
+(`fbddaed1431f…`). The pin itself is correct
+against committed bytes (blob `ad6b849c` on the
+freeze branch and on `main`); no frozen fact
+was wrong.
+
+**Repair (coordinator ruling: the freeze is
+not locked until merged; pre-merge correction
+of the freeze's own test, with digest
+recomputation and open recording, is freeze
+work — Spec 042's freeze §6 is the
+precedent).** Only the defective assertion was
+amended, to the Spec 038 freeze-test form: the
+claim-file hash is asserted as a `freeze.json`
+definition constant only
+(`test_freeze_definition_constants`, unchanged),
+and manual_002's entry facts (status
+`partially_falsified`, stage `explained`, and
+its residue text) are asserted on the live
+file, with the suite-regeneration reason
+commented in the test. Nothing else
+substantive was touched.
+
+**Digest.** The freeze digest was recomputed
+once, via `glossa_lab.framework026.build_freeze`
+(`build_freeze.py`), over the final files
+including this entry: old digest
+`9a0e6518f187bc91b342d7e8a97b56632340a8aeda9a801bb4c572816e4440dd`
+is superseded by the new digest recorded in
+`freeze.json` (the digest field of that file;
+the pair of full values is stated in the
+repair commit message and in the supersession
+note appended to `osf-spec-registration.md`,
+which is not digest-covered, so the new value
+can be written there in full without changing
+the digest it names). The OSF registration
+filed at the first freeze commit (`3urwf`,
+carrying the old digest, still pending and
+unapproved at this repair) is superseded by a
+corrected registration carrying the new
+digest, filed identically except for the
+digest; both registration ids, both digests,
+and the supersession are recorded in
+`osf-spec-registration.md`. Execution
+(Phase-404) still awaits the corrected
+registration's verified approval.
+
 ---
 
 *Freeze section appended 2026-10-21 by an AI agent

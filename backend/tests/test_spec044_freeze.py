@@ -225,8 +225,27 @@ def test_consumer_correction_on_the_record():
 
 
 def test_cited_records_carry_the_design_facts():
-    # The claim file: pin, entry, standing state.
-    assert _sha(CLAIM_FILE) == CLAIM_SHA256
+    # The claim file: entry and standing state,
+    # asserted on the live file. Its whole-file
+    # hash is not asserted here, by repair. The
+    # extracted-claims store is regenerated
+    # wholesale by the backend suite itself
+    # (glossa-indus/scripts/indus_claims.py
+    # rewrites extraction_date via
+    # datetime.utcnow(); the regeneration is
+    # documented in
+    # backend/tests/test_spec029_phase104_correction.py),
+    # so by the time this test runs in the full
+    # suite the working-tree file hashes
+    # differently from its committed bytes. The
+    # pin itself is correct against committed
+    # bytes. The freeze-time hash (bc22d6f0...)
+    # remains asserted as a definition constant
+    # (test_freeze_definition_constants) and in
+    # the freeze record, and manual_002's facts
+    # are asserted on the live file below - the
+    # Spec 038 form. Freeze repair, 2026-10-21
+    # (adjudication.md section 7.11).
     claim_doc = json.loads(CLAIM_FILE.read_text(encoding="utf-8"))
     entries = [
         c for c in claim_doc["claims"]

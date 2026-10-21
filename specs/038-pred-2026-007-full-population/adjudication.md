@@ -459,3 +459,77 @@ finalised freeze texts, once.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## 7. Freeze-test amendment — owner-ordered, 2026-10-20
+
+After the freeze (section 6) and the Phase-401
+execution (`outcome.md`: CLOSED AT STEP 0.2), the
+execution record (PR #232) failed exactly one
+freeze fence, and the failure is a defect in this
+draft's own fences, not in the execution:
+
+- `backend/tests/test_spec038_freeze.py::test_cited_records_carry_the_design_facts`
+  asserted the LIVE whole-file SHA-256 of
+  `docs/PREDICTION_REGISTER.md` equals the
+  freeze-cited pin
+  `4f8aeb54fd5853d73766ed9cf0222ef93cccfa8d9a8c399a4631221fbbb4c1c2`.
+- The frozen contract itself mandates dated
+  section-6 appends to that same register at
+  execution (spec section 7; DEFINITION
+  `register_handling`). PR #232 makes exactly
+  those appends — the Phase-401 outcome entry
+  and the DD-038-2 provenance reconciliation
+  note — advancing the register's live hash to
+  `f281bd674d7651e9c13351bad7cb321bd55000cd3f087a38276a4451fbbf7ef3`.
+- The fence therefore fails by construction on a
+  correctly executed record. The backend suite on
+  PR #232 otherwise stands at 1,400 passed /
+  20 skipped / this one failure. Specs 035 and
+  036 never cited the register file as a hashed
+  input; their fences assert the entry's facts on
+  the live file.
+
+**Ruling.** On the freeze coordinator's
+recommendation, the owner ordered the amendment
+on 2026-10-20, verbatim: **"Approve the
+freeze-test amendment"**. The amendment is
+exactly this, and nothing broader:
+
+1. In `test_cited_records_carry_the_design_facts`,
+   the single live-whole-file-hash assertion on
+   `docs/PREDICTION_REGISTER.md` is narrowed to
+   the Spec 035 form: the PRED-2026-007 entry's
+   facts are asserted on the live register file,
+   and the freeze-time whole-file hash
+   (4f8aeb54...) remains asserted as a DEFINITION
+   constant (`test_freeze_definition_constants`)
+   and in the freeze record. The other five cited
+   files keep their live-hash assertions
+   unchanged. No other assertion changes; no
+   production code changes.
+2. `freeze.json` is recomputed ONCE over the
+   amended covered sources with the repo's own
+   builder (`build_freeze.py`, framework026
+   `build_freeze`), in the freeze environment
+   (aee 1.5.0). The successor digest is the
+   `digest` recorded in the amended `freeze.json`
+   and is carried in the LEDGER entry of
+   2026-10-20 recording this amendment.
+
+**What does not change.** The freeze-act digest
+`b54571d845a2be3429bc532fee4bb58c20723f77e2d40ffcd43b56e0caab6eef`
+stands as the digest of the freeze act in every
+record that cites it — the OSF contract
+registration (bkqeh), `outcome.md`, the PRED
+register entries, and section 6 above — and
+is edited nowhere. The contract's substance is
+untouched: criterion, population frame, named
+sources, verdict rule, and the step-0.2 closure
+all stand as frozen and executed. PRED-2026-007
+remains unscored; its section-3 PARTIALLY
+CONFIRMED wording stands as the pre-execution
+record.
+
+*AI disclosure: executed by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen
+Pierson, per constitution §VI.*

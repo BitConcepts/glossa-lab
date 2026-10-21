@@ -108,19 +108,19 @@
   }
  },
  "sources": {
-  "backend/tests/test_spec038_freeze.py": "1a4338d52a7ccf4b539119e7e5ea098569196a9b2fd9239da890a7835ffa3414",
-  "specs/038-pred-2026-007-full-population/adjudication.md": "5478e0ae82b00836912150e984e32c2cfde263af5a425ab97d318d4ccd64fa82",
+  "specs/038-pred-2026-007-full-population/freeze.md": "7dbcc909261020a6da7f45f674969a46032584c10f3caa03d7ed0dbe00f4c644",
+  "specs/038-pred-2026-007-full-population/spec.md": "42db3a06bb2ac3dab6f8940ac1223bc1f4710d509378dbfd036fc262e9932b4d",
+  "specs/038-pred-2026-007-full-population/claims.json": "78f293e8188d3d658dbca079398ccc16cff93faf96f8130156f0aa04bb318e56",
+  "specs/038-pred-2026-007-full-population/adjudication.md": "920099557153ecbd7ecc3300a2b5228bbd53eed36917737ca3872f7019b50165",
+  "specs/038-pred-2026-007-full-population/osf-registration.md": "9587f6c336ddb6566ea834c583cb1bb4ed976636549f942baf6f2fb7f26f7c5c",
   "specs/038-pred-2026-007-full-population/aee/freeze-aee-note.md": "09795afdb1213cf6f50ba580d2b2fb456bf3e98fd0a93eb6a2d9351a9486c4a2",
   "specs/038-pred-2026-007-full-population/build_freeze.py": "8ba58f51d6e5f1627bf728452423dfb4c040efb16538af98ba8cbbc782866198",
-  "specs/038-pred-2026-007-full-population/claims.json": "78f293e8188d3d658dbca079398ccc16cff93faf96f8130156f0aa04bb318e56",
-  "specs/038-pred-2026-007-full-population/freeze.md": "9479cc5ba28af550bff520aad6aa307f7731d0573839e5a0816c33e7d44dc0a3",
-  "specs/038-pred-2026-007-full-population/osf-registration.md": "9587f6c336ddb6566ea834c583cb1bb4ed976636549f942baf6f2fb7f26f7c5c",
-  "specs/038-pred-2026-007-full-population/spec.md": "42db3a06bb2ac3dab6f8940ac1223bc1f4710d509378dbfd036fc262e9932b4d"
+  "backend/tests/test_spec038_freeze.py": "d64a8fdfe69647284e2136d8716f2f0f23d91447a32975a6c9492aa0c31c6958"
  },
  "environment": {
   "python": "3.12.3",
   "platform": "Linux",
   "aee": "1.5.0"
  },
- "digest": "b54571d845a2be3429bc532fee4bb58c20723f77e2d40ffcd43b56e0caab6eef"
+ "digest": "11dfda0384fa966b14e4fc537a9be935e899c8318f079c3bff1e4f35c790930b"
 }

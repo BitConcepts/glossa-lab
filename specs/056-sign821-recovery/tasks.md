@@ -114,10 +114,10 @@ independent executions.** It consumes no
 shared asset and no member's output, and no
 member consumes its output inside the pass.
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0** (spec §3 gates
+- [x] **E2 — Step 0** (spec §3 gates
       0.1–0.3): input integrity against the
       freeze pins; passage produced from the
       held copy with both anchor lines and
@@ -130,7 +130,7 @@ member consumes its output inside the pass.
       the execution here. A passage that is
       not producible and pinnable is never
       approximated.
-- [ ] **E3 — Step 1, re-extraction** (spec
+- [x] **E3 — Step 1, re-extraction** (spec
       §4): two independent extraction passes
       over the pinned passage only, each
       producing its extraction sheet with
@@ -140,7 +140,7 @@ member consumes its output inside the pass.
       by quotation or recording them as
       unsettled (unsettled resolves against
       recovery).
-- [ ] **E4 — Step 2, the recovery test**
+- [x] **E4 — Step 2, the recovery test**
       (spec §5): each reconciled candidate
       checked against R-1…R-5 with the
       failing condition named; the R-3
@@ -152,7 +152,7 @@ member consumes its output inside the pass.
       alone. On RECOVERED, the test-design
       note drafted for the recovered claim —
       designed, not run.
-- [ ] **E5 — Outcome** (spec §§6–8): the
+- [x] **E5 — Outcome** (spec §§6–8): the
       outcome record under the §6.1 wording
       for the outcome reached, carrying the
       §8 reporting set (passage identification
@@ -172,6 +172,28 @@ member consumes its output inside the pass.
       foundation check reported as measured.
       No prior record is edited or deleted
       at any point.
+
+      **Done at the execution of 2026-10-21
+      (Phase-418):** graph-first build
+      registered and verified by import;
+      step 0 passed in full (the claim record
+      in the freeze's Spec 038 form); the
+      DD-056-16 dry-run was worked on the
+      "Mohenjo-daro bangle pot" section; two
+      independent passes found the same
+      candidate set {K-1…K-4} with full
+      agreement at reconciliation; K-1 (the
+      ‘city’ reading in signboard contexts)
+      passed R-1, R-2, R-4 and R-5 and failed
+      R-3's identification half (no W821 in
+      the registry in any form; Figure 2.6's
+      entry unquotable from the held text), so
+      the outcome is **IDENTIFICATION FAILED**
+      under §6's mapping. Outcome record,
+      extraction record, claim-record closure
+      append, and LEDGER entry delivered with
+      the execution PR; anchors byte-identical;
+      foundation check reported at the merge.
 
 ---
 

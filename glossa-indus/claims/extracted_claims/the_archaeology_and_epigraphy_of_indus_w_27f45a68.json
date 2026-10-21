@@ -43,6 +43,21 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book. Even with the sign identified, 'used in a variety of contexts' states nothing that could fail: almost any common sign is used in a variety of contexts. The observation may be a useful catalogue note; as a claim record it asserts no testable proposition."
+      },
+      "spec056_closure": {
+        "spec": "056",
+        "phase": "Phase-418",
+        "date": "2026-10-21",
+        "actor": "spec056-phase418-execution",
+        "kind": "closure (identification)",
+        "outcome": "IDENTIFICATION FAILED",
+        "wording": "Re-extraction found a specific argument in the passage of record (‘It is suggested here that sign 821, in the Dholavira signboard contexts, has a meaning of ‘city’, either as a determinative or as a word.’, printed p. 92), but the claim cannot be recovered in the program's form: the drawn sign could not be identified by either route §5 R-3 allows. The fragment is neither recovered nor retired; it stays a stated gap, with this closure as the record of why, and the unblocking act is the preservation, as a committed and hashed record, of an inspectable drawn-form reference for Wells's sign 821 — the Figure 2.6 sign-list pages (printed pp. 19–22) or the Figure 6.13 examples as images tied to the list entry — from which the drawn sign can be matched by drawn form through the crosswalk registry or quoted as the source list's own entry.",
+        "record": "specs/056-sign821-recovery/outcome.md",
+        "extraction_record": "specs/056-sign821-recovery/extraction-record.md",
+        "extraction_record_sha256": "73792a47e137fdbee80bce3a2919aafc0c93fcad3fde4651548e0e2c1192312e",
+        "results": "reports/phase418_results.json",
+        "results_sha256": "f6b8c97b3b95ed3176f10994cbf109de1ff451fc1f11e2f7cf68ca5ca8b7c513",
+        "note": "Closure entry appended by the Spec 056 execution (Phase-418, 2026-10-21), under the frozen Spec 056 contract (OSF 3eygs, approved + public, DOI 10.17605/OSF.IO/3EYGS). Step 0 passed in full; two independent extraction passes over the pinned passage (Wells 2015, 'The Dholavira signboard, revisited', lines 2783–2871, passage digest 51d6fb3a460d94abc98c2ff735b17c5131a68c203e4d16692a21725790c0c604) recovered a specific argument — sign 821, in the Dholavira signboard contexts, has a meaning of 'city', either as a determinative or as a word, with eyil the passage's preferred gloss — which passes recovery conditions R-1, R-2, R-4 and R-5. The sign list is named from the document itself (Wells's own list, Wells 2011, in Wells 2015 Chapter 2 / Figure 2.6), but the drawn sign could not be identified by either route §5 R-3 allows: the crosswalk registry carries no W821 entry in any form (its Yunmapped_0821 row is a Yajnadevam glyph identifier, not this sign), and the source list's own entry stands in Figure 2.6, whose drawn forms did not survive the held copy's text extraction. The gap is the identification, and the unblocking act is the preservation, as a committed and hashed record, of an inspectable drawn-form reference for Wells's sign 821. This entry appends a closure; it does not alter the fragment's original record, which stands above as history, and the claim's status and stage are unchanged."
       }
     },
     {

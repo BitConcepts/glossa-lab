@@ -7774,3 +7774,92 @@ reports/phase411_step0_report.md.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-21 — Spec 056 (Phase-418) executed — IDENTIFICATION FAILED
+
+Spec 056 (design D-17, the sign-821 fragment
+recovery) was executed as Phase-418 under the
+frozen contract (freeze digest 64c28ce1…;
+OSF registration 3eygs approved and public,
+DOI 10.17605/OSF.IO/3EYGS), in Wave 3 Group 2
+of the runnable-experiments campaign.
+Graph-first build: backend/scripts/
+phase418_sign821_recovery.py, graph node
+IndusPhase418Sign821Recovery registered and
+verified by import before the run. Step 0
+passed in full: every §2 pin recomputed by
+two independent routes at base 3200b7b5 (held
+text 62acf855…, Phase-104 evaluation
+2d0b83e8…, lane-2 drafts 3f645c9a…, registry
+8a0b2a82…, anchors df0cf620…); the claim
+record asserted in the freeze's Spec 038 form
+(constant bd0f7abd… in freeze.json plus the
+fragment's facts on the live file — the live
+file's only delta from the pinned bytes is
+Spec 046's first_check append on the _0002
+claim); the passage of record (Wells 2015,
+"The Dholavira signboard, revisited", lines
+2783–2871) produced from the held copy with
+both anchor lines and the anchor sentence
+located verbatim, and its slice recomputed to
+the freeze-pinned digest (5,354 bytes,
+51d6fb3a…). The DD-056-16 dry-run was worked
+on the "Mohenjo-daro bangle pot" section
+before the protocol touched the fragment.
+Two independent extraction passes over the
+pinned passage found the same candidate set
+{K-1…K-4} and agreed on every checklist line
+at reconciliation. The decisive candidate
+K-1 — sign 821, in the Dholavira signboard
+contexts, has a meaning of "city", either as
+a determinative or as a word (printed p. 92),
+with eyil the passage's preferred gloss among
+DED 752 ūr, DED 808 eyil, DED 3568 nakar and
+DED 4112 pāri — passes the argument
+conditions R-1, R-2, R-4 and R-5 (its R-4
+condition respects the passage's own ruling
+that the non-attestation of eyil-ay/eyil-i is
+not a nullification). The sign list is named
+from the document itself: Wells's own list
+(Wells 2011), in Wells 2015 Chapter 2 /
+Figure 2.6. But the drawn sign is identified
+by neither route R-3 allows: the pinned
+registry carries no W821 value in any of its
+803 rows (sole or multi-value), no registry
+description names a city, and the Phase-123
+Wells witness carries no grapheme 821; and
+the source list's own entry stands in Figure
+2.6, whose drawn forms did not survive the
+held copy's text extraction (captions only),
+so no entry can be quoted. The registry's
+Yunmapped_0821 row is a Yajnadevam glyph
+identifier — the frozen number-collision
+trap — asserted as a trap and not used.
+Under §6's mapping the run therefore closes
+as IDENTIFICATION FAILED: the fragment is
+neither recovered nor retired, and the
+hypothesis is unjudged at the identification
+condition — the passage does argue something
+specific, so the retirement wording cannot
+fire, and no claim enters the lifecycle. The
+unblocking act is named on the record: the
+preservation, as a committed and hashed
+record, of an inspectable drawn-form
+reference for Wells's sign 821. Records:
+specs/056-sign821-recovery/outcome.md,
+specs/056-sign821-recovery/extraction-record.md,
+reports/phase418_results.json,
+reports/phase418_recovery_report.md; the
+claim's record received its dated closure
+append (spec056_closure; removal reproduces
+the pre-act file byte-identically; status and
+stage unchanged). Anchors asserted
+byte-identical before and after (df0cf620…).
+This act is record repair: it establishes, at
+most, what the source passage argues — never
+whether the argument is right, and nothing
+about sign 821 itself.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.

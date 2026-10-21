@@ -1,6 +1,7 @@
 """Experiment Graph Nodes: Phase 406 (Spec 047 —
 Roif's ledger thesis, distribution test: step 0 gates
-and the step-1 Asset B build and freeze).
+and the step-1 Asset B build and freeze; step 2, the
+distribution test).
 
   IndusPhase406RoifLedgerStep1    Phase-406: step 0
   (input integrity, spine reproduction, join census),
@@ -10,10 +11,18 @@ and the step-1 Asset B build and freeze).
   Step 2 (the distribution test) is not run by this
   phase's step-1 act.
 
-The node serves the phase's committed results JSON
-(reports/phase406_results.json), recomputing via the
-phase script when that script's pinned inputs are
-present locally. Freeze: specs/
+  IndusPhase406RoifLedgerStep2    Phase-406 step 2:
+  step 0 re-run, Asset B pin re-assertion against the
+  step-1 outcome record, and the section 6.3
+  classification gate (E5), with the section 6.2
+  primaries and section 6.4 sensitivities (E6) behind
+  the gate in the step-2 script.
+
+The nodes serve the phase's committed results JSONs
+(reports/phase406_results.json;
+reports/phase406_step2_results.json), recomputing via
+the phase scripts when those scripts' pinned inputs
+are present locally. Freeze: specs/
 047-roif-ledger-distribution/freeze.md (digest
 8501feab...); the frozen spec's contract registration
 is OSF https://osf.io/b2a8w/. All products are held
@@ -78,6 +87,31 @@ _NODE_SPECS = [
      "with 3 AGREED rows (2 testable), 1 DISAGREED, 10 "
      "SINGLE-SOURCE, 16 NO-SOURCE; ledger list 8 "
      "entries, 3 mapped, 5 UNMAPPED. All products held "
+     "under the Roif gate. CPU."),
+    ("IndusPhase406RoifLedgerStep2",
+     "phase406_roif_ledger_step2.py",
+     "phase406_step2_results.json",
+     "Phase-406 Roif Ledger Step 2 (spec 047)",
+     "Phase-406 step 2 (spec 047): the distribution "
+     "test act — step 0 re-run in the frozen order "
+     "(input integrity against the freeze pins; spine "
+     "reproduction; the join census), Asset B pin "
+     "re-assertion against the step-1 outcome record "
+     "(digest a1a9e484...; the ledger-sign list digest "
+     "dfa48f50...), then the section 6.3 classification "
+     "gate (E5): fewer than 12 testable sites, or an "
+     "empty pooled/contrast side in the test "
+     "population, ends the execution as INCONCLUSIVE "
+     "with the classification as the finding and no "
+     "distribution quantity computed; the section 6.2 "
+     "primaries and section 6.4 sensitivities (E6) run "
+     "only behind the gate. Outcome (2026-10-21): "
+     "step 0 PASS; Asset B pin MATCH (30 rows, "
+     "testable 2 — harappa administrative, lothal "
+     "port/trade, both pooled; contrast side empty); "
+     "the gate fired on both clauses — INCONCLUSIVE "
+     "(classification); the claim stands UNTESTED for "
+     "its distribution component. All products held "
      "under the Roif gate. CPU."),
 ]
 

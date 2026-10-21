@@ -131,7 +131,7 @@
       recorded, list frozen in the same step-1
       act under its own digest; extraction
       census published.
-- [ ] **E5 — Step 2, classification gate**
+- [x] **E5 — Step 2, classification gate**
       (spec §6.3): testable count and both
       sides non-empty, checked against the
       frozen asset before any distribution
@@ -146,7 +146,7 @@
       alone and five-largest recomputations
       reported beside the primary, never
       verdict-changing.
-- [ ] **E7 — Outcome:** the §9 record —
+- [x] **E7 — Outcome:** the §9 record —
       results JSON and report under the
       headline rules (corpus label, Asset B
       digest and status counts, join census,

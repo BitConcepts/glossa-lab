@@ -437,3 +437,65 @@ at both points — byte-identical, asserted.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+---
+
+## Landing record — 2026-10-21 (appended at merge; append-only)
+
+- Execution PR: **#286** (branch
+  `spec-061-a1-precision`), merged to `main`
+  as merge commit
+  **`abdcac190d79edb75078649b82309df505843b93`**.
+- CI: GitHub Actions run **39648236254** on the
+  PR head `95afda56` — **7 of 7 jobs success**,
+  verified from the run's own job conclusions
+  (Backend tests (pytest); Frontend tests
+  (Playwright); Indus public validation checks;
+  Evidence Graph script smoke tests; Shell
+  wrappers ubuntu / macos / windows). The road
+  to that run is recorded plainly: the PR's
+  first check run was lost to a GitHub Actions
+  event-delivery stall that also left sibling
+  campaign PRs (287, 290) without runs for a
+  time — an absent run, not a failing one
+  (campaign plan Part 7) — and while the stall
+  lasted, `main` advanced through the other
+  Group 2 merges until the PR stood conflicted
+  ("dirty": LEDGER.md appends and
+  experiment-graph registrations). The branch
+  was merged up to the then-current `main`
+  (merge commit `95afda56`; both conflicts
+  resolved by keeping every entry and every
+  registration — the resolved LEDGER carries
+  all 166 of main's section headers plus this
+  spec's one, and the resolved graph file
+  registers every phase node, Phase-423's
+  included, verified by import), and the
+  genuine run above then completed on the
+  merged head before the PR merged.
+- Run digests re-verified on `main` at the
+  merge commit by two routes (the working
+  tree and the contents API):
+  `reports/phase423_results.json`
+  `f7007009e1d3c4beb0705ec6e4e737ce3bf1c38025c5910c7e871e422034ba57`,
+  `reports/phase423_report.md`
+  `3669eb38512af1e3c24374fb178666b315911d5ae6c7274f40f8b86d4ea3ea80`
+  — identical to the values in §1 of this
+  record.
+- Foundation check (H21) at the merge
+  commit, on a fresh checkout of `abdcac19`
+  in the prepared foundation clone (Holdat
+  corpus CSV SHA-256
+  `62d14d2bebf7c2c80d98a2958e75ec52bff3f5e85d1f7f40cbe28218e`
+  verified first): **40 checks passed, 0
+  failed, 8 warnings** — the standing figure.
+- Terminal outcome stands as recorded above:
+  **CANNOT BE RUN AS WRITTEN** at gate 0.5.
+  No target was computed; the operative
+  target T* is undefined on this record and
+  Arm A2's trigger does not fire on it. Spec
+  028 Arm A stands INCONCLUSIVE exactly as
+  recorded.
+
+*AI disclosure: appended by an AI agent (Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.*

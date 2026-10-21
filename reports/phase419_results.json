@@ -1,0 +1,509 @@
+{
+ "spec": "057",
+ "phase": "Phase-419",
+ "freeze_digest": "237b923a2c19b216e0476f70d17a956db0ca68d1ba8af6902109099a82c820d9",
+ "osf_registration": "chq5e",
+ "date": "2026-10-21",
+ "fence": "This act recovered what five passages state. It checked none of it.",
+ "step0_gates": [
+  {
+   "gate": "0.1",
+   "name": "input integrity",
+   "verdict": "PASS",
+   "pins": {
+    "S-1": {
+     "cleaned_text_sha256": "1275b795903260221f5226bada352de27471c010e2ad8ace556c548c20da1fc4",
+     "cleaned_text_match": true,
+     "registry_sha256": "92e19e6def7eccb42ba0e9f53f5ef3bf9dbb0b9717aa3d675cecb971f5ab0e5c",
+     "registry_match": true,
+     "claims_file_live_sha256": "476cdbe24e9cbcaf947785e0f666c87839f3cde32492713a8332b36a9eb7e304",
+     "claims_file_freeze_constant": "e98190894202a2a1c0e314229dcb585c62a0f5c12c059bcabd63b055c42959e8",
+     "claims_entry_facts_match": true,
+     "claims_store_note": "per freeze.md section 2 (the Spec 038 form), the extracted-claims store is asserted by its entries' facts, never by live-file hash; the live hash is recorded here for the record"
+    },
+    "S-2": {
+     "cleaned_text_sha256": "dae154327592d19366c9feb56362477fa842114cec944416b9b05dc3f0efd4cb",
+     "cleaned_text_match": true,
+     "registry_sha256": "bb23e5e9f90c30ebebb2d45e2967fb668a54432a56692a8772753fd228316f47",
+     "registry_match": true,
+     "claims_file_live_sha256": "857abacac4317fa0f7bdf7d4052661a4109b6f5ee507843b93cac8c5ad46c5a4",
+     "claims_file_freeze_constant": "857abacac4317fa0f7bdf7d4052661a4109b6f5ee507843b93cac8c5ad46c5a4",
+     "claims_entry_facts_match": true,
+     "claims_store_note": "per freeze.md section 2 (the Spec 038 form), the extracted-claims store is asserted by its entries' facts, never by live-file hash; the live hash is recorded here for the record"
+    },
+    "S-3": {
+     "cleaned_text_sha256": "9ed24098c006fcde5bb0ca7be6a6fa188011c3bc7bb8db46796abc77961a0708",
+     "cleaned_text_match": true,
+     "registry_sha256": "9b95174bad62c9a4879ae3db28a03ee52bc665df4e1d9897e65f84f353baa53c",
+     "registry_match": true,
+     "claims_file_live_sha256": "713576363f9678281703866e6b749a9486d754906173bb48b7b44367531dc6f8",
+     "claims_file_freeze_constant": "713576363f9678281703866e6b749a9486d754906173bb48b7b44367531dc6f8",
+     "claims_entry_facts_match": true,
+     "claims_store_note": "per freeze.md section 2 (the Spec 038 form), the extracted-claims store is asserted by its entries' facts, never by live-file hash; the live hash is recorded here for the record"
+    },
+    "S-4": {
+     "cleaned_text_sha256": "62acf855ac3ecf39fc7a7e6597dba9a3cb6e35948528f69e9424eb81308d261e",
+     "cleaned_text_match": true,
+     "registry_sha256": "b2638a705549348d2d857989e74f7a8ab09bd4e3ea60d6e3dfab4e49fd9eba68",
+     "registry_match": true,
+     "claims_file_live_sha256": "95fe4747ee5a7e511b557814828eaec1540c95e58d5a3246b580babee1473128",
+     "claims_file_freeze_constant": "bd0f7abddc9c26537f4ebe5f66f6a1fc69d394a4c2edbe745a8b7eb1ddc3333a",
+     "claims_entry_facts_match": true,
+     "claims_store_note": "per freeze.md section 2 (the Spec 038 form), the extracted-claims store is asserted by its entries' facts, never by live-file hash; the live hash is recorded here for the record"
+    },
+    "S-5": {
+     "cleaned_text_sha256": "dd58497528db89fe75111d2431b9611aebd4a5a9715a4ecceb012d9d1538029e",
+     "cleaned_text_match": true,
+     "registry_sha256": "38122256305b8451e49e4ef4d56df7399363bdc3c57052b10f9165ab593261a7",
+     "registry_match": true,
+     "claims_file_live_sha256": "c1a433d539a0ed899fe7ab11af2be0c608cb85d9f0fc99b2ccfefdb6e866262a",
+     "claims_file_freeze_constant": "c1a433d539a0ed899fe7ab11af2be0c608cb85d9f0fc99b2ccfefdb6e866262a",
+     "claims_entry_facts_match": true,
+     "claims_store_note": "per freeze.md section 2 (the Spec 038 form), the extracted-claims store is asserted by its entries' facts, never by live-file hash; the live hash is recorded here for the record"
+    }
+   },
+   "record_inputs": {
+    "phase104_evaluation": {
+     "file": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "sha256": "2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d",
+     "match": true
+    },
+    "lane2_drafts": {
+     "file": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "sha256": "3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb",
+     "match": true
+    },
+    "anchors": {
+     "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+     "sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+     "match": true
+    }
+   },
+   "phase104_entry": {
+    "verdict": "stays_untested",
+    "rule": "RULE-NOCOND"
+   }
+  },
+  {
+   "gate": "0.2",
+   "name": "source-set integrity",
+   "verdict": "PASS",
+   "evidence_instance_claim_ids": [
+    "fuls2023_catalog_of_indussigns_searchins_1dbdecdb_statisti_0001",
+    "positional_analysis_of_indus_signs_a2bedc93_statisti_0001",
+    "the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
+    "without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002"
+   ],
+   "fingerprint": "a4874349e0cc0ba23b711f10c78f60372639c2dc6f352165b48d4a9e44272469"
+  },
+  {
+   "gate": "0.3",
+   "name": "order",
+   "verdict": "PASS",
+   "note": "gate verdicts are recorded in this results record and in the outcome record before any per-source row"
+  }
+ ],
+ "accounting": [
+  {
+   "source": "S-1",
+   "citation": "Ancient Writing and Modern Technologies (the canonical record's own source; detected DOI 10.13109/hisp.2015.128.1.42)",
+   "claim_id": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
+   "document_id": "ancient_writing_and_modern_technologies_51831ac9",
+   "occurrence_lines": [
+    102,
+    663
+   ],
+   "heading_form_lines": [],
+   "toc_lines": [],
+   "location_state": "located (document, pinned cleaned text); no heading-form occurrence",
+   "outcome": "SOURCE UNLOCATED",
+   "sub_state": "HEADING NOT PRESENT IN HELD TEXT",
+   "search_log": {
+    "step_1_pinned_cleaned_text": "located at its section 2.1 path; SHA-256 matches the freeze pin (gate 0.1)",
+    "step_2_repository_search": {
+     "files_naming_document_id": [
+      "backend/tests/fixtures/spec029_post_merge_aee150_scores.json",
+      "backend/tests/fixtures/spec029_post_merge_aee_scores.json",
+      "backend/tests/fixtures/spec029_post_phase104_correction_aee150_scores.json",
+      "backend/tests/fixtures/spec029_post_phase104_correction_aee_scores.json",
+      "backend/tests/fixtures/spec029_pre_change_aee_scores.json",
+      "backend/tests/test_spec029_phase_g.py",
+      "backend/tests/test_spec029_phase_i.py",
+      "backend/tests/test_spec055_freeze.py",
+      "backend/tests/test_spec057_freeze.py",
+      "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
+      "glossa-indus/claims/extracted_claims/fuls2023_catalog_of_indussigns_searchins_1dbdecdb.json",
+      "glossa-indus/claims/extracted_claims/positional_analysis_of_indus_signs_a2bedc93.json",
+      "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+      "glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+      "glossa-indus/literature/documents/ancient_writing_and_modern_technologies_51831ac9.json",
+      "glossa-indus/reports/claim_reports/batch4_claims_report.json",
+      "glossa-indus/reports/phase104_claims_evaluation.json",
+      "reports/phase108_impact_map.json",
+      "specs/029-tao-claim-lifecycle/assessment.md",
+      "specs/029-tao-claim-lifecycle/lane2-adoption-record.md",
+      "specs/029-tao-claim-lifecycle/lane2-drafts/README.md",
+      "specs/029-tao-claim-lifecycle/lane2-drafts/drafts-review.md",
+      "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+      "specs/029-tao-claim-lifecycle/phase-d-run-record.md",
+      "specs/029-tao-claim-lifecycle/phase-i-record.md",
+      "specs/029-tao-claim-lifecycle/reclassification-ledger.json",
+      "specs/055-sign900-numeral/adjudication.md",
+      "specs/055-sign900-numeral/aee/aee-after_plan-20261021T104301Z.json",
+      "specs/055-sign900-numeral/aee/aee-after_specify-20261021T104301Z.json",
+      "specs/055-sign900-numeral/aee/aee-after_tasks-20261021T104302Z.json",
+      "specs/055-sign900-numeral/aee/evaluator-aee-after_plan-20261021T104301Z.json",
+      "specs/055-sign900-numeral/aee/evaluator-aee-after_specify-20261021T104301Z.json",
+      "specs/055-sign900-numeral/aee/evaluator-aee-after_tasks-20261021T104302Z.json",
+      "specs/055-sign900-numeral/build_freeze.py",
+      "specs/055-sign900-numeral/claims.json",
+      "specs/055-sign900-numeral/freeze.json",
+      "specs/055-sign900-numeral/freeze.md",
+      "specs/055-sign900-numeral/spec.md",
+      "specs/055-sign900-numeral/tasks.md",
+      "specs/057-five-sources-heading/adjudication.md",
+      "specs/057-five-sources-heading/aee/aee-after_plan-20261021T114452Z.json",
+      "specs/057-five-sources-heading/aee/aee-after_specify-20261021T114452Z.json",
+      "specs/057-five-sources-heading/aee/aee-after_tasks-20261021T114453Z.json",
+      "specs/057-five-sources-heading/aee/evaluator-aee-after_plan-20261021T114452Z.json",
+      "specs/057-five-sources-heading/aee/evaluator-aee-after_specify-20261021T114452Z.json",
+      "specs/057-five-sources-heading/aee/evaluator-aee-after_tasks-20261021T114453Z.json",
+      "specs/057-five-sources-heading/build_freeze.py",
+      "specs/057-five-sources-heading/claims.json",
+      "specs/057-five-sources-heading/freeze.json",
+      "specs/057-five-sources-heading/freeze.md",
+      "specs/057-five-sources-heading/spec.md"
+     ],
+     "files_named_by_document_id": [
+      "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
+      "glossa-indus/literature/documents/ancient_writing_and_modern_technologies_51831ac9.json",
+      "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt"
+     ],
+     "cleaned_text_copies_found": [
+      "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt"
+     ],
+     "note": "the only cleaned-text copy is the pinned one of step 1, verified by SHA-256 at gate 0.1; no moved or renamed copy exists"
+    },
+    "step_3_recorded_stored_paths": {
+     "stored_path_raw": "glossa-indus\\raw\\user_uploads\\Ancient_Writing_and_Modern_Technologies.pdf",
+     "stored_path_text": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\glossa-indus\\processed\\cleaned_text\\ancient_writing_and_modern_technologies_51831ac9.txt",
+     "raw_path_candidate_in_repo": "glossa-indus/raw/user_uploads/Ancient_Writing_and_Modern_Technologies.pdf",
+     "raw_path_present": false,
+     "stored_path_text_present_on_this_host": false,
+     "note": "the recorded paths are Windows paths of the intake host; no candidate document was produced on this execution host"
+    },
+    "step_4_source_document": {
+     "copies_of_original_filename_in_repo": [],
+     "note": "no copy of the source document was produced by steps 1-3, so no document text layer could be searched; the sub-state is therefore HEADING NOT PRESENT IN HELD TEXT"
+    }
+   },
+   "unblocking_act": "Re-acquisition of the source through ordinary published-source channels, identified by the section 2.1 citation — specifically a copy of the edition the original extraction ran on, so the document text layer can be searched under section 5; the evidence on this row (the occurrence postures and the instance's recorded quote_fragment) supports the possibility that the original extraction harvested a non-heading occurrence, but the held record cannot distinguish that from a heading lost by the text layer",
+   "locator": null
+  },
+  {
+   "source": "S-2",
+   "citation": "Fuls 2023, A Catalog of Indus Signs (CITATIONS.md section A.10)",
+   "claim_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb_statisti_0001",
+   "document_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb",
+   "occurrence_lines": [
+    65,
+    536,
+    612
+   ],
+   "heading_form_lines": [
+    536,
+    612
+   ],
+   "toc_lines": [
+    65
+   ],
+   "location_state": "located",
+   "heading_text": "CHAPTER 3. POSITIONAL ANALYSIS OF INDUS SIGNS",
+   "locator": {
+    "cleaned_text_lines": [
+     536,
+     615
+    ],
+    "heading_line": 536,
+    "passage_artifact": "specs/057-five-sources-heading/passages/passage-S-2.txt",
+    "passage_sha256": "25a0a558f0632bb842c8622ab64aa18da0b41deec14d2d3d0f56c11b6e45c369",
+    "passage_bytes": 4221
+   },
+   "outcome": "PASSAGE EMPTY",
+   "judgement": "The passage held under the heading is the chapter's method: the normalised weighted position calculation (section 3.2.2), a worked histogram example for signs 351 and 720, the classification definitions of section 3.3 (a sign mostly at a text's beginning is labelled an initial sign, INS; one preferably at the end a terminal sign, TMK — stipulative labels, not findings), and the Figure 3.26 caption (seal M-1088, initial cluster 002-820, terminal sign 740, given as a typical example). It states no proposition about sign positions carrying a quantity, a named corpus, or a directional or comparative assertion that could in principle be checked: no sign's positional class is stated as a result, and the chapter's summary (table of contents: section 3.9, p. 91) is not in the held excerpt. A reader can disagree from the quoted passage artifact.",
+   "evidence_ref": "specs/057-five-sources-heading/passages/passage-S-2.txt"
+  },
+  {
+   "source": "S-3",
+   "citation": "Fuls 2013, Positional Analysis of Indus Signs, Voprosi Epigrafiki 7(1): 253-275 (CITATIONS.md section D.9)",
+   "claim_id": "positional_analysis_of_indus_signs_a2bedc93_statisti_0001",
+   "document_id": "positional_analysis_of_indus_signs_a2bedc93",
+   "occurrence_lines": [
+    54,
+    129,
+    206,
+    250,
+    296,
+    314,
+    361,
+    403,
+    462,
+    485,
+    488,
+    493,
+    501,
+    503,
+    538,
+    546,
+    551,
+    610
+   ],
+   "heading_form_lines": [
+    54
+   ],
+   "toc_lines": [],
+   "location_state": "located",
+   "heading_text": "Positional Analysis of Indus Signs",
+   "locator": {
+    "cleaned_text_lines": [
+     54,
+     601
+    ],
+    "heading_line": 54,
+    "passage_artifact": "specs/057-five-sources-heading/passages/passage-S-3.txt",
+    "passage_sha256": "88f291464803e32600b1c13a153c07871c84f36e35762b0bd36b1407e7fb7ffb",
+    "passage_bytes": 29726
+   },
+   "outcome": "CLAIM RECOVERED",
+   "recovered_claim_id": "fuls2013_positional_analysis_057_recovered_0001",
+   "intake_record": "specs/057-five-sources-heading/intake-S3.json",
+   "intake": {
+    "claim_id": "fuls2013_positional_analysis_057_recovered_0001",
+    "stage": "created",
+    "status": "unchecked",
+    "intake": "Spec 057 execution (Phase-419), inside the execution per DD-057-12",
+    "date": "2026-10-21",
+    "source": "S-3",
+    "source_citation": "Fuls 2013, Positional Analysis of Indus Signs, Voprosi Epigrafiki 7(1): 253-275 (CITATIONS.md section D.9)",
+    "source_claim_id": "positional_analysis_of_indus_signs_a2bedc93_statisti_0001",
+    "proposition": "Using a normalised weighted sign position (each sign's position reduced to a standard text length of ten signs, with sign positions weighted linearly by the original text length), Indus signs can be classified by their preferred position as Initial, Early-Medial, Mid-Medial, Late-Medial, Terminal, constant, or constant but not initial or not terminal; doubling, mirroring, hatching, or marking a sign can change its positional classification; and signs 382, 790, 832, and 892 are good candidates for syllables, because syllables should have an almost constant positional distribution while logograms and grammatical markers should fall on restricted syntactic positions.",
+    "numbers": [
+     "3723 texts of them are complete with 13556 signs",
+     "This leaves 2474 complete and different texts, reducing also the number of relevant signs to 9700 signs altogether",
+     "The mean text length are 4.01 signs",
+     "Signs 382, 790, 832, and 892 are good candidates of syllables"
+    ],
+    "corpus_and_conditions": "The ICIT database corpus as stated in the passage: 3898 inscribed artefacts and 4791 texts, of which 3723 complete texts with 13556 signs, reduced to 2474 complete and different texts (identical texts of the same artefact type from the same site reduced to one; multiple-line texts excluded) with 9700 signs; sign list of B. Wells (2006) with 695 signs (last update autumn 2009).",
+    "falsifier_status": "falsifier written from the passage's own logic: Written from the passage's own logic: on the passage's stated corpus, recomputing each sign's normalised weighted positional histogram would fail to separate signs into the stated positional classes, or doubled, mirrored, hatched, or marked signs would in every case keep the positional classification of their unmodified forms, or signs 382, 790, 832, and 892 would show restricted rather than almost constant positional distributions.",
+    "passage_artifact": "specs/057-five-sources-heading/passages/passage-S-3.txt",
+    "passage_sha256": "88f291464803e32600b1c13a153c07871c84f36e35762b0bd36b1407e7fb7ffb",
+    "locator": {
+     "cleaned_text_lines": [
+      54,
+      601
+     ],
+     "heading_line": 54,
+     "passage_artifact": "specs/057-five-sources-heading/passages/passage-S-3.txt",
+     "passage_sha256": "88f291464803e32600b1c13a153c07871c84f36e35762b0bd36b1407e7fb7ffb",
+     "passage_bytes": 29726
+    },
+    "fence": "This act recovered what five passages state. It checked none of it."
+   }
+  },
+  {
+   "source": "S-4",
+   "citation": "Wells 2015, The Archaeology and Epigraphy of Indus Writing (CITATIONS.md section A.7)",
+   "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
+   "document_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
+   "occurrence_lines": [
+    86,
+    167,
+    311,
+    2707,
+    2736,
+    2913,
+    3456,
+    3770,
+    3774,
+    3781
+   ],
+   "heading_form_lines": [
+    3456
+   ],
+   "toc_lines": [
+    86
+   ],
+   "location_state": "located",
+   "heading_text": "Positional Analysis of Indus Signs",
+   "locator": {
+    "cleaned_text_lines": [
+     3455,
+     3822
+    ],
+    "heading_line": 3456,
+    "passage_artifact": "specs/057-five-sources-heading/passages/passage-S-4.txt",
+    "passage_sha256": "af28153c57cb09f8f80e24822677bb7b2bf4d312c6f8669489220d9f4775fe5b",
+    "passage_bytes": 24509
+   },
+   "outcome": "CLAIM RECOVERED",
+   "recovered_claim_id": "wells2015_appendix_ii_positional_analysis_057_recovered_0001",
+   "intake_record": "specs/057-five-sources-heading/intake-S4.json",
+   "intake": {
+    "claim_id": "wells2015_appendix_ii_positional_analysis_057_recovered_0001",
+    "stage": "created",
+    "status": "unchecked",
+    "intake": "Spec 057 execution (Phase-419), inside the execution per DD-057-12",
+    "date": "2026-10-21",
+    "source": "S-4",
+    "source_citation": "Wells 2015, The Archaeology and Epigraphy of Indus Writing (CITATIONS.md section A.7)",
+    "source_claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
+    "proposition": "The positional analysis results in different classifications of Indus signs: signs can be classified as Initial, Early-Medial, Mid-Medial, Late-Medial, or Terminal; doubling, mirroring, hatching, or marking an Indus sign can change its positional classification, most likely indicating a different function or semantic value of the modified sign; and signs 382, 790, 832, and 892 are good candidates for syllabic signs, because logograms and grammatical markers should be found in restricted syntactic positions while syllables should have an almost constant positional distribution.",
+    "numbers": [
+     "a total of 3898 inscribed artefacts (one to three sided) and 4791 texts",
+     "3723 texts of them are complete using a total of 13556 signs",
+     "This leaves 2474 complete and different texts, reducing the total number of relevant signs to 9700 signs",
+     "The mean text length for this sample is 4.01 signs",
+     "Signs 382, 790, 832, and 892 are good candidates"
+    ],
+    "corpus_and_conditions": "The ICIT database corpus as stated in the appendix: 3898 inscribed artefacts and 4791 texts, of which 3723 complete texts using 13556 signs, reduced to 2474 complete and different texts (identical texts from the same artefact type and site reduced to a frequency of 1; multiple-line texts not included) with 9700 signs; updated sign list from Wells (2006) with 695 signs (last update autumn 2010).",
+    "falsifier_status": "falsifier written from the passage's own logic: Written from the passage's own logic: on the passage's stated corpus, recomputing each sign's normalised weighted positional histogram would fail to separate signs into the stated positional classes, or doubled, mirrored, hatched, or marked signs would in every case keep the positional classification of their unmodified forms, or signs 382, 790, 832, and 892 would show restricted rather than almost constant positional distributions.",
+    "passage_artifact": "specs/057-five-sources-heading/passages/passage-S-4.txt",
+    "passage_sha256": "af28153c57cb09f8f80e24822677bb7b2bf4d312c6f8669489220d9f4775fe5b",
+    "locator": {
+     "cleaned_text_lines": [
+      3455,
+      3822
+     ],
+     "heading_line": 3456,
+     "passage_artifact": "specs/057-five-sources-heading/passages/passage-S-4.txt",
+     "passage_sha256": "af28153c57cb09f8f80e24822677bb7b2bf4d312c6f8669489220d9f4775fe5b",
+     "passage_bytes": 24509
+    },
+    "fence": "This act recovered what five passages state. It checked none of it."
+   }
+  },
+  {
+   "source": "S-5",
+   "citation": "Hunt, Without Kings or Conquests (registry file name as recorded)",
+   "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
+   "document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+   "occurrence_lines": [
+    267
+   ],
+   "heading_form_lines": [],
+   "toc_lines": [],
+   "location_state": "located (document, pinned cleaned text); no heading-form occurrence",
+   "outcome": "SOURCE UNLOCATED",
+   "sub_state": "HEADING NOT PRESENT IN HELD TEXT",
+   "search_log": {
+    "step_1_pinned_cleaned_text": "located at its section 2.1 path; SHA-256 matches the freeze pin (gate 0.1)",
+    "step_2_repository_search": {
+     "files_naming_document_id": [
+      "LEDGER.md",
+      "backend/scripts/phase104_claims_evaluation.py",
+      "backend/tests/fixtures/spec029_post_merge_aee150_scores.json",
+      "backend/tests/fixtures/spec029_post_merge_aee_scores.json",
+      "backend/tests/fixtures/spec029_post_phase104_correction_aee150_scores.json",
+      "backend/tests/fixtures/spec029_post_phase104_correction_aee_scores.json",
+      "backend/tests/fixtures/spec029_pre_change_aee_scores.json",
+      "backend/tests/test_spec029_phase104_correction.py",
+      "backend/tests/test_spec029_phase_a.py",
+      "backend/tests/test_spec029_phase_d.py",
+      "backend/tests/test_spec029_phase_g.py",
+      "backend/tests/test_spec029_phase_i.py",
+      "backend/tests/test_spec050_freeze.py",
+      "backend/tests/test_spec057_freeze.py",
+      "glossa-indus/LEDGER.md",
+      "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
+      "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json",
+      "glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+      "glossa-indus/hypotheses/models/hunt_civic_ritual.yaml",
+      "glossa-indus/literature/documents/without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+      "glossa-indus/reports/claim_reports/batch4_claims_report.json",
+      "glossa-indus/reports/phase104_claims_evaluation.json",
+      "reports/phase108_impact_map.json",
+      "reports/phase411_results.json",
+      "reports/phase411_step0_report.md",
+      "specs/029-tao-claim-lifecycle/correct_phase104_carryover.py",
+      "specs/029-tao-claim-lifecycle/ingest_lane2_adoption.py",
+      "specs/029-tao-claim-lifecycle/lane2-adoption-record.md",
+      "specs/029-tao-claim-lifecycle/lane2-drafts/README.md",
+      "specs/029-tao-claim-lifecycle/lane2-drafts/drafts-review.md",
+      "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+      "specs/029-tao-claim-lifecycle/phase-d-run-record.md",
+      "specs/029-tao-claim-lifecycle/phase-e2-record.md",
+      "specs/029-tao-claim-lifecycle/phase104-carryover-correction-record.md",
+      "specs/029-tao-claim-lifecycle/reclassification-ledger.json",
+      "specs/045-hunt-depicted-kinds/adjudication.md",
+      "specs/045-hunt-depicted-kinds/claims.json",
+      "specs/045-hunt-depicted-kinds/freeze.json",
+      "specs/045-hunt-depicted-kinds/freeze.md",
+      "specs/045-hunt-depicted-kinds/osf-spec-registration.md",
+      "specs/045-hunt-depicted-kinds/outcome.md",
+      "specs/045-hunt-depicted-kinds/spec.md",
+      "specs/050-hunt-sky-signs-endings/adjudication.md",
+      "specs/050-hunt-sky-signs-endings/aee/aee-after_plan-20261021T110850Z.json",
+      "specs/050-hunt-sky-signs-endings/aee/aee-after_specify-20261021T110847Z.json",
+      "specs/050-hunt-sky-signs-endings/aee/aee-after_tasks-20261021T110852Z.json",
+      "specs/050-hunt-sky-signs-endings/aee/evaluator-aee-after_plan-20261021T110850Z.json",
+      "specs/050-hunt-sky-signs-endings/aee/evaluator-aee-after_specify-20261021T110847Z.json",
+      "specs/050-hunt-sky-signs-endings/aee/evaluator-aee-after_tasks-20261021T110852Z.json",
+      "specs/050-hunt-sky-signs-endings/claims.json",
+      "specs/050-hunt-sky-signs-endings/freeze.json",
+      "specs/050-hunt-sky-signs-endings/freeze.md",
+      "specs/050-hunt-sky-signs-endings/spec.md",
+      "specs/057-five-sources-heading/aee/aee-after_plan-20261021T114452Z.json",
+      "specs/057-five-sources-heading/aee/aee-after_specify-20261021T114452Z.json",
+      "specs/057-five-sources-heading/aee/aee-after_tasks-20261021T114453Z.json",
+      "specs/057-five-sources-heading/aee/evaluator-aee-after_plan-20261021T114452Z.json",
+      "specs/057-five-sources-heading/aee/evaluator-aee-after_specify-20261021T114452Z.json",
+      "specs/057-five-sources-heading/aee/evaluator-aee-after_tasks-20261021T114453Z.json",
+      "specs/057-five-sources-heading/build_freeze.py",
+      "specs/057-five-sources-heading/claims.json",
+      "specs/057-five-sources-heading/freeze.json",
+      "specs/057-five-sources-heading/freeze.md",
+      "specs/057-five-sources-heading/spec.md"
+     ],
+     "files_named_by_document_id": [
+      "glossa-indus/claims/extracted_claims/without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+      "glossa-indus/literature/documents/without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+      "glossa-indus/processed/cleaned_text/without_kings_or_conquests_the_indus_scr_ce9d98cc.txt"
+     ],
+     "cleaned_text_copies_found": [
+      "glossa-indus/processed/cleaned_text/without_kings_or_conquests_the_indus_scr_ce9d98cc.txt"
+     ],
+     "note": "the only cleaned-text copy is the pinned one of step 1, verified by SHA-256 at gate 0.1; no moved or renamed copy exists"
+    },
+    "step_3_recorded_stored_paths": {
+     "stored_path_raw": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\glossa-indus\\raw\\user_uploads\\Without_Kings_or_Conquests_The_Indus_Scr.pdf",
+     "stored_path_text": "C:\\Users\\trist\\Development\\BitConcepts\\glossa-lab\\glossa-indus\\processed\\cleaned_text\\without_kings_or_conquests_the_indus_scr_ce9d98cc.txt",
+     "raw_path_candidate_in_repo": "glossa-indus/raw/user_uploads/Without_Kings_or_Conquests_The_Indus_Scr.pdf",
+     "raw_path_present": false,
+     "stored_path_text_present_on_this_host": false,
+     "note": "the recorded paths are Windows paths of the intake host; no candidate document was produced on this execution host"
+    },
+    "step_4_source_document": {
+     "copies_of_original_filename_in_repo": [],
+     "note": "no copy of the source document was produced by steps 1-3, so no document text layer could be searched; the sub-state is therefore HEADING NOT PRESENT IN HELD TEXT"
+    }
+   },
+   "unblocking_act": "Re-acquisition of the source through ordinary published-source channels, identified by the section 2.1 citation — specifically a copy of the edition the original extraction ran on, so the document text layer can be searched under section 5; the evidence on this row (the occurrence postures and the instance's recorded quote_fragment) supports the possibility that the original extraction harvested a non-heading occurrence, but the held record cannot distinguish that from a heading lost by the text layer",
+   "locator": null
+  }
+ ],
+ "counts": {
+  "r": 2,
+  "e": 1,
+  "u": 2
+ },
+ "headline_class": "C — PARTIAL RECOVERY WITH UNLOCATED SOURCES",
+ "headline": "Five sources were to be accounted for; 2 yielded a recovered claim ['fuls2013_positional_analysis_057_recovered_0001', 'wells2015_appendix_ii_positional_analysis_057_recovered_0001'], 1 passage(s) were located and state no checkable finding ['S-2'], and 2 source(s) could not be located after the stated search ['S-1 (HEADING NOT PRESENT IN HELD TEXT)', 'S-5 (HEADING NOT PRESENT IN HELD TEXT)']. The unblocking act for each unlocated source is named on its row. The heading record is not retired while a source remains unlocated.",
+ "disposition": "superseded (r >= 1): the heading record is superseded by the recovered claims it pointed at, named in the appended note: ['fuls2013_positional_analysis_057_recovered_0001', 'wells2015_appendix_ii_positional_analysis_057_recovered_0001']",
+ "outcome": "C — PARTIAL RECOVERY WITH UNLOCATED SOURCES",
+ "anchors": {
+  "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+  "before_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+  "after_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+  "byte_identical": true
+ }
+}

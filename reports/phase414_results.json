@@ -1,0 +1,838 @@
+{
+ "anchors": {
+  "byte_identical": true,
+  "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+  "sha256_after": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+  "sha256_before": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
+ },
+ "base_commit": "3200b7b5b6841a7b9567a81368bf84004fd17255",
+ "chain_sentence": "Design D-16 does not join this campaign even though this recovery is the act that would unblock it; D-16 waits for its own planning gate (campaign decision E-7).",
+ "claim_id": "ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
+ "execution_date": "2026-10-21",
+ "executor": "Muse Spark via Muse (AI agent)",
+ "fence": "This result is about how one identified sign behaves in recorded data. It is not evidence of what any sign means, and it does not establish the value six.",
+ "freeze_digest": "42ef82829ade894918b0bf946ac44354224d689202e2f7bf00eb747821bdedfc",
+ "gate_0_4": {
+  "distinct_signs": 393,
+  "export_file": "specs/055-sign900-numeral/strict-corpus-export.jsonl",
+  "export_form": "one JSON object per held record, in the source file's record order: {record_id, signs}, where signs is the record's canonical_grapheme_ids cleaned by the V3 loader's own rules (numeric Mahadevan ids only; '000'/'0' placeholders and '*'-prefixed supplementary tokens dropped), sequence order as stored",
+  "export_sha256": "1e421af1b75f09f49c928ef7eaa86e4c9a382e059d4771f164256a069896e02c",
+  "layer": "the program's V3 / Mahadevan-lineage corpus as held in the database, in its held form: the records of the tracked primary corpus carrying source_system 'indusscript-m77' and sign scheme Mahadevan1977 (the executed Spec 033 precedent for this same layer; the V3 loader's own external Firestore export file is not present on disk, and CORPUS_VERSIONS.md records that the primary corpus already holds the same data in this form)",
+  "occurrence_floor": 5,
+  "records_exported": 2906,
+  "source_file": "glossa-corpus/indus/exports/indus_research.jsonl",
+  "source_file_sha256": "08fc96c8dbc22a37effb65e789b22b144f4baf22be1da55dc3d84db5dc44505e",
+  "target_corpus_identifier": "Mahadevan 287",
+  "target_occurrences": 79,
+  "tokens_total": 11507,
+  "verdict": "PASS"
+ },
+ "headline_wording": "The sign that Fuls's paper numbers 900, identified in Spec 055's recovery record as P154, does not behave as a numeral sign behaves in the pinned strict corpus: on 3 of the three frozen measures it sits inside the range of frequency-matched ordinary signs (per-measure table in the run's results record). The numeral reading the fragment carries is contradicted at the behaviour stage. The identification itself stands as recovered; what fails is the behaviour the reading predicts.",
+ "osf_registration": "tbyqg (approved + public before the run)",
+ "outcome": "NOT NUMERAL-LIKE",
+ "phase": "Phase-414",
+ "pre_counting": {
+  "control_set": {
+   "members": [
+    {
+     "corpus_identifier": "Mahadevan 216",
+     "occurrences": 81
+    },
+    {
+     "corpus_identifier": "Mahadevan 17",
+     "occurrences": 82
+    },
+    {
+     "corpus_identifier": "Mahadevan 403",
+     "occurrences": 83
+    },
+    {
+     "corpus_identifier": "Mahadevan 124",
+     "occurrences": 74
+    },
+    {
+     "corpus_identifier": "Mahadevan 244",
+     "occurrences": 84
+    },
+    {
+     "corpus_identifier": "Mahadevan 204",
+     "occurrences": 73
+    },
+    {
+     "corpus_identifier": "Mahadevan 402",
+     "occurrences": 86
+    },
+    {
+     "corpus_identifier": "Mahadevan 149",
+     "occurrences": 71
+    },
+    {
+     "corpus_identifier": "Mahadevan 51",
+     "occurrences": 90
+    },
+    {
+     "corpus_identifier": "Mahadevan 70",
+     "occurrences": 68
+    }
+   ],
+   "rule": "the 10 ordinary signs (members of neither the numeral set nor the target) whose occurrence counts in the pinned layer are closest to the target's count, ties by corpus identifier ascending (DD-055-11)"
+  },
+  "dry_run": {
+   "control_set": [
+    "Mahadevan 176",
+    "Mahadevan 267",
+    "Mahadevan 59",
+    "Mahadevan 67",
+    "Mahadevan 169",
+    "Mahadevan 211",
+    "Mahadevan 336",
+    "Mahadevan 65",
+    "Mahadevan 245",
+    "Mahadevan 162"
+   ],
+   "mapping": {
+    "control_side_count": 3,
+    "numeral_side_count": 2,
+    "outcome": "MIXED",
+    "per_measure": {
+     "numeral_adjacency_share": {
+      "control_median": 0.35396,
+      "control_range": [
+       0.01462,
+       0.807692
+      ],
+      "control_side": true,
+      "numeral_median": 0.238095,
+      "numeral_range": [
+       0.0,
+       1.0
+      ],
+      "numeral_side": true,
+      "target": 0.082418
+     },
+     "positional_entropy_bits": {
+      "control_median": 2.60556,
+      "control_range": [
+       1.002757,
+       3.059328
+      ],
+      "control_side": true,
+      "numeral_median": 1.75,
+      "numeral_range": [
+       -0.0,
+       2.893777
+      ],
+      "numeral_side": false,
+      "target": 2.939929
+     },
+     "short_text_share": {
+      "control_median": 0.215604,
+      "control_range": [
+       0.149425,
+       0.447368
+      ],
+      "control_side": true,
+      "numeral_median": 0.238095,
+      "numeral_range": [
+       0.0,
+       1.0
+      ],
+      "numeral_side": true,
+      "target": 0.325746
+     }
+    }
+   },
+   "measures": {
+    "numeral_adjacency_share": 0.082418,
+    "occurrences": 1274,
+    "positional_entropy_bits": 2.939929,
+    "short_text_share": 0.325746
+   },
+   "note": "worked dry-run of the section 5 measures and mapping on a non-target sign, as DD-055-16 requires; it produces no target quantity and no finding",
+   "occurrences": 1274,
+   "sign": "Mahadevan 342"
+  },
+  "hedged_members_excluded": [
+   {
+    "corpus_identifier": "Mahadevan 171",
+    "hedge": "suggested, and only 'at least in some context'",
+    "registry_sign_id": "P092",
+    "source_quote": "It is therefore suggested that Sign 415 is a special numerical sign, at least in some context",
+    "source_sign_no": "415",
+    "status": "EXCLUDED from the known-numeral set under DD-055-14 (hedged published identification)"
+   },
+   {
+    "corpus_identifier": "Mahadevan 155",
+    "hedge": "'may also be regarded'; a non-numerical interpretation stated as possible in the same passage",
+    "registry_sign_id": "P114",
+    "source_quote": "Sign 70 may also be regarded as a numerical sign. It often appears together with stroke signs in positional notations (Figure 13). Since Sign 70 often follows two long or short strokes (Sign 2 or 32), a non-numerical interpretation as a bounded cluster is possible as well.",
+    "source_sign_no": "70",
+    "status": "EXCLUDED from the known-numeral set under DD-055-14 (hedged published identification)"
+   }
+  ],
+  "known_numeral_set": {
+   "corpus_identifiers": [
+    "Mahadevan 86",
+    "Mahadevan 87",
+    "Mahadevan 89",
+    "Mahadevan 93",
+    "Mahadevan 94",
+    "Mahadevan 95",
+    "Mahadevan 96",
+    "Mahadevan 97",
+    "Mahadevan 98",
+    "Mahadevan 99",
+    "Mahadevan 100",
+    "Mahadevan 101",
+    "Mahadevan 102",
+    "Mahadevan 103",
+    "Mahadevan 104",
+    "Mahadevan 105",
+    "Mahadevan 106",
+    "Mahadevan 107",
+    "Mahadevan 108",
+    "Mahadevan 109",
+    "Mahadevan 110",
+    "Mahadevan 112",
+    "Mahadevan 114",
+    "Mahadevan 115",
+    "Mahadevan 116",
+    "Mahadevan 118",
+    "Mahadevan 119",
+    "Mahadevan 120",
+    "Mahadevan 121"
+   ],
+   "members": [
+    {
+     "corpus_identifier": "Mahadevan 97",
+     "drawn_description": "Simple, half-height vertical stroke",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P121",
+     "wells_ids": "W001"
+    },
+    {
+     "corpus_identifier": "Mahadevan 98",
+     "drawn_description": "Simple, half-height vertical stroke",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P121",
+     "wells_ids": "W001"
+    },
+    {
+     "corpus_identifier": "Mahadevan 99",
+     "drawn_description": "Two adjacent half-height simple vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P122",
+     "wells_ids": "W002"
+    },
+    {
+     "corpus_identifier": "Mahadevan 100",
+     "drawn_description": "Two adjacent half-height simple vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P122",
+     "wells_ids": "W002"
+    },
+    {
+     "corpus_identifier": "Mahadevan 102",
+     "drawn_description": "Three adjacent half-height simple vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P123",
+     "wells_ids": "W003"
+    },
+    {
+     "corpus_identifier": "Mahadevan 103",
+     "drawn_description": "Three adjacent half-height simple vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P123",
+     "wells_ids": "W003"
+    },
+    {
+     "corpus_identifier": "Mahadevan 104",
+     "drawn_description": "Four adjacent half-height simple vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P124",
+     "wells_ids": "W004|W014"
+    },
+    {
+     "corpus_identifier": "Mahadevan 105",
+     "drawn_description": "Four adjacent half-height simple vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P124",
+     "wells_ids": "W004|W014"
+    },
+    {
+     "corpus_identifier": "Mahadevan 106",
+     "drawn_description": "Five simple vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P125",
+     "wells_ids": "W005|W015"
+    },
+    {
+     "corpus_identifier": "Mahadevan 107",
+     "drawn_description": "Five simple vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P125",
+     "wells_ids": "W005|W015"
+    },
+    {
+     "corpus_identifier": "Mahadevan 108",
+     "drawn_description": "Six short vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P126",
+     "wells_ids": "W006|W016"
+    },
+    {
+     "corpus_identifier": "Mahadevan 109",
+     "drawn_description": "Six short vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P126",
+     "wells_ids": "W006|W016"
+    },
+    {
+     "corpus_identifier": "Mahadevan 110",
+     "drawn_description": "Seven short vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P127",
+     "wells_ids": "W007|W017"
+    },
+    {
+     "corpus_identifier": "Mahadevan 112",
+     "drawn_description": "Seven short vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P127",
+     "wells_ids": "W007|W017"
+    },
+    {
+     "corpus_identifier": "Mahadevan 114",
+     "drawn_description": "Eight short vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P128",
+     "wells_ids": "W018"
+    },
+    {
+     "corpus_identifier": "Mahadevan 115",
+     "drawn_description": "Nine short vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P129",
+     "wells_ids": "W019"
+    },
+    {
+     "corpus_identifier": "Mahadevan 116",
+     "drawn_description": "Nine short vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P129",
+     "wells_ids": "W019"
+    },
+    {
+     "corpus_identifier": "Mahadevan 118",
+     "drawn_description": "Ten short vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P130",
+     "wells_ids": "W020"
+    },
+    {
+     "corpus_identifier": "Mahadevan 103",
+     "drawn_description": "Two small vertical strokes over one small vertical stroke",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P139",
+     "wells_ids": "W013"
+    },
+    {
+     "corpus_identifier": "Mahadevan 101",
+     "drawn_description": "Two stacked small vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P140",
+     "wells_ids": "W012"
+    },
+    {
+     "corpus_identifier": "Mahadevan 119",
+     "drawn_description": "Three rows of off-center or slanted small vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P141",
+     "wells_ids": "W025|W026|W027|W028|W029"
+    },
+    {
+     "corpus_identifier": "Mahadevan 120",
+     "drawn_description": "Three rows of off-center or slanted small vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P141",
+     "wells_ids": "W025|W026|W027|W028|W029"
+    },
+    {
+     "corpus_identifier": "Mahadevan 121",
+     "drawn_description": "Four small vertical strokes above the same, above the same",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P142",
+     "wells_ids": "W055"
+    },
+    {
+     "corpus_identifier": "Mahadevan 86",
+     "drawn_description": "One full-height vertical stroke",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P144",
+     "wells_ids": "W031"
+    },
+    {
+     "corpus_identifier": "Mahadevan 87",
+     "drawn_description": "Two adjacent full-height vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P145",
+     "wells_ids": "W032"
+    },
+    {
+     "corpus_identifier": "Mahadevan 89",
+     "drawn_description": "Three adjacent full-height vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P147",
+     "wells_ids": "W033"
+    },
+    {
+     "corpus_identifier": "Mahadevan 95",
+     "drawn_description": "Four adjacent full-height vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P150",
+     "wells_ids": "W034"
+    },
+    {
+     "corpus_identifier": "Mahadevan 96",
+     "drawn_description": "Five adjacent simple tall vertical strokes",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P151",
+     "wells_ids": "W035"
+    },
+    {
+     "corpus_identifier": "Mahadevan 93",
+     "drawn_description": "Three adjacent full-height vertical strokes, third (and maybe second) stroke is angled away slightly",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P152",
+     "wells_ids": ""
+    },
+    {
+     "corpus_identifier": "Mahadevan 94",
+     "drawn_description": "Three adjacent full-height vertical strokes, third (and maybe second) stroke is angled away slightly",
+     "published_source": "Fuls, 'Ancient Writing and Modern Technologies', SPECIAL NUMERICAL SIGNS: 'The numerical value of stroke signs is most likely the number of strokes' \u2014 the stroke signs are the known numeral signs; this member is a pure stroke group by its registry drawn description",
+     "registry_sign_id": "P152",
+     "wells_ids": ""
+    }
+   ],
+   "rule": "published identifications only: the source document's stroke-sign identification, entered through registry rows whose drawn description is a pure stroke group, crosswalked to Mahadevan corpus identifiers. The target sign is not a member (DD-055-3)."
+  },
+  "target_census": {
+   "corpus_identifier": "Mahadevan 287",
+   "occurrences": 79
+  }
+ },
+ "spec": "055",
+ "step0": {
+  "gate_0_1": {
+   "anchors": {
+    "expected_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+    "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+    "match": true,
+    "observed_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
+   },
+   "claim_record": {
+    "expected_sha256": "e98190894202a2a1c0e314229dcb585c62a0f5c12c059bcabd63b055c42959e8",
+    "file": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
+    "match": true,
+    "observed_sha256": "e98190894202a2a1c0e314229dcb585c62a0f5c12c059bcabd63b055c42959e8"
+   },
+   "crosswalk_registry": {
+    "expected_sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+    "file": "data/crosswalks/canonical_sign_registry.csv",
+    "match": true,
+    "observed_sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420"
+   },
+   "held_text": {
+    "expected_sha256": "1275b795903260221f5226bada352de27471c010e2ad8ace556c548c20da1fc4",
+    "file": "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt",
+    "match": true,
+    "observed_sha256": "1275b795903260221f5226bada352de27471c010e2ad8ace556c548c20da1fc4"
+   },
+   "lane2_drafts": {
+    "expected_sha256": "3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb",
+    "file": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+    "match": true,
+    "observed_sha256": "3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb"
+   },
+   "literature_record": {
+    "expected_sha256": "92e19e6def7eccb42ba0e9f53f5ef3bf9dbb0b9717aa3d675cecb971f5ab0e5c",
+    "file": "glossa-indus/literature/documents/ancient_writing_and_modern_technologies_51831ac9.json",
+    "match": true,
+    "observed_sha256": "92e19e6def7eccb42ba0e9f53f5ef3bf9dbb0b9717aa3d675cecb971f5ab0e5c"
+   },
+   "phase104_evaluation": {
+    "expected_sha256": "2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d",
+    "file": "glossa-indus/reports/phase104_claims_evaluation.json",
+    "match": true,
+    "observed_sha256": "2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d"
+   }
+  },
+  "gate_0_2": {
+   "located_verbatim": true,
+   "sections_located": [
+    "'Sign 900' section (printed p. 68)",
+    "'Numerical value of Sign 900' section with its Table 1 caption (printed pp. 72\u201374)",
+    "summary statement (printed p. 85)"
+   ],
+   "source": "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt"
+  },
+  "gate_0_3": {
+   "note": "the recovery record (output A) is written before the results record and before any measure exists, on every terminal outcome",
+   "recovery_before_verdict": true
+  },
+  "verdict": "PASS"
+ },
+ "step1": {
+  "drawn_sign_match": {
+   "basis": "drawn form only (see recovery record)",
+   "corpus_identifier": "Mahadevan 287",
+   "crosswalk_registry_id": "P154"
+  },
+  "list_named": "the extended Wells (2011, 2015) sign list of 702 distinct signs (Wells 2015; the ICIT database's sign list, Appendix A)",
+  "match_evidence": {
+   "p154_row": {
+    "corpus_freq": "93",
+    "description": "Right parenthesis (perhaps with a backward curve at the bottom)",
+    "mahadevan_ids": "M287",
+    "sign_id": "P154",
+    "wells_ids": "W900"
+   },
+   "plain_right_parenthesis_rows": [
+    {
+     "description": "Right parenthesis (perhaps with a backward curve at the bottom)",
+     "mahadevan_ids": "M287",
+     "sign_id": "P154"
+    }
+   ],
+   "registry_rows": 803,
+   "trap_note": "the W900 value inside the wells_ids cell of the P154 row is recorded here as the frozen trap (F055-C07): it was NOT used as the identification, and its drawn description was NOT treated as a refutation; the match below rests on drawn-form descriptions only",
+   "witness_rows_for_grapheme_900": [
+    {
+     "correspondence_method": "REGISTRY",
+     "note": "W900 is the single-arc grapheme; thickness difference is font weight only.",
+     "sign": "M287",
+     "thesis_source": "PhD 2006, Fig. 3.2 (thesis p. 92); numbering as cross-matched in the held canonical registry (Wells 2015 form of the Wells/ICIT list)",
+     "treatment": "SAME",
+     "verification": "verified"
+    }
+   ]
+  },
+  "naming_statements": [
+   {
+    "locator": "p. 57, opening section (introduction)",
+    "quote": "The signs are coded according to an extended sign list with 702 distinct signs (W ells 2015)."
+   },
+   {
+    "locator": "p. 59, 'SIGN LIST'",
+    "quote": "The sign list by W ells (2011, 2015) has been extended to currently 702 distinct signs"
+   },
+   {
+    "locator": "p. 85, 'SUMMARY'",
+    "quote": "They involve a sign list of about 702 distinct signs"
+   },
+   {
+    "locator": "p. 88, 'APPENDIX A'",
+    "quote": "APPENDIX A: SIGN LIST WITH 702 SIGNS OF THE ICIT DA T ABASE."
+   }
+  ]
+ },
+ "step2": {
+  "control_set": {
+   "Mahadevan 124": {
+    "numeral_adjacency_share": 0.297297,
+    "occurrences": 74,
+    "positional_entropy_bits": 2.476508,
+    "short_text_share": 0.189189
+   },
+   "Mahadevan 149": {
+    "numeral_adjacency_share": 0.098592,
+    "occurrences": 71,
+    "positional_entropy_bits": 2.972423,
+    "short_text_share": 0.239437
+   },
+   "Mahadevan 17": {
+    "numeral_adjacency_share": 0.256098,
+    "occurrences": 82,
+    "positional_entropy_bits": 2.25709,
+    "short_text_share": 0.243902
+   },
+   "Mahadevan 204": {
+    "numeral_adjacency_share": 0.273973,
+    "occurrences": 73,
+    "positional_entropy_bits": 1.490324,
+    "short_text_share": 0.287671
+   },
+   "Mahadevan 216": {
+    "numeral_adjacency_share": 0.185185,
+    "occurrences": 81,
+    "positional_entropy_bits": 2.104172,
+    "short_text_share": 0.395062
+   },
+   "Mahadevan 244": {
+    "numeral_adjacency_share": 0.119048,
+    "occurrences": 84,
+    "positional_entropy_bits": 2.120376,
+    "short_text_share": 0.333333
+   },
+   "Mahadevan 402": {
+    "numeral_adjacency_share": 0.383721,
+    "occurrences": 86,
+    "positional_entropy_bits": 1.890818,
+    "short_text_share": 0.325581
+   },
+   "Mahadevan 403": {
+    "numeral_adjacency_share": 0.662651,
+    "occurrences": 83,
+    "positional_entropy_bits": 2.324056,
+    "short_text_share": 0.349398
+   },
+   "Mahadevan 51": {
+    "numeral_adjacency_share": 0.1,
+    "occurrences": 90,
+    "positional_entropy_bits": 2.73836,
+    "short_text_share": 0.222222
+   },
+   "Mahadevan 70": {
+    "numeral_adjacency_share": 0.308824,
+    "occurrences": 68,
+    "positional_entropy_bits": 2.595535,
+    "short_text_share": 0.161765
+   }
+  },
+  "mapping": {
+   "control_side_count": 3,
+   "numeral_side_count": 1,
+   "outcome": "NOT NUMERAL-LIKE",
+   "per_measure": {
+    "numeral_adjacency_share": {
+     "control_median": 0.265035,
+     "control_range": [
+      0.098592,
+      0.662651
+     ],
+     "control_side": true,
+     "numeral_median": 0.238095,
+     "numeral_range": [
+      0.0,
+      1.0
+     ],
+     "numeral_side": false,
+     "target": 0.455696
+    },
+    "positional_entropy_bits": {
+     "control_median": 2.290573,
+     "control_range": [
+      1.490324,
+      2.972423
+     ],
+     "control_side": true,
+     "numeral_median": 1.75,
+     "numeral_range": [
+      -0.0,
+      2.893777
+     ],
+     "numeral_side": false,
+     "target": 2.708415
+    },
+    "short_text_share": {
+     "control_median": 0.265787,
+     "control_range": [
+      0.161765,
+      0.395062
+     ],
+     "control_side": true,
+     "numeral_median": 0.238095,
+     "numeral_range": [
+      0.0,
+      1.0
+     ],
+     "numeral_side": true,
+     "target": 0.164557
+    }
+   }
+  },
+  "numeral_set": {
+   "Mahadevan 100": {
+    "numeral_adjacency_share": 0.222222,
+    "occurrences": 27,
+    "positional_entropy_bits": 1.698246,
+    "short_text_share": 0.222222
+   },
+   "Mahadevan 101": {
+    "numeral_adjacency_share": 0.0,
+    "occurrences": 1,
+    "positional_entropy_bits": -0.0,
+    "short_text_share": 1.0
+   },
+   "Mahadevan 102": {
+    "numeral_adjacency_share": 0.215827,
+    "occurrences": 139,
+    "positional_entropy_bits": 1.93689,
+    "short_text_share": 0.410072
+   },
+   "Mahadevan 103": {
+    "numeral_adjacency_share": 0.083333,
+    "occurrences": 24,
+    "positional_entropy_bits": 1.176065,
+    "short_text_share": 0.541667
+   },
+   "Mahadevan 104": {
+    "numeral_adjacency_share": 0.419355,
+    "occurrences": 62,
+    "positional_entropy_bits": 2.006217,
+    "short_text_share": 0.5
+   },
+   "Mahadevan 105": {
+    "numeral_adjacency_share": 0.5,
+    "occurrences": 2,
+    "positional_entropy_bits": -0.0,
+    "short_text_share": 0.0
+   },
+   "Mahadevan 106": {
+    "numeral_adjacency_share": 0.285714,
+    "occurrences": 35,
+    "positional_entropy_bits": 2.13876,
+    "short_text_share": 0.457143
+   },
+   "Mahadevan 107": {
+    "numeral_adjacency_share": 0.4,
+    "occurrences": 5,
+    "positional_entropy_bits": 1.521928,
+    "short_text_share": 0.2
+   },
+   "Mahadevan 108": {
+    "numeral_adjacency_share": 0.0,
+    "occurrences": 2,
+    "positional_entropy_bits": 1.0,
+    "short_text_share": 0.0
+   },
+   "Mahadevan 109": {
+    "numeral_adjacency_share": 0.272727,
+    "occurrences": 33,
+    "positional_entropy_bits": 1.898029,
+    "short_text_share": 0.454545
+   },
+   "Mahadevan 110": {
+    "numeral_adjacency_share": 0.166667,
+    "occurrences": 6,
+    "positional_entropy_bits": 1.584963,
+    "short_text_share": 0.666667
+   },
+   "Mahadevan 112": {
+    "numeral_adjacency_share": 0.238095,
+    "occurrences": 63,
+    "positional_entropy_bits": 2.639491,
+    "short_text_share": 0.238095
+   },
+   "Mahadevan 114": {
+    "numeral_adjacency_share": 0.166667,
+    "occurrences": 6,
+    "positional_entropy_bits": 1.792481,
+    "short_text_share": 0.5
+   },
+   "Mahadevan 115": {
+    "numeral_adjacency_share": 0.0,
+    "occurrences": 1,
+    "positional_entropy_bits": -0.0,
+    "short_text_share": 1.0
+   },
+   "Mahadevan 116": {
+    "numeral_adjacency_share": 0.5,
+    "occurrences": 2,
+    "positional_entropy_bits": 1.0,
+    "short_text_share": 0.5
+   },
+   "Mahadevan 118": {
+    "numeral_adjacency_share": 0.0,
+    "occurrences": 1,
+    "positional_entropy_bits": -0.0,
+    "short_text_share": 1.0
+   },
+   "Mahadevan 119": {
+    "numeral_adjacency_share": 0.888889,
+    "occurrences": 9,
+    "positional_entropy_bits": -0.0,
+    "short_text_share": 0.222222
+   },
+   "Mahadevan 120": {
+    "numeral_adjacency_share": 1.0,
+    "occurrences": 1,
+    "positional_entropy_bits": -0.0,
+    "short_text_share": 1.0
+   },
+   "Mahadevan 121": {
+    "numeral_adjacency_share": 0.606061,
+    "occurrences": 66,
+    "positional_entropy_bits": 2.632286,
+    "short_text_share": 0.151515
+   },
+   "Mahadevan 86": {
+    "numeral_adjacency_share": 0.272727,
+    "occurrences": 121,
+    "positional_entropy_bits": 2.3091,
+    "short_text_share": 0.280992
+   },
+   "Mahadevan 87": {
+    "numeral_adjacency_share": 0.270588,
+    "occurrences": 255,
+    "positional_entropy_bits": 2.586006,
+    "short_text_share": 0.176471
+   },
+   "Mahadevan 89": {
+    "numeral_adjacency_share": 0.169399,
+    "occurrences": 183,
+    "positional_entropy_bits": 2.893777,
+    "short_text_share": 0.15847
+   },
+   "Mahadevan 93": {
+    "numeral_adjacency_share": 0.2,
+    "occurrences": 5,
+    "positional_entropy_bits": 1.921928,
+    "short_text_share": 0.2
+   },
+   "Mahadevan 94": {
+    "numeral_adjacency_share": 0.0,
+    "occurrences": 8,
+    "positional_entropy_bits": 1.75,
+    "short_text_share": 0.125
+   },
+   "Mahadevan 95": {
+    "numeral_adjacency_share": 0.0,
+    "occurrences": 7,
+    "positional_entropy_bits": 1.378783,
+    "short_text_share": 0.142857
+   },
+   "Mahadevan 96": {
+    "numeral_adjacency_share": 0.052632,
+    "occurrences": 19,
+    "positional_entropy_bits": 1.762702,
+    "short_text_share": 0.526316
+   },
+   "Mahadevan 97": {
+    "numeral_adjacency_share": 0.241379,
+    "occurrences": 87,
+    "positional_entropy_bits": 2.414527,
+    "short_text_share": 0.103448
+   },
+   "Mahadevan 98": {
+    "numeral_adjacency_share": 0.428571,
+    "occurrences": 84,
+    "positional_entropy_bits": 2.383664,
+    "short_text_share": 0.059524
+   },
+   "Mahadevan 99": {
+    "numeral_adjacency_share": 0.261789,
+    "occurrences": 615,
+    "positional_entropy_bits": 1.723662,
+    "short_text_share": 0.131707
+   }
+  },
+  "target": {
+   "corpus_identifier": "Mahadevan 287",
+   "numeral_adjacency_share": 0.455696,
+   "occurrences": 79,
+   "positional_entropy_bits": 2.708415,
+   "short_text_share": 0.164557
+  }
+ }
+}

@@ -1,0 +1,33 @@
+{
+ "claim_id": "wells2015_appendix_ii_positional_analysis_057_recovered_0001",
+ "stage": "created",
+ "status": "unchecked",
+ "intake": "Spec 057 execution (Phase-419), inside the execution per DD-057-12",
+ "date": "2026-10-21",
+ "source": "S-4",
+ "source_citation": "Wells 2015, The Archaeology and Epigraphy of Indus Writing (CITATIONS.md section A.7)",
+ "source_claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
+ "proposition": "The positional analysis results in different classifications of Indus signs: signs can be classified as Initial, Early-Medial, Mid-Medial, Late-Medial, or Terminal; doubling, mirroring, hatching, or marking an Indus sign can change its positional classification, most likely indicating a different function or semantic value of the modified sign; and signs 382, 790, 832, and 892 are good candidates for syllabic signs, because logograms and grammatical markers should be found in restricted syntactic positions while syllables should have an almost constant positional distribution.",
+ "numbers": [
+  "a total of 3898 inscribed artefacts (one to three sided) and 4791 texts",
+  "3723 texts of them are complete using a total of 13556 signs",
+  "This leaves 2474 complete and different texts, reducing the total number of relevant signs to 9700 signs",
+  "The mean text length for this sample is 4.01 signs",
+  "Signs 382, 790, 832, and 892 are good candidates"
+ ],
+ "corpus_and_conditions": "The ICIT database corpus as stated in the appendix: 3898 inscribed artefacts and 4791 texts, of which 3723 complete texts using 13556 signs, reduced to 2474 complete and different texts (identical texts from the same artefact type and site reduced to a frequency of 1; multiple-line texts not included) with 9700 signs; updated sign list from Wells (2006) with 695 signs (last update autumn 2010).",
+ "falsifier_status": "falsifier written from the passage's own logic: Written from the passage's own logic: on the passage's stated corpus, recomputing each sign's normalised weighted positional histogram would fail to separate signs into the stated positional classes, or doubled, mirrored, hatched, or marked signs would in every case keep the positional classification of their unmodified forms, or signs 382, 790, 832, and 892 would show restricted rather than almost constant positional distributions.",
+ "passage_artifact": "specs/057-five-sources-heading/passages/passage-S-4.txt",
+ "passage_sha256": "af28153c57cb09f8f80e24822677bb7b2bf4d312c6f8669489220d9f4775fe5b",
+ "locator": {
+  "cleaned_text_lines": [
+   3455,
+   3822
+  ],
+  "heading_line": 3456,
+  "passage_artifact": "specs/057-five-sources-heading/passages/passage-S-4.txt",
+  "passage_sha256": "af28153c57cb09f8f80e24822677bb7b2bf4d312c6f8669489220d9f4775fe5b",
+  "passage_bytes": 24509
+ },
+ "fence": "This act recovered what five passages state. It checked none of it."
+}

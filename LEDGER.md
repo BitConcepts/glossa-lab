@@ -7775,6 +7775,558 @@ AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
 
+## 2026-10-21 — Spec 057 EXECUTED (Phase-419): Class C — PARTIAL RECOVERY WITH UNLOCATED SOURCES (r=2, e=1, u=2)
+
+Spec 057 was executed as Phase-419 under the
+frozen contract (freeze digest 237b923a…;
+OSF registration chq5e approved and public,
+DOI 10.17605/OSF.IO/CHQ5E), in Wave 3 group 2
+of the runnable-experiments campaign. Step 0
+passed in full: gate 0.1 input integrity —
+every §2 live pin recomputes to its freeze
+value (five cleaned texts, five registry
+files, Phase-104 2d0b83e8…, lane-2 drafts
+3f645c9a…, anchors df0cf620…), verified in
+the foreground by two independent routes;
+the extracted-claims store was asserted by
+entry facts under the freeze's Spec 038 form
+(the S-4 claims file's live hash differs
+from its freeze constant only by Spec 046's
+first_check append to a different claim in
+the same file; the …_statisti_0003 entry's
+facts are unchanged — recorded on the
+record, not passed over). Gate 0.2
+source-set integrity: the canonical record
+carries exactly the four recorded evidence
+instances with fingerprint a4874349…. The
+accounting, one outcome per source: S-1
+SOURCE UNLOCATED, sub-state HEADING NOT
+PRESENT IN HELD TEXT (its two occurrences
+are a running sentence at line 102 and a
+bibliography entry for S-3's paper at line
+663; the full stated search ran, no document
+copy exists in the repository, and the
+unblocking act — re-acquisition of the
+edition the extraction ran on — is named on
+the row). S-2 PASSAGE EMPTY: the held
+Search Inside excerpt of Fuls 2023 Chapter 3
+(lines 536–615; chapter running heads at
+lines 536 and 612) states the normalised
+weighted position method, a worked histogram
+example, and the stipulative INS/TMK
+classification definitions of §3.3, and no
+checkable finding — the judgement is stated
+on the record with the byte-exact passage
+artifact (25a0a558…) as its evidence. S-3
+CLAIM RECOVERED: Fuls 2013's paper, its own
+title as heading, findings-bearing body
+lines 54–601 (artifact 88f29146…); its §7
+Summary states the positional classification
+finding (signs classifiable as Initial,
+Early-Medial, Mid-Medial, Late-Medial,
+Terminal, constant, or constant-but-not;
+doubling/mirroring/hatching/marking can
+change a sign's class; signs 382, 790, 832,
+892 are good syllable candidates) on the
+ICIT corpus as stated (3723 complete texts,
+13556 signs, reduced 2474 texts / 9700
+signs, mean length 4.01) — recovered as
+fuls2013_positional_analysis_057_recovered_0001
+at the created stage, unchecked, intake
+record intake-S3.json. S-4 CLAIM RECOVERED:
+Wells 2015 Appendix II, heading at line
+3456, passage lines 3455–3822 (artifact
+af28153c…); its Summary states the same
+classification finding in the appendix's own
+terms (classification list Initial through
+Terminal; modified signs; the same four
+syllable candidates; the same corpus
+numbers as stated) — recovered as
+wells2015_appendix_ii_positional_analysis_057_recovered_0001
+at the created stage, unchecked, intake
+record intake-S4.json. S-5 SOURCE UNLOCATED,
+sub-state HEADING NOT PRESENT IN HELD TEXT
+(its single occurrence at line 267 is
+sentence-initial inside a running paragraph;
+stated search and unblocking act as S-1).
+Headline class C in the frozen §7.1 wording,
+counts (2, 1, 2) shown beside it. Disposition
+(§7.2, r ≥ 1): the heading record is
+superseded by the two recovered claims,
+by appended dated disposition note only —
+no pre-existing field altered (removing the
+append reproduces the pre-act file
+byte-identically), status and stage
+unchanged. Hypothesis F057-C14 borne out.
+No claim was checked, no positional finding
+is established by this act, and the passage
+artifacts are internal records under
+license_status "unclear". This act recovered
+what five passages state. It checked none of
+it. Anchors asserted byte-identical before
+and after (df0cf620…). Records:
+specs/057-five-sources-heading/outcome.md,
+specs/057-five-sources-heading/passages/,
+specs/057-five-sources-heading/intake-S3.json,
+specs/057-five-sources-heading/intake-S4.json,
+reports/phase419_results.json,
+reports/phase419_five_sources_report.md.
+## 2026-10-21 — Spec 058 EXECUTED (Phase-420): LOCALISED TO SIGNS
+
+Spec 058 was executed as Phase-420 under the
+frozen contract (freeze digest 8bdd4764…; OSF
+registration 86dgh approved and public, DOI
+10.17605/OSF.IO/86DGH), in Wave 3 Group 2 of the
+runnable-experiments campaign — design D-21 arm A
+only; arm B stays blocked and no AI substitution
+for human coders was designed or run (F058-C06).
+Step 0 passed in full, in frozen order: gate 0.1
+every spec §2.1 input recomputes to its freeze
+pin (verified in the foreground by two
+independent routes — git blob and GitHub contents
+API — at the run's base 3200b7b5); gate 0.2 the
+Phase-132 pilot-pass record set produced at the
+execution venue (the main-checkout machine's
+gitignored store, read-only; the main checkout
+was never modified) at the pilot report's §9
+inventory — frame.json, 50 Pass A, 50 Pass B, 10
+gold, 50 adjudication records, effort log 320
+events — with a per-file SHA-256 manifest of the
+162-file set recorded in the results JSON; gate
+0.3 frame identity exact; gate 0.4 the pinned
+phase132_metrics.py, imported unchanged,
+reproduces the committed metrics file in full
+(0.20 P and M; 0.4798; 0.4286; estimator 0.05;
+totals 191/190/40/189; every per-object flag);
+gate 0.5 taxonomy exact (identity 93, legibility
+45, count 11, key 10, orientation 2, order 1;
+total 162); gate 0.6 census 40 mismatched
+objects. Tabulations over the frozen alignment:
+E = 103 mismatch events (88 SUBSTITUTION, 15
+INDEL); summed involvement 191. **LOCALISED TO
+SIGNS (the frozen §5.2 wording): the 10
+most-involved signs account for 54.5% (104/191)
+of all mismatch involvement — UNK, P310, P144,
+UNMAPPED:M817, P145, P245, P119, P184, P268,
+P324 — with the mandatory UNK sentence carried:
+UNK itself is the most-involved value (53/191,
+27.7% of involvement), so the localisation is in
+part a localisation to illegibility.** The
+object-type locus did not fire: Seals carry
+77.7% (80/103) of events but a 9.7-point
+enrichment over their 68.0% frame share, below
+the frozen 10-point margin (DD-058-8). The
+segmentation locus did not fire: INDEL share
+14.6% (the registered proxy, spec §8(4)).
+First divergence falls at alignment position 1
+in 21 of 40 objects, with UNK the most-involved
+value there too (26). The descriptive
+UNK-excluded secondary (no headline): E = 50,
+top-10 share 41.5% (BETWEEN — the concentration
+does not survive setting illegibility aside,
+reported as found); the M-space sensitivity
+agrees descriptively (top-10 53.9%). The claim
+STUDY-SPEC-023/PHASE-132+383 stands CONTRADICTED
+exactly as recorded; this entry and the outcome
+record are its dated mechanism-account append —
+the lane-2 drafts file is a frozen pin and was
+not edited. Anchors asserted byte-identical
+before and after (df0cf620…). Foundation check
+at the run: 40 passed / 0 failed / 8 warnings.
+Records:
+specs/058-transcription-disagreement-mechanism/outcome.md,
+reports/phase420_results.json (3d140333…),
+reports/phase420_report.md (b8634d76…).
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+## 2026-10-21 — Spec 055 (Phase-414) executed — NOT NUMERAL-LIKE
+
+Spec 055 ("Sign 900 Means Six": identify the sign, then
+test it as a numeral; design D-15) was executed as
+Phase-414 under its frozen contract (freeze digest
+42ef82829ade894918b0bf946ac44354224d689202e2f7bf00eb747821bdedfc),
+in Wave 3 group 2 of the runnable-experiments campaign.
+The execution gate was satisfied before the run: OSF
+registration tbyqg is approved + public.
+
+Step 0 passed in full: every spec section 2 input pin
+recomputed by two independent routes at the run's base
+(3200b7b5) and matched (claim record e9819089…, held
+cleaned text 1275b795…, literature record 92e19e6d…,
+Phase-104 evaluation 2d0b83e8…, crosswalk registry
+8a0b2a82…, lane-2 drafts 3f645c9a…, anchors df0cf620…);
+the source produced from the held copy with the
+sign-900 material located verbatim (Table 1's numeric
+grid did not survive the held copy's extraction —
+caption and prose recovered, nothing reconstructed);
+the recovery record written before any verdict
+wording.
+
+Stage 1 — IDENTIFIED. The source's sign list is named
+from the document's own text (four verbatim naming
+statements, printed pp. 57, 59, 85, 88): the extended
+Wells (2011, 2015) sign list of 702 distinct signs.
+The drawn sign was matched by drawn form only: the
+named list's sign 900 is the single-arc grapheme (the
+verified Phase-123 Wells segmentation witness, row
+M287, from Wells's PhD 2006 Figure 3.2 plates), and
+exactly one registry row is a plain right parenthesis
+with no added element — P154 ("Right parenthesis
+(perhaps with a backward curve at the bottom)"),
+whose Mahadevan crosswalk is M287. The registry's
+W900 cell on that row is recorded as the frozen trap
+(F055-C07) and was not used as the identification.
+The recovery is preserved in the section 6 form:
+specs/055-sign900-numeral/source-table-recovery.json
+(schema glossa.source-table-recovery/1), SHA-256
+439f1449b8d7707d1feb88ef34e2edf90d3d192ba5c6f30bfa29cdf34b48852d.
+The sign-700 statements are located by locator only
+(printed p. 70; pp. 72–74) and adjudicated in no way:
+Design D-16 does not join this campaign even though
+this recovery is the act that would unblock it; D-16
+waits for its own planning gate (campaign decision
+E-7).
+
+Gate 0.4 passed: the strict-corpus layer (the
+Mahadevan-lineage corpus as held — the indusscript-m77
+records of the tracked primary corpus, the executed
+Spec 033 precedent for this layer) was exported in
+full and pinned (specs/055-sign900-numeral/
+strict-corpus-export.jsonl, SHA-256
+1e421af1b75f09f49c928ef7eaa86e4c9a382e059d4771f164256a069896e02c;
+2,906 records, 11,507 tokens); the identified sign,
+Mahadevan 287, stands at 79 occurrences, above the
+frozen floor of 5.
+
+Stage 2 outcome, in the frozen wording: "The sign
+that Fuls's paper numbers 900, identified in Spec
+055's recovery record as P154, does not behave as a
+numeral sign behaves in the pinned strict corpus: on
+3 of the three frozen measures it sits inside the
+range of frequency-matched ordinary signs. The
+numeral reading the fragment carries is contradicted
+at the behaviour stage. The identification itself
+stands as recovered; what fails is the behaviour the
+reading predicts." The known-numeral set was fixed
+before counting from the source's published
+stroke-sign identification (29 Mahadevan identifiers;
+the target excluded; Signs 415 and 70 hedged and
+excluded under DD-055-14); the control set by the
+frozen nearest-10 rule; a dry-run on Mahadevan 342
+preceded the target (DD-055-16). Measures for the
+target: short-text share 0.164557, numeral adjacency
+share 0.455696, positional entropy 2.708415 bits —
+numeral-side 1, control-side 3, NOT NUMERAL-LIKE by
+the section 5.3 mapping alone. The claim hypothesis
+(F055-C03) is falsified at the behaviour stage. No
+outcome of this spec establishes the value six: the
+source's own argument for six is preserved in the
+recovery record as source material and was evidence
+at no stage. Records: reports/phase414_results.json
+(SHA-256 173a67a1d22651b1da03da0c40457e7234298fc6686dc22f3c2b6a25a2a5a6d5),
+reports/phase414_sign900_report.md, graph node
+IndusPhase414Sign900Numeral (registration verified by
+import), the appended first_check entry on the
+claim's record, and specs/055-sign900-numeral/
+outcome.md. Anchors asserted byte-identical before
+and after (df0cf620… at both points).
+
+## 2026-10-21 — Spec 059 EXECUTED (Phase-421): CLOSED AT STEP 0 — JOIN GATE NOT MET
+
+Spec 059 (design D-22, the seal/tablet
+difference on a better join) was executed as
+Phase-421 under the frozen contract (freeze
+digest bba1caca…; OSF registration yfw7h
+approved and public, DOI
+10.17605/OSF.IO/YFW7H), in Wave 3 group 2 of
+the runnable-experiments campaign. Graph-first
+build: backend/scripts/phase421_f1_object_join.py,
+graph node IndusPhase421F1ObjectJoin registered
+and verified by import before the run. Gate 0.1
+PASS: every spec section 2 pin and every
+DD-059-9 object-identifier source pin
+recomputes to its freeze-record value, verified
+in the foreground by two independent routes
+(committed pins: Phase-136 results 11a07413…,
+Stage 2(a) freeze c65a4b9b…, Phase-136 builder
+d5ceec46…, Phase-141 report d442f8d2…, combined
+report 6a4f5d26…, registry 8a0b2a82…, Spec 034
+outcome c0cc615d…, Spec 037 outcome 28e444f2…,
+anchors df0cf620…, intake schema b94d03ad…,
+Phase-398 builder 278f16b0…, intake validator
+02b24e33…; local-store pins: horus84 layer
+c368f290…, CISI vols 1–2 e0d698f9… /
+e751244e…, ICIT converted keyed layer v2
+bbfdbcd5…). Gate 0.2 PASS: the original
+concordance join reproduced exactly (5,679
+layer rows; 2,895 matched; 2 ambiguous; 2,782
+unmatched). Gate 0.3 PASS: the object-ID join
+dataset built by the pinned route-(b)
+construction (5,018 records carrying
+provenance.object_id) validated under the
+pinned Phase-130 schema — verdict pass,
+0 errors, 0 warnings — and censused against
+the catalogue's 3,493 distinct objects:
+**2,899 joined rows; 2,780 unjoined (661
+carrying no identifier, 2,119 whose
+identifier resolves to zero catalogue
+objects); 0 ambiguous; 2,479 distinct
+catalogue objects joined to.** The census was
+derived twice (intake-dataset route and
+lineage-direct route) with every row's joined
+classification in agreement; five raw-value
+discrepancies between the lineage layer and
+its converted form are recorded per row in
+the census and change no classification.
+Gate 0.4 FAIL: 2,899 joined rows = 51.0477%
+against the bar adopted at DD-059-7 (joined
+share at least 61.0%, at least 3,465 of 5,679
+rows) — a shortfall of 566 rows. The
+object-ID join adds exactly 4 rows over the
+original join (the two H-311 rows and the
+trailing-space references L-78 and M-929) and
+loses none. The execution therefore closed
+**CLOSED AT STEP 0 — JOIN GATE NOT MET** in
+the frozen section 3.5 wording, with the
+census published as the finding. No F1
+quantity was computed — no terminal mapping,
+no CMH statistic, no p-value, no odds ratio —
+and STUDY-SPEC-024/F1 stands exactly as
+recorded: SUPPORTED on its original joined
+subset, its "on the joined subset" scope
+unchanged. The closure establishes nothing
+about the claim; it is a measured property of
+the available catalogue data. Anchors asserted
+byte-identical before and after (df0cf620…).
+Records: specs/059-f1-object-join/outcome.md,
+reports/phase421_results.json (SHA-256
+3948cd01…), reports/phase421_join_census.json
+(95282931…), reports/phase421_report.md
+(167584e1…); the script is deterministic
+(byte-identical rerun).
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.
+
+## 2026-10-21 — Spec 043 (Phase-410) EXECUTED: PRED-2026-012 closed PROVENANCE — CANNOT BE RUN AS WRITTEN at step 0, check 0.3 (unscored)
+
+Phase-410 executed the frozen Spec 043 contract
+(freeze digest 8a8a334f…; OSF registration
+vmcra approved and public) in Wave 3 Group 2
+of the runnable-experiments campaign, under
+the campaign approval's execution
+authorization (adjudication.md §7.6), with
+the step-0 provenance adjudication running
+first, before any Phase 5 lookup, as the
+frozen order requires. Check 0.1 PASS: all
+seven frozen sources hashed to their pins,
+re-derived by two independent routes. Check
+0.2 PASS: the registry enumeration over 803
+rows reproduced the draft census exactly
+(791 uncoded, 12 coded; ITM = P056, P324,
+P378, P385), the re-derivation of all 803
+icit_function values from the pinned builder
+rule agreed exactly (zero mismatches), the
+held records verified (P098 carries no
+code), and the cross-check read in full (611
+records: 579 empty, 32 free-text glosses, no
+ITM, no LOG) with every disagreement recorded
+sign-by-sign, all of the expected kind.
+**Check 0.3 — the provenance gate — FAIL on
+all three limbs; the study closed
+PROVENANCE — CANNOT BE RUN AS WRITTEN,
+unscored.** The evidence set was produced in
+full: D1 the pinned builder ("from ICIT docs
++ Fuls 2013"; W740 glossed "Initial Cluster
+Terminal Marker"), D2 the pinned parser with
+its test (function "(from Wells)" read off
+the same catalog line as a positional class),
+D3 Fuls 2013 "Positional Analysis of Indus
+Signs" (held cleaned text, 9ed24098…,
+two-route), and D4 Wells 2015 "The
+Archaeology and Epigraphy of Indus Writing"
+(held cleaned text, 62acf855…, two-route).
+Class definition: positional — Wells
+classifies signs "according to their
+preferred text position" (Fuls 2013 §2), the
+ICTM class is named "since they mark the end
+of initial clusters" (§3.7), and Wells 2015
+(ch. 3) defines it by the same cluster-final
+role. Per-sign basis: every stated basis is
+positional (W740 terminal distribution; W820,
+W817, W861 initial distribution), and W231
+(P056) has no stated basis at all — silence,
+which the frozen standard (DD-043-10) fixes
+as failure. Source agreement: Wells' published
+ICTM class is exactly signs 060, 001, 002
+(Wells 2015, ch. 3) — none a builder ITM key;
+817/820/861 are published as initial signs,
+820 also as a terminal marker, and W231 is
+omitted where the table asserts ITM. The LOG
+trace is recorded in the same form and gates
+nothing (DD-043-12): sign 520 is "the other
+common TM" in Wells 2015, not LOG, and no
+per-sign LOG basis is stated for sign 700.
+Check 0.4 never ran: the Phase 5 output was
+byte-hashed at 0.1 and never opened, the
+sanity anchor was never reproduced, and **no
+Phase 5 assignment was looked up for any
+sign**. No share, coverage figure, or verdict
+exists. PRED-2026-012 remains unscored, its
+§3 Outcome standing PENDING; PRED-2026-007's
+PARTIALLY CONFIRMED stands untouched. The
+closure is recorded in the register by dated
+§6 append only (insertions-only
+prefix-verified; the Phase D pin advanced by
+name a ninth time), and it records what the
+classification's assignments rest on — it is
+not a verdict on the criterion and not a
+refutation. Records:
+specs/043-pred-2026-007-registry-frame/outcome.md,
+reports/phase410_results.json (step-0 record
+sha256 019c65991835505c7f8ecac11e3b62f5b01b1
+fe825bed3c46eb23fdb2879c948),
+reports/phase410_step0_report.md.
+
+## 2026-10-21 — Spec 053 EXECUTED (Phase-413): STRICT CORPUS NOT PINNABLE at gate 0.3
+
+Spec 053 was executed as Phase-413 under the
+frozen contract (freeze digest fd2d5cb8…; OSF
+registration s9yfe approved and public), in
+Wave 3 Group 2 of the runnable-experiments
+campaign (design D-07, arm A only; arm B
+trigger-armed and not joined, campaign E-3),
+under the graph-first build (script
+backend/scripts/phase413_yadav_zipf_controls.py;
+node IndusPhase413YadavZipfControls; registration
+verified by import before the run). Gate 0.1
+PASS: every spec §2 pin recomputes to its freeze
+value, verified by two independent routes (claim
+file 90476623…, anchors df0cf620… — 287 anchors,
+94 strict_sa_independent — crosswalk 4ace1a61…,
+Mahadevan–Parpola crosswalk 9ebd7723…, Phase-43
+record 78a6c219…, re-read in the same pass: no
+Zipf fit, exactly as DD-053-11 recorded; no
+Phase-43 estimator was sought or substituted).
+Gate 0.2 PASS: the §4.2 estimator the freeze
+specified completely recovered the planted
+parameters — fitted α 1.256 (error 0.056,
+tolerance 0.10) and q 2.72 (error 0.72,
+tolerance 1.0) from α 1.20 / q 2.0, V 200,
+N 50,000, seed 20261021. **Gate 0.3 FAIL — the
+execution closed STRICT CORPUS NOT PINNABLE in
+the frozen §6 wording.** The V3 /
+Mahadevan-lineage layer's only loader of record
+reads the Firestore 'indusarrays' dump at
+glossa-corpus/indus/sources/rmrl/raw/indusscript-probe/firestore_indusarrays_full.jsonl,
+which is absent from the tree (the sources/
+subtree is untracked) and from the programme's
+main checkout; the loader loads zero sequences,
+so the layer cannot be exported or pinned. No
+database copy exists in the execution tree, and
+the main-checkout database (inspected read-only)
+holds nine texts and no V3 Indus corpus. No
+other layer in the tree is the corpus the
+Phase-43 record names (Firestore source, 3,916
+records / 3,137 sequences / 2,665 dockeys /
+12,494 instances): the site-attributed layer
+carries 5,679 records, the V1 export 15,508
+mixed-source objects, the ICIT export 3,085
+ICIT-encoded sequences, and the Holdat path is
+absent and a different compilation besides. No
+layer was substituted and no rule invented.
+Gates 0.4 and 0.5 were NOT REACHED: no control
+count was entered (no judgement on the control
+set is recorded or implied), no census exists,
+no system was fitted, the §4.4 condition was
+never evaluated, and no sensitivity was
+computed. The claim yadav_2009_arxiv_manual_001
+stands exactly as recorded (strongly supported;
+recorded exponent about 1.35); no strength
+label was appended and its record was not
+edited. Anchors asserted byte-identical before
+and after (df0cf620…). Foundation check at the
+run: 40 passed / 0 failed / 8 warnings. Records:
+specs/053-yadav-zipf-controls/outcome.md,
+reports/phase413_results.json,
+reports/phase413_step0_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-21 — Spec 042 EXECUTED (Phase-407): THIN at gate 0.4 — the tablet stratum is too thin
+
+Spec 042 (design D-28, the object-type split of
+Spec 028's Arm B) executed in full under the
+runnable-experiments campaign approved
+2026-10-21 (Wave 3; campaign member 19), as
+Phase-407. The execution gate was satisfied:
+the frozen contract's OSF registration tmyzg
+is approved and public (freeze digest
+6be2988d7f4c290591d36f391ac84a772f18a9121e35ddd0e251956b5260f753).
+Graph-first build: backend/scripts/
+phase407_arm_b_object_type_split.py, graph node
+IndusPhase407ArmBObjectTypeSplit registered and
+verified by import before the run. Every spec
+section 2 pin was re-derived in the foreground
+by two independent routes (working-tree
+sha256sum; git-blob hashlib at the base commit
+3200b7b5) and agreed with the freeze record on
+all six inputs. Gate 0.1 PASS: every section 2
+input hashes to its freeze-record value.
+Gate 0.2 PASS: the frozen population flow,
+re-run on the Phase-393 machinery inputs
+(supplied from the program's existing local
+downloads and hash-verified, bbfdbcd5… /
+c368f290…), reproduces the recorded counts
+exactly (5,679 / 4,531 / 4,505 / 3,605 /
+3,144 / 3,030), the recorded flow dict of both
+the Phase-393 results and the Spec 028 margins
+audit, the recorded Arm B analysis set, its
+site x type cell table (identical to the
+margins audit's, cell for cell), and the 125
+sign columns. Gate 0.3 PASS: the partition
+census — SEAL 1,768 + TAB 1,262 = 3,030, no
+record of any other type (per site: Chanhu-daro
+52/2, Dholavira 96/15, Harappa 361/1,076,
+Kalibangan 49/3, Lothal 72/2, Mohenjo-daro
+1,138/164). **Gate 0.4 fired THIN: the seal
+stratum clears the floor at all 6 sites
+(minimum Kalibangan, 49), but the tablet
+stratum carries at least 20 inscriptions at
+only 2 of the 6 sites and is recorded TOO
+THIN with its counts; under DD-042-2 the
+execution closed at that gate with headline
+THIN, in the spec's pre-written section 4.3
+wording.** Neither stratum was computed,
+gate 0.5 (the pooled regression) was not
+reached, and no verdict is recorded: the
+section 1.2 hypothesis is unjudged, object
+type is not exonerated, and Spec 028's Arm B
+INCONCLUSIVE verdict stands exactly as
+recorded, unedited. Per-stratum period and
+preservation mixes are published with the
+record (described, not controlled; Spec
+037's 49% compilation-relativity caution
+restated). Anchors asserted byte-identical
+before and after (df0cf620…). Records:
+specs/042-arm-b-object-type-split/outcome.md,
+reports/phase407_results.json (SHA-256
+6f0f5a4f37918d7acb2e899b916131d133d13fc6cecd3b2f4b03662d96919d72),
+reports/phase407_report.md (SHA-256
+67f0cc005508e52e304bff03c277834558abc06c25d299e587b2bb4898a6c37e)
+— both digests verified by two independent
+routes, and the script deterministic
+(byte-identical on a second run).
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
 ## 2026-10-21 — Spec 056 (Phase-418) executed — IDENTIFICATION FAILED
 
 Spec 056 (design D-17, the sign-821 fragment

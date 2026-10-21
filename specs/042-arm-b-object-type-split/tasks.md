@@ -68,28 +68,44 @@
 
 ## Execution — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0, part 1** (spec §3 gates
+      Executed 2026-10-21 (Phase-407): script
+      `backend/scripts/phase407_arm_b_object_type_split.py`,
+      node `IndusPhase407ArmBObjectTypeSplit`
+      registered and verified by import before
+      the run.
+- [x] **E2 — Step 0, part 1** (spec §3 gates
       0.1–0.3): input integrity against the
       freeze pins; population reproduction
       against the recorded flow counts;
       partition census published. Any failure
       stops the run as INVALID before margins.
-- [ ] **E3 — Step 0, part 2** (gates 0.4–0.5):
+      Executed 2026-10-21: gates 0.1, 0.2, and
+      0.3 all PASS (record in `outcome.md` §2).
+- [x] **E3 — Step 0, part 2** (gates 0.4–0.5):
       stratum floors from the census (a THIN
       closure ends the execution here, with
       the census as its finding); pooled Arm B
       regression reproduced exactly. Any
       mismatch stops the run as INVALID.
+      Executed 2026-10-21: gate 0.4 fired —
+      the tablet stratum is TOO THIN (at least
+      20 inscriptions at only 2 of the 6
+      sites) — and the execution closed THIN
+      at that gate under DD-042-2; gate 0.5
+      was not reached.
 - [ ] **E4 — Primaries** (spec §4): seal
       stratum and tablet stratum, each with
       its controls and full site jackknife,
       drop-Harappa named in both. A stratum
       whose controls fail is NOT ADJUDICATED
       and the headline follows spec §9.
-- [ ] **E5 — Outcome:** the §6 record —
+      Closed in substance by the gate-0.4 THIN
+      closure (`outcome.md`): the primaries
+      cannot run under this frozen contract.
+- [x] **E5 — Outcome:** the §6 record —
       results JSON and report under the
       headline rules (corpus label, census,
       per-stratum quantities and verdicts,

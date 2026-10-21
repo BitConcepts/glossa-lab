@@ -39,7 +39,7 @@
       as a DRAFT PR and left unmerged for the
       freeze decision, CI state reported from
       the run's own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE
       — not run on this draft).** At the freeze
       act, run `run_aee.py assess`
       after_specify, after_plan, and
@@ -52,7 +52,7 @@
       claim text, and the freeze digest is
       computed over the recovered register
       exactly once, at freeze.
-- [ ] **L5 — Freeze-decision items.** The
+- [x] **L5 — Freeze-decision items.** The
       freeze decides OP-061-1…OP-061-5 (the
       search frame: grid and rounding, ceiling,
       trials and draws, simulation seed, and
@@ -62,7 +62,7 @@
       calibration), and confirms or openly
       overturns DD-061-2, DD-061-3, and
       DD-061-5.
-- [ ] **L6 — Freeze.** On the owner's freeze
+- [x] **L6 — Freeze.** On the owner's freeze
       order, with L4 passed and L5 decided:
       hooks recorded, `freeze.md` finalised,
       `freeze.json` recomputed over the
@@ -73,7 +73,7 @@
       (gate 0.4 reads it from there), and the
       execution phase number allocated
       (DD-061-7).
-- [ ] **L7 — Freeze PR merged**, house gates
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
 

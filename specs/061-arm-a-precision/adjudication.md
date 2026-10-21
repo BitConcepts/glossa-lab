@@ -406,3 +406,351 @@ arose.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## 9. Freeze decisions — 2026-10-21
+
+> ## FREEZE — 2026-10-21
+>
+> Recorded at the freeze act under the
+> runnable-experiments campaign (Wave 2).
+> The AEE lifecycle hooks ran over the
+> register first (recovered to 0.7-draft;
+> `aee/freeze-aee-note.md`); the digest in
+> `freeze.json` was computed exactly once
+> over the recovered register and the
+> finalised freeze texts (the Spec 035
+> ordering). This section is append-only
+> beside §§1–8, which stand unedited.
+
+### 9.1 The composite pin (DEF-061-1) — remedy confirmed
+
+- **DD-061-8 — The composite pin of DD-061-1
+  is confirmed as the remedy for DEF-061-1,
+  and the pin set is verified complete at
+  this freeze.** Every component was
+  re-derived in the foreground by two
+  independent routes (contents-API raw and
+  git-blob) at `main`
+  `a3509525fab64e22a4c053d7bbed14c7083a14d3`:
+  results `0a1657a8af84615afbee95164cd1c10ea6fc5bc53d1b5a0a006b1862fa5ff607`
+  (19,753 bytes), corpus layer
+  `c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98`
+  (1,204,144 bytes), pipeline
+  `6c2ff91c41bbb283a513127c6ab7157c1805b640ba0d846f9c7d3349ab8a7b0e`
+  (15,127 bytes), margins audit
+  `15ae0281bb003f3b02742819349d3905004a282b28e9a2c00f433ac41c04bb6d`
+  (5,355 bytes), Spec 028 freeze record
+  `376cd8e7ebc21ef7c31d43270607f475bb7e685cdcbe88205d7092e17fc526cc`
+  (4,212 bytes), and anchors
+  `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569`
+  (570,344 bytes). The two routes agree
+  byte-for-byte on every file and every hash
+  equals its §2 pin. No different remedy is
+  directed: the phrase "the recorded
+  distribution" in this spec points at the
+  composite — summary plus inputs plus
+  machinery — and gate 0.3's exact
+  reproduction of the recorded summary
+  (median 0.00878393455594817, interval
+  [0.004626892186724407, 0.01297407559730989],
+  share 0.6231155778894473) stands as its
+  verification. One further record was read
+  at the freeze, not as a pin: Spec 028's
+  `calibration.json` (SHA-256
+  `4198747b42121fea817db2e5ad82da10cca6118fef39bb14dc13cdf56ac204ff`,
+  both routes), cited in DD-061-13.
+
+### 9.2 The search frame (DEF-061-2) — every element fixed, with its derivation
+
+- **DD-061-9 — Grid and rounding (OP-061-1):
+  the grid is the integer multiples
+  m = 1, 2, …, 25, step 1, examined in
+  ascending order.** Derivation: the design's
+  method scales the recorded site samples "at
+  multiples of their current sizes" — the
+  grid is the multiples themselves, taken at
+  the integer step the word denotes. At an
+  integer multiple the added total is
+  (m − 1) × 1,593 and the per-site added
+  counts are exactly (m − 1) × (1,302, 111,
+  74, 54, 52) — the proportional distribution
+  of DD-061-3 in exact integers — so the
+  rounding half of OP-061-1 does not arise:
+  no rounding rule is needed, and none is
+  supplied. (For the record only: were a
+  proportional allocation of a non-multiple
+  total ever required by a different act, the
+  program's frozen allocation rule is the
+  largest-remainder rule of
+  `pipeline393.quota_allocation`. This frame
+  never uses it.)
+- **DD-061-10 — Ceiling (OP-061-2): the
+  search ceiling is m = 25.** Derivation from
+  the frozen record: the pipeline's cell
+  inclusion threshold is 49 members
+  (`pipeline393.N_CELL`, frozen). The margins
+  audit's Arm A cells below threshold at the
+  recorded scale are the four TAB cells —
+  Dholavira 15, Kalibangan 3, Chanhu-daro 2,
+  Lothal 2. The smallest integer multiple at
+  which every recorded cell reaches the
+  threshold is ⌈49/2⌉ = 25, set by the two
+  2-record cells (reaching 50). At m = 25 the
+  scaled world carries all 10 site×type cells
+  and a draw reaches the frozen design's
+  maximum size, 10 × 49 = 490 inscriptions;
+  beyond m = 25 no larger multiple changes
+  which cells the frozen machinery includes
+  or how many inscriptions a draw contains,
+  so the search ends where the frozen draw
+  design stops changing. The added total at
+  the ceiling is 24 × 1,593 = 38,232 (world
+  total 39,825). "No target" under this frame
+  is frame-scoped exactly as spec §7.4
+  states — a statement about m ≤ 25, never
+  about all possible data.
+- **DD-061-11 — Trials, draws, permutations
+  (OP-061-3): 199 trials per grid point;
+  199 draws and 499 permutations per trial,
+  inherited from the frozen design.** The
+  draft's proposal is adopted, on its stated
+  ground: draws and permutations are the
+  pipeline's frozen constants (DRAWS = 199,
+  PERMS = 499) and nothing in the record
+  directs otherwise. The trial count takes
+  the same value as the draw count — the
+  frozen replication count of the machinery
+  being scaled — so a grid point's resolution
+  share is estimated on the same replication
+  scale as every Phase-393 summary. The
+  proposal's reporting requirement is fixed
+  mechanically: the binomial standard
+  deviation of the share,
+  √(p(1 − p)/199) — 0.0284 at the 0.80
+  qualification threshold — is reported beside
+  every share in the grid table (spec §6).
+- **DD-061-12 — Simulation seed (OP-061-4):
+  20261021.** OP-061-4 requires a fresh seed
+  fixed in the freeze record, and forbids
+  reusing 20261012, which belongs to the
+  recorded run and to gate 0.3. The freeze
+  takes the freeze-date seed, following the
+  frozen Spec 053 precedent (its
+  synthetic-process and self-test seeds are
+  20261021, its freeze date). Stream
+  discipline (fixed here, binding at
+  execution): one NumPy Generator per
+  scenario, seeded 20261021, consumed in
+  ascending grid order; within a grid point,
+  trials in order 1…199; within a trial,
+  first the template slot resampling (sites
+  in alphabetical order), then the frozen
+  world generation, then the frozen pipeline
+  run. DD-061-13's calibration is
+  deterministic and consumes no simulation
+  RNG.
+- **DD-061-13 — Effect-imposition
+  construction (OP-061-5): candidate (b),
+  the frozen positive-control manner,
+  calibrated per scenario.** The construction
+  is fixed mechanically, in full:
+  1. *Pooled composition.* The pooled
+     mapped-token frequency over the Arm A
+     eligible population, computed exactly as
+     Spec 028's `build_calibration.py`
+     computes it (frozen count-vector
+     machinery; composition columns from
+     `build_margins_audit.composition_columns`;
+     eligible records at the five non-Harappa
+     analysis sites — the margins audit's own
+     description of its pooled source).
+  2. *Imposed per-site composition.* For site
+     s, the pooled composition with the
+     columns of s's positive-control sign set
+     — the margins audit's pinned
+     `positive_control_sign_sets` for Arm A,
+     10 signs per site — multiplied by a boost
+     factor b ≥ 1 and renormalised to sum 1.
+     This is verbatim the frozen
+     positive-control construction of
+     `build_calibration.py` (which fixes
+     b = POSITIVE_BOOST = 3.0 for its control);
+     here b is the calibration variable.
+  3. *Calibration.* b is chosen per scenario
+     so that the frozen estimator, applied to
+     the constructed population in expectation,
+     returns adjusted R² equal to the
+     scenario's θ: inscription i at site s
+     carries the expected count vector
+     p_s(b) × n_legible(i), and the frozen
+     `pipeline393` PERMANOVA + `adjusted_r2`
+     over the full recorded Arm A population
+     (permutations off) is a deterministic
+     function A(b). At b = 1 every site's
+     composition is the pooled composition,
+     every expected proportion vector is
+     identical, all Bray–Curtis distances are
+     zero, and A(1) = 1 − 1592/1588 =
+     −0.0025189…, the frozen formula's null
+     offset at n = 1,593, g = 5. At b = 3 the
+     bracket is recorded to close above both
+     scenarios: Spec 028's recorded Arm A
+     positive control at the frozen boost 3.0
+     returned median adjusted R²
+     0.023963353007570576 (`calibration.json`,
+     §9.1). b is found by bisection on
+     [1, 3], at most 100 iterations, stopping
+     when |A(b) − θ| ≤ 1e-6; the achieved b
+     and A(b) are recorded in the results
+     JSON. The tolerance derives from the
+     record's own geometry: the smallest
+     distance the computation must respect is
+     Scenario 1's distance to the margin,
+     0.01 − 0.00878393455594817 =
+     0.00121606544405183, and 1e-6 is more
+     than a thousand times smaller, so
+     calibration error cannot confuse the
+     scenarios' geometry.
+  4. *Trial world.* At grid point m, the
+     template is the recorded Arm A entries
+     with each site's entries resampled with
+     replacement to m × its recorded site
+     total; the world's vectors are generated
+     by the frozen `pipeline393.synthetic_entries`
+     under the imposed compositions; the trial
+     statistic is the frozen
+     `run_pipeline_cells` on that world,
+     summarised by the frozen `summarise`;
+     the trial's interval is its
+     `adj_r2_interval_95`, and resolution is
+     judged under §4.4 exactly as drafted.
+  Why (b) and not the other candidates: (b)
+  is the only candidate whose every component
+  already exists in the pinned record — the
+  perturbation pattern in `build_calibration.py`,
+  the sign sets in the pinned margins audit,
+  the world generation and estimator in the
+  pinned pipeline. Candidate (a) requires a
+  "recorded site-difference direction" and a
+  shift operator that no record defines;
+  adopting it would mean inventing the
+  operator, which the campaign's Part 7
+  tripwire forbids. Candidate (c) stays
+  rejected for the draft's reason: the
+  design's criterion is stated over trials of
+  a resampled interval, which an analytic
+  width-scaling produces none of. One limit
+  is stated openly: calibration targets the
+  constructed population's expected adjusted
+  R² under the frozen estimator on the full
+  population, while the trial machinery
+  measures resolution under the frozen
+  equal-cell draw design around that world;
+  the two weightings differ (population vs
+  cell-equal), and the freeze records the
+  difference rather than hiding it (spec §8,
+  added at this freeze).
+- **Gate 0.5 (added at this freeze).** Before
+  any trial, per scenario: the calibration
+  bracket is verified (A(1) < θ < A(3),
+  recomputed) and the bisection achieves
+  |A(b) − θ| ≤ 1e-6 within 100 iterations.
+  Any failure stops the run as **CANNOT BE
+  RUN AS WRITTEN** — the construction cannot
+  impose the scenario's θ, and no other
+  construction may be supplied at run time.
+  The gate is written into spec §3 at this
+  freeze; the draft's gate 0.4 already
+  fail-closes on a missing frame, and 0.5 is
+  the frame's own verification.
+
+### 9.3 The remaining open items
+
+- **DD-061-14 — OSF (OP-061-6): yes.** The
+  spec files its own OSF contract
+  registration at the freeze, under campaign
+  decision E-1 (`osf-spec-registration.md`).
+  Arm A2 needs none — its test is already
+  registered (osf.io/7m35w) — and none is
+  filed for it.
+- **DD-061-15 — Calibration of the scaling
+  simulation (OP-061-7): required, in three
+  mechanical forms.** (i) Gate 0.3's exact
+  reproduction of the recorded summary at the
+  recorded scale, as drafted. (ii) Gate 0.5's
+  calibration verification: the imposed
+  worlds' defining check — the frozen
+  estimator on the constructed population in
+  expectation — recomputed and recorded per
+  scenario before any trial. (iii) The m = 1
+  grid point is computed and published in
+  the grid table like every other point: its
+  worlds are imposed-θ worlds at the
+  recorded scale, so a construction that
+  cannot behave at the recorded scale shows
+  there first, in the open. No further
+  planted-θ run is required: the draft asked
+  whether gate 0.3 suffices for the imposed
+  worlds, and the freeze's answer is that
+  0.3 covers the recorded machinery while
+  (ii) and (iii) cover the imposed worlds —
+  each check mechanical, none discretionary
+  at run time.
+- **DD-061-16 — Phase-423 is allocated to
+  Spec 061's execution.** Verified at this
+  freeze: no repo record (root LEDGER, the
+  frozen specs' freeze records) allocates
+  Phase-423; the campaign tracker assigns
+  Phases 419–422 to Specs 057–060 in freeze
+  order and 423 to this spec. DD-061-7's
+  allocation-at-freeze rule is discharged in
+  this number.
+- **DD-061-17 — The DD-038-10 AEE gate
+  reading is adopted** (zero correctness
+  failure modes and no claim below 0.70 =
+  substantive pass; draft-cap residuals are
+  recorded openly in `aee/freeze-aee-note.md`,
+  never edited away).
+
+### 9.4 Draft decisions confirmed or standing
+
+DD-061-1 (composite pin) stands, its remedy
+confirmed in DD-061-8. **DD-061-2 is
+confirmed**: resolution is strict exclusion —
+the design's word is "exclude", and a touching
+bound does not resolve. **DD-061-3 is
+confirmed**: the per-site distribution is
+proportional to the recorded site totals —
+and under DD-061-9's integer grid it is exact.
+**DD-061-5 is confirmed**: the operative
+(trigger) target T* is the larger returned
+target; a single returned target is operative
+with its scenario condition; no returned
+target leaves the trigger unable to fire on
+this record. The trigger definition and its
+E-3 consequence stand exactly as §6 records
+them — Phase-130-verified new non-Harappa
+intake reaching T*, judged with per-site
+conformance at the mini planning gate the
+trigger queues. DD-061-4, DD-061-6, and
+DD-061-7 stand as drafted (DD-061-7
+discharged by DD-061-16).
+
+### 9.5 Register recovery at the freeze gate
+
+The register was recovered from 0.5-draft to
+0.7-draft at the freeze gate, in the Spec
+035/038/056 form: evidence normalised to
+engine values at 0.6-draft; the freeze
+rulings of this section carried into the
+boundaries of the claims they govern
+(F061-C03, F061-C12, and the claims named in
+the register's recovery note) before the
+hooks ran; irreducibility-challenged claim
+texts, if any, restated as single head
+propositions with carried clauses moved into
+boundaries. The full hook record — rounds,
+failure-mode census, and the DD-061-17
+reading — is in `aee/freeze-aee-note.md`.
+No claim's falsifier, scenario value, or
+outcome wording changed in recovery.

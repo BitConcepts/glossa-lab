@@ -1,19 +1,49 @@
 # Spec 061 — Spec 028 Arm A: the Precision Computation (Arm A1 of Design D-27)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-21
+> ## FROZEN — 2026-10-21
 >
-> Drafted under the runnable-experiments campaign
+> Frozen under the runnable-experiments campaign
 > plan approved by the owner AS WRITTEN on
-> 2026-10-21
-> (`~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md`),
-> Part 2, member 18: design D-27, **arm A1 only**.
-> The portfolio triage of 2026-10-21 found D-27
-> **RIPE (arm A1)**. Drafting is the act this
-> campaign approval covers; **the freeze and the
-> execution of Spec 061 are separate later acts.**
-> No AEE lifecycle hooks have run on this draft;
-> they are a freeze gate. Nothing in this draft
-> has been computed, frozen, registered, or filed.
+> 2026-10-21 (campaign decision E-1: this spec
+> files its own OSF contract registration at
+> its freeze; decision E-3 governs arm A2,
+> `adjudication.md` §6). This spec is campaign
+> member 18 (design D-27, **arm A1 only**). The
+> freeze decisions DD-061-8 to DD-061-17 are
+> recorded in `adjudication.md` §9; DD-061-1 to
+> DD-061-7 stand as drafted, with DD-061-2,
+> DD-061-3, and DD-061-5 confirmed there.
+>
+> **The frame ruling (DD-061-9 to DD-061-13).**
+> The draft left the search frame open by
+> design (DEF-061-2): grid, ceiling, trials,
+> seed, and the effect-imposition construction
+> each change the returned target, and none
+> may be supplied at run time. The freeze fixes
+> every element on the record, in §4.7 below:
+> the integer multiplier grid m = 1…25 (the
+> design's "multiples", at which the
+> proportional per-site distribution is exact
+> in integers); the ceiling m = 25, derived
+> from the frozen 49-member cell threshold and
+> the margins audit's excluded cells; 199
+> trials per grid point, with the frozen 199
+> draws and 499 permutations per trial; the
+> simulation seed 20261021; and the
+> effect-imposition construction — candidate
+> (b), the frozen positive-control manner of
+> Spec 028's calibration, its boost factor
+> calibrated per scenario until the frozen
+> estimator on the constructed population
+> returns the scenario's θ, verified at gate
+> 0.5. Candidate (a) is not adopted (no record
+> defines its operator) and candidate (c) stays
+> rejected (the design's criterion is stated
+> over trials). DEF-061-1's remedy is confirmed
+> (DD-061-8): the distribution pin is
+> composite, its five components re-verified
+> by two routes at the freeze, and gate 0.3's
+> exact-reproduction standard stands.
 >
 > **Scope fence (campaign decision E-3).** Arm A2 —
 > the decisive rerun of the frozen Arm A test — is
@@ -24,13 +54,17 @@
 > §6 and in claim F061-C14. A fired trigger queues
 > a mini planning gate; it does not join this pass.
 >
-> The execution phase number is **unassigned** at
-> this draft. Phase-400 is Spec 036's, Phase-401
-> Spec 038's, Phase-402 Spec 037's, and Phase-403
-> Spec 039's; Spec 040 allocated none. Spec 061
-> allocates its phase number at the freeze act,
-> from the merged record as it then stands
-> (DD-061-7).
+> Execution runs as **Phase-423**, allocated at
+> this freeze (DD-061-16) — Phase-419 to
+> Phase-422 are allocated to Specs 057 to 060
+> in the campaign's freeze order, and no repo
+> record allocated Phase-423 before this act.
+> Nothing in this contract has been computed:
+> no trial has run, no world has been built,
+> and no target has been estimated. Execution
+> awaits this freeze merging, the OSF
+> registration's approval act, and a separate
+> execution order.
 
 **Design source:** D-27, arm A1, in the
 experiment-design packet at PR #195
@@ -217,6 +251,20 @@ repaired at run time.
   the doctrine makes a tripwire, not
   discretion.
 
+- **0.5 Construction calibration (added at
+  the freeze, DD-061-13/DD-061-15).** Per
+  scenario, the §4.7 calibration is verified
+  before any trial: the bracket recomputes
+  (A(1) < θ < A(3) under the frozen estimator
+  on the constructed population in expectation)
+  and the bisection achieves |A(b) − θ| ≤ 1e-6
+  within 100 iterations, with the achieved b
+  and A(b) recorded. Any failure stops the run
+  as **CANNOT BE RUN AS WRITTEN** — the
+  construction cannot impose the scenario's θ,
+  and no other construction may be supplied at
+  run time.
+
 ## 4. The precision computation
 
 Computation-first: this spec's whole product
@@ -274,11 +322,9 @@ Each trial:
    data in every output — under the
    freeze-fixed effect-imposition construction
    that makes the world's true adjusted-R²
-   effect the scenario's θ (OP-061-5; the
-   draft names the candidate constructions in
-   `adjudication.md` and does not choose
-   between them, because the choice changes
-   the target);
+   effect the scenario's θ (OP-061-5, decided
+   at the freeze as DD-061-13: the construction
+   of §4.7);
 2. runs the frozen Arm A machinery on that
    world (the §2 pipeline; the recorded draw
    design — cell rarefaction, R draws,
@@ -358,6 +404,102 @@ and is not smuggled in as a sensitivity), no
 S-complete variant, no Arm B quantity, and no
 re-adjudication of Arm A. The pooled and LOSO
 record stands exactly as Phase-393 left it.
+
+### 4.7 The frozen search frame (freeze-fixed; gate 0.4 reads it here)
+
+Every element below was open at draft
+(DEF-061-2, OP-061-1…OP-061-5 in
+`adjudication.md` §5) and is fixed at the
+freeze with its derivation (DD-061-9…
+DD-061-13 in `adjudication.md` §9). Gate 0.4
+reads the frame from this section and the
+freeze record together; any element missing
+or altered closes the run before any trial.
+
+| Element | Frozen value |
+|---|---|
+| Multiplier grid | Integer multiples m = 1, 2, …, 25, step 1, examined in ascending order of total added inscriptions (added total at m is (m − 1) × 1,593) |
+| Search ceiling | m = 25 (added total 38,232; world total 39,825) — the smallest multiple at which every recorded site×type cell reaches the frozen 49-member inclusion threshold; at the ceiling a draw reaches the frozen design's maximum size, 10 cells × 49 = 490 inscriptions |
+| Trials per grid point | 199 |
+| Draws per trial | 199 (the pipeline's frozen DRAWS) |
+| Permutations per draw | 499 (the pipeline's frozen PERMS) |
+| Simulation seed | 20261021, with the stream discipline below |
+| Effect-imposition construction | Candidate (b), stated mechanically below |
+| Per-site distribution | Proportional to the recorded site totals (DD-061-3); at integer multiples the per-site added counts are exactly (m − 1) × (1,302, 111, 74, 54, 52), so no rounding rule is needed or supplied |
+
+**Stream discipline.** One NumPy Generator per
+scenario, seeded 20261021, consumed in
+ascending grid order; within a grid point,
+trials in order 1…199; within a trial, first
+the template slot resampling (sites in
+alphabetical order), then the frozen world
+generation, then the frozen pipeline run. The
+calibration below is deterministic and
+consumes no simulation RNG.
+
+**The effect-imposition construction
+(DD-061-13).** For a scenario θ:
+
+1. *Pooled composition:* the pooled
+   mapped-token frequency over the Arm A
+   eligible population, computed exactly as
+   Spec 028's `build_calibration.py` computes
+   it (frozen count-vector machinery;
+   composition columns from
+   `build_margins_audit.composition_columns`;
+   eligible records at the five non-Harappa
+   analysis sites).
+2. *Imposed composition per site:* the pooled
+   composition with the columns of the site's
+   positive-control sign set (the pinned
+   margins audit's `positive_control_sign_sets`
+   for Arm A, 10 signs per site) multiplied by
+   a boost factor b ≥ 1 and renormalised to
+   sum 1 — verbatim the frozen positive-control
+   construction of `build_calibration.py`,
+   with b as the calibration variable instead
+   of the control's fixed POSITIVE_BOOST = 3.0.
+3. *Calibration:* b is chosen so the frozen
+   estimator on the constructed population in
+   expectation returns θ — inscription i at
+   site s carries expected count vector
+   p_s(b) × n_legible(i), and the frozen
+   `pipeline393` PERMANOVA + `adjusted_r2` over
+   the full recorded population (permutations
+   off) is the deterministic function A(b).
+   A(1) = 1 − 1592/1588 = −0.0025189… (at b = 1
+   all sites share the pooled composition and
+   every Bray–Curtis distance is zero). The
+   bracket [1, 3] is recorded to close above
+   both θ values (Spec 028's recorded positive
+   control at b = 3: median adjusted R²
+   0.023963353007570576). b is found by
+   bisection on [1, 3], at most 100 iterations,
+   stopping when |A(b) − θ| ≤ 1e-6; the
+   achieved b and A(b) are recorded in the
+   results JSON (gate 0.5 verifies this before
+   any trial).
+4. *Trial world at grid point m:* the template
+   is the recorded Arm A entries with each
+   site's entries resampled with replacement
+   to m × its recorded site total; the world's
+   vectors are generated by the frozen
+   `pipeline393.synthetic_entries` under the
+   imposed compositions; the trial statistic
+   is the frozen `run_pipeline_cells` on that
+   world, summarised by the frozen `summarise`;
+   the trial's interval is its
+   `adj_r2_interval_95`, judged under §4.4.
+
+Candidate (a) is not adopted: no record
+defines a site-difference direction or a shift
+operator, and inventing one is the assumption
+the campaign's Part 7 tripwire forbids.
+Candidate (c) stays rejected for the draft's
+reason: the design's criterion is stated over
+trials of a resampled interval, which an
+analytic width-scaling produces none of. The
+calibration's stated limit is recorded in §8.
 
 ## 5. Outcomes (the full set, wordings pre-written)
 
@@ -453,9 +595,12 @@ headline paragraph or first table:
    recorded; θ₂ = 0.015) and the 0.01 margin;
 3. the full grid table of §4.5 (every grid
    point, both scenarios, the resolution
-   shares), the frozen search frame in full
-   (grid, ceiling, trials, draws, seed,
-   effect-imposition construction), and, for
+   shares, each with its binomial standard
+   deviation under DD-061-11), the frozen
+   search frame in full (grid, ceiling, trials,
+   draws, seed, effect-imposition construction),
+   the per-scenario calibration record (the
+   achieved boost b and A(b) of §4.7), and, for
    each returned target, its total, multiple,
    and per-site integer distribution;
 4. the headline word of §5 and, where a target
@@ -521,6 +666,21 @@ byte-identical before and after.
   reproduce its own summary on the pinned
   inputs, this computation honestly does not
   run.
+- **The calibration and the trials weight the
+  world differently (stated at the freeze,
+  DD-061-13).** Calibration targets the
+  constructed population's expected adjusted
+  R² under the frozen estimator applied to the
+  full population, while the trial machinery
+  measures resolution under the frozen
+  equal-cell draw design (49 inscriptions per
+  included cell) around that world. The two
+  weightings — population-proportional versus
+  cell-equal — are both the frozen program's
+  own, and their difference is part of what
+  the computation measures; it is stated here
+  so no reader mistakes the imposed θ for a
+  draw-design quantity.
 - **Resampled data is tidier than real data.**
   Additions simulated from the recorded sites
   inherit those sites' compositions and the
@@ -561,7 +721,9 @@ Execution ends in exactly one of:
   recorded distribution does not reproduce
   (0.3).
 - **CANNOT BE RUN AS WRITTEN** — the frozen
-  search frame is incomplete (0.4).
+  search frame is incomplete (0.4), or the
+  construction cannot impose a scenario's θ
+  (0.5).
 
 ## 10. Execution shape (gated; NOT run by this draft)
 

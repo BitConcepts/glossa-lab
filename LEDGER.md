@@ -6834,10 +6834,410 @@ registration). The AEE lifecycle hooks have not
 run on this draft; they are the freeze gate.
 Nothing was frozen, executed, or assigned by this
 draft.
+## 2026-10-20 - Spec 037 DRAFTED: CISI 3.1 concordance spine and HARP provenance annex (design only)
+
+Under the owner's order of 2026-10-20 to move the
+CISI follow-on uses forward, Spec 037 was drafted
+as a DRAFT PR and left unmerged for the owner's
+freeze decision. It designs the two candidate
+uses the CISI 3.1 intake assessed (intake report
+sections 7.5-7.6), over material held under the
+Phase-130 gate (restricted store PROVENANCE entry
+22: local use, extraction, and publishable derived
+statistics permitted; redistribution of scans or
+row data prohibited; nothing derived enters git).
+Workstream A is the pilot test of the intake's 693
+exact-string matches against corpus_master: all
+693 graded as a census under a fixed ladder (site
+mandatory; object type mandatory where graded, a
+seal and a seal impression distinct classes; FC /
+excavation / museum corroboration where records
+exist on both sides; number-level ambiguity bars
+VERIFIED) into VERIFIED / CONFLICT / UNRESOLVED,
+with a seeded hand-check stratum attributing
+conflicts to causes, a 20 percent conflict-share
+halt rule on the spine build, and the spine itself
+written only as a local table in the restricted
+store. Workstream B is a descriptive annex of the
+HARP rows' dig-year, lot, and period-code
+structure, floor caveat attached; it does not
+change the Spec 031 (Q7) record and feeds no
+verdict. The fences are in the draft's first
+section: a string match is not a same-object join;
+the concordance is a finding aid, not evidence
+about readings; no PRED-2026 entry can be scored
+from this material (the tables carry no sign
+transcriptions). Governed register F037-C01..C15;
+draft digest
+f5c489f17ad671470d6d18cd76b52defc09fa25280d3f90c326f290ee79ec140
+over register 0.5-draft; AEE lifecycle hooks not
+run (a freeze gate). Nothing was executed, no
+join was computed, no candidate was graded, and
+no portion row content was read for the design:
+the draft rests on the intake's aggregates, the
+gate record, and byte-level integrity checks.
+Execution is Phase-401, gated on the owner's
+separate freeze and execution orders.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 — Phase-400 outcome: PRED-2026-011 CONFIRMED (2 of 2)
+
+Phase-400 executed the frozen Spec 036 contract on
+2026-10-20, under the owner's do-all order. Step 0
+passed in full, in the frozen order: the prediction's
+preregistration (t6whq) stood accepted and public; all
+registered input pins matched; the CISI-Mohenjo-daro
+pool re-derived as registered (179 inscriptions,
+filtered-pool manifest hash matched), the recorded
+classification reproduced exactly (28 classifiable
+signs; unscreened INITIAL set {P000, P217, P324}), and
+the registered mappability screen re-applied returned
+{P217, P324} exactly, with P000's exclusion reproduced
+as a screen outcome; and crosswalk coverage passed
+(P217 → Y0520, confidence 1.0, confirmed; P324 →
+Y0740, confidence 0.9867, confirmed, conflict-flagged;
+no unmappable trained sign). The withheld file was
+opened only behind the full pass, and the registered
+computation ran once, in full, over its 2,717 Harappa
+rows (2,621 tokenised sequences, 7,144 tokens): P217 —
+119 Harappa occurrences, 104 initial, start rate
+0.8739; P324 — 774 Harappa occurrences, 473 initial,
+start rate 0.6111. Both signs meet the 0.40 bar: share
+1.0 (2 of 2) against the registered 70% criterion —
+**CONFIRMED**, on the exact two-sign criterion. The
+verdict concerns only P217 and P324 in this pinned
+dataset; it does not validate the INITIAL class as a
+whole and says nothing about P000. PRED-2026-011's
+section 3 Tested/Outcome fields move from PENDING to
+the verdict in the same act (register section 6 dated
+append; the Phase D register-hash pin advanced by
+name a sixth time for that authorised change).
+PRED-2026-006 and PRED-2026-010 remain unscored and
+untouched. Step-0 record sha256
+2bf0333b7d7fc437c9055299598ee83f0247acd08c7fa8b123044114e0c8e427;
+scoring record sha256
+101d54f5bd93d963402d73731962801294452c00f4fe4183e9135ba348ddb07f
+(reports/phase400_results.json). The spec-level OSF
+registration (gjen4) was filed before execution under
+DD-036-4; its record (osf-spec-registration.md)
+completes by append on approval.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
 
+## 2026-10-20 — Maintenance: aee 1.5.0 adopted (pin >=1.5.0,<1.6)
+
+Owner decision 2026-10-20: adopt aee 1.5.0. This change lands
+only after Spec 036's freeze merged (PR #224, merge
+`3419df564b70`), per the sequencing the owner set: no pin or
+engine change on main while that freeze was in flight.
+
+Change: `backend/pyproject.toml` now declares
+`applied-epistemic-engineering>=1.5.0,<1.6` (was
+`>=1.0.4,<1.5`, PR #181). Engine versions before/after: CI
+resolved aee **1.4.0** under the old declaration; the adopted
+line is the 1.5.x series (methodology 2.0). The upper bound
+`<1.6` is justified two ways: the engine's own changelog
+records 1.5.1–1.5.3 as documentation/metadata-only (verified
+directly: the 1.5.0 and 1.5.3 wheels differ only in
+`aee/_version.py`), and this PR's CI resolves the newest
+1.5.x and is green, as is the suite under 1.5.0 exactly.
+
+First-hand census (full backend suite under aee 1.5.0 on the
+pre-adoption main, CI-identical invocation): **17 failed /
+1368 passed / 7 skipped**, against CI green on the same tree
+under the old pin. Every failure is class (a) — a test encoding
+pre-1.5 behaviour the engine intentionally changed; no
+class-(b) regression or ambiguity was found. Dispositions:
+
+- **Score semantics (3).**
+  `tests/test_aee_core.py::test_score_dict_shape`: FR-8.7
+  substance-over-presence scoring gives the fixture's
+  falsification string (no checkable condition) partial credit
+  0.5, not 1.0; the expectation now asserts 0.5 and says why.
+  `tests/test_spec029_phase_a.py::test_score_propagation_byte_identical_to_pre_change`
+  and `tests/test_spec029_phase104_correction.py::test_score_movement_is_exactly_the_three_corrected_claims`:
+  their byte-pinned score fixtures were re-baselined into
+  successor fixtures
+  (`spec029_post_merge_aee150_scores.json`,
+  `spec029_post_phase104_correction_aee150_scores.json`;
+  pre-1.5 fixtures preserved untouched, per this repo's
+  supersession pattern). The full per-claim delta audit shows
+  only documented methodology-2.0 changes: FR-8.7 boundary
+  credit 1.0 -> 0.5 for the adapter's single-token
+  `testability=...` boundaries (all 23 claims), FR-8.7
+  falsifiability credit 1.0 -> 0.5 where a falsification
+  string states no checkable condition (7 claims), FR-8.13
+  unrounded components (evidence values identical to 1e-9)
+  and the added `declared_state` / `propagation` score-dict
+  keys, and FR-8.6/8.7 note texts. The Phase-104 movement
+  assertion survives exactly: between the two regenerated
+  fixtures, precisely the three corrected claims move, each
+  by the contradiction penalty (before 0.139375 / band low;
+  after 0.0 / band unknown; penalty 0.75).
+- **Strict bundle validation (14).** aee 1.5.0's
+  `Claim.from_dict` is strict by default: it refuses a
+  scalar `boundary` (the model declares a list of strings)
+  and requires the lifecycle `stage` field. Every frozen
+  register (Specs 026, 029–036) predates both — `boundary`
+  stored as a plain string, no `stage` field. The frozen
+  register bytes are NOT modified, and the freeze test
+  files cannot be edited either: each spec's freeze digest
+  covers its own test file, so any edit breaks that spec's
+  freeze-replay test (verified first-hand). The
+  compatibility therefore lives in `backend/tests/conftest.py`:
+  claim dicts carrying the legacy signature (a string
+  `boundary` or no `stage` field) are loaded leniently
+  (`strict=False` — the FR-1.3 compatibility path the
+  engine's own error text names for historical bundles,
+  reproducing the pre-1.5 loader semantics exactly); every
+  other claim dict keeps strict loading. No production
+  code loads registers through `Claim.from_dict`, so no
+  runtime code changes.
+
+Foundation check and the full backend suite are green on
+this PR (CI 7/7, including the backend suite resolving the
+newest 1.5.x under the new declaration).
+
+AI disclosure: executed by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson, per constitution
+sec.VI.
+Spec 038 draft (PRED-2026-007 full-population census and scoring, D-31)
+
+Spec 038 is DRAFTED under the owner's draft order of
+2026-10-20 (D-31 will be frozen for execution; this
+step drafts only): the scoring contract for
+PRED-2026-007 (H4: ICIT Function Alignment,
+registered 2026-04-22), which stands PARTIALLY
+CONFIRMED on a partial check of three named signs
+(recorded 2 of 3, 67%, against the 70% bar), the
+total ITM population never recorded. The design
+(D-31, PR #195) first enumerates every ITM-coded
+sign from the named primary source
+(reports/indus_cgsa_cluster_analysis.json,
+data.a[].icit_function; cross-check
+data/crosswalks/canonical_sign_registry.csv;
+conflict rule fixed before enumeration), then
+scores the registered criterion (>= 70% of
+ITM-coded signs TERMINAL or in TERMINAL clusters)
+over the full population, reading only the recorded
+CGSA Phase 5 output — no re-clustering; cluster
+classes per the disclosed DD-038-9
+operationalisation (the class recorded in
+reports/cluster_characterization.md). The verdict
+rule is mechanical and no outcome is pre-written
+for any branch (DD-038-1: the register's recorded
+67% is a pre-execution figure whose denominator
+mixed in the LOG-coded P098, which the frame
+excludes by rule). Claims F038-C01...C14; draft
+digest
+97b13bd1622664fe8dce7da4103b6f4206dabc9ff76b805addb5490b062b947b.
+AEE hooks have not run on the draft register; they
+are a freeze gate, run at the freeze act under aee
+1.5.0 (DD-038-7). DD-038-6 is an open proposal for
+the freeze decision (file the frozen spec's own OSF
+contract registration). Nothing was executed,
+nothing was frozen, and the ITM population was NOT
+enumerated; the freeze and any execution
+(Phase-401, provisional) are the owner's separate
+decisions.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 — Spec 038 FROZEN (D-31: PRED-2026-007 full-population census and scoring)
+
+Spec 038 is FROZEN under the owner's
+freeze-and-execute order of 2026-10-20 ("Freeze
+D-31 for execution"), and Phase-401 execution
+is ordered in the same act. The AEE lifecycle
+gate ran under aee 1.5.0 (DD-038-7) — the first
+freeze gate under the 1.5 engine — over the
+recovered register 0.7-draft: three recorded
+rounds at after_specify (24, then 20, then 14
+failure modes, the last all FR-2.3 draft-cap
+records; 0 correctness failure modes and 0
+claims below the 0.70 threshold from round 2
+on), after_plan and after_tasks clean at the
+first pass each; the gate reading under aee
+1.5.0 is recorded as DD-038-10. Freeze
+decisions (adjudication.md section 6):
+DD-038-6 YES (the frozen spec files its own
+OSF contract registration); DD-038-8 decided —
+Phase-401 is allocated to Spec 038 on the
+merged record. The freeze digest is recorded
+in specs/038-pred-2026-007-full-population/freeze.json
+and computed over the recovered register and
+the finalised freeze texts, once.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 — Phase-401 (Spec 038) EXECUTED: PRED-2026-007 CLOSED AT STEP 0 — CANNOT BE RUN AS WRITTEN (unscored)
+
+Phase-401 executed the frozen Spec 038 contract
+under the owner's freeze-and-execute order.
+Step 0.1 passed in full (register and all four
+sources hashed to the freeze record; the
+PRED-2026-007 entry standing as registered).
+Step 0.2 closed the study: the enumeration of
+the frozen primary (reports/
+indus_cgsa_cluster_analysis.json,
+data.a[].icit_function; 611 records, count
+reconciled) returned zero ITM-coded signs, and
+the held-record verification failed — P385's
+record carries an empty icit_function value and
+P378 has no record in the primary. In this file
+the field is not a coded field: 579 of its 611
+values are empty, 32 are free-text decipherment
+glosses, and no record carries ITM or LOG.
+Check 0.3 never ran; the Phase 5 output was
+never read for assignments; no scoring figure
+exists. PRED-2026-007 remains unscored; its
+PARTIALLY CONFIRMED wording stands as the
+pre-execution record; the register gained the
+dated outcome entry and the DD-038-2 provenance
+reconciliation note (the function codes descend
+from Wells-derived catalog lines, not "mayig
+features"). Record: specs/
+038-pred-2026-007-full-population/outcome.md;
+reports/phase401_results.json (step-0 record
+sha256
+4c026edc92cdcb0c1ba6821f5ebc8242b498bb9fc4cd158607d9b1ded24a784a).
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 — Spec 038 freeze-test amendment (owner-ordered)
+
+On the freeze coordinator's recommendation, the
+owner ordered the amendment on 2026-10-20,
+verbatim: "Approve the freeze-test amendment".
+The defect: the Spec 038 freeze fence
+test_cited_records_carry_the_design_facts in
+backend/tests/test_spec038_freeze.py asserted
+the live whole-file SHA-256 of
+docs/PREDICTION_REGISTER.md equals the
+freeze-cited pin
+4f8aeb54fd5853d73766ed9cf0222ef93cccfa8d9a8c399a4631221fbbb4c1c2,
+while the frozen contract itself (spec section
+7; DEFINITION register_handling) mandates dated
+section-6 appends to that same register at
+execution. PR #232 makes exactly those appends
+(the Phase-401 outcome entry and the DD-038-2
+provenance reconciliation note), advancing the
+register's live hash to
+f281bd674d7651e9c13351bad7cb321bd55000cd3f087a38276a4451fbbf7ef3,
+so the fence failed by construction — the
+single failure in an otherwise 1,400 passed /
+20 skipped backend suite. The amendment narrows
+that single assertion to the Spec 035 form
+(the PRED-2026-007 entry's facts asserted on
+the live register file; the freeze-time
+whole-file hash remains asserted as a
+DEFINITION constant and in the freeze record);
+the other five cited files keep their live-hash
+assertions; no other assertion changed and no
+production code changed. freeze.json was
+recomputed ONCE over the amended covered
+sources with the repo's own builder
+(specs/038-pred-2026-007-full-population/build_freeze.py,
+framework026 build_freeze) in the freeze
+environment (python 3.12.3, aee 1.5.0):
+successor digest
+11dfda0384fa966b14e4fc537a9be935e899c8318f079c3bff1e4f35c790930b.
+The freeze-act digest
+b54571d845a2be3429bc532fee4bb58c20723f77e2d40ffcd43b56e0caab6eef
+stands as the digest of the freeze act in every
+record that cites it (the OSF contract
+registration bkqeh, outcome.md, the PRED
+register entries, adjudication.md section 6)
+and was edited nowhere. Record:
+adjudication.md section 7; freeze.md addendum;
+this entry. PRED-2026-007 remains unscored;
+its PARTIALLY CONFIRMED wording stands.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.
+## 2026-10-20 — Spec 037 FROZEN and Phase-402 EXECUTED: PILOT COMPLETE — SPINE HALTED
+
+Spec 037 (CISI 3.1 concordance spine and HARP
+provenance annex) was frozen and executed the same
+day under the owner's standing pipeline
+authorisation of 2026-10-20 (freeze order 038,
+then 037, then 039, then 040). Freeze: the AEE
+lifecycle gate ran under the adopted aee 1.5.0 —
+after_specify cleared in three adjudicated rounds
+(register recovered 0.5-draft to 0.7-draft; round 1:
+37 failure modes; round 2: 27; round 3: the 15
+FR-2.3 draft-cap records only, zero correctness
+failure modes, no claim below the 0.70 threshold,
+minimum propagated 0.72), after_plan and
+after_tasks clean at first pass, the gate read
+under DD-037-9 (adopting Spec 038's DD-038-10).
+Freeze decisions DD-037-4 to DD-037-9 are recorded
+in adjudication.md section 4 (halt threshold
+confirmed at 20% of all candidates; hand-check
+stratum 60; Workstream B inside Phase-402 gated on
+step 0 only; the spec's own OSF registration —
+filed as j6t9k, pending approval at this record;
+phase allocation Phase-402). Freeze digest
+122c2ea4858094d2c6514d05225dfaad1f5266cccffd764949736a78d81aa4db,
+computed once over the frozen contract; PR #225
+merged on a genuine 7/7 CI run (backend 1,479
+passed / 20 skipped), merge commit e9b5026c.
+
+Execution (Phase-402) ran graph-first (script,
+graph node IndusPhase402Concordance, registration
+committed before any run). Step 0 closed two runs
+on defects in the execution's own checker — a gate
+needle phrased from a paraphrase rather than
+PROVENANCE entry 22's own words, then a census
+assertion that counted raw strings (2,106) where
+the intake's census counts resolved numbers (2,101
+well-formed plus 5 garbled low-confidence tokens) —
+each corrected openly and committed before the
+re-run; no candidate was graded by either closed
+run. The third run passed step 0 in full (gate on
+record; portion PDF hash at the pin; local table
+2,123 x 26 with its intake census and the
+execution's own table hash 7179858d...; corpus_master
+at its pin over the exact bytes consumed; repo
+cleanliness PASS). The pilot regenerated the intake's
+693 candidates exactly (289 / 102 / 302) and graded
+the full census under the frozen ladder: VERIFIED
+269 (38.82%), CONFLICT 341 (49.21%), UNRESOLVED 83
+(11.98%). Conflicts: TYPE 339, NUMBER-AMBIGUOUS 2,
+none on site; corroboration was UNGRADED for every
+candidate (corpus_master carries no FC, excavation,
+or museum values — graded bases: site 693, type
+610, corroboration 0). An independent recount
+re-graded all 693 with 0 mismatches. The seeded
+hand-check stratum (seed 20261020; 30/15/15)
+attributed all 15 sampled conflicts to genuine
+compilation divergence (the portion's tablet
+headings against the corpus's seal classing of the
+same objects); the 30 sampled VERIFIED candidates
+all spot-checked sound. HALT RULE FIRED: the
+conflict share of 49.21% exceeds the frozen 20%
+cap, so no spine file was written; the outcome is
+PILOT COMPLETE — SPINE HALTED, as the contract
+phrases it. Workstream B (inside the phase, gated
+on step 0 only) reported the HARP annex as
+descriptive aggregates: dig years 1986-2001 with
+312 no-token rows; lot/record (registration) fill
+754 of 1,094; period fill 656 of 1,094 as a FLOOR
+(the scan's text layer loses split period tokens);
+the full period-code inventory. The Spec 031 (Q7)
+finding is unchanged. All row-level products
+(grade table, build record, stratum attribution)
+live only in the restricted portion folder; the
+repo carries aggregates only. The PRED register
+and the anchors are untouched; no prediction was
+scored, advanced, or retired. Outcome record:
+specs/037-cisi31-concordance-spine/outcome.md;
+aggregate machine record: reports/phase402_results.json.
 ## 2026-10-20 — Spec 039 freeze (gazetteer period assignment: Phase-403 allocated)
 
 Spec 039 is frozen under the owner's standing

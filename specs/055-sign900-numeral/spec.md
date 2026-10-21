@@ -1,26 +1,29 @@
 # Spec 055 — "Sign 900 Means Six": Identify the Sign, Then Test It as a Numeral (Design D-15)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-21
+> ## FROZEN — 2026-10-21
 >
-> Drafted under the runnable-experiments
+> Frozen under the runnable-experiments
 > campaign plan approved by the owner AS
 > WRITTEN on 2026-10-21
 > (`~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md`,
 > Parts 1–4): campaign member 11, design
-> D-15, one of the fragment recoveries
-> (independent members, drafted in parallel
-> throughout Wave 1). **The freeze and the
-> execution of Spec 055 are separate later
-> acts.** No AEE lifecycle hooks have run
-> on this draft; they are a freeze gate.
-> Nothing in this draft has been run,
-> frozen, registered, or computed.
-> Drafting merges nothing.
+> D-15. The AEE lifecycle hooks ran at the
+> freeze act and passed on the DD-055-18
+> gate reading (register recovered to
+> 0.7-draft; `aee/freeze-aee-note.md`); the
+> freeze digest in `freeze.json` was computed
+> exactly once over the recovered register
+> and the finalised freeze texts. The freeze
+> decisions are DD-055-9 to DD-055-18
+> (`adjudication.md` §7), resolving OPEN-1
+> to OPEN-7 on the record. **The execution
+> of Spec 055 is a separate later act.**
+> Nothing in this spec has been run or
+> computed; the recovery has not been
+> performed and no sign has been counted.
 >
-> The execution phase number is **unassigned**
-> at this draft. Spec 055 allocates its phase
-> number at the freeze act, from the merged
-> record as it then stands (DD-055-7).
+> The execution phase is **Phase-414**,
+> allocated at this freeze (DD-055-17).
 >
 > **Chain rule (campaign decision E-7).**
 > Step 1 of this spec is a source-table
@@ -194,18 +197,18 @@ program does not hold. No output of this
 spec may state the value six as established
 (§9, claim F055-C15).
 
-## 2. Inputs (pinned at this draft; re-asserted at the freeze)
+## 2. Inputs (pinned at draft; re-asserted at the freeze of 2026-10-21)
 
 | Input | Pin / state |
 |---|---|
-| Claim record (`glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json`) | SHA-256 `e98190894202a2a1c0e314229dcb585c62a0f5c12c059bcabd63b055c42959e8` (recomputed at this draft from `main` at 83b6a563) |
+| Claim record (`glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json`) | SHA-256 `e98190894202a2a1c0e314229dcb585c62a0f5c12c059bcabd63b055c42959e8` (recomputed at draft from `main` at 83b6a563; re-asserted at the freeze against `main` at 3af269f6 by two independent routes, agreeing byte-for-byte — `adjudication.md` §8) |
 | Source document, held cleaned text (`glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt`) | SHA-256 `1275b795903260221f5226bada352de27471c010e2ad8ace556c548c20da1fc4` (recomputed at this draft) |
 | Source literature record (`glossa-indus/literature/documents/ancient_writing_and_modern_technologies_51831ac9.json`) | SHA-256 `92e19e6def7eccb42ba0e9f53f5ef3bf9dbb0b9717aa3d675cecb971f5ab0e5c` (recomputed at this draft; records the original PDF, file size 3,565,316 bytes, intake checksum `51831ac9…`, license status "unclear" — see §7) |
 | Phase-104 evaluation (`glossa-indus/reports/phase104_claims_evaluation.json`) | SHA-256 `2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d` (recomputed at this draft) |
 | Crosswalk registry (`data/crosswalks/canonical_sign_registry.csv`) | SHA-256 `8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420` (recomputed at this draft; 803 rows as held today — the registry has grown since Phase-104's 86-numeric-ID record, and execution re-asserts this pin rather than inheriting either count) |
 | Lane-2 adopted drafts (`specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json`) | SHA-256 `3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb` (recomputed at this draft) |
 | Anchors file (`backend/reports/INDUS_FINAL_ANCHORS.json`) | SHA-256 `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569` (recomputed at this draft). This spec moves no anchor; the file is asserted byte-identical before and after any execution. |
-| Strict corpus (behaviour test, §5) | **No file pin is stated at this draft, deliberately.** As Spec 048's draft records for the same layer, the strict corpus is "the program's V3 / Mahadevan-lineage corpus as held in the database" — a database posture, not a pinnable repository file on `main`. The layer is therefore identified, exported, and pinned by digest at the step-2 gate (§3, gate 0.4), before any counting, and the run closes if it cannot be (DD-055-5; OPEN-4). Inventing a pin at draft would repeat the stale-pin failure Spec 040's gate record documents. |
+| Strict corpus (behaviour test, §5) | **No file pin is stated at this draft, deliberately.** As Spec 048's draft records for the same layer, the strict corpus is "the program's V3 / Mahadevan-lineage corpus as held in the database" — a database posture, not a pinnable repository file on `main`. The layer is therefore identified, exported, and pinned by digest at the step-2 gate (§3, gate 0.4), before any counting, and the run closes if it cannot be (DD-055-5). **Confirmed at the freeze (DD-055-13):** this posture stands — no pin is stated at the freeze, for the reason the draft gives: the layer is a database posture with no pinnable repository file on `main`, and inventing a pin would repeat the stale-pin failure Spec 040's gate record documents. Inventing a pin at draft would repeat the stale-pin failure Spec 040's gate record documents. |
 
 The drawn-sign figures of the source (its
 Figures 11 and 12, examples of sign 900 and
@@ -263,7 +266,8 @@ time, and no source is substituted.
   represented by fewer than **5 occurrences**,
   the run closes as **IDENTIFIED — TOO FEW
   OCCURRENCES TO TEST**, with the count
-  named (DD-055-4; OPEN-3). No measure is
+  named (DD-055-4; floor of 5 confirmed at
+  the freeze, DD-055-12). No measure is
   computed past a failed gate.
 
 ## 4. Step 1 — identification and the source-table recovery
@@ -375,9 +379,11 @@ published identifications only:
   own reference range (DD-055-3). A numeral
   candidate whose published identification
   is itself hedged in its source is recorded
-  as hedged in the set record; the freeze
-  decides whether hedged members enter the
-  set (OPEN-5).
+  as hedged in the set record. **Ruled at
+  the freeze (DD-055-14): hedged members do
+  not enter the set** for any range, median,
+  or adjacency computation; they are listed
+  separately in the pre-counting record.
 - **The control set.** Ordinary signs —
   members of neither the numeral set nor the
   target — frequency-matched to the target
@@ -387,7 +393,8 @@ published identifications only:
   closest to the target's count**, ties
   broken by corpus identifier in ascending
   order; if fewer than 10 ordinary signs
-  exist, all of them (DD-055-6; OPEN-2).
+  exist, all of them (DD-055-6; confirmed
+  at the freeze, DD-055-11).
   Fixing the set requires the target's
   occurrence count and the layer's frequency
   table — a census, taken after gate 0.4 and
@@ -432,7 +439,8 @@ For each measure, the target is:
   that measure in the direction of the
   known-numeral set's median (the design's
   "outside the control set's median", given
-  an operational form at DD-055-6; OPEN-2);
+  an operational form at DD-055-6;
+  confirmed at the freeze, DD-055-11);
 - **control-side** if its value lies inside
   the control set's range (minimum to
   maximum) on that measure.

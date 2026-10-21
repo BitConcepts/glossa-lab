@@ -1,12 +1,12 @@
 {
   "spec": "055-sign900-numeral",
-  "register_version": "0.5-draft",
-  "note": "Draft register for Spec 055 (design D-15, PR #195 packet), opened 2026-10-21 under the runnable-experiments campaign plan approved by the owner AS WRITTEN the same date (campaign member 11; decision E-7 recorded at F055-C09). Conventions as in Specs 032–046: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-DESIGN-D15 (design D-15 as read in the PR #195 packet governs the substance), ASM-RECORD-AS-STATED (the claim record and Phase-104 evaluation state what this draft quotes them as stating), ASM-DOCUMENT-AS-SOURCE (the held cleaned text is the source document of record for the recovery), ASM-CORPUS-AS-PINNED (behaviour quantities are statements about the strict-corpus layer as identified and pinned at gate 0.4, and no other layer), ASM-GATES-BEFORE-OUTCOME (integrity, identification, and census precede any outcome quantity), ASM-APPEND-ONLY (outcomes append; frozen records are never edited), ASM-CAMPAIGN-E7 (campaign decision E-7: D-16 does not join this campaign even if this spec's recovery unblocks it).",
+  "register_version": "0.7-draft",
+  "note": "Draft register for Spec 055 (design D-15, PR #195 packet), opened 2026-10-21 under the runnable-experiments campaign plan approved by the owner AS WRITTEN the same date (campaign member 11; decision E-7 recorded at F055-C09). Conventions as in Specs 032\u2013046: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-DESIGN-D15 (design D-15 as read in the PR #195 packet governs the substance), ASM-RECORD-AS-STATED (the claim record and Phase-104 evaluation state what this draft quotes them as stating), ASM-DOCUMENT-AS-SOURCE (the held cleaned text is the source document of record for the recovery), ASM-CORPUS-AS-PINNED (behaviour quantities are statements about the strict-corpus layer as identified and pinned at gate 0.4, and no other layer), ASM-GATES-BEFORE-OUTCOME (integrity, identification, and census precede any outcome quantity), ASM-APPEND-ONLY (outcomes append; frozen records are never edited), ASM-CAMPAIGN-E7 (campaign decision E-7: D-16 does not join this campaign even if this spec's recovery unblocks it). FREEZE RECOVERY (2026-10-21): normalised to engine evidence values at 0.6-draft (kind observed, source_quality artifact; refs, descriptions, observed_at unchanged \u2014 the draft's free-form labels are not engine values); at 0.7-draft the 14 irreducibility-challenged claim texts (all except F055-C01) were restated as single head propositions with carried clauses moved into boundaries verbatim-in-substance, and every multi-item claim's evidence gained mutual independent_of declarations. Freeze rulings DD-055-10 to DD-055-16 were carried into F055-C05, C08, C10, C11, C12, C13 before the hooks ran.",
   "claims": [
     {
       "id": "F055-C01",
       "kind": "hypothesis",
-      "text": "An outcome under Spec 055 states only whether the sign identified from the fragment 'sign 900 means six' behaves as a numeral sign behaves, in the pinned strict corpus, under the frozen measures of spec §5.",
+      "text": "An outcome under Spec 055 states only whether the sign identified from the fragment 'sign 900 means six' behaves as a numeral sign behaves, in the pinned strict corpus, under the frozen measures of spec \u00a75.",
       "status": "draft",
       "boundary": "The scope is the two-stage question of design D-15: identification of one drawn sign from one held source document, then a behaviour comparison on one pinned corpus layer. It excludes any statement that the sign's value is six, any statement about what any sign means beyond the numeral question, any other corpus or population, and any finding about sign 700 or design D-16.",
       "depends_on": [],
@@ -36,30 +36,36 @@
       "evidence": [
         {
           "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
-          "kind": "design-source",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-15 (PR #195 packet, §D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
+          "source_quality": "artifact",
+          "description": "Design D-15 (PR #195 packet, \u00a7D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
           "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
-          "observed_at": "2026-10-21"
+          "observed_at": "2026-10-21",
+          "independent_of": [
+            "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json"
+          ]
         },
         {
           "ref": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
-          "kind": "program-record",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "The claim record (SHA-256 e9819089…, recomputed at this draft): the fragment verbatim — 'Sign value: 900 / number six' — UNTESTED, stage created, with its adopted not-understood text (which sign, in which published sign list, is unknown).",
+          "source_quality": "artifact",
+          "description": "The claim record (SHA-256 e9819089\u2026, recomputed at this draft): the fragment verbatim \u2014 'Sign value: 900 / number six' \u2014 UNTESTED, stage created, with its adopted not-understood text (which sign, in which published sign list, is unknown).",
           "source_id": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
-          "observed_at": "2026-10-21"
+          "observed_at": "2026-10-21",
+          "independent_of": [
+            "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+          ]
         }
       ]
     },
     {
       "id": "F055-C02",
       "kind": "requirement",
-      "text": "The record under test is the UNTESTED fragment ancient_writing_and_modern_technologies_51831ac9_sign_val_0001, in full 'Sign value: 900 / number six', stopped at Phase-104 under RULE-NUM with no sign list named, no matching crosswalk entry located (86 numeric IDs then present), and no falsification condition.",
+      "text": "The record under test is the UNTESTED fragment ancient_writing_and_modern_technologies_51831ac9_sign_val_0001.",
       "status": "draft",
-      "boundary": "These are the claim record's and the Phase-104 evaluation's recorded facts. The registry has since grown (803 rows at this draft, with a W900 cell now present); that growth changes what a string search finds, not what this fragment's record states — identification remains an act to perform under F055-C06, not a fact inherited from either registry state.",
+      "boundary": "These are the claim record's and the Phase-104 evaluation's recorded facts. The registry has since grown (803 rows at this draft, with a W900 cell now present); that growth changes what a string search finds, not what this fragment's record states \u2014 identification remains an act to perform under F055-C06, not a fact inherited from either registry state. Carried from the draft text: in full 'Sign value: 900 / number six', stopped at Phase-104 under RULE-NUM with no sign list named, no matching crosswalk entry located (86 numeric IDs then present), no falsification condition.",
       "depends_on": [
         "F055-C01"
       ],
@@ -68,7 +74,7 @@
       ],
       "alternatives": [],
       "falsification_tests": [
-        "recompute the §2 pins and read the fragment and its Phase-104 entry; any mismatch falsifies this statement and voids the draft's basis"
+        "recompute the \u00a72 pins and read the fragment and its Phase-104 entry; any mismatch falsifies this statement and voids the draft's basis"
       ],
       "metadata": {
         "framework_kind": "requirement",
@@ -85,30 +91,36 @@
       "evidence": [
         {
           "ref": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
-          "kind": "program-record",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "The claim record (SHA-256 e9819089…, recomputed at this draft): the fragment verbatim — 'Sign value: 900 / number six' — UNTESTED, stage created, with its adopted not-understood text (which sign, in which published sign list, is unknown).",
+          "source_quality": "artifact",
+          "description": "The claim record (SHA-256 e9819089\u2026, recomputed at this draft): the fragment verbatim \u2014 'Sign value: 900 / number six' \u2014 UNTESTED, stage created, with its adopted not-understood text (which sign, in which published sign list, is unknown).",
           "source_id": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
-          "observed_at": "2026-10-21"
+          "observed_at": "2026-10-21",
+          "independent_of": [
+            "glossa-indus/reports/phase104_claims_evaluation.json"
+          ]
         },
         {
           "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
-          "kind": "program-record",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Phase-104 evaluation (SHA-256 2d0b83e8…, recomputed at this draft): this claim stays_untested under RULE-NUM — sign number cited without a stated numbering system, no matching entry located in the crosswalk (86 numeric IDs then present), no falsification condition.",
+          "source_quality": "artifact",
+          "description": "Phase-104 evaluation (SHA-256 2d0b83e8\u2026, recomputed at this draft): this claim stays_untested under RULE-NUM \u2014 sign number cited without a stated numbering system, no matching entry located in the crosswalk (86 numeric IDs then present), no falsification condition.",
           "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
-          "observed_at": "2026-10-21"
+          "observed_at": "2026-10-21",
+          "independent_of": [
+            "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json"
+          ]
         }
       ]
     },
     {
       "id": "F055-C03",
       "kind": "hypothesis",
-      "text": "The sign the source document numbers 900, once identified by drawn form, is numeral-like in the pinned strict corpus: on at least two of the three frozen measures it sits inside the known numeral signs' range and away from the frequency-matched ordinary signs' median, and it is not control-side on two or more measures.",
+      "text": "The sign the source document numbers 900 is numeral-like in the pinned strict corpus once identified by drawn form.",
       "status": "draft",
-      "boundary": "The hypothesis is about distributional behaviour on one pinned layer under spec §5's measures. It is not a statement about the value six, about the sign's behaviour in any other compilation, or about why the sign behaves as it does.",
+      "boundary": "The hypothesis is about distributional behaviour on one pinned layer under spec \u00a75's measures. It is not a statement about the value six, about the sign's behaviour in any other compilation, or about why the sign behaves as it does. Carried from the draft text: on at least two of the three frozen measures it sits inside the known numeral signs' range, away from the frequency-matched ordinary signs' median, not control-side on two or more measures.",
       "depends_on": [
         "F055-C01",
         "F055-C02"
@@ -122,7 +134,7 @@
         "the measures split (recorded MIXED under F055-C13, not as support)"
       ],
       "falsification_tests": [
-        "run spec §5 after a successful identification: if the outcome mapping returns NOT NUMERAL-LIKE or MIXED, this hypothesis is not supported"
+        "run spec \u00a75 after a successful identification: if the outcome mapping returns NOT NUMERAL-LIKE or MIXED, this hypothesis is not supported"
       ],
       "metadata": {
         "framework_kind": "conditional-model-result",
@@ -131,7 +143,7 @@
           "ASM-VALUE-AS-SIX"
         ],
         "strongest_rival": "the strongest rival is the falsifier itself: a special-looking sign that nonetheless distributes like an ordinary sign",
-        "verdict_rule": "supported iff the §5.3 mapping returns NUMERAL-LIKE; any other adjudicated outcome does not support it",
+        "verdict_rule": "supported iff the \u00a75.3 mapping returns NUMERAL-LIKE; any other adjudicated outcome does not support it",
         "evidence_origin_groups": [
           "design-packet",
           "claim-record"
@@ -141,30 +153,36 @@
       "evidence": [
         {
           "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
-          "kind": "design-source",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-15 (PR #195 packet, §D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
+          "source_quality": "artifact",
+          "description": "Design D-15 (PR #195 packet, \u00a7D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
           "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
-          "observed_at": "2026-10-21"
+          "observed_at": "2026-10-21",
+          "independent_of": [
+            "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt"
+          ]
         },
         {
           "ref": "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt",
-          "kind": "program-record",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "The held cleaned text of Fuls, 'Ancient Writing and Modern Technologies' (SHA-256 1275b795…, recomputed at this draft): naming statements at printed p. 57 and under SIGN LIST at p. 59 (extended Wells 2011/2015 list, 702 distinct signs); the 'Sign 900' section at p. 68; 'Numerical value of Sign 900' with Table 1 at pp. 72–74; the summary statement at p. 85.",
+          "source_quality": "artifact",
+          "description": "The held cleaned text of Fuls, 'Ancient Writing and Modern Technologies' (SHA-256 1275b795\u2026, recomputed at this draft): naming statements at printed p. 57 and under SIGN LIST at p. 59 (extended Wells 2011/2015 list, 702 distinct signs); the 'Sign 900' section at p. 68; 'Numerical value of Sign 900' with Table 1 at pp. 72\u201374; the summary statement at p. 85.",
           "source_id": "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt",
-          "observed_at": "2026-10-21"
+          "observed_at": "2026-10-21",
+          "independent_of": [
+            "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+          ]
         }
       ]
     },
     {
       "id": "F055-C04",
       "kind": "requirement",
-      "text": "The falsifier of Spec 055 is two-stage: the source document does not identify the sign — its list cannot be named from the document's own text, or the drawn sign its number 900 labels cannot be matched — closing as IDENTIFICATION FAILED, or, identification having succeeded, the identified sign's behaviour contradicts the numeral reading under spec §5.3.",
+      "text": "The falsifier of Spec 055 is two-stage.",
       "status": "draft",
-      "boundary": "IDENTIFICATION FAILED is a pre-registered outcome about the source document and the record; it asserts nothing about the value six and nothing about the sign. The behaviour stage arises only on a successful identification; no behaviour wording may be attached to an identification closure.",
+      "boundary": "IDENTIFICATION FAILED is a pre-registered outcome about the source document and the record; it asserts nothing about the value six and nothing about the sign. The behaviour stage arises only on a successful identification; no behaviour wording may be attached to an identification closure. Carried from the draft text: the source document does not identify the sign \u2014 its list cannot be named from the document's own text, or the drawn sign its number 900 labels cannot be matched \u2014 closing as IDENTIFICATION FAILED; identification having succeeded, the identified sign's behaviour contradicts the numeral reading under spec \u00a75.3.",
       "depends_on": [
         "F055-C03"
       ],
@@ -173,14 +191,14 @@
       ],
       "alternatives": [],
       "falsification_tests": [
-        "if the execution records any outcome outside the §5.4 set, or records a behaviour verdict on a run whose identification failed, compliance with this requirement is falsified"
+        "if the execution records any outcome outside the \u00a75.4 set, or records a behaviour verdict on a run whose identification failed, compliance with this requirement is falsified"
       ],
       "metadata": {
         "framework_kind": "requirement",
         "layer": "M",
         "forbidden_assumptions": [],
         "strongest_rival": "the pressure to treat an identification failure as a soft null and proceed to count something anyway",
-        "verdict_rule": "the outcome record must carry exactly one §5.4 wording, and its stage must match the stage actually reached in the run record",
+        "verdict_rule": "the outcome record must carry exactly one \u00a75.4 wording, and its stage must match the stage actually reached in the run record",
         "evidence_origin_groups": [
           "design-packet"
         ],
@@ -189,10 +207,10 @@
       "evidence": [
         {
           "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
-          "kind": "design-source",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-15 (PR #195 packet, §D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
+          "source_quality": "artifact",
+          "description": "Design D-15 (PR #195 packet, \u00a7D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
           "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
           "observed_at": "2026-10-21"
         }
@@ -201,9 +219,9 @@
     {
       "id": "F055-C05",
       "kind": "requirement",
-      "text": "Execution stops before any identification or counting if an input pin mismatches, if the source document cannot be produced from the program's held copy with the §1 material located verbatim, or — before step 2 — if the strict-corpus layer cannot be identified and pinned, or the identified sign is absent from it or below the frozen occurrence floor of 5.",
+      "text": "Execution stops before any identification if an input pin mismatches.",
       "status": "draft",
-      "boundary": "These are spec §3's gates 0.1, 0.2, and 0.4. Their failure classes are CLOSED AT STEP 0 (pin mismatch, source not producible, corpus not pinnable) and IDENTIFIED — TOO FEW OCCURRENCES TO TEST (absent or below floor, count named). No failure is repaired at run time; a repaired input is a new freeze, not a resumed run. The occurrence floor is this draft's addition (DD-055-4), flagged OPEN-3 for the freeze.",
+      "boundary": "These are spec \u00a73's gates 0.1, 0.2, and 0.4. Their failure classes are CLOSED AT STEP 0 (pin mismatch, source not producible, corpus not pinnable) and IDENTIFIED \u2014 TOO FEW OCCURRENCES TO TEST (absent or below floor, count named). No failure is repaired at run time; a repaired input is a new freeze, not a resumed run. The occurrence floor is this draft's addition (DD-055-4), flagged OPEN-3 for the freeze. Ruled at the freeze (DD-055-13): the strict-corpus pinning posture is confirmed as drafted \u2014 the layer is a database posture (the Spec 048 precedent for the same layer), identified, exported and pinned by SHA-256 at execution gate 0.4 before any counting, and no file pin is stated at this freeze, because no pinnable repository file for the layer exists on main and inventing one would repeat the stale-pin failure Spec 040's gate record documents. The occurrence floor of 5 is confirmed at the freeze (DD-055-12). Carried from the draft text: execution likewise stops if the source document cannot be produced from the program's held copy with the \u00a71 material located verbatim; before step 2 it stops if the strict-corpus layer cannot be identified, if the layer cannot be pinned, if the identified sign is absent from it, if the sign is below the frozen occurrence floor of 5.",
       "depends_on": [
         "F055-C02"
       ],
@@ -229,30 +247,36 @@
       "evidence": [
         {
           "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
-          "kind": "program-record",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Phase-104 evaluation (SHA-256 2d0b83e8…, recomputed at this draft): this claim stays_untested under RULE-NUM — sign number cited without a stated numbering system, no matching entry located in the crosswalk (86 numeric IDs then present), no falsification condition.",
+          "source_quality": "artifact",
+          "description": "Phase-104 evaluation (SHA-256 2d0b83e8\u2026, recomputed at this draft): this claim stays_untested under RULE-NUM \u2014 sign number cited without a stated numbering system, no matching entry located in the crosswalk (86 numeric IDs then present), no falsification condition.",
           "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
-          "observed_at": "2026-10-21"
+          "observed_at": "2026-10-21",
+          "independent_of": [
+            "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+          ]
         },
         {
           "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
-          "kind": "design-source",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-15 (PR #195 packet, §D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
+          "source_quality": "artifact",
+          "description": "Design D-15 (PR #195 packet, \u00a7D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
           "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
-          "observed_at": "2026-10-21"
+          "observed_at": "2026-10-21",
+          "independent_of": [
+            "glossa-indus/reports/phase104_claims_evaluation.json"
+          ]
         }
       ]
     },
     {
       "id": "F055-C06",
       "kind": "requirement",
-      "text": "Identification succeeds only if the source document's sign list is named from the document's own text, with each naming statement quoted verbatim with its locator, and the drawn sign its number 900 labels is matched by drawn form to a crosswalk-registry entry or to the named list's own entry for 900, with the citation attached.",
+      "text": "Identification succeeds only if the source document's sign list is named from the document's own text.",
       "status": "draft",
-      "boundary": "Success is design D-15's, carried verbatim in substance: the list named from the document itself, the sign matched to the registry or to a drawn sign in a published list. A match that cannot be defended from its recorded reference fails step 1 (IDENTIFICATION FAILED, sign unmatched) rather than being argued at the behaviour stage.",
+      "boundary": "Success is design D-15's, carried verbatim in substance: the list named from the document itself, the sign matched to the registry or to a drawn sign in a published list. A match that cannot be defended from its recorded reference fails step 1 (IDENTIFICATION FAILED, sign unmatched) rather than being argued at the behaviour stage. Carried from the draft text: each naming statement is quoted verbatim with its locator; the drawn sign its number 900 labels is matched by drawn form to a crosswalk-registry entry, to the named list's own entry for 900, with the citation attached.",
       "depends_on": [
         "F055-C04",
         "F055-C05"
@@ -262,7 +286,7 @@
       ],
       "alternatives": [],
       "falsification_tests": [
-        "the §6 recovery record either contains the quoted naming statements and the match with its basis and citation, or the run's identification wording is non-compliant on its face"
+        "the \u00a76 recovery record either contains the quoted naming statements and the match with its basis and citation, or the run's identification wording is non-compliant on its face"
       ],
       "metadata": {
         "framework_kind": "requirement",
@@ -279,30 +303,36 @@
       "evidence": [
         {
           "ref": "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt",
-          "kind": "program-record",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "The held cleaned text of Fuls, 'Ancient Writing and Modern Technologies' (SHA-256 1275b795…, recomputed at this draft): naming statements at printed p. 57 and under SIGN LIST at p. 59 (extended Wells 2011/2015 list, 702 distinct signs); the 'Sign 900' section at p. 68; 'Numerical value of Sign 900' with Table 1 at pp. 72–74; the summary statement at p. 85.",
+          "source_quality": "artifact",
+          "description": "The held cleaned text of Fuls, 'Ancient Writing and Modern Technologies' (SHA-256 1275b795\u2026, recomputed at this draft): naming statements at printed p. 57 and under SIGN LIST at p. 59 (extended Wells 2011/2015 list, 702 distinct signs); the 'Sign 900' section at p. 68; 'Numerical value of Sign 900' with Table 1 at pp. 72\u201374; the summary statement at p. 85.",
           "source_id": "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt",
-          "observed_at": "2026-10-21"
+          "observed_at": "2026-10-21",
+          "independent_of": [
+            "data/crosswalks/canonical_sign_registry.csv"
+          ]
         },
         {
           "ref": "data/crosswalks/canonical_sign_registry.csv",
-          "kind": "program-record",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Crosswalk registry (SHA-256 8a0b2a82…, recomputed at this draft; 803 rows as held today). Read at this draft: a W900 value sits inside a multi-system wells_ids cell on the P154 row ('Right parenthesis…') — named in spec §4.2 as a trap, not an identification.",
+          "source_quality": "artifact",
+          "description": "Crosswalk registry (SHA-256 8a0b2a82\u2026, recomputed at this draft; 803 rows as held today). Read at this draft: a W900 value sits inside a multi-system wells_ids cell on the P154 row ('Right parenthesis\u2026') \u2014 named in spec \u00a74.2 as a trap, not an identification.",
           "source_id": "data/crosswalks/canonical_sign_registry.csv",
-          "observed_at": "2026-10-21"
+          "observed_at": "2026-10-21",
+          "independent_of": [
+            "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt"
+          ]
         }
       ]
     },
     {
       "id": "F055-C07",
       "kind": "requirement",
-      "text": "No match under Spec 055 is made by sign number or by registry string: a sign number is meaningful only inside its own list, and matching across lists is by drawn form only.",
+      "text": "No match under Spec 055 is made by sign number.",
       "status": "draft",
-      "boundary": "The trap is named in advance from the registry as held today: a W900 value inside a wells_ids cell on the P154 row neither identifies this fragment's sign nor excludes it. The same rule binds the reference sets of §5.1: a numeral or control sign enters a corpus count only through its recorded crosswalked identifier.",
+      "boundary": "The trap is named in advance from the registry as held today: a W900 value inside a wells_ids cell on the P154 row neither identifies this fragment's sign nor excludes it. The same rule binds the reference sets of \u00a75.1: a numeral or control sign enters a corpus count only through its recorded crosswalked identifier. Carried from the draft text: no match is made by registry string either; a sign number is meaningful only inside its own list; matching across lists is by drawn form only.",
       "depends_on": [
         "F055-C06"
       ],
@@ -313,14 +343,14 @@
         "treating the registry's W900 cell as the identification, because Phase-104 recorded no match and the registry has since grown (refused: a cell is not a drawn-form match)"
       ],
       "falsification_tests": [
-        "inspection of the recovery record: a match whose recorded basis is a number, a string search, or a registry cell — rather than drawn form against the registry entry or the named list's entry — falsifies compliance"
+        "inspection of the recovery record: a match whose recorded basis is a number, a string search, or a registry cell \u2014 rather than drawn form against the registry entry or the named list's entry \u2014 falsifies compliance"
       ],
       "metadata": {
         "framework_kind": "requirement",
         "layer": "M",
         "forbidden_assumptions": [],
         "strongest_rival": "the shortcut the grown registry now offers: string-matching 900 and counting whatever sign that lands on",
-        "verdict_rule": "the match basis field of the §6 record is the judge; any basis other than crosswalk-registry drawn form or named-list-entry drawn form voids the identification",
+        "verdict_rule": "the match basis field of the \u00a76 record is the judge; any basis other than crosswalk-registry drawn form or named-list-entry drawn form voids the identification",
         "evidence_origin_groups": [
           "crosswalk-registry"
         ],
@@ -329,10 +359,10 @@
       "evidence": [
         {
           "ref": "data/crosswalks/canonical_sign_registry.csv",
-          "kind": "program-record",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Crosswalk registry (SHA-256 8a0b2a82…, recomputed at this draft; 803 rows as held today). Read at this draft: a W900 value sits inside a multi-system wells_ids cell on the P154 row ('Right parenthesis…') — named in spec §4.2 as a trap, not an identification.",
+          "source_quality": "artifact",
+          "description": "Crosswalk registry (SHA-256 8a0b2a82\u2026, recomputed at this draft; 803 rows as held today). Read at this draft: a W900 value sits inside a multi-system wells_ids cell on the P154 row ('Right parenthesis\u2026') \u2014 named in spec \u00a74.2 as a trap, not an identification.",
           "source_id": "data/crosswalks/canonical_sign_registry.csv",
           "observed_at": "2026-10-21"
         }
@@ -341,9 +371,9 @@
     {
       "id": "F055-C08",
       "kind": "requirement",
-      "text": "Step 1's output is a preserved record in the fixed form of spec §6 — source-table-recovery.json, produced on every terminal outcome including closures — carrying the document's naming statements, the recovered sign-900 material verbatim with locators, the target sign's match and citation, and the recovery outcome.",
+      "text": "Step 1's output is a preserved record in the fixed form of spec \u00a76.",
       "status": "draft",
-      "boundary": "The recovery is a record of this spec, not a working note: its schema, fields, and locator form are fixed at spec §6 (DD-055-1). On a closure the file carries its closure block and whatever recovery material was established before the closure; an absent file on any terminal outcome is a defect of the run, whatever the outcome.",
+      "boundary": "The recovery is a record of this spec, not a working note: its schema, fields, and locator form are fixed at spec \u00a76 (DD-055-1). On a closure the file carries its closure block and whatever recovery material was established before the closure; an absent file on any terminal outcome is a defect of the run, whatever the outcome. Confirmed at the freeze (DD-055-10): the preserved-record schema is glossa.source-table-recovery/1, file source-table-recovery.json, produced on every terminal outcome including closures, exactly as spec \u00a76 fixes it. Carried from the draft text: the file is source-table-recovery.json, produced on every terminal outcome including closures, carrying the document's naming statements, the recovered sign-900 material verbatim with locators, the target sign's match with its citation, the recovery outcome.",
       "depends_on": [
         "F055-C06"
       ],
@@ -352,13 +382,13 @@
       ],
       "alternatives": [],
       "falsification_tests": [
-        "the delivered file either parses against the §6 field set with locators on every recovered item, or the execution is non-compliant; a human-readable rendering that diverges from the file falsifies the rendering, not the file"
+        "the delivered file either parses against the \u00a76 field set with locators on every recovered item, or the execution is non-compliant; a human-readable rendering that diverges from the file falsifies the rendering, not the file"
       ],
       "metadata": {
         "framework_kind": "requirement",
         "layer": "M",
         "forbidden_assumptions": [],
-        "strongest_rival": "a recovery written as prose summary after the fact, losing the verbatim material other work — including D-16's future gate — would need",
+        "strongest_rival": "a recovery written as prose summary after the fact, losing the verbatim material other work \u2014 including D-16's future gate \u2014 would need",
         "verdict_rule": "the file is the deliverable of record; its presence and form are checked mechanically at execution close",
         "evidence_origin_groups": [
           "source-document"
@@ -368,10 +398,10 @@
       "evidence": [
         {
           "ref": "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt",
-          "kind": "program-record",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "The held cleaned text of Fuls, 'Ancient Writing and Modern Technologies' (SHA-256 1275b795…, recomputed at this draft): naming statements at printed p. 57 and under SIGN LIST at p. 59 (extended Wells 2011/2015 list, 702 distinct signs); the 'Sign 900' section at p. 68; 'Numerical value of Sign 900' with Table 1 at pp. 72–74; the summary statement at p. 85.",
+          "source_quality": "artifact",
+          "description": "The held cleaned text of Fuls, 'Ancient Writing and Modern Technologies' (SHA-256 1275b795\u2026, recomputed at this draft): naming statements at printed p. 57 and under SIGN LIST at p. 59 (extended Wells 2011/2015 list, 702 distinct signs); the 'Sign 900' section at p. 68; 'Numerical value of Sign 900' with Table 1 at pp. 72\u201374; the summary statement at p. 85.",
           "source_id": "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt",
           "observed_at": "2026-10-21"
         }
@@ -380,9 +410,9 @@
     {
       "id": "F055-C09",
       "kind": "requirement",
-      "text": "The step-1 recovery does not admit design D-16 to this campaign, in whole or in part: Spec 055 designs no sign-700 test, adjudicates no sign-700 claim, and records the recovered document's sign-700 statements by locator only, without any finding; D-16 waits for its own planning gate even if the recovery fully succeeds.",
+      "text": "The step-1 recovery does not admit design D-16 to this campaign.",
       "status": "draft",
-      "boundary": "This is campaign decision E-7, recorded here as a binding boundary of this spec. The recovery record's sign_700_material block carries locators and a presence flag, nothing more. A later D-16 gate may use the preserved record; nothing in this spec pre-decides what that gate will design.",
+      "boundary": "This is campaign decision E-7, recorded here as a binding boundary of this spec. The recovery record's sign_700_material block carries locators and a presence flag, nothing more. A later D-16 gate may use the preserved record; nothing in this spec pre-decides what that gate will design. Carried from the draft text: Spec 055 designs no sign-700 test, adjudicates no sign-700 claim, records the recovered document's sign-700 statements by locator only without any finding; D-16 waits for its own planning gate even if the recovery fully succeeds (campaign decision E-7).",
       "depends_on": [
         "F055-C08"
       ],
@@ -400,7 +430,7 @@
         "layer": "M",
         "forbidden_assumptions": [],
         "strongest_rival": "scope creep along the chain: the recovery is genuinely D-16's unblocking act, which makes folding D-16 in feel like efficiency",
-        "verdict_rule": "compliance is judged by product inspection at execution close; the chain sentence of spec §8 must appear in every outcome product",
+        "verdict_rule": "compliance is judged by product inspection at execution close; the chain sentence of spec \u00a78 must appear in every outcome product",
         "evidence_origin_groups": [
           "campaign-plan"
         ],
@@ -409,10 +439,10 @@
       "evidence": [
         {
           "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
-          "kind": "design-source",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-15 (PR #195 packet, §D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
+          "source_quality": "artifact",
+          "description": "Design D-15 (PR #195 packet, \u00a7D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
           "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
           "observed_at": "2026-10-21"
         }
@@ -421,9 +451,9 @@
     {
       "id": "F055-C10",
       "kind": "requirement",
-      "text": "The behaviour test of spec §5 is specified only for the identified case: it runs only on a sign identified under F055-C06 and represented in the pinned corpus layer at or above the occurrence floor, and its reference sets, measures, and outcome mapping are fixed before any measure is computed.",
+      "text": "The behaviour test of spec \u00a75 is specified only for the identified case.",
       "status": "draft",
-      "boundary": "No behaviour quantity exists for an unidentified sign, an absent sign, or a sign below the floor; the wordings for those cases are §5.4's identification and gate wordings, not behaviour wordings. The pre-counting record (both reference sets, with sources) precedes the first measure in the run order.",
+      "boundary": "No behaviour quantity exists for an unidentified sign, an absent sign, or a sign below the floor; the wordings for those cases are \u00a75.4's identification and gate wordings, not behaviour wordings. The pre-counting record (both reference sets, with sources) precedes the first measure in the run order. Ruled at the freeze (DD-055-16): execution requires a worked dry-run of the \u00a75 measures and mapping on a sign other than the target, proving the machinery before it touches the identified sign; the dry-run produces no target quantity and is recorded in the pre-counting record. Carried from the draft text: it runs only on a sign identified under F055-C06, represented in the pinned corpus layer at or above the occurrence floor; its reference sets, measures, outcome mapping are fixed before any measure is computed.",
       "depends_on": [
         "F055-C04",
         "F055-C06"
@@ -449,10 +479,10 @@
       "evidence": [
         {
           "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
-          "kind": "design-source",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-15 (PR #195 packet, §D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
+          "source_quality": "artifact",
+          "description": "Design D-15 (PR #195 packet, \u00a7D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
           "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
           "observed_at": "2026-10-21"
         }
@@ -461,9 +491,9 @@
     {
       "id": "F055-C11",
       "kind": "requirement",
-      "text": "The known-numeral reference set is fixed from published identifications before counting, each member carrying its published source and its identifier in the pinned corpus layer; the target sign is not a member of the set, and adjacency to another occurrence of the target does not count as numeral adjacency.",
+      "text": "The known-numeral reference set is fixed from published identifications before counting.",
       "status": "draft",
-      "boundary": "Excluding the target is what keeps the test a test: the target's published identification is the claim under test, and a set containing it would let the claim stock its own reference range and its own adjacency counts. A member whose published identification is hedged in its source is recorded as hedged; whether hedged members enter the set is OPEN-5 for the freeze.",
+      "boundary": "Excluding the target is what keeps the test a test: the target's published identification is the claim under test, and a set containing it would let the claim stock its own reference range and its own adjacency counts. Ruled at the freeze (DD-055-14): a member whose published identification is hedged in its source is recorded as hedged in the pre-counting record and does NOT enter the known-numeral set for any range, median, or adjacency computation; hedged candidates are listed separately in that record. Carried from the draft text: each member carries its published source, its identifier in the pinned corpus layer; the target sign is not a member of the set; adjacency to another occurrence of the target does not count as numeral adjacency.",
       "depends_on": [
         "F055-C10"
       ],
@@ -491,30 +521,36 @@
       "evidence": [
         {
           "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
-          "kind": "design-source",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-15 (PR #195 packet, §D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
+          "source_quality": "artifact",
+          "description": "Design D-15 (PR #195 packet, \u00a7D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
           "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
-          "observed_at": "2026-10-21"
+          "observed_at": "2026-10-21",
+          "independent_of": [
+            "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt"
+          ]
         },
         {
           "ref": "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt",
-          "kind": "program-record",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "The held cleaned text of Fuls, 'Ancient Writing and Modern Technologies' (SHA-256 1275b795…, recomputed at this draft): naming statements at printed p. 57 and under SIGN LIST at p. 59 (extended Wells 2011/2015 list, 702 distinct signs); the 'Sign 900' section at p. 68; 'Numerical value of Sign 900' with Table 1 at pp. 72–74; the summary statement at p. 85.",
+          "source_quality": "artifact",
+          "description": "The held cleaned text of Fuls, 'Ancient Writing and Modern Technologies' (SHA-256 1275b795\u2026, recomputed at this draft): naming statements at printed p. 57 and under SIGN LIST at p. 59 (extended Wells 2011/2015 list, 702 distinct signs); the 'Sign 900' section at p. 68; 'Numerical value of Sign 900' with Table 1 at pp. 72\u201374; the summary statement at p. 85.",
           "source_id": "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt",
-          "observed_at": "2026-10-21"
+          "observed_at": "2026-10-21",
+          "independent_of": [
+            "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+          ]
         }
       ]
     },
     {
       "id": "F055-C12",
       "kind": "requirement",
-      "text": "The control set is frequency-matched ordinary signs — members of neither the numeral set nor the target — selected by the fixed rule of spec §5.1: the 10 ordinary signs whose occurrence counts in the pinned layer are closest to the target's count, ties broken by corpus identifier in ascending order, or all ordinary signs if fewer than 10 exist.",
+      "text": "The control set is frequency-matched ordinary signs selected by the fixed rule of spec \u00a75.1.",
       "status": "draft",
-      "boundary": "The rule is this draft's operational form of the design's 'frequency-matched ordinary-sign control set', which names no matching rule (DD-055-6). It is deterministic from the pinned layer's frequency table and the target's census count, both recorded in the pre-counting record; the freeze may substitute another rule openly (OPEN-2), and no rule may be chosen after any §5.2 measure exists.",
+      "boundary": "The rule is this draft's operational form of the design's 'frequency-matched ordinary-sign control set', which names no matching rule (DD-055-6). It is deterministic from the pinned layer's frequency table and the target's census count, both recorded in the pre-counting record; the rule is confirmed at the freeze (DD-055-11) and no rule may be chosen after any \u00a75.2 measure exists. Carried from the draft text: members of neither the numeral set nor the target; the 10 ordinary signs whose occurrence counts in the pinned layer are closest to the target's count, ties broken by corpus identifier in ascending order, all ordinary signs if fewer than 10 exist.",
       "depends_on": [
         "F055-C10",
         "F055-C11"
@@ -530,7 +566,7 @@
         "framework_kind": "requirement",
         "layer": "M",
         "forbidden_assumptions": [],
-        "strongest_rival": "a control set chosen for convenience — or for the outcome it produces — after the target's behaviour is already visible",
+        "strongest_rival": "a control set chosen for convenience \u2014 or for the outcome it produces \u2014 after the target's behaviour is already visible",
         "verdict_rule": "the selection is mechanical from recorded inputs; any reader can re-derive the set from the pre-counting record",
         "evidence_origin_groups": [
           "design-packet"
@@ -540,10 +576,10 @@
       "evidence": [
         {
           "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
-          "kind": "design-source",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-15 (PR #195 packet, §D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
+          "source_quality": "artifact",
+          "description": "Design D-15 (PR #195 packet, \u00a7D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
           "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
           "observed_at": "2026-10-21"
         }
@@ -552,9 +588,9 @@
     {
       "id": "F055-C13",
       "kind": "requirement",
-      "text": "The behaviour outcome is exactly one of NUMERAL-LIKE, NOT NUMERAL-LIKE, or MIXED, assigned by the mapping of spec §5.3 alone: NUMERAL-LIKE iff the target is numeral-side on at least two measures and control-side on fewer than two; NOT NUMERAL-LIKE iff it is control-side on at least two and numeral-side on fewer than two; MIXED otherwise.",
+      "text": "The behaviour outcome is assigned by the mapping of spec \u00a75.3 alone.",
       "status": "draft",
-      "boundary": "The three measures, the range and median constructions, and the mapping are design D-15's, with two operational forms fixed at draft and flagged for the freeze: 'outside the control set's median' read directionally (DD-055-6; OPEN-2), and positional entropy as Shannon entropy in bits over positions as stored (OPEN-6). The mapping is total: every measure pattern lands in exactly one outcome, including the overlap pattern both-sides-on-two, which is MIXED.",
+      "boundary": "The three measures, the range and median constructions, and the mapping are design D-15's, with two operational forms confirmed at the freeze: 'outside the control set's median' read directionally (DD-055-6; DD-055-11), and positional entropy as Shannon entropy in bits over positions as stored, computed identically for every sign compared (DD-055-15). The mapping is total: every measure pattern lands in exactly one outcome, including the overlap pattern both-sides-on-two, which is MIXED. Carried from the draft text: NUMERAL-LIKE iff the target is numeral-side on at least two measures, control-side on fewer than two; NOT NUMERAL-LIKE iff it is control-side on at least two, numeral-side on fewer than two; MIXED otherwise. Carried from the 0.7-draft head text: the outcome is exactly one of NUMERAL-LIKE, NOT NUMERAL-LIKE, or MIXED.",
       "depends_on": [
         "F055-C11",
         "F055-C12"
@@ -580,10 +616,10 @@
       "evidence": [
         {
           "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
-          "kind": "design-source",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-15 (PR #195 packet, §D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
+          "source_quality": "artifact",
+          "description": "Design D-15 (PR #195 packet, \u00a7D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
           "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
           "observed_at": "2026-10-21"
         }
@@ -592,9 +628,9 @@
     {
       "id": "F055-C14",
       "kind": "requirement",
-      "text": "Every terminal outcome of an execution is recorded in one of the pre-written wordings of spec §5.4 — NUMERAL-LIKE, NOT NUMERAL-LIKE, MIXED, IDENTIFICATION FAILED, IDENTIFIED — TOO FEW OCCURRENCES TO TEST, or CLOSED AT STEP 0 — with the bracketed material filled from the run and no other headline wording substituted.",
+      "text": "Every terminal outcome of an execution is recorded in one of the pre-written wordings of spec \u00a75.4.",
       "status": "draft",
-      "boundary": "The wording set covers the full outcome set of spec §11. IDENTIFICATION FAILED and the gate wordings are outcomes of the design, written before any result exists, and carry the same prominence as a behaviour verdict (§8). Filling a bracket with a quantity not present in the run record falsifies the outcome record.",
+      "boundary": "The wording set covers the full outcome set of spec \u00a711. IDENTIFICATION FAILED and the gate wordings are outcomes of the design, written before any result exists, and carry the same prominence as a behaviour verdict (\u00a78). Filling a bracket with a quantity not present in the run record falsifies the outcome record. Carried from the draft text: NUMERAL-LIKE, NOT NUMERAL-LIKE, MIXED, IDENTIFICATION FAILED, IDENTIFIED \u2014 TOO FEW OCCURRENCES TO TEST, CLOSED AT STEP 0, with the bracketed material filled from the run, no other headline wording substituted.",
       "depends_on": [
         "F055-C04",
         "F055-C13"
@@ -604,13 +640,13 @@
       ],
       "alternatives": [],
       "falsification_tests": [
-        "headline inspection: an outcome record whose headline matches no §5.4 form, or whose filled quantities are absent from the run record, falsifies compliance"
+        "headline inspection: an outcome record whose headline matches no \u00a75.4 form, or whose filled quantities are absent from the run record, falsifies compliance"
       ],
       "metadata": {
         "framework_kind": "requirement",
         "layer": "M",
         "forbidden_assumptions": [],
-        "strongest_rival": "softened wording after a disappointing outcome — the failure mode the pre-written forms exist to prevent",
+        "strongest_rival": "softened wording after a disappointing outcome \u2014 the failure mode the pre-written forms exist to prevent",
         "verdict_rule": "the forms are frozen in this register before execution; the outcome's first paragraph must instantiate exactly one of them",
         "evidence_origin_groups": [
           "design-packet"
@@ -620,10 +656,10 @@
       "evidence": [
         {
           "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
-          "kind": "design-source",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-15 (PR #195 packet, §D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
+          "source_quality": "artifact",
+          "description": "Design D-15 (PR #195 packet, \u00a7D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
           "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
           "observed_at": "2026-10-21"
         }
@@ -632,9 +668,9 @@
     {
       "id": "F055-C15",
       "kind": "requirement",
-      "text": "No outcome under Spec 055 establishes that the identified sign's value is six, and the source document's own argument for six is preserved in the recovery record as source material, never cited as evidence at the behaviour stage.",
+      "text": "No outcome under Spec 055 establishes that the identified sign's value is six.",
       "status": "draft",
-      "boundary": "Also excluded by this boundary, and stated wherever an outcome is stated: any conclusion about what the sign meant in use beyond the numeral question, and any decipherment claim. Distributional behaviour can support 'this sign is a numeral'; the exact value needs evidence of a different kind (counted depictions, bilingual material) that this program does not hold — design D-15's own limit.",
+      "boundary": "Also excluded by this boundary, and stated wherever an outcome is stated: any conclusion about what the sign meant in use beyond the numeral question, and any decipherment claim. Distributional behaviour can support 'this sign is a numeral'; the exact value needs evidence of a different kind (counted depictions, bilingual material) that this program does not hold \u2014 design D-15's own limit. Carried from the draft text: the source document's own argument for six is preserved in the recovery record as source material, never cited as evidence at the behaviour stage.",
       "depends_on": [
         "F055-C01",
         "F055-C03",
@@ -647,7 +683,7 @@
         "quoting the source's tablet equations or its summary sentence as corroboration for a NUMERAL-LIKE outcome (refused: the recovery preserves the argument; the test does not adopt it)"
       ],
       "falsification_tests": [
-        "inspection of every Spec 055 output: a value, meaning, or decipherment claim in any output — or a citation of the source's derivation as behaviour-stage evidence — falsifies compliance and is corrected by dated addendum, never by silent edit"
+        "inspection of every Spec 055 output: a value, meaning, or decipherment claim in any output \u2014 or a citation of the source's derivation as behaviour-stage evidence \u2014 falsifies compliance and is corrected by dated addendum, never by silent edit"
       ],
       "metadata": {
         "framework_kind": "requirement",
@@ -666,21 +702,27 @@
       "evidence": [
         {
           "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
-          "kind": "design-source",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-15 (PR #195 packet, §D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
+          "source_quality": "artifact",
+          "description": "Design D-15 (PR #195 packet, \u00a7D-15, read in full at this draft): the two-stage falsifier, the identification success/failure conditions, the three measures and criteria, the strict-corpus data statement, and the not-six limit.",
           "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
-          "observed_at": "2026-10-21"
+          "observed_at": "2026-10-21",
+          "independent_of": [
+            "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt"
+          ]
         },
         {
           "ref": "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt",
-          "kind": "program-record",
+          "kind": "observed",
           "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "The held cleaned text of Fuls, 'Ancient Writing and Modern Technologies' (SHA-256 1275b795…, recomputed at this draft): naming statements at printed p. 57 and under SIGN LIST at p. 59 (extended Wells 2011/2015 list, 702 distinct signs); the 'Sign 900' section at p. 68; 'Numerical value of Sign 900' with Table 1 at pp. 72–74; the summary statement at p. 85.",
+          "source_quality": "artifact",
+          "description": "The held cleaned text of Fuls, 'Ancient Writing and Modern Technologies' (SHA-256 1275b795\u2026, recomputed at this draft): naming statements at printed p. 57 and under SIGN LIST at p. 59 (extended Wells 2011/2015 list, 702 distinct signs); the 'Sign 900' section at p. 68; 'Numerical value of Sign 900' with Table 1 at pp. 72\u201374; the summary statement at p. 85.",
           "source_id": "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt",
-          "observed_at": "2026-10-21"
+          "observed_at": "2026-10-21",
+          "independent_of": [
+            "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+          ]
         }
       ]
     }

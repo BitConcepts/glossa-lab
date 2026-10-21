@@ -1,6 +1,6 @@
 # Spec 055 — Adjudication Record
 
-> ## ADJUDICATION INPUT — 2026-10-21
+> ## ADJUDICATION INPUT — 2026-10-21; FREEZE ACT — 2026-10-21 (§§7–8)
 >
 > This spec has three adjudication inputs,
 > recorded here so the draft's basis is
@@ -607,6 +607,223 @@ set; the draft therefore advances as a
 draft. Nothing in this section amends
 design D-15, which stands as written in
 the packet.
+
+## 7. Freeze decisions (2026-10-21)
+
+The freeze was executed on 2026-10-21 under
+the campaign plan approved AS WRITTEN the
+same date (Wave 2 freeze wave). The OPEN
+items of §3 are resolved here, on the
+record. Draft decisions DD-055-1 to
+DD-055-8 are **confirmed** as drafted,
+including DD-055-3 (target excluded from
+its own reference sets), DD-055-4 (the
+occurrence floor), and DD-055-6 (the
+operational forms).
+
+- **DD-055-9 — OSF registration (E-1).**
+  This freeze files the spec's own OSF
+  contract registration under campaign
+  decision E-1, following the Specs
+  036–039 pattern (OPEN item §3.2, settled
+  at draft). The filing record is
+  `osf-spec-registration.md`, completed by
+  append after filing. Execution awaits the
+  registration's approval act and a
+  separate execution order.
+- **DD-055-10 — OPEN-1, the recovery-record
+  form: CONFIRMED.** The preserved record is
+  `source-table-recovery.json` under schema
+  `glossa.source-table-recovery/1`, in the
+  field set spec §6 fixes (DD-055-1),
+  produced on **every terminal outcome**
+  including step-0 and identification
+  closures, carrying its closure block and
+  whatever recovery material was established
+  before the closure. The freeze does not
+  adjudicate sign 700 in confirming this
+  form: the record's `sign_700_material`
+  block carries locators and a presence
+  flag only (DD-055-9's chain boundary;
+  claim F055-C09).
+- **DD-055-11 — OPEN-2, the control-set
+  rule and the median clause: CONFIRMED as
+  drafted.** The control set is the 10
+  ordinary signs whose occurrence counts in
+  the pinned layer are closest to the
+  target's count, ties by corpus identifier
+  ascending, all of them if fewer than 10
+  exist (DD-055-6). "Outside the control
+  set's median" keeps its directional
+  operational form: the target's value lies
+  on the known-numeral median's side of the
+  control median and differs from it. The
+  §5.3 mapping stays total under both.
+- **DD-055-12 — OPEN-3, the occurrence
+  floor: CONFIRMED at 5.** An identified
+  sign absent from the pinned layer, or
+  represented by fewer than 5 occurrences,
+  closes as IDENTIFIED — TOO FEW
+  OCCURRENCES TO TEST with the count named
+  (gate 0.4). The floor is not removed; the
+  §5.4 wording set keeps all six members.
+- **DD-055-13 — OPEN-4, the corpus-pinning
+  procedure: the draft posture is
+  CONFIRMED, and no pin is stated at this
+  freeze.** The strict corpus is the
+  program's V3 / Mahadevan-lineage corpus
+  as held in the database — a database
+  posture, not a pinnable repository file
+  on `main` (the Spec 048 precedent for the
+  same layer, read at draft and re-checked
+  at this freeze). The exact act is gate
+  0.4's, unchanged: before any counting,
+  the layer of record is identified from
+  the database, exported in full, and
+  pinned by SHA-256 in the step-0 record,
+  which states the export's file form and
+  sort order as produced; the identified
+  sign's representation is established by
+  its crosswalked corpus identifier; if the
+  layer cannot be pinned the run closes as
+  CLOSED AT STEP 0 — CORPUS NOT PINNABLE.
+  Reason for not pinning now: there is no
+  file on `main` whose hash is the layer,
+  so a freeze-time pin would name a
+  different object than the one execution
+  counts — the stale-pin failure Spec 040's
+  gate record documents.
+- **DD-055-14 — OPEN-5, hedged numeral-set
+  members: hedged members do NOT enter the
+  set.** A numeral candidate whose published
+  identification is hedged in its source is
+  recorded as hedged in the pre-counting
+  record and is excluded from every range,
+  median, and adjacency computation; hedged
+  candidates are listed separately there.
+  A hedged identification must not stock
+  the reference range the target is judged
+  against.
+- **DD-055-15 — OPEN-6, positional entropy:
+  CONFIRMED as drafted.** Shannon entropy
+  in bits over positions as stored in the
+  corpus sequence, computed by the
+  identical formula for every sign compared
+  (DD-055-6). No normalised construction is
+  substituted.
+- **DD-055-16 — OPEN-7, dry-run check:
+  REQUIRED.** Execution requires a worked
+  dry-run of the §5 measures and the §5.3
+  mapping on a sign other than the target,
+  recorded in the pre-counting record,
+  proving the machinery before it touches
+  the identified sign. The dry-run produces
+  no target quantity and changes no rule.
+- **DD-055-17 — Execution phase allocated:
+  Phase-414** (DD-055-7's allocation act).
+- **DD-055-18 — The AEE gate reading.**
+  The DD-038-10 reading is adopted: the
+  lifecycle hooks pass at the freeze when
+  every hook carries zero correctness
+  failure modes and no claim below the
+  0.70 threshold, the residual records
+  being the FR-2.3 draft-cap records a
+  draft register carries by construction.
+  Outcome at this freeze: PASS — register
+  recovered to 0.7-draft in adjudicated
+  rounds (loadability recovery from
+  0.5-draft; 53 failure modes over
+  0.6-draft: 14 irreducibility, 22
+  independence-unmodelled, 2
+  negation-conflict, 15 draft-cap; a
+  further restatement of F055-C13's head
+  cleared the last two correctness records);
+  at every hook, draft-cap records only,
+  minimum propagated 0.72. Record:
+  `aee/freeze-aee-note.md`.
+
+**The chain rule, carried verbatim in
+substance (E-7).** The recovery this spec
+performs is the act that would unblock
+design D-16. It does not: **the recovery
+output does NOT admit D-16 to this
+campaign, in whole or in part, even if the
+recovery fully succeeds.** The sign-700
+statements in the recovered document are
+located by locator only and are adjudicated
+in no way by this freeze or by the spec;
+sign 700 was not adjudicated at the freeze.
+D-16 waits for its own planning gate.
+
+**The registry trap, carried (F055-C07).**
+The crosswalk registry as held today (803
+rows) contains a `W900` cell inside the
+`wells_ids` cell of the P154 row. That cell
+neither identifies nor excludes this
+fragment's sign; matching is by drawn form
+only. The freeze confirms the trap is
+carried in spec §§1, 4.2 and claim
+F055-C07 exactly as drafted.
+
+## 8. Pin verification at the freeze (two routes)
+
+Every spec §2 pin was re-derived in the
+foreground by two independent routes — the
+contents-API raw route and the git-blob
+route — both at the merged record (`main`
+at `3af269f660a9368e898cdece41132200d31b87cc`).
+The two routes agree byte-for-byte on every
+file, and every recomputed hash equals its
+pin:
+
+| Input | SHA-256 (both routes) | Bytes |
+|---|---|---|
+| Claim record (`glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json`) | `e98190894202a2a1c0e314229dcb585c62a0f5c12c059bcabd63b055c42959e8` | 22,894 |
+| Held cleaned text (`glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt`) | `1275b795903260221f5226bada352de27471c010e2ad8ace556c548c20da1fc4` | 48,904 |
+| Literature record (`glossa-indus/literature/documents/ancient_writing_and_modern_technologies_51831ac9.json`) | `92e19e6def7eccb42ba0e9f53f5ef3bf9dbb0b9717aa3d675cecb971f5ab0e5c` | 1,261 |
+| Phase-104 evaluation (`glossa-indus/reports/phase104_claims_evaluation.json`) | `2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d` | 17,475 |
+| Crosswalk registry (`data/crosswalks/canonical_sign_registry.csv`) | `8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420` | 111,583 |
+| Lane-2 drafts (`specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json`) | `3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb` | 127,338 |
+| Anchors (`backend/reports/INDUS_FINAL_ANCHORS.json`) | `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569` | 570,344 |
+
+The strict corpus carries no pin in this
+table, deliberately (DD-055-13). The claim
+record's hash is carried in the freeze
+definition as a constant in the Spec 038
+form: the extracted-claims store is
+regenerated by the backend suite, so the
+freeze tests assert the constant plus the
+fragment's facts on the live file, never a
+live-file hash on that store. The same form
+is applied to any other suite-regenerated
+file the freeze tests touch: the Phase-104
+evaluation and the lane-2 drafts are not
+regenerated and carry live-file hashes in
+the tests; the registry, the held text, the
+literature record, and the anchors are not
+regenerated either.
+
+The facts the design rests on were re-read
+from the pinned bytes in the same pass: the
+claim entry reads "Sign value: 900 / number
+six", status untested, stage created; the
+Phase-104 entry reads stays_untested under
+RULE-NUM with evidence "Crosswalk numeric
+IDs present in registry: 86"; the registry
+carries 803 rows, and the `W900` cell sits
+on the P154 row ("Right parenthesis
+(perhaps with a backward curve at the
+bottom)", corpus frequency 93); the
+literature record carries file size
+3,565,316 bytes, intake checksum
+`51831ac9…`, license status "unclear"; the
+held text carries the "702 distinct signs"
+naming statements, the "Sign 900" section,
+the "Numerical value of Sign 900" section,
+and the summary statement that the
+numerical value of Sign 900 is six.
+`backend/tests/test_spec055_freeze.py` pins
+these facts so later drift fails loudly.
 
 ---
 

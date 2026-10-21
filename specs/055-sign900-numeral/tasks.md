@@ -1,6 +1,6 @@
 # Spec 055 — Tasks
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-21
+> ## PLAN — FROZEN 2026-10-21
 >
 > Adjudication inputs are recorded in
 > `adjudication.md` (the runnable-experiments
@@ -42,52 +42,74 @@
       tests were derived twice independently;
       disagreements and resolutions are
       recorded in `adjudication.md` §5. The
-      AEE lifecycle hooks have **not** run on
-      this register (L4).
+      AEE lifecycle hooks ran at the freeze
+      act (L4).
 - [x] **L3 — Design PR.** This draft, opened
       as a DRAFT PR and left unmerged for the
       freeze decision, CI state reported from
       the run's own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
-      — not run on this draft).** At the freeze
-      act, run `run_aee.py assess`
-      after_specify, after_plan, and
-      after_tasks over the claim register; the
-      gate is **pass**, and a stricter outcome
-      blocks the freeze until its named
-      recovery is complete and recorded.
-      Deliberate ordering (the Spec 035/038
-      record): any recovery round changes
-      claim text, and the freeze digest is
-      computed over the recovered register
-      exactly once, at freeze. Freeze
-      mechanics are re-checked against the
-      adopted 1.5.x engine at the freeze
-      rather than assumed from pre-adoption
-      habit (campaign plan, Wave 2).
-- [ ] **L5 — Freeze-decision items.** The
-      freeze decides OPEN-1 (the §6
-      recovery-record form), OPEN-2 (the
-      control-set rule and the median
-      clause), OPEN-3 (the occurrence
-      floor), OPEN-4 (the corpus-pinning
-      procedure), OPEN-5 (hedged
-      numeral-set members), OPEN-6
-      (positional entropy), and OPEN-7
-      (dry-run check), and confirms or
-      openly overturns DD-055-3, DD-055-4,
-      and DD-055-6.
-- [ ] **L6 — Freeze.** On the owner's freeze
-      order under the campaign, with L4 passed
-      and L5 decided: hooks recorded,
-      `freeze.md` finalised, `freeze.json`
-      recomputed over the recovered register
-      and finalised texts, every spec §2 pin
-      re-asserted against the merged record,
-      the execution phase number allocated
-      (DD-055-7), and the spec's OSF contract
-      registration filed under campaign
-      decision E-1.
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE).**
+      Run at the freeze act, 2026-10-21, under
+      aee 1.5.0 (the `glossa-aee150` venv):
+      after_specify cleared in adjudicated
+      rounds over the recovered register (a
+      loadability recovery 0.5-draft → 0.6-draft,
+      then 53 failure modes over 0.6-draft
+      recovered to 0.7-draft, with a final
+      restatement of F055-C13's head clearing
+      the last correctness records);
+      after_plan and after_tasks clean at first
+      pass on the final register. At every
+      hook: zero correctness failure modes and
+      no claim below the 0.70 threshold
+      (minimum propagated 0.72); the residual
+      records are the 15 FR-2.3 draft-cap
+      records (the DD-055-18 gate reading).
+      Recorded in `aee/freeze-aee-note.md`.
+- [x] **L5 — Freeze-decision items.** Decided
+      on the record in `adjudication.md` §7:
+      DD-055-9 (OSF registration under E-1),
+      DD-055-10 (OPEN-1: the §6 recovery-record
+      form confirmed — `source-table-recovery.json`,
+      schema `glossa.source-table-recovery/1`,
+      on every terminal outcome), DD-055-11
+      (OPEN-2: control-set rule and directional
+      median clause confirmed), DD-055-12
+      (OPEN-3: occurrence floor confirmed at
+      5), DD-055-13 (OPEN-4: corpus pinning
+      posture confirmed — pinned at gate 0.4,
+      no freeze-time pin, with the reason),
+      DD-055-14 (OPEN-5: hedged numeral-set
+      members excluded, listed separately),
+      DD-055-15 (OPEN-6: positional entropy
+      confirmed as drafted), DD-055-16
+      (OPEN-7: dry-run on a non-target sign
+      required), DD-055-17 (Phase-414),
+      DD-055-18 (DD-038-10 gate reading).
+      DD-055-1 to DD-055-8 are CONFIRMED as
+      drafted. The freeze does not adjudicate
+      sign 700: it is located by locator only
+      in the recovery form (F055-C09), and the
+      registry trap (the `W900` cell on the
+      P154 row; matching by drawn form only,
+      F055-C07) is carried as drafted.
+- [x] **L6 — Freeze.** Executed 2026-10-21:
+      hooks recorded (L4), `freeze.md`
+      finalised, `freeze.json` computed
+      exactly once over the recovered register
+      (0.7-draft) and the finalised freeze
+      texts, every spec §2 pin re-asserted
+      against the merged record by two
+      independent routes (contents-API raw
+      and git-blob at `main` `3af269f6`; both
+      routes agree on every file —
+      `adjudication.md` §8), the freeze tests
+      proven able to fail (mutation → red →
+      restore → green; `freeze.md` §6), the
+      spec's OSF contract registration filed
+      under E-1 (DD-055-9), and the execution
+      phase allocated as Phase-414
+      (DD-055-17).
 - [ ] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).

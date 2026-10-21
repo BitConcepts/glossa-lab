@@ -138,6 +138,7 @@ better than every non-linguistic control.
 | Strict corpus (the Indus distribution of record) — the V3 / Mahadevan-lineage corpus the Phase-43 framework ran on, restricted to the strict sign set | **No file pin is stated at this draft, deliberately** (the Spec 048 precedent, DD-053-4). Spec 033 §4 states this corpus as "the program's V3/Mahadevan-lineage corpus as held in the database" — a database posture, not a pinnable repository file on `main`. The layer is therefore identified, exported, and pinned by digest at step 0, before any fitting, under gate 0.3 — and the run closes if it cannot be (OPEN-053-1). Inventing a pin at draft would repeat the stale-pin failure Spec 040's gate record documents. |
 | Sign crosswalk (`data/crosswalks/sign_crosswalk_master.csv`) — the source of the §5 split/merge variants | SHA-256 `4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf` (recomputed at this draft). The Mahadevan–Parpola crosswalk file (`backend/glossa_lab/data/mahadevan_parpola_crosswalk.json`, SHA-256 `9ebd7723472d888dc8a127ff840a108d4fbd546f7f8ed28ccc6e06444a2dc69b`, recomputed at this draft) is cited alongside it for numbering questions. |
 | Control counts — the named systems of §3 gate 0.4 | Bibliographic pins at this draft; the counts themselves are entered as **cited data at step 0** (gate 0.4), each count with its source locator, and frozen before any fit. The exact editions/tables are confirmed at the freeze (OPEN-053-3). No count is typed into a script (H16). |
+| Phase-43 results file (`outputs/phase43_all.json`) | SHA-256 `78a6c21908b9362854c54dd3d820d717be22feab3af11135663fa14aaf554fe4` (recomputed at this draft). Read in full at this draft: it carries Phase-43's corpus census (3,916 records; 12,494 sign instances; top-20 sign frequencies) and its positional and SA tables — and **no Zipf fit**: no exponent, no Mandelbrot parameters, no fitting procedure. It is pinned here so the freeze works from the complete record, and it is the ground for §4.2's estimator statement. |
 | Yadav's original report | Yadav et al. 2009, "Statistical analysis of the Indus script using n-grams" (arXiv preprint) — the source document of the claim record; cited for the reported exponent range only. No number is taken from it at execution; the comparison is internal to §4's rules. |
 
 ## 3. Step 0 — gates before any fit (fail-closed)
@@ -304,11 +305,17 @@ system: V, N, fitted α and q, SSE, and:
 
 This estimator is the fitting rule of record
 for this spec (DD-053-3). It is not claimed to
-be Phase-43's estimator: no Phase-43 estimator
-or results file is pinnable on `main` at this
-draft (adjudication §6, defect 2), and the
-recorded exponent of about 1.35 is context for
-the comparison, not a reproduction target. The
+be Phase-43's estimator: Phase-43's results
+file is pinnable (§2) but records no Zipf fit
+— no exponent, no Mandelbrot parameters, no
+fitting procedure — and no Phase-43 estimator
+script for the Zipf fit is on `main` at this
+draft (adjudication §7, defect 2), so there is
+no Phase-43 fitting rule to be identical to.
+The recorded exponent of about 1.35, which
+lives in the claim record's evidence string,
+is context for the comparison, not a
+reproduction target. The
 freeze may substitute a pinned Phase-43
 estimator for this one, openly, before any
 fitting (OPEN-053-2); it may not substitute

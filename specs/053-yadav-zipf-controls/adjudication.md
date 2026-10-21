@@ -126,17 +126,36 @@ via the GitHub API against `main` (head
   for S2's variant construction and its
   partial-variant honesty rule.
 - **The Phase-43 Zipf record (a gap, recorded,
-  not papered over)** — no Phase-43
-  Zipf-Mandelbrot estimator script or results
-  file is pinnable on `main`: the exponent
-  lives in the claim file's evidence string,
-  and the only Zipf results file found
+  not papered over)** — Phase-43's results file
+  `outputs/phase43_all.json` was located on
+  `main`, recomputed to SHA-256 `78a6c219…`,
+  and read in full: it carries the phase's
+  corpus census (3,916 records; 12,494 sign
+  instances; top-20 frequencies), its SA
+  scores, and its positional tables — and **no
+  Zipf fit**: no exponent, no Mandelbrot
+  parameters, no fitting procedure. No
+  Phase-43 estimator script for the Zipf fit
+  is on `main`. The recorded exponent of about
+  1.35 therefore rests on the claim file's
+  evidence string alone. The only Zipf results
+  file in `reports/`
   (`reports/indus_phase31_t3_zipf_restored.json`)
   is an older, slope-based record (M77 slope
   0.75, TB slope 0.93), reconstructed from an
   archived result — a different measure from a
   different phase. Hence DD-053-3 (the spec
   defines its own estimator) and OPEN-053-2.
+  *(Correction note, same day: the first
+  drafting pass searched `reports/` and
+  `backend/reports/` only and stated that no
+  Phase-43 results file was pinnable; the
+  `outputs/` file was found on a fuller tree
+  listing minutes later and this record, spec
+  §2/§4.2, and claims F053-C02/C06 were
+  corrected before the draft PR was read by
+  anyone. The substance is unchanged: the file
+  contains no Zipf fit.)*
 - **Not done at draft, by design** — no control
   count was entered, no corpus was exported, no
   fit of any system was computed, no synthetic
@@ -162,7 +181,7 @@ one line; disagreements in full.
 | C03 | Run §4; hypothesis supported iff every non-linguistic control is strictly worse and P1 passes | Run §4; hypothesis fails if any control is at or below the Indus error (→ C04), and is unadjudicated if P1 fails (→ C12) | **Agree** — the three routes are exhaustive by construction and each is routed to its own claim, not silently to either side. |
 | C04 | Outcome record carries NOT SEPARABLE wording when the §4.3 condition holds | If every control is strictly worse, C04's condition does not arise (→ SEPARABLE) | **Agree.** |
 | C05 | Inspect the claim record at close: only the dated append added | Any product restating the pooled verdict or status falsifies compliance | **Agree.** |
-| C06 | One implementation exhibited for all systems, gate 0.2 self-test passed | A fit quantity from any other estimator (per-system tweaks, a library default) falsifies the record | **Disagreement, resolved (DD-053-3).** A (from the design's "identical Zipf-Mandelbrot estimator") reads it as *Phase-43's* estimator, reused. B (from the record) finds no Phase-43 estimator or results file pinnable on `main` (§2 verification record) — the identity A wants cannot be exhibited. **Resolution:** identity is preserved where it matters — one estimator, defined in spec §4.2, applied to *every system including the Indus* — and Phase-43 comparability is carried by sensitivity S3 (full-inventory α reported beside the recorded ~1.35). The freeze may substitute a pinned Phase-43 estimator openly, before any fitting (OPEN-053-2); after any fit, never. |
+| C06 | One implementation exhibited for all systems, gate 0.2 self-test passed | A fit quantity from any other estimator (per-system tweaks, a library default) falsifies the record | **Disagreement, resolved (DD-053-3).** A (from the design's "identical Zipf-Mandelbrot estimator") reads it as *Phase-43's* estimator, reused. B (from the record) finds no Phase-43 Zipf estimator pinnable on `main`, and Phase-43's results file records no Zipf fit (§2 verification record) — the identity A wants cannot be exhibited. **Resolution:** identity is preserved where it matters — one estimator, defined in spec §4.2, applied to *every system including the Indus* — and Phase-43 comparability is carried by sensitivity S3 (full-inventory α reported beside the recorded ~1.35). The freeze may substitute a pinned Phase-43 estimator openly, before any fitting (OPEN-053-2); after any fit, never. |
 | C07 | Verdict word derivable from the published NRMSE_log values by the ≤ rule | A near-miss control relabelled as firing (or a firing control relabelled as a near miss) falsifies the record | **Disagreement, resolved (DD-053-2).** A (from the falsifier's words "as well **or better**") fixes the rule at ε = 0: a control counts iff its error is ≤ the Indus error. B (from the outcome side) proposes a tolerance band ε = 0.02 *inside* the rule, arguing sampling and counting noise make exact ties arbitrary. **Resolution:** A's literal reading governs the verdict — the design's words carry no band, and a band chosen at draft would decide borderline outcomes by drafter's preference. B's concern is preserved where it cannot decide anything: the band survives as the reporting-only NEAR MISS rule (§4.3 rule 4), so a control 0.01 worse than the script is named in every product, not buried. OPEN-053-5 asks the freeze to confirm ε = 0 or to set a band openly, before fitting. |
 | C08 | Step-0 record exhibits the frozen tables with citations before any fit | A set differing from the named set, or a fit preceding the freeze, breaks the gate (→ CONTROL SET FREEZE FAILED) | **Disagreement, resolved (DD-053-6).** A (from the design's "a synthetic emblem inventory generated under a stated random process") reads the simplest stated process: uniform-random assignment of tokens to types. B (from the residue's point) objects that a uniform process is near-flat by construction — it *cannot* fit a Zipf curve, so as a control it is vacuous: the residue's warning is that some random processes *do* produce this curve. **Resolution:** the synthetic control is a Yule–Simon process (innovation ρ = 0.10, seed and size-matching pinned in gate 0.4), the standard stated random process whose output is a power-law rank distribution; the uniform process is recorded here as the considered-and-refused alternative. OPEN-053-6 asks the freeze to confirm the process and its parameters. |
 | C09 | Gate 0.3 pins the layer; the primary's V and N equal the strict census | A primary fitted on any other population (e.g. the full inventory) falsifies the record | **Disagreement, resolved (DD-053-4).** A (from Yadav's original test) reads "the Indus fit" as the full-inventory V3 distribution — the population the recorded 1.35 came from. B (from the design text and D-03/D-04 usage) reads "the Indus **strict corpus**" as the strict sign set's distribution, the population every sibling design in this file means by the phrase. **Resolution:** B governs the primary — the design and the campaign brief both name the strict corpus as arm A's input, and a draft does not override its design's named population. A's population is preserved as sensitivity S3, reported beside the recorded exponent, so the comparability A wants is in the record without changing the registered primary. The freeze confirms or overturns this openly (OPEN-053-1 includes the population question). |
@@ -330,17 +349,20 @@ is reported, never repaired silently:
    question to the freeze explicitly.
 2. **"The identical Zipf-Mandelbrot estimator"
    has no pinnable referent on the record.**
-   No Phase-43 estimator or results file
-   exists on `main` to be identical *to*
-   (§2 verification record); the only Zipf
-   results file is Phase-31's older slope
-   record. A draft that claimed Phase-43
-   identity would be claiming a pin it cannot
-   exhibit. Handled by DD-053-3 and
-   OPEN-053-2; if the freeze also cannot pin
-   Phase-43's estimator, §4.2's estimator
-   stands and the recorded ~1.35 remains
-   context, exactly as spec §4.2 states.
+   Phase-43's results file exists and is
+   pinned (spec §2), but it records no Zipf
+   fit, and no Phase-43 Zipf estimator is on
+   `main` to be identical *to* (§2
+   verification record); the only Zipf results
+   file in `reports/` is Phase-31's older
+   slope record. A draft that claimed
+   Phase-43 identity would be claiming a
+   fitting rule it cannot exhibit. Handled by
+   DD-053-3 and OPEN-053-2; if the freeze
+   also cannot pin Phase-43's estimator,
+   §4.2's estimator stands and the recorded
+   ~1.35 remains context, exactly as spec
+   §4.2 states.
 3. **"The Indus strict corpus" is ambiguous
    against Yadav's population.** The original
    fit (and the recorded exponent) is over the

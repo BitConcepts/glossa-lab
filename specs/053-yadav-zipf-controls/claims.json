@@ -60,7 +60,7 @@
       "kind": "requirement",
       "text": "yadav_2009_arxiv_manual_001 stands strongly supported on its recorded test: Phase-43 fitted the V3 corpus and recorded a Zipf exponent of about 1.35, and the claim's recorded falsifier is that the frequency distribution deviates from the Zipf-Mandelbrot law.",
       "status": "draft",
-      "boundary": "These are the claim record's own statements, read first-hand at this draft. No Phase-43 estimator or results file is pinnable on main at this draft (adjudication section 6, defect 2); the exponent is context for this spec's comparison, not a reproduction target, and the full-inventory sensitivity S3 reports its fitted exponent beside this recorded value without adjudicating it.",
+      "boundary": "These are the claim record's own statements, read first-hand at this draft. The exponent is not corroborated by any Zipf entry in Phase-43's results file: outputs/phase43_all.json (pinned in spec section 2, read in full at this draft) carries the phase's corpus census and positional/SA tables and records no Zipf fit, and no Phase-43 Zipf estimator is pinnable on main at this draft (adjudication section 7, defect 2). The exponent is therefore context for this spec's comparison, not a reproduction target, and the full-inventory sensitivity S3 reports its fitted exponent beside this recorded value without adjudicating it.",
       "depends_on": [
         "F053-C01"
       ],
@@ -90,6 +90,15 @@
           "source_quality": "authoritative",
           "description": "Claim record for yadav_2009_arxiv_manual_001 (SHA-256 90476623..., recomputed at this draft from main head 83b6a563...): normalized claim 'Indus script sign frequencies follow a Zipf-Mandelbrot distribution', status strongly_supported, stage explained, evidence string 'Phase-43: V3 Zipf exponent ~1.35 (super-Zipfian) [VERIFIED]', and the not-understood text naming the non-linguistic-systems comparison and the independent-corpus fit as the two strengthening acts.",
           "source_id": "glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json",
+          "observed_at": "2026-10-21"
+        },
+        {
+          "ref": "outputs/phase43_all.json",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Phase-43 results file (SHA-256 78a6c219..., recomputed at this draft), read in full: corpus census (3,916 records, 12,494 sign instances, top-20 frequencies), T1_3 SA scores, T2 positional tables - and no Zipf fit of any kind, which is why the recorded exponent of about 1.35 rests on the claim file's evidence string alone.",
+          "source_id": "outputs/phase43_all.json",
           "observed_at": "2026-10-21"
         }
       ]
@@ -247,7 +256,7 @@
       "kind": "requirement",
       "text": "Every system in the comparison - the Indus strict corpus, each non-linguistic control, the synthetic control's replicates, and the positive control - is fitted with the one estimator of spec section 4.2: the Zipf-Mandelbrot model with normalisation-fixed C, fitted by minimising squared log residuals over the stated deterministic grid and refinement, and no other estimator is used for any reported fit quantity.",
       "status": "draft",
-      "boundary": "Estimator identity is what makes the errors comparable. This estimator is the fitting rule of record for this spec (DD-053-3); it is not claimed to be Phase-43's estimator, which is not pinnable on main at this draft. The freeze may substitute a pinned Phase-43 estimator openly, before any fitting (OPEN-053-2); no substitution is possible after any fit exists. The gate 0.2 self-test is this claim's operational check.",
+      "boundary": "Estimator identity is what makes the errors comparable. This estimator is the fitting rule of record for this spec (DD-053-3); it is not claimed to be Phase-43's estimator - Phase-43's results file records no Zipf fit and no Phase-43 Zipf estimator is pinnable on main at this draft. The freeze may substitute a pinned Phase-43 estimator openly, before any fitting (OPEN-053-2), if it identifies one on the record; no substitution is possible after any fit exists. The gate 0.2 self-test is this claim's operational check.",
       "depends_on": [
         "F053-C05"
       ],

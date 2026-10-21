@@ -391,7 +391,17 @@ edited.
   complete — the proven route — the figure is
   40/0/8. The discrepancy was the checkout, not
   the foundation, and is recorded here rather
-  than smoothed over.)
+  than smoothed over.) Correction, same day: the
+  regenerated report first committed with this note
+  was generated in that same sparse checkout, and
+  its annotation figures (computed over 0 files)
+  failed the suite's disk-report test on the
+  completion PR's first CI run; the report was
+  regenerated on a FULL checkout at the same merge
+  commit (same figures: 40 passed / 0 failed /
+  8 warnings, READY WITH CAVEATS; the Phase-J
+  disk-report tests pass against it) and the
+  corrected file replaces it in this record.
 - **Post-merge identity check.** The delivery as
   merged on `main` at `799e8219` was read back
   through the GitHub contents API:

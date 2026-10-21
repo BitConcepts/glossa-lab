@@ -7774,3 +7774,72 @@ reports/phase411_step0_report.md.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-21 — Spec 042 EXECUTED (Phase-407): THIN at gate 0.4 — the tablet stratum is too thin
+
+Spec 042 (design D-28, the object-type split of
+Spec 028's Arm B) executed in full under the
+runnable-experiments campaign approved
+2026-10-21 (Wave 3; campaign member 19), as
+Phase-407. The execution gate was satisfied:
+the frozen contract's OSF registration tmyzg
+is approved and public (freeze digest
+6be2988d7f4c290591d36f391ac84a772f18a9121e35ddd0e251956b5260f753).
+Graph-first build: backend/scripts/
+phase407_arm_b_object_type_split.py, graph node
+IndusPhase407ArmBObjectTypeSplit registered and
+verified by import before the run. Every spec
+section 2 pin was re-derived in the foreground
+by two independent routes (working-tree
+sha256sum; git-blob hashlib at the base commit
+3200b7b5) and agreed with the freeze record on
+all six inputs. Gate 0.1 PASS: every section 2
+input hashes to its freeze-record value.
+Gate 0.2 PASS: the frozen population flow,
+re-run on the Phase-393 machinery inputs
+(supplied from the program's existing local
+downloads and hash-verified, bbfdbcd5… /
+c368f290…), reproduces the recorded counts
+exactly (5,679 / 4,531 / 4,505 / 3,605 /
+3,144 / 3,030), the recorded flow dict of both
+the Phase-393 results and the Spec 028 margins
+audit, the recorded Arm B analysis set, its
+site x type cell table (identical to the
+margins audit's, cell for cell), and the 125
+sign columns. Gate 0.3 PASS: the partition
+census — SEAL 1,768 + TAB 1,262 = 3,030, no
+record of any other type (per site: Chanhu-daro
+52/2, Dholavira 96/15, Harappa 361/1,076,
+Kalibangan 49/3, Lothal 72/2, Mohenjo-daro
+1,138/164). **Gate 0.4 fired THIN: the seal
+stratum clears the floor at all 6 sites
+(minimum Kalibangan, 49), but the tablet
+stratum carries at least 20 inscriptions at
+only 2 of the 6 sites and is recorded TOO
+THIN with its counts; under DD-042-2 the
+execution closed at that gate with headline
+THIN, in the spec's pre-written section 4.3
+wording.** Neither stratum was computed,
+gate 0.5 (the pooled regression) was not
+reached, and no verdict is recorded: the
+section 1.2 hypothesis is unjudged, object
+type is not exonerated, and Spec 028's Arm B
+INCONCLUSIVE verdict stands exactly as
+recorded, unedited. Per-stratum period and
+preservation mixes are published with the
+record (described, not controlled; Spec
+037's 49% compilation-relativity caution
+restated). Anchors asserted byte-identical
+before and after (df0cf620…). Records:
+specs/042-arm-b-object-type-split/outcome.md,
+reports/phase407_results.json (SHA-256
+6f0f5a4f37918d7acb2e899b916131d133d13fc6cecd3b2f4b03662d96919d72),
+reports/phase407_report.md (SHA-256
+67f0cc005508e52e304bff03c277834558abc06c25d299e587b2bb4898a6c37e)
+— both digests verified by two independent
+routes, and the script deterministic
+(byte-identical on a second run).
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

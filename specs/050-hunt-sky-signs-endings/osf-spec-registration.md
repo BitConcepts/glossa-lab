@@ -23,3 +23,34 @@
 This file is a filing record only. It is not part of the freeze digest's
 covered sources and carries no contract content; the frozen contract is
 `spec.md` as digested in `freeze.json`.
+
+---
+
+## Approval completed — uwdmy APPROVED + PUBLIC (2026-10-21)
+
+This section completes this record. The
+registration **uwdmy** (https://osf.io/uwdmy/,
+filed at Spec 050's freeze, draft registration
+`6ad89edb6e6ecc5499233f45`) is **approved and
+public**, per the parent's approval pass of
+2026-10-21.
+
+- **Registration:** https://osf.io/uwdmy/
+- **DOI:** 10.17605/OSF.IO/UWDMY
+- **State on completion:** approved +
+  public, with the DOI above, verified by
+  the parent's API verification in that
+  approval pass. The parent's mail archiving
+  for this registration runs as their
+  completion leg of the same pass.
+- **Execution:** approval alone does not
+  execute. Execution is Phase-416, at its
+  Wave 3 execution turn under the campaign.
+
+---
+
+*Approval-completion record appended
+2026-10-21 by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson,
+per constitution §VI. Append-only: nothing
+above this section was edited.*

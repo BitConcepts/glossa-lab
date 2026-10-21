@@ -141,3 +141,38 @@ filing used.
 Muse) at the direction of Tristen Pierson,
 per constitution §VI. Append-only: nothing
 above this section was edited.*
+
+---
+
+## Approval completed — eqpab APPROVED + PUBLIC (2026-10-21)
+
+This section completes this record. The
+registration of record **eqpab**
+(https://osf.io/eqpab/) is **approved and
+public**, per the parent's second approval
+pass of 2026-10-21.
+
+- **Registration:** https://osf.io/eqpab/
+- **DOI:** 10.17605/OSF.IO/EQPAB
+- **State on completion:** approved +
+  public, with the DOI above, verified by
+  the parent's API verification in that
+  approval pass. The parent's mail archiving
+  for this registration runs as their
+  completion leg of the same pass.
+- **The failed f5ej9's mail:** the OSF mail
+  for the failed registration f5ej9 stays in
+  the inbox, per the standing rule — mail for
+  a failed registration is not archived.
+- **Execution:** approval alone does not
+  execute. Execution (Phase-408) still
+  requires its Wave 3 execution turn under
+  the campaign.
+
+---
+
+*Approval-completion record appended
+2026-10-21 by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson,
+per constitution §VI. Append-only: nothing
+above this section was edited.*

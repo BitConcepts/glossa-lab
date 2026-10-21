@@ -508,3 +508,290 @@ is reported, never repaired silently:
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## 7. Freeze-stage adjudication — 2026-10-21: FREEZE FAILURE (OPEN-054-1 — BATTERY NOT PINNABLE; the original sets are not exhibitable from any record)
+
+This section records a freeze attempt and its outcome. It is a
+campaign bookkeeping act only: it is not a freeze, and it repairs
+nothing.
+
+- **Freeze attempt.** On 2026-10-21 the freeze for Spec 054
+  (design D-08, draft PR #260, branch
+  `spec-054-yadav-opening-closing-draft`, head `d5a5b127`)
+  attempted the freeze question on the record of `main` at
+  `e339996194e1dd3c5336d87da37be0d5b0765556`: either
+  (a) freeze with the computation specified at the freeze and
+  every Phase-43 identity reading honestly retired — available
+  only if the design's falsifier (claim F054-C04, verbatim)
+  can stand on the specified construction without pretending
+  it is the original battery's — or (b) freeze failure.
+- **Outcome: FREEZE FAILURE — option (b).** OPEN-054-1 cannot
+  be resolved from the record, and the falsifier as written
+  requires the original battery's sets, which do not exist as
+  enumerable records. No threshold was invented, no set was
+  reconstructed, and no constant was borrowed from a
+  neighbouring battery (the draft expressly refused those
+  routes, and this freeze honours that refusal). Under the
+  draft's own terms (claim F054-C06's boundary; adjudication
+  §6, defect 1), the spec therefore cannot freeze.
+- **Phase allocation: Phase-417 was NOT allocated.**
+  Allocation is a freeze act and no freeze occurred.
+- **Actions NOT taken (by design, on failure):** no AEE
+  hooks, no digest, no claims-register change, no OSF filing,
+  no execution phase, no merge. PR #260 remains open and
+  draft; the only change on its branch is this bookkeeping
+  section, appended to this file.
+
+### 7.1 Why option (a) is not available here (and was for Spec 053)
+
+Spec 053 froze by option (a) (its DD-053-11) because its
+falsifier never depended on a Phase-43 fit: it fires if a
+named non-linguistic control fits as well as or better than
+the Indus strict corpus under that spec's own estimator, so
+specifying the estimator at the freeze and retiring the
+"identical to Phase-43" reading changed nothing the
+falsifier is about. Spec 054 is the opposite case, in its
+own draft text:
+
+1. **The falsifier's object is the original sets.**
+   F054-C04, verbatim: the claim fails if "fewer than half
+   of the original 40/20 sign sets reappear on the strict
+   corpus". Reappearance is membership in the original
+   opening-strong set (40 signs) and closing-strong set
+   (20 signs). Those sets are the falsifier's measurable
+   object (claims F054-C03, F054-C05; spec §3 gate 0.2,
+   §5 "Reappearance").
+2. **The battery identity is a claim, not a framing.**
+   F054-C06: "The rerun's battery is the Phase-43 positional
+   battery with its thresholds unchanged: the threshold rule
+   is stated in checkable form in the freeze record, from
+   the record". A freeze-specified new rule would not be a
+   restatement of this claim; it would replace it.
+3. **A specified construction cannot supply the sets
+   honestly.** Any new threshold rule applied to a corpus
+   would produce a new set, not the original one. Choosing
+   a rule because it yields counts of 40 and 20 would be
+   tuning to the recorded counts; the exhibited evidence
+   does not fix a rule (see §7.2), and on the initial side
+   it does not even bound one. Calling the constructed set
+   "the original 40/20" would be exactly the pretence
+   option (a) forbids, and reappearance measured against a
+   set the rerun's own construction produced would be
+   self-referential. Retiring the identity reading here
+   does not leave a falsifier standing; it removes the
+   falsifier's subject. That is a design amendment, not a
+   freeze act, and it is outside this pass.
+
+### 7.2 The search record
+
+Searched on `main` at `e3399961…` (tree and contents
+re-verified in the foreground by two routes — contents raw
+and git blob — agreeing byte-for-byte on every draft file
+and every §2 pin, including `outputs/phase43_all.json`
+SHA-256 `78a6c219…` and the claim record SHA-256
+`90476623…`):
+
+- **Tree level.** The full recursive tree of `main`
+  (5,908 entries, not truncated): exactly ONE path contains
+  `phase43` — `outputs/phase43_all.json`. No Phase-43
+  script, report, or experiment-graph module exists.
+  The file's only commit in its path history is the
+  2026-05-21 repository-restructure move.
+- **The Phase-43 file, read in full.**
+  §T2_2 carries the counts (initial-strong 40,
+  terminal-strong 20, terminal-moderate 10, medial-strong
+  61, total signs profiled 201) and a `terminal_strong`
+  list of **10 entries only** (signs 342, 176, 328, 211,
+  1, 15, 254, 12, 60, 190; terminal rates 0.683–0.892;
+  totals 22–1,318). There is **no initial-strong list at
+  all**, no medial list, no threshold, no floor, no
+  minimum count, and no classification rule anywhere in
+  the file; the word "threshold" occurs once, with no
+  number (the §T2_4 fish note). §T2_1's rebus table labels
+  positional roles for the 20 most frequent signs only
+  (4 terminal-strong, 2 initial-strong — a subset of the
+  exhibited ten on the terminal side, and 2 of 40 on the
+  initial side, with no rates): partial labels, not a set.
+- **The companion positional record**
+  (`glossa-indus/analysis/positional/hunt_tripartite_test.json`,
+  SHA-256 `0e546962…`): the same 40/20/61 counts and mean
+  rates (0.757 / 0.805; chance 0.251). No lists, no rule.
+- **Content level.** GitHub code search for
+  `TERMINAL_STRONG`, `terminal_strong`, `INITIAL_STRONG`,
+  `initial_strong`, `initial_strong_signs`,
+  `terminal_strong_signs`, `total_signs_profiled`, and
+  `medial_strong` (20 / 20 / 21 / 21 / 4 / 4 / 1 / 11
+  hits). Every hit was examined. None exhibits the
+  Phase-43 sets or states its rule:
+  - `glossa-indus/reports/model_reports/batch5_analysis_report.json`
+    — a same-corpus companion analysis (3,137 sequences,
+    201 signs profiled): shuffle nulls and a contact-zone
+    table carrying role labels for a handful of
+    site-exclusive signs. No strong-sign lists.
+  - `backend/scripts/phase45_t3_hunt_tripartite.py` and
+    `outputs/phase45_t3_hunt_tripartite.json` — the
+    Phase-45 battery on Holdat roles: its own rule
+    (average position, count ≥ 8) and its own lists
+    (75 initial-strong, 5 terminal-strong, M-numbered).
+    A different battery; borrowing it is refused.
+  - `scripts/structural_analysis.py` and
+    `reports/latent_sign_class_report.md` — a different
+    corpus (Mohenjo-daro only, P/Y sign space): 61
+    terminal-strong and 45 initial-strong under a
+    ≥ 0.55 rate / ≥ 4 frequency rule. Not Phase-43's
+    counts, corpus, or sign space.
+  - `outputs/phase33_positional_profiles.json` — 61 signs,
+    classes INITIAL/MEDIAL/MIXED/TERMINAL, no STRONG
+    classes, a different corpus.
+  - `backend/scripts/phase54_falsification.py` and the
+    Phase-219 arxiv update (`backend/scripts/phase219_arxiv_updated.py`,
+    `outputs/phase219_arxiv_updated.txt`) — later phases
+    that cite single signs as INITIAL_STRONG (e.g. M047,
+    initial rate 0.806, frequency 356); no lists, no
+    Phase-43 rule.
+  - The claim records, the Hunt model YAML, the
+    contact-zone file, and the LEDGER — all repeat the
+    same counts and evidence strings and nothing more.
+- **Rule-by-rule outcome (OPEN-054-1).** Threshold: not
+  stated; the ten exhibited terminal rates bound any
+  terminal threshold at ≤ 0.683 and nothing bounds an
+  initial threshold (no initial rates are exhibited
+  anywhere); the STRONG/MODERATE boundary cannot be
+  located from either side, since no TERMINAL_MODERATE
+  sign's rate is given. Floor: not stated; exhibited
+  totals bound it at ≤ 22 only. Position rules: not
+  stated for Phase-43 (the rates partition a sign's
+  occurrences, but the rule producing the partition —
+  including length-1/2 handling — appears in no Phase-43
+  record). This is the same finding Spec 052's freeze
+  recorded for the same battery (PR #249, adjudication
+  §8: BATTERY NOT PINNABLE), reached again here from
+  Spec 054's side with an independent search.
+- **Set-by-set outcome (gate 0.2's object, at freeze).**
+  Closing set: 10 of 20 exhibited (Phase-43 §T2_2).
+  Opening set: 0 of 40 exhibited as a list; 2 members
+  labelled in a frequency table. Neither full set is
+  exhibitable from any pinned source on `main`.
+
+### 7.3 The two freeze acts the draft mandated — disposition
+
+- **OPEN-054-6 (the Spec 045 reconciliation).** Recorded
+  here, as the mirror of Spec 045's frozen DD-045-19:
+  Spec 054's closing-sign measure — **Phase-43
+  terminal-strong set membership**, a set-membership state
+  under the Phase-43 battery — and Spec 045's measure —
+  the **closing distinct-predecessor rate** in final
+  position — are **DIFFERENT measures, distinctly
+  named**; neither spec adopts the other's form, and
+  neither spec's output may quote the other's closing
+  result as its own. Spec 045's freeze (DD-045-19)
+  already records exactly this from its side; because
+  Spec 054 does not freeze, no mirror freeze act is
+  entered on this spec's side — the distinction stands
+  on Spec 045's frozen record and on this draft's §5.2,
+  and any future amendment or refreeze of this design
+  must carry it.
+- **The §4 falsifier append — NOT performed.** The append
+  is a freeze act (spec §4; claim F054-C04's boundary:
+  "if the freeze does not happen, no append happens
+  under this spec"), and there is no freeze. The claim
+  `yadav_2009_arxiv_manual_002` stands exactly as
+  recorded. The durability question the freeze would
+  have had to answer is nevertheless settled on the
+  record, because it bears on any future attempt:
+  - The record lives at
+    `glossa-indus/claims/extracted_claims/yadav_2009_arxiv.json`
+    (SHA-256 `90476623…`, verified at this freeze
+    attempt). Field enumeration at this attempt confirms
+    manual_002 carries **no** `falsification_condition`
+    field; its companion manual_001 in the same file
+    carries one.
+  - The store is regenerated by
+    `glossa-indus/scripts/indus_claims.py`. Its
+    hand-written manual_002 entry likewise carries no
+    `falsification_condition`, and its Spec 029
+    carry-over preserves, by claim identity, only:
+    `stage`, `stage_source`, `stage_as_of`,
+    `stage_history`, `verified_unexplained`,
+    `proposition_fingerprint`, `merged_into`,
+    `evidence_instances`, `not_understood`,
+    `explanation_record` — plus, for records carrying a
+    `status_correction`, `claim_status`,
+    `contradicting_evidence`, and `status_correction`.
+    **`falsification_condition` is not in the preserved
+    set.** A falsifier appended to the extracted-claims
+    store alone would therefore be silently dropped by
+    the next regeneration. A durable append would have
+    required amending the generator's manual entry (and
+    regenerating), or another preserved-field home —
+    a change to the claim-store machinery that a freeze
+    of this spec does not by itself authorise, and that
+    no freeze here performs.
+
+### 7.4 The remaining OPEN items — disposition
+
+OPEN-054-1 is antecedent and it fails, so the rest were
+not decided: confirming them would be freeze acts, and
+there is no freeze. OPEN-054-2 ("strict", operationally),
+OPEN-054-3 (the floor's value and the denominator
+reading), OPEN-054-4 (the crosswalk of record and
+DD-054-4), OPEN-054-5 (the shuffle construction and
+seed), and OPEN-054-7 (the DD-054-2 precedence
+confirmation) remain as the draft states them, neither
+confirmed nor overturned. OPEN-054-8 (OSF under E-1):
+not filed — E-1 files at the freeze, and there is no
+freeze. OPEN-054-9: no phase allocated (see above).
+
+### 7.5 What record would unblock it
+
+Any ONE of the following, as a record of record on
+`main` (or an owner amendment that supersedes the
+derivation requirement openly):
+
+1. The original Phase-43 battery script (or a
+   contemporaneous Phase-43 methods record) stating
+   numerically the position rules, the count floor, and
+   the STRONG/MODERATE thresholds, **and exhibiting the
+   full original sets** (40 opening, 20 closing) — enough
+   for gate 0.3 to reproduce the recorded reference
+   points (201 profiled; 40/20/61; the ten exhibited
+   terminal rates) and gate 0.2 to exhibit both sets.
+2. Failing that, an amendment re-scoping Spec 054 to a
+   NEW, explicitly defined battery with its own stated
+   rules and a falsifier written against that battery's
+   own sets, honestly labelled as a new test rather
+   than as the Phase-43 rerun the design specifies —
+   a design change, not a freeze act, and outside this
+   pass.
+3. For the falsifier append in any variant: a durable
+   home for `falsification_condition` in the
+   extracted-claims store — in practice, the generator
+   amendment named in §7.3 — decided as its own act.
+
+## 8. Bottom line for the wave report
+
+FREEZE FAILURE — Spec 054 (PR #260, still draft).
+OPEN-054-1 fails closed as BATTERY NOT PINNABLE, and
+independently the falsifier's first condition has no
+measurable object: of the original 40/20 sign sets the
+design's falsifier (F054-C04) is written against, the
+record exhibits 10 of 20 closing signs and no opening
+list at all, and no threshold rule, floor, or position
+rule for the Phase-43 battery is stated in any record
+on `main`. Option (a) — specifying a new construction
+at the freeze — was ruled out on the draft's own text:
+claims F054-C04/C06 make the original sets and the
+unchanged Phase-43 battery the falsifier's subject, so
+a constructed successor cannot stand in for them
+without the pretence option (a) forbids (contrast
+Spec 053, whose falsifier never depended on Phase-43).
+The falsifier append was not performed (it is a freeze
+act; there is no freeze), and a direct append would in
+any case not have survived regeneration of the
+extracted-claims store. The defect queues as an
+amendment per the campaign rule; nothing was rescued
+in-pass.
+
+*AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution §VI.*

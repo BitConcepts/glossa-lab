@@ -418,6 +418,30 @@ edited.
   remains unchecked, deliberately: step 2 was
   not reached on a step-1 closure.
 
+- **Restoration of the F046-C15 claim append
+  (2026-10-21, owner-ruled).** The `first_check`
+  entry listed in §7 above was silently
+  overwritten by Spec 058's claims-store
+  regeneration (commit `5a484ccb`): the entry is
+  present in the extracted-claims file at that
+  commit's first parent (`3200b7b5`) and absent
+  from the regenerated file onward. The campaign's
+  Group 4 acceptance sweep of all ten
+  extracted-claims files found this was the only
+  append lost. Under the owner's ruling of
+  2026-10-21, the entry is restored into the
+  file's current version byte-identically to the
+  first-parent bytes (1,599 bytes; segment
+  SHA-256
+  `35c72622da6c19abe0305da178704c209008c2ff96bf1b860b6502fe39c50e54`);
+  removing the restored entry reproduces the
+  pre-restoration file byte-identically — the
+  verification §6 prescribes for this append at
+  F046-C15. Spec 058's regenerated content and
+  every other claim entry in the file are
+  unchanged, and no claim's status or stage is
+  altered by the restoration.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

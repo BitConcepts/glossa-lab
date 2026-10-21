@@ -137,3 +137,50 @@ constitution §VI. The decision text above is the
 owner's, given in the program chat on 2026-10-12; the
 decision substance is the design's stated proposals
 as presented to and ratified by him.
+## Ask 2 — owner ruling, 2026-10-21 → **DECIDED: BINDING**
+
+> Owner decision (Tristen Pierson, 2026-10-21, given
+> in the program chat via the options widget):
+> **"Ask 2 is decided BINDING: a future Q6 freeze's
+> timing-support assessment must meet every frozen
+> criterion with CONTESTED-scenario rows excluded as
+> well as with all rows included, and a support claim
+> that holds only with contested rows included does
+> not authorise a Q6 freeze."**
+
+This entry records the ruling the Ask 2 entry above
+expressly reserved to a future owner decision. The
+2026-10-12 entries stand untouched: Asks 1, 3, 4,
+and 5 were decided there; Ask 2 was not, and is
+decided only here.
+
+Basis of record: the decision memo of 2026-10-21
+(`spec030-ask2-decision-memo-2026-10-21.md`, held
+in the owner's research notes), which recommended
+BINDING and verified against the Phase-394 record
+that the ruling changes no standing outcome: the
+re-test reported both computations and they
+returned identical values (C1 1 FAIL, C2 6 FAIL,
+C3 0.0 FAIL, C4 70 BP PASS under both), so Q6
+remains NOT-YET-TESTABLE either way.
+
+Consequence: the operative position recorded in
+the Ask 2 entry above — both computations
+reported, the as-frozen (all-rows) computation as
+the assessment's verdict basis — is superseded
+for future Q6 freezes: from this ruling, a future
+Q6 freeze's timing-support assessment must meet
+every frozen criterion under both computations,
+and a support claim that holds only with
+contested rows included does not authorise a Q6
+freeze. The both-ways reporting duty (integrity
+rule 5; F030-C04) is unchanged, and this ruling
+alters no frozen criterion, threshold, or
+Phase-394 record.
+
+AI disclosure: recorded by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution §VI. The ruling text above is the
+owner's, adopted verbatim from the decision memo's
+ruling sentence as presented to and selected by
+him on 2026-10-21.

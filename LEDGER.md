@@ -7434,3 +7434,36 @@ outcome.md (dependency-gate record, appended
 2026-10-20).
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution sec.VI.
+## 2026-10-21 — Spec 030 Ask 2 ruled BINDING (owner decision)
+
+The one question Spec 030's 2026-10-12
+adjudication expressly left open — Ask 2,
+whether the CONTESTED-excluded computation must
+bind a future Q6 freeze (the design stated no
+recommendation; both computations were reported
+under rule 5 with the as-frozen run as verdict
+basis meanwhile) — is now decided. Owner
+ruling (Tristen Pierson, 2026-10-21, program
+chat): "Ask 2 is decided BINDING: a future Q6
+freeze's timing-support assessment must meet
+every frozen criterion with CONTESTED-scenario
+rows excluded as well as with all rows included,
+and a support claim that holds only with
+contested rows included does not authorise a Q6
+freeze." Recorded by dated append in
+specs/030-q6-chronology-spine-extension/
+adjudication.md; the 2026-10-12 record stands
+untouched, as do the frozen spec, the freeze
+record, and the Phase-394 records. Decision
+memo: spec030-ask2-decision-memo-2026-10-21.md
+(owner's research notes), which recommended
+BINDING and verified the ruling changes no
+standing outcome: Phase-394's two computations
+were identical (C1 1 FAIL, C2 6 FAIL, C3 0.0
+FAIL, C4 70 BP PASS under both), so Q6 remains
+NOT-YET-TESTABLE. The both-ways reporting duty
+(rule 5; F030-C04) is unchanged.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.

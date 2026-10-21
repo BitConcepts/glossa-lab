@@ -141,7 +141,7 @@ before Spec 045's step 1 build consumes it.
       CONSENSUS. Asset A material, D-05
       labels, and positional results are not
       consulted at any point (F046-C12).
-- [ ] **E5 — Delivery and outcome** (spec
+- [x] **E5 — Delivery and outcome** (spec
       §§6, 8): `concordance-297.json` written
       in the §6 form with its `asset_a_feed`
       block; the outcome append in this
@@ -177,8 +177,11 @@ claim first-check append, LEDGER entry, and the
 anchors assertion are all on this record; the
 foundation-check figure is appended to
 `outcome.md` §7 after the record merge, in the
-Spec 039 completion pattern, at which point E5
-is checked. Outcome record: `outcome.md` in this
+Spec 039 completion pattern — DONE by the
+completion note of 2026-10-21 (record PR #263
+merged at `799e8219`, CI 7/7, foundation check
+40 passed / 0 failed / 8 warnings at the merge
+commit); E5 is checked. Outcome record: `outcome.md` in this
 directory.
 
 ---

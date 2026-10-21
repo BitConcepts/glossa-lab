@@ -412,6 +412,206 @@ is reported, never repaired silently:
    counting on the wrong key, so the join is
    written as an explicit, gated act here.
 
+## 7. Freeze decisions (2026-10-21)
+
+Recorded at the freeze act under the campaign
+plan approved AS WRITTEN on 2026-10-21 (Wave 2
+freeze wave). DD-048-1 to DD-048-5 and
+DD-048-7 are **confirmed as drafted** (§5);
+DD-048-6 is discharged by DD-048-16;
+DD-048-8 stands. The new decisions are:
+
+- **DD-048-9 — Asset F pin timing (OPEN-048-1;
+  the coordinator's ruling, recorded as a
+  decided item).** Asset F is built at Spec
+  044's EXECUTION step 0 (Wave 3 group 1), so
+  neither the asset nor its byte-digest exists
+  at this freeze. Spec 048's freeze therefore:
+  (a) quotes Spec 044's freeze digest as the
+  contract anchor —
+  `6851f943d196fa389e48b67cb5161b90daa1180d8a3e1cf3f020fcf25691d9c8`,
+  read at this freeze from PR #243's branch
+  (Spec 044's freeze had not yet merged when
+  read; that digest is Spec 044's corrected
+  freeze digest, superseding its first freeze
+  digest `9a0e6518…` under its own pre-merge
+  test repair, recorded in its `freeze.md`
+  §5); (b) fixes the pin SOURCE as Spec 044's
+  step-0 outcome record — the record of its
+  execution results JSON (Spec 044 §9) for the
+  canonical file
+  `specs/044-fish-sign-coastal-residue/asset-f-fish-family.json`
+  (Spec 044 §4.1); and (c) rules that 048's
+  gate 0.1 asserts the Asset F byte-digest at
+  EXECUTION step 0 against that record —
+  absence → ASSET F NOT AVAILABLE, mismatch →
+  ASSET F DIGEST MISMATCH, exactly as drafted.
+  The fail-closed semantics do not change;
+  only the pinning moment moves, forced by the
+  campaign's wave order. This ruling supersedes
+  the draft's statements that the freeze itself
+  would state the byte-digest (spec header,
+  §2, §4, tasks L5/L6 as drafted, and claim
+  F048-C06's draft form, whose restated frozen
+  form carries this ruling).
+- **DD-048-10 — "Strict corpus" confirmed
+  (OPEN-048-2).** The draft's reading stands:
+  the primary corpus is the V3 /
+  Mahadevan-lineage corpus of Spec 033 §4, as
+  held in the database, identified, exported,
+  and pinned at gate 0.3, with the gate-0.3
+  T2.4 reproduction (sign 72: 181 occurrences,
+  25.9%; sign 267: 356 occurrences, 3.8%) as
+  the operative check. It is **not** a
+  restriction of counted signs to the 94
+  `strict_sa_independent` readings (§6,
+  defect 3; DD-048-18).
+- **DD-048-11 — The PASS bar confirmed
+  (OPEN-048-3).** The member bar is **20%**,
+  confirmed against the T2.4 record: it sits
+  between sign 72's recorded 25.9% (supported)
+  and sign 267's recorded 3.8% (not supported),
+  exactly as design D-04 fixed it. It may not
+  be changed after this freeze.
+- **DD-048-12 — Second-arm closure confirmed
+  (OPEN-048-4).** DD-048-4 stands: a Holdat
+  layer or per-sign crosswalk failure closes
+  the whole execution as SECOND ARM NOT
+  RUNNABLE, because §6's inconclusive rule
+  needs both arms. The primary does not stand
+  alone.
+- **DD-048-13 — Control-set rules fixed
+  (OPEN-048-5).** DD-048-7's comparison reading
+  is confirmed: "same rate" means the controls'
+  token-weighted passing share **at or above**
+  the family's. The frequency-matching rule is
+  fixed mechanically: a non-fish animal sign
+  qualifies as a control iff (i) its published
+  animal identification is citable from the
+  program's records, (ii) its primary-corpus
+  total is at least 30 (gate 0.6's floor), and
+  (iii) its total lies between half the
+  smallest tested member's total and twice the
+  largest tested member's total. The set is
+  enumerated in the step-0 record at gate 0.6
+  before any follower quantity is computed, and
+  does not change after any result is seen
+  (claim F048-C13's frozen form carries this
+  rule).
+- **DD-048-14 — OSF registration (OPEN-048-6).**
+  Decided **yes**: this spec files its own OSF
+  contract registration at the freeze under
+  campaign decision E-1, following Specs
+  036–039 (`osf-spec-registration.md`). The
+  registration registers the frozen contract
+  only; it does not publish results, and the
+  Roif hold (F048-C14) is unaffected.
+  Execution awaits the registration's verified
+  approval.
+- **DD-048-15 — UNMAPPED disposition confirmed
+  (OPEN-048-7).** DD-048-5 stands: the join to
+  this spec's numberings runs via each member's
+  `mahadevan_number` locator (gate 0.2); a
+  member carrying no Mahadevan mapping is
+  recorded **UNMAPPED**, listed in the step-0
+  record with the reason, and excluded from
+  both arms' weighting — never silently
+  dropped, and never counted as TOO THIN.
+- **DD-048-16 — Phase allocated (OPEN-048-8).**
+  The execution phase is **Phase-408**,
+  allocated at this freeze act from the merged
+  record as it stands (Phases 404–407 taken by
+  Specs 044–047).
+- **DD-048-17 — AEE gate reading.** The
+  DD-038-10 reading is adopted for this spec:
+  the lifecycle hooks PASS when every hook
+  carries zero correctness failure modes and
+  no claim below the 0.70 threshold, with only
+  FR-2.3 draft-cap records remaining (the
+  engine's "iterate" word follows from the
+  draft status alone). Record:
+  `aee/freeze-aee-note.md`. The register was
+  recovered from 0.5-draft (load refusal on the
+  draft's evidence enums) through 0.6-draft to
+  0.7-draft exactly as its own note records.
+- **DD-048-18 — Anchors correction.** The
+  draft (§6, defect 3; spec §7, limit 5) said
+  sign 72 "carries no entry in the anchors
+  file at all." Re-read at this freeze against
+  the pinned anchors file (SHA-256
+  `df0cf620…`): sign 72's entry **M072 exists**;
+  what it lacks is a strict reading — its
+  `validation_status` is
+  `pending_non_sa_validation`, and it is not
+  one of the 94 `strict_sa_independent`
+  entries. The operative point of defect 3 is
+  unchanged (a strict-set restriction would
+  exclude the reference passer), and spec §7,
+  limit 5 now states the fact in its corrected
+  form. The freeze test asserts the corrected
+  fact on the live file.
+
+## 8. Freeze verification record (2026-10-21)
+
+Verified first-hand at the freeze via the
+GitHub API against `main` (head
+`0cf9cd2f339328007c01b7909b77282e778e25e2` —
+the draft's base `83b6a563…` advanced only by
+the Spec 042 and Spec 047 freeze merges, which
+touch none of this spec's pin files), every
+pin re-derived by **two independent routes**
+(contents-API raw and git-blob), agreeing
+byte-for-byte:
+
+- Claim file
+  `glossa-indus/claims/extracted_claims/parpola_2010_dravidian_solution.json`
+  — SHA-256 `3202aeca1ddaf7e588ebf19b2eaf8c93d06a34ecebba20d06c1b22810dfb000c`,
+  matching the draft pin; manual_002 stands
+  partially_supported, stage explained,
+  sign_ids Mahadevan [72, 64, 70], its
+  not-understood text naming this sign-by-sign
+  run on the strict corpus.
+- Phase-43 record `outputs/phase43_all.json` —
+  SHA-256 `78a6c21908b9362854c54dd3d820d717be22feab3af11135663fa14aaf554fe4`,
+  matching the draft pin; §T2_4_fish_rebus
+  carries candidates [267, 72, 65, 59, 60, 70],
+  sign 72 (181, 0.259, supported), sign 267
+  (356, 0.038, not supported).
+- Anchors file
+  `backend/reports/INDUS_FINAL_ANCHORS.json` —
+  SHA-256 `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569`,
+  matching the draft pin; 287 anchors, 94 with
+  `validation_status` `strict_sa_independent`;
+  M072 present with status
+  `pending_non_sa_validation` (DD-048-18).
+- Crosswalk
+  `backend/glossa_lab/data/mahadevan_parpola_crosswalk.json`
+  — SHA-256 `9ebd7723472d888dc8a127ff840a108d4fbd546f7f8ed28ccc6e06444a2dc69b`,
+  matching the draft pin; its citation names
+  Parpola 1994b, sign list (= Parpola 1994a
+  fig. 5.1, pp. 70–78).
+- Spec 033 spec
+  `specs/033-sa-free-language-comparison/spec.md`
+  — SHA-256 `eaea0e2e4f288e199acfa56cc401b80b5939175578ccb5f52c87adddf2f15ca9`;
+  §4 states the corpus as "the program's
+  V3/Mahadevan-lineage corpus as held in the
+  database" (DD-048-10's basis).
+- Spec 044 freeze digest — the contract anchor
+  of DD-048-9, read from PR #243's branch (head
+  `66d4fd37…`) as
+  `6851f943d196fa389e48b67cb5161b90daa1180d8a3e1cf3f020fcf25691d9c8`;
+  Spec 044's frozen §4 contract (canonical file
+  `asset-f-fish-family.json` in its directory,
+  nine member fields, digest-field exclusion
+  rule) and §4.4/§9 step-0 record are the
+  consumer obligations this freeze restates.
+- **Not done at the freeze, by design** — Asset
+  F has not been built (Spec 044's execution
+  step 0), no corpus layer has been identified
+  beyond Spec 033's statement, no census has
+  been computed, and no rate of any kind was
+  calculated. Nothing was counted.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

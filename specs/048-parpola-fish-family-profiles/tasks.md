@@ -1,13 +1,18 @@
 # Spec 048 — Tasks
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-21
+> ## PLAN — FROZEN — 2026-10-21
 >
 > Adjudication inputs are recorded in
 > `adjudication.md` (the campaign plan approved
 > AS WRITTEN on 2026-10-21, the portfolio triage
 > of the same date, and the Roif verification).
-> The freeze and the execution of Spec 048 are
-> separate later owner acts. This spec is under
+> The freeze was executed on 2026-10-21 under
+> that approval (Wave 2 freeze wave):
+> `adjudication.md` §7 records the freeze
+> decisions DD-048-9 to DD-048-18, including
+> the Asset F pin-timing ruling (DD-048-9).
+> Execution of Spec 048 is a separate later
+> owner act. This spec is under
 > the campaign's Roif gate: its records are
 > internal and its results are not published or
 > surfaced under the campaign (claim F048-C14).
@@ -37,63 +42,70 @@
       from this draft (DD-048-8), and each
       claim's acceptance test derived twice
       with disagreements resolved in
-      `adjudication.md` §3. No Asset F digest
-      appears in the register: the pin is taken
-      at the freeze (OPEN-048-1). The AEE
-      lifecycle hooks have **not** run on this
-      register (L4).
+      `adjudication.md` §3. No Asset F byte-digest
+      appears in the register: under the freeze's
+      pin-timing ruling (DD-048-9) the register
+      quotes Spec 044's freeze digest as the
+      contract anchor in F048-C06's boundary and
+      fixes the step-0 outcome record as the pin
+      source. The AEE lifecycle hooks ran at the
+      freeze (L4).
 - [x] **L3 — Design PR.** This draft, opened
       as a DRAFT PR (campaign Wave 1) and left
       unmerged for the freeze wave, CI state
       reported from the run's own conclusions.
-      Builders before dependents: Spec 044
-      freezes, and its step 0 produces Asset F,
-      before this spec can freeze.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
-      — not run on this draft).** At the freeze
-      act, run `run_aee.py assess`
-      after_specify, after_plan, and
-      after_tasks over the claim register; the
-      gate is **pass**, and a stricter outcome
-      blocks the freeze until its named
-      recovery is complete and recorded.
-      Deliberate ordering (the Spec 035/038/042
-      record): any recovery round changes
-      claim text, and the freeze digest is
-      computed over the recovered register
-      exactly once, at freeze. Freeze mechanics
-      are re-checked against the adopted
-      1.5.x engine at the freeze, per the
-      campaign plan, not assumed from
-      pre-adoption habit.
-- [ ] **L5 — Freeze-decision items.** The
-      freeze decides OPEN-048-1 (the Asset F
-      digest pin, taken from Spec 044's step-0
-      record — the freeze cannot complete
-      without it), OPEN-048-2 (the operational
-      meaning of "strict"), OPEN-048-3 (the
-      20% PASS bar, confirmed against the T2.4
-      record), OPEN-048-4 (the second-arm
-      closure form, DD-048-4), OPEN-048-5
-      (control-set matching and comparison
-      rules, DD-048-7), OPEN-048-6 (OSF
-      registration, under campaign E-1),
-      OPEN-048-7 (unmapped members, DD-048-5),
-      and OPEN-048-8 (phase number), and
-      confirms or openly overturns DD-048-2.
-- [ ] **L6 — Freeze.** On the owner's freeze
-      order, with L4 passed and L5 decided:
-      hooks recorded, `freeze.md` finalised,
-      `freeze.json` recomputed over the
-      recovered register and finalised texts,
-      every spec §2 pin re-asserted against
-      the merged record, Asset F's digest
-      stated from Spec 044's step-0 record,
-      and the execution phase number allocated
-      (DD-048-6).
+      Builders before dependents: Spec 044's
+      freeze precedes this freeze (the contract
+      anchor, DD-048-9); its step 0, which
+      produces Asset F, precedes this spec's
+      execution.
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE).**
+      Run at the freeze act of 2026-10-21 under
+      aee 1.5.0: the 0.5-draft register was
+      refused at load (evidence enums); recovered
+      through 0.6-draft to 0.7-draft as the
+      register's note records; after_specify
+      cleared in recorded recovery rounds,
+      after_plan and after_tasks clean at first
+      pass; at every hook zero correctness
+      failure modes, no claim below 0.70
+      (minimum propagated 0.72), draft-cap
+      records only (gate reading DD-048-17;
+      record in `aee/freeze-aee-note.md`).
+- [x] **L5 — Freeze-decision items.** Decided
+      at the freeze (`adjudication.md` §7):
+      OPEN-048-1 by the coordinator's pin-timing
+      ruling (DD-048-9 — Spec 044's freeze digest
+      quoted as contract anchor; the pin source
+      fixed as Spec 044's step-0 outcome record;
+      gate 0.1 asserts the byte-digest at
+      execution step 0), OPEN-048-2 confirmed
+      as drafted (DD-048-10), OPEN-048-3 the
+      20% bar confirmed (DD-048-11),
+      OPEN-048-4 DD-048-4 confirmed
+      (DD-048-12), OPEN-048-5 control rules
+      fixed with DD-048-7 confirmed
+      (DD-048-13), OPEN-048-6 OSF yes under E-1
+      (DD-048-14), OPEN-048-7 DD-048-5
+      confirmed (DD-048-15), OPEN-048-8
+      Phase-408 allocated (DD-048-16);
+      DD-048-2 confirmed.
+- [x] **L6 — Freeze.** Executed 2026-10-21:
+      hooks recorded (`aee/`), `freeze.md`
+      finalised, `freeze.json` computed exactly
+      once over the recovered register (0.7-draft)
+      and the finalised texts, every spec §2 pin
+      re-asserted against the merged record by
+      two routes (`adjudication.md` §8), the
+      Asset F contract anchor stated from Spec
+      044's freeze (DD-048-9 — no byte-digest
+      exists at this freeze), and the execution
+      phase allocated as Phase-408 (DD-048-16).
 - [ ] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
+      (Completed at the merge; recorded with the
+      freeze PR.)
 
 ## Execution — gated on the freeze and a separate execution order
 
@@ -105,7 +117,10 @@
       recomputed under the exclusion rule and
       asserted against the freeze pin (failure
       closes ASSET F DIGEST MISMATCH; absence
-      closes ASSET F NOT AVAILABLE); membership
+      closes ASSET F NOT AVAILABLE — the pin
+      asserted is the digest recorded in Spec
+      044's step-0 outcome record, the pin source
+      fixed at the freeze (DD-048-9)); membership
       join through the Mahadevan locators, with
       UNMAPPED members listed and the
       cross-check against the claim record's

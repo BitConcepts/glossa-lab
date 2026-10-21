@@ -396,3 +396,153 @@ The freeze decision is asked to decide:
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## 7. Freeze-stage adjudication — 2026-10-21: FREEZE FAILURE (OPEN-1 / gate 0.4 — POPULATION NOT REPRODUCED)
+
+This section records a freeze attempt and its outcome. It is a
+campaign bookkeeping act only: it is not a freeze, and it repairs
+nothing.
+
+- **Freeze attempt.** On 2026-10-21 the freeze for Spec 049
+  (D-06, draft PR #250, branch
+  `spec-049-hunt-opening-animal-signs-draft`, head `06fb4299`)
+  attempted §6 item 1 (OPEN-1): fix, from records of record on
+  `main`, the reproduction rule by which gate 0.4 re-derives the
+  Phase-43 initial-strong set, and the keying rule by which
+  enumerated signs resolve to Asset A rows — precisely enough
+  that step 0 is a mechanical check.
+- **Outcome: FREEZE FAILURE — POPULATION NOT REPRODUCED at the
+  freeze stage.** No element of the reproduction rule is fixable
+  from any record of record, and the keying rule fails
+  independently. No threshold was invented, no list was
+  borrowed, and no nearby set was substituted. Under this
+  draft's own terms (§5 item 1; claim F049-C08), the spec
+  therefore cannot freeze. **Phase-415 was NOT allocated.**
+  No AEE hooks ran, no digest was computed, no OSF filing was
+  made (E-1 files at a freeze; there is none).
+
+### 7.1 The missing-rule findings (condensed)
+
+1. **No member list exists.** The two pinned records state the
+   count (40), the mean initial rate (0.757 against 0.251 by
+   chance), and the profiled total (201) — and nothing else
+   about membership. Across the full tree of `main` (5,908
+   entries; exactly one `phase43` path) and every
+   `INITIAL_STRONG` code-search path (21 unique files), exactly
+   **5 of the 40 members are labelled anywhere**: 267 and 391
+   (`outputs/phase43_all.json` §T2_1) and 201, 398, 6 (the
+   Batch-5 / contact-zone records, as Harappa-exclusive signs
+   with subset frequencies and no rates). The other 35 are
+   named in no record. Only 30 distinct signs carry any
+   per-sign data in the battery record, of 201 profiled.
+2. **Position rules, count floor, and profiled-set rule — none
+   stated.** No Phase-43 record states which occurrence is
+   initial/medial/terminal, how length-1/2 sequences are
+   classed, any count floor, or the rule selecting the 201
+   profiled signs (the same absence Spec 052's freeze failure
+   established for this battery's terminal side).
+3. **The strength threshold cannot be located.** The only
+   labelled signs with published initial rates bracket it
+   without fixing it: labelled MODERATE signs carry 0.416 (87)
+   and 0.445 (89); labelled STRONG signs carry 0.71 (391) and
+   0.806 (267) (`phase43_all.json` §§T2_1+T2_3). Any threshold
+   in (0.445, 0.71] fits; the four unlabelled candidate rates
+   (0.44, 0.534, 0.797, 0.917) cannot narrow it, and the repo
+   constants inside the interval (0.50, 0.55) belong to other
+   batteries on other corpora. The recorded mean (0.757) is an
+   aggregate over the unknown set, not a criterion.
+4. **No loadable corpus.** The Phase-43 corpus is the
+   Firestore V3 reconstruction; its data file is absent from
+   `main` and the corpus-v3 loader returns an empty corpus
+   without it. The pinned programme corpus layer is a
+   different corpus whose text field is in Yajnadevam glyph
+   numbers — not the Phase-43 corpus and not Mahadevan space.
+5. **Keying fails independently.** Asset A is keyed by the
+   pinned crosswalk's `registry_sign_id`, and frozen Spec 045
+   §2.2 takes each row's numbers from that same crosswalk.
+   The crosswalk carries 17 `mahadevan_1977` rows (5 exact,
+   7 approximate, 4 uncertain, 1 marked incorrect M342→P122).
+   **Neither certain member — M267, M391 — has a Mahadevan row
+   at all**, so keying fails on the known members alone. The
+   fuller Phase-122 v1 crosswalk (766 rows) is many-to-many
+   with flagged conflicts (M001→P001 and M012→P001 both
+   stand) and is not the pinned record; the Phase-71 map
+   (115 entries) is partial and rests on a numeric-identity
+   principle the pinned rows contradict (M059→P064).
+
+### 7.2 Searches performed
+
+- The full recursive tree of `main` at `e3399961…`: searched
+  for any phase43 / phase_43 / phase-43 path (exactly one hit,
+  the results file), for the loader's Firestore data file
+  (absent), and for every `specs/` directory (no later spec
+  deposits a member list).
+- Full-structure parses of both pinned records and of the
+  claim record for `…_manual_003` (its entire Phase-43
+  evidence is the single count string; `signs_involved`
+  names Hunt's animal kinds, not signs).
+- GitHub code search for `INITIAL_STRONG` / `initial_strong`
+  (21 unique paths each): every path inspected; the hits are
+  the count string repeated, the fragments of §7.1 item 1,
+  or neighbouring batteries.
+- Spec 045's frozen text on `main` (population/crosswalk
+  census; §2.2 keying contract; gate 0.2 noted at §7.4).
+- The pinned crosswalk read in full (205 rows, 187 distinct
+  registry identities, 17 Mahadevan rows as itemised in
+  §7.1 item 5), plus every other crosswalk on `main`
+  (Phase-122 v1, Phase-71, the 10-entry Mahadevan–Parpola
+  file, the Fuls map, the canonical registry, the protocol
+  profiles) — none supplies the frozen keying rule.
+- Neighbouring batteries, each verified as a different
+  definition on a different corpus: latent classes (45,
+  start_rate ≥ 0.55, freq ≥ 4, Mohenjo-daro only), Phase-45
+  (75, avg_position ≤ 0.25 on Holdat roles), Phase-33
+  (INITIAL 7 of 61, no STRONG grade), the legacy positional
+  analysis (i_rate ≥ 0.50, no STRONG grade).
+
+### 7.3 The pin-timing ruling, and the other OPEN items
+
+- **Asset A pin timing (coordinator's ruling, recorded).**
+  Asset A is built at Spec 045's EXECUTION step 1 (Wave 3),
+  so `asset-a-freeze.json` does not exist yet. Had this spec
+  frozen, its freeze would have (a) quoted Spec 045's freeze
+  digest `5d8254dd…` (verified in full at this pass:
+  `5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a`)
+  as the contract anchor, (b) fixed the pin SOURCE as Spec
+  045's `asset-a-freeze.json` produced at its step 1, and
+  (c) ruled gate 0.2 asserts that SHA-256 at EXECUTION
+  step 0 — mismatch → ASSET PIN MISMATCH, exactly as
+  drafted. The ruling is not the blocker; OPEN-1 is
+  antecedent, and no digest quote was performed because
+  there is no freeze to quote it in.
+- OPEN-2 to OPEN-5 and OPEN-7 were **not decided**: they are
+  freeze acts and there is no freeze. They remain as drafted.
+  One fact is recorded under OPEN-2 without deciding it: the
+  draft's proposed count corpus is in Yajnadevam glyph
+  numbers, so the comparison inventory would face the same
+  class of keying problem as the opening-strong set.
+
+### 7.4 What would unblock it; a note for the coordinator
+
+Unblocking records (any one of items 1–2, plus item 3, or
+item 4), as records of record on `main`: (1) the enumerated
+member list itself — the 40 Mahadevan numbers; (2) the
+original Phase-43 battery script or methods record (position
+rules, floor, threshold, profiled-set rule) together with
+the V3 Firestore dump restored; (3) for keying,
+`mahadevan_1977` mappings in the pinned crosswalk covering
+the enumerated 40, or an owner amendment adopting a named
+fuller crosswalk reconciled with Spec 045's frozen §2.2;
+(4) an amendment re-scoping this spec to a new, explicitly
+defined battery, honestly labelled as a new test.
+
+Note, for wave planning only (no act taken here): frozen
+Spec 045's step-0 gate 0.2 requires the same 40/61/20
+classes to be reproduced at its execution. This pass took no
+position on what framework that gate denotes; if it denotes
+the Phase-43 battery, Spec 045's execution faces the same
+absence, with INVALID as its designed closure.
+
+*AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution §VI.*

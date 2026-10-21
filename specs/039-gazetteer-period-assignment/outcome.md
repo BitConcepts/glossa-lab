@@ -357,10 +357,25 @@ one line per claim, F039-C01…C15.
 - Root LEDGER entry: "Spec 039 (Phase-403)"
   entry added with this record.
 - Foundation check (H21) and CI state at the
-  record merge: recorded with the merge of
-  this record PR (CI verified from the run's
-  own job conclusions; the foundation figures
-  are read from that run's backend job log).
+  record merge: CI at the record merge commit
+  (`14d15411`, PR #234) is genuinely 7/7 from
+  the run's own job conclusions; the backend
+  job log reads 1,484 passed / 20 skipped /
+  0 failed. The foundation check was measured
+  standalone at that same commit (2026-10-20):
+  **40 passed / 0 failed / 8 warnings**,
+  unchanged — `reports/foundation_check_report.json`
+  regenerated at the commit and committed with
+  the completion note that carries this
+  correction (the sentence in the pre-merge
+  draft of this bullet said the foundation
+  figures would be read from the backend job
+  log; that log carries the suite counts only,
+  so the standalone measurement at the merge
+  commit is the figure of record). At the
+  freeze merge commit (`05f961fc`) the backend
+  job log likewise reads 1,484 passed / 20
+  skipped / 0 failed, CI genuinely 7/7.
 - Spec 027's, Spec 030's, and Spec 031's
   records are not touched by this completion.
 

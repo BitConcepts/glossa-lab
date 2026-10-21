@@ -287,8 +287,16 @@ One line per governed claim, F044-C01…C15.
 - Anchors: asserted byte-identical before and
   after (`df0cf620…`, §1).
 - CI and suite state at the record merge:
-  recorded in the completion note appended
-  below at the merge.
+  PR #264, run 39606161361 on the record
+  commit `e9719405…` — genuinely 7/7 from the
+  run's own job conclusions (Backend tests,
+  Frontend tests, Indus public validation
+  checks, Evidence Graph script smoke tests,
+  Shell wrappers ×3); the backend job log
+  reads 1,578 passed / 20 skipped / 0 failed.
+  The completion commit carrying this note
+  re-runs CI before the merge; the merge is
+  made only on that run's genuine green.
 - Local-environment disclosure: in this VM's
   existing glossa-lab venv, the freeze test
   `test_register_integrity` fails with a

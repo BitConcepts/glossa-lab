@@ -7774,3 +7774,104 @@ reports/phase411_step0_report.md.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-21 — Spec 057 EXECUTED (Phase-419): Class C — PARTIAL RECOVERY WITH UNLOCATED SOURCES (r=2, e=1, u=2)
+
+Spec 057 was executed as Phase-419 under the
+frozen contract (freeze digest 237b923a…;
+OSF registration chq5e approved and public,
+DOI 10.17605/OSF.IO/CHQ5E), in Wave 3 group 2
+of the runnable-experiments campaign. Step 0
+passed in full: gate 0.1 input integrity —
+every §2 live pin recomputes to its freeze
+value (five cleaned texts, five registry
+files, Phase-104 2d0b83e8…, lane-2 drafts
+3f645c9a…, anchors df0cf620…), verified in
+the foreground by two independent routes;
+the extracted-claims store was asserted by
+entry facts under the freeze's Spec 038 form
+(the S-4 claims file's live hash differs
+from its freeze constant only by Spec 046's
+first_check append to a different claim in
+the same file; the …_statisti_0003 entry's
+facts are unchanged — recorded on the
+record, not passed over). Gate 0.2
+source-set integrity: the canonical record
+carries exactly the four recorded evidence
+instances with fingerprint a4874349…. The
+accounting, one outcome per source: S-1
+SOURCE UNLOCATED, sub-state HEADING NOT
+PRESENT IN HELD TEXT (its two occurrences
+are a running sentence at line 102 and a
+bibliography entry for S-3's paper at line
+663; the full stated search ran, no document
+copy exists in the repository, and the
+unblocking act — re-acquisition of the
+edition the extraction ran on — is named on
+the row). S-2 PASSAGE EMPTY: the held
+Search Inside excerpt of Fuls 2023 Chapter 3
+(lines 536–615; chapter running heads at
+lines 536 and 612) states the normalised
+weighted position method, a worked histogram
+example, and the stipulative INS/TMK
+classification definitions of §3.3, and no
+checkable finding — the judgement is stated
+on the record with the byte-exact passage
+artifact (25a0a558…) as its evidence. S-3
+CLAIM RECOVERED: Fuls 2013's paper, its own
+title as heading, findings-bearing body
+lines 54–601 (artifact 88f29146…); its §7
+Summary states the positional classification
+finding (signs classifiable as Initial,
+Early-Medial, Mid-Medial, Late-Medial,
+Terminal, constant, or constant-but-not;
+doubling/mirroring/hatching/marking can
+change a sign's class; signs 382, 790, 832,
+892 are good syllable candidates) on the
+ICIT corpus as stated (3723 complete texts,
+13556 signs, reduced 2474 texts / 9700
+signs, mean length 4.01) — recovered as
+fuls2013_positional_analysis_057_recovered_0001
+at the created stage, unchecked, intake
+record intake-S3.json. S-4 CLAIM RECOVERED:
+Wells 2015 Appendix II, heading at line
+3456, passage lines 3455–3822 (artifact
+af28153c…); its Summary states the same
+classification finding in the appendix's own
+terms (classification list Initial through
+Terminal; modified signs; the same four
+syllable candidates; the same corpus
+numbers as stated) — recovered as
+wells2015_appendix_ii_positional_analysis_057_recovered_0001
+at the created stage, unchecked, intake
+record intake-S4.json. S-5 SOURCE UNLOCATED,
+sub-state HEADING NOT PRESENT IN HELD TEXT
+(its single occurrence at line 267 is
+sentence-initial inside a running paragraph;
+stated search and unblocking act as S-1).
+Headline class C in the frozen §7.1 wording,
+counts (2, 1, 2) shown beside it. Disposition
+(§7.2, r ≥ 1): the heading record is
+superseded by the two recovered claims,
+by appended dated disposition note only —
+no pre-existing field altered (removing the
+append reproduces the pre-act file
+byte-identically), status and stage
+unchanged. Hypothesis F057-C14 borne out.
+No claim was checked, no positional finding
+is established by this act, and the passage
+artifacts are internal records under
+license_status "unclear". This act recovered
+what five passages state. It checked none of
+it. Anchors asserted byte-identical before
+and after (df0cf620…). Records:
+specs/057-five-sources-heading/outcome.md,
+specs/057-five-sources-heading/passages/,
+specs/057-five-sources-heading/intake-S3.json,
+specs/057-five-sources-heading/intake-S4.json,
+reports/phase419_results.json,
+reports/phase419_five_sources_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

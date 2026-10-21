@@ -1,0 +1,591 @@
+{
+ "execution_date": "2026-10-21",
+ "experiment_id": "spec043-pred-2026-007-registry-frame",
+ "freeze_digest": "8a8a334f13577cbb704fc96e6d4c0451cb1277a3470b90c98b3f86c362475987",
+ "freeze_merge": "a679448d",
+ "outcome": {
+  "closure": "PROVENANCE - CANNOT BE RUN AS WRITTEN",
+  "failed_check": "0.3",
+  "prediction_state": "UNSCORED - PRED-2026-012's s.3 Outcome stands PENDING; PRED-2026-007's stands PARTIALLY CONFIRMED, untouched",
+  "scoring_run": false,
+  "type": "step0_closure",
+  "verdict": null
+ },
+ "phase": 410,
+ "prediction": {
+  "criterion": {
+   "share_min": 0.7,
+   "verbatim": ">= 70% of ITM-coded signs are TERMINAL or cluster in TERMINAL clusters"
+  },
+  "id": "PRED-2026-012",
+  "registered": "2026-10-21"
+ },
+ "registration": {
+  "execution_authorization": "the owner's approval of the runnable-experiments campaign plan AS WRITTEN on 2026-10-21 (Wave 3; adjudication.md s.7.6)",
+  "prediction_registration": {
+   "record": "docs/PREDICTION_REGISTER.md s.3, PRED-2026-012 (registered 2026-10-21 under campaign ruling E-4)"
+  },
+  "spec_contract_registration": {
+   "osf": "https://osf.io/vmcra/",
+   "state": "APPROVED + PUBLIC before this run (parent-verified; campaign state file, 2026-10-21)"
+  }
+ },
+ "scoring_record": null,
+ "scoring_record_sha256": null,
+ "spec": "043-pred-2026-007-registry-frame",
+ "step0_record": {
+  "check_0_1": {
+   "criterion_line_present": true,
+   "entry_located": true,
+   "problems": [],
+   "registered_date_present": true,
+   "source_pins": {
+    "builder": {
+     "file": "scripts/cgsa_pipeline.py",
+     "match": true,
+     "observed": "4af822f1ad5c924defed7852df967f8633899b27a27fdaea84e2cdad8744efb0",
+     "pin": "4af822f1ad5c924defed7852df967f8633899b27a27fdaea84e2cdad8744efb0",
+     "present": true
+    },
+    "characterization": {
+     "file": "reports/cluster_characterization.md",
+     "match": true,
+     "observed": "54ebf660873fd853a64ce91c7e30d8c4cedc5bc3a0a1555db1f6281a52e3c476",
+     "pin": "54ebf660873fd853a64ce91c7e30d8c4cedc5bc3a0a1555db1f6281a52e3c476",
+     "present": true
+    },
+    "crosscheck": {
+     "file": "reports/indus_cgsa_cluster_analysis.json",
+     "match": true,
+     "observed": "8c2bd6059a671068b645204db37e29ff13ca53009117b9447ed6c7bd1ead02b3",
+     "pin": "8c2bd6059a671068b645204db37e29ff13ca53009117b9447ed6c7bd1ead02b3",
+     "present": true
+    },
+    "parser": {
+     "file": "backend/glossa_lab/data/fuls_parser.py",
+     "match": true,
+     "observed": "9b57f0ecc10905c0746f1e7fb8e0622ac18e3b08e62bb2eb34fbec4bbd8ef615",
+     "pin": "9b57f0ecc10905c0746f1e7fb8e0622ac18e3b08e62bb2eb34fbec4bbd8ef615",
+     "present": true
+    },
+    "primary": {
+     "file": "data/crosswalks/canonical_sign_registry.csv",
+     "match": true,
+     "observed": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+     "pin": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+     "present": true
+    },
+    "register": {
+     "file": "docs/PREDICTION_REGISTER.md",
+     "match": true,
+     "observed": "254ccf039cf04cf2882e04c8658381cc05573163651ed5d478697058aa424984",
+     "pin": "254ccf039cf04cf2882e04c8658381cc05573163651ed5d478697058aa424984",
+     "present": true
+    },
+    "sign_clusters": {
+     "file": "outputs/analysis/sign_clusters.json",
+     "match": true,
+     "observed": "623a787dd9cc93c4d3d36377890c4753e3427f57cf7ad70adcd6e8256ba1394a",
+     "pin": "623a787dd9cc93c4d3d36377890c4753e3427f57cf7ad70adcd6e8256ba1394a",
+     "present": true
+    }
+   },
+   "standing_outcome": "PENDING",
+   "status": "PASS"
+  },
+  "check_0_2": {
+   "census": {
+    "coded": 12,
+    "coded_counts": {
+     "ITM": 4,
+     "LOG": 2,
+     "NUM": 2,
+     "SHN": 1,
+     "SYL": 1,
+     "TMK": 2
+    },
+    "coded_signs": {
+     "ITM": [
+      "P056",
+      "P324",
+      "P378",
+      "P385"
+     ],
+     "LOG": [
+      "P217",
+      "P310"
+     ],
+     "NUM": [
+      "P058",
+      "P316"
+     ],
+     "SHN": [
+      "P122"
+     ],
+     "SYL": [
+      "P009"
+     ],
+     "TMK": [
+      "P086",
+      "P332"
+     ]
+    },
+    "rows": 803,
+    "uncoded": 791
+   },
+   "crosscheck": {
+    "coded_itm_values": 0,
+    "coded_log_values": 0,
+    "empty_values": 579,
+    "expectation": "uncoded field: 579 empty, 32 free-text glosses, no ITM and no LOG values (Spec 038 execution record)",
+    "expectation_met": true,
+    "nonempty_values": 32,
+    "records_read": 611
+   },
+   "crosscheck_disagreements": [
+    {
+     "crosscheck": "no record",
+     "kind": "expected: the cross-check field is uncoded; the primary governs membership (DD-043-1)",
+     "registry_code": "SYL",
+     "sign": "P009"
+    },
+    {
+     "crosscheck": "no record",
+     "kind": "expected: the cross-check field is uncoded; the primary governs membership (DD-043-1)",
+     "registry_code": "ITM",
+     "sign": "P056"
+    },
+    {
+     "crosscheck": "no record",
+     "kind": "expected: the cross-check field is uncoded; the primary governs membership (DD-043-1)",
+     "registry_code": "NUM",
+     "sign": "P058"
+    },
+    {
+     "crosscheck": "empty value",
+     "kind": "expected: the cross-check field is uncoded; the primary governs membership (DD-043-1)",
+     "registry_code": "TMK",
+     "sign": "P086"
+    },
+    {
+     "crosscheck": "empty value",
+     "kind": "expected: the cross-check field is uncoded; the primary governs membership (DD-043-1)",
+     "registry_code": "SHN",
+     "sign": "P122"
+    },
+    {
+     "crosscheck": "no record",
+     "kind": "expected: the cross-check field is uncoded; the primary governs membership (DD-043-1)",
+     "registry_code": "LOG",
+     "sign": "P217"
+    },
+    {
+     "crosscheck": "no record",
+     "kind": "expected: the cross-check field is uncoded; the primary governs membership (DD-043-1)",
+     "registry_code": "LOG",
+     "sign": "P310"
+    },
+    {
+     "crosscheck": "no record",
+     "kind": "expected: the cross-check field is uncoded; the primary governs membership (DD-043-1)",
+     "registry_code": "NUM",
+     "sign": "P316"
+    },
+    {
+     "crosscheck": "empty value",
+     "kind": "expected: the cross-check field is uncoded; the primary governs membership (DD-043-1)",
+     "registry_code": "ITM",
+     "sign": "P324"
+    },
+    {
+     "crosscheck": "empty value",
+     "kind": "expected: the cross-check field is uncoded; the primary governs membership (DD-043-1)",
+     "registry_code": "TMK",
+     "sign": "P332"
+    },
+    {
+     "crosscheck": "no record",
+     "kind": "expected: the cross-check field is uncoded; the primary governs membership (DD-043-1)",
+     "registry_code": "ITM",
+     "sign": "P378"
+    },
+    {
+     "crosscheck": "empty value",
+     "kind": "expected: the cross-check field is uncoded; the primary governs membership (DD-043-1)",
+     "registry_code": "ITM",
+     "sign": "P385"
+    },
+    {
+     "crosscheck": "no record",
+     "kind": "expected: uncoded in both sources; excluded by the inclusion rule (DD-043-5)",
+     "registry_code": "",
+     "sign": "P098"
+    }
+   ],
+   "enumeration": {
+    "itm_signs": [
+     "P056",
+     "P324",
+     "P378",
+     "P385"
+    ],
+    "population_size": 4,
+    "rows_read": 803,
+    "rule": "icit_function value in the primary source (canonical_sign_registry.csv) equals exactly ITM (spec s.2)",
+    "source": "data/crosswalks/canonical_sign_registry.csv",
+    "source_sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420"
+   },
+   "enumeration_sha256": "4311bd96d0b81b6d839c291f80dad724e7c9b179bf6b6a39f8b57716e9d4d77c",
+   "fieldnames_present": true,
+   "held_records": {
+    "P098": {
+     "condition": "not ITM (carries no code)",
+     "met": true,
+     "registry_code": ""
+    },
+    "P378": {
+     "condition": "enumerated as ITM",
+     "met": true
+    },
+    "P385": {
+     "condition": "enumerated as ITM",
+     "met": true
+    }
+   },
+   "problems": [],
+   "rederivation": {
+    "exact_agreement": true,
+    "mismatches": [],
+    "rows_checked": 803,
+    "table_keys": [
+     "W740",
+     "W585",
+     "W002",
+     "W820",
+     "W700",
+     "W760",
+     "W520",
+     "W233",
+     "W706",
+     "W817",
+     "W861",
+     "W231",
+     "W407",
+     "W100"
+    ]
+   },
+   "rows_read": 803,
+   "status": "PASS",
+   "unexplained_discrepancy": null,
+   "within_primary_conflicts": {}
+  },
+  "check_0_3": {
+   "D1_builder": {
+    "file": "scripts/cgsa_pipeline.py",
+    "itm_keys": [
+     "W740",
+     "W585",
+     "W820",
+     "W817",
+     "W861",
+     "W231"
+    ],
+    "sha256": "4af822f1ad5c924defed7852df967f8633899b27a27fdaea84e2cdad8744efb0",
+    "summary_citation": "Fuls 2013 paper: NWSP method reference + sign function taxonomy",
+    "table": [
+     {
+      "code": "ITM",
+      "gloss": "Initial Cluster Terminal Marker",
+      "wells_id": "W740"
+     },
+     {
+      "code": "ITM",
+      "gloss": null,
+      "wells_id": "W585"
+     },
+     {
+      "code": "SHN",
+      "gloss": "Short Numeral",
+      "wells_id": "W002"
+     },
+     {
+      "code": "ITM",
+      "gloss": null,
+      "wells_id": "W820"
+     },
+     {
+      "code": "LOG",
+      "gloss": "Logogram (most common at Harappa)",
+      "wells_id": "W700"
+     },
+     {
+      "code": "TMK",
+      "gloss": "Terminal Marker",
+      "wells_id": "W760"
+     },
+     {
+      "code": "LOG",
+      "gloss": null,
+      "wells_id": "W520"
+     },
+     {
+      "code": "NUM",
+      "gloss": "Numeral",
+      "wells_id": "W233"
+     },
+     {
+      "code": "NUM",
+      "gloss": null,
+      "wells_id": "W706"
+     },
+     {
+      "code": "ITM",
+      "gloss": null,
+      "wells_id": "W817"
+     },
+     {
+      "code": "ITM",
+      "gloss": null,
+      "wells_id": "W861"
+     },
+     {
+      "code": "ITM",
+      "gloss": null,
+      "wells_id": "W231"
+     },
+     {
+      "code": "TMK",
+      "gloss": "Fish terminal",
+      "wells_id": "W407"
+     },
+     {
+      "code": "SYL",
+      "gloss": "Possible syllable",
+      "wells_id": "W100"
+     }
+    ],
+    "table_comment": "Known ICIT/Wells sign function assignments (from ICIT docs + Fuls 2013)"
+   },
+   "D2_parser": {
+    "annotation": "Function classification (from Wells)",
+    "file": "backend/glossa_lab/data/fuls_parser.py",
+    "function_vocabulary": "\"NUM\", \"LON\", \"SHN\", \"TMK\", \"ITM\", \"LOG\", \"SYL\"",
+    "parser_test_pin": {
+     "file": "backend/tests/test_fuls_parser.py",
+     "match": true,
+     "observed": "705b29b001eede68b7764d4c3559fbb9eb2ccb3c4b1083e5c8ecee7420b5fe70",
+     "pin": "705b29b001eede68b7764d4c3559fbb9eb2ccb3c4b1083e5c8ecee7420b5fe70",
+     "present": true
+    },
+    "same_line_reading": "parse_sign_catalog_entry extracts, from one catalog line, a frequency, a positional classification (initial / terminal / medial / post-terminal) and a function classification",
+    "sha256": "9b57f0ecc10905c0746f1e7fb8e0622ac18e3b08e62bb2eb34fbec4bbd8ef615",
+    "test_fixture": "Sign 342: frequency 580, terminal, TMK",
+    "test_fixture_present": true
+   },
+   "D3_production": {
+    "document": "Fuls, Andreas. 2013. 'Positional Analysis of Indus Signs.' Voprosi Epigrafiki 7(1): 253-275 (the taxonomy source the builder cites; CITATIONS.md s.D.9)",
+    "file": "glossa-indus/processed/cleaned_text/positional_analysis_of_indus_signs_a2bedc93.txt",
+    "match": true,
+    "observed": "9ed24098c006fcde5bb0ca7be6a6fa188011c3bc7bb8db46796abc77961a0708",
+    "pin": "9ed24098c006fcde5bb0ca7be6a6fa188011c3bc7bb8db46796abc77961a0708",
+    "present": true
+   },
+   "D3_quotes": [
+    {
+     "id": "D3-Q1",
+     "locator": "Fuls 2013, s.2 'Methods of Sign Analysis' (held cleaned text lines 163-179; journal pp. 255-256)",
+     "quote": "It is well known that some signs like sign 740 are mostly located in the terminal position of texts, while others are very often in initial position of texts. The preferred sign positions gives us some clues about the possible sign function assuming a language with a fixed syntax. ... The distribution of a sign position can be used to evaluate possible sign functions. B. Wells classifies some signs according to their preferred text position as Initial signs (INS), Terminal Marker (TMK), and Post-Terminal Marker (PTM). He also discovered, that sign 60 appears only in position 1 to 4 (except 5 two-lined texts), which is often replaced by sign 1 or sign 2. They are called Initial Cluster Terminal Marker (ICTM).",
+     "search": "according to their preferred text position as Initial signs (INS), Terminal Marker (TMK), and Post-Terminal Marker (PTM)",
+     "verified_in_pinned_text": true
+    },
+    {
+     "id": "D3-Q2",
+     "locator": "Fuls 2013, s.3.7 'Medial Sign Classification' (held cleaned text lines 347-356; journal p. 264)",
+     "quote": "Signs which have a maximum at positions 3 to 4 are called Early-Medial signs. Sign 2 and 60 are known as a marker after initial signs or initial sign clusters. ... Wells (2006) calls them, together with sign 1, Initial Cluster Terminal Marker (ICTM), since they mark the end of initial clusters.",
+     "search": "Initial Cluster Terminal Marker (ICTM), since they mark the end of initial clusters",
+     "verified_in_pinned_text": true
+    },
+    {
+     "id": "D3-Q3",
+     "locator": "Fuls 2013, s.3.1 'Initial signs' (held cleaned text lines 270-282; journal pp. 260-261)",
+     "quote": "Initial signs are known from structural analysis and appear very often in first position. ... Signs 690, 790, 824, 850, and 921 are graphically similar to the Initial signs 692, 817, 820, 861, and 921, respectively. But the positional frequency shows, that they locate in different positions, not exclusively initial.",
+     "search": "graphically similar to the Initial signs 692, 817, 820, 861, and 921",
+     "verified_in_pinned_text": true
+    },
+    {
+     "id": "D3-Q4",
+     "locator": "Fuls 2013, s.3.2 'Terminal Markers' (held cleaned text lines 298-307; journal pp. 261-262)",
+     "quote": "Terminal markers are discussed by Wells (2006, p. 198-200). They appear often at the end of texts. ... Sign 741 is similar to sign 740 with a maximum at position 5 but not terminal as sign 740.",
+     "search": "not terminal as sign 740",
+     "verified_in_pinned_text": true
+    },
+    {
+     "id": "D3-Q5",
+     "locator": "Fuls 2013, s.4 'Doubled Signs' (held cleaned text line 394; journal p. 266)",
+     "quote": "sign 820, a typical sign in initial position",
+     "search": "sign 820, a typical sign in initial position",
+     "verified_in_pinned_text": true
+    }
+   ],
+   "D4_production": {
+    "document": "Wells, Bryan K. 2015. 'The Archaeology and Epigraphy of Indus Writing.' Archaeopress (ch. 2 presents the Wells 2011 sign list; ch. 3 defines the ICTM class; CITATIONS.md s.A.7)",
+    "file": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+    "match": true,
+    "observed": "62acf855ac3ecf39fc7a7e6597dba9a3cb6e35948528f69e9424eb81308d261e",
+    "pin": "62acf855ac3ecf39fc7a7e6597dba9a3cb6e35948528f69e9424eb81308d261e",
+    "present": true
+   },
+   "D4_quotes": [
+    {
+     "id": "D4-Q1",
+     "locator": "Wells 2015, ch. 3 'Initial Clusters' (held cleaned text lines 969-972; book p. 26)",
+     "quote": "In its simplest form an Initial Cluster consists of two signs, an initial sign and an ICTM. There are only three ICTMs used in Indus texts: Sign 060, Sign 001, Sign 002.",
+     "search": "There are only three ICTMs used in Indus texts",
+     "verified_in_pinned_text": true
+    },
+    {
+     "id": "D4-Q2",
+     "locator": "Wells 2015, ch. 3 (held cleaned text lines 1003-1008; book pp. 26-27)",
+     "quote": "In their tersest form initial clusters consist of two signs: an initial sign followed by an ICTM. ... The possibility that ICTMs are grammatical elements seems likely (case, mode, tense, gender, clitics and post-positions are all possible).",
+     "search": "The possibility that ICTMs are grammatical elements seems likely",
+     "verified_in_pinned_text": true
+    },
+    {
+     "id": "D4-Q3",
+     "locator": "Wells 2015, ch. 3 (held cleaned text lines 1081-1082 and 1137-1139; book pp. 30-32)",
+     "quote": "Set 1 initial signs (signs: 817, 861, 820, 692 and 920; Figure 3.12). They are most frequently found in IC and very often are the only sign right adjacent to ICTMs. ... I will suggest based on Figure 3.15 that signs 861, 817, 820, 920, 550 and 692 are logographs and signs 390, 031, 220, 368 and 595 are syllabic signs.",
+     "search": "signs 861, 817, 820, 920, 550 and 692 are logographs",
+     "verified_in_pinned_text": true
+    },
+    {
+     "id": "D4-Q4",
+     "locator": "Wells 2015, ch. 3 (held cleaned text line 1048; book p. 29)",
+     "quote": "sign 861, that is most often a single sign initial cluster",
+     "search": "sign 861, that is most often a single sign initial cluster",
+     "verified_in_pinned_text": true
+    },
+    {
+     "id": "D4-Q5",
+     "locator": "Wells 2015, ch. 6 (held cleaned text lines 2688-2696; book p. 87)",
+     "quote": "What is clear from Figure 6.2 is that sign 820 occurs terminally in short (Segment) texts ... Figure 6.3 Shows sign 820 is a terminal marker.",
+     "search": "Shows sign 820 is a terminal marker",
+     "verified_in_pinned_text": true
+    },
+    {
+     "id": "D4-Q6",
+     "locator": "Wells 2015, ch. 2 'The Indus Sign List' (held cleaned text lines 658-666; book p. 13)",
+     "quote": "The sign list used here (Wells 2011) was constructed using a uniform method. This method begins with signs that have similar graphs.",
+     "search": "The sign list used here (Wells 2011) was constructed using a uniform method",
+     "verified_in_pinned_text": true
+    }
+   ],
+   "determination": "FAIL",
+   "limbs": {
+    "limb_1_class_definition": {
+     "evidence": "D3 (D3-Q1, D3-Q2): Wells classifies signs 'according to their preferred text position', and the ICTM class is the signs that 'mark the end of initial clusters' - a definition by cluster-final behaviour, drawn from positional distribution. D4 (D4-Q1): the ICTM is defined by its role terminating an initial cluster. D4-Q2's suggestion that ICTMs may be grammatical elements is a hypothesis about what the class might mean, offered for a class already delimited positionally; it is not a stated definition of the class and not a basis of any assignment, and under DD-043-10 it cannot be counted as one.",
+     "finding": "FAIL",
+     "requirement": "the produced documents state what ITM is, and the stated definition is not a positional one"
+    },
+    "limb_2_per_sign_basis": {
+     "evidence": "every basis the produced documents state is positional (terminal-position distribution for W740; initial-position / initial-cluster distribution for W820, W817, W861), and for W231 (P056) the produced documents state no basis at all - silence, which the frozen standard fixes as failure. Per-sign record in per_sign_basis.",
+     "finding": "FAIL",
+     "requirement": "for each of the four ITM signs, the produced documents state a position-independent basis"
+    },
+    "limb_3_source_agreement": {
+     "evidence": "D4-Q1: the published ICTM class has exactly three members - signs 060, 001, 002 - none of them a builder ITM key. D3-Q3 and D4-Q3 assign 817, 820, 861 as initial signs; D4-Q5 assigns 820 as a terminal marker; D3-Q1/Q4 and D4 assign 740 terminally. W231 is omitted by both documents where the table asserts ITM. The published lists therefore assign different functions to the four signs, and omit the fourth - a gate failure under the limb's own wording.",
+     "finding": "FAIL",
+     "requirement": "where the produced published documents list per-sign function assignments, they agree with the builder table for all four ITM signs"
+    }
+   },
+   "log_trace": {
+    "assignments": [
+     {
+      "builder": "LOG (no gloss in the table)",
+      "d3": "no per-sign statement for sign 520 in Fuls 2013",
+      "d4": "ch. 6 (LOG-Q1): sign 520 is 'the other common TM' - a terminal marker, a positional class, not LOG",
+      "finding": "the published source assigns a different, positional class; recorded for the trace only",
+      "sign": "P217",
+      "wells_ids": [
+       "W520"
+      ]
+     },
+     {
+      "builder": "LOG, glossed 'Logogram (most common at Harappa)'",
+      "d3": "no per-sign statement for sign 700 in Fuls 2013",
+      "d4": "ch. 4-5 (LOG-Q2): sign 700 with stroke numerals is posited as values in the Indus volumetric system; no per-sign LOG assignment is stated",
+      "finding": "no stated per-sign LOG basis in the produced documents; recorded for the trace only",
+      "sign": "P310",
+      "wells_ids": [
+       "W700"
+      ]
+     }
+    ],
+    "gates": "nothing (DD-043-12: LOG is enumerated-only; no LOG quantity is scored)",
+    "quotes": [
+     {
+      "id": "LOG-Q1",
+      "locator": "Wells 2015, ch. 6 (held cleaned text lines 2979-2982; book p. 99)",
+      "quote": "We know from the structural analysis given in Chapter 3 that they are TMs, and the values assigned to signs 740 (*-ay) and 032 (*-ir) are found in terminal contexts in Dravidian languages. ... it seems a logical extension of this pattern to assign the other common TM (sign 520) to the 3rd person non-masculine.",
+      "search": "assign the other common TM (sign 520)",
+      "verified_in_pinned_text": true
+     },
+     {
+      "id": "LOG-Q2",
+      "locator": "Wells 2015, ch. 5 (held cleaned text lines 2184-2185; book p. 72)",
+      "quote": "I have posited in Chapter 4 that these sign sequences (Sign 700 + #) are various values in the Indus volumetric system.",
+      "search": "these sign sequences (Sign 700 + #) are various values in the Indus volumetric system",
+      "verified_in_pinned_text": true
+     }
+    ]
+   },
+   "per_sign_basis": [
+    {
+     "basis_stated": null,
+     "d3": "no statement: sign 231 does not occur in Fuls 2013 (searched in full at execution)",
+     "d4": "no assignment: sign 231 is not assigned ITM or any function in Wells 2015 (the only '231' in the text is a token count, 'n = 231', ch. 5)",
+     "determination": "FAIL - no checkable stated basis (silence is failure, DD-043-10); no published list assigns W231 ITM (omission where the builder table asserts it)",
+     "sign": "P056",
+     "wells_ids": [
+      "W231"
+     ]
+    },
+    {
+     "basis_stated": "positional: terminal-position distribution",
+     "d3": "s.2: sign 740 'mostly located in the terminal position of texts' (D3-Q1); s.3.2: terminal-marker discussion, 'not terminal as sign 740' (D3-Q4)",
+     "d4": "ch. 6: sign 740 is a TM (terminal marker) whose assigned value is 'found in terminal contexts' (LOG-Q1's passage); ch. 3: 740 is the terminal-cluster counterpart of the conjunctive signs",
+     "determination": "FAIL - the stated basis is positional, and the published class is terminal marker, not ITM",
+     "sign": "P324",
+     "wells_ids": [
+      "W740"
+     ]
+    },
+    {
+     "basis_stated": "positional: initial-position distribution (D3); initial-cluster membership and terminal occurrence (D4)",
+     "d3": "s.3.1: sign 820 is one of the 'Initial signs 692, 817, 820, 861, and 921' (D3-Q3); s.4: 'a typical sign in initial position' (D3-Q5)",
+     "d4": "ch. 3: sign 820 is a Set 1 initial sign and a suggested logograph (D4-Q3); ch. 6: 'sign 820 is a terminal marker' (D4-Q5)",
+     "determination": "FAIL - the stated bases are positional, and the published classes (initial sign; logograph; terminal marker) are not ITM",
+     "sign": "P378",
+     "wells_ids": [
+      "W820"
+     ]
+    },
+    {
+     "basis_stated": "positional: initial-cluster distribution",
+     "d3": "s.3.1: signs 817 and 861 are 'Initial signs' (D3-Q3)",
+     "d4": "ch. 3: signs 817 and 861 are Set 1 initial signs and suggested logographs (D4-Q3); sign 861 'most often a single sign initial cluster' (D4-Q4); only signs 861 and 817 pair with ICTM sign 002 alone - they stand adjacent to ICTMs, they are not ICTMs (D4-Q1: the ICTMs are 060, 001, 002)",
+     "determination": "FAIL - the stated bases are positional, and the published classes (initial signs; logographs) are not ITM",
+     "sign": "P385",
+     "wells_ids": [
+      "W817",
+      "W861"
+     ]
+    }
+   ],
+   "problems": [],
+   "status": "FAIL"
+  },
+  "phase5_assignments_looked_up": false,
+  "phase5_output_opened": false
+ },
+ "step0_record_sha256": "019c65991835505c7f8ecac11e3b62f5b01b1fe825bed3c46eb23fdb2879c948"
+}

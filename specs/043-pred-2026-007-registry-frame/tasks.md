@@ -91,15 +91,23 @@
 
 ## Execution — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       experiment script, graph module, registration
-      in the experiment graph, then run.
-- [ ] **E2 — Step 0, check 0.1: sources and pins.**
+      in the experiment graph, then run. DONE
+      2026-10-21 (Phase-410): script
+      `backend/scripts/phase410_pred012_step0.py`,
+      graph module
+      `backend/glossa_lab/experiment_graph_phase410.py`
+      (node `IndusPhase410Pred012Step0`), registration
+      verified by import before the run.
+- [x] **E2 — Step 0, check 0.1: sources and pins.**
       Every source of spec §4 present and hashed at
       the frozen commit; a missing source or a hash
       differing from the frozen pin closes the study
-      as CANNOT BE RUN AS WRITTEN.
-- [ ] **E3 — Step 0, check 0.2: enumeration,
+      as CANNOT BE RUN AS WRITTEN. DONE 2026-10-21:
+      PASS — all seven pins matched, re-derived by
+      two independent routes.
+- [x] **E3 — Step 0, check 0.2: enumeration,
       re-derivation, cross-check.** Mechanical read
       of the registry's `icit_function` over all 803
       rows; re-derivation of all 803 values from the
@@ -111,8 +119,12 @@
       disagreement written sign-by-sign into the
       step-0 record. Any census, re-derivation, or
       within-primary ambiguity failure closes the
-      study as CANNOT BE RUN AS WRITTEN.
-- [ ] **E4 — Step 0, check 0.3: the provenance
+      study as CANNOT BE RUN AS WRITTEN. DONE
+      2026-10-21: PASS — census reproduced exactly;
+      re-derivation exact (zero mismatches);
+      cross-check disagreements all of the expected
+      kind, recorded sign-by-sign.
+- [x] **E4 — Step 0, check 0.3: the provenance
       gate.** Produce D3 (Fuls 2013) and D4 (Wells'
       published sign list, as transmitted by the
       ICIT documentation) with locators; determine
@@ -125,7 +137,17 @@
       unscored, with the quoted basis statements (or
       their absence) in the step-0 record. **No
       Phase 5 read of any kind precedes this check's
-      determination.**
+      determination.** DONE 2026-10-21: the gate ran
+      and FAILED on all three limbs — the class
+      definition the produced documents state is
+      positional, every stated per-sign basis is
+      positional (and W231 has none), and the
+      published lists assign different functions
+      (the published ICTM class is signs 060, 001,
+      002). The study closed as **PROVENANCE —
+      CANNOT BE RUN AS WRITTEN**, unscored; the LOG
+      trace is recorded and gates nothing. Record:
+      `outcome.md`.
 - [ ] **E5 — Step 0, check 0.4: recorded Phase 5
       output verification.** The recorded clustering
       and characterisation survive in sign-assignable
@@ -134,14 +156,21 @@
       TERMINAL, P098 → Cluster 10 INITIAL). Failure
       closes the study as CANNOT BE RUN AS WRITTEN.
       The step-0 record is written and hashed before
-      any scoring.
+      any scoring. NOT REACHED 2026-10-21 — closed
+      in substance by the check-0.3 PROVENANCE
+      closure: the frozen order reaches this check
+      only behind a passed gate, and no Phase 5
+      assignment was looked up for any sign.
 - [ ] **E6 — Scoring** (spec §6): the registered
       computation only, over the enumerated
       population, under the coverage rule (spec §7);
       the per-sign table produced with it (and, if
       the freeze so ruled under DD-043-12, the LOG
-      control's descriptive share).
-- [ ] **E7 — Outcome.** The verdict, the
+      control's descriptive share). NOT REACHED
+      2026-10-21 — closed in substance by the
+      check-0.3 PROVENANCE closure; no share,
+      coverage, or verdict exists.
+- [x] **E7 — Outcome.** The verdict, the
       partial-scope record, or the closure under its
       own name, in spec §7's pre-written wordings —
       appended to the PRED register as a dated §6
@@ -149,7 +178,14 @@
       name), recorded in this spec's directory and
       the root LEDGER; the foundation check (H21)
       run after the claim consequence lands; nothing
-      written into any frozen record.
+      written into any frozen record. DONE 2026-10-21:
+      the PROVENANCE closure is recorded in
+      `outcome.md` in spec §7's pre-written wording,
+      appended to the register as a dated §6 entry
+      (the Phase D pin advanced by name a ninth
+      time), and entered in the root LEDGER; the
+      foundation check runs at the record's merge
+      commit.
 
 ## Not done by this draft (by design)
 

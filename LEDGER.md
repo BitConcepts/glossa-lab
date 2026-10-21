@@ -7523,6 +7523,46 @@ NOT-YET-TESTABLE.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson,
 per constitution sec.VI.
+
+## 2026-10-21 — Spec 047 step-1 execution (Phase-406: Asset B build and freeze)
+
+Spec 047 was executed through step 1 as
+Phase-406 under the frozen contract (freeze
+digest 8501feab…; OSF registration b2a8w
+approved and public). Step 0 gates all PASS:
+input integrity (the eight §2 inputs hash
+to their freeze pins, verified by two
+independent routes), spine reproduction (36
+rows, 30 clusters), and the join census
+(5,679 records accounted for exactly once:
+joined 5,106; non-spine 573 over 66 site
+values; no site value 0). **Asset B froze**:
+specs/047-roif-ledger-distribution/asset-b/
+site-functions.jsonl, SHA-256 a1a9e484…,
+30 rows — AGREED 3 (harappa administrative,
+lothal port/trade, shahr i sokhta
+mixed/unknown), DISAGREED 1 (surkotada),
+SINGLE-SOURCE 10, NO-SOURCE 16; **testable
+2**. The §4.3 verification pass demoted
+khirsara and sheri khan tarakai to
+SINGLE-SOURCE on independence grounds
+before the freeze (recorded in full in the
+outcome record). The ledger-sign list froze
+in the same act: SHA-256 dfa48f50…, 8
+entries from Roif's two postings of
+record, 3 mapped (fish, jar, grid), 5
+UNMAPPED; the DD-047-13 all-UNMAPPED case
+does not fire. Step 2 was not run: no
+distribution quantity exists, and the
+claim stands UNTESTED. This concerns the
+distribution component of Roif's ledger
+thesis only; the guild-authority and
+Akkadian-influence components were not
+tested. Held under the Roif gate.
+Outcome record:
+specs/047-roif-ledger-distribution/outcome.md;
+machine record: reports/phase406_results.json;
+report: reports/phase406_step1_report.md.
 ## 2026-10-21 — Spec 046 (Phase-405) executed — IDENTIFICATION FAILED (sign unmatched)
 
 Spec 046 ("Sign 297 Is the Horned Tiger": an

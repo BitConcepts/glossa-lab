@@ -104,17 +104,17 @@
 
 ## Execution — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0** (spec §3): input
+- [x] **E2 — Step 0** (spec §3): input
       integrity against the freeze pins; spine
       reproduction (36 rows, 30 clusters); join
       census accounting for every primary-layer
       record exactly once. Any failure stops
       the run as INVALID before any
       classification entry exists.
-- [ ] **E3 — Step 1a, Asset B build** (spec
+- [x] **E3 — Step 1a, Asset B build** (spec
       §4): cited-data entry on the gazetteer
       spine under the two-source agreement
       rule; §4.3 verification pass; build gates
@@ -124,7 +124,7 @@
       build-gate failure closes the spec at
       step 1 and marks D-10 not-run by
       dependency closure.
-- [ ] **E4 — Step 1b, ledger-sign list**
+- [x] **E4 — Step 1b, ledger-sign list**
       (spec §5): extraction from the two
       Academia.edu postings of record only,
       crosswalk mapping, UNMAPPED entries

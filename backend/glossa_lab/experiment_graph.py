@@ -2966,6 +2966,16 @@ try:
     logger.info("Registered %d Phase-411 (spec 045) nodes", len(list(_p411_defs())))
 except Exception as _p411_exc:  # noqa: BLE001
     logger.warning("Phase-411 (spec 045) nodes not registered: %s", _p411_exc)
+# ── Phase-410 node (spec 043: PRED-2026-012 registry frame, step 0) ──
+try:
+    from glossa_lab.experiment_graph_phase410 import (
+        _phase410_node_defs as _p410_defs,  # noqa: PLC0415
+    )
+    for _d in _p410_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-410 (spec 043) nodes", len(list(_p410_defs())))
+except Exception as _p410_exc:  # noqa: BLE001
+    logger.warning("Phase-410 (spec 043) nodes not registered: %s", _p410_exc)
 # ── Phase-420 node (spec 058: transcription-disagreement mechanism, D-21 arm A) ──
 try:
     from glossa_lab.experiment_graph_phase420 import (

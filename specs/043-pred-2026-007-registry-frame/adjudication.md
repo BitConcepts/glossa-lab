@@ -324,3 +324,78 @@ touched):
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## 6. Owner's campaign ruling E-4 — DD-043-6 superseded (2026-10-21)
+
+Appended 2026-10-21, after the sections above,
+which stand unaltered. This section records a
+ruling the draft above awaited and reconciles
+the draft to it.
+
+- **The ruling.** On 2026-10-21 the owner
+  (Tristen Pierson) approved the
+  runnable-experiments campaign plan **as
+  written** (`~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md`),
+  Wave 1 of which takes this spec as a member.
+  Decision **E-4** in that approved plan reads:
+
+  > **E-4 — The D-31 successor gets a new
+  > prediction number.** Register discipline
+  > and the triage both require it: the
+  > successor to PRED-2026-007 registers as a
+  > new PRED number, on a population frame
+  > whose coded values are verified before
+  > freezing, with its step 0 adjudicating the
+  > cross-check registry's Wells-derived
+  > provenance rather than inheriting it
+  > silently. *Alternative:* run Spec 043 as a
+  > provenance-and-method act only, leaving
+  > the prediction unscored.
+
+- **The ruling is the confirmation DD-043-6
+  awaited, brought forward to the draft.**
+  DD-043-6 (§3 above) recorded a
+  DECIDED-BY-DRAFT reading — that this spec
+  scores PRED-2026-007 itself, with no new
+  PRED number — and expressly put that reading
+  to the freeze for confirmation (§5, item 2).
+  The owner's campaign approval is that
+  confirmation act, given at the owner's
+  ruling and brought forward to the draft
+  rather than held for the freeze act; item 2
+  of §5 is thereby discharged and is no longer
+  an open question for the freeze.
+- **DD-043-6's draft reading is SUPERSEDED.**
+  The approval rules **against** the reading:
+  the successor does **not** score
+  PRED-2026-007 itself. It registers under a
+  new PRED number — **PRED-2026-012**,
+  registered 2026-10-21 in
+  `docs/PREDICTION_REGISTER.md` §3 on this
+  same branch (next free number: the register
+  carried PRED-2026-001 through
+  PRED-2026-011) — carrying PRED-2026-007's
+  frozen prediction and success criterion
+  verbatim, on the canonical-sign-registry
+  frame this draft designs, under governing
+  spec Spec 043, outcome PENDING.
+  PRED-2026-007's own entry stands untouched
+  and remains PARTIALLY CONFIRMED as its
+  pre-execution record.
+- **DD-043-6's fallback does NOT fire.**
+  DD-043-6 provided that, if the freeze
+  declined its reading, the design retires
+  unscored. That fallback does not fire here:
+  E-4's alternative horn — running Spec 043
+  as a provenance-and-method act only,
+  leaving the prediction unscored — was not
+  chosen either. The campaign approves the
+  **scored** successor under the new number,
+  with step-0 provenance adjudication (spec
+  §4, check 0.3) before any scoring. The
+  design therefore neither scores
+  PRED-2026-007 nor retires: it proceeds, at
+  draft stage, as the governing spec for
+  PRED-2026-012. The freeze and the execution
+  remain separate owner gates; this section
+  freezes nothing and runs nothing.

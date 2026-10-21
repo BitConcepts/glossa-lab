@@ -1,4 +1,4 @@
-# Spec 043 — PRED-2026-007 at full population, corrected frame: the canonical sign registry as primary source, a documentary provenance gate on the function codes (successor to Spec 038)
+# Spec 043 — PRED-2026-012 at full population, corrected frame: the canonical sign registry as primary source, a documentary provenance gate on the function codes (successor to Spec 038)
 
 > ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-21
 >
@@ -19,11 +19,15 @@
 > record made unavoidable: a documentary
 > **provenance gate** (§4, check 0.3) on what
 > the ITM assignments rest on, faced head-on
-> in §3. It scores the **same registered
-> prediction**, PRED-2026-007, under its frozen
-> criterion, with corrected machinery. It does
-> not rewrite the prediction, its bar, or its
-> population definition.
+> in §3. It scores the successor prediction
+> **PRED-2026-012**, registered 2026-10-21
+> under the owner's campaign ruling E-4,
+> which carries PRED-2026-007's frozen
+> criterion verbatim, with corrected
+> machinery. It does not rewrite that
+> criterion, its bar, or its population
+> definition, and PRED-2026-007's own record
+> stands untouched.
 >
 > Number: Spec 041 is the site × local-label
 > period-mapping act and Spec 042 is the Arm B
@@ -55,10 +59,13 @@
 
 ### 0.1 The registered prediction (the contract this design implements)
 
-PRED-2026-007 (H4: ICIT Function Alignment),
-registered 2026-04-22 in
-`docs/PREDICTION_REGISTER.md` §3, carried
-**verbatim**:
+PRED-2026-012 (H4 successor: ICIT Function
+Alignment), registered 2026-10-21 in
+`docs/PREDICTION_REGISTER.md` §3 as the
+successor to PRED-2026-007 (H4: ICIT Function
+Alignment, registered 2026-04-22), carrying
+PRED-2026-007's prediction and success
+criterion **verbatim**:
 
 - **Prediction**: "Signs with ICIT function
   code ITM will cluster into TERMINAL class in
@@ -179,7 +186,7 @@ precisely.
 ## 1. Question
 
 Does the registered criterion for
-PRED-2026-007 hold over the **full enumerated
+PRED-2026-012 hold over the **full enumerated
 population** of ITM-coded signs — every such
 sign, not the sample the partial test happened
 to check — when the population is enumerated
@@ -493,7 +500,7 @@ pin below was verified first-hand at draft
 | Lineage (catalog reading) | `backend/glossa_lab/data/fuls_parser.py` | `9b57f0ecc10905c0746f1e7fb8e0622ac18e3b08e62bb2eb34fbec4bbd8ef615` |
 | Scoring (assignment) | `outputs/analysis/sign_clusters.json` | `623a787dd9cc93c4d3d36377890c4753e3427f57cf7ad70adcd6e8256ba1394a` |
 | Scoring (cluster classes) | `reports/cluster_characterization.md` | `54ebf660873fd853a64ce91c7e30d8c4cedc5bc3a0a1555db1f6281a52e3c476` |
-| The contract | `docs/PREDICTION_REGISTER.md` (§3 entry; §6 discipline) | `f281bd674d7651e9c13351bad7cb321bd55000cd3f087a38276a4451fbbf7ef3` at draft |
+| The contract | `docs/PREDICTION_REGISTER.md` (§3 PRED-2026-012 entry; §6 discipline) | `254ccf039cf04cf2882e04c8658381cc05573163651ed5d478697058aa424984` at draft, as reconciled 2026-10-21 (the PRED-2026-012 registration added on this branch; the pre-registration draft pin was `f281bd67…`) |
 
 Step 0 verifies each source's presence and
 records its SHA-256 at the frozen commit. A
@@ -688,9 +695,11 @@ record quotes, with locators, the basis
 statements the gate rested on — or records
 their absence — so the closure is checkable
 in its turn. On a provenance closure,
-PRED-2026-007 remains unscored and its §3
-Outcome stays **PARTIALLY CONFIRMED** as the
-pre-execution record (§8).
+PRED-2026-012 remains unscored and its §3
+Outcome stays **PENDING**; PRED-2026-007's
+§3 Outcome likewise stays **PARTIALLY
+CONFIRMED** as its own pre-execution record,
+untouched by this spec (§8).
 
 **Bounded proceed.** If all three limbs hold,
 scoring proceeds, and the gate's finding —
@@ -806,7 +815,8 @@ not a verdict (§7).
   re-clustered, re-characterised, or
   re-derived.
 - **The register.** `docs/PREDICTION_REGISTER.md`
-  §3 (PRED-2026-007 entry) and its §6 append
+  §3 (PRED-2026-012 entry, and its predecessor
+  PRED-2026-007 entry) and its §6 append
   discipline (§8 below).
 
 Rights posture: the held sources are the
@@ -906,9 +916,11 @@ coverage is below 80% and the outcome is not
 arithmetically decisive, the appended register
 entry records the test as
 **run-at-partial-scope** with the numbers, and
-the register's PARTIALLY CONFIRMED wording is
-replaced by that precise statement — by
-append, never by edit (§8). With four signs,
+PRED-2026-012's registered PENDING wording is
+superseded by that precise statement — by
+append, never by edit (§8). PRED-2026-007's
+PARTIALLY CONFIRMED wording is not the
+wording superseded; it stands untouched. With four signs,
 the rule's arithmetic is concrete: one
 unassigned sign is 75% coverage, inside the
 partial-scope band unless the three assigned
@@ -931,7 +943,7 @@ census failure and a closure under check 0.2
 
 **Step-0 closures — two kinds, each reported
 under its own name.** A closure is reported
-as itself, never as a verdict: PRED-2026-007
+as itself, never as a verdict: PRED-2026-012
 remains unscored by this execution, and the
 register's §4 (Failed Predictions) gains no
 entry from a closure.
@@ -962,7 +974,7 @@ record use these forms, with the bracketed
 quantities filled from the execution record
 and no other wording substituted:
 
-- *CONFIRMED:* "PRED-2026-007 is CONFIRMED at
+- *CONFIRMED:* "PRED-2026-012 is CONFIRMED at
   full population. Of the [4] ITM-coded signs
   enumerated from the canonical sign registry
   (P056, P324, P378, P385), [n] are TERMINAL
@@ -986,7 +998,7 @@ and no other wording substituted:
   unchanged, with "aligns" replaced by "does
   not align at the registered rate" in the
   final sentence's first clause.
-- *Run-at-partial-scope:* "PRED-2026-007 was
+- *Run-at-partial-scope:* "PRED-2026-012 was
   run at partial scope. Of the [4] ITM-coded
   signs enumerated from the canonical sign
   registry, [c] carry a recorded Phase 5
@@ -999,15 +1011,17 @@ and no other wording substituted:
   with these numbers; no verdict is claimed."
   (Followed by the gate finding and the
   per-sign table, as in every outcome.)
-- *Closure (source/integrity):* "PRED-2026-007
+- *Closure (source/integrity):* "PRED-2026-012
   was not scored under Spec 043: CANNOT BE RUN
   AS WRITTEN at step 0, check [0.1/0.2/0.4] —
   [the named failure, stated exactly]. The
   prediction remains unscored; its §3 Outcome
-  stands PARTIALLY CONFIRMED as the
-  pre-execution record. This closure is not a
-  verdict and not a refutation."
-- *Closure (provenance):* "PRED-2026-007 was
+  stands PENDING. (PRED-2026-007's §3 Outcome
+  stands PARTIALLY CONFIRMED as its own
+  pre-execution record, untouched.) This
+  closure is not a verdict and not a
+  refutation."
+- *Closure (provenance):* "PRED-2026-012 was
   not scored under Spec 043: PROVENANCE —
   CANNOT BE RUN AS WRITTEN at step 0, check
   0.3. [The gate's finding, stated exactly:
@@ -1018,8 +1032,10 @@ and no other wording substituted:
   population was fixed ([4] signs) and no
   Phase 5 assignment was looked up. The
   prediction remains unscored; its §3 Outcome
-  stands PARTIALLY CONFIRMED as the
-  pre-execution record. This closure records
+  stands PENDING. (PRED-2026-007's §3 Outcome
+  stands PARTIALLY CONFIRMED as its own
+  pre-execution record, untouched.) This
+  closure records
   what the classification's assignments rest
   on; it is not a verdict on the criterion
   and not a refutation."
@@ -1036,26 +1052,32 @@ change.
 - On a **verdict** (CONFIRMED / NOT
   CONFIRMED, including a decisive verdict
   under partial coverage), the appended entry
-  records the supersession of the PARTIALLY
-  CONFIRMED wording in the §7 wording's terms;
-  the §3 text as registered is never edited in
-  place, and the PARTIALLY CONFIRMED wording
-  stands in the record as the pre-execution
-  record it is, superseded by the appended
-  entry.
+  records the supersession of PRED-2026-012's
+  registered PENDING wording in the §7
+  wording's terms; the §3 text as registered
+  is never edited in place, and the PENDING
+  wording stands in the record as the
+  pre-execution record it is, superseded by
+  the appended entry. PRED-2026-007's PARTIALLY
+  CONFIRMED wording is not superseded by any
+  outcome under this spec; it stands as
+  PRED-2026-007's own record, untouched.
 - On a **run-at-partial-scope** record
   (coverage rule, §7), the appended entry
-  replaces the PARTIALLY CONFIRMED wording
-  with the precise partial-scope statement.
-- On a **step-0 closure of either kind**, the
-  §3 Outcome stays **PARTIALLY CONFIRMED** as
-  the pre-execution record — the Spec 035
-  precedent (F035-C15), carried through Spec
-  038: a closure is not a verdict, and the
-  register does not record it as one. The
-  dated entry records the closure under its
-  own name (PROVENANCE closures included),
-  with the step-0 record cited.
+  supersedes PRED-2026-012's PENDING wording
+  with the precise partial-scope statement,
+  by append, never by edit.
+- On a **step-0 closure of either kind**,
+  PRED-2026-012's §3 Outcome stays
+  **PENDING** — the Spec 035 precedent
+  (F035-C15), carried through Spec 038: a
+  closure is not a verdict, and the register
+  does not record it as one. The dated entry
+  records the closure under its own name
+  (PROVENANCE closures included), with the
+  step-0 record cited. PRED-2026-007's §3
+  Outcome likewise stays **PARTIALLY
+  CONFIRMED**, untouched.
 - No new provenance reconciliation is
   appended: DD-038-2's reconciliation stands
   in §6 (2026-10-20). The execution's dated
@@ -1064,9 +1086,13 @@ change.
   information, not a second reconciliation.
 
 Every other prediction's entry stays
-byte-identical. This draft changes no register
-text, no other prediction's state, and no Spec
-026–042 record.
+byte-identical. Apart from the PRED-2026-012
+registration itself — its §3 entry and §6
+registration note, added on this branch on
+2026-10-21 under campaign ruling E-4 — this
+draft changes no register text, no other
+prediction's state, and no Spec 026–042
+record.
 
 ## 9. Controls and named confounders
 
@@ -1134,19 +1160,21 @@ text, no other prediction's state, and no Spec
 
 ## 10. What this design would move, and what it would not establish
 
-**What it would move.** PRED-2026-007 from a
-partial check on a mis-denominated sample to
-one of three honest endings: a scored result
-at full enumerated scope over a verified
-population whose codes have passed a
-documentary provenance gate; a precise
-partial-scope record if the recorded Phase 5
-output cannot assign the whole population;
-or a named closure — source/integrity, or
-PROVENANCE — that states exactly why the test
-cannot be run as written. Each ending replaces
-an acceptance-flavoured label with the record
-that actually supports it.
+**What it would move.** PRED-2026-012, the
+successor to PRED-2026-007's partial check on
+a mis-denominated sample, to one of three
+honest endings: a scored result at full
+enumerated scope over a verified population
+whose codes have passed a documentary
+provenance gate; a precise partial-scope
+record if the recorded Phase 5 output cannot
+assign the whole population; or a named
+closure — source/integrity, or PROVENANCE —
+that states exactly why the test cannot be
+run as written. Each ending gives the
+successor the record that actually supports
+it; PRED-2026-007's own label and record
+stand untouched throughout.
 
 **What it would NOT establish — the lineage
 boundary, carried into every outcome
@@ -1214,13 +1242,18 @@ criterion as registered.
 - It does not execute anything. Execution
   follows the owner's freeze order for this
   contract and a separate execution order.
-- It does not re-register, amend, or replace
-  PRED-2026-007. The prediction, its success
-  criterion, its 70% bar, and its population
-  definition (ITM-coded signs) stand exactly
-  as registered in April 2026; this spec is
-  corrected machinery for scoring it, under
-  the owner's successor order (DD-043-6).
+- It does not amend or replace
+  PRED-2026-007. Its successor, PRED-2026-012,
+  is registered on this branch (2026-10-21,
+  under the owner's campaign ruling E-4,
+  which supersedes DD-043-6's draft reading;
+  see `adjudication.md` §6), carrying the
+  prediction, its success criterion, its 70%
+  bar, and its population definition
+  (ITM-coded signs) exactly as PRED-2026-007
+  registered them in April 2026; this spec is
+  corrected machinery for scoring
+  PRED-2026-012.
 - It does not look up any Phase 5 assignment
   beyond the three signs the register itself
   names, compute any share, or pre-write any
@@ -1233,9 +1266,10 @@ criterion as registered.
   any clustering (§4, check 0.4), adjust the
   70% bar, add a band, or substitute a
   different test (§§6–7).
-- It does not edit the PRED register — every
-  outcome record is an execution-time append
-  (§8).
+- Apart from the PRED-2026-012 registration
+  recorded above, it does not edit the PRED
+  register — every outcome record is an
+  execution-time append (§8).
 - It files no OSF registration at draft.
   PRED-2026-007 predates the programme's OSF
   registration practice and carries no
@@ -1255,7 +1289,7 @@ The governed register is `claims.json`
 
 - **C01** — a verdict under this spec states
   whether the registered criterion for
-  PRED-2026-007 is met over the
+  PRED-2026-012 is met over the
   registry-enumerated ITM population, and
   nothing beyond that statement.
 - **C02** — the success criterion is the
@@ -1414,31 +1448,30 @@ The governed register is `claims.json`
   a pre-execution record; no reconciliation is
   appended for it under this spec (DD-038-2's
   note already covers the codes' provenance).
-- **DD-043-6 — DECIDED-BY-DRAFT under the
-  owner's successor order: this spec scores
-  PRED-2026-007 itself; no new PRED number.**
-  Spec 038's register entry (2026-10-20) says
-  any future test of this hypothesis requires
-  "a population frame whose coded values are
-  verified in the named primary source itself
-  before the design is frozen, registered as a
-  new prediction under a new PRED number."
-  This draft satisfies the sentence's
-  operative requirement by construction — the
-  frame's coded values *are* verified in the
-  named primary source before any freeze (§2)
-  — and, under the owner's direct order of
-  2026-10-21 ("Do the successor"), takes the
-  new-number clause as addressed to tests that
-  would change the prediction: this successor
-  changes no word of the prediction, its bar,
-  or its population definition; it corrects
-  which held file supplies the codes and adds
-  the provenance gate. The freeze is asked to
-  confirm this reading openly (§5 of
-  `adjudication.md`); if it declines, the
-  design retires unscored and a successor
-  prediction may be registered instead.
+- **DD-043-6 — SUPERSEDED 2026-10-21 by the
+  owner's campaign ruling E-4: this spec
+  scores PRED-2026-012, registered under a new
+  PRED number.** As drafted, this decision
+  read that the spec scores PRED-2026-007
+  itself, with no new PRED number, and put
+  that reading to the freeze for confirmation.
+  The owner's approval of the
+  runnable-experiments campaign plan as
+  written (2026-10-21), decision E-4, is that
+  confirmation act, brought forward to the
+  draft, and it rules against the draft
+  reading: the successor registers as
+  **PRED-2026-012** (register §3, on this
+  branch, 2026-10-21), carrying the
+  prediction, its bar, and its population
+  definition verbatim, with step-0 provenance
+  adjudication before any scoring. The draft
+  reading's fallback — the design retiring
+  unscored if the reading were declined —
+  does not fire, because E-4's alternative
+  (a provenance-and-method act only, the
+  prediction unscored) was not chosen either.
+  Full record: `adjudication.md` §6.
 - **DD-043-7 — CARRIED from Spec 038:
   DD-038-3 and DD-038-9.** The criterion's
   wording governs over the Prediction

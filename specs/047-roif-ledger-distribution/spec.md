@@ -1,31 +1,36 @@
 # Spec 047 — Roif's Ledger Thesis: the Distribution Test (Design D-09)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-21
+> ## FROZEN — 2026-10-21
 >
-> Drafted under the runnable-experiments campaign
-> plan approved by the owner as written on
-> 2026-10-21
-> (`~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md`,
-> Parts 1–4 and 8; campaign decisions E-2 and
-> E-6, requirements R-2 and R-7). Design D-09 is
-> campaign member 8 and an **Asset B builder**:
-> this spec builds and freezes the site-function
-> classification inside its own step 1, and
-> the D-10 specification (the arrow sign; its
-> number is assigned at its own draft) will be
-> drafted against the Asset B contract in §4 of
-> this draft and will pin Asset B's frozen digest
-> at its own freeze.
+> Frozen at the freeze act of 2026-10-21 under
+> the runnable-experiments campaign plan approved
+> by the owner as written on 2026-10-21 (the
+> campaign's Wave 2 freeze wave; campaign
+> decision E-1 covers this spec's OSF contract
+> registration, filed at this freeze —
+> `osf-spec-registration.md`). The OPEN items of
+> `adjudication.md` §5 are resolved on the
+> record in `adjudication.md` §7 (DD-047-8 to
+> DD-047-16); DD-047-1 and DD-047-2 are confirmed
+> as drafted. The AEE lifecycle hooks ran over
+> the register before this freeze
+> (`aee/freeze-aee-note.md`), and the digest in
+> `freeze.json` was computed exactly once over
+> the frozen contract. Execution is
+> **Phase-406**, run under this frozen contract
+> only after the freeze has merged, the OSF
+> registration's approval act has completed, and
+> a separate execution order is given. At the
+> freeze itself no site has been classified, no
+> ledger-sign list has been extracted, and no
+> inscription has been counted by site class.
 >
-> Drafts are pre-approved standing in this
-> program; **the freeze and the execution of
-> Spec 047 are separate later owner acts.** No
-> AEE lifecycle hooks have run on this draft;
-> they are a freeze gate. Nothing in this draft
-> has been run, frozen, registered, or computed:
-> no site has been classified, no ledger-sign
-> list has been extracted, and no inscription
-> has been counted by site class.
+> This spec builds Asset B — the site-function
+> classification — inside its step 1 (campaign
+> E-6). Section 4 is the asset's contract,
+> written for the D-10 specification to be
+> drafted against: the D-10 specification will
+> pin Asset B's frozen digest at its own freeze.
 >
 > **Roif gate (campaign R-7 / Part 8).** This is
 > a Roif-claim experiment. Roif's preprint
@@ -39,15 +44,10 @@
 > surfaced on any public surface, and campaign
 > reporting names this member only as
 > "executed — held under the Roif gate" (§10,
-> §11 limit 1).
->
-> The execution phase number is **unassigned**
-> at this draft. Phase-403 is Spec 039's, the
-> latest allocated on the merged record; Specs
-> 040–043 allocated none at draft. Spec 047
-> allocates its phase number at the freeze act,
-> from the merged record as it then stands
-> (DD-047-6).
+> §11 limit 1). The OSF registration filed at
+> this freeze carries this frozen contract (a
+> design text) only; it carries no result, and
+> filing it clears nothing under the gate.
 
 **Design source:** D-09 in the experiment-design
 packet at PR #195
@@ -64,7 +64,7 @@ RULE-SITE). This spec builds that classification
 as cited data and runs the test the claim's own
 record proposes.
 
-**AI disclosure:** this draft is produced by an
+**AI disclosure:** this specification is produced by an
 AI agent (Muse Spark, via Muse) at the
 direction of Tristen Pierson, per constitution
 §VI.
@@ -149,7 +149,7 @@ mechanical verdict partition fixed before any
 count exists; §7 pre-writes the wording of
 every outcome in that partition.
 
-## 2. Inputs (pinned at this draft; re-asserted at the freeze)
+## 2. Inputs (pinned at draft; re-asserted at the freeze)
 
 | Input | Pin / state |
 |---|---|
@@ -166,6 +166,20 @@ every outcome in that partition.
 (Spec 039's period-assignment product). A period
 label is not a site function; nothing in Asset B
 or in the test reads it.
+
+**Freeze re-assertion (2026-10-21).** Every pin
+in the table above was re-derived at the freeze
+by two independent routes — the contents-API
+raw route and the git-blob route, both at the
+merged record (`main` at `83b6a563`) — and the
+two routes agree byte-for-byte on every file,
+with every hash equal to its pin (the full
+record, including the Spec 027 spec pin
+`7fff5d5a…` carried in the register's
+evidence, is in `freeze.md` §2). The freeze
+verifies the pins in exactly the two-route form
+this spec's drafting required after its pin
+incident (`adjudication.md` §2).
 
 ### 2.1 The Roif source of record for the §5 extraction
 
@@ -494,10 +508,16 @@ built in step 1, before counting, as follows:
   rule. The extraction census — entries sought,
   entered, unmapped — is published with the
   outcome. If **no** entry maps, measure (b)
-  cannot run: the execution proceeds on
-  measure (a) alone only if the freeze has so
-  ruled; at this draft that case is OPEN
-  (adjudication §5).
+  cannot run. **Ruled at the freeze
+  (DD-047-13):** the execution then proceeds on
+  measure (a) alone — the SUPPORTED criterion's
+  ledger clause is vacated for that run only,
+  the vacated clause is stated openly in the
+  outcome record beside the verdict, and the
+  extraction census is published with the
+  outcome as the reason (§6.3 carries the
+  amended partition for that case). The case is
+  never silently absorbed.
 - **Freeze.** The list is committed as
   `specs/047-roif-ledger-distribution/asset-b/ledger-signs.jsonl`
   and frozen in the same step-1 freeze act as
@@ -550,8 +570,9 @@ frozen:
   shuffled across the test-population sites
   **9,999 times**; the p-value is the share of
   shuffles whose R is at least the observed R.
-  The random seed is fixed at this spec's
-  freeze and recorded in the freeze record,
+  The random seed was fixed at this spec's
+  freeze (2026-10-21) at **20261021** and is
+  recorded in the freeze record (DD-047-10),
   before any count exists.
 
 ### 6.3 Criteria (the verdict partition, fixed in advance)
@@ -587,6 +608,16 @@ The partition is exhaustive and mechanical:
 every (R, p, R_ledger) triple lands in exactly
 one outcome, assigned from the recorded
 quantities by any reader.
+
+**The all-UNMAPPED case (DD-047-13).** If the
+§5 extraction maps no entry, R_ledger is not
+computed and the partition runs on (R, p)
+alone: SUPPORTED iff R ≥ 1.5 and p < 0.05;
+NOT SUPPORTED iff R ≤ 1.0 or p ≥ 0.05;
+INCONCLUSIVE in every remaining case. The
+outcome record states that the ledger clause
+was vacated under this ruling and publishes
+the extraction census as the reason.
 
 ### 6.4 Sensitivities (reported; never verdict-changing)
 
@@ -719,12 +750,16 @@ only (§10).
 - **One corpus layer.** The primary test runs
   on the pinned primary layer; its lineage
   posture is as recorded in Specs 027/028.
-  Whether a second site-attributed layer runs
-  as a co-primary or sensitivity is OPEN for
-  the freeze (adjudication §5) — the draft
-  does not silently pluralise the design's
-  "corpus layers" into two verdict-bearing
-  runs.
+  **Ruled at the freeze (DD-047-9):** no second
+  site-attributed layer runs under this
+  contract — not as a co-primary and not as a
+  sensitivity. The pinned layer of §2 is the
+  sole verdict-bearing corpus; the draft does
+  not silently pluralise the design's "corpus
+  layers" into two verdict-bearing runs, and
+  the freeze does not either. A second-layer
+  comparison is a successor act outside this
+  campaign.
 
 ## 9. Reporting obligations
 

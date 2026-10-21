@@ -1,16 +1,20 @@
 # Spec 047 — Tasks
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-21
+> ## PLAN — FROZEN 2026-10-21
 >
 > Adjudication inputs are recorded in
 > `adjudication.md` (the campaign plan approved
 > as written 2026-10-21, the portfolio triage
 > of the same date, and the Roif preprint
 > verification of the same date — drafting
-> only). The freeze and the execution of
-> Spec 047 are separate later owner acts.
-> All execution products are held under the
-> Roif gate (spec §10).
+> inputs; the freeze decisions are §7 of the
+> same record). Frozen at the freeze act of
+> 2026-10-21 in the campaign's Wave 2 freeze
+> wave; execution runs as Phase-406 under the
+> frozen contract, gated as L7 and the
+> execution list below record. All execution
+> products are held under the Roif gate
+> (spec §10).
 
 ## Lifecycle
 
@@ -43,41 +47,60 @@
       as a DRAFT PR and left unmerged for the
       owner's freeze decision, CI state
       reported from the run's own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
-      — not run on this draft).** At the freeze
-      act, run `run_aee.py assess`
-      after_specify, after_plan, and
-      after_tasks over the claim register, under
-      the program's current aee pin (engine
-      1.5.x, re-checked at the freeze rather
-      than assumed); the gate is **pass**, and
-      a stricter outcome blocks the freeze until
-      its named recovery is complete and
-      recorded. Deliberate ordering (the Spec
-      035/038 record): any recovery round
-      changes claim text, and the freeze digest
-      is computed over the recovered register
-      exactly once, at freeze.
-- [ ] **L5 — Freeze-decision items.** The
-      freeze decides the OPEN items of
-      `adjudication.md` §5 (second corpus layer;
-      permutation seed; D-10 against a thin
-      Asset B; spine-only population; the
-      all-UNMAPPED ledger case; OSF registration
-      under E-1 with its R-7 reading confirmed;
-      classification audit), and confirms or
-      openly overturns DD-047-1 and DD-047-2.
-- [ ] **L6 — Freeze.** On the owner's freeze
-      order, with L4 passed and L5 decided:
-      hooks recorded, `freeze.md` finalised,
-      `freeze.json` computed over the recovered
-      register and finalised texts, every spec
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE).**
+      Run at the freeze act, 2026-10-21, under
+      aee 1.5.0 (the `glossa-aee150` venv; the
+      `glossa-aee153` venv stands empty on this
+      machine, recorded in
+      `aee/freeze-aee-note.md`): after_specify
+      cleared in two adjudicated rounds over the
+      recovered register (a loadability recovery
+      0.5-draft → 0.6-draft, then 67 failure
+      modes over 0.6-draft recovered to
+      0.7-draft); after_plan and after_tasks
+      clean at first pass. At every hook: zero
+      correctness failure modes and no claim
+      below the 0.70 threshold (minimum
+      propagated 0.72); the residual records are
+      the 19 FR-2.3 draft-cap records (the
+      DD-047-16 gate reading). Recorded in
+      `aee/freeze-aee-note.md`.
+- [x] **L5 — Freeze-decision items.** Decided
+      on the record in `adjudication.md` §7:
+      DD-047-8 (OSF registration under E-1, R-7
+      reading confirmed), DD-047-9 (second
+      corpus layer unused), DD-047-10 (seed
+      20261021), DD-047-11 (D-10 proceeds under
+      its own gates against a thin Asset B),
+      DD-047-12 (spine-only population
+      confirmed), DD-047-13 (all-UNMAPPED case
+      proceeds on measure (a) alone), DD-047-14
+      (§4.3 verification pass suffices).
+      DD-047-1 and DD-047-2 are CONFIRMED as
+      drafted.
+- [x] **L6 — Freeze.** Executed 2026-10-21:
+      hooks recorded (L4), `freeze.md`
+      finalised, `freeze.json` computed exactly
+      once over the recovered register (0.7-draft)
+      and the finalised freeze texts, every spec
       §2 pin re-asserted against the merged
-      record, and the execution phase number
-      allocated (DD-047-6).
+      record by two independent routes
+      (contents-API raw and git-blob at `main`
+      `83b6a563`; both routes agree on every
+      file — `freeze.md` §2), the freeze tests
+      proven able to fail (mutation → red →
+      restore → green; `freeze.md` §6), and the
+      execution phase allocated as Phase-406
+      (DD-047-15).
 - [ ] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
+      This PR is the item's vehicle; its merge
+      on green CI completes it. Execution below
+      stays gated on the OSF registration's
+      approval act (the parent's approval
+      click; DD-047-8) and a separate execution
+      order.
 
 ## Execution — gated on the freeze and a separate execution order
 

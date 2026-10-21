@@ -13,6 +13,19 @@
 > §7.6); the execution tasks run as Phase-410
 > under the frozen contract, awaiting the OSF
 > registration's verified approval.
+>
+> **Freeze repair (2026-10-21, pre-merge):** the
+> freeze PR's first CI run failed on exactly one
+> test — Spec 029's Phase D register pin
+> (`test_pred_register_document_untouched`),
+> stale since the Wave-1 PRED-2026-012 append.
+> The pin was advanced an eighth time, by name,
+> for that append (insertions-only verified
+> against main), in the test's own recorded
+> form. The repaired file is not a Spec 043
+> digest-covered source, so the freeze digest
+> and the OSF registration (vmcra) are
+> unaffected.
 
 ## Lifecycle
 

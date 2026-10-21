@@ -479,3 +479,93 @@ at both points — byte-identical, asserted.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+---
+
+## Landing record (appended 2026-10-21, after merge)
+
+Execution PR **#297** ("Spec 048 execution
+(Phase-408): STRICT CORPUS NOT PINNABLE at
+gate 0.3"), branch `spec-048-phase408-execution`,
+merged to main as merge commit
+**654253dae950cf73ba1deecabdf9e43321cf7a5a**
+(2026-10-21T19:29:40Z). The branch was based on
+3e75d7b0 and synchronised with main twice
+during the landing window as sibling executions
+landed (Spec 050, PR #296; Spec 047 step 2,
+PR #298; then Specs 050/051, PR #300); each
+conflict was an append collision in LEDGER.md
+(and, in the second sync, the experiment-graph
+registration blocks), resolved as a union of
+both sides, with the pins re-verified on the
+merged content after each resolution and the
+Phase-408 node present by import at the first
+sync (497 nodes). The second and third syncs
+were built through the GitHub git-data API
+after a VM write restriction blocked local git
+object writes; every API-built commit was read
+back and byte-verified (parents, LEDGER.md,
+and the graph file — removing the Phase-408
+block from the merged graph reproduces main's
+bytes exactly).
+
+CI: the decisive run on the final head
+(4b77d677) is run **39660844516** — 7 of 7 jobs
+success from their own conclusions (Backend
+tests (pytest); Frontend tests (Playwright);
+Indus public validation checks; Evidence Graph
+script smoke tests; Shell wrappers ubuntu /
+macos / windows). Earlier genuine 7/7 runs on
+the branch's prior heads: 39655776264
+(654d4f1b) and 39658340395 (f59e4be0). (The
+branch's first head, be718a4b, received no CI
+runs at all because the PR stood in conflict
+with main — the known mechanism — until the
+first sync resolved it.)
+
+Machine records re-verified on main at the
+merge commit by two routes (contents-API raw
+and git-blob decode, agreeing byte-for-byte):
+reports/phase408_results.json SHA-256
+c08e775c7f70af0b95dc1e059a4116c65c5d37f0653d6eec06df198c505ef6f3;
+reports/phase408_step0_report.md SHA-256
+9dca830c4c281b65df7494acea5b3c65600bcfc31135f10d5627bcf3361dbac6;
+the anchors file at df0cf620… and Asset F's
+whole-file SHA-256 at 193a9754… likewise.
+
+Foundation check at the merge commit: **40
+passed / 0 failed / 8 warnings** — the same
+counts as at the run. It was executed on the
+owner's desktop (TRISTEN-DESKTOP) in a fresh
+clone checked out at the merge commit
+(HEAD verified as 654253da…), with the two
+gitignored Holdat CSVs placed from the pinned
+local downloads and hash-verified on the
+desktop before the run (corpus CSV 62d14d2b…,
+roles CSV eb6d3b6a…), because a VM write
+restriction blocked a fresh clone on this
+machine (the owner's standing directive for
+that case); the run's own output reads
+"RESULT: 40 checks passed, 0 failed,
+8 warnings" (FC exit 0).
+
+Terminal outcome, restated in the frozen
+wording: **STRICT CORPUS NOT PINNABLE**
+(gate 0.3). Gates 0.1 (Asset F digest
+assertion, digest ca5fb1b5…) and 0.2
+(membership join — all seven members MAPPED,
+none UNMAPPED) passed with the values recorded
+above; gates 0.4–0.6 were not reached; no
+ending-follower rate was computed; the claim
+stands exactly as recorded. Gate 0.3 was
+evaluated at the execution base (3e75d7b0),
+as the frozen contract requires; material
+that reached main afterwards does not change
+this execution's record and is for a future
+execution order to weigh. This record remains
+internal under the campaign's Roif gate
+(R-7); it is not a publication.
+
+*AI disclosure: appended by an AI agent (Muse
+Fable 5, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.*

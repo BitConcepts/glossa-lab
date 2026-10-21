@@ -104,16 +104,25 @@
 
 ## Execution — gated on the freeze and the campaign's execution pass
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0, part 1** (spec §3 gates
+      Executed 2026-10-21 as Phase-421: script
+      `backend/scripts/phase421_f1_object_join.py`,
+      node `IndusPhase421F1ObjectJoin`,
+      registration verified by import before
+      the run.
+- [x] **E2 — Step 0, part 1** (spec §3 gates
       0.1–0.2): input integrity against the
       freeze pins; original concordance join
       reproduced exactly (5,679 / 2,895 / 2 /
       2,782). Any failure stops the run as
       INVALID before any new join is built.
-- [ ] **E3 — Step 0, part 2** (gates 0.3–0.4):
+      Executed 2026-10-21: gate 0.1 PASS
+      (every §2 and DD-059-9 pin, two routes);
+      gate 0.2 PASS (recorded census
+      reproduced exactly).
+- [x] **E3 — Step 0, part 2** (gates 0.3–0.4):
       the object-ID join built through the
       Phase-130 schema (object identifiers
       only; string identity never a key —
@@ -123,6 +132,19 @@
       failure ends the execution here: the
       census and the §3.5 closure wording are
       its complete record, unscored.
+      Executed 2026-10-21: gate 0.3 PASS
+      (dataset built by the pinned route-(b)
+      construction, 5,018 records; Phase-130
+      validation verdict pass, 0 errors,
+      0 warnings; census 2,899 joined /
+      2,780 unjoined / 0 ambiguous, 2,479
+      distinct objects); **gate 0.4 FAILED —
+      2,899 joined rows (51.05%) against the
+      DD-059-7 bar of ≥ 3,465 rows (61.0%),
+      shortfall 566 rows; the execution
+      closed CLOSED AT STEP 0 — JOIN GATE
+      NOT MET**, with the census and the
+      §3.5 wording as its complete record.
 - [ ] **E4 — Primary** (spec §4, gate-passed
       only): the frozen Phase-136 flow on the
       enlarged set — eligibility and
@@ -133,7 +155,9 @@
       (descriptive), and both covariate
       comparisons (joined vs unjoined;
       original joined set vs added rows).
-- [ ] **E5 — Outcome:** the §5 record in the
+      **NOT REACHED** — gate 0.4 failed at
+      E3; no F1 quantity was computed.
+- [x] **E5 — Outcome:** the §5 record in the
       pre-written wording for the outcome
       class that fired — results JSON and
       report under the headline rules (lineage
@@ -148,6 +172,23 @@
       LEDGER entry; anchors asserted
       byte-identical before and after;
       foundation check reported as measured.
+      Delivered 2026-10-21 in the closure form
+      the gate outcome prescribes
+      (`outcome.md` in this directory — the
+      dated replication append to the claim's
+      record; §5 provides no "on the joined
+      subset" re-statement for a gate closure
+      and the §3.5 wording states the scope is
+      unchanged; no §4 quantities, LOSO table,
+      or covariate comparisons exist to
+      report), with
+      `reports/phase421_results.json`,
+      `reports/phase421_join_census.json`,
+      and `reports/phase421_report.md`;
+      anchors asserted byte-identical before
+      and after; foundation check reported
+      as measured at the merge (landing
+      append to `outcome.md`).
 
 ---
 

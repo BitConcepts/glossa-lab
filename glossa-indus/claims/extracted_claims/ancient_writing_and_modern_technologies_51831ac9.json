@@ -1,7 +1,7 @@
 {
   "document_id": "ancient_writing_and_modern_technologies_51831ac9",
   "title": "",
-  "extraction_date": "2026-10-13T12:11:32.019423",
+  "extraction_date": "2026-10-21T15:29:24.790855",
   "total_claims": 4,
   "auto_extracted": 4,
   "manually_curated": 0,
@@ -15,20 +15,20 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-13T12:11:31.937804",
+      "extracted_at": "2026-10-21T15:29:24.384311",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0001",
       "stage_as_of": "2026-10-12",
       "stage_history": [
         {
-          "from_stage": null,
-          "to_stage": "created",
-          "actor": "spec029-phase-d-restaging-migration",
-          "timestamp": "2026-10-12",
-          "evidence_refs": [
+        "from_stage": null,
+        "to_stage": "created",
+        "actor": "spec029-phase-d-restaging-migration",
+        "timestamp": "2026-10-12",
+        "evidence_refs": [
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0001"
           ],
-          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_sign_val_0001; no pre-existing field altered."
+        "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_sign_val_0001; no pre-existing field altered."
         }
       ],
       "verified_unexplained": false,
@@ -43,6 +43,19 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book."
+      },
+      "first_check": {
+        "spec": "055",
+        "phase": "Phase-414",
+        "date": "2026-10-21",
+        "actor": "spec055-phase414-execution",
+        "kind": "first-check (identification + numeral-behaviour test)",
+        "identification": "IDENTIFIED \u2014 the source document's sign list is named from its own text as the extended Wells (2011, 2015) sign list of 702 distinct signs, and the drawn sign its number 900 labels is matched by drawn form to crosswalk registry row P154 (Mahadevan 287); the registry's W900 cell on that row was not used as the identification (F055-C07). Recovery record: specs/055-sign900-numeral/source-table-recovery.json (schema glossa.source-table-recovery/1).",
+        "outcome": "NOT NUMERAL-LIKE",
+        "wording": "The sign that Fuls's paper numbers 900, identified in Spec 055's recovery record as P154, does not behave as a numeral sign behaves in the pinned strict corpus: on 3 of the three frozen measures it sits inside the range of frequency-matched ordinary signs. The numeral reading the fragment carries is contradicted at the behaviour stage. The identification itself stands as recovered; what fails is the behaviour the reading predicts.",
+        "record": "specs/055-sign900-numeral/outcome.md",
+        "delivery": "specs/055-sign900-numeral/source-table-recovery.json",
+        "note": "No outcome of Spec 055 establishes the value six. Design D-16 does not join the campaign on this recovery (decision E-7); the sign-700 statements are located by locator only in the recovery record."
       }
     },
     {
@@ -54,20 +67,20 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-13T12:11:31.937854",
+      "extracted_at": "2026-10-21T15:29:24.384376",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0002",
       "stage_as_of": "2026-10-12",
       "stage_history": [
         {
-          "from_stage": null,
-          "to_stage": "created",
-          "actor": "spec029-phase-d-restaging-migration",
-          "timestamp": "2026-10-12",
-          "evidence_refs": [
+        "from_stage": null,
+        "to_stage": "created",
+        "actor": "spec029-phase-d-restaging-migration",
+        "timestamp": "2026-10-12",
+        "evidence_refs": [
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0002"
           ],
-          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_sign_val_0002; no pre-existing field altered."
+        "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_sign_val_0002; no pre-existing field altered."
         }
       ],
       "verified_unexplained": false,
@@ -93,20 +106,20 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-13T12:11:31.937864",
+      "extracted_at": "2026-10-21T15:29:24.384383",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0003",
       "stage_as_of": "2026-10-12",
       "stage_history": [
         {
-          "from_stage": null,
-          "to_stage": "created",
-          "actor": "spec029-phase-d-restaging-migration",
-          "timestamp": "2026-10-12",
-          "evidence_refs": [
+        "from_stage": null,
+        "to_stage": "created",
+        "actor": "spec029-phase-d-restaging-migration",
+        "timestamp": "2026-10-12",
+        "evidence_refs": [
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_sign_val_0003"
           ],
-          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_sign_val_0003; no pre-existing field altered."
+        "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_sign_val_0003; no pre-existing field altered."
         }
       ],
       "verified_unexplained": false,
@@ -132,30 +145,30 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-13T12:11:31.981035",
+      "extracted_at": "2026-10-21T15:29:24.545829",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
       "stage_as_of": "2026-10-12",
       "stage_history": [
         {
-          "from_stage": null,
-          "to_stage": "created",
-          "actor": "spec029-phase-d-restaging-migration",
-          "timestamp": "2026-10-12",
-          "evidence_refs": [
+        "from_stage": null,
+        "to_stage": "created",
+        "actor": "spec029-phase-d-restaging-migration",
+        "timestamp": "2026-10-12",
+        "evidence_refs": [
             "specs/029-tao-claim-lifecycle/reclassification-ledger.json:ancient_writing_and_modern_technologies_51831ac9_statisti_0004"
           ],
-          "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_statisti_0004; no pre-existing field altered."
+        "reason": "OD-1 re-staging migration (Spec 029 Phase D, 2026-10-12): stage replayed from frozen reclassification ledger entry ancient_writing_and_modern_technologies_51831ac9_statisti_0004; no pre-existing field altered."
         }
       ],
       "verified_unexplained": false,
       "proposition_fingerprint": "a4874349e0cc0ba23b711f10c78f60372639c2dc6f352165b48d4a9e44272469",
       "evidence_instances": [
         {
-          "claim_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb_statisti_0001",
-          "source_document_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb",
-          "source_file": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb",
-          "record": {
+        "claim_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb_statisti_0001",
+        "source_document_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb",
+        "source_file": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb",
+        "record": {
             "claim_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb_statisti_0001",
             "source_document_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb",
             "claim_type": "statistical_claim",
@@ -186,10 +199,10 @@
           }
         },
         {
-          "claim_id": "positional_analysis_of_indus_signs_a2bedc93_statisti_0001",
-          "source_document_id": "positional_analysis_of_indus_signs_a2bedc93",
-          "source_file": "positional_analysis_of_indus_signs_a2bedc93",
-          "record": {
+        "claim_id": "positional_analysis_of_indus_signs_a2bedc93_statisti_0001",
+        "source_document_id": "positional_analysis_of_indus_signs_a2bedc93",
+        "source_file": "positional_analysis_of_indus_signs_a2bedc93",
+        "record": {
             "claim_id": "positional_analysis_of_indus_signs_a2bedc93_statisti_0001",
             "source_document_id": "positional_analysis_of_indus_signs_a2bedc93",
             "claim_type": "statistical_claim",
@@ -220,10 +233,10 @@
           }
         },
         {
-          "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
-          "source_document_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
-          "source_file": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
-          "record": {
+        "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
+        "source_document_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
+        "source_file": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
+        "record": {
             "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
             "source_document_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
             "claim_type": "statistical_claim",
@@ -254,10 +267,10 @@
           }
         },
         {
-          "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
-          "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
-          "source_file": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
-          "record": {
+        "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
+        "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+        "source_file": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+        "record": {
             "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
             "source_document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
             "claim_type": "statistical_claim",
@@ -298,6 +311,19 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "There is no claim here to explain. Phase-104's evaluation says it exactly: an automatic-extraction fragment with no falsification condition and no stated proposition - not evaluable as stated. The extraction kept the heading of a results section and lost the results. Five source documents had such a section; whatever each of them found is not in this record."
+      },
+      "disposition": {
+        "spec": "057",
+        "phase": "Phase-419",
+        "date": "2026-10-21",
+        "actor": "spec057-phase419-execution",
+        "kind": "disposition (spec section 7.2)",
+        "form": "superseded",
+        "wording": "Superseded by the recovered claims it pointed at: fuls2013_positional_analysis_057_recovered_0001 (from S-3, Fuls 2013, 'Positional Analysis of Indus Signs') and wells2015_appendix_ii_positional_analysis_057_recovered_0001 (from S-4, Wells 2015, Appendix II), each entering the claim set at the created stage, unchecked, through the intake records in specs/057-five-sources-heading/. Accounting (Phase-419, 2026-10-21): r=2 CLAIM RECOVERED (S-3, S-4), e=1 PASSAGE EMPTY (S-2), u=2 SOURCE UNLOCATED with sub-state HEADING NOT PRESENT IN HELD TEXT (S-1, S-5) — headline class C, PARTIAL RECOVERY WITH UNLOCATED SOURCES. The unblocking act for each unlocated source is named on its row in specs/057-five-sources-heading/outcome.md. This act recovered what five passages state. It checked none of it.",
+        "record": "specs/057-five-sources-heading/outcome.md",
+        "results": "reports/phase419_results.json",
+        "results_sha256": "d30fa456071a57a38b39d1b6e2e1ea2fff7aa4660d2aa2af433fa94e64fcd4f9",
+        "note": "Appended by the Spec 057 execution under spec section 7.2 (r >= 1: superseded). No pre-existing field of this record was altered; removing this appended entry reproduces the pre-act file byte-identically. The record's status and stage are unchanged."
       }
     }
   ],

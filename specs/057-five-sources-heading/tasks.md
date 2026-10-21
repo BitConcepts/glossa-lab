@@ -81,30 +81,30 @@
       (DD-057-16); OSF contract registration
       filed under E-1 (DD-057-13; filing record
       in `osf-spec-registration.md`).
-- [ ] **L7 — Freeze PR merged**, house gates
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
 
 ## Execution — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0** (spec §3): input
+- [x] **E2 — Step 0** (spec §3): input
       integrity against the freeze pins;
       source-set integrity against the
       recorded merge; gate verdicts recorded
       before any passage is read. A failure
       closes the run at step 0 in the class
       named, with no source accounted.
-- [ ] **E3 — Location** (spec §§4–5): for
+- [x] **E3 — Location** (spec §§4–5): for
       each source in §2.1 order, the stated
       search where the pinned cleaned text is
       absent; heading location under the
       heading-form rule; delimitation; the
       verbatim passage artifact with its
       SHA-256 and locator on the source's row.
-- [ ] **E4 — Accounting** (spec §6): exactly
+- [x] **E4 — Accounting** (spec §6): exactly
       one outcome per source — CLAIM
       RECOVERED (recovered claim through
       normal intake at the created stage, per
@@ -112,7 +112,7 @@
       as evidence), or SOURCE UNLOCATED
       (sub-state, full search log, named
       unblocking act). Five rows, no fewer.
-- [ ] **E5 — Outcome:** the §8 record —
+- [x] **E5 — Outcome:** the §8 record —
       accounting table, passage artifacts,
       intake records, the §7 headline class
       with its counts shown, the §7.2

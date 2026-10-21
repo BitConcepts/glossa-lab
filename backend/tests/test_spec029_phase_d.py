@@ -448,12 +448,25 @@ def test_pred_register_document_untouched():
     # (the registry-frame successor to
     # PRED-2026-007, governed by Spec 043;
     # insertions only, no existing entry altered).
+    # It was advanced a ninth time, by name, for
+    # the owner-ordered execution append of
+    # 2026-10-21 under Spec 043 / Phase-410: the
+    # dated section 6 outcome entry recording
+    # PRED-2026-012's step-0 closure at check
+    # 0.3 (PROVENANCE - CANNOT BE RUN AS WRITTEN,
+    # unscored; the section 3 entry left standing
+    # with its Outcome PENDING, and
+    # PRED-2026-007's standing PARTIALLY
+    # CONFIRMED untouched; insertions only, no
+    # existing entry altered), as Spec 043's
+    # register-handling claim (F043-C14)
+    # prescribes for the authorised change.
     # Any further drift from this hash is
     # unauthorised.
     digest = hashlib.sha256(
         (_REPO_ROOT / "docs" / "PREDICTION_REGISTER.md").read_bytes()
     ).hexdigest()
-    assert digest == "254ccf039cf04cf2882e04c8658381cc05573163651ed5d478697058aa424984"
+    assert digest == "a8531efd96e9fc24efeed5b9816146dc4cd6b60689c8afac56568e17889909c1"
 
 
 # ── Script contract: shapes, states, idempotency ─────────────────────────

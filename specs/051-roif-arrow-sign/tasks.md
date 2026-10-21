@@ -1,16 +1,20 @@
 # Spec 051 — Tasks
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-21
+> ## PLAN — FROZEN 2026-10-21
 >
 > Adjudication inputs are recorded in
 > `adjudication.md` (the campaign plan approved
 > as written 2026-10-21, the portfolio triage
 > of the same date, and the Roif preprint
 > verification of the same date — drafting
-> only). The freeze and the execution of
-> Spec 051 are separate later owner acts.
-> This spec's freeze follows Spec 047's freeze
-> in dependency order. All execution products
+> inputs; the freeze decisions are §7 of the
+> same record). Frozen at the freeze act of
+> 2026-10-21 in the campaign's Wave 2 freeze
+> wave; execution runs as Phase-409 under the
+> frozen contract, gated as L7 and the
+> execution list below record. This spec's
+> freeze follows Spec 047's freeze in
+> dependency order. All execution products
 > are held under the Roif gate (spec §9).
 
 ## Lifecycle
@@ -47,48 +51,65 @@
       as a DRAFT PR and left unmerged for the
       owner's freeze decision, CI state
       reported from the run's own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
-      — not run on this draft).** At the freeze
-      act, run `run_aee.py assess`
-      after_specify, after_plan, and
-      after_tasks over the claim register, under
-      the program's current aee pin (engine
-      1.5.x, re-checked at the freeze rather
-      than assumed); the gate is **pass**, and
-      a stricter outcome blocks the freeze until
-      its named recovery is complete and
-      recorded. Deliberate ordering (the Spec
-      035/038 record): any recovery round
-      changes claim text, and the freeze digest
-      is computed over the recovered register
-      exactly once, at freeze.
-- [ ] **L5 — Freeze-decision items.** The
-      freeze decides the OPEN items of
-      `adjudication.md` §5 (OSF registration
-      under E-1 with its R-7 reading confirmed;
-      permutation and class-addition seeds; the
-      thin-asset reading DD-051-5, confirmed
-      consistently with Spec 047's freeze; the
-      Fisher exact test's status; the second
-      corpus layer's role; the contract-drift
-      check against Spec 047's frozen §4; the
-      counting-layer export form), and confirms
-      or openly overturns DD-051-1, DD-051-2,
-      DD-051-3, and DD-051-8.
-- [ ] **L6 — Freeze.** On the owner's freeze
-      order, with L4 passed and L5 decided, and
-      Spec 047 already frozen: hooks recorded,
-      `freeze.md` finalised, `freeze.json`
-      computed over the recovered register and
-      finalised texts, every spec §2 pin
-      re-asserted against the merged record,
-      **Asset B's digest taken as this spec's
-      pin from Spec 047's freeze record and
-      step-1 outcome record**, and the execution
-      phase number allocated (DD-051-6).
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE).**
+      Run at the freeze act, 2026-10-21, under
+      aee 1.5.0 (the `glossa-aee150` venv):
+      after_specify cleared in two adjudicated
+      rounds over the recovered register (a
+      loadability recovery 0.5-draft → 0.6-draft,
+      then 75 failure modes over 0.6-draft
+      recovered to 0.7-draft); after_plan and
+      after_tasks clean at first pass. At every
+      hook: zero correctness failure modes and
+      no claim below the 0.70 threshold
+      (minimum propagated 0.72); the residual
+      records are the 20 FR-2.3 draft-cap
+      records (the DD-051-16 gate reading).
+      Recorded in `aee/freeze-aee-note.md`.
+- [x] **L5 — Freeze-decision items.** Decided
+      on the record in `adjudication.md` §7:
+      DD-051-9 (OSF registration under E-1, R-7
+      reading confirmed), DD-051-10 (seed
+      20261021 for both permutation tests),
+      DD-051-11 (Fisher exact test reported, not
+      verdict-bearing), DD-051-12 (second corpus
+      layer unused), DD-051-13 (counting-layer
+      identify/export/pin posture confirmed),
+      DD-051-14 (Asset B pin timing: contract
+      anchor plus step-1 outcome record as the
+      fixed pin source; gate 0.2 asserts at
+      execution), and the contract-drift check
+      against Spec 047's frozen §4 (no drift).
+      DD-051-1, DD-051-2, DD-051-3, DD-051-5, and
+      DD-051-8 are CONFIRMED as drafted;
+      DD-051-5's consistency with Spec 047's
+      DD-047-11 is recorded in §7.
+- [x] **L6 — Freeze.** Executed 2026-10-21:
+      hooks recorded (L4), `freeze.md` finalised,
+      `freeze.json` computed exactly once over
+      the recovered register (0.7-draft) and the
+      finalised freeze texts, every spec §2 pin
+      re-asserted against the merged record by
+      two independent routes (contents-API raw
+      and git-blob at `main` `0cf9cd2f`; both
+      routes agree on every file — `freeze.md`
+      §2), the freeze tests proven able to fail
+      (mutation → red → restore → green;
+      `freeze.md` §6), **Asset B anchored on
+      Spec 047's freeze digest with its pin
+      source fixed as Spec 047's step-1 outcome
+      record** (DD-051-14; no byte-digest exists
+      at this freeze), and the execution phase
+      allocated as Phase-409 (DD-051-15).
 - [ ] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
+      This PR is the item's vehicle; its merge
+      on green CI completes it. Execution below
+      stays gated on the OSF registration's
+      approval act (the parent's approval
+      click; DD-051-9) and a separate execution
+      order.
 
 ## Execution — gated on the freeze and a separate execution order
 
@@ -98,9 +119,12 @@
 - [ ] **E2 — Step 0, part 1** (spec §3 gates
       0.1–0.3): input integrity against the
       freeze pins; Asset B digest assertion
-      (a mismatch closes the run as INVALID, an
-      unfrozen or unsound asset as NOT-RUN, per
-      the §6 wordings); Asset B form check and
+      against the digest recorded in Spec 047's
+      step-1 outcome record (the pin source
+      fixed at the freeze, DD-051-14; a mismatch
+      closes the run as INVALID, an unfrozen or
+      unsound asset as NOT-RUN, per the §6
+      wordings); Asset B form check and
       testable-set derivation. Any failure stops
       the run before a class is read for a test.
 - [ ] **E3 — Step 0, part 2** (gates 0.4–0.5):
@@ -123,8 +147,9 @@
 - [ ] **E5 — Primary and rival score** (spec
       §§5.2–5.4): per-site shares, R, the
       9,999-shuffle permutation test at the
-      freeze-recorded seed, the Fisher exact
-      test reported beside it, R_city, both
+      freeze-recorded seed 20261021, the Fisher
+      exact test reported beside it (not
+      verdict-bearing, DD-051-11), R_city, both
       regression fits with the class-addition
       outcome (ADDS / SIZE-ONLY / NEITHER) and
       the text-length description; verdict by

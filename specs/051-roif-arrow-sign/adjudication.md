@@ -496,6 +496,241 @@ Each is labelled **DECIDED-BY-DRAFT**:
    freeze in execution order (asset builds,
    then dependent executions).
 
+## 7. Freeze decisions — 2026-10-21
+
+The freeze act of 2026-10-21 decided the OPEN
+items of §5 as follows. Every §2 pin was
+re-asserted at the freeze against the merged
+record (`main` at
+`0cf9cd2f339328007c01b7909b77282e778e25e2`,
+Spec 047's freeze merge) by two independent
+routes — the contents-API raw route and the
+git-blob route — agreeing byte-for-byte on
+every file, and every recomputed hash equals
+its pin: claim file `bc22d6f0…`, Phase-104
+evaluation `2d0b83e8…`, Holdat roles file
+`3f1c24ed…`, gazetteer spine `5ac76a30…`,
+anchors file `df0cf620…`, and the five-site
+distribution file of defect 1 `fc05e552…`.
+The §1 census stands as pinned: 193 total,
+per-site 75 / 52 / 16 / 14 / 11 / 10 / 10 / 3 / 2
+(Mohenjo-daro / Harappa / Dholavira / Lothal /
+Surkotada / Kalibangan / Chanhu-daro /
+Banawali / Rakhigarhi), from the Phase-104
+record, with the roles file's M391 count (193)
+agreeing.
+
+### DD-051-9 — OSF registration (OPEN item 1)
+
+**DECIDED at freeze: yes.** This spec files
+its own OSF contract registration at the
+freeze under campaign decision E-1, following
+the Specs 036–039 and 047 pattern. The Roif-gate
+reading is **confirmed**: the registration
+carries the frozen *contract* (a design text)
+only — no result — and clears nothing under
+R-7. The filing record is
+`osf-spec-registration.md`, completed by
+append after filing. Execution awaits the
+registration's approval act and a separate
+execution order.
+
+### DD-051-10 — The seeds (OPEN item 2)
+
+**DECIDED at freeze: the seed is 20261021**
+for both permutation tests — the §5.2 label
+shuffle and the §5.3 class-addition shuffle.
+Spec §5 fixes the shuffle counts (9,999) and
+the level (5%); the seed value is fixed here,
+recorded in the freeze record (`freeze.json`),
+and carried into the frozen spec text and
+F051-C14's and F051-C15's register entries —
+before any share exists. The value is the
+freeze date as an integer, as in Spec 047.
+
+### DD-051-11 — The Fisher exact test (OPEN item 4)
+
+**CONFIRMED at freeze: reported, not
+verdict-bearing.** The draft position stands:
+the Fisher exact test on the pooled 2 × 2 table
+is computed and reported beside the permutation
+result; no verdict clause turns on it
+(F051-C14). The partition of §5.4 is unchanged.
+
+### DD-051-12 — The second corpus layer (OPEN item 5)
+
+**DECIDED at freeze: unused.** The
+Yajnadevam-compiled layer is not consumed
+under this contract — not as a co-primary and
+not as a crosswalked sensitivity. Its numbering
+is not the M-numbering the §1 census is stated
+in (§3, disagreement 4); a comparison against
+it is a successor act outside this campaign.
+Spec §2 and §7 carry the ruling in the frozen
+text.
+
+### DD-051-13 — The counting-layer export form (OPEN item 7)
+
+**CONFIRMED at freeze: the draft's
+identify/export/pin posture stands.** The
+counting layer is the Holdat layer Phase-104
+counted, identified and exported in full at
+step 0 and pinned by digest in the step-0
+record under gate 0.4, with the exact §1 census
+reproduction (193 total; per-site counts as
+above) as its identity test. The freeze names
+no file pin and no separate canonical export
+form: the step-0 record must state the export's
+file form and sort order as produced, and the
+digest plus the census reproduction together
+pin the layer for any later reader. If the
+layer cannot be uniquely identified, cannot be
+exported whole, or the census does not
+reproduce, the run closes INVALID as drafted.
+F051-C12's boundary carries the ruling.
+
+### DD-051-14 — Asset B pin timing (the coordinator ruling)
+
+**DECIDED at freeze (coordinator ruling,
+recorded here): the pin is taken at execution,
+from a source fixed at this freeze.** Asset B
+is built at Spec 047's **execution** step 1
+(Wave 3 group 1), so its byte-digest does not
+exist at this freeze and none is stated. This
+freeze therefore: (a) quotes Spec 047's freeze
+digest
+`8501feabb7beee621e99ae48529e5a74c0788fb0619ac49c615912e13914cdc7`
+as the **contract anchor**; (b) fixes the pin
+**source** as Spec 047's step-1 outcome record
+— `specs/047-roif-ledger-distribution/outcome.md`,
+the outcome append in Spec 047's directory that
+its frozen §4.6 (digest recorded in the step-1
+outcome record, with row count, testable count,
+and per-status counts) and §9 (the outcome
+append in this directory) specify; and (c)
+rules that gate 0.2 asserts the Asset B
+byte-digest at **execution** step 0 against
+that record — mismatch closes the run as
+INVALID, an unfrozen or unsound asset closes
+it as NOT-RUN by dependency closure, exactly
+as drafted in spec §3 and §6. Fail-closed
+semantics are unchanged. This ruling supersedes
+the draft's expectation (adjudication §1,
+claim F051-C10 as drafted) that the digest
+would be taken into this freeze record itself:
+that expectation rested on reading Spec 047's
+§4.6 freeze-record language as if the asset
+froze inside Spec 047's freeze act; it freezes
+inside its execution step 1 instead, and the
+draft's dependency-order sentence is satisfied
+by the anchor-plus-source form recorded here.
+Spec §§2, 3, 4.1, and 6 and F051-C10 carry the
+ruling in the frozen text.
+
+### Contract-drift check (OPEN item 6)
+
+**PERFORMED at freeze: no drift.** Spec 047's
+merged §4 was re-read in full on `main` at
+`0cf9cd2f…` (its frozen spec.md, SHA-256
+`1a18dac0…`, byte-identical to the copy Spec
+047's freeze worked from) and compared with
+the contract restated in spec §4: the file form
+and seven fields (§4.1), the six classes and
+the §4.2 groupings fixed for D-10's use, the
+two-source agreement and testable rules
+(§§4.3–4.4), the freeze point and digest
+pinning, and the §4.6 consumer rule all match
+the draft restatement exactly, subject only to
+DD-051-14's pin-timing form. Nothing was
+absorbed silently and no re-drafting is
+required.
+
+### DD-051-15 — Execution phase number (per DD-051-6)
+
+**DECIDED at freeze: Phase-409.** Allocated at
+the freeze act in the campaign's freeze-wave
+sequence (Spec 047's Phase-406 precedes it on
+the merged record). Nothing substantive turns
+on the number.
+
+### DD-051-16 — The AEE gate reading
+
+**DECIDED at freeze: the Spec 038 DD-038-10 /
+Spec 037 DD-037-9 reading governs.** At every
+lifecycle hook the aee 1.5.0 assessment carries
+zero correctness failure modes and no claim
+below the 0.70 threshold; its outcome word
+reads "iterate" solely because each of the 20
+claims carries an FR-2.3 draft-cap record. That
+cap is a lifecycle fact about a freeze-time
+register, not a correctness failure and not a
+bar to freezing. The rounds (a loadability
+recovery, then 75 failure modes over the
+recovered text, then draft-cap records only)
+and artifacts are recorded in
+`aee/freeze-aee-note.md`.
+
+### Confirmations
+
+- **DD-051-1 is CONFIRMED as drafted:** the
+  §4.2 groupings carry the primary ratio; the
+  design's literal comparison (R_city) carries
+  a verdict clause in both directions.
+- **DD-051-2 is CONFIRMED as drafted:**
+  "great-city" is the administrative class,
+  never a size set; the five-largest description
+  is a sensitivity, not a class.
+- **DD-051-3 is CONFIRMED as drafted:**
+  permutation non-rejection at a high ratio is
+  INCONCLUSIVE here, not NOT SUPPORTED.
+- **DD-051-5 is CONFIRMED as drafted, and is
+  consistent with Spec 047's freeze:**
+  Spec 047's DD-047-11 resolved the same
+  question from the builder side as "D-10
+  proceeds under its own gates against a
+  frozen-but-thin Asset B; closes not-run only
+  if Asset B fails to build or is unsound."
+  This spec's frozen text matches that reading
+  exactly: gate 0.6's floors (≥3 testable
+  gateway/border carriers of M391; neither side
+  empty) are this test's whole thinness rule,
+  Spec 047's 12-testable-site gate is not
+  imported (spec §3 gate 0.6, §5.4; F051-C17),
+  and NOT-RUN by dependency closure fires only
+  where Asset B has not frozen or has been
+  shown unsound (gate 0.2; §6 wording; §12).
+  The two freezes land on one answer, recorded
+  in both records, as §5 item 3 required.
+- **DD-051-8 is CONFIRMED as drafted:** the
+  rival regressions weight sites equally.
+
+## 8. What the freeze decision decided (summary)
+
+1. This contract is frozen (digest in
+   `freeze.md` / `freeze.json`), with every §2
+   pin re-asserted by the two-route verification,
+   the Asset B contract anchored on Spec 047's
+   freeze digest with its pin source fixed
+   (DD-051-14), and the execution phase allocated
+   as Phase-409.
+2. The §5 OPEN items are decided as DD-051-9 to
+   DD-051-14 above; DD-051-15 allocates the
+   phase; DD-051-16 records the AEE gate reading;
+   DD-051-1, DD-051-2, DD-051-3, DD-051-5, and
+   DD-051-8 are confirmed, with DD-051-5's
+   consistency with Spec 047's DD-047-11
+   recorded.
+3. Nothing else: the claim
+   `indus_valley_script_deciphered_from_myth_65ff0a26_manual_003`
+   stands UNTESTED, Asset B is unbuilt, the
+   counting layer is unexported, and nothing has
+   been counted. Execution is a separate act,
+   gated on this freeze merging, the OSF
+   registration's approval act, and a separate
+   execution order. Under the campaign, this
+   spec's execution follows Spec 047's step-1
+   asset freeze in execution order.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

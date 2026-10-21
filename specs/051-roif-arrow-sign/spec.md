@@ -1,34 +1,42 @@
 # Spec 051 — Roif: the Arrow Sign — Border Marker, or City Sign? (Design D-10)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-21
+> ## FROZEN — 2026-10-21
 >
-> Drafted under the runnable-experiments campaign
+> Frozen under the runnable-experiments campaign
 > plan approved by the owner AS WRITTEN on
-> 2026-10-21
-> (`~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md`,
-> Parts 1–4 and 8; campaign decisions E-2 and
+> 2026-10-21 (campaign decisions E-1, E-2 and
 > E-6, requirements R-2 and R-7). Design D-10 is
 > campaign member 9 and a **consumer of Asset B**:
 > the site-function classification built and
 > frozen inside Spec 047 (design D-09) at its
-> step 1. This spec does not build, re-derive, or
-> repair Asset B; it names Asset B by the digest
-> Spec 047's freeze records, taken as this spec's
-> pin at its own freeze (§2, §4), and re-asserts
-> that digest at its step 0 (§3, gate 0.2). A
-> mismatch stops this spec as **INVALID**, in the
-> pre-written wording of §6 — Spec 047 §4.6's
-> consumer rule, carried here in advance.
->
-> Drafts are pre-approved standing in this
-> program; **the freeze and the execution of
-> Spec 051 are separate later owner acts.** No
-> AEE lifecycle hooks have run on this draft;
-> they are a freeze gate. Nothing in this draft
-> has been run, frozen, registered, or computed:
-> no site class has been read for a test, no
-> arrow-sign share has been calculated, and the
-> counting layer has not been exported.
+> execution step 1. This spec does not build,
+> re-derive, or repair Asset B. Its contract
+> anchor is Spec 047's freeze digest
+> `8501feabb7beee621e99ae48529e5a74c0788fb0619ac49c615912e13914cdc7`;
+> the Asset B byte-digest does not exist at this
+> freeze, because the asset is built later, at
+> Spec 047's execution step 1 (Wave 3 group 1),
+> so no byte-digest is stated here. The pin
+> **source** is fixed instead: Spec 047's step-1
+> outcome record,
+> `specs/047-roif-ledger-distribution/outcome.md`
+> (the outcome append in Spec 047's directory
+> that its §4.6 freeze-point rule and §9
+> reporting obligations specify), which will
+> record the asset's SHA-256 digest with its row
+> count, testable count, and per-status counts.
+> Execution re-asserts that digest at its step 0
+> (§3, gate 0.2): a mismatch stops this spec as
+> **INVALID**, and an unfrozen or unsound asset
+> closes it as **NOT-RUN** by dependency closure
+> — Spec 047 §4.6's consumer rule, carried here
+> in advance, with its fail-closed semantics
+> unchanged (freeze ruling DD-051-14,
+> `adjudication.md` §7). The freeze decisions
+> DD-051-9 to DD-051-16 are recorded in
+> `adjudication.md` §7; DD-051-1, DD-051-2,
+> DD-051-3, DD-051-5, and DD-051-8 are confirmed
+> there as drafted.
 >
 > **Roif gate (campaign R-7 / Part 8).** This is
 > a Roif-claim experiment. Roif's preprint
@@ -44,10 +52,14 @@
 > "executed — held under the Roif gate" (§9,
 > §10 limit 1).
 >
-> The execution phase number is **unassigned**
-> at this draft. It is allocated at the freeze
-> act, from the merged record as it then stands
-> (DD-051-6).
+> Execution runs as **Phase-409** (allocated at
+> this freeze, DD-051-15). Nothing in this
+> contract has been run or computed: no site
+> class has been read for a test, no arrow-sign
+> share has been calculated, and the counting
+> layer has not been exported. Execution awaits
+> this freeze merging, the OSF registration's
+> approval act, and a separate execution order.
 
 **Design source:** D-10 in the experiment-design
 packet at PR #195
@@ -195,16 +207,18 @@ the wording of every outcome in that partition.
 | Phase-104 claims evaluation (`glossa-indus/reports/phase104_claims_evaluation.json`) — the claim's UNTESTED / RULE-SITE record, carrying the nine-site M391 Holdat distribution (75 / 52 / 16 / 14 / 11 / 10 / 10 / 3 / 2; total 193) and the CASE_MARKER_SUFFIX role note | SHA-256 `2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d` (recomputed at this draft by both routes; matches Spec 047's corrected pin for the same file) |
 | Holdat sign-roles file (`outputs/analysis/holdatllc_sign_roles.json`) — M391: `holdatllc_role` CASE_MARKER_SUFFIX, `mapped_to` TERMINAL, count 193, `is_ending` true | SHA-256 `3f1c24ed03b6393c4d222b4794d27cce9cbeaf8e30938dd4e0db0fddadd2d08f` (recomputed at this draft by both routes) |
 | Gazetteer spine (`data/movement/gazetteer_rows.jsonl`) — Spec 027 Stage 0; Asset B's universe: 36 source-assertion rows, **30 distinct `program_site_id` clusters** | SHA-256 `5ac76a3031121a61fa39f87b1d2760855374d171ddd036988fee2820dca9b8b6` (recomputed at this draft by both routes; matches the pins Specs 044/047 carry) |
-| **Asset B** — the site-function classification, built and frozen inside Spec 047's step 1 under Spec 047 §4's contract: file `specs/047-roif-ledger-distribution/asset-b/site-functions.jsonl`, exactly 30 rows, fields `program_site_id` / `site_name_as_published` / `status` / `primary_class` / `source_a` / `source_b` / `notes` | **No digest exists at this draft, deliberately.** Asset B does not exist until Spec 047's step 1 builds and freezes it. This spec's **freeze record takes Asset B's SHA-256 digest** — computed over the file bytes as committed, as recorded in Spec 047's freeze record and repeated in its step-1 outcome record (Spec 047 §4.6) — as this spec's pin, and execution re-asserts it at gate 0.2 before any class is read for a test. See §4. |
-| Counting layer of record — the Holdat corpus layer Phase-104 counted, carrying per-inscription site attribution and sign sequences in M-numbering, "as held in the database" (the posture of Specs 044/048) | **No file pin is stated at this draft, deliberately.** The repository holds Holdat-derived files, but the one per-symbol site-distribution file on `main` (`data/raw/other_sites/holdatllc_core_symbol_site_distribution.csv`) covers five sites only and carries **no M391 row** — verified at this draft (adjudication.md §2, defect 1) — so it cannot be the layer of record and is **not** pinned as one. The layer is identified, exported in full, and pinned by digest at step 0, before any counting, under gate 0.4 — and the run closes if it cannot be, or if the exported layer does not reproduce the §1 census. Inventing a pin at draft would repeat the stale-pin failure Spec 040's gate record documents. |
+| **Asset B** — the site-function classification, built and frozen inside Spec 047's execution step 1 under Spec 047 §4's contract: file `specs/047-roif-ledger-distribution/asset-b/site-functions.jsonl`, exactly 30 rows, fields `program_site_id` / `site_name_as_published` / `status` / `primary_class` / `source_a` / `source_b` / `notes` | **No byte-digest exists at this freeze, deliberately (DD-051-14).** Asset B does not exist until Spec 047's execution step 1 builds and freezes it. The contract anchor is Spec 047's freeze digest `8501feabb7beee621e99ae48529e5a74c0788fb0619ac49c615912e13914cdc7`. The pin **source** is fixed as Spec 047's step-1 outcome record, `specs/047-roif-ledger-distribution/outcome.md`, which will record the asset's SHA-256 digest over the file bytes as committed (Spec 047 §4.6); execution asserts that digest at gate 0.2, before any class is read for a test — mismatch closes the run as INVALID, an unfrozen or unsound asset as NOT-RUN. See §4. |
+| Counting layer of record — the Holdat corpus layer Phase-104 counted, carrying per-inscription site attribution and sign sequences in M-numbering, "as held in the database" (the posture of Specs 044/048) | **No file pin is stated at this draft, deliberately.** The repository holds Holdat-derived files, but the one per-symbol site-distribution file on `main` (`data/raw/other_sites/holdatllc_core_symbol_site_distribution.csv`) covers five sites only and carries **no M391 row** — verified at this draft (adjudication.md §2, defect 1) — so it cannot be the layer of record and is **not** pinned as one. The layer is identified, exported in full, and pinned by digest at step 0, before any counting, under gate 0.4 — and the run closes if it cannot be, or if the exported layer does not reproduce the §1 census. Inventing a pin at draft would repeat the stale-pin failure Spec 040's gate record documents. **Confirmed at the freeze (DD-051-13):** this identify/export/pin-at-step-0 posture stands as drafted — the freeze names no file pin and no separate canonical export form; the step-0 record must state the export's file form and sort order as produced, and the digest plus the exact §1 census reproduction (193 total; 75 / 52 / 16 / 14 / 11 / 10 / 10 / 3 / 2) together are the layer's identity test. |
 | Anchors file (`backend/reports/INDUS_FINAL_ANCHORS.json`) | SHA-256 `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569` (recomputed at this draft by both routes). This spec moves no anchor; the file is asserted byte-identical before and after any execution. |
 
 **Explicitly not inputs:** the Yajnadevam-compiled
 layer of Specs 027/028/047 (its numbering is not
 the M-numbering the §1 census is stated in, and
 no crosswalked second run is registered in this
-draft — the second layer's role is OPEN for the
-freeze, adjudication.md §5); Spec 039's
+draft — and **ruled unused at the freeze**
+(DD-051-12): no crosswalked second run or
+sensitivity is registered under this contract);
+Spec 039's
 period-assignment product (a period label is not
 a site function); and Phase-147's internal
 validation of other Roif renderings (not evidence
@@ -252,8 +266,12 @@ is quotable.
   execution exhibits Asset B's file at its
   contract path, recomputes its SHA-256 over the
   file bytes as committed, and compares it to
-  the digest pinned in this spec's freeze
-  record. If Spec 047's step 1 has not frozen
+  the digest recorded in Spec 047's step-1
+  outcome record
+  (`specs/047-roif-ledger-distribution/outcome.md`)
+  — the pin source this freeze fixes
+  (DD-051-14), anchored on Spec 047's freeze
+  digest `8501feab…`. If Spec 047's step 1 has not frozen
   Asset B, or the asset has been shown unsound
   under Spec 047 §4.6, the run closes as
   **NOT-RUN — ASSET B NOT AVAILABLE** (§6
@@ -366,9 +384,15 @@ place. Spec 047's text governs in any conflict.
   `mapped_class`.
 - The asset's identity is its **SHA-256 digest
   over the file bytes as committed**, recorded
-  in Spec 047's freeze record and step-1 outcome
-  record. That digest, taken at this spec's
-  freeze, is the pin gate 0.2 asserts.
+  in Spec 047's step-1 outcome record
+  (`specs/047-roif-ledger-distribution/outcome.md`).
+  That record is the pin source this freeze
+  fixes (DD-051-14); gate 0.2 asserts the digest
+  it records, at execution. No byte-digest is
+  stated at this freeze, because the asset is
+  built later (Spec 047 execution step 1); the
+  contract anchor quoted at this freeze is Spec
+  047's freeze digest `8501feab…`.
   "The same classification" is thereby a
   verifiable fact, not an intention (campaign
   R-2).
@@ -508,14 +532,16 @@ is the size control the design specifies.
   shuffled across the test-population sites
   **9,999 times**; the p-value is the share of
   shuffles whose R is at least the observed R.
-  The random seed is fixed at this spec's freeze
-  and recorded in the freeze record, before any
-  share exists. A Fisher exact test on the pooled
+  The random seed is fixed at this freeze as
+  **20261021** (DD-051-10) and recorded in the
+  freeze record, before any share exists. A
+  Fisher exact test on the pooled
   2 × 2 table (M391 / all other sign occurrences
   × pooled / contrast inscriptions) is computed
-  and reported beside the permutation result; it
-  is not verdict-bearing at this draft (OPEN for
-  the freeze, adjudication.md §5).
+  and reported beside the permutation result;
+  **ruled at the freeze (DD-051-11): it is not
+  verdict-bearing** — the draft position is
+  confirmed.
 
 ### 5.3 The rival score — size and text length (the case-ending reading)
 
@@ -530,7 +556,8 @@ Scored in the same run, reported separately
 - **Class-addition outcome**, exactly one of:
   **ADDS** — the class term is positive and its
   permutation p-value (class labels shuffled
-  9,999 times, freeze-recorded seed) is < 0.05;
+  9,999 times, at the freeze-recorded seed
+  20261021, DD-051-10) is < 0.05;
   **SIZE-ONLY** — the size slope is itself
   significant (permutation p < 0.05) and the
   class-addition p-value is ≥ 0.05; **NEITHER**
@@ -691,8 +718,10 @@ only (§9).
 - INVALID — ASSET B DIGEST MISMATCH: "The
   execution stopped at step 0, gate 0.2: Asset
   B as exhibited hashes to [observed digest],
-  which differs from the digest pinned in this
-  spec's freeze record ([pinned digest]). No
+  which differs from the digest recorded in
+  Spec 047's step-1 outcome record
+  ([pinned digest], the pin source fixed at
+  this spec's freeze, DD-051-14). No
   class was read for a test and no quantity was
   computed. Under Spec 047 §4.6's consumer rule
   this spec closes as INVALID; the asset is not
@@ -756,7 +785,8 @@ only (§9).
   alone (§2). Its lineage posture is as recorded
   in the program's Holdat records; no second
   layer silently shares the verdict (the
-  second-layer question is the freeze's, OPEN).
+  second layer is ruled unused at the freeze,
+  DD-051-12).
 
 ## 8. Reporting obligations
 

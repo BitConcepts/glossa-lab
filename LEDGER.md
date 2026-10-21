@@ -8567,6 +8567,149 @@ AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
 
+
+## 2026-10-21 — Spec 047 step-2 EXECUTED (Phase-406): INCONCLUSIVE — classification gate (§6.3); held under the Roif gate
+
+Spec 047's step 2 (the builder's own test,
+design D-09) was executed as Phase-406 under
+the frozen contract (freeze digest
+8501feab…; OSF registration b2a8w approved
+and public), in Wave 3 Group 3 of the
+runnable-experiments campaign, against
+Asset B as pinned in the step-1 outcome
+record. Graph-first build (H15/H23): script
+backend/scripts/phase406_roif_ledger_step2.py;
+graph node IndusPhase406RoifLedgerStep2
+added to backend/glossa_lab/
+experiment_graph_phase406.py (the step-1 node
+unchanged beside it), registration verified
+by import before the run. Step 0 re-run
+passed in full, in the frozen order: input
+integrity (every §2 pin recomputed, by two
+independent routes in the foreground and
+again by the phase machinery), spine
+reproduction (36 rows, 30 clusters), and
+the join census accounting for all 5,679
+primary-layer records exactly once (joined
+5,106; non-spine 573 over 66 site values;
+no site value 0) — identical to the step-1
+census in every figure. Asset B was
+re-asserted at its step-1 digest
+(a1a9e484…; 30 rows; AGREED 3, DISAGREED 1,
+SINGLE-SOURCE 10, NO-SOURCE 16; testable 2)
+and the ledger-sign list at its digest
+(dfa48f50…; 8 entered, 3 mapped, 5
+UNMAPPED; the DD-047-13 all-UNMAPPED case
+does not fire). **The §6.3 classification
+gate fired on both of its clauses**: 2
+testable sites (harappa — administrative;
+lothal — port/trade) is below the frozen
+floor of 12, and in the test population
+(harappa 2,717 joined records; lothal 208;
+NO-CORPUS-COVERAGE none) the pooled
+ADMIN-TRADE-GATEWAY side carries both sites
+while the domestic/ritual contrast side is
+empty. The execution therefore closed
+INCONCLUSIVE — the classification is the
+finding, in the spec's pre-written §7
+wording. No distribution quantity was
+computed (no R, no permutation p-value, no
+R_ledger, no per-sign counts); E6 (the
+primaries and the each-source-alone /
+five-largest recomputations) was not run,
+and the §6.4 exclusions were republished in
+full. The claim
+indus_valley_script_deciphered_from_myth_65ff0a26_manual_001
+received its dated, component-scoped
+step-2 append (key spec047_step2; removal
+reproduces the pre-act record file
+byte-identically, verified at the act;
+claim_status untested and stage created
+unchanged) — the claim stands UNTESTED for
+its distribution component, now with the
+reason measured rather than asserted. The
+standing step-1 disclosures were carried
+unchanged and not relitigated (the §4.5
+attestation disclosure; the §4.3
+verification-pass demotions of khirsara and
+sheri khan tarakai; the quoted-source basis
+of the surkotada DISAGREED row). This
+concerns the distribution component of
+Roif's ledger thesis only; the
+guild-authority and Akkadian-influence
+components were not tested. Records:
+specs/047-roif-ledger-distribution/outcome.md
+(step-2 record appended; the step-1 text
+unedited), reports/phase406_step2_results.json
+(SHA-256 7d0a303f…), reports/
+phase406_step2_report.md (SHA-256
+87b6e0a0…) — the script deterministic, both
+outputs byte-identical on a second run.
+Anchors asserted byte-identical before and
+after (df0cf620…). Held under the Roif
+gate.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.
+
+## 2026-10-21 — Spec 050 EXECUTED (Phase-416): CLOSED AT STEP 0 — ASSET NOT FROZEN (dependency closure)
+
+Spec 050 was executed as Phase-416 under the
+frozen contract (freeze digest fdcbae64…;
+OSF registration uwdmy approved and public,
+DOI 10.17605/OSF.IO/UWDMY), in Wave 3 Group 3
+of the runnable-experiments campaign (member
+10, design D-13; consumer of Asset A). Step 0
+ran in the frozen order, fail-closed, and
+closed at its first gate. **Gate 0.1 FAIL, in
+its absent branch — CLOSED AT STEP 0 — ASSET
+NOT FROZEN.** The gate reads Asset A's SHA-256
+from the fixed pin source, Spec 045's
+asset-a/asset-a-freeze.json (DD-050-11), and
+asserts it before any join or counting; that
+file does not exist, and neither does the
+canonical depicted-kind-classification.csv, so
+no Asset A digest exists to assert. The
+absence was verified first-hand at the
+execution base (main at 3e75d7b0…) by two
+independent routes — the fresh clone's tree
+(listing, existence tests, and the full
+recursive ls-tree at the base commit) and the
+GitHub API (contents API 404 for the asset-a
+directory and the freeze file; the recursive
+git-trees read at the same commit, 6,124
+entries, not truncated, with no asset-a path
+anywhere) — and the two routes agree. The
+dependency's terminal record is Spec 045's:
+executed as Phase-411, INVALID at its step-0
+gate 0.2 (PR #268, merged c97c8d4c…; landing
+record PR #269), its outcome record stating
+plainly that Asset A was not built — build
+gates A1–A6 never ran, no asset-a directory,
+CSV, or freeze file exists, and no Asset A
+digest exists for any dependent to pin. Gates
+0.2–0.6 of Spec 050 were NOT REACHED. No join
+was made, no sign was classified, no census
+was taken, and no final-position quantity was
+computed; no substitute asset, digest, or
+stand-in file was created, and Asset A was
+not reconstructed from any material. The
+standing consequence: the D-13 comparison was
+never run and its hypothesis is unjudged. The
+claim
+without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004
+stands UNTESTED as recorded — this is a
+dependency closure under the campaign's
+cluster rule, not a verdict on the claim, and
+position is not meaning. Anchors asserted
+byte-identical before and after (df0cf620…).
+Records: specs/050-hunt-sky-signs-endings/outcome.md.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
 ## 2026-10-21 — Spec 048 EXECUTED (Phase-408): STRICT CORPUS NOT PINNABLE at gate 0.3 (held under the Roif gate)
 
 Spec 048 was executed as Phase-408 under the
@@ -8662,63 +8805,6 @@ deterministic (byte-identical on a second
 run). This entry and its records are
 internal under the campaign's Roif gate
 (R-7); not a publication.
-
-AI disclosure: executed by an AI agent (Muse Spark,
-via Muse) at the direction of Tristen Pierson, per
-constitution sec.VI.
-
-## 2026-10-21 — Spec 050 EXECUTED (Phase-416): CLOSED AT STEP 0 — ASSET NOT FROZEN (dependency closure)
-
-Spec 050 was executed as Phase-416 under the
-frozen contract (freeze digest fdcbae64…;
-OSF registration uwdmy approved and public,
-DOI 10.17605/OSF.IO/UWDMY), in Wave 3 Group 3
-of the runnable-experiments campaign (member
-10, design D-13; consumer of Asset A). Step 0
-ran in the frozen order, fail-closed, and
-closed at its first gate. **Gate 0.1 FAIL, in
-its absent branch — CLOSED AT STEP 0 — ASSET
-NOT FROZEN.** The gate reads Asset A's SHA-256
-from the fixed pin source, Spec 045's
-asset-a/asset-a-freeze.json (DD-050-11), and
-asserts it before any join or counting; that
-file does not exist, and neither does the
-canonical depicted-kind-classification.csv, so
-no Asset A digest exists to assert. The
-absence was verified first-hand at the
-execution base (main at 3e75d7b0…) by two
-independent routes — the fresh clone's tree
-(listing, existence tests, and the full
-recursive ls-tree at the base commit) and the
-GitHub API (contents API 404 for the asset-a
-directory and the freeze file; the recursive
-git-trees read at the same commit, 6,124
-entries, not truncated, with no asset-a path
-anywhere) — and the two routes agree. The
-dependency's terminal record is Spec 045's:
-executed as Phase-411, INVALID at its step-0
-gate 0.2 (PR #268, merged c97c8d4c…; landing
-record PR #269), its outcome record stating
-plainly that Asset A was not built — build
-gates A1–A6 never ran, no asset-a directory,
-CSV, or freeze file exists, and no Asset A
-digest exists for any dependent to pin. Gates
-0.2–0.6 of Spec 050 were NOT REACHED. No join
-was made, no sign was classified, no census
-was taken, and no final-position quantity was
-computed; no substitute asset, digest, or
-stand-in file was created, and Asset A was
-not reconstructed from any material. The
-standing consequence: the D-13 comparison was
-never run and its hypothesis is unjudged. The
-claim
-without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004
-stands UNTESTED as recorded — this is a
-dependency closure under the campaign's
-cluster rule, not a verdict on the claim, and
-position is not meaning. Anchors asserted
-byte-identical before and after (df0cf620…).
-Records: specs/050-hunt-sky-signs-endings/outcome.md.
 
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per

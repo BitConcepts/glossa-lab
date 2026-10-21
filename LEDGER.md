@@ -7434,3 +7434,92 @@ outcome.md (dependency-gate record, appended
 2026-10-20).
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution sec.VI.
+## 2026-10-21 — Spec 030 Ask 2 ruled BINDING (owner decision)
+
+The one question Spec 030's 2026-10-12
+adjudication expressly left open — Ask 2,
+whether the CONTESTED-excluded computation must
+bind a future Q6 freeze (the design stated no
+recommendation; both computations were reported
+under rule 5 with the as-frozen run as verdict
+basis meanwhile) — is now decided. Owner
+ruling (Tristen Pierson, 2026-10-21, program
+chat): "Ask 2 is decided BINDING: a future Q6
+freeze's timing-support assessment must meet
+every frozen criterion with CONTESTED-scenario
+rows excluded as well as with all rows included,
+and a support claim that holds only with
+contested rows included does not authorise a Q6
+freeze." Recorded by dated append in
+specs/030-q6-chronology-spine-extension/
+adjudication.md; the 2026-10-12 record stands
+untouched, as do the frozen spec, the freeze
+record, and the Phase-394 records. Decision
+memo: spec030-ask2-decision-memo-2026-10-21.md
+(owner's research notes), which recommended
+BINDING and verified the ruling changes no
+standing outcome: Phase-394's two computations
+were identical (C1 1 FAIL, C2 6 FAIL, C3 0.0
+FAIL, C4 70 BP PASS under both), so Q6 remains
+NOT-YET-TESTABLE. The both-ways reporting duty
+(rule 5; F030-C04) is unchanged.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.
+## 2026-10-21 — Spec 030 freeze-test amendment (owner-ordered)
+
+The owner ordered the amendment on 2026-10-21,
+verbatim: "Amend the freeze test (Spec 038
+precedent)". The defect: the Spec 030 freeze
+fence test_freeze_record_replays in
+backend/tests/test_spec030_freeze.py replays the
+freeze record with framework026 verify_freeze
+over every covered source by whole-file SHA-256,
+and specs/030-q6-chronology-spine-extension/
+adjudication.md is a covered source — so the
+dated append recording the owner's Ask 2 ruling
+of 2026-10-21 (PR #241, the entry above) failed
+the replay by construction: the single backend
+failure (frozen source changed:
+specs/030-q6-chronology-spine-extension/
+adjudication.md) in an otherwise 1,366 passed /
+20 skipped suite (run 39573949471; the run's
+other six jobs green). No frozen byte was
+altered; the frozen bytes remain an exact prefix
+of the live file. The amendment narrows that
+single assertion for adjudication.md to
+prefix-integrity: the freeze-time bytes — 5,867
+bytes, SHA-256
+f962f910d81cb63f44abb4db0e1be2ee0fb9fca45f5242f23656113ddd609738
+— are pinned in freeze.json (prefix_pins) and
+asserted as a constant in the test, and must
+remain an exact prefix of the live file; dated
+appends after them are permitted. Every other
+covered source keeps its live whole-file hash
+assertion; no other assertion changed and no
+production code changed. freeze.json was
+recomputed ONCE over the amended state with the
+repo's own builder
+(specs/030-q6-chronology-spine-extension/
+build_freeze.py, framework026) in the freeze
+environment (python 3.12.3, aee 1.0.4),
+faithfulness-proven first: the pre-amendment
+builder over the original (pre-append,
+pre-amendment) bytes reproduced the freeze-act
+digest exactly. Successor digest
+45ab6a1352f8e01ee7aebee88e3219a9af7d67908265172b0e321a302722c500.
+The freeze-act digest
+3a61c63a26ffada3c21bf8b718610e6debe7f9c9ff58bf8ff736cbb7c3db00e9
+stands as the digest of the freeze act in every
+record that cites it (the OSF contract
+registration bge3k, osf-registration.md,
+outcome.md) and was edited nowhere. Record:
+adjudication.md freeze-test amendment section;
+freeze.md addendum; this entry. The Ask 2
+ruling stands as recorded above; Q6 remains
+NOT-YET-TESTABLE.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.

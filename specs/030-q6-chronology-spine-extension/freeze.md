@@ -103,3 +103,53 @@ regenerated (Spec 026 §4.7).
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## Addendum — freeze-test amendment (2026-10-21)
+
+Owner-ordered on 2026-10-21, verbatim: **"Amend
+the freeze test (Spec 038 precedent)"**; recorded
+in full in `adjudication.md` (freeze-test
+amendment section) and in the LEDGER entry of the
+same date.
+
+The Ask 2 ruling of 2026-10-21 is recorded by
+dated append in `adjudication.md`, a
+digest-covered source of this freeze, so the
+freeze replay fence
+(`backend/tests/test_spec030_freeze.py::test_freeze_record_replays`)
+failed by construction on the ruling record
+(PR #241): `verify_freeze` reported the single
+backend failure `frozen source changed:
+specs/030-q6-chronology-spine-extension/adjudication.md`
+in an otherwise 1,366 passed / 20 skipped suite,
+although no frozen byte was altered — the frozen
+bytes remain an exact prefix of the live file.
+The amendment narrows that single assertion for
+`adjudication.md` to prefix-integrity: the
+freeze-time bytes (5,867 bytes, SHA-256
+`f962f910d81cb63f44abb4db0e1be2ee0fb9fca45f5242f23656113ddd609738`)
+are pinned in `freeze.json` (`prefix_pins`) and
+must remain an exact prefix of the live file;
+dated appends after them are permitted. Every
+other covered source keeps its live whole-file
+hash assertion; no other assertion changes, and
+no production code changes. `freeze.json` is
+recomputed once over the amended state by
+`build_freeze.py` (framework026), in the freeze
+environment (python 3.12.3, aee 1.0.4), after the
+pre-amendment builder reproduced the freeze-act
+digest from the original bytes exactly; the
+successor digest is the `digest` recorded in the
+amended `freeze.json`, carried in the LEDGER
+entry of 2026-10-21.
+
+The freeze-act digest
+`3a61c63a26ffada3c21bf8b718610e6debe7f9c9ff58bf8ff736cbb7c3db00e9`
+stands as the digest of the freeze act in every
+record that cites it — the OSF contract
+registration (bge3k), `osf-registration.md`,
+`outcome.md` — and is edited nowhere.
+
+*AI disclosure: executed by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen
+Pierson, per constitution §VI.*

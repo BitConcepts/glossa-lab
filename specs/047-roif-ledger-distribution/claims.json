@@ -1,0 +1,909 @@
+{
+  "spec": "047-roif-ledger-distribution",
+  "register_version": "0.5-draft",
+  "note": "Draft register for Spec 047 (design D-09, PR #195 packet), opened 2026-10-21 under the runnable-experiments campaign plan approved by the owner as written the same date (D-09 = member 8; Asset B built inside this spec per E-6). Conventions as in Specs 032–042: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-GAZETTEER-SPINE (the Spec 027 Stage 0 gazetteer, as pinned, is the site universe), ASM-PRIMARY-LAYER (the pinned Yajnadevam-compiled layer is the site-attributed corpus of record), ASM-PHASE104-RECORD (Phase-104's evaluation is the claim's record of standing), ASM-TWO-SOURCE-RULE (the design's two-source agreement rule is the classification's warrant), ASM-EXCAVATION-LITERATURE (published excavation/site literature states site functions admissibly), ASM-SHARES-CONTROL (comparing shares rather than counts is the design's size control), ASM-ROIF-SOURCE-POSTINGS (the 2025 Academia.edu postings are Roif's work of record, per the 2026-10-21 verification), ASM-COMPONENT-DECOMPOSITION (a bundled claim is adjudicated component by component), ASM-GATES-BEFORE-OUTCOME (integrity and classification gates precede any outcome quantity), ASM-APPEND-ONLY (outcomes append; frozen records are never edited), ASM-ROIF-GATE (campaign R-7 holds this member's results internal until the owner's publication act).",
+  "claims": [
+    {
+      "id": "F047-C01",
+      "kind": "hypothesis",
+      "text": "An outcome under Spec 047 states only how inscriptions and Roif's named ledger-sign classes distribute across the frozen site-function classes of the Spec 027 gazetteer spine, in the pinned primary corpus layer.",
+      "status": "draft",
+      "boundary": "The scope is the distribution component of the claim, the 30-cluster gazetteer spine, its testable subset, and the primary layer. It excludes any statement about what any inscription records, about guilds, about Akkadian influence, about any other corpus or site set, and about Roif's thesis as a whole.",
+      "depends_on": [],
+      "assumptions": [
+        "ASM-GAZETTEER-SPINE",
+        "ASM-PRIMARY-LAYER"
+      ],
+      "alternatives": [
+        "the pooled claim-level verdict could be read as already covering the distribution question (it cannot: the claim stands UNTESTED for want of the classification this spec builds)"
+      ],
+      "falsification_tests": [
+        "the claim is falsified in scope if any Spec 047 output states a conclusion about a population, corpus, site set, or question outside the distribution component as bounded here"
+      ],
+      "metadata": {
+        "framework_kind": "conditional-model-result",
+        "layer": "I",
+        "forbidden_assumptions": [
+          "ASM-RESULT-AS-TRANSLATION"
+        ],
+        "strongest_rival": "the alternative reading in which a distribution verdict licenses a claim about the thesis as a whole",
+        "verdict_rule": "scope is judged by inspection of every Spec 047 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding",
+        "evidence_origin_groups": [
+          "phase104-record",
+          "design-packet"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Phase-104 evaluation (SHA-256 b299905a…, recomputed at this draft): claim indus_valley_script_deciphered_from_myth_65ff0a26_manual_001 stays untested under RULE-SITE — its falsification condition requires a site-typology classification; no such dataset exists in the repo.",
+          "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
+          "observed_at": "2026-10-21"
+        },
+        {
+          "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Design D-09 (PR #195 packet, §D-09, read in full at this draft): the question, hypothesis, falsifier, step-1 classification build under the two-source agreement rule, step-2 measures, and criteria this spec registers.",
+          "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "F047-C02",
+      "kind": "requirement",
+      "text": "The claim indus_valley_script_deciphered_from_myth_65ff0a26_manual_001 stands UNTESTED on its record: Phase-104 held it untested under RULE-SITE because its falsification condition requires a site-typology classification and no such dataset exists in the repository.",
+      "status": "draft",
+      "boundary": "These are the Phase-104 evaluation's recorded verdict, rule, and reason for this claim. The Holdat corpus's carrying site names only is the record's stated ground; the absence is of a function classification, not of site-attributed inscriptions.",
+      "depends_on": [
+        "F047-C01"
+      ],
+      "assumptions": [
+        "ASM-PHASE104-RECORD"
+      ],
+      "alternatives": [],
+      "falsification_tests": [
+        "recompute SHA-256 of glossa-indus/reports/phase104_claims_evaluation.json (b299905a…) and read the manual_001 entry; any mismatch falsifies this statement and voids the draft's basis"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "the record could have been misread or superseded (the Spec 040 stale-pin precedent shows draft-cited pins can be wrong)",
+        "verdict_rule": "the statement stands or falls on the pinned evaluation file hashing to its recorded value with the stated entry in it",
+        "evidence_origin_groups": [
+          "phase104-record"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Phase-104 evaluation (SHA-256 b299905a…, recomputed at this draft): claim indus_valley_script_deciphered_from_myth_65ff0a26_manual_001 stays untested under RULE-SITE — its falsification condition requires a site-typology classification; no such dataset exists in the repo.",
+          "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "F047-C03",
+      "kind": "hypothesis",
+      "text": "Within the test population of Spec 047, inscriptions concentrate at sites classed administrative, port/trade, or gateway/border: the pooled class's share of inscriptions is at least 1.5 times its share of testable sites, the label-shuffling test distinguishes the concentration from chance at the 5% level, and the ledger-sign classes named by Roif's text show the same direction.",
+      "status": "draft",
+      "boundary": "The hypothesis is a statement about shares in the pinned primary layer over the frozen classification's testable sites, under the §6.3 criteria. It is not a statement about what inscriptions record, about sites outside the spine, or about the thesis's other two components.",
+      "depends_on": [
+        "F047-C01",
+        "F047-C02"
+      ],
+      "assumptions": [
+        "ASM-GAZETTEER-SPINE",
+        "ASM-PRIMARY-LAYER",
+        "ASM-SHARES-CONTROL",
+        "ASM-TWO-SOURCE-RULE"
+      ],
+      "alternatives": [
+        "the falsifier (F047-C04): no excess once size is controlled",
+        "the measures disagree (inscription share concentrates, ledger-sign share does not) — recorded INCONCLUSIVE under F047-C16, not as support"
+      ],
+      "falsification_tests": [
+        "run the §6 primary: if R ≤ 1.0, or the permutation test does not reject, or R_ledger ≤ 1.0, this hypothesis is not supported, each under the §6.3 partition"
+      ],
+      "metadata": {
+        "framework_kind": "conditional-model-result",
+        "layer": "I",
+        "forbidden_assumptions": [
+          "ASM-RESULT-AS-TRANSLATION",
+          "ASM-PHASE147-AS-EVIDENCE"
+        ],
+        "strongest_rival": "the strongest rival is the falsifier itself: any apparent concentration is excavation volume and site size wearing a functional costume",
+        "verdict_rule": "SUPPORTED for the hypothesis iff all three §6.3 SUPPORTED clauses fire together; any other adjudicated pattern does not support it",
+        "evidence_origin_groups": [
+          "design-packet",
+          "phase104-record"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Design D-09 (PR #195 packet, §D-09, read in full at this draft): the question, hypothesis, falsifier, step-1 classification build under the two-source agreement rule, step-2 measures, and criteria this spec registers.",
+          "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "observed_at": "2026-10-21"
+        },
+        {
+          "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Phase-104 evaluation (SHA-256 b299905a…, recomputed at this draft): claim indus_valley_script_deciphered_from_myth_65ff0a26_manual_001 stays untested under RULE-SITE — its falsification condition requires a site-typology classification; no such dataset exists in the repo.",
+          "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "F047-C04",
+      "kind": "requirement",
+      "text": "If, with site size controlled by the shares design, the pooled administrative/trade/gateway class shows no excess — the inscription-share ratio at or below 1.0, or the permutation test does not reject — the outcome is recorded NOT SUPPORTED with the claim's own failure condition named.",
+      "status": "draft",
+      "boundary": "The failure condition is the one the claim's own record states, carried through design D-09. It ranges over the distribution component only; a NOT SUPPORTED here asserts nothing about the guild-authority or Akkadian-influence components, in either direction.",
+      "depends_on": [
+        "F047-C03"
+      ],
+      "assumptions": [
+        "ASM-SHARES-CONTROL"
+      ],
+      "alternatives": [],
+      "falsification_tests": [
+        "if the primary returns R ≥ 1.5 with p < 0.05 and R_ledger > 1.0, this claim's condition does not arise and the outcome is SUPPORTED under F047-C16"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "a null distribution result could be misread as falsifying Roif's whole thesis; the requirement exists so the record scopes the falsification to the component tested",
+        "verdict_rule": "the outcome record must carry the NOT SUPPORTED wording of spec §7 and name the fired clause whenever the condition holds",
+        "evidence_origin_groups": [
+          "design-packet"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Design D-09 (PR #195 packet, §D-09, read in full at this draft): the question, hypothesis, falsifier, step-1 classification build under the two-source agreement rule, step-2 measures, and criteria this spec registers.",
+          "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "F047-C05",
+      "kind": "requirement",
+      "text": "Spec 047 tests only the distribution component of Roif's ledger thesis; the guild-authority component and the Akkadian-influence component are carried as untested sub-claims in every output and are never verdict-bearing under this spec.",
+      "status": "draft",
+      "boundary": "Guild authority is an interpretation layered on the distribution, not a separate measurement available to this program; Akkadian influence would require contact evidence the program does not hold. Decomposition is the framework's requirement for a bundled claim, per the design.",
+      "depends_on": [
+        "F047-C01"
+      ],
+      "assumptions": [
+        "ASM-COMPONENT-DECOMPOSITION"
+      ],
+      "alternatives": [
+        "issuing one verdict over the whole bundle (refused: it would let a distribution result silently adjudicate components no measurement touched)"
+      ],
+      "falsification_tests": [
+        "inspection: any Spec 047 output that attaches this spec's verdict word to the whole thesis, or to either untested component, falsifies compliance with this requirement"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [
+          "ASM-RESULT-AS-TRANSLATION"
+        ],
+        "strongest_rival": "the pressure to report a clean verdict on 'Roif's thesis' rather than on one component of it",
+        "verdict_rule": "compliance is judged by inspection of every output at execution close; the §9 component fence sentence is a required element of each",
+        "evidence_origin_groups": [
+          "design-packet"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Design D-09 (PR #195 packet, §D-09, read in full at this draft): the question, hypothesis, falsifier, step-1 classification build under the two-source agreement rule, step-2 measures, and criteria this spec registers.",
+          "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "F047-C06",
+      "kind": "requirement",
+      "text": "Asset B carries exactly one row per Spec 027 gazetteer site cluster — 30 rows over the pinned gazetteer file — in the file form fixed by spec §4.1, and classifies sites, never source-assertion rows or inscriptions.",
+      "status": "draft",
+      "boundary": "The asset's universe is the spine as frozen at Spec 027 Stage 0 (36 assertion rows, 30 clusters). Corpus sites outside the spine are outside the asset by rule and are accounted for in the gate-0.3 join census, never added to the asset.",
+      "depends_on": [
+        "F047-C01"
+      ],
+      "assumptions": [
+        "ASM-GAZETTEER-SPINE"
+      ],
+      "alternatives": [
+        "extending the classification to corpus sites the spine lacks (refused: the design hangs the classification on the gazetteer spine; extension is a different act)"
+      ],
+      "falsification_tests": [
+        "the step-1 build record either shows exactly 30 rows matching the pinned cluster list or the build stops under gate B1; the asset file's row set is checkable against the pinned gazetteer by any reader"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "silent spine drift: rows added for interesting corpus sites, or awkward clusters dropped, between draft and build",
+        "verdict_rule": "the B1 coverage gate is the judge: row set unequal to the pinned cluster set means the asset does not freeze",
+        "evidence_origin_groups": [
+          "gazetteer-spine",
+          "spec027-design"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "data/movement/gazetteer_rows.jsonl",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 027 Stage 0 gazetteer of record (SHA-256 5ac76a30…, recomputed at this draft): 36 source-assertion rows over 30 distinct program_site_id clusters, read at this draft.",
+          "source_id": "data/movement/gazetteer_rows.jsonl",
+          "observed_at": "2026-10-21"
+        },
+        {
+          "ref": "specs/027-movement-culture-language/spec.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 027's frozen design (SHA-256 9c2b0c57…): Stage 0 built the gazetteer as descriptive infrastructure — one row per source assertion, clustering under program_site_id, disagreements preserved, never resolved by majority vote (§§6.2/6.3/6.5).",
+          "source_id": "specs/027-movement-culture-language/spec.md",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "F047-C07",
+      "kind": "requirement",
+      "text": "Every Asset B classification uses exactly the six classes of spec §4.2 — gateway/border, administrative, port/trade, domestic, ritual, mixed/unknown — assigned by the mapping rule stated there from what a published source states about the site's primary function.",
+      "status": "draft",
+      "boundary": "The vocabulary is closed, and the two derived groupings (pooled ADMIN-TRADE-GATEWAY; contrast domestic/ritual) are fixed in the same section. mixed/unknown belongs to neither grouping. No class may be added, split, or merged inside this campaign; a vocabulary defect is an amendment, not an edit.",
+      "depends_on": [
+        "F047-C06"
+      ],
+      "assumptions": [
+        "ASM-EXCAVATION-LITERATURE"
+      ],
+      "alternatives": [
+        "deriving classes from the data at build time, e.g. clustering sites by inscription profile (refused: that is the circularity §4.5 forbids)"
+      ],
+      "falsification_tests": [
+        "inspection of the frozen asset: any class value outside the six, or any mapping not traceable to a stated function through the §4.2 rule, falsifies compliance"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "vocabulary creep at build time — a seventh class invented for a site that fits none, quietly changing the test's population",
+        "verdict_rule": "the frozen asset is judged value-by-value against the six-class list; an out-of-vocabulary value means the asset does not freeze",
+        "evidence_origin_groups": [
+          "design-packet",
+          "gazetteer-spine"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Design D-09 (PR #195 packet, §D-09, read in full at this draft): the question, hypothesis, falsifier, step-1 classification build under the two-source agreement rule, step-2 measures, and criteria this spec registers.",
+          "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "observed_at": "2026-10-21"
+        },
+        {
+          "ref": "data/movement/gazetteer_rows.jsonl",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 027 Stage 0 gazetteer of record (SHA-256 5ac76a30…, recomputed at this draft): 36 source-assertion rows over 30 distinct program_site_id clusters, read at this draft.",
+          "source_id": "data/movement/gazetteer_rows.jsonl",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "F047-C08",
+      "kind": "requirement",
+      "text": "A site enters the test only if two independent published sources, as spec §4.3 defines independence, each state the site's function and map to the identical §4.2 class; the row is then AGREED and testable iff its class is not mixed/unknown.",
+      "status": "draft",
+      "boundary": "Each source is mapped on its own statement alone, with citation and locator recorded, before agreement is assessed. A reprint or a work repeating the same report's statement as its sole basis is not a second source. Agreement is identity of mapped classes, never closeness or worker judgement.",
+      "depends_on": [
+        "F047-C06",
+        "F047-C07"
+      ],
+      "assumptions": [
+        "ASM-TWO-SOURCE-RULE",
+        "ASM-EXCAVATION-LITERATURE"
+      ],
+      "alternatives": [],
+      "falsification_tests": [
+        "every AGREED row is re-checkable from the asset alone: two citations, two locators, two mapped classes, identical; a row failing that shape on inspection falsifies the build's compliance and the asset is unsound under spec §4.6"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "agreement manufactured by choosing the second source for its verdict, or by mapping generously — the verification pass of §4.3 and the published disagreement list are the counters",
+        "verdict_rule": "AGREED status is judged mechanically from the recorded row shape; the §4.3 verification pass must pass for every AGREED row before the freeze (gate B3)",
+        "evidence_origin_groups": [
+          "design-packet"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Design D-09 (PR #195 packet, §D-09, read in full at this draft): the question, hypothesis, falsifier, step-1 classification build under the two-source agreement rule, step-2 measures, and criteria this spec registers.",
+          "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "F047-C09",
+      "kind": "requirement",
+      "text": "A site that is not testable is listed in Asset B by name in exactly one of the statuses of spec §4.4 — DISAGREED, SINGLE-SOURCE, NO-SOURCE, or AGREED at mixed/unknown — with the citations its status requires, is excluded from the primary test, and is never resolved by a third source, a majority rule, or worker judgement.",
+      "status": "draft",
+      "boundary": "Exclusion is by rule, recorded at build time. The excluded list is published with the asset and republished with every outcome, so the verdict's uncovered sites are always visible beside it. Spec 027's discipline — disagreements preserved, never majority-voted away — governs.",
+      "depends_on": [
+        "F047-C08"
+      ],
+      "assumptions": [
+        "ASM-TWO-SOURCE-RULE"
+      ],
+      "alternatives": [
+        "seeking a third source as tiebreak (refused: the design's rule is two-source agreement; a tiebreak would let persistence, not the literature, decide classes)"
+      ],
+      "falsification_tests": [
+        "inspection: any excluded site missing from the published list, any testable site whose row shape fails F047-C08, or any trace of a tiebreak in the build record falsifies compliance"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "the temptation to rescue a famous disagreed site into the test because its class 'is obvious'",
+        "verdict_rule": "the status census in the freeze record must account for all 30 clusters across AGREED-testable and the four excluded statuses, summing exactly",
+        "evidence_origin_groups": [
+          "design-packet",
+          "spec027-design"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Design D-09 (PR #195 packet, §D-09, read in full at this draft): the question, hypothesis, falsifier, step-1 classification build under the two-source agreement rule, step-2 measures, and criteria this spec registers.",
+          "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "observed_at": "2026-10-21"
+        },
+        {
+          "ref": "specs/027-movement-culture-language/spec.md",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 027's frozen design (SHA-256 9c2b0c57…): Stage 0 built the gazetteer as descriptive infrastructure — one row per source assertion, clustering under program_site_id, disagreements preserved, never resolved by majority vote (§§6.2/6.3/6.5).",
+          "source_id": "specs/027-movement-culture-language/spec.md",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "F047-C10",
+      "kind": "requirement",
+      "text": "Asset B freezes inside Spec 047's step 1, before any step-2 counting, with its SHA-256 digest computed over the committed file bytes and recorded with its row and status counts in this spec's freeze record; consumers pin that digest, and any later change to a row's status or class makes the frozen asset unsound rather than edited.",
+      "status": "draft",
+      "boundary": "The freeze point precedes the join of classes to counts, the ledger list's counting, and any consumer's test — D-10 (the D-10 specification) names the digest in its own inputs and re-asserts it at its step 0. Post-freeze changes are dated append-only errata that change no status or class; a status or class change fires the campaign cluster tripwire and closes the dependents as not-run.",
+      "depends_on": [
+        "F047-C06",
+        "F047-C08"
+      ],
+      "assumptions": [
+        "ASM-APPEND-ONLY"
+      ],
+      "alternatives": [
+        "freezing the classification after a first look at the counts, so classes can be nudged toward a result (refused: freeze-before-join is the design's construction)"
+      ],
+      "falsification_tests": [
+        "merge-order and digest verification: the asset's freeze commit precedes any execution commit that counts by class, and every consumer record shows the identical digest, or compliance is falsified"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "digest drift: the asset quietly re-issued after a consumer has pinned it, so two tests run on two classifications while claiming one",
+        "verdict_rule": "identity is judged by digest equality across the builder's freeze record and each consumer's execution record (campaign R-2)",
+        "evidence_origin_groups": [
+          "campaign-record",
+          "design-packet"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "2026-10-21-runnable-experiments-campaign-plan.md (owner-approved)",
+          "kind": "campaign-record",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "The campaign plan approved as written 2026-10-21: D-09 is member 8 and builds Asset B inside its own spec (E-6); Roif-claim members execute with results held, never surfaced (E-2, R-7, Part 8); assets are built once and consumed by digest (R-2).",
+          "source_id": "campaign-plan-2026-10-21",
+          "observed_at": "2026-10-21"
+        },
+        {
+          "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Design D-09 (PR #195 packet, §D-09, read in full at this draft): the question, hypothesis, falsifier, step-1 classification build under the two-source agreement rule, step-2 measures, and criteria this spec registers.",
+          "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "F047-C11",
+      "kind": "requirement",
+      "text": "No Asset B class, mapping, or status is derived from inscription content, sign distributions, or per-site inscription counts; the build is carried out without consulting the primary layer's per-site counts, and the build record carries a dated attestation of both points naming the worker.",
+      "status": "draft",
+      "boundary": "The gate-0.3 join census counts records for accounting only, is computed separately from the classification work, and its per-site figures are not available to the classification worker before the freeze. A classification influenced by the inscriptions could not then test the inscriptions' distribution.",
+      "depends_on": [
+        "F047-C06"
+      ],
+      "assumptions": [
+        "ASM-EXCAVATION-LITERATURE"
+      ],
+      "alternatives": [
+        "classifying with the counts visible 'just as background' (refused: visibility is the influence; the attestation must be truthful or gate B4 fails)"
+      ],
+      "falsification_tests": [
+        "the attestation is part of the freeze record; any build artefact showing per-site counts in the classification workspace before the freeze falsifies it, and gate B4 closes the build"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "circularity by convenience — the counts are in the same repository and one command away",
+        "verdict_rule": "compliance is judged on the build record and attestation at the step-1 freeze; a build that cannot attest does not freeze",
+        "evidence_origin_groups": [
+          "design-packet"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Design D-09 (PR #195 packet, §D-09, read in full at this draft): the question, hypothesis, falsifier, step-1 classification build under the two-source agreement rule, step-2 measures, and criteria this spec registers.",
+          "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "F047-C12",
+      "kind": "requirement",
+      "text": "Asset B does not freeze if the build fails any gate of spec §4.7: coverage of exactly 30 rows (B1), citation completeness for every row's status (B2), the citation-verification pass for every AGREED row (B3), or a truthful circularity attestation (B4); the spec then closes at step 1 and design D-10 is not-run by dependency closure.",
+      "status": "draft",
+      "boundary": "A build failure is a statement about the build, not about Roif's claim, and the outcome record says so in the pre-written §7 wording. The number of testable sites is deliberately not a build gate: thinness is adjudicated by the test gate (F047-C15), where the design puts it.",
+      "depends_on": [
+        "F047-C06",
+        "F047-C08",
+        "F047-C11"
+      ],
+      "assumptions": [
+        "ASM-GATES-BEFORE-OUTCOME"
+      ],
+      "alternatives": [
+        "treating a low testable count as a build failure and rebuilding to a weaker standard inside the campaign (refused by the campaign plan: a failed asset is not rebuilt weaker inside the pass)"
+      ],
+      "falsification_tests": [
+        "each gate's check is recorded in the step-1 record before the freeze digest exists; a freeze digest present alongside a failed gate falsifies compliance"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "gate-softening at build time, when the literature turns out messier than the draft hoped",
+        "verdict_rule": "the step-1 record is the judge: gates recorded in order, all passing, before the digest is computed, or the asset has not frozen",
+        "evidence_origin_groups": [
+          "campaign-record",
+          "design-packet"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "2026-10-21-runnable-experiments-campaign-plan.md (owner-approved)",
+          "kind": "campaign-record",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "The campaign plan approved as written 2026-10-21: D-09 is member 8 and builds Asset B inside its own spec (E-6); Roif-claim members execute with results held, never surfaced (E-2, R-7, Part 8); assets are built once and consumed by digest (R-2).",
+          "source_id": "campaign-plan-2026-10-21",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "F047-C13",
+      "kind": "requirement",
+      "text": "The ledger-sign list is extracted in step 1 from Roif's two Academia.edu postings of record and nothing else, under the rule of spec §5 — a sign enters only if his text explicitly assigns it an economic function — with every entry carrying its locator and its crosswalk-mapped identifier, unmappable entries recorded UNMAPPED and excluded by rule; the list freezes with Asset B under its own digest before any counting.",
+      "status": "draft",
+      "boundary": "The postings are the source of record because the held manuscript does not survive and the verification of 2026-10-21 establishes the identical-titled posting as publicly posted and citable. The program's model file and Phase-147 are not extraction sources. Extraction is blind to sign counts.",
+      "depends_on": [
+        "F047-C10"
+      ],
+      "assumptions": [
+        "ASM-ROIF-SOURCE-POSTINGS",
+        "ASM-APPEND-ONLY"
+      ],
+      "alternatives": [
+        "extracting the list from the program's own summary of Roif (the model file), whose source metadata this draft found unreliable (spec §2.2)"
+      ],
+      "falsification_tests": [
+        "the extraction census is published with the outcome: entries sought, entered, and UNMAPPED, each entered entry re-checkable at its locator in the postings; an entry without a locator, or sourced elsewhere, falsifies compliance"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [
+          "ASM-PHASE147-AS-EVIDENCE"
+        ],
+        "strongest_rival": "a ledger list padded with signs the program thinks look economic, which would let the test grade its own expectations",
+        "verdict_rule": "the list is judged entry-by-entry against the postings at its locators; the frozen digest precedes any ledger-sign count (merge-order check, as F047-C10)",
+        "evidence_origin_groups": [
+          "roif-verification",
+          "crosswalk-record"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "research_notes/roif-preprint-check-2026-10-21.md (workspace)",
+          "kind": "verification-record",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "The Roif preprint verification of 2026-10-21: Roif's work is publicly posted on Academia.edu in two 2025 versions, full text, citable by URL (no DOI); the program's held manuscript PDF does not survive (2026-10-08 purge scope). Held outside the repo as a workspace note; its findings are restated in spec §2.1.",
+          "source_id": "roif-preprint-check-2026-10-21",
+          "observed_at": "2026-10-21"
+        },
+        {
+          "ref": "data/crosswalks/yajnadevam_to_parpola_crosswalk.csv",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "The crosswalk of record between the primary layer's sign numbering and published (Parpola) sign identities (SHA-256 d94a62e0…, recomputed at this draft); the §5 ledger-list mapping route.",
+          "source_id": "data/crosswalks/yajnadevam_to_parpola_crosswalk.csv",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "F047-C14",
+      "kind": "requirement",
+      "text": "Execution stops before Asset B is built if an input hash mismatches, if the gazetteer spine does not reproduce its recorded counts, or if the join census cannot account for every primary-layer record in exactly one of its three classes.",
+      "status": "draft",
+      "boundary": "These are spec §3's gates 0.1, 0.2, and 0.3; their failure class is INVALID. The census classes are joined, non-spine site (listed by name with counts), and no site value. No failure is repaired at run time; a repaired input is a new freeze, not a resumed run.",
+      "depends_on": [
+        "F047-C06"
+      ],
+      "assumptions": [
+        "ASM-GATES-BEFORE-OUTCOME",
+        "ASM-PRIMARY-LAYER"
+      ],
+      "alternatives": [],
+      "falsification_tests": [
+        "each gate's verdict is recorded before any classification entry exists; a run whose record shows a classification preceding a gate verdict is non-compliant on its face"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "gate-skipping under time pressure, with an unjoined residue rationalised afterwards",
+        "verdict_rule": "the run's own record is the judge: gate verdicts precede build artefacts in it, in order, or the outcome is INVALID by construction",
+        "evidence_origin_groups": [
+          "gazetteer-spine",
+          "corpus-record"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "data/movement/gazetteer_rows.jsonl",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Spec 027 Stage 0 gazetteer of record (SHA-256 5ac76a30…, recomputed at this draft): 36 source-assertion rows over 30 distinct program_site_id clusters, read at this draft.",
+          "source_id": "data/movement/gazetteer_rows.jsonl",
+          "observed_at": "2026-10-21"
+        },
+        {
+          "ref": "backend/glossa_lab/data/yajnadevam_inscriptions.csv",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "The primary site-attributed corpus layer (SHA-256 c02e3d7b…, recomputed at this draft from the git blob): 5,679 records with site and sign-sequence columns as held; the layer of Specs 027/028.",
+          "source_id": "backend/glossa_lab/data/yajnadevam_inscriptions.csv",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "F047-C15",
+      "kind": "requirement",
+      "text": "If fewer than 12 sites are testable under the two-source rule, or if either the pooled class or the contrast class is empty in the test population, the distribution test does not run: the outcome is INCONCLUSIVE with the classification itself as the finding, its disagreements published in full, and no distribution quantity computed.",
+      "status": "draft",
+      "boundary": "The 12-site floor is design D-09's, carried verbatim. The empty-side clause is this draft's completion of the same gate (DD-047-2): with one side empty the §6.2 ratio is undefined, so no quantity can honestly be computed. Asset B still freezes in this case; the floor is a test gate, not a build gate (F047-C12).",
+      "depends_on": [
+        "F047-C08",
+        "F047-C09"
+      ],
+      "assumptions": [
+        "ASM-TWO-SOURCE-RULE"
+      ],
+      "alternatives": [
+        "computing the shares anyway on a thin classification because the numbers would be interesting (refused: the design makes the classification the finding in exactly this case)"
+      ],
+      "falsification_tests": [
+        "the step-2 record either shows the testable count at or above 12 with both sides non-empty before the first distribution quantity, or it shows the INCONCLUSIVE-classification wording and no quantities; anything else falsifies compliance"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "a thin classification quietly lowered to 10 or 8 testable sites at run time so a verdict can still be quoted",
+        "verdict_rule": "the gate is arithmetic on the frozen asset's status census and precedes the primary in the run order; the §13 outcome classes make it terminal",
+        "evidence_origin_groups": [
+          "design-packet"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Design D-09 (PR #195 packet, §D-09, read in full at this draft): the question, hypothesis, falsifier, step-1 classification build under the two-source agreement rule, step-2 measures, and criteria this spec registers.",
+          "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "F047-C16",
+      "kind": "requirement",
+      "text": "The verdict is assigned mechanically by the partition of spec §6.3: SUPPORTED iff the ratio is at least 1.5, the permutation test (9,999 label shuffles) rejects at the 5% level, and the ledger-sign ratio exceeds 1.0; NOT SUPPORTED iff the ratio is at or below 1.0 or the permutation test does not reject; INCONCLUSIVE in every remaining case.",
+      "status": "draft",
+      "boundary": "No threshold, margin, shuffle count, or clause is adjusted for the observed data. The permutation seed is fixed at this spec's freeze and recorded in the freeze record, before any count exists. The partition is exhaustive: every (R, p, R_ledger) triple lands in exactly one outcome.",
+      "depends_on": [
+        "F047-C03",
+        "F047-C04",
+        "F047-C13",
+        "F047-C15"
+      ],
+      "assumptions": [
+        "ASM-SHARES-CONTROL"
+      ],
+      "alternatives": [
+        "re-deriving thresholds from the test population once its size is known (refused: the design fixes the 1.5 ratio, the 5% level, and the 9,999 shuffles in advance)"
+      ],
+      "falsification_tests": [
+        "the verdict assignment is mechanical from the recorded quantities; any verdict not following this rule from its run's numbers falsifies the outcome record, and any reader can recompute it"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "post-hoc rule-shopping once the ratios are known — in particular, softening a permutation failure into INCONCLUSIVE contrary to the design's NOT SUPPORTED clause",
+        "verdict_rule": "verdicts are recomputed from the published quantities by any reader; the rule text here and in spec §6.3 is frozen before execution",
+        "evidence_origin_groups": [
+          "design-packet"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Design D-09 (PR #195 packet, §D-09, read in full at this draft): the question, hypothesis, falsifier, step-1 classification build under the two-source agreement rule, step-2 measures, and criteria this spec registers.",
+          "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "F047-C17",
+      "kind": "requirement",
+      "text": "The each-source-alone recomputations and the five-largest-sites recomputation of spec §6.4 are reported beside the primary in every outcome product, and no sensitivity result changes the headline verdict.",
+      "status": "draft",
+      "boundary": "Sensitivities expose classification contestability and excavation bias; they are not alternate verdicts. A sensitivity that flatly contradicts the primary is reported as such, prominently — what it may not do is replace the headline word, which only the §6.3 partition assigns.",
+      "depends_on": [
+        "F047-C16"
+      ],
+      "assumptions": [
+        "ASM-SHARES-CONTROL"
+      ],
+      "alternatives": [
+        "promoting the source-alone run that agrees with the hypothesis to co-primary status after the fact (refused: primacy is fixed here, before execution)"
+      ],
+      "falsification_tests": [
+        "an outcome product lacking either sensitivity, or carrying a headline word traceable to a sensitivity rather than to the §6.3 partition, falsifies compliance"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "sensitivity-shopping: quoting whichever recomputation flatters the claim and burying the other in an appendix",
+        "verdict_rule": "the §9 reporting obligations make both sensitivities headline-paragraph-adjacent deliverables; their absence is a defect of the product, recorded as such",
+        "evidence_origin_groups": [
+          "design-packet"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Design D-09 (PR #195 packet, §D-09, read in full at this draft): the question, hypothesis, falsifier, step-1 classification build under the two-source agreement rule, step-2 measures, and criteria this spec registers.",
+          "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "F047-C18",
+      "kind": "requirement",
+      "text": "Every record and product of Spec 047 is internal while the Roif gate stands: nothing derived from its results is surfaced on any public surface, campaign reporting names the member only as 'executed — held under the Roif gate' with no result content, and publication requires the owner's separate GATE act on the specific text, citing Roif's Academia.edu postings.",
+      "status": "draft",
+      "boundary": "The 2026-10-21 verification — Roif's work publicly posted and citable — satisfies the gate's evidence condition but clears nothing by itself: under campaign E-2/R-7 the owner's publication act is separate and later, for this member exactly as for D-02, D-04, and D-10. Internal records, internal status reporting in the prescribed form, and the verdict records themselves are not publication.",
+      "depends_on": [
+        "F047-C01"
+      ],
+      "assumptions": [
+        "ASM-ROIF-GATE"
+      ],
+      "alternatives": [
+        "treating the landed verification as itself clearing publication (refused by the campaign plan Part 8: verification landed and owner-cleared act are both required)"
+      ],
+      "falsification_tests": [
+        "a public-surface audit at campaign acceptance (plan Part 12) that finds any Roif-claim content from this spec on the paper, the website, or any article falsifies compliance"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [],
+        "strongest_rival": "leakage by routine — a status summary, daily article, or paper update drafted from the held record because it was nearby",
+        "verdict_rule": "compliance is judged by the campaign acceptance public-surface audit and by the prescribed reporting form's use in every campaign report naming this member",
+        "evidence_origin_groups": [
+          "campaign-record",
+          "roif-verification"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "2026-10-21-runnable-experiments-campaign-plan.md (owner-approved)",
+          "kind": "campaign-record",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "The campaign plan approved as written 2026-10-21: D-09 is member 8 and builds Asset B inside its own spec (E-6); Roif-claim members execute with results held, never surfaced (E-2, R-7, Part 8); assets are built once and consumed by digest (R-2).",
+          "source_id": "campaign-plan-2026-10-21",
+          "observed_at": "2026-10-21"
+        },
+        {
+          "ref": "research_notes/roif-preprint-check-2026-10-21.md (workspace)",
+          "kind": "verification-record",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "The Roif preprint verification of 2026-10-21: Roif's work is publicly posted on Academia.edu in two 2025 versions, full text, citable by URL (no DOI); the program's held manuscript PDF does not survive (2026-10-08 purge scope). Held outside the repo as a workspace note; its findings are restated in spec §2.1.",
+          "source_id": "roif-preprint-check-2026-10-21",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    },
+    {
+      "id": "F047-C19",
+      "kind": "requirement",
+      "text": "No outcome under Spec 047 establishes that any inscription is a ledger entry, that guilds existed as Roif describes, or anything about Akkadian influence; and the Phase-147 internal validation is not evidence for or against this test's component.",
+      "status": "draft",
+      "boundary": "Also excluded, and stated wherever an outcome is stated: any conclusion about what any sign means. Phase-147 scored other renderings of Roif's model under its own design; importing its verdict into this distribution test would borrow a result across designs. This spec's outcome appends to the claim's record as a dated entry; the Phase-104 record stands unedited beside it.",
+      "depends_on": [
+        "F047-C01",
+        "F047-C03",
+        "F047-C05"
+      ],
+      "assumptions": [
+        "ASM-APPEND-ONLY",
+        "ASM-COMPONENT-DECOMPOSITION"
+      ],
+      "alternatives": [
+        "a mechanism narrative attached to a supported distribution because the distribution 'fits the ledger story' (refused: fitting a story is not identifying a document type)"
+      ],
+      "falsification_tests": [
+        "inspection of every Spec 047 output: a ledger-entry, guild, Akkadian-influence, or meaning claim, or a citation of Phase-147 as bearing on this component, falsifies compliance and is corrected by dated addendum, never by silent edit"
+      ],
+      "metadata": {
+        "framework_kind": "requirement",
+        "layer": "M",
+        "forbidden_assumptions": [
+          "ASM-RESULT-AS-TRANSLATION",
+          "ASM-PHASE147-AS-EVIDENCE"
+        ],
+        "strongest_rival": "the reading in which a clean distribution result quietly upgrades the whole Roif model in the program's summaries",
+        "verdict_rule": "outputs are judged against this boundary at execution close; violations are recorded defects, and the claim consequence is limited to the distribution statement of F047-C01",
+        "evidence_origin_groups": [
+          "design-packet",
+          "phase104-record"
+        ],
+        "boundary_confirmation": "stated-in-claim"
+      },
+      "evidence": [
+        {
+          "ref": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "kind": "design-source",
+          "direction": "supports",
+          "source_quality": "program-record",
+          "description": "Design D-09 (PR #195 packet, §D-09, read in full at this draft): the question, hypothesis, falsifier, step-1 classification build under the two-source agreement rule, step-2 measures, and criteria this spec registers.",
+          "source_id": "docs/research/experiment-designs-2026-10-13/02-roif-and-hunt.md",
+          "observed_at": "2026-10-21"
+        },
+        {
+          "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
+          "kind": "program-record",
+          "direction": "supports",
+          "source_quality": "authoritative",
+          "description": "Phase-104 evaluation (SHA-256 b299905a…, recomputed at this draft): claim indus_valley_script_deciphered_from_myth_65ff0a26_manual_001 stays untested under RULE-SITE — its falsification condition requires a site-typology classification; no such dataset exists in the repo.",
+          "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
+          "observed_at": "2026-10-21"
+        }
+      ]
+    }
+  ]
+}

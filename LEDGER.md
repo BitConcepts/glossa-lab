@@ -7775,6 +7775,102 @@ AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
 
+## 2026-10-21 — Spec 055 (Phase-414) executed — NOT NUMERAL-LIKE
+
+Spec 055 ("Sign 900 Means Six": identify the sign, then
+test it as a numeral; design D-15) was executed as
+Phase-414 under its frozen contract (freeze digest
+42ef82829ade894918b0bf946ac44354224d689202e2f7bf00eb747821bdedfc),
+in Wave 3 group 2 of the runnable-experiments campaign.
+The execution gate was satisfied before the run: OSF
+registration tbyqg is approved + public.
+
+Step 0 passed in full: every spec section 2 input pin
+recomputed by two independent routes at the run's base
+(3200b7b5) and matched (claim record e9819089…, held
+cleaned text 1275b795…, literature record 92e19e6d…,
+Phase-104 evaluation 2d0b83e8…, crosswalk registry
+8a0b2a82…, lane-2 drafts 3f645c9a…, anchors df0cf620…);
+the source produced from the held copy with the
+sign-900 material located verbatim (Table 1's numeric
+grid did not survive the held copy's extraction —
+caption and prose recovered, nothing reconstructed);
+the recovery record written before any verdict
+wording.
+
+Stage 1 — IDENTIFIED. The source's sign list is named
+from the document's own text (four verbatim naming
+statements, printed pp. 57, 59, 85, 88): the extended
+Wells (2011, 2015) sign list of 702 distinct signs.
+The drawn sign was matched by drawn form only: the
+named list's sign 900 is the single-arc grapheme (the
+verified Phase-123 Wells segmentation witness, row
+M287, from Wells's PhD 2006 Figure 3.2 plates), and
+exactly one registry row is a plain right parenthesis
+with no added element — P154 ("Right parenthesis
+(perhaps with a backward curve at the bottom)"),
+whose Mahadevan crosswalk is M287. The registry's
+W900 cell on that row is recorded as the frozen trap
+(F055-C07) and was not used as the identification.
+The recovery is preserved in the section 6 form:
+specs/055-sign900-numeral/source-table-recovery.json
+(schema glossa.source-table-recovery/1), SHA-256
+439f1449b8d7707d1feb88ef34e2edf90d3d192ba5c6f30bfa29cdf34b48852d.
+The sign-700 statements are located by locator only
+(printed p. 70; pp. 72–74) and adjudicated in no way:
+Design D-16 does not join this campaign even though
+this recovery is the act that would unblock it; D-16
+waits for its own planning gate (campaign decision
+E-7).
+
+Gate 0.4 passed: the strict-corpus layer (the
+Mahadevan-lineage corpus as held — the indusscript-m77
+records of the tracked primary corpus, the executed
+Spec 033 precedent for this layer) was exported in
+full and pinned (specs/055-sign900-numeral/
+strict-corpus-export.jsonl, SHA-256
+1e421af1b75f09f49c928ef7eaa86e4c9a382e059d4771f164256a069896e02c;
+2,906 records, 11,507 tokens); the identified sign,
+Mahadevan 287, stands at 79 occurrences, above the
+frozen floor of 5.
+
+Stage 2 outcome, in the frozen wording: "The sign
+that Fuls's paper numbers 900, identified in Spec
+055's recovery record as P154, does not behave as a
+numeral sign behaves in the pinned strict corpus: on
+3 of the three frozen measures it sits inside the
+range of frequency-matched ordinary signs. The
+numeral reading the fragment carries is contradicted
+at the behaviour stage. The identification itself
+stands as recovered; what fails is the behaviour the
+reading predicts." The known-numeral set was fixed
+before counting from the source's published
+stroke-sign identification (29 Mahadevan identifiers;
+the target excluded; Signs 415 and 70 hedged and
+excluded under DD-055-14); the control set by the
+frozen nearest-10 rule; a dry-run on Mahadevan 342
+preceded the target (DD-055-16). Measures for the
+target: short-text share 0.164557, numeral adjacency
+share 0.455696, positional entropy 2.708415 bits —
+numeral-side 1, control-side 3, NOT NUMERAL-LIKE by
+the section 5.3 mapping alone. The claim hypothesis
+(F055-C03) is falsified at the behaviour stage. No
+outcome of this spec establishes the value six: the
+source's own argument for six is preserved in the
+recovery record as source material and was evidence
+at no stage. Records: reports/phase414_results.json
+(SHA-256 173a67a1d22651b1da03da0c40457e7234298fc6686dc22f3c2b6a25a2a5a6d5),
+reports/phase414_sign900_report.md, graph node
+IndusPhase414Sign900Numeral (registration verified by
+import), the appended first_check entry on the
+claim's record, and specs/055-sign900-numeral/
+outcome.md. Anchors asserted byte-identical before
+and after (df0cf620… at both points).
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.
+
 ## 2026-10-21 — Spec 043 (Phase-410) EXECUTED: PRED-2026-012 closed PROVENANCE — CANNOT BE RUN AS WRITTEN at step 0, check 0.3 (unscored)
 
 Phase-410 executed the frozen Spec 043 contract

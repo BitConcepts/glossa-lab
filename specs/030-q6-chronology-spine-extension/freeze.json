@@ -67,19 +67,24 @@
   }
  },
  "sources": {
-  "specs/030-q6-chronology-spine-extension/freeze.md": "ce2f4d5745f0ccc74b8bb8101b2729b25cdd163ae98ba0ab3e57830d7209c9b8",
+  "specs/030-q6-chronology-spine-extension/freeze.md": "35feba694d9a60aca8b4528abaf74dc3a1ff850a2f3233f197a436944698667c",
   "specs/030-q6-chronology-spine-extension/spec.md": "1eaca37acfc98c0d67d6c7abaa262bfa7490109313e63647c181d1871be85822",
   "specs/030-q6-chronology-spine-extension/claims.json": "6465ddb1a84fe092e4db847159bb768ebc784750ac9754db951cb4f3df90c0c3",
-  "specs/030-q6-chronology-spine-extension/adjudication.md": "f962f910d81cb63f44abb4db0e1be2ee0fb9fca45f5242f23656113ddd609738",
   "specs/030-q6-chronology-spine-extension/aee/recovery-specify.md": "ac3aaf354a89222c18ba2b8ba5fbbe13ef066e728e04c9ffe54682c96f33ced5",
   "specs/030-q6-chronology-spine-extension/aee/freeze-aee-note.md": "277d38d3f76dad27daea7468ef5a7eb9f3d25c5ce85af70f05cbd0db59ed8ec3",
-  "specs/030-q6-chronology-spine-extension/build_freeze.py": "de2d30f7411824c44e89cd2b865cad9db8751410e0d68bb2ef814de99de1f2ae",
-  "backend/tests/test_spec030_freeze.py": "4b0944e3c6d3ddceaa7dfcfb549641754e7c9656ae25f117e9ad985a374c29ff"
+  "specs/030-q6-chronology-spine-extension/build_freeze.py": "e39290b62848f569d624841736a9084368075a694bfdce1db29e72d63ac4b542",
+  "backend/tests/test_spec030_freeze.py": "6fd7fe4e1ac9e6eb4ef7ec42e2eb604e991b78f0c07ccb30c176a46142607576"
+ },
+ "prefix_pins": {
+  "specs/030-q6-chronology-spine-extension/adjudication.md": {
+   "sha256": "f962f910d81cb63f44abb4db0e1be2ee0fb9fca45f5242f23656113ddd609738",
+   "bytes": 5867
+  }
  },
  "environment": {
   "python": "3.12.3",
   "platform": "Linux",
   "aee": "1.0.4"
  },
- "digest": "3a61c63a26ffada3c21bf8b718610e6debe7f9c9ff58bf8ff736cbb7c3db00e9"
+ "digest": "45ab6a1352f8e01ee7aebee88e3219a9af7d67908265172b0e321a302722c500"
 }

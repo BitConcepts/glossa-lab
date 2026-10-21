@@ -43,6 +43,19 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book."
+      },
+      "first_check": {
+        "spec": "055",
+        "phase": "Phase-414",
+        "date": "2026-10-21",
+        "actor": "spec055-phase414-execution",
+        "kind": "first-check (identification + numeral-behaviour test)",
+        "identification": "IDENTIFIED \u2014 the source document's sign list is named from its own text as the extended Wells (2011, 2015) sign list of 702 distinct signs, and the drawn sign its number 900 labels is matched by drawn form to crosswalk registry row P154 (Mahadevan 287); the registry's W900 cell on that row was not used as the identification (F055-C07). Recovery record: specs/055-sign900-numeral/source-table-recovery.json (schema glossa.source-table-recovery/1).",
+        "outcome": "NOT NUMERAL-LIKE",
+        "wording": "The sign that Fuls's paper numbers 900, identified in Spec 055's recovery record as P154, does not behave as a numeral sign behaves in the pinned strict corpus: on 3 of the three frozen measures it sits inside the range of frequency-matched ordinary signs. The numeral reading the fragment carries is contradicted at the behaviour stage. The identification itself stands as recovered; what fails is the behaviour the reading predicts.",
+        "record": "specs/055-sign900-numeral/outcome.md",
+        "delivery": "specs/055-sign900-numeral/source-table-recovery.json",
+        "note": "No outcome of Spec 055 establishes the value six. Design D-16 does not join the campaign on this recovery (decision E-7); the sign-700 statements are located by locator only in the recovery record."
       }
     },
     {

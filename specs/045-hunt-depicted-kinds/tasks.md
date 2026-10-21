@@ -124,23 +124,48 @@
       fires the campaign cluster rule for
       D-06 and D-13. **No join precedes this
       task.**
-- [ ] **E4 — Graph-first build** (H15/H23):
+- [x] **E4 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E5 — Step 0** (spec §6 gates
+      Executed 2026-10-21 as Phase-411
+      (step 0 first, under the campaign's
+      Group 1 execution order): script
+      `backend/scripts/phase411_hunt_depicted_step0.py`,
+      node `IndusPhase411HuntDepictedStep0`,
+      registration verified by import before
+      the run.
+- [x] **E5 — Step 0** (spec §6 gates
       0.1–0.4): input integrity; positional
       reproduction (805/2,267 and the
       40/61/20 classes); population census
       with Asset A coverage; freeze-order
       proof. Any failure stops the run as
       INVALID before any model quantity.
+      Executed 2026-10-21: gate 0.1 PASS;
+      **gate 0.2 FAILED — the execution
+      closed INVALID** (pinned corpus
+      3,463 inscriptions of length >= 3
+      against the recorded 2,267; the
+      40/61/20 classes exhibited by no
+      record of record; the Firestore V3
+      corpus the quantities belong to
+      absent from the tree); gates 0.3 and
+      0.4 NOT REACHED. E1–E3 (the Asset A
+      build) never ran and E6 cannot run
+      under this frozen contract; the
+      record is `outcome.md` in this
+      directory.
 - [ ] **E6 — Primaries** (spec §5): models
       P and PH on the frozen split; the
       closing head-on comparison, per-sign
       scores published; the §5.3 sensitivity.
       A control failure records NOT
       ADJUDICATED with the control named.
-- [ ] **E7 — Outcome:** the §9 record —
+- [x] **E7 — Outcome:** the §9 record —
+      delivered 2026-10-21 in the closure
+      form the INVALID outcome prescribes
+      (`outcome.md`; no §5 quantities exist
+      to report) —
       results JSON and report under the
       headline rules (claim identifier, Asset
       A digest and per-kind counts, both

@@ -7710,3 +7710,67 @@ the Roif gate.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-21 — Spec 045 step 0 EXECUTED (Phase-411): INVALID at gate 0.2 (positional reproduction)
+
+Spec 045 was executed at step 0 as Phase-411
+under the frozen contract (freeze digest
+5d8254dd…; OSF registration 4mt9k approved
+and public), in Wave 3 Group 1 of the
+runnable-experiments campaign, with step 0
+running before the step-1 Asset A build as
+the Group 1 executions of Specs 044 and 047
+ran their step-0 gates first. Gate 0.1 PASS:
+every spec §4 input recomputes to its freeze
+pin, verified by two independent routes
+(positional record 0e546962…, Phase-43 record
+78a6c219…, corpus layer c02e3d7b…, crosswalk
+4ace1a61… — 205 rows, 187 distinct sign keys,
+anchors df0cf620…). **Gate 0.2 FAIL — the
+execution closed INVALID in the frozen §5.5
+wording.** The pinned corpus carries 3,463
+inscriptions of length >= 3 against the
+recorded 2,267; the 40/61/20 strong-sign
+classes are exhibited by no record of record
+(the Phase-43 record exhibits 10 of its 20
+terminal-strong signs and no initial or
+medial member list, and states no position
+rule, count floor, threshold, or profiled-set
+rule); and the corpus the recorded quantities
+belong to — the Firestore V3 corpus (3,137
+sequences), named by the Batch-5 record of
+the same test — is absent from the tree (its
+loader dump path does not exist on main).
+No threshold was invented, no neighbouring
+battery borrowed, and no corpus substituted:
+the only tripartite code path in the tree is
+Phase-45's iconography test, whose own rule
+yields 75/22/5 on the Holdat roles, not the
+recorded classes. Gates 0.3 and 0.4 were NOT
+REACHED. Asset A was not built — gates A1–A6
+never ran, no sign was classified, and **no
+Asset A digest exists** for the D-06 / D-13
+dependents to pin (stated plainly in the
+outcome record for wave planning). The D-18
+feed state was recorded, not consumed: Spec
+046's concordance-297.json re-verified
+(772db4df…, empty signs, IDENTIFICATION
+FAILED closure form) — an empty feed, neither
+consumed nor reconstructed. No model was
+fitted, no closing score computed, and no
+verdict recorded; the claim
+without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_001
+stands IN QUESTION, partially supported for
+position only, exactly as recorded. This
+closure is about runnability, not about
+Hunt's account or the grammar account, and
+it quotes no other spec's closing measure
+(DD-045-19). Anchors asserted byte-identical
+before and after (df0cf620…). Records:
+specs/045-hunt-depicted-kinds/outcome.md,
+reports/phase411_results.json,
+reports/phase411_step0_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

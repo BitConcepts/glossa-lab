@@ -7273,3 +7273,50 @@ assigned by the freeze itself.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
+## 2026-10-20 — Spec 039 execution (Phase-403: gazetteer period assignments)
+
+Spec 039 was executed as Phase-403 under the
+frozen contract (freeze digest ec53a841…;
+freeze PR #226 merged at 05f961fc). The pre-act
+gazetteer verified against its frozen pin
+(5ac76a30…; 36 rows, 30 sites, assignments null
+×36) and was not modified. From published
+determinations only, mapped through the frozen
+table: **11 of 30 sites assigned** (17 of 36
+rows), **1 contested** (banawali — the site
+report maps to {Mature Harappan}, a 2014
+journal review to {Early Harappan, Mature
+Harappan}; both retained), **19 blank** (9
+OUTSIDE_LABEL_SET, 8 NO_PUBLISHED_DETERMINATION,
+2 UNMAPPED_SCHEME_VALUE). Output A:
+data/movement/gazetteer_rows_assigned.jsonl
+(sha256 64f288d3…), byte-identical to the
+pre-act file outside the assignment field
+(independent recount). The margins verification
+step (DD-039-5) re-ran the F031-C10 eligibility
+gate over Output A: 8 period-eligible sites
+with contested counted, 7 with contested
+excluded — and the step closes at the link-mass
+floor: in-universe link mass is unchanged at 2
+link-eligible sites and 1 linked pair against
+floors of 8 eligible sites and 10 linked pairs.
+Output C: a new version of Zenodo record
+23300361 was deposited through the release gate
+(PASS, 3/3) — record 23523454, DOI
+10.5281/zenodo.23523454 — carrying the assigned
+gazetteer for the 21 verified-open rows and the
+assignment report; the existing version was not
+edited. The OSF contract registration
+(https://osf.io/w38ha/) stands FILED — PENDING
+APPROVAL at this entry; its completion record
+follows on verification. The labels are finding
+aids, not dating evidence; no study outcome
+changed: Q7 still fails its link-mass floors,
+Q6 remains NOT-YET-TESTABLE, and Spec 030 Ask 2
+stays RESERVED. Outcome record:
+specs/039-gazetteer-period-assignment/outcome.md;
+machine record: reports/phase403_results.json;
+report: reports/phase403_gazetteer_assignment_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

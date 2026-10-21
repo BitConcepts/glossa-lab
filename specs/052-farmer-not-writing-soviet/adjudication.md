@@ -404,3 +404,148 @@ patched mid-pass).
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## 8. Freeze-stage adjudication — 2026-10-21: FREEZE FAILURE (gate 0.5 — BATTERY NOT PINNABLE)
+
+This section records a freeze attempt and its outcome. It is a
+campaign bookkeeping act only: it is not a freeze, and it repairs
+nothing.
+
+- **Freeze attempt.** On 2026-10-21 the freeze for Spec 052
+  (D-01 arm A, draft PR #249, branch
+  `spec-052-farmer-not-writing-soviet-draft`, head `c31b9fca`)
+  attempted gate 0.5: derive the Phase-43 positional battery's
+  definition, element by element with citations, from the record
+  of record on `main`.
+- **Outcome: FREEZE FAILURE — gate 0.5, BATTERY NOT PINNABLE.**
+  No element of the battery definition is fully derivable from
+  any Phase-43 record. No threshold was invented and no constant
+  was borrowed from a neighbouring battery. Under the draft's
+  own terms (F052-C09, DD-052-5), the spec therefore cannot
+  freeze.
+
+### 8.1 The six missing-rule findings (condensed)
+
+1. **Position rules — not stated.** Nothing in any Phase-43
+   record states which occurrence is initial, terminal, or
+   medial, or how short (length-1 or length-2) sequences are
+   handled. The results file's rates partition a sign's
+   occurrences (terminal + initial + medial rates sum to 1.0),
+   but the rule that produces that partition is nowhere stated
+   for Phase 43.
+2. **Count floors — none stated.** No floor appears in the
+   Phase-43 record. The listed TERMINAL_STRONG signs have totals
+   of 22 to 1,318, which only bounds any floor at ≤22; it does
+   not fix it.
+3. **Final-position strength threshold — not locatable.** The
+   listed TERMINAL_STRONG signs carry terminal rates of 0.683
+   to 0.892, bounding any threshold at ≤0.683 only. No
+   TERMINAL_MODERATE sign's rate is given anywhere, so the
+   STRONG/MODERATE boundary cannot be located from below.
+4. **Opening-formula counting rule — not stated, and the
+   record contradicts itself.** The pair (267, 99) is recorded,
+   but the results file gives its bigram count as 251 in one
+   entry and 278 in entry T2_4, and the recorded dominance of
+   0.74 matches no stated denominator (251/356 = 0.7051, not
+   0.74). Which pair counts, and how, is not derivable.
+5. **Chance-baseline method — absent.** No baseline, null,
+   permutation, or significance field exists in the results
+   file. The claim record's phrase "above random baseline"
+   states no method and no number.
+6. **Soviet mapping — independently impossible.** Per Spec 020
+   facts F3/F5/F6: the Soviet dataset contains no inscription
+   sequences; K1965-T4 is verified as 8×7 joint counts (initial
+   pairs × final signs) with no per-sign denominators, so no
+   per-sign rate can be computed; and no Marshall↔Mahadevan map
+   is extractable from sources on `main`. The battery, defined
+   over inscription texts in Mahadevan numbering, has no honest
+   input mapping from this material.
+
+Further record facts: the results file lists only 10 of the
+claimed 20 TERMINAL_STRONG signs; no Phase-43 script or report
+exists on `main` — the tree's only phase43 path is
+`outputs/phase43_all.json`; the corpus-v3 loader's Firestore
+dump is absent from the repository, so even a reproduction run
+cannot be run; and five neighbouring batteries carry five
+incompatible constant sets, so borrowing any of them would be
+invention, not derivation.
+
+### 8.2 Searches performed
+
+- The full recursive tree of `main`: 5,435 blobs, searched for
+  any phase43 / phase_43 / phase-43 path (exactly one hit, the
+  results file above) and for the loader's data file (absent).
+- The Phase-43 claim records, including the farmer claim record
+  and the fragment records that carry its strings.
+- Specs 019, 020, and 033 in full: none states Phase-43 battery
+  rules; Spec 020's F3/F5/F6 record governs the mapping finding.
+- The neighbouring batteries (Phase 6.2/7 structural analysis,
+  the Phase-113 battery, Phase-45 T3, the candidate
+  prefix/suffix report, and Phase-33 positional profiles),
+  confirming five incompatible constant sets.
+- GitHub code search for the battery's labels and names; two
+  queries (`T2_2` and `terminal_suffix`) were cut off by the
+  code-search API rate limit and are recorded as a residual —
+  both are key names internal to the results file, and the
+  completed sweeps enumerated every file using the battery's
+  label or name.
+
+### 8.3 Pins verified
+
+Verified by two routes (contents raw and git blob), all
+agreeing:
+
+- `outputs/phase43_all.json` — SHA-256 `78a6c219…`
+  (78a6c21908b9362854c54dd3d820d717be22feab3af11135663fa14aaf554fe4)
+- Farmer claim record
+  (`glossa-indus/claims/extracted_claims/farmer_sproat_witzel_2004.json`)
+  — SHA-256 `c4cf441f…`
+  (c4cf441fda420bcbf7550984404580c3fdb181818909ff02009b13fb1ab0f9da)
+- Corpus-v3 loader (`backend/glossa_lab/data/indus_corpus_v3.py`)
+  — SHA-256 `3e86c934…`
+  (3e86c934db136ba12c7370c2696573c27b7ec0fc924f231d285360fa7346846b)
+- K1965-T4 CSV
+  (`data/soviet_positional/kondratov1965_table4_stable_initials_finals.csv`)
+  — SHA-256 `e2933bf0…`
+  (e2933bf0b36c9db90de2eddac083c215a0e9c6e98dd9f4c580d359da68443f1f)
+
+### 8.4 What did not happen
+
+- **Phase-412 was NOT allocated.** Allocation is a freeze act,
+  and no freeze occurred.
+- No AEE hooks were run, no digest was computed, and no OSF
+  registration was filed.
+- The other OPEN items in §5 stand undecided. OPEN-1 (the
+  battery definition) is antecedent: deciding the remaining
+  items would have been freeze acts, and there is no freeze.
+  OPEN-2 through OPEN-6 are neither confirmed nor overturned
+  by this entry.
+
+### 8.5 Unblocking conditions and disposition
+
+This failure would be unblocked by a record of record supplying
+what is missing:
+
+1. The original Phase-43 script, or a contemporaneous numeric
+   methods record, stating the position rules, the count
+   floors, the strength threshold, the opening-pair counting
+   rule and dominance denominator, and the chance-baseline
+   method; or
+2. An owner amendment re-scoping Spec 052 to a new,
+   explicitly defined battery — a design change, honestly
+   labelled as a new test rather than as the frozen Phase-43
+   battery; and, for any mapping variant,
+3. A frozen Marshall↔Mahadevan map plus per-sign denominators
+   for the T4 signs — in practice, an inscription-level
+   Soviet-era corpus.
+
+**Disposition: the defect queues as an amendment** (a new mini
+planning gate) under Part 7 of the approved campaign plan.
+This branch is not repaired in-pass, and draft PR #249 remains
+open as the record.
+
+---
+
+*AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution §VI.*

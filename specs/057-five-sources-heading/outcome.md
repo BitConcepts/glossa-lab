@@ -656,6 +656,94 @@ at both points — byte-identical, asserted.
   pattern — this section is completed by
   append, not edited.
 
+## 8.1 Landing record (appended 2026-10-21, after merge)
+
+- Record PR: #280 (branch
+  spec-057-phase419-execution), merged as
+  commit 8294484338a52de1cbeefce809119265228eb0e2.
+  #280 replaced #271: after #271's first CI
+  run, the platform produced no check runs
+  for its later commits (three successive
+  synchronize/reopen events, zero check runs
+  on 4cf4c3a2, c17cece8, cf94b4c1); a run was
+  obtained on the replacement PR once its
+  merge state was clean. #271's first run
+  (39626710616) had failed on exactly one
+  backend test — this execution's own
+  disposition test, defeated by the suite's
+  claims-store regeneration — documented in
+  §8 above and fixed at 4cf4c3a2.
+- CI of record: run 39636979722 on the merged
+  head 0592efc6 — all seven jobs success by
+  job conclusion (Backend tests (pytest),
+  Evidence Graph script smoke tests, Indus
+  public validation checks, Frontend tests
+  (Playwright), Shell wrappers
+  ubuntu-latest / macos-latest /
+  windows-latest). Two earlier runs on
+  intermediate merge heads of the same PR
+  were also fully green (39635554615 at
+  9bb7bccd; 39631958061 at 0637bc3e, whose
+  macOS job was cancelled while queued on
+  attempt 1 and succeeded on re-run). Parallel
+  campaign merges moved main three times
+  during this PR's life; each move was taken
+  in by a merge commit resolving only the
+  graph-registration and LEDGER append seams,
+  and the disposition entry and Spec 055's
+  first_check entry coexist in the S-1 claims
+  file on main.
+- Run digests re-verified on main at the
+  merge commit by two routes (git blobs at
+  82944843… and the GitHub raw-content API):
+  reports/phase419_results.json
+  d30fa456071a57a38b39d1b6e2e1ea2fff7aa4660d2aa2a
+  f433fa94e64fcd4f9 — full value
+  d30fa456071a57a38b39d1b6e2e1ea2fff7aa4660d2aa2af433fa94e64fcd4f9;
+  reports/phase419_five_sources_report.md
+  b8f6e4d1ae30cea6277f5d23a6dec23f6d6f93ff99d4adf236989c6f4b0a7302;
+  passages 25a0a558… (S-2), 88f29146… (S-3),
+  af28153c… (S-4); intakes 46fc2879… (S-3),
+  5d8d2a9f… (S-4). The §5 disposition entry
+  is present on main (form superseded;
+  claim_status/stage still untested/created),
+  and the root LEDGER entry is present.
+- Foundation check (H21) at the merge
+  commit: run on the owner's desktop
+  (TRISTEN-DESKTOP, via the desktop relay)
+  because this VM's write restriction
+  engaged mid-landing and blocked local git
+  writes; a fresh clone was checked out at
+  8294484338a52de1cbeefce809119265228eb0e2
+  and the two Holdat CSVs were supplied from
+  the existing local downloads (transfer
+  tarball SHA-256 509dc4b6…, corpus CSV
+  62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e,
+  roles CSV
+  eb6d3b6ae195a2570e098dc6779dbd6c7bea97da5c4714bf406c3bb98f9d2aaf,
+  both re-verified on the desktop). Result:
+  40 checks passed, 0 failed, 8 warnings —
+  the standing figure.
+- Terminal outcome, restated in the frozen
+  §7.1 class C wording: Five sources were to
+  be accounted for; 2 yielded a recovered
+  claim ['fuls2013_positional_analysis_057_recovered_0001',
+  'wells2015_appendix_ii_positional_analysis_057_recovered_0001'],
+  1 passage(s) were located and state no
+  checkable finding ['S-2'], and 2 source(s)
+  could not be located after the stated
+  search ['S-1 (HEADING NOT PRESENT IN HELD
+  TEXT)', 'S-5 (HEADING NOT PRESENT IN HELD
+  TEXT)']. The unblocking act for each
+  unlocated source is named on its row. The
+  heading record is not retired while a
+  source remains unlocated. — counts
+  (r, e, u) = (2, 1, 2); disposition:
+  superseded. This act recovered what five
+  passages state. It checked none of it.
+- The campaign state file was not updated
+  (per the execution order).
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

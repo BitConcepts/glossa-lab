@@ -93,7 +93,7 @@
       allocated (DD-046-7), and the spec's OSF
       contract registration filed under
       campaign decision E-1.
-- [ ] **L7 — Freeze PR merged**, house gates
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
 
@@ -106,10 +106,10 @@ Asset A freezes.** Its `concordance-297.json`
 including an empty-feed closure — must exist
 before Spec 045's step 1 build consumes it.
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0** (spec §3 gates
+- [x] **E2 — Step 0** (spec §3 gates
       0.1–0.3): input integrity against the
       freeze pins; source book produced from
       the held copy with the §1 passage
@@ -120,7 +120,7 @@ before Spec 045's step 1 build consumes it.
       STEP 0 in the named class, produces
       `concordance-297.json` with its closure
       block, and ends the execution here.
-- [ ] **E3 — Step 1, identification** (spec
+- [x] **E3 — Step 1, identification** (spec
       §4): the source's sign list named from
       the book's own apparatus; Wells's sign
       297 matched by drawn form to a
@@ -157,6 +157,29 @@ before Spec 045's step 1 build consumes it.
       LEDGER entry; anchors asserted
       byte-identical before and after;
       foundation check reported as measured.
+
+
+## Execution record — 2026-10-21 (Phase-405)
+
+Executed in Wave 3 group 1 under the frozen
+contract, the OSF gate satisfied (dnts8 approved
++ public). **E1 done** (graph-first build;
+registration verified by import before the run).
+**E2 done** (step 0 passed in full). **E3 done**
+(the list was named from the apparatus; the drawn
+sign could not be matched — the execution closed
+as IDENTIFICATION FAILED (sign unmatched) with
+the closure-form delivery, as E3 prescribes).
+**E4 not reached** (no scoring on a step-1
+closure; left unchecked deliberately). **E5
+substantially done** — delivery, outcome record,
+claim first-check append, LEDGER entry, and the
+anchors assertion are all on this record; the
+foundation-check figure is appended to
+`outcome.md` §7 after the record merge, in the
+Spec 039 completion pattern, at which point E5
+is checked. Outcome record: `outcome.md` in this
+directory.
 
 ---
 

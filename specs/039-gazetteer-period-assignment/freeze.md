@@ -1,19 +1,23 @@
 # Spec 039 — Freeze Record (Gazetteer Period Assignment: the Spec 027 §6.2 Act)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-20
+> ## FROZEN — 2026-10-20
 >
-> This record is finalised at the freeze act.
-> The digest in `freeze.json` at this draft is a
-> **draft digest**, computed by `build_freeze.py`
-> over this draft contract (register 0.5-draft)
-> under the owner's decisions of 2026-10-20
-> (`adjudication.md`). At the freeze act — in the
-> bundle sequence (`plan.md`) — the AEE lifecycle
-> hooks run over the register first, and the
-> digest is recomputed **exactly once** over the
-> recovered register and the finalised freeze
-> texts (the Spec 035 ordering). The draft digest
-> decides nothing and is not the freeze digest.
+> This contract was frozen on 2026-10-20 under
+> the owner's standing pipeline authorisation of
+> 2026-10-20 (the gazetteer act authorised,
+> bundled with D-25, and sequenced after Specs
+> 038 and 037; `adjudication.md` §§1, 4). The
+> AEE lifecycle hooks ran over the register first
+> (register recovered to 0.7-draft;
+> `aee/freeze-aee-note.md`), and the digest in
+> `freeze.json` was then computed **exactly
+> once** over the recovered register and the
+> finalised freeze texts (the Spec 035
+> ordering). The freeze also files this spec's
+> own OSF registration (DD-039-6;
+> `osf-spec-registration.md`, completed by append
+> after filing). Execution runs as **Phase-403**
+> under this frozen contract.
 
 ## 1. Basis
 
@@ -36,26 +40,27 @@ null on all 36 rows), Spec 031's frozen period
 rule (F031-C10), and the Phase-395 margins record
 (0 eligible sites; in-universe link mass 2 sites /
 1 pair against floors of 8 / 10) — all verified
-first-hand at this draft (`adjudication.md` §3).
+first-hand at draft (`adjudication.md` §3).
 
-The freeze also decides the open points
+The freeze decided the open points
 (`adjudication.md` §4): **DD-039-1** (the label
-set; recommended: Early / Mature / Late Harappan),
-**DD-039-2** (the source hierarchy; recommended:
-four citation tiers, never a resolution rule),
-**DD-039-3** (when a TwoRains determination counts
-as published; recommended: journal articles,
-their published supplements, and published report
-series, with a locator — theses, project datasets,
-and deposits do not count, and doubtful venues
+set is Early / Mature / Late Harappan), **DD-039-2**
+(the four-tier source hierarchy, presentation
+order only), **DD-039-3** (a TwoRains determination
+counts as published only in a peer-reviewed journal
+article, its published supplement, or a published
+report series, with a locator; doubtful venues
 default to not counting), **DD-039-4** (Masudpur
-establishment; recommended default: not in this
-act), **DD-039-5** (the margins re-run as this
-act's verification step; recommended: yes,
+is not established in this act; the act is confined
+to the existing 30 sites), **DD-039-5** (the
+margins re-run is this act's verification step,
 confined to the period-eligibility gate), and
-**DD-039-6** (the spec's own OSF contract
-registration; proposal: yes, per the DD-035-4 /
-DD-036-4 precedent).
+**DD-039-6** (this spec files its own OSF contract
+registration at the freeze). **DD-039-7** allocates
+the execution phase as **Phase-403** (Phase-400 =
+Spec 036, Phase-401 = Spec 038, Phase-402 =
+Spec 037). **DD-039-8** adopts the DD-038-10 /
+DD-037-9 AEE gate reading.
 
 ## 2. Machine record
 
@@ -64,7 +69,8 @@ JSON record (framework026 `build_freeze`, computed
 by `build_freeze.py` in this directory). Covered
 sources (nothing else decides the question):
 
-- `specs/039-gazetteer-period-assignment/freeze.md` (this document)
+- `specs/039-gazetteer-period-assignment/freeze.md` (this
+  document)
 - `specs/039-gazetteer-period-assignment/spec.md`
 - `specs/039-gazetteer-period-assignment/claims.json`
 - `specs/039-gazetteer-period-assignment/adjudication.md`
@@ -77,7 +83,7 @@ lifecycle bookkeeping and are not digest-covered
 (the house rule since Spec 026: plans change as
 work proceeds).
 
-## 3. What the freeze would fix
+## 3. What the freeze fixes
 
 - **The evidence standard** (spec §3 / F039-C02,
   C03): published period determinations only,
@@ -85,10 +91,12 @@ work proceeds).
   spine dates, analogy, or unpublished material.
 - **The label set and mapping discipline**
   (spec §4 / F039-C05): the DD-039-1 set;
-  scheme-aware mapping under a table frozen
-  before any assignment; unmapped values yield
-  blanks with reason codes, never improvised
-  mappings.
+  scheme-aware mapping under the table frozen in
+  spec §4 before any assignment (entries
+  MAP-EXPLICIT-*, MAP-RANGE-*, MAP-HARP-*,
+  MAP-JHUKAR, and MAP-CEMETERY-H; no other entry
+  exists); unmapped values yield blanks with
+  reason codes, never improvised mappings.
 - **The disagreement posture** (spec §5 /
   F039-C09, C10): contested assignments flagged
   and carried verbatim; no majority vote; no

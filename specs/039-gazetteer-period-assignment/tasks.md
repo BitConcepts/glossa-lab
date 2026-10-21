@@ -1,14 +1,15 @@
 # Spec 039 — Tasks
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-20
+> ## PLAN — FROZEN 2026-10-20
 >
 > Adjudication inputs are recorded in
 > `adjudication.md` (the owner's decisions of
 > 2026-10-20: the act authorised and bundled with
 > D-25; evidence standard Option 1 — both DECIDED;
 > and the owner's sequencing instruction). The
-> freeze and execution tasks remain gated on the
-> bundle sequence in `plan.md` §2.
+> freeze was taken at the bundle step in
+> `plan.md` §2; the execution tasks run as
+> Phase-403 under the frozen contract.
 
 ## Lifecycle
 
@@ -35,37 +36,41 @@
       `backend/tests/test_spec039_freeze.py`; the
       AEE lifecycle hooks have **not** run on this
       register (L3).
-- [ ] **L3 — AEE lifecycle hooks (FREEZE GATE —
-      not run on this draft).** At the freeze act,
-      run `run_aee.py assess` after_specify,
-      after_plan, and after_tasks over the claim
-      register, on the adopted engine (the aee
-      1.5.0 adoption precedes this act's freeze in
-      the bundle sequence); the gate is **pass**,
-      and a stricter outcome blocks the freeze
-      until its named recovery is complete and
-      recorded. Deliberate ordering (the Spec 035
-      record): any recovery round changes claim
-      text, and the freeze digest is computed over
-      the recovered register exactly once, at
-      freeze.
+- [x] **L3 — AEE lifecycle hooks (FREEZE GATE).**
+      Run at the freeze act, 2026-10-20, under aee
+      1.5.0: after_specify cleared in three
+      adjudicated rounds (register recovered to
+      0.7-draft); after_plan and after_tasks clean
+      at first pass. At every hook: zero
+      correctness failure modes and no claim below
+      the 0.70 threshold; the residual records are
+      the 15 FR-2.3 draft-cap records (the
+      DD-039-8 gate reading). Recorded in
+      `aee/freeze-aee-note.md`. Deliberate ordering
+      (the Spec 035 record): any recovery round
+      changes claim text, and the freeze digest is
+      computed over the recovered register exactly
+      once, at freeze.
 - [x] **L4 — Design PR.** This draft, opened as a
       DRAFT PR and left unmerged for the freeze
       decision in the bundle sequence, CI state
       reported honestly.
-- [ ] **L5 — Freeze.** At the bundle step: hooks
-      pass (L3), `freeze.md` finalised,
-      `freeze.json` recomputed over the recovered
-      register and the finalised freeze texts;
-      freeze tests pin the digest replay, the
-      definition constants, the register
-      integrity, and the cited records (gazetteer
+- [x] **L5 — Freeze.** Executed 2026-10-20 at
+      the bundle step under the owner's standing
+      pipeline authorisation: hooks pass (L3),
+      `freeze.md` finalised, `freeze.json`
+      recomputed over the recovered register and
+      the finalised freeze texts; freeze tests pin
+      the digest replay, the definition constants,
+      the register integrity, the freeze-hook
+      artifacts, and the cited records (gazetteer
       census, the F031-C10 rule, the Phase-395
       floors and link mass). DD-039-1…DD-039-6
-      decided at the freeze; the execution phase
-      number fixed (DD-039-7); the spec's own OSF
-      contract registration filed if DD-039-6 is
-      decided yes.
+      decided at the freeze as recommended;
+      DD-039-7 fixed the execution phase as
+      Phase-403; DD-039-8 recorded the gate
+      reading; the spec's own OSF contract
+      registration is filed under DD-039-6.
 - [ ] **L6 — Freeze PR merged**, house gates green
       (foundation 0 failures, full suite, branding
       sweep).

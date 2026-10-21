@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """Build the Spec 039 freeze record (freeze.json).
 
-This builder computes the DRAFT digest over the
+This builder computed the DRAFT digest over the
 draft contract under the owner's decisions of
 2026-10-20 (adjudication.md: the act authorised,
 bundled with D-25, evidence standard Option 1).
 At the freeze act - in the bundle sequence of
-plan.md, after the AEE lifecycle hooks pass over
-the recovered register - it is re-run to compute
+plan.md, after the AEE lifecycle hooks passed over
+the recovered register - it was re-run to compute
 the final digest over the frozen contract exactly
-once, and its DEFINITION text is finalised in the
+once, and its DEFINITION text was finalised in the
 same act (the Spec 035 pattern). Run with the
 Glossa backend venv python from the repository
 root:
@@ -41,14 +41,22 @@ DEFINITION = {
     "experiment_id": "spec039-gazetteer-period-assignment",
     "register": {
         "path": "specs/039-gazetteer-period-assignment/claims.json",
-        "register_version": "0.5-draft",
+        "register_version": "0.7-draft",
         "claims": 15,
         "aee_hook_pass": (
-            "NOT RUN on this draft: the AEE lifecycle "
-            "hooks (after_specify / after_plan / "
-            "after_tasks) are a freeze gate, run at the "
-            "freeze act over the recovered register "
-            "(the Spec 035 ordering; see "
+            "PASSED at the freeze act of 2026-10-20 "
+            "under aee 1.5.0: after_specify cleared "
+            "in three adjudicated rounds (20 failure "
+            "modes over 0.5-draft; 17 over the 0.6 "
+            "recovery text; 15 FR-2.3 draft-cap "
+            "records only over 0.7-draft), after_plan "
+            "and after_tasks clean at first pass; at "
+            "every hook zero correctness failure "
+            "modes and no claim below the 0.70 "
+            "threshold (minimum propagated 0.72); "
+            "the engine outcome word reads iterate "
+            "solely from the draft-cap records (gate "
+            "reading DD-039-8; record in "
             "specs/039-gazetteer-period-assignment/aee/"
             "freeze-aee-note.md)"
         ),
@@ -68,23 +76,22 @@ DEFINITION = {
             "hash-pinned input; (D2) the evidence "
             "standard is Option 1 - published period "
             "determinations only, no program-derived "
-            "assignments (Option 2 not adopted). Open "
-            "for the freeze: DD-039-1 (label set), "
-            "DD-039-2 (source hierarchy), DD-039-3 "
-            "(TwoRains published-venue rule), DD-039-4 "
-            "(Masudpur establishment; recommended "
-            "default no), DD-039-5 (margins re-run as "
-            "this act's verification step), DD-039-6 "
-            "(the spec's own OSF contract registration; "
-            "proposal yes)."
+            "assignments (Option 2 not adopted). "
+            "Freeze decisions DD-039-1 to DD-039-8 "
+            "are recorded in adjudication.md section "
+            "4: the label set and source hierarchy "
+            "adopted; the TwoRains published-venue "
+            "rule adopted; Masudpur not established; "
+            "the margins re-run adopted as this "
+            "act's verification step; the spec's own "
+            "OSF contract registration filed at the "
+            "freeze; Phase-403 allocated; and the "
+            "DD-038-10 / DD-037-9 AEE gate reading "
+            "adopted as DD-039-8."
         ),
     },
     "design": {
-        "phase": (
-            "Phase-401 (provisional label at draft; the "
-            "execution takes the next free phase number "
-            "at freeze - DD-039-7)"
-        ),
+        "phase": "Phase-403",
         "act": (
             "assign program period labels to the Stage 0 "
             "gazetteer sites (36 rows, 30 program sites) "
@@ -127,7 +134,7 @@ DEFINITION = {
             ),
         },
         "label_set": {
-            "dd": "DD-039-1 (recommendation carried in the contract)",
+            "dd": "DD-039-1 (decided at freeze)",
             "labels": [
                 "Early Harappan",
                 "Mature Harappan",
@@ -157,6 +164,80 @@ DEFINITION = {
                 "freeze record before any assignment is "
                 "made; the row's period_scheme governs "
                 "which mapping applies"
+            ),
+            "entries": {
+                "MAP-EXPLICIT-EARLY": (
+                    "explicit three-period scheme value "
+                    "Early Harappan (or EH where the "
+                    "publication itself expands it) -> "
+                    "Early Harappan"
+                ),
+                "MAP-EXPLICIT-MATURE": (
+                    "explicit three-period scheme value "
+                    "Mature Harappan (or MH where the "
+                    "publication itself expands it) -> "
+                    "Mature Harappan"
+                ),
+                "MAP-EXPLICIT-LATE": (
+                    "explicit three-period scheme value "
+                    "Late Harappan (or LH where the "
+                    "publication itself expands it) -> "
+                    "Late Harappan"
+                ),
+                "MAP-EXPLICIT-MULTI": (
+                    "explicit three-period scheme value "
+                    "naming two or three labels -> each "
+                    "named label, as a multi-label record"
+                ),
+                "MAP-RANGE-EARLY-MATURE": (
+                    "Early-Mature Harappan range -> "
+                    "Early Harappan and Mature Harappan"
+                ),
+                "MAP-RANGE-MATURE-LATE": (
+                    "Mature-Late Harappan range -> "
+                    "Mature Harappan and Late Harappan"
+                ),
+                "MAP-RANGE-EARLY-LATE": (
+                    "Early-Late Harappan range -> Early "
+                    "Harappan, Mature Harappan, and Late "
+                    "Harappan"
+                ),
+                "MAP-HARP-RAVI": (
+                    "HARP/Harappa scheme Ravi Phase (or "
+                    "Period 1 equated with it in the "
+                    "same publication) -> Early Harappan"
+                ),
+                "MAP-HARP-KOTDIJI": (
+                    "HARP/Harappa scheme Kot Diji Phase "
+                    "(or Period 2 equated with it in "
+                    "the same publication) -> Early "
+                    "Harappan"
+                ),
+                "MAP-HARP-HARAPPAN": (
+                    "HARP/Harappa scheme Harappa Phase "
+                    "(or Period 3 equated with it in "
+                    "the same publication) -> Mature "
+                    "Harappan"
+                ),
+                "MAP-HARP-CEMETERY-H": (
+                    "HARP/Harappa scheme Cemetery H "
+                    "Phase (or Period 5 equated with "
+                    "it in the same publication) -> "
+                    "Late Harappan"
+                ),
+                "MAP-JHUKAR": (
+                    "published scheme value Jhukar Phase "
+                    "-> Late Harappan"
+                ),
+                "MAP-CEMETERY-H": (
+                    "published scheme value Cemetery H "
+                    "Phase outside the HARP scheme -> "
+                    "Late Harappan"
+                ),
+            },
+            "reviewer": (
+                "Muse Spark via Muse "
+                "(AI agent)"
             ),
             "unmapped_values": (
                 "a value with no table entry maps to "
@@ -227,9 +308,9 @@ DEFINITION = {
                 "pinned in the outcome record"
             ),
             "assignment_report": (
-                "reports/phaseNNN_results.json and "
-                "reports/phaseNNN_gazetteer_assignment_report.md "
-                "(phase number fixed at freeze): per-site "
+                "reports/phase403_results.json and "
+                "reports/phase403_gazetteer_assignment_report.md "
+                "per-site "
                 "table with evidence, contested list, "
                 "blank list with reason codes, the "
                 "section 6.3 completeness report by source"
@@ -243,7 +324,7 @@ DEFINITION = {
             ),
         },
         "margins_verification": {
-            "dd": "DD-039-5 (recommendation carried in the contract)",
+            "dd": "DD-039-5 (decided at freeze)",
             "scope": (
                 "recompute only the period-eligibility "
                 "gate of the Phase-395 margins step, "
@@ -289,7 +370,7 @@ DEFINITION = {
             ),
         },
         "masudpur": {
-            "dd": "DD-039-4 (recommended default carried in the contract)",
+            "dd": "DD-039-4 (decided at freeze)",
             "state": (
                 "28 TwoRains determinations (Masudpur "
                 "VII, Masudpur I) extracted in full in "
@@ -328,11 +409,13 @@ DEFINITION = {
             "recorded with its reason code"
         ),
         "execution_gate": (
-            "NOT satisfied: this draft performs no "
-            "freeze and no execution; the freeze and "
-            "the execution are later acts in the "
-            "bundle sequence (plan.md section 2), and "
-            "no period assignment has been made"
+            "Satisfied at the freeze of 2026-10-20: "
+            "the owner's standing pipeline "
+            "authorisation ordered this contract "
+            "frozen and executed; execution runs as "
+            "Phase-403 under the frozen contract, "
+            "and no period assignment was made at "
+            "the freeze itself"
         ),
     },
     "inputs": {
@@ -411,12 +494,8 @@ DEFINITION = {
         "python": "3.12.3",
         "runner": "backend (venv glossa-lab)",
         "aee": (
-            "1.0.4 at this draft (Glossa venv, "
-            "PATH-pinned; package pinned >=1.0.4,<1.5 "
-            "by PR #181); the freeze gate runs on the "
-            "adopted engine per the bundle sequence "
-            "(aee 1.5.0 adoption, owner-decided "
-            "2026-10-20)"
+            "1.5.0 (adopted environment, PR #231; "
+            "package pinned >=1.5.0,<1.6)"
         ),
         "specify": "1.0.10",
     },

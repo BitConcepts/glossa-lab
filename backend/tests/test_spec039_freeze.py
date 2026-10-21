@@ -1,4 +1,4 @@
-"""Spec 039 draft freeze fences (gazetteer period assignment).
+"""Spec 039 freeze fences (gazetteer period assignment).
 
 Pins: (1) the draft machine record replays exactly
 (framework026 verify_freeze over every covered
@@ -12,9 +12,12 @@ RESERVED, the append-only outputs, the margins
 verification step confined to the period-eligibility
 gate, the D-25 bundle, and the Masudpur recommended
 default (DD-039-4: not in this act); (3) the governed
-claim register is the draft register (15 claims,
-integrity-clean, hooks not run - the hooks are a
-freeze gate); (4) the cited records still carry the
+claim register is the frozen register (15 claims,
+integrity-clean, recovered to 0.7-draft at the
+freeze gate) and the three freeze-hook artifacts
+record the pass on the DD-039-8 reading (zero
+correctness failure modes; only FR-2.3 draft-cap
+records; no claim below the 0.70 threshold); (4) the cited records still carry the
 facts the design rests on (the gazetteer census and
 pin; Spec 027's field contract and no-majority-vote
 rule; Spec 031's frozen period rule F031-C10; the
@@ -61,15 +64,17 @@ def test_freeze_definition_constants():
         "spec039-gazetteer-period-assignment"
     )
     assert definition["register"]["claims"] == 15
-    assert definition["register"]["register_version"] == "0.5-draft"
-    assert "NOT RUN" in definition["register"]["aee_hook_pass"]
+    assert definition["register"]["register_version"] == "0.7-draft"
+    assert "PASSED" in definition["register"]["aee_hook_pass"]
+    assert "1.5.0" in definition["register"]["aee_hook_pass"]
     design = definition["design"]
+    assert design["phase"] == "Phase-403"
     # The decided evidence standard, carried not softened.
     std = design["evidence_standard"]
     assert std["option"].startswith("Option 1")
     assert "Option 2" in std["no_program_derived"]
     assert "locator" in std["admissible"]
-    # The recommended label set (DD-039-1).
+    # The decided label set (DD-039-1).
     assert design["label_set"]["labels"] == [
         "Early Harappan",
         "Mature Harappan",
@@ -104,10 +109,22 @@ def test_freeze_definition_constants():
     assert p395["linked_pairs_in_universe"] == 1
     assert len(p395["link_eligible_sites_in_gazetteer"]) == 2
     assert inputs["stage0_deposit"]["doi"] == "10.5281/zenodo.23300361"
-    # The execution gate must remain unsatisfied at draft.
-    assert "no period assignment has been made" in (
-        design["execution_gate"]
-    )
+    # The mapping table is frozen, with no other entries.
+    entries = design["mapping_rule"]["entries"]
+    assert set(entries) == {
+        "MAP-EXPLICIT-EARLY", "MAP-EXPLICIT-MATURE",
+        "MAP-EXPLICIT-LATE", "MAP-EXPLICIT-MULTI",
+        "MAP-RANGE-EARLY-MATURE", "MAP-RANGE-MATURE-LATE",
+        "MAP-RANGE-EARLY-LATE", "MAP-HARP-RAVI",
+        "MAP-HARP-KOTDIJI", "MAP-HARP-HARAPPAN",
+        "MAP-HARP-CEMETERY-H", "MAP-JHUKAR",
+        "MAP-CEMETERY-H",
+    }
+    assert "Muse" in design["mapping_rule"]["reviewer"]
+    # The execution gate is satisfied at the freeze;
+    # no assignment was made by the freeze itself.
+    assert "Satisfied at the freeze" in design["execution_gate"]
+    assert "no period assignment was made" in design["execution_gate"]
 
 
 def test_register_integrity():
@@ -115,7 +132,7 @@ def test_register_integrity():
     from aee.model import Claim
 
     raw = json.loads(REGISTER.read_text(encoding="utf-8"))
-    assert raw["register_version"] == "0.5-draft"
+    assert raw["register_version"] == "0.7-draft"
     assert [c["id"] for c in raw["claims"]] == [
         f"F039-C{i:02d}" for i in range(1, 16)
     ]
@@ -173,3 +190,40 @@ def test_cited_records_carry_the_design_facts():
     assert pop["linked_pairs_in_gazetteer"] == 1
     assert pop["arms"]["bead_craft"]["eligible_sites"] == 0
     assert pop["arms"]["ceramic"]["eligible_sites"] == 0
+
+
+FREEZE_STAMPS = [
+    "20261021T015329Z",
+    "20261021T015331Z",
+    "20261021T015334Z",
+]
+
+CORRECTNESS_CATEGORIES = {
+    "coverage_gap",
+    "contradiction",
+    "assumption_unvalidated",
+    "ambiguous_requirement",
+}
+
+
+def test_freeze_hook_artifacts_record_the_pass():
+    aee_dir = SPEC / "aee"
+    for phase, stamp in zip(
+        ("after_specify", "after_plan", "after_tasks"),
+        FREEZE_STAMPS,
+    ):
+        record = json.loads(
+            (aee_dir / f"aee-{phase}-{stamp}.json").read_text(
+                encoding="utf-8")
+        )
+        failures = [
+            f for c in record["claims"] for f in c["failures"]
+        ]
+        assert failures, phase
+        assert {f["category"] for f in failures} <= {"draft_cap"}, phase
+        assert not [
+            f for f in failures
+            if f["category"] in CORRECTNESS_CATEGORIES
+        ], phase
+        confidences = [c["confidence"] for c in record["claims"]]
+        assert min(confidences) >= 0.70, phase

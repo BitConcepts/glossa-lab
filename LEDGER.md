@@ -6837,3 +6837,39 @@ draft.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 — Spec 039 freeze (gazetteer period assignment: Phase-403 allocated)
+
+Spec 039 is frozen under the owner's standing
+pipeline authorisation of 2026-10-20, after Specs
+038 and 037 in the freeze order. The AEE lifecycle
+gate ran under aee 1.5.0: after_specify cleared in
+three adjudicated rounds (20 failure modes over
+register 0.5-draft; 17 over the 0.6 recovery text;
+15 FR-2.3 draft-cap records only over 0.7-draft),
+after_plan and after_tasks clean at first pass; at
+every hook zero correctness failure modes and no
+claim below the 0.70 threshold (minimum propagated
+0.72). DD-039-1…DD-039-6 were decided as
+recommended (coarse Early/Mature/Late Harappan
+label set; four-tier citation hierarchy,
+presentation only; the TwoRains published-venue
+rule with doubtful venues not counting; Masudpur
+not established — the act is confined to the
+existing 30 sites; the margins re-run as this act's
+verification step, confined to the period-eligibility
+gate; the spec's own OSF contract registration
+filed at the freeze). DD-039-7 allocates the
+execution phase as Phase-403, and DD-039-8 adopts
+the DD-038-10 / DD-037-9 AEE gate reading. The
+scheme-aware mapping table is frozen in spec §4
+before any assignment. The labels remain finding
+aids, not dating evidence; the act changes no
+verdict, and in-universe link mass stands at 2
+link-eligible sites and 1 linked pair against
+floors of 8 eligible sites and 10 linked pairs.
+Spec 030 Ask 2 stays RESERVED. Nothing was
+assigned by the freeze itself.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

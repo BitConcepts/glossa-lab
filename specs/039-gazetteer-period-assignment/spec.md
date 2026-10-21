@@ -1,20 +1,22 @@
 # Spec 039 — Gazetteer Period Assignment: the Spec 027 §6.2 Act, Published Determinations Only
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-20
+> ## FROZEN — 2026-10-20
 >
-> Drafted under the owner's decisions of 2026-10-20,
-> recorded in `adjudication.md`: the gazetteer
-> period-assignment act is **authorised**, bundled
-> with the D-25 chronology test, and its evidence
-> standard is **Option 1 — published period
-> determinations only**. This draft designs the act.
-> It performs none of it: no period assignment has
-> been made, no data file has changed, and the
-> `program_period_assignment` field on `main` stands
-> null on all 36 gazetteer rows exactly as Stage 0
-> left it. The freeze of this contract and its
-> execution are later acts in the same bundle cycle;
-> neither is performed by this draft.
+> Drafted and frozen under the owner's decisions of
+> 2026-10-20, recorded in `adjudication.md`: the
+> gazetteer period-assignment act is **authorised**,
+> bundled with the D-25 chronology test, and its
+> evidence standard is **Option 1 — published period
+> determinations only**. The AEE lifecycle gate ran
+> over the recovered register (0.7-draft) before this
+> freeze; the digest in `freeze.json` was computed
+> exactly once over the frozen contract. Execution
+> is **Phase-403**, run under this frozen contract
+> after the freeze merged. At the freeze itself no
+> period assignment has been made, no data file has
+> changed, and the `program_period_assignment` field
+> on `main` stands null on all 36 gazetteer rows
+> exactly as Stage 0 left it.
 
 ## 1. Purpose
 
@@ -172,7 +174,7 @@ determinations only.** Operatively:
 
 ## 4. The label set and the mapping rule
 
-**Label set (DD-039-1, recommended).** The coarse
+**Label set (DD-039-1, decided at freeze).** The coarse
 three-period set the downstream designs actually
 consume: **Early Harappan**, **Mature Harappan**,
 **Late Harappan**. The vocabulary is aligned to
@@ -190,9 +192,9 @@ gazetteer's own `PN`/`Neo.` labels) grounds no
 assignment.
 
 **Mapping rule.** Each source's period scheme is
-mapped to the label set by a scheme-aware table,
-written into the freeze record before any
-assignment is made. The rules of the table:
+mapped to the label set by the scheme-aware table
+frozen immediately below, before any assignment is
+made. The rules of the table:
 
 1. A value with a table entry maps as the entry
    states; a value with no entry maps to nothing —
@@ -212,6 +214,41 @@ assignment is made. The rules of the table:
    assignment (§6), so any label can be traced from
    the published value through the named rule to
    the assigned label.
+
+**Frozen mapping table (Phase-403).** The reviewer
+string on every assignment is `Muse Spark
+via Muse (AI agent)`. An entry applies only
+when the cited publication's own period scheme is
+the scheme named in the entry; a value in a
+different scheme is not carried across schemes.
+
+| Entry | Published scheme / value | Assigned label(s) |
+|---|---|---|
+| MAP-EXPLICIT-EARLY | Explicit three-period scheme: `Early Harappan`, or `EH` where the publication itself expands EH as Early Harappan | Early Harappan |
+| MAP-EXPLICIT-MATURE | Explicit three-period scheme: `Mature Harappan`, or `MH` where the publication itself expands MH as Mature Harappan | Mature Harappan |
+| MAP-EXPLICIT-LATE | Explicit three-period scheme: `Late Harappan`, or `LH` where the publication itself expands LH as Late Harappan | Late Harappan |
+| MAP-EXPLICIT-MULTI | Explicit three-period scheme: a value naming two or three of the labels above | Each named label, as a multi-label record |
+| MAP-RANGE-EARLY-MATURE | Explicit three-period scheme: `Early-Mature Harappan` or the equivalent range wording | Early Harappan; Mature Harappan |
+| MAP-RANGE-MATURE-LATE | Explicit three-period scheme: `Mature-Late Harappan` or the equivalent range wording | Mature Harappan; Late Harappan |
+| MAP-RANGE-EARLY-LATE | Explicit three-period scheme: `Early-Late Harappan` or the equivalent all-period range wording | Early Harappan; Mature Harappan; Late Harappan |
+| MAP-HARP-RAVI | HARP/Harappa period scheme: `Ravi Phase` or `Period 1` where the same publication equates Period 1 with the Ravi Phase | Early Harappan |
+| MAP-HARP-KOTDIJI | HARP/Harappa period scheme: `Kot Diji Phase` or `Period 2` where the same publication equates Period 2 with the Kot Diji Phase | Early Harappan |
+| MAP-HARP-HARAPPAN | HARP/Harappa period scheme: `Harappa Phase` or `Period 3` where the same publication equates Period 3 with the Harappa Phase | Mature Harappan |
+| MAP-HARP-CEMETERY-H | HARP/Harappa period scheme: `Cemetery H Phase` or `Period 5` where the same publication equates Period 5 with the Cemetery H Phase | Late Harappan |
+| MAP-JHUKAR | A published scheme that names the site's occupation as the `Jhukar Phase` | Late Harappan |
+| MAP-CEMETERY-H | A published scheme that names the site's occupation as the `Cemetery H Phase` (outside the HARP scheme) | Late Harappan |
+
+No other published value has a mapping entry.
+In particular, an unqualified `Harappan`, `Indus`,
+`Pre-Harappan`, `Post-Harappan`, `Bronze Age`, an
+ordinal period in an unnamed scheme, or a named
+phase not listed above maps to nothing and yields
+`UNMAPPED_SCHEME_VALUE` if it is the only evidence
+for the site. A value affirmatively outside the
+Harappan sequence (for example `PN` or `Neo.`)
+yields `OUTSIDE_LABEL_SET` where the report records
+that value as the reason for a blank. These entries
+are the whole table; execution adds none.
 
 ## 5. Disagreement handling
 
@@ -292,10 +329,10 @@ reason code (`NO_PUBLISHED_DETERMINATION`,
   resting on restricted sources appear as citations,
   per §3). The existing deposit is never edited.
 
-## 7. Execution shape (NOT authorised by this spec)
+## 7. Execution shape (frozen)
 
-For the later freeze/execution acts in the bundle
-cycle, the frozen shape is:
+For the Phase-403 execution under this frozen
+contract, the shape is:
 
 1. **Graph-first build** (H15/H23): script → graph
    module → registration → registration
@@ -441,12 +478,14 @@ link-mass statement.
 
 ## 13. Design decisions
 
-Open points are logged in `adjudication.md` as
-DD-039-1…DD-039-7 with recommendations, for the
-freeze decision. The two substantive owner
-decisions of 2026-10-20 (authorisation and bundle;
-Option 1) are recorded there as **decided**, not as
-proposals.
+The freeze decisions are logged in
+`adjudication.md` as DD-039-1…DD-039-8:
+DD-039-1…DD-039-6 adopt the draft recommendations,
+DD-039-7 allocates Phase-403, and DD-039-8 records
+the AEE gate reading. The two
+substantive owner decisions of 2026-10-20
+(authorisation and bundle; Option 1) are recorded
+there as **decided**, not as proposals.
 
 ---
 

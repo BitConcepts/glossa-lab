@@ -1,6 +1,6 @@
 # Spec 039 — Adjudication Record
 
-> ## ADJUDICATED INPUT — 2026-10-20
+> ## ADJUDICATED INPUT AND FREEZE DECISIONS — 2026-10-20
 >
 > This spec has two adjudication inputs, recorded
 > here so the draft's basis is inspectable:
@@ -17,12 +17,13 @@
 >    this draft does not re-open them.
 > 2. **The owner's instruction of 2026-10-20**:
 >    "you plan it and just do them at the right
->    time" — commissioning this draft and the
->    bundle's sequencing. The instruction commissions
->    the design and the plan; the freeze of this
->    contract and its execution remain the bundle
->    cycle's later acts, sequenced in `plan.md`,
->    and this draft performs neither.
+>    time" — commissioning this draft, the bundle's
+>    sequencing, and the freeze and execution at
+>    the right time in that sequence. The freeze
+>    decisions in §4 were taken at the freeze act
+>    under that standing authorisation, after
+>    Specs 036, 038, and 037 and the aee 1.5.0
+>    adoption. Execution is Phase-403.
 
 ## 1. Decisions already made (DECIDED — not proposals)
 
@@ -152,16 +153,17 @@ record on `main` (head `5e7f3cdb`):
 - **Not done at draft, by design** — no published
   determination for any site was located, read for
   its period content, or recorded; no label was
-  assigned, provisionally or otherwise; the
-  mapping table of spec §4 exists as a rule shape,
-  not as filled entries. Evidence assembly is
-  execution work under the frozen contract.
+  assigned, provisionally or otherwise. At the
+  freeze act the mapping table of spec §4 was
+  filled with its frozen entries before any
+  assignment; evidence assembly remains execution
+  work under the frozen contract.
 
-## 4. Open points for the freeze decision (DD-039)
+## 4. Freeze decisions (DD-039)
 
 ### DD-039-1 — The label set
 
-**Recommendation: the coarse three-period set —
+**DECIDED at freeze: the coarse three-period set —
 Early Harappan, Mature Harappan, Late Harappan.**
 It is the vocabulary of the frozen consumer rule
 (F031-C10 turns on Mature Harappan occupation and
@@ -180,7 +182,7 @@ and a new digest, openly made.
 
 ### DD-039-2 — The source hierarchy
 
-**Recommendation: a four-tier citation order.**
+**DECIDED at freeze: a four-tier citation order.**
 (1) Published excavation reports and site
 monographs — the excavators' own statements of a
 site's occupational periods. (2) Published regional
@@ -206,7 +208,7 @@ already stand in `period_label_as_published`.
 
 Stated precisely, because the Masudpur material
 (DD-039-4) and any Haryana-site evidence turn on
-it. **Recommended rule:** a TwoRains determination
+it. **Decided rule:** a TwoRains determination
 counts as a published determination under Option 1
 **if and only if** it appears, with a locator
 (page or table), in (a) a peer-reviewed journal
@@ -233,7 +235,7 @@ locator requirement.
 
 ### DD-039-4 — Whether the act also establishes the Masudpur sites
 
-**Recommendation: no — not in this act.** The act
+**DECIDED at freeze: no — not in this act.** The act
 is confined to the existing 30 gazetteer sites.
 Establishing Masudpur VII and Masudpur I would
 raise the coordinate question as its own subject
@@ -247,14 +249,13 @@ Nothing is lost by the default: the 28
 determinations are preserved in full in the
 Phase-394 record, the establishment route is named
 there and here, and a future act can take it with
-the coordinate question in front of it. (The owner
-may decide otherwise at freeze; the memo's call
-(c) is recorded as a freeze decision, with this
-default.)
+the coordinate question in front of it. The
+owner's memo call (c) is carried as this freeze
+decision.
 
 ### DD-039-5 — Where the margins re-run lives
 
-**Recommendation: the margins re-run is this act's
+**DECIDED at freeze: the margins re-run is this act's
 own verification step** (spec §8), confined to the
 period-eligibility gate of the Phase-395 margins
 step, recomputed over the assigned gazetteer and
@@ -267,7 +268,7 @@ closures stand untouched either way (F039-C13).
 
 ### DD-039-6 — The spec's own OSF contract registration
 
-**Proposal: yes at freeze** — file this frozen
+**DECIDED at freeze: yes** — file this frozen
 spec's own OSF contract registration, following the
 DD-035-4 / DD-036-4 precedent for specs whose
 subject arrived without a registration of its own.
@@ -276,23 +277,39 @@ completed by append once the approval verifies.
 
 ### DD-039-7 — Execution phase number (procedural)
 
-The execution phase takes the next free phase
-number at freeze. "Phase-401" in this draft's texts
-is provisional: Specs 036–038 executions may take
-numbers first, and the freeze fixes the number
-actually used. Nothing substantive turns on it.
+**DECIDED at freeze: Phase-403.** The merged
+record allocates Phase-400 to Spec 036, Phase-401
+to Spec 038, and Phase-402 to Spec 037. The
+draft's provisional "Phase-401" label is therefore
+superseded by Phase-403. Nothing substantive turns
+on the number.
 
-## 5. What the freeze decision is asked to decide
+### DD-039-8 — The AEE gate reading
 
-1. Freeze this contract as drafted (digest in
-   `freeze.md` / `freeze.json`), in the bundle
-   sequence of `plan.md` — after the Spec 038
-   execution and the aee 1.5.0 adoption, so the
-   freeze gate runs on the adopted engine.
-2. DD-039-1…DD-039-6 as recommended above, or
-   amended openly in the freeze record.
-3. Nothing else: the owner decisions of §1 are
-   already made, and this draft re-asks none of
+**DECIDED at freeze: the Spec 038 DD-038-10 /
+Spec 037 DD-037-9 reading governs.** At every
+lifecycle hook the aee 1.5.0 assessment carries
+zero correctness failure modes and no claim below
+the 0.70 threshold; its outcome word reads
+"iterate" solely because each of the 15 claims
+carries an FR-2.3 draft-cap record. That cap is a
+lifecycle fact about a freeze-time register, not a
+correctness failure and not a bar to freezing.
+The full rounds and artifacts are recorded in
+`aee/freeze-aee-note.md`.
+
+## 5. What the freeze decision decided
+
+1. This contract is frozen (digest in `freeze.md`
+   / `freeze.json`), in the bundle sequence of
+   `plan.md` — after Specs 038 and 037 and the
+   aee 1.5.0 adoption, so the freeze gate ran on
+   the adopted engine.
+2. DD-039-1…DD-039-6 are decided as recommended
+   above; DD-039-7 allocates Phase-403; DD-039-8
+   records the AEE gate reading.
+3. Nothing else: the owner decisions of §1 were
+   already made, and the freeze re-asked none of
    them.
 
 ---

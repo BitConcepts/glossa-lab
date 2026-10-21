@@ -1,6 +1,6 @@
 # Spec 039 — Plan
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-20
+> ## PLAN — FROZEN 2026-10-20
 >
 > Written against the governing record: Spec 027
 > §§5–6 (`specs/027-movement-culture-language/spec.md`),
@@ -32,12 +32,9 @@ governance H1, H2, H6, H13, H15/H23, H21.
 
 **Tooling record:** specify CLI 1.0.10 (setup and
 extension management only); AEE extension v1.1.0;
-evaluator extension v1.0.0; AEE package from the
-Glossa venv first on PATH for every AEE invocation
-(pin at this draft `>=1.0.4,<1.5` per PR #181; the
-owner-decided aee 1.5.0 adoption is a separate act
-in the bundle sequence, §2, and is not touched by
-this draft).
+evaluator extension v1.0.0; AEE package 1.5.0 from
+the adopted environment (pin `>=1.5.0,<1.6`, PR
+#231) for every AEE invocation at the freeze.
 
 ## 1. Sequence inside this spec
 
@@ -57,16 +54,17 @@ this draft).
    an omission, since any recovery round changes
    claim text and the digest must be computed over
    the recovered register exactly once, at freeze.
-2. **Freeze PR** — at the bundle step in §2: AEE
-   hook pass over the register (gate: **pass**,
-   with any recovery rounds recorded in `aee/`),
+2. **Freeze PR** — taken at the bundle step in
+   §2: AEE hook pass over the register (gate:
+   **pass** on the DD-039-8 reading, with the
+   recovery rounds recorded in `aee/`),
    `freeze.md` finalised, `freeze.json`
    recomputed over the recovered register and the
    finalised freeze texts, DD-039-1…DD-039-6
    decided in the freeze record, and the execution
-   phase number fixed (DD-039-7). The freeze PR
-   merges on green house gates; it executes
-   nothing and assigns nothing.
+   phase number fixed as Phase-403 (DD-039-7).
+   The freeze PR merges on green house gates; it
+   executes nothing and assigns nothing.
 3. **Execution** — on the bundle sequence reaching
    this act: graph-first build (H15/H23); input
    integrity against the gazetteer pin; evidence
@@ -89,20 +87,19 @@ sequence, each step gated as recorded in its own
 spec:
 
 1. Spec 036 freeze → execution (PRED-2026-011
-   scoring) — in flight.
+   scoring) — complete.
 2. The aee 1.5.0 adoption (owner-decided
-   2026-10-20) — lands after the Spec 036 freeze.
+   2026-10-20) — complete.
 3. Spec 038 freeze → execution (D-31,
-   PRED-2026-007 full-population scoring) — on the
-   adopted engine.
-4. Spec 037 execution (the CISI concordance), as
-   its own order admits.
-5. **This act's freeze** — its gate runs on the
-   adopted engine, its adjudication cycle shared
-   with the D-25 spec's (step 6).
-6. **This act's execution**, then the D-25 spec's
-   freeze and execution consuming Output A as a
-   hash-pinned input.
+   PRED-2026-007 full-population scoring) —
+   complete on the adopted engine.
+4. Spec 037 freeze → execution (the CISI
+   concordance) — complete as Phase-402.
+5. **This act's freeze** — complete; its gate ran
+   on the adopted engine.
+6. **This act's execution as Phase-403**, then
+   the D-25 spec's freeze and execution consuming
+   Output A as a hash-pinned input.
 
 The order is a plan, not a freeze condition: if
 the owner re-sequences the bundle, this plan is

@@ -2966,6 +2966,19 @@ try:
     logger.info("Registered %d Phase-411 (spec 045) nodes", len(list(_p411_defs())))
 except Exception as _p411_exc:  # noqa: BLE001
     logger.warning("Phase-411 (spec 045) nodes not registered: %s", _p411_exc)
+# ── Phase-413 node (spec 053: Yadav Zipf controls, step 0) ──
+try:
+    from glossa_lab.experiment_graph_phase413 import (
+        _phase413_node_defs as _p413_defs,  # noqa: PLC0415
+    )
+    for _d in _p413_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-413 (spec 053) nodes", len(list(_p413_defs())))
+except Exception as _p413_exc:  # noqa: BLE001
+    logger.warning("Phase-413 (spec 053) nodes not registered: %s", _p413_exc)
+
+
+
 # ── Phase-421 node (spec 059: F1 object-ID join, step 0 + gate-passed test) ──
 try:
     from glossa_lab.experiment_graph_phase421 import (

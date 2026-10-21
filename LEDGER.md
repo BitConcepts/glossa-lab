@@ -8095,6 +8095,69 @@ sha256 019c65991835505c7f8ecac11e3b62f5b01b1
 fe825bed3c46eb23fdb2879c948),
 reports/phase410_step0_report.md.
 
+## 2026-10-21 — Spec 053 EXECUTED (Phase-413): STRICT CORPUS NOT PINNABLE at gate 0.3
+
+Spec 053 was executed as Phase-413 under the
+frozen contract (freeze digest fd2d5cb8…; OSF
+registration s9yfe approved and public), in
+Wave 3 Group 2 of the runnable-experiments
+campaign (design D-07, arm A only; arm B
+trigger-armed and not joined, campaign E-3),
+under the graph-first build (script
+backend/scripts/phase413_yadav_zipf_controls.py;
+node IndusPhase413YadavZipfControls; registration
+verified by import before the run). Gate 0.1
+PASS: every spec §2 pin recomputes to its freeze
+value, verified by two independent routes (claim
+file 90476623…, anchors df0cf620… — 287 anchors,
+94 strict_sa_independent — crosswalk 4ace1a61…,
+Mahadevan–Parpola crosswalk 9ebd7723…, Phase-43
+record 78a6c219…, re-read in the same pass: no
+Zipf fit, exactly as DD-053-11 recorded; no
+Phase-43 estimator was sought or substituted).
+Gate 0.2 PASS: the §4.2 estimator the freeze
+specified completely recovered the planted
+parameters — fitted α 1.256 (error 0.056,
+tolerance 0.10) and q 2.72 (error 0.72,
+tolerance 1.0) from α 1.20 / q 2.0, V 200,
+N 50,000, seed 20261021. **Gate 0.3 FAIL — the
+execution closed STRICT CORPUS NOT PINNABLE in
+the frozen §6 wording.** The V3 /
+Mahadevan-lineage layer's only loader of record
+reads the Firestore 'indusarrays' dump at
+glossa-corpus/indus/sources/rmrl/raw/indusscript-probe/firestore_indusarrays_full.jsonl,
+which is absent from the tree (the sources/
+subtree is untracked) and from the programme's
+main checkout; the loader loads zero sequences,
+so the layer cannot be exported or pinned. No
+database copy exists in the execution tree, and
+the main-checkout database (inspected read-only)
+holds nine texts and no V3 Indus corpus. No
+other layer in the tree is the corpus the
+Phase-43 record names (Firestore source, 3,916
+records / 3,137 sequences / 2,665 dockeys /
+12,494 instances): the site-attributed layer
+carries 5,679 records, the V1 export 15,508
+mixed-source objects, the ICIT export 3,085
+ICIT-encoded sequences, and the Holdat path is
+absent and a different compilation besides. No
+layer was substituted and no rule invented.
+Gates 0.4 and 0.5 were NOT REACHED: no control
+count was entered (no judgement on the control
+set is recorded or implied), no census exists,
+no system was fitted, the §4.4 condition was
+never evaluated, and no sensitivity was
+computed. The claim yadav_2009_arxiv_manual_001
+stands exactly as recorded (strongly supported;
+recorded exponent about 1.35); no strength
+label was appended and its record was not
+edited. Anchors asserted byte-identical before
+and after (df0cf620…). Foundation check at the
+run: 40 passed / 0 failed / 8 warnings. Records:
+specs/053-yadav-zipf-controls/outcome.md,
+reports/phase413_results.json,
+reports/phase413_step0_report.md.
+
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.

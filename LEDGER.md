@@ -7937,9 +7937,164 @@ claim's record, and specs/055-sign900-numeral/
 outcome.md. Anchors asserted byte-identical before
 and after (df0cf620… at both points).
 
+## 2026-10-21 — Spec 059 EXECUTED (Phase-421): CLOSED AT STEP 0 — JOIN GATE NOT MET
+
+Spec 059 (design D-22, the seal/tablet
+difference on a better join) was executed as
+Phase-421 under the frozen contract (freeze
+digest bba1caca…; OSF registration yfw7h
+approved and public, DOI
+10.17605/OSF.IO/YFW7H), in Wave 3 group 2 of
+the runnable-experiments campaign. Graph-first
+build: backend/scripts/phase421_f1_object_join.py,
+graph node IndusPhase421F1ObjectJoin registered
+and verified by import before the run. Gate 0.1
+PASS: every spec section 2 pin and every
+DD-059-9 object-identifier source pin
+recomputes to its freeze-record value, verified
+in the foreground by two independent routes
+(committed pins: Phase-136 results 11a07413…,
+Stage 2(a) freeze c65a4b9b…, Phase-136 builder
+d5ceec46…, Phase-141 report d442f8d2…, combined
+report 6a4f5d26…, registry 8a0b2a82…, Spec 034
+outcome c0cc615d…, Spec 037 outcome 28e444f2…,
+anchors df0cf620…, intake schema b94d03ad…,
+Phase-398 builder 278f16b0…, intake validator
+02b24e33…; local-store pins: horus84 layer
+c368f290…, CISI vols 1–2 e0d698f9… /
+e751244e…, ICIT converted keyed layer v2
+bbfdbcd5…). Gate 0.2 PASS: the original
+concordance join reproduced exactly (5,679
+layer rows; 2,895 matched; 2 ambiguous; 2,782
+unmatched). Gate 0.3 PASS: the object-ID join
+dataset built by the pinned route-(b)
+construction (5,018 records carrying
+provenance.object_id) validated under the
+pinned Phase-130 schema — verdict pass,
+0 errors, 0 warnings — and censused against
+the catalogue's 3,493 distinct objects:
+**2,899 joined rows; 2,780 unjoined (661
+carrying no identifier, 2,119 whose
+identifier resolves to zero catalogue
+objects); 0 ambiguous; 2,479 distinct
+catalogue objects joined to.** The census was
+derived twice (intake-dataset route and
+lineage-direct route) with every row's joined
+classification in agreement; five raw-value
+discrepancies between the lineage layer and
+its converted form are recorded per row in
+the census and change no classification.
+Gate 0.4 FAIL: 2,899 joined rows = 51.0477%
+against the bar adopted at DD-059-7 (joined
+share at least 61.0%, at least 3,465 of 5,679
+rows) — a shortfall of 566 rows. The
+object-ID join adds exactly 4 rows over the
+original join (the two H-311 rows and the
+trailing-space references L-78 and M-929) and
+loses none. The execution therefore closed
+**CLOSED AT STEP 0 — JOIN GATE NOT MET** in
+the frozen section 3.5 wording, with the
+census published as the finding. No F1
+quantity was computed — no terminal mapping,
+no CMH statistic, no p-value, no odds ratio —
+and STUDY-SPEC-024/F1 stands exactly as
+recorded: SUPPORTED on its original joined
+subset, its "on the joined subset" scope
+unchanged. The closure establishes nothing
+about the claim; it is a measured property of
+the available catalogue data. Anchors asserted
+byte-identical before and after (df0cf620…).
+Records: specs/059-f1-object-join/outcome.md,
+reports/phase421_results.json (SHA-256
+3948cd01…), reports/phase421_join_census.json
+(95282931…), reports/phase421_report.md
+(167584e1…); the script is deterministic
+(byte-identical rerun).
+
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson,
 per constitution sec.VI.
+
+## 2026-10-21 — Spec 043 (Phase-410) EXECUTED: PRED-2026-012 closed PROVENANCE — CANNOT BE RUN AS WRITTEN at step 0, check 0.3 (unscored)
+
+Phase-410 executed the frozen Spec 043 contract
+(freeze digest 8a8a334f…; OSF registration
+vmcra approved and public) in Wave 3 Group 2
+of the runnable-experiments campaign, under
+the campaign approval's execution
+authorization (adjudication.md §7.6), with
+the step-0 provenance adjudication running
+first, before any Phase 5 lookup, as the
+frozen order requires. Check 0.1 PASS: all
+seven frozen sources hashed to their pins,
+re-derived by two independent routes. Check
+0.2 PASS: the registry enumeration over 803
+rows reproduced the draft census exactly
+(791 uncoded, 12 coded; ITM = P056, P324,
+P378, P385), the re-derivation of all 803
+icit_function values from the pinned builder
+rule agreed exactly (zero mismatches), the
+held records verified (P098 carries no
+code), and the cross-check read in full (611
+records: 579 empty, 32 free-text glosses, no
+ITM, no LOG) with every disagreement recorded
+sign-by-sign, all of the expected kind.
+**Check 0.3 — the provenance gate — FAIL on
+all three limbs; the study closed
+PROVENANCE — CANNOT BE RUN AS WRITTEN,
+unscored.** The evidence set was produced in
+full: D1 the pinned builder ("from ICIT docs
++ Fuls 2013"; W740 glossed "Initial Cluster
+Terminal Marker"), D2 the pinned parser with
+its test (function "(from Wells)" read off
+the same catalog line as a positional class),
+D3 Fuls 2013 "Positional Analysis of Indus
+Signs" (held cleaned text, 9ed24098…,
+two-route), and D4 Wells 2015 "The
+Archaeology and Epigraphy of Indus Writing"
+(held cleaned text, 62acf855…, two-route).
+Class definition: positional — Wells
+classifies signs "according to their
+preferred text position" (Fuls 2013 §2), the
+ICTM class is named "since they mark the end
+of initial clusters" (§3.7), and Wells 2015
+(ch. 3) defines it by the same cluster-final
+role. Per-sign basis: every stated basis is
+positional (W740 terminal distribution; W820,
+W817, W861 initial distribution), and W231
+(P056) has no stated basis at all — silence,
+which the frozen standard (DD-043-10) fixes
+as failure. Source agreement: Wells' published
+ICTM class is exactly signs 060, 001, 002
+(Wells 2015, ch. 3) — none a builder ITM key;
+817/820/861 are published as initial signs,
+820 also as a terminal marker, and W231 is
+omitted where the table asserts ITM. The LOG
+trace is recorded in the same form and gates
+nothing (DD-043-12): sign 520 is "the other
+common TM" in Wells 2015, not LOG, and no
+per-sign LOG basis is stated for sign 700.
+Check 0.4 never ran: the Phase 5 output was
+byte-hashed at 0.1 and never opened, the
+sanity anchor was never reproduced, and **no
+Phase 5 assignment was looked up for any
+sign**. No share, coverage figure, or verdict
+exists. PRED-2026-012 remains unscored, its
+§3 Outcome standing PENDING; PRED-2026-007's
+PARTIALLY CONFIRMED stands untouched. The
+closure is recorded in the register by dated
+§6 append only (insertions-only
+prefix-verified; the Phase D pin advanced by
+name a ninth time), and it records what the
+classification's assignments rest on — it is
+not a verdict on the criterion and not a
+refutation. Records:
+specs/043-pred-2026-007-registry-frame/outcome.md,
+reports/phase410_results.json (step-0 record
+sha256 019c65991835505c7f8ecac11e3b62f5b01b1
+fe825bed3c46eb23fdb2879c948),
+reports/phase410_step0_report.md.
+
 ## 2026-10-21 — Spec 053 EXECUTED (Phase-413): STRICT CORPUS NOT PINNABLE at gate 0.3
 
 Spec 053 was executed as Phase-413 under the

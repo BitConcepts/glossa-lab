@@ -1,4 +1,4 @@
-# Spec 037 / Phase-401 — Outcome record (SKELETON — NOT EXECUTED)
+# Spec 037 / Phase-402 — Outcome record (SKELETON — NOT EXECUTED)
 
 > ## PRE-WRITTEN SKELETON — DRAFTED 2026-10-20 — NOTHING EXECUTED
 >
@@ -6,9 +6,10 @@
 > execution append has its shape fixed before any
 > run (the Spec 035/036 outcome pattern). Every
 > slot below is **PENDING EXECUTION**. Execution
-> is Phase-401, gated on the owner's freeze order
-> for Spec 037 and a separate execution order;
-> neither exists at this draft. No join has been
+> is Phase-402, under the contract frozen
+> 2026-10-20 (digest in `freeze.json`) and the
+> owner's standing pipeline authorisation of
+> 2026-10-20. No join has been
 > computed, no candidate graded, and no HARP
 > quantity recomputed; the only numbers anywhere
 > in this spec's draft are the intake's published

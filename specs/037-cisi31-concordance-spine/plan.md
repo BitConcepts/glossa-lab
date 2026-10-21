@@ -1,6 +1,6 @@
 # Spec 037 — Plan
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-20
+> ## PLAN — FROZEN 2026-10-20
 >
 > Written against the governing record: the CISI
 > 3.1 intake report (2026-10-20, restricted
@@ -9,10 +9,13 @@
 > `specs/021-phase130-intake-pack/`), the Spec 031
 > outcome record (the Q7 fence), and the Spec 034
 > freeze record (join-key discipline). The owner's
-> draft order of 2026-10-20 commissions this
-> draft; the freeze and the execution (Phase-401)
-> are separate owner decisions, and no task in
-> `tasks.md` is itself an execution or a data act.
+> draft order of 2026-10-20 commissioned the
+> draft; the freeze and the execution (Phase-402)
+> were ordered by the owner's standing pipeline
+> authorisation of 2026-10-20 (freeze order 038,
+> then 037, then 039, then 040), and no task in
+> `tasks.md` is itself a data act beyond the
+> frozen contract.
 
 **Governing documents:** `spec.md`, `claims.json`,
 and `adjudication.md` in this directory;
@@ -31,10 +34,11 @@ governance H1, H2, H6, H13, H15/H23, H21.
 **Tooling record:** specify CLI 1.0.10 (setup and
 extension management only); AEE extension v1.1.0;
 evaluator extension v1.0.0; AEE package from the
-Glossa venv first on PATH for every AEE invocation
-(pinned `>=1.0.4,<1.5` per PR #181 — the 1.5.0
-drift is a recorded, still-open owner decision
-and is not touched by this draft).
+Glossa venv first on PATH for every AEE invocation.
+At draft the package pin was `>=1.0.4,<1.5` (PR
+#181); the adopted environment is aee 1.5.0 (PR
+#231, pin `>=1.5.0,<1.6`), and the freeze gate ran
+under it.
 
 ## 1. Sequence
 
@@ -59,19 +63,24 @@ and is not touched by this draft).
    draft, and nothing portion-derived is in it:
    the draft cites only aggregates already in
    the intake record.
-2. **Freeze PR** — on the owner's freeze order:
-   AEE hook pass over the register (gate:
-   **pass**, with any recovery rounds recorded
-   in `aee/`), `freeze.md` finalised,
+2. **Freeze PR** — executed 2026-10-20 under the
+   owner's standing pipeline authorisation: AEE
+   hook pass over the register under aee 1.5.0
+   (gate passed under the DD-037-9 reading;
+   three recovery rounds at after_specify,
+   recorded in `aee/`), `freeze.md` finalised,
    `freeze.json` recomputed over the recovered
-   register and the finalised freeze texts, and
-   the DD-037 proposals decided (stratum size;
-   Workstream B placement; OSF registration;
-   halt-threshold confirmation). The freeze PR
+   register (0.7-draft) and the finalised freeze
+   texts, and the DD-037 proposals decided
+   (DD-037-4 confirmed; DD-037-5 stratum 60;
+   DD-037-6 Workstream B inside Phase-402;
+   DD-037-7 OSF registration filed; DD-037-8
+   phase allocation Phase-402). The freeze PR
    merges on green house gates; it executes
    nothing and touches no portion data.
-3. **Execution (Phase-401)** — on the owner's
-   separate execution order: graph-first build
+3. **Execution (Phase-402)** — under the same
+   standing authorisation, after the freeze
+   merges: graph-first build
    (H15/H23); step 0 in the frozen order (gate
    record; portion PDF hash; local table parse
    and census; corpus_master pin; repo
@@ -92,7 +101,8 @@ and is not touched by this draft).
 ## 2. What this plan never does
 
 - It executes nothing at draft or at freeze; the
-  execution is Phase-401, separately ordered.
+  execution is Phase-402, ordered by the owner's
+  standing pipeline authorisation of 2026-10-20.
 - It reads no portion row content for any design
   purpose; the design rests on the intake's
   aggregates, the gate record, and byte-level

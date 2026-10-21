@@ -1,15 +1,14 @@
 #!/usr/bin/env python3
 """Build the Spec 037 freeze record (freeze.json).
 
-This builder computes the DRAFT digest over the
-draft contract under the owner's draft order of
-2026-10-20 (adjudication.md). At the freeze act -
-on the owner's separate freeze order, after the
-AEE lifecycle hooks pass over the recovered
-register - it is re-run to compute the final
-digest over the frozen contract exactly once, and
-its DEFINITION text is finalised in the same act
-(the Spec 035 pattern). Run with the Glossa
+This builder computes the freeze digest over the
+frozen contract exactly once, at the freeze act
+of 2026-10-20 - after the AEE lifecycle hooks
+passed over the recovered register (0.7-draft)
+under the owner's standing pipeline
+authorisation - with its DEFINITION text
+finalised in the same act (the Spec 035
+pattern). Run with the Glossa
 backend venv python from the repository root:
 
     python specs/037-cisi31-concordance-spine/build_freeze.py
@@ -39,14 +38,22 @@ DEFINITION = {
     "experiment_id": "spec037-cisi31-concordance-spine",
     "register": {
         "path": "specs/037-cisi31-concordance-spine/claims.json",
-        "register_version": "0.5-draft",
+        "register_version": "0.7-draft",
         "claims": 15,
         "aee_hook_pass": (
-            "NOT RUN on this draft: the AEE lifecycle "
-            "hooks (after_specify / after_plan / "
-            "after_tasks) are a freeze gate, run at the "
-            "freeze act over the recovered register "
-            "(the Spec 035 ordering; see "
+            "PASSED at the freeze act of 2026-10-20 "
+            "under aee 1.5.0: after_specify cleared "
+            "in three adjudicated rounds (37 failure "
+            "modes over 0.5-draft; 27 over 0.6-draft; "
+            "15 FR-2.3 draft-cap records only over "
+            "0.7-draft), after_plan and after_tasks "
+            "clean at first pass; at every hook zero "
+            "correctness failure modes and no claim "
+            "below the 0.70 threshold (minimum "
+            "propagated 0.72); the engine outcome "
+            "word reads iterate solely from the "
+            "draft-cap records (gate reading "
+            "DD-037-9; record in "
             "specs/037-cisi31-concordance-spine/aee/"
             "freeze-aee-note.md)"
         ),
@@ -56,23 +63,30 @@ DEFINITION = {
             "specs/037-cisi31-concordance-spine/adjudication.md"
         ),
         "decisions": (
-            "The owner's draft order of 2026-10-20 "
-            "commissions this draft only; no freeze "
-            "order and no execution order exist for "
-            "this contract. The study implemented is "
-            "the CISI 3.1 intake's first two assessed "
-            "candidate uses (intake report sections "
-            "7.5-7.6, 2026-10-20), over material held "
-            "under the Phase-130 gate (restricted "
-            "store PROVENANCE entry 22). DD-037-5, "
-            "DD-037-6, and DD-037-7 are open proposals "
-            "for the freeze decision; DD-037-4's halt "
-            "threshold is draft-fixed for the freeze "
-            "to confirm or change openly."
+            "The owner's standing pipeline "
+            "authorisation of 2026-10-20 (freeze "
+            "order 038, then 037, then 039, then "
+            "040) froze this contract and ordered "
+            "its execution as Phase-402. The study "
+            "implemented is the CISI 3.1 intake's "
+            "first two assessed candidate uses "
+            "(intake report sections 7.5-7.6, "
+            "2026-10-20), over material held under "
+            "the Phase-130 gate (restricted store "
+            "PROVENANCE entry 22). Freeze decisions "
+            "DD-037-4 to DD-037-9 are recorded in "
+            "adjudication.md section 4: halt "
+            "threshold confirmed at 20 percent of "
+            "all candidates; hand-check stratum 60; "
+            "Workstream B inside Phase-402 gated on "
+            "step 0 only; the spec's own OSF "
+            "registration filed at the freeze; phase "
+            "allocation Phase-402; the DD-038-10 "
+            "gate reading adopted as DD-037-9."
         ),
     },
     "design": {
-        "phase": "Phase-401",
+        "phase": "Phase-402",
         "question_owner": (
             "the CISI 3.1 intake record (2026-10-20), "
             "candidate uses 1-2; no PRED-2026 entry is "
@@ -150,9 +164,13 @@ DEFINITION = {
                 "intake extraction error, programme-"
                 "side record error, genuine "
                 "compilation divergence, or true "
-                "non-identity; its size is the "
-                "DD-037-5 freeze proposal (draft "
-                "proposal: 60)"
+                "non-identity; its size is fixed at "
+                "the freeze at 60 (DD-037-5: 30 "
+                "VERIFIED / 15 CONFLICT / 15 "
+                "UNRESOLVED, the whole class where a "
+                "class is smaller; the seed is "
+                "recorded in the build script before "
+                "sampling)"
             ),
         },
         "reported_aggregates": (
@@ -192,12 +210,13 @@ DEFINITION = {
             ),
         },
         "execution_gate": (
-            "NOT satisfied: no freeze order and no "
-            "execution order exist for this contract; "
-            "the freeze and the execution (Phase-401) "
-            "are separate future owner decisions; this "
-            "draft performs neither, computes no join, "
-            "and extracts nothing"
+            "Satisfied at the freeze of 2026-10-20: "
+            "the owner's standing pipeline "
+            "authorisation (freeze order 038, then "
+            "037, then 039, then 040) ordered this "
+            "contract frozen and executed; execution "
+            "runs as Phase-402 under the frozen "
+            "contract, fail-closed at step 0"
         ),
     },
     "inputs": {
@@ -267,8 +286,8 @@ DEFINITION = {
         "python": "3.12.3",
         "runner": "backend (venv glossa-lab)",
         "aee": (
-            "1.0.4 (Glossa venv, PATH-pinned; package "
-            "pinned >=1.0.4,<1.5 by PR #181)"
+            "1.5.0 (adopted environment, PR #231; "
+            "package pinned >=1.5.0,<1.6)"
         ),
         "specify": "1.0.10",
     },

@@ -1,6 +1,6 @@
-"""Spec 037 draft freeze fences (CISI 3.1 concordance).
+"""Spec 037 freeze fences (CISI 3.1 concordance).
 
-Pins: (1) the draft machine record replays exactly
+Pins: (1) the freeze machine record replays exactly
 (framework026 verify_freeze over every covered
 source); (2) the definition carries the design
 constants exactly as drafted (the 693-candidate
@@ -8,9 +8,12 @@ census and its section split, the ladder's outcome
 classes and reason codes, the 20 percent halt
 rule, the Phase-130 gate pins, the portion and
 corpus_master hashes); (3) the governed claim
-register is the draft register (15 claims,
-integrity-clean, hooks not run - the hooks are a
-freeze gate); (4) the cited in-repo records still
+register is the frozen register (15 claims,
+integrity-clean, recovered to 0.7-draft at the
+freeze gate) and the three freeze-hook artifacts
+record the pass on the DD-037-9 reading (zero
+correctness failure modes; only FR-2.3 draft-cap
+records; no claim below the 0.70 threshold); (4) the cited in-repo records still
 carry the facts the design rests on (the
 corpus_master pin and census; the Spec 031 outcome
 record's Q7 closure figures the annex fence
@@ -56,10 +59,11 @@ def test_freeze_definition_constants():
         "spec037-cisi31-concordance-spine"
     )
     assert definition["register"]["claims"] == 15
-    assert definition["register"]["register_version"] == "0.5-draft"
-    assert "NOT RUN" in definition["register"]["aee_hook_pass"]
+    assert definition["register"]["register_version"] == "0.7-draft"
+    assert "PASSED" in definition["register"]["aee_hook_pass"]
+    assert "1.5.0" in definition["register"]["aee_hook_pass"]
     design = definition["design"]
-    assert design["phase"] == "Phase-401"
+    assert design["phase"] == "Phase-402"
     pilot = design["pilot"]
     assert pilot["candidates"] == 693
     assert pilot["candidate_split_by_section"] == {
@@ -77,7 +81,7 @@ def test_freeze_definition_constants():
     assert "never a join" in fences["string_match"]
     assert "no sign transcriptions" in fences["no_pred_scoring"]
     assert "NOT-YET-TESTABLE" in fences["q7"]
-    assert "no execution order" in design["execution_gate"]
+    assert "Satisfied at the freeze" in design["execution_gate"]
     inputs = definition["inputs"]
     assert inputs["portion_pdf"]["sha256"] == (
         "514338b1f6c498bd318b114e39b0e77a79a6685918a0a4c2c5b116dfc2482b6a"
@@ -104,7 +108,7 @@ def test_register_integrity():
     from aee.model import Claim
 
     raw = json.loads(REGISTER.read_text(encoding="utf-8"))
-    assert raw["register_version"] == "0.5-draft"
+    assert raw["register_version"] == "0.7-draft"
     assert [c["id"] for c in raw["claims"]] == [
         f"F037-C{i:02d}" for i in range(1, 16)
     ]
@@ -140,3 +144,40 @@ def test_cited_records_carry_the_design_facts():
     outcome031 = SPEC031_OUTCOME.read_text(encoding="utf-8")
     assert "NOT-YET-TESTABLE" in outcome031
     assert "NOT ESTIMABLE" in outcome031
+
+
+FREEZE_STAMPS = [
+    "20261021T004908Z",
+    "20261021T004923Z",
+    "20261021T004938Z",
+]
+
+CORRECTNESS_CATEGORIES = {
+    "coverage_gap",
+    "contradiction",
+    "assumption_unvalidated",
+    "ambiguous_requirement",
+}
+
+
+def test_freeze_hook_artifacts_record_the_pass():
+    aee_dir = SPEC / "aee"
+    for phase, stamp in zip(
+        ("after_specify", "after_plan", "after_tasks"),
+        FREEZE_STAMPS,
+    ):
+        record = json.loads(
+            (aee_dir / f"aee-{phase}-{stamp}.json").read_text(
+                encoding="utf-8")
+        )
+        failures = [
+            f for c in record["claims"] for f in c["failures"]
+        ]
+        assert failures, phase
+        assert {f["category"] for f in failures} <= {"draft_cap"}, phase
+        assert not [
+            f for f in failures
+            if f["category"] in CORRECTNESS_CATEGORIES
+        ], phase
+        confidences = [c["confidence"] for c in record["claims"]]
+        assert min(confidences) >= 0.70, phase

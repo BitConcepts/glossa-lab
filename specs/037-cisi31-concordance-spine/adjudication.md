@@ -175,6 +175,91 @@ Verified first-hand at drafting, 2026-10-20:
    join is computed, and the change is recorded
    here).
 
+## 4. Freeze decisions (2026-10-20)
+
+The freeze was executed under the owner's
+standing pipeline authorisation of 2026-10-20
+— the pipeline order ("you plan it and just do
+them at the right time"), with the freeze
+order 038, then 037, then 039, then 040
+recorded the same day. The decisions:
+
+- **DD-037-4 — CONFIRMED: the halt
+  threshold.** The CONFLICT share that halts
+  the spine build is 20% of all 693
+  candidates, as drafted. Not changed.
+- **DD-037-5 — DECIDED: the hand-check
+  stratum is 60.** 30 VERIFIED / 15 CONFLICT
+  / 15 UNRESOLVED, the whole class where a
+  class is smaller, seeded, the seed recorded
+  in the build script before sampling (§4.6's
+  stratification was already fixed; this
+  decides the size).
+- **DD-037-6 — DECIDED: Workstream B runs
+  inside Phase-402, gated on step 0 only** —
+  the draft's recommendation, for its stated
+  reasons (B touches no joins, adds no risk
+  to A's ladder, reads the same pinned local
+  table).
+- **DD-037-7 — DECIDED: yes, the spec files
+  its own OSF registration.** Filed at the
+  freeze from project `nrb9u` under the OSF
+  Preregistration schema, citing this
+  freeze's digest; the filing record is
+  `osf-spec-registration.md` in this
+  directory (not a digest-covered source).
+  Its approval state at filing is recorded in
+  that file, and its completion by append once
+  approval verifies.
+- **DD-037-8 — Phase allocation:
+  Phase-402.** Phase-400 was Spec 036's
+  execution phase and Phase-401 Spec 038's
+  (its DD-038-8 reserved the next clean
+  number for this spec at its own freeze).
+  The draft's provisional Phase-401
+  references are corrected to Phase-402
+  across the freeze texts in this act.
+  Execution of this contract is Phase-402.
+- **DD-037-9 — the freeze gate reading
+  (adopting DD-038-10).** The AEE lifecycle
+  gate at this freeze is read as Spec 038's
+  freeze read it: the substantive pass is
+  zero correctness failure modes (no
+  irreducibility, no negation conflict, no
+  counterexample or precision challenge) and
+  no claim below the 0.70 threshold at each
+  of after_specify, after_plan, after_tasks;
+  the FR-2.3 draft-cap records a draft
+  register carries (15 here, one per claim)
+  are structural, are disclosed in
+  `aee/freeze-aee-note.md`, and are not
+  correctness failures — the engine's outcome
+  word therefore reads "iterate" at each hook
+  while the gate passes. The hooks ran under
+  the adopted aee 1.5.0; the register was
+  recovered to 0.7-draft in three adjudicated
+  rounds at after_specify (rounds and tallies
+  in `aee/freeze-aee-note.md` and the
+  register's own note), and after_plan and
+  after_tasks were clean at first pass. No
+  expectation was updated anywhere in the
+  recovery: claim texts were restated to
+  single propositions with carried clauses
+  moved into boundaries verbatim-in-substance,
+  absolutes were domain-bounded or carried
+  into boundaries, and the one
+  evidence-modelling completion (C01's
+  symmetric independence declaration, with
+  the C01/C08 shared-corroboration record) is
+  recorded in the register note.
+  Propositions, falsifiers, and verdict rules
+  are unchanged from the draft.
+- **Citation refresh.** The corpus_master pin
+  the design rests on was re-verified
+  unchanged on `main` at the freeze (SHA-256
+  `b19cfe95…`, 2,722 rows); no cited record
+  moved between draft and freeze.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

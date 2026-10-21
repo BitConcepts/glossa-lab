@@ -1,19 +1,24 @@
 # Spec 037 — CISI 3.1 Concordance Spine and HARP Provenance Annex: Verifying the String Matches Before Anything Is Joined
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-20
+> ## FROZEN — 2026-10-20
 >
 > Drafted under the owner's order of 2026-10-20 to
-> move the CISI follow-on uses forward, recorded in
-> `adjudication.md`. This spec designs a study and
-> executes nothing: execution is **Phase-401**, under
-> the owner's separate freeze and execution orders,
-> and only after the freeze of this contract merges.
-> The study's subject material is **restricted**
-> (the Phase-130 gate, §2): this draft reads only
-> the intake record and the gate record, touches no
-> portion data beyond the byte-level verifications
-> recorded in `adjudication.md` §2, builds no join,
-> and extracts nothing.
+> move the CISI follow-on uses forward, and frozen
+> the same day under the owner's standing pipeline
+> authorisation (freeze order 038, then 037, then
+> 039, then 040), both recorded in `adjudication.md`
+> (§§1, 4). Execution is **Phase-402**, run under
+> this frozen contract after the freeze merged. The
+> draft's provisional phase number was Phase-401;
+> the allocation at freeze is Phase-402 — Phase-400
+> was Spec 036's execution phase and Phase-401
+> Spec 038's (DD-037-8). The study's subject
+> material is **restricted** (the Phase-130 gate,
+> §2): the drafting read only the intake record and
+> the gate record, touched no portion data beyond
+> the byte-level verifications recorded in
+> `adjudication.md` §2, built no join, and
+> extracted nothing.
 
 ## 1. Purpose — and the fences, stated first
 
@@ -153,10 +158,10 @@ volume, not Vol. 3.1.
   its limits stated. Descriptive only; no joins,
   no verdicts.
 
-Both workstreams are execution-gated: this draft
-runs neither. Whether B runs inside Phase-401
-behind A or as a separate later phase is an open
-proposal for the freeze (DD-037-6).
+Both workstreams are execution-gated: the draft
+ran neither. Workstream B runs inside Phase-402,
+gated on step 0 only (DD-037-6, decided at the
+freeze, `adjudication.md` §4).
 
 ## 4. Workstream A — the pilot test and the spine
 
@@ -433,7 +438,7 @@ reported, not resolved); any change to the Q7
 record; anything publishable beyond the aggregate
 statistics named in §§4.4–5.
 
-## 7. Execution shape (Phase-401 — NOT run by this spec)
+## 7. Execution shape (Phase-402)
 
 1. **Graph-first build** (H15/H23): experiment
    script, graph module, registration in the
@@ -569,32 +574,28 @@ The governed register is `claims.json`
   changes the value, it changes it before any
   join is computed and the change is recorded
   here.
-- **DD-037-5 — OPEN PROPOSAL: the hand-check
-  stratum size.** Draft proposal: 60 candidates
-  (30 VERIFIED / 15 CONFLICT / 15 UNRESOLVED,
-  whole class where smaller), seeded, the seed
-  recorded before sampling. Freeze decides the
-  size; the stratification across outcome
-  classes is fixed by §4.6 either way.
-- **DD-037-6 — OPEN PROPOSAL: Workstream B's
-  placement.** Either inside Phase-401 behind
-  Workstream A (one execution, annex appended),
-  or as a separate later phase. **Recommendation:
-  inside Phase-401, gated on step 0 only** — B
-  touches no joins, adds no risk to A's ladder,
-  and reads the same pinned local table; a
-  separate phase would re-run the same step 0
-  for no epistemic gain.
-- **DD-037-7 — OPEN PROPOSAL: a spec-level OSF
-  registration, decided at freeze.** This study
-  registers no prediction and scores none; the
-  house pattern for study designs (Specs 027,
-  030) filed OSF registrations at freeze.
-  **Proposal: follow the pattern and file the
-  frozen spec's own OSF registration**, so the
+- **DD-037-5 — the hand-check stratum size.
+  DECIDED at the freeze** (`adjudication.md`
+  §4): 60 candidates (30 VERIFIED / 15 CONFLICT
+  / 15 UNRESOLVED, whole class where smaller),
+  seeded, the seed recorded before sampling.
+  The stratification across outcome classes is
+  fixed by §4.6.
+- **DD-037-6 — Workstream B's placement.
+  DECIDED at the freeze** (`adjudication.md`
+  §4): inside Phase-402, gated on step 0 only —
+  B touches no joins, adds no risk to A's
+  ladder, and reads the same pinned local
+  table; a separate phase would re-run the same
+  step 0 for no epistemic gain.
+- **DD-037-7 — a spec-level OSF registration.
+  DECIDED at the freeze** (`adjudication.md`
+  §4): the pattern is followed and the frozen
+  spec's own OSF registration is filed at the
+  freeze (`osf-spec-registration.md`), so the
   ladder and the halt rule are timestamped
-  outside the repo before execution. Nothing is
-  filed at draft either way.
+  outside the repo before execution. This study
+  registers no prediction and scores none.
 
 ---
 

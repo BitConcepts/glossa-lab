@@ -1,14 +1,15 @@
 # Spec 037 — Tasks
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-20
+> ## PLAN — FROZEN 2026-10-20
 >
 > Adjudication input is recorded in
 > `adjudication.md` (the owner's draft order of
-> 2026-10-20, drafting only). The freeze and the
-> execution tasks for Phase-401 remain gated on
-> the owner's separate decisions; execution is
-> additionally gated on step 0 of the spec, in
-> the frozen order.
+> 2026-10-20; the freeze decisions in §4, under
+> the owner's standing pipeline authorisation of
+> the same day). The execution tasks for
+> Phase-402 run under the frozen contract;
+> execution is additionally gated on step 0 of
+> the spec, in the frozen order.
 
 ## Lifecycle
 
@@ -35,32 +36,41 @@
       `backend/tests/test_spec037_freeze.py`; the
       AEE lifecycle hooks have **not** run on this
       register (L3).
-- [ ] **L3 — AEE lifecycle hooks (FREEZE GATE —
-      not run on this draft).** At the freeze act,
-      run `run_aee.py assess` after_specify,
-      after_plan, and after_tasks over the claim
-      register; the gate is **pass**, and a
-      stricter outcome blocks the freeze until its
-      named recovery is complete and recorded.
-      Deliberate ordering (the Spec 035 record):
-      any recovery round changes claim text, and
-      the freeze digest is computed over the
-      recovered register exactly once, at freeze.
+- [x] **L3 — AEE lifecycle hooks (FREEZE GATE).**
+      Run at the freeze act, 2026-10-20, under aee
+      1.5.0: after_specify cleared in three
+      adjudicated rounds (register recovered to
+      0.7-draft); after_plan and after_tasks clean
+      at first pass. At every hook: zero
+      correctness failure modes and no claim below
+      the 0.70 threshold; the residual records are
+      the 15 FR-2.3 draft-cap records (the
+      DD-037-9 gate reading). Recorded in
+      `aee/freeze-aee-note.md`. Deliberate ordering
+      (the Spec 035 record): any recovery round
+      changes claim text, and the freeze digest is
+      computed over the recovered register exactly
+      once, at freeze.
 - [x] **L4 — Design PR.** This draft, opened as a
       DRAFT PR and left unmerged for the owner's
       freeze decision, CI green from run
       conclusions.
-- [ ] **L5 — Freeze.** On the owner's freeze
-      order: hooks pass (L3), `freeze.md`
-      finalised, `freeze.json` recomputed over the
-      recovered register and the finalised freeze
-      texts; freeze tests pin the digest replay,
-      the definition constants, the register
-      integrity, and the cited records (gate and
-      census constants, corpus_master pin, the
-      Spec 031 fence). DD-037-4 confirmed
-      (halt threshold), DD-037-5, DD-037-6, and
-      DD-037-7 decided at the freeze.
+- [x] **L5 — Freeze.** Executed 2026-10-20 under
+      the owner's standing pipeline authorisation:
+      hooks pass (L3), `freeze.md` finalised,
+      `freeze.json` recomputed over the recovered
+      register and the finalised freeze texts;
+      freeze tests pin the digest replay, the
+      definition constants, the register integrity,
+      the freeze-hook artifacts, and the cited
+      records (gate and census constants,
+      corpus_master pin, the Spec 031 fence).
+      DD-037-4 confirmed (halt threshold),
+      DD-037-5 (stratum 60), DD-037-6 (Workstream B
+      inside Phase-402), DD-037-7 (OSF registration
+      filed), DD-037-8 (phase allocation
+      Phase-402), and DD-037-9 (the gate reading)
+      decided at the freeze (`adjudication.md` §4).
 - [ ] **L6 — Freeze PR merged**, house gates green
       (full suite, branding sweep; no anchor or
       register consequence exists under this spec,
@@ -76,7 +86,7 @@
       (DD-037-7), is recorded by append once its
       approval verifies.
 
-## Execution (Phase-401) — gated on the freeze and a separate execution order
+## Execution (Phase-402) — under the frozen contract and the owner's standing pipeline authorisation
 
 - [ ] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,

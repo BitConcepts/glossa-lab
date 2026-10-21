@@ -1,19 +1,21 @@
 # Spec 037 — Freeze Record (CISI 3.1 concordance spine and HARP provenance annex)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-20
+> ## FROZEN — 2026-10-20
 >
-> This record is finalised at the freeze act.
-> The digest in `freeze.json` at this draft is a
-> **draft digest**, computed by `build_freeze.py`
-> over this draft contract (register 0.5-draft)
-> under the owner's draft order of 2026-10-20
-> (`adjudication.md`). At the freeze act — on the
-> owner's freeze order — the AEE lifecycle hooks
-> run over the register first, and the digest is
-> recomputed **exactly once** over the recovered
-> register and the finalised freeze texts (the
-> Spec 035 ordering). The draft digest decides
-> nothing and is not the freeze digest.
+> This contract was frozen on 2026-10-20 under
+> the owner's standing pipeline authorisation of
+> 2026-10-20 (freeze order 038, then 037, then
+> 039, then 040; `adjudication.md` §4). The AEE
+> lifecycle hooks ran over the register first
+> (register recovered to 0.7-draft;
+> `aee/freeze-aee-note.md`), and the digest in
+> `freeze.json` was then computed **exactly
+> once** over the recovered register and the
+> finalised freeze texts (the Spec 035
+> ordering). The freeze also filed this spec's
+> own OSF registration (DD-037-7;
+> `osf-spec-registration.md`). Execution runs
+> as **Phase-402** under this frozen contract.
 
 ## 1. Basis
 
@@ -28,8 +30,7 @@ extracted local table (2,123 records / 2,101
 distinct catalogue numbers), against
 `corpus_master` on `main` (SHA-256 `b19cfe95…`).
 
-The draft-stage position is stated plainly so
-the freeze decision is made with open eyes: the
+The position at freeze is stated plainly: the
 pilot's 693 candidates exist as a count in the
 intake record, and **no candidate has been
 graded** — the verified rate this study exists
@@ -46,18 +47,19 @@ be scored from this material (it carries no
 sign transcriptions); row-level products never
 leave the restricted local store.
 
-The freeze also decides the open design
-proposals (`adjudication.md` §3): **DD-037-5**
-(the hand-check stratum size), **DD-037-6**
-(Workstream B's placement; recommended: inside
-Phase-401, gated on step 0 only), and
-**DD-037-7** (whether this frozen spec files
-its own OSF registration; proposal: yes,
-following the Spec 027/030 study-design
-pattern). The halt threshold (DD-037-4) is
-confirmed at the freeze — or changed openly,
-before any join is computed, with the change
-recorded in `adjudication.md`.
+The freeze decided the open design proposals
+(`adjudication.md` §4): **DD-037-5** (the
+hand-check stratum is 60: 30 VERIFIED / 15
+CONFLICT / 15 UNRESOLVED, the whole class where
+a class is smaller, the seed recorded before
+sampling), **DD-037-6** (Workstream B runs
+inside Phase-402, gated on step 0 only), and
+**DD-037-7** (this spec files its own OSF
+registration; filed at the freeze,
+`osf-spec-registration.md`). The halt threshold
+(DD-037-4) is confirmed at 20% of all
+candidates, and the phase allocation is
+Phase-402 (DD-037-8).
 
 ## 2. Machine record
 
@@ -80,7 +82,7 @@ lifecycle bookkeeping and are not digest-covered
 (the house rule since Spec 026: plans change as
 work proceeds).
 
-## 3. What the freeze would fix
+## 3. What the freeze fixes
 
 - **The ladder** (spec §4.3 / F037-C03): site
   mandatory; type mandatory where graded, seal
@@ -96,7 +98,7 @@ work proceeds).
   UNRESOLVED always its own class.
 - **The halt rule** (spec §4.7 / F037-C05): a
   conflict share above the frozen threshold —
-  20% of all candidates as drafted — halts the
+  20% of all candidates (DD-037-4) — halts the
   spine build; the pilot reports in full either
   way.
 - **The gate handling** (spec §§2, 4.5, 7 /

@@ -461,3 +461,42 @@ at both points — byte-identical, asserted.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+---
+
+## Landing record — 2026-10-21 (appended at merge; append-only)
+
+- Execution PR: **#268** (branch
+  `spec-045-step0-execution`), merged to `main`
+  as merge commit
+  **`c97c8d4c7153bd60917b1064c8eaf1cfa748549b`**.
+- CI: GitHub Actions run **39616574890** on the
+  PR head `5acfcab4` — **7 of 7 jobs success**,
+  verified from the run's own job conclusions
+  (Backend tests (pytest); Frontend tests
+  (Playwright); Indus public validation checks;
+  Evidence Graph script smoke tests; Shell
+  wrappers ubuntu / macos / windows).
+- Run digests re-verified on `main` at the
+  merge commit by two routes (the full-clone
+  working tree and the contents API):
+  `reports/phase411_results.json`
+  `2a3872953036f1d75ada01f85e43c165ea95976a3111992f4985808a8120b5cd`,
+  `reports/phase411_step0_report.md`
+  `ca5dfb380e1e5a3806d7bf41c7aab9168bac2de8007274c7628c019a2d1ebf17`
+  — identical to the values in §1 of this
+  record.
+- Foundation check (H21) at the merge commit,
+  on a fresh full clone with the two Holdat
+  CSVs copied from the existing local downloads
+  (corpus CSV SHA-256
+  `62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e`
+  verified first): **40 checks passed, 0
+  failed, 8 warnings** — the standing figure.
+- Terminal outcome stands as recorded above:
+  **INVALID** at gate 0.2. Asset A was not
+  built and no Asset A digest exists. The
+  claim stands as recorded.
+
+*AI disclosure: appended by an AI agent (Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.*

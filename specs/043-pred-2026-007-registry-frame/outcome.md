@@ -495,3 +495,56 @@ PRED-2026-012 or of PRED-2026-007.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+---
+
+## Landing record — 2026-10-21 (appended at merge; append-only)
+
+- Execution PR: **#278** (branch
+  `spec-043-phase410-execution`), merged to `main`
+  as merge commit
+  **`6b05130bbae47f6ea526e0225f0051fbefd2216a`**.
+  Two merge resolutions were required against
+  parallel Wave 3 merges (Spec 055 / Phase-414 and
+  Spec 058 / Phase-420): in each case only the
+  append seams conflicted — the LEDGER tail and
+  the experiment-graph registration anchor — and
+  each was resolved by keeping both executions'
+  entries and registration blocks, with the
+  register file and its Phase D pin verified
+  unchanged (`a8531efd…`) after each resolution.
+- CI: GitHub Actions run **39631757006** on the
+  PR head `88b0bd5b` — **7 of 7 jobs success**,
+  verified from the run's own job conclusions
+  (Backend tests (pytest); Frontend tests
+  (Playwright); Indus public validation checks;
+  Evidence Graph script smoke tests; Shell
+  wrappers ubuntu / macos / windows). The two
+  earlier heads also ran green (`a32c4902`, run
+  39628872370, 7/7; `6220a353`, run 39630295420,
+  7/7).
+- Run digests re-verified on `main` at the
+  merge commit by two routes (the git object at
+  the merge commit and the contents API):
+  `reports/phase410_results.json`
+  `0a9391b6032bd5902f941190c61d4b41cc608833e6bc601ddd74e13d85d5af67`,
+  `reports/phase410_step0_report.md`
+  `638405d8557ea77a0760efc1c217f6010da59407f570238d3a3e4b11115681bb`
+  — identical to the values in §1 of this
+  record.
+- Foundation check (H21) at the merge commit,
+  on a fresh checkout of `6b05130b` with the two
+  Holdat CSVs copied from the existing local
+  downloads (corpus CSV SHA-256
+  `62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e`
+  verified first): **40 checks passed, 0
+  failed, 8 warnings** — the standing figure.
+- Terminal outcome stands as recorded above:
+  **PROVENANCE — CANNOT BE RUN AS WRITTEN** at
+  step 0, check 0.3. PRED-2026-012 remains
+  unscored, its §3 Outcome standing PENDING;
+  PRED-2026-007's PARTIALLY CONFIRMED stands
+  untouched.
+
+*AI disclosure: appended by an AI agent (Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.*

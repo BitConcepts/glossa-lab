@@ -7523,3 +7523,78 @@ NOT-YET-TESTABLE.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson,
 per constitution sec.VI.
+## 2026-10-21 — Spec 046 (Phase-405) executed — IDENTIFICATION FAILED (sign unmatched)
+
+Spec 046 ("Sign 297 Is the Horned Tiger": an
+Identification Concordance, design D-18) was executed
+as Phase-405 under its frozen contract (freeze-act
+digest
+80c3be31e5af5236f71cb2c1894b2946f9b8ad47b12bdeab9d03cd76468af405;
+successor digest
+e0d7add84b9d28ae5f6a6b392dca578b727ad4d99a117360a57d39f3b94b01c6
+in freeze.json as merged), in Wave 3 group 1 of the
+runnable-experiments campaign, before Asset A freezes.
+The execution gate was satisfied before the run: OSF
+registration dnts8 is approved + public.
+
+Outcome, in the frozen wording: **IDENTIFICATION
+FAILED (sign unmatched)** — "The fragment 'sign 297
+is the horned tiger' cannot be carried to a
+concordance: the drawn sign could not be matched from
+Wells's published list. The record stays a stated gap.
+No statement about the sign is made, and nothing is
+fed to Asset A."
+
+Step 0 passed in full: every spec section 2 input
+pin recomputed by two independent routes and matched
+(claim record bd0f7abd…, held Wells 2015 text
+62acf855…, Phase-104 evaluation 2d0b83e8…, crosswalk
+registry 8a0b2a82…, lane-2 drafts 3f645c9a…); the
+source book produced from the held copy with the
+printed-p. 97 passage located verbatim; all four
+lists of record accounted for as HELD or CITABLE
+(Wells HELD, CISI HELD, Parpola CITABLE, Mahadevan
+CITABLE). Step 1 named the source's sign list from
+the book's own apparatus — Wells's own list (Wells
+2011), in Wells 2015 Chapter 2 / Figure 2.6 — and the
+drawn-sign match then failed: the pinned registry
+carries no entry for the drawn sign (its only W297
+value sits inside the 17-value wells_ids cell on the
+P205 "Prismed light rays" row, the trap the frozen
+spec names in advance; P297 is the "Ladder motif", a
+different sign; 0 of 803 registry descriptions name
+a tiger); the Phase-123 Wells witness carries no
+Wells grapheme 297; the drawn forms of Figure 2.6 did
+not survive the held copy's text extraction (captions
+only), so no inspectable drawn-sign reference exists
+in the held record; and the Spec 004 WS2 record
+(three candidate referents, none matching the
+description in-repo) stands unrebutted. Matching by
+number is forbidden (F046-C07) and was not used.
+
+Step 2 was not reached: no list was scored, no
+concurrence state was computed, and the hypothesis
+is unjudged — neither supported nor falsified on
+concurrence grounds. Delivery in the frozen closure
+form: specs/046-horned-tiger-concordance/
+concordance-297.json (schema glossa.concordance/1;
+signs empty; closure block), SHA-256
+772db4df152ec4f1071bed088250677e55f69743532c9e89f339a8cf9134aaaf
+(derived twice, identical; the run is deterministic
+and reproducible byte-identically). Records:
+reports/phase405_results.json,
+reports/phase405_concordance_report.md,
+specs/046-horned-tiger-concordance/outcome.md; graph
+node IndusPhase405HornedTigerConcordance registered
+and verified by import before the run; the claim's
+record received its dated first-check append
+(F046-C15; pre-existing content verified
+byte-identical with the append removed; status and
+stage unchanged). Anchors asserted byte-identical
+before and after (df0cf620…). Asset A (Spec 045)
+proceeds without this feed and records its absence;
+the closure does not block the asset.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.

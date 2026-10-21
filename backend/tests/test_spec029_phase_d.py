@@ -419,12 +419,32 @@ def test_pred_register_document_untouched():
     # of PRED-2026-011's OSF registration
     # (https://osf.io/t6whq/, DOI
     # 10.17605/OSF.IO/T6WHQ; insertions only, no
-    # existing entry altered). Any further drift
-    # from this hash is unauthorised.
+    # existing entry altered). It was advanced a
+    # sixth time, by name, for the owner-ordered
+    # execution append of 2026-10-20: the dated
+    # section 6 entry recording the Spec 036 /
+    # Phase-400 execution of PRED-2026-011 (step 0
+    # passed in full; verdict CONFIRMED, 2 of 2),
+    # with the section 3 entry's Tested/Outcome
+    # fields moved from PENDING to the verdict in
+    # the same act, as Spec 036's register-handling
+    # claim (F036-C14) prescribes on a verdict. It
+    # was advanced a seventh time, by name, for the
+    # owner-ordered execution appends of 2026-10-20
+    # under Spec 038 / Phase-401: the dated section
+    # 6 outcome entry (PRED-2026-007 closed at step
+    # 0.2 — CANNOT BE RUN AS WRITTEN, unscored; the
+    # section 3 entry left standing as the
+    # pre-execution record) and the DD-038-2
+    # provenance reconciliation note (insertions
+    # only, no existing entry altered), as Spec
+    # 038's register-handling claim (F038-C10)
+    # prescribes for the authorised change. Any
+    # further drift from this hash is unauthorised.
     digest = hashlib.sha256(
         (_REPO_ROOT / "docs" / "PREDICTION_REGISTER.md").read_bytes()
     ).hexdigest()
-    assert digest == "548b13f22eabd1f10280d1544533b440f6d317977be2b26da6a0b4abd9de159c"
+    assert digest == "f281bd674d7651e9c13351bad7cb321bd55000cd3f087a38276a4451fbbf7ef3"
 
 
 # ── Script contract: shapes, states, idempotency ─────────────────────────

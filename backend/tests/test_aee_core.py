@@ -141,7 +141,11 @@ def test_score_dict_shape():
     d = scores["t_supported_001"].to_dict()
     assert d["claim_id"] == "t_supported_001"
     assert 0.0 <= d["propagated_score"] <= 1.0
-    assert d["components"]["falsifiability"] == 1.0  # has a falsification test
+    # aee 1.5.0 FR-8.7 (substance over presence): the fixture's
+    # falsification string states no checkable condition (no numeric
+    # bound, comparator, or observation term), so it earns partial
+    # credit 0.5 — under aee < 1.5 mere presence earned 1.0.
+    assert d["components"]["falsifiability"] == 0.5  # has a falsification test
 
 
 # ── Real fixture round-trip ──────────────────────────────────────────────

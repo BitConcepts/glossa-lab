@@ -399,3 +399,190 @@ the draft to it.
   PRED-2026-012. The freeze and the execution
   remain separate owner gates; this section
   freezes nothing and runs nothing.
+
+## 7. Freeze decisions (2026-10-21)
+
+> ## FREEZE SECTION — 2026-10-21
+>
+> Appended at the freeze act under the owner's
+> authorisation of 2026-10-21: the
+> runnable-experiments campaign plan approved
+> AS WRITTEN on 2026-10-21 (decision E-1: an OSF
+> contract registration per specification at
+> its freeze; decision E-4 as recorded in §6;
+> the freeze wave delegated; Wave 3 execution
+> ordered for this member — see §7.6). This
+> section resolves DD-043-10…DD-043-14 on the
+> record. Nothing above this section was
+> edited at the freeze; `spec.md`'s header and
+> its §14 entries for DD-043-10…DD-043-14 were
+> finalised in the same act, before any digest
+> was computed.
+
+### 7.1 DD-043-10 — Borderline evidence standard: DRAFT RECOMMENDATION ADOPTED
+
+**ADOPTED as drafted.** A derivation basis
+counts as stated only if the produced document
+states it in words, with a locator, for the
+class or the sign. Inference from a class's
+name, from the builder table's glosses, or
+from the classification's general reputation
+does not count. Borderline calls are
+adjudicated by the executor of the step-0
+record and are recorded in that record with
+the quoted text, so the determination is
+checkable in its turn. Silence in a produced
+document is failure, as the draft already
+fixed. The standard is carried in claim
+F043-C09's boundary.
+
+### 7.2 DD-043-11 — OSF registration: YES (campaign E-1)
+
+**DECIDED: yes.** This frozen spec files its
+own OSF contract registration at the freeze,
+under campaign decision E-1, following Specs
+032–039. The filing is recorded in
+`osf-spec-registration.md` in this directory.
+The registration registers the frozen contract;
+it publishes no results. Execution awaits the
+registration's verified approval (§7.6).
+
+### 7.3 DD-043-12 — The LOG class's role: ENUMERATED-ONLY
+
+**RULED as the draft frames it: enumerated-only
+— the draft's design is adopted.** The LOG set
+(P217, P310) is enumerated in the census and
+the per-sign record, its assignments are
+traced through the provenance gate's evidence
+set in the same form as the ITM assignments,
+and no LOG quantity is scored: no LOG share is
+computed, no control verdict or contrast is
+published, and the gate's LOG trace gates
+nothing. Reason: the registered criterion
+ranges over ITM signs only; a descriptive
+share over two signs would carry no criterion
+and would invite reading as a second result
+beside the verdict. The scored-as-control
+alternative the draft framed is not adopted.
+Carried in claim F043-C07's boundary.
+
+### 7.4 DD-043-13 — Execution phase: Phase-410
+
+**ALLOCATED: Phase-410.** The merged record
+allocates Phase-400 to Spec 036, Phase-401 to
+Spec 038, Phase-402 to Spec 037, Phase-403 to
+Spec 039, and Phase-404 to Spec 044; Phase-410
+is allocated to this spec at this freeze.
+Nothing substantive turns on the number.
+
+### 7.5 DD-043-14 — The AEE gate reading: DD-038-10 ADOPTED
+
+**ADOPTED at freeze: the DD-038-10 reading
+governs (DD-043-14).** At every lifecycle hook
+the aee 1.5.0 assessment carries zero
+correctness failure modes and no claim below
+the 0.70 threshold; its outcome word reads
+"iterate" solely because each of the 16 claims
+carries an FR-2.3 draft-cap record. That cap
+is a lifecycle fact about a freeze-time
+register, not a correctness failure and not a
+bar to freezing. The rounds, recoveries, and
+artifacts are recorded in
+`aee/freeze-aee-note.md`.
+
+### 7.6 The campaign approval is the execution authorization
+
+The register's PRED-2026-012 scoring gate
+reads: "registration alone is not a scoring
+order. Scoring requires Spec 043's freeze and
+a separate owner execution order." That
+separate order exists and is cited here as
+the freeze record requires: **the owner's
+approval of the runnable-experiments campaign
+plan AS WRITTEN on 2026-10-21** — the same
+approval §6 records for ruling E-4 — orders
+this member's execution in Wave 3 of the
+campaign (campaign plan Part 4: member 20,
+Spec 043, runs its step-0 provenance
+adjudication first in the independent-executions
+group). The Wave 2 freeze wave and the Wave 3
+execution pass were both delegated under that
+single approval. Execution under Phase-410
+therefore requires no further execution order;
+it awaits only this freeze's merge and the
+verified approval of this spec's OSF contract
+registration (§7.2), per the house pattern.
+This citation answers the register's line for
+this member; it changes no register text.
+
+### 7.7 Pins re-asserted at the freeze
+
+Every §4 check 0.1 pin was re-derived in the
+foreground at this freeze by two independent
+routes — the GitHub contents API at the draft
+branch head (`7ea63223…`) and a fresh local
+checkout of that head — and the two routes
+agree byte-for-byte on all seven:
+
+- Primary (registry):
+  `8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420`
+- Cross-check (CGSA analysis):
+  `8c2bd6059a671068b645204db37e29ff13ca53009117b9447ed6c7bd1ead02b3`
+- Builder (`scripts/cgsa_pipeline.py`):
+  `4af822f1ad5c924defed7852df967f8633899b27a27fdaea84e2cdad8744efb0`
+- Parser (`fuls_parser.py`):
+  `9b57f0ecc10905c0746f1e7fb8e0622ac18e3b08e62bb2eb34fbec4bbd8ef615`
+- Scoring assignment (`sign_clusters.json`):
+  `623a787dd9cc93c4d3d36377890c4753e3427f57cf7ad70adcd6e8256ba1394a`
+- Scoring classes (`cluster_characterization.md`):
+  `54ebf660873fd853a64ce91c7e30d8c4cedc5bc3a0a1555db1f6281a52e3c476`
+- The contract (`docs/PREDICTION_REGISTER.md`,
+  as reconciled with the PRED-2026-012
+  registration):
+  `254ccf039cf04cf2882e04c8658381cc05573163651ed5d478697058aa424984`
+  — re-derived, not inherited from the draft's
+  statement.
+
+The draft census and re-derivation were also
+re-run at this freeze over the pinned bytes:
+803 registry rows, 791 uncoded, 12 coded (ITM
+P056, P324, P378, P385; LOG P217, P310); the
+pinned builder rule (`_WELLS_FUNCTIONS`,
+first matching key in table order over each
+row's split `wells_ids`) reproduces all 803
+recorded `icit_function` values exactly (zero
+mismatches); P098's row carries no code. No
+Phase 5 assignment was looked up at the freeze
+for any sign beyond the register's three named
+signs, whose recorded anchor the freeze test
+verifies as a form fact (the Spec 038 pattern).
+
+### 7.8 Draft-fixed readings at freeze
+
+DD-043-1…DD-043-5 and DD-043-7…DD-043-9 stand
+as drafted. DD-043-6 stands superseded by
+campaign ruling E-4 (§6). No draft-fixed
+reading was overturned.
+
+### 7.9 What the freeze decided
+
+1. This contract is frozen (digest in
+   `freeze.md` / `freeze.json`), with every
+   spec §4 pin re-asserted at the freeze
+   (§7.7).
+2. DD-043-10…DD-043-14 are resolved as
+   §§7.1–7.5 record; the campaign-approval
+   execution citation is recorded at §7.6.
+3. Nothing else: the freeze does not run the
+   provenance adjudication (execution step 0,
+   check 0.3), does not produce or judge any
+   D3/D4 document, computes no share, and
+   looks up no Phase 5 assignment. Execution
+   is Phase-410 under §7.6.
+
+---
+
+*Freeze section appended 2026-10-21 by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI. Append-only:
+nothing above this section was edited.*

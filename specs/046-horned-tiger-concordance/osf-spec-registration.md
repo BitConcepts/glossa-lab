@@ -79,10 +79,18 @@ precedent, the freeze-act digest above
 stands in this record and in the filed
 registration `dnts8`; the **successor
 digest** is
-`30c3480b29aeb5468615007f14de5500ba6266b9ea452c428e5d2b81d3bf36f1`,
-the value in `freeze.json` as merged. No
-claim, decision, outcome, or contract
-wording changed.
+`e0d7add84b9d28ae5f6a6b392dca578b727ad4d99a117360a57d39f3b94b01c6`,
+the value in `freeze.json` as merged. (A
+first successor digest, `30c3480b…`, was
+superseded before merge when the amended
+run's shell-wrapper jobs caught an unused
+import the first correction had left in the
+test file — ruff F401; the import was
+removed and the digest recomputed once over
+the twice-amended state, both corrections
+recorded in `freeze.md` §6.) No claim,
+decision, outcome, or contract wording
+changed.
 
 ---
 

@@ -210,12 +210,24 @@ stop for this claim; the registry census and
 traps, unchanged). No claim, decision,
 outcome, or contract wording changed.
 
+A second, smaller correction followed on
+the amended run (run 39583029748): the
+backend job went green — the correction
+above held — but the three shell-wrapper
+jobs failed ruff on the amended test file
+(F401: the `hashlib` import the first
+correction had left unused). The unused
+import was removed; nothing else changed.
+Both corrections are confined to the freeze
+test file and this section.
+
 Because the test is a digest-covered source,
 `freeze.json` was recomputed **exactly once**
-over the amended state with this directory's
-`build_freeze.py`. Following the Spec 030
-precedent: the freeze-act digest computed at
-the freeze (`80c3be31…`, full value in
+over the amended state (both corrections in)
+with this directory's `build_freeze.py`.
+Following the Spec 030 precedent: the
+freeze-act digest computed at the freeze
+(`80c3be31…`, full value in
 `osf-spec-registration.md`) stands as the
 digest of the freeze act in every record
 that cites it, including the filed OSF

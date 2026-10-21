@@ -438,6 +438,161 @@ not an acceptance test in this program.
    recovery round they force changes claim
    text before the freeze digest exists.
 
+## 7. Freeze decisions (2026-10-21)
+
+> ## FREEZE ACT — DECIDED — 2026-10-21
+>
+> The freeze act of 2026-10-21, under the
+> campaign plan approved AS WRITTEN the same
+> date (Wave 2 freeze wave), decided the
+> items §3 and §6 left open. Each resolution
+> is recorded here on the record; the register
+> rulings were carried into `claims.json`
+> before the AEE hooks ran, and the hooks
+> passed over the recovered register
+> (0.8-draft; `aee/freeze-aee-note.md`).
+
+- **DD-058-14 — OSF registration at the
+  freeze (E-1).** This spec files its own
+  OSF contract registration at the freeze,
+  under campaign decision E-1, following
+  the Specs 036–039 pattern. This resolves
+  DD-058-10 as proposed (yes). The filing
+  record is `osf-spec-registration.md`.
+  Execution awaits the registration's
+  approval act and a separate execution
+  order; no mail is handled by the freeze.
+- **DD-058-15 — DD-058-11 resolved: the
+  store survives; production stays at
+  execution gate 0.2.** The freeze act
+  inspected the record first-hand. The
+  Phase-132 local store survives complete
+  on the machine holding the program's main
+  checkout, at
+  `corpora/downloads/cisi_image_layer/phase132_pilot/`
+  (gitignored, exactly as §2 of this record
+  describes): `frame.json`; 50 Pass A
+  records; 50 Pass B records; 10 gold-pass
+  records; 50 adjudication records; and
+  `effort_log.csv` with 320 data events —
+  the pilot report's §9 inventory, complete,
+  counted read-only at the freeze. Three
+  proofs that the surviving set is the
+  pilot's record set were run read-only at
+  the freeze with the pinned machinery (the
+  stale checkout's copies of the pinned
+  files hash to their §2.1 freeze values, so
+  the run used the record of record, not a
+  copy of convenience): (1) the pinned
+  metrics module's `compute_metrics` over
+  the surviving store reproduces the
+  committed metrics file **exactly** — the
+  computed record equals the committed
+  record in full, not only on the headline
+  values gate 0.4 names; (2) the
+  disagreement taxonomy recomputed from the
+  surviving adjudication records equals the
+  pilot report's §4(c) counts exactly
+  (identity 93, legibility 45, count 11,
+  key 10, orientation 2, order 1; total
+  162 — gate 0.5's values); (3) the store's
+  `frame.json` frame list equals the
+  committed pilot frame's frame list in
+  full (gate 0.3's identity). A per-file
+  SHA-256 manifest of the 162-file set was
+  computed at the freeze as inspection
+  evidence; it is **not** a freeze pin and
+  asserts nothing at execution. On that
+  evidence the freeze **proceeds**, and the
+  production question is answered under the
+  draft's own design: production is
+  **deferred to execution gate 0.2**,
+  fail-closed exactly as drafted, with its
+  pre-written PILOT-PASS RECORDS NOT
+  PRODUCIBLE closure standing. The freeze
+  produces, preserves, copies, and pins **no**
+  store bytes; preserving the set as a
+  committed, hashed record is **not** ordered
+  as a separate act first, because the
+  design's gate is the honest test of the
+  record at execution, the store's survival
+  is now a freeze-verified fact rather than
+  an assumption, and a preservation act
+  remains available as the named unblocking
+  act if gate 0.2 ever fires. The execution
+  venue for gate 0.2 is the machine holding
+  the program's main checkout — the machine
+  whose store this section verifies — or
+  whatever venue the execution order names
+  with the store produced there; silently
+  assuming survival was never an option, and
+  after this section it is not an assumption
+  at all for the venue named. The freeze's
+  reproduction check is freeze evidence for
+  this adjudication only: it computed no
+  localisation quantity (no alignment, event,
+  or share of §4), and execution still runs
+  every step-0 gate in order on the produced
+  set.
+- **DD-058-16 — DD-058-12 resolved: gates
+  0.4–0.6 suffice.** No separate margins or
+  census audit is required beyond gates
+  0.4–0.6, as proposed: the reproduction,
+  taxonomy cross-check, and census gates are
+  exact, not sampled, and gate 0.6 publishes
+  the census every share is taken over.
+- **DD-058-17 — Phase-420 allocated.** The
+  execution phase number (DD-058-5) is
+  allocated at this freeze as **Phase-420**,
+  from the merged record as it stands: the
+  campaign's freeze order allocated
+  Phase-404 to Phase-418 to the members
+  frozen before this one (Phase-412,
+  Phase-415, and Phase-417 stand as
+  unallocated tombstones of the three freeze
+  failures), Phase-419 stands allocated to
+  Spec 057 in the campaign record, and no
+  repository record allocates Phase-420 —
+  verified at the freeze by search of the
+  merged record.
+- **DD-058-18 — The DD-038-10 AEE gate
+  reading adopted.** The gate is: at every
+  lifecycle hook, zero correctness failure
+  modes and no claim below the 0.70
+  threshold; FR-2.3 draft-cap records alone
+  do not block a freeze, because they are
+  lifted only by human ratification (a
+  status change), not by any recovery
+  available at a freeze. The hooks passed
+  on that reading (`aee/freeze-aee-note.md`).
+- **DD-058-19 — Draft readings confirmed.**
+  DD-058-1 to DD-058-9 and DD-058-13 are
+  **confirmed** as drafted, including the
+  four confirmatory items of §6: DD-058-3
+  (segmentation typed from the pass
+  alignment, the indel-share proxy),
+  DD-058-6 (sign involvement counts a
+  substitution for both of its values;
+  shares over summed involvement), DD-058-8
+  (the object-type locus rule: at least 50%
+  of events plus a 10-point enrichment
+  margin; Unrecorded cannot fire), and
+  DD-058-9 (LOCALISED TO MULTIPLE LOCI as
+  the combination headline class). No draft
+  reading is overturned.
+
+Every §2.1 pin was re-asserted at this freeze
+against the merged record (`main` at
+`770155dea66c5d5dde194728560aacf83c7514d0`,
+after Spec 050's freeze merge) by two
+independent routes — the contents-API route
+and the git-blob route — both recomputed in
+the foreground, agreeing byte-for-byte on
+every file, and every recomputed hash equal
+to its draft pin (`freeze.md` §2). No pin
+moved between the draft's base and the freeze.
+
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

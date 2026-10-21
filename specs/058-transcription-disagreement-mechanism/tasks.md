@@ -1,6 +1,6 @@
 # Spec 058 — Tasks
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-21
+> ## PLAN — FROZEN 2026-10-21 (execution Phase-420)
 >
 > Adjudication inputs are recorded in
 > `adjudication.md` (the runnable-experiments
@@ -45,8 +45,7 @@
       as a DRAFT PR and left unmerged for the
       owner's freeze decision, CI state
       reported from the run's own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
-      — not run on this draft).** At the freeze
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE).** At the freeze
       act, run `run_aee.py assess`
       after_specify, after_plan, and
       after_tasks over the claim register; the
@@ -62,15 +61,20 @@
       adopted 1.5.x engine at the freeze
       rather than assumed from pre-adoption
       habit (campaign plan, Wave 2).
-- [ ] **L5 — Freeze-decision items.** The
-      freeze decides DD-058-10 (OSF
-      registration), DD-058-11 (execution
-      venue / store preservation for gate
-      0.2), and DD-058-12 (margins/census
-      audit), and confirms or openly overturns
-      DD-058-3, DD-058-6, DD-058-8, and
-      DD-058-9.
-- [ ] **L6 — Freeze.** On the owner's freeze
+- [x] **L5 — Freeze-decision items.** The
+      freeze decided DD-058-10 (OSF
+      registration — filed, DD-058-14),
+      DD-058-11 (execution venue / store
+      preservation for gate 0.2 — the store
+      survives complete on the main-checkout
+      machine; production deferred to gate
+      0.2 as drafted, DD-058-15), and
+      DD-058-12 (margins/census audit — gates
+      0.4–0.6 suffice, DD-058-16), and
+      confirmed DD-058-3, DD-058-6, DD-058-8,
+      and DD-058-9 as drafted (DD-058-19);
+      `adjudication.md` §7.
+- [x] **L6 — Freeze.** On the owner's freeze
       order, with L4 passed and L5 decided:
       hooks recorded, `freeze.md` finalised,
       `freeze.json` recomputed over the
@@ -78,11 +82,34 @@
       every spec §2 pin re-asserted against
       the merged record, and the execution
       phase number allocated (DD-058-5).
-- [ ] **L7 — Freeze PR merged**, house gates
+      **Done at the freeze act of 2026-10-21:**
+      hooks PASS over the recovered register
+      (0.8-draft) under aee 1.5.3 — zero
+      correctness failure modes, no claim below
+      0.70 (minimum 0.72), draft-cap records
+      only (DD-058-18 gate reading); every §2.1
+      pin re-asserted two-route at `main`
+      `770155de`; the store-survival proofs of
+      DD-058-15 run read-only (inventory
+      complete; metrics reproduced exactly;
+      taxonomy and frame identity exact);
+      DD-058-10 to DD-058-12 resolved as
+      DD-058-14 to DD-058-16 in
+      `adjudication.md` §7; Phase-420 allocated
+      (DD-058-17); OSF contract registration
+      filed under E-1 (DD-058-14; filing record
+      in `osf-spec-registration.md`).
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
 
 ## Execution — gated on the freeze and a separate execution order
+
+Campaign order (plan Part 4, Wave 3):
+**Spec 058 executes in group 2, the
+independent executions.** It consumes no
+shared asset and no member's output, and no
+member consumes its output inside the pass.
 
 - [ ] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,

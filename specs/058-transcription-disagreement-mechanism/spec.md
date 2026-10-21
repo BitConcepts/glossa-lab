@@ -1,27 +1,39 @@
 # Spec 058 — What Drove the Spec 023 Transcription Disagreement (Design D-21, Arm A Only)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-21
+> ## FROZEN — 2026-10-21
 >
-> Drafted under the runnable-experiments campaign
-> plan approved by the owner AS WRITTEN on
-> 2026-10-21 (`2026-10-21-runnable-experiments-
-> campaign-plan.md`, Parts 1–4 and Part 6 item 4).
-> This specification is campaign member 15:
-> design D-21, arm A only. The portfolio triage
+> Frozen at the freeze act of 2026-10-21
+> under the runnable-experiments
+> campaign plan approved by the owner AS
+> WRITTEN on 2026-10-21
+> (`2026-10-21-runnable-experiments-
+> campaign-plan.md`, Parts 1–4 and Part 6
+> item 4): campaign member 15, design
+> D-21, arm A only. The portfolio triage
 > of 2026-10-21 found D-21 **RIPE (arm A)**.
-> Drafts in this campaign merge nothing: **the
-> freeze and the execution of Spec 058 are
-> separate later owner acts.** No AEE lifecycle
-> hooks have run on this draft; they are a
-> freeze gate. Nothing in this draft has been
-> run, frozen, registered, or computed.
+> The AEE lifecycle hooks ran at the
+> freeze gate and passed over the
+> recovered register (0.8-draft;
+> `aee/freeze-aee-note.md`); the freeze
+> record is `freeze.md` / `freeze.json`
+> in this directory, and the spec's OSF
+> contract registration is filed at the
+> freeze under campaign decision E-1
+> (`osf-spec-registration.md`). **Execution
+> is a separate later act**: it runs as
+> Phase-420 (DD-058-17), only after this
+> freeze has merged, the registration's
+> approval act has completed, and a
+> separate execution order is given.
+> Nothing has been tabulated, aligned, or
+> computed by the freeze itself.
 >
 > **Arm B is blocked and out of scope.** The
 > human-coder calibration arm of D-21 is
 > blocked on the owner-held expert engagement
 > (hold of 2026-10-12, unchanged; campaign plan
 > Part 6 item 4 keeps every engagement of
-> people with the owner). This draft covers
+> people with the owner). This spec covers
 > arm A only, records arm B as
 > blocked-out-of-scope in §1.3 and claim
 > F058-C06, and designs **no** AI substitution
@@ -30,13 +42,12 @@
 > record is itself the proof that it answers a
 > different question.
 >
-> The execution phase number is **unassigned**
-> at this draft. Phase-400 is Spec 036's,
+> The execution phase number was allocated
+> at the freeze act: **Phase-420** (DD-058-17,
+> completing DD-058-5). Phase-400 is Spec 036's,
 > Phase-401 Spec 038's, Phase-402 Spec 037's,
 > and Phase-403 Spec 039's; Spec 040 allocated
-> none. Spec 058 allocates its phase number at
-> the freeze act, from the merged record as it
-> then stands (DD-058-5).
+> none.
 
 **Design source:** D-21, arm A, in the
 experiment-design packet at PR #195

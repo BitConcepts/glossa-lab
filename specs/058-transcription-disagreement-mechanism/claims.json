@@ -1,1 +1,819 @@
-{"claims":[{"alternatives":["the pilot report's aggregate numbers could be read as already answering the mechanism question (they cannot: no sign-, type-, or segmentation-level tabulation of the passes exists at any level)"],"assumptions":["ASM-PILOT-RECORD"],"boundary":"The scope is the mechanism account for claim STUDY-SPEC-023/PHASE-132+383: the recorded passes, the recorded frame, and the loci the design names (signs, object types, segmentation choices). It excludes any statement about human coders (arm B, blocked), about the frozen CONTRADICTED verdict, about whether the 0.80 floor was the right bar, about any codebook revision, about Stage T, and about any object, pass, or protocol other than the pilot's.","depends_on":[],"evidence":[{"description":"Design D-21 (PR #195 packet, section D-21, read in full at this draft): arm A is a mechanism re-analysis of the recorded pilot passes; it changes no verdict.","direction":"supports","kind":"design-source","observed_at":"2026-10-21","ref":"docs/research/experiment-designs-2026-10-13/04-study-headlines.md","source_id":"docs/research/experiment-designs-2026-10-13/04-study-headlines.md","source_quality":"program-record"},{"description":"The adopted lane-2 record for STUDY-SPEC-023/PHASE-132+383: what remains not understood is the mechanism - which signs, objects, or segmentation choices drive the disagreement.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json","source_id":"specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json","source_quality":"authoritative"}],"falsification_tests":["the claim is falsified in scope if any Spec 058 output states a conclusion about a population, coder class, verdict, or question outside the localisation of the recorded pilot passes' disagreement"],"id":"F058-C01","kind":"hypothesis","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["phase132-record","design-packet"],"forbidden_assumptions":["ASM-RESULT-AS-HUMAN-EVIDENCE"],"framework_kind":"conditional-model-result","layer":"I","strongest_rival":"the alternative reading in which a mechanism account of the AI pilot's passes licenses a claim about transcription in general or about humans","verdict_rule":"scope is judged by inspection of every Spec 058 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding"},"status":"draft","text":"An outcome under Spec 058 states only where the disagreement between the two recorded Phase-132 pilot passes (Pass A and Pass B) of Spec 023 localises, within the pilot's 50-object frame."},{"alternatives":[],"assumptions":["ASM-PILOT-RECORD"],"boundary":"These are the Phase-132 pilot report's and Phase-383 report's values of record, read first-hand at this draft from the pinned committed files. The verdict follows from Spec 023's frozen stop-rule and the Spec 026 taxonomy as applied by Phase-383; this claim restates the record as the basis of the residue question and adjudicates nothing.","depends_on":["F058-C01"],"evidence":[{"description":"Phase-132 metrics of record (SHA-256 e864fca5..., recomputed at this draft): exact-sequence 0.20 all-50 P/M, per-token 0.4798, gold estimator 0.05, verdicts block with the fired stop-rule.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"reports/phase132_pilot_metrics.json","source_id":"reports/phase132_pilot_metrics.json","source_quality":"authoritative"},{"description":"Phase-383 results of record (SHA-256 4e52942d..., recomputed at this draft): recomputed values equal the committed ones; bootstrap exact-sequence CI [0.10, 0.32]; taxonomy verdict CONTRADICTED.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"reports/phase383_results.json","source_id":"reports/phase383_results.json","source_quality":"authoritative"},{"description":"Pilot report (SHA-256 e1df32da...): the fired stop-rule, failed release gates, pass token totals 191/190/40/189, UNK shares, and the 162-item adjudication taxonomy.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"reports/phase132_pilot_report.md","source_id":"reports/phase132_pilot_report.md","source_quality":"authoritative"}],"falsification_tests":["recompute SHA-256 of reports/phase132_pilot_metrics.json (e864fca5...) and reports/phase383_results.json (4e52942d...) and read the stated quantities; any mismatch falsifies this statement and voids the draft's basis"],"id":"F058-C02","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["phase132-record","phase383-record"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"the record could have been misread or superseded (the stale-pin precedents in Specs 040 and 042 show draft-cited values can be wrong)","verdict_rule":"the statement stands or falls on the pinned files hashing to their recorded values with the stated quantities in them"},"status":"draft","text":"STUDY-SPEC-023/PHASE-132+383 stands CONTRADICTED on its recorded numbers: Phase-132 exact-sequence agreement 0.20 (10/50, P and M) against the frozen 0.80 floor, per-token agreement 0.4798 (95/198), gold error estimator 0.05 (2/40), and the Phase-383 bootstrap interval for exact-sequence agreement [0.10, 0.32]."},{"alternatives":["the falsifier (F058-C04): mismatches distribute in proportion to frequencies and no locus fires","the disagreement localises to segmentation rather than to signs or types - a locus outcome under F058-C13/C14, not support for this hypothesis as the design states it"],"assumptions":["ASM-PILOT-RECORD","ASM-STORE-RECORDS","ASM-FROZEN-MACHINERY"],"boundary":"This is design D-21 arm A's hypothesis, verbatim in substance. It is a statement about the recorded passes over the pilot's 50-object frame under the frozen derivation and alignment, and about nothing else: not about why any sign is hard to read, not about other objects or coders, and not about humans.","depends_on":["F058-C01","F058-C02"],"evidence":[{"description":"Design D-21 arm A: the concentration hypothesis, its falsifier, the re-analysis method on the recorded passes, and the fixed sign criteria this spec registers.","direction":"supports","kind":"design-source","observed_at":"2026-10-21","ref":"docs/research/experiment-designs-2026-10-13/04-study-headlines.md","source_id":"docs/research/experiment-designs-2026-10-13/04-study-headlines.md","source_quality":"program-record"}],"falsification_tests":["run the section 4 tabulations after step 0 passes: if no locus fires under F058-C11/C12/C13, this hypothesis is not supported and the headline is NOT LOCALISED"],"id":"F058-C03","kind":"hypothesis","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["design-packet","phase132-record"],"forbidden_assumptions":["ASM-RESULT-AS-HUMAN-EVIDENCE"],"framework_kind":"conditional-model-result","layer":"I","strongest_rival":"the strongest rival is the falsifier itself: the disagreement is a uniform property of the passes' readings, proportional to frequency","verdict_rule":"supported for the hypothesis iff the SIGNS locus fires under F058-C11 or the OBJECT TYPES locus fires under F058-C12 (alone or among multiple loci), as reported in the headline of F058-C14"},"status":"draft","text":"The disagreement between the recorded Phase-132 pilot passes is concentrated, not uniform: a minority of signs or object types accounts for the majority of sequence mismatches."},{"alternatives":[],"assumptions":["ASM-DESIGN-CRITERIA"],"boundary":"Not-localised is the falsifier's outcome and a finding about the recorded passes, scoped to the pilot frame and machinery. It does not assert that the disagreement has no cause; it asserts that none of the three registered loci meets its frozen criterion on this record.","depends_on":["F058-C03"],"evidence":[{"description":"Design D-21 arm A's falsifier: mismatches distribute across signs and objects in proportion to their frequencies (no concentration to explain).","direction":"supports","kind":"design-source","observed_at":"2026-10-21","ref":"docs/research/experiment-designs-2026-10-13/04-study-headlines.md","source_id":"docs/research/experiment-designs-2026-10-13/04-study-headlines.md","source_quality":"program-record"}],"falsification_tests":["if any locus fires under F058-C11/C12/C13, this claim's condition does not arise and the headline is a localisation under F058-C14"],"id":"F058-C04","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["design-packet"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"a not-localised outcome could be misread as a null result of no value; the requirement exists so the falsifier's outcome is recorded as the mechanism finding it is","verdict_rule":"the outcome record must carry the NOT LOCALISED wording of spec section 5.2 and the three deciding shares whenever the condition holds"},"status":"draft","text":"If no locus fires under the frozen rules of spec section 5.1, the outcome is recorded as NOT LOCALISED in its pre-written wording, with the deciding shares stated."},{"alternatives":["re-opening Spec 023 to soften its verdict in light of a mechanism account (refused: frozen records are not edited in this program, and the design forbids it)"],"assumptions":["ASM-APPEND-ONLY","ASM-PILOT-RECORD"],"boundary":"The re-analysis changes nothing that exists: it tabulates the recorded passes and appends a dated mechanism account beside the frozen record. Any outcome - localised, not localised, step-0 closure, or invalid - leaves the pilot's failure standing exactly as recorded, as design D-21 states in advance.","depends_on":["F058-C01"],"evidence":[{"description":"Spec 023's frozen specification (SHA-256 c2e5d166...), including the section 5.6 freeze block whose definitions this variant inherits and does not alter.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"specs/023-keyed-transcription-layer/spec.md","source_id":"specs/023-keyed-transcription-layer/spec.md","source_quality":"authoritative"}],"falsification_tests":["inspection: any Spec 058 product that modifies a Spec 023, Phase-132, or Phase-383 file, restates the CONTRADICTED verdict, or presents the mechanism account as replacing it falsifies compliance with this requirement"],"id":"F058-C05","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["phase132-record","phase383-record"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"the pressure to let an interesting mechanism account reframe a failed pilot as partly successful","verdict_rule":"compliance is judged by file inspection at execution close: the section 2.1 pinned hashes of the underlying records unchanged, the verdict quoted only as recorded"},"status":"draft","text":"Spec 058 is a residue re-analysis appended to the record of STUDY-SPEC-023/PHASE-132+383; Spec 023's frozen records, the Phase-132 report, the Phase-383 verdict, and the CONTRADICTED status are not re-adjudicated, edited, or superseded by this spec."},{"alternatives":["substituting AI coders for the human coders (forbidden by the campaign plan: the Spec 023 record is precisely the proof that the substitution answers a different question)"],"assumptions":["ASM-ARM-B-HOLD"],"boundary":"Arm B as the design states it needs two independent human expert coders (M77-native sign-list training), blinded to each other and to human-derived references, on a 30-object / 212-token calibration set with bars of at least 95% per-token and at least 85% exact-sequence agreement. It is blocked on the owner's expert-engagement hold of 2026-10-12, carried unchanged by the 2026-10-21 campaign plan (Part 6 item 4: any new engagement of people remains the owner's gate; the campaign contacts no one). The unblocking act is the owner lifting that hold and an engagement being made under its own planning gate. No outcome under this spec is evidence about arm B's question.","depends_on":["F058-C01"],"evidence":[{"description":"Design D-21 arm B: the calibration-set shape, the verdict rule fixed in advance, the named block (human expert coders; engagement letters HELD by the owner, 2026-10-12), and the bar on AI substitution.","direction":"supports","kind":"design-source","observed_at":"2026-10-21","ref":"docs/research/experiment-designs-2026-10-13/04-study-headlines.md","source_id":"docs/research/experiment-designs-2026-10-13/04-study-headlines.md","source_quality":"program-record"},{"description":"Phase-383's origin-group audit (SHA-256 9f35f722...): all pilot coders were AI agents of one model family, so pass agreement is intra-origin consistency, not independent corroboration - the record ground for refusing substitution.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"reports/phase383_report.md","source_id":"reports/phase383_report.md","source_quality":"authoritative"}],"falsification_tests":["inspection: any Spec 058 product that specifies, recruits, simulates, or scores a human-coder arm, or that presents an AI-pass result as a substitute calibration, falsifies compliance with this requirement"],"id":"F058-C06","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["design-packet","campaign-plan"],"forbidden_assumptions":["ASM-AI-AS-HUMAN-CALIBRATION"],"framework_kind":"requirement","layer":"M","strongest_rival":"scope creep from a mechanism account of AI passes into an implied answer about human performance","verdict_rule":"the boundary is judged by inspection of the spec and every execution product: arm B appears only as blocked-out-of-scope, with the hold and the unblocking act named"},"status":"draft","text":"Design D-21 arm B (the human-coder calibration set) is blocked and out of scope for Spec 058; this spec designs no part of it and no AI substitution for its human coders."},{"alternatives":["reconstructing pass-level tabulations from the committed metrics file or the adjudicated dataset (refused: neither carries the per-pass sequences; using them would silently change the design's data)"],"assumptions":["ASM-STORE-RECORDS","ASM-PILOT-RECORD"],"boundary":"The store record set is the layout the frozen metrics module's loader defines (frame.json; pass_a, pass_b 50 records each; pass_gold 10; adjudication 50; effort_log.csv), inventoried against the pilot report's section 9 counts. Production is a records act: records are produced as they stand, hashed per file, and never edited, completed, or re-created. Plate images, renders, and crops are not inputs. The adjudicated final dataset is a committed record of the pilot's outcome, not a substitute for the passes, and is not an analysis input beyond the integrity pin.","depends_on":["F058-C05"],"evidence":[{"description":"The frozen metrics module (SHA-256 238dfafa...): its header and load_store define the store layout and state that the inputs live in the local store, never committed - the ground for this claim's two-part input definition.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"backend/scripts/phase132_metrics.py","source_id":"backend/scripts/phase132_metrics.py","source_quality":"authoritative"},{"description":"Pilot report section 9 inventory of the local store (50 Pass A, 50 Pass B, 10 gold-pass, 50 adjudication records; effort log 320 events) and section 4(d)'s process finding that quantities are computed from the on-disk records, never from batch self-reports.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"reports/phase132_pilot_report.md","source_id":"reports/phase132_pilot_report.md","source_quality":"authoritative"}],"falsification_tests":["the execution record must show the gate-0.2 inventory and per-file manifest for exactly the named record set, and the analysis code's inputs must be that set plus the section 2.1 pins; any other input falsifies compliance"],"id":"F058-C07","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["phase132-record"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"quiet substitution of the adjudicated dataset for the passes, presenting an adjudication analysis as a pass-disagreement analysis","verdict_rule":"input provenance is judged from the execution record and the gate-0.4 reproduction: only a record set that reproduces the committed metrics exactly is the record set of this claim"},"status":"draft","text":"The analysis consumes only the committed records pinned in spec section 2.1 and the Phase-132 local-store pilot-pass record set produced at execution under gate 0.2; it performs no re-coding, no new transcription, and uses no other data."},{"alternatives":[],"assumptions":["ASM-FROZEN-MACHINERY"],"boundary":"P space is primary because Spec 023's section 5.6 freeze block makes it primary and M space secondary. M-space tabulations are reported as a descriptive sensitivity only and move no headline. Any change to the derivation, the crosswalk, or the alignment is a different analysis and would require a different spec.","depends_on":["F058-C07"],"evidence":[{"description":"Spec 023 section 5.6 freeze block: comparison space (P primary, M secondary), the primary-counterpart rule, UNK handling, and the minimum-edit alignment with substitution preferred - read at this draft.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"specs/023-keyed-transcription-layer/spec.md","source_id":"specs/023-keyed-transcription-layer/spec.md","source_quality":"authoritative"},{"description":"Phase-383 rescoring module (SHA-256 b64b60de...): the precedent this spec follows - recompute from the on-disk records with the original metrics module imported, not reimplemented, asserting equality with the committed metrics first.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"backend/scripts/phase383_pilot_rescoring.py","source_id":"backend/scripts/phase383_pilot_rescoring.py","source_quality":"authoritative"}],"falsification_tests":["gate 0.4 (exact reproduction of the committed metrics from the produced store by the imported module) is the operational test: machinery or derivation that cannot reproduce the pilot's own numbers exactly is not the frozen machinery, and the run stops INVALID"],"id":"F058-C08","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["phase132-record","spec023-design"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"silent reimplementation drift (a re-typed alignment or primary-map rule) presenting as a mechanism finding","verdict_rule":"identity is judged by the gate-0.4 exact-reproduction standard and by import provenance in the execution record, not by code inspection alone"},"status":"draft","text":"Each pass's sequences are compared in P space by the frozen Phase-132 derivation (crosswalk-v1 primary counterpart; UNK compares as UNK; an unmapped M compares as UNMAPPED:<M_ID>) and aligned by the frozen minimum-edit alignment (substitution preferred over insertion/deletion at equal cost), with the metrics module imported unchanged."},{"alternatives":[],"assumptions":["ASM-STORE-RECORDS"],"boundary":"These are spec section 3's gates 0.1-0.5. Their failure classes are PILOT-PASS RECORDS NOT PRODUCIBLE (gate 0.2) and INVALID (gates 0.1/0.3/0.4/0.5), each with its pre-written wording in spec section 5.2. No failure is repaired at run time; a repaired or re-created record set is a new preservation act and a new freeze, not a resumed run.","depends_on":["F058-C07","F058-C08"],"evidence":[{"description":"The committed metrics file supplies gate 0.4's exact reproduction targets, including the per-object exact flags whose mismatched set (40 objects) gate 0.6 enumerates.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"reports/phase132_pilot_metrics.json","source_id":"reports/phase132_pilot_metrics.json","source_quality":"authoritative"},{"description":"The pilot report supplies gate 0.2's inventory (section 9) and gate 0.5's taxonomy counts (section 4(c): identity 93, legibility 45, count 11, key 10, orientation 2, order 1; total 162).","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"reports/phase132_pilot_report.md","source_id":"reports/phase132_pilot_report.md","source_quality":"authoritative"}],"falsification_tests":["each gate's check is itself the test: the execution record must show every gate's verdict, in order, before the first tabulated event, or the run is non-compliant on its face"],"id":"F058-C09","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["phase132-record"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"proceeding on a partial or unverified record set because the committed aggregates look close enough","verdict_rule":"the run's own record is the judge: gate verdicts precede quantities in it, in order, or the outcome is INVALID by construction"},"status":"draft","text":"Execution stops before any localisation quantity is computed if a committed-record hash mismatches, if the pilot-pass record set cannot be produced complete, if the produced frame differs from the committed frame, if the committed metrics do not reproduce exactly from the produced set, or if the adjudication-taxonomy cross-check fails."},{"alternatives":["typing events from the adjudication records' taxonomy instead (refused as the primary: the taxonomy classifies adjudicated disagreements, not pass-pair alignment events; it serves only as gate 0.5's identity cross-check - DD-058-3)"],"assumptions":["ASM-FROZEN-MACHINERY"],"boundary":"Events are defined over the 40 mismatched objects enumerated at gate 0.6. A substitution event involves both of its values; an indel event involves its one present value. The alignment does not distinguish an insertion in one pass from a deletion relative to the other, and no output may claim that distinction. First-divergence position is the 1-based index of the column in alignment order.","depends_on":["F058-C08","F058-C09"],"evidence":[{"description":"Design D-21 arm A's method: for every mismatched object, localise the first position of divergence and the signs involved; tabulate by sign, object type, and divergence type (substitution, insertion/deletion, segmentation cut).","direction":"supports","kind":"design-source","observed_at":"2026-10-21","ref":"docs/research/experiment-designs-2026-10-13/04-study-headlines.md","source_id":"docs/research/experiment-designs-2026-10-13/04-study-headlines.md","source_quality":"program-record"},{"description":"The frozen module's align() is the deterministic minimum-edit alignment (diagonal preferred over deletion over insertion) from which event columns are read.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"backend/scripts/phase132_metrics.py","source_id":"backend/scripts/phase132_metrics.py","source_quality":"authoritative"}],"falsification_tests":["the event table is recomputed from the published per-object alignments by any reader: an event, type, or first divergence not following this definition from its object's two sequences falsifies the outcome record"],"id":"F058-C10","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["phase132-record","design-packet"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"event definitions chosen after seeing the alignments, typing ambiguous columns to favour a locus","verdict_rule":"the definitions are frozen in this register before any alignment is computed under this spec; the results JSON publishes every event so the tabulations are checkable column by column"},"status":"draft","text":"A mismatch event is a column of the frozen alignment of an object's two P-sequences whose sides are not equal values present on both sides, typed SUBSTITUTION when both sides are present and unequal and INDEL when exactly one side is present; the first mismatch-event column per mismatched object is its first divergence."},{"alternatives":["counting a substitution once per event rather than once per involved value (refused at draft: involvement is a per-sign quantity in the design's wording - 'the signs involved'; DD-058-6 records the reading as OPEN for the freeze)"],"assumptions":["ASM-DESIGN-CRITERIA","ASM-FRAME-AS-RECORDED"],"boundary":"These criteria are design D-21 arm A's, carried verbatim. Involvement is counted per spec section 4.3 (a substitution counts once for each of its two values; an indel once for its present value), the ranking is total (ties by value string ascending), and shares are taken over summed involvement. Frequency share is over the two passes' full token streams (191 + 190 = 381 tokens on the committed record), P space.","depends_on":["F058-C10"],"evidence":[{"description":"D-21 arm A fixes the criteria in advance: CONCENTRATED if the top 10 signs by mismatch involvement account for at least 50% of all mismatches; UNIFORM if their share is within 10 points of their frequency share; BETWEEN otherwise.","direction":"supports","kind":"design-source","observed_at":"2026-10-21","ref":"docs/research/experiment-designs-2026-10-13/04-study-headlines.md","source_id":"docs/research/experiment-designs-2026-10-13/04-study-headlines.md","source_quality":"program-record"}],"falsification_tests":["the T1 table is published in full (every value's involvement and frequency share); any reader recomputing the top-10 share from it must reach the recorded locus verdict, or the outcome record is falsified"],"id":"F058-C11","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["design-packet"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"a top-10 set chosen by a different tie-break or counting basis after the events are known","verdict_rule":"the counting basis, ranking, and thresholds are frozen here, before execution; the locus verdict is mechanical from the published T1 table"},"status":"draft","text":"The sign locus fires if the 10 P-space values with the highest mismatch-involvement counts account for at least 50% of summed involvement; the outcome also reports the design's companion states - UNIFORM if that share is within 10 points of the same values' frequency share over both passes' tokens, BETWEEN otherwise when the 50% line is not met."},{"alternatives":["a bare 50%-of-events rule with no enrichment margin (refused at draft: under the pilot frame's composition it would fire for Seals on composition alone)","treating Unrecorded as a type that can fire (refused: it records the absence of a printed type, per Spec 023 K3's never-back-fill discipline)"],"assumptions":["ASM-FRAME-AS-RECORDED"],"boundary":"Design D-21 requires the mismatch share by object type to be tabulated but fixes no numeric rule for the locus; both thresholds here are DECIDED-BY-DRAFT (DD-058-8) - the 50% line mirrors the design's sign criterion, and the 10-point enrichment margin (the design's own band) prevents the frame's majority type (Seals, 34 of 50 objects) from localising the disagreement merely by being most of the frame. The freeze may overturn this rule openly. Object type is the frame's recorded value; no object is re-typed.","depends_on":["F058-C10"],"evidence":[{"description":"The committed frame (SHA-256 a967144b...): 50 objects with recorded object types Seals 34, Tablets 11, unrecorded 5 - the composition the enrichment margin is calibrated against, read at this draft.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"data/keyed_transcription/phase132_pilot_frame.json","source_id":"data/keyed_transcription/phase132_pilot_frame.json","source_quality":"authoritative"}],"falsification_tests":["the T2 table is published in full (per type: events, share of events, objects, share of objects, mismatched objects); the locus verdict must follow from it by this claim's rule alone, or the outcome record is falsified"],"id":"F058-C12","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["design-packet","phase132-record"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"composition masquerading as localisation - the failure mode the enrichment margin exists to block","verdict_rule":"the rule is registered here, before execution; the freeze confirms or replaces it openly, and the outcome record shows the table and the rule together"},"status":"draft","text":"The object-type locus fires if one recorded object type (Seals or Tablets) accounts for at least 50% of all mismatch events and its event share exceeds its share of the 50 frame objects by at least 10 points; objects whose frame record carries no type form an Unrecorded category that is tabulated but cannot fire this locus."},{"alternatives":["deriving segmentation from the adjudication taxonomy's count category (11 of 162) (refused as the primary: that taxonomy classifies adjudication disagreements over all 50 objects, not pass-pair events over the mismatched 40; it is gate 0.5's cross-check only)"],"assumptions":["ASM-FROZEN-MACHINERY"],"boundary":"Design D-21 names segmentation as a divergence-type axis ('segmentation cut') without a numeric rule; the 50% line mirrors its sign criterion and is DECIDED-BY-DRAFT (DD-058-3), OPEN for the freeze. The locus is a registered proxy: from token sequences alone, an indel cannot be separated into a different cut of the same glyphs versus a sign one pass recorded and the other omitted, and every output using the SEGMENTATION headline carries that definition and limit with it (spec sections 4.3 and 8).","depends_on":["F058-C10"],"evidence":[{"description":"D-21 arm A's method tabulates mismatch share by divergence type (substitution, insertion/deletion, segmentation cut) - the axis this locus rule operationalises.","direction":"supports","kind":"design-source","observed_at":"2026-10-21","ref":"docs/research/experiment-designs-2026-10-13/04-study-headlines.md","source_id":"docs/research/experiment-designs-2026-10-13/04-study-headlines.md","source_quality":"program-record"}],"falsification_tests":["the T3 table is published in full (SUBSTITUTION and INDEL counts and shares); the locus verdict must follow from it by this claim's rule alone, or the outcome record is falsified"],"id":"F058-C13","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["design-packet"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"reading an indel majority as proven re-segmentation when one-sided omissions would produce the identical table","verdict_rule":"the rule and its proxy limit are registered here, before execution; the headline wording of spec section 5.2 states the registered meaning, not an interpretation"},"status":"draft","text":"The segmentation locus fires if INDEL events account for at least 50% of all mismatch events."},{"alternatives":[],"assumptions":["ASM-DESIGN-CRITERIA"],"boundary":"A single-locus headline names that locus alone; two or more firing loci produce MULTIPLE LOCI with every firing locus and share named (the draft-added combination class, DD-058-9 - the three locus rules are not mutually exclusive, and a forced single name would misstate the tables). PILOT-PASS RECORDS NOT PRODUCIBLE and INVALID are step-0/stop classes, not headlines. The four campaign-named outcomes (signs / object types / segmentation / not localised) are this set's single-locus and empty-set members.","depends_on":["F058-C11","F058-C12","F058-C13"],"evidence":[{"description":"D-21 arm A's output is the mechanism account the claim's not-understood text asks for, tabulated by sign, object type, and divergence type - the loci the headline set names.","direction":"supports","kind":"design-source","observed_at":"2026-10-21","ref":"docs/research/experiment-designs-2026-10-13/04-study-headlines.md","source_id":"docs/research/experiment-designs-2026-10-13/04-study-headlines.md","source_quality":"program-record"}],"falsification_tests":["the outcome record's headline word must be derivable from the three published locus verdicts by this claim's mapping alone; a headline not following the mapping falsifies the record"],"id":"F058-C14","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["design-packet"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"headline-shopping: naming the most interesting firing locus and dropping the others after the tables are known","verdict_rule":"the mapping from locus sets to headline words is fixed here, before execution; the outcome record shows the three verdicts and the headline together"},"status":"draft","text":"The headline outcome of an execution is exactly one of LOCALISED TO SIGNS, LOCALISED TO OBJECT TYPES, LOCALISED TO SEGMENTATION, LOCALISED TO MULTIPLE LOCI, or NOT LOCALISED, determined by the set of loci that fire, and is reported in the pre-written wording of spec section 5.2."},{"alternatives":["excluding UNK-involved events from the primary (refused at draft as the primary basis; preserved as the descriptive secondary - the dual-derivation disagreement and its resolution are recorded in adjudication.md section 5)"],"assumptions":["ASM-PILOT-RECORD","ASM-FROZEN-MACHINERY"],"boundary":"UNK is the passes' largest value class (Pass A 39.3% of tokens, Pass B 38.9% on the committed record), so its handling decides what a sign localisation can mean. The primary follows the recorded values because the design tabulates the mismatches the pilot produced; excluding the largest class by a rule written after the pilot would redefine the pilot. If the sign locus fires with UNK among the top-10 values, the headline paragraph carries the mandatory sentence of spec section 5.2 stating the UNK involvement share and naming the localisation as in part a localisation to illegibility.","depends_on":["F058-C11"],"evidence":[{"description":"The committed metrics record the UNK shares per pass (A 75/191, B 74/190) and the adjudicated UNK + unmapped share of 49.2% - the quantities that make the UNK handling a headline-level decision rather than a detail.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"reports/phase132_pilot_metrics.json","source_id":"reports/phase132_pilot_metrics.json","source_quality":"authoritative"}],"falsification_tests":["both tables are published; a headline drawn from the secondary, or a signs headline with UNK in the top 10 lacking the mandatory sentence, falsifies compliance with this requirement"],"id":"F058-C15","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["phase132-record"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"an UNK-driven sign localisation quoted as a finding about named signs, with the illegibility share buried or dropped","verdict_rule":"the primary/secondary roles and the mandatory sentence are registered here, before execution; the outcome record is judged against them at close"},"status":"draft","text":"UNK and UNMAPPED:<M_ID> values are counted in the primary tabulations exactly as recorded; a pre-registered descriptive secondary recomputes the tabulations excluding events involving an UNK value, is reported wherever the primary is, and never carries the headline."},{"alternatives":["a mechanism narrative that reads a localisation as an explanation, or as evidence the pilot was nearly sound (refused: localisation is not exculpation, and the verdict's basis is untouched)"],"assumptions":["ASM-APPEND-ONLY"],"boundary":"Also excluded by this boundary, and stated wherever an outcome is stated: any softening of the CONTRADICTED verdict (F058-C05), any generalisation beyond the pilot's 50 objects and two AI passes of a single model family (Phase-383 origin-group audit: effective independent coder origin groups = 1), and any claim that a localisation identifies why a sign or object type is hard to read - the tabulations localise disagreement; they adjudicate nothing among its causes (illegibility, image quality, sign-list ambiguity, and coder behaviour all remain live, named as such in the outcome record). The floor and codebook questions are named open points in the claim's lane-2 record that no part of this spec tests.","depends_on":["F058-C01","F058-C03","F058-C06","F058-C14"],"evidence":[{"description":"Phase-383's origin-group audit and verdict text: the agreement statistics measure intra-origin consistency of one model family; the bounded claim's contradiction is a statement about this AI coding basis at this protocol.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"reports/phase383_report.md","source_id":"reports/phase383_report.md","source_quality":"authoritative"},{"description":"The claim's not-understood text names the floor and codebook questions as asserted but tested nowhere, and names human expert transcription plus a new owner decision as the gated route to reopening the line - neither is this spec's act.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json","source_id":"specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json","source_quality":"authoritative"}],"falsification_tests":["inspection of every Spec 058 output: a human-performance, floor-correctness, codebook, or cause claim in any output falsifies compliance and is corrected by dated addendum, never by silent edit"],"id":"F058-C16","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["phase383-record","spec029-lane2-record"],"forbidden_assumptions":["ASM-RESULT-AS-HUMAN-EVIDENCE"],"framework_kind":"requirement","layer":"M","strongest_rival":"the reading in which localising the disagreement explains it, or rehabilitates the pilot","verdict_rule":"outputs are judged against this boundary at execution close; violations are recorded defects, and the claim consequence is limited to the localisation statement of F058-C01"},"status":"draft","text":"No outcome under Spec 058 establishes anything about human transcription performance, about the correctness of the 0.80 agreement floor, or about whether a clarified codebook would improve agreement."}],"note":"Draft register for Spec 058 (design D-21, arm A only, PR #195 packet), opened 2026-10-21 under the runnable-experiments campaign plan approved by the owner AS WRITTEN on 2026-10-21 (campaign member 15) and the portfolio triage of the same date, which found D-21 RIPE (arm A). Conventions as in Specs 032-042: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-PILOT-RECORD (the committed Phase-132/Phase-383 records are the record of the pilot), ASM-STORE-RECORDS (the local-store pilot-pass record set, if produced intact and proven by exact reproduction, is the same record set the committed metrics were computed from - gate-verified, never assumed), ASM-FROZEN-MACHINERY (phase132_metrics.py as pinned is the machinery of record for derivation, alignment, and store loading), ASM-FRAME-AS-RECORDED (frame site, object type, and gold flag are the recorded values; an empty type is unrecorded, never back-filled), ASM-DESIGN-CRITERIA (design D-21's stated criteria govern where the design states them), ASM-APPEND-ONLY (outcomes append; frozen records are never edited), ASM-ARM-B-HOLD (the expert-engagement hold of 2026-10-12 stands; no AI substitution for human coders).","register_version":"0.5-draft","spec":"058-transcription-disagreement-mechanism"}
+{
+ "claims": [
+  {
+   "alternatives": [
+    "the pilot report's aggregate numbers could be read as already answering the mechanism question (they cannot: no sign-, type-, or segmentation-level tabulation of the passes exists at any level)"
+   ],
+   "assumptions": [
+    "ASM-PILOT-RECORD"
+   ],
+   "boundary": "The two passes are Pass A and Pass B of Spec 023, and the localisation is stated within the pilot's 50-object frame. The scope is the mechanism account for claim STUDY-SPEC-023/PHASE-132+383: the recorded passes, the recorded frame, and the loci the design names (signs, object types, segmentation choices). It excludes any statement about human coders (arm B, blocked), about the frozen CONTRADICTED verdict, about whether the 0.80 floor was the right bar, about any codebook revision, about Stage T, and about any object, pass, or protocol other than the pilot's.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Design D-21 (PR #195 packet, section D-21, read in full at this draft): arm A is a mechanism re-analysis of the recorded pilot passes; it changes no verdict.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json"
+     ]
+    },
+    {
+     "description": "The adopted lane-2 record for STUDY-SPEC-023/PHASE-132+383: what remains not understood is the mechanism - which signs, objects, or segmentation choices drive the disagreement.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "source_id": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "source_quality": "artifact",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 058 output states a conclusion about a population, coder class, verdict, or question outside the localisation of the recorded pilot passes' disagreement"
+   ],
+   "id": "F058-C01",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "phase132-record",
+     "design-packet"
+    ],
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-HUMAN-EVIDENCE"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the alternative reading in which a mechanism account of the AI pilot's passes licenses a claim about transcription in general or about humans",
+    "verdict_rule": "scope is judged by inspection of every Spec 058 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding"
+   },
+   "status": "draft",
+   "text": "An outcome under Spec 058 states only where the disagreement between the two recorded Phase-132 pilot passes localises."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-PILOT-RECORD"
+   ],
+   "boundary": "The recorded numbers are: Phase-132 exact-sequence agreement 0.20 (10/50, P and M) against the frozen 0.80 floor, per-token agreement 0.4798 (95/198), gold error estimator 0.05 (2/40), and the Phase-383 bootstrap interval for exact-sequence agreement [0.10, 0.32]. These are the Phase-132 pilot report's and Phase-383 report's values of record, read first-hand at this draft from the pinned committed files. The verdict follows from Spec 023's frozen stop-rule and the Spec 026 taxonomy as applied by Phase-383; this claim restates the record as the basis of the residue question and adjudicates nothing.",
+   "depends_on": [
+    "F058-C01"
+   ],
+   "evidence": [
+    {
+     "description": "Phase-132 metrics of record (SHA-256 e864fca5..., recomputed at this draft): exact-sequence 0.20 all-50 P/M, per-token 0.4798, gold estimator 0.05, verdicts block with the fired stop-rule.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "reports/phase132_pilot_metrics.json",
+     "source_id": "reports/phase132_pilot_metrics.json",
+     "source_quality": "artifact",
+     "independent_of": [
+      "reports/phase383_results.json",
+      "reports/phase132_pilot_report.md"
+     ]
+    },
+    {
+     "description": "Phase-383 results of record (SHA-256 4e52942d..., recomputed at this draft): recomputed values equal the committed ones; bootstrap exact-sequence CI [0.10, 0.32]; taxonomy verdict CONTRADICTED.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "reports/phase383_results.json",
+     "source_id": "reports/phase383_results.json",
+     "source_quality": "artifact",
+     "independent_of": [
+      "reports/phase132_pilot_metrics.json",
+      "reports/phase132_pilot_report.md"
+     ]
+    },
+    {
+     "description": "Pilot report (SHA-256 e1df32da...): the fired stop-rule, failed release gates, pass token totals 191/190/40/189, UNK shares, and the 162-item adjudication taxonomy.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "reports/phase132_pilot_report.md",
+     "source_id": "reports/phase132_pilot_report.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "reports/phase132_pilot_metrics.json",
+      "reports/phase383_results.json"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "recompute SHA-256 of reports/phase132_pilot_metrics.json (e864fca5...) and reports/phase383_results.json (4e52942d...) and read the stated quantities; any mismatch falsifies this statement and voids the draft's basis"
+   ],
+   "id": "F058-C02",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "phase132-record",
+     "phase383-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "the record could have been misread or superseded (the stale-pin precedents in Specs 040 and 042 show draft-cited values can be wrong)",
+    "verdict_rule": "the statement stands or falls on the pinned files hashing to their recorded values with the stated quantities in them"
+   },
+   "status": "draft",
+   "text": "STUDY-SPEC-023/PHASE-132+383 stands CONTRADICTED on its recorded numbers."
+  },
+  {
+   "alternatives": [
+    "the falsifier (F058-C04): mismatches distribute in proportion to frequencies and no locus fires",
+    "the disagreement localises to segmentation rather than to signs or types - a locus outcome under F058-C13/C14, not support for this hypothesis as the design states it"
+   ],
+   "assumptions": [
+    "ASM-PILOT-RECORD",
+    "ASM-STORE-RECORDS",
+    "ASM-FROZEN-MACHINERY"
+   ],
+   "boundary": "In the design's terms: a minority of signs or object types accounts for the majority of sequence mismatches. This is design D-21 arm A's hypothesis, verbatim in substance. It is a statement about the recorded passes over the pilot's 50-object frame under the frozen derivation and alignment, and about nothing else: not about why any sign is hard to read, not about other objects or coders, and not about humans.",
+   "depends_on": [
+    "F058-C01",
+    "F058-C02"
+   ],
+   "evidence": [
+    {
+     "description": "Design D-21 arm A: the concentration hypothesis, its falsifier, the re-analysis method on the recorded passes, and the fixed sign criteria this spec registers.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "run the section 4 tabulations after step 0 passes: if no locus fires under F058-C11/C12/C13, this hypothesis is not supported and the headline is NOT LOCALISED"
+   ],
+   "id": "F058-C03",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "design-packet",
+     "phase132-record"
+    ],
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-HUMAN-EVIDENCE"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the strongest rival is the falsifier itself: the disagreement is a uniform property of the passes' readings, proportional to frequency",
+    "verdict_rule": "supported for the hypothesis iff the SIGNS locus fires under F058-C11 or the OBJECT TYPES locus fires under F058-C12 (alone or among multiple loci), as reported in the headline of F058-C14"
+   },
+   "status": "draft",
+   "text": "The disagreement between the recorded Phase-132 pilot passes is concentrated, not uniform."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-DESIGN-CRITERIA"
+   ],
+   "boundary": "Not-localised is the falsifier's outcome and a finding about the recorded passes, scoped to the pilot frame and machinery. It does not assert that the disagreement has no cause; it asserts that none of the three registered loci meets its frozen criterion on this record.",
+   "depends_on": [
+    "F058-C03"
+   ],
+   "evidence": [
+    {
+     "description": "Design D-21 arm A's falsifier: mismatches distribute across signs and objects in proportion to their frequencies (no concentration to explain).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "if any locus fires under F058-C11/C12/C13, this claim's condition does not arise and the headline is a localisation under F058-C14"
+   ],
+   "id": "F058-C04",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "a not-localised outcome could be misread as a null result of no value; the requirement exists so the falsifier's outcome is recorded as the mechanism finding it is",
+    "verdict_rule": "the outcome record must carry the NOT LOCALISED wording of spec section 5.2 and the three deciding shares whenever the condition holds"
+   },
+   "status": "draft",
+   "text": "If no locus fires under the frozen rules of spec section 5.1, the outcome is recorded as NOT LOCALISED in its pre-written wording, with the deciding shares stated."
+  },
+  {
+   "alternatives": [
+    "re-opening Spec 023 to soften its verdict in light of a mechanism account (refused: frozen records are not edited in this program, and the design forbids it)"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY",
+    "ASM-PILOT-RECORD"
+   ],
+   "boundary": "Spec 023's frozen records, the Phase-132 report, the Phase-383 verdict, and the CONTRADICTED status are not re-adjudicated, edited, or superseded by this spec. The re-analysis changes nothing that exists: it tabulates the recorded passes and appends a dated mechanism account beside the frozen record. Any outcome - localised, not localised, step-0 closure, or invalid - leaves the pilot's failure standing exactly as recorded, as design D-21 states in advance.",
+   "depends_on": [
+    "F058-C01"
+   ],
+   "evidence": [
+    {
+     "description": "Spec 023's frozen specification (SHA-256 c2e5d166...), including the section 5.6 freeze block whose definitions this variant inherits and does not alter.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "specs/023-keyed-transcription-layer/spec.md",
+     "source_id": "specs/023-keyed-transcription-layer/spec.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "inspection: any Spec 058 product that modifies a Spec 023, Phase-132, or Phase-383 file, restates the CONTRADICTED verdict, or presents the mechanism account as replacing it falsifies compliance with this requirement"
+   ],
+   "id": "F058-C05",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "phase132-record",
+     "phase383-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "the pressure to let an interesting mechanism account reframe a failed pilot as partly successful",
+    "verdict_rule": "compliance is judged by file inspection at execution close: the section 2.1 pinned hashes of the underlying records unchanged, the verdict quoted only as recorded"
+   },
+   "status": "draft",
+   "text": "Spec 058 is a residue re-analysis appended to the record of STUDY-SPEC-023/PHASE-132+383."
+  },
+  {
+   "alternatives": [
+    "substituting AI coders for the human coders (forbidden by the campaign plan: the Spec 023 record is precisely the proof that the substitution answers a different question)"
+   ],
+   "assumptions": [
+    "ASM-ARM-B-HOLD"
+   ],
+   "boundary": "Arm B's status is blocked: it is the human-coder calibration set, and this spec designs no part of it and no AI substitution for its human coders. Arm B as the design states it needs two independent human expert coders (M77-native sign-list training), blinded to each other and to human-derived references, on a 30-object / 212-token calibration set with bars of at least 95% per-token and at least 85% exact-sequence agreement. It is blocked on the owner's expert-engagement hold of 2026-10-12, carried unchanged by the 2026-10-21 campaign plan (Part 6 item 4: any new engagement of people remains the owner's gate; the campaign contacts no one). The unblocking act is the owner lifting that hold and an engagement being made under its own planning gate. No outcome under this spec is evidence about arm B's question.",
+   "depends_on": [
+    "F058-C01"
+   ],
+   "evidence": [
+    {
+     "description": "Design D-21 arm B: the calibration-set shape, the verdict rule fixed in advance, the named block (human expert coders; engagement letters HELD by the owner, 2026-10-12), and the bar on AI substitution.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "reports/phase383_report.md"
+     ]
+    },
+    {
+     "description": "Phase-383's origin-group audit (SHA-256 9f35f722...): all pilot coders were AI agents of one model family, so pass agreement is intra-origin consistency, not independent corroboration - the record ground for refusing substitution.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "reports/phase383_report.md",
+     "source_id": "reports/phase383_report.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "inspection: any Spec 058 product that specifies, recruits, simulates, or scores a human-coder arm, or that presents an AI-pass result as a substitute calibration, falsifies compliance with this requirement"
+   ],
+   "id": "F058-C06",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "design-packet",
+     "campaign-plan"
+    ],
+    "forbidden_assumptions": [
+     "ASM-AI-AS-HUMAN-CALIBRATION"
+    ],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "scope creep from a mechanism account of AI passes into an implied answer about human performance",
+    "verdict_rule": "the boundary is judged by inspection of the spec and every execution product: arm B appears only as blocked-out-of-scope, with the hold and the unblocking act named"
+   },
+   "status": "draft",
+   "text": "Design D-21 arm B is out of scope for Spec 058."
+  },
+  {
+   "alternatives": [
+    "reconstructing pass-level tabulations from the committed metrics file or the adjudicated dataset (refused: neither carries the per-pass sequences; using them would silently change the design's data)"
+   ],
+   "assumptions": [
+    "ASM-STORE-RECORDS",
+    "ASM-PILOT-RECORD"
+   ],
+   "boundary": "Those inputs are the committed records pinned in spec section 2.1 and the Phase-132 local-store pilot-pass record set produced at execution under gate 0.2; the analysis performs no re-coding, no new transcription, and uses no other data. The store record set is the layout the frozen metrics module's loader defines (frame.json; pass_a, pass_b 50 records each; pass_gold 10; adjudication 50; effort_log.csv), inventoried against the pilot report's section 9 counts. Production is a records act: records are produced as they stand, hashed per file, and never edited, completed, or re-created. Plate images, renders, and crops are not inputs. The adjudicated final dataset is a committed record of the pilot's outcome, not a substitute for the passes, and is not an analysis input beyond the integrity pin. Freeze ruling DD-058-15 (adjudication.md section 7): the freeze act inspected the record first-hand and found the store record set surviving complete on the machine holding the program's main checkout (the gitignored corpora/downloads/cisi_image_layer/phase132_pilot/ store: frame.json, 50 Pass A, 50 Pass B, 10 gold, 50 adjudication records, effort_log.csv with 320 events), and the pinned metrics module recomputed the committed metrics file exactly from it, with the adjudication taxonomy and frame identity also matching exactly. Production is nevertheless deferred to execution gate 0.2 under this spec's design: the freeze produces, preserves, and pins no store bytes, the execution venue is the machine holding that store at execution time, and gate 0.2's inventory, per-file manifest, and gates 0.3-0.5 proofs remain the operative production test, fail-closed as drafted.",
+   "depends_on": [
+    "F058-C05"
+   ],
+   "evidence": [
+    {
+     "description": "The frozen metrics module (SHA-256 238dfafa...): its header and load_store define the store layout and state that the inputs live in the local store, never committed - the ground for this claim's two-part input definition.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "backend/scripts/phase132_metrics.py",
+     "source_id": "backend/scripts/phase132_metrics.py",
+     "source_quality": "artifact",
+     "independent_of": [
+      "reports/phase132_pilot_report.md"
+     ]
+    },
+    {
+     "description": "Pilot report section 9 inventory of the local store (50 Pass A, 50 Pass B, 10 gold-pass, 50 adjudication records; effort log 320 events) and section 4(d)'s process finding that quantities are computed from the on-disk records, never from batch self-reports.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "reports/phase132_pilot_report.md",
+     "source_id": "reports/phase132_pilot_report.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "backend/scripts/phase132_metrics.py"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "the execution record must show the gate-0.2 inventory and per-file manifest for exactly the named record set, and the analysis code's inputs must be that set plus the section 2.1 pins; any other input falsifies compliance"
+   ],
+   "id": "F058-C07",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "phase132-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "quiet substitution of the adjudicated dataset for the passes, presenting an adjudication analysis as a pass-disagreement analysis",
+    "verdict_rule": "input provenance is judged from the execution record and the gate-0.4 reproduction: only a record set that reproduces the committed metrics exactly is the record set of this claim"
+   },
+   "status": "draft",
+   "text": "The analysis consumes only the inputs named in spec section 2."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-FROZEN-MACHINERY"
+   ],
+   "boundary": "The comparison is in P space by the frozen derivation (crosswalk-v1 primary counterpart of the matched M, UNK comparing as UNK, an unmapped M comparing as UNMAPPED:<M_ID>), aligned by the frozen minimum-edit alignment (substitution preferred over insertion/deletion at equal cost), with the metrics module imported unchanged. P space is primary because Spec 023's section 5.6 freeze block makes it primary and M space secondary. M-space tabulations are reported as a descriptive sensitivity only and move no headline. Any change to the derivation, the crosswalk, or the alignment is a different analysis and would require a different spec.",
+   "depends_on": [
+    "F058-C07"
+   ],
+   "evidence": [
+    {
+     "description": "Spec 023 section 5.6 freeze block: comparison space (P primary, M secondary), the primary-counterpart rule, UNK handling, and the minimum-edit alignment with substitution preferred - read at this draft.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "specs/023-keyed-transcription-layer/spec.md",
+     "source_id": "specs/023-keyed-transcription-layer/spec.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "backend/scripts/phase383_pilot_rescoring.py"
+     ]
+    },
+    {
+     "description": "Phase-383 rescoring module (SHA-256 b64b60de...): the precedent this spec follows - recompute from the on-disk records with the original metrics module imported, not reimplemented, asserting equality with the committed metrics first.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "backend/scripts/phase383_pilot_rescoring.py",
+     "source_id": "backend/scripts/phase383_pilot_rescoring.py",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/023-keyed-transcription-layer/spec.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "gate 0.4 (exact reproduction of the committed metrics from the produced store by the imported module) is the operational test: machinery or derivation that cannot reproduce the pilot's own numbers exactly is not the frozen machinery, and the run stops INVALID"
+   ],
+   "id": "F058-C08",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "phase132-record",
+     "spec023-design"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "silent reimplementation drift (a re-typed alignment or primary-map rule) presenting as a mechanism finding",
+    "verdict_rule": "identity is judged by the gate-0.4 exact-reproduction standard and by import provenance in the execution record, not by code inspection alone"
+   },
+   "status": "draft",
+   "text": "Each pass's sequences are compared under the frozen Phase-132 machinery of spec section 4.1."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-STORE-RECORDS"
+   ],
+   "boundary": "The gate failures are: a committed-record hash mismatches, the pilot-pass record set cannot be produced complete, the produced frame differs from the committed frame, the committed metrics do not reproduce exactly from the produced set, or the adjudication-taxonomy cross-check fails. These are spec section 3's gates 0.1-0.5. Their failure classes are PILOT-PASS RECORDS NOT PRODUCIBLE (gate 0.2) and INVALID (gates 0.1/0.3/0.4/0.5), each with its pre-written wording in spec section 5.2. No failure is repaired at run time; a repaired or re-created record set is a new preservation act and a new freeze, not a resumed run. Freeze ruling DD-058-16 (adjudication.md section 7): gates 0.4-0.6 suffice; no separate margins or census audit is required beyond them, because the reproduction and cross-checks are exact, not sampled.",
+   "depends_on": [
+    "F058-C07",
+    "F058-C08"
+   ],
+   "evidence": [
+    {
+     "description": "The committed metrics file supplies gate 0.4's exact reproduction targets, including the per-object exact flags whose mismatched set (40 objects) gate 0.6 enumerates.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "reports/phase132_pilot_metrics.json",
+     "source_id": "reports/phase132_pilot_metrics.json",
+     "source_quality": "artifact",
+     "independent_of": [
+      "reports/phase132_pilot_report.md"
+     ]
+    },
+    {
+     "description": "The pilot report supplies gate 0.2's inventory (section 9) and gate 0.5's taxonomy counts (section 4(c): identity 93, legibility 45, count 11, key 10, orientation 2, order 1; total 162).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "reports/phase132_pilot_report.md",
+     "source_id": "reports/phase132_pilot_report.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "reports/phase132_pilot_metrics.json"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "each gate's check is itself the test: the execution record must show every gate's verdict, in order, before the first tabulated event, or the run is non-compliant on its face"
+   ],
+   "id": "F058-C09",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "phase132-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "proceeding on a partial or unverified record set because the committed aggregates look close enough",
+    "verdict_rule": "the run's own record is the judge: gate verdicts precede quantities in it, in order, or the outcome is INVALID by construction"
+   },
+   "status": "draft",
+   "text": "Execution stops before any localisation quantity is computed on any step-0 gate failure named in spec section 3."
+  },
+  {
+   "alternatives": [
+    "typing events from the adjudication records' taxonomy instead (refused as the primary: the taxonomy classifies adjudicated disagreements, not pass-pair alignment events; it serves only as gate 0.5's identity cross-check - DD-058-3)"
+   ],
+   "assumptions": [
+    "ASM-FROZEN-MACHINERY"
+   ],
+   "boundary": "An event is typed SUBSTITUTION when both sides are present and unequal and INDEL when exactly one side is present; the first mismatch-event column per mismatched object is its first divergence. Events are defined over the 40 mismatched objects enumerated at gate 0.6. A substitution event involves both of its values; an indel event involves its one present value. The alignment does not distinguish an insertion in one pass from a deletion relative to the other, and no output may claim that distinction. First-divergence position is the 1-based index of the column in alignment order.",
+   "depends_on": [
+    "F058-C08",
+    "F058-C09"
+   ],
+   "evidence": [
+    {
+     "description": "Design D-21 arm A's method: for every mismatched object, localise the first position of divergence and the signs involved; tabulate by sign, object type, and divergence type (substitution, insertion/deletion, segmentation cut).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "backend/scripts/phase132_metrics.py"
+     ]
+    },
+    {
+     "description": "The frozen module's align() is the deterministic minimum-edit alignment (diagonal preferred over deletion over insertion) from which event columns are read.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "backend/scripts/phase132_metrics.py",
+     "source_id": "backend/scripts/phase132_metrics.py",
+     "source_quality": "artifact",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "the event table is recomputed from the published per-object alignments by any reader: an event, type, or first divergence not following this definition from its object's two sequences falsifies the outcome record"
+   ],
+   "id": "F058-C10",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "phase132-record",
+     "design-packet"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "event definitions chosen after seeing the alignments, typing ambiguous columns to favour a locus",
+    "verdict_rule": "the definitions are frozen in this register before any alignment is computed under this spec; the results JSON publishes every event so the tabulations are checkable column by column"
+   },
+   "status": "draft",
+   "text": "A mismatch event is a column of the frozen alignment of an object's two P-sequences whose sides are not equal values present on both sides."
+  },
+  {
+   "alternatives": [
+    "counting a substitution once per event rather than once per involved value (refused at draft: involvement is a per-sign quantity in the design's wording - 'the signs involved'; DD-058-6 records the reading as OPEN for the freeze)"
+   ],
+   "assumptions": [
+    "ASM-DESIGN-CRITERIA",
+    "ASM-FRAME-AS-RECORDED"
+   ],
+   "boundary": "These criteria are design D-21 arm A's, carried verbatim. Involvement is counted per spec section 4.3 (a substitution counts once for each of its two values; an indel once for its present value), the ranking is total (ties by value string ascending), and shares are taken over summed involvement. Frequency share is over the two passes' full token streams (191 + 190 = 381 tokens on the committed record), P space. Freeze ruling DD-058-19 (adjudication.md section 7): the involvement basis of this claim (DD-058-6) is CONFIRMED as drafted.",
+   "depends_on": [
+    "F058-C10"
+   ],
+   "evidence": [
+    {
+     "description": "D-21 arm A fixes the criteria in advance: CONCENTRATED if the top 10 signs by mismatch involvement account for at least 50% of all mismatches; UNIFORM if their share is within 10 points of their frequency share; BETWEEN otherwise.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "the T1 table is published in full (every value's involvement and frequency share); any reader recomputing the top-10 share from it must reach the recorded locus verdict, or the outcome record is falsified"
+   ],
+   "id": "F058-C11",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "a top-10 set chosen by a different tie-break or counting basis after the events are known",
+    "verdict_rule": "the counting basis, ranking, and thresholds are frozen here, before execution; the locus verdict is mechanical from the published T1 table"
+   },
+   "status": "draft",
+   "text": "The sign locus fires if the 10 P-space values with the highest mismatch-involvement counts account for at least 50% of summed involvement; the outcome also reports the design's companion states - UNIFORM if that share is within 10 points of the same values' frequency share over both passes' tokens, BETWEEN otherwise when the 50% line is not met."
+  },
+  {
+   "alternatives": [
+    "a bare 50%-of-events rule with no enrichment margin (refused at draft: under the pilot frame's composition it would fire for Seals on composition alone)",
+    "treating Unrecorded as a type that can fire (refused: it records the absence of a printed type, per Spec 023 K3's never-back-fill discipline)"
+   ],
+   "assumptions": [
+    "ASM-FRAME-AS-RECORDED"
+   ],
+   "boundary": "The two parts are: one recorded object type (Seals or Tablets) accounts for at least 50% of the mismatch events of spec section 4, and its event share exceeds its share of the 50 frame objects by at least 10 points. Objects whose frame record carries no type form an Unrecorded category that is tabulated but cannot fire this locus. Design D-21 requires the mismatch share by object type to be tabulated but fixes no numeric rule for the locus; both thresholds here are DECIDED-BY-DRAFT (DD-058-8) - the 50% line mirrors the design's sign criterion, and the 10-point enrichment margin (the design's own band) prevents the frame's majority type (Seals, 34 of 50 objects) from localising the disagreement merely by being most of the frame. The freeze may overturn this rule openly. Object type is the frame's recorded value; no object is re-typed. Freeze ruling DD-058-19 (adjudication.md section 7): this rule (DD-058-8) is CONFIRMED as drafted; the freeze does not overturn it.",
+   "depends_on": [
+    "F058-C10"
+   ],
+   "evidence": [
+    {
+     "description": "The committed frame (SHA-256 a967144b...): 50 objects with recorded object types Seals 34, Tablets 11, unrecorded 5 - the composition the enrichment margin is calibrated against, read at this draft.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "data/keyed_transcription/phase132_pilot_frame.json",
+     "source_id": "data/keyed_transcription/phase132_pilot_frame.json",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "the T2 table is published in full (per type: events, share of events, objects, share of objects, mismatched objects); the locus verdict must follow from it by this claim's rule alone, or the outcome record is falsified"
+   ],
+   "id": "F058-C12",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "design-packet",
+     "phase132-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "composition masquerading as localisation - the failure mode the enrichment margin exists to block",
+    "verdict_rule": "the rule is registered here, before execution; the freeze confirms or replaces it openly, and the outcome record shows the table and the rule together"
+   },
+   "status": "draft",
+   "text": "The object-type locus fires under the two-part rule of spec section 5.1."
+  },
+  {
+   "alternatives": [
+    "deriving segmentation from the adjudication taxonomy's count category (11 of 162) (refused as the primary: that taxonomy classifies adjudication disagreements over all 50 objects, not pass-pair events over the mismatched 40; it is gate 0.5's cross-check only)"
+   ],
+   "assumptions": [
+    "ASM-FROZEN-MACHINERY"
+   ],
+   "boundary": "The event total E is the count of mismatch events over the mismatched objects of spec section 4. Design D-21 names segmentation as a divergence-type axis ('segmentation cut') without a numeric rule; the 50% line mirrors its sign criterion and is DECIDED-BY-DRAFT (DD-058-3), OPEN for the freeze. The locus is a registered proxy: from token sequences alone, an indel cannot be separated into a different cut of the same glyphs versus a sign one pass recorded and the other omitted, and every output using the SEGMENTATION headline carries that definition and limit with it (spec sections 4.3 and 8). Freeze ruling DD-058-19 (adjudication.md section 7): the segmentation proxy reading of this claim (DD-058-3) is CONFIRMED as drafted.",
+   "depends_on": [
+    "F058-C10"
+   ],
+   "evidence": [
+    {
+     "description": "D-21 arm A's method tabulates mismatch share by divergence type (substitution, insertion/deletion, segmentation cut) - the axis this locus rule operationalises.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "the T3 table is published in full (SUBSTITUTION and INDEL counts and shares); the locus verdict must follow from it by this claim's rule alone, or the outcome record is falsified"
+   ],
+   "id": "F058-C13",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "reading an indel majority as proven re-segmentation when one-sided omissions would produce the identical table",
+    "verdict_rule": "the rule and its proxy limit are registered here, before execution; the headline wording of spec section 5.2 states the registered meaning, not an interpretation"
+   },
+   "status": "draft",
+   "text": "The segmentation locus fires if INDEL events account for at least 50% of the event total E of spec section 4.2."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-DESIGN-CRITERIA"
+   ],
+   "boundary": "The five words are LOCALISED TO SIGNS, LOCALISED TO OBJECT TYPES, LOCALISED TO SEGMENTATION, LOCALISED TO MULTIPLE LOCI, and NOT LOCALISED, and the outcome is reported in the pre-written wording of spec section 5.2. A single-locus headline names that locus alone; two or more firing loci produce MULTIPLE LOCI with every firing locus and share named (the draft-added combination class, DD-058-9 - the three locus rules are not mutually exclusive, and a forced single name would misstate the tables). PILOT-PASS RECORDS NOT PRODUCIBLE and INVALID are step-0/stop classes, not headlines. The four campaign-named outcomes (signs / object types / segmentation / not localised) are this set's single-locus and empty-set members. Freeze ruling DD-058-19 (adjudication.md section 7): the MULTIPLE LOCI combination class (DD-058-9) is CONFIRMED as drafted.",
+   "depends_on": [
+    "F058-C11",
+    "F058-C12",
+    "F058-C13"
+   ],
+   "evidence": [
+    {
+     "description": "D-21 arm A's output is the mechanism account the claim's not-understood text asks for, tabulated by sign, object type, and divergence type - the loci the headline set names.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "the outcome record's headline word must be derivable from the three published locus verdicts by this claim's mapping alone; a headline not following the mapping falsifies the record"
+   ],
+   "id": "F058-C14",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "headline-shopping: naming the most interesting firing locus and dropping the others after the tables are known",
+    "verdict_rule": "the mapping from locus sets to headline words is fixed here, before execution; the outcome record shows the three verdicts and the headline together"
+   },
+   "status": "draft",
+   "text": "The headline outcome of an execution is exactly one of the five outcome words of spec section 5.2, determined by the set of loci that fire."
+  },
+  {
+   "alternatives": [
+    "excluding UNK-involved events from the primary (refused at draft as the primary basis; preserved as the descriptive secondary - the dual-derivation disagreement and its resolution are recorded in adjudication.md section 5)"
+   ],
+   "assumptions": [
+    "ASM-PILOT-RECORD",
+    "ASM-FROZEN-MACHINERY"
+   ],
+   "boundary": "The same counting holds for UNMAPPED:<M_ID> values. A pre-registered descriptive secondary recomputes the tabulations excluding events involving an UNK value, is reported wherever the primary is, and never carries the headline. UNK is the passes' largest value class (Pass A 39.3% of tokens, Pass B 38.9% on the committed record), so its handling decides what a sign localisation can mean. The primary follows the recorded values because the design tabulates the mismatches the pilot produced; excluding the largest class by a rule written after the pilot would redefine the pilot. If the sign locus fires with UNK among the top-10 values, the headline paragraph carries the mandatory sentence of spec section 5.2 stating the UNK involvement share and naming the localisation as in part a localisation to illegibility.",
+   "depends_on": [
+    "F058-C11"
+   ],
+   "evidence": [
+    {
+     "description": "The committed metrics record the UNK shares per pass (A 75/191, B 74/190) and the adjudicated UNK + unmapped share of 49.2% - the quantities that make the UNK handling a headline-level decision rather than a detail.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "reports/phase132_pilot_metrics.json",
+     "source_id": "reports/phase132_pilot_metrics.json",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "both tables are published; a headline drawn from the secondary, or a signs headline with UNK in the top 10 lacking the mandatory sentence, falsifies compliance with this requirement"
+   ],
+   "id": "F058-C15",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "phase132-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "an UNK-driven sign localisation quoted as a finding about named signs, with the illegibility share buried or dropped",
+    "verdict_rule": "the primary/secondary roles and the mandatory sentence are registered here, before execution; the outcome record is judged against them at close"
+   },
+   "status": "draft",
+   "text": "Recorded UNK values are counted in the primary tabulations exactly as recorded."
+  },
+  {
+   "alternatives": [
+    "a mechanism narrative that reads a localisation as an explanation, or as evidence the pilot was nearly sound (refused: localisation is not exculpation, and the verdict's basis is untouched)"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "No outcome establishes anything about the correctness of the 0.80 agreement floor, or about whether a clarified codebook would improve agreement. Also excluded by this boundary, and stated wherever an outcome is stated: any softening of the CONTRADICTED verdict (F058-C05), any generalisation beyond the pilot's 50 objects and two AI passes of a single model family (Phase-383 origin-group audit: effective independent coder origin groups = 1), and any claim that a localisation identifies why a sign or object type is hard to read - the tabulations localise disagreement; they adjudicate nothing among its causes (illegibility, image quality, sign-list ambiguity, and coder behaviour all remain live, named as such in the outcome record). The floor and codebook questions are named open points in the claim's lane-2 record that no part of this spec tests.",
+   "depends_on": [
+    "F058-C01",
+    "F058-C03",
+    "F058-C06",
+    "F058-C14"
+   ],
+   "evidence": [
+    {
+     "description": "Phase-383's origin-group audit and verdict text: the agreement statistics measure intra-origin consistency of one model family; the bounded claim's contradiction is a statement about this AI coding basis at this protocol.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "reports/phase383_report.md",
+     "source_id": "reports/phase383_report.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json"
+     ]
+    },
+    {
+     "description": "The claim's not-understood text names the floor and codebook questions as asserted but tested nowhere, and names human expert transcription plus a new owner decision as the gated route to reopening the line - neither is this spec's act.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "source_id": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "source_quality": "artifact",
+     "independent_of": [
+      "reports/phase383_report.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "inspection of every Spec 058 output: a human-performance, floor-correctness, codebook, or cause claim in any output falsifies compliance and is corrected by dated addendum, never by silent edit"
+   ],
+   "id": "F058-C16",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "phase383-record",
+     "spec029-lane2-record"
+    ],
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-HUMAN-EVIDENCE"
+    ],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "the reading in which localising the disagreement explains it, or rehabilitates the pilot",
+    "verdict_rule": "outputs are judged against this boundary at execution close; violations are recorded defects, and the claim consequence is limited to the localisation statement of F058-C01"
+   },
+   "status": "draft",
+   "text": "No outcome under Spec 058 establishes anything about human transcription performance."
+  }
+ ],
+ "note": "Draft register for Spec 058 (design D-21, arm A only, PR #195 packet), opened 2026-10-21 under the runnable-experiments campaign plan approved by the owner AS WRITTEN on 2026-10-21 (campaign member 15) and the portfolio triage of the same date, which found D-21 RIPE (arm A). Conventions as in Specs 032-042: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-PILOT-RECORD (the committed Phase-132/Phase-383 records are the record of the pilot), ASM-STORE-RECORDS (the local-store pilot-pass record set, if produced intact and proven by exact reproduction, is the same record set the committed metrics were computed from - gate-verified, never assumed), ASM-FROZEN-MACHINERY (phase132_metrics.py as pinned is the machinery of record for derivation, alignment, and store loading), ASM-FRAME-AS-RECORDED (frame site, object type, and gold flag are the recorded values; an empty type is unrecorded, never back-filled), ASM-DESIGN-CRITERIA (design D-21's stated criteria govern where the design states them), ASM-APPEND-ONLY (outcomes append; frozen records are never edited), ASM-ARM-B-HOLD (the expert-engagement hold of 2026-10-12 stands; no AI substitution for human coders). FREEZE RECOVERY RECORD (2026-10-21, freeze act): the AEE lifecycle hooks ran at the freeze under aee 1.5.3 (venv glossa-aee153). Before the hooks, the freeze rulings were carried into the register: DD-058-15 (store-survival finding and production deferred to execution gate 0.2) into F058-C07's boundary, DD-058-16 (gates 0.4-0.6 suffice, no separate audit) into F058-C09's boundary, and the DD-058-19 confirmations into the boundaries of F058-C11 (DD-058-6), F058-C12 (DD-058-8), F058-C13 (DD-058-3), and F058-C14 (DD-058-9). Round 0: the 0.5-draft register does not load under aee 1.5.3 (evidence kind design-source is not an engine value). Recovery to 0.6-draft: every evidence item normalised to kind observed and source_quality artifact (refs, source_ids, directions, descriptions, observed_at unchanged) and every multi-item claim's evidence gained mutual independent_of declarations. Round 1 over 0.6-draft at after_specify: 31 failure modes - 13 irreducibility challenges, 2 counterexample challenges (F058-C12, F058-C13), 16 FR-2.3 draft-cap records; minimum propagated 0.72. Recovery to 0.7-draft: the 13 challenged claim texts restated as single head propositions with carried clauses moved into the boundaries verbatim-in-substance (propositions, falsifiers, and verdict rules unchanged). Round 2 over 0.7-draft: 21 failure modes - 5 irreducibility challenges (F058-C06, C07, C08, C12, C15) and 16 draft-cap; both counterexample challenges cleared. Recovery to 0.8-draft: those five heads restated in their final single-proposition forms, carried clauses in the boundaries (duplicated carried text from the two rounds removed before the final hooks). Final round over 0.8-draft: after_specify, after_plan, and after_tasks each carry exactly 16 FR-2.3 draft-cap records and no other failure mode, with zero correctness failure modes and no claim below the 0.70 threshold (minimum propagated 0.72) - PASS on the DD-038-10 reading adopted as DD-058-18 (adjudication.md section 7; record in aee/freeze-aee-note.md).",
+ "register_version": "0.8-draft",
+ "spec": "058-transcription-disagreement-mechanism"
+}

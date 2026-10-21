@@ -242,8 +242,18 @@ def step0() -> dict:
     if sections != {"Mohenjo-daro": 519, "Harappa (EH)": 510, "Harappa (HARP)": 1094}:
         raise Step0Failure("0.2", f"section census {dict(sections)} != intake census")
     distinct_numbers = {r["cisi_number"] for r in rows}
-    if len(distinct_numbers) != 2101:
-        raise Step0Failure("0.2", f"distinct numbers {len(distinct_numbers)} != 2101")
+    # The intake census counts distinct RESOLVED catalogue numbers:
+    # the table carries 2,101 well-formed numbers plus 5 garbled
+    # low-confidence tokens (OCR noise, Mohenjo-daro) that resolve
+    # into the set and match no corpus id. Both figures are the
+    # census as intaken; a different table fails either count.
+    import re as _re
+    wellformed = {n for n in distinct_numbers if _re.match(r"^[A-Z]+-\d+$", n or "")}
+    garbled = distinct_numbers - wellformed
+    if len(wellformed) != 2101 or len(garbled) != 5:
+        raise Step0Failure(
+            "0.2", f"distinct numbers: {len(wellformed)} well-formed "
+                   f"+ {len(garbled)} garbled != intake census 2101 + 5")
     record["0.2_portion"] = (
         f"PASS (PDF sha256 {digest[:12]}...; table 2123x26, sha256 "
         f"{table_sha[:12]}... — the execution's own step-0 hash of the "

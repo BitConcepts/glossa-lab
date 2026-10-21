@@ -7774,3 +7774,81 @@ reports/phase411_step0_report.md.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-21 — Spec 059 EXECUTED (Phase-421): CLOSED AT STEP 0 — JOIN GATE NOT MET
+
+Spec 059 (design D-22, the seal/tablet
+difference on a better join) was executed as
+Phase-421 under the frozen contract (freeze
+digest bba1caca…; OSF registration yfw7h
+approved and public, DOI
+10.17605/OSF.IO/YFW7H), in Wave 3 group 2 of
+the runnable-experiments campaign. Graph-first
+build: backend/scripts/phase421_f1_object_join.py,
+graph node IndusPhase421F1ObjectJoin registered
+and verified by import before the run. Gate 0.1
+PASS: every spec section 2 pin and every
+DD-059-9 object-identifier source pin
+recomputes to its freeze-record value, verified
+in the foreground by two independent routes
+(committed pins: Phase-136 results 11a07413…,
+Stage 2(a) freeze c65a4b9b…, Phase-136 builder
+d5ceec46…, Phase-141 report d442f8d2…, combined
+report 6a4f5d26…, registry 8a0b2a82…, Spec 034
+outcome c0cc615d…, Spec 037 outcome 28e444f2…,
+anchors df0cf620…, intake schema b94d03ad…,
+Phase-398 builder 278f16b0…, intake validator
+02b24e33…; local-store pins: horus84 layer
+c368f290…, CISI vols 1–2 e0d698f9… /
+e751244e…, ICIT converted keyed layer v2
+bbfdbcd5…). Gate 0.2 PASS: the original
+concordance join reproduced exactly (5,679
+layer rows; 2,895 matched; 2 ambiguous; 2,782
+unmatched). Gate 0.3 PASS: the object-ID join
+dataset built by the pinned route-(b)
+construction (5,018 records carrying
+provenance.object_id) validated under the
+pinned Phase-130 schema — verdict pass,
+0 errors, 0 warnings — and censused against
+the catalogue's 3,493 distinct objects:
+**2,899 joined rows; 2,780 unjoined (661
+carrying no identifier, 2,119 whose
+identifier resolves to zero catalogue
+objects); 0 ambiguous; 2,479 distinct
+catalogue objects joined to.** The census was
+derived twice (intake-dataset route and
+lineage-direct route) with every row's joined
+classification in agreement; five raw-value
+discrepancies between the lineage layer and
+its converted form are recorded per row in
+the census and change no classification.
+Gate 0.4 FAIL: 2,899 joined rows = 51.0477%
+against the bar adopted at DD-059-7 (joined
+share at least 61.0%, at least 3,465 of 5,679
+rows) — a shortfall of 566 rows. The
+object-ID join adds exactly 4 rows over the
+original join (the two H-311 rows and the
+trailing-space references L-78 and M-929) and
+loses none. The execution therefore closed
+**CLOSED AT STEP 0 — JOIN GATE NOT MET** in
+the frozen section 3.5 wording, with the
+census published as the finding. No F1
+quantity was computed — no terminal mapping,
+no CMH statistic, no p-value, no odds ratio —
+and STUDY-SPEC-024/F1 stands exactly as
+recorded: SUPPORTED on its original joined
+subset, its "on the joined subset" scope
+unchanged. The closure establishes nothing
+about the claim; it is a measured property of
+the available catalogue data. Anchors asserted
+byte-identical before and after (df0cf620…).
+Records: specs/059-f1-object-join/outcome.md,
+reports/phase421_results.json (SHA-256
+3948cd01…), reports/phase421_join_census.json
+(95282931…), reports/phase421_report.md
+(167584e1…); the script is deterministic
+(byte-identical rerun).
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson,
+per constitution sec.VI.

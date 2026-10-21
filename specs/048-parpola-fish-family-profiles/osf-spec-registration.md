@@ -64,3 +64,80 @@
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## Filing failure + re-filing — REGISTRATION OF RECORD: eqpab (2026-10-21)
+
+This section supersedes the "FILED — PENDING
+APPROVAL" header above as the registration of
+record. **eqpab is now the registration to
+approve**; f5ej9 is not, and cannot be.
+
+### The f5ej9 failure
+
+The original registration **f5ej9** (draft
+`6ad8938bdfd575a9d40da976`, filed
+2026-10-21T10:27:45Z) failed at filing on
+OSF's side. OSF sent a "Problem Registering"
+email (Gmail id `1a15e00c54e3ee96`, held
+unarchived until the replacement is approved)
+citing "errors copying files to the
+registration". An API GET on
+`registrations/f5ej9` returns it no longer
+available (410/404). It never reached the
+approval stage and cannot be approved. The
+failure was discovered by the parent's
+approval run.
+
+Spec 048's freeze itself is merged and
+unaffected: the freeze digest
+`56beec70957ac64e5f17e3bb889e66c9becfe7a7a55b49bc59e5a232c642a846`
+stands, unchanged.
+
+### The re-filing: eqpab
+
+Re-filed 2026-10-21 by the campaign
+coordinator with the identical frozen
+contract payload. The original responses file
+(`~/workspace/campaign-freeze-work/spec048/osf/responses.json`,
+all 29 schema responses) was reused verbatim
+— the PATCH read-back showed 29 responses,
+zero field diffs; same title, description,
+node nrb9u, schema OSF Preregistration
+(697b72f611a8e98484c6139b), and the same five
+standing subjects.
+
+- **New registration: https://osf.io/eqpab/**
+- New draft registration id:
+  `6ad8a237217927597e1bf66a`
+- Register POST returned 201.
+- State at filing, from the POST response:
+  `reviews_state` initial,
+  `pending_registration_approval` true, not
+  public.
+
+Approval is the parent's act and is pending.
+Execution (Phase-408) still awaits that
+approval. The re-filing staging is kept at
+`~/workspace/campaign-freeze-work/spec048/osf-refile/`
+(`refile.py`, `draft.json`, `subjects.json`,
+`register.json`).
+
+### A note on verification
+
+GET read-backs of registrations via the CLI
+route currently return 404 for all
+registrations in this environment, including
+long-public ones. The filing's verification
+of record is therefore the create / patch /
+register responses themselves (201 / 200 /
+201, with the read-back comparisons above)
+— the same class of evidence the original
+filing used.
+
+---
+
+*Filing-failure + re-filing record appended
+2026-10-21 by an AI agent (Muse Spark, via
+Muse) at the direction of Tristen Pierson,
+per constitution §VI. Append-only: nothing
+above this section was edited.*

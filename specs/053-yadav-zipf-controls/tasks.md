@@ -1,6 +1,6 @@
 # Spec 053 — Tasks
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-21
+> ## PLAN — FROZEN — 2026-10-21 (freeze decisions in `adjudication.md` §8; execution phase **Phase-413**)
 >
 > Adjudication inputs are recorded in
 > `adjudication.md` (the campaign plan approved
@@ -47,43 +47,46 @@
       as a DRAFT PR (campaign Wave 1) and left
       unmerged for the freeze wave, CI state
       reported from the run's own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
-      — not run on this draft).** At the freeze
-      act, run `run_aee.py assess`
-      after_specify, after_plan, and
-      after_tasks over the claim register; the
-      gate is **pass**, and a stricter outcome
-      blocks the freeze until its named
-      recovery is complete and recorded.
-      Deliberate ordering (the Spec 035/038/042
-      record): any recovery round changes
-      claim text, and the freeze digest is
-      computed over the recovered register
-      exactly once, at freeze. Freeze mechanics
-      are re-checked against the adopted
-      1.5.x engine at the freeze, per the
-      campaign plan, not assumed from
-      pre-adoption habit.
-- [ ] **L5 — Freeze-decision items.** The
-      freeze decides OPEN-053-1 (strict corpus
-      pin and population), OPEN-053-2
-      (estimator), OPEN-053-3 (control
-      sources), OPEN-053-4 (census floors),
-      OPEN-053-5 (comparison rule ε),
-      OPEN-053-6 (synthetic process),
-      OPEN-053-7 (OSF registration, under
-      campaign E-1), and OPEN-053-8 (phase
-      number), and confirms or openly overturns
-      DD-053-2, DD-053-4, DD-053-5, and
-      DD-053-6.
-- [ ] **L6 — Freeze.** On the owner's freeze
-      order, with L4 passed and L5 decided:
-      hooks recorded, `freeze.md` finalised,
-      `freeze.json` recomputed over the
-      recovered register and finalised texts,
-      every spec §2 pin re-asserted against
-      the merged record, and the execution
-      phase number allocated (DD-053-8).
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE).**
+      Run at the freeze act of 2026-10-21 under
+      aee 1.5.0 over the recovered register
+      (0.7-draft): **PASS** on the DD-053-19
+      gate reading (adopting DD-038-10) — at
+      every hook zero correctness failure
+      modes and no claim below the 0.70
+      threshold (minimum propagated 0.72);
+      the engine outcome word reads iterate
+      solely from the 15 FR-2.3 draft-cap
+      records. Recovery record in
+      `aee/freeze-aee-note.md`.
+- [x] **L5 — Freeze-decision items.** Decided
+      at the freeze, on the record in
+      `adjudication.md` §8: OPEN-053-1 →
+      DD-053-12 (gate 0.3 and the strict
+      population confirmed), OPEN-053-2 →
+      DD-053-11 (estimator specified completely
+      at the freeze, option (a); the Phase-43
+      identity reading retired), OPEN-053-3 →
+      DD-053-13 (named sources confirmed; gate
+      0.4 fixed as the control tables' pin
+      source), OPEN-053-4 → DD-053-14 (floors
+      confirmed), OPEN-053-5 → DD-053-15
+      (ε = 0 confirmed), OPEN-053-6 →
+      DD-053-16 (Yule–Simon confirmed),
+      OPEN-053-7 → DD-053-17 (OSF registration
+      filed under E-1), OPEN-053-8 → DD-053-18
+      (Phase-413 allocated). DD-053-2, DD-053-4,
+      DD-053-5, and DD-053-6 are confirmed as
+      drafted; none is overturned.
+- [x] **L6 — Freeze.** Executed 2026-10-21:
+      hooks recorded (`aee/freeze-aee-note.md`),
+      `freeze.md` finalised, `freeze.json`
+      computed exactly once over the recovered
+      register and finalised texts, every spec
+      §2 pin re-asserted against the merged
+      record by two routes, and the execution
+      phase allocated as **Phase-413**
+      (DD-053-18).
 - [ ] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).

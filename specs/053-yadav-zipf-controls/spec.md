@@ -1,26 +1,53 @@
 # Spec 053 — Yadav's Zipf Fit: What Is a Curve Fit Worth? (Design D-07, Arm A Only)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-21
+> ## FROZEN — 2026-10-21
 >
-> Drafted under the runnable-experiments campaign
+> Frozen under the runnable-experiments campaign
 > plan approved by the owner AS WRITTEN on
-> 2026-10-21
-> (`~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md`,
-> Parts 1–4 read in full at this draft; decision
-> E-3 governs arm B, §12). This spec is campaign
-> member 6 (design D-07, **arm A only**). Drafts
-> are pre-approved standing in this program;
-> **the freeze and the execution of Spec 053 are
-> separate later acts under the campaign's Waves
-> 2 and 3.** No AEE lifecycle hooks have run on
-> this draft; they are a freeze gate. Nothing in
-> this draft has been run, frozen, registered,
-> fitted, or computed.
+> 2026-10-21 (campaign decision E-1: this spec
+> files its own OSF contract registration at
+> its freeze; decision E-3 governs arm B, §12).
+> This spec is campaign member 6 (design D-07,
+> **arm A only**). The freeze decisions
+> DD-053-11 to DD-053-19 are recorded in
+> `adjudication.md` §8; DD-053-1 to DD-053-10
+> stand as drafted, with DD-053-2, DD-053-4,
+> DD-053-5 and DD-053-6 confirmed there.
 >
-> The execution phase number is **unassigned**
-> at this draft. It is allocated at the freeze
-> act, from the merged record as it then stands
-> (DD-053-8).
+> **The estimator ruling (DD-053-11, option
+> (a)).** The freeze specifies the estimator of
+> §4.2 completely — fitting procedure,
+> parameters, grid, refinement, seeds, and the
+> control constructions of §3 — as a
+> freeze-stage design decision, and the
+> "identical to Phase-43" reading is honestly
+> **RETIRED**: no Phase-43 Zipf estimator
+> exists to be identical to. Phase-43's results
+> file (`outputs/phase43_all.json`, SHA-256
+> `78a6c21908b9362854c54dd3d820d717be22feab3af11135663fa14aaf554fe4`,
+> re-verified at this freeze by two routes)
+> carries no Zipf fit — no exponent, no
+> Mandelbrot parameters, no fitting procedure —
+> and Yadav's recorded value of about 1.35
+> rests on the claim file's evidence string
+> alone. This spec therefore tests that
+> recorded value under the named estimator of
+> §4.2: its claims and falsifier are restated
+> to say exactly that (claims edited at draft
+> stage, before the digest; claim IDs stable).
+> The falsifier itself never depended on a
+> Phase-43 fit: it compares each named control
+> against the Indus strict corpus under §4's
+> one estimator (§1.2, §4.3).
+>
+> Execution runs as **Phase-413** (allocated at
+> this freeze, DD-053-18). Nothing in this
+> contract has been run, fitted, or computed:
+> no control count has been entered, no corpus
+> has been exported, and no fit of any system
+> exists. Execution awaits this freeze merging,
+> the OSF registration's approval act, and a
+> separate execution order.
 
 **Design source:** D-07 in the experiment-design
 packet at PR #195
@@ -129,7 +156,23 @@ itself is informative, in the sense §4.4 fixes:
 the linguistic positive control fits strictly
 better than every non-linguistic control.
 
-## 2. Inputs (pinned at this draft where a pin exists; re-asserted at the freeze)
+## 2. Inputs (pinned where a pin exists; every pin re-asserted at the freeze)
+
+Every pin in this section was re-derived at
+the freeze of 2026-10-21 by two independent
+routes — the contents-API raw route and the
+git-blob route — agreeing byte-for-byte, at
+`main` head `3af269f660a9368e898cdece41132200d31b87cc`:
+the claim file `90476623…` (13,230 bytes), the
+anchors file `df0cf620…` (570,344 bytes; census
+re-read: 287 anchors, 94
+`strict_sa_independent`), the crosswalk
+`4ace1a61…`, the Mahadevan–Parpola crosswalk
+`9ebd7723…`, and the Phase-43 results file
+`78a6c219…` (15,047 bytes; re-read in full at
+the freeze: it contains no occurrence of the
+word "Zipf" and no Mandelbrot parameter — the
+ground for DD-053-11).
 
 | Input | Pin / state |
 |---|---|
@@ -137,7 +180,7 @@ better than every non-linguistic control.
 | Anchors file (`backend/reports/INDUS_FINAL_ANCHORS.json`) — the strict sign set's census source | SHA-256 `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569` (recomputed at this draft; matches the pin Specs 042/048 carry). Census read at this draft: 287 anchors, **94** carrying validation status `strict_sa_independent` — the strict sign set of designs D-03/D-04/D-07. This spec moves no anchor; the file is asserted byte-identical before and after any execution. |
 | Strict corpus (the Indus distribution of record) — the V3 / Mahadevan-lineage corpus the Phase-43 framework ran on, restricted to the strict sign set | **No file pin is stated at this draft, deliberately** (the Spec 048 precedent, DD-053-4). Spec 033 §4 states this corpus as "the program's V3/Mahadevan-lineage corpus as held in the database" — a database posture, not a pinnable repository file on `main`. The layer is therefore identified, exported, and pinned by digest at step 0, before any fitting, under gate 0.3 — and the run closes if it cannot be (OPEN-053-1). Inventing a pin at draft would repeat the stale-pin failure Spec 040's gate record documents. |
 | Sign crosswalk (`data/crosswalks/sign_crosswalk_master.csv`) — the source of the §5 split/merge variants | SHA-256 `4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf` (recomputed at this draft). The Mahadevan–Parpola crosswalk file (`backend/glossa_lab/data/mahadevan_parpola_crosswalk.json`, SHA-256 `9ebd7723472d888dc8a127ff840a108d4fbd546f7f8ed28ccc6e06444a2dc69b`, recomputed at this draft) is cited alongside it for numbering questions. |
-| Control counts — the named systems of §3 gate 0.4 | Bibliographic pins at this draft; the counts themselves are entered as **cited data at step 0** (gate 0.4), each count with its source locator, and frozen before any fit. The exact editions/tables are confirmed at the freeze (OPEN-053-3). No count is typed into a script (H16). |
+| Control counts — the named systems of §3 gate 0.4 | Bibliographic pins as drafted; the counts themselves are entered as **cited data at step 0** (gate 0.4), each count with its source locator, and frozen before any fit. **Ruled at the freeze (DD-053-13):** the named systems and bibliographic pins stand as drafted, no second positive control is added, and gate 0.4 is the fixed pin source for the control tables — the exact tables and per-count locators are entered there, and a system that cannot be entered whole closes the run CONTROL SET FREEZE FAILED. The freeze invents no table it has not seen (§7 defect 4 of the adjudication). No count is typed into a script (H16). |
 | Phase-43 results file (`outputs/phase43_all.json`) | SHA-256 `78a6c21908b9362854c54dd3d820d717be22feab3af11135663fa14aaf554fe4` (recomputed at this draft). Read in full at this draft: it carries Phase-43's corpus census (3,916 records; 12,494 sign instances; top-20 sign frequencies) and its positional and SA tables — and **no Zipf fit**: no exponent, no Mandelbrot parameters, no fitting procedure. It is pinned here so the freeze works from the complete record, and it is the ground for §4.2's estimator statement. |
 | Yadav's original report | Yadav et al. 2009, "Statistical analysis of the Indus script using n-grams" (arXiv preprint) — the source document of the claim record; cited for the reported exponent range only. No number is taken from it at execution; the comparison is internal to §4's rules. |
 
@@ -200,13 +243,18 @@ quotable.
     counts it reports — exact table confirmed
     at the freeze, OPEN-053-3). Numerical
     signs only; phonetic/syllabic signs of the
-    same tablets are not this system.
+    same tablets are not this system. (Freeze
+    ruling DD-053-13: this source stands as
+    named; its exact table is entered with its
+    locator at this gate.)
   - **N2 — Heraldic charges.** Frequencies of
     charges (the devices borne on shields)
     across a published roll of arms (the
-    design's named example; the roll and
-    edition are confirmed at the freeze,
-    OPEN-053-3). The counting unit is one
+    design's named example; freeze ruling
+    DD-053-13: the roll and edition are entered
+    with their citation at this gate, as the
+    fixed pin source for this system's table).
+    The counting unit is one
     charge occurrence on one shield, as the
     roll records it.
   - **N3 — Synthetic emblem inventory.**
@@ -231,9 +279,10 @@ quotable.
     certainly-linguistic script from published
     corpus counts: **Linear B** syllabic sign
     frequencies (bibliographic pin: the
-    published Linear B corpus counts; exact
-    source confirmed at the freeze,
-    OPEN-053-3). One positive control is the
+    published Linear B corpus counts; freeze
+    ruling DD-053-13: the exact source is
+    entered with its citation at this gate, and
+    no second positive control is added). One positive control is the
     design's floor ("at least one"); a second
     may be added only at the freeze, openly.
   If any named system's counts cannot be
@@ -252,7 +301,8 @@ quotable.
   the step-0 record. **Floors:** the primary
   proceeds only if distinct strict types
   present ≥ **50** and strict tokens ≥
-  **2,000** (DD-053-7). Below either floor the
+  **2,000** (DD-053-7; confirmed at the freeze,
+  DD-053-14). Below either floor the
   execution closes as **TOO THIN** (§6
   wording) with the census as its finding; no
   fit is computed. The frozen control tables'
@@ -315,11 +365,19 @@ no Phase-43 fitting rule to be identical to.
 The recorded exponent of about 1.35, which
 lives in the claim record's evidence string,
 is context for the comparison, not a
-reproduction target. The
-freeze may substitute a pinned Phase-43
-estimator for this one, openly, before any
-fitting (OPEN-053-2); it may not substitute
-one after.
+reproduction target. **Freeze ruling
+DD-053-11 (option (a)):** this estimator —
+model, normalisation, objective, grid,
+refinement, and the gate 0.2 self-test with
+its planted parameters and seed — is specified
+completely here as a freeze-stage design
+decision and stands as the fitting rule of
+record; the "identical to Phase-43" reading is
+RETIRED, because the freeze re-verified that
+no Phase-43 estimator exists on the record
+(the Phase-43 results file carries no Zipf fit
+at all). No estimator may be substituted after
+any fitting.
 
 ### 4.3 The comparison rule — what counts as "fits as well"
 
@@ -336,7 +394,8 @@ fitting:
    iff its error is less than or equal to
    E_Indus: E ≤ E_Indus. ("As well or better,"
    the design's words, with no tolerance band —
-   DD-053-2.)
+   DD-053-2; confirmed at the freeze with
+   ε = 0, DD-053-15.)
 3. The **falsifier fires** iff at least one of
    N1, N2, N3 fits as well under rule 2.
 4. The **gap** Δ = E_control − E_Indus is

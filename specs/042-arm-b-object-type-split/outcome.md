@@ -362,3 +362,67 @@ at both points — byte-identical, asserted.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+---
+
+## Landing record — 2026-10-21 (appended at merge; append-only)
+
+- Execution PR: **#276** (branch
+  `spec-042-phase407-execution`), merged to
+  `main` as merge commit
+  **`68c31046a3bdcaf015629b738ed595db58983045`**.
+  The PR head at merge was `3c0ade7c` (the
+  execution commit `3fbb5a32` plus two merges
+  of advancing `main` and one empty
+  CI-retrigger commit: two synchronize events
+  produced no run — a platform event-dropping
+  incident — and a genuine run was obtained
+  before merging, per the standing rule).
+- CI: GitHub Actions run **39634601098** on
+  the PR head `3c0ade7c` — **7 of 7 jobs
+  success**, verified from the head commit's
+  own check-runs (Backend tests (pytest);
+  Frontend tests (Playwright); Indus public
+  validation checks; Evidence Graph script
+  smoke tests; Shell wrappers ubuntu / macos
+  / windows). (The first head, `3fbb5a32`,
+  also ran 7 of 7 green in run 39628823142.)
+- Run digests re-verified on `main` at the
+  merge commit by two routes (the contents
+  API download hashed with `sha256sum` and
+  with Python `hashlib`):
+  `reports/phase407_results.json`
+  `6f0f5a4f37918d7acb2e899b916131d133d13fc6cecd3b2f4b03662d96919d72`,
+  `reports/phase407_report.md`
+  `67f0cc005508e52e304bff03c277834558abc06c25d299e587b2bb4898a6c37e`
+  — identical to the values in §1 of this
+  record.
+- Foundation check (H21) at the merge
+  commit, on a fresh worktree of
+  `68c31046` with the two Holdat CSVs copied
+  from the existing local downloads (corpus
+  CSV SHA-256
+  `62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e`
+  verified first, by two routes): **40
+  checks passed, 0 failed, 8 warnings** —
+  the standing figure.
+- Local-environment disclosure (carried
+  from the execution): in this VM's
+  glossa-aee150 venv, one unrelated frozen
+  test (`test_spec040_freeze.py::test_spec040_freeze_register_lenient`)
+  fails locally; it was verified to fail
+  identically on the pristine `main` tree at
+  the run's base with no execution changes
+  present — the known pre-existing local
+  AEE-loader issue class (the same class
+  disclosed on Spec 045's record). The PR's
+  CI run is the figure of record, and it is
+  green.
+- Terminal outcome stands as recorded
+  above: **THIN** at gate 0.4. Neither
+  stratum was computed, no verdict exists
+  under this spec, and Spec 028 Arm B stands
+  exactly as recorded.
+
+*AI disclosure: appended by an AI agent (Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.*

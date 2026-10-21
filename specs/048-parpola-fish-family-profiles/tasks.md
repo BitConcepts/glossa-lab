@@ -101,18 +101,23 @@
       044's freeze (DD-048-9 — no byte-digest
       exists at this freeze), and the execution
       phase allocated as Phase-408 (DD-048-16).
-- [ ] **L7 — Freeze PR merged**, house gates
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
-      (Completed at the merge; recorded with the
-      freeze PR.)
+      PR #247 merged 2026-10-21 at `6b476269`,
+      CI 7/7 (run 39584867504).
 
 ## Execution — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0, part 1** (spec §3 gates
+      Executed 2026-10-21 as Phase-408: script
+      `backend/scripts/phase408_fish_family_step0.py`,
+      node `IndusPhase408FishFamilyStep0`,
+      registration verified by import before
+      the run (497 nodes total).
+- [x] **E2 — Step 0, part 1** (spec §3 gates
       0.1–0.2): Asset F exhibited, its digest
       recomputed under the exclusion rule and
       asserted against the freeze pin (failure
@@ -126,7 +131,17 @@
       cross-check against the claim record's
       trio and the Phase-43 six reported, every
       divergence named.
-- [ ] **E3 — Step 0, part 2** (gates 0.3–0.6):
+      Executed 2026-10-21: gate 0.1 PASS
+      (recomputed digest `ca5fb1b5…` identical
+      to Spec 044's step-0 record and to the
+      file's own digest field, verified by two
+      routes); gate 0.2 PASS (all 7 members
+      MAPPED through the pinned crosswalk, none
+      UNMAPPED; cross-check: of the trio
+      (72, 64, 70) none is an Asset F member,
+      of the Phase-43 six only 60 is — every
+      divergence named in the step-0 record).
+- [x] **E3 — Step 0, part 2** (gates 0.3–0.6):
       strict corpus identified, exported, and
       pinned, with the T2.4 reference points
       reproduced (failure closes STRICT CORPUS
@@ -137,6 +152,24 @@
       TOO THIN closure ends the execution here,
       with the census as its finding); control
       set frozen in the step-0 record.
+      Executed 2026-10-21: **gate 0.3 FAILED —
+      the execution closed STRICT CORPUS NOT
+      PINNABLE** (the V3 layer's Firestore
+      'indusarrays' data file is absent from
+      the tree, the V3 loader — imported and
+      run — loads zero records and zero
+      sequences, no database copy exists in
+      the execution tree, and no other layer
+      in the tree is the corpus the Phase-43
+      record names, so the T2.4 reference
+      points cannot be re-derived from a
+      pinned layer); gates 0.4, 0.5, and 0.6
+      were NOT REACHED — no Holdat judgement,
+      no census and no TOO THIN judgement, and
+      no control judgement is recorded or
+      implied. E4–E5 cannot run under this
+      frozen contract; the record is
+      `outcome.md` in this directory.
 - [ ] **E4 — Primary arm** (spec §5):
       per-member T2.4 ending-follower rates on
       the pinned strict corpus; every member's
@@ -148,21 +181,29 @@
       the 72/64/70 sensitivity; the control
       set through the identical measure, its
       comparison stated beside the family's.
-- [ ] **E6 — Outcome:** the §9 record —
+- [x] **E6 — Outcome:** the §9 record —
+      delivered 2026-10-21 in the closure form
+      the STRICT CORPUS NOT PINNABLE outcome
+      prescribes (`outcome.md`; no corpus
+      digests, per-member tables, control
+      figures, or sensitivity exist to report) —
       results JSON and report under the
       headline rules (Asset F digest and join
-      record, both corpus labels and digests,
-      per-member tables for both arms, control
-      figures, the sensitivity, §6's pre-written
-      headline wording, the Roif-hold sentence),
-      the appended outcome in this directory,
-      the dated append to the claim
+      record, §6's pre-written headline wording
+      for the closure class, the Roif-hold
+      sentence), the appended outcome in this
+      directory, and the LEDGER entry; no
+      append was made to the claim
       `parpola_2010_dravidian_solution_manual_002`'s
-      record (family verdict or closure — the
-      claim's existing text untouched), and the
-      LEDGER entry; anchors asserted
-      byte-identical before and after;
-      foundation check reported as measured.
+      extracted-claims file, because its bytes
+      are a frozen §2 pin — the dated closure
+      append is the outcome record and the
+      LEDGER entry (the Spec 044 form), and the
+      claim stands exactly as recorded;
+      anchors asserted byte-identical before
+      and after; foundation check reported as
+      measured (40 passed / 0 failed /
+      8 warnings at the run).
       All records internal under the Roif gate.
 
 ---

@@ -8566,3 +8566,103 @@ before and after (df0cf620…).
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-21 — Spec 048 EXECUTED (Phase-408): STRICT CORPUS NOT PINNABLE at gate 0.3 (held under the Roif gate)
+
+Spec 048 was executed as Phase-408 under the
+frozen contract (freeze digest 56beec70…; OSF
+registration eqpab approved and public, DOI
+10.17605/OSF.IO/EQPAB), in Wave 3 Group 3 of
+the runnable-experiments campaign (design
+D-04; consumer of Asset F), under the
+graph-first build (script
+backend/scripts/phase408_fish_family_step0.py;
+node IndusPhase408FishFamilyStep0; registration
+verified by import before the run, 497 nodes).
+Integrity PASS: every §2 byte pin recomputes
+to its freeze value by two independent routes
+(Phase-43 record 78a6c219…, anchors
+df0cf620… — 287 anchors, 94
+strict_sa_independent, M072
+pending_non_sa_validation — Mahadevan–Parpola
+crosswalk 9ebd7723…, Spec 033 spec
+eaea0e2e…); the claim file was asserted in
+the Spec 038 form (manual_002's facts on the
+live file; its freeze-time hash 3202aeca… a
+definition constant — the live file's only
+delta for manual_002 after the post-freeze
+store regeneration is its extracted_at
+timestamp). **Gate 0.1 PASS**: Asset F's
+digest, recomputed over the canonical bytes
+with the digest field excluded (Spec 044
+§4.2), is
+ca5fb1b5a52d9ad0c8301174996562cdc024bf4063e6193bef77328b1acc58c3
+— identical to the digest recorded in Spec
+044's step-0 outcome record (the pin source
+fixed at the freeze, DD-048-9) and to the
+file's own digest field; 7 members; the asset
+was not rebuilt or substituted. **Gate 0.2
+PASS**: every member joins via its
+mahadevan_number locator through the pinned
+crosswalk (M047, M048, M050, M052, M060,
+M145, M147 — all MAPPED, none UNMAPPED, the
+crosswalk's Parpola locator agreeing in
+every case); the cross-check names every
+divergence — of the claim record's trio
+(72, 64, 70) none is an Asset F member, of
+the Phase-43 six (267, 72, 65, 59, 60, 70)
+only 60 is — and adds and removes no member.
+**Gate 0.3 FAIL — the execution closed
+STRICT CORPUS NOT PINNABLE in the frozen §6
+wording.** The V3 / Mahadevan-lineage layer's
+only loader of record reads the Firestore
+'indusarrays' dump at
+glossa-corpus/indus/sources/rmrl/raw/indusscript-probe/firestore_indusarrays_full.jsonl,
+which is absent from the tree (the tracked
+rmrl directory holds only its bulletin and
+provenance files); the loader, imported from
+its file and run, loads zero records and zero
+sequences, so the layer cannot be exported
+whole or pinned, and the T2.4 reference
+points (sign 72 — 181 occurrences, 25.9%,
+supported; sign 267 — 356, 3.8%, not
+supported) cannot be re-derived from a
+pinned layer. No database copy exists in the
+execution tree, and no other layer in the
+tree is the corpus the Phase-43 record names
+(Firestore source, 3,916 records / 3,137
+sequences / 2,665 dockeys / 12,494
+instances): the site-attributed layer carries
+5,679 records, the V1 export 15,508
+mixed-source objects, the ICIT export 3,085
+ICIT-encoded sequences, and the Holdat path
+is absent from the tracked tree and is the
+second compilation besides. No layer was
+substituted and no rule invented. Gates 0.4,
+0.5, and 0.6 were NOT REACHED: no Holdat
+judgement, no census (no TOO THIN judgement
+is recorded or implied for any member), and
+no control judgement exists. No
+ending-follower rate was computed for any
+sign in either arm, no sensitivity was
+computed, and no family verdict is recorded:
+the claim
+parpola_2010_dravidian_solution_manual_002
+stands exactly as recorded (IN QUESTION,
+partially supported), its record unedited.
+Anchors asserted byte-identical before and
+after (df0cf620…). Foundation check at the
+run: 40 passed / 0 failed / 8 warnings.
+Records: specs/048-parpola-fish-family-profiles/outcome.md,
+reports/phase408_results.json (SHA-256
+c08e775c…), reports/phase408_step0_report.md
+(SHA-256 9dca830c…) — both digests verified
+by two independent routes, and the script
+deterministic (byte-identical on a second
+run). This entry and its records are
+internal under the campaign's Roif gate
+(R-7); not a publication.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

@@ -3016,6 +3016,16 @@ try:
     logger.info("Registered %d Phase-413 (spec 053) nodes", len(list(_p413_defs())))
 except Exception as _p413_exc:  # noqa: BLE001
     logger.warning("Phase-413 (spec 053) nodes not registered: %s", _p413_exc)
+# ── Phase-408 node (spec 048: Parpola fish-family profiles, step 0) ──
+try:
+    from glossa_lab.experiment_graph_phase408 import (
+        _phase408_node_defs as _p408_defs,  # noqa: PLC0415
+    )
+    for _d in _p408_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-408 (spec 048) nodes", len(list(_p408_defs())))
+except Exception as _p408_exc:  # noqa: BLE001
+    logger.warning("Phase-408 (spec 048) nodes not registered: %s", _p408_exc)
 
 
 

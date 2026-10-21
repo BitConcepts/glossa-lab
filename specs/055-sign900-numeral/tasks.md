@@ -110,7 +110,7 @@
       under E-1 (DD-055-9), and the execution
       phase allocated as Phase-414
       (DD-055-17).
-- [ ] **L7 — Freeze PR merged**, house gates
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
 
@@ -124,10 +124,10 @@ consumes it, and D-16 takes nothing from this
 execution except through its own future
 planning gate.
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0** (spec §3 gates
+- [x] **E2 — Step 0** (spec §3 gates
       0.1–0.3): input integrity against the
       freeze pins; source document produced
       from the held copy with the §1 material
@@ -137,7 +137,7 @@ planning gate.
       class, produces `source-table-recovery.json`
       in its closure form, and ends the
       execution here.
-- [ ] **E3 — Step 1, the recovery** (spec
+- [x] **E3 — Step 1, the recovery** (spec
       §§4, 6): the source's sign list named
       from the document's own text, naming
       statements quoted with locators; the
@@ -154,7 +154,7 @@ planning gate.
       the run as IDENTIFICATION FAILED in the
       named sub-class, with the closure-form
       recovery record.
-- [ ] **E4 — Step 2 gate and pre-counting
+- [x] **E4 — Step 2 gate and pre-counting
       record** (spec §3 gate 0.4; §5.1): the
       strict-corpus layer identified,
       exported, and pinned by digest; the
@@ -166,7 +166,7 @@ planning gate.
       (target excluded) and the control set
       selected by the frozen rule — all before
       any §5.2 measure exists.
-- [ ] **E5 — Step 2, the behaviour test**
+- [x] **E5 — Step 2, the behaviour test**
       (spec §5): the three measures computed
       identically for the target, every
       numeral-set member, and every control
@@ -174,7 +174,7 @@ planning gate.
       mapping alone. The source document's
       own argument for six is not consulted
       as evidence at this stage (F055-C15).
-- [ ] **E6 — Outcome** (spec §8): the §5.4
+- [x] **E6 — Outcome** (spec §8): the §5.4
       wording for the outcome reached;
       `source-table-recovery.json` as produced
       (on every terminal outcome); the results

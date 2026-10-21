@@ -6,16 +6,16 @@
   "experiment_id": "spec039-gazetteer-period-assignment",
   "register": {
    "path": "specs/039-gazetteer-period-assignment/claims.json",
-   "register_version": "0.5-draft",
+   "register_version": "0.7-draft",
    "claims": 15,
-   "aee_hook_pass": "NOT RUN on this draft: the AEE lifecycle hooks (after_specify / after_plan / after_tasks) are a freeze gate, run at the freeze act over the recovered register (the Spec 035 ordering; see specs/039-gazetteer-period-assignment/aee/freeze-aee-note.md)"
+   "aee_hook_pass": "PASSED at the freeze act of 2026-10-20 under aee 1.5.0: after_specify cleared in three adjudicated rounds (20 failure modes over 0.5-draft; 17 over the 0.6 recovery text; 15 FR-2.3 draft-cap records only over 0.7-draft), after_plan and after_tasks clean at first pass; at every hook zero correctness failure modes and no claim below the 0.70 threshold (minimum propagated 0.72); the engine outcome word reads iterate solely from the draft-cap records (gate reading DD-039-8; record in specs/039-gazetteer-period-assignment/aee/freeze-aee-note.md)"
   },
   "basis": {
    "adjudication": "specs/039-gazetteer-period-assignment/adjudication.md",
-   "decisions": "DECIDED by the owner on 2026-10-20 (not proposals): (D1) the gazetteer period-assignment act (Spec 027 section 6.2) is authorised, bundled with the D-25 chronology test - one adjudication cycle, this act executes first, D-25's own spec consumes the assigned gazetteer as a hash-pinned input; (D2) the evidence standard is Option 1 - published period determinations only, no program-derived assignments (Option 2 not adopted). Open for the freeze: DD-039-1 (label set), DD-039-2 (source hierarchy), DD-039-3 (TwoRains published-venue rule), DD-039-4 (Masudpur establishment; recommended default no), DD-039-5 (margins re-run as this act's verification step), DD-039-6 (the spec's own OSF contract registration; proposal yes)."
+   "decisions": "DECIDED by the owner on 2026-10-20 (not proposals): (D1) the gazetteer period-assignment act (Spec 027 section 6.2) is authorised, bundled with the D-25 chronology test - one adjudication cycle, this act executes first, D-25's own spec consumes the assigned gazetteer as a hash-pinned input; (D2) the evidence standard is Option 1 - published period determinations only, no program-derived assignments (Option 2 not adopted). Freeze decisions DD-039-1 to DD-039-8 are recorded in adjudication.md section 4: the label set and source hierarchy adopted; the TwoRains published-venue rule adopted; Masudpur not established; the margins re-run adopted as this act's verification step; the spec's own OSF contract registration filed at the freeze; Phase-403 allocated; and the DD-038-10 / DD-037-9 AEE gate reading adopted as DD-039-8."
   },
   "design": {
-   "phase": "Phase-401 (provisional label at draft; the execution takes the next free phase number at freeze - DD-039-7)",
+   "phase": "Phase-403",
    "act": "assign program period labels to the Stage 0 gazetteer sites (36 rows, 30 program sites) in the section 6.2 program_period_assignment field, from published determinations only, under rules frozen before any assignment is made",
    "evidence_standard": {
     "option": "Option 1 - published period determinations only",
@@ -25,7 +25,7 @@
     "no_program_derived": "Option 2 (published plus program-derived assignments under frozen rules, e.g. spine dates to period) was not adopted; no label is an inference"
    },
    "label_set": {
-    "dd": "DD-039-1 (recommendation carried in the contract)",
+    "dd": "DD-039-1 (decided at freeze)",
     "labels": [
      "Early Harappan",
      "Mature Harappan",
@@ -37,6 +37,22 @@
    },
    "mapping_rule": {
     "form": "a scheme-aware table, written into the freeze record before any assignment is made; the row's period_scheme governs which mapping applies",
+    "entries": {
+     "MAP-EXPLICIT-EARLY": "explicit three-period scheme value Early Harappan (or EH where the publication itself expands it) -> Early Harappan",
+     "MAP-EXPLICIT-MATURE": "explicit three-period scheme value Mature Harappan (or MH where the publication itself expands it) -> Mature Harappan",
+     "MAP-EXPLICIT-LATE": "explicit three-period scheme value Late Harappan (or LH where the publication itself expands it) -> Late Harappan",
+     "MAP-EXPLICIT-MULTI": "explicit three-period scheme value naming two or three labels -> each named label, as a multi-label record",
+     "MAP-RANGE-EARLY-MATURE": "Early-Mature Harappan range -> Early Harappan and Mature Harappan",
+     "MAP-RANGE-MATURE-LATE": "Mature-Late Harappan range -> Mature Harappan and Late Harappan",
+     "MAP-RANGE-EARLY-LATE": "Early-Late Harappan range -> Early Harappan, Mature Harappan, and Late Harappan",
+     "MAP-HARP-RAVI": "HARP/Harappa scheme Ravi Phase (or Period 1 equated with it in the same publication) -> Early Harappan",
+     "MAP-HARP-KOTDIJI": "HARP/Harappa scheme Kot Diji Phase (or Period 2 equated with it in the same publication) -> Early Harappan",
+     "MAP-HARP-HARAPPAN": "HARP/Harappa scheme Harappa Phase (or Period 3 equated with it in the same publication) -> Mature Harappan",
+     "MAP-HARP-CEMETERY-H": "HARP/Harappa scheme Cemetery H Phase (or Period 5 equated with it in the same publication) -> Late Harappan",
+     "MAP-JHUKAR": "published scheme value Jhukar Phase -> Late Harappan",
+     "MAP-CEMETERY-H": "published scheme value Cemetery H Phase outside the HARP scheme -> Late Harappan"
+    },
+    "reviewer": "Muse Spark via Muse (AI agent)",
     "unmapped_values": "a value with no table entry maps to nothing: the site stays unassigned on that evidence, reason code UNMAPPED_SCHEME_VALUE; no mapping is improvised at assignment time",
     "recorded_per_assignment": "the mapping entry applied, the reviewer of record, and every determination relied on (source, citation, locator, published value, scheme)"
    },
@@ -56,11 +72,11 @@
    },
    "outputs": {
     "assigned_gazetteer": "data/movement/gazetteer_rows_assigned.jsonl - all 36 rows, byte-identical to the pre-act file outside program_period_assignment; the pre-act file is not modified and its SHA-256 is pinned in the outcome record",
-    "assignment_report": "reports/phaseNNN_results.json and reports/phaseNNN_gazetteer_assignment_report.md (phase number fixed at freeze): per-site table with evidence, contested list, blank list with reason codes, the section 6.3 completeness report by source",
+    "assignment_report": "reports/phase403_results.json and reports/phase403_gazetteer_assignment_report.md per-site table with evidence, contested list, blank list with reason codes, the section 6.3 completeness report by source",
     "dataset_new_version": "a NEW VERSION of Zenodo record 23300361 carrying the assigned gazetteer for the releasable rows under v1's licence posture; the existing deposit is never edited"
    },
    "margins_verification": {
-    "dd": "DD-039-5 (recommendation carried in the contract)",
+    "dd": "DD-039-5 (decided at freeze)",
     "scope": "recompute only the period-eligibility gate of the Phase-395 margins step, under Spec 031's frozen rule (F031-C10), over the assigned gazetteer; eligible sites reported both ways over contested assignments",
     "then_stated": "the margins step's remaining frozen floors and the standing record against them: in-universe link mass 2 link-eligible sites and 1 linked pair against floors of 8 eligible sites and 10 linked pairs - on the standing record the step closes at the link-mass floor, recorded as a verification result, not as a Q7 verdict",
     "never_reopened": "no response is computed; no Spec 031 machinery beyond the margins first gate runs; Spec 031's closures (bead/craft NOT-YET-TESTABLE, ceramic NOT ESTIMABLE) are not amended, superseded, or restated"
@@ -70,13 +86,13 @@
     "sequencing": "one adjudication cycle covers both acts; this act executes first; D-25's spec is a separate document consuming the assigned gazetteer as a hash-pinned input; this spec does not design, freeze, or prejudge D-25's test"
    },
    "masudpur": {
-    "dd": "DD-039-4 (recommended default carried in the contract)",
+    "dd": "DD-039-4 (decided at freeze)",
     "state": "28 TwoRains determinations (Masudpur VII, Masudpur I) extracted in full in the Phase-394 record and NOT ADMITTED: the sites are not gazetteer-established and no publication reached states their coordinates; Phase-394 rule 7 admits coordinate-less rows only for gazetteer-established sites",
     "default": "this act establishes no new sites and admits no Masudpur determination; the act is confined to the existing 30 sites, and the establishment route stays recorded for a future act",
     "tworains_venue_rule": "DD-039-3: a TwoRains determination counts as published only in a peer-reviewed journal article, its published supplementary material, or a published report series, with a locator; theses, project datasets, and data deposits do not count; doubtful venues default to not counting"
    },
    "fences": "assignments are published-record statements, not dating evidence; the act changes no study verdict by itself; link mass (2 sites / 1 pair) is unaffected and is stated wherever the act's effect is described; a blank is an honest outcome, recorded with its reason code",
-   "execution_gate": "NOT satisfied: this draft performs no freeze and no execution; the freeze and the execution are later acts in the bundle sequence (plan.md section 2), and no period assignment has been made"
+   "execution_gate": "Satisfied at the freeze of 2026-10-20: the owner's standing pipeline authorisation ordered this contract frozen and executed; execution runs as Phase-403 under the frozen contract, and no period assignment was made at the freeze itself"
   },
   "inputs": {
    "gazetteer": {
@@ -133,23 +149,23 @@
   "environment": {
    "python": "3.12.3",
    "runner": "backend (venv glossa-lab)",
-   "aee": "1.0.4 at this draft (Glossa venv, PATH-pinned; package pinned >=1.0.4,<1.5 by PR #181); the freeze gate runs on the adopted engine per the bundle sequence (aee 1.5.0 adoption, owner-decided 2026-10-20)",
+   "aee": "1.5.0 (adopted environment, PR #231; package pinned >=1.5.0,<1.6)",
    "specify": "1.0.10"
   }
  },
  "sources": {
-  "specs/039-gazetteer-period-assignment/freeze.md": "dd197dcd747926bfcec56a03c2a072591bcab60ffb4f6976ff47e98fd3382bd2",
-  "specs/039-gazetteer-period-assignment/spec.md": "0b6b924d606743558d5d221f166d862ce7244f3bacdc49f3b0021e8cf35150fe",
-  "specs/039-gazetteer-period-assignment/claims.json": "43c9448e2175497d3f95886257477c08ac92bfa596d5521581d2e0f8883efdbd",
-  "specs/039-gazetteer-period-assignment/adjudication.md": "27660c28e03988069b265ab540b9240a7123fc2ccf9a294e16c03188aa653a1e",
-  "specs/039-gazetteer-period-assignment/aee/freeze-aee-note.md": "95067360d5f876099d6768e00deb92bf507ccd08497e4e65b13e10cc7445403b",
-  "specs/039-gazetteer-period-assignment/build_freeze.py": "992a8c3e5c92ffef2f79dd98a90e9ef8ed5fd3737ec2a0d85032c0b4fc774afa",
-  "backend/tests/test_spec039_freeze.py": "bfc29c9d91cffd26ee3c14ca888dc4ea52f2d2d160f2b07810dae51834677e60"
+  "specs/039-gazetteer-period-assignment/freeze.md": "ec13722e58c164c83f56e84ac3c61e2e9530d8d481d757d117014a59162d8522",
+  "specs/039-gazetteer-period-assignment/spec.md": "2890f3065de068454ec0570978443ef5d5eaa1188d75f95673eae3747edb77e5",
+  "specs/039-gazetteer-period-assignment/claims.json": "25850d603b1849a0e268d6c4d3ceebe909bd12b041ceafcbc777b86038812e05",
+  "specs/039-gazetteer-period-assignment/adjudication.md": "68fd9d11be124d8717737e51e20c405e7bd75782a4f1d7262bbdc3c7751718c4",
+  "specs/039-gazetteer-period-assignment/aee/freeze-aee-note.md": "f36c1bfae383fd77428b0cfe781a7f5205b1bfa40c49ea6c76b9148041240af9",
+  "specs/039-gazetteer-period-assignment/build_freeze.py": "5197d78b6710027989fc3b67f88f6835237b704e3d2fb2b32590663371538d4f",
+  "backend/tests/test_spec039_freeze.py": "3ce7b515b5ee2f1f9d049a6b99b8578dbb0338b53276dccb4af9e425353db3c1"
  },
  "environment": {
   "python": "3.12.3",
   "platform": "Linux",
-  "aee": "1.0.4"
+  "aee": "1.5.0"
  },
- "digest": "52ca7dfc6ae0b7dc6ad22eb7f5f045ccf8f2e5d364108f0ec7c752e6a2e4f9dd"
+ "digest": "ec53a841a7f7f7afd56ab69f1caf23557e1e26c834d35563c42990ce66aa2742"
 }

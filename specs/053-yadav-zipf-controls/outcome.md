@@ -291,3 +291,63 @@ owner, queued outside this pass.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+---
+
+## Landing record (appended 2026-10-21, after merge)
+
+Execution PR **#277** ("Spec 053 execution
+(Phase-413): STRICT CORPUS NOT PINNABLE at
+gate 0.3"), branch `spec-053-phase413-execution`,
+merged to main as merge commit
+**276d37da5ca87a048c826672b6efce4adac575a4**
+(2026-10-21T16:33:58Z). The branch was based on
+3200b7b5 and synchronised with main three times
+during the landing window as sibling executions
+landed (Specs 055, 058, 059, 043); each conflict
+was an append collision in LEDGER.md and the
+graph registration block, resolved as a union of
+both sides, with registration re-verified by
+import after each resolution (491 nodes at the
+final head, Phase-410/413/414/420/421 all
+present).
+
+CI: the decisive run on the merged head
+(c18a31b5) is run **39634944999** — 7 of 7 jobs
+success from their own conclusions (Backend
+tests (pytest); Frontend tests (Playwright);
+Indus public validation checks; Evidence Graph
+script smoke tests; Shell wrappers ubuntu /
+macos / windows). Earlier genuine 7/7 runs on
+the branch's prior heads: 39628863256 (53ef50b1)
+and 39630222198 (ee498cbb); run 39631664337
+(61702540) completed success after its cancelled
+macOS job was re-run to success.
+
+Machine records re-verified on main at the merge
+commit by two routes (working tree and git blob):
+reports/phase413_results.json SHA-256
+98ccd10a96088a01657786320a7376264587eacf7d799b3e0145d8ec5ed970c7;
+reports/phase413_step0_report.md SHA-256
+e0edac40c410943b37dbf9fe67584b5c000bbfb4136102c539fc63d100b8c69f.
+
+Foundation check at the merge commit (fresh
+checkout of 276d37da with the gitignored Holdat
+inputs in place): **40 passed / 0 failed /
+8 warnings** — the same counts as at the run.
+
+Terminal outcome, restated in the frozen
+wording: **STRICT CORPUS NOT PINNABLE** (gate
+0.3). Gates 0.1 and 0.2 passed with the values
+recorded above; gates 0.4 and 0.5 were not
+reached; no system was fitted; the claim stands
+exactly as recorded. Gate 0.3 was evaluated at
+the execution base (3200b7b5), as the frozen
+contract requires; material that reached main
+afterwards does not change this execution's
+record and is for a future execution order to
+weigh.
+
+*AI disclosure: appended by an AI agent (Muse
+Fable 5, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.*

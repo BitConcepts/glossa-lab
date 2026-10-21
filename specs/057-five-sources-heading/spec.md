@@ -1,25 +1,35 @@
 # Spec 057 — The Heading Carried by Five Sources: Re-extract the Five Passages (Design D-19)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-21
+> ## FROZEN — 2026-10-21
 >
-> Drafted under the runnable-experiments
+> Frozen at the freeze act of 2026-10-21
+> under the runnable-experiments
 > campaign plan approved by the owner as
 > written on 2026-10-21
 > (`~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md`,
 > Part 2, member 14), and the portfolio
 > triage of the same date
 > (`~/workspace/research_notes/design-portfolio-triage-2026-10-21.md`),
-> which found design D-19 RIPE. **The freeze
-> and the execution of Spec 057 are separate
-> later acts.** No AEE lifecycle hooks have
-> run on this draft; they are a freeze gate.
-> Nothing in this draft has been extracted,
-> frozen, registered, or run.
+> which found design D-19 RIPE. The AEE
+> lifecycle hooks ran at the freeze gate and
+> passed over the recovered register
+> (0.8-draft; `aee/freeze-aee-note.md`); the
+> freeze record is `freeze.md` / `freeze.json`
+> in this directory, and the spec's OSF
+> contract registration is filed at the freeze
+> under campaign decision E-1
+> (`osf-spec-registration.md`). **Execution
+> is a separate later act**: it runs as
+> Phase-419 (DD-057-16), only after this
+> freeze has merged, the registration's
+> approval act has completed, and a separate
+> execution order is given. Nothing has been
+> extracted, recovered, or run by the freeze
+> itself.
 >
-> The execution phase number is **unassigned**
-> at this draft. Spec 057 allocates its phase
-> number at the freeze act, from the merged
-> record as it then stands (DD-057-8).
+> The execution phase number was allocated
+> at the freeze act: **Phase-419** (DD-057-16,
+> completing DD-057-8).
 
 **Design source:** D-19 in the experiment-design
 packet at PR #195
@@ -106,7 +116,7 @@ located, or a "recovered" proposition the
 passage does not state, falsifies the
 execution, whatever the headline says.
 
-## 2. Inputs (pinned at this draft; re-asserted at the freeze)
+## 2. Inputs (pinned at this draft; re-asserted at the freeze — all pins verified, `freeze.md` §2)
 
 ### 2.1 The five sources — the fixed set
 
@@ -129,7 +139,10 @@ registry at intake.
 | S-5 | Hunt, *Without Kings or Conquests* (the design's "Hunt's book"; registry file name as recorded) | `without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002` | `without_kings_or_conquests_the_indus_scr_ce9d98cc` |
 
 Pins per source (all recomputed at this draft
-from `main` at 83b6a563):
+from `main` at 83b6a563; every pin re-asserted
+at the freeze against `main` at 770155de by
+two independent routes, agreeing byte-for-byte
+— `freeze.md` §2):
 
 | # | Held cleaned text (`glossa-indus/processed/cleaned_text/<document_id>.txt`) SHA-256 | Extracted-claims file (`glossa-indus/claims/extracted_claims/<document_id>.json`) SHA-256 | Registry file (`glossa-indus/literature/documents/<document_id>.json`) SHA-256 | Source document as recorded in the registry (original filename; size; checksum_sha256) |
 |---|---|---|---|---|
@@ -157,7 +170,7 @@ did not all harvest the same kind of object.
 |---|---|
 | Phase-104 evaluation (`glossa-indus/reports/phase104_claims_evaluation.json`) | SHA-256 `2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d` (recomputed at this draft) |
 | Lane-2 adopted drafts (`specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json`) | SHA-256 `3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb` (recomputed at this draft) |
-| Anchors file (`backend/reports/INDUS_FINAL_ANCHORS.json`) | Asserted byte-identical before and after any execution; this spec moves no anchor. Its freeze-act pin is recorded at the freeze, from a fresh recompute (the Spec 040 stale-pin precedent). |
+| Anchors file (`backend/reports/INDUS_FINAL_ANCHORS.json`) | Asserted byte-identical before and after any execution; this spec moves no anchor. Freeze-act pin, from a fresh recompute at the freeze (the Spec 040 stale-pin precedent): SHA-256 `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569` (570,344 bytes; `freeze.md` §2). |
 
 No corpus, positional data, or classification
 asset is an input to this spec. This is desk

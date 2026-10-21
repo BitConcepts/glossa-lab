@@ -1,1 +1,746 @@
-{"claims":[{"alternatives":["the heading record could be read as already carrying the program's positional findings (it cannot: it states no proposition, F057-C02)"],"assumptions":["ASM-FIVE-SOURCE-SET","ASM-RECOVERY-NOT-VERIFICATION"],"boundary":"The scope is the five passages of the five sources in spec section 2.1 and the accounting of them. It excludes any statement about whether signs occupy preferred positions, about any positional result recorded elsewhere in the program, about sign meanings, and about the truth of anything a recovered passage asserts.","depends_on":[],"evidence":[{"description":"Design D-19 (PR #195 packet, section D-19, read in full at this draft): the re-extraction of the five passages, the three recorded outcomes per source, and the limit 'any positional finding at all' is what the design would NOT establish.","direction":"supports","kind":"design-source","observed_at":"2026-10-21","ref":"docs/research/experiment-designs-2026-10-13/03-fragments.md","source_id":"docs/research/experiment-designs-2026-10-13/03-fragments.md","source_quality":"program-record"},{"description":"Phase-104 evaluation (SHA-256 2d0b83e8..., recomputed at this draft): the canonical record's verdict stays_untested under RULE-NOCOND - no falsification condition and no stated proposition.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"glossa-indus/reports/phase104_claims_evaluation.json","source_id":"glossa-indus/reports/phase104_claims_evaluation.json","source_quality":"authoritative"}],"falsification_tests":["the claim is falsified in scope if any Spec 057 output states a positional finding, credits a recovered claim with a check, or attributes to a source a proposition its quoted passage does not state"],"id":"F057-C01","kind":"hypothesis","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["phase104-record","design-packet"],"forbidden_assumptions":["ASM-RECOVERY-AS-VERIFICATION"],"framework_kind":"conditional-model-result","layer":"I","strongest_rival":"the reading in which recovering a passage's finding is the same act as establishing it","verdict_rule":"scope is judged by inspection of every Spec 057 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding"},"status":"draft","text":"An outcome under Spec 057 states only what each of the five source passages under the heading 'Statistical finding: positional analysis' itself states, does not state, or could not be found to state."},{"alternatives":[],"assumptions":["ASM-FIVE-SOURCE-SET"],"boundary":"This is a statement about the record as it stands on main at this draft. The record's proposition fingerprint a4874349e0cc0ba23b711f10c78f60372639c2dc6f352165b48d4a9e44272469 is the Phase I merge key (merge group 3) that joins the canonical record to its four evidence instances.","depends_on":["F057-C01"],"evidence":[{"description":"The canonical record read first-hand at this draft: normalized_claim 'Statistical finding: positional analysis', quote_fragment 'positional analysis', claim_status untested, stage created, fingerprint a4874349..., and the four evidence_instances.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json","source_id":"glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json","source_quality":"authoritative"},{"description":"Phase I record, merge group 3: fingerprint a4874349e0cc0ba2, canonical statisti_0004, instances the Fuls 2023, positional-analysis paper, archaeology-and-epigraphy, and Hunt extractions.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"specs/029-tao-claim-lifecycle/phase-i-record.md","source_id":"specs/029-tao-claim-lifecycle/phase-i-record.md","source_quality":"authoritative"}],"falsification_tests":["recompute SHA-256 of glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json (e9819089...) and read the statisti_0004 record: any proposition or falsification condition present in it, or a different fingerprint, falsifies this statement and voids the draft's basis"],"id":"F057-C02","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["phase104-record","extracted-claims"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"the record could have been amended or superseded since Phase I (the Spec 040 stale-pin precedent shows draft-cited records can be wrong)","verdict_rule":"the statement stands or falls on the pinned claims file hashing to its recorded value with the stated record in it"},"status":"draft","text":"The canonical record ancient_writing_and_modern_technologies_51831ac9_statisti_0004 is in full a heading - 'Statistical finding: positional analysis' - with no stated proposition and no falsification condition, standing UNTESTED under Phase-104's RULE-NOCOND."},{"alternatives":["treating the five as 'any five documents with this heading' (refused: the fragment points at these five extractions and no others)"],"assumptions":["ASM-FIVE-SOURCE-SET"],"boundary":"The set is fixed by the Phase I merge record, not by resemblance: a sixth document carrying the same heading is not a member, and a member whose passage proves hard to find is not replaced by an easier one.","depends_on":["F057-C02"],"evidence":[{"description":"The canonical record's evidence_instances, read at this draft: fuls2023..._statisti_0001, positional_analysis..._statisti_0001, the_archaeology..._statisti_0003, without_kings..._statisti_0002, each with merged_into pointing at the canonical record.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json","source_id":"glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json","source_quality":"authoritative"},{"description":"The adopted lane-2 draft for the canonical record (SHA-256 3f645c9a..., recomputed at this draft) lists the same four evidence instance ids.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json","source_id":"specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json","source_quality":"authoritative"}],"falsification_tests":["gate 0.2 (source-set integrity) is the operational test: the canonical record's evidence_instances are read at execution and must match the four ids of spec section 2.1 exactly, with the fingerprint of F057-C02"],"id":"F057-C03","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["extracted-claims","phase-i-record"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"set drift: the merge record changed, or an executor quietly swaps a source whose document is hard to locate","verdict_rule":"the set is judged by the gate-0.2 exact-match standard against the pinned record, not by the executor's judgement of which documents are 'the same kind'"},"status":"draft","text":"The five sources of Spec 057 are exactly the canonical record's own source plus its four evidence instances, identified by the claim ids and document ids of spec section 2.1; no source is added, dropped, or substituted."},{"alternatives":[],"assumptions":["ASM-HELD-TEXT-IS-COPY"],"boundary":"Identity rests on document_id and hash, never on the registry's detected metadata (titles, years, DOIs), which is wrong or truncated for some sources (adjudication.md section 6, D-2). A cleaned text absent at execution is not a pin mismatch; it starts the stated search of F057-C06. A cleaned text present but hashing differently is a pin mismatch.","depends_on":["F057-C03"],"evidence":[{"description":"One of the five registry files, read at this draft: document_id, original filename, file size, checksum_sha256, recorded stored paths - the form all five registry records take, and the source of the document-layer pins in spec section 2.1.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"glossa-indus/literature/documents/ancient_writing_and_modern_technologies_51831ac9.json","source_id":"glossa-indus/literature/documents/ancient_writing_and_modern_technologies_51831ac9.json","source_quality":"authoritative"},{"description":"The S-4 held cleaned text, SHA-256 62acf855... recomputed at this draft - identical to the pin Spec 046 computed independently for the same file, which cross-validates the pinning method for all five.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt","source_id":"glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt","source_quality":"authoritative"}],"falsification_tests":["recompute any section 2.1 SHA-256 from main: a value that does not recompute falsifies the pin table and voids the draft's basis for that source"],"id":"F057-C04","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["extracted-claims","literature-registry","cleaned-texts"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"a stale or miscomputed pin presented as the document of record (the Spec 040 anchors precedent)","verdict_rule":"pins stand or fall on recompute; the S-4 cleaned-text and claims-file pins were cross-checked at this draft against Spec 046's independently computed pins for the same files and match"},"status":"draft","text":"Each of the five sources is pinned at spec section 2.1 by its extracted-claims file, its literature registry file, its held cleaned text (each by SHA-256), and its source document's recorded checksum and size; execution re-asserts every pin before any passage is read."},{"alternatives":[],"assumptions":["ASM-FIVE-SOURCE-SET"],"boundary":"These are spec section 3's gates 0.1 and 0.2, with gate 0.3's order rule: the execution record shows the gate verdicts before the first per-source row. No failure is repaired at run time; a changed input or a changed set is a re-draft or a new freeze, not a resumed run.","depends_on":["F057-C03","F057-C04"],"evidence":[{"description":"Design D-19 fixes the accounting criteria in advance; the step-0 classes are this draft's fail-closed reading of those criteria, in the form Specs 042 and 046 established for this campaign.","direction":"supports","kind":"design-source","observed_at":"2026-10-21","ref":"docs/research/experiment-designs-2026-10-13/03-fragments.md","source_id":"docs/research/experiment-designs-2026-10-13/03-fragments.md","source_quality":"program-record"}],"falsification_tests":["each gate's check is itself the test: an execution record whose first per-source row precedes its gate verdicts, or that proceeds past a failed gate, is non-compliant on its face"],"id":"F057-C05","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["extracted-claims","phase104-record"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"gate-skipping under the pressure of an interesting passage, with the failure rationalised afterwards","verdict_rule":"the run's own record is the judge: gate verdicts precede passage material in it, in order, or the outcome is a step-0 closure by construction"},"status":"draft","text":"Execution stops before any passage is read for content if an input pin mismatches (CLOSED AT STEP 0 - INPUT PIN MISMATCH) or if the five-source set does not match the recorded merge (CLOSED AT STEP 0 - SOURCE SET CHANGED)."},{"alternatives":["recording a source unlocated when its cleaned text is missing from the repository alone (refused: the registry's stored paths and the document itself are part of the program's library)","folding HEADING NOT PRESENT into PASSAGE EMPTY (refused: an absent section is not an empty one, and the distinction decides whether re-acquisition can unblock the source)"],"assumptions":["ASM-HELD-TEXT-IS-COPY"],"boundary":"Absence from one location is not unlocatability. The HEADING NOT PRESENT sub-state is this draft's repair for a gap in design D-19's outcome set (adjudication.md section 6, D-1): the document is located, but no heading-form occurrence exists in the held text, so there is no passage to extract; the freeze confirms the sub-state or replaces it openly (OPEN-1).","depends_on":["F057-C04","F057-C05"],"evidence":[{"description":"Design D-19: SOURCE UNLOCATED is 'the document cannot be found in the program's library after a stated search - the unblocking act is then named per source'. Design D-16's parallel text names re-acquisition through ordinary published-source channels as that act.","direction":"supports","kind":"design-source","observed_at":"2026-10-21","ref":"docs/research/experiment-designs-2026-10-13/03-fragments.md","source_id":"docs/research/experiment-designs-2026-10-13/03-fragments.md","source_quality":"program-record"}],"falsification_tests":["a SOURCE UNLOCATED row without a complete four-step search log, a sub-state, and a named unblocking act falsifies the outcome record"],"id":"F057-C06","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["literature-registry","design-packet"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"a thin search dressed as a stated one, converting executor effort saved into a source written off","verdict_rule":"the search log is part of the outcome record and is judged step by step; any step missing or unverified voids that source's UNLOCATED outcome"},"status":"draft","text":"A source is recorded SOURCE UNLOCATED only after the stated search of spec section 4 has been run in full for that source - pinned cleaned text, repository-wide document_id search with hash verification, the registry's recorded stored paths with checksum verification, and the source document's own text layer - with the search log attached and the sub-state (DOCUMENT UNLOCATED or HEADING NOT PRESENT IN HELD TEXT) and a named unblocking act on its row."},{"alternatives":["any occurrence anchors a passage (refused: it would 'recover' Fuls 2013's paper as S-1's passage from S-1's own bibliography, and a sentence-initial mention in S-5 as a section that does not exist)"],"assumptions":["ASM-HEADING-FORM"],"boundary":"The rule is structural, not string-matching: the extraction that created this fragment harvested occurrences of the words, and at this draft two of the five held texts (S-1, S-5) show no heading-form occurrence at all, while S-1's text contains a bibliography entry naming S-3's paper - an occurrence that must not be allowed to import another source's passage.","depends_on":["F057-C03"],"evidence":[{"description":"S-1's own instance quote_fragment is the lowercase 'positional analysis' where the other four instances record the capitalised 'Positional Analysis' - the record itself marks S-1's extraction as a different kind of occurrence.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json","source_id":"glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json","source_quality":"authoritative"},{"description":"Occurrence posture at this draft (string search only; no passage extracted): S-1's held text contains the string twice - once in running text, once in a bibliography entry for Fuls 2013's paper - and in heading form not at all.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt","source_id":"glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt","source_quality":"authoritative"}],"falsification_tests":["each located row records its heading's verbatim form and locator; a row whose anchor is a running-text, bibliography, or caption occurrence falsifies the outcome record"],"id":"F057-C07","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["cleaned-texts","extracted-claims"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"the pressure to find a passage in every source, which turns a mention into a heading after the fact","verdict_rule":"heading form is judged from the recorded locator and the verbatim heading text on the row, against section 5.1's criteria, by any reader of the outcome record"},"status":"draft","text":"An occurrence of 'positional analysis' anchors a passage only if it is in heading form - standing as the title of a section, chapter, appendix, or titled part, as spec section 5.1 defines; running-text mentions, bibliography entries, figure and table captions, and cross-references never anchor a passage."},{"alternatives":["paraphrased or excerpted passages as the record (refused: the next reader must be able to check the recovered claim against the passage itself, which is the failure this fragment exists because of)"],"assumptions":["ASM-VERBATIM","ASM-HELD-TEXT-IS-COPY"],"boundary":"Delimitation follows spec section 5.2: heading to next heading of equal or higher rank, running heads counted once, and a document whose own title is the heading cited by line range rather than reprinted in the outcome record. Tables and figures a passage relies on are named in the locator even where their content cannot be carried as text.","depends_on":["F057-C07"],"evidence":[{"description":"Design D-19: 'Re-extract, from each of the five source documents, the full passage under that heading: the finding, its numbers, its corpus, and its stated conditions' - full passage, from the document, is the design's unit of record.","direction":"supports","kind":"design-source","observed_at":"2026-10-21","ref":"docs/research/experiment-designs-2026-10-13/03-fragments.md","source_id":"docs/research/experiment-designs-2026-10-13/03-fragments.md","source_quality":"program-record"}],"falsification_tests":["recompute a passage artifact's SHA-256 and compare its text against the pinned cleaned text at the recorded line range; any divergence beyond line-rejoining falsifies the row"],"id":"F057-C08","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["cleaned-texts"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"silent tidying of the passage - modernised spelling, supplied punctuation, a dropped awkward sentence - presenting an edited text as the source's words","verdict_rule":"verbatim fidelity is judged byte-for-byte against the pinned held text modulo the one permitted normalisation, which is itself logged by the artifact's derivation from pinned bytes"},"status":"draft","text":"Each located passage is recorded with its citation, its locator (cleaned-text line range, heading line, and page or chapter designation where the held text carries one), and its verbatim text in a per-source passage artifact whose SHA-256 is on the row; line-rejoining is the only permitted normalisation."},{"alternatives":[],"assumptions":["ASM-ACCOUNTING-IS-SUCCESS"],"boundary":"Completeness is the design's success criterion, stated in advance so a partial accounting cannot be presented as a result. A missing row or a row without an outcome is a failed execution under spec section 1.2, whatever the other rows show.","depends_on":["F057-C03","F057-C06"],"evidence":[{"description":"Design D-19, criteria fixed in advance: 'The design succeeds if every one of the five passages is accounted for with one of three recorded outcomes... Anything less - a passage skipped without an outcome - is a failure of the design, stated in advance so it cannot happen silently.'","direction":"supports","kind":"design-source","observed_at":"2026-10-21","ref":"docs/research/experiment-designs-2026-10-13/03-fragments.md","source_id":"docs/research/experiment-designs-2026-10-13/03-fragments.md","source_quality":"program-record"}],"falsification_tests":["count the rows and outcomes in the outcome record's accounting table: anything other than five rows with exactly one outcome each falsifies the execution"],"id":"F057-C09","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["design-packet"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"a four-row outcome with the fifth source's absence explained in prose, so the gap reads as a finding","verdict_rule":"the count is mechanical from the table; the headline classes of F057-C12 are defined only over complete accountings plus the step-0 closures"},"status":"draft","text":"Each source receives exactly one outcome - CLAIM RECOVERED, PASSAGE EMPTY, or SOURCE UNLOCATED - and the accounting is complete only when all five rows of the spec section 6.1 table carry one."},{"alternatives":["requiring numbers for recovery (refused: it would record a genuinely stated finding as empty because the source argued without counting)"],"assumptions":["ASM-RECOVERY-NOT-VERIFICATION"],"boundary":"The empty test is the design's: PASSAGE EMPTY means the section states no checkable finding - no quantity, no named corpus, no directional or comparative assertion that could in principle be checked. A checkable proposition stated without numbers is RECOVERED, with 'numbers: none stated' on its record (DD-057-5); the design's EMPTY definition, not its RECOVERED shorthand, governs the boundary.","depends_on":["F057-C08","F057-C09"],"evidence":[{"description":"Design D-19's three outcome definitions verbatim in substance: CLAIM RECOVERED (proposition + numbers + falsifier status on record), PASSAGE EMPTY (the section states no checkable finding - quoted evidence attached), SOURCE UNLOCATED.","direction":"supports","kind":"design-source","observed_at":"2026-10-21","ref":"docs/research/experiment-designs-2026-10-13/03-fragments.md","source_id":"docs/research/experiment-designs-2026-10-13/03-fragments.md","source_quality":"program-record"}],"falsification_tests":["read a RECOVERED row's quoted passage: if it states no proposition meeting this claim's standard, the row falsifies the outcome record; read an EMPTY row's quoted passage: if it does state one, likewise"],"id":"F057-C10","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["design-packet"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"executor generosity at the boundary - reading a finding into a methodological preamble, or reading one out of a passage whose result is unwelcome","verdict_rule":"the quoted passage is attached to every located row precisely so the RECOVERED/EMPTY judgement is re-judgeable by any reader from the record"},"status":"draft","text":"A located passage that states a checkable finding - a proposition about sign positions carrying its numbers as stated (or none), its corpus and stated conditions - is recorded CLAIM RECOVERED, with a falsifier written from the passage's own logic or the absence of one recorded; a located passage stating no checkable finding is recorded PASSAGE EMPTY with the passage quoted as evidence."},{"alternatives":["designing the recovered claims' tests inside this spec before the passages are read (refused: that is inventing a test for an argument not yet known, the D-17 lesson in reverse)"],"assumptions":["ASM-RECOVERY-NOT-VERIFICATION"],"boundary":"The checks the recovered claims need are designed per claim at intake, from each passage's own logic, not pre-invented here (design D-19). A recovered claim's record carries its falsifier status from F057-C10 at creation, so it does not re-enter the set in this fragment's own condition - a heading with no falsifier and no proposition.","depends_on":["F057-C10"],"evidence":[{"description":"The adopted lane-2 not-understood text for the canonical record: re-extraction of the five passages in full, 'each becoming its own claim with its numbers attached' - the intake this claim registers.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json","source_id":"specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json","source_quality":"authoritative"}],"falsification_tests":["inspect the intake records produced at execution: a recovered claim staged above created, carrying a check run under this spec, or lacking its quoted passage falsifies compliance"],"id":"F057-C11","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["design-packet","lane2-record"],"forbidden_assumptions":["ASM-RECOVERY-AS-VERIFICATION"],"framework_kind":"requirement","layer":"M","strongest_rival":"the temptation to test a recovered finding immediately, inside the same act that recovered it, so recovery and verdict arrive welded together","verdict_rule":"intake records are judged at execution close: created stage, proposition and falsifier status present, passage quoted, no Spec 057 check attached"},"status":"draft","text":"Each recovered claim enters the claim set through the program's normal intake at the created stage, unchecked, with its proposition stated in plain words and the passage quoted beside it; no check for a recovered claim is designed or run under this spec."},{"alternatives":[],"assumptions":["ASM-ACCOUNTING-IS-SUCCESS"],"boundary":"The partition is exhaustive over the 21 count combinations: A (r=5); B (r=1-4, u=0); C (r=1-4, u>=1); D (r=0, u=0); E (r=0, u=1-4); F (r=0, u=5). Step-0 closures are stop classes, not headline classes. The pre-written wordings are spec section 7.1.","depends_on":["F057-C09","F057-C10"],"evidence":[{"description":"Design D-19's deliverable framing: 'up to five real claims where one empty heading now stands', with every per-source outcome acceptable and reportable - the aggregate classes name the combinations that framing implies.","direction":"supports","kind":"design-source","observed_at":"2026-10-21","ref":"docs/research/experiment-designs-2026-10-13/03-fragments.md","source_id":"docs/research/experiment-designs-2026-10-13/03-fragments.md","source_quality":"program-record"}],"falsification_tests":["recompute the class from the accounting table's outcomes by this claim's mapping; a headline class that does not follow falsifies the outcome record"],"id":"F057-C12","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["design-packet"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"headline-shopping: choosing the class wording that flatters the recovery count after the rows are known","verdict_rule":"the mapping from counts to classes is fixed here, before execution; the outcome record shows counts and class together"},"status":"draft","text":"The headline outcome of a completed execution is exactly one of the spec section 7 classes A-F, derived mechanically from the outcome counts (r recovered, e empty, u unlocated), and the outcome record shows the counts beside the class."},{"alternatives":["retiring the fragment whenever nothing was recovered (refused: with sources unlocated, 'nothing recovered' is a statement about the search, not about the passages)"],"assumptions":["ASM-APPEND-ONLY"],"boundary":"Retirement is not available while an unlocated passage might state a finding: retiring the fragment then would close a question the accounting has not answered. The disposition follows the counts mechanically, like the headline.","depends_on":["F057-C12"],"evidence":[{"description":"Design D-19: 'The heading record itself is then dispositioned by appended note: superseded by the recovered claims it pointed at, or retired as an extraction artefact if a passage recovers nothing statable.' The u>=1 carve-out is this draft's reading of that sentence against the design's own unlocated outcome (DD-057-7).","direction":"supports","kind":"design-source","observed_at":"2026-10-21","ref":"docs/research/experiment-designs-2026-10-13/03-fragments.md","source_id":"docs/research/experiment-designs-2026-10-13/03-fragments.md","source_quality":"program-record"}],"falsification_tests":["inspect the appended note against the counts: a disposition form that does not match its count condition, or any edit to the frozen record's own fields, falsifies compliance"],"id":"F057-C13","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["design-packet","lane2-record"],"forbidden_assumptions":[],"framework_kind":"requirement","layer":"M","strongest_rival":"tidiness: closing the fragment record because the campaign has moved on, ahead of the evidence the accounting actually produced","verdict_rule":"the disposition rule is registered here, before execution; the note is a dated append and the record's pre-existing fields hash as recorded at gate 0.1"},"status":"draft","text":"The heading record is dispositioned by an appended, dated note in exactly one of the spec section 7.2 forms - superseded by the named recovered claims if r>=1; retired as an extraction artefact if r=0 and u=0; no disposition, standing as a stated gap with the unblocking acts recorded, if r=0 and u>=1 - and the frozen record itself is never edited."},{"alternatives":["all five passages are empty or unlocatable (headline classes D, E, F) - a complete accounting that defeats this expectation and is a success of the design, not of the hypothesis"],"assumptions":["ASM-FIVE-SOURCE-SET"],"boundary":"This is the draft's substantive expectation, registered so the accounting can defeat it honestly: it is a statement about what the passages contain, made before any passage is read for content. It asserts nothing about whether any such finding is true.","depends_on":["F057-C01","F057-C10"],"evidence":[{"description":"Occurrence posture at this draft (string search only): S-4's held text carries an appendix headed 'Positional Analysis of Indus Signs' (table of contents line 86; heading at line 3456) - at least one source has a titled passage of the kind the hypothesis expects. No passage text was read for content at drafting.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt","source_id":"glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt","source_quality":"authoritative"},{"description":"Occurrence posture at this draft: S-2's held text carries a chapter 'Positional Analysis of Indus Signs' (table of contents line 65; chapter running heads at lines 536 and 612).","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"glossa-indus/processed/cleaned_text/fuls2023_catalog_of_indussigns_searchins_1dbdecdb.txt","source_id":"glossa-indus/processed/cleaned_text/fuls2023_catalog_of_indussigns_searchins_1dbdecdb.txt","source_quality":"authoritative"}],"falsification_tests":["run the accounting: if r=0 under F057-C12's counting, this expectation is not borne out, and the outcome record says so in its headline paragraph"],"id":"F057-C14","kind":"hypothesis","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["design-packet","cleaned-texts"],"forbidden_assumptions":["ASM-RECOVERY-AS-VERIFICATION"],"framework_kind":"conditional-model-result","layer":"I","strongest_rival":"the null shape of the fragment itself: five extractions of one heading may have harvested five preambles, tables of contents, and running heads, with the findings stated elsewhere in each document or nowhere","verdict_rule":"borne out iff r>=1 with every recovered row meeting F057-C10's standard; any other complete accounting defeats it, and a step-0 closure leaves it untested"},"status":"draft","text":"At least one of the five passages states a checkable finding about sign positions that can be recovered as a claim under F057-C10."},{"alternatives":["a recovered claim inheriting the standing of the program's tested positional claims (refused: those verdicts belong to their own records and populations, and the lane-2 draft says so in terms)"],"assumptions":["ASM-LICENSE-UNCLEAR","ASM-RECOVERY-NOT-VERIFICATION"],"boundary":"Also binding: the verbatim passage artifacts are internal program records. All five registry records carry license_status 'unclear' with the registry's own note that license status must be verified before publication use; that verification is a separate act, outside this spec.","depends_on":["F057-C01","F057-C11"],"evidence":[{"description":"The adopted lane-2 draft: 'The topic the heading points at - whether signs occupy preferred positions - is in fact one of the better-tested topics in this program, on other records. Nothing about those results belongs on this record, because this record does not state them.'","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json","source_id":"specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json","source_quality":"authoritative"},{"description":"One of the five registry files, read at this draft: license_status 'unclear', with the registry citation note 'License status must be verified before publication use' - the posture all five registry records carry.","direction":"supports","kind":"program-record","observed_at":"2026-10-21","ref":"glossa-indus/literature/documents/without_kings_or_conquests_the_indus_scr_ce9d98cc.json","source_id":"glossa-indus/literature/documents/without_kings_or_conquests_the_indus_scr_ce9d98cc.json","source_quality":"authoritative"}],"falsification_tests":["inspection of every Spec 057 output: a positional conclusion, a transferred credit, or a publication use of passage text in any output falsifies compliance and is corrected by dated addendum, never by silent edit"],"id":"F057-C15","kind":"requirement","metadata":{"boundary_confirmation":"stated-in-claim","evidence_origin_groups":["lane2-record","literature-registry"],"forbidden_assumptions":["ASM-RECOVERY-AS-VERIFICATION"],"framework_kind":"requirement","layer":"M","strongest_rival":"the reading in which a recovered claim about preferred positions borrows the authority of the positional results the program has already earned elsewhere","verdict_rule":"outputs are judged against this boundary at execution close; violations are recorded defects, and the claim consequence is limited to the accounting statement of F057-C01"},"status":"draft","text":"No outcome under Spec 057 establishes any positional finding, transfers credit from the program's other positional records to this record or to a recovered claim, or licenses publication use of the verbatim passage texts."}],"note":"Draft register for Spec 057 (design D-19, PR #195 packet), opened 2026-10-21 under the runnable-experiments campaign plan the owner approved as written the same date (Part 2, member 14) and the portfolio triage of the same date, which found D-19 RIPE. Conventions as in Specs 032-046: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-FIVE-SOURCE-SET (the five sources are exactly the canonical record plus its four recorded evidence instances), ASM-HELD-TEXT-IS-COPY (the held cleaned text is the program's working copy of the source document; the document itself, verified by its registry checksum, is the copy of last resort), ASM-HEADING-FORM (a heading is a structural object in the document, not any occurrence of its words), ASM-ACCOUNTING-IS-SUCCESS (the design's success is a complete accounting of the five, not a count of recoveries), ASM-RECOVERY-NOT-VERIFICATION (a recovered claim is created, not checked), ASM-VERBATIM (extracted text is the pinned bytes, with line-rejoining the only permitted normalisation), ASM-APPEND-ONLY (outcomes append; frozen records are never edited), ASM-LICENSE-UNCLEAR (all five registry records carry license_status 'unclear'; verbatim passage records are internal).","register_version":"0.5-draft","spec":"057-five-sources-heading"}
+{
+ "claims": [
+  {
+   "alternatives": [
+    "the heading record could be read as already carrying the program's positional findings (it cannot: it states no proposition, F057-C02)"
+   ],
+   "assumptions": [
+    "ASM-FIVE-SOURCE-SET",
+    "ASM-RECOVERY-NOT-VERIFICATION"
+   ],
+   "boundary": "The scope is the five passages of the five sources in spec section 2.1 and the accounting of them. It excludes any statement about whether signs occupy preferred positions, about any positional result recorded elsewhere in the program, about sign meanings, and about the truth of anything a recovered passage asserts. Carried from the draft head at the freeze recovery (0.7-draft): The passages are the passages under the heading 'Statistical finding: positional analysis' in the five sources of spec section 2.1. Final restatement at the freeze recovery (0.8-draft): The scope covers what each passage states, does not state, or could not be found to state, under the heading 'Statistical finding: positional analysis'.",
+   "depends_on": [],
+   "evidence": [
+    {
+     "description": "Design D-19 (PR #195 packet, section D-19, read in full at this draft): the re-extraction of the five passages, the three recorded outcomes per source, and the limit 'any positional finding at all' is what the design would NOT establish.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "glossa-indus/reports/phase104_claims_evaluation.json"
+     ]
+    },
+    {
+     "description": "Phase-104 evaluation (SHA-256 2d0b83e8..., recomputed at this draft): the canonical record's verdict stays_untested under RULE-NOCOND - no falsification condition and no stated proposition.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
+     "source_quality": "artifact",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/03-fragments.md"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 057 output states a positional finding, credits a recovered claim with a check, or attributes to a source a proposition its quoted passage does not state"
+   ],
+   "id": "F057-C01",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "phase104-record",
+     "design-packet"
+    ],
+    "forbidden_assumptions": [
+     "ASM-RECOVERY-AS-VERIFICATION"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the reading in which recovering a passage's finding is the same act as establishing it",
+    "verdict_rule": "scope is judged by inspection of every Spec 057 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding"
+   },
+   "status": "draft",
+   "text": "An outcome under Spec 057 states only what the five source passages state."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-FIVE-SOURCE-SET"
+   ],
+   "boundary": "This is a statement about the record as it stands on main at this draft. The record's proposition fingerprint a4874349e0cc0ba23b711f10c78f60372639c2dc6f352165b48d4a9e44272469 is the Phase I merge key (merge group 3) that joins the canonical record to its four evidence instances. Carried from the draft head at the freeze recovery (0.7-draft): The heading is 'Statistical finding: positional analysis'; the record carries no stated proposition and no falsification condition, and stands UNTESTED under Phase-104's RULE-NOCOND.",
+   "depends_on": [
+    "F057-C01"
+   ],
+   "evidence": [
+    {
+     "description": "The canonical record read first-hand at this draft: normalized_claim 'Statistical finding: positional analysis', quote_fragment 'positional analysis', claim_status untested, stage created, fingerprint a4874349..., and the four evidence_instances.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
+     "source_id": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/phase-i-record.md"
+     ]
+    },
+    {
+     "description": "Phase I record, merge group 3: fingerprint a4874349e0cc0ba2, canonical statisti_0004, instances the Fuls 2023, positional-analysis paper, archaeology-and-epigraphy, and Hunt extractions.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "specs/029-tao-claim-lifecycle/phase-i-record.md",
+     "source_id": "specs/029-tao-claim-lifecycle/phase-i-record.md",
+     "source_quality": "artifact",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "recompute SHA-256 of glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json (e9819089...) and read the statisti_0004 record: any proposition or falsification condition present in it, or a different fingerprint, falsifies this statement and voids the draft's basis"
+   ],
+   "id": "F057-C02",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "phase104-record",
+     "extracted-claims"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "the record could have been amended or superseded since Phase I (the Spec 040 stale-pin precedent shows draft-cited records can be wrong)",
+    "verdict_rule": "the statement stands or falls on the pinned claims file hashing to its recorded value with the stated record in it"
+   },
+   "status": "draft",
+   "text": "The canonical record ancient_writing_and_modern_technologies_51831ac9_statisti_0004 is in full a heading."
+  },
+  {
+   "alternatives": [
+    "treating the five as 'any five documents with this heading' (refused: the fragment points at these five extractions and no others)"
+   ],
+   "assumptions": [
+    "ASM-FIVE-SOURCE-SET"
+   ],
+   "boundary": "The set is fixed by the Phase I merge record, not by resemblance: a sixth document carrying the same heading is not a member, and a member whose passage proves hard to find is not replaced by an easier one. Carried from the draft head at the freeze recovery (0.7-draft): The five are identified by the claim ids and document ids of spec section 2.1; no source is added, dropped, or substituted. Final restatement at the freeze recovery (0.8-draft): The set is exactly the canonical record's own source plus its four evidence instances, identified by the claim ids and document ids of spec section 2.1.",
+   "depends_on": [
+    "F057-C02"
+   ],
+   "evidence": [
+    {
+     "description": "The canonical record's evidence_instances, read at this draft: fuls2023..._statisti_0001, positional_analysis..._statisti_0001, the_archaeology..._statisti_0003, without_kings..._statisti_0002, each with merged_into pointing at the canonical record.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
+     "source_id": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json"
+     ]
+    },
+    {
+     "description": "The adopted lane-2 draft for the canonical record (SHA-256 3f645c9a..., recomputed at this draft) lists the same four evidence instance ids.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "source_id": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "source_quality": "artifact",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "gate 0.2 (source-set integrity) is the operational test: the canonical record's evidence_instances are read at execution and must match the four ids of spec section 2.1 exactly, with the fingerprint of F057-C02"
+   ],
+   "id": "F057-C03",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "extracted-claims",
+     "phase-i-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "set drift: the merge record changed, or an executor quietly swaps a source whose document is hard to locate",
+    "verdict_rule": "the set is judged by the gate-0.2 exact-match standard against the pinned record, not by the executor's judgement of which documents are 'the same kind'"
+   },
+   "status": "draft",
+   "text": "Spec 057's five sources are fixed by the Phase I merge record."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-HELD-TEXT-IS-COPY"
+   ],
+   "boundary": "Identity rests on document_id and hash, never on the registry's detected metadata (titles, years, DOIs), which is wrong or truncated for some sources (adjudication.md section 6, D-2). A cleaned text absent at execution is not a pin mismatch; it starts the stated search of F057-C06. A cleaned text present but hashing differently is a pin mismatch. Carried from the draft head at the freeze recovery (0.7-draft): The pin set per source is its extracted-claims file, its literature registry file, its held cleaned text (each by SHA-256), and its source document's recorded checksum and size; execution re-asserts every pin before any passage is read.",
+   "depends_on": [
+    "F057-C03"
+   ],
+   "evidence": [
+    {
+     "description": "One of the five registry files, read at this draft: document_id, original filename, file size, checksum_sha256, recorded stored paths - the form all five registry records take, and the source of the document-layer pins in spec section 2.1.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "glossa-indus/literature/documents/ancient_writing_and_modern_technologies_51831ac9.json",
+     "source_id": "glossa-indus/literature/documents/ancient_writing_and_modern_technologies_51831ac9.json",
+     "source_quality": "artifact",
+     "independent_of": [
+      "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt"
+     ]
+    },
+    {
+     "description": "The S-4 held cleaned text, SHA-256 62acf855... recomputed at this draft - identical to the pin Spec 046 computed independently for the same file, which cross-validates the pinning method for all five.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "source_id": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "source_quality": "artifact",
+     "independent_of": [
+      "glossa-indus/literature/documents/ancient_writing_and_modern_technologies_51831ac9.json"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "recompute any section 2.1 SHA-256 from main: a value that does not recompute falsifies the pin table and voids the draft's basis for that source"
+   ],
+   "id": "F057-C04",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "C04 states the pinning rule for the five sources - identity by document_id and hash, every pin re-asserted before any passage is read. F057-C11 states the lifecycle position of claims recovered at execution (created stage, unchecked, no check designed or run under this spec). The pair shares only the boundary of record identity: pinning governs the source records, intake governs the recovered claims; C04's re-assertion duty does not check any recovered claim, and C11's no-check rule does not waive any pin. Both claims stand as stated; neither negates the other.",
+    "evidence_origin_groups": [
+     "extracted-claims",
+     "literature-registry",
+     "cleaned-texts"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "a stale or miscomputed pin presented as the document of record (the Spec 040 anchors precedent)",
+    "verdict_rule": "pins stand or fall on recompute; the S-4 cleaned-text and claims-file pins were cross-checked at this draft against Spec 046's independently computed pins for the same files and match"
+   },
+   "status": "draft",
+   "text": "Each of the five sources is pinned at spec section 2.1 by SHA-256."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-FIVE-SOURCE-SET"
+   ],
+   "boundary": "These are spec section 3's gates 0.1 and 0.2, with gate 0.3's order rule: the execution record shows the gate verdicts before the first per-source row. No failure is repaired at run time; a changed input or a changed set is a re-draft or a new freeze, not a resumed run. Carried from the draft head at the freeze recovery (0.7-draft): The gate failures are an input pin mismatch (CLOSED AT STEP 0 - INPUT PIN MISMATCH) and a five-source set that does not match the recorded merge (CLOSED AT STEP 0 - SOURCE SET CHANGED).",
+   "depends_on": [
+    "F057-C03",
+    "F057-C04"
+   ],
+   "evidence": [
+    {
+     "description": "Design D-19 fixes the accounting criteria in advance; the step-0 classes are this draft's fail-closed reading of those criteria, in the form Specs 042 and 046 established for this campaign.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "each gate's check is itself the test: an execution record whose first per-source row precedes its gate verdicts, or that proceeds past a failed gate, is non-compliant on its face"
+   ],
+   "id": "F057-C05",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "extracted-claims",
+     "phase104-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "gate-skipping under the pressure of an interesting passage, with the failure rationalised afterwards",
+    "verdict_rule": "the run's own record is the judge: gate verdicts precede passage material in it, in order, or the outcome is a step-0 closure by construction"
+   },
+   "status": "draft",
+   "text": "Execution stops before any passage is read for content on a step-0 gate failure."
+  },
+  {
+   "alternatives": [
+    "recording a source unlocated when its cleaned text is missing from the repository alone (refused: the registry's stored paths and the document itself are part of the program's library)",
+    "folding HEADING NOT PRESENT into PASSAGE EMPTY (refused: an absent section is not an empty one, and the distinction decides whether re-acquisition can unblock the source)"
+   ],
+   "assumptions": [
+    "ASM-HELD-TEXT-IS-COPY"
+   ],
+   "boundary": "Absence from one location is not unlocatability. The HEADING NOT PRESENT sub-state is this draft's repair for a gap in design D-19's outcome set (adjudication.md section 6, D-1): the document is located, but no heading-form occurrence exists in the held text, so there is no passage to extract; the freeze confirms the sub-state or replaces it openly (OPEN-1). Freeze ruling DD-057-10 confirms DD-057-3: HEADING NOT PRESENT IN HELD TEXT is a sub-state of SOURCE UNLOCATED, not a fourth outcome word and not PASSAGE EMPTY; the section 7 partition stands as drafted. Carried from the draft head at the freeze recovery (0.7-draft): The row carries the search log attached and the sub-state (DOCUMENT UNLOCATED or HEADING NOT PRESENT IN HELD TEXT) and a named unblocking act; the stated search is the pinned cleaned text, the repository-wide document_id search with hash verification, the registry's recorded stored paths with checksum verification, and the source document's own text layer.",
+   "depends_on": [
+    "F057-C04",
+    "F057-C05"
+   ],
+   "evidence": [
+    {
+     "description": "Design D-19: SOURCE UNLOCATED is 'the document cannot be found in the program's library after a stated search - the unblocking act is then named per source'. Design D-16's parallel text names re-acquisition through ordinary published-source channels as that act.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "a SOURCE UNLOCATED row without a complete four-step search log, a sub-state, and a named unblocking act falsifies the outcome record"
+   ],
+   "id": "F057-C06",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "literature-registry",
+     "design-packet"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "a thin search dressed as a stated one, converting executor effort saved into a source written off",
+    "verdict_rule": "the search log is part of the outcome record and is judged step by step; any step missing or unverified voids that source's UNLOCATED outcome"
+   },
+   "status": "draft",
+   "text": "A source is recorded SOURCE UNLOCATED only after the stated search of spec section 4 has been run in full for that source."
+  },
+  {
+   "alternatives": [
+    "any occurrence anchors a passage (refused: it would 'recover' Fuls 2013's paper as S-1's passage from S-1's own bibliography, and a sentence-initial mention in S-5 as a section that does not exist)"
+   ],
+   "assumptions": [
+    "ASM-HEADING-FORM"
+   ],
+   "boundary": "The rule is structural, not string-matching: the extraction that created this fragment harvested occurrences of the words, and at this draft two of the five held texts (S-1, S-5) show no heading-form occurrence at all, while S-1's text contains a bibliography entry naming S-3's paper - an occurrence that must not be allowed to import another source's passage. Freeze ruling DD-057-10 confirms the heading-form rule as drafted, on the draft's occurrence postures: S-1 and S-5 carry no heading-form occurrence in their held texts. Carried from the draft head at the freeze recovery (0.7-draft): Heading form is standing as the title of a section, chapter, appendix, or titled part, as spec section 5.1 defines; running-text mentions, bibliography entries, figure and table captions, and cross-references never anchor a passage.",
+   "depends_on": [
+    "F057-C03"
+   ],
+   "evidence": [
+    {
+     "description": "S-1's own instance quote_fragment is the lowercase 'positional analysis' where the other four instances record the capitalised 'Positional Analysis' - the record itself marks S-1's extraction as a different kind of occurrence.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
+     "source_id": "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json",
+     "source_quality": "artifact",
+     "independent_of": [
+      "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt"
+     ]
+    },
+    {
+     "description": "Occurrence posture at this draft (string search only; no passage extracted): S-1's held text contains the string twice - once in running text, once in a bibliography entry for Fuls 2013's paper - and in heading form not at all.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt",
+     "source_id": "glossa-indus/processed/cleaned_text/ancient_writing_and_modern_technologies_51831ac9.txt",
+     "source_quality": "artifact",
+     "independent_of": [
+      "glossa-indus/claims/extracted_claims/ancient_writing_and_modern_technologies_51831ac9.json"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "each located row records its heading's verbatim form and locator; a row whose anchor is a running-text, bibliography, or caption occurrence falsifies the outcome record"
+   ],
+   "id": "F057-C07",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "cleaned-texts",
+     "extracted-claims"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "the pressure to find a passage in every source, which turns a mention into a heading after the fact",
+    "verdict_rule": "heading form is judged from the recorded locator and the verbatim heading text on the row, against section 5.1's criteria, by any reader of the outcome record"
+   },
+   "status": "draft",
+   "text": "An occurrence of 'positional analysis' anchors a passage only if it is in heading form."
+  },
+  {
+   "alternatives": [
+    "paraphrased or excerpted passages as the record (refused: the next reader must be able to check the recovered claim against the passage itself, which is the failure this fragment exists because of)"
+   ],
+   "assumptions": [
+    "ASM-VERBATIM",
+    "ASM-HELD-TEXT-IS-COPY"
+   ],
+   "boundary": "Delimitation follows spec section 5.2: heading to next heading of equal or higher rank, running heads counted once, and a document whose own title is the heading cited by line range rather than reprinted in the outcome record. Tables and figures a passage relies on are named in the locator even where their content cannot be carried as text. Freeze ruling DD-057-11 confirms the S-3 delimitation of spec section 5.2 as drafted (OPEN-2): where the heading is the document's own title, the passage is the document's findings-bearing body, cited by line range in the passage artifact, not reprinted in the outcome record; no narrower delimitation is substituted. Carried from the draft head at the freeze recovery (0.7-draft): The locator is the cleaned-text line range, the heading line, and the page or chapter designation where the held text carries one; the artifact's SHA-256 is on the row; line-rejoining is the only permitted normalisation. Final restatement at the freeze recovery (0.8-draft): The row carries the passage's citation and its locator (cleaned-text line range, heading line, and page or chapter designation where the held text carries one), and the artifact's SHA-256.",
+   "depends_on": [
+    "F057-C07"
+   ],
+   "evidence": [
+    {
+     "description": "Design D-19: 'Re-extract, from each of the five source documents, the full passage under that heading: the finding, its numbers, its corpus, and its stated conditions' - full passage, from the document, is the design's unit of record.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "recompute a passage artifact's SHA-256 and compare its text against the pinned cleaned text at the recorded line range; any divergence beyond line-rejoining falsifies the row"
+   ],
+   "id": "F057-C08",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "C08 states the verbatim-record rule for located passages (citation, locator, passage artifact with its SHA-256). F057-C11 states that a recovered claim enters at the created stage with its passage quoted beside it and no check run under this spec. The pair shares only the passage artifact as a common object: C08 fixes how the passage is recorded, C11 fixes the lifecycle position of a claim stated from it; quoting a passage for the intake record is recording, not checking. Both claims stand as stated; neither negates the other.",
+    "evidence_origin_groups": [
+     "cleaned-texts"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "silent tidying of the passage - modernised spelling, supplied punctuation, a dropped awkward sentence - presenting an edited text as the source's words",
+    "verdict_rule": "verbatim fidelity is judged byte-for-byte against the pinned held text modulo the one permitted normalisation, which is itself logged by the artifact's derivation from pinned bytes"
+   },
+   "status": "draft",
+   "text": "Each located passage is recorded verbatim in a per-source passage artifact."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-ACCOUNTING-IS-SUCCESS"
+   ],
+   "boundary": "Completeness is the design's success criterion, stated in advance so a partial accounting cannot be presented as a result. A missing row or a row without an outcome is a failed execution under spec section 1.2, whatever the other rows show. Carried from the draft head at the freeze recovery (0.7-draft): The outcomes are CLAIM RECOVERED, PASSAGE EMPTY, or SOURCE UNLOCATED, and the accounting is complete only when all five rows of the spec section 6.1 table carry one.",
+   "depends_on": [
+    "F057-C03",
+    "F057-C06"
+   ],
+   "evidence": [
+    {
+     "description": "Design D-19, criteria fixed in advance: 'The design succeeds if every one of the five passages is accounted for with one of three recorded outcomes... Anything less - a passage skipped without an outcome - is a failure of the design, stated in advance so it cannot happen silently.'",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "count the rows and outcomes in the outcome record's accounting table: anything other than five rows with exactly one outcome each falsifies the execution"
+   ],
+   "id": "F057-C09",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "C09 states the accounting rule - exactly one outcome per source, five rows complete. F057-C11 states the intake rule for the CLAIM RECOVERED rows among those outcomes. The pair shares only the recovered-claim object at that boundary: C09 counts and completes the rows, C11 governs what a recovered row's claim does next (created-stage intake, no check under this spec). Neither claim's rule limits the other's; both stand as stated.",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "a four-row outcome with the fifth source's absence explained in prose, so the gap reads as a finding",
+    "verdict_rule": "the count is mechanical from the table; the headline classes of F057-C12 are defined only over complete accountings plus the step-0 closures"
+   },
+   "status": "draft",
+   "text": "Each source receives exactly one outcome."
+  },
+  {
+   "alternatives": [
+    "requiring numbers for recovery (refused: it would record a genuinely stated finding as empty because the source argued without counting)"
+   ],
+   "assumptions": [
+    "ASM-RECOVERY-NOT-VERIFICATION"
+   ],
+   "boundary": "The empty test is the design's: PASSAGE EMPTY means the section states no checkable finding - no quantity, no named corpus, no directional or comparative assertion that could in principle be checked. A checkable proposition stated without numbers is RECOVERED, with 'numbers: none stated' on its record (DD-057-5); the design's EMPTY definition, not its RECOVERED shorthand, governs the boundary. Freeze ruling DD-057-14 confirms DD-057-5: a checkable proposition stated without numbers is CLAIM RECOVERED, with 'numbers: none stated' on its record; checkability, not numeracy, is the boundary. Carried from the draft head at the freeze recovery (0.7-draft): A checkable finding is a proposition about sign positions carrying its numbers as stated (or none), its corpus and stated conditions; the row carries a falsifier written from the passage's own logic or the absence of one recorded. A located passage stating no checkable finding is recorded PASSAGE EMPTY with the passage quoted as evidence.",
+   "depends_on": [
+    "F057-C08",
+    "F057-C09"
+   ],
+   "evidence": [
+    {
+     "description": "Design D-19's three outcome definitions verbatim in substance: CLAIM RECOVERED (proposition + numbers + falsifier status on record), PASSAGE EMPTY (the section states no checkable finding - quoted evidence attached), SOURCE UNLOCATED.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "read a RECOVERED row's quoted passage: if it states no proposition meeting this claim's standard, the row falsifies the outcome record; read an EMPTY row's quoted passage: if it does state one, likewise"
+   ],
+   "id": "F057-C10",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "executor generosity at the boundary - reading a finding into a methodological preamble, or reading one out of a passage whose result is unwelcome",
+    "verdict_rule": "the quoted passage is attached to every located row precisely so the RECOVERED/EMPTY judgement is re-judgeable by any reader from the record"
+   },
+   "status": "draft",
+   "text": "A located passage that states a checkable finding is recorded CLAIM RECOVERED."
+  },
+  {
+   "alternatives": [
+    "designing the recovered claims' tests inside this spec before the passages are read (refused: that is inventing a test for an argument not yet known, the D-17 lesson in reverse)"
+   ],
+   "assumptions": [
+    "ASM-RECOVERY-NOT-VERIFICATION"
+   ],
+   "boundary": "The checks the recovered claims need are designed per claim at intake, from each passage's own logic, not pre-invented here (design D-19). A recovered claim's record carries its falsifier status from F057-C10 at creation, so it does not re-enter the set in this fragment's own condition - a heading with no falsifier and no proposition. Freeze ruling DD-057-12 confirms DD-057-6: recovered claims are entered through normal intake as part of this execution's deliverables, at the created stage; designing their checks is later work, per claim, outside this spec. Carried from the draft head at the freeze recovery (0.7-draft): Entry is unchecked, with the claim's proposition stated in plain words and the passage quoted beside it; no check for a recovered claim is designed or run under this spec. The intake named in the head is the programme's claim-intake act whose observable product is the created-stage intake record inspected by this claim's falsification test - proposition, numbers, corpus and conditions, and falsifier status on the record, at the created stage and no higher. Final restatement at the freeze recovery (0.8-draft): The intake is the programme's intake for claims entering at the created stage (DD-057-6, confirmed DD-057-12); its observable product is the created-stage intake record.",
+   "depends_on": [
+    "F057-C10"
+   ],
+   "evidence": [
+    {
+     "description": "The adopted lane-2 not-understood text for the canonical record: re-extraction of the five passages in full, 'each becoming its own claim with its numbers attached' - the intake this claim registers.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "source_id": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "inspect the intake records produced at execution: a recovered claim staged above created, carrying a check run under this spec, or lacking its quoted passage falsifies compliance"
+   ],
+   "id": "F057-C11",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "C11 states the intake rule for recovered claims: created-stage entry through normal intake, unchecked, no check designed or run under this spec. Its apparent negation partners state different rules over different objects - F057-C04 the pinning of the five source records, F057-C08 the verbatim recording of located passages, F057-C09 the one-outcome-per-source accounting - and C11's no-check rule touches none of them: pins are still re-asserted, passages are still recorded verbatim, and every source still receives exactly one outcome. The shared boundary is record identity and lifecycle position only; all four claims stand as stated.",
+    "evidence_origin_groups": [
+     "design-packet",
+     "lane2-record"
+    ],
+    "forbidden_assumptions": [
+     "ASM-RECOVERY-AS-VERIFICATION"
+    ],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "the temptation to test a recovered finding immediately, inside the same act that recovered it, so recovery and verdict arrive welded together",
+    "verdict_rule": "intake records are judged at execution close: created stage, proposition and falsifier status present, passage quoted, no Spec 057 check attached"
+   },
+   "status": "draft",
+   "text": "Each recovered claim enters the claim set through the program's intake at the created stage."
+  },
+  {
+   "alternatives": [],
+   "assumptions": [
+    "ASM-ACCOUNTING-IS-SUCCESS"
+   ],
+   "boundary": "The partition is exhaustive over the 21 count combinations: A (r=5); B (r=1-4, u=0); C (r=1-4, u>=1); D (r=0, u=0); E (r=0, u=1-4); F (r=0, u=5). Step-0 closures are stop classes, not headline classes. The pre-written wordings are spec section 7.1. Carried from the draft head at the freeze recovery (0.7-draft): The class is derived mechanically from the outcome counts (r recovered, e empty, u unlocated), and the outcome record shows the counts beside the class.",
+   "depends_on": [
+    "F057-C09",
+    "F057-C10"
+   ],
+   "evidence": [
+    {
+     "description": "Design D-19's deliverable framing: 'up to five real claims where one empty heading now stands', with every per-source outcome acceptable and reportable - the aggregate classes name the combinations that framing implies.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "recompute the class from the accounting table's outcomes by this claim's mapping; a headline class that does not follow falsifies the outcome record"
+   ],
+   "id": "F057-C12",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "headline-shopping: choosing the class wording that flatters the recovery count after the rows are known",
+    "verdict_rule": "the mapping from counts to classes is fixed here, before execution; the outcome record shows counts and class together"
+   },
+   "status": "draft",
+   "text": "The headline outcome of a completed execution is exactly one of the spec section 7 classes A-F."
+  },
+  {
+   "alternatives": [
+    "retiring the fragment whenever nothing was recovered (refused: with sources unlocated, 'nothing recovered' is a statement about the search, not about the passages)"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY"
+   ],
+   "boundary": "Retirement is not available while an unlocated passage might state a finding: retiring the fragment then would close a question the accounting has not answered. The disposition follows the counts mechanically, like the headline. Freeze ruling DD-057-15 confirms DD-057-7: retirement is not available while r = 0 and u >= 1; the record stands as a stated gap with the unblocking acts recorded. Carried from the draft head at the freeze recovery (0.7-draft): The forms are: superseded by the named recovered claims if r>=1; retired as an extraction artefact if r=0 and u=0; no disposition, standing as a stated gap with the unblocking acts recorded, if r=0 and u>=1. The frozen record itself is never edited.",
+   "depends_on": [
+    "F057-C12"
+   ],
+   "evidence": [
+    {
+     "description": "Design D-19: 'The heading record itself is then dispositioned by appended note: superseded by the recovered claims it pointed at, or retired as an extraction artefact if a passage recovers nothing statable.' The u>=1 carve-out is this draft's reading of that sentence against the design's own unlocated outcome (DD-057-7).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "source_id": "docs/research/experiment-designs-2026-10-13/03-fragments.md",
+     "source_quality": "artifact"
+    }
+   ],
+   "falsification_tests": [
+    "inspect the appended note against the counts: a disposition form that does not match its count condition, or any edit to the frozen record's own fields, falsifies compliance"
+   ],
+   "id": "F057-C13",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "design-packet",
+     "lane2-record"
+    ],
+    "forbidden_assumptions": [],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "tidiness: closing the fragment record because the campaign has moved on, ahead of the evidence the accounting actually produced",
+    "verdict_rule": "the disposition rule is registered here, before execution; the note is a dated append and the record's pre-existing fields hash as recorded at gate 0.1"
+   },
+   "status": "draft",
+   "text": "The heading record is dispositioned by an appended, dated note in exactly one of the spec section 7.2 forms."
+  },
+  {
+   "alternatives": [
+    "all five passages are empty or unlocatable (headline classes D, E, F) - a complete accounting that defeats this expectation and is a success of the design, not of the hypothesis"
+   ],
+   "assumptions": [
+    "ASM-FIVE-SOURCE-SET"
+   ],
+   "boundary": "This is the draft's substantive expectation, registered so the accounting can defeat it honestly: it is a statement about what the passages contain, made before any passage is read for content. It asserts nothing about whether any such finding is true.",
+   "depends_on": [
+    "F057-C01",
+    "F057-C10"
+   ],
+   "evidence": [
+    {
+     "description": "Occurrence posture at this draft (string search only): S-4's held text carries an appendix headed 'Positional Analysis of Indus Signs' (table of contents line 86; heading at line 3456) - at least one source has a titled passage of the kind the hypothesis expects. No passage text was read for content at drafting.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "source_id": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+     "source_quality": "artifact",
+     "independent_of": [
+      "glossa-indus/processed/cleaned_text/fuls2023_catalog_of_indussigns_searchins_1dbdecdb.txt"
+     ]
+    },
+    {
+     "description": "Occurrence posture at this draft: S-2's held text carries a chapter 'Positional Analysis of Indus Signs' (table of contents line 65; chapter running heads at lines 536 and 612).",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "glossa-indus/processed/cleaned_text/fuls2023_catalog_of_indussigns_searchins_1dbdecdb.txt",
+     "source_id": "glossa-indus/processed/cleaned_text/fuls2023_catalog_of_indussigns_searchins_1dbdecdb.txt",
+     "source_quality": "artifact",
+     "independent_of": [
+      "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "run the accounting: if r=0 under F057-C12's counting, this expectation is not borne out, and the outcome record says so in its headline paragraph"
+   ],
+   "id": "F057-C14",
+   "kind": "hypothesis",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "design-packet",
+     "cleaned-texts"
+    ],
+    "forbidden_assumptions": [
+     "ASM-RECOVERY-AS-VERIFICATION"
+    ],
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "strongest_rival": "the null shape of the fragment itself: five extractions of one heading may have harvested five preambles, tables of contents, and running heads, with the findings stated elsewhere in each document or nowhere",
+    "verdict_rule": "borne out iff r>=1 with every recovered row meeting F057-C10's standard; any other complete accounting defeats it, and a step-0 closure leaves it untested"
+   },
+   "status": "draft",
+   "text": "At least one of the five passages states a checkable finding about sign positions that can be recovered as a claim under F057-C10."
+  },
+  {
+   "alternatives": [
+    "a recovered claim inheriting the standing of the program's tested positional claims (refused: those verdicts belong to their own records and populations, and the lane-2 draft says so in terms)"
+   ],
+   "assumptions": [
+    "ASM-LICENSE-UNCLEAR",
+    "ASM-RECOVERY-NOT-VERIFICATION"
+   ],
+   "boundary": "Also binding: the verbatim passage artifacts are internal program records. All five registry records carry license_status 'unclear' with the registry's own note that license status must be verified before publication use; that verification is a separate act, outside this spec. Carried from the draft head at the freeze recovery (0.7-draft): No outcome transfers credit from the program's other positional records to this record or to a recovered claim, and no outcome licenses publication use of the verbatim passage texts.",
+   "depends_on": [
+    "F057-C01",
+    "F057-C11"
+   ],
+   "evidence": [
+    {
+     "description": "The adopted lane-2 draft: 'The topic the heading points at - whether signs occupy preferred positions - is in fact one of the better-tested topics in this program, on other records. Nothing about those results belongs on this record, because this record does not state them.'",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "source_id": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+     "source_quality": "artifact",
+     "independent_of": [
+      "glossa-indus/literature/documents/without_kings_or_conquests_the_indus_scr_ce9d98cc.json"
+     ]
+    },
+    {
+     "description": "One of the five registry files, read at this draft: license_status 'unclear', with the registry citation note 'License status must be verified before publication use' - the posture all five registry records carry.",
+     "direction": "supports",
+     "kind": "observed",
+     "observed_at": "2026-10-21",
+     "ref": "glossa-indus/literature/documents/without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+     "source_id": "glossa-indus/literature/documents/without_kings_or_conquests_the_indus_scr_ce9d98cc.json",
+     "source_quality": "artifact",
+     "independent_of": [
+      "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json"
+     ]
+    }
+   ],
+   "falsification_tests": [
+    "inspection of every Spec 057 output: a positional conclusion, a transferred credit, or a publication use of passage text in any output falsifies compliance and is corrected by dated addendum, never by silent edit"
+   ],
+   "id": "F057-C15",
+   "kind": "requirement",
+   "metadata": {
+    "boundary_confirmation": "stated-in-claim",
+    "evidence_origin_groups": [
+     "lane2-record",
+     "literature-registry"
+    ],
+    "forbidden_assumptions": [
+     "ASM-RECOVERY-AS-VERIFICATION"
+    ],
+    "framework_kind": "requirement",
+    "layer": "M",
+    "strongest_rival": "the reading in which a recovered claim about preferred positions borrows the authority of the positional results the program has already earned elsewhere",
+    "verdict_rule": "outputs are judged against this boundary at execution close; violations are recorded defects, and the claim consequence is limited to the accounting statement of F057-C01"
+   },
+   "status": "draft",
+   "text": "No outcome under Spec 057 establishes any positional finding."
+  }
+ ],
+ "note": "Draft register for Spec 057 (design D-19, PR #195 packet), opened 2026-10-21 under the runnable-experiments campaign plan the owner approved as written the same date (Part 2, member 14) and the portfolio triage of the same date, which found D-19 RIPE. Conventions as in Specs 032-046: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-FIVE-SOURCE-SET (the five sources are exactly the canonical record plus its four recorded evidence instances), ASM-HELD-TEXT-IS-COPY (the held cleaned text is the program's working copy of the source document; the document itself, verified by its registry checksum, is the copy of last resort), ASM-HEADING-FORM (a heading is a structural object in the document, not any occurrence of its words), ASM-ACCOUNTING-IS-SUCCESS (the design's success is a complete accounting of the five, not a count of recoveries), ASM-RECOVERY-NOT-VERIFICATION (a recovered claim is created, not checked), ASM-VERBATIM (extracted text is the pinned bytes, with line-rejoining the only permitted normalisation), ASM-APPEND-ONLY (outcomes append; frozen records are never edited), ASM-LICENSE-UNCLEAR (all five registry records carry license_status 'unclear'; verbatim passage records are internal). FREEZE RECOVERY (2026-10-21): normalised to engine evidence values at 0.6-draft (kind observed, source_quality artifact; refs, descriptions, observed_at unchanged - the draft's free-form labels are not engine values); mutual independent_of declarations added on multi-item claims; freeze rulings DD-057-10 to DD-057-15 were carried into the boundaries of F057-C06, C07, C08, C10, C11, and C13 before the hooks ran. At 0.7-draft the 14 irreducibility-challenged claim texts (all except F057-C14) were restated as single head propositions with their carried clauses moved into the boundaries verbatim-in-substance (propositions, falsifiers, and verdict rules unchanged; F057-C14's text was not challenged and stands as drafted); boundary_confirmation records were added for the three negation-conflict pairs (F057-C04/C11, F057-C08/C11, F057-C09/C11) stating the shared boundary - record identity and lifecycle position - and that both members of each pair stand; and F057-C11's boundary now defines 'normal intake' by its observable product, answering the precision challenge on that claim. At 0.8-draft, final restatements of F057-C01, C03, and C08 cleared their remaining irreducibility challenges (single-proposition heads; the alternatives, the set enumeration, and the citation/locator enumeration carried in their boundaries), and F057-C11's head dropped the qualifier 'normal' - the intake is defined in its boundary by its observable product - clearing its precision challenge.",
+ "register_version": "0.8-draft",
+ "spec": "057-five-sources-heading"
+}

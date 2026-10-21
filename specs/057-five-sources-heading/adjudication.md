@@ -472,6 +472,129 @@ Disagreements, and their resolutions:
   is not surprised by the third outcome or
   by the completeness rule.
 
+## 7. Freeze decisions (2026-10-21)
+
+> ## FREEZE ACT — DECIDED — 2026-10-21
+>
+> The freeze act of 2026-10-21, under the
+> campaign plan approved by the owner as
+> written the same date (Wave 2 freeze wave),
+> decided the items §3 left open. Each
+> resolution is recorded here on the record;
+> the register rulings were carried into
+> `claims.json` before the AEE hooks ran, and
+> the hooks passed over the recovered register
+> (0.8-draft; `aee/freeze-aee-note.md`).
+
+- **DD-057-10 — OPEN-1 resolved: the HEADING
+  NOT PRESENT sub-state confirmed.**
+  DD-057-3 stands as drafted: a located
+  document in which no heading-form occurrence
+  exists is recorded SOURCE UNLOCATED with
+  the sub-state HEADING NOT PRESENT IN HELD
+  TEXT. It is not a fourth outcome word (the
+  §7 partition over (r, e, u) stands exactly
+  as drafted, exhaustive over all 21 count
+  combinations), and it is not PASSAGE EMPTY
+  (an absent section is not an empty one, and
+  the distinction decides whether
+  re-acquisition can unblock it). The freeze
+  re-verified the ground first-hand at
+  `main` 770155de: S-1's held text carries the
+  string twice (line 102 running text; line
+  663 a bibliography entry for S-3's paper)
+  and in heading form not at all; S-5's held
+  text carries it once (line 267, inside a
+  running paragraph) and in heading form not
+  at all.
+- **DD-057-11 — OPEN-2 resolved: the S-3
+  delimitation confirmed.** Spec §5.2 stands
+  as drafted: where the heading is the
+  document's own title (S-3, the paper
+  "Positional Analysis of Indus Signs", its
+  title standing as a running head from line
+  54 onward, 18 occurrences in the held
+  text), the passage is the document's
+  findings-bearing body, cited by line range
+  in the passage artifact of §5.3, not
+  reprinted in the outcome record. No
+  narrower delimitation is substituted: a
+  stated-results-sections-only rule would
+  have the freeze pre-judge which parts of
+  the paper bear findings before any passage
+  is read, which is the executor's recorded
+  judgement under §6, visible on the row.
+- **DD-057-12 — OPEN-3 resolved: intake
+  inside the execution confirmed.**
+  DD-057-6 stands as drafted: the recovered
+  claims' intake records are produced inside
+  this execution through the programme's
+  intake, at the created stage; designing
+  their checks is later work, per claim,
+  outside this spec. No follow-on act is
+  substituted for the intake itself.
+- **DD-057-13 — OPEN-4 (campaign E-1): OSF
+  registration at the freeze.** This spec
+  files its own OSF contract registration at
+  the freeze, under campaign decision E-1.
+  The filing record is
+  `osf-spec-registration.md`. Execution
+  awaits the registration's approval act and
+  a separate execution order; no mail is
+  handled by the freeze.
+- **DD-057-14 — DD-057-5 confirmed.** A
+  checkable proposition stated without
+  numbers is CLAIM RECOVERED, with
+  "numbers: none stated" on its record; the
+  design's PASSAGE EMPTY definition, not its
+  CLAIM RECOVERED shorthand, governs the
+  boundary.
+- **DD-057-15 — DD-057-7 confirmed.**
+  Retirement of the heading record is not
+  available while r = 0 and u ≥ 1: the record
+  stands as a stated gap, the note records
+  the accounting so far and the named
+  unblocking acts.
+- **DD-057-16 — Phase-419 allocated.** The
+  execution phase number (DD-057-8) is
+  allocated at this freeze as **Phase-419**,
+  from the merged record as it stands: the
+  freeze records on `main` allocate
+  Phase-404 to Phase-411, Phase-413,
+  Phase-414, Phase-416, and Phase-418 (with
+  Phase-412, Phase-415, and Phase-417
+  standing unallocated as tombstones of the
+  Spec 052, 049, and 054 freeze failures),
+  and no record allocates Phase-419 to any
+  other act.
+- **DD-057-17 — The DD-038-10 AEE gate
+  reading adopted.** The gate is: at every
+  lifecycle hook, zero correctness failure
+  modes and no claim below the 0.70
+  threshold; FR-2.3 draft-cap records alone
+  do not block a freeze, because they are
+  lifted only by human ratification (a
+  status change), not by any recovery
+  available at a freeze. The hooks passed on
+  that reading (`aee/freeze-aee-note.md`).
+
+DD-057-1 to DD-057-9 are **confirmed** as
+drafted, including DD-057-2's two-layer pin
+(the held cleaned text as working copy; the
+source document, verified by its registry
+checksum, as the copy of last resort within
+the stated search), DD-057-4's heading-form
+rule, and DD-057-9's `observed_at` carriage.
+Every §2 pin was re-asserted at the freeze
+against `main` at 770155de by two independent
+routes (contents-API raw and git-blob),
+agreeing byte-for-byte, with a third local
+route (a fresh clone's checked-out blobs)
+agreeing on every file; every recomputed
+hash equals its draft pin, including the
+anchors file at `df0cf620…` (570,344 bytes),
+recomputed fresh at the freeze.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

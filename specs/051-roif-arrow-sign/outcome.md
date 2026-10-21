@@ -431,3 +431,66 @@ One line per governed claim, F051-C01…C20.
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution §VI.*
+
+---
+
+## Landing record — 2026-10-21 (appended at merge; append-only)
+
+- Execution PR: **#299** (branch
+  `spec-051-phase409-execution`), merged to
+  `main` as merge commit
+  **`c5c1f3688be1a5682d2fa5a44c16db64930bd8eb`**.
+- CI: GitHub Actions run **39658382722** on the
+  PR head `35fbed76` — **7 of 7 jobs success**,
+  verified from the run's own job conclusions
+  (Backend tests; Frontend tests (Playwright);
+  Indus public validation checks; Evidence
+  Graph script smoke tests; Shell wrappers
+  ubuntu / macos / windows). The backend job
+  log reads 1,616 passed / 20 skipped / 0
+  failed. The PR's first head (`6fbc0238`, run
+  39656667255) failed the backend job on one
+  test — this execution's own claim-append test
+  (1 failed, 1,475 passed): the backend suite
+  regenerates the extracted-claims store
+  during a full run, rewriting the appended
+  file before the test read it. The test was
+  corrected to the Spec 057 precedent (the
+  append is verified at the act and by
+  read-back at landing; the suite pins the
+  frozen record's preserved state), and the
+  corrected head is the one that merged.
+- Digests re-verified on `main` at the merge
+  commit by the contents-API route: Asset B
+  `a1a9e48422ab7ab2ef1d340c5ca0eb81a315253b196fdc199d77d2e5739c9f85`,
+  anchors
+  `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569`,
+  results JSON
+  `3f4bf2a5eda7959a9ae85b48a5c5d0d31ad276b849f41854a71b08011fca1361`,
+  report
+  `51a9d3a106bc8df7eb7dd9b68243ae89a8e108dabbeb81eac301ed9f05e68b36`
+  — identical to the values in this record;
+  the `spec051_execution` append is present
+  on the claim's record at the merge commit,
+  with its status (untested) and stage
+  (created) unchanged.
+- Foundation check (H21) at the merge
+  commit: **40 checks passed, 0 failed, 8
+  warnings** — measured in the run tree after
+  the execution (the regenerated report is
+  part of PR #299); every input the check
+  reads is byte-identical between the run
+  tree and the merge tree (the only
+  intervening merge, Spec 050's execution,
+  touched no foundation input, and the
+  anchors, claims-store, and results
+  read-backs above confirm the identity at
+  the merge commit itself).
+- Tasks E1–E4 and E6 stand ticked in
+  `tasks.md`, and L7 with them; E5 (the §5
+  primary) remains open in form and unrun in
+  fact — gate 0.6 closed the execution before
+  it. The claim stands **UNTESTED**.
+
+*AI disclosure: appended by an AI agent (Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.*

@@ -1,22 +1,30 @@
 # Spec 059 — The Seal/Tablet Difference on a Better Join (Spec 024 F1 Rebuilt Through Object Identifiers)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-21
+> ## FROZEN — 2026-10-21
 >
-> Drafted under the approved runnable-experiments
-> campaign (owner approval 2026-10-21 of the campaign
-> plan as written; campaign member 16 of 20). This
-> draft is a drafting act only: **no freeze, no OSF
-> filing, no execution, and no computation of any
-> new quantity has been performed.** The freeze and
-> the execution of Spec 059 are separate later acts
-> under the campaign's freeze wave. No AEE lifecycle
-> hooks have run on this draft; they are a freeze
-> gate.
+> Frozen at the freeze act of 2026-10-21 under the
+> approved runnable-experiments campaign (owner
+> approval 2026-10-21 of the campaign plan as
+> written; campaign member 16 of 20). The AEE
+> lifecycle hooks ran at the freeze gate and
+> passed over the recovered register (0.8-draft;
+> `aee/freeze-aee-note.md`); the freeze record is
+> `freeze.md` / `freeze.json` in this directory,
+> and the spec's OSF contract registration is
+> filed at the freeze under campaign decision
+> E-1 (`osf-spec-registration.md`). **Execution
+> is a separate later act**: it runs as
+> Phase-421 (DD-059-13), only after this freeze
+> has merged, the registration's approval act
+> has completed, and a separate execution order
+> is given. No new quantity has been computed
+> by the freeze itself: no object-ID join census
+> exists yet, and no F1 quantity on any enlarged
+> set has been calculated.
 >
-> The execution phase number is **unassigned** at
-> this draft. It is allocated at the freeze act,
-> from the merged record as it then stands
-> (DD-059-6).
+> The execution phase number was allocated at
+> the freeze act: **Phase-421** (DD-059-13,
+> completing DD-059-6).
 
 **Design source:** D-22 in the experiment-design
 packet at PR #195
@@ -133,7 +141,7 @@ tested, no F1 quantity is computed on the new
 join, and the claim's record gains the gate
 closure and nothing else (§3.3).
 
-## 2. Inputs (pinned at this draft; re-asserted at the freeze)
+## 2. Inputs (pinned at this draft; re-asserted at the freeze — all pins verified, `freeze.md` §2)
 
 | Input | Pin / state |
 |---|---|
@@ -146,23 +154,46 @@ closure and nothing else (§3.3).
 | ICIT-lineage (horus84) inscription layer (5,679 rows; local store, as at Phase-136) | SHA-256 `c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef`, 1,190,884 bytes — **as recorded in `reports/phase136_results.json`**; re-asserted by recompute at the freeze |
 | CISI catalogue layer, vol. 1 (`cisi_vol1_catalogue.csv`; local store, gitignored) | SHA-256 `e0d698f991fbd7cf26c491a2b25906b422903a0e2a26ea7b8c690420ca51dc1e`, 804,665 bytes — **as recorded in `reports/phase136_results.json`**; re-asserted at the freeze |
 | CISI catalogue layer, vol. 2 (`cisi_vol2_catalogue.csv`; local store, gitignored) | SHA-256 `e751244e2d51bda3181d98e56af691c0d24099d76d035b54f0888504204bc7d9`, 1,431,631 bytes — **as recorded**; re-asserted at the freeze |
-| Phase-130 intake schema (`data/intake/intake_dataset_schema_v1.json`, schema_version `1.0`; Spec 021) | The join route of record (§3.2). Its validator is `glossa_lab/intake.py`. The schema file's hash is asserted at the freeze from the merged record. |
+| Phase-130 intake schema (`data/intake/intake_dataset_schema_v1.json`, schema_version `1.0`; Spec 021) | The join route of record (§3.2). Its validator is `glossa_lab/intake.py`. **Pinned at the freeze (DD-059-9): schema SHA-256 `b94d03add0318044b559b7b2976bbd2722abc19adcf67a0ea0cf093f8d7de49b` (6,197 bytes); validator SHA-256 `02b24e3312a9a4ac4f7e3b14aeaee2cda0268f41cb5bd573494340c2e7d2df03` (18,867 bytes) — both recomputed at the freeze from the merged record by two independent routes.** |
+| Spec 034 route-(b) construction (`backend/glossa_lab/phase398_matched_object.py`, `build_intake_dataset`) | **Pinned at the freeze (DD-059-9): SHA-256 `278f16b0ae8b02b77412cc925ac9e767110f5d5461729b73e8c122a9ff7673f0` (40,104 bytes).** The construction of record for carrying a row's published CISI object reference as `provenance.object_id`. |
+| ICIT converted keyed layer v2 (`corpora/downloads/icit_fieldcady/icit_converted_v2_keyed.json`; local store, gitignored) | SHA-256 `bbfdbcd5d5e3e3121251de91462af51dc702a4114a4d10ffd7061e1f5593a5c8`, 1,586,137 bytes — **recomputed at the freeze by two routes** (its build record is in `reports/phase398_results.json`: 5,679 source inscriptions, 5,018 carrying a CISI reference). The programme-built converted form of the pinned lineage layer above: the same 5,679 rows and the same `cisi` values, not a second source (DD-059-9). |
 | Spec 034 outcome (`specs/034-matched-object-attribution/outcome.md`) — the object-ID join precedent | SHA-256 `c0cc615ddb062306aa43cc8441fe5c6c322b563badd351ebce54fed1d7b43175` (recomputed at this draft) |
 | Spec 037 outcome (`specs/037-cisi31-concordance-spine/outcome.md`) — the string-identity census | SHA-256 `28e444f20e698b3533559aac3a4bc3efcbc50440e79427ae58f656642886a02a` (recomputed at this draft) |
 | Anchors file (`backend/reports/INDUS_FINAL_ANCHORS.json`) | SHA-256 `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569` (recomputed at this draft, fresh — not inherited from any earlier draft's pin). This spec moves no anchor; the file is asserted byte-identical before and after any execution. |
 
-**The object-ID mapping artifact is not pinned
-at this draft, because it does not yet exist as
-a single artifact.** Step 0 builds it (§3.2)
+**The object-ID mapping artifact does not exist
+as a single artifact; step 0 builds it (§3.2)
 under the Phase-130 schema from held sources,
-following Spec 034's route-(b) precedent; the
-freeze names and pins the exact held source
-(or sources) from which each row's object
-identifier is taken, before any execution
-(OPEN item OF-059-3, adjudication §5). A draft
-that invented that source would be stating a
-fact not on record; this draft states the
-requirement instead.
+following Spec 034's route-(b) precedent. The
+freeze has named and pinned the exact held
+sources from which each row's object identifier
+is taken (OPEN item OF-059-3, resolved as
+DD-059-9, adjudication §8):**
+
+- **Lineage side:** the pinned ICIT-lineage
+  (horus84) inscription layer itself (SHA-256
+  `c368f290…` above). Each row's published CISI
+  object reference is its `cisi` field, carried
+  as `provenance.object_id` exactly as Spec
+  034's route-(b) construction carried it
+  (the pinned Phase-398 builder above). The
+  layer's programme-built converted form, the
+  ICIT converted keyed layer v2 (pinned
+  above), carries the same rows and the same
+  `cisi` values and is the same source in
+  converted form, not a second source.
+- **Catalogue side:** the pinned CISI
+  catalogue layer, vols 1–2 (SHA-256
+  `e0d698f9…` / `e751244e…` above), whose
+  object key is its `cisi_id` column —
+  7,705 rows, 3,493 distinct objects across
+  both volumes (Spec 034 route (a) census).
+- **Schema and validator:** the Phase-130
+  intake schema and `glossa_lab/intake.py`,
+  pinned above.
+
+Gate 0.1 asserts every one of these pins;
+a mismatch stops the run as INVALID.
 
 ## 3. Step 0 — the join gate (fail-closed, gate-first)
 
@@ -251,24 +282,27 @@ points — to 61.0% or more.**
   joined to the catalogue, before typing,
   restriction, or mapping (§4.1 then applies
   the frozen flow to the joined set).
-- **Ambiguity, recorded — not silently
-  resolved (OPEN item OF-059-1).** The design's
-  words "by at least 10 points (to 61% or
-  more)" state the percentage-points reading
-  in the design's own parenthetical, and this
-  draft carries that reading as operative.
-  Two other readings exist and are recorded
-  here so the freeze rules on them openly:
-  (i) *exact-points* — original share unrounded
-  (50.977%) + 10 points = 60.977%, i.e.
-  ≥ 3,463 joined rows; (ii) *relative* — a 10%
-  relative rise on 51.0% = 56.1%, i.e.
-  ≥ 3,186 joined rows (≥ 3,185 on the unrounded
-  base). The freeze confirms the operative
-  reading or replaces it; until it does, the
-  draft's operative bar is the design's stated
-  **61.0% / 3,465 rows**, the strictest of the
-  three.
+- **Ambiguity, recorded — and ruled on at
+  the freeze (OPEN item OF-059-1, resolved as
+  DD-059-7).** The design's words "by at least
+  10 points (to 61% or more)" state the
+  percentage-points reading in the design's
+  own parenthetical. Two other readings exist
+  and are recorded here: (i) *exact-points* —
+  original share unrounded (50.977%) + 10
+  points = 60.977%, i.e. ≥ 3,463 joined rows
+  (threshold 3,462.9 rows); (ii) *relative* —
+  a 10% relative rise on 51.0% = 56.1%, i.e.
+  ≥ 3,186 joined rows (≥ 3,185 on the
+  unrounded base: 56.075%, threshold 3,184.5
+  rows). **The freeze ADOPTS the design's
+  stated reading as operative: 61.0% /
+  3,465 rows** — the strictest of the three,
+  so no refused reading can make a passed
+  gate retroactively failed. The alternative
+  readings are refused on the record
+  (adjudication §8, DD-059-7); they do not
+  govern any execution under this spec.
 
 ### 3.5 The gate closure (pre-written)
 
@@ -368,18 +402,19 @@ The design carries the test "with the same
 family correction across the Spec 024 family."
 The Spec 024 family (F1/F2/F3) was corrected
 once, in its combined report, and is closed;
-it cannot be re-opened by this spec. This
-draft therefore proposes (DD-059-4, **OPEN
-item OF-059-2** for the freeze to confirm or
-replace): the confirmatory family under this
-spec is its single primary test, so the
+it cannot be re-opened by this spec. **The
+freeze confirms the draft's proposal
+(DD-059-4; OPEN item OF-059-2 resolved as
+DD-059-8):** the confirmatory family under
+this spec is its single primary test, so the
 Benjamini–Hochberg adjustment at q = 0.05 is
 over one p-value and the adjusted q equals
 the raw p. Every verdict wording in §5 is
-stated in terms of that adjusted q. If the
-freeze declares a wider family, the wordings
-stand and the family's membership is recorded
-in the freeze record before execution.
+stated in terms of that adjusted q. No wider
+family is declared; the design's instruction
+is not executed, because re-running the
+closed family's correction would
+re-adjudicate F2's and F3's closed q-values.
 
 ### 4.4 Leave-one-site-out (descriptive)
 
@@ -586,16 +621,17 @@ replication record beside it.
   this spec — under the campaign plan, a pass
   in which members close at step 0 with honest
   closures is a completed pass.
-- **The object-ID source for this layer is
+- **The object-ID source for this layer was
   the draft's one unpinned input** (§2,
-  OF-059-3). Spec 034 proves the route at
+  OF-059-3); the freeze has named and pinned
+  it (DD-059-9). Spec 034 proves the route at
   scale on ICIT inscriptions; it does not by
   itself prove coverage of every row of this
-  layer, and the freeze must name the source
-  before execution. If no held source supplies
-  identifiers for this layer, the honest act
-  is a drafting-stage report, not a weaker
-  join.
+  layer, and the gate census — not the freeze
+  — is what measures that coverage. The named
+  sources are the only ones admitted; no
+  weaker join is substituted for a row they
+  do not supply an identifier for.
 - **Enlargement changes the strata.** Sites
   thin in the original joined set may become
   eligible, and the eligible-strata population

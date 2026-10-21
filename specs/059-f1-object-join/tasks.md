@@ -45,7 +45,7 @@
       unmerged for the freeze decision, CI
       state reported from the run's own
       conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE
       — not run on this draft).** At the
       freeze act, run `run_aee.py assess`
       after_specify, after_plan, and
@@ -57,7 +57,7 @@
       the adopted 1.5.x engine at the freeze,
       per the campaign plan — not assumed
       from pre-adoption habit.
-- [ ] **L5 — Freeze-decision items.** The
+- [x] **L5 — Freeze-decision items.** The
       freeze rules on OF-059-1 (the gate bar's
       reading: 61.0% operative at draft),
       OF-059-2 (the correction family),
@@ -66,7 +66,7 @@
       registration), and OF-059-5 (join
       audit), and confirms or openly
       overturns DD-059-3 and DD-059-4.
-- [ ] **L6 — Freeze.** On the campaign's
+- [x] **L6 — Freeze.** On the campaign's
       freeze act for this member, with L4
       passed and L5 decided: hooks recorded,
       `freeze.md` finalised, `freeze.json`
@@ -78,7 +78,27 @@
       named and pinned (OF-059-3), and the
       execution phase number allocated
       (DD-059-6).
-- [ ] **L7 — Freeze PR merged**, house gates
+      **Done at the freeze act of 2026-10-21:**
+      hooks PASS over the recovered register
+      (0.8-draft) under aee 1.5.3 — zero
+      correctness failure modes, no claim below
+      0.70 (minimum 0.72), draft-cap records
+      only (DD-059-14 gate reading); every §2
+      pin re-asserted two-route at `main`
+      `a3509525`; OF-059-1 resolved as
+      DD-059-7 (gate bar adopted: 61.0%,
+      ≥ 3,465 rows), OF-059-2 as DD-059-8
+      (single-test family confirmed), OF-059-3
+      as DD-059-9 (object-identifier sources
+      named and pinned), OF-059-4 as
+      DD-059-10 (OSF under E-1), OF-059-5 as
+      DD-059-11 (gate census suffices as the
+      join audit); DD-059-3 confirmed
+      (DD-059-12); Phase-421 allocated
+      (DD-059-13); OSF contract registration
+      filed under E-1 (filing record in
+      `osf-spec-registration.md`).
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
 

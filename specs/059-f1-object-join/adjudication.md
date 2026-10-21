@@ -390,3 +390,250 @@ carries the resolved form.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## 8. Freeze decisions (2026-10-21)
+
+> ## FREEZE ACT — DECIDED — 2026-10-21
+>
+> The freeze act of 2026-10-21, under the
+> campaign plan approved AS WRITTEN the same
+> date (Wave 2 freeze wave), decided the
+> items §5 left open. Each resolution is
+> recorded here on the record; the register
+> rulings were carried into `claims.json`
+> before the AEE hooks ran, and the hooks
+> passed over the recovered register
+> (0.8-draft; `aee/freeze-aee-note.md`).
+> Every pin below was re-derived in the
+> foreground by two independent routes —
+> the contents-API raw route and the
+> git-blob route for committed files
+> (agreeing byte-for-byte), and Python
+> `hashlib` plus `sha256sum` for the
+> local-store files (agreeing) — at the
+> merged record, `main` at
+> `a3509525fab64e22a4c053d7bbed14c7083a14d3`.
+> All nine of the draft's §2 committed pins
+> recompute equal to their draft values at
+> that record; the three local-store pins
+> carried as recorded in
+> `reports/phase136_results.json` (the
+> horus84 layer and the two catalogue
+> volumes) also recompute equal, byte counts
+> included. Phase-421 was verified
+> unallocated in the merged record (no
+> Phase-421 allocation in `LEDGER.md`, the
+> backend experiment ledger, or any freeze
+> record on `main`) before it was allocated
+> here.
+
+- **DD-059-7 — OF-059-1 resolved: the gate
+  bar's reading is ADOPTED as the design's
+  stated 61.0%.** The operative bar is the
+  design's own parenthetical reading:
+  joined share **≥ 61.0%**, i.e. **≥ 3,465
+  of 5,679** joined rows. Arithmetic, shown
+  in full: the baseline is 2,895 / 5,679 =
+  50.977% (the design's rounded 51.0%);
+  0.61 × 5,679 = 3,464.19, so ≥ 61.0% is
+  ≥ 3,465 rows, and 3,464 rows = 60.997%
+  fails. The two alternative readings are
+  REFUSED on the record: (i) *exact-points*
+  — 50.977% + 10 points = 60.977%, threshold
+  3,462.9 rows, i.e. ≥ 3,463 rows;
+  (ii) *relative* — a 10% relative rise:
+  56.1% on the rounded base (threshold
+  3,185.92 rows, i.e. ≥ 3,186 rows) or
+  56.075% on the unrounded base (threshold
+  3,184.5 rows, i.e. ≥ 3,185 rows). The
+  adopted bar is the strictest of the
+  three, so no refused reading can make a
+  passed gate retroactively failed, and no
+  execution under this spec may re-read the
+  bar after the census is known (the
+  bar-shopping rival named in F059-C04).
+  The §6 defect 1 record stands: the
+  design's wording was genuinely ambiguous
+  in isolation, and this ruling — not the
+  parenthetical alone — is what the frozen
+  spec rests on.
+- **DD-059-8 — OF-059-2 resolved: the
+  single-test family is CONFIRMED.**
+  DD-059-4 stands as the freeze's ruling:
+  the confirmatory family under this spec
+  is its single primary test; the
+  Benjamini–Hochberg adjustment at
+  q = 0.05 is over one p-value and the
+  adjusted q equals the raw permutation p.
+  The design's "same family correction
+  across the Spec 024 family" instruction
+  is NOT executed (§6 defect 2): that
+  family (F1/F2/F3) was corrected once, in
+  its combined report, and is closed;
+  re-running it with a new p would
+  re-adjudicate F2's and F3's closed
+  q-values. No wider family is declared.
+  Every §5 verdict wording stands, stated
+  in the adjusted q.
+- **DD-059-9 — OF-059-3 resolved: the
+  object-identifier sources are NAMED AND
+  PINNED.** No source is invented; every
+  artifact below is on the record of
+  record, and its pin was re-derived at
+  this freeze by two independent routes
+  (above). (a) *Lineage side:* the pinned
+  ICIT-lineage (horus84) inscription layer
+  itself — local store
+  `research_notes/indus-data-deep-sweep-20261008/downloads/horus84-computational-linguistics/data/inscriptions.csv`,
+  SHA-256
+  `c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef`,
+  1,190,884 bytes, as recorded in
+  `reports/phase136_results.json`. Each
+  row's published CISI object reference is
+  its `cisi` field, and that reference is
+  carried as `provenance.object_id` under
+  the Phase-130 schema exactly as Spec
+  034's route-(b) construction carried it:
+  `build_intake_dataset` in
+  `backend/glossa_lab/phase398_matched_object.py`,
+  SHA-256
+  `278f16b0ae8b02b77412cc925ac9e767110f5d5461729b73e8c122a9ff7673f0`
+  (40,104 bytes). The layer's
+  programme-built converted form —
+  `corpora/downloads/icit_fieldcady/icit_converted_v2_keyed.json`,
+  local store, SHA-256
+  `bbfdbcd5d5e3e3121251de91462af51dc702a4114a4d10ffd7061e1f5593a5c8`,
+  1,586,137 bytes, recomputed at this
+  freeze; build record in
+  `reports/phase398_results.json` (5,679
+  source inscriptions, 5,018 carrying a
+  CISI reference) — carries the same 5,679
+  rows and the same `cisi` values: it is
+  the same source in converted form, not
+  a second source, and either form must
+  hash-match at gate 0.1 for the rows it
+  supplies. (b) *Catalogue side:* the
+  pinned CISI catalogue layer, vols 1–2
+  (SHA-256 `e0d698f9…` / `e751244e…`,
+  §2), whose object key is its `cisi_id`
+  column — 7,705 rows, 3,493 distinct
+  objects across both volumes (Spec 034
+  route (a) census, re-derived at this
+  freeze from the pinned files: vol. 1
+  3,320 rows / 1,475 distinct IDs; vol. 2
+  4,385 rows / 2,019 distinct IDs; one ID,
+  `H-311`, in both volumes). Resolution
+  under §3.3 is against distinct catalogue
+  objects in that merged layer: an
+  identifier resolving to exactly one
+  distinct object joins; zero or more
+  than one does not. (c) *Schema and
+  validator:* `data/intake/intake_dataset_schema_v1.json`,
+  SHA-256
+  `b94d03add0318044b559b7b2976bbd2722abc19adcf67a0ea0cf093f8d7de49b`
+  (6,197 bytes), validated by
+  `backend/glossa_lab/intake.py`, SHA-256
+  `02b24e3312a9a4ac4f7e3b14aeaee2cda0268f41cb5bd573494340c2e7d2df03`
+  (18,867 bytes). Gate 0.1 asserts every
+  one of these pins. The §6 defect 4
+  record is thereby discharged: the draft
+  asserted the route and the counting
+  rules; this freeze names the source.
+  What this ruling does NOT do: it does
+  not assert coverage. Whether the named
+  identifiers cover materially more of
+  this layer than the concordance join
+  reached is exactly what the gate census
+  measures at execution, and a closure at
+  step 0 remains a realistic,
+  pre-registered outcome (§3.5, §8 of the
+  spec). The string-identity boundary
+  (F059-C06, spec §7.1) is unchanged: the
+  `cisi` value enters only as cited
+  provenance data in the `provenance.object_id`
+  field — the schema's declared catalogue
+  object ID field — and resolves against
+  catalogue object IDs; no name string,
+  number string, or `cisi_number` is
+  matched as identity at any point.
+- **DD-059-10 — OF-059-4 resolved: OSF
+  registration at the freeze (E-1).** This
+  spec files its own OSF contract
+  registration at the freeze, under
+  campaign decision E-1, following the
+  program's standing pattern. The filing
+  record is `osf-spec-registration.md`.
+  Execution awaits the registration's
+  approval act and a separate execution
+  order; no mail is handled by the freeze.
+- **DD-059-11 — OF-059-5 resolved: the
+  gate census suffices as the join's
+  audit.** The draft's proposal is
+  confirmed: the §3.3 census, published
+  either way with per-row identifier
+  provenance and the resolution classes
+  (exactly-one / zero / more-than-one), is
+  the join's audit. No separate join audit
+  is required before execution. A fuller
+  audit remains available to any later
+  reader from the published census and the
+  pinned sources, which is the property
+  the proposal rested on.
+- **DD-059-12 — DD-059-3 confirmed; the
+  §6 defect 3 record stands.** The verdict
+  precedence is confirmed as drafted: an
+  odds-ratio interval including 1.0 is
+  NOT REPLICATED even when q < 0.05, and
+  WEAKENED is reserved for intervals
+  excluding 1.0 but reaching below 1.5.
+  The design criteria's literal overlap
+  at (q < 0.05, interval includes 1.0) is
+  a defect of the design text, noted here
+  and resolved by this precedence, not by
+  any execution-time choice.
+- **DD-059-13 — Phase-421 allocated.**
+  The execution phase is **Phase-421**
+  (completing DD-059-6), verified
+  unallocated in the merged record before
+  allocation (above). Execution runs in
+  campaign Wave 3 group 2 (independents).
+- **DD-059-14 — The DD-038-10 AEE gate
+  reading is adopted.** The lifecycle
+  hooks PASS at the freeze when every
+  hook carries zero correctness failure
+  modes and no claim below the 0.70
+  threshold; FR-2.3 draft-cap records
+  (one per claim) are recorded openly and
+  are not edited away — they cap a draft
+  bundle's outcome word ("iterate") and
+  are lifted only by human ratification,
+  not by any freeze act. The hooks' full
+  record is `aee/freeze-aee-note.md`:
+  under aee 1.5.3, at every hook 15
+  draft-cap records only, zero correctness
+  failure modes, minimum propagated score
+  0.72.
+
+**Draft decisions confirmed.** DD-059-1
+(the outcome appends; the frozen verdict
+is untouched), DD-059-2 (the census unit
+is the layer row), and DD-059-5
+(`observed_at` carried from the draft) are
+confirmed as drafted. DD-059-4 is
+confirmed as DD-059-8; DD-059-3 is
+confirmed as DD-059-12; DD-059-6 is
+completed by DD-059-13. No draft decision
+is overturned.
+
+**What the freeze does not do.** It
+computes no object-ID join census, no
+joined share, and no F1 quantity on any
+enlarged set; it does not decide the gate
+in advance — the census at execution
+decides it against the bar DD-059-7
+adopts, and CLOSED AT STEP 0 — JOIN GATE
+NOT MET remains a pre-registered outcome
+of the frozen contract, not a defect in
+it. It edits no Spec 024 record, moves no
+anchor, and authorises no execution by
+itself.

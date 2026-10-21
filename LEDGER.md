@@ -7774,3 +7774,74 @@ reports/phase411_step0_report.md.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-21 — Spec 058 EXECUTED (Phase-420): LOCALISED TO SIGNS
+
+Spec 058 was executed as Phase-420 under the
+frozen contract (freeze digest 8bdd4764…; OSF
+registration 86dgh approved and public, DOI
+10.17605/OSF.IO/86DGH), in Wave 3 Group 2 of the
+runnable-experiments campaign — design D-21 arm A
+only; arm B stays blocked and no AI substitution
+for human coders was designed or run (F058-C06).
+Step 0 passed in full, in frozen order: gate 0.1
+every spec §2.1 input recomputes to its freeze
+pin (verified in the foreground by two
+independent routes — git blob and GitHub contents
+API — at the run's base 3200b7b5); gate 0.2 the
+Phase-132 pilot-pass record set produced at the
+execution venue (the main-checkout machine's
+gitignored store, read-only; the main checkout
+was never modified) at the pilot report's §9
+inventory — frame.json, 50 Pass A, 50 Pass B, 10
+gold, 50 adjudication records, effort log 320
+events — with a per-file SHA-256 manifest of the
+162-file set recorded in the results JSON; gate
+0.3 frame identity exact; gate 0.4 the pinned
+phase132_metrics.py, imported unchanged,
+reproduces the committed metrics file in full
+(0.20 P and M; 0.4798; 0.4286; estimator 0.05;
+totals 191/190/40/189; every per-object flag);
+gate 0.5 taxonomy exact (identity 93, legibility
+45, count 11, key 10, orientation 2, order 1;
+total 162); gate 0.6 census 40 mismatched
+objects. Tabulations over the frozen alignment:
+E = 103 mismatch events (88 SUBSTITUTION, 15
+INDEL); summed involvement 191. **LOCALISED TO
+SIGNS (the frozen §5.2 wording): the 10
+most-involved signs account for 54.5% (104/191)
+of all mismatch involvement — UNK, P310, P144,
+UNMAPPED:M817, P145, P245, P119, P184, P268,
+P324 — with the mandatory UNK sentence carried:
+UNK itself is the most-involved value (53/191,
+27.7% of involvement), so the localisation is in
+part a localisation to illegibility.** The
+object-type locus did not fire: Seals carry
+77.7% (80/103) of events but a 9.7-point
+enrichment over their 68.0% frame share, below
+the frozen 10-point margin (DD-058-8). The
+segmentation locus did not fire: INDEL share
+14.6% (the registered proxy, spec §8(4)).
+First divergence falls at alignment position 1
+in 21 of 40 objects, with UNK the most-involved
+value there too (26). The descriptive
+UNK-excluded secondary (no headline): E = 50,
+top-10 share 41.5% (BETWEEN — the concentration
+does not survive setting illegibility aside,
+reported as found); the M-space sensitivity
+agrees descriptively (top-10 53.9%). The claim
+STUDY-SPEC-023/PHASE-132+383 stands CONTRADICTED
+exactly as recorded; this entry and the outcome
+record are its dated mechanism-account append —
+the lane-2 drafts file is a frozen pin and was
+not edited. Anchors asserted byte-identical
+before and after (df0cf620…). Foundation check
+at the run: 40 passed / 0 failed / 8 warnings.
+Records:
+specs/058-transcription-disagreement-mechanism/outcome.md,
+reports/phase420_results.json (3d140333…),
+reports/phase420_report.md (b8634d76…).
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

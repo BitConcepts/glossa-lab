@@ -7,7 +7,7 @@
 > set. The outcome record is `outcome.md` in this
 > directory; the run's machine record is
 > `reports/phase418_results.json` (SHA-256
-> `f6b8c97b3b95ed3176f10994cbf109de1ff451fc1f11e2f7cf68ca5ca8b7c513`),
+> `35ed74b8d47d4b83973c5365fa29bb0e969413c485d838ccd4a6e166f2540575`),
 > produced by `backend/scripts/phase418_sign821_recovery.py`,
 > which verified every quote on these sheets
 > verbatim against the pinned passage before any

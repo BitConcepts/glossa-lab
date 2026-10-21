@@ -39,7 +39,7 @@ environment before the phase ran (the node is
 present in `ATOMIC_NODES`). The run's own
 records: `reports/phase418_results.json`
 (SHA-256
-`f6b8c97b3b95ed3176f10994cbf109de1ff451fc1f11e2f7cf68ca5ca8b7c513`)
+`35ed74b8d47d4b83973c5365fa29bb0e969413c485d838ccd4a6e166f2540575`)
 and `reports/phase418_recovery_report.md`
 (SHA-256
 `531c054cd1a0d9697e48b4e10adc377b03055898e1e95c5318e72714c460644e`);
@@ -48,7 +48,7 @@ reproduced both output files byte-identically.
 The evidence of record:
 `specs/056-sign821-recovery/extraction-record.md`
 (SHA-256
-`73792a47e137fdbee80bce3a2919aafc0c93fcad3fde4651548e0e2c1192312e`)
+`ad4a3f747d6ae4e0f13ae984c1169bd4a94570625e7dcc199146ff2ef73fb6ab`)
 — the dry-run, both extraction sheets, the
 reconciliation, and the R-3 record, in full.
 

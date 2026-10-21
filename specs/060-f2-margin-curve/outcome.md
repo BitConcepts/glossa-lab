@@ -388,6 +388,33 @@ One line per governed claim, F060-C01…C15.
   completion commit carrying this note
   re-runs CI before the merge; the merge is
   made only on that run's genuine green.
+- Landing (coordinator record, 2026-10-21):
+  the re-run foreseen above never happened —
+  GitHub Actions stopped creating runs for
+  this branch after the record commit (no run
+  for four successive heads over ~85 minutes,
+  while sibling branches and main received
+  runs; superseded PRs #274, #284 and #287
+  carry the incident notes). The record was
+  landed from PR #291 instead: the coordinator
+  merged the then-current main into the record
+  branch through the git-data API as a union
+  merge of the only two shared files
+  (LEDGER.md and
+  backend/glossa_lab/experiment_graph.py —
+  each side's insertion preserved whole;
+  merge commit `070a5849…`), and that head
+  received a genuine run: 39644627725, 7/7
+  from the run's own job conclusions
+  (Backend tests, Frontend tests, Indus
+  public validation checks, Evidence Graph
+  script smoke tests, Shell wrappers ×3).
+  PR #291 merged as `82f69b22…`. Foundation
+  check stands at 40 passed / 0 failed /
+  8 warnings on main at the merge, as at
+  every Group 2 landing; the backend job of
+  run 39644627725 passed the full suite on
+  the merged tree.
 
 ---
 

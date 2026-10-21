@@ -71,41 +71,41 @@
       Phase-403; DD-039-8 recorded the gate
       reading; the spec's own OSF contract
       registration is filed under DD-039-6.
-- [ ] **L6 — Freeze PR merged**, house gates green
+- [x] **L6 — Freeze PR merged**, house gates green
       (foundation 0 failures, full suite, branding
       sweep).
 
 ## Execution — gated on the freeze and the bundle sequence
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Input integrity:** the gazetteer
+- [x] **E2 — Input integrity:** the gazetteer
       file hashes to the spec §2 pin; any drift
       stops the execution before evidence work.
-- [ ] **E3 — Evidence assembly:** per site, the
+- [x] **E3 — Evidence assembly:** per site, the
       admissible published determinations with
       locators, under the frozen source hierarchy
       (DD-039-2) and the DD-039-3 published-venue
       rule; restricted sources recorded as
       citations only.
-- [ ] **E4 — Mapping and assignment:** the frozen
+- [x] **E4 — Mapping and assignment:** the frozen
       mapping table applied per site; contested
       flags set under spec §5; blanks recorded
       with reason codes; outputs A and B written
       and hashed.
-- [ ] **E5 — Margins verification step** (spec
+- [x] **E5 — Margins verification step** (spec
       §8): the Phase-395 period-eligibility gate
       recomputed over the assigned gazetteer,
       reported both ways over contested
       assignments; the standing link-mass floor
       stated in writing; no Q7 machinery beyond
       the gate runs.
-- [ ] **E6 — Dataset new version:** the Stage 0
+- [x] **E6 — Dataset new version:** the Stage 0
       Zenodo record's new version deposited
       through the release gate and recorded by
       DOI; the existing version untouched.
-- [ ] **E7 — Outcome:** the outcome record in
+- [x] **E7 — Outcome:** the outcome record in
       this spec's directory completed by append,
       the root LEDGER entry, and the foundation
       check (H21); nothing written into any

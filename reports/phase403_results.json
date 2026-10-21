@@ -1,0 +1,1044 @@
+{
+  "assignments": {
+    "amri": {
+      "evidence": [
+        {
+          "citation": "Casal, J.-M. (1964) Fouilles d'Amri. Paris: Klincksieck (Commission des Fouilles Archéologiques).",
+          "locator": "The Amri period sequence: Period III is the Harappan occupation and Period IIID the Jhukar level; the Period IIID Jhukar equation is discussed in Mughal (1990).",
+          "mapped_labels": [
+            "Mature Harappan",
+            "Late Harappan"
+          ],
+          "mapping_rule": [
+            "MAP-EXPLICIT-MATURE",
+            "MAP-JHUKAR"
+          ],
+          "period_scheme": "Amri site sequence (Casal 1964)",
+          "published_value": "Period III — Harappan (Mature) occupation; Period IIID — Jhukar",
+          "source": "tier 1 (frozen citation hierarchy, DD-039-2)"
+        }
+      ],
+      "label": [
+        "Mature Harappan",
+        "Late Harappan"
+      ],
+      "mapping_rule": [
+        "MAP-EXPLICIT-MATURE",
+        "MAP-JHUKAR"
+      ],
+      "reviewer": "Muse Spark via Muse (AI agent)"
+    },
+    "banawali": {
+      "contested": true,
+      "evidence": [
+        {
+          "citation": "Bisht, R.S. (1982) 'Excavations at Banawali: 1974–77', in Possehl, G.L. (ed.) Harappan Civilization: A Contemporary Perspective. New Delhi: Oxford & IBH / AIIS, pp. 113–124.",
+          "locator": "The Banawali period sequence, pp. 113–124.",
+          "mapped_labels": [
+            "Mature Harappan"
+          ],
+          "mapping_rule": [
+            "MAP-EXPLICIT-MATURE"
+          ],
+          "note": "Period I ('Pre-Harappan') and Period III ('Post-Harappan') carry no frozen mapping-table entry and map to nothing.",
+          "period_scheme": "Banawali site sequence (Bisht 1982)",
+          "published_value": "Period I — Pre-Harappan (Kalibangan industry); Period II — Mature Harappan; Period III — Post-Harappan (Banawali-Bara)",
+          "source": "tier 1 (frozen citation hierarchy, DD-039-2)"
+        },
+        {
+          "citation": "'Archaeobotanical evidence of millets in the Indian subcontinent with some observations on their role in the Indus civilization', Journal of Archaeological Science (2014), review of the Saraswat/Pokharia archaeobotanical corpus.",
+          "locator": "Core-zone summary: sorghum recorded from the Early Harappan (3000–2500 BC) at Kunal and Banawali and from the Mature Harappan (2500–2000 BC) at Banawali and Rohira.",
+          "mapped_labels": [
+            "Early Harappan",
+            "Mature Harappan"
+          ],
+          "mapping_rule": [
+            "MAP-EXPLICIT-EARLY",
+            "MAP-EXPLICIT-MATURE"
+          ],
+          "period_scheme": "Three-period Harappan scheme",
+          "published_value": "Early Harappan and Mature Harappan levels at Banawali",
+          "source": "tier 4 (frozen citation hierarchy, DD-039-2)"
+        }
+      ],
+      "label": [
+        "Early Harappan",
+        "Mature Harappan"
+      ],
+      "mapping_rule": [
+        "MAP-EXPLICIT-MATURE",
+        "MAP-EXPLICIT-EARLY"
+      ],
+      "reviewer": "Muse Spark via Muse (AI agent)"
+    },
+    "harappa": {
+      "evidence": [
+        {
+          "citation": "Meadow, R.H. & Kenoyer, J.M. (2001) 'Recent discoveries and highlights from excavations at Harappa: 1998–2000', Indo-Koko-Kenkyu (Indian Archaeological Studies) 22: 19–36.",
+          "locator": "The five-period Harappa sequence stated in the article (pp. 19–36).",
+          "mapped_labels": [
+            "Early Harappan",
+            "Mature Harappan",
+            "Late Harappan"
+          ],
+          "mapping_rule": [
+            "MAP-HARP-RAVI",
+            "MAP-HARP-KOTDIJI",
+            "MAP-HARP-HARAPPAN",
+            "MAP-HARP-CEMETERY-H"
+          ],
+          "period_scheme": "Harappa five-period sequence (HARP)",
+          "published_value": "Period 1 — Ravi aspect of the Hakra Phase; Period 2 — Kot Diji (Early Harappa) Phase; Period 3 — Harappa Phase; Period 4 — Harappa / Late Harappa transitional; Period 5 — Late Harappa Phase (Cemetery H)",
+          "source": "tier 4 (frozen citation hierarchy, DD-039-2)"
+        },
+        {
+          "citation": "Kenoyer, J.M. (2008) 'Indus Valley Tradition', in Pearsall, D.M. (ed.) Encyclopedia of Archaeology. New York: Academic Press — Table 1 (chronology of Harappa).",
+          "locator": "Table 1: Period 1 Ravi Phase and Period 2 Kot Diji Phase = Early Harappan; Period 3 Harappa Phase = Mature Harappan; Period 5 Late Harappan (Cemetery H).",
+          "mapped_labels": [
+            "Early Harappan",
+            "Mature Harappan",
+            "Late Harappan"
+          ],
+          "mapping_rule": [
+            "MAP-HARP-RAVI",
+            "MAP-HARP-KOTDIJI",
+            "MAP-HARP-HARAPPAN",
+            "MAP-HARP-CEMETERY-H"
+          ],
+          "period_scheme": "Harappa five-period sequence (HARP)",
+          "published_value": "Ravi Phase, Kot Diji Phase (Early Harappan); Harappa Phase (Mature Harappan); Cemetery H (Late Harappan)",
+          "source": "tier 3 (frozen citation hierarchy, DD-039-2)"
+        }
+      ],
+      "label": [
+        "Early Harappan",
+        "Mature Harappan",
+        "Late Harappan"
+      ],
+      "mapping_rule": [
+        "MAP-HARP-RAVI",
+        "MAP-HARP-KOTDIJI",
+        "MAP-HARP-HARAPPAN",
+        "MAP-HARP-CEMETERY-H"
+      ],
+      "reviewer": "Muse Spark via Muse (AI agent)"
+    },
+    "jhukar": {
+      "evidence": [
+        {
+          "citation": "Mughal, M.R. (1990) 'The Decline of the Indus Civilization and the Late Harappan Period in the Indus Valley', Lahore Museum Bulletin 3(2).",
+          "locator": "The Jhukar site discussion: Early, Middle and Late Jhukar Phases treated as the Late Harappan manifestation in Sindh; a Harappan Period occupation is recorded in trench CIV.",
+          "mapped_labels": [
+            "Late Harappan"
+          ],
+          "mapping_rule": [
+            "MAP-JHUKAR"
+          ],
+          "note": "The unqualified 'Harappan Period occupation' carries no mapping-table entry and maps to nothing.",
+          "period_scheme": "Jhukar phase sequence (Mughal 1990)",
+          "published_value": "Jhukar Phases (Early, Middle, Late) within the Late Harappan Period; underlying Harappan Period occupation",
+          "source": "tier 4 (frozen citation hierarchy, DD-039-2)"
+        }
+      ],
+      "label": "Late Harappan",
+      "mapping_rule": [
+        "MAP-JHUKAR"
+      ],
+      "reviewer": "Muse Spark via Muse (AI agent)"
+    },
+    "kalibangan": {
+      "evidence": [
+        {
+          "citation": "Lal, B.B. et al. (2003) Excavations at Kalibangan: The Harappans (1960–69), Part 1. New Delhi: Archaeological Survey of India; and Lal, B.B. et al. (2015) Part 2, Memoirs of the Archaeological Survey of India 110.",
+          "locator": "Part 1 covers 'the Early Harappan times (Period I)'; Part 2 Preface (MASI 110): 'the first one dealt mainly with the Early Harappan settlement (Period I)… the present one is devoted to the Mature Harappan settlement (Period II)'.",
+          "mapped_labels": [
+            "Early Harappan",
+            "Mature Harappan"
+          ],
+          "mapping_rule": [
+            "MAP-EXPLICIT-EARLY",
+            "MAP-EXPLICIT-MATURE"
+          ],
+          "period_scheme": "Kalibangan site sequence, equated in the excavation report itself",
+          "published_value": "Period I — Early Harappan; Period II — Mature Harappan",
+          "source": "tier 1 (frozen citation hierarchy, DD-039-2)"
+        }
+      ],
+      "label": [
+        "Early Harappan",
+        "Mature Harappan"
+      ],
+      "mapping_rule": [
+        "MAP-EXPLICIT-EARLY",
+        "MAP-EXPLICIT-MATURE"
+      ],
+      "reviewer": "Muse Spark via Muse (AI agent)"
+    },
+    "khirsara": {
+      "evidence": [
+        {
+          "citation": "Nath, J., Kumaran, R.N. & Kulkarni, S. (2012) 'A Preliminary Report on the Excavations at Khirsara, Gujarat', Puratattva 42: 122–132.",
+          "locator": "Excavation-season report, pp. 122–132.",
+          "mapped_labels": [
+            "Mature Harappan"
+          ],
+          "mapping_rule": [
+            "MAP-EXPLICIT-MATURE"
+          ],
+          "period_scheme": "Three-period Harappan scheme",
+          "published_value": "The entire cultural deposit at Khirsara belongs to the mature phase of the Harappan culture",
+          "source": "tier 4 (frozen citation hierarchy, DD-039-2)"
+        },
+        {
+          "citation": "Pokharia, A.K. et al. (2017) 'Ancient Indian rice (Oryza sativa L.) processing and agricultural adaptations at Khirsara, a Harappan site in western India', PLoS ONE 12(10): e0185684.",
+          "locator": "Site description: a mature Harappan phase occupation (c. 2600–2100 BCE).",
+          "mapped_labels": [
+            "Mature Harappan"
+          ],
+          "mapping_rule": [
+            "MAP-EXPLICIT-MATURE"
+          ],
+          "period_scheme": "Three-period Harappan scheme",
+          "published_value": "Mature Harappan phase occupation",
+          "source": "tier 4 (frozen citation hierarchy, DD-039-2)"
+        }
+      ],
+      "label": "Mature Harappan",
+      "mapping_rule": [
+        "MAP-EXPLICIT-MATURE"
+      ],
+      "reviewer": "Muse Spark via Muse (AI agent)"
+    },
+    "kunal": {
+      "evidence": [
+        {
+          "citation": "Khatri, J.S. & Acharya, M. (1995) 'Kunal: A New Indus-Saraswati (Early Harappan) site in Haryana', Puratattva 25: 84–86.",
+          "locator": "Excavation report, pp. 84–86.",
+          "mapped_labels": [
+            "Early Harappan"
+          ],
+          "mapping_rule": [
+            "MAP-EXPLICIT-EARLY"
+          ],
+          "period_scheme": "Three-period Harappan scheme",
+          "published_value": "Early Harappan (Hakra ware) settlement",
+          "source": "tier 4 (frozen citation hierarchy, DD-039-2)"
+        },
+        {
+          "citation": "'Archaeobotanical evidence of millets in the Indian subcontinent with some observations on their role in the Indus civilization', Journal of Archaeological Science (2014).",
+          "locator": "Core-zone summary: sorghum recorded from the Early Harappan (3000–2500 BC) at Kunal and Banawali.",
+          "mapped_labels": [
+            "Early Harappan"
+          ],
+          "mapping_rule": [
+            "MAP-EXPLICIT-EARLY"
+          ],
+          "period_scheme": "Three-period Harappan scheme",
+          "published_value": "Early Harappan levels at Kunal",
+          "source": "tier 4 (frozen citation hierarchy, DD-039-2)"
+        }
+      ],
+      "label": "Early Harappan",
+      "mapping_rule": [
+        "MAP-EXPLICIT-EARLY"
+      ],
+      "reviewer": "Muse Spark via Muse (AI agent)"
+    },
+    "lothal": {
+      "evidence": [
+        {
+          "citation": "Rao, S.R. (1979) Lothal: A Harappan Port Town (1955–62), Vol. I. New Delhi: Archaeological Survey of India (Memoirs 78).",
+          "locator": "pp. 28–36: Period A, the Mature phase, at pp. 28–33; Period B, the Late Harappan occupation, at pp. 33–36 (pagination as cited in Frenez's published survey of the Lothal evidence).",
+          "mapped_labels": [
+            "Mature Harappan",
+            "Late Harappan"
+          ],
+          "mapping_rule": [
+            "MAP-EXPLICIT-MATURE",
+            "MAP-EXPLICIT-LATE"
+          ],
+          "period_scheme": "Lothal site sequence (Rao 1979)",
+          "published_value": "Period A — Mature phase; Period B — Late Harappan occupation",
+          "source": "tier 1 (frozen citation hierarchy, DD-039-2)"
+        }
+      ],
+      "label": [
+        "Mature Harappan",
+        "Late Harappan"
+      ],
+      "mapping_rule": [
+        "MAP-EXPLICIT-MATURE",
+        "MAP-EXPLICIT-LATE"
+      ],
+      "reviewer": "Muse Spark via Muse (AI agent)"
+    },
+    "mohenjo daro": {
+      "evidence": [
+        {
+          "citation": "Dales, G.F. & Kenoyer, J.M. (1986) Excavations at Mohenjo-Daro, Pakistan: The Pottery. Philadelphia: University Museum, University of Pennsylvania (University Museum Monograph 53).",
+          "locator": "The Phase A / Phase B periodisation of the Mohenjo-daro pottery; the Phase B Jhukar material at Fig. 13.1, Pl. 18F, Figs. 63.1 and 86.1–7, as cited in Mughal (1990).",
+          "mapped_labels": [
+            "Mature Harappan",
+            "Late Harappan"
+          ],
+          "mapping_rule": [
+            "MAP-EXPLICIT-MATURE",
+            "MAP-JHUKAR"
+          ],
+          "period_scheme": "Mohenjo-daro pottery phases (Dales & Kenoyer)",
+          "published_value": "Phase A — Mature Harappan occupation; Phase B — Jhukar pottery in the upper levels",
+          "source": "tier 1 (frozen citation hierarchy, DD-039-2)"
+        }
+      ],
+      "label": [
+        "Mature Harappan",
+        "Late Harappan"
+      ],
+      "mapping_rule": [
+        "MAP-EXPLICIT-MATURE",
+        "MAP-JHUKAR"
+      ],
+      "reviewer": "Muse Spark via Muse (AI agent)"
+    },
+    "rangpur": {
+      "evidence": [
+        {
+          "citation": "Rao, S.R. (1963) 'Excavations at Rangpur and Other Explorations in Gujarat', Ancient India 18–19: 5–207.",
+          "locator": "The Rangpur period sequence in the excavation report.",
+          "mapped_labels": [
+            "Mature Harappan"
+          ],
+          "mapping_rule": [
+            "MAP-EXPLICIT-MATURE"
+          ],
+          "note": "Period IIC ('Transition') and Period III ('Post-Harappan') carry no mapping-table entry and map to nothing.",
+          "period_scheme": "Rangpur site sequence (Rao 1963)",
+          "published_value": "Period IIA — late phase of the Mature Harappan culture; Period IIB — late phase of the Mature Harappan culture; Period IIC — Transition; Period III — Post-Harappan (Lustrous Red Ware)",
+          "source": "tier 1 (frozen citation hierarchy, DD-039-2)"
+        }
+      ],
+      "label": "Mature Harappan",
+      "mapping_rule": [
+        "MAP-EXPLICIT-MATURE"
+      ],
+      "reviewer": "Muse Spark via Muse (AI agent)"
+    },
+    "rojdi": {
+      "evidence": [
+        {
+          "citation": "Possehl, G.L. & Raval, M.H. (1989) Harappan Civilization and Rojdi. New Delhi: Oxford & IBH / AIIS.",
+          "locator": "p. 13: Rojdi A–C classed as Sorath Harappan.",
+          "mapped_labels": [],
+          "mapping_rule": null,
+          "note": "'Sorath Harappan' and the 'Urban Phase' carry no mapping-table entry and map to nothing.",
+          "period_scheme": "Rojdi site sequence (Possehl & Raval 1989)",
+          "published_value": "Rojdi A, B and C — Sorath Harappan, a regional expression of the Harappan Urban Phase",
+          "source": "tier 1 (frozen citation hierarchy, DD-039-2)"
+        },
+        {
+          "citation": "Weber, S.A. (1991) 'Plants and Harappan Subsistence: An Example of Stability and Change from Rojdi' (published study of the Rojdi sequence).",
+          "locator": "The Rojdi A/B/C period discussion (pp. 165–183 as cited in the published literature).",
+          "mapped_labels": [
+            "Late Harappan"
+          ],
+          "mapping_rule": [
+            "MAP-EXPLICIT-LATE"
+          ],
+          "period_scheme": "Rojdi site sequence",
+          "published_value": "Rojdi A and Rojdi B fall into the Harappan Period; Rojdi C (2000–1700 BC) represents the Late Harappan Period",
+          "source": "tier 4 (frozen citation hierarchy, DD-039-2)"
+        }
+      ],
+      "label": "Late Harappan",
+      "mapping_rule": [
+        "MAP-EXPLICIT-LATE"
+      ],
+      "reviewer": "Muse Spark via Muse (AI agent)"
+    }
+  },
+  "completeness_by_source": {
+    "CISI Vol. 1 catalogue (Phase-124 layer)": {
+      "rows_catalogued": 11,
+      "sites": 11,
+      "sites_assigned": 9,
+      "sites_contested": 1
+    },
+    "CISI Vol. 2 catalogue (Phase-124 layer)": {
+      "rows_catalogued": 4,
+      "sites": 4,
+      "sites_assigned": 4,
+      "sites_contested": 0
+    },
+    "XRONOS": {
+      "rows_catalogued": 21,
+      "sites": 21,
+      "sites_assigned": 4,
+      "sites_contested": 1
+    }
+  },
+  "contested_sites": [
+    "banawali"
+  ],
+  "coverage": {
+    "blank_reason_tally": {
+      "NO_PUBLISHED_DETERMINATION": 8,
+      "OUTSIDE_LABEL_SET": 9,
+      "UNMAPPED_SCHEME_VALUE": 2
+    },
+    "label_tally": {
+      "Early Harappan": 4,
+      "Late Harappan": 6,
+      "Mature Harappan": 8
+    },
+    "sites_assigned": 11,
+    "sites_blank": 19,
+    "sites_total": 30
+  },
+  "executed": "2026-10-20",
+  "freeze_digest": "ec53a841a7f7f7afd56ab69f1caf23557e1e26c834d35563c42990ce66aa2742",
+  "input": {
+    "assignments_null_pre_act": 36,
+    "file": "data/movement/gazetteer_rows.jsonl",
+    "rows": 36,
+    "sha256": "5ac76a3031121a61fa39f87b1d2760855374d171ddd036988fee2820dca9b8b6",
+    "sites": 30
+  },
+  "margins_verification": {
+    "closure": "The step closes at the link-mass floor: in-universe link mass is 2 link-eligible sites and 1 linked pair against floors of 8 eligible sites and 10 linked pairs. Q7 still fails its link-mass floors; this act changes no study outcome; Q6 remains NOT-YET-TESTABLE.",
+    "eligible_count_contested_counted": 8,
+    "eligible_count_contested_excluded": 7,
+    "eligible_sites_contested_counted": [
+      "amri",
+      "banawali",
+      "harappa",
+      "kalibangan",
+      "khirsara",
+      "lothal",
+      "mohenjo daro",
+      "rangpur"
+    ],
+    "eligible_sites_contested_excluded": [
+      "amri",
+      "harappa",
+      "kalibangan",
+      "khirsara",
+      "lothal",
+      "mohenjo daro",
+      "rangpur"
+    ],
+    "floor_eligible_sites": 8,
+    "in_universe_link_mass": {
+      "floor_pairs": 10,
+      "floor_sites": 8,
+      "link_eligible_sites": 2,
+      "linked_pairs": 1
+    },
+    "rule": "F031-C10 (frozen, Spec 031): period-eligible iff the gazetteer record indicates a Mature Harappan presence"
+  },
+  "output_a": {
+    "byte_identical_outside_assignment_field": true,
+    "file": "data/movement/gazetteer_rows_assigned.jsonl",
+    "pre_act_file_modified": false,
+    "rows": 36,
+    "sha256": "64f288d35c492d8babacb4efb9c7446573a62168095db44f7469cd7904fcabb4"
+  },
+  "per_site": {
+    "amri": {
+      "contested": false,
+      "determinations": 1,
+      "evidence": [
+        {
+          "citation": "Casal, J.-M. (1964) Fouilles d'Amri. Paris: Klincksieck (Commission des Fouilles Archéologiques).",
+          "locator": "The Amri period sequence: Period III is the Harappan occupation and Period IIID the Jhukar level; the Period IIID Jhukar equation is discussed in Mughal (1990).",
+          "mapped_labels": [
+            "Mature Harappan",
+            "Late Harappan"
+          ],
+          "mapping_rules": [
+            "MAP-EXPLICIT-MATURE",
+            "MAP-JHUKAR"
+          ],
+          "period_scheme": "Amri site sequence (Casal 1964)",
+          "published_value": "Period III — Harappan (Mature) occupation; Period IIID — Jhukar",
+          "source_tier": 1
+        }
+      ],
+      "labels": [
+        "Mature Harappan",
+        "Late Harappan"
+      ],
+      "status": "assigned"
+    },
+    "banawali": {
+      "contested": true,
+      "determinations": 2,
+      "evidence": [
+        {
+          "citation": "Bisht, R.S. (1982) 'Excavations at Banawali: 1974–77', in Possehl, G.L. (ed.) Harappan Civilization: A Contemporary Perspective. New Delhi: Oxford & IBH / AIIS, pp. 113–124.",
+          "locator": "The Banawali period sequence, pp. 113–124.",
+          "mapped_labels": [
+            "Mature Harappan"
+          ],
+          "mapping_rules": [
+            "MAP-EXPLICIT-MATURE"
+          ],
+          "note": "Period I ('Pre-Harappan') and Period III ('Post-Harappan') carry no frozen mapping-table entry and map to nothing.",
+          "period_scheme": "Banawali site sequence (Bisht 1982)",
+          "published_value": "Period I — Pre-Harappan (Kalibangan industry); Period II — Mature Harappan; Period III — Post-Harappan (Banawali-Bara)",
+          "source_tier": 1
+        },
+        {
+          "citation": "'Archaeobotanical evidence of millets in the Indian subcontinent with some observations on their role in the Indus civilization', Journal of Archaeological Science (2014), review of the Saraswat/Pokharia archaeobotanical corpus.",
+          "locator": "Core-zone summary: sorghum recorded from the Early Harappan (3000–2500 BC) at Kunal and Banawali and from the Mature Harappan (2500–2000 BC) at Banawali and Rohira.",
+          "mapped_labels": [
+            "Early Harappan",
+            "Mature Harappan"
+          ],
+          "mapping_rules": [
+            "MAP-EXPLICIT-EARLY",
+            "MAP-EXPLICIT-MATURE"
+          ],
+          "period_scheme": "Three-period Harappan scheme",
+          "published_value": "Early Harappan and Mature Harappan levels at Banawali",
+          "source_tier": 4
+        }
+      ],
+      "labels": [
+        "Early Harappan",
+        "Mature Harappan"
+      ],
+      "status": "assigned"
+    },
+    "chagylly": {
+      "determinations": 1,
+      "evidence": [
+        {
+          "citation": "XRONOS export record, as carried in the gazetteer row itself (record_id 73011).",
+          "locator": "The row's period_label_as_published field.",
+          "mapped_labels": [],
+          "mapping_rules": [],
+          "period_scheme": "XRONOS periods field",
+          "published_value": "PN, Neo.",
+          "source_tier": 3
+        }
+      ],
+      "note": "PN/Neo. stand affirmatively outside the Harappan sequence; the frozen spec §4 names them outside the label set.",
+      "reason_code": "OUTSIDE_LABEL_SET",
+      "status": "blank"
+    },
+    "desalpur": {
+      "determinations": 0,
+      "evidence": [],
+      "note": "Assembly located only a passing transitional-phase mention (Desalpur IB) in the regional Kathiawar literature; no admissible determination verified under the act's bar.",
+      "reason_code": "NO_PUBLISHED_DETERMINATION",
+      "status": "blank"
+    },
+    "harappa": {
+      "contested": false,
+      "determinations": 2,
+      "evidence": [
+        {
+          "citation": "Meadow, R.H. & Kenoyer, J.M. (2001) 'Recent discoveries and highlights from excavations at Harappa: 1998–2000', Indo-Koko-Kenkyu (Indian Archaeological Studies) 22: 19–36.",
+          "locator": "The five-period Harappa sequence stated in the article (pp. 19–36).",
+          "mapped_labels": [
+            "Early Harappan",
+            "Mature Harappan",
+            "Late Harappan"
+          ],
+          "mapping_rules": [
+            "MAP-HARP-RAVI",
+            "MAP-HARP-KOTDIJI",
+            "MAP-HARP-HARAPPAN",
+            "MAP-HARP-CEMETERY-H"
+          ],
+          "period_scheme": "Harappa five-period sequence (HARP)",
+          "published_value": "Period 1 — Ravi aspect of the Hakra Phase; Period 2 — Kot Diji (Early Harappa) Phase; Period 3 — Harappa Phase; Period 4 — Harappa / Late Harappa transitional; Period 5 — Late Harappa Phase (Cemetery H)",
+          "source_tier": 4
+        },
+        {
+          "citation": "Kenoyer, J.M. (2008) 'Indus Valley Tradition', in Pearsall, D.M. (ed.) Encyclopedia of Archaeology. New York: Academic Press — Table 1 (chronology of Harappa).",
+          "locator": "Table 1: Period 1 Ravi Phase and Period 2 Kot Diji Phase = Early Harappan; Period 3 Harappa Phase = Mature Harappan; Period 5 Late Harappan (Cemetery H).",
+          "mapped_labels": [
+            "Early Harappan",
+            "Mature Harappan",
+            "Late Harappan"
+          ],
+          "mapping_rules": [
+            "MAP-HARP-RAVI",
+            "MAP-HARP-KOTDIJI",
+            "MAP-HARP-HARAPPAN",
+            "MAP-HARP-CEMETERY-H"
+          ],
+          "period_scheme": "Harappa five-period sequence (HARP)",
+          "published_value": "Ravi Phase, Kot Diji Phase (Early Harappan); Harappa Phase (Mature Harappan); Cemetery H (Late Harappan)",
+          "source_tier": 3
+        }
+      ],
+      "labels": [
+        "Early Harappan",
+        "Mature Harappan",
+        "Late Harappan"
+      ],
+      "status": "assigned"
+    },
+    "hiregudda": {
+      "determinations": 1,
+      "evidence": [
+        {
+          "citation": "Fuller, D.Q., Korisettar, R., Venkatasubbaiah, P.C. & Jones, M.K. (2007) 'Dating the Neolithic of South India: new radiometric evidence for key economic, social and ritual transformations' (published journal article).",
+          "locator": "The Hiregudda and Sannarachamma discussion: 'the evidence from Hiregudda and Sannarachamma indicate that the Neolithic period in the Sanganakallu-Kupgal area begins with ashmound creation activities'.",
+          "mapped_labels": [],
+          "mapping_rules": [],
+          "period_scheme": "South Indian Neolithic sequence",
+          "published_value": "Neolithic occupation",
+          "source_tier": 4
+        }
+      ],
+      "note": "'Neolithic' stands affirmatively outside the Harappan sequence.",
+      "reason_code": "OUTSIDE_LABEL_SET",
+      "status": "blank"
+    },
+    "islam chowki": {
+      "determinations": 0,
+      "evidence": [],
+      "note": "A Cholistan survey site of the Mughal (1997) gazetteer universe; no per-site published determination verified in this act's assembly.",
+      "reason_code": "NO_PUBLISHED_DETERMINATION",
+      "status": "blank"
+    },
+    "jhukar": {
+      "contested": false,
+      "determinations": 1,
+      "evidence": [
+        {
+          "citation": "Mughal, M.R. (1990) 'The Decline of the Indus Civilization and the Late Harappan Period in the Indus Valley', Lahore Museum Bulletin 3(2).",
+          "locator": "The Jhukar site discussion: Early, Middle and Late Jhukar Phases treated as the Late Harappan manifestation in Sindh; a Harappan Period occupation is recorded in trench CIV.",
+          "mapped_labels": [
+            "Late Harappan"
+          ],
+          "mapping_rules": [
+            "MAP-JHUKAR"
+          ],
+          "note": "The unqualified 'Harappan Period occupation' carries no mapping-table entry and maps to nothing.",
+          "period_scheme": "Jhukar phase sequence (Mughal 1990)",
+          "published_value": "Jhukar Phases (Early, Middle, Late) within the Late Harappan Period; underlying Harappan Period occupation",
+          "source_tier": 4
+        }
+      ],
+      "labels": [
+        "Late Harappan"
+      ],
+      "status": "assigned"
+    },
+    "joenniemi": {
+      "determinations": 0,
+      "evidence": [],
+      "note": "No published determination located in this act's assembly.",
+      "reason_code": "NO_PUBLISHED_DETERMINATION",
+      "status": "blank"
+    },
+    "kalibangan": {
+      "contested": false,
+      "determinations": 1,
+      "evidence": [
+        {
+          "citation": "Lal, B.B. et al. (2003) Excavations at Kalibangan: The Harappans (1960–69), Part 1. New Delhi: Archaeological Survey of India; and Lal, B.B. et al. (2015) Part 2, Memoirs of the Archaeological Survey of India 110.",
+          "locator": "Part 1 covers 'the Early Harappan times (Period I)'; Part 2 Preface (MASI 110): 'the first one dealt mainly with the Early Harappan settlement (Period I)… the present one is devoted to the Mature Harappan settlement (Period II)'.",
+          "mapped_labels": [
+            "Early Harappan",
+            "Mature Harappan"
+          ],
+          "mapping_rules": [
+            "MAP-EXPLICIT-EARLY",
+            "MAP-EXPLICIT-MATURE"
+          ],
+          "period_scheme": "Kalibangan site sequence, equated in the excavation report itself",
+          "published_value": "Period I — Early Harappan; Period II — Mature Harappan",
+          "source_tier": 1
+        }
+      ],
+      "labels": [
+        "Early Harappan",
+        "Mature Harappan"
+      ],
+      "status": "assigned"
+    },
+    "kanispur": {
+      "determinations": 1,
+      "evidence": [
+        {
+          "citation": "Mani, B.R., excavation reports on Kanispur in Indian Archaeology — A Review (1998–99 season; summarised IAR 2004: 30–40; Mani 2000: 139).",
+          "locator": "The Kanispur period sequence as published in the ASI reports.",
+          "mapped_labels": [],
+          "mapping_rules": [],
+          "period_scheme": "Kanispur site sequence (ASI)",
+          "published_value": "Period I — Aceramic Neolithic; Period II — Ceramic Neolithic; later Kushan-period (early historic) occupation",
+          "source_tier": 1
+        }
+      ],
+      "note": "'Neolithic' stands affirmatively outside the Harappan sequence.",
+      "reason_code": "OUTSIDE_LABEL_SET",
+      "status": "blank"
+    },
+    "khirsara": {
+      "contested": false,
+      "determinations": 2,
+      "evidence": [
+        {
+          "citation": "Nath, J., Kumaran, R.N. & Kulkarni, S. (2012) 'A Preliminary Report on the Excavations at Khirsara, Gujarat', Puratattva 42: 122–132.",
+          "locator": "Excavation-season report, pp. 122–132.",
+          "mapped_labels": [
+            "Mature Harappan"
+          ],
+          "mapping_rules": [
+            "MAP-EXPLICIT-MATURE"
+          ],
+          "period_scheme": "Three-period Harappan scheme",
+          "published_value": "The entire cultural deposit at Khirsara belongs to the mature phase of the Harappan culture",
+          "source_tier": 4
+        },
+        {
+          "citation": "Pokharia, A.K. et al. (2017) 'Ancient Indian rice (Oryza sativa L.) processing and agricultural adaptations at Khirsara, a Harappan site in western India', PLoS ONE 12(10): e0185684.",
+          "locator": "Site description: a mature Harappan phase occupation (c. 2600–2100 BCE).",
+          "mapped_labels": [
+            "Mature Harappan"
+          ],
+          "mapping_rules": [
+            "MAP-EXPLICIT-MATURE"
+          ],
+          "period_scheme": "Three-period Harappan scheme",
+          "published_value": "Mature Harappan phase occupation",
+          "source_tier": 4
+        }
+      ],
+      "labels": [
+        "Mature Harappan"
+      ],
+      "status": "assigned"
+    },
+    "kunal": {
+      "contested": false,
+      "determinations": 2,
+      "evidence": [
+        {
+          "citation": "Khatri, J.S. & Acharya, M. (1995) 'Kunal: A New Indus-Saraswati (Early Harappan) site in Haryana', Puratattva 25: 84–86.",
+          "locator": "Excavation report, pp. 84–86.",
+          "mapped_labels": [
+            "Early Harappan"
+          ],
+          "mapping_rules": [
+            "MAP-EXPLICIT-EARLY"
+          ],
+          "period_scheme": "Three-period Harappan scheme",
+          "published_value": "Early Harappan (Hakra ware) settlement",
+          "source_tier": 4
+        },
+        {
+          "citation": "'Archaeobotanical evidence of millets in the Indian subcontinent with some observations on their role in the Indus civilization', Journal of Archaeological Science (2014).",
+          "locator": "Core-zone summary: sorghum recorded from the Early Harappan (3000–2500 BC) at Kunal and Banawali.",
+          "mapped_labels": [
+            "Early Harappan"
+          ],
+          "mapping_rules": [
+            "MAP-EXPLICIT-EARLY"
+          ],
+          "period_scheme": "Three-period Harappan scheme",
+          "published_value": "Early Harappan levels at Kunal",
+          "source_tier": 4
+        }
+      ],
+      "labels": [
+        "Early Harappan"
+      ],
+      "status": "assigned"
+    },
+    "lothal": {
+      "contested": false,
+      "determinations": 1,
+      "evidence": [
+        {
+          "citation": "Rao, S.R. (1979) Lothal: A Harappan Port Town (1955–62), Vol. I. New Delhi: Archaeological Survey of India (Memoirs 78).",
+          "locator": "pp. 28–36: Period A, the Mature phase, at pp. 28–33; Period B, the Late Harappan occupation, at pp. 33–36 (pagination as cited in Frenez's published survey of the Lothal evidence).",
+          "mapped_labels": [
+            "Mature Harappan",
+            "Late Harappan"
+          ],
+          "mapping_rules": [
+            "MAP-EXPLICIT-MATURE",
+            "MAP-EXPLICIT-LATE"
+          ],
+          "period_scheme": "Lothal site sequence (Rao 1979)",
+          "published_value": "Period A — Mature phase; Period B — Late Harappan occupation",
+          "source_tier": 1
+        }
+      ],
+      "labels": [
+        "Mature Harappan",
+        "Late Harappan"
+      ],
+      "status": "assigned"
+    },
+    "mohenjo daro": {
+      "contested": false,
+      "determinations": 1,
+      "evidence": [
+        {
+          "citation": "Dales, G.F. & Kenoyer, J.M. (1986) Excavations at Mohenjo-Daro, Pakistan: The Pottery. Philadelphia: University Museum, University of Pennsylvania (University Museum Monograph 53).",
+          "locator": "The Phase A / Phase B periodisation of the Mohenjo-daro pottery; the Phase B Jhukar material at Fig. 13.1, Pl. 18F, Figs. 63.1 and 86.1–7, as cited in Mughal (1990).",
+          "mapped_labels": [
+            "Mature Harappan",
+            "Late Harappan"
+          ],
+          "mapping_rules": [
+            "MAP-EXPLICIT-MATURE",
+            "MAP-JHUKAR"
+          ],
+          "period_scheme": "Mohenjo-daro pottery phases (Dales & Kenoyer)",
+          "published_value": "Phase A — Mature Harappan occupation; Phase B — Jhukar pottery in the upper levels",
+          "source_tier": 1
+        }
+      ],
+      "labels": [
+        "Mature Harappan",
+        "Late Harappan"
+      ],
+      "status": "assigned"
+    },
+    "mullali": {
+      "determinations": 1,
+      "evidence": [
+        {
+          "citation": "XRONOS export record, as carried in the gazetteer row itself (record_id 73022).",
+          "locator": "The row's period_label_as_published field.",
+          "mapped_labels": [],
+          "mapping_rules": [],
+          "period_scheme": "XRONOS periods field",
+          "published_value": "PN, Neo.?",
+          "source_tier": 3
+        }
+      ],
+      "note": "PN/Neo. stand affirmatively outside the Harappan sequence; the frozen spec §4 names them outside the label set.",
+      "reason_code": "OUTSIDE_LABEL_SET",
+      "status": "blank"
+    },
+    "ojiyana": {
+      "determinations": 1,
+      "evidence": [
+        {
+          "citation": "Meena, B.R. & Tripathi, A., Ojiyana excavation reports, Indian Archaeology — A Review (1999–2000, 2000–01, 2001–02 seasons).",
+          "locator": "The Ojiyana cultural sequence as published in the ASI season reports.",
+          "mapped_labels": [],
+          "mapping_rules": [],
+          "period_scheme": "Ojiyana site sequence (ASI)",
+          "published_value": "A single Chalcolithic deposit belonging entirely to the Ahar Culture, in three phases",
+          "source_tier": 1
+        }
+      ],
+      "note": "The Ahar-culture Chalcolithic stands affirmatively outside the Harappan sequence.",
+      "reason_code": "OUTSIDE_LABEL_SET",
+      "status": "blank"
+    },
+    "piklihal": {
+      "determinations": 1,
+      "evidence": [
+        {
+          "citation": "Allchin, F.R. (1960) Piklihal Excavations. Hyderabad: Government of Andhra Pradesh (Archaeological Series 8).",
+          "locator": "The Piklihal sequence: Neolithic occupation (Lower and Upper Neolithic), followed by Megalithic.",
+          "mapped_labels": [],
+          "mapping_rules": [],
+          "period_scheme": "Piklihal site sequence (Allchin 1960)",
+          "published_value": "Neolithic",
+          "source_tier": 1
+        }
+      ],
+      "note": "'Neolithic' stands affirmatively outside the Harappan sequence.",
+      "reason_code": "OUTSIDE_LABEL_SET",
+      "status": "blank"
+    },
+    "qasim bagh": {
+      "determinations": 0,
+      "evidence": [],
+      "note": "A Cholistan survey site of the Mughal (1997) gazetteer universe; no per-site published determination verified in this act's assembly.",
+      "reason_code": "NO_PUBLISHED_DETERMINATION",
+      "status": "blank"
+    },
+    "rangpur": {
+      "contested": false,
+      "determinations": 1,
+      "evidence": [
+        {
+          "citation": "Rao, S.R. (1963) 'Excavations at Rangpur and Other Explorations in Gujarat', Ancient India 18–19: 5–207.",
+          "locator": "The Rangpur period sequence in the excavation report.",
+          "mapped_labels": [
+            "Mature Harappan"
+          ],
+          "mapping_rules": [
+            "MAP-EXPLICIT-MATURE"
+          ],
+          "note": "Period IIC ('Transition') and Period III ('Post-Harappan') carry no mapping-table entry and map to nothing.",
+          "period_scheme": "Rangpur site sequence (Rao 1963)",
+          "published_value": "Period IIA — late phase of the Mature Harappan culture; Period IIB — late phase of the Mature Harappan culture; Period IIC — Transition; Period III — Post-Harappan (Lustrous Red Ware)",
+          "source_tier": 1
+        }
+      ],
+      "labels": [
+        "Mature Harappan"
+      ],
+      "status": "assigned"
+    },
+    "rojdi": {
+      "contested": false,
+      "determinations": 2,
+      "evidence": [
+        {
+          "citation": "Possehl, G.L. & Raval, M.H. (1989) Harappan Civilization and Rojdi. New Delhi: Oxford & IBH / AIIS.",
+          "locator": "p. 13: Rojdi A–C classed as Sorath Harappan.",
+          "mapped_labels": [],
+          "mapping_rules": [],
+          "note": "'Sorath Harappan' and the 'Urban Phase' carry no mapping-table entry and map to nothing.",
+          "period_scheme": "Rojdi site sequence (Possehl & Raval 1989)",
+          "published_value": "Rojdi A, B and C — Sorath Harappan, a regional expression of the Harappan Urban Phase",
+          "source_tier": 1
+        },
+        {
+          "citation": "Weber, S.A. (1991) 'Plants and Harappan Subsistence: An Example of Stability and Change from Rojdi' (published study of the Rojdi sequence).",
+          "locator": "The Rojdi A/B/C period discussion (pp. 165–183 as cited in the published literature).",
+          "mapped_labels": [
+            "Late Harappan"
+          ],
+          "mapping_rules": [
+            "MAP-EXPLICIT-LATE"
+          ],
+          "period_scheme": "Rojdi site sequence",
+          "published_value": "Rojdi A and Rojdi B fall into the Harappan Period; Rojdi C (2000–1700 BC) represents the Late Harappan Period",
+          "source_tier": 4
+        }
+      ],
+      "labels": [
+        "Late Harappan"
+      ],
+      "status": "assigned"
+    },
+    "sannarachamma": {
+      "determinations": 1,
+      "evidence": [
+        {
+          "citation": "Fuller, D.Q., Korisettar, R., Venkatasubbaiah, P.C. & Jones, M.K. (2007) 'Dating the Neolithic of South India: new radiometric evidence for key economic, social and ritual transformations' (published journal article).",
+          "locator": "The Hiregudda and Sannarachamma discussion (as for hiregudda).",
+          "mapped_labels": [],
+          "mapping_rules": [],
+          "period_scheme": "South Indian Neolithic sequence",
+          "published_value": "Neolithic occupation",
+          "source_tier": 4
+        }
+      ],
+      "note": "'Neolithic' stands affirmatively outside the Harappan sequence.",
+      "reason_code": "OUTSIDE_LABEL_SET",
+      "status": "blank"
+    },
+    "shahr i sokhta": {
+      "determinations": 1,
+      "evidence": [
+        {
+          "citation": "Provenance study of archaeological ceramics from Shahr-i Sokhta, Archaeological and Anthropological Sciences (2021), Springer; restating Tosi (1976), Biscione et al. (1977) and Salvatori & Tosi (2005).",
+          "locator": "'Four periods of settlement can be distinguished… at the Shahr-i Sokhta site based on eleven structural layers (Tosi 1976; Biscione et al. 1977; Sajjadi 2004)'.",
+          "mapped_labels": [],
+          "mapping_rules": [],
+          "period_scheme": "Shahr-i Sokhta site sequence",
+          "published_value": "Periods I, II, III and IV of the site sequence",
+          "source_tier": 4
+        }
+      ],
+      "note": "A site-scheme ordinal sequence with no mapping-table entry; generic ordinals never map across schemes (frozen §4). A revised sequence (Ascalone & Vecchio) exists in print; both schemes are unmapped, so the blank stands either way.",
+      "reason_code": "UNMAPPED_SCHEME_VALUE",
+      "status": "blank"
+    },
+    "sheri khan tarakai": {
+      "determinations": 1,
+      "evidence": [
+        {
+          "citation": "Petrie, C.A., Khan, F. & Knox, J.R. (eds) (2010) Sheri Khan Tarakai and Early Village Life in the Borderlands of North-West Pakistan. Oxford: Oxbow (Bannu Archaeological Project).",
+          "locator": "The monograph's occupation account; the site is treated as a late Neolithic village occupation, c. 4500–3000 BC.",
+          "mapped_labels": [],
+          "mapping_rules": [],
+          "period_scheme": "Bannu basin regional sequence",
+          "published_value": "Neolithic (the Sheri Khan Tarakai Phase)",
+          "source_tier": 1
+        }
+      ],
+      "note": "'Neolithic' stands affirmatively outside the Harappan sequence.",
+      "reason_code": "OUTSIDE_LABEL_SET",
+      "status": "blank"
+    },
+    "sheri khan tarakai 3": {
+      "determinations": 0,
+      "evidence": [],
+      "note": "A survey locus of the Bannu Archaeological Project; no locus-level published determination verified in this act's assembly.",
+      "reason_code": "NO_PUBLISHED_DETERMINATION",
+      "status": "blank"
+    },
+    "sheri khan tarakai 4": {
+      "determinations": 0,
+      "evidence": [],
+      "note": "A survey locus of the Bannu Archaeological Project; no locus-level published determination verified in this act's assembly.",
+      "reason_code": "NO_PUBLISHED_DETERMINATION",
+      "status": "blank"
+    },
+    "surkotada": {
+      "determinations": 0,
+      "evidence": [],
+      "note": "The site monograph (Joshi 1990, Memoirs of the ASI 87) publishes a Period IA/IB/IC sequence; no statement equating that sequence to a label-set value could be verified under the act's verification bar in this assembly. The blank records the bar, not the absence of print.",
+      "reason_code": "NO_PUBLISHED_DETERMINATION",
+      "status": "blank"
+    },
+    "ter kala dheri": {
+      "determinations": 1,
+      "evidence": [
+        {
+          "citation": "Petrie, C.A., Khan, F. & Knox, J.R. (eds) (2010) Sheri Khan Tarakai and Early Village Life in the Borderlands of North-West Pakistan. Oxford: Oxbow (Bannu Archaeological Project).",
+          "locator": "Chapter 10.3 discussion of the regional phase sequence: transitional deposits at Ter Kala Dheri straddle the Sheri Khan Tarakai and Tochi-Gomal Phases.",
+          "mapped_labels": [],
+          "mapping_rules": [],
+          "period_scheme": "Bannu basin regional sequence",
+          "published_value": "Transitional between the Sheri Khan Tarakai Phase and the Tochi-Gomal Phase",
+          "source_tier": 1
+        }
+      ],
+      "note": "Named regional phases with no mapping-table entry.",
+      "reason_code": "UNMAPPED_SCHEME_VALUE",
+      "status": "blank"
+    },
+    "tigrana": {
+      "determinations": 0,
+      "evidence": [],
+      "note": "The recent excavations (Central University of Haryana, 2016–2021) are reported in press and institutional summaries; no published determination with a verifiable locator was assembled under the act's bar.",
+      "reason_code": "NO_PUBLISHED_DETERMINATION",
+      "status": "blank"
+    },
+    "yalangach": {
+      "determinations": 1,
+      "evidence": [
+        {
+          "citation": "XRONOS export record, as carried in the gazetteer row itself (record_id 73026).",
+          "locator": "The row's period_label_as_published field.",
+          "mapped_labels": [],
+          "mapping_rules": [],
+          "period_scheme": "XRONOS periods field",
+          "published_value": "PN, Neo.?",
+          "source_tier": 3
+        }
+      ],
+      "note": "PN/Neo. stand affirmatively outside the Harappan sequence; the frozen spec §4 names them outside the label set.",
+      "reason_code": "OUTSIDE_LABEL_SET",
+      "status": "blank"
+    }
+  },
+  "phase": 403,
+  "spec": "039-gazetteer-period-assignment",
+  "standing_fences": [
+    "The labels are finding aids, not dating evidence.",
+    "The act changes no study outcome.",
+    "Q7 still fails its link-mass floors (link mass 2 sites / 1 pair vs floors 8 / 10).",
+    "Q6 remains NOT-YET-TESTABLE.",
+    "Spec 030 Ask 2 remains RESERVED."
+  ]
+}

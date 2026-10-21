@@ -2915,6 +2915,16 @@ try:
     logger.info("Registered %d Phase-402 (spec 037) nodes", len(list(_p402_defs())))
 except Exception as _p402_exc:  # noqa: BLE001
     logger.warning("Phase-402 (spec 037) nodes not registered: %s", _p402_exc)
+# ── Phase-403 node (spec 039: gazetteer period assignment) ──
+try:
+    from glossa_lab.experiment_graph_phase403 import (
+        _phase403_node_defs as _p403_defs,  # noqa: PLC0415
+    )
+    for _d in _p403_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-403 (spec 039) nodes", len(list(_p403_defs())))
+except Exception as _p403_exc:  # noqa: BLE001
+    logger.warning("Phase-403 (spec 039) nodes not registered: %s", _p403_exc)
 # ── Phase-120 nodes (Bhaskar 2024 descriptive triage) ──
 try:
     from glossa_lab.experiment_graph_phase120 import (

@@ -1,778 +1,868 @@
 {
-  "spec": "060-f2-margin-curve",
-  "register_version": "0.5-draft",
-  "note": "Draft register for Spec 060 (design D-23, PR #195 packet), opened 2026-10-21 under the owner-approved runnable-experiments campaign of the same date (member 17) and the portfolio triage of the same date, which recorded the mandatory drafting correction carried in F060-C05. Conventions as in Specs 032-042: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-PHASE137-RECORD (Phase-137's recorded populations, tables, and layer-input hashes are the record of the two layers), ASM-PHASE384-RECORD (Phase-384 v2's recorded intervals are the record of the margin adjudication), ASM-PHASE384-ESTIMATOR (the v2 estimator as pinned is the estimator of record; its v1 predecessor's interval adjudication is INVALID and is never used), ASM-SPEC034-RECORD (Spec 034's ATTRIBUTED TO COMPOSITION verdict and its Mohenjo-daro-seals slice description are the finished D-20 record), ASM-LAYERS-AS-HELD (the two layers are held files whose pins are the Phase-137 record's recorded hashes), ASM-TYPE-AS-RECORDED (object type is each layer's recorded value; the Holdat layer carries no type field and its type is the constant SEAL), ASM-GATES-BEFORE-OUTCOME (integrity, reproduction, and census precede any outcome quantity), ASM-DESCRIPTION-NOT-CONTROL (a described covariate is not a controlled one), ASM-APPEND-ONLY (outcomes append; frozen records are never edited), ASM-NO-VERDICT-MOVES (by the design's own terms, no verdict moves under this design).",
-  "claims": [
+ "spec": "060-f2-margin-curve",
+ "register_version": "0.7-draft",
+ "note": "Draft register for Spec 060 (design D-23, PR #195 packet), opened 2026-10-21 under the owner-approved runnable-experiments campaign of the same date (member 17) and the portfolio triage of the same date, which recorded the mandatory drafting correction carried in F060-C05. Conventions as in Specs 032-042: requirement claims carry no falsification test where a gate or inspection is the operative check; boundaries carry the conditions under which each claim holds; evidence items carry observed_at from this draft because the cited facts were verified first-hand at drafting. The AEE lifecycle hooks have NOT run on this register; they are the freeze gate (tasks L4), and any recovery round they force changes claim text before any freeze digest is computed. ASM- ids name the assumptions each claim stands on: ASM-PHASE137-RECORD (Phase-137's recorded populations, tables, and layer-input hashes are the record of the two layers), ASM-PHASE384-RECORD (Phase-384 v2's recorded intervals are the record of the margin adjudication), ASM-PHASE384-ESTIMATOR (the v2 estimator as pinned is the estimator of record; its v1 predecessor's interval adjudication is INVALID and is never used), ASM-SPEC034-RECORD (Spec 034's ATTRIBUTED TO COMPOSITION verdict and its Mohenjo-daro-seals slice description are the finished D-20 record), ASM-LAYERS-AS-HELD (the two layers are held files whose pins are the Phase-137 record's recorded hashes), ASM-TYPE-AS-RECORDED (object type is each layer's recorded value; the Holdat layer carries no type field and its type is the constant SEAL), ASM-GATES-BEFORE-OUTCOME (integrity, reproduction, and census precede any outcome quantity), ASM-DESCRIPTION-NOT-CONTROL (a described covariate is not a controlled one), ASM-APPEND-ONLY (outcomes append; frozen records are never edited), ASM-NO-VERDICT-MOVES (by the design's own terms, no verdict moves under this design). FREEZE RECOVERY (2026-10-21): normalised to engine evidence values at 0.6-draft (kind observed, source_quality artifact; refs, source_ids, directions, descriptions, and observed_at values unchanged - the draft's free-form labels are not engine values and the aee 1.5.3 loader refuses them, round 0 at the freeze); freeze rulings DD-060-11 to DD-060-15 were carried into the boundaries of F060-C07, C09, C10, C11, and C13 before the hooks ran. At 0.7-draft the 15 irreducibility-challenged claim texts were restated as single head propositions with carried clauses moved into boundaries verbatim-in-substance (propositions, falsifiers, and verdict rules unchanged), and every multi-item claim's evidence gained mutual independent_of declarations naming the claim's other evidence source_ids - the within-claim pairs are distinct records (the Phase-137 results, the Phase-384 results and machinery, the design packet, the Spec 034 outcome), and the declarations state that fact. Final restatement within 0.7-draft: F060-C04, C10, and C14 heads were restated singly (C04's condition, C10's floors, and C14's no-pooling rule carried into their boundaries), clearing the last negation-conflict, irreducibility, and counterexample records. A further final restatement of F060-C12's head (assigned by the mapping of spec section 5.2 alone, its three-word mapping carried into its boundary) cleared the last negation-conflict record (C04/C12).",
+ "claims": [
+  {
+   "id": "F060-C01",
+   "kind": "hypothesis",
+   "text": "An outcome under Spec 060 states only the two residue results of spec section 1.",
+   "status": "draft",
+   "boundary": "The scope is the two Phase-137 analysis populations (Holdat 1,670 inscriptions; ICIT lineage 5,410) and their shared population as defined in spec section 5.2. It excludes any re-adjudication of F2 or F3, any statement about which compilation is right, any pooled or cross-mapped sign analysis, and any conclusion about ancient cities beyond what the two arms' outcome words say. Carried from the draft text: the two results are (a) how the settled F2-HOLDAT verdict behaves as a function of the margin, as a sensitivity display, and (b) whether the Holdat and ICIT layers' site-effect intervals converge on the population the two layers share.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-PHASE137-RECORD",
+    "ASM-NO-VERDICT-MOVES"
+   ],
+   "alternatives": [
+    "the margin curve could be read as re-judging F2 at a better margin (it cannot: the declared margin and its verdict stand, spec section 9 limit 1)"
+   ],
+   "falsification_tests": [
+    "the claim is falsified in scope if any Spec 060 output states a conclusion about a population, compilation-correctness question, or verdict outside the two arms as bounded here"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-VERDICT"
+    ],
+    "strongest_rival": "the alternative reading in which a sensitivity curve or a convergence test silently becomes a new verdict",
+    "verdict_rule": "scope is judged by inspection of every Spec 060 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding",
+    "evidence_origin_groups": [
+     "phase137-record",
+     "phase384-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
     {
-      "id": "F060-C01",
-      "kind": "hypothesis",
-      "text": "An outcome under Spec 060 states only (a) how the settled F2-HOLDAT verdict behaves as a function of the margin, as a sensitivity display, and (b) whether the Holdat and ICIT layers' site-effect intervals converge on the population the two layers share.",
-      "status": "draft",
-      "boundary": "The scope is the two Phase-137 analysis populations (Holdat 1,670 inscriptions; ICIT lineage 5,410) and their shared population as defined in spec section 5.2. It excludes any re-adjudication of F2 or F3, any statement about which compilation is right, any pooled or cross-mapped sign analysis, and any conclusion about ancient cities beyond what the two arms' outcome words say.",
-      "depends_on": [],
-      "assumptions": [
-        "ASM-PHASE137-RECORD",
-        "ASM-NO-VERDICT-MOVES"
-      ],
-      "alternatives": [
-        "the margin curve could be read as re-judging F2 at a better margin (it cannot: the declared margin and its verdict stand, spec section 9 limit 1)"
-      ],
-      "falsification_tests": [
-        "the claim is falsified in scope if any Spec 060 output states a conclusion about a population, compilation-correctness question, or verdict outside the two arms as bounded here"
-      ],
-      "metadata": {
-        "framework_kind": "conditional-model-result",
-        "layer": "I",
-        "forbidden_assumptions": [
-          "ASM-RESULT-AS-VERDICT"
-        ],
-        "strongest_rival": "the alternative reading in which a sensitivity curve or a convergence test silently becomes a new verdict",
-        "verdict_rule": "scope is judged by inspection of every Spec 060 output against this boundary; any output exceeding it is a defect of the output, recorded as such, not a finding",
-        "evidence_origin_groups": [
-          "phase137-record",
-          "phase384-record",
-          "design-packet"
-        ],
-        "boundary_confirmation": "stated-in-claim"
-      },
-      "evidence": [
-        {
-          "ref": "reports/phase137_results.json",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Phase-137 results of record (file SHA-256 18f86f45..., recomputed at this draft): Holdat analysis population 1,670 inscriptions at 9 eligible sites, table 9x98, chi2 745.953, V 0.1154, layer input hash 62d14d2b...; ICIT analysis population 5,410 at 7 eligible sites, table 7x187, chi2 4966.362, V 0.2190, layer input hash c368f290....",
-          "source_id": "reports/phase137_results.json",
-          "observed_at": "2026-10-21"
-        },
-        {
-          "ref": "reports/phase384_results.json",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Phase-384 v2 results of record (file SHA-256 dda6092d..., recomputed at this draft): F2 governing basic interval [0.058939204306206666, 0.0777941604081594], point V 0.11539837515155221, n 1,670; F3 governing basic interval [0.18229651053139323, 0.21036863506165235], point V 0.21900847512892316, n 5,410; B = 9,999, seed 20261012, governing interval basic bootstrap.",
-          "source_id": "reports/phase384_results.json",
-          "observed_at": "2026-10-21"
-        },
-        {
-          "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "kind": "design-source",
-          "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
-          "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "observed_at": "2026-10-21"
-        }
-      ]
+     "ref": "reports/phase137_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-137 results of record (file SHA-256 18f86f45..., recomputed at this draft): Holdat analysis population 1,670 inscriptions at 9 eligible sites, table 9x98, chi2 745.953, V 0.1154, layer input hash 62d14d2b...; ICIT analysis population 5,410 at 7 eligible sites, table 7x187, chi2 4966.362, V 0.2190, layer input hash c368f290....",
+     "source_id": "reports/phase137_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase384_results.json",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
     },
     {
-      "id": "F060-C02",
-      "kind": "requirement",
-      "text": "STUDY-SPEC-024/F2-HOLDAT stands SETTLED - CONTRADICTED at the declared margin 0.10, with governing basic-bootstrap interval [0.058939204306206666, 0.0777941604081594] and point V 0.11539837515155221 on 1,670 Holdat inscriptions; STUDY-SPEC-024/F3-ICIT stands SUPPORTED at the same margin, with governing interval [0.18229651053139323, 0.21036863506165235] and point V 0.21900847512892316 on 5,410 ICIT inscriptions.",
-      "status": "draft",
-      "boundary": "These are the Phase-384 v2 results of record. The v1 Phase-384 interval adjudication is INVALID (its procedure was shown non-discriminating by its own independence control) and forms no part of this statement. F2's original Phase-137 composition-controlled permutation verdict (NOT SUPPORTED, raw p = 0.7354) is a separate recorded route to the same side and is not restated by this claim.",
-      "depends_on": [
-        "F060-C01"
-      ],
-      "assumptions": [
-        "ASM-PHASE384-RECORD",
-        "ASM-PHASE384-ESTIMATOR"
-      ],
-      "alternatives": [],
-      "falsification_tests": [
-        "recompute SHA-256 of reports/phase384_results.json (dda6092d...) and read the F2_holdat and F3_icit_lineage basic_ci95 and recomputed_v values; any mismatch falsifies this statement and voids the draft's basis"
-      ],
-      "metadata": {
-        "framework_kind": "requirement",
-        "layer": "M",
-        "forbidden_assumptions": [],
-        "strongest_rival": "the record could have been misread or superseded (the Spec 040 stale-pin precedent shows draft-cited pins can be wrong)",
-        "verdict_rule": "the statement stands or falls on the pinned results file hashing to its recorded value with the stated quantities in it",
-        "evidence_origin_groups": [
-          "phase384-record"
-        ],
-        "boundary_confirmation": "stated-in-claim"
-      },
-      "evidence": [
-        {
-          "ref": "reports/phase384_results.json",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Phase-384 v2 results of record (file SHA-256 dda6092d..., recomputed at this draft): F2 governing basic interval [0.058939204306206666, 0.0777941604081594], point V 0.11539837515155221, n 1,670; F3 governing basic interval [0.18229651053139323, 0.21036863506165235], point V 0.21900847512892316, n 5,410; B = 9,999, seed 20261012, governing interval basic bootstrap.",
-          "source_id": "reports/phase384_results.json",
-          "observed_at": "2026-10-21"
-        },
-        {
-          "ref": "specs/026-rcph-framework-transfer/reruns/phase384-contract-v2.md",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Phase-384 contract v2 (SHA-256 f0a67bd7..., matching the freeze-v2 sources record): populations rebuilt with the Phase-137 module's own loaders and frozen population rule, rebuilt tables asserted equal to the recorded tables; the v1 interval adjudication is INVALID.",
-          "source_id": "specs/026-rcph-framework-transfer/reruns/phase384-contract-v2.md",
-          "observed_at": "2026-10-21"
-        }
-      ]
+     "ref": "reports/phase384_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-384 v2 results of record (file SHA-256 dda6092d..., recomputed at this draft): F2 governing basic interval [0.058939204306206666, 0.0777941604081594], point V 0.11539837515155221, n 1,670; F3 governing basic interval [0.18229651053139323, 0.21036863506165235], point V 0.21900847512892316, n 5,410; B = 9,999, seed 20261012, governing interval basic bootstrap.",
+     "source_id": "reports/phase384_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase137_results.json",
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
     },
     {
-      "id": "F060-C03",
-      "kind": "hypothesis",
-      "text": "On the shared population of spec section 5.2, the Holdat layer's governing site-effect interval and the ICIT layer's governing site-effect interval overlap.",
-      "status": "draft",
-      "boundary": "Overlap is the design's fixed convergence criterion, applied to the Phase-384 v2 governing (basic bootstrap) intervals computed per layer on the shared population only. It is a statement about these two layers on this population; it asserts nothing about the size of either effect, about any other population, or about why the full-population intervals differed.",
-      "depends_on": [
-        "F060-C01",
-        "F060-C02"
-      ],
-      "assumptions": [
-        "ASM-PHASE137-RECORD",
-        "ASM-PHASE384-ESTIMATOR",
-        "ASM-TYPE-AS-RECORDED"
-      ],
-      "alternatives": [
-        "the intervals still exclude each other on the shared population (the falsifier, F060-C04)",
-        "arm 2 closes TOO THIN at its census gate (F060-C10), in which case this hypothesis is untested, not failed"
-      ],
-      "falsification_tests": [
-        "run arm 2 under spec section 5.2: if the two governing intervals on the shared population do not overlap, this hypothesis is not supported and the outcome is COMPOSITION DOES NOT"
-      ],
-      "metadata": {
-        "framework_kind": "conditional-model-result",
-        "layer": "I",
-        "forbidden_assumptions": [
-          "ASM-RESULT-AS-VERDICT"
-        ],
-        "strongest_rival": "the strongest rival is the falsifier itself: the disagreement lives in the compilations' sign treatment and survives sharing sites and types",
-        "verdict_rule": "SUPPORTED for the hypothesis iff arm 2 returns COMPOSITION EXPLAINS THE GAP under F060-C12; TOO THIN leaves it untested and says so",
-        "evidence_origin_groups": [
-          "phase384-record",
-          "design-packet"
-        ],
-        "boundary_confirmation": "stated-in-claim"
-      },
-      "evidence": [
-        {
-          "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "kind": "design-source",
-          "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
-          "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "observed_at": "2026-10-21"
-        },
-        {
-          "ref": "reports/phase384_results.json",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Phase-384 v2 results of record (file SHA-256 dda6092d..., recomputed at this draft): F2 governing basic interval [0.058939204306206666, 0.0777941604081594], point V 0.11539837515155221, n 1,670; F3 governing basic interval [0.18229651053139323, 0.21036863506165235], point V 0.21900847512892316, n 5,410; B = 9,999, seed 20261012, governing interval basic bootstrap.",
-          "source_id": "reports/phase384_results.json",
-          "observed_at": "2026-10-21"
-        }
-      ]
-    },
-    {
-      "id": "F060-C04",
-      "kind": "requirement",
-      "text": "If the two layers' governing intervals still exclude each other on the shared population, the outcome is recorded as COMPOSITION DOES NOT, in the pre-written wording of spec section 6.3, stated alongside Spec 034's finished attribution and adjudicating nothing further.",
-      "status": "draft",
-      "boundary": "This is design D-23's falsifier, with its hand-off corrected per F060-C05: the design routed this outcome to D-20 as a pending next step; D-20 is complete. The wording names the measured tension between this outcome and Spec 034's record and expressly designs, registers, and implies no successor study.",
-      "depends_on": [
-        "F060-C03",
-        "F060-C05"
-      ],
-      "assumptions": [
-        "ASM-SPEC034-RECORD"
-      ],
-      "alternatives": [
-        "routing the outcome to a pending D-20 attribution (refused: that study is finished; the routing would misstate the record)"
-      ],
-      "falsification_tests": [
-        "if the arm-2 outcome record of a non-overlap result omits the Spec 034 statement, claims support from it, or presents a successor as designed or governing, that record falsifies compliance with this requirement"
-      ],
-      "metadata": {
-        "framework_kind": "requirement",
-        "layer": "M",
-        "forbidden_assumptions": [],
-        "strongest_rival": "a non-overlap outcome could be misread as overturning Spec 034 (it cannot: different question, different population, different measurement)",
-        "verdict_rule": "the outcome record must carry the section 6.3 wording, including both-statements-stand and no-successor sentences, whenever the condition holds",
-        "evidence_origin_groups": [
-          "design-packet",
-          "spec034-record"
-        ],
-        "boundary_confirmation": "stated-in-claim"
-      },
-      "evidence": [
-        {
-          "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "kind": "design-source",
-          "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
-          "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "observed_at": "2026-10-21"
-        },
-        {
-          "ref": "specs/034-matched-object-attribution/outcome.md",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Spec 034 outcome of record (file SHA-256 c0cc615d..., recomputed at this draft; freeze digest 696fd185...): gate census 169 matched objects, matched-object median distance 0.025694, verdict ATTRIBUTED TO COMPOSITION, residual 0.040340; the matched slice is all Mohenjo-daro seals.",
-          "source_id": "specs/034-matched-object-attribution/outcome.md",
-          "observed_at": "2026-10-21"
-        }
-      ]
-    },
-    {
-      "id": "F060-C05",
-      "kind": "requirement",
-      "text": "Design D-20 is complete: Spec 034 (Phase-398) returned ATTRIBUTED TO COMPOSITION on 169 matched objects (median distance 0.025694 against the frozen 0.20 composition line; residual 0.040340), the matched slice being all Mohenjo-daro seals; Spec 060's arm 2 is therefore written against that finished record and never against a pending D-20.",
-      "status": "draft",
-      "boundary": "This claim records the drafting correction the triage and the campaign plan (Part 3) mandate: what design D-23 said (falsifier hands off to D-20 as the governing next step), what the record now is (D-20 executed and verdicted under Spec 034), and what this draft does (spec sections 2.2-2.3). It changes no other part of D-23's substance: hypothesis, falsifier, grid, criteria, and floors are carried verbatim.",
-      "depends_on": [
-        "F060-C02"
-      ],
-      "assumptions": [
-        "ASM-SPEC034-RECORD"
-      ],
-      "alternatives": [],
-      "falsification_tests": [
-        "recompute SHA-256 of specs/034-matched-object-attribution/outcome.md (c0cc615d...) and read its verdict, gate census (169), median (0.025694), and slice description; any mismatch falsifies this statement and voids the correction's basis"
-      ],
-      "metadata": {
-        "framework_kind": "requirement",
-        "layer": "M",
-        "forbidden_assumptions": [],
-        "strongest_rival": "the design text could be followed literally, leaving a hand-off to a study that no longer exists as a next step",
-        "verdict_rule": "the correction stands or falls on Spec 034's pinned outcome carrying the stated verdict and quantities; the draft's sections 2 and 6.3 must conform to it",
-        "evidence_origin_groups": [
-          "spec034-record",
-          "design-packet"
-        ],
-        "boundary_confirmation": "stated-in-claim"
-      },
-      "evidence": [
-        {
-          "ref": "specs/034-matched-object-attribution/outcome.md",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Spec 034 outcome of record (file SHA-256 c0cc615d..., recomputed at this draft; freeze digest 696fd185...): gate census 169 matched objects, matched-object median distance 0.025694, verdict ATTRIBUTED TO COMPOSITION, residual 0.040340; the matched slice is all Mohenjo-daro seals.",
-          "source_id": "specs/034-matched-object-attribution/outcome.md",
-          "observed_at": "2026-10-21"
-        },
-        {
-          "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "kind": "design-source",
-          "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
-          "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "observed_at": "2026-10-21"
-        }
-      ]
-    },
-    {
-      "id": "F060-C06",
-      "kind": "requirement",
-      "text": "No verdict moves under Spec 060: the settled F2 verdict (CONTRADICTED at the declared margin 0.10) and the settled F3 verdict (SUPPORTED at the declared margin 0.10) stand exactly as recorded, whatever either arm finds, and every Spec 060 outcome carries that sentence.",
-      "status": "draft",
-      "boundary": "This is design D-23's own limit, carried exactly: 'No verdict moves.' Arm 1 is a sensitivity display and arm 2 is a convergence test on a residue question; neither is a re-adjudication route for Spec 024, Phase-137, or Phase-384, whose frozen records are never edited by this spec.",
-      "depends_on": [
-        "F060-C01"
-      ],
-      "assumptions": [
-        "ASM-NO-VERDICT-MOVES",
-        "ASM-APPEND-ONLY"
-      ],
-      "alternatives": [
-        "treating a margin-curve cell or a shared-population overlap as grounds to restate F2 or F3 (refused: the design forbids it in advance)"
-      ],
-      "falsification_tests": [
-        "inspection: any Spec 060 product that restates, supersedes, or re-adjudicates the F2 or F3 verdicts, or omits the no-verdict-moves sentence of spec section 8 item 5, falsifies compliance with this requirement"
-      ],
-      "metadata": {
-        "framework_kind": "requirement",
-        "layer": "M",
-        "forbidden_assumptions": [],
-        "strongest_rival": "the pressure to let a cleaner curve or a convergence finding quietly replace a settled verdict",
-        "verdict_rule": "compliance is judged by file inspection at execution close: Spec 024 / Phase-384 pinned hashes unchanged, verdicts quoted only as recorded",
-        "evidence_origin_groups": [
-          "design-packet",
-          "phase384-record"
-        ],
-        "boundary_confirmation": "stated-in-claim"
-      },
-      "evidence": [
-        {
-          "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "kind": "design-source",
-          "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
-          "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "observed_at": "2026-10-21"
-        },
-        {
-          "ref": "reports/phase384_results.json",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Phase-384 v2 results of record (file SHA-256 dda6092d..., recomputed at this draft): F2 governing basic interval [0.058939204306206666, 0.0777941604081594], point V 0.11539837515155221, n 1,670; F3 governing basic interval [0.18229651053139323, 0.21036863506165235], point V 0.21900847512892316, n 5,410; B = 9,999, seed 20261012, governing interval basic bootstrap.",
-          "source_id": "reports/phase384_results.json",
-          "observed_at": "2026-10-21"
-        }
-      ]
-    },
-    {
-      "id": "F060-C07",
-      "kind": "requirement",
-      "text": "Both arms are computed with the Phase-384 v2 estimator unchanged: populations built by the Phase-137 module's own loaders and frozen population rule (eligible sites; at least one parsed token; sign columns at layer-wide count at least 10, remainder pooled as OTHER), inscription-level bootstrap within site with site sizes fixed, B = 9,999, seed 20261012, and the basic bootstrap interval governing.",
-      "status": "draft",
-      "boundary": "Estimator identity is what makes arm 1 comparable to the recorded Phase-384 result and arm 2's two intervals comparable to each other. The v1 parametric-bootstrap procedure is excluded by name: its interval adjudication is INVALID. Any change to an element named here is a different estimator and would require a different spec.",
-      "depends_on": [
-        "F060-C06"
-      ],
-      "assumptions": [
-        "ASM-PHASE384-ESTIMATOR"
-      ],
-      "alternatives": [],
-      "falsification_tests": [
-        "gate 0.3 (the estimator regression) is the operational test: machinery that cannot reproduce the recorded full-layer governing intervals exactly under the recorded seed is not the frozen estimator, and the run stops INVALID"
-      ],
-      "metadata": {
-        "framework_kind": "requirement",
-        "layer": "M",
-        "forbidden_assumptions": [],
-        "strongest_rival": "silent estimator drift (a resampling change, a percentile interval substituted for the governing basic interval) presenting as a margin or convergence finding",
-        "verdict_rule": "identity is judged by the gate-0.3 exact-reproduction standard, not by code inspection alone",
-        "evidence_origin_groups": [
-          "phase384-record"
-        ],
-        "boundary_confirmation": "stated-in-claim"
-      },
-      "evidence": [
-        {
-          "ref": "backend/scripts/phase384_stage2_margins_v2.py",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "The Phase-384 v2 estimator, pinned at this draft (SHA-256 3313394e..., matching the phase384-freeze-v2 sources record): inscription-level bootstrap within site, site sizes fixed, B = 9,999, seed 20261012, basic bootstrap interval governing.",
-          "source_id": "backend/scripts/phase384_stage2_margins_v2.py",
-          "observed_at": "2026-10-21"
-        },
-        {
-          "ref": "specs/026-rcph-framework-transfer/reruns/phase384-contract-v2.md",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Phase-384 contract v2 (SHA-256 f0a67bd7..., matching the freeze-v2 sources record): populations rebuilt with the Phase-137 module's own loaders and frozen population rule, rebuilt tables asserted equal to the recorded tables; the v1 interval adjudication is INVALID.",
-          "source_id": "specs/026-rcph-framework-transfer/reruns/phase384-contract-v2.md",
-          "observed_at": "2026-10-21"
-        }
-      ]
-    },
-    {
-      "id": "F060-C08",
-      "kind": "requirement",
-      "text": "Arm 1 reports the F2 verdict as a function of the margin on exactly the fixed grid 0.05, 0.075, 0.10, 0.125, 0.15, each cell worded by the frozen family rule applied to the governing interval (CONTRADICTED AT m if its upper bound is below m; SUPPORTED AT m if its lower bound is above m; STRADDLES m otherwise), and the curve is labelled sensitivity in every output.",
-      "status": "draft",
-      "boundary": "The grid is design D-23's, carried verbatim, and includes the declared margin 0.10 as one cell among five. No margin outside the grid is computed or quoted under this spec, and no cell word at any margin other than 0.10 is a verdict (F060-C06).",
-      "depends_on": [
-        "F060-C07"
-      ],
-      "assumptions": [
-        "ASM-PHASE384-RECORD"
-      ],
-      "alternatives": [
-        "reporting only the margin at which the cell word flips (refused: that is the margin-shopping the design's fixed grid and sensitivity label exist to prevent)"
-      ],
-      "falsification_tests": [
-        "the outcome's curve table must show exactly the five grid margins with cell words derivable from the published governing interval by this claim's rule; any other margin, word, or a missing sensitivity label falsifies the outcome record"
-      ],
-      "metadata": {
-        "framework_kind": "requirement",
-        "layer": "M",
-        "forbidden_assumptions": [],
-        "strongest_rival": "margin shopping after the interval is known - quoting the flip point as if it were the verdict",
-        "verdict_rule": "the mapping from the governing interval to the five cell words is fixed here, before any recomputation; any reader recomputes the words from the published interval",
-        "evidence_origin_groups": [
-          "design-packet"
-        ],
-        "boundary_confirmation": "stated-in-claim"
-      },
-      "evidence": [
-        {
-          "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "kind": "design-source",
-          "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
-          "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "observed_at": "2026-10-21"
-        },
-        {
-          "ref": "reports/phase384_results.json",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Phase-384 v2 results of record (file SHA-256 dda6092d..., recomputed at this draft): F2 governing basic interval [0.058939204306206666, 0.0777941604081594], point V 0.11539837515155221, n 1,670; F3 governing basic interval [0.18229651053139323, 0.21036863506165235], point V 0.21900847512892316, n 5,410; B = 9,999, seed 20261012, governing interval basic bootstrap.",
-          "source_id": "reports/phase384_results.json",
-          "observed_at": "2026-10-21"
-        }
-      ]
-    },
-    {
-      "id": "F060-C09",
-      "kind": "requirement",
-      "text": "The shared population is constructed from each layer's Phase-137 analysis population by restricting both layers to the sites present in both layers' analysis populations and to the object type present in both: SEAL - the Holdat side entering whole (its layer carries no object-type field; its inscriptions are seal texts, a constant) and the ICIT side restricted to its recorded SEAL type class - with no inscription re-typed and no other type class admitted.",
-      "status": "draft",
-      "boundary": "The site intersection on the record at this draft is six sites (Chanhu-daro, Dholavira, Harappa, Kalibangan, Lothal, Mohenjo-daro), re-derived from the pinned layers at gate 0.4 rather than trusted from this text. The SEAL reading of the design's 'same object types' is this draft's recorded reading (DD-060-3), forced by the Holdat layer's missing type field; the freeze may overturn it openly, and any replacement reading must state what it does with a constant-type layer.",
-      "depends_on": [
-        "F060-C07"
-      ],
-      "assumptions": [
-        "ASM-TYPE-AS-RECORDED",
-        "ASM-PHASE137-RECORD"
-      ],
-      "alternatives": [
-        "restricting the ICIT side by a type the Holdat layer cannot express, or pooling types on one side only (both refused: the restriction must be the type present in both, applied as each layer records it)"
-      ],
-      "falsification_tests": [
-        "the gate-0.4 census publishes the site intersection and per-layer, per-site counts of the constructed population; a constructed population not derivable from the two analysis populations by this claim's restriction falsifies compliance"
-      ],
-      "metadata": {
-        "framework_kind": "requirement",
-        "layer": "M",
-        "forbidden_assumptions": [],
-        "strongest_rival": "a shared population quietly built differently per layer, manufacturing convergence or divergence",
-        "verdict_rule": "the construction rule is frozen in this register before any census exists; the published census must be derivable from the pinned layers by the rule alone",
-        "evidence_origin_groups": [
-          "phase137-record",
-          "design-packet"
-        ],
-        "boundary_confirmation": "stated-in-claim"
-      },
-      "evidence": [
-        {
-          "ref": "reports/phase137_results.json",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Phase-137 results of record (file SHA-256 18f86f45..., recomputed at this draft): Holdat analysis population 1,670 inscriptions at 9 eligible sites, table 9x98, chi2 745.953, V 0.1154, layer input hash 62d14d2b...; ICIT analysis population 5,410 at 7 eligible sites, table 7x187, chi2 4966.362, V 0.2190, layer input hash c368f290....",
-          "source_id": "reports/phase137_results.json",
-          "observed_at": "2026-10-21"
-        },
-        {
-          "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "kind": "design-source",
-          "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
-          "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "observed_at": "2026-10-21"
-        }
-      ]
-    },
-    {
-      "id": "F060-C10",
-      "kind": "requirement",
-      "text": "If the shared population retains fewer than 5 sites or fewer than 500 inscriptions in either layer, arm 2 closes as TOO THIN with the counts stated and computes no shared-population quantity; arm 1 is unaffected and still reports its curve.",
-      "status": "draft",
-      "boundary": "The floors are design D-23's, carried verbatim. Closing arm 2 only (rather than the whole execution) is this draft's reading (DD-060-2): arm 1's population and question are independent of the shared census, unlike a pattern-across-strata headline. The freeze may overturn that reading openly.",
-      "depends_on": [
-        "F060-C09"
-      ],
-      "assumptions": [
-        "ASM-GATES-BEFORE-OUTCOME"
-      ],
-      "alternatives": [
-        "closing the whole execution on a thin shared population (refused at draft; OPEN for the freeze to reverse)"
-      ],
-      "falsification_tests": [
-        "the gate-0.4 census is computed and published before any shared-population quantity; a run that computes an arm-2 quantity past a failed floor falsifies compliance"
-      ],
-      "metadata": {
-        "framework_kind": "requirement",
-        "layer": "M",
-        "forbidden_assumptions": [],
-        "strongest_rival": "a thin shared population computed anyway, because its intervals would be interesting",
-        "verdict_rule": "the gate is counts-only and precedes arm 2 in the run order; the outcome classes in spec section 11 make TOO THIN terminal for arm 2",
-        "evidence_origin_groups": [
-          "design-packet"
-        ],
-        "boundary_confirmation": "stated-in-claim"
-      },
-      "evidence": [
-        {
-          "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "kind": "design-source",
-          "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
-          "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "observed_at": "2026-10-21"
-        }
-      ]
-    },
-    {
-      "id": "F060-C11",
-      "kind": "requirement",
-      "text": "Execution stops before any arm quantity is computed if any spec section 3 input hash mismatches (including either held layer file against its Phase-137-recorded hash), if either layer's population is not reproduced exactly, or if the estimator regression does not reproduce the recorded governing intervals.",
-      "status": "draft",
-      "boundary": "These are spec section 4's gates 0.1, 0.2, and 0.3; their failure class is INVALID. Gate 0.4's failure class is TOO THIN for arm 2 only (F060-C10). No failure is repaired at run time; a repaired input is a new freeze, not a resumed run.",
-      "depends_on": [
-        "F060-C07",
-        "F060-C09"
-      ],
-      "assumptions": [
-        "ASM-GATES-BEFORE-OUTCOME",
-        "ASM-LAYERS-AS-HELD"
-      ],
-      "alternatives": [],
-      "falsification_tests": [
-        "each gate's check is itself the test: the execution record must show every gate's verdict before the first arm quantity, or the run is non-compliant on its face"
-      ],
-      "metadata": {
-        "framework_kind": "requirement",
-        "layer": "M",
-        "forbidden_assumptions": [],
-        "strongest_rival": "gate-skipping under time pressure, with the failure rationalised afterwards - in particular, running on a layer copy that merely looks like the held file",
-        "verdict_rule": "the run's own record is the judge: gate verdicts precede quantities in it, in order, or the outcome is INVALID by construction",
-        "evidence_origin_groups": [
-          "phase137-record",
-          "phase384-record"
-        ],
-        "boundary_confirmation": "stated-in-claim"
-      },
-      "evidence": [
-        {
-          "ref": "reports/phase137_results.json",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Phase-137 results of record (file SHA-256 18f86f45..., recomputed at this draft): Holdat analysis population 1,670 inscriptions at 9 eligible sites, table 9x98, chi2 745.953, V 0.1154, layer input hash 62d14d2b...; ICIT analysis population 5,410 at 7 eligible sites, table 7x187, chi2 4966.362, V 0.2190, layer input hash c368f290....",
-          "source_id": "reports/phase137_results.json",
-          "observed_at": "2026-10-21"
-        },
-        {
-          "ref": "reports/phase384_results.json",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Phase-384 v2 results of record (file SHA-256 dda6092d..., recomputed at this draft): F2 governing basic interval [0.058939204306206666, 0.0777941604081594], point V 0.11539837515155221, n 1,670; F3 governing basic interval [0.18229651053139323, 0.21036863506165235], point V 0.21900847512892316, n 5,410; B = 9,999, seed 20261012, governing interval basic bootstrap.",
-          "source_id": "reports/phase384_results.json",
-          "observed_at": "2026-10-21"
-        },
-        {
-          "ref": "backend/scripts/phase384_stage2_margins_v2.py",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "The Phase-384 v2 estimator, pinned at this draft (SHA-256 3313394e..., matching the phase384-freeze-v2 sources record): inscription-level bootstrap within site, site sizes fixed, B = 9,999, seed 20261012, basic bootstrap interval governing.",
-          "source_id": "backend/scripts/phase384_stage2_margins_v2.py",
-          "observed_at": "2026-10-21"
-        }
-      ]
-    },
-    {
-      "id": "F060-C12",
-      "kind": "requirement",
-      "text": "Arm 2's outcome is exactly one of COMPOSITION EXPLAINS THE GAP (the two governing intervals on the shared population overlap), COMPOSITION DOES NOT (they still exclude each other), or TOO THIN (the gate-0.4 floors fail).",
-      "status": "draft",
-      "boundary": "The outcome words and their conditions are design D-23's, carried verbatim. INVALID is a stop class, not an arm-2 outcome. No fourth word, and no graded or partial form of either composition word, may be introduced at execution.",
-      "depends_on": [
-        "F060-C10",
-        "F060-C03"
-      ],
-      "assumptions": [
-        "ASM-PHASE384-ESTIMATOR"
-      ],
-      "alternatives": [],
-      "falsification_tests": [
-        "the outcome record's arm-2 word must be derivable from the two published shared-population governing intervals (or the gate record) by this claim's definitions alone"
-      ],
-      "metadata": {
-        "framework_kind": "requirement",
-        "layer": "M",
-        "forbidden_assumptions": [],
-        "strongest_rival": "outcome-word shopping once the intervals are known - softening an exclusion into a partial convergence",
-        "verdict_rule": "the mapping from interval relation to outcome word is fixed here, before execution; the outcome record shows the intervals and the word together",
-        "evidence_origin_groups": [
-          "design-packet"
-        ],
-        "boundary_confirmation": "stated-in-claim"
-      },
-      "evidence": [
-        {
-          "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "kind": "design-source",
-          "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
-          "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "observed_at": "2026-10-21"
-        }
-      ]
-    },
-    {
-      "id": "F060-C13",
-      "kind": "requirement",
-      "text": "Period mix is described for each layer on the shared population in every outcome product insofar as the layer as held carries the fields for it; where a layer carries no such field in the fields its loader uses, the product states PERIOD MIX NOT DESCRIBED FOR THIS LAYER - FIELD NOT CARRIED, and period is never treated as controlled under this spec.",
-      "status": "draft",
-      "boundary": "Design D-23 asks for period mix described per layer; neither Phase-137 loader reads a period field (Holdat fields used: letters, position, seal_id, site; ICIT fields used: text, site, type). Description from another source would import an assignment this design did not freeze; the stated-unavailability wording is this draft's reading (DD-060-4), and the freeze may replace it only by naming the source and its rule openly.",
-      "depends_on": [
-        "F060-C01"
-      ],
-      "assumptions": [
-        "ASM-DESCRIPTION-NOT-CONTROL"
-      ],
-      "alternatives": [
-        "importing period assignments from the chronology spine or gazetteer to complete the description (refused at draft: that mapping work belongs to other specs and would change this design's inputs)"
-      ],
-      "falsification_tests": [
-        "an outcome product lacking the per-layer period statement falsifies compliance; a product claiming period control, or presenting an imported period description without a freeze-recorded source and rule, falsifies the boundary"
-      ],
-      "metadata": {
-        "framework_kind": "requirement",
-        "layer": "M",
-        "forbidden_assumptions": [],
-        "strongest_rival": "a composition finding that is really a period difference, quoted without its mixes - or with mixes imported silently",
-        "verdict_rule": "the per-layer period statement is a spec section 8 reporting obligation: its absence from any product is a defect of that product, recorded as such",
-        "evidence_origin_groups": [
-          "phase137-record",
-          "design-packet"
-        ],
-        "boundary_confirmation": "stated-in-claim"
-      },
-      "evidence": [
-        {
-          "ref": "reports/phase137_results.json",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Phase-137 results of record (file SHA-256 18f86f45..., recomputed at this draft): Holdat analysis population 1,670 inscriptions at 9 eligible sites, table 9x98, chi2 745.953, V 0.1154, layer input hash 62d14d2b...; ICIT analysis population 5,410 at 7 eligible sites, table 7x187, chi2 4966.362, V 0.2190, layer input hash c368f290....",
-          "source_id": "reports/phase137_results.json",
-          "observed_at": "2026-10-21"
-        },
-        {
-          "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "kind": "design-source",
-          "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
-          "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "observed_at": "2026-10-21"
-        }
-      ]
-    },
-    {
-      "id": "F060-C14",
-      "kind": "requirement",
-      "text": "The two layers' signs are never pooled, mapped, or harmonised under Spec 060: each layer's site effect is computed inside its own sign numbering, and the only cross-layer operation is the comparison of the two governing intervals.",
-      "status": "draft",
-      "boundary": "The layers number signs in different systems (the Holdat layer's native signs; the ICIT layer's three-digit codes). A crosswalk or mapping would import Phase-125's disagreement into the test that is supposed to locate it; sign treatment therefore remains a named, unseparated candidate carrier of any COMPOSITION DOES NOT outcome, exactly as the design's confounder list leaves it.",
-      "depends_on": [
-        "F060-C07",
-        "F060-C09"
-      ],
-      "assumptions": [
-        "ASM-PHASE137-RECORD"
-      ],
-      "alternatives": [
-        "harmonising sign identities across layers before computing effects (refused: it would decide by construction the question the falsifier asks)"
-      ],
-      "falsification_tests": [
-        "inspection of the execution's code path and results: any cross-layer sign mapping, pooled table, or harmonised column set falsifies compliance and voids the arm-2 outcome"
-      ],
-      "metadata": {
-        "framework_kind": "requirement",
-        "layer": "M",
-        "forbidden_assumptions": [],
-        "strongest_rival": "circularity - a mapping built from the compilations' own correspondence deciding whether the compilations agree",
-        "verdict_rule": "compliance is judged at execution close from the graph-registered script and the results JSON's per-layer tables, which must carry each layer's own columns",
-        "evidence_origin_groups": [
-          "phase137-record"
-        ],
-        "boundary_confirmation": "stated-in-claim"
-      },
-      "evidence": [
-        {
-          "ref": "reports/phase137_results.json",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Phase-137 results of record (file SHA-256 18f86f45..., recomputed at this draft): Holdat analysis population 1,670 inscriptions at 9 eligible sites, table 9x98, chi2 745.953, V 0.1154, layer input hash 62d14d2b...; ICIT analysis population 5,410 at 7 eligible sites, table 7x187, chi2 4966.362, V 0.2190, layer input hash c368f290....",
-          "source_id": "reports/phase137_results.json",
-          "observed_at": "2026-10-21"
-        },
-        {
-          "ref": "backend/scripts/phase384_stage2_margins_v2.py",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "The Phase-384 v2 estimator, pinned at this draft (SHA-256 3313394e..., matching the phase384-freeze-v2 sources record): inscription-level bootstrap within site, site sizes fixed, B = 9,999, seed 20261012, basic bootstrap interval governing.",
-          "source_id": "backend/scripts/phase384_stage2_margins_v2.py",
-          "observed_at": "2026-10-21"
-        }
-      ]
-    },
-    {
-      "id": "F060-C15",
-      "kind": "requirement",
-      "text": "No outcome under Spec 060 establishes that there is no site effect in the Holdat layer, and no outcome establishes which compilation is right.",
-      "status": "draft",
-      "boundary": "Also excluded by this boundary, and stated wherever an outcome is stated: any conclusion that Spec 034's matched-object attribution extends beyond its slice (169 objects, all Mohenjo-daro seals), and any mechanism claim about why the layers differ beyond the composition / not-composition location arm 2 adjudicates. The settled F2 verdict already bounds the Holdat effect below the agreed size; this spec explains that verdict's shape and locates the layer disagreement, and does neither more nor less.",
-      "depends_on": [
-        "F060-C01",
-        "F060-C03",
-        "F060-C04",
-        "F060-C12"
-      ],
-      "assumptions": [
-        "ASM-APPEND-ONLY",
-        "ASM-NO-VERDICT-MOVES"
-      ],
-      "alternatives": [
-        "a narrative attached to either arm's outcome that crowns a compilation or dissolves the settled verdict (refused: location is not correctness, and sensitivity is not re-adjudication)"
-      ],
-      "falsification_tests": [
-        "inspection of every Spec 060 output: a no-effect, correctness, slice-extension, or mechanism claim in any output falsifies compliance and is corrected by dated addendum, never by silent edit"
-      ],
-      "metadata": {
-        "framework_kind": "requirement",
-        "layer": "M",
-        "forbidden_assumptions": [
-          "ASM-RESULT-AS-VERDICT"
-        ],
-        "strongest_rival": "the reading in which publishing the margin curve shows the F2 verdict was simply wrong, or in which convergence shows one compilation was right all along",
-        "verdict_rule": "outputs are judged against this boundary at execution close; violations are recorded defects, and the claim consequence is limited to the two arms' statements of F060-C01",
-        "evidence_origin_groups": [
-          "design-packet",
-          "spec034-record"
-        ],
-        "boundary_confirmation": "stated-in-claim"
-      },
-      "evidence": [
-        {
-          "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "kind": "design-source",
-          "direction": "supports",
-          "source_quality": "program-record",
-          "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
-          "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
-          "observed_at": "2026-10-21"
-        },
-        {
-          "ref": "specs/034-matched-object-attribution/outcome.md",
-          "kind": "program-record",
-          "direction": "supports",
-          "source_quality": "authoritative",
-          "description": "Spec 034 outcome of record (file SHA-256 c0cc615d..., recomputed at this draft; freeze digest 696fd185...): gate census 169 matched objects, matched-object median distance 0.025694, verdict ATTRIBUTED TO COMPOSITION, residual 0.040340; the matched slice is all Mohenjo-daro seals.",
-          "source_id": "specs/034-matched-object-attribution/outcome.md",
-          "observed_at": "2026-10-21"
-        }
-      ]
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase137_results.json",
+      "reports/phase384_results.json"
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "id": "F060-C02",
+   "kind": "requirement",
+   "text": "STUDY-SPEC-024/F2-HOLDAT stands SETTLED - CONTRADICTED at the declared margin 0.10.",
+   "status": "draft",
+   "boundary": "These are the Phase-384 v2 results of record. The v1 Phase-384 interval adjudication is INVALID (its procedure was shown non-discriminating by its own independence control) and forms no part of this statement. F2's original Phase-137 composition-controlled permutation verdict (NOT SUPPORTED, raw p = 0.7354) is a separate recorded route to the same side and is not restated by this claim. Carried from the draft text: its governing basic-bootstrap interval is [0.058939204306206666, 0.0777941604081594] with point V 0.11539837515155221 on 1,670 Holdat inscriptions; STUDY-SPEC-024/F3-ICIT stands SUPPORTED at the same margin, with governing interval [0.18229651053139323, 0.21036863506165235] and point V 0.21900847512892316 on 5,410 ICIT inscriptions.",
+   "depends_on": [
+    "F060-C01"
+   ],
+   "assumptions": [
+    "ASM-PHASE384-RECORD",
+    "ASM-PHASE384-ESTIMATOR"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "recompute SHA-256 of reports/phase384_results.json (dda6092d...) and read the F2_holdat and F3_icit_lineage basic_ci95 and recomputed_v values; any mismatch falsifies this statement and voids the draft's basis"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the record could have been misread or superseded (the Spec 040 stale-pin precedent shows draft-cited pins can be wrong)",
+    "verdict_rule": "the statement stands or falls on the pinned results file hashing to its recorded value with the stated quantities in it",
+    "evidence_origin_groups": [
+     "phase384-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase384_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-384 v2 results of record (file SHA-256 dda6092d..., recomputed at this draft): F2 governing basic interval [0.058939204306206666, 0.0777941604081594], point V 0.11539837515155221, n 1,670; F3 governing basic interval [0.18229651053139323, 0.21036863506165235], point V 0.21900847512892316, n 5,410; B = 9,999, seed 20261012, governing interval basic bootstrap.",
+     "source_id": "reports/phase384_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/026-rcph-framework-transfer/reruns/phase384-contract-v2.md"
+     ]
+    },
+    {
+     "ref": "specs/026-rcph-framework-transfer/reruns/phase384-contract-v2.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-384 contract v2 (SHA-256 f0a67bd7..., matching the freeze-v2 sources record): populations rebuilt with the Phase-137 module's own loaders and frozen population rule, rebuilt tables asserted equal to the recorded tables; the v1 interval adjudication is INVALID.",
+     "source_id": "specs/026-rcph-framework-transfer/reruns/phase384-contract-v2.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase384_results.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F060-C03",
+   "kind": "hypothesis",
+   "text": "On the shared population of spec section 5.2, the two layers' governing site-effect intervals overlap.",
+   "status": "draft",
+   "boundary": "Overlap is the design's fixed convergence criterion, applied to the Phase-384 v2 governing (basic bootstrap) intervals computed per layer on the shared population only. It is a statement about these two layers on this population; it asserts nothing about the size of either effect, about any other population, or about why the full-population intervals differed. Carried from the draft text: the intervals are the Holdat layer's and the ICIT layer's governing (basic bootstrap) site-effect intervals, computed per layer on the shared population only.",
+   "depends_on": [
+    "F060-C01",
+    "F060-C02"
+   ],
+   "assumptions": [
+    "ASM-PHASE137-RECORD",
+    "ASM-PHASE384-ESTIMATOR",
+    "ASM-TYPE-AS-RECORDED"
+   ],
+   "alternatives": [
+    "the intervals still exclude each other on the shared population (the falsifier, F060-C04)",
+    "arm 2 closes TOO THIN at its census gate (F060-C10), in which case this hypothesis is untested, not failed"
+   ],
+   "falsification_tests": [
+    "run arm 2 under spec section 5.2: if the two governing intervals on the shared population do not overlap, this hypothesis is not supported and the outcome is COMPOSITION DOES NOT"
+   ],
+   "metadata": {
+    "framework_kind": "conditional-model-result",
+    "layer": "I",
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-VERDICT"
+    ],
+    "strongest_rival": "the strongest rival is the falsifier itself: the disagreement lives in the compilations' sign treatment and survives sharing sites and types",
+    "verdict_rule": "SUPPORTED for the hypothesis iff arm 2 returns COMPOSITION EXPLAINS THE GAP under F060-C12; TOO THIN leaves it untested and says so",
+    "evidence_origin_groups": [
+     "phase384-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase384_results.json"
+     ]
+    },
+    {
+     "ref": "reports/phase384_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-384 v2 results of record (file SHA-256 dda6092d..., recomputed at this draft): F2 governing basic interval [0.058939204306206666, 0.0777941604081594], point V 0.11539837515155221, n 1,670; F3 governing basic interval [0.18229651053139323, 0.21036863506165235], point V 0.21900847512892316, n 5,410; B = 9,999, seed 20261012, governing interval basic bootstrap.",
+     "source_id": "reports/phase384_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F060-C04",
+   "kind": "requirement",
+   "text": "Arm 2's non-overlap outcome word is COMPOSITION DOES NOT.",
+   "status": "draft",
+   "boundary": "This is design D-23's falsifier, with its hand-off corrected per F060-C05: the design routed this outcome to D-20 as a pending next step; D-20 is complete. The wording names the measured tension between this outcome and Spec 034's record and expressly designs, registers, and implies no successor study. Carried from the draft text: the recording uses the pre-written wording of spec section 6.3, stated alongside Spec 034's finished attribution, and adjudicates nothing further. Carried condition: this word applies when the two layers' governing intervals do not overlap on the shared population - they still exclude each other - and the recording uses the pre-written wording of spec section 6.3, stated alongside Spec 034's finished attribution, adjudicating nothing further.",
+   "depends_on": [
+    "F060-C03",
+    "F060-C05"
+   ],
+   "assumptions": [
+    "ASM-SPEC034-RECORD"
+   ],
+   "alternatives": [
+    "routing the outcome to a pending D-20 attribution (refused: that study is finished; the routing would misstate the record)"
+   ],
+   "falsification_tests": [
+    "if the arm-2 outcome record of a non-overlap result omits the Spec 034 statement, claims support from it, or presents a successor as designed or governing, that record falsifies compliance with this requirement"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a non-overlap outcome could be misread as overturning Spec 034 (it cannot: different question, different population, different measurement)",
+    "verdict_rule": "the outcome record must carry the section 6.3 wording, including both-statements-stand and no-successor sentences, whenever the condition holds",
+    "evidence_origin_groups": [
+     "design-packet",
+     "spec034-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/034-matched-object-attribution/outcome.md"
+     ]
+    },
+    {
+     "ref": "specs/034-matched-object-attribution/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 034 outcome of record (file SHA-256 c0cc615d..., recomputed at this draft; freeze digest 696fd185...): gate census 169 matched objects, matched-object median distance 0.025694, verdict ATTRIBUTED TO COMPOSITION, residual 0.040340; the matched slice is all Mohenjo-daro seals.",
+     "source_id": "specs/034-matched-object-attribution/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F060-C05",
+   "kind": "requirement",
+   "text": "Design D-20 is complete.",
+   "status": "draft",
+   "boundary": "This claim records the drafting correction the triage and the campaign plan (Part 3) mandate: what design D-23 said (falsifier hands off to D-20 as the governing next step), what the record now is (D-20 executed and verdicted under Spec 034), and what this draft does (spec sections 2.2-2.3). It changes no other part of D-23's substance: hypothesis, falsifier, grid, criteria, and floors are carried verbatim. Carried from the draft text: Spec 034 (Phase-398) returned ATTRIBUTED TO COMPOSITION on 169 matched objects (median distance 0.025694 against the frozen 0.20 composition line; residual 0.040340), the matched slice being all Mohenjo-daro seals; Spec 060's arm 2 is therefore written against that finished record and never against a pending D-20.",
+   "depends_on": [
+    "F060-C02"
+   ],
+   "assumptions": [
+    "ASM-SPEC034-RECORD"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "recompute SHA-256 of specs/034-matched-object-attribution/outcome.md (c0cc615d...) and read its verdict, gate census (169), median (0.025694), and slice description; any mismatch falsifies this statement and voids the correction's basis"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the design text could be followed literally, leaving a hand-off to a study that no longer exists as a next step",
+    "verdict_rule": "the correction stands or falls on Spec 034's pinned outcome carrying the stated verdict and quantities; the draft's sections 2 and 6.3 must conform to it",
+    "evidence_origin_groups": [
+     "spec034-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "specs/034-matched-object-attribution/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 034 outcome of record (file SHA-256 c0cc615d..., recomputed at this draft; freeze digest 696fd185...): gate census 169 matched objects, matched-object median distance 0.025694, verdict ATTRIBUTED TO COMPOSITION, residual 0.040340; the matched slice is all Mohenjo-daro seals.",
+     "source_id": "specs/034-matched-object-attribution/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    },
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/034-matched-object-attribution/outcome.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F060-C06",
+   "kind": "requirement",
+   "text": "No verdict moves under Spec 060.",
+   "status": "draft",
+   "boundary": "This is design D-23's own limit, carried exactly: 'No verdict moves.' Arm 1 is a sensitivity display and arm 2 is a convergence test on a residue question; neither is a re-adjudication route for Spec 024, Phase-137, or Phase-384, whose frozen records are never edited by this spec. Carried from the draft text: the settled F2 verdict (CONTRADICTED at the declared margin 0.10) and the settled F3 verdict (SUPPORTED at the declared margin 0.10) stand exactly as recorded, whatever either arm finds, and every Spec 060 outcome carries that sentence.",
+   "depends_on": [
+    "F060-C01"
+   ],
+   "assumptions": [
+    "ASM-NO-VERDICT-MOVES",
+    "ASM-APPEND-ONLY"
+   ],
+   "alternatives": [
+    "treating a margin-curve cell or a shared-population overlap as grounds to restate F2 or F3 (refused: the design forbids it in advance)"
+   ],
+   "falsification_tests": [
+    "inspection: any Spec 060 product that restates, supersedes, or re-adjudicates the F2 or F3 verdicts, or omits the no-verdict-moves sentence of spec section 8 item 5, falsifies compliance with this requirement"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "the pressure to let a cleaner curve or a convergence finding quietly replace a settled verdict",
+    "verdict_rule": "compliance is judged by file inspection at execution close: Spec 024 / Phase-384 pinned hashes unchanged, verdicts quoted only as recorded",
+    "evidence_origin_groups": [
+     "design-packet",
+     "phase384-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase384_results.json"
+     ]
+    },
+    {
+     "ref": "reports/phase384_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-384 v2 results of record (file SHA-256 dda6092d..., recomputed at this draft): F2 governing basic interval [0.058939204306206666, 0.0777941604081594], point V 0.11539837515155221, n 1,670; F3 governing basic interval [0.18229651053139323, 0.21036863506165235], point V 0.21900847512892316, n 5,410; B = 9,999, seed 20261012, governing interval basic bootstrap.",
+     "source_id": "reports/phase384_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F060-C07",
+   "kind": "requirement",
+   "text": "Both arms are computed with the Phase-384 v2 estimator unchanged.",
+   "status": "draft",
+   "boundary": "Estimator identity is what makes arm 1 comparable to the recorded Phase-384 result and arm 2's two intervals comparable to each other. The v1 parametric-bootstrap procedure is excluded by name: its interval adjudication is INVALID. Any change to an element named here is a different estimator and would require a different spec. Freeze ruling DD-060-14 (adjudication.md section 8): no fresh synthetic calibration is required beyond gate 0.3, and none may be introduced at execution as a gate - gate 0.3's exact reproduction of both recorded governing intervals on the two full populations is this spec's estimator check, performed on the actual frozen populations rather than on invented data; the restricted shared population's sparsity is governed by gate 0.4's floors and by reporting both intervals and both point estimates, not by a calibration this design did not freeze. Carried from the draft text: populations are built by the Phase-137 module's own loaders and frozen population rule (eligible sites; at least one parsed token; sign columns at layer-wide count at least 10, remainder pooled as OTHER), with inscription-level bootstrap within site, site sizes fixed, B = 9,999, seed 20261012, and the basic bootstrap interval governing.",
+   "depends_on": [
+    "F060-C06"
+   ],
+   "assumptions": [
+    "ASM-PHASE384-ESTIMATOR"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "gate 0.3 (the estimator regression) is the operational test: machinery that cannot reproduce the recorded full-layer governing intervals exactly under the recorded seed is not the frozen estimator, and the run stops INVALID"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "silent estimator drift (a resampling change, a percentile interval substituted for the governing basic interval) presenting as a margin or convergence finding",
+    "verdict_rule": "identity is judged by the gate-0.3 exact-reproduction standard, not by code inspection alone",
+    "evidence_origin_groups": [
+     "phase384-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "backend/scripts/phase384_stage2_margins_v2.py",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The Phase-384 v2 estimator, pinned at this draft (SHA-256 3313394e..., matching the phase384-freeze-v2 sources record): inscription-level bootstrap within site, site sizes fixed, B = 9,999, seed 20261012, basic bootstrap interval governing.",
+     "source_id": "backend/scripts/phase384_stage2_margins_v2.py",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/026-rcph-framework-transfer/reruns/phase384-contract-v2.md"
+     ]
+    },
+    {
+     "ref": "specs/026-rcph-framework-transfer/reruns/phase384-contract-v2.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-384 contract v2 (SHA-256 f0a67bd7..., matching the freeze-v2 sources record): populations rebuilt with the Phase-137 module's own loaders and frozen population rule, rebuilt tables asserted equal to the recorded tables; the v1 interval adjudication is INVALID.",
+     "source_id": "specs/026-rcph-framework-transfer/reruns/phase384-contract-v2.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "backend/scripts/phase384_stage2_margins_v2.py"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F060-C08",
+   "kind": "requirement",
+   "text": "Arm 1 reports the F2 verdict as a function of the margin on the fixed grid of spec section 5.1.",
+   "status": "draft",
+   "boundary": "The grid is design D-23's, carried verbatim, and includes the declared margin 0.10 as one cell among five. No margin outside the grid is computed or quoted under this spec, and no cell word at any margin other than 0.10 is a verdict (F060-C06). Carried from the draft text: the grid is exactly 0.05, 0.075, 0.10, 0.125, 0.15, each cell worded by the frozen family rule applied to the governing interval (CONTRADICTED AT m if its upper bound is below m; SUPPORTED AT m if its lower bound is above m; STRADDLES m otherwise), and the curve is labelled sensitivity in every output.",
+   "depends_on": [
+    "F060-C07"
+   ],
+   "assumptions": [
+    "ASM-PHASE384-RECORD"
+   ],
+   "alternatives": [
+    "reporting only the margin at which the cell word flips (refused: that is the margin-shopping the design's fixed grid and sensitivity label exist to prevent)"
+   ],
+   "falsification_tests": [
+    "the outcome's curve table must show exactly the five grid margins with cell words derivable from the published governing interval by this claim's rule; any other margin, word, or a missing sensitivity label falsifies the outcome record"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "margin shopping after the interval is known - quoting the flip point as if it were the verdict",
+    "verdict_rule": "the mapping from the governing interval to the five cell words is fixed here, before any recomputation; any reader recomputes the words from the published interval",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase384_results.json"
+     ]
+    },
+    {
+     "ref": "reports/phase384_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-384 v2 results of record (file SHA-256 dda6092d..., recomputed at this draft): F2 governing basic interval [0.058939204306206666, 0.0777941604081594], point V 0.11539837515155221, n 1,670; F3 governing basic interval [0.18229651053139323, 0.21036863506165235], point V 0.21900847512892316, n 5,410; B = 9,999, seed 20261012, governing interval basic bootstrap.",
+     "source_id": "reports/phase384_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F060-C09",
+   "kind": "requirement",
+   "text": "The shared population is constructed under the SEAL reading of spec section 5.2.",
+   "status": "draft",
+   "boundary": "The site intersection on the record at this draft is six sites (Chanhu-daro, Dholavira, Harappa, Kalibangan, Lothal, Mohenjo-daro), re-derived from the pinned layers at gate 0.4 rather than trusted from this text. The SEAL reading of the design's 'same object types' is this draft's recorded reading (DD-060-3), forced by the Holdat layer's missing type field; the freeze may overturn it openly, and any replacement reading must state what it does with a constant-type layer. Freeze ruling DD-060-12 (adjudication.md section 8): DD-060-3 is CONFIRMED as drafted - the Phase-137 record states verbatim that the Holdat layer carries no object-type field and its inscriptions are seal texts, so the type mix is a constant, and the ICIT loader's recorded type classes include SEAL; the shared type is SEAL, the Holdat side enters whole, and the ICIT side is restricted to its recorded SEAL class. Carried from the draft text: from each layer's Phase-137 analysis population, both layers are restricted to the sites present in both layers' analysis populations and to the object type present in both: SEAL - the Holdat side entering whole (its layer carries no object-type field; its inscriptions are seal texts, a constant) and the ICIT side restricted to its recorded SEAL type class - with no inscription re-typed and no other type class admitted.",
+   "depends_on": [
+    "F060-C07"
+   ],
+   "assumptions": [
+    "ASM-TYPE-AS-RECORDED",
+    "ASM-PHASE137-RECORD"
+   ],
+   "alternatives": [
+    "restricting the ICIT side by a type the Holdat layer cannot express, or pooling types on one side only (both refused: the restriction must be the type present in both, applied as each layer records it)"
+   ],
+   "falsification_tests": [
+    "the gate-0.4 census publishes the site intersection and per-layer, per-site counts of the constructed population; a constructed population not derivable from the two analysis populations by this claim's restriction falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a shared population quietly built differently per layer, manufacturing convergence or divergence",
+    "verdict_rule": "the construction rule is frozen in this register before any census exists; the published census must be derivable from the pinned layers by the rule alone",
+    "evidence_origin_groups": [
+     "phase137-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase137_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-137 results of record (file SHA-256 18f86f45..., recomputed at this draft): Holdat analysis population 1,670 inscriptions at 9 eligible sites, table 9x98, chi2 745.953, V 0.1154, layer input hash 62d14d2b...; ICIT analysis population 5,410 at 7 eligible sites, table 7x187, chi2 4966.362, V 0.2190, layer input hash c368f290....",
+     "source_id": "reports/phase137_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    },
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase137_results.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F060-C10",
+   "kind": "requirement",
+   "text": "Arm 2 closes as TOO THIN when the gate-0.4 census fails its floors.",
+   "status": "draft",
+   "boundary": "The floors are design D-23's, carried verbatim. Closing arm 2 only (rather than the whole execution) is this draft's reading (DD-060-2): arm 1's population and question are independent of the shared census, unlike a pattern-across-strata headline. The freeze may overturn that reading openly. Freeze ruling DD-060-11 (adjudication.md section 8): DD-060-2 is CONFIRMED as drafted - TOO THIN closes arm 2 only; arm 1 is independent of the shared census and still reports. Carried from the draft text: the counts are stated and no shared-population quantity is computed; arm 1 is unaffected and still reports its curve. Carried floors: fewer than 5 shared sites, or fewer than 500 inscriptions in either layer on the shared population; on closure the counts are stated, no shared-population quantity is computed, and arm 1 is unaffected and still reports its curve.",
+   "depends_on": [
+    "F060-C09"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME"
+   ],
+   "alternatives": [
+    "closing the whole execution on a thin shared population (refused at draft; OPEN for the freeze to reverse)"
+   ],
+   "falsification_tests": [
+    "the gate-0.4 census is computed and published before any shared-population quantity; a run that computes an arm-2 quantity past a failed floor falsifies compliance"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a thin shared population computed anyway, because its intervals would be interesting",
+    "verdict_rule": "the gate is counts-only and precedes arm 2 in the run order; the outcome classes in spec section 11 make TOO THIN terminal for arm 2",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F060-C11",
+   "kind": "requirement",
+   "text": "Execution stops before any arm quantity is computed on any spec section 4 gate failure.",
+   "status": "draft",
+   "boundary": "These are spec section 4's gates 0.1, 0.2, and 0.3; their failure class is INVALID. Gate 0.4's failure class is TOO THIN for arm 2 only (F060-C10). No failure is repaired at run time; a repaired input is a new freeze, not a resumed run. Freeze ruling DD-060-15 (adjudication.md section 8): the execution venue is the owner's machines at the Phase-137 loaders' default paths as recorded in the Phase-137 results (the Holdat copy under the program checkout's corpora/downloads/external_repos/holdatllc_indus/ and the ICIT copy under the research-notes sweep downloads/horus84-computational-linguistics/data/); the freeze verified first-hand that the copies at those paths on the freeze machine hash exactly to the section 3 pins, and gate 0.1 asserts the execution venue's copies against the same pins - no other copy is authoritative. Carried from the draft text: the gate failures are: any spec section 3 input hash mismatches (including either held layer file against its Phase-137-recorded hash); either layer's population is not reproduced exactly; or the estimator regression does not reproduce the recorded governing intervals.",
+   "depends_on": [
+    "F060-C07",
+    "F060-C09"
+   ],
+   "assumptions": [
+    "ASM-GATES-BEFORE-OUTCOME",
+    "ASM-LAYERS-AS-HELD"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "each gate's check is itself the test: the execution record must show every gate's verdict before the first arm quantity, or the run is non-compliant on its face"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "gate-skipping under time pressure, with the failure rationalised afterwards - in particular, running on a layer copy that merely looks like the held file",
+    "verdict_rule": "the run's own record is the judge: gate verdicts precede quantities in it, in order, or the outcome is INVALID by construction",
+    "evidence_origin_groups": [
+     "phase137-record",
+     "phase384-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase137_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-137 results of record (file SHA-256 18f86f45..., recomputed at this draft): Holdat analysis population 1,670 inscriptions at 9 eligible sites, table 9x98, chi2 745.953, V 0.1154, layer input hash 62d14d2b...; ICIT analysis population 5,410 at 7 eligible sites, table 7x187, chi2 4966.362, V 0.2190, layer input hash c368f290....",
+     "source_id": "reports/phase137_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase384_results.json",
+      "backend/scripts/phase384_stage2_margins_v2.py"
+     ]
+    },
+    {
+     "ref": "reports/phase384_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-384 v2 results of record (file SHA-256 dda6092d..., recomputed at this draft): F2 governing basic interval [0.058939204306206666, 0.0777941604081594], point V 0.11539837515155221, n 1,670; F3 governing basic interval [0.18229651053139323, 0.21036863506165235], point V 0.21900847512892316, n 5,410; B = 9,999, seed 20261012, governing interval basic bootstrap.",
+     "source_id": "reports/phase384_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase137_results.json",
+      "backend/scripts/phase384_stage2_margins_v2.py"
+     ]
+    },
+    {
+     "ref": "backend/scripts/phase384_stage2_margins_v2.py",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The Phase-384 v2 estimator, pinned at this draft (SHA-256 3313394e..., matching the phase384-freeze-v2 sources record): inscription-level bootstrap within site, site sizes fixed, B = 9,999, seed 20261012, basic bootstrap interval governing.",
+     "source_id": "backend/scripts/phase384_stage2_margins_v2.py",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase137_results.json",
+      "reports/phase384_results.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F060-C12",
+   "kind": "requirement",
+   "text": "The headline outcome of arm 2 is assigned by the mapping of spec section 5.2 alone.",
+   "status": "draft",
+   "boundary": "The outcome words and their conditions are design D-23's, carried verbatim. INVALID is a stop class, not an arm-2 outcome. No fourth word, and no graded or partial form of either composition word, may be introduced at execution. Carried from the draft text: the words are COMPOSITION EXPLAINS THE GAP (the two governing intervals on the shared population overlap), COMPOSITION DOES NOT (they still exclude each other), and TOO THIN (the gate-0.4 floors fail). Carried mapping: the outcome is exactly one of COMPOSITION EXPLAINS THE GAP, COMPOSITION DOES NOT, or TOO THIN, under the conditions carried in this claim's boundary above.",
+   "depends_on": [
+    "F060-C10",
+    "F060-C03"
+   ],
+   "assumptions": [
+    "ASM-PHASE384-ESTIMATOR"
+   ],
+   "alternatives": [],
+   "falsification_tests": [
+    "the outcome record's arm-2 word must be derivable from the two published shared-population governing intervals (or the gate record) by this claim's definitions alone"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "outcome-word shopping once the intervals are known - softening an exclusion into a partial convergence",
+    "verdict_rule": "the mapping from interval relation to outcome word is fixed here, before execution; the outcome record shows the intervals and the word together",
+    "evidence_origin_groups": [
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21"
+    }
+   ]
+  },
+  {
+   "id": "F060-C13",
+   "kind": "requirement",
+   "text": "Period mix is described for each layer on the shared population insofar as the layer as held carries the fields for it.",
+   "status": "draft",
+   "boundary": "Design D-23 asks for period mix described per layer; neither Phase-137 loader reads a period field (Holdat fields used: letters, position, seal_id, site; ICIT fields used: text, site, type). Description from another source would import an assignment this design did not freeze; the stated-unavailability wording is this draft's reading (DD-060-4), and the freeze may replace it only by naming the source and its rule openly. Freeze ruling DD-060-13 (adjudication.md section 8): DD-060-4 is CONFIRMED as drafted - neither Phase-137 loader reads a period field (the results record's fields_used lists are exhaustive for both layers, and its confounder statement records period as not available in these layers), so the stated-unavailability wording stands per layer; no period assignment is imported from any other source, including any Spec 041-style assignment, which would be a mapping act outside this spec. Carried from the draft text: where a layer carries no such field in the fields its loader uses, the outcome product states PERIOD MIX NOT DESCRIBED FOR THIS LAYER - FIELD NOT CARRIED; the description or its stated unavailability appears in every outcome product; and period is never treated as controlled under this spec.",
+   "depends_on": [
+    "F060-C01"
+   ],
+   "assumptions": [
+    "ASM-DESCRIPTION-NOT-CONTROL"
+   ],
+   "alternatives": [
+    "importing period assignments from the chronology spine or gazetteer to complete the description (refused at draft: that mapping work belongs to other specs and would change this design's inputs)"
+   ],
+   "falsification_tests": [
+    "an outcome product lacking the per-layer period statement falsifies compliance; a product claiming period control, or presenting an imported period description without a freeze-recorded source and rule, falsifies the boundary"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "a composition finding that is really a period difference, quoted without its mixes - or with mixes imported silently",
+    "verdict_rule": "the per-layer period statement is a spec section 8 reporting obligation: its absence from any product is a defect of that product, recorded as such",
+    "evidence_origin_groups": [
+     "phase137-record",
+     "design-packet"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase137_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-137 results of record (file SHA-256 18f86f45..., recomputed at this draft): Holdat analysis population 1,670 inscriptions at 9 eligible sites, table 9x98, chi2 745.953, V 0.1154, layer input hash 62d14d2b...; ICIT analysis population 5,410 at 7 eligible sites, table 7x187, chi2 4966.362, V 0.2190, layer input hash c368f290....",
+     "source_id": "reports/phase137_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    },
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase137_results.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F060-C14",
+   "kind": "requirement",
+   "text": "Each layer's site effect is computed inside its own sign numbering.",
+   "status": "draft",
+   "boundary": "The layers number signs in different systems (the Holdat layer's native signs; the ICIT layer's three-digit codes). A crosswalk or mapping would import Phase-125's disagreement into the test that is supposed to locate it; sign treatment therefore remains a named, unseparated candidate carrier of any COMPOSITION DOES NOT outcome, exactly as the design's confounder list leaves it. Carried from the draft text: each layer's site effect is computed inside its own sign numbering, and the only cross-layer operation is the comparison of the two governing intervals. Carried rule: the two layers' signs are never pooled, mapped, or harmonised under Spec 060, and the only cross-layer operation is the comparison of the two governing intervals.",
+   "depends_on": [
+    "F060-C07",
+    "F060-C09"
+   ],
+   "assumptions": [
+    "ASM-PHASE137-RECORD"
+   ],
+   "alternatives": [
+    "harmonising sign identities across layers before computing effects (refused: it would decide by construction the question the falsifier asks)"
+   ],
+   "falsification_tests": [
+    "inspection of the execution's code path and results: any cross-layer sign mapping, pooled table, or harmonised column set falsifies compliance and voids the arm-2 outcome"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "circularity - a mapping built from the compilations' own correspondence deciding whether the compilations agree",
+    "verdict_rule": "compliance is judged at execution close from the graph-registered script and the results JSON's per-layer tables, which must carry each layer's own columns",
+    "evidence_origin_groups": [
+     "phase137-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "reports/phase137_results.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-137 results of record (file SHA-256 18f86f45..., recomputed at this draft): Holdat analysis population 1,670 inscriptions at 9 eligible sites, table 9x98, chi2 745.953, V 0.1154, layer input hash 62d14d2b...; ICIT analysis population 5,410 at 7 eligible sites, table 7x187, chi2 4966.362, V 0.2190, layer input hash c368f290....",
+     "source_id": "reports/phase137_results.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "backend/scripts/phase384_stage2_margins_v2.py"
+     ]
+    },
+    {
+     "ref": "backend/scripts/phase384_stage2_margins_v2.py",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The Phase-384 v2 estimator, pinned at this draft (SHA-256 3313394e..., matching the phase384-freeze-v2 sources record): inscription-level bootstrap within site, site sizes fixed, B = 9,999, seed 20261012, basic bootstrap interval governing.",
+     "source_id": "backend/scripts/phase384_stage2_margins_v2.py",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "reports/phase137_results.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F060-C15",
+   "kind": "requirement",
+   "text": "No outcome under Spec 060 establishes that there is no site effect in the Holdat layer.",
+   "status": "draft",
+   "boundary": "Also excluded by this boundary, and stated wherever an outcome is stated: any conclusion that Spec 034's matched-object attribution extends beyond its slice (169 objects, all Mohenjo-daro seals), and any mechanism claim about why the layers differ beyond the composition / not-composition location arm 2 adjudicates. The settled F2 verdict already bounds the Holdat effect below the agreed size; this spec explains that verdict's shape and locates the layer disagreement, and does neither more nor less. Carried from the draft text: and no outcome under Spec 060 establishes which compilation is right.",
+   "depends_on": [
+    "F060-C01",
+    "F060-C03",
+    "F060-C04",
+    "F060-C12"
+   ],
+   "assumptions": [
+    "ASM-APPEND-ONLY",
+    "ASM-NO-VERDICT-MOVES"
+   ],
+   "alternatives": [
+    "a narrative attached to either arm's outcome that crowns a compilation or dissolves the settled verdict (refused: location is not correctness, and sensitivity is not re-adjudication)"
+   ],
+   "falsification_tests": [
+    "inspection of every Spec 060 output: a no-effect, correctness, slice-extension, or mechanism claim in any output falsifies compliance and is corrected by dated addendum, never by silent edit"
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-VERDICT"
+    ],
+    "strongest_rival": "the reading in which publishing the margin curve shows the F2 verdict was simply wrong, or in which convergence shows one compilation was right all along",
+    "verdict_rule": "outputs are judged against this boundary at execution close; violations are recorded defects, and the claim consequence is limited to the two arms' statements of F060-C01",
+    "evidence_origin_groups": [
+     "design-packet",
+     "spec034-record"
+    ],
+    "boundary_confirmation": "stated-in-claim"
+   },
+   "evidence": [
+    {
+     "ref": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Design D-23 (PR #195 packet, section D-23, read in full at this draft): the two residues, hypothesis, falsifier, margin grid (0.05, 0.075, 0.10, 0.125, 0.15), shared-population method, criteria (COMPOSITION EXPLAINS THE GAP / COMPOSITION DOES NOT / TOO THIN at fewer than 5 sites or fewer than 500 inscriptions in either layer), and the limit that no verdict moves.",
+     "source_id": "docs/research/experiment-designs-2026-10-13/04-study-headlines.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/034-matched-object-attribution/outcome.md"
+     ]
+    },
+    {
+     "ref": "specs/034-matched-object-attribution/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 034 outcome of record (file SHA-256 c0cc615d..., recomputed at this draft; freeze digest 696fd185...): gate census 169 matched objects, matched-object median distance 0.025694, verdict ATTRIBUTED TO COMPOSITION, residual 0.040340; the matched slice is all Mohenjo-daro seals.",
+     "source_id": "specs/034-matched-object-attribution/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "docs/research/experiment-designs-2026-10-13/04-study-headlines.md"
+     ]
+    }
+   ]
+  }
+ ]
 }

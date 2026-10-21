@@ -1,26 +1,37 @@
 # Spec 060 — The Holdat Site Effect: Margin Curve and Shared Population (a Residue Study of Spec 024 F2)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-21
+> ## FROZEN — 2026-10-21
 >
-> Drafted under the runnable-experiments campaign
+> Frozen at the freeze act of 2026-10-21
+> under the runnable-experiments campaign
 > approved by the owner on 2026-10-21
 > (`~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md`,
 > Parts 1–4; member 17 of the twenty), and the
 > portfolio triage of the same date
 > (`~/workspace/research_notes/design-portfolio-triage-2026-10-21.md`),
 > which found design D-23 RIPE and recorded the
-> drafting correction this draft carries in §2.2
-> and claim F060-C05. **The freeze and the
-> execution of Spec 060 are separate later owner
-> acts.** No AEE lifecycle hooks have run on this
-> draft; they are a freeze gate. Nothing in this
-> draft has been run, frozen, registered, or
-> computed.
+> drafting correction this spec carries in §2.2
+> and claim F060-C05. The AEE lifecycle hooks
+> ran at the freeze gate and passed over the
+> recovered register (0.7-draft;
+> `aee/freeze-aee-note.md`); the freeze record
+> is `freeze.md` / `freeze.json` in this
+> directory, and the spec's OSF contract
+> registration is filed at the freeze under
+> campaign decision E-1
+> (`osf-spec-registration.md`). **Execution
+> is a separate later act**: it runs as
+> Phase-422 (DD-060-16), only after this
+> freeze has merged, the registration's
+> approval act has completed, and a separate
+> execution order is given. Nothing has been
+> run or computed by the freeze itself: no
+> margin-curve cell, no shared-population
+> quantity, and not even the gate-0.4 census.
 >
-> The execution phase number is **unassigned**
-> at this draft. It is allocated at the freeze
-> act, from the merged record as it then stands
-> (DD-060-5).
+> The execution phase number was allocated
+> at the freeze act: **Phase-422** (DD-060-16,
+> completing DD-060-5).
 
 **Design source:** D-23 in the experiment-design
 packet at PR #195
@@ -361,7 +372,8 @@ No inscription is re-typed, and no other
 type class enters. This reading of the
 design's "same object types" is DD-060-3,
 recorded in `adjudication.md`; the freeze
-may overturn it openly.
+**confirmed** it (DD-060-12, adjudication
+§8), on the Phase-137 record's own words.
 
 **Measurement.** On that shared population,
 compute the site-effect size **in each layer
@@ -639,10 +651,11 @@ byte-identical before and after.
   reading, not a quotation.** The design
   says "same object types"; the Holdat layer
   carries no type field. DD-060-3 records
-  the reading and the freeze may overturn
-  it — but any other reading must also say
-  what it does with a layer whose type is a
-  constant.
+the reading; the freeze confirmed it
+(DD-060-12) — any other reading would also
+have had to say what it does with a layer
+whose type is a constant, and none was
+proposed on the record.
 
 ## 11. Stop conditions and outcome classes
 

@@ -395,6 +395,183 @@ Each is labelled **DECIDED-BY-DRAFT**:
   freeze digest is computed.
 - **OPEN-060-6** — Execution phase number
   (DD-060-5), allocated at freeze.
+## 8. Freeze decisions (2026-10-21)
+
+> ## FREEZE ACT — DECIDED — 2026-10-21
+>
+> The freeze act of 2026-10-21, under the
+> campaign plan approved AS WRITTEN the same
+> date (Wave 2 freeze wave), decided the
+> items §5 and §6 left open. Each resolution
+> is recorded here on the record; the
+> register rulings were carried into
+> `claims.json` before the AEE hooks ran,
+> and the hooks passed over the recovered
+> register (0.7-draft; `aee/freeze-aee-note.md`).
+> Every §3 pin was re-asserted at the freeze
+> by two independent routes in the foreground
+> (contents-API raw and git-blob) at the
+> merged record (`main` at
+> `a3509525fab64e22a4c053d7bbed14c7083a14d3`):
+> the two routes agree byte-for-byte on every
+> file, and every recomputed hash equals its
+> draft pin — phase137_results `18f86f45…`,
+> phase137 machinery `e00dacf4…`,
+> phase384_results `dda6092d…`, estimator
+> `3313394e…`, contract v2 `f0a67bd7…`,
+> freeze-v2 file `5749c6b8…`, Spec 034
+> outcome `c0cc615d…`, Spec 024 spec
+> `a817f698…`, anchors `df0cf620…`. The
+> estimator and contract hashes also match
+> the Phase-384 freeze-v2 sources record
+> carried inside the pinned freeze-v2 file
+> (digest `4e6c78bc917c96a3…`) — the
+> estimator pin is therefore verified three
+> ways. The two held-layer pins were
+> verified two ways as well: the values the
+> Phase-137 results record for them
+> (Holdat `62d14d2b…`, ICIT `c368f290…`),
+> and the held copies themselves at the
+> loaders' default paths on the freeze
+> machine, which hash exactly to those
+> values (DD-060-15). The freeze computed
+> nothing else: no margin-curve cell, no
+> shared-population quantity, and not the
+> gate-0.4 census, which remains an
+> execution act.
+
+- **DD-060-10 — OPEN-060-1 resolved: OSF
+  registration at the freeze (E-1).** The
+  DD-060-6 proposal is **adopted**: this
+  spec files its own OSF contract
+  registration at the freeze, under campaign
+  decision E-1, following the Spec 027/028/
+  034 study pattern. The filing record is
+  `osf-spec-registration.md`. Execution
+  awaits the registration's approval act
+  and a separate execution order; no mail
+  is handled by the freeze.
+- **DD-060-11 — OPEN-060-4 (first part)
+  resolved: DD-060-2 CONFIRMED.** TOO THIN
+  closes arm 2 only. The arms are
+  independent — arm 1 uses the full Holdat
+  population and answers a different
+  residue — so a whole-execution closure
+  would destroy a product the census gate
+  does not touch (DIS-060-4 stands).
+- **DD-060-12 — OPEN-060-4 (second part)
+  resolved: DD-060-3 CONFIRMED.** The
+  shared type is SEAL. The freeze re-read
+  the fact from the pinned Phase-137
+  record: its strata definition states
+  verbatim that "the layer carries no
+  object-type field and its inscriptions
+  are seal texts, so the type mix is a
+  constant", and its `fields_used` list for
+  the Holdat layer (`letters, position,
+  seal_id, site`) carries no type field;
+  the ICIT loader's recorded type classes
+  include SEAL (the Phase-137 strata counts
+  carry SEAL length classes). No other
+  reading was proposed on the record, and
+  none is implementable against a layer
+  whose type is a constant: the Holdat side
+  enters whole and the ICIT side is
+  restricted to its recorded SEAL class,
+  exactly as drafted. Carried into
+  F060-C09's boundary.
+- **DD-060-13 — OPEN-060-4 (third part)
+  resolved: DD-060-4 CONFIRMED.** Period
+  mix is described only from what the
+  layers carry, and for these layers that
+  is nothing: neither Phase-137 loader
+  reads a period field (the results
+  record's `fields_used` lists are
+  exhaustive for both layers, and its
+  confounder statement records period as
+  "not available in these layers"). The
+  frozen stated-unavailability wording of
+  claim F060-C13 therefore stands per
+  layer. **No period assignment is imported
+  from any other source** — in particular
+  no Spec 041-style assignment: that
+  mapping act is outside this campaign and
+  outside this design, and importing it
+  would be scope creep, recorded here as a
+  defect this freeze refuses. Carried into
+  F060-C13's boundary.
+- **DD-060-14 — OPEN-060-2 resolved: no
+  fresh synthetic calibration.** Gate 0.3
+  suffices, and no additional calibration
+  is required or admitted as a gate. The
+  estimator is the frozen Phase-384 v2
+  procedure, unchanged; gate 0.3 requires
+  it to reproduce both recorded governing
+  intervals **exactly** on the two full
+  populations before any restricted
+  computation — a check on the actual
+  frozen populations, stronger for this
+  contract than a synthetic exercise on
+  invented data. The restricted
+  population's sparsity is governed where
+  the design put it: gate 0.4's floors, and
+  the obligation to report both intervals
+  and both point estimates so a reader can
+  see the sizes, not just the word (spec
+  §10). A synthetic calibration introduced
+  at execution as a gate would be an
+  unregistered design element. Carried
+  into F060-C07's boundary.
+- **DD-060-15 — OPEN-060-3 resolved: the
+  execution venue and the authoritative
+  copies.** The venue is the owner's
+  machines, at the Phase-137 loaders'
+  default paths as recorded in the
+  Phase-137 results: the Holdat copy at
+  `corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv`
+  under the program checkout, and the ICIT
+  copy at
+  `downloads/horus84-computational-linguistics/data/inscriptions.csv`
+  under the research-notes sweep directory.
+  At this freeze both copies were produced
+  at those paths on the freeze machine and
+  hash **exactly** to the §3 pins (Holdat
+  `62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e`;
+  ICIT `c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef`).
+  No other copy is authoritative; gate 0.1
+  asserts the execution venue's copies
+  against the same pins at execution time,
+  fail-closed as drafted. Carried into
+  F060-C11's boundary.
+- **DD-060-16 — OPEN-060-6 resolved:
+  Phase-422 allocated.** The execution
+  phase number (DD-060-5) is allocated at
+  this freeze as **Phase-422**, from the
+  merged record as it stands: the number
+  appears in no LEDGER entry, freeze
+  record, or phase file on `main`, and the
+  campaign's freeze-order allocation
+  assigns it to this member.
+- **DD-060-17 — The DD-038-10 AEE gate
+  reading adopted.** The gate is: at every
+  lifecycle hook, zero correctness failure
+  modes and no claim below the 0.70
+  threshold; FR-2.3 draft-cap records alone
+  do not block a freeze, because they are
+  lifted only by human ratification (a
+  status change), not by any recovery
+  available at a freeze. The hooks passed
+  on that reading (`aee/freeze-aee-note.md`).
+
+DD-060-1, DD-060-5, and DD-060-9 are
+**confirmed** as drafted. The D-20
+correction (§2) stands exactly as drafted:
+arm 2 is written against Spec 034's
+finished composition result, and no
+wording in the frozen contract resurrects
+the pre-034 framing of D-20 as a pending
+next step.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

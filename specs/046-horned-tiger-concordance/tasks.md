@@ -1,6 +1,6 @@
 # Spec 046 — Tasks
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-21
+> ## PLAN — FROZEN 2026-10-21
 >
 > Adjudication inputs are recorded in
 > `adjudication.md` (the runnable-experiments
@@ -44,8 +44,13 @@
       as a DRAFT PR and left unmerged for the
       freeze decision, CI state reported from
       the run's own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
-      — not run on this draft).** At the freeze
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE).**
+      Run at the freeze act of 2026-10-21 over
+      the recovered register 0.7-draft under
+      aee 1.5.0: PASS on the DD-046-16 reading
+      (zero correctness failure modes at every
+      hook, minimum propagated 0.72, draft-cap
+      records only). Original gate text: At the freeze
       act, run `run_aee.py assess`
       after_specify, after_plan, and
       after_tasks over the claim register; the
@@ -61,7 +66,10 @@
       adopted 1.5.x engine at the freeze
       rather than assumed from pre-adoption
       habit (campaign plan, Wave 2).
-- [ ] **L5 — Freeze-decision items.** The
+- [x] **L5 — Freeze-decision items.** Decided
+      at the freeze act of 2026-10-21 in
+      `adjudication.md` §7 (DD-046-9 to
+      DD-046-15). Original text: the
       freeze decides OPEN-1 (the PARTIAL
       CONCURRENCE word), OPEN-2 (Wells list
       of record), OPEN-3 (CISI list of
@@ -72,8 +80,9 @@
       OPEN-7 (dry-run check), and confirms or
       openly overturns DD-046-2, DD-046-3,
       and DD-046-6.
-- [ ] **L6 — Freeze.** On the owner's freeze
-      order under the campaign, with L4 passed
+- [x] **L6 — Freeze.** Taken at the freeze act
+      of 2026-10-21 under the campaign plan
+      approved AS WRITTEN (Wave 2), with L4 passed
       and L5 decided: hooks recorded,
       `freeze.md` finalised, `freeze.json`
       recomputed over the recovered register

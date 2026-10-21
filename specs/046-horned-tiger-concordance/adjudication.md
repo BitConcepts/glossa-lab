@@ -482,6 +482,229 @@ set; the draft therefore advances as a
 draft. Nothing in this section amends
 design D-18, which stands as written in
 the packet.
+
+## 7. Freeze decisions — 2026-10-21
+
+> ## FREEZE ACT — 2026-10-21
+>
+> This spec was frozen on 2026-10-21 under
+> the runnable-experiments campaign plan
+> approved by the owner AS WRITTEN on
+> 2026-10-21 (campaign Wave 2; decision
+> E-1). Every OPEN item in §3 is resolved
+> here, on the record. DD-046-1, DD-046-2,
+> DD-046-3, and DD-046-6 are CONFIRMED as
+> drafted and stand unchanged. The AEE
+> lifecycle hooks passed at the freeze gate
+> over the recovered register 0.7-draft
+> (DD-046-16; `aee/freeze-aee-note.md`), and
+> the freeze digest in `freeze.json` was
+> computed exactly once over the recovered
+> register and the finalised freeze texts.
+
+- **DD-046-9 — OPEN-1 RESOLVED: PARTIAL
+  CONCURRENCE is confirmed.** The word
+  stands as drafted (DD-046-3), in the
+  space form "PARTIAL CONCURRENCE" used in
+  spec §§5.2, 5.3, and 11 and in claim
+  F046-C10. The one hyphenated spelling in
+  draft spec §6 (`PARTIAL-CONCURRENCE`) is
+  aligned to the space form at this freeze;
+  that is a spelling alignment, not a
+  rename and not a re-mapping. The §5.2
+  mapping stays total: every pattern of
+  scored rows lands in exactly one of
+  CONSENSUS, CONTESTED, PARTIAL
+  CONCURRENCE, or SINGLE-SOURCE.
+- **DD-046-10 — OPEN-2 RESOLVED: the Wells
+  list of record.** The 2015 book's own
+  sign apparatus, as proposed at draft:
+  Chapter 2, "The Indus Sign List"
+  (Figure 2.6), in Bryan K. Wells, *The
+  Archaeology and Epigraphy of Indus
+  Writing* (Archaeopress, 2015; ISBN
+  978 1 78491 046 4), held as cleaned text
+  in the repository (SHA-256 `62acf855…`,
+  spec §2). Named from held records with
+  locators: the held text's Chapter 2
+  (its contents listing and Figure 2.6)
+  and the program's citation record
+  (CITATIONS.md §A.7, Wells 2015, with
+  technical appendices by Andreas Fuls).
+  Locator form: chapter/figure plus the
+  book's own sign number. Recorded in
+  spec §2 at this freeze.
+- **DD-046-11 — OPEN-3 RESOLVED: the CISI
+  list of record (the Parpola list is named
+  in the same decision, for completeness).**
+  CISI: the catalogue apparatus of the
+  CISI volumes as held digitally and
+  complete — Vol. 1 (Joshi & Parpola
+  (eds.), *Corpus of Indus Seals and
+  Inscriptions. 1: Collections in India*,
+  1987; Memoirs of the Archaeological
+  Survey of India, vol. 86) and Vol. 2
+  (Shah & Parpola (eds.), *Corpus of Indus
+  Seals and Inscriptions. 2: Collections
+  in Pakistan*, 1991) — as catalogued in
+  the program's Phase-124 catalogue layers.
+  Named from held records with locators:
+  CITATIONS.md §§A.2–A.3 (full citations
+  for both volumes); Spec 023 §2
+  (scans in hand: Vol. 1, 431 scan pages;
+  Vol. 2, 486 scan pages); Spec 027
+  Stage 0 record (the Phase-124 catalogue
+  layers `cisi_vol1_catalogue.csv` and
+  `cisi_vol2_catalogue.csv`). Locator
+  form: volume plus catalogue/object entry
+  plus page or plate. A CISI row scores an
+  identification only where a volume entry
+  itself gives one; otherwise SILENT with
+  `entry_present` (spec §10 prices this
+  in). Parpola: Asko Parpola, *Deciphering
+  the Indus Script* (Cambridge University
+  Press, 1994; CITATIONS.md §C.1), the sign
+  list of 386 signs, locator form P-number
+  (the registry is keyed to Parpola 1982
+  numbering). Recorded in spec §2 at this
+  freeze.
+- **DD-046-12 — OPEN-4 RESOLVED: the
+  Mahadevan edition of record.** Iravatham
+  Mahadevan, *The Indus Script: Texts,
+  Concordance and Tables* (Memoirs of the
+  Archaeological Survey of India, No. 77;
+  New Delhi: Archaeological Survey of
+  India, 1977) — the M77 sign list
+  (419 signs). Named from held records with
+  locators: CITATIONS.md §A.1 (full
+  citation, pp. 825, and the §11 signary
+  note); the program's Mahadevan–Parpola
+  crosswalk records, which cite the same
+  edition. Locator form: M-number plus
+  concordance/tables page or entry.
+  Recorded in spec §2 at this freeze.
+- **DD-046-13 — OPEN-5 RESOLVED: the
+  lineage note IS added.** Before any row
+  is scored, openly, at this freeze: the
+  note stands in spec §5.3's CONSENSUS
+  wording and in spec §7 — independence
+  is publication-level only, the lists'
+  scholarly traditions borrow from each
+  other, and this concordance does not
+  audit their genealogy. The counting rule
+  (DD-046-2 / F046-C08) is unchanged, and
+  no row may be re-weighted after scoring.
+- **DD-046-14 — OPEN-6 CROSS-CHECK:
+  Spec 045-side repair recorded.** Spec
+  046's §6 delivery form was read in full
+  against Spec 045's draft text (PR #244,
+  branch `spec-045-hunt-depicted-kinds-draft`,
+  spec §2.6, "What Asset A accepts from
+  D-18"). Verdict: **aligned in form,
+  NOT aligned in outcome vocabulary —
+  a FREEZE-stage finding for Spec 045's
+  freeze to repair on its side.** Aligned:
+  a machine-readable JSON file is an
+  accepted input form; the per-list
+  verdicts (AGREE / DISAGREE / SILENT, with
+  verbatim identifications) match §2.6's
+  row requirements; the file is produced
+  on every terminal outcome, with an empty
+  signs array plus a closure block on a
+  closure, which satisfies §2.6's timing
+  rule in substance (Asset A freezes when
+  the table is landed or a closure record
+  is on record); a CONTESTED feed forces
+  a dispute record instead of picking a
+  side, matching §2.6's CONTESTED rule;
+  CONSENSUS and SINGLE-SOURCE rows can be
+  consumed as corroborating citations.
+  Not aligned, in Spec 045's draft text
+  as written: (1) §2.6 enumerates the
+  D-18 outcomes it accepts as CONSENSUS,
+  SINGLE-SOURCE, CONTESTED, or
+  IDENTIFICATION FAILED — **PARTIAL
+  CONCURRENCE has no consumption rule
+  there**, so a PARTIAL CONCURRENCE feed
+  (depicted kind "animal", source plus a
+  single corroboration, flagged as such
+  under spec 046 §6) cannot be ingested
+  as drafted; (2) §2.6 does not name the
+  CLOSED AT STEP 0 outcome class that
+  spec 046 §11 can end in; (3) §2.6
+  rejects a row whose crosswalk key does
+  not resolve in the pinned crosswalk,
+  while spec 046 §6 lawfully produces a
+  sign matched by Wells-list entry with
+  `crosswalk_registry_id` null. Per the
+  freeze instruction, **Spec 046's outcome
+  vocabulary is NOT changed to fit**: the
+  total outcome set is the design repair
+  of record (DD-046-3, defect D-1). The
+  repair belongs to Spec 045's freeze,
+  which is also a draft-stage act: its
+  §2.6 enumeration and consumption rules
+  must be extended there to ingest
+  PARTIAL CONCURRENCE, to name the
+  closure-file form (concordance produced
+  on every terminal outcome; closures =
+  empty signs plus a closure block), and
+  to state how a Wells-list-entry match
+  with a null registry id is keyed.
+- **DD-046-15 — OPEN-7 RESOLVED: no
+  separate dry-run sign is required.** A
+  worked dry-run of §5 scoring on a sign
+  other than 297 would require opening the
+  lists for scoring work outside the
+  registered test, and the §5.2 mapping
+  needs no such proof: it is a total
+  function of the four published rows, and
+  the outcome record must show its
+  derivation from those rows alone
+  (F046-C10's falsifier). The mapping's
+  totality over every score pattern is
+  pinned mechanically in
+  `backend/tests/test_spec046_freeze.py`
+  at this freeze. If execution cannot
+  derive its state from its own rows, the
+  run is non-compliant on its face.
+- **DD-046-16 — The AEE gate reading.**
+  The DD-038-10 / DD-039-8 reading is
+  adopted for this spec: the lifecycle
+  hooks PASS at the freeze when every hook
+  carries zero correctness failure modes
+  and no claim below the 0.70 threshold,
+  with the engine outcome word reading
+  "iterate" solely from the FR-2.3
+  draft-cap records. At this freeze, over
+  the recovered register 0.7-draft under
+  aee 1.5.0: after_specify, after_plan,
+  and after_tasks each carry exactly 15
+  failure modes, all draft-cap; minimum
+  propagated confidence 0.72. The recovery
+  rounds are recorded in
+  `aee/freeze-aee-note.md` and in the
+  register's own note.
+- **DD-046-17 — Phase allocation
+  (resolving DD-046-7).** The execution
+  phase number is **Phase-405**, allocated
+  at this freeze from the merged record as
+  it stands (Phase-403 was Spec 039's
+  execution; the campaign's Wave 2 freeze
+  allocation for this spec is Phase-405).
+- **DD-046-18 — OSF registration and the
+  execution gate.** Under campaign decision
+  E-1, this spec's own OSF contract
+  registration is filed at this freeze
+  (record in `freeze.md` and
+  `osf-spec-registration.md`). Execution
+  does NOT run at the freeze, and it
+  awaits the registration's approval:
+  approval proceeds via the token link in
+  OSF's admin-notification email, which is
+  the parent agent's act — this freeze
+  act does not touch Gmail.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

@@ -1,8 +1,8 @@
 # Spec 046 — "Sign 297 Is the Horned Tiger": an Identification Concordance (Design D-18)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-21
+> ## FROZEN — 2026-10-21
 >
-> Drafted under the runnable-experiments
+> Frozen under the runnable-experiments
 > campaign plan approved by the owner AS
 > WRITTEN on 2026-10-21
 > (`~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md`,
@@ -11,17 +11,24 @@
 > because its concordance resolutions FEED
 > Asset A, the depicted-kind classification
 > D-05 builds (campaign Part 3; decision
-> E-6). **The freeze and the execution of
-> Spec 046 are separate later acts.** No AEE
-> lifecycle hooks have run on this draft;
-> they are a freeze gate. Nothing in this
-> draft has been run, frozen, registered,
-> or computed. Drafting merges nothing.
+> E-6). The freeze decisions are recorded in
+> `adjudication.md` §7 (DD-046-9 to
+> DD-046-18), the AEE lifecycle hooks passed
+> at the freeze gate over the recovered
+> register 0.7-draft (`aee/freeze-aee-note.md`),
+> and the freeze digest is in `freeze.json`.
+> The spec's own OSF contract registration
+> was filed at this freeze under campaign
+> decision E-1 (record in `freeze.md`);
+> execution awaits that registration's
+> approval and the campaign's execution
+> pass. **Execution is a separate later
+> act.** Nothing in this spec has been run
+> or computed.
 >
-> The execution phase number is **unassigned**
-> at this draft. Spec 046 allocates its phase
-> number at the freeze act, from the merged
-> record as it then stands (DD-046-7).
+> The execution phase number is
+> **Phase-405**, allocated at this freeze
+> (DD-046-17, resolving DD-046-7).
 
 **Design source:** D-18 in the experiment-design
 packet at PR #195
@@ -136,19 +143,19 @@ single corroboration.
 | Crosswalk registry (`data/crosswalks/canonical_sign_registry.csv`) | SHA-256 `8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420` (recomputed at this draft; 803 rows as held today — the registry has grown since Phase-104's 86-numeric-ID record, and execution re-asserts this pin rather than inheriting either count) |
 | Lane-2 adopted drafts (`specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json`) | SHA-256 `3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb` (recomputed at this draft) |
 
-The four concordance lists. Posture at draft
-is a statement of what the program's record
-shows today; the step-0 gate (§3, gate 0.2)
-is where each list's posture is proven, and
-the freeze fixes each list's edition of
-record (adjudication.md, OPEN items):
+The four concordance lists. The editions of
+record were fixed at the freeze
+(`adjudication.md` §7, DD-046-10 to
+DD-046-12); the step-0 gate (§3, gate 0.2)
+is where each list's posture is proven at
+execution:
 
 | List (list_id) | Role | Posture at this draft |
 |---|---|---|
-| Wells (`WELLS`) | SOURCE | Held: the source book itself is held as cleaned text (above); Wells's matching was already witnessed in the Phases 120–124 crosswalk work. The list of record proposed at draft is the 2015 book's own sign apparatus (DD-046-8 / OPEN-2). |
-| CISI (`CISI`) | INDEPENDENT | Held: the CISI volumes (Vol. 1 and Vol. 2 held digitally and complete, per the design packet's D-05 data statement). Which sign-list apparatus in the volumes counts as "the CISI list" is fixed at freeze (OPEN-3). |
-| Parpola (`PARPOLA`) | INDEPENDENT | Held or citable: Parpola's published sign identifications; the program's crosswalk registry is keyed to Parpola 1982 numbering. Edition and locator form fixed at freeze. |
-| Mahadevan (`MAHADEVAN`) | INDEPENDENT | Held or citable: Mahadevan's published sign list; the program holds Mahadevan crosswalk data (registry `mahadevan_ids` coverage). Edition of record fixed at freeze (OPEN-4). |
+| Wells (`WELLS`) | SOURCE | HELD. List of record (freeze, DD-046-10, resolving OPEN-2): the sign apparatus of Wells 2015 itself — Chapter 2, "The Indus Sign List" (Figure 2.6, "An Indus Sign List"), in Bryan K. Wells, *The Archaeology and Epigraphy of Indus Writing* (Archaeopress, 2015; ISBN 978 1 78491 046 4), held as cleaned text (above). Locator form: chapter/figure plus the book's own sign number; the §1 passage (printed p. 97) is the identification of record under §5.1. |
+| CISI (`CISI`) | INDEPENDENT | HELD. List of record (freeze, DD-046-11, resolving OPEN-3): the catalogue apparatus of the CISI volumes as held digitally and complete — Vol. 1 (Joshi & Parpola (eds.), *Corpus of Indus Seals and Inscriptions. 1: Collections in India*, 1987; MASI 86) and Vol. 2 (Shah & Parpola (eds.), *Corpus of Indus Seals and Inscriptions. 2: Collections in Pakistan*, 1991) — as catalogued in the program's Phase-124 catalogue layers (Spec 027 Stage 0 record; Spec 023 §2 scans-in-hand record). Locator form: volume plus catalogue/object entry plus page or plate. The CISI row scores an identification only where a volume entry itself gives one; otherwise the row is SILENT with its `entry_present` sub-state (§10). |
+| Parpola (`PARPOLA`) | INDEPENDENT | HELD or CITABLE. List of record (freeze, DD-046-11): Parpola's published sign identifications in Asko Parpola, *Deciphering the Indus Script* (Cambridge University Press, 1994; the sign list of 386 signs), with the locator form P-number — the program's crosswalk registry is keyed to Parpola 1982 numbering, and the row's locator records that P-number with the 1994 identification quoted at it. |
+| Mahadevan (`MAHADEVAN`) | INDEPENDENT | HELD or CITABLE. Edition of record (freeze, DD-046-12, resolving OPEN-4): Iravatham Mahadevan, *The Indus Script: Texts, Concordance and Tables* (Memoirs of the Archaeological Survey of India, No. 77, 1977) — the M77 sign list (419 signs). Locator form: M-number plus the concordance/tables page or entry. The program holds Mahadevan crosswalk data (registry `mahadevan_ids` coverage). |
 
 No corpus, positional data, or classification
 asset is an input to this spec. In
@@ -338,7 +345,10 @@ material filled from the run:
   identifies it otherwise. On the published
   record, 'horned tiger' is the field's
   identification for this sign, not one
-  scholar's call. This settles what the
+  scholar's call. The lists counted are
+  independent as published lists; this
+  concordance does not audit their scholarly
+  lineage (freeze note, DD-046-13). This settles what the
   drawn sign depicts, as the field's lists
   record it — the identification layer only.
   It does not establish what the sign meant
@@ -455,7 +465,7 @@ readers and must not diverge from it.
   concurrence_state (AGREE | DISAGREE |
   SILENT)}`.
 - `concurrence_state` (the per-sign state):
-  one of `CONSENSUS | PARTIAL-CONCURRENCE |
+  one of `CONSENSUS | PARTIAL CONCURRENCE |
   SINGLE-SOURCE | CONTESTED`, computed by
   §5.2 from the four rows and shown beside
   them.
@@ -520,6 +530,16 @@ failure, recorded as such.
   freeze may add a lineage note, openly,
   before any row is scored (OPEN-5); it may
   not re-weight rows after scoring.
+  **Freeze note (DD-046-13, resolving
+  OPEN-5):** the lineage note IS added, at
+  this freeze, before any row is scored: it
+  stands in the §5.3 CONSENSUS wording above
+  and in this bullet — independence in §5.2
+  is publication-level only, sign lists
+  borrow from each other, and no output may
+  present CONSENSUS as agreement between
+  unrelated scholarly traditions. The
+  counting rule is unchanged.
 - **No drawing on the asset it feeds.** The
   scorer works from the published lists
   only. Asset A, D-05's labels, and all

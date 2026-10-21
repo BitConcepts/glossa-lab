@@ -1,0 +1,101 @@
+{
+ "schema_version": "1.0",
+ "definition": {
+  "spec": "specs/046-horned-tiger-concordance/spec.md",
+  "freeze_doc": "specs/046-horned-tiger-concordance/freeze.md",
+  "experiment_id": "spec046-horned-tiger-concordance",
+  "register": {
+   "path": "specs/046-horned-tiger-concordance/claims.json",
+   "register_version": "0.7-draft",
+   "claims": 15,
+   "aee_hook_pass": "PASSED at the freeze act of 2026-10-21 under aee 1.5.0: the 0.5-draft register could not load in the engine (draft evidence kinds and source qualities are not engine values); recovery to 0.6-draft (kind and quality remap, independent_of declarations) left 32 failure modes at after_specify; recovery to 0.7-draft (single head propositions, carried clauses moved into boundaries, and the C01/C15 boundary_confirmation records) left exactly 15 FR-2.3 draft-cap records at each of after_specify, after_plan, and after_tasks, with zero correctness failure modes and no claim below the 0.70 threshold (minimum propagated 0.72); the engine outcome word reads iterate solely from the draft-cap records (gate reading DD-046-16; record in specs/046-horned-tiger-concordance/aee/freeze-aee-note.md)"
+  },
+  "basis": {
+   "adjudication": "specs/046-horned-tiger-concordance/adjudication.md",
+   "decisions": "The runnable-experiments campaign plan approved by the owner AS WRITTEN on 2026-10-21 commissions this freeze (campaign member 13, design D-18; decision E-1: every specification in the pass files its own OSF contract registration at its freeze; decision E-6: Asset A sits inside Spec 045, and this spec feeds it). Freeze decisions DD-046-9 to DD-046-18 are recorded in adjudication.md section 7: PARTIAL CONCURRENCE confirmed (DD-046-9); the Wells, CISI, and Mahadevan lists of record named from held records with locators, the Parpola list named in the same act (DD-046-10 to DD-046-12); the lineage note added (DD-046-13); the Spec 045 cross-check recorded as a Spec 045-side freeze repair (DD-046-14); no separate dry-run sign required (DD-046-15); the DD-038-10 AEE gate reading adopted (DD-046-16); Phase-405 allocated (DD-046-17); the OSF registration filed at the freeze, with execution awaiting its approval (DD-046-18). DD-046-1, DD-046-2, DD-046-3, and DD-046-6 stand confirmed as drafted."
+  },
+  "design": {
+   "phase": "Phase-405",
+   "act": "an identification concordance for one fragment: find the drawn sign Wells (2015) numbers 297, then score what each of the four published sign lists of record says the sign depicts, in its own words, under rules frozen before any list is opened for scoring",
+   "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
+   "hypothesis": "the identification of the drawn sign as a tiger is the published consensus: at least two independent lists score AGREE and no list scores DISAGREE (spec section 1.2; F046-C03)",
+   "source_role": "Wells is scored in the role SOURCE and never counts toward CONSENSUS, because the claim source document is Wells (2015) itself (DD-046-2; F046-C08)",
+   "scoring": {
+    "agree": "the list identifies the drawn sign as a tiger; the horned qualifier is recorded verbatim, not scored (DD-046-5)",
+    "disagree": "the list identifies the drawn sign as something other than a tiger, quoted verbatim",
+    "silent": "the list gives no referent identification for the drawn sign, with the entry_present sub-state recorded (DD-046-4)"
+   },
+   "outcome_mapping": {
+    "rule": "A is the number of INDEPENDENT lists (CISI, Parpola, Mahadevan) scored AGREE; D is the number of lists of any role scored DISAGREE, including a Wells-internal divergence",
+    "CONSENSUS": "A >= 2 and D = 0",
+    "CONTESTED": "D >= 1, whatever A is",
+    "PARTIAL CONCURRENCE": "A = 1 and D = 0",
+    "SINGLE-SOURCE": "A = 0 and D = 0",
+    "totality": "every pattern of scored rows lands in exactly one outcome; PARTIAL CONCURRENCE is the freeze-confirmed word for the one-agreement pattern design D-18 left unmapped (DD-046-3, DD-046-9)"
+   },
+   "lists_of_record": {
+    "WELLS": "SOURCE; the sign apparatus of Wells 2015 itself - Chapter 2, The Indus Sign List (Figure 2.6), in Bryan K. Wells, The Archaeology and Epigraphy of Indus Writing (Archaeopress, 2015; ISBN 978 1 78491 046 4), held as cleaned text; locator chapter/figure plus the book sign number (DD-046-10)",
+    "CISI": "INDEPENDENT; the catalogue apparatus of CISI Vol. 1 (Joshi and Parpola (eds.), 1987; MASI 86) and Vol. 2 (Shah and Parpola (eds.), 1991), as held digitally and complete and as catalogued in the Phase-124 catalogue layers; locator volume plus catalogue/object entry plus page or plate (DD-046-11)",
+    "PARPOLA": "INDEPENDENT; Parpola published sign identifications in Asko Parpola, Deciphering the Indus Script (Cambridge University Press, 1994), the sign list of 386 signs; locator P-number, the registry being keyed to Parpola 1982 numbering (DD-046-11)",
+    "MAHADEVAN": "INDEPENDENT; Iravatham Mahadevan, The Indus Script: Texts, Concordance and Tables (Memoirs of the Archaeological Survey of India, No. 77, 1977), the M77 sign list of 419 signs; locator M-number plus concordance/tables page or entry (DD-046-12)"
+   },
+   "delivery": {
+    "file": "concordance-297.json in this spec directory, schema glossa.concordance/1, produced on every terminal outcome (DD-046-1; spec section 6)",
+    "closure_form": "on a closure before scoring, signs is an empty array and the top level carries closure {class, wording}; an empty feed is a stated state, never an absent file",
+    "asset_a_feed": "on CONSENSUS, PARTIAL CONCURRENCE, or SINGLE-SOURCE the feed carries depicted_kind animal, the source term horned tiger, and the concurrence state; on CONTESTED the kind fields are null, flagged_disputed is true, and every verbatim identification travels in disputed_identifications"
+   },
+   "open6_finding": "Spec 045 draft section 2.6 cannot ingest PARTIAL CONCURRENCE as drafted, does not name the CLOSED AT STEP 0 outcome class, and rejects a row whose crosswalk key does not resolve, while this spec lawfully produces a Wells-list-entry match with a null registry id; the repair is recorded for Spec 045 freeze on its side (DD-046-14) and this spec outcome vocabulary is unchanged",
+   "lineage_note": "independence is publication-level only; the lists scholarly traditions borrow from each other and this concordance does not audit their genealogy; the note stands in the CONSENSUS wording before any row is scored (DD-046-13)",
+   "dry_run": "no separate dry-run sign is required (DD-046-15); the outcome record must derive its state from its four published rows alone",
+   "fences": "identification layer only; concordance is not correctness; one sign only; silence is not disagreement; negative, single-source, partial, and closure outcomes publish with the same prominence as consensus (spec section 9)",
+   "execution_gate": "NOT satisfied at the freeze of 2026-10-21: the OSF contract registration was filed at the freeze under E-1 and execution awaits its approval plus the campaign execution pass (Wave 3, group 1, before Asset A freezes); no list was opened for scoring and no concordance row exists at the freeze"
+  },
+  "inputs": {
+   "claim_record": {
+    "file": "glossa-indus/claims/extracted_claims/the_archaeology_and_epigraphy_of_indus_w_27f45a68.json",
+    "sha256": "bd0f7abddc9c26537f4ebe5f66f6a1fc69d394a4c2edbe745a8b7eb1ddc3333a"
+   },
+   "source_book_held_text": {
+    "file": "glossa-indus/processed/cleaned_text/the_archaeology_and_epigraphy_of_indus_w_27f45a68.txt",
+    "sha256": "62acf855ac3ecf39fc7a7e6597dba9a3cb6e35948528f69e9424eb81308d261e",
+    "passage_locator": "printed p. 97"
+   },
+   "phase104_evaluation": {
+    "file": "glossa-indus/reports/phase104_claims_evaluation.json",
+    "sha256": "2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d"
+   },
+   "crosswalk_registry": {
+    "file": "data/crosswalks/canonical_sign_registry.csv",
+    "sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+    "rows": 803,
+    "traps": "Parpola P297 is described in the registry as a Ladder motif, a different sign from Wells 297; the value W297 appears inside a multi-value wells_ids cell on the P205 row and does not by itself identify the passage sign"
+   },
+   "lane2_drafts": {
+    "file": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+    "sha256": "3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb"
+   },
+   "pins_reasserted": "every spec section 2 pin was recomputed against main at 83b6a563 at this freeze and matched its draft value"
+  },
+  "environment": {
+   "python": "3.12.3",
+   "runner": "backend (venv glossa-lab)",
+   "aee": "1.5.0 (venv glossa-aee150, the named fallback for the empty glossa-aee153 venv; package pinned >=1.5.0,<1.6)",
+   "specify": "1.0.10"
+  }
+ },
+ "sources": {
+  "specs/046-horned-tiger-concordance/freeze.md": "0c243d5aab95939fd83fde192625fca987cf88de845756bf646a64a7c3064b17",
+  "specs/046-horned-tiger-concordance/spec.md": "b9f4c7597001dce8346ef83fd936c24ae87a1dd2312b330d265efc414069ec6e",
+  "specs/046-horned-tiger-concordance/claims.json": "bcd818695cca5db42e8cf36cb7ba218037bc84724dadd65b60e818022fcedbea",
+  "specs/046-horned-tiger-concordance/adjudication.md": "a95d7a4a441b6ee42143bbe13faf2b0132dc38e9168c4f7d85c0f8b1db09c40d",
+  "specs/046-horned-tiger-concordance/aee/freeze-aee-note.md": "00507c4852e44fb996f5f855004a0c0b1fc9d2c7eda50c8447caeceecc157682",
+  "specs/046-horned-tiger-concordance/build_freeze.py": "3e8280642a3766fdf73a2ef649cf680c7f07a932161350c5e2b5ea8cefab1a10",
+  "backend/tests/test_spec046_freeze.py": "ee115a9b106d551e4163490219060610a9f93aad29c17bd1f2ea8531e871da26"
+ },
+ "environment": {
+  "python": "3.12.3",
+  "platform": "Linux",
+  "aee": "1.5.0"
+ },
+ "digest": "80c3be31e5af5236f71cb2c1894b2946f9b8ad47b12bdeab9d03cd76468af405"
+}

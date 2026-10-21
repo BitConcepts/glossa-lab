@@ -2925,6 +2925,16 @@ try:
     logger.info("Registered %d Phase-403 (spec 039) nodes", len(list(_p403_defs())))
 except Exception as _p403_exc:  # noqa: BLE001
     logger.warning("Phase-403 (spec 039) nodes not registered: %s", _p403_exc)
+# ── Phase-405 node (spec 046: horned-tiger concordance) ──
+try:
+    from glossa_lab.experiment_graph_phase405 import (
+        _phase405_node_defs as _p405_defs,  # noqa: PLC0415
+    )
+    for _d in _p405_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-405 (spec 046) nodes", len(list(_p405_defs())))
+except Exception as _p405_exc:  # noqa: BLE001
+    logger.warning("Phase-405 (spec 046) nodes not registered: %s", _p405_exc)
 # ── Phase-406 node (spec 047: Roif ledger step 1 — Asset B) ──
 try:
     from glossa_lab.experiment_graph_phase406 import (

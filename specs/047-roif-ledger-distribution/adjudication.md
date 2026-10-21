@@ -88,7 +88,12 @@
 Verified first-hand at drafting, 2026-10-21,
 against `main` at `82b29490` (the current head
 when drafting began; re-read at the start of
-the drafting act, per instructions):
+the drafting act, per instructions). The
+branch as pushed sits on `83b6a563` — PR #241
+merged while drafting was in flight — and
+every pin in spec §2 was re-verified identical
+at both heads (the intervening commits touch
+Spec 030's record only):
 
 - **Design D-09** — read in full: the bundled
   thesis and its decomposition ("only the first
@@ -223,7 +228,8 @@ the drafting act, per instructions):
   `9c2b0c57…`, correct `7fff5d5a…`). Each
   correct value was re-verified by **two
   independent routes at the branch's base
-  commit** (`82b29490`): the git-blob route
+  commits** (`82b29490`, and `83b6a563`, the
+  head the branch as pushed sits on): the git-blob route
   through the commit's tree, and the contents
   raw route — the two agree byte-for-byte on
   every file checked, including the pins that

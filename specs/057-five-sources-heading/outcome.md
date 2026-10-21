@@ -697,8 +697,6 @@ at both points — byte-identical, asserted.
   merge commit by two routes (git blobs at
   82944843… and the GitHub raw-content API):
   reports/phase419_results.json
-  d30fa456071a57a38b39d1b6e2e1ea2fff7aa4660d2aa2a
-  f433fa94e64fcd4f9 — full value
   d30fa456071a57a38b39d1b6e2e1ea2fff7aa4660d2aa2af433fa94e64fcd4f9;
   reports/phase419_five_sources_report.md
   b8f6e4d1ae30cea6277f5d23a6dec23f6d6f93ff99d4adf236989c6f4b0a7302;

@@ -422,3 +422,52 @@ record is task E7's, at step 2.
 
 *AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen
 Pierson, per constitution §VI.*
+
+---
+
+## Landing record — 2026-10-21 (appended at merge; append-only)
+
+- Execution PR: **#266** (branch
+  `spec-047-step1-execution`), merged to
+  `main` as merge commit
+  **`a6004ac378968d24fcf1fafefb4a670a240a0bed`**.
+- CI: GitHub Actions run 39608734716 on the
+  PR head `5eff05c9` — **7 of 7 jobs
+  success**, verified from the run's own
+  job conclusions (Backend tests;
+  Frontend tests (Playwright); Indus public
+  validation checks; Evidence Graph script
+  smoke tests; Shell wrappers ubuntu /
+  macos / windows).
+- The branch carried one merge of `main`
+  (Spec 046's execution, PR #263) before
+  merging; the two append conflicts
+  (LEDGER.md, `experiment_graph.py`) were
+  resolved by keeping both programmes'
+  entries and both graph registrations,
+  and the Spec 046 and Spec 047 test files
+  were re-run green on the merged tree
+  before the PR was opened.
+- Asset and ledger digests re-verified on
+  `main` at the merge commit by the
+  contents-API route: Asset B
+  `a1a9e48422ab7ab2ef1d340c5ca0eb81a315253b196fdc199d77d2e5739c9f85`,
+  ledger list
+  `dfa48f50907a3374b45d6270f0ffbed8a2492c5d33c186da36950140b233292b`
+  — identical to the frozen values in this
+  record.
+- Foundation check (H21) at the merge
+  commit, on a fresh clone with the two
+  Holdat CSVs copied from the existing
+  local downloads (corpus CSV SHA-256
+  `62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e`
+  verified first): **40 checks passed, 0
+  failed, 8 warnings** — the standing
+  figure.
+- Tasks E1–E4 stand ticked in `tasks.md`;
+  E5–E7 (step 2) remain open for the
+  Group-3 execution act. The claim stands
+  UNTESTED.
+
+*AI disclosure: appended by an AI agent (Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.*

@@ -3049,6 +3049,16 @@ try:
     logger.info("Registered %d Phase-414 (spec 055) nodes", len(list(_p414_defs())))
 except Exception as _p414_exc:  # noqa: BLE001
     logger.warning("Phase-414 (spec 055) nodes not registered: %s", _p414_exc)
+# ── Phase-422 node (spec 060: F2 margin curve + shared population) ──
+try:
+    from glossa_lab.experiment_graph_phase422 import (
+        _phase422_node_defs as _p422_defs,  # noqa: PLC0415
+    )
+    for _d in _p422_defs():
+        ATOMIC_NODES[_d.id] = _d
+    logger.info("Registered %d Phase-422 (spec 060) nodes", len(list(_p422_defs())))
+except Exception as _p422_exc:  # noqa: BLE001
+    logger.warning("Phase-422 (spec 060) nodes not registered: %s", _p422_exc)
 # ── Phase-120 nodes (Bhaskar 2024 descriptive triage) ──
 try:
     from glossa_lab.experiment_graph_phase120 import (

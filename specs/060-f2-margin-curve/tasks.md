@@ -118,10 +118,15 @@ independent executions.** It consumes no
 shared asset and no member's output, and no
 member consumes its output inside the pass.
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0, part 1** (spec §4 gates
+      Executed 2026-10-21 as Phase-422: script
+      `backend/scripts/phase422_f2_margin_curve.py`,
+      node `IndusPhase422F2MarginCurve`,
+      registration verified by import before
+      the run.
+- [x] **E2 — Step 0, part 1** (spec §4 gates
       0.1–0.3): input integrity against the
       freeze pins (both held layers included);
       both layers' population reproduction
@@ -129,20 +134,35 @@ member consumes its output inside the pass.
       and V; estimator regression against both
       recorded governing intervals. Any failure
       stops the run as INVALID before any arm
-      quantity.
-- [ ] **E3 — Step 0, part 2** (gate 0.4):
+      quantity. Executed 2026-10-21: gates 0.1,
+      0.2, and 0.3 all PASS (both held layers
+      hash exactly to their recorded pins; both
+      profile tables reproduce cell-for-cell;
+      both recorded governing intervals
+      reproduce float-for-float).
+- [x] **E3 — Step 0, part 2** (gate 0.4):
       shared-population census published
       (site intersection re-derived, per-layer
       and per-site counts). A THIN result
       closes arm 2 here, with the census as
       its finding; arm 1 proceeds (DD-060-2).
-- [ ] **E4 — Arm 1** (spec §5.1): the margin
+      Executed 2026-10-21: gate 0.4 PASS —
+      6 shared sites, 1,516 Holdat / 2,139
+      ICIT SEAL inscriptions, above the frozen
+      floors; arm 2 ran.
+- [x] **E4 — Arm 1** (spec §5.1): the margin
       curve on the full Holdat population —
       governing interval recomputed under the
       Phase-384 v2 estimator, the five grid
       cells worded by claim F060-C08's rule,
       labelled sensitivity in every product.
-- [ ] **E5 — Arm 2** (spec §5.2, if its gate
+      Executed 2026-10-21: governing interval
+      [0.0589, 0.0778], point V 0.1154; cells
+      SUPPORTED AT 0.05, STRADDLES 0.075,
+      CONTRADICTED AT 0.10 / 0.125 / 0.15
+      (sensitivity display; the recorded 0.10
+      verdict stands).
+- [x] **E5 — Arm 2** (spec §5.2, if its gate
       passed): per-layer governing intervals
       on the shared population under identical
       code, signs never pooled or mapped
@@ -152,7 +172,15 @@ member consumes its output inside the pass.
       F060-C12, in the §6 wording that matches
       it — for COMPOSITION DOES NOT, the
       corrected hand-off wording of §6.3.
-- [ ] **E6 — Outcome:** the §8 record —
+      Executed 2026-10-21: Holdat
+      [0.0553, 0.0761] and ICIT [0.0837, 0.1084]
+      still exclude each other —
+      **COMPOSITION DOES NOT**, recorded in the
+      §6.3 wording alongside Spec 034's finished
+      attribution; period mix stated not
+      described for both layers (field not
+      carried; nothing imported).
+- [x] **E6 — Outcome:** the §8 record —
       results JSON and report under the
       headline rules (both corpus labels, the
       gate record, the full curve, the census,
@@ -163,6 +191,15 @@ member consumes its output inside the pass.
       the LEDGER entry; anchors asserted
       byte-identical before and after;
       foundation check reported as measured.
+      Delivered 2026-10-21: `outcome.md` in
+      this directory (the dated append form of
+      the executed-spec record — the claim's
+      frozen files are never edited),
+      `reports/phase422_results.json`,
+      `reports/phase422_report.md`, and the
+      root LEDGER entry; anchors byte-identical
+      (`df0cf620…`); foundation check 40 passed
+      / 0 failed / 8 warnings as measured.
 
 ---
 

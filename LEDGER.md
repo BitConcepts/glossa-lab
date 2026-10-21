@@ -7774,3 +7774,85 @@ reports/phase411_step0_report.md.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-21 — Spec 061 EXECUTED (Phase-423): CANNOT BE RUN AS WRITTEN at gate 0.5 (construction calibration)
+
+Spec 061 was executed as Phase-423 under the
+frozen contract (freeze digest 41b1785c…;
+OSF registration fza8c approved and public,
+DOI 10.17605/OSF.IO/FZA8C), in Wave 3
+Group 2 of the runnable-experiments campaign
+(member 18, design D-27 arm A1 only; Arm A2
+is not in this pass, E-3). Graph-first build
+(H15/H23): script
+backend/scripts/phase423_arm_a_precision.py,
+graph module
+backend/glossa_lab/experiment_graph_phase423.py
+(node IndusPhase423ArmAPrecision), registration
+verified by import before the run. The run of
+record executed on the owner's desktop
+(TRISTEN-DESKTOP) in the freeze environment
+(Python 3.12.3, NumPy 2.5.3), the executed
+script byte-identical to the committed script.
+Step 0, gates in frozen order: **0.1 PASS**
+(every composite-pin component recomputes to
+its freeze value: results 0a1657a8…, corpus
+c02e3d7b…, pipeline 6c2ff91c…, margins
+15ae0281…, Spec 028 freeze 376cd8e7…, anchors
+df0cf620…). **0.2 PASS** (the frozen
+population flow reproduces the recorded Arm A
+population exactly: 1,593 records, the five
+site totals, the audit's cell table, 6
+included cells, 294 per draw). **0.3 PASS,
+exact** (the frozen Arm A primary re-run at
+seed 20261012 reproduces the recorded summary
+digit-for-digit: median adjusted R²
+0.00878393455594817, interval
+[0.004626892186724407, 0.01297407559730989],
+rejection share 0.6231155778894473). **0.4
+PASS** (the freeze record states the full
+§4.7 frame). **0.5 FAIL — the execution
+closed CANNOT BE RUN AS WRITTEN.** The frozen
+calibration's A(b) — the frozen estimator on
+the constructed population in expectation —
+recomputes to a step function: A(1) =
+−0.0025188916876574316 (the frozen record's
+own value, 1 − 1592/1588) and A(b) = 1.0
+exactly at every b > 1 evaluated (1.5, 2.0,
+3.0; between-site sum of squares equal to the
+total at each). The mechanism: every
+inscription at a site carries the same
+expected proportion vector, so the
+constructed population has zero within-site
+variation and the estimator sees perfect site
+separation at any boost above 1. No boost in
+[1, 3] achieves |A(b) − θ| ≤ 1e-6 for either
+scenario (θ₁ = 0.00878393455594817,
+θ₂ = 0.015); Scenario 1's bisection did not
+reach the tolerance within 100 iterations and
+the gate closed the run there. Spec 028's
+recorded positive control at boost 3.0
+(median 0.023963353007570576) is a median over
+generated worlds — a different quantity from
+A(3), which recomputes to 1.0; the drawing of
+inscriptions is what creates the within-site
+variation the in-expectation construction
+averages away. No trial ran, no world was
+built, no target quantity was computed, and
+no substitute construction was supplied at
+run time. Spec 028 Arm A stands exactly as
+recorded (INCONCLUSIVE); the operative
+target T* (DD-061-5) is undefined on this
+record, so Arm A2's trigger does not fire on
+it and no target may be quoted from this
+record. A successor calibration is a new act
+under a new freeze or an amendment. Records:
+specs/061-arm-a-precision/outcome.md,
+reports/phase423_results.json (SHA-256
+f7007009…), reports/phase423_report.md
+(SHA-256 3669eb38…). Anchors byte-identical
+before and after (df0cf620…).
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

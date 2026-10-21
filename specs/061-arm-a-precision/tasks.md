@@ -79,18 +79,26 @@
 
 ## Execution — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0, part 1** (spec §3 gates
+      DONE 2026-10-21 (Phase-423):
+      `backend/scripts/phase423_arm_a_precision.py`,
+      graph module
+      `backend/glossa_lab/experiment_graph_phase423.py`
+      (node `IndusPhase423ArmAPrecision`),
+      registration verified by import before
+      the run.
+- [x] **E2 — Step 0, part 1** (spec §3 gates
       0.1–0.2): composite resampling-
       distribution pin asserted against the
       freeze pins; Arm A population reproduced
       exactly (1,593 records, five site
       totals, 6 included cells, 294 per draw).
       Any failure stops the run as INVALID
-      before any trial.
-- [ ] **E3 — Step 0, part 2** (gates 0.3–0.4):
+      before any trial. DONE 2026-10-21:
+      gates 0.1 and 0.2 PASS (outcome.md §2).
+- [x] **E3 — Step 0, part 2** (gates 0.3–0.4):
       recorded-distribution reproduction
       (frozen Arm A primary re-run at seed
       20261012 reproduces the recorded median,
@@ -99,7 +107,18 @@
       search frame read from the freeze record
       and asserted complete (any missing
       element closes the run as CANNOT BE RUN
-      AS WRITTEN).
+      AS WRITTEN). DONE 2026-10-21: gates 0.3
+      (exact reproduction, digit-for-digit)
+      and 0.4 PASS; the freeze-added gate 0.5
+      (construction calibration) then FAILED
+      and closed the execution as CANNOT BE
+      RUN AS WRITTEN — A(b) recomputes to the
+      step function −0.0025188916876574316 at
+      b = 1 and 1.0 at every b > 1, so no boost
+      in [1, 3] achieves |A(b) − θ| ≤ 1e-6
+      (outcome.md §2). E4 and E5 are closed in
+      substance by that record: the computation
+      cannot run under this frozen contract.
 - [ ] **E4 — Computation** (spec §4): both
       scenarios independently, grid points in
       ascending total order, each trial a
@@ -110,7 +129,22 @@
       (F061-C10); full grid table recorded,
       including non-monotone patterns as
       observed.
-- [ ] **E5 — Outcome:** the §6 record —
+- [x] **E5 — Outcome:** the §6 record —
+      DONE 2026-10-21 in its closure form:
+      `outcome.md` in this directory, the
+      results JSON and Phase-423 report under
+      `reports/`, and the root LEDGER entry;
+      the record is the CANNOT BE RUN AS
+      WRITTEN closure at gate 0.5, so the §6
+      items that presuppose a computed grid
+      (the grid table, per-target totals, the
+      dated precision append to
+      `STUDY-SPEC-028/ARM-A` with an operative
+      T*) do not exist — no target was
+      computed, T* is undefined on this
+      record, and nothing is appended to the
+      claim's record as a precision result.
+      The §6 record as executed:
       results JSON and report under the
       headline rules (simulation label, both
       scenario values, the full grid table

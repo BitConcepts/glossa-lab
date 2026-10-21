@@ -40,7 +40,7 @@
           "kind": "program-record",
           "direction": "supports",
           "source_quality": "authoritative",
-          "description": "Phase-104 evaluation (SHA-256 b299905a…, recomputed at this draft): claim indus_valley_script_deciphered_from_myth_65ff0a26_manual_001 stays untested under RULE-SITE — its falsification condition requires a site-typology classification; no such dataset exists in the repo.",
+          "description": "Phase-104 evaluation (SHA-256 2d0b83e8…, recomputed at this draft): claim indus_valley_script_deciphered_from_myth_65ff0a26_manual_001 stays untested under RULE-SITE — its falsification condition requires a site-typology classification; no such dataset exists in the repo.",
           "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
           "observed_at": "2026-10-21"
         },
@@ -69,7 +69,7 @@
       ],
       "alternatives": [],
       "falsification_tests": [
-        "recompute SHA-256 of glossa-indus/reports/phase104_claims_evaluation.json (b299905a…) and read the manual_001 entry; any mismatch falsifies this statement and voids the draft's basis"
+        "recompute SHA-256 of glossa-indus/reports/phase104_claims_evaluation.json (2d0b83e8…) and read the manual_001 entry; any mismatch falsifies this statement and voids the draft's basis"
       ],
       "metadata": {
         "framework_kind": "requirement",
@@ -88,7 +88,7 @@
           "kind": "program-record",
           "direction": "supports",
           "source_quality": "authoritative",
-          "description": "Phase-104 evaluation (SHA-256 b299905a…, recomputed at this draft): claim indus_valley_script_deciphered_from_myth_65ff0a26_manual_001 stays untested under RULE-SITE — its falsification condition requires a site-typology classification; no such dataset exists in the repo.",
+          "description": "Phase-104 evaluation (SHA-256 2d0b83e8…, recomputed at this draft): claim indus_valley_script_deciphered_from_myth_65ff0a26_manual_001 stays untested under RULE-SITE — its falsification condition requires a site-typology classification; no such dataset exists in the repo.",
           "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
           "observed_at": "2026-10-21"
         }
@@ -147,7 +147,7 @@
           "kind": "program-record",
           "direction": "supports",
           "source_quality": "authoritative",
-          "description": "Phase-104 evaluation (SHA-256 b299905a…, recomputed at this draft): claim indus_valley_script_deciphered_from_myth_65ff0a26_manual_001 stays untested under RULE-SITE — its falsification condition requires a site-typology classification; no such dataset exists in the repo.",
+          "description": "Phase-104 evaluation (SHA-256 2d0b83e8…, recomputed at this draft): claim indus_valley_script_deciphered_from_myth_65ff0a26_manual_001 stays untested under RULE-SITE — its falsification condition requires a site-typology classification; no such dataset exists in the repo.",
           "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
           "observed_at": "2026-10-21"
         }
@@ -280,7 +280,7 @@
           "kind": "program-record",
           "direction": "supports",
           "source_quality": "authoritative",
-          "description": "Spec 027's frozen design (SHA-256 9c2b0c57…): Stage 0 built the gazetteer as descriptive infrastructure — one row per source assertion, clustering under program_site_id, disagreements preserved, never resolved by majority vote (§§6.2/6.3/6.5).",
+          "description": "Spec 027's frozen design (SHA-256 7fff5d5a…): Stage 0 built the gazetteer as descriptive infrastructure — one row per source assertion, clustering under program_site_id, disagreements preserved, never resolved by majority vote (§§6.2/6.3/6.5).",
           "source_id": "specs/027-movement-culture-language/spec.md",
           "observed_at": "2026-10-21"
         }
@@ -423,7 +423,7 @@
           "kind": "program-record",
           "direction": "supports",
           "source_quality": "authoritative",
-          "description": "Spec 027's frozen design (SHA-256 9c2b0c57…): Stage 0 built the gazetteer as descriptive infrastructure — one row per source assertion, clustering under program_site_id, disagreements preserved, never resolved by majority vote (§§6.2/6.3/6.5).",
+          "description": "Spec 027's frozen design (SHA-256 7fff5d5a…): Stage 0 built the gazetteer as descriptive infrastructure — one row per source assertion, clustering under program_site_id, disagreements preserved, never resolved by majority vote (§§6.2/6.3/6.5).",
           "source_id": "specs/027-movement-culture-language/spec.md",
           "observed_at": "2026-10-21"
         }
@@ -614,7 +614,7 @@
           "kind": "program-record",
           "direction": "supports",
           "source_quality": "authoritative",
-          "description": "The crosswalk of record between the primary layer's sign numbering and published (Parpola) sign identities (SHA-256 d94a62e0…, recomputed at this draft); the §5 ledger-list mapping route.",
+          "description": "The crosswalk of record between the primary layer's sign numbering and published (Parpola) sign identities (SHA-256 e44b8b55…, recomputed at this draft); the §5 ledger-list mapping route.",
           "source_id": "data/crosswalks/yajnadevam_to_parpola_crosswalk.csv",
           "observed_at": "2026-10-21"
         }
@@ -899,7 +899,7 @@
           "kind": "program-record",
           "direction": "supports",
           "source_quality": "authoritative",
-          "description": "Phase-104 evaluation (SHA-256 b299905a…, recomputed at this draft): claim indus_valley_script_deciphered_from_myth_65ff0a26_manual_001 stays untested under RULE-SITE — its falsification condition requires a site-typology classification; no such dataset exists in the repo.",
+          "description": "Phase-104 evaluation (SHA-256 2d0b83e8…, recomputed at this draft): claim indus_valley_script_deciphered_from_myth_65ff0a26_manual_001 stays untested under RULE-SITE — its falsification condition requires a site-typology classification; no such dataset exists in the repo.",
           "source_id": "glossa-indus/reports/phase104_claims_evaluation.json",
           "observed_at": "2026-10-21"
         }

@@ -166,8 +166,12 @@ the drafting act, per instructions):
   The program's citation of record was also
   read: `seed_citations.py`, key
   `roif_indus_ledger`, carries "Roif, A.",
-  Academia.edu, 2025, no DOI or URL — consistent
-  with the verification's findings.
+  Academia.edu, year field empty, DOI empty,
+  URL field carrying only the Academia.edu
+  root — no document-level identifier, which
+  is consistent with the verification's
+  findings (the document-level URLs come from
+  the verification, not from this record).
 - **Defect found at draft (recorded in spec
   §2.2).** The hypothesis-model file
   `glossa-indus/hypotheses/models/roif_guild_ledger.yaml`
@@ -205,6 +209,39 @@ the drafting act, per instructions):
   per-site record counts at draft would put the
   classification worker one step from the very
   figures §4.5 keeps from them.
+
+- **Pin correction — 2026-10-21, same day,
+  before any freeze.** The first drafting pass
+  carried four wrong pins, produced by a
+  hash-computation run whose outputs did not
+  survive re-computation: the Phase-104
+  evaluation (carried `b299905a…`, correct
+  `2d0b83e8…`), the citation record (carried
+  `38f252e9…`, correct `39d28112…`), the sign
+  crosswalk (carried `d94a62e0…`, correct
+  `e44b8b55…`), and Spec 027's spec (carried
+  `9c2b0c57…`, correct `7fff5d5a…`). Each
+  correct value was re-verified by **two
+  independent routes at the branch's base
+  commit** (`82b29490`): the git-blob route
+  through the commit's tree, and the contents
+  raw route — the two agree byte-for-byte on
+  every file checked, including the pins that
+  were right (gazetteer `5ac76a30…`, corpus
+  `c02e3d7b…`, anchors `df0cf620…`, model file
+  `c5f08461…`, Phase-147 record `cf9dd60d…`).
+  The error reached only the hash strings and
+  one description detail (the citation record's
+  year/URL fields, corrected in §2 above and
+  spec §2); the quoted claim record itself was
+  re-read from the correctly pinned file and is
+  **identical** to what §2 and spec §1 state —
+  verdict, rule, and reason verbatim. The
+  correction is this note plus the corrected
+  values, in a follow-up commit on the draft
+  branch; the freeze re-asserts every pin in
+  any case (tasks L6), and the Spec 040
+  stale-pin precedent is exactly why it does.
 
 ## 3. Acceptance tests derived twice, independently
 

@@ -97,7 +97,7 @@ as explicitly **not tested** (§11, limit 2).
 
 The claim's record (Phase-104 evaluation,
 `glossa-indus/reports/phase104_claims_evaluation.json`,
-SHA-256 `b299905a…`): verdict *stays untested*,
+SHA-256 `2d0b83e8…`): verdict *stays untested*,
 rule **RULE-SITE** — "Falsification condition
 requires site-typology data (gateway/border,
 fire-altar, palatial/royal, or trade-context
@@ -155,9 +155,9 @@ every outcome in that partition.
 |---|---|
 | Gazetteer spine (`data/movement/gazetteer_rows.jsonl`) — Spec 027 Stage 0 | SHA-256 `5ac76a3031121a61fa39f87b1d2760855374d171ddd036988fee2820dca9b8b6` (recomputed at this draft from `main` at `82b29490`); 36 source-assertion rows, **30 distinct `program_site_id` clusters** (both counts read at this draft) |
 | Primary corpus layer (`backend/glossa_lab/data/yajnadevam_inscriptions.csv`) — the site-attributed layer of Specs 027/028, 5,679 records, with `site` and sign-sequence columns as held | SHA-256 `c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98` (recomputed at this draft from the git blob; the same pin Spec 042's draft carries) |
-| Sign crosswalk (`data/crosswalks/yajnadevam_to_parpola_crosswalk.csv`) — the mapping route from the primary layer's sign numbering to published sign identities, used only by the §5 ledger-list mapping | SHA-256 `d94a62e0240a4dde6c8d9f0ef94337c16a73eb65942f13bd7f5fefbc042d77fd1` (recomputed at this draft) |
-| Phase-104 claims evaluation (`glossa-indus/reports/phase104_claims_evaluation.json`) — the claim's UNTESTED / RULE-SITE record | SHA-256 `b299905aed813586d46e9e502f1bed00d219b151df7a35d1b312d1cef68d10f4` (recomputed at this draft) |
-| Citation record (`backend/scripts/seed_citations.py`, key `roif_indus_ledger`) — the program's citation of record for Roif's work: "Roif, A.", Academia.edu, no DOI or URL carried | SHA-256 `38f252e9d01e58db8eaceeedeb8951d1a4af9ce07f258989b756e7ced2ec1b3f` (recomputed at this draft; key read at this draft) |
+| Sign crosswalk (`data/crosswalks/yajnadevam_to_parpola_crosswalk.csv`) — the mapping route from the primary layer's sign numbering to published sign identities, used only by the §5 ledger-list mapping | SHA-256 `e44b8b550155e3d071e7fc5f94e8c98e9755de437c99e2f5027e3d647b2950a2` (recomputed at this draft; corrected — see adjudication.md §2) |
+| Phase-104 claims evaluation (`glossa-indus/reports/phase104_claims_evaluation.json`) — the claim's UNTESTED / RULE-SITE record | SHA-256 `2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d` (recomputed at this draft; corrected — see adjudication.md §2) |
+| Citation record (`backend/scripts/seed_citations.py`, key `roif_indus_ledger`) — the program's citation of record for Roif's work: "Roif, A.", venue Academia.edu, year field empty, DOI empty, and the URL field carrying only the Academia.edu root — no document-level identifier | SHA-256 `39d28112e21151ccba0f5a370801c78d87575c6ff61695bb8fafc5c14c08b8f9` (recomputed at this draft; key read at this draft; corrected — see adjudication.md §2) |
 | Roif hypothesis-model file (`glossa-indus/hypotheses/models/roif_guild_ledger.yaml`) — background only (see §2.2 defect note) | SHA-256 `c5f08461cc1a37b91cb5a17981e2e4d7c02958312e1e7b6b9a49618a154c9586` (recomputed at this draft) |
 | Anchors file (`backend/reports/INDUS_FINAL_ANCHORS.json`) | SHA-256 `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569` (recomputed at this draft). This spec moves no anchor; the file is asserted byte-identical before and after any execution. |
 

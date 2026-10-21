@@ -1,7 +1,7 @@
 {
   "document_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
   "title": "",
-  "extraction_date": "2026-10-13T12:11:33.379722",
+  "extraction_date": "2026-10-21T15:29:26.137602",
   "total_claims": 3,
   "auto_extracted": 3,
   "manually_curated": 0,
@@ -15,7 +15,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-13T12:11:32.760834",
+      "extracted_at": "2026-10-21T15:29:25.737006",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0001",
       "stage_as_of": "2026-10-12",
@@ -54,7 +54,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.6,
-      "extracted_at": "2026-10-13T12:11:32.763828",
+      "extracted_at": "2026-10-21T15:29:25.737030",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:the_archaeology_and_epigraphy_of_indus_w_27f45a68_sign_val_0002",
       "stage_as_of": "2026-10-12",
@@ -82,19 +82,6 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "This record is a fragment, and the draft says so rather than dressing it up. The extraction pulled a single cell from a table in the source document: a sign number and a proposed value.  No check has ever run on it. The program's Phase-104 evaluation examined the record and stopped at the door: the sign number is cited without stating which sign list it belongs to, no matching entry was found in the repository's own crosswalk registry (which holds 86 numeric sign IDs), and the record carries no falsification condition - nothing that states what result would count against it. As written, the fragment is not a testable claim; it is a pointer at a table in a book. Unlike the number-value fragments, this one is at least the kind of statement that could be checked - sign identifications can be compared against sign images - but not from this record: with the sign list unnamed, the drawn sign cannot be located."
-      },
-      "first_check": {
-        "spec": "046",
-        "phase": "Phase-405",
-        "date": "2026-10-21",
-        "actor": "spec046-phase405-execution",
-        "kind": "first-check (identification)",
-        "outcome": "IDENTIFICATION FAILED (sign unmatched)",
-        "wording": "The fragment 'sign 297 is the horned tiger' cannot be carried to a concordance: the drawn sign could not be matched from Wells's published list. The record stays a stated gap. No statement about the sign is made, and nothing is fed to Asset A.",
-        "record": "specs/046-horned-tiger-concordance/outcome.md",
-        "delivery": "specs/046-horned-tiger-concordance/concordance-297.json",
-        "delivery_sha256": "772db4df152ec4f1071bed088250677e55f69743532c9e89f339a8cf9134aaaf",
-        "note": "First check of this claim, under the frozen Spec 046 contract (OSF dnts8, approved + public). Step 0 passed in full; step 1 named the source's sign list from the book's own apparatus (Wells's own list, Wells 2011, in Wells 2015 Chapter 2 / Figure 2.6) and the drawn sign could not be matched by drawn form from the held record — no registry entry carries it (the only W297 value sits inside the multi-value wells_ids cell on the P205 row, a trap the frozen spec names), and the drawn forms of Figure 2.6 did not survive the held copy's text extraction. This is a check of identification, recorded under F046-C15: it is not a verdict on the identification, and the claim's status and stage are unchanged. Appended by the Spec 046 execution; no pre-existing field of any claim in this file was altered."
       }
     },
     {
@@ -106,7 +93,7 @@
       "claim_status": "untested",
       "testability": "directly_testable",
       "confidence_in_source": 0.8,
-      "extracted_at": "2026-10-13T12:11:33.058772",
+      "extracted_at": "2026-10-21T15:29:25.935519",
       "stage": "created",
       "stage_source": "specs/029-tao-claim-lifecycle/reclassification-ledger.json:the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
       "stage_as_of": "2026-10-12",

@@ -44,14 +44,14 @@
       real corpus quantity was computed.
 - [x] **D3 — This draft.** `spec.md`,
       `claims.json` (register 0.5-draft,
-      F062-C01…C11), `adjudication.md`,
+      F062-C01…C15), `adjudication.md`,
       `tasks.md`, opened as a DRAFT PR and
       left unmerged for the freeze decision.
       Spec 061's directory is untouched.
 
 ## Lifecycle (freeze gate — NOT run by this draft)
 
-- [ ] **L1 — Constitution check.** Spec and
+- [x] **L1 — Constitution check.** Spec and
       claim register checked against
       constitution §§I–VIII and governance
       H2, H6 (no scope beyond the D-27 arm A1
@@ -65,16 +65,17 @@
       machinery, margins audit, and Spec
       028/061 records), H24 (no private
       correspondence in the repo).
-- [ ] **L2 — Claims-first register.**
-      `claims.json` (F062-C01…C11) drafted in
+- [x] **L2 — Claims-first register.**
+      `claims.json` (F062-C01…C15) drafted in
       the Spec 032–042 register shape, with
       `observed_at` carried on evidence items
       from this draft. The AEE lifecycle hooks
       have **not** run on this register (L4).
-- [ ] **L3 — Design PR.** This draft, opened
-      as a DRAFT PR and left unmerged for the
-      freeze decision, CI state reported from
-      the run's own conclusions.
+- [x] **L3 — Design PR.** This draft, opened
+      as DRAFT PR #307 and left unmerged for
+      the freeze decision; CI state, when
+      reported, is reported from the run's
+      own conclusions.
 - [ ] **L4 — AEE lifecycle hooks (FREEZE
       GATE — not run on this draft).** At the
       freeze act, run `run_aee.py assess`

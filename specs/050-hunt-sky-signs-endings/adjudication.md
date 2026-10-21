@@ -449,6 +449,186 @@ re-asserted against the merged record, and
 UNTESTED as recorded, its endings unmeasured,
 exactly as they have stood since Phase-104.
 
+## 7. Freeze decisions — 2026-10-21
+
+> ## FREEZE ACT — 2026-10-21
+>
+> This spec was frozen on 2026-10-21 under
+> the runnable-experiments campaign plan
+> approved by the owner AS WRITTEN on
+> 2026-10-21 (campaign Wave 2; decision E-1).
+> Every OPEN item in §6 is resolved here, on
+> the record. The freeze edits to spec §§2,
+> 2.3, 3 (gates 0.1 and 0.6), 5.2, 6, and 9 and
+> to claim F050-C06 (the pin-timing restatement,
+> DD-050-11) were applied as freeze-stage edits
+> **before** the AEE hooks ran and before any
+> digest was computed; they are recorded here,
+> not made silently. The AEE lifecycle hooks
+> passed at the freeze gate over the recovered
+> register 0.8-draft (DD-050-9;
+> `aee/freeze-aee-note.md`), and the freeze
+> digest in `freeze.json` was computed exactly
+> once over the recovered register and the
+> finalised freeze texts.
+>
+> **Pins re-asserted at this freeze, by two
+> routes,** against `main` at `e3399961`
+> (the merged record carrying Spec 045's
+> freeze): every §6 pin was recomputed in the
+> foreground — once through the contents API
+> and once through the git-data blob API — and
+> both routes matched the draft values exactly
+> and agreed byte-for-byte: corpus layer
+> `c02e3d7b…`, positional record `0e546962…`
+> (805 / 2,267; 40 / 61 / 20 strong-sign
+> classes), Phase-43 record `78a6c219…`,
+> crosswalk master `4ace1a61…`, anchors
+> `df0cf620…`. The censuses were also
+> recomputed: the crosswalk carries 205 rows
+> with 187 distinct `registry_sign_id` values;
+> the corpus layer carries 5,679 rows; the
+> anchors file carries 287 anchors. The
+> Phase-104 record for the claim was read at
+> the freeze: `without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004`
+> stands `stays_untested` under RULE-CLASS,
+> its reason stating that the falsification
+> condition requires a celestial sign class and
+> no celestial classification artifact exists
+> in repo data.
+
+- **DD-050-9 — The AEE gate reading.** The
+  DD-038-10 reading is adopted for this spec:
+  the lifecycle hooks PASS at the freeze when
+  every hook carries zero correctness failure
+  modes and no claim below the 0.70 threshold,
+  with the engine outcome word reading
+  "iterate" solely from the FR-2.3 draft-cap
+  records. The recovery rounds are recorded in
+  `aee/freeze-aee-note.md` and in the
+  register's own note.
+- **DD-050-10 — Phase allocation (resolving
+  DD-050-7).** The execution phase number is
+  **Phase-416**, allocated at this freeze from
+  the merged record as it stands (Phase-411
+  was Spec 045's execution; the campaign's
+  Wave 2 allocation for this spec is
+  Phase-416).
+- **DD-050-11 — OPEN-1 RESOLVED by the
+  coordinator pin-timing ruling: the Asset A
+  pin is fixed by anchor and source, not by a
+  digest that does not yet exist.** Asset A is
+  built at Spec 045's **execution step 1**
+  (campaign Wave 3); its `asset-a-freeze.json`
+  does not exist at this freeze, so no Asset A
+  digest can be quoted, and none is. This
+  freeze instead: **(a)** quotes Spec 045's
+  freeze digest
+  `5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a`
+  as the **contract anchor** — the frozen
+  contract under which the asset will be built;
+  **(b)** fixes the pin **source** as Spec
+  045's `asset-a-freeze.json`
+  (`specs/045-hunt-depicted-kinds/asset-a/asset-a-freeze.json`),
+  the record that will carry the SHA-256 of
+  the canonical
+  `asset-a/depicted-kind-classification.csv`;
+  **(c)** rules that gate 0.1 asserts that
+  SHA-256 at **execution step 0** — read from
+  the fixed source, recomputed from the
+  canonical CSV, compared before any join or
+  counting — with a mismatch closing the
+  execution as **CLOSED AT STEP 0 — ASSET PIN
+  MISMATCH** and an unfrozen or absent asset
+  as **CLOSED AT STEP 0 — ASSET NOT FROZEN**,
+  exactly as drafted (§§2.3, 3, 5.2, 6, and 9
+  and claim F050-C06 restated to this ruling
+  at the freeze). This is the same ruling the
+  campaign applied to Specs 048, 049, and 051.
+  Nothing substitutes for the source record at
+  execution: a digest arriving by any other
+  route is not the pin.
+- **DD-050-12 — OPEN-2 RESOLVED: coverage
+  stands as drafted, on Spec 045's frozen
+  full-universe scope (the DD-045-18
+  consequence).** Spec 045 stands FROZEN on
+  `main` at `b442b89b` (freeze digest
+  `5d8254dd…`, Phase-411) with the coverage
+  ruling this spec needed: **DD-045-18** —
+  Asset A covers the **FULL pinned-crosswalk
+  sign universe** (187 distinct sign keys),
+  and Spec 045's gate A3 is restated to that
+  scope. **Consequence for this spec, recorded
+  as DD-045-18 states it: Spec 050's gate 0.3
+  does not close INVALID for want of
+  corpus-wide coverage on that ground.** The
+  freeze therefore does **not** narrow this
+  spec's comparison population, and no
+  narrowing is recorded as a design change:
+  gate 0.3 stands exactly as drafted (§3),
+  asserting the corpus-wide coverage this
+  spec's class-level test consumes, now
+  resting on the builder's frozen scope. Had
+  the narrower reading of Spec 045's gate A3
+  stood, gate 0.3 is exactly how this spec
+  would have closed; on the frozen record it
+  does not.
+- **DD-050-13 — OPEN-3 RESOLVED: DD-050-1 to
+  DD-050-6 are CONFIRMED as drafted.** In
+  particular **DD-050-1 is FROZEN**: the
+  celestial class under this spec is Asset A's
+  `sky_cycle` kind **exactly** — signs the
+  governing published identifications describe
+  as sun, star, moon, or celestial bodies, as
+  Spec 045 §2.2 defines the kind. The broader
+  closing notion (Hunt's closing part read to
+  include jurisdiction signs) is **not** tested
+  here, in either direction: it is stated in
+  §2.2 as an untested boundary, it is the
+  subject of Spec 045's own closing comparison,
+  and no verdict under this spec speaks to it.
+  The class is never silently widened: no
+  jurisdiction-coded sign, no sign whose
+  verbatim label a reader judges celestial
+  while its Asset A kind is `object_goods`,
+  `human`, or `other`, and no sign classified
+  by a worker's visual judgement is a member
+  (claim F050-C07). Spec 045's freeze confirms
+  the same boundary from its side (DD-045-14:
+  its jurisdiction coding governs its own
+  §5.2(b) score, and nothing there widens this
+  consumer's class). Also confirmed: DD-050-2
+  (the frequency band is the class's own count
+  range), DD-050-3 (TOO THIN covers the
+  comparison class too, as INCONCLUSIVE's
+  recorded form), DD-050-4 (Fisher's exact
+  test, two-sided, at the 5% level), DD-050-5
+  (NOT ADJUDICATED is the reconciliation-failure
+  class), and DD-050-6 (coverage asserted at
+  the resolution this test consumes — resolved
+  on the merits by DD-050-12).
+- **DD-050-14 — OPEN-4 RESOLVED: the OSF
+  registration is filed at this freeze**
+  (campaign E-1). Execution awaits its
+  approval plus the campaign execution pass
+  (Wave 3) plus Spec 045's Asset A build:
+  Phase-416 does not run on the filing alone,
+  and no quantity was computed at the freeze.
+  The filing record is
+  `osf-spec-registration.md`.
+- **DD-050-15 — OPEN-5 RESOLVED: no
+  calibration beyond gate 0.5 is required.**
+  The positional machinery here is counting
+  and an exact test; gate 0.5's exact
+  reproduction of the pinned record (805 /
+  2,267 and the 40 / 61 / 20 classes) plus the
+  §4.4 pooled/per-sign reconciliation (whose
+  failure records NOT ADJUDICATED, DD-050-5)
+  suffice. The decision is recorded either
+  way, as §6 item 5 asked: no additional
+  calibration gate is added at this freeze.
+
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

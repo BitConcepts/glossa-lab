@@ -1,30 +1,54 @@
 # Spec 050 — Hunt: Sky Signs at the Ends of Texts (Design D-13; Consumer of Asset A)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-21
+> ## FROZEN — 2026-10-21
 >
-> Drafted under the runnable-experiments campaign
-> approved by the owner **as written** on
+> Frozen under the runnable-experiments campaign
+> plan approved by the owner AS WRITTEN on
 > 2026-10-21
 > (`~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md`,
-> Parts 1–4; decisions E-1…E-7 as written).
-> The campaign approval is the commissioning
-> basis for this **draft**. It is not a freeze
-> order and not an execution order: the freeze
-> and the execution of Spec 050 remain separate
-> later acts under the campaign's Waves 2 and 3.
-> No AEE lifecycle hooks have run on this draft;
-> they are a freeze gate. Nothing in this draft
-> has been run, frozen, registered, joined, or
-> computed — in particular, **Asset A does not
-> exist yet**: Spec 045 (design D-05) defines its
-> contract and builds it at its own execution;
-> this spec consumes it, digest-pinned, and
-> builds nothing of its own.
+> Parts 1–4; decisions E-1…E-7 as written;
+> campaign Wave 2). Design D-13 is campaign
+> member 10 and a **consumer of Asset A**: the
+> depicted-kind classification built and frozen
+> inside Spec 045 (design D-05) at its execution
+> step 1. This spec does not build, extend, or
+> re-derive any classification. Its contract
+> anchor is Spec 045's freeze digest
+> `5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a`;
+> the Asset A byte-digest does not exist at this
+> freeze, because the asset is built later, at
+> Spec 045's execution step 1 (Wave 3), so no
+> byte-digest is stated here. The pin **source**
+> is fixed instead: Spec 045's
+> `asset-a/asset-a-freeze.json`
+> (`specs/045-hunt-depicted-kinds/asset-a/asset-a-freeze.json`),
+> which will record the SHA-256 of the canonical
+> `asset-a/depicted-kind-classification.csv`.
+> Execution asserts that digest at its step 0
+> (§3, gate 0.1): a mismatch closes the run as
+> **CLOSED AT STEP 0 — ASSET PIN MISMATCH**, and
+> an unfrozen or absent asset as **CLOSED AT
+> STEP 0 — ASSET NOT FROZEN** — exactly as
+> drafted (coordinator pin-timing ruling,
+> DD-050-11, `adjudication.md` §7). The freeze
+> decisions DD-050-9 to DD-050-15 are recorded
+> in `adjudication.md` §7; DD-050-1 to DD-050-6
+> are confirmed there as drafted, and DD-050-1
+> is frozen there: the celestial class is Asset
+> A's `sky_cycle` kind exactly, with the broader
+> closing notion stated as an untested boundary
+> (§2.2), never silently widened.
 >
-> The execution phase number is **unassigned**
-> at this draft and is allocated at the freeze
-> act, from the merged record as it then stands
-> (DD-050-7).
+> Execution runs as **Phase-416** (allocated at
+> this freeze, DD-050-10). Nothing in this
+> contract has been run, joined, or computed:
+> no sign has been classified under this spec,
+> no class census has been taken, and no
+> final-position quantity exists. Execution
+> awaits this freeze merging, the OSF
+> registration's approval act, Spec 045's
+> execution building and freezing Asset A, and
+> a separate execution order.
 
 **Design source:** D-13 in the experiment-design
 packet at PR #195
@@ -125,9 +149,10 @@ individually above the corpus-wide final rate.
 
 This spec **consumes** Asset A; it does not
 build, extend, or re-derive any classification.
-The contract it consumes is Spec 045's §2, on
-branch `spec-045-hunt-depicted-kinds-draft`
-(PR #244) at this draft.
+The contract it consumes is Spec 045's §2, as
+frozen on `main` (Spec 045 freeze digest
+`5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a`;
+DD-050-11).
 
 ### 2.1 The class, exactly
 
@@ -206,18 +231,24 @@ and its wording says so (§5.2, §7).
   `asset-a/depicted-kind-classification.csv`,
   its row count and per-kind counts, its input
   pins, and its freeze date (Spec 045 §2.7).
-- **No digest exists at this draft**, and none
-  is asserted here. At this spec's freeze, the
-  freeze record of Spec 050 quotes Asset A's
-  SHA-256 **verbatim** from
-  `asset-a-freeze.json` — copied, not
-  recomputed into a new value, not paraphrased,
-  not shortened beyond the full digest.
+- **No Asset A digest exists at this freeze**
+  (the asset is built at Spec 045's execution
+  step 1, Wave 3), and none is asserted here.
+  This freeze quotes **Spec 045's freeze digest**
+  `5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a`
+  as the contract anchor, and fixes the pin
+  **source** as Spec 045's
+  `asset-a/asset-a-freeze.json` (coordinator
+  pin-timing ruling, DD-050-11). At execution,
+  the digest is read from that source — copied,
+  not recomputed into a new value, not
+  paraphrased, not shortened beyond the full
+  digest.
 - Step 0 (§3, gate 0.1) recomputes the digest
   from the canonical CSV as presented at
   execution and asserts equality with the
-  quoted value **before any join and before
-  any counting**. A mismatch is a pre-written
+  value recorded in the fixed pin source
+  **before any join and before any counting**. A mismatch is a pre-written
   step-0 closure (§5.2), not a repair
   opportunity: nobody re-derives "the same"
   classification inside this spec (campaign
@@ -234,10 +265,11 @@ looks predictable.
 
 - **0.1 Asset A digest assertion.** Asset A is
   frozen (Spec 045's execution record and
-  `asset-a-freeze.json` are on record), this
-  spec's freeze record quotes its SHA-256
-  verbatim (§2.3), and the recomputed SHA-256
-  of the canonical CSV equals the quoted value.
+  `asset-a-freeze.json` are on record), the
+  SHA-256 recorded in that fixed pin source
+  (§2.3; DD-050-11) is read at step 0, and the
+  recomputed SHA-256 of the canonical CSV
+  equals the recorded value.
   - Asset A not frozen or not on record →
     **CLOSED AT STEP 0 — ASSET NOT FROZEN**:
     a dependency closure, not a verdict; the
@@ -293,10 +325,13 @@ looks predictable.
   cannot first reproduce its own recorded
   result.
 - **0.6 Freeze-order proof.** The record shows,
-  in order: Asset A froze (its freeze date);
-  this spec froze, quoting the digest (§2.3);
-  and no join of Asset A to the corpus under
-  this spec precedes either. Absent that proof
+  in order: this spec froze, quoting Spec 045's
+  freeze digest as its contract anchor and
+  fixing the pin source (§2.3; DD-050-11);
+  Asset A froze (its freeze date in
+  `asset-a-freeze.json`); and no join of Asset
+  A to the corpus under this spec precedes
+  either. Absent that proof
   → **INVALID**: a class joined before it was
   pinned is not a frozen class.
 
@@ -530,9 +565,10 @@ quantities filled from the run:
   "Spec 050 closed at step 0: the Asset A
   presented at execution recomputes to
   SHA-256 [observed], which is not the digest
-  this spec's freeze record quotes verbatim
-  from Spec 045's `asset-a-freeze.json`,
-  [quoted]. The asset presented is not the
+  recorded in Spec 045's `asset-a-freeze.json`
+  — the pin source this spec's freeze record
+  fixes (DD-050-11) — [recorded]. The asset
+  presented is not the
   asset that was frozen. No join was made and
   no quantity was computed. The claim stands
   UNTESTED as recorded."
@@ -548,16 +584,26 @@ quantities filled from the run:
   machinery finding, not as evidence about
   the claim."
 
-## 6. Inputs (pinned at this draft; re-asserted at the freeze)
+## 6. Inputs (pinned at this draft; re-asserted at this freeze)
 
 | Input | Pin / state |
 |---|---|
-| Asset A — depicted-kind classification (Spec 045, design D-05) | **Not yet in existence at this draft.** Consumed only in Spec 045 §2's form: canonical CSV `specs/045-hunt-depicted-kinds/asset-a/depicted-kind-classification.csv` with `asset-a-freeze.json` recording its SHA-256. At Spec 050's freeze that digest is quoted verbatim (§2.3); at execution gate 0.1 asserts it. No digest is asserted here. |
+| Asset A — depicted-kind classification (Spec 045, design D-05) | **Not yet in existence at this freeze.** Consumed only in Spec 045 §2's frozen form: canonical CSV `specs/045-hunt-depicted-kinds/asset-a/depicted-kind-classification.csv` with `specs/045-hunt-depicted-kinds/asset-a/asset-a-freeze.json` recording its SHA-256. Contract anchor: Spec 045's freeze digest `5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a`. Pin source fixed at this freeze: `asset-a-freeze.json` (§2.3; DD-050-11); at execution gate 0.1 reads the digest from that source and asserts it. No Asset A digest is asserted here. |
 | Corpus layer of record (`backend/glossa_lab/data/yajnadevam_inscriptions.csv`) — the corpus the positional framework runs on | SHA-256 `c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fad4b7153c02c43428f58d98` (recomputed at this draft from `main` at `83b6a563…`; the same value Specs 042's and 045's drafts pin; re-asserted at this spec's freeze). |
 | Positional record (`glossa-indus/analysis/positional/hunt_tripartite_test.json`) | SHA-256 `0e546962c1b72b929c87d4ce40c97633e8e3e340737f32f5dd3eae9f04759e48` (recomputed at this draft from `main` at `83b6a563…`): 805 / 2,267 formula inscriptions; 40 / 61 / 20 strong-sign classes. The framework of record for §4.1's final position and gate 0.5's reproduction. |
 | Phase-43 battery record (`outputs/phase43_all.json`) | SHA-256 `78a6c21908b9362854c54dd3d820d717be22feab3af11135663fa14aaf554fe4` (recomputed at this draft). The positional framework's battery of record, shared with D-06 / D-08. |
 | Sign crosswalk of record (`data/crosswalks/sign_crosswalk_master.csv`) | SHA-256 `4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf` (recomputed at this draft). Defines `sign_key`, Asset A's primary key (§2.1). |
 | Anchors file (`backend/reports/INDUS_FINAL_ANCHORS.json`) | SHA-256 `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569` (recomputed at this draft). This spec moves no anchor; the file is asserted byte-identical before and after any execution. |
+
+Every pin in this table was re-asserted at
+this freeze against `main` at `e3399961…` by
+two routes (contents API and git-data blob
+API), agreeing byte-for-byte. The censuses
+were recomputed at the freeze: the crosswalk
+carries 205 rows with 187 distinct
+`registry_sign_id` values; the corpus layer
+carries 5,679 rows; the anchors file carries
+287 anchors.
 
 ## 7. Epistemic limits (binding on all outputs)
 
@@ -652,8 +698,9 @@ quantities filled from the run:
 
 Every product of an execution carries, in its
 headline paragraph: the claim identifier; the
-Asset A digest quoted from this spec's freeze
-record and the celestial class's census (member
+Asset A digest as recorded in the fixed pin
+source (`asset-a-freeze.json`) and asserted at
+gate 0.1, and the celestial class's census (member
 signs, total occurrences); the pooled rates
 R_sky and R_cmp, the enrichment ratio, the
 exact test's result, and the

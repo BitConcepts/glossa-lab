@@ -1,15 +1,16 @@
 # Spec 050 — Tasks
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-21
+> ## PLAN — FROZEN 2026-10-21
 >
 > Adjudication inputs are recorded in
 > `adjudication.md` (the runnable-experiments
 > campaign approved by the owner as written
 > on 2026-10-21, and the portfolio triage of
 > the same date, drafting only). The freeze
-> and the execution of Spec 050 are separate
-> later acts under the campaign's Waves 2
-> and 3. This spec is a **dependent**: its
+> was completed on 2026-10-21 (adjudication
+> §7, DD-050-9 to DD-050-15); the execution of
+> Spec 050 remains a separate later act under
+> the campaign's Waves 2 and 3. This spec is a **dependent**: its
 > freeze follows Spec 045's freeze and its
 > execution follows Spec 045's Asset A build
 > (campaign Wave 3, group 3).
@@ -47,41 +48,59 @@
       and left unmerged for the freeze
       decision, CI state reported from the
       run's own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE
-      GATE — not run on this draft).** At the
-      freeze act, run `run_aee.py assess`
-      after_specify, after_plan, and
-      after_tasks over the claim register,
-      read under the campaign's standing
-      reading for draft-lifecycle registers;
-      a correctness failure blocks the freeze
-      until its named recovery is complete
-      and recorded. Any recovery round
+- [x] **L4 — AEE lifecycle hooks (FREEZE
+      GATE).** Run at the freeze act of
+      2026-10-21 over the recovered register
+      0.8-draft under aee 1.5.0: PASS on the
+      DD-050-9 reading (zero correctness
+      failure modes at every hook, no claim
+      below the 0.70 threshold, draft-cap
+      records only; `aee/freeze-aee-note.md`).
+      Original gate text: at the freeze act,
+      run `run_aee.py assess` after_specify,
+      after_plan, and after_tasks over the
+      claim register, read under the campaign's
+      standing reading for draft-lifecycle
+      registers; a correctness failure blocks
+      the freeze until its named recovery is
+      complete and recorded. Any recovery round
       changes claim text, and the freeze
       digest is computed over the recovered
       register exactly once, at freeze.
-- [ ] **L5 — Freeze-decision items.** The
-      freeze decides `adjudication.md` §6:
-      the Asset A digest quotation (after
-      Spec 045's asset freeze is on record),
-      the coverage question (§5, item 2 of
-      the adjudication), DD-050-1…DD-050-6,
-      the OSF filing (campaign E-1), and the
-      calibration question.
-- [ ] **L6 — Freeze.** On the owner's freeze
-      order, with L4 passed and L5 decided:
+- [x] **L5 — Freeze-decision items.** Decided
+      at the freeze act of 2026-10-21 in
+      `adjudication.md` §7: the Asset A
+      pin-timing ruling — contract anchor and
+      fixed pin source in place of a digest
+      quotation, the asset not yet existing
+      (DD-050-11); the coverage question,
+      resolved on Spec 045's frozen
+      full-universe scope with gate 0.3
+      standing as drafted (DD-050-12);
+      DD-050-1…DD-050-6 confirmed, DD-050-1
+      frozen (DD-050-13); the OSF filing
+      (campaign E-1; DD-050-14); and the
+      calibration question — none beyond gate
+      0.5 (DD-050-15).
+- [x] **L6 — Freeze.** Completed 2026-10-21
+      under the campaign plan approved AS
+      WRITTEN, with L4 passed and L5 decided:
       hooks recorded, `freeze.md` finalised,
-      `freeze.json` recomputed over the
+      `freeze.json` computed over the
       recovered register and finalised texts,
       every spec §6 pin re-asserted against
-      the merged record, Asset A's digest
-      quoted verbatim in the freeze record,
+      the merged record by two routes, Spec
+      045's freeze digest quoted as the
+      contract anchor with `asset-a-freeze.json`
+      fixed as the pin source (DD-050-11; no
+      Asset A digest exists at the freeze),
       and the execution phase number allocated
-      (DD-050-7). Freeze order inside the
+      as **Phase-416** (DD-050-10, resolving
+      DD-050-7). Freeze order inside the
       campaign: Spec 050 freezes **after**
       Spec 045, whose freeze and asset build
       supply its pin.
-- [ ] **L7 — Freeze PR merged**, house gates
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
 
@@ -92,8 +111,10 @@
       registration verification, then run.
 - [ ] **E2 — Step 0, part 1** (spec §3 gates
       0.1–0.3): Asset A digest assertion
-      against the freeze record's verbatim
-      quotation (an unfrozen asset closes as
+      against the digest recorded in the fixed
+      pin source, Spec 045's
+      `asset-a-freeze.json` (DD-050-11) (an
+      unfrozen asset closes as
       CLOSED AT STEP 0 — ASSET NOT FROZEN; a
       mismatch as CLOSED AT STEP 0 — ASSET
       PIN MISMATCH); input integrity;

@@ -373,10 +373,21 @@ One line per governed claim, F060-C01…C15.
   record. The PR's CI run is the figure of
   record.
 - CI and suite state at the record merge:
-  *(completed by append in the landing record
-  once the record PR's genuine CI run is read
-  from its own job conclusions — the merge is
-  made only on that run's genuine 7/7 green.)*
+  PR #274, run 39628293522 on the record
+  commit `0bf2727e…` — genuinely 7/7 from the
+  run's own job conclusions (Backend tests,
+  Frontend tests, Indus public validation
+  checks, Evidence Graph script smoke tests,
+  Shell wrappers ×3); the backend job log
+  reads 1,582 passed / 20 skipped / 0 failed.
+  (The run's first attempt concluded success
+  at run level while the macOS job's own
+  conclusion lagged in the API after all its
+  steps succeeded; the re-run attempt's job
+  conclusions are the 7/7 cited here.) The
+  completion commit carrying this note
+  re-runs CI before the merge; the merge is
+  made only on that run's genuine green.
 
 ---
 

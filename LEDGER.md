@@ -7320,3 +7320,117 @@ report: reports/phase403_gazetteer_assignment_report.md.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 - Spec 040 DRAFTED: D-25, the chronology-controlled rerun of G1 (design only)
+
+Under the owner's bundle decision of 2026-10-20
+(gazetteer period-assignment act first, then
+D-25; evidence standard published period
+determinations only), Spec 040 was drafted as a
+DRAFT PR and left unmerged for the owner's
+freeze decision. It designs design D-25 from
+the PR #195 portfolio: the chronology-
+controlled rerun of Spec 025's G1, the program's
+strongest positive result (SUPPORTED under
+composition and preservation control, Phase-385
+governing basic CI [0.1838, 0.2102] above the
+V = 0.10 floor), which still carries the rider
+that chronology is not controlled. Period
+enters as one added stratification
+(composition x preservation x period) over the
+Phase-137 population and columns; assignments
+come only from Spec 039's frozen artifact at
+site-period resolution (unique uncontested
+published-determination mappings; contested
+mappings excluded from the primary and included
+in a labelled sensitivity); the governing
+quantity is the Phase-385 v2 basic bootstrap
+interval against the 0.10 margin, with the
+outcome mapping written in advance (interval
+entirely above: SUPPORTED - CHRONOLOGY
+CONTROLLED, rider retired by append; straddling:
+WEAKENED - RIDER CONFIRMED AS MATERIAL, G1
+restated as a period-confounded association;
+entirely at or below: CONTRADICTED AT THE
+DECLARED MARGIN). The freeze is barred by a
+fail-closed dependency gate until Spec 039 has
+executed (its labels do not yet exist; D-25's
+feasibility line had stated them as existing,
+and the draft records that tension openly), and
+an execution-stage margins gate (at least 5
+sites in each coarse period, at most 40 percent
+unassigned, at least 1,000 permutable) closes
+the run NOT-YET-TESTABLE before any outcome
+quantity exists. DD-040-1 records the decision
+rule as re-derived from Spec 025's
+permutation-p-only rule, for the freeze to
+decide openly. Governed register F040-C01..C15;
+draft digest
+63ca1ac99ed106b7bb7cc3d0e324e7522617021ea353af2a6055d975d316ac85
+over register 0.5-draft; AEE lifecycle hooks not
+run (a freeze gate); the execution phase number
+is unassigned at draft (Phase-401 is claimed by
+the Spec 037 and Spec 038 drafts). Nothing was
+executed: no label was joined, no margin
+computed, the spine was not recomputed, and no
+repertoire quantity was calculated.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 - Spec 040 CLOSED AT THE FREEZE GATE: NOT-YET-TESTABLE - dependency gate (D-25)
+
+Spec 040's freeze act was reached under the
+owner's pipeline order (freeze order
+038 -> 037 -> 039 -> 040) and the dependency
+gate of its section 1 was verified first-hand
+against the executed Spec 039 record. Spec 039
+has executed (freeze digest ec53a841...; freeze
+PR #226 merged 05f961fc, record PR #234 merged
+14d15411, completion PR #235 merged a61da697)
+and its assignment artifact recomputes to the
+expected SHA-256 (64f288d3...; 36 rows, 30
+sites). The gate nevertheless fails, on
+section 1 conditions 2 and 4. The executed
+artifact assigns period labels per site -
+label sets stating the periods a site's
+published record spans (harappa: Early, Mature
+and Late Harappan), carried identically onto
+the site's rows (Spec 039 F039-C04/C06) - as
+finding aids, not dating evidence (F039-C15).
+It carries no mapping keyed by site x an
+inscription's recorded local chronological
+label, which is the only key Spec 040's
+section 4 interface consumes, and local period
+names appear only inside prose evidence
+strings. Three of the seven G1 sites
+(chanhu-daro, dholavira, nausharo) have no
+artifact rows at all. Under DD-040-3 the
+interface is not loosened to fit the product:
+the recorded state is NOT-YET-TESTABLE -
+dependency gate. No freeze followed: the AEE
+lifecycle hooks were not run (the gate stands
+in front of them), no freeze digest was
+computed, DD-040-1/5/6/9 remain undecided (the
+re-derived interval-at-margin rule is not
+adopted), no execution phase number was
+allocated (Phase-404 is not taken; DD-040-10
+stays open), no OSF registration was filed,
+and nothing was executed - no label joined, no
+margin computed, no repertoire quantity
+calculated. G1 stands exactly as Spec 025 and
+Phase-385 left it: SUPPORTED under composition
+and preservation control, governing basic CI
+[0.1838, 0.2102] above the V = 0.10 floor, with
+the rider that chronology is NOT controlled.
+A secondary finding is recorded with the gate
+record: the anchors pin carried in the Spec
+040 draft (eccea6d5...) is superseded - the
+anchors file recomputes to df0cf620... on
+current main and at the draft's own base,
+unchanged since 2026-10-12; a future freeze of
+this contract must refresh that pin. Full
+record: specs/040-d25-g1-chronology-controlled/
+outcome.md (dependency-gate record, appended
+2026-10-20).
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution sec.VI.

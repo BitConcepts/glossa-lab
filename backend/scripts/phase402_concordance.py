@@ -219,8 +219,11 @@ def step0() -> dict:
     if idx < 0:
         raise Step0Failure("0.1", "PROVENANCE entry 22 heading not found")
     entry = prov[idx:prov.find("\n## ", idx + 1) if prov.find("\n## ", idx + 1) > 0 else len(prov)]
-    for needle in ("oakland-ill-cisi31-portion", "Do not upload",
-                   "Local analysis and extraction: permitted"):
+    for needle in ("oakland-ill-cisi31-portion",
+                   "Classification: restricted research material",
+                   "derived statistics, counts, and feature vectors (publishable",
+                   "Not permitted: redistributing scans or page images; "
+                   "uploading the material to the repo"):
         if needle not in entry:
             raise Step0Failure("0.1", f"gate entry lacks: {needle}")
     record["0.1_gate"] = "PASS (PROVENANCE entry 22 on record; material restricted)"

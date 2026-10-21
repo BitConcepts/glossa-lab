@@ -109,8 +109,12 @@
 - [ ] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0, part 1** (spec §3 gates
-      0.1–0.3): Asset A digest assertion
+- [x] **E2 — Step 0, part 1** (spec §3 gates
+      0.1–0.3): **EXECUTED 2026-10-21 — gate
+      0.1 fired in its absent branch: CLOSED AT
+      STEP 0 — ASSET NOT FROZEN (the fixed pin
+      source does not exist; `outcome.md` §2);
+      gates 0.2–0.3 NOT REACHED.** Asset A digest assertion
       against the digest recorded in the fixed
       pin source, Spec 045's
       `asset-a-freeze.json` (DD-050-11) (an
@@ -141,7 +145,11 @@
       per-sign reconciliation. A
       reconciliation failure records NOT
       ADJUDICATED with the counts published.
-- [ ] **E5 — Outcome:** the §9 record —
+- [x] **E5 — Outcome:** **EXECUTED 2026-10-21 —
+      `outcome.md` records the gate-0.1
+      dependency closure in the pre-written
+      §5.2 wording; the §9 headline quantities
+      do not exist and the record says so.** The §9 record —
       results JSON and report under the
       headline rules (claim identifier, Asset
       A digest and class census, both pooled

@@ -8652,3 +8652,60 @@ gate.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson,
 per constitution sec.VI.
+
+## 2026-10-21 — Spec 050 EXECUTED (Phase-416): CLOSED AT STEP 0 — ASSET NOT FROZEN (dependency closure)
+
+Spec 050 was executed as Phase-416 under the
+frozen contract (freeze digest fdcbae64…;
+OSF registration uwdmy approved and public,
+DOI 10.17605/OSF.IO/UWDMY), in Wave 3 Group 3
+of the runnable-experiments campaign (member
+10, design D-13; consumer of Asset A). Step 0
+ran in the frozen order, fail-closed, and
+closed at its first gate. **Gate 0.1 FAIL, in
+its absent branch — CLOSED AT STEP 0 — ASSET
+NOT FROZEN.** The gate reads Asset A's SHA-256
+from the fixed pin source, Spec 045's
+asset-a/asset-a-freeze.json (DD-050-11), and
+asserts it before any join or counting; that
+file does not exist, and neither does the
+canonical depicted-kind-classification.csv, so
+no Asset A digest exists to assert. The
+absence was verified first-hand at the
+execution base (main at 3e75d7b0…) by two
+independent routes — the fresh clone's tree
+(listing, existence tests, and the full
+recursive ls-tree at the base commit) and the
+GitHub API (contents API 404 for the asset-a
+directory and the freeze file; the recursive
+git-trees read at the same commit, 6,124
+entries, not truncated, with no asset-a path
+anywhere) — and the two routes agree. The
+dependency's terminal record is Spec 045's:
+executed as Phase-411, INVALID at its step-0
+gate 0.2 (PR #268, merged c97c8d4c…; landing
+record PR #269), its outcome record stating
+plainly that Asset A was not built — build
+gates A1–A6 never ran, no asset-a directory,
+CSV, or freeze file exists, and no Asset A
+digest exists for any dependent to pin. Gates
+0.2–0.6 of Spec 050 were NOT REACHED. No join
+was made, no sign was classified, no census
+was taken, and no final-position quantity was
+computed; no substitute asset, digest, or
+stand-in file was created, and Asset A was
+not reconstructed from any material. The
+standing consequence: the D-13 comparison was
+never run and its hypothesis is unjudged. The
+claim
+without_kings_or_conquests_the_indus_scr_ce9d98cc_manual_004
+stands UNTESTED as recorded — this is a
+dependency closure under the campaign's
+cluster rule, not a verdict on the claim, and
+position is not meaning. Anchors asserted
+byte-identical before and after (df0cf620…).
+Records: specs/050-hunt-sky-signs-endings/outcome.md.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

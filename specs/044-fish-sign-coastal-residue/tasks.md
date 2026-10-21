@@ -1,16 +1,21 @@
 # Spec 044 — Tasks
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-21
+> ## PLAN — FROZEN 2026-10-21
 >
 > Adjudication inputs are recorded in
 > `adjudication.md` (the campaign plan approved
 > AS WRITTEN on 2026-10-21, the portfolio triage
 > of the same date, and the Roif verification).
-> The freeze and the execution of Spec 044 are
-> separate later owner acts. This spec is under
-> the campaign's Roif gate: its records are
-> internal and its results are not published or
-> surfaced under the campaign (claim F044-C14).
+> The freeze act of 2026-10-21 (campaign Wave 2,
+> delegated under the approved plan) completed
+> L4–L6 below; the freeze decisions are
+> `adjudication.md` §7 and the digest record is
+> `freeze.md` / `freeze.json`. Execution
+> (Phase-404) is a separate later owner act.
+> This spec is under the campaign's Roif gate:
+> its records are internal and its results are
+> not published or surfaced under the campaign
+> (claim F044-C14).
 
 ## Lifecycle
 
@@ -43,10 +48,10 @@
       unmerged for the freeze wave, CI state
       reported from the run's own conclusions.
       Asset builders freeze before dependents:
-      this spec's freeze precedes Spec 045's
+      this spec's freeze precedes Spec 048's
       (D-04), which pins Asset F's digest.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
-      — not run on this draft).** At the freeze
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE
+      — run at the freeze, 2026-10-21).** At the freeze
       act, run `run_aee.py assess`
       after_specify, after_plan, and
       after_tasks over the claim register; the
@@ -62,7 +67,8 @@
       1.5.x engine at the freeze, per the
       campaign plan, not assumed from
       pre-adoption habit.
-- [ ] **L5 — Freeze-decision items.** The
+- [x] **L5 — Freeze-decision items (decided
+      2026-10-21, `adjudication.md` §7).** The
       freeze decides OPEN-044-1 (layer of
       record), OPEN-044-2 (Asset F source and
       DD-044-5), OPEN-044-3 (coastal list scope
@@ -71,8 +77,9 @@
       registration, under campaign E-1), and
       OPEN-044-6 (phase number), and confirms
       or openly overturns DD-044-1.
-- [ ] **L6 — Freeze.** On the owner's freeze
-      order, with L4 passed and L5 decided:
+- [x] **L6 — Freeze.** On the owner's freeze
+      order (campaign Wave 2 delegation), with
+      L4 passed and L5 decided:
       hooks recorded, `freeze.md` finalised,
       `freeze.json` recomputed over the
       recovered register and finalised texts,

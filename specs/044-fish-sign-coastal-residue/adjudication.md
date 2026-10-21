@@ -41,7 +41,7 @@
 > freeze and the execution of Spec 044 are
 > separate later owner acts, and — builders
 > before dependents, campaign Part 4 — this
-> spec's freeze precedes Spec 045's (D-04).
+> spec's freeze precedes Spec 048's (D-04).
 
 ## 1. The adopted basis (operative substance)
 
@@ -277,7 +277,7 @@ is reported, never repaired silently:
    The draft follows the campaign (D-02
    builds, D-04 consumes by digest) and
    records the packet line as superseded by
-   the approval — Spec 045's draft must not
+   the approval — Spec 048's draft must not
    cite the packet line as its basis.
 2. **The design's measure mixes units in one
    sentence** ("coastal share of its
@@ -311,3 +311,207 @@ is reported, never repaired silently:
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## 7. Freeze decisions (2026-10-21)
+
+> ## FREEZE SECTION — 2026-10-21
+>
+> Appended at the freeze act under the owner's
+> authorisation of 2026-10-21: the
+> runnable-experiments campaign plan approved
+> AS WRITTEN on 2026-10-21 (decision E-1: an OSF
+> contract registration per specification at
+> its freeze; the freeze wave delegated). This
+> section resolves OPEN-044-1…6 on the record.
+> Nothing above this section was edited at the
+> freeze except the consumer-name correction
+> recorded in §7.1, which the freeze order
+> directed as a draft-stage edit before any
+> digest was computed.
+
+### 7.1 Consumer-name correction (draft-stage edit, recorded)
+
+The campaign reconciliation established that
+this draft named the wrong consumer for
+Asset F: the fish-family list is consumed by
+**Spec 048** (design D-04), not by Spec 045
+(Spec 045 is design D-05, the Hunt depicted-kinds
+draft). Every "Spec 045" consumer reference was
+corrected to "Spec 048" before any freeze digest
+was computed: two in `spec.md` (the header block
+and §4), two in this file (the header block and
+§6 defect 1), and one in `tasks.md` (L3).
+`claims.json` was checked and carries no
+numbered consumer reference (its consumer
+mentions are the design number D-04, which is
+correct). Design numbers (D-02, D-04) were not
+changed anywhere.
+
+### 7.2 OPEN-044-1 — Layer of record: IDENTIFIED AND PINNED
+
+**RESOLVED at freeze: the layer is identified,
+and gate 0.1's identify-export-pin procedure is
+confirmed as the step-0 re-verification of this
+pin.** The CISI-based corpus layer the original
+family-level test used is the Holdat corpus file
+the Phase-45/46/54 scripts of record read:
+
+- File: `corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv`
+  (a downloads-tree file held by the program,
+  not a repository file on `main` — the draft's
+  §2 statement stands).
+- SHA-256: `62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e`
+  (593,253 bytes; recomputed at this freeze from
+  two independently held copies, which agree).
+- Shape: 7,002 sign-token rows keyed by
+  `cisi_number`, with per-inscription site
+  attribution — 1,670 inscriptions over 9 sites
+  (Mohenjo-daro 606, Harappa 492, Lothal 124,
+  Kalibangan 110, Dholavira 106, Chanhu-daro 78,
+  Surkotada 61, Banawali 60, Rakhigarhi 33).
+- Population reproduction (the gate-0.1 test,
+  run at this freeze): M047 occurs at 13 tokens
+  in 13 inscriptions; the Phase-45 T6 table
+  reproduces exactly (coastal-with 2, inland-with
+  10, coastal-without 228, inland-without 1,369;
+  Surkotada's 61 inscriptions unclassed in the
+  original script, as there), and Fisher's exact
+  test on that table gives p = 0.685 — the
+  recorded Phase-45 T6 result (n = 13, p = 0.685)
+  to three decimals. The program's provenance
+  registry independently records this corpus as
+  "1,670 seals / 7,002 tokens".
+- The 179-inscription CISI layer
+  (`backend/glossa_lab/data/indus_cisi.py`) is
+  confirmed NOT the layer of record: all
+  Mohenjo-daro, no coastal contrast, as the
+  draft recorded.
+
+The freeze therefore proceeds on an identified
+layer. Gate 0.1 at execution re-asserts this
+exact pin (export in full, hash, population
+reproduction) before any counting; a mismatch
+closes LAYER NOT PINNABLE, as frozen. No bulk
+copy of the file is committed to the repository
+by this freeze; the pin is the record.
+
+### 7.3 OPEN-044-2 — Asset F source: CONFIRMED
+
+**CONFIRMED:** Parpola 1994, *Deciphering the
+Indus Script*, the published sign list
+(fig. 5.1, pp. 70–78) is Asset F's source, as
+cited in the program's Mahadevan–Parpola
+crosswalk (`backend/glossa_lab/data/mahadevan_parpola_crosswalk.json`,
+SHA-256
+`9ebd7723472d888dc8a127ff840a108d4fbd546f7f8ed28ccc6e06444a2dc69b`,
+recomputed at this freeze). The per-sign locator
+form is the member's position in that list
+(page / figure entry), recorded per member in
+Asset F at step 0 under gate 0.2. DD-044-5 is
+confirmed: Parpola's list governs membership;
+Mahadevan numbers are locators; the 72/64/70
+trio and the Phase-43 six are a reported
+cross-check in the step-0 record, never a
+membership source.
+
+### 7.4 OPEN-044-3 — Coastal list scope: DD-044-7 CONFIRMED
+
+**CONFIRMED:** the primary's coastal list is
+rule-built and frozen at gate 0.3 (a port, or
+within the coastal zone, from the pinned
+gazetteer and published site geography), with
+Lothal and Dholavira as members by name and
+every contested site listed as contested. The
+primary is NOT restricted to the original test's
+named pair; comparability with the original test
+is preserved by the §5 site-size sensitivity's
+per-site reporting, as the draft recorded.
+
+### 7.5 OPEN-044-4 — Test form: DD-044-2 AND DD-044-4 CONFIRMED
+
+**CONFIRMED, neither overturned:** the primary
+counting unit is the sign token on both sides of
+the comparison (DD-044-2), with the
+inscription-level version as a stated
+sensitivity; the exact test is Fisher's exact,
+one-sided in the enrichment direction, with the
+Bonferroni family-wise correction across the
+members tested at the 5% family level
+(DD-044-4); ENRICHED additionally requires the
+share ratio of at least 1.5 (F044-C10).
+
+### 7.6 OPEN-044-5 — OSF registration: YES (campaign E-1)
+
+**DECIDED: yes.** This frozen spec files its own
+OSF contract registration at the freeze, under
+campaign decision E-1, following Specs 036–039.
+The filing is recorded in
+`osf-spec-registration.md` in this directory.
+The registration registers the frozen contract;
+it publishes no results, and the Roif hold
+(F044-C14) is unaffected. Execution awaits the
+registration's approval (see `freeze.md`).
+
+### 7.7 OPEN-044-6 — Execution phase: Phase-404
+
+**ALLOCATED: Phase-404.** The merged record
+allocates Phase-400 to Spec 036, Phase-401 to
+Spec 038, Phase-402 to Spec 037, and Phase-403
+to Spec 039; the next number is Phase-404.
+Nothing substantive turns on the number.
+
+### 7.8 The AEE gate reading (DD-044-9)
+
+**ADOPTED at freeze: the DD-038-10 / DD-037-9 /
+DD-039-8 reading governs.** At every lifecycle
+hook the aee 1.5.0 assessment carries zero
+correctness failure modes and no claim below
+the 0.70 threshold; its outcome word reads
+"iterate" solely because each of the 15 claims
+carries an FR-2.3 draft-cap record. That cap is
+a lifecycle fact about a freeze-time register,
+not a correctness failure and not a bar to
+freezing. The rounds, recoveries, and artifacts
+are recorded in `aee/freeze-aee-note.md`.
+
+### 7.9 Draft-fixed readings at freeze
+
+DD-044-1…DD-044-8 stand as drafted, with
+DD-044-3 completed by §7.2 (the layer the draft
+declined to pin is now pinned on the evidence
+above; gate 0.1 remains its fail-closed
+re-verification), DD-044-5 confirmed by §7.3,
+DD-044-6 discharged by §7.7, and DD-044-7
+confirmed by §7.4. No draft-fixed reading was
+overturned.
+
+### 7.10 What the freeze decided
+
+1. This contract is frozen (digest in
+   `freeze.md` / `freeze.json`), with every
+   spec §2 pin re-asserted against the merged
+   record at the freeze (main head
+   `83b6a563402b02809ab1143848e4dd2c0cfd9de3`:
+   claim file `bc22d6f010f800d608d6e3f620fb430b3cf8d3ccd3caadc6a989116fbfd125ed`;
+   gazetteer `5ac76a3031121a61fa39f87b1d2760855374d171ddd036988fee2820dca9b8b6`;
+   crosswalk `9ebd7723472d888dc8a127ff840a108d4fbd546f7f8ed28ccc6e06444a2dc69b`;
+   anchors file
+   `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569`,
+   asserted byte-identical before and after any
+   execution, as spec §2 provides).
+2. OPEN-044-1…6 are resolved as §§7.2–7.7
+   record; DD-044-9 (§7.8) adopts the AEE gate
+   reading.
+3. Nothing else: no count was made at the
+   freeze, Asset F has not been built, and no
+   coastal list has been enumerated beyond the
+   two sites the record itself names. Execution
+   is a separate later act under Phase-404.
+
+---
+
+*Freeze section appended 2026-10-21 by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI. Append-only:
+nothing above this section was edited except the
+§7.1 consumer-name correction.*

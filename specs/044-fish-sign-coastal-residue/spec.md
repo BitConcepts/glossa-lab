@@ -1,21 +1,30 @@
 # Spec 044 — The Fish Sign and the Ports, Tested Sign by Sign (Design D-02, Residue)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-21
+> ## FROZEN — 2026-10-21
 >
-> Drafted under the runnable-experiments campaign
+> Frozen under the runnable-experiments campaign
 > plan approved by the owner AS WRITTEN on
-> 2026-10-21
-> (`~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md`),
-> Wave 1, asset builders first. This spec is
-> campaign member 2 (design D-02) and the
-> builder of **Asset F**, the frozen fish-family
-> list that Spec 045 (design D-04) will consume
-> by digest. Drafts are pre-approved standing in
-> this program; **the freeze and the execution
-> of Spec 044 are separate later owner acts.**
-> No AEE lifecycle hooks have run on this draft;
-> they are a freeze gate. Nothing in this draft
-> has been run, frozen, registered, or computed.
+> 2026-10-21 (Wave 2 freeze wave, delegated;
+> `adjudication.md` §7). The AEE lifecycle hooks
+> ran over the register first (register recovered
+> to 0.7-draft; `aee/freeze-aee-note.md`), and the
+> digest in `freeze.json` was then computed
+> **exactly once** over the recovered register
+> and the finalised freeze texts. The freeze
+> resolved OPEN-044-1…6 (layer of record
+> identified and pinned; Asset F source, coastal
+> scope, and test form confirmed; OSF contract
+> registration filed under campaign E-1;
+> `adjudication.md` §7) and corrected the draft's
+> consumer name: Asset F's consumer is
+> **Spec 048** (design D-04), not Spec 045
+> (§7.1). Execution runs as **Phase-404** under
+> this frozen contract, after the freeze merges
+> and the OSF registration's approval verifies.
+> At the freeze itself no sign has been counted,
+> Asset F has not been built, and no coastal list
+> has been enumerated beyond the two sites the
+> record itself names.
 >
 > **Roif gate (campaign Part 8 / R-7).** This is
 > a Roif-claim experiment. Post-plan verification
@@ -28,11 +37,6 @@
 > under this campaign; reporting names this
 > member only as "executed — held under the Roif
 > gate" (§7, limit 1; claim F044-C14).
->
-> The execution phase number is **unassigned**
-> at this draft. It is allocated at the freeze
-> act, from the merged record as it then stands
-> (DD-044-6).
 
 **Design source:** D-02 in the experiment-design
 packet at PR #195
@@ -117,12 +121,12 @@ closes.
 
 | Input | Pin / state |
 |---|---|
-| Claim record (`glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json`) | SHA-256 `bc22d6f010f800d6…` (recomputed at this draft from `main`, head `82b29490…`) |
+| Claim record (`glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json`) | SHA-256 `bc22d6f010f800d608d6e3f620fb430b3cf8d3ccd3caadc6a989116fbfd125ed` (recomputed at this draft from `main`, head `82b29490…`; re-asserted at the freeze against `main` head `83b6a563…`, unchanged) |
 | Spec 027 Stage 0 gazetteer (`data/movement/gazetteer_rows.jsonl`) — 36 rows, 30 site clusters; the site spine for §3 gate 0.3 | SHA-256 `5ac76a3031121a61fa39f87b1d2760855374d171ddd036988fee2820dca9b8b6` (recomputed at this draft; matches the pin Spec 039's spec carries) |
-| CISI-based corpus layer of record — the layer the original family-level test used, keyed by CISI object number, carrying per-inscription site attribution, "as held in the database" (design D-02) | **No file pin is stated at this draft, deliberately.** The Phase-45/46/54 scripts of record read a downloads-tree file that is not in the repository tree on `main`, and the repository also holds other CISI-derived layers that cannot carry a site test (e.g. the 179-inscription, Mohenjo-daro-only CISI corpus). The layer of record is therefore identified, exported, and pinned by digest at step 0, before any counting, under gate 0.1 — and the run closes if it cannot be (DD-044-3; OPEN-044-1). Inventing a pin at draft would repeat the stale-pin failure Spec 040's gate record documents. |
-| Parpola's published fish-sign list — the source of Asset F (§4) | Bibliographic pin: Parpola, Asko. 1994. *Deciphering the Indus Script*. Cambridge: CUP — the published sign list (fig. 5.1, pp. 70–78), as cited in the program's own Mahadevan–Parpola crosswalk file (`backend/glossa_lab/data/mahadevan_parpola_crosswalk.json`, SHA-256 `9ebd7723472d888d…`, recomputed at this draft). Per-sign locators within that list are recorded in Asset F itself at step 0 (gate 0.2). The freeze confirms the edition and locator form (OPEN-044-2). |
+| CISI-based corpus layer of record — the layer the original family-level test used, keyed by CISI object number, carrying per-inscription site attribution, "as held in the database" (design D-02) | **Identified and pinned at the freeze (OPEN-044-1; `adjudication.md` §7.2).** The layer is the Holdat corpus file the Phase-45/46/54 scripts of record read: `corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv`, SHA-256 `62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e` (593,253 bytes; 7,002 sign-token rows; 1,670 inscriptions keyed by `cisi_number` over 9 sites). The identification reproduces the original test's population exactly (M047 at 13 tokens in 13 inscriptions; Fisher p = 0.685, the recorded Phase-45 T6 result). The file is a downloads-tree file held by the program, not a repository file on `main`; no bulk copy is committed. Gate 0.1 re-asserts this pin at step 0, before any counting — and the run closes if the re-assertion fails (DD-044-3 as completed by the freeze). The repository's other CISI-derived layers cannot carry a site test (e.g. the 179-inscription, Mohenjo-daro-only CISI corpus) and are not this layer. |
+| Parpola's published fish-sign list — the source of Asset F (§4) | Bibliographic pin: Parpola, Asko. 1994. *Deciphering the Indus Script*. Cambridge: CUP — the published sign list (fig. 5.1, pp. 70–78), as cited in the program's own Mahadevan–Parpola crosswalk file (`backend/glossa_lab/data/mahadevan_parpola_crosswalk.json`, SHA-256 `9ebd7723472d888dc8a127ff840a108d4fbd546f7f8ed28ccc6e06444a2dc69b`, recomputed at this draft and re-asserted at the freeze). Per-sign locators within that list are recorded in Asset F itself at step 0 (gate 0.2). The freeze confirmed the edition and locator form (OPEN-044-2; `adjudication.md` §7.3). |
 | Spec 039's gazetteer product | Spec 039 assigned published period labels to 11 of 30 gazetteer sites (triage of 2026-10-21). Period is **not** a variable in this test; Spec 039 is cited here only because its record further fixed the gazetteer's published geography on the record. No period label is consumed. |
-| Anchors file (`backend/reports/INDUS_FINAL_ANCHORS.json`) | Pin to be asserted at the freeze from a fresh recompute (the Spec 042 draft precedent: never inherit an earlier draft's pin). This spec moves no anchor; the file is asserted byte-identical before and after any execution. |
+| Anchors file (`backend/reports/INDUS_FINAL_ANCHORS.json`) | SHA-256 `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569`, asserted at the freeze from a fresh recompute against `main` (the Spec 042 draft precedent: never inherit an earlier draft's pin). This spec moves no anchor; the file is asserted byte-identical before and after any execution. |
 
 ## 3. Step 0 — gates before any coastal count (fail-closed)
 
@@ -198,7 +202,7 @@ before a gate failure is quotable.
 ## 4. Asset F — the fish-family list (the contract D-04 is drafted against)
 
 Asset F is built once, here, at step 0
-(campaign decision E-6). Spec 045 (design D-04)
+(campaign decision E-6). Spec 048 (design D-04)
 consumes it by digest and does not re-derive
 it; D-02 does not wait for D-04.
 
@@ -219,7 +223,7 @@ asset's identity.
 | `mahadevan_number` | The sign's Mahadevan number (e.g. 72, 64, 70 — the numbers the claim records use), or null with a note if the crosswalk gives none. A locator, never a membership criterion. |
 | `parpola_number` | The sign's number in Parpola's published list, as printed there. A locator, never a membership criterion. |
 | `depiction_note` | What the published list depicts the sign as, in the list's own terms (fish / fish variant / modified fish form), quoted or closely paraphrased. |
-| `source_citation` | The published source relied on: Parpola 1994, *Deciphering the Indus Script*, sign list (fig. 5.1, pp. 70–78), unless the freeze names a different published Parpola list (OPEN-044-2). |
+| `source_citation` | The published source relied on: Parpola 1994, *Deciphering the Indus Script*, sign list (fig. 5.1, pp. 70–78), the freeze named no different published Parpola list (OPEN-044-2 confirmed; `adjudication.md` §7.3). |
 | `source_locator` | The per-sign locator within that source (page / figure entry / list position) at which this member appears. A member without a locator does not enter the asset (gate 0.2). |
 | `inclusion_basis` | The rule under which this sign is in the family: `parpola-list-fish` (listed as a fish sign) or `parpola-list-fish-variant` (listed as a modified/variant fish form). No other basis exists. |
 | `contested` | Boolean: whether the sign's fish-family membership or identification is contested in the published sources the entry relied on; if true, `notes` names the contest. |

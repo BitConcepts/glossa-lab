@@ -1,4 +1,4 @@
-# Spec 041 — Arm B Split by Object Type (a Registered Primary Variant of Spec 028 Arm B)
+# Spec 042 — Arm B Split by Object Type (a Registered Primary Variant of Spec 028 Arm B)
 
 > ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-21
 >
@@ -10,7 +10,7 @@
 > highest-ranked design in the PR #195 packet
 > never yet taken up. Drafts are pre-approved
 > standing in this program; **the freeze and
-> the execution of Spec 041 are separate later
+> the execution of Spec 042 are separate later
 > owner acts.** No AEE lifecycle hooks have run
 > on this draft; they are a freeze gate.
 > Nothing in this draft has been run, frozen,
@@ -20,9 +20,9 @@
 > at this draft. Phase-400 is Spec 036's,
 > Phase-401 Spec 038's, Phase-402 Spec 037's,
 > and Phase-403 Spec 039's; Spec 040 allocated
-> none. Spec 041 allocates its phase number at
+> none. Spec 042 allocates its phase number at
 > the freeze act, from the merged record as it
-> then stands (DD-041-5).
+> then stands (DD-042-5).
 
 **Design source:** D-28 in the experiment-design
 packet at PR #195
@@ -175,7 +175,7 @@ class named; nothing is repaired at run time.
   the headline under this spec is the pattern
   across strata, and a one-stratum result
   quoted alone would misstate the test
-  (DD-041-2).
+  (DD-042-2).
 - **0.5 Pooled regression.** The un-split Arm B
   machinery, run on the full analysis
   population under the recorded design and
@@ -226,7 +226,7 @@ If a stratum's controls fail, that stratum is
 **NOT ADJUDICATED** — a machinery finding,
 not a verdict — and the headline is NOT
 ADJUDICATED with the failing control named
-(DD-041-3).
+(DD-042-3).
 
 ### 4.2 The headline pattern (fixed in advance)
 
@@ -278,7 +278,7 @@ quantities filled from the run:
   strata diverge against the direction the
   exploratory Arm C clue suggested: the tablet
   stratum is SUPPORTED and the seal stratum is
-  not. The hypothesis as stated in Spec 041
+  not. The hypothesis as stated in Spec 042
   §1.2 is not supported. [Quantities.]"
 - UNIFORM-PASS: "Split by object type, both
   strata are SUPPORTED under the frozen rules.

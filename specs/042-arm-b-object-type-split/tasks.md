@@ -1,4 +1,4 @@
-# Spec 041 — Tasks
+# Spec 042 — Tasks
 
 > ## PLAN — FOR FREEZE DECISION — 2026-10-21
 >
@@ -6,7 +6,7 @@
 > `adjudication.md` (the owner's order of
 > 2026-10-21 and the portfolio triage of the
 > same date, drafting only). The freeze and
-> the execution of Spec 041 are separate
+> the execution of Spec 042 are separate
 > later owner acts.
 
 ## Lifecycle
@@ -24,10 +24,10 @@
       margins audit, and results), H24 (no
       private correspondence in the repo).
 - [x] **L2 — Claims-first register.**
-      `claims.json` (F041-C01…C15) drafted in
+      `claims.json` (F042-C01…C15) drafted in
       the Spec 032–040 register shape, with
       `observed_at` carried on evidence items
-      from this draft (DD-041-4). The AEE
+      from this draft (DD-042-4). The AEE
       lifecycle hooks have **not** run on this
       register (L4).
 - [x] **L3 — Design PR.** This draft, opened
@@ -48,11 +48,11 @@
       computed over the recovered register
       exactly once, at freeze.
 - [ ] **L5 — Freeze-decision items.** The
-      freeze decides DD-041-6 (OSF
-      registration), DD-041-7 (synthetic
-      calibration), and DD-041-8 (margins
+      freeze decides DD-042-6 (OSF
+      registration), DD-042-7 (synthetic
+      calibration), and DD-042-8 (margins
       audit), and confirms or openly overturns
-      DD-041-2 and DD-041-3.
+      DD-042-2 and DD-042-3.
 - [ ] **L6 — Freeze.** On the owner's freeze
       order, with L4 passed and L5 decided:
       hooks recorded, `freeze.md` finalised,
@@ -60,7 +60,7 @@
       recovered register and finalised texts,
       every spec §2 pin re-asserted against
       the merged record, and the execution
-      phase number allocated (DD-041-5).
+      phase number allocated (DD-042-5).
 - [ ] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).

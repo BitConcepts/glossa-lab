@@ -352,3 +352,64 @@ at both points — byte-identical, asserted.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+---
+
+## COMPLETION NOTE — appended 2026-10-21 (after the record merge)
+
+This note completes §7 by append. Nothing above is
+edited.
+
+- **Record PR and merge.** The execution record
+  landed as PR #263, merged at
+  `799e821909a2309e5ff014819b4132ede9f39c05`
+  (2026-10-21T13:19:41Z). CI at the record PR head
+  (`aa0b38d4`) is genuinely **7/7** from the run's
+  own job conclusions (run 39605742093): Frontend
+  tests (Playwright), Backend tests (pytest),
+  Evidence Graph script smoke tests, Shell wrappers
+  (ubuntu / windows / macos), and Indus public
+  validation checks all success. The backend job
+  log reads **1,582 passed / 20 skipped / 0 failed**
+  (the four new tests are this spec's execution
+  tests; the pre-merge main figure was 1,578
+  passed at Spec 061's merge).
+- **Foundation check (H21).** Measured standalone
+  at the record merge commit (`799e8219`) on a
+  fresh clone, with the two Holdat CSVs copied
+  from the program's existing local downloads after
+  SHA-256 verification against the recorded pin
+  (corpus `62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e`):
+  **40 passed / 0 failed / 8 warnings — READY WITH
+  CAVEATS**, the standing figure, read from the
+  generated report JSON. The regenerated
+  `reports/foundation_check_report.json` at that
+  commit is committed with this note. (A first
+  measurement on a sparse checkout that lacked the
+  committed `data/` tree read 39/0/8 because the
+  CISI-corpus check could not run; with the tree
+  complete — the proven route — the figure is
+  40/0/8. The discrepancy was the checkout, not
+  the foundation, and is recorded here rather
+  than smoothed over.)
+- **Post-merge identity check.** The delivery as
+  merged on `main` at `799e8219` was read back
+  through the GitHub contents API:
+  `concordance-297.json` recomputes to
+  `772db4df152ec4f1071bed088250677e55f69743532c9e89f339a8cf9134aaaf`,
+  the digest of record — the served artifact is
+  the executed artifact. The post-merge main CI
+  run (39607026688) was in progress at this
+  append; its conclusion is not asserted here.
+- **E5 closed.** With this note, tasks E5 is
+  complete (delivery, outcome, claim append,
+  handover state, LEDGER entry, anchors asserted,
+  foundation check reported as measured). E4
+  remains unchecked, deliberately: step 2 was
+  not reached on a step-1 closure.
+
+---
+
+*AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution §VI.*

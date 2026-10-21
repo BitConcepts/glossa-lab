@@ -7774,3 +7774,72 @@ reports/phase411_step0_report.md.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+## 2026-10-21 — Spec 060 EXECUTED (Phase-422): margin curve published (sensitivity); COMPOSITION DOES NOT on the shared population
+
+Spec 060 was executed in full as Phase-422
+under the frozen contract (freeze digest
+8c04b1a8…; OSF registration 8ywxc approved
+and public, DOI 10.17605/OSF.IO/8YWXC), in
+Wave 3 Group 2 of the runnable-experiments
+campaign, from origin/main at 3200b7b5.
+Graph-first build (H15/H23): script
+backend/scripts/phase422_f2_margin_curve.py,
+graph node IndusPhase422F2MarginCurve,
+registration verified by import before the
+run. Gate 0.1 PASS: every spec §3 input
+hashes to its stated value by two routes,
+including both held layers at the Phase-137
+loaders' default paths (Holdat 62d14d2b…;
+ICIT c368f290…). Gate 0.2 PASS: both layers'
+recorded profile tables reproduce exactly
+(Holdat 1,670 inscriptions, 9 × 98, χ²
+745.953, V 0.1154; ICIT 5,410, 7 × 187, χ²
+4966.362, V 0.2190). Gate 0.3 PASS: the
+Phase-384 v2 estimator, imported unchanged,
+reproduces both recorded governing intervals
+float-for-float (F2 basic [0.058939204306206666,
+0.0777941604081594]; F3 basic [0.18229651053139323,
+0.21036863506165235]). Gate 0.4 PASS: the
+shared-population census (site intersection
+re-derived: Chanhu-daro, Dholavira, Harappa,
+Kalibangan, Lothal, Mohenjo-daro) retains
+1,516 Holdat inscriptions and 2,139 ICIT
+SEAL inscriptions, above the frozen floors.
+Arm 1 (sensitivity display): the F2 margin
+curve on the fixed grid — SUPPORTED AT 0.05,
+STRADDLES 0.075, CONTRADICTED AT 0.10,
+CONTRADICTED AT 0.125, CONTRADICTED AT 0.15 —
+on governing interval [0.0589, 0.0778], point
+V 0.1154; the recorded verdict at 0.10 stands
+and no cell replaces it. Arm 2: on the shared
+population (SEAL; DD-060-12), under identical
+code with signs never pooled or mapped, the
+Holdat governing interval [0.055251710457321024,
+0.07607996659365032] (point V 0.1154) and the
+ICIT governing interval [0.08368810617885544,
+0.10835095759573735] (point V 0.1349) still
+exclude each other — COMPOSITION DOES NOT,
+recorded in the frozen §6.3 wording alongside
+Spec 034's finished attribution (ATTRIBUTED
+TO COMPOSITION on 169 matched objects, all
+Mohenjo-daro seals): both statements stand,
+neither edits the other, and no successor
+study is designed or implied. Period mix:
+PERIOD MIX NOT DESCRIBED FOR THIS LAYER -
+FIELD NOT CARRIED for both layers (DD-060-13);
+no period assignment was imported. No verdict
+moves: F2 stands CONTRADICTED at 0.10 and F3
+stands SUPPORTED at 0.10, exactly as recorded.
+A second full run reproduced every quantity
+identically. Anchors asserted byte-identical
+before and after (df0cf620…). Foundation
+check at the run: 40 passed / 0 failed /
+8 warnings. Records:
+specs/060-f2-margin-curve/outcome.md,
+reports/phase422_results.json,
+reports/phase422_report.md.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

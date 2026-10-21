@@ -92,10 +92,10 @@
 
 ## Execution — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0, part 1** (spec §3 gates
+- [x] **E2 — Step 0, part 1** (spec §3 gates
       0.1–0.2): corpus layer identified,
       exported, and pinned, with the original
       population description reproduced
@@ -106,7 +106,7 @@
       cross-check against the claim-record
       lists reported (failure closes ASSET F
       FREEZE FAILED).
-- [ ] **E3 — Step 0, part 2** (gates 0.3–0.5):
+- [x] **E3 — Step 0, part 2** (gates 0.3–0.5):
       coastal list frozen with per-site bases
       and contested sites named (failure closes
       COASTAL LIST FAILED); occurrence census
@@ -142,6 +142,26 @@
       byte-identical before and after;
       foundation check reported as measured.
       All records internal under the Roif gate.
+
+> **Step-0 execution note (2026-10-21,
+> Phase-404).** E1–E3 executed under the
+> runnable-experiments campaign (Wave 3,
+> Group 1: step 0 only); OSF registration
+> 6p9et APPROVED + PUBLIC. Gates 0.1–0.3
+> passed; Asset F was built and frozen
+> (digest
+> `ca5fb1b5a52d9ad0c8301174996562cdc024bf4063e6193bef77328b1acc58c3`,
+> recorded in `outcome.md`, the step-0
+> outcome record); gate 0.4 closed the
+> execution as **TOO THIN** (census: M047 13,
+> M048 157, M050 17, M052 22, M060 20,
+> M145 3, M147 2 — one member clearing the
+> 30-occurrence floor); gate 0.5 was not
+> reached. E4–E5 were not run and have no run
+> under this contract after a gate-0.4
+> closure; E6's step-0 portion is the record
+> in `outcome.md`, the reports, and the root
+> LEDGER entry. Internal under the Roif gate.
 
 ---
 

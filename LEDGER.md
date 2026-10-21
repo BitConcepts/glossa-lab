@@ -7598,3 +7598,75 @@ the closure does not block the asset.
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson,
 per constitution sec.VI.
+
+## 2026-10-21 — Spec 044 step 0 EXECUTED (Phase-404): Asset F built and frozen; execution closed TOO THIN at gate 0.4 (held under the Roif gate)
+
+Spec 044 (design D-02, the fish-sign coastal
+residue, sign by sign) executed its step 0 only,
+under the runnable-experiments campaign approved
+2026-10-21 (Wave 3, Group 1), as Phase-404. The
+execution rule was satisfied: the frozen
+contract's OSF registration 6p9et is approved
+and public (freeze digest
+6851f943d196fa389e48b67cb5161b90daa1180d8a3e1cf3f020fcf25691d9c8).
+Graph-first build: backend/scripts/
+phase404_fish_coastal_step0.py, graph node
+IndusPhase404FishCoastalStep0 registered and
+verified by import before the run. Gate 0.1
+PASS: the CISI-based layer of record (the
+Holdat corpus file, SHA-256
+62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e)
+re-asserted and the original family-level
+test's population reproduced exactly (7,002
+tokens; 1,670 inscriptions over 9 sites; M047
+at 13 tokens in 13 inscriptions; Phase-45 T6
+table 2 / 10 / 228 / 1,369, Fisher two-sided
+p = 0.685), every figure verified by two
+independent routes. Gate 0.2 PASS: Asset F,
+the fish-family list, built solely from
+Parpola's published list (1994, fig. 5.1,
+pp. 70–78) via the pinned Mahadevan–Parpola
+crosswalk and frozen at
+specs/044-fish-sign-coastal-residue/
+asset-f-fish-family.json — 7 members (M047,
+M048, M050, M052, M060, M145, M147), digest
+ca5fb1b5a52d9ad0c8301174996562cdc024bf4063e6193bef77328b1acc58c3
+(SHA-256 of the canonical bytes, digest field
+excluded; verified by two independent routes).
+The DD-044-5 cross-check is on the record
+(claim-record trio 72/64/70: no member in
+Asset F; Phase-43 six: only 60) and added and
+removed no member. Gate 0.3 PASS: the coastal
+list frozen under the design's rule —
+coastal/maritime Lothal and Dholavira (members
+by name); Surkotada classed inland and listed
+as contested. Gate 0.4 TOO THIN: the census
+(margins only) is M047 13, M048 157, M050 17,
+M052 22, M060 20, M145 3, M147 2 — one member
+clears the 30-occurrence floor, fewer than the
+two the frozen criterion needs, so the
+execution closed as TOO THIN in the spec's
+pre-written wording, with the full census as
+its finding. Gate 0.5 was not reached; no
+per-sign coastal test was computed and no
+coastal split of any sign was counted. The
+family-level verdict (partially falsified)
+stands exactly as recorded, and the claim's
+record was not edited. Anchors asserted
+byte-identical before and after (df0cf620…).
+Foundation check at the run: 40 passed /
+0 failed / 8 warnings. Records:
+specs/044-fish-sign-coastal-residue/outcome.md
+(the step-0 outcome record and Spec 048's
+pin source for Asset F's digest),
+reports/phase404_results.json,
+reports/phase404_step0_report.md. This entry
+and those records are internal under the
+campaign's Roif gate (R-7); they are not a
+publication, and campaign reporting names
+this member only as executed — held under
+the Roif gate.
+
+AI disclosure: executed by an AI agent (Muse Spark,
+via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

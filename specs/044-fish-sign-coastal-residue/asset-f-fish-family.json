@@ -1,0 +1,87 @@
+{
+  "asset": "F",
+  "built_by": "Spec 044 step 0",
+  "digest": "ca5fb1b5a52d9ad0c8301174996562cdc024bf4063e6193bef77328b1acc58c3",
+  "frozen_at": "2026-10-21",
+  "member_count": 7,
+  "members": [
+    {
+      "contested": false,
+      "depiction_note": "fish (plain)",
+      "inclusion_basis": "parpola-list-fish",
+      "mahadevan_number": 47,
+      "notes": "",
+      "parpola_number": 47,
+      "sign_key": "M047",
+      "source_citation": "Parpola, Asko. 1994. Deciphering the Indus Script. Cambridge: CUP — the published sign list (fig. 5.1, pp. 70–78)",
+      "source_locator": "Parpola 1994, fig. 5.1 sign list, entry 47 (pp. 70–78)"
+    },
+    {
+      "contested": false,
+      "depiction_note": "fish-with-roof",
+      "inclusion_basis": "parpola-list-fish-variant",
+      "mahadevan_number": 48,
+      "notes": "Allograph of Parpola 47 in the programme's Mahadevan–Parpola crosswalk.",
+      "parpola_number": 48,
+      "sign_key": "M048",
+      "source_citation": "Parpola, Asko. 1994. Deciphering the Indus Script. Cambridge: CUP — the published sign list (fig. 5.1, pp. 70–78)",
+      "source_locator": "Parpola 1994, fig. 5.1 sign list, entry 48 (pp. 70–78)"
+    },
+    {
+      "contested": false,
+      "depiction_note": "fish-with-fins",
+      "inclusion_basis": "parpola-list-fish-variant",
+      "mahadevan_number": 50,
+      "notes": "Allograph of Parpola 47 in the programme's Mahadevan–Parpola crosswalk.",
+      "parpola_number": 50,
+      "sign_key": "M050",
+      "source_citation": "Parpola, Asko. 1994. Deciphering the Indus Script. Cambridge: CUP — the published sign list (fig. 5.1, pp. 70–78)",
+      "source_locator": "Parpola 1994, fig. 5.1 sign list, entry 50 (pp. 70–78)"
+    },
+    {
+      "contested": false,
+      "depiction_note": "fish-with-trefoil",
+      "inclusion_basis": "parpola-list-fish-variant",
+      "mahadevan_number": 52,
+      "notes": "Allograph of Parpola 47 in the programme's Mahadevan–Parpola crosswalk.",
+      "parpola_number": 52,
+      "sign_key": "M052",
+      "source_citation": "Parpola, Asko. 1994. Deciphering the Indus Script. Cambridge: CUP — the published sign list (fig. 5.1, pp. 70–78)",
+      "source_locator": "Parpola 1994, fig. 5.1 sign list, entry 52 (pp. 70–78)"
+    },
+    {
+      "contested": false,
+      "depiction_note": "fish (variant; 'badly drawn')",
+      "inclusion_basis": "parpola-list-fish-variant",
+      "mahadevan_number": 60,
+      "notes": "Allograph of Parpola 47 in the programme's Mahadevan–Parpola crosswalk.",
+      "parpola_number": 60,
+      "sign_key": "M060",
+      "source_citation": "Parpola, Asko. 1994. Deciphering the Indus Script. Cambridge: CUP — the published sign list (fig. 5.1, pp. 70–78)",
+      "source_locator": "Parpola 1994, fig. 5.1 sign list, entry 60 (pp. 70–78)"
+    },
+    {
+      "contested": false,
+      "depiction_note": "fish with two horizontal lines",
+      "inclusion_basis": "parpola-list-fish-variant",
+      "mahadevan_number": 145,
+      "notes": "",
+      "parpola_number": 145,
+      "sign_key": "M145",
+      "source_citation": "Parpola, Asko. 1994. Deciphering the Indus Script. Cambridge: CUP — the published sign list (fig. 5.1, pp. 70–78)",
+      "source_locator": "Parpola 1994, fig. 5.1 sign list, entry 145 (pp. 70–78)"
+    },
+    {
+      "contested": false,
+      "depiction_note": "fish (sign-list variant)",
+      "inclusion_basis": "parpola-list-fish-variant",
+      "mahadevan_number": 147,
+      "notes": "Allograph of Parpola 47 in the programme's Mahadevan–Parpola crosswalk.",
+      "parpola_number": 147,
+      "sign_key": "M147",
+      "source_citation": "Parpola, Asko. 1994. Deciphering the Indus Script. Cambridge: CUP — the published sign list (fig. 5.1, pp. 70–78)",
+      "source_locator": "Parpola 1994, fig. 5.1 sign list, entry 147 (pp. 70–78)"
+    }
+  ],
+  "source": "Parpola, Asko. 1994. Deciphering the Indus Script. Cambridge: CUP — the published sign list (fig. 5.1, pp. 70–78) — as cited in the programme's Mahadevan–Parpola crosswalk (backend/glossa_lab/data/mahadevan_parpola_crosswalk.json, SHA-256 9ebd7723472d888dc8a127ff840a108d4fbd546f7f8ed28ccc6e06444a2dc69b)"
+}

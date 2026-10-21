@@ -1,0 +1,284 @@
+{
+  "anchors_assertion": {
+    "after_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+    "before_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+    "byte_identical": true
+  },
+  "census": [
+    {
+      "disposition": "TOO THIN",
+      "sign_key": "M047",
+      "total_occurrences": 13
+    },
+    {
+      "disposition": "CLEARS FLOOR",
+      "sign_key": "M048",
+      "total_occurrences": 157
+    },
+    {
+      "disposition": "TOO THIN",
+      "sign_key": "M050",
+      "total_occurrences": 17
+    },
+    {
+      "disposition": "TOO THIN",
+      "sign_key": "M052",
+      "total_occurrences": 22
+    },
+    {
+      "disposition": "TOO THIN",
+      "sign_key": "M060",
+      "total_occurrences": 20
+    },
+    {
+      "disposition": "TOO THIN",
+      "sign_key": "M145",
+      "total_occurrences": 3
+    },
+    {
+      "disposition": "TOO THIN",
+      "sign_key": "M147",
+      "total_occurrences": 2
+    }
+  ],
+  "execution": "Step 0 only (campaign Wave 3, Group 1) — executed 2026-10-21",
+  "freeze_digest": "6851f943d196fa389e48b67cb5161b90daa1180d8a3e1cf3f020fcf25691d9c8",
+  "gates": [
+    {
+      "gate": "0.1",
+      "layer_bytes": 593253,
+      "layer_path": "corpora/downloads/external_repos/holdatllc_indus/indus_corpus 2.csv",
+      "layer_sha256": "62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e",
+      "pinned_sha256": "62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e",
+      "population_reproduction": {
+        "inscriptions": 1670,
+        "inscriptions_per_site": {
+          "Banawali": 60,
+          "Chanhu-daro": 78,
+          "Dholavira": 106,
+          "Harappa": 492,
+          "Kalibangan": 110,
+          "Lothal": 124,
+          "Mohenjo-daro": 606,
+          "Rakhigarhi": 33,
+          "Surkotada": 61
+        },
+        "m047_inscriptions": 13,
+        "m047_tokens": 13,
+        "phase45_t6_fisher_two_sided_p": 0.6852722802446841,
+        "phase45_t6_table": {
+          "coastal_with": 2,
+          "coastal_without": 228,
+          "inland_with": 10,
+          "inland_without": 1369,
+          "unclassed_site_excluded": "Surkotada"
+        },
+        "token_rows": 7002
+      },
+      "verdict": "PASS"
+    },
+    {
+      "asset_digest": "ca5fb1b5a52d9ad0c8301174996562cdc024bf4063e6193bef77328b1acc58c3",
+      "asset_path": "specs/044-fish-sign-coastal-residue/asset-f-fish-family.json",
+      "cross_check": {
+        "claim_record_trio_mahadevan": [
+          72,
+          64,
+          70
+        ],
+        "note": "The trio and the six are Mahadevan numbers as named in the claim record and the Phase-43 record, whose corpus numbering is not the pinned layer's; Asset F's members are fixed solely by Parpola's published list via the crosswalk (DD-044-5). The divergence is reported; it adds and removes no member.",
+        "phase43_six_candidates": [
+          267,
+          72,
+          65,
+          59,
+          60,
+          70
+        ],
+        "phase43_six_in_asset_f": [
+          60
+        ],
+        "phase43_six_not_in_asset_f": [
+          267,
+          72,
+          65,
+          59,
+          70
+        ],
+        "trio_in_asset_f": [],
+        "trio_not_in_asset_f": [
+          72,
+          64,
+          70
+        ]
+      },
+      "gate": "0.2",
+      "member_count": 7,
+      "members": [
+        "M047",
+        "M048",
+        "M050",
+        "M052",
+        "M060",
+        "M145",
+        "M147"
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "coastal_list": [
+        {
+          "basis": "Ghaggar plain in Haryana, far inland; no port or coastal-zone location in published geography.",
+          "class": "inland",
+          "contested": false,
+          "site": "Banawali"
+        },
+        {
+          "basis": "Indus floodplain in Sindh, south of Mohenjo-daro and well inland from the coast; a riverine craft town, not a port.",
+          "class": "inland",
+          "contested": false,
+          "site": "Chanhu-daro"
+        },
+        {
+          "basis": "Member by name (spec §3). Published geography: on Khadir island in the Rann of Kutch, a coastal saline zone with maritime access in the Harappan period.",
+          "class": "coastal",
+          "contested": false,
+          "site": "Dholavira"
+        },
+        {
+          "basis": "Ravi floodplain in Punjab, far inland.",
+          "class": "inland",
+          "contested": false,
+          "site": "Harappa"
+        },
+        {
+          "basis": "Ghaggar bank in northern Rajasthan, far inland.",
+          "class": "inland",
+          "contested": false,
+          "site": "Kalibangan"
+        },
+        {
+          "basis": "Member by name (spec §3). Published geography: the Harappan port town on the Gulf of Khambhat, with its dockyard.",
+          "class": "coastal",
+          "contested": false,
+          "site": "Lothal"
+        },
+        {
+          "basis": "Indus floodplain in upper Sindh, far inland.",
+          "class": "inland",
+          "contested": false,
+          "site": "Mohenjo-daro"
+        },
+        {
+          "basis": "Ghaggar–Hakra plain in Haryana, far inland.",
+          "class": "inland",
+          "contested": false,
+          "site": "Rakhigarhi"
+        },
+        {
+          "basis": "Kutch interior east of the Little Rann; published descriptions place this fortified town on the inland Kutch plain, not at a port. Its coastal-zone status is contested in the literature (Kutch coastal groupings include it), and the original Phase-45 script left it unclassed; classed inland here and listed as contested.",
+          "class": "inland",
+          "contested": true,
+          "site": "Surkotada"
+        }
+      ],
+      "coastal_sites": [
+        "Dholavira",
+        "Lothal"
+      ],
+      "contested_sites": [
+        "Surkotada"
+      ],
+      "gate": "0.3",
+      "gazetteer_presence": {
+        "Banawali": true,
+        "Chanhu-daro": false,
+        "Dholavira": false,
+        "Harappa": true,
+        "Kalibangan": true,
+        "Lothal": true,
+        "Mohenjo-daro": true,
+        "Rakhigarhi": false,
+        "Surkotada": true
+      },
+      "rule": "a site is coastal/maritime if its published location is a port or within the coastal zone (design rule); Lothal and Dholavira are members by name; no site classed by its fish counts",
+      "verdict": "PASS"
+    },
+    {
+      "census": [
+        {
+          "disposition": "TOO THIN",
+          "sign_key": "M047",
+          "total_occurrences": 13
+        },
+        {
+          "disposition": "CLEARS FLOOR",
+          "sign_key": "M048",
+          "total_occurrences": 157
+        },
+        {
+          "disposition": "TOO THIN",
+          "sign_key": "M050",
+          "total_occurrences": 17
+        },
+        {
+          "disposition": "TOO THIN",
+          "sign_key": "M052",
+          "total_occurrences": 22
+        },
+        {
+          "disposition": "TOO THIN",
+          "sign_key": "M060",
+          "total_occurrences": 20
+        },
+        {
+          "disposition": "TOO THIN",
+          "sign_key": "M145",
+          "total_occurrences": 3
+        },
+        {
+          "disposition": "TOO THIN",
+          "sign_key": "M147",
+          "total_occurrences": 2
+        }
+      ],
+      "floor": 30,
+      "gate": "0.4",
+      "members_clearing_floor": 1,
+      "verdict": "TOO THIN"
+    }
+  ],
+  "headline": "The sign-by-sign residue test cannot be run as designed: fewer than two fish signs clear the 30-occurrence floor in the pinned corpus layer (census: M047 13; M048 157; M050 17; M052 22; M060 20; M145 3; M147 2). No per-sign coastal test was computed. The family-level verdict — partially falsified — stands exactly as recorded, and the residue remains open only in the sense this census states: the surviving record is too thin to test it sign by sign.",
+  "osf_registration": "6p9et (approved + public)",
+  "outcome": "TOO THIN",
+  "phase": 404,
+  "pins": {
+    "anchors": {
+      "match": true,
+      "observed_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+      "path": "backend/reports/INDUS_FINAL_ANCHORS.json",
+      "pinned_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
+    },
+    "claim_file": {
+      "match": true,
+      "observed_sha256": "bc22d6f010f800d608d6e3f620fb430b3cf8d3ccd3caadc6a989116fbfd125ed",
+      "path": "glossa-indus/claims/extracted_claims/indus_valley_script_deciphered_from_myth_65ff0a26.json",
+      "pinned_sha256": "bc22d6f010f800d608d6e3f620fb430b3cf8d3ccd3caadc6a989116fbfd125ed"
+    },
+    "crosswalk": {
+      "match": true,
+      "observed_sha256": "9ebd7723472d888dc8a127ff840a108d4fbd546f7f8ed28ccc6e06444a2dc69b",
+      "path": "backend/glossa_lab/data/mahadevan_parpola_crosswalk.json",
+      "pinned_sha256": "9ebd7723472d888dc8a127ff840a108d4fbd546f7f8ed28ccc6e06444a2dc69b"
+    },
+    "gazetteer": {
+      "match": true,
+      "observed_sha256": "5ac76a3031121a61fa39f87b1d2760855374d171ddd036988fee2820dca9b8b6",
+      "path": "data/movement/gazetteer_rows.jsonl",
+      "pinned_sha256": "5ac76a3031121a61fa39f87b1d2760855374d171ddd036988fee2820dca9b8b6"
+    }
+  },
+  "reviewer": "Muse Spark via Muse (AI agent)",
+  "roif_hold": "This record is internal under the campaign's Roif gate (R-7); it is not a publication.",
+  "spec": "044-fish-sign-coastal-residue"
+}

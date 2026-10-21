@@ -483,3 +483,134 @@ at both points — byte-identical, asserted.
 *AI disclosure: executed by an AI agent (Muse
 Spark, via Muse) at the direction of Tristen
 Pierson, per constitution §VI.*
+
+
+---
+
+## Landing record — 2026-10-21 (appended at merge; append-only)
+
+- Execution PR: **#290** (branch
+  `spec-056-phase418-execution`), merged to
+  `main` as merge commit
+  **`7cba096456892a4704010c0ae9d15fe06798e952`**.
+  The PR head at merge was `1071636a` — an
+  API-built merge of `main` (`dc649aae`) into
+  the branch, created because the VM's write
+  restriction (below) blocked the local git
+  commit of the same merge. Two earlier PRs
+  carried the identical content and were
+  closed unmerged for platform reasons
+  recorded on them: #272 (opened the record;
+  its CI run 39626957131 completed 6 of 7
+  jobs green with the single backend failure
+  repaired in `acce8af9`) and #282. After
+  that repair, no CI run was created for any
+  later head for roughly an hour: the cause,
+  found by inspection, was that `main` had
+  advanced under the branch (sibling Wave 3
+  executions merging), leaving the PR
+  CONFLICTING — no merge ref, hence no runs —
+  on append collisions in `LEDGER.md`, the
+  claims store, and the graph registration
+  block. Each conflict was resolved as a
+  union of both sides (the Spec 056 entry and
+  registration kept alongside every sibling
+  entry; the claims file = current `main`
+  file plus the `spec056_closure` append,
+  removal reproducing `main`'s file
+  byte-identically), the §2 pins were
+  re-verified against the merged content, and
+  the merged head then ran CI immediately.
+- CI: GitHub Actions run **39639732347** on
+  the PR head `1071636a` — **7 of 7 jobs
+  success**, from the jobs' own conclusions
+  (Backend tests (pytest); Frontend tests
+  (Playwright); Indus public validation
+  checks; Evidence Graph script smoke tests;
+  Shell wrappers ubuntu / macos / windows).
+  The macOS shell-wrappers job of the first
+  attempt was cancelled by the platform after
+  starting (no step results); the run was
+  re-run for the failed job only (attempt 2)
+  and completed success. No merge was made
+  on any earlier or partial result.
+- Run digests re-verified on `main` at the
+  merge commit via the contents API:
+  `reports/phase418_results.json` SHA-256
+  `35ed74b8d47d4b83973c5365fa29bb0e969413c485d838ccd4a6e166f2540575`
+  and `reports/phase418_recovery_report.md`
+  SHA-256
+  `531c054cd1a0d9697e48b4e10adc377b03055898e1e95c5318e72714c460644e`
+  — identical to the values in §8 of this
+  record; the `spec056_closure` append is
+  present on `main` with the claim's status
+  and stage unchanged (untested / created),
+  and the Phase-418 graph block is registered
+  alongside all sibling blocks.
+- Foundation check (H21) at the merge
+  commit: **40 checks passed, 0 failed,
+  8 warnings** — the standing figure. Route
+  disclosure: the VM write restriction
+  (below) blocked the usual fresh-clone
+  route (git object writes, tarball writes,
+  and file copies all denied with
+  "Operation not permitted"), so the check
+  ran against a tree assembled to be
+  identical to the merge commit's tree for
+  every file the check reads: the three
+  contested files were verified
+  byte-identical to the merge commit's blobs
+  (git blob SHAs 278cb69e / 0e002dd9 /
+  2781197b), the remaining tracked content
+  was the execution worktree content
+  (merge-identical; the only two files
+  differing anywhere in the tree are the
+  Spec 042 and Spec 053 outcome records,
+  which the check does not read), and the
+  two gitignored Holdat CSVs were read from
+  the existing local downloads through
+  symlinks, the corpus CSV SHA-256 verified
+  first against the recorded pin:
+  `62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e`.
+- Local-environment disclosure: from
+  mid-execution onward, this VM intermittently
+  denied local writes of copied content
+  (the standing restriction recorded in the
+  workspace manual on 2026-10-20). It did not
+  affect any run artefact — every pin, the
+  extraction, and the run itself completed
+  and were verified before it engaged — and
+  the delivery steps it blocked were carried
+  out through the GitHub API failsafe the
+  manual prescribes (merge commit and this
+  landing branch built via the git-data API;
+  read-back verification after each write).
+  Local pytest runs after the restriction
+  engaged were unavailable (the suite's
+  temporary-file creation was denied); the
+  PR's CI run is the figure of record for
+  the test suite, and it is green.
+- One observation for the coordinator,
+  outside this spec's acts: `main`'s copy of
+  the claims file lost Spec 046's
+  `first_check` append in Spec 058's merge
+  (`5a484ccb`) — the extracted-claims store
+  regeneration hazard the Spec 038 form
+  guards against. This spec's append is
+  additionally carried in full in
+  `reports/phase418_results.json`
+  (`claim_closure_append`), so its prescribed
+  form survives any future regeneration.
+- Terminal outcome stands as recorded
+  above: **IDENTIFICATION FAILED**. No
+  disposition was written and nothing was
+  retired; the fragment stands at created /
+  untested, closed on the record by the
+  `spec056_closure` append, with the
+  unblocking act named in §6.1 of this
+  record. The campaign state file was not
+  updated by this execution, per the
+  execution order.
+
+*AI disclosure: appended by an AI agent (Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.*

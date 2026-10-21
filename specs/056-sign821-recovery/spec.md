@@ -1,8 +1,9 @@
 # Spec 056 — "Sign 821, Used in a Variety of Contexts": Recover the Argument, or Retire the Fragment (Design D-17)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-21
+> ## FROZEN — 2026-10-21
 >
-> Drafted under the runnable-experiments
+> Frozen at the freeze act of 2026-10-21
+> under the runnable-experiments
 > campaign plan approved by the owner AS
 > WRITTEN on 2026-10-21
 > (`~/workspace/your_files/2026-10-21-runnable-experiments-campaign-plan.md`,
@@ -10,12 +11,21 @@
 > D-17, one of the three fragment recoveries
 > (with D-15 and D-19), drafted in parallel
 > throughout Wave 1 and consuming no shared
-> asset. **The freeze and the execution of
-> Spec 056 are separate later acts.** No AEE
-> lifecycle hooks have run on this draft;
-> they are a freeze gate. Nothing in this
-> draft has been run, frozen, registered, or
-> computed. Drafting merges nothing.
+> asset. The AEE lifecycle hooks ran at the
+> freeze gate and passed over the recovered
+> register (0.7-draft; `aee/freeze-aee-note.md`);
+> the freeze record is `freeze.md` /
+> `freeze.json` in this directory, and the
+> spec's OSF contract registration is filed
+> at the freeze under campaign decision E-1
+> (`osf-spec-registration.md`). **Execution
+> is a separate later act**: it runs as
+> Phase-418 (DD-056-18), only after this
+> freeze has merged, the registration's
+> approval act has completed, and a separate
+> execution order is given. Nothing has been
+> re-extracted, recovered, or retired by
+> the freeze itself.
 >
 > This spec is a recovery and record-repair
 > act by design. Its two pre-registered
@@ -25,10 +35,9 @@
 > not this draft — decides which one the
 > record gets.
 >
-> The execution phase number is **unassigned**
-> at this draft. Spec 056 allocates its phase
-> number at the freeze act, from the merged
-> record as it then stands (DD-056-7).
+> The execution phase number was allocated
+> at the freeze act: **Phase-418** (DD-056-18,
+> completing DD-056-7).
 
 **Design source:** D-17 in the experiment-design
 packet at PR #195
@@ -135,7 +144,7 @@ recovers no claim — the fragment is retired
 on the record as an extraction artefact"
 (campaign plan, Part 2, member 12).
 
-## 2. Inputs (pinned at this draft; re-asserted at the freeze)
+## 2. Inputs (pinned; re-asserted at the freeze)
 
 | Input | Pin / state |
 |---|---|
@@ -170,14 +179,16 @@ fixes the passage mechanically
   passage.
 - **Passage:** cleaned-text lines 2783–2871
   inclusive — the headed section that
-  contains the anchor sentence. Draft-observed
-  size 5,354 bytes; draft-observed SHA-256 of
-  the byte slice from the start of the start
-  anchor line to the start of the end anchor
-  line: `51d6fb3a460d94abc98c2ff735b17c5131a68c203e4d16692a21725790c0c604`.
-  The freeze re-computes this digest byte-exactly
-  and pins it in the freeze record
-  (OPEN-1 in adjudication.md).
+  contains the anchor sentence. Size 5,354
+  bytes; SHA-256 of the byte slice from the
+  start of the start anchor line to the start
+  of the end anchor line:
+  `51d6fb3a460d94abc98c2ff735b17c5131a68c203e4d16692a21725790c0c604`.
+  This digest was re-computed byte-exactly
+  at the freeze from the pinned held text
+  and is pinned in the freeze record
+  (DD-056-10, resolving OPEN-1 in
+  adjudication.md).
 - **Anchor sentence (verbatim, unique in the
   document, occurrence count 1, verified at
   this draft):** "Whatever sign 821 reads it
@@ -198,17 +209,22 @@ from anywhere else in the book is not a
 recovery under this spec; it is scope creep,
 recorded as a defect if it appears.
 
-**A limit of the held text, stated at draft.**
-The cleaned text drops the book's sign
-glyphs (sentences contain blank slots where
-glyphs stood) and Figure 6.13 itself is a
-graphic, present only as its caption. The
-passage of record is therefore the passage
-*as held*: the protocol in §4 judges the
-passage's propositional argument in its
-text. Anything carried only by the figure's
-images is outside the passage of record
-(OPEN-4 in adjudication.md).
+**A limit of the held text, stated at draft
+and confirmed at the freeze.** The cleaned
+text drops the book's sign glyphs (sentences
+contain blank slots where glyphs stood) and
+Figure 6.13 itself is a graphic, present
+only as its caption. The passage of record
+is therefore the passage *as held*: the
+protocol in §4 judges the passage's
+propositional argument in its text. Anything
+carried only by the figure's images is
+outside the passage of record. The freeze
+confirmed this text-only position
+(DD-056-13, resolving OPEN-4): the limit
+stands as a stated boundary of the recovery
+test, and the outcome record states it
+wherever the outcome is stated.
 
 ## 3. Step 0 — gates before any re-extraction (fail-closed)
 
@@ -593,7 +609,11 @@ required to strike the fragment from a
 listing this spec does not name, that act is
 outside this spec and is named in the outcome
 record as outstanding rather than performed
-silently (OPEN-6 in adjudication.md).
+silently. The freeze confirmed that the
+§7 appends are the complete mechanical
+content of retirement for every program
+surface that presents the fragment as a
+claim (DD-056-15, resolving OPEN-6).
 
 **On IDENTIFICATION FAILED or CLOSED AT
 STEP 0,** execution writes the outcome
@@ -706,9 +726,12 @@ surfaces but does not contain.
   6.13's images cannot be quoted from the
   passage of record and cannot be recovered
   under §5; the limit is stated wherever the
-  outcome is stated, and the freeze is asked
-  whether the figure joins the passage of
-  record (OPEN-4).
+  outcome is stated. The freeze decided the
+  figure does not join the passage of record
+  (DD-056-13, resolving OPEN-4): Figure 6.13
+  is graphic-only in the held text, and the
+  limit stands as a stated boundary of the
+  recovery test.
 
 ## 10. Epistemic limits (binding on all outputs)
 
@@ -773,10 +796,11 @@ surfaces but does not contain.
   section is the smallest unit that contains
   the anchor sentence's full discussion; a
   narrower bound would repeat the extraction
-  error, a wider one would import other
-  discussions. The freeze confirms or
-  re-bounds openly (OPEN-1) — before any
-  extraction pass runs, never after.
+  error; a wider one would import other
+  discussions. The freeze confirmed these
+  bounds (DD-056-10, resolving OPEN-1) —
+  before any extraction pass runs, never
+  after.
 - **Identification may fail on a real
   argument.** The registry carries no W821
   entry (verified at draft), so R-3's
@@ -801,7 +825,7 @@ Execution ends in exactly one of:
   PASSAGE NOT PRODUCIBLE, or PASSAGE PIN
   MISMATCH (§3).
 
-## 13. Execution shape (gated; NOT run by this draft)
+## 13. Execution shape (gated; NOT run by this freeze)
 
 1. **Graph-first build** (H15/H23) — script,
    graph node, registration, verification.

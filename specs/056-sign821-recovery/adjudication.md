@@ -628,6 +628,155 @@ therefore advances as a draft. Nothing in
 this section amends design D-17, which
 stands as written in the packet.
 
+## 7. Freeze decisions (2026-10-21)
+
+> ## FREEZE ACT — DECIDED — 2026-10-21
+>
+> The freeze act of 2026-10-21, under the
+> campaign plan approved AS WRITTEN the same
+> date (Wave 2 freeze wave), decided the
+> items §3 left open. Each resolution is
+> recorded here on the record; the register
+> rulings were carried into `claims.json`
+> before the AEE hooks ran, and the hooks
+> passed over the recovered register
+> (0.7-draft; `aee/freeze-aee-note.md`).
+
+- **DD-056-9 — OSF registration at the
+  freeze (E-1).** This spec files its own
+  OSF contract registration at the freeze,
+  under campaign decision E-1, following
+  the Specs 036–039 pattern. The filing
+  record is `osf-spec-registration.md`.
+  Execution awaits the registration's
+  approval act and a separate execution
+  order; no mail is handled by the freeze.
+- **DD-056-10 — OPEN-1 resolved: passage
+  digest pinned; bounds confirmed.** The
+  §2 passage slice was re-computed
+  byte-exactly at the freeze from the held
+  cleaned text as pinned on `main` at
+  `e339996194e1dd3c5336d87da37be0d5b0765556`
+  (both contents-API routes agreeing): the
+  slice from the start of the standalone
+  line `The Dholavira signboard, revisited`
+  (cleaned-text line 2783) to the start of
+  the next standalone heading line
+  `The Mohenjo-daro bangle pot` (line 2872)
+  is **5,354 bytes, SHA-256
+  `51d6fb3a460d94abc98c2ff735b17c5131a68c203e4d16692a21725790c0c604`** —
+  exactly the draft-observed value. The
+  anchor sentence "Whatever sign 821 reads
+  it is used in a variety of contexts
+  (Figure 6.13)." was re-verified unique in
+  the document (occurrence count 1), and
+  both bounding heading lines re-verified
+  unique as standalone lines. DD-056-1's
+  bounds (the headed section) are
+  **confirmed**; no re-bounding.
+- **DD-056-11 — OPEN-2 resolved: the
+  IDENTIFICATION FAILED closure
+  confirmed.** DD-056-2 stands as drafted:
+  where a candidate passes the argument
+  conditions but §5 R-3 cannot be satisfied,
+  the run closes as IDENTIFICATION FAILED —
+  neither recovered nor retired — and the
+  retirement wording is never applied to a
+  passage that argues something specific.
+- **DD-056-12 — OPEN-3 resolved: placement
+  confirmed.** DD-056-3 stands: a recovered
+  claim is recorded as an appended, dated
+  restatement on the fragment's own claim
+  record, same claim identifier, with the
+  provenance carried in the append itself.
+  No new intake record is substituted.
+- **DD-056-13 — OPEN-4 resolved: the
+  text-only position confirmed.** Figure
+  6.13 is graphic-only in the held text,
+  present only as its caption, and the sign
+  glyphs are dropped from the cleaned text.
+  Inspection of the figure does **not** join
+  the passage of record. A contention
+  carried only by the figure's images or by
+  a dropped glyph is unrecoverable under
+  this spec, and that limit stands as a
+  stated boundary of the recovery test,
+  stated wherever the outcome is stated.
+- **DD-056-14 — OPEN-5 resolved: two-pass
+  mechanics confirmed.** The passes are two
+  independent executor runs; each pass sees
+  only the pinned passage and spec §5 (the
+  recovery test) while extracting.
+  Reconciliation is by quotation, the
+  candidate set is the union of the two
+  sheets, and an unsettled disagreement on
+  the decisive candidate resolves **against
+  recovery** — the candidate is treated as
+  not recovered and the disagreement is
+  carried into the outcome record verbatim.
+  DD-056-4 stands as drafted.
+- **DD-056-15 — OPEN-6 resolved:
+  retirement's reach confirmed.** "Retired
+  on the record" means exactly the §7
+  entries (DD-056-5, confirmed): the outcome
+  record in this directory, the appended
+  dated disposition entry on the fragment's
+  own claim record, the LEDGER entry (H1),
+  and the experiment-graph node record
+  (H15/H23). Those appends are the complete
+  mechanical content of retirement for
+  every program surface that presents the
+  fragment as a claim; the execution
+  deletes nothing, withdraws nothing, and
+  edits no prior record. If a further
+  program act is required to strike the
+  fragment from a listing this spec does
+  not name, that act is outside this spec
+  and is named in the outcome record as
+  outstanding rather than performed
+  silently.
+- **DD-056-16 — OPEN-7 resolved: a dry-run
+  is required.** Execution requires a
+  worked dry-run of the §§4–5 sheet and
+  checklist machinery on a passage other
+  than the passage of record, recorded
+  before the protocol touches the fragment.
+  The dry-run produces no candidate and no
+  outcome for the fragment.
+- **DD-056-17 — OPEN-8 resolved:
+  test-design note depth fixed.** On
+  RECOVERED, the test-design note must
+  state, at minimum: what would be checked,
+  on what named data, and against the R-4
+  falsification condition. DD-056-6 is
+  **confirmed**: a recovered claim enters
+  the lifecycle at the **created** stage,
+  status **untested**, with that
+  designed-never-run test note; designing
+  the test is part of the recovery output
+  and no test is executed under this spec.
+- **DD-056-18 — Phase-418 allocated.**
+  The execution phase number (DD-056-7) is
+  allocated at this freeze as **Phase-418**,
+  from the merged record as it stands.
+- **DD-056-19 — The DD-038-10 AEE gate
+  reading adopted.** The gate is: at every
+  lifecycle hook, zero correctness failure
+  modes and no claim below the 0.70
+  threshold; FR-2.3 draft-cap records alone
+  do not block a freeze, because they are
+  lifted only by human ratification (a
+  status change), not by any recovery
+  available at a freeze. The hooks passed
+  on that reading (`aee/freeze-aee-note.md`).
+
+DD-056-1 to DD-056-8 are **confirmed** as
+drafted, including DD-056-6 (a recovered
+claim enters at created/untested with a
+designed-never-run test note) and the
+conjunctive R-1…R-5 recovery test of spec
+§5, confirmed as drafted.
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark,

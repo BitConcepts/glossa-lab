@@ -1,6 +1,6 @@
 # Spec 056 — Tasks
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-21
+> ## PLAN — FROZEN 2026-10-21 (execution Phase-418)
 >
 > Adjudication inputs are recorded in
 > `adjudication.md` (the runnable-experiments
@@ -44,7 +44,7 @@
       as a DRAFT PR and left unmerged for the
       freeze decision, CI state reported from
       the run's own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE
       — not run on this draft).** At the freeze
       act, run `run_aee.py assess`
       after_specify, after_plan, and
@@ -61,7 +61,7 @@
       adopted 1.5.x engine at the freeze
       rather than assumed from pre-adoption
       habit (campaign plan, Wave 2).
-- [ ] **L5 — Freeze-decision items.** The
+- [x] **L5 — Freeze-decision items.** The
       freeze decides OPEN-1 (passage digest
       re-computed and bounds confirmed),
       OPEN-2 (the IDENTIFICATION FAILED
@@ -75,7 +75,7 @@
       and confirms or openly overturns
       DD-056-1, DD-056-2, DD-056-3, and
       DD-056-5.
-- [ ] **L6 — Freeze.** On the owner's freeze
+- [x] **L6 — Freeze.** On the owner's freeze
       order under the campaign, with L4 passed
       and L5 decided: hooks recorded,
       `freeze.md` finalised, `freeze.json`
@@ -87,7 +87,22 @@
       (DD-056-7), and the spec's OSF contract
       registration filed under campaign
       decision E-1.
-- [ ] **L7 — Freeze PR merged**, house gates
+      **Done at the freeze act of 2026-10-21:**
+      hooks PASS over the recovered register
+      (0.7-draft) under aee 1.5.0 — zero
+      correctness failure modes, no claim below
+      0.70 (minimum 0.795), draft-cap records
+      only (DD-056-19 gate reading); every §2
+      pin re-asserted two-route at `main`
+      `e3399961`; the passage digest pinned
+      byte-exactly (5,354 bytes, SHA-256
+      51d6fb3a…, DD-056-10); OPEN-1 to OPEN-8
+      resolved as DD-056-10 to DD-056-17 in
+      `adjudication.md` §7; Phase-418 allocated
+      (DD-056-18); OSF contract registration
+      filed under E-1 (DD-056-9; filing record
+      in `osf-spec-registration.md`).
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
 

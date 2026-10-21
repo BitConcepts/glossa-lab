@@ -981,3 +981,76 @@ was repaired in-pass.
 ---
 
 *AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution §VI.*
+
+---
+
+## Step-2 landing record — 2026-10-21 (appended at merge; append-only)
+
+- Execution PR: **#298** (branch
+  `spec-047-step2-execution`), merged to
+  `main` as merge commit
+  **`4f1bda0b883454d3e8dc778bea1e1b0fbe12a0ad`**.
+  The PR head at merge was `80035eaa` (the
+  execution commit `429004e1` plus one merge
+  of advancing `main` — Spec 050's closure,
+  PR #296 — whose only conflict was the
+  LEDGER.md append, resolved by union: both
+  entries kept; pins re-verified and the run
+  reproduced on the merged tree before the
+  PR was opened).
+- CI: GitHub Actions run **39655589381** on
+  the PR head `80035eaa` — **7 of 7 jobs
+  success**, verified from the run's own job
+  conclusions (Backend tests; Frontend tests
+  (Playwright); Indus public validation
+  checks; Evidence Graph script smoke tests;
+  Shell wrappers ubuntu / macos / windows).
+- Run digests re-verified on `main` at the
+  merge commit by the contents-API route:
+  `reports/phase406_step2_results.json`
+  `7d0a303fab455c9f0045793dcece275d2e67c7495b98be496a6cc7a073908483`,
+  `reports/phase406_step2_report.md`
+  `87b6e0a07fc7bdcf27062af4238279566c550e0529db9b2fb81487c3a104137c`,
+  Asset B
+  `a1a9e48422ab7ab2ef1d340c5ca0eb81a315253b196fdc199d77d2e5739c9f85`,
+  and the claim record carrying the
+  `spec047_step2` append at
+  `13829bd7ac66fe3bea76ab7e2b07a5e0fcc37760cccf2af1b9deea1d89dc4772`
+  — identical to the values in the step-2
+  record above.
+- Foundation check (H21) at the merge
+  commit: **40 checks passed, 0 failed, 8
+  warnings** — the standing figure. Run on
+  the owner's desktop (TRISTEN-DESKTOP) in a
+  fresh clone checked out at `4f1bda0b`,
+  because this VM's write restriction
+  engaged mid-session (git loose-object
+  writes and copies of existing files denied
+  "Operation not permitted") and the standing
+  directive relocates blocked steps to the
+  desktop. The two Holdat CSVs were copied
+  from the desktop's existing downloads and
+  hash-verified in the run tree first
+  (corpus CSV SHA-256
+  `62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e`;
+  roles CSV
+  `eb6d3b6ae195a2570e098dc6779dbd6c7bea97da5c4714bf406c3bb98f9d2aaf`),
+  and the anchors file, Asset B, and the
+  step-2 results were hash-verified in the
+  same tree (`df0cf620…`, `a1a9e484…`,
+  `7d0a303f…`).
+- Tasks E5 and E7 stand ticked in
+  `tasks.md`; E6 stands open in form and
+  closed in substance (the gate at E5
+  fired), as recorded in §9 of the step-2
+  record. Terminal outcome stands as
+  recorded above: **INCONCLUSIVE
+  (classification)** at the §6.3 gate — 2
+  testable sites against the floor of 12,
+  and the contrast side empty in the test
+  population. No distribution quantity was
+  computed, and the claim stands UNTESTED
+  for its distribution component.
+
+*AI disclosure: appended by an AI agent (Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.*

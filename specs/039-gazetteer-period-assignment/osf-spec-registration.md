@@ -47,3 +47,62 @@
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## Completion — APPROVED AND PUBLIC (2026-10-21)
+
+- **DOI: https://doi.org/10.17605/OSF.IO/W38HA**
+- Approval route: the API review-action POST
+  returned **HTTP 409** at filing (recorded above),
+  as the programme record predicts; approval was
+  effected via the tokenised approve link in the
+  "Pending Registration - Admin Notification" email
+  (Gmail id `1a15c3a5bd46ecac`, received
+  2026-10-21T02:11:29Z), clicked in the signed-in
+  browser on 2026-10-21 — the standing approvals
+  loop (owner order 2026-10-11: registration
+  approvals are the agent's job, never left as an
+  owner action item). The cancel link in the same
+  email was not touched.
+- State verified via the OSF API after approval
+  (2026-10-21): `reviews_state: accepted`,
+  `revision_state: approved`,
+  `public: true`,
+  `pending_registration_approval: false`,
+  `withdrawn: false`;
+  `date_registered: 2026-10-21T02:11:24Z`;
+  `registered_from` node `nrb9u`; the identifiers
+  record carries exactly one DOI,
+  `10.17605/OSF.IO/W38HA`; Internet Archive
+  snapshot:
+  https://archive.org/details/osf-registrations-w38ha-v1.
+- The registration's Gmail messages — the admin
+  notification above and the draft-created notice
+  (Gmail id `1a15c38bbaacbd42`) — were marked read
+  and archived after this verification, under the
+  standing OSF archiving rule, and verified out of
+  the inbox.
+- Execution note: Phase-403 executed under the
+  owner's 2026-10-20 authorisation (the gazetteer
+  act, bundled with D-25, Option 1 — published
+  determinations only) without waiting on this
+  approval. The act assigned published
+  determinations to **11 of 30 sites** in the new
+  `gazetteer_rows_assigned.jsonl` (the pre-act file
+  was not edited); the verification step recorded
+  the link-mass floor closure (link mass 2 sites /
+  1 pair against floors of 8 / 10), and **no
+  outcome changed** — the act is a finding aid,
+  not dating evidence. A new version of the
+  Spec 027 Stage 0 gazetteer dataset was deposited
+  on Zenodo (record **23523454**, a new version of
+  record 23300361; the existing deposit was never
+  edited). This approval completes the DD-039-6
+  filing; it changes no part of the frozen
+  contract or the execution record.
+
+---
+
+*Completion appended 2026-10-21 by an AI agent
+(Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI. Append-only:
+nothing above this section was edited.*

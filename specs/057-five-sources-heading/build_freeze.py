@@ -1,0 +1,377 @@
+#!/usr/bin/env python3
+"""Build the Spec 057 freeze record (freeze.json).
+
+This builder was written at the freeze act of
+2026-10-21 (the draft carried no builder and no
+draft digest: the campaign's drafting wave opens
+claims-first drafts only, and the digest is
+computed over the recovered register exactly
+once, at the freeze - the Spec 035 ordering).
+Run with the Glossa backend venv python from the
+repository root:
+
+    python specs/057-five-sources-heading/build_freeze.py
+
+Writes specs/057-five-sources-heading/freeze.json
+(framework026 build_freeze payload: definition +
+source hashes + environment, digest = SHA-256 of
+the canonical JSON serialisation) and prints the
+digest.
+"""
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO / "backend"))
+
+from glossa_lab.framework026 import build_freeze  # noqa: E402
+
+SPEC_DIR = "specs/057-five-sources-heading"
+
+SOURCES_TABLE = [
+    {
+        "source": "S-1",
+        "citation": "Ancient Writing and Modern Technologies (the canonical record's own source; detected DOI 10.13109/hisp.2015.128.1.42)",
+        "claim_id": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
+        "document_id": "ancient_writing_and_modern_technologies_51831ac9",
+        "cleaned_text_sha256": "1275b795903260221f5226bada352de27471c010e2ad8ace556c548c20da1fc4",
+        "claims_file_sha256": "e98190894202a2a1c0e314229dcb585c62a0f5c12c059bcabd63b055c42959e8",
+        "registry_file_sha256": "92e19e6def7eccb42ba0e9f53f5ef3bf9dbb0b9717aa3d675cecb971f5ab0e5c",
+        "document_filename": "Ancient_Writing_and_Modern_Technologies.pdf",
+        "document_size_bytes": 3565316,
+        "document_checksum_sha256": "51831ac997f54782fc6483e04c06d6b60f08af81101b39bfe00daa5556b88b04",
+        "occurrence_posture": "2 lines carry the string in the held text (line 102 running text; line 663 a bibliography entry for the Fuls 2013 paper); no heading-form occurrence",
+    },
+    {
+        "source": "S-2",
+        "citation": "Fuls 2023, A Catalog of Indus Signs (CITATIONS.md section A.10)",
+        "claim_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb_statisti_0001",
+        "document_id": "fuls2023_catalog_of_indussigns_searchins_1dbdecdb",
+        "cleaned_text_sha256": "dae154327592d19366c9feb56362477fa842114cec944416b9b05dc3f0efd4cb",
+        "claims_file_sha256": "857abacac4317fa0f7bdf7d4052661a4109b6f5ee507843b93cac8c5ad46c5a4",
+        "registry_file_sha256": "bb23e5e9f90c30ebebb2d45e2967fb668a54432a56692a8772753fd228316f47",
+        "document_filename": "Fuls2023_Catalog_of_IndusSigns_SearchInside.pdf",
+        "document_size_bytes": 9814734,
+        "document_checksum_sha256": "1dbdecdb14854b57d7d6a7a4b978ef814312cc3f6bf246f8cf0313acdbbd6f2a",
+        "occurrence_posture": "3 lines carry the string (line 65 table of contents '3 Positional Analysis of Indus Signs 70'; lines 536 and 612 chapter running heads); a chapter heading exists",
+    },
+    {
+        "source": "S-3",
+        "citation": "Fuls 2013, Positional Analysis of Indus Signs, Voprosi Epigrafiki 7(1): 253-275 (CITATIONS.md section D.9)",
+        "claim_id": "positional_analysis_of_indus_signs_a2bedc93_statisti_0001",
+        "document_id": "positional_analysis_of_indus_signs_a2bedc93",
+        "cleaned_text_sha256": "9ed24098c006fcde5bb0ca7be6a6fa188011c3bc7bb8db46796abc77961a0708",
+        "claims_file_sha256": "713576363f9678281703866e6b749a9486d754906173bb48b7b44367531dc6f8",
+        "registry_file_sha256": "9b95174bad62c9a4879ae3db28a03ee52bc665df4e1d9897e65f84f353baa53c",
+        "document_filename": "Positional_Analysis_of_Indus_Signs.pdf",
+        "document_size_bytes": 468669,
+        "document_checksum_sha256": "a2bedc93d9c0fc7dfae53ea0b93859c2ac2110639d7ab53d5daab3cd034d6f6c",
+        "occurrence_posture": "18 lines carry the string; the paper's own title stands as a running head from line 54 onward (DD-057-11 delimitation)",
+    },
+    {
+        "source": "S-4",
+        "citation": "Wells 2015, The Archaeology and Epigraphy of Indus Writing (CITATIONS.md section A.7)",
+        "claim_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68_statisti_0003",
+        "document_id": "the_archaeology_and_epigraphy_of_indus_w_27f45a68",
+        "cleaned_text_sha256": "62acf855ac3ecf39fc7a7e6597dba9a3cb6e35948528f69e9424eb81308d261e",
+        "claims_file_sha256": "bd0f7abddc9c26537f4ebe5f66f6a1fc69d394a4c2edbe745a8b7eb1ddc3333a",
+        "registry_file_sha256": "b2638a705549348d2d857989e74f7a8ab09bd4e3ea60d6e3dfab4e49fd9eba68",
+        "document_filename": "The Archaeology and Epigraphy of Indus Writing.pdf",
+        "document_size_bytes": 8357942,
+        "document_checksum_sha256": "27f45a680c021d75bc757fecb948e63ddc1bbcc5af5cd9130369a959d857fedc",
+        "occurrence_posture": "10 lines carry the string (line 86 table of contents for Appendix II; line 3456 the appendix heading itself; figure captions and running-text mentions); an appendix heading exists",
+    },
+    {
+        "source": "S-5",
+        "citation": "Hunt, Without Kings or Conquests (registry file name as recorded)",
+        "claim_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc_statisti_0002",
+        "document_id": "without_kings_or_conquests_the_indus_scr_ce9d98cc",
+        "cleaned_text_sha256": "dd58497528db89fe75111d2431b9611aebd4a5a9715a4ecceb012d9d1538029e",
+        "claims_file_sha256": "c1a433d539a0ed899fe7ab11af2be0c608cb85d9f0fc99b2ccfefdb6e866262a",
+        "registry_file_sha256": "38122256305b8451e49e4ef4d56df7399363bdc3c57052b10f9165ab593261a7",
+        "document_filename": "Without_Kings_or_Conquests_The_Indus_Scr.pdf",
+        "document_size_bytes": 321649,
+        "document_checksum_sha256": "ce9d98cc32646b0d0023dd24a2f5c059f639019da8717b2ab3b7fb0f41012399",
+        "occurrence_posture": "1 line carries the string (line 267, sentence-initial inside a running paragraph); no heading-form occurrence",
+    },
+]
+
+DEFINITION = {
+    "spec": "specs/057-five-sources-heading/spec.md",
+    "freeze_doc": "specs/057-five-sources-heading/freeze.md",
+    "experiment_id": "spec057-five-sources-heading",
+    "register": {
+        "path": "specs/057-five-sources-heading/claims.json",
+        "register_version": "0.8-draft",
+        "claims": 15,
+        "aee_hook_pass": (
+            "PASSED at the freeze act of 2026-10-21 under aee 1.5.3: after_specify cleared in "
+            "adjudicated rounds over the recovered register (a loadability recovery from 0.5-draft to "
+            "0.6-draft - the draft's free-form evidence kind and source_quality labels are not engine "
+            "values and the loader refuses them, and mutual independent_of declarations were added; "
+            "33 failure modes over 0.6-draft: 14 irreducibility, 3 negation-conflict, 1 precision, 15 "
+            "FR-2.3 draft-cap records; recovery to 0.7-draft restated the 14 challenged heads as single "
+            "propositions with carried clauses in the boundaries, added boundary_confirmation records "
+            "for the three negation pairs against F057-C11, and defined the intake by its observable "
+            "product, leaving 19 modes - 3 irreducibility and the precision challenge remained; final "
+            "restatements at 0.8-draft cleared them; 15 draft-cap records only over 0.8-draft), "
+            "after_plan and after_tasks clean at first pass on the final register; at every hook zero "
+            "correctness failure modes and no claim below the 0.70 threshold (minimum propagated "
+            "0.72); the engine outcome word reads iterate solely from the draft-cap records (gate "
+            "reading DD-057-17; record in specs/057-five-sources-heading/aee/freeze-aee-note.md)"
+        ),
+    },
+    "basis": {
+        "adjudication": "specs/057-five-sources-heading/adjudication.md",
+        "decisions": (
+            "DECIDED by the owner on 2026-10-21 (not proposals): the runnable-experiments campaign "
+            "plan approved AS WRITTEN (decision E-1; member 14) commissions the campaign of which "
+            "design D-19 is a member; Spec 057 is D-19's specification. Draft decisions DD-057-1 to "
+            "DD-057-9 are recorded in adjudication.md sections 4 and are confirmed at the freeze. "
+            "Freeze decisions DD-057-10 to DD-057-17 are recorded in adjudication.md section 7: the "
+            "HEADING NOT PRESENT sub-state of SOURCE UNLOCATED confirmed (DD-057-10); the S-3 "
+            "delimitation of spec section 5.2 confirmed (DD-057-11); recovered-claim intake inside "
+            "the execution confirmed (DD-057-12); the spec's own OSF contract registration filed at "
+            "the freeze under E-1 (DD-057-13); DD-057-5 confirmed - a checkable proposition without "
+            "numbers is recovered, with 'numbers: none stated' (DD-057-14); DD-057-7 confirmed - no "
+            "retirement while a source is unlocated (DD-057-15); Phase-419 allocated (DD-057-16); "
+            "and the DD-038-10 AEE gate reading adopted as DD-057-17."
+        ),
+    },
+    "design": {
+        "phase": "Phase-419",
+        "act": (
+            "re-extract, from each of the five pinned source documents, the passage under the "
+            "heading of spec section 5 under the heading-form rule, and account for every one of "
+            "the five sources with exactly one of the three pre-registered outcomes of spec "
+            "section 6, deriving the headline class and the heading record's disposition "
+            "mechanically under spec section 7"
+        ),
+        "claim_under_test": {
+            "id": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
+            "fragment": "Statistical finding: positional analysis",
+            "record": (
+                "Phase-104 evaluation: verdict stays_untested, rule RULE-NOCOND - "
+                "auto-extraction fragment with no falsification condition and no stated "
+                "proposition; not evaluable as stated (constitution section IV)"
+            ),
+            "fingerprint": "a4874349e0cc0ba23b711f10c78f60372639c2dc6f352165b48d4a9e44272469",
+        },
+        "falsifier": (
+            "the design's success condition is accounting, not recovery: the execution is "
+            "falsified if any one of the five sources ends without exactly one recorded outcome "
+            "(CLAIM RECOVERED, PASSAGE EMPTY, or SOURCE UNLOCATED under spec section 6), if a "
+            "passage is assumed rather than located, or if a 'recovered' proposition is one the "
+            "passage does not state - whatever the headline says (spec section 1.2)"
+        ),
+        "hypothesis": (
+            "F057-C14: at least one of the five passages states a checkable finding about sign "
+            "positions that can be recovered as a claim under F057-C10; the accounting can defeat "
+            "it honestly (headline classes D, E, F are successes of the design, not of the "
+            "hypothesis)"
+        ),
+        "sources": SOURCES_TABLE,
+        "heading_rule": (
+            "DD-057-4, confirmed at the freeze: an occurrence of 'positional analysis' "
+            "(case-insensitive) anchors a passage only if it is in heading form - standing as "
+            "the title of a section, chapter, appendix, or titled part, shown by standing alone "
+            "as a line or running head, by chapter/appendix numbering, or by a table-of-contents "
+            "entry pointing to the passage it introduces (spec section 5.1); running-text "
+            "mentions, bibliography and reference entries, figure and table captions, and "
+            "cross-references never anchor a passage, and the five passages do not borrow from "
+            "each other"
+        ),
+        "delimitation": (
+            "spec section 5.2, with DD-057-11 (OPEN-2 resolved) confirming the S-3 case: the "
+            "passage runs from the heading occurrence to the next heading of equal or higher "
+            "rank, or to the document's end; running heads are one heading, not many passages; "
+            "where the heading is the document's own title (S-3), the passage is the document's "
+            "findings-bearing body, cited by line range in the passage artifact, not reprinted "
+            "in the outcome record"
+        ),
+        "stated_search": (
+            "spec section 4, in order, per source: (1) the pinned held cleaned text at its "
+            "section 2.1 path; (2) a repository-wide search for the document_id string, any "
+            "candidate verified by SHA-256 against the cleaned-text pin; (3) the recorded stored "
+            "paths in the source's registry file on the execution host, any candidate verified "
+            "by SHA-256 against the registry's recorded checksum_sha256; (4) the source document "
+            "itself, its text layer searched under the heading rule, a heading found there but "
+            "not in the cleaned text extracted from the document with the discrepancy recorded. "
+            "SOURCE UNLOCATED carries the sub-state DOCUMENT UNLOCATED or HEADING NOT PRESENT IN "
+            "HELD TEXT (DD-057-10, OPEN-1 resolved, confirming DD-057-3), its full search log, "
+            "and a named unblocking act on its row"
+        ),
+        "accounting": {
+            "outcomes": [
+                "CLAIM RECOVERED",
+                "PASSAGE EMPTY",
+                "SOURCE UNLOCATED",
+            ],
+            "recovered_standard": (
+                "DD-057-14 (DD-057-5 confirmed): a located passage stating a checkable finding - "
+                "a proposition about sign positions carrying a quantity, a named corpus, or a "
+                "directional or comparative assertion checkable in principle - is CLAIM RECOVERED "
+                "with its numbers verbatim as stated, or the recorded entry 'numbers: none "
+                "stated' where it states none, its corpus and stated conditions as stated or "
+                "'not stated', and a falsifier written from the passage's own logic or the "
+                "recorded absence of one"
+            ),
+            "empty_standard": (
+                "a located passage stating no checkable finding is PASSAGE EMPTY, with the "
+                "passage quoted as evidence (the passage itself if short, or its opening and "
+                "closing and the finding-bearing span the executor judged, with the judgement "
+                "stated)"
+            ),
+            "table": (
+                "the outcome record's central table has exactly five rows, in spec section 2.1 "
+                "order, each with citation, source claim_id, location state, locator or "
+                "search-log reference, exactly one outcome, and the recovered claim id or "
+                "evidence reference (spec section 6.1); a missing row, a row without an "
+                "outcome, or a row its own evidence does not support is a failed execution "
+                "under section 1.2"
+            ),
+        },
+        "headline": {
+            "classes": [
+                "A - FULL RECOVERY (r=5)",
+                "B - COMPLETE ACCOUNTING, PARTIAL RECOVERY (r=1-4, u=0)",
+                "C - PARTIAL RECOVERY WITH UNLOCATED SOURCES (r=1-4, u>=1)",
+                "D - NO CLAIM RECOVERED: ALL PASSAGES EMPTY (r=0, u=0, e=5)",
+                "E - NO CLAIM RECOVERED: EMPTY AND UNLOCATED (r=0, u=1-4)",
+                "F - NO SOURCE LOCATED (r=0, u=5)",
+            ],
+            "rule": (
+                "the headline is exactly one class, derived mechanically from the counts (r "
+                "recovered, e empty, u unlocated; r+e+u=5), exhaustive over all 21 count "
+                "combinations, under the pre-written wordings of spec section 7.1, with the "
+                "counts shown beside the class; step-0 closures are stop classes, not headline "
+                "classes"
+            ),
+        },
+        "disposition": (
+            "DD-057-15 (DD-057-7 confirmed): by appended, dated note on the canonical record "
+            "only, the frozen record never edited - superseded by the named recovered claims if "
+            "r>=1; retired as an extraction artefact if r=0 and u=0, with the five quoted "
+            "passages as the note's evidence; no disposition if r=0 and u>=1 - the record "
+            "stands as a stated gap, the note records the accounting so far and the named "
+            "unblocking acts, and retirement is not available while a passage that might state "
+            "a finding remains unlocated"
+        ),
+        "recovered_claim": {
+            "intake": (
+                "DD-057-12 (OPEN-3 resolved), confirming DD-057-6: the intake records are "
+                "produced inside this execution through the programme's intake; designing the "
+                "recovered claims' checks is later work, per claim, outside this spec"
+            ),
+            "lifecycle": (
+                "each recovered claim enters the claim set at the created stage, unchecked, "
+                "with its proposition stated in plain words and the passage quoted beside it; "
+                "recovery is not verification, and no output may present a recovered proposition "
+                "as supported by its recovery"
+            ),
+        },
+        "step0_gates": (
+            "fail-closed, in order, before any passage is read for content (spec section 3): "
+            "gate 0.1 input integrity - every section 2 pin hashes to its freeze-record value "
+            "(a cleaned text absent is not a mismatch; it starts the stated search) - a "
+            "mismatch closes as CLOSED AT STEP 0 - INPUT PIN MISMATCH, naming the input; gate "
+            "0.2 source-set integrity - the canonical record still carries exactly the four "
+            "evidence instances of section 2.1 with the fingerprint a4874349... - a different "
+            "set closes as CLOSED AT STEP 0 - SOURCE SET CHANGED; gate 0.3 order - the "
+            "execution record shows the gate verdicts before the first per-source row, or the "
+            "run is non-compliant on its face; nothing is repaired at run time"
+        ),
+        "limits": (
+            "spec section 9, binding on all outputs: recovery is not verification; no credit "
+            "transfers from the programme's other positional records to this record or to a "
+            "recovered claim; no invented propositions (a paraphrase that strengthens, narrows, "
+            "or numbers a claim the passage did not make is a defect of the execution); the "
+            "frozen records stand (products append beside them, never edit them); verbatim is "
+            "internal - every registry record for the five sources carries license_status "
+            "'unclear', the passage artifacts are internal programme records, and any later "
+            "publication use of passage text requires the registry's own license verification "
+            "as its own act. Every execution product carries the fence sentence: 'This act "
+            "recovered what five passages state. It checked none of it.'"
+        ),
+        "freeze_does_not": (
+            "this freeze does not itself extract, locate, or account for any passage: no "
+            "passage has been read for content, no recovered claim has been stated, no source "
+            "has been given an outcome, and the heading record stands exactly as recorded; "
+            "extraction and accounting are execution outcomes under Phase-419, not freeze acts; "
+            "the freeze also establishes nothing about sign positions"
+        ),
+        "execution_gate": (
+            "Not satisfied at the freeze of 2026-10-21: execution runs as Phase-419 only after "
+            "this freeze has merged, the OSF contract registration's approval act has completed "
+            "(the parent's approval click on OSF's admin notification), and a separate execution "
+            "order is given, in campaign Wave 3 group 2"
+        ),
+    },
+    "inputs": {
+        "sources": SOURCES_TABLE,
+        "claims_store_posture": (
+            "the five extracted-claims files' freeze-time hashes are carried as definition "
+            "constants in the Spec 038 form: the extracted-claims store is regenerated by the "
+            "backend suite, so the freeze tests assert the constants plus each entry's facts "
+            "on the live files, never live-file hashes on that store; every other input's "
+            "hash is asserted on the live file"
+        ),
+        "phase104_evaluation": {
+            "file": "glossa-indus/reports/phase104_claims_evaluation.json",
+            "sha256": "2d0b83e8055a04b96635007054cfadde472f605dc7e5b249a61c8f9ea89b858d",
+            "claim_id": "ancient_writing_and_modern_technologies_51831ac9_statisti_0004",
+            "verdict": "stays_untested",
+            "rule": "RULE-NOCOND",
+        },
+        "lane2_drafts": {
+            "file": "specs/029-tao-claim-lifecycle/lane2-drafts/drafts.json",
+            "sha256": "3f645c9a4132ba5a0bc5fca4ca22810b8b6169a2f1f9f85f35990c7b72df33fb",
+        },
+        "anchors": {
+            "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+            "sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+            "posture": "this spec moves no anchor; the file is asserted byte-identical before and after any execution",
+        },
+        "pin_verification": (
+            "at the freeze of 2026-10-21 every pin above was re-derived by two independent "
+            "routes (contents-API raw and git-blob) at main "
+            "770155dea66c5d5dde194728560aacf83c7514d0; the two routes agree byte-for-byte on "
+            "every file, every hash equals its draft pin, and a third local route - the "
+            "checked-out blobs of a fresh clone at the same main - agrees on every file "
+            "(freeze.md section 2)"
+        ),
+    },
+    "environment": {
+        "python": "3.12.3",
+        "runner": "backend (venv glossa-aee153)",
+        "aee": "1.5.3 (adopted environment for this freeze; venv glossa-aee153; package pinned >=1.5.0,<1.6)",
+        "specify": "1.0.10",
+    },
+}
+
+SOURCES = [
+    f"{SPEC_DIR}/freeze.md",
+    f"{SPEC_DIR}/spec.md",
+    f"{SPEC_DIR}/claims.json",
+    f"{SPEC_DIR}/adjudication.md",
+    f"{SPEC_DIR}/aee/freeze-aee-note.md",
+    f"{SPEC_DIR}/build_freeze.py",
+    "backend/tests/test_spec057_freeze.py",
+]
+
+
+def main() -> int:
+    record = build_freeze(DEFINITION, REPO, SOURCES)
+    out = REPO / SPEC_DIR / "freeze.json"
+    out.write_text(
+        json.dumps(record, indent=1) + "\n", encoding="utf-8"
+    )
+    print(record["digest"])
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

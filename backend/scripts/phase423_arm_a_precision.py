@@ -382,12 +382,19 @@ def expected_effect(pop, probs_by_site):
     adjusted_r2 over the full recorded Arm A
     population, permutations off, where inscription i
     at site s carries the expected count vector
-    p_s x n_legible(i)."""
+    p_s x n_legible(i). The estimator's input is the
+    proportion rows of those expected vectors, which
+    are exactly p_s (the count vector p_s x n divided
+    by its sum n): the rows are taken as p_s directly
+    so that at b = 1 — where every site's composition
+    is the pooled composition — every Bray-Curtis
+    distance is exactly zero and A(1) is the frozen
+    record's 1 - 1592/1588, not a ratio of
+    floating-point residue from per-row
+    renormalisation."""
     entries = pop["a_entries"]
-    vecs = np.array([
-        probs_by_site[e["site"]] * e["n_legible"]
-        for e in entries])
-    props = vecs / vecs.sum(axis=1, keepdims=True)
+    props = np.array([probs_by_site[e["site"]]
+                      for e in entries])
     sites = sorted({e["site"] for e in entries})
     label_idx = np.array([sites.index(e["site"])
                           for e in entries])

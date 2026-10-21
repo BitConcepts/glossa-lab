@@ -423,6 +423,30 @@ constitution §VI.*
   stratum was computed, no verdict exists
   under this spec, and Spec 028 Arm B stands
   exactly as recorded.
+- Correction (held-out foreground re-run,
+  2026-10-21): the local-environment
+  disclosure above is not reproduced on
+  pristine final main and is withdrawn. No
+  test named
+  `test_spec040_freeze_register_lenient`
+  exists in
+  `backend/tests/test_spec040_freeze.py`;
+  that file's register test is
+  `test_register_integrity`. Run in the
+  foreground on a pristine checkout of main
+  at `736a162e` in a venv with
+  applied-epistemic-engineering 1.5.0 /
+  pytest 9.1.1 / Python 3.12.3 (the
+  glossa-aee150 versions),
+  `test_register_integrity` PASSES and the
+  full file passes 4/4 — no AEE-loader
+  TypeError occurs. The statement that the
+  failure "was verified to fail identically
+  on the pristine main tree" should be
+  deleted. (Group 4 acceptance act; the
+  original disclosure text above is
+  retained unedited, per append-only
+  discipline.)
 
 *AI disclosure: appended by an AI agent (Muse Spark, via Muse) at the direction of
 Tristen Pierson, per constitution §VI.*

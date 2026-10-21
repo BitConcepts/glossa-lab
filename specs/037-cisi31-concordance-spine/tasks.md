@@ -71,11 +71,14 @@
       filed), DD-037-8 (phase allocation
       Phase-402), and DD-037-9 (the gate reading)
       decided at the freeze (`adjudication.md` §4).
-- [ ] **L6 — Freeze PR merged**, house gates green
-      (full suite, branding sweep; no anchor or
-      register consequence exists under this spec,
-      so no foundation gate applies — stated
-      openly in spec §7).
+- [x] **L6 — Freeze PR merged**, house gates green
+      (PR #225, merged 2026-10-20, merge commit
+      `e9b5026c`; CI run 39524629171 verified from
+      its own conclusions — 7 of 7 jobs
+      successful, backend 1,479 passed / 20
+      skipped; no anchor or register consequence
+      exists under this spec, so no foundation
+      gate applies — stated openly in spec §7).
 - [x] **L7 — Gate state.** The Phase-130 gate is
       on record before any processing (restricted
       store PROVENANCE entry 22, recorded at
@@ -88,12 +91,15 @@
 
 ## Execution (Phase-402) — under the frozen contract and the owner's standing pipeline authorisation
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run. The
       build's row-level working files are written
       only in the restricted local store.
-- [ ] **E2 — Step 0** (spec §7), in the frozen
+      **Done 2026-10-20** — build commit
+      `889e13b1`; the two step-0 checker
+      corrections are recorded in outcome.md §2.
+- [x] **E2 — Step 0** (spec §7), in the frozen
       order: 0.1 gate record on record and naming
       this material restricted; 0.2 portion PDF
       SHA-256 equals the intake pin and the local
@@ -102,31 +108,44 @@
       0.4 repo cleanliness (no portion-derived
       file in tree or index). Any failure stops
       the execution as itself, before any join is
-      computed.
-- [ ] **E3 — Pilot** (spec §4): candidate
+      computed. **Done 2026-10-20** — two runs
+      closed inside step 0 on checker defects
+      (outcome.md §2); the third run passed all
+      four checks in the frozen order.
+- [x] **E3 — Pilot** (spec §4): candidate
       generation (the 693); ladder grading of the
       full census; the hand-check stratum (size
       and seed per the freeze's DD-037-5) and its
       cause attribution; the §4.4 aggregates.
-- [ ] **E4 — Spine build** (spec §4.5): the local
+      **Done 2026-10-20** — 693 graded (VERIFIED
+      269 / CONFLICT 341 / UNRESOLVED 83);
+      independent recount, 0 mismatches; stratum
+      attributed (outcome.md §3).
+- [x] **E4 — Spine build** (spec §4.5): the local
       concordance table from VERIFIED joins only,
       written in the portion folder of the
       restricted store — unless the halt rule
       (§4.7) fires, in which case no spine file is
       written and the outcome is PILOT COMPLETE —
-      SPINE HALTED.
-- [ ] **E5 — Annex** (spec §5), if the freeze's
+      SPINE HALTED. **Done 2026-10-20** — the halt
+      rule fired (conflict share 49.21% > 20%);
+      no spine file was written.
+- [x] **E5 — Annex** (spec §5), if the freeze's
       DD-037-6 places it in this phase: dig-year,
       lot, and period-code aggregates from the
       pinned local table, floor caveat attached;
       local working files in the restricted store.
-- [ ] **E6 — Outcome:** the aggregates and outcome
+      **Done 2026-10-20** — DD-037-6 placed it in
+      this phase; aggregates in outcome.md §5.
+- [x] **E6 — Outcome:** the aggregates and outcome
       classes recorded in this spec's `outcome.md`
       and the root LEDGER; the local products
       named by filename and row count only; repo
       cleanliness re-checked before the outcome
       commit; nothing written into any frozen
       record, the PRED register, or the anchors.
+      **Done 2026-10-20** — this record; the PRED
+      register and the anchors untouched.
 
 ---
 

@@ -111,7 +111,7 @@ independent executions.** It consumes no
 shared asset and no member's output, and no
 member consumes its output inside the pass.
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
       The script imports the pinned Phase-132
@@ -119,7 +119,7 @@ member consumes its output inside the pass.
       the P-space derivation, the alignment,
       and the reproduction computation; it
       does not reimplement them.
-- [ ] **E2 — Step 0, part 1** (spec §3 gates
+- [x] **E2 — Step 0, part 1** (spec §3 gates
       0.1–0.3): committed-record integrity
       against the freeze pins; pilot-pass
       record-set production, inventory, and
@@ -130,7 +130,7 @@ member consumes its output inside the pass.
       frame identity against the committed
       frame. Any other failure stops the run
       as INVALID.
-- [ ] **E3 — Step 0, part 2** (gates 0.4–0.6):
+- [x] **E3 — Step 0, part 2** (gates 0.4–0.6):
       exact reproduction of the committed
       Phase-132 metrics from the produced set;
       adjudication-taxonomy cross-check
@@ -139,7 +139,7 @@ member consumes its output inside the pass.
       (40 objects on the committed record).
       Any mismatch stops the run as INVALID
       before any event is tabulated.
-- [ ] **E4 — Tabulations** (spec §4): frozen
+- [x] **E4 — Tabulations** (spec §4): frozen
       alignments over the mismatched objects;
       mismatch events typed and counted; T1
       (by sign, with frequency shares and the
@@ -149,7 +149,7 @@ member consumes its output inside the pass.
       first-divergence table; the §4.4
       UNK-excluded descriptive secondary; the
       M-space sensitivity.
-- [ ] **E5 — Outcome:** the §6 record —
+- [x] **E5 — Outcome:** the §6 record —
       results JSON and report under the
       reporting rules (gate record and
       manifest, census, T1–T3 primary and

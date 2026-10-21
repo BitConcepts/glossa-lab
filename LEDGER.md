@@ -7376,3 +7376,61 @@ computed, the spine was not recomputed, and no
 repertoire quantity was calculated.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 - Spec 040 CLOSED AT THE FREEZE GATE: NOT-YET-TESTABLE - dependency gate (D-25)
+
+Spec 040's freeze act was reached under the
+owner's pipeline order (freeze order
+038 -> 037 -> 039 -> 040) and the dependency
+gate of its section 1 was verified first-hand
+against the executed Spec 039 record. Spec 039
+has executed (freeze digest ec53a841...; freeze
+PR #226 merged 05f961fc, record PR #234 merged
+14d15411, completion PR #235 merged a61da697)
+and its assignment artifact recomputes to the
+expected SHA-256 (64f288d3...; 36 rows, 30
+sites). The gate nevertheless fails, on
+section 1 conditions 2 and 4. The executed
+artifact assigns period labels per site -
+label sets stating the periods a site's
+published record spans (harappa: Early, Mature
+and Late Harappan), carried identically onto
+the site's rows (Spec 039 F039-C04/C06) - as
+finding aids, not dating evidence (F039-C15).
+It carries no mapping keyed by site x an
+inscription's recorded local chronological
+label, which is the only key Spec 040's
+section 4 interface consumes, and local period
+names appear only inside prose evidence
+strings. Three of the seven G1 sites
+(chanhu-daro, dholavira, nausharo) have no
+artifact rows at all. Under DD-040-3 the
+interface is not loosened to fit the product:
+the recorded state is NOT-YET-TESTABLE -
+dependency gate. No freeze followed: the AEE
+lifecycle hooks were not run (the gate stands
+in front of them), no freeze digest was
+computed, DD-040-1/5/6/9 remain undecided (the
+re-derived interval-at-margin rule is not
+adopted), no execution phase number was
+allocated (Phase-404 is not taken; DD-040-10
+stays open), no OSF registration was filed,
+and nothing was executed - no label joined, no
+margin computed, no repertoire quantity
+calculated. G1 stands exactly as Spec 025 and
+Phase-385 left it: SUPPORTED under composition
+and preservation control, governing basic CI
+[0.1838, 0.2102] above the V = 0.10 floor, with
+the rider that chronology is NOT controlled.
+A secondary finding is recorded with the gate
+record: the anchors pin carried in the Spec
+040 draft (eccea6d5...) is superseded - the
+anchors file recomputes to df0cf620... on
+current main and at the draft's own base,
+unchanged since 2026-10-12; a future freeze of
+this contract must refresh that pin. Full
+record: specs/040-d25-g1-chronology-controlled/
+outcome.md (dependency-gate record, appended
+2026-10-20).
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution sec.VI.

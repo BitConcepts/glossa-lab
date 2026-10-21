@@ -125,6 +125,41 @@
 
 ---
 
+## Freeze-act record - appended 2026-10-20
+
+The freeze act was reached on 2026-10-20 under
+the owner's pipeline order (freeze order
+038 -> 037 -> 039 -> 040) and closed at the
+dependency gate:
+
+- **L4 - NOT RUN.** The section 1 gate stands
+  in front of the hooks (see
+  `aee/freeze-aee-note.md`); the gate failed,
+  so no hook pass was run over the register.
+- **L5 - FAILED, recorded.** Spec 039 has
+  executed (freeze digest `ec53a841...`;
+  PRs #226/#234/#235 merged) and its artifact
+  recomputes to the expected SHA-256
+  (`64f288d3...`), but the artifact does not
+  satisfy the section 4 interface: assignments
+  are per site as label sets (finding aids),
+  with no site x local-label mapping key, and
+  three of the seven G1 sites have no artifact
+  rows. Spec section 1 conditions 2 and 4
+  fail. The recorded state is
+  **NOT-YET-TESTABLE - dependency gate**; the
+  full verification is the dependency-gate
+  record appended to `outcome.md`.
+- **L6 / L7 - NOT REACHED.** No freeze: no
+  digest computed, DD-040-1/5/6/9 undecided,
+  no phase number allocated (DD-040-10 open),
+  no OSF registration filed.
+- **E1-E7 - NOT REACHED.** No execution was
+  ordered or run; no label joined, no margin
+  computed, no quantity calculated.
+
+---
+
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*

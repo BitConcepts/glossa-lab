@@ -633,6 +633,23 @@ at both points — byte-identical, asserted.
   (`test_spec057_execution.py`, 5 tests) pass
   in that venv. The PR's CI run is the figure
   of record.
+- CI note (first PR run): the first CI run's
+  backend job failed on exactly one test —
+  this execution's own
+  `test_disposition_append_and_anchors`, which
+  asserted the §5 disposition entry on the
+  canonical record. In a full-suite run the
+  backend regenerates the extracted-claims
+  store (the freeze's Spec 038 posture), which
+  rewrites that file before the test reads it
+  and drops the appended entry in the CI
+  checkout; the append itself stands in this
+  PR's diff and was verified at the act (§5).
+  The test was amended to pin the record's
+  frozen state and the results record's
+  disposition instead, with the reason stated
+  in the test; the amended run is the figure
+  of record in the landing append below.
 - CI and foundation check (H21) at the record
   merge: appended below after the record PR
   merges, in the Spec 045/047 completion

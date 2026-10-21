@@ -6975,3 +6975,90 @@ the finalised freeze texts, once.
 
 AI disclosure: executed by an AI agent (Muse Spark, via Muse)
 at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 — Phase-401 (Spec 038) EXECUTED: PRED-2026-007 CLOSED AT STEP 0 — CANNOT BE RUN AS WRITTEN (unscored)
+
+Phase-401 executed the frozen Spec 038 contract
+under the owner's freeze-and-execute order.
+Step 0.1 passed in full (register and all four
+sources hashed to the freeze record; the
+PRED-2026-007 entry standing as registered).
+Step 0.2 closed the study: the enumeration of
+the frozen primary (reports/
+indus_cgsa_cluster_analysis.json,
+data.a[].icit_function; 611 records, count
+reconciled) returned zero ITM-coded signs, and
+the held-record verification failed — P385's
+record carries an empty icit_function value and
+P378 has no record in the primary. In this file
+the field is not a coded field: 579 of its 611
+values are empty, 32 are free-text decipherment
+glosses, and no record carries ITM or LOG.
+Check 0.3 never ran; the Phase 5 output was
+never read for assignments; no scoring figure
+exists. PRED-2026-007 remains unscored; its
+PARTIALLY CONFIRMED wording stands as the
+pre-execution record; the register gained the
+dated outcome entry and the DD-038-2 provenance
+reconciliation note (the function codes descend
+from Wells-derived catalog lines, not "mayig
+features"). Record: specs/
+038-pred-2026-007-full-population/outcome.md;
+reports/phase401_results.json (step-0 record
+sha256
+4c026edc92cdcb0c1ba6821f5ebc8242b498bb9fc4cd158607d9b1ded24a784a).
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.
+
+## 2026-10-20 — Spec 038 freeze-test amendment (owner-ordered)
+
+On the freeze coordinator's recommendation, the
+owner ordered the amendment on 2026-10-20,
+verbatim: "Approve the freeze-test amendment".
+The defect: the Spec 038 freeze fence
+test_cited_records_carry_the_design_facts in
+backend/tests/test_spec038_freeze.py asserted
+the live whole-file SHA-256 of
+docs/PREDICTION_REGISTER.md equals the
+freeze-cited pin
+4f8aeb54fd5853d73766ed9cf0222ef93cccfa8d9a8c399a4631221fbbb4c1c2,
+while the frozen contract itself (spec section
+7; DEFINITION register_handling) mandates dated
+section-6 appends to that same register at
+execution. PR #232 makes exactly those appends
+(the Phase-401 outcome entry and the DD-038-2
+provenance reconciliation note), advancing the
+register's live hash to
+f281bd674d7651e9c13351bad7cb321bd55000cd3f087a38276a4451fbbf7ef3,
+so the fence failed by construction — the
+single failure in an otherwise 1,400 passed /
+20 skipped backend suite. The amendment narrows
+that single assertion to the Spec 035 form
+(the PRED-2026-007 entry's facts asserted on
+the live register file; the freeze-time
+whole-file hash remains asserted as a
+DEFINITION constant and in the freeze record);
+the other five cited files keep their live-hash
+assertions; no other assertion changed and no
+production code changed. freeze.json was
+recomputed ONCE over the amended covered
+sources with the repo's own builder
+(specs/038-pred-2026-007-full-population/build_freeze.py,
+framework026 build_freeze) in the freeze
+environment (python 3.12.3, aee 1.5.0):
+successor digest
+11dfda0384fa966b14e4fc537a9be935e899c8318f079c3bff1e4f35c790930b.
+The freeze-act digest
+b54571d845a2be3429bc532fee4bb58c20723f77e2d40ffcd43b56e0caab6eef
+stands as the digest of the freeze act in every
+record that cites it (the OSF contract
+registration bkqeh, outcome.md, the PRED
+register entries, adjudication.md section 6)
+and was edited nowhere. Record:
+adjudication.md section 7; freeze.md addendum;
+this entry. PRED-2026-007 remains unscored;
+its PARTIALLY CONFIRMED wording stands.
+
+AI disclosure: executed by an AI agent (Muse Spark, via Muse)
+at the direction of Tristen Pierson, per constitution sec.VI.

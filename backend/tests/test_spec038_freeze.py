@@ -179,7 +179,20 @@ def test_cited_records_carry_the_design_facts():
     record = json.loads(FREEZE_JSON.read_text(encoding="utf-8"))
     design = record["definition"]["design"]
     inputs = record["definition"]["inputs"]
-    assert _sha(PRED_REGISTER) == inputs["pred_register"]["sha256"]
+    # The PRED register's live whole-file hash is
+    # not asserted here, by amendment. The register
+    # is this contract's own append target: the
+    # frozen design (spec section 7) mandates dated
+    # section-6 appends at execution, so the file's
+    # hash advances at execution by design. The
+    # freeze-time hash (4f8aeb54...) remains
+    # asserted as a definition constant
+    # (test_freeze_definition_constants) and in the
+    # freeze record, and the PRED-2026-007 entry's
+    # facts are asserted on the live file at the
+    # head of this test - the Spec 035 form.
+    # Owner-ordered amendment, 2026-10-20
+    # (adjudication.md section 7).
     assert _sha(PRIMARY) == (
         design["sources"]["primary_function_code"]["sha256"])
     assert _sha(CROSS_CHECK) == (

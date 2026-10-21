@@ -117,3 +117,49 @@ work proceeds).
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## Addendum — freeze-test amendment (2026-10-20)
+
+Owner-ordered on 2026-10-20, verbatim: **"Approve
+the freeze-test amendment"**, on the freeze
+coordinator's recommendation; recorded in full in
+`adjudication.md` section 7 and in the LEDGER
+entry of the same date.
+
+One fence in `backend/tests/test_spec038_freeze.py`
+failed by construction on the execution record
+(PR #232):
+`test_cited_records_carry_the_design_facts`
+asserted the live whole-file SHA-256 of
+`docs/PREDICTION_REGISTER.md` equals the
+freeze-cited pin
+`4f8aeb54fd5853d73766ed9cf0222ef93cccfa8d9a8c399a4631221fbbb4c1c2`,
+while the frozen contract itself (spec section 7)
+mandates dated section-6 appends to that register
+at execution — appends PR #232 makes, advancing
+the live hash to
+`f281bd674d7651e9c13351bad7cb321bd55000cd3f087a38276a4451fbbf7ef3`.
+The amendment narrows that single assertion to
+the Spec 035 form (the PRED-2026-007 entry's
+facts asserted on the live register; the
+freeze-time hash remains asserted as a
+DEFINITION constant and in the freeze record);
+the other five cited files keep their live-hash
+assertions; nothing else changes, and no
+production code changes. `freeze.json` is
+recomputed once over the amended covered sources
+by `build_freeze.py` (framework026); the
+successor digest is the `digest` recorded in the
+amended `freeze.json`, carried in the LEDGER
+entry of 2026-10-20.
+
+The freeze-act digest
+`b54571d845a2be3429bc532fee4bb58c20723f77e2d40ffcd43b56e0caab6eef`
+stands as the digest of the freeze act in every
+record that cites it — the OSF contract
+registration (bkqeh), `outcome.md`, the PRED
+register entries — and is edited nowhere.
+
+*AI disclosure: executed by an AI agent (Muse
+Spark, via Muse) at the direction of Tristen
+Pierson, per constitution §VI.*

@@ -1,0 +1,439 @@
+#!/usr/bin/env python3
+"""Build the Spec 045 freeze record (freeze.json).
+
+This builder computes the freeze digest over
+the frozen contract under the campaign plan
+approved AS WRITTEN on 2026-10-21 (Wave 2;
+adjudication.md section 7: every OPEN item
+resolved, DD-045-9 to DD-045-21). At the
+freeze act - after the AEE lifecycle hooks
+passed over the recovered register - it was
+run to compute the final digest over the
+frozen contract exactly once, and its
+DEFINITION text was finalised in the same
+act (the Spec 039 pattern). Run with the
+Glossa backend venv python from the
+repository root:
+
+    python specs/045-hunt-depicted-kinds/build_freeze.py
+
+Writes specs/045-hunt-depicted-kinds/freeze.json
+(framework026 build_freeze payload: definition +
+source hashes + environment, digest = SHA-256 of
+the canonical JSON serialisation) and prints the
+digest.
+"""
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(REPO / "backend"))
+
+from glossa_lab.framework026 import build_freeze  # noqa: E402
+
+SPEC_DIR = "specs/045-hunt-depicted-kinds"
+
+DEFINITION = {
+    "spec": "specs/045-hunt-depicted-kinds/spec.md",
+    "freeze_doc": "specs/045-hunt-depicted-kinds/freeze.md",
+    "experiment_id": "spec045-hunt-depicted-kinds",
+    "register": {
+        "path": "specs/045-hunt-depicted-kinds/claims.json",
+        "register_version": "0.8-draft",
+        "claims": 17,
+        "aee_hook_pass": (
+            "PASSED at the freeze act of 2026-10-21 "
+            "under aee 1.5.0: the 0.5-draft register "
+            "could not load in the engine (draft "
+            "evidence kinds and source qualities are "
+            "not engine values); a test load with the "
+            "remap alone returned 54 failure modes; "
+            "recovery to 0.6-draft (kind and quality "
+            "remap, independent_of declarations) left "
+            "39 failure modes at after_specify; "
+            "recovery to 0.7-draft (single head "
+            "propositions, carried clauses moved into "
+            "boundaries, boundary_confirmation records "
+            "for the five negation pairs, and the C17 "
+            "evidence split into its two commissioning "
+            "records) left 24 failure modes at each "
+            "hook; recovery to 0.8-draft "
+            "(connective-free restatement of the six "
+            "remaining heads, the C01/C05 "
+            "boundary_confirmation records, and C05's "
+            "head restated under its own subject) left "
+            "exactly 17 FR-2.3 draft-cap records at "
+            "each of after_specify, after_plan, and "
+            "after_tasks, with zero correctness failure "
+            "modes and no claim below the 0.70 "
+            "threshold (minimum propagated 0.72); the "
+            "engine outcome word reads iterate solely "
+            "from the draft-cap records (gate reading "
+            "DD-045-9; record in "
+            "specs/045-hunt-depicted-kinds/aee/"
+            "freeze-aee-note.md)"
+        ),
+    },
+    "basis": {
+        "adjudication": "specs/045-hunt-depicted-kinds/adjudication.md",
+        "decisions": (
+            "The runnable-experiments campaign plan "
+            "approved by the owner AS WRITTEN on "
+            "2026-10-21 commissions this freeze "
+            "(campaign member 4, design D-05; decision "
+            "E-1: every specification in the pass files "
+            "its own OSF contract registration at its "
+            "freeze; decision E-6: Asset A, the "
+            "depicted-kind classification, is built "
+            "inside this spec and consumed by D-06 and "
+            "D-13 by digest). Freeze decisions DD-045-9 "
+            "to DD-045-21 are recorded in "
+            "adjudication.md section 7: the AEE gate "
+            "reading adopted (DD-045-9); Phase-411 "
+            "allocated (DD-045-10); the fit form and "
+            "margin frozen (DD-045-11); the section 5.2 "
+            "comparison rule frozen as the AUC rule "
+            "(DD-045-12); the pooling threshold frozen "
+            "at 5 signs (DD-045-13); entry-time "
+            "jurisdiction coding confirmed with its "
+            "rule stated (DD-045-14); DD-045-2 and "
+            "DD-045-3 confirmed (DD-045-15); no "
+            "second-enterer spot check added "
+            "(DD-045-16); the D-18 consumption repair "
+            "answering Spec 046's DD-046-14 "
+            "(DD-045-17); coverage restated to the full "
+            "pinned-crosswalk sign universe "
+            "(DD-045-18); the closing measures "
+            "disambiguated and named (DD-045-19); the "
+            "OSF registration filed at the freeze, with "
+            "execution awaiting its approval "
+            "(DD-045-20); Spec 046's two digests quoted "
+            "as its record presents them (DD-045-21). "
+            "DD-045-1 and DD-045-4 to DD-045-7 stand "
+            "confirmed as drafted, DD-045-4 as "
+            "completed by DD-045-19."
+        ),
+    },
+    "design": {
+        "phase": "Phase-411",
+        "act": (
+            "build Asset A, the depicted-kind sign "
+            "classification, once - from held published "
+            "sources only, entered blind, frozen before "
+            "any join - then test whether depicted kind "
+            "discriminates between Hunt's meaning "
+            "account and the grammar account of the "
+            "recorded three-part pattern"
+        ),
+        "claim_id": (
+            "without_kings_or_conquests_the_indus_scr_"
+            "ce9d98cc_manual_001"
+        ),
+        "hypothesis": (
+            "the signs Hunt's model assigns to each part "
+            "are enriched in that part beyond what "
+            "position behaviour alone predicts, and the "
+            "closing part's membership is better "
+            "predicted by depicted kind than by "
+            "word-ending behaviour (spec section 1.2; "
+            "F045-C03, F045-C04)"
+        ),
+        "asset_a": {
+            "form": (
+                "one row per sign over the full "
+                "pinned-crosswalk sign universe (187 "
+                "distinct registry_sign_id values in 205 "
+                "crosswalk rows at the freeze census; "
+                "DD-045-18), in asset-a/"
+                "depicted-kind-classification.csv with "
+                "asset-a/asset-a-freeze.json, built at "
+                "execution step 1 under gates A1 to A6 - "
+                "NOT built at this freeze"
+            ),
+            "fields": (
+                "spec section 2.2 and no others: sign_key, "
+                "cisi_no, parpola_no, depicted_kind, "
+                "depicted_label_verbatim, "
+                "governing_source, source_citations, "
+                "agreement, dispute_status, d18_input, "
+                "entered_blind"
+            ),
+            "sources": (
+                "held published sources only, under the "
+                "section 2.3 hierarchy (CISI volumes "
+                "governing; Parpola's published "
+                "identifications where CISI is silent; "
+                "Mahadevan and Wells only through a D-18 "
+                "record)"
+            ),
+        },
+        "d18_consumption": {
+            "form": (
+                "Spec 046's frozen delivery: "
+                "concordance-297.json (schema "
+                "glossa.concordance/1), produced on every "
+                "terminal outcome, pinned by its own "
+                "SHA-256 at Asset A's freeze (spec "
+                "section 2.6; DD-045-17)"
+            ),
+            "vocabulary": (
+                "Spec 046's total outcome set, consumed "
+                "as frozen and not changed: CONSENSUS / "
+                "PARTIAL CONCURRENCE / SINGLE-SOURCE / "
+                "CONTESTED, with a closure file on every "
+                "terminal outcome"
+            ),
+            "partial_concurrence": (
+                "consumed as corroboration counting "
+                "exactly the one independent corroboration "
+                "it carries, its state recorded verbatim "
+                "in d18_input, never presented as "
+                "consensus"
+            ),
+            "closures": (
+                "IDENTIFICATION FAILED and CLOSED AT STEP "
+                "0 are acceptable terminal deliveries "
+                "satisfying the input timing rule: the "
+                "concordance file with an empty signs "
+                "array plus a closure block; Asset A "
+                "proceeds without the feed and records "
+                "its absence"
+            ),
+            "null_key_disposition": (
+                "a sign record whose crosswalk_registry_id "
+                "is null (a lawful Wells-list-entry match "
+                "under Spec 046 section 6), or does not "
+                "resolve in the pinned crosswalk, is not "
+                "rejected: it is recorded in the build "
+                "record under its Wells-list-entry "
+                "reference, never re-keyed by hand, "
+                "attaches to an Asset A row only through a "
+                "stated linkage to a row blind entry "
+                "independently entered for the same drawn "
+                "sign, and otherwise stands recorded as "
+                "an unattached D-18 input, failing "
+                "neither gate A2 nor gate A3"
+            ),
+            "producer_digests": {
+                "freeze_act": (
+                    "80c3be31e5af5236f71cb2c1894b2946f9b8ad47b"
+                    "12bdeab9d03cd76468af405"
+                ),
+                "successor": (
+                    "e0d7add84b9d28ae5f6a6b392dca578b727ad4d99"
+                    "a117360a57d39f3b94b01c6"
+                ),
+                "note": (
+                    "both quoted as Spec 046's "
+                    "osf-spec-registration.md presents them "
+                    "(DD-045-21): the freeze-act digest is "
+                    "carried in Spec 046's filed OSF "
+                    "registration (https://osf.io/dnts8/); "
+                    "the successor is the value in Spec "
+                    "046's freeze.json as merged. Neither is "
+                    "Asset A's input pin."
+                ),
+            },
+        },
+        "test": {
+            "fit_form": (
+                "out-of-sample predictive accuracy - the "
+                "share of held-out part-membership "
+                "predictions the model gets right - on the "
+                "odd/even inscription-ID split (DD-045-11)"
+            ),
+            "fit_margin": 0.05,
+            "margin_derivation": (
+                "the pinned positional record's "
+                "structural test: initial-strong signs "
+                "carry a mean initial rate of 0.757 "
+                "against 0.251 expected by chance, an "
+                "advantage of 0.506; one tenth of that "
+                "advantage is 0.0506, frozen as 0.05 "
+                "(DD-045-11)"
+            ),
+            "closing_measure_spec045": (
+                "the closing distinct-predecessor rate: "
+                "the rate at which a sign follows many "
+                "different signs as a final element "
+                "(distinct predecessors in final position, "
+                "with its final-position count) - Spec "
+                "045's section 5.2(a) measure, under its "
+                "own frozen name (DD-045-19)"
+            ),
+            "closing_measure_spec054": (
+                "Phase-43 terminal-strong set membership: "
+                "a set-membership state under the Phase-43 "
+                "battery - Spec 054's (design D-08's) "
+                "closing measure, a DIFFERENT measure from "
+                "Spec 045's; neither spec adopts the "
+                "other's form and neither spec's output "
+                "may quote the other's closing result as "
+                "its own (DD-045-19; Spec 054's freeze "
+                "will mirror this note at OPEN-054-6)"
+            ),
+            "comparison_rule": (
+                "over every sign in the test population "
+                "with a recorded positional profile, each "
+                "closing score is read as a ranking of "
+                "closing membership and agreement is its "
+                "AUC against recorded terminal-strong "
+                "membership; depicted kind predicts "
+                "better exactly when its AUC is strictly "
+                "greater; equal AUCs count as suffix-like "
+                "behaviour predicting at least as well "
+                "(DD-045-12)"
+            ),
+            "jurisdiction_rule": (
+                "a row is jurisdiction-coded exactly when "
+                "its depicted_label_verbatim itself names "
+                "an office, a holder of authority, or a "
+                "governed place; coding is from the "
+                "verbatim label alone, at entry, stated "
+                "per row in the build record before the "
+                "asset freeze (DD-045-14)"
+            ),
+            "pooling_threshold": 5,
+            "verdicts": (
+                "DISCRIMINATED FOR HUNT / DISCRIMINATED "
+                "FOR THE GRAMMAR ACCOUNT / NOT "
+                "DISCRIMINATED, per spec section 5.4, "
+                "with ASSET FAILED, INVALID, and NOT "
+                "ADJUDICATED as stop classes"
+            ),
+        },
+        "coverage_consequence_for_spec050": (
+            "Spec 050's gate 0.3 corpus-wide coverage "
+            "assertion rests on this frozen full-universe "
+            "scope and does not close INVALID for want of "
+            "corpus-wide coverage on this ground "
+            "(DD-045-18)"
+        ),
+        "spot_check": (
+            "no second-enterer spot check is added at "
+            "this freeze, decided on the record "
+            "(DD-045-16)"
+        ),
+        "fences": (
+            "no gloss is established; depiction is the "
+            "published identification layer, not ground "
+            "truth; Spec 037's 49 percent census caution "
+            "travels with the asset and every verdict; "
+            "negative, undiscriminated, asset-failed, and "
+            "not-adjudicated outcomes publish with the "
+            "same prominence as a discrimination (spec "
+            "section 8)"
+        ),
+        "execution_gate": (
+            "NOT satisfied at the freeze of 2026-10-21: "
+            "the OSF contract registration was filed at "
+            "the freeze under E-1 and execution awaits "
+            "its approval plus the campaign execution "
+            "pass (Wave 3); Asset A does not exist at "
+            "the freeze and no sign was classified"
+        ),
+    },
+    "inputs": {
+        "positional_record": {
+            "file": (
+                "glossa-indus/analysis/positional/"
+                "hunt_tripartite_test.json"
+            ),
+            "sha256": (
+                "0e546962c1b72b929c87d4ce40c97633e8e3e34073"
+                "7f32f5dd3eae9f04759e48"
+            ),
+            "facts": (
+                "805 of 2,267 inscriptions of length at "
+                "least 3 (rate 0.355, null 0.006); 40 "
+                "initial-strong, 61 medial-strong, 20 "
+                "terminal-strong signs; mean initial rate "
+                "0.757 against 0.251 by chance"
+            ),
+        },
+        "phase43_record": {
+            "file": "outputs/phase43_all.json",
+            "sha256": (
+                "78a6c21908b9362854c54dd3d820d717be22feab3a"
+                "f11135663fa14aaf554fe4"
+            ),
+            "facts": (
+                "T2_2 terminal suffix table: 40 "
+                "initial-strong, 61 medial-strong, 20 "
+                "terminal-strong counts over 201 signs "
+                "profiled"
+            ),
+        },
+        "corpus_layer": {
+            "file": (
+                "backend/glossa_lab/data/"
+                "yajnadevam_inscriptions.csv"
+            ),
+            "sha256": (
+                "c02e3d7bb74cf5abb11cc94f88d8d469e6acc5d6fa"
+                "d4b7153c02c43428f58d98"
+            ),
+            "rows": 5679,
+        },
+        "crosswalk_master": {
+            "file": "data/crosswalks/sign_crosswalk_master.csv",
+            "sha256": (
+                "4ace1a617f40afe8d0bbb82e5461d98a675296152e"
+                "7577b04fb67b00f4f5dfcf"
+            ),
+            "rows": 205,
+            "distinct_sign_keys": 187,
+        },
+        "anchors": {
+            "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+            "sha256": (
+                "df0cf620a0d66b71d778300b93a91d96b2f30f2358"
+                "0088e6086592b32d34f569"
+            ),
+            "anchors": 287,
+        },
+        "pins_reasserted": (
+            "every spec section 4 pin was recomputed in "
+            "the foreground at this freeze against main "
+            "at 881947a0 by two routes (contents API and "
+            "git-data blob API) and matched its draft "
+            "value on both routes"
+        ),
+    },
+    "environment": {
+        "python": "3.12.3",
+        "runner": "backend (venv glossa-lab)",
+        "aee": (
+            "1.5.0 (venv glossa-aee150; package pinned "
+            ">=1.5.0,<1.6)"
+        ),
+        "specify": "1.0.10",
+    },
+}
+
+SOURCES = [
+    f"{SPEC_DIR}/freeze.md",
+    f"{SPEC_DIR}/spec.md",
+    f"{SPEC_DIR}/claims.json",
+    f"{SPEC_DIR}/adjudication.md",
+    f"{SPEC_DIR}/aee/freeze-aee-note.md",
+    f"{SPEC_DIR}/build_freeze.py",
+    "backend/tests/test_spec045_freeze.py",
+]
+
+
+def main() -> int:
+    record = build_freeze(DEFINITION, REPO, SOURCES)
+    out = REPO / SPEC_DIR / "freeze.json"
+    out.write_text(
+        json.dumps(record, indent=1) + "\n", encoding="utf-8"
+    )
+    print(record["digest"])
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

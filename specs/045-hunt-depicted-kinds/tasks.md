@@ -1,15 +1,16 @@
 # Spec 045 — Tasks
 
-> ## PLAN — FOR FREEZE DECISION — 2026-10-21
+> ## PLAN — FROZEN 2026-10-21
 >
 > Adjudication inputs are recorded in
 > `adjudication.md` (the runnable-experiments
 > campaign approved by the owner as written
 > on 2026-10-21, and the portfolio triage of
 > the same date, drafting only). The freeze
-> and the execution of Spec 045 are separate
-> later acts under the campaign's Waves 2
-> and 3.
+> was completed on 2026-10-21 (adjudication
+> §7, DD-045-9 to DD-045-21); the execution of
+> Spec 045 remains a separate later act under
+> the campaign's Waves 2 and 3.
 
 ## Lifecycle
 
@@ -43,43 +44,58 @@
       left unmerged for the freeze decision,
       CI state reported from the run's own
       conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE
-      GATE — not run on this draft).** At the
-      freeze act, run `run_aee.py assess`
-      after_specify, after_plan, and
-      after_tasks over the claim register,
-      read under the campaign's standing
-      reading for draft-lifecycle registers;
-      a correctness failure blocks the freeze
-      until its named recovery is complete
-      and recorded. Any recovery round
+- [x] **L4 — AEE lifecycle hooks (FREEZE
+      GATE).** Run at the freeze act of
+      2026-10-21 over the recovered register
+      0.7-draft under aee 1.5.0: PASS on the
+      DD-045-9 reading (zero correctness
+      failure modes at every hook, no claim
+      below the 0.70 threshold, draft-cap
+      records only; `aee/freeze-aee-note.md`).
+      Original gate text: at the freeze act,
+      run `run_aee.py assess` after_specify,
+      after_plan, and after_tasks over the
+      claim register, read under the campaign's
+      standing reading for draft-lifecycle
+      registers; a correctness failure blocks
+      the freeze until its named recovery is
+      complete and recorded. Any recovery round
       changes claim text, and the freeze
       digest is computed over the recovered
       register exactly once, at freeze.
-- [ ] **L5 — Freeze-decision items.** The
-      freeze decides `adjudication.md` §6:
-      the fit margin's value, the §5.2
-      comparison rule's form, the pooling
-      threshold, the jurisdiction-coding
-      question, DD-045-2/DD-045-3, the OSF
-      filing (campaign E-1), and the
-      second-enterer spot-check question, and
-      reconciles §5.2(a) against D-08's
-      frozen text if one exists (DD-045-4).
-- [ ] **L6 — Freeze.** On the owner's freeze
-      order, with L4 passed and L5 decided:
+- [x] **L5 — Freeze-decision items.** Decided
+      at the freeze act of 2026-10-21 in
+      `adjudication.md` §7: the fit margin's
+      value and fit form (DD-045-11), the
+      §5.2 comparison rule's form
+      (DD-045-12), the pooling threshold
+      (DD-045-13), the jurisdiction-coding
+      question (DD-045-14), DD-045-2/DD-045-3
+      confirmed (DD-045-15), the
+      second-enterer spot-check question
+      (DD-045-16), the mandated repairs R1–R3
+      (DD-045-17/18/19), the OSF filing
+      (campaign E-1; DD-045-20), and the
+      §5.2(a) reconciliation against D-08 —
+      completed as a disambiguation, Spec 054
+      standing as a draft with no frozen text
+      (DD-045-19).
+- [x] **L6 — Freeze.** Completed 2026-10-21
+      under the campaign plan approved AS
+      WRITTEN, with L4 passed and L5 decided:
       hooks recorded, `freeze.md` finalised,
-      `freeze.json` recomputed over the
+      `freeze.json` computed over the
       recovered register and finalised texts,
       every spec §4 pin re-asserted against
-      the merged record, and the execution
-      phase number allocated (DD-045-8).
-      Freeze order inside the campaign:
-      Spec 045 freezes **before** the specs
-      for D-06 and D-13, whose freezes pin
+      the merged record by two routes, and
+      the execution phase number allocated as
+      **Phase-411** (DD-045-10, resolving
+      DD-045-8). Freeze order inside the
+      campaign: Spec 045 freezes **before** the
+      specs for D-06 and D-13, whose freezes pin
       Asset A's digest from this spec's
       execution record.
-- [ ] **L7 — Freeze PR merged**, house gates
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as
       measured).

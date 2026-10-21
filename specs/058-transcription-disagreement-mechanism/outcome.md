@@ -502,3 +502,52 @@ pilot failed, and stays failed.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+---
+
+## Landing record — 2026-10-21 (appended at merge; append-only)
+
+- Execution PR: **#270** (branch
+  `spec-058-execution`), merged to `main` as
+  merge commit
+  **`b5b7c3af5cbb396fd936344ea1268ebfcfb1a084`**.
+- CI: GitHub Actions run 39626458289 on the PR
+  head `5a484ccb` — **7 of 7 jobs success**,
+  verified from the run's own job conclusions
+  (Backend tests; Frontend tests (Playwright);
+  Indus public validation checks; Evidence Graph
+  script smoke tests; Shell wrappers ubuntu /
+  macos / windows). The branch then carried one
+  merge of `main` (Spec 055's execution, PR
+  #273) before merging; the two append conflicts
+  (LEDGER.md, `experiment_graph.py`) were
+  resolved by keeping both programmes' entries
+  and both graph registrations, the Spec 055 and
+  Spec 058 test files were re-run green on the
+  merged tree, and run 39630128011 on the merged
+  head `cca40e5e` is likewise **7 of 7 jobs
+  success** from its job conclusions.
+- Results digests re-verified on `main` at the
+  merge commit by the contents-API route:
+  `reports/phase420_results.json`
+  `3d140333b3b751697721c1528d48b936ca0010fd2d78d4a667d2fca6b5388922`,
+  `reports/phase420_report.md`
+  `b8634d761212d43de1341008f7fc8920387a9432c1cefc0242794a810719f0d8`
+  — identical to the values in this record.
+- Foundation check (H21) at the merge commit,
+  on a fresh clone with the two Holdat CSVs
+  copied from the existing local downloads
+  (corpus CSV SHA-256
+  `62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e`
+  verified first): **40 checks passed, 0
+  failed, 8 warnings** — the standing figure.
+- Anchors on the merged tree:
+  `df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569`,
+  byte-identical to the frozen pin.
+- Tasks E1–E5 stand ticked in `tasks.md`. The
+  claim `STUDY-SPEC-023/PHASE-132+383` stands
+  CONTRADICTED, with this mechanism account
+  appended beside it. Arm B remains blocked.
+
+*AI disclosure: appended by an AI agent (Muse Spark, via Muse) at the direction of
+Tristen Pierson, per constitution §VI.*

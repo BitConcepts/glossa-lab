@@ -1,0 +1,48 @@
+{
+ "phase": "Phase-385",
+ "spec": "026",
+ "reruns": "Phase-140 (G1) \u2014 C1 margin completion",
+ "contract": "specs/026-rcph-framework-transfer/reruns/phase385-contract.md",
+ "chronology_rider": "chronology is NOT controlled in the primary test \u2014 period/phase remain uncontrolled confounders",
+ "parameters": {
+  "B_bootstrap": 1999,
+  "seed": 20261011,
+  "margin_v": 0.1
+ },
+ "verification": {
+  "population_inscriptions": 5410,
+  "sites": 7,
+  "observed_chi2_recomputed": 4966.36222836514,
+  "observed_chi2_recorded": 4966.362228365138,
+  "cramers_v_point": 0.21900847512892316
+ },
+ "g1_primary": {
+  "strata": "composition x preservation (UNRECORDED retained as a level)",
+  "bootstrap_v_ci95": [
+   0.2282185313344072,
+   0.25373202810696194
+  ],
+  "margin_adjudication": "CI lower bound > 0.10: SUPPORTED under control stands at the declared margin",
+  "recorded_permutation": {
+   "count_perm_ge_observed": 0,
+   "B": 9999,
+   "p_value_raw": 0.0001,
+   "note": "Phase-140 recorded result, reported alongside; not recomputed by this rerun."
+  }
+ },
+ "sensitivities_exploratory": {
+  "S_chron_composition_x_chron_band": {
+   "bootstrap_v_ci95": [
+    0.2282991220913595,
+    0.25363096607979957
+   ]
+  },
+  "S_depth_composition_x_depth_band": {
+   "bootstrap_v_ci95": [
+    0.22778764204507085,
+    0.25370866559775074
+   ]
+  }
+ },
+ "ai_disclosure": "Executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution sec.VI."
+}

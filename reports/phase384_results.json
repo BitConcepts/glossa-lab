@@ -1,0 +1,41 @@
+{
+ "phase": "Phase-384",
+ "spec": "026",
+ "reruns": "Phase-137 (F2/F3) \u2014 C1 margin completion",
+ "contract": "specs/026-rcph-framework-transfer/reruns/phase384-contract.md",
+ "parameters": {
+  "B_bootstrap": 9999,
+  "seed": 20261011,
+  "margin_v": 0.1
+ },
+ "inputs": {
+  "phase137_results_sha256": "18f86f45892526b947a4a7447201be9d69584ec96d33a1d18139309b9dc2a7a1"
+ },
+ "members": {
+  "F2_holdat": {
+   "recorded_chi2": 745.9530278664314,
+   "recorded_v": 0.11539837515155221,
+   "recomputed_chi2": 745.9530278664301,
+   "recomputed_v": 0.11539837515155212,
+   "bootstrap_v_median": 0.1624478182549039,
+   "bootstrap_v_ci95": [
+    0.15262295568712397,
+    0.1732831068562642
+   ],
+   "margin_adjudication": "CI crosses 0.10: INCONCLUSIVE at the declared margin"
+  },
+  "F3_icit_lineage": {
+   "recorded_chi2": 4966.362228365138,
+   "recorded_v": 0.2190084751289231,
+   "recomputed_chi2": 4966.36222836514,
+   "recomputed_v": 0.21900847512892316,
+   "bootstrap_v_median": 0.2411521810104776,
+   "bootstrap_v_ci95": [
+    0.23088613049252377,
+    0.2526201043692743
+   ],
+   "margin_adjudication": "CI lower bound > 0.10: SUPPORTED stands at the declared margin"
+  }
+ },
+ "ai_disclosure": "Executed by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution sec.VI."
+}

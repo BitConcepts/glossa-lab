@@ -1,24 +1,37 @@
 # Spec 072 — Parpola's Fish-Sign Family, Sign by Sign, in ICIT Numbering on the Shakti Corpus (the Spec 048 Question, Re-Designed)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-22
+> ## FROZEN — 2026-10-22
 >
-> Drafted under the owner's readiness decisions
-> of 2026-10-22 (`research_notes/
-> shakti-readiness-proposals-2026-10-22.md`,
-> §1.5 under Spec 048, §1.6 proposal P-F1, and
-> §3 Family 5), **decision 4: commission the
-> ICIT-native fish-family re-design**. Drafts
-> are pre-approved standing in this program;
-> **the freeze, the registration, and the
-> execution of Spec 072 are separate later
-> owner acts.** No AEE lifecycle hooks have
-> run on this draft; they are a freeze gate
-> (per DD-038-10). Nothing in this draft has
-> been run, frozen, registered, or computed:
-> no fish sign has been counted on the Shakti
-> corpus under this spec, no concordance has
-> been performed, and no verdict line has
-> been fixed.
+> Frozen at the freeze act of 2026-10-22 under
+> the owner's freeze rulings of 2026-10-22 on
+> the freeze-gate package for the Shakti draft
+> specs (the draft was commissioned under the
+> owner's readiness decisions of 2026-10-22,
+> decision 4: the ICIT-native fish-family
+> re-design). The freeze record is `freeze.md`
+> / `freeze.json` in this directory; the
+> AEE lifecycle hooks ran at the freeze gate
+> and passed over the recovered register
+> (`aee/freeze-aee-note.md`); the freeze-stage
+> step-0 acts are recorded in `freeze.md`
+> (gates 0.1–0.5, including the concordance
+> act and the derived verdict line **L =
+> 0.765**, whose reference-distribution record
+> is `reference-distribution.json` in this
+> directory). The spec's OSF contract
+> registration is filed at the freeze under
+> campaign decision E-1
+> (`osf-spec-registration.md`). **Execution
+> is a separate later act**: it runs as
+> **Phase-431**, after this freeze has
+> merged; the execution order for it was
+> given in the same owner tasking that
+> commissioned this freeze. At the freeze
+> itself no fish member
+> has been scored: the freeze-stage acts
+> computed the census and the non-member
+> reference distribution only, exactly as
+> §5.3 prescribes.
 >
 > This is a **new design answering Spec
 > 048's question**. Spec 048 stands closed
@@ -36,10 +49,8 @@
 > differs because it is a new design, and it
 > says so wherever the difference matters.
 >
-> The execution phase number is **unassigned**
-> at this draft. It is allocated at the freeze
-> act, from the merged record as it then
-> stands.
+> The execution phase number is **Phase-431**,
+> allocated at the freeze act (OPEN-072-8).
 
 **Design source:** the readiness assessment
 of 2026-10-22 (Workstream F), §1.5 (Spec 048:

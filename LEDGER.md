@@ -9705,3 +9705,78 @@ triggered.
 
 AI disclosure: executed by an AI agent (Muse, via Muse)
 at the direction of Tristen Pierson, per constitution sec. VI.
+
+## [2026-10-22] Entry — Shakti readiness decisions recorded; P-F1 intake adopted; successor drafts commissioned
+
+Objective:
+  File the owner's seven Shakti-readiness decisions of 2026-10-22 in
+  the program's records — the adopted P-F1 intake record for the
+  ShaktiOSindia corpus, the prediction-register notes those decisions
+  require, and this ledger entry — without changing any frozen
+  record, register term, or campaign outcome. The decisions come from
+  the owner's item-by-item walk through section 4 of the readiness
+  memo (research_notes/shakti-readiness-proposals-2026-10-22.md) in
+  the parent chat on 2026-10-22; the memo itself is unchanged and
+  unedited.
+
+What was done:
+
+  1. DECISIONS RECORD: docs/decisions/2026-10-22-shakti-readiness-
+     decisions.md — the seven decisions in substance: (1) P-F1
+     adopted as written, gates S1–S4 the standing citation form for
+     the Shakti corpus, senior to every successor; (2) Spec 053
+     successor approved for drafting under Amendment S-053
+     (documented-only primary, 3,212 rows; documented+corroborated
+     sensitivity, 5,299 rows; strict-set choice reserved to the
+     freeze; the result is a new baseline, neither confirming nor
+     correcting Phase-43); (3) Hunt re-scope commissioned in
+     dependency order; (4) fish-family re-design commissioned,
+     ICIT-native, with the Roif gate carried; (5) Spec 018's frozen
+     matrix confirmed governing PRED-2026-001/002/003, no class
+     amendment to fit Shakti, all three remain PENDING unscored, no
+     section 8 dry-run on Shakti; (6) PRED-2026-012 note only — its
+     block is documentary, no documents hunt commissioned, remains
+     PENDING unscored, Spec 043's closure stands; (7) D-24 trigger
+     discipline — Shakti does not trip D-24 / D-01B / D-07B / D-27A2,
+     all triggers remain armed.
+
+  2. INTAKE RECORD: docs/decisions/2026-10-22-shakti-corpus-intake-
+     record.md — the P-F1 intake record as adopted: corpus identity
+     and pins (sanitized_corpus.json, SHA-256 345241b1…; upstream
+     commit e48b3ec1; licence as stated by the deposit: corpus
+     GPL-3.0, scripts MIT; held restricted-local, never in git), the
+     row-grades file pin (shakti_row_grades_2026-10-22.csv, SHA-256
+     02394241… — the provenance audit recorded the path but no hash;
+     this hash was computed on the held file and is pinned for the
+     first time by the intake record), the Yajnadevam lineage
+     evidence pin (population-script.sql, SHA-256 a1bcc150…), the
+     census (5,704 rows; 5,536 analyzable; grades 3,212 / 2,087 /
+     405; 4,904 of 5,536 analyzable rows, 88.6%, carrying a CISI
+     identifier; 18,065 true sign tokens; 713 distinct signs; 77
+     sites), the four gates S1–S4 in adopted form, and the citation
+     rule (a successor cites the corpus only through this record and
+     asserts S1/S2 in its step-0 record).
+
+  3. PRED NOTES: docs/PREDICTION_REGISTER.md, section 6 only, two
+     dated notes appended, no other text touched — the Shakti
+     corpus adjudicated NON-QUALIFYING for PRED-2026-001/002/003
+     under Spec 018's frozen matrix, with the owner's confirmation
+     recorded; and the PRED-2026-012 owner note (documentary block;
+     no documents commission). No prediction's Tested or Outcome
+     field moved.
+
+  4. COMMISSIONED DRAFTS: Spec 068 (Spec 053 successor), Spec 069
+     (Asset A build), Spec 070 (openings successor), Spec 071
+     (sky-signs successor), Spec 072 (fish-family re-design) — to be
+     prepared as freeze-ready drafts. Freezes are reserved to
+     separate owner acts; nothing in this entry freezes, executes,
+     or registers any of them.
+
+  5. DATA WATCH: the D-24 trigger-discipline note was appended to
+     ~/workspace/glossa-run/indus-data-watch-state.md on 2026-10-22,
+     instructing the weekly data watch that Shakti does not unblock
+     D-24 / D-01B / D-07B / D-27A2 and that all triggers remain
+     armed.
+
+AI disclosure: produced by an AI agent (Muse Spark, via Muse) at
+the direction of Tristen Pierson, per constitution §VI.

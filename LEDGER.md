@@ -8884,3 +8884,45 @@ internal under the campaign's Roif gate
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution sec.VI.
+
+
+## 2026-10-21 — Phase-43 battery deposit: producing script restored byte-for-byte as the record of record
+
+Owner-approved amendment (Item 2 of the 2026-10-21 amendment queue): the
+Phase-43 positional battery is pinned as a record of record. Deposited:
+(1) backend/scripts/phase43_part2.py restored byte-for-byte from commit
+3e0ab651fb3f38aed0385c73c66600819cc04f1c, SHA-256
+6d5a079d47113937afd3340ab4b35781d1b7202644b180ba814d15f03f49699e — the
+producing script of the Phase-43 results file; (2)
+backend/scripts/phase43_all.py restored byte-for-byte from the same
+commit, SHA-256
+6a3bc7764ea32ddc4b578cad66881fdcb2b542ab03daa3f9a0ddcac6c30fb133 — the
+sibling run whose T2.3 candidate-scan constants differ (top-50; floors
+10 / 0.40 / 0.20) and which did not produce the deposited results; (3)
+docs/phase43-battery-methods.md, stating the battery exactly as run
+(V3 loader with min_length=2; position rule first=initial / last=terminal
+/ else medial on sequences of length at least 2; count floor total at
+least 5, 201 signs profiled; the six-step cascade TERMINAL_STRONG at
+t_rate at least 0.60, INITIAL_STRONG at i_rate at least 0.55,
+MEDIAL_STRONG at m_rate at least 0.65, TERMINAL_MODERATE at least 0.40,
+INITIAL_MODERATE at least 0.40, else MIXED; the T2.3 opening-formula
+counting rule; the T2.4 fish floors; the deposited corpus statistics
+3,916 records / 2,665 dockeys / 3,137 sequences / 12,494 sign
+instances), including the explicit statements that the battery contains
+no chance-baseline step (none ever existed) and that the full member
+lists for the 40/61 classes plus terminal ranks 11-20 were never written
+to any file; (4) docs/phase43-battery-provenance.md, recording the
+deletion (commit fac2f2c8f97f3982178b8f869b1542e1ffb4c389, 2026-05-17
+cleanup), the recovery source (pre-purge mirror history), the results
+file pin outputs/phase43_all.json SHA-256
+78a6c21908b9362854c54dd3d820d717be22feab3af11135663fa14aaf554fe4, and
+the loader pin (backend/glossa_lab/data/indus_corpus_v3.py as on main —
+loading logic byte-identical to the Phase-43 original; one cosmetic
+__main__-block line differs). Restored files carry their original bytes;
+no annotation was added inside them. This deposit does not establish
+that the frozen classes can be reproduced today (the corpus dump is
+missing; gates G3/G4 have never run), that the Phase-43 results are
+correct, or that Specs 049 / 052 / 054 pass their other gates.
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.

@@ -1,0 +1,1087 @@
+{
+ "spec": "041-site-local-label-period-mapping",
+ "register_version": "0.8-draft",
+ "note": "Claims-first draft register for Spec 041, generated alongside spec.md from the Spec 040 closure record (specs/040-d25-g1-chronology-controlled/outcome.md, dependency-gate record), Spec 040 spec.md sections 1 and 4, the Spec 025 / Phase-139 / Phase-140 record, the Phase-139 citation register, and Spec 039's adjudication (DD-039-3 carried), under the owner's commissioning order of 2026-10-21. DRAFT: the AEE lifecycle hooks have not run on this register; they are a freeze gate (the Spec 035 ordering), and any recovery rounds at the freeze act will be recorded in aee/ and advance this version. Draft-stage cited-record facts are recorded in adjudication.md section 2; no outcome, join, or placement is asserted anywhere in this register. FREEZE RECOVERY (2026-10-22): round 1 at after_specify over register 0.5-draft under aee 1.5.0 (lenient load, no ledger, evidence verification off) returned iterate with 51 failure modes (15 FR-2.3 draft-cap records; 25 independence-unmodeled; 9 irreducibility challenges: C01, C02, C04, C07, C09, C10, C11, C14, C15; 2 negation-conflict challenges: C05, C07) and 2 claims below the 0.70 threshold (C04 0.695, C11 0.620; every evidence item lacked observed_at, FR-8.6). Recovery to 0.6-draft: every evidence item gained observed_at '2026-10-21' (the draft verification date, adjudication.md section 2) and an independent_of declaration naming the register's other evidence sources (separate documents, independently inspectable); no claim text changed. Round 2 over 0.6-draft: 26 failure modes at every hook (15 draft-cap; 9 irreducibility; 2 negation-conflict) and no claim below the 0.70 threshold. Recovery to 0.7-draft: the eleven challenged heads (C01, C02, C04, C05, C07, C08, C09, C10, C11, C14, C15) were restated as single propositions, their carried clauses moved into the boundaries verbatim in substance; no operative substance changed. Round 3 over 0.7-draft: 17 failure modes at every hook (15 draft-cap; 1 irreducibility on C09; 1 negation-conflict, C07 against C08) and no claim below the 0.70 threshold. Recovery to 0.8-draft: C09's head restated to the single census proposition (the population reproduction carried into its boundary) and C07's head restated in plain form; no operative substance changed. Round 4 over 0.8-draft: 15 failure modes at every hook, all FR-2.3 draft-cap records; zero correctness failure modes; no claim below the 0.70 threshold (minimum propagated 0.72). The hooks PASS under the DD-038-10 gate reading, adopted for this spec as DD-041-15; the freeze digest is computed over this recovered register (0.8-draft) exactly once.",
+ "claims": [
+  {
+   "id": "F041-C01",
+   "text": "Spec 041's scholarly product is the site × local-label period mapping artifact.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "Scope claim for the whole spec. The act builds cells (label mappings) and reports coverage; it performs no inscription-level join, computes no repertoire quantity, and states no G1 consequence. Placement of inscriptions is a future consumer's act under its own freeze. It does not govern the key (C02), the evidence standard (C05-C08), or the gates (C09), which are stated separately. Carried from the draft head, verbatim in substance: The act also produces the mapping's coverage report; the mapping and its coverage report are the act's only products. Recovery restatement at 0.7-draft: the previous head ('Spec 041 produces exactly one scholarly artifact — the site × local-label period mapping — and its coverage report.') was restated to a single proposition; its remaining substance stands in this boundary.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-PUBLISHED-ONLY"
+   ],
+   "alternatives": [
+    "The act could also place the population's inscriptions and report the placed population as a convenience product."
+   ],
+   "falsification_tests": [
+    "Any Spec 041 product containing a repertoire quantity, a G1 statement, or per-inscription period assignments defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "I",
+    "forbidden_assumptions": [],
+    "strongest_rival": "The act could also place the population's inscriptions and report the placed population as a convenience product.",
+    "verdict_rule": "The act's products are the mapping artifact and its coverage record only.",
+    "evidence_origin_groups": [
+     "spec040-record"
+    ],
+    "boundary_confirmation": "C01 bounds the act's products; C02-C13 govern the artifact's construction and form. A product inside scope is exactly what C02-C13 describe. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/040-d25-g1-chronology-controlled/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 040 closure record section 3: what would satisfy the gate is a mapping artifact, separately governed",
+     "source_id": "specs/040-d25-g1-chronology-controlled/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    },
+    {
+     "ref": "specs/040-d25-g1-chronology-controlled/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 040 section 4.1: the assignment interface the artifact is built to; the join is the consumer's execution step",
+     "source_id": "specs/040-d25-g1-chronology-controlled/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F041-C02",
+   "text": "The mapping's key is the (site, field, local label) triple as recorded in the layer.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The key claim (spec section 5.1). Site strings and labels are data strings exactly as recorded in the layer — no normalization of names, no trimming of query marks, no splitting of span labels. The gazetteer's program_site_id space is not this key space. It does not govern what value a cell carries (C04) or what grounds it (C05). Carried from the draft head, verbatim in substance: The triple's members are the layer's verbatim site string, the layer field (period or phase), and the verbatim local label, including its query and span marks. Recovery restatement at 0.7-draft: the previous head ('The mapping's key is the layer's verbatim site string, the layer field (period or phase), and the verbatim local label.') was restated to a single proposition; its remaining substance stands in this boundary.",
+   "depends_on": [
+    "F041-C01"
+   ],
+   "assumptions": [
+    "ASM-LAYER-PIN"
+   ],
+   "alternatives": [
+    "Keys could be normalized (site names canonicalized, labels cleaned) for convenience."
+   ],
+   "falsification_tests": [
+    "Any artifact cell whose site, field, or local_label differs by one character from the layer's recorded strings defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "Keys could be normalized (site names canonicalized, labels cleaned) for convenience.",
+    "verdict_rule": "Keys are the layer's verbatim strings, mechanically checkable against the step-0 census.",
+    "evidence_origin_groups": [
+     "spec025-record",
+     "phase139-record"
+    ],
+    "boundary_confirmation": "C02 fixes the key; C03 requires every attested key exactly once, and C10 states the key space covers all seven sites. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/025-stage2-controlled-followup/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 025 section 3.3: the label vocabularies are site-local and non-comparable as recorded",
+     "source_id": "specs/025-stage2-controlled-followup/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    },
+    {
+     "ref": "data/evidence_integration/phase139_citation_register.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-139 citation register: cells already keyed (site, field, value) with the layer's verbatim values, including queried and span labels",
+     "source_id": "data/evidence_integration/phase139_citation_register.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F041-C03",
+   "text": "Every cell attested on a population row appears in the artifact exactly once.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The completeness claim (spec section 5.5). Attested means an informative (non-sentinel) value in the cell's field on at least one of the 5,410 population rows. Completeness is a mechanical check against the step-0 census, not a judgement. Labels attested only on non-population rows are reported in the coverage report's secondary census; they are not cells.",
+   "depends_on": [
+    "F041-C02"
+   ],
+   "assumptions": [
+    "ASM-LAYER-PIN",
+    "ASM-PHASE137-POPULATION"
+   ],
+   "alternatives": [
+    "The artifact could carry only the cells a consumer is likely to need, with the rest summarized as classes."
+   ],
+   "falsification_tests": [
+    "A step-0 census triple absent from the artifact, or present twice, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "The artifact could carry only the cells a consumer is likely to need, with the rest summarized as classes.",
+    "verdict_rule": "Artifact cell set equals the census triple set, exactly.",
+    "evidence_origin_groups": [
+     "spec025-record"
+    ],
+    "boundary_confirmation": "C03 governs which cells exist; C04-C08 govern what each existing cell carries. A complete artifact of wrongly grounded cells fails C05-C08, not C03. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/025-stage2-controlled-followup/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 025 section 3.1-3.2: the recorded label coverage the census must reproduce",
+     "source_id": "specs/025-stage2-controlled-followup/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    },
+    {
+     "ref": "reports/phase139_report.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-139 report section 3: classes summarized rather than enumerated (Stratum I-VII; Layer 2-15) — the gap this claim closes",
+     "source_id": "reports/phase139_report.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F041-C04",
+   "text": "Each cell carries exactly one coarse value from the four-code vocabulary.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The value claim (spec section 5.2). The vocabulary is Spec 040 section 4.1's codes — the consumer's vocabulary. Spec 039's display strings (Early Harappan etc.) and Phase-139's site-relative band names (early/middle/late) are not values of this artifact. It does not govern which value a cell earns (C05-C08). Carried from the draft head, verbatim in substance: The four codes are EARLY, MATURE, LATE, and UNASSIGNED. Recovery restatement at 0.7-draft: the previous head ('Each cell's coarse value is exactly one of EARLY, MATURE, LATE, or UNASSIGNED.') was restated to a single proposition; its remaining substance stands in this boundary.",
+   "depends_on": [
+    "F041-C02"
+   ],
+   "assumptions": [
+    "ASM-040-INTERFACE"
+   ],
+   "alternatives": [
+    "The artifact could carry richer values (site-relative bands, multi-label sets) and let the consumer reduce them."
+   ],
+   "falsification_tests": [
+    "Any cell carrying a value outside the four codes, or more than one value, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "The artifact could carry richer values (site-relative bands, multi-label sets) and let the consumer reduce them.",
+    "verdict_rule": "Every cell's coarse_period is one of the four codes, mechanically checkable.",
+    "evidence_origin_groups": [
+     "spec040-record"
+    ],
+    "boundary_confirmation": "C04 fixes the value space; C07 states that a contested cell's value in that space is UNASSIGNED. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/040-d25-g1-chronology-controlled/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 040 section 4.1: the assignment interface — site x local label to one of EARLY / MATURE / LATE / UNASSIGNED",
+     "source_id": "specs/040-d25-g1-chronology-controlled/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    },
+    {
+     "ref": "specs/040-d25-g1-chronology-controlled/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 040 section 4.2: UNASSIGNED is the value for unrecorded, unmapped, multi-mapping, and contested-only labels",
+     "source_id": "specs/040-d25-g1-chronology-controlled/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F041-C05",
+   "text": "A MAPPED cell rests on a published determination verified to the carried DD-039-3 bar.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The grounding claim (spec sections 3, 5.3, 7.1). Published means the DD-039-3 venue-and-locator test; verified means read in the publication's own text or in a published restatement quoting it with pagination. The cell carries citation, locator, mapping rule, and verification mode. It does not govern disagreement between determinations (C07) or their absence (C08). Carried from the draft head, verbatim in substance: The determination assigns the cell's local label exactly one coarse period, and the cell carries its citation, locator, mapping rule, and verification mode. Recovery restatement at 0.7-draft: the previous head ('A cell is MAPPED only when a published determination verified to the carried DD-039-3 bar assigns its local label exactly one coarse period.') was restated to a single proposition; its remaining substance stands in this boundary.",
+   "depends_on": [
+    "F041-C01"
+   ],
+   "assumptions": [
+    "ASM-PUBLISHED-ONLY",
+    "ASM-039-STANDARD"
+   ],
+   "alternatives": [
+    "A determination reported by a reputable secondary source without pagination is close enough to ground a cell."
+   ],
+   "falsification_tests": [
+    "A MAPPED cell whose citation lacks a locator, whose venue fails the DD-039-3 test, or whose determination does not read as recorded at the locator defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-SECONDARY-AS-DETERMINATION"
+    ],
+    "strongest_rival": "A determination reported by a reputable secondary source without pagination is close enough to ground a cell.",
+    "verdict_rule": "Every MAPPED cell traces to one admissible, verified determination record.",
+    "evidence_origin_groups": [
+     "spec039-record",
+     "spec040-record"
+    ],
+    "boundary_confirmation": "C05 states what grounds a cell; C06 states what may never ground one. A cell grounded under C05 rests on no C06 source by construction. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/039-gazetteer-period-assignment/adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "DD-039-3: the venue-and-locator test for when a determination counts as published, with the conservative default",
+     "source_id": "specs/039-gazetteer-period-assignment/adjudication.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    },
+    {
+     "ref": "specs/039-gazetteer-period-assignment/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 039 outcome: determinations held to the verification bar — the publication's own text or a published restatement quoting it with pagination",
+     "source_id": "specs/039-gazetteer-period-assignment/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F041-C06",
+   "text": "No cell rests on program-derived inference.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The exclusion claim (spec sections 3.1, 10). Bars: dates-to-period conversion; inheritance from the chronology spine's dated contexts; borrowing the Phase-139 chron_band or its citation register as a determination; borrowing a site-level label for a local label; analyst reconciliation of sources. Locator aids may point to a publication; they never ground a cell.",
+   "depends_on": [
+    "F041-C05"
+   ],
+   "assumptions": [
+    "ASM-PUBLISHED-ONLY"
+   ],
+   "alternatives": [
+    "The Phase-139 harmonization already did this work to a citable standard, so re-deriving it is waste."
+   ],
+   "falsification_tests": [
+    "Any cell whose mapping rule cites a date, a spine row, a chron_band value, a site-level label, or an analyst synthesis in place of a publication's determination defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-SPINE-AS-LABELS",
+     "ASM-CHRONBAND-AS-SOURCE",
+     "ASM-SITE-LABEL-AS-PLACEMENT"
+    ],
+    "strongest_rival": "The Phase-139 harmonization already did this work to a citable standard, so re-deriving it is waste.",
+    "verdict_rule": "Every cell's ground is a publication's determination or the cell is not MAPPED.",
+    "evidence_origin_groups": [
+     "spec040-record",
+     "phase139-record"
+    ],
+    "boundary_confirmation": "C06 excludes sources; C05 admits exactly one source class. Together they partition the source space for grounding. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/040-d25-g1-chronology-controlled/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 040 section 4.3: what may not place an inscription — site labels, radiocarbon, the Phase-139 chron_band, analyst judgement",
+     "source_id": "specs/040-d25-g1-chronology-controlled/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    },
+    {
+     "ref": "reports/phase139_report.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-139 report section 3: chron_band is constructed context (Class C) built under a precedence rule",
+     "source_id": "reports/phase139_report.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F041-C07",
+   "text": "Disagreement between two admissible determinations makes a cell CONTESTED.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The contested claim (spec sections 5.2-5.3, 7.2). Both determinations are retained verbatim with citations, locators, mapping rules, and verification modes. No preference rule — tier, recency, majority — resolves a contest under this act. A single determination whose own text assigns a span is not contested; it is UNASSIGNED under C08 (SPANS_COARSE_BOUNDARY). Carried from the draft head, verbatim in substance: A CONTESTED cell's binding value is UNASSIGNED. Recovery restatement at 0.7-draft: the previous head ('A cell with two admissible determinations assigning different coarse periods is CONTESTED, and its binding value is UNASSIGNED.') was restated to a single proposition; its remaining substance stands in this boundary. Recovery restatement at 0.8-draft: the previous head ('A cell with two admissible determinations assigning different coarse periods is CONTESTED.') was restated in the same proposition's plain form; the two determinations assign different coarse periods, as the boundary above states.",
+   "depends_on": [
+    "F041-C05"
+   ],
+   "assumptions": [
+    "ASM-PUBLISHED-ONLY"
+   ],
+   "alternatives": [
+    "The stronger source should win: excavation reports outrank later syntheses, so contests can be resolved by tier."
+   ],
+   "falsification_tests": [
+    "A cell with two admissible determinations assigning different coarse periods that is MAPPED, or whose record drops one determination, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "The stronger source should win: excavation reports outrank later syntheses, so contests can be resolved by tier.",
+    "verdict_rule": "Disagreement between admissible publications is recorded, never resolved, under this act.",
+    "evidence_origin_groups": [
+     "spec039-record",
+     "spec040-record"
+    ],
+    "boundary_confirmation": "C07 governs disagreement between determinations; C08 governs their absence or inadmissibility. A cell is contested only when two admissible determinations exist. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/040-d25-g1-chronology-controlled/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 040 sections 4.2 and 4.4: contested mappings are UNASSIGNED in the primary and consumed only through a frozen sensitivity label",
+     "source_id": "specs/040-d25-g1-chronology-controlled/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    },
+    {
+     "ref": "specs/039-gazetteer-period-assignment/adjudication.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "DD-039-2: the source hierarchy orders presentation only — it never breaks a tie and never resolves a contest",
+     "source_id": "specs/039-gazetteer-period-assignment/adjudication.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F041-C08",
+   "text": "A cell with no admissible determination is UNASSIGNED.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The unassigned claim (spec section 5.4). The reason set is NO_PUBLISHED_DETERMINATION, DETERMINATION_UNVERIFIED, SPANS_COARSE_BOUNDARY, NOT_IN_PUBLISHED_SCHEME, LABEL_UNCERTAIN_IN_LAYER; extending it is a freeze amendment, recorded openly. An UNASSIGNED cell is a recorded state of the evidence, never a gap the execution repairs by inference. Carried from the draft head, verbatim in substance: An UNASSIGNED cell carries exactly one recorded reason from the enumerated set. Recovery restatement at 0.7-draft: the previous head ('A cell with no admissible determination is UNASSIGNED with exactly one recorded reason from the enumerated set.') was restated to a single proposition; its remaining substance stands in this boundary.",
+   "depends_on": [
+    "F041-C05"
+   ],
+   "assumptions": [
+    "ASM-PUBLISHED-ONLY"
+   ],
+   "alternatives": [
+    "Unassigned cells could carry free-text explanations instead of a fixed reason vocabulary."
+   ],
+   "falsification_tests": [
+    "An UNASSIGNED cell with no reason, two reasons, or a reason outside the enumerated set defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "Unassigned cells could carry free-text explanations instead of a fixed reason vocabulary.",
+    "verdict_rule": "Every UNASSIGNED cell carries exactly one enumerated reason, mechanically checkable.",
+    "evidence_origin_groups": [
+     "phase139-record"
+    ],
+    "boundary_confirmation": "C08 governs cells without an admissible determination; C07 governs cells with two that disagree. The two states are disjoint by construction. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "data/evidence_integration/phase139_citation_register.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-139 citation register: unmapped cells already carry prose reasons (spanning, queried, not in scheme) — the vocabulary this claim enumerates",
+     "source_id": "data/evidence_integration/phase139_citation_register.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    },
+    {
+     "ref": "reports/phase139_report.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-139 report section 3: the unmapped classes and their recorded reasons",
+     "source_id": "reports/phase139_report.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F041-C09",
+   "text": "Step 0 reproduces the recorded label census from the hash-pinned layer before any construction.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The gate claim (spec section 6). Population: the seven named sites and 5,410 rows under the Phase-137 rule, asserted against the Phase-137/139 records. Census headline counts: period 2,266, phase 2,638, both 1,788, union 3,116 informative on the population. Any mismatch — layer hash, population, counts, or the covariates copy's raw fields against the layer — closes the act at step 0 with no artifact. Carried from the draft head, verbatim in substance: The population is the Phase-137 population; the census is the recorded label census of Spec 025 section 3.1 and the Phase-139 report. Recovery restatement at 0.7-draft: the previous head ('Step 0 reproduces the Phase-137 population and the recorded label census from the hash-pinned layer before any cell is constructed.') was restated to a single proposition; its remaining substance stands in this boundary. Carried from the draft head, verbatim in substance: step 0 also reproduces the Phase-137 population (the seven named sites and 5,410 rows) in the same step, asserted against the same records. Recovery restatement at 0.8-draft: the previous head ('Step 0 reproduces the recorded population and label census from the hash-pinned layer before any construction.') was restated to a single proposition; the population reproduction stands in this boundary.",
+   "depends_on": [
+    "F041-C01"
+   ],
+   "assumptions": [
+    "ASM-LAYER-PIN",
+    "ASM-PHASE137-POPULATION"
+   ],
+   "alternatives": [
+    "The population and census are already on record, so re-deriving them at execution is ceremony."
+   ],
+   "falsification_tests": [
+    "An execution that constructs any cell without a step-0 record reproducing the population and census counts exactly defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "The population and census are already on record, so re-deriving them at execution is ceremony.",
+    "verdict_rule": "No step-0 reproduction, no artifact.",
+    "evidence_origin_groups": [
+     "spec025-record",
+     "phase139-record"
+    ],
+    "boundary_confirmation": "C09 gates construction on the reproduced census; C03 makes that census the artifact's completeness denominator. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/025-stage2-controlled-followup/phase140-freeze.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-140 freeze section 2: the population rule and the seven eligible sites, reproduced from the pinned layer",
+     "source_id": "specs/025-stage2-controlled-followup/phase140-freeze.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    },
+    {
+     "ref": "reports/phase139_report.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-139 report sections 1-2: population counts by site and the census tables reproduced exactly from the layer",
+     "source_id": "reports/phase139_report.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F041-C10",
+   "text": "The mapping's key space covers all seven population sites on the same terms.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The coverage claim (spec sections 1, 2.1). The key space is the layer's seven population sites; gazetteer coverage is irrelevant to it. Chanhu-daro attests no informative label on any row, so it contributes no cells — a recorded census fact, not an exclusion. Dholavira and Nausharo cells are built from their sites' published stratigraphies on the same standard as every other site. Carried from the draft head, verbatim in substance: The seven sites are Chanhu-daro, Dholavira, Harappa, Kalibangan, Lothal, Mohenjo-daro, and Nausharo; Chanhu-daro, Dholavira, and Nausharo — the three sites with no gazetteer rows — stand in the key space on the same terms as the other four. Recovery restatement at 0.7-draft: the previous head ('Chanhu-daro, Dholavira, and Nausharo stand in the mapping's key space on the same terms as the other four population sites.') was restated to a single proposition; its remaining substance stands in this boundary.",
+   "depends_on": [
+    "F041-C02",
+    "F041-C09"
+   ],
+   "assumptions": [
+    "ASM-PHASE137-POPULATION"
+   ],
+   "alternatives": [
+    "Sites absent from the gazetteer could be deferred to a later act without harming the consumer."
+   ],
+   "falsification_tests": [
+    "An artifact whose key space omits any of the seven sites, or a coverage report that does not state Chanhu-daro's zero attested cells as a census result, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "Sites absent from the gazetteer could be deferred to a later act without harming the consumer.",
+    "verdict_rule": "All seven sites are in the key space; empty attestation is reported, not omitted.",
+    "evidence_origin_groups": [
+     "spec040-record",
+     "spec025-record"
+    ],
+    "boundary_confirmation": "C10 states the key space's site coverage; C03 states its label completeness within that space. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/040-d25-g1-chronology-controlled/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 040 closure record: condition 4 failed — chanhu-daro, dholavira, and nausharo have no gazetteer rows",
+     "source_id": "specs/040-d25-g1-chronology-controlled/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    },
+    {
+     "ref": "reports/phase139_report.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-139 report section 3: Chanhu-daro records no informative period or phase value in the layer at all",
+     "source_id": "reports/phase139_report.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F041-C11",
+   "text": "Every grounded cell is independently re-verified against its cited locator before the artifact is pinned.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The verification claim (spec section 7.4). A second pass opens each cited locator and reads the determination there. A cell that does not read as recorded is reclassified under C07/C08 — never edited into agreement — and the reclassification is recorded in the coverage report. Carried from the draft head, verbatim in substance: The grounded cells are the MAPPED and CONTESTED cells. Recovery restatement at 0.7-draft: the previous head ('Every MAPPED or CONTESTED cell is independently re-verified against its cited locator before the artifact is pinned.') was restated to a single proposition; its remaining substance stands in this boundary.",
+   "depends_on": [
+    "F041-C05"
+   ],
+   "assumptions": [
+    "ASM-039-STANDARD"
+   ],
+   "alternatives": [
+    "A sample-based check of cells would be proportionate for a small vocabulary."
+   ],
+   "falsification_tests": [
+    "A pinned artifact containing a MAPPED or CONTESTED cell with no dual-verification record defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "A sample-based check of cells would be proportionate for a small vocabulary.",
+    "verdict_rule": "One hundred percent of grounded cells carry a second-pass verification record.",
+    "evidence_origin_groups": [
+     "spec039-record"
+    ],
+    "boundary_confirmation": "C11 governs the second pass over grounded cells; C05 governs the first grounding. A cell failing C11's pass is reclassified under the same rules C05-C08 state. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/039-gazetteer-period-assignment/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 039 outcome: the verification bar applied to every determination the act used, with unverifiable print left blank and stated",
+     "source_id": "specs/039-gazetteer-period-assignment/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F041-C12",
+   "text": "The coverage report publishes inscription-row placement counts under each candidate row-derivation named in the spec.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The reporting claim (spec section 8). Counts are published under derivations A1, A2, B, and C, by site and by coarse period, with unplaced rows split by cause (no informative label; labels attested but all UNASSIGNED; disagreement; contested-only), and with the 57.6 percent ceiling stated beside them. The report adopts no derivation and reports no preferred one.",
+   "depends_on": [
+    "F041-C03"
+   ],
+   "assumptions": [
+    "ASM-LAYER-PIN"
+   ],
+   "alternatives": [
+    "The report could adopt the derivation Spec 040 section 4.2 most plausibly intends and publish one set of counts."
+   ],
+   "falsification_tests": [
+    "A coverage report missing any named derivation's counts, or stating a preferred derivation as the act's choice, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "The report could adopt the derivation Spec 040 section 4.2 most plausibly intends and publish one set of counts.",
+    "verdict_rule": "The future freeze decides the row-derivation on published counts for every candidate.",
+    "evidence_origin_groups": [
+     "spec040-record",
+     "spec025-record"
+    ],
+    "boundary_confirmation": "C12 governs what the report publishes about rows; C01 bars the act from performing the join those counts describe. Counts of candidate placements are margins, not placements. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/040-d25-g1-chronology-controlled/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 040 section 4.2: the assignment rules a future freeze must fix — the decision these counts inform",
+     "source_id": "specs/040-d25-g1-chronology-controlled/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    },
+    {
+     "ref": "specs/025-stage2-controlled-followup/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 025 section 3.2: per-site label coverage is structural — Harappa period and phase are informative on almost disjoint row sets, so derivations differ materially",
+     "source_id": "specs/025-stage2-controlled-followup/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F041-C13",
+   "text": "The pinned artifact satisfies the form of Spec 040 section 1 conditions 2-4 for a future freeze act to judge.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The fitness claim (spec sections 1, 10). Form only: a frozen machine-readable mapping at site x local-label resolution (condition 2), every non-UNASSIGNED cell carrying citation, locator, mapping rule, and contested flag under published determinations only (condition 3), and a join key covering the population's sites and labels (condition 4). Satisfaction is judged by the future Spec 040 freeze, not asserted here. Spec 040 section 1 as written names Spec 039's product; accepting this artifact in its place is that freeze's openly recorded decision, and section 1's condition 1 is not this act's to satisfy.",
+   "depends_on": [
+    "F041-C03",
+    "F041-C05",
+    "F041-C07"
+   ],
+   "assumptions": [
+    "ASM-040-INTERFACE"
+   ],
+   "alternatives": [
+    "Building the artifact to the interface is enough; the substitution question is a technicality a future freeze will absorb silently."
+   ],
+   "falsification_tests": [
+    "A future Spec 040 freeze record finding the artifact short of section 4's interface in key, citation, flag, or coverage defeats this claim — as does any Spec 041 text asserting the gate is satisfied by the artifact's existence."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-INTERFACE-LOOSENING"
+    ],
+    "strongest_rival": "Building the artifact to the interface is enough; the substitution question is a technicality a future freeze will absorb silently.",
+    "verdict_rule": "The artifact is built to the interface's form; the gate's judgement belongs to the future freeze.",
+    "evidence_origin_groups": [
+     "spec040-record"
+    ],
+    "boundary_confirmation": "C13 claims form, not satisfaction; C14 bars this act from amending the record that judges it. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/040-d25-g1-chronology-controlled/spec.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 040 section 1 conditions 2-4 and section 4.1: the interface, stated as gate conditions",
+     "source_id": "specs/040-d25-g1-chronology-controlled/spec.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    },
+    {
+     "ref": "specs/040-d25-g1-chronology-controlled/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 040 closure record section 3: what would satisfy the gate, and that a satisfied dependency still requires a freeze act and a separate execution order",
+     "source_id": "specs/040-d25-g1-chronology-controlled/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F041-C14",
+   "text": "This act amends no frozen record.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The non-amendment claim (spec section 10). Spec 040's closure and its NOT-YET-TESTABLE state stand; Spec 039's artifact stands byte-identical; Spec 025, Phase-140, and Phase-385 stand; G1's rider — chronology is NOT controlled — stands verbatim wherever G1 is stated. Corrections to any of these are append-only acts of their own, never side effects of this one. Carried from the draft head, verbatim in substance: It also retires no rider: G1's rider — chronology is NOT controlled — stands verbatim wherever G1 is stated. Recovery restatement at 0.7-draft: the previous head ('This act amends no frozen record and retires no rider.') was restated to a single proposition; its remaining substance stands in this boundary.",
+   "depends_on": [],
+   "assumptions": [
+    "ASM-PUBLISHED-ONLY"
+   ],
+   "alternatives": [
+    "Completing the dependency could reasonably be recorded as resolving Spec 040's closure."
+   ],
+   "falsification_tests": [
+    "Any edit, restatement, or status change to a frozen record attributed to this act defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [],
+    "strongest_rival": "Completing the dependency could reasonably be recorded as resolving Spec 040's closure.",
+    "verdict_rule": "Frozen records are read by this act and changed by nothing in it.",
+    "evidence_origin_groups": [
+     "spec040-record",
+     "phase385-record"
+    ],
+    "boundary_confirmation": "C14 governs records; C15 governs this act's own outputs and the anchors assertion. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/040-d25-g1-chronology-controlled/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 040 closure record: the closure is the spec's outcome and G1 stands exactly as Spec 025 and Phase-385 left it",
+     "source_id": "specs/040-d25-g1-chronology-controlled/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    },
+    {
+     "ref": "reports/phase385_report.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Phase-385 report: G1 SUPPORTED under control with the chronology rider mandatory on every statement",
+     "source_id": "reports/phase385_report.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "F041-C15",
+   "text": "Every output of this act carries the ICIT-lineage (horus84) label.",
+   "kind": "requirement",
+   "status": "draft",
+   "boundary": "The labelling and integrity claim (spec sections 4, 11). The current anchors pin is df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569 (the value Spec 040's draft carried, eccea6d5, is superseded since 2026-10-12). The act moves no anchor, no reading, and no PRED-2026 state; a MAPPED cell places a recorded label and dates no object. Carried from the draft head, verbatim in substance: The anchors file is asserted byte-identical at its current pin before and after the act. Recovery restatement at 0.7-draft: the previous head ('Every output of this act carries the ICIT-lineage (horus84) label, and the anchors file is asserted byte-identical at its current pin before and after the act.') was restated to a single proposition; its remaining substance stands in this boundary.",
+   "depends_on": [
+    "F041-C01"
+   ],
+   "assumptions": [
+    "ASM-ANCHORS-CURRENT"
+   ],
+   "alternatives": [
+    "The lineage label could be dropped from internal working files and kept only for published outputs."
+   ],
+   "falsification_tests": [
+    "An output of this act lacking the lineage label, or an anchors hash differing before and after, defeats this claim."
+   ],
+   "metadata": {
+    "framework_kind": "requirement",
+    "layer": "M",
+    "forbidden_assumptions": [
+     "ASM-RESULT-AS-MOVEMENT"
+    ],
+    "strongest_rival": "The lineage label could be dropped from internal working files and kept only for published outputs.",
+    "verdict_rule": "Lineage label on every output; anchors byte-identical at the refreshed pin.",
+    "evidence_origin_groups": [
+     "spec040-record"
+    ],
+    "boundary_confirmation": "C15 governs labelling and integrity of this act's outputs; C14 governs frozen records outside it. Neither negates the other."
+   },
+   "evidence": [
+    {
+     "ref": "specs/040-d25-g1-chronology-controlled/outcome.md",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "Spec 040 closure record section 3, secondary finding: the draft's anchors pin is stale; the file recomputes to df0cf620 on current main and at the draft's own base",
+     "source_id": "specs/040-d25-g1-chronology-controlled/outcome.md",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md",
+      "backend/reports/INDUS_FINAL_ANCHORS.json"
+     ]
+    },
+    {
+     "ref": "backend/reports/INDUS_FINAL_ANCHORS.json",
+     "kind": "observed",
+     "direction": "supports",
+     "source_quality": "artifact",
+     "description": "The anchors file itself, at its current recorded hash",
+     "source_id": "backend/reports/INDUS_FINAL_ANCHORS.json",
+     "observed_at": "2026-10-21",
+     "independent_of": [
+      "specs/040-d25-g1-chronology-controlled/outcome.md",
+      "specs/040-d25-g1-chronology-controlled/spec.md",
+      "specs/025-stage2-controlled-followup/spec.md",
+      "data/evidence_integration/phase139_citation_register.json",
+      "reports/phase139_report.md",
+      "specs/039-gazetteer-period-assignment/adjudication.md",
+      "specs/039-gazetteer-period-assignment/outcome.md",
+      "specs/025-stage2-controlled-followup/phase140-freeze.md",
+      "reports/phase385_report.md"
+     ]
+    }
+   ]
+  }
+ ]
+}

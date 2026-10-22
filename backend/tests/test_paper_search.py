@@ -113,10 +113,18 @@ CLAIM = {
 }
 
 
+class NullCoreClient:
+    """Spec 026 seam: keeps these offline tests off the live CORE API."""
+
+    def search_papers(self, query, limit=10, timeout=0):
+        return []
+
+
 def test_record_is_advisory_and_complete():
     stub = StubClient()
     rec = research_check.run_research_check(
-        CLAIM, dois=["10.1126/science.1170391"], client=stub)
+        CLAIM, dois=["10.1126/science.1170391"], client=stub,
+        core_client=NullCoreClient())
     assert rec["verdict"] is None and rec["advisory"] is True
     assert rec["stage"] == "research_check"
     assert len(rec["phrasings"]) >= 2
@@ -144,7 +152,8 @@ def test_no_neighbors_is_a_gap_not_a_negative():
             return {"tool": "search_papers", "is_error": False,
                     "result": {"papers": [], "errors": {}}}
 
-    rec = research_check.run_research_check(CLAIM, client=EmptyStub())
+    rec = research_check.run_research_check(
+        CLAIM, client=EmptyStub(), core_client=NullCoreClient())
     assert rec["neighbors"] == []
     assert any("not evidence of no prior art" in str(g)
                for g in rec["gaps"])
@@ -158,7 +167,8 @@ def test_result_papers_handles_double_encoded_payload():
 
 
 def test_write_record_sidecar(tmp_path):
-    rec = research_check.run_research_check(CLAIM, client=StubClient())
+    rec = research_check.run_research_check(
+        CLAIM, client=StubClient(), core_client=NullCoreClient())
     path = research_check.write_record(rec, tmp_path)
     assert path.name == "doc1__c1.research_check.json"
     assert '"verdict": null' in path.read_text(encoding="utf-8")

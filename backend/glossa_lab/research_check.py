@@ -194,9 +194,7 @@ def run_research_check(
         "verdict": None,
         "protocol": PROTOCOL_REF,
         "phrasings": phrasings,
-        "sources_requested": [s.strip() for s in sources.split(",")
-                              if s.strip()] + (["core"] if use_core
-                                               else []),
+        "sources_requested": [s.strip() for s in sources.split(",") if s.strip()],
         "queries": [],
         "source_errors": [],
         "neighbors": [],

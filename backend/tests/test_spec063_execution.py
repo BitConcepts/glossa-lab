@@ -250,19 +250,25 @@ def test_identification_record_carries_the_sheets():
 
 def test_claim_record_live_facts_spec038_form():
     # Regeneration-preserved facts only: the
-    # fragment's own facts stand as the frozen
-    # record states, and its Spec 056 closure
-    # append is present. The Spec 063 restatement
-    # append itself is asserted at the act
-    # (removal reproduces the pre-act file
-    # byte-identically; outcome.md, F063-C11)
-    # and through the run's machine record, not
-    # on the live store.
+    # fragment's own entry facts stand as the
+    # frozen record states. The appends the entry
+    # carries (Spec 056's spec056_closure; this
+    # execution's spec063_restatement) are NOT
+    # asserted here: the backend suite regenerates
+    # this store mid-session and an append made
+    # before the session is not a
+    # regeneration-preserved fact (the hazard
+    # Spec 056's F056-C15 record names). The
+    # appends are asserted at the act itself —
+    # removal of the restatement reproduces the
+    # pre-act file byte-identically (outcome.md,
+    # F063-C11) — and through the run's machine
+    # record and gate record, where the closure
+    # append's presence on the live file at run
+    # time is recorded (gate 0.1 facts).
     entry = _claim_entry()
     assert entry["normalized_claim"] == (
         "Sign value: 821 / it is used in a variety of "
         "contexts (Figure 6")
     assert entry["claim_status"] == "untested"
     assert entry["stage"] == "created"
-    assert entry["spec056_closure"]["outcome"] == (
-        "IDENTIFICATION FAILED")

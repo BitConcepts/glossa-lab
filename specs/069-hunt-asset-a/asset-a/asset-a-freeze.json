@@ -1,0 +1,38 @@
+{
+ "asset": "Asset A \u2014 depicted-kind classification (Spec 069)",
+ "contract": "Spec 045 sections 2-3, quoted in Spec 069 spec section 2",
+ "contract_anchor_freeze_digest": "5d8254ddc03045b68a0819f870fc9ccc1b9848a58fef3862dae3e4ca21b43f0a",
+ "spec069_freeze_digest": "657b930c9200299c7d540baa8ed51b7a90176bdea9822577e9cb1f4d292f99aa",
+ "canonical_file": "asset-a/depicted-kind-classification.csv",
+ "sha256": "952319355098698f01e6d8499b0384f84ac964e1bc4ecdc03c77ed920c7a5b5b",
+ "row_count": 187,
+ "per_kind_counts": {
+  "animal": 20,
+  "sky_cycle": 0,
+  "object_goods": 14,
+  "human": 25,
+  "other": 127,
+  "contested": 0,
+  "unidentified": 1
+ },
+ "input_pins": {
+  "crosswalk": {
+   "file": "data/crosswalks/sign_crosswalk_master.csv",
+   "sha256": "4ace1a617f40afe8d0bbb82e5461d98a675296152e7577b04fb67b00f4f5dfcf",
+   "rows": 205,
+   "distinct_registry_sign_ids": 187
+  },
+  "d18_concordance": {
+   "file": "specs/046-horned-tiger-concordance/concordance-297.json",
+   "sha256": "772db4df152ec4f1071bed088250677e55f69743532c9e89f339a8cf9134aaaf",
+   "state": "terminal empty feed (signs empty, IDENTIFICATION FAILED closure); consumed as recorded absence, never reconstructed"
+  },
+  "anchors": {
+   "file": "backend/reports/INDUS_FINAL_ANCHORS.json",
+   "sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569"
+  },
+  "sources": "gate A1 of the build record: CISI vols. 1-2 (1991) held digitally; the CISI sign list as held in the mayig CISI digitization (April 2026; upstream commit ad2f1e2); Parpola's published identifications consulted in held form (Parpola 2010)"
+ },
+ "build_order_attestation": "entry was performed from the held published sources and the sign inventory only, in the quoted section 2.4 order (sources consulted, rows entered in two independent passes and reconciled, dispute coding completed, the D-18 absence recorded, the asset freeze digest computed) and before any join; no positional result, part-membership class, or model output was consulted at any point; the entry log is asset-a/entry-decisions.json",
+ "freeze_date": "2026-10-22"
+}

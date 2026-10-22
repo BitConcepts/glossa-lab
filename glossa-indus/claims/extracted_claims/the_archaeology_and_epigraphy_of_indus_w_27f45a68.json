@@ -110,6 +110,19 @@
         "delivery": "specs/046-horned-tiger-concordance/concordance-297.json",
         "delivery_sha256": "772db4df152ec4f1071bed088250677e55f69743532c9e89f339a8cf9134aaaf",
         "note": "First check of this claim, under the frozen Spec 046 contract (OSF dnts8, approved + public). Step 0 passed in full; step 1 named the source's sign list from the book's own apparatus (Wells's own list, Wells 2011, in Wells 2015 Chapter 2 / Figure 2.6) and the drawn sign could not be matched by drawn form from the held record — no registry entry carries it (the only W297 value sits inside the multi-value wells_ids cell on the P205 row, a trap the frozen spec names), and the drawn forms of Figure 2.6 did not survive the held copy's text extraction. This is a check of identification, recorded under F046-C15: it is not a verdict on the identification, and the claim's status and stage are unchanged. Appended by the Spec 046 execution; no pre-existing field of any claim in this file was altered."
+      },
+      "spec064_check":       {
+        "spec": "064",
+        "phase": "Phase-426",
+        "date": "2026-10-22",
+        "actor": "spec064-phase426-execution",
+        "kind": "successor-check (identification)",
+        "outcome": "IDENTIFICATION FAILED (continuity/discrimination not sustained)",
+        "wording": "The fragment 'sign 297 is the horned tiger' cannot be carried to a concordance: the descriptor's discrimination of 297 from its neighbours in the 289–308 run was not sustained by both independent derivations. The record stays a stated gap. No statement about the sign is made, and nothing is fed to Asset A. Qualification (carried from the preserved reference, Spec 064 §1): the identification of Wells's 297 rests on a drawn-form reference whose continuity status is QUALIFIED — anchored at family level only; its step C discrimination check is part of this run's record.",
+        "record": "specs/064-sign297-concordance-successor/outcome.md",
+        "delivery": "specs/064-sign297-concordance-successor/concordance-297.json",
+        "delivery_sha256": "9e765576349d4d294a4fc04f0d6750be3718dfc60fa267ea16c04c6130db7488",
+        "note": "Successor check of this claim under the frozen Spec 064 contract (OSF s6hr9, approved + public), successor to Spec 046's first check, which stands unedited in this record under 'first_check'. Step 0 passed in full, including gate 0.4: the preserved drawn-form reference at its pinned digest (33ee22ec…) and the thesis file's digest asserted on the local file before any plate was read. Step 1 named the source's sign list from the book's own apparatus (Wells's own list, Wells 2011, in Wells 2015 Chapter 2 / Figure 2.6); step D derived the drawn-form descriptor twice, independently, from the thesis plate (Figure 3.2, thesis p. 90 / PDF p. 102) and sustained the preserved reference; step C — mandatory in Spec 064 — was not sustained: neither independent derivation affirms that the descriptor picks out plate 297 and no neighbour in the 289–308 run (signs 299, 302 and 303 satisfy every stated feature of the descriptor), so the run closed as IDENTIFICATION FAILED (continuity/discrimination not sustained) before step M and before any scoring. The preserved reference's continuity status is QUALIFIED — anchored at family level only — and is carried on every product of the run. This is a check of identification, recorded under F064-C15: it is not a verdict on the identification, and the claim's status and stage are unchanged. Appended by the Spec 064 execution; no pre-existing field of any claim in this file was altered, and the Spec 046 first_check entry is unedited."
       }
     },
     {

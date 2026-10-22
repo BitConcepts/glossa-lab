@@ -1,0 +1,2417 @@
+{
+  "phase": "Phase-429",
+  "spec": "067",
+  "title": "The seal/tablet difference on the enlarged join \u2014 Spec 059's question re-run against the Spec 066 merged catalogue layer v2 (design D-22, carried)",
+  "lineage_label": "ICIT-lineage (horus84)",
+  "lineage_sentence": "results describe this lineage layer, and (gate-passed) its object-ID-joined subset, not the Indus corpus in general.",
+  "claim_under_test": "STUDY-SPEC-024/F1",
+  "freeze_digest": "73463ab949f65ecf620a9f4544b9a84fe18f72056a86c48ce9d5d0164f3d41db",
+  "spec066_freeze_digest": "0b81d8421c8fe66b486b2c729bb7e978faa6327c74b8f1bff7984128a31aa355",
+  "osf_registration": "https://osf.io/qsthg/",
+  "osf_registration_state": "approved and public before this run; verified by the parent by API read-back 2026-10-22 (public true, pending false, withdrawn false, reviews_state accepted)",
+  "execution_date": "2026-10-22",
+  "gate_bar": {
+    "ruling": "DD-067-7 (carrying DD-059-7)",
+    "joined_share_min": 0.61,
+    "joined_rows_min": 3465,
+    "arithmetic": "0.61 x 5,679 = 3,464.19, so >= 61.0% is >= 3,465 rows; 3,464 rows = 60.997% and fails",
+    "baseline": "2,895 / 5,679 = 50.977% (51.0%)"
+  },
+  "restricted_local_products": {
+    "note": "row-level products of the merged layer stay restricted-local (spec section 7.3) and are named here by filename and counts only",
+    "per_row_join_census": {
+      "filename": "phase429_join_census.json",
+      "location": "restricted local store, beside the merged catalogue layer v2 (main checkout corpora/downloads/cisi_image_layer/catalogue/)",
+      "rows": 5679
+    }
+  },
+  "gates": {
+    "0.1_input_integrity": {
+      "status": "PASS",
+      "detail": "every spec section 2 pin and every DD-067-9 source pin recomputes to its freeze-record value, and the merged catalogue layer v2 asserted on the local file first (9,741 rows, 5,529 distinct objects)",
+      "failure_class": "PIN FAILURE",
+      "schema_validation": "recorded at gate 0.3 (the dataset is built there); a validation failure closes the run INVALID \u2014 CENSUS FAILURE under section 3.1"
+    },
+    "0.2_original_join_reproduction": {
+      "status": "PASS",
+      "observed": {
+        "layer_rows": 5679,
+        "matched": 2895,
+        "ambiguous": 2,
+        "unmatched": 2782
+      },
+      "recorded": {
+        "layer_rows": 5679,
+        "matched": 2895,
+        "ambiguous": 2,
+        "unmatched": 2782
+      }
+    },
+    "0.3_object_id_join_census": {
+      "intake_dataset": {
+        "name": "phase398-icit-published-object-references",
+        "records": 5018,
+        "construction": "backend/glossa_lab/phase398_matched_object.py build_intake_dataset (pinned, DD-067-9)",
+        "validation_verdict": "pass",
+        "validation_summary": {
+          "inscriptions": 5018,
+          "tokens": 18020,
+          "sign_lists": [
+            "mahadevan_1977"
+          ],
+          "errors": 0,
+          "warnings": 0
+        }
+      },
+      "status": "PASS",
+      "census": {
+        "unit": "layer row (DD-067-2)",
+        "layer_rows": 5679,
+        "dataset_records_carrying_identifier": 5018,
+        "rows_without_identifier": 661,
+        "joined_rows": 4676,
+        "joined_share": 0.8233843986617362,
+        "joined_share_percent": 82.3384,
+        "unjoined_rows": 1003,
+        "unjoined_with_identifier_resolving_zero": 342,
+        "ambiguous_rows_more_than_one_object": 0,
+        "distinct_catalogue_objects_joined_to": 3763,
+        "catalogue_layer": {
+          "name": "merged catalogue layer v2 (Spec 066)",
+          "rows_total": 9741,
+          "distinct_objects": 5529,
+          "rows_by_volume": {
+            "1": 3320,
+            "2": 4385,
+            "3.1-portion": 2036
+          },
+          "vols_1_2_reference": {
+            "rows_total": 7705,
+            "per_volume": {
+              "vol1": {
+                "rows": 3320,
+                "distinct_ids": 1475
+              },
+              "vol2": {
+                "rows": 4385,
+                "distinct_ids": 2019
+              }
+            },
+            "distinct_objects_merged": 3493,
+            "ids_in_both_volumes": [
+              "H-311"
+            ]
+          }
+        },
+        "joined_site_mix_lineage": {
+          "Alamgirpur": 1,
+          "Allahdino": 9,
+          "Amri": 1,
+          "Banawali": 23,
+          "Chandigarh": 2,
+          "Chanhu-daro": 33,
+          "Daimabad": 2,
+          "Desalpur": 2,
+          "Dholavira": 2,
+          "Gharo Bhiro": 1,
+          "Gumla": 2,
+          "Harappa": 2475,
+          "Hissam-dheri": 1,
+          "Hulas": 1,
+          "Jhukar": 1,
+          "Kalibangan": 96,
+          "Khirsara": 2,
+          "Kot-Diji": 9,
+          "Lohumjo-daro": 1,
+          "Lothal": 171,
+          "Mohenjo-daro": 1821,
+          "Naru-Waro-dharo": 3,
+          "Nausharo": 5,
+          "Nindowari-damb": 2,
+          "Pabumath": 1,
+          "Pirak": 1,
+          "Rahman-deri": 2,
+          "Rakhigarhi": 4,
+          "Rodji": 1,
+          "Rupar": 1
+        },
+        "joined_object_type_mix": {
+          "(unfilled)": 317,
+          "Graffiti": 214,
+          "Objects": 53,
+          "Seal impressions": 15,
+          "Seals": 1969,
+          "Tablets": 2108
+        },
+        "by_site": [
+          {
+            "site": "Alamgirpur",
+            "layer_rows": 3,
+            "joined_rows": 1
+          },
+          {
+            "site": "Allahdino",
+            "layer_rows": 12,
+            "joined_rows": 9
+          },
+          {
+            "site": "Altyn Depe",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Amri",
+            "layer_rows": 5,
+            "joined_rows": 1
+          },
+          {
+            "site": "Bakkar Buthi",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Bala-kot",
+            "layer_rows": 7,
+            "joined_rows": 0
+          },
+          {
+            "site": "Banawali",
+            "layer_rows": 26,
+            "joined_rows": 23
+          },
+          {
+            "site": "Baror",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Bhirrana",
+            "layer_rows": 6,
+            "joined_rows": 0
+          },
+          {
+            "site": "Chandigarh",
+            "layer_rows": 3,
+            "joined_rows": 2
+          },
+          {
+            "site": "Chanhu-daro",
+            "layer_rows": 74,
+            "joined_rows": 33
+          },
+          {
+            "site": "Daimabad",
+            "layer_rows": 2,
+            "joined_rows": 2
+          },
+          {
+            "site": "Derawar Ther",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Desalpur",
+            "layer_rows": 3,
+            "joined_rows": 2
+          },
+          {
+            "site": "Dholavira",
+            "layer_rows": 238,
+            "joined_rows": 2
+          },
+          {
+            "site": "Failaka",
+            "layer_rows": 2,
+            "joined_rows": 0
+          },
+          {
+            "site": "Farmana",
+            "layer_rows": 8,
+            "joined_rows": 0
+          },
+          {
+            "site": "Ganweriwala",
+            "layer_rows": 2,
+            "joined_rows": 0
+          },
+          {
+            "site": "Gharo Bhiro",
+            "layer_rows": 1,
+            "joined_rows": 1
+          },
+          {
+            "site": "Girsu",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Gola Dhoro (Bagasra)",
+            "layer_rows": 6,
+            "joined_rows": 0
+          },
+          {
+            "site": "Gonur Depe",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Guddal A",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Gumla",
+            "layer_rows": 2,
+            "joined_rows": 2
+          },
+          {
+            "site": "Hajar",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Harappa",
+            "layer_rows": 2717,
+            "joined_rows": 2475
+          },
+          {
+            "site": "Hissam-dheri",
+            "layer_rows": 2,
+            "joined_rows": 1
+          },
+          {
+            "site": "Hulas",
+            "layer_rows": 1,
+            "joined_rows": 1
+          },
+          {
+            "site": "Janabiyah",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Jhukar",
+            "layer_rows": 1,
+            "joined_rows": 1
+          },
+          {
+            "site": "Juna Khatiya",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Kalba",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Kalibangan",
+            "layer_rows": 212,
+            "joined_rows": 96
+          },
+          {
+            "site": "Kanmer",
+            "layer_rows": 10,
+            "joined_rows": 0
+          },
+          {
+            "site": "Karanpura",
+            "layer_rows": 8,
+            "joined_rows": 0
+          },
+          {
+            "site": "Karzakan",
+            "layer_rows": 3,
+            "joined_rows": 0
+          },
+          {
+            "site": "Khirsara",
+            "layer_rows": 4,
+            "joined_rows": 2
+          },
+          {
+            "site": "Kish",
+            "layer_rows": 2,
+            "joined_rows": 0
+          },
+          {
+            "site": "Kot-Diji",
+            "layer_rows": 11,
+            "joined_rows": 9
+          },
+          {
+            "site": "Lakhanjo-daro",
+            "layer_rows": 15,
+            "joined_rows": 0
+          },
+          {
+            "site": "Lohumjo-daro",
+            "layer_rows": 1,
+            "joined_rows": 1
+          },
+          {
+            "site": "Lothal",
+            "layer_rows": 208,
+            "joined_rows": 171
+          },
+          {
+            "site": "Luristan",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Miri Qalat",
+            "layer_rows": 2,
+            "joined_rows": 0
+          },
+          {
+            "site": "Mohenjo-daro",
+            "layer_rows": 1923,
+            "joined_rows": 1821
+          },
+          {
+            "site": "Murda Sang",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Naru-Waro-dharo",
+            "layer_rows": 3,
+            "joined_rows": 3
+          },
+          {
+            "site": "Nausharo",
+            "layer_rows": 38,
+            "joined_rows": 5
+          },
+          {
+            "site": "Nindowari-damb",
+            "layer_rows": 2,
+            "joined_rows": 2
+          },
+          {
+            "site": "Nippur",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Nuhato",
+            "layer_rows": 5,
+            "joined_rows": 0
+          },
+          {
+            "site": "Ornach area",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Pabumath",
+            "layer_rows": 1,
+            "joined_rows": 1
+          },
+          {
+            "site": "Pirak",
+            "layer_rows": 1,
+            "joined_rows": 1
+          },
+          {
+            "site": "Qala'at al-Bahrain",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Ra's al-Junayz",
+            "layer_rows": 4,
+            "joined_rows": 0
+          },
+          {
+            "site": "Rahman-deri",
+            "layer_rows": 2,
+            "joined_rows": 2
+          },
+          {
+            "site": "Rajanpur",
+            "layer_rows": 2,
+            "joined_rows": 0
+          },
+          {
+            "site": "Rakhigarhi",
+            "layer_rows": 13,
+            "joined_rows": 4
+          },
+          {
+            "site": "Rappwala Ther",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Rodji",
+            "layer_rows": 4,
+            "joined_rows": 1
+          },
+          {
+            "site": "Rupar",
+            "layer_rows": 5,
+            "joined_rows": 1
+          },
+          {
+            "site": "Saar",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Salut",
+            "layer_rows": 2,
+            "joined_rows": 0
+          },
+          {
+            "site": "Shikarpur",
+            "layer_rows": 8,
+            "joined_rows": 0
+          },
+          {
+            "site": "Shortughai",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Sibri",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Surkotada",
+            "layer_rows": 6,
+            "joined_rows": 0
+          },
+          {
+            "site": "Susa",
+            "layer_rows": 2,
+            "joined_rows": 0
+          },
+          {
+            "site": "Tarkhanewala-dera",
+            "layer_rows": 3,
+            "joined_rows": 0
+          },
+          {
+            "site": "Tell Umma",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Tello",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Tepe Yahya",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Tigrana",
+            "layer_rows": 1,
+            "joined_rows": 0
+          },
+          {
+            "site": "Unknown",
+            "layer_rows": 28,
+            "joined_rows": 0
+          },
+          {
+            "site": "Ur",
+            "layer_rows": 5,
+            "joined_rows": 0
+          },
+          {
+            "site": "Wattoowala",
+            "layer_rows": 1,
+            "joined_rows": 0
+          }
+        ],
+        "added_rows_vs_original_join_count": 1781,
+        "added_rows_vs_original_join": "row-level list held in the restricted-local per-row census (spec section 7.3); count only here",
+        "original_joined_rows_lost": 0,
+        "raw_value_discrepancies_lineage_vs_converted_count": 5,
+        "raw_value_discrepancies_lineage_vs_converted": "per-row detail held in the restricted-local per-row census; count only here",
+        "cross_check": "the census was derived twice: through the pinned route-(b) intake dataset and directly from the lineage layer's own cisi field (same strip the construction applies); every row's joined classification agrees between the two routes",
+        "more_than_one_note": "resolution is against distinct catalogue objects in the merged catalogue layer v2 (DD-067-9): an identifier is a distinct object's own ID, so the more-than-one class is structurally empty on this layer; it is counted and reported as observed"
+      }
+    },
+    "0.4_type_fill_census": {
+      "status": "PASS",
+      "detail": "type fill censused on the newly joined objects and on the whole joined set, with the resulting eligible seal/tablet strata in census form, before any F1 quantity",
+      "type_fill": {
+        "newly_joined_objects": {
+          "joined_rows": 1777,
+          "rows_type_filled": 1603,
+          "rows_type_unfilled": 174,
+          "distinct_objects": 1284,
+          "distinct_objects_type_filled": 1152,
+          "distinct_objects_type_unfilled": 132,
+          "type_mix_rows": {
+            "(unfilled)": 174,
+            "Graffiti": 145,
+            "Objects": 46,
+            "Seal impressions": 15,
+            "Seals": 379,
+            "Tablets": 1018
+          },
+          "type_mix_distinct_objects": {
+            "(unfilled)": 132,
+            "Graffiti": 144,
+            "Objects": 46,
+            "Seal impressions": 14,
+            "Seals": 371,
+            "Tablets": 577
+          }
+        },
+        "newly_joined_definition": "joined rows the Phase-421 census recorded as unjoined with resolution class zero (identifier resolving to zero objects in the vols. 1-2 layer)",
+        "whole_joined_set": {
+          "joined_rows": 4676,
+          "rows_type_filled": 4359,
+          "rows_type_unfilled": 317,
+          "distinct_objects": 3763,
+          "distinct_objects_type_filled": 3511,
+          "distinct_objects_type_unfilled": 252,
+          "type_mix_rows": {
+            "(unfilled)": 317,
+            "Graffiti": 214,
+            "Objects": 53,
+            "Seal impressions": 15,
+            "Seals": 1969,
+            "Tablets": 2108
+          },
+          "type_mix_distinct_objects": {
+            "(unfilled)": 252,
+            "Graffiti": 211,
+            "Objects": 50,
+            "Seal impressions": 14,
+            "Seals": 1922,
+            "Tablets": 1314
+          }
+        },
+        "restricted_seals_tablets_rows": 4077,
+        "eligible_seal_tablet_strata_census_form": [
+          {
+            "site": "Allahdino",
+            "n_restricted_rows": 9,
+            "n_seals": 9,
+            "n_tablets": 0,
+            "eligible_census_form": false,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          },
+          {
+            "site": "Banawali",
+            "n_restricted_rows": 18,
+            "n_seals": 14,
+            "n_tablets": 4,
+            "eligible_census_form": false,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          },
+          {
+            "site": "Chanhu-daro",
+            "n_restricted_rows": 30,
+            "n_seals": 27,
+            "n_tablets": 3,
+            "eligible_census_form": false,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          },
+          {
+            "site": "Daimabad",
+            "n_restricted_rows": 1,
+            "n_seals": 1,
+            "n_tablets": 0,
+            "eligible_census_form": false,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          },
+          {
+            "site": "Desalpur",
+            "n_restricted_rows": 2,
+            "n_seals": 2,
+            "n_tablets": 0,
+            "eligible_census_form": false,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          },
+          {
+            "site": "Dholavira",
+            "n_restricted_rows": 2,
+            "n_seals": 2,
+            "n_tablets": 0,
+            "eligible_census_form": false,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          },
+          {
+            "site": "Harappa",
+            "n_restricted_rows": 2140,
+            "n_seals": 431,
+            "n_tablets": 1709,
+            "eligible_census_form": true,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          },
+          {
+            "site": "Hulas",
+            "n_restricted_rows": 1,
+            "n_seals": 1,
+            "n_tablets": 0,
+            "eligible_census_form": false,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          },
+          {
+            "site": "Jhukar",
+            "n_restricted_rows": 1,
+            "n_seals": 1,
+            "n_tablets": 0,
+            "eligible_census_form": false,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          },
+          {
+            "site": "Kalibangan",
+            "n_restricted_rows": 68,
+            "n_seals": 53,
+            "n_tablets": 15,
+            "eligible_census_form": true,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          },
+          {
+            "site": "Khirsara",
+            "n_restricted_rows": 2,
+            "n_seals": 2,
+            "n_tablets": 0,
+            "eligible_census_form": false,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          },
+          {
+            "site": "Lohumjo-daro",
+            "n_restricted_rows": 1,
+            "n_seals": 1,
+            "n_tablets": 0,
+            "eligible_census_form": false,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          },
+          {
+            "site": "Lothal",
+            "n_restricted_rows": 95,
+            "n_seals": 95,
+            "n_tablets": 0,
+            "eligible_census_form": false,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          },
+          {
+            "site": "Mohenjo-daro",
+            "n_restricted_rows": 1701,
+            "n_seals": 1324,
+            "n_tablets": 377,
+            "eligible_census_form": true,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          },
+          {
+            "site": "Pabumath",
+            "n_restricted_rows": 1,
+            "n_seals": 1,
+            "n_tablets": 0,
+            "eligible_census_form": false,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          },
+          {
+            "site": "Pirak",
+            "n_restricted_rows": 1,
+            "n_seals": 1,
+            "n_tablets": 0,
+            "eligible_census_form": false,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          },
+          {
+            "site": "Rakhigarhi",
+            "n_restricted_rows": 2,
+            "n_seals": 2,
+            "n_tablets": 0,
+            "eligible_census_form": false,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          },
+          {
+            "site": "Rodji",
+            "n_restricted_rows": 1,
+            "n_seals": 1,
+            "n_tablets": 0,
+            "eligible_census_form": false,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          },
+          {
+            "site": "Rupar",
+            "n_restricted_rows": 1,
+            "n_seals": 1,
+            "n_tablets": 0,
+            "eligible_census_form": false,
+            "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+          }
+        ],
+        "eligible_sites_census_form": [
+          "Harappa",
+          "Kalibangan",
+          "Mohenjo-daro"
+        ]
+      }
+    },
+    "0.5_gate_comparison": {
+      "status": "PASS",
+      "joined_rows": 4676,
+      "joined_share_percent": 82.3384,
+      "bar_rows": 3465,
+      "bar_share_percent": 61.0,
+      "shortfall_rows": 0
+    }
+  },
+  "outcome": {
+    "class": "REPLICATED",
+    "wording": "On the enlarged object-ID-joined set (4676 of 5,679 lineage rows, 82.34%, against the original join's 51.0%), the seal/tablet difference in TERMINAL14 endings replicates within sites: Mantel\u2013Haenszel odds ratio 2.452, 95% CI [1.965\u20133.058], entirely above 1.5, family-adjusted q = 0.0001. The original F1 result was not an artefact of which rows the concordance join could reach, at this test's resolution. Leave-one-site-out: every dropped-site subset remained estimable with its interval excluding 1; no site is load-bearing. This is a statement about recorded use in this lineage layer, not about what the difference means.",
+    "f1_quantity_computed": true
+  },
+  "ai_disclosure": "Produced by an AI agent (Muse Spark, via Muse) at the direction of Tristen Pierson, per constitution section VI.",
+  "inputs": {
+    "reports/phase136_results.json": {
+      "path": "/home/hatch/workspace/glossa-wt-067/reports/phase136_results.json",
+      "sha256": "11a0741317f50d9b8c2791fbfdd42ebec0f2a250d6f76809a2dec29fef857022",
+      "bytes": 12992,
+      "pin_sha256": "11a0741317f50d9b8c2791fbfdd42ebec0f2a250d6f76809a2dec29fef857022",
+      "pin_bytes": 12992,
+      "match": true
+    },
+    "specs/024-evidence-integration/stage2a-freeze.md": {
+      "path": "/home/hatch/workspace/glossa-wt-067/specs/024-evidence-integration/stage2a-freeze.md",
+      "sha256": "c65a4b9ba7820f8dcf65fccfe64b8c271e488b036a754c76c45cd19f7cb4b94c",
+      "bytes": 13150,
+      "pin_sha256": "c65a4b9ba7820f8dcf65fccfe64b8c271e488b036a754c76c45cd19f7cb4b94c",
+      "pin_bytes": 13150,
+      "match": true
+    },
+    "backend/scripts/phase136_terminal_type.py": {
+      "path": "/home/hatch/workspace/glossa-wt-067/backend/scripts/phase136_terminal_type.py",
+      "sha256": "d5ceec463bd271cd900fd2e5dbe2efb5b9e5f2b36444942b1d6cab12a6ee8871",
+      "bytes": 22853,
+      "pin_sha256": "d5ceec463bd271cd900fd2e5dbe2efb5b9e5f2b36444942b1d6cab12a6ee8871",
+      "pin_bytes": 22853,
+      "match": true
+    },
+    "reports/phase141_report.md": {
+      "path": "/home/hatch/workspace/glossa-wt-067/reports/phase141_report.md",
+      "sha256": "d442f8d2bcd1e7500c6df169f1dda0d8f48117c349e1710b34ff83011c7e4347",
+      "bytes": 5453,
+      "pin_sha256": "d442f8d2bcd1e7500c6df169f1dda0d8f48117c349e1710b34ff83011c7e4347",
+      "pin_bytes": 5453,
+      "match": true
+    },
+    "reports/phase136_137_138_stage2_report.md": {
+      "path": "/home/hatch/workspace/glossa-wt-067/reports/phase136_137_138_stage2_report.md",
+      "sha256": "6a4f5d2651ddc8316cf69d65ff6f4d29a7138ddc528c68310e6f07047eaed062",
+      "bytes": 13823,
+      "pin_sha256": "6a4f5d2651ddc8316cf69d65ff6f4d29a7138ddc528c68310e6f07047eaed062",
+      "pin_bytes": 13823,
+      "match": true
+    },
+    "data/crosswalks/canonical_sign_registry.csv": {
+      "path": "/home/hatch/workspace/glossa-wt-067/data/crosswalks/canonical_sign_registry.csv",
+      "sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+      "bytes": 111583,
+      "pin_sha256": "8a0b2a82ac8d226d574ce01f5550c581efd91a97cab86201a62f7a7e435bd420",
+      "pin_bytes": 111583,
+      "match": true
+    },
+    "specs/034-matched-object-attribution/outcome.md": {
+      "path": "/home/hatch/workspace/glossa-wt-067/specs/034-matched-object-attribution/outcome.md",
+      "sha256": "c0cc615ddb062306aa43cc8441fe5c6c322b563badd351ebce54fed1d7b43175",
+      "bytes": 8142,
+      "pin_sha256": "c0cc615ddb062306aa43cc8441fe5c6c322b563badd351ebce54fed1d7b43175",
+      "pin_bytes": 8142,
+      "match": true
+    },
+    "specs/037-cisi31-concordance-spine/outcome.md": {
+      "path": "/home/hatch/workspace/glossa-wt-067/specs/037-cisi31-concordance-spine/outcome.md",
+      "sha256": "28e444f20e698b3533559aac3a4bc3efcbc50440e79427ae58f656642886a02a",
+      "bytes": 16077,
+      "pin_sha256": "28e444f20e698b3533559aac3a4bc3efcbc50440e79427ae58f656642886a02a",
+      "pin_bytes": 16077,
+      "match": true
+    },
+    "backend/reports/INDUS_FINAL_ANCHORS.json": {
+      "path": "/home/hatch/workspace/glossa-wt-067/backend/reports/INDUS_FINAL_ANCHORS.json",
+      "sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+      "bytes": 570344,
+      "pin_sha256": "df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569",
+      "pin_bytes": 570344,
+      "match": true
+    },
+    "data/intake/intake_dataset_schema_v1.json": {
+      "path": "/home/hatch/workspace/glossa-wt-067/data/intake/intake_dataset_schema_v1.json",
+      "sha256": "b94d03add0318044b559b7b2976bbd2722abc19adcf67a0ea0cf093f8d7de49b",
+      "bytes": 6197,
+      "pin_sha256": "b94d03add0318044b559b7b2976bbd2722abc19adcf67a0ea0cf093f8d7de49b",
+      "pin_bytes": 6197,
+      "match": true
+    },
+    "backend/glossa_lab/phase398_matched_object.py": {
+      "path": "/home/hatch/workspace/glossa-wt-067/backend/glossa_lab/phase398_matched_object.py",
+      "sha256": "278f16b0ae8b02b77412cc925ac9e767110f5d5461729b73e8c122a9ff7673f0",
+      "bytes": 40104,
+      "pin_sha256": "278f16b0ae8b02b77412cc925ac9e767110f5d5461729b73e8c122a9ff7673f0",
+      "pin_bytes": 40104,
+      "match": true
+    },
+    "backend/glossa_lab/intake.py": {
+      "path": "/home/hatch/workspace/glossa-wt-067/backend/glossa_lab/intake.py",
+      "sha256": "02b24e3312a9a4ac4f7e3b14aeaee2cda0268f41cb5bd573494340c2e7d2df03",
+      "bytes": 18867,
+      "pin_sha256": "02b24e3312a9a4ac4f7e3b14aeaee2cda0268f41cb5bd573494340c2e7d2df03",
+      "pin_bytes": 18867,
+      "match": true
+    },
+    "reports/phase421_join_census.json": {
+      "path": "/home/hatch/workspace/glossa-wt-067/reports/phase421_join_census.json",
+      "sha256": "952829317a7b8e48e809da4353cdf5f6b6f872180920bc349aaf747595b99bb8",
+      "bytes": 1981510,
+      "pin_sha256": "952829317a7b8e48e809da4353cdf5f6b6f872180920bc349aaf747595b99bb8",
+      "pin_bytes": 1981510,
+      "match": true
+    },
+    "reports/phase421_results.json": {
+      "path": "/home/hatch/workspace/glossa-wt-067/reports/phase421_results.json",
+      "sha256": "3948cd01f960842b963061d96ddeabd5ee0b5cdeb572d786976d476d84ff0c7f",
+      "bytes": 36170,
+      "pin_sha256": "3948cd01f960842b963061d96ddeabd5ee0b5cdeb572d786976d476d84ff0c7f",
+      "pin_bytes": 36170,
+      "match": true
+    },
+    "data/intake/cisi31_extension_index.csv": {
+      "path": "/home/hatch/workspace/glossa-wt-067/data/intake/cisi31_extension_index.csv",
+      "sha256": "be20439a094d4196352bd8c31fd8eeee3f92cd81d8443786a1c520d8355f2540",
+      "bytes": 78531,
+      "pin_sha256": "be20439a094d4196352bd8c31fd8eeee3f92cd81d8443786a1c520d8355f2540",
+      "pin_bytes": 78531,
+      "match": true
+    },
+    "horus84_inscriptions": {
+      "path": "/home/hatch/workspace/research_notes/indus-data-deep-sweep-20261008/downloads/horus84-computational-linguistics/data/inscriptions.csv",
+      "sha256": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef",
+      "bytes": 1190884,
+      "pin_sha256": "c368f290d8d784093d804243100de27ae6ad09df3ae37cab7432a0205d4ec9ef",
+      "pin_bytes": 1190884,
+      "match": true
+    },
+    "cisi_vol1_catalogue": {
+      "path": "/home/hatch/workspace/glossa-lab/corpora/downloads/cisi_image_layer/catalogue/cisi_vol1_catalogue.csv",
+      "sha256": "e0d698f991fbd7cf26c491a2b25906b422903a0e2a26ea7b8c690420ca51dc1e",
+      "bytes": 804665,
+      "pin_sha256": "e0d698f991fbd7cf26c491a2b25906b422903a0e2a26ea7b8c690420ca51dc1e",
+      "pin_bytes": 804665,
+      "match": true
+    },
+    "cisi_vol2_catalogue": {
+      "path": "/home/hatch/workspace/glossa-lab/corpora/downloads/cisi_image_layer/catalogue/cisi_vol2_catalogue.csv",
+      "sha256": "e751244e2d51bda3181d98e56af691c0d24099d76d035b54f0888504204bc7d9",
+      "bytes": 1431631,
+      "pin_sha256": "e751244e2d51bda3181d98e56af691c0d24099d76d035b54f0888504204bc7d9",
+      "pin_bytes": 1431631,
+      "match": true
+    },
+    "icit_converted_v2_keyed": {
+      "path": "/home/hatch/workspace/glossa-lab/corpora/downloads/icit_fieldcady/icit_converted_v2_keyed.json",
+      "sha256": "bbfdbcd5d5e3e3121251de91462af51dc702a4114a4d10ffd7061e1f5593a5c8",
+      "bytes": 1586137,
+      "pin_sha256": "bbfdbcd5d5e3e3121251de91462af51dc702a4114a4d10ffd7061e1f5593a5c8",
+      "pin_bytes": 1586137,
+      "match": true
+    },
+    "merged_catalogue_layer_v2": {
+      "path": "/home/hatch/workspace/glossa-lab/corpora/downloads/cisi_image_layer/catalogue/cisi_catalogue_layer_v2.csv",
+      "sha256": "cd0c2ba8823678be9f7573616528ae0b6be2fe579dc7e34c93add421c80886ad",
+      "bytes": 2655958,
+      "pin_sha256": "cd0c2ba8823678be9f7573616528ae0b6be2fe579dc7e34c93add421c80886ad",
+      "pin_bytes": 2655958,
+      "match": true
+    },
+    "spec066_freeze_digest": {
+      "path": "specs/066-phase130-catalogue-extension/freeze.json",
+      "digest": "0b81d8421c8fe66b486b2c729bb7e978faa6327c74b8f1bff7984128a31aa355",
+      "pin_digest": "0b81d8421c8fe66b486b2c729bb7e978faa6327c74b8f1bff7984128a31aa355",
+      "match": true
+    }
+  },
+  "merged_layer_v2_shape": {
+    "rows": 9741,
+    "distinct_objects": 5529,
+    "rows_by_volume": {
+      "1": 3320,
+      "2": 4385,
+      "3.1-portion": 2036
+    },
+    "object_type_mix_all_rows": {
+      "(unfilled)": 546,
+      "Graffiti": 976,
+      "Objects": 65,
+      "Seal impressions": 23,
+      "Seals": 5252,
+      "Tablets": 2879
+    }
+  },
+  "census": {
+    "unit": "layer row (DD-067-2)",
+    "layer_rows": 5679,
+    "dataset_records_carrying_identifier": 5018,
+    "rows_without_identifier": 661,
+    "joined_rows": 4676,
+    "joined_share": 0.8233843986617362,
+    "joined_share_percent": 82.3384,
+    "unjoined_rows": 1003,
+    "unjoined_with_identifier_resolving_zero": 342,
+    "ambiguous_rows_more_than_one_object": 0,
+    "distinct_catalogue_objects_joined_to": 3763,
+    "catalogue_layer": {
+      "name": "merged catalogue layer v2 (Spec 066)",
+      "rows_total": 9741,
+      "distinct_objects": 5529,
+      "rows_by_volume": {
+        "1": 3320,
+        "2": 4385,
+        "3.1-portion": 2036
+      },
+      "vols_1_2_reference": {
+        "rows_total": 7705,
+        "per_volume": {
+          "vol1": {
+            "rows": 3320,
+            "distinct_ids": 1475
+          },
+          "vol2": {
+            "rows": 4385,
+            "distinct_ids": 2019
+          }
+        },
+        "distinct_objects_merged": 3493,
+        "ids_in_both_volumes": [
+          "H-311"
+        ]
+      }
+    },
+    "joined_site_mix_lineage": {
+      "Alamgirpur": 1,
+      "Allahdino": 9,
+      "Amri": 1,
+      "Banawali": 23,
+      "Chandigarh": 2,
+      "Chanhu-daro": 33,
+      "Daimabad": 2,
+      "Desalpur": 2,
+      "Dholavira": 2,
+      "Gharo Bhiro": 1,
+      "Gumla": 2,
+      "Harappa": 2475,
+      "Hissam-dheri": 1,
+      "Hulas": 1,
+      "Jhukar": 1,
+      "Kalibangan": 96,
+      "Khirsara": 2,
+      "Kot-Diji": 9,
+      "Lohumjo-daro": 1,
+      "Lothal": 171,
+      "Mohenjo-daro": 1821,
+      "Naru-Waro-dharo": 3,
+      "Nausharo": 5,
+      "Nindowari-damb": 2,
+      "Pabumath": 1,
+      "Pirak": 1,
+      "Rahman-deri": 2,
+      "Rakhigarhi": 4,
+      "Rodji": 1,
+      "Rupar": 1
+    },
+    "joined_object_type_mix": {
+      "(unfilled)": 317,
+      "Graffiti": 214,
+      "Objects": 53,
+      "Seal impressions": 15,
+      "Seals": 1969,
+      "Tablets": 2108
+    },
+    "by_site": [
+      {
+        "site": "Alamgirpur",
+        "layer_rows": 3,
+        "joined_rows": 1
+      },
+      {
+        "site": "Allahdino",
+        "layer_rows": 12,
+        "joined_rows": 9
+      },
+      {
+        "site": "Altyn Depe",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Amri",
+        "layer_rows": 5,
+        "joined_rows": 1
+      },
+      {
+        "site": "Bakkar Buthi",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Bala-kot",
+        "layer_rows": 7,
+        "joined_rows": 0
+      },
+      {
+        "site": "Banawali",
+        "layer_rows": 26,
+        "joined_rows": 23
+      },
+      {
+        "site": "Baror",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Bhirrana",
+        "layer_rows": 6,
+        "joined_rows": 0
+      },
+      {
+        "site": "Chandigarh",
+        "layer_rows": 3,
+        "joined_rows": 2
+      },
+      {
+        "site": "Chanhu-daro",
+        "layer_rows": 74,
+        "joined_rows": 33
+      },
+      {
+        "site": "Daimabad",
+        "layer_rows": 2,
+        "joined_rows": 2
+      },
+      {
+        "site": "Derawar Ther",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Desalpur",
+        "layer_rows": 3,
+        "joined_rows": 2
+      },
+      {
+        "site": "Dholavira",
+        "layer_rows": 238,
+        "joined_rows": 2
+      },
+      {
+        "site": "Failaka",
+        "layer_rows": 2,
+        "joined_rows": 0
+      },
+      {
+        "site": "Farmana",
+        "layer_rows": 8,
+        "joined_rows": 0
+      },
+      {
+        "site": "Ganweriwala",
+        "layer_rows": 2,
+        "joined_rows": 0
+      },
+      {
+        "site": "Gharo Bhiro",
+        "layer_rows": 1,
+        "joined_rows": 1
+      },
+      {
+        "site": "Girsu",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Gola Dhoro (Bagasra)",
+        "layer_rows": 6,
+        "joined_rows": 0
+      },
+      {
+        "site": "Gonur Depe",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Guddal A",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Gumla",
+        "layer_rows": 2,
+        "joined_rows": 2
+      },
+      {
+        "site": "Hajar",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Harappa",
+        "layer_rows": 2717,
+        "joined_rows": 2475
+      },
+      {
+        "site": "Hissam-dheri",
+        "layer_rows": 2,
+        "joined_rows": 1
+      },
+      {
+        "site": "Hulas",
+        "layer_rows": 1,
+        "joined_rows": 1
+      },
+      {
+        "site": "Janabiyah",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Jhukar",
+        "layer_rows": 1,
+        "joined_rows": 1
+      },
+      {
+        "site": "Juna Khatiya",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Kalba",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Kalibangan",
+        "layer_rows": 212,
+        "joined_rows": 96
+      },
+      {
+        "site": "Kanmer",
+        "layer_rows": 10,
+        "joined_rows": 0
+      },
+      {
+        "site": "Karanpura",
+        "layer_rows": 8,
+        "joined_rows": 0
+      },
+      {
+        "site": "Karzakan",
+        "layer_rows": 3,
+        "joined_rows": 0
+      },
+      {
+        "site": "Khirsara",
+        "layer_rows": 4,
+        "joined_rows": 2
+      },
+      {
+        "site": "Kish",
+        "layer_rows": 2,
+        "joined_rows": 0
+      },
+      {
+        "site": "Kot-Diji",
+        "layer_rows": 11,
+        "joined_rows": 9
+      },
+      {
+        "site": "Lakhanjo-daro",
+        "layer_rows": 15,
+        "joined_rows": 0
+      },
+      {
+        "site": "Lohumjo-daro",
+        "layer_rows": 1,
+        "joined_rows": 1
+      },
+      {
+        "site": "Lothal",
+        "layer_rows": 208,
+        "joined_rows": 171
+      },
+      {
+        "site": "Luristan",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Miri Qalat",
+        "layer_rows": 2,
+        "joined_rows": 0
+      },
+      {
+        "site": "Mohenjo-daro",
+        "layer_rows": 1923,
+        "joined_rows": 1821
+      },
+      {
+        "site": "Murda Sang",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Naru-Waro-dharo",
+        "layer_rows": 3,
+        "joined_rows": 3
+      },
+      {
+        "site": "Nausharo",
+        "layer_rows": 38,
+        "joined_rows": 5
+      },
+      {
+        "site": "Nindowari-damb",
+        "layer_rows": 2,
+        "joined_rows": 2
+      },
+      {
+        "site": "Nippur",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Nuhato",
+        "layer_rows": 5,
+        "joined_rows": 0
+      },
+      {
+        "site": "Ornach area",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Pabumath",
+        "layer_rows": 1,
+        "joined_rows": 1
+      },
+      {
+        "site": "Pirak",
+        "layer_rows": 1,
+        "joined_rows": 1
+      },
+      {
+        "site": "Qala'at al-Bahrain",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Ra's al-Junayz",
+        "layer_rows": 4,
+        "joined_rows": 0
+      },
+      {
+        "site": "Rahman-deri",
+        "layer_rows": 2,
+        "joined_rows": 2
+      },
+      {
+        "site": "Rajanpur",
+        "layer_rows": 2,
+        "joined_rows": 0
+      },
+      {
+        "site": "Rakhigarhi",
+        "layer_rows": 13,
+        "joined_rows": 4
+      },
+      {
+        "site": "Rappwala Ther",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Rodji",
+        "layer_rows": 4,
+        "joined_rows": 1
+      },
+      {
+        "site": "Rupar",
+        "layer_rows": 5,
+        "joined_rows": 1
+      },
+      {
+        "site": "Saar",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Salut",
+        "layer_rows": 2,
+        "joined_rows": 0
+      },
+      {
+        "site": "Shikarpur",
+        "layer_rows": 8,
+        "joined_rows": 0
+      },
+      {
+        "site": "Shortughai",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Sibri",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Surkotada",
+        "layer_rows": 6,
+        "joined_rows": 0
+      },
+      {
+        "site": "Susa",
+        "layer_rows": 2,
+        "joined_rows": 0
+      },
+      {
+        "site": "Tarkhanewala-dera",
+        "layer_rows": 3,
+        "joined_rows": 0
+      },
+      {
+        "site": "Tell Umma",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Tello",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Tepe Yahya",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Tigrana",
+        "layer_rows": 1,
+        "joined_rows": 0
+      },
+      {
+        "site": "Unknown",
+        "layer_rows": 28,
+        "joined_rows": 0
+      },
+      {
+        "site": "Ur",
+        "layer_rows": 5,
+        "joined_rows": 0
+      },
+      {
+        "site": "Wattoowala",
+        "layer_rows": 1,
+        "joined_rows": 0
+      }
+    ],
+    "added_rows_vs_original_join_count": 1781,
+    "added_rows_vs_original_join": "row-level list held in the restricted-local per-row census (spec section 7.3); count only here",
+    "original_joined_rows_lost": 0,
+    "raw_value_discrepancies_lineage_vs_converted_count": 5,
+    "raw_value_discrepancies_lineage_vs_converted": "per-row detail held in the restricted-local per-row census; count only here",
+    "cross_check": "the census was derived twice: through the pinned route-(b) intake dataset and directly from the lineage layer's own cisi field (same strip the construction applies); every row's joined classification agrees between the two routes",
+    "more_than_one_note": "resolution is against distinct catalogue objects in the merged catalogue layer v2 (DD-067-9): an identifier is a distinct object's own ID, so the more-than-one class is structurally empty on this layer; it is counted and reported as observed"
+  },
+  "type_fill_census": {
+    "newly_joined_objects": {
+      "joined_rows": 1777,
+      "rows_type_filled": 1603,
+      "rows_type_unfilled": 174,
+      "distinct_objects": 1284,
+      "distinct_objects_type_filled": 1152,
+      "distinct_objects_type_unfilled": 132,
+      "type_mix_rows": {
+        "(unfilled)": 174,
+        "Graffiti": 145,
+        "Objects": 46,
+        "Seal impressions": 15,
+        "Seals": 379,
+        "Tablets": 1018
+      },
+      "type_mix_distinct_objects": {
+        "(unfilled)": 132,
+        "Graffiti": 144,
+        "Objects": 46,
+        "Seal impressions": 14,
+        "Seals": 371,
+        "Tablets": 577
+      }
+    },
+    "newly_joined_definition": "joined rows the Phase-421 census recorded as unjoined with resolution class zero (identifier resolving to zero objects in the vols. 1-2 layer)",
+    "whole_joined_set": {
+      "joined_rows": 4676,
+      "rows_type_filled": 4359,
+      "rows_type_unfilled": 317,
+      "distinct_objects": 3763,
+      "distinct_objects_type_filled": 3511,
+      "distinct_objects_type_unfilled": 252,
+      "type_mix_rows": {
+        "(unfilled)": 317,
+        "Graffiti": 214,
+        "Objects": 53,
+        "Seal impressions": 15,
+        "Seals": 1969,
+        "Tablets": 2108
+      },
+      "type_mix_distinct_objects": {
+        "(unfilled)": 252,
+        "Graffiti": 211,
+        "Objects": 50,
+        "Seal impressions": 14,
+        "Seals": 1922,
+        "Tablets": 1314
+      }
+    },
+    "restricted_seals_tablets_rows": 4077,
+    "eligible_seal_tablet_strata_census_form": [
+      {
+        "site": "Allahdino",
+        "n_restricted_rows": 9,
+        "n_seals": 9,
+        "n_tablets": 0,
+        "eligible_census_form": false,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      },
+      {
+        "site": "Banawali",
+        "n_restricted_rows": 18,
+        "n_seals": 14,
+        "n_tablets": 4,
+        "eligible_census_form": false,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      },
+      {
+        "site": "Chanhu-daro",
+        "n_restricted_rows": 30,
+        "n_seals": 27,
+        "n_tablets": 3,
+        "eligible_census_form": false,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      },
+      {
+        "site": "Daimabad",
+        "n_restricted_rows": 1,
+        "n_seals": 1,
+        "n_tablets": 0,
+        "eligible_census_form": false,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      },
+      {
+        "site": "Desalpur",
+        "n_restricted_rows": 2,
+        "n_seals": 2,
+        "n_tablets": 0,
+        "eligible_census_form": false,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      },
+      {
+        "site": "Dholavira",
+        "n_restricted_rows": 2,
+        "n_seals": 2,
+        "n_tablets": 0,
+        "eligible_census_form": false,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      },
+      {
+        "site": "Harappa",
+        "n_restricted_rows": 2140,
+        "n_seals": 431,
+        "n_tablets": 1709,
+        "eligible_census_form": true,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      },
+      {
+        "site": "Hulas",
+        "n_restricted_rows": 1,
+        "n_seals": 1,
+        "n_tablets": 0,
+        "eligible_census_form": false,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      },
+      {
+        "site": "Jhukar",
+        "n_restricted_rows": 1,
+        "n_seals": 1,
+        "n_tablets": 0,
+        "eligible_census_form": false,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      },
+      {
+        "site": "Kalibangan",
+        "n_restricted_rows": 68,
+        "n_seals": 53,
+        "n_tablets": 15,
+        "eligible_census_form": true,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      },
+      {
+        "site": "Khirsara",
+        "n_restricted_rows": 2,
+        "n_seals": 2,
+        "n_tablets": 0,
+        "eligible_census_form": false,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      },
+      {
+        "site": "Lohumjo-daro",
+        "n_restricted_rows": 1,
+        "n_seals": 1,
+        "n_tablets": 0,
+        "eligible_census_form": false,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      },
+      {
+        "site": "Lothal",
+        "n_restricted_rows": 95,
+        "n_seals": 95,
+        "n_tablets": 0,
+        "eligible_census_form": false,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      },
+      {
+        "site": "Mohenjo-daro",
+        "n_restricted_rows": 1701,
+        "n_seals": 1324,
+        "n_tablets": 377,
+        "eligible_census_form": true,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      },
+      {
+        "site": "Pabumath",
+        "n_restricted_rows": 1,
+        "n_seals": 1,
+        "n_tablets": 0,
+        "eligible_census_form": false,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      },
+      {
+        "site": "Pirak",
+        "n_restricted_rows": 1,
+        "n_seals": 1,
+        "n_tablets": 0,
+        "eligible_census_form": false,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      },
+      {
+        "site": "Rakhigarhi",
+        "n_restricted_rows": 2,
+        "n_seals": 2,
+        "n_tablets": 0,
+        "eligible_census_form": false,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      },
+      {
+        "site": "Rodji",
+        "n_restricted_rows": 1,
+        "n_seals": 1,
+        "n_tablets": 0,
+        "eligible_census_form": false,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      },
+      {
+        "site": "Rupar",
+        "n_restricted_rows": 1,
+        "n_seals": 1,
+        "n_tablets": 0,
+        "eligible_census_form": false,
+        "note": "census form: restriction to {Seals, Tablets} then the stratum rule, before any terminal mapping (spec section 3.4); the primary's eligibility is computed on the analysis population in section 4"
+      }
+    ],
+    "eligible_sites_census_form": [
+      "Harappa",
+      "Kalibangan",
+      "Mohenjo-daro"
+    ]
+  },
+  "primary_test": {
+    "flow": {
+      "joined_rows": 4676,
+      "typed_filled": 4359,
+      "typed_by_type": {
+        "Graffiti": 214,
+        "Objects": 53,
+        "Seal impressions": 15,
+        "Seals": 1969,
+        "Tablets": 2108
+      },
+      "untyped": 317,
+      "restricted_seals_tablets": 4077,
+      "terminal_mapped": 3315,
+      "terminal_unk": 762,
+      "terminal_no_codes": 0,
+      "analysis_population_all_strata": 3315,
+      "analysis_population_eligible_strata": 3181
+    },
+    "strata": [
+      {
+        "site": "Harappa",
+        "n": 1695,
+        "n_seals": 340,
+        "n_tablets": 1355,
+        "eligible": true,
+        "table": {
+          "a": 87,
+          "b": 253,
+          "c": 150,
+          "d": 1205
+        },
+        "odds_ratio": 2.7624505928853753,
+        "terminal14_share_seals": 0.25588235294117645,
+        "terminal14_share_tablets": 0.11070110701107011
+      },
+      {
+        "site": "Mohenjo-daro",
+        "n": 1435,
+        "n_seals": 1113,
+        "n_tablets": 322,
+        "eligible": true,
+        "table": {
+          "a": 340,
+          "b": 773,
+          "c": 53,
+          "d": 269
+        },
+        "odds_ratio": 2.232419634357685,
+        "terminal14_share_seals": 0.3054806828391734,
+        "terminal14_share_tablets": 0.16459627329192547
+      },
+      {
+        "site": "Lothal",
+        "n": 70,
+        "n_seals": 70,
+        "n_tablets": 0,
+        "eligible": false,
+        "table": {
+          "a": 22,
+          "b": 48,
+          "c": 0,
+          "d": 0
+        },
+        "odds_ratio": null,
+        "terminal14_share_seals": 0.3142857142857143,
+        "terminal14_share_tablets": null
+      },
+      {
+        "site": "Kalibangan",
+        "n": 51,
+        "n_seals": 40,
+        "n_tablets": 11,
+        "eligible": true,
+        "table": {
+          "a": 5,
+          "b": 35,
+          "c": 1,
+          "d": 10
+        },
+        "odds_ratio": 1.4285714285714286,
+        "terminal14_share_seals": 0.125,
+        "terminal14_share_tablets": 0.09090909090909091
+      },
+      {
+        "site": "Chanhu-daro",
+        "n": 24,
+        "n_seals": 21,
+        "n_tablets": 3,
+        "eligible": false,
+        "table": {
+          "a": 3,
+          "b": 18,
+          "c": 0,
+          "d": 3
+        },
+        "odds_ratio": null,
+        "terminal14_share_seals": 0.14285714285714285,
+        "terminal14_share_tablets": 0.0
+      },
+      {
+        "site": "Banawali",
+        "n": 17,
+        "n_seals": 13,
+        "n_tablets": 4,
+        "eligible": false,
+        "table": {
+          "a": 5,
+          "b": 8,
+          "c": 0,
+          "d": 4
+        },
+        "odds_ratio": null,
+        "terminal14_share_seals": 0.38461538461538464,
+        "terminal14_share_tablets": 0.0
+      },
+      {
+        "site": "Allahdino",
+        "n": 8,
+        "n_seals": 8,
+        "n_tablets": 0,
+        "eligible": false,
+        "table": {
+          "a": 0,
+          "b": 8,
+          "c": 0,
+          "d": 0
+        },
+        "odds_ratio": null,
+        "terminal14_share_seals": 0.0,
+        "terminal14_share_tablets": null
+      },
+      {
+        "site": "Desalpur",
+        "n": 2,
+        "n_seals": 2,
+        "n_tablets": 0,
+        "eligible": false,
+        "table": {
+          "a": 1,
+          "b": 1,
+          "c": 0,
+          "d": 0
+        },
+        "odds_ratio": null,
+        "terminal14_share_seals": 0.5,
+        "terminal14_share_tablets": null
+      },
+      {
+        "site": "Dholavira",
+        "n": 2,
+        "n_seals": 2,
+        "n_tablets": 0,
+        "eligible": false,
+        "table": {
+          "a": 2,
+          "b": 0,
+          "c": 0,
+          "d": 0
+        },
+        "odds_ratio": null,
+        "terminal14_share_seals": 1.0,
+        "terminal14_share_tablets": null
+      },
+      {
+        "site": "Khirsara",
+        "n": 2,
+        "n_seals": 2,
+        "n_tablets": 0,
+        "eligible": false,
+        "table": {
+          "a": 0,
+          "b": 2,
+          "c": 0,
+          "d": 0
+        },
+        "odds_ratio": null,
+        "terminal14_share_seals": 0.0,
+        "terminal14_share_tablets": null
+      },
+      {
+        "site": "Rakhigarhi",
+        "n": 2,
+        "n_seals": 2,
+        "n_tablets": 0,
+        "eligible": false,
+        "table": {
+          "a": 0,
+          "b": 2,
+          "c": 0,
+          "d": 0
+        },
+        "odds_ratio": null,
+        "terminal14_share_seals": 0.0,
+        "terminal14_share_tablets": null
+      },
+      {
+        "site": "Daimabad",
+        "n": 1,
+        "n_seals": 1,
+        "n_tablets": 0,
+        "eligible": false,
+        "table": {
+          "a": 0,
+          "b": 1,
+          "c": 0,
+          "d": 0
+        },
+        "odds_ratio": null,
+        "terminal14_share_seals": 0.0,
+        "terminal14_share_tablets": null
+      },
+      {
+        "site": "Hulas",
+        "n": 1,
+        "n_seals": 1,
+        "n_tablets": 0,
+        "eligible": false,
+        "table": {
+          "a": 0,
+          "b": 1,
+          "c": 0,
+          "d": 0
+        },
+        "odds_ratio": null,
+        "terminal14_share_seals": 0.0,
+        "terminal14_share_tablets": null
+      },
+      {
+        "site": "Jhukar",
+        "n": 1,
+        "n_seals": 1,
+        "n_tablets": 0,
+        "eligible": false,
+        "table": {
+          "a": 1,
+          "b": 0,
+          "c": 0,
+          "d": 0
+        },
+        "odds_ratio": null,
+        "terminal14_share_seals": 1.0,
+        "terminal14_share_tablets": null
+      },
+      {
+        "site": "Lohumjo-daro",
+        "n": 1,
+        "n_seals": 1,
+        "n_tablets": 0,
+        "eligible": false,
+        "table": {
+          "a": 0,
+          "b": 1,
+          "c": 0,
+          "d": 0
+        },
+        "odds_ratio": null,
+        "terminal14_share_seals": 0.0,
+        "terminal14_share_tablets": null
+      },
+      {
+        "site": "Pirak",
+        "n": 1,
+        "n_seals": 1,
+        "n_tablets": 0,
+        "eligible": false,
+        "table": {
+          "a": 0,
+          "b": 1,
+          "c": 0,
+          "d": 0
+        },
+        "odds_ratio": null,
+        "terminal14_share_seals": 0.0,
+        "terminal14_share_tablets": null
+      },
+      {
+        "site": "Rodji",
+        "n": 1,
+        "n_seals": 1,
+        "n_tablets": 0,
+        "eligible": false,
+        "table": {
+          "a": 0,
+          "b": 1,
+          "c": 0,
+          "d": 0
+        },
+        "odds_ratio": null,
+        "terminal14_share_seals": 0.0,
+        "terminal14_share_tablets": null
+      },
+      {
+        "site": "Rupar",
+        "n": 1,
+        "n_seals": 1,
+        "n_tablets": 0,
+        "eligible": false,
+        "table": {
+          "a": 0,
+          "b": 1,
+          "c": 0,
+          "d": 0
+        },
+        "odds_ratio": null,
+        "terminal14_share_seals": 0.0,
+        "terminal14_share_tablets": null
+      }
+    ],
+    "eligible_strata": [
+      "Harappa",
+      "Mohenjo-daro",
+      "Kalibangan"
+    ],
+    "estimability": {
+      "n_eligible_strata": 3,
+      "fraction_expected_ge_5": 1.0,
+      "estimable": true,
+      "pooled_table": {
+        "a": 432,
+        "b": 1061,
+        "c": 204,
+        "d": 1484
+      },
+      "pooled_expected_counts": [
+        298.5061301477523,
+        1194.4938698522478,
+        337.4938698522477,
+        1350.5061301477522
+      ]
+    },
+    "test": {
+      "statistic": "Cochran-Mantel-Haenszel chi-square",
+      "statistic_observed": 67.3997731118022,
+      "B": 9999,
+      "seed": 20261009,
+      "n_perm_ge_observed": 0,
+      "raw_p": 0.0001,
+      "adjusted_q_single_test_family": 0.0001,
+      "correction": "DD-067-8: single-test family; q = raw p"
+    },
+    "effect_sizes": {
+      "mh_common_odds_ratio": 2.4516021796728986,
+      "mh_ci95": [
+        1.9651859192920271,
+        3.058414569519296
+      ],
+      "crude_odds_ratio_uncontrolled": {
+        "odds_ratio": 2.9619116261019016,
+        "ci95_wald": [
+          2.4636025478455443,
+          3.56101291115714
+        ],
+        "label": "uncontrolled (unstratified)"
+      }
+    },
+    "loso": {
+      "runs": [
+        {
+          "dropped_site": "Harappa",
+          "estimable": true,
+          "mh_common_odds_ratio": 2.2135504784908147,
+          "mh_ci95": [
+            1.6108787692208304,
+            3.0416973731654013
+          ]
+        },
+        {
+          "dropped_site": "Mohenjo-daro",
+          "estimable": true,
+          "mh_common_odds_ratio": 2.722780764747904,
+          "mh_ci95": [
+            2.0262345854162107,
+            3.6587743325674014
+          ]
+        },
+        {
+          "dropped_site": "Kalibangan",
+          "estimable": true,
+          "mh_common_odds_ratio": 2.465384882192559,
+          "mh_ci95": [
+            1.9743409297709686,
+            3.0785577737319683
+          ]
+        }
+      ],
+      "sentence": "Leave-one-site-out: every dropped-site subset remained estimable with its interval excluding 1; no site is load-bearing.",
+      "note": "descriptive only; mints no verdict"
+    },
+    "outcome": {
+      "class": "REPLICATED",
+      "wording": "On the enlarged object-ID-joined set (4676 of 5,679 lineage rows, 82.34%, against the original join's 51.0%), the seal/tablet difference in TERMINAL14 endings replicates within sites: Mantel\u2013Haenszel odds ratio 2.452, 95% CI [1.965\u20133.058], entirely above 1.5, family-adjusted q = 0.0001. The original F1 result was not an artefact of which rows the concordance join could reach, at this test's resolution. Leave-one-site-out: every dropped-site subset remained estimable with its interval excluding 1; no site is load-bearing. This is a statement about recorded use in this lineage layer, not about what the difference means.",
+      "f1_quantity_computed": true
+    },
+    "covariates": {
+      "joined_vs_unjoined": {
+        "joined": {
+          "n": 4676,
+          "site_mix": {
+            "Alamgirpur": 1,
+            "Allahdino": 9,
+            "Amri": 1,
+            "Banawali": 23,
+            "Chandigarh": 2,
+            "Chanhu-daro": 33,
+            "Daimabad": 2,
+            "Desalpur": 2,
+            "Dholavira": 2,
+            "Gharo Bhiro": 1,
+            "Gumla": 2,
+            "Harappa": 2475,
+            "Hissam-dheri": 1,
+            "Hulas": 1,
+            "Jhukar": 1,
+            "Kalibangan": 96,
+            "Khirsara": 2,
+            "Kot-Diji": 9,
+            "Lohumjo-daro": 1,
+            "Lothal": 171,
+            "Mohenjo-daro": 1821,
+            "Naru-Waro-dharo": 3,
+            "Nausharo": 5,
+            "Nindowari-damb": 2,
+            "Pabumath": 1,
+            "Pirak": 1,
+            "Rahman-deri": 2,
+            "Rakhigarhi": 4,
+            "Rodji": 1,
+            "Rupar": 1
+          },
+          "text_length_codes_mean": 3.6388,
+          "text_length_codes_median": 3,
+          "preservation_mix": {
+            "-": 1,
+            "chipped": 219,
+            "complete": 2812,
+            "fragment": 1320,
+            "partly damaged": 123,
+            "slightly chipped": 201
+          },
+          "material_mix": {
+            "-": 734,
+            "Agate": 3,
+            "Bone": 4,
+            "Brick": 1,
+            "Ceramic": 8,
+            "Clay": 566,
+            "Copper": 243,
+            "Faience": 600,
+            "Gold": 2,
+            "Ivory": 33,
+            "Limestone": 1,
+            "Paste": 4,
+            "Shell": 2,
+            "Silver": 3,
+            "Steatite": 2428,
+            "Stone": 6,
+            "Stoneware": 9,
+            "Terracotta": 25,
+            "metal": 1,
+            "steatite": 3
+          },
+          "object_type_mix": {
+            "(unfilled)": 317,
+            "Graffiti": 214,
+            "Objects": 53,
+            "Seal impressions": 15,
+            "Seals": 1969,
+            "Tablets": 2108
+          }
+        },
+        "unjoined": {
+          "n": 1003,
+          "site_mix": {
+            "Alamgirpur": 2,
+            "Allahdino": 3,
+            "Altyn Depe": 1,
+            "Amri": 4,
+            "Bakkar Buthi": 1,
+            "Bala-kot": 7,
+            "Banawali": 3,
+            "Baror": 1,
+            "Bhirrana": 6,
+            "Chandigarh": 1,
+            "Chanhu-daro": 41,
+            "Derawar Ther": 1,
+            "Desalpur": 1,
+            "Dholavira": 236,
+            "Failaka": 2,
+            "Farmana": 8,
+            "Ganweriwala": 2,
+            "Girsu": 1,
+            "Gola Dhoro (Bagasra)": 6,
+            "Gonur Depe": 1,
+            "Guddal A": 1,
+            "Hajar": 1,
+            "Harappa": 242,
+            "Hissam-dheri": 1,
+            "Janabiyah": 1,
+            "Juna Khatiya": 1,
+            "Kalba": 1,
+            "Kalibangan": 116,
+            "Kanmer": 10,
+            "Karanpura": 8,
+            "Karzakan": 3,
+            "Khirsara": 2,
+            "Kish": 2,
+            "Kot-Diji": 2,
+            "Lakhanjo-daro": 15,
+            "Lothal": 37,
+            "Luristan": 1,
+            "Miri Qalat": 2,
+            "Mohenjo-daro": 102,
+            "Murda Sang": 1,
+            "Nausharo": 33,
+            "Nippur": 1,
+            "Nuhato": 5,
+            "Ornach area": 1,
+            "Qala'at al-Bahrain": 1,
+            "Ra's al-Junayz": 4,
+            "Rajanpur": 2,
+            "Rakhigarhi": 9,
+            "Rappwala Ther": 1,
+            "Rodji": 3,
+            "Rupar": 4,
+            "Saar": 1,
+            "Salut": 2,
+            "Shikarpur": 8,
+            "Shortughai": 1,
+            "Sibri": 1,
+            "Surkotada": 6,
+            "Susa": 2,
+            "Tarkhanewala-dera": 3,
+            "Tell Umma": 1,
+            "Tello": 1,
+            "Tepe Yahya": 1,
+            "Tigrana": 1,
+            "Unknown": 28,
+            "Ur": 5,
+            "Wattoowala": 1
+          },
+          "text_length_codes_mean": 2.9222,
+          "text_length_codes_median": 2,
+          "preservation_mix": {
+            "-": 8,
+            "chipped": 43,
+            "complete": 368,
+            "fragment": 547,
+            "partly damaged": 13,
+            "slightly chipped": 24
+          },
+          "material_mix": {
+            "-": 239,
+            "Bone": 1,
+            "Ceramic": 14,
+            "Clay": 394,
+            "Copper": 21,
+            "Faience": 19,
+            "Gypsum": 1,
+            "Ivory": 4,
+            "Kaolinite": 1,
+            "Paste": 1,
+            "Soft stone": 1,
+            "Steatite": 205,
+            "Stone": 4,
+            "Stoneware": 31,
+            "Terracotta": 53,
+            "terracotta": 14
+          },
+          "object_type_mix": "not carried: unjoined rows have no catalogue object, so the catalogue carries no object type for them"
+        }
+      },
+      "original_vs_added": {
+        "original_joined": {
+          "n": 2895,
+          "site_mix": {
+            "Alamgirpur": 1,
+            "Allahdino": 9,
+            "Amri": 1,
+            "Banawali": 23,
+            "Chandigarh": 2,
+            "Chanhu-daro": 33,
+            "Daimabad": 2,
+            "Desalpur": 2,
+            "Dholavira": 2,
+            "Gharo Bhiro": 1,
+            "Gumla": 2,
+            "Harappa": 1104,
+            "Hissam-dheri": 1,
+            "Hulas": 1,
+            "Jhukar": 1,
+            "Kalibangan": 96,
+            "Khirsara": 2,
+            "Kot-Diji": 9,
+            "Lohumjo-daro": 1,
+            "Lothal": 170,
+            "Mohenjo-daro": 1412,
+            "Naru-Waro-dharo": 3,
+            "Nausharo": 5,
+            "Nindowari-damb": 2,
+            "Pabumath": 1,
+            "Pirak": 1,
+            "Rahman-deri": 2,
+            "Rakhigarhi": 4,
+            "Rodji": 1,
+            "Rupar": 1
+          },
+          "text_length_codes_mean": 4.0269,
+          "text_length_codes_median": 4,
+          "preservation_mix": {
+            "-": 1,
+            "chipped": 129,
+            "complete": 1808,
+            "fragment": 724,
+            "partly damaged": 86,
+            "slightly chipped": 147
+          },
+          "material_mix": {
+            "-": 529,
+            "Agate": 3,
+            "Bone": 2,
+            "Ceramic": 3,
+            "Clay": 261,
+            "Copper": 215,
+            "Faience": 235,
+            "Ivory": 5,
+            "Limestone": 1,
+            "Paste": 3,
+            "Shell": 2,
+            "Silver": 2,
+            "Steatite": 1611,
+            "Stoneware": 3,
+            "Terracotta": 20
+          }
+        },
+        "added_by_object_id_join": {
+          "n": 1781,
+          "site_mix": {
+            "Harappa": 1371,
+            "Lothal": 1,
+            "Mohenjo-daro": 409
+          },
+          "text_length_codes_mean": 3.0079,
+          "text_length_codes_median": 3,
+          "preservation_mix": {
+            "chipped": 90,
+            "complete": 1004,
+            "fragment": 596,
+            "partly damaged": 37,
+            "slightly chipped": 54
+          },
+          "material_mix": {
+            "-": 205,
+            "Bone": 2,
+            "Brick": 1,
+            "Ceramic": 5,
+            "Clay": 305,
+            "Copper": 28,
+            "Faience": 365,
+            "Gold": 2,
+            "Ivory": 28,
+            "Paste": 1,
+            "Silver": 1,
+            "Steatite": 817,
+            "Stone": 6,
+            "Stoneware": 6,
+            "Terracotta": 5,
+            "metal": 1,
+            "steatite": 3
+          }
+        }
+      },
+      "phase421_joined_vs_newly_joined": {
+        "phase421_joined_set": {
+          "n": 2899,
+          "site_mix": {
+            "Alamgirpur": 1,
+            "Allahdino": 9,
+            "Amri": 1,
+            "Banawali": 23,
+            "Chandigarh": 2,
+            "Chanhu-daro": 33,
+            "Daimabad": 2,
+            "Desalpur": 2,
+            "Dholavira": 2,
+            "Gharo Bhiro": 1,
+            "Gumla": 2,
+            "Harappa": 1106,
+            "Hissam-dheri": 1,
+            "Hulas": 1,
+            "Jhukar": 1,
+            "Kalibangan": 96,
+            "Khirsara": 2,
+            "Kot-Diji": 9,
+            "Lohumjo-daro": 1,
+            "Lothal": 171,
+            "Mohenjo-daro": 1413,
+            "Naru-Waro-dharo": 3,
+            "Nausharo": 5,
+            "Nindowari-damb": 2,
+            "Pabumath": 1,
+            "Pirak": 1,
+            "Rahman-deri": 2,
+            "Rakhigarhi": 4,
+            "Rodji": 1,
+            "Rupar": 1
+          },
+          "text_length_codes_mean": 4.0262,
+          "text_length_codes_median": 4,
+          "preservation_mix": {
+            "-": 1,
+            "chipped": 129,
+            "complete": 1811,
+            "fragment": 725,
+            "partly damaged": 86,
+            "slightly chipped": 147
+          },
+          "material_mix": {
+            "-": 529,
+            "Agate": 3,
+            "Bone": 2,
+            "Ceramic": 3,
+            "Clay": 262,
+            "Copper": 215,
+            "Faience": 235,
+            "Ivory": 5,
+            "Limestone": 1,
+            "Paste": 3,
+            "Shell": 2,
+            "Silver": 2,
+            "Steatite": 1614,
+            "Stoneware": 3,
+            "Terracotta": 20
+          }
+        },
+        "newly_joined_by_layer_v2": {
+          "n": 1777,
+          "site_mix": {
+            "Harappa": 1369,
+            "Mohenjo-daro": 408
+          },
+          "text_length_codes_mean": 3.0068,
+          "text_length_codes_median": 3,
+          "preservation_mix": {
+            "chipped": 90,
+            "complete": 1001,
+            "fragment": 595,
+            "partly damaged": 37,
+            "slightly chipped": 54
+          },
+          "material_mix": {
+            "-": 205,
+            "Bone": 2,
+            "Brick": 1,
+            "Ceramic": 5,
+            "Clay": 304,
+            "Copper": 28,
+            "Faience": 365,
+            "Gold": 2,
+            "Ivory": 28,
+            "Paste": 1,
+            "Silver": 1,
+            "Steatite": 814,
+            "Stone": 6,
+            "Stoneware": 6,
+            "Terracotta": 5,
+            "metal": 1,
+            "steatite": 3
+          }
+        }
+      },
+      "not_carried": "object type for unjoined rows (no catalogue object); any covariate absent from the lineage layer's fields"
+    }
+  },
+  "anchors_byte_identical": true
+}

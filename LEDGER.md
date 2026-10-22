@@ -9041,6 +9041,139 @@ reproduces the pre-act file byte-identically; status and stage
 unchanged). Spec 046's frozen record, outcome, and closure delivery
 stand unedited. Anchors asserted byte-identical before and after
 (df0cf620…).
+## 2026-10-22 — Spec 067 EXECUTED (Phase-429): REPLICATED
+
+Spec 059's question re-run against the Spec 066 merged catalogue layer v2, under
+the frozen Spec 067 contract (freeze digest
+73463ab949f65ecf620a9f4544b9a84fe18f72056a86c48ce9d5d0164f3d41db; freeze PR #318
+merged at dcfa3af6; OSF registration qsthg approved and API-verified public
+before the run). Step 0, in the frozen order: gate 0.1 PASS — every pin
+recomputed, the merged layer v2 asserted on the local file first (SHA-256
+cd0c2ba8823678be9f7573616528ae0b6be2fe579dc7e34c93add421c80886ad, 2,655,958
+bytes, 9,741 rows, 5,529 distinct objects); gate 0.2 PASS — the original
+concordance join reproduced exactly against the vols. 1–2 layer (5,679 / 2,895
+/ 2 / 2,782), contributing no row; gate 0.3 PASS — the object-ID join through
+the Phase-130 schema (5,018 records, validation pass) joined 4,676 of 5,679
+rows (82.34%) against layer v2 (661 no identifier, 342 resolving to zero, 0
+ambiguous; 3,763 distinct objects); gate 0.4 PASS — the mandatory type-fill
+census before any F1 quantity: newly joined objects 1,777 rows / 1,284 distinct
+objects, type filled 1,152 objects, unfilled 132; whole joined set type filled
+3,511 of 3,763 distinct objects (317 rows unfilled), restricted to
+{Seals, Tablets} 4,077 rows, census-form eligible strata Harappa, Kalibangan,
+Mohenjo-daro; gate 0.5 PASS — 4,676 joined rows against the bar carried from
+Spec 059 at DD-067-7 (≥ 3,465 rows, 61.0%), a margin of 1,211 rows, judged on
+this execution's own census (Spec 066's projection is not cited as a result).
+The frozen Phase-136 flow on the enlarged set, unchanged: 4,676 joined → 4,359
+typed → 4,077 seals/tablets → 3,315 terminal-mapped → 3,181 in the eligible
+strata (Harappa, Mohenjo-daro, Kalibangan — the original three); estimable
+(pooled expected counts ≥ 5 in 4 of 4 cells). CMH chi-square 67.3998;
+permutation raw p = 0.0001 (B = 9,999, seed 20261009); family-adjusted
+q = 0.0001 (single-test family, DD-067-8); Mantel–Haenszel common odds ratio
+2.452, 95% CI [1.965, 3.058] — entirely above 1.5, so the §5 verdict is
+REPLICATED. Leave-one-site-out (descriptive): drop Harappa 2.214
+[1.611, 3.042], drop Mohenjo-daro 2.723 [2.026, 3.659], drop Kalibangan 2.465
+[1.974, 3.079] — every subset estimable, no site load-bearing. Both covariate
+comparisons are in the machine record (the added rows are chiefly Harappa's,
+shorter, and more fragmentary than the original joined set). The claim's
+"on the joined subset" scope is re-stated by the outcome's appended record
+only, as §5 provides for a REPLICATED outcome: the difference is now recorded
+on the enlarged object-ID-joined subset, 4,676 of 5,679 rows (82.34%). Spec
+024's frozen verdict and Spec 059's gate closure stand exactly as recorded,
+unedited. Anchors asserted byte-identical before and after (df0cf620…).
+Foundation check as measured on the execution tree: 40 passed / 0 failed /
+8 warnings. The per-row join census against layer v2 stays restricted-local
+(phase429_join_census.json, 5,679 rows, beside the merged layer in the
+restricted local store), named by filename and count only; no row-level
+merged-layer data entered git. Records: specs/067-f1-enlarged-join/outcome.md,
+reports/phase429_results.json (SHA-256 f08d469b…), reports/phase429_report.md
+(SHA-256 8cc2c154…); the script is deterministic (all outputs byte-identical
+on a second run).
+
+AI disclosure: executed by an AI agent (Muse, via Muse) at the direction of Tristen Pierson, per
+constitution sec.VI.
+
+## 2026-10-22 — Spec 065 EXECUTED (Phase-427): Class B — S-5 RESOLVED, S-1 STILL BLOCKED
+
+Spec 065 was executed as Phase-427 under the
+frozen contract (freeze digest f50a6e9c…;
+OSF registration 34s9u approved and public,
+API-verified by the parent before the
+execution order; owner's 2026-10-21 approval
+of the amendment package as written, Item 6).
+Step 0 passed in full, in frozen order: gate
+0.1 input integrity — every §2 live pin
+recomputes to its freeze value (the two held
+cleaned texts, the two registry files, Spec
+057's freeze record, outcome, spec, and
+adjudication, and the anchors file), with the
+extracted-claims store asserted by entry
+facts under the Spec 038 form (fingerprint
+a4874349…, the merged_into posture as Spec
+057 left it, the rows' quote fragments —
+S-1's lowercase "positional analysis", S-5's
+sentence-case "Positional analysis"); gate
+0.2 the acquired S-5 file asserted on the
+local file (657,863 bytes, SHA-256
+77f10f32…, MD5 36616e20… matching the Zenodo
+record); gate 0.3 the S-1 intake
+determination — the blocked arm, on evidence
+re-read first-hand at step 0 (no intake-S1.json
+in the spec directory; PROVENANCE.md carries
+no S-1 provenance entry, entry 23 being
+Hunt/S-5 and both S-1 sections stating no
+file acquired and no provenance entry taken;
+the S-1 downloads folder holds only
+BLOCKED.md; the Oakland ILL portion-copy
+request placed 2026-10-22 is pending, with
+nothing delivered and nothing intake-pinned);
+gate 0.4 order. The accounting, one outcome
+per source: S-5 HEADING ABSENT FROM DOCUMENT
+— the acquired file's own text layer,
+extracted in full from the pinned bytes
+(pdftotext -layout; 2,273 lines, 84,672 bytes;
+artifact extraction-S5.txt, 74e42f8e…),
+carries exactly one occurrence of "positional
+analysis" (extraction line 340, PDF page 9),
+sentence-initial inside a running paragraph
+of §5.5 "Governance and Civic Authority"
+("…waterworks. Positional analysis / shows a
+clear tripartite administrative grammar:") —
+a mention inside a running sentence, not in
+heading form under the carried §5.1 rule; the
+Spec 057 sub-state HEADING NOT PRESENT IN
+HELD TEXT is converted to a document-level
+finding on the acquired file's hash, and no
+passage or claim arises. S-1 STILL UNLOCATED
+— ACQUISITION BLOCKED (owner account act) —
+no search was run for S-1 and nothing about
+the chapter is found or implied; its evidence
+is the blocker record, and the unblocking act
+remains a handed-over, intake-pinned copy
+before a later run. Headline class B in the
+frozen §7.1 wording. Disposition (§7.2): the
+heading record stands superseded-not-retired
+exactly as Spec 057 left it, by appended
+dated disposition_spec065 note only — no
+pre-existing field altered, Spec 057's
+disposition entry unedited, removal of the
+append reproducing the pre-act file
+byte-identically (verified at the act), status
+and stage unchanged; retirement is not
+available while S-1 remains unlocated.
+Hypothesis F065-C14 is defeated over the one
+document actually searched (S-5) and stands
+unjudged as to S-1. No claim was recovered,
+no claim was checked, and no positional
+finding is established by this act. This act
+searched two documents for a heading. It
+checked nothing either passage states.
+Anchors asserted byte-identical before and
+after (df0cf620…). Foundation check at the
+execution: 40 passed, 0 failed, 8 warnings.
+Records: specs/065-s1-s5-heading-successor/
+outcome.md, specs/065-s1-s5-heading-successor/
+extraction-S5.txt, reports/phase427_results.json,
+reports/phase427_s1_s5_report.md.
 
 AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per

@@ -132,7 +132,7 @@
       match by a frozen route; four rows
       quoted and scored. **OWNER-APPROVAL**
       (the execution order).
-- [ ] **E5 — Outcome** (spec §§6, 8) —
+- [x] **E5 — Outcome** (spec §§6, 8) —
       `concordance-297.json` in this spec's
       directory on every terminal outcome;
       appended records only; foundation check

@@ -277,3 +277,94 @@ six OPEN items of §4.
 *AI disclosure: executed by an AI agent (Muse Spark,
 via Muse) at the direction of Tristen Pierson, per
 constitution §VI.*
+
+## 8. Freeze rulings (the freeze act, 2026-10-22)
+
+Taken under the owner's freeze rulings of
+2026-10-22 for the Hunt chain: every open item
+ruled per the draft's stated default; where the
+draft carries a predecessor's decided position,
+that decision stands; phase numbers allocated
+by the owner (069 = Phase 432, 070 = Phase 433,
+071 = Phase 434); an OSF registration filed for
+each spec at its freeze. DD-069-1 … DD-069-5
+are **confirmed** as drafted.
+
+- **DD-069-6 (OPEN-069-1 — asset location):
+  CONFIRMED as drafted.** The canonical file
+  and `asset-a-freeze.json` live in this spec's
+  directory (`specs/069-hunt-asset-a/asset-a/`),
+  per spec §2.1's stated reading; Spec 045's
+  directory is a frozen, closed record and is
+  not edited. The successors' step-0 pins name
+  this location.
+- **DD-069-7 (OPEN-069-2 — the D-18 state):
+  CONFIRMED (DD-069-1 stands).** The D-18 input
+  stands resolved as the terminal empty feed on
+  record — `concordance-297.json`, SHA-256
+  `772db4df152ec4f1071bed088250677e55f69743532c9e89f339a8cf9134aaaf`,
+  `signs` empty under its IDENTIFICATION FAILED
+  closure, re-verified at this freeze — and
+  gate A2 at execution re-asserts that state
+  rather than re-opening Spec 046.
+- **DD-069-8 (OPEN-069-3 — jurisdiction
+  coding): the build records the verbatim
+  labels only.** Spec 045's §5.2(b)
+  jurisdiction coding rule (DD-045-14) belongs
+  to Spec 045's own closing test, which this
+  build does not run; the quoted §2.2 field set
+  is closed ("No other fields"), so no
+  jurisdiction coding is performed at entry and
+  none is part of the frozen asset. Coding, if
+  ever wanted, is a later act outside the
+  frozen asset, opened by its own planning
+  gate. This is the conservative ruling: the
+  build stays inside the quoted contract.
+- **DD-069-9 (OPEN-069-4 — second-enterer spot
+  check): Spec 045's freeze decision stands.**
+  DD-045-16 decided against a second-enterer
+  spot check; that decision carries to this
+  build and no spot check is added. The quoted
+  gates do not require one.
+- **DD-069-10 (OPEN-069-5 — OSF): this spec
+  files its own OSF contract registration at
+  this freeze**, in the programme's standing
+  form (node nrb9u, OSF Preregistration schema),
+  carrying the frozen contract and this
+  freeze's digest. The filing record is
+  `osf-spec-registration.md`, completed by
+  append after filing; the approval act is the
+  owner's and is not performed by the freeze.
+- **DD-069-11 (OPEN-069-6 — phase number):
+  the execution phase is Phase 432**, allocated
+  by the owner at this freeze.
+- **DD-069-12 (the freeze gate): the AEE
+  lifecycle hooks are the freeze gate in the
+  substantive form of DD-038-10** (DD-069-5
+  confirmed): zero correctness failure modes
+  and no claim below the 0.70 threshold at
+  after_specify, after_plan, and after_tasks.
+  The hooks ran over the recovered register
+  (0.5-draft as drafted was not loadable by
+  the engine — its evidence carried kinds the
+  engine does not accept — and the recovery
+  rounds are recorded in
+  `aee/freeze-aee-note.md`); the final round
+  passed at every hook with zero failure modes
+  and minimum propagated 0.845. The freeze
+  digest is computed over the recovered
+  register (0.9-draft) exactly once, after the
+  hooks — the Spec 035 ordering.
+- **Pin re-assertion at this freeze.** Every
+  spec §4 pin was recomputed at the freeze
+  against the merged record (`main` at
+  `bfc811df`, merged into this branch before
+  the freeze act): the crosswalk SHA-256
+  `4ace1a61…` with its census (205 rows, 187
+  distinct `registry_sign_id` values) — the
+  full sign universe of gate A3; the anchors
+  file SHA-256 `df0cf620…`; the D-18 delivery
+  SHA-256 `772db4df…` with its empty `signs`
+  array and closure block; and Spec 045's
+  freeze digest `5d8254dd…` read from its
+  `freeze.json`. All equal their pins.

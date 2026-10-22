@@ -43,7 +43,7 @@
       as a DRAFT PR and left unmerged for the
       owner's freeze decision, CI state
       reported from the run's own conclusions.
-- [ ] **L4 — AEE lifecycle hooks (FREEZE GATE
+- [x] **L4 — AEE lifecycle hooks (FREEZE GATE
       — not run on this draft).** At the
       freeze act, run `run_aee.py assess`
       after_specify, after_plan, and
@@ -57,7 +57,7 @@
       the freeze digest is computed over the
       recovered register exactly once, at
       freeze.
-- [ ] **L5 — Freeze-decision items.** The
+- [x] **L5 — Freeze-decision items.** The
       freeze decides OPEN-069-1 (asset
       location in this spec's directory),
       OPEN-069-2 (the D-18 state as a
@@ -69,7 +69,7 @@
       OPEN-069-6 (phase number), and
       confirms or openly overturns
       DD-069-1…DD-069-5.
-- [ ] **L6 — Freeze.** On the owner's freeze
+- [x] **L6 — Freeze.** On the owner's freeze
       order, with L4 passed and L5 decided:
       hooks recorded, `freeze.md` finalised,
       `freeze.json` computed over the

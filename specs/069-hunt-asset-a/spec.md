@@ -1,41 +1,31 @@
 # Spec 069 — Hunt Depicted-Kind Classification: The Asset A Build (Contract of Spec 045 §§2–3)
 
-> ## DESIGN DRAFT — FOR FREEZE DECISION — 2026-10-22
+> ## FROZEN — 2026-10-22
 >
-> Drafted under the owner's readiness decisions
-> of 2026-10-22, **decision 3** (the Hunt
-> programme, re-scoped on the Shakti corpus):
-> the owner commissioned three new specs in
-> dependency order — this build first, then the
-> opening-signs successor (Spec 070), then the
-> sky-signs successor (Spec 071). Drafts are
-> pre-approved standing in this programme;
-> **the freeze, the registration, and the
-> execution of Spec 069 are separate later
-> owner acts.** No AEE lifecycle hooks have run
-> on this draft; they are the freeze gate,
-> applied in the substantive form of DD-038-10
-> (zero correctness failure modes and no claim
-> below the 0.70 threshold at after_specify,
-> after_plan, and after_tasks). Nothing in this
-> draft has been run, frozen, registered,
-> joined, or computed — in particular, **Asset A
-> does not exist yet**: this spec builds it at
-> execution, and its first product is the
-> classification itself, with its digest.
->
-> The execution phase number is **unassigned**
-> at this draft. It is allocated at the freeze
-> act, from the merged record as it then
-> stands.
->
-> **Dependency chain (commissioned order):
-> Spec 069 → Spec 070 → Spec 071.** Spec 069 is
-> first in that order. Its frozen product —
-> Asset A and its digest — is the asserted
-> step-0 input of Spec 070 and of Spec 071.
-> Neither successor can freeze before Asset A
-> exists as a frozen product of this spec.
+> Frozen at the freeze act of 2026-10-22 under
+> the owner's freeze rulings of 2026-10-22 (the
+> Hunt chain act: every open item ruled per the
+> draft's stated default; Spec 045's decided
+> positions standing; phase numbers allocated
+> 069 = Phase 432, 070 = Phase 433, 071 =
+> Phase 434; an OSF registration filed for each
+> spec at its freeze). The rulings are recorded
+> in `adjudication.md` §8 (DD-069-6 …
+> DD-069-12). The AEE lifecycle hooks ran at
+> the freeze gate and passed over the recovered
+> register (`aee/freeze-aee-note.md`); the
+> freeze record is `freeze.md` / `freeze.json`
+> in this directory, and the spec's OSF
+> contract registration is filed at the freeze
+> (`osf-spec-registration.md`, completed by
+> append after filing). Execution runs as
+> **Phase 432** under the same owner act's
+> chain order (freeze, merge, registration,
+> execution), in the commissioned dependency
+> order Spec 069 → Spec 070 → Spec 071.
+> Nothing in this freeze has been entered,
+> joined, or computed: Asset A does not exist
+> yet; the build is the execution's work.
 
 **Contract source:** Spec 045
 (`specs/045-hunt-depicted-kinds/spec.md` on

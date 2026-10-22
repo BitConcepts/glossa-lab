@@ -669,3 +669,19 @@ identification of Wells's 297 rests on a drawn-form
 reference whose continuity status is QUALIFIED —
 anchored at family level only; its step C
 discrimination check is part of this run's record.
+
+---
+
+**Correction (appended 2026-10-22, coordinator).** The
+completion note above states that the backend job log
+for PR #321's green run 39745034493 "reads 1,638
+passed". The log (job 119711263464) in fact reads
+**1657 passed, 20 skipped, 16 warnings** — verified
+first-hand from the job log by the coordinator on
+2026-10-22, after the executing worker flagged the
+discrepancy against its own report. The correct
+backend figure for that run is **1,657 passed, 20
+skipped**. The original sentence is retained unedited
+above (append-only); nothing else in this record
+changes, and no outcome, digest, or verification is
+affected.

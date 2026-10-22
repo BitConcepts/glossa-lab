@@ -16,7 +16,7 @@
   "detected_title": "Indus Valley Script deciphered From Myth",
   "detected_authors": [],
   "detected_year": null,
-  "detected_doi": "10.2307/595168",
+  "detected_doi": null,
   "detected_abstract": "",
   "claim_extraction_status": "pending",
   "hypothesis_relevance": null,
@@ -24,5 +24,21 @@
     "system": "Glossa-Lab Indus Evidence Graph",
     "intake_version": "1.0",
     "note": "User-provided or acquired document. License status must be verified before publication use."
+  },
+  "metadata_correction": {
+    "date": "2026-10-22",
+    "kind": "spec025-material-audit-metadata-correction",
+    "proposal": "P3",
+    "changes": {
+      "detected_doi": {
+        "was": "10.2307/595168",
+        "now": null
+      }
+    },
+    "basis": "The removed DOI is a bibliography hyperlink belonging to Sarton 1955 (Crossref-verified). This document is a self-published manuscript: its own first page states it was 'Edited and Abbreviated using the assistance of AI'; it has no venue, date, or DOI of its own, and no bibliographic record for it was found. Evidence: audit W5.",
+    "evidence": [
+      "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W5_part2.md",
+      "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+    ]
   }
 }

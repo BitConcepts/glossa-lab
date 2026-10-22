@@ -508,6 +508,19 @@ The regenerated report is
   pattern — this section is completed by
   append, not edited.
 
+## Landing record — 2026-10-22
+
+The execution pull request, PR #323 (`spec-063-execution`), was merged into main as merge commit de8a43e259e8592533adf5e4bbf1c1c1c339213e on 2026-10-22. The merge was made on CI run 39748439035, on head a5362fafa1d18ce134c0ae52357ba9fbb75a2b6a, in which all seven jobs concluded success: Backend tests (pytest); Frontend tests (Playwright); Evidence Graph script smoke tests; Indus public validation checks; Shell wrappers (ubuntu-latest); Shell wrappers (windows-latest); Shell wrappers (macos-latest). Two earlier genuine full-green runs stand in the PR's history — run 39744384721 on head 92170d31d3032d09a5b765a6b657b6a59ca58a84 and run 39747329548 on head 11549020c50e67315f92ccfec617672b94d66d15, each seven of seven jobs success — after which main advanced under the PR (Specs 065, 067 and 064 executing and landing in parallel) and the branch was re-merged and re-verified on the new head rather than merged on a stale green.
+
+After the merge, the run digests were re-verified on main through the contents API: reports/phase425_results.json at SHA-256 c7b246e94258519e251acaf3a97179de02da1e453f01ef37945cca2a48737752, reports/phase425_identification_report.md at SHA-256 67f753bfaeb448fd69ac0dde362d70907a03ea093f5f63917214343cae63e15b, and this spec's identification-record.md at SHA-256 4a0d62a6337daac2293d42e1e9cd77de40d027353223a189c7e2a984f6810c16 — all as run. The anchors file backend/reports/INDUS_FINAL_ANCHORS.json stands at SHA-256 df0cf620a0d66b71d778300b93a91d96b2f30f23580088e6086592b32d34f569, byte-identical before and after the whole run. The appended restatement stands on main under spec063_restatement on the _0001 fragment entry, the claim at the created stage with status untested, Spec 056's spec056_closure above it unedited, and Spec 064's spec064_check append on the _0002 entry standing alongside it, likewise unedited.
+
+Foundation check at the merge: 40 passed / 0 failed / 8 warnings, as measured on this run's execution tree and again on a locally assembled near-merged tree (the union ledger and union experiment graph, with one side of the claims-store union). The report committed on main is the regeneration made by Spec 064's landing on its own merge tree, so its claims-store hash names the store without this spec's append. A regeneration against the final union store was attempted and could not be completed: the VM's intermittent write restriction, which also blocked local git writes throughout this landing, prevented assembling the complete merged tree locally. The union store itself is verified — it is what stands on main, and removing either side's append from it reproduces the other side's file byte-identically — and no foundation check reads the append entries' contents (the check counts 31 claims in 10 files on every variant of the store). This note records the position rather than presenting the committed report as a regeneration on the final tree.
+
+Landing mechanics, for the record: the two merges of main into the execution branch (11549020c50e67315f92ccfec617672b94d66d15 and a5362fafa1d18ce134c0ae52357ba9fbb75a2b6a) and this landing branch were built through the GitHub git-data API, because the write restriction blocked local git object writes; every union resolution was verified byte-exact in memory before its commit, and each branch ref was read back after its update. CI ran genuinely on each resulting head.
+
+The terminal outcome stands as recorded in §6: **RECOVERED**. Recovery establishes that the passage argues this and that its subject is identified in the program's claim form — it establishes nothing about whether the argument is right, and nothing about what sign 821 means.
+
+
 ---
 
 *AI disclosure: executed by an AI agent (Muse

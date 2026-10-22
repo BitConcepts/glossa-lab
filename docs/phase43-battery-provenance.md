@@ -55,3 +55,13 @@ establish that the frozen classes can be reproduced today — the corpus dump
 is missing and gates G3/G4 (corpus reproduction and class re-derivation)
 have never run — nor that the Phase-43 results are correct, nor that Specs
 049 / 052 / 054 pass their other gates.
+
+## CI lint accommodation (2026-10-21)
+
+The restored scripts carry pre-existing lint debt from May 2026 (ruff
+`E401` and `F541`; 18 findings across the two files). The deposit
+preserves them byte-for-byte, so that debt is not fixed in the scripts
+themselves. The CI accommodation is a per-file-ignores entry in
+`backend/pyproject.toml` scoped to the two files and to only those two
+codes, added by coordinator ruling during the deposit execution
+2026-10-21. No other lint configuration was changed.

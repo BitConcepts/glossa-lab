@@ -55,4 +55,21 @@ a restart; the running backend (uvicorn on :8001) is not touched.
 
 ## Smoke summary (2026-10-22, raw outputs in `smoke/`)
 
-_(Filled at delivery; see the smoke directory and LEDGER entry.)_
+- (i) Two protocol phrasings through the new client from the Glossa
+  tree: "Indus script decipherment" (totalHits 673,990; 1 of the
+  top 10 carrying full text — a Harappan–Brahmi paper, 3,737 words)
+  and a stranger's phrasing, "statistical analysis of Indus signs
+  n-grams linguistic structure" (9 of the top 10 carrying full
+  text). CORE search is loose (polysemy: the Indus *river basin*,
+  generic n-gram papers) — the stage's claim-vocabulary ranking is
+  what makes it usable, exactly as with the arXiv trap in spec 025.
+- (ii) Scoped end-to-end stage run on the Yadav 2010 n-grams claim
+  ("Indus script sign frequencies follow a Zipf-Mandelbrot
+  distribution"): CORE queried once per phrasing and contributed 8
+  of 23 neighbors with zero source errors; the 3 full-text reads
+  went to on-topic arXiv neighbors. The two CORE neighbors carrying
+  full text scored relevance 0.0 against the claim and were
+  correctly not read — the gate working as designed; the CORE read
+  path itself is covered by the offline stage tests. Sidecar in the
+  usual place (`glossa-indus/claims/research_checks/`), verdict
+  null.

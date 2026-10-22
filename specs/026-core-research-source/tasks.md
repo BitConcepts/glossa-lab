@@ -7,18 +7,18 @@
       uncommitted changes).
 - [x] T2 Branch `spec/026-core-research-source`; write this spec +
       plan (proposal before execution, H2/H13).
-- [ ] T3 Implement `backend/glossa_lab/core_search.py` (surrogate
+- [x] T3 Implement `backend/glossa_lab/core_search.py` (surrogate
       bearer auth, slashed search path, redirects refused, pace
       guard, 429 hard stop, timeouts, CLI).
-- [ ] T4 Integrate CORE into `backend/glossa_lab/research_check.py`
+- [x] T4 Integrate CORE into `backend/glossa_lab/research_check.py`
       (per-phrasing source, pool merge, CORE full-text reads,
       429-stops-CORE, `--no-core`; existing sources unchanged).
-- [ ] T5 Offline tests `backend/tests/test_core_search.py`; run
+- [x] T5 Offline tests `backend/tests/test_core_search.py`; run
       them plus the spec-025 suite, governance lint, and MCP suite.
-- [ ] T6 Docs: CORE section in `docs/paper-search-mcp.md` (+ limits
+- [x] T6 Docs: CORE section in `docs/paper-search-mcp.md` (+ limits
       line), AGENTS.md pointer line (H8).
-- [ ] T7 Live smoke from the Glossa tree (two Indus concept
+- [x] T7 Live smoke from the Glossa tree (two Indus concept
       phrasings via the client; one scoped end-to-end stage run with
       CORE among its sources) — raw outputs in `smoke/`.
-- [ ] T8 Ledger entry; commit this spec's files only, by explicit
+- [x] T8 Ledger entry; commit this spec's files only, by explicit
       path; push the branch.

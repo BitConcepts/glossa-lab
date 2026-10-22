@@ -1,0 +1,85 @@
+{
+ "totalHits": 673990,
+ "results": [
+  {
+   "id": 156185938,
+   "title": "Indus script Decipherment",
+   "year": 2019,
+   "doi": "10.31219/osf.io/aqey4_v1",
+   "has_full_text": false,
+   "full_text_words": 0
+  },
+  {
+   "id": 167169161,
+   "title": "Initial Decipherment  of Indus  script",
+   "year": 2020,
+   "doi": "10.35543/osf.io/kacfr",
+   "has_full_text": false,
+   "full_text_words": 0
+  },
+  {
+   "id": 319593742,
+   "title": "Initial Decipherment  of Indus  script",
+   "year": 2020,
+   "doi": null,
+   "has_full_text": false,
+   "full_text_words": 0
+  },
+  {
+   "id": 367495223,
+   "title": "Initial Decipherment  of Indus  script",
+   "year": 2020,
+   "doi": null,
+   "has_full_text": false,
+   "full_text_words": 0
+  },
+  {
+   "id": 169384506,
+   "title": "Initial Decipherment  of Indus  script",
+   "year": 2020,
+   "doi": null,
+   "has_full_text": false,
+   "full_text_words": 0
+  },
+  {
+   "id": 156289410,
+   "title": "Initial Decipherment  of Indus  script",
+   "year": 2020,
+   "doi": null,
+   "has_full_text": false,
+   "full_text_words": 0
+  },
+  {
+   "id": 167151165,
+   "title": "Decipherment of the Indus script",
+   "year": 2020,
+   "doi": "10.31235/osf.io/9wm3z",
+   "has_full_text": false,
+   "full_text_words": 0
+  },
+  {
+   "id": 49466951,
+   "title": "Relation Between Harappan And Brahmi Scripts",
+   "year": 2013,
+   "doi": "10.6084/m9.figshare.658858",
+   "has_full_text": true,
+   "full_text_words": 3737
+  },
+  {
+   "id": 159563615,
+   "title": "Decipherment of the Indus script",
+   "year": 2020,
+   "doi": "10.31219/osf.io/4m97w",
+   "has_full_text": false,
+   "full_text_words": 0
+  },
+  {
+   "id": 139195139,
+   "title": "The Alphabet of Sindhu Prakrit (the Decipherment of Indus Script)",
+   "year": 2022,
+   "doi": "10.17632/hmg4rnczvt.1",
+   "has_full_text": false,
+   "full_text_words": 0
+  }
+ ]
+}

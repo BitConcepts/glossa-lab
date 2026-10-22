@@ -94,16 +94,16 @@
       OSF contract registration filed under
       OPEN-072-7's ruling if the freeze
       confirms it.
-- [ ] **L7 — Freeze PR merged**, house gates
+- [x] **L7 — Freeze PR merged**, house gates
       green (full suite, branding sweep,
       foundation check reported as measured).
 
 ## Execution — gated on the freeze and a separate execution order
 
-- [ ] **E1 — Graph-first build** (H15/H23):
+- [x] **E1 — Graph-first build** (H15/H23):
       script, graph module, registration,
       registration verification, then run.
-- [ ] **E2 — Step 0, part 1** (spec §3 gates
+- [x] **E2 — Step 0, part 1** (spec §3 gates
       0.1–0.2): Shakti intake asserted against
       the intake record (SHAKTI INTAKE NOT
       REPRODUCED on failure); Asset F digest
@@ -111,7 +111,7 @@
       rule (ASSET F NOT AVAILABLE / ASSET F
       DIGEST MISMATCH on failure). Nothing is
       counted before these exhibits.
-- [ ] **E3 — Step 0, part 2** (gates
+- [x] **E3 — Step 0, part 2** (gates
       0.3–0.5): the concordance act — every
       member's Wells/ICIT identity stated and
       pinned on the freeze-confirmed basis,
@@ -124,19 +124,19 @@
       floor in the primary population); the
       freeze-fixed verdict line exhibited
       (INVALID if none exists).
-- [ ] **E4 — Primary run** (spec §5):
+- [x] **E4 — Primary run** (spec §5):
       per-member T2.4-analogue fractions on
       the documented-lineage population;
       carried labels; PASS words against the
       freeze-fixed line; the family share and
       word under §6.
-- [ ] **E5 — Sensitivity** (spec §5.4): the
+- [x] **E5 — Sensitivity** (spec §5.4): the
       whole test on the documented +
       corroborated population against the
       same line; every grade-flip recorded as
       a finding; a family-level difference
       flagged GRADE-SENSITIVE in the headline.
-- [ ] **E6 — Outcome:** the §9 record —
+- [x] **E6 — Outcome:** the §9 record —
       results JSON and report under the
       headline rules (the P-F1 S3 lineage
       statement verbatim first in the headline

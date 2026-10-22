@@ -107,16 +107,16 @@
       registration stands pending approval;
       execution (E2–E5) awaits its approval
       act and a separate execution order.
-- [ ] **E2 — Graph-first build** (H15/H23) —
+- [x] **E2 — Graph-first build** (H15/H23) —
       script, graph node, registration,
       verification. **OWNER-APPROVAL** (as
       part of the execution order).
-- [ ] **E3 — Step 0** (spec §3) — input
+- [x] **E3 — Step 0** (spec §3) — input
       integrity, acquired-file assertion
       (S-5), S-1 intake determination, order.
       **OWNER-APPROVAL** (the execution
       order).
-- [ ] **E4 — Searches + accounting** (spec
+- [x] **E4 — Searches + accounting** (spec
       §§4–6) — the S-5 text-layer search; the
       S-1 search on the search arm only, else
       the frozen blocked outcome; exactly one
@@ -124,7 +124,7 @@
       through normal intake at the created
       stage. **OWNER-APPROVAL** (the execution
       order).
-- [ ] **E5 — Outcome** (spec §§7–8) —
+- [x] **E5 — Outcome** (spec §§7–8) —
       headline class, disposition append,
       LEDGER entry; anchors asserted
       byte-identical; foundation check

@@ -46,15 +46,17 @@ was retired 2026-10-05 and is no longer active tooling.
 
 **Author:** Tristen Kyle Pierson / BitConcepts LLC
 
-**Current version:** v6 (October 2026 — v5's audit citation
-corrections plus bibliography completion (five Mahadevan §8 entries)
-and the in-text paper-count qualification, from the spec-025 audit
-fix commission; source `.tex` and regenerated PDF)
+**Current version:** v7 (October 2026 — v6 plus the Roif credit:
+both Roif 2025a/b citations in §8, fish-sign model credit in
+§3.5/§3.19 and §7 Acknowledgments, from the owner-directed Roif
+addenda to the spec-025 audit fix commission; §3.32 restoration
+draft filed but HELD pending Roif's reply; source `.tex` and
+regenerated PDF)
 
 **Source:** `glossa-corpus/indus/pierson_2026_indus_decipherment.tex`
 
-**PDF:** `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v6.pdf`
-(the v6 PDF is the current compiled artifact, regenerated 2026-10-22
+**PDF:** `glossa-corpus/indus/pierson_2026_indus_decipherment_preprint_v7.pdf`
+(the v7 PDF is the current compiled artifact, regenerated 2026-10-22
 with xelatex — see `docs/research/PREPRINT_VERSIONING.md`)
 
 **DOI:** https://doi.org/10.5281/ZENODO.20414696 (Zenodo)

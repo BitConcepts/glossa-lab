@@ -76,3 +76,58 @@ consistency. Five findings, adjudicated against primary sources in
 pass with a frontier reasoning model, when a route with credit is
 available — the pass on file is a genuine independent read but a
 shallow one, and this summary does not round it up.
+
+---
+
+## Addendum — v7 and the Roif credit (2026-10-22, owner-directed)
+
+The package is now **preprint v7**. The change from v6 is the Roif
+credit only; no claim, result, anchor, or number was altered, and
+the adversarial-pass record above (run on v6) is unaffected in
+substance — v7 adds attribution, it changes no result sentence.
+Full record: `roif_credit_addendum_2026-10-22.md` in this
+directory.
+
+### Roif credit
+
+**Credited now (in v7): the fish-sign model.** §8 gains both
+citations — Roif 2025a (*Deciphering the Indus Valley Script: A
+Phonetic-Mnemonic Akkadian Shorthand Approach*, Academia.edu,
+12 June 2025, academia.edu/129921039) and Roif 2025b (*Indus
+Valley Script deciphered — From Mythology to History using the
+Akkadian shorthand approach*, Academia.edu, 2 August 2025,
+academia.edu/143222807); Academia.edu mints no DOIs, so the
+stable URLs are the identifiers. §3.5 and §3.19 credit the model
+to Avishai Roif in his terms — the fish sign read /mi/ (mīn) as a
+value/divine marker and guild/title marker (2025a); the "coastal
+controller" maritime-guild reading, with fish, boat, and jar
+signs recurring at port sites including Lothal (2025b) — and
+state the division of labour: his published model and
+predictions; this program's measurements (the numbers are ours,
+from our corpus work). §7 Acknowledgments names him as the
+source of the fish-sign model the tests were built on. The
+program's dossiers were also corrected so the prose names him as
+the claims' author (literature record `detected_authors`; dated
+credit notes on all six Roif-dossier claims).
+
+**Prepared but held: §3.32 (betweenness centrality).** Not
+restored into v7. A separate, clearly marked restoration draft is
+filed with the package at
+`glossa-corpus/indus/pierson_2026_indus_decipherment_section_3_32_restoration_draft_HELD.md`
+— the Phase 172–177 full-graph analysis with Roif's methodology
+as its origin, flagged **HELD PENDING ROIF'S REPLY**: the owner
+is writing to Roif to ask his *Semiotica* status and whether he
+wants the section restored as co-author. The agreed attribution
+sentence, verbatim as Roif proposed it on 2026-05-22 and the
+owner accepted, is:
+
+> Betweenness centrality analysis in this section was conducted by A. Roif using network-theoretic methods developed independently; the full methodological framework will appear in Roif (forthcoming, Semiotica).
+
+If the NCSI paper is now in press, that sentence updates to the
+full *Semiotica* reference. The corrected version ships without
+§3.32 unless and until Roif agrees.
+
+**The submission hold stands in full.** Nothing about Roif — or
+anything else in this package — has been submitted, posted, or
+sent anywhere. The owner gives the go on the actual v7 text
+before any deposit or submission.

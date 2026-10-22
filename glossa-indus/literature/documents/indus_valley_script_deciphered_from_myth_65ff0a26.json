@@ -14,7 +14,9 @@
   "duplicate_status": "unique",
   "processing_status": "registered",
   "detected_title": "Indus Valley Script deciphered From Myth",
-  "detected_authors": [],
+  "detected_authors": [
+    "Avishai Roif"
+  ],
   "detected_year": null,
   "detected_doi": null,
   "detected_abstract": "",
@@ -39,6 +41,23 @@
     "evidence": [
       "specs/025-paper-search-research-check/audit-2026-10-22/raw/findings_W5_part2.md",
       "specs/025-paper-search-research-check/audit-2026-10-22/correction_proposals.md"
+    ]
+  },
+  "credit_note_2026_10_22": {
+    "date": "2026-10-22",
+    "kind": "roif-credit-author-identification",
+    "proposal": "P3-extended (Roif credit addendum to the spec-025 audit fix commission)",
+    "changes": {
+      "detected_authors": {
+        "was": [],
+        "now": [
+          "Avishai Roif"
+        ]
+      }
+    },
+    "basis": "The document is Avishai Roif's work: the same-titled work is his Academia.edu posting of 12 June 2025 (Roif 2025a, academia.edu/129921039), expanded 2 August 2025 (Roif 2025b, academia.edu/143222807), and the owner-supplied May-June 2026 correspondence confirms him as the author of the model and claims this record carries. He is the claims' author, not merely a cited source. The program's tests of his claims are the program's own work.",
+    "evidence": [
+      "specs/025-paper-search-research-check/audit-2026-10-22/roif_credit_addendum_2026-10-22.md"
     ]
   }
 }

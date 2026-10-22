@@ -9674,3 +9674,34 @@ to amend the Spec 055/057 pins to the corrected bytes.
 
 AI disclosure: executed by an AI agent (Muse, via Muse)
 at the direction of Tristen Pierson, per constitution sec. VI.
+
+## 2026-10-22 — Roif credit: preprint v7 (fish credit landed; §3.32 restoration draft held)
+
+Owner-directed addenda to the spec-025 audit fix commission
+(record: audit-2026-10-22/roif_credit_addendum_2026-10-22.md).
+Preprint v6 carried zero mentions of Avishai Roif while §3.5
+and §3.19 report tests of his published fish-sign model.
+Preprint v7 corrects that: §8 gains Roif 2025a (Academia.edu,
+12 June 2025, academia.edu/129921039) and Roif 2025b
+(Academia.edu, 2 August 2025, academia.edu/143222807) — no
+DOIs, stable URLs are the identifiers; §3.5 and §3.19 credit
+the model to him in his terms (/mi/ (mīn) value/divine marker
+and guild/title marker; the "coastal controller"
+maritime-guild reading) with the division of labour stated
+(his model and predictions; the program's measurements); §7
+Acknowledgments names him as the model's source. PDF
+regenerated (two clean XeLaTeX passes, 18 pages, SHA-256
+b7a640ac…), Roif content verified in the rendered output.
+Dossiers: the Roif literature record's detected_authors now
+names him (dated credit note; record not freeze-pinned), and
+all six Roif-dossier claims carry dated credit notes naming
+him as the claims' author (P3 extended). §3.32 (betweenness)
+was NOT restored: a marked restoration draft reconstructed
+from the Phase 172–177 records is filed with the package,
+HELD PENDING ROIF'S REPLY, carrying the agreed verbatim
+attribution sentence. Nothing submitted, posted, or sent;
+no claim status, anchor, or score changed; H21 not
+triggered.
+
+AI disclosure: executed by an AI agent (Muse, via Muse)
+at the direction of Tristen Pierson, per constitution sec. VI.

@@ -105,6 +105,12 @@
         "basis": "glossa-indus/reports/phase104_claims_evaluation.json:indus_valley_script_deciphered_from_myth_65ff0a26_critique_0001",
         "rule": "RULE-DUP",
         "note": "The Phase-104 evaluation judged this record a restatement of farmer_sproat_witzel_2004_manual_001 (contradicted) and recorded that the verdict carries over; the carry-over was never written into the live record. Applied 2026-10-13 on the owner's order. The previous status is preserved in this field, and the record's earlier history is unchanged."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "roif-credit-note",
+        "proposal": "P3-extended (Roif credit addendum to the spec-025 audit fix commission)",
+        "note": "Credit note (2026-10-22): this claim is Avishai Roif's claim, from his published work - Roif 2025a, 'Deciphering the Indus Valley Script: A Phonetic-Mnemonic Akkadian Shorthand Approach' (Academia.edu, 12 June 2025, https://www.academia.edu/129921039) and Roif 2025b, 'Indus Valley Script deciphered - From Mythology to History using the Akkadian shorthand approach' (Academia.edu, 2 August 2025, https://www.academia.edu/143222807). He is the claims' author, not merely a cited source. The program's tests of his claims are the program's own work and its statistics are not his."
       }
     },
     {
@@ -206,6 +212,12 @@
         "basis": "glossa-indus/reports/phase104_claims_evaluation.json:indus_valley_script_deciphered_from_myth_65ff0a26_critique_0002",
         "rule": "RULE-DUP",
         "note": "The Phase-104 evaluation judged this record a restatement of farmer_sproat_witzel_2004_manual_001 (contradicted) and recorded that the verdict carries over; the carry-over was never written into the live record. Applied 2026-10-13 on the owner's order. The previous status is preserved in this field, and the record's earlier history is unchanged."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "roif-credit-note",
+        "proposal": "P3-extended (Roif credit addendum to the spec-025 audit fix commission)",
+        "note": "Credit note (2026-10-22): this claim is Avishai Roif's claim, from his published work - Roif 2025a, 'Deciphering the Indus Valley Script: A Phonetic-Mnemonic Akkadian Shorthand Approach' (Academia.edu, 12 June 2025, https://www.academia.edu/129921039) and Roif 2025b, 'Indus Valley Script deciphered - From Mythology to History using the Akkadian shorthand approach' (Academia.edu, 2 August 2025, https://www.academia.edu/143222807). He is the claims' author, not merely a cited source. The program's tests of his claims are the program's own work and its statistics are not his."
       }
     },
     {
@@ -260,6 +272,12 @@
         "results_sha256": "7d0a303fab455c9f0045793dcece275d2e67c7495b98be496a6cc7a073908483",
         "asset_b_sha256": "a1a9e48422ab7ab2ef1d340c5ca0eb81a315253b196fdc199d77d2e5739c9f85",
         "note": "Step-2 entry appended by the Spec 047 execution (Phase-406 step 2, 2026-10-21), under the frozen Spec 047 contract (freeze digest 8501feabb7beee621e99ae48529e5a74c0788fb0619ac49c615912e13914cdc7; OSF registration b2a8w approved and public). Step 0 was re-run and passed in full (input integrity against the freeze pins; spine reproduction, 36 rows over 30 clusters; the join census accounting for all 5,679 primary-layer records exactly once, identical to the step-1 census), and Asset B was re-asserted at its step-1 digest (30 rows; AGREED 3, DISAGREED 1, SINGLE-SOURCE 10, NO-SOURCE 16; testable 2 — harappa, administrative, and lothal, port/trade). The section 6.3 classification gate fired on both of its clauses: 2 testable sites is below the frozen floor of 12, and the domestic/ritual contrast side is empty in the test population (both testable sites are in the pooled ADMIN-TRADE-GATEWAY class). The distribution test did not run, no distribution quantity was computed, and the outcome is INCONCLUSIVE with the classification itself as the finding. This entry appends a dated, component-scoped outcome beside the claim's Phase-104 record; it does not alter the claim's original record, and the claim's status and stage are unchanged — the claim stands UNTESTED for its distribution component, now with the reason measured rather than asserted. The guild-authority and Akkadian-influence components were not tested. Held under the Roif gate (spec section 10)."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "roif-credit-note",
+        "proposal": "P3-extended (Roif credit addendum to the spec-025 audit fix commission)",
+        "note": "Credit note (2026-10-22): this claim is Avishai Roif's claim, from his published work - Roif 2025a, 'Deciphering the Indus Valley Script: A Phonetic-Mnemonic Akkadian Shorthand Approach' (Academia.edu, 12 June 2025, https://www.academia.edu/129921039) and Roif 2025b, 'Indus Valley Script deciphered - From Mythology to History using the Akkadian shorthand approach' (Academia.edu, 2 August 2025, https://www.academia.edu/143222807). He is the claims' author, not merely a cited source. The program's tests of his claims are the program's own work and its statistics are not his."
       }
     },
     {
@@ -314,6 +332,12 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "This claim is one of the few in the set that carries a test sharp enough to hurt it, and the program ran that test. If the fish sign marked coastal traders, fish signs should turn up more often at coastal and maritime sites (Lothal, Dholavira) than elsewhere. The program counted fish signs across sites in its CISI-based data (the Phase-4x analysis recorded on the claim). Fish signs were not statistically enriched at coastal sites. On that result the program records the claim as partially falsified: the specific coastal prediction failed, while the wider claim about what the fish sign meant was not directly tested. One defect in the record should be stated plainly: the claim's automatic score band reads high, which points the opposite way from its falsified-leaning status. The status rests on the actual site test; the band is a consistency score computed from the record's text, and the audit flagged the conflict rather than resolving it."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "roif-credit-note",
+        "proposal": "P3-extended (Roif credit addendum to the spec-025 audit fix commission)",
+        "note": "Credit note (2026-10-22): this claim is Avishai Roif's claim, from his published work - Roif 2025a, 'Deciphering the Indus Valley Script: A Phonetic-Mnemonic Akkadian Shorthand Approach' (Academia.edu, 12 June 2025, https://www.academia.edu/129921039) and Roif 2025b, 'Indus Valley Script deciphered - From Mythology to History using the Akkadian shorthand approach' (Academia.edu, 2 August 2025, https://www.academia.edu/143222807). He is the claims' author, not merely a cited source. The program's tests of his claims are the program's own work and its statistics are not his."
       }
     },
     {
@@ -371,6 +395,12 @@
         "results_sha256": "3f4bf2a5eda7959a9ae85b48a5c5d0d31ad276b849f41854a71b08011fca1361",
         "asset_b_sha256": "a1a9e48422ab7ab2ef1d340c5ca0eb81a315253b196fdc199d77d2e5739c9f85",
         "note": "Dated append by the Spec 051 execution (Phase-409, 2026-10-21), under the frozen Spec 051 contract (freeze digest 818cfa4ecd32d286dbe0fcc8d73f4a79f42610f181e5f19594d057a32dab64b1; OSF registration xnrph, approved + public). Step 0 gates 0.1-0.5 passed: every section 2 pin asserted, Asset B's digest verified against Spec 047's step-1 outcome record (DD-051-14), the Holdat counting layer of record pinned (SHA-256 62d14d2bebf7c2c80d98a2958e75ec52bff3f240ff3f5e85d1f7f40cbe28218e) and its M391 census reproduced exactly (193 over nine sites), and the join census accounting for all 7,002 records exactly once. Gate 0.6 then closed the execution: the frozen classification carries 2 testable sites (harappa, administrative; lothal, port/trade), 0 testable gateway/border sites carrying M391 against the floor of 3, and an empty contrast side {domestic, ritual}. No share, ratio, permutation, or regression quantity was computed. This entry appends an execution outcome; it does not alter the claim's original record, which stands above as history, and the claim's status (untested) and stage (created) are unchanged. Held under the Roif gate: internal record, not a publication."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "roif-credit-note",
+        "proposal": "P3-extended (Roif credit addendum to the spec-025 audit fix commission)",
+        "note": "Credit note (2026-10-22): this claim is Avishai Roif's claim, from his published work - Roif 2025a, 'Deciphering the Indus Valley Script: A Phonetic-Mnemonic Akkadian Shorthand Approach' (Academia.edu, 12 June 2025, https://www.academia.edu/129921039) and Roif 2025b, 'Indus Valley Script deciphered - From Mythology to History using the Akkadian shorthand approach' (Academia.edu, 2 August 2025, https://www.academia.edu/143222807). He is the claims' author, not merely a cited source. The program's tests of his claims are the program's own work and its statistics are not his."
       }
     },
     {
@@ -414,6 +444,12 @@
         "challenge_venue": "https://github.com/BitConcepts/glossa-lab/issues",
         "ai_assistance_disclosure": "Drafted in full by an AI agent (Muse Spark, via Muse) on 2026-10-13, at the direction of Tristen Pierson. On 2026-10-13 the full drafts were shown to Tristen Pierson, who adopted all 35 as authored by him; he is the author of record and takes responsibility for this account. The drafting AI is not the author (OD-2).",
         "explanation_text": "No check has ever run on this claim. What exists on the record is the source document's own assertion, plus an automatic score computed over the record's text. The program's own evaluation note is explicit that such scores are consistency signals only and no verdict rests on them. The claim therefore stands at the first stage, created: it has been written down, and nothing more has happened to it. The claim names what it needs in its own record: site metadata with a fire-altar classification. Phase-104 confirmed no such dataset exists in the repository - the corpus carries site names only. The proposed test (the sign concentrated at fire-altar structures rather than domestic contexts) therefore cannot be run, and no other check on this claim exists in the record."
+      },
+      "audit_note_2026_10_22": {
+        "date": "2026-10-22",
+        "kind": "roif-credit-note",
+        "proposal": "P3-extended (Roif credit addendum to the spec-025 audit fix commission)",
+        "note": "Credit note (2026-10-22): this claim is Avishai Roif's claim, from his published work - Roif 2025a, 'Deciphering the Indus Valley Script: A Phonetic-Mnemonic Akkadian Shorthand Approach' (Academia.edu, 12 June 2025, https://www.academia.edu/129921039) and Roif 2025b, 'Indus Valley Script deciphered - From Mythology to History using the Akkadian shorthand approach' (Academia.edu, 2 August 2025, https://www.academia.edu/143222807). He is the claims' author, not merely a cited source. The program's tests of his claims are the program's own work and its statistics are not his."
       }
     }
   ],
